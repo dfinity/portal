@@ -42,6 +42,12 @@ const css = `
     transform: scale(1.1);
     filter: blur(15px);
   }
+  .milestone {
+    transition: 400ms background-color linear;
+  }
+  .milestone:hover {
+    background-color: color-mix(in srgb, var(--color) 60%, black);
+  }
 `;
 
 const CardBlobs: React.FC<{}> = ({}) => {
