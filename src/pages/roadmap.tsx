@@ -218,7 +218,7 @@ const RoadmapPage: React.FC = () => {
       <main className={"w-full overflow-hidden bg-[#0a0023] text-white"}>
         <section className="relative pb-[20vh] md:pb-10">
           <DarkHeroStyles bgColor="#0a0023"></DarkHeroStyles>
-          <div className="container-10 pt-12 mb-60 md:mb-52 md:pt-36 relative z-5">
+          <div className="container-10 pt-12 mb-60 md:mb-52 md:pt-36 relative z-10">
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Roadmap</h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
@@ -231,7 +231,7 @@ const RoadmapPage: React.FC = () => {
               </p>
             </div>
           </div>
-          <div className="absolute w-[50vmin] top-1/2 right-1/2 -translate-y-1/2 translate-x-[45vw] z-1">
+          <div className="absolute w-[50vmin] top-1/2 right-1/2 -translate-y-1/2 translate-x-[45vw] z-0">
             <img className="block w-full" src="/img/roadmap/roadmap-viz.webp" alt="" />
           </div>
         </section>
