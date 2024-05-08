@@ -460,7 +460,7 @@ const Overlay: React.FC<{
       >
         <div className="text-right pointer-events-none sticky top-6 pr-6 md:top-20 z-10 md:pr-8">
           <button
-            className="pointer-events-auto right-8 w-10 h-10 rounded-full border-none bg-black/17 backdrop-blur-2xl"
+            className="pointer-events-auto right-8 w-10 h-10 rounded-full border-none bg-[#181818] backdrop-blur-2xl"
             onClick={onClose}
           >
             <svg
@@ -472,7 +472,7 @@ const Overlay: React.FC<{
             >
               <path
                 d="M8 6.66688L12.6669 2L14 3.33312L9.33312 8L14 12.6669L12.6669 14L8 9.33312L3.33312 14L2 12.6669L6.66688 8L2 3.33312L3.33312 2L8 6.66688Z"
-                fill="#181818"
+                fill="#ffffff"
               />
             </svg>
           </button>
