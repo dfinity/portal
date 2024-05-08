@@ -206,8 +206,9 @@ const MilestoneDetail: React.FC<{
       </div>
       <div className="m-1">
         <div className="grid gap-1 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
-          {elements.map((element) => (
+          {elements.map((element, i) => (
             <MilestoneCard
+              key={i}
               title={element.title}
               overview={element.overview}
               status={element.status}
@@ -284,10 +285,11 @@ const Overlay: React.FC<{
                     if (b.name === "orphans_future") return -1;
                     return 0;
                   })
-                  .map((milestone) => {
+                  .map((milestone, i) => {
                     if (milestone.name === "orphans_past") {
                       return (
                         <MilestoneDetail
+                          key={i}
                           name={"Past Milestones"}
                           overview={"Milestones that have been completed."}
                           eta={milestone.eta}
@@ -298,6 +300,7 @@ const Overlay: React.FC<{
                     if (milestone.name === "orphans_future") {
                       return (
                         <MilestoneDetail
+                          key={i}
                           name={"Future Milestones"}
                           overview={"Milestones that are yet to be completed."}
                           eta={milestone.eta}
@@ -307,6 +310,7 @@ const Overlay: React.FC<{
                     }
                     return (
                       <MilestoneDetail
+                        key={i}
                         name={milestone.name}
                         overview={milestone.description}
                         eta={milestone.eta}
