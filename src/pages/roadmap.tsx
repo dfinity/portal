@@ -43,12 +43,11 @@ const CardBlobs: React.FC<{}> = ({}) => {
   */
   const styleCommon = {
     background: `radial-gradient(
-      circle at 50% 50%, rgb(255 255 255 / 80%) 0%, rgba(0, 0, 0, 0) 60%
+      circle at 50% 50%, var(--color2) 0%, rgba(0, 0, 0, 0) 60%
     )`,
     transform: `translate(-50%, -50%)`,
     animation: `blob 10s infinite linear`,
     'animation-delay': 'calc(var(--rnd1) * -10s)',
-    'mix-blend-mode': 'overlay',
   };
 
   return (
@@ -92,12 +91,16 @@ const CardBlobs: React.FC<{}> = ({}) => {
 const milestoneComponent = (
   milestone: any,
   index: number,
-  color: string,
+  color: string[],
   overlayTrigger = () => {}
 ) => {
   let isActiveMilestone = false;
 
-  const style = { "--color": color } as React.CSSProperties;
+  const style = { 
+    "--color": color[0],
+    "--color2": color[1],
+  } as React.CSSProperties;
+
   let wrapperClasses =
     "relative snap-start text-white rounded-md shrink-0 grow-0 p-8 px-10 flex flex-col min-h-64 scroll-ml-[var(--offcut)]";
   const isOrphan =
@@ -188,16 +191,12 @@ function milestoneName(name: string) {
   return title;
 }
 
-function indexToColor(index: number, total: number, relI) {
+function indexToColor(index: number, total: number, lightnessMod = 0) {
   const hueStart = -30;
   const hueRange = 200;
   const relativeIndex = index / total;
   const hue = (relativeIndex * -hueRange + hueStart) % 360;
-  /*if (!relI) {*/
-  return `hsl(${hue.toFixed(2)} 40% 25%)`;
-  /*} else {
-    return `hsl(${hue} ${30 + relI * 20}% ${25 - relI * 20}%)`;
-  }*/
+  return `hsl(${hue.toFixed(2)} 40% ${25 + lightnessMod}%)`;
 }
 
 function scrollBy(ref: RefObject<T>, direction: 1) {
@@ -322,7 +321,7 @@ const RoadmapPage: React.FC = () => {
                     openOverlay(
                       indexTheme,
                       0,
-                      indexToColor(indexTheme, data.length, 0)
+                      indexToColor(indexTheme, data.length)
                     )
                   }
                 >
@@ -364,12 +363,16 @@ const RoadmapPage: React.FC = () => {
                   {theme.milestones.map((milestone, index) => {
                     const projectColor = indexToColor(
                       indexTheme,
+                      data.length
+                    );
+                    const projectColor2 = indexToColor(
+                      indexTheme,
                       data.length,
-                      index / theme.milestones.length
+                      15
                     );
                     return (
                       milestone.elements.length > 0 &&
-                      milestoneComponent(milestone, index, projectColor, () =>
+                      milestoneComponent(milestone, index, [projectColor, projectColor2], () =>
                         openOverlay(
                           indexTheme,
                           milestone.milestone_id,
