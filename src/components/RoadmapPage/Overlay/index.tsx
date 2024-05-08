@@ -303,7 +303,7 @@ const Overlay: React.FC<{
 
   return (
     <motion.div
-      className="fixed inset-0 overflow-auto z-[2000] bg-black/70 backdrop-blur-sm"
+      className="fixed inset-0 overflow-auto z-[2000] bg-black/70 backdrop-blur-sm overflow-x-clip"
       onClick={onClose}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
