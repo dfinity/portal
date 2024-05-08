@@ -240,7 +240,12 @@ const RoadmapPage: React.FC = () => {
           {data.map((theme, indexTheme) => (
             <article key={theme.name} className="mt-20">
               <header className="container-10">
-                <h1 className="tw-heading-3">{theme.name}</h1>
+                <h1 className="tw-heading-3">
+                  {theme.name}
+                  <i className="inline-block w-[.75em] h-[.75em] bg-white text-black rounded-full relative ml-8 top-1">
+                    <RightArrowIcon className="w-6/10 h-6/10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                  </i>
+                </h1>
                 <p className="tw-paragraph max-w-sm opacity-60">
                   {theme.description}
                 </p>
