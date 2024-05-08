@@ -227,15 +227,10 @@ const MilestoneDetail: React.FC<{
   elements: Element[];
 }> = ({ name, subtitle, overview, eta, elements }) => {
   return (
-<<<<<<< HEAD
     <article
       id={name}
-      className="border border-white/30 border-solid rounded-xl mb-30"
-    >
-=======
-    <article className="border border-white/30 border-solid rounded-xl mb-30 relative">
+      className="border border-white/30 border-solid rounded-xl mb-30 relative">
       <Blobs />
->>>>>>> 1d44abb7c0d79ba734dc6c4fc1491646aa637288
       <div className="p-5">
         <h4 className="tw-heading-4 mb-3">{name.toUpperCase()}</h4>
         <p className="tw-paragraph font-bold w-3/10 mb-4">{subtitle}</p>
@@ -284,11 +279,6 @@ const Overlay: React.FC<{
   color: string | null;
 }> = ({ onClose, openAt, data, anchor, color }) => {
   const overlayRef = useRef<HTMLDivElement>();
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 1d44abb7c0d79ba734dc6c4fc1491646aa637288
   useEffect(() => {
     function onKeydown(e: KeyboardEvent) {
       if (e.key === "Escape") {
