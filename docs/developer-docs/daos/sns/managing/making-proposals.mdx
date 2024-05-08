@@ -54,7 +54,7 @@ quill send message.json
 
 * `<PATH_TO_CANISTER_IDS_JSON_FILE>` is the file path to a canister IDs JSON file. See example [sns_canister_ids.json](https://github.com/dfinity/quill/blob/master/e2e/assets/sns_canister_ids.json).
 * `PROPOSAL_NEURON_ID` is the neuron ID of the neuron that is submitting the proposal.
-* `<PATH_TO_PEM_FILE>` is the path to the PEM file of the identity that owns the neuron that is submitting the proposal. To generate a PEM file, see [here](https://internetcomputer.org/docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-generate).
+* `<PATH_TO_PEM_FILE>` is the path to the PEM file of the identity that owns the neuron that is submitting the proposal. To generate a PEM file, see [here](/docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-generate).
 * `title` is a short description of the proposal.
 * `url` is a link to a document that describes the proposal in more detail.
 * `summary` is a short summary of the proposal.
@@ -204,7 +204,7 @@ quill send message.json
 
 ### `UpgradeSnsToNextVersion`
 
-Recall that all approved SNS canister versions are stored on the NNS canister [SNS-W](../introduction/sns-architecture).
+Recall that all approved SNS canister versions are stored on the NNS canister [SNS-W](../overview.mdx).
 New SNS canister wasm codes are approved by NNS proposals and then added to SNS-W.
 Each SNS community can then simply decide if and when they want to upgrade their SNS instance to the next SNS version that is available on SNS-W.
 
@@ -601,6 +601,83 @@ quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
 quill send message.json
 ```
 
+### `ManageLedgerParameters`
+The proposal `ManageLedgerParameters` can be used to update some of the SNS ledger canister's parameters.
+For now, the only ledger parameter that can be changed is the transfer fee.
+Later, additional paramters might be added.
+Fields where a value is set to `None` will remain unchanged.
+
+#### Relevant type signatures
+
+```candid
+  type ManageLedgerParameters = record {
+    transfer_fee : opt nat64
+  };
+```
+
+Example in bash:
+
+```bash
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+    record {
+        title = "Change Our Transfer Fee to 314_159 e8s";
+        url = "https://sns-examples.com/proposal/42";
+        summary = "Change our transfer fee to 314_159 e8s.";
+        action = opt variant {
+            ManageLedgerParameters = record {
+                transfer_fee = opt 314_159;
+            }
+        }
+    }
+)' --canister-ids-file <PATH_TO_CANISTER_IDS_JSON_FILE> > message.json
+
+quill send message.json
+```
+
+### `ManageDappCanisterSettings`
+This proposal allows to upgrade the settings of one or more SNS DAO-controlled dapp canister.
+The canisters whose settings should be updates are specified in `canister_ids` and the proposal allows updating
+the freezing threshold, the reserved cycles limit, the log visibility (which can be visible to just controllers or public),
+the memory allocation, and the compute allocation.
+
+#### Relevant type signatures
+
+```candid
+type ManageDappCanisterSettings = record {
+  freezing_threshold : opt nat64;
+  canister_ids : vec principal;
+  reserved_cycles_limit : opt nat64;
+  log_visibility : opt int32;
+  memory_allocation : opt nat64;
+  compute_allocation : opt nat64;
+};
+enum LogVisibility {
+  LOG_VISIBILITY_UNSPECIFIED = 0;
+  LOG_VISIBILITY_CONTROLLERS = 1;
+  LOG_VISIBILITY_PUBLIC = 2;
+}
+```
+
+Example in bash:
+
+```bash
+quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
+    record {
+        title = "Set the Memory Allocation of the Widget Canister to 314_159 Bytes";
+        url = "https://sns-examples.com/proposal/42";
+        summary = "Set the memory allocation of the Widget Canister to 314_159 bytes.";
+        action = opt variant {
+            ManageDappCanisterSettings = record {
+                canister_ids = vec { principal "WIDGET-CANISTER-ID" };
+                memory_allocation = opt 314_159;
+            }
+        }
+    }
+)' --canister-ids-file <PATH_TO_CANISTER_IDS_JSON_FILE> > message.json
+
+quill send message.json
+```
+
 ## Generic proposals
 
 Each SNS community might have functions that they would like to only execute if the SNS DAO agrees on it but that might be very dapp-specific. Generic proposals, also called generic functions or generic nervous system functions, allow a flexible way for SNS communities to define such functions.
@@ -827,11 +904,11 @@ quill send message.json
 
 ### Case study: Adding a generic proposal
 
-The [SNS asset canister](https://internetcomputer.org/docs/current/developer-docs/daos/sns/managing/sns-asset-canister) is a canister used to store and retrieve static assets. A dapp controlled by an SNS may have its own associated asset canister.
+The [SNS asset canister](/docs/current/developer-docs/daos/sns/managing/sns-asset-canister) is a canister used to store and retrieve static assets. A dapp controlled by an SNS may have its own associated asset canister.
 
 The problem: To commit changes to the asset canister associated with a dapp under SNS control, you need to use generic proposals.
 
-To do this, the SNS governance needed to add a new proposal type, one that would execute the custom [`commit_proposed_batch` function](https://internetcomputer.org/docs/current/developer-docs/daos/sns/managing/sns-asset-canister/#sns-genericnervoussystemfunctions).
+To do this, the SNS governance needed to add a new proposal type, one that would execute the custom [`commit_proposed_batch` function](/docs/current/developer-docs/daos/sns/managing/sns-asset-canister/#sns-genericnervoussystemfunctions).
 
 See the code for the `commit_proposed_batch` function [here](https://github.com/dfinity/sdk/blob/987d384cb4939e7b3dba0c820ff576cff0d41af8/src/canisters/frontend/ic-certified-assets/src/lib.rs#L264):
 

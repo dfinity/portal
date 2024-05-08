@@ -21,6 +21,7 @@ export function AskAIWidget() {
             data-button-hide="true"
             data-modal-override-open-class="ask-ai-widget-trigger"
             data-modal-ask-ai-input-placeholder="Ask me a question about the Internet Computer Protocol"
+            data-modal-disclaimer="This LLM provides responses are generated automatically and may be inaccurate or outdated. Please take care to verify or validate any responses before making any critical decisions."
           />
         </Head>
         <button

@@ -15,7 +15,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 ## Introduction
 
-To interact with a <Tooltip text="A smart contract on ICP."<Tooltip> >canister's</Tooltip> methods, there are two primary types of calls that can be used: update calls and query calls.
+To interact with a <GlossaryTooltip>canister</GlossaryTooltip>'s methods, there are two primary types of calls that can be used: update calls and query calls.
 
 Canisters implement methods that can be called via update or query calls. A query method can be called as both an update and a query, whereas update methods can be called only as an update.
 
@@ -83,7 +83,7 @@ def set_message(new_message: str) -> void:
 
 Query calls, also referred to as non-replicated queries, are executed on a single node and return a synchronous response. Since they execute on a single node, they do not go through consensus and can be much faster than update calls.
 
-:::warning
+:::caution
 The downside of query calls is that the response is not trusted since it's coming from a single node. An update call or a certified query (see below) should be used for security-critical calls.
 :::
 
@@ -178,6 +178,6 @@ Inter-canister calls are used to make calls between different canisters. An inte
 On the protocol level, calls on ICP use blobs to describe arguments and results passed to and returned from canisters. It's typically easier to use an [Interface description language](https://en.wikipedia.org/wiki/Interface_description_language) (IDL) to define a canister's interfaces that can be called by end users or other canisters.
 
 While any IDL can be used for this purpose, most canisters on ICP use Candid, a specialized IDL that is developed for ICP and makes use of some of the unique features and properties of ICP.
-- [What is Candid?](https://internetcomputer.org/docs/current/developer-docs/backend/candid/candid-concepts)
-- [Using Candid](https://internetcomputer.org/docs/current/developer-docs/backend/candid/candid-howto)
-- [Generating Candid files for Rust canisters](https://internetcomputer.org/docs/current/developer-docs/backend/candid/generating-candid)
+- [What is Candid?](/docs/current/developer-docs/backend/candid/candid-concepts)
+- [Using Candid](/docs/current/developer-docs/backend/candid/candid-howto)
+- [Generating Candid files for Rust canisters](/docs/current/developer-docs/backend/candid/generating-candid)

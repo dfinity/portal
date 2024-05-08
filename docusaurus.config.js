@@ -71,7 +71,10 @@ const subnavItems = [
     label: "Languages",
     items: [
       { label: "Rust", href: "/docs/current/developer-docs/backend/rust/" },
-      { label: "Motoko", href: "/docs/current/motoko/main/motoko/" },
+      {
+        label: "Motoko",
+        href: "/docs/current/motoko/main/getting-started/motoko-introduction",
+      },
       {
         label: "TypeScript",
         href: "/docs/current/developer-docs/backend/typescript/",
@@ -159,11 +162,11 @@ const marketingNav = {
         {
           name: "Start Here",
           items: [
-            {
-              name: "The Basics",
-              href: "/basics",
-              description: "New to ICP? Read this first",
-            },
+            // {
+            //   name: "The Basics",
+            //   href: "/basics",
+            //   description: "New to ICP? Read this first",
+            // },
             {
               name: "What is ICP",
               href: "/what-is-the-ic",
