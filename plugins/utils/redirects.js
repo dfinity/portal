@@ -16,6 +16,7 @@ const redirects = `
   /howitworks /how-it-works
   /showcase /ecosystem
   /multichain /chainfusion
+  /basics /
   /docs/videos-tutorials /developers
   /docs /docs/current/home
   /docs/current/ /docs/current/home
