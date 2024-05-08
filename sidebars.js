@@ -575,6 +575,11 @@ const sidebars = {
               label: "Web apps",
               id: "developer-docs/security/web-app-development-security-best-practices",
             },
+            {
+              type: "doc",
+              label: "Important resources",
+              id: "developer-docs/security/security-best-practices-references",
+            },
           ],
         },
         {
@@ -753,8 +758,6 @@ const sidebars = {
               "developer-docs/daos/nns/staking-voting-rewards",
             ],
           },
-        ],
-        },
         "developer-docs/daos/nns/neurons-fund",
         {
           type: "category",
@@ -762,6 +765,8 @@ const sidebars = {
           items: [
             "developer-docs/daos/nns/proposal-requirements",
           ],
+        },
+	],
         },
         {
           type: "category",
