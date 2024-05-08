@@ -5,6 +5,7 @@ import ExternalLinkIcon from "../../../../static/img/external-link.svg";
 import { RoadmapDomain, RoadmapItem } from "../RoadmapTypes";
 import LinkArrowLeft from "../../Common/Icons/LinkArrowLeft";
 import { motion, AnimatePresence } from "framer-motion";
+import { CardBlobs } from "@site/src/pages/roadmap";
 
 const Blobs: React.FC<{}> = ({}) => {
   return (
@@ -226,9 +227,10 @@ const MilestoneDetail: React.FC<{
   eta: string;
   elements: Element[];
   status: string;
-}> = ({ name, subtitle, overview, eta, elements, status }) => {
+  color: string | null;
+}> = ({ name, subtitle, overview, eta, elements, status, color }) => {
   const [expanded, setExpanded] = useState(false);
-
+  console.log(name, "name");
   if (name === "Past features") {
     return (
       <article
@@ -243,39 +245,6 @@ const MilestoneDetail: React.FC<{
           >
             {name.toUpperCase()}
           </h4>
-          {expanded && (
-            <AnimatePresence>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
-              >
-                <p className="tw-paragraph font-bold mb-4 md:w-3/10">
-                  {subtitle}
-                </p>
-
-                <p className="tw-paragraph mb-10">
-                  <span className="text-white/60">Milestone</span>{" "}
-                  {eta === "none" || !eta ? "" : eta}
-                </p>
-                {elements.length > 1 && (
-                  <div className=" ">
-                    <span className="px-2 py-1 w-4 text-sm leading-5 bg-white rounded-xl text-infinite">
-                      {elements.length - 1}
-                    </span>
-                    <span className="text-white">
-                      {" "}
-                      Completed topic{elements.length - 1 === 1 ? "" : "s"}
-                    </span>
-                  </div>
-                )}
-                <p className="text-white/60 tw-paragraph mt-6 md:w-2/3">
-                  {overview}
-                </p>
-              </motion.div>
-            </AnimatePresence>
-          )}
         </div>
         {expanded && (
           <AnimatePresence>
@@ -307,90 +276,67 @@ const MilestoneDetail: React.FC<{
       </article>
     );
   }
-
   if (name === "Future features") {
-    <article
-      id={name}
-      className={`border border-white/30 border-solid rounded-xl mb-30 relative`}
-    >
-      <Blobs />
-      <div className="p-5">
-        <h4 className="tw-heading-4 mb-3">{name.toUpperCase()}</h4>
-        <p className="tw-paragraph font-bold mb-4 md:w-3/10">{subtitle}</p>
-
+    return (
+      <article
+        id={name}
+        className={`border border-white/30 border-solid rounded-xl mb-30 relative`}
+      >
+        <Blobs />
+        <div className="p-5">
+          <h4 className="tw-heading-4 mb-3">{name.toUpperCase()}</h4>
+          {/* <p className="tw-paragraph font-bold mb-4 md:w-3/10">{subtitle}</p>
+     
         <p className="tw-paragraph mb-10">
           <span className="text-white/60">Milestone</span>{" "}
           {eta === "none" || !eta ? "" : eta}
         </p>
-        {elements.length > 1 && (
-          <div className=" ">
-            <span className="px-2 py-1 w-4 text-sm leading-5 bg-white rounded-xl text-infinite">
-              {elements.length - 1}
-            </span>
-            <span className="text-white">
-              {" "}
-              Completed topic{elements.length - 1 === 1 ? "" : "s"}
-            </span>
-          </div>
-        )}
-        <p className="text-white/60 tw-paragraph mt-6 md:w-2/3">{overview}</p>
-      </div>
-      <div className="m-1">
-        <div className="grid gap-1 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
-          {elements.map((element, i) => (
-            <MilestoneCard
-              key={i}
-              title={element.title}
-              overview={element.overview}
-              status={element.status}
-              forum={element.forum}
-              wiki={element.wiki}
-              docs={element.docs}
-              proposal={element.proposal}
-            />
-          ))}
+
+        <p className="text-white/60 tw-paragraph mt-6 md:w-2/3">{overview}</p>  */}
         </div>
-      </div>
-    </article>;
+        <div className="m-1">
+          <div className="grid gap-1 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+            {elements.map((element, i) => (
+              <MilestoneCard
+                key={i}
+                title={element.title}
+                overview={element.overview}
+                status={element.status}
+                forum={element.forum}
+                wiki={element.wiki}
+                docs={element.docs}
+                proposal={element.proposal}
+              />
+            ))}
+          </div>
+        </div>
+      </article>
+    );
   }
   return (
     <article
       id={name}
       className={`border border-white/30 border-solid rounded-xl mb-30 relative`}
-      style={{
-        boxShadow:
-          status === "in_progress"
-            ? "0px 0px 42.6px 0px rgba(255, 255, 255, 0.52)"
-            : "",
-        background:
-          status === "in_progress"
-            ? "linear-gradient(96deg, rgba(255, 255, 255, 0.20) -14.35%, rgba(255, 255, 255, 0.00) 93.71%)"
-            : "",
-      }}
+      style={{ backgroundColor: color }}
     >
+      <CardBlobs />
       <Blobs />
-      <div className="p-5">
-        <h4 className="tw-heading-4 mb-3">{name.toUpperCase()}</h4>
-        <p className="tw-paragraph font-bold mb-4 md:w-3/10">{subtitle}</p>
 
-        {name !== "Future features" && name !== "Past features" && (
-          <p className="tw-paragraph mb-10">
-            <span className="text-white/60">Milestone</span>{" "}
-            {eta === "none" || !eta ? "" : eta}
-          </p>
-        )}
-        {elements.length > 1 && name !== "Future features" && (
-          <div className=" ">
-            <span className="px-2 py-1 w-4 text-sm leading-5 bg-white rounded-xl text-infinite">
-              {elements.length - 1}
-            </span>
-            <span className="text-white">
-              {" "}
-              Completed topic{elements.length - 1 === 1 ? "" : "s"}
-            </span>
+      <div className="p-5">
+        <div className="grid grid-cols-[6fr,10fr] ">
+          <div>
+            <h4 className="tw-heading-4 mb-3">{name.toUpperCase()}</h4>
+            <p className="tw-paragraph mb-3">
+              <span className="text-white/60">Milestone</span>{" "}
+              {eta === "none" || !eta ? "" : eta}
+            </p>
+            <p className="tw-paragraph font-bold mb-4 ">{subtitle}</p>
           </div>
-        )}
-        <p className="text-white/60 tw-paragraph mt-6 md:w-2/3">{overview}</p>
+          <div>
+            {" "}
+            <p className="text-white/60 tw-paragraph ">{overview}</p>
+          </div>
+        </div>
       </div>
       <div className="m-1">
         <div className="grid gap-1 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
@@ -418,9 +364,11 @@ const Overlay: React.FC<{
   data: RoadmapDomain[];
   anchor: string | null;
   color: string | null;
-}> = ({ onClose, openAt, data, anchor, color }) => {
+  color2: string | null;
+}> = ({ onClose, openAt, data, anchor, color, color2 }) => {
   const overlayRef = useRef<HTMLDivElement>();
 
+  console.log(color, color2);
   useEffect(() => {
     function onKeydown(e: KeyboardEvent) {
       if (e.key === "Escape") {
@@ -442,7 +390,6 @@ const Overlay: React.FC<{
     }
   }, [anchor, color]);
 
-  console.log(color, "color");
   return (
     <motion.div
       className="fixed inset-0 overflow-auto z-[2000] bg-black/70 backdrop-blur-lg overflow-x-hidden"
@@ -451,7 +398,7 @@ const Overlay: React.FC<{
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       ref={overlayRef}
-      style={{ "--color": color }}
+      style={{ "--color": color, "--color2": "rgba(255,255,255,0.1)" }}
     >
       <div className="fixed inset-0"></div>
       <div
@@ -496,32 +443,6 @@ const Overlay: React.FC<{
                     return 0;
                   })
                   .map((milestone, i) => {
-                    if (milestone.name === "orphans_past") {
-                      return (
-                        <MilestoneDetail
-                          key={i}
-                          name={milestone.milestone_id}
-                          subtitle=""
-                          overview={""}
-                          eta={milestone.eta}
-                          elements={milestone.elements}
-                          status={null}
-                        />
-                      );
-                    }
-                    if (milestone.name === "orphans_future") {
-                      return (
-                        <MilestoneDetail
-                          key={i}
-                          name={milestone.milestone_id}
-                          subtitle=""
-                          overview={""}
-                          eta={milestone.eta}
-                          elements={milestone.elements}
-                          status={null}
-                        />
-                      );
-                    }
                     return (
                       <MilestoneDetail
                         key={i}
@@ -531,6 +452,7 @@ const Overlay: React.FC<{
                         eta={milestone.eta}
                         elements={milestone.elements}
                         status={milestone.status}
+                        color={color}
                       />
                     );
                   })}
