@@ -46,7 +46,7 @@ const css = `
     transition: 400ms background-color linear;
   }
   .milestone:hover {
-    background-color: color-mix(in srgb, var(--color) 60%, black);
+    background-color: color-mix(in srgb, var(--color) 70%, black);
   }
 `;
 
