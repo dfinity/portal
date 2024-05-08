@@ -6,39 +6,40 @@ import ExternalLinkIcon from "../../../../static/img/external-link.svg";
 import { RoadmapDomain, RoadmapItem } from "../RoadmapTypes";
 import LinkArrowLeft from "../../Common/Icons/LinkArrowLeft";
 
-
 const Blobs: React.FC<{}> = ({}) => {
   return (
-    <div 
-      className="absolute inset-0 -z-1 pointer-events-none" 
-      style={{
-        '--rnd1': -1 + Math.random() * 2,
-        '--rnd2': -1 + Math.random() * 2,
-      } as React.CSSProperties}
+    <div
+      className="absolute inset-0 -z-1 pointer-events-none"
+      style={
+        {
+          "--rnd1": -1 + Math.random() * 2,
+          "--rnd2": -1 + Math.random() * 2,
+        } as React.CSSProperties
+      }
     >
-      <i 
+      <i
         className="absolute top-0 left-0 w-[50vw] h-[50vw] animate-wiggle"
         style={{
           background: `radial-gradient(
             circle at 50% 50%, hsl(from var(--color) h s l) 0%, rgba(0, 0, 0, 0) 60%
           )`,
-          transform:  `translate(-50%, -50%) translateY(calc(var(--rnd1) * 50%))`,
+          transform: `translate(-50%, -50%) translateY(calc(var(--rnd1) * 50%))`,
         }}
       ></i>
 
-      <i 
+      <i
         className="absolute bottom-0 right-0 w-[50vw] h-[50vw]"
         style={{
           background: `radial-gradient(
             circle at 50% 50%, hsl(from var(--color) h s l) 0%, rgba(0, 0, 0, 0) 60%
           )`,
 
-          transform:  `translate(50%, 50%) translateY(calc(var(--rnd2) * 50%))`,
+          transform: `translate(50%, 50%) translateY(calc(var(--rnd2) * 50%))`,
         }}
       ></i>
     </div>
   );
-}
+};
 
 export const DeployedIcon = () => (
   <svg
@@ -155,7 +156,6 @@ const docsIcon = (
   </svg>
 );
 
-
 const MilestoneCard: React.FC<Element> = ({
   title,
   overview,
@@ -229,7 +229,8 @@ const MilestoneDetail: React.FC<{
   return (
     <article
       id={name}
-      className="border border-white/30 border-solid rounded-xl mb-30 relative">
+      className="border border-white/30 border-solid rounded-xl mb-30 relative"
+    >
       <Blobs />
       <div className="p-5">
         <h4 className="tw-heading-4 mb-3">{name.toUpperCase()}</h4>
@@ -308,7 +309,7 @@ const Overlay: React.FC<{
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       ref={overlayRef}
-      style={{ '--color': color }}
+      style={{ "--color": color }}
     >
       <div className="fixed inset-0"></div>
       <div
