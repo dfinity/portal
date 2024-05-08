@@ -209,14 +209,14 @@ const RoadmapPage: React.FC = () => {
 
   return (
     <Layout
-      title="Roadmap"
+      title="Technical Roadmap"
       description="This roadmap shows the status of many projects across the Internet Computer stack, but not all - more to come over the next few weeks."
       editPath="https://github.com/dfinity/portal/tree/master/roadmap"
     >
       <ShareMeta image="/img/shareImages/share-roadmap.jpeg"></ShareMeta>
 
       <main className={"w-full overflow-hidden bg-[#0a0023] text-white"}>
-        <section className="relative pb-[20vh] md:pb-10">
+        <section className="relative pb-[50vw] md:pb-10">
           <DarkHeroStyles bgColor="#0a0023"></DarkHeroStyles>
           <div className="container-10 pt-12 mb-60 md:mb-52 md:pt-36 relative z-10">
             <div className="md:w-7/10">
@@ -231,7 +231,7 @@ const RoadmapPage: React.FC = () => {
               </p>
             </div>
           </div>
-          <div className="absolute w-[50vmin] top-1/2 right-1/2 -translate-y-1/2 translate-x-[45vw] z-0">
+          <div className="absolute w-[50vmin] bottom-10 md:top-1/2 right-1/2 -translate-y-1/2 translate-x-1/2 md:-mt-15 md:translate-x-[45vw] z-0">
             <img
               className="block w-full"
               src="/img/roadmap/roadmap-viz.webp"
@@ -244,7 +244,21 @@ const RoadmapPage: React.FC = () => {
           {data.map((theme, indexTheme) => (
             <article key={theme.name} className="mt-20">
               <header className="container-10">
-                <h1 className="tw-heading-3">{theme.name}</h1>
+                <h1
+                  className="tw-heading-3 cursor-pointer"
+                  onClick={() =>
+                    openOverlay(
+                      indexTheme,
+                      0,
+                      indexToColor(indexTheme, data.length, 0)
+                    )
+                  }
+                >
+                  {theme.name}
+                  <i className="inline-block w-[.75em] h-[.75em] bg-white text-black rounded-full relative ml-8 top-1">
+                    <RightArrowIcon className="w-6/10 h-6/10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
+                  </i>
+                </h1>
                 <p className="tw-paragraph max-w-sm opacity-60">
                   {theme.description}
                 </p>
