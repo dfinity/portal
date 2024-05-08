@@ -11,6 +11,9 @@ import ShareMeta from "../components/Common/ShareMeta";
 import Overlay from "../components/RoadmapPage/Overlay";
 import { RootObject } from "../components/RoadmapPage/RoadmapTypes";
 
+
+import RightArrowIcon from "@site/static/img/svgIcons/rightArrowIcon.svg";
+
 const MotionLink = motion(Link);
 
 const data = roadmapData as RootObject[];
@@ -209,42 +212,64 @@ const RoadmapPage: React.FC = () => {
                 </p>
               </header>
 
-              <button
-                data-slidecontrol
-                onClick={scrollBy.bind(null, scrollRefs[indexTheme], -1)}
-              >
-                prev{" "}
-              </button>
-              <button
-                data-slidecontrol
-                onClick={scrollBy.bind(null, scrollRefs[indexTheme], 1)}
-              >
-                next{" "}
-              </button>
-              <section
-                ref={scrollRefs[indexTheme]}
-                data-scroll={indexTheme}
-                aria-label="milestones"
-                className="flex gap-6 items-stretch overflow-x-auto snap-mandatory snap-x mt-8 pb-8 w-full scrollbar-hide box-border pl-[var(--offcut)] pr-[var(--offcut)]"
-                style={{
-                  scrollbarWidth: "none",
-                  '--offcut': 'max(0rem, calc((100dvw - 1214px) / 2 + 50px))',
-                } as React.CSSProperties}
-              >
-                {theme.milestones.map(
-                  (milestone, index) =>
-                    milestone.elements.length > 0 && milestoneComponent(
-                      milestone, 
-                      index, 
-                      indexToColor(
-                        indexTheme,
-                        data.length,
-                        index / theme.milestones.length
-                      ),
-                      () => openOverlay(indexTheme, index)
-                    )
-                )}
-              </section>
+
+              <div className="
+                relative
+                after:content-['']
+                after:bg-[#0a0023]
+                after:absolute
+                after:bottom-0
+                after:h-[30px]
+                after:left-0
+                after:right-0
+              ">
+
+                <section
+                  ref={scrollRefs[indexTheme]}
+                  data-scroll={indexTheme}
+                  aria-label="milestones"
+                  className="flex gap-6 items-stretch overflow-x-auto snap-mandatory snap-x mt-8 pb-12 w-full scrollbar-hide box-border pl-[var(--offcut)] pr-[var(--offcut)]"
+                  style={{
+                    scrollbarWidth: "none",
+                    '--offcut': 'max(0rem, calc((100dvw - 1214px) / 2 + 50px))',
+                  } as React.CSSProperties}
+                >
+                  {theme.milestones.map(
+                    (milestone, index) =>
+                      milestone.elements.length > 0 && milestoneComponent(
+                        milestone, 
+                        index, 
+                        indexToColor(
+                          indexTheme,
+                          data.length,
+                          index / theme.milestones.length
+                        ),
+                        () => openOverlay(indexTheme, index)
+                      )
+                  )}
+                </section>
+
+                <button
+                  data-slidecontrol
+                  onClick={scrollBy.bind(null, scrollRefs[indexTheme], -1)}
+                  className="absolute left-0 top-0 bottom-0 w-1/12 bg-transparent bg-gradient-to-r from-[#0a0023] to-transparent border-0 text-white"
+                  aria-label="prev milestone"
+                >
+                  <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[130%] rotate-180">
+                    <RightArrowIcon className="w-10 h-10"/>
+                  </span>
+                </button>
+                <button
+                  data-slidecontrol
+                  onClick={scrollBy.bind(null, scrollRefs[indexTheme], 1)}
+                  className="absolute right-0 top-0 bottom-0 w-1/12 bg-transparent bg-gradient-to-l from-[#0a0023] to-transparent border-0 text-white"
+                  aria-label="next milestone"
+                >
+                  <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[130%]">
+                    <RightArrowIcon className="w-10 h-10"/>
+                  </span>
+                </button>
+              </div>
             </article>
           ))}
         </section>
