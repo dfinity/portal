@@ -10,7 +10,6 @@ import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import ShareMeta from "../components/Common/ShareMeta";
 import Overlay from "../components/RoadmapPage/Overlay";
 import { RootObject } from "../components/RoadmapPage/RoadmapTypes";
-
 import RightArrowIcon from "@site/static/img/svgIcons/rightArrowIcon.svg";
 
 const MotionLink = motion(Link);
@@ -22,15 +21,79 @@ function elementCount(milestoneElements: any[], status: string) {
     .length;
 }
 
+const css = `
+  @keyframes blob {
+    0% {
+      transform: rotate(0deg) translateY(-50%) scale(calc(.5 + var(--rnd1) * .5));
+    }
+    50% {
+      transform: rotate(180deg) translateY(-50%) scale(calc(.5 + var(--rnd1) * 2));
+    }
+    100% {
+      transform: rotate(360deg) translateY(-50%) scale(calc(.5 + var(--rnd1) * .5));
+    }
+  }
+`;
+
+const CardBlobs: React.FC<{}> = ({}) => {
+  const styleCommon = {
+    background: `radial-gradient(
+      circle at 50% 50%, hsl(from var(--color) h s calc(l + .2)) 0%, rgba(0, 0, 0, 0) 60%
+    )`,
+    transform: `translate(-50%, -50%)`,
+    animation: `blob 10s infinite linear`,
+    'animation-delay': 'calc(var(--rnd1) * -10s)',
+  };
+
+  return (
+    <div
+      className="absolute inset-0 pointer-events-none overflow-hidden"
+      style={
+        {
+          "--rnd1": Math.random(),
+          "--rnd2": -1 + Math.random() * 2,
+        } as React.CSSProperties
+      }
+    >
+      <i
+        className="absolute top-1/2 left-1/2 w-2/3 aspect-square"
+        style={{
+          "--rnd1": Math.random(),
+          "--rnd2": -1 + Math.random() * 2,
+          ...styleCommon,
+        } as React.CSSProperties}
+      ></i>
+      <i
+        className="absolute bottom-1/2 right-1/2 w-2/3 aspect-square"
+        style={{
+          "--rnd1": Math.random(),
+          "--rnd2": -1 + Math.random() * 2,
+          ...styleCommon,
+        } as React.CSSProperties}
+      ></i>
+      <i
+        className="absolute bottom-1/2 right-1/2 w-2/3 aspect-square"
+        style={{
+          "--rnd1": Math.random(),
+          "--rnd2": -1 + Math.random() * 2,
+          ...styleCommon,
+        } as React.CSSProperties}
+      ></i>
+    </div>
+  );
+};
+
 const milestoneComponent = (
   milestone: any,
   index: number,
   color: string,
   overlayTrigger = () => {}
 ) => {
+  let isActiveMilestone = false;
+
   const style = { "--color": color } as React.CSSProperties;
   let wrapperClasses =
-    "snap-start text-white rounded-md shrink-0 grow-0 p-8 px-10 flex flex-col min-h-64 scroll-ml-[var(--offcut)]";
+    "relative snap-start text-white rounded-md shrink-0 grow-0 p-8 px-10 flex flex-col min-h-64 scroll-ml-[var(--offcut)]";
   const isOrphan =
     milestone.name === "orphans_past" || milestone.name === "orphans_future";
   if (isOrphan) {
@@ -42,6 +105,7 @@ const milestoneComponent = (
   }
 
   if (milestone.status === "in_progress") {
+    isActiveMilestone = true;
     wrapperClasses += ` bg-[var(--color)] w-[450px]`;
   }
 
@@ -62,6 +126,7 @@ const milestoneComponent = (
       style={style}
       onClick={overlayTrigger}
     >
+      {isActiveMilestone && <CardBlobs></CardBlobs>}
       {isOrphan ? (
         <div className="grow flex flex-col justify-end">
           <strong className="block text-[120px] font-light leading-none">
@@ -74,7 +139,7 @@ const milestoneComponent = (
           </strong>
         </div>
       ) : (
-        <div className="flex min-h-full gap-8 md:gap-20">
+        <div className="flex min-h-full gap-8 md:gap-20 relative">
           <div className="grow flex flex-col justify-between">
             <header>
               <h2 className="mb-0 tw-heading-4 uppercase">
@@ -213,6 +278,7 @@ const RoadmapPage: React.FC = () => {
       description="This roadmap shows the status of many projects across the Internet Computer stack, but not all - more to come over the next few weeks."
       editPath="https://github.com/dfinity/portal/tree/master/roadmap"
     >
+      <style>{css}</style>
       <ShareMeta image="/img/shareImages/share-roadmap.jpeg"></ShareMeta>
 
       <main className={"w-full overflow-hidden bg-[#0a0023] text-white"}>
