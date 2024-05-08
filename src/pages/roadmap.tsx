@@ -33,6 +33,10 @@ const css = `
       transform: rotate(360deg) translateY(-50%) scale(calc(.5 + var(--rnd1) * .5));
     }
   }
+
+  .milestone {
+
+  }
 `;
 
 const CardBlobs: React.FC<{}> = ({}) => {
@@ -52,7 +56,7 @@ const CardBlobs: React.FC<{}> = ({}) => {
 
   return (
     <div
-      className="absolute inset-0 pointer-events-none overflow-hidden"
+      className="blobs absolute inset-0 pointer-events-none overflow-hidden"
       style={
         {
           "--rnd1": Math.random(),
@@ -102,7 +106,7 @@ const milestoneComponent = (
   } as React.CSSProperties;
 
   let wrapperClasses =
-    "relative snap-start text-white rounded-md shrink-0 grow-0 p-8 px-10 flex flex-col min-h-64 scroll-ml-[var(--offcut)]";
+    "milestone relative snap-start text-white rounded-md shrink-0 grow-0 p-8 px-10 flex flex-col min-h-64 scroll-ml-[var(--offcut)]";
   const isOrphan =
     milestone.name === "orphans_past" || milestone.name === "orphans_future";
   if (isOrphan) {
