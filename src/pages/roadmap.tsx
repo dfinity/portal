@@ -11,6 +11,9 @@ import ShareMeta from "../components/Common/ShareMeta";
 import Overlay from "../components/RoadmapPage/Overlay";
 import { RootObject } from "../components/RoadmapPage/RoadmapTypes";
 
+
+import RightArrowIcon from "@site/static/img/svgIcons/rightArrowIcon.svg";
+
 const MotionLink = motion(Link);
 
 const data = roadmapData as RootObject[];
@@ -209,21 +212,9 @@ const RoadmapPage: React.FC = () => {
                 </p>
               </header>
 
-              <button
-                data-slidecontrol
-                onClick={scrollBy.bind(null, scrollRefs[indexTheme], -1)}
-              >
-                prev{" "}
-              </button>
-              <button
-                data-slidecontrol
-                onClick={scrollBy.bind(null, scrollRefs[indexTheme], 1)}
-              >
-                next{" "}
-              </button>
+
               <div className="
                 relative
-
                 after:content-['']
                 after:bg-[#0a0023]
                 after:absolute
@@ -232,6 +223,7 @@ const RoadmapPage: React.FC = () => {
                 after:left-0
                 after:right-0
               ">
+
                 <section
                   ref={scrollRefs[indexTheme]}
                   data-scroll={indexTheme}
@@ -256,6 +248,27 @@ const RoadmapPage: React.FC = () => {
                       )
                   )}
                 </section>
+
+                <button
+                  data-slidecontrol
+                  onClick={scrollBy.bind(null, scrollRefs[indexTheme], -1)}
+                  className="absolute left-0 top-0 bottom-0 w-1/12 bg-transparent bg-gradient-to-r from-[#0a0023] to-transparent border-0 text-white"
+                  aria-label="prev milestone"
+                >
+                  <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[130%] rotate-180">
+                    <RightArrowIcon className="w-10 h-10"/>
+                  </span>
+                </button>
+                <button
+                  data-slidecontrol
+                  onClick={scrollBy.bind(null, scrollRefs[indexTheme], 1)}
+                  className="absolute right-0 top-0 bottom-0 w-1/12 bg-transparent bg-gradient-to-l from-[#0a0023] to-transparent border-0 text-white"
+                  aria-label="next milestone"
+                >
+                  <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[130%]">
+                    <RightArrowIcon className="w-10 h-10"/>
+                  </span>
+                </button>
               </div>
             </article>
           ))}
