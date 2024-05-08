@@ -8,7 +8,7 @@ import LinkArrowLeft from "../../Common/Icons/LinkArrowLeft";
 
 export const DeployedIcon = () => (
   <svg
-    className="w-full"
+    className="w-full block"
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -23,8 +23,7 @@ export const DeployedIcon = () => (
 
 const inProgressIcon = (
   <svg
-    width="25"
-    height="24"
+    className="w-full block"
     viewBox="0 0 25 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -39,8 +38,7 @@ const inProgressIcon = (
 
 const futureIcon = (
   <svg
-    width="25"
-    height="24"
+    className="w-full block"
     viewBox="0 0 25 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -63,8 +61,7 @@ const futureIcon = (
 
 const proposalIcon = (
   <svg
-    width="40"
-    height="40"
+    className="w-full block"
     viewBox="0 0 40 40"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -80,8 +77,7 @@ const proposalIcon = (
 
 const forumIcon = (
   <svg
-    width="40"
-    height="40"
+    className="w-full block"
     viewBox="0 0 40 40"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -99,8 +95,7 @@ const forumIcon = (
 
 const docsIcon = (
   <svg
-    width="41"
-    height="40"
+    className="w-full block"
     viewBox="0 0 41 40"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -141,11 +136,9 @@ const MilestoneCard: React.FC<Element> = ({
         {" "}
         <header className="flex gap-2 justify-between self-stretch">
           <h5 className="tw-heading-6">{title}</h5>
-          <div className="pt-1">
+          <div className="basis-7 w-7 grow-0 shrink-0">
             {status === "deployed" && (
-              <div className="w-2 block ">
                 <DeployedIcon />
-              </div>
             )}
             {status === "in_progress" && inProgressIcon}
             {status === "future" && futureIcon}
@@ -155,17 +148,17 @@ const MilestoneCard: React.FC<Element> = ({
       <p className="tw-paragraph-sm line-clamp-4 ">{overview}</p>
       <div className="flex gap-2 pr-20 mt-16">
         {proposal && (
-          <Link to={proposal} className="link-primary">
+          <Link className="basis-10 w-10 grow-0 shrink-0 link-primary" to={proposal}>
             {proposalIcon}
           </Link>
         )}
         {forum && (
-          <Link to={forum} className="link-primary">
+          <Link className="basis-10 w-10 grow-0 shrink-0 link-primary" to={forum}>
             {forumIcon}
           </Link>
         )}
         {docs && (
-          <Link to={docs} className="link-primary">
+          <Link className="basis-10 w-10 grow-0 shrink-0 link-primary" to={docs}>
             {docsIcon}
           </Link>
         )}
