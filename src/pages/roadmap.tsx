@@ -36,13 +36,19 @@ const css = `
 `;
 
 const CardBlobs: React.FC<{}> = ({}) => {
+  /*
+  background: `radial-gradient(
+      circle at 50% 50%, hsl(from var(--color) h s calc(l + .2)) 0%, rgba(0, 0, 0, 0) 60%
+    )`,
+  */
   const styleCommon = {
     background: `radial-gradient(
-      circle at 50% 50%, hsl(from var(--color) h s calc(l + .2)) 0%, rgba(0, 0, 0, 0) 60%
+      circle at 50% 50%, rgb(255 255 255 / 80%) 0%, rgba(0, 0, 0, 0) 60%
     )`,
     transform: `translate(-50%, -50%)`,
     animation: `blob 10s infinite linear`,
     'animation-delay': 'calc(var(--rnd1) * -10s)',
+    'mix-blend-mode': 'overlay',
   };
 
   return (
