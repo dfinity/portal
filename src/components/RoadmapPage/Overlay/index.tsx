@@ -234,7 +234,7 @@ const MilestoneDetail: React.FC<{
       <Blobs />
       <div className="p-5">
         <h4 className="tw-heading-4 mb-3">{name.toUpperCase()}</h4>
-        <p className="tw-paragraph font-bold w-3/10 mb-4">{subtitle}</p>
+        <p className="tw-paragraph font-bold mb-4 md:w-3/10">{subtitle}</p>
         <p className="tw-paragraph mb-10">
           <span className="text-white/60">Milestone</span>{" "}
           {eta === "none" || !eta ? "" : eta}
@@ -296,7 +296,7 @@ const Overlay: React.FC<{
     if (anchor) {
       const el = document.getElementById(anchor);
       if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "center" });
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     }
   }, [anchor, color]);
@@ -313,10 +313,10 @@ const Overlay: React.FC<{
     >
       <div className="fixed inset-0"></div>
       <div
-        className="relative container-10 !px-0 md:px-6 md:py-12 text-white"
+        className="relative container-10 px-6 py-12 text-white"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="pr-6 md:top-20 z-10 md:pr-8">
+        <div className="md:top-20 z-10 pr-0 md:pr-8">
           <Link
             className="link-primary text-white cursor-pointer fixed top-20 hover:text-white/70"
             onClick={onClose}
@@ -326,10 +326,10 @@ const Overlay: React.FC<{
           {data && data[openAt] && (
             <div>
               <section className="my-24">
-                <h2 className="tw-heading-2 w-8/10">
+                <h2 className="tw-heading-3  font-black md:tw-heading-2 md:w-8/10">
                   {data[openAt].name.toUpperCase()}
                 </h2>
-                <p className="tw-lead w-5/10">{data[openAt].description}</p>
+                <p className="tw-lead md:w-5/10">{data[openAt].description}</p>
               </section>
               <section>
                 {data[openAt].milestones

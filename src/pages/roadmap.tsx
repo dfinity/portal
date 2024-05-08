@@ -275,7 +275,11 @@ const RoadmapPage: React.FC = () => {
                     return (
                       milestone.elements.length > 0 &&
                       milestoneComponent(milestone, index, projectColor, () =>
-                        openOverlay(indexTheme, index, projectColor)
+                        openOverlay(
+                          indexTheme,
+                          milestone.milestone_id,
+                          projectColor
+                        )
                       )
                     );
                   })}
