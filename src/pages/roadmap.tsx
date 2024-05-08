@@ -133,16 +133,22 @@ const RoadmapPage: React.FC = () => {
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [overlayOpenAt, setOverlayOpenAt] = useState(0);
   const [overlayAnchor, setOverlayAnchor] = useState(null);
+  const [overlayColor, setOverlayColor] = useState(null);
 
   const scrollRefs = new Array(data.length)
     .fill("")
     .map((_) => React.useRef(null));
 
-  function openOverlay(at: number, anchor: number | null = null) {
+  function openOverlay(
+    at: number, 
+    anchor: number | null = null, 
+    color: string | null = null
+  ) {
     document.body.style.overflow = "hidden";
     setOverlayOpenAt(at);
     setOverlayAnchor(anchor);
     setOverlayOpen(true);
+    setOverlayColor(color);
   }
 
   function closeOverlay() {
@@ -235,17 +241,25 @@ const RoadmapPage: React.FC = () => {
                   } as React.CSSProperties}
                 >
                   {theme.milestones.map(
-                    (milestone, index) =>
-                      milestone.elements.length > 0 && milestoneComponent(
-                        milestone, 
-                        index, 
-                        indexToColor(
-                          indexTheme,
-                          data.length,
-                          index / theme.milestones.length
-                        ),
-                        () => openOverlay(indexTheme, index)
+                    (milestone, index) => {
+                      const projectColor = indexToColor(
+                        indexTheme,
+                        data.length,
+                        index / theme.milestones.length
+                      );
+                      return (
+                        milestone.elements.length > 0 && milestoneComponent(
+                          milestone, 
+                          index, 
+                          projectColor,
+                          () => openOverlay(
+                            indexTheme, 
+                            index,
+                            projectColor
+                          )
+                        )
                       )
+                    }
                   )}
                 </section>
 
