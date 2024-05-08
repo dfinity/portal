@@ -16,6 +16,7 @@ const redirects = `
   /howitworks /how-it-works
   /showcase /ecosystem
   /multichain /chainfusion
+  /basics /what-is-the-ic
   /docs/videos-tutorials /developers
   /docs /docs/current/home
   /docs/current/ /docs/current/home
@@ -505,6 +506,7 @@ const redirects = `
   /docs/current/developer-docs/daos/sns/integrating/ledger-integration /docs/current/developer-docs/daos/sns/launching/integrating
   /docs/current/developer-docs/daos/sns/integrating/index-integration /docs/current/developer-docs/daos/sns/launching/integrating
   /docs/current/developer-docs/daos/sns/integrating/frontend-integration /docs/current/developer-docs/daos/sns/launching/integrating
+  /docs/current/developer-docs/integrations/sns/ /docs/current/developer-docs/daos/sns/overview
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
