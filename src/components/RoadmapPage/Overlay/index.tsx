@@ -137,9 +137,7 @@ const MilestoneCard: React.FC<Element> = ({
         <header className="flex gap-2 justify-between self-stretch">
           <h5 className="tw-heading-6">{title}</h5>
           <div className="basis-7 w-7 grow-0 shrink-0">
-            {status === "deployed" && (
-                <DeployedIcon />
-            )}
+            {status === "deployed" && <DeployedIcon />}
             {status === "in_progress" && inProgressIcon}
             {status === "future" && futureIcon}
           </div>
@@ -148,17 +146,26 @@ const MilestoneCard: React.FC<Element> = ({
       <p className="tw-paragraph-sm line-clamp-4 ">{overview}</p>
       <div className="flex gap-2 pr-20 mt-16">
         {proposal && (
-          <Link className="basis-10 w-10 grow-0 shrink-0 link-primary" to={proposal}>
+          <Link
+            className="basis-10 w-10 grow-0 shrink-0 link-primary"
+            to={proposal}
+          >
             {proposalIcon}
           </Link>
         )}
         {forum && (
-          <Link className="basis-10 w-10 grow-0 shrink-0 link-primary" to={forum}>
+          <Link
+            className="basis-10 w-10 grow-0 shrink-0 link-primary"
+            to={forum}
+          >
             {forumIcon}
           </Link>
         )}
         {docs && (
-          <Link className="basis-10 w-10 grow-0 shrink-0 link-primary" to={docs}>
+          <Link
+            className="basis-10 w-10 grow-0 shrink-0 link-primary"
+            to={docs}
+          >
             {docsIcon}
           </Link>
         )}
@@ -179,19 +186,24 @@ type Element = {
 
 const MilestoneDetail: React.FC<{
   name: string;
+  subtitle: string;
   overview: string;
   eta: string;
   elements: Element[];
-}> = ({ name, overview, eta, elements }) => {
+}> = ({ name, subtitle, overview, eta, elements }) => {
   return (
-    <article className="border border-white/30 border-solid rounded-xl mb-30">
+    <article
+      id={name}
+      className="border border-white/30 border-solid rounded-xl mb-30"
+    >
       <div className="p-5">
-        <h4 className="tw-heading-4">{name.toUpperCase()}</h4>
-        <p className="tw-paragraph">
+        <h4 className="tw-heading-4 mb-3">{name.toUpperCase()}</h4>
+        <p className="tw-paragraph font-bold w-3/10 mb-4">{subtitle}</p>
+        <p className="tw-paragraph mb-10">
           <span className="text-white/60">Milestone</span>{" "}
           {eta === "none" || !eta ? "" : eta}
         </p>
-        {elements.length > 1 && name !== "Future Milestones" && (
+        {elements.length > 1 && name !== "Future Features" && (
           <div className=" ">
             <span className="px-2 py-1 w-4 text-sm leading-5 bg-white rounded-xl text-infinite">
               {elements.length - 1}
@@ -228,12 +240,10 @@ const Overlay: React.FC<{
   onClose: () => void;
   openAt: number;
   data: RoadmapDomain[];
-  anchor: number | null;
+  anchor: string | null;
   color: string | null;
 }> = ({ onClose, openAt, data, anchor, color }) => {
   const overlayRef = useRef<HTMLDivElement>();
-
-  console.log(color)
 
   useEffect(() => {
     function onKeydown(e: KeyboardEvent) {
@@ -246,6 +256,15 @@ const Overlay: React.FC<{
       window.removeEventListener("keydown", onKeydown);
     };
   }, [onClose]);
+
+  useEffect(() => {
+    if (anchor) {
+      const el = document.getElementById(anchor);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+  }, [anchor, color]);
 
   return (
     <motion.div
@@ -263,7 +282,7 @@ const Overlay: React.FC<{
       >
         <div className="pr-6 md:top-20 z-10 md:pr-8">
           <Link
-            className="link-primary text-white cursor-pointer fixed top-20"
+            className="link-primary text-white cursor-pointer fixed top-20 hover:text-white/70"
             onClick={onClose}
           >
             <LinkArrowLeft /> Back to Roadmap
@@ -290,8 +309,9 @@ const Overlay: React.FC<{
                       return (
                         <MilestoneDetail
                           key={i}
-                          name={"Past Milestones"}
-                          overview={"Milestones that have been completed."}
+                          name={"Past Features"}
+                          subtitle=""
+                          overview={"Features that have been completed."}
                           eta={milestone.eta}
                           elements={milestone.elements}
                         />
@@ -301,8 +321,9 @@ const Overlay: React.FC<{
                       return (
                         <MilestoneDetail
                           key={i}
-                          name={"Future Milestones"}
-                          overview={"Milestones that are yet to be completed."}
+                          name={"Future Features"}
+                          subtitle=""
+                          overview={"Features that are yet to be completed."}
                           eta={milestone.eta}
                           elements={milestone.elements}
                         />
@@ -311,7 +332,8 @@ const Overlay: React.FC<{
                     return (
                       <MilestoneDetail
                         key={i}
-                        name={milestone.name}
+                        name={milestone.milestone_id}
+                        subtitle={milestone.name}
                         overview={milestone.description}
                         eta={milestone.eta}
                         elements={milestone.elements}
