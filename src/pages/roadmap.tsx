@@ -30,13 +30,13 @@ const milestoneComponent = (
 ) => {
   const style = { "--color": color } as React.CSSProperties;
   let wrapperClasses =
-    "snap-start text-white rounded-md shrink-0 grow-0 p-8 px-10 flex flex-col min-h-64 scroll-ml-[var(--offcut)]";
+    "snap-start text-white rounded-md shrink-1 grow-0 p-8 px-10 flex flex-col min-h-64 scroll-ml-[var(--offcut)]";
   const isOrphan =
     milestone.name === "orphans_past" || milestone.name === "orphans_future";
   if (isOrphan) {
     wrapperClasses += ` border-2 border-solid border-[var(--color)] order-opacity-20`;
   } else {
-    wrapperClasses += ` w-[450px] border-2 border-solid border-[var(--color)]`;
+    wrapperClasses += ` w-[450px] max-w-[80vw] border-2 border-solid border-[var(--color)]`;
   }
 
   if (milestone.status === "in_progress") {
@@ -65,14 +65,14 @@ const milestoneComponent = (
           <strong className="block text-[120px] font-light leading-none">
             {milestone.elements!.length}
           </strong>
-          <strong className="">
+          <strong>
             {milestone.name === "orphans_past"
               ? "Past features"
               : "Future features"}
           </strong>
         </div>
       ) : (
-        <div className="flex min-h-full gap-20">
+        <div className="flex min-h-full gap-8 md:gap-20">
           <div className="grow flex flex-col justify-between">
             <header>
               <h2 className="mb-0 tw-heading-4 uppercase">
@@ -262,7 +262,7 @@ const RoadmapPage: React.FC = () => {
                     {
                       scrollbarWidth: "none",
                       "--offcut":
-                        "max(0rem, calc((100dvw - 1214px) / 2 + 50px))",
+                        "max(1.5rem, calc((100dvw - 1214px) / 2 + 50px))",
                     } as React.CSSProperties
                   }
                 >
@@ -288,7 +288,7 @@ const RoadmapPage: React.FC = () => {
                 <button
                   data-slidecontrol
                   onClick={scrollBy.bind(null, scrollRefs[indexTheme], -1)}
-                  className="absolute left-0 top-0 bottom-0 w-1/12 bg-transparent bg-gradient-to-r from-[#0a0023] to-transparent border-0 text-white"
+                  className="absolute left-0 top-0 bottom-0 w-1/12 bg-transparent bg-gradient-to-r from-[#0a0023] to-transparent border-0 text-white hidden md:block"
                   aria-label="prev milestone"
                 >
                   <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[130%] rotate-180">
@@ -298,7 +298,7 @@ const RoadmapPage: React.FC = () => {
                 <button
                   data-slidecontrol
                   onClick={scrollBy.bind(null, scrollRefs[indexTheme], 1)}
-                  className="absolute right-0 top-0 bottom-0 w-1/12 bg-transparent bg-gradient-to-l from-[#0a0023] to-transparent border-0 text-white"
+                  className="absolute right-0 top-0 bottom-0 w-1/12 bg-transparent bg-gradient-to-l from-[#0a0023] to-transparent border-0 text-white hidden  md:block"
                   aria-label="next milestone"
                 >
                   <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[130%]">
