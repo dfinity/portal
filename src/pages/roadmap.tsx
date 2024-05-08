@@ -34,13 +34,13 @@ const css = `
     }
   }
   .blobs {
-    transform: scale(1);
-    filter: blur(0);
+    transform: scale(1.1);
+    filter: blur(20px);
     transition: 600ms transform cubic-bezier(0.3, 0.7, 0, 1), 600ms filter cubic-bezier(0.3, 0.7, 0, 1);
   }
   .milestone:hover .blobs {
-    transform: scale(1.1);
-    filter: blur(15px);
+    transform: scale(1);
+    filter: blur(0px);
   }
   .milestone {
     transition: 400ms background-color linear;
@@ -366,7 +366,7 @@ const RoadmapPage: React.FC = () => {
                   ref={scrollRefs[indexTheme]}
                   data-scroll={indexTheme}
                   aria-label="milestones"
-                  className="flex gap-6 items-stretch overflow-x-auto snap-mandatory snap-x pt-10 pb-12 w-full scrollbar-hide box-border pl-[var(--offcut)] pr-[var(--offcut)]"
+                  className="flex gap-6 items-stretch overflow-x-auto snap-mandatory snap-x pt-10 pb-20 -mb-2 w-full scrollbar-hide box-border pl-[var(--offcut)] pr-[var(--offcut)]"
                   style={
                     {
                       scrollbarWidth: "none",
