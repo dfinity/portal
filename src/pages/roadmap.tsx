@@ -221,30 +221,42 @@ const RoadmapPage: React.FC = () => {
               >
                 next{" "}
               </button>
-              <section
-                ref={scrollRefs[indexTheme]}
-                data-scroll={indexTheme}
-                aria-label="milestones"
-                className="flex gap-6 items-stretch overflow-x-auto snap-mandatory snap-x mt-8 pb-8 w-full scrollbar-hide box-border pl-[var(--offcut)] pr-[var(--offcut)]"
-                style={{
-                  scrollbarWidth: "none",
-                  '--offcut': 'max(0rem, calc((100dvw - 1214px) / 2 + 50px))',
-                } as React.CSSProperties}
-              >
-                {theme.milestones.map(
-                  (milestone, index) =>
-                    milestone.elements.length > 0 && milestoneComponent(
-                      milestone, 
-                      index, 
-                      indexToColor(
-                        indexTheme,
-                        data.length,
-                        index / theme.milestones.length
-                      ),
-                      () => openOverlay(indexTheme, index)
-                    )
-                )}
-              </section>
+              <div className="
+                relative
+
+                after:content-['']
+                after:bg-[#0a0023]
+                after:absolute
+                after:bottom-0
+                after:h-[30px]
+                after:left-0
+                after:right-0
+              ">
+                <section
+                  ref={scrollRefs[indexTheme]}
+                  data-scroll={indexTheme}
+                  aria-label="milestones"
+                  className="flex gap-6 items-stretch overflow-x-auto snap-mandatory snap-x mt-8 pb-12 w-full scrollbar-hide box-border pl-[var(--offcut)] pr-[var(--offcut)]"
+                  style={{
+                    scrollbarWidth: "none",
+                    '--offcut': 'max(0rem, calc((100dvw - 1214px) / 2 + 50px))',
+                  } as React.CSSProperties}
+                >
+                  {theme.milestones.map(
+                    (milestone, index) =>
+                      milestone.elements.length > 0 && milestoneComponent(
+                        milestone, 
+                        index, 
+                        indexToColor(
+                          indexTheme,
+                          data.length,
+                          index / theme.milestones.length
+                        ),
+                        () => openOverlay(indexTheme, index)
+                      )
+                  )}
+                </section>
+              </div>
             </article>
           ))}
         </section>
