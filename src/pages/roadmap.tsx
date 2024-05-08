@@ -37,8 +37,8 @@ const milestoneComponent = (
     wrapperClasses += ` border-2 border-solid border-[var(--color)] order-opacity-20`;
   } else {
     wrapperClasses += ` border-2 border-solid border-[var(--color)]`;
-    style['width'] =`min(450px, 80vw)]`;
-    style['flex-basis'] = `min(450px, 80vw)`;
+    style["width"] = `min(450px, 80vw)]`;
+    style["flex-basis"] = `min(450px, 80vw)`;
   }
 
   if (milestone.status === "in_progress") {
@@ -232,7 +232,11 @@ const RoadmapPage: React.FC = () => {
             </div>
           </div>
           <div className="absolute w-[50vmin] top-1/2 right-1/2 -translate-y-1/2 translate-x-[45vw] z-0">
-            <img className="block w-full" src="/img/roadmap/roadmap-viz.webp" alt="" />
+            <img
+              className="block w-full"
+              src="/img/roadmap/roadmap-viz.webp"
+              alt=""
+            />
           </div>
         </section>
 

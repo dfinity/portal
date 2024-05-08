@@ -1,10 +1,10 @@
 import Link from "@docusaurus/Link";
-import { motion } from "framer-motion";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CommunityIcon from "../../../../static/img/community-icon.svg";
 import ExternalLinkIcon from "../../../../static/img/external-link.svg";
 import { RoadmapDomain, RoadmapItem } from "../RoadmapTypes";
 import LinkArrowLeft from "../../Common/Icons/LinkArrowLeft";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Blobs: React.FC<{}> = ({}) => {
   return (
@@ -225,24 +225,161 @@ const MilestoneDetail: React.FC<{
   overview: string;
   eta: string;
   elements: Element[];
-}> = ({ name, subtitle, overview, eta, elements }) => {
-  return (
+  status: string;
+}> = ({ name, subtitle, overview, eta, elements, status }) => {
+  const [expanded, setExpanded] = useState(false);
+
+  if (name === "Past features") {
+    return (
+      <article
+        id={name}
+        className={`border border-white/30 border-solid rounded-xl mb-30 relative`}
+      >
+        <Blobs />
+        <div className="p-5">
+          <h4
+            className="tw-heading-4 mb-3 cursor-pointer hover:text-white/70 select-none"
+            onClick={() => setExpanded(!expanded)}
+          >
+            {name.toUpperCase()}
+          </h4>
+          {expanded && (
+            <AnimatePresence>
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
+              >
+                <p className="tw-paragraph font-bold mb-4 md:w-3/10">
+                  {subtitle}
+                </p>
+
+                <p className="tw-paragraph mb-10">
+                  <span className="text-white/60">Milestone</span>{" "}
+                  {eta === "none" || !eta ? "" : eta}
+                </p>
+                {elements.length > 1 && (
+                  <div className=" ">
+                    <span className="px-2 py-1 w-4 text-sm leading-5 bg-white rounded-xl text-infinite">
+                      {elements.length - 1}
+                    </span>
+                    <span className="text-white">
+                      {" "}
+                      Completed topic{elements.length - 1 === 1 ? "" : "s"}
+                    </span>
+                  </div>
+                )}
+                <p className="text-white/60 tw-paragraph mt-6 md:w-2/3">
+                  {overview}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+          )}
+        </div>
+        {expanded && (
+          <AnimatePresence>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
+            >
+              <div className="m-1">
+                <div className="grid gap-1 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+                  {elements.map((element, i) => (
+                    <MilestoneCard
+                      key={i}
+                      title={element.title}
+                      overview={element.overview}
+                      status={element.status}
+                      forum={element.forum}
+                      wiki={element.wiki}
+                      docs={element.docs}
+                      proposal={element.proposal}
+                    />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        )}
+      </article>
+    );
+  }
+
+  if (name === "Future features") {
     <article
       id={name}
-      className="border border-white/30 border-solid rounded-xl mb-30 relative"
+      className={`border border-white/30 border-solid rounded-xl mb-30 relative`}
     >
       <Blobs />
       <div className="p-5">
         <h4 className="tw-heading-4 mb-3">{name.toUpperCase()}</h4>
         <p className="tw-paragraph font-bold mb-4 md:w-3/10">{subtitle}</p>
 
-        {name !== "Future Features" && name !== "Past Features" && (
+        <p className="tw-paragraph mb-10">
+          <span className="text-white/60">Milestone</span>{" "}
+          {eta === "none" || !eta ? "" : eta}
+        </p>
+        {elements.length > 1 && (
+          <div className=" ">
+            <span className="px-2 py-1 w-4 text-sm leading-5 bg-white rounded-xl text-infinite">
+              {elements.length - 1}
+            </span>
+            <span className="text-white">
+              {" "}
+              Completed topic{elements.length - 1 === 1 ? "" : "s"}
+            </span>
+          </div>
+        )}
+        <p className="text-white/60 tw-paragraph mt-6 md:w-2/3">{overview}</p>
+      </div>
+      <div className="m-1">
+        <div className="grid gap-1 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+          {elements.map((element, i) => (
+            <MilestoneCard
+              key={i}
+              title={element.title}
+              overview={element.overview}
+              status={element.status}
+              forum={element.forum}
+              wiki={element.wiki}
+              docs={element.docs}
+              proposal={element.proposal}
+            />
+          ))}
+        </div>
+      </div>
+    </article>;
+  }
+  return (
+    <article
+      id={name}
+      className={`border border-white/30 border-solid rounded-xl mb-30 relative`}
+      style={{
+        boxShadow:
+          status === "in_progress"
+            ? "0px 0px 42.6px 0px rgba(255, 255, 255, 0.52)"
+            : "",
+        background:
+          status === "in_progress"
+            ? "linear-gradient(96deg, rgba(255, 255, 255, 0.20) -14.35%, rgba(255, 255, 255, 0.00) 93.71%)"
+            : "",
+      }}
+    >
+      <Blobs />
+      <div className="p-5">
+        <h4 className="tw-heading-4 mb-3">{name.toUpperCase()}</h4>
+        <p className="tw-paragraph font-bold mb-4 md:w-3/10">{subtitle}</p>
+
+        {name !== "Future features" && name !== "Past features" && (
           <p className="tw-paragraph mb-10">
             <span className="text-white/60">Milestone</span>{" "}
             {eta === "none" || !eta ? "" : eta}
           </p>
         )}
-        {elements.length > 1 && name !== "Future Features" && (
+        {elements.length > 1 && name !== "Future features" && (
           <div className=" ">
             <span className="px-2 py-1 w-4 text-sm leading-5 bg-white rounded-xl text-infinite">
               {elements.length - 1}
@@ -305,9 +442,10 @@ const Overlay: React.FC<{
     }
   }, [anchor, color]);
 
+  console.log(color, "color");
   return (
     <motion.div
-      className="fixed inset-0 overflow-auto z-[2000] bg-black/70 backdrop-blur-sm overflow-x-hidden"
+      className="fixed inset-0 overflow-auto z-[2000] bg-black/70 backdrop-blur-lg overflow-x-hidden"
       onClick={onClose}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -320,14 +458,26 @@ const Overlay: React.FC<{
         className="relative container-10 px-6 py-12 text-white"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="md:top-20 z-10 pr-0 md:pr-8 ">
-          <Link
-            className="link-primary text-white cursor-pointer top-20 hover:text-white/70 fixed"
+        <div className="text-right pointer-events-none sticky top-6 pr-6 md:top-20 z-10 md:pr-8">
+          <button
+            className="pointer-events-auto right-8 w-10 h-10 rounded-full border-none bg-black/17 backdrop-blur-2xl"
             onClick={onClose}
-            style={{ position: "fixed" }}
           >
-            <LinkArrowLeft /> Back to Roadmap
-          </Link>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M8 6.66688L12.6669 2L14 3.33312L9.33312 8L14 12.6669L12.6669 14L8 9.33312L3.33312 14L2 12.6669L6.66688 8L2 3.33312L3.33312 2L8 6.66688Z"
+                fill="#181818"
+              />
+            </svg>
+          </button>
+        </div>
+        <div className="md:top-20 z-10 pr-0 md:pr-8 ">
           {data && data[openAt] && (
             <div>
               <section className="my-24">
@@ -350,11 +500,12 @@ const Overlay: React.FC<{
                       return (
                         <MilestoneDetail
                           key={i}
-                          name={"Past Features"}
+                          name={milestone.milestone_id}
                           subtitle=""
                           overview={""}
                           eta={milestone.eta}
                           elements={milestone.elements}
+                          status={null}
                         />
                       );
                     }
@@ -362,11 +513,12 @@ const Overlay: React.FC<{
                       return (
                         <MilestoneDetail
                           key={i}
-                          name={"Future Features"}
+                          name={milestone.milestone_id}
                           subtitle=""
                           overview={""}
                           eta={milestone.eta}
                           elements={milestone.elements}
+                          status={null}
                         />
                       );
                     }
@@ -378,6 +530,7 @@ const Overlay: React.FC<{
                         overview={milestone.description}
                         eta={milestone.eta}
                         elements={milestone.elements}
+                        status={milestone.status}
                       />
                     );
                   })}
