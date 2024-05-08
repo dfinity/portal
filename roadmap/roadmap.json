@@ -123,7 +123,7 @@
       {
         "name": "orphans_past",
         "description": "Orphans from the past",
-        "milestone_id": "none",
+        "milestone_id": "Past features",
         "eta": "none",
         "elements": [
           {
@@ -434,7 +434,7 @@
       {
         "name": "orphans_future",
         "description": "Orphans from the future",
-        "milestone_id": "none",
+        "milestone_id": "Future features",
         "eta": "none",
         "elements": [
           {
@@ -535,7 +535,7 @@
           {
             "title": "Support of 1M canisters per subnet",
             "overview": "Allowing up to 1 million canisters to run on a subnet, up from the current 100K canisters.",
-            "description": "The current protocol implementation supports up to 100K canisters per subnet. This is not sufficient in the long term, for example, for dapp architectures that spawn a canister per user and want to grow to millions of users as they would require many of subnets just to host one dapp, while not hitting other subnet limitations such as compute or storage. The goal is to grow the supported number of canisters per subnet to around one million. This requires, among other things, revisiting the current architecture of the backing storage of canisters and how checkpointing the storage is done. A key idea is to differentiate between active and passive canisters, i.e., such that have been active in a given DKG interval and such that have not, respectively. For non-active canisters, processing done during checkpointing, such as writing the canister's backing file to SSD, can be skipped.",
+            "description": "The current protocol implementation supports up to around 100K canisters per subnet. This is not sufficient in the long term, for example, for dapp architectures that spawn a canister per user and want to grow to millions of users as they would require many subnets just to host one dapp, while not hitting other subnet limitations such as compute or storage. The goal is to grow the supported number of canisters per subnet to around one million. This requires, among other things, revisiting the current architecture of the backing storage of canisters and how checkpointing of the storage is done. A key idea is to differentiate between active and passive canisters, i.e., such that have been active in a given DKG interval and such that have not, respectively. For non-active canisters, processing done during checkpointing, such as writing the canister's backing file to SSD, can be skipped.",
             "proposal": "",
             "wiki": "",
             "docs": "",
@@ -1170,7 +1170,7 @@
       {
         "name": "orphans_past",
         "description": "Orphans from the past",
-        "milestone_id": "none",
+        "milestone_id": "Past features",
         "eta": "none",
         "elements": [
           {
@@ -1261,7 +1261,7 @@
       {
         "name": "orphans_future",
         "description": "Orphans from the future",
-        "milestone_id": "none",
+        "milestone_id": "Future features",
         "eta": "none",
         "elements": [
           {
@@ -1546,14 +1546,14 @@
       {
         "name": "orphans_past",
         "description": "Orphans from the past",
-        "milestone_id": "none",
+        "milestone_id": "Past features",
         "eta": "none",
         "elements": []
       },
       {
         "name": "orphans_future",
         "description": "Orphans from the future",
-        "milestone_id": "none",
+        "milestone_id": "Future features",
         "eta": "none",
         "elements": [
           {
@@ -1692,14 +1692,14 @@
       {
         "name": "orphans_past",
         "description": "Orphans from the past",
-        "milestone_id": "none",
+        "milestone_id": "Past features",
         "eta": "none",
         "elements": []
       },
       {
         "name": "orphans_future",
         "description": "Orphans from the future",
-        "milestone_id": "none",
+        "milestone_id": "Future features",
         "eta": "none",
         "elements": [
           {
@@ -1880,7 +1880,7 @@
       {
         "name": "orphans_past",
         "description": "Orphans from the past",
-        "milestone_id": "none",
+        "milestone_id": "Past features",
         "eta": "none",
         "elements": [
           {
@@ -2026,7 +2026,7 @@
       {
         "name": "orphans_future",
         "description": "Orphans from the future",
-        "milestone_id": "none",
+        "milestone_id": "Future features",
         "eta": "none",
         "elements": [
           {
@@ -2391,7 +2391,7 @@
       {
         "name": "orphans_past",
         "description": "Orphans from the past",
-        "milestone_id": "none",
+        "milestone_id": "Past features",
         "eta": "none",
         "elements": [
           {
@@ -2566,7 +2566,7 @@
       {
         "name": "orphans_future",
         "description": "Orphans from the future",
-        "milestone_id": "none",
+        "milestone_id": "Future features",
         "eta": "none",
         "elements": [
           {
@@ -2849,7 +2849,7 @@
       {
         "name": "orphans_past",
         "description": "Orphans from the past",
-        "milestone_id": "none",
+        "milestone_id": "Past features",
         "eta": "none",
         "elements": [
           {
@@ -2918,7 +2918,7 @@
       {
         "name": "orphans_future",
         "description": "Orphans from the future",
-        "milestone_id": "none",
+        "milestone_id": "Future features",
         "eta": "none",
         "elements": [
           {
@@ -3200,7 +3200,7 @@
       {
         "name": "orphans_past",
         "description": "Orphans from the past",
-        "milestone_id": "none",
+        "milestone_id": "Past features",
         "eta": "none",
         "elements": [
           {
@@ -3360,7 +3360,7 @@
       {
         "name": "orphans_future",
         "description": "Orphans from the future",
-        "milestone_id": "none",
+        "milestone_id": "Future features",
         "eta": "none",
         "elements": [
           {
@@ -3805,7 +3805,7 @@
       {
         "name": "orphans_past",
         "description": "Orphans from the past",
-        "milestone_id": "none",
+        "milestone_id": "Past features",
         "eta": "none",
         "elements": [
           {
@@ -4077,7 +4077,7 @@
       {
         "name": "orphans_future",
         "description": "Orphans from the future",
-        "milestone_id": "none",
+        "milestone_id": "Future features",
         "eta": "none",
         "elements": [
           {
