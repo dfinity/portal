@@ -319,6 +319,7 @@ const RoadmapPage: React.FC = () => {
             openAt={overlayOpenAt}
             data={data}
             anchor={overlayAnchor}
+            color={overlayColor}
           ></Overlay>
         )}
       </main>

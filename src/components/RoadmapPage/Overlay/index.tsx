@@ -228,8 +228,11 @@ const Overlay: React.FC<{
   openAt: number;
   data: RoadmapDomain[];
   anchor: number | null;
-}> = ({ onClose, openAt, data, anchor }) => {
+  color: string | null;
+}> = ({ onClose, openAt, data, anchor, color }) => {
   const overlayRef = useRef<HTMLDivElement>();
+
+  console.log(color)
 
   useEffect(() => {
     function onKeydown(e: KeyboardEvent) {
