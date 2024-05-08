@@ -9,25 +9,33 @@ import LinkArrowLeft from "../../Common/Icons/LinkArrowLeft";
 
 const Blobs: React.FC<{}> = ({}) => {
   return (
-    <div className="absolute inset-0 -z-1 pointer-events-none">
+    <div 
+      className="absolute inset-0 -z-1 pointer-events-none" 
+      style={{
+        '--rnd1': -1 + Math.random() * 2,
+        '--rnd2': -1 + Math.random() * 2,
+      } as React.CSSProperties}
+    >
       <i 
-        className="absolute top-0 left-0 w-[50vw] h-[50vw] -translate-x-1/2 -translate-y-1/2"
+        className="absolute top-0 left-0 w-[50vw] h-[50vw] animate-wiggle"
         style={{
           background: `radial-gradient(
             circle at 50% 50%, hsl(from var(--color) h s l) 0%, rgba(0, 0, 0, 0) 60%
           )`,
+          transform:  `translate(-50%, -50%) translateY(calc(var(--rnd1) * 50%))`,
         }}
       ></i>
 
       <i 
-        className="absolute bottom-0 right-0 w-[50vw] h-[50vw] translate-x-1/2 translate-y-1/2"
+        className="absolute bottom-0 right-0 w-[50vw] h-[50vw]"
         style={{
           background: `radial-gradient(
             circle at 50% 50%, hsl(from var(--color) h s l) 0%, rgba(0, 0, 0, 0) 60%
           )`,
+
+          transform:  `translate(50%, 50%) translateY(calc(var(--rnd2) * 50%))`,
         }}
       ></i>
-
     </div>
   );
 }
