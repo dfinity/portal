@@ -30,13 +30,15 @@ const milestoneComponent = (
 ) => {
   const style = { "--color": color } as React.CSSProperties;
   let wrapperClasses =
-    "snap-start text-white rounded-md shrink-1 grow-0 p-8 px-10 flex flex-col min-h-64 scroll-ml-[var(--offcut)]";
+    "snap-start text-white rounded-md shrink-0 grow-0 p-8 px-10 flex flex-col min-h-64 scroll-ml-[var(--offcut)]";
   const isOrphan =
     milestone.name === "orphans_past" || milestone.name === "orphans_future";
   if (isOrphan) {
     wrapperClasses += ` border-2 border-solid border-[var(--color)] order-opacity-20`;
   } else {
-    wrapperClasses += ` w-[450px] max-w-[80vw] border-2 border-solid border-[var(--color)]`;
+    wrapperClasses += ` border-2 border-solid border-[var(--color)]`;
+    style['width'] =`min(450px, 80vw)]`;
+    style['flex-basis'] = `min(450px, 80vw)`;
   }
 
   if (milestone.status === "in_progress") {
@@ -214,9 +216,9 @@ const RoadmapPage: React.FC = () => {
       <ShareMeta image="/img/shareImages/share-roadmap.jpeg"></ShareMeta>
 
       <main className={"w-full overflow-hidden bg-[#0a0023] text-white"}>
-        <section className="">
+        <section className="relative pb-[20vh] md:pb-10">
           <DarkHeroStyles bgColor="#0a0023"></DarkHeroStyles>
-          <div className="container-10 pt-12 mb-60 md:mb-52 md:pt-36 relative">
+          <div className="container-10 pt-12 mb-60 md:mb-52 md:pt-36 relative z-5">
             <div className="md:w-7/10">
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Roadmap</h1>
               <p className="tw-lead-sm md:tw-lead mb-0">
@@ -228,6 +230,9 @@ const RoadmapPage: React.FC = () => {
                 next few weeks.
               </p>
             </div>
+          </div>
+          <div className="absolute w-[50vmin] top-1/2 right-1/2 -translate-y-1/2 translate-x-[45vw] z-1">
+            <img className="block w-full" src="/img/roadmap/roadmap-viz.webp" alt="" />
           </div>
         </section>
 
