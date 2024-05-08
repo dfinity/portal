@@ -235,10 +235,13 @@ const MilestoneDetail: React.FC<{
       <div className="p-5">
         <h4 className="tw-heading-4 mb-3">{name.toUpperCase()}</h4>
         <p className="tw-paragraph font-bold mb-4 md:w-3/10">{subtitle}</p>
-        <p className="tw-paragraph mb-10">
-          <span className="text-white/60">Milestone</span>{" "}
-          {eta === "none" || !eta ? "" : eta}
-        </p>
+
+        {name !== "Future Features" && name !== "Past Features" && (
+          <p className="tw-paragraph mb-10">
+            <span className="text-white/60">Milestone</span>{" "}
+            {eta === "none" || !eta ? "" : eta}
+          </p>
+        )}
         {elements.length > 1 && name !== "Future Features" && (
           <div className=" ">
             <span className="px-2 py-1 w-4 text-sm leading-5 bg-white rounded-xl text-infinite">
@@ -250,7 +253,7 @@ const MilestoneDetail: React.FC<{
             </span>
           </div>
         )}
-        <p className="text-white/60 tw-paragraph mt-6">{overview}</p>
+        <p className="text-white/60 tw-paragraph mt-6 md:w-2/3">{overview}</p>
       </div>
       <div className="m-1">
         <div className="grid gap-1 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
@@ -280,6 +283,7 @@ const Overlay: React.FC<{
   color: string | null;
 }> = ({ onClose, openAt, data, anchor, color }) => {
   const overlayRef = useRef<HTMLDivElement>();
+
   useEffect(() => {
     function onKeydown(e: KeyboardEvent) {
       if (e.key === "Escape") {
@@ -303,7 +307,7 @@ const Overlay: React.FC<{
 
   return (
     <motion.div
-      className="fixed inset-0 overflow-auto z-[2000] bg-black/70 backdrop-blur-sm overflow-x-clip"
+      className="fixed inset-0 overflow-auto z-[2000] bg-black/70 backdrop-blur-sm overflow-x-hidden"
       onClick={onClose}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -316,10 +320,11 @@ const Overlay: React.FC<{
         className="relative container-10 px-6 py-12 text-white"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="md:top-20 z-10 pr-0 md:pr-8">
+        <div className="md:top-20 z-10 pr-0 md:pr-8 ">
           <Link
-            className="link-primary text-white cursor-pointer fixed top-20 hover:text-white/70"
+            className="link-primary text-white cursor-pointer top-20 hover:text-white/70 fixed"
             onClick={onClose}
+            style={{ position: "fixed" }}
           >
             <LinkArrowLeft /> Back to Roadmap
           </Link>
@@ -347,7 +352,7 @@ const Overlay: React.FC<{
                           key={i}
                           name={"Past Features"}
                           subtitle=""
-                          overview={"Features that have been completed."}
+                          overview={""}
                           eta={milestone.eta}
                           elements={milestone.elements}
                         />
@@ -359,7 +364,7 @@ const Overlay: React.FC<{
                           key={i}
                           name={"Future Features"}
                           subtitle=""
-                          overview={"Features that are yet to be completed."}
+                          overview={""}
                           eta={milestone.eta}
                           elements={milestone.elements}
                         />
