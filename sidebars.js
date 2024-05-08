@@ -575,6 +575,11 @@ const sidebars = {
               label: "Web apps",
               id: "developer-docs/security/web-app-development-security-best-practices",
             },
+            {
+              type: "doc",
+              label: "Important resources",
+              id: "developer-docs/security/security-best-practices-references",
+            },
           ],
         },
         {
