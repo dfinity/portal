@@ -11,7 +11,6 @@ import ShareMeta from "../components/Common/ShareMeta";
 import Overlay from "../components/RoadmapPage/Overlay";
 import { RootObject } from "../components/RoadmapPage/RoadmapTypes";
 
-
 import RightArrowIcon from "@site/static/img/svgIcons/rightArrowIcon.svg";
 
 const MotionLink = motion(Link);
@@ -24,14 +23,16 @@ function elementCount(milestoneElements: any[], status: string) {
 }
 
 const milestoneComponent = (
-  milestone: any, 
-  index: number, 
-  color: string, 
+  milestone: any,
+  index: number,
+  color: string,
   overlayTrigger = () => {}
 ) => {
   const style = { "--color": color } as React.CSSProperties;
-  let wrapperClasses = "snap-start text-white rounded-md shrink-0 grow-0 p-8 px-10 flex flex-col min-h-64 scroll-ml-[var(--offcut)]";
-  const isOrphan = milestone.name === "orphans_past" || milestone.name === "orphans_future";
+  let wrapperClasses =
+    "snap-start text-white rounded-md shrink-0 grow-0 p-8 px-10 flex flex-col min-h-64 scroll-ml-[var(--offcut)]";
+  const isOrphan =
+    milestone.name === "orphans_past" || milestone.name === "orphans_future";
   if (isOrphan) {
     wrapperClasses += ` border-2 border-solid border-[var(--color)] order-opacity-20`;
   } else {
@@ -43,7 +44,7 @@ const milestoneComponent = (
   }
 
   if (milestone.name === "orphans_past") {
-    wrapperClasses += ` order-1`;
+    wrapperClasses += ` past-card order-1`;
   } else {
     wrapperClasses += ` order-2`;
   }
@@ -61,8 +62,14 @@ const milestoneComponent = (
     >
       {isOrphan ? (
         <div className="grow flex flex-col justify-end">
-          <strong className="block text-[120px] font-light leading-none">{milestone.elements!.length}</strong>
-          <strong className="">{milestone.name === "orphans_past" ? "Past features" : "Future features"}</strong>
+          <strong className="block text-[120px] font-light leading-none">
+            {milestone.elements!.length}
+          </strong>
+          <strong className="">
+            {milestone.name === "orphans_past"
+              ? "Past features"
+              : "Future features"}
+          </strong>
         </div>
       ) : (
         <div className="flex min-h-full gap-20">
@@ -76,7 +83,8 @@ const milestoneComponent = (
               <p className="text-xs mb-0">
                 {milestone.eta && milestone.eta != "none" ? (
                   <span>
-                    <span className="opacity-35">Milestone</span> {milestone.eta}
+                    <span className="opacity-35">Milestone</span>{" "}
+                    {milestone.eta}
                   </span>
                 ) : (
                   <span>&nbsp;</span>
@@ -86,8 +94,10 @@ const milestoneComponent = (
             <p className="mb-0 mt-3">{milestoneName(milestone.name)}</p>
           </div>
           <div className="self-end">
-            <strong className="block text-[120px] font-light leading-none text-right">{milestone.elements!.length}</strong>
-            <strong>Feature{milestone.elements!.length > 1 ? 's' : ''}</strong>
+            <strong className="block text-[120px] font-light leading-none text-right">
+              {milestone.elements!.length}
+            </strong>
+            <strong>Feature{milestone.elements!.length > 1 ? "s" : ""}</strong>
           </div>
         </div>
       )}
@@ -111,7 +121,7 @@ function indexToColor(index: number, total: number, relI) {
   const relativeIndex = index / total;
   const hue = (relativeIndex * -hueRange + hueStart) % 360;
   /*if (!relI) {*/
-    return `hsl(${hue.toFixed(2)} 40% 25%)`;
+  return `hsl(${hue.toFixed(2)} 40% 25%)`;
   /*} else {
     return `hsl(${hue} ${30 + relI * 20}% ${25 - relI * 20}%)`;
   }*/
@@ -151,30 +161,43 @@ const RoadmapPage: React.FC = () => {
   }
 
   useEffect(() => {
-    const observer = new ResizeObserver((entries) => {
-      const rect = entries[0].contentRect;
-      scrollRefs.forEach((ref) => {
-        const controls = ref.current.parentElement.querySelectorAll(
-          "[data-slidecontrol]"
-        );
-        if (elementHasOverflown(ref.current)) {
-          controls.forEach((el: HTMLElement) => {
-            el.classList.remove("hidden");
-          });
-        } else {
-          controls.forEach((el: HTMLElement) => {
-            el.classList.add("hidden");
+    scrollRefs.forEach((ref) => {
+      if (ref.current) {
+        const pastCards = ref.current.getElementsByClassName("past-card");
+        if (pastCards.length > 0) {
+          ref.current.scrollBy({
+            left: pastCards[0].offsetWidth,
           });
         }
-      });
+      }
     });
-
-    observer.observe(document.documentElement);
-
-    return () => {
-      observer.unobserve(document.documentElement);
-    };
   }, []);
+
+  // useEffect(() => {
+  //   const observer = new ResizeObserver((entries) => {
+  //     const rect = entries[0].contentRect;
+  //     scrollRefs.forEach((ref) => {
+  //       const controls = ref.current.parentElement.querySelectorAll(
+  //         "[data-slidecontrol]"
+  //       );
+  //       if (elementHasOverflown(ref.current)) {
+  //         controls.forEach((el: HTMLElement) => {
+  //           el.classList.remove("hidden");
+  //         });
+  //       } else {
+  //         controls.forEach((el: HTMLElement) => {
+  //           el.classList.add("hidden");
+  //         });
+  //       }
+  //     });
+  //   });
+
+  //   observer.observe(document.documentElement);
+
+  //   return () => {
+  //     observer.unobserve(document.documentElement);
+  //   };
+  // }, []);
 
   return (
     <Layout
@@ -205,15 +228,15 @@ const RoadmapPage: React.FC = () => {
         <section className="-mt-52 md:-mt-32 relative  mb-40">
           {data.map((theme, indexTheme) => (
             <article key={theme.name} className="mt-20">
-              <header class="container-10">
+              <header className="container-10">
                 <h1 className="tw-heading-3">{theme.name}</h1>
                 <p className="tw-paragraph max-w-sm opacity-60">
                   {theme.description}
                 </p>
               </header>
 
-
-              <div className="
+              <div
+                className="
                 relative
                 after:content-['']
                 after:bg-[#0a0023]
@@ -222,23 +245,27 @@ const RoadmapPage: React.FC = () => {
                 after:h-[30px]
                 after:left-0
                 after:right-0
-              ">
-
+              "
+              >
                 <section
                   ref={scrollRefs[indexTheme]}
                   data-scroll={indexTheme}
                   aria-label="milestones"
                   className="flex gap-6 items-stretch overflow-x-auto snap-mandatory snap-x mt-8 pb-12 w-full scrollbar-hide box-border pl-[var(--offcut)] pr-[var(--offcut)]"
-                  style={{
-                    scrollbarWidth: "none",
-                    '--offcut': 'max(0rem, calc((100dvw - 1214px) / 2 + 50px))',
-                  } as React.CSSProperties}
+                  style={
+                    {
+                      scrollbarWidth: "none",
+                      "--offcut":
+                        "max(0rem, calc((100dvw - 1214px) / 2 + 50px))",
+                    } as React.CSSProperties
+                  }
                 >
                   {theme.milestones.map(
                     (milestone, index) =>
-                      milestone.elements.length > 0 && milestoneComponent(
-                        milestone, 
-                        index, 
+                      milestone.elements.length > 0 &&
+                      milestoneComponent(
+                        milestone,
+                        index,
                         indexToColor(
                           indexTheme,
                           data.length,
@@ -256,7 +283,7 @@ const RoadmapPage: React.FC = () => {
                   aria-label="prev milestone"
                 >
                   <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[130%] rotate-180">
-                    <RightArrowIcon className="w-10 h-10"/>
+                    <RightArrowIcon className="w-10 h-10" />
                   </span>
                 </button>
                 <button
@@ -266,7 +293,7 @@ const RoadmapPage: React.FC = () => {
                   aria-label="next milestone"
                 >
                   <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[130%]">
-                    <RightArrowIcon className="w-10 h-10"/>
+                    <RightArrowIcon className="w-10 h-10" />
                   </span>
                 </button>
               </div>
