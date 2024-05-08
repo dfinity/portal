@@ -753,8 +753,6 @@ const sidebars = {
               "developer-docs/daos/nns/staking-voting-rewards",
             ],
           },
-        ],
-        },
         "developer-docs/daos/nns/neurons-fund",
         {
           type: "category",
@@ -762,6 +760,8 @@ const sidebars = {
           items: [
             "developer-docs/daos/nns/proposal-requirements",
           ],
+        },
+	],
         },
         {
           type: "category",
