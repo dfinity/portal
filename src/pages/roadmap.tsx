@@ -106,8 +106,8 @@ const milestoneComponent = (
     wrapperClasses += ` border-2 border-solid border-[var(--color)] order-opacity-20`;
   } else {
     wrapperClasses += ` border-2 border-solid border-[var(--color)]`;
-    style['width'] =`min(450px, 80vw)]`;
-    style['flex-basis'] = `min(450px, 80vw)`;
+    style["width"] = `min(450px, 80vw)]`;
+    style["flex-basis"] = `min(450px, 80vw)`;
   }
 
   if (milestone.status === "in_progress") {
@@ -304,7 +304,11 @@ const RoadmapPage: React.FC = () => {
             </div>
           </div>
           <div className="absolute w-[50vmin] bottom-10 md:top-1/2 right-1/2 -translate-y-1/2 translate-x-1/2 md:-mt-15 md:translate-x-[45vw] z-0">
-            <img className="block w-full" src="/img/roadmap/roadmap-viz.webp" alt="" />
+            <img
+              className="block w-full"
+              src="/img/roadmap/roadmap-viz.webp"
+              alt=""
+            />
           </div>
         </section>
 
@@ -312,17 +316,16 @@ const RoadmapPage: React.FC = () => {
           {data.map((theme, indexTheme) => (
             <article key={theme.name} className="mt-20">
               <header className="container-10">
-                <h1 className="tw-heading-3 cursor-pointer" onClick={
-                  () => openOverlay(
-                    indexTheme,
-                    0, 
-                    indexToColor(
+                <h1
+                  className="tw-heading-3 cursor-pointer"
+                  onClick={() =>
+                    openOverlay(
                       indexTheme,
-                      data.length,
-                      0
+                      0,
+                      indexToColor(indexTheme, data.length, 0)
                     )
-                  )
-                }>
+                  }
+                >
                   {theme.name}
                   <i className="inline-block w-[.75em] h-[.75em] bg-white text-black rounded-full relative ml-8 top-1">
                     <RightArrowIcon className="w-6/10 h-6/10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
