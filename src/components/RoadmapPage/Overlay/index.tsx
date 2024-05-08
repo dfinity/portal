@@ -121,6 +121,8 @@ const docsIcon = (
   </svg>
 );
 
+const blobs = () => {}
+
 const MilestoneCard: React.FC<Element> = ({
   title,
   overview,
@@ -233,7 +235,6 @@ const Overlay: React.FC<{
 }> = ({ onClose, openAt, data, anchor, color }) => {
   const overlayRef = useRef<HTMLDivElement>();
 
-  console.log(color)
 
   useEffect(() => {
     function onKeydown(e: KeyboardEvent) {
@@ -255,6 +256,7 @@ const Overlay: React.FC<{
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       ref={overlayRef}
+      style={{ '--color': color }}
     >
       <div className="fixed inset-0"></div>
       <div
