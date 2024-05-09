@@ -507,6 +507,13 @@ const redirects = `
   /docs/current/developer-docs/daos/sns/integrating/index-integration /docs/current/developer-docs/daos/sns/launching/integrating
   /docs/current/developer-docs/daos/sns/integrating/frontend-integration /docs/current/developer-docs/daos/sns/launching/integrating
   /docs/current/developer-docs/integrations/sns/ /docs/current/developer-docs/daos/sns/overview
+  /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/overview /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview
+  /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/making-transactions /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/making-transactions
+  /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/using-ckbtc-in-dapps /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/using-ckbtc-in-dapps
+  /docs/current/developer-docs/multi-chain/ethereum/cketh/overview /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview
+  /docs/current/developer-docs/multi-chain/ethereum/cketh/making-transactions /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/making-transactions
+  /docs/current/developer-docs/multi-chain/ethereum/cketh/using-cketh-in-dapps /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/using-cketh-in-dapps
+
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
