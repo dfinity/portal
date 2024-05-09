@@ -5,6 +5,7 @@ import ExternalLinkIcon from "../../../../static/img/external-link.svg";
 import { RoadmapDomain, RoadmapItem } from "../RoadmapTypes";
 import LinkArrowLeft from "../../Common/Icons/LinkArrowLeft";
 import { motion, AnimatePresence } from "framer-motion";
+import { CardBlobs } from "@site/src/pages/roadmap";
 
 const Blobs: React.FC<{}> = ({}) => {
   return (
@@ -179,7 +180,8 @@ const MilestoneCard: React.FC<Element> = ({
         </header>
       </div>
       <p className="tw-paragraph-sm line-clamp-4 ">{overview}</p>
-      <div className="flex gap-2 pr-20 mt-16">
+
+      <div className="flex gap-2 pr-20 mt-2">
         {proposal && (
           <Link
             className="basis-10 w-10 grow-0 shrink-0 link-primary"
@@ -226,7 +228,9 @@ const MilestoneDetail: React.FC<{
   eta: string;
   elements: Element[];
   status: string;
-}> = ({ name, subtitle, overview, eta, elements, status }) => {
+  color: string | null;
+  color2: string | null;
+}> = ({ name, subtitle, overview, eta, elements, status, color, color2 }) => {
   const [expanded, setExpanded] = useState(false);
 
   if (name === "Past features") {
@@ -238,44 +242,11 @@ const MilestoneDetail: React.FC<{
         <Blobs />
         <div className="p-5">
           <h4
-            className="tw-heading-4 mb-3 cursor-pointer hover:text-white/70 select-none"
+            className="tw-heading-4 mb-3 flex justify-between cursor-pointer hover:text-white/70 select-none"
             onClick={() => setExpanded(!expanded)}
           >
-            {name.toUpperCase()}
+            {name.toUpperCase()} <span>{expanded ? "-" : "+"}</span>
           </h4>
-          {expanded && (
-            <AnimatePresence>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
-              >
-                <p className="tw-paragraph font-bold mb-4 md:w-3/10">
-                  {subtitle}
-                </p>
-
-                <p className="tw-paragraph mb-10">
-                  <span className="text-white/60">Milestone</span>{" "}
-                  {eta === "none" || !eta ? "" : eta}
-                </p>
-                {elements.length > 1 && (
-                  <div className=" ">
-                    <span className="px-2 py-1 w-4 text-sm leading-5 bg-white rounded-xl text-infinite">
-                      {elements.length - 1}
-                    </span>
-                    <span className="text-white">
-                      {" "}
-                      Completed topic{elements.length - 1 === 1 ? "" : "s"}
-                    </span>
-                  </div>
-                )}
-                <p className="text-white/60 tw-paragraph mt-6 md:w-2/3">
-                  {overview}
-                </p>
-              </motion.div>
-            </AnimatePresence>
-          )}
         </div>
         {expanded && (
           <AnimatePresence>
@@ -307,92 +278,68 @@ const MilestoneDetail: React.FC<{
       </article>
     );
   }
-
   if (name === "Future features") {
-    <article
-      id={name}
-      className={`border border-white/30 border-solid rounded-xl mb-30 relative`}
-    >
-      <Blobs />
-      <div className="p-5">
-        <h4 className="tw-heading-4 mb-3">{name.toUpperCase()}</h4>
-        <p className="tw-paragraph font-bold mb-4 md:w-3/10">{subtitle}</p>
-
+    return (
+      <article
+        id={name}
+        className={`border border-white/30 border-solid rounded-xl mb-30 relative`}
+      >
+        <Blobs />
+        <div className="p-5">
+          <h4 className="tw-heading-4 mb-3">{name.toUpperCase()}</h4>
+          {/* <p className="tw-paragraph font-bold mb-4 md:w-3/10">{subtitle}</p>
+     
         <p className="tw-paragraph mb-10">
           <span className="text-white/60">Milestone</span>{" "}
           {eta === "none" || !eta ? "" : eta}
         </p>
-        {elements.length > 1 && (
-          <div className=" ">
-            <span className="px-2 py-1 w-4 text-sm leading-5 bg-white rounded-xl text-infinite">
-              {elements.length - 1}
-            </span>
-            <span className="text-white">
-              {" "}
-              Completed topic{elements.length - 1 === 1 ? "" : "s"}
-            </span>
-          </div>
-        )}
-        <p className="text-white/60 tw-paragraph mt-6 md:w-2/3">{overview}</p>
-      </div>
-      <div className="m-1">
-        <div className="grid gap-1 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
-          {elements.map((element, i) => (
-            <MilestoneCard
-              key={i}
-              title={element.title}
-              overview={element.overview}
-              status={element.status}
-              forum={element.forum}
-              wiki={element.wiki}
-              docs={element.docs}
-              proposal={element.proposal}
-            />
-          ))}
+
+        <p className="text-white/60 tw-paragraph mt-6 md:w-2/3">{overview}</p>  */}
         </div>
-      </div>
-    </article>;
+        <div className="m-1">
+          <div className="grid gap-1 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
+            {elements.map((element, i) => (
+              <MilestoneCard
+                key={i}
+                title={element.title}
+                overview={element.overview}
+                status={element.status}
+                forum={element.forum}
+                wiki={element.wiki}
+                docs={element.docs}
+                proposal={element.proposal}
+              />
+            ))}
+          </div>
+        </div>
+      </article>
+    );
   }
   return (
     <article
       id={name}
       className={`border border-white/30 border-solid rounded-xl mb-30 relative`}
-      style={{
-        boxShadow:
-          status === "in_progress"
-            ? "0px 0px 42.6px 0px rgba(255, 255, 255, 0.52)"
-            : "",
-        background:
-          status === "in_progress"
-            ? "linear-gradient(96deg, rgba(255, 255, 255, 0.20) -14.35%, rgba(255, 255, 255, 0.00) 93.71%)"
-            : "",
-      }}
+      style={{ backgroundColor: status === "in_progress" ? color : "" }}
     >
+      {status === "in_progress" && <CardBlobs />}
       <Blobs />
-      <div className="p-5">
-        <h4 className="tw-heading-4 mb-3">{name.toUpperCase()}</h4>
-        <p className="tw-paragraph font-bold mb-4 md:w-3/10">{subtitle}</p>
-
-        {name !== "Future features" && name !== "Past features" && (
-          <p className="tw-paragraph mb-10">
-            <span className="text-white/60">Milestone</span>{" "}
-            {eta === "none" || !eta ? "" : eta}
-          </p>
-        )}
-        {elements.length > 1 && name !== "Future features" && (
-          <div className=" ">
-            <span className="px-2 py-1 w-4 text-sm leading-5 bg-white rounded-xl text-infinite">
-              {elements.length - 1}
-            </span>
-            <span className="text-white">
-              {" "}
-              Completed topic{elements.length - 1 === 1 ? "" : "s"}
-            </span>
+      <div className="p-5 relative z-3">
+        <div className="grid grid-cols-[6fr,10fr] gap-2">
+          <div>
+            <h4 className="tw-heading-4 mb-2">{name.toUpperCase()}</h4>
+            <p className="tw-paragraph mb-2">
+              <span className="text-white/60">Milestone</span>{" "}
+              {eta === "none" || !eta ? "" : eta}
+            </p>
+            <p className="tw-paragraph font-bold mb-2">{subtitle}</p>
           </div>
-        )}
-        <p className="text-white/60 tw-paragraph mt-6 md:w-2/3">{overview}</p>
+          <div>
+            {" "}
+            <p className="text-white/60 tw-paragraph ">{overview}</p>
+          </div>
+        </div>
       </div>
-      <div className="m-1">
+      <div className="m-1 relative z-3">
         <div className="grid gap-1 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
           {elements.map((element, i) => (
             <MilestoneCard
@@ -418,7 +365,8 @@ const Overlay: React.FC<{
   data: RoadmapDomain[];
   anchor: string | null;
   color: string | null;
-}> = ({ onClose, openAt, data, anchor, color }) => {
+  color2: string | null;
+}> = ({ onClose, openAt, data, anchor, color, color2 }) => {
   const overlayRef = useRef<HTMLDivElement>();
 
   useEffect(() => {
@@ -451,7 +399,7 @@ const Overlay: React.FC<{
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       ref={overlayRef}
-      style={{ "--color": color }}
+      style={{ "--color": color, "--color2": color2 }}
     >
       <div className="fixed inset-0"></div>
       <div
@@ -496,32 +444,6 @@ const Overlay: React.FC<{
                     return 0;
                   })
                   .map((milestone, i) => {
-                    if (milestone.name === "orphans_past") {
-                      return (
-                        <MilestoneDetail
-                          key={i}
-                          name={milestone.milestone_id}
-                          subtitle=""
-                          overview={""}
-                          eta={milestone.eta}
-                          elements={milestone.elements}
-                          status={null}
-                        />
-                      );
-                    }
-                    if (milestone.name === "orphans_future") {
-                      return (
-                        <MilestoneDetail
-                          key={i}
-                          name={milestone.milestone_id}
-                          subtitle=""
-                          overview={""}
-                          eta={milestone.eta}
-                          elements={milestone.elements}
-                          status={null}
-                        />
-                      );
-                    }
                     return (
                       <MilestoneDetail
                         key={i}
@@ -531,6 +453,8 @@ const Overlay: React.FC<{
                         eta={milestone.eta}
                         elements={milestone.elements}
                         status={milestone.status}
+                        color={color}
+                        color2={color2}
                       />
                     );
                   })}
