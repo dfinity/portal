@@ -324,7 +324,7 @@ const MilestoneDetail: React.FC<{
       {status === "in_progress" && <CardBlobs />}
       <Blobs />
       <div className="p-5 relative z-3">
-        <div className="grid grid-cols-[6fr,10fr] gap-2">
+        <div className="md:grid md:grid-cols-[6fr,10fr] gap-2">
           <div>
             <h4 className="tw-heading-4 mb-2">{name.toUpperCase()}</h4>
             <p className="tw-paragraph mb-2">
