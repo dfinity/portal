@@ -11,15 +11,25 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 ## Overview
 
-An issuer is a service or app that can issue a verifiable credential to a user. To become an issuer, your canister must implement the verifiable credential interface using the issuer API. The issuer API is used to issue verifiable credentials, while another API, the identity provider API, is used by the [relying party](relying-party.mdx) to communicate with Internet Identity. Internet Identity is used to relay information between the issuer and the relying party when a verifiable credential is requested for a user.
+An **issuer** is a service or app that can issue a verifiable credential to a user. To become an issuer, your canister must implement the verifiable credential interface using the issuer API. The issuer API is used to issue verifiable credentials, while another API, the identity provider API, is used to communicate with an identity provider such as Internet Identity. End-users communicate with the identity provider for authentication and to consent to being issued a verifiable credential. An identity provider is also used to relay information between the issuer and the [relying party](relying-party.mdx) when a verifiable credential is requested by the relying party.
+
+Internet Identity is used as the identity provider in this tutorial.
 
 ## Using the issuer API
 
-To use the issuer API, your canister must support four steps that are required to issue a verifiable credential.
+To use the issuer API, your canister must support four steps that are required to issue a verifiable credential:
+
+1. Obtain a consent message (API endpoint `vc_consent_message`): Receive a message of consent from identity provider to issue a user a verifiable credential.
+
+2. Implement a derivation origin (API endpoint `derivation_origin`): Configure an alternative origin URL that the identity provider may send the request from and still be considered valid.
+
+3. Prepare the credentials (API endpoint `prepare_credential`): Prepare the credentials for the requested user.
+
+4. Issue the credential (API endpoint `get_credential`): Verify the credential and officially issue it to the user.
 
 ### Step 1: Obtain a consent message (`vc_consent_message`)
 
-First, the user must send a consent message to the issuer using the `vc_consent_message` API endpoint. A consent message is an approval from the user to validate that they consent the issuing of a VC.
+First, the user must send a consent message to the issuer using the `vc_consent_message` API endpoint through the identity provider. A consent message is an approval from the user to validate that they consent to the issuing of a VC.
 
 An example implementation in Rust can be found below:
 
@@ -39,7 +49,7 @@ pub fn get_vc_consent_message_en(
 }
 ```
 
-If the response is an approval, the identity provider displays the consent message from `Icrc21ConsentInfo`.
+If the response is an approval, the identity provider returns the consent message to the issuer.
 
 ### Step 2: Implement a derivation origin (`derivation_origin`)
 
@@ -70,8 +80,7 @@ fn get_derivation_origin(_hostname: &str) -> Result<DerivationOriginData, Deriva
 ```
 
 :::info
-The returned derivation origin is subject to verification via
-`.well-known/ii-alternative-origins`, as described in the [feature-description](https://internetcomputer.org/docs/current/references/ii-spec#alternative-frontend-origins).
+The returned derivation origin is subject to verification via `.well-known/ii-alternative-origins`, as described in the [feature description](https://internetcomputer.org/docs/current/references/ii-spec#alternative-frontend-origins).
 :::
 
 ### Step 3: Prepare the credentials (`prepare_credential`)
@@ -98,18 +107,15 @@ fn prepare_credential_jwt(
 ```
 
 :::info
-The value of `prepared_context` is used to transfer information between the `prepare_credential` and `get_credential` steps. It is up to the issuer to decide on the content of this field since the issuer creates `prepared_context` and is the only entity that
-consumes it.
+The value of `prepared_context` is used to transfer information between the `prepare_credential` and `get_credential` steps. It is up to the issuer to decide on the content of this field since the issuer creates `prepared_context` and is the only entity that consumes it.
 
 For example, when using [canister signatures](https://internetcomputer.org/docs/current/references/ic-interface-spec#canister-signatures)
-`prepared_context` contains a time-stamped yet unsigned VC, for which the canister signature will be available through the `get_credential` call.
-
+`prepared_context` contains a time stamped and unsigned VC, for which the canister signature will be available through the `get_credential` call.
 :::
-
 
 ### Step 4: Issue the credential (`get_credential`)
 
-Lastly, the issuer must implement the `get_credential` API endpoint to issue the credential requested by the user. The issuer performs the same checks used to prepare the credentials, with an additional verify step to confirm that `prepared_context` is consistent with `prepare_credential`. If successful, the issuer returns the signed credential in JWS-format.
+Lastly, the issuer must implement the `get_credential` API endpoint to issue the credential requested by the user. The issuer performs the same checks used to prepare the credential, with an additional verify step to confirm that `prepared_context` is consistent with `prepare_credential`. If successful, the issuer returns the signed credential in JWS-format.
 
 An example implementation in Rust can be found below:
 
