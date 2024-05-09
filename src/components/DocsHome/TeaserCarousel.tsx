@@ -89,7 +89,7 @@ const CARDS: Array<CarouselCard> = [
   },
 ];
 
-export function TeaserCarousel({ cards = CARDS }: { cards: CarouselCard[] }) {
+export function TeaserCarousel({ cards = CARDS }: { cards?: CarouselCard[] }) {
   const swiperRef = useRef<SwiperClass>();
 
   return (

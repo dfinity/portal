@@ -70,9 +70,10 @@ const languagesTiles: TileDescriptor[] = [
     action: (
       <Link
         href="/docs/current/motoko/main/getting-started/motoko-introduction"
-        className="button button-ghost rounded-2xl w-20 button-with-icon"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to Motoko docs"
       >
+        <span className={"md:hidden"}>Go to Motoko docs</span>
         <LinkArrowRight />
       </Link>
     ),
@@ -92,9 +93,10 @@ const languagesTiles: TileDescriptor[] = [
     action: (
       <Link
         href="/docs/current/developer-docs/backend/rust/"
-        className="button button-ghost rounded-2xl w-20 button-with-icon"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to Rust docs"
       >
+        <span className={"md:hidden"}>Go to Rust docs</span>
         <LinkArrowRight />
       </Link>
     ),
@@ -114,9 +116,10 @@ const languagesTiles: TileDescriptor[] = [
     action: (
       <Link
         href="/docs/current/developer-docs/backend/typescript/"
-        className="button button-ghost rounded-2xl w-20 button-with-icon"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to TypeScript docs"
       >
+        <span className={"md:hidden"}>Go to TypeScript docs</span>
         <LinkArrowRight />
       </Link>
     ),
@@ -136,9 +139,10 @@ const languagesTiles: TileDescriptor[] = [
     action: (
       <Link
         href="/docs/current/developer-docs/backend/python/"
-        className="button button-ghost rounded-2xl w-20 button-with-icon"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to Python docs"
       >
+        <span className={"md:hidden"}>Go to Python docs</span>
         <LinkArrowRight />
       </Link>
     ),
@@ -158,9 +162,10 @@ const languagesTiles: TileDescriptor[] = [
     action: (
       <Link
         href="/docs/current/developer-docs/backend/solidity/"
-        className="button button-ghost rounded-2xl w-20 button-with-icon"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to Solidity docs"
       >
+        <span className={"md:hidden"}>Go to Solidity docs</span>
         <LinkArrowRight />
       </Link>
     ),
@@ -209,9 +214,10 @@ const frameworksTiles: TileDescriptor[] = [
     action: (
       <Link
         href="/docs/current/developer-docs/web-apps/frameworks/juno"
-        className="button button-ghost rounded-2xl w-20 button-with-icon"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to Juno docs"
       >
+        <span className={"md:hidden"}>Go to Juno docs</span>
         <LinkArrowRight />
       </Link>
     ),
@@ -257,9 +263,10 @@ const quickstartGuidesTiles: TileDescriptor[] = [
     action: (
       <Link
         href="/docs/current/developer-docs/getting-started/quickstart/react-quickstart"
-        className="button button-ghost rounded-2xl w-20 button-with-icon"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to React quickstart"
       >
+        <span className={"md:hidden"}>Go to React quickstart</span>
         <LinkArrowRight />
       </Link>
     ),
@@ -278,9 +285,10 @@ const quickstartGuidesTiles: TileDescriptor[] = [
     action: (
       <Link
         href="/docs/current/developer-docs/getting-started/quickstart/juno-quickstart"
-        className="button button-ghost rounded-2xl w-20 button-with-icon"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to Juno quickstart"
       >
+        <span className={"md:hidden"}>Go to Juno quickstart</span>
         <LinkArrowRight />
       </Link>
     ),
@@ -298,9 +306,9 @@ const Tile = ({ tile }: { tile: TileDescriptor }) => {
     <div
       className={`flex flex-col ${
         tile.isGhostTile
-          ? "bg-grey-200 border-grey-200"
+          ? "bg-grey-200 border-grey-200 hidden lg:block"
           : "bg-white/70 border-white"
-      } rounded-lg border border-solid p-4 h-[340px] justify-between`}
+      } rounded-lg border border-solid p-4 h-[360px] justify-between`}
     >
       <div className={"flex flex-col gap-4"}>
         <div className={"flex flex-row gap-4"}>
@@ -424,10 +432,12 @@ const DocsHomePage: FC = () => {
         <div
           className="
           grid
+          auto-cols-fr
           grid-rows-2
           grid-cols-1
-          sm:grid-cols-2 
-          md:grid-cols-5
+          sm:grid-cols-2
+          md:grid-cols-4
+          lg:grid-cols-5
           px-0
           gap-3
         "
@@ -446,9 +456,11 @@ const DocsHomePage: FC = () => {
         <div
           className="
           grid
+          auto-cols-fr
           grid-cols-1
           sm:grid-cols-2 
-          md:grid-cols-5
+          md:grid-cols-4
+          lg:grid-cols-5
           px-0
           gap-3
         "
@@ -467,9 +479,11 @@ const DocsHomePage: FC = () => {
         <div
           className="
           grid
+          auto-cols-fr
           grid-cols-1
-          sm:grid-cols-2 
-          md:grid-cols-5
+          sm:grid-cols-2
+          md:grid-cols-4
+          lg:grid-cols-5
           px-0
           gap-3
         "
