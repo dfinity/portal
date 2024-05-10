@@ -40,7 +40,7 @@
           },
           {
             "title": "Latency-aware ingress routing",
-            "overview": "Boundary nodes route ingress messages to one of a set of closeby nodes instead of a random node.",
+            "overview": "Boundary nodes route ingress messages to nodes with lower network distance in terms of lantecy instead of a random node.",
             "description": "Currently, Boundary Nodes route messages to random nodes of the target subnet of the message. Selecting the destination node of the message based on its \"distance\" in terms of network latency can help significantly reduce the user-perceived latency.",
             "forum": "",
             "proposal": "",
@@ -63,7 +63,7 @@
         "elements": [
           {
             "title": "Increase Stable Memory Limit to 500GiB",
-            "overview": "Increasing the stable memory limit of a canister to 500 GiB.",
+            "overview": "Increasing the stable memory limit of a canister to 500GiB.",
             "description": "This feature will increase the stable memory limit of a canister to 500GiB for all canisters, allowing canisters to hold more state. The API will remain unchanged. A single message, however, will not be able to write to more than 8GiB.",
             "forum": "https://forum.dfinity.org/t/increased-canister-smart-contract-memory/6148/128",
             "proposal": "",
@@ -171,7 +171,7 @@
           {
             "title": "Wasm-native stable memory",
             "overview": "Letting stable read and write operations directly access replicated memory, similar to how Wasm load and store operations access the the heap.",
-            "description": "The goal of introducing Wasm-native stable memory is to improve the performance of stable reads and writes by letting these operations directly access stable memory in the same way Wasm loads and stores access the Wasm heap. <br><br> This will make direct use of stable memory more practical and it will not require canister developers to make any changes to how they use stable memory.",
+            "description": "The goal of introducing Wasm-native stable memory is to improve the performance of stable reads and writes by letting these operations directly access stable memory in the same way Wasm loads and stores access the Wasm heap. This will make direct use of stable memory more practical and it will not require canister developers to make any changes to how they use stable memory.",
             "forum": "https://forum.dfinity.org/t/proposal-wasm-native-stable-memory/15966",
             "proposal": "https://dashboard.internetcomputer.org/proposal/88812",
             "wiki": "",
@@ -267,7 +267,7 @@
           {
             "title": "Composite queries",
             "overview": "Making queries composable so that a query can call other queries. Supported within a subnet initially.",
-            "description": "Canisters have two types of methods: updates and queries. In contrast to updates, queries are not composable. In other words, a query cannot call other queries. <br><br> A composite query is a new type of query that can call other queries. This feature will make it easier for developers to build scalable dapps that shard data across multiple canisters.",
+            "description": "Canisters have two types of methods: updates and queries. In contrast to updates, queries are not composable. In other words, a query cannot call other queries. A composite query is a new type of query that can call other queries. This feature will make it easier for developers to build scalable dapps that shard data across multiple canisters.",
             "forum": "https://forum.dfinity.org/t/proposal-composite-queries/15979",
             "proposal": "https://dashboard.internetcomputer.org/proposal/87599",
             "wiki": "",
@@ -309,7 +309,7 @@
           {
             "title": "Subnet Splitting MVP",
             "overview": "Subnet splitting allows a subnet and its canisters and state to be split into two subnets with minimal interruption of canisters on the subnet.",
-            "description": "The Internet Computer is designed to have unbounded capacity by scaling out to different subnet blockchains.  Each subnet, however, has a bounded capacity: It is limited in how many messages it can process and how much canister memory it can hold.  If a subnet becomes overloaded then the canisters on that subnet may become less responsive or unable to increase their memory usage.  <br><br> Subnet splitting aims to address such issues by providing functionality to split a single subnet into two subnets.  The MVP version can be viewed as a first step towards the vision of full subnet splitting layed out in the forum post linked below.  The goal is to have a fully functional and end to end verifiable process which consists of a series of NNS proposals.  Compared to full subnet splitting the MVP version cuts some corners in terms of automation and minmizing downtime but otherwise follows the same ideas so that the MVP version can be turned into full subnet splitting in future incremental steps.",
+            "description": "The Internet Computer is designed to have unbounded capacity by scaling out to different subnet blockchains.  Each subnet, however, has a bounded capacity: It is limited in how many messages it can process and how much canister memory it can hold.  If a subnet becomes overloaded then the canisters on that subnet may become less responsive or unable to increase their memory usage. Subnet splitting aims to address such issues by providing functionality to split a single subnet into two subnets.  The MVP version can be viewed as a first step towards the vision of full subnet splitting layed out in the forum post linked below.  The goal is to have a fully functional and end to end verifiable process which consists of a series of NNS proposals.  Compared to full subnet splitting the MVP version cuts some corners in terms of automation and minmizing downtime but otherwise follows the same ideas so that the MVP version can be turned into full subnet splitting in future incremental steps.",
             "forum": "https://forum.dfinity.org/t/long-term-r-d-subnet-splitting-proposal/9402/4",
             "proposal": "https://dashboard.internetcomputer.org/proposal/35672",
             "wiki": "",
@@ -323,7 +323,7 @@
           {
             "title": "Deterministic Time Slicing",
             "overview": "A single message execution can span multiple IC rounds. Important for canister upgrades or inherently long-lasting computations.",
-            "description": "Deterministic time slicing allows for long(er) running, multi-round computations by suspending the execution at the end of one round and resuming it in the next. <br><br> The feature is currently enabled on all application and verified application subnets. All messages except for queries are automatically sliced and executed in multiple rounds. The instruction limit for such messages has been increased from 5 billion instructions to 20 billion instructions. Further increases will follow after the \"Configurable Wasm Heap Limit\" feature ships.",
+            "description": "Deterministic time slicing allows for long(er) running, multi-round computations by suspending the execution at the end of one round and resuming it in the next. The feature is currently enabled on all application and verified application subnets. All messages except for queries are automatically sliced and executed in multiple rounds. The instruction limit for such messages has been increased from 5 billion instructions to 20 billion instructions. Further increases will follow after the \"Configurable Wasm Heap Limit\" feature ships.",
             "forum": "https://forum.dfinity.org/t/deterministic-time-slicing/10635",
             "proposal": "",
             "wiki": "",
@@ -378,7 +378,7 @@
           {
             "title": "Replica-signed queries",
             "overview": "With this feature replicas will start signing query responses. This allows users to verify that intermediaries, e.g., boundary nodes, did not tamper with the response.",
-            "description": "Regular queries on the IC are executed by a single replica. This feature will introduce signatures by the replicas, which will prevent dishonest intermediaries (such as boundary nodes) to change the content of a query response. <br><br> Signed query responses are also a precondition for the follow up feature called certified queries which will execute queries against a quorum comprising more than 1/3 of the subnet nodes. If all responses agree on the response payload and contain valid signatures one can conclude that the query response an authentic response relative to the IC's state.",
+            "description": "Regular queries on the IC are executed by a single replica. This feature will introduce signatures by the replicas, which will prevent dishonest intermediaries (such as boundary nodes) to change the content of a query response. Signed query responses are also a precondition for the follow up feature called certified queries which will execute queries against a quorum comprising more than 1/3 of the subnet nodes. If all responses agree on the response payload and contain valid signatures one can conclude that the query response an authentic response relative to the IC's state.",
             "forum": "https://forum.dfinity.org/t/feature-discussion-replica-signed-queries/21793",
             "proposal": "",
             "wiki": "",
@@ -453,7 +453,7 @@
           },
           {
             "title": "Small guaranteed-response messages",
-            "overview": "Extend canister messaging by an additional message type with the same guarantees as current messages but puts a tighter upper bound on the message size to allow for more messages that can be in flight at the same time.",
+            "overview": "Extend canister messaging by an additional message type with the same guarantees as current messages with a tighter upper bound on the message size to allow for more messages that can be in flight at the same time.",
             "description": "The current model of guaranteed responses for inter-canister messages based on an extension of the actor model has a few issues that lead to bad user experience. This is the second iteration towards implementing the broader strategy (as described in the motion proposal linked below).",
             "status": "future",
             "forum": "https://forum.dfinity.org/t/scalable-messaging-model/26920",
@@ -534,7 +534,7 @@
           },
           {
             "title": "Support of 1M canisters per subnet",
-            "overview": "Allowing up to 1 million canisters to run on a subnet, up from the current 100K canisters.",
+            "overview": "Allowing up to 1 million canisters on a subnet, up from the current 100K canisters.",
             "description": "The current protocol implementation supports up to around 100K canisters per subnet. This is not sufficient in the long term, for example, for dapp architectures that spawn a canister per user and want to grow to millions of users as they would require many subnets just to host one dapp, while not hitting other subnet limitations such as compute or storage. The goal is to grow the supported number of canisters per subnet to around one million. This requires, among other things, revisiting the current architecture of the backing storage of canisters and how checkpointing of the storage is done. A key idea is to differentiate between active and passive canisters, i.e., such that have been active in a given DKG interval and such that have not, respectively. For non-active canisters, processing done during checkpointing, such as writing the canister's backing file to SSD, can be skipped.",
             "proposal": "",
             "wiki": "",
@@ -563,8 +563,8 @@
           },
           {
             "title": "Configurable Wasm memory limit",
-            "overview": "Introduce explicit configurable Wasm heap limit. Exceeding the limit alerts the developer instead of bricking the canister when hitting the 4GiB limit.",
-            "description": "The Wasm heap of canisters is limited to 4GiB. The limit is fundamental and cannot be increased because of 32-bit memory addresses. If a canister uses all of the available heap space, it will start producing out-of-memory errors and may stop working, which could lead to data loss and bricking of the canister. The developer may not realize this until it is too late to fix the issue. <br><br> This feature aims to introduce an explicit Wasm heap limit that can be configured in the canister settings. The default value for this limit will be a conservative amount, such as 3GiB. If a canister tries to use more memory than the limit, it will receive an out-of-memory error. This will alert the developer to the potential memory issue and allow them to safely upgrade the canister to a version that uses less memory.",
+            "overview": "Introduce an explicitly configurable Wasm heap limit. Exceeding the limit alerts the developer instead of bricking the canister when hitting the 4GiB limit.",
+            "description": "The Wasm heap of canisters is limited to 4GiB. The limit is fundamental and cannot be increased because of 32-bit memory addresses. If a canister uses all of the available heap space, it will start producing out-of-memory errors and may stop working, which could lead to data loss and bricking of the canister. The developer may not realize this until it is too late to fix the issue. This feature aims to introduce an explicit Wasm heap limit that can be configured in the canister settings. The default value for this limit will be a conservative amount, such as 3GiB. If a canister tries to use more memory than the limit, it will receive an out-of-memory error. This will alert the developer to the potential memory issue and allow them to safely upgrade the canister to a version that uses less memory.",
             "forum": "https://forum.dfinity.org/t/proposal-configurable-wasm-heap-limit/17794",
             "proposal": "https://dashboard.internetcomputer.org/proposal/105322",
             "wiki": "",
@@ -577,7 +577,7 @@
           },
           {
             "title": "Canister control audit trail",
-            "overview": "Seamless audit trail of management actions on canisters (creation, update, deletion). Allows to trace the sequence of installed canisters versions to source code through a Wasm hash.",
+            "overview": "Seamless audit trail of management actions on canisters (creation, update, deletion). Allows to trace the sequence of installed canister versions to source code through a Wasm hash.",
             "description": "The current canister management architecture does not create a seamless audit trail of every change to a canister, such as creation and updates, by its controllers. This implies that there is no seamless audit trail of the code that has run on canisters. This feature addresses this issue by auditing every controller action performed on a canister and storing the associated metadata permanently in the subnet. I.e., all Wasm hashes of the canister's history are logged with timestamps and further metadata in a seamless audit trail. Using this feature and deterministic builds for canisters allows anyone to verify which code has been running at a given time in the canister.",
             "forum": "",
             "proposal": "",
@@ -644,7 +644,7 @@
           {
             "title": "Canister groups",
             "overview": "Guarantee collocation of canisters on the same subnet by adding them to canister groups. Groups of canisters are always moved together between subnets.",
-            "description": "Communication between canisters on the same subnet is significantly faster than between subnets.  Since inter-canister communication latency is less of a concern, one can scale dapps through multi-canister architectures, as long as the canisters are guaranteed to be collocated.  <br><br> Since upcoming load-balancing mechanisms need to move canisters between subnets, we need to avoid splitting up canisters that are part of the same dapp. Canister groups would allow a dapp developer to explicitly indicate which canisters \"belong\" together and which should always be located on the same subnet.",
+            "description": "Communication between canisters on the same subnet is significantly faster than between subnets.  Since inter-canister communication latency is less of a concern, one can scale dapps through multi-canister architectures, as long as the canisters are guaranteed to be collocated. Since upcoming load-balancing mechanisms need to move canisters between subnets, we need to avoid splitting up canisters that are part of the same dapp. Canister groups would allow a dapp developer to explicitly indicate which canisters \"belong\" together and which should always be located on the same subnet.",
             "forum": "https://forum.dfinity.org/t/canister-groups/16015",
             "proposal": "",
             "wiki": "",
@@ -786,8 +786,8 @@
           },
           {
             "title": "HTTPS outcalls V2",
-            "overview": "Additional feature for HTTPS outcalls: IPv4 support, single-node outcalls, and fire &amp; forget outcalls. Allows for reduced latencies and reduced cycle costs.",
-            "description": "HTTPS outcalls on ICP are a feature that allow smart contracts to interact with Web2 services based on the HTTP protocol. This feature extends the existing HTTPS outcalls with additional functionality that make them better applicable for multiple scenarios. Multiple new functionalities are envisioned to be implemented. <em>IPv4 support:</em> This requires certain ICP nodes to obtain IPv4 addresses and allows to make outcalls to a much broader range of services than only IPv6-enabled services. <em>Single-node outcalls:</em> Only one node in the subnet instead of all perform the outcall. Reduces security for improved performance for non-critical outcalls. <em>Fire &amp; forget outcalls:</em> Outcalls that are sent, while their response is not required and ignored, which is interesting for non-critical calls, e.g., sending push notifications to users.",
+            "overview": "Additional feature for HTTPS outcalls: IPv4 support, single-node outcalls, and fire & forget outcalls. Allows for reduced latencies and reduced cycle costs.",
+            "description": "HTTPS outcalls on ICP are a feature that allow smart contracts to interact with Web2 services based on the HTTP protocol. This feature extends the existing HTTPS outcalls with additional functionality that make them better applicable for multiple scenarios. Multiple new functionalities are envisioned to be implemented. IPv4 support: This requires certain ICP nodes to obtain IPv4 addresses and allows to make outcalls to a much broader range of services than only IPv6-enabled services. Single-node outcalls: Only one node in the subnet instead of all perform the outcall. Reduces security for improved performance for non-critical outcalls. Fire & forget outcalls: Outcalls that are sent, while their response is not required and ignored, which is interesting for non-critical calls, e.g., sending push notifications to users.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -904,7 +904,7 @@
           {
             "title": "Blob storage",
             "overview": "Storage of large amounts of data in a subnet using a new blob storage architecture with the cost of around 2x the SSD cost. More efficient and cheaper compared to regular storage on ICP.",
-            "description": "The storage currently available on ICP is full-featured RAM-like storage that can be arbitrarily read or written by canisters. This generality comes with a cost in terms of replication factor and protocol overhead and a corresponding price tag.<p/><p/> Many use cases can benefit from cheaper read-heavy storage where large objects of data can be written once and then only read or deleted (as a whole). The reduced capabilities of this kind of storage w.r.t. ICP current storage allow it to be realized with substantially less space overhead and thus for a more competitive price. The idea is to use erasure-coded blob storage that has a substantially reduced data replication as compared to today's ICP storage, while maintaining integrity and availability at the cost of increased overhead when reading the data.<p/></p> ICP can greatly benefit from the introduction of this kind of storage by fully utilizing the available physical storage of the nodes and thereby offering a much improved overall platform, potentially offering terabytes of additional storage per subnet in addition to the regular replicated storage. A canister author can choose which storage architecture to use for different parts of their use cases and thus benefit from reduced cycles cost and more storage capacity.",
+            "description": "The storage currently available on ICP is full-featured RAM-like storage that can be arbitrarily read or written by canisters. This generality comes with a cost in terms of replication factor and protocol overhead and a corresponding price tag. Many use cases can benefit from cheaper read-heavy storage where large objects of data can be written once and then only read or deleted (as a whole). The reduced capabilities of this kind of storage w.r.t. ICP current storage allow it to be realized with substantially less space overhead and thus for a more competitive price. The idea is to use erasure-coded blob storage that has a substantially reduced data replication as compared to today's ICP storage, while maintaining integrity and availability at the cost of increased overhead when reading the data. ICP can greatly benefit from the introduction of this kind of storage by fully utilizing the available physical storage of the nodes and thereby offering a much improved overall platform, potentially offering terabytes of additional storage per subnet in addition to the regular replicated storage. A canister author can choose which storage architecture to use for different parts of their use cases and thus benefit from reduced cycles cost and more storage capacity.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -1009,7 +1009,7 @@
         "elements": [
           {
             "title": "RPC canister for Ethereum & EVM integration",
-            "overview": "Communication integration of ICP with EVM blockchains via JSON RPC providers.",
+            "overview": "Integration of ICP with EVM blockchains via a canister that accesses JSON RPC providers. Works for Ethereum and other EVM chains with RPC providers.",
             "description": "This feature is about an RPC-based integration of the Internet Computer with EVM chains, initially targeting the Ethereum network, then also Ethereum L2s and other chains with Ethereum RPC providers. The integration builds a canister smart contract offering a subset of the EVM RPC API on chain, while itself connecting to multiple RPC providers and communicating with them. For security-critical queries multiple RPC providers can be queried and their responses must match unanimously in order to be considered a valid response to the caller of the canister API. This reduces trust in any single entity, thereby making the approach more decentralized.",
             "status": "in_progress",
             "forum": "",
@@ -1023,7 +1023,7 @@
           },
           {
             "title": "Threshold ECDSA signing latency & throughput improvements",
-            "overview": "Reducing the latency of threshold ECDSA signing operations by reducing the number of consensus rounds required through protocol improvements.",
+            "overview": "Reducing the latency of threshold ECDSA signing operations by reducing the number of required consensus rounds through protocol improvements.",
             "description": "The ICP's initial implementation of threshold ECDSA, also referred to as chain-key ECDSA, requires seven consensus rounds to compute a signature while consuming an available precomputed value (pre-signature). The protocol can be adapted to require fewer rounds for computing a signature, thus noticeably reducing signing latency. Also, the throughput for threshold signing is expected to increase as a byproduct of the optimizations performed. The optimizations will benefit all applications using chain-key ECDSA.",
             "status": "in_progress",
             "forum": "",
@@ -1036,8 +1036,8 @@
             "milestone_id": "Dilithium"
           },
           {
-            "title": "Chain-key ERC20 (ckERC20) tokens &amp; ckUSDC",
-            "overview": "A subset of Ethereum's ERC20 tokens on ICP in the form of \"twin tokens\" called ckERC20 (chain-key ERC20).",
+            "title": "Chain-key ERC20 (ckERC20) tokens & ckUSDC",
+            "overview": "A subset of Ethereum's ERC20 tokens on ICP in the form of \"twin tokens\" called ckERC20 (chain-key ERC20). ckUSDC is to be among the first ckERC20 tokens.",
             "description": "This feature established the infrastructure to bring a subset of Ethereum's ERC20 tokens over to the IC in the form of chain-key tokens, i.e., twin tokens of the original tokens on the Ethereum network. The implementation uses HTTPS outcalls to multiple Ethereum JSON RPC providers for reading from and writing to the Ethereum network. Threshold ECDSA signing (threshold ECDSA) is used for creating the required transactions on the Ethereum network in a completely trustless manner. USDC is the first envisioned ERC20 token that will be deployed on ICP as ckUSDC using this infrastructure.",
             "forum": "https://forum.dfinity.org/t/long-term-r-d-integration-with-the-ethereum-network/9382",
             "proposal": "",
@@ -1061,7 +1061,7 @@
         "elements": [
           {
             "title": "Threshold Schnorr signing",
-            "overview": "Threshold Schnorr support based on multiparty computation (MPC). Enables trustless integrations with the Bitcoin network using Schnorr-BIP340.",
+            "overview": "Threshold Schnorr signing support based on multiparty computation (MPC). Enables trustless integrations with the Bitcoin network using Schnorr-BIP340 for supporting inscriptions.",
             "description": "ICP already has a suite of threshold signing protocols for realizing threshold ECDSA signatures. Important use cases, however, require Schnorr-BIP340 threshold signatures. Examples for Schnorr-BIP340 are ordinals and other forms of inscriptions on the Bitcoin network.",
             "status": "in_progress",
             "eta": "",
@@ -1075,7 +1075,7 @@
           },
           {
             "title": "On-chain Bitcoin block headers",
-            "overview": "",
+            "overview": "Exposing an on-chain API to access all Bitcoin block headers to enable dapps to trustlessly access the full Bitcoin block content.",
             "description": "The current Bitcoin integration exposes the full UTXO state of the Bitcoin network on chain on a canister API. This is sufficient for many Bitcoin use cases, but not for the novel use cases of inscriptions, such as those using the BRC20 or Runes protocols. Those require access to certain parts of Bitcoin blocks, specifically the SegWit area, where the inscriptions are stored. Making all block headers available on chain through an API allows anyone to trustlessly verify any Bitcoin block obtained over an untrusted channel, e.g., through HTTPS outcalls to a block explorer. This allows for indexing Bitcoin ordinals in a completely decentralized and trustless manner fully on chain.",
             "status": "",
             "eta": "",
@@ -1112,7 +1112,7 @@
           },
           {
             "title": "Solana RPC canister",
-            "overview": "RPC canister connecting to Solana RPC providers to integrate with the Solana network.",
+            "overview": "RPC canister connecting to Solana RPC providers to integrate with the Solana network. Enables two-way communication with the Solana network.",
             "description": "Analogous to what has been done for Ethereum and EVM chains in general, this feature defines an RPC canister for Solana that allows for communicating with the Solana network, i.e., reading from and writing to the Solana blockchain. Using multiple RPC providers allows for reducing trust in any single entity, thereby making the approach more decentralized.",
             "forum": "",
             "proposal": "",
@@ -1238,7 +1238,7 @@
           },
           {
             "title": "Chain-key SOL (ckSOL) token",
-            "overview": "Solana's SOL token on ICP in the form of a \"twin token\" called ckSOL (chain-key SOL)",
+            "overview": "Solana's SOL token on ICP in the form of a \"twin token\" called ckSOL (chain-key SOL).",
             "description": "This feature brings Solana's SOL token over to the IC in the form of a chain-key token, i.e., a twin token of the original SOL token on the Solana network. The ckSOL token is important to the IC due to the potential liquidity it can bring over to the ecosystem. The initial implementation is done using HTTPS outcalls to multiple Solana RPC providers for communication with the Solana network. Chain-key EdDSA signing (using the Ed25519 elliptic curve) is used for trustlessly creating the required transactions for the Solana network.",
             "forum": "",
             "proposal": "",
@@ -1344,7 +1344,7 @@
           },
           {
             "title": "Threshold signing with substantially increased throughput",
-            "overview": "Considerably improving threshold signing throughput for threshold Schnorr &amp; threshold EdDSA, compared to the initial threshold ECDSA signing throughput.",
+            "overview": "Considerably improving threshold signing throughput for threshold Schnorr & threshold EdDSA, based on a new cryptographic protocol architecture.",
             "description": "Both threshold ECDSA and EdDSA protocols allow for substantial performance improvements by building upon an entirely new protocol architecture. For ECDSA, througput improvements of up to one to two orders of magnitude are expected, for EdDSA up to three orders of magnitude.",
             "status": "future",
             "forum": "",
@@ -1396,7 +1396,7 @@
           },
           {
             "title": "Ethereum and Bitcoin optimistic logging and settlement",
-            "overview": "Settling a fingerprint of a canister's state to high-replication blockchains such as the Bitcoin or Ethereum networks. The initial version is optimistic in that the settled value cannot be publicly verified.",
+            "overview": "Settling a fingerprint of a canister's state to ultra-high-replication blockchains such as the Bitcoin or Ethereum networks. The first version is optimistic in that the settled value cannot be publicly verified.",
             "description": "Both the Ethereum and Bitcoin networks have a substantially larger number of nodes amongst which consensus is executed than ICP subnets. For certain high-integrity use cases such as digital assets, regularly settling a state hash of a canister's state to one of of those networks establishes an untamperable record of the canister's state on those networks. This leverages the massive node distribution of those networks to assure the canister smart contract state integrity in addition to what ICP provides. The approach is optimistic in the sense that the settlement does not include a proof of the correct state being settled.",
             "status": "future",
             "forum": "",
@@ -1409,7 +1409,7 @@
           },
           {
             "title": "Native USDC integration through CCTP",
-            "overview": "Bringing USD Coin (USDC) natively to ICP via integration with Circle's CCTP.",
+            "overview": "Bringing USD Coin (USDC) natively to ICP via integration with Circle's CCTP (Cross-Chain Transfer Protocol).",
             "description": "A future step after bringing USDC to ICP as ckUSDC, i.e., as twin token from the Ethereum network, this feature is about a \"native\" integration through Circle's Cross-Chain Transfer Protocol (CCTP). This direct integration avoids one level of indirection of going through the Ethereum network and is the end goal for USDC integration on the Internet Computer.",
             "forum": "",
             "proposal": "",
@@ -1423,7 +1423,7 @@
           },
           {
             "title": "BTC ordinals indexer and inscriber",
-            "overview": "BTC ordinals indexer and inscriber running fully on chain on ICP. Adding a missing decentralized piece of infrastructure to the Bitcoin ecosystem to help them become more decentralized outside of the actual blockchain network.",
+            "overview": "BTC ordinals indexer and inscriber running fully on chain on ICP. Adding a missing decentralized piece of infrastructure to the Bitcoin ecosystem to help it become more decentralized.",
             "description": "BTC ordinals indexer and inscriber running fully on chain on ICP. Adding a missing decentralized piece of infrastructure to the Bitcoin ecosystem to help them become more decentralized outside of the actual blockchain network.",
             "status": "",
             "forum": "",
@@ -1464,7 +1464,7 @@
           },
           {
             "title": "Wasm SIMD instructions",
-            "overview": "SIMD (Single Instruction, Multiple Data) support in the Wasm execution engine for better performance of AI inference.",
+            "overview": "Deterministic SIMD (Single Instruction, Multiple Data) support in the Wasm execution engine for better performance of AI inference.",
             "description": "SIMD stands for Single Instruction, Multiple Data. It is a set of CPU instructions that allow executing multiple operations with a single instruction. The arithmetic operations used in AI can be expressed as SIMD instructions. This feature introduces deterministic SIMD support in the Wasm execution engine, leading to an expected multiple-times performance improvement of AI operations.",
             "status": "",
             "forum": "",
@@ -1499,8 +1499,8 @@
         "elements": [
           {
             "title": "Deterministic API for AI computations on GPU",
-            "overview": "All computations running on chain need to be deterministic because they are replicated on multiple nodes and go through consensus. This requirement also applies to AI computations performed on GPUs. The goal of this feature is to design and implement an API that smart contracts can use to run deterministic AI computations on GPUs.",
-            "description": "",
+            "overview": "API for smart contracts that allows them to run deterministic AI computations on GPUs. Requirement for GPU-based AI on chain.",
+            "description": "All computations running on chain need to be deterministic because they are replicated on multiple nodes and go through consensus. This requirement also applies to AI computations performed on GPUs. The goal of this feature is to design and implement an API that smart contracts can use to run deterministic AI computations on GPUs.",
             "status": "",
             "milestone_id": "Palladium",
             "forum": "",
@@ -1525,8 +1525,8 @@
           },
           {
             "title": "Public specification for GPU-enabled nodes",
-            "overview": "The ICP community needs to agree and adopt the hardware specification for replica nodes with GPU.",
-            "description": "The ICP community needs to agree and adopt the hardware specification for replica nodes with GPU.",
+            "overview": "The ICP community needs to agree and adopt the hardware specification for replica nodes with GPUs.",
+            "description": "The ICP community needs to agree and adopt the hardware specification for replica nodes with GPUs.",
             "status": "",
             "milestone_id": "Palladium",
             "forum": "",
@@ -1606,7 +1606,7 @@
         "elements": [
           {
             "title": "ICP integrates the vetKeys protocol",
-            "overview": "Implementing threshold key derivation to allow for threshold decryption and other use cases. Canisters can store end-to-end encrypted user data.",
+            "overview": "Implementing threshold key derivation to allow for threshold decryption and other use cases. Canisters can store end-to-end-encrypted user data.",
             "description": "Empower dapps to perform encryption, threshold decryption, and BLS signing on the IC by allowing canisters to call a threshold key derivation interface. This feature will expose canisters with a new threshold key derivation interface, which enables  users to securely obtain cryptographic keys from the Internet Computer. The keys are generated by the replicas of a subnet running a threshold protocol, which keeps the key encrypted at all times using a user public key so that not even the replicas can access it. Integrating this feature will enable canisters to store end-to-end encrypted user data (e.g., storage, messaging, social networks) without having to rely on browser storage for user-side secrets, as well as enabling transaction privacy within canisters (e.g., closed-bid auctions, front-running prevention).",
             "forum": "https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560",
             "proposal": "",
@@ -1621,8 +1621,8 @@
           },
           {
             "title": "User-space libraries and example dapps for vetKeys",
-            "overview": "Implementation of libraries that makes it easier for users and developers to use vetKeys technology and improve the security and privacy of dapps. Libraries should be complemented with example dapps and documentation explaining how they should be used in practice.",
-            "description": "",
+            "overview": "Implementation of libraries and examples that make it easier for users and developers to use vetKeys technology and improve the security and privacy of dapps.",
+            "description": "Implementation of libraries that make it easier for users and developers to use vetKeys technology and improve the security and privacy of dapps. Libraries should be complemented with example dapps and documentation explaining how they should be used in practice.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -1678,7 +1678,7 @@
           {
             "title": "SEV-SNP-enabled ECDSA subnet",
             "overview": "The threshold ECDSA signing and backup subnets are enabled with SEV-SNP to raise the protection level against data exfiltration attacks by entities with access to the nodes.",
-            "description": "ICP nodes currenly run in an operating mode where computations are not secured by a secure encvlave and where data stored in RAM is not encrypted. This provides opportunities for attackers, including dishonest node providers, to penetrate a node and get hold of secret data such as private keys and non-public user data. <p/> SEV-SNP is a security technology integrated in the CPUs used in the ICP nodes that allows for nodes securely attesting to other nodes or community-operated \"validators\" that they run the correct ICP software stack and secures the node by performing all computations in a secure enclave and encrypting all data that goes to RAM or storage. Enabling SEV-SNP in the setting of ICP nodes is challenging due to the complex security and availability requirements of ICP subnets and the involved key management, particularly w.r.t. software upgrades.",
+            "description": "ICP nodes currenly run in an operating mode where computations are not secured by a secure encvlave and where data stored in RAM is not encrypted. This provides opportunities for attackers, including dishonest node providers, to penetrate a node and get hold of secret data such as private keys and non-public user data. SEV-SNP is a security technology integrated in the CPUs used in the ICP nodes that allows for nodes securely attesting to other nodes or community-operated \"validators\" that they run the correct ICP software stack and secures the node by performing all computations in a secure enclave and encrypting all data that goes to RAM or storage. Enabling SEV-SNP in the setting of ICP nodes is challenging due to the complex security and availability requirements of ICP subnets and the involved key management, particularly w.r.t. software upgrades.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -1787,14 +1787,14 @@
         ]
       },
       {
-        "name": "Decentralized Access Logs and Metrics",
+        "name": "Decentralized access logs and metrics",
         "description": "This milestone establishes visibility into the Internet Computer's edge infrastructure by making aggregated API boundary node access logs publicly accessible. This provides developers with valuable insights into their dapps' usage patterns and facilitates the generation of user statistics, offering key information on traffic sources. To guarantee the integrity of these logs, the milestone focuses on leveraging trusted execution environments, specifically AMD SEV-SNP.",
         "milestone_id": "Cerium",
         "eta": "",
         "status": "future",
         "elements": [
           {
-            "title": "SEV-SNP-enabled API Boundary Nodes",
+            "title": "SEV-SNP-protected API Boundary Nodes",
             "overview": "Security for API boundary nodes is improved using trusted execution (AMD SEV-SNP), enabling anyone to attest that the correct software is running.",
             "description": "This feature aims to enhance security in the API boundary node through trusted execution, leveraging AMD SEV-SNP. This ensures that the software stack running on the API boundary nodes remains untampered and verifiable by anyone (through remote attestation). Consequently, API calls served by these nodes are shielded from access by the Node Providers, as well as boosting confidence in the accuracy and integrity of reported metrics.",
             "forum": "https://forum.dfinity.org/t/long-term-r-d-boundary-nodes-proposal/9401",
@@ -1902,7 +1902,7 @@
           {
             "title": "Custom Domain Names",
             "overview": "Custom domain names for canisters on ICP. DNS entry of domain redirects to boundary nodes.",
-            "description": "This feature enables custom domains on the Internet Computer, so users will not be restricted to using the <canister id>.ic0.app domains. Users can configure the DNS entries of their domain to redirect traffic to the boundary nodes and signal the boundary nodes of the canister to which the traffic should be forwarded. Boundary nodes automatically manage the required certificates for HTTPS.",
+            "description": "This feature enables custom domains on the Internet Computer, so users will not be restricted to using the canister_id.ic0.app domains. Users can configure the DNS entries of their domain to redirect traffic to the boundary nodes and signal the boundary nodes of the canister to which the traffic should be forwarded. Boundary nodes automatically manage the required certificates for HTTPS.",
             "forum": "https://forum.dfinity.org/t/custom-domains-for-ic0-app-community-consideration/6162",
             "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
             "wiki": "",
@@ -1978,7 +1978,7 @@
         "elements": [
           {
             "title": "Tooling for node provider self onboarding",
-            "overview": "Node provider onboarding through improved tooling. Better UX for node provider onboarding than using the command line.",
+            "overview": "Node provider onboarding through improved tooling and a GUI. Better UX for node provider onboarding than using the command line.",
             "description": "Providing a graphical front-end for the node provider onboarding process to allow for a more user-friendly and less technically complex onboarding experience.",
             "forum": "",
             "proposal": "",
@@ -1991,7 +1991,7 @@
           },
           {
             "title": "Subnet rental",
-            "overview": "Anyone can rent subnets created with possibly different decentralization properties than mainnet, have all subnet resources for themselves, and pay the full node provider remuneration including a markup as rent.",
+            "overview": "Anyone can rent subnets created with possibly different decentralization properties than mainnet, and have full control over the subnet's resources.",
             "description": "Subnet rental follows the idea of having the NNS create subnets that possibly have different decentralization properties than mainnet and allow tenants to rent them. For example, a for-rent subnet could have all its nodes located in one country, e.g., Switzerland. The deviation from ICPs usual decentralization properties may be interesting for a tenant to reap benefits such as regulatory compliance. The tenant of a rental subnet can use its resources alone without sharing with the public and needs to cover the full subnet costs in terms of node provider rewards, including a markup. Due to their different decentralization properties compared with mainnet, for-rent subnets need, much like sovereign subnets, special consideration w.r.t. inter-subnet communication with other subnets or ICP mainnet. See other features in this category for further details.",
             "forum": "",
             "proposal": "",
@@ -2000,18 +2000,6 @@
             "eta": "",
             "status": "in_progress",
             "is_community": true,
-            "in_beta": false
-          },
-          {
-            "title": "Non-NNS-approved API Boundary Nodes",
-            "overview": "API boundary nodes can operate without requiring NNS approval, allowing anyone to run their own ICP edge infrastructure.",
-            "description": "For optimal decentralization of the IC edge infrastructure, another feature focuses on decentralizing API boundary nodes under NNS control. Nonetheless, there exists a use case where API boundary nodes remain outside NNS control, enabling individuals to deploy API boundary nodes. This facilitates community-driven edge infrastructure for dapp users within the IC's subnets.",
-            "status": "future",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "is_community": false,
             "in_beta": false
           },
           {
@@ -2030,7 +2018,7 @@
           },
           {
             "title": "Certified queries",
-            "overview": "Enable certified queries by having boundary nodes send a query to multiple replicas and aggregating the signed responses. This will lead to better efficience compared to fully-replicated update calls, while providing comparable security properties.",
+            "overview": "Enable certified queries by having boundary nodes send a query to multiple replicas and aggregating the signed responses. Better efficiency than fully-replicated calls, and comparable security.",
             "description": "While query calls have very good performance, they only allow to provide the additional security benefits of subnet certifications when dealing with static assets (i.e., via certified variables). Certified queries will allow to secure all query calls (even for dynamic responses) by having the boundary nodes issuing the query to multiple replicas at once, aggregating their signed responses and sending that back to the client.",
             "forum": "",
             "proposal": "",
@@ -2159,8 +2147,8 @@
           },
           {
             "title": "Decentralized backup and recovery",
-            "overview": "Enabling decentralized backup and recovery of canisters. Recovered canisters are guaranteed not having been tampered with.",
-            "description": "Enabling decentralized backup and recovery of canisters. Recovered canisters are guaranteed not having been tampered with.",
+            "overview": "Enabling decentralized backup and recovery of canisters. Recovered canisters are guaranteed to not have been tampered with.",
+            "description": "Enabling decentralized backup and recovery of canisters. Recovered canisters are guaranteed to not have been tampered with.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -2214,7 +2202,7 @@
           {
             "title": "Decentralized virtual personhood validation",
             "overview": "Scalable, decentralized, virtual proof of personhood to distinguish people from machines.",
-            "description": "Being able to distinguish people from machines is important for a blockchain environment where people are not identified when onboarding. There are different ways how this can be achieved. Integrating proof of personhood with ICP will improve decentralization on the Internet Computer, offering greater voting power and rewards to real validated users as opposed to unknown entities. Users can also present the proof of personhood toward dapps, which can provide greater privileges and rewards. <p/><p/> As one option, virtual people parties are a scalable proof of personhood, whereby randomly assigned groups of users validate each other through interaction.",
+            "description": "Being able to distinguish people from machines is important for a blockchain environment where people are not identified when onboarding. There are different ways how this can be achieved. Integrating proof of personhood with ICP will improve decentralization on the Internet Computer, offering greater voting power and rewards to real validated users as opposed to unknown entities. Users can also present the proof of personhood toward dapps, which can provide greater privileges and rewards. As one option, virtual people parties are a scalable proof of personhood, whereby randomly assigned groups of users validate each other through interaction.",
             "forum": "https://forum.dfinity.org/t/long-term-r-d-people-parties-proof-of-human-proposal/9636",
             "proposal": "https://dashboard.internetcomputer.org/proposal/35668",
             "wiki": "",
@@ -2278,6 +2266,7 @@
         "description": "With this milestone, ICP offers the infrastructure and tooling to issue, share, and consume credentials in a privacy-preserving fashion. Users are in control of their credentials, giving them a self-sovereign digital identity. At the same time, new credential issuers, such as a KYC service, go live on ICP and will enable new use cases such as security tokens subject to financial regulations.",
         "milestone_id": "Iron",
         "eta": "2024-06-18",
+        "status": "in_progress",
         "elements": [
           {
             "title": "Verifiable credentials",
@@ -2692,7 +2681,7 @@
           {
             "title": "ZK-II (Zero-knowledge II)",
             "overview": "Cryptographically privacy-preserving II, based on vetKeys, that unconditionally prevents linkability of identities.",
-            "description": "",
+            "description": "Cryptographically privacy-preserving II, based on vetKeys, that unconditionally prevents linkability of identities.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -2719,8 +2708,8 @@
         "elements": [
           {
             "title": "Oisy",
-            "overview": "Shift Oisy's ownership model to a per-user canister. Under this change, the digital assets for each Oisy user will reside in a user-controlled canister.",
-            "description": "Shift Oisy's ownership model to a per-user canister. Under this change, the digital assets for each Oisy user will reside in a user-controlled canister.",
+            "overview": "Shift Oisy's ownership model to a canister-per-user model. Under this change, the digital assets for each Oisy user will reside in a user-controlled canister.",
+            "description": "Shift Oisy's ownership model to a canister-per-user model. Under this change, the digital assets for each Oisy user will reside in a user-controlled canister.",
             "status": "in_progress",
             "forum": "",
             "proposal": "",
@@ -2732,7 +2721,7 @@
           },
           {
             "title": "Signer standards in Oisy",
-            "overview": "Oisy is upgraded to support the signer standards. The benefit of signer standards is in fostering a vibrant and diverse ecosystem of signers and relying parties. Users can then safely transact with digital assets using their Oisy wallet and signer standards compatible dApps.",
+            "overview": "Oisy is upgraded to support the signer standards to foster a vibrant and diverse ecosystem of signers and relying parties. Users can then safely transact with digital assets using their Oisy wallet and signer standards compatible dApps.",
             "description": "Oisy is upgraded to support the signer standards. The benefit of signer standards is in fostering a vibrant and diverse ecosystem of signers and relying parties. Users can then safely transact with digital assets using their Oisy wallet and signer standards compatible dApps.",
             "status": "in_progress",
             "forum": "",
@@ -2859,6 +2848,19 @@
             "docs": "",
             "is_community": false,
             "in_beta": false
+          },
+          {
+            "title": "ICRC-7: Basic non-fungible token (NFT) standard",
+            "overview": "Basic non-fungible token (NFT) standard for the Internet Computer featuring batch APIs.",
+            "description": "ICRC-7 defines the basic NFT standard for the Internet Computer. ICRC-7 is a basic NFT standard for NFTs without a contained marketplace. The API is simple yet comprises batch functionality for higher throughput of operations for both query and update calls. This standard is expected to unify the NFT-related development on ICP and help clean up the fragmented NFT standards landscape.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "deployed",
+            "is_community": true,
+            "in_beta": false
           }
         ]
       },
@@ -2909,7 +2911,7 @@
           },
           {
             "title": "Trust Wallet integration",
-            "overview": "Integrating ICP with the widely-used Trust Wallet project. Can help adoption of ICP beyond the current audience.",
+            "overview": "Integrating ICP with the widely-used Trust Wallet project to facilitate adoption of ICP beyond the current audience.",
             "description": "Trust Wallet is a widely-used wallet integrating with a wide range of blockchain platforms. Integrating with Trust Wallet may help improve adoption of ICP. Integrating with Trust Wallet requires enabling the Trust Wallet Core library to sign ICP transactions, adding ICP to the Trust Wallet token repository, and providing a Rosetta node for them to access the ledger.",
             "forum": "",
             "proposal": "",
@@ -2948,21 +2950,8 @@
           },
           {
             "title": "ICRC-22 payment request formats",
-            "overview": "Standard for serializing payment requests for tokens on ICP as URL and thus also QR code.",
+            "overview": "Standard for expressing payment requests for tokens on ICP as URLs and thus also QR codes.",
             "description": "This standard defines the format of URLs for expressing the parameters required for making payments. The URLs can be expressed as a QR code to realize a simple visual channel between devices, e.g., a payment terminal and a user's mobile device.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false
-          },
-          {
-            "title": "ICRC-7: Basic non-fungible token (NFT) standard",
-            "overview": "Basic non-fungible token (NFT) standard for the Internet Computer featuring batch APIs.",
-            "description": "ICRC-7 defines the basic NFT standard for the Internet Computer. ICRC-7 is a basic NFT standard for NFTs without a contained marketplace. The API is simple yet comprises batch functionality for higher throughput of operations for both query and update calls. This standard is expected to unify the NFT-related development on ICP and help clean up the fragmented NFT standards landscape.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -3037,7 +3026,7 @@
           },
           {
             "title": "Fireblocks integration",
-            "overview": "An integration of the Internet Computer blockchain with the Fireblocks custody provider to simplify ICP for institutionals.",
+            "overview": "An integration of the Internet Computer blockchain with the Fireblocks custody provider to simplify ICP for institutions.",
             "description": "An integration of the Internet Computer blockchain with the Fireblocks custody provider to simplify ICP for institutionals.",
             "status": "",
             "forum": "",
@@ -3066,7 +3055,7 @@
     ]
   },
   {
-    "name": "Governance &amp; Tokenomics",
+    "name": "Governance & Tokenomics",
     "description": "The ICP has two kinds of built-in governance systems. The NNS is the DAO governing the ICP protocol. The SNS framework is a toolbox for creating DAOs that govern individual dapps. Both are open for everyone to participate and facilitate decentralized decision making. Tokenomics incentivise voting participation and ensure that DAO decisions are aligned with the long-term interests of the ICP and the governed dapps.",
     "milestones": [
       {
@@ -3078,7 +3067,7 @@
         "elements": [
           {
             "title": "Engagement platform for named neurons",
-            "overview": "Make information about named neurons’ voting behavior easily accessible for voters to make informed decisions who to follow.",
+            "overview": "Make information about named neurons’ voting behavior easily accessible for voters to make informed decisions whom to follow.",
             "description": "Named neurons can register in the NNS so that other neurons can find them and follow them on some proposal topics. While their names and the last few ballots can be found by their followers, additional context is often missing. This feature facilitates a more engaged community, where named neurons can share more information that can then be used by potential followers to make well-informed decisions. For example, this could include the (future) voting intentions of named neurons, whether they always intend to vote on certain topics and what values they generally support, some context on why the named neurons voted in a certain way and more accessible voting history of the named neurons.",
             "forum": "",
             "proposal": "",
@@ -3167,7 +3156,7 @@
           {
             "title": "NNS spam protection (remove financial incentive)",
             "overview": "Protecting the NNS against proposal spam by removing the financial incentive for such spam by allocating voting rewards differently.",
-            "description": "This roadmap item is based on the community proposal 80970. <br><br> In the current voting reward set-up, there is a financial incentive for spam because the overall reward pot is always handed out and by submitting governance spam propoals you can skew the voting reward allocation.  <br><br> This change removes this incentive by allocating voting rewards under the assumption that every neuron voted on everything.  <br><br> This change also includes moving the governance weight back to 20 and the tracking of allocated vs not allocated voting rewards.",
+            "description": "This roadmap item is based on the community proposal 80970. In the current voting reward set-up, there is a financial incentive for spam because the overall reward pot is always handed out and by submitting governance spam propoals you can skew the voting reward allocation. This change removes this incentive by allocating voting rewards under the assumption that every neuron voted on everything. This change also includes moving the governance weight back to 20 and the tracking of allocated vs not allocated voting rewards.",
             "forum": "https://forum.dfinity.org/t/reproposal-spam-prevention-convert-from-system-based-rewards-to-voter-based-rewards/15352/1",
             "proposal": "https://dashboard.internetcomputer.org/proposal/80970",
             "wiki": "",
@@ -3181,7 +3170,7 @@
           {
             "title": "Carbon Footprint and Sustainability Policy",
             "overview": "Conducting a carbon footprint / environmental impact assessment of ICP. Footprint of a subnet, source of electricity, total environmental cost of a tx on ICP.",
-            "description": "This roadmap item is based on the community proposal 55487. <br><br> Step 1: Conduct a carbon footprint / environmental impact assessment — either through internal resources or hiring an external consultant to answer basic questions about what the carbon footprint of running an IC Subnet is, where that electricity is sourced, and what the total cost per transaction is on the IC blockchain. Based on the learnings define more activities. <em>Update:</em> The Internet Computer Footprint Report is now available [here](https://assets.carboncrowd.io/reports/ICF.pdf). <br><br> Step 2: “Energy consumption” reporting panel to the IC Network Status dashboard.  Update: Power/Energy consumption is now reported in real time on the IC Dashboard homepage, as well as individually for given nodes, see example node [here](https://dashboard.internetcomputer.org/node/25p5a-3yzir-ifqqt-5lggj-g4nxg-v2qe2-vxw57-qkxtd-wjohn-kfbfp-bqe). Carbon Crowd also launched a [Sustainability Dashboard](https://app.carboncrowd.io/).",
+            "description": "This roadmap item is based on the community proposal 55487. Step 1: Conduct a carbon footprint / environmental impact assessment — either through internal resources or hiring an external consultant to answer basic questions about what the carbon footprint of running an IC Subnet is, where that electricity is sourced, and what the total cost per transaction is on the IC blockchain. Based on the learnings define more activities. Update: The Internet Computer Footprint Report is now available [here](https://assets.carboncrowd.io/reports/ICF.pdf). Step 2: “Energy consumption” reporting panel to the IC Network Status dashboard.  Update: Power/Energy consumption is now reported in real time on the IC Dashboard homepage, as well as individually for given nodes, see example node [here](https://dashboard.internetcomputer.org/node/25p5a-3yzir-ifqqt-5lggj-g4nxg-v2qe2-vxw57-qkxtd-wjohn-kfbfp-bqe). Carbon Crowd also launched a [Sustainability Dashboard](https://app.carboncrowd.io/).",
             "forum": "https://forum.dfinity.org/t/sustainability-nns-proposal/11976",
             "proposal": "https://dashboard.internetcomputer.org/proposal/55487",
             "wiki": "",
@@ -3223,7 +3212,7 @@
           {
             "title": "Restriction for SNS swap participation",
             "overview": "Constraining participation in decentralization swaps of SNSs based on geographic location. Includes custom disclaimers to be confirmed by users before participating.",
-            "description": "When an SNS is launched, it goes through a decentralization swap. During the swap, participants provide ICP and in return receive a share of the SNS DAO’s governance power in the form of SNS neurons. In the current design, swaps are open for anyone to participate. <br><br> Different projects in the community have requested a feature that allows SNSs to restrict participation in the swap by geographic location. In addition, this feature enables swap participants to be presented with a custom confirmation text that they need to confirm before being allowed to participate.",
+            "description": "When an SNS is launched, it goes through a decentralization swap. During the swap, participants provide ICP and in return receive a share of the SNS DAO’s governance power in the form of SNS neurons. In the current design, swaps are open for anyone to participate. Different projects in the community have requested a feature that allows SNSs to restrict participation in the swap by geographic location. In addition, this feature enables swap participants to be presented with a custom confirmation text that they need to confirm before being allowed to participate.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -3251,7 +3240,7 @@
           {
             "title": "Neurons' Fund Enhancements: Matched Funding",
             "overview": "Enhancing the Neuron's Fund, e.g., to scale with swap participation by the community or having a 10% cap on participation.",
-            "description": "Based on collected experience and community feedback from recent SNS launches and forum discussions, we propose four enhancements to the Community Fund framework: <br><br> Introduction of a ‘Matched Funding’ scheme: Instead of a fixed ICP amount, the fund’s contribution to SNS swaps should scale in line with direct participation, i.e., match the funding of the Neuron's Fund with the organic funding received during the SNS launch, allowing for a more accurate reflection of market signals. <br><br> Implementation of a 10% Participation Cap: To streamline adjustments when neurons opt out during SNS proposal voting, we suggest a cap in relationship to the totals funds available. This ensures the fund’s contribution to a single SNS never exceeds 10% of the total available funds at the proposal execution time. Consequently, this automatically adjusts the fund’s participation if neurons opt out. <br><br> Renaming of the ‘Community Fund’ to ‘Neurons’ Fund’: This change aims to clarify misconceptions about the fund. It emphasizes that the fund comprises neurons owned by private individuals who are exposing their maturity to promising SNS DAOs. It is suggested to release this cosmetic change next week. <br><br> Reduction of the Maximum Swap Duration: A potential fund contribution is tied up and cannot be utilized for other SNS launches for the duration of the swap. To prevent a potentially unsuccessful swap from blocking a fund contribution for an extended period, we propose shortening the maximum swap duration from the current 90 days to 14 days.",
+            "description": "Based on collected experience and community feedback from recent SNS launches and forum discussions, we propose four enhancements to the Community Fund framework: Introduction of a ‘Matched Funding’ scheme: Instead of a fixed ICP amount, the fund’s contribution to SNS swaps should scale in line with direct participation, i.e., match the funding of the Neuron's Fund with the organic funding received during the SNS launch, allowing for a more accurate reflection of market signals. Implementation of a 10% Participation Cap: To streamline adjustments when neurons opt out during SNS proposal voting, we suggest a cap in relationship to the totals funds available. This ensures the fund’s contribution to a single SNS never exceeds 10% of the total available funds at the proposal execution time. Consequently, this automatically adjusts the fund’s participation if neurons opt out. Renaming of the ‘Community Fund’ to ‘Neurons’ Fund’: This change aims to clarify misconceptions about the fund. It emphasizes that the fund comprises neurons owned by private individuals who are exposing their maturity to promising SNS DAOs. It is suggested to release this cosmetic change next week. Reduction of the Maximum Swap Duration: A potential fund contribution is tied up and cannot be utilized for other SNS launches for the duration of the swap. To prevent a potentially unsuccessful swap from blocking a fund contribution for an extended period, we propose shortening the maximum swap duration from the current 90 days to 14 days.",
             "forum": "",
             "proposal": "",
             "docs": "",
@@ -3278,7 +3267,7 @@
           {
             "title": "Node Provider Remuneration V2",
             "overview": "The remuneration scheme v2 improves on the original v1 scheme by reducing remuneration for regions having already many nodes and reducing also for additional nodes of a node provider.",
-            "description": "For the further growth of the IC network, the NNS agreed on a new replica hardware specification. The new specification is generic, i.e. not vendor specific. It is ready for upcoming ICP improvements. For example, it supports VM memory encryption and attestation which will further increase the security of dapps running on ICP. The new specification results in different captical expenses for the independent node providers running replica nodes. Consequently, a new NP reward structure (remuneration) is required. Based on feedback and discussion within the community, this remuneration is based on: — Higher rewards for the first nodes of a new NP in order to attract more NPs in an effort to improve ownership decentralization. — More refined rewards for nodes in new geographies, like South America, Africa, Asia and Australia, to stimulate further geographical decentralization. <br><br> IC wiki: https://wiki.internetcomputer.org/wiki/Node_Provider_Remuneration",
+            "description": "For the further growth of the IC network, the NNS agreed on a new replica hardware specification. The new specification is generic, i.e. not vendor specific. It is ready for upcoming ICP improvements. For example, it supports VM memory encryption and attestation which will further increase the security of dapps running on ICP. The new specification results in different captical expenses for the independent node providers running replica nodes. Consequently, a new NP reward structure (remuneration) is required. Based on feedback and discussion within the community, this remuneration is based on: — Higher rewards for the first nodes of a new NP in order to attract more NPs in an effort to improve ownership decentralization. — More refined rewards for nodes in new geographies, like South America, Africa, Asia and Australia, to stimulate further geographical decentralization. IC wiki: https://wiki.internetcomputer.org/wiki/Node_Provider_Remuneration",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -3364,7 +3353,7 @@
           {
             "title": "Periodic Confirmation of Neuron Followees",
             "overview": "Require neuron owners to confirm their neurons’ following settings periodically.",
-            "description": "This roadmap item is based on the community proposal 55651. <br><br> Caveat: A periodic reconfirmation of neuron following would presumably (at least initially) result in an active voting power of below 50% for non-governance topics. Thus, even if all voters voted, the system would have to wait for the end of the voting period, which is problematic in case of urgent updates (e.g. update of a subnet). This limitation needs to be mitigated.",
+            "description": "This roadmap item is based on the community proposal 55651. Caveat: A periodic reconfirmation of neuron following would presumably (at least initially) result in an active voting power of below 50% for non-governance topics. Thus, even if all voters voted, the system would have to wait for the end of the voting period, which is problematic in case of urgent updates (e.g. update of a subnet). This limitation needs to be mitigated.",
             "forum": "https://forum.dfinity.org/t/periodic-confirmation-of-neuron-followees/12109",
             "proposal": "https://dashboard.internetcomputer.org/proposal/55651",
             "docs": "",
@@ -3401,7 +3390,7 @@
           {
             "title": "Simplification of NNS neurons",
             "overview": "NNS neurons have different properties, such as dissolve delay and age. Some of these properties must be in a certain relation at all times. This feature is to abstract away more of these details from the users so that neurons are easier to understand.",
-            "description": "",
+            "description": "NNS neurons have different properties, such as dissolve delay and age. Some of these properties must be in a certain relation at all times. This feature is to abstract away more of these details from the users so that neurons are easier to understand.",
             "status": "future",
             "forum": "",
             "proposal": "",
@@ -3426,8 +3415,8 @@
           },
           {
             "title": "Manual overwriting of following-triggered votes",
-            "overview": "This feature enables manually (overwrite) voting throughout the entire voting period of governance proposals even when a neuron is following another neuron.",
-            "description": "This roadmap item is based on the community proposal 38985.",
+            "overview": "This feature enables manual (overwrite) voting throughout the entire voting period of governance proposals even when a neuron is following another neuron.",
+            "description": "This feature enables manual (overwrite) voting throughout the entire voting period of governance proposals even when a neuron is following another neuron. This roadmap item is based on the community proposal 38985.",
             "forum": "https://forum.dfinity.org/t/proposal-to-enable-manual-voting-throughout-the-entire-voting-period-of-governance-proposals/9815",
             "proposal": "https://dashboard.internetcomputer.org/proposal/38985",
             "wiki": "",
@@ -3441,7 +3430,7 @@
           {
             "title": "Improve staking user experience",
             "overview": "Simplify and make the ICP staking process self-explanatory in the NNS dapp to eliminate barriers of entry for first-time users.",
-            "description": "",
+            "description": "Simplify and make the ICP staking process self-explanatory in the NNS dapp to eliminate barriers of entry for first-time users.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -3468,7 +3457,7 @@
           {
             "title": "Maintain neurons’ voting history",
             "overview": "Keeping the voting history of all neurons for better transparency and accountability of ICP governance.",
-            "description": "",
+            "description": "Keeping the voting history of all neurons for better transparency and accountability of ICP governance.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -3481,7 +3470,7 @@
           {
             "title": "Private voting",
             "overview": "Private voting of neuron holders. This helps prevent leakage of information on how neurons voted to ensure that neuron holders can vote freely without fearing consequences.",
-            "description": "",
+            "description": "Private voting of neuron holders. This helps prevent leakage of information on how neurons voted to ensure that neuron holders can vote freely without fearing consequences.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -3489,19 +3478,6 @@
             "eta": "",
             "status": "future",
             "is_community": false,
-            "in_beta": false
-          },
-          {
-            "title": "Make proposals easier to understand",
-            "overview": "Easier-to-understand proposals, e.g., through an AI bot.",
-            "description": "Easier-to-understand proposals, e.g., through an AI bot. The details of whether and how this can be realized are still to be worked out. There are examples of other protocols on using AI to achieve this.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "",
-            "is_community": true,
             "in_beta": false
           },
           {
@@ -3519,7 +3495,7 @@
           {
             "title": "SNS cycles management",
             "overview": "Support better automation of top-up of cycles for SNS and SNS-managed canisters for better usability.",
-            "description": "",
+            "description": "Support better automation of top-up of cycles for SNS and SNS-managed canisters for better usability.",
             "status": "",
             "forum": "",
             "proposal": "",
@@ -3531,7 +3507,7 @@
           {
             "title": "Neuron fund phase II (end of investment)",
             "overview": "Addresses the end-of-investment phase of the Neuron's Fund.",
-            "description": "",
+            "description": "Addresses the end-of-investment phase of the Neuron's Fund.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -3544,7 +3520,7 @@
           {
             "title": "Hide 0 balances for SNS tokens/neurons",
             "overview": "Allow users to hide all projects from the list that they have 0 tokens or neurons in. This will make the UI cleaner, and provide a better overview of DAOs the user cares about.",
-            "description": "",
+            "description": "Allow users to hide all projects from the list that they have 0 tokens or neurons in. This will make the UI cleaner, and provide a better overview of DAOs the user cares about.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -3558,7 +3534,7 @@
           {
             "title": "Improve staking user experience",
             "overview": "Simplify and make the SNS staking process self-explanatory in the NNS dapp to eliminate barriers of entry for first-time users.",
-            "description": "",
+            "description": "Simplify and make the SNS staking process self-explanatory in the NNS dapp to eliminate barriers of entry for first-time users.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -3572,7 +3548,7 @@
           {
             "title": "SNS swap participation with additional tokens",
             "overview": "Allow users to participate in SNS decentralization swaps with different tokens than ICP, e.g., ckBTC or ckETH. Also a combination of tokens may be applicable.",
-            "description": "",
+            "description": "Allow users to participate in SNS decentralization swaps with different tokens than ICP, e.g., ckBTC or ckETH. Also a combination of tokens may be applicable.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -3585,7 +3561,7 @@
           {
             "title": "Standalone \"SNS\" DAO",
             "overview": "Allow creating a DAO using the SNS governance code, but without going through an NNS proposal, without NNS orchestration, and without the DAO canisters being deployed on the SNS subnet.",
-            "description": "",
+            "description": "Allow creating a DAO using the SNS governance code, but without going through an NNS proposal, without NNS orchestration, and without the DAO canisters being deployed on the SNS subnet.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -3598,7 +3574,7 @@
           {
             "title": "Simplified SNS life cycle",
             "overview": "Enhancements to the SNS life-cycle to improve the experience of SNS canister upgrades for SNS communities, e.g., through API versioning and better auditability of error messages on failed upgrades.",
-            "description": "",
+            "description": "Enhancements to the SNS life-cycle to improve the experience of SNS canister upgrades for SNS communities, e.g., through API versioning and better auditability of error messages on failed upgrades.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -3639,7 +3615,7 @@
           },
           {
             "title": "Canister logging",
-            "overview": "New APIs for writing and reading canister runtime logs.",
+            "overview": "New APIs for writing and reading canister runtime logs. The logs survive upgrades and traps and ensure developers are able to record key error data.",
             "description": "This allows a developer to store and retrieve runtime logs of canisters deployed to mainnet through a dedicated memory buffer. The logs survive upgrades and traps and ensure developers are able to record key error data.",
             "forum": "https://forum.dfinity.org/t/canister-logging/21300",
             "proposal": "",
@@ -3654,7 +3630,7 @@
           },
           {
             "title": "Cycles consumption insights",
-            "overview": "Give canister controllers insights on cycles consumption of their canisters.",
+            "overview": "Give canister controllers insights on cycles consumption of their canisters to help them optimize the cycles consumption of canisters.",
             "description": "Tracking down where cycles are consumed during the operation of a canister is currently a tedious job requiring manual efforts. This feature provides people who operate canisters insights into where cycles were spent. These insights can be used to optimize the cycles consumption of canisters.",
             "forum": "",
             "proposal": "",
@@ -3943,7 +3919,7 @@
           {
             "title": "Motoko Stable Regions",
             "overview": "Run-time-based stable memory data structures allocating memory in multiple different regions. Improves Motoko's stable memory support towards towards composable use cases.",
-            "description": "The current stable memory module in base has been \"experimental\" for a long time, and requires a more composable API to graduate from this status. <br><br> Stable regions address the problem that today's ExperimentalStableMemory module only provides a single, monolithic memory that makes it unsuitable for directly building composable software parts. <br><br> Stable regions permit a new API that supports composable use cases. <br><br> Stable regions also bring Motoko closer to parity with Rust canister development support today, by giving a run-time-system-based analogue of a special Rust library for stable data structures that allocates “pages” for them from stable memory in separate memory regions.",
+            "description": "The current stable memory module in base has been \"experimental\" for a long time, and requires a more composable API to graduate from this status. Stable regions address the problem that today's ExperimentalStableMemory module only provides a single, monolithic memory that makes it unsuitable for directly building composable software parts. Stable region permit a new API that supports composable use cases. Stable regions also bring Motoko closer to parity with Rust canister development support today, by giving a run-time-system-based analogue of a special Rust library for stable data structures that allocates “pages” for them from stable memory in separate memory regions.",
             "forum": "",
             "proposal": "https://github.com/dfinity/motoko/blob/113f9c72edf4ff36bcc6dacc892fdb2f454ac81d/design/StableRegions-20230209.md",
             "wiki": "",
@@ -4137,7 +4113,7 @@
           },
           {
             "title": "Verifiable canisters",
-            "overview": "Tools for devs, such as TLA+, to verify the correctness of their canisters.",
+            "overview": "Tools for devs, such as TLA+, to help them verify the correctness of their canisters.",
             "description": "Having canisters verifiable is crucial for gaining trust by users. One important aspect of verifiability is the use of formal methods, e.g., using TLA+ models as done for many of the DFINITY-authored canisters, with the goal of enhancing assurance of correctness of canisters. This feature intends to bring such techniques from the internal use in DFINITY to the wider community and allow for a more broad-based adoption of those techniques in the community.",
             "forum": "",
             "proposal": "",
@@ -4175,9 +4151,9 @@
             "in_beta": false
           },
           {
-            "title": "Candid improvements",
-            "overview": "This is a catch-all feature for improvements to Candid.",
-            "description": "As part of this feature, Candid receives some improvements to further improve its utility.",
+            "title": "Candid presentation-layer configuration",
+            "overview": "Candid configuration abstraction enabling type mapping from source language to destination language.",
+            "description": "A new abstraction to be added to Candid that allows configuring the mapping of types from source language to destination language.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -4202,7 +4178,7 @@
           },
           {
             "title": "Ingress deduplication",
-            "overview": "Enhancing ingress deduplication to use a larger 24-hour deduplication window for ingress messages compared to the current 5-minute time window. Provides stronger guarantees, for example for financial applications.",
+            "overview": "Enhancing ingress deduplication to use a larger 24-hour deduplication window for ingress messages compared to the current 5-minute window. Provides stronger guarantees, e.g., for financial applications.",
             "description": "Distributed systems like ICP face the problem that submitted messages may not get processed for various reasons, thus requiring them to be resubmitted. Deduplication is used to ensure resubmission does not lead to repeated processing, i.e., it ensures idempotency. The current deduplication mechanism of ingress messages submitted to a canister on ICP deduplicates messages only during a 5-minute time window. This is too small a time window for applications where value is at stake, e.g., financial applications. This feature improves the deduplication guarantees offered by ICP by realizing a much larger deduplication time window.",
             "forum": "",
             "proposal": "",
