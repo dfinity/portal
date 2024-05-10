@@ -50,7 +50,7 @@ const css = `
   }
 `;
 
-const CardBlobs: React.FC<{}> = ({}) => {
+export const CardBlobs: React.FC<{}> = ({}) => {
   /*
   background: `radial-gradient(
       circle at 50% 50%, hsl(from var(--color) h s calc(l + .2)) 0%, rgba(0, 0, 0, 0) 60%
@@ -62,7 +62,7 @@ const CardBlobs: React.FC<{}> = ({}) => {
     )`,
     transform: `translate(-50%, -50%)`,
     animation: `blob 10s infinite linear`,
-    'animation-delay': 'calc(var(--rnd1) * -10s)',
+    "animation-delay": "calc(var(--rnd1) * -10s)",
   };
 
   return (
@@ -77,27 +77,33 @@ const CardBlobs: React.FC<{}> = ({}) => {
     >
       <i
         className="absolute top-1/2 left-1/2 w-2/3 aspect-square"
-        style={{
-          "--rnd1": Math.random(),
-          "--rnd2": -1 + Math.random() * 2,
-          ...styleCommon,
-        } as React.CSSProperties}
+        style={
+          {
+            "--rnd1": Math.random(),
+            "--rnd2": -1 + Math.random() * 2,
+            ...styleCommon,
+          } as React.CSSProperties
+        }
       ></i>
       <i
         className="absolute bottom-1/2 right-1/2 w-2/3 aspect-square"
-        style={{
-          "--rnd1": Math.random(),
-          "--rnd2": -1 + Math.random() * 2,
-          ...styleCommon,
-        } as React.CSSProperties}
+        style={
+          {
+            "--rnd1": Math.random(),
+            "--rnd2": -1 + Math.random() * 2,
+            ...styleCommon,
+          } as React.CSSProperties
+        }
       ></i>
       <i
         className="absolute bottom-1/2 right-1/2 w-2/3 aspect-square"
-        style={{
-          "--rnd1": Math.random(),
-          "--rnd2": -1 + Math.random() * 2,
-          ...styleCommon,
-        } as React.CSSProperties}
+        style={
+          {
+            "--rnd1": Math.random(),
+            "--rnd2": -1 + Math.random() * 2,
+            ...styleCommon,
+          } as React.CSSProperties
+        }
       ></i>
     </div>
   );
@@ -111,7 +117,7 @@ const milestoneComponent = (
 ) => {
   let isActiveMilestone = false;
 
-  const style = { 
+  const style = {
     "--color": color[0],
     "--color2": color[1],
   } as React.CSSProperties;
@@ -239,7 +245,8 @@ const RoadmapPage: React.FC = () => {
   function openOverlay(
     at: number,
     anchor: number | null = null,
-    color: string | null = null
+    color: string | null = null,
+    color2: string | null = null
   ) {
     document.body.style.overflow = "hidden";
     setOverlayOpenAt(at);
@@ -336,7 +343,8 @@ const RoadmapPage: React.FC = () => {
                     openOverlay(
                       indexTheme,
                       0,
-                      indexToColor(indexTheme, data.length)
+                      indexToColor(indexTheme, data.length),
+                      indexToColor(indexTheme, data.length, 15)
                     )
                   }
                 >
@@ -376,10 +384,7 @@ const RoadmapPage: React.FC = () => {
                   }
                 >
                   {theme.milestones.map((milestone, index) => {
-                    const projectColor = indexToColor(
-                      indexTheme,
-                      data.length
-                    );
+                    const projectColor = indexToColor(indexTheme, data.length);
                     const projectColor2 = indexToColor(
                       indexTheme,
                       data.length,
@@ -387,12 +392,17 @@ const RoadmapPage: React.FC = () => {
                     );
                     return (
                       milestone.elements.length > 0 &&
-                      milestoneComponent(milestone, index, [projectColor, projectColor2], () =>
-                        openOverlay(
-                          indexTheme,
-                          milestone.milestone_id,
-                          projectColor
-                        )
+                      milestoneComponent(
+                        milestone,
+                        index,
+                        [projectColor, projectColor2],
+                        () =>
+                          openOverlay(
+                            indexTheme,
+                            milestone.milestone_id,
+                            projectColor,
+                            indexToColor(indexTheme, data.length, 15)
+                          )
                       )
                     );
                   })}
@@ -429,6 +439,7 @@ const RoadmapPage: React.FC = () => {
             data={data}
             anchor={overlayAnchor}
             color={overlayColor}
+            color2={indexToColor(overlayOpenAt, data.length, 15)}
           ></Overlay>
         )}
       </main>
