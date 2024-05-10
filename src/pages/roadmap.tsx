@@ -11,6 +11,7 @@ import ShareMeta from "../components/Common/ShareMeta";
 import Overlay from "../components/RoadmapPage/Overlay";
 import { RootObject } from "../components/RoadmapPage/RoadmapTypes";
 import RightArrowIcon from "@site/static/img/svgIcons/rightArrowIcon.svg";
+import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 
 const MotionLink = motion(Link);
 
@@ -123,7 +124,7 @@ const milestoneComponent = (
   } as React.CSSProperties;
 
   let wrapperClasses =
-    "milestone relative snap-start text-white rounded-md shrink-0 grow-0 p-8 px-10 flex flex-col min-h-64 scroll-ml-[var(--offcut)] cursor-pointer";
+    "milestone relative snap-start text-white rounded-md shrink-0 grow-0  p-4 p-5 md:p-8 md:px-10 flex flex-col min-h-64 scroll-ml-[var(--offcut)] cursor-pointer";
   const isOrphan =
     milestone.name === "orphans_past" || milestone.name === "orphans_future";
   if (isOrphan) {
@@ -313,29 +314,48 @@ const RoadmapPage: React.FC = () => {
           <DarkHeroStyles bgColor="#0a0023"></DarkHeroStyles>
           <div className="container-10 pt-12 mb-60 md:mb-52 md:pt-36 relative z-10">
             <div className="md:w-7/10">
-              <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Roadmap</h1>
-              <p className="tw-lead-sm md:tw-lead mb-0">
-                The DFINITY Foundation is committing R&D resources in various
-                domains of development with the intent of making the Internet
-                Computer blockchain more efficient, faster and easier to use.
-                This roadmap shows the status of many projects across the
-                Internet Computer stack, but not all - more to come over the
-                next few weeks.
+              <h1 className="tw-heading-3 md:tw-heading-2 mb-6">
+                Technical Roadmap
+              </h1>
+              <p className="tw-lead-sm md:tw-lead mb-6 md:w-8/10">
+                Explore the DFINITY Foundation's latest R&D roadmap and discover
+                our ongoing efforts to enhance the Internet Computer's
+                blockchain technology. Stay updated with our advancements in
+                efficiency, speed, and user-friendliness across the Internet
+                Computer stack.
               </p>
+              <Link
+                to="/"
+                className="link-primary text-white select-none hover:text-white/70"
+              >
+                Link to blog <LinkArrowUpRight />{" "}
+              </Link>
             </div>
           </div>
-          <div className="absolute w-[50vmin] bottom-10 md:top-1/2 right-1/2 -translate-y-1/2 translate-x-1/2 md:-mt-15 md:translate-x-[45vw] z-0">
-            <img
-              className="block w-full"
-              src="/img/roadmap/roadmap-viz.webp"
-              alt=""
-            />
+          {/* <div className="container-12 relative z-1 h-[200px] md:h-0 pointer-events-none">
+            <div className="absolute w-10/12 sm:w-5/12 left-1/2 translate-y-1/2 -translate-x-[50%] bottom-1/2 md:left-0 md:absolute md:w-5/12 md:bottom-0 md:translate-x-[130%] md:translate-y-2/12">
+              <img
+                src="/img/decentralized-ai/aiheader.svg"
+                alt="Start building on Internet Identity"
+                className="w-full max-w-none"
+                loading="lazy"
+              />
+            </div>
+          </div> */}
+          <div className="container-12 relative">
+            <div className="absolute w-[115%] sm:w-7/12 left-4/12 translate-y-5/12 -translate-x-[50%] bottom-1/2 md:left-0 md:w-6/12 md:bottom-0 md:translate-x-[100%] md:translate-y-1/12">
+              <img
+                className="w-full"
+                src="/img/roadmap/roadmap-viz.webp"
+                alt=""
+              />
+            </div>
           </div>
         </section>
 
-        <section className="-mt-52 md:-mt-32 relative  mb-40">
+        <section className="-mt-20 md:-mt-32 relative  mb-40">
           {data.map((theme, indexTheme) => (
-            <article key={theme.name} className="mt-20">
+            <article key={theme.name} className="mt-16 md:mt-20">
               <header className="container-10">
                 <h1
                   className="tw-heading-3 cursor-pointer"
@@ -349,7 +369,7 @@ const RoadmapPage: React.FC = () => {
                   }
                 >
                   {theme.name}
-                  <i className="inline-block w-[.75em] h-[.75em] bg-white text-black rounded-full relative ml-8 top-1">
+                  <i className="inline-block w-[.75em] h-[.75em] bg-white text-black rounded-full relative ml-3 md:ml-8 top-1">
                     <RightArrowIcon className="w-6/10 h-6/10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
                   </i>
                 </h1>

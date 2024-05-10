@@ -179,7 +179,7 @@ const MilestoneCard: React.FC<Element> = ({
           </div>
         </header>
       </div>
-      <p className="tw-paragraph-sm line-clamp-4 ">{overview}</p>
+      <p className="tw-paragraph-sm ">{overview}</p>
 
       <div className="flex gap-2 pr-20 mt-2">
         {proposal && (
@@ -335,7 +335,7 @@ const MilestoneDetail: React.FC<{
           </div>
           <div>
             {" "}
-            <p className="text-white/60 tw-paragraph ">{overview}</p>
+            <p className="text-white/60 tw-paragraph md:mr-9">{overview}</p>
           </div>
         </div>
       </div>
@@ -428,7 +428,7 @@ const Overlay: React.FC<{
         <div className="md:top-20 z-10 pr-0 md:pr-8 ">
           {data && data[openAt] && (
             <div>
-              <section className="my-24">
+              <section className="my-12 md:my-24">
                 <h2 className="tw-heading-3  font-black md:tw-heading-2 md:w-8/10">
                   {data[openAt].name.toUpperCase()}
                 </h2>
