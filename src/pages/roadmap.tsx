@@ -1,6 +1,5 @@
 import Link from "@docusaurus/Link";
 import roadmapData from "@site/.docusaurus/roadmap-data/default/roadmap-data.json";
-
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import { AnimatePresence, motion } from "framer-motion";
@@ -8,8 +7,9 @@ import React, { RefObject, useState, useEffect } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import ShareMeta from "../components/Common/ShareMeta";
-import Overlay from "../components/RoadmapPage/Overlay";
+import Overlay, { DeployedIcon } from "../components/RoadmapPage/Overlay";
 import { RootObject } from "../components/RoadmapPage/RoadmapTypes";
+import BlobGradient from "@site/static/img/gradientBlurredCircle.webp";
 import RightArrowIcon from "@site/static/img/svgIcons/rightArrowIcon.svg";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 
@@ -34,7 +34,7 @@ const css = `
       transform: rotate(360deg) translateY(-50%) scale(calc(.5 + var(--rnd1) * .5));
     }
   }
-  .blobs {
+  .blobs:hover {
     transform: scale(1.1);
     filter: blur(20px);
     transition: 600ms transform cubic-bezier(0.3, 0.7, 0, 1), 600ms filter cubic-bezier(0.3, 0.7, 0, 1);
@@ -159,15 +159,28 @@ const milestoneComponent = (
     >
       {isActiveMilestone && <CardBlobs></CardBlobs>}
       {isOrphan ? (
-        <div className="grow flex flex-col justify-end">
-          <strong className="block text-[120px] font-light leading-none">
-            {milestone.elements!.length}
-          </strong>
-          <strong>
-            {milestone.name === "orphans_past"
-              ? "Past features"
-              : "Future features"}
-          </strong>
+        <div
+          className={`grow flex flex-col ${
+            milestone.name === "orphans_past"
+              ? "justify-between"
+              : "justify-end"
+          } md:justify-end`}
+        >
+          {milestone.name === "orphans_past" && (
+            <div className="w-8 ml-auto mr-0 mt-1 md:mt-0">
+              <DeployedIcon />
+            </div>
+          )}
+          <div>
+            <strong className="block text-[120px] font-light leading-none">
+              {milestone.elements!.length}
+            </strong>
+            <strong>
+              {milestone.name === "orphans_past"
+                ? "Past features"
+                : "Future features"}
+            </strong>
+          </div>
         </div>
       ) : (
         <div className="flex min-h-full gap-8 md:gap-20 relative">
@@ -353,12 +366,12 @@ const RoadmapPage: React.FC = () => {
           </div>
         </section>
 
-        <section className="-mt-20 md:-mt-32 relative  mb-40">
+        <section className="-mt-20 md:-mt-32 relative  mb-28 md:mb-40">
           {data.map((theme, indexTheme) => (
             <article key={theme.name} className="mt-16 md:mt-20">
               <header className="container-10">
                 <h1
-                  className="tw-heading-3 cursor-pointer"
+                  className="tw-heading-3 cursor-pointer hover:opacity-75"
                   onClick={() =>
                     openOverlay(
                       indexTheme,
@@ -369,11 +382,11 @@ const RoadmapPage: React.FC = () => {
                   }
                 >
                   {theme.name}
-                  <i className="inline-block w-[.75em] h-[.75em] bg-white text-black rounded-full relative ml-3 md:ml-8 top-1">
+                  <i className="inline-block w-[.75em] h-[.75em] bg-white text-black rounded-full relative ml-2 md:ml-8 top-1">
                     <RightArrowIcon className="w-6/10 h-6/10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
                   </i>
                 </h1>
-                <p className="tw-paragraph max-w-sm opacity-60">
+                <p className="tw-paragraph max-w-2xl opacity-60">
                   {theme.description}
                 </p>
               </header>
@@ -394,7 +407,7 @@ const RoadmapPage: React.FC = () => {
                   ref={scrollRefs[indexTheme]}
                   data-scroll={indexTheme}
                   aria-label="milestones"
-                  className="flex gap-6 items-stretch overflow-x-auto snap-mandatory snap-x pt-10 pb-20 -mb-2 w-full scrollbar-hide box-border pl-[var(--offcut)] pr-[var(--offcut)]"
+                  className="flex gap-2 md:gap-6 items-stretch overflow-x-auto snap-mandatory snap-x pt-10 pb-20 -mb-2 w-full scrollbar-hide box-border pl-[var(--offcut)] pr-[var(--offcut)]"
                   style={
                     {
                       scrollbarWidth: "none",
@@ -451,6 +464,102 @@ const RoadmapPage: React.FC = () => {
               </div>
             </article>
           ))}
+        </section>
+        <section className="text-white relative mb-48 z-1">
+          <AnimateSpawn
+            el={motion.img}
+            variants={transitions.fadeIn}
+            src={BlobGradient}
+            alt=""
+            className="max-w-none w-[1200px] md:w-[1200px] absolute top-[-200px] md:top-[-200px] left-1/2 -translate-x-1/2 z-[-1] !opacity-50"
+          />
+          <AnimateSpawn
+            className="z-[2] container-12 text-center max-w-[740px] mb-12 md:mb-16 "
+            variants={transitions.container}
+          >
+            <motion.h2
+              className="tw-heading-3 md:tw-heading-60 mb-3 md:mb-8"
+              variants={transitions.item}
+            >
+              Community engagement
+            </motion.h2>
+            <motion.p
+              className="tw-lead-sm md:tw-lead mb-8"
+              variants={transitions.item}
+            ></motion.p>
+            <MotionLink
+              variants={transitions.item}
+              className="button-outline-white"
+              href="https://forum.dfinity.org/t/update-on-the-ic-roadmap-july-2022-summary/14615"
+            >
+              Join the conversation
+            </MotionLink>
+            <p className="md:tw-lead tw-lead-sm text-center text-white mt-6">
+              Vestibulum id ligula porta felis euismod semper. Cras mattis
+              consectetur purus sit amet fermentum. Vestibulum id ligula porta
+              felis euismod semper. Cras mattis consectetur purus sit amet
+              fermentum.
+            </p>
+          </AnimateSpawn>
+          <AnimateSpawn
+            className=" z-[2] container-12 text-black flex flex-col gap-2 md:flex-row md:items-start md:gap-5"
+            variants={transitions.container}
+          >
+            <motion.div
+              variants={transitions.item}
+              className="px-8 py-12 backdrop-blur-2xl bg-white-80 rounded-xl border-white border-solid border text-center flex-1"
+            >
+              <h3 className="tw-lead-lg md:tw-title-sm">
+                Community submissions
+              </h3>
+
+              <p className="tw-paragraph-sm mb-3 text-black-60">
+                What features would improve your experience on the Internet
+                Computer?
+              </p>
+              <Link
+                className="link-external"
+                href="https://forum.dfinity.org/t/update-on-the-ic-roadmap-july-2022-summary/14615"
+              >
+                Submit your suggestions
+              </Link>
+            </motion.div>
+            <motion.div
+              variants={transitions.item}
+              className="px-8 py-12 backdrop-blur-2xl bg-white-80 rounded-xl border-white border-solid border text-center flex-1 md:mt-30"
+            >
+              <h3 className="tw-lead-lg md:tw-title-sm">Events and news</h3>
+              <p className="tw-paragraph-sm mb-3 text-black-60">
+                Join live sessions with R&D to get informed about the upcoming
+                technical proposals and contributions to the Internet Computer
+                roadmap.
+              </p>
+              <Link
+                className="link-external"
+                href="https://dfinity.org/events-and-news"
+              >
+                See events
+              </Link>
+            </motion.div>
+            <motion.div
+              variants={transitions.item}
+              className="px-8 py-12 backdrop-blur-2xl bg-white-80 rounded-xl border-white border-solid border text-center flex-1 md:mt-10"
+            >
+              <h3 className="tw-lead-lg md:tw-title-sm">Developer grants</h3>
+              <p className="tw-paragraph-sm mb-3 text-black-60">
+                Do you have innovative ideas for building on the Internet
+                Computer and need funding to launch your project? The DFINITY
+                Developer Grant Program provides support to promising developers
+                around the globe.
+              </p>
+              <Link
+                className="link-external"
+                href="https://dfinity.org/grants/"
+              >
+                Apply for grants
+              </Link>
+            </motion.div>
+          </AnimateSpawn>
         </section>
         {overlayOpen && (
           <Overlay

@@ -42,6 +42,68 @@ const Blobs: React.FC<{}> = ({}) => {
   );
 };
 
+export const ArrowIconRight = () => (
+  <svg
+    width="64"
+    height="64"
+    viewBox="0 0 64 64"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <g filter="url(#filter0_d_14373_16969)">
+      <rect
+        x="48"
+        y="44"
+        width="32"
+        height="32"
+        rx="16"
+        transform="rotate(-180 48 44)"
+        fill="white"
+      />
+      <path
+        d="M36.172 27L30.808 21.636L32.222 20.222L40 28L32.222 35.778L30.808 34.364L36.172 29H24V27H36.172Z"
+        fill="#181818"
+      />
+    </g>
+    <defs>
+      <filter
+        id="filter0_d_14373_16969"
+        x="0"
+        y="0"
+        width="64"
+        height="64"
+        filterUnits="userSpaceOnUse"
+        color-interpolation-filters="sRGB"
+      >
+        <feFlood flood-opacity="0" result="BackgroundImageFix" />
+        <feColorMatrix
+          in="SourceAlpha"
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+          result="hardAlpha"
+        />
+        <feOffset dy="4" />
+        <feGaussianBlur stdDeviation="8" />
+        <feColorMatrix
+          type="matrix"
+          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"
+        />
+        <feBlend
+          mode="normal"
+          in2="BackgroundImageFix"
+          result="effect1_dropShadow_14373_16969"
+        />
+        <feBlend
+          mode="normal"
+          in="SourceGraphic"
+          in2="effect1_dropShadow_14373_16969"
+          result="shape"
+        />
+      </filter>
+    </defs>
+  </svg>
+);
+
 export const DeployedIcon = () => (
   <svg
     className="w-full block"
@@ -233,6 +295,10 @@ const MilestoneDetail: React.FC<{
 }> = ({ name, subtitle, overview, eta, elements, status, color, color2 }) => {
   const [expanded, setExpanded] = useState(false);
 
+  //   wrapperClasses += ` border-2 border-solid border-[var(--color)] order-opacity-20`;
+  // } else {
+  //   wrapperClasses += ` border-2 border-solid border-[var(--color)]`;
+
   if (name === "Past features") {
     return (
       <article
@@ -242,10 +308,34 @@ const MilestoneDetail: React.FC<{
         <Blobs />
         <div className="p-5">
           <h4
-            className="tw-heading-4 mb-3 flex justify-between cursor-pointer hover:text-white/70 select-none"
+            className="tw-heading-4 !m-0 flex justify-between cursor-pointer hover:opacity-70 select-none"
             onClick={() => setExpanded(!expanded)}
           >
-            {name.toUpperCase()} <span>{expanded ? "-" : "+"}</span>
+            {name.toUpperCase()}{" "}
+            <span>
+              {expanded ? (
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M4 12H20" stroke="white" />
+                </svg>
+              ) : (
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M4 12H20" stroke="white" />
+                  <path d="M12 20L12 4" stroke="white" />
+                </svg>
+              )}
+            </span>
           </h4>
         </div>
         {expanded && (
@@ -282,7 +372,7 @@ const MilestoneDetail: React.FC<{
     return (
       <article
         id={name}
-        className={`border border-white/30 border-solid rounded-xl mb-30 relative`}
+        className={`border border-white/30 border-solid  rounded-xl mb-30 relative`}
       >
         <Blobs />
         <div className="p-5">
@@ -318,7 +408,7 @@ const MilestoneDetail: React.FC<{
   return (
     <article
       id={name}
-      className={`border border-white/30 border-solid rounded-xl mb-30 relative`}
+      className={`border border-solid border-[var(--color)] rounded-xl mb-30 relative z-2`}
       style={{ backgroundColor: status === "in_progress" ? color : "" }}
     >
       {status === "in_progress" && <CardBlobs />}
@@ -406,22 +496,27 @@ const Overlay: React.FC<{
         className="relative container-10 px-6 py-12 text-white"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="text-right pointer-events-none sticky top-6 pr-6 md:top-20 z-10 md:pr-8">
+        <div className="float-right pointer-events-none sticky top-8 md:top-20 z-10 md:pr-8">
           <button
-            className="pointer-events-auto right-8 w-10 h-10 rounded-full border-none bg-[#181818] backdrop-blur-2xl"
+            className="pointer-events-auto flex  w-10 h-10 rounded-full border-none bg-[#181818] justify-center items-center"
             onClick={onClose}
           >
             <svg
-              width="16"
-              height="16"
-              viewBox="0 0 16 16"
+              width="30"
+              height="30"
+              viewBox="0 0 30 30"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <path
-                d="M8 6.66688L12.6669 2L14 3.33312L9.33312 8L14 12.6669L12.6669 14L8 9.33312L3.33312 14L2 12.6669L6.66688 8L2 3.33312L3.33312 2L8 6.66688Z"
-                fill="#ffffff"
+              <rect
+                width="30"
+                height="30"
+                rx="15"
+                fill="#181818"
+                fill-opacity="0.6"
               />
+              <path d="M9.34277 9.34375L20.6565 20.6575" stroke="white" />
+              <path d="M9.34277 20.6572L20.6565 9.34352" stroke="white" />
             </svg>
           </button>
         </div>
@@ -432,7 +527,9 @@ const Overlay: React.FC<{
                 <h2 className="tw-heading-3  font-black md:tw-heading-2 md:w-8/10">
                   {data[openAt].name.toUpperCase()}
                 </h2>
-                <p className="tw-lead md:w-5/10">{data[openAt].description}</p>
+                <p className="tw-lead-sm md:tw-lead md:w-9/10">
+                  {data[openAt].description}
+                </p>
               </section>
               <section>
                 {data[openAt].milestones
