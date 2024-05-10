@@ -47,20 +47,6 @@ interface Elements8 {
   title: string;
   overview: string;
   description: string;
-  status: string;
-  forum: string;
-  proposal: string;
-  wiki: string;
-  docs: string;
-  is_community: boolean;
-  in_beta: boolean;
-  eta?: string;
-}
-
-interface Elements7 {
-  title: string;
-  overview: string;
-  description: string;
   forum: string;
   proposal: string;
   wiki: string;
@@ -72,7 +58,7 @@ interface Elements7 {
   milestone_id?: string;
 }
 
-interface Elements6 {
+interface Elements7 {
   title: string;
   overview: string;
   description: string;
@@ -85,6 +71,22 @@ interface Elements6 {
   is_community?: boolean;
   in_beta: boolean;
   milestone_id?: string;
+  imported?: boolean;
+}
+
+interface Elements6 {
+  title: string;
+  overview: string;
+  description: string;
+  status: string;
+  forum: string;
+  proposal: string;
+  wiki: string;
+  docs: string;
+  is_community: boolean;
+  in_beta: boolean;
+  milestone_id?: string;
+  eta?: string;
   imported?: boolean;
 }
 
@@ -107,15 +109,14 @@ interface Elements4 {
   title: string;
   overview: string;
   description: string;
+  status: string;
   forum: string;
   proposal: string;
+  wiki: string;
   docs: string;
-  eta: string;
-  status: string;
   is_community: boolean;
   in_beta: boolean;
-  imported?: boolean;
-  wiki?: string;
+  milestone_id?: string;
 }
 
 interface Elements3 {
@@ -124,14 +125,13 @@ interface Elements3 {
   description: string;
   forum: string;
   proposal: string;
-  wiki: string;
+  wiki?: string;
   docs: string;
   eta: string;
   status: string;
   is_community: boolean;
   in_beta: boolean;
   imported?: boolean;
-  milestone_id?: string;
 }
 
 interface Elements2 {
@@ -142,7 +142,7 @@ interface Elements2 {
   proposal: string;
   wiki: string;
   docs: string;
-  eta?: string;
+  eta: string;
   status: string;
   is_community: boolean;
   in_beta: boolean;
