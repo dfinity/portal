@@ -382,7 +382,7 @@ const RoadmapPage: React.FC = () => {
                   }
                 >
                   {theme.name}
-                  <i className="inline-block w-[.75em] h-[.75em] bg-white text-black rounded-full relative ml-2 md:ml-8 top-1">
+                  <i className="inline-block w-[.75em] h-[.75em] bg-white text-black rounded-full relative ml-3 md:ml-8 top-1">
                     <RightArrowIcon className="w-6/10 h-6/10 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" />
                   </i>
                 </h1>
