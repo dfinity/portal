@@ -279,7 +279,7 @@ const RoadmapPage: React.FC = () => {
       if (ref.current) {
         const pastCards = ref.current.getElementsByClassName("past-card");
         if (pastCards.length > 0) {
-          ref.current.scrollBy({
+          ref.current.scrollTo({
             left: pastCards[0].offsetWidth,
           });
         }
