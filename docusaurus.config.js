@@ -178,9 +178,9 @@ const marketingNav = {
               description: "Look into the nitty gritty",
             },
             {
-              name: "Technical Roadmap",
-              href: "/roadmap",
-              description: "Milestones and what’s next",
+              name: "Sustainability",
+              href: "/capabilities/sustainability",
+              description: "Building green, efficient tech",
             },
             {
               name: "ICP on YouTube",
@@ -189,9 +189,9 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Blockchain for Sustainable Business",
-            href: "/capabilities/sustainability",
-            image: "/img/nav/featured-start-here.webp",
+            title: "Technical Roadmap",
+            href: "/roadmap",
+            image: "/img/nav/featured-roadmap.webp",
           },
         },
         {

@@ -44,13 +44,12 @@ const Blobs: React.FC<{}> = ({}) => {
 
 export const ArrowIconRight = () => (
   <svg
-    width="64"
-    height="64"
     viewBox="0 0 64 64"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    className="icon"
   >
-    <g filter="url(#filter0_d_14373_16969)">
+    <g filter="url(#filter0_d_14406_81955)">
       <rect
         x="48"
         y="44"
@@ -61,17 +60,15 @@ export const ArrowIconRight = () => (
         fill="white"
       />
       <path
-        d="M36.172 27L30.808 21.636L32.222 20.222L40 28L32.222 35.778L30.808 34.364L36.172 29H24V27H36.172Z"
+        d="M36.172 26.9997L30.808 21.6357L32.222 20.2217L40 27.9997L32.222 35.7777L30.808 34.3637L36.172 28.9997H24V26.9997H36.172Z"
         fill="#181818"
       />
     </g>
     <defs>
       <filter
-        id="filter0_d_14373_16969"
+        id="filter0_d_14406_81955"
         x="0"
         y="0"
-        width="64"
-        height="64"
         filterUnits="userSpaceOnUse"
         color-interpolation-filters="sRGB"
       >
@@ -91,12 +88,12 @@ export const ArrowIconRight = () => (
         <feBlend
           mode="normal"
           in2="BackgroundImageFix"
-          result="effect1_dropShadow_14373_16969"
+          result="effect1_dropShadow_14406_81955"
         />
         <feBlend
           mode="normal"
           in="SourceGraphic"
-          in2="effect1_dropShadow_14373_16969"
+          in2="effect1_dropShadow_14406_81955"
           result="shape"
         />
       </filter>
@@ -229,7 +226,7 @@ const MilestoneCard: React.FC<Element> = ({
   proposal,
 }) => {
   return (
-    <article className="flex flex-col justify-between px-6 pt-6 pb-7 bg-white rounded-lg text-black">
+    <article className="flex flex-col justify-between px-6 pt-6 pb-6 bg-white rounded-lg text-black">
       <div>
         {" "}
         <header className="flex gap-2 justify-between self-stretch">
@@ -240,8 +237,8 @@ const MilestoneCard: React.FC<Element> = ({
             {status === "future" && futureIcon}
           </div>
         </header>
+        <p className="tw-paragraph-sm ">{overview}</p>
       </div>
-      <p className="tw-paragraph-sm ">{overview}</p>
 
       <div className="flex gap-2 pr-20 mt-2">
         {proposal && (
@@ -303,7 +300,7 @@ const MilestoneDetail: React.FC<{
     return (
       <article
         id={name}
-        className={`border border-white/30 border-solid rounded-xl mb-30 relative`}
+        className={`border-2 border-solid border-[var(--color)] rounded-xl mb-15 md:mb-30 relative scroll-mt-30 md:scroll-mt-15`}
       >
         <Blobs />
         <div className="p-5">
@@ -372,7 +369,7 @@ const MilestoneDetail: React.FC<{
     return (
       <article
         id={name}
-        className={`border border-white/30 border-solid  rounded-xl mb-30 relative`}
+        className={`border-2 border-solid border-[var(--color)] rounded-xl  mb-15 md:mb-30 relative  scroll-mt-30 md:scroll-mt-15`}
       >
         <Blobs />
         <div className="p-5">
@@ -408,8 +405,10 @@ const MilestoneDetail: React.FC<{
   return (
     <article
       id={name}
-      className={`border border-solid border-[var(--color)] rounded-xl mb-30 relative z-2`}
-      style={{ backgroundColor: status === "in_progress" ? color : "" }}
+      className={`border-2 border-solid border-[var(--color)] rounded-xl  mb-15 md:mb-30 relative  scroll-mt-36 md:scroll-mt-15 overflow-hidden`}
+      style={{
+        backgroundColor: status === "in_progress" ? color : "",
+      }}
     >
       {status === "in_progress" && <CardBlobs />}
       <Blobs />
