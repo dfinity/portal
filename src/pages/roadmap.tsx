@@ -37,15 +37,18 @@ const css = `
       transform: rotate(360deg) translateY(-50%) scale(calc(.5 + var(--rnd1) * .5));
     }
   }
-  .blobs:hover {
-    transform: scale(1.1);
-    filter: blur(20px);
-    transition: 600ms transform cubic-bezier(0.3, 0.7, 0, 1), 600ms filter cubic-bezier(0.3, 0.7, 0, 1);
-    overflow: hidden;
+  .milestone-large .blobs {
+    overflow: initial;
   }
-  .milestone:hover .blobs {
+  .blobs {
     transform: scale(1);
     filter: blur(0px);
+    overflow: hidden;
+    transition: 600ms transform cubic-bezier(0.3, 0.7, 0, 1), 600ms filter cubic-bezier(0.3, 0.7, 0, 1);
+  }
+  .milestone:hover .blobs {
+    transform: scale(1.05);
+    filter: blur(12px);
   }
   .milestone {
     transition: 400ms background-color linear;
@@ -72,7 +75,7 @@ export const CardBlobs: React.FC<{}> = ({}) => {
 
   return (
     <div
-      className="blobs absolute inset-0 pointer-events-none overflow-hidden"
+      className="blobs absolute inset-0 pointer-events-none"
       style={
         {
           "--rnd1": Math.random(),
