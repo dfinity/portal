@@ -27,14 +27,14 @@ The NNS assigns a unique identity to each proposal that it receives.
 ## Proposal topics and types
 
 Each proposal has a **proposal type**, which determines what happens if the proposal is adopted or rejected. This defines which canister method is invoked with which arguments.
-Each type of proposal belongs to a specific **proposal topic**. Topics are used for [following](TODO) and also determine some other details about how the proposal is processed.
+Each type of proposal belongs to a specific **proposal topic**. Topics are used for [following](https://internetcomputer.org/docs/current/developer-docs/daos/nns/nns-app-quickstart#neuron-following) and also determine some other details about how the proposal is processed.
 For example, the voting period and the voting reward weight are defined per topic.
 
 We present the proposals grouped by their topics, with the corresponding proposal types that they contain.
 
 ### Topic: `NetworkCanisterManagement`
 Installing and upgrading [**system canisters**](/docs/current/developer-docs/smart-contracts/advanced-features/system-canisters/) that belong to the network.
-This includes the NNS DAO canisters, the ICP ledger canister, and other canisters on the system subnets such as Internet Identity (II), ckBTC, ckETH, ckERC20, and the Wasm version of the SNS canisters (governance, root, ledger, swap). // TODO: link to SNS
+This includes the NNS DAO canisters, the ICP ledger canister, and other canisters on the system subnets such as Internet Identity (II), ckBTC, ckETH, ckERC20, and the Wasm version of the [SNS canisters](https://internetcomputer.org/docs/current/developer-docs/daos/sns/overview#sns-canisters) (governance, root, ledger, swap).
 
 * `NnsCanisterUpgrade`: A proposal to upgrade an existing system canister. This proposal type is executed by the root canister. Beyond upgrading the Wasm module of the target canister, the proposal can also set the authorization information and the allocations.
 * `NnsCanisterInstall`: A proposal to add a new canister to be installed and executed on the NNS subnet. The root canister, which controls all canisters on the NNS except for itself, handles this proposal type. The call also expects the Wasm module that shall be installed.
@@ -44,11 +44,11 @@ This includes the NNS DAO canisters, the ICP ledger canister, and other canister
 
 The following proposal types are specific for SNS canisters:
 
-* `AddSnsWasm`: Add a new SNS canister Wasm to SNS-W. All SNS DAOs can then upgrade to new versions along the upgrade path defined in SNS-W. //TODO: (link to SNS page).
+* `AddSnsWasm`: Add a new SNS canister Wasm to SNS-W. All SNS DAOs can then upgrade to new versions along the upgrade path defined in [SNS-W](https://internetcomputer.org/docs/current/developer-docs/daos/sns/overview#SNS-W).
 * `InsertSnsWasmUpgradePathEntries`: Insert custom upgrade path entries into SNS-W for all SNSes, or for an SNS specified by its governance canister ID.
 
 The following proposal type is specific for the Bitcoin canister:
-* `BitcoinSetConfig`: //TODO: https://dashboard.internetcomputer.org/proposal/129394
+* `BitcoinSetConfig`: A proposal to set the configuration of the underlying Bitcoin Canister that powers the Bitcoin API. The configuration includes whether or not the Bitcoin Canister should sync new blocks from the network, whether the API is enabled, the fees to charge, etc.
 
 **How to verify NNS core canister upgrades**
 If you are looking to verify NNS core canister upgrades apart from regularly checking open proposals, you might want to consider the following information for proposals submitted by the DFINITY foundation:
@@ -76,11 +76,10 @@ If you are looking to verify NNS core canister upgrades apart from regularly che
 
 **How to verify ledger canister upgrades**
 If you are looking to verify the ledger suite, which includes the ICP ledger and all ICRC ledgers (used for ckBTC, ckETC, ckERC20) apart from regularly checking open proposals, you might want to consider the following information for proposals submitted by the DFINITY foundation:
-//TODO
-* For updates to the ledger suite, which includes the ICP ledger but also all ICRC ledger (used for ckBTC, ckETC, ckERC20), ...
-    https://dfinity.slack.com/archives/C01AVALTNSH/p1714984964794409
-    Relevant repositories
-    How to verify code corresponds to git version
+
+* For updates to the ICP ledger canister, you can follow [this repository](https://github.com/dfinity/ic/tree/master/rs/rosetta-api/icp_ledger).
+* You can find the instructions on how to verify that the Wasm in the proposal was indeed build from the provided `git commit` in the proposal.
+
 
 
 **How to verify Internet Identity upgrades**
@@ -157,7 +156,7 @@ This topic currently only includes one proposal type that is still in use:
 This topic includes proposals that administer network economics. This topic contains the following proposal types:
 
 * `ClearProvisionalWhitelist`: Clears the provisional whitelist, which allows the listed principals to create canisters with cycles. The mechanism is only needed for bootstrap and testing and must be deactivated afterward.
-* `UpdateNodeRewardsTable`: Update the node rewards table. //TODO: add more information
+* `UpdateNodeRewardsTable`: Update the node rewards table. This table is the basis for distributing rewards to node providers according to some rules, depending on where they are. You can find more information and the current reward table on [this Wiki page](https://wiki.internetcomputer.org/wiki/Node_Provider_Remuneration).
 * `NetworkEconomics`: Network economics contains the parameters for several operations related to the economy of the network and settings of the NNS DAO that can be changed by a proposal of this type.
 A single proposal can update one or several economic parameters. The default values (0) are considered unchanged. Thus, a valid proposal only needs to set the parameters that it wishes to change. Note that this also means that it is not possible to set any of the values to 0.
 The following parameters can be changed:
