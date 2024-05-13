@@ -42,64 +42,34 @@ const Blobs: React.FC<{}> = ({}) => {
   );
 };
 
-export const ArrowIconRight = () => (
-  <svg
-    viewBox="0 0 64 64"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-    className="icon"
-  >
-    <g filter="url(#filter0_d_14406_81955)">
+export const ArrowIconRight = () => {
+  return (
+    <svg
+      viewBox="0 0 66 66"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className="arrowIconRight block"
+    >
       <rect
-        x="48"
-        y="44"
-        width="32"
-        height="32"
-        rx="16"
-        transform="rotate(-180 48 44)"
-        fill="white"
+        x="49.5"
+        y="45.5"
+        width="33"
+        height="33"
+        rx="16.5"
+        transform="rotate(-180 49.5 45.5)"
+        stroke="white"
+        stroke-opacity="0.3"
+        fill="transparent"
+        className="circle"
       />
       <path
-        d="M36.172 26.9997L30.808 21.6357L32.222 20.2217L40 27.9997L32.222 35.7777L30.808 34.3637L36.172 28.9997H24V26.9997H36.172Z"
-        fill="#181818"
+        d="M37.172 28L31.808 22.636L33.222 21.222L41 29L33.222 36.778L31.808 35.364L37.172 30H25V28H37.172Z"
+        fill="white"
+        className="arrow"
       />
-    </g>
-    <defs>
-      <filter
-        id="filter0_d_14406_81955"
-        x="0"
-        y="0"
-        filterUnits="userSpaceOnUse"
-        color-interpolation-filters="sRGB"
-      >
-        <feFlood flood-opacity="0" result="BackgroundImageFix" />
-        <feColorMatrix
-          in="SourceAlpha"
-          type="matrix"
-          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-          result="hardAlpha"
-        />
-        <feOffset dy="4" />
-        <feGaussianBlur stdDeviation="8" />
-        <feColorMatrix
-          type="matrix"
-          values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.12 0"
-        />
-        <feBlend
-          mode="normal"
-          in2="BackgroundImageFix"
-          result="effect1_dropShadow_14406_81955"
-        />
-        <feBlend
-          mode="normal"
-          in="SourceGraphic"
-          in2="effect1_dropShadow_14406_81955"
-          result="shape"
-        />
-      </filter>
-    </defs>
-  </svg>
-);
+    </svg>
+  );
+};
 
 export const DeployedIcon = () => (
   <svg
@@ -291,10 +261,11 @@ const MilestoneDetail: React.FC<{
   color2: string | null;
 }> = ({ name, subtitle, overview, eta, elements, status, color, color2 }) => {
   const [expanded, setExpanded] = useState(false);
+  const elementsPerRow = 4;
+  const elementsCount = elements.length;
+  const emptyCardsCount = elementsPerRow - (elementsCount % elementsPerRow);
 
-  //   wrapperClasses += ` border-2 border-solid border-[var(--color)] order-opacity-20`;
-  // } else {
-  //   wrapperClasses += ` border-2 border-solid border-[var(--color)]`;
+  const emptyCards = Array(emptyCardsCount).fill(null);
 
   if (name === "Past features") {
     return (
@@ -356,6 +327,12 @@ const MilestoneDetail: React.FC<{
                       docs={element.docs}
                       proposal={element.proposal}
                     />
+                  ))}{" "}
+                  {emptyCards.map((_, i) => (
+                    <div
+                      key={i + elementsCount}
+                      className="hidden md:block bg-white bg-opacity-5 rounded-lg"
+                    ></div>
                   ))}
                 </div>
               </div>
@@ -374,14 +351,6 @@ const MilestoneDetail: React.FC<{
         <Blobs />
         <div className="p-5">
           <h4 className="tw-heading-4 mb-3">{name.toUpperCase()}</h4>
-          {/* <p className="tw-paragraph font-bold mb-4 md:w-3/10">{subtitle}</p>
-     
-        <p className="tw-paragraph mb-10">
-          <span className="text-white/60">Milestone</span>{" "}
-          {eta === "none" || !eta ? "" : eta}
-        </p>
-
-        <p className="text-white/60 tw-paragraph mt-6 md:w-2/3">{overview}</p>  */}
         </div>
         <div className="m-1">
           <div className="grid gap-1 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
@@ -396,6 +365,12 @@ const MilestoneDetail: React.FC<{
                 docs={element.docs}
                 proposal={element.proposal}
               />
+            ))}
+            {emptyCards.map((_, i) => (
+              <div
+                key={i + elementsCount}
+                className="hidden md:block bg-white bg-opacity-5 rounded-lg"
+              ></div>
             ))}
           </div>
         </div>
@@ -441,6 +416,12 @@ const MilestoneDetail: React.FC<{
               docs={element.docs}
               proposal={element.proposal}
             />
+          ))}{" "}
+          {emptyCards.map((_, i) => (
+            <div
+              key={i + elementsCount}
+              className="hidden md:block bg-white bg-opacity-5 rounded-lg"
+            ></div>
           ))}
         </div>
       </div>
@@ -479,7 +460,6 @@ const Overlay: React.FC<{
     }
   }, [anchor, color]);
 
-  console.log(color, "color");
   return (
     <motion.div
       className="fixed inset-0 overflow-auto z-[2000] bg-black/70 backdrop-blur-lg overflow-x-hidden"

@@ -53,6 +53,14 @@ const css = `
   .milestone:hover {
     background-color: color-mix(in srgb, var(--color) 70%, black);
   }
+
+  .hover-effect:hover .arrow {
+    fill: #181818;
+  }
+  
+  .hover-effect:hover .circle {
+    fill: white;
+  }
 `;
 
 export const CardBlobs: React.FC<{}> = ({}) => {
@@ -255,6 +263,7 @@ const RoadmapPage: React.FC = () => {
   const [overlayOpenAt, setOverlayOpenAt] = useState(0);
   const [overlayAnchor, setOverlayAnchor] = useState(null);
   const [overlayColor, setOverlayColor] = useState(null);
+  const [isHovered, setIsHovered] = useState(false);
 
   const scrollRefs = new Array(data.length)
     .fill("")
@@ -343,7 +352,7 @@ const RoadmapPage: React.FC = () => {
               </p>
               <Link
                 to="/"
-                className="link-primary text-white select-none hover:text-white/70"
+                className="link-primary !text-white select-none hover:!text-white/70"
               >
                 Link to blog <LinkArrowUpRight />{" "}
               </Link>
@@ -372,10 +381,10 @@ const RoadmapPage: React.FC = () => {
 
         <section className="-mt-20 md:-mt-32 relative  mb-28 md:mb-40">
           {data.map((theme, indexTheme) => (
-            <article key={theme.name} className="mt-16 md:mt-20">
-              <header className="container-10 whitespace-pre-wrap">
+            <article key={theme.name} className="mt-16 md:mt-20  ">
+              <header className="container-10">
                 <h1
-                  className="tw-heading-3 cursor-pointer hover:opacity-75 flex items-center"
+                  className="tw-heading-3 cursor-pointer hover-effect relative  "
                   onClick={() =>
                     openOverlay(
                       indexTheme,
@@ -386,11 +395,12 @@ const RoadmapPage: React.FC = () => {
                   }
                 >
                   {theme.name}
-                  <i className="inline-block min-h-16 min-w-16 md:ml-10 relative top-3 md:top-2">
+                  <i className="absolute  bottom-0 w-16 translate-y-[0.62ex] md:ml-3">
                     <ArrowIconRight />
                   </i>
                 </h1>
-                <p className="tw-paragraph max-w-2xl opacity-60">
+
+                <p className="tw-paragraph max-w-2xl opacity-60 mt-2">
                   {theme.description}
                 </p>
               </header>
