@@ -436,7 +436,8 @@ function WhatIsIcpPage() {
                 variants={transitions.item}
               >
                 <img
-                  src="/img/what-is-the-ic/icon-tamperproof.svg"
+                  // src="/img/what-is-the-ic/icon-tamperproof.svg"
+                  src="/img/what-is-the-ic/icon-next-gen-ai.svg"
                   alt=""
                   className="h-24"
                 />
@@ -461,7 +462,8 @@ function WhatIsIcpPage() {
                 variants={transitions.item}
               >
                 <img
-                  src="/img/what-is-the-ic/icon-autonomous.svg"
+                  // src="/img/what-is-the-ic/icon-autonomous.svg"
+                  src="/img/what-is-the-ic/icon-next-gen-ai.svg"
                   alt=""
                   className="h-24"
                 />
@@ -483,7 +485,8 @@ function WhatIsIcpPage() {
                 variants={transitions.item}
               >
                 <img
-                  src="/img/what-is-the-ic/icon-simple.svg"
+                  // src="/img/what-is-the-ic/icon-simple.svg"
+                  src="/img/what-is-the-ic/icon-next-gen-ai.svg"
                   alt=""
                   className="h-24"
                 />
@@ -507,7 +510,8 @@ function WhatIsIcpPage() {
                 variants={transitions.item}
               >
                 <img
-                  src="/img/what-is-the-ic/icon-sovereign.svg"
+                  // src="/img/what-is-the-ic/icon-sovereign.svg"
+                  src="/img/what-is-the-ic/icon-next-gen-ai.svg"
                   alt=""
                   className="h-24"
                 />
@@ -534,7 +538,8 @@ function WhatIsIcpPage() {
                 variants={transitions.item}
               >
                 <img
-                  src="/img/what-is-the-ic/icon-web3-ois.svg"
+                  // src="/img/what-is-the-ic/icon-web3-ois.svg"
+                  src="/img/what-is-the-ic/icon-next-gen-ai.svg"
                   alt=""
                   className="h-24"
                 />
