@@ -673,6 +673,7 @@ const sidebars = {
           label: "Bitcoin",
           items: [
             "developer-docs/multi-chain/bitcoin/overview",
+            "developer-docs/multi-chain/bitcoin/using-btc/btc-dev-workflow",
             "developer-docs/multi-chain/bitcoin/using-btc/read-state",
             "developer-docs/multi-chain/bitcoin/using-btc/generate-addresses",
             "developer-docs/multi-chain/bitcoin/using-btc/sign-transactions",
