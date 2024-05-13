@@ -271,7 +271,7 @@ const MilestoneDetail: React.FC<{
     return (
       <article
         id={name}
-        className={`border-2 border-solid border-[var(--color)] rounded-xl mb-15 md:mb-30 relative scroll-mt-30 md:scroll-mt-15`}
+        className={`milestone-large border-2 border-solid border-[var(--color)] rounded-xl mb-15 md:mb-30 relative scroll-mt-30 md:scroll-mt-15`}
       >
         <Blobs />
         <div className="p-5">
@@ -346,7 +346,7 @@ const MilestoneDetail: React.FC<{
     return (
       <article
         id={name}
-        className={`border-2 border-solid border-[var(--color)] rounded-xl  mb-15 md:mb-30 relative  scroll-mt-30 md:scroll-mt-15`}
+        className={`milestone-large border-2 border-solid border-[var(--color)] rounded-xl mb-15 md:mb-30 relative  scroll-mt-30 md:scroll-mt-15`}
       >
         <Blobs />
         <div className="p-5">
@@ -380,7 +380,7 @@ const MilestoneDetail: React.FC<{
   return (
     <article
       id={name}
-      className={`border-2 border-solid border-[var(--color)] rounded-xl  mb-15 md:mb-30 relative  scroll-mt-36 md:scroll-mt-15 overflow-hidden`}
+      className={`milestone-large border-2 border-solid border-[var(--color)] rounded-xl mb-15 md:mb-30 relative  scroll-mt-36 md:scroll-mt-15 overflow-hidden`}
       style={{
         backgroundColor: status === "in_progress" ? color : "",
       }}

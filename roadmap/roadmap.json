@@ -7,6 +7,7 @@
         "name": "Reduced End-to-end Latency",
         "description": "This milestone marks a significant reduction of user-perceived end-to-end latency for processing ingress messages. It is achieved by multiple concerted measures at different levels of the protocol stack and brings the user experience of Web3 closer to Web2.",
         "milestone_id": "Iridium",
+        "eta": "Q3 2024",
         "status": "in_progress",
         "elements": [
           {
@@ -57,6 +58,7 @@
         "name": "Increased Storage Capacity and Throughput",
         "description": "Increased storage capacity of ICP subnets, storage per canister smart contract, and message throughput between subnets. Those improvements lead to each subnet being able to host larger workloads and better utilization of ICP’s hardware resources. The world's largest smart contracts can now grow even larger, far surpassing smart contracts on any other chain.",
         "milestone_id": "Niobium",
+        "eta": "",
         "status": "in_progress",
         "elements": [
           {
@@ -1002,6 +1004,7 @@
         "name": "Chain Fusion Supports EVM Chains",
         "description": "ICP’s Chain Fusion technology has full support for Ethereum and other EVM chains. ICP smart contracts can read from and write to EVM chains using a decentralized approach as well as sign transactions in a trustless manner using threshold ECDSA signing. This allows ICP smart contracts to augment EVM-based smart contracts with additional functionality through ICP's superpowers, transfer tokens on other chains, and call smart contracts on EVM chains.",
         "milestone_id": "Dilithium",
+        "eta": "2024-05-23",
         "status": "in_progress",
         "elements": [
           {
@@ -1047,13 +1050,13 @@
             "milestone_id": "Dilithium",
             "imported": true
           }
-        ],
-        "eta": "May 23, 2024"
+        ]
       },
       {
         "name": "Chain Fusion Supports Bitcoin Protocols",
         "description": "ICP’s Chain Fusion technology has full support for Bitcoin protocols such as BRC20 and Runes. So far, ICPs fully-on-chain capabilities have been largely applied  to use cases where Bitcoin is used as a means of value transfer, its original purpose. This milestone provides additional functionality that enables smart contracts to index and issue prominent types of Bitcoin inscriptions in a completely decentralized manner for the first time, thereby putting ICP into a unique position among all chains.",
         "milestone_id": "Bismuth",
+        "eta": "2024-07-25",
         "status": "future",
         "elements": [
           {
@@ -1084,13 +1087,13 @@
             "in_beta": false,
             "milestone_id": "Bismuth"
           }
-        ],
-        "eta": "July 25, 2024"
+        ]
       },
       {
         "name": "Chain Fusion Supports Solana",
         "description": "This milestone enables Chain Fusion for the Solana network, bringing Solana and ICP closer together, combining the powers of the two networks. Dapps leveraging the capabilities of both networks look and feel like single-network dapps.",
         "milestone_id": "Holmium",
+        "eta": "Q4 2024",
         "status": "future",
         "elements": [
           {
@@ -1443,6 +1446,7 @@
         "name": "Onchain AI Inference",
         "description": "Allow smart contracts to run inference using AI models with millions of parameters fully on chain. The focus of this milestone is performance. There are performance optimizations that can be implemented both in the WebAssembly engine and the AI inference engine. The expected speedup is 10x and more.",
         "milestone_id": "Platinum",
+        "eta": "2025-03",
         "status": "in_progress",
         "elements": [
           {
@@ -1490,6 +1494,7 @@
         "name": "Onchain AI Inference and Training of Large Models",
         "description": "In order to perform AI inference and training of large models on chain, smart contracts need a way to run compute- and memory-intensive computations on hardware such as GPUs. The main challenge of this milestone is to define a deterministic API for smart contracts to access and call GPUs. Additionally, AI-specialized subnets with GPU-enabled nodes need to be added to ICP.",
         "milestone_id": "Palladium",
+        "eta": "",
         "status": "future",
         "elements": [
           {
@@ -1596,6 +1601,7 @@
         "name": "vetKeys for Decentralized Key Management",
         "description": "vetKeys technology realizes a decentralized key management service, allowing users to derive cryptographic keys on demand, in a fully decentralized way. This allows developers to build dapps where users’ data is encrypted, addressing privacy needs on a public blockchain.",
         "milestone_id": "Thorium",
+        "eta": "Q1 2025",
         "status": "in_progress",
         "elements": [
           {
@@ -1733,6 +1739,7 @@
         "name": "Edge Infrastructure is Fully Decentralized",
         "description": "ICP is accessible through a decentralized edge infrastructure, which is split into NNS-controlled API Boundary Nodes and HTTP Gateways. The NNS will appoint node machines to run API Boundary Nodes and anyone will be able to run HTTP Gateways, enabling a much more decentralized ICP edge infrastructure with a diverse set of service providers.",
         "milestone_id": "Vanadium",
+        "eta": "Q2 2024",
         "status": "in_progress",
         "elements": [
           {
@@ -1783,6 +1790,7 @@
         "name": "Decentralized access logs and metrics",
         "description": "This milestone establishes visibility into the Internet Computer's edge infrastructure by making aggregated API boundary node access logs publicly accessible. This provides developers with valuable insights into their dapps' usage patterns and facilitates the generation of user statistics, offering key information on traffic sources. To guarantee the integrity of these logs, the milestone focuses on leveraging trusted execution environments, specifically AMD SEV-SNP.",
         "milestone_id": "Cerium",
+        "eta": "",
         "status": "future",
         "elements": [
           {
@@ -2257,6 +2265,7 @@
         "name": "Verifiable Credentials Platform is Live",
         "description": "With this milestone, ICP offers the infrastructure and tooling to issue, share, and consume credentials in a privacy-preserving fashion. Users are in control of their credentials, giving them a self-sovereign digital identity. At the same time, new credential issuers, such as a KYC service, go live on ICP and will enable new use cases such as security tokens subject to financial regulations.",
         "milestone_id": "Iron",
+        "eta": "2024-06-18",
         "status": "in_progress",
         "elements": [
           {
@@ -2300,8 +2309,7 @@
             "in_beta": true,
             "milestone_id": "Iron"
           }
-        ],
-        "eta": "June 18, 2024"
+        ]
       },
       {
         "name": "orphans_past",
@@ -2695,6 +2703,7 @@
         "name": "Oisy, a Multi-chain Wallet Powered by Chain Fusion",
         "description": "Oisy is a wallet with a unique combination of properties. It is the first smart contract wallet that is self-custodial, multi-chain and uses passkeys for authentication, while being fully accessible through the browser. Oisy supports ICP-based dapps through ICRC-21, EVM-based dapps through WalletConnect, and easily converts between native Ethereum tokens and their ck twins.",
         "milestone_id": "Silver",
+        "eta": "2024-12",
         "status": "in_progress",
         "elements": [
           {
@@ -2729,6 +2738,7 @@
         "name": "The Orbit Multi-Custody Asset Framework",
         "description": "Orbit is a comprehensive digital assets framework, enabling simple to advanced rules over user digital assets. Initially tailored for token management, it provides robust support for 1-out-of-M to complex approval policies for financial transactions. It also supports secure management of infrastructure like canister installations and upgrades. Teams and businesses can confidently handle ICP, ckETH, and compatible tokens using Orbit's advanced security features, vital for those seeking a stable and reliable management over their treasury.",
         "milestone_id": "Fermium",
+        "eta": "",
         "status": "in_progress",
         "elements": [
           {
@@ -3052,6 +3062,7 @@
         "name": "Active Liquid Democracy",
         "description": "The NNS and SNS DAOs facilitate active liquid democracies by lowering the entry barrier for participation and providing better inputs for well-informed decisions. This includes direct voting as well as delegating some voting decisions to others. As a result, more users stake tokens and participate in DAOs to form lively communities. The resulting network effects foster additional adoption and growth.",
         "milestone_id": "Titanium",
+        "eta": "2025-03",
         "status": "in_progress",
         "elements": [
           {
@@ -3585,6 +3596,7 @@
         "name": "Canister Operation Insights",
         "description": "This milestone provides substantial simplifications and improvements for the developers lifecycle of canisters, particularly regarding their development and operations. Snapshotting capabilities, a powerful logging infrastructure and improved error handling, as well as insights into the cycles consumption of canisters and push of relevant events brings canisters closer to Web2 services in terms of DevOps.",
         "milestone_id": "Nickel",
+        "eta": "",
         "status": "in_progress",
         "elements": [
           {
