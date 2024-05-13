@@ -13,7 +13,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 Verifiable credentials (VCs) on ICP rely on Internet Identity (II), which provides different and unlinkable identities for each dapp. A dapp utilizing verifiable credentials can’t ask for a user's credentials from the issuer of the verifiable credential directly. When a relying party wants to obtain a credential from an issuer, it must request it through an identity provider such as Internet Identity.
 
-Internet Identity acts as a communication link between the relying party and issuer, connecting with the issuer and asking for the credentials for the user. After receiving the credentials, they are forwarded to the relying party.
+Internet Identity acts as a communication link between the relying party and issuer API, connecting with the issuer API and asking for the credentials for the user. After receiving the credentials, they are forwarded to the relying party.
 
 <div class="text--center">
   <img
@@ -49,9 +49,9 @@ From the developer’s perspective, the interaction between dapps uses window me
 
     c. The relying party replies with the credentials request and issuer data for the request.
 
-3. The II frontend calls the issuer canister to retrieve the consent message.
+3. The II frontend calls the issuer API canister to retrieve the consent message.
 
-4. The II frontend shows all the details to the user: the relying party, the consent message, and the issuer, then waits for the user action.
+4. The II frontend shows all the details to the user: the relying party, the consent message, and the issuer API data, then waits for the user action.
 
 5. The user decides whether to allow or revoke the action.
 
@@ -59,11 +59,11 @@ From the developer’s perspective, the interaction between dapps uses window me
 
 6. The II backend calculates an ID alias which is an opaque identifier.
 
-7. The II frontend requests the credential from the issuer.
+7. The II frontend requests the credential from the issuer API.
 
-8. The issuer receives the request for the credential, validates the call from II, and replies with a verifiable presentation if the user fulfills the credential's requirements.
+8. The issuer API receives the request for the credential, validates the call from II, and replies with a verifiable presentation if the user fulfills the credential's requirements.
 
-9. The II frontend receives the credential from the issuer and forwards it to the relying party, closing the window.
+9. The II frontend receives the credential from the issuer API and forwards it to the relying party, closing the window.
 
 10. The relying party verifies the credentials.
 
