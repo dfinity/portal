@@ -253,6 +253,7 @@ function EducationHubPage() {
                     languages={course.languages}
                     tags={course.tags}
                     link={course.link}
+                    level={course.level}
                   />
                 ))}
                 <div

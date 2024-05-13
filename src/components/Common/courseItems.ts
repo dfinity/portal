@@ -18,6 +18,8 @@ export type CourseLanguage =
   | "typescript"
   | "other";
 
+export type CourseSpokenLanguage = "english" | "spanish" | "turkish";
+
 export type CourseLevel = "beginner" | "intermediate" | "expert";
 
 export type CourseContentType = "video" | "text";
