@@ -11,21 +11,23 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 ## Overview
 
-An **issuer** is a service or app that can issue a verifiable credential to a user. To become an issuer, your canister must implement the verifiable credential interface using the issuer API. The issuer API is used to issue verifiable credentials, while another API, the identity provider API, is used to communicate with an identity provider such as Internet Identity. End-users communicate with the identity provider for authentication and to consent to being issued a verifiable credential. An identity provider is also used to relay information between the issuer and the [relying party](relying-party.mdx) when a verifiable credential is requested by the relying party.
+An **issuer** is a service or app that can issue a verifiable credential (VC) to a user. To become an issuer, your canister must implement the issuer API described in [verifiable credential spec](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md).
+
+Issuers receive credentials requests from relying partys through an identity provider such as Internet Identity (II). The end-user must allow or revoke the communication before the credential is issued.
 
 Internet Identity is used as the identity provider in this tutorial.
 
-## Using the issuer API
+## Development of the issuer API
 
-To use the issuer API, your canister must support four steps that are required to issue a verifiable credential:
+The issuer API consists of four endpoints:
 
-1. Obtain a consent message (API endpoint `vc_consent_message`): Receive a message of consent from identity provider to issue a user a verifiable credential.
+1. [`vc_consent_message`](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md#1-consent-message): Responds with a message of consent to be displayed to the user to receive their consent on issuing the credentials.
 
-2. Implement a derivation origin (API endpoint `derivation_origin`): Configure an alternative origin URL that the identity provider may send the request from and still be considered valid.
+2. [`derivation_origin`](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md#2-derivation-origin): Returns the URL used to derive the user's principal for the issuer. 
 
-3. Prepare the credentials (API endpoint `prepare_credential`): Prepare the credentials for the requested user.
+3. [prepare_credential](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md#3-prepare-credential): Check the validity of the request and prepare the actual credential requested.
 
-4. Issue the credential (API endpoint `get_credential`): Verify the credential and officially issue it to the user.
+4. [`get_credential endpoint`](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md#4-get-credential): Issues the actual credential requested by the user.
 
 ### Step 1: Obtain a consent message (`vc_consent_message`)
 
