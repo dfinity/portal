@@ -189,7 +189,7 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Technical Roadmap",
+            title: "Roadmap",
             href: "/roadmap",
             image: "/img/nav/featured-roadmap.webp",
           },
