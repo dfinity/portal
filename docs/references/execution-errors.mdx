@@ -61,7 +61,7 @@ An example of this error is:
   Canister called `ic0.trap` with message: <Canister error message>
 ```
 
-When encountering an error, canister's may choose to fail with an error message by calling the [`ic0.trap` API](https://internetcomputer.org/docs/current/references/ic-interface-spec#debugging-aids). The Rust and Motoko CDK's will insert calls to this API when panicking.
+When encountering an error, canister's may choose to fail with an error message by calling the [`ic0.trap` API](/docs/current/references/ic-interface-spec#debugging-aids). The Rust and Motoko CDK's will insert calls to this API when panicking.
 
 To fix this error, consider testing the canister to see if certain inputs can trigger panics.
 
@@ -74,11 +74,11 @@ An example of this error is:
   Attempted to execute a message, but the canister contains no Wasm module.
 ```
 
-Canisters can [exist without having Wasm code installed](https://internetcomputer.org/docs/current/references/ic-interface-spec#canister-lifecycle). A canister will have no Wasm code if it has never been installed, or if it has been [uninstalled](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-uninstall_code).
+Canisters can [exist without having Wasm code installed](/docs/current/references/ic-interface-spec#canister-lifecycle). A canister will have no Wasm code if it has never been installed, or if it has been [uninstalled](/docs/current/references/ic-interface-spec#ic-uninstall_code).
 
 To better diagnose this error use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check if the canister has a module installed. If there is a module the "Module hash" field will be non-null.
 
-To fix this error, consitder installing code using [`dfx deploy`](https://internetcomputer.org/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-deploy), or the APIs for [`install_code`](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-install_code) or [`install_chunked_code`](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-install_chunked_code).
+To fix this error, consitder installing code using [`dfx deploy`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-deploy), or the APIs for [`install_code`](/docs/current/references/ic-interface-spec#ic-install_code) or [`install_chunked_code`](/docs/current/references/ic-interface-spec#ic-install_chunked_code).
 
 
 ### Out of memory
@@ -91,7 +91,7 @@ An example of this error is:
 
 There are [system wide limits][limits] on the main and stable memory of each canister, as well as limits on the total memory of a subnet. This error could be triggered by any one of those limits being reached.
 
-In addition, canisters may reserve memory using the [`memory-allocation` setting](https://internetcomputer.org/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister/#options-8). In this case the canister is guaranteed to be able to use up to the allocated memory, but will receive an "Out of memory" error when trying to use more than the allocated amount.
+In addition, canisters may reserve memory using the [`memory-allocation` setting](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister/#options-8). In this case the canister is guaranteed to be able to use up to the allocated memory, but will receive an "Out of memory" error when trying to use more than the allocated amount.
 
 To diagnose this error use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check the canister's current memory usage and memory allocation. The subnet memory usage can also be seen on the [ICP dashboard](https://dashboard.internetcomputer.org/subnets).
 
@@ -111,7 +111,7 @@ An example of this error is:
   Canister tried to allocate pages reserved for upgrading older versions of Motoko.
 ```
 
-Newer versions of Motoko don't require these reserved pages, so upgrading the version of Motoko used in the canister will fix the issue. `dfx` stores the Motoko compiler (`moc`) in the directory returned by [`dfx cache show`](https://internetcomputer.org/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-cache#dfx-cache-show). So the version of Motoko can be shown by running `$(dfx cache show)/moc --version`. This issue only occurs for versions `0.6.20` and older.
+Newer versions of Motoko don't require these reserved pages, so upgrading the version of Motoko used in the canister will fix the issue. `dfx` stores the Motoko compiler (`moc`) in the directory returned by [`dfx cache show`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-cache#dfx-cache-show). So the version of Motoko can be shown by running `$(dfx cache show)/moc --version`. This issue only occurs for versions `0.6.20` and older.
 
 To fix this error, upgrade to the [latest version of `dfx`](https://github.com/dfinity/dfxvm?tab=readme-ov-file#installation) which will use a newer version of Motoko.
 
