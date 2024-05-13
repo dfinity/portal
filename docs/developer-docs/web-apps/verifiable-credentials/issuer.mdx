@@ -11,7 +11,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 ## Overview
 
-An **issuer** is a service or app that can issue a verifiable credential (VC) to a user. To become an issuer, your canister must implement the issuer API described in [verifiable credential spec](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md).
+An **issuer** is a service or app that can issue a verifiable credential (VC) to a user. On ICP, an issuer is an exposed API that recieves calls from an identity provider and does not trigger any workflows itself. To become an issuer, your canister must implement the issuer API as described in [verifiable credential spec](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md).
 
 Issuers receive credentials requests from relying partys through an identity provider such as Internet Identity (II). The end-user must allow or revoke the communication before the credential is issued.
 
@@ -31,7 +31,7 @@ The issuer API consists of four endpoints:
 
 ### Step 1: Obtain a consent message (`vc_consent_message`)
 
-First, the user must send a consent message to the issuer using the `vc_consent_message` API endpoint through the identity provider. A consent message is an approval from the user to validate that they consent to the issuing of a VC.
+First, the user must send a consent message to the issuer API endpoint `vc_consent_message` through the identity provider. A consent message is an approval from the user to validate that they consent to the issuing of a VC.
 
 An example implementation in Rust can be found below:
 
@@ -55,7 +55,7 @@ If the response is an approval, the identity provider returns the consent messag
 
 ### Step 2: Implement a derivation origin (`derivation_origin`)
 
-Next, the issuer must implement the `derivation_origin` API endpoint, which enables support of the [alternative derivation origins](https://internetcomputer.org/docs/current/references/ii-spec#alternative-frontend-origins) feature.
+Next, the issuer API endpoint `derivation_origin` enables support of the [alternative derivation origins](https://internetcomputer.org/docs/current/references/ii-spec#alternative-frontend-origins) feature.
 
 A derivation origin is an alternative URL that can be obtained by the identity provider for the user's principal. If the issuer does not implement alternative derivation origins, the identity provider will return the default value of the canister's URL (`https://<issuer-canister-id>.icp0.io`).
 
@@ -87,7 +87,7 @@ The returned derivation origin is subject to verification via `.well-known/ii-al
 
 ### Step 3: Prepare the credentials (`prepare_credential`)
 
-Before a credential can be issued, the request for the credential must be checked for validity using the `prepare_credential` API endpoint. Once it has been validated, then the actual VC can be prepared. The issuer validates the request through the `signed_id_alias.credential_jws` token. If this check is successful, the issuer prepares the credential data and returns it in `PreparedCredentialData.prepared_context`.
+Before a credential can be issued, the request for the credential must be checked for validity using the `prepare_credential` API endpoint. Once it has been validated, then the actual VC can be prepared. The request is validated through the `signed_id_alias.credential_jws` token. If this check is successful, the credential data is prepared and returned in `PreparedCredentialData.prepared_context`.
 
 An example implementation in Rust can be found below:
 
@@ -109,7 +109,7 @@ fn prepare_credential_jwt(
 ```
 
 :::info
-The value of `prepared_context` is used to transfer information between the `prepare_credential` and `get_credential` steps. It is up to the issuer to decide on the content of this field since the issuer creates `prepared_context` and is the only entity that consumes it.
+The value of `prepared_context` is used to transfer information between the `prepare_credential` and `get_credential` steps. It is up to the issuer API to decide on the content of this field since the issuer API creates `prepared_context` and is the only entity that consumes it.
 
 For example, when using [canister signatures](https://internetcomputer.org/docs/current/references/ic-interface-spec#canister-signatures)
 `prepared_context` contains a time stamped and unsigned VC, for which the canister signature will be available through the `get_credential` call.
@@ -117,7 +117,7 @@ For example, when using [canister signatures](https://internetcomputer.org/docs/
 
 ### Step 4: Issue the credential (`get_credential`)
 
-Lastly, the issuer must implement the `get_credential` API endpoint to issue the credential requested by the user. The issuer performs the same checks used to prepare the credential, with an additional verify step to confirm that `prepared_context` is consistent with `prepare_credential`. If successful, the issuer returns the signed credential in JWS-format.
+Lastly, the issuer API endpoint `get_credential` is used to issue the credential requested by the user. The same checks used to prepare the credential are ran again, with an additional verify step to confirm that `prepared_context` is consistent with `prepare_credential`. If successful, the issuer API returns the signed credential in JWS-format.
 
 An example implementation in Rust can be found below:
 
