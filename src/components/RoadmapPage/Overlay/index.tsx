@@ -6,6 +6,7 @@ import { RoadmapDomain, RoadmapItem } from "../RoadmapTypes";
 import LinkArrowLeft from "../../Common/Icons/LinkArrowLeft";
 import { motion, AnimatePresence } from "framer-motion";
 import { CardBlobs } from "@site/src/pages/roadmap";
+import Tooltip from "../../Common/Tooltip";
 
 const Blobs: React.FC<{}> = ({}) => {
   return (
@@ -86,7 +87,7 @@ export const DeployedIcon = () => (
   </svg>
 );
 
-const inProgressIcon = (
+const InProgressIcon = () => (
   <svg
     className="w-full block"
     viewBox="0 0 25 24"
@@ -101,7 +102,7 @@ const inProgressIcon = (
   </svg>
 );
 
-const futureIcon = (
+const FutureIcon = () => (
   <svg
     className="w-full block"
     viewBox="0 0 25 24"
@@ -202,9 +203,30 @@ const MilestoneCard: React.FC<Element> = ({
         <header className="flex gap-2 justify-between self-stretch">
           <h5 className="tw-heading-6">{title}</h5>
           <div className="basis-7 w-7 grow-0 shrink-0">
-            {status === "deployed" && <DeployedIcon />}
-            {status === "in_progress" && inProgressIcon}
-            {status === "future" && futureIcon}
+            {status === "deployed" && (
+              <Tooltip
+                tooltip="Deployed"
+                className="text-center bg-black/75 rounded-lg whitespace-nowrap	"
+              >
+                <DeployedIcon />
+              </Tooltip>
+            )}
+            {status === "in_progress" && (
+              <Tooltip
+                tooltip="In Progress"
+                className="text-center bg-black/75 rounded-lg whitespace-nowrap	"
+              >
+                <InProgressIcon />
+              </Tooltip>
+            )}
+            {status === "future" && (
+              <Tooltip
+                tooltip="Future"
+                className="text-center bg-black/75 rounded-lg whitespace-nowrap	"
+              >
+                <FutureIcon />
+              </Tooltip>
+            )}
           </div>
         </header>
         <p className="tw-paragraph-sm ">{overview}</p>
@@ -259,8 +281,21 @@ const MilestoneDetail: React.FC<{
   status: string;
   color: string | null;
   color2: string | null;
-}> = ({ name, subtitle, overview, eta, elements, status, color, color2 }) => {
-  const [expanded, setExpanded] = useState(false);
+  expandedMilestone: string | null;
+  setExpandedMilestone: (milestone: string | null) => void;
+}> = ({
+  name,
+  subtitle,
+  overview,
+  eta,
+  elements,
+  status,
+  color,
+  color2,
+  expandedMilestone,
+  setExpandedMilestone,
+}) => {
+  const isExpanded = name === expandedMilestone;
   const elementsPerRow = 4;
   const elementsCount = elements.length;
   const emptyCardsCount = elementsPerRow - (elementsCount % elementsPerRow);
@@ -277,11 +312,11 @@ const MilestoneDetail: React.FC<{
         <div className="p-5">
           <h4
             className="tw-heading-4 !m-0 flex justify-between cursor-pointer hover:opacity-70 select-none"
-            onClick={() => setExpanded(!expanded)}
+            onClick={() => setExpandedMilestone(isExpanded ? null : name)}
           >
             {name.toUpperCase()}{" "}
             <span>
-              {expanded ? (
+              {isExpanded ? (
                 <svg
                   width="24"
                   height="24"
@@ -306,7 +341,7 @@ const MilestoneDetail: React.FC<{
             </span>
           </h4>
         </div>
-        {expanded && (
+        {isExpanded && (
           <AnimatePresence>
             <motion.div
               initial={{ opacity: 0 }}
@@ -438,6 +473,9 @@ const Overlay: React.FC<{
   color2: string | null;
 }> = ({ onClose, openAt, data, anchor, color, color2 }) => {
   const overlayRef = useRef<HTMLDivElement>();
+  const [expandedMilestone, setExpandedMilestone] = useState<string | null>(
+    null
+  );
 
   useEffect(() => {
     function onKeydown(e: KeyboardEvent) {
@@ -455,7 +493,12 @@ const Overlay: React.FC<{
     if (anchor) {
       const el = document.getElementById(anchor);
       if (el) {
-        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (anchor === "Past features") {
+          setExpandedMilestone(anchor);
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
       }
     }
   }, [anchor, color]);
@@ -531,6 +574,8 @@ const Overlay: React.FC<{
                         status={milestone.status}
                         color={color}
                         color2={color2}
+                        expandedMilestone={expandedMilestone}
+                        setExpandedMilestone={setExpandedMilestone}
                       />
                     );
                   })}

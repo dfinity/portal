@@ -331,8 +331,8 @@ const RoadmapPage: React.FC = () => {
 
   return (
     <Layout
-      title="Technical Roadmap"
-      description="Explore the DFINITY Foundation's latest R&D roadmap and discover our ongoing efforts to enhance the Internet Computer's blockchain technology. Stay updated with our advancements in efficiency, speed, and user-friendliness across the Internet Computer stack."
+      title="Roadmap"
+      description="Explore the ICP roadmap, focussing on contributions by the DFINITY foundation. The roadmap is split into nine workstreams, each highlighting past achievements, upcoming milestones, and features that are further into the future and not yet scoped in detail."
       editPath="https://github.com/dfinity/portal/tree/master/roadmap"
     >
       <style>{css}</style>
@@ -343,15 +343,13 @@ const RoadmapPage: React.FC = () => {
           <DarkHeroStyles bgColor="#0a0023"></DarkHeroStyles>
           <div className="container-10 pt-12 mb-60 md:mb-52 md:pt-36 relative z-10">
             <div className="md:w-7/10">
-              <h1 className="tw-heading-3 md:tw-heading-2 mb-6">
-                Technical Roadmap
-              </h1>
+              <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Roadmap</h1>
               <p className="tw-lead-sm md:tw-lead mb-6 md:w-8/10">
-                Explore the DFINITY Foundation's latest R&D roadmap and discover
-                our ongoing efforts to enhance the Internet Computer's
-                blockchain technology. Stay updated with our advancements in
-                efficiency, speed, and user-friendliness across the Internet
-                Computer stack.
+                Explore the ICP roadmap, focussing on contributions by the
+                DFINITY foundation. The roadmap is split into nine workstreams,
+                each highlighting past achievements, upcoming milestones, and
+                features that are further into the future and not yet scoped in
+                detail.
               </p>
               <Link
                 to="/"
@@ -361,16 +359,7 @@ const RoadmapPage: React.FC = () => {
               </Link>
             </div>
           </div>
-          {/* <div className="container-12 relative z-1 h-[200px] md:h-0 pointer-events-none">
-            <div className="absolute w-10/12 sm:w-5/12 left-1/2 translate-y-1/2 -translate-x-[50%] bottom-1/2 md:left-0 md:absolute md:w-5/12 md:bottom-0 md:translate-x-[130%] md:translate-y-2/12">
-              <img
-                src="/img/decentralized-ai/aiheader.svg"
-                alt="Start building on Internet Identity"
-                className="w-full max-w-none"
-                loading="lazy"
-              />
-            </div>
-          </div> */}
+
           <div className="container-12 relative">
             <div className="absolute w-[115%] sm:w-7/12 left-1/12 translate-y-5/12 -translate-x-[10%] bottom-1/2 md:left-0 md:w-6/12 md:bottom-0 md:translate-x-[110%] md:translate-y-1/12">
               <img
