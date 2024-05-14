@@ -523,7 +523,6 @@ const sidebars = {
                 "developer-docs/web-apps/user-login/internet-identity/alternative-origins",
               ],
             },
-          {
             "developer-docs/web-apps/user-login/nfid",
             "developer-docs/web-apps/user-login/email-password",
           ],
