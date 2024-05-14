@@ -311,16 +311,20 @@ const MilestoneDetail: React.FC<{
         <Blobs />
         <div className="p-5">
           <h4
-            className="tw-heading-4 !m-0 flex justify-between cursor-pointer hover:opacity-70 select-none"
+            className="tw-heading-5 md:tw-heading-3 !m-0 flex justify-between cursor-pointer hover:opacity-70 select-none"
             onClick={() => setExpandedMilestone(isExpanded ? null : name)}
           >
-            <span>
+            <div className="flex">
               {" "}
               {name.toUpperCase()}{" "}
-              <span className="font-thin  text-[1.2rem] md:text-[2rem] md:ml-2 align-bottom ">
-                {elements.length > 0 && !isExpanded && elements.length}
-              </span>
-            </span>
+              {elements.length > 0 && !isExpanded && (
+                <span className=" flex justify-center items-center rounded-2xl px-3 py-2 h-7 text-black bg-white ml-3 align-text-bottom translate-y-1/12 md:translate-y-5/12 ">
+                  <span className=" text-[1.2rem] md:tw-lead ">
+                    {elements.length}
+                  </span>
+                </span>
+              )}
+            </div>
 
             <span>
               {isExpanded ? (
@@ -392,7 +396,9 @@ const MilestoneDetail: React.FC<{
       >
         <Blobs />
         <div className="p-5">
-          <h4 className="tw-heading-4 mb-3">{name.toUpperCase()}</h4>
+          <h4 className="tw-heading-5 md:tw-heading-3 mb-3">
+            {name.toUpperCase()}
+          </h4>
         </div>
         <div className="m-1">
           <div className="grid gap-1 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
@@ -432,7 +438,7 @@ const MilestoneDetail: React.FC<{
       <div className="p-5 relative z-3">
         <div className="md:grid md:grid-cols-[6fr,10fr] gap-2">
           <div>
-            <h4 className="tw-heading-4 md:tw-heading-3 mb-2">
+            <h4 className="tw-heading-5 md:tw-heading-3 mb-2">
               {name.toUpperCase()}
             </h4>
             {eta && eta != "none" && (
