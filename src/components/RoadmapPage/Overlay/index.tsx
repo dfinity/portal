@@ -317,7 +317,7 @@ const MilestoneDetail: React.FC<{
             <span>
               {" "}
               {name.toUpperCase()}{" "}
-              <span className="font-thin md:ml-3">
+              <span className="font-thin  text-[1.2rem] md:text-[2rem] md:ml-2 align-bottom ">
                 {elements.length > 0 && !isExpanded && elements.length}
               </span>
             </span>
@@ -432,11 +432,15 @@ const MilestoneDetail: React.FC<{
       <div className="p-5 relative z-3">
         <div className="md:grid md:grid-cols-[6fr,10fr] gap-2">
           <div>
-            <h4 className="tw-heading-4 mb-2">{name.toUpperCase()}</h4>
-            <p className="tw-paragraph mb-2">
-              <span className="text-white/60">Milestone</span>{" "}
-              {eta === "none" || !eta ? "" : eta}
-            </p>
+            <h4 className="tw-heading-4 md:tw-heading-3 mb-2">
+              {name.toUpperCase()}
+            </h4>
+            {eta && eta != "none" && (
+              <p className="tw-paragraph mb-2">
+                <span className="text-white/60">Due Date</span> {eta}
+              </p>
+            )}
+
             <p className="tw-paragraph font-bold mb-2">{subtitle}</p>
           </div>
           <div>

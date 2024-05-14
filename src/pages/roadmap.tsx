@@ -209,8 +209,7 @@ const milestoneComponent = (
               <p className="text-xs mb-0">
                 {milestone.eta && milestone.eta != "none" ? (
                   <span>
-                    <span className="opacity-35">Milestone</span>{" "}
-                    {milestone.eta}
+                    <span className="opacity-35">Due Date</span> {milestone.eta}
                   </span>
                 ) : (
                   <span>&nbsp;</span>
@@ -351,13 +350,12 @@ const RoadmapPage: React.FC = () => {
                 the future and not yet scoped in detail, as well as past
                 achievements.
               </p>
-              <MotionLink
-                variants={transitions.item}
-                className="button-outline-white"
-                href=""
+              <Link
+                to="/"
+                className="link-primary !text-white select-none hover:!text-white/70"
               >
-                Read the blog
-              </MotionLink>
+                Roadmap Milestones explained <LinkArrowUpRight />{" "}
+              </Link>
             </div>
           </div>
 
@@ -497,7 +495,7 @@ const RoadmapPage: React.FC = () => {
             <MotionLink
               variants={transitions.item}
               className="button-outline-white"
-              href="https://forum.dfinity.org/t/update-on-the-ic-roadmap-july-2022-summary/14615"
+              href="https://forum.dfinity.org/c/roadmap/29"
             >
               Join the conversation
             </MotionLink>
