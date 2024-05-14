@@ -31,7 +31,7 @@ The issuer API consists of four endpoints:
 
 ### Step 1: Obtain a consent message (`vc_consent_message`)
 
-First, the user must send a consent message to the issuer API endpoint `vc_consent_message` through the identity provider. A consent message is an approval from the user to validate that they consent to the issuing of a VC.
+First, the user must send a consent message to the issuer API endpoint `vc_consent_message` through the identity provider. A consent message is a text shown to the user to confirm that they consent to the issuing of a VC.
 
 An example implementation in Rust can be found below:
 
@@ -39,27 +39,31 @@ An example implementation in Rust can be found below:
 pub fn get_vc_consent_message_en(
     credential_spec: &CredentialSpec,
 ) -> Result<Icrc21ConsentInfo, Icrc21Error> {
-    match verify_spec_and_get_group_name(credential_spec) {
-        Err(err) => Err(Icrc21Error::ConsentMessageUnavailable(Icrc21ErrorInfo {
-            description: err,
-        })),
-        Ok((group_name, _owner)) => Ok(Icrc21ConsentInfo {
-            consent_message: format!("# \"{}\"", group_name),
+    match verify_credential_spec(credential_spec) {
+        Ok(SupportedCredentialType::EarlyAdopter(since_year)) => Ok(Icrc21ConsentInfo {
+            consent_message: format!("You became an early adopter in {}.", since_year),
             language: "en".to_string(),
         }),
+        Ok(SupportedCredentialType::EventAttendance(event_name)) => Ok(Icrc21ConsentInfo {
+            consent_message: format!("You have attended the event {}.", event_name),
+            language: "en".to_string(),
+        }),
+        Err(err) => Err(Icrc21Error::ConsentMessageUnavailable(Icrc21ErrorInfo {
+            description: format!("Credential spec not supported: {:?}", err),
+        })),
     }
 }
 ```
 
-If the response is an approval, the identity provider returns the consent message to the issuer.
-
 ### Step 2: Implement a derivation origin (`derivation_origin`)
 
-Next, the issuer API endpoint `derivation_origin` enables support of the [alternative derivation origins](https://internetcomputer.org/docs/current/references/ii-spec#alternative-frontend-origins) feature.
-
-A derivation origin is an alternative URL that can be obtained by the identity provider for the user's principal. If the issuer does not implement alternative derivation origins, the identity provider will return the default value of the canister's URL (`https://<issuer-canister-id>.icp0.io`).
+Next, the issuer API endpoint `derivation_origin` is called by the identity provider to obtain an URL to be used as the derivation origin for user's principal.
 
 This endpoint verifies that a user's principal, if issued by an alternative origin, is valid and can be issued a verifiable credential.
+
+If the issuer relies on the [alternative derivation origins](/docs/current/references/ii-spec#alternative-frontend-origins) feature, the endpoint must return the same value for the `derivationOrigin` when logging in.
+
+If the issuer doesn't rely on alternative derivation origins, then it must return the canister's URL: `https://<issuer-canister-id>.icp0.io`.
 
 An example implementation in Rust can be found below:
 
@@ -87,26 +91,11 @@ The returned derivation origin is subject to verification via `.well-known/ii-al
 
 ### Step 3: Prepare the credentials (`prepare_credential`)
 
-Before a credential can be issued, the request for the credential must be checked for validity using the `prepare_credential` API endpoint. Once it has been validated, then the actual VC can be prepared. The request is validated through the `signed_id_alias.credential_jws` token. If this check is successful, the credential data is prepared and returned in `PreparedCredentialData.prepared_context`.
+Before a credential can be issued, the request for the credential must be checked for validity using the `prepare_credential` API endpoint. The objective of this endpoint is to check the validity of the request, and upon success, prepare the actual credential requested by the user.
 
-An example implementation in Rust can be found below:
+For more details on how to validate the request or create the actual credential, check out the [VC specification](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md).
 
-```rust
-fn prepare_credential_jwt(
-    credential_spec: &CredentialSpec,
-    alias_tuple: &AliasTuple,
-) -> Result<String, IssueCredentialError> {
-    let (group_name, owner) = verify_spec_and_get_group_name(credential_spec)
-        .map_err(IssueCredentialError::UnsupportedCredentialSpec)?;
-    GROUPS.with_borrow(|groups| {
-        verify_principal_is_member(alias_tuple.id_dapp, group_name, owner, groups)
-    })?;
-    Ok(verified_member_credential(
-        alias_tuple.id_alias,
-        credential_spec,
-    ))
-}
-```
+An example implementation can be found in the [verifiable credentials playground example](https://github.com/dfinity/vc-playground/blob/b2f8cd5f5397b7b355b6503df5af3789834b79e9/issuer/src/main.rs#L557).
 
 :::info
 The value of `prepared_context` is used to transfer information between the `prepare_credential` and `get_credential` steps. It is up to the issuer API to decide on the content of this field since the issuer API creates `prepared_context` and is the only entity that consumes it.
@@ -119,65 +108,13 @@ For example, when using [canister signatures](https://internetcomputer.org/docs/
 
 Lastly, the issuer API endpoint `get_credential` is used to issue the credential requested by the user. The same checks used to prepare the credential are ran again, with an additional verify step to confirm that `prepared_context` is consistent with `prepare_credential`. If successful, the issuer API returns the signed credential in JWS-format.
 
-An example implementation in Rust can be found below:
-
-```rust
-#[query]
-#[candid_method(query)]
-fn get_credential(req: GetCredentialRequest) -> Result<IssuedCredentialData, IssueCredentialError> {
-    if let Err(err) = authorize_vc_request(&req.signed_id_alias, &caller(), time().into()) {
-        return Result::<IssuedCredentialData, IssueCredentialError>::Err(err);
-    };
-    let prepared_context = match req.prepared_context {
-        Some(context) => context,
-        None => {
-            return Result::<IssuedCredentialData, IssueCredentialError>::Err(internal_error(
-                "missing prepared_context",
-            ))
-        }
-    };
-    let credential_jwt = match String::from_utf8(prepared_context.into_vec()) {
-        Ok(s) => s,
-        Err(_) => {
-            return Result::<IssuedCredentialData, IssueCredentialError>::Err(internal_error(
-                "invalid prepared_context",
-            ))
-        }
-    };
-    let signing_input =
-        vc_signing_input(&credential_jwt, &CANISTER_SIG_PK).expect("failed getting signing_input");
-    let message_hash = vc_signing_input_hash(&signing_input);
-    let sig_result = SIGNATURES.with(|sigs| {
-        let sig_map = sigs.borrow();
-        let certified_assets_root_hash = ASSETS.with_borrow(|assets| assets.root_hash());
-        sig_map.get_signature_as_cbor(
-            &CANISTER_SIG_SEED,
-            message_hash,
-            Some(certified_assets_root_hash),
-        )
-    });
-    let sig = match sig_result {
-        Ok(sig) => sig,
-        Err(e) => {
-            return Result::<IssuedCredentialData, IssueCredentialError>::Err(
-                IssueCredentialError::SignatureNotFound(format!(
-                    "signature not prepared or expired: {}",
-                    e
-                )),
-            );
-        }
-    };
-    let vc_jws =
-        vc_jwt_to_jws(&credential_jwt, &CANISTER_SIG_PK, &sig).expect("failed constructing JWS");
-    Result::<IssuedCredentialData, IssueCredentialError>::Ok(IssuedCredentialData { vc_jws })
-}
-```
+An example implementation can be found in the [verifiable credentials playground example](https://github.com/dfinity/vc-playground/blob/b2f8cd5f5397b7b355b6503df5af3789834b79e9/issuer/src/main.rs#L557).
 
 ## Resources
 
 - [Verifiable credentials specification](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md).
 
-- [Issuer demo](https://github.com/dfinity/vc-playground/blob/main/issuer/src/main.rs).
+- [Relying party and issuer demo](https://github.com/dfinity/vc-playground/blob/main/issuer/src/main.rs).
 
 - [Verifiable credentials playground: Issuer](https://metaissuer.vc/).
 
