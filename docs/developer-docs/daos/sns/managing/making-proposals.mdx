@@ -603,19 +603,22 @@ quill send message.json
 
 ### `ManageLedgerParameters`
 The proposal `ManageLedgerParameters` can be used to update some of the SNS ledger canister's parameters.
-For now, the only ledger parameter that can be changed is the transfer fee.
+The ledger parameters that can be changed are the transfer fee, the token symbol, the token name, and the token logo.
 Later, additional paramters might be added.
 Fields where a value is set to `None` will remain unchanged.
 
 #### Relevant type signatures
 
 ```candid
-  type ManageLedgerParameters = record {
-    transfer_fee : opt nat64
-  };
+type ManageLedgerParameters = record {
+  token_symbol : opt text;
+  transfer_fee : opt nat64;
+  token_logo : opt text;
+  token_name : opt text;
+};
 ```
 
-Example in bash:
+Example in bash that only changes the transfer fee:
 
 ```bash
 quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
