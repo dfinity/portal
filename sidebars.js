@@ -761,6 +761,7 @@ const sidebars = {
             },
           ],
         },
+        "developer-docs/defi/token_integrations/index",
         {
           type: "category",
           label: "Asset custody",
