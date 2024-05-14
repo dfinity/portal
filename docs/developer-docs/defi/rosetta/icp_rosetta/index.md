@@ -55,7 +55,7 @@ docker run \
 ```
 
 :::info
-The first time you run the command, it might take some time for the node to catch up to the current link of the chain.
+The first time you run the command, it might take some time for the node to catch up to the current tip of the chain.
 When the node is caught up, you should see output similar to the following:
 
 You are all caught up to block height 109
