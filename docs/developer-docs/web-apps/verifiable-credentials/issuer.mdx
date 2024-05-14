@@ -110,6 +110,48 @@ Lastly, the issuer API endpoint `get_credential` is used to issue the credential
 
 An example implementation can be found in the [verifiable credentials playground example](https://github.com/dfinity/vc-playground/blob/b2f8cd5f5397b7b355b6503df5af3789834b79e9/issuer/src/main.rs#L557).
 
+## Recommended conventions
+
+An issuer may follow the convention below for an easier verification of the returned credentials.
+
+Given a credential specification such as:
+
+```
+    "credentialSpec": {
+        "credentialType": "SomeVerifiedProperty",
+        "arguments": {
+            "argument_1": "value_1",
+            "another_argument": 42,
+        }
+```
+
+The returned JWT should contain a property named by the value of `credentialType` in `credentialSubject` from the specification, with key-value entries listing the arguments from the specification, namely:
+
+```
+    "SomeVerifiedProperty": {
+        "argument_1": "value_1",
+        "another_argument": 42,
+    }
+```
+
+For example, for a `VerifiedAdult` credential, you would use the following credential specification: 
+
+```
+    "credentialSpec": {
+        "credentialType": "VerifiedAdult",
+        "arguments": {
+            "minAge": 18,
+    }
+```
+
+A compliant issuer would issue a VC that contains `credentialSubject` with the property:
+
+```
+    "VerifiedAdult": {
+        "minAge": 18,
+    }
+```
+
 ## Resources
 
 - [Verifiable credentials specification](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md).
