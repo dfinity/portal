@@ -346,17 +346,18 @@ const RoadmapPage: React.FC = () => {
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Roadmap</h1>
               <p className="tw-lead-sm md:tw-lead mb-6 md:w-8/10">
                 Explore the ICP roadmap, focussing on contributions by the
-                DFINITY foundation. The roadmap is split into nine workstreams,
-                each highlighting past achievements, upcoming milestones, and
-                features that are further into the future and not yet scoped in
-                detail.
+                DFINITY foundation. The roadmap is split into nine themes, each
+                highlighting upcoming milestones, features that are further into
+                the future and not yet scoped in detail, as well as past
+                achievements.
               </p>
-              <Link
-                to="/"
-                className="link-primary !text-white select-none hover:!text-white/70"
+              <MotionLink
+                variants={transitions.item}
+                className="button-outline-white"
+                href=""
               >
-                Link to blog <LinkArrowUpRight />{" "}
-              </Link>
+                Read the blog
+              </MotionLink>
             </div>
           </div>
 

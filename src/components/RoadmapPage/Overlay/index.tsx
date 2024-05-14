@@ -221,7 +221,7 @@ const MilestoneCard: React.FC<Element> = ({
             )}
             {status === "future" && (
               <Tooltip
-                tooltip="Future"
+                tooltip="Planned"
                 className="text-center bg-black/75 rounded-lg whitespace-nowrap	"
               >
                 <FutureIcon />

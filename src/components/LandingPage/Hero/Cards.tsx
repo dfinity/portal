@@ -36,13 +36,14 @@ export const CardsSection = () => {
       className="container-10 grid grid-cols-1 md:grid-cols-2 gap-2"
       variants={transitions.container}
     >
-      <CardWithImage href="/chainfusion" image="/img/home/btc-eth.webp">
+      <CardWithImage
+        href="/roadmap"
+        image="/img/home/roadmap-illustration.webp"
+      >
         <div className="tw-heading-7 md:tw-heading-6 mb-2">
-          Native Multi-chain
+          The Future of ICP
         </div>
-        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
-          Chain Fusion Technology
-        </h2>
+        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Roadmap</h2>
       </CardWithImage>
 
       <CardWithImage href="/ai" image="/img/home/ai.webp">
@@ -52,23 +53,18 @@ export const CardsSection = () => {
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Decentralized AI</h2>
       </CardWithImage>
 
+      <CardWithImage href="/chainfusion" image="/img/home/btc-eth.webp">
+        <div className="tw-heading-7 md:tw-heading-6 mb-2">
+          Native Multi-chain
+        </div>
+        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
+          Chain Fusion Technology
+        </h2>
+      </CardWithImage>
+
       <CardWithImage href="/ecosystem" image="/img/home/ecosystem-card.webp">
         <div className="tw-heading-7 md:tw-heading-6 mb-2">Ecosystem</div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Ecosystem links</h2>
-      </CardWithImage>
-
-      <CardWithImage
-        href="https://deck.internetcomputer.org"
-        image="/img/home/deck-astronaut.webp"
-      >
-        <div className="tw-heading-7 md:tw-heading-6 mb-2">
-          Online Deck [ ICP hosted ]
-        </div>
-        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
-          Cypherspace
-          <br />
-          as cloud 3.0
-        </h2>
       </CardWithImage>
 
       <CardWithImage href="/docs/current/home" image="/img/home/dev-card.webp">
