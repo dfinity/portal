@@ -181,6 +181,8 @@ function parseAirtableData(records) {
   return records.map((r) => {
     // Sanitize the event link to prevent bad links from breaking the website build
     let eventLink = "#";
+    let startDate,
+      endDate = new Date().toISOString();
 
     try {
       eventLink = new URL(r.fields["Event Link"]).toString();
@@ -188,6 +190,20 @@ function parseAirtableData(records) {
       console.warn(
         `Failed to parse event link as url. Got: ${r.fields["Event Link"]}`
       );
+    }
+
+    try {
+      startDate = new Date(r.fields["Start date"]).toISOString();
+    } catch (err) {
+      console.warn(
+        `Failed to parse start date. Got: ${r.fields["Start date"]}`
+      );
+    }
+
+    try {
+      endDate = new Date(r.fields["End Date"]).toISOString();
+    } catch (err) {
+      console.warn(`Failed to parse end date. Got: ${r.fields["End Date"]}`);
     }
 
     return {
@@ -199,8 +215,8 @@ function parseAirtableData(records) {
         : null,
       eventLink,
       topic: r.fields["Topic"],
-      startDate: r.fields["Start date"],
-      endDate: r.fields["End Date"],
+      startDate,
+      endDate,
       regions: r.fields["Regions"], // continent
       country: r.fields["Country"],
       city: r.fields["City"],

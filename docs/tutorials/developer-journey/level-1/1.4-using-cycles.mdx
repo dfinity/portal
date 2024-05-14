@@ -98,7 +98,7 @@ For new developers, a free cycles coupon can be obtained and redeemed for 10T fr
 
 This coupon is good for new developers since it doesn't require that you transfer ICP tokens into cycles, and doesn't require a purchase of tokens to get started.
 
-First, navigate to the website <https://faucet.dfinity.org>.
+First, navigate to the website [https://faucet.dfinity.org](https://faucet.dfinity.org).
 
 To obtain a coupon code to use the cycles faucet, you need to put in a written request for the coupon via the [DFINITY dev official Discord](https://discord.gg/jnjVVQaE2C) server.
 
@@ -124,7 +124,7 @@ Once the survey has been completed, our team will review your submission. If acc
 Please ensure that your Discord settings are set to allow direct messages from other users. If you do not have this setting enabled, you will not receive a direct message from the faucet bot.
 :::
 
-Head back to the /<https://faucet.dfinity.org/> webpage.
+Head back to the [https://faucet.dfinity.org](https://faucet.dfinity.org) webpage.
 
 Now, click **NEXT STEP** to continue.
 
@@ -139,6 +139,14 @@ Return to your terminal window. If you closed the window in the process, run the
 ```bash
 dfx start --clean --background
 dfx identity use DevJourney
+```
+
+This workflow utilizes the **cycles ledger** feature. If you'd like to use the **cycles wallet** instead, [view the cycles wallet documentation](/docs/current/developer-docs/getting-started/cycles/cycles-wallet).
+
+To use the cycles ledger, you will need [`dfx` version 0.19.0](/docs/current/developer-docs/getting-started/install/), and you will need to set the following environmental variable:
+
+```
+DFX_CYCLES_LEDGER_SUPPORT_ENABLE=1
 ```
 
 Then, redeem your coupon with the command:

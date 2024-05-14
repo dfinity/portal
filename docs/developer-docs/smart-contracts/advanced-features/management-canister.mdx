@@ -28,14 +28,14 @@ Certain functionalities, such as threshold signing or access to the bitcoin APIs
 
 :::
 
-The management canister can also be called by users. Most methods are only permitted to be called by the [controllers](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/maintain/control/) of the canister. Certain calls can only be made by a canister and are not available for users (e.g. `raw_rand` or `deposit_cycles`). When a user makes a call to the management canister, the cost of processing the request is charged to the canister that is being managed.
+The management canister can also be called by users. Most methods are only permitted to be called by the [controllers](/docs/current/developer-docs/smart-contracts/maintain/control/) of the canister. Certain calls can only be made by a canister and are not available for users (e.g. `raw_rand` or `deposit_cycles`). When a user makes a call to the management canister, the cost of processing the request is charged to the canister that is being managed.
 
 
-[Read more about the complete interface of the management canister.](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-candid)
+[Read more about the complete interface of the management canister.](/docs/current/references/ic-interface-spec#ic-candid)
 
 ## Why does the management canister exist?
 
-You might be familiar with the [System API](https://internetcomputer.org/docs/current/references/ic-interface-spec#system-api) that allows canisters to interact with other canisters and perform special actions like sending messages or transferring cycles. A natural expectation would be to provide canister management through the same System API. However, the System API only works for synchronous calls that can be returned immediately. Some of the canister management operations are asynchronous in nature – the controlled canister might not even be in the same subnet as the controller. Therefore, an asynchronous API is needed.
+You might be familiar with the [System API](/docs/current/references/ic-interface-spec#system-api) that allows canisters to interact with other canisters and perform special actions like sending messages or transferring cycles. A natural expectation would be to provide canister management through the same System API. However, the System API only works for synchronous calls that can be returned immediately. Some of the canister management operations are asynchronous in nature – the controlled canister might not even be in the same subnet as the controller. Therefore, an asynchronous API is needed.
 
 
 Providing this functionality through a virtual canister, i.e. the management canister, allows for ICP to reuse a lot of the mechanics that are already available and provides a familiar approach to users and canisters to access this API through inter-canister calls.
@@ -123,15 +123,15 @@ The most commonly used APIs of the management canister are those that are relate
 
 ### Signing and submitting Bitcoin transactions
 
-One of the special features of ICP is its direct integration with the [Bitcoin](/docs/current/developer-docs/integrations/bitcoin/) network. This is exposed to users through a set of APIs on the management canister that allow users to sign transactions using [threshold ECDSA](/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa) signatures and submit transactions to the Bitcoin network, all done through smart contracts on ICP. The relevant APIs are [sign_with_ecdsa](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-sign_with_ecdsa) and [bitcoin_send_transaction](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-bitcoin_send_transaction).
+One of the special features of ICP is its direct integration with the [Bitcoin](/docs/current/developer-docs/integrations/bitcoin/) network. This is exposed to users through a set of APIs on the management canister that allow users to sign transactions using [threshold ECDSA](/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa) signatures and submit transactions to the Bitcoin network, all done through smart contracts on ICP. The relevant APIs are [sign_with_ecdsa](/docs/current/references/ic-interface-spec#ic-sign_with_ecdsa) and [bitcoin_send_transaction](/docs/current/references/ic-interface-spec#ic-bitcoin_send_transaction).
 
 
-[Read more about ICP's direct integration with Bitcoin.](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/)
+[Read more about ICP's direct integration with Bitcoin.](/docs/current/developer-docs/integrations/bitcoin/)
 
 ### HTTPS outcalls
 
-One more special feature of ICP is the ability for canisters to make http requests to off-chain systems using the [HTTPS outcalls](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview) feature. This is available through the management canister's [http_request](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-http_request) API. HTTPS outcalls enable canisters to obtain off-chain data, call RPC services of other blockchain networks, or interact with Web2 services and enterprise IT systems off-chain.
+One more special feature of ICP is the ability for canisters to make http requests to off-chain systems using the [HTTPS outcalls](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview) feature. This is available through the management canister's [http_request](/docs/current/references/ic-interface-spec#ic-http_request) API. HTTPS outcalls enable canisters to obtain off-chain data, call RPC services of other blockchain networks, or interact with Web2 services and enterprise IT systems off-chain.
 
 ### Retrieving randomness
 
-Canisters on ICP can request random bits via the management canister's [raw_rand](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-raw_rand) API. These random bits come from ICP's own random tape that is also used in its consensus algorithm. A key property of the randomness returned by the management canister is that it's unknown at the time of request submission. ICP will only resolve this call in the next execution round (using the latest value coming from its random tape), which makes it impossible to predict the value of these random bits.
+Canisters on ICP can request random bits via the management canister's [raw_rand](/docs/current/references/ic-interface-spec#ic-raw_rand) API. These random bits come from ICP's own random tape that is also used in its consensus algorithm. A key property of the randomness returned by the management canister is that it's unknown at the time of request submission. ICP will only resolve this call in the next execution round (using the latest value coming from its random tape), which makes it impossible to predict the value of these random bits.

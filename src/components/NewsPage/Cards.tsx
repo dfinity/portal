@@ -33,7 +33,9 @@ export const FeaturedNewsCard: React.FC<{
 };
 
 export const NewsCard: React.FC<{
-  news: Omit<Press, "tags" | "date" | "id" | "details">;
+  news: Omit<Press, "tags" | "date" | "id" | "details"> & {
+    details?: string;
+  };
   linkLabel?: string;
 }> = ({ news, linkLabel = "Read Now" }) => {
   return (
@@ -50,6 +52,11 @@ export const NewsCard: React.FC<{
         {news.press && news.dateHuman && (
           <div className="tw-paragraph-sm text-black/60 mb-6">
             {news.dateHuman} {news.press && "by " + news.press}
+          </div>
+        )}
+        {news.details && (
+          <div className="tw-paragraph-sm text-black/60 mb-6">
+            {news.details}
           </div>
         )}
         <div className="">

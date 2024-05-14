@@ -21,7 +21,7 @@ Chain fusion augments smart contracts and decentralized applications (dapps) on 
 
 - **Autonomy**: Unlike traditional blockchains, smart contracts on ICP  are capable of scheduling messages for themselves at any given interval. This functionality allows smart contracts to operate without the need for user inputs or arbitrage to maintain their services. Chain fusion provides this autonomy to non-ICP smart contracts without sacrificing decentralization.
 
-- **Interoperability with Web2**: ICP’s HTTP outcall feature permits canisters to reach out to any web service in a replicated fashion, using deterministic response results. Chain fusion brings this Web2-Web3 interoperability to non-ICP dapps. 
+- **Interoperability with Web2**: ICP’s HTTP outcall feature permits canisters to reach out to any web service in a replicated fashion, using deterministic response results. Chain fusion brings this Web2-Web3 interoperability to non-ICP dapps.
 
 The following examples illustrate the variety of use cases enabled by chain fusion:
 
@@ -63,7 +63,7 @@ Smart contracts on ICP are called canisters. In addition to unparalleled compute
 A key feature of the IC protocol’s chain fusion capabilities is [threshold signing](/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa/). This feature allows canisters to have a pair of public and private keys. The private key is divided into small shares and distributed among nodes of a signing subnet.
 
 :::info
-Threshold signing is also referred to as [chain-key cryptography](https://internetcomputer.org/docs/current/concepts/glossary/#chain-key).
+Threshold signing is also referred to as [chain-key cryptography](/docs/current/concepts/glossary/#chain-key).
 :::
 
 ### Integrations
@@ -88,7 +88,7 @@ There are several building blocks available to augment non-ICP smart contracts w
 
 - **Chain-key tokens**: Using the primitives described above, DFINITY has built two canisters implementing the [ICRC-1](https://github.com/dfinity/ICRC) token standard to represent native Bitcoin and Ethereum tokens on ICP: [ckBTC](/docs/current/developer-docs/multi-chain/bitcoin/ckbtc) and [ckETH](/docs/current/developer-docs/multi-chain/ethereum/cketh). These tokens are digital twins of their corresponding native token and are backed 1:1 by the native assets which are managed 100% on-chain through a canister smart contract without any intermediaries.
 
-- **[EVM RPC canister](/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/)**: A canister smart contract providing an on-chain API for communicating with [Ethereum](https://ethereum.org/en/) or any other [EVM blockchain](https://chainlist.org/?testnets=true).
+- **[EVM RPC canister](/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister)**: A canister smart contract providing an on-chain API for communicating with [Ethereum](https://ethereum.org/en/) or any other [EVM blockchain](https://chainlist.org/?testnets=true).
 
 - **[tECDSA signing](/docs/current/references/t-ecdsa-how-it-works/)**: An ICP service implementing the threshold ECDSA protocol by Groth and Shoup as described in their [Eurocrypt 2022 paper](https://eprint.iacr.org/2021/1330).
 

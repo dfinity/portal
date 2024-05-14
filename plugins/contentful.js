@@ -34,40 +34,58 @@ const contentfulPlugin = async function () {
           host: CONTENTFUL_HOST,
         });
 
-        const pressEntries = await client.getEntries({
-          content_type: "press",
-        });
+        const pressEntries = await client.getEntries({ content_type: "press" });
 
-        const press = pressEntries.items.map((item) => {
-          let parsedDate = parse(item.fields.date, "MMMM y", new Date());
-          if (!isValid(parsedDate))
-            parsedDate = parse(item.fields.date, "MMM y", new Date());
-          if (!isValid(parsedDate))
-            parsedDate = parse(item.fields.date, "MMMM d y", new Date());
-          if (!isValid(parsedDate))
-            parsedDate = parse(item.fields.date, "MMM d y", new Date());
-          if (!isValid(parsedDate))
-            parsedDate = parse(item.fields.date, "d MMMM y", new Date());
-          if (!isValid(parsedDate))
-            parsedDate = parse(item.fields.date, "d MMM y", new Date());
+        const press = pressEntries.items
+          .map((item) => {
+            let parsedDate = parse(item.fields.date, "MMMM y", new Date());
+            if (!isValid(parsedDate))
+              parsedDate = parse(item.fields.date, "MMM y", new Date());
+            if (!isValid(parsedDate))
+              parsedDate = parse(item.fields.date, "MMMM d y", new Date());
+            if (!isValid(parsedDate))
+              parsedDate = parse(item.fields.date, "MMMM d, yyyy", new Date());
+            if (!isValid(parsedDate))
+              parsedDate = parse(item.fields.date, "MMM d y", new Date());
+            if (!isValid(parsedDate))
+              parsedDate = parse(item.fields.date, "d MMMM y", new Date());
+            if (!isValid(parsedDate))
+              parsedDate = parse(item.fields.date, "d MMM y", new Date());
 
-          if (!isValid(parsedDate)) {
-            throw new Error("Invalid date: " + item.fields.date);
-          }
+            if (!isValid(parsedDate)) {
+              return null;
+            }
 
-          const normalizedDate = format(parsedDate, "MMM d, y");
+            let url;
+            try {
+              url = new URL(item.fields.url);
+              if (url.host === "airtable.com") {
+                return null;
+              }
+            } catch (_) {
+              return null;
+            }
 
-          return {
-            id: item.sys.id,
-            title: item.fields.title,
-            details: item.fields.details,
-            date: format(parsedDate, "y-MM-dd"),
-            dateHuman: normalizedDate,
-            press: item.fields.press,
-            url: item.fields.url,
-            tags: item.fields.tags || [],
-          };
-        });
+            const normalizedDate = format(parsedDate, "MMM d, y");
+
+            return {
+              id: item.sys.id,
+              title: item.fields.title,
+              details: item.fields.details,
+              date: format(parsedDate, "y-MM-dd"),
+              dateHuman: normalizedDate,
+              press: item.fields.press,
+              url: url.href,
+              tags: item.fields.tags || [],
+              previewImageUrl:
+                item.fields.previewImage &&
+                item.fields.previewImage.fields &&
+                item.fields.previewImage.fields.file
+                  ? item.fields.previewImage.fields.file.url
+                  : null,
+            };
+          })
+          .filter((item) => item !== null);
 
         // from oldest to newest
         press.sort((a, b) => a.date.localeCompare(b.date));
@@ -83,7 +101,11 @@ const contentfulPlugin = async function () {
 
         // assign images to press articles, old articles keep their images, new articles get new images
         press.forEach((news, i) => {
-          news.imageUrl = pressImageUrls[i % pressImageUrls.length];
+          if (news.previewImageUrl) {
+            news.imageUrl = `https:${news.previewImageUrl}`;
+          } else {
+            news.imageUrl = pressImageUrls[i % pressImageUrls.length];
+          }
         });
 
         // reverse the order, so that newest articles get the newest images

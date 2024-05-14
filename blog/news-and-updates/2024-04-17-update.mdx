@@ -1,0 +1,52 @@
+---
+title: Developer weekly update April 17, 2024
+description: In this week's update, we have a new dfx release, new ICRC standards that are ready for the NNS to vote on, and information about Bitcoin halving week. 
+tags: [Devs]
+image: /img/blog/dev-update-blog-april-17.jpg
+---
+
+# Developer weekly update April 17, 2024
+
+Hello developers, and welcome to this week's developer weekly update! In this week's update, we have a new `dfx` release, new ICRC standards that are ready for the NNS to vote on, and information about Bitcoin halving week. Let's get started!
+
+![April 17 2024](../../static/img/blog/dev-update-blog-april-17.jpg)
+
+## `dfx v0.20.0` release
+
+The latest version of `dfx`, v0.20.0, is ready for beta testing and will be released next week. This new release includes:
+
+- New features such as:
+
+    - A new command `dfx schema --for dfx-metadata` that displays the JSON schema of the `dfx` metadata.
+
+    - The `dfx` metadata has been extended with the [`tech_stack`](https://github.com/dfinity/sdk/blob/0.20.0-beta.0/docs/concepts/tech-stack.md) object.
+
+    - The `dfx completion` command has been added, which generates shell completion scripts for bash, elvish, fish, zsh, or PowerShell.
+
+- Bug fixes such as:
+
+    - `CANISTER_CANDID_PATH_<canister name>` is now set properly for remote canisters.
+
+    - `dfx` no longer always creates the `.dfx` directory if `dfx.json` is present.
+
+    - `dfx` only loads `dfx.json` for commands that need it.
+
+You can [read the full release notes](https://github.com/dfinity/sdk/releases/tag/0.20.0-beta.0) or provide feedback on this release [on the developer forum](https://forum.dfinity.org/t/dfx-0-20-0-release/29769).
+
+## NFT standards ICRC-7 and ICRC-37 ready for NNS vote
+
+Two new ICRC standards are ready for their NNS vote! These standards, ICRC-7 and ICRC-37, are standards for NFTs on ICP.
+
+[ICRC-7](https://github.com/dfinity/ICRC/blob/icrc_7_and_37/ICRCs/ICRC-7/ICRC-7.md) is the base standard for NFTs, while [ICRC-37](https://github.com/dfinity/ICRC/blob/icrc_7_and_37/ICRCs/ICRC-37/ICRC-37.md) is an extension of ICRC-7 that defines an approve / transfer_from functionality for NFTs.
+
+You can learn more about these standards on the [developer forum](https://forum.dfinity.org/t/nft-standards-icrc-7-and-icrc-37-ready-for-nns-vote/29618).
+
+## Bitcoin Halving week
+
+Bitcoin Halving is approaching this week on April 19th! To celebrate, the ICP social media accounts are sharing all things Bitcoin and ckBTC, including podcasts, interviews, and community projects. We encourage the ICP community to share their open-source projects using ckBTC or the ICP Bitcoin integration. You can share links to your project on the [developer forum](https://forum.dfinity.org/t/bitcoin-halving-week-share-your-project-updates-on-ckbtc-bitcoin-integration/29717) and our team will review and amplify them across social media channels if possible, or enter the [ckBTC design bounty](https://forum.dfinity.org/t/bnt-16-ckbtc-landing-page-design/29577) due on April 20, 2024.
+
+Be sure to check out the [DFINITY X](https://twitter.com/dfinity?lang=en) and [DFINITYDev X](https://twitter.com/DFINITYDev) accounts to view all the Bitcoin-related content this week!
+
+That'll wrap up this week. Tune back in next week for more developer updates!
+
+-DFINITY

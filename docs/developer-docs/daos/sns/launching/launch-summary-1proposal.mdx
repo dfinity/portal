@@ -11,7 +11,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 ## Overview
 During an SNS launch, a dapp is handed over to the NNS and the NNS both
 creates the SNS canisters and starts a decentralization swap to decentralize the SNS and
-thereby the dapp (see [here](../introduction/sns-launch.mdx)).
+thereby the dapp.
 
 ## SNS launch Stages
 Handing over a dapp's control to a newly created SNS proceeds in the following high
@@ -165,7 +165,7 @@ This means that you are in the following situation:
 
 ### 5. (Automatically) SNS-W deploys SNS canisters.
 As a first step of the automatically triggered
-SNS creation, [SNS-W](../introduction/sns-architecture.mdx#SNS-W)
+SNS creation, [SNS-W](../overview.mdx)
 creates SNS canisters on the SNS subnet.
 At this stage the SNS canisters are not yet initialized with any meaningful values.
 
@@ -213,7 +213,7 @@ This results in the following situation:
 
 
 ### 6. (Automatically) SNS-W sets SNS root as sole controller of dapp.
-Once the SNS canisters are deployed, [SNS-W](../introduction/sns-architecture.mdx#SNS-W)
+Once the SNS canisters are deployed, [SNS-W](../overview.mdx)
 sets the SNS root as the sole controller of the dapp canister(s).
 
 For technical reasons, the NNS root canister was added as the co-controller of the dapp

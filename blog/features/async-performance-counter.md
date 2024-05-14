@@ -46,8 +46,8 @@ async fn example() -> (u64, u64) {
 ❶   call(id(), "nested_call", ())
 ❷       .await;
     do_some_work();
-❶   call(id(), "nested_call", ()) 
-❷       .await; 
+❶   call(id(), "nested_call", ())
+❷       .await;
     do_some_work();
 ❸   (performance_counter(0), performance_counter(1))
 }
@@ -103,7 +103,7 @@ async fn example() -> u64 {
     do_some_work();
     call(id(), "nested_call", ()).await;
     do_some_work();
-    call(id(), "nested_call", ()).await; 
+    call(id(), "nested_call", ()).await;
     do_some_work();
 ❶   performance_counter(1) // i + j + k
 }
@@ -145,4 +145,4 @@ Python:     from kybra import ic
 
 - Backend developers guide: [Optimizing Rust canisters](/docs/current/developer-docs/backend/rust/optimizing).
 
-- Motoko developers guide: [Optimizing canisters](/docs/current/developer-docs/backend/motoko/optimizing).
+- Motoko developers guide: [Optimizing canisters](/docs/current/motoko/main/getting-started/motoko-introduction).

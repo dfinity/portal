@@ -10,10 +10,7 @@ const MotionLink = motion(Link);
 
 const NewsPageLink = () => {
   return (
-    <Link
-      className="link-white link-with-icon"
-      href="https://dfinity.org/events-and-news/#news"
-    >
+    <Link className="link-white link-with-icon" href="/news">
       More News
       <LinkArrowUpRight></LinkArrowUpRight>
     </Link>

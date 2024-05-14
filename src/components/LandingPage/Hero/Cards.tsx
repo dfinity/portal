@@ -36,13 +36,25 @@ export const CardsSection = () => {
       className="container-10 grid grid-cols-1 md:grid-cols-2 gap-2"
       variants={transitions.container}
     >
-      <CardWithImage href="/multichain" image="/img/home/btc-eth.webp">
+      <CardWithImage href="/chainfusion" image="/img/home/btc-eth.webp">
         <div className="tw-heading-7 md:tw-heading-6 mb-2">
           Native Multi-chain
         </div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
           Chain Fusion Technology
         </h2>
+      </CardWithImage>
+
+      <CardWithImage href="/ai" image="/img/home/ai.webp">
+        <div className="tw-heading-7 md:tw-heading-6 mb-2 whitespace-nowrap">
+          AI models as smart contracts
+        </div>
+        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Decentralized AI</h2>
+      </CardWithImage>
+
+      <CardWithImage href="/ecosystem" image="/img/home/ecosystem-card.webp">
+        <div className="tw-heading-7 md:tw-heading-6 mb-2">Ecosystem</div>
+        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Ecosystem links</h2>
       </CardWithImage>
 
       <CardWithImage
@@ -53,23 +65,10 @@ export const CardsSection = () => {
           Online Deck [ ICP hosted ]
         </div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
-          Blockchain
+          Cypherspace
           <br />
           as cloud 3.0
         </h2>
-      </CardWithImage>
-      <CardWithImage href="/ecosystem" image="/img/home/ecosystem-card.webp">
-        <div className="tw-heading-7 md:tw-heading-6 mb-2">Ecosystem</div>
-        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Ecosystem links</h2>
-      </CardWithImage>
-      <CardWithImage
-        href="https://dashboard.internetcomputer.org"
-        image="/img/home/dashboard.webp"
-      >
-        <div className="tw-heading-7 md:tw-heading-6 mb-2 whitespace-nowrap">
-          dashboard.internetcomputer.org
-        </div>
-        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Live stats</h2>
       </CardWithImage>
 
       <CardWithImage href="/docs/current/home" image="/img/home/dev-card.webp">
@@ -78,7 +77,7 @@ export const CardsSection = () => {
       </CardWithImage>
 
       <CardWithImage href="/events" image="/img/home/events-card.webp">
-        <div className="tw-heading-7 md:tw-heading-6 mb-2">Global Events</div>
+        <div className="tw-heading-7 md:tw-heading-6 mb-2">ICP.Hubs</div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
           Meet the community worldwide
         </h2>

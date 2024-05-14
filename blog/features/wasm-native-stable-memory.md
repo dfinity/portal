@@ -6,20 +6,20 @@ image: /img/blog/dev-blog-wasm-native.jpg
 ---
 
 # Wasm-native stable memory
-Wasm-native stable memory is a performance improvement to the Internet Computer’s stable memory interface, which was recently rolled out to all subnets. It provides a 1.5-2x performance improvement to most stable memory workloads and does so in a completely transparent way. 
+Wasm-native stable memory is a performance improvement to the Internet Computer’s stable memory interface, which was recently rolled out to all subnets. It provides a 1.5-2x performance improvement to most stable memory workloads and does so in a completely transparent way.
 
 If you’re already developing canisters that use stable memory, then those canisters will automatically benefit from this performance improvement. If you’re not using stable memory, maybe now’s the time to try it out!
 
 ## What is stable memory?
 
-Stable memory is a data store separate from regular Wasm memory. It is accessed using the [stable memory API](https://internetcomputer.org/docs/current/references/ic-interface-spec#system-api-stable-memory) which allows reading/writing arbitrary bytes. Libraries like [`ic-stable-memory`](https://crates.io/crates/ic-stable-memory) and [`ic-stable-structures`](https://crates.io/crates/ic-stable-structures) also make stable memory ergonomic to use.
+Stable memory is a data store separate from regular Wasm memory. It is accessed using the [stable memory API](/docs/current/references/ic-interface-spec#system-api-stable-memory) which allows reading/writing arbitrary bytes. Libraries like [`ic-stable-memory`](https://crates.io/crates/ic-stable-memory) and [`ic-stable-structures`](https://crates.io/crates/ic-stable-structures) also make stable memory ergonomic to use.
 
 The main reasons to use stable memory are that:
 
 1. It persists across canister upgrades.
 1. It has a capacity over 10x larger than regular Wasm memory.
 
-This means that using stable memory is really the only option when it comes to vertically scaling a dapp (i.e. having a single canister that grows with your dapp). 
+This means that using stable memory is really the only option when it comes to vertically scaling a dapp (i.e. having a single canister that grows with your dapp).
 
 But the downsides of stable memory are that:
 
@@ -35,7 +35,7 @@ Each read from or write to stable memory goes through a system API call, and thi
 The following diagram shows the difference between accessing the main Wasm memory versus stable memory:
 
 ![Original stable memory diagram](/img/blog/wasm-native-stable-memory-diagram-old.png)
- 
+
 ## How Wasm-native stable memory works
 
 Fortunately, the new [multiple memories](https://github.com/WebAssembly/multi-memory/blob/master/proposals/multi-memory/Overview.md) Wasm feature allows a Wasm module to directly address multiple byte arrays, called “memories” in the Wasm spec. We can use this feature to modify calls to the stable memory APIs to directly read or write from a secondary Wasm memory.
