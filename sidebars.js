@@ -509,36 +509,37 @@ const sidebars = {
           ],
         },
         "developer-docs/web-apps/design-dapps",
-        "developer-docs/web-apps/independently-verifying-ic-signatures",
-        "developer-docs/web-apps/obtain-verify-ic-pubkey",
 	{
+          type: "category",
+          label: "User sign-up and login",
+          items: [
+	  {
               type: "category",
               label: "Internet Identity (II)",
               items: [
                 "developer-docs/web-apps/user-login/internet-identity/overview",
                 "developer-docs/web-apps/user-login/internet-identity/creating-ii",
-		 {
-	          type: "category",
-	          label: "Verifiable credentials",
-	          items: [
-	            "developer-docs/web-apps/verifiable-credentials/overview",
-	            "developer-docs/web-apps/verifiable-credentials/how-it-works",
-	            "developer-docs/web-apps/verifiable-credentials/issuer",
-		    "developer-docs/web-apps/verifiable-credentials/relying-party",
-	          ],
-	        },
                 "developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity",
                 "developer-docs/web-apps/user-login/internet-identity/alternative-origins",
               ],
             },
-        {
-          type: "category",
-          label: "User sign-up and login",
-          items: [
+          {
             "developer-docs/web-apps/user-login/nfid",
             "developer-docs/web-apps/user-login/email-password",
           ],
         },
+       {
+	  type: "category",
+	  label: "Verifiable credentials",
+	  items: [
+	    "developer-docs/web-apps/verifiable-credentials/overview",
+	    "developer-docs/web-apps/verifiable-credentials/how-it-works",
+	    "developer-docs/web-apps/verifiable-credentials/issuer",
+	    "developer-docs/web-apps/verifiable-credentials/relying-party",
+	  ],
+	},
+	"developer-docs/web-apps/independently-verifying-ic-signatures",
+        "developer-docs/web-apps/obtain-verify-ic-pubkey",
         {
           type: "category",
           label: "Using HTTP certification",
