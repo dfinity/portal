@@ -77,7 +77,10 @@ If you are looking to verify NNS core canister upgrades apart from regularly che
 **How to verify ledger canister upgrades**
 If you are looking to verify the ledger suite, which includes the ICP ledger and all ICRC ledgers (used for ckBTC, ckETC, ckERC20) apart from regularly checking open proposals, you might want to consider the following information for proposals submitted by the DFINITY foundation:
 
-* For updates to the ICP ledger canister, you can follow [this repository](https://github.com/dfinity/ic/tree/master/rs/rosetta-api/icp_ledger).
+* For updates to the NNS canisters, you can follow [this repository](https://github.com/dfinity/ic/rosetta-api).
+More specifically, the following sub-directories are relevant:
+      - `rs/rosetta-api/icp_ledger` is the  directory for the ICP ledger
+      - `rs/rosetta-api/icrc1/ledger` for the ckBTC, ckETH, and ckERC20 ledgers, where `rs/rosetta-api/icrc1/ledger:ledger_canister` is the Wasm relevant for the ckBTC ledger and `rs/rosetta-api/icrc1/ledger:ledger_canister_u256.wasm` the Wasm for the ckETH and ckERC20 ledgers.
 * You can find the instructions on how to verify that the Wasm in the proposal was indeed build from the provided `git commit` in the proposal.
 
 
