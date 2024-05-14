@@ -79,7 +79,7 @@ export const DeployedIcon = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect width="24" height="24" rx="12" fill="#18D0B5" />
+    <rect width="24" height="24" rx="12" fill="#0CA80D" />
     <path
       d="M7 11.9994L10.8468 16L17 9.59977L15.4617 8L10.8468 12.8005L8.53829 10.3997L7 11.9994Z"
       fill="white"
@@ -94,7 +94,7 @@ const InProgressIcon = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect x="0.5" width="24" height="24" rx="12" fill="#F68E5F" />
+    <rect x="0.5" width="24" height="24" rx="12" fill="#FBB549" />
     <path
       d="M12.5 7C13.4889 7 14.4556 7.29324 15.2779 7.84265C16.1001 8.39206 16.741 9.17295 17.1194 10.0866C17.4978 11.0002 17.5969 12.0055 17.4039 12.9755C17.211 13.9454 16.7348 14.8363 16.0355 15.5355C15.3363 16.2348 14.4454 16.711 13.4755 16.9039C12.5055 17.0969 11.5002 16.9978 10.5866 16.6194C9.67295 16.241 8.89206 15.6001 8.34265 14.7779C7.79324 13.9556 7.5 12.9889 7.5 12H9.5C9.5 12.5933 9.67595 13.1734 10.0056 13.6667C10.3352 14.1601 10.8038 14.5446 11.3519 14.7716C11.9001 14.9987 12.5033 15.0581 13.0853 14.9424C13.6672 14.8266 14.2018 14.5409 14.6213 14.1213C15.0409 13.7018 15.3266 13.1672 15.4424 12.5853C15.5581 12.0033 15.4987 11.4001 15.2716 10.8519C15.0446 10.3038 14.6601 9.83524 14.1667 9.50559C13.6734 9.17595 13.0933 9 12.5 9V7Z"
       fill="white"
@@ -109,7 +109,7 @@ const FutureIcon = () => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect x="0.5" width="24" height="24" rx="12" fill="#29ABE2" />
+    <rect x="0.5" width="24" height="24" rx="12" fill="#1F9EEA" />
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -314,7 +314,14 @@ const MilestoneDetail: React.FC<{
             className="tw-heading-4 !m-0 flex justify-between cursor-pointer hover:opacity-70 select-none"
             onClick={() => setExpandedMilestone(isExpanded ? null : name)}
           >
-            {name.toUpperCase()}{" "}
+            <span>
+              {" "}
+              {name.toUpperCase()}{" "}
+              <span className="font-thin md:ml-3">
+                {elements.length > 0 && !isExpanded && elements.length}
+              </span>
+            </span>
+
             <span>
               {isExpanded ? (
                 <svg
