@@ -13,8 +13,6 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 A **relying party** is a service or app that requests a user's verifiable credentials from an [issuer](issuer.mdx). Relying parties use an **identity provider**, such as Internet Identity, to communicate with the issuer. Identity providers must support the [verifiable credentials specification](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md). Communication with the identity provider uses the [`window.postMessage()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) communication channel.
 
-Internet Identity is used as the identity provider in this tutorial.
-
 ## Using the identity provider API
 
 To implement a relying party service, your canister must perform three steps:
