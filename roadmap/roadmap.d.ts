@@ -8,9 +8,20 @@ interface Milestone {
   name: string;
   description: string;
   milestone_id: string;
-  eta: string;
+  eta: null | string | string;
   status?: string;
-  elements: (Element | Elements2 | Elements3 | Elements4 | Elements5 | Elements6 | Elements7 | Elements8 | Elements9 | Elements10)[];
+  elements: (
+    | Element
+    | Elements2
+    | Elements3
+    | Elements4
+    | Elements5
+    | Elements6
+    | Elements7
+    | Elements8
+    | Elements9
+    | Elements10
+  )[];
 }
 
 interface Elements10 {
@@ -165,4 +176,3 @@ interface Element {
   milestone_id: string;
   imported: boolean;
 }
-
