@@ -11,7 +11,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 ## Overview
 
-A **relying party** is a service or app that requests a user's verifiable credentials from the [issuer](issuer.mdx) API. Relying parties use the identity provider API to communicate with the issuer API using an **identity provider** such as Internet Identity. Identity providers must support the [verifiable credentials specification](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md). The identity provider API uses the [`window.postMessage()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) interface.
+A **relying party** is a service or app that requests a user's verifiable credentials from an [issuer](issuer.mdx). Relying parties use an **identity provider**, such as Internet Identity, to communicate with the issuer. Identity providers must support the [verifiable credentials specification](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md). Communication with the identity provider uses the [`window.postMessage()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) communication channel.
 
 Internet Identity is used as the identity provider in this tutorial.
 
@@ -19,7 +19,7 @@ Internet Identity is used as the identity provider in this tutorial.
 
 To implement a relying party service, your canister must perform three steps:
 
-1. Load an identity provider such as Internet Identity: Open an identity provider that will act as the communication bridge between the relying party and the issuer API.
+1. Load an identity provider such as Internet Identity: Open an identity provider that will act as the communication bridge between the relying party and the issuer.
 
 2. Request credentials: Send a JSON RPC request to the issuer API for a user's credentials.
 
@@ -192,74 +192,17 @@ An example error can be found below:
 
 ## Verifying the credentials
 
-To verify that the credentials received are valid, the returned JWT should contain a property in `credentialSubject` named `credentialType` that contains key-value entries that list the expected arguments for the credential type. For example, if the following credential is requested:
+To verify the credentials, the relying party needs to validate the JWT received from the identity provider, both cryptographically and semantically.
 
-```json
-    "credentialSpec": {
-        "credentialType": "VerifiedAdult",
-        "arguments": {
-            "minAge": 18,
-    }
-```
+The JWT should contain two verifiable credentials in the specified order:
 
-A valid issuer would return a verifiable credential that contains `credentialSubject` with a matching property and argument:
+  - An `id_alias` credential which links the effective subject of the credential to a temporary     alias. This credential is signed by the identity provider.
 
-```json
-    "VerifiedAdult": {
-        "minAge": 18,
-    }
-```
+  - The actual credential requested by the user. The subject of this credential is `id_alias`, and it should be signed by the issuer.
 
-Below is an example of how credentials can be verified programmatically with Rust:
+The verification should also check that the subject of the credential matches the subject of the first credential.
 
-```rust
-#[update]
-#[candid_method]
-fn validate_ii_vp(req: ValidateVpRequest) -> Result<(), ContentError> {
-    let (ic_root_key_raw, vc_flow_signers) = CONFIG.with_borrow(|config| {
-        let config = config.get();
-        let Some(issuer_canister_id) = config.issuers.get(&req.issuer_origin) else {
-            return Err(ContentError::NotAuthorized(format!(
-                "issuer not supported: {}",
-                req.issuer_origin
-            )));
-        };
-        if let Some(issuer_canister_id_from_req) = req.issuer_canister_id {
-            if *issuer_canister_id != issuer_canister_id_from_req {
-                return Err(ContentError::NotAuthorized(format!(
-                    "wrong issuer canister id: expected {}, got {}",
-                    issuer_canister_id, issuer_canister_id_from_req
-                )));
-            }
-        }
-        Ok((
-            config.ic_root_key_raw.clone(),
-            VcFlowSigners {
-                ii_origin: config.ii_origin.clone(),
-                ii_canister_id: config.ii_canister_id,
-                issuer_origin: req.issuer_origin,
-                issuer_canister_id: *issuer_canister_id,
-            },
-        ))
-    })?;
-    match validate_ii_presentation_and_claims(
-        &req.vp_jwt,
-        req.effective_vc_subject,
-        &vc_flow_signers,
-        &req.credential_spec,
-        &ic_root_key_raw,
-        time() as u128,
-    ) {
-        Ok(()) => Ok(()),
-        Err(err) => Err(ContentError::NotAuthorized(format!(
-            "VP validation error: {:?}",
-            err
-        ))),
-    }
-}
-```
-
-You can view the [full code example on GitHub](https://github.com/dfinity/vc-playground/blob/b2f8cd5f5397b7b355b6503df5af3789834b79e9/rp/src/main.rs#L262).
+To learn more about verifying credentials, check out the [demo relying party's code](https://github.com/dfinity/vc-playground/blob/b2f8cd5f5397b7b355b6503df5af3789834b79e9/rp/src/main.rs#L262) and the helper used from the [Internet Identity repository](https://github.com/dfinity/internet-identity/blob/fd38b48f9fdf9085b4903d865a1f5e79ad24f81a/src/vc_util/src/lib.rs#L319).
 
 ## Resources
 
