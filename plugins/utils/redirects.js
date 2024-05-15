@@ -408,7 +408,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/multi-chain/signatures-faq /docs/current/developer-docs/multi-chain/faq/signatures-faq
   /docs/current/developer-docs/integrations/bitcoin/ /docs/current/developer-docs/multi-chain/bitcoin/overview
   /docs/current/developer-docs/integrations/bitcoin/index /docs/current/developer-docs/multi-chain/bitcoin/overview
-  /docs/current/developer-docs/integrations/bitcoin/ckbtc /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/overview
+  /docs/current/developer-docs/integrations/bitcoin/ckbtc /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/integrations/bitcoin/read-state /docs/current/developer-docs/multi-chain/bitcoin/using-btc/read-state
   /docs/current/developer-docs/integrations/bitcoin/submit-transactions /docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions
   /docs/current/developer-docs/integrations/bitcoin/local-development /docs/current/developer-docs/multi-chain/bitcoin/using-btc/local-development
@@ -439,9 +439,9 @@ const redirects = `
   /docs/current/references/security/ /docs/current/developer-docs/security/general-security-best-practices
   /docs/current/developer-docs/smart-contracts/overview/development-cycle /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle
   /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-identity /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity
-  /docs/current/developer-docs/multi-chain/ethereum/cketh /docs/current/developer-docs/multi-chain/ethereum/cketh/overview
+  /docs/current/developer-docs/multi-chain/ethereum/cketh /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview
   /docs/current/developer-docs/multi-chain/ethereum/siwe /docs/current/developer-docs/multi-chain/ethereum/using-eth/siwe
-  /docs/current/developer-docs/multi-chain/bitcoin/ckbtc /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/overview
+  /docs/current/developer-docs/multi-chain/bitcoin/ckbtc /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/multi-chain/bitcoin/read-state /docs/current/developer-docs/multi-chain/bitcoin/using-btc/read-state
   /docs/current/developer-docs/multi-chain/bitcoin/submit-transactions /docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions
   /docs/current/developer-docs/multi-chain/bitcoin/local-development /docs/current/developer-docs/multi-chain/bitcoin/using-btc/local-development
@@ -507,6 +507,13 @@ const redirects = `
   /docs/current/developer-docs/daos/sns/integrating/index-integration /docs/current/developer-docs/daos/sns/launching/integrating
   /docs/current/developer-docs/daos/sns/integrating/frontend-integration /docs/current/developer-docs/daos/sns/launching/integrating
   /docs/current/developer-docs/integrations/sns/ /docs/current/developer-docs/daos/sns/overview
+  /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/overview /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview
+  /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/making-transactions /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/making-transactions
+  /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/using-ckbtc-in-dapps /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/using-ckbtc-in-dapps
+  /docs/current/developer-docs/multi-chain/ethereum/cketh/overview /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview
+  /docs/current/developer-docs/multi-chain/ethereum/cketh/making-transactions /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/making-transactions
+  /docs/current/developer-docs/multi-chain/ethereum/cketh/using-cketh-in-dapps /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/using-cketh-in-dapps
+
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

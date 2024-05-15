@@ -4557,5 +4557,28 @@
     "twitter": "https://twitter.com/Hamsternetio",
     "display": "Normal",
     "logo": "/img/showcase/hamster_logo.png"
+  },
+  {
+    "name": "MSQ - Safe ICP Wallet",
+    "description": "MSQ is a MetaMask extension that enables your wallet to work with the Internet Computer (ICP) blockchain. Buy goods, tip for services, donate to charities, and gift coins to your loved ones.",
+    "website": "https://icp.msq.tech",
+    "logo": "/img/showcase/msq-safe-icp-wallet_logo.svg",
+    "screenshots": [
+      "/img/showcase/msq-safe-icp-wallet_screenshot.webp"
+    ],
+    "video": "/img/showcase/msq-safe-icp-wallet_video.mp4",
+    "display": "Normal",
+    "id": "msq-safe-icp-wallet",
+    "oneLiner": "Use the Internet Computer with MetaMask",
+    "stats": "Audited",
+    "tags": [
+      "Wallet"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/fort-major/msq",
+    "twitter": "https://twitter.com/msqwallet",
+    "youtube": "",
+    "submittableId": "45381706",
+    "videoContentType": "video/mp4"
   }
 ]
