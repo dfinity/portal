@@ -84,7 +84,7 @@ When you are finished testing, you should run the Docker image in production mod
 These command-line options are used to attach an interactive terminal session and remove the container, and are primarily intended for testing purposes.
 To run the software in a production environment, you can start the Docker image using the `--detach` option to run the container in the background and, optionally, specify the `--volume` command for storing blocks.
 
-To connect the Rosetta node instance to the mainnet, add flags: `--mainnet` and `--not-whitelisted`.
+To connect the Rosetta node instance to the mainnet, add flags: `--mainnet` and `--not-whitelisted`. The flag for whitelisting is reserved for certain IP addresses that need to connect to permissioned testnets. 
 
 For more information about Docker command-line options, see the [Docker reference documentation](https://docs.docker.com/engine/reference/commandline/run/).
 
@@ -93,7 +93,7 @@ For more information about Docker command-line options, see the [Docker referenc
 The integration software provided in the Docker image has one requirement that is not part of the standard Rosetta API specification.
 
 For transactions involving ICP tokens, the unsigned transaction must be created less than 24 hours before the network receives the signed transaction.
-The reason is that each transaction's `created_at` field refers to an existing transaction (essentially `last_index` available locally at the time of transaction creation).
+The reason for this is the deduplication mechanism which can be read up on [here](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#transaction_deduplication).
 Any submitted transaction that refers back to a too old transaction is rejected to maintain operational efficiency.
 
 Other than this requirement, the Rosetta API integration software fully complies with all standard Rosetta endpoints and passes all of the `rosetta-cli` tests.
