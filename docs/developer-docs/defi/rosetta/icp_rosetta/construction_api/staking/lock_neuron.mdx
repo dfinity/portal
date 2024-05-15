@@ -17,7 +17,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 In this section of the staking tutorial you will learn how to lock your neuron. The amount of rewards you can expect to receive are amongst other factors dependent on the amount of time a neuron is locked up for. 
 If the dissolve timestamp is set to a value that is before 6 months in the future you will not be getting any rewards for the locked period. This is because 
-the last 6 months of a dissolving neuron, the neuron will not get any rewards. So if you set the dissolve timestamp to 1 year in the future and start dissolving the neuron right away, you will receive rewards for the next 6 months. 
+the last 6 months of a dissolving neuron, the neuron will not get any rewards. If you set the dissolve timestamp to 1 year in the future and start dissolving the neuron right away, you will receive rewards for the next 6 months. 
 
 The dissolve timestamp always increases monotonically.
 
@@ -27,7 +27,7 @@ The dissolve timestamp always increases monotonically.
 
 -   If the neuron is in the `DISSOLVED` state, invoking `SET_DISSOLVE_TIMESTAMP` will move it to the `NOT_DISSOLVING` state and will set the dissolve delay accordingly.
 
-The example call to the `construction/payloads` endpoint looks like the following. 
+An example call to the `construction/payloads` endpoint resembles the following:
 
 ```json
 curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data '{

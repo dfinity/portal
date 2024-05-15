@@ -18,9 +18,8 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 In this section of the staking tutorial you will learn how to fetch information about an existing neuron. 
 There are a few variations to this that depend on whether you are the controller of the neuron or whether you are using a [hotkey](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/hotkeys.mdx). 
 
-## Calling NeuronInfo as a controller
-Assuming that you are the controller of the neuron with the `neuron_id` `3094748712371737240` and you are not using a hotkey the corresponding
-payloads call would look like the following.
+## Calling `NeuronInfo` as a controller
+Assuming that you are the controller of the neuron with the `neuron_id` `3094748712371737240` and you are not using a hotkey, the corresponding payloads call would resemble the following:
 
 ```json
 curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data '{
@@ -49,7 +48,7 @@ curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: ap
 }'
 ```
 
-## Calling NeuronInfo with a hotkey
+## Calling `NeuronInfo` with a hotkey
 ```json
 curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data '{
   "network_identifier": {
@@ -85,7 +84,7 @@ curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: ap
 }'
 ```
 
-The result of the `NeuronInfo` call would look something like this.
+The result of the `NeuronInfo` call would resemble the following:
 ```json
 {
     "transaction_identifier": {

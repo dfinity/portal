@@ -4,10 +4,17 @@ keywords: [intermediate, rosetta, tutorial]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Construction-API implementation
-This section will give you an overview of how you can make transactions via Rosetta using the Construction-API
+# Construction API implementation
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
+
+## Overview 
+
+This section will give you an overview of how you can make transactions via Rosetta using the construction API.
+
 ## Supported transactions
-The Construction-API allows for offline signing of transactions and then posting them on the IC at a later point in time. It is recommended to first go through [flow of operations](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/index.mdx) of the Construction-API to gain an understanding of how it works, what endpoints to call with what parameters and where the user has to take action upon receiving certain responses. 
+
+The construction API allows for offline signing of transactions, then posting them on ICP at a later point in time. It is recommended to first go through [flow of operations](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/index.mdx) of the construction API to gain an understanding of how it works, what endpoints to call with what parameters, and where the user has to take action upon receiving certain responses. 
 
 In general the Construction-API of Rosetta supports three categories of transaction types:
 - [Transfering assets](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/index.mdx): This is the most basic functionality. In accordance with the ICRC-1 standard you can use Rosetta to transfer ICP. 

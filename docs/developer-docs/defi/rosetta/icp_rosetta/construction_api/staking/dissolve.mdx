@@ -4,7 +4,7 @@ keywords: [intermediate, rosetta, tutorial, spawn, neuron, staking, dissolve]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Start|Stop Dissolving
+# Start or stop dissolving
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
 
@@ -15,13 +15,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 | Idempotent?          | yes        |
 | Minimal access level | controller |
 
-In this section of the staking tutorial you will learn how start and stop the dissolving process of a neuron. 
-If you want to retreive the ICP that was locked in the neuron you will have to set the neuron to a dissolving state. 
-You will have to wait at least 6 months between setting the neuron to `DISSOLVING` and receiving back your ICP. The waiting period increases if the set dissolve timestamp
-is further in the future than 6 months. 
+If you want to retrieve the ICP that was locked in the neuron, you will have to set the neuron to a dissolving state. 
+You must wait at least 6 months between setting the neuron to `DISSOLVING` and receiving back your ICP. The waiting period increases if the set dissolve timestamp is further in the future than 6 months. 
 
-## Start Dissolving
-To set a neuron to `DISSOLVING` you can build the payloads request like so. 
+## Start dissolving
+To set a neuron to `DISSOLVING` you can build the following payloads request:
 
 ```json
 curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data 
@@ -55,7 +53,7 @@ curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: ap
 
 ```
 
-After that you can fetch the [neuron info](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/neuron_info.mdx) and it should display that it is not in `DISSOLVING` state. 
+After that, you can fetch the [neuron info](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/neuron_info.mdx) and it should display that it is now in `DISSOLVING` state. 
 ```json
 {
     "transaction_identifier": {
@@ -90,8 +88,8 @@ After that you can fetch the [neuron info](/docs/developer-docs/defi/rosetta/icp
 }
 ```
 
-## Stop Dissolving
-To stop a neuron from dissolving you can call rosetta like so.
+## Stop dissolving
+To stop a neuron from dissolving, you can call Rosetta with the following parameters:
 ```json
 curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data 
 '{

@@ -1,12 +1,24 @@
-# How to fetch block transactions
+---
+keywords: [rosetta, icp, data api, rosetta api, defi]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Fetch block transactions
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"  ]} />
+
+## Overview
+
 This endpoint allows you to fetch a transaction at a certain block height.  It is the implementation of the [/block endpoint](https://www.rosetta-api.org/docs/BlockApi.html#blocktransaction) of the Rosetta API standard. 
 
 :::info
-Note that in the case of the ICP ledger a block always contains exactly one transaction. The hash of the block as well as the index of the block is guarenteed to be unique 
-while the hash of the transaction is not. 
+Note that in the case of the ICP ledger a block always contains exactly one transaction. The hash of the block as well as the index of the block is guaranteed to be unique  while the hash of the transaction is not. 
 :::
 
-For this part of the guide we assume your rosetta instance is up and running under the address `0.0.0.0:8081`.
+### Prerequisites 
+
+- Your Rosetta instance is up and running under the address `0.0.0.0:8081`.
 
 Make sure to use the correct NetworkIdentifier as described in this [section](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/network.md). For this example the following arbitrary BlockIdentifier and TransactionIdentifier are used:
 ```bash
@@ -18,7 +30,10 @@ Make sure to use the correct NetworkIdentifier as described in this [section](/d
                     "hash": "93a19bfa37db0200cec77281cd8a0602a4375a7367338e7c6973f93a42e6eb5e"
                 }
 ```
-The request is the following: 
+
+## Example
+
+An example request would resemble the following: 
 
 ```json
 curl --location '0.0.0.0:8081/block/transaction'  --header 'Content-Type: application/json' --data '{

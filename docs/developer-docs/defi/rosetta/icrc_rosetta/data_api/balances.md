@@ -4,7 +4,7 @@ keywords: [intermediate, rosetta, tutorial]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Fetching account balances
+# Fetch account balances
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
 

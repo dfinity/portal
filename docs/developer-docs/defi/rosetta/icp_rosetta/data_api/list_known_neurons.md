@@ -1,16 +1,32 @@
-# How to list known neurons
+
+---
+keywords: [rosetta, icp, data api, rosetta api, defi]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# List known neurons
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"  ]} />
+
+## Overview
 This endpoint allows you to fetch all neurons from the NNS that are publicly known.  It is the implementation of the [/call endpoint](https://www.rosetta-api.org/docs/BlockApi.html#call) of the Rosetta API standard. The call endpoint is very flexible as to what it can be used for. In the case of ICP Rosetta it is used to fetch various custom information that is not covered by the Rosetta API standard.
-For this part of the guide we assume your rosetta instance is up and running under the address `0.0.0.0:8081`.
+
+### Prerequisites
+
+- Your Rosetta instance is up and running under the address `0.0.0.0:8081`.
 
 Make sure to use the correct NetworkIdentifier as described in this [section](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/network.md). 
-Known neurons are neurons in the NNS that have publicly available information about them such as a name, description and so forth. It is a direct call to the `list_known_neurons` [endpoint](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai#list_known_neurons) of the Governance canister.
+
+## Example
+
+Known neurons are neurons in the NNS that have publicly available information about them such as a name, description and so forth. It is a direct call to the `list_known_neurons` [endpoint](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai#list_known_neurons) of the governance canister.
 
 :::info
 This call requires Rosetta to make an online call, so make sure that Rosetta is connected to the internet.
 :::
 
-The request will look something like this:
-
+An example request would resemble the following:
 
 ```json
 curl --location '0.0.0.0:8081/call'  --header 'Content-Type: application/json' --data '{
@@ -25,7 +41,8 @@ curl --location '0.0.0.0:8081/call'  --header 'Content-Type: application/json' -
 }'
 ```
 
-As of the time of this writing the list of publicly known neurons is quite long so we will only list the first few examples of the response here.
+The list of publicly known neurons is quite long, so only the first few examples are listed in the response here. 
+
 
 ```bash
 {

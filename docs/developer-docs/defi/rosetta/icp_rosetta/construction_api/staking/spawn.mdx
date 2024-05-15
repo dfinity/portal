@@ -20,7 +20,7 @@ The `SPAWN` operation transfers all the maturity from the existing neuron to the
 
 <div class="formalpara-title">
 
-**Prerequisites:**
+### Prerequisites:
 
 </div>
 
@@ -30,7 +30,7 @@ The `SPAWN` operation transfers all the maturity from the existing neuron to the
 
 <div class="formalpara-title">
 
-**Postconditions:**
+### Postconditions:
 
 </div>
 
@@ -38,7 +38,7 @@ The `SPAWN` operation transfers all the maturity from the existing neuron to the
 
 -   A new neuron is spawned with a balance equal to the transferred maturity.
 
-An example command to spawn a new neuron looks like the following. Make sure to give the `spawned_neuron_index` a different index than the parent neuron.
+An example command to spawn a new neuron resembles the following. Make sure to give the `spawned_neuron_index` a different index than the parent neuron.
 ``` json
 curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data '{
 {
@@ -58,7 +58,7 @@ curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: ap
 
 :::info
 
-- `spawned_neuron_index` metadata field is required. The rosetta node uses this index to compute the subaccount for the spawned neuron. All spawned neurons must have different values of `spawned_neuron_index`.
+- `spawned_neuron_index` metadata field is required. The Rosetta node uses this index to compute the subaccount for the spawned neuron. All spawned neurons must have different values of `spawned_neuron_index`.
 
 - `controller` metadata field is optional and equal to the existing neuron controller by default.
 

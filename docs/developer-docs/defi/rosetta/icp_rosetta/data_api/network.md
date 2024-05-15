@@ -1,9 +1,24 @@
-# How to fetch network information
-For most endpoints you will require some information about the network represented as a [NetworkIdentifier](https://www.rosetta-api.org/docs/models/NetworkIdentifier.html).
-For this part of the guide we assume your rosetta instance is up and running under the address `0.0.0.0:8081`.
+---
+keywords: [rosetta, icp, data api, rosetta api, defi]
+---
 
-## Fetch Network List
-The network list [endpoint](https://www.rosetta-api.org/docs/NetworkApi.html#networklist) will give you information about the NetworkIdentifier you need to use for ICP Rosetta. It requires no arguments and can thus also be used as a health check of ICP rosetta. You can fetch the endpoint using the following command:  
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Fetch network information
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"  ]} />
+
+## Overview
+
+For most endpoints you will require some information about the network represented as a [NetworkIdentifier](https://www.rosetta-api.org/docs/models/NetworkIdentifier.html).
+
+### Prerequisites
+
+- Your Rosetta instance is up and running under the address `0.0.0.0:8081`.
+
+## Fetching the network list
+
+The network list [endpoint](https://www.rosetta-api.org/docs/NetworkApi.html#networklist) will give you information about the `NetworkIdentifier` you need to use for ICP Rosetta. It requires no arguments and can thus also be used as a health check of ICP Rosetta. You can fetch the endpoint using the following command:  
 
 ```json
 curl --location '0.0.0.0:8081/network/list' --header 'Content-Type: application/json' --data '{
@@ -11,7 +26,7 @@ curl --location '0.0.0.0:8081/network/list' --header 'Content-Type: application/
 }'
 ```
 
-The response will look something like this:
+The response will resemble the following:
 
 ```bash
 {
@@ -24,10 +39,10 @@ The response will look something like this:
 }
 ```
 
-You can use this NetworkIdentifer with other endpoints which will require you to provide it in the data section of your `HTTP` call. 
+You can use this `NetworkIdentifer` with other endpoints which will require you to provide it in the data section of your `HTTP` call. 
 
-## Fetch Network Options
-This [endpoint](https://www.rosetta-api.org/docs/NetworkApi.html#networkoptions) returns the version information and allowed network-specific types for a NetworkIdentifier.
+## Fetch network options
+This [endpoint](https://www.rosetta-api.org/docs/NetworkApi.html#networkoptions) returns the version information and allowed network-specific types for a `NetworkIdentifier`.
 
 ```json
 curl --location '0.0.0.0:8081/network/options' --header 'Content-Type: application/json' --data '{
@@ -38,7 +53,7 @@ curl --location '0.0.0.0:8081/network/options' --header 'Content-Type: applicati
 }'
 ```
 
-The response will give you information on the error types, the supported operations and some metadata about the ICP Rosetta node you are running. 
+The response will give you information on the error types, the supported operations, and some metadata about the ICP Rosetta node you are running. 
 
 ```bash
 {
@@ -161,7 +176,7 @@ The response will give you information on the error types, the supported operati
 
 ```
 
-## Fetch Network Status
+## Fetch network status
 This [endpoint](https://www.rosetta-api.org/docs/NetworkApi.html#networkstatus) returns the current status of the network requested.
 
 ```json

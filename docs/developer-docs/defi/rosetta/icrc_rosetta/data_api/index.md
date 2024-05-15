@@ -5,12 +5,12 @@ keywords: [intermediate, rosetta, tutorial]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Data-API implementation
+# Data API implementation
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
 
 ## Overview
-The following data can be fetched from the data-api endpoints for the ICRC Rosetta implementation:
+The following data can be fetched from the data API endpoints for the ICRC Rosetta implementation:
 
 - [Network](/docs/developer-docs/defi/rosetta/icrc_rosetta/data_api/network.md): Fetch network specific information, such as the most recent block and what network Rosetta is connected to. 
 

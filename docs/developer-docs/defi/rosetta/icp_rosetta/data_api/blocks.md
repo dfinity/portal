@@ -1,6 +1,17 @@
-# How to fetch blocks
+---
+keywords: [rosetta, icp, data api, rosetta api, defi]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Fetch blocks
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"  ]} />
+## Overview
 This endpoint allows you to fetch blocks at a certain block height.  It is the implementation of the [/block endpoint](https://www.rosetta-api.org/docs/BlockApi.html#block) of the Rosetta API standard. 
-For this part of the guide we assume your rosetta instance is up and running under the address `0.0.0.0:8081`.
+### Prerequisites
+
+- Your Rosetta instance is up and running under the address `0.0.0.0:8081`.
 
 Make sure to use the correct NetworkIdentifier as described in this [section](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/network.md). For this example the following arbitrary BlockIdentifier is used:
 ```bash
@@ -11,7 +22,10 @@ Make sure to use the correct NetworkIdentifier as described in this [section](/d
 ```
 The blockidentifer required here is a [PartialBlockIdentifier](https://www.rosetta-api.org/docs/models/PartialBlockIdentifier.html), which means you can either provide the index, the hash or both. You can select a transaction of your interest in the [ICP dashboard](https://dashboard.internetcomputer.org/transactions) and use the index displayed there to fetch the corresponding block from Rosetta. In the following example we only provide the index, but you are free to use the full blockidentifier or only the hash too.
 
-The request will look something like this:
+
+## Example
+
+A request to fetch a block will resemble the following:
 
 
 ```json

@@ -1,9 +1,23 @@
-# How to fetch account balances
+---
+keywords: [rosetta, icp, data api, rosetta api, defi]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Fetch account balances
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"  ]} />
+
+## Overview
+
 This endpoint allows you to fetch the balances for a certain account. It is the implementation of the [/account/balance endpoint](https://www.rosetta-api.org/docs/AccountApi.html#accountbalance) of the Rosetta API standard. 
-For this part of the guide we assume your rosetta instance is up and running under the address `0.0.0.0:8081`.
+### Prerequisites
 
-Make sure to use the correct NetworkIdentifier as described in this [section](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/network.md). For this example an arbitrary AccountIdentifier [8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4](https://dashboard.internetcomputer.org/account/8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4) was used. 
+ - Your Rosetta instance is up and running under the address `0.0.0.0:8081`.
 
+ 
+ Make sure to use the correct NetworkIdentifier as described in this [section](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/network.md). For this example an arbitrary AccountIdentifier [8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4](https://dashboard.internetcomputer.org/account/8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4) was used. 
+## Example
 ```json
 curl --location '0.0.0.0:8081/account/balance'  --header 'Content-Type: application/json' --data '{
     "network_identifier": {

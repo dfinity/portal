@@ -14,7 +14,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 Most endpoints require some information about the network represented as a [`NetworkIdentifier`](https://www.rosetta-api.org/docs/models/NetworkIdentifier.html).
 
 ### Prerequisites
-- Your rosetta instance is up and running under the address `0.0.0.0:8082`.
+- Your Rosetta instance is up and running under the address `0.0.0.0:8082`.
 
 ## Fetch network list
 The network list [endpoint](https://www.rosetta-api.org/docs/NetworkApi.html#networklist) will give you information about the `NetworkIdentifier` you need to use for ICP Rosetta. It requires no arguments and can thus also be used as a health check. You can fetch the endpoint using the following command:  

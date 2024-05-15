@@ -1,18 +1,31 @@
+---
+keywords: [rosetta, icp, data api, rosetta api, defi]
+---
 
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
+# Get proposal info
 
-# How to get a proposal info
+<MarkdownChipRow labels={["Intermediate", "Tutorial"  ]} />
+
+## Overview
+
 This endpoint allows you to fetch more detailed information about a specific proposal from the NNS.  It is the implementation of the [/call endpoint](https://www.rosetta-api.org/docs/BlockApi.html#call) of the Rosetta API standard. The call endpoint is very flexible as to what it can be used for. In the case of ICP Rosetta it is used to fetch various custom information that is not covered by the Rosetta API standard.
-For this part of the guide we assume your rosetta instance is up and running under the address `0.0.0.0:8081`.
+
+### Prerequisites 
+
+- Your Rosetta instance is up and running under the address `0.0.0.0:8081`.
 
 Make sure to use the correct NetworkIdentifier as described in this [section](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/network.md). 
-It is a direct call to the `get_proposal_info` [endpoint](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai#get_proposal_info) of the Governance canister.
+It is a direct call to the `get_proposal_info` [endpoint](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai#get_proposal_info) of the governance canister.
 
 :::info
 This call requires Rosetta to make an online call, so make sure that Rosetta is connected to the internet.
 :::
 
-For the arbitrarily chosen proposal `127049` the request will look something like this:
+## Example
+
+For the arbitrarily chosen proposal `127049` the request would resemble the following:
 
 
 ```json

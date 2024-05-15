@@ -1,16 +1,30 @@
+---
+keywords: [rosetta, icp, data api, rosetta api, defi]
+---
 
-# How to list pending proposals
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# List pending proposals
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial"  ]} />
+
+## Overview
 This endpoint allows you to fetch all pending proposals from the NNS.  It is the implementation of the [/call endpoint](https://www.rosetta-api.org/docs/BlockApi.html#call) of the Rosetta API standard. The call endpoint is very flexible as to what it can be used for. In the case of ICP Rosetta it is used to fetch various custom information that is not covered by the Rosetta API standard.
-For this part of the guide we assume your rosetta instance is up and running under the address `0.0.0.0:8081`.
 
-Make sure to use the correct NetworkIdentifier as described in this [section](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/network.md). 
+### Prerequisites 
+
+- Your Rosetta instance is up and running under the address `0.0.0.0:8081`.
+
+Make sure to use the correct `NetworkIdentifier` as described in this [section](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/network.md). 
 Pending proposals are all proposals which not yet have come to a conclusion and may be voted on. It is a direct call to the `get_pending_proposals` [endpoint](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai#get_pending_proposals) of the Governance canister.
 
 :::info
 This call requires Rosetta to make an online call, so make sure that Rosetta is connected to the internet.
 :::
 
-The request will look something like this:
+## Example
+
+An example request would resemble the following:
 
 
 ```json
@@ -25,7 +39,7 @@ curl --location '0.0.0.0:8081/call'  --header 'Content-Type: application/json' -
 }'
 ```
 
-As of the time of this writing the list of pedning proposals is quite long so we will only list the first few examples of the response here.
+The list of pending proposals can be quite long, so only the first few examples in the response are listed here. 
 
 
 ```bash
