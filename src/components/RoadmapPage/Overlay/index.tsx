@@ -546,7 +546,7 @@ const Overlay: React.FC<{
       >
         <div className="float-right pointer-events-none sticky top-8 md:top-20 z-10 md:pr-8">
           <button
-            className="pointer-events-auto flex w-10 h-10 rounded-full border-none bg-[#181818] justify-center items-center"
+            className="pointer-events-auto flex w-12 h-12 rounded-full border-none bg-[#181818] justify-center items-center"
             onClick={onClose}
           >
             <svg
