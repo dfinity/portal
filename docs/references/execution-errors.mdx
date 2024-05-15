@@ -99,7 +99,7 @@ To fix this error, consider:
 
   - If the canister has reached its current memory allocation, try allocating more memory.
   - If the canister has reached the system-wide limits for memory usage and it seems reasonable for the canister to have used 100s of GiBs, try sharding the data across multiple canisters.
-  - If the canister has unexpectedly reached the system-wide limits, try debugging it to see if there could be a memory leak.[canbench][canbench] can help with profiling memory usage.
+  - If the canister has unexpectedly reached the system-wide limits, try debugging it to see if there could be a memory leak. [canbench][canbench] can help with profiling memory usage.
   - If the subnet is full, try moving the canister to a subnet which has more memory available.
 
 
@@ -199,6 +199,84 @@ To diagnose this error use the [`dfx canister status`][dfx-canister-status] comm
 
 To fix this error, consider re-architecting the canister to use stable memory instead of heap memory or sharding the data across multiple canisters. Raising the memory limit may be another option if you are certain the canister can use more memory and still be upgradeable.
 
+
+### Calling a system API from the wrong mode
+The canister tried to use a system API call in a message type where it isn't permitted.
+
+An example of this error is:
+```
+  Canister violated contract: "ic0.call_new" cannot be executed in non replicated query mode.
+```
+
+Certain system API's are only available in certain types of messages. For an overview of when each system API can be used, see [the ICP spec](/docs/current/references/ic-interface-spec#system-api-imports).
+
+This error could occur because the canister is trying to do something in a query that is only allowed in a composite query (e.g. making a call) or doing something in a composite query that is only allowed in an update (e.g. setting a timer). If this is the case, consider changing the type of call to one that allows the API.
+
+
+### `msg_reply_data_append` payload too large
+The canister tried to reply with a payload that is larger than the maximum allowed response.
+
+An example of this error is:
+```
+  Canister violated contract: ic0.msg_reply_data_append: application payload size (3000000) cannot be larger than 2097152.
+```
+
+The response to a message cannot exceed the [maximum allowed response][limits]. Consider having the canister check the size of a response before replying and truncating it or returning an error if it is too long.
+
+
+### `msg_reject` payload too large
+The canister tried to reject a message with a payload that is larger than the maximum allowed response.
+
+An example of this error is:
+```
+  Canister violated contract: ic0.msg_reject: application payload size (3000000) cannot be larger than 2097152.
+```
+
+The string included with a rejection cannot exceed the [maximum allowed response][limits]. Consider having the canister check the size of the reject string before replying and truncating it or returning a different error if it is too long.
+
+
+### `certified_data_set` payload too large
+The canister tried to set some certified data which exceeds the ICP limit on certified data size.
+
+An example of this error is:
+```
+  Canister violated contract: ic0_certified_data_set failed because the passed data must be no larger than 32 bytes. Found 100 bytes.
+```
+
+To fix this error, consider certifying just a hash of the data instead of its full contents. Some other ideas can be found on the [forum](https://forum.dfinity.org/t/recommended-usage-of-certifieddata/4370/2).
+
+
+### Canister made a call with too large method name
+The canister tried to execute a call with a method name that is too long.
+
+An example of this error is:
+```
+  Canister violated contract: Size of method_name 22000 exceeds the allowed limit of 20000.
+```
+
+Method names are generally short (similar to function names) so it is likely a bug in the calling canister that creates a name which is too long. Consider running the canister locally and using debug printing ([using `Debug` in Motoko](docs/current/motoko/main/base/Debug/) or [`println!` in Rust](https://docs.rs/ic-cdk/latest/ic_cdk/macro.println.html)) to verify that the correct method name is being called.
+
+
+### Canister made a call with too large payload
+The canister tried to make a call with a payload that exceeds ICP message size limits.
+
+An example of this error is:
+```
+  Canister violated contract: Request to xxx-xxx:foo has a payload size of 20000000, which exceeds the allowed limit of 10485760.
+```
+
+To fix this error, try debugging the calling canister to check that it isn't accidentally sending more data in that call than is required. If the payload construction is correct, consider taking the message size [limits][limits] into account and redesign any APIs so that large amounts of data can be transfered across multiple smaller messages.
+
+
+### Canister made a call with too long timeout
+The canister tried to make a call with a timeout that exceeds the maximum timeout allowed.
+
+An example of this error is:
+```
+  Canister violated contract: Request to xxx-xxx:foo has a timeout of {} seconds, which exceeds the allowed timeout duration.
+```
+
+To fix this error, check that the correct timeout is being set when making the call (noting that the timeout is denoted in seconds). If a very long timeout is really required, consider not setting a timeout at all.
 
 
 
