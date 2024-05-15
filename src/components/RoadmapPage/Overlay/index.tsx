@@ -72,12 +72,17 @@ export const ArrowIconRight = () => {
   );
 };
 
-export const DeployedIcon = () => (
+export const DeployedIcon = ({ glowing }) => (
   <svg
-    className="w-full block"
+    className="w-full block rounded-full"
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    style={{
+      border: glowing ? "1.4px solid rgba(255, 255, 255, 0.10)" : "none",
+      boxShadow: glowing ? "0px 0px 23.333px 0px #0CA80D" : "none",
+      background: glowing ? "#0CA80D" : "none",
+    }}
   >
     <rect width="24" height="24" rx="12" fill="#0CA80D" />
     <path
@@ -208,7 +213,7 @@ const MilestoneCard: React.FC<Element> = ({
                 tooltip="Deployed"
                 className="text-center bg-black/75 rounded-lg whitespace-nowrap	"
               >
-                <DeployedIcon />
+                <DeployedIcon glowing={false} />
               </Tooltip>
             )}
             {status === "in_progress" && (

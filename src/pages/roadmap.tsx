@@ -182,8 +182,8 @@ const milestoneComponent = (
           } md:justify-end`}
         >
           {milestone.name === "orphans_past" && (
-            <div className="w-8 ml-auto mr-0 mt-1 md:mt-0">
-              <DeployedIcon />
+            <div className="w-9 ml-auto mr-0 mt-1 md:mt-0">
+              <DeployedIcon glowing={true} />
             </div>
           )}
           <div>
@@ -192,8 +192,16 @@ const milestoneComponent = (
             </strong>
             <strong className="text-right">
               {milestone.name === "orphans_past"
-                ? "Past features"
-                : "Future features"}
+                ? `Past feature${
+                    milestone.elements && milestone.elements.length > 1
+                      ? "s"
+                      : ""
+                  }`
+                : `Future feature${
+                    milestone.elements && milestone.elements.length > 1
+                      ? "s"
+                      : ""
+                  }`}
             </strong>
           </div>
         </div>
