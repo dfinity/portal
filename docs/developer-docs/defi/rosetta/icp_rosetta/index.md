@@ -9,7 +9,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
 
 The ICP Rosetta allows for communication with the [ICP ledger](https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai) and the [NNS governance canister](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai) through the Rosetta-API standard. 
-This guide is split up into the endpoints of the [data API](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/index.md) and that of the [construction API](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/index.md). 
+This guide is split up into the endpoints of the [data API](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/index.mdx) and that of the [construction API](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/index.mdx). 
 
 ## Set up an ICP Rosetta node
 
@@ -103,8 +103,8 @@ For example, the software doesn’t implement any of the UTXO features of Rosett
 
 
 # How to use the Rosetta API
-The interaction with the Rosetta node can be split in two different parts. The first part consists of fetching data from the ledger regarding blocks, transactions and balances. This part is called the Data-API. [View the steps on how to interact with the Data-API](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/index.md). 
-The second part is more complex. To allow users to sign transactions offline and send them back to Rosetta there are a few interactions that the user will have to follow with the Rosetta node. This part is called the flow of operations in the Construction-API. [View an example of how to go through such a flow of operations](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/index.md). The reader of this guide can follow along the examples outlined in the section for the Construction-API. 
+The interaction with the Rosetta node can be split in two different parts. The first part consists of fetching data from the ledger regarding blocks, transactions and balances. This part is called the Data-API. [View the steps on how to interact with the Data-API](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/index.mdx). 
+The second part is more complex. To allow users to sign transactions offline and send them back to Rosetta there are a few interactions that the user will have to follow with the Rosetta node. This part is called the flow of operations in the Construction-API. [View an example of how to go through such a flow of operations](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/index.mdx). The reader of this guide can follow along the examples outlined in the section for the Construction-API. 
 
 ## Frequently asked questions
 
