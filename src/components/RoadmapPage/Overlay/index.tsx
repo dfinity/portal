@@ -333,7 +333,7 @@ const MilestoneDetail: React.FC<{
               )}
             </div>
 
-            <span>
+            <span className="flex justify-center items-center">
               {isExpanded ? (
                 <svg
                   width="24"
@@ -546,23 +546,15 @@ const Overlay: React.FC<{
       >
         <div className="float-right pointer-events-none sticky top-8 md:top-20 z-10 md:pr-8">
           <button
-            className="pointer-events-auto flex  w-10 h-10 rounded-full border-none bg-[#181818] justify-center items-center"
+            className="pointer-events-auto flex w-10 h-10 rounded-full border-none bg-[#181818] justify-center items-center"
             onClick={onClose}
           >
             <svg
-              width="30"
-              height="30"
               viewBox="0 0 30 30"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <rect
-                width="30"
-                height="30"
-                rx="15"
-                fill="#181818"
-                fill-opacity="0.6"
-              />
+              <rect rx="15" fill="#181818" fill-opacity="0.6" />
               <path d="M9.34277 9.34375L20.6565 20.6575" stroke="white" />
               <path d="M9.34277 20.6572L20.6565 9.34352" stroke="white" />
             </svg>

@@ -145,7 +145,7 @@ const milestoneComponent = (
   if (isOrphan) {
     wrapperClasses += ` border-2 border-solid border-[var(--color)] order-opacity-20`;
   } else {
-    wrapperClasses += ` border-2 border-solid border-[var(--color)]`;
+    wrapperClasses += `border-2 border-solid border-[var(--color)]`;
     style["width"] = `min(450px, 80vw)]`;
     style["flex-basis"] = `min(450px, 80vw)`;
   }
@@ -187,10 +187,10 @@ const milestoneComponent = (
             </div>
           )}
           <div>
-            <strong className="block text-[120px] font-light leading-none text-right">
+            <strong className="block text-[120px] font-light leading-none !text-right">
               {milestone.elements!.length}
             </strong>
-            <strong className="text-right">
+            <strong className="!text-right">
               {milestone.name === "orphans_past"
                 ? `Past feature${
                     milestone.elements && milestone.elements.length > 1
@@ -383,7 +383,7 @@ const RoadmapPage: React.FC = () => {
             <article key={theme.name} className="mt-16 md:mt-20  ">
               <header className="container-10">
                 <h1
-                  className="tw-heading-3 cursor-pointer hover-effect relative  "
+                  className="tw-heading-3 cursor-pointer hover-effect relative pr-6 md:pr-0 "
                   onClick={() =>
                     openOverlay(
                       indexTheme,
