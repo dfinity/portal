@@ -486,24 +486,15 @@ const RoadmapPage: React.FC = () => {
               className="tw-heading-3 md:tw-heading-60 mb-3 md:mb-8"
               variants={transitions.item}
             >
-              Community engagement
+              Get Involved
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-8"
               variants={transitions.item}
             ></motion.p>
-            <MotionLink
-              variants={transitions.item}
-              className="button-outline-white"
-              href="https://forum.dfinity.org/c/roadmap/29"
-            >
-              Join the conversation
-            </MotionLink>
             <p className="md:tw-lead tw-lead-sm text-center text-white mt-6">
-              Vestibulum id ligula porta felis euismod semper. Cras mattis
-              consectetur purus sit amet fermentum. Vestibulum id ligula porta
-              felis euismod semper. Cras mattis consectetur purus sit amet
-              fermentum.
+              Share your ideas and feedback, request features, or dive into
+              development to actively participate in our journey.
             </p>
           </AnimateSpawn>
           <AnimateSpawn
@@ -514,40 +505,44 @@ const RoadmapPage: React.FC = () => {
               variants={transitions.item}
               className="px-8 py-12 backdrop-blur-2xl bg-white-80 rounded-xl border-white border-solid border text-center flex-1"
             >
-              <h3 className="tw-lead-lg md:tw-title-sm">
-                Community submissions
-              </h3>
+              <h3 className="tw-lead-lg md:tw-title-sm">Forum Discussion</h3>
 
               <p className="tw-paragraph-sm mb-3 text-black-60">
-                What features would improve your experience on the Internet
-                Computer?
+                Join the conversation on the DFINITY Forum to share your
+                feedback, gain insights, connect with the DFINITY Foundation and
+                Community members, and contribute to enhancing the roadmap.
               </p>
               <Link
                 className="link-external"
-                href="https://forum.dfinity.org/t/update-on-the-ic-roadmap-july-2022-summary/14615"
+                href="https://forum.dfinity.org/c/roadmap/29"
               >
-                Submit your suggestions
+                Join the conversation
               </Link>
             </motion.div>
             <motion.div
               variants={transitions.item}
               className="px-8 py-12 backdrop-blur-2xl bg-white-80 rounded-xl border-white border-solid border text-center flex-1 md:mt-30"
             >
-              <h3 className="tw-lead-lg md:tw-title-sm">Events and news</h3>
+              <h3 className="tw-lead-lg md:tw-title-sm">
+                Community Submissions
+              </h3>
               <p className="tw-paragraph-sm mb-3 text-black-60">
-                Join live sessions with R&D to get informed about the upcoming
-                technical proposals and contributions to the Internet Computer
-                roadmap.
+                Got ideas for features that could enhance your Internet Computer
+                experience or help you realize your next big idea? Share them
+                with us.
               </p>
-              <Link className="link-external" href="/events">
-                See events
+              <Link
+                className="link-external"
+                href="https://dx.internetcomputer.org/"
+              >
+                Submit your suggestion
               </Link>
             </motion.div>
             <motion.div
               variants={transitions.item}
               className="px-8 py-12 backdrop-blur-2xl bg-white-80 rounded-xl border-white border-solid border text-center flex-1 md:mt-10"
             >
-              <h3 className="tw-lead-lg md:tw-title-sm">Developer grants</h3>
+              <h3 className="tw-lead-lg md:tw-title-sm">Developer Grants</h3>
               <p className="tw-paragraph-sm mb-3 text-black-60">
                 Do you have innovative ideas for building on the Internet
                 Computer and need funding to launch your project? The DFINITY

@@ -41,9 +41,11 @@ export const CardsSection = () => {
         image="/img/home/roadmap-illustration.webp"
       >
         <div className="tw-heading-7 md:tw-heading-6 mb-2">
-          The Future of ICP
+          A new era in blockchain
         </div>
-        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Roadmap</h2>
+        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
+          Internet Computer Roadmap
+        </h2>
       </CardWithImage>
 
       <CardWithImage href="/ai" image="/img/home/ai.webp">

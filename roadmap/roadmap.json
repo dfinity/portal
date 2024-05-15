@@ -1556,7 +1556,22 @@
         "description": "Orphans from the past",
         "milestone_id": "Past features",
         "eta": "none",
-        "elements": []
+        "elements": [
+          {
+            "title": "Increase the message instruction limit to 40 billion instructions",
+            "overview": "Increasing the message limit from 20 to 40 billion instructions to facilitate longer-running computations, which is crucial for AI inference.",
+            "description": "Previously, the instruction limit was 20 billion instructions. This feature doubles the instruction limit for update message in order to allow them to run longer computations. This is made possible by the deterministic time slicing. Future work will increase this limit more and also increase the limit for queries.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "deployed",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": ""
+          }
+        ]
       },
       {
         "name": "orphans_future",
@@ -1641,7 +1656,22 @@
         "description": "Orphans from the past",
         "milestone_id": "Past features",
         "eta": "none",
-        "elements": []
+        "elements": [
+          {
+            "title": "VETkeys API and dummy implementation",
+            "overview": "For facilitating the community discussions regarding the API of VETkeys, an insecure dummy implementation for discussion purposes of the proposed VETkeys API has been provided in a canister.",
+            "description": "For facilitating the community discussions regarding the API of VETkeys, an insecure dummy implementation for discussion purposes of the proposed VETkeys API has been provided in a canister. This has served a great purpose for the discussions with the community and deciding on the final API to use. The community can already familiarize themselves with the API and implement dapp logic against it.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "deployed",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": ""
+          }
+        ]
       },
       {
         "name": "orphans_future",
@@ -3025,9 +3055,9 @@
             "in_beta": false
           },
           {
-            "title": "Fireblocks integration",
-            "overview": "An integration of the Internet Computer blockchain with the Fireblocks custody provider to simplify ICP for institutions.",
-            "description": "An integration of the Internet Computer blockchain with the Fireblocks custody provider to simplify ICP for institutionals.",
+            "title": "Institutional custody integration of ICP & other tokens custody & staking",
+            "overview": "An integration of the Internet Computer blockchain with institutional custody providers for ICP and ICRC tokens.",
+            "description": "An integration of the Internet Computer blockchain with institutional custody providers for ICP and ICRC tokens.",
             "status": "",
             "forum": "",
             "proposal": "",

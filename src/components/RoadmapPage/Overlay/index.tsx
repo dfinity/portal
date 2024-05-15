@@ -219,14 +219,14 @@ const MilestoneCard: React.FC<Element> = ({
                 <InProgressIcon />
               </Tooltip>
             )}
-            {status === "future" && (
+            {/* {status === "future" && (
               <Tooltip
                 tooltip="Planned"
                 className="text-center bg-black/75 rounded-lg whitespace-nowrap	"
               >
                 <FutureIcon />
               </Tooltip>
-            )}
+            )} */}
           </div>
         </header>
         <p className="tw-paragraph-sm ">{overview}</p>
@@ -303,7 +303,9 @@ const MilestoneDetail: React.FC<{
   const emptyCards = Array(emptyCardsCount).fill(null);
 
   if (name === "Past features") {
-    return (
+    return elements.length === 0 ? (
+      <></>
+    ) : (
       <article
         id={name}
         className={`milestone-large border-2 border-solid border-[var(--color)] rounded-xl mb-15 md:mb-30 relative scroll-mt-30 md:scroll-mt-15`}
@@ -389,7 +391,9 @@ const MilestoneDetail: React.FC<{
     );
   }
   if (name === "Future features") {
-    return (
+    return elements.length === 0 ? (
+      <></>
+    ) : (
       <article
         id={name}
         className={`milestone-large border-2 border-solid border-[var(--color)] rounded-xl mb-15 md:mb-30 relative  scroll-mt-30 md:scroll-mt-15`}
