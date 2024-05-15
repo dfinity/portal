@@ -5,7 +5,7 @@ For this part of the guide we assume your rosetta instance is up and running und
 Make sure to use the correct NetworkIdentifier as described in this [section](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/network.md). For this example the following arbitrary BlockIdentifier is used:
 ```bash
 "block_identifier": {
-        "index": 9890652,
+        "index": 9840566,
         "hash": "e189f729b207dafc2583305cf313671a84bb1437ee44435e12eaf3dcfbcb8fcf"
     }
 ```
@@ -21,7 +21,7 @@ curl --location '0.0.0.0:8081/block'  --header 'Content-Type: application/json' 
         "network":"00000000000000020101"
     },
     "block_identifier": {
-        "index": 9890652
+        "index": 9840566
     }
 }'
 ```
