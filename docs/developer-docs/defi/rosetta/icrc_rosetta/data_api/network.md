@@ -19,7 +19,7 @@ Most endpoints require some information about the network represented as a [`Net
 ## Fetch network list
 The network list [endpoint](https://www.rosetta-api.org/docs/NetworkApi.html#networklist) will give you information about the `NetworkIdentifier` you need to use for ICP Rosetta. It requires no arguments and can thus also be used as a health check. You can fetch the endpoint using the following command:  
 
-```bash
+```json
 curl --location '0.0.0.0:8082/network/list' --header 'Content-Type: application/json' --data '{
     "metadata": {}
 }'
@@ -43,7 +43,7 @@ You can use this `NetworkIdentifer `with other endpoints which will require you 
 ## Fetch network options
 This [endpoint](https://www.rosetta-api.org/docs/NetworkApi.html#networkoptions) returns the version information and allowed network-specific types for a `NetworkIdentifier`.
 
-```bash
+```json
 curl --location '0.0.0.0:8082/network/options' --header 'Content-Type: application/json' --data '{
     "network_identifier": {
             "blockchain": "Internet Computer",
@@ -168,7 +168,7 @@ The response will give you information on the error types, the supported operati
 ## Fetch network status
 This [endpoint](https://www.rosetta-api.org/docs/NetworkApi.html#networkstatus) returns the current status of the network requested.
 
-```bash
+```json
 curl --location '0.0.0.0:8082/network/status'  --header 'Content-Type: application/json' --data '{
     "network_identifier": {
             "blockchain": "Internet Computer",

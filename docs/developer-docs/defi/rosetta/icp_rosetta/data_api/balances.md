@@ -4,7 +4,7 @@ For this part of the guide we assume your rosetta instance is up and running und
 
 Make sure to use the correct NetworkIdentifier as described in this [section](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/network.md). For this example an arbitrary AccountIdentifier [8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4](https://dashboard.internetcomputer.org/account/8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4) was used. 
 
-```bash
+```json
 curl --location '0.0.0.0:8081/account/balance'  --header 'Content-Type: application/json' --data '{
     "network_identifier": {
         "blockchain":"Internet Computer",
@@ -37,7 +37,7 @@ The response will give you the balance of the AccountIdentifier at the most rece
 ```
 If you want to know the balance of a staked neuron, you can specify the account type. You need to make sure the `account_identifier` you specify corresponds to the [ledger address of a neuron](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/derive_neuron_id.mdx). Set `account_type` to `neuron` in the request metadata to tell the Rosetta node that you want to get the account for staking. The `neuron_index` parameter is an arbitrary 64-bit unsigned integer that the caller chooses to identify the neuron. A single user can control multiple neurons and differentiate them by specifying different values of `neuron_index`. `neuron_index` is optional and is equal to 0 by default.
 
-```bash
+```json
 curl --location '0.0.0.0:8081/account/balance'  --header 'Content-Type: application/json' --data '{
     "network_identifier": {
         "blockchain":"Internet Computer",

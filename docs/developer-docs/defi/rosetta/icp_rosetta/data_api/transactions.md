@@ -20,7 +20,7 @@ Make sure to use the correct NetworkIdentifier as described in this [section](/d
 ```
 The request is the following: 
 
-```bash
+```json
 curl --location '0.0.0.0:8081/block/transaction'  --header 'Content-Type: application/json' --data '{
     "network_identifier": {
         "blockchain":"Internet Computer",

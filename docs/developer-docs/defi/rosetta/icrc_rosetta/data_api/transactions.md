@@ -36,7 +36,7 @@ For this example the following arbitrary `BlockIdentifier` and `TransactionIdent
 ```
 An example request can be found below:
 
-```bash
+```json
 curl --location '0.0.0.0:8082/block/transaction'  --header 'Content-Type: application/json' --data '{
     "network_identifier": {
             "blockchain": "Internet Computer",

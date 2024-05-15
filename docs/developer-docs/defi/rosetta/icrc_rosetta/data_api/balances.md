@@ -17,7 +17,7 @@ The `account_balance` endpoint allows you to fetch the balances for a certain ac
 - Make sure to use the correct [`NetworkIdentifier`](/docs/developer-docs/defi/rosetta/icrc_rosetta/data_api/network.md). For this example an arbitrary `AccountIdentifier` with the principal `xmiu5-jqaaa-aaaag-qbz7q-cai` and the default subaccount `0000000000000000000000000000000000000000000000000000000000000000` was used. 
 
 ## Example
-```bash
+```json
 curl --location '0.0.0.0:8082/account/balance'  --header 'Content-Type: application/json' --data '{
     "network_identifier": {
             "blockchain": "Internet Computer",

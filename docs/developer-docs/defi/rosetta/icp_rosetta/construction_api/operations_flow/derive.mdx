@@ -18,7 +18,7 @@ The request and response types can be found in the [official documentation](http
 You have to provide Rosetta with the public key representation as specified in the Rosetta-API [standard](https://docs.cloud.coinbase.com/rosetta/reference/constructionderive). 
 An example of a call to the derive endpoint can be found below:
 
-```bash
+```json
 curl --location '0.0.0.0:8081/construction/derive'  --header 'Content-Type: application/json' --data '{
     "network_identifier": {
         "blockchain":"Internet Computer",
@@ -37,64 +37,3 @@ The response is the `accountidentifier` used by the ICP ledger:
 
 {"account_identifier":{"address":"8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4"}}⏎                                                                                                                  
 ```
-
-A call to the `construction/derive` endpoint written in Python could be implemented such as the following. 
-In this example the python file for the Rosetta-Client is called `icp_rosetta_client.py` and the private key is located at `~/.config/dfx/identity/default/identity.pem`. 
-```bash
-python3 icp_rosetta_client.py -k ~/.config/dfx/identity/default/identity.pem -u http://127.0.0.1:8081
-```
-
-```python
-import json
-import requests
-import argparse
-import ecdsa
-
-NETWORK_ID={'blockchain': 'Internet Computer', 'network': '00000000000000020101'}
-HEADERS={'Content-Type': 'application/json', 'charset': 'utf-8'}
-
-class RosettaClient:
-    # Takes in the private key an the url to the running Rosetta instance
-    def __init__(self, pk, url):
-        self._pk = pk
-        self._url = url
-    
-    def public_key(self):
-        return {
-            "hex_bytes": self._pk.verifying_key.to_string("uncompressed").hex(),
-            "curve_type": "secp256k1",
-        }
-
-    # Makes a post request to the Rosetta instance and takes in the suffix of the endpoint of Rosetta as well as the request data
-    def post(self, url_suffix, data):
-        url = self._url + url_suffix
-        response = requests.post(url, data=json.dumps(data), headers=HEADERS)
-        return response.json()
-    
-    def construction_derive(self, public_key: str = None, curve_type: str = 'secp256k1'):
-        if public_key is None:
-            public_key = self.public_key()
-        return self.post('/construction/derive', build_data({
-            'public_key': public_key
-        }))
-
-# Attaches the network_identifier to the request
-def build_data(d):
-    return { 'network_identifier': NETWORK_ID, **d }
-
-
-def parse_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('-k', '--private-key-file', required=True)
-    parser.add_argument('-u', '--ic-url', required=True)
-    return parser.parse_args()
-
-def main():
-    args = parse_args()
-    with open(args.private_key_file, "rb") as key_file:
-        private_key = ecdsa.SigningKey.from_pem(key_file.read())
-    client = RosettaClient(private_key, args.ic_url)
-    print(client.construction_derive())
-
-if __name__=='__main__':
-    main()

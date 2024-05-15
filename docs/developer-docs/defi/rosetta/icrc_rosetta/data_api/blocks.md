@@ -26,7 +26,7 @@ If you are connecting to a different ICRC-1 ledger other than the ckBTC ledger, 
 ## Example
 The request will resemble the following:
 
-```bash
+```json
 curl --location '0.0.0.0:8082/block'  --header 'Content-Type: application/json' --data '{
     "network_identifier": {
             "blockchain": "Internet Computer",

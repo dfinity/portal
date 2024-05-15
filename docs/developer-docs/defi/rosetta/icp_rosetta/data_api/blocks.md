@@ -14,7 +14,7 @@ The blockidentifer required here is a [PartialBlockIdentifier](https://www.roset
 The request will look something like this:
 
 
-```bash
+```json
 curl --location '0.0.0.0:8081/block'  --header 'Content-Type: application/json' --data '{
     "network_identifier": {
         "blockchain":"Internet Computer",

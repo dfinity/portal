@@ -15,7 +15,7 @@ This call requires Rosetta to make an online call, so make sure that Rosetta is 
 For the arbitrarily chosen proposal `127049` the request will look something like this:
 
 
-```bash
+```json
 curl --location '0.0.0.0:8081/call'  --header 'Content-Type: application/json' --data '{
     "network_identifier": {
         "blockchain":"Internet Computer",
