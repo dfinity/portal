@@ -698,7 +698,6 @@ const sidebars = {
             "developer-docs/multi-chain/ethereum/using-eth/generating-addresses",
             "developer-docs/multi-chain/ethereum/using-eth/signing-transactions",
             "developer-docs/multi-chain/ethereum/using-eth/submit-transactions",
-            "developer-docs/multi-chain/ethereum/using-eth/siwe",
             {
               type: "category",
               label: "EVM RPC canister",
