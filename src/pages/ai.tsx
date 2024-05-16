@@ -479,19 +479,14 @@ let result = model.run(tvec!
               contracts to perform AI computations on GPUs, allowing both
               training and inference of large models fully onchain.
             </motion.p>
-            <motion.div className="">
-              <motion.p className="tw-lead-sm mb-2 my-2 font-bold">
-                Detailed roadmap coming soon.
-              </motion.p>
-            </motion.div>
-            {/* <motion.div>
+            <motion.div>
               <motion.p className="tw-lead-sm mb-2 my-2">Short-term</motion.p>
               <RoadMapList items={shortTermRoadmapItems} />
             </motion.div>
             <motion.div>
               <motion.p className="tw-lead-sm mb-2 mt-4">Long-term</motion.p>
               <RoadMapList items={longTermRoadmapItems} />
-            </motion.div> */}
+            </motion.div>
             <div
               className=" w-[120%] sm:w-7/10 md:w-[85%]
               absolute
