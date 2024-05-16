@@ -542,19 +542,20 @@ const sidebars = {
               type: "category",
               label: "Authentication",
               items: [
-		{
+		        {
 	          type: "category",
                   label: "Internet Identity (II)",
 	          items:
-			[
-			"developer-docs/web-apps/user-login/internet-identity/overview",
-			"developer-docs/web-apps/user-login/internet-identity/creating-ii",
-			"developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity",
-			"developer-docs/web-apps/user-login/internet-identity/alternative-origins",
-			],
-		},
-		 "developer-docs/web-apps/user-login/nfid",
-            	 "developer-docs/web-apps/user-login/email-password",
+              [
+              "developer-docs/identity/internet-identity/overview",
+              "developer-docs/identity/internet-identity/creating-ii",
+              "developer-docs/identity/internet-identity/integrate-internet-identity",
+              "developer-docs/identity/internet-identity/alternative-origins",
+              ],
+            },
+              "developer-docs/identity/authentication/siwe",
+              "developer-docs/identity/authentication/nfid",
+              "developer-docs/identity/authentication/email-password",
               ],
             },
           ],
