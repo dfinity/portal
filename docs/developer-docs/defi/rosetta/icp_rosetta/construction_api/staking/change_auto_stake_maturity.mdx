@@ -4,7 +4,7 @@ keywords: [intermediate, rosetta, tutorial, spawn, neuron, staking, maturity]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Change Auto-Stake-Maturity
+# Change auto-stake-maturity
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
 
@@ -18,7 +18,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 If you do not want to manually have to stake the maturity that you acquired, you can set your neuron to automatically stake new maturity. 
 You can always deactivate this feature by calling it with the boolean `false`. 
 
-An example command for this feature is the following. 
+An example command for this feature resembles the following:
 ```json
 curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data '
 {

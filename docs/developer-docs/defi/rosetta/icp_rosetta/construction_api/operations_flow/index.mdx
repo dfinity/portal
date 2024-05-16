@@ -5,9 +5,16 @@ keywords: [intermediate, rosetta, tutorial]
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Flow of operations
-This section will give you an overview of how the flow of operations in the Construction-API works. It will guide you through each of the necessary endpoints that you will have to call in order to post a valid transaction with your signature to the ICP ledger. As an example of such a transacton this guide will use a simple transfer between accounts. 
-It is recommended to first read through the interactions of each endpoint to acquire an understanding of how the flow of operations works. Although the example of transferring tokens is only one use case of the Construction-API of Rosetta, it serves as a good example on what to expect from the interaction with the Construction-API. The other functionalities that are supported by ICP Rosetta through the Construction-API follow a similar flow of operations.
-This guide assumes that you have a Rosetta instance running at: `http://127.0.0.1:8081`.
+<MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
+
+## Overview
+This section will give you an overview of how the flow of operations in the construction API works. It will guide you through each of the necessary endpoints that you will have to call in order to post a valid transaction with your signature to the ICP ledger. As an example of such a transaction this guide will use a simple transfer between accounts. 
+
+It is recommended to first read through the interactions of each endpoint to acquire an understanding of how the flow of operations works. Although the example of transferring tokens is only one use case of the construction API of Rosetta, it serves as a good example on what to expect from the interaction with the Construction-API. The other functionalities that are supported by ICP Rosetta through the construction API follow a similar flow of operations.
+
+### Prerequisites
+
+- You have a Rosetta instance running at: `http://127.0.0.1:8081`.
 
 ## Key generation
 For the purpose of this guide, you need to have a private key available with which you can sign messages. 
