@@ -1,5 +1,24 @@
 [
   {
+    "id": "yuku",
+    "name": "Yuku",
+    "oneLiner": "Yuku, your gateway to NFTs, Metaverse, and GameFi!",
+    "website": "https://yuku.app/",
+    "tags": [
+      "NFT",
+      "Games",
+      "DAO",
+      "Metaverse"
+    ],
+    "display": "Large",
+    "stats": "35,222+ users",
+    "twitter": "https://twitter.com/yukuapp",
+    "description": "Unlock Limitless Potential: Yuku, Your Gateway to NFTs,Metaverse, and GameFi!",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/yuku_logo.png",
+    "video":"/img/showcase/yuku_intro.mp4"
+  },
+  {
     "id": "helix",
     "name": "Helix Markets",
     "oneLiner": "Bringing true ownership and full transparency to crypto trading",
