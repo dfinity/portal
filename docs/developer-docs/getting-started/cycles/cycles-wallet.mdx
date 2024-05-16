@@ -120,6 +120,7 @@ This command displays output similar to the following:
 Creating a wallet canister on ICP.
 The wallet canister on the "ic" network for user "default" is "gastn-uqaaa-aaaae-aaafq-cai"
 ```
+
 ## Listing wallets
 
 You can use the following command to display the wallet's principal and role (contact, custodian, or controller). If the wallet has a name or a kind associated with it, this information will be returned from the following command as well:
@@ -199,7 +200,9 @@ The command returns the balance using Candid format as a record with an amount f
 
 After you have used the `dfx identity deploy-wallet` command to create a cycles wallet canister tied to an identity, you can use `dfx wallet` commands to modify your cycles wallet settings, send cycles to other cycles wallets, and add or remove controllers and custodians.
 
-For more details on each supported method, see the [dfx wallet reference](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet).
+For more details, see the [dfx wallet reference](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet).
+
+You can also view the [Candid file for the cycles wallet](https://github.com/dfinity/cycles-wallet/blob/main/wallet/src/lib.did).
 
 ### `dfx` wallet functions
 
