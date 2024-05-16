@@ -57,13 +57,14 @@ pub fn get_vc_consent_message_en(
 
 ### Step 2: Implement a derivation origin (`derivation_origin`)
 
-Next, the issuer API endpoint `derivation_origin` is called by the identity provider to obtain an URL to be used as the derivation origin for user's principal.
+Next, the issuer API endpoint `derivation_origin` is called by the identity provider to obtain a URL to be used as the derivation origin for user's principal.
 
-This endpoint verifies that a user's principal, if issued by an alternative origin, is valid and can be issued a verifiable credential.
+If the issuer doesn't rely on alternative derivation origins, then it must return the canister's URL: `https://<issuer-canister-id>.icp0.io`.
 
 If the issuer relies on the [alternative derivation origins](/docs/current/references/ii-spec#alternative-frontend-origins) feature, the endpoint must return the same value for the `derivationOrigin` when logging in.
 
-If the issuer doesn't rely on alternative derivation origins, then it must return the canister's URL: `https://<issuer-canister-id>.icp0.io`.
+The returned value is subject to verification via .well-known/ii-alternative-origins, as describe in the alternative origins documentation.
+
 
 An example implementation in Rust can be found below:
 
@@ -117,39 +118,39 @@ An issuer may follow the convention below for an easier verification of the retu
 Given a credential specification such as:
 
 ```
-    "credentialSpec": {
-        "credentialType": "SomeVerifiedProperty",
-        "arguments": {
-            "argument_1": "value_1",
-            "another_argument": 42,
-        }
-```
-
-The returned JWT should contain a property named by the value of `credentialType` in `credentialSubject` from the specification, with key-value entries listing the arguments from the specification, namely:
-
-```
-    "SomeVerifiedProperty": {
+"credentialSpec": {
+    "credentialType": "SomeVerifiedProperty",
+    "arguments": {
         "argument_1": "value_1",
         "another_argument": 42,
     }
 ```
 
+The returned JWT should contain a property named by the value of `credentialType` in `credentialSubject` from the specification, with key-value entries listing the arguments from the specification, namely:
+
+```
+"SomeVerifiedProperty": {
+    "argument_1": "value_1",
+    "another_argument": 42,
+}
+```
+
 For example, for a `VerifiedAdult` credential, you would use the following credential specification: 
 
 ```
-    "credentialSpec": {
-        "credentialType": "VerifiedAdult",
-        "arguments": {
-            "minAge": 18,
-    }
+"credentialSpec": {
+    "credentialType": "VerifiedAdult",
+    "arguments": {
+        "minAge": 18,
+}
 ```
 
 A compliant issuer would issue a VC that contains `credentialSubject` with the property:
 
 ```
-    "VerifiedAdult": {
-        "minAge": 18,
-    }
+"VerifiedAdult": {
+    "minAge": 18,
+}
 ```
 
 ## Resources
