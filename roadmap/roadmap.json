@@ -40,7 +40,7 @@
           },
           {
             "title": "Latency-aware ingress routing",
-            "overview": "Boundary nodes route ingress messages to nodes with lower network distance in terms of lantecy instead of a random node.",
+            "overview": "Boundary nodes route ingress messages to subnet nodes with lower network distance in terms of latency instead of random nodes.",
             "description": "Currently, Boundary Nodes route messages to random nodes of the target subnet of the message. Selecting the destination node of the message based on its \"distance\" in terms of network latency can help significantly reduce the user-perceived latency.",
             "forum": "",
             "proposal": "",
@@ -77,7 +77,7 @@
           },
           {
             "title": "Log-structured merge tree (LSMT) storage layer",
-            "overview": "Rewrite the storage layer to rely on log-structured merge trees (LSMTs) instead of XFS reflinking. This will give more fine-grained control over what happens during checkpointing and thus enable further more targeted performance improvements.",
+            "overview": "Rewrite the storage layer to rely on log-structured merge trees (LSMTs) instead of XFS reflinking. This will give more fine-grained control over what happens during checkpointing and thus enable further, more targeted, performance improvements.",
             "description": "The state manager currently relies on XFS reflinks to achieve copy-on-write-like functionality upon writing checkpoints. While this is conceptually nice it delegates some tasks with high optimization potential to the file system. The goal of this feature is to implement an LSMT-based storage layer which will enable optimizations further down the road. We also expect some immediate positive performance impact, such as improved checkpointing times, from this feature.",
             "forum": "",
             "proposal": "",
@@ -106,14 +106,14 @@
           },
           {
             "title": "Improved consensus throughput and latency",
-            "overview": "Support of larger ingress messages than 2 MB and increased ingress bandwidth of subnets.",
+            "overview": "Improved consensus throughput and latency by better, and less bursty, node bandwidth use. Achieved through not including full messages, but only their hashes and other metadata, in blocks.",
             "description": "The goal of this feature is to better use the bandwidth of nodes by not including full messages, but only their hashes in blocks. This leads to a less bursty bandwidth usage of nodes compared to sending full blocks when being a block maker. The result of this is increased consensus throughput.",
             "forum": "",
             "proposal": "",
             "wiki": "",
             "docs": "",
             "eta": "",
-            "status": "future",
+            "status": "in_progress",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Stellarator"
@@ -1009,7 +1009,7 @@
         "elements": [
           {
             "title": "RPC canister for Ethereum & EVM integration",
-            "overview": "Integration of ICP with EVM blockchains via a canister that accesses JSON RPC providers. Works for Ethereum and other EVM chains with RPC providers.",
+            "overview": "Integration of ICP with EVM blockchains via a canister that accesses JSON RPC providers through HTTPS outcalls. Works for Ethereum and other EVM chains with RPC providers.",
             "description": "This feature is about an RPC-based integration of the Internet Computer with EVM chains, initially targeting the Ethereum network, then also Ethereum L2s and other chains with Ethereum RPC providers. The integration builds a canister smart contract offering a subset of the EVM RPC API on chain, while itself connecting to multiple RPC providers and communicating with them. For security-critical queries multiple RPC providers can be queried and their responses must match unanimously in order to be considered a valid response to the caller of the canister API. This reduces trust in any single entity, thereby making the approach more decentralized.",
             "status": "in_progress",
             "forum": "",
@@ -1023,7 +1023,7 @@
           },
           {
             "title": "Threshold ECDSA signing latency & throughput improvements",
-            "overview": "Reducing the latency of threshold ECDSA signing operations by reducing the number of required consensus rounds through protocol improvements.",
+            "overview": "Reducing the latency of threshold ECDSA signing operations by reducing the number of required consensus rounds through protocol improvements. Also results in a throughput improvement.",
             "description": "The ICP's initial implementation of threshold ECDSA, also referred to as chain-key ECDSA, requires seven consensus rounds to compute a signature while consuming an available precomputed value (pre-signature). The protocol can be adapted to require fewer rounds for computing a signature, thus noticeably reducing signing latency. Also, the throughput for threshold signing is expected to increase as a byproduct of the optimizations performed. The optimizations will benefit all applications using chain-key ECDSA.",
             "status": "in_progress",
             "forum": "",
@@ -1054,10 +1054,10 @@
       },
       {
         "name": "Chain Fusion Supports Bitcoin Protocols",
-        "description": "ICP’s Chain Fusion technology has full support for Bitcoin protocols such as BRC20 and Runes. So far, ICPs fully-on-chain capabilities have been largely applied  to use cases where Bitcoin is used as a means of value transfer, its original purpose. This milestone provides additional functionality that enables smart contracts to index and issue prominent types of Bitcoin inscriptions in a completely decentralized manner for the first time, thereby putting ICP into a unique position among all chains.",
+        "description": "ICP’s Chain Fusion technology has full support for Bitcoin protocols such as BRC20 and Runes. So far, ICPs fully-on-chain capabilities have been largely applied to use cases where Bitcoin is used as a means of value transfer, its original purpose. This milestone provides additional functionality that enables smart contracts to index and issue prominent types of Bitcoin inscriptions in a completely decentralized manner for the first time, thereby putting ICP into a unique position among all chains.",
         "milestone_id": "Deuterium",
         "eta": "July 25, 2024",
-        "status": "future",
+        "status": "in_progress",
         "elements": [
           {
             "title": "Threshold Schnorr signing",
@@ -1098,9 +1098,9 @@
         "elements": [
           {
             "title": "Threshold EdDSA signing",
-            "overview": "Threshold EdDSA support using cryptographic multiparty computation (MPC). Enables trustless integrations with all chains using EdDSA on the Ed25519 curve, like Solana or Cardano.",
+            "overview": "Threshold EdDSA support using cryptographic multiparty computation (MPC). Enables trustless integrations with all chains using EdDSA on the Ed25519 curve like Solana or Cardano.",
             "description": "ICP already has a suite of threshold signing protocols for realizing threshold ECDSA signatures. Important use cases, however, require EdDSA threshold signatures. An example for the EdDSA requirement is the direct integration with blockchains using EdDSA to sign transactions, such as Cardano or Solana. Schnorr and EdDSA are very similar because EdDSA is based on a variant of Schnorr using a specific family of elliptic curves, thus they can share the same high-level protocol.",
-            "status": "in_progress",
+            "status": "future",
             "eta": "2024",
             "forum": "",
             "proposal": "",
@@ -1225,7 +1225,7 @@
         "elements": [
           {
             "title": "EVM in a canister",
-            "overview": "An EVM implemented as set of canisters on ICP with trustless integration with the Bitcoin network.",
+            "overview": "An low-fee, high-performance EVM implemented as set of canisters on ICP with trustless integration with the Bitcoin network.",
             "description": "The Bitfinity EVM is implemented as a set of canister smart contracts deployed on ICP. Bitfinity offers lower fees, lower latency, and higher throughput than Ethereum. Thanks to chain-key cryptography, the EVM is tightly integrated with the Bitcoin network in a trustless manner.",
             "status": "in_progress",
             "forum": "",
@@ -1233,6 +1233,19 @@
             "wiki": "",
             "docs": "",
             "eta": "",
+            "is_community": true,
+            "in_beta": false
+          },
+          {
+            "title": "Threshold ECDSA - Throughput improvements",
+            "overview": "Improving throughput of chain-key ECDSA via multiple protocol improvements such as batching, parallel processing of crypto operations, and cryptographic protocol improvements.",
+            "description": "This feature addresses optimizations of the chain-key ECDSA (i.e., threshold ECDSA) implementation of ICP to improve throughput. Possible approaches used to reach those goals are to introduce batching techniques to process batches of cryptographic operations, thereby improving performance, or to further parallelize cryptographic operations.",
+            "status": "in_progress",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "future",
             "is_community": true,
             "in_beta": false
           },
@@ -1308,19 +1321,6 @@
             "overview": "Ethereum block explorer running fully on chain on ICP. Adding a missing piece of decentralized infrastructure to the Ethereum ecosystem.",
             "description": "ICP has the mantra of having 100% on-chain dapp experiences. One such 100% on-chain dapp that is intended to be hosted following this paradigm is an Ethereum block explorer. This would close the gap for Ethereum of block explorers being Web2 applications and would help bring Ethereum closer to a fully on-chain decentralized ecosystem, including its core components that are currently hosted off chain.",
             "status": "future",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "future",
-            "is_community": true,
-            "in_beta": false
-          },
-          {
-            "title": "Chain-key ECDSA - Throughput improvements",
-            "overview": "Improving throughput of chain-key ECDSA via multiple protocol improvements such as batching and parallel processing of crypto operations.",
-            "description": "This feature addresses optimizations of the chain-key ECDSA (i.e., threshold ECDSA) implementation of ICP to improve throughput. Possible approaches used to reach those goals are to introduce batching techniques to process batches of cryptographic operations, thereby improving performance, or to further parallelize cryptographic operations.",
-            "status": "in_progress",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -1446,14 +1446,14 @@
         "name": "Onchain AI Inference",
         "description": "Allow smart contracts to run inference using AI models with millions of parameters fully on chain. The focus of this milestone is performance. There are performance optimizations that can be implemented both in the WebAssembly engine and the AI inference engine. The expected speedup is 10x and more.",
         "milestone_id": "Cyclotron",
-        "eta": "Q3 2024",
+        "eta": null,
         "status": "in_progress",
         "elements": [
           {
             "title": "Faster deterministic floating-point operations",
             "overview": "Accelerating deterministic floating point computations in the Wasm engine.",
             "description": "Floating point operations are crucial for AI inference. In order to run on chain inside a smart contract, these operations need to be deterministic. The goal of this feature is to optimize the part of the Wasm engine that makes these operations deterministic.",
-            "status": "",
+            "status": "in_progress",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -1466,7 +1466,7 @@
             "title": "Wasm SIMD instructions",
             "overview": "Deterministic SIMD (Single Instruction, Multiple Data) support in the Wasm execution engine for better performance of AI inference.",
             "description": "SIMD stands for Single Instruction, Multiple Data. It is a set of CPU instructions that allow executing multiple operations with a single instruction. The arithmetic operations used in AI can be expressed as SIMD instructions. This feature introduces deterministic SIMD support in the Wasm execution engine, leading to an expected multiple-times performance improvement of AI operations.",
-            "status": "",
+            "status": "in_progress",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -1479,7 +1479,7 @@
             "title": "Optimizing AI inference engine",
             "overview": "This feature brings SIMD support to the open source inference engine used on ICP to leverage the upcoming support of SIMD operations in Wasm.",
             "description": "This feature brings SIMD support to the open source inference engine used on ICP to leverage the upcoming support of SIMD operations in Wasm.",
-            "status": "",
+            "status": "in_progress",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -2246,7 +2246,7 @@
           {
             "title": "Public contributions to IC repository",
             "overview": "Allowing for contributions by the public to the IC source code repository.",
-            "description": "Currently the IC repo is open source, but does not allow for contributions by the publicy community. This features aims to make the IC repository available for public contributions. Due to the complexity of the ICP codebase and therefore contributions to it, this is a longer-term goal. A first required step for this is to move the IC repository from GitLab to GitHub.",
+            "description": "Currently the IC repo is open source, but does not allow for contributions by the public community. This feature aims to make the IC repository available for public contributions. Due to the complexity of the ICP codebase and therefore contributions to it, this is a longer-term goal. A first required step for this is to move the IC repository from GitLab to GitHub.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -2294,7 +2294,7 @@
       {
         "name": "Verifiable Credentials Platform is Live",
         "description": "With this milestone, ICP offers the infrastructure and tooling to issue, share, and consume credentials in a privacy-preserving fashion. Users are in control of their credentials, giving them a self-sovereign digital identity. At the same time, new credential issuers, such as a KYC service, go live on ICP and will enable new use cases such as security tokens subject to financial regulations.",
-        "milestone_id": "Alcator",
+        "milestone_id": "Separatrix",
         "eta": "June 18, 2024",
         "status": "in_progress",
         "elements": [
@@ -2310,7 +2310,7 @@
             "status": "in_progress",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "Alcator"
+            "milestone_id": "Separatrix"
           },
           {
             "title": "SSI SDK for Relying Parties",
@@ -2324,7 +2324,7 @@
             "status": "in_progress",
             "is_community": true,
             "in_beta": true,
-            "milestone_id": "Alcator"
+            "milestone_id": "Separatrix"
           },
           {
             "title": "Verifiable credentials playground",
@@ -2337,7 +2337,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": true,
-            "milestone_id": "Alcator"
+            "milestone_id": "Separatrix"
           }
         ]
       },
@@ -3624,7 +3624,7 @@
     "milestones": [
       {
         "name": "Canister Operation Insights",
-        "description": "This milestone provides substantial simplifications and improvements for the developers lifecycle of canisters, particularly regarding their development and operations. Snapshotting capabilities, a powerful logging infrastructure and improved error handling, as well as insights into the cycles consumption of canisters and push of relevant events brings canisters closer to Web2 services in terms of DevOps.",
+        "description": "This milestone provides substantial simplifications and improvements for the developer lifecycle of canisters, particularly regarding their development and operations. Snapshotting capabilities, a powerful logging infrastructure and improved error handling, as well as insights into the cycles consumption of canisters and push of relevant events brings canisters closer to Web2 services in terms of DevOps.",
         "milestone_id": "Beryllium",
         "eta": null,
         "status": "in_progress",
@@ -3652,7 +3652,7 @@
             "wiki": "",
             "docs": "",
             "eta": "Q2 2024",
-            "status": "upcoming",
+            "status": "in_progress",
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Beryllium",
@@ -3660,7 +3660,7 @@
           },
           {
             "title": "Cycles consumption insights",
-            "overview": "Give canister controllers insights on cycles consumption of their canisters to help them optimize the cycles consumption of canisters.",
+            "overview": "Give canister controllers insights on cycles consumption of their canisters to help them optimize cycles consumption.",
             "description": "Tracking down where cycles are consumed during the operation of a canister is currently a tedious job requiring manual efforts. This feature provides people who operate canisters insights into where cycles were spent. These insights can be used to optimize the cycles consumption of canisters.",
             "forum": "",
             "proposal": "",
@@ -3690,7 +3690,7 @@
           },
           {
             "title": "Standardized canister response codes",
-            "overview": "Standardize canister response standard, particularly error codes, to enable better composability of services from canister smart contracts.",
+            "overview": "Standardize canister response codes, particularly error codes, to enable better composability of services from canister smart contracts.",
             "description": "Standardize canister response standard, particularly error codes, to enable better composability of services from canister smart contracts.",
             "status": "upcoming",
             "forum": "",
