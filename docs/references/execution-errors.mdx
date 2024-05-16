@@ -355,7 +355,7 @@ An example of this error is:
   Canister's Wasm module is not valid: Wasm module contains a function at index 7 with complexity 1300000 which exceeds the maximum complexity allowed 1000000.
 ```
 
-Certain Wasm instructions (e.g. those involving branching or indirection) may take a long time to compile, so each functions in only allowed to use them a limited number of times. This error indicates that there is a large function exceeding these limits.
+Certain Wasm instructions (e.g. those involving branching or indirection) may take a long time to compile, so each function is only allowed to use them a limited number of times. This error indicates that there is a large function exceeding these limits.
 
 To fix this error, consider breaking the large function up into multiple smaller functions.
 
