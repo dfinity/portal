@@ -120,7 +120,11 @@ dfx identity use default
 export DEFAULT_ACCOUNT_ID=$(dfx ledger account-id)
 ```
 
-### Step 8: Deploy the ledger canister:
+### Step 8: Deploy the ledger canister locally:
+
+:::caution
+In this workflow, you cannot deploy this canister to the playground (using flag `dfx deploy --playground`) because the Motoko playground does not accept gzipped Wasm files.
+:::
 
 ```
 dfx deploy --specified-id ryjl3-tyaaa-aaaaa-aaaba-cai icp_ledger_canister --argument "
