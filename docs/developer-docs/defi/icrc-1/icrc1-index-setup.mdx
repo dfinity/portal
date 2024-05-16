@@ -77,6 +77,10 @@ Here it is assumed that the canister ID of your local ICRC-1 ledger is `mxzaz-hq
 dfx deploy icrc1_index_canister --argument '(opt variant{Init = record {ledger_id = principal "mxzaz-hqaaa-aaaar-qaada-cai"}})'
 ```
 
+:::caution
+In this workflow, you cannot deploy this canister to the playground (using flag `dfx deploy --playground`) because the Motoko playground does not accept gzipped Wasm files.
+:::
+
 The ICRC-1 index canister will start synching right away and will automatically try to fetch new blocks from the ICRC-1 ledger every few seconds.
 
 ### Step 7: Check the status and ICRC-1 ledger ID on the ICRC-1 index canister.
