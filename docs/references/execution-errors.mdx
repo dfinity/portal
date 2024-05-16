@@ -279,13 +279,121 @@ An example of this error is:
 To fix this error, check that the correct timeout is being set when making the call (noting that the timeout is denoted in seconds). If a very long timeout is really required, consider not setting a timeout at all.
 
 
+### Wasm module too large
+The canister's Wasm module exceeds the maximum size allowed on ICP.
 
-[limits]: docs/current/developer-docs/smart-contracts/maintain/resource-limits#resource-constraints-and-limits
+An example of this error is:
+```
+  Canister's Wasm module is not valid: Wasm module size of 200000000 exceeds the maximum allowed size of 104857600.
+```
+
+To fix this error, consider shrinking or optimizing the Wasm module size using [`ic-wasm`][ic-wasm] (shrinking is done by default when using `dfx`). If the canister is still too large consider removing unneeded dependencies or refactoring the logic into multiple canisters that call each other.
+
+
+### Wasm module duplicate exports
+The canister is exporting multiple methods with the same name.
+
+An example of this error is:
+```
+  Canister's Wasm module is not valid: Wasm module has an invalid export section. Duplicate function 'foo' exported multiple times with different call types: update, query, or composite_query.
+```
+
+To fix this error, change the name of one of the duplicated exports.
+
+
+### Wasm module exports too many methods
+The canister exports more methods than the maximum allowed by ICP.
+
+An example of this error is:
+```
+  Canister's Wasm module is not valid: Wasm module has an invalid export section. The number of exported functions called `canister_update <name>`, `canister_query <name>`, or `canister_composite_query <name>` exceeds 1000.
+```
+
+There are some [limits][limits] on how a canister's Wasm modules can declare methods. To fix this error, consider consolidating the logic of multiple methods into a single method with an additional argument or an enum argument to distinguish which backend code to run. Or, consider separating the logic across multiple canisters.
+
+
+### Wasm module sum of exported name lengths too large
+The sum of the name lengths of all exported methods methods of the canister is too large.
+
+An example of this error is:
+```
+  Canister's Wasm module is not valid: Wasm module has an invalid export section. The sum of `<name>` lengths in exported functions called `canister_update <name>`, `canister_query <name>`, or `canister_composite_query <name>` exceeds 20000.
+```
+
+There is a [limit][limits] on the total size of exported names for a single canister. To fix this error, consider choosing shorted method names.
+
+
+### Wasm module too many functions
+The canister's Wasm module contains more functions than ICP allows.
+
+An example of this error is:
+```
+  Canister's Wasm module is not valid: Wasm module defined 60000 functions which exceeds the maximum number allowed 50000.
+```
+
+One of the [limits][limits] imposed by ICP is on the number of functions each Wasm module may define. In order to stay below the limit, consider using [`ic-wasm`][ic-wasm] to remove unused functions. If the limit is still exceeded, consider splitting the logic across multiple canisters.
+
+
+### Wasm module too many globals
+The canister's Wasm module contains more globals than ICP allows.
+
+An example of this error is:
+```
+  Canister's Wasm module is not valid: Wasm module defined 1200 globals which exceeds the maximum number allowed 1000.
+```
+
+One of the [limits][limits] imposed by ICP is on the number of globals each Wasm module may define.
+
+To fix this error, consider grouping globals together into a larger global structure which can be stored in the Wasm heap memory.
+
+
+### Wasm module function complexity too high
+The canister's Wasm module contains a function which ICP rejects because it may take too long to compile.
+
+An example of this error is:
+```
+  Canister's Wasm module is not valid: Wasm module contains a function at index 7 with complexity 1300000 which exceeds the maximum complexity allowed 1000000.
+```
+
+Certain Wasm instructions (e.g. those involving branching or indirection) may take a long time to compile, so each function is only allowed to use them a limited number of times. This error indicates that there is a large function exceeding these limits.
+
+To fix this error, consider breaking the large function up into multiple smaller functions.
+
+
+### Wasm module function too large
+The canister's Wasm module contains a function which is too large.
+
+An example of this error is:
+```
+  Canister's Wasm module is not valid: Wasm module contains a function at index 7 of size 1500000 that exceeds the maximum allowed size of 1000000.
+```
+
+ICP [limits][limits] the number of Wasm instructions that each function body is allowed to contain. This error indicates that there is a large function which exceeds this limit.
+
+To fix this error, consider breaking the large function up into multiple smaller functions.
+
+
+### Wasm module code section too large
+The total size of all the function bodies in the canister's Wasm module is too large.
+
+An example of this error is:
+```
+  Canister's Wasm module is not valid: Wasm module code section size of 1200000 exceeds the maximum allowed size of 10485760.
+```
+
+There is a [limit][limits] on the total size in bytes of the [code section](https://webassembly.github.io/spec/core/binary/modules.html#code-section) of each canister's Wasm module. This section contains the function bodies of all the functions defined by the Wasm module.
+
+To fix this error, consider using [`ic-wasm`][ic-wasm] to shrink the size of the code section. If the limit is still exceeded, consider splitting the logic across multiple canisters.
+
 
 [canbench]: docs/current/developer-docs/smart-contracts/test/benchmarking
 
+[canister-status-api]: docs/current/references/ic-interface-spec#ic-canister_status
+
 [dfx-canister-status]: docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-status
 
-[canister-status-api]: docs/current/references/ic-interface-spec#ic-canister_status
+[ic-wasm]: https://github.com/dfinity/ic-wasm
+
+[limits]: docs/current/developer-docs/smart-contracts/maintain/resource-limits#resource-constraints-and-limits
 
 [setting-freezing-threshold]: docs/current/tutorials/hackathon-prep-course/managing-canisters/#setting-the-canisters-freezing-threshold
