@@ -87,6 +87,10 @@ dfx start --clean --background
 ### Step 6: Deploy the ICP index canister:
 Here it is assumed that the canister ID of your local ICP ledger is `ryjl3-tyaaa-aaaaa-aaaba-cai`, otherwise replace it with your ICP ledger canister ID.
 
+:::caution
+In this workflow, you cannot deploy this canister to the playground (using flag `dfx deploy --playground`) because the Motoko playground does not accept gzipped Wasm files.
+:::
+
 ```
 dfx deploy icp_index_canister --specified-id qhbym-qaaaa-aaaaa-aaafq-cai --argument '(record {ledger_id = principal "ryjl3-tyaaa-aaaaa-aaaba-cai"})'
 ```
