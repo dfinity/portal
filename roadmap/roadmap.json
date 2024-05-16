@@ -1931,13 +1931,13 @@
             "imported": true
           },
           {
-            "title": "WebSocket support in HTTP gateway",
-            "overview": "WebSocket-based communication with canister smart contracts through an HTTP gateway. Enables the canister to push messages to the client.",
+            "title": "WebSocket support for canisters",
+            "overview": "WebSocket-based communication with canister smart contracts through an IC WebSocket gateway. Enables the canister to push messages to the client.",
             "description": "WebSockets provide a bi-directional communication channel between the client (dapp frontend) and the canister (dapp backend). This enables, among others, the canister to push notifications directly to the client and to dynamically update dapp content.",
-            "forum": "https://forum.dfinity.org/t/websockets-on-the-ic-psychedelicdao/14817",
+            "forum": "https://forum.dfinity.org/t/23872",
             "proposal": "",
             "wiki": "",
-            "docs": "",
+            "docs": "https://github.com/omnia-network/ic-websocket-gateway",
             "eta": "",
             "status": "deployed",
             "is_community": true,
