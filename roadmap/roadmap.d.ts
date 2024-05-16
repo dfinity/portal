@@ -8,7 +8,7 @@ interface Milestone {
   name: string;
   description: string;
   milestone_id: string;
-  eta: null | string | string;
+  eta: string;
   status?: string;
   elements: Element[];
 }
@@ -25,6 +25,6 @@ interface Element {
   status: string;
   is_community?: boolean;
   in_beta?: boolean;
-  milestone_id?: string;
   imported?: boolean;
+  milestone_id?: string;
 }
