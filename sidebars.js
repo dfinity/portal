@@ -513,24 +513,6 @@ const sidebars = {
         "developer-docs/web-apps/obtain-verify-ic-pubkey",
         {
           type: "category",
-          label: "User sign-up and login",
-          items: [
-            {
-              type: "category",
-              label: "Internet Identity (II)",
-              items: [
-                "developer-docs/web-apps/user-login/internet-identity/overview",
-                "developer-docs/web-apps/user-login/internet-identity/creating-ii",
-                "developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity",
-                "developer-docs/web-apps/user-login/internet-identity/alternative-origins",
-              ],
-            },
-            "developer-docs/web-apps/user-login/nfid",
-            "developer-docs/web-apps/user-login/email-password",
-          ],
-        },
-        {
-          type: "category",
           label: "Using HTTP certification",
           items: [
             {
@@ -552,6 +534,31 @@ const sidebars = {
         },
       ],
     },
+    {
+          type: "category",
+          label: "Identity",
+          items: [
+            {
+              type: "category",
+              label: "Authentication",
+              items: [
+		{
+	          type: "category",
+                  label: "Internet Identity (II)",
+	          items:
+			[
+			"developer-docs/web-apps/user-login/internet-identity/overview",
+			"developer-docs/web-apps/user-login/internet-identity/creating-ii",
+			"developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity",
+			"developer-docs/web-apps/user-login/internet-identity/alternative-origins",
+			],
+		},
+		 "developer-docs/web-apps/user-login/nfid",
+            	 "developer-docs/web-apps/user-login/email-password",
+              ],
+            },
+          ],
+        },
     {
       type: "category",
       label: "Security",
