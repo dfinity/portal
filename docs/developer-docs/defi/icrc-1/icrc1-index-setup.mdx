@@ -22,6 +22,13 @@ dfx new icrc1_index_canister
 cd icrc1_index_canister
 ```
 
+
+:::caution
+
+If using `dfx` version 0.17.1 or newer, choose 'Motoko' for the backend language, and 'No frontend canister' for the frontend language.
+
+:::
+
 **OPTIONAL:**
 If you created a new project folder, you will either have to make sure the `dfx.json` file contains the correct data on the ICRC-1 ledger (as described in the [ICRC-1 ledger setup guide](./icrc1-ledger-setup.mdx) or you communicate with the ICRC-1 ledger from its project folder that contains the correct `dfx.json file`. If you try to communicate with the ICRC-1 ledger from a new project folder where the `dfx.json` file does not contain information on the ICRC-1 ledger canister, you will not be able to create transactions.
 
