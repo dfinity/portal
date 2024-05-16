@@ -8,7 +8,7 @@ interface Milestone {
   name: string;
   description: string;
   milestone_id: string;
-  eta: string;
+  eta: null | string | string;
   status?: string;
   elements: Element[];
 }
