@@ -194,9 +194,9 @@ To verify the credentials, the relying party needs to validate the JWT received 
 
 The JWT should contain two verifiable credentials in the specified order:
 
-  - An `id_alias` credential which links the effective subject of the credential to a temporary     alias. This credential is signed by the identity provider.
+- An `id_alias` credential which links the effective subject of the credential to a temporary alias. This credential is signed by the identity provider.
 
-  - The actual credential requested by the user. The subject of this credential is `id_alias`, and it should be signed by the issuer.
+- The actual credential requested by the user. The subject of this credential is `id_alias`, and it should be signed by the issuer.
 
 The verification should also check that the subject of the credential matches the subject of the first credential.
 
