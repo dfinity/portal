@@ -550,11 +550,19 @@ const Overlay: React.FC<{
             onClick={onClose}
           >
             <svg
+              width="30"
+              height="30"
               viewBox="0 0 30 30"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              <rect rx="15" fill="#181818" fill-opacity="0.6" />
+              <rect
+                width="30"
+                height="30"
+                rx="15"
+                fill="#181818"
+                fill-opacity="0.6"
+              />
               <path d="M9.34277 9.34375L20.6565 20.6575" stroke="white" />
               <path d="M9.34277 20.6572L20.6565 9.34352" stroke="white" />
             </svg>
