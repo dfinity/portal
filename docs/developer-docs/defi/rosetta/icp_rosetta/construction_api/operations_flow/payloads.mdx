@@ -109,7 +109,7 @@ The unsigned transaction will thus be valid for the next 4 minutes since we did 
 {'unsigned_transaction': 'a2677570646174657381826b5452414e53414354494f4ea56b63616e69737465725f69644a000000000000000201016b6d6574686f645f6e616d656773656e645f70626361726758480a0b08baea959fe0a9e58dbd0112040a02080a1a0308904e2a220a207f622708b363917e3ba0ef8ac1cb0dfe241ef5ffca54f32c1480473ee3a12cad3a0a0899d9c88df3d893e0176673656e646572581d2e70031d8e7ff922b6ad9f2a9eb3c1e77ffa7b6c0d0120dd4ac7e4f7026e696e67726573735f6578706972790070696e67726573735f6578706972696573811b17c04eff12cf8023', 'payloads': [{'account_identifier': {'address': '8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4'}, 'hex_bytes': '0a69632d726571756573748c85871f2b1d1edea73797b31cd63094fa82052fed84c06d45d6c719170d8f6f', 'signature_type': 'ecdsa'}, {'account_identifier': {'address': '8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4'}, 'hex_bytes': '0a69632d726571756573747a67e99e9f5e1cdfa741f8f757bb8c04f00a5fdb20a68bb273ce80973af7a6de', 'signature_type': 'ecdsa'}]}
 ```
 
-Here is an example call where we set the `ingress_start` time to the current time, the `ingress_end` time to an hour from now, the `created_at_time` is also set to the current time and the memo is set to `1234`. 
+Here is an example call that sets the `ingress_start` time to the current time, the `ingress_end` time to an hour from now. The `created_at_time` is also set to the current time, and the memo is set to `1234`. 
 ```json
 curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data '{
   "network_identifier": {
