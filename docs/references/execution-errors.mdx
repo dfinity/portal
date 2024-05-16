@@ -309,7 +309,7 @@ An example of this error is:
   Canister's Wasm module is not valid: Wasm module has an invalid export section. The number of exported functions called `canister_update <name>`, `canister_query <name>`, or `canister_composite_query <name>` exceeds 1000.
 ```
 
-There are some [limits][limits] on how canister's Wasm modules can declare methods. To fix this error, consider consolidating the logic of multiple methods into a single method with an additional argument or a enum argument to distinguish which backend code to run. Or consider separating the logic across multiple canisters.
+There are some [limits][limits] on how a canister's Wasm modules can declare methods. To fix this error, consider consolidating the logic of multiple methods into a single method with an additional argument or an enum argument to distinguish which backend code to run. Or, consider separating the logic across multiple canisters.
 
 
 ### Wasm module sum of exported name lengths too large
