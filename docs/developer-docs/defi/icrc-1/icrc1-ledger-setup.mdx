@@ -22,6 +22,12 @@ dfx new icrc1_ledger_canister
 cd icrc1_ledger_canister
 ```
 
+:::caution
+
+If using `dfx` version 0.17.1 or newer, choose 'Motoko' for the backend language, and 'No frontend canister' for the frontend language.
+
+:::
+
 ### Step 3: Determine ledger file locations.
 
 Go to the [releases overview](https://dashboard.internetcomputer.org/releases) and copy the latest replica binary revision. At the time of writing, this is `d87954601e4b22972899e9957e800406a0a6b929`.
@@ -32,12 +38,14 @@ The URL for the ledger .did file is `https://raw.githubusercontent.com/dfinity/i
 
 
 **OPTIONAL:**
-If you want to make sure, you have the latest ICRC-1 ledger files you can run the following script.
+If you want to make sure you have the latest ICRC-1 ledger files you can run the following script that downloads the files into your local directory:
 ``` sh
 curl -o download_latest_icrc1_ledger.sh "https://raw.githubusercontent.com/dfinity/ic/326df23607fc8280a047daba2d8462f1dfc57466/rs/rosetta-api/scripts/download_latest_icrc1_ledger.sh"
 chmod +x download_latest_icrc1_ledger.sh
 ./download_latest_icrc1_ledger.sh
 ```
+
+These files will be used by the `dfx.json` file as described in the next step.
 
 ### Step 4: Configure the `dfx.json` file.
 Open the `dfx.json` file in your project's directory. Replace the existing content with the following:
@@ -154,6 +162,10 @@ For each variable, the exported environment variable will be used unless otherwi
 
 
 ### Step 7: Deploy the ICRC-1 ledger canister locally:
+
+:::caution
+In this workflow, you cannot deploy this canister to the playground (using flag `dfx deploy --playground`) because the Motoko playground does not accept gzipped Wasm files.
+:::
 
 ``` sh
 dfx deploy icrc1_ledger_canister --specified-id mxzaz-hqaaa-aaaar-qaada-cai --argument "(variant {Init =
