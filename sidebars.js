@@ -451,10 +451,8 @@ const sidebars = {
           type: "category",
           label: "On-chain libraries",
           items: [
-            {
-              type: "doc",
-              id: "developer-docs/developer-tools/on-chain/cdks",
-            },
+              "developer-docs/developer-tools/on-chain/cdks",
+              "developer-docs/developer-tools/on-chain/ic-js",
           ],
         },
         {
