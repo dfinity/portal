@@ -24,6 +24,13 @@ dfx new icp_index_canister
 cd icp_index_canister
 ```
 
+
+:::caution
+
+If using `dfx` version 0.17.1 or newer, choose 'Motoko' for the backend language, and 'No frontend canister' for the frontend language.
+
+:::
+
 **OPTIONAL:**
 If you created a new project folder, you will either have to make sure the `dfx.json` file contains the correct data on the ICP ledger (as described in the [local ledger setup guide](./ledger-local-setup.mdx)) or you communicate with the ICP ledger from its project folder that contains the correct `dfx.json` file. If you try to communicate with the ICP ledger from a new project folder where the `dfx.json` file does not contain information on the ICP ledger canister, you will not be able to create transactions.
 
@@ -79,6 +86,10 @@ dfx start --clean --background
 
 ### Step 6: Deploy the ICP index canister:
 Here it is assumed that the canister ID of your local ICP ledger is `ryjl3-tyaaa-aaaaa-aaaba-cai`, otherwise replace it with your ICP ledger canister ID.
+
+:::caution
+In this workflow, you cannot deploy this canister to the playground (using flag `dfx deploy --playground`) because the Motoko playground does not accept gzipped Wasm files.
+:::
 
 ```
 dfx deploy icp_index_canister --specified-id qhbym-qaaaa-aaaaa-aaafq-cai --argument '(record {ledger_id = principal "ryjl3-tyaaa-aaaaa-aaaba-cai"})'

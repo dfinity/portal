@@ -28,7 +28,7 @@ Once you have your project configured to use the ICRC-1 ledger, you can interact
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
-import Icrc1Ledger "canister:icrc1_ledger_canister";
+import ckbtcLedger "canister:icrc1_ledger_canister";
 import Debug "mo:base/Debug";
 import Result "mo:base/Result";
 import Option "mo:base/Option";
@@ -47,7 +47,7 @@ actor {
     toAccount : Account;
   };
 
-  public shared ({ caller }) func transfer(args : TransferArgs) : async Result.Result<Icrc1Ledger.BlockIndex, Text> {
+  public shared ({ caller }) func transfer(args : TransferArgs) : async Result.Result<ckbtcLedger.BlockIndex, Text> {
     Debug.print(
       "Transferring "
       # debug_show (args.amount)
@@ -55,7 +55,7 @@ actor {
       # debug_show (args.toAccount)
     );
 
-    let transferArgs : Icrc1Ledger.TransferArg = {
+    let transferArgs : ckbtcLedger.TransferArg = {
       // can be used to distinguish between transactions
       memo = null;
       // the amount we want to transfer
@@ -72,7 +72,7 @@ actor {
 
     try {
       // initiate the transfer
-      let transferResult = await Icrc1Ledger.icrc1_transfer(transferArgs);
+      let transferResult = await ckbtcLedger.icrc1_transfer(transferArgs);
 
       // check if the transfer was successful
       switch (transferResult) {
