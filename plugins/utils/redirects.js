@@ -510,7 +510,7 @@ const redirects = `
   /docs/current/developer-docs/multi-chain/ethereum/cketh/using-cketh-in-dapps /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/using-cketh-in-dapps
   /docs/current/developer-docs/web-apps/user-login/internet-identity/overview /docs/current/developer-docs/identity/internet-identity/overview
   /docs/current/developer-docs/web-apps/user-login/internet-identity/creating-ii /docs/current/developer-docs/identity/internet-identity/creating-ii
-  /docs/current/developer-docs/web-apps/user-login/internet-identity/creating-ii /docs/current/developer-docs/identity/internet-identity/creating-ii
+  /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity /docs/current/developer-docs/identity/internet-identity/integrate-internet-identity
   /docs/current/developer-docs/web-apps/user-login/internet-identity/alternative-origins /docs/current/developer-docs/identity/internet-identity/alternative-origins
   /docs/current/developer-docs/web-apps/user-login/nfid /docs/current/developer-docs/identity/authentication/nfid
   /docs/current/developer-docs/web-apps/user-login/email-password /docs/current/developer-docs/identity/authentication/email-password
