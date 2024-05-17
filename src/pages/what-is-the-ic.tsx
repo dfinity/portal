@@ -23,7 +23,7 @@ function WhatIsIcpPage() {
       description={`The Internet Computer adds autonomous serverless cloud functionality to the public Internet - making it possible to build almost any system or service entirely on a decentralized network using “canister software,” an evolution of smart contracts.`}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-what-is-the-ic.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-what-is-the-ic.webp"></ShareMeta>
 
       <main
         className="text-black relative overflow-hidden"
@@ -277,7 +277,7 @@ function WhatIsIcpPage() {
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
                   href="/docs/current/developer-docs/cost-estimations-and-examples"
                 >
-                  <LinkArrowRight /> Learn more about ICP costs
+                  <DocsIcon /> Learn more about ICP costs
                 </Link>
               </TranslatedLayout>
 
@@ -341,8 +341,8 @@ function WhatIsIcpPage() {
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
                   href="/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa/"
                 >
-                  <LinkArrowRight /> Learn more about ICP contracts threshold
-                  signing
+                  <DocsIcon className="mr-1 ml-1 md:ml-0" /> Learn more about
+                  ICP contracts threshold signing
                 </Link>
               </TranslatedLayout>
               <TranslatedLayout
@@ -433,7 +433,12 @@ function WhatIsIcpPage() {
                   alt=""
                   className="h-24"
                 />
-                <h3 className="tw-lead my-3 md:tw-title-sm">DAO control </h3>
+                <h3
+                  className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
+"
+                >
+                  DAO control{" "}
+                </h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
                   Protocols often evolve slowly due to the need for consensus.
                   ICP stands out by enabling frequent, decentralized updates
@@ -452,7 +457,10 @@ function WhatIsIcpPage() {
                   alt=""
                   className="h-24"
                 />
-                <h3 className="tw-lead my-3 md:tw-title-sm">
+                <h3
+                  className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
+"
+                >
                   Scale out via subnets
                 </h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
@@ -472,7 +480,10 @@ function WhatIsIcpPage() {
                   alt=""
                   className="h-24"
                 />
-                <h3 className="tw-lead my-3 md:tw-title-sm">
+                <h3
+                  className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
+"
+                >
                   Powerful node hardware{" "}
                 </h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
@@ -493,7 +504,12 @@ function WhatIsIcpPage() {
                   alt=""
                   className="h-24"
                 />
-                <h3 className="tw-lead my-3 md:tw-title-sm">Asynchronous </h3>
+                <h3
+                  className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
+"
+                >
+                  Asynchronous{" "}
+                </h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
                   ICP's smart contracts operate asynchronously, unlike
                   Ethereum’s synchronous model which causes delays as
@@ -513,7 +529,7 @@ function WhatIsIcpPage() {
                   alt=""
                   className="h-24"
                 />
-                <h3 className="tw-lead my-3 md:tw-title-sm">
+                <h3 className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm">
                   Decentralization
                 </h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
@@ -535,7 +551,12 @@ function WhatIsIcpPage() {
                   alt=""
                   className="h-24"
                 />
-                <h3 className="tw-lead my-3 md:tw-title-sm">WebAssembly</h3>
+                <h3
+                  className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
+"
+                >
+                  WebAssembly
+                </h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
                   ICP uses WebAssembly, an open standard for binary formats, for
                   its smart contracts. This enables developers to use various
@@ -553,7 +574,12 @@ function WhatIsIcpPage() {
                   alt=""
                   className="h-24"
                 />
-                <h3 className="tw-lead my-3 md:tw-title-sm">Reverse gas</h3>
+                <h3
+                  className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
+"
+                >
+                  Reverse gas
+                </h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
                   The reverse gas model allows developers to prepay gas fees by
                   loading their smart contracts with 'cycles,' enabling users to
@@ -573,7 +599,10 @@ function WhatIsIcpPage() {
                   alt=""
                   className="h-24"
                 />
-                <h3 className="tw-lead my-3 md:tw-title-sm">
+                <h3
+                  className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
+"
+                >
                   Smart contracts serve web assets{" "}
                 </h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
@@ -592,7 +621,10 @@ function WhatIsIcpPage() {
                   alt=""
                   className="h-24"
                 />
-                <h3 className="tw-lead my-3 md:tw-title-sm">
+                <h3
+                  className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
+"
+                >
                   Chain key cryptography
                 </h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
