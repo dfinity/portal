@@ -240,18 +240,16 @@ function WhatIsIcpPage() {
                 </p>
 
                 <Link
-                  className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="https://wiki.internetcomputer.org/wiki/Internet_Computer_performance"
+                  className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
+                  href="/ai"
                 >
-                  <DocsIcon className="mr-2" /> Learn more about ICP
-                  performance.
+                  Run AI models fully on-chain
                 </Link>
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="/ai"
+                  href="https://wiki.internetcomputer.org/wiki/Internet_Computer_performance"
                 >
-                  <LinkArrowRight className="mr-1" /> Run AI models fully
-                  on-chain
+                  <DocsIcon /> Learn more about ICP performance.
                 </Link>
               </TranslatedLayout>
 
