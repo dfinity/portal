@@ -54,14 +54,17 @@ const Hero: React.FC<{
               {headline}
             </h1>
             <div className="w-full md:w-[550px] mt-4 md:mt-8">
-              <ChatWidget
+              {/* <ChatWidget
                 aiPlaceholders={aiPlaceholders}
                 fontLoaded={fontLoaded}
-              />
-              <div className="bg-black/5 flex flex-col mt-4 md:flex-row md:items-center p-0 md:pr-4 gap-0 md:gap-6 animate-blur-out rounded-xl">
+              /> */}
+              <div className="bg-black/5 flex flex-col md:flex-row md:items-center p-0 md:pr-4 gap-0 md:gap-6 animate-blur-out rounded-xl">
                 <Link
                   className="button-fancy-ai py-3 justify-center button-with-icon border-none transition-all bg-[radial-gradient(67.52%_167.71%_at_50.38%_-41.67%,#EA2B7B_0%,#3B00B9_100%)] hover:text-white/80 stat-fade-in md:ml-2"
                   href="/what-is-the-ic"
+                  style={{
+                    animationPlayState: fontLoaded ? "running" : "paused",
+                  }}
                 >
                   WHAT IS ICP
                 </Link>
