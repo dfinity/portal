@@ -1,0 +1,57 @@
+---
+keywords: [intermediate, idl2json, idl, candid, json]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# idl2json
+
+<MarkdownChipRow labels={["Intermediate"]} />
+
+
+## Overview
+
+[`idl2json`](https://github.com/dfinity/idl2json/tree/main) is a command-line tool used to translate [Candid](https://github.com/dfinity/candid) textual values from `stdin` into JSON values outputted in `stdout`.
+
+`idl2json` can be used in workflows where a tool producing Candid values, such as `dfx`, needs to provide JSON values to JSON-based tools.
+
+## Installation
+
+### Prerequisites
+
+- Download and install [cargo]
+
+Once you have downloaded cargo, install `idl2json` with the `cargo install` command:
+
+```
+cargo install idl2json_cli
+```
+
+## Usage
+
+
+
+dfx canister call nns-dapp get_stats --network ic | idl2json | jq '.performance_counts[] | select(.name == "post_upgrade stop") | .instruction_count'
+
+## `dfx` supported JSON output
+
+
+
+
+idl2json
+========
+
+Reads  from `stdin` and emits them as json values on `stdout`.
+
+This command is useful for piping the output of Candid value producing tools (such as dfx) into json tools.
+
+```
+dfx canister call governance get_proposal_info 1 | idl2json
+```
+
+There is sample output to play with without dfx:
+
+```
+<samples/proposal.idl ./target/debug/idl2json
+```
+
