@@ -42,12 +42,16 @@ The limits depend on the message type as shown in the following table.
 | ------------------------------------------------------------------------------------ | ----------- |
 | Wasm heap memory, per canister                                                       | 4GiB        |
 | Wasm stable memory, per canister                                                     | 400GiB      |
+| Wasm stable memory, data access per message                                          | 8GiB        |
+| Wasm stable memory, data written per message                                         | 8GiB        |
+
+| Wasm module limits                                                                   | Constraint  |
+| ------------------------------------------------------------------------------------ | ----------- |
+| Wasm total size, per canister                                                        | 100MiB      |
+| Wasm code section, per canister                                                      | 10MiB       |
 | Wasm custom sections, per subnet                                                     | 2GiB        |
 | Wasm custom sections, per canister                                                   | 1MiB        |
 | Wasm custom sections, sections per canister                                          | 16          |
-| Wasm code section, per canister                                                      | 10MiB       |
-| Wasm stable memory, data access per message                                          | 8GiB        |
-| Wasm stable memory, data written per message                                         | 8GiB        |
 
 | Query call resource limits                                                           | Constraint  |
 | ------------------------------------------------------------------------------------ | ----------- |
@@ -78,6 +82,7 @@ The Internet Computer Protocol may reject WebAssembly modules for reasons such t
 
 - They declare more than 50_000 functions.
 - They declare more than 1_000 globals.
+- They declare a function with more than 1_000_000 Wasm instructions.
 - They declare more than 16 exported custom sections (the custom section names with prefix icp:).
 - The number of all exported functions called `canister_update <name>` or `canister_query <name>` exceeds 1_000.
 - The sum of `<name>` lengths in all exported functions called `canister_update <name>` or `canister_query <name>` exceeds 20_000.

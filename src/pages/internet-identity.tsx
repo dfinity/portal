@@ -46,7 +46,7 @@ function InternetIdentityPage() {
               className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-8/10"
               variants={transitions.item}
             >
-              A fully decentralized digital identity solution
+              Secure, seamless and privacy-preserving digital identity
             </motion.h1>
             <div className="relative  md:w-5/10">
               <motion.p
@@ -57,16 +57,17 @@ function InternetIdentityPage() {
                 friction from the authentication journey and enabling data
                 sovereignty.
               </motion.p>
-              <motion.p className="mb-0" variants={transitions.item}>
-                <Link
-                  className="link-white link-with-icon"
-                  href="/docs/current/references/ii-spec/"
+              <motion.p className="mb-0 gap-8" variants={transitions.item}>
+              <MotionLink
+                  className="button-white"
+                  href="https://identity.ic0.app"
                   target="_blank"
                   rel="noopener noreferrer"
+                  variants={transitions.item}
                 >
-                  <LinkArrowRight />
-                  Start building
-                </Link>
+                  Go to Internet Identity
+                </MotionLink>
+                
               </motion.p>
             </div>
           </div>

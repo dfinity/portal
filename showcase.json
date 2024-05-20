@@ -1337,16 +1337,16 @@
   {
     "id": "scinet",
     "name": "SCINET",
-    "description": "SCINET is a decentralized life sciences (“DeSci”) research and investment platform that revolutionizes the way people do and support science. Powered by blockchain technologies, SCINET allows retail and institutional investors to invest directly in life sciences research and technology with security and authenticity.",
+    "description": "A licensing application for life-sciences companies. Easily monetize your intellectual property using NFTs.",
     "tags": [
-      "SocialFi",
+      "NFT",
       "Tools / Infrastructure"
     ],
     "usesInternetIdentity": false,
     "website": "https://www.scinet.one/",
     "twitter": "https://twitter.com/scinet_inc",
     "discord": "https://discord.com/invite/5uH6vpJjeB",
-    "logo": "/img/showcase/scinet_logo.webp",
+    "logo": "/img/showcase/scinet_logo.png",
     "submittableId": "33285268"
   },
   {
@@ -3079,18 +3079,19 @@
   {
     "id": "taxlint",
     "name": "TaxLint",
-    "oneLiner": "Your automated tax reporting IC assistant.",
-    "website": "https://vresg-vyaaa-aaaag-qcj2q-cai.icp0.io/",
+    "oneLiner": "A decentralised, private, and secure automated Tax Report aimed to help users to count ICP and ICRC1 token transactions.",
+    "website": "https://www.taxlint.online/",
     "tags": [
-      "Wallet",
-      "DeFi"
+      "DeFi",
+      "Tools / Infrastructure"
     ],
-    "description": "Auto Tax Report, taxLint helps users of ICP to count and manage tax information more easily.",
+    "description": "A decentralised, private, and secure automated Tax Report aimed to help users to count ICP and ICRC1 token transactions.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/taxlint_logo.png",
     "github": "https://github.com/TaxLintDAO/taxlint",
     "twitter": "https://twitter.com/taxlint",
     "display": "Normal",
+    "stats": "150+ users",
     "screenshots": [
       "/img/showcase/taxlint_screenshot.png"
     ],
@@ -3749,7 +3750,7 @@
     "id": "blendsafe",
     "name": "Blendsafe",
     "oneLiner": "A MultiSignature wallet and omnichain module designed for cross-chain message signing, suitable for multiple blockchain ecosystems.",
-    "website": "https://deep-ink.ventures",
+    "website": "https://blendsafe.com/",
     "tags": [
       "Tools / Infrastructure",
       "Wallet",
@@ -4318,8 +4319,7 @@
     "name": "odoc",
     "oneLiner": "Tasks managment, documentations, and smart contracts for online workers and freelancers.",
     "tags": [
-      "DAO",
-      "SocialFi"
+      "Tools / Infrastructure"
     ],
     "description": "Odoc is a place where you can hire and work. It is empowering freelancers with transparent and liberating smart contracts on the blockchain.",
     "usesInternetIdentity": true,
@@ -4496,6 +4496,66 @@
     "twitter": "https://twitter.com/Amplify_ICP",
     "display": "Normal",
     "logo": "/img/showcase/amplify_logo.png"
+  },
+  {
+    "id": "cbindex",
+    "name": "CBIndex",
+    "oneLiner": "An omnichain crypto asset management platform that includes multiple BTCFi products across multiple blockchains.",
+    "tags": [
+      "Bitcoin",
+      "DeFi"
+    ],
+    "description": "An omnichain crypto asset management platform that includes multiple BTCFi products across multiple blockchains.",
+    "usesInternetIdentity": false,
+    "website": "https://cbindex.finance",
+    "twitter": "https://twitter.com/CBIndex_Global",
+    "display": "Normal",
+    "logo": "/img/showcase/CBIndex_logo.png"
+  },
+  {
+    "id": "b3wallet",
+    "name": "B3Wallet",
+    "oneLiner": "A decentralized, multi-chain wallet with unique support for Bitcoin, Ethereum, using Internet Computer's threshold ECDSA.",
+    "tags": [
+      "Tools / Infrastructure",
+      "Bitcoin",
+      "Ethereum"
+    ],
+    "description": "A decentralized, multi-chain wallet with unique support for Bitcoin, Ethereum, using Internet Computer's threshold ECDSA.",
+    "usesInternetIdentity": true,
+    "website": "https://sehgq-cqaaa-aaaap-ahc4q-cai.icp0.io",
+    "github": "https://github.com/B3Pay/B3Wallet",
+    "display": "Normal",
+    "logo": "/img/showcase/b3pay_logo.png"
+  },
+  {
+    "id": "pass",
+    "name": "Pass",
+    "oneLiner": "First blockchain password manager.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "First blockchain password manager.",
+    "usesInternetIdentity": true,
+    "website": "https://www.ic-pass.app/",
+    "github": "https://github.com/IC-Pass",
+    "twitter": "https://twitter.com/pass_ic",
+    "display": "Normal",
+    "logo": "/img/showcase/pass_logo.svg"
+  },
+  {
+    "id": "hamster",
+    "name": "Hamster",
+    "oneLiner": "One-stop infrastructure, developer toolkit and middleware DevOps service platform",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "One-stop infrastructure, developer toolkit and middleware DevOps service platform",
+    "usesInternetIdentity": true,
+    "website": "https://hamsternet.io/",
+    "twitter": "https://twitter.com/Hamsternetio",
+    "display": "Normal",
+    "logo": "/img/showcase/hamster_logo.png"
   },
   {
     "name": "MSQ - Safe ICP Wallet",
