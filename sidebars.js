@@ -540,6 +540,7 @@ const sidebars = {
               type: "category",
               label: "Authentication",
               items: [
+                "developer-docs/identity/authentication/overview",
 		        {
 	          type: "category",
                   label: "Internet Identity (II)",
