@@ -10,6 +10,10 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 When building an application that enables users to have profiles or buy and sell assets, you must implement an authentication method. An authentication method allows users to log into an application by providing some form of credential or verification of identity. Authentication methods vary in levels of security and data privacy.
 
+To implement authentication in your dapp, your application frontend must provide a user interface component that triggers an authentication workflow. Then, the backend logic must implement code to handle the authentication and return a response to the frontend service.
+
+A simple example of this workflow is a basic 'Who am I?' application that uses Internet Identity for authentication. View the [integrating with Internet Identity](./internet-identity/integrate-internet-identity.mdx) documentation for more information.
+
 ## Authentication methods
 
 Authentication methods available on ICP include:
