@@ -157,16 +157,16 @@ const redirects = `
   /docs/current/motoko/intro/ /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/tutorials/create_your_first_app/ /docs/current/tutorials/developer-journey/
   /docs/quickstart/quickstart-intro.html /docs/current/developer-docs/getting-started/install/
-  /docs/ic-identity-guide/auth-how-to.html /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity/
+  /docs/ic-identity-guide/auth-how-to.html /docs/current/developer-docs/identity/internet-identity/integrate-internet-identity/
   /docs/current/developer-docs/build/agents/agent-dfinity	/docs/current/developer-docs/developer-tools/off-chain/agents/overview
-  /docs/current/tokenomics/identity-auth/what-is-ic-identity /docs/current/developer-docs/web-apps/user-login/internet-identity/overview
+  /docs/current/tokenomics/identity-auth/what-is-ic-identity /docs/current/developer-docs/identity/internet-identity/overview
   /docs/quickstart/local-quickstart.html /docs/current/developer-docs/getting-started/install/
   /language-guide/ /docs/current/tutorials/developer-journey/level-0/intro-languages
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /docs/current/developer-docs/backend/rust/
   /docs/quickstart/network-quickstart.html /docs/current/developer-docs/getting-started/install/
   /docs/token-holders/nns-app-quickstart.html /docs/current/developer-docs/daos/nns/nns-app-quickstart
   /developers-guide/quickstart.html /docs/current/tutorials/developer-journey/
-  /docs/current/tokenomics/identity-auth/auth-how-to /docs/current/developer-docs/web-apps/user-login/internet-identity/overview
+  /docs/current/tokenomics/identity-auth/auth-how-to /docs/current/developer-docs/identity/internet-identity/overview
   /docs/developers-guide/tutorials-intro.html /docs/current/tutorials/developer-journey/
   /docs/quickstart/quickstart.html /docs/current/developer-docs/getting-started/install/
   /apis/site/proxy /docs/current/references/http-gateway-protocol-spec
@@ -340,10 +340,10 @@ const redirects = `
   /docs/current/developer-docs/production/custom-domain/dns-setup /docs/current/developer-docs/web-apps/custom-domains/dns-setup
   /docs/current/developer-docs/backend/design-dapps /docs/current/developer-docs/web-apps/design-dapps
   /docs/current/developer-docs/integrations/independently-verifying-ic-signatures /docs/current/developer-docs/web-apps/independently-verifying-ic-signatures
-  /docs/current/developer-docs/integrations/internet-identity/overview  /docs/current/developer-docs/web-apps/user-login/internet-identity/overview
-  /docs/current/developer-docs/integrations/internet-identity/creating-ii /docs/current/developer-docs/web-apps/user-login/internet-identity/creating-ii
-  /docs/current/developer-docs/integrations/internet-identity/integrate-identity /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity
-  /docs/current/developer-docs/integrations/internet-identity/alternative-origins /docs/current/developer-docs/web-apps/user-login/internet-identity/alternative-origins
+  /docs/current/developer-docs/integrations/internet-identity/overview  /docs/current/developer-docs/identity/internet-identity/overview
+  /docs/current/developer-docs/integrations/internet-identity/creating-ii /docs/current/developer-docs/identity/internet-identity/creating-ii
+  /docs/current/developer-docs/integrations/internet-identity/integrate-identity /docs/current/developer-docs/identity/internet-identity/integrate-internet-identity
+  /docs/current/developer-docs/integrations/internet-identity/alternative-origins /docs/current/developer-docs/identity/internet-identity/alternative-origins
   /docs/current/developer-docs/http-compatible-canisters/custom-http-canisters /docs/current/developer-docs/web-apps/http-compatible-canisters/custom-http-canisters
   /docs/current/developer-docs/http-compatible-canisters/serving-json-over-http /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-json-over-http
   /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http
@@ -409,7 +409,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/bitcoin/local-development /docs/current/developer-docs/multi-chain/bitcoin/using-btc/local-development
   /docs/current/developer-docs/integrations/ethereum/overview /docs/current/developer-docs/multi-chain/ethereum/overview
   /docs/current/developer-docs/integrations/ethereum/evm-rpc /docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister
-  /docs/current/developer-docs/integrations/ethereum/siwe /docs/current/developer-docs/multi-chain/ethereum/using-eth/siwe
+  /docs/current/developer-docs/integrations/ethereum/siwe /docs/current/developer-docs/identity/authentication/siwe
   /docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works /docs/current/references/bitcoin-how-it-works
   /docs/current/developer-docs/integrations/bitcoin/ckbtc-reference /docs/current/references/ckbtc-reference
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works /docs/current/references/https-outcalls-how-it-works
@@ -433,9 +433,9 @@ const redirects = `
   /docs/current/references/security/web-app-development-security-best-practices /docs/current/developer-docs/security/web-app-development-security-best-practices
   /docs/current/references/security/ /docs/current/developer-docs/security/general-security-best-practices
   /docs/current/developer-docs/smart-contracts/overview/development-cycle /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle
-  /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-identity /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity
+  /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-identity /docs/current/developer-docs/identity/internet-identity/integrate-internet-identity
   /docs/current/developer-docs/multi-chain/ethereum/cketh /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview
-  /docs/current/developer-docs/multi-chain/ethereum/siwe /docs/current/developer-docs/multi-chain/ethereum/using-eth/siwe
+  /docs/current/developer-docs/multi-chain/ethereum/siwe /docs/current/developer-docs/identity/authentication/siwe
   /docs/current/developer-docs/multi-chain/bitcoin/ckbtc /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/multi-chain/bitcoin/read-state /docs/current/developer-docs/multi-chain/bitcoin/using-btc/read-state
   /docs/current/developer-docs/multi-chain/bitcoin/submit-transactions /docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions
@@ -508,7 +508,13 @@ const redirects = `
   /docs/current/developer-docs/multi-chain/ethereum/cketh/overview /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview
   /docs/current/developer-docs/multi-chain/ethereum/cketh/making-transactions /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/making-transactions
   /docs/current/developer-docs/multi-chain/ethereum/cketh/using-cketh-in-dapps /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/using-cketh-in-dapps
-
+  /docs/current/developer-docs/web-apps/user-login/internet-identity/overview /docs/current/developer-docs/identity/internet-identity/overview
+  /docs/current/developer-docs/web-apps/user-login/internet-identity/creating-ii /docs/current/developer-docs/identity/internet-identity/creating-ii
+  /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity /docs/current/developer-docs/identity/internet-identity/integrate-internet-identity
+  /docs/current/developer-docs/web-apps/user-login/internet-identity/alternative-origins /docs/current/developer-docs/identity/internet-identity/alternative-origins
+  /docs/current/developer-docs/web-apps/user-login/nfid /docs/current/developer-docs/identity/authentication/nfid
+  /docs/current/developer-docs/web-apps/user-login/email-password /docs/current/developer-docs/identity/authentication/email-password
+  /docs/current/developer-docs/multi-chain/ethereum/using-eth/siwe /docs/current/developer-docs/identity/authentication/siwe
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
