@@ -86,57 +86,6 @@ In this request, the following parameters must be set:
 
 Additional examples can be found in the [verifiable credentials specification](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md#examples).
 
-### JavaScript SDK for verifiable credentials
-
-The [JavaScript SDK for VCs](https://github.com/dfinity/verifiable-credentials-sdk/tree/main/js-library) can be used to send these JSON RPC requests programmatically using the `requestVerifiablePresentation` function. Below is an example:
-
-```javascript
-import { requestVerifiablePresentation } from "@dfinity/verifiable-credentials/request-verifiable-presentation";
-
-requestVerifiablePresentation({
-  onSuccess: async (verifiablePresentation: VerifiablePresentationResponse) => {
-    // Called when the flow finishes successfully.
-  },
-  onError() {
-    // Called when there is a technical error.
-  },
-  issuerData: {
-    origin: "<url of the origin>",
-    canisterId: "<[optional] canister id>",
-  },
-  credentialData: {
-    credentialSpec: {
-      credentialType: '<credential type as expected by issuer>',
-      arguments: {
-        // Arguments to verify with the credential
-      },
-    },
-    credentialSubject: "<user's principal>",
-  },
-  identityProvider: "<[optional] url identity provider>",
-  derivationOrigin: "<[optional] origin for delegated identity>",
-  windowOpenerFeatures: "<[optional] window opener config string>",
-});
-```
-
-[Learn more about the JavaScript SDK for VCs](https://github.com/dfinity/verifiable-credentials-sdk/tree/main/js-library).
-
-This code executes the following steps:
-
-- Opens a new window or tab with the identity provider (Internet Identity (II)).
-
-- Waits for a window post message from II.
-
-- Sends a request to II through the window post message.
-
-- Waits for the response from the II.
-
-- Calls an `onSuccess` callback if the process was successful, but that does not necessarily mean that a credential was received.
-
-- Calls an `onError` callback if the process has some technical error, if the user closes the II window, or if II times out.
-
-Learn more about [how this workflow works](how-it-works.mdx).
-
 ### Step 3: Receive a response
 
 If the JSON RPC request is successfully sent and received by the issuer API, Internet Identity will return the following JSON RPC response to the relying party:
@@ -188,15 +137,66 @@ An example error can be found below:
 }
 ```
 
+### JavaScript SDK for verifiable credentials
+
+You can request credentials to issuers through identity providers with the JS client for relying parties NPM package [@dfinity/verifiable-credentials](https://www.npmjs.com/package/@dfinity/verifiable-credentials). Below is an example:
+
+```javascript
+import { requestVerifiablePresentation } from "@dfinity/verifiable-credentials/request-verifiable-presentation";
+
+requestVerifiablePresentation({
+  onSuccess: async (verifiablePresentation: VerifiablePresentationResponse) => {
+    // Called when the flow finishes successfully.
+  },
+  onError() {
+    // Called when there is a technical error.
+  },
+  issuerData: {
+    origin: "<url of the origin>",
+    canisterId: "<[optional] canister id>",
+  },
+  credentialData: {
+    credentialSpec: {
+      credentialType: '<credential type as expected by issuer>',
+      arguments: {
+        // Arguments to verify with the credential
+      },
+    },
+    credentialSubject: "<user's principal>",
+  },
+  identityProvider: "<[optional] url identity provider>",
+  derivationOrigin: "<[optional] origin for delegated identity>",
+  windowOpenerFeatures: "<[optional] window opener config string>",
+});
+```
+
+[Learn more about the JavaScript SDK for VCs](https://github.com/dfinity/verifiable-credentials-sdk/tree/main/js-library).
+
+This code executes the following steps:
+
+- Opens a new window or tab with the identity provider (Internet Identity (II)).
+
+- Waits for a window post message from II.
+
+- Sends a request to II through the window post message.
+
+- Waits for the response from the II.
+
+- Calls an `onSuccess` callback if the process was successful, but that does not necessarily mean that a credential was received.
+
+- Calls an `onError` callback if the process has some technical error, if the user closes the II window, or if II times out.
+
+Learn more about [how this workflow works](how-it-works.mdx).
+
 ## Verifying the credentials
 
 To verify the credentials, the relying party needs to validate the JWT received from the identity provider, both cryptographically and semantically.
 
 The JWT should contain two verifiable credentials in the specified order:
 
-  - An `id_alias` credential which links the effective subject of the credential to a temporary     alias. This credential is signed by the identity provider.
+- An `id_alias` credential which links the effective subject of the credential to a temporary alias. This credential is signed by the identity provider.
 
-  - The actual credential requested by the user. The subject of this credential is `id_alias`, and it should be signed by the issuer.
+- The actual credential requested by the user. The subject of this credential is `id_alias`, and it should be signed by the issuer.
 
 The verification should also check that the subject of the credential matches the subject of the first credential.
 
