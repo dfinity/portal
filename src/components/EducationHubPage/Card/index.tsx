@@ -92,7 +92,7 @@ function Index({ title, body, languages, tags, link, level }) {
         </div>
         <p
           ref={tagsRef}
-          className="flex flex-wrap space-x-1 transition-all duration-500 mt-auto"
+          className="flex flex-wrap space-x-1 transition-all duration-500 mt-auto white"
         >
           {tags.slice(0, 2).map((tag) => (
             <span className="text-[11px] mt-1 text-black/60  border-solid border border-black/20 justify-center px-2 rounded-[100px] ">
