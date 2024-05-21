@@ -23,11 +23,11 @@ Want to ask questions or give the team feedback on this new tool? [Head over to 
 
 ## Motoko v0.11.0: New breaking changes
 
-A new version of Motoko (v0.11.0) introduces a new safety feature that could cause breaking changes to existing code. 
+A new version of Motoko (v0.11.0) introduces a new safety feature that could cause breaking changes to existing code.
 
 This update makes changes to how Motoko handles making calls to sensitive functions. In the past, third-party libraries could make calls to functions such as `ExperimentalCycles.add(...)` and `Timer.setTimer(...)` without providing any indication to the caller that sensitive system functionality was being utilized.
 
-In the newest version of Motoko, the type system has been revised to detect and prevent this scenario. However, it still allows developers to allow sensitive functions to be called. 
+In the newest version of Motoko, the type system has been revised to detect and prevent this scenario. However, it still allows developers to allow sensitive functions to be called.
 
 For example, in previous Motoko versions, the following code snippet could be used:
 
@@ -54,7 +54,7 @@ To support the new changes, the previous code should be rewritten to include the
   };
 ```
 
-You can learn more in the [Motoko v0.11.0 migration guide](/docs/current/developer-docs/backend/motoko/0.11.0-migration-guide).
+You can learn more in the [Motoko v0.11.0 migration guide](/docs/current/motoko/main/migration-guides/0.11.0-migration-guide).
 
 ## Juno + OpenAI demo
 

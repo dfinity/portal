@@ -8,9 +8,9 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Governance", "Concept"]} />
 
-## Overview 
+## Overview
 
-Only [neurons](https://internetcomputer.org/docs/current/concepts/governance) with at least 10 ICP and 6 months of dissolve delay can submit proposals to the NNS. To learn more on how to submit a proposal, refer to the [how to create an NNS motion proposal](https://wiki.internetcomputer.org/wiki/How-To:_Create_an_NNS_motion_proposal). 
+Only [neurons](/docs/current/concepts/governance) with at least 10 ICP and 6 months of dissolve delay can submit proposals to the NNS. To learn more on how to submit a proposal, refer to the [how to create an NNS motion proposal](https://wiki.internetcomputer.org/wiki/How-To:_Create_an_NNS_motion_proposal).
 
 ## Neurons
 
@@ -62,7 +62,7 @@ The principal that controls a neuron may instruct it to perform some of these po
 
 * **Increase dissolve delay**: The dissolve delay of a neuron can be increased up to a maximum of eight years.
 
-* **Spawn**: When the maturity of a neuron has risen above a threshold, it can be instructed to spawn a new neuron. This creates a new neuron that locks a new balance of ICP on the ledger. The new neuron can remain controlled by the same principal as its parent, or be assigned to a new principal. When a neuron spawns a new neuron, its maturity falls to zero.
+* **Spawn**: When the maturity of a neuron has risen above a threshold, it can be instructed to spawn a new neuron. This creates a new neuron that locks a new balance of ICP on the ledger. The new neuron can remain controlled by the same principal as its parent, or be assigned to a new principal. When a neuron spawns a new neuron, its maturity is decreased by the amount that was spawned to the new neuron.
 
 * **Add hot key**: Add a new hot key that can be used to manage the neuron. This provides an alternative to using the principal’s cold key to manage the neuron, which might be onerous and difficult to keep secure, especially if it is used regularly. A hot key might be a WebAuthn key that is maintained inside a user device, such as a smartphone.
 
@@ -97,7 +97,7 @@ The NNS assigns a unique identity to each proposal that it receives.
 
 ## Proposal topics
 
-Each type of proposal belongs to a specific “proposal topic,” such as “#NodeAdmin” or “#NetworkEconomics,” which determines details about how it will be processed. 
+Each type of proposal belongs to a specific “proposal topic,” such as “#NodeAdmin” or “#NetworkEconomics,” which determines details about how it will be processed.
 
 * **#NeuronManagement**: A special topic using which a neuron can be managed by the followees for this topic. Votes on this topic are not included in the voting history of the neuron. For proposals on this topic, only the neuron’s followers on the topic that the proposals pertain to are allowed to vote. Because the set of eligible voters for proposals on this topic is restricted, proposals on this topic have a shorter than normal voting period.
 * **#NetworkEconomics**: Proposals that administer network economics; for example, determining what rewards should be paid to node operators.
@@ -110,7 +110,7 @@ Each type of proposal belongs to a specific “proposal topic,” such as “#No
 
 ## Proposal types
 
-Each proposal is an instance of a specific “proposal type”, which determines what information it contains. For each type of proposal, the NNS maintains a corresponding system function, which it invokes whenever a proposal of that type is adopted. When a proposal is adopted by the NNS, it invokes the corresponding system function by drawing information from the proposal’s content to fill the parameters. 
+Each proposal is an instance of a specific “proposal type”, which determines what information it contains. For each type of proposal, the NNS maintains a corresponding system function, which it invokes whenever a proposal of that type is adopted. When a proposal is adopted by the NNS, it invokes the corresponding system function by drawing information from the proposal’s content to fill the parameters.
 
 * **ManageNeuron (#NeuronManagement, Restricted Voting)**: This type of proposal calls a major function on a specified target neuron. Only the followers of the target neuron may vote on these proposals.
 
@@ -201,6 +201,6 @@ When the principal is a public key or Canister, they can apply the following ope
 
 Operations that require interaction between the ledger and the governance system (Neurons):
 
-* **Create neuron**: When the principal is a public key holder, they may lock a portion of their balance inside a new neuron. Technically, creating the neuron is done in two stages. First, transfer the ICP to be staked to an account of the governance canister (which corresponds to a new neuron — the details of the association are omitted here). Then notify the governance canister of the incoming transfer which updates its internal neuron bookkeeping. To move these ICP to a different account, such as back to the original account, where they can once again be controlled like a normal balance, the associated neuron must be fully dissolved and disbursed (destroyed). 
+* **Create neuron**: When the principal is a public key holder, they may lock a portion of their balance inside a new neuron. Technically, creating the neuron is done in two stages. First, transfer the ICP to be staked to an account of the governance canister (which corresponds to a new neuron — the details of the association are omitted here). Then notify the governance canister of the incoming transfer which updates its internal neuron bookkeeping. To move these ICP to a different account, such as back to the original account, where they can once again be controlled like a normal balance, the associated neuron must be fully dissolved and disbursed (destroyed).
 
 * **Refresh stake**: The stake of a neuron may be increased by transferring to its address/account in the ledger and notifying the governance canister of the incoming transfer. Refreshing the stake will change the maturity and age of the neuron prorated. For example, if the stake is doubled, the maturity and age will be halved, so spawning will yield the same amount and the age bonus will be the same as before (in absolute terms).

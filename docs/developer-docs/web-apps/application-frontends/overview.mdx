@@ -10,6 +10,8 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 Dapps deployed on ICP often utilize a frontend interface to facilitate user interaction with the application. Application frontends include the user interface, webpage, dashboard, or other assets that are displayed in the web browser.
 
+Frontend canisters are also referred to as 'asset canisters', since they are defined as `"type": "asset"` in the `dfx.json` file for a project.
+
 Frontends can exist in the following forms:
 
 - A frontend canister that communicates with backend canister(s) to provide a full-stack dapp. You can learn more by viewing the [default frontend canister](custom-frontend.mdx) and learn how to customize it.
@@ -18,15 +20,17 @@ Frontends can exist in the following forms:
 
 - A frontend canister that doesn't communicate with any backend canisters and only provides web assets such as a website. [Learn more about serving static assets](serving-static-assets).
 
-Frontend canisters are also referred to as asset canisters in the context of ICP.
-
 ## Resources
 
 - [Customize the default frontend canister](./custom-frontend.mdx).
 
-- Using [raw HTML and JavaScript](/docs/current/developer-docs/backend/motoko/explore-templates#default-frontend) to display a simple HTML entry page.
+- Using [raw HTML and JavaScript](/docs/current/motoko/main/getting-started/motoko-introduction) to display a simple HTML entry page.
 
 - Using [React and TypeScript](./add-stylesheet.mdx) to import CSS properties from an external file.
+
+- [Vite + React + Motoko](https://github.com/rvanasa/vite-react-motoko) template example.
+
+- [Vite + SvelteKit + Motoko](https://github.com/letmejustputthishere/vite-sveltekit-motoko-ii/tree/main) template example.
 
 - Deploying an [existing React application](./existing-frontend.mdx) as a frontend canister.
 

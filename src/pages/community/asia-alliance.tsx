@@ -89,7 +89,7 @@ function AsiaAlliancePage() {
       description="The ICP Asia Alliance is at the forefront of fostering a vibrant Web3 and AI ecosystem in Asia."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-asia-alliance.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-asia-alliance.webp"></ShareMeta>
 
       <main
         className="text-black relative overflow-hidden"

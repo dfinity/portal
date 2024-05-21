@@ -6,5 +6,6 @@ docs/developer-docs/build/agents @dfinity/dx
 docs/developer-docs/build/cdks @dfinity/dx
 docs/developer-docs/integrations/rosetta @dfinity/finint
 docs/developer-docs/security @dfinity/product-security
+docs/references/execution-errors.mdx @dfinity/runtime @dfinity/execution
 
 # Each piece of documentation must be owned by the respective teams

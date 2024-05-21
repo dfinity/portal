@@ -114,7 +114,7 @@ const DocsHomePage: FC = () => {
                 </p>
                 <p className="mb-0">
                   <Link
-                    href="/docs/current/motoko/main/motoko"
+                    href="/docs/current/motoko/main/getting-started/motoko-introduction"
                     className="link-primary"
                     title="Go to Motoko docs"
                   >
@@ -412,6 +412,8 @@ const DocsHomePage: FC = () => {
             </p>
             <Link
               href="https://github.com/dfinity/portal"
+              target="_blank"
+              rel="noopener noreferrer"
               className="button-outline-white"
             >
               Contribute

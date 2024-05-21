@@ -8,6 +8,8 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/gEyfbFMyhwc?si=2Tmy6FZj-IQ9xU5c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## Overview
 
 In the past, blockchain networks were only able to communicate with external servers through blockchain oracles, or third-party entities that relayed calls from the blockchain to an external server, then routed the response back to the blockchain. This is because blockchains are a form of replicated state machine, where each replica must perform the same computations within the same state to make the same transitions each round. Since doing computations with results from an external source may lead to a state divergence, tools like oracles have been used in the past. However, on the Internet Computer, canisters can communicate directly with external servers or other blockchains through **HTTPS outcalls**.
@@ -170,6 +172,29 @@ Following the `import Types "Types";` line, now let's insert the code to define 
 ```motoko
 actor {
 
+    // Create a function that transform's the raw content into an HTTP payload.
+    public query func transform(raw : Types.TransformArgs) : async Types.CanisterHttpResponsePayload {
+      let transformed : Types.CanisterHttpResponsePayload = {
+          status = raw.response.status;
+          body = raw.response.body;
+          headers = [
+              {
+                  name = "Content-Security-Policy";
+                  value = "default-src 'self'";
+              },
+              { name = "Referrer-Policy"; value = "strict-origin" },
+              { name = "Permissions-Policy"; value = "geolocation=(self)" },
+              {
+                  name = "Strict-Transport-Security";
+                  value = "max-age=63072000";
+              },
+              { name = "X-Frame-Options"; value = "DENY" },
+              { name = "X-Content-Type-Options"; value = "nosniff" },
+          ];
+      };
+      transformed;
+  };
+
   // This function sends our GET request
 
   public func get_icp_usd_exchange() : async Text {
@@ -185,7 +210,7 @@ actor {
     let start_timestamp : Types.Timestamp = 1682978460; //May 1, 2023 22:01:00 GMT
     let end_timestamp : Types.Timestamp = 1682978520;//May 1, 2023 22:02:00 GMT
     let host : Text = "api.pro.coinbase.com";
-    let url = "https://" # host # "/products/ICP-USD/candles?start=" # Nat64.toText(start_timestamp) # "&end=" # Nat64.toText(start_timestamp) # "&granularity=" # Nat64.toText(ONE_MINUTE);
+    let url = "https://" # host # "/products/ICP-USD/candles?start=" # Nat64.toText(start_timestamp) # "&end=" # Nat64.toText(end_timestamp) # "&granularity=" # Nat64.toText(ONE_MINUTE);
 
     // Prepare headers for the system http_request call.
 
@@ -254,29 +279,6 @@ actor {
     // ]
 
     decoded_text
-  };
-
-    // As a final step, create a function that transform's the raw content into an HTTP payload.
-    public query func transform(raw : Types.TransformArgs) : async Types.CanisterHttpResponsePayload {
-      let transformed : Types.CanisterHttpResponsePayload = {
-          status = raw.response.status;
-          body = raw.response.body;
-          headers = [
-              {
-                  name = "Content-Security-Policy";
-                  value = "default-src 'self'";
-              },
-              { name = "Referrer-Policy"; value = "strict-origin" },
-              { name = "Permissions-Policy"; value = "geolocation=(self)" },
-              {
-                  name = "Strict-Transport-Security";
-                  value = "max-age=63072000";
-              },
-              { name = "X-Frame-Options"; value = "DENY" },
-              { name = "X-Content-Type-Options"; value = "nosniff" },
-          ];
-      };
-      transformed;
   };
 
 };
@@ -352,7 +354,7 @@ actor {
     let start_timestamp : Types.Timestamp = 1682978460; //May 1, 2023 22:01:00 GMT
     let end_timestamp : Types.Timestamp = 1682978520;//May 1, 2023 22:02:00 GMT
     let host : Text = "api.pro.coinbase.com";
-    let url = "https://" # host # "/products/ICP-USD/candles?start=" # Nat64.toText(start_timestamp) # "&end=" # Nat64.toText(start_timestamp) # "&granularity=" # Nat64.toText(ONE_MINUTE);
+    let url = "https://" # host # "/products/ICP-USD/candles?start=" # Nat64.toText(start_timestamp) # "&end=" # Nat64.toText(end_timestamp) # "&granularity=" # Nat64.toText(ONE_MINUTE);
 
     let request_headers = [
         { name = "Host"; value = host # ":443" },
@@ -387,10 +389,6 @@ actor {
 
 };
 ```
-
-:::info
-The `transform` function in the HTTP `POST` request should be used in the same manner that it was in the HTTP `GET` example. You can revisit the [transform function](#the-transform-function) description above for more information.
-:::
 
 Next, create the `src/http_get_backend/Types.mo` file with the command:
 
@@ -502,7 +500,7 @@ To demonstrate how to use the HTTPS `POST` outcall, you'll create a simple canis
 
 The following are some important notes on `POST` requests:
 
-- Since HTTPS outcalls go through consensus, it is expected that any HTTPS `POST` request may be sent several times to it's destination. This is because it is common for clients to retry requests for a variety of reasons.
+- Since HTTPS outcalls go through consensus, it is expected that any HTTPS `POST` request may be sent several times to its destination. This is because it is common for clients to retry requests for a variety of reasons.
 
 - It is recommended that HTTP `POST` requests add the idempotency keys in the header of the request so that the destination knows which `POST` requests from the client are identical.
 
@@ -644,6 +642,10 @@ actor {
 };
 ```
 
+:::info
+The `transform` function in this HTTP `POST` request should be used in the same manner that it was in the HTTP `GET` example. You can revisit the [transform function](#the-transform-function) description above for more information.
+:::
+
 The code above is annotated with detailed notes and explanations. Take a moment to read through the code's content and annotations to fully understand the code's functionality.
 
 Once you've inserted these snippets of code into the `src/http_post_backend/main.mo` file, save the file. The file should look like this:
@@ -728,7 +730,7 @@ actor {
     };
 
     // Finally, you can return the response of the body.
-    let result: Text = decoded_text # ". See more info of the request sent at at: " # url # "/inspect";
+    let result: Text = decoded_text # ". See more info of the request sent at: " # url # "/inspect";
     result
   };
 

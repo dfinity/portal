@@ -104,15 +104,17 @@ function NodeProvidersPage() {
               Decentralized computing{" "}
             </h2>
             <p className="tw-paragraph md:tw-lead-sm mb-4 md:mb-6">
-              The Internet Computer blockchain runs on a network of nodes
-              owned and operated by a growing community of independent, node
-              providers distributed across the globe. The node providers are
-              selected and vetted by the NNS.{" "}
+              The Internet Computer blockchain runs on a network of nodes owned
+              and operated by a growing community of independent, node providers
+              distributed across the globe. The node providers are selected and
+              vetted by the NNS.{" "}
             </p>
             <p className="mb-0">
               <Link
                 className="link-primary link-with-icon"
                 href="https://dashboard.internetcomputer.org"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Get more data on the dashboard
                 <LinkArrowUpRight />
@@ -164,6 +166,8 @@ function NodeProvidersPage() {
             <p className="mb-0">
               <Link
                 href="https://wiki.internetcomputer.org/wiki/Sovereign_Network"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="link-primary link-with-icon"
               >
                 <LinkArrowRight />
@@ -175,12 +179,12 @@ function NodeProvidersPage() {
             <h2 className="md:tw-heading-60 md:mb-6">Node Providers</h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
               To preserve the decentralization of the network, each node
-              provider is vetted and accepted by token-holders via the NNS, the DAO that
-              governs the Internet Computer. Becoming a node provider entails
-              submitting a proposal along with a self-declaration document that
-              state provision of node machines, intent and proof of identity.
-              Based on this information, the community votes on the onboarding
-              proposal.
+              provider is vetted and accepted by token-holders via the NNS, the
+              DAO that governs the Internet Computer. Becoming a node provider
+              entails submitting a proposal along with a self-declaration
+              document that state provision of node machines, intent and proof
+              of identity. Based on this information, the community votes on the
+              onboarding proposal.
             </p>
             <p className="tw-lead-sm mb-6 md:mb-10">
               If node providers are accepted into the community and their node
@@ -194,6 +198,8 @@ function NodeProvidersPage() {
             <p className="mb-0">
               <Link
                 href="https://wiki.internetcomputer.org/wiki/Node_Provider_Remuneration"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="link-primary link-with-icon"
               >
                 <LinkArrowRight />
@@ -222,6 +228,8 @@ function NodeProvidersPage() {
             <p className="mb-0">
               <Link
                 href="https://wiki.internetcomputer.org/wiki/Node_Provider_Machine_Hardware_Guide"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="link-primary link-with-icon"
               >
                 <LinkArrowRight />
@@ -259,6 +267,8 @@ function NodeProvidersPage() {
               <Link
                 href="https://dashboard.internetcomputer.org/node/45huy-6h3k3-m7uao-7w4bu-dtcgx-4yxpc-s36gr-pq7k5-xesnw-vnjut-oae"
                 className="link-primary link-with-icon"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 <LinkArrowRight />
                 Visit the live dashboard
@@ -288,6 +298,8 @@ function NodeProvidersPage() {
             <motion.p className="mb-0" variants={transitions.item}>
               <Link
                 href="https://forum.dfinity.org/t/ic-topology-node-diversification-part-ii/23553"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Read about node diversification
               </Link>
@@ -458,6 +470,7 @@ function NodeProvidersPage() {
                     <Link
                       href="https://wiki.internetcomputer.org/wiki/Introduction_to_ICP"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Brief intro to the Internet Computer
                     </Link>
@@ -466,6 +479,7 @@ function NodeProvidersPage() {
                     <Link
                       href="https://wiki.internetcomputer.org/wiki/Sovereign_Network"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       The Internet Computer architecture
                     </Link>
@@ -474,6 +488,7 @@ function NodeProvidersPage() {
                     <Link
                       href="https://wiki.internetcomputer.org/wiki/Governance_of_the_Internet_Computer"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Governance of the Internet Computer
                     </Link>
@@ -482,6 +497,7 @@ function NodeProvidersPage() {
                     <Link
                       href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Node provider overview documentation
                     </Link>
@@ -503,6 +519,7 @@ function NodeProvidersPage() {
                     <Link
                       href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Fill out self-declaration form
                     </Link>
@@ -511,6 +528,7 @@ function NodeProvidersPage() {
                     <Link
                       href="https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Submit proposal and onboard your nodes to the Internet
                       Computer
@@ -520,6 +538,7 @@ function NodeProvidersPage() {
                     <Link
                       href="https://wiki.internetcomputer.org/wiki/Node_Provider_Matrix_channel"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Join the node provider matrix channel
                     </Link>
@@ -528,6 +547,7 @@ function NodeProvidersPage() {
                     <Link
                       href="https://wiki.internetcomputer.org/wiki/Node_Provider_Machine_Hardware_Guide"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Choose and purchase hardware
                     </Link>
@@ -536,6 +556,7 @@ function NodeProvidersPage() {
                     <Link
                       href="https://wiki.internetcomputer.org/wiki/Node_Provider_Onboarding"
                       target="_blank"
+                      rel="noopener noreferrer"
                     >
                       Set up servers in a data center
                     </Link>
@@ -544,6 +565,8 @@ function NodeProvidersPage() {
                 <p className="">
                   <Link
                     href="https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="button-primary"
                   >
                     Get started

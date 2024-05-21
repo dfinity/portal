@@ -10,9 +10,7 @@ import AnimateSpawn from "../components/Common/AnimateSpawn";
 import { CardWithDescription } from "../components/Common/Card";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
-import RotatingStatPanel, {
-  RotatingStat,
-} from "../components/Common/RotatingStatsPanel";
+import RotatingStatPanel, { RotatingStat } from "../components/Common/RotatingStatsPanel";
 import ShareMeta from "../components/Common/ShareMeta";
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
 import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
@@ -200,6 +198,8 @@ function DefiPage() {
                 <p className="mb-0 flex flex-col gap-6 items-start">
                   <Link
                     href="https://support.dfinity.org/hc/en-us/articles/20708056282132-What-is-ckBTC-#h_01HE64A4QKANB6JX8VERRP5Y80"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="link-primary"
                   >
                     <LinkArrowRight />
@@ -207,6 +207,8 @@ function DefiPage() {
                   </Link>
                   <Link
                     href="https://dashboard.internetcomputer.org/bitcoin/transactions"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="button-primary"
                   >
                     Track TX activity
@@ -245,6 +247,8 @@ function DefiPage() {
               <Link
                 className="link-primary link-with-icon"
                 href="https://iclight.io/ICDex/ckETH/ICP"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Get ckBTC/ckETH on ICDex <LinkArrowUpRight />
               </Link>
@@ -266,6 +270,8 @@ function DefiPage() {
               <Link
                 className="link-primary link-with-icon"
                 href="https://app.sonic.ooo/swap"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Swap ckBTC/ckETH on Sonic <LinkArrowUpRight />
               </Link>
@@ -285,6 +291,8 @@ function DefiPage() {
               <Link
                 className="link-primary link-with-icon"
                 href="https://app.icpswap.com/swap"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Get ckBTC/ckETH on ICP.Swap <LinkArrowUpRight />
               </Link>
@@ -322,9 +330,9 @@ function DefiPage() {
                     className="md:tw-lead mb-6 md:mb-6"
                     variants={transitions.item}
                   >
-                    Multi-chain wallets already exist on the Internet Computer that
-                    allow users to store and transfer ckBTC, ckETH and more with
-                    ease.
+                    Multi-chain wallets already exist on the Internet Computer
+                    that allow users to store and transfer ckBTC, ckETH and more
+                    with ease.
                   </motion.p>
                   <motion.p className="mb-0" variants={transitions.item}>
                     <Link
@@ -342,6 +350,8 @@ function DefiPage() {
                   <Link
                     href="https://astrox.me/"
                     className="block border border-solid border-white-30 rounded-xl p-10 items-center panel-gradient text-center text-white hover:text-white hover:-translate-y-2 transition-all hover:no-underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <img
                       src="/img/defi/astroxme.webp"
@@ -359,6 +369,8 @@ function DefiPage() {
                   <Link
                     href="https://nns.ic0.app/"
                     className="block border border-solid border-white-30 rounded-xl p-10 items-center panel-gradient text-center text-white hover:text-white hover:-translate-y-2 transition-all hover:no-underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <img src="/img/defi/nns.webp" alt="" className="w-20" />
                     <h3 className="tw-heading-5 mb-2 mt-4">NNS </h3>
@@ -372,6 +384,8 @@ function DefiPage() {
                   <Link
                     href="https://plugwallet.ooo/"
                     className="block border border-solid border-white-30 rounded-xl p-10 items-center panel-gradient text-center text-white hover:text-white hover:-translate-y-2 transition-all hover:no-underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <img src="/img/defi/plug.webp" alt="" className="w-20" />
                     <h3 className="tw-heading-5 mb-2 mt-4">Plug</h3>
@@ -421,6 +435,8 @@ function DefiPage() {
                 <Link
                   href="https://oisy.com/"
                   className="link-primary link-with-icon"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   Build a fully on-chain ETH wallet
                   <LinkArrowUpRight />
@@ -501,7 +517,7 @@ function DefiPage() {
             <CardWithDescription
               title="Code ckBTC"
               description=""
-              href="/docs/current/developer-docs/integrations/bitcoin/ckbtc"
+              href="/docs/current/developer-docs/multi-chain/bitcoin/ckbtc/overview"
             />
           </AnimateSpawn>
         </section>

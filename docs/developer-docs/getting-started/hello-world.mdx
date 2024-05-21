@@ -3,6 +3,7 @@ keywords: [beginner, getting started, tutorial, hello world]
 ---
 
 import TabItem from "@theme/TabItem";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { BetaChip } from "/src/components/Chip/BetaChip";
@@ -15,13 +16,52 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 This guide shows how to get started developing on ICP quickly by deploying your first 'Hello, world!' smart contract.
 
-## Install dependencies
+## Choosing a developer environment 
+
+To deploy a simple 'Hello, world!' smart contract, you can use a variety of developer environments, such as:
+
+- Native installation of tools on Linux, Mac, or Windows (using WSL) systems.
+
+- Cloud-based environments such as Gitpod or GitHub Codespaces.
+
+Each developer environment uses [`dfx`](./install/index.mdx), a command-line tool that is used for developing and deploying smart contracts on ICP. 
 
 :::info
-If you use GitHub Codespaces or [Gitpod](/docs/current/developer-docs/developer-tools/ide/gitpod) to deploy your project, installing these dependencies is not necessary.
 
-Links to available Codespaces and Gitpod examples can be found in [create a new project](#create-a-new-project).
+**Which environment should you choose?**
+
+Native installation requires downloading and installing `dfx` and its dependencies manually. Using a native installation of `dfx` is better suited for large projects.
+
+Gitpod and GitHub Codespaces are cloud-based developer environments that can be accessed via a web browser. The Gitpod and GitHub Codespace examples linked on this page come with the necessary tools and dependencies pre-installed. These environments use limited cloud resources and may not scale well for building large, complex projects. 
+
 :::
+
+<AdornedTabs groupId="environments">
+<TabItem value="gitpod" label="Gitpod" default>
+
+#### Motoko variation
+
+[![Open the Motoko variation in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dfinity/icp-hello-world-motoko)
+
+#### Rust variation
+
+[![Open the Rust variation in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dfinity/icp-hello-world-rust)
+
+</TabItem>
+
+<TabItem value="codespaces" label="GitHub Codespaces">
+
+#### Motoko variation
+
+[![Open the Motoko variation in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dfinity/icp-hello-world-motoko?quickstart=1)
+
+#### Rust variation
+
+[![Open the Rust variation in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dfinity/icp-hello-world-rust?quickstart=1)
+
+</TabItem>
+
+<TabItem value="dfx" label="Native installation">
 
 ### Install `dfx`
 
@@ -58,9 +98,6 @@ While `dfx start` is running, you will not be able to run other commands in the 
 
 
 ## Create a new project
-
-<AdornedTabs groupId="version">
-<TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
 
 Use `dfx new <project_name>` to create a new project:
 
@@ -100,89 +137,34 @@ Lastly, you can include extra features to be added to your project:
 ```
 
 </TabItem>
-
-<TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
-
-<AdornedTabs groupId="language">
-<TabItem value="motoko" label="Motoko" default>
-
-```bash
-dfx new hello
-```
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dfinity/icp-hello-world-motoko)
-
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dfinity/icp-hello-world-motoko?quickstart=1)
-
-</TabItem>
-<TabItem value="rust" label="Rust">
-
-```bash
-dfx new hello --type=rust
-```
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dfinity/icp-hello-world-rust)
-
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dfinity/icp-hello-world-rust?quickstart=1)
-
-</TabItem>
-
-<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
-
-```bash
-npx azle new hello
-cd hello
-npm install
-```
-
-</AdornedTab>
-
-<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
-
-Create the project directory and file structure:
-
-```bash
-mkdir hello
-cd hello
-
-mkdir src
-
-touch src/main.py
-touch dfx.json
-```
-
-Create a virtual environment:
-
-```bash
-~/.pyenv/versions/3.10.7/bin/python -m venv venv
-source venv/bin/activate
-```
-
-Install Kybra:
-
-```bash
-pip install kybra
-```
-
-</AdornedTab>
 </AdornedTabs>
-</TabItem>
-</AdornedTabs>
-
 
 ## Smart contract code
 
+The default `Hello, world!` dapp uses `dfx`'s default template which contains two canisters, `hello_backend` and `hello_frontend`.
+
+The `hello_frontend` canister is used to store the dapp's frontend assets. This includes files such as HTML, CSS, JavaScript, React, images, and videos.
+
+The `hello_backend` canister is used to store the dapp's functions and core logic. 
+
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/default-dapp-arch.png")}
+    alt="Application architecture"
+    width="800"
+  />
+</div>
+
+:::info
+It is important to note that a canister is capable of storing both the frontend assets and backend code. However, `dfx` by default uses a project template with a dedicated canister for the frontend since this allows any language to be used for the backend canister without needing to use a library for the assets storage API. 
+:::
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-Motoko is an Actor-based language and it represents the smart contract as an actor with various methods that the users and other smart contract can call.
+Motoko is an actor-based language and it represents the smart contract as an actor with various methods that the users and other smart contract can call.
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dfinity/icp-hello-world-motoko)
-
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dfinity/icp-hello-world-motoko?quickstart=1)
-
-This hello-world actor has a single function called greet. It is marked as query because it doesn't modify the state of the actor.  The function accepts a name as input and returns a greetings text.
+This hello world actor has a single function called greet. It is marked as query because it doesn't modify the state of the actor. The function accepts a name as input and returns a greetings text.
 
 ```motoko title="src/hello_backend/main.mo"
 actor {
@@ -195,10 +177,6 @@ actor {
 </TabItem>
 
 <TabItem value="rust" label="Rust">
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dfinity/icp-hello-world-rust)
-
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dfinity/icp-hello-world-rust?quickstart=1)
 
 This Rust smart contract has a single function called greet. It is marked as query because it doesn't modify the state of the canister.
 
@@ -243,7 +221,7 @@ def greet(name: str) -> str:
 </AdornedTabs>
 
 
-## Deploy locally
+## Deploy to the local environment
 
 Deploy the project's <GlossaryTooltip>canisters</GlossaryTooltip> locally:
 

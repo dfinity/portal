@@ -16,19 +16,18 @@ The nodes in the Internet Computer are divided into subnets, each containing a f
 Another crucial design aspect that is a prerequisite for limitless scaling is the inter-subnet communication of canisters: A canister of a subnet can send asynchronous messages to any canister on any other subnet. XNet messages are ingested by the receiving subnet's consensus layer and their integrity is validated based on the sending subnet's threshold signature — another application of [chain-key cryptography](/how-it-works/chain-key-technology/). This architecture of XNet messaging leads to a "loose coupling" of the subnets that does not require a central component such as a shard chain as used in other blockchains with multiple "shards" that would create a bottleneck when scaling out. Therefore newly added subnets can immediately send and receive XNet messages to any other subnet and an increasing number of subnets does not hit a natural bottleneck as in other, more simplistic, architectures.
 
 <figure>
-<img src="/img/how-it-works/add-new-subnet.png" alt="Internet Computer is divided into subnets" title="Internet Computer is divided into subnets." align="center" style="width:700px">
+<img src="/img/how-it-works/add-new-subnet.png" alt="Internet Computer is divided into subnets" title="Internet Computer is divided into subnets." align="center" style="width:700px" />
 <figcaption align="left">
 The Internet Computer is divided into subnets. Each subnet hosts many canisters. One of the subnets hosts Network Nervous System canisters.
 </figcaption>
 </figure>
 
-Creating a new subnet has two steps. (1) Adding new nodes to the Internet Computer, and (2) Creating a subnet with the available nodes
-Anyone can purchase the node hardware and add it to the Internet Computer by following the [node provider onboarding process](https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation).
+Creating a new subnet has two steps. (1) Adding new nodes to the Internet Computer, and (2) Creating a subnet with the available nodes. Anyone can purchase the node hardware and add it to the Internet Computer by following the [node provider onboarding process](https://wiki.internetcomputer.org/wiki/Node_Provider_Documentation).
 
 We now describe how to create a new subnet with the available nodes. The Internet Computer has a decentralized governance system called Network Nervous System (NNS). Essentially, the NNS consists of a group of canisters that manage the Internet Computer. In the NNS, there is a component called “registry”, which stores the full configuration of the Internet Computer. The registry has a record for each subnet which includes a protocol version, the list of nodes in the subnet, protocol configuration parameters, etc.
 
 <figure>
-<img src="/img/how-it-works/new-subnet-proposal.png" alt="Proposal to create a new subnet" title="Proposal to create a new subnet" align="center" style="width:700px">
+<img src="/img/how-it-works/new-subnet-proposal.png" alt="Proposal to create a new subnet" title="Proposal to create a new subnet" align="center" style="width:700px" />
 <figcaption align="left">
 Proposal to create a new subnet. The status of all proposals can be viewed on the [IC Dashboard](https://dashboard.internetcomputer.org/governance).
 </figcaption>

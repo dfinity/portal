@@ -18,6 +18,7 @@ type SectionItem = {
 
 type FeaturedItem = {
   title: string;
+  subtitle?: string;
   href?: string;
   image: string;
 };
@@ -222,10 +223,16 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
                   className="bg-cover bg-center aspect-video rounded-xl flex w-[300px] p-6 group/featured hover:no-underline"
                   href={item.sections[selectedSectionIndex].featured.href}
                 >
-                  <span className="tw-heading-5 text-white flex-[2] group-hover/featured:-translate-y-2 transition-transform">
+                  <span className="tw-heading-5 text-white flex-[3] group-hover/featured:-translate-y-2 transition-transform">
                     {item.sections[selectedSectionIndex].featured.title}
+                    {item.sections[selectedSectionIndex].featured.subtitle && (
+                      <h6 className="tw-heading-7 leading-6 mt-2  text-white flex-[2] group-hover/featured:-translate-y-2 transition-transform">
+                        {item.sections[selectedSectionIndex].featured.subtitle}
+                      </h6>
+                    )}
                   </span>
-                  <span className="flex-1 text-right">
+
+                  <span className="flex-1  text-right ">
                     <FeaturedArrowRight />
                   </span>
                 </Link>
@@ -507,6 +514,11 @@ const MarketingNav = () => {
                         >
                           <span className="text-white tw-heading-5 flex-[2] group-hover/featured:-translate-y-2 transition-transform">
                             {item.featured.title}
+                            {item.featured.subtitle && (
+                              <h6 className="tw-heading-7 mt-2 leading-6 text-white flex-[2] group-hover/featured:-translate-y-2 transition-transform">
+                                {item.featured.subtitle}
+                              </h6>
+                            )}
                           </span>
                           <span className="flex-1 text-right">
                             <FeaturedArrowRight />

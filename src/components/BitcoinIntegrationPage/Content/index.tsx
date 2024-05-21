@@ -4,7 +4,6 @@ import transitions from "@site/static/transitions.json";
 import { motion } from "framer-motion";
 import Link from "@docusaurus/Link";
 import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
-import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 
 const Content: React.FC = () => {
   return (
@@ -155,7 +154,9 @@ const Content: React.FC = () => {
           </p>
           <p className="mb-0 mt-8 flex gap-6 flex-col md:flex-row items-start md:items-center">
             <Link
-              href="/docs/current/developer-docs/integrations/bitcoin/ckbtc"
+              to="/docs/current/developer-docs/multi-chain/bitcoin/ckbtc/overview"
+              target="_blank"
+              rel="noopener noreferrer"
               className="button-outline"
             >
               Code ckBTC
@@ -202,7 +203,7 @@ const Content: React.FC = () => {
             </div>
           </Link>
           <Link
-            href="https://crowdfund-nft.com/"
+            href="https://funded.app/"
             className="flex-1 hover:-translate-y-3 hover:no-underline text-black hover:text-black transition-transform border border-solid border-white bg-white-80 p-6 md:p-8 rounded-xl flex flex-row items-start gap-6 md:flex-col md:gap-9"
           >
             <img

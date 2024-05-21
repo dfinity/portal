@@ -12,16 +12,20 @@ function Index() {
       className="container-10 flex gap-8 md:gap-1/10 items-center flex-col md:flex-row mb-20 md:mb-40"
     >
       <div className="md:order-2 md:flex-[4] relative z-10 max-w-xs md:max-w-none -mt-30 md:-mt-30">
-        <img src={HowItWorks} alt="" className="aspect-[1000/2176]" />
+        <img
+          src={HowItWorks}
+          alt=""
+          className="aspect-[1000/2176] max-w-10/12"
+        />
       </div>
       <div className="md:order-1 md:flex-[5]">
         <motion.h2
           variants={transitions.item}
           className="tw-heading-5 md:tw-heading-3 text-gradient mb-0"
         >
-          With IC canisters calling into BTC network, there can be DEXs offering BTC trading pairs, decentralized fundraisers
-          accepting Bitcoin, or Web3 SocialFi services allowing satoshis to be
-          sent via chat messages!
+          Build DEXs offering BTC or BRC20 trading pairs, lending markets using
+          Ordinals as collateral, or Web3 SocialFi services allowing satoshis to
+          be sent via chat messages.
         </motion.h2>
       </div>
     </AnimateSpawn>

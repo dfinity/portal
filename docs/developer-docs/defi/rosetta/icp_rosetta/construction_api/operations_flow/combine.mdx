@@ -1,0 +1,24 @@
+---
+keywords: [intermediate, rosetta, tutorial, derive, accountidentifier]
+---
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Construction-combine
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
+
+
+## Overview
+This section details how to call the `construction/combine` endpoint of the Rosetta construction API.
+The request and response types can be found in the [official documentation](https://docs.cloud.coinbase.com/rosetta/reference/constructioncombine).
+
+## Signing payloads
+The payloads that one receives from the `construction/payloads` endpoint contain a hex string that needs to be signed with the private key of the `accountidentifier` that is associated with the hex string. 
+Here is an example of such a payload:
+
+```json
+{"account_identifier":{"address":"8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4"},"hex_bytes":"0a69632d72657175657374df3e33267733b2030e8a4fc1d7eb6e0884ab461806630921a9c0c9749abb99de","signature_type":"ecdsa"}
+```
+
+This means that we need to sign the hex bytes `0a69632d72657175657374df3e33267733b2030e8a4fc1d7eb6e0884ab461806630921a9c0c9749abb99de` with the private key associated with the accountidentifier 
+`8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4` using an `ecdsa` signature type.

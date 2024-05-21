@@ -46,6 +46,8 @@ There are three operations that can change the internal state of the ledger cani
 
 -   **Burning ICP tokens**.
 
+-   **Approve ICP tokens**.
+
 All operations are recorded as transactions in the ledger canister.
 
 The ledger maintains the transactions as a hashed blockchain, i.e., a blockchain running inside a canister smart contract (the ledger canister), which in turn is running on the NNS subnet blockchain.
@@ -72,3 +74,9 @@ The ICP token differs from Bitcoin in the following ways:
 -   Rather than using proof of work, staked participant nodes use a variant of threshold BLS signatures to agree on a valid state of the chain.
 
 -   Any transaction can store an 8-byte memo — this memo field is used by the Rosetta API to store the nonce that distinguishes between transactions. However, other uses for the field are possible.
+
+## ICP Rosetta implementation
+
+- [ICP Rosetta data API](/docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/)
+
+- [ICP Rosetta construction API](/docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/)

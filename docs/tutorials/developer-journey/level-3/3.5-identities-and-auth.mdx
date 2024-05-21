@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-When developing on the Internet Computer, there are several types of identities and methods of authentication that you'll encounter. In the previous module where you obtained a cycles coupon, [1.4: acquiring and using cycles](/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles), you created a **developer identity** that you used to create a **cycles wallet** to hold our cycles. You also looked at how to convert ICP tokens stored in a **ledger account** into cycles.
+When developing on the Internet Computer, there are several types of identities and methods of authentication that you'll encounter. In the previous module where you obtained a cycles coupon, [1.4: acquiring and using cycles](/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles), you created a **developer identity** that has a **cycles balance**. You also looked at how to convert ICP tokens stored in a **ledger account** into cycles.
 
 These three types of authentication are used for interacting with canisters and cycles, but what about interacting with applications or websites built on ICP? For that, end-users can use **Internet Identity**, ICP's native form of digital identity that can be used to authenticate with apps, such as the NNS dashboard, without having to manage a username or password. Instead, Internet Identity uses a cryptographic key pair that's stored in your local computer's hardware. Through this simple and flexible authentication method, developers can provide end-users with a frictionless way to authenticate and use their application.
 
@@ -26,7 +26,7 @@ First, let's clearly define the difference between the different types of identi
 
 - **Account identifier**: the identifier associated with your ICP ledger account, as specified in the [ledger](/docs/current/developer-docs/defi/icp-tokens/overview) specification.
 
-- **Wallets**: used to store forms of currency or other assets, such as cycles, ICP, or NFTs. Developers primarily use a cycles wallet to send cycles to and from canisters.
+- **Wallets**: used to store forms of currency or other assets, such as cycles, ICP, or NFTs. Developers primarily use the cycles ledger to send cycles to and from canisters.
 
 - **Internet Identity**: ICP's native authentication service. Internet Identity doesn't use usernames and passwords; instead it uses a **passkey** that is stored in your local device's hardware.
 
@@ -40,7 +40,7 @@ On the Internet Computer, a native form of identity is used for authentication, 
 
 Internet Identity allows users to register and authenticate with websites or applications without using a username and password. Instead, users can use a **passkey**, which is a unique cryptographic public/private key pair that is stored in the secure hardware chip of your computer or phone. This allows you to authenticate your Internet Identity using methods that unlock your device, such as TouchID, FaceID, or another method.
 
-A different identity is issued for each app a user authenticates to and cannot be linked back to the user. With Internet identity, no personal data is stared with dapps or the Internet Identity application itself, and no software needs to be downloaded and installed.
+A different identity is issued for each app a user authenticates to and cannot be linked back to the user. With Internet identity, no personal data is shared with dapps or the Internet Identity application itself, and no software needs to be downloaded and installed.
 
 ### Internet Identity architecture
 
@@ -102,8 +102,8 @@ To get started, open a terminal window, navigate into your working directory (`d
 
 ```bash
 dfx start --clean --background
-git clone https://github.com/krpeacock/auth-client-demo.git
-cd auth-client-demo
+git clone https://github.com/dfinity/examples.git
+cd examples/motoko/auth-client-demo
 npm install
 ```
 
@@ -159,6 +159,12 @@ export const defaultOptions = {
   },
 };
 ```
+
+Depending on your web browser, you may need to change the `http://localhost:4943?canisterId=rdmx6-jaaaa-aaaaa-aaadq-cai#authorize` value:
+
+- Chrome, Firefox: `http://<canister_id>.localhost:4943#authorize`
+
+- Safari: `http://localhost:4943?canisterId=<canister_id>#authorize`
 
 Now, let's initialize the AuthClient. Then, you check to see if the user has previously logged in. If so, their previous identity is verified:
 

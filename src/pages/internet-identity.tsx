@@ -46,7 +46,7 @@ function InternetIdentityPage() {
               className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-8/10"
               variants={transitions.item}
             >
-              A fully decentralized digital identity solution
+              Secure, seamless and privacy-preserving digital identity
             </motion.h1>
             <div className="relative  md:w-5/10">
               <motion.p
@@ -57,14 +57,17 @@ function InternetIdentityPage() {
                 friction from the authentication journey and enabling data
                 sovereignty.
               </motion.p>
-              <motion.p className="mb-0" variants={transitions.item}>
-                <Link
-                  className="link-white link-with-icon"
-                  href="/docs/current/references/ii-spec/"
+              <motion.p className="mb-0 gap-8" variants={transitions.item}>
+              <MotionLink
+                  className="button-white"
+                  href="https://identity.ic0.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variants={transitions.item}
                 >
-                  <LinkArrowRight />
-                  Start building
-                </Link>
+                  Go to Internet Identity
+                </MotionLink>
+                
               </motion.p>
             </div>
           </div>
@@ -97,7 +100,6 @@ function InternetIdentityPage() {
               imageUrl="/img/internet-identity/image-1.webp"
               reverse={true}
             >
-
               <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
                 100% decentralized
               </h3>
@@ -161,13 +163,6 @@ function InternetIdentityPage() {
                 ecosystems a convenient, secure, and private way to log in and
                 share verifiable credentials.
               </p>
-              <p className="tw-paragraph md:tw-lead-sm mb-0">
-                ICP is compatible with the Ethereum Virtual Machine. Developers
-                building decentralized apps on the Ethereum protocol can
-                integrate Internet Identity and offer users from both ecosystems
-                a convenient, secure, and private way to log in and share
-                verifiable credentials.
-              </p>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/internet-identity/image-6.webp">
               <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
@@ -181,6 +176,8 @@ function InternetIdentityPage() {
               <p className="mb-0">
                 <Link
                   href="/docs/current/developer-docs/integrations/internet-identity/integrate-identity"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="link-primary"
                 >
                   <LinkArrowRight />
@@ -367,7 +364,6 @@ function InternetIdentityPage() {
                 />
               }
             >
-
               <motion.p
                 className="mb-0 tw-paragraph"
                 variants={transitions.item}

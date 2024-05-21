@@ -149,6 +149,18 @@ In this directory, the following files and directories are notable:
 - `hello_backend`: The source directory that contains your dapp's backend code files.
 - `hello_frontend`: The source directory that contains your dapp's frontend code files.
 
+:::info
+
+**Why are there two canisters, `hello_backend` and `hello_frontend`?**
+
+The `hello_frontend` canister is used to store the dapp's frontend assets, such as HTML, CSS, JavaScript, React, images, videos, and other media to be displayed in the app's user interface. 
+
+The `hello_backend` canister is used to store the dapp's code and core logic. 
+
+A canister is capable of storing both the frontend assets and backend code, but using two canisters with a dedicated canister for the frontend means that any language can be used for the backend canister without needing a library for the assets storage API. 
+
+:::
+
 ## Reviewing the default configuration
 
 By default, the `dfx.json` file will contain automatically generated configuration settings for your new project. This file is used to configure the components of your project:

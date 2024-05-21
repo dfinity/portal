@@ -36,7 +36,26 @@ export const CardsSection = () => {
       className="container-10 grid grid-cols-1 md:grid-cols-2 gap-2"
       variants={transitions.container}
     >
-      <CardWithImage href="/multichain" image="/img/home/btc-eth.webp">
+      <CardWithImage
+        href="/roadmap"
+        image="/img/home/roadmap-illustration.webp"
+      >
+        <div className="tw-heading-7 md:tw-heading-6 mb-2">
+          A new era in blockchain
+        </div>
+        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
+          Internet Computer Roadmap
+        </h2>
+      </CardWithImage>
+
+      <CardWithImage href="/ai" image="/img/home/ai.webp">
+        <div className="tw-heading-7 md:tw-heading-6 mb-2 whitespace-nowrap">
+          AI models as smart contracts
+        </div>
+        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Decentralized AI</h2>
+      </CardWithImage>
+
+      <CardWithImage href="/chainfusion" image="/img/home/btc-eth.webp">
         <div className="tw-heading-7 md:tw-heading-6 mb-2">
           Native Multi-chain
         </div>
@@ -45,31 +64,9 @@ export const CardsSection = () => {
         </h2>
       </CardWithImage>
 
-      <CardWithImage
-        href="https://deck.internetcomputer.org"
-        image="/img/home/deck-astronaut.webp"
-      >
-        <div className="tw-heading-7 md:tw-heading-6 mb-2">
-          Online Deck [ ICP hosted ]
-        </div>
-        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
-          Blockchain
-          <br />
-          as cloud 3.0
-        </h2>
-      </CardWithImage>
       <CardWithImage href="/ecosystem" image="/img/home/ecosystem-card.webp">
-        <div className="tw-heading-7 md:tw-heading-6 mb-2">Ecosystem</div>
-        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Ecosystem links</h2>
-      </CardWithImage>
-      <CardWithImage
-        href="https://dashboard.internetcomputer.org"
-        image="/img/home/dashboard.webp"
-      >
-        <div className="tw-heading-7 md:tw-heading-6 mb-2 whitespace-nowrap">
-          dashboard.internetcomputer.org
-        </div>
-        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Live stats</h2>
+        <div className="tw-heading-7 md:tw-heading-6 mb-2">Dapps</div>
+        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">ICP Ecosystem</h2>
       </CardWithImage>
 
       <CardWithImage href="/docs/current/home" image="/img/home/dev-card.webp">
