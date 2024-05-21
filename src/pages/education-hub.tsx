@@ -92,14 +92,7 @@ function EducationHubPage() {
       deserialize: deserializeStringList,
     }
   );
-  const [selectedTopics, setSelectedTopics] = useQueryParam<CourseTopic[]>(
-    "selectedTopics",
-    [],
-    {
-      serialize: serializeStringList,
-      deserialize: deserializeStringList,
-    }
-  );
+
   const [selectedContentTypes, setSelectedContentTypes] = useQueryParam<
     CourseContentType[]
   >("selectedContentTypes", [], {

@@ -3,11 +3,13 @@ import courses from "../../../plugins/data/courses.json";
 export type CourseItem = {
   index: string;
   title: string;
-  level: CourseLevel[];
+  level: string | string[];
   body?: string;
   languages?: CourseLanguage[];
+  contentLanguage?: string;
   contentType?: CourseContentType[];
   link?: string;
+  fullTags?: string[];
   tags?: string[];
 };
 
@@ -18,7 +20,7 @@ export type CourseLanguage =
   | "typescript"
   | "other";
 
-export type CourseSpokenLanguage = "english" | "spanish" | "turkish";
+export type CourseContentLanguage = "english" | "spanish" | "turkish";
 
 export type CourseLevel = "beginner" | "intermediate" | "expert";
 
