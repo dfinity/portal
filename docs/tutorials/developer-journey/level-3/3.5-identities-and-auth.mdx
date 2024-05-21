@@ -40,7 +40,7 @@ On the Internet Computer, a native form of identity is used for authentication, 
 
 Internet Identity allows users to register and authenticate with websites or applications without using a username and password. Instead, users can use a **passkey**, which is a unique cryptographic public/private key pair that is stored in the secure hardware chip of your computer or phone. This allows you to authenticate your Internet Identity using methods that unlock your device, such as TouchID, FaceID, or another method.
 
-A different identity is issued for each app a user authenticates to and cannot be linked back to the user. With Internet identity, no personal data is stared with dapps or the Internet Identity application itself, and no software needs to be downloaded and installed.
+A different identity is issued for each app a user authenticates to and cannot be linked back to the user. With Internet identity, no personal data is shared with dapps or the Internet Identity application itself, and no software needs to be downloaded and installed.
 
 ### Internet Identity architecture
 
@@ -102,8 +102,8 @@ To get started, open a terminal window, navigate into your working directory (`d
 
 ```bash
 dfx start --clean --background
-git clone https://github.com/krpeacock/auth-client-demo.git
-cd auth-client-demo
+git clone https://github.com/dfinity/examples.git
+cd examples/motoko/auth-client-demo
 npm install
 ```
 
@@ -159,6 +159,12 @@ export const defaultOptions = {
   },
 };
 ```
+
+Depending on your web browser, you may need to change the `http://localhost:4943?canisterId=rdmx6-jaaaa-aaaaa-aaadq-cai#authorize` value:
+
+- Chrome, Firefox: `http://<canister_id>.localhost:4943#authorize`
+
+- Safari: `http://localhost:4943?canisterId=<canister_id>#authorize`
 
 Now, let's initialize the AuthClient. Then, you check to see if the user has previously logged in. If so, their previous identity is verified:
 

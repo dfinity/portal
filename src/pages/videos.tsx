@@ -42,7 +42,7 @@ function Videos() {
       }
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-videos.jpeg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-videos.jpg"></ShareMeta>
 
       <main className="text-black relative overflow-hidden">
         <img

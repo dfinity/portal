@@ -11,6 +11,7 @@ import ShareMeta from "../components/Common/ShareMeta";
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
+import DocsIcon from "@site/static/img/svgIcons/docs.svg";
 
 function WhatIsIcpPage() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -22,7 +23,7 @@ function WhatIsIcpPage() {
       description={`The Internet Computer adds autonomous serverless cloud functionality to the public Internet - making it possible to build almost any system or service entirely on a decentralized network using “canister software,” an evolution of smart contracts.`}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-what-is-the-ic.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-what-is-the-ic.webp"></ShareMeta>
 
       <main
         className="text-black relative overflow-hidden"
@@ -32,6 +33,7 @@ function WhatIsIcpPage() {
       >
         {isDark && <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>}
 
+        {/* Section with main 1-liner */}
         <section className=" bg-infinite text-white pt-20" ref={heroRef}>
           <AnimateSpawn
             className="container-10 pt-20 pb-14 md:pb-24 md:pt-36 relative"
@@ -63,17 +65,15 @@ function WhatIsIcpPage() {
                 variants={transitions.item}
               >
                 What is the
-                <br className="hidden md:block" /> Internet Computer
+                <br className="hidden md:block" /> ICP blockchain?
               </motion.h1>
               <motion.p
-                className="pb-[15%] sm:pb-0 tw-lead-sm md:tw-lead mb-0"
+                className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                The Internet Computer adds autonomous serverless cloud
-                functionality to the public Internet – making it possible to
-                build almost any system or service entirely on a decentralized
-                network using “canister software,” an evolution of smart
-                contracts.
+                Smart contracts are the new and vastly superior way to build
+                software. Being embedded in blockchain protocols, smart
+                contracts are secure, tamper-proof, resilient, and unstoppable.
               </motion.p>
             </div>
           </AnimateSpawn>
@@ -85,50 +85,51 @@ function WhatIsIcpPage() {
           variants={transitions.container}
         >
           <div className="">
-            <motion.h2
-              className="tw-heading-5 sm:tw-heading-4 md:tw-heading-3 mb-8 md:mb-10 text-gradient"
-              variants={transitions.item}
-            >
-              Web3 services and enterprise systems can be built directly on the
-              Internet Computer — a public decentralized network that scales.
-              <br />
-              Host social networks, media streaming and more, that support Web3
-              functionality, are tamperproof, and can trustlessly interact with
-              the outside world.
-            </motion.h2>
-
             <motion.p
               className="mb-0 flex flex-col items-start gap-6 md:gap-8"
               variants={transitions.item}
-            >
-              <Link className="button-primary text-center" href="/capabilities">
-                Internet Computer capabilities
-              </Link>
-              <Link
-                className="link-primary link-with-icon"
-                href="https://wiki.internetcomputer.org/wiki/History"
-              >
-                <span>
-                  <span className="hidden sm:inline">Wiki history </span>
-                  <span className="sm:hidden">History </span>
-                  of the Internet Computer
-                </span>
-                <LinkArrowUpRight />
-              </Link>
-            </motion.p>
+            ></motion.p>
           </div>
         </AnimateSpawn>
 
+        {/* ICP's vision blurb */}
         <section
-          className="mt-20 md:mt-48
-          bg-[linear-gradient(180deg,transparent_0%,transparent_97%,#3b00b9_97%,#3b00b9_100%)]
-          sm:bg-[linear-gradient(180deg,transparent_0%,transparent_87%,#3b00b9_87%,#3b00b9_100%)]
-          md:bg-[linear-gradient(180deg,transparent_0%,transparent_77%,#3b00b9_77%,#3b00b9_100%)]
-          relative "
+        // className="mt-20 md:mt-28
+        // bg-[linear-gradient(180deg,transparent_0%,transparent_97%,#3b00b9_97%,#3b00b9_100%)]
+        // sm:bg-[linear-gradient(180deg,transparent_0%,transparent_87%,#3b00b9_87%,#3b00b9_100%)]
+        // md:bg-[linear-gradient(180deg,transparent_0%,transparent_77%,#3b00b9_77%,#3b00b9_100%)]
+        // relative "
         >
-          <div className="blob blob-white blob-sm md:blob-xl blob-x-7 blob-y-8"></div>
+          <div className="container-10">
+            <motion.h2
+              // className="tw-heading-3 md:tw-heading-60 text-center mb-0"
+              className="tw-heading-4 md:tw-heading-60 text-gradient mb-3"
+              variants={transitions.item}
+            >
+              ICP's vision is that most of the world's software will be replaced
+              by smart contracts. To realize that vision, ICP is designed to
+              make smart contracts as powerful as traditional software.
+            </motion.h2>
+          </div>
+        </section>
 
-          <div className="container-12">
+        {/* why smart contracts... */}
+        {/* <section className="bg-infinite text-white pt-20 md:pt-44">
+          <div className="container-10 md:w-6/10 md:mx-auto">
+            <motion.h2
+              className="tw-heading-3 md:tw-heading-60 text-center mb-0"
+              variants={transitions.item}
+            >
+              What ICP offers today
+            </motion.h2>
+
+            <h3 className="tw-heading-5 md:tw-heading-4 md:mb-6 mt-6">
+            Smart contracts are a disruptive, new compute paradigm enabling novel applications and adding guarantees to existing ones. 
+            Below is a list of some of the most important features of smart contracts.
+            </h3>
+          </div>
+
+          <div className="container-12 text-black">
             <AnimateSpawn
               className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-5"
               variants={transitions.container}
@@ -142,12 +143,11 @@ function WhatIsIcpPage() {
                   alt=""
                   className="h-24"
                 />
-                <h3 className="tw-lead my-3 md:tw-title-sm">Tamperproof</h3>
+                <h3 className="tw-lead my-3 md:tw-title-sm">Unstoppable and tamper-proof</h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph mb-0">
-                  Canister software is tamperproof, does not need to be
-                  protected by a firewall, and cannot be infected with
-                  ransomware. Because the Internet Computer is created by
-                  advanced math, there are no backdoors.
+                Because smart contracts are executed in a distributed and decentralized way, no single person, organization, 
+                or government can stop or change their state unless the code foresees that — code is law. That constitutes a 
+                completely new level of security and reliability that is simply not achievable on the traditional IT stack.
                 </p>
               </motion.div>
               <motion.div
@@ -159,12 +159,10 @@ function WhatIsIcpPage() {
                   alt=""
                   className="h-24"
                 />
-                <h3 className="tw-lead my-3 md:tw-title-sm">Autonomous</h3>
+                <h3 className="tw-lead my-3 md:tw-title-sm">Users can truly own digital assets</h3>
                 <p className="tw-paragraph-sm text-black/60  mb-0">
-                  Canisters can be made unmodifiable, creating permanent logic
-                  on the network, or placed under the control of autonomous
-                  governance – empowering communities to run Web3, or securing
-                  an enterprise.
+                No trust in the developer or cloud/infrastructure providers is required. Users can also 
+                form communities that collectively govern applications.
                 </p>
               </motion.div>
               <motion.div
@@ -176,156 +174,18 @@ function WhatIsIcpPage() {
                   alt=""
                   className="h-24"
                 />
-                <h3 className="tw-lead my-3 md:tw-title-sm">Simple</h3>
+                <h3 className="tw-lead my-3 md:tw-title-sm">Developers can build dapps with novel business models</h3>
                 <p className="tw-paragraph-sm text-black/60  mb-0">
-                  The global spend on IT personnel is now $1.8 trillion.
-                  Canister software greatly simplifies the development and
-                  maintenance of online systems and services, driving cost
-                  savings, and making you faster to market.
-                </p>
-              </motion.div>
-              <motion.div
-                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-12"
-                variants={transitions.item}
-              >
-                <img
-                  src="/img/what-is-the-ic/icon-sovereign.svg"
-                  alt=""
-                  className="h-24"
-                />
-                <h3 className="tw-lead my-3 md:tw-title-sm">Sovereign</h3>
-                <p className="tw-paragraph-sm text-black/60  mb-0">
-                  If your enterprise, government or Web3 service builds on
-                  centralized traditional IT, there are kill switches and
-                  backdoors, which deny you true sovereignty. Build on the
-                  network instead.
-                </p>
-              </motion.div>
-              <motion.div
-                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-12"
-                variants={transitions.item}
-              >
-                <img
-                  src="/img/what-is-the-ic/icon-web3-ois.svg"
-                  alt=""
-                  className="h-24"
-                />
-                <h3 className="tw-lead my-3 md:tw-title-sm">Web3 + OIS</h3>
-                <p className="tw-paragraph-sm text-black/60  mb-0">
-                  Canisters support more powerful tokenization models that
-                  advance Web3. Autonomous governance can create “open Internet
-                  services” (OISs) that are exclusively managed by their
-                  communities.
-                </p>
-              </motion.div>
-              <motion.div
-                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-12"
-                variants={transitions.item}
-              >
-                <img
-                  src="/img/what-is-the-ic/icon-next-gen-ai.svg"
-                  alt=""
-                  className="h-24"
-                />
-                <h3 className="tw-lead my-3 md:tw-title-sm">Next-gen AI</h3>
-                <p className="tw-paragraph-sm text-black/60  mb-0">
-                  The Internet Computer is currently adding support for Web3 “AI
-                  compute units.” AI will also run on the network, supporting
-                  native Web3 integrations, and trustlessness combinations of
-                  models and data.
+                For example, users who neither know nor trust each other can do business together without an intermediary. 
+                Complex financial services can be built without the need of banks, giving power back to the users, reducing overhead and cost.
                 </p>
               </motion.div>
             </AnimateSpawn>
           </div>
-        </section>
+        </section> */}
 
-        <section className="bg-infinite text-white pt-20 md:pt-44">
-          <div className="container-10 md:w-6/10 md:mx-auto">
-            <motion.h2
-              className="tw-heading-3 md:tw-heading-60 text-center mb-0"
-              variants={transitions.item}
-            >
-              How is the Internet Computer created by a protocol?
-            </motion.h2>
-          </div>
-          <div className=" container-12 flex flex-col gap-16 md:gap-40 relative pt-20">
-            <TranslatedLayout imageUrl="/img/what-is-the-ic/node-providers.webp">
-              <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
-                Node providers
-              </h2>
-
-              <p className="tw-lead-sm">
-                Standardized hardware devices called node machines are run by
-                independent parties called node providers, from different data
-                centers, geographies, and jurisdictions around the world. Node
-                providers run their hardware to earn tokenized rewards, rather
-                like independent ISPs and backbone providers operate routing
-                devices to earn peering fees.
-              </p>
-              <p>
-                <Link
-                  href="/node-providers"
-                  className="link-white link-with-icon"
-                >
-                  <LinkArrowRight />
-                  Sovereign hardware network
-                </Link>
-              </p>
-            </TranslatedLayout>
-            <TranslatedLayout
-              imageUrl="/img/what-is-the-ic/subnet-blockchains.webp"
-              reverse={true}
-            >
-              <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
-                Subnet blockchains
-              </h2>
-              <p className="tw-lead-sm">
-                The ICP protocol combines node machines into highly efficient
-                subnet blockchains, which add capacity for hosting tamperproof
-                canisters. The Internet Computer has a permissionless automated
-                governance system called the Network Nervous System, which
-                instructs nodes to join or leave subnets.
-              </p>
-              <p>
-                <Link
-                  href="/how-it-works#Architecture"
-                  className="link-white link-with-icon"
-                >
-                  <LinkArrowRight />
-                  ICP architecture
-                </Link>
-              </p>
-            </TranslatedLayout>
-            <TranslatedLayout imageUrl="/img/what-is-the-ic/smart-contracts.webp">
-              <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
-                Canister smart contracts
-              </h2>
-              <p className="tw-lead-sm">
-                Smart contracts are a new form of software that runs on
-                blockchain networks, which is tamperproof, unstoppable,
-                optionally autonomous, can process tokens, and is easily
-                composed. Canisters are a high-performance form that can be used
-                to build anything. They interact with HTTP to serve user
-                experiences, can interact with Web2, and can natively interact
-                with external blockchains. Because they scale, a social network
-                or complex enterprise system can run from the network,
-                simplifying building, and creating a future without firewalls
-                and trust. They offer a compelling alternative to building on
-                centralized traditional IT.
-              </p>
-              <p>
-                <Link
-                  href="https://medium.com/dfinity/webassembly-on-the-internet-computer-a1d0c71c5b94"
-                  className="link-white link-with-icon"
-                >
-                  <LinkArrowUpRight />
-                  WebAssembly smart contracts
-                </Link>
-              </p>
-            </TranslatedLayout>
-          </div>
-        </section>
-        <AnimateSpawn
+        {/* mini section: ICP's goal is to remove all the limitations smart */}
+        {/* <AnimateSpawn
           className="pt-30 md:pt-40 bg-[linear-gradient(180deg,#3b00b9_0%,#3b00b9_75%,transparent_75%,transparent_100%)] text-white relative"
           el={motion.section}
           variants={transitions.container}
@@ -336,7 +196,7 @@ function WhatIsIcpPage() {
             variants={transitions.item}
           >
             <h2 className=" tw-heading-3 md:tw-heading-60 mb-24 md:mb-20 sm:w-8/10 mx-auto">
-              The subnets combine into one autonomous serverless cloud
+              ICP's goal is to remove all the limitations smart contracts have so their true power is unleashed.
             </h2>
           </motion.div>
           <motion.div
@@ -349,153 +209,446 @@ function WhatIsIcpPage() {
               className="absolute w-[550px] md:w-[800px] max-w-none left-1/2 -translate-x-1/2"
             />
           </motion.div>
-        </AnimateSpawn>
-        <section className="container-12 pt-10 md:pt-16 pb-30 md:pb-20 relative">
-          <div className="text-center mb-16 md:mb-20">
-            <AnimateSpawn
-              className="container-12"
-              variants={transitions.container}
-            >
-              <motion.h2
-                className="tw-heading-3 md:tw-heading-60 text-gradient text-center inline-block mb-0"
-                variants={transitions.item}
-              >
-                Cool things...
-              </motion.h2>
-            </AnimateSpawn>
-          </div>
+        </AnimateSpawn> */}
+        <section className=" bg-infinite text-white mt-16 md:mt-40">
+          {/* What Features ICP has to unleash power of smart contracts */}
+          <section className="container-12 pt-10 md:pt-20 pb-30 md:pb-20 relative">
+            <div className="text-center mb-16 md:mb-24">
+              <AnimateSpawn variants={transitions.container}>
+                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense blob-x-10 blob-y-0 z-0 md:opacity-30 "></div>
+                <motion.h2
+                  className="tw-heading-3 md:tw-heading-60 text-left md:text-center md:w-7/10 inline-block mb-0"
+                  variants={transitions.item}
+                >
+                  What ICP offers today
+                </motion.h2>
+              </AnimateSpawn>
+            </div>
 
-          <div className="flex flex-col gap-16 md:gap-40">
-            <TranslatedLayout imageUrl="/img/what-is-the-ic/internet-identity.webp">
-              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                Internet Identity
-              </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                Internet Identity enables users to quickly and securely
-                authenticate to online systems and services using their devices,
-                for example using their laptop fingerprint sensor, or FaceID on
-                their phone. Under the skin, the framework relies on TPM chips
-                inside modern hardware, which keep keys and signing secure, the
-                WebAuthn protocol, which connects code inside the web browser to
-                those TPMs, and advanced chain-key cryptography running on the
-                Internet Computer network.
-              </p>
-              <Link
-                className="link-primary link-with-icon"
-                href="/internet-identity"
-              >
-                <LinkArrowRight /> Identity on ICP
-              </Link>
-            </TranslatedLayout>
-            <TranslatedLayout
-              imageUrl="/img/what-is-the-ic/open-internet-services.webp"
-              reverse={true}
-            >
-              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                Open Internet Services
-              </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                Open Internet services are services that run autonomously under
-                the exclusive control of a decentralized governance system
-                called a Service Nervous System (SNS), an evolution of DAO
-                technology. This can enable a Web3 service to be transparently
-                run by a community of thousands, allowing services to founderize
-                users that contribute by granting them governance tokens, for
-                example for creating viral content, inverting the traditional
-                Big Tech model. Enterprise can use the same technology to
-                distribute control over system updates and configuration,
-                greatly increasing security.
-              </p>
-              <Link className="link-primary link-with-icon" href="/sns">
-                <LinkArrowRight /> User-run Web3
-              </Link>
-            </TranslatedLayout>
-            <TranslatedLayout imageUrl="/img/what-is-the-ic/sovereign-infrastructure.webp">
-              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                Sovereign infrastructure
-              </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                When the systems and services that power society are built using
-                centralized traditional IT infrastructure – such as cloud
-                services, closed-source software, and security hardware – there
-                are backdoors enabling spying, and kill switches. With no
-                alternative, governments had to surrender sovereignty over the
-                digital foundations society relies on. Now the Internet Computer
-                is adding special localized sovereign subnets for usage by
-                governments, NGOs and enterprises with special needs:
-                unstoppable, secure, and transparent sovereign platform
-                infrastructure.
-              </p>
-              <Link
-                className="link-primary link-with-icon"
-                href="/node-providers"
-              >
-                <LinkArrowRight /> IT beyond cloud
-              </Link>
-            </TranslatedLayout>
+            <div className="flex flex-col gap-16 md:gap-40">
+              <TranslatedLayout imageUrl="/img/what-is-the-ic/platform_risk_large.webp">
+                <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
+                  Computation power of the ICP blockchain
+                </h3>
+                <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
+                  Smart contracts on the Internet Computer (ICP) can have
+                  hundreds of gigabytes of memory and compute at the full speed
+                  of a modern CPU, which is many orders of magnitude more than
+                  Ethereum smart contracts. For instance, the AI canister on ICP
+                  can run a full model because it is large and powerful enough
+                  to host it.
+                </p>
 
-            <TranslatedLayout
+                <Link
+                  className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
+                  href="/ai"
+                >
+                  Run AI models fully on-chain
+                </Link>
+                <Link
+                  className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
+                  href="https://wiki.internetcomputer.org/wiki/Internet_Computer_performance"
+                >
+                  <DocsIcon /> Learn more about ICP performance.
+                </Link>
+              </TranslatedLayout>
+
+              <TranslatedLayout
+                imageUrl="/img/what-is-the-ic/self_custody_large.webp"
+                reverse={true}
+              >
+                <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
+                  Low cost & resource efficiency
+                </h3>
+                <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
+                  ICP is designed to be resource-efficient, making it both
+                  low-cost and environmentally friendly. For example, storing a
+                  gigabyte of memory on ICP only costs a smart contract $5 per
+                  year.
+                </p>
+
+                <Link
+                  className="button-outline-white text-center mb-6 md:mb-8"
+                  href="/capabilities/sustainability"
+                >
+                  ICP Sustainability Solutions
+                </Link>
+                <Link
+                  className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
+                  href="/docs/current/developer-docs/cost-estimations-and-examples"
+                >
+                  <DocsIcon /> Learn more about ICP costs
+                </Link>
+              </TranslatedLayout>
+
+              <TranslatedLayout
+                imageUrl="/img/what-is-the-ic/italy_large.webp"
+                reverse={false}
+              >
+                <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
+                  State-of-the-art User Experience{" "}
+                </h3>
+                <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
+                  Users only need a browser to interact with ICP smart
+                  contracts. Users do not need wallets or tokens or any custom
+                  software, taking away all hurdles of using a smart contract.
+                </p>
+
+                <Link
+                  className="button-outline-white text-center mb-6 md:mb-8"
+                  href="/ecosystem"
+                >
+                  Try out some dapps{" "}
+                </Link>
+                <Link
+                  className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
+                  href="/docs/current/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp/"
+                >
+                  <DocsIcon /> Deploying your first full-stack dapp
+                </Link>
+              </TranslatedLayout>
+              <TranslatedLayout
+                imageUrl="/img/what-is-the-ic/fusion.webp"
+                reverse={true}
+              >
+                <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
+                  The Key to connect Web2 and Web3
+                </h3>
+                <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
+                  ICP can interface with other smart contract blockchains and
+                  traditional Web 2 internet resources via HTTP requests and
+                  signing capabilities. For example, Chain-key Bitcoin (ckBTC),
+                  a token backed 1:1 by BTC held entirely on the ICP blockchain,
+                  is possible because ICP smart contracts can sign transactions.
+                  Additionally, the Exchange rate canister sends and receives
+                  HTTP requests to fetch data from major cryptocurrency
+                  exchanges.
+                </p>
+
+                <Link
+                  className="button-outline-white text-center mb-6 md:mb-8"
+                  href="/chainfusion"
+                >
+                  Chain Fusion Technology{" "}
+                </Link>
+                <Link
+                  className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
+                  href="/https-outcalls"
+                >
+                  <LinkArrowRight /> Learn about ICP HTTP outcalls
+                </Link>
+                <Link
+                  className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
+                  href="/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa/"
+                >
+                  <DocsIcon className="mr-1 ml-1 md:ml-0" /> Learn more about
+                  ICP contracts threshold signing
+                </Link>
+              </TranslatedLayout>
+              <TranslatedLayout
+                imageUrl="/img/what-is-the-ic/2.webp"
+                reverse={false}
+              >
+                <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
+                  Dev-friendly Smart Contract Coding
+                </h3>
+                <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
+                  Developers can write contracts using popular languages like
+                  Rust, TypeScript, or Python and easily incorporate libraries
+                  from their respective ecosystem, much like they would in
+                  traditional web development. Additionally, they have the
+                  option to use Motoko, a language specifically designed for the
+                  ICP environment.
+                </p>
+                <Link
+                  className="button-outline-white text-center mb-6 md:mb-8"
+                  href="/docs/current/developer-docs/getting-started/hello-world"
+                >
+                  Start building
+                </Link>{" "}
+                <br />
+                <Link
+                  className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
+                  href="/docs/current/home"
+                >
+                  <DocsIcon /> Dev Overview to ICP
+                </Link>
+              </TranslatedLayout>
+              {/* <TranslatedLayout
               imageUrl="/img/what-is-the-ic/reverse-gas-model.webp"
               reverse={true}
             >
               <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                Reverse gas model
+              Upgradability
               </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                Unlike most EVM compatible blockchains, the Internet Computer
-                uses a reverse gas model. This enables end users to interact
-                with smart contracts without having to setup a wallet, or hold
-                tokens — A standard web browser is all they need. Developers
-                charge their canister smart contracts with 'cycles', the gas on
-                the Internet Computer, which are then burnt to pay for
-                computation, and memory usage. Such a model allows easy user
-                entry to Web3, and gives developers the flexibility to create
-                custom tokenomics models that meet mass adoption strategies.
+              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-4">
+              Real software needs upgrading to evolve and quickly resolve problems, 
+              e.g. security vulnerabilities. However, this must not come at the 
+              cost of a central authority being in control. 
               </p>
+              For example:
+                <ul>
+                  <li>
+                      <a href="/https://dashboard.internetcomputer.org/governance"                 
+                            className="link-primary link-with-icon"
+                        >The ICP DAO has voted to upgrade the network </a> hundreds of times since its launch.
+                    </li>
+                </ul>
               <Link
                 className="link-primary link-with-icon"
-                href="/capabilities/reverse-gas"
+                href="/docs/current/home"
               >
-                <LinkArrowRight /> Gas-free Web3
+                <LinkArrowRight />Learn more about ICP blockchain upgrades
               </Link>
-            </TranslatedLayout>
+            </TranslatedLayout> */}
+            </div>
+          </section>
+        </section>
+        {/*what design choices ICP has to achieve vision */}
+        <section className="container-12 pt-10 md:pt-40 pb-30 md:pb-20 relative">
+          <div className="text-center mb-16 md:mb-20">
+            <AnimateSpawn variants={transitions.container}>
+              <motion.h2
+                className="tw-heading-3 md:tw-heading-60 text-gradient text-left md:text-center md:w-7/10 inline-block mb-0"
+                variants={transitions.item}
+              >
+                Key Design Choices Behind ICP's Capabilities
+              </motion.h2>
+            </AnimateSpawn>
+          </div>
+          <div className="blob blob-white blob-sm md:blob-xl blob-x-7 blob-y-8"></div>
 
-            <TranslatedLayout imageUrl="/img/what-is-the-ic/multi-chain.webp">
-              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-                Native multi-chain
-              </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                Canister smart contracts on the Internet Computer are the glue
-                between the world’s most important blockchains. ICP already
-                integrates with the Bitcoin Network, and native ETH integration
-                is underway. Inter-chain communication and innovations such as
-                chain-key ECDSA allow canister smart contracts to directly hold,
-                receive and send BTC and ETH seamlessly across chains, creating
-                a trustless multi-chain environment that allows end users to
-                transfer crypto assets at the speed of a chat message without
-                bridges or third-party intermediaries.
-              </p>
-              <p className="mb-3">
-                <Link
-                  className="link-primary link-with-icon"
-                  href="/bitcoin-integration"
+          <div>
+            <AnimateSpawn
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5"
+              variants={transitions.container}
+            >
+              <motion.div
+                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-8  md:p-12"
+                variants={transitions.item}
+              >
+                <img
+                  // src="/img/what-is-the-ic/icon-tamperproof.svg"
+                  src="/img/what-is-the-ic/key-icon-1.svg"
+                  alt=""
+                  className="h-24"
+                />
+                <h3
+                  className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
+"
                 >
-                  <LinkArrowRight /> Bitcoin
-                </Link>
-              </p>
-              <p className="mb-3">
-                <Link
-                  className="link-primary link-with-icon"
-                  href="/ethereum-integration"
+                  DAO control{" "}
+                </h3>
+                <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
+                  Protocols often evolve slowly due to the need for consensus.
+                  ICP stands out by enabling frequent, decentralized updates
+                  through its NNS DAO, resulting in hundreds of upgrades since
+                  launch. This allows for continuous addition of new
+                  functionalities to smart contracts.
+                </p>
+              </motion.div>
+              <motion.div
+                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-8  md:p-12"
+                variants={transitions.item}
+              >
+                <img
+                  // src="/img/what-is-the-ic/icon-autonomous.svg"
+                  src="/img/what-is-the-ic/key-icon-2.svg"
+                  alt=""
+                  className="h-24"
+                />
+                <h3
+                  className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
+"
                 >
-                  <LinkArrowRight /> Ethereum
-                </Link>
-              </p>
-            </TranslatedLayout>
+                  Scale out via subnets
+                </h3>
+                <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
+                  ICP comprises multiple subnets, each supporting different
+                  smart contracts that can communicate seamlessly. It can
+                  dynamically add new subnets to scale with demand, enhancing
+                  efficiency and performance.
+                </p>
+              </motion.div>
+              <motion.div
+                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-8  md:p-12"
+                variants={transitions.item}
+              >
+                <img
+                  // src="/img/what-is-the-ic/icon-simple.svg"
+                  src="/img/what-is-the-ic/key-icon-3.svg"
+                  alt=""
+                  className="h-24"
+                />
+                <h3
+                  className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
+"
+                >
+                  Powerful node hardware{" "}
+                </h3>
+                <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
+                  A replicated system is only as fast as the weakest nodes, so
+                  ICP runs on powerful machines in data centers, ensuring all
+                  nodes meet a high minimum standard. This design means
+                  participation isn't possible with low-power devices like a
+                  Raspberry Pi, but it enables high performance.
+                </p>
+              </motion.div>
+              <motion.div
+                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-8  md:p-12"
+                variants={transitions.item}
+              >
+                <img
+                  // src="/img/what-is-the-ic/icon-sovereign.svg"
+                  src="/img/what-is-the-ic/key-icon-4.svg"
+                  alt=""
+                  className="h-24"
+                />
+                <h3
+                  className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
+"
+                >
+                  Asynchronous{" "}
+                </h3>
+                <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
+                  ICP's smart contracts operate asynchronously, unlike
+                  Ethereum’s synchronous model which causes delays as
+                  transactions process sequentially. This approach allows
+                  multiple contracts to process simultaneously, trading a more
+                  complex programming environment for enhanced efficiency and
+                  familiarity for Web2 developers.
+                </p>
+              </motion.div>
+              <motion.div
+                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-8  md:p-12"
+                variants={transitions.item}
+              >
+                <img
+                  // src="/img/what-is-the-ic/icon-web3-ois.svg"
+                  src="/img/what-is-the-ic/key-icon-5.svg"
+                  alt=""
+                  className="h-24"
+                />
+                <h3 className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm">
+                  Decentralization
+                </h3>
+                <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
+                  ICP enhances security and efficiency through a deterministic
+                  decentralization approach that balances maximum
+                  decentralization with minimized replication. This method
+                  considers factors such as the diversity of node providers and
+                  their locations. As a result, ICP's replication factor is
+                  lower than that of Bitcoin, optimizing for efficiency.
+                </p>
+              </motion.div>
+
+              <motion.div
+                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-8  md:p-12"
+                variants={transitions.item}
+              >
+                <img
+                  src="/img/what-is-the-ic/key-icon-6.svg"
+                  alt=""
+                  className="h-24"
+                />
+                <h3
+                  className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
+"
+                >
+                  WebAssembly
+                </h3>
+                <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
+                  ICP uses WebAssembly, an open standard for binary formats, for
+                  its smart contracts. This enables developers to use various
+                  programming languages with ease, enhancing developer
+                  friendliness due to straightforward mappings to WebAssembly.
+                </p>
+              </motion.div>
+
+              <motion.div
+                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-8  md:p-12"
+                variants={transitions.item}
+              >
+                <img
+                  src="/img/what-is-the-ic/key-icon-7.svg"
+                  alt=""
+                  className="h-24"
+                />
+                <h3
+                  className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
+"
+                >
+                  Reverse gas
+                </h3>
+                <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
+                  The reverse gas model allows developers to prepay gas fees by
+                  loading their smart contracts with 'cycles,' enabling users to
+                  interact without needing tokens or a wallet. This simplifies
+                  entry into Web3, offering a user experience similar to
+                  traditional web applications and facilitating easier adoption.
+                  This model enables a state-of-the-art user experience.
+                </p>
+              </motion.div>
+
+              <motion.div
+                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-8  md:p-12"
+                variants={transitions.item}
+              >
+                <img
+                  src="/img/what-is-the-ic/key-icon-8.svg"
+                  alt=""
+                  className="h-24"
+                />
+                <h3
+                  className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
+"
+                >
+                  Smart contracts serve web assets{" "}
+                </h3>
+                <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
+                  Users can interact with smart contracts through a standard
+                  browser without needing plugins or custom software, enabling a
+                  state-of-the-art user experience.
+                </p>
+              </motion.div>
+
+              <motion.div
+                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-8  md:p-12"
+                variants={transitions.item}
+              >
+                <img
+                  src="/img/what-is-the-ic/key-icon-9.svg"
+                  alt=""
+                  className="h-24"
+                />
+                <h3
+                  className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
+"
+                >
+                  Chain key cryptography
+                </h3>
+                <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
+                  A family of protocols leveraging threshold cryptography
+                  enables ICP to sign messages that can be efficiently verified,
+                  facilitating interoperability and a state-of-the-art user
+                  experience.
+                </p>
+              </motion.div>
+            </AnimateSpawn>
+            <div className="flex justify-center items-center mt-10">
+              {" "}
+              <Link
+                className="button-primary text-center mb-6 md:mb-8"
+                href="/capabilities"
+              >
+                More ICP capabilities
+              </Link>
+            </div>
           </div>
         </section>
 
-        <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15 mt-30">
+        {/* Ending section */}
+        <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-40 md:px-15 mt-15 md:mt-30">
           <AnimateSpawn
             className=" relative text-white"
             variants={transitions.container}
@@ -508,7 +661,7 @@ function WhatIsIcpPage() {
               className="tw-heading-3 text-center mb-2 w-full mx-auto md:tw-heading-60 md:mb-6 lg:w-6/12"
               variants={transitions.item}
             >
-              Get familiar with the Internet Computer
+              Get familiar with the Internet Computer{" "}
             </motion.h2>
           </AnimateSpawn>
 

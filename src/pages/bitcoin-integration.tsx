@@ -19,7 +19,7 @@ function BitcoinIntegration() {
       description="The Internet Computer adds the missing smart contract layer to Bitcoin. Leveraging Chain Fusion Technology, ICP can directly read and write to Bitcoin, enabling dapps that natively interact with Bitcoin."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-bitcoin-integration.jpeg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-bitcoin-integration.jpg"></ShareMeta>
 
       <main
         className="text-black relative overflow-hidden"
