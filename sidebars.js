@@ -429,6 +429,7 @@ const sidebars = {
               ],
             },
             "developer-docs/developer-tools/cli-tools/ic-admin",
+            "developer-docs/developer-tools/cli-tools/idl2json",
           ],
         },
         {
