@@ -451,10 +451,8 @@ const sidebars = {
           type: "category",
           label: "On-chain libraries",
           items: [
-            {
-              type: "doc",
-              id: "developer-docs/developer-tools/on-chain/cdks",
-            },
+              "developer-docs/developer-tools/on-chain/cdks",
+              "developer-docs/developer-tools/on-chain/ic-js",
           ],
         },
         {
@@ -513,24 +511,6 @@ const sidebars = {
         "developer-docs/web-apps/obtain-verify-ic-pubkey",
         {
           type: "category",
-          label: "User sign-up and login",
-          items: [
-            {
-              type: "category",
-              label: "Internet Identity (II)",
-              items: [
-                "developer-docs/web-apps/user-login/internet-identity/overview",
-                "developer-docs/web-apps/user-login/internet-identity/creating-ii",
-                "developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity",
-                "developer-docs/web-apps/user-login/internet-identity/alternative-origins",
-              ],
-            },
-            "developer-docs/web-apps/user-login/nfid",
-            "developer-docs/web-apps/user-login/email-password",
-          ],
-        },
-        {
-          type: "category",
           label: "Using HTTP certification",
           items: [
             {
@@ -552,6 +532,33 @@ const sidebars = {
         },
       ],
     },
+    {
+          type: "category",
+          label: "Identity",
+          items: [
+            {
+              type: "category",
+              label: "Authentication",
+              items: [
+                "developer-docs/identity/authentication/overview",
+		        {
+	          type: "category",
+                  label: "Internet Identity (II)",
+	          items:
+              [
+              "developer-docs/identity/internet-identity/overview",
+              "developer-docs/identity/internet-identity/creating-ii",
+              "developer-docs/identity/internet-identity/integrate-internet-identity",
+              "developer-docs/identity/internet-identity/alternative-origins",
+              ],
+            },
+              "developer-docs/identity/authentication/siwe",
+              "developer-docs/identity/authentication/nfid",
+              "developer-docs/identity/authentication/email-password",
+              ],
+            },
+          ],
+        },
     {
       type: "category",
       label: "Security",
@@ -635,25 +642,142 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "Rosetta API",
+          label: "ICP Rosetta implementation",
           link: {
             type: "doc",
-            id: "developer-docs/defi/rosetta/overview",
+            id: "developer-docs/defi/rosetta/icp_rosetta/index",
           },
           items: [
-            "developer-docs/defi/rosetta/hotkeys",
-            "developer-docs/defi/rosetta/neuron-lifecycle",
-            "developer-docs/defi/rosetta/staking-support",
-            "developer-docs/defi/rosetta/staking-tutorial",
-            "developer-docs/defi/rosetta/transfers",
+            {
+              type: "category",
+              label: "Data API",
+              link: {
+                type: "doc",
+                id: "developer-docs/defi/rosetta/icp_rosetta/data_api/index",
+              },
+              items: [
+                "developer-docs/defi/rosetta/icp_rosetta/data_api/network",
+                "developer-docs/defi/rosetta/icp_rosetta/data_api/balances",
+                "developer-docs/defi/rosetta/icp_rosetta/data_api/blocks",
+                "developer-docs/defi/rosetta/icp_rosetta/data_api/transactions",
+                "developer-docs/defi/rosetta/icp_rosetta/data_api/list_known_neurons",
+                "developer-docs/defi/rosetta/icp_rosetta/data_api/get_pending_proposals",
+                "developer-docs/defi/rosetta/icp_rosetta/data_api/get_proposal_info",
+              ],
+            },
+            {
+              type: "category",
+              label: "Construction API",
+              link: {
+                type: "doc",
+                id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/index",
+              },
+              items: [
+                {
+                  type: "category",
+                  label: "Flow of operations",
+                  link: {
+                    type: "doc",
+                    id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/index",
+                  },
+                  items: [
+                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/derive",
+                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/preprocess",
+                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/metadata",
+                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/payloads",
+                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/combine",
+                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/submit",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Staking and neuron management",
+                  link: {
+                    type: "doc",
+                    id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/index",
+                  },
+                  items: [
+                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/neuron_info",
+                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/derive_neuron_id",
+                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_icp",
+                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/lock_neuron",
+                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/dissolve",
+                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_maturity",
+                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/change_auto_stake_maturity",
+                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/spawn",
+                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/disburse",
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Voting and following",
+                  link: {
+                    type: "doc",
+                    id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/index",
+                  },
+                  items: [
+                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/vote",
+                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/follow",
+                  ],
+                },
+              ],
+            }
           ],
         },
+        {
+          type: "category",
+          label: "ICRC Rosetta implementation",
+          link: {
+            type: "doc",
+            id: "developer-docs/defi/rosetta/icrc_rosetta/index",
+          },
+          items: [
+            {
+              type: "category",
+              label: "Data API",
+              link: {
+                type: "doc",
+                id: "developer-docs/defi/rosetta/icrc_rosetta/data_api/index",
+              },
+              items: [
+                "developer-docs/defi/rosetta/icrc_rosetta/data_api/network",
+                "developer-docs/defi/rosetta/icrc_rosetta/data_api/balances",
+                "developer-docs/defi/rosetta/icrc_rosetta/data_api/blocks",
+                "developer-docs/defi/rosetta/icrc_rosetta/data_api/transactions",
+              ],
+            },
+            {
+              type: "category",
+              label: "Construction API",
+              link: {
+                type: "doc",
+                id: "developer-docs/defi/rosetta/icrc_rosetta/construction_api/index",
+              },
+              items: [
+                {
+                  type: "category",
+                  label: "Asset transfer",
+                  link: {
+                    type: "doc",
+                    id: "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/index",
+                  },
+                  items: [
+                    "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/transfer",
+                    "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/approve",
+                  ],
+                },
+              ],
+            }
+          ],
+        },
+        "developer-docs/defi/token_integrations/index",
         {
           type: "category",
           label: "Asset custody",
           items: [
             "developer-docs/defi/asset-custody/custody-options",
             "developer-docs/defi/asset-custody/self-custody-quickstart",
+            "developer-docs/defi/asset-custody/hardware-wallet-cli",
           ],
         },
         {
@@ -690,7 +814,6 @@ const sidebars = {
             "developer-docs/multi-chain/ethereum/using-eth/generating-addresses",
             "developer-docs/multi-chain/ethereum/using-eth/signing-transactions",
             "developer-docs/multi-chain/ethereum/using-eth/submit-transactions",
-            "developer-docs/multi-chain/ethereum/using-eth/siwe",
             {
               type: "category",
               label: "EVM RPC canister",

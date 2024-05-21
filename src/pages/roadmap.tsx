@@ -339,7 +339,7 @@ const RoadmapPage: React.FC = () => {
   return (
     <Layout
       title="Roadmap"
-      description="Explore the ICP roadmap, focussing on contributions by the DFINITY foundation. The roadmap is split into nine workstreams, each highlighting past achievements, upcoming milestones, and features that are further into the future and not yet scoped in detail."
+      description="Explore the ICP roadmap, focussing on contributions by the DFINITY Foundation. The roadmap is split into nine workstreams, each highlighting past achievements, upcoming milestones, and features that are further into the future and not yet scoped in detail."
       editPath="https://github.com/dfinity/portal/tree/master/roadmap"
     >
       <style>{css}</style>
@@ -353,7 +353,7 @@ const RoadmapPage: React.FC = () => {
               <h1 className="tw-heading-3 md:tw-heading-2 mb-6">Roadmap</h1>
               <p className="tw-lead-sm md:tw-lead mb-6 md:w-8/10">
                 Explore the ICP roadmap, focussing on contributions by the
-                DFINITY foundation. The roadmap is split into nine themes, each
+                DFINITY Foundation. The roadmap is split into nine themes, each
                 highlighting upcoming milestones, features that are further into
                 the future and not yet scoped in detail, as well as past
                 achievements.

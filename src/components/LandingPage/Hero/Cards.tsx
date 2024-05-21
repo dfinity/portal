@@ -65,8 +65,8 @@ export const CardsSection = () => {
       </CardWithImage>
 
       <CardWithImage href="/ecosystem" image="/img/home/ecosystem-card.webp">
-        <div className="tw-heading-7 md:tw-heading-6 mb-2">Ecosystem</div>
-        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Ecosystem links</h2>
+        <div className="tw-heading-7 md:tw-heading-6 mb-2">Dapps</div>
+        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">ICP Ecosystem</h2>
       </CardWithImage>
 
       <CardWithImage href="/docs/current/home" image="/img/home/dev-card.webp">
@@ -75,7 +75,7 @@ export const CardsSection = () => {
       </CardWithImage>
 
       <CardWithImage href="/events" image="/img/home/events-card.webp">
-        <div className="tw-heading-7 md:tw-heading-6 mb-2">ICP.Hubs</div>
+        <div className="tw-heading-7 md:tw-heading-6 mb-2">Global Events</div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
           Meet the community worldwide
         </h2>
