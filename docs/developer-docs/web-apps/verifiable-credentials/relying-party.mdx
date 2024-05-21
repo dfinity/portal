@@ -81,7 +81,7 @@ In this request, the following parameters must be set:
 
   - `credentialSubject`: The principal of the user requesting the credential.
 
-  - `derivationOrigin`: An origin that should be used for principal derivation as an alternative to the client origin. This field is optional.
+  - `derivationOrigin`: An origin that should be used for the relying party's principal derivation as an alternative to the frontend hostname. This should match the `derivationOrigin` used when logging in the relying party.
 
 
 Additional examples can be found in the [verifiable credentials specification](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md#examples).
