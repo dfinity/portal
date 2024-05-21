@@ -776,6 +776,7 @@ const sidebars = {
           items: [
             "developer-docs/defi/asset-custody/custody-options",
             "developer-docs/defi/asset-custody/self-custody-quickstart",
+            "developer-docs/defi/asset-custody/hardware-wallet-cli",
           ],
         },
         {
