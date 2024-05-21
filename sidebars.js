@@ -36,10 +36,8 @@ const sidebars = {
           type: "category",
           label: "Cycles",
           items: [
+            "developer-docs/getting-started/cycles/overview",
             "developer-docs/getting-started/cycles/cycles-faucet",
-	    "developer-docs/getting-started/cycles/cycles-ledger",
-            "developer-docs/getting-started/cycles/cycles-wallet",
-            "developer-docs/getting-started/cycles/converting_icp_tokens_into_cycles",
           ],
         },
         {
@@ -613,6 +611,15 @@ const sidebars = {
           type: "doc",
           label: "Overview",
           id: "developer-docs/defi/overview",
+        },
+        {
+          type: "category",
+          label: "Cycles",
+          items: [
+            "developer-docs/defi/cycles/cycles-ledger",
+            "developer-docs/defi/cycles/cycles-wallet",
+            "developer-docs/defi/cycles/converting_icp_tokens_into_cycles",
+          ]
         },
         {
           type: "category",
