@@ -31,7 +31,7 @@ The issuer API consists of four endpoints:
 
 ### Step 1: Obtain a consent message (`vc_consent_message`)
 
-First, the user must send a consent message to the issuer API endpoint `vc_consent_message` through the identity provider. A consent message is a text shown to the user to confirm that they consent to the issuing of a VC.
+First, the identity provider sends a request to the issuer API endpoint `vc_consent_message` to get the consent message to show the user. A consent message is text shown to the user to confirm that they consent to the issuing of a VC.
 
 An example implementation in Rust can be found below:
 
