@@ -2,6 +2,7 @@
 keywords: [intermediate, tutorial, user sign in, user login, internet identity]
 ---
 
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Integrating with II
@@ -299,29 +300,54 @@ dfx deploy
 
 ### Step 8: Navigate to the frontend canister's URL in your web browser. You will see the frontend of the app:
 
-![Local integration](../_attachments/II_greet_1.png)
+<div class="text--center">
+  <img
+    src={useBaseUrl("/docs/developer-docs/identity/internet-identity/_attachments/II_greet_1.png")}
+    alt="Creating an Internet Identity"
+  />
+</div>
 
 ### Step 7: Then, select 'Log in'.
 
 You'll be redirected to the II frontend. Since you're running this locally, this will be using a local, non-production Internet Identity. To create one, follow the on-screen steps.
 
-### Step 8: Create a local Internet Identity
+### Step 8: Create a local Internet Identity.
 
 - Select 'Create New' from the UI.
 
-![Internet Identity 1](../_attachments/II_1.png)
+<div class="text--center">
+  <img
+    src={useBaseUrl("/docs/developer-docs/identity/internet-identity/_attachments/II_1.png")}
+    alt="Creating an Internet Identity"
+  />
+</div>
 
 - Next, select 'Create Passkey'.
 
-![Internet Identity 2](../_attachments/II_2.png)
+<div class="text--center">
+  <img
+    src={useBaseUrl("/docs/developer-docs/identity/internet-identity/_attachments/II_2.png")}
+    alt="Creating an Internet Identity"
+  />
+</div>
 
 - When prompted, choose how to create your passkey, either on your current device or you can use another device.
 
-![Internet Identity 3](../_attachments/II_3.png)
+<div class="text--center">
+  <img
+    src={useBaseUrl("/docs/developer-docs/identity/internet-identity/_attachments/II_3.png")}
+    alt="Creating an Internet Identity"
+  />
+</div>
 
 - Then, enter the CAPTCHA to continue.
 
-![Internet Identity 4](../_attachments/II_4.png)
+<div class="text--center">
+  <img
+    src={useBaseUrl("/docs/developer-docs/identity/internet-identity/_attachments/II_4.png")}
+    alt="Creating an Internet Identity"
+  />
+</div>
 
 Your Internet Identity has been created! It'll be shown on the screen, and it is recommended that you write it down in a safe location to save it.
 
@@ -333,7 +359,12 @@ Once you save it, select the 'I saved it, continue' button.
 
 ### Step 10: Your Internet Identity's principal ID will be returned:
 
-![Local integration 4](../_attachments/II_greet_2.png)
+<div class="text--center">
+  <img
+    src={useBaseUrl("/docs/developer-docs/identity/internet-identity/_attachments/II_greet_2.png")}
+    alt="Creating an Internet Identity"
+  />
+</div>
 
 ### Local frontend development
 
