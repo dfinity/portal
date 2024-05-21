@@ -106,6 +106,10 @@ In this response, `verifiablePresentation`is a JWT based verifiable presentation
 
 2. A verifiable credential issued by the issuer to the user principal.
 
+The specification ensures unlinkability between the relying party and the issuer. That's why two credentials are needed. The first credential proves the link between the relying party's principal and the issuer's. The second credential is the actual credential to the user's principal from the issuer's side.
+
+![Diagram placeholder](/path/to/file)
+
 The order of the credentials in the VP should match the order above, such that the credential relating to the `credentialSubject` to the user principal should come first.
 
 [View an example of a verifiable presentation](https://www.w3.org/TR/vc-data-model/#example-jwt-payload-of-a-jwt-based-verifiable-presentation-non-normative) for reference.
