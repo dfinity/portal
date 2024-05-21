@@ -53,10 +53,10 @@ function UseCasesPage() {
             </div>
             <div className="flex justify-center items-center">
               <Link
-                className="link-primary link-with-icon underline hover:no-underline !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
+                className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
                 href="/what-is-the-ic"
               >
-                <span className="md:ml-2">What is ICP</span> <LinkArrowRight />
+                <LinkArrowRight /> <span>What is ICP</span>
               </Link>
             </div>
           </div>
@@ -73,7 +73,7 @@ function UseCasesPage() {
               >
                 <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense translate-x-[5%] -translate-y-2/3 z-0 md:opacity-35 " />
                 <h5 className="tw-heading-6 md:tw-heading-5 mb-2">
-                  Chainfusion
+                  Chain Fusion
                 </h5>
                 <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
                   The multichain technology{" "}
