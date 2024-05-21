@@ -15,6 +15,7 @@ import {
 
 import { QueryClient, QueryClientProvider } from "react-query";
 import Link from "@docusaurus/Link";
+import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
 const queryClient = new QueryClient();
 
 const Hero: React.FC<{
@@ -58,15 +59,24 @@ const Hero: React.FC<{
                 aiPlaceholders={aiPlaceholders}
                 fontLoaded={fontLoaded}
               /> */}
-              <div className="bg-black/5 flex flex-col md:flex-row md:items-center p-0 md:pr-4 gap-0 md:gap-6 animate-blur-out rounded-xl">
+              <div className="bg-black/5 flex flex-col md:flex-row md:items-center p-0 md:pr-4 gap-6 md:gap-6 animate-blur-out rounded-xl">
                 <Link
-                  className="button-fancy-ai py-3 justify-center button-with-icon border-none transition-all bg-[radial-gradient(67.52%_167.71%_at_50.38%_-41.67%,#EA2B7B_0%,#3B00B9_100%)] hover:text-white/80 stat-fade-in md:ml-2"
+                  className="button-fancy-ai py-3 justify-center button-with-icon border-none transition-all bg-[radial-gradient(67.52%_167.71%_at_50.38%_-41.67%,#EA2B7B_0%,#3B00B9_100%)] hover:text-white/80 stat-fade-in md:ml-2 md:mr-2"
                   href="/what-is-the-ic"
                   style={{
                     animationPlayState: fontLoaded ? "running" : "paused",
                   }}
                 >
                   WHAT IS ICP
+                </Link>
+                <Link
+                  className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out flex justify-center"
+                  href="/what-is-the-ic"
+                  style={{
+                    animationPlayState: fontLoaded ? "running" : "paused",
+                  }}
+                >
+                  <LinkArrowRight /> <span>Jump into Use Cases</span>
                 </Link>
               </div>
             </div>
