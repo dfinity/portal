@@ -69,20 +69,24 @@ The returned value is subject to verification via .well-known/ii-alternative-ori
 An example implementation in Rust can be found below:
 
 ```rust
-async fn derivation_origin(
-    req: DerivationOriginRequest,
-) -> Result<DerivationOriginData, DerivationOriginError> {
-    get_derivation_origin(&req.frontend_hostname)
-}
+use ic_cdk::update;
+use vc_util::issuer_api::{DerivationOriginData, DerivationOriginError, DerivationOriginRequest};
 
-fn get_derivation_origin(_hostname: &str) -> Result<DerivationOriginData, DerivationOriginError> {
-    CONFIG.with_borrow(|config| {
-        let config = config.get();
-        println!("*** derivation origin: {}", config.derivation_origin);
-        Ok(DerivationOriginData {
-            origin: config.derivation_origin.clone(),
-        })
-    })
+#[update(name = "derivation_origin")]
+async fn vc_derivation_origin(
+    _req: DerivationOriginRequest,
+) -> Result<DerivationOriginData, DerivationOriginError> {
+    let dfx_network = option_env!("DFX_NETWORK").unwrap();
+    let origin = match dfx_network {
+        "local" => format!("http://{}.localhost:4943", ic_cdk::api::id()),
+        "ic" => format!("https://{}.icp0.io", ic_cdk::api::id()),
+        _ => {
+            return Err(DerivationOriginError::Internal(
+                "Invalid DFX_NETWORK".to_string(),
+            ))
+        }
+    };
+    Ok(DerivationOriginData { origin })
 }
 ```
 
