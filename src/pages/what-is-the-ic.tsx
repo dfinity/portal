@@ -73,10 +73,10 @@ function WhatIsIcpPage() {
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                Here's a simple explanation of why canister smart contracts are effective, 
-                how they are much more powerful than ordinary smart contracts, and how 
-                they will change the world as ICP's vision is realized.
-              </motion.p>
+            Dive into the ICP blockchain and learn how it 
+            unlocks the power of smart contract. Explore the advanced 
+            design choices that make this possible.          
+             </motion.p>
             </div>
           </AnimateSpawn>
         </section>
@@ -215,7 +215,7 @@ function WhatIsIcpPage() {
               </TranslatedLayout>
               <TranslatedLayout
                 // imageUrl="/img/what-is-the-ic/fusion.webp"
-                imageUrl="/img/what-is-the-ic/RPC-canister-for-Ethereum-EVMs2.webp"
+                imageUrl="/img/what-is-the-ic/RPC-canister.webp"
 
                 reverse={true}
               >
