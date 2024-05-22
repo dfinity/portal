@@ -234,11 +234,11 @@ function EthereumIntegrationPage() {
         <section className="container-10 my-20 sm:my-30 md:my-40">
           <AnimateSpawn
             variants={transitions.container}
-            className="bg-white px-10 md:px-16 pt-6 pb-1 md:pb-12 md:pt-12 flex gap-8 mb-10 sm:mb-40 rounded-xl"
+            className="bg-white px-10 md:px-16 pt-6 pb-1 md:pb-12 md:pt-12 gap-8 mb-10 sm:mb-40 rounded-xl "
           >
             <motion.div>
               <aside className="container-10 md:flex md:items-center mt-6 md:mt-0 !pl-0	!pr-0">
-                <div className="md:w-2/3">
+                <div className="md:w-1/2">
                   <motion.h5
                     className="tw-heading-5 md:tw-heading-4 mb-3 sm:mb-6 "
                     variants={transitions.item}
@@ -246,16 +246,6 @@ function EthereumIntegrationPage() {
                     Tritium Milestone is now live!
                   </motion.h5>
 
-                  <motion.p
-                    className="mb-0 tw-paragraph md:tw-lead-sm line-clamp-5 text-black/60 md:pr-1"
-                    variants={transitions.item}
-                  >
-                    ICP’s Chain Fusion technology has full support for Ethereum
-                    and other EVM chains. ICP smart contracts can read from and
-                    write to EVM chains using a decentralized approach as well
-                    as sign transactions in a trustless manner using threshold
-                    ECDSA signing.
-                  </motion.p>
                   <motion.ul
                     className="mb-0 mt-4 md:mt-6 tw-paragraph md:tw-lead-sm text-bold text-black"
                     variants={transitions.item}
@@ -280,10 +270,10 @@ function EthereumIntegrationPage() {
                     </Link>
                   </p>
                 </div>
-                <div className="md:w-1/3 relative md:mt-12 md:mb-3">
-                  <div className="pointer-events-none md:absolute w-full md:-right-12 md:top-1/2  md:-translate-y-1/2">
+                <div className="md:w-1/2 relative md:mt-6 md:mb-3">
+                  <div className="pointer-events-none md:absolute w-full md:-right-20 md:top-1/2  md:-translate-y-1/2">
                     <motion.img
-                      className="w-full h-full object-cover"
+                      className="w-[90%] h-full object-cover"
                       src="/img/roadmap/roadmap-viz.webp"
                       alt="roadmap"
                     />
