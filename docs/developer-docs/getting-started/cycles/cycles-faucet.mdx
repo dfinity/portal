@@ -11,24 +11,15 @@ import '/src/components/CenterImages/center.scss';
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
-## What are ICP cycles?
-The Internet Computer Protocol runs on a network of nodes owned and operated by a growing community of independent node providers (NPs) distributed across the globe. NPs spend money for running nodes, e.g. they purchase hardware and require electricity and network bandwidth. The Internet Computer Protocol compensates NPs on a monthly basis by minting and distributing rewards in the form of ICP tokens.
+## Overview
 
-To make ICP sustainable, <GlossaryTooltip>canisters</GlossaryTooltip> are required to pay for the resources they consume, e.g. storage and compute. Resource consumption is not paid in ICP tokens but **cycles**. It’s typically the canister’s developer who charges the canister with cycles. As the canister is used, its cycles balance is continuously reduced. Eventually, the canister needs to be “topped up” with more cycles. The default way to get cycles is to convert ICP tokens to cycles. When doing so, the protocol burns the ICP tokens.
+To deploy a <GlossaryTooltip>canisters</GlossaryTooltip> onto the ICP mainnet, you must have cycles. Cycles are used to pay for the resources that a canister uses.
 
-## Why are cycles different from ICP tokens?
-
-While the value of an ICP token is volatile, cycles are not. They are pegged to [XDR](https://en.wikipedia.org/wiki/Special_drawing_rights), a basket of fiat currencies. This has the benefit that resource consumption, e.g. smart contract executions, on ICP has a somewhat stable price.
-
-:::info
-Cycles are measured in very large numbers, such as billions and trillions. When you talk about cycle transfers and replenishment, you will usually operate with trillions of cycles.
-:::
-
-This guide explains how to use **cycles faucet** to acquire your first amount of 10T free cycles that could be used to deploy your dapps on the mainnet.
+This guide explains how to use the **cycles faucet** to acquire 10T free cycles that can be used to deploy your dapps on the mainnet.
 
 ## Prerequisites
 
-- [x] Install Internet Computer SDK following [this guide](/docs/current/developer-docs/getting-started/install/).
+- [x] Install the [Internet Computer SDK](/docs/current/developer-docs/getting-started/install/).
 
 ## Step 1: Get a coupon.
 
@@ -42,7 +33,9 @@ First, you will need to navigate to [https://faucet.dfinity.org](https://faucet.
 
 ## Step 3: In this channel, execute the following slash command:
 
-> /request
+```
+/request
+```
 
 ## Step 4: After you send this message, you are prompted to fill out a survey.
 
@@ -68,11 +61,15 @@ Click **NEXT STEP** to continue.
 
 Next, confirm your computer has `dfx` installed. Run this command to check the version of `dfx` on your computer:
 
-    dfx --version
+```
+dfx --version
+```
 
 If your `dfx` version is below 0.12.0, please run this command:
 
-    dfx upgrade
+```
+dfx upgrade
+```
 
 ![Setup SDK](_attachments/faucet_step_4.png)
 
@@ -96,7 +93,7 @@ dfx identity use MyNewIdentity
 
 ## Step 10: Now, claim your cycles.
 
-This workflow utilizes the **cycles ledger** feature. If you'd like to use the **cycles wallet** instead, [view the cycles wallet documentation](/docs/current/developer-docs/getting-started/cycles/cycles-wallet).
+This workflow utilizes the **cycles ledger** feature. If you'd like to use the **cycles wallet** instead, [view the cycles wallet documentation](/docs/current/developer-docs/defi/cycles/cycles-wallet).
 
 To use the cycles ledger, you will need [`dfx` version 0.19.0](/docs/current/developer-docs/getting-started/install/), and you will need to set the following environmental variable:
 
@@ -125,9 +122,18 @@ The last step is to verify the coupon was redeemed correctly by checking your ba
 Now you are ready to deploy a canister on the mainnet!
 
 ## Resources
+
 To further explore cycle management please see the following articles:
-- **[Using a cycles wallet](/docs/current/developer-docs/getting-started/cycles/cycles-wallet)**.
-- **[Getting free cycles from DFINITY cycles faucet](/docs/current/developer-docs/getting-started/cycles/cycles-faucet)**.
-- **[Converting ICP tokens into cycles](/docs/current/developer-docs/getting-started/cycles/converting_icp_tokens_into_cycles)**.
+
+- [Using a cycles wallet](/docs/current/developer-docs/defi/cycles/cycles-wallet).
+
+- [Using the cycles ledger](/docs/current/developer-docs/defi/cycles/cycles-ledger).
+
+- [Cost of resources in cycles](/docs/current/developer-docs/gas-cost).
+
+- [Converting ICP tokens into cycles](/docs/current/developer-docs/defi/cycles/converting_icp_tokens_into_cycles).
 
 
+## Next steps
+
+- [Review the default project template](/docs/current/developer-docs/getting-started/default-template).
