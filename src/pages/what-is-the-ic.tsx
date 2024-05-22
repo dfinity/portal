@@ -71,9 +71,12 @@ function WhatIsIcpPage() {
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                Smart contracts are the new and vastly superior way to build
-                software. Being embedded in blockchain protocols, smart
-                contracts are secure, tamper-proof, resilient, and unstoppable.
+                
+
+                ICP is best understood by exploring its foundation: canister smart contracts. 
+                Here's a simple explanation of why canister smart contracts are effective, 
+                how they much more power full than ordinary smart contracts, 
+                and how they will change to world as ICP's vision is being realized.
               </motion.p>
             </div>
           </AnimateSpawn>
@@ -112,104 +115,6 @@ function WhatIsIcpPage() {
             </motion.h2>
           </div>
         </section>
-
-        {/* why smart contracts... */}
-        {/* <section className="bg-infinite text-white pt-20 md:pt-44">
-          <div className="container-10 md:w-6/10 md:mx-auto">
-            <motion.h2
-              className="tw-heading-3 md:tw-heading-60 text-center mb-0"
-              variants={transitions.item}
-            >
-              What ICP offers today
-            </motion.h2>
-
-            <h3 className="tw-heading-5 md:tw-heading-4 md:mb-6 mt-6">
-            Smart contracts are a disruptive, new compute paradigm enabling novel applications and adding guarantees to existing ones. 
-            Below is a list of some of the most important features of smart contracts.
-            </h3>
-          </div>
-
-          <div className="container-12 text-black">
-            <AnimateSpawn
-              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-5"
-              variants={transitions.container}
-            >
-              <motion.div
-                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-12"
-                variants={transitions.item}
-              >
-                <img
-                  src="/img/what-is-the-ic/icon-tamperproof.svg"
-                  alt=""
-                  className="h-24"
-                />
-                <h3 className="tw-lead my-3 md:tw-title-sm">Unstoppable and tamper-proof</h3>
-                <p className="tw-paragraph-sm text-black/60 md:tw-paragraph mb-0">
-                Because smart contracts are executed in a distributed and decentralized way, no single person, organization, 
-                or government can stop or change their state unless the code foresees that — code is law. That constitutes a 
-                completely new level of security and reliability that is simply not achievable on the traditional IT stack.
-                </p>
-              </motion.div>
-              <motion.div
-                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-12"
-                variants={transitions.item}
-              >
-                <img
-                  src="/img/what-is-the-ic/icon-autonomous.svg"
-                  alt=""
-                  className="h-24"
-                />
-                <h3 className="tw-lead my-3 md:tw-title-sm">Users can truly own digital assets</h3>
-                <p className="tw-paragraph-sm text-black/60  mb-0">
-                No trust in the developer or cloud/infrastructure providers is required. Users can also 
-                form communities that collectively govern applications.
-                </p>
-              </motion.div>
-              <motion.div
-                className="flex flex-col text-center backdrop-blur-2xl rounded-xl border border-white border-solid bg-white/90 p-12"
-                variants={transitions.item}
-              >
-                <img
-                  src="/img/what-is-the-ic/icon-simple.svg"
-                  alt=""
-                  className="h-24"
-                />
-                <h3 className="tw-lead my-3 md:tw-title-sm">Developers can build dapps with novel business models</h3>
-                <p className="tw-paragraph-sm text-black/60  mb-0">
-                For example, users who neither know nor trust each other can do business together without an intermediary. 
-                Complex financial services can be built without the need of banks, giving power back to the users, reducing overhead and cost.
-                </p>
-              </motion.div>
-            </AnimateSpawn>
-          </div>
-        </section> */}
-
-        {/* mini section: ICP's goal is to remove all the limitations smart */}
-        {/* <AnimateSpawn
-          className="pt-30 md:pt-40 bg-[linear-gradient(180deg,#3b00b9_0%,#3b00b9_75%,transparent_75%,transparent_100%)] text-white relative"
-          el={motion.section}
-          variants={transitions.container}
-        >
-          <div className="blob blob-lg md:blob-xl blob-white md:blob-white-dense blob-x-5 blob-y-8 z-0 md:opacity-60"></div>
-          <motion.div
-            className="container-10 text-center"
-            variants={transitions.item}
-          >
-            <h2 className=" tw-heading-3 md:tw-heading-60 mb-24 md:mb-20 sm:w-8/10 mx-auto">
-              ICP's goal is to remove all the limitations smart contracts have so their true power is unleashed.
-            </h2>
-          </motion.div>
-          <motion.div
-            className="w-full h-[400px] md:h-[600px]"
-            variants={transitions.item}
-          >
-            <img
-              src="/img/what-is-the-ic/subnets.webp"
-              alt=""
-              className="absolute w-[550px] md:w-[800px] max-w-none left-1/2 -translate-x-1/2"
-            />
-          </motion.div>
-        </AnimateSpawn> */}
         <section className=" bg-infinite text-white mt-16 md:mt-40">
           {/* What Features ICP has to unleash power of smart contracts */}
           <section className="container-12 pt-10 md:pt-20 pb-30 md:pb-20 relative">
@@ -228,22 +133,24 @@ function WhatIsIcpPage() {
             <div className="flex flex-col gap-16 md:gap-40">
               <TranslatedLayout imageUrl="/img/what-is-the-ic/platform_risk_large.webp">
                 <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
-                  Computation power of the ICP blockchain
+                  High-performance smart contracts
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
                   Smart contracts on the Internet Computer (ICP) can have
                   hundreds of gigabytes of memory and compute at the full speed
                   of a modern CPU, which is many orders of magnitude more than
-                  Ethereum smart contracts. For instance, the AI canister on ICP
-                  can run a full model because it is large and powerful enough
-                  to host it.
+                  Ethereum smart contracts. For example, the high performance of ICP smart 
+                  contracts makes the <a 
+                    className="text-white underline"
+                    href="https://www.youtube.com/watch?v=6qLvIXiCGcM" >
+                  demo of an AI inference model running on an ICP smart contract</a> uniquely possible.
                 </p>
 
                 <Link
                   className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
                   href="/ai"
                 >
-                  Run AI models fully on-chain
+                  Train and run AI models as smart contracts
                 </Link>
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
@@ -374,33 +281,6 @@ function WhatIsIcpPage() {
                   <DocsIcon /> Dev Overview to ICP
                 </Link>
               </TranslatedLayout>
-              {/* <TranslatedLayout
-              imageUrl="/img/what-is-the-ic/reverse-gas-model.webp"
-              reverse={true}
-            >
-              <h3 className="tw-heading-4 md:tw-heading-60 mb-6">
-              Upgradability
-              </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-4">
-              Real software needs upgrading to evolve and quickly resolve problems, 
-              e.g. security vulnerabilities. However, this must not come at the 
-              cost of a central authority being in control. 
-              </p>
-              For example:
-                <ul>
-                  <li>
-                      <a href="/https://dashboard.internetcomputer.org/governance"                 
-                            className="link-primary link-with-icon"
-                        >The ICP DAO has voted to upgrade the network </a> hundreds of times since its launch.
-                    </li>
-                </ul>
-              <Link
-                className="link-primary link-with-icon"
-                href="/docs/current/home"
-              >
-                <LinkArrowRight />Learn more about ICP blockchain upgrades
-              </Link>
-            </TranslatedLayout> */}
             </div>
           </section>
         </section>
