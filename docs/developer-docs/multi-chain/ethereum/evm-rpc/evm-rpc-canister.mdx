@@ -995,6 +995,9 @@ type RpcServices = variant {
 type RpcService = variant {
   EthMainnet : EthMainnetService;
   EthSepolia : EthSepoliaService;
+  ArbitrumMainnet : L2MainnetService;
+  BaseMainnet : L2MainnetService;
+  OptimismMainnet : L2MainnetService;
   ...
   Chain : nat64;
   Provider : nat64;
