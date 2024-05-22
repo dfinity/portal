@@ -44,7 +44,7 @@ const projects = [
     altText: "SIWE Logo",
     title: "SIWE",
     description:
-      "Sign In With Ethereum(SIWE)is a collection of support libraries and template applications to simplify the process for Ethereum developers to enable sign in with the EIP-4361 standard.",
+      "Sign In With Ethereum(SIWE)is a collection of support libraries and template dapps to simplify the process for Ethereum developers to enable sign in with the EIP-4361 standard.",
     link: "https://github.com/kristoferlund/ic-siwe/tree/main/packages/ic_siwe",
   },
   {
@@ -68,7 +68,7 @@ const projects = [
     altText: "Chainsight Logo",
     title: "Chainsight",
     description:
-      "Chainsight provides a data processing layer to develop applications that go one step ahead. It is an extension layer that leverages historical data, constantly updated data, and cross-chain data to compute the information you need for your application.",
+      "Chainsight provides a data processing layer to develop dapps that go one step ahead. It is an extension layer that leverages historical data, constantly updated data, and cross-chain data to compute the information you need for your dapp.",
     link: "https://chainsight.network/",
   },
   {
@@ -184,11 +184,10 @@ function EthereumIntegrationPage() {
                 className="tw-lead-sm md:tw-lead mb-0"
                 variants={transitions.item}
               >
-                Leveraging Chain Fusion Technology, ICP brings its unique
-                features to Ethereum. Smart contracts gain access to threshold
+                Chain Fusion Technology brings unique ICP features to Ethereum. Smart contracts gain access to threshold
                 signing services, oracles, DAO frameworks, privacy tools, pass
                 key authentication, smart contract wallets, and reverse gas
-                fees. Augment Ethereum apps to build seamless multichain
+                fees. Augment Ethereum dapps to build seamless multichain
                 solutions for DeFi, NFT trading, payments, SocialFi and more. 
               </motion.p>
             </div>
@@ -297,7 +296,7 @@ function EthereumIntegrationPage() {
               variants={transitions.item}
             >
               Ethereum is the world’s top blockchain for DeFi with TVL in the
-              billions. Integrating with ICP offers X-chain benefits such as
+              billions. Integrating with ICP offers cross-chain benefits such as
               increased asset liquidity, expanded market access, improved
               scalability and throughput. Plus, access to ICP’s unique
               capabilities:
@@ -391,12 +390,12 @@ function EthereumIntegrationPage() {
               EVM on the Internet Computer
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
-              The EVM RPC canister is an ICP smart contract for communicating
-              with Ethereum and other EVM blockchains using an on-chain API. It
-              introduces methods that massively simplify the developer
-              experience. The Tritium milestone allows communication with
-              Ethereum, Arbitrum, Optimism and Base. Interoperability can be
-              increased by simply adding other network API keys.
+            An Ethereum Virtual Machine (EVM) is available on ICP built by Bitfinity — 
+            a team of developers from the ICP community. 
+            Bitfinity offers a turn-key solution for developers to operate their 
+            ETH dapps on the Internet Computer using Solidity, which brings ICP's 
+            1-2s finality, and near-0 transaction fees to established Ethereum dapps, 
+            providing an incredibly efficient Ethereum scaling solution.
             </p>
             <p className="mb-0">
               <Link
