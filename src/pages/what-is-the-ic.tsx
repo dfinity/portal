@@ -425,9 +425,7 @@ function WhatIsIcpPage() {
                   Ethereum's synchronous model where the "whole world waits" for one's 
                   smart contract transactions and causes delays as
                   transactions process sequentially. ICP's asynchronous execution allows
-                  multiple contracts to process simultaneously, trading a more
-                  complex programming environment for enhanced efficiency and
-                  familiarity for Web2 developers.
+                  multiple contracts to process simultaneously.
                 </p>
               </motion.div>
               <motion.div
