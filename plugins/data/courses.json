@@ -10,7 +10,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "Bitcoin",
@@ -44,7 +46,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Environment Setup",
       "ICP Overview",
@@ -73,7 +77,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "spanish",
+    "contentLanguages": [
+      "spanish"
+    ],
     "fullTags": [
       "Canister Development",
       "Frontend",
@@ -106,7 +112,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "spanish",
+    "contentLanguages": [
+      "spanish"
+    ],
     "fullTags": [
       "Environment Setup",
       "Overview",
@@ -146,7 +154,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "ICP Architecture",
@@ -197,7 +207,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Environment Setup",
       "Azle Language",
@@ -230,7 +242,9 @@
       "text",
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Identity & Authentication",
       "Overview",
@@ -281,7 +295,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "turkish",
+    "contentLanguages": [
+      "turkish"
+    ],
     "fullTags": [
       "Overview",
       "ICP Overview"
@@ -307,7 +323,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Storage",
@@ -343,7 +361,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "DAO",
@@ -402,7 +422,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "ICP Architecture",
       "Governance",
@@ -451,7 +473,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "DeFi",
@@ -496,7 +520,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Security",
       "Execution",
@@ -522,7 +548,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Motoko Language"
@@ -546,7 +574,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "ICP Overview"
@@ -567,7 +597,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Security",
       "Identity & Authentication",
@@ -594,7 +626,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Frontend",
@@ -620,7 +654,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "ICP Overview"
@@ -643,7 +679,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "ICP Overview"
@@ -666,7 +704,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "ICP Overview"
@@ -689,7 +729,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Frontend",
       "Canister Development",
@@ -711,7 +753,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "HTTPS Outcalls",
       "Canister Development",
@@ -736,7 +780,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "ICP Architecture",
       "ICP",
@@ -760,7 +806,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Identity & Authentication",
       "Internet Identity",
@@ -784,7 +832,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Frontend",
       "Identity & Authentication",
@@ -809,7 +859,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Bitcoin",
       "Canister Development",
@@ -838,7 +890,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Environment Setup",
       "Environment Setup"
@@ -861,7 +915,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "ICP Overview"
@@ -884,7 +940,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Smart Contract"
@@ -907,7 +965,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "ICP Overview"
@@ -930,7 +990,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Smart Contract",
@@ -954,7 +1016,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Security",
       "Execution",
@@ -980,7 +1044,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Candid"
@@ -1003,7 +1069,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "ICP",
@@ -1034,7 +1102,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Query Calls",
@@ -1058,7 +1128,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "ICP Architecture",
       "Governance",
@@ -1084,7 +1156,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "ICP Overview"
@@ -1107,7 +1181,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "ICP Overview"
@@ -1127,7 +1203,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Canisters",
@@ -1151,7 +1229,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Storage",
       "Stable Memory"
@@ -1174,7 +1254,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "ICP Architecture",
       "ICP",
@@ -1198,7 +1280,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "Azle Language",
@@ -1224,7 +1308,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "Query Calls",
@@ -1250,7 +1336,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Community",
       "Demo"
@@ -1273,7 +1361,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Frontend",
       "Canister Development",
@@ -1298,7 +1388,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "ICP Architecture",
       "ICP",
@@ -1319,7 +1411,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Community",
       "Demo"
@@ -1342,7 +1436,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Storage",
       "Canister Development",
@@ -1369,7 +1465,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "ICP Architecture",
       "ICP",
@@ -1393,7 +1491,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Community",
       "Demo"
@@ -1417,7 +1517,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "ICP",
@@ -1447,7 +1549,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Smart Contract",
@@ -1472,7 +1576,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "ICP Architecture",
@@ -1497,7 +1603,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Smart Contract"
@@ -1518,7 +1626,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "ICP Overview"
@@ -1541,7 +1651,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Candid"
@@ -1564,7 +1676,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Smart Contract"
@@ -1587,7 +1701,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "State Management",
@@ -1613,7 +1729,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "ICP Architecture",
       "ICP",
@@ -1637,7 +1755,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Update Calls",
@@ -1661,7 +1781,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "dApp"
@@ -1684,7 +1806,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Frontend",
@@ -1713,7 +1837,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "ICP",
@@ -1737,7 +1863,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "ICP Architecture",
       "Chainkey",
@@ -1761,7 +1889,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Frontend",
       "Canister Development",
@@ -1786,7 +1916,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Security",
       "Execution",
@@ -1811,7 +1943,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Deploying Canister"
@@ -1834,7 +1968,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Storage",
       "Stable Memory",
@@ -1859,7 +1995,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Environment Setup",
       "Canisters",
@@ -1887,7 +2025,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Motoko Language",
@@ -1915,7 +2055,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Canisters",
@@ -1940,7 +2082,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "Motoko Language",
@@ -1973,7 +2117,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Bitcoin",
       "Storage",
@@ -2002,7 +2148,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Candid",
@@ -2026,7 +2174,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "DeFi",
       "Tokens",
@@ -2053,7 +2203,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "ICP Architecture",
       "ICP",
@@ -2077,7 +2229,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Canisters",
@@ -2101,7 +2255,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "ICP Overview"
@@ -2125,7 +2281,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Motoko Language"
@@ -2148,7 +2306,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Smart Contract"
@@ -2171,7 +2331,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "HTTPS Outcalls",
       "Canister Development",
@@ -2197,7 +2359,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Security",
       "Canister Development",
@@ -2220,7 +2384,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Bitcoin",
       "Bitcoin Integration",
@@ -2244,7 +2410,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Smart Contract"
@@ -2268,7 +2436,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Motoko Language"
@@ -2291,7 +2461,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "DAO",
       "SNS"
@@ -2315,7 +2487,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Environment Setup",
       "Azle Language",
@@ -2344,7 +2518,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Identity & Authentication",
       "Internet Identity",
@@ -2369,7 +2545,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Security",
       "Canister Development",
@@ -2396,7 +2574,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "ICP Architecture",
       "ICP",
@@ -2420,7 +2600,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Identity & Authentication",
       "ICP",
@@ -2445,7 +2627,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Ethereum",
       "Canister Development",
@@ -2475,7 +2659,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Azle Language",
@@ -2499,7 +2685,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Deploying Canister"
@@ -2522,7 +2710,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "ICP Architecture",
       "ICP",
@@ -2546,7 +2736,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Storage",
       "Canister Development",
@@ -2573,7 +2765,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Query Calls",
@@ -2597,7 +2791,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "Motoko Language",
@@ -2628,7 +2824,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "ICP Overview"
@@ -2651,7 +2849,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Canisters",
@@ -2677,7 +2877,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Security",
       "Execution",
@@ -2702,7 +2904,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Candid"
@@ -2725,7 +2929,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Canisters",
@@ -2749,7 +2955,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Inter Canister Calls",
@@ -2773,7 +2981,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "NFT",
       "Canister Development",
@@ -2799,7 +3009,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "ICP Architecture",
       "ICP",
@@ -2823,7 +3035,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Rust",
@@ -2849,7 +3063,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "ICP Overview"
@@ -2872,7 +3088,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Motoko Language",
@@ -2896,7 +3114,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Environment Setup",
       "ICP",
@@ -2922,7 +3142,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "DeFi",
       "Tokens",
@@ -2948,7 +3170,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "ICP Architecture",
       "Consensus",
@@ -2972,7 +3196,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Tokenomics",
       "Tokenomics"
@@ -2995,7 +3221,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "DeFi",
       "Tokens",
@@ -3022,7 +3250,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Environment Setup",
       "dfx",
@@ -3046,7 +3276,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Bitcoin",
       "ckBTC",
@@ -3070,7 +3302,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Security",
       "ICP",
@@ -3091,7 +3325,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "Canister Development",
@@ -3137,7 +3373,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "ICP",
@@ -3161,7 +3399,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Bitcoin",
       "ckBTC",
@@ -3185,7 +3425,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "ICP Architecture",
       "ICP",
@@ -3209,7 +3451,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Azle Language",
@@ -3232,7 +3476,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "ICP Architecture",
       "Overview",
@@ -3259,7 +3505,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "Canister Development",
@@ -3287,7 +3535,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Canister Development",
       "Smart Contract"
@@ -3310,7 +3560,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Security",
       "ICP",
@@ -3334,7 +3586,9 @@
     "contentType": [
       "video"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "DAO",
       "ICP Overview",
@@ -3355,7 +3609,9 @@
     "contentType": [
       "text"
     ],
-    "contentLanguage": "english",
+    "contentLanguages": [
+      "english"
+    ],
     "fullTags": [
       "Overview",
       "ICP Overview"

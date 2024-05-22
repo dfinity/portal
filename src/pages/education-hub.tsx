@@ -6,6 +6,7 @@ import Card from "@site/src/components/EducationHubPage/Card";
 import FilterBar from "@site/src/components/EducationHubPage/FilterBar";
 import PlusIcon from "@site/static/img/svgIcons/plus.svg";
 import {
+  ContentLanguage,
   CourseContentType,
   CourseItem,
   courseItems,
@@ -39,6 +40,7 @@ const MotionLink = motion(Link);
 function filterCourses(
   courses: CourseItem[],
   selectedLanguages: CourseLanguage[],
+  selectedContentLanguages: ContentLanguage[],
   selectedLevels: CourseLevel[],
   selectedContentTypes: CourseContentType[],
   searchTerm: string
@@ -46,6 +48,11 @@ function filterCourses(
   if (selectedLanguages.length > 0) {
     courses = courses.filter(({ languages }) =>
       languages?.some((item) => selectedLanguages.includes(item))
+    );
+  }
+  if (selectedContentLanguages.length > 0) {
+    courses = courses.filter(({ contentLanguages }) =>
+      contentLanguages?.some((item) => selectedContentLanguages.includes(item))
     );
   }
   if (selectedLevels.length > 0) {
@@ -58,7 +65,6 @@ function filterCourses(
       contentType?.some((item) => selectedContentTypes.includes(item))
     );
   }
-
   if (searchTerm.trim() !== "") {
     const term = searchTerm.trim().toLowerCase();
     courses = courses.filter(
@@ -80,6 +86,12 @@ function EducationHubPage() {
     });
   const [selectedLanguages, setSelectedLanguages] = useQueryParam<
     CourseLanguage[]
+  >("selectedLanguages", [], {
+    serialize: serializeStringList,
+    deserialize: deserializeStringList,
+  });
+  const [selectedContentLanguages, setSelectedContentLanguages] = useQueryParam<
+    ContentLanguage[]
   >("selectedLanguages", [], {
     serialize: serializeStringList,
     deserialize: deserializeStringList,
@@ -106,6 +118,7 @@ function EducationHubPage() {
     if (
       queryParamInitialized &&
       (selectedLanguages.length > 0 ||
+        selectedContentLanguages.length > 0 ||
         selectedLevels.length > 0 ||
         selectedContentTypes.length > 0 ||
         searchTerm.length > 0)
@@ -137,13 +150,20 @@ function EducationHubPage() {
     let tempFilteredCourses = filterCourses(
       courseItems,
       selectedLanguages,
+      selectedContentLanguages,
       selectedLevels,
       selectedContentTypes,
       searchTerm
     );
     sortCourses(tempFilteredCourses);
     setFilteredCourses(tempFilteredCourses);
-  }, [selectedLanguages, selectedLevels, selectedContentTypes, searchTerm]);
+  }, [
+    selectedLanguages,
+    selectedContentLanguages,
+    selectedLevels,
+    selectedContentTypes,
+    searchTerm,
+  ]);
 
   return (
     <Layout title="Education Hub" description="Education page.">
@@ -209,6 +229,8 @@ function EducationHubPage() {
                   numberOfItems={filteredCourses.length}
                   selectedLanguages={selectedLanguages}
                   setSelectedLanguages={setSelectedLanguages}
+                  selectedContentLanguages={selectedContentLanguages}
+                  setSelectedContentLanguages={setSelectedContentLanguages}
                   selectedLevels={selectedLevels}
                   setSelectedLevels={setSelectedLevels}
                   selectedContentTypes={selectedContentTypes}

@@ -212,7 +212,9 @@ const airtablePlugin = async function () {
             contentType: fields["Media type"]?.map((content) =>
               content?.toLowerCase()
             ),
-            contentLanguage: fields["Content Language"]?.toLowerCase(),
+            contentLanguages: fields["Content Language"]
+              ? [fields["Content Language"].toLowerCase()]
+              : [],
             fullTags: fields["Web tag"].concat(fields["Index Tag"] || []),
             tags: fields["Web tag"] || [],
             link: fields["URL"] || "#",

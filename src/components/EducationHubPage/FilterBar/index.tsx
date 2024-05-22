@@ -11,6 +11,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { CourseContentType } from "../../Common/courseItems";
 
 const languageOptions = ["Motoko", "Rust", "TypeScript", "None"];
+const contentLanguageOptions = ["English", "Spanish", "Turkish"];
 const levelOptions = ["Beginner", "Intermediate", "Expert"];
 const contentTypeOptions: CourseContentType[] = ["text", "video"];
 const sortByOptions = ["Relevance", "A to Z", "Z to A"];
@@ -19,6 +20,8 @@ function Index({
   numberOfItems,
   selectedLanguages,
   setSelectedLanguages,
+  selectedContentLanguages,
+  setSelectedContentLanguages,
   selectedLevels,
   setSelectedLevels,
   selectedContentTypes,
@@ -39,11 +42,24 @@ function Index({
 
   const clearFilters = () => {
     setSelectedLanguages([]);
+    setSelectedContentLanguages([]);
     setSelectedLevels([]);
     setSelectedContentTypes([]);
     setSelectedSortBy("Relevance");
     setCurrentSelection(null);
     setSearchTerm("");
+  };
+  const updateSelectedContentLanguages = (contentLanguage) => {
+    if (selectedContentLanguages.includes(contentLanguage)) {
+      setSelectedContentLanguages(
+        selectedContentLanguages.filter((item) => item !== contentLanguage)
+      );
+    } else {
+      setSelectedContentLanguages([
+        ...selectedContentLanguages,
+        contentLanguage,
+      ]);
+    }
   };
   const updateSelectedLanguages = (language) => {
     if (selectedLanguages.includes(language)) {
@@ -98,6 +114,7 @@ function Index({
           <h3 className={styles.title}>Courses</h3>
           <span className={styles.numberOfItems}>{numberOfItems}</span>
           {(selectedLanguages.length > 0 ||
+            selectedContentLanguages.length > 0 ||
             selectedLevels.length > 0 ||
             selectedContentTypes.length > 0 ||
             searchTerm.length > 0) && (
@@ -230,6 +247,53 @@ function Index({
                         }
                       />
                       {contentType}
+                    </label>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+          <div className={styles.selectBoxContainer}>
+            <button
+              className={styles.selectBox}
+              style={{
+                color:
+                  selectedContentLanguages.length > 0 ? "#3B00B9" : "black",
+              }}
+              onClick={() => updateCurrentSelection("contentLanguage")}
+            >
+              <p className={styles.selectTitle}>Content Language</p>
+              <div className={styles.selectionArrow}>
+                {currentSelection === "contentLanguage" ? (
+                  <ArrowUp />
+                ) : (
+                  <ArrowDown />
+                )}
+              </div>
+            </button>
+            {currentSelection === "contentLanguage" && (
+              <div className={styles.selectOptionsContainer}>
+                <div className={styles.selectOptions}>
+                  {contentLanguageOptions.map((contentLanguage) => (
+                    <label
+                      key={contentLanguage}
+                      className={styles.selectOption}
+                    >
+                      <input
+                        type="checkbox"
+                        className={styles.checkbox}
+                        key={contentLanguage}
+                        value={contentLanguage}
+                        checked={selectedContentLanguages.includes(
+                          contentLanguage.toLowerCase()
+                        )}
+                        onChange={(e) =>
+                          updateSelectedContentLanguages(
+                            e.target.value.toLowerCase()
+                          )
+                        }
+                      />
+                      {contentLanguage}
                     </label>
                   ))}
                 </div>

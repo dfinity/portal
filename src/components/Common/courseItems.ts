@@ -6,7 +6,7 @@ export type CourseItem = {
   level: string | string[];
   body?: string;
   languages?: CourseLanguage[];
-  contentLanguage?: string;
+  contentLanguages?: ContentLanguage[];
   contentType?: CourseContentType[];
   link?: string;
   fullTags?: string[];
@@ -20,7 +20,7 @@ export type CourseLanguage =
   | "typescript"
   | "other";
 
-export type CourseContentLanguage = "english" | "spanish" | "turkish";
+export type ContentLanguage = "english" | "spanish" | "turkish";
 
 export type CourseLevel = "beginner" | "intermediate" | "expert";
 
