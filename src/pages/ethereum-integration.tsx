@@ -254,11 +254,22 @@ function EthereumIntegrationPage() {
                     and other EVM chains. ICP smart contracts can read from and
                     write to EVM chains using a decentralized approach as well
                     as sign transactions in a trustless manner using threshold
-                    ECDSA signing. This allows ICP smart contracts to augment
-                    EVM-based smart contracts with additional functionality
-                    through ICP's superpowers, transfer tokens on other chains,
-                    and call smart contracts on EVM chains.
+                    ECDSA signing.
                   </motion.p>
+                  <motion.ul
+                    className="mb-0 mt-4 md:mt-6 tw-paragraph md:tw-lead-sm text-bold text-black"
+                    variants={transitions.item}
+                  >
+                    <li className="mb-2">
+                      RPC canister for Ethereum & EVM integration
+                    </li>
+                    <li className="mb-2">
+                      Threshold ECDSA signing latency & throughput improvements
+                    </li>
+                    <li className="mb-2">
+                      Chain-key ERC20 (ckERC20) tokens & ckUSDC
+                    </li>
+                  </motion.ul>
                   <p className="mb-0 mt-8">
                     <Link
                       className="link-primary link-with-icon"
@@ -296,7 +307,7 @@ function EthereumIntegrationPage() {
               variants={transitions.item}
             >
               Ethereum is the world’s top blockchain for DeFi with TVL in the
-              billions. Integrating with ICP offers multi-chain benefits such as
+              billions. Integrating with ICP offers X-chain benefits such as
               increased asset liquidity, expanded market access, improved
               scalability and throughput. Plus, access to ICP’s unique
               capabilities:
@@ -362,9 +373,12 @@ function EthereumIntegrationPage() {
         </section>
 
         <section className="container-12 flex flex-col gap-16 md:gap-40 mt-30 md:mt-60">
-          <TranslatedLayout imageUrl="/img/ethereum-integration/image-1.webp">
-            <h2 className="md:tw-heading-60 md:mb-6">
-              Multi-chain DeFi with ckTokens
+          <TranslatedLayout
+            reverse={true}
+            imageUrl="/img/ethereum-integration/image-2.webp"
+          >
+            <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
+              Multichain DeFi with ckTokens
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-6">
               In May 2024, average transaction fees for USDC and USDT were $6.66
@@ -374,28 +388,12 @@ function EthereumIntegrationPage() {
               users to send and receive ETH value on ICP DEXs for a few cents,
               with 1-2s finality, and no gas fees.
             </p>
-            <p className="tw-lead-sm mb-6 md:mb-10">
+            <p className="tw-lead-sm mb-6 md:mb-6">
               ckETH and ckERC-20 expose ICRC-1 and 2 ledger interfaces (the
               token standards of ICP), making it simple for all ICP wallets to
               offer ckETH support. Total value of ckETH is fully backed 1:1 by
               ETH, and can always be verified by viewing the on-chain dashboard
-              and metrics of the canisters
-            </p>
-          </TranslatedLayout>
-          <TranslatedLayout
-            reverse={true}
-            imageUrl="/img/ethereum-integration/image-2.webp"
-          >
-            <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
-              Chain-key signatures
-            </h2>
-            <p className="tw-lead-sm mb-6 md:mb-6">
-              ICP nodes collaborate to produce threshold-ECDSA signatures,
-              enabling canister smart contracts to sign Ethereum transactions.
-              Leveraging the EVM RPC canister, Ethereum transactions can be
-              written to EVM chains. Chain-key signatures also derive Ethereum
-              addresses, enabling ICP smart contracts to read, write and own
-              ETH.
+              and metrics of the canisters.
             </p>
           </TranslatedLayout>
           <TranslatedLayout imageUrl="/img/ethereum-integration/image-3.webp">
@@ -403,13 +401,12 @@ function EthereumIntegrationPage() {
               EVM on the Internet Computer
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
-              An Ethereum Virtual Machine (EVM) is coming to the Internet
-              Computer built by Bitfinity — a team of developers from the ICP
-              community. Bitfinity is delivering a turn-key solution for
-              developers to operate their ETH dapps on the Internet Computer
-              using Solidity, which brings ICP’s 1-2s finality, and near 0
-              transaction fees to established Ethereum dapps, providing an
-              incredibly efficient Ethereum scaling solution.
+              The EVM RPC canister is an ICP smart contract for communicating
+              with Ethereum and other EVM blockchains using an on-chain API. It
+              introduces methods that massively simplify the developer
+              experience. The Tritium milestone allows communication with
+              Ethereum, Arbitrum, Optimism and Base. Interoperability can be
+              increased by simply adding other network API keys.
             </p>
             <p className="mb-0">
               <Link
@@ -426,6 +423,7 @@ function EthereumIntegrationPage() {
             reverse
           >
             <h2 className="md:tw-heading-60 md:mb-6">Ethereum integration</h2>
+            <p className="tw-lead-sm font-bold mt-1">EVM RPC</p>
             <p className="tw-lead-sm mb-6 md:mb-10">
               The EVM RPC canister is an ICP smart contract for communicating
               with Ethereum and other EVM blockchains using an on-chain API. It
@@ -434,14 +432,14 @@ function EthereumIntegrationPage() {
               Ethereum, Arbitrum, Optimism and Base. Interoperability can be
               increased by simply adding other network API keys.
             </p>
-
-            <p className="mb-0">
-              <Link
-                href="https://forum.dfinity.org/t/long-term-r-d-integration-with-the-ethereum-network/9382"
-                className="link-primary link-with-icon"
-              >
-                Join the community discussion <LinkArrowUpRight />
-              </Link>
+            <p className="tw-lead-sm font-bold mt-3">Chain-key signatures</p>
+            <p className="tw-lead-sm mb-6 md:mb-10">
+              ICP nodes collaborate to produce threshold-ECDSA signatures,
+              enabling canister smart contracts to sign Ethereum transactions.
+              Leveraging the EVM RPC canister, Ethereum transactions can be
+              written to EVM chains. Chain-key signatures also derive Ethereum
+              addresses, enabling ICP smart contracts to read, write and own
+              ETH.
             </p>
           </TranslatedLayout>
         </section>
@@ -523,7 +521,7 @@ function EthereumIntegrationPage() {
         <section className="container-12 mt-24 md:mt-40">
           <AnimateSpawn
             variants={transitions.container}
-            className="text-left md:text-center mb-10 sm:mb-16 md:w-6/10 sm:mx-auto"
+            className="text-left md:text-center mb-10 sm:mb-16 md:w-5/10 sm:mx-auto"
           >
             <motion.h2
               className="tw-heading-3 sm:tw-heading-60 mb-6 sm:mb-10 text-gradient"
