@@ -6,7 +6,7 @@
       {
         "name": "Reduced End-to-end Latency",
         "description": "This milestone marks a significant reduction of user-perceived end-to-end latency for processing ingress messages. It is achieved by multiple concerted measures at different levels of the protocol stack and brings the user experience of Web3 closer to Web2.",
-        "milestone_id": "Iridium",
+        "milestone_id": "Tokamak",
         "eta": null,
         "status": "in_progress",
         "elements": [
@@ -22,7 +22,7 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Iridium"
+            "milestone_id": "Tokamak"
           },
           {
             "title": "Synchronous message submission endpoint",
@@ -36,11 +36,11 @@
             "status": "in_progress",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Iridium"
+            "milestone_id": "Tokamak"
           },
           {
             "title": "Latency-aware ingress routing",
-            "overview": "Boundary nodes route ingress messages to nodes with lower network distance in terms of lantecy instead of a random node.",
+            "overview": "Boundary nodes route ingress messages to subnet nodes with lower network distance in terms of latency instead of random nodes.",
             "description": "Currently, Boundary Nodes route messages to random nodes of the target subnet of the message. Selecting the destination node of the message based on its \"distance\" in terms of network latency can help significantly reduce the user-perceived latency.",
             "forum": "",
             "proposal": "",
@@ -50,14 +50,14 @@
             "status": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Iridium"
+            "milestone_id": "Tokamak"
           }
         ]
       },
       {
         "name": "Increased Storage Capacity and Throughput",
         "description": "Increased storage capacity of ICP subnets, storage per canister smart contract, and message throughput between subnets. Those improvements lead to each subnet being able to host larger workloads and better utilization of ICP’s hardware resources. The world's largest smart contracts can now grow even larger, far surpassing smart contracts on any other chain.",
-        "milestone_id": "Niobium",
+        "milestone_id": "Stellarator",
         "eta": null,
         "status": "in_progress",
         "elements": [
@@ -73,11 +73,11 @@
             "status": "in_progress",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Niobium"
+            "milestone_id": "Stellarator"
           },
           {
             "title": "Log-structured merge tree (LSMT) storage layer",
-            "overview": "Rewrite the storage layer to rely on log-structured merge trees (LSMTs) instead of XFS reflinking. This will give more fine-grained control over what happens during checkpointing and thus enable further more targeted performance improvements.",
+            "overview": "Rewrite the storage layer to rely on log-structured merge trees (LSMTs) instead of XFS reflinking. This will give more fine-grained control over what happens during checkpointing and thus enable further, more targeted, performance improvements.",
             "description": "The state manager currently relies on XFS reflinks to achieve copy-on-write-like functionality upon writing checkpoints. While this is conceptually nice it delegates some tasks with high optimization potential to the file system. The goal of this feature is to implement an LSMT-based storage layer which will enable optimizations further down the road. We also expect some immediate positive performance impact, such as improved checkpointing times, from this feature.",
             "forum": "",
             "proposal": "",
@@ -87,7 +87,7 @@
             "status": "in_progress",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Niobium"
+            "milestone_id": "Stellarator"
           },
           {
             "title": "Support 1TB of replicated storage",
@@ -101,22 +101,22 @@
             "status": "in_progress",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Niobium",
+            "milestone_id": "Stellarator",
             "imported": true
           },
           {
             "title": "Improved consensus throughput and latency",
-            "overview": "Support of larger ingress messages than 2 MB and increased ingress bandwidth of subnets.",
+            "overview": "Improved consensus throughput and latency by better, and less bursty, node bandwidth use. Achieved through not including full messages, but only their hashes and other metadata, in blocks.",
             "description": "The goal of this feature is to better use the bandwidth of nodes by not including full messages, but only their hashes in blocks. This leads to a less bursty bandwidth usage of nodes compared to sending full blocks when being a block maker. The result of this is increased consensus throughput.",
             "forum": "",
             "proposal": "",
             "wiki": "",
             "docs": "",
             "eta": "",
-            "status": "future",
+            "status": "in_progress",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Niobium"
+            "milestone_id": "Stellarator"
           }
         ]
       },
@@ -438,6 +438,20 @@
         "eta": "none",
         "elements": [
           {
+            "title": "Configurable Wasm memory limit",
+            "overview": "Introduce an explicitly configurable Wasm heap limit. Exceeding the limit alerts the developer instead of bricking the canister when hitting the 4GiB limit.",
+            "description": "The Wasm heap of canisters is limited to 4GiB. The limit is fundamental and cannot be increased because of 32-bit memory addresses. If a canister uses all of the available heap space, it will start producing out-of-memory errors and may stop working, which could lead to data loss and bricking of the canister. The developer may not realize this until it is too late to fix the issue. This feature aims to introduce an explicit Wasm heap limit that can be configured in the canister settings. The default value for this limit will be a conservative amount, such as 3GiB. If a canister tries to use more memory than the limit, it will receive an out-of-memory error. This will alert the developer to the potential memory issue and allow them to safely upgrade the canister to a version that uses less memory.",
+            "forum": "https://forum.dfinity.org/t/proposal-configurable-wasm-heap-limit/17794",
+            "proposal": "https://dashboard.internetcomputer.org/proposal/105322",
+            "wiki": "",
+            "docs": "",
+            "eta": "2024",
+            "status": "in_progress",
+            "is_community": true,
+            "in_beta": false,
+            "imported": true
+          },
+          {
             "title": "Best-effort messaging",
             "overview": "Extend canister messaging by an additional message type that enables more scalable and responsive dApps.",
             "description": "The current model of guaranteed responses for inter-canister messages based on an extension of the actor model has a few issues that lead to bad user experience. This is the first iteration towards implementing the broader strategy (as described in the motion proposal linked below).",
@@ -562,20 +576,6 @@
             "imported": true
           },
           {
-            "title": "Configurable Wasm memory limit",
-            "overview": "Introduce an explicitly configurable Wasm heap limit. Exceeding the limit alerts the developer instead of bricking the canister when hitting the 4GiB limit.",
-            "description": "The Wasm heap of canisters is limited to 4GiB. The limit is fundamental and cannot be increased because of 32-bit memory addresses. If a canister uses all of the available heap space, it will start producing out-of-memory errors and may stop working, which could lead to data loss and bricking of the canister. The developer may not realize this until it is too late to fix the issue. This feature aims to introduce an explicit Wasm heap limit that can be configured in the canister settings. The default value for this limit will be a conservative amount, such as 3GiB. If a canister tries to use more memory than the limit, it will receive an out-of-memory error. This will alert the developer to the potential memory issue and allow them to safely upgrade the canister to a version that uses less memory.",
-            "forum": "https://forum.dfinity.org/t/proposal-configurable-wasm-heap-limit/17794",
-            "proposal": "https://dashboard.internetcomputer.org/proposal/105322",
-            "wiki": "",
-            "docs": "",
-            "eta": "2024",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false,
-            "imported": true
-          },
-          {
             "title": "Canister control audit trail",
             "overview": "Seamless audit trail of management actions on canisters (creation, update, deletion). Allows to trace the sequence of installed canister versions to source code through a Wasm hash.",
             "description": "The current canister management architecture does not create a seamless audit trail of every change to a canister, such as creation and updates, by its controllers. This implies that there is no seamless audit trail of the code that has run on canisters. This feature addresses this issue by auditing every controller action performed on a canister and storing the associated metadata permanently in the subnet. I.e., all Wasm hashes of the canister's history are logged with timestamps and further metadata in a seamless audit trail. Using this feature and deterministic builds for canisters allows anyone to verify which code has been running at a given time in the canister.",
@@ -586,19 +586,6 @@
             "eta": "",
             "status": "in_progress",
             "is_community": false,
-            "in_beta": false
-          },
-          {
-            "title": "Canister Logging MVP",
-            "overview": "Allow canisters to log messages during replicated message execution. The logs should be retrievable even when execution traps.",
-            "description": "Canister developers have very limited tools at their disposal to debug and fix errors. There's the ability to log some messages via ic0.debug_print, but these are not available to developers in the production IC and it only works if the canister does not trap. This severely limits the usability of this system call. This feature aims to provide some of the missing gaps around canister logging. Initially, only replicated message executions would be supported but canister developers will be able to log errors even when their canister traps and will get access to them via dfx.",
-            "status": "in_progress",
-            "forum": "https://forum.dfinity.org/t/canister-logging/21300",
-            "proposal": "",
-            "eta": "2024",
-            "wiki": "",
-            "docs": "",
-            "is_community": true,
             "in_beta": false
           },
           {
@@ -969,7 +956,7 @@
           {
             "title": "Inter-subnet messaging across trust zones",
             "overview": "Sovereign subnets are typically more centralized than ICP mainnet. Thus, messaging between subnets needs to consider the trust zones the subnets are in to maintain overall security.",
-            "description": "With sovereign subnets that are under the control of one entity or a consortium, the canister origin, or, in case of multiple subnets operated by the entity or consortium, even the subnet origin of messages cannot be entirely trusted, i.e., could have been tampered with by the operator of the sovereign subnet(s). This difference in the trust model when compared to regular subnets needs to be taken into consideration for inter-subnet messaging. A potential approach to solving this can be <em>trust zones</em> — sets of subnets where all networks trust each other and can freely communicate with each other. Communication between different trust zones (and mainnet, which can also be considered another trust zone) may be subject to constraints.",
+            "description": "With sovereign subnets that are under the control of one entity or a consortium, the canister origin, or, in case of multiple subnets operated by the entity or consortium, even the subnet origin of messages cannot be entirely trusted, i.e., could have been tampered with by the operator of the sovereign subnet(s). This difference in the trust model when compared to regular subnets needs to be taken into consideration for inter-subnet messaging. A potential approach to solving this can be trust zones — sets of subnets where all networks trust each other and can freely communicate with each other. Communication between different trust zones (and mainnet, which can also be considered another trust zone) may be subject to constraints.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -1003,7 +990,7 @@
       {
         "name": "Onchain AI Inference",
         "description": "Allow smart contracts to run inference using AI models with millions of parameters fully on chain. The focus of this milestone is performance. There are performance optimizations that can be implemented both in the WebAssembly engine and the AI inference engine. The expected speedup is 10x and more.",
-        "milestone_id": "Platinum",
+        "milestone_id": "Cyclotron",
         "eta": null,
         "status": "in_progress",
         "elements": [
@@ -1011,47 +998,47 @@
             "title": "Faster deterministic floating-point operations",
             "overview": "Accelerating deterministic floating point computations in the Wasm engine.",
             "description": "Floating point operations are crucial for AI inference. In order to run on chain inside a smart contract, these operations need to be deterministic. The goal of this feature is to optimize the part of the Wasm engine that makes these operations deterministic.",
-            "status": "",
+            "status": "in_progress",
             "forum": "",
             "proposal": "",
             "wiki": "",
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Platinum"
+            "milestone_id": "Cyclotron"
           },
           {
             "title": "Wasm SIMD instructions",
             "overview": "Deterministic SIMD (Single Instruction, Multiple Data) support in the Wasm execution engine for better performance of AI inference.",
             "description": "SIMD stands for Single Instruction, Multiple Data. It is a set of CPU instructions that allow executing multiple operations with a single instruction. The arithmetic operations used in AI can be expressed as SIMD instructions. This feature introduces deterministic SIMD support in the Wasm execution engine, leading to an expected multiple-times performance improvement of AI operations.",
-            "status": "",
+            "status": "in_progress",
             "forum": "",
             "proposal": "",
             "wiki": "",
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Platinum"
+            "milestone_id": "Cyclotron"
           },
           {
             "title": "Optimizing AI inference engine",
             "overview": "This feature brings SIMD support to the open source inference engine used on ICP to leverage the upcoming support of SIMD operations in Wasm.",
             "description": "This feature brings SIMD support to the open source inference engine used on ICP to leverage the upcoming support of SIMD operations in Wasm.",
-            "status": "",
+            "status": "in_progress",
             "forum": "",
             "proposal": "",
             "wiki": "",
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Platinum"
+            "milestone_id": "Cyclotron"
           }
         ]
       },
       {
         "name": "Onchain AI Inference and Training of Large Models",
         "description": "In order to perform AI inference and training of large models on chain, smart contracts need a way to run compute- and memory-intensive computations on hardware such as GPUs. The main challenge of this milestone is to define a deterministic API for smart contracts to access and call GPUs. Additionally, AI-specialized subnets with GPU-enabled nodes need to be added to ICP.",
-        "milestone_id": "Palladium",
+        "milestone_id": "Gyrotron",
         "eta": null,
         "status": "future",
         "elements": [
@@ -1060,7 +1047,7 @@
             "overview": "API for smart contracts that allows them to run deterministic AI computations on GPUs. Requirement for GPU-based AI on chain.",
             "description": "All computations running on chain need to be deterministic because they are replicated on multiple nodes and go through consensus. This requirement also applies to AI computations performed on GPUs. The goal of this feature is to design and implement an API that smart contracts can use to run deterministic AI computations on GPUs.",
             "status": "",
-            "milestone_id": "Palladium",
+            "milestone_id": "Gyrotron",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -1073,7 +1060,7 @@
             "overview": "Providing developer tooling and libraries for building AI smart contracts on ICP, reusing existing AI ecosystem tools wherever possible.",
             "description": "Developers need tooling and libraries to implement AI smart contracts. Ideally, the existing AI ecosystem is reused as much as possible, but specialized tools and libraries might be needed for developing on-chain AI applications.",
             "status": "",
-            "milestone_id": "Palladium",
+            "milestone_id": "Gyrotron",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -1086,7 +1073,7 @@
             "overview": "The ICP community needs to agree and adopt the hardware specification for replica nodes with GPUs.",
             "description": "The ICP community needs to agree and adopt the hardware specification for replica nodes with GPUs.",
             "status": "",
-            "milestone_id": "Palladium",
+            "milestone_id": "Gyrotron",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -1099,29 +1086,14 @@
             "overview": "AI-specialized subnets are created from nodes with GPUs and host AI smart contracts for training and inference of large models.",
             "description": "AI-specialized subnets are created from nodes with GPUs and host AI smart contracts for training and inference of large models.",
             "status": "",
-            "milestone_id": "Palladium",
+            "milestone_id": "Gyrotron",
             "forum": "",
             "proposal": "",
             "wiki": "",
             "docs": "",
             "is_community": false,
             "in_beta": false
-          }
-        ]
-      },
-      {
-        "name": "orphans_past",
-        "description": "Orphans from the past",
-        "milestone_id": "Past features",
-        "eta": "none",
-        "elements": []
-      },
-      {
-        "name": "orphans_future",
-        "description": "Orphans from the future",
-        "milestone_id": "Future features",
-        "eta": "none",
-        "elements": [
+          },
           {
             "title": "Wasm64 execution environment",
             "overview": "The execution environment is lifted to Wasm64 with the benefit of a 64-bit address space and its much larger addressable memory.",
@@ -1133,13 +1105,43 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": ""
-          },
+            "milestone_id": "Gyrotron"
+          }
+        ]
+      },
+      {
+        "name": "orphans_past",
+        "description": "Orphans from the past",
+        "milestone_id": "Past features",
+        "eta": "none",
+        "elements": [
           {
-            "title": "Shared canister memory through memory mapping",
-            "overview": "Memory mapping allows canisters to share large common memory areas, e.g., an AI model.",
-            "description": "Memory mapping allows canisters to share large common memory areas, e.g., an AI model.",
-            "status": "",
+            "title": "Increase the message instruction limit to 40 billion instructions",
+            "overview": "Increasing the message limit from 20 to 40 billion instructions to facilitate longer-running computations, which is crucial for AI inference.",
+            "description": "Previously, the instruction limit was 20 billion instructions. This feature doubles the instruction limit for update message in order to allow them to run longer computations. This is made possible by the deterministic time slicing. Future work will increase this limit more and also increase the limit for queries.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "deployed",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": ""
+          }
+        ]
+      },
+      {
+        "name": "orphans_future",
+        "description": "Orphans from the future",
+        "milestone_id": "Future features",
+        "eta": "none",
+        "elements": [
+          {
+            "title": "Increase the instruction limit in queries from 5 billion instructions to 40 billion instructions.",
+            "overview": "The goal of this feature is to bring the instruction limit of queries on par with that of update calls by introducing a way for canisters to opt in into query charging.",
+            "description": "Currently, queries have a lower instruction limit compared to the update calls because canisters do not pay for query execution. The goal of this feature is to bring the instruction limit of queries on par with that of update calls by introducing a way for canisters to opt in into query charging.",
+            "status": "future",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -1158,13 +1160,13 @@
       {
         "name": "Chain Fusion Supports EVM Chains",
         "description": "ICP’s Chain Fusion technology has full support for Ethereum and other EVM chains. ICP smart contracts can read from and write to EVM chains using a decentralized approach as well as sign transactions in a trustless manner using threshold ECDSA signing. This allows ICP smart contracts to augment EVM-based smart contracts with additional functionality through ICP's superpowers, transfer tokens on other chains, and call smart contracts on EVM chains.",
-        "milestone_id": "Dilithium",
+        "milestone_id": "Tritium",
         "eta": "May 23, 2024",
         "status": "in_progress",
         "elements": [
           {
             "title": "RPC canister for Ethereum & EVM integration",
-            "overview": "Integration of ICP with EVM blockchains via a canister that accesses JSON RPC providers. Works for Ethereum and other EVM chains with RPC providers.",
+            "overview": "Integration of ICP with EVM blockchains via a canister that accesses JSON RPC providers through HTTPS outcalls. Works for Ethereum and other EVM chains with RPC providers.",
             "description": "This feature is about an RPC-based integration of the Internet Computer with EVM chains, initially targeting the Ethereum network, then also Ethereum L2s and other chains with Ethereum RPC providers. The integration builds a canister smart contract offering a subset of the EVM RPC API on chain, while itself connecting to multiple RPC providers and communicating with them. For security-critical queries multiple RPC providers can be queried and their responses must match unanimously in order to be considered a valid response to the caller of the canister API. This reduces trust in any single entity, thereby making the approach more decentralized.",
             "status": "in_progress",
             "forum": "",
@@ -1174,11 +1176,11 @@
             "eta": "",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "Dilithium"
+            "milestone_id": "Tritium"
           },
           {
             "title": "Threshold ECDSA signing latency & throughput improvements",
-            "overview": "Reducing the latency of threshold ECDSA signing operations by reducing the number of required consensus rounds through protocol improvements.",
+            "overview": "Reducing the latency of threshold ECDSA signing operations by reducing the number of required consensus rounds through protocol improvements. Also results in a throughput improvement.",
             "description": "The ICP's initial implementation of threshold ECDSA, also referred to as chain-key ECDSA, requires seven consensus rounds to compute a signature while consuming an available precomputed value (pre-signature). The protocol can be adapted to require fewer rounds for computing a signature, thus noticeably reducing signing latency. Also, the throughput for threshold signing is expected to increase as a byproduct of the optimizations performed. The optimizations will benefit all applications using chain-key ECDSA.",
             "status": "in_progress",
             "forum": "",
@@ -1188,7 +1190,7 @@
             "eta": "",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "Dilithium"
+            "milestone_id": "Tritium"
           },
           {
             "title": "Chain-key ERC20 (ckERC20) tokens & ckUSDC",
@@ -1202,17 +1204,17 @@
             "status": "in_progress",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "Dilithium",
+            "milestone_id": "Tritium",
             "imported": true
           }
         ]
       },
       {
         "name": "Chain Fusion Supports Bitcoin Protocols",
-        "description": "ICP’s Chain Fusion technology has full support for Bitcoin protocols such as BRC20 and Runes. So far, ICPs fully-on-chain capabilities have been largely applied  to use cases where Bitcoin is used as a means of value transfer, its original purpose. This milestone provides additional functionality that enables smart contracts to index and issue prominent types of Bitcoin inscriptions in a completely decentralized manner for the first time, thereby putting ICP into a unique position among all chains.",
-        "milestone_id": "Bismuth",
+        "description": "ICP’s Chain Fusion technology has full support for Bitcoin protocols such as BRC20 and Runes. So far, ICP’s fully-on-chain capabilities have been largely applied to use cases where Bitcoin is used as a means of value transfer, its original purpose. This milestone provides additional functionality that enables smart contracts to index and issue prominent types of Bitcoin inscriptions in a completely decentralized manner for the first time, thereby putting ICP into a unique position among all chains.",
+        "milestone_id": "Deuterium",
         "eta": "July 25, 2024",
-        "status": "future",
+        "status": "in_progress",
         "elements": [
           {
             "title": "Threshold Schnorr signing",
@@ -1226,7 +1228,7 @@
             "docs": "",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "Bismuth"
+            "milestone_id": "Deuterium"
           },
           {
             "title": "On-chain Bitcoin block headers",
@@ -1240,22 +1242,22 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Bismuth"
+            "milestone_id": "Deuterium"
           }
         ]
       },
       {
         "name": "Chain Fusion Supports Solana",
         "description": "This milestone enables Chain Fusion for the Solana network, bringing Solana and ICP closer together, combining the powers of the two networks. Dapps leveraging the capabilities of both networks look and feel like single-network dapps.",
-        "milestone_id": "Holmium",
+        "milestone_id": "Helium",
         "eta": null,
         "status": "future",
         "elements": [
           {
             "title": "Threshold EdDSA signing",
-            "overview": "Threshold EdDSA support using cryptographic multiparty computation (MPC). Enables trustless integrations with all chains using EdDSA on the Ed25519 curve, like Solana or Cardano.",
+            "overview": "Threshold EdDSA support using cryptographic multiparty computation (MPC). Enables trustless integrations with all chains using EdDSA on the Ed25519 curve like Solana or Cardano.",
             "description": "ICP already has a suite of threshold signing protocols for realizing threshold ECDSA signatures. Important use cases, however, require EdDSA threshold signatures. An example for the EdDSA requirement is the direct integration with blockchains using EdDSA to sign transactions, such as Cardano or Solana. Schnorr and EdDSA are very similar because EdDSA is based on a variant of Schnorr using a specific family of elliptic curves, thus they can share the same high-level protocol.",
-            "status": "in_progress",
+            "status": "future",
             "eta": "2024",
             "forum": "",
             "proposal": "",
@@ -1263,7 +1265,7 @@
             "docs": "",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "Holmium"
+            "milestone_id": "Helium"
           },
           {
             "title": "Solana RPC canister",
@@ -1277,7 +1279,7 @@
             "status": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Holmium"
+            "milestone_id": "Helium"
           }
         ]
       },
@@ -1380,7 +1382,7 @@
         "elements": [
           {
             "title": "EVM in a canister",
-            "overview": "An EVM implemented as set of canisters on ICP with trustless integration with the Bitcoin network.",
+            "overview": "An low-fee, high-performance EVM implemented as set of canisters on ICP with trustless integration with the Bitcoin network.",
             "description": "The Bitfinity EVM is implemented as a set of canister smart contracts deployed on ICP. Bitfinity offers lower fees, lower latency, and higher throughput than Ethereum. Thanks to chain-key cryptography, the EVM is tightly integrated with the Bitcoin network in a trustless manner.",
             "status": "in_progress",
             "forum": "",
@@ -1388,6 +1390,19 @@
             "wiki": "",
             "docs": "",
             "eta": "",
+            "is_community": true,
+            "in_beta": false
+          },
+          {
+            "title": "Threshold ECDSA — Throughput improvements",
+            "overview": "Improving throughput of chain-key ECDSA via multiple protocol improvements such as batching, parallel processing of crypto operations, and cryptographic protocol improvements.",
+            "description": "This feature addresses optimizations of the chain-key ECDSA (i.e., threshold ECDSA) implementation of ICP to improve throughput. Possible approaches used to reach those goals are to introduce batching techniques to process batches of cryptographic operations, thereby improving performance, or to further parallelize cryptographic operations.",
+            "status": "in_progress",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "future",
             "is_community": true,
             "in_beta": false
           },
@@ -1463,19 +1478,6 @@
             "overview": "Ethereum block explorer running fully on chain on ICP. Adding a missing piece of decentralized infrastructure to the Ethereum ecosystem.",
             "description": "ICP has the mantra of having 100% on-chain dapp experiences. One such 100% on-chain dapp that is intended to be hosted following this paradigm is an Ethereum block explorer. This would close the gap for Ethereum of block explorers being Web2 applications and would help bring Ethereum closer to a fully on-chain decentralized ecosystem, including its core components that are currently hosted off chain.",
             "status": "future",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "future",
-            "is_community": true,
-            "in_beta": false
-          },
-          {
-            "title": "Chain-key ECDSA - Throughput improvements",
-            "overview": "Improving throughput of chain-key ECDSA via multiple protocol improvements such as batching and parallel processing of crypto operations.",
-            "description": "This feature addresses optimizations of the chain-key ECDSA (i.e., threshold ECDSA) implementation of ICP to improve throughput. Possible approaches used to reach those goals are to introduce batching techniques to process batches of cryptographic operations, thereby improving performance, or to further parallelize cryptographic operations.",
-            "status": "in_progress",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -1600,7 +1602,7 @@
       {
         "name": "vetKeys for Decentralized Key Management",
         "description": "vetKeys technology realizes a decentralized key management service, allowing users to derive cryptographic keys on demand, in a fully decentralized way. This allows developers to build dapps where users’ data is encrypted, addressing privacy needs on a public blockchain.",
-        "milestone_id": "Thorium",
+        "milestone_id": "Niobium",
         "eta": null,
         "status": "in_progress",
         "elements": [
@@ -1616,7 +1618,7 @@
             "status": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Thorium",
+            "milestone_id": "Niobium",
             "imported": true
           },
           {
@@ -1631,7 +1633,7 @@
             "status": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Thorium",
+            "milestone_id": "Niobium",
             "imported": false
           }
         ]
@@ -1641,7 +1643,22 @@
         "description": "Orphans from the past",
         "milestone_id": "Past features",
         "eta": "none",
-        "elements": []
+        "elements": [
+          {
+            "title": "vetKeys API mock implementation",
+            "overview": "For facilitating the community discussions regarding the API of vetKeys, a mock implementation has been provided in a canister and used to converge to the final API.",
+            "description": "For facilitating the community discussions regarding the API of vetKeys a mock implementation for discussion purposes of the proposed vetKeys API has been provided in a canister. This has served a great purpose for the discussions with the community and deciding on the final API to use. The community could already familiarize itself with the API and implement dapp logic against it.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "deployed",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": ""
+          }
+        ]
       },
       {
         "name": "orphans_future",
@@ -1738,7 +1755,7 @@
       {
         "name": "Edge Infrastructure is Fully Decentralized",
         "description": "ICP is accessible through a decentralized edge infrastructure, which is split into NNS-controlled API Boundary Nodes and HTTP Gateways. The NNS will appoint node machines to run API Boundary Nodes and anyone will be able to run HTTP Gateways, enabling a much more decentralized ICP edge infrastructure with a diverse set of service providers.",
-        "milestone_id": "Vanadium",
+        "milestone_id": "Solenoid",
         "eta": null,
         "status": "in_progress",
         "elements": [
@@ -1753,7 +1770,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Vanadium"
+            "milestone_id": "Solenoid"
           },
           {
             "title": "HTTP Gateways",
@@ -1767,7 +1784,7 @@
             "status": "in_progress",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Vanadium",
+            "milestone_id": "Solenoid",
             "imported": true
           },
           {
@@ -1782,14 +1799,14 @@
             "status": "upcoming",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Vanadium"
+            "milestone_id": "Solenoid"
           }
         ]
       },
       {
         "name": "Decentralized access logs and metrics",
         "description": "This milestone establishes visibility into the Internet Computer's edge infrastructure by making aggregated API boundary node access logs publicly accessible. This provides developers with valuable insights into their dapps' usage patterns and facilitates the generation of user statistics, offering key information on traffic sources. To guarantee the integrity of these logs, the milestone focuses on leveraging trusted execution environments, specifically AMD SEV-SNP.",
-        "milestone_id": "Cerium",
+        "milestone_id": "Levitron",
         "eta": null,
         "status": "future",
         "elements": [
@@ -1802,7 +1819,7 @@
             "wiki": "",
             "docs": "",
             "eta": "",
-            "milestone_id": "Cerium",
+            "milestone_id": "Levitron",
             "status": "upcoming",
             "is_community": true,
             "in_beta": false,
@@ -1815,7 +1832,7 @@
             "forum": "",
             "proposal": "",
             "wiki": "",
-            "milestone_id": "Cerium",
+            "milestone_id": "Levitron",
             "docs": "",
             "eta": "",
             "status": "",
@@ -2003,6 +2020,59 @@
             "in_beta": false
           },
           {
+            "title": "Certification libraries",
+            "overview": "The libraries assist developers in managing certification at the appropriate level of abstraction, addressing the complexity of securely interacting with the IC.",
+            "description": "This feature offers a suite of certification libraries tailored for developers, addressing the complexity of securely interacting with the IC end-to-end. Certification is paramount for security, yet often intricate and IC-specific. These libraries provide varying levels of abstraction, empowering developers to certify and verify data with ease.",
+            "status": "in_progress",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "https://github.com/dfinity/response-verification",
+            "is_community": false,
+            "in_beta": false
+          },
+          {
+            "title": "Public access to a subset of node metrics",
+            "overview": "Giving node providers access to a subnet of node metrics to help them find out what is failing in case of node issues.",
+            "description": "Currently, node providers do not have access to logs and metrics from their nodes. To fully decentralize ICP, node providers themselves need to be able to access certain metrics about nodes in order to find out what is wrong with their nodes. This enables node providers to autonomously fix issues with their nodes without any DFINITY involvement. This is a major prerequisite to a fully decentralized operation of the Internet Computer.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": false,
+            "in_beta": false
+          },
+          {
+            "title": "Off-chain observability stack for Node Providers",
+            "overview": "Observability solution for Node Providers to enable them to independently triage node health and take corrective action in case of problems.",
+            "description": "The node providers (a) do not have access to the logs and metrics from their node, and (b) do not have access to the alerts we have in place. Therefore, the node providers cannot monitor the health status of their nodes. The objective is to make an observability solution available for node providers that allows them to independently triage the node health and decide whether a node needs to be redeployed, and to independently understand an underlying cause of a node being unhealthy.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": false,
+            "in_beta": false,
+            "imported": true
+          },
+          {
+            "title": "Alerting of NP in case of Node Failure",
+            "overview": "Alert Node Providers if one of their nodes starts misbehaving or underperforming.",
+            "description": "This feature provides a solution for independent node providers to be alerted if their node(s) start misbehaving or underperforming, which would require the node provider's attention. Since node providers do not have direct access to their nodes and node metrics, alerting in case of a node being unhealthy would significantly help the operational activities of node providers.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": true,
+            "in_beta": false,
+            "imported": true
+          },
+          {
             "title": "HTTP Asset Caching",
             "overview": "Building on response verification v2, HTTP gateways support caching of static assets such as HTML pages, JavaScript code, and images.",
             "description": "This feature enhances user experience by empowering developers to define caching parameters (e.g., time-to-live) for their assets such as HTML pages, JS sources, and images. These caching directives are then made accessible to HTTP gateways, like the icx-proxy on the boundary nodes or the local IC HTTP proxy. By leveraging caching at the edge layer, particularly for static content, a significant portion of traffic can be served from caches instead of querying canisters.",
@@ -2041,18 +2111,6 @@
             "is_community": false,
             "in_beta": false,
             "status": "upcoming"
-          },
-          {
-            "title": "Certification libraries",
-            "overview": "The libraries assist developers in managing certification at the appropriate level of abstraction, addressing the complexity of securely interacting with the IC.",
-            "description": "This feature offers a suite of certification libraries tailored for developers, addressing the complexity of securely interacting with the IC end-to-end. Certification is paramount for security, yet often intricate and IC-specific. These libraries provide varying levels of abstraction, empowering developers to certify and verify data with ease.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "https://github.com/dfinity/response-verification",
-            "is_community": false,
-            "in_beta": false
           },
           {
             "title": "CDN canisters on edge infrastructure",
@@ -2159,47 +2217,6 @@
             "in_beta": false
           },
           {
-            "title": "Public access to a subset of node metrics",
-            "overview": "Giving node providers access to a subnet of node metrics to help them find out what is failing in case of node issues.",
-            "description": "Currently, node providers do not have access to logs and metrics from their nodes. To fully decentralize ICP, node providers themselves need to be able to access certain metrics about nodes in order to find out what is wrong with their nodes. This enables node providers to autonomously fix issues with their nodes without any DFINITY involvement. This is a major prerequisite to a fully decentralized operation of the Internet Computer.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": false,
-            "in_beta": false
-          },
-          {
-            "title": "Off-chain observability stack for Node Providers",
-            "overview": "Observability solution for Node Providers to enable them to independently triage node health and take corrective action in case of problems.",
-            "description": "The node providers (a) do not have access to the logs and metrics from their node, and (b) do not have access to the alerts we have in place. Therefore, the node providers cannot monitor the health status of their nodes. The objective is to make an observability solution available for node providers that allows them to independently triage the node health and decide whether a node needs to be redeployed, and to independently understand an underlying cause of a node being unhealthy.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": false,
-            "in_beta": false,
-            "imported": true
-          },
-          {
-            "title": "Alerting of NP in case of Node Failure",
-            "overview": "Alert Node Providers if one of their nodes starts misbehaving or underperforming.",
-            "description": "This feature provides a solution for independent node providers to be alerted if their node(s) start misbehaving or underperforming, which would require the node provider's attention. Since node providers do not have direct access to their nodes and node metrics, alerting in case of a node being unhealthy would significantly help the operational activities of node providers.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false,
-            "imported": true
-          },
-          {
             "title": "Decentralized virtual personhood validation",
             "overview": "Scalable, decentralized, virtual proof of personhood to distinguish people from machines.",
             "description": "Being able to distinguish people from machines is important for a blockchain environment where people are not identified when onboarding. There are different ways how this can be achieved. Integrating proof of personhood with ICP will improve decentralization on the Internet Computer, offering greater voting power and rewards to real validated users as opposed to unknown entities. Users can also present the proof of personhood toward dapps, which can provide greater privileges and rewards. As one option, virtual people parties are a scalable proof of personhood, whereby randomly assigned groups of users validate each other through interaction.",
@@ -2216,7 +2233,7 @@
           {
             "title": "Public contributions to IC repository",
             "overview": "Allowing for contributions by the public to the IC source code repository.",
-            "description": "Currently the IC repo is open source, but does not allow for contributions by the publicy community. This features aims to make the IC repository available for public contributions. Due to the complexity of the ICP codebase and therefore contributions to it, this is a longer-term goal. A first required step for this is to move the IC repository from GitLab to GitHub.",
+            "description": "Currently the IC repo is open source, but does not allow for contributions by the public community. This feature aims to make the IC repository available for public contributions. Due to the complexity of the ICP codebase and therefore contributions to it, this is a longer-term goal. A first required step for this is to move the IC repository from GitLab to GitHub.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -2264,7 +2281,7 @@
       {
         "name": "Verifiable Credentials Platform is Live",
         "description": "With this milestone, ICP offers the infrastructure and tooling to issue, share, and consume credentials in a privacy-preserving fashion. Users are in control of their credentials, giving them a self-sovereign digital identity. At the same time, new credential issuers, such as a KYC service, go live on ICP and will enable new use cases such as security tokens subject to financial regulations.",
-        "milestone_id": "Iron",
+        "milestone_id": "Separatrix",
         "eta": "June 18, 2024",
         "status": "in_progress",
         "elements": [
@@ -2280,7 +2297,7 @@
             "status": "in_progress",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "Iron"
+            "milestone_id": "Separatrix"
           },
           {
             "title": "SSI SDK for Relying Parties",
@@ -2294,7 +2311,7 @@
             "status": "in_progress",
             "is_community": true,
             "in_beta": true,
-            "milestone_id": "Iron"
+            "milestone_id": "Separatrix"
           },
           {
             "title": "Verifiable credentials playground",
@@ -2307,7 +2324,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": true,
-            "milestone_id": "Iron"
+            "milestone_id": "Separatrix"
           }
         ]
       },
@@ -2506,6 +2523,19 @@
             "in_beta": false
           },
           {
+            "title": "Transaction Approval",
+            "overview": "Allows an untrusted relying party (e.g., canister or Web app) to request from a signer to sign a transaction for ICP after user approval. Alternative to II's delegation model for high-security use cases or when stable identities are required with different canisters.",
+            "description": "Users will be able to confirm and authorize a digital currency transaction initiated through the wallet interface. This will require the user to review the transaction details, such as the recipient address, amount, and any associated fees, before digitally signing the transaction by authenticating with their Internet Identity. ",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "https://github.com/dfinity/wg-identity-authentication",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": true,
+            "in_beta": false
+          },
+          {
             "title": "Resident passkeys",
             "overview": "Explore the potential of resident passkeys to remove the requirement for users to remember their identity numbers.",
             "description": "We want to double-down on ICP's adoption of passkeys. Passkeys are now used by all the major web2 and web3 players, the aim here is to reduce sign-up and sign-in friction as much as possible by identifying how II can use resident passkeys.",
@@ -2567,7 +2597,7 @@
             "wiki": "",
             "docs": "",
             "eta": "",
-            "status": "in_progress",
+            "status": "",
             "is_community": false,
             "in_beta": false,
             "milestone_id": ""
@@ -2635,20 +2665,7 @@
             "wiki": "",
             "docs": "",
             "eta": "",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false
-          },
-          {
-            "title": "Transaction Approval",
-            "overview": "Allows an untrusted relying party (e.g., canister or Web app) to request from a signer to sign a transaction for ICP after user approval. Alternative to II's delegation model for high-security use cases or when stable identities are required with different canisters.",
-            "description": "Users will be able to confirm and authorize a digital currency transaction initiated through the wallet interface. This will require the user to review the transaction details, such as the recipient address, amount, and any associated fees, before digitally signing the transaction by authenticating with their Internet Identity. ",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "https://github.com/dfinity/wg-identity-authentication",
-            "eta": "",
-            "status": "in_progress",
+            "status": "",
             "is_community": true,
             "in_beta": false
           },
@@ -2667,7 +2684,7 @@
           },
           {
             "title": "Identity management",
-            "overview": "Bringing comprehensive identity management features to II: Giving users a 360&deg view on their identities, such as their open sessions, credential sharing history, or pseudonyms used with parties.",
+            "overview": "Bringing comprehensive identity management features to II: Giving users a 360° view on their identities, such as their open sessions, credential sharing history, or pseudonyms used with parties.",
             "description": "Users will be able to manage various identity-related details, including their passkeys, recovery phrases, credentials, and wallet addresses. Users will be able to view and manage their sessions. This holistic perspective allows users to monitor how their identity is being utilized, track access permissions, and detect any potential misuse or unauthorized access. By managing their identity in this manner, users can enhance their privacy, security, and autonomy.",
             "forum": "",
             "proposal": "",
@@ -2702,7 +2719,7 @@
       {
         "name": "Oisy, a Multi-chain Wallet Powered by Chain Fusion",
         "description": "Oisy is a wallet with a unique combination of properties. It is the first smart contract wallet that is self-custodial, multi-chain and uses passkeys for authentication, while being fully accessible through the browser. Oisy supports ICP-based dapps through ICRC-21, EVM-based dapps through WalletConnect, and easily converts between native Ethereum tokens and their ck twins.",
-        "milestone_id": "Silver",
+        "milestone_id": "Toroidal",
         "eta": null,
         "status": "in_progress",
         "elements": [
@@ -2717,7 +2734,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Silver"
+            "milestone_id": "Toroidal"
           },
           {
             "title": "Signer standards in Oisy",
@@ -2730,14 +2747,14 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Silver"
+            "milestone_id": "Toroidal"
           }
         ]
       },
       {
         "name": "The Orbit Multi-Custody Asset Framework",
         "description": "Orbit is a comprehensive digital assets framework, enabling simple to advanced rules over user digital assets. Initially tailored for token management, it provides robust support for 1-out-of-M to complex approval policies for financial transactions. It also supports secure management of infrastructure like canister installations and upgrades. Teams and businesses can confidently handle ICP, ckETH, and compatible tokens using Orbit's advanced security features, vital for those seeking a stable and reliable management over their treasury.",
-        "milestone_id": "Fermium",
+        "milestone_id": "Poloidal",
         "eta": null,
         "status": "in_progress",
         "elements": [
@@ -2752,7 +2769,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Fermium"
+            "milestone_id": "Poloidal"
           },
           {
             "title": "Secure canister management",
@@ -2765,7 +2782,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Fermium"
+            "milestone_id": "Poloidal"
           },
           {
             "title": "Orbit supports ICRC-1",
@@ -2778,7 +2795,7 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Fermium"
+            "milestone_id": "Poloidal"
           }
         ]
       },
@@ -2861,6 +2878,32 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false
+          },
+          {
+            "title": "ICRC-37: Approve / transfer_from extension for ICRC-7.",
+            "overview": "Approve / transfer_from extension for the ICRC-7 basic NFT standard for the Internet Computer. Simplifies many scenarios by avoiding error scenarios of regular transfers.",
+            "description": "ICRC-37 extends ICRC-7 with approve and transfer_from semantics. This semantics is prominently usef for tokens in the Ethereum ecosystem and allows a token holder to approve a spender to transfer tokens on their behalf. The spender can, as long as an approval is valid, transfer tokens on behalf of their owner. This simplifies many use cases where certain errors otherwise make their handling tricky. Together with ICRC07, this standard is expected to help unify the NFT-related development on ICP and help clean up the fragmented NFT standards landscape.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "deployed",
+            "is_community": true,
+            "in_beta": false
+          },
+          {
+            "title": "ICRC-3 implementation for ICRC-1 ledgers",
+            "overview": "Implementation of the ICRC-3 transaction log standard for the ICRC-1 ledger implementation and rollout to SNS, ckBTC, and ckETH ledger deployments.",
+            "description": "The ICRC-3 standard needs to be implemented in the ICRC-1 ledger implementation. This enhances the ICRC-1 ledgers with a standardized way of accessing the block log. This affects all deployments of ICRC-1 ledgers, e.g., also the SNS token ledgers.",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "is_community": true,
+            "in_beta": false
           }
         ]
       },
@@ -2870,32 +2913,6 @@
         "milestone_id": "Future features",
         "eta": "none",
         "elements": [
-          {
-            "title": "ICRC-3 implementation for ICRC-1 ledgers",
-            "overview": "Implementation of the ICRC-3 transaction log standard for the ICRC-1 ledger implementation and rollout to SNS, ckBTC, and ckETH ledger deployments.",
-            "description": "The ICRC-3 standard needs to be implemented in the ICRC-1 ledger implementation. This enhances the ICRC-1 ledgers with a standardized way of accessing the block log. This affects all deployments of ICRC-1 ledgers, e.g., also the SNS token ledgers.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "is_community": true,
-            "in_beta": false
-          },
-          {
-            "title": "Cycles ledger",
-            "overview": "Ledger for cycles to allow non-canister principals to hold cycles. Simplifies the development workflow.",
-            "description": "The cycles ledger is, as its name suggests, a ledger for cycles on ICP. Its purpose is to hide the limitation that non-canister principals cannot hold cycles in the context of canister development. With the cycles ledger, developers do not need the hard-to-handle and unintuitive concept of cycles wallets any more, but charge cycles into the cycles wallet instead. This creates the impression w.r.t. the developer workflow that the developer principal used to deploy canisters holds cycles itself.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false
-          },
           {
             "title": "Rosetta for ICRC ledgers",
             "overview": "Implement the Rosetta standard for ICRC-based ledgers. Enables ICRC tokens to be handled by centralized exchanges.",
@@ -2962,19 +2979,6 @@
             "in_beta": false
           },
           {
-            "title": "ICRC-37: Approve / transfer_from extension for ICRC-7.",
-            "overview": "Approve / transfer_from extension for the ICRC-7 basic NFT standard for the Internet Computer. Simplifies many scenarios by avoiding error scenarios of regular transfers.",
-            "description": "ICRC-37 extends ICRC-7 with approve and transfer_from semantics. This semantics is prominently usef for tokens in the Ethereum ecosystem and allows a token holder to approve a spender to transfer tokens on their behalf. The spender can, as long as an approval is valid, transfer tokens on behalf of their owner. This simplifies many use cases where certain errors otherwise make their handling tricky. Together with ICRC07, this standard is expected to help unify the NFT-related development on ICP and help clean up the fragmented NFT standards landscape.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false
-          },
-          {
             "title": "Implement ICRC-21 in Ledger devices",
             "overview": "The implmentation of ICRC-21 in Ledger devices will allow us to support generic transactions.",
             "description": "The implmentation of ICRC-21 in Ledger devices will allow us to support generic transactions.",
@@ -3025,9 +3029,9 @@
             "in_beta": false
           },
           {
-            "title": "Fireblocks integration",
-            "overview": "An integration of the Internet Computer blockchain with the Fireblocks custody provider to simplify ICP for institutions.",
-            "description": "An integration of the Internet Computer blockchain with the Fireblocks custody provider to simplify ICP for institutionals.",
+            "title": "Institutional custody integration for custody & staking of ICP and ICRC tokens",
+            "overview": "An integration of the Internet Computer blockchain with institutional custody providers to support custody and staking for ICP and ICRC tokens.",
+            "description": "An integration of the Internet Computer blockchain with institutional custody providers to support custody and staking for ICP and ICRC tokens.",
             "status": "",
             "forum": "",
             "proposal": "",
@@ -3061,7 +3065,7 @@
       {
         "name": "Active Liquid Democracy",
         "description": "The NNS and SNS DAOs facilitate active liquid democracies by lowering the entry barrier for participation and providing better inputs for well-informed decisions. This includes direct voting as well as delegating some voting decisions to others. As a result, more users stake tokens and participate in DAOs to form lively communities. The resulting network effects foster additional adoption and growth.",
-        "milestone_id": "Titanium",
+        "milestone_id": "Plasma",
         "eta": null,
         "status": "in_progress",
         "elements": [
@@ -3076,7 +3080,7 @@
             "status": "future",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Titanium"
+            "milestone_id": "Plasma"
           },
           {
             "title": "Increase and facilitate active participation in SNS DAOs",
@@ -3089,7 +3093,7 @@
             "status": "future",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Titanium"
+            "milestone_id": "Plasma"
           },
           {
             "title": "Encouraging diligent active voting",
@@ -3099,10 +3103,10 @@
             "proposal": "",
             "docs": "",
             "eta": "",
-            "status": "future",
+            "status": "in_progress",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Titanium"
+            "milestone_id": "Plasma"
           },
           {
             "title": "SNS communities portal",
@@ -3115,7 +3119,7 @@
             "status": "future",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Titanium"
+            "milestone_id": "Plasma"
           },
           {
             "title": "Simplify neuron following experience",
@@ -3129,7 +3133,7 @@
             "status": "future",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Titanium"
+            "milestone_id": "Plasma"
           }
         ]
       },
@@ -3317,6 +3321,18 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false
+          },
+          {
+            "title": "Increase reward for SNS launch proposals to 20",
+            "overview": "Increase the reward weight of NNS proposals of topic \"SNS & Neuron’s Fund\" to 20 to incentivize more active voting and have the same rules as for proposals of topic \"Governance\"",
+            "description": "",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false
           }
         ]
       },
@@ -3330,18 +3346,6 @@
             "title": "Visual indicator of actionable proposals in the NNS dapp",
             "overview": "Users will see a ‘notification’-like indicator in the NNS dapp next to the name of different projects that show how many open governance proposals there are that the user can vote on.",
             "description": "Users will see a ‘notification’-like indicator in the NNS dapp next to the different projects that show how many open governance proposals there are that the user has eligible neurons to vote on. This allows users to quickly get a glance of all the proposals that they can still vote on, instead of having to click through every project that may have open proposals.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false
-          },
-          {
-            "title": "Increase reward for SNS launch proposals to 20",
-            "overview": "Increase the reward weight of NNS proposals of topic \"SNS & Neuron’s Fund\" to 20 to incentivize more active voting and have the same rules as for proposals of topic \"Governance\"",
-            "description": "",
             "status": "in_progress",
             "forum": "",
             "proposal": "",
@@ -3594,8 +3598,8 @@
     "milestones": [
       {
         "name": "Canister Operation Insights",
-        "description": "This milestone provides substantial simplifications and improvements for the developers lifecycle of canisters, particularly regarding their development and operations. Snapshotting capabilities, a powerful logging infrastructure and improved error handling, as well as insights into the cycles consumption of canisters and push of relevant events brings canisters closer to Web2 services in terms of DevOps.",
-        "milestone_id": "Nickel",
+        "description": "This milestone provides substantial simplifications and improvements for the developer lifecycle of canisters, particularly regarding their development and operations. Snapshotting capabilities, a powerful logging infrastructure and improved error handling, as well as insights into the cycles consumption of canisters and push of relevant events brings canisters closer to Web2 services in terms of DevOps.",
+        "milestone_id": "Beryllium",
         "eta": null,
         "status": "in_progress",
         "elements": [
@@ -3611,7 +3615,7 @@
             "eta": "Q2 2024",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "Nickel"
+            "milestone_id": "Beryllium"
           },
           {
             "title": "Canister logging",
@@ -3622,15 +3626,15 @@
             "wiki": "",
             "docs": "",
             "eta": "Q2 2024",
-            "status": "upcoming",
+            "status": "in_progress",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "Nickel",
+            "milestone_id": "Beryllium",
             "imported": true
           },
           {
             "title": "Cycles consumption insights",
-            "overview": "Give canister controllers insights on cycles consumption of their canisters to help them optimize the cycles consumption of canisters.",
+            "overview": "Give canister controllers insights on cycles consumption of their canisters to help them optimize cycles consumption.",
             "description": "Tracking down where cycles are consumed during the operation of a canister is currently a tedious job requiring manual efforts. This feature provides people who operate canisters insights into where cycles were spent. These insights can be used to optimize the cycles consumption of canisters.",
             "forum": "",
             "proposal": "",
@@ -3640,7 +3644,7 @@
             "status": "",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "Nickel",
+            "milestone_id": "Beryllium",
             "imported": true
           },
           {
@@ -3655,12 +3659,12 @@
             "status": "upcoming",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "Nickel",
+            "milestone_id": "Beryllium",
             "imported": true
           },
           {
             "title": "Standardized canister response codes",
-            "overview": "Standardize canister response standard, particularly error codes, to enable better composability of services from canister smart contracts.",
+            "overview": "Standardize canister response codes, particularly error codes, to enable better composability of services from canister smart contracts.",
             "description": "Standardize canister response standard, particularly error codes, to enable better composability of services from canister smart contracts.",
             "status": "upcoming",
             "forum": "",
@@ -3669,7 +3673,36 @@
             "docs": "",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "Nickel"
+            "milestone_id": "Beryllium"
+          },
+          {
+            "title": "Actionable error messages and backtraces",
+            "overview": "Improve error messages by providing more actionable information to developers such as backtraces, error codes, and links to the documentation explaining how to fix the error.",
+            "description": "Improve error messages by providing more actionable information to developers such as backtraces, error codes, and links to the documentation explaining how to fix the error.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": "Beryllium"
+          },
+          {
+            "title": "Cycles Ledger",
+            "overview": "The Cycles Ledger replaces the cycles wallet as the recommended solution for managing cycles across projects.",
+            "description": "The Cycles Ledger replaces the cycles wallet as the recommended solution for managing cycles across projects. Prior to the development of the Cycles Ledger, the Cycles Wallet had been a source of confusion for many newcomers in the ecosystem. It is not a critical path for developing dapps on the Internet Computer and requires extensive prerequisite knowledge in order to be used effectively. Going forward, dfx will use the Cycles Ledger to make it simpler for developers to deploy code to the mainnet. The Cycles Wallet project will be deprecated in dfx, but developers will still be able to install and use it manually.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "Q2 2024",
+            "status": "in_progress",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": "Beryllium",
+            "imported": true
           }
         ]
       },
@@ -3942,28 +3975,18 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false
-          }
-        ]
-      },
-      {
-        "name": "orphans_future",
-        "description": "Orphans from the future",
-        "milestone_id": "Future features",
-        "eta": "none",
-        "elements": [
+          },
           {
-            "title": "Cycles Ledger",
-            "overview": "The Cycles Ledger replaces the cycles wallet as the recommended solution for managing cycles across projects.",
-            "description": "The Cycles Ledger replaces the cycles wallet as the recommended solution for managing cycles across projects. Prior to the development of the Cycles Ledger, the Cycles Wallet had been a source of confusion for many newcomers in the ecosystem. It is not a critical path for developing dapps on the Internet Computer and requires extensive prerequisite knowledge in order to be used effectively. Going forward, dfx will use the Cycles Ledger to make it simpler for developers to deploy code to the mainnet. The Cycles Wallet project will be deprecated in dfx, but developers will still be able to install and use it manually.",
+            "title": "Higher-level stable memory libraries",
+            "overview": "Create more friendly, higher-level libraries that abstract away the complexity of working with the Stable Memory API.",
+            "description": "The stable memory API is a great abstraction for orthogonal persistence on ICP; however, it is a low-level API and can be difficult to use. Create more friendly, higher-level libraries that abstract away the complexity of working with the Stable Memory API.",
+            "status": "deployed",
             "forum": "",
             "proposal": "",
             "wiki": "",
             "docs": "",
-            "eta": "Q2 2024",
-            "status": "in_progress",
             "is_community": true,
-            "in_beta": false,
-            "imported": true
+            "in_beta": false
           },
           {
             "title": "dfx Version Manager",
@@ -3973,12 +3996,20 @@
             "proposal": "",
             "wiki": "",
             "docs": "",
-            "eta": "Q2 2024",
-            "status": "in_progress",
+            "eta": "2024-02-08",
+            "status": "deployed",
             "is_community": true,
             "in_beta": false,
             "imported": true
-          },
+          }
+        ]
+      },
+      {
+        "name": "orphans_future",
+        "description": "Orphans from the future",
+        "milestone_id": "Future features",
+        "eta": "none",
+        "elements": [
           {
             "title": "dfx extensions",
             "overview": "Plugin architecture for integrating 3rd-party functionality directly into DFX.",
@@ -4062,8 +4093,8 @@
           },
           {
             "title": "Live canister metrics",
-            "overview": "Expose key canister metrics in realtime that can be queried, such as cycle usage or memory consumption.",
-            "description": "It is crucial that canisters be manageable and monitorable in an automated way, much like traditional Web2 services in cloud environments. This requires that key canister metrics be available through a canister API. A good starting point would be metrics such as a canister's cycles drain rate, memory consumption (heap and stable), or received calls per second. Such metrics are crucial for devs in order to ensure their dapps are running reliably and to take mitigating steps in case of issues.",
+            "overview": "Expose key canister metrics in realtime that can be queried, such as a breakdown of its memory usage (heap vs. stable) or received calls per second.",
+            "description": "It is crucial that canisters be manageable and monitorable, much like traditional Web2 services in cloud environments. This requires that key canister metrics be available through a canister API. Besides the cycles insights that are part of another feature, relevant further metrics would be a memory consumption breakdown (heap and stable), or received calls per second. Such metrics are crucial for devs in order to ensure their dapps are running reliably and to take mitigating steps in case of issues.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -4166,7 +4197,7 @@
           {
             "title": "Protocol Interface Specification evolution",
             "overview": "Improving version interoperability between different versions of the Internet Computer Protocol Specification.",
-            "description": "Currently, new versions of the Internet Computer Potocol Specification are rolled out very homogeneously throughout all the subnets of ICP within a short time period following the release of the new version. With the advent of sovereign subnets like UTOPIA, version diversity of networks will grow and interoperability between different versions will be more challenging. <br><br> This feature enables subnets to make a certified claim about the protocol version they are running to other subnets. This information can be used to determine whether the subnet is compatible with the protocol version of another subnet that intends to communicate with it.",
+            "description": "Currently, new versions of the Internet Computer Potocol Specification are rolled out very homogeneously throughout all the subnets of ICP within a short time period following the release of the new version. With the advent of sovereign subnets like UTOPIA, version diversity of networks will grow and interoperability between different versions will be more challenging. This feature enables subnets to make a certified claim about the protocol version they are running to other subnets. This information can be used to determine whether the subnet is compatible with the protocol version of another subnet that intends to communicate with it.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -4203,19 +4234,7 @@
             "in_beta": false
           },
           {
-            "title": "Higher-level stable memory libraries",
-            "overview": "The stable memory API is a great abstraction for orthogonal persistence on ICP; however, it is a low-level API and can be difficult to use.",
-            "description": "Create more friendly, higher-level libraries that abstract away the complexity of working with the Stable Memory API.",
-            "status": "",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "is_community": true,
-            "in_beta": false
-          },
-          {
-            "title": "REST- &amp; JSON-centric interfaces",
+            "title": "REST- & JSON-centric interfaces",
             "overview": "REST and JSON-centric philosophy of interacting with ICP. Makes it easier for Web2 devs to onboard the ICP ecosystem.",
             "description": "This community request proposes to have stronger support for the REST paradigm and thus also JSON on the ICP, complementing (or even attempting to replace) the current Candid-driven experience. This would help make the developer experience more similar to what Web2 developers are used to and thus simplify dev onboarding on ICP.",
             "status": "",
