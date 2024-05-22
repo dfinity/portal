@@ -49,6 +49,8 @@ Here is an approximate cost breakdown in USD for an RPC request on the Ethereum 
 
 Note that the cost is multiplied by the number of RPC services used for the agreement / consensus logic. If you specify three different services, it will cost three times as much as a call to a single RPC provider.
 
+In addition to the cost of the RPC request itself, callers must also pass at least 0.0003 TC of "collateral cycles" to account for possible future downstream API price increases. The canister currently refunds all of these cycles, but this may change in the future.
+
 ## Attaching the correct amount of cycles
 
 To determine how many cycles need to be sent with your RPC call, you can use the `requestCost` query method:
