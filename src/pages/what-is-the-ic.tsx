@@ -73,9 +73,8 @@ function WhatIsIcpPage() {
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-            Dive into the ICP blockchain and learn how it 
-            unlocks the power of smart contract. Explore the advanced 
-            design choices that make this possible.          
+            Learn how the ICP blockchain unlocks the power of smart contracts. 
+            Explore the advanced design choices that make this possible.          
              </motion.p>
             </div>
           </AnimateSpawn>
