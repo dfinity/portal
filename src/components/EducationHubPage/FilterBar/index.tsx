@@ -433,6 +433,32 @@ function Index({
                     </label>
                   ))}
                 </div>
+                <p>Content Language</p>
+
+                <div className={styles.mobileFilterOptions}>
+                  {contentLanguageOptions.map((contentLanguage) => (
+                    <label
+                      key={contentLanguage}
+                      className={styles.selectOption}
+                    >
+                      <input
+                        type="checkbox"
+                        className={styles.checkbox}
+                        key={contentLanguage}
+                        value={contentLanguage}
+                        checked={selectedContentLanguages.includes(
+                          contentLanguage.toLowerCase()
+                        )}
+                        onChange={(e) =>
+                          updateSelectedContentLanguages(
+                            e.target.value.toLowerCase()
+                          )
+                        }
+                      />
+                      {contentLanguage}
+                    </label>
+                  ))}
+                </div>
                 <p>Search Courses</p>
                 <div className={styles.mobileFilterOptions}>
                   <input

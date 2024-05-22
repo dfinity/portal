@@ -68,8 +68,10 @@ function filterCourses(
   if (searchTerm.trim() !== "") {
     const term = searchTerm.trim().toLowerCase();
     courses = courses.filter(
-      ({ body, title }) =>
-        body.toLowerCase().includes(term) || title.toLowerCase().includes(term)
+      ({ body, title, fullTags }) =>
+        body?.toLowerCase().includes(term) ||
+        title.toLowerCase().includes(term) ||
+        fullTags?.some((tag) => tag.toLowerCase().includes(term))
     );
   }
   return courses;
