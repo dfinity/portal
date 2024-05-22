@@ -48,6 +48,7 @@ jobs:
       - name: Install icx-asset
         if: steps.cache-icx-asset-bin.outputs.cache-hit != 'true'
         run: |
+          # icx-asset improved sync performance: https://github.com/dfinity/sdk/pull/3766
           git clone -b akos/asset-upload-strategies --single-branch https://github.com/dfinity/sdk.git
           cd sdk
           cargo build -p icx-asset --release
@@ -75,15 +76,15 @@ jobs:
 
           # install and deploy
           git submodule update --init
-          npm install
+          time npm install
 
           export PREVIEW_CANISTER_ID=$canister_id
 
           dfx canister --network ic create --all
-          dfx build --network ic portal
+          time dfx build --network ic portal
           dfx canister --network ic install portal --wasm .dfx/ic/canisters/portal/assetstorage.wasm.gz || true
 
-          icx-asset --replica https://icp0.io --pem ~/.config/dfx/identity/default/identity.pem sync $canister_id build
+          time icx-asset --replica https://icp0.io --pem ~/.config/dfx/identity/default/identity.pem sync $canister_id build
 
         env:
           DFX_IDENTITY_PREVIEW: ${{ secrets.DFX_IDENTITY_PREVIEW }}
