@@ -20,7 +20,7 @@ function WhatIsIcpPage() {
   return (
     <Layout
       title="What is ICP"
-      description={`The Internet Computer adds autonomous serverless cloud functionality to 
+      description={`The ICP blockchain adds autonomous serverless cloud functionality to 
       the public Internet - making it possible to build almost any system or service 
       entirely on a decentralized network using "canister software", an evolution of smart contracts.`}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
@@ -134,7 +134,7 @@ function WhatIsIcpPage() {
                   High-performance smart contracts
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                  Smart contracts on the Internet Computer (ICP) can utilize
+                  Smart contracts on the ICP blockchain can utilize
                   hundreds of gigabytes of memory and compute at the full speed
                   of a modern CPU, which is many orders of magnitude more than
                   Ethereum smart contracts. For example, the high performance of ICP smart 
@@ -549,7 +549,7 @@ function WhatIsIcpPage() {
               className="tw-heading-3 text-center mb-2 w-full mx-auto md:tw-heading-60 md:mb-6 lg:w-6/12"
               variants={transitions.item}
             >
-              Get familiar with the Internet Computer{" "}
+              Get familiar with ICP{" "}
             </motion.h2>
           </AnimateSpawn>
 
