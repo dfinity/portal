@@ -82,6 +82,8 @@ jobs:
           dfx canister create --all
           dfx canister install $(dfx canister id portal) --wasm .dfx/local/canisters/frontend/assetstorage.wasm.gz
 
+          npm run build
+
           icx-asset --replica https://icp0.io --pem ~/.config/dfx/identity/default/identity.pem sync $canister_id build
 
         env:
