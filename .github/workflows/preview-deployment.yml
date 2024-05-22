@@ -40,17 +40,16 @@ jobs:
         id: cache-icx-asset-bin
         uses: actions/cache@v3
         with:
-          path: sdk/target/debug/dfx
-          key: icxassetbin-19e18d1560aafedb3ab9764932755fd649be920a
+          path: sdk/target/release/icx-asset
+          key: icxassetbin-cce6ae0a2aeaee015612d49ce93047342e9fb4ec
           restore-keys: |
             - icxassetbin-
 
       - name: Install icx-asset
         if: steps.cache-icx-asset-bin.outputs.cache-hit != 'true'
         run: |
-          git clone https://github.com/dfinity/sdk.git --single-branch
+          git clone -b akos/asset-upload-strategies --single-branch https://github.com/dfinity/sdk.git
           cd sdk
-          git checkout cce6ae0a2aeaee015612d49ce93047342e9fb4ec
           cargo build -p icx-asset --release
 
       - name: Add icx-asset to path
