@@ -219,9 +219,9 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Connect without oracles",
-            href: "/https-outcalls",
-            image: "/img/nav/featured-capabilities.webp",
+            title: "Chain Fusion Technology",
+            href: "/chainfusion",
+            image: "/img/nav/featured-chainfusion.webp",
           },
         },
       ],
@@ -302,8 +302,8 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Chain Fusion Technology",
-            href: "/chainfusion",
+            title: "Use cases overview",
+            href: "/use-cases",
             image: "/img/nav/featured-use-cases.webp",
           },
         },
