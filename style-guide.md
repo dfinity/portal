@@ -298,6 +298,15 @@ Numbers should be formatted using the `_` character, and not any other character
 - 54_000
 - 1_000
 
+## Compute resources
+
+Compute resources, such as storage, should be formatted in the `XiB` format, such as:
+
+- 7TiB
+- 5GiB
+- 500MiB
+- 10KiB
+
 ## API methods
 
 For API methods such as `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, or any other API method requests, they should be formatted as such:
