@@ -43,7 +43,7 @@ jobs:
           path: sdk/target/release/icx-asset
           key: icxassetbin-cce6ae0a2aeaee015612d49ce93047342e9fb4ec
           restore-keys: |
-            - icxassetbin-
+            icxassetbin-
 
       - name: Install icx-asset
         if: steps.cache-icx-asset-bin.outputs.cache-hit != 'true'
