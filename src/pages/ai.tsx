@@ -236,7 +236,7 @@ function AIPage() {
                 </motion.h3>
                 <motion.p className="text-2xl mb-0 ">
                 <p>
-                Trust in AI models faces two major challenges. First,{" "} 
+                Current AI model implementations face two major trust issues due to their black-box nature. First,{" "} 
                 <Link
                     className="font-bold"
                     to="https://twitter.com/AnthropicAI/status/1745854907968880970"
@@ -252,8 +252,9 @@ function AIPage() {
                 the technology.
                 </p>
                 <p>
-                However, ICP can help address both of these issues by enhancing 
-                transparency and security in the development and deployment of AI models.
+                However, ICP can help address these black-box issues by enhancing 
+                transparency in development while bolstering security in the 
+                deployment of AI models.
                 </p>
 
                   {/* As companies race to build AI-powered products, they leave
