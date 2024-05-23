@@ -100,15 +100,17 @@ If the JSON RPC request is successfully sent and received by the issuer API, Int
 }
 ```
 
-In this response, `verifiablePresentation`is a JWT based verifiable presentation (VP) containing two credentials:
+In this response, `verifiablePresentation` is a JWT based verifiable presentation (VP) containing two credentials:
 
 1. A verifiable credential issued by Internet Identity that relates the `credentialSubject` to the user principal.
 
 2. A verifiable credential issued by the issuer to the user principal.
 
-The specification ensures unlinkability between the relying party and the issuer. That's why two credentials are needed. The first credential proves the link between the relying party's principal and the issuer's. The second credential is the actual credential to the user's principal from the issuer's side.
+The specification ensures unlinkability between the relying party and the issuer. That's why two credentials are needed. The first credential proves the link between the relying party's principal and `id_alias` created in the identity provider. The second credential is the actual credential to the `id_alias`.
 
-![Diagram placeholder](/path/to/file)
+![Verifiable presentations](/static/img/docs/vcs-4.png)
+
+Note how the issuer's principal never appears in the credentials. Instead, the relying party and the issuer know about the `id_alias`. Therefore, this `id_alias` is also a credential to prove the link between the user's principal and the `id_alias`.
 
 The order of the credentials in the VP should match the order above, such that the credential relating to the `credentialSubject` to the user principal should come first.
 
