@@ -262,7 +262,7 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Hello, Decentralized AI",
+            title: "Hello, DeAI",
             href: "/ai",
             image: "/img/nav/featured-ai.webp",
           },
