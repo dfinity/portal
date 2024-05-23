@@ -165,6 +165,11 @@ Imagine you wanted to register your domain `foo.bar.com` for your canister with 
 Some DNS providers do not require you to specify the main domain. For example, you would just have to specify `foo` instead of `foo.bar.com`, `_canister-id.foo` instead of `_canister-id.foo.bar.com`, and `_acme-challenge.foo` instead of `_acme-challenge.foo.bar.com`.
 :::
 
+### Example on popular registrars
+
+In the [following document](dns-setup.mdx), this guide provides detailed instructions to configure DNS
+records on the example of two popular domain registrars.
+
 ### `.well-known/ic-domains`
 - #### Step 1: Create the `ic-domains` file with the following content in the `.well-known` directory:
     ```
@@ -195,11 +200,6 @@ curl -sLv -X POST \
 }
 EOF
 ```
-
-:::info
-In the [following document](dns-setup.mdx), this guide provides detailed instructions to configure DNS
-records on the example of two popular domain registrars.
-:::
 
 ### Troubleshooting
 
