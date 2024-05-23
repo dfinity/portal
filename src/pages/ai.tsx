@@ -113,7 +113,7 @@ const TrustCard: React.FC<TrustCardProps> = ({
 
 const RoadMapList: React.FC<{ items: string[] }> = ({ items }) => {
   return (
-    <ul className="list-none m-0 p-0">
+    <ul className="list-none m-0 p-0 text-left flex flex-col items-start">
       {items.map((item, index) => (
         <li key={index} className="flex items-center my-2">
           <img
