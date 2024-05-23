@@ -2,218 +2,21 @@
 keywords: [intermediate, agents, tutorial, nodejs]
 ---
 
-
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Node.js
 
 <MarkdownChipRow labels={["Intermediate", "Agents", "Tutorial"]} />
 
-
 ## Overview
 
-Node.js is a runtime for JavaScript, so you can use the [JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) with it to interact with a canister. This can be useful to run an oracle, connect an existing Node.js application to ICP, or to introduce a websocket layer to your application.
+[Node.js](https://nodejs.org/en) is a runtime environment for JavaScript. To interact with a canister through Node.js, you can use the [JavaScript agent](https://www.npmjs.com/package/@dfinity/agent). Using Node.js can be enable use-cases such as running an oracle, connecting an existing Node.js application to ICP, or introducing a websocket layer to your application.
 
 [More information about calling ICP from JavaScript in a web browser](/docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent).
 
-In this example, you will run a simple Node.js websocket provider, proxying a canister keeping track of a stack of events.
+## Identity management
 
-First, you need to get started with a project. Let's take the DIP721 example code at https://github.com/Psychedelic/DIP721, and write a node script that will mint a collection of NFTs.
-
-## Prerequisites
-
-- [x] This project uses features introduced in dfx 0.11.2. You can install the latest version of the IC SDK with the command:
-
-```
-sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-```
-
-- [x] Download and install [Node.js v0.16.0+](https://nodejs.org/en).
-
-- [x] Install the following packages:
-
-```
-npm install --save \
-    @dfinity/agent \
-    @dfinity/principal \
-    @dfinity/candid \
-    @dfinity/identity \
-    @dfinity/identity-secp256k1 \
-    @dfinity/assets \
-    isomorphic-fetch \
-    image-thumbnail \
-    mmmagic \
-    prettier \
-    sha256-file
-```
-
-## Updating the project
-
-- #### Step 1: First, fork and clone the repo.
-
-```
-git clone https://github.com/Psychedelic/DIP721.git
-```
-
-- #### Step 2: Then, `cd` into `DIP721`.
-
-The project has all of the canister logic already added, so there is only a little more that needs to be added.
-
-- #### Step 3: Add a `package.json` file by running the command:
-
-```
-npm init -y
-```
-
-- #### Step 4: Then, in the `src` directory, add a new directory, `"node"`, with a new file `index.js` with the commands:
-
-```
-mkdir src/node
-touch /src/node/index.js
-```
-
-- #### Step 5: Open the `index.js` file and add the following code:
-
-```js
-// src/node/index.js
-console.log("Hello world");
-```
-
-- #### Step 6: In the root of the project directory, open the `package.json` file.
-
-Update your `"scripts"` to include `"start": "node --es-module-specifier-resolution=node src/node/index.js"`, and add `"type": "module"`.
-
-Your package.json should look like this:
-
-```json
-{
-  "name": "dip721",
-  "version": "1.0.0",
-  "description": "## Summary",
-  "type": "module",
-  "main": "index.js",
-  "scripts": {
-    "build": "",
-    "start": "node --es-module-specifier-resolution=node src/node/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
-}
-```
-
-- #### Step 7: To make sure everything is set up correctly, run
-
-```
-npm start
-```
-
-And see your `Hello world` printed in the console.
-
-## Generating types
-
-- #### Step 8: Next, open up your `dfx.json` file.
-
-To the definition of the `nft` canister, add a new configuration for `declarations -> node_compatibility`:
-
-```
-  "canisters": {
-    "nft": {
-      "package": "nft",
-      "candid": "nft.did",
-      "type": "rust",
-      "declarations": {
-        "node_compatibility": true
-      }
-    },
-```
-
-This will optimize the auto-generated JavaScript interface for `node.js` projects.
-
-- #### Step 9: Additionally, add a new canister, `asset`, which will be used to host the frontend assets for your NFTs.
-
-```
-    "asset": {
-      "type": "assets",
-      "source": ["dist"],
-      "declarations": {
-        "node_compatibility": true
-      }
-    },
-```
-
-- #### Step 10: Finally, remove the `dfx` setting as well as the `defaults` and `networks` settings.
-
-They will lock the project to a specific and outdated version of `dfx`, and use `dfx` 12 or later.
-
-After these steps, your `dfx.json` file should look like this:
-
-```json
-{
-  "version": 1,
-  "canisters": {
-    "nft": {
-      "package": "nft",
-      "candid": "nft.did",
-      "type": "rust",
-      "declarations": {
-        "node_compatibility": true
-      }
-    },
-    "asset": {
-      "type": "assets",
-      "source": ["dist"],
-      "declarations": {
-        "node_compatibility": true
-      }
-    },
-    "cap-router": {
-      "type": "custom",
-      "wasm": "cap/wasm/cap_router.wasm",
-      "candid": "cap/candid/router.did"
-    }
-  }
-}
-```
-
-- #### Step 11: Now, you can start up your project.
-
-You will use an example principal, derived from a seed phrase of the word `"test"` 12 times. This principal will be `rwbxt-jvr66-qvpbz-2kbh3-u226q-w6djk-b45cp-66ewo-tpvng-thbkh-wae`.
-
-:::caution
-It should go without saying that this is a testing seed phrase, and any real seed phrase used to deploy or manage a canister should be kept a secret.
-:::
-
-You can either run these commands in the terminal, or add them to a `setup.sh` file.
-
-```shell
-# setup.sh
-dfx start --clean --background
-dfx deploy nft --argument '(opt record{custodians=opt vec{principal"rwbxt-jvr66-qvpbz-2kbh3-u226q-w6djk-b45cp-66ewo-tpvng-thbkh-wae"}})'
-dfx deploy assets
-dfx canister call asset authorize "(principal  \"rwbxt-jvr66-qvpbz-2kbh3-u226q-w6djk-b45cp-66ewo-tpvng-thbkh-wae\")"
-```
-
-## Writing code
-
-### Generating declarations
-
-- #### Step 12: After running the above commands to build your canisters, you can run `dfx generate nft` to create an auto-generated interface for your canister.
-
-```
-dfx generate nft
-```
-
-The interface will be placed into `src/declarations/nft`, and will be used that to interact with the canister. Before you setup the actor, you will need to have an identity.
-
-### Identity from a seed phrase
-
-- #### Step 13: Since you are running the code using the `--es-module-specifier-resolution=node` flag, you can use `import` syntax in your code.
-
-Let's start by setting up an identity that will resolve to the principal that is mentioned above.
-
-Create a new file in the `src/node` directory called `identity.js` and insert the following code into the file:
+Before you setup an actor, you will need to have an identity. You can set up an identity that will resolve a seed phrase to a principal by using the following code:
 
 ```js
 // identity.js
@@ -226,187 +29,16 @@ const seed = "test test test test test test test test test test test test";
 export const identity = await Secp256k1KeyIdentity.fromSeedPhrase(seed);
 ```
 
-As you can see, the seed phrase is derived from the word `test`, repeated 12 times. This is useful for testing purposes and local development. When you are deploying your contract to ICP, you should change the seed out for something private.
+The seed phrase is derived from the word `test`, repeated 12 times. This is useful for testing purposes and local development. When you are deploying your contract to ICP, you should change the seed out for something private.
 
 :::caution
 Remember to store any seed phrase you use in production in a secure place. Use environment variables and never commit a real seed phrase in plaintext in your codebase.
 :::
 
-### Setting up an actor
 
-- #### Step 14: Back in `src > node > index.js` file, you can now set up your actor.
+## Asset uploading
 
-You can import a `createActor` utility from the `nft` declarations, as well as a `canisterId` alias, which by default points to `process.env.<canister-id>_CANISTER_ID`.
-
-You can pass the canister id environment variable logic to your application in a number of ways. You could:
-
-- Edit it into the start of your `package.json` scripts `NFT_CANISTER_ID=... node...`.
-- Install [dotenv](https://www.npmjs.com/package/dotenv) and configure it to read from a hidden `.env` file.
-
-For the sake of this example, which will focus on local development, you will simply read it from the local `canister_ids.json` file, which can be found in `.dfx/local/canister_ids.json`.
-
-So, to import the canister ID and set up your actor, it will look something like this:
-
-:::caution
-The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
-:::
-
-```js
-// src/node/index.js
-import fetch from "isomorphic-fetch";
-import { HttpAgent } from "@dfinity/agent";
-import { createRequire } from "node:module";
-import { canisterId, createActor } from "../declarations/nft/index.js";
-import { identity } from "./identity.js";
-
-// Require syntax is needed for JSON file imports
-const require = createRequire(import.meta.url);
-const localCanisterIds = require("../../.dfx/local/canister_ids.json");
-
-// Use `process.env` if available provoded, or fall back to local
-const effectiveCanisterId =
-  canisterId?.toString() ?? localCanisterIds.nft.local;
-
-const agent = new HttpAgent({
-  identity: await identity,
-  host: "http://127.0.0.1:4943",
-  fetch,
-});
-
-const actor = createActor(effectiveCanisterId, {
-  agent,
-});
-```
-
-At the end here, the actor is fully set up and ready to make calls to the local canister and the agent you have set up. Since this tutorial is focusing on local development the `host` is pointing to the local replica at `http://127.0.0.1:4943`. If you want to talk to the mainnet, the `host` should point to `https://icp-api.io`.
-
-:::info
-The port `4943` is the default port for the local replica. If you have changed the port, or you are using an older version of `dfx`, you will need to update it here and in the other instances in the code.
-:::
-
-### Minting logic
-
-Now, let's go through and write some logic to mint your NFTs. The steps will cover:
-
-- 1: Parsing a config for the NFTs to be minted.
-- 2: Loading assets and metadata for the assets.
-- 3: Generating thumbnails.
-- 4: Uploading assets to an asset canister.
-- 5: Minting the NFT.
-
-### Parse the config
-
-- #### Step 15: To parse the config, store it in a JSON file, using an array of items.
-
-There's the included "asset" name, plus some key-value metadata that can get loaded as well.
-
-Create a new file in the `src/node` directory called `nft.json` and insert the following content:
-
-```json
-// nfts.json
-[
-  {
-    "asset": "example_nft_0.png",
-    "metadata": {
-      "collection": "examples",
-      "sampleKey": "value"
-    }
-  }
-]
-```
-
-Then, load that in the `src/node/index.js` script:
-
-:::caution
-The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
-:::
-
-```js
-// index.js
-import { createRequire } from "node:module";
-const require = createRequire(import.meta.url);
-const nftConfig = require("./nfts.json");
-```
-
-### Prepare assets and metadata
-
-- #### Step 16: Next, let's load the image, using the `"asset"` path from JSON.
-
-In the `src/node/index.js` script, add the following:
-
-:::caution
-The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
-:::
-
-```js
-import path from "path";
-import fs from "fs";
-import mmm from "mmmagic";
-import { fileURLToPath } from "url";
-import sha256File from "sha256-file";
-// ...
-
-async function main() {
-  nftConfig.forEach(async (nft, idx) => {
-    // Parse metadata, if present
-    const metadata = Object.entries(nft.metadata ?? []).map(([key, value]) => {
-      return [key, { TextContent: value }];
-    });
-
-    const filePath = path.join(
-      fileURLToPath(import.meta.url),
-      "..",
-      "assets",
-      nft.asset
-    );
-
-    const file = fs.readFileSync(filePath); // Blob of file
-    const sha = sha256File(filePath); // SHA of file
-
-    // Detect filetype
-    const magic = await new mmm.Magic(mmm.MAGIC_MIME_TYPE);
-    const contentType = await new Promise((resolve, reject) => {
-      magic.detectFile(filePath, (err, result) => {
-        if (err) reject(err);
-        resolve(result);
-      });
-    });
-  });
-}
-main();
-```
-
-### Prepare thumbnail
-
-- #### Step 17: To prepare the thumbnail, you can use `image-thumbnail`, a utility based on `sharp`.
-
-In the `src/node/index.js` script, add the following:
-
-:::caution
-The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
-:::
-
-```js
-import imageThumbnail from "image-thumbnail";
-// ...
-const options = {
-  width: 256,
-  height: 256,
-  responseType: "buffer",
-  jpegOptions: { force: true, quality: 90 },
-};
-const thumbnail = await imageThumbnail(filePath, options);
-```
-
-### Upload assets
-
-- #### Step 18: You can use a community library to simplify uploading to your asset canister. You'll need to get the canister ID, pass your agent, and then upload your two files.
-
-In the `src/node/index.js` script, add the following:
-
-:::caution
-The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
-:::
+A community library, `@dfinity/assets`, is available to upload assets to your project's asset canister. You'll need to get the canister ID, pass your agent, and then upload your files. Below is an example code snippet showcasing this workflow:
 
 ```js
 import { Blob } from "buffer";
@@ -425,56 +57,164 @@ const assetManager = new AssetManager({
 
 async function main() {
   // ...
-  const uploadedFilePath = `token/${idx}${path.extname(nft.asset)}`;
+  const uploadedFilePath = `token/${idx}${path.extname(node_example.asset)}`;
   const uploadedThumbnailPath = `thumbnail/${idx}.jpeg`;
 
   await assetManager.store(file, { fileName: uploadedFilePath });
   await assetManager.store(thumbnail, { fileName: uploadedThumbnailPath });
 }
 ```
-
-### Assemble the data and mint
-
-- #### Step 19: Then, all you have left to do is assemble the metadata pointing to your uploaded assets, and to mint the NFT.
-
-In the `src/node/index.js` script, add the following:
-
 :::caution
-The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
+This example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file for context, please see [NFT example](#nft-example).
 :::
 
-```js
-async function main() {
-  // ...
-  const data = [
-    [
-      "location",
-      {
-        TextContent: `http://${assetCanisterId}.localhost:4943/${uploadedFilePath}`,
-      },
-    ],
-    [
-      "thumbnail",
-      {
-        TextContent: `http://${assetCanisterId}.localhost:4943/${uploadedThumbnailPath}`,
-      },
-    ],
-    ["contentType", { TextContent: contentType }],
-    ["contentHash", { BlobContent: encoder.encode(sha) }],
-    ...metadata,
-  ];
 
-  // set your minting identity as the recipient - replace if you have airdrops in mind
-  const principal = await (await identity).getPrincipal();
-  const mintResult = await actor.mint(principal, BigInt(idx), data);
+## WebSockets
 
-  // Verify token is minted
-  const metaResult = await actor.tokenMetadata(0n);
-}
+ICP doesn't natively support WebSockets, though the external package [ic-websocket-js](https://www.npmjs.com/package/ic-websocket-js) package can be used to implement WebSockets for ICP dapps.
+
+You can install this package with the command:
+
+```
+npm install --save ic-websocket-sdk
 ```
 
-## Final code
-Here is the full `src/node/index.js` script, with some console logs added to show process.
+:::info
+If your project uses a `@dfinity/…`, it is recommended to use version `v0.20.1` or newer.
+:::
+
+Then, define the constructor of the `IcWebSocket` class:
+
+```
+import { canisterId } from "../../declarations/node_example";
+import IcWebSocket, { generateRandomIdentity, createWsConfig } from "ic-websocket-js";
+import { node_example } from "../../declarations/node_example";
+
+const gatewayUrl = "ws://127.0.0.1:8080";
+const icUrl = "http://127.0.0.1:4943";
+
+const wsConfig = createWsConfig({
+  canisterId: backendCanisterId,
+  canisterActor: node_example,
+  identity: generateRandomIdentity(),
+  networkUrl: icUrl,
+});
+
+const ws = new IcWebSocket(gatewayUrl, undefined, wsConfig);
+```
+
+This implementation is similar to the native browser WebSocket API, though there are some parameters that need to be configured:
+
+- `canisterId`: Your project's backend canister ID.
+
+- `canisterActor`: Imported from your canister's generated declarations (`dfx generate`). Used to serialize and deserialize the WebSocket messages automatically.
+
+- `gatewayUrl`: The WebSocket URL of the gateway.
+
+- `networkUrl`: The URL of the local replica.
+
+- `identity`: The identity that the SDK uses to sign the client’s messages. Here you can pass the user’s Internet Identity or use a `generateRandomIdentity` helper function to generate a random temporary one.
+
+Now you can specify your business logic and declare the callback for each WebSocket event:
+
+```js
+import { canisterId } from "../../declarations/node_example";
+import IcWebSocket, { generateRandomIdentity, createWsConfig } from "ic-websocket-js";
+import { node_example } from "../../declarations/node_example";
+
+const gatewayUrl = "ws://127.0.0.1:8080";
+const icUrl = "http://127.0.0.1:4943";
+
+const wsConfig = createWsConfig({
+  canisterId: backendCanisterId,
+  canisterActor: node_example,
+  identity: generateRandomIdentity(),
+  networkUrl: icUrl,
+});
+
+const ws = new IcWebSocket(gatewayUrl, undefined, wsConfig);
+
+ws.onopen = () => {
+  console.log("Connected to the canister");
+};
+
+ws.onmessage = async (event) => {
+  console.log("Received message:", event.data);
+
+  const messageToSend = {
+    text: event.data.text + "-pong",
+  };
+  ws.send(messageToSend);
+};
+
+ws.onclose = () => {
+  console.log("Disconnected from the canister");
+};
+
+ws.onerror = (error) => {
+  console.log("Error:", error);
+};
+```
+
+You can view a full example using this library with a [Rust](https://github.com/omnia-network/ic_websocket_example) backend or a [Motoko](https://github.com/iamenochchirima/ic-websockets-pingpong-mo) backend.
+
+[Learn more about WebSockets on ICP](https://medium.com/@ilbert/websockets-on-the-ic-getting-started-5f8bcdfaabdc).
+
+## Testing
+
+To create an end2end (e2e) test for your project's backend canister using `agent-js`, first create a new test file in your project's `src/tests/` subdirectory. Name the file `e2e_tests_backend.test.ts`, then insert the following content:
+
+
+```ts
+import { expect, test } from "vitest";
+import { Actor, CanisterStatus, HttpAgent } from "@dfinity/agent";
+import { Principal } from "@dfinity/principal";
+import { e2e_tests_backendCanister, e2e_tests_backend } from "./actor";
+
+test("should handle a basic greeting", async () => {
+  const result1 = await e2e_tests_backend.greet("test");
+  expect(result1).toBe("Hello, test!");
+});
+```
+
+This test will do the following:
+
+- Imports dependent packages and the agent's functions from the `actor.js` file.
+
+- Defines a test method that accepts two arguments. Inside this method, `expect` is used to check the result of the backend canister's `greet` function against the expected result.
+
+This test is written for the [default backend canister](/docs/current/developer-docs/getting-started/default-template).
+
+To run this test, you will need to deploy your project and generate the necessary declarations for your canister. [Learn more about creating and deploying a project](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-2/2.5-unit-testing#end2end-e2e-testing).
+
+Once you have deployed your canisters and generated the declarations, run your test with the command:
+
+```
+npm test
+```
+
+The test should be successful and return output such as:
+
+```
+ ✓ src/tests/e2e_tests_backend.test.ts (1)
+   ✓ should handle a basic greeting
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  16:24:03
+   Duration  205ms (transform 32ms, setup 0ms, collect 68ms, tests 11ms, environment 0ms, prepare 41ms)
+
+
+ PASS  Waiting for file changes...
+       press h to show help, press q to quit
+```
+
+Learn more about [testing](/docs/current/tutorials/developer-journey/level-2/2.5-unit-testing) with an agent and [view a more complex test example](/docs/current/tutorials/developer-journey/level-2/2.5-unit-testing#end2end-e2e-testing).
+
+
+## NFT example
+
+To demonstrate how you can use Node.js to implement functionality to upload assets, create an NFT collection, and mint an NFT for an identity, the following agent-js `src/node/index.js` script can be used in conjunction with the [DIP721 NFT](https://github.com/dfinity/examples/tree/master/motoko/dip721-nft-container) backend canister example:
 
 ```js
 import fetch from "isomorphic-fetch";
@@ -558,7 +298,7 @@ async function main() {
      * For asset in nfts.json
      *
      * Take asset
-     * Check extenstion / mimetype
+     * Check extension / mimetype
      * Sha content
      * Generate thumbnail
      * Upload both to asset canister -> file paths
