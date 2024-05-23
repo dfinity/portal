@@ -69,7 +69,7 @@ export const CardsSection = () => {
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">ICP Ecosystem</h2>
       </CardWithImage>
 
-      <CardWithImage href="/docs/current/home" image="/img/home/dev-card.webp">
+      <CardWithImage href="/docs/current/home" image="/img/home/dev-card.svg">
         <div className="tw-heading-7 md:tw-heading-6 mb-2">Developer Docs</div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Start coding</h2>
       </CardWithImage>
