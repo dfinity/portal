@@ -17,6 +17,70 @@ import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 
 const MotionLink = motion(Link);
 
+const projects = [
+  {
+    imgSrc: "img/ethereum-integration/bitfinity.webp",
+    title: "Bitfinity",
+    description:
+      "Bitfinity is a fast, next-generation EVM that allows you to deploy smart contracts written in Solidity on the IC",
+    link: "https://bitfinity.network/",
+  },
+  {
+    imgSrc: "img/ethereum-integration/msq.webp",
+    title: "MSQ",
+    description: "Masquerade (MSQ) is a Matamask Snap based wallet.",
+    link: "https://msq.tech/",
+  },
+  {
+    imgSrc: "img/ethereum-integration/zcloak.webp",
+    altText: "zCloak Logo",
+    title: "zCloak",
+    description:
+      "zCloak network is developing a chain abstraction based Zero Knowledge coprocessor on the IC.",
+    link: "https://zcloak.network/",
+  },
+  {
+    imgSrc: "img/ethereum-integration/siwe.webp",
+    altText: "SIWE Logo",
+    title: "SIWE",
+    description:
+      "Sign In With Ethereum(SIWE)is a collection of support libraries and template dapps to simplify the process for Ethereum developers to enable sign in with the EIP-4361 standard.",
+    link: "https://github.com/kristoferlund/ic-siwe/tree/main/packages/ic_siwe",
+  },
+  {
+    imgSrc: "img/ethereum-integration/helix.webp",
+    altText: "Helix Logo",
+    title: "Helix",
+    description:
+      "Helix Markets stands out as a groundbreaking hybrid spot orderbook decentralized exchange (DEX) meticulously crafted on the Internet Computer (IC) protocol.",
+    link: "https://helixmarkets.io",
+  },
+  {
+    imgSrc: "img/ethereum-integration/orally.webp",
+    altText: "Orally Logo",
+    title: "Orally",
+    description:
+      "Orally is a decentralized data oracle provider. The goal of Orally’s suite of products is to make digital asset data and real world data accessible on-chain.",
+    link: "https://orally.network/",
+  },
+  {
+    imgSrc: "img/ethereum-integration/chainsight.webp",
+    altText: "Chainsight Logo",
+    title: "Chainsight",
+    description:
+      "Chainsight provides a data processing layer to develop dapps that go one step ahead. It is an extension layer that leverages historical data, constantly updated data, and cross-chain data to compute the information you need for your dapp.",
+    link: "https://chainsight.network/",
+  },
+  {
+    imgSrc: "img/ethereum-integration/nfid.webp",
+    altText: "NFID Vaults Logo",
+    title: "NFID Vaults",
+    description:
+      "NFID Vaults is the only omni-chain smart wallet protocol on the web. People who want the most robust security for their assets use NFID Vaults to protect them from theft, loss, collusion, and fraud.",
+    link: "https://www.nfidvaults.com/",
+  },
+];
+
 const Prose: React.FC<{
   children: React.ReactNode;
   className?: string;
@@ -49,12 +113,44 @@ const AnimatedProse: React.FC<{
   </motion.div>
 );
 
+const ProjectCard: React.FC<{
+  imgSrc: string;
+  title: string;
+  description: string;
+  link: string;
+}> = ({ imgSrc, title, description, link }) => {
+  return (
+    <div className="md:rounded-[32px] md:bg-white/60 md:backdrop-blur-2xl px-6 md:p-12">
+      <img
+        src={`${imgSrc}`}
+        alt=""
+        loading="lazy"
+        className="rounded-2xl w-full"
+      />
+      <div className="md:pr-20">
+        <h3 className="tw-heading-5 md:tw-heading-4 text-gradient mb-4 mt-6 md:mb-6 md:mt-12">
+          {title}
+        </h3>
+        <p className="tw-paragraph md:tw-lead-sm mb-5">{description}</p>
+        <Link
+          className="link-primary link-with-icon"
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <LinkArrowRight /> Learn More
+        </Link>
+      </div>
+    </div>
+  );
+};
+
 function EthereumIntegrationPage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const isDark = useDarkHeaderInHero(heroRef);
   return (
     <Layout
-      title="Ethereum Integration"
+      title="Hello, Ethereum"
       description="A true World Computer enables a multi-chain environment where centralized bridges are obsolete and smart contracts can seamlessly communicate across blockchains. ICP already integrates with the Bitcoin Network, and native ETH integration is underway."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
@@ -82,17 +178,17 @@ function EthereumIntegrationPage() {
                 className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6"
                 variants={transitions.item}
               >
-                ICP as an Ethereum sidechain
+                Hello, Ethereum
               </motion.h1>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-0"
                 variants={transitions.item}
               >
-                Because ICP canister smart contracts can call into Ethereum smart contracts, 
-                it enables a true World Computer in a multi-chain environment smart contracts can
-                seamlessly communicate across blockchains. ICP already
-                integrates with the Bitcoin Network, and native ETH integration
-                is underway.
+                Chain Fusion Technology brings unique ICP features to Ethereum. Smart contracts gain access to threshold
+                signing services, oracles, DAO frameworks, privacy tools, pass
+                key authentication, smart contract wallets, and reverse gas
+                fees. Augment Ethereum dapps to build seamless multichain
+                solutions for DeFi, NFT trading, payments, SocialFi and more. 
               </motion.p>
             </div>
           </AnimateSpawn>
@@ -116,13 +212,15 @@ function EthereumIntegrationPage() {
           el={motion.section}
           variants={transitions.container}
         >
-          <div className="md:w-5/10">
+          <div className="md:w-6/10">
             <motion.h2
-              className="tw-heading-5 sm:tw-heading-4 md:tw-heading-3 mb-0  text-gradient"
+              className="tw-heading-5 sm:tw-heading-5 md:tw-heading-4 mb-0  text-gradient"
               variants={transitions.item}
             >
-              Canister smart contracts on ICP are the glue between blockchains
-              and the gateway to multi-chain advantages.
+              Full support for Ethereum and other EVM chains is now live
+              allowing ICP smart contracts to augment EVM-based smart contracts
+              with additional functionality through ICP's superpowers, transfer
+              tokens on other chains, and call smart contracts on EVM chains.
             </motion.h2>
             {/* <motion.p className="tw-paragraph mb-0" variants={transitions.item}>
               <Link href="#subscribe" className="button-primary">
@@ -135,7 +233,57 @@ function EthereumIntegrationPage() {
         <section className="container-10 my-20 sm:my-30 md:my-40">
           <AnimateSpawn
             variants={transitions.container}
-            className="text-center mb-10 sm:mb-16 sm:w-[600px] md:w-7/10 sm:mx-auto"
+            className="bg-white px-10 md:px-16 pt-6 pb-1 md:pb-12 md:pt-12 gap-8 mb-10 sm:mb-40 rounded-xl "
+          >
+            <motion.div>
+              <aside className="container-10 md:flex md:items-center mt-6 md:mt-0 !pl-0	!pr-0">
+                <div className="md:w-1/2">
+                  <motion.h5
+                    className="tw-heading-5 md:tw-heading-4 mb-3 sm:mb-6 "
+                    variants={transitions.item}
+                  >
+                    Tritium Milestone is now live!
+                  </motion.h5>
+
+                  <motion.ul
+                    className="mb-0 mt-4 md:mt-6 tw-paragraph md:tw-lead-sm text-bold text-black"
+                    variants={transitions.item}
+                  >
+                    <li className="mb-2">
+                      RPC canister for Ethereum & EVM integration
+                    </li>
+                    <li className="mb-2">
+                      Threshold ECDSA signing latency & throughput improvements
+                    </li>
+                    <li className="mb-2">
+                      Chain-key ERC20 (ckERC20) tokens & ckUSDC
+                    </li>
+                  </motion.ul>
+                  <p className="mb-0 mt-8">
+                    <Link
+                      className="link-primary link-with-icon"
+                      href="/roadmap"
+                    >
+                      <LinkArrowRight></LinkArrowRight>
+                      READ MORE
+                    </Link>
+                  </p>
+                </div>
+                <div className="md:w-1/2 relative md:mt-6 md:mb-3">
+                  <div className="pointer-events-none md:absolute w-full md:-right-20 md:top-1/2  md:-translate-y-1/2">
+                    <motion.img
+                      className="w-[90%] h-full object-cover"
+                      src="/img/roadmap/roadmap-viz.webp"
+                      alt="roadmap"
+                    />
+                  </div>
+                </div>
+              </aside>
+            </motion.div>
+          </AnimateSpawn>
+          <AnimateSpawn
+            variants={transitions.container}
+            className="text-left md:text-center mt-20 md:mt-10 mb-10 sm:mb-16 sm:w-[600px] md:w-7/10 sm:mx-auto"
           >
             <motion.h2
               className="tw-heading-3 sm:tw-heading-60 mb-6 sm:mb-10"
@@ -148,7 +296,7 @@ function EthereumIntegrationPage() {
               variants={transitions.item}
             >
               Ethereum is the world’s top blockchain for DeFi with TVL in the
-              billions. Integrating with ICP offers multi-chain benefits such as
+              billions. Integrating with ICP offers cross-chain benefits such as
               increased asset liquidity, expanded market access, improved
               scalability and throughput. Plus, access to ICP’s unique
               capabilities:
@@ -214,70 +362,27 @@ function EthereumIntegrationPage() {
         </section>
 
         <section className="container-12 flex flex-col gap-16 md:gap-40 mt-30 md:mt-60">
-          <TranslatedLayout imageUrl="/img/ethereum-integration/image-1.webp">
-            <h2 className="md:tw-heading-60 md:mb-6">
-              Signing Ethereum transactions
-            </h2>
-            <p className="tw-lead-sm mb-6 md:mb-6">
-              Today, ICP smart contracts are capable of offering the on-chain
-              Ethereum full node API by using the{" "}
-              <Link href="/https-outcalls" className="link-subtle">
-                HTTPS outcalls feature
-              </Link>{" "}
-              to cloud API providers to securely query the Ethereum blockchain,
-              and send transactions to it. 
-            </p>
-            <p className="tw-lead-sm mb-6 md:mb-10">
-              Chain-key (ck) ECDSA , which is already available to any canister
-              smart contract on the Internet Computer, can invoke smart
-              contracts calls on the Ethereum blockchain by creating and signing
-              transactions to be executed by the Ethereum network.
-            </p>
-            <p className="mb-0">
-              <Link
-                href="https://wiki.internetcomputer.org/wiki/Trustless_multi-chain_web3_using_the_IC"
-                className="link-primary link-with-icon"
-              >
-                About ckECDSA signing & multi-chain <LinkArrowRight />
-              </Link>
-            </p>
-          </TranslatedLayout>
           <TranslatedLayout
             reverse={true}
             imageUrl="/img/ethereum-integration/image-2.webp"
           >
             <h2 className="tw-heading-3 md:tw-heading-60 md:mb-6">
-              Multi-chain DeFi
+              Multichain DeFi with ckTokens
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-6">
-              In June 2023, average transaction fees for USDC and USDT were
-              $4.21 and $5.46 respectively, making swaps below a certain amount
-              is completely impractical. The Ethereum integration enables the
-              use of chain-key (ck) tokens such as ckETH and ckERC-20 on the
-              Internet Computer, including ckUSDC or ckUSDT. This feature allow
-              users to send and receive ETH value on ICP DEXs for a few cents
+              In May 2024, average transaction fees for USDC and USDT were $6.66
+              and $9.93 respectively, making swaps below a certain amount
+              impractical. ICP’s Ethereum integration enables the use of
+              chain-key tokens such as ckETH and ckERC-20 on ICP. This allows
+              users to send and receive ETH value on ICP DEXs for a few cents,
               with 1-2s finality, and no gas fees.
             </p>
             <p className="tw-lead-sm mb-6 md:mb-6">
-              ckETH is now live on the mainnet and exposes ICRC-1 and 2 ledger
-              interfaces (the fungible token standard of ICP), making it simple
-              for all ICP wallets to offer ckETH support. Total value of ckETH
-              is fully backed 1:1 by ETH, and can always be verified by viewing
-              the on-chain dashboard and metrics of the canisters. ckERC-20 is coming soon.
-            </p>
-            <p className="mb-0 flex flex-col gap-3 items-start">
-              <Link href="/defi" className="link-primary link-with-icon">
-                <LinkArrowRight />
-                Start swapping ckETH
-              </Link>
-
-              <Link
-                href="https://dashboard.internetcomputer.org/ethereum"
-                className="link-primary link-with-icon"
-              >
-                <LinkArrowRight />
-                Go to ckETH dashboard
-              </Link>
+              ckETH and ckERC-20 expose ICRC-1 and 2 ledger interfaces (the
+              token standards of ICP), making it simple for all ICP wallets to
+              offer ckETH support. Total value of ckETH is fully backed 1:1 by
+              ETH, and can always be verified by viewing the on-chain dashboard
+              and metrics of the canisters.
             </p>
           </TranslatedLayout>
           <TranslatedLayout imageUrl="/img/ethereum-integration/image-3.webp">
@@ -285,13 +390,12 @@ function EthereumIntegrationPage() {
               EVM on the Internet Computer
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
-              An Ethereum Virtual Machine (EVM) is coming to the Internet
-              Computer built by Bitfinity — a team of developers from the ICP
-              community. Bitfinity is delivering a turn-key solution for
-              developers to operate their ETH dapps on the Internet Computer
-              using Solidity, which brings ICP's 1-2s finality, and near 0
-              transaction fees to established Ethereum dapps, providing an
-              incredibly efficient Ethereum scaling solution.
+            An Ethereum Virtual Machine (EVM) is available on ICP built by Bitfinity — 
+            a team of developers from the ICP community. 
+            Bitfinity offers a turn-key solution for developers to operate their 
+            ETH dapps on the Internet Computer using Solidity, which brings ICP's 
+            1-2s finality, and near-0 transaction fees to established Ethereum dapps, 
+            providing an incredibly efficient Ethereum scaling solution.
             </p>
             <p className="mb-0">
               <Link
@@ -307,29 +411,24 @@ function EthereumIntegrationPage() {
             imageUrl="/img/ethereum-integration/image-4.webp"
             reverse
           >
-            <h2 className="md:tw-heading-60 md:mb-6">
-              Full protocol integration
-            </h2>
+            <h2 className="md:tw-heading-60 md:mb-6">Ethereum integration</h2>
+            <p className="tw-lead-sm font-bold mt-1">EVM RPC</p>
             <p className="tw-lead-sm mb-6 md:mb-10">
-              Full protocol-level integration involves realizing an on-chain
-              Ethereum API on the Internet Computer that will enble smart
-              contracts on the Internet Computer to call smart contracts on
-              Ethereum and vice versa. This API will be enabled by running
-              Ethereum full nodes next to each ICP replica on a large ICP
-              subnet, and communicating with these subnets from the replicas
-              through ICP consensus. This end-to-end framework for
-              protocol-level integration with Ethereum is still in development,
-              although individual Internet Computer technology features can
-              already be combined to interact with Ethereum.
+              The EVM RPC canister is an ICP smart contract for communicating
+              with Ethereum and other EVM blockchains using an on-chain API. It
+              introduces methods that massively simplify the developer
+              experience. The Tritium milestone allows communication with
+              Ethereum, Arbitrum, Optimism and Base. Interoperability can be
+              increased by simply adding other network API keys.
             </p>
-
-            <p className="mb-0">
-              <Link
-                href="https://forum.dfinity.org/t/long-term-r-d-integration-with-the-ethereum-network/9382"
-                className="link-primary link-with-icon"
-              >
-                Join the Ethereum Integration discussion <LinkArrowUpRight />
-              </Link>
+            <p className="tw-lead-sm font-bold mt-3">Chain-key signatures</p>
+            <p className="tw-lead-sm mb-6 md:mb-10">
+              ICP nodes collaborate to produce threshold-ECDSA signatures,
+              enabling canister smart contracts to sign Ethereum transactions.
+              Leveraging the EVM RPC canister, Ethereum transactions can be
+              written to EVM chains. Chain-key signatures also derive Ethereum
+              addresses, enabling ICP smart contracts to read, write and own
+              ETH.
             </p>
           </TranslatedLayout>
         </section>
@@ -387,10 +486,10 @@ function EthereumIntegrationPage() {
           variants={transitions.container}
         >
           <div className="container-10 ">
-            <h2 className="mb-8 tw-heading-60">
+            <h2 className="mb-8 tw-heading-3 md:tw-heading-60">
               Build your own Ethereum
               <br />
-              multi-chain solution
+              X-chain solution
             </h2>
 
             <VideoCard
@@ -408,6 +507,45 @@ function EthereumIntegrationPage() {
             />
           </div>
         </AnimateSpawn>
+        <section className="container-12 mt-24 md:mt-40">
+          <AnimateSpawn
+            variants={transitions.container}
+            className="text-left md:text-center mb-10 sm:mb-16 md:w-5/10 sm:mx-auto"
+          >
+            <motion.h2
+              className="tw-heading-3 sm:tw-heading-60 mb-6 sm:mb-10 text-gradient"
+              variants={transitions.item}
+            >
+              ETH Projects
+            </motion.h2>
+            <motion.p
+              className="mb-0 tw-paragraph md:tw-lead-sm"
+              variants={transitions.item}
+            >
+              Ethereum on ICP is not just a future promise. Developers are
+              already building incredible use cases with Ethereum on ICP.
+            </motion.p>
+          </AnimateSpawn>
+          <AnimateSpawn
+            className="container-12 grid md:grid-cols-2 gap-16 md:gap-10 py-16 md:py-0 bg-white md:bg-transparent rounded-xl"
+            el={motion.section}
+            variants={transitions.container}
+          >
+            {projects.map((project, index) => (
+              <ProjectCard key={index} {...project} />
+            ))}
+          </AnimateSpawn>
+          <div className="flex justify-center items-center mt-10">
+            {" "}
+            <Link
+              className="button-primary text-center mb-6 md:mb-8"
+              href="/ecosystem?tag=Ethereum"
+            >
+              More Projects Building on Ethereum
+            </Link>
+          </div>
+        </section>
+
         <section className="max-w-page relative mx-auto mb-20 px-6 md:mb-20 md:px-15 md:mt-40">
           <AnimateSpawn
             className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-16 relative"
