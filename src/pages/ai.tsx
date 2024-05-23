@@ -235,7 +235,6 @@ function AIPage() {
                   The black-box AI problem
                 </motion.h3>
                 <motion.p className="text-2xl mb-0 ">
-             
                   As companies race to build AI-powered products, they leave
                   users no option but to blindly trust the underlying AI models.
                   Their behavior is non-deterministic and not verifiable. Worse,{" "}
