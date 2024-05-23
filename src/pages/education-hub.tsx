@@ -50,14 +50,11 @@ function filterCourses(
       languages?.some((item) => selectedLanguages.includes(item))
     );
   }
-  if (selectedContentLanguages.length > 0) {
-    courses = courses.filter(({ contentLanguages }) =>
-      contentLanguages?.some((item) => selectedContentLanguages.includes(item))
-    );
-  }
   if (selectedLevels.length > 0) {
-    courses = courses.filter(({ level }) =>
-      level?.some((item) => selectedLevels.includes(item))
+    courses = courses.filter(
+      ({ level }) =>
+        Array.isArray(level) &&
+        level.some((item) => selectedLevels.includes(item as CourseLevel))
     );
   }
   if (selectedContentTypes.length > 0) {
