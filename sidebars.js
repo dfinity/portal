@@ -36,10 +36,8 @@ const sidebars = {
           type: "category",
           label: "Cycles",
           items: [
+            "developer-docs/getting-started/cycles/overview",
             "developer-docs/getting-started/cycles/cycles-faucet",
-	    "developer-docs/getting-started/cycles/cycles-ledger",
-            "developer-docs/getting-started/cycles/cycles-wallet",
-            "developer-docs/getting-started/cycles/converting_icp_tokens_into_cycles",
           ],
         },
         {
@@ -160,12 +158,12 @@ const sidebars = {
             "developer-docs/smart-contracts/maintain/history",
             "developer-docs/smart-contracts/maintain/import",
             "developer-docs/smart-contracts/maintain/recovery",
+	    "developer-docs/smart-contracts/maintain/resource-limits",
             "developer-docs/smart-contracts/maintain/state",
             "developer-docs/smart-contracts/maintain/settings",
             "developer-docs/smart-contracts/maintain/storage",
-            "developer-docs/smart-contracts/maintain/upgrade",
-            "developer-docs/smart-contracts/maintain/resource-limits",
             "developer-docs/smart-contracts/maintain/trapping",
+            "developer-docs/smart-contracts/maintain/upgrade",
             {
               type: "category",
               label: "Cost",
@@ -190,8 +188,8 @@ const sidebars = {
           items: [
             "developer-docs/smart-contracts/test/benchmarking",
             "developer-docs/smart-contracts/test/pocket-ic",
+	    "developer-docs/smart-contracts/test/reproducible-builds",
             "developer-docs/smart-contracts/test/staging-environment",
-            "developer-docs/smart-contracts/test/reproducible-builds",
             "developer-docs/smart-contracts/test/troubleshooting",
           ],
         },
@@ -199,15 +197,15 @@ const sidebars = {
           type: "category",
           label: "Advanced features",
           items: [
+	    {
+              type: "doc",
+              label: "Async code and inter-canister calls",
+              id: "developer-docs/smart-contracts/advanced-features/async-code",
+            },
             {
               type: "doc",
               label: "Composite queries",
               id: "developer-docs/smart-contracts/advanced-features/composite-query",
-            },
-            {
-              type: "doc",
-              label: "Management canister",
-              id: "developer-docs/smart-contracts/advanced-features/management-canister",
             },
             {
               type: "doc",
@@ -220,11 +218,6 @@ const sidebars = {
               id: "developer-docs/smart-contracts/advanced-features/serving-http-request",
             },
             {
-              type: "doc",
-              label: "Async code and inter-canister calls",
-              id: "developer-docs/smart-contracts/advanced-features/async-code",
-            },
-            {
               type: "category",
               label: "HTTPS outcalls",
               items: [
@@ -235,13 +228,10 @@ const sidebars = {
                 "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-post",
               ],
             },
-            {
-              type: "category",
-              label: "On-chain signatures: Threshold ECDSA",
-              items: [
-                "developer-docs/smart-contracts/encryption/t-ecdsa",
-                "developer-docs/smart-contracts/encryption/signing-transactions",
-              ],
+	    {
+              type: "doc",
+              label: "Management canister",
+              id: "developer-docs/smart-contracts/advanced-features/management-canister",
             },
             {
               type: "category",
@@ -255,6 +245,14 @@ const sidebars = {
               type: "doc",
               label: "On-chain randomness",
               id: "developer-docs/smart-contracts/advanced-features/randomness",
+            },
+	    {
+              type: "category",
+              label: "On-chain signatures: Threshold ECDSA",
+              items: [
+                "developer-docs/smart-contracts/encryption/t-ecdsa",
+                "developer-docs/smart-contracts/encryption/signing-transactions",
+              ],
             },
             "developer-docs/smart-contracts/advanced-features/periodic-tasks",
             "developer-docs/smart-contracts/advanced-features/system-canisters",
@@ -429,6 +427,7 @@ const sidebars = {
               ],
             },
             "developer-docs/developer-tools/cli-tools/ic-admin",
+            "developer-docs/developer-tools/cli-tools/idl2json",
           ],
         },
         {
@@ -540,6 +539,7 @@ const sidebars = {
               type: "category",
               label: "Authentication",
               items: [
+                "developer-docs/identity/authentication/overview",
 		        {
 	          type: "category",
                   label: "Internet Identity (II)",
@@ -622,6 +622,15 @@ const sidebars = {
           type: "doc",
           label: "Overview",
           id: "developer-docs/defi/overview",
+        },
+        {
+          type: "category",
+          label: "Cycles",
+          items: [
+            "developer-docs/defi/cycles/cycles-ledger",
+            "developer-docs/defi/cycles/cycles-wallet",
+            "developer-docs/defi/cycles/converting_icp_tokens_into_cycles",
+          ]
         },
         {
           type: "category",
@@ -786,6 +795,7 @@ const sidebars = {
           items: [
             "developer-docs/defi/asset-custody/custody-options",
             "developer-docs/defi/asset-custody/self-custody-quickstart",
+            "developer-docs/defi/asset-custody/hardware-wallet-cli",
           ],
         },
         {
