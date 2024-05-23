@@ -5,8 +5,6 @@ const os = require("os");
 const fs = require("fs");
 const path = require("path");
 const axios = require("axios");
-const dotenv = require("dotenv");
-dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
 
 // const dotenv = require("dotenv");
 const isDev = (process.env.NODE_ENV || "development") === "development";

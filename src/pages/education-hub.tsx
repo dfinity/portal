@@ -13,7 +13,6 @@ import {
   CourseLanguage,
   CourseLevel,
 } from "@site/src/components/Common/courseItems";
-import communityProjects from "@site/community/communityProjects";
 import {
   deserializeStringList,
   serializeStringList,
@@ -22,18 +21,10 @@ import {
 import { motion } from "framer-motion";
 import React, { useRef, useEffect } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
-import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
-import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
-import LinkCardsSection from "../components/Common/LinkCardsSection";
 import ShareMeta from "../components/Common/ShareMeta";
 import { useFontsLoaded } from "@site/src/utils/use-fonts-loaded";
-import VideoCard from "../components/Common/VideoCard/index";
-// import youtubeData from "@site/.docusaurus/youtube/default/youtube.json";
-import { NewsCard } from "../components/NewsPage/Cards";
 import clsx from "clsx";
-import CodeBlockString from "../theme/CodeBlock/Content/String";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
-import PromoCard from "../components/GlobalEvents/PromoCard";
 
 const MotionLink = motion(Link);
 
@@ -48,6 +39,11 @@ function filterCourses(
   if (selectedLanguages.length > 0) {
     courses = courses.filter(({ languages }) =>
       languages?.some((item) => selectedLanguages.includes(item))
+    );
+  }
+  if (selectedContentLanguages.length > 0) {
+    courses = courses.filter(({ contentLanguages }) =>
+      contentLanguages?.some((item) => selectedContentLanguages.includes(item))
     );
   }
   if (selectedLevels.length > 0) {
