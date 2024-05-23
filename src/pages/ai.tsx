@@ -235,7 +235,28 @@ function AIPage() {
                   The black-box AI problem
                 </motion.h3>
                 <motion.p className="text-2xl mb-0 ">
-                  As companies race to build AI-powered products, they leave
+                <p>
+                Trust in AI models faces two major challenges. First,{" "} 
+                <Link
+                    className="font-bold"
+                    to="https://twitter.com/AnthropicAI/status/1745854907968880970"
+                    target="_blank"
+                  >
+                    research shows
+                  </Link>{" "}
+                shows that is possible to tamper with AI models in an undetectable way. 
+                This means that the integrity of the AI&apos;s output can be compromised 
+                without anyone knowing. Second, users have no visibility into how 
+                their data is used and how AI models produce responses. 
+                This lack of transparency makes it difficult for users to trust 
+                the technology.
+                </p>
+                <p>
+                However, ICP can help address both of these issues by enhancing 
+                transparency and security in the development and deployment of AI models.
+                </p>
+
+                  {/* As companies race to build AI-powered products, they leave
                   users no option but to blindly trust the underlying AI models.
                   Their behavior is non-deterministic and not verifiable. Worse,{" "}
                   <Link
@@ -250,7 +271,7 @@ function AIPage() {
                   is used and how AI models produces responses. Since AI models
                   behave like black boxes to users, building trustworthy AI
                   models is a difficult challenge that can be solved by training
-                  and running the models on ICP.
+                  and running the models on ICP. */}
                 </motion.p>
               </div>
             </aside>
