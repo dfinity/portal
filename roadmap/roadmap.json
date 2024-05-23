@@ -1138,10 +1138,10 @@
         "eta": "none",
         "elements": [
           {
-            "title": "Shared canister memory through memory mapping",
-            "overview": "Memory mapping allows canisters to share large common memory areas, e.g., an AI model.",
-            "description": "Memory mapping allows canisters to share large common memory areas, e.g., an AI model.",
-            "status": "",
+            "title": "Increase the instruction limit in queries from 5 billion instructions to 40 billion instructions.",
+            "overview": "The goal of this feature is to bring the instruction limit of queries on par with that of update calls by introducing a way for canisters to opt in into query charging.",
+            "description": "Currently, queries have a lower instruction limit compared to the update calls because canisters do not pay for query execution. The goal of this feature is to bring the instruction limit of queries on par with that of update calls by introducing a way for canisters to opt in into query charging.",
+            "status": "future",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -2914,19 +2914,6 @@
         "eta": "none",
         "elements": [
           {
-            "title": "Cycles ledger",
-            "overview": "Ledger for cycles to allow non-canister principals to hold cycles. Simplifies the development workflow.",
-            "description": "The cycles ledger is, as its name suggests, a ledger for cycles on ICP. Its purpose is to hide the limitation that non-canister principals cannot hold cycles in the context of canister development. With the cycles ledger, developers do not need the hard-to-handle and unintuitive concept of cycles wallets any more, but charge cycles into the cycles wallet instead. This creates the impression w.r.t. the developer workflow that the developer principal used to deploy canisters holds cycles itself.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false
-          },
-          {
             "title": "Rosetta for ICRC ledgers",
             "overview": "Implement the Rosetta standard for ICRC-based ledgers. Enables ICRC tokens to be handled by centralized exchanges.",
             "description": "Rosetta is a quasi standard put forth by Coinbase for the integration of blockchain ledgers with centralized exchanges. Besides a Rosetta implementation for the ICP ledger, an implementation for ICRC ledgers using ICRC-3 as block storage format is implemented in the scope of this feature.",
@@ -3334,6 +3321,18 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false
+          },
+          {
+            "title": "Increase reward for SNS launch proposals to 20",
+            "overview": "Increase the reward weight of NNS proposals of topic \"SNS & Neuron’s Fund\" to 20 to incentivize more active voting and have the same rules as for proposals of topic \"Governance\"",
+            "description": "",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false
           }
         ]
       },
@@ -3347,18 +3346,6 @@
             "title": "Visual indicator of actionable proposals in the NNS dapp",
             "overview": "Users will see a ‘notification’-like indicator in the NNS dapp next to the name of different projects that show how many open governance proposals there are that the user can vote on.",
             "description": "Users will see a ‘notification’-like indicator in the NNS dapp next to the different projects that show how many open governance proposals there are that the user has eligible neurons to vote on. This allows users to quickly get a glance of all the proposals that they can still vote on, instead of having to click through every project that may have open proposals.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false
-          },
-          {
-            "title": "Increase reward for SNS launch proposals to 20",
-            "overview": "Increase the reward weight of NNS proposals of topic \"SNS & Neuron’s Fund\" to 20 to incentivize more active voting and have the same rules as for proposals of topic \"Governance\"",
-            "description": "",
             "status": "in_progress",
             "forum": "",
             "proposal": "",
@@ -3697,10 +3684,25 @@
             "wiki": "",
             "docs": "",
             "eta": "",
-            "status": "",
+            "status": "in_progress",
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Beryllium"
+          },
+          {
+            "title": "Cycles Ledger",
+            "overview": "The Cycles Ledger replaces the cycles wallet as the recommended solution for managing cycles across projects.",
+            "description": "The Cycles Ledger replaces the cycles wallet as the recommended solution for managing cycles across projects. Prior to the development of the Cycles Ledger, the Cycles Wallet had been a source of confusion for many newcomers in the ecosystem. It is not a critical path for developing dapps on the Internet Computer and requires extensive prerequisite knowledge in order to be used effectively. Going forward, dfx will use the Cycles Ledger to make it simpler for developers to deploy code to the mainnet. The Cycles Wallet project will be deprecated in dfx, but developers will still be able to install and use it manually.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "Q2 2024",
+            "status": "in_progress",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": "Beryllium",
+            "imported": true
           }
         ]
       },
@@ -3973,28 +3975,18 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false
-          }
-        ]
-      },
-      {
-        "name": "orphans_future",
-        "description": "Orphans from the future",
-        "milestone_id": "Future features",
-        "eta": "none",
-        "elements": [
+          },
           {
-            "title": "Cycles Ledger",
-            "overview": "The Cycles Ledger replaces the cycles wallet as the recommended solution for managing cycles across projects.",
-            "description": "The Cycles Ledger replaces the cycles wallet as the recommended solution for managing cycles across projects. Prior to the development of the Cycles Ledger, the Cycles Wallet had been a source of confusion for many newcomers in the ecosystem. It is not a critical path for developing dapps on the Internet Computer and requires extensive prerequisite knowledge in order to be used effectively. Going forward, dfx will use the Cycles Ledger to make it simpler for developers to deploy code to the mainnet. The Cycles Wallet project will be deprecated in dfx, but developers will still be able to install and use it manually.",
+            "title": "Higher-level stable memory libraries",
+            "overview": "Create more friendly, higher-level libraries that abstract away the complexity of working with the Stable Memory API.",
+            "description": "The stable memory API is a great abstraction for orthogonal persistence on ICP; however, it is a low-level API and can be difficult to use. Create more friendly, higher-level libraries that abstract away the complexity of working with the Stable Memory API.",
+            "status": "deployed",
             "forum": "",
             "proposal": "",
             "wiki": "",
             "docs": "",
-            "eta": "Q2 2024",
-            "status": "in_progress",
             "is_community": true,
-            "in_beta": false,
-            "imported": true
+            "in_beta": false
           },
           {
             "title": "dfx Version Manager",
@@ -4004,12 +3996,20 @@
             "proposal": "",
             "wiki": "",
             "docs": "",
-            "eta": "Q2 2024",
-            "status": "in_progress",
+            "eta": "2024-02-08",
+            "status": "deployed",
             "is_community": true,
             "in_beta": false,
             "imported": true
-          },
+          }
+        ]
+      },
+      {
+        "name": "orphans_future",
+        "description": "Orphans from the future",
+        "milestone_id": "Future features",
+        "eta": "none",
+        "elements": [
           {
             "title": "dfx extensions",
             "overview": "Plugin architecture for integrating 3rd-party functionality directly into DFX.",
@@ -4093,8 +4093,8 @@
           },
           {
             "title": "Live canister metrics",
-            "overview": "Expose key canister metrics in realtime that can be queried, such as cycle usage or memory consumption.",
-            "description": "It is crucial that canisters be manageable and monitorable in an automated way, much like traditional Web2 services in cloud environments. This requires that key canister metrics be available through a canister API. A good starting point would be metrics such as a canister's cycles drain rate, memory consumption (heap and stable), or received calls per second. Such metrics are crucial for devs in order to ensure their dapps are running reliably and to take mitigating steps in case of issues.",
+            "overview": "Expose key canister metrics in realtime that can be queried, such as a breakdown of its memory usage (heap vs. stable) or received calls per second.",
+            "description": "It is crucial that canisters be manageable and monitorable, much like traditional Web2 services in cloud environments. This requires that key canister metrics be available through a canister API. Besides the cycles insights that are part of another feature, relevant further metrics would be a memory consumption breakdown (heap and stable), or received calls per second. Such metrics are crucial for devs in order to ensure their dapps are running reliably and to take mitigating steps in case of issues.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -4231,18 +4231,6 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false
-          },
-          {
-            "title": "Higher-level stable memory libraries",
-            "overview": "The stable memory API is a great abstraction for orthogonal persistence on ICP; however, it is a low-level API and can be difficult to use.",
-            "description": "Create more friendly, higher-level libraries that abstract away the complexity of working with the Stable Memory API.",
-            "status": "",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "is_community": true,
             "in_beta": false
           },
           {

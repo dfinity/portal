@@ -158,9 +158,9 @@ function MultichainPage() {
   return (
     <Layout
       title="Chain Fusion Technology"
-      description="ICP enables direct interoperability with all major blockchains, including Bitcoin, Ethereum, other EVMs (and soon Solana), 
-      without relying on any trusted intermediary. Unique compared to other blockchains, ICP smart contracts can read from 
-      and write to different chains, enabling developers to write smart contracts spanning different chains. This is chain fusion."
+      description="ICP enables direct interoperability with all major blockchains, including Bitcoin, Ethereum, and other EVMs (and soon Solana), 
+      without relying on any trusted intermediary. Unlike other blockchains, ICP smart contracts can read from 
+      and write to different chains, enabling developers to write smart contracts that span different chains. This is chain fusion."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-chainfusion.jpg"></ShareMeta>
@@ -228,7 +228,7 @@ function MultichainPage() {
             this is very cumbersome. Developers must adapt to various
             programming models, transaction costs, and settlement times. Chain
             fusion tremendously simplifies multi-chain dapp development, making
-            it as straightforward and native as building on a single
+            it as straightforward and intuitive as building on a single
             environment.
           </motion.p>
         </AnimateSpawn>
@@ -273,7 +273,8 @@ function MultichainPage() {
               >
                 Motoko programming language
               </Link>{" "}
-              but is also possible for TypeScript, Python, and other languages.
+              but can also be written in TypeScript, Python, and other
+              languages.
             </p>
             <p className="mb-0 mt-8">
               <Link
@@ -622,12 +623,12 @@ pub enum MultiGetLogsResult {
                 How it is solved today
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6">
-                Developers today rely on trusted intermediaries acting as a
-                bridge that make wrapped copies of native tokens for usage on
+                Developers today rely on trusted intermediaries acting as
+                bridges that make wrapped copies of native tokens for usage on
                 other blockchains. These bridges are slow, inconvenient, but
-                most importantly: they are the achilles heel of web3, this is
-                where majority of hacks happen, tens of billions of dollars of
-                assets have been lost.
+                most importantly: they are the Achilles' heel of web3, this is
+                where the majority of hacks happen, resulting in the loss of
+                tens of billions of dollars of assets.
                 <br />
                 <br />
                 There are also rollups, which rely on the security of the base
@@ -666,7 +667,7 @@ pub enum MultiGetLogsResult {
                 <b>Chain-key cryptography</b> is the scientific breakthrough
                 that allows ICP smart contracts to create and sign transactions
                 that are executed on other blockchains &ndash;{" "}
-                <i>writing to other blockchains directly.</i>
+                <i>enabling them to write to other blockchains directly.</i>
               </p>
 
               <p className="tw-paragraph md:tw-lead-sm mb-6">
@@ -694,7 +695,7 @@ pub enum MultiGetLogsResult {
                     <p className="tw-paragraph-sm md:tw-paragraph mb-2 mr-4">
                       Explore Chain Fusion technology use cases, including
                       executing ICP smart contracts on other chains and asset
-                      storage like Bitcoin and Ethereum.
+                      storage with Bitcoin and Ethereum.
                     </p>
 
                     <p className="tw-paragraph-sm md:tw-paragraph mb-10 mr-4">
@@ -735,7 +736,7 @@ pub enum MultiGetLogsResult {
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     Chain key makes it possible to create purely web-based
                     wallets, backed by a canister smart contract that maintains
-                    the crypto. Authentication to such wallets can involve
+                    the crypto. Authentication for such wallets can involve
                     Internet Identity, Google SSO, or usernames and passwords as
                     required. These can be opened using a web browser tab in
                     Incognito mode, which leaves no trace of the wallet when
@@ -768,11 +769,11 @@ pub enum MultiGetLogsResult {
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     A key challenge involved when hosting DeFi and other
                     services using Ethereum smart contracts is the secure
-                    initiation of regular jobs. Oftentimes, smart contract jobs
-                    are initiated using external scripts running on insecure
-                    clouds such as Amazon Web Services, where the private key
-                    they maintain to make the calls is vulnerable in the same
-                    way the private keys used by hot wallets are.
+                    initiation of regular jobs. Often, smart contract jobs are
+                    initiated using external scripts running on insecure clouds
+                    such as Amazon Web Services, where the private keys they
+                    maintain to make the calls are vulnerable in the same way as
+                    the private keys used by hot wallets.
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     The Internet Computer provides a solution. Canister smart
@@ -869,7 +870,7 @@ pub enum MultiGetLogsResult {
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     Developers use ICP to bring smart contract functionality to
                     Bitcoin. This new solution brings a new challenge: Bitcoin
-                    costs and wait times. No matter how fast a ICP smart
+                    costs and wait times. No matter how fast an ICP smart
                     contract is, moving Bitcoin will have the costs and wait
                     times of the Bitcoin network.
                   </p>
