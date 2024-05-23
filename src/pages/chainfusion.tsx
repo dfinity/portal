@@ -19,8 +19,8 @@ import { useScrollSpyMenu } from "../utils/use-scroll-spy-menu";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import LinkArrowUp from "../components/Common/Icons/LinkArrowUp";
 import LinkArrowDown from "../components/Common/Icons/LinkArrowDown";
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 const ContentCard: React.FC<{
   id: string;
@@ -273,8 +273,7 @@ function MultichainPage() {
               >
                 Motoko programming language
               </Link>{" "}
-              but is also possible for TypeScript, Python, and other
-              languages.
+              but is also possible for TypeScript, Python, and other languages.
             </p>
             <p className="mb-0 mt-8">
               <Link
@@ -298,9 +297,8 @@ function MultichainPage() {
               >
                 <Tabs>
                   <TabItem value="motoko" label="Motoko" default>
-
-                  <CodeBlockString language="motoko" showLineNumbers={true}>
-                                    {`
+                    <CodeBlockString language="motoko" showLineNumbers={true}>
+                      {`
 // This is a test canister without API keys, for production use 7hfb6-caaaa-aaaar-qadga-cai
 import evm "ic:a6d44-nyaaa-aaaap-abp7q-cai";
 import ic "ic:aaaaa-aa";
@@ -351,12 +349,10 @@ actor {
 };
 
                               `}
-                  </CodeBlockString>
-
+                    </CodeBlockString>
                   </TabItem>
 
                   <TabItem value="rust" label="Rust">
-
                     <CodeBlockString language="rust" showLineNumbers={true}>
                       {`
 #![allow(non_snake_case, clippy::large_enum_variant, clippy::enum_variant_names)]
@@ -588,12 +584,8 @@ pub enum MultiGetLogsResult {
 }
                       `}
                     </CodeBlockString>
-
                   </TabItem>
-                  </Tabs>
-               
-                
-
+                </Tabs>
               </motion.div>
 
               <motion.div className="text-center">
@@ -1196,7 +1188,7 @@ pub enum MultiGetLogsResult {
             />
 
             <CardWithDescription
-              title="ICP as an Ethereum sidechain"
+              title="Ethereum Integration"
               description=""
               href="/ethereum-integration"
             />
