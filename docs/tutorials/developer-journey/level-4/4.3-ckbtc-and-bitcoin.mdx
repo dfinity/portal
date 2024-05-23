@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-One of the key features of the Internet Computer is known as **chain-key cryptography**. Chain-key cryptography is a feature that encompasses several cryptographic mechanisms that enable novel workflows and functionalities such as chain-key tokens. Chain-key tokens are not wrapped tokens; they are twin tokens that are backed 1:1 with the original token (BTC, ETC) that use chain-key cryptography to transfer and use the original tokens with less fees and higher transfer speeds than using the token's native blockchain network.
+One of the key features of the Internet Computer is known as **chain-key cryptography**. Chain-key cryptography is a feature that encompasses several cryptographic mechanisms that enable novel workflows and functionalities such as chain-key tokens. Chain-key tokens are not wrapped tokens; they are twin tokens that are backed 1:1 with the original token (BTC, ETH) that use chain-key cryptography to transfer and use the original tokens with less fees and higher transfer speeds than using the token's native blockchain network.
 
 Currently, ICP supports an integration with the Bitcoin network that includes the chain-key bitcoin (ckBTC) token, and has an Ethereum integration in development.
 
@@ -174,8 +174,9 @@ Initialized replica.
 Dashboard: http://localhost:49497/_/dashboard
 ```
 
-::caution
-If you receive the error message "Failed to connect to 127.0.0.1:18444 ::: Connecting to the stream timed out." this indicates that `dfx` isn't able to connect to your local Bitcoin instance. This error may occur if you used a port other than `18444` but did not edit the `dfx.json` file to reflect your custom port.
+:::caution
+If you receive the error message "Failed to connect to 127.0.0.1:18444
+Connecting to the stream timed out." this indicates that `dfx` isn't able to connect to your local Bitcoin instance. This error may occur if you used a port other than `18444` but did not edit the `dfx.json` file to reflect your custom port.
 :::
 
 The output will take up the terminal window, so open another terminal window and navigate back into the `examples/motoko/basic_bitcoin` directory.

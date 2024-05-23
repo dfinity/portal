@@ -3,6 +3,7 @@ keywords: [beginner, governance, tutorial, nns]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import '/src/components/CenterImages/center.scss';
 
 # NNS quickstart
 
@@ -19,6 +20,8 @@ All changes to the configuration and behavior of the Internet Computer are contr
 -   De-activating under-performing nodes to protect the network.
 
 The requests for changes and updates to the network are submitted to the NNS in the form of **proposals**. The NNS decides to adopt or reject proposals based on voting activity by neuron holders.
+
+This guide will showcase how to interface with the NNS through the NNS dapp. You can interact with the NNS through other tools, such as [quill](/docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-parent) and [ic-js](https://github.com/dfinity/ic-js/tree/main/packages/nns).
 
 ## What are neurons?
 
@@ -39,7 +42,7 @@ When a person or organization has ICP utility tokens locked up in a neuron, they
 ### Unlocking the stake held by a neuron
 
 After network participants create a neuron, the locked balance of ICP utility tokens can only be unlocked by fully **dissolving** the neuron.
-It's **dissolve delay** determins the time it takes for a neuron to be unlocked once it is but in the dissolving state. A dissolving neuron can always be put back int the non-dissolving state. When the dissolve timer reaches zero, the neuron owner or an authenticated custodian can dissolve the neuron and unlock the neuron's balance of ICP .
+It's **dissolve delay** determines the time it takes for a neuron to be unlocked once it is but in the dissolving state. A dissolving neuron can always be put back int the non-dissolving state. When the dissolve timer reaches zero, the neuron owner or an authenticated custodian can dissolve the neuron and unlock the neuron's balance of ICP .
 
 The dissolved neuron ceases to exist and the stake of ICP utility tokens that the neuron represented is released to the appropriate ledger canister account.
 
@@ -273,11 +276,13 @@ Neuron owners may find it hard to manually vote on every proposal submitted to t
 The NNS uses a form of liquid democracy to address these challenges.
 To aid in this, the NNS supports **neuron following **.
 A neuron can be configured to vote automatically by following the voting decision made by a group of other neurons.
+Following is done on the basis of topics, and a neuron can follow up to 15 neurons on each topic.
 
-Following is done on the basis of topics, such that a neuron can choose to follow the voting decision for different proposal topics like governance or subnet management. For example, if a neuron has been configured to follow a group's decision for governance proposals, if the group votes to adopt a governance proposal with more than half of the followees voting in favor of adoption, the neuron following that group will vote to approve the proposal as well. If the neuron has been configured to follow a group's decision for subnet management proposals and the group votes to reject a subnet management proposal with at least half of the followees voting to reject, the neuron following the group will vote to reject the proposal.
+### Following rules
+A neuron can choose to follow the voting decision for different proposal topics like governance or subnet management. For example, if a neuron has been configured to follow a group's decision for governance proposals, if the group votes to adopt a governance proposal with more than half of the followees voting in favor of adoption, the neuron following that group will vote to approve the proposal as well. If the neuron has been configured to follow a group's decision for subnet management proposals and the group votes to reject a subnet management proposal with at least half of the followees voting to reject, the neuron following the group will vote to reject the proposal.
 
 :::caution
-Your neuron will follow when there are enough votes to make a call (whether it is a ADOPT or REJECT). Your neuron will only cast a vote if **more than half** of the neurons within the group vote the same way. For example, if you follow 10 neurons on a topic:
+Your neuron will follow when there are enough votes to make a call (whether it is a ADOPT or REJECT). Your neuron will only cast a "Yes"-vote if **more than half** of the neurons within the group voted Yes. Your neuron will only cast a "No"-vote if **at least half** of the neurons within the group voted No. For example, if you follow 10 neurons on a topic:
 
 a. Your neuron only votes to adopt if at least 6 out of the 10 neurons vote to adopt.
 
@@ -285,11 +290,24 @@ b. Your neuron only votes to reject a proposal if at least 5 out of the 10 rejec
 
 c. If less than 5 neurons (out of your 10 followed) vote at all, your neuron will not cast any vote.
 
-This should be considered when choosing to follow multiple neurons on a topic and why following an odd number of neurons may be better than even numbers.
+This should be considered when choosing to follow multiple neurons on a topic.
+It might be better to follow fewer neurons, and it can be more beneficial to follow an odd number of neurons than an even number.
 :::
 
-Additionally, neurons may also define a catch-all follow rule which is triggered for proposals with topics for which no other explicit follow rule has been defined.
-However, the catch-all follow rule does not include SNS & neuron's fund or governance proposals. It is in each neuron's interest to follow other neurons that support the best interests of the network and their own economic interests.
+### Following "catch-all"
+In addition to setting following for individual topics, neurons may also define a catch-all follow rule which is triggered for proposals with topics for which no other explicit follow rule has been defined.
+However, the catch-all follow rule does not include SNS & neurons' fund or governance proposals.
+
+:::caution
+The catch-all follow rule is only applied for proposal topics with no other explicit choice. For example, let's assume neuron A follows neuron B for the catch-all and neuron C on the topic subnet management. If B votes on a subnet management proposal but C does not, no vote will be cast for A.
+
+The catch-all follow rule does not apply for SNS & neurons' fund or governance proposals.
+For example, if neuron A follows neuron B for the catch-all and B votes on a governance proposal, no vote will be cast for A. If neuron A intents to also follow B on such decisions, the user has to explicitly choose to also follow B on the governance topic.
+:::
+
+It is in each neuron's interest to follow other neurons that support the best interests of the network and their own economic interests.
+
+
 
 To configure your neuron to follow the group of another neuron:
 

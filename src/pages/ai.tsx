@@ -113,7 +113,7 @@ const TrustCard: React.FC<TrustCardProps> = ({
 
 const RoadMapList: React.FC<{ items: string[] }> = ({ items }) => {
   return (
-    <ul className="list-none m-0 p-0">
+    <ul className="list-none m-0 p-0 text-left flex flex-col items-start">
       {items.map((item, index) => (
         <li key={index} className="flex items-center my-2">
           <img
@@ -167,8 +167,8 @@ function AIPage() {
                 variants={transitions.item}
               >
                 Train and run AI models as smart contracts fully onchain to
-                benefit from the security, resilience, and computation power of the
-                ICP blockchain.
+                benefit from the security, resilience, and computation power of
+                the ICP blockchain.
               </motion.p>
               {/* <MotionLink
                 className="button-white"
@@ -237,8 +237,8 @@ function AIPage() {
                 <motion.p className="text-2xl mb-0 ">
                   As companies race to build AI-powered products, they leave
                   users no option but to blindly trust the underlying AI models.
-                  Their behavior is non-deterministic and not verifiable. Worse,
-                  {" "}<Link
+                  Their behavior is non-deterministic and not verifiable. Worse,{" "}
+                  <Link
                     className="font-bold"
                     to="https://twitter.com/AnthropicAI/status/1745854907968880970"
                     target="_blank"
@@ -247,10 +247,10 @@ function AIPage() {
                   </Link>{" "}
                   that it is possible to tamper with AI models in an
                   undetectable way. Users have no visibility into how their data
-                  is used and how AI models produces responses.
-                  Since AI models behave like black boxes to users, building
-                  trustworthy AI models is a difficult challenge that can be
-                  solved by training and running the models on ICP.
+                  is used and how AI models produces responses. Since AI models
+                  behave like black boxes to users, building trustworthy AI
+                  models is a difficult challenge that can be solved by training
+                  and running the models on ICP.
                 </motion.p>
               </div>
             </aside>
@@ -402,7 +402,7 @@ function AIPage() {
               el={motion.section}
               variants={transitions.container}
             >
-              <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+              <div id="demo" className="grid grid-cols-1 gap-5 md:grid-cols-2">
                 <motion.div
                   variants={transitions.item}
                   className="col-span-1 md:col-span-2 mb-10"
@@ -479,19 +479,14 @@ let result = model.run(tvec!
               contracts to perform AI computations on GPUs, allowing both
               training and inference of large models fully onchain.
             </motion.p>
-            <motion.div className="">
-              <motion.p className="tw-lead-sm mb-2 my-2 font-bold">
-                Detailed roadmap coming soon.
-              </motion.p>
-            </motion.div>
-            {/* <motion.div>
+            <motion.div>
               <motion.p className="tw-lead-sm mb-2 my-2">Short-term</motion.p>
               <RoadMapList items={shortTermRoadmapItems} />
             </motion.div>
             <motion.div>
               <motion.p className="tw-lead-sm mb-2 mt-4">Long-term</motion.p>
               <RoadMapList items={longTermRoadmapItems} />
-            </motion.div> */}
+            </motion.div>
             <div
               className=" w-[120%] sm:w-7/10 md:w-[85%]
               absolute
