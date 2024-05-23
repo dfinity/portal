@@ -19,8 +19,8 @@ import { useScrollSpyMenu } from "../utils/use-scroll-spy-menu";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import LinkArrowUp from "../components/Common/Icons/LinkArrowUp";
 import LinkArrowDown from "../components/Common/Icons/LinkArrowDown";
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 const ContentCard: React.FC<{
   id: string;
@@ -298,9 +298,8 @@ function MultichainPage() {
               >
                 <Tabs>
                   <TabItem value="motoko" label="Motoko" default>
-
-                  <CodeBlockString language="motoko" showLineNumbers={true}>
-                                    {`
+                    <CodeBlockString language="motoko" showLineNumbers={true}>
+                      {`
 // This is a test canister without API keys, for production use 7hfb6-caaaa-aaaar-qadga-cai
 import evm "ic:a6d44-nyaaa-aaaap-abp7q-cai";
 import ic "ic:aaaaa-aa";
@@ -351,12 +350,10 @@ actor {
 };
 
                               `}
-                  </CodeBlockString>
-
+                    </CodeBlockString>
                   </TabItem>
 
                   <TabItem value="rust" label="Rust">
-
                     <CodeBlockString language="rust" showLineNumbers={true}>
                       {`
 #![allow(non_snake_case, clippy::large_enum_variant, clippy::enum_variant_names)]
@@ -588,12 +585,8 @@ pub enum MultiGetLogsResult {
 }
                       `}
                     </CodeBlockString>
-
                   </TabItem>
-                  </Tabs>
-               
-                
-
+                </Tabs>
               </motion.div>
 
               <motion.div className="text-center">
@@ -630,12 +623,12 @@ pub enum MultiGetLogsResult {
                 How it is solved today
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6">
-                Developers today rely on trusted intermediaries acting as bridges 
-                that make wrapped copies of native tokens for usage on
+                Developers today rely on trusted intermediaries acting as
+                bridges that make wrapped copies of native tokens for usage on
                 other blockchains. These bridges are slow, inconvenient, but
                 most importantly: they are the Achilles' heel of web3, this is
-                where the majority of hacks happen, resulting in the loss of tens 
-                of billions of dollars of assets.
+                where the majority of hacks happen, resulting in the loss of
+                tens of billions of dollars of assets.
                 <br />
                 <br />
                 There are also rollups, which rely on the security of the base
@@ -776,11 +769,11 @@ pub enum MultiGetLogsResult {
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     A key challenge involved when hosting DeFi and other
                     services using Ethereum smart contracts is the secure
-                    initiation of regular jobs. Often, smart contract jobs are 
-                    initiated using external scripts running on insecure clouds 
-                    such as Amazon Web Services, where the private keys they 
-                    maintain to make the calls are vulnerable in the same way 
-                    as the private keys used by hot wallets.
+                    initiation of regular jobs. Often, smart contract jobs are
+                    initiated using external scripts running on insecure clouds
+                    such as Amazon Web Services, where the private keys they
+                    maintain to make the calls are vulnerable in the same way as
+                    the private keys used by hot wallets.
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     The Internet Computer provides a solution. Canister smart
@@ -1196,7 +1189,7 @@ pub enum MultiGetLogsResult {
             />
 
             <CardWithDescription
-              title="ICP as an Ethereum sidechain"
+              title="Ethereum Integration"
               description=""
               href="/ethereum-integration"
             />

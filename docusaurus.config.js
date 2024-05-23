@@ -208,7 +208,7 @@ const marketingNav = {
               description: "Bringing smart contracts to Bitcoin",
             },
             {
-              name: "ICP as an Ethereum sidechain",
+              name: "Ethereum Integration",
               href: "/ethereum-integration",
               description: "Native ETH on Internet Computer",
             },
