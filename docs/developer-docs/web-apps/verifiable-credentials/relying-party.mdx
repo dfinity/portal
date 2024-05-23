@@ -194,15 +194,123 @@ Learn more about [how this workflow works](how-it-works.mdx).
 
 ## Verifying the credentials
 
-To verify the credentials, the relying party needs to validate the JWT received from the identity provider, both cryptographically and semantically.
+To verify the credentials, the relying party needs to validate the JWT received from the identity provider. 
 
-The JWT should contain two verifiable credentials in the specified order:
+### Credentials format
+
+The relying party receives the credential in a JWT format, containing long text split into common parts:
+
+```
+<header>.<payload>.
+```
+
+:::info
+There is no signature in this first JWT.
+:::
+
+When this is decoded, the format is the following:
+
+```
+{
+  "iss": <issuer>,
+  "vp": {
+    "@context": "https://www.w3.org/2018/credentials/v1",
+    "type": "VerifiablePresentation",
+    "verifiableCredential": [
+       "<header>.<payload>.<signature>",
+"<header>.<payload>.<signature>"
+    ]
+}
+```
+
+The field `verifiableCredential` within `vp` should contain two more verifiable credentials in the specified order:
 
 - An `id_alias` credential which links the effective subject of the credential to a temporary alias. This credential is signed by the identity provider.
 
 - The actual credential requested by the user. The subject of this credential is `id_alias`, and it should be signed by the issuer.
 
-The verification should also check that the subject of the credential matches the subject of the first credential.
+When the `id_alias` credential is decoded, the following info is returned:
+
+```
+{
+  "exp": <expiration>,
+  "iss": "https://identity.ic0.app/",
+  "nbf": <not-before>,
+  "jti": <jwt-id>,
+  "sub": <relying-party-user-principal>
+  "vc": {
+    "@context": "https://www.w3.org/2018/credentials/v1",
+    "type": [
+      "VerifiableCredential",
+      "InternetIdentityIdAlias"
+    ],
+    "credentialSubject": {
+      "InternetIdentityIdAlias": {
+        "hasIdAlias": <id-alias>
+     }
+  }
+}
+```
+
+When the actual credential decoded, the following info is returned: 
+
+```
+{
+  "exp": <expiration>,
+  "iss": <isuer>,
+  "nbf": <not-before>,
+ "jti": <jwt-id>,
+ "sub": <did-id-alias>,
+ "vc": {
+   "@context": "https://www.w3.org/2018/credentials/v1",
+   "type": [
+     "VerifiableCredential",
+     "<credential-type>"
+   ],
+   "credentialSubject": {
+     <credential-type>: {
+       <argument1-key>: <argument1-value>,
+       <argument2-key>: <argument2-value>,
+       ...
+     }
+   }
+ }
+}
+```
+
+### Cryptographic verification
+
+To verify the two JWT signatures, verify the signature of the `id_alias` signed by the identity provider, and the signature of the actual credential signed by the issuer. Both are found when you decode the received JWT.
+
+These signatures are [canister signatures](https://internetcomputer.org/docs/current/concepts/glossary/#canister-signature) and there is an example on [how to verify those in the Internet Identity repository](​​https://github.com/dfinity/internet-identity/blob/2ae06956f9cabc048b8536b29b9f861092958515/src/vc_util/src/lib.rs#L193).
+
+### Semantic verification
+
+The relying party should verify the following data:
+
+- From the received credential JWT:
+
+  - The `iss` matches the identity provider canister ID.
+
+  - The decoded initial credential contains two credentials within `vp.verifiableCredential`: first the `id_alias` credential, then the requested one.
+
+- From the `id_alias` JWT:
+
+  - The `iss` is the expected identity provider.
+
+  - The `sub` in `id_alias` contains the principal of the user in the relying party.
+
+  - The credential type is `InternetIdentityIdAlias`.
+
+- From the requested credential JWT:
+  
+  - The credential type within `vc.type` matches the first field in `vc.credentialSubject` and both are the same that was requested.
+
+  - The arguments within `vc.credentialSubject.<credential-type>` are the expected ones.
+
+- Cross credentials:
+
+  - The `sub` from the requested credential contains the value in the `id_alias` credential from `vc.credentialSubject.InternetIdentityIdAlias`.
 
 To learn more about verifying credentials, check out the [demo relying party's code](https://github.com/dfinity/vc-playground/blob/b2f8cd5f5397b7b355b6503df5af3789834b79e9/rp/src/main.rs#L262) and the helper used from the [Internet Identity repository](https://github.com/dfinity/internet-identity/blob/fd38b48f9fdf9085b4903d865a1f5e79ad24f81a/src/vc_util/src/lib.rs#L319).
 
