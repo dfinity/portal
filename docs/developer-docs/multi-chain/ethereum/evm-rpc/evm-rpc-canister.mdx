@@ -981,7 +981,7 @@ dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 1000
 type RpcServices = variant {
   EthMainnet : opt vec EthMainnetService;
   EthSepolia : opt vec EthSepoliaService;
-  ArbitrumMainnet : opt vec L2MainnetService;
+  ArbitrumOne : opt vec L2MainnetService;
   BaseMainnet : opt vec L2MainnetService;
   OptimismMainnet : opt vec L2MainnetService;
   ...
@@ -995,7 +995,7 @@ type RpcServices = variant {
 type RpcService = variant {
   EthMainnet : EthMainnetService;
   EthSepolia : EthSepoliaService;
-  ArbitrumMainnet : L2MainnetService;
+  ArbitrumOne : L2MainnetService;
   BaseMainnet : L2MainnetService;
   OptimismMainnet : L2MainnetService;
   ...

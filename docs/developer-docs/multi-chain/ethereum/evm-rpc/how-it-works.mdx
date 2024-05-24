@@ -62,7 +62,7 @@ type L2MainnetService = variant { Alchemy; Ankr; BlockPi; PublicNode; ... };
 type RpcServices = variant {
   EthMainnet : opt vec EthMainnetService;
   EthSepolia : opt vec EthSepoliaService;
-  ArbitrumMainnet : opt vec L2MainnetService;
+  ArbitrumOne : opt vec L2MainnetService;
   BaseMainnet : opt vec L2MainnetService;
   OptimismMainnet : opt vec L2MainnetService;
   Custom : record {
@@ -128,7 +128,7 @@ This endpoint also offers an improved developer experience when using the [ether
 type RpcService = variant {
   EthMainnet : EthMainnetService;
   EthSepolia : EthSepoliaService;
-  ArbitrumMainnet : L2MainnetService;
+  ArbitrumOne : L2MainnetService;
   BaseMainnet : L2MainnetService;
   OptimismMainnet : L2MainnetService;
   Chain : nat64;
@@ -149,7 +149,7 @@ request : (
 
 - `EthSepolia`: Selects a built-in provider for the Sepolia testnet.
 
-- `ArbitrumMainnet`: Selects a built-in provider for the Arbitrum layer-2 network.
+- `ArbitrumOne`: Selects a built-in provider for the Arbitrum layer-2 network.
 
 - `BaseMainnet`: Selects a built-in provider for the Base layer-2 network.
 
