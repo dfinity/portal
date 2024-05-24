@@ -36,15 +36,13 @@ export const CardsSection = () => {
       className="container-10 grid grid-cols-1 md:grid-cols-2 gap-2"
       variants={transitions.container}
     >
-      <CardWithImage
-        href="/roadmap"
-        image="/img/home/roadmap-illustration.webp"
-      >
+
+      <CardWithImage href="/chainfusion" image="/img/home/btc-eth.webp">
         <div className="tw-heading-7 md:tw-heading-6 mb-2">
-          A new era in blockchain
+          Native Multi-chain
         </div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
-          Internet Computer Roadmap
+          Chain Fusion Technology
         </h2>
       </CardWithImage>
 
@@ -55,12 +53,15 @@ export const CardsSection = () => {
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Tamperproof and trustworthy AI</h2>
       </CardWithImage>
 
-      <CardWithImage href="/chainfusion" image="/img/home/btc-eth.webp">
+      <CardWithImage
+        href="/roadmap"
+        image="/img/home/roadmap-illustration.webp"
+      >
         <div className="tw-heading-7 md:tw-heading-6 mb-2">
-          Native Multi-chain
+          A new era in blockchain
         </div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
-          Chain Fusion Technology
+          Internet Computer Roadmap
         </h2>
       </CardWithImage>
 
