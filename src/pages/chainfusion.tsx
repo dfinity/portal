@@ -987,7 +987,7 @@ pub enum MultiGetLogsResult {
                       rel="noopener noreferrer"
                       className="link-subtle"
                     >
-                      ckUSDC,
+                      ckUSDC (a stablecoin),
                     </Link>
                     {" "} ckUSDT,
                     ckUNISWAP, ck1INCH, ckAAVE. These can be directly processed
