@@ -52,7 +52,7 @@ export const CardsSection = () => {
         <div className="tw-heading-7 md:tw-heading-6 mb-2 whitespace-nowrap">
           AI models as smart contracts
         </div>
-        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Decentralized AI</h2>
+        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Tamperproof and trustworthy AI</h2>
       </CardWithImage>
 
       <CardWithImage href="/chainfusion" image="/img/home/btc-eth.webp">
