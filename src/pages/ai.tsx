@@ -229,13 +229,22 @@ function AIPage() {
               </div>
               <div className=" md:w-1/3">
 
-                <div >
+              <div >
                   <motion.h3
-                    className="tw-heading-4 md:tw-heading-50 mb-4 md:mb-6"
+                    className="tw-heading-3 md:tw-heading-60 mb-4 md:mb-6"
+                    variants={transitions.item}
+                  >
+                    Problems with traditional AI
+                  </motion.h3>
+                </div>
+
+                <div >
+                  <motion.h4
+                    className="tw-heading-5 md:tw-heading-40 mb-4 md:mb-6"
                     variants={transitions.item}
                   >
                     The Tampering Problem
-                  </motion.h3>
+                  </motion.h4>
                   <motion.p className="text-2xl mb-0 ">
                   <p>
                     <Link
@@ -249,33 +258,16 @@ function AIPage() {
                   This means that the integrity of the AI&apos;s output can be compromised 
                   without anyone knowing.
                   </p>
-
-                    {/* As companies race to build AI-powered products, they leave
-                    users no option but to blindly trust the underlying AI models.
-                    Their behavior is non-deterministic and not verifiable. Worse,{" "}
-                    <Link
-                      className="font-bold"
-                      to="https://twitter.com/AnthropicAI/status/1745854907968880970"
-                      target="_blank"
-                    >
-                      Research shows
-                    </Link>{" "}
-                    that it is possible to tamper with AI models in an
-                    undetectable way. Users have no visibility into how their data
-                    is used and how AI models produces responses. Since AI models
-                    behave like black boxes to users, building trustworthy AI
-                    models is a difficult challenge that can be solved by training
-                    and running the models on ICP. */}
                   </motion.p>
                 </div>
 
                 <div >
-                  <motion.h3
-                    className="tw-heading-4 md:tw-heading-50 mb-4 md:mb-6"
+                  <motion.h4
+                    className="tw-heading-5 md:tw-heading-40 mb-4 md:mb-6"
                     variants={transitions.item}
                   >
                     The Black Box Problem
-                  </motion.h3>
+                  </motion.h4>
                   <motion.p className="text-2xl mb-0 ">
                   <p>
                   Users have no visibility into how 
