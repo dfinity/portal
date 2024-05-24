@@ -1,6 +1,6 @@
 Thank you for your contribution to the IC Developer Portal. This repo contains the content for https://internetcomputer.org and the ICP Developer Documentation, https://internetcomputer.org/docs/. 
 
-If you are submitting your Pull Request for adding or changing content on the ICP Developer Documentation, please make sure that your contribution meets the following requirements:
+If you are submitting a Pull Request for adding or changing content on the ICP Developer Documentation, please make sure that your contribution meets the following requirements:
 
 - [ ] Follows the [developer docs style guide](style-guide.md).
 - [ ] Follows the [best practices and guidelines](README.md#best-practices).
