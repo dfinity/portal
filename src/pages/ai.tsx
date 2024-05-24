@@ -254,7 +254,7 @@ function AIPage() {
                       >
                       Research shows
                     </Link>{" "}
-                  shows that is possible to tamper with AI models in an undetectable way. 
+                  that is possible to tamper with AI models in an undetectable way. 
                   This means that the integrity of the AI&apos;s output can be compromised 
                   without anyone knowing.
                   </p>
