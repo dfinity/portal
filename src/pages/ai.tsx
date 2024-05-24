@@ -231,7 +231,7 @@ function AIPage() {
 
                 <div >
                   <motion.h3
-                    className="tw-heading-4 md:tw-heading-50 mb-6 md:mb-12"
+                    className="tw-heading-4 md:tw-heading-50 mb-4 md:mb-6"
                     variants={transitions.item}
                   >
                     The Tampering Problem
@@ -271,14 +271,14 @@ function AIPage() {
 
                 <div >
                   <motion.h3
-                    className="tw-heading-4 md:tw-heading-50 mb-6 md:mb-12"
+                    className="tw-heading-4 md:tw-heading-50 mb-4 md:mb-6"
                     variants={transitions.item}
                   >
                     The Black Box Problem
                   </motion.h3>
                   <motion.p className="text-2xl mb-0 ">
                   <p>
-                  A large problem is that users have no visibility into how 
+                  Users have no visibility into how 
                   their data is used and how AI models produce responses. 
                   This lack of transparency makes it difficult for users to trust 
                   the technology.
