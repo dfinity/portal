@@ -820,11 +820,21 @@ pub enum MultiGetLogsResult {
                     fully decentralized Web3 services can be created that
                     maintain the UX and heavy data storage and processing on the
                     Internet Computer, while relying on Ethereum DeFi where
-                    financial rails are needed.
+                    financial rails are needed. To make this integration easier, the{" "} 
+                    <Link
+                      href="/blog/features/evm-rpc-canister-launch"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-subtle"
+                    >
+                      EVM RPC canister
+                    </Link>{" "} 
+                    is a service that lets you easily build integrations
+                    between ICP canister smart contracts and Ethereum smart contracts.
                   </p>
 
                   <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">EVM RPC in beta testing</Status>
+                    <Status type="done">EVM RPC canister done</Status>
                   </p>
                 </ContentCard>
 
@@ -970,7 +980,16 @@ pub enum MultiGetLogsResult {
                     and wait times. To address this, the ICP community uses
                     ckEth ("chain key Ethereum"), a trustless "Twins of
                     Ethereum" hosted on ICP such as “ether twin” called ckETH
-                    and “twins'' of ERC20 tokens, such as ckUSDC, ckUSDT,
+                    and “twins'' of ERC20 tokens, such as{" "} 
+                    <Link
+                      href="https://dashboard.internetcomputer.org/ethereum/xevnm-gaaaa-aaaar-qafnq-cai"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-subtle"
+                    >
+                      ckUSDC,
+                    </Link>
+                    {" "} ckUSDT,
                     ckUNISWAP, ck1INCH, ckAAVE. These can be directly processed
                     by smart contracts hosted on ICP.
                   </p>
@@ -992,6 +1011,7 @@ pub enum MultiGetLogsResult {
                   </p>
                   <p className="flex gap-2 flex-wrap">
                     <Status type="done">ckETH done</Status>
+                    <Status type="done">ckUSDC done</Status>
                     <Status type="pending">ckERC20 is in progress</Status>
                   </p>
                 </ContentCard>
