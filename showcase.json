@@ -4643,22 +4643,6 @@
     "github": "https://github.com/Estate-DAO/estate-nft-marketplace"
   },
   {
-    "id": "estatedao",
-    "name": "EstateDAO",
-    "description": "A vacation real estate tokenization and rental platform on ICP, enabling users to invest in vacation real estate with investments as low as USD 100.",
-    "website": "https://wbdy5-yyaaa-aaaap-abysq-cai.icp0.io/",
-    "logo": "/img/showcase/estatedao_logo.png",
-    "display": "Normal",
-    "oneLiner": "A vacation real estate tokenization and rental platform on ICP, enabling users to invest in vacation real estate with investments as low as USD 100.",
-    "tags": [
-      "SocialFi",
-      "DAO"
-    ],
-    "usesInternetIdentity": true,
-    "twitter": "https://twitter.com/estatedao_icp",
-    "github": "https://github.com/Estate-DAO/estate-nft-marketplace"
-  },
-  {
     "id": "motoko-sns",
     "name": "Motoko SNS",
     "description": "A community initiative aiming to drive awareness of the Motoko branding.",
