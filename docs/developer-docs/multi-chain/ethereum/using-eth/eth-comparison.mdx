@@ -1,0 +1,87 @@
+---
+keywords: [intermediate, ethereum]
+---
+
+# Understanding ICP for Ethereum Developers
+
+## Overview
+This guide is designed to help Ethereum developers understand the core concepts of ICP, focusing on the terminology and functionalities that differ between the two protocols. While the underlying concepts might be similar, ICP utilizes different terms to describe them.
+
+For a feature comparison between the two protocols, refer to the [Quick Comparison with ICP and Ethereum](../../../../developer-docs/getting-started/overview-of-icp#quick-comparison-with-ethereum).
+
+## Terminology mapping
+This table summarizes the key terminology differences between Ethereum and ICP:
+
+<table>
+<thead>
+<tr>
+  <th> Ethereum Term </th>
+  <th> ICP Term </th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+  <td> Smart contract </td>
+  <td> Canister </td>
+</tr>
+
+<tr>
+  <td> Gas </td>
+  <td> Cycles </td>
+</tr>
+
+<tr>
+  <td> Shard </td>
+  <td> Subnet </td>
+</tr>
+
+<tr>
+  <td> Node </td>
+  <td> Replica </td>
+</tr>
+
+<tr>
+  <td> Account </td>
+  <td> Principal </td>
+</tr>
+
+<tr>
+  <td> DAO </td>
+  <td> SNS (ICP has a specific DAO framework named an [SNS](../../../../developer-docs/daos/sns/). However, DAOs can launch without using this framework) </td>
+</tr>
+
+## Smart contract development comparison
+
+Both Ethereum and ICP allow developers to deploy programs that run on the blockchain. These programs are referred to as smart contracts in Ethereum and [canisters](../../../../developer-docs/smart-contracts/overview/) on ICP. Occasionally, the phrase “canister smart contracts” is also used on ICP.
+
+This comparison provides an overview of the key differences in smart contract development on Ethereum and ICP.
+
+## Key differences:
+
+### Creation:
+**Ethereum**: Smart contracts are written in Solidity and deployed immutably onto the blockchain.
+**ICP**: Canisters can be written in any language that complies to WASM including [Rust](../../../../developer-docs/backend/rust/), [Typescript](../../../../developer-docs/backend/Typescript), [Motoko](../../../../developer-docs/backend/motoko/), and [Python](../../../../developer-docs/backend/python/).
+
+### Paying for gas
+
+**Ethereum**: Users pay for gas fees directly using the crypto wallet they connect with the dapp.
+**ICP**: Using the [reverse gas model](../../../../developer-docs/gas-cost/#the-reverse-gas-model), the dapp developers, not users, pay for the gas fees. The reverse gas model aims to provide a smoother user experience by eliminating upfront fees.
+
+### Updates:
+**Ethereum**: Smart contracts are immutable. To update functionalities, developers need to create a new smart contract and migrate data.
+**ICP**: Developers can create upgradeable or non-upgradable (also known as "blackhole") canisters. Upgradable canisters allow updates by reinstalling the code or deploying a new version. Non-upgradable canisters are similar to Ethereum smart contracts.
+
+### Testing
+**Ethereum**: Developers can utilize testnets for deploying and testing smart contracts before deploying to mainnet.
+
+**ICP**: Currently, testing is done in the local environment. A [playground environment](../../../developer-tools/ide/playground.mdx) is available for canisters written into Motoko. However, the ability to upgrade and delete canisters on the mainnet allows developers greater flexibility to iterate and refine their canisters.
+
+## Resources
+
+- The Internet Computer for Ethereum Developers [blog post](https://medium.com/dfinity/the-internet-computer-for-ethereum-developers-3331b50db31b) by Dominic Wörner
+
+- [Internet Computer Guide for Ethereum Developers](https://github.com/jennifertrin/ICEthereumGuide) by Jennifer Tran
+
+
+
