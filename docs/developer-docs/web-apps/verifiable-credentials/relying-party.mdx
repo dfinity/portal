@@ -13,7 +13,71 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 A **relying party** is a service or app that requests a user's verifiable credentials from an [issuer](issuer.mdx). Relying parties use an **identity provider**, such as Internet Identity, to communicate with the issuer. Identity providers must support the [verifiable credentials specification](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md). Communication with the identity provider uses the [`window.postMessage()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) communication channel.
 
-## Using the identity provider API
+The relying party must perform two main tasks:
+
+- Request the credentials from the issuer through an identity provider.
+- Verify the credentials received from an identity provider.
+
+## Requesting credentials 
+
+There are two ways to request credentials:
+
+- Using the verifiable credentials JavaScript SDK.
+
+- Manually integrating with an identity provider.
+
+## JavaScript SDK for verifiable credentials
+
+You can request credentials to issuers through identity providers with the JS client for relying parties NPM package [@dfinity/verifiable-credentials](https://www.npmjs.com/package/@dfinity/verifiable-credentials). Below is an example:
+
+```javascript
+import { requestVerifiablePresentation } from "@dfinity/verifiable-credentials/request-verifiable-presentation";
+
+requestVerifiablePresentation({
+  onSuccess: async (verifiablePresentation: VerifiablePresentationResponse) => {
+    // Called when the flow finishes successfully.
+  },
+  onError() {
+    // Called when there is a technical error.
+  },
+  issuerData: {
+    origin: "<url of the origin>",
+    canisterId: "<[optional] canister id>",
+  },
+  credentialData: {
+    credentialSpec: {
+      credentialType: '<credential type as expected by issuer>',
+      arguments: {
+        // Arguments to verify with the credential
+      },
+    },
+    credentialSubject: "<user's principal>",
+  },
+  identityProvider: "<[optional] url identity provider>",
+  derivationOrigin: "<[optional] origin for delegated identity>",
+  windowOpenerFeatures: "<[optional] window opener config string>",
+});
+```
+
+[Learn more about the JavaScript SDK for VCs](https://github.com/dfinity/verifiable-credentials-sdk/tree/main/js-library).
+
+This code executes the following steps:
+
+- Opens a new window or tab with the identity provider (Internet Identity (II)).
+
+- Waits for a window post message from II.
+
+- Sends a request to II through the window post message.
+
+- Waits for the response from the II.
+
+- Calls an `onSuccess` callback if the process was successful, but that does not necessarily mean that a credential was received.
+
+- Calls an `onError` callback if the process has some technical error, if the user closes the II window, or if II times out.
+
+Learn more about [how this workflow works](how-it-works.mdx).
+
+## Manual integration
 
 To implement a relying party service, your canister must perform three steps:
 
@@ -110,9 +174,9 @@ The specification ensures unlinkability between the relying party and the issuer
 
 ![Verifiable presentations](/static/img/docs/vcs-4.png)
 
-Note how the issuer's principal never appears in the credentials. Instead, the relying party and the issuer know about the `id_alias`. Therefore, this `id_alias` is also a credential to prove the link between the user's principal and the `id_alias`.
+Note how the issuer's principal never appears in the credentials. Instead, the relying party and the issuer know about the `id_alias`. Therefore, this `id_alias` needs the credential to verify the link between the user's principal and the `id_alias`.
 
-The order of the credentials in the VP should match the order above, such that the credential relating to the `credentialSubject` to the user principal should come first.
+The order of the credentials in the VP should match the order above, such that the `id_alias` credential linking with the relying party's principal should come first.
 
 [View an example of a verifiable presentation](https://www.w3.org/TR/vc-data-model/#example-jwt-payload-of-a-jwt-based-verifiable-presentation-non-normative) for reference.
 
@@ -143,56 +207,7 @@ An example error can be found below:
 }
 ```
 
-### JavaScript SDK for verifiable credentials
 
-You can request credentials to issuers through identity providers with the JS client for relying parties NPM package [@dfinity/verifiable-credentials](https://www.npmjs.com/package/@dfinity/verifiable-credentials). Below is an example:
-
-```javascript
-import { requestVerifiablePresentation } from "@dfinity/verifiable-credentials/request-verifiable-presentation";
-
-requestVerifiablePresentation({
-  onSuccess: async (verifiablePresentation: VerifiablePresentationResponse) => {
-    // Called when the flow finishes successfully.
-  },
-  onError() {
-    // Called when there is a technical error.
-  },
-  issuerData: {
-    origin: "<url of the origin>",
-    canisterId: "<[optional] canister id>",
-  },
-  credentialData: {
-    credentialSpec: {
-      credentialType: '<credential type as expected by issuer>',
-      arguments: {
-        // Arguments to verify with the credential
-      },
-    },
-    credentialSubject: "<user's principal>",
-  },
-  identityProvider: "<[optional] url identity provider>",
-  derivationOrigin: "<[optional] origin for delegated identity>",
-  windowOpenerFeatures: "<[optional] window opener config string>",
-});
-```
-
-[Learn more about the JavaScript SDK for VCs](https://github.com/dfinity/verifiable-credentials-sdk/tree/main/js-library).
-
-This code executes the following steps:
-
-- Opens a new window or tab with the identity provider (Internet Identity (II)).
-
-- Waits for a window post message from II.
-
-- Sends a request to II through the window post message.
-
-- Waits for the response from the II.
-
-- Calls an `onSuccess` callback if the process was successful, but that does not necessarily mean that a credential was received.
-
-- Calls an `onError` callback if the process has some technical error, if the user closes the II window, or if II times out.
-
-Learn more about [how this workflow works](how-it-works.mdx).
 
 ## Verifying the credentials
 
