@@ -1232,11 +1232,10 @@
         ]
       },
       {
-        "name": "Chain Fusion Supports EVM Chains",
-        "description": "ICP’s Chain Fusion technology has full support for Ethereum and other EVM chains. ICP smart contracts can read from and write to EVM chains using a decentralized approach as well as sign transactions in a trustless manner using threshold ECDSA signing. This allows ICP smart contracts to augment EVM-based smart contracts with additional functionality through ICP's superpowers, transfer tokens on other chains, and call smart contracts on EVM chains.",
-        "milestone_id": "Tritium",
-        "eta": "May 23, 2024",
-        "status": "deployed",
+        "name": "orphans_past",
+        "description": "Orphans from the past",
+        "milestone_id": "Past features",
+        "eta": "none",
         "elements": [
           {
             "title": "RPC canister for Ethereum & EVM integration",
@@ -1280,15 +1279,7 @@
             "in_beta": false,
             "milestone_id": "Tritium",
             "imported": true
-          }
-        ]
-      },
-      {
-        "name": "orphans_past",
-        "description": "Orphans from the past",
-        "milestone_id": "Past features",
-        "eta": "none",
-        "elements": [
+          },
           {
             "title": "Direct Bitcoin Integration",
             "overview": "Native integration with the Bitcoin blockchain. Trustless reading from and writing to the Bitcoin network from canister smart contracts.",
