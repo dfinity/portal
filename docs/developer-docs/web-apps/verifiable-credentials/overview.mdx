@@ -14,9 +14,9 @@ A credential is a document or certificate that validates an individual's identit
 - A university degree that can be used to assert a level of education.
 - A government-issued passport enabling travel between countries.
 
-These are examples of physical credentials, as they have a physical component that must be presented for validation. Credentials can also be digital, relying on authentication using certifications or digital signatures for validation, such as a username and password or ICP Internet Identity.
+These are examples of physical credentials, as they have a physical component that must be presented for validation. Credentials can also be digital, relying on authentication using cryptographic signatures such as canister signatures on ICP.
 
-Verifiable credentials (VCs) are a type of digital credential that enables individuals, organizations, or things (such as devices) to cryptographically prove the claims they make about themselves.
+Verifiable credentials (VCs) are a type of digital credential that enables individuals, organizations, or things (such as devices) cryptographically.
 
 The technical implementation of VCs on ICP can be found in the [specification](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md). It is recommended you first read the rest of this documentation, as it includes technical details.
 
@@ -36,7 +36,7 @@ When learning about and using VCs, there are two primary terms to familiarize yo
 
 To use verifiable credentials there are two workflows. First, you can [become an issuer](issuer.mdx) of verifiable credentials. By issuing verifiable credentials, you can empower users to control and share their credentials selectively, enhancing privacy and giving users greater autonomy over their digital identity.
 
-The second workflow allows you to [become a relying party](relying-party.mdx) for verifiable credentials. By requesting verifiable credentials from your application's users or customers, you can ensure that the claims that users make are verified by parties (issuers) that you trust, while preserving the user’s privacy.
+The second workflow allows you to [become a relying party](relying-party.mdx) for verifiable credentials. By requesting verifiable credentials from issuers, you can ensure that the claims that users make are verified by parties (issuers) that you trust, while preserving the user’s privacy.
 
 ## Next steps
 
