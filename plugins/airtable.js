@@ -138,6 +138,12 @@ async function fetchAirtableRecords({ apiKey, baseId, tableName, viewId }) {
       viewId,
       offset,
     });
+
+    if (!res.records) {
+      logger.error("No records found in Airtable response.");
+      break;
+    }
+
     offset = res.offset;
     records.push(...res.records);
   } while (offset);
