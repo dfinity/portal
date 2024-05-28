@@ -5,12 +5,55 @@ const os = require("os");
 const fs = require("fs");
 const path = require("path");
 const axios = require("axios");
+const dotenv = require("dotenv");
+dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
 
 // const dotenv = require("dotenv");
 const isDev = (process.env.NODE_ENV || "development") === "development";
 // dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
 
 const { AIRTABLE_KEY } = process.env;
+
+function loadRecords({ apiKey, baseId, tableName, viewId, offset = null }) {
+  const url = `https://api.airtable.com/v0/${baseId}/${tableName}?view=${viewId}${
+    offset ? `&offset=${offset}` : ""
+  }`;
+
+  return fetch(url, {
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+    },
+  }).then((res) => res.json());
+}
+
+async function fetchAllRecords() {
+  let offset;
+  let records = [];
+
+  const BASE_ID = "app1LOpIHEj6dTeEx";
+  const TABLE_NAME = "tblpf2akkElbGlqti";
+  const VIEW_NAME = "viwDJz26NeIdJvqle";
+
+  while (true) {
+    const response = await axios.get(
+      `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`,
+      {
+        params: { offset, view: VIEW_NAME },
+        headers: {
+          Authorization: `Bearer ${AIRTABLE_KEY}`,
+        },
+      }
+    );
+
+    records = [...records, ...response.data.records];
+
+    offset = response.data.offset;
+    if (!offset) {
+      break;
+    }
+  }
+  return records;
+}
 
 let cache;
 
@@ -150,54 +193,12 @@ const airtablePlugin = async function () {
         };
       }
 
-      const recordsCourses = await fetchCourses();
-
-      const courses = recordsCourses
-        .sort()
-        .map((record) => {
-          const fields = record.fields;
-          return {
-            index: record.id,
-            category: fields["Category"],
-            title: fields["Title"],
-            body: fields["Course Description"],
-            languages: fields["Programming language"]?.map((language) =>
-              language?.toLowerCase()
-            ),
-            level: fields["Level"]?.map((level) => level?.toLowerCase()),
-            contentType: fields["Media type"]?.map((content) =>
-              content?.toLowerCase()
-            ),
-            contentLanguages: fields["Content Language"]
-              ? [fields["Content Language"].toLowerCase()]
-              : [],
-            fullTags: fields["Web tag"].concat(fields["Index Tag"] || []),
-            tags: fields["Web tag"] || [],
-            link: fields["URL"] || "#",
-          };
-        })
-        .sort((a, b) => {
-          if (a.category === "Course" && b.category !== "Course") {
-            return -1;
-          } else if (a.category !== "Course" && b.category === "Course") {
-            return 1;
-          } else {
-            return 0;
-          }
-        });
-
-      return { courses, cache };
+      return cache;
     },
 
     async contentLoaded({ content, actions }) {
       const { createData } = actions;
-
-      createData("courses.json", JSON.stringify(content.courses, null, 2));
-
-      createData(
-        "airtable-events.json",
-        JSON.stringify(content.cache, null, 2)
-      );
+      createData("airtable-events.json", JSON.stringify(content, null, 2));
 
       if (isDev) {
         // save mock file
@@ -209,47 +210,6 @@ const airtablePlugin = async function () {
     },
   };
 };
-
-function loadRecords({ apiKey, baseId, tableName, viewId, offset = null }) {
-  const url = `https://api.airtable.com/v0/${baseId}/${tableName}?view=${viewId}${
-    offset ? `&offset=${offset}` : ""
-  }`;
-
-  return fetch(url, {
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-    },
-  }).then((res) => res.json());
-}
-
-async function fetchCourses() {
-  let offset;
-  let records = [];
-
-  const BASE_ID = "app1LOpIHEj6dTeEx";
-  const TABLE_NAME = "tblpf2akkElbGlqti";
-  const VIEW_NAME = "viwDJz26NeIdJvqle";
-
-  while (true) {
-    const response = await axios.get(
-      `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`,
-      {
-        params: { offset, view: VIEW_NAME },
-        headers: {
-          Authorization: `Bearer ${AIRTABLE_KEY}`,
-        },
-      }
-    );
-
-    records = [...records, ...response.data.records];
-
-    offset = response.data.offset;
-    if (!offset) {
-      break;
-    }
-  }
-  return records;
-}
 
 function parseAirtableData(records) {
   return records.map((r) => {
