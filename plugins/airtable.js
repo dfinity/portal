@@ -4,8 +4,8 @@ const markdownToPlainText = require("./utils/markdown-to-plain-text");
 const os = require("os");
 const fs = require("fs");
 const path = require("path");
-const dotenv = require("dotenv");
-dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
+// const dotenv = require("dotenv");
+// dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
 
 const isDev = (process.env.NODE_ENV || "development") === "development";
 const { AIRTABLE_KEY } = process.env;
