@@ -191,6 +191,11 @@ const airtablePlugin = async function () {
         };
       }
 
+      return cache;
+    },
+
+    async contentLoaded({ content, actions }) {
+      const { createData } = actions;
       // Fetch all records from the second Airtable base and table
       const records2 = await fetchAllRecords();
 
@@ -235,12 +240,6 @@ const airtablePlugin = async function () {
           encoding: "utf-8",
         }
       );
-
-      return cache;
-    },
-
-    async contentLoaded({ content, actions }) {
-      const { createData } = actions;
       createData("airtable-events.json", JSON.stringify(content, null, 2));
 
       if (isDev) {

@@ -645,6 +645,7 @@
     "index": "rec3CeGiBxtPFmRkG",
     "category": "Content",
     "title": "Internet Computer Blockchain (ICP) nedir?",
+    "body": "We examine the decentralized structure of ICP and how the web3 ecosystem works. ",
     "languages": [
       "none"
     ],
@@ -655,7 +656,7 @@
       "video"
     ],
     "contentLanguages": [
-      "english"
+      "turkish"
     ],
     "fullTags": [
       "Overview",
@@ -670,6 +671,7 @@
     "index": "rec3ZVcVfN8AMNl0u",
     "category": "Content",
     "title": "Akıllı Sözleşme Türleri ve Projelerden Örnekler",
+    "body": "We will explore the importance and usage areas of ICP by entering the web3 ecosystem. ",
     "languages": [
       "none"
     ],
@@ -680,7 +682,7 @@
       "video"
     ],
     "contentLanguages": [
-      "english"
+      "turkish"
     ],
     "fullTags": [
       "Overview",
@@ -695,6 +697,7 @@
     "index": "rec358xBg3ycZRemP",
     "category": "Content",
     "title": "Monday - Getting to know Internet Computer",
+    "body": "You will learn the fundamentals of Internet Computer Protocol and how its architecture works.  The important thing about this day will be the following:  Know the value proposition of the Internet computer.  Create your identity on Internet Computer.  Become a web3 user with internet computer.",
     "languages": [
       "motoko"
     ],
@@ -705,7 +708,7 @@
       "text"
     ],
     "contentLanguages": [
-      "english"
+      "spanish"
     ],
     "fullTags": [
       "Overview",
@@ -720,6 +723,7 @@
     "index": "rec4NNIylv3oH0t3j",
     "category": "Content",
     "title": "Explaining Frontend Code",
+    "body": "ICP Rust Bootcamp: Explaining Frontend Code",
     "languages": [
       "rust"
     ],
@@ -747,6 +751,7 @@
     "index": "rec4TUG6U3tMy0OqE",
     "category": "Content",
     "title": "Connecting Canisters to the Web with HTTPS Outcalls—No Oracles Required",
+    "body": "The fourth event of the Internet Computer Zero to Dapp Educate Powered by Encode. The session was held by DFINITY's Yotam Harchol--big thanks to him for coming in and sharing his wisdom!",
     "level": [
       "beginner"
     ],
@@ -771,6 +776,7 @@
     "index": "rec4JmyaPPlxKHrae",
     "category": "Content",
     "title": "IC internals: XNet protocol",
+    "body": "This article continues the previous post on state machine replication in the Internet Computer (IC), A swarm of replicated state machines. This time, we shall examine the protocol over which independent state machines (also known as subnets) communicate, the XNet protocol.",
     "languages": [
       "none"
     ],
@@ -797,6 +803,7 @@
     "index": "rec4klqTXJJ7yVgV5",
     "category": "Content",
     "title": "Day 3 - Internet Identity as an authentication tool in IC",
+    "body": "This day is explained;\n-The use of Internet Identity as an authentication system in IC\n-The use of Candid in development.",
     "languages": [
       "motoko"
     ],
@@ -807,7 +814,7 @@
       "text"
     ],
     "contentLanguages": [
-      "english"
+      "spanish"
     ],
     "fullTags": [
       "Identity & Authentication",
@@ -823,6 +830,7 @@
     "index": "rec5C6HnGKw7iqSYS",
     "category": "Content",
     "title": "Thursday - Connect your frontend with Internet Identity",
+    "body": "Today you will learn how to integrate Internet Identity into your frontend canister and consume your backend canisters with it. There will also be readings about considerations to take into account when launching your Canister into production.",
     "languages": [
       "motoko"
     ],
@@ -833,7 +841,7 @@
       "text"
     ],
     "contentLanguages": [
-      "english"
+      "spanish"
     ],
     "fullTags": [
       "Frontend",
@@ -850,6 +858,7 @@
     "index": "rec6CqqLrT7Kv924Z",
     "category": "Content",
     "title": "Unlock the power of Bitcoin",
+    "body": "The Internet Computer allows canisters to perform HTTP outcalls. Connect Web 2.0 with Web 3.0. ",
     "languages": [
       "typescript"
     ],
@@ -881,6 +890,7 @@
     "index": "rec6C8Q75LxmdWp0V",
     "category": "Content",
     "title": "Day 0 - Setting up your development environment",
+    "body": "Setting up your development environment\nInstall all the necessary packages to start developing",
     "languages": [
       "motoko"
     ],
@@ -891,7 +901,7 @@
       "text"
     ],
     "contentLanguages": [
-      "english"
+      "spanish"
     ],
     "fullTags": [
       "Environment Setup",
@@ -906,6 +916,7 @@
     "index": "rec62YvQG2Xysu931",
     "category": "Content",
     "title": "Internet Computer'da Kod Yazmak ve Deploy Etmek",
+    "body": "We cover the development part of the Internet Computer ecosystem!   By watching this video, you will learn how to write and deploy code in Internet Computer, and you will be able to successfully apply this knowledge in your own projects.",
     "languages": [
       "none"
     ],
@@ -916,7 +927,7 @@
       "video"
     ],
     "contentLanguages": [
-      "english"
+      "turkish"
     ],
     "fullTags": [
       "Overview",
@@ -931,6 +942,7 @@
     "index": "rec8MEmavDCvHS1KS",
     "category": "Content",
     "title": "Creating Functions 3",
+    "body": "ICP Rust Bootcamp: Creating Functions 3",
     "languages": [
       "rust"
     ],
@@ -956,6 +968,7 @@
     "index": "recaMntvc1cRBmYJf",
     "category": "Content",
     "title": "Intro to Internet Computer Blockchain",
+    "body": "In this video, you'll learn about the Internet Computer Ecosystem and have the essentials to kickstart your ICP journey! ",
     "languages": [
       "none"
     ],
@@ -966,7 +979,7 @@
       "video"
     ],
     "contentLanguages": [
-      "english"
+      "turkish"
     ],
     "fullTags": [
       "Overview",
@@ -981,6 +994,7 @@
     "index": "reca3CcxxDcicDmE6",
     "category": "Content",
     "title": "Creating Candid File",
+    "body": "ICP Rust Bootcamp: Creating Candid File",
     "languages": [
       "rust"
     ],
@@ -1007,6 +1021,7 @@
     "index": "recBJXTAI3YnZasaN",
     "category": "Content",
     "title": "Tutorial 1/2: Verifying Canisters (and More) using TLA+",
+    "body": "Formal verification improves the quality of software systems by analyzing whether a model of the system satisfies a specification. Verification is particularly attractive in the blockchain context: while verification does have a cost, bugs often have a much higher one. ",
     "languages": [
       "none"
     ],
@@ -1060,6 +1075,7 @@
     "index": "recCbKkMtxlowdWW6",
     "category": "Content",
     "title": "Introduction to the Internet Computer (IC) ecosystem",
+    "body": "ICP Rust Bootcamp: Introduction to the Internet Computer (IC) ecosystem",
     "languages": [
       "rust"
     ],
@@ -1093,6 +1109,7 @@
     "index": "recEr4LgXvmLG69Og",
     "category": "Content",
     "title": "Query Methods",
+    "body": "This article provides a comprehensive guide to using Azle for developing applications on the Internet Computer, detailing topics such as getting started, examples, deployment, project structure, server setup, assets, authentication, and various integration points like Bitcoin and Ethereum, alongside advanced topics like debugging, limitations, and performance optimization. It also includes specifics on how to create and use query methods within canisters, demonstrating their capabilities and limitations.",
     "languages": [
       "typescript"
     ],
@@ -1147,6 +1164,7 @@
     "index": "recFPeEgoo1MJS0VW",
     "category": "Content",
     "title": "Azle (Beta)",
+    "body": "Azle is a TypeScript and JavaScript Canister Development Kit (CDK) for the Internet Computer (IC), providing a runtime for building IC applications. While offering unique benefits like full TypeScript/JavaScript support and built-in devops, both Azle and the IC have drawbacks including security risks, limited scalability, and high latencies, making them unsuitable for all application use-cases.",
     "languages": [
       "none"
     ],
@@ -1172,6 +1190,7 @@
     "index": "recFBEGzdbVqRNshT",
     "category": "Content",
     "title": "Smart Contract (Akıllı Sözleşme) nedir?",
+    "body": "We will discuss the concept of Smart Contract, detailed information on how it can be developed, the software languages ​​used and what steps should be followed in this process.  ",
     "languages": [
       "none"
     ],
@@ -1182,7 +1201,7 @@
       "video"
     ],
     "contentLanguages": [
-      "english"
+      "turkish"
     ],
     "fullTags": [
       "Overview",
@@ -1197,6 +1216,7 @@
     "index": "recF46AJtwbcEZ1Cf",
     "category": "Content",
     "title": "Canisters — Smart Contracts on Steroids",
+    "body": "The second event of the Internet Computer Zero to Dapp Educate Powered by Encode. Big thanks to Kyle Peacock and Bogdan Warinschi from DFINITY for holding the lesson!",
     "level": [
       "beginner"
     ],
@@ -1220,6 +1240,7 @@
     "index": "recF9AkZ37Bh8GAaF",
     "category": "Content",
     "title": "Motoko Stable Regions",
+    "body": "The DFINITY Global R&D : Updates on canister testing with Rust, Neurons’ Fund enhancements, ICP-ETH interoperability, Motoko stable regions, and demonstrations of innovative tools and AgorApp community demo",
     "languages": [
       "motoko"
     ],
@@ -1330,6 +1351,7 @@
     "index": "recGhq4KNsAAYkt52",
     "category": "Content",
     "title": "Ecosystem Project Success Story",
+    "body": "The seventh event of the Internet Computer Zero to Dapp Educate Powered by Encode. The session was held by Toniq Labs' Co-founder and CEO, Bob Bodily--big thanks to him for coming in and sharing his wisdom!",
     "level": [
       "beginner"
     ],
@@ -1352,6 +1374,7 @@
     "index": "recHLn9KPDNfagUUi",
     "category": "Content",
     "title": "Day 2 - Start with frontend development",
+    "body": "This day you will learn how to develop, deploy your Canisters and how to use having an interface. We are going to analyze how you can make your Frontend work and we will review Candid",
     "languages": [
       "motoko"
     ],
@@ -1362,7 +1385,7 @@
       "text"
     ],
     "contentLanguages": [
-      "english"
+      "spanish"
     ],
     "fullTags": [
       "Frontend",
@@ -1405,6 +1428,7 @@
     "index": "recIXzHwovBChpsBG",
     "category": "Content",
     "title": "ICP Grantee Showcase",
+    "body": "The eighth event of the Internet Computer Zero to Dapp Educate Powered by Encode. In this session, we welcomed three ICP grantees who talked about their journey----big thanks to our guest speakers for coming in and sharing their wisdom!",
     "level": [
       "beginner"
     ],
@@ -1479,31 +1503,6 @@
     "link": "https://youtu.be/H7HCqonSMFU?si=bZdBEA1BW1PsZV6Y"
   },
   {
-    "index": "recKsn75lj7JlZ2yq",
-    "category": "Content",
-    "title": "Day 5 - Demo day",
-    "languages": [
-      "motoko"
-    ],
-    "level": [
-      "beginner"
-    ],
-    "contentType": [
-      "text"
-    ],
-    "contentLanguages": [
-      "english"
-    ],
-    "fullTags": [
-      "Community",
-      "Demo"
-    ],
-    "tags": [
-      "Community"
-    ],
-    "link": "https://icp-esp.gitbook.io/icp-developer-ii/programa/dia-5-demo-day"
-  },
-  {
     "index": "recLufGpUa8qh1pTC",
     "category": "Content",
     "title": "What is the Internet Computer (ICP)? A beginner's explanation!",
@@ -1540,6 +1539,7 @@
     "index": "recLCY5lveRFRYxXu",
     "category": "Content",
     "title": "Creating Smart Contract",
+    "body": "ICP Rust Bootcamp: Creating Smart Contract",
     "languages": [
       "rust"
     ],
@@ -1567,6 +1567,7 @@
     "index": "recLc3JYsjzUQNgBb",
     "category": "Content",
     "title": "Candid for engineers",
+    "body": "Candid is the primary interface definition language for smart contracts hosted on the Internet Computer.\n\nMost prevalent data-interchange formats, such as Protocol Buffers and Thrift, come straight from engineering departments.\n\nCandid is different. Candid is a child of programming language designers who grew it from first principles. As a result, Candid makes sense but might feel alien to most engineers.\n\nThis article is an introduction to Candid I wish I had when I started using it.",
     "languages": [
       "none"
     ],
@@ -1594,6 +1595,7 @@
     "index": "recMxZ9GkRrUAae31",
     "category": "Content",
     "title": "Testing and Deploying Smart Contract",
+    "body": "ICP Rust Bootcamp: Testing and Deploying Smart Contract",
     "languages": [
       "rust"
     ],
@@ -1642,6 +1644,7 @@
     "index": "recOwrhRLDTZUtuOb",
     "category": "Content",
     "title": "Candid Specification",
+    "body": "To document, discover, and interact with canisters (also known as services or actors) on the Internet Computer, we need an interface description language (IDL) for specifying the signature of a canister.",
     "languages": [
       "none"
     ],
@@ -1667,6 +1670,7 @@
     "index": "recPVZWD6tBWt7UmB",
     "category": "Content",
     "title": "Creating Smart Contract for Final Project",
+    "body": "ICP Rust Bootcamp: Creating Smart Contract for Final Project",
     "languages": [
       "rust"
     ],
@@ -1692,6 +1696,7 @@
     "index": "recQOjryMwuksxSj9",
     "category": "Content",
     "title": "State Management 2",
+    "body": "ICP Rust Bootcamp: State Management 2",
     "languages": [
       "rust"
     ],
@@ -1746,6 +1751,7 @@
     "index": "recRCNMzAnNXBtFV9",
     "category": "Content",
     "title": "Update Methods",
+    "body": "The article explains update methods on the Internet Computer (IC), highlighting their execution on multiple nodes with consensus and 2-5 seconds latency per call. It emphasizes using update methods judiciously due to latency and resource expenses, providing examples of efficient usage and limitations such as computation and storage constraints.",
     "languages": [
       "typescript"
     ],
@@ -1772,6 +1778,7 @@
     "index": "recSHT9zaKzxInOnb",
     "category": "Content",
     "title": "Day 1 - Define the idea of your DApp to develop",
+    "body": "We will have a strong start, this day we will attend to the following:\n- We will review the fundamentals of Internet Computer Protocol, we need to be clear about some concepts.\n- You will define the idea that you will develop during this week.",
     "languages": [
       "motoko"
     ],
@@ -1782,7 +1789,7 @@
       "text"
     ],
     "contentLanguages": [
-      "english"
+      "spanish"
     ],
     "fullTags": [
       "Canister Development",
@@ -1828,6 +1835,7 @@
     "index": "recVnSeG85B5AbL4S",
     "category": "Content",
     "title": "Overview of the Internet Computer ecosystem and core differences",
+    "body": "ICP Rust Bootcamp: Overview of the Internet Computer ecosystem and core differences",
     "languages": [
       "rust"
     ],
@@ -1880,6 +1888,7 @@
     "index": "recWlejD4TACpO4hw",
     "category": "Content",
     "title": "Overview of the Frontend for Final Project",
+    "body": "ICP Rust Bootcamp: Overview of the Frontend for Final Project",
     "languages": [
       "rust"
     ],
@@ -1907,6 +1916,7 @@
     "index": "recWqgoQijanS1FDs",
     "category": "Content",
     "title": "Using TLA+ for Internet Computer Canisters",
+    "body": "In the realm of smart contract security, TLA+ is particularly good at weeding out reentrancy bugs, a frequent type of smart contract bugs that often have disastrous consequences. However, TLA+ is a general-purpose language; it’s in no way tailored to smart contracts, and in particular the Internet Computer (IC) and its so-called canister smart contracts. Hence, figuring out how to use TLA+ to model canisters can take time; this post is intended to help you with that. It’s a technical guide that describes a general strategy for modeling canisters using TLA+.",
     "languages": [
       "none"
     ],
@@ -1934,6 +1944,7 @@
     "index": "recWvyVsX2rchww7e",
     "category": "Content",
     "title": "Friday - Deploying Canisters",
+    "body": "Today you will learn concepts to take into account when launching your Canister into production.",
     "languages": [
       "motoko"
     ],
@@ -1944,7 +1955,7 @@
       "text"
     ],
     "contentLanguages": [
-      "english"
+      "spanish"
     ],
     "fullTags": [
       "Canister Development",
@@ -1959,6 +1970,7 @@
     "index": "recWHt3PRSGeLnMIf",
     "category": "Content",
     "title": "IC internals: Internet Identity storage",
+    "body": "The Internet Identity canister innovated a passwordless approach to authentication on the Internet Computer (IC). I was lucky to be among the first members of the team that launched this service. Despite the time shortage, the team pioneered a few engineering solutions, some of which later caught up in other services",
     "languages": [
       "none"
     ],
@@ -2015,7 +2027,7 @@
     "index": "recXunVi3RQX7WLgy",
     "category": "Content",
     "title": "Deploy your first dApp in 5 minutes!",
-    "body": "his is a guided tutorial to help you deploy your first application on the Internet Computer in 5 minutes. You don't need any prior setup or configuration to use this repository. A GitHub account and Internet connection will be enough.",
+    "body": "This is a guided tutorial to help you deploy your first application on the Internet Computer in 5 minutes. You don't need any prior setup or configuration to use this repository. A GitHub account and Internet connection will be enough.",
     "languages": [
       "motoko"
     ],
@@ -2073,6 +2085,7 @@
     "index": "recYtYI59TG4AOwjg",
     "category": "Content",
     "title": "Awesome Motoko",
+    "body": "An awesome list of Motoko code and resources curated by the community.\n\nThe Motoko programming language is a new, modern and type safe language for developers who want to build the next generation of distributed applications to run on the Internet Computer blockchain network.",
     "languages": [
       "motoko"
     ],
@@ -2108,6 +2121,7 @@
     "index": "recY07oqn1Ehl7nYR",
     "category": "Content",
     "title": "ckBTC internals: event log",
+    "body": "The chain-key Bitcoin (ckBTC) project became publicly available on April 3, 2023. The ckBTC minter smart contract is the most novel part of the product responsible for converting Bitcoin to ckBTC tokens and back. This contract features several design choices that some developers might find insightful. This article describes how the ckBTC minter, which I will further refer to as the minter, organizes its storage.",
     "languages": [
       "none"
     ],
@@ -2139,6 +2153,7 @@
     "index": "recZJ2S4gFuXAhxSW",
     "category": "Content",
     "title": "Candid",
+    "body": "Candid is an interface description language by DFINITY that enables interaction between canisters and clients across different languages through serialization and deserialization of Candid bytes. Azle simplifies this process by automatically encoding and decoding JavaScript values using CandidType objects, which define parameters, return types, and stable storage keys and values.",
     "languages": [
       "typescript"
     ],
@@ -2165,6 +2180,7 @@
     "index": "rec0T8BTGOhxqa4Hg",
     "category": "Content",
     "title": "IC internals: the ICP ledger",
+    "body": "The ICP ledger is one of the first smart contracts hosted on the Internet Computer (IC). As of December 2022, the ICP ledger holds hundreds of millions of dollars worth of tokens and never had a significant outage. This article wil examine some design choices powering this critical canister.",
     "languages": [
       "none"
     ],
@@ -2220,6 +2236,7 @@
     "index": "recbAvUapRNrIWFKU",
     "category": "Content",
     "title": "Effective Rust Canister",
+    "body": "This document is a compilation of useful patterns and typical pitfalls I observed in the Rust code running on the Internet Computer (IC). Take everything in this document with a grain of salt: solutions that worked well for my problems might be suboptimal for yours. Every piece of advice comes with explanations to help you form your judgment.",
     "languages": [
       "rust"
     ],
@@ -2246,6 +2263,7 @@
     "index": "recc612Sslovxxqd1",
     "category": "Content",
     "title": "Internet Computer Overview",
+    "body": "The Internet Computer (IC) is a decentralized cloud platform. Actually, it is better thought of as a progressively decentralizing cloud platform. Its full vision is yet to be fulfilled.",
     "languages": [
       "none"
     ],
@@ -2297,6 +2315,7 @@
     "index": "recciDaiuAKRlvq2m",
     "category": "Content",
     "title": "Creating Functions 1",
+    "body": "ICP Rust Bootcamp: Creating Functions 1",
     "languages": [
       "rust"
     ],
@@ -2378,6 +2397,7 @@
     "index": "recdZm25GpHOoVcI7",
     "category": "Content",
     "title": "Bitcoin Direct Integration & ckBTC — Bringing Smart Contracts to Bitcoin",
+    "body": "The fifth event of the Internet Computer Zero to Dapp Educate Powered by Encode. The session was held by DFINITY's Dieter Sommer--big thanks to him for coming in and sharing his wisdom!",
     "level": [
       "beginner"
     ],
@@ -2401,6 +2421,7 @@
     "index": "receKPo3bDTc3IaWs",
     "category": "Content",
     "title": "Creating Functions 2",
+    "body": "ICP Rust Bootcamp: Creating Functions 2",
     "languages": [
       "rust"
     ],
@@ -2452,6 +2473,7 @@
     "index": "recfUSgWzLSVW1Xz4",
     "category": "Content",
     "title": "SNS Neuron Following on Specific Topics",
+    "body": "SNS implements liquid democracy similar to the NNS, where participants can lock tokens in neurons to vote manually, or follow other voting neurons. In this video, we demonstrate how you can set up your SNS neurons where you follow the votes of another neuron as a default fallback, while opting to vote manually on specific topics.",
     "languages": [
       "none"
     ],
@@ -2565,6 +2587,7 @@
     "index": "reciKA9KohIvcOSJn",
     "category": "Content",
     "title": "Overview of the IC architecture and its components",
+    "body": "ICP Rust Bootcamp: Overview of the IC architecture and its components",
     "languages": [
       "rust"
     ],
@@ -2618,6 +2641,7 @@
     "index": "recjOzQrNXVN1JhZv",
     "category": "Content",
     "title": "Building a Cross-Chain ETH Payment and E-Commerce Platform on the Internet Computer",
+    "body": "This comprehensive tutorial guides you through the process of building a decentralized e-commerce platform on the Internet Computer that can accept Ethereum (ETH) payments, handle withdrawals, and manage a digital storefront. Starting from a basic template, we’ll incrementally add features to create a robust, cross-chain solution.",
     "languages": [
       "rust"
     ],
@@ -2676,6 +2700,7 @@
     "index": "recjYS1MtURCy5AaI",
     "category": "Content",
     "title": "Day 4 - Deploying your project",
+    "body": "This day will be dedicated to the deployment of projects in the CI network and the best practices to do this",
     "languages": [
       "motoko"
     ],
@@ -2686,7 +2711,7 @@
       "text"
     ],
     "contentLanguages": [
-      "english"
+      "spanish"
     ],
     "fullTags": [
       "Canister Development",
@@ -2727,6 +2752,7 @@
     "index": "reckRxTHEVAMAWLB1",
     "category": "Content",
     "title": "Stable Structures",
+    "body": "Stable structures in the Internet Computer (IC) provide data structures with familiar APIs for persistent storage across canister upgrades, utilizing stable memory which supports up to 96 GiB. Azle offers the StableBTreeMap structure, which simplifies reading and writing to stable memory and preserves data using unique memory ids, facilitating CRUD operations and complex database functionalities.",
     "languages": [
       "typescript"
     ],
@@ -2756,6 +2782,7 @@
     "index": "recklBZRlsMOrT1o0",
     "category": "Content",
     "title": "Update and Query Functions",
+    "body": "ICP Rust Bootcamp: Update and Query Functions",
     "languages": [
       "rust"
     ],
@@ -2782,6 +2809,7 @@
     "index": "reckZp5SJv9uLgVZ3",
     "category": "Content",
     "title": "Awesome Internet Computer",
+    "body": "The Internet Computer is a public blockchain that hosts smart contracts that run at web speed, can serve web from cyberspace, run efficiently, and can scale within an environment that has unbounded capacity. Smart contracts are a profoundly new and superior form of tamperproof and unstoppable software. They can imbue systems and services with new properties, enabling the reimagination of websites, systems, internet services and finance.",
     "languages": [
       "none"
     ],
@@ -2818,6 +2846,7 @@
     "index": "reckeKztEKQ6bUHg9",
     "category": "Content",
     "title": "The Internet Computer Protocol",
+    "body": "The first event of the Internet Computer Zero to Dapp Educate Powered by Encode. The event was held Moritz Fuller, Dev Rel Engineer at DFINITY--big thanks to Moritz for coming in and sharing his wisdom!",
     "level": [
       "beginner"
     ],
@@ -2840,6 +2869,7 @@
     "index": "reckkVMvbheWngszN",
     "category": "Content",
     "title": "Canisters Overview",
+    "body": "Canisters are Internet Computer (IC) applications. They are the encapsulation of your code and state, and are essentially Wasm modules.",
     "languages": [
       "none"
     ],
@@ -2868,6 +2898,7 @@
     "index": "reclAE9Sr1Gk9vcDP",
     "category": "Content",
     "title": "Eliminating Smart Contract Bugs with TLA+",
+    "body": "Temporal Logic of Actions (TLA+), a general toolkit that can exhaustively test software designs, also works on ckBTC smart contracts. Say goodbye to reentrancy bugs, and hello to more secure BTC <> ICP transfers.",
     "languages": [
       "none"
     ],
@@ -2895,6 +2926,7 @@
     "index": "recld0oMadIsdMx5b",
     "category": "Content",
     "title": "Updating the Candid File",
+    "body": "ICP Rust Bootcamp: Updating the Candid File",
     "languages": [
       "rust"
     ],
@@ -2920,6 +2952,7 @@
     "index": "recmrMfaegbPht1f0",
     "category": "Content",
     "title": "Wednesday - A first look at the canisters",
+    "body": "This day you will learn how to develop Canisters using the Motoko programming language. The topics that will be covered on this day are:\n-Data structures\n-Types of memory in canisters\n-Create your first CRUD",
     "languages": [
       "motoko"
     ],
@@ -2930,7 +2963,7 @@
       "text"
     ],
     "contentLanguages": [
-      "english"
+      "spanish"
     ],
     "fullTags": [
       "Canister Development",
@@ -2946,6 +2979,7 @@
     "index": "recmyuy28WK81eRiK",
     "category": "Content",
     "title": "Cross-canister",
+    "body": "The article explains implementing cross-canister calls using the Azle framework on the Internet Computer, covering canister definitions, imports, and usage for inter-canister communication, with examples and error-handling techniques. It also discusses composite queries, notifications, and sending cycles with calls.",
     "languages": [
       "none"
     ],
@@ -3026,6 +3060,7 @@
     "index": "recn9BbThMXncP8Tj",
     "category": "Content",
     "title": "State Management 1",
+    "body": "ICP Rust Bootcamp: State Management 1",
     "languages": [
       "rust"
     ],
@@ -3054,6 +3089,7 @@
     "index": "recoSaqiGIibXQUwU",
     "category": "Content",
     "title": "Gas Fee ve Cycle Sistemi Ödemeleri",
+    "body": "We will explore the importance and usage areas of ICP by entering the web3 ecosystem. Keep following us!",
     "languages": [
       "none"
     ],
@@ -3064,7 +3100,7 @@
       "video"
     ],
     "contentLanguages": [
-      "english"
+      "turkish"
     ],
     "fullTags": [
       "Overview",
@@ -3079,6 +3115,7 @@
     "index": "recocFXhZ9GVUKPv8",
     "category": "Content",
     "title": "Tuesday - Get ready to code",
+    "body": "This day you will have your environment and basic knowledge up to date to start programming your own canister on Internet Computer with Motoko.",
     "languages": [
       "motoko"
     ],
@@ -3089,7 +3126,7 @@
       "text"
     ],
     "contentLanguages": [
-      "english"
+      "spanish"
     ],
     "fullTags": [
       "Canister Development",
@@ -3105,6 +3142,7 @@
     "index": "recpR139ossmZwvcX",
     "category": "Content",
     "title": "Setting up the development environment for IC",
+    "body": "ICP Rust Bootcamp: Setting up the development environment for IC",
     "languages": [
       "rust"
     ],
@@ -3187,6 +3225,7 @@
     "index": "recrLBluGDirVziaW",
     "category": "Content",
     "title": "Tokenomics",
+    "body": "ICP.Lab Business Boosters is a virtual extension to the ICP.Lab physical workshop weeks in our Zurich HQ. The intention is to educate builders on non technical matters, specifically business topics.",
     "languages": [
       "none"
     ],
@@ -3267,6 +3306,7 @@
     "index": "recr4BiMvsHB8cUUR",
     "category": "Content",
     "title": "Chain-Key Bitcoin: A Decentralized Bitcoin Twin",
+    "body": "Chain-Key Bitcoin (ckBTC) is now live on the Internet Computer. Acting as a bitcoin ‘twin’, ckBTC enables fast, low-fee, cryptographically secure, fully on-chain bitcoin transactions on the Internet Computer, bringing true decentralization to DeFi and the blockchain space.",
     "languages": [
       "none"
     ],
@@ -3319,6 +3359,7 @@
     "index": "rectM1PVZQllxGnvn",
     "category": "Content",
     "title": "Constellation Book",
+    "body": "If you're not yet familiar with blockchain, bitcoin, and IC, no worries. I'm here to give you the lowdown on the history of crypto!\n\nIf you've heard of IC but haven't gotten the full scoop yet, you've come to the right place to learn more.",
     "level": [
       "intermediate"
     ],
@@ -3390,6 +3431,7 @@
     "index": "recuQqb9pnC0Pzr2w",
     "category": "Content",
     "title": "Chain-key Bitcoin",
+    "body": "This slide explains the Internet Computer's integration with Bitcoin, enabling smart contracts (canisters) to directly interact with the Bitcoin blockchain, and introduces Chain-Key Bitcoin (ckBTC), a fast, low-cost, and secure representation of Bitcoin backed 1:1 by actual Bitcoin.",
     "languages": [
       "none"
     ],
@@ -3410,7 +3452,7 @@
     "tags": [
       "Bitcoin"
     ],
-    "link": "https://docs.google.com/presentation/d/1LTBiLsjYIuwV5fEKcg7sL8ew1sDP5tPfGbOd-r9IGEc/edit#slide=id.g28d3ae83d5e_0_30"
+    "link": "https://docs.google.com/presentation/d/1LTBiLsjYIuwV5fEKcg7sL8ew1sDP5tPfGbOd-r9IGEc/edit#slide=id.p"
   },
   {
     "index": "recwh8cXnjxZdjuow",
@@ -3470,6 +3512,7 @@
     "index": "recxWc9LDqqgVHIVs",
     "category": "Content",
     "title": "Unlocking More Awesomeness — Dive Deeper With These Resources",
+    "body": "The sixth event of the Internet Computer Zero to Dapp Educate Powered by Encode. The session was held by ",
     "level": [
       "beginner"
     ],
@@ -3526,6 +3569,7 @@
     "index": "reczWgUqCsS1AM1nY",
     "category": "Content",
     "title": "Testing the Contract",
+    "body": "ICP Rust Bootcamp: Testing the Contract",
     "languages": [
       "rust"
     ],
