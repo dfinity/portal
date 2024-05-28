@@ -121,23 +121,29 @@ const ProjectInfo: React.FC<{
           className="w-14 max-h-14"
           alt={`${project.name} logo`}
         ></img>
-        <div className="flex flex-col justify-center flex-1">
-          <h3 className="tw-heading-5 mb-0" style={{ wordBreak: "break-word" }}>
-            {project.name}
-
-            {project.usesInternetIdentity && (
-              <Tooltip
-                tooltip="Uses Internet Identity"
-                className="text-center w-44"
-              >
-                <img
-                  className="relative bottom-2 left-1 cursor-pointer"
-                  src="/img/showcase/ii-badge.svg"
-                  alt="The project uses Internet Identity"
-                ></img>
-              </Tooltip>
-            )}
-          </h3>
+        <div className="justify-center flex-1 relative">
+          <div>
+            <h3
+              className="tw-heading-5 mb-0 pr-6"
+              style={{ wordBreak: "break-word" }}
+            >
+              {project.name}
+              {project.usesInternetIdentity && (
+                <i className="inline-block ml-1 mb-1 cursor-pointer">
+                  <Tooltip
+                    tooltip="Uses Internet Identity"
+                    className="text-center w-44"
+                  >
+                    <img
+                      className=""
+                      src="/img/showcase/ii-badge.svg"
+                      alt="The project uses Internet Identity"
+                    ></img>
+                  </Tooltip>
+                </i>
+              )}
+            </h3>
+          </div>
           {project.stats && (
             <p className="tw-paragraph-sm text-black-60 mb-0">
               {project.stats}
@@ -280,9 +286,13 @@ const LargeCard = ({ project }: { project: ShowcaseProject }) => {
 const projects = showcaseData as ShowcaseProject[];
 const tags = Object.entries(
   projects.reduce((tags, p) => {
-    if (!p.tags) return tags;
-    for (const tag of p.tags) {
-      tags[tag] = (tags[tag] || 0) + 1;
+    if (p.tags) {
+      for (const tag of p.tags) {
+        tags[tag] = (tags[tag] || 0) + 1;
+      }
+    }
+    if (p.usesInternetIdentity) {
+      tags["Internet Identity"] = (tags["Internet Identity"] || 0) + 1;
     }
     return tags;
   }, {} as Record<string, number>)
@@ -299,9 +309,15 @@ function ShowcasePage(): JSX.Element {
   useEffect(() => {
     let filteredProjects = projects;
     if (queryTagInitialized && queryTag?.length > 0) {
-      filteredProjects = filteredProjects.filter((p) =>
-        (p.tags || []).find((tag) => tag == queryTag)
-      );
+      if (queryTag === "Internet Identity") {
+        filteredProjects = filteredProjects.filter(
+          (p) => p.usesInternetIdentity
+        );
+      } else {
+        filteredProjects = filteredProjects.filter((p) =>
+          (p.tags || []).find((tag) => tag == queryTag)
+        );
+      }
     }
     setFilteredProjects(sortDesktopProjects(filteredProjects));
   }, [queryTagInitialized, queryTag]);
