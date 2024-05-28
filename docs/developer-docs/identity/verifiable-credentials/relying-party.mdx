@@ -172,7 +172,7 @@ In this response, `verifiablePresentation` is a JWT based verifiable presentatio
 
 The specification ensures unlinkability between the relying party and the issuer. That's why two credentials are needed. The first credential proves the link between the relying party's principal and `id_alias` created in the identity provider. The second credential is the actual credential to the `id_alias`.
 
-![Verifiable presentations](/static/img/docs/vcs-4.png)
+![Verifiable presentations](/img/docs/vcs-4.png)
 
 Note how the issuer's principal never appears in the credentials. Instead, the relying party and the issuer know about the `id_alias`. Therefore, this `id_alias` needs the credential to verify the link between the user's principal and the `id_alias`.
 
