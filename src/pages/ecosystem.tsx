@@ -121,7 +121,7 @@ const ProjectInfo: React.FC<{
           className="w-14 max-h-14"
           alt={`${project.name} logo`}
         ></img>
-        <div className="justify-center flex-1 relative">
+        <div className="flex-1">
           <div>
             <h3
               className="tw-heading-5 mb-0 pr-6"
