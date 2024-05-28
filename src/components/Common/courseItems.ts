@@ -1,4 +1,4 @@
-import courses from "../../../plugins/data/courses.json";
+import courses from "@site/.docusaurus/airtable/default/airtable-courses.json";
 
 export type CourseItem = {
   index: string;
