@@ -500,6 +500,34 @@ fn transform(raw: TransformArgs) -> HttpResponse {
 </TabItem>
 </AdornedTabs>
 
+:::caution
+
+Headers in the response may not always be identical across all nodes that process the request for consensus, causing the result of the call to be "No consensus could be reached." This particular error message can be hard to debug, but one method to resolve this error is to edit the response using the transform function. The transform function is run before consensus, and can be used to remove some headers from the response. For example, the following Rust variation removes all headers aside from the body and status code of the call:
+
+```rust
+use ic_cdk::{
+    api::management_canister::http_request::{HttpResponse, TransformArgs},
+    query,
+};
+
+#[query]
+fn transform(raw: TransformArgs) -> HttpResponse {
+    let mut res = HttpResponse {
+        status: raw.response.status.clone(),
+        body: raw.response.body.clone(),
+        ..Default::default()
+    };
+
+    if i32::try_from(res.status.clone().0).unwrap() == 200 {
+        res.body = raw.response.body;
+    } else {
+        ic_cdk::api::print(format!("Received an error from proxy: err = {:?}", raw));
+    }
+
+    res
+}
+```
+:::
 
 
 - #### Step 3: Edit the Type or Candid files.
@@ -642,7 +670,7 @@ URLs:
     send_http_get_motoko_backend: http://127.0.0.1:4943/?canisterId=a3shf-5eaaa-aaaaa-qaafa-cai&id=avqkn-guaaa-aaaaa-qaaea-cai
 ```
 
-Open the candid web UI for the backend (the `send_http_get_motoko_backend` one) and call the `get_icp_usd_exchange()` method:
+Open the Candid web UI for the backend (the `send_http_get_motoko_backend` one) and call the `get_icp_usd_exchange()` method:
 
 ![Candid web UI](../_attachments/https-get.webp)
 
@@ -669,7 +697,7 @@ URLs:
     send_http_get_rust_backend: http://127.0.0.1:4943/?canisterId=aovwi-4maaa-aaaaa-qaagq-cai&id=a4tbr-q4aaa-aaaaa-qaafq-cai
 ```
 
-Open the candid web UI for the backend (the `send_http_get_rust_backend` one) and call the `get_icp_usd_exchange()` method:
+Open the Candid web UI for the backend (the `send_http_get_rust_backend` one) and call the `get_icp_usd_exchange()` method:
 
 ![Candid web UI](../_attachments/https-get-candid-3-rust.webp)
 

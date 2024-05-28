@@ -155,14 +155,16 @@ const milestoneComponent = (
     wrapperClasses += ` bg-[var(--color)] w-[450px]`;
   }
 
-  if (milestone.name === "orphans_past") {
+  if (milestone.status === "deployed") {
+    wrapperClasses += ` past-card order-2`;
+  } else if (milestone.name === "orphans_past") {
     wrapperClasses += ` past-card order-1`;
   } else {
-    wrapperClasses += ` order-2`;
+    wrapperClasses += ` order-3`;
   }
 
   if (milestone.name === "orphans_future") {
-    wrapperClasses += ` order-3 mr-[100dvw]`;
+    wrapperClasses += ` order-4 mr-[100dvw]`;
   }
 
   return (
@@ -217,7 +219,12 @@ const milestoneComponent = (
               <p className="text-xs mb-0">
                 {milestone.eta && milestone.eta != "none" ? (
                   <span>
-                    <span className="opacity-35">Due Date</span> {milestone.eta}
+                    <span className="opacity-35">
+                      {milestone.status === "deployed"
+                        ? "Completed"
+                        : "Due Date"}
+                    </span>{" "}
+                    {milestone.eta}
                   </span>
                 ) : (
                   <span>&nbsp;</span>
@@ -227,6 +234,11 @@ const milestoneComponent = (
             <p className="mb-0 mt-3">{milestoneName(milestone.name)}</p>
           </div>
           <div className="self-end">
+            {milestone.status === "deployed" && (
+              <div className="w-9 ml-auto mr-2 mt-1 md:mt-0">
+                <DeployedIcon glowing={true} />
+              </div>
+            )}
             <strong className="block text-[120px] font-light leading-none text-right">
               {milestone.elements!.length}
             </strong>

@@ -57,10 +57,14 @@ Below is an overview of the types and method interfaces for the Candid-RPC endpo
 ```candid
 type EthMainnetService = variant { Alchemy; Ankr; BlockPi; Cloudflare; PublicNode; ... };
 type EthSepoliaService = variant { Alchemy; Ankr; BlockPi; PublicNode; ... };
+type L2MainnetService = variant { Alchemy; Ankr; BlockPi; PublicNode; ... };
 
 type RpcServices = variant {
   EthMainnet : opt vec EthMainnetService;
   EthSepolia : opt vec EthSepoliaService;
+  ArbitrumOne : opt vec L2MainnetService;
+  BaseMainnet : opt vec L2MainnetService;
+  OptimismMainnet : opt vec L2MainnetService;
   Custom : record {
     chainId : nat64;
     services : vec record { url : text; headers : opt vec HttpHeader };
@@ -106,6 +110,8 @@ The shared Candid types are defined as follows:
 
 - `EthSepoliaService`: An RPC service compatible with the Sepolia testnet.
 
+- `L2MainnetService`: An RPC service compatible with an Ethereum [layer-2 network](https://www.investopedia.com/what-are-layer-1-and-layer-2-blockchain-scaling-solutions-7104877).
+
 - `RpcServices`: An input for Candid-RPC methods representing which chain and service(s) to use for the RPC call. By default, the canister uses at least 3 different RPC services.
 
 - `RpcConfig`: An optional input for Candid-RPC methods used to customize how the RPC request is performed by the canister.
@@ -122,6 +128,9 @@ This endpoint also offers an improved developer experience when using the [ether
 type RpcService = variant {
   EthMainnet : EthMainnetService;
   EthSepolia : EthSepoliaService;
+  ArbitrumOne : L2MainnetService;
+  BaseMainnet : L2MainnetService;
+  OptimismMainnet : L2MainnetService;
   Chain : nat64;
   Provider : nat64;
   Custom : record { url : text; headers : opt vec HttpHeader };
@@ -139,6 +148,12 @@ request : (
 - `EthMainnet`: Selects a built-in provider for the Ethereum mainnet.
 
 - `EthSepolia`: Selects a built-in provider for the Sepolia testnet.
+
+- `ArbitrumOne`: Selects a built-in provider for the Arbitrum layer-2 network.
+
+- `BaseMainnet`: Selects a built-in provider for the Base layer-2 network.
+
+- `OptimismMainnet`: Selects a built-in provider for the Optimism layer-2 network.
 
 - `Chain`: Selects a provider from the list of built-in providers with the given chain ID. An extensive list of chain IDs can be found on [ChainList.org](https://chainlist.org). Specifying `Chain` with no registered provider results in an error.
 

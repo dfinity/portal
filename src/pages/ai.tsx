@@ -156,19 +156,19 @@ function AIPage() {
         >
           <div className="container-10 pt-20 pb-12 sm:pb-40 md:pb-40 md:pt-36 relative z-10">
             <motion.h1
-              className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-8/10 "
+              className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-2/3 "
               variants={transitions.item}
             >
-              Hello, <br /> Decentralized AI
+              Run your AI models on the blockchain
             </motion.h1>
             <div className="relative  md:w-5/10">
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                Train and run AI models as smart contracts fully onchain to
-                benefit from the security, resilience, and computation power of
-                the ICP blockchain.
+                Decentralization unlocked: Train and run AI models as fully
+                on-chain smart contracts to benefit from the security,
+                resilience, and power of ICP.
               </motion.p>
               {/* <MotionLink
                 className="button-white"
