@@ -19,7 +19,7 @@ To interact with the Ethereum network or another EVM-compatible network, a devel
 
 1. [Generate a public key](generating-addresses.mdx): To sign and submit transactions, your canister will need a public key. You will also need this public key to generate an Ethereum wallet address.
 
-2. [Sign a transaction](signing-transactions.mdx): Next, a transaction must be signed before it can be submitted to the Ethereum network and executed. Transactions are signed using [threshold ECDSA](/docs/current/references/t-ecdsa-how-it-works), a novel protocol as part of ICP's chain-key signatures suite. Transactions are signed using a canister's private key.
+2. [Sign a transaction](signing-transactions.mdx): Next, a transaction must be signed before it can be submitted to the Ethereum network and executed. Transactions are signed using [threshold ECDSA](/docs/current/references/t-ecdsa-how-it-works), a novel protocol as part of ICP's chain-key signatures suite.
 
 3. [Submit a transaction](submit-transactions.mdx): Signed raw transactions can be submitted using the EVM RPC canister's RPC method `eth_sendRawTransaction`. Code examples for sending transactions can be found in the [EVM RPC canister](/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister) documentation.
 
