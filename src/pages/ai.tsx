@@ -166,7 +166,7 @@ function AIPage() {
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                Decentralization unlocked: Train and run Al models as fully
+                Decentralization unlocked: Train and run AI models as fully
                 on-chain smart contracts to benefit from the security,
                 resilience, and power of ICP.
               </motion.p>
