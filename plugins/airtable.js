@@ -12,47 +12,6 @@ const isDev = (process.env.NODE_ENV || "development") === "development";
 
 const { AIRTABLE_KEY } = process.env;
 
-function loadRecords({ apiKey, baseId, tableName, viewId, offset = null }) {
-  const url = `https://api.airtable.com/v0/${baseId}/${tableName}?view=${viewId}${
-    offset ? `&offset=${offset}` : ""
-  }`;
-
-  return fetch(url, {
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-    },
-  }).then((res) => res.json());
-}
-
-async function fetchAllRecords() {
-  let offset;
-  let records = [];
-
-  const BASE_ID = "app1LOpIHEj6dTeEx";
-  const TABLE_NAME = "tblpf2akkElbGlqti";
-  const VIEW_NAME = "viwDJz26NeIdJvqle";
-
-  while (true) {
-    const response = await axios.get(
-      `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`,
-      {
-        params: { offset, view: VIEW_NAME },
-        headers: {
-          Authorization: `Bearer ${AIRTABLE_KEY}`,
-        },
-      }
-    );
-
-    records = [...records, ...response.data.records];
-
-    offset = response.data.offset;
-    if (!offset) {
-      break;
-    }
-  }
-  return records;
-}
-
 let cache;
 
 /** @type {import('@docusaurus/types').PluginModule} */
@@ -191,15 +150,9 @@ const airtablePlugin = async function () {
         };
       }
 
-      return cache;
-    },
+      const recordsCourses = await fetchCourses();
 
-    async contentLoaded({ content, actions }) {
-      const { createData } = actions;
-      // Fetch all records from the second Airtable base and table
-      const records2 = await fetchAllRecords();
-
-      const courses = records2
+      const courses = recordsCourses
         .sort()
         .map((record) => {
           const fields = record.fields;
@@ -233,14 +186,18 @@ const airtablePlugin = async function () {
           }
         });
 
-      fs.writeFileSync(
-        path.resolve(__dirname, "./data/courses.json"),
-        JSON.stringify(courses, null, 2),
-        {
-          encoding: "utf-8",
-        }
+      return { courses, cache };
+    },
+
+    async contentLoaded({ content, actions }) {
+      const { createData } = actions;
+
+      createData("courses.json", JSON.stringify(content.courses, null, 2));
+
+      createData(
+        "airtable-events.json",
+        JSON.stringify(content.cache, null, 2)
       );
-      createData("airtable-events.json", JSON.stringify(content, null, 2));
 
       if (isDev) {
         // save mock file
@@ -252,6 +209,47 @@ const airtablePlugin = async function () {
     },
   };
 };
+
+function loadRecords({ apiKey, baseId, tableName, viewId, offset = null }) {
+  const url = `https://api.airtable.com/v0/${baseId}/${tableName}?view=${viewId}${
+    offset ? `&offset=${offset}` : ""
+  }`;
+
+  return fetch(url, {
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+    },
+  }).then((res) => res.json());
+}
+
+async function fetchCourses() {
+  let offset;
+  let records = [];
+
+  const BASE_ID = "app1LOpIHEj6dTeEx";
+  const TABLE_NAME = "tblpf2akkElbGlqti";
+  const VIEW_NAME = "viwDJz26NeIdJvqle";
+
+  while (true) {
+    const response = await axios.get(
+      `https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}`,
+      {
+        params: { offset, view: VIEW_NAME },
+        headers: {
+          Authorization: `Bearer ${AIRTABLE_KEY}`,
+        },
+      }
+    );
+
+    records = [...records, ...response.data.records];
+
+    offset = response.data.offset;
+    if (!offset) {
+      break;
+    }
+  }
+  return records;
+}
 
 function parseAirtableData(records) {
   return records.map((r) => {
