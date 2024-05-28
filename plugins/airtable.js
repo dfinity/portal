@@ -8,17 +8,13 @@ const axios = require("axios");
 const dotenv = require("dotenv");
 dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
 
+// const dotenv = require("dotenv");
+const isDev = (process.env.NODE_ENV || "development") === "development";
+// dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
+
 const { AIRTABLE_KEY } = process.env;
 
-const isDev = (process.env.NODE_ENV || "development") === "development";
-
-async function loadRecords({
-  apiKey,
-  baseId,
-  tableName,
-  viewId,
-  offset = null,
-}) {
+function loadRecords({ apiKey, baseId, tableName, viewId, offset = null }) {
   const url = `https://api.airtable.com/v0/${baseId}/${tableName}?view=${viewId}${
     offset ? `&offset=${offset}` : ""
   }`;
@@ -57,99 +53,6 @@ async function fetchAllRecords() {
     }
   }
   return records;
-}
-
-function parseAirtableData(records) {
-  return records.map((r) => {
-    // Sanitize the event link to prevent bad links from breaking the website build
-    let eventLink = "#";
-    let startDate,
-      endDate = new Date().toISOString();
-
-    try {
-      eventLink = new URL(r.fields["Event Link"]).toString();
-    } catch (err) {
-      console.warn(
-        `Failed to parse event link as url. Got: ${r.fields["Event Link"]}`
-      );
-    }
-
-    try {
-      startDate = new Date(r.fields["Start date"]).toISOString();
-    } catch (err) {
-      console.warn(
-        `Failed to parse start date. Got: ${r.fields["Start date"]}`
-      );
-    }
-
-    try {
-      endDate = new Date(r.fields["End Date"]).toISOString();
-    } catch (err) {
-      console.warn(`Failed to parse end date. Got: ${r.fields["End Date"]}`);
-    }
-
-    return {
-      id: r.id,
-      eventName: r.fields["Event Name"],
-      marketingText: r.fields["Marketing Text"],
-      description: !!r.fields["Marketing Text"]
-        ? markdownToPlainText(r.fields["Marketing Text"])
-        : null,
-      eventLink,
-      topic: r.fields["Topic"],
-      startDate,
-      endDate,
-      regions: r.fields["Regions"], // continent
-      country: r.fields["Country"],
-      city: r.fields["City"],
-      type: r.fields["Type"],
-      websiteCategory: r.fields["Website Category"],
-      mode: r.fields["Mode"],
-      status: r.fields["Status"],
-    };
-  });
-}
-
-async function processCourses(records) {
-  const courses = records
-    .sort()
-    .map((record) => {
-      const fields = record.fields;
-      return {
-        index: record.id,
-        category: fields["Category"],
-        title: fields["Title"],
-        body: fields["Course Description"],
-        languages: fields["Programming language"]?.map((language) =>
-          language?.toLowerCase()
-        ),
-        level: fields["Level"]?.map((level) => level?.toLowerCase()),
-        contentType: fields["Media type"]?.map((content) =>
-          content?.toLowerCase()
-        ),
-        contentLanguage: fields["Content Language"]?.toLowerCase(),
-        fullTags: fields["Web tag"].concat(fields["Index Tag"] || []),
-        tags: fields["Web tag"] || [],
-        link: fields["URL"] || "#",
-      };
-    })
-    .sort((a, b) => {
-      if (a.category === "Course" && b.category !== "Course") {
-        return -1;
-      } else if (a.category !== "Course" && b.category === "Course") {
-        return 1;
-      } else {
-        return 0;
-      }
-    });
-
-  fs.writeFileSync(
-    path.resolve(__dirname, "./data/courses.json"),
-    JSON.stringify(courses, null, 2),
-    {
-      encoding: "utf-8",
-    }
-  );
 }
 
 let cache;
@@ -278,7 +181,42 @@ const airtablePlugin = async function () {
         // reverse the order, so that newest articles get the newest images
         records.reverse();
 
-        cache = {
+        // Fetch all records from the second Airtable base and table
+        const records2 = await fetchAllRecords();
+
+        const courses = records2
+          .sort()
+          .map((record) => {
+            const fields = record.fields;
+            return {
+              index: record.id,
+              category: fields["Category"],
+              title: fields["Title"],
+              body: fields["Course Description"],
+              languages: fields["Programming language"]?.map((language) =>
+                language?.toLowerCase()
+              ),
+              level: fields["Level"]?.map((level) => level?.toLowerCase()),
+              contentType: fields["Media type"]?.map((content) =>
+                content?.toLowerCase()
+              ),
+              contentLanguage: fields["Content Language"]?.toLowerCase(),
+              fullTags: fields["Web tag"].concat(fields["Index Tag"] || []),
+              tags: fields["Web tag"] || [],
+              link: fields["URL"] || "#",
+            };
+          })
+          .sort((a, b) => {
+            if (a.category === "Course" && b.category !== "Course") {
+              return -1;
+            } else if (a.category !== "Course" && b.category === "Course") {
+              return 1;
+            } else {
+              return 0;
+            }
+          });
+
+        const events = {
           events: records,
           topics: Array.from(topics),
           types: Array.from(types),
@@ -288,20 +226,25 @@ const airtablePlugin = async function () {
           modes: Array.from(modes),
           websiteCategory: Array.from(websiteCategory),
         };
+        cache = {
+          events,
+          courses,
+        };
       }
-
-      // Fetch all records from the second Airtable base and table
-      const records2 = await fetchAllRecords();
-
-      // Process and save the courses
-      await processCourses(records2);
 
       return cache;
     },
 
     async contentLoaded({ content, actions }) {
       const { createData } = actions;
-      createData("airtable-events.json", JSON.stringify(content, null, 2));
+      createData(
+        "airtable-events.json",
+        JSON.stringify(content.events, null, 2)
+      );
+      createData(
+        "airtable-courses.json",
+        JSON.stringify(content.courses, null, 2)
+      );
 
       if (isDev) {
         // save mock file
@@ -313,5 +256,56 @@ const airtablePlugin = async function () {
     },
   };
 };
+
+function parseAirtableData(records) {
+  return records.map((r) => {
+    // Sanitize the event link to prevent bad links from breaking the website build
+    let eventLink = "#";
+    let startDate,
+      endDate = new Date().toISOString();
+
+    try {
+      eventLink = new URL(r.fields["Event Link"]).toString();
+    } catch (err) {
+      console.warn(
+        `Failed to parse event link as url. Got: ${r.fields["Event Link"]}`
+      );
+    }
+
+    try {
+      startDate = new Date(r.fields["Start date"]).toISOString();
+    } catch (err) {
+      console.warn(
+        `Failed to parse start date. Got: ${r.fields["Start date"]}`
+      );
+    }
+
+    try {
+      endDate = new Date(r.fields["End Date"]).toISOString();
+    } catch (err) {
+      console.warn(`Failed to parse end date. Got: ${r.fields["End Date"]}`);
+    }
+
+    return {
+      id: r.id,
+      eventName: r.fields["Event Name"],
+      marketingText: r.fields["Marketing Text"],
+      description: !!r.fields["Marketing Text"]
+        ? markdownToPlainText(r.fields["Marketing Text"])
+        : null,
+      eventLink,
+      topic: r.fields["Topic"],
+      startDate,
+      endDate,
+      regions: r.fields["Regions"], // continent
+      country: r.fields["Country"],
+      city: r.fields["City"],
+      type: r.fields["Type"],
+      websiteCategory: r.fields["Website Category"],
+      mode: r.fields["Mode"],
+      status: r.fields["Status"],
+    };
+  });
+}
 
 module.exports = airtablePlugin;
