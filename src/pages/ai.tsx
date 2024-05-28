@@ -156,7 +156,7 @@ function AIPage() {
         >
           <div className="container-10 pt-20 pb-12 sm:pb-40 md:pb-40 md:pt-36 relative z-10">
             <motion.h1
-              className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-6/10 "
+              className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-2/3 "
               variants={transitions.item}
             >
               Run your AI models on the blockchain
