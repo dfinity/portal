@@ -60,7 +60,13 @@ const airtablePlugin = async function () {
           logger.warn(
             "Warning: no env variables found for Airtable integration. Using mock airtable data."
           );
-          return require("./data/airtable-mock");
+          const mockEvents = require("./data/airtable-events-mock.json");
+          const mockCourses = require("./data/airtable-courses-mock.json");
+          cache = {
+            events: mockEvents,
+            courses: mockCourses,
+          };
+          return;
         }
 
         // Load events
