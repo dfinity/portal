@@ -159,7 +159,7 @@ function AIPage() {
               className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-6/10 "
               variants={transitions.item}
             >
-              Run your Al models on the blockchain
+              Run your AI models on the blockchain
             </motion.h1>
             <div className="relative  md:w-5/10">
               <motion.p
