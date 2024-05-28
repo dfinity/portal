@@ -41,15 +41,14 @@ jobs:
         uses: actions/cache@v3
         with:
           path: sdk/target/release/icx-asset
-          key: icxassetbin-cce6ae0a2aeaee015612d49ce93047342e9fb4ec
+          key: icxassetbin-master
           restore-keys: |
-            - icxassetbin-
+            icxassetbin-
 
       - name: Install icx-asset
         if: steps.cache-icx-asset-bin.outputs.cache-hit != 'true'
         run: |
-          # icx-asset improved sync performance: https://github.com/dfinity/sdk/pull/3766
-          git clone -b akos/asset-upload-strategies --single-branch https://github.com/dfinity/sdk.git
+          git clone --depth 1 https://github.com/dfinity/sdk.git
           cd sdk
           cargo build -p icx-asset --release
 
