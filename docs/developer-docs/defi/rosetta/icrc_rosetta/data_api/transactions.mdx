@@ -166,8 +166,8 @@ The response is similar to that of the block [endpoint](/docs/developer-docs/def
 ```
 
 ## SearchTransactions endpoint
-There exist multiple parameters that can be used to query for transactions. See the [full specification](https://docs.cdp.coinbase.com/rosetta/reference/searchtransactions/) to see what query parameters can be used. 
-For example if you want to fetch all transactions in a given block range of maximal 10000 blocks where a specific account was involved in you can make a request to the `search/transactions` endpoint like the following:
+There are several parameters that can be used to query transactions. See the [full specification](https://docs.cdp.coinbase.com/rosetta/reference/searchtransactions/) to see what query parameters can be used. 
+For example, if you want to fetch all transactions in a given block (range of maximal 10000 blocks) where a specific account was involved, you can make a request to the `search/transactions` endpoint:
 
 ```json
 curl --location '0.0.0.0:8081/search/transactions'  --header 'Content-Type: application/json' --data '{
