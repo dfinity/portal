@@ -4598,7 +4598,7 @@
   {
     "id": "chainkeyx",
     "name": "ChainkeyX",
-    "description": "A crypto neobank that offers a fully onchain bitcoin borrowing and lending on ICP.",
+    "description": "A crypto neobank that offers fully on-chain bitcoin borrowing and lending on ICP.",
     "website": "https://www.chainkeyx.com",
     "logo": "/img/showcase/chainkeyx_logo.png",
     "display": "Normal",
