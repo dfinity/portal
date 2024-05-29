@@ -32,7 +32,7 @@ function formatLanguages(languages: (string | null)[]): string {
   );
 }
 
-function Index({ title, body, languages, tags, link, level }) {
+function Index({ title, body, languages, tags, link, level, image }) {
   const [showTags, setShowTags] = useState(false);
   const tagsRef = useRef(null);
 
@@ -55,34 +55,13 @@ function Index({ title, body, languages, tags, link, level }) {
       className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
     >
       <article
-        className={`flex flex-col px-4 py-6 rounded-2xl border-0 border-solid bg-white border-t-[4px] h-full w-full overflow-hidden justify-between 
-       ${
-         languages
-           ? languages.includes("motoko")
-             ? `border-infinite`
-             : languages.includes("rust")
-             ? `border-[#8272FF]`
-             : languages.includes("typescript")
-             ? `border-green`
-             : `border-razzmatazz`
-           : `border-razzmatazz`
-       }`}
+        className={`flex flex-col px-4 py-6 rounded-2xl border-0 border-solid bg-white border-t-[4px] border-razzmatazz h-full w-full overflow-hidden justify-between `}
       >
         <div>
+          <img src={image} className={styles.image} alt="" />
+
           <p className={styles.title}>{title}</p>
-          <p
-            className={`tw-paragraph font-medium capitalize  ${
-              languages
-                ? languages.includes("motoko")
-                  ? `text-infinite`
-                  : languages.includes("rust")
-                  ? `text-[#8272FF]`
-                  : languages.includes("typescript")
-                  ? `text-green`
-                  : `text-razzmatazz`
-                : `text-razzmatazz`
-            }`}
-          >
+          <p className={`tw-paragraph font-medium capitalize text-razzmatazz`}>
             {Array.isArray(level) ? level.join(", ") : level}
             <span className={`tw-paragraph-sm font-medium`}>
               {languages && formatLanguages(languages)}

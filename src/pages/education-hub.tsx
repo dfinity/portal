@@ -264,6 +264,7 @@ function EducationHubPage() {
                     tags={course.tags}
                     link={course.link}
                     level={course.level}
+                    image={course.image}
                   />
                 ))}
                 <div

@@ -9,7 +9,7 @@ const path = require("path");
 
 const isDev = (process.env.NODE_ENV || "development") === "development";
 const { AIRTABLE_KEY } = process.env;
-
+const { YOUTUBE_API_KEY } = process.env;
 // Constants for the events table
 const EVENTS_BASE_ID = "appBKNYn6DaFccnno";
 const EVENTS_TABLE_NAME = "tblCZBZ26gbGvPf7j";
@@ -248,12 +248,18 @@ function processEventsData(records) {
     websiteCategory: Array.from(websiteCategory),
   };
 }
-
 function processCoursesData(records) {
-  return records
-    .sort()
-    .map((record) => {
+  return Promise.all(
+    records.sort().map(async (record) => {
       const fields = record.fields;
+      let image = null;
+      if (fields["URL"] && fields["URL"].includes("youtube")) {
+        const url = new URL(fields["URL"]);
+        const playlistId = url.searchParams.get("list");
+        if (playlistId) {
+          image = await getYouTubePlaylistThumbnail(playlistId);
+        }
+      }
       return {
         index: record.id,
         category: fields["Category"],
@@ -272,9 +278,11 @@ function processCoursesData(records) {
         fullTags: fields["Web tag"].concat(fields["Index Tag"] || []),
         tags: fields["Web tag"] || [],
         link: fields["URL"] || "#",
+        image: image,
       };
     })
-    .sort((a, b) => {
+  ).then((courses) =>
+    courses.sort((a, b) => {
       if (a.category === "Course" && b.category !== "Course") {
         return -1;
       } else if (a.category !== "Course" && b.category === "Course") {
@@ -282,7 +290,15 @@ function processCoursesData(records) {
       } else {
         return 0;
       }
-    });
+    })
+  );
+}
+
+async function getYouTubePlaylistThumbnail(playlistId) {
+  const response = await axios.get(
+    `https://www.googleapis.com/youtube/v3/playlists?part=snippet&id=${playlistId}&key=${YOUTUBE_API_KEY}`
+  );
+  return response.data.items[0].snippet.thumbnails.default.url;
 }
 
 function parseAirtableData(record) {

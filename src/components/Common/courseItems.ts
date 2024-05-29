@@ -11,6 +11,7 @@ export type CourseItem = {
   link?: string;
   fullTags?: string[];
   tags?: string[];
+  image?: string;
 };
 
 export type CourseLanguage =
