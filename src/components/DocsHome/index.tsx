@@ -310,7 +310,7 @@ const Tile = ({ tile }: { tile: TileDescriptor }) => {
           : "bg-white/70 border-white"
       } rounded-lg border border-solid p-4 h-[360px] justify-between`}
     >
-      <div className={"flex flex-col gap-4"}>
+      <div className={"flex flex-col gap-4 items-start"}>
         <div className={"flex flex-row gap-4"}>
           {tile.icon}
           <span className={"tw-heading-5 mb-6 whitespace-pre-wrap"}>
@@ -350,27 +350,31 @@ const Education = () => {
       mainImage: "/img/docs/teaser-cards/main-1.svg",
     },
     {
-      title: (
-        <h2 className={"text-white"}>Hackathon Prep Course</h2>
-      ),
+      title: <h2 className={"text-white"}>Hackathon Prep Course</h2>,
       subtitle: (
-        <p className={"text-white"}>TODO edit me</p>
+        <p className={"text-white"}>
+          Jump-start your Hackathon project by learning the ICP essentials.{" "}
+        </p>
       ),
       backgroundImage: "/img/docs/teaser-cards/bg-0.svg",
       cta: (
         <Link
           className="button-transparent button-with-icon pl-0"
-          href="https://twitter.com/DFINITYDev"
+          href="/docs/current/tutorials/hackathon-prep-course/"
         >
-          TODO: Edit me
+          Start course
           <LinkArrowRight />
         </Link>
       ),
-      mainImage: "/img/docs/teaser-cards/main-0.svg",
+      mainImage: "/img/docs/teaser-cards/hackathon-prep-course.svg",
     },
   ];
   return (
-    <div className={"grid grid-cols-2 gap-3"}>
+    <div
+      className={
+        "grid grid-cols-1 md:grid-cols-2 grid-rows-2 md:grid-rows-1 gap-3"
+      }
+    >
       {CARDS.map((card, index) => {
         const backgroundStyles = card.backgroundImage
           ? {
