@@ -233,18 +233,7 @@ function EducationHubPage() {
                   setSearchTerm={setSearchTerm}
                 />
               </motion.div>
-              <motion.div
-                variants={transitions.item}
-                className="mt-12"
-                ref={coursesStartRef}
-              >
-                <p className="tw-heading-6 md:tw-heading-5">
-                  Azyle course topics
-                </p>
-                <p className="tw-paragraph text-black-60">
-                  Donec sed odio dui. Maecenas faucibus mollis interdum.{" "}
-                </p>
-              </motion.div>
+
               <motion.div
                 variants={transitions.item}
                 className={clsx(
