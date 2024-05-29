@@ -452,7 +452,11 @@ const MilestoneDetail: React.FC<{
             </h4>
             {eta && eta != "none" && (
               <p className="tw-paragraph mb-2">
-                <span className="text-white/60">Due Date</span> {eta}
+                <span className="text-white/60">
+                  {" "}
+                  {status === "deployed" ? "Completed" : "Due Date"}
+                </span>{" "}
+                {eta}
               </p>
             )}
 
@@ -584,6 +588,8 @@ const Overlay: React.FC<{
                   .sort((a, b) => {
                     if (a.name === "orphans_past") return -1;
                     if (b.name === "orphans_past") return 1;
+                    if (a.status === "deployed") return -1;
+                    if (b.status === "deployed") return 1;
                     if (a.name === "orphans_future") return 1;
                     if (b.name === "orphans_future") return -1;
                     return 0;

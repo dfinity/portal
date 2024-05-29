@@ -262,7 +262,7 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Hello, DeAI",
+            title: "Run AI models on blockchain",
             href: "/ai",
             image: "/img/nav/featured-ai.webp",
           },

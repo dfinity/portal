@@ -28,11 +28,11 @@ Other RPC methods, including those specific to non-Ethereum networks, may be acc
 
 The EVM RPC canister has built-in support for the following [Ethereum JSON-RPC providers](https://ethereum.org/developers/docs/apis/json-rpc):
 
-- [Alchemy](https://docs.alchemy.com/docs/how-to-read-data-with-json-rpc): Ethereum mainnet, Sepolia testnet.
-- [Ankr](https://www.ankr.com/infrastructure/build-on-ethereum/): Ethereum mainnet, Sepolia testnet.
-- [BlockPI](https://blockpi.io/): Ethereum mainnet, Sepolia testnet.
+- [Alchemy](https://docs.alchemy.com/docs/how-to-read-data-with-json-rpc): Ethereum mainnet, Sepolia testnet, L2 chains.
+- [Ankr](https://www.ankr.com/infrastructure/build-on-ethereum/): Ethereum mainnet, Sepolia testnet, L2 chains.
+- [BlockPI](https://blockpi.io/): Ethereum mainnet, Sepolia testnet, L2 chains.
 - [Cloudflare Web3](https://www.cloudflare.com/application-services/products/web3/): Ethereum mainnet.
-- [Public Node](https://www.publicnode.com/): Ethereum mainnet, Sepolia testnet.
+- [Public Node](https://www.publicnode.com/): Ethereum mainnet, Sepolia testnet, L2 chains.
 
 Many of the providers on [ChainList.org](https://chainlist.org/) can be called using the canister's `request` method.
 
@@ -75,7 +75,7 @@ Alternatively, you can include the EVM RPC canister by specifying the Candid and
     "evm_rpc": {
       "type": "custom",
       "candid": "https://github.com/internet-computer-protocol/evm-rpc-canister/releases/latest/download/evm_rpc.did",
-      "wasm": "https://github.com/internet-computer-protocol/evm-rpc-canister/releases/latest/download/evm_rpc_dev.wasm.gz",
+      "wasm": "https://github.com/internet-computer-protocol/evm-rpc-canister/releases/latest/download/evm_rpc.wasm.gz",
       "remote": {
         "id": {
           "ic": "7hfb6-caaaa-aaaar-qadga-cai"
@@ -209,7 +209,6 @@ async fn get_logs(get_logs_args: GetLogsArgs) -> Vec<evm_rpc::LogEntry> {
 
 ```bash
 # Configuration
-NETWORK=local
 IDENTITY=default
 CYCLES=1000000000
 WALLET=$(dfx identity get-wallet)
@@ -369,7 +368,6 @@ pub async fn test() {
 
 ```bash
 # Configuration
-NETWORK=local
 IDENTITY=default
 CYCLES=1000000000
 WALLET=$(dfx identity get-wallet)
@@ -458,7 +456,6 @@ let (results,): (MultiGetTransactionReceiptResult,) = call_with_payment128(
 
 ```bash
 # Configuration
-NETWORK=local
 IDENTITY=default
 CYCLES=1000000000
 WALLET=$(dfx identity get-wallet)
@@ -633,7 +630,6 @@ let (results,): (MultiGetTransactionCountResult,) = call_with_payment128(
 
 ```bash
 # Configuration
-NETWORK=local
 IDENTITY=default
 CYCLES=1000000000
 WALLET=$(dfx identity get-wallet)
@@ -745,7 +741,6 @@ pub async fn fee_history(
 
 ```bash
 # Configuration
-NETWORK=local
 IDENTITY=default
 CYCLES=1000000000
 WALLET=$(dfx identity get-wallet)
@@ -910,7 +905,6 @@ match result {
 
 ```bash
 # Configuration
-NETWORK=local
 IDENTITY=default
 CYCLES=1000000000
 WALLET=$(dfx identity get-wallet)
@@ -987,6 +981,9 @@ dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 1000
 type RpcServices = variant {
   EthMainnet : opt vec EthMainnetService;
   EthSepolia : opt vec EthSepoliaService;
+  ArbitrumOne : opt vec L2MainnetService;
+  BaseMainnet : opt vec L2MainnetService;
+  OptimismMainnet : opt vec L2MainnetService;
   ...
   Custom : record {
     chainId : nat64;
@@ -998,6 +995,9 @@ type RpcServices = variant {
 type RpcService = variant {
   EthMainnet : EthMainnetService;
   EthSepolia : EthSepoliaService;
+  ArbitrumOne : L2MainnetService;
+  BaseMainnet : L2MainnetService;
+  OptimismMainnet : L2MainnetService;
   ...
   Chain : nat64;
   Provider : nat64;
