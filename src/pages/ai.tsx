@@ -138,7 +138,7 @@ function AIPage() {
       title="Decentralized AI on Internet Computer - Secure and Trustworthy AI Solutions"
       description="Explore how the Internet Computer Protocol (ICP) leverages blockchain technology to offer decentralized AI solutions, ensuring model integrity, data confidentiality, and resilience against disruptions. Discover how AI smart contracts on ICP can transform trust and security in artificial intelligence."
     >
-      <ShareMeta image="/img/shareImages/share-ai.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-ai.webp"></ShareMeta>
 
       <main
         className="text-black relative overflow-hidden"
@@ -185,7 +185,7 @@ function AIPage() {
             <div className="absolute w-10/12 sm:w-5/12 left-1/2 translate-y-1/2 -translate-x-[50%] bottom-1/2 md:left-0 md:absolute md:w-5/12 md:bottom-0 md:translate-x-[130%] md:translate-y-2/12">
               <img
                 src="/img/decentralized-ai/aiheader.svg"
-                alt="Start building on Internet Identity"
+                alt="Decentralized AI"
                 className="w-full max-w-none"
                 loading="lazy"
               />

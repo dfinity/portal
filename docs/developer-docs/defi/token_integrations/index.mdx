@@ -41,7 +41,7 @@ There are two ways to integrate with ICP tokens:
 ![Direct Integration](direct_integration.png)
 
 
-- **Rosetta integration**: Requires running an instance of a Rosetta node within the trust domain of an integrator. This is an abstraction layer that hides the ICP network and ledger canister APIs. Interaction with the Rosetta node follows the [Rosetta API standard](https://docs.cloud.coinbase.com/rosetta/docs/welcome) proposed and maintained by Coinbase. 
+- **Rosetta integration**: Requires running an instance of a Rosetta node within the trust domain of an integrator. This is an abstraction layer that hides the ICP network and ledger canister APIs. Interaction with the Rosetta node follows the [Rosetta API standard](https://docs.cdp.coinbase.com/rosetta/docs/welcome) proposed and maintained by Coinbase. 
 The Rosetta node fetches and verifies the ICP token transaction chain and makes it available through the Rosetta API.  In addition, it permanently syncs with the ICP ledger by downloading and verifying the ICP token transaction ledger. It offers endpoints for searching for transactions and blocks in the downloaded chain. 
 
 The Rosetta node can be run in a Docker container. It requires IPv6 connectivity, and minimal compute, RAM and disk requirements (10 GB disk space currently). 
