@@ -558,8 +558,8 @@ const sidebars = {
               "developer-docs/identity/authentication/email-password",
               ],
             },
-          ],
-        },
+        ],
+      },
     {
       type: "category",
       label: "Security",
