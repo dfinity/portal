@@ -167,9 +167,12 @@ const milestoneComponent = (
     wrapperClasses += ` order-4 mr-[100dvw]`;
   }
 
+  console.log(milestone.milestone_id);
+
   return (
     <article
       key={milestone.name}
+      id={milestone.milestone_id}
       className={wrapperClasses}
       style={style}
       onClick={overlayTrigger}
