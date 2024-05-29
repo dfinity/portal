@@ -161,8 +161,11 @@ function EducationHubPage() {
   ]);
 
   return (
-    <Layout title="Education Hub" description="Education page.">
-      <ShareMeta image=""></ShareMeta>
+    <Layout
+      title="ICP Education Hub - Comprehensive Learning Resources on Internet Computer"
+      description="Explore the ICP Education Hub for a wide range of learning resources on Internet Computer. Find courses, articles, and tutorials for all skill levels on topics like smart contracts, blockchain technology, and more. Start your learning journey with ICP today!"
+    >
+      <ShareMeta image="/img/shareImages/share-education-hub.webp"></ShareMeta>
 
       <main
         className="text-black relative overflow-hidden"
@@ -191,18 +194,12 @@ function EducationHubPage() {
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                Description of what this page is and all the education topics
-                available
+                Explore the ICP Education Hub for a wide range of learning
+                resources on Internet Computer. Find courses, articles, and
+                tutorials for all skill levels on topics like smart contracts,
+                blockchain technology, and more. Start your learning journey
+                with ICP today!
               </motion.p>
-              {/* <MotionLink
-                className="button-white"
-                href="/ai"
-                target="_blank"
-                rel="noopener noreferrer"
-                variants={transitions.item}
-              >
-                EXPLORE AI ON ICP
-              </MotionLink> */}
             </div>
           </div>
           <div className="container-12 relative z-1 h-[200px] md:h-0 pointer-events-none">

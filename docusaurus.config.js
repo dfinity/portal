@@ -370,7 +370,7 @@ const marketingNav = {
             {
               name: "Education Hub",
               href: "/education-hub",
-              description: "Education Hub",
+              description: "Comprehensive Learning Resources",
             },
           ],
           featured: {
