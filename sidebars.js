@@ -308,6 +308,7 @@ const sidebars = {
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-build",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-cache",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister",
+		"developer-docs/developer-tools/cli-tools/cli-reference/dfx-cycles",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-deploy",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-deps",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-generate",
