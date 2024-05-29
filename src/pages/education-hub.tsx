@@ -283,7 +283,9 @@ function EducationHubPage() {
                     <p className="mt-2 mb-0">
                       <Link
                         className={clsx("button-white text-center w-full")}
-                        href={""}
+                        href={
+                          "https://airtable.com/app1LOpIHEj6dTeEx/pagW5SJ1xCM9I37aH/form"
+                        }
                       >
                         Submit Now
                       </Link>

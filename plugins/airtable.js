@@ -4,8 +4,8 @@ const markdownToPlainText = require("./utils/markdown-to-plain-text");
 const os = require("os");
 const fs = require("fs");
 const path = require("path");
-// const dotenv = require("dotenv");
-// dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
+const dotenv = require("dotenv");
+dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
 
 const isDev = (process.env.NODE_ENV || "development") === "development";
 const { AIRTABLE_KEY } = process.env;
@@ -90,7 +90,7 @@ const airtablePlugin = async function () {
         });
 
         // Process courses data
-        courses = processCoursesData(courses);
+        courses = await processCoursesData(courses);
 
         cache = {
           events,
@@ -249,22 +249,34 @@ function processEventsData(records) {
     websiteCategory: Array.from(websiteCategory),
   };
 }
-function processCoursesData(records) {
-  return Promise.all(
-    records.sort().map(async (record) => {
+async function processCoursesData(records) {
+  const courses = await Promise.all(
+    records.map(async (record) => {
       const fields = record.fields;
       let image = null;
-      if (
-        fields["URL"] &&
-        fields["URL"].includes("youtube") &&
-        YOUTUBE_API_KEY
-      ) {
-        const url = new URL(fields["URL"]);
-        const playlistId = url.searchParams.get("list");
-        if (playlistId) {
-          image = await getYouTubePlaylistThumbnail(playlistId);
+
+      if (fields["URL"]) {
+        try {
+          const url = new URL(fields["URL"]);
+          const videoId = url.searchParams.get("v");
+          const playlistId = url.searchParams.get("list");
+
+          if (url.hostname.includes("youtube.com")) {
+            if (playlistId && YOUTUBE_API_KEY) {
+              // Fetch thumbnail for playlist
+              image = await getYouTubePlaylistThumbnail(playlistId);
+            } else if (videoId && YOUTUBE_API_KEY) {
+              // Fetch thumbnail for individual video
+              image = await getYouTubeVideoThumbnail(videoId);
+            }
+          }
+        } catch (error) {
+          logger.warn(
+            `Invalid URL for course: ${fields["Title"]}, URL: ${fields["URL"]}`
+          );
         }
       }
+
       return {
         index: record.id,
         category: fields["Category"],
@@ -286,24 +298,99 @@ function processCoursesData(records) {
         image: image,
       };
     })
-  ).then((courses) =>
-    courses.sort((a, b) => {
-      if (a.category === "Course" && b.category !== "Course") {
-        return -1;
-      } else if (a.category !== "Course" && b.category === "Course") {
-        return 1;
-      } else {
-        return 0;
-      }
-    })
   );
+
+  console.log("Processed courses:", courses);
+
+  return courses.sort((a, b) => {
+    if (a.category === "Course" && b.category !== "Course") {
+      return -1;
+    } else if (a.category !== "Course" && b.category === "Course") {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
 }
 
+async function getYouTubeVideoThumbnail(videoId) {
+  try {
+    const response = await fetch(
+      `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${videoId}&key=${YOUTUBE_API_KEY}`,
+      {
+        headers: {
+          Referer: "https://www.dfinity.org",
+        },
+      }
+    );
+
+    const json = await response.json();
+
+    if (json.items && json.items.length > 0) {
+      const thumbnails = json.items[0].snippet.thumbnails;
+      return pickThumbnail(thumbnails);
+    }
+  } catch (error) {
+    logger.error(`Failed to fetch YouTube video thumbnail: ${error.message}`);
+  }
+
+  return null;
+}
+
+function pickThumbnail(thumbnails) {
+  if (!thumbnails) return null;
+
+  console.log("Picking thumbnail from:", thumbnails);
+
+  if (thumbnails.maxres) return thumbnails.maxres.url;
+  if (thumbnails.standard) return thumbnails.standard.url;
+  if (thumbnails.high) return thumbnails.high.url;
+  if (thumbnails.medium) return thumbnails.medium.url;
+  return thumbnails.default ? thumbnails.default.url : null;
+}
+
+// Example usage of the airtablePlugin function
+(async () => {
+  const plugin = await airtablePlugin();
+  const content = await plugin.loadContent();
+  console.log("Loaded content:", content);
+})();
+
 async function getYouTubePlaylistThumbnail(playlistId) {
-  const response = await fetch(
-    `https://www.googleapis.com/youtube/v3/playlists?part=snippet&id=${playlistId}&key=${YOUTUBE_API_KEY}`
-  );
-  return response.data.items[0].snippet.thumbnails.default.url;
+  try {
+    const response = await fetch(
+      `https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails,snippet&maxResults=10&playlistId=${playlistId}&key=${YOUTUBE_API_KEY}`,
+      {
+        headers: {
+          Referer: "https://www.dfinity.org",
+        },
+      }
+    );
+
+    const json = await response.json();
+
+    if (json.items) {
+      const thumbnails = json.items
+        .filter(
+          (item) =>
+            item.snippet.title !== "Private video" &&
+            item.snippet.title !== "Deleted video"
+        )
+        .map((item) => item.snippet.thumbnails);
+
+      // Log the thumbnails for debugging
+      console.log("Fetched thumbnails:", thumbnails);
+
+      // Pick the best thumbnail based on available sizes
+      return thumbnails.length ? pickThumbnail(thumbnails[0]) : null;
+    }
+  } catch (error) {
+    console.error(
+      `Failed to fetch YouTube playlist thumbnail: ${error.message}`
+    );
+  }
+
+  return null;
 }
 
 function parseAirtableData(record) {
