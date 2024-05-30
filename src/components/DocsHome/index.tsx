@@ -44,7 +44,7 @@ const languagesTiles: TileDescriptor[] = [
   {
     label: "Languages",
     description:
-      "Explore coding, from beginner to pro, with our comprehensive guides, tutorials, samples, and API docs for Rust, Motoko, TypeScript, and Python.",
+      "Explore coding, from beginner to pro, with our comprehensive guides, tutorials, samples, and API docs for Rust, Motoko, TypeScript, and Python",
     icon: null,
     action: (
       <Link
