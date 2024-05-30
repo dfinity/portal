@@ -58,25 +58,23 @@ described below.
 Not all features of `dfx` may be supported on WSL 2.
 :::
 
-To install the IC SDK, install `dfxvm`. `dfxvm` is a command-line tool 
-used to installing and switching between different versions of `dfx`. 
-It enables developers to pivot between different projects that are built 
-with different dfx versions. Read more about `dfxvm` [here](/docs/current/developer-docs/developer-tools/dev-tools-overview#dfxvm).
+To install the IC SDK, install `dfxvm`. `dfxvm` is a command-line tool used for installing and switching between different versions of `dfx`. 
 
-You can download and install the latest version of 
-[`dfxvm`](https://github.com/dfinity/dfxvm) by running the command below:
+It enables developers to pivot between different projects that are built with different `dfx` versions. [Read more about `dfxvm`](/docs/current/developer-docs/developer-tools/dev-tools-overview#dfxvm).
+
+You can download and install the latest version of [`dfxvm`](https://github.com/dfinity/dfxvm) by running the command below:
 
 <AdornedTabs>
-  <TabItem value="apple" label="Install on Mac/Linux" default={true}>
+<TabItem value="apple" label="Install on Mac/Linux" default={true}>
 
 ```bash
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ```
 
 If you are using a machine running Apple silicon, you will need to have [Rosetta](https://support.apple.com/en-us/HT211861) installed. You can install Rosetta by running `softwareupdate --install-rosetta` in your terminal.
-  </TabItem>
 
-  <TabItem value="windows" label="Install on Windows">
+</TabItem>
+<TabItem value="windows" label="Install on Windows">
 There is no native support for <code>dfx</code> on Windows. However, you can develop ICP canisters on Windows using a Docker container or by installing the Windows Subsystem for Linux (WSL).
 
 ## Using Docker
