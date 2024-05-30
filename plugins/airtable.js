@@ -362,7 +362,7 @@ async function getYouTubePlaylistThumbnail(playlistId) {
       `https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails,snippet&maxResults=10&playlistId=${playlistId}&key=${YOUTUBE_API_KEY}`,
       {
         headers: {
-          Referer: "https://www.dfinity.org",
+          Referer: "https://internetcomputer.org/",
         },
       }
     );
