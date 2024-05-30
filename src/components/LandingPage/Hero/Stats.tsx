@@ -174,17 +174,20 @@ const formatNumberStats = (value, decimals = 2) => {
 };
 
 export const CkBTCTotalSupply = () => {
-  const { data: totalSupply, isSuccess } = useQuery(
-    "ckBTCTotalSupply",
-    getckBTCTotalSupply
-  );
+  const {
+    data: totalSupply,
+    isSuccess,
+    isError,
+  } = useQuery("ckBTCTotalSupply", getckBTCTotalSupply);
   const [formattedSupply, setFormattedSupply] = useState(null);
 
   useEffect(() => {
     if (isSuccess && totalSupply !== null) {
       setFormattedSupply(formatBTC(totalSupply));
+    } else if (isError) {
+      setFormattedSupply("250+");
     }
-  }, [isSuccess, totalSupply]);
+  }, [isSuccess, isError, totalSupply]);
 
   return (
     <motion.div
@@ -217,7 +220,10 @@ export const CkBTCTotalSupply = () => {
 };
 
 export const TransactionStats = () => {
-  const { data, isSuccess } = useQuery("transactionData", getTransactionData);
+  const { data, isSuccess, isError } = useQuery(
+    "transactionData",
+    getTransactionData
+  );
   const [formattedData, setFormattedData] = useState({
     dailyVolume: null,
     totalTransactions: null,
@@ -229,8 +235,13 @@ export const TransactionStats = () => {
         dailyVolume: formatNumberStats(data.dailyVolume, 4),
         totalTransactions: formatNumberStats(data.totalTransactions, 0),
       });
+    } else if (isError) {
+      setFormattedData({
+        dailyVolume: "10+",
+        totalTransactions: "1M+",
+      });
     }
-  }, [isSuccess, data]);
+  }, [isSuccess, isError, data]);
 
   return (
     <>

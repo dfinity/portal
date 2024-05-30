@@ -136,7 +136,7 @@ const Content: React.FC = () => {
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
                 By running{" "}
                 <Link
-                  className="link-primary text-white hover:text-white/60"
+                  className="link-primary !text-white hover:text-white/60"
                   to="/docs/current/references/bitcoin-how-it-works"
                 >
                   Bitcoin adapters
@@ -157,7 +157,7 @@ const Content: React.FC = () => {
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
                 ICP nodes collaborate to produce{" "}
                 <Link
-                  className="link-primary text-white hover:text-white/60"
+                  className="link-primary !text-white hover:text-white/60"
                   to="/docs/current/references/t-ecdsa-how-it-works/"
                 >
                   threshold-ECDSA signatures
@@ -181,7 +181,7 @@ const Content: React.FC = () => {
                 Developers can harness the security of Bitcoin as a native asset
                 while also leveraging the unique core features of the
                 <Link
-                  className="link-primary text-white hover:text-white/60"
+                  className="link-primary !text-white hover:text-white/60"
                   to="/docs/current/concepts/canisters-code"
                 >
                   {" "}
@@ -207,14 +207,14 @@ const Content: React.FC = () => {
                 assets on multiple blockchains via features such as network
                 integration,{" "}
                 <Link
-                  className="link-primary text-white hover:text-white/60"
+                  className="link-primary !text-white hover:text-white/60"
                   to="/docs/current/references/https-outcalls-how-it-works/"
                 >
                   RPC integration
                 </Link>{" "}
                 and
                 <Link
-                  className="link-primary text-white hover:text-white/60"
+                  className="link-primary !text-white hover:text-white/60"
                   to="/docs/current/references/https-outcalls-how-it-works/"
                 >
                   {" "}
@@ -234,7 +234,7 @@ const Content: React.FC = () => {
                 Native Bitcoin transactions entail paying high fees and enduring
                 lengthy wait times for block confirmations. Enter{" "}
                 <Link
-                  className="link-primary text-white hover:text-white/60"
+                  className="link-primary !text-white hover:text-white/60"
                   to="/docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview"
                 >
                   ckBTC
@@ -270,7 +270,7 @@ const Content: React.FC = () => {
                 Chain-key Bitcoin (ckBTC), a multi-chain bitcoin twin on the
                 Internet Computer, is an 
                 <Link
-                  className="link-primary text-white hover:text-white/60"
+                  className="link-primary !text-white hover:text-white/60"
                   to="/docs/current/references/https-outcalls-how-it-works/"
                 >
                   ICRC-1

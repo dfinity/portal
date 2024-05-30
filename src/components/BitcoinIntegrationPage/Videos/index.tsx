@@ -8,6 +8,7 @@ import Link from "@docusaurus/Link";
 import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
 import { motion } from "framer-motion";
 import VideoCard from "../../Common/VideoCard";
+import Card from "@site/src/components/SamplesPage/Card";
 
 const videos = [
   {
@@ -22,6 +23,101 @@ const videos = [
   //   id: "H6Wu9n9Qwa8",
   //   title: "Code ckBTC",
   // },
+];
+
+const samples = [
+  {
+    index: 26,
+    title: "Ordinal Inscription Testbed on ICP",
+    image: "/img/samples/26.webp",
+    domains: ["Sample Code"],
+    languages: null,
+    level: null,
+    contentType: null,
+    body: "Inscribe ordinal inscriptions onto the Bitcoin Network via ICP, using an experimental Schnorr Canister for transaction signing",
+    links: {
+      github: "https://github.com/domwoe/inscription_canister",
+    },
+  },
+  {
+    index: 27,
+    title: "ckbtc",
+    image: "/img/samples/27.webp",
+    domains: ["Sample Code"],
+    languages: null,
+    level: null,
+    contentType: null,
+    body: "",
+    links: {
+      github: "https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc",
+    },
+  },
+  {
+    index: 28,
+    title: "The Carlson Protocol",
+    image: "/img/samples/28.webp",
+    domains: ["Sample Code"],
+    languages: null,
+    level: null,
+    contentType: null,
+    body: "The Carlson Protocol is a decentralized voting system where people vote using bitcoins. These Bitcoins are transferred back to the user after a period of time that...",
+    links: {
+      github: "https://github.com/sardariuss/carlson_protocol",
+    },
+  },
+  {
+    index: 29,
+    title: "Ordinal canister",
+    image: "/img/samples/29.webp",
+    domains: ["Sample Code"],
+    languages: null,
+    level: null,
+    contentType: null,
+    body: "Ordinal theory ascribes numismatic worth to satoshis, enabling their collection and trade as intriguing items. Each individual satoshi can bear arbitrary content inscrip...",
+    links: {
+      github: "https://github.com/sardariuss/ordinals_canister",
+    },
+  },
+  {
+    index: 30,
+    title: "Schnorr Signature Canister",
+    image: "/img/samples/30.webp",
+    domains: ["Sample Code"],
+    languages: null,
+    level: null,
+    contentType: null,
+    body: "The purpose of the canister is to act as a developer preview for the Schnorr threshold signing API of the Internet Computer that is currently under develop...",
+    links: {
+      github: "https://github.com/domwoe/schnorr_canister",
+    },
+  },
+  {
+    index: 31,
+    title: "Requests for Startups",
+    image: "/img/samples/31.webp",
+    domains: ["Startup request"],
+    languages: null,
+    level: null,
+    contentType: null,
+    body: "List of ideas for startups in the Internet Computer ecosystem. If you're interested, you can apply for a developer grant at https://dfinity.org/grants to get things rol...",
+    links: {
+      github:
+        "https://github.com/dfinity/grant-rfps/blob/main/requests-for-startups.md",
+    },
+  },
+  {
+    index: 32,
+    title: "grant - rfps",
+    image: "/img/samples/32.webp",
+    domains: ["Startup request"],
+    languages: null,
+    level: null,
+    contentType: null,
+    body: "",
+    links: {
+      github: "https://github.com/dfinity/grant-rfps/issues",
+    },
+  },
 ];
 
 function Index() {
@@ -70,6 +166,21 @@ function Index() {
             </>
           }
         />{" "}
+      </motion.div>
+      <motion.div
+        variants={transitions.item}
+        className="relative mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 lg:grid-cols-4 transition-opacity md:mt-4"
+      >
+        {samples.map((sample) => (
+          <Card
+            key={sample.index}
+            image={sample.image}
+            title={sample.title}
+            domain={sample.domains[0]}
+            body={sample.body}
+            links={sample.links}
+          />
+        ))}
       </motion.div>
     </AnimateSpawn>
   );
