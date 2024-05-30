@@ -353,7 +353,7 @@ const Education = () => {
       title: <h2 className={"text-white"}>Hackathon Prep Course</h2>,
       subtitle: (
         <p className={"text-white"}>
-          Jump-start your Hackathon project by learning the ICP essentials.{" "}
+          Jump-start your Hackathon project by learning the ICP essentials{" "}
         </p>
       ),
       backgroundImage: "/img/docs/teaser-cards/bg-0.svg",
