@@ -114,35 +114,43 @@ If you are looking to verify Bitcoin canister upgrades apart from regularly chec
 For more information about the Bitcoin canister, you can read the [Bitcoin canister documentation](https://github.com/dfinity/bitcoin-canister/blob/master/README.md).
 
 ### Topic: `IcOsVersionElection`
-To upgrade the ICP protocol, the NNS DAO first elects new IC OS versions (the software that is run by ICP nodes), then in a second step, selected nodes can be upgraded to the previously elected IC OS versions.
-This proposal type is for the first part, i.e., to elect new versions.
+To upgrade the ICP protocol, the NNS DAO first elects new IC OS versions (the software run by ICP nodes), pre-approves the deployment of the new IC-OS versions, and then upgrades selected parts of the IC to these versions. The `IcOsVersionElection` proposal topic addresses the first part: electing new IC-OS versions.
 
-This topic contains the following proposal types:
+The topic includes the following proposal types:
 
-* `ReviseElectedGuestosVersions`: A proposal to change the set of elected GuestOS versions. The version to elect (identified by the hash of the installation image) is added to the registry. Besides creating a record for that version, the proposal also appends that version to the list of elected versions that can be installed on nodes of a subnet. Only elected GuestOS versions can be deployed.
-* `ReviseElectedHostosVersions`: A proposal to change the set of currently elected HostOS versions by electing a new version, and/or un-electing some priorly elected versions. HostOS versions are identified by the hash of the installation image. The version to elect is added to the registry, and the versions to un-elect are removed from the registry, ensuring that HostOS cannot upgrade to these versions anymore.
+* `ReviseElectedGuestosVersions`: Proposes changes to the list of elected GuestOS versions. The proposal adds the version to the registry, identified by the Git revision of the installation image, along with the URLs of the upgrade image and the SHA-256 checksum of the image. Only elected GuestOS versions can be deployed.
+* `ReviseElectedHostosVersions`: Similar to the GuestOS version proposal, this proposes changes to the list of elected HostOS versions.
 
-**How to verify Ic OS Version Election proposals**
-If you are looking to verify IC OS Version Election proposals, apart from regularly checking open proposals,
-you might want to consider the following information for proposal submitted by the DFINITY foundation.
-* For each such proposal that the DFINITY foundation submits, there is a post on the forum
-(see [example](https://forum.dfinity.org/t/proposal-to-elect-new-release-rc-2024-05-01-23-01/30247)).
-You can find the relevant posts by following the category is `Governance` and the additional tags `replica` and `release`.
-* The relevant code is in [this repository](https://github.com/dfinity/ic ).
-* To verify that the code in the proposal is built from the given git-commit in the proposal, you can follow the
-instructions "IC-OS Verification" that can be found in the proposal itself or in the related forum post
-(for example in [this proposal](https://dashboard.internetcomputer.org/proposal/129627) or [the related forum post](https://forum.dfinity.org/t/proposal-to-elect-new-release-rc-2024-05-01-23-01/30247#ic-os-verification-9).
-* DFINITY aims at a weekly release cycle - so you can expect roughly one proposal each week plus any additional feature builds.
+HostOS is the hypervisor OS running on the IC node machine. Its main responsibilities include initializing and configuring the node machine hardware and passing it through to the GuestOS. The GuestOS, a VM running on the HostOS, contains the critical parts of the IC Protocol code, including the IC Replica, which runs the IC Canisters smart contracts.
+
+**How to verify IC operating system version election proposals**
+
+To verify IC OS version election proposals, besides regularly checking open proposals, consider the following information for proposals submitted by the DFINITY foundation:
+
+* Each proposal submitted by the DFINITY foundation has a corresponding post on the forum (see [example](https://forum.dfinity.org/t/proposal-to-elect-new-release-rc-2024-05-01-23-01/30247)). Relevant posts can be found under the `Governance` category with the tags `replica` and `release`.
+* The relevant code is available in [this repository](https://github.com/dfinity/ic).
+* To verify that the code in the proposal is built from the specified `git commit`, follow the instructions in the [README file of the IC repository](https://github.com/dfinity/ic#verifying-releases).
+* Each proposal summary includes instructions for verifying the proposal payload. See this [example](https://dashboard.internetcomputer.org/proposal/130083). These steps are tested on Ubuntu 22.04, which is the recommended operating system for the verification process.
+
+```
+# From https://github.com/dfinity/ic#verifying-releases
+sudo apt-get install -y curl && curl --proto '=https' --tlsv1.2 -sSLO https://raw.githubusercontent.com/dfinity/ic/ec35ebd252d4ffb151d2cfceba3a86c4fb87c6d6/gitlab-ci/tools/repro-check.sh && chmod +x repro-check.sh && ./repro-check.sh -c ec35ebd252d4ffb151d2cfceba3a86c4fb87c6d6
+```
+
+* The reproducibility check script is versioned, cryptographically checksummed, and open-sourced, ensuring it cannot change post-submission. The proposal summary is immutable after submission. The upgrade image contents are cryptographically checksummed, and the checksum is included in the proposal payload and verified during the upgrade process.
+* For GuestOS, DFINITY aims for a weekly release cycle, resulting in approximately one proposal per week plus additional feature builds.
+* For HostOS, there is no fixed release cycle, but an upgrade is typically proposed every 3-6 months.
 
 ### Topic: `IcOsVersionDeployment`
-This proposal is used to upgrade selected nodes to IC OS Versions that have previously been approved ("elected") by the NNS DAO with a proposal of topic `IcOsVersionElection`.
 
-This topic contains the following proposal types:
+This proposal is used to upgrade selected nodes to IC OS versions that have previously been approved ("elected") by the NNS DAO under the `IcOsVersionElection` topic.
 
-* `DeployHostosToSomeNodes`: Deploy a HostOS version to a given set of nodes. The proposal changes the HostOS version that is used on the specified nodes.
-* `DeployGuestosToAllSubnetNodes`: Deploy a GuestOS version to a given subnet. The proposal changes the GuestOS version that is used on the specified subnet. The version must be contained in the list of elected GuestOS versions. The upgrade is completed when the subnet creates the next regular CUP.
-* `DeployGuestosToSomeApiBoundaryNodes`: A proposal to update the version of a set of API Boundary Nodes.
-* `DeployGuestosToAllUnassignedNodes`: A proposal to update the version of all unassigned nodes.
+This topic includes the following proposal types:
+
+* `DeployHostosToSomeNodes`: Deploy a HostOS version to a specified set of nodes, changing the HostOS version used on those nodes.
+* `DeployGuestosToAllSubnetNodes`: Deploy a GuestOS version to a specified subnet, changing the GuestOS version used on that subnet. The version must be in the list of elected GuestOS versions. The upgrade is complete when the subnet nodes create the next regular CUP, and then all subnet nodes restart and load the CUP with the new code.
+* `DeployGuestosToSomeApiBoundaryNodes`: Update the GuestOS version on a set of API Boundary Nodes.
+* `DeployGuestosToAllUnassignedNodes`: Update the GuestOS version on all unassigned nodes.
 
 ### Topic: `Governance`
 The are less technical proposals that administer governance. In contrast to other topics, this topic has reward weight 20. This means that participation in this topic is rewarded more.
