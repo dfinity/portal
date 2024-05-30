@@ -50,7 +50,7 @@ The following proposal types are specific for SNS canisters:
 The following proposal type is specific for the Bitcoin canister:
 * `BitcoinSetConfig`: A proposal to set the configuration of the underlying Bitcoin Canister that powers the Bitcoin API. The configuration includes whether or not the Bitcoin Canister should sync new blocks from the network, whether the API is enabled, the fees to charge, etc.
 
-**How to verify NNS core canister upgrades**
+#### How to verify NNS core canister upgrades
 If you are looking to verify NNS core canister upgrades apart from regularly checking open proposals, you might want to consider the following information for proposals submitted by the DFINITY foundation:
 
 * For updates to the NNS canisters, you can follow [this repository](https://github.com/dfinity/ic). More specifically, the following sub-directories are relevant: 
@@ -74,7 +74,7 @@ If you are looking to verify NNS core canister upgrades apart from regularly che
 * You can find the instructions on how to verify that the Wasm in the proposal was indeed build from the provided `git commit` in the proposal's section "Wasm Verification" (see [this example proposal](https://dashboard.internetcomputer.org/proposal/129394)).
 
 
-**How to verify ledger canister upgrades**
+#### How to verify ledger canister upgrades
 If you are looking to verify the ledger suite, which includes the ICP ledger and all ICRC ledgers (used for ckBTC, ckETC, ckERC20) apart from regularly checking open proposals, you might want to consider the following information for proposals submitted by the DFINITY foundation:
 
 * For updates to the NNS canisters, you can follow [this repository](https://github.com/dfinity/ic/rosetta-api).
@@ -85,7 +85,7 @@ More specifically, the following sub-directories are relevant:
 
 
 
-**How to verify Internet Identity upgrades**
+#### How to verify Internet Identity upgrades
 
 If you are looking to verify [Internet Identity (II)](/docs/current/developer-docs/web-apps/user-login/internet-identity/overview) canister upgrades apart from regularly checking open proposals, you might want to consider the following information for proposals submitted by the DFINITY foundation:
 
@@ -93,7 +93,7 @@ If you are looking to verify [Internet Identity (II)](/docs/current/developer-do
 * Each proposal points to the relevant commit that was used.
 * You can find the instructions on how to verify that the Wasm in the proposal was indeed build from the provided `git commit` in the proposal itself (see for example the section "Wasm Verification" in [this example proposal](https://dashboard.internetcomputer.org/proposal/129486)) and in the [Github release pages](https://github.com/dfinity/internet-identity/releases).
 
-**How to verify SNS canister Wasm upgrades**
+#### How to verify SNS canister Wasm upgrades
 
 If you are looking to verify SNS canister Wasm upgrades apart from regularly checking open proposals, you might want to consider the following information for proposals submitted by the DFINITY foundation:
 
@@ -112,7 +112,7 @@ This topic contains the following proposal types:
 * `ReviseElectedGuestosVersions`: A proposal to change the set of elected GuestOS versions. The version to elect (identified by the hash of the installation image) is added to the registry. Besides creating a record for that version, the proposal also appends that version to the list of elected versions that can be installed on nodes of a subnet. Only elected GuestOS versions can be deployed.
 * `ReviseElectedHostosVersions`: A proposal to change the set of currently elected HostOS versions by electing a new version, and/or un-electing some priorly elected versions. HostOS versions are identified by the hash of the installation image. The version to elect is added to the registry, and the versions to un-elect are removed from the registry, ensuring that HostOS cannot upgrade to these versions anymore.
 
-**How to verify Ic OS Version Election proposals**
+#### How to verify Ic OS Version Election proposals
 If you are looking to verify IC OS Version Election proposals, apart from regularly checking open proposals,
 you might want to consider the following information for proposal submitted by the DFINITY foundation.
 * For each such proposal that the DFINITY foundation submits, there is a post on the forum
@@ -163,25 +163,18 @@ This topic includes proposals that administer network economics. This topic cont
 * `NetworkEconomics`: Network economics contains the parameters for several operations related to the economy of the network and settings of the NNS DAO that can be changed by a proposal of this type.
 A single proposal can update one or several economic parameters. The default values (0) are considered unchanged. Thus, a valid proposal only needs to set the parameters that it wishes to change. Note that this also means that it is not possible to set any of the values to 0.
 The following parameters can be changed:
-    * **Reject cost**: The amount of ICP the proposer of a rejected proposal will be charged to prevent the spamming of frivolous proposals.
-
-    * **Minimum neuron stake**: Set the minimum number of ICP required for the creation of a neuron. The same limit must also be respected when increasing the dissolve delay or changing the neuron state from dissolving to aging.
-
-    * **Neuron management fee**: The cost in ICP per neuron management proposal. Here the NNS is doing work on behalf of a specific neuron, and a small fee will be applied to prevent overuse of this feature (i.e., spam).
-
-    * **Minimum ICP/SDR rate**: To prevent mistakes, there is a lower bound for the ICP/SDR rate, managed by network economic proposals.
-
-    * **Dissolve delay of spawned neurons**: The dissolve delay of a neuron spawned from the maturity of an existing neuron.
-
-    * **Maximum node provider rewards**: The maximum rewards to be distributed to node providers in a single distribution event (proposal).
-
-    * **Transaction fee**: The transaction fee that must be paid for each ledger transaction.
-
-    * **Maximum number of proposals to keep per topic**: The maximum number of proposals to keep, per topic. When the total number of proposals for a given topic is greater than this number, the oldest proposals that have reached a “final” state may be deleted to save space.
-    * **Neurons' Fund economics**: This includes all parameters related to the [Neurons' Fund](./neurons-fund.mdx):
-       - `max_theoretical_neurons_fund_participation_amount_xdr`: A theoretical limit which should be smaller than any realistic amount of maturity that practically needs to be reserved from the Neurons' Fund for a given SNS swap.
-      - `neurons_fund_matched_funding_curve_coefficients`: Defines a threshold specifying the shape of the matching function used by the Neurons' Fund to determine how much to contribute for a given direct participation amount.
-       - `minimum_icp_xdr_rate` and `maximum_icp_xdr_rate` are respectively the minimum and maximum value of the ICP/XDR conversion rate used by the Neurons' Fund for converting XDR values into ICP.
+    - **Reject cost**: The amount of ICP the proposer of a rejected proposal will be charged to prevent the spamming of frivolous proposals.
+    - **Minimum neuron stake**: Set the minimum number of ICP required for the creation of a neuron. The same limit must also be respected when increasing the dissolve delay or changing the neuron state from dissolving to aging.
+    - **Neuron management fee**: The cost in ICP per neuron management proposal. Here the NNS is doing work on behalf of a specific neuron, and a small fee will be applied to prevent overuse of this feature (i.e., spam).
+    - **Minimum ICP/SDR rate**: To prevent mistakes, there is a lower bound for the ICP/SDR rate, managed by network economic proposals.
+    - **Dissolve delay of spawned neurons**: The dissolve delay of a neuron spawned from the maturity of an existing neuron.
+    - **Maximum node provider rewards**: The maximum rewards to be distributed to node providers in a single distribution event (proposal).
+    - **Transaction fee**: The transaction fee that must be paid for each ledger transaction.
+    - **Maximum number of proposals to keep per topic**: The maximum number of proposals to keep, per topic. When the total number of proposals for a given topic is greater than this number, the oldest proposals that have reached a “final” state may be deleted to save space.
+    - **Neurons' Fund economics**: This includes all parameters related to the [Neurons' Fund](./neurons-fund.mdx):
+        - `max_theoretical_neurons_fund_participation_amount_xdr`: A theoretical limit which should be smaller than any realistic amount of maturity that practically needs to be reserved from the Neurons' Fund for a given SNS swap.
+        - `neurons_fund_matched_funding_curve_coefficients`: Defines a threshold specifying the shape of the matching function used by the Neurons' Fund to determine how much to contribute for a given direct participation amount.
+        - `minimum_icp_xdr_rate` and `maximum_icp_xdr_rate` are respectively the minimum and maximum value of the ICP/XDR conversion rate used by the Neurons' Fund for converting XDR values into ICP.
 
 ### Topic: `SubnetManagement`
 
