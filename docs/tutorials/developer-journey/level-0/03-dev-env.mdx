@@ -40,25 +40,23 @@ You will primarily be using CLI-based tools, such as `dfx` and `git`, in this de
 
 ### Download and install the IC SDK
 
-To download and install the IC SDK, first open a terminal window. Then, run the following command in that window:
+The [IC SDK](https://github.com/dfinity/sdk) contains the CLI tool `dfx`. `dfx` is natively supported on Linux or macOS 12.\* Monterey or later.
+
+There is no native support for `dfx` on Windows. However, by installing the Windows Subsystem for Linux (WSL 2), you can run `dfx` on [a Windows system](/docs/current/developer-docs/getting-started/install/).
+
+:::caution
+Not all features of `dfx` may be supported on WSL 2.
+:::
+
+To install the IC SDK, install `dfxvm`. `dfxvm` is a CLI tool used for installing and switching between different versions of `dfx`, enabling developers to pivot between different projects that are built with different `dfx` versions.
+
+Download and install the latest version of [`dfxvm`](https://github.com/dfinity/dfxvm) with the following command:
 
 ```bash
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ```
 
-This command will prompt you to read and accept the license agreement before the install begins. Type `y`, then press `Return` to accept the agreement and begin the installation.
-
-:::info
-If you are using a machine running Apple silicon, you will need to have Rosetta installed. You can install [Rosetta](https://support.apple.com/en-us/HT211861) by running `softwareupdate --install-rosetta` in your terminal.
-:::
-
-Then, to verify that the IC SDK is ready to use, run the following command:
-
-```bash
-dfx --version
-```
-
-This command should output information about the latest version of `dfx`. This output indicates that the installation has been successful, and that `dfx` is ready to use.
+If you are using a machine running Apple silicon, you will need to have [Rosetta](https://support.apple.com/en-us/HT211861) installed. You can install Rosetta by running `softwareupdate --install-rosetta` in your terminal.
 
 #### Why does this matter?
 
