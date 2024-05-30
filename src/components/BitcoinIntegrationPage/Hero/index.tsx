@@ -43,7 +43,7 @@ const Hero = forwardRef<HTMLDivElement, {}>((_, ref) => {
             </Link>
           </motion.div>
           <motion.div className="container-12 relative pointer-events-none">
-            <div className="absolute w-11/12 translate-y-[105%] bottom-1/2 sm:w-5/12 md:w-8/12 md:bottom-0 md:translate-x-2/3 md:translate-y-1/2">
+            <div className="absolute w-10/12 translate-x-[5%] translate-y-[105%] bottom-1/2 sm:w-5/12 md:w-8/12 md:bottom-0 md:translate-x-2/3 md:translate-y-1/2">
               <img
                 src="/img/bitcoin-integration/btc_integration_hero.svg"
                 className="w-full max-w-none"

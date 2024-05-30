@@ -2,9 +2,11 @@ import {
   getBlockCount,
   getBlockRate,
   getEthEquivTxRateMultiplier,
+  getTransactionData,
   getTransactionRateV3,
+  getckBTCTotalSupply,
 } from "@site/src/utils/network-stats";
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { ConstantRateCounter, SpringCounter } from "../PreHero/Counters";
 import InfoIcon from "../PreHero/InfoIcon";
@@ -160,6 +162,140 @@ export const EthEquivalentTxRate = () => {
   );
 };
 
+const formatBTC = (value) => {
+  return value.toFixed(4);
+};
+
+const formatNumberStats = (value, decimals = 2) => {
+  return value.toLocaleString(undefined, {
+    minimumFractionDigits: decimals,
+    maximumFractionDigits: decimals,
+  });
+};
+
+export const CkBTCTotalSupply = () => {
+  const { data: totalSupply, isSuccess } = useQuery(
+    "ckBTCTotalSupply",
+    getckBTCTotalSupply
+  );
+  const [formattedSupply, setFormattedSupply] = useState(null);
+
+  useEffect(() => {
+    if (isSuccess && totalSupply !== null) {
+      setFormattedSupply(formatBTC(totalSupply));
+    }
+  }, [isSuccess, totalSupply]);
+
+  return (
+    <motion.div
+      className="rounded-xl bg-black/25 backdrop-blur-md text-white tw-lead-lg py-3 px-6"
+      variants={transitions.fadeIn}
+    >
+      <figure className="m-0 flex gap-3 justify-center md:block">
+        <div className="flex flex-col md:flex-row md:items-center gap-3">
+          {formattedSupply !== null ? (
+            <span className="text-left">{formattedSupply}</span>
+          ) : (
+            <>&nbsp;</>
+          )}
+        </div>
+
+        <figcaption className="tw-paragraph-sm md:tw-paragraph text-white/50 flex items-center gap-1 relative z-[3]">
+          ckBTC Total Supply
+          <Info>
+            <h3 className="tw-button-xs mb-1">ckBTC Total Supply</h3>
+            <p className="tw-caption text-white/50 mb-0">
+              The total supply of ckBTC tokens, which is the amount of ckBTC
+              tokens that have been minted minus the amount that have been
+              burned.
+            </p>
+          </Info>
+        </figcaption>
+      </figure>
+    </motion.div>
+  );
+};
+
+export const TransactionStats = () => {
+  const { data, isSuccess } = useQuery("transactionData", getTransactionData);
+  const [formattedData, setFormattedData] = useState({
+    dailyVolume: null,
+    totalTransactions: null,
+  });
+
+  useEffect(() => {
+    if (isSuccess && data) {
+      setFormattedData({
+        dailyVolume: formatNumberStats(data.dailyVolume, 4),
+        totalTransactions: formatNumberStats(data.totalTransactions, 0),
+      });
+    }
+  }, [isSuccess, data]);
+
+  return (
+    <>
+      <motion.div
+        className="rounded-xl bg-black/25 backdrop-blur-md text-white tw-lead-lg py-3 px-6"
+        variants={transitions.fadeIn}
+      >
+        <figure className="m-0 flex gap-3 justify-center md:block">
+          <div className="flex flex-col md:flex-row md:items-center gap-3">
+            {" "}
+            {formattedData.totalTransactions !== null ? (
+              <span className="text-left">
+                {formattedData.totalTransactions}
+              </span>
+            ) : (
+              <>&nbsp;</>
+            )}
+          </div>
+
+          <figcaption className="tw-paragraph-sm md:tw-paragraph text-white/50 flex items-center gap-1 relative z-[3]">
+            ckBTC Transactions{" "}
+            <Info>
+              <h3 className="tw-button-xs mb-1">cckBTC Transactions</h3>
+              <p className="tw-caption text-white/50 mb-0">
+                The amount of ckBTC tokens transferred, minted, or burned, or
+                for "approve" transactions, the designated amount of ckBTC
+                tokens that the "Spender Account" is authorized to transfer on
+                behalf of the "From" account.
+              </p>
+            </Info>
+          </figcaption>
+        </figure>
+      </motion.div>
+      <motion.div
+        className="rounded-xl bg-black/25 backdrop-blur-md text-white tw-lead-lg py-3 px-6"
+        variants={transitions.fadeIn}
+      >
+        <figure className="m-0 flex gap-3 justify-center md:block">
+          <div className="flex flex-col md:flex-row md:items-center gap-3">
+            {" "}
+            {formattedData.dailyVolume !== null ? (
+              <span className="text-left">{formattedData.dailyVolume}</span>
+            ) : (
+              <>&nbsp;</>
+            )}
+          </div>
+
+          <figcaption className="tw-paragraph-sm md:tw-paragraph text-white/50 flex items-center gap-1 relative z-[3]">
+            Daily Volume{" "}
+            <Info>
+              <h3 className="tw-button-xs mb-1">ckBTC Volume</h3>
+              <p className="tw-caption text-white/50 mb-0">
+                The volume of ckBTC tokens transferred, minted, or burned. Date
+                ranges of one month or longer show daily volume, while shorter
+                date ranges show hourly volume. The total volume shown in the
+                chart header is the total for the selected date range.
+              </p>
+            </Info>
+          </figcaption>
+        </figure>
+      </motion.div>
+    </>
+  );
+};
+
 export const SmartContractMemory = () => {
   return (
     <motion.div
@@ -192,6 +328,23 @@ export const LiveStats = () => {
     >
       <Link
         href="https://dashboard.internetcomputer.org/"
+        className="text-white tw-heading-6 inline-flex gap-2 items-center justify-end hover:no-underline hover:text-white/60 transition-all"
+      >
+        <DashboardIcon />
+        See live stats
+      </Link>
+    </motion.div>
+  );
+};
+
+export const CkBTCLiveStats = () => {
+  return (
+    <motion.div
+      className="bg-black/25 backdrop-blur-md rounded-xl py-3 px-6 md:flex"
+      variants={transitions.fadeIn}
+    >
+      <Link
+        href="https://dashboard.internetcomputer.org/bitcoin"
         className="text-white tw-heading-6 inline-flex gap-2 items-center justify-end hover:no-underline hover:text-white/60 transition-all"
       >
         <DashboardIcon />

@@ -8,6 +8,7 @@ import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 import ShareMeta from "../components/Common/ShareMeta";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import Content from "../components/BitcoinIntegrationPage/Content";
+import News from "../components/BitcoinIntegrationPage/News";
 
 function BitcoinIntegration() {
   const ref = useRef<HTMLDivElement>(null);
@@ -33,7 +34,7 @@ function BitcoinIntegration() {
         <Content></Content>
         {/* <ReleaseTimeline></ReleaseTimeline> */}
         <Videos></Videos>
-        <BuildWithBitcoin></BuildWithBitcoin>
+        <News />
       </main>
     </Layout>
   );
