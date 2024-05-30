@@ -90,7 +90,7 @@ function News() {
       </div>
       <div className="mt-4 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-5">
         <Link
-          href="https://www.cryptopolitan.com/how-the-icp-token-ckbtc-bitcoin-transactions/https://www.theblock.co/post/288634/internet-computer-protocol-bitcoin-layer-zero-threshold-schnorr-implementation"
+          href="https://www.theblock.co/post/288634/internet-computer-protocol-bitcoin-layer-zero-threshold-schnorr-implementation"
           className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
         >
           <NewsCard
@@ -100,7 +100,7 @@ function News() {
               dateHuman: "Apr 16, 2024",
               press: "James Hunt",
               details: `Internet Computer Protocol aims to be leveraged as a Bitcoin “layer zero” following the planned implementation of threshold-Schnorr signatures, announced today.`,
-              url: "https://www.cryptopolitan.com/how-the-icp-token-ckbtc-bitcoin-transactions/https://www.theblock.co/post/288634/internet-computer-protocol-bitcoin-layer-zero-threshold-schnorr-implementation",
+              url: "https://www.theblock.co/post/288634/internet-computer-protocol-bitcoin-layer-zero-threshold-schnorr-implementation",
               imageUrl: "/img/bitcoin-integration/n1.webp",
             }}
             linkLabel="Read Now"
