@@ -64,7 +64,8 @@
       "DeFi",
       "Wallet",
       "Bitcoin",
-      "Ethereum"
+      "Ethereum",
+      "DAO"
     ],
     "description": "ICPSwap is DEX built completely end-to-end on-chain. By building the ability for anyone to swap tokens through ICPSwap leveraging the Internet Computer blockchain as the high-speed, scalable, low-cost infrastructure makes ICPSwap a first-to-market in the growing Internet Computer DeFi ecosystem.",
     "usesInternetIdentity": true,
@@ -1337,16 +1338,16 @@
   {
     "id": "scinet",
     "name": "SCINET",
-    "description": "SCINET is a decentralized life sciences (“DeSci”) research and investment platform that revolutionizes the way people do and support science. Powered by blockchain technologies, SCINET allows retail and institutional investors to invest directly in life sciences research and technology with security and authenticity.",
+    "description": "A licensing application for life-sciences companies. Easily monetize your intellectual property using NFTs.",
     "tags": [
-      "SocialFi",
+      "NFT",
       "Tools / Infrastructure"
     ],
     "usesInternetIdentity": false,
     "website": "https://www.scinet.one/",
     "twitter": "https://twitter.com/scinet_inc",
     "discord": "https://discord.com/invite/5uH6vpJjeB",
-    "logo": "/img/showcase/scinet_logo.webp",
+    "logo": "/img/showcase/scinet_logo.png",
     "submittableId": "33285268"
   },
   {
@@ -3079,18 +3080,19 @@
   {
     "id": "taxlint",
     "name": "TaxLint",
-    "oneLiner": "Your automated tax reporting IC assistant.",
-    "website": "https://vresg-vyaaa-aaaag-qcj2q-cai.icp0.io/",
+    "oneLiner": "A decentralised, private, and secure automated Tax Report aimed to help users to count ICP and ICRC1 token transactions.",
+    "website": "https://www.taxlint.online/",
     "tags": [
-      "Wallet",
-      "DeFi"
+      "DeFi",
+      "Tools / Infrastructure"
     ],
-    "description": "Auto Tax Report, taxLint helps users of ICP to count and manage tax information more easily.",
+    "description": "A decentralised, private, and secure automated Tax Report aimed to help users to count ICP and ICRC1 token transactions.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/taxlint_logo.png",
     "github": "https://github.com/TaxLintDAO/taxlint",
     "twitter": "https://twitter.com/taxlint",
     "display": "Normal",
+    "stats": "150+ users",
     "screenshots": [
       "/img/showcase/taxlint_screenshot.png"
     ],
@@ -3749,7 +3751,7 @@
     "id": "blendsafe",
     "name": "Blendsafe",
     "oneLiner": "A MultiSignature wallet and omnichain module designed for cross-chain message signing, suitable for multiple blockchain ecosystems.",
-    "website": "https://deep-ink.ventures",
+    "website": "https://blendsafe.com/",
     "tags": [
       "Tools / Infrastructure",
       "Wallet",
@@ -4318,8 +4320,7 @@
     "name": "odoc",
     "oneLiner": "Tasks managment, documentations, and smart contracts for online workers and freelancers.",
     "tags": [
-      "DAO",
-      "SocialFi"
+      "Tools / Infrastructure"
     ],
     "description": "Odoc is a place where you can hire and work. It is empowering freelancers with transparent and liberating smart contracts on the blockchain.",
     "usesInternetIdentity": true,
@@ -4407,5 +4408,265 @@
     "github": "https://github.com/ORIGYN-SA/CanDB",
     "display": "Normal",
     "logo": "/img/showcase/candb_logo.png"
+  },
+  {
+    "id": "personal-dao",
+    "name": "Personal DAO",
+    "oneLiner": "A web3 app that functions as a gated DAO, treasury, data storage solution, and more.",
+    "tags": [
+      "DAO"
+    ],
+    "description": "A web3 app that functions as a gated DAO, treasury, data storage solution, and more.",
+    "usesInternetIdentity": true,
+    "website": "https://fkkq7-siaaa-aaaap-qaaya-cai.ic0.app/",
+    "twitter": "https://x.com/Personal_DAO",
+    "discord": "https://discord.gg/r85DtR2TjG",
+    "display": "Normal",
+    "logo": "/img/showcase/personal_dao_logo.png"
+  },
+  {
+    "id": "icp-canister-bridge",
+    "name": "ICP Canister Bridge",
+    "oneLiner": "A bridge powered by ICP that enables seamless swaps between the Lightning Network and EVM-compatible chains.",
+    "tags": [
+      "Bitcoin",
+      "Ethereum",
+      "Tools / Infrastructure"
+    ],
+    "description": "A bridge powered by ICP that enables seamless swaps between the Lightning Network and EVM-compatible chains.",
+    "usesInternetIdentity": false,
+    "website": "https://vue2j-giaaa-aaaam-ab4bq-cai.icp0.io",
+    "github": "https://github.com/Bitcoin-AI/icp-canister-bridge",
+    "display": "Normal",
+    "logo": "/img/showcase/icp_canister_bridge_logo.png"
+  },
+  {
+    "id": "communities-ooo",
+    "name": "Communities.ooo",
+    "oneLiner": "A tool that creates online communities as NFTs owned by the creators.",
+    "tags": [
+      "SocialFi",
+      "NFT"
+    ],
+    "description": "A tool that creates online communities as NFTs owned by the creators",
+    "usesInternetIdentity": false,
+    "website": "https://www.communities.ooo/",
+    "github": "https://github.com/LiveDuo/communities",
+    "youtube": "https://www.youtube.com/watch?v=GqROYKOaFv4",
+    "display": "Normal",
+    "logo": "/img/showcase/communities_ooo_logo.png"
+  },
+  {
+    "id": "ic-footprint",
+    "name": "IC Footprint",
+    "oneLiner": "A blockchain ESG platform that tracks ICP environmental metrics and provides tooling to reduce the environmental impact of the network.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "A blockchain ESG platform that tracks ICP environmental metrics and provides tooling to reduce the environmental impact of the network.",
+    "usesInternetIdentity": true,
+    "website": "https://owqnd-biaaa-aaaak-qidaq-cai.icp0.io/",
+    "twitter": "https://twitter.com/icfootprint",
+    "display": "Normal",
+    "logo": "/img/showcase/ic_footprint_logo.png"
+  },
+  {
+    "id": "galactic-bridge",
+    "name": "Galactic Bridge",
+    "oneLiner": "A cross-chain bridge that allows users to move between Solana and ICP.",
+    "tags": [
+      "DeFi"
+    ],
+    "description": "A cross-chain bridge that allows users to move between Solana and ICP.",
+    "usesInternetIdentity": false,
+    "website": "https://galactic-bridge-tzbjl.ondigitalocean.app/",
+    "github": "https://github.com/weichain/galactic-bridge-icp",
+    "display": "Normal",
+    "logo": "/img/showcase/gBridge_logo.png"
+  },
+  {
+    "id": "amplify-e2e-platform",
+    "name": "Amplify Platform",
+    "oneLiner": "A platform that enables Twitter (X) accounts to boost post engagement by rewarding interacting users with ICP and select ICRC tokens.",
+    "tags": [
+      "SocialFi"
+    ],
+    "description": "A platform that enables Twitter (X) accounts to boost post engagement by rewarding interacting users with ICP and select ICRC tokens.",
+    "usesInternetIdentity": false,
+    "website": "https://amplify-icp.com/",
+    "twitter": "https://twitter.com/Amplify_ICP",
+    "display": "Normal",
+    "logo": "/img/showcase/amplify_logo.png"
+  },
+  {
+    "id": "cbindex",
+    "name": "CBIndex",
+    "oneLiner": "An omnichain crypto asset management platform that includes multiple BTCFi products across multiple blockchains.",
+    "tags": [
+      "Bitcoin",
+      "DeFi"
+    ],
+    "description": "An omnichain crypto asset management platform that includes multiple BTCFi products across multiple blockchains.",
+    "usesInternetIdentity": false,
+    "website": "https://cbindex.finance",
+    "twitter": "https://twitter.com/CBIndex_Global",
+    "display": "Normal",
+    "logo": "/img/showcase/CBIndex_logo.png"
+  },
+  {
+    "id": "b3wallet",
+    "name": "B3Wallet",
+    "oneLiner": "A decentralized, multi-chain wallet with unique support for Bitcoin, Ethereum, using Internet Computer's threshold ECDSA.",
+    "tags": [
+      "Tools / Infrastructure",
+      "Bitcoin",
+      "Ethereum"
+    ],
+    "description": "A decentralized, multi-chain wallet with unique support for Bitcoin, Ethereum, using Internet Computer's threshold ECDSA.",
+    "usesInternetIdentity": true,
+    "website": "https://sehgq-cqaaa-aaaap-ahc4q-cai.icp0.io",
+    "github": "https://github.com/B3Pay/B3Wallet",
+    "display": "Normal",
+    "logo": "/img/showcase/b3pay_logo.png"
+  },
+  {
+    "id": "pass",
+    "name": "Pass",
+    "oneLiner": "First blockchain password manager.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "First blockchain password manager.",
+    "usesInternetIdentity": true,
+    "website": "https://www.ic-pass.app/",
+    "github": "https://github.com/IC-Pass",
+    "twitter": "https://twitter.com/pass_ic",
+    "display": "Normal",
+    "logo": "/img/showcase/pass_logo.svg"
+  },
+  {
+    "id": "hamster",
+    "name": "Hamster",
+    "oneLiner": "One-stop infrastructure, developer toolkit and middleware DevOps service platform",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "One-stop infrastructure, developer toolkit and middleware DevOps service platform",
+    "usesInternetIdentity": true,
+    "website": "https://hamsternet.io/",
+    "twitter": "https://twitter.com/Hamsternetio",
+    "display": "Normal",
+    "logo": "/img/showcase/hamster_logo.png"
+  },
+  {
+    "name": "MSQ - Safe ICP Wallet",
+    "description": "MSQ is a MetaMask extension that enables your wallet to work with the Internet Computer (ICP) blockchain. Buy goods, tip for services, donate to charities, and gift coins to your loved ones.",
+    "website": "https://icp.msq.tech",
+    "logo": "/img/showcase/msq-safe-icp-wallet_logo.svg",
+    "screenshots": [
+      "/img/showcase/msq-safe-icp-wallet_screenshot.webp"
+    ],
+    "video": "/img/showcase/msq-safe-icp-wallet_video.mp4",
+    "display": "Normal",
+    "id": "msq-safe-icp-wallet",
+    "oneLiner": "Use the Internet Computer with MetaMask",
+    "tags": [
+      "Wallet"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/fort-major/msq",
+    "twitter": "https://twitter.com/msqwallet",
+    "youtube": "",
+    "submittableId": "45381706",
+    "videoContentType": "video/mp4"
+  },
+  {
+    "id": "riide",
+    "name": "RIIDE",
+    "description": "A community-owned Web3 application that primarily offers taxi, delivery, and courier services.",
+    "website": "https://riide.org/",
+    "logo": "/img/showcase/riide_logo.png",
+    "display": "Normal",
+    "oneLiner": "A community-owned Web3 application that primarily offers taxi, delivery, and courier services.",
+    "stats": "5000 waitlist signups",
+    "tags": [
+      "SocialFi"
+    ],
+    "usesInternetIdentity": true,
+    "twitter": "https://twitter.com/RiideDapp"
+  },
+  {
+    "id": "chainkeyx",
+    "name": "ChainkeyX",
+    "description": "A crypto neobank that offers fully on-chain bitcoin borrowing and lending on ICP.",
+    "website": "https://www.chainkeyx.com",
+    "logo": "/img/showcase/chainkeyx_logo.png",
+    "display": "Normal",
+    "oneLiner": "A crypto neobank that offers fully on-chain bitcoin borrowing and lending on ICP.",
+    "tags": [
+      "Bitcoin",
+      "DeFi"
+    ],
+    "usesInternetIdentity": true,
+    "twitter": "https://twitter.com/ckexchange",
+    "github": "https://github.com/CKX-dev/CKX_Swap"
+  },
+  {
+    "id": "konecta-protocol",
+    "name": "Konectª",
+    "description": "A new protocol that gathers notifications and events from all your apps implementing it, and compiles them into a user-specific canister.",
+    "website": "https://qmtwu-wqaaa-aaaan-qlrya-cai.icp0.io/",
+    "logo": "/img/showcase/konecta_logo.png",
+    "display": "Normal",
+    "oneLiner": "A new protocol that gathers notifications and events from all your apps implementing it, and compiles them into a user-specific canister.",
+    "tags": [
+      "SocialFi"
+    ],
+    "usesInternetIdentity": true,
+    "twitter": "https://twitter.com/konectA_Dao",
+    "github": "https://github.com/sagcryptoicp/konnectA_canisters"
+  },
+  {
+    "id": "estatedao",
+    "name": "EstateDAO",
+    "description": "A vacation real estate tokenization and rental platform on ICP, enabling users to invest in vacation real estate with investments as low as USD 100.",
+    "website": "https://wbdy5-yyaaa-aaaap-abysq-cai.icp0.io/",
+    "logo": "/img/showcase/estatedao_logo.png",
+    "display": "Normal",
+    "oneLiner": "A vacation real estate tokenization and rental platform on ICP, enabling users to invest in vacation real estate with investments as low as USD 100.",
+    "tags": [
+      "SocialFi",
+      "DAO"
+    ],
+    "usesInternetIdentity": true,
+    "twitter": "https://twitter.com/estatedao_icp",
+    "github": "https://github.com/Estate-DAO/estate-nft-marketplace"
+  },
+  {
+    "id": "motoko-sns",
+    "name": "Motoko SNS",
+    "description": "A community initiative aiming to drive awareness of the Motoko branding.",
+    "website": "https://2uktw-yiaaa-aaaah-adwxq-cai.icp0.io/",
+    "logo": "/img/showcase/motoko_sns_logo.png",
+    "display": "Normal",
+    "oneLiner": "A community initiative aiming to drive awareness of the Motoko branding.",
+    "tags": [
+      "SocialFi",
+      "DAO"
+    ],
+    "usesInternetIdentity": false
+  },
+  {
+    "id": "motdex",
+    "name": "Motoko SNS",
+    "description": "A game where users participate in motorcycle races, develop their riders and improve high-speed tracks.",
+    "website": "https://motodex.dexstudios.games",
+    "logo": "/img/showcase/motoko_sns_logo.png",
+    "display": "Normal",
+    "oneLiner": "A game where users participate in motorcycle races, develop their riders and improve high-speed tracks.",
+    "tags": [
+      "Games"
+    ],
+    "usesInternetIdentity": false
   }
 ]

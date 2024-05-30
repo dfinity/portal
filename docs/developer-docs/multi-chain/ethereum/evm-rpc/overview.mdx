@@ -34,11 +34,22 @@ Below is a list of terms used to describe different aspects of using the EVM RPC
 
 - **RPC service**: An IPv6 service such as Alchemy, Gateway.fm, or CloudFlare that offers access to the Ethereum JSON-RPC API over HTTP. Note that other EVM blockchains are often covered by such a JSON-RPC API as well.
 
-- **network**: An EVM blockchain such as the Ethereum mainnet or Sepolia testnet.
+- **network**: An EVM blockchain such as the Ethereum mainnet, Sepolia testnet, or [layer-2 chain](https://www.investopedia.com/what-are-layer-1-and-layer-2-blockchain-scaling-solutions-7104877).
 
 - **chain id**: A well-known unique numeric identifier for an EVM network.
 
--**provider**: A specific JSON-RPC service registered in the EVM RPC canister. Every chain id for a particular service requires a different provider and typically also requires a different API key. Multiple providers can be registered for a service / chain id combination.
+- **provider**: A specific JSON-RPC service registered in the EVM RPC canister. Every chain id for a particular service requires a different provider and typically also requires a different API key. Multiple providers can be registered for a service / chain id combination.
+
+## Supported JSON-RPC providers
+
+
+|                  | Ethereum Mainnet | Arbitrum One | Base Mainnet | Optimism Mainnet |
+|------------------|------------------|--------------|--------------|------------------|
+| Alchemy          |      ✅          |      ✅       |      ✅      |       ✅          |
+| Ankr             |      ✅          |      ✅       |      ✅      |       ✅          |
+| BlockPi          |      ✅          |      ✅       |      ✅      |       ✅          |
+| Cloudflare       |      ✅          |               |             |                   |
+| PublicNode       |      ✅          |      ✅       |      ✅      |       ✅          |
 
 ## Management of API keys
 
@@ -60,17 +71,11 @@ Calls made to the EVM RPC canister cost [cycles](/docs/current/developer-docs/ge
 
 Learn more about the [costs of EVM RPC requests](costs.mdx).
 
-## Deployed EVM RPC canisters
+## Deployed canister
 
-- Production canisters with API keys managed by DFINITY:
+The EVM RPC canister runs on the 28-node [fiduciary subnet](https://internetcomputer.org/docs/current/concepts/subnet-types#fiduciary-subnets) with the following principal: [`7hfb6-caaaa-aaaar-qadga-cai`](https://dashboard.internetcomputer.org/canister/7hfb6-caaaa-aaaar-qadga-cai). 
 
-    - Fiduciary subnet (28 nodes): [`7hfb6-caaaa-aaaar-qadga-cai`](https://dashboard.internetcomputer.org/canister/7hfb6-caaaa-aaaar-qadga-cai)
-
-- Test canisters with no API keys:
-
-    -  Standard subnet (13 nodes): [`a6d44-nyaaa-aaaap-abp7q-cai`](https://dashboard.internetcomputer.org/canister/a6d44-nyaaa-aaaap-abp7q-cai)
-
-    -  Fiduciary subnet (28 nodes): [`xhcuo-6yaaa-aaaar-qacqq-cai`](https://dashboard.internetcomputer.org/canister/xhcuo-6yaaa-aaaar-qacqq-cai)
+Refer to the [GitHub repository](https://github.com/internet-computer-protocol/evm-rpc-canister?tab=readme-ov-file#reproducible-builds) for information on how to verify the hash of the deployed WebAssembly module.
 
 ## Next steps
 

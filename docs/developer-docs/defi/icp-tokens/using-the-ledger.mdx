@@ -14,7 +14,7 @@ There are multiple ways to interact with the ICP ledger. They depend on whether 
 This guide will discuss the different ways to interact with the ICP ledger. In this guide, the following workflows will be covered:
 - `dfx ledger`: the built in `dfx` shortcut for interacting with the ICP ledger.
 - `dfx canister`: the generic canister call from `dfx`.
-- `nns-js`: interact with the ICP ledger from your web app.
+- [ledger-icp](https://github.com/dfinity/ic-js/tree/main/packages/ledger-icp) JavaScript library.
 - `ic-cdk`: inter-canister calls for the ICP ledger.
 
 ## Interacting with ICP ledger via `dfx ledger`
@@ -217,8 +217,10 @@ It is a similar format but you will only receive the CBOR encoded block:
 
 ## Interact with ICP ledger from your web application
 
-In order to simplify working with ICP ledger from JavaScript applications, you can use the [nns-js library](https://github.com/dfinity/nns-js).
+In order to simplify working with ICP ledger from JavaScript applications, you can use the [ledger-icp](https://github.com/dfinity/ic-js/tree/main/packages/ledger-icp) JavaScript library.
+.
 To interact with the ICRC-1 endpoints of the ICP ledger you can have a look at the guide on [interacting with an ICRC-1 ledger](/docs/current/developer-docs/defi/icrc-1/using-icrc1-ledger).
+
 ## Interacting with ICP from a canister (inter-canister calls via `ic-cdk`)
 You can look at the documentation of [inter-canister calls] (/docs/developer-docs/backend/rust/intercanister) to see how you can interact with the another canister from inside a canister. This guide will give you a couple of examples on how to make such a call in the case of the ICP ledger.
 
@@ -251,7 +253,7 @@ Or, it can be added to the `Cargo.toml` file:
 icrc-ledger-types = "0.1.1"
 ```
 
-The documentation for this crate can be found [here](https://docs.rs/icrc-ledger-types/0.1.1/icrc_ledger_types/).
+[View the documentation for this crate](https://docs.rs/icrc-ledger-types/0.1.1/icrc_ledger_types/).
 
 
 ### Receiving ICP

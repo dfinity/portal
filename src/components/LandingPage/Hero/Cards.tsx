@@ -36,6 +36,7 @@ export const CardsSection = () => {
       className="container-10 grid grid-cols-1 md:grid-cols-2 gap-2"
       variants={transitions.container}
     >
+
       <CardWithImage href="/chainfusion" image="/img/home/btc-eth.webp">
         <div className="tw-heading-7 md:tw-heading-6 mb-2">
           Native Multi-chain
@@ -47,37 +48,35 @@ export const CardsSection = () => {
 
       <CardWithImage href="/ai" image="/img/home/ai.webp">
         <div className="tw-heading-7 md:tw-heading-6 mb-2 whitespace-nowrap">
-          Run AI models
+          AI models as smart contracts
         </div>
-        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Decentralized AI</h2>
-      </CardWithImage>
-
-      <CardWithImage href="/ecosystem" image="/img/home/ecosystem-card.webp">
-        <div className="tw-heading-7 md:tw-heading-6 mb-2">Ecosystem</div>
-        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Ecosystem links</h2>
+        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Tamperproof and trustworthy AI</h2>
       </CardWithImage>
 
       <CardWithImage
-        href="https://deck.internetcomputer.org"
-        image="/img/home/deck-astronaut.webp"
+        href="/roadmap"
+        image="/img/home/roadmap-illustration.webp"
       >
         <div className="tw-heading-7 md:tw-heading-6 mb-2">
-          Online Deck [ ICP hosted ]
+          A new era in blockchain
         </div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
-          Cypherspace
-          <br />
-          as cloud 3.0
+          Internet Computer Roadmap
         </h2>
       </CardWithImage>
 
-      <CardWithImage href="/docs/current/home" image="/img/home/dev-card.webp">
+      <CardWithImage href="/ecosystem" image="/img/home/ecosystem-card.webp">
+        <div className="tw-heading-7 md:tw-heading-6 mb-2">Dapps</div>
+        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">ICP Ecosystem</h2>
+      </CardWithImage>
+
+      <CardWithImage href="/docs/current/home" image="/img/home/dev-card.svg">
         <div className="tw-heading-7 md:tw-heading-6 mb-2">Developer Docs</div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Start coding</h2>
       </CardWithImage>
 
       <CardWithImage href="/events" image="/img/home/events-card.webp">
-        <div className="tw-heading-7 md:tw-heading-6 mb-2">ICP.Hubs</div>
+        <div className="tw-heading-7 md:tw-heading-6 mb-2">Global Events</div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
           Meet the community worldwide
         </h2>

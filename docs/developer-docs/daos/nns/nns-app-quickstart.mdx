@@ -3,6 +3,7 @@ keywords: [beginner, governance, tutorial, nns]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import '/src/components/CenterImages/center.scss';
 
 # NNS quickstart
 
@@ -19,6 +20,8 @@ All changes to the configuration and behavior of the Internet Computer are contr
 -   De-activating under-performing nodes to protect the network.
 
 The requests for changes and updates to the network are submitted to the NNS in the form of **proposals**. The NNS decides to adopt or reject proposals based on voting activity by neuron holders.
+
+This guide will showcase how to interface with the NNS through the NNS dapp. You can interact with the NNS through other tools, such as [quill](/docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-parent) and [ic-js](https://github.com/dfinity/ic-js/tree/main/packages/nns).
 
 ## What are neurons?
 
@@ -39,7 +42,7 @@ When a person or organization has ICP utility tokens locked up in a neuron, they
 ### Unlocking the stake held by a neuron
 
 After network participants create a neuron, the locked balance of ICP utility tokens can only be unlocked by fully **dissolving** the neuron.
-It's **dissolve delay** determins the time it takes for a neuron to be unlocked once it is but in the dissolving state. A dissolving neuron can always be put back int the non-dissolving state. When the dissolve timer reaches zero, the neuron owner or an authenticated custodian can dissolve the neuron and unlock the neuron's balance of ICP .
+It's **dissolve delay** determines the time it takes for a neuron to be unlocked once it is but in the dissolving state. A dissolving neuron can always be put back int the non-dissolving state. When the dissolve timer reaches zero, the neuron owner or an authenticated custodian can dissolve the neuron and unlock the neuron's balance of ICP .
 
 The dissolved neuron ceases to exist and the stake of ICP utility tokens that the neuron represented is released to the appropriate ledger canister account.
 
@@ -77,21 +80,21 @@ Before transferring any tokens, you can create one or more linked subaccounts or
 
 To add an account for managing ICP utility tokens:
 
-- #### Step 1:  On the default 'My Tokens' tab, click **Add Account**.
+- #### Step 1:  On the default 'Tokens' tab, click 'ICP', then **Add Account**.
 
-![Add account](../_attachments/nns3.png)
+![Add account](../_attachments/nns4.png)
 
 - #### Step 2:  Select the type of account to add.
 
-    -   **New Linked Account** creates a new subaccount linked to your Main account address in the ledger.
+    -   **New Account** creates a new subaccount linked to your Main account address in the ledger.
 
-    -   **Attach Hardware Wallet** adds a hardware wallet to your main account address in the ledger.
+    -   **New Account (Hardware Wallet)** adds a hardware wallet to your main account address in the ledger.
 
-![Select account](../_attachments/nns4.png)
+![Select account](../_attachments/nns5.png)
 
-- #### Step 3:  Click **New Linked Account**, type an Account Name, then click **Create**.
+- #### Step 3:  Click **New Account**, type an Account Name, then click **Create**.
 
-![new linked account](../_attachments/nns5.png)
+![new linked account](../_attachments/nns6.png)
 
 ## Transfer ICP utility tokens between accounts
 
@@ -141,7 +144,7 @@ dfx ledger --network ic transfer <destination-account-id> --icp <ICP-amount> --m
 
 For example, assume you have the following accounts:
 
-![accounts](../_attachments/nns-accounts.png)
+![accounts](../_attachments/nns4.png)
 
 If you want to transfer one ICP utility token to the `Main` account, you can run the following command:
 
@@ -169,9 +172,9 @@ For more information about using the `dfx ledger` command-line options, see [dfx
 
 ### Using the NNS dapp
 
-- #### Step 1: On the default 'My Tokens' tab, assure that The Internet Computer token has been selected, then click **Send** on the bottom of the window.
+- #### Step 1: On the default 'Tokens' tab, assure that The Internet Computer token has been selected, then click **Send** on the bottom of the window.
 
-![Send](../_attachments/nns3.png)
+![Send](../_attachments/nns4.png)
 
 - #### Step 2: In the 'Send' window, select your linked account or wallet for the source, then input the destination address and the amount of ICP to send.
 
@@ -179,7 +182,7 @@ Transactions are charged a ledger fee, which is independent from NNS dapp and ap
 
 The maximum amount you can send is your token balance minus the ledger fee. The minimum amount you can send is 0.00000001 ICP. 
 
-![Send ICP](../_attachments/nns6.png)
+![Send ICP](../_attachments/nns7.png)
 
 - #### Step 3: Then select **Continue** to send the transaction.
 
@@ -191,13 +194,13 @@ Neurons are required to participate in governance and earn rewards. To create a 
 
 To stake ICP utility tokens:
 
-- #### Step 1:  In the NNS dapp, select **My Neuron Staking** from the left navigation bar, then click **Stake Neurons** in the bottom of the window.
+- #### Step 1:  In the NNS dapp, select **Neuron Staking** from the left navigation bar, then click **Stake Neurons** in the bottom of the window.
 
-![Neuron staking](../_attachments/nns7.png)
+![Neuron staking](../_attachments/nns8.png)
 
 - #### Step 2 :  Select which wallet you'd like to use as the source, then type the number of ICP utility tokens to stake, then click **Create**.
 
-![Neuron staking](../_attachments/nns8.png)
+![Neuron staking](../_attachments/nns9.png)
 
 - #### Step 3:  Set the dissolve delay for the neuron to control the length of time the stake is locked, then click **Update Delay**.
 
@@ -242,15 +245,15 @@ You can use the account identifier for your main ICP ledger account to search fo
 
 - #### Step 5:  Type the amount of ICP utility tokens you want to add to the specified neuron, then click **Continue**.
 
-![Increase stake](../_attachments/increase-stake1.png)
+![Increase stake](../_attachments/nns10.png)
 
 - #### Step 6:  Verify the transaction details, then click **Send Now**.
 
-![Confirm increase stake](../_attachments/increase-stake2.png)
+![Confirm increase stake](../_attachments/nns11.png)
 
 - #### Step 7:  Once the transaction has completed, you will see the increased stake value.
 
-![Increased stake](../_attachments/increased-stake3.png)
+![Increased stake](../_attachments/nns12.png)
 
 ## Disburse dissolved neurons into an account
 
@@ -258,13 +261,9 @@ When the dissolve delay timer for a neuron reaches zero, you can disburse the ne
 
 To disburse a neuron and return its ICP utility tokens:
 
-- #### Step 1:  From the NNS dapp, select 'My Neuron Staking', then click on an unlocked neuron that has reach the ended of its dissolve delay period. For example:
+- #### Step 1:  From the NNS dapp, select 'My Neuron Staking', then click on an unlocked neuron that has reach the ended of its dissolve delay period. 
 
-![unlocked neuron](../_attachments/unlocked-neuron.png)
-
-- #### Step 2:  Click **Disburse**. For example:
-
-![disburse](../_attachments/disburse.png)
+- #### Step 2:  Click **Disburse**:
 
 - #### Step 3:  Type an address or select an account to receive the ICP utility tokens.
 
@@ -312,39 +311,39 @@ It is in each neuron's interest to follow other neurons that support the best in
 
 To configure your neuron to follow the group of another neuron:
 
-- #### Step 1: From the NNS dapp, select 'My Neuron Staking', then select the neuron that you'd like to set a following rule for.
+- #### Step 1: From the NNS dapp, select 'Neuron Staking', then select the neuron that you'd like to set a following rule for.
 
-![NNS Neuron following 1](../_attachments/following1.png)
+![NNS Neuron following 1](../_attachments/nns8.png)
 
 - #### Step 2: In the neuron's details, scroll down to the 'Following' section and select 'Follow Neurons'.
 
-![NNS Neuron following 2](../_attachments/following2.png)
+![NNS Neuron following 2](../_attachments/nns13.png)
 
 - #### Step 3: Next, select a topic to follow.
 
 The topic refers to the different types of proposals; for example, the 'Governance' topic defines a following role for governanc-related proposals, while the 'Subnet Management' topic defines a following role for subnet management proposals. There is also a 'catch-all' rule that can be followed for all proposal types except for governance, SNS, and neurons' fund.
 
-For this example, select 'Governance'.
+For this example, select 'SNS & Neurons' Fund'.
 
-![NNS Neuron following 3](../_attachments/following3.png)
+![NNS Neuron following 3](../_attachments/nns14.png)
 
 - #### Step 4: Select 'Add Followee'.
 
-![NNS Neuron following 4](../_attachments/following4.png)
+![NNS Neuron following 4](../_attachments/nns15.png)
 
 - #### Step 5: Enter a Neuron ID to follow, or select a group of neurons from the menu provided.
 
 In this example, select 'DFINITY Foundation'.
 
-![NNS Neuron following 5](../_attachments/following5.png)
+![NNS Neuron following 5](../_attachments/nns16.png)
 
 - #### Step 6: The window will now reflect the following configuration:
 
-![NNS Neuron following 6](../_attachments/following6.png)
+![NNS Neuron following 6](../_attachments/nns17.png)
 
 The configuration will also now be shown in the neuron's details:
 
-![NNS Neuron following 7](../_attachments/following7.png)
+![NNS Neuron following 7](../_attachments/nns18.png)
 
 ## Spawn new neurons
 
@@ -356,7 +355,7 @@ After you spawn a new neuron from an existing neuron, the maturity for the exist
 
 To spawn new neurons from an existing neuron:
 
-- #### Step 1:  From the NNS dapp, select 'My Neuron Staking', then click the neuron that has reached the minimum maturity required to spawn a new neuron.
+- #### Step 1:  From the NNS dapp, select 'Neuron Staking', then click the neuron that has reached the minimum maturity required to spawn a new neuron.
 
 - #### Step 2:  Click **Spawn Neuron**.
 
@@ -373,9 +372,9 @@ You can choose the proposal types and proposal topics that you see and vote on e
 
 To manually vote on proposals:
 
-- #### Step 1:  From the NNS dapp, select 'Vote on Proposals' from the left navigation bar.
+- #### Step 1:  From the NNS dapp, select 'Vote' from the left navigation bar.
 
-![Proposals](../_attachments/nns9.png)
+![Proposals](../_attachments/nns19.png)
 
 - #### Step 2: Then, select which Nervous System you'd like to view proposals for.
 
@@ -383,7 +382,7 @@ By default, the Internet Computer NNS proposals are shown, but other proposals f
 
 - #### Step 3:  Click on any proposals to view more information on it, such as the proposals summary, the type of proposals, the topic, and when the proposal's voting ends.
 
-![Proposal detail](../_attachments/nns8.png)
+![Proposal detail](../_attachments/nns20.png)
 
 :::info
 For more information about voting and voting rewards, see the following articles:
@@ -414,11 +413,11 @@ To view current and past SNS decentralization swaps from the NNS dapp:
 
 - #### Step 1:  From the NNS dapp, click **Launchpad** from the left navigation bar.
 
-![Launchpad](../_attachments/nns15.png)
+![Launchpad](../_attachments/nns21.png)
 
 - #### Step 2: Select any SNS swap to view the details, such as the status, total participants, token supply, and when the swap ended.
 
-![SNS swap](../_attachments/nns16.png)
+![SNS swap](../_attachments/nns22.png)
 
 ## Deploying and managing canisters from the NNS dapp
 
@@ -426,15 +425,17 @@ You must have **cycles** available to create and manage [canisters](/docs/curren
 
 To create a new canister:
 
-- #### Step 1:  From the NNS dapp, click **My Canisters**, then click **Create Canister** or **Link Canister**.
+- #### Step 1:  From the NNS dapp, click **Canisters**, then click **Create Canister** or **Link Canister**.
 
-![My canisters](../_attachments/nns11.png)
+![My canisters](../_attachments/nns23.png)
 
 - #### Step 2: If you select **Create Canister**, select the source account you'd like to use to create the canister.
 
-![Create a new canister](../_attachments/nns12.png)
+![Create a new canister](../_attachments/nns24.png)
 
 - #### Step 3: Then, enter the amount of ICP tokens and cycles to create the canister with. Then select **Review Canister Creation**.
+
+![Create a new canister](../_attachments/nns25.png)
 
 - #### Step 4:  Review the ICP utility tokens to cycles details, then click **Confirm** to continue.
 
@@ -444,18 +445,17 @@ After you click Confirm, you can review:
 - The controlling principal that currently has full management rights for the new canister.
 
 :::info
-\+ To change the principal used as the controller of the canister, click **Change Controllers**.
-\+ To add cycles to the canister, click **Add Cycles**.
-:::
+To change the principal used as the controller of the canister, click **Change Controllers**.
 
-![Review canister](../_attachments/nns13.png)
+To add cycles to the canister, click **Add Cycles**.
+:::
 
 - #### Step 5: To link a canister, input the canister's ID, then select **Confirm**.
 
-![Link canister](../_attachments/nns14.png)
+![Link canister](../_attachments/nns26.png)
 
 - #### Step 6: Return to the **Canisters** tab to see the canisters you have created.
 
 For example:
 
-![Canister list](../_attachments/nns11.png)
+![Canister list](../_attachments/nns27.png)

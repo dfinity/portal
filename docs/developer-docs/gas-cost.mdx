@@ -16,9 +16,8 @@ Canisters pay for consumed resources by burning cycles. These resources include 
    - [Local development](#local-development)
    - [Mainnet development](#mainnet-development)
 - [Units and fiat value](#units-and-fiat-value)
-- [The ICP reverse gas model](#the-icp-reverse-gas-model)
-    - [How do ICP costs compare to the EVM gas model?](#how-do-icp-costs-compare-to-the-evm-gas-model)
-- [Canister calls](#canister-calls)
+- [The ICP reverse gas model](#the-reverse-gas-model)
+- [Canister calls](#canister-operations-and-resources)
     - [Canister creation](#canister-creation)
     - [Messaging](#messaging)
     - [Execution](#execution)
@@ -69,7 +68,7 @@ You can learn more about the [reverse gas model](https://internetcomputer.org/ca
 
 One downside of the ICP reverse gas model is that it requires prerequisite steps and ongoing maintenance for developers. Canisters must have their cycles balances maintained and regularly topped up as they continuously use resources. The canister will be removed from the network if it runs out of cycles. However, a [freezing threshold](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#setting-the-canisters-freezing-threshold) can be set that pauses a canister's executions if the cycles amount is expected to fall below a certain amount. There are several community tools that have been developed to automate managing a canister's cycles, such as [CycleOps](https://cycleops.dev/).
 
-Learn how to query a [canister's cycles balance](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#checking-the-cycles-balance-of-a-canister). 
+Learn how to query a [canister's cycles balance](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#checking-the-cycles-balance-of-a-canister).
 
 Learn how to [top up a canister](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#topping-up-a-canisters-cycles-balance).
 
@@ -185,7 +184,7 @@ The following table shows the calculated storage cost per GiB for a 30-day month
 
 
 Monitoring cycles usage
-   - [Check your canister's cycles balance](/docs/current/developer-docs/getting-started/cycles/cycles-wallet#check-the-cycle-balance).
+   - [Check your canister's cycles balance](/docs/current/developer-docs/defi/cycles/cycles-wallet#check-the-cycle-balance).
    - [Monitor your canister's cycles usage](/docs/current/developer-docs/getting-started/cycles/cycles_management_services).
    - [Motoko cycles management library](https://github.com/CycleOperators/cycles-manager).
 

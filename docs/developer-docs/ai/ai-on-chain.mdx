@@ -4,6 +4,7 @@ keywords: [intermediate, tutorial, machine learning, ml, mnist, rust]
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import '/src/components/CenterImages/center.scss';
 
 # Image classification sample
 
@@ -99,6 +100,12 @@ Download MobileNet v2-7 to `src/backend/assets/mobilenetv2-7.onnx` by running th
 
 ```
 ./download_model.sh
+```
+
+Install NodeJS dependencies for the frontend:
+
+```
+npm install
 ```
 
 Add the following Rust target:
