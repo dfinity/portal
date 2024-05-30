@@ -30,7 +30,7 @@ function Index() {
             image="img/bitcoin-integration/video_thumb.webp"
             title="ICP & CkBTC"
             label=""
-            link={`https://drive.google.com/file/d/1E3Rb9uY7lgrsJYTz5RviVsQhRw0d20mu/view?usp=sharing`}
+            link={`https://www.youtube.com/watch?v=eTe6IXQJNUs`}
             description="ICP has protocol-level integration with the Bitcoin network, enabling dapps to seamlessly interact with Bitcoin and granting users access to the Bitcoin economy like never before with ckBTC."
           />{" "}
         </motion.div>
