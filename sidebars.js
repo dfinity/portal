@@ -1078,7 +1078,6 @@ const sidebars = {
           items: [
             "references/samples/svelte/svelte-motoko-starter/README",
             "references/samples/svelte/svelte-starter/README",
-            "references/samples/svelte/sveltekit-starter/README",
           ],
         },
       ],
