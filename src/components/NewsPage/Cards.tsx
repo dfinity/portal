@@ -47,7 +47,7 @@ export const NewsCard: React.FC<{
         alt={news.title}
       ></img>
       <div className="px-6 pt-8 pb-6 flex flex-col flex-1">
-        <h3 className={`tw-heading-5 mb-3 ${clampText && "line-clamp-3"}`}>
+        <h3 className={`tw-heading-5 mb-3 ${clampText && "line-clamp-2"}`}>
           {news.title}
         </h3>
         <div className="flex-1"></div>

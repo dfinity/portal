@@ -123,6 +123,13 @@ function Index() {
         <h2 className="tw-heading-4 md:tw-heading-2 md:mr-5 md:w-7/10 flex-none">
           Sample Code Examples & Startup Requests 
         </h2>
+        <p className="tw-paragraph mt-2 md:w-7/10">
+          Explore the integration of Bitcoin with the Internet Computer through
+          concise code examples and startup collaboration opportunities. Access
+          ready-to-use code snippets and connect with innovative startups to
+          accelerate your projects. Unleash the potential of Bitcoin and
+          Internet Computer synergy for your next venture.
+        </p>
         <Link
           className="link-primary link-with-icon md:mt-4"
           href="/samples"
