@@ -820,7 +820,8 @@ pub enum MultiGetLogsResult {
                     fully decentralized Web3 services can be created that
                     maintain the UX and heavy data storage and processing on the
                     Internet Computer, while relying on Ethereum DeFi where
-                    financial rails are needed. To make this integration easier, the{" "} 
+                    financial rails are needed. To make this integration easier,
+                    the{" "}
                     <Link
                       href="/blog/features/evm-rpc-canister-launch"
                       target="_blank"
@@ -828,9 +829,9 @@ pub enum MultiGetLogsResult {
                       className="link-subtle"
                     >
                       EVM RPC canister
-                    </Link>{" "} 
-                    is a service that lets you easily build integrations
-                    between ICP canister smart contracts and Ethereum smart contracts.
+                    </Link>{" "}
+                    is a service that lets you easily build integrations between
+                    ICP canister smart contracts and Ethereum smart contracts.
                   </p>
 
                   <p className="flex gap-2 flex-wrap">
@@ -980,7 +981,7 @@ pub enum MultiGetLogsResult {
                     and wait times. To address this, the ICP community uses
                     ckEth ("chain key Ethereum"), a trustless "Twins of
                     Ethereum" hosted on ICP such as “ether twin” called ckETH
-                    and “twins'' of ERC20 tokens, such as{" "} 
+                    and “twins'' of ERC20 tokens, such as{" "}
                     <Link
                       href="https://dashboard.internetcomputer.org/ethereum/xevnm-gaaaa-aaaar-qafnq-cai"
                       target="_blank"
@@ -988,10 +989,9 @@ pub enum MultiGetLogsResult {
                       className="link-subtle"
                     >
                       ckUSDC (a stablecoin),
-                    </Link>
-                    {" "} ckUSDT,
-                    ckUNISWAP, ck1INCH, ckAAVE. These can be directly processed
-                    by smart contracts hosted on ICP.
+                    </Link>{" "}
+                    ckUSDT, ckUNISWAP, ck1INCH, ckAAVE. These can be directly
+                    processed by smart contracts hosted on ICP.
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     The “chain key” versions of Ethereum assets live on ledgers
@@ -1203,7 +1203,7 @@ pub enum MultiGetLogsResult {
             variants={transitions.container}
           >
             <CardWithDescription
-              title="ICP as a Bitcoin L2"
+              title="ICP - More than a Bitcoin L2"
               description=""
               href="/bitcoin-integration"
             />
