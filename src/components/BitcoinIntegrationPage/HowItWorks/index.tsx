@@ -28,7 +28,7 @@ function Index() {
         >
           <VideoCard
             image="img/bitcoin-integration/video_thumb.webp"
-            title="ICP & CkBTC"
+            title="BTC <> ICP"
             label=""
             link={`https://www.youtube.com/watch?v=eTe6IXQJNUs`}
             description="ICP has protocol-level integration with the Bitcoin network, enabling dapps to seamlessly interact with Bitcoin and granting users access to the Bitcoin economy like never before with ckBTC."
