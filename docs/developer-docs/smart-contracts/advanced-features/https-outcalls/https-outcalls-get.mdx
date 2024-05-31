@@ -139,7 +139,7 @@ async fn foo() {
 }
 
 // 4. CREATE TRANSFORM FUNCTION
-#[query]
+#[ic_cdk::query]
 fn transform(raw: TransformArgs) -> HttpResponse { }
 ```
 
