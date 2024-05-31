@@ -203,7 +203,7 @@ const marketingNav = {
               description: "Transforming the internet",
             },
             {
-              name: "IICP as a Bitcoin L2",
+              name: "ICP as a Bitcoin L2",
               href: "/bitcoin-integration",
               description: "Bringing smart contracts to Bitcoin",
             },
