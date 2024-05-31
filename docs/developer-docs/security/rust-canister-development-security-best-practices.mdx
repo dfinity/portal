@@ -831,6 +831,109 @@ Publicly revealing the canister's cycles balance allows an attacker to measure t
 
 Your canisters should not publicly expose their cycles balance (available through the system API), i.e., they should only expose their cycles balance to their controllers or other trusted principals.
 
+### Using secure randomness in the Internet Computer
+
+Canister developers often require access to secure randomness in their canisters to perform certain operations. The requirements for secure randomness source include 
+* Unbiased : The value shouldn't be influenced by anyone
+* Unpredictable : The value is unknown to anyone before it is released.
+
+The Internet Computer exposes the system API ic0.raw_rand for this exact purpose, which accepts no input and returns 32 bytes of cryptographically secure randomness. Below, we see two examples of using this system API to obtain secure randomness in Motoko and Rust while discussing the security concerns and caveats around using them. 
+
+#### Using ic0.raw_rand as the PRNG
+
+```motoko
+import Random "mo:base/Random";
+import Array "mo:base/Array";
+
+actor Randomness {
+  public func random_bytes(n : Nat) : async [Nat8] {
+    let byteArray : [var Nat8] = Array.init<Nat8>(n, 0);
+    let entropy = await Random.blob();
+    var f = Random.Finite(entropy);
+    var i = 0;
+    loop {
+      if (i == n) {
+        return Array.freeze<Nat8>(byteArray);
+      } else {
+        switch (f.byte()) {
+          case (?byte) {
+            byteArray[i] := byte;
+            i := i + 1;
+          };
+          case null {
+            let entropy = await Random.blob();
+            f := Random.Finite(entropy);
+          };
+        };
+      };
+    };
+  };
+};
+```
+
+##### Benefits:
+- Randomness is unpredicable as guaranteed by the system API.
+- It can be used in a query.
+##### Caveats:
+- When large amount of random bytes is required, this becomes impractical as it's an asynchronous system API call every 32bytes which doesn't scale. 
+
+#### Using ic0.raw_rand as the seed for the PRNG.
+
+```rust
+use candid::Principal;
+use rand_chacha::rand_core::RngCore;
+use rand_chacha::{rand_core::SeedableRng, ChaCha20Rng};
+use std::cell::RefCell;
+use std::time::Duration;
+
+thread_local! {
+    static RNG: RefCell<Option<ChaCha20Rng>> = RefCell::new(None);
+}
+
+async fn setup_randomness() {
+    let (seed,): ([u8; 32],) = ic_cdk::call(Principal::management_canister(), "raw_rand", ())
+        .await
+        .expect("Failed to call the management canister");
+    RNG.with_borrow_mut(|rng| *rng = Some(ChaCha20Rng::from_seed(seed)));
+}
+
+#[ic_cdk::init]
+fn init() {
+    // Initialize randomness at canister install or reinstall
+    ic_cdk_timers::set_timer(Duration::ZERO, || {
+        ic_cdk::spawn(async {
+            setup_randomness().await;
+        })
+    });
+}
+
+#[ic_cdk::post_upgrade]
+fn post_upgrade() {
+    // Initialize randomness after canister upgrade
+    ic_cdk_timers::set_timer(Duration::ZERO, || {
+        ic_cdk::spawn(async {
+            setup_randomness().await;
+        })
+    });
+}
+
+// This must always be an update method or randomness state won't be updated
+#[ic_cdk::update]
+fn random_bytes(size: u32) -> String {
+    let mut buf = vec![0; size as usize];
+    RNG.with_borrow_mut(|rng| rng.as_mut().unwrap().fill_bytes(&mut buf));
+    hex::encode(buf)
+}
+```
+
+##### Benefits:
+- Uses the system API only once as seed for initialization. This eliviates the pressure around the async nature of the system API.
+- Extremely fast for large amount of randomness.
+
+##### Caveats:
+- One must be careful to always intialize the randomness in the init and post_upgrade hook.
+- The randomness must be always obtained in an update call so the updated state of the PRNG is preserved. Else, the method will serve the same random bytes everytime.
+
 ## Nonspecific to the Internet Computer
 
 The best practices in this section are very general and not specific to the Internet Computer. This list is by no means complete and only lists a few very specific concerns that have led to issues in the past.
