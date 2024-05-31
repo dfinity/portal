@@ -546,30 +546,11 @@ export const sampleItems: SampleItem[] = [
       rust: "https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc",
     },
   },
+
   {
     index: 29,
-    title: "Multi-Subnet wallet on the IC",
-    image: "/img/samples/29.webp",
-    domains: ["Global", "ChainFusion", "Bitcoin"],
-    languages: ["rust"],
-    level: "advanced",
-    contentType: [
-      "advanced",
-      "rust",
-      "bitcoin",
-      "btc",
-      "integration",
-      "bitcoin integration",
-    ],
-    body: "A multisig, multi subnet wallet for Bitcoin assets.",
-    links: {
-      rust: "https://github.com/sardariuss/ic_btc_multisig",
-    },
-  },
-  {
-    index: 30,
     title: "Ordinal Canister",
-    image: "/img/samples/30.webp",
+    image: "/img/samples/29.webp",
     domains: ["Global", "ChainFusion", "Bitcoin"],
     languages: ["rust"],
     level: "advanced",
