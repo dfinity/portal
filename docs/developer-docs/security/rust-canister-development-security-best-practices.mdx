@@ -837,13 +837,13 @@ Canister developers often require access to secure randomness in their canisters
 * **Unbiased:** The value shouldn't be influenced by anyone.
 * **Unpredictable:** The value is unknown to anyone before it is generated.
 
-The Internet Computer exposes the system API `[raw_rand](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-raw_rand)` for this exact purpose, which accepts no input and returns 32 bytes of cryptographically secure randomness. The secure randomness guarantees of `raw_rand` are achieved by the cryptographic properties of the [RandomTape](https://internetcomputer.org/how-it-works/execution-layer/#random-number-generation). It is always recommended to use `raw_rand` as a source of randomness in canisters and **avoid** using other sources with low entropy such as current time.
+The Internet Computer exposes the system API [`raw_rand`](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-raw_rand) for this exact purpose, which accepts no input and returns 32 bytes of cryptographically secure randomness. The secure randomness guarantees of `raw_rand` are achieved by the cryptographic properties of the [RandomTape](https://internetcomputer.org/how-it-works/execution-layer/#random-number-generation). It is always recommended to use `raw_rand` as a source of randomness in canisters and **avoid** using other sources with low entropy such as current time.
 
 To illustrate the usage of `raw_rand`, we discuss two examples in Motoko and Rust below, while weighing the benefits and caveats around using them.
 
 #### 1. Direct usage of `raw_rand` as the random number generator
 
-In this Motoko example, the canister provides the requested size of random bytes by calling `raw_rand`. However, `raw_rand` can only generate 32 bytes of secure randomness in a single message and thus subsequent calls to the system API is required to fill the requested size.
+In this Motoko example, the canister provides the requested size of random bytes by calling `raw_rand`. However, it can only generate 32 bytes of secure randomness in a single message and thus subsequent calls to the system API is required to fill the requested size.
 
 ```motoko
 import Random "mo:base/Random";
@@ -937,7 +937,7 @@ fn random_bytes(size: u32) -> String {
 - This method scales for large random bytes as `raw_rand` needs be called only once and subsequent PRNG computation is local to the canister.
 
 ##### Caveats:
-- The `setup_randomness` must **always** be intialized in both the `init` and `post_upgrade` hook as `init` is not invoked during an canister upgrade (see here)[https://internetcomputer.org/docs/current/references/ic-interface-spec#system-api-upgrades].
+- The `setup_randomness` must **always** be intialized in both the `init` and `post_upgrade` hook as `init` is not invoked during an canister upgrade [see here](https://internetcomputer.org/docs/current/references/ic-interface-spec#system-api-upgrades).
 - The `init` and `post_upgrade` methods doesn't allow async calls and thus a timer is immediately scheduled to setup the randomness.
 - The `random_bytes` must **always** be an `update` method, so the PRNG can preserve the state and offer unique randomness on every request.
 
