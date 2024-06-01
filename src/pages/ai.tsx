@@ -275,10 +275,11 @@ function AIPage() {
               />
               <h3 className="tw-lead my-3 md:tw-title-sm ">Model integrity</h3>
               <p className="tw-paragraph-sm text-black/60 md:tw-paragraph mb-0">
-                Users need guarantees that their AI prompts are answered by a
-                model that has not been tampered with. Traditional techniques
-                for assessing the integrity of software, such as source code
-                analysis, are infeasible for AI models due to their large sizes.
+              Users need assurance that their AI prompts are handled by untampered 
+              models. Traditional software integrity methods, such as source 
+              code analysis, are infeasible for AI models because they consist 
+              of complex numerical weights and extensive matrices, rather than 
+              human-readable code, making direct verification challenging.
               </p>
             </motion.div>
             <motion.div
