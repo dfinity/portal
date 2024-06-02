@@ -279,7 +279,7 @@ function AIPage() {
               models. Traditional software integrity methods, such as source 
               code analysis, are infeasible for AI models because they consist 
               of complex numerical weights and extensive matrices, rather than 
-              human-readable code, making direct verification challenging.
+              human-readable code, making direct verification impossible.
               </p>
             </motion.div>
             <motion.div
