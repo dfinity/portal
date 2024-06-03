@@ -5,6 +5,8 @@ const os = require("os");
 const fs = require("fs");
 const path = require("path");
 const dotenv = require("dotenv");
+const cheerio = require("cheerio");
+
 dotenv.config({ path: path.join(__dirname, "..", ".env.local") });
 
 const isDev = (process.env.NODE_ENV || "development") === "development";
@@ -266,26 +268,10 @@ async function processCoursesData(records) {
 
       if (fields["URL"]) {
         try {
-          const url = new URL(fields["URL"]);
-          let videoId = url.searchParams.get("v");
-          const playlistId = url.searchParams.get("list");
-
-          if (
-            url.hostname.includes("youtube.com" || url.hostname === "youtu.be")
-          ) {
-            if (url.hostname === "youtu.be") {
-              videoId = url.pathname.slice(1);
-            }
-
-            if (playlistId && YOUTUBE_API_KEY) {
-              image = await getYouTubePlaylistThumbnail(playlistId);
-            } else if (videoId && YOUTUBE_API_KEY) {
-              image = await getYouTubeVideoThumbnail(videoId);
-            }
-          }
+          image = await fetchOgImage(fields["URL"]);
         } catch (error) {
           logger.warn(
-            `Invalid URL for course: ${fields["Title"]}, URL: ${fields["URL"]}`
+            `Failed to fetch OG image for course: ${fields["Title"]}, URL: ${fields["URL"]}`
           );
         }
       }
@@ -356,6 +342,14 @@ async function processCoursesData(records) {
       return 0;
     }
   });
+}
+
+async function fetchOgImage(url) {
+  const response = await fetch(url);
+  const html = await response.text();
+  const $ = cheerio.load(html);
+  const ogImage = $('meta[property="og:image"]').attr("content");
+  return ogImage || null;
 }
 
 async function getYouTubeVideoThumbnail(videoId) {
