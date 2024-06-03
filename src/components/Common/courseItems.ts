@@ -12,6 +12,7 @@ export type CourseItem = {
   fullTags?: string[];
   tags?: string[];
   image?: string;
+  category?: string;
 };
 
 export type CourseLanguage =

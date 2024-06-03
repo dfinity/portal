@@ -63,7 +63,7 @@ function TypeScriptLink() {
     </div>
   );
 }
-function Index({ title, body, languages, tags, link, level, image }) {
+function Index({ title, body, languages, tags, link, level, image, category }) {
   const [showTags, setShowTags] = useState(false);
   const tagsRef = useRef(null);
 
@@ -95,7 +95,9 @@ function Index({ title, body, languages, tags, link, level, image }) {
           <p
             className={`tw-paragraph font-medium capitalize text-razzmatazz mb-0 mt-1`}
           >
-            {Array.isArray(level) ? level.join(", ") : level}
+            {category === "Course"
+              ? `Course:  ${Array.isArray(level) ? level.join(", ") : level}`
+              : null}
           </p>
           <p className="tw-heading-6 my-2">{title}</p>
           <div className="flex gap-2 my-2">

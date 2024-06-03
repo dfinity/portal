@@ -111,7 +111,7 @@ function Index({
       <div id="start" />
       <div className="container-10 !px-0">
         <div className={styles.filterBarHeader}>
-          <h3 className={styles.title}>Courses</h3>
+          <h3 className={styles.title}>Courses and Content</h3>
           <span className={styles.numberOfItems}>{numberOfItems}</span>
           {(selectedLanguages.length > 0 ||
             selectedContentLanguages.length > 0 ||
@@ -136,7 +136,7 @@ function Index({
           <div className={styles.filterIcon}>
             <Filter />
           </div>
-          <span className={styles.title}>Courses</span>
+          <span className={styles.title}>Courses and Content</span>
           <span className={styles.numberOfItems}>{numberOfItems}</span>
         </div>
         <div ref={selectBoxesRef} className={styles.selectBoxes}>
