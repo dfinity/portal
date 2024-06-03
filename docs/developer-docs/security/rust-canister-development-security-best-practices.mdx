@@ -913,10 +913,11 @@ async fn seed_randomness() {
 }
 
 fn schedule_seeding(duration: Duration) {
-    ic_cdk_timers::set_timer(duration, move || {
-        ic_cdk::spawn(async move {
+    ic_cdk_timers::set_timer(duration, || {
+        ic_cdk::spawn(async {
             seed_randomness().await;
-            schedule_seeding(duration);
+            // Schedule reseeding on a timer with duration SEEDING_INTERVAL
+            schedule_seeding(SEEDING_INTERVAL);
         })
     });
 }
@@ -924,25 +925,13 @@ fn schedule_seeding(duration: Duration) {
 #[ic_cdk::init]
 fn init() {
     // Initialize randomness during canister install or reinstall
-    ic_cdk_timers::set_timer(Duration::ZERO, || {
-        ic_cdk::spawn(async {
-            seed_randomness().await;
-            // Schedule reseeding on a timer with duration SEEDING_INTERVAL
-            schedule_seeding(SEEDING_INTERVAL);
-        })
-    });
+    schedule_seeding(Duration::ZERO);
 }
 
 #[ic_cdk::post_upgrade]
 fn post_upgrade() {
     // Initialize randomness after a canister upgrade
-    ic_cdk_timers::set_timer(Duration::ZERO, || {
-        ic_cdk::spawn(async {
-            seed_randomness().await;
-            // Schedule reseeding on a timer with duration SEEDING_INTERVAL
-            schedule_seeding(SEEDING_INTERVAL);
-        })
-    });
+    schedule_seeding(Duration::ZERO);
 }
 
 // This must always be an update method or the PRNG state won't be updated
