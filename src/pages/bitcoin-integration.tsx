@@ -8,6 +8,7 @@ import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 import ShareMeta from "../components/Common/ShareMeta";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import Content from "../components/BitcoinIntegrationPage/Content";
+import News from "../components/BitcoinIntegrationPage/News";
 
 function BitcoinIntegration() {
   const ref = useRef<HTMLDivElement>(null);
@@ -16,10 +17,10 @@ function BitcoinIntegration() {
   return (
     <Layout
       title="ICP as a Bitcoin L2"
-      description="The Internet Computer adds the missing smart contract layer to Bitcoin. Leveraging Chain Fusion technology, ICP can directly read and write to Bitcoin, enabling dapps that natively interact with Bitcoin."
+      description="Leveraging Chain Fusion technology, ICP canister smart contracts can directly read and write to the Bitcoin network. This establishes ICP as the industry's premier orchestration layer, enabling dapps to natively interact with the Bitcoin blockchain."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-bitcoin-integration.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-bitcoin-integration.webp"></ShareMeta>
 
       <main
         className="text-black relative overflow-hidden"
@@ -33,7 +34,7 @@ function BitcoinIntegration() {
         <Content></Content>
         {/* <ReleaseTimeline></ReleaseTimeline> */}
         <Videos></Videos>
-        <BuildWithBitcoin></BuildWithBitcoin>
+        <News />
       </main>
     </Layout>
   );

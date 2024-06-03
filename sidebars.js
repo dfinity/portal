@@ -255,6 +255,7 @@ const sidebars = {
               ],
             },
             "developer-docs/smart-contracts/advanced-features/periodic-tasks",
+            "developer-docs/smart-contracts/advanced-features/simd",
             "developer-docs/smart-contracts/advanced-features/system-canisters",
           ],
         },
@@ -307,6 +308,7 @@ const sidebars = {
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-build",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-cache",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister",
+		"developer-docs/developer-tools/cli-tools/cli-reference/dfx-cycles",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-deploy",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-deps",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-generate",
@@ -556,16 +558,6 @@ const sidebars = {
               "developer-docs/identity/authentication/email-password",
               ],
             },
-          {
-            type: "category",
-            label: "Verifiable credentials",
-            items: [
-              "developer-docs/web-apps/verifiable-credentials/overview",
-              "developer-docs/web-apps/verifiable-credentials/how-it-works",
-              "developer-docs/web-apps/verifiable-credentials/issuer",
-              "developer-docs/web-apps/verifiable-credentials/relying-party",
-            ],
-          },
         ],
       },
     {
@@ -1086,7 +1078,6 @@ const sidebars = {
           items: [
             "references/samples/svelte/svelte-motoko-starter/README",
             "references/samples/svelte/svelte-starter/README",
-            "references/samples/svelte/sveltekit-starter/README",
           ],
         },
       ],

@@ -1161,7 +1161,7 @@
         "name": "Chain Fusion Supports Bitcoin Protocols",
         "description": "ICP’s Chain Fusion technology has full support for Bitcoin protocols such as BRC20 and Runes. So far, ICP’s fully-on-chain capabilities have been largely applied to use cases where Bitcoin is used as a means of value transfer, its original purpose. This milestone provides additional functionality that enables smart contracts to index and issue prominent types of Bitcoin inscriptions in a completely decentralized manner for the first time, thereby putting ICP into a unique position among all chains.",
         "milestone_id": "Deuterium",
-        "eta": "July 25, 2024",
+        "eta": "August 2024",
         "status": "in_progress",
         "elements": [
           {

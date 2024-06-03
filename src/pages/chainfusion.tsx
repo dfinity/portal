@@ -820,7 +820,8 @@ pub enum MultiGetLogsResult {
                     fully decentralized Web3 services can be created that
                     maintain the UX and heavy data storage and processing on the
                     Internet Computer, while relying on Ethereum DeFi where
-                    financial rails are needed. To make this integration easier, the{" "}
+                    financial rails are needed. To make this integration easier,
+                    the{" "}
                     <Link
                       href="/blog/features/evm-rpc-canister-launch"
                       target="_blank"
@@ -829,8 +830,8 @@ pub enum MultiGetLogsResult {
                     >
                       EVM RPC canister
                     </Link>{" "}
-                    is a service that lets you easily build integrations
-                    between ICP canister smart contracts and Ethereum smart contracts.
+                    is a service that lets you easily build integrations between
+                    ICP canister smart contracts and Ethereum smart contracts.
                   </p>
 
                   <p className="flex gap-2 flex-wrap">
@@ -988,10 +989,9 @@ pub enum MultiGetLogsResult {
                       className="link-subtle"
                     >
                       ckUSDC (a stablecoin),
-                    </Link>
-                    {" "} ckUSDT,
-                    ckUNISWAP, ck1INCH, ckAAVE. These can be directly processed
-                    by smart contracts hosted on ICP.
+                    </Link>{" "}
+                    ckUSDT, ckUNISWAP, ck1INCH, ckAAVE. These can be directly
+                    processed by smart contracts hosted on ICP.
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     The “chain key” versions of Ethereum assets live on ledgers
@@ -1203,7 +1203,7 @@ pub enum MultiGetLogsResult {
             variants={transitions.container}
           >
             <CardWithDescription
-              title="ICP as a Bitcoin L2"
+              title="ICP - More than a Bitcoin L2"
               description=""
               href="/bitcoin-integration"
             />
