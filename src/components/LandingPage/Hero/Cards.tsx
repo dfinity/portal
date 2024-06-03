@@ -42,7 +42,7 @@ export const CardsSection = () => {
           Native Multi-chain
         </div>
         <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
-          Chain Fusion Technology
+          Chain Fusion technology
         </h2>
       </CardWithImage>
 
