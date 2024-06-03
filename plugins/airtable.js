@@ -267,14 +267,13 @@ async function processCoursesData(records) {
       if (fields["URL"]) {
         try {
           const url = new URL(fields["URL"]);
-          const videoId = url.searchParams.get("v");
+          let videoId = url.searchParams.get("v");
           const playlistId = url.searchParams.get("list");
 
           if (
             url.hostname.includes("youtube.com" || url.hostname === "youtu.be")
           ) {
             if (url.hostname === "youtu.be") {
-              // Extract video ID from youtu.be URL
               videoId = url.pathname.slice(1);
             }
 
