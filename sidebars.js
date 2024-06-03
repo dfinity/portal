@@ -807,7 +807,7 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Chain fusion",
+      label: "Chain Fusion",
       items: [
         "developer-docs/multi-chain/overview",
         {

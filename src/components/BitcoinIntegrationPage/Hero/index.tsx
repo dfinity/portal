@@ -29,7 +29,7 @@ const Hero = forwardRef<HTMLDivElement, {}>((_, ref) => {
               className="text-white underline hover:no-underline hover:text-white hover:opacity-80 duration-200 ease-in-out"
               href="/chainfusion"
             >
-              Chain Fusion Technology
+              Chain Fusion technology
             </Link>
             , ICP can directly read and write to Bitcoin, enabling dapps that
             natively interact with Bitcoin.

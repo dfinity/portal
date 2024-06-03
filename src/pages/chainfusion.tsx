@@ -158,9 +158,9 @@ function MultichainPage() {
   return (
     <Layout
       title="Chain Fusion Technology"
-      description="ICP enables direct interoperability with all major blockchains, including Bitcoin, Ethereum, and other EVMs (and soon Solana), 
-      without relying on any trusted intermediary. Unlike other blockchains, ICP smart contracts can read from 
-      and write to different chains, enabling developers to write smart contracts that span different chains. This is chain fusion."
+      description="ICP enables direct interoperability with all major blockchains, including Bitcoin, Ethereum, and other EVMs (and soon Solana),
+      without relying on any trusted intermediary. Unlike other blockchains, ICP smart contracts can read from
+      and write to different chains, enabling developers to write smart contracts that span different chains. This is Chain Fusion."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-chainfusion.jpg"></ShareMeta>
@@ -190,7 +190,7 @@ function MultichainPage() {
                 without relying on any trusted intermediary. Unique compared to
                 other blockchains, ICP smart contracts can read from and write
                 to different chains, enabling developers to write smart
-                contracts spanning different chains. This is chain fusion.
+                contracts spanning different chains. This is Chain Fusion.
               </p>
             </div>
           </div>
@@ -247,7 +247,7 @@ function MultichainPage() {
               Example Code
             </h2>
             <p className="tw-paragraph md:tw-lead-sm mb-3">
-              To showcase how powerful chain fusion is, here is a simple example
+              To showcase how powerful Chain Fusion is, here is a simple example
               that shows three chains interacting in one smart contract: a{" "}
               single{" "}
               <b>
@@ -324,7 +324,7 @@ actor {
         fromBlock = ? #Finalized;
         toBlock = ? #Finalized;
         //dummy topics to look at. Replace with topics of interest
-        topics = ?[["topic1", "topic2"]]; 
+        topics = ?[["topic1", "topic2"]];
       },
     );
     switch log {
@@ -641,7 +641,7 @@ pub enum MultiGetLogsResult {
               </p>
 
               <h3 className="text-gradient-purple tw-heading-4 md:tw-heading-40">
-                The two pillars of chain fusion
+                The two pillars of Chain Fusion
               </h3>
 
               <p className="tw-paragraph md:tw-lead-sm mb-6">
@@ -690,7 +690,7 @@ pub enum MultiGetLogsResult {
                 title={
                   <>
                     <h2 className="tw-heading-4 md:tw-heading-3 mb-4 text-gradient">
-                      Use cases of chain fusion
+                      Use cases of Chain Fusion
                     </h2>
                     <p className="tw-paragraph-sm md:tw-paragraph mb-2 mr-4">
                       Explore Chain Fusion technology use cases, including
@@ -820,7 +820,7 @@ pub enum MultiGetLogsResult {
                     fully decentralized Web3 services can be created that
                     maintain the UX and heavy data storage and processing on the
                     Internet Computer, while relying on Ethereum DeFi where
-                    financial rails are needed. To make this integration easier, the{" "} 
+                    financial rails are needed. To make this integration easier, the{" "}
                     <Link
                       href="/blog/features/evm-rpc-canister-launch"
                       target="_blank"
@@ -828,7 +828,7 @@ pub enum MultiGetLogsResult {
                       className="link-subtle"
                     >
                       EVM RPC canister
-                    </Link>{" "} 
+                    </Link>{" "}
                     is a service that lets you easily build integrations
                     between ICP canister smart contracts and Ethereum smart contracts.
                   </p>
@@ -980,7 +980,7 @@ pub enum MultiGetLogsResult {
                     and wait times. To address this, the ICP community uses
                     ckEth ("chain key Ethereum"), a trustless "Twins of
                     Ethereum" hosted on ICP such as “ether twin” called ckETH
-                    and “twins'' of ERC20 tokens, such as{" "} 
+                    and “twins'' of ERC20 tokens, such as{" "}
                     <Link
                       href="https://dashboard.internetcomputer.org/ethereum/xevnm-gaaaa-aaaar-qafnq-cai"
                       target="_blank"
