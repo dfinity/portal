@@ -282,7 +282,7 @@ function AIPage() {
         </section>
         <section className="container-12  relative mt-24 mb-24 sm:mt-52 md:mt-40">
           <motion.h4 className="tw-heading-4 md:tw-heading-60 text-gradient text-left md:text-center my-12  md:mb-16 md:w-5/10 md:mx-auto">
-            What is required to establish trust?
+            What is needed to solve these issues?
           </motion.h4>
           <AnimateSpawn
             className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-5"
