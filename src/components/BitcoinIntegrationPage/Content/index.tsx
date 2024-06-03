@@ -178,7 +178,7 @@ const Content: React.FC = () => {
                 ICP advanced capabilities
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                Developers can harness the security of Bitcoin as a native asset
+                Developers can harness the security of bitcoin as a native asset
                 while also leveraging the unique core features of the
                 <Link
                   className="link-primary !text-white hover:text-white/60"
@@ -198,7 +198,7 @@ const Content: React.FC = () => {
               reverse={true}
             >
               <h3 className="tw-heading-5 md:tw-heading-60 mb-6">
-                Chain Fusion & Interoperability
+                Chain Fusion & interoperability
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
                 Beyond Bitcoin adapters, ICP smart contracts can read and write
@@ -239,7 +239,7 @@ const Content: React.FC = () => {
                 >
                   ckBTC
                 </Link>
-                , a 1:1 Bitcoin twin introduced to leverage the 1-2 second
+                , a 1:1 bitcoin twin introduced to leverage the 1-2 second
                 finality and negligible fees within the ICP ecosystem. ckBTC is
                 one of the first Chain Fusion applications, and powers several
                 dapps across different use-cases.
@@ -264,10 +264,10 @@ const Content: React.FC = () => {
               reverseMobile={true}
             >
               <h3 className="tw-heading-5 md:tw-heading-60 mb-6">
-                Live ckBTC Dashboard
+                Live ckBTC dashboard
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                Chain-key Bitcoin (ckBTC), a multi-chain bitcoin twin on the
+                Chain-key bitcoin (ckBTC), a multi-chain bitcoin twin on the
                 Internet Computer, is an 
                 <Link
                   className="link-primary !text-white hover:text-white/60"
@@ -308,7 +308,7 @@ const Content: React.FC = () => {
         </AnimateSpawn>
         <div className="container-10 mt-10 md:mt-16 text-center ">
           <Link className="button-primary" href="/ecosystem?tag=Bitcoin">
-            More Projects Building on Bitcoin
+            More projects building on Bitcoin
           </Link>
         </div>
       </AnimateSpawn>
