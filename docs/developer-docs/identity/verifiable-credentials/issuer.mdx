@@ -96,7 +96,7 @@ The returned derivation origin is subject to verification via `.well-known/ii-al
 
 ### Step 3: Prepare the credentials (`prepare_credential`)
 
-Before a credential can be issued, the request for the credential must be checked for validity using the `prepare_credential` API endpoint. The objective of this endpoint is to check the validity of the request, and upon success, prepare the actual credential requested by the user.
+Before a credential can be issued, the request for the credential must be checked for validity using the `prepare_credential` API endpoint. The objective of this endpoint is to check the validity of the request and update the `certified_data` with a new root hash that includes the signature on the credential. Upon success, the actual credential is prepared.
 
 For more details on how to validate the request or create the actual credential, check out the [VC specification](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md).
 
