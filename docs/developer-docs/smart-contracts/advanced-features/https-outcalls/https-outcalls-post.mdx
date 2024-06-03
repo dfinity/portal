@@ -14,7 +14,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-A minimal example to make a `POST` HTTPS request. The purpose of this dapp is only to show how to make HTTP requests from a canister.
+A minimal example of how to make a `POST` HTTPS request. The purpose of this dapp is only to show how to make HTTP requests from a canister.
 
 The sample code is in both Motoko and Rust. This sample canister sends a `POST` request with some JSON to a free API where you can verify the headers and body were sent correctly.
 
@@ -49,11 +49,11 @@ In order to verify that your canister sent the HTTP request you expected, this c
 
 ## Important notes on `POST` requests
 
-Because HTTPS outcalls go through consensus, a developer should expect any HTTPs `POST` request from a canister to be sent many times to its destination. Even if you ignore the Web3 component, multiple identical POST requests is not new problem in HTTP where it is common for clients to retry requests for a variety of reasons (e.g. destination server being unavailable).
+Because HTTPS outcalls go through consensus, a developer should expect any HTTPS `POST` request from a canister to be sent many times to its destination. Even if you ignore the Web3 component, multiple identical POST requests are not a new problem in HTTP where it is common for clients to retry requests for a variety of reasons (e.g. destination server being unavailable).
 
 The recommended way for HTTP `POST` requests is to add the idempotency keys in the header so the destination server knows which `POST` requests from the client are the same.
 
-Developers should be careful that the destination server understand and use idempotency keys. A canister can be coded to be send idempotency keys, but it is ultimately up to the recipient server to know what to do with then. Here is an [example of an API service that uses idempotency keys](https://stripe.com/docs/api/idempotent_requests).
+Developers should be careful that the destination server understands and uses idempotency keys. A canister can be coded to send idempotency keys, but it is ultimately up to the recipient server to know what to do with them. Here is an [example of an API service that uses idempotency keys](https://stripe.com/docs/api/idempotent_requests).
 
 ## Code structure
 
@@ -227,7 +227,7 @@ actor {
     let host : Text = "putsreq.com";
     let url = "https://putsreq.com/aL1QS5IbaQd4NTqN3a81"; //HTTP that accepts IPV6
 
-    // 2.2 prepare headers for the system http_request call
+    // 2.2 Prepare headers for the system http_request call
 
     //idempotency keys should be unique so create a function that generates them.
     let idempotency_key: Text = generateUUID();
@@ -240,7 +240,7 @@ actor {
 
     // The request body is an array of [Nat8] (see Types.mo) so do the following:
     // 1. Write a JSON string
-    // 2. Convert ?Text optional into a Blob, which is an intermediate reprepresentation before you cast it as an array of [Nat8]
+    // 2. Convert ?Text optional into a Blob, which is an intermediate representation before you cast it as an array of [Nat8]
     // 3. Convert the Blob into an array [Nat8]
     let request_body_json: Text = "{ \"name\" : \"Grogu\", \"force_sensitive\" : \"true\" }";
     let request_body_as_Blob: Blob = Text.encodeUtf8(request_body_json);
@@ -308,7 +308,7 @@ actor {
   //PRIVATE HELPER FUNCTION
   //Helper method that generates a Universally Unique Identifier
   //this method is used for the Idempotency Key used in the request headers of the POST request.
-  //For the purposes of this exercise, it returns a constant, but in practice it should return unique identifiers
+  //For the purposes of this exercise, it returns a constant, but in practice, it should return unique identifiers
   func generateUUID() : Text {
     "UUID-123456789";
   }
@@ -318,7 +318,7 @@ actor {
 </TabItem>
 <TabItem value="rust" label="Rust">
 
-Open the `/src/send_http_post_rust_backend/src/lib.rs` file in a text editor and replace content with:
+Open the `/src/send_http_post_rust_backend/src/lib.rs` file in a text editor and replace the content with:
 
 ```rust
 //1. IMPORT MANAGEMENT CANISTER
@@ -328,7 +328,6 @@ use ic_cdk::api::management_canister::http_request::{
     TransformContext,
 };
 
-use ic_cdk_macros::{self, query, update};
 use serde::{Serialize, Deserialize};
 use serde_json::{self, Value};
 
@@ -348,7 +347,7 @@ async fn send_http_post_request() -> String {
     let host = "putsreq.com";
     let url = "https://putsreq.com/aL1QS5IbaQd4NTqN3a81";
 
-    // 2.2 prepare headers for the system http_request call
+    // 2.2 Prepare headers for the system http_request call
     //Note that `HttpHeader` is declared in line 4
     let request_headers = vec![
         HttpHeader {
@@ -407,7 +406,7 @@ async fn send_http_post_request() -> String {
     // This struct is legacy code and is not really used in the code. Need to be removed in the future
     // The "TransformContext" function does need a CONTEXT parameter, but this implementation is not necessary
     // the TransformContext(transform, context) below accepts this "context", but it does nothing with it in this implementation.
-    // bucket_start_time_index and closing_price_index are meaninglesss
+    // bucket_start_time_index and closing_price_index are meaningless
     let context = Context {
         bucket_start_time_index: 0,
         closing_price_index: 4,
@@ -468,7 +467,7 @@ async fn send_http_post_request() -> String {
 }
 
 // Strips all data that is not needed from the original response.
-#[query]
+#[ic_cdk::query]
 fn transform(raw: TransformArgs) -> HttpResponse {
 
     let headers = vec![
@@ -631,9 +630,8 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [dependencies]
-candid = "0.8.2"
-ic-cdk = "0.6.0"
-ic-cdk-macros = "0.6.0"
+candid = "0.10"
+ic-cdk = "0.13"
 serde = "1.0.152"
 serde_json = "1.0.93"
 serde_bytes = "0.11.9"
@@ -666,7 +664,7 @@ URLs:
     send_http_post_motoko_backend: http://127.0.0.1:4943/?canisterId=dccg7-xmaaa-aaaaa-qaamq-cai&id=dfdal-2uaaa-aaaaa-qaama-cai
 ```
 
-Open the candid web UI for backend and call the `send_http_post_motoko_request()` method:
+Open the candid web UI for the backend and call the `send_http_post_motoko_request()` method:
 
 ![Candid web UI](../_attachments/https-post-candid-2-motoko.webp)
 

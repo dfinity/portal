@@ -4499,19 +4499,19 @@
     "logo": "/img/showcase/amplify_logo.png"
   },
   {
-    "id": "cbindex",
-    "name": "CBIndex",
-    "oneLiner": "An omnichain crypto asset management platform that includes multiple BTCFi products across multiple blockchains.",
+    "id": "bitomni",
+    "name": "Bitomni",
+    "oneLiner": "BTCFi-driven omnichain asset management protocol.",
     "tags": [
       "Bitcoin",
       "DeFi"
     ],
-    "description": "An omnichain crypto asset management platform that includes multiple BTCFi products across multiple blockchains.",
-    "usesInternetIdentity": false,
-    "website": "https://cbindex.finance",
-    "twitter": "https://twitter.com/CBIndex_Global",
+    "description": "BTCFi-driven omnichain asset management protocol with built-in BTCFi DApps across multiple blockchains.",
+    "usesInternetIdentity": true,
+    "website": "https://bitomni.io",
+    "twitter": "https://x.com/Bitomni_Global",
     "display": "Normal",
-    "logo": "/img/showcase/CBIndex_logo.png"
+    "logo": "/img/showcase/bitomni_logo.png"
   },
   {
     "id": "b3wallet",

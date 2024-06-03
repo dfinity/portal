@@ -48,6 +48,7 @@ jobs:
       - name: Install icx-asset
         if: steps.cache-icx-asset-bin.outputs.cache-hit != 'true'
         run: |
+          rm -rf sdk
           git clone --depth 1 https://github.com/dfinity/sdk.git
           cd sdk
           cargo build -p icx-asset --release
