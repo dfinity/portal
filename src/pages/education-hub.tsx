@@ -261,9 +261,12 @@ function EducationHubPage() {
                   }}
                 >
                   <div className="flex flex-col gap-2">
-                    <h3 className="tw-lead mb-0">Submit your course</h3>
-                    <p className="tw-paragraph text-white/60">
-                      Duis mollis, est non commodo luctus, nisi erat porttitor.
+                    <h3 className="tw-lead md:tw-heading-4 mb-0 md:mb-6">
+                      Submit your course
+                    </h3>
+                    <p className="tw-paragraph md:tw-lead text-white/60">
+                      Share your course and contribute to our educational
+                      resources.
                     </p>
                     <div className="flex-1"></div>
                     <p className="mt-2 mb-0">

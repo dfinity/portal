@@ -249,6 +249,15 @@ function processEventsData(records) {
     websiteCategory: Array.from(websiteCategory),
   };
 }
+
+let noneImageIndex = 0;
+const noneImages = [
+  "/img/education-hub/none-1.webp",
+  "/img/education-hub/none-2.webp",
+  "/img/education-hub/none-3.webp",
+  "/img/education-hub/none-4.webp",
+];
+
 async function processCoursesData(records) {
   const courses = await Promise.all(
     records.map(async (record) => {
@@ -263,10 +272,8 @@ async function processCoursesData(records) {
 
           if (url.hostname.includes("youtube.com")) {
             if (playlistId && YOUTUBE_API_KEY) {
-              // Fetch thumbnail for playlist
               image = await getYouTubePlaylistThumbnail(playlistId);
             } else if (videoId && YOUTUBE_API_KEY) {
-              // Fetch thumbnail for individual video
               image = await getYouTubeVideoThumbnail(videoId);
             }
           }
@@ -274,6 +281,40 @@ async function processCoursesData(records) {
           logger.warn(
             `Invalid URL for course: ${fields["Title"]}, URL: ${fields["URL"]}`
           );
+        }
+      }
+
+      if (!image) {
+        const languages =
+          fields["Programming language"]?.map((language) =>
+            language?.toLowerCase()
+          ) || [];
+        if (languages.length > 0) {
+          if (languages.includes("rust") && languages.includes("typescript")) {
+            image = "/img/education-hub/rust-typescript.webp";
+          }
+          // else if (languages.includes("rust") && languages.includes("motoko")) {
+          //   image = "/img/education-hub/rust-motoko.webp";
+          // }
+          // else if (
+          //   languages.includes("motoko") &&
+          //   languages.includes("typescript")
+          // ) {
+          //   image = "/img/education-hub/motoko-typescript.webp";
+          // }
+          else if (languages.includes("rust")) {
+            image = "/img/education-hub/rust.webp";
+          } else if (languages.includes("motoko")) {
+            image = "/img/education-hub/motoko.webp";
+          } else if (languages.includes("typescript")) {
+            image = "/img/education-hub/typescript.webp";
+          } else {
+            image = noneImages[noneImageIndex];
+            noneImageIndex = (noneImageIndex + 1) % noneImages.length;
+          }
+        } else {
+          image = noneImages[noneImageIndex];
+          noneImageIndex = (noneImageIndex + 1) % noneImages.length;
         }
       }
 
@@ -292,15 +333,13 @@ async function processCoursesData(records) {
         contentLanguages: fields["Content Language"]
           ? [fields["Content Language"].toLowerCase()]
           : [],
-        fullTags: fields["Web tag"].concat(fields["Index Tag"] || []),
+        fullTags: (fields["Web tag"] || []).concat(fields["Index Tag"] || []),
         tags: fields["Web tag"] || [],
         link: fields["URL"] || "#",
         image: image,
       };
     })
   );
-
-  console.log("Processed courses:", courses);
 
   return courses.sort((a, b) => {
     if (a.category === "Course" && b.category !== "Course") {
@@ -340,8 +379,6 @@ async function getYouTubeVideoThumbnail(videoId) {
 function pickThumbnail(thumbnails) {
   if (!thumbnails) return null;
 
-  console.log("Picking thumbnail from:", thumbnails);
-
   if (thumbnails.maxres) return thumbnails.maxres.url;
   if (thumbnails.standard) return thumbnails.standard.url;
   if (thumbnails.high) return thumbnails.high.url;
@@ -349,11 +386,10 @@ function pickThumbnail(thumbnails) {
   return thumbnails.default ? thumbnails.default.url : null;
 }
 
-// Example usage of the airtablePlugin function
 (async () => {
   const plugin = await airtablePlugin();
   const content = await plugin.loadContent();
-  console.log("Loaded content:", content);
+  console.log("Loaded Airtable Data");
 })();
 
 async function getYouTubePlaylistThumbnail(playlistId) {
@@ -378,10 +414,6 @@ async function getYouTubePlaylistThumbnail(playlistId) {
         )
         .map((item) => item.snippet.thumbnails);
 
-      // Log the thumbnails for debugging
-      console.log("Fetched thumbnails:", thumbnails);
-
-      // Pick the best thumbnail based on available sizes
       return thumbnails.length ? pickThumbnail(thumbnails[0]) : null;
     }
   } catch (error) {

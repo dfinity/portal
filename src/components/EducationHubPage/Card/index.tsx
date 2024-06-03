@@ -86,7 +86,7 @@ function Index({ title, body, languages, tags, link, level, image }) {
       className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
     >
       <article
-        className={`flex flex-col rounded-2xl border-0 border-solid bg-white border-t-[4px] border-razzmatazz h-full w-full justify-start `}
+        className={`flex flex-col rounded-2xl  bg-white border-t-[4px] h-full w-full justify-start `}
       >
         {image && (
           <img src={image} className="w-full h-40 object-cover rounded-t-xl" />
