@@ -41,7 +41,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: sdk/target/release/icx-asset
-          key: icxassetbin-master
+          key: icxassetbin-benchmark
           restore-keys: |
             icxassetbin-
 
@@ -49,7 +49,7 @@ jobs:
         if: steps.cache-icx-asset-bin.outputs.cache-hit != 'true'
         run: |
           rm -rf sdk
-          git clone --depth 1 https://github.com/dfinity/sdk.git
+          git clone -b benchmark --single-branch https://github.com/olaszakos/sdk.git
           cd sdk
           cargo build -p icx-asset --release
 
