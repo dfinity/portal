@@ -877,7 +877,6 @@ actor Randomness {
 
 ##### Benefits:
 - The random bytes is guaranteed to be secure.
-- The method can be used in a query as it doesn't store any state.
 
 ##### Caveats:
 - The method doesn't scale when large amount of random bytes is requested as `raw_rand` must be called for every 32 bytes.
@@ -887,9 +886,9 @@ actor Randomness {
 In this Rust example, we seed the the output from `raw_rand` in a known PRNG like ChaCha20 in the `init` and `post_upgrade` hooks and generate randomness by calling the `random_bytes` method.
 
 ```rust
-use candid::Principal;
-use rand_chacha::ChaCha20Rng;
+use candid::{CandidType, Principal};
 use rand_chacha::rand_core::{RngCore, SeedableRng};
+use rand_chacha::ChaCha20Rng;
 use std::cell::RefCell;
 use std::time::Duration;
 
@@ -897,11 +896,29 @@ thread_local! {
     static RNG: RefCell<Option<ChaCha20Rng>> = RefCell::new(None);
 }
 
-async fn setup_randomness() {
+const SEEDING_INTERVAL: Duration = Duration::from_secs(3600);
+
+#[derive(CandidType)]
+enum RngError {
+    RngNotInitialized(String),
+}
+
+type RandomBytesResult = Result<String, RngError>;
+
+async fn seed_randomness() {
     let (seed,): ([u8; 32],) = ic_cdk::call(Principal::management_canister(), "raw_rand", ())
         .await
         .expect("Failed to call the management canister");
     RNG.with_borrow_mut(|rng| *rng = Some(ChaCha20Rng::from_seed(seed)));
+}
+
+fn schedule_seeding(duration: Duration) {
+    ic_cdk_timers::set_timer(duration, move || {
+        ic_cdk::spawn(async move {
+            seed_randomness().await;
+            schedule_seeding(duration);
+        })
+    });
 }
 
 #[ic_cdk::init]
@@ -909,7 +926,9 @@ fn init() {
     // Initialize randomness during canister install or reinstall
     ic_cdk_timers::set_timer(Duration::ZERO, || {
         ic_cdk::spawn(async {
-            setup_randomness().await;
+            seed_randomness().await;
+            // Schedule reseeding on a timer with duration SEEDING_INTERVAL
+            schedule_seeding(SEEDING_INTERVAL);
         })
     });
 }
@@ -919,17 +938,26 @@ fn post_upgrade() {
     // Initialize randomness after a canister upgrade
     ic_cdk_timers::set_timer(Duration::ZERO, || {
         ic_cdk::spawn(async {
-            setup_randomness().await;
+            seed_randomness().await;
+            // Schedule reseeding on a timer with duration SEEDING_INTERVAL
+            schedule_seeding(SEEDING_INTERVAL);
         })
     });
 }
 
 // This must always be an update method or the PRNG state won't be updated
 #[ic_cdk::update]
-fn random_bytes(size: u32) -> String {
+fn random_bytes(size: u32) -> RandomBytesResult {
     let mut buf = vec![0; size as usize];
-    RNG.with_borrow_mut(|rng| rng.as_mut().unwrap().fill_bytes(&mut buf));
-    hex::encode(buf)
+    RNG.with_borrow_mut(|rng| match rng.as_mut() {
+        Some(rand) => {
+            rand.fill_bytes(&mut buf);
+            Ok(hex::encode(buf))
+        }
+        None => Err(RngError::RngNotInitialized(
+            "Randomness is not initialized. Please try again later".to_string(),
+        )),
+    })
 }
 ```
 
@@ -938,7 +966,8 @@ fn random_bytes(size: u32) -> String {
 
 ##### Caveats:
 - The `setup_randomness` must **always** be intialized in both the `init` and `post_upgrade` hook as `init` is not invoked during an canister upgrade [see here](https://internetcomputer.org/docs/current/references/ic-interface-spec#system-api-upgrades).
-- The `init` and `post_upgrade` methods doesn't allow async calls and thus a timer is immediately scheduled to setup the randomness.
+- The `init` and `post_upgrade` methods doesn't allow async calls and thus a timer is immediately scheduled to seed the randomness.
+- Once the seed is intialized, the outcome of all future `random_bytes` is predicable to anyone having the seed (node providers) as the PRNG is deterministic. This breaks the unpredicatable property of secure randomness. Hence, to balance security vs performance, we recommend frequently reseeding the PRNG on a timer. The example above already does this with duration of **1 hour**. However, based on the sensitivity of their dApp, developers can choose an appropriate reseeding interval by setting `SEEDING_INTERVAL`.
 - The `random_bytes` must **always** be an `update` method, so the PRNG can preserve the state and offer unique randomness on every request.
 
 ## Nonspecific to the Internet Computer
