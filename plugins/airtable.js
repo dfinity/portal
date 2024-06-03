@@ -270,7 +270,14 @@ async function processCoursesData(records) {
           const videoId = url.searchParams.get("v");
           const playlistId = url.searchParams.get("list");
 
-          if (url.hostname.includes("youtube.com")) {
+          if (
+            url.hostname.includes("youtube.com" || url.hostname === "youtu.be")
+          ) {
+            if (url.hostname === "youtu.be") {
+              // Extract video ID from youtu.be URL
+              videoId = url.pathname.slice(1);
+            }
+
             if (playlistId && YOUTUBE_API_KEY) {
               image = await getYouTubePlaylistThumbnail(playlistId);
             } else if (videoId && YOUTUBE_API_KEY) {
