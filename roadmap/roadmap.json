@@ -1158,62 +1158,10 @@
     "description": "Chain Fusion technology enables blockchains like Bitcoin, Ethereum, and Solana to be \"fused\" together with ICP to create a seamless single-chain end-user experience for multi-chain dapps. Canister smart contracts on ICP orchestrate, augment, and interact with smart contracts on other chains using advanced chain-key technology and enhance those smart contracts with ICP's special capabilities and its superior compute and storage capacity and throughput.",
     "milestones": [
       {
-        "name": "Chain Fusion Supports EVM Chains",
-        "description": "ICP’s Chain Fusion technology has full support for Ethereum and other EVM chains. ICP smart contracts can read from and write to EVM chains using a decentralized approach as well as sign transactions in a trustless manner using threshold ECDSA signing. This allows ICP smart contracts to augment EVM-based smart contracts with additional functionality through ICP's superpowers, transfer tokens on other chains, and call smart contracts on EVM chains.",
-        "milestone_id": "Tritium",
-        "eta": "May 23, 2024",
-        "status": "in_progress",
-        "elements": [
-          {
-            "title": "RPC canister for Ethereum & EVM integration",
-            "overview": "Integration of ICP with EVM blockchains via a canister that accesses JSON RPC providers through HTTPS outcalls. Works for Ethereum and other EVM chains with RPC providers.",
-            "description": "This feature is about an RPC-based integration of the Internet Computer with EVM chains, initially targeting the Ethereum network, then also Ethereum L2s and other chains with Ethereum RPC providers. The integration builds a canister smart contract offering a subset of the EVM RPC API on chain, while itself connecting to multiple RPC providers and communicating with them. For security-critical queries multiple RPC providers can be queried and their responses must match unanimously in order to be considered a valid response to the caller of the canister API. This reduces trust in any single entity, thereby making the approach more decentralized.",
-            "status": "deployed",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "is_community": true,
-            "in_beta": false,
-            "milestone_id": "Tritium"
-          },
-          {
-            "title": "Threshold ECDSA signing latency & throughput improvements",
-            "overview": "Reducing the latency of threshold ECDSA signing operations by reducing the number of required consensus rounds through protocol improvements. Also results in a throughput improvement.",
-            "description": "The ICP's initial implementation of threshold ECDSA, also referred to as chain-key ECDSA, requires seven consensus rounds to compute a signature while consuming an available precomputed value (pre-signature). The protocol can be adapted to require fewer rounds for computing a signature, thus noticeably reducing signing latency. Also, the throughput for threshold signing is expected to increase as a byproduct of the optimizations performed. The optimizations will benefit all applications using chain-key ECDSA.",
-            "status": "deployed",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "is_community": true,
-            "in_beta": false,
-            "milestone_id": "Tritium"
-          },
-          {
-            "title": "Chain-key ERC20 (ckERC20) tokens & ckUSDC",
-            "overview": "A subset of Ethereum's ERC20 tokens on ICP in the form of \"twin tokens\" called ckERC20 (chain-key ERC20). ckUSDC is to be among the first ckERC20 tokens.",
-            "description": "This feature established the infrastructure to bring a subset of Ethereum's ERC20 tokens over to the IC in the form of chain-key tokens, i.e., twin tokens of the original tokens on the Ethereum network. The implementation uses HTTPS outcalls to multiple Ethereum JSON RPC providers for reading from and writing to the Ethereum network. Threshold ECDSA signing (threshold ECDSA) is used for creating the required transactions on the Ethereum network in a completely trustless manner. USDC is the first envisioned ERC20 token that will be deployed on ICP as ckUSDC using this infrastructure.",
-            "forum": "https://forum.dfinity.org/t/long-term-r-d-integration-with-the-ethereum-network/9382",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "deployed",
-            "is_community": true,
-            "in_beta": false,
-            "milestone_id": "Tritium",
-            "imported": true
-          }
-        ]
-      },
-      {
-        "name": "Chain Fusion Supports Bitcoin Protocols",
+        "name": "Chain Fusion Supports Bitcoin ordinals and runes",
         "description": "ICP’s Chain Fusion technology has full support for Bitcoin protocols such as BRC20 and Runes. So far, ICP’s fully-on-chain capabilities have been largely applied to use cases where Bitcoin is used as a means of value transfer, its original purpose. This milestone provides additional functionality that enables smart contracts to index and issue prominent types of Bitcoin inscriptions in a completely decentralized manner for the first time, thereby putting ICP into a unique position among all chains.",
         "milestone_id": "Deuterium",
-        "eta": "July 25, 2024",
+        "eta": "August 2024",
         "status": "in_progress",
         "elements": [
           {
@@ -1280,6 +1228,58 @@
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Helium"
+          }
+        ]
+      },
+      {
+        "name": "Chain Fusion Supports EVM Chains",
+        "description": "ICP’s Chain Fusion technology has full support for Ethereum and other EVM chains. ICP smart contracts can read from and write to EVM chains using a decentralized approach as well as sign transactions in a trustless manner using threshold ECDSA signing. This allows ICP smart contracts to augment EVM-based smart contracts with additional functionality through ICP's superpowers, transfer tokens on other chains, and call smart contracts on EVM chains.",
+        "milestone_id": "Tritium",
+        "eta": "May 23, 2024",
+        "status": "deployed",
+        "elements": [
+          {
+            "title": "RPC canister for Ethereum & EVM integration",
+            "overview": "Integration of ICP with EVM blockchains via a canister that accesses JSON RPC providers through HTTPS outcalls. Works for Ethereum and other EVM chains with RPC providers.",
+            "description": "This feature is about an RPC-based integration of the Internet Computer with EVM chains, initially targeting the Ethereum network, then also Ethereum L2s and other chains with Ethereum RPC providers. The integration builds a canister smart contract offering a subset of the EVM RPC API on chain, while itself connecting to multiple RPC providers and communicating with them. For security-critical queries multiple RPC providers can be queried and their responses must match unanimously in order to be considered a valid response to the caller of the canister API. This reduces trust in any single entity, thereby making the approach more decentralized.",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": "Tritium"
+          },
+          {
+            "title": "Threshold ECDSA signing latency & throughput improvements",
+            "overview": "Reducing the latency of threshold ECDSA signing operations by reducing the number of required consensus rounds through protocol improvements. Also results in a throughput improvement.",
+            "description": "The ICP's initial implementation of threshold ECDSA, also referred to as chain-key ECDSA, requires seven consensus rounds to compute a signature while consuming an available precomputed value (pre-signature). The protocol can be adapted to require fewer rounds for computing a signature, thus noticeably reducing signing latency. Also, the throughput for threshold signing is expected to increase as a byproduct of the optimizations performed. The optimizations will benefit all applications using chain-key ECDSA.",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": "Tritium"
+          },
+          {
+            "title": "Chain-key ERC20 (ckERC20) tokens & ckUSDC",
+            "overview": "A subset of Ethereum's ERC20 tokens on ICP in the form of \"twin tokens\" called ckERC20 (chain-key ERC20). ckUSDC is to be among the first ckERC20 tokens.",
+            "description": "This feature established the infrastructure to bring a subset of Ethereum's ERC20 tokens over to the IC in the form of chain-key tokens, i.e., twin tokens of the original tokens on the Ethereum network. The implementation uses HTTPS outcalls to multiple Ethereum JSON RPC providers for reading from and writing to the Ethereum network. Threshold ECDSA signing (threshold ECDSA) is used for creating the required transactions on the Ethereum network in a completely trustless manner. USDC is the first envisioned ERC20 token that will be deployed on ICP as ckUSDC using this infrastructure.",
+            "forum": "https://forum.dfinity.org/t/long-term-r-d-integration-with-the-ethereum-network/9382",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "deployed",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": "Tritium",
+            "imported": true
           }
         ]
       },

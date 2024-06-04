@@ -92,7 +92,7 @@ function UseCasesPage() {
                   className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
                   href="/chainfusion"
                 >
-                  Learn about chain fusion
+                  Learn about Chain Fusion
                 </Link>
               </TranslatedLayout>
               <TranslatedLayout

@@ -12,10 +12,10 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 This section details how to derive an ICP adress using the Rosetta construction API. 
 The ICP ledger is using `accountidentifiers` to represent public keys internally. To derive an `accountidentifier` from a public key the Rosetta API offers the `construction/derive` endpoint. 
-The request and response types can be found in the [official documentation](https://docs.cloud.coinbase.com/rosetta/reference/constructionderive).
+The request and response types can be found in the [official documentation](https://docs.cdp.coinbase.com/rosetta/reference/constructionderive).
 
 ## How to derive `accountidentifiers`
-You have to provide Rosetta with the public key representation as specified in the Rosetta-API [standard](https://docs.cloud.coinbase.com/rosetta/reference/constructionderive). 
+You have to provide Rosetta with the public key representation as specified in the Rosetta-API [standard](https://docs.cdp.coinbase.com/rosetta/reference/constructionderive). 
 An example of a call to the derive endpoint can be found below:
 
 ```json

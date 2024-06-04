@@ -138,7 +138,7 @@ function AIPage() {
       title="Decentralized AI on Internet Computer - Secure and Trustworthy AI Solutions"
       description="Explore how the Internet Computer Protocol (ICP) leverages blockchain technology to offer decentralized AI solutions, ensuring model integrity, data confidentiality, and resilience against disruptions. Discover how AI smart contracts on ICP can transform trust and security in artificial intelligence."
     >
-      <ShareMeta image="/img/shareImages/share-ai.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-ai.webp"></ShareMeta>
 
       <main
         className="text-black relative overflow-hidden"
@@ -156,19 +156,19 @@ function AIPage() {
         >
           <div className="container-10 pt-20 pb-12 sm:pb-40 md:pb-40 md:pt-36 relative z-10">
             <motion.h1
-              className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-8/10 "
+              className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-2/3 "
               variants={transitions.item}
             >
-              Hello, <br /> Decentralized AI
+              Run your AI models on the blockchain
             </motion.h1>
             <div className="relative  md:w-5/10">
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                Train and run AI models as smart contracts fully onchain to
-                benefit from the security, resilience, and computation power of
-                the ICP blockchain.
+                Decentralization unlocked: Train and run AI models as fully
+                on-chain smart contracts to benefit from the security,
+                resilience, and power of ICP.
               </motion.p>
               {/* <MotionLink
                 className="button-white"
@@ -185,7 +185,7 @@ function AIPage() {
             <div className="absolute w-10/12 sm:w-5/12 left-1/2 translate-y-1/2 -translate-x-[50%] bottom-1/2 md:left-0 md:absolute md:w-5/12 md:bottom-0 md:translate-x-[130%] md:translate-y-2/12">
               <img
                 src="/img/decentralized-ai/aiheader.svg"
-                alt="Start building on Internet Identity"
+                alt="Decentralized AI"
                 className="w-full max-w-none"
                 loading="lazy"
               />
@@ -228,8 +228,7 @@ function AIPage() {
                 </div>
               </div>
               <div className=" md:w-1/3">
-
-              <div >
+                <div>
                   <motion.h3
                     className="tw-heading-3 md:tw-heading-60 mb-4 md:mb-6"
                     variants={transitions.item}
@@ -238,7 +237,7 @@ function AIPage() {
                   </motion.h3>
                 </div>
 
-                <div >
+                <div>
                   <motion.h4
                     className="tw-heading-5 md:tw-heading-40 mb-4 md:mb-6"
                     variants={transitions.item}
@@ -246,22 +245,23 @@ function AIPage() {
                     The Tampering Problem
                   </motion.h4>
                   <motion.p className="text-2xl mb-0 ">
-                  <p>
-                    <Link
+                    <p>
+                      <Link
                         className="font-bold"
                         to="https://twitter.com/AnthropicAI/status/1745854907968880970"
                         target="_blank"
                       >
-                      Research shows
-                    </Link>{" "}
-                  that is possible to tamper with AI models in an undetectable way. 
-                  This means that the integrity of the AI&apos;s output can be compromised 
-                  without anyone knowing.
-                  </p>
+                        Research shows
+                      </Link>{" "}
+                      that is possible to tamper with AI models in an
+                      undetectable way. This means that the integrity of the
+                      AI&apos;s output can be compromised without anyone
+                      knowing.
+                    </p>
                   </motion.p>
                 </div>
 
-                <div >
+                <div>
                   <motion.h4
                     className="tw-heading-5 md:tw-heading-40 mb-4 md:mb-6"
                     variants={transitions.item}
@@ -269,23 +269,20 @@ function AIPage() {
                     The Black Box Problem
                   </motion.h4>
                   <motion.p className="text-2xl mb-0 ">
-                  <p>
-                  Users have no visibility into how 
-                  their data is used and how AI models produce responses. 
-                  This lack of transparency makes it difficult for users to trust 
-                  the technology.
-                  </p>
+                    <p>
+                      Users have no visibility into how their data is used and
+                      how AI models produce responses. This lack of transparency
+                      makes it difficult for users to trust the technology.
+                    </p>
                   </motion.p>
                 </div>
-
               </div>
-              
             </aside>
           </AnimateSpawn>
         </section>
         <section className="container-12  relative mt-24 mb-24 sm:mt-52 md:mt-40">
           <motion.h4 className="tw-heading-4 md:tw-heading-60 text-gradient text-left md:text-center my-12  md:mb-16 md:w-5/10 md:mx-auto">
-            What is required to establish trust?
+            What is needed to solve these issues?
           </motion.h4>
           <AnimateSpawn
             className=" grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-5"
@@ -302,10 +299,11 @@ function AIPage() {
               />
               <h3 className="tw-lead my-3 md:tw-title-sm ">Model integrity</h3>
               <p className="tw-paragraph-sm text-black/60 md:tw-paragraph mb-0">
-                Users need guarantees that their AI prompts are answered by a
-                model that has not been tampered with. Traditional techniques
-                for assessing the integrity of software, such as source code
-                analysis, are infeasible for AI models due to their large sizes.
+              Users need assurance that their AI prompts are handled by untampered 
+              models. Traditional software integrity methods, such as source 
+              code analysis, are infeasible for AI models because they consist 
+              of complex numerical weights and extensive matrices, rather than 
+              human-readable code, making direct verification impossible.
               </p>
             </motion.div>
             <motion.div

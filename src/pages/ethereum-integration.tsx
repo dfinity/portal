@@ -184,7 +184,7 @@ function EthereumIntegrationPage() {
                 className="tw-lead-sm md:tw-lead mb-0"
                 variants={transitions.item}
               >
-                Chain Fusion Technology brings unique ICP features to Ethereum. Smart contracts gain access to threshold
+                Chain Fusion technology brings unique ICP features to Ethereum. Smart contracts gain access to threshold
                 signing services, oracles, DAO frameworks, privacy tools, pass
                 key authentication, smart contract wallets, and reverse gas
                 fees. Augment Ethereum dapps to build seamless multichain

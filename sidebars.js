@@ -255,6 +255,7 @@ const sidebars = {
               ],
             },
             "developer-docs/smart-contracts/advanced-features/periodic-tasks",
+            "developer-docs/smart-contracts/advanced-features/simd",
             "developer-docs/smart-contracts/advanced-features/system-canisters",
           ],
         },
@@ -307,6 +308,7 @@ const sidebars = {
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-build",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-cache",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister",
+		"developer-docs/developer-tools/cli-tools/cli-reference/dfx-cycles",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-deploy",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-deps",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-generate",
@@ -551,13 +553,8 @@ const sidebars = {
                   "developer-docs/identity/internet-identity/alternative-origins",
                 ],
             },
-            "developer-docs/identity/authentication/siwe",
-            "developer-docs/identity/authentication/nfid",
-            "developer-docs/identity/authentication/email-password",
-          ],
-        },
-      ],
-    },
+        ],
+      },
     {
       type: "category",
       label: "Security",
@@ -797,7 +794,7 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Chain fusion",
+      label: "Chain Fusion",
       items: [
         "developer-docs/multi-chain/overview",
         {
@@ -1077,7 +1074,6 @@ const sidebars = {
           items: [
             "references/samples/svelte/svelte-motoko-starter/README",
             "references/samples/svelte/svelte-starter/README",
-            "references/samples/svelte/sveltekit-starter/README",
           ],
         },
       ],
