@@ -312,23 +312,6 @@ const RoadmapPage: React.FC = () => {
     window.location.hash = "";
   }
 
-  const createId = (
-    theme: string | number | null = null,
-    milestone: string | number | null = null,
-    separator = "-"
-  ) => {
-    if (theme == null || milestone == null)
-      throw Error("Missing theme or milestone");
-    const encodedTheme = encodeURI(`${theme}`);
-    const encodedMilestone = encodeURI(`${milestone}`);
-    if (
-      encodedTheme.includes(separator) ||
-      encodedMilestone.includes(separator)
-    )
-      throw Error("Separator is not allowed in theme or milestone");
-    return `${encodedTheme}${separator}${encodedMilestone}`;
-  };
-
   const parseId = (id: string, separator = "-") => {
     const [theme, milestone] = id.split(separator);
     return { theme: decodeURI(theme), milestone: decodeURI(milestone) };
