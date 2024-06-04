@@ -35,27 +35,8 @@ jobs:
 
       - name: Install DFX
         uses: dfinity/setup-dfx@main
-
-      - name: Cache icx-asset binary
-        id: cache-icx-asset-bin
-        uses: actions/cache@v3
         with:
-          path: sdk/target/release/icx-asset
-          key: icxassetbin-master
-          restore-keys: |
-            icxassetbin-
-
-      - name: Install icx-asset
-        if: steps.cache-icx-asset-bin.outputs.cache-hit != 'true'
-        run: |
-          rm -rf sdk
-          git clone --depth 1 https://github.com/dfinity/sdk.git
-          cd sdk
-          cargo build -p icx-asset --release
-
-      - name: Add icx-asset to path
-        run: |
-          echo "`pwd`/sdk/target/release/" >> $GITHUB_PATH
+          dfx-version: "0.20.2-beta.0"
 
       - name: "Build & Deploy"
         run: |
@@ -80,11 +61,9 @@ jobs:
 
           export PREVIEW_CANISTER_ID=$canister_id
 
-          dfx canister --network ic create --all
-          time dfx build --network ic portal
-          dfx canister --network ic install portal --wasm .dfx/ic/canisters/portal/assetstorage.wasm.gz || true
+          dfx --version
 
-          time icx-asset --replica https://icp0.io --pem ~/.config/dfx/identity/default/identity.pem sync $canister_id build
+          time dfx deploy --network=ic --no-wallet portal --yes
 
         env:
           DFX_IDENTITY_PREVIEW: ${{ secrets.DFX_IDENTITY_PREVIEW }}
