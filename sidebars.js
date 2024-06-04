@@ -837,6 +837,7 @@ const sidebars = {
             },
           ],
         },
+        "developer-docs/multi-chain/examples",
         {
           type: "category",
           label: "Chain key tokens",
