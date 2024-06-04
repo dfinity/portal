@@ -303,7 +303,7 @@ const RoadmapPage: React.FC = () => {
     setOverlayOpen(true);
     setOverlayColor(color);
     //update current url with output from createId as an anchor
-    window.location.hash = createId(at, anchor || null);
+    window.location.hash = createId(at, anchor || "start");
   }
 
   function closeOverlay() {
