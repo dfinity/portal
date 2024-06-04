@@ -264,17 +264,17 @@ async function processCoursesData(records) {
   const courses = await Promise.all(
     records.map(async (record) => {
       const fields = record.fields;
-      let image = null;
+      let image = fields["Image URL"] || null;
 
-      if (fields["URL"]) {
-        try {
-          image = await fetchOgImage(fields["URL"]);
-        } catch (error) {
-          logger.warn(
-            `Failed to fetch OG image for course: ${fields["Title"]}, URL: ${fields["URL"]}`
-          );
-        }
-      }
+      // if (fields["URL"]) {
+      //   try {
+      //     image = await fetchOgImage(fields["URL"]);
+      //   } catch (error) {
+      //     logger.warn(
+      //       `Failed to fetch OG image for course: ${fields["Title"]}, URL: ${fields["URL"]}`
+      //     );
+      //   }
+      // }
 
       if (!image) {
         const languages =
