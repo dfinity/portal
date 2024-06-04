@@ -466,6 +466,7 @@ const redirects = `
   /motoko/main/motoko /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/version /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/main/motoko-introduction /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/motoko/main/motoko /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/main/basic-concepts /docs/current/motoko/main/getting-started/basic-concepts
   /docs/current/motoko/main/overview /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/main/language-manual /docs/current/motoko/main/reference/language-manual

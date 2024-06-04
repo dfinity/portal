@@ -82,6 +82,7 @@ module.exports = {
       },
       transparent: "transparent",
       grey: {
+        200: "#DBDBDB",
         300: "#dfdfdf",
         500: "#b6b6b6",
       },
@@ -247,6 +248,7 @@ module.exports = {
                 '.checklist-item-white': '@apply font-book bg-[url(\'/img/checkmark-white.svg\')] bg-no-repeat bg-left-top',
                 '.blob': '@apply absolute bg-contain bg-no-repeat pointer-events-none',
                 '.blob-purple': '@apply bg-[url("/img/gradientBlurredCircle.webp")] aspect-[256/232]',
+                '.blob-azure': '@apply bg-[url("/img/blur_azure.svg")] aspect-[1202/716]',
                 '.blob-infinite': '@apply bg-[url("/img/blob-infinite.webp")] aspect-[256/232]',
                 '.blob-white': '@apply bg-[url("/img/whiteBlurredCircle.webp")] aspect-[256/251]',
                 '.blob-white-dense': '@apply bg-[url("/img/blob-white-dense.webp")] aspect-[512/461]',

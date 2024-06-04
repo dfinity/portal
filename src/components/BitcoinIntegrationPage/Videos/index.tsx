@@ -3,7 +3,12 @@ import transitions from "@site/static/transitions.json";
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import ExternalLinkIcon from "@site/static/img/external-link.svg";
 import PlaySVG from "@site/static/img/svgIcons/play.svg";
-import BTCInterviewThumb from "@site/static/img/bitcoin-integration/BTCInterviewThumb.webp";
+import { ArrowIconRight } from "../../RoadmapPage/Overlay";
+import Link from "@docusaurus/Link";
+import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
+import { motion } from "framer-motion";
+import VideoCard from "../../Common/VideoCard";
+import Card from "@site/src/components/SamplesPage/Card";
 
 const videos = [
   {
@@ -20,85 +25,159 @@ const videos = [
   // },
 ];
 
+const samples = [
+  {
+    index: 26,
+    title: "Bitcoin Canister",
+    image: "/img/samples/26.webp",
+    domains: ["Global", "ChainFusion", "Bitcoin"],
+    languages: ["rust"],
+    level: "advanced",
+    contentType: [
+      "advanced",
+      "rust",
+      "bitcoin",
+      "btc",
+      "integration",
+      "bitcoin integration",
+    ],
+    body: "A sample canister smart contract that can send and receive Bitcoin on the IC.",
+    links: {
+      rust: "https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin",
+    },
+  },
+  {
+    index: 27,
+    title: "Inscription Canister",
+    image: "/img/samples/27.webp",
+    domains: ["Global", "ChainFusion", "Bitcoin"],
+    languages: ["rust"],
+    level: "advanced",
+    contentType: [
+      "advanced",
+      "rust",
+      "bitcoin",
+      "btc",
+      "integration",
+      "bitcoin integration",
+    ],
+    body: "This example project explores the possibility of inscribing ordinal inscriptions onto the Bitcoin blockchain using the IC.",
+    links: {
+      rust: "https://github.com/domwoe/inscription_canister",
+    },
+  },
+  {
+    index: 28,
+    title: "ckBTC Canister",
+    image: "/img/samples/28.webp",
+    domains: ["Global", "ChainFusion", "Bitcoin"],
+    languages: ["rust"],
+    level: "advanced",
+    contentType: [
+      "advanced",
+      "rust",
+      "bitcoin",
+      "btc",
+      "integration",
+      "bitcoin integration",
+    ],
+    body: "Canister smart contract for ckBTC, the trustless Bitcoin Digital Twin on the IC.",
+    links: {
+      rust: "https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc",
+    },
+  },
+
+  {
+    index: 29,
+    title: "Ordinal Canister",
+    image: "/img/samples/29.webp",
+    domains: ["Global", "ChainFusion", "Bitcoin"],
+    languages: ["rust"],
+    level: "advanced",
+    contentType: [
+      "advanced",
+      "rust",
+      "bitcoin",
+      "btc",
+      "integration",
+      "bitcoin integration",
+    ],
+    body: "A canister that enables the retrieval of ordinals and their corresponding inscriptions, making them easily accessible on the IC.",
+    links: {
+      rust: "https://github.com/sardariuss/ordinals_canister",
+    },
+  },
+];
+
 function Index() {
   return (
     <AnimateSpawn
       variants={transitions.container}
-      className="max-w-page-10-cols relative mx-auto mb-20 px-6 md:mb-40 md:px-15"
+      className="container-10 relative mt-20 md:mt-40"
     >
-      <div className="flex flex-col md:flex-row mb-12 md:mb-24">
-        <h2 className="tw-heading-4 md:tw-heading-60 md:mr-5 md:w-4/10 flex-none">
-          Watch & Learn
+      <motion.div
+        className="blob blob-purple blob-sm translate-x-1/3 -translate-y-2/10 z-[-1] md:blob-lg"
+        variants={transitions.fadeIn}
+      ></motion.div>
+      <div className="mb-12 md:mb-24">
+        <h2 className="tw-heading-4 md:tw-heading-2 md:mr-5 md:w-7/10 flex-none">
+          Sample Code Examples & Startup Requests 
         </h2>
-        <div className="md:pr-2/10">
-          <p className="tw-lead-sm">
-            From concept to coding — learn all about the Bitcoin Integration
-            feature on ICP through these videos.
-          </p>
-          <a
-            href="/videos"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-black hover:no-underline tw-heading-6"
-          >
-            Explore more videos
-            <ExternalLinkIcon className="inline-block align-bottom ml-2"></ExternalLinkIcon>
-          </a>
-        </div>
-      </div>
-      <div className={"relative flex flex-col md:flex-row rounded-xl bg-white"}>
-        <a
-          href={"https://www.youtube.com/watch?v=XwpAt89vtME"}
+        <p className="tw-paragraph mt-2 md:w-7/10">
+          Explore the integration of Bitcoin with the Internet Computer through
+          concise code examples and startup collaboration opportunities. Access
+          ready-to-use code snippets and connect with innovative startups to
+          accelerate your projects. Unleash the potential of Bitcoin and
+          Internet Computer synergy for your next venture.
+        </p>
+        <Link
+          className="link-primary link-with-icon md:mt-4"
+          href="/samples"
           target="_blank"
-          className={"md:w-2/3"}
-          aria-label="Video: The What, the How and Why of Bitcoin Integration"
+          rel="noopener noreferrer"
         >
-          <div className="group relative h-0 pb-16/9">
-            <div className="bg-white-30 backdrop-blur-xl group-hover:bg-infinite transition-colors h-12 w-12 md:h-16 md:w-16 rounded-full z-10 absolute inset-0 m-auto flex">
-              <PlaySVG className="m-auto h-5 w-5 text-white transition-colors" />
-            </div>
-            <img
-              className="inset-0 w-full h-full z-[1] absolute object-cover rounded-t-xl md:rounded-tr-none md:rounded-l-xl aspect-[729/410]"
-              src={BTCInterviewThumb}
-              alt=""
-            />
-          </div>
-        </a>
-        <div
-          className={
-            "md:px-12 px-6 py-6 md:py-0 md:mb-16 mt-auto bg-white md:w-1/3 rounded-xl md:rounded-none"
+          <LinkArrowRight /> See all
+        </Link>
+      </div>
+      <motion.div
+        variants={transitions.item}
+        className="mt-6 mb-6 md:mt-20 md:mb-12"
+      >
+        <VideoCard
+          image="https://i.ytimg.com/vi/OTAKkWAlfJE/maxresdefault.jpg"
+          title="Internet Computer BUIDL Bitcoin Hackathon Powered by Encode"
+          label="Demo Day"
+          link={`https://www.youtube.com/playlist?list=PLfEHHr3qexv_cMqcKj6ay8cDUq0BNOGGb`}
+          description={
+            <>
+              {" "}
+              <Link
+                className="link-primary link-with-icon md:mt-4"
+                href="https://www.youtube.com/playlist?list=PLfEHHr3qexv_cMqcKj6ay8cDUq0BNOGGb"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <LinkArrowRight /> View playlist
+              </Link>
+            </>
           }
-        >
-          <p className={"tw-heading-7 text-razzmatazz mb-3"}>Interview</p>
-          <p className={"tw-heading-6 md:tw-heading-5 mb-3"}>
-            The What, the How and Why of Bitcoin Integration
-          </p>
-          <p className={"tw-lead-sm mb-0 text-black-60"}>
-            With Andrew Chepreghy & Manu Drijvers
-          </p>
-        </div>
-      </div>
-      <div className={"grid grid-cols-1 md:grid-cols-2 gap-5 mt-5"}>
-        {videos.map((video) => (
-          <a
-            aria-label={`Video: ${video.title}`}
-            key={video.id}
-            href={`https://www.youtube.com/watch?v=${video.id}`}
-            target="_blank"
-          >
-            <div className="group relative flex">
-              <div className="bg-white-30 backdrop-blur-xl group-hover:bg-infinite transition-colors h-12 w-12 md:h-16 md:w-16 rounded-full z-10 absolute inset-0 m-auto flex">
-                <PlaySVG className="m-auto h-5 w-5 text-white transition-colors" />
-              </div>
-              <img
-                className="aspect-video object-cover rounded-xl w-full"
-                src={`https://img.youtube.com/vi/${video.id}/sddefault.jpg`}
-                alt=""
-              />
-            </div>
-          </a>
+        />{" "}
+      </motion.div>
+      <motion.div
+        variants={transitions.item}
+        className="relative mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 lg:grid-cols-4 transition-opacity md:mt-4"
+      >
+        {samples.map((sample) => (
+          <Card
+            key={sample.index}
+            image={sample.image}
+            title={sample.title}
+            domain={sample.domains[0]}
+            body={sample.body}
+            links={sample.links}
+          />
         ))}
-      </div>
+      </motion.div>
     </AnimateSpawn>
   );
 }

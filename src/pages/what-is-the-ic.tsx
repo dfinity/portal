@@ -227,7 +227,7 @@ function WhatIsIcpPage() {
                   signing capabilities. For example, Chain-key Bitcoin (ckBTC),
                   a token backed 1:1 by BTC held entirely on the ICP blockchain,
                   is possible because ICP smart contracts can sign transactions.
-                  Additionally, the 
+                  Additionally, the{" "} 
                   <a 
                     className="text-white underline"
                     href="/docs/current/developer-docs/defi/exchange-rate-canister/">
