@@ -59,7 +59,7 @@ export const ArrowIconRight = () => {
         rx="16.5"
         transform="rotate(-180 49.5 45.5)"
         stroke="white"
-        stroke-opacity="0.3"
+        strokeOpacity="0.3"
         fill="transparent"
         className="circle"
       />
@@ -496,7 +496,7 @@ const MilestoneDetail: React.FC<{
 
 const Overlay: React.FC<{
   onClose: () => void;
-  openAt: number;
+  openAt: string | null;
   data: RoadmapDomain[];
   anchor: string | null;
   color: string | null;
@@ -522,16 +522,20 @@ const Overlay: React.FC<{
   useEffect(() => {
     if (anchor) {
       const el = document.getElementById(anchor);
+
       if (el) {
         if (anchor === "Past features") {
           setExpandedMilestone(anchor);
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-        } else {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
         }
+
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
       }
     }
   }, [anchor, color]);
+
+  const index = data.findIndex((d) => d.name === openAt);
 
   return (
     <motion.div
@@ -565,7 +569,7 @@ const Overlay: React.FC<{
                 height="30"
                 rx="15"
                 fill="#181818"
-                fill-opacity="0.6"
+                fillOpacity="0.6"
               />
               <path d="M9.34277 9.34375L20.6565 20.6575" stroke="white" />
               <path d="M9.34277 20.6572L20.6565 9.34352" stroke="white" />
@@ -573,18 +577,18 @@ const Overlay: React.FC<{
           </button>
         </div>
         <div className="md:top-20 z-10 pr-0 md:pr-8 ">
-          {data && data[openAt] && (
+          {data && index !== null && (
             <div>
               <section className="my-12 md:my-24">
                 <h2 className="tw-heading-3  font-black md:tw-heading-2 md:w-8/10">
-                  {data[openAt].name.toUpperCase()}
+                  {data[index].name.toUpperCase()}
                 </h2>
                 <p className="tw-lead-sm md:tw-lead md:w-9/10">
-                  {data[openAt].description}
+                  {data[index].description}
                 </p>
               </section>
               <section>
-                {data[openAt].milestones
+                {data[index].milestones
                   .sort((a, b) => {
                     if (a.name === "orphans_past") return -1;
                     if (b.name === "orphans_past") return 1;

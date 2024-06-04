@@ -78,7 +78,7 @@ export const CardBlobs: React.FC<{}> = ({}) => {
     )`,
     transform: `translate(-50%, -50%)`,
     animation: `blob 10s infinite linear`,
-    "animation-delay": "calc(var(--rnd1) * -10s)",
+    animationDelay: "calc(var(--rnd1) * -10s)",
   };
 
   return (
@@ -146,8 +146,8 @@ const milestoneComponent = (
     wrapperClasses += ` border-2 border-solid border-[var(--color)] order-opacity-20`;
   } else {
     wrapperClasses += ` border-2 border-solid border-[var(--color)]`;
-    style["width"] = `min(450px, 80vw)]`;
-    style["flex-basis"] = `min(450px, 80vw)`;
+    style.width = `min(450px, 80vw)]`;
+    style.flexBasis = `min(450px, 80vw)`;
   }
 
   if (milestone.status === "in_progress") {
@@ -282,7 +282,7 @@ function elementHasOverflown(element: HTMLElement) {
 
 const RoadmapPage: React.FC = () => {
   const [overlayOpen, setOverlayOpen] = useState(false);
-  const [overlayOpenAt, setOverlayOpenAt] = useState(0);
+  const [overlayOpenAt, setOverlayOpenAt] = useState(null);
   const [overlayAnchor, setOverlayAnchor] = useState(null);
   const [overlayColor, setOverlayColor] = useState(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -292,8 +292,8 @@ const RoadmapPage: React.FC = () => {
     .map((_) => React.useRef(null));
 
   function openOverlay(
-    at: number,
-    anchor: number | null = null,
+    at: string,
+    anchor: string | null = null,
     color: string | null = null,
     color2: string | null = null
   ) {
@@ -302,12 +302,37 @@ const RoadmapPage: React.FC = () => {
     setOverlayAnchor(anchor);
     setOverlayOpen(true);
     setOverlayColor(color);
+    //update current url with output from createId as an anchor
+    window.location.hash = createId(at, anchor || 0);
   }
 
   function closeOverlay() {
     document.body.style.overflow = "";
     setOverlayOpen(false);
+    window.location.hash = "";
   }
+
+  const createId = (
+    theme: string | number | null = null,
+    milestone: string | number | null = null,
+    separator = "-"
+  ) => {
+    if (theme == null || milestone == null)
+      throw Error("Missing theme or milestone");
+    const encodedTheme = encodeURI(`${theme}`);
+    const encodedMilestone = encodeURI(`${milestone}`);
+    if (
+      encodedTheme.includes(separator) ||
+      encodedMilestone.includes(separator)
+    )
+      throw Error("Separator is not allowed in theme or milestone");
+    return `${encodedTheme}${separator}${encodedMilestone}`;
+  };
+
+  const parseId = (id: string, separator = "-") => {
+    const [theme, milestone] = id.split(separator);
+    return { theme: decodeURI(theme), milestone: decodeURI(milestone) };
+  };
 
   useEffect(() => {
     scrollRefs.forEach((ref) => {
@@ -320,6 +345,15 @@ const RoadmapPage: React.FC = () => {
         }
       }
     });
+
+    if (window.location.hash) {
+      const { theme, milestone } = parseId(window.location.hash.slice(1));
+      const themeIndex = data.findIndex((t) => t.name === theme);
+      console.log(themeIndex, theme, milestone);
+      if (themeIndex >= 0) {
+        openOverlay(theme, milestone, indexToColor(themeIndex, data.length));
+      }
+    }
   }, []);
 
   // useEffect(() => {
@@ -392,14 +426,18 @@ const RoadmapPage: React.FC = () => {
 
         <section className="-mt-20 md:-mt-32 relative  mb-28 md:mb-40">
           {data.map((theme, indexTheme) => (
-            <article key={theme.name} className="mt-16 md:mt-20  ">
+            <article
+              key={theme.name}
+              id={theme.name}
+              className="mt-16 md:mt-20  "
+            >
               <header className="container-10">
                 <h1
                   className="tw-heading-3 cursor-pointer hover-effect relative pr-6 md:pr-0"
                   onClick={() =>
                     openOverlay(
-                      indexTheme,
-                      0,
+                      theme.name,
+                      null,
                       indexToColor(indexTheme, data.length),
                       indexToColor(indexTheme, data.length, 15)
                     )
@@ -456,7 +494,7 @@ const RoadmapPage: React.FC = () => {
                         [projectColor, projectColor2],
                         () =>
                           openOverlay(
-                            indexTheme,
+                            theme.name,
                             milestone.milestone_id,
                             projectColor,
                             indexToColor(indexTheme, data.length, 15)
