@@ -111,7 +111,7 @@ For example, when using [canister signatures](https://internetcomputer.org/docs/
 
 ### Step 4: Issue the credential (`get_credential`)
 
-Lastly, the issuer API endpoint `get_credential` is used to issue the credential requested by the user. The same checks used to prepare the credential are ran again, with an additional verify step to confirm that `prepared_context` is consistent with `prepare_credential`. If successful, the issuer API returns the signed credential in JWS-format.
+Lastly, the issuer API endpoint `get_credential` is used to issue the credential requested by the user. The same checks used to prepare the credential are ran again, with an additional verify step to confirm that `prepared_context` is consistent with `prepare_credential`. If successful, the issuer API returns the signed credential in JWT-format.
 
 An example implementation can be found in the [verifiable credentials playground example](https://github.com/dfinity/vc-playground/blob/b2f8cd5f5397b7b355b6503df5af3789834b79e9/issuer/src/main.rs#L557).
 
