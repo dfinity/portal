@@ -802,6 +802,7 @@ const sidebars = {
       label: "Chain Fusion",
       items: [
         "developer-docs/multi-chain/overview",
+        "developer-docs/multi-chain/generating-addresses",
         {
           type: "category",
           label: "Bitcoin",
@@ -809,7 +810,6 @@ const sidebars = {
             "developer-docs/multi-chain/bitcoin/overview",
             "developer-docs/multi-chain/bitcoin/using-btc/btc-dev-workflow",
             "developer-docs/multi-chain/bitcoin/using-btc/read-state",
-            "developer-docs/multi-chain/bitcoin/using-btc/generate-addresses",
             "developer-docs/multi-chain/bitcoin/using-btc/sign-transactions",
             "developer-docs/multi-chain/bitcoin/using-btc/submit-transactions",
             "developer-docs/multi-chain/bitcoin/using-btc/local-development",
@@ -821,7 +821,6 @@ const sidebars = {
           items: [
             "developer-docs/multi-chain/ethereum/overview",
 	    "developer-docs/multi-chain/ethereum/using-eth/eth-dev-workflow",
-            "developer-docs/multi-chain/ethereum/using-eth/generating-addresses",
             "developer-docs/multi-chain/ethereum/using-eth/signing-transactions",
             "developer-docs/multi-chain/ethereum/using-eth/submit-transactions",
             {
