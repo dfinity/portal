@@ -24,6 +24,12 @@ For other blockchains, it will depend on the chain's native form of address and 
 
 Examples of how to generate addresses for Bitcoin, Ethereum or EVM, and other unique chains can be found below.
 
+:::caution
+
+This page is not an exhaustive list of supported chains. An ICP canister can interact with any chain that is EVM-compatible or supports ECDSA signatures.
+
+:::
+
 ## Bitcoin
 
 A Bitcoin address is a hash value. There are currently two types of Bitcoin addresses: P2SH and P2PKH. An address's full public key cannot be provided when sending transactions, so to redeem transactions sent to your Bitcoin address, you must provide both the transaction signature and the public key used to sign the transaction.
@@ -80,7 +86,7 @@ On Ethereum, there are two types of addresses: wallet addresses for holding asse
 
 Wallet and contract addresses can be queried using the [EVM RPC canister](/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister).
 
-### Canister ETH addresses
+### Generating a canister ETH address
 
 To create an ETH address for your canister, first you will need to obtain an ECDSA public key associated to your canister. You can get this key by calling the `ecdsa_public_key` API method of the management canister:
 
