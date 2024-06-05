@@ -16,7 +16,7 @@ A credential is a document or certificate that validates an individual's identit
 
 These are examples of physical credentials, as they have a physical component that must be presented for validation. Credentials can also be digital, relying on authentication using cryptographic signatures such as canister signatures on ICP.
 
-Verifiable credentials (VCs) are a type of digital credential that enables individuals, organizations, or things (such as devices) cryptographically.
+Verifiable credentials (VCs) are a type of digital credential that enables individuals, organizations, or things (such as devices) to authenticate cryptographically.
 
 The technical implementation of VCs on ICP can be found in the [specification](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md). It is recommended you first read the rest of this documentation, as it includes technical details.
 
@@ -26,7 +26,7 @@ Verifiable credentials are designed to be tamper-evident, privacy-preserving, an
 
 ## Terminology
 
-When learning about and using VCs, there are two primary terms to familiarize yourself with:
+When learning about and using VCs, there are four primary terms to familiarize yourself with:
 
 - **User**: Users earn credentials, a piece of data that certifies information about the user, from an issuer.
 
@@ -34,13 +34,13 @@ When learning about and using VCs, there are two primary terms to familiarize yo
 
 - **Relying party**: A different dapp (organization, government, etc.) which requests certified credentials for that user from the issuer. Since the relying party must verify the received credentials, it is also commonly referred to as the "verifier".
 
-- **Identity provider**: Entity that (in this case, Internet Identity) creates a temporary identifier for the user when the issuer passes the credential to the relying party, so that the relying party and the issuer never learn the user's identifiers on the other entity's service.
+- **Identity provider**: An entity that (in this case, Internet Identity) creates a temporary identifier for the user when the issuer passes the credential to the relying party, so that the relying party and the issuer never learn the user's identifier on the other entity's service.
 
 ## How to use verifiable credentials
 
 To use verifiable credentials there are two workflows. First, you can [become an issuer](issuer.mdx) of verifiable credentials. By issuing verifiable credentials, you can empower users to control and share their credentials selectively, enhancing privacy and giving users greater autonomy over their digital identity.
 
-The second workflow allows you to [become a relying party](relying-party.mdx) for verifiable credentials. By requiring verifiable credentials from your application's users,  you can ensure that the claims that users make are verified by parties (issuers) that you trust, while preserving the user’s privacy.
+The second workflow allows you to [become a relying party](relying-party.mdx) for verifiable credentials. By requiring verifiable credentials from your application's users, you can ensure that the claims users make are verified by parties (issuers) that you trust, while preserving the user’s privacy.
 
 ## Next steps
 
