@@ -69,7 +69,7 @@ This code executes the following steps:
 
 - Sends a request to II through the window post message.
 
-- Waits for the response from the II.
+- Waits for the response from II.
 
 - Calls an `onSuccess` callback if the process was successful, but that does not necessarily mean that a credential was received.
 
@@ -98,7 +98,7 @@ First, your canister must initiate and load an identity provider (in this exampl
 }
 ```
 
-The user will interact with this window to authenticate with their Internet Identity. If this window is closed by the user or times out, the request for credentials will be closed, and an error will be returned to the relying party.
+The user will interact with this window to authenticate with their Internet Identity. If this window is closed by the user or times out, the request for credentials will be closed and an error will be returned to the relying party.
 
 ### Step 2: Request a verifiable credential
 
@@ -152,7 +152,7 @@ Additional examples can be found in the [verifiable credentials specification](h
 
 ### Step 3: Receive a response
 
-If the JSON RPC request is successfully sent and received by the issuer API, Internet Identity will return the following JSON RPC response to the relying party:
+If the JSON RPC request is successfully sent and received by the issuer API, Internet Identity will return the following JSON-RPC response to the relying party:
 
 ```json
 {
@@ -164,7 +164,7 @@ If the JSON RPC request is successfully sent and received by the issuer API, Int
 }
 ```
 
-In this response, `verifiablePresentation` is a JWT based verifiable presentation (VP) containing two credentials:
+In this response, `verifiablePresentation` is a JWT-based verifiable presentation (VP) containing two credentials:
 
 1. A verifiable credential issued by Internet Identity that relates the `credentialSubject` to the user principal.
 
@@ -183,7 +183,7 @@ The specification ensures unlinkability between the relying party and the issuer
 
 Note how the issuer's principal never appears in the credentials. Instead, the relying party and the issuer know about the `id_alias`. Therefore, this `id_alias` needs the credential to verify the link between the user's principal and the `id_alias`.
 
-The order of the credentials in the VP should match the order above, such that the `id_alias` credential linking with the relying party's principal should come first.
+The order of the credentials in the VP should match the order above, such that the `id_alias` credential linking to the relying party's principal should come first.
 
 [View an example of a verifiable presentation](https://www.w3.org/TR/vc-data-model/#example-jwt-payload-of-a-jwt-based-verifiable-presentation-non-normative) for reference.
 
