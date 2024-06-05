@@ -535,32 +535,42 @@ const sidebars = {
       ],
     },
     {
-      type: "category",
-      label: "Identity",
-      items: [
-        {
           type: "category",
-          label: "Authentication",
+          label: "Identity",
           items: [
-            "developer-docs/identity/authentication/overview",
             {
               type: "category",
-              label: "Internet Identity (II)",
-              items:
-                [
-                  "developer-docs/identity/internet-identity/overview",
-                  "developer-docs/identity/internet-identity/creating-ii",
-                  "developer-docs/identity/internet-identity/integrate-internet-identity",
-                  "developer-docs/identity/internet-identity/alternative-origins",
-                ],
+              label: "Authentication",
+              items: [
+                "developer-docs/identity/authentication/overview",
+		        {
+	          type: "category",
+                  label: "Internet Identity (II)",
+	          items:
+              [
+              "developer-docs/identity/internet-identity/overview",
+              "developer-docs/identity/internet-identity/creating-ii",
+              "developer-docs/identity/internet-identity/integrate-internet-identity",
+              "developer-docs/identity/internet-identity/alternative-origins",
+              ],
             },
-            "developer-docs/identity/authentication/siwe",
-            "developer-docs/identity/authentication/nfid",
-            "developer-docs/identity/authentication/email-password",
-          ],
-        },
-      ],
-    },
+              "developer-docs/identity/authentication/siwe",
+              "developer-docs/identity/authentication/nfid",
+              "developer-docs/identity/authentication/email-password",
+              ],
+            },
+          {
+            type: "category",
+            label: "Verifiable credentials",
+            items: [
+              "developer-docs/identity/verifiable-credentials/overview",
+              "developer-docs/identity/verifiable-credentials/how-it-works",
+              "developer-docs/identity/verifiable-credentials/issuer",
+              "developer-docs/identity/verifiable-credentials/relying-party",
+            ],
+          },
+        ],
+      },
     {
       type: "category",
       label: "Security",
