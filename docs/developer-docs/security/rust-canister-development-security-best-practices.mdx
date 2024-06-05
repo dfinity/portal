@@ -491,7 +491,7 @@ This pattern can be extended e.g. to work for the following use cases:
 - A global lock that does not only lock per caller. For this, set a boolean flag in the canister state instead of using a `BTreeSet<Principal>`.
 - A guard that makes sure that only a limited number of principals are allowed to execute a method at the same time. For this, one can return an error in `CallerGuard::new()` in case `pending_requests.len() >= MAX_NUM_CONCURRENT_REQUESTS`.
 - A guard that limits the number of times a method can be called in parallel. For this, use a counter in the canister state that is checked and increased in `CallerGuard::new()` and decreased in `Drop`.
-- A guard that makes sure that every resource from a set of resources can only be processed once, independently of the caller who triggered the processing. [View example project](https://github.com/dfinity/examples/tree/master/rust/guards).
+- A guard that makes sure that every task from a set of tasks can only be processed once, independently of the caller who triggered the processing. [View example project](https://github.com/dfinity/examples/tree/master/rust/guards).
 - A lock that uses a different type than `Principal` to grant access to the resource. [View an implementation using generic types](./_attachments/lock.rs).
 
 Finally, note that the same guard can be used in several methods to restrict parallel execution of them.
