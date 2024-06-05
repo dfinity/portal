@@ -54,6 +54,27 @@ This table summarizes the key terminology differences between Ethereum and ICP:
   <td> SNS (ICP has a specific DAO framework named an [SNS](../../../../developer-docs/daos/sns/). However, DAOs can launch without using this framework) </td>
 </tr>
 
+In addition, ICP has implemented similar token standards as Ethereum:
+
+<table>
+<thead>
+<tr>
+  <th> Ethereum standard </th>
+  <th> ICP standard </th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+  <td> ERC-20 </td>
+  <td> [ICRC-1/ICRC-2](../../../../references/icrc1-standard) </td>
+</tr>
+
+<tr>
+  <td> ERC-721 </td>
+  <td> [ICRC-7](https://github.com/dfinity/ICRC/blob/icrc7-wg-draft/ICRCs/ICRC-7/ICRC-7.md) </td>
+</tr>
+
 ## Smart contract development comparison
 
 Both Ethereum and ICP allow developers to deploy programs that run on the blockchain. These programs are referred to as smart contracts in Ethereum and [canisters](../../../../developer-docs/smart-contracts/overview/) on ICP. Occasionally, the phrase “canister smart contracts” is also used on ICP.
@@ -66,6 +87,15 @@ This comparison provides an overview of the key differences in smart contract de
 **Ethereum**: Smart contracts are written in Solidity and deployed immutably onto the blockchain.
 **ICP**: Canisters can be written in any language that complies to WASM including [Rust](../../../../developer-docs/backend/rust/), [Typescript](../../../../developer-docs/backend/Typescript), [Motoko](../../../../developer-docs/backend/motoko/), and [Python](../../../../developer-docs/backend/python/).
 
+### Deployment
+**Ethereum**: Developers typically use development frameworks like Hardhat or Truffle to compile and deploy their smart contracts. 
+**ICP**: Developers use dfx which is a similar development environment. [DFX](../../../../developer-docs/getting-started/install/#installing-dfx-via-dfxvm) is a command-line tool that interacts with the IC SDK and allows developers to compile and deploy their canisters.
+
+### Testing
+
+**Ethereum**: Developers can utilize testnets such as Sepolia for deploying and testing smart contracts before deploying to the mainnet.
+**ICP**: Currently, testing is done in the local environment. A [playground environment](/docs/current/developer-tools/ide/playground.mdx) on mainnet is available for canisters, but deployment time is limited to 20 minutes. However, the ability to upgrade and delete canisters on the mainnet allows developers greater flexibility to iterate and refine their canisters.
+
 ### Paying for gas
 
 **Ethereum**: Users pay for gas fees directly using the crypto wallet they connect with the dapp.
@@ -74,11 +104,6 @@ This comparison provides an overview of the key differences in smart contract de
 ### Updates
 **Ethereum**: Smart contracts are immutable. To update functionalities, developers need to create a new smart contract and migrate data.
 **ICP**: Developers can create upgradeable or non-upgradable (also known as "blackholed") canisters. Upgradable canisters allow updates by reinstalling the code or deploying a new version. Non-upgradable canisters are similar to Ethereum smart contracts.
-
-### Testing
-
-**Ethereum**: Developers can utilize testnets such as Sepolia for deploying and testing smart contracts before deploying to the mainnet.
-**ICP**: Currently, testing is done in the local environment. A [playground environment](/docs/current/developer-tools/ide/playground.mdx) on mainnet is available for canisters, but deployment time is limited to 20 minutes. However, the ability to upgrade and delete canisters on the mainnet allows developers greater flexibility to iterate and refine their canisters.
 
 ## Resources
 
