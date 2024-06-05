@@ -30,6 +30,9 @@ This page is not an exhaustive list of supported chains. An ICP canister can int
 
 :::
 
+<Tabs groupId="chain">
+<TabItem value="bitcoin" label="Bitcoin" default>
+
 ## Bitcoin
 
 A Bitcoin address is a hash value. There are currently two types of Bitcoin addresses: P2SH and P2PKH. An address's full public key cannot be provided when sending transactions, so to redeem transactions sent to your Bitcoin address, you must provide both the transaction signature and the public key used to sign the transaction.
@@ -78,7 +81,11 @@ pub async fn get_p2pkh_address() -> String {
 
 ### Bitcoin addresses associated with Internet Identity
 
-By default, your Internet Identity will have a Bitcoin address that can be used to send and receive BTC. You can view this address by logging into the [NNS frontend dapp](https://nns.ic0.app/) with your [Internet Identity](/docs/current/developer-docs/web-apps/user-login/internet-identity/overview). 
+By default, your Internet Identity will have a Bitcoin address that can be used to send and receive BTC. You can view this address by logging into the [NNS frontend dapp](https://nns.ic0.app/) with your [Internet Identity](/docs/current/developer-docs/web-apps/user-login/internet-identity/overview).
+
+</TabItem>
+
+<TabItem value="ethereum" label="Ethereum">
 
 ## Ethereum
 
@@ -172,6 +179,10 @@ You can use this address to make Ethereum transactions from your canister.
 
 [Learn how to sign Ethereum transactions](/docs/current/developer-docs/multi-chain/ethereum/using-eth/signing-transactions).
 
+</TabItem>
+
+<TabItem value="other" label="Other chains">
+
 ## Other chains
 
 ICP canisters can create and manage wallet addresses for any blockchain that uses the ECDSA signature scheme. This signature scheme is used for chains such as Ethereum, EVM-compatible chains such as Polygon, and other non-EVM chains such as Sui.
@@ -249,4 +260,7 @@ export default Canister({
     })
 });
 ```
+
+</TabItem>
+</Tabs>
 
