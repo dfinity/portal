@@ -323,7 +323,7 @@ const RoadmapPage: React.FC = () => {
   function closeOverlay() {
     document.body.style.overflow = "";
     setOverlayOpen(false);
-    window.location.hash = "";
+    history.replaceState(null, "", " ");
   }
 
   const parseId = (id: string, separator = "-") => {
