@@ -104,6 +104,10 @@ Fill out this file:
 example_sns_init.yaml
 ```
 
+:::info
+If you see an error along the lines of "missing field \`Principals\` at line 4 column 1", it means you need to upgrade `dfx sns` to version 0.4.1 or later. The command to do so is `dfx extension install sns --version 0.4.1`. You may first need to remove the existing version of `dfx sns` by running `dfx sns uninstall sns`.
+:::
+
 ### 3. Submit NNS proposal to create SNS.
 
 Submit an NNS proposal that ingests the `example_sns_init.yaml` file from stage #2
