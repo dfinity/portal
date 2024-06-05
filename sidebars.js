@@ -559,6 +559,16 @@ const sidebars = {
               "developer-docs/identity/authentication/email-password",
               ],
             },
+          {
+            type: "category",
+            label: "Verifiable credentials",
+            items: [
+              "developer-docs/identity/verifiable-credentials/overview",
+              "developer-docs/identity/verifiable-credentials/how-it-works",
+              "developer-docs/identity/verifiable-credentials/issuer",
+              "developer-docs/identity/verifiable-credentials/relying-party",
+            ],
+          },
         ],
       },
     {
