@@ -333,15 +333,7 @@ async function processCoursesData(records) {
     })
   );
 
-  return courses.sort((a, b) => {
-    if (a.category === "Course" && b.category !== "Course") {
-      return -1;
-    } else if (a.category !== "Course" && b.category === "Course") {
-      return 1;
-    } else {
-      return 0;
-    }
-  });
+  return courses;
 }
 
 async function fetchOgImage(url) {
