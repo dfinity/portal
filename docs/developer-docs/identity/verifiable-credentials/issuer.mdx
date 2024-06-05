@@ -11,7 +11,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 ## Overview
 
-An **issuer** is a service or app that can issue a verifiable credential (VC) to a user. On ICP, an issuer is an exposed API that recieves calls from an identity provider and does not trigger any workflows itself. To become an issuer, your canister must implement the issuer API as described in [verifiable credential spec](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md).
+An **issuer** is a service or app that can issue a verifiable credential (VC) to a user. On ICP, an issuer is an exposed API that recieves calls from an identity provider and does not trigger any workflows itself. To become an issuer, your canister must implement the issuer API as described in the [verifiable credential spec](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md).
 
 Issuers receive credentials requests from relying partys through an identity provider such as Internet Identity (II). The end-user must allow or revoke the communication before the credential is issued.
 
@@ -21,11 +21,11 @@ Internet Identity is used as the identity provider in this tutorial.
 
 The issuer API consists of four endpoints:
 
-1. [`vc_consent_message`](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md#1-consent-message): Responds with a message of consent to be displayed to the user to receive their consent on issuing the credentials.
+1. [`vc_consent_message`](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md#1-consent-message): Responds with a message of consent to be displayed to the user to receive their approval of issuing the credentials.
 
 2. [`derivation_origin`](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md#2-derivation-origin): Returns the URL used to derive the user's principal for the issuer. 
 
-3. [`prepare_credential`](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md#3-prepare-credential): Check the validity of the request and prepare the actual credential requested.
+3. [`prepare_credential`](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md#3-prepare-credential): Checks the validity of the request and prepares the actual credential requested.
 
 4. [`get_credential`](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md#4-get-credential): Issues the actual credential requested by the user.
 
