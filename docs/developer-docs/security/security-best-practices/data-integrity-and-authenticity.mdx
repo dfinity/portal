@@ -14,7 +14,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ### Security concern
 
-The responses to [query calls](/references/ic-interface-spec.md#https-interface) (as opposed to update calls) are not threshold-signed by the canister/subnet. Thus, a single malicious replica or boundary node may change the data, violating its authenticity. This is especially risky if update calls depend on the response to query calls.
+The responses to [query calls](/docs/current/references/ic-interface-spec#http-interface) (as opposed to update calls) are not threshold-signed by the canister/subnet. Thus, a single malicious replica or boundary node may change the data, violating its authenticity. This is especially risky if update calls depend on the response to query calls.
 
 ### Recommendation
 
