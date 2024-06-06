@@ -17,8 +17,57 @@ import {
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
 import VideoCard from "../components/Common/VideoCard";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
+import BlobGradient from "@site/static/img/gradientBlurredCircle.webp";
+
+interface TrustCardProps {
+  imageSrc: string;
+  imageAlt: string;
+  title: string;
+  description: React.ReactNode;
+  link?: string;
+  linkText?: string;
+}
 
 const MotionLink = motion(Link);
+
+const trustCards = [
+  {
+    imageSrc: "/img/decentralized-ai/trust-icon-1.svg",
+    imageAlt: "Tamper-proofness icon",
+    title: "Tamper-proof",
+    description:
+      "Computation is replicated across multiple nodes and validated by consensus. There is no single point of trust.",
+  },
+  {
+    imageSrc: "/img/decentralized-ai/trust-icon-2.svg",
+    imageAlt: "Unstoppability icon",
+    title: "Unstoppable",
+    description:
+      "Smart contracts are censorship resistant as they are not controlled by a single entity or legislation.",
+  },
+  {
+    imageSrc: "/img/decentralized-ai/trust-icon-3.svg",
+    imageAlt: "Autonomy icon",
+    title: "Autonomous",
+    description:
+      "Smart contracts can be made immutable turning them into a permanent compute unit in cyberspace.",
+  },
+];
+
+const TrustCard: React.FC<TrustCardProps> = ({
+  imageSrc,
+  imageAlt,
+  title,
+  description,
+}) => (
+  <div className="flex flex-col text-white">
+    <img src={imageSrc} alt={imageAlt} className="w-3/10" />
+    <div className="mt-6 tw-heading-5 md:tw-heading-4 font-bold leading-8">
+      {title}
+    </div>
+    <div className="mt-2 text-base leading-6 font-[450]">{description}</div>
+  </div>
+);
 
 function InternetIdentityPage() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -40,8 +89,7 @@ function InternetIdentityPage() {
         <section className="bg-infinite text-white pt-20" ref={heroRef}>
           {bgDark && <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>}
 
-          <div className="container-10 pt-20 pb-12 sm:pb-0 md:pb-40 md:pt-36 relative">
-            <div className="blob blob-white blob-xl md:blob-xl md:blob-x-8 md:blob-y-10 opacity-100"></div>
+          <div className="container-10 pt-20 pb-12 sm:pb-0 md:pb-40 md:pt-36 relative ">
             <motion.h1
               className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-8/10"
               variants={transitions.item}
@@ -53,26 +101,13 @@ function InternetIdentityPage() {
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                Internet Identity redefines user experiences by removing
-                friction from the authentication journey and enabling data
-                sovereignty.
-              </motion.p>
-              <motion.p className="mb-0 gap-8" variants={transitions.item}>
-              <MotionLink
-                  className="button-white"
-                  href="https://identity.ic0.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variants={transitions.item}
-                >
-                  Go to Internet Identity
-                </MotionLink>
-                
+                Internet Identity is a decentralized federated service running
+                end-to-end on the Internet Computer.
               </motion.p>
             </div>
           </div>
           <div className="container-12 relative">
-            <div className="text-center md:w-5/10 relative md:absolute top-0 sm:top-40 md:top-0 translate-y-24 sm:translate-y-10 md:-translate-y-1/2 right-0 -mt-30 md:-mt-30">
+            <div className="text-center md:w-[45%] relative md:absolute top-0 sm:top-40 md:top-0 translate-y-24 sm:translate-y-10 md:-translate-y-8/12 right-0 -mt-36 md:-mt-30">
               <img
                 src="/img/internet-identity/internet-identity-hero.webp"
                 alt="Start building on Internet Identity"
@@ -83,14 +118,34 @@ function InternetIdentityPage() {
           </div>
         </section>
 
-        <section className="container-10 relative mt-24 sm:mt-52 md:mt-40">
-          <AnimateSpawn className="md:w-6/12" variants={transitions.container}>
-            <motion.h2
-              className="tw-heading-4 text-gradient md:tw-heading-60 mb-0"
-              variants={transitions.item}
-            >
-              Harness the full potential of digital identity
-            </motion.h2>
+        <section className="container-10 relative mt-40 sm:mt-52 md:mt-40 !pl-0	!pr-0">
+          <AnimateSpawn
+            className="md:flex md:items-center"
+            variants={transitions.container}
+          >
+            <div className="md:w-1/3">
+              <motion.h3 className="tw-heading-5 md:tw-heading-4">
+                Access dapps quickly and securely
+              </motion.h3>
+              <motion.p className="text-2xl mb-0 ">
+                Internet Identity is a self-sovereign single-sign on solution
+                for dapps built with smart contracts on the internet computer
+              </motion.p>
+            </div>
+            <div className="md:w-2/3 relative mt-6  md:mt-64 md:mb-64">
+              <div className="pointer-events-none md:absolute w-full  md:-right-24 md:top-1/2  md:-translate-y-1/2">
+                <motion.div
+                  className="absolute blob blob-white blob-md md:blob-lg blob-x-8 md:blob-x-9 blob-y-15 -z-1"
+                  variants={transitions.fadeIn}
+                ></motion.div>
+                <motion.img
+                  variants={transitions.fadeIn}
+                  src="/img/internet-identity/ecosystem.webp"
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </div>
           </AnimateSpawn>
         </section>
 
@@ -432,6 +487,48 @@ function InternetIdentityPage() {
           </TranslatedCardList>
         </section>
 
+        <AnimateSpawn variants={transitions.container}>
+          <section className="bg-infinite text-white pt-6 pb-20" ref={heroRef}>
+            <article className="container-10 mt-12 md:mt-20">
+              <h3 className="tw-heading-4 md:tw-heading-60  text-left md:text-center mb-0 md:w-9/10 md:mx-auto">
+                Issue verifiable credentials privately and efficiently
+              </h3>
+              <aside className="container-10 mt-12 md:mt-32 md:flex md:items-center !pl-0	!pr-0">
+                <div className="md:w-1/3">
+                  <motion.h3 className="tw-heading-5 md:tw-heading-4">
+                    Expand your audience
+                  </motion.h3>
+                  <motion.p className="text-2xl mb-0 ">
+                    When you port your existing issuer application to II or you
+                    develop a brand new issuer dapp from scratch, you gain
+                    access to a large pool of user and applications that already
+                    use internet identity. II currently features 2.5 million
+                    internet identities and 150,000 monthly active unique users.
+                  </motion.p>
+                </div>
+                <div className="md:w-2/3 relative mt-6  md:mt-64 md:mb-64">
+                  <div className="pointer-events-none md:absolute w-full  md:-right-24 md:top-1/2  md:-translate-y-1/2">
+                    <motion.div
+                      className="absolute blob blob-white blob-md md:blob-lg blob-x-8 md:blob-x-9 blob-y-15 -z-1"
+                      variants={transitions.fadeIn}
+                    ></motion.div>
+                    <motion.img
+                      variants={transitions.fadeIn}
+                      src="/img/decentralized-ai/trust-img-2.webp"
+                      alt=""
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                </div>
+              </aside>
+              <aside className="mt-20 md:mt-40 grid grid-cols-1 md:grid-cols-3 gap-x-[4.5rem] gap-y-20">
+                {trustCards.map((card, index) => (
+                  <TrustCard key={index} {...card} />
+                ))}
+              </aside>
+            </article>
+          </section>
+        </AnimateSpawn>
         <AnimateSpawn
           el={motion.section}
           variants={transitions.container}
@@ -516,7 +613,43 @@ function InternetIdentityPage() {
             </motion.div>
           </div>
         </AnimateSpawn>
-
+        <section className="text-white relative mb-48 mt-40 z-1">
+          <AnimateSpawn
+            className=" relative text-white"
+            variants={transitions.container}
+          >
+            <motion.div
+              className="blob blob-purple blob-sm blob-x-5 blob-y-9 z-[-1] md:blob-lg !opacity-90"
+              variants={transitions.fadeIn}
+            ></motion.div>
+            <motion.h2
+              className="tw-heading-3 text-center mb-2 w-full mx-auto md:tw-heading-60 md:mb-6 lg:w-6/12"
+              variants={transitions.item}
+            >
+              Build dapps with a secure authentication method
+            </motion.h2>
+            <motion.p className="md:tw-lead tw-lead-sm text-center text-white mt-6 lg:w-6/12 mx-auto">
+              Use Internet Identity as the authentication method for your dapp.
+            </motion.p>
+            <motion.div
+              className="flex justify-center gap-4 mt-8 md:mt-12 w-full mx-auto md:w-6/12 lg:w-5/12"
+              variants={transitions.item}
+            >
+              <MotionLink
+                className="link-primary !text-white select-none hover:!text-white/70"
+                href="/docs/current/developer-docs/identity/internet-identity/overview"
+              >
+                <LinkArrowRight /> Read the docs
+              </MotionLink>
+              <MotionLink
+                className="link-primary !text-white select-none hover:!text-white/70"
+                href="https://github.com/dfinity/internet-identity/tree/main/demos/using-dev-build"
+              >
+                <LinkArrowRight /> Start Building
+              </MotionLink>
+            </motion.div>
+          </AnimateSpawn>
+        </section>
         <AnimateSpawn
           className="container-10 pt-20 md:pt-30"
           el={motion.section}
