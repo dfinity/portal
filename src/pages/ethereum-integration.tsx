@@ -22,13 +22,13 @@ const projects = [
     imgSrc: "img/ethereum-integration/bitfinity.webp",
     title: "Bitfinity",
     description:
-      "Bitfinity is a fast, next-generation EVM that allows you to deploy smart contracts written in Solidity on the IC",
+      "Bitfinity is a fast, next-generation EVM that allows you to deploy smart contracts written in Solidity on ICP.",
     link: "https://bitfinity.network/",
   },
   {
     imgSrc: "img/ethereum-integration/msq.webp",
     title: "MSQ",
-    description: "Masquerade (MSQ) is a Matamask Snap based wallet.",
+    description: "Masquerade (MSQ) is a Metamask Snap based wallet that supports ICRC-1 payments.",
     link: "https://msq.tech/",
   },
   {
@@ -36,7 +36,7 @@ const projects = [
     altText: "zCloak Logo",
     title: "zCloak",
     description:
-      "zCloak network is developing a chain abstraction based Zero Knowledge coprocessor on the IC.",
+      "zCloak network is developing a chain abstraction-based zero knowledge co-processor on ICP.",
     link: "https://zcloak.network/",
   },
   {
@@ -44,7 +44,7 @@ const projects = [
     altText: "SIWE Logo",
     title: "SIWE",
     description:
-      "Sign In With Ethereum(SIWE)is a collection of support libraries and template dapps to simplify the process for Ethereum developers to enable sign in with the EIP-4361 standard.",
+      "Sign In With Ethereum(SIWE) is a collection of support libraries and template dapps to simplify the process for Ethereum developers to enable sign in with the EIP-4361 standard.",
     link: "https://github.com/kristoferlund/ic-siwe/tree/main/packages/ic_siwe",
   },
   {
@@ -52,7 +52,7 @@ const projects = [
     altText: "Helix Logo",
     title: "Helix",
     description:
-      "Helix Markets stands out as a groundbreaking hybrid spot orderbook decentralized exchange (DEX) meticulously crafted on the Internet Computer (IC) protocol.",
+      "Helix Markets stands out as a groundbreaking hybrid spot orderbook decentralized exchange (DEX) meticulously crafted on ICP.",
     link: "https://helixmarkets.io",
   },
   {
@@ -60,7 +60,7 @@ const projects = [
     altText: "Orally Logo",
     title: "Orally",
     description:
-      "Orally is a decentralized data oracle provider. The goal of Orally’s suite of products is to make digital asset data and real world data accessible on-chain.",
+      "Orally is a decentralized data oracle provider. The goal of Orally's suite of products is to make digital asset data and real world data accessible on-chain.",
     link: "https://orally.network/",
   },
   {
@@ -295,10 +295,10 @@ function EthereumIntegrationPage() {
               className="mb-0 tw-paragraph md:tw-lead-sm"
               variants={transitions.item}
             >
-              Ethereum is the world’s top blockchain for DeFi with TVL in the
+              Ethereum is the world's top blockchain for DeFi with TVL in the
               billions. Integrating with ICP offers cross-chain benefits such as
               increased asset liquidity, expanded market access, improved
-              scalability and throughput. Plus, access to ICP’s unique
+              scalability and throughput. Plus, access to ICP's unique
               capabilities:
               {/* <Link
                 className="link-primary link-with-icon"
@@ -340,7 +340,7 @@ function EthereumIntegrationPage() {
               <h3 className="sm:tw-heading-5 mb-2">Gasless token swaps</h3>
               <p className="tw-paragraph mb-0">
                 Using ckETH and ckERC-20 tokens, users can swap tokens for a few
-                cents with 0 gas fees.
+                cents without gas fees.
               </p>
             </motion.div>
             <motion.div
@@ -354,7 +354,7 @@ function EthereumIntegrationPage() {
               ></img>
               <h3 className="sm:tw-heading-5 mb-2">Web2 integration</h3>
               <p className="tw-paragraph mb-0">
-                Connect smart contracts to the world outside blockchain. Fetch
+                Connect smart contracts to the world outside of blockchains. Fetch
                 real-time price data and more from Web2.
               </p>
             </motion.div>
@@ -487,21 +487,21 @@ function EthereumIntegrationPage() {
         >
           <div className="container-10 ">
             <h2 className="mb-8 tw-heading-3 md:tw-heading-60">
-              Build your own Ethereum
+              Take a deep dive into
               <br />
-              X-chain solution
+              Chain Fusion
             </h2>
 
             <VideoCard
-              image="https://i.ytimg.com/vi/ZI5I36aioVw/maxresdefault.jpg"
-              link="https://www.youtube.com/watch?v=ZI5I36aioVw"
+              image="https://i.ytimg.com/vi/ZmX0vqTCS7M/maxresdefault.jpg"
+              link="https://www.youtube.com/watch?v=ZmX0vqTCS7M"
               label="Tutorial"
-              title="Interacting with Ethereum"
+              title="ICP Chain Fusion Educate: A Technical Dive into Chain Fusion"
               description={
                 <>
-                  Interacting with Ethereum on the Internet Computer (Beta)
+                  This workshop focuses on the technical
                   <br />
-                  // Workshop
+                  aspects of ICP's Chain Fusion technology.
                 </>
               }
             />
@@ -522,8 +522,8 @@ function EthereumIntegrationPage() {
               className="mb-0 tw-paragraph md:tw-lead-sm"
               variants={transitions.item}
             >
-              Ethereum on ICP is not just a future promise. Developers are
-              already building incredible use cases with Ethereum on ICP.
+              Join the other developers
+              building incredible use cases with Ethereum on ICP.
             </motion.p>
           </AnimateSpawn>
           <AnimateSpawn
@@ -541,7 +541,7 @@ function EthereumIntegrationPage() {
               className="button-primary text-center mb-6 md:mb-8"
               href="/ecosystem?tag=Ethereum"
             >
-              More Projects Building on Ethereum
+              More projects building on Ethereum
             </Link>
           </div>
         </section>
@@ -552,25 +552,25 @@ function EthereumIntegrationPage() {
             variants={transitions.container}
           >
             <CardWithDescription
-              title="ETH starter tutorial"
+              title="Learn about the EVM RPC canister"
               description=""
-              href="/docs/current/tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial"
+              href="/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/how-it-works"
             />
 
             <CardWithDescription
-              title="Code ckETH"
+              title="Learn about ckETH"
               description=""
-              href="https://github.com/dfinity/ic/tree/master/rs/ethereum/cketh"
+              href="/docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview"
             />
             <CardWithDescription
-              title="DeFi sample code"
+              title="Developer workflow for ETH devs on ICP"
               description=""
-              href="/samples?selectedDomains=Asynchronous+DeFi"
+              href="/docs/current/developer-docs/multi-chain/ethereum/using-eth/eth-dev-workflow"
             />
             <CardWithDescription
-              title="Get inspired by ETH projects on ICP"
+              title="Get started building with Ethereum on ICP"
               description=""
-              href="/ecosystem?tag=Ethereum"
+              href="/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister"
             />
             <motion.div
               className="blob blob-purple blob-md blob-x-5 blob-y-7 z-[-1] md:blob-lg"
