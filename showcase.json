@@ -1,5 +1,19 @@
 [
   {
+    "id": "yuku",
+    "name": "Yuku",
+    "oneLiner": "Yuku, your gateway to NFTs, Metaverse, and GameFi!",
+    "website": "https://yuku.app/",
+    "tags": ["NFT", "Games", "DAO", "Metaverse"],
+    "display": "Large",
+    "stats": "35,222+ users",
+    "twitter": "https://twitter.com/yukuapp",
+    "description": "Unlock Limitless Potential: Yuku, Your Gateway to NFTs,Metaverse, and GameFi!",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/yuku_logo.png",
+    "screenshots": ["/img/showcase/yuku_screenshot.webp"]
+  },
+  {
     "id": "helix",
     "name": "Helix Markets",
     "oneLiner": "Bringing true ownership and full transparency to crypto trading",
@@ -627,21 +641,20 @@
     ]
   },
   {
-    "id": "modclub",
-    "name": "Modclub",
-    "oneLiner": "The world's first AI-powered Web3 crowdwork platform",
-    "website": "https://modclub.ai",
-    "twitter": "https://twitter.com/ModclubApp",
+    "id": "decideai",
+    "name": "DecideAI",
+    "oneLiner": "A fullstack decentralized AI platform",
+    "website": "https://decideai.xyz",
+    "twitter": "https://twitter.com/DecideAI_",
     "tags": [
-      "SocialFi",
-      "Tools / Infrastructure"
+      "AI", "Tools / Infrastructure"
     ],
-    "stats": "20,000+ tasks completed",
-    "description": "Modclub is an AI-enhanced decentralized crowdwork platform that handles resource-intensive tasks such as moderation, user verification and data labeling.",
+    "stats": "50,000+ inference requests",
+    "description": "DecideAI is an ecosystem that consists of three products, Decide Protocol, Decide ID, and Decide Cortex, designed to meet the needs of the high-end, specialized LLM market.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/modclub_logo.webp",
+    "logo": "/img/showcase/decideai_logo.png",
     "screenshots": [
-      "/img/showcase/modclub_screenshot_0.webp"
+      "/img/showcase/decideai_screenshot_0.png"
     ],
     "github": "https://github.com/modclub-app"
   },
@@ -4024,22 +4037,6 @@
     "display": "Normal",
     "logo": "/img/showcase/myordinalsloan_logo.png",
     "submittableId": "41341564"
-  },
-  {
-    "id": "yuku",
-    "name": "Yuku",
-    "oneLiner": "An AI Web3 Platform featuring NFT Aggregator, 3D space, and AI Avatar integration.",
-    "website": "https://yuku.app/",
-    "tags": [
-      "DAO",
-      "SocialFi",
-      "NFT"
-    ],
-    "twitter": "https://twitter.com/yukuapp",
-    "description": "An AI Web3 Platform featuring NFT Aggregator, 3D space, and AI Avatar integration.",
-    "usesInternetIdentity": true,
-    "display": "Normal",
-    "logo": "/img/showcase/yuku_logo.png"
   },
   {
     "id": "icto",
