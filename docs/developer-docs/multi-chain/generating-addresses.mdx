@@ -96,9 +96,9 @@ Not sure if a chain is EVM-compatible? Check [ChainList](https://chainlist.org/)
 
 Wallet and contract addresses can be queried using the [EVM RPC canister](/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister).
 
-#### Generating an ETH address
+#### Generating an ETH or EVM address
 
-To create an ETH address for your canister, first you will need to obtain an ECDSA public key associated to your canister. You can get this key by calling the `ecdsa_public_key` API method of the management canister:
+To create an ETH or EVM address for your canister, first you will need to obtain an ECDSA public key associated to your canister. You can get this key by calling the `ecdsa_public_key` API method of the management canister:
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
