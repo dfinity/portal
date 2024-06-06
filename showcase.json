@@ -650,7 +650,7 @@
       "DeAI",
       "Tools / Infrastructure"
     ],
-    "stats": "50,000+ inference requests made",
+    "stats": "50,000+ inference requests",
     "description": "DecideAI is an ecosystem that consists of three products, Decide Protocol, Decide ID, and Decide Cortex, designed to meet the needs of the high-end, specialized LLM market.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/decideai_logo.png",
