@@ -517,6 +517,8 @@ const redirects = `
   /docs/current/developer-docs/web-apps/user-login/email-password /docs/current/developer-docs/identity/authentication/email-password
   /docs/current/developer-docs/multi-chain/ethereum/using-eth/siwe /docs/current/developer-docs/identity/authentication/siwe
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/defi/icrc-1/using-icrc1-ledger /docs/current/developer-docs/defi/tokens/indexes
+  /docs/current/defi/icp-tokens/icp-index-local-setup /docs/current/developer-docs/defi/tokens/indexes
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
