@@ -641,21 +641,20 @@
     ]
   },
   {
-    "id": "modclub",
-    "name": "Modclub",
-    "oneLiner": "The world's first AI-powered Web3 crowdwork platform",
-    "website": "https://modclub.ai",
-    "twitter": "https://twitter.com/ModclubApp",
+    "id": "decideai",
+    "name": "DecideAI",
+    "oneLiner": "A fullstack decentralized AI platform",
+    "website": "https://decideai.xyz",
+    "twitter": "https://twitter.com/DecideAI_",
     "tags": [
-      "SocialFi",
-      "Tools / Infrastructure"
+      "AI", "Tools / Infrastructure"
     ],
-    "stats": "20,000+ tasks completed",
-    "description": "Modclub is an AI-enhanced decentralized crowdwork platform that handles resource-intensive tasks such as moderation, user verification and data labeling.",
+    "stats": "50,000+ inference requests",
+    "description": "DecideAI is an ecosystem that consists of three products, Decide Protocol, Decide ID, and Decide Cortex, designed to meet the needs of the high-end, specialized LLM market.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/modclub_logo.webp",
+    "logo": "/img/showcase/decideai_logo.png",
     "screenshots": [
-      "/img/showcase/modclub_screenshot_0.webp"
+      "/img/showcase/decideai_screenshot_0.png"
     ],
     "github": "https://github.com/modclub-app"
   },
