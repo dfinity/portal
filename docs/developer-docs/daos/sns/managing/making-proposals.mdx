@@ -30,7 +30,7 @@ In some cases, this method is on the SNS governance itself and in other cases, t
 
 ### Submitting via `sns make-proposal` command
 
-Any eligible neuron can submit a proposal. Therefore, the command to [submit a proposal](https://github.com/dfinity/quill/blob/master/docs/cli-reference/sns/quill-sns-make-proposal.md)
+Any eligible neuron can submit a proposal. Therefore, the command to [submit a proposal](/docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-make-proposal)
 `sns make-proposal` is a `ManageNeuron` message. With this command, neuron holders can submit proposals (such as a `Motion` proposal) to be voted on by other neuron holders.
 
 The structure of the commands is as follows:
@@ -95,7 +95,7 @@ This guide will not repeat the `export PROPOSAL_NEURON_ID` and `export PEM_FILE`
 
 ## Proposal types
 
-This article describes the different kinds of proposals that can be submitted to an SNS: [Native propoposals](#native-proposals) and [generic proposals](#generic-proposals).
+This article describes the different kinds of proposals that can be submitted to an SNS: [Native proposals](#native-proposals) and [generic proposals](#generic-proposals).
 
 ## Native proposals
 
@@ -237,7 +237,7 @@ quill send message.json
 
 ### `RegisterDappCanisters`
 
-An SNS controls a set of dapp cansiters. An SNS community can decide that new dapps should be added to the SNS' control.
+An SNS controls a set of dapp canisters. An SNS community can decide that new dapps should be added to the SNS' control.
 The proposal `RegisterDappCanisters` allows the SNS to accept the control of a set of new dapp canisters. The new canisters that should be registered are identified by their canister ID and it is allowed to register a list of canisters (not just a single one).
 
 #### Relevant type signatures
@@ -474,7 +474,7 @@ The proposal `UpgradeSnsControlledCanister` is to upgrade a dapp canister that i
 ```
 
 :::warning
-Because this proposal requires passing wasm, which is unwieldy to copy/paste into the command line as binary, it is recommended that developers use the specially-made [`make-upgrade-canister-proposal`](https://github.com/dfinity/quill/blob/master/docs/cli-reference/sns/quill-sns-make-upgrade-canister-proposal.md) command in `quill sns`.
+Because this proposal requires passing wasm, which is unwieldy to copy/paste into the command line as binary, it is recommended that developers use the specially-made [`make-upgrade-canister-proposal`](/docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-make-proposal) command in `quill sns`.
 
 
 ```bash
@@ -491,7 +491,7 @@ quill send message.json
 
 ### `ManageSnsMetadata`
 
-Each SNS has metadata that defines the SNS project and includes a URL, e.g., under which the main dapp canister can be found, a logo, a name, and a description summarizing the purpose of the projects. This metadata can be updated at any time, for example if there is a rebranding for the associated project. To do so, the SNS DAO can use the proposal  `ManageSnsMetadata` which defines all of the below attributes.
+Each SNS has metadata that defines the SNS project and includes a URL, e.g., under which the main dapp canister can be found, a logo, a name, and a description summarizing the purpose of the projects. This metadata can be updated at any time, for example if there is a re-branding for the associated project. To do so, the SNS DAO can use the proposal  `ManageSnsMetadata` which defines all of the below attributes.
 
 #### Relevant type signatures
 
@@ -604,7 +604,7 @@ quill send message.json
 ### `ManageLedgerParameters`
 The proposal `ManageLedgerParameters` can be used to update some of the SNS ledger canister's parameters.
 The ledger parameters that can be changed are the transfer fee, the token symbol, the token name, and the token logo.
-Later, additional paramters might be added.
+Later, additional parameters might be added.
 Fields where a value is set to `None` will remain unchanged.
 
 #### Relevant type signatures
@@ -734,7 +734,7 @@ There are a few important, security-critical considerations to make when adding 
 * **If inter-canister calls cannot be avoided, try to limit them to the last operation of your validator and target methods.** A prominent source of bugs with inter-canister calls is to check a condition, then apply an inter-canister call, and then execute code that relies on this condition. This is called TOCTOU-bug: the status of the system has changed between the time of check and time of use of a condition. One way to avoid that a checking and using of a condition are separated by an inter-canister call is to defer all inter-canister calls to the very end of the method.
 * **If the above is also not possible, implement a lock to avoid re-entrancy bugs.** If the above two recommendations cannot be applied, implement a lock to ensures that no method that would change a relevant condition can be executing during the validator and target method.
 
-See more [general security best practices](https://github.com/dfinity/portal/blob/master/docs/developer-docs/security/general-security-best-practices.md).
+See more [general security best practices](/docs/current/developer-docs/security/general-security-best-practices).
 
 ### Adding/removing generic proposals
 
@@ -833,7 +833,7 @@ This *native proposal* type is used to **execute** a *generic functions* as *gen
 
 After a generic proposal has been registered with a `AddGenericNervousSystemFunction` proposal, such a proposal can be submitted with a `ExecuteGenericNervousSystemFunction` proposal.
 The proposal identifies the previously added generic proposal by an ID (so called `function_id`) and, in addition, defines a payload.
-Upon submission of such a proposal, the defined validation method is called, which checks that the given payload is valid for this kind of proposal (the method that will be called for this is the method `validator_method_name` on the canister `validator_canister_id` as it was defined when the generic proposal was added. If this validation is successful, the proposal will be created.
+Upon submission of such a proposal, the defined validation method is called, which checks that the given payload is valid for this kind of proposal (the method that will be called for this is the method `validator_method_name` on the canister `validator_canister_id` as it was defined when the generic proposal was added). If this validation is successful, the proposal will be created.
 
 Later, if the proposal is adopted, the SNS governance canister will call the method `target_method_name` on the canister `target_canister_id` (as also define in the generic proposal) with the payload defined here.
 
