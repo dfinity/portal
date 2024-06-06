@@ -23,6 +23,7 @@ const tags = [
   "Games",
   "DAO",
   "Enterprise",
+  "DeAI",
 ];
 
 function isString(value) {
