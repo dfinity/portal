@@ -15,11 +15,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 Developers on ICP can create canisters and dapps that interact directly with the Bitcoin mainnet and testnet networks through ICP's direct integration with Bitcoin. To use this integration, developers must implement a specific workflow to prepare transactions and submit them to the Bitcoin network. Developers can also integrate and interact with chain-key Bitcoin (ckBTC) from within a canister, which uses the ICRC-1 token implementation.
 
-## Using the Bitcoin intergation
+## Using the Bitcoin integration
 
 To interact with the Bitcoin testnet or mainnet networks, a developer needs to use both the management canister and Bitcoin integration API to complete the following steps:
 
-1. [Generate a Bitcoin address](generate-addresses.mdx): To submit transactions to the Bitcoin network, first your canister must generate a Bitcoin address using the `ecdsa_public_key` API endpoint of the [management canister](/docs/current/developer-docs/smart-contracts/advanced-features/management-canister#signing-and-submitting-bitcoin-transactions).
+1. [Generate a Bitcoin address](/docs/current/developer-docs/multi-chain/generating-addresses): To submit transactions to the Bitcoin network, first your canister must generate a Bitcoin address using the `ecdsa_public_key` API endpoint of the [management canister](/docs/current/developer-docs/smart-contracts/advanced-features/management-canister#signing-and-submitting-bitcoin-transactions).
 
 2. [Sign a transaction](sign-transactions.mdx): Next, a transaction must be signed using the `sign_with_ecdsa` API endpoint of the [management canister](/docs/current/developer-docs/smart-contracts/advanced-features/management-canister#signing-and-submitting-bitcoin-transactions) and an ECDSA public key. Transactions cannot be sent to the Bitcoin network until they are signed.
 
@@ -45,7 +45,7 @@ ckBTC and other chain-key tokens can be interacted with in the same manner as ot
 
 - [Local development](local-development.mdx).
 
-- [Generating addresses](generate-addresses.mdx).
+- [Generating addresses](/docs/current/developer-docs/multi-chain/generating-addresses).
 
 - [Signing transactions](sign-transactions.mdx).
 
