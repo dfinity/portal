@@ -242,7 +242,7 @@ function EthereumIntegrationPage() {
                     className="tw-heading-5 md:tw-heading-4 mb-3 sm:mb-6 "
                     variants={transitions.item}
                   >
-                    Tritium Milestone is now live!
+                    Tritium milestone is now live!
                   </motion.h5>
 
                   <motion.ul
@@ -256,7 +256,7 @@ function EthereumIntegrationPage() {
                       Threshold ECDSA signing latency & throughput improvements
                     </li>
                     <li className="mb-2">
-                      Chain-key ERC20 (ckERC20) tokens & ckUSDC
+                      Chain-key ERC20 (ckERC20) tokens & stablecoins such as ckUSDC
                     </li>
                   </motion.ul>
                   <p className="mb-0 mt-8">
