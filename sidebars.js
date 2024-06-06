@@ -571,23 +571,68 @@ const sidebars = {
           items: [
             {
               type: "doc",
-              label: "General",
-              id: "developer-docs/security/general-security-best-practices",
+              label: "Overview",
+              id: "developer-docs/security/security-best-practices/overview",
             },
             {
               type: "doc",
-              label: "Rust",
-              id: "developer-docs/security/rust-canister-development-security-best-practices",
+              label: "Inter-canister calls",
+              id: "developer-docs/security/security-best-practices/inter-canister-calls",
             },
             {
               type: "doc",
-              label: "Web apps",
-              id: "developer-docs/security/web-app-development-security-best-practices",
+              label: "Identity and access management",
+              id: "developer-docs/security/security-best-practices/iam",
+            },
+            {
+              type: "doc",
+              label: "Decentralization",
+              id: "developer-docs/security/security-best-practices/decentralization",
+            },
+            {
+              type: "doc",
+              label: "Data integrity and authenticity",
+              id: "developer-docs/security/security-best-practices/data-integrity-and-authenticity",
+            },
+            {
+              type: "doc",
+              label: "Data storage",
+              id: "developer-docs/security/security-best-practices/data-storage",
+            },
+            {
+              type: "doc",
+              label: "HTTP outcalls",
+              id: "developer-docs/security/security-best-practices/http-outcalls",
+            },
+            {
+              type: "doc",
+              label: "Denial of Service",
+              id: "developer-docs/security/security-best-practices/dos",
+            },
+            {
+              type: "doc",
+              label: "Randomness",
+              id: "developer-docs/security/security-best-practices/randomness",
+            },
+            {
+              type: "doc",
+              label: "Canister upgrades",
+              id: "developer-docs/security/security-best-practices/canister-upgrades",
+            },
+            {
+              type: "doc",
+              label: "Observability and Monitoring",
+              id: "developer-docs/security/security-best-practices/observability-and-monitoring",
+            },
+            {
+              type: "doc",
+              label: "Miscellaneous",
+              id: "developer-docs/security/security-best-practices/misc",
             },
             {
               type: "doc",
               label: "Important resources",
-              id: "developer-docs/security/security-best-practices-references",
+              id: "developer-docs/security/security-best-practices/resources",
             },
           ],
         },

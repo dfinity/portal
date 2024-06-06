@@ -734,7 +734,7 @@ There are a few important, security-critical considerations to make when adding 
 * **If inter-canister calls cannot be avoided, try to limit them to the last operation of your validator and target methods.** A prominent source of bugs with inter-canister calls is to check a condition, then apply an inter-canister call, and then execute code that relies on this condition. This is called TOCTOU-bug: the status of the system has changed between the time of check and time of use of a condition. One way to avoid that a checking and using of a condition are separated by an inter-canister call is to defer all inter-canister calls to the very end of the method.
 * **If the above is also not possible, implement a lock to avoid re-entrancy bugs.** If the above two recommendations cannot be applied, implement a lock to ensures that no method that would change a relevant condition can be executing during the validator and target method.
 
-See more [general security best practices](https://github.com/dfinity/portal/blob/master/docs/developer-docs/security/general-security-best-practices.md).
+See more [security best practices](/docs/current/developer-docs/security/security-best-practices/overview).
 
 ### Adding/removing generic proposals
 

@@ -1,0 +1,41 @@
+---
+sidebar_position: 5
+sidebar_label: Data integrity and authenticity
+keywords: [security, concept]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Security best practices: Data integrity and authenticity
+
+<MarkdownChipRow labels={["Security", "Concept"]} />
+
+## Certify query responses if they are relevant for security
+
+### Security concern
+
+The responses to [query calls](/references/ic-interface-spec.md#https-interface) (as opposed to update calls) are not threshold-signed by the canister/subnet. Thus, a single malicious replica or boundary node may change the data, violating its authenticity. This is especially risky if update calls depend on the response to query calls.
+
+### Recommendation
+
+-   All security-relevant query response data that needs authenticity guarantees (this needs to be assessed for each dapp) should be certified by ICP using certified variables. Consider using existing data structures such as [certified-map](https://github.com/dfinity/cdk-rs/tree/main/library/ic-certified-map). The data certification must be validated in the frontend.
+
+-   Alternatively, these calls have to be issued as update calls by the caller (e.g. in agent-js), but that impacts performance: it takes a few seconds. Note that every query can also be issued as an update by the caller.
+
+-   Examples are asset certification in [Internet Identity](https://github.com/dfinity/internet-identity/blob/b29a6f68bbe5a49d048e12bc7a3263a9f43d080b/src/internet_identity/src/main.rs#L775-L808), [NNS dapp](https://github.com/dfinity/nns-dapp/blob/372c3562127d70c2fde059bc9c268e8ae858583e/rs/src/assets.rs#L121-L145), or the [canister signature implementation in Internet Identity](https://github.com/dfinity/internet-identity/blob/main/src/internet_identity/src/signature_map.rs).
+
+## Use HTTP asset certification and avoid serving your dapp through `raw.icp0.io`
+
+### Security concern
+
+Dapps on ICP can use [asset certification](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification) to make sure the HTTP assets delivered to the browser are authentic (i.e. threshold-signed by the subnet). If an app does not do asset certification, it can only be served insecurely through `raw.icp0.io` , where no asset certification is checked. This is insecure since a single malicious node or boundary node can freely modify the assets delivered to the browser.
+
+If an app is served through `raw.icp0.io` in addition to `icp0.io`, an adversary may trick users (phishing) into using the insecure raw.icp0.io.
+
+### Recommendation
+
+- Only serve assets through `<canister-id>.icp0.io` where the boundary nodes enforce response verification on the served assets. Do not serve through `<canister-id>.raw.icp0.io`.
+
+- Serve assets using the asset canister (which creates asset certification automatically), or add the `ic-certificate` header including the asset certification as e.g. done in the [NNS dapp](https://github.com/dfinity/nns-dapp) or [Internet Identity](https://github.com/dfinity/internet-identity).
+
+- Check in the canister’s `http_request` method if the request came through raw. If so, return an error and do not serve any assets.

@@ -1,0 +1,147 @@
+---
+sidebar_position: 12
+sidebar_label: Miscellaneous
+keywords: [security, concept]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Security best practices: Miscellaneous
+
+<MarkdownChipRow labels={["Security", "Concept"]} />
+
+## Data confidentiality on the Internet Computer
+
+### Security concern
+
+When storing data on the Internet Computer, there are two levels of data access.
+
+1. Nodes are able to read all data that is stored on a subnet. This includes all messages sent to or from a canister, along with all data stored in a canister. This means a node could extract all data available to a canister. This will change with the implementation of TEE-based security for nodes.
+
+2. End user clients can only access whatever data that nodes and canisters have made available to them. If the subnet's nodes do not misbehave and leak data, clients can only read the responses to ingress messages and queries that they have sent. The canister decides what data is exposed to the client.
+
+Partial information on data that is stored in the subnet state tree will always leak. Therefore, data with a low-entropy value may entirely leak and be fully exposed, such as a Boolean value that can only be either "True" or "False". Leakage on data with a high-entropy is negligible.
+
+There are two types of user-related data that may be stored in the subnet state tree. The first is when a user sends an ingress message to a canister, the message hash and the response are both stored in the subnet state tree to be retrieved securely by the client. The ingress message should contain a high-entropy nonce that is implemented by the agent and typically not exposed to the user. The message response is determined by the canister and may not contain a high-entropy value. If the canister response consists of a low-entropy value, then the data may be leaked to users other than the ingress message sender.
+
+The second type of user-related data is certified variables maintained by a canister that are also exposed through the subnet state tree. If a canister places low-entropy data into the state tree, then the data may leak to users who should not have access to that piece of data.
+
+### Recommendation
+
+For developers that need to protect the confidentiality of their data against external users, they should ensure that data in the subnet state tree has a sufficient level of entropy. 128 bits is recommended. If the data does not have enough entropy itself, then adding some artificial data using randomness would be recommended.
+
+In particular, a canister can ensure that responses to ingress messages do not leak data to external users, other than the sender, by including high-entropy data in the response. Or, a canister can ensure that data in certified variables is not leaked by adding high-entropy data to the variables that should be kept confidential.
+
+Additionally, similarly to ingress message responses, a canister's private custom sections that contain low-entropy data could leak to unauthorized users. Therefore, a sufficent level of entropy for canister private custom sections should be used. 128 bits is recommended. If the data does not have enough entropy itself, then adding some artificial data using randomness would be recommended.
+
+## Test your canister code even in presence of system API calls
+
+### Security concern
+
+Since canisters interact with the system API, it is harder to test the code because unit tests cannot call the system API. This may lead to lack of unit tests.
+
+### Recommendation
+
+- Create loosely coupled modules that do not depend on the system API and unit test those. See this [recommendation](https://mmapped.blog/posts/01-effective-rust-canisters.html#target-independent) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)).
+
+- For the parts that still interact with the system API: create a thin abstraction of the System API that is faked in unit tests. See the [recommendation](https://mmapped.blog/posts/01-effective-rust-canisters.html#target-independent) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)). For example, one can implement a ‘Runtime’ as follows and then use the ‘MockRuntime’ in tests (code by Dimitris Sarlis):
+
+<!-- -->
+```rust
+use ic_cdk::api::{
+    call::call, caller, data_certificate, id, print, time, trap,
+};
+
+#[async_trait]
+pub trait Runtime {
+    fn caller(&self) -> Result<Principal, String>;
+    fn id(&self) -> Principal;
+    fn time(&self) -> u64;
+    fn trap(&self, message: &str) -> !;
+    fn print(&self, message: &str);
+    fn data_certificate(&self) -> Option<Vec<u8>>;
+    (...)
+}
+
+#[async_trait]
+impl Runtime for RuntimeImpl {
+    fn caller(&self) -> Result<Principal, String> {
+        let caller = caller();
+        // The anonymous principal is not allowed to interact with the canister.
+        if caller == Principal::anonymous() {
+            Err(String::from(
+                "Anonymous principal not allowed to make calls.",
+            ))
+        } else {
+            Ok(caller)
+        }
+    }
+
+    fn id(&self) -> Principal {
+        id()
+    }
+
+    fn time(&self) -> u64 {
+        time()
+    }
+
+    (...)
+
+}
+
+pub struct MockRuntime {
+    pub caller: Principal,
+    pub canister_id: Principal,
+    pub time: u64,
+    (...)
+}
+
+#[async_trait]
+impl Runtime for MockRuntime {
+    fn caller(&self) -> Result<Principal, String> {
+        Ok(self.caller)
+    }
+
+    fn id(&self) -> Principal {
+        self.canister_id
+    }
+
+    fn time(&self) -> u64 {
+        self.time
+    }
+
+    (...)
+
+}
+```
+
+## Make canister builds reproducible
+
+### Security concern
+
+It should be possible to verify that a canister does what it claims to do. ICP provides a SHA256 hash of the deployed WASM module. In order for this to be useful, the canister build has to be reproducible.
+
+### Recommendation
+
+Make canister builds reproducible. See this [recommendation](https://mmapped.blog/posts/01-effective-rust-canisters.html#reproducible-builds) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)). See also the [developer docs on this](/docs/current/developer-docs/smart-contracts/test/reproducible-builds).
+
+## Don’t rely on time being strictly monotonic
+
+### Security concern
+
+The time read from the System API is monotonic, but not strictly monotonic. Thus, two subsequent calls can return the same time, which could lead to security bugs when the time API is used.
+
+### Recommendation
+
+See the "Time is not strictly monotonic" section in [how to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister).
+
+## Rust: Avoid floating point arithmetic for financial information
+
+### Security concern
+
+Floats in Rust may behave unexpectedly. There can be undesirable loss of precision under certain circumstances. When dividing by zero, the result could be `-inf`, `inf`, or `NaN`. When converting to integer, this can lead to unexpected results. (There is no `checked_div` for floats.)
+
+### Recommendation
+
+Use [`rust_decimal::Decimal`](https://docs.rs/rust_decimal/latest/rust_decimal/) or [`num_rational::Ratio`](https://docs.rs/num-rational/latest/num_rational/). Decimal uses a fixed-point representation with base 10 denominators, and Ratio represents rational numbers. Both implement `checked_div` to handle division by zero, which is not available for floats. Numbers in common use like 0.1 and 0.2 can be represented more intuitively with Decimal, and can be represented exactly with Ratio. Rounding oddities like `0.1 + 0.2 != 0.3`, which happen with floats in Rust, do not arise with Decimal (see https://0.30000000000000004.com/ ). With Ratio, the desired precision can be made explicit. With either Decimal or Ratio, although one still has to manage precision, the above make arithmetic easier to reason about.
+
