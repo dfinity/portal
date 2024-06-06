@@ -647,8 +647,7 @@
     "website": "https://decideai.xyz",
     "twitter": "https://twitter.com/DecideAI_",
     "tags": [
-      "DeAI",
-      "Tools / Infrastructure"
+      "AI", "Tools / Infrastructure"
     ],
     "stats": "50,000+ inference requests",
     "description": "DecideAI is an ecosystem that consists of three products, Decide Protocol, Decide ID, and Decide Cortex, designed to meet the needs of the high-end, specialized LLM market.",
