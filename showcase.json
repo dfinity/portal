@@ -4607,14 +4607,14 @@
   {
     "id": "bipquantum",
     "name": "bipquantum",
-    "oneLiner": "An AI as an IP assistant and virtual lawyer to revolutionize IP management. Uses ICP to mint IP certificates, including title, description, type, licenses, price, and ownership details.",
+    "oneLiner": "An AI IP assistant and virtual lawyer that uses ICP to mint IP certificates, including licenses and ownership details.",
     "website": "https://gdjoy-siaaa-aaaap-qhh2q-cai.icp0.io/",
     "tags": [
       "Tools / Infrastructure",
       "AI"
     ],
     "twitter": "https://twitter.com/BipQuantum",
-    "description": "AI as an IP assistant and virtual lawyer to revolutionize IP management. Uses ICP to mint IP certificates, including title, description, type, licenses, price, and ownership details.",
+    "description": "An AI IP assistant and virtual lawyer that uses ICP to mint IP certificates, including licenses and ownership details.",
     "usesInternetIdentity": false,
     "display": "Normal",
     "logo": "/img/showcase/bipQuantum_logo.jpg"
