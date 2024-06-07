@@ -573,9 +573,7 @@ dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai icrc1_balance_of '(record{owner = 
 
 <TabItem value="icrc" label="ICRC" default>
 
-The ICRC-1 ledger uses an `AccountIdentifier`, which is calculated by hashing a Principal and Subaccount. This also means that the returned transactions will show accounts as the hash in bytes rather than the actual `Accounts`.
-
-For example the default `Principal` `hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe` with no `Subaccount` set results in the hash `0a6d437581369b546afdef613ca9c081a252ca2c46e7ec29e510bc10b213fa27`.
+The ICRC-1 ledger uses an account specified by `<principal>-<checksum>.<compressed-subaccount>`.
 
 ```
 dfx ledger account-id --of-principal hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe
@@ -583,16 +581,6 @@ dfx ledger account-id --of-principal hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-u
 
 ```
 0a6d437581369b546afdef613ca9c081a252ca2c46e7ec29e510bc10b213fa27
-```
-
-If one adds a `Subaccount` but keeps the `Principal`, the `AccountIdentifier` still changes.
-
-```
-dfx ledger account-id --of-principal hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe --subaccount 0000000000000000000000000000000000000000000000000000000000000001
-```
-
-```
-bd719f30834fe34f420904cde95a2cef6404ef7a8489cde57056b4daddab28b1
 ```
 
 You can also always check the current balance of an account by calling:
