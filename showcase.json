@@ -462,14 +462,14 @@
    {
     "id": "trax",
     "name": "Trax",
-    "oneLiner": "Trax is a content aggregator and social marketplace, catering specifically to music artists and their die-hard fans, often referred to as “superfans”. By facilitating exclusive content drops and events, TRAX aims to help artists cultivate closer relationships with their superfans and generate higher revenue. ",
-    "website": "https://trax.so/",
+    "oneLiner": ,
     "tags": [
       "SocialFi",
       "DAO"
     ],
     "twitter": "https://twitter.com/onlyontrax",
-    "description": "Trax is the world's first artist and fan-owned music platform.",
+    "description": ""Trax is a content aggregator and social marketplace, catering specifically to music artists and their die-hard fans, often referred to as “superfans”. By facilitating exclusive content drops and events, TRAX aims to help artists cultivate closer relationships with their superfans and generate higher revenue. ",
+    "website": "https://trax.so/"",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/trax_logo.jpeg"
   },
@@ -751,13 +751,13 @@
   {
     "id": "Arth",
     "name": "Arth",
-    "oneLiner": "The mobile payments app that combines the power of Bitcoin with the convenience of mobile payments. With ckBTC, you can easily swap ckBTC from Bitcoin, view balances, and seamlessly make payments using QR codes.",
+    "oneLiner": ,
     "tags": [
       "DeFi",
       "Wallet",
       "Bitcoin"
     ],
-    "description": "Introducing Arth - the mobile payments app that combines the power of Bitcoin with the convenience of mobile payments. With ckBTC, you can easily swap ckBTC from Bitcoin, view balances, and seamlessly make payments using QR codes. more features coming soon",
+    "description": "The mobile payments app that combines the power of Bitcoin with the convenience of mobile payments. With ckBTC, you can easily swap ckBTC from Bitcoin, view balances, and seamlessly make payments using QR codes.",
     "usesInternetIdentity": true,
     "website": "https://play.google.com/store/apps/details?id=com.foo.arth&pli=1",
     "github": "https://github.com/s1dc0des/arth_app",
