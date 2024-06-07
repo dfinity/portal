@@ -291,7 +291,7 @@ It should now indicate that an additional block was synced compared to the last 
 (record { num_blocks_synced = 2 : nat64 })
 ```
 
-### Fetch blocks
+#### Fetch blocks
 
 You can use the ICP index canister to fetch blocks like so.
 You have to specify the block at which you want to start fetching from (i.e. the lowest index you want to fetch). If you want to start from the beginning you have to set `start` to 0. Similarly, the `length` parameter indicates the number of blocks you would like to fetch. Since the last status call indicated that there are two blocks that were synced, you can set this to 2. Note that if you specify more than 2 blocks it will simply return the maximum number of blocks the index contains (the limit of blocks per call is usually set to 2000 blocks).
@@ -401,7 +401,7 @@ It should now indicate that an additional block was synced compared to the last 
 (record { num_blocks_synced = 2 : nat64 })
 ```
 
-### Fetch blocks
+#### Fetch blocks
 
 You can use the ICRC-1 index canister to fetch blocks like so.
 You have to specify the block at which you want to start fetching from (i.e. the lowest index you want to fetch). If you want to start from the beginning you have to set start to 0. Similarly, the length parameter indicates the number of blocks you would like to fetch. Since the last status call indicated that there are two blocks that were synced you can set this to 2. Note that if you specify more than 2 blocks it will simply return the maximum number of blocks the index contains (The limit of blocks per call is usually set to 2000 blocks).
@@ -530,8 +530,7 @@ The result will include the initial mint operation as well as the transfer that 
 </AdornedTabs>
 
 
-
-## AccountIdentifiers
+## Accounts
 
 <AdornedTabs groupId="standards">
 <TabItem value="icp" label="ICP" default>
@@ -573,7 +572,7 @@ dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai icrc1_balance_of '(record{owner = 
 
 <TabItem value="icrc" label="ICRC" default>
 
-The ICRC-1 ledger uses an account specified by `<principal>-<checksum>.<compressed-subaccount>`.
+The ICRC-1 ledger uses an account identifier specified by `<principal>-<checksum>.<compressed-subaccount>`. You can check a principal's account identifier by running:
 
 ```
 dfx ledger account-id --of-principal hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe
