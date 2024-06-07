@@ -1,5 +1,4 @@
 [
-
   {
     "id": "helix",
     "name": "Helix Markets",
@@ -75,8 +74,7 @@
       "/img/showcase/icpswap_screenshot_0.webp"
     ]
   },
-
-    {
+  {
     "id": "orally-network",
     "name": "Orally",
     "oneLiner": "The fully on-chain oracles for secure and reliable decentralized data feeding and automation across multiple chains.",
@@ -97,7 +95,6 @@
     ],
     "submittableId": "35782696"
   },
-  
   {
     "id": "funded",
     "name": "Funded",
@@ -131,23 +128,27 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/nfid_logo.webp"
   },
- 
-
-   {
+  {
     "id": "yuku",
     "name": "Yuku",
     "oneLiner": "Yuku, your gateway to NFTs, Metaverse, and GameFi!",
     "website": "https://yuku.app/",
-    "tags": ["NFT", "Games", "DAO", "Metaverse"],
+    "tags": [
+      "NFT",
+      "Games",
+      "DAO",
+      "Metaverse"
+    ],
     "display": "Normal",
     "stats": "35,222+ users",
     "twitter": "https://twitter.com/yukuapp",
     "description": "Unlock Limitless Potential: Yuku, Your Gateway to NFTs,Metaverse, and GameFi!",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/yuku_logo.png",
-    "screenshots": ["/img/showcase/yuku_screenshot.webp"]
+    "screenshots": [
+      "/img/showcase/yuku_screenshot.webp"
+    ]
   },
-  
   {
     "id": "golddao",
     "name": "Gold DAO",
@@ -190,8 +191,6 @@
     "logo": "/img/showcase/icdex_logo.webp",
     "screenshots": []
   },
- 
- 
   {
     "id": "hot-or-not",
     "name": "Hot or Not",
@@ -246,8 +245,6 @@
     "discord": "https://discord.com/invite/FQZFGGq7zv",
     "logo": "/img/showcase/iclighthouse_logo.webp"
   },
- 
-
   {
     "id": "entrepot",
     "name": "Entrepot",
@@ -310,8 +307,7 @@
       "/img/showcase/plug_screenshot_0.webp"
     ]
   },
-
-    {
+  {
     "id": "catalyze",
     "name": "Catalyze",
     "website": "https://aqs24-xaaaa-aaaal-qbbea-cai.ic0.app/",
@@ -329,8 +325,7 @@
       "/img/showcase/catalyze_screenshot.webp"
     ]
   },
-
-    {
+  {
     "id": "juno",
     "name": "Juno",
     "oneLiner": "Build Web3 at Lightning Speed",
@@ -352,8 +347,6 @@
     ],
     "youtube": "https://www.youtube.com/watch?v=mr_9XArcG9Y"
   },
-  
- 
   {
     "id": "bitfinitywallet",
     "name": "Bitfinity Wallet",
@@ -372,7 +365,6 @@
       "/img/showcase/bitfinitywallet_screenshot.webp"
     ]
   },
-
   {
     "id": "taggr",
     "name": "TAGGR",
@@ -458,8 +450,7 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/oisy_logo.svg"
   },
-
-   {
+  {
     "id": "trax",
     "name": "Trax",
     "tags": [
@@ -504,8 +495,7 @@
     "youtube": "https://www.youtube.com/@argonstudios",
     "twitter": "https://twitter.com/ArgonStudiosXYZ"
   },
-
-    {
+  {
     "id": "rubaru",
     "name": "RuBaRu",
     "oneLiner": "Building On-Chain Regenerative Creator-Consumer Economy",
@@ -526,7 +516,6 @@
     "videoContentType": "video/mp4",
     "submittableId": "39223821"
   },
-  
   {
     "id": "ethereum-canister",
     "name": "Ethereum Canister",
@@ -553,7 +542,8 @@
     "website": "https://www.origyn.com/",
     "tags": [
       "NFT",
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "DAO"
     ],
     "twitter": "https://twitter.com/ORIGYNTech",
     "description": "The Origyn Foundation is blending luxury goods with NFTs by providing digital verifications for physical objects. Only possible on the Internet Computer. ",
@@ -625,7 +615,6 @@
       "/img/showcase/plethora_screenshot.webp"
     ]
   },
-
   {
     "id": "decideai",
     "name": "DecideAI",
@@ -633,7 +622,8 @@
     "website": "https://decideai.xyz",
     "twitter": "https://twitter.com/DecideAI_",
     "tags": [
-      "AI", "Tools / Infrastructure"
+      "AI",
+      "Tools / Infrastructure"
     ],
     "stats": "50,000+ inference requests",
     "description": "DecideAI is an ecosystem that consists of three products, Decide Protocol, Decide ID, and Decide Cortex, designed to meet the needs of the high-end, specialized LLM market.",
@@ -673,8 +663,6 @@
       "/img/showcase/cubetopia_screenshot.webp"
     ]
   },
-  
-  
   {
     "id": "airgap",
     "name": "AirGap",
@@ -687,7 +675,6 @@
     "usesInternetIdentity": false,
     "logo": "/img/showcase/airgap_logo.webp"
   },
- 
   {
     "name": "Taurus",
     "description": "A platform that offers banking-grade custody and everything needed for managing any digital asset.",
@@ -710,8 +697,6 @@
     "youtube": "",
     "submittableId": ""
   },
-
- 
   {
     "id": "azle",
     "name": "Azle",
@@ -728,8 +713,6 @@
       "/img/showcase/azle_screenshot_0.jpg"
     ]
   },
-
-
   {
     "id": "internetidentity",
     "name": "Internet Identity",
@@ -766,8 +749,7 @@
     ],
     "submittableId": "36143434"
   },
-
-   {
+  {
     "id": "astrox",
     "name": "AstroX ME",
     "oneLiner": "A powerful multichain wallet",
@@ -788,8 +770,7 @@
       "/img/showcase/astrox_me_screenshot.webp"
     ]
   },
-
-   {
+  {
     "id": "autoroyale",
     "name": "AutoRoyale",
     "website": "https://cm6iy-sqaaa-aaaam-abmxq-cai.icp0.io/",
@@ -866,8 +847,7 @@
     "logo": "/img/showcase/cycleops_logo.png",
     "submittableId": "36320431"
   },
-
-   {
+  {
     "id": "dscvr",
     "name": "DSCVR",
     "oneLiner": "Social portals, community airdrops, crypto tipping on-chain",
@@ -1094,7 +1074,6 @@
       "/img/showcase/nuance_screenshot_0.webp"
     ]
   },
-
   {
     "id": "ntagle",
     "name": "ntagle",
@@ -1197,7 +1176,6 @@
     "screenshots": [],
     "submittableId": 21958145
   },
-
   {
     "id": "itoka",
     "name": "ITOKA",
@@ -1281,22 +1259,6 @@
     "discord": "https://discord.com/invite/5uH6vpJjeB",
     "logo": "/img/showcase/scinet_logo.png",
     "submittableId": "33285268"
-  },
-  {
-    "id": "crowdgovorg",
-    "name": "CrowdGov.org",
-    "oneLiner": "The simplified, one-stop shop for IC Governance.",
-    "website": "https://crowdgov.org",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "The crowdgov.org website is dedicated to simplified governance for the internet computer. You will find information about how to participate in governance and how to maximize voting rewards. A variety of research tools are provided to help you learn more about NNS ecosystem participants and the current state of decentralization.",
-    "usesInternetIdentity": true,
-    "display": "Normal",
-    "logo": "/img/showcase/crowdgovorg_logo.webp",
-    "screenshots": [
-      "/img/showcase/crowdgovorg_screenshot_0.webp"
-    ]
   },
   {
     "id": "faefolk",
@@ -2374,8 +2336,7 @@
     "youtube": "",
     "submittableId": "41368058"
   },
-
-   {
+  {
     "id": "evmonicp",
     "name": "EVM on ICP",
     "website": "https://fxa77-fiaaa-aaaae-aaana-cai.raw.ic0.app/evm/",
@@ -3191,8 +3152,7 @@
     "youtube": "https://youtu.be/Z92o1oCH598",
     "submittableId": "41203767"
   },
-
-    {
+  {
     "id": "kinic",
     "name": "Kinic",
     "oneLiner": "The world's first Web3 search engine",
@@ -3212,7 +3172,6 @@
       "/img/showcase/kinic_screenshot.webp"
     ]
   },
-  
   {
     "id": "vault-k8s",
     "name": "Vault k8s Canister",
@@ -4534,8 +4493,6 @@
     "submittableId": "45381706",
     "videoContentType": "video/mp4"
   },
-
-  
   {
     "id": "riide",
     "name": "RIIDE",
@@ -4625,8 +4582,7 @@
     ],
     "usesInternetIdentity": false
   },
-
-   {
+  {
     "id": "distrikt",
     "name": "distrikt",
     "oneLiner": "Censorship-resistant fully on-chain social media platform",
@@ -4647,5 +4603,34 @@
     "screenshots": [
       "/img/showcase/distrikt_screenshot.webp"
     ]
+  },
+  {
+    "id": "bipquantum",
+    "name": "bipquantum",
+    "oneLiner": "An AI as an IP assistant and virtual lawyer to revolutionize IP management. Uses ICP to mint IP certificates, including title, description, type, licenses, price, and ownership details.",
+    "website": "https://gdjoy-siaaa-aaaap-qhh2q-cai.icp0.io/",
+    "tags": [
+      "Tools / Infrastructure",
+      "AI"
+    ],
+    "twitter": "https://twitter.com/BipQuantum",
+    "description": "AI as an IP assistant and virtual lawyer to revolutionize IP management. Uses ICP to mint IP certificates, including title, description, type, licenses, price, and ownership details.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/bipQuantum_logo.jpg"
+  },
+  {
+    "id": "ICPCC",
+    "name": "ICPCC DAO LLC",
+    "oneLiner": "A community-owned and fully self-sustaining decentralized conference event series devoted to highlighting the ICP's technology and ecosystem.",
+    "website": "https://osjzm-oaaaa-aaaal-ajcoq-cai.icp0.io/",
+    "tags": [
+      "DAO"
+    ],
+    "twitter": "https://twitter.com/icp_cc",
+    "description": "A community-owned and fully self-sustaining decentralized conference event series devoted to highlighting the ICP's technology and ecosystem.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/icpcc_logo.png"
   }
 ]
