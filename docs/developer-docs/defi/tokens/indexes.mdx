@@ -3,7 +3,6 @@ keywords: [intermediate, tokens, tutorial, index]
 ---
 
 import TabItem from "@theme/TabItem";
-import useBaseUrl from "@docusaurus/useBaseUrl";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
@@ -13,22 +12,23 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-This guide will show you how to deploy an index canister locally, and includes instructions for both an ICP ledger or an ICRC ledger. This guide will demonstrate how to connect it to your local ledger and how to interact with the index canister.
+On ICP, an index canister is used in conjunction with a ledger canister to provide the ability for transactions to be queried for a specific account. Without an index canister, a ledger's transaction history cannot easily be parsed and used by applications, as the entire transaction history of a ledger would need to be processed.
 
-If you are working in a local development environment, you can't access the mainnet ledger nor the mainnet index canister. If your application is using the mainnet index canister and you want to test it, you can setup the index and ledger canisters locally. Neither of the two canisters will have any information about the state of the ledger on the mainnet. You will have to create your own transactions on the ledger so that the index can serve them through its endpoints.
+An index canister can be used to:
+
+- Fetch blocks from the ledger canister.
+
+- Query account-specific transaction history.
+
+- Query the status of a transaction.
+
+If you are working in a local development environment, you can't access the mainnet ledgers nor the mainnet index canisters. If your application is using a mainnet index canister and you want to test it, you can setup the index and ledger canisters locally. Neither of the two canisters will have any information about the state of the ledger on the mainnet. You will have to create your own transactions on the ledger so that the index can serve them through its endpoints.
+
+This guide displays how to deploy an index canister locally and use it in conjunction with a ledger canister. Instructions for both an ICP index and an ICRC index are included.
 
 ### Prerequisites
 
 - Read the guide on deploying a local ledger, then continue with this guide. This guide will assume that you have setup up a local ledger pertaining to your intended token type (ICP or ICRC), and that all prerequisites are fulfilled.
-
-- [Optional]: Create a new project folder. It is recommended to use the same project folder that you created during the local ledger setup, but alternatively, you can create a new one for the index canister.
-
-:::caution
-
-If you created a new project folder, you will either have to make sure the `dfx.json` file contains the correct data on the ledger of your choice, or you communicate with the ledger from its project folder that contains the correct `dfx.json` file. If you try to communicate with the ledger from a new project folder where the `dfx.json` file does not contain information on the ledger canister, you will not be able to create transactions.
-
-:::
-
 
 ## Wasm and Candid files
 
