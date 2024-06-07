@@ -851,7 +851,6 @@ Assuming the sent transaction is valid, one node of the contacted provider shoul
 
 Note that even if an error is returned, you should assume that your transaction is known to the Ethereum network. You can verify whether your transaction was included in a block by querying the transaction count (via `eth_getTransactionCount`) at the `Latest` block height.
 
-If you receive this error, but your transaction can be seen on Ethereum, then this error is expected. This is because HTTPS outcalls are replicated, and it is expected that only one of the contacted nodes from the JSON-RPC provider should return the `success` reply. Others will return an error indicating the transaction is already known.
 
 ## Send a raw JSON-RPC request
 
