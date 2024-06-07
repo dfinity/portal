@@ -8,13 +8,27 @@ const icpXdrPricePlugin = async function (context, options) {
     name: "icp-xdr-price",
     async loadContent() {
       if (!cache) {
-        const icpXdrPrice = await fetch(
-          "https://ic-api.internetcomputer.org/api/v3/icp-xdr-conversion-rates"
-        )
-          .then((res) => res.json())
-          .then((res) => res.icp_xdr_conversion_rates[0][1] / 10000);
+        try {
+          const response = await fetch(
+            "https://ic-api.internetcomputer.org/api/v3/icp-xdr-conversion-rates"
+          );
+          const data = await response.json();
 
-        cache = icpXdrPrice;
+          if (
+            data &&
+            Array.isArray(data.icp_xdr_conversion_rates) &&
+            data.icp_xdr_conversion_rates.length > 0 &&
+            Array.isArray(data.icp_xdr_conversion_rates[0]) &&
+            data.icp_xdr_conversion_rates[0].length > 1
+          ) {
+            cache = data.icp_xdr_conversion_rates[0][1] / 10000;
+          } else {
+            throw new Error("Unexpected response structure");
+          }
+        } catch (error) {
+          console.error("Failed to fetch ICP-XDR conversion rates:", error);
+          cache = null;
+        }
       }
       return cache;
     },
