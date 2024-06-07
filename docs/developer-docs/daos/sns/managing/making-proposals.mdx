@@ -618,19 +618,22 @@ type ManageLedgerParameters = record {
 };
 ```
 
-Example in bash that only changes the transfer fee:
+Example in bash that only changes the transfer fee and token symbol:
 
 ```bash
 quill sns make-proposal <PROPOSER_NEURON_ID> --proposal '(
     record {
-        title = "Change Our Transfer Fee to 314_159 e8s";
-        url = "https://sns-examples.com/proposal/42";
-        summary = "Change our transfer fee to 314_159 e8s.";
+        title = \"Change Our Transfer Fee to 314_159 e8s and token symbol to TEST\";
+        url = \"https://sns-examples.com/proposal/42\";
+        summary = \"Change our transfer fee to 314_159 e8s and token symbol to TEST.\";
         action = opt variant {
             ManageLedgerParameters = record {
+                token_symbol = opt \"TEST\";
                 transfer_fee = opt 314_159;
+                token_logo = null;
+                token_name = null;
             }
-        }
+        };
     }
 )' --canister-ids-file <PATH_TO_CANISTER_IDS_JSON_FILE> > message.json
 
