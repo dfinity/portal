@@ -28,7 +28,7 @@ There are two workflows for generating addresses for these different types of ch
 
 :::caution
 
-This page does not contain an exhaustive list of supported chains. An ICP canister can interact with any chain that is EVM-compatible or supports ECDSA signatures.
+This page does not contain an exhaustive list of supported chains. An ICP canister can interact with any chain that is directly integrated with ICP, Ethereum or EVM-compatible, or supports ECDSA signatures.
 
 :::
 
@@ -87,7 +87,7 @@ By default, your Internet Identity will have a Bitcoin address that can be used 
 
 <TabItem value="ethereum" label="Ethereum & EVM">
 
-On Ethereum and other EVM chains, there are two types of addresses: wallet addresses for holding assets and contract addresses. Wallet addresses are public accounts that can send and receive ETH tokens. Contract addresses refer to a smart contract that has been executed on Ethereum and the transactions associated with that contract.
+On Ethereum and other EVM chains, there are two types of addresses: wallet addresses for holding assets, and contract addresses. Wallet addresses are public accounts that can send and receive tokens or other assets such as NFTs. Contract addresses refer to a smart contract that has been executed on-chain and the transactions associated with that contract.
 
 :::caution
 
@@ -159,7 +159,7 @@ async fn public_key() -> Result<PublicKeyReply, String> {
 </AdornedTabs>
 
 
-Then, convert the public key bytes to an Ethereum address. An example in Rust can be found below:
+Then, convert the public key bytes into an ETH address. An example in Rust can be found below:
 
 ```rust
 /// Converts the public key bytes to an Ethereum address with a checksum.
@@ -179,7 +179,7 @@ fn pubkey_bytes_to_address(pubkey_bytes: &[u8]) -> String {
 }
 ```
 
-You can use this address to make Ethereum transactions from your canister.
+You can use this address to make transactions on Ethereum or an EVM chain from your canister.
 
 [Learn how to sign Ethereum transactions](/docs/current/developer-docs/multi-chain/ethereum/using-eth/signing-transactions).
 
