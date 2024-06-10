@@ -207,7 +207,8 @@ The following is a list of common abbreviations that are capitalized within the 
 - DAO
 - DeFi
 - ECDSA
-- HTTPS (HTTP should not be used in favor of HTTPS per the IC Specification).
+- HTTP (when referring to the HTTP Gateway protocol)
+- HTTPS (when referring to HTTPS outcalls)
 - ICP
 - ICRC-1
 - ICRC-2
