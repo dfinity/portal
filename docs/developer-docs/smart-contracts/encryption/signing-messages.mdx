@@ -51,7 +51,7 @@ Currently only the `secp256k1` curve and the following key names are supported:
 
 ### Cost
 
-The `sign_with_ecdsa` method requires cycles to be attached. The `sign_with_ecdsa` method exposed in the Rust CDK automatically attaches the required cycles. In Motoko, the cycles have to be added manually.
+The `sign_with_ecdsa` method requires cycles to be attached. When the method in the Rust CDK is used, the required cycles are automatically attached. In Motoko, the cycles need to be added manually.
 [Learn more about Threshold ECDSA costs](/docs/current/references/t-ecdsa-how-it-works).
 
 
