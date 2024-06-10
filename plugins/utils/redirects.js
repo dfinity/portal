@@ -520,7 +520,7 @@ const redirects = `
   /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http /docs/current/developer-docs/smart-contracts/advanced-features/http-compatible-canisters/serving-static-assets-over-http
   /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-json-over-http /docs/current/developer-docs/smart-contracts/advanced-features/http-compatible-canisters/serving-json-over-http
   /docs/current/developer-docs/web-apps/http-compatible-canisters/custom-http-canisters /docs/current/developer-docs/smart-contracts/advanced-features/http-compatible-canisters/custom-http-canisters
-  `
+`
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
   .filter((l) => l.length > 0)
