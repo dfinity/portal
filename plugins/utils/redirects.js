@@ -86,7 +86,6 @@ const redirects = `
   /docs/current/developer-docs/build/cdks/motoko-dfinity/* /docs/current/motoko/main/:splat
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/*  /docs/current/developer-docs/backend/rust/:splat
   /docs/current/developer-docs/build/languages/motoko/* /docs/current/motoko/main/:splat
-  /docs/current/developer-docs/build/languages/motoko/* /docs/current/motoko/main/:splat
 
   /docs/developers-guide/ /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/developers-guide/about-this-guide /docs/current/motoko/main/getting-started/motoko-introduction

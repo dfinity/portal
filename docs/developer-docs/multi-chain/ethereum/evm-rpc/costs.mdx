@@ -27,8 +27,8 @@ The following formula shows how to calculate the cycles cost for an RPC request:
 (
   3M
   + 60K * nodes_in_subnet // Number of nodes in the subnet
-  + 400 * request_size // Size of the HTTP request in bytes
-  + 800 * max_response // Maximum HTTP response size in bytes
+  + 400 * request_size // Size of the HTTPS request in bytes
+  + 800 * max_response // Maximum HTTPS response size in bytes
   + provider_cost // Fixed cost for selected RPC provider
 ) * nodes_in_subnet //  Fixed canister overhead cost per node in subnet
 ```

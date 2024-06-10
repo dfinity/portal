@@ -16,8 +16,8 @@ It was carefully designed to give smart contracts near native performance and sc
 In addition to classical DeFi smart contracts, such as ledgers and exchanges, ICP can run compute- and storage-heavy applications such as [image classification](https://github.com/dfinity/examples/tree/master/rust/image-classification) fully on-chain.
 
 Another important design aspect of ICP is its seamless and secure integration with existing ecosystems.
-Smart contracts on ICP can host web assets and serve HTTP requests from users, thus fulfilling the promise of Web3.
-They can also interact with RPC nodes of other blockchains and Web2 servers through secure HTTP requests.
+Smart contracts on ICP can host web assets and serve HTTPS requests from users, thus fulfilling the promise of Web3.
+They can also interact with RPC nodes of other blockchains and Web2 servers through secure HTTPS requests.
 These features, combined with threshold signatures, give smart contracts the ability to hold assets and make transactions on other blockchains such as Bitcoin and Ethereum.
 
 <div class="text--center">
@@ -28,10 +28,10 @@ These features, combined with threshold signatures, give smart contracts the abi
   />
 </div>
 
-Read on to learn more about how these features are made possible. 
+Read on to learn more about how these features are made possible.
 
 ## Subnets
-A blockchain can only run as fast and offer as much resources as a single node.  
+A blockchain can only run as fast and offer as much resources as a single node.
 One of the keys to overcome this limit is sharding.
 ICP shards smart contracts over multiple instances of the blockchain.
 Each instance is called a **subnet** and has its own set of decentralized nodes running the consensus algorithm among themselves, building their own chain of blocks, and executing smart contracts.
@@ -95,7 +95,7 @@ This means developers can write smart contracts in popular programming languages
 Furthermore, a single smart contract on ICP is powerful enough to host an entire Ethereum Virtual Machine (EVM).
 This allows the deployment of EVM smart contracts written in Solidity.
 
-A unique feature of ICP is that smart contracts can handle HTTP requests and serve web assets such as HTML, JS, CSS.
+A unique feature of ICP is that smart contracts can handle HTTPS requests and serve web assets such as HTML, JS, CSS.
 In other words, it is possible to write a Web3 application with both backend and frontend hosted fully on-chain.
 Smart contracts can also make requests to other Web2 services outside ICP.
 
@@ -230,7 +230,7 @@ Currently, subnets contain between 13 and 40 nodes, and most of them are geograp
 </tr>
 
 <tr>
-  <td> HTTP calls to Web2 from smart contracts </td>
+  <td> HTTPS calls to Web2 from smart contracts </td>
   <td> - </td>
   <td> Yes </td>
 </tr>
