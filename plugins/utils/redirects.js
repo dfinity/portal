@@ -39,7 +39,7 @@ const redirects = `
   /docs/samples/codelabs/simple-nft /samples
   /docs/samples/codelabs/static-website /samples
   /docs/samples/* /samples
-  /docs/security-best-practices/introduction /docs/current/developer-docs/security/general-security-best-practices
+  /docs/security-best-practices/introduction /docs/current/developer-docs/security/security-best-practices/overview
   /docs/current/developer-docs/setup/default-wallet /docs/current/developer-docs/defi/cycles/cycles-wallet
   /docs/current/tokenomics/sns/tokenomics /docs/current/developer-docs/daos/sns/tokenomics/
   /docs/current/developer-docs/integrations/http_requests/http_requests-how-it-works /docs/current/references/https-outcalls-how-it-works
