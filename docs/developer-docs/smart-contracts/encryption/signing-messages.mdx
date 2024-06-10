@@ -141,7 +141,7 @@ service : {
 };
 ```
 
-The `ecdsa_public_key` method can be used to obtain public keys controlled by canisters. In contrast to the `sign_with_ecdsa` method, it allows to specify an optional `canister_id`, i.e. the caller can request public keys controlled by other canisters, but not signatures.
+The `ecdsa_public_key` method can be used to obtain public keys controlled by canisters. In contrast to the `sign_with_ecdsa` method, it allows specifying an optional `canister_id`, i.e. the caller can request public keys controlled by other canisters, but not signatures.
 The `chain_code` in the result can be used to derive child keys using a derivation path without calling the `ecdsa_public_key` repeatedly.
 
 <AdornedTabs groupId="language">
