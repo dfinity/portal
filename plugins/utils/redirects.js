@@ -352,13 +352,13 @@ const redirects = `
   /docs/current/developer-docs/integrations/ledger/  /docs/current/developer-docs/defi/icp-tokens/overview
   /docs/current/developer-docs/integrations/ledger/ledger-local-setup  /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup
   /docs/current/developer-docs/integrations/ledger/interact-with-ledger  /docs/current/developer-docs/defi/icp-tokens/using-the-ledger
-  /docs/current/developer-docs/integrations/ledger/icp-index-local-setup /docs/current/developer-docs/defi/icp-tokens/icp-index-local-setup
+  /docs/current/developer-docs/integrations/ledger/icp-index-local-setup /docs/current/developer-docs/defi/tokens/indexes
   /docs/current/developer-docs/integrations/ledger/collecting-dust /docs/current/developer-docs/defi/icp-tokens/account-trimming
   /docs/current/developer-docs/integrations/icrc-1/index /docs/current/references/icrc1-standard
   /docs/current/developer-docs/integrations/icrc-1/ /docs/current/references/icrc1-standard
   /docs/current/developer-docs/integrations/icrc-1/icrc1-ledger-setup /docs/current/developer-docs/defi/icrc-1/icrc1-ledger-setup
   /docs/current/developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger /docs/current/developer-docs/defi/icrc-1/using-icrc1-ledger
-  /docs/current/developer-docs/integrations/icrc-1/icrc1-index-setup /docs/current/developer-docs/defi/icrc-1/icrc1-index-setup
+  /docs/current/developer-docs/integrations/icrc-1/icrc1-index-setup /docs/current/developer-docs/defi/tokens/indexes
   /docs/current/developer-docs/integrations/exchange-rate/exchange-rate-canister /docs/current/developer-docs/defi/exchange-rate-canister
   /docs/current/developer-docs/integrations/rosetta/index  /docs/current/developer-docs/defi/rosetta/overview
   /docs/current/developer-docs/integrations/rosetta/  /docs/current/developer-docs/defi/rosetta/overview
@@ -518,6 +518,8 @@ const redirects = `
   /docs/current/developer-docs/web-apps/user-login/email-password /docs/current/developer-docs/identity/authentication/email-password
   /docs/current/developer-docs/multi-chain/ethereum/using-eth/siwe /docs/current/developer-docs/identity/authentication/siwe
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/defi/icrc-1/icrc1-index-setup /docs/current/developer-docs/defi/tokens/indexes
+  /docs/current/defi/icp-tokens/icp-index-local-setup /docs/current/developer-docs/defi/tokens/indexes
   /docs/current/developer-docs/smart-contracts/encryption/signing-transactions /docs/current/developer-docs/smart-contracts/encryption/signing-messages
   `
   .split(/[\r\n]+/)
