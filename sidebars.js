@@ -235,17 +235,17 @@ const sidebars = {
               items: [
                 {
                   type: "doc",
-                  id: "developer-docs/smart-contracts/advanced-features/http-compatible-canisters/custom-http-canisters",
+                  id: "developer-docs/web-apps/http-compatible-canisters/custom-http-canisters",
                   label: "Custom HTTPS canisters",
                 },
                 {
                   type: "doc",
-                  id: "developer-docs/smart-contracts/advanced-features/http-compatible-canisters/serving-json-over-http",
+                  id: "developer-docs/web-apps/http-compatible-canisters/serving-json-over-http",
                   label: "Serving JSON over HTTPS",
                 },
                 {
                   type: "doc",
-                  id: "developer-docs/smart-contracts/advanced-features/http-compatible-canisters/serving-static-assets-over-http",
+                  id: "developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http",
                   label: "Serving static assets over HTTPS",
                 },
               ],
