@@ -207,8 +207,8 @@ The following is a list of common abbreviations that are capitalized within the 
 - DAO
 - DeFi
 - ECDSA
-- HTTP (when referring to the HTTP Gateway protocol)
-- HTTPS (when referring to HTTPS outcalls)
+- HTTP
+- HTTPS
 - ICP
 - ICRC-1
 - ICRC-2
@@ -241,7 +241,8 @@ The following language and capitalization of certain terms and phrases should be
       - All dfx subcommands should be formatted as in-line code when appearing in a sentence, such as, "The `dfx deps` feature is available in dfx versions 0.14.1 and newer."
 - Ethereum integration
 - Ethereum: should be used in place of ETH or ETH token.
-- HTTPS outcalls
+- HTTP: when referring to the HTTP Gateway protocol and HTTP asset certification.
+- HTTPS: when referring to HTTPS outcalls.
 - ICP: When abbreviating 'Internet Computer', it should be referred to as 'ICP' instead of 'IC' or 'the IC'.
     Two exceptions to this are:
 
