@@ -837,32 +837,20 @@ dfx canister call evm_rpc eth_sendRawTransaction "(variant {$RPC_SOURCE}, $RPC_C
 </TabItem>
 </AdornedTabs>
 
+### Error "already known"
 
-### Error messages
+Sending a transaction to the Ethereum network is a state changing operation. Since the EVM-RPC canister sends a transaction to some JSON-RPC providers via HTTPs outcalls, each contacted provider will receive the same transaction multiple times. 
 
-#### Error "already known"
+Therefore, it is possible that the contacted provider may return the following error:
 
 ```
 "{ code: -32603, message: \"already known\" }"
 ```
 
-If you receive this error, but your transaction can be seen on Ethereum, then this error is expected because HTTPS outcalls are replicated meaning only one of the contacted nodes from the JSON-RPC provide should return the success results, while others return an error indicating the transaction is already known.
+Assuming the sent transaction is valid, one node of the contacted provider should accept the transaction, while the others should return some error such as the one displayed above. Note that the exact error returned is EVM-client specific, as the Ethereum JSON-RPC API itself doesn't specify errors, meaning that other errors could occur, such as an error indicating that consensus on the IC could not be reached.
 
-#### Error "TooFewCycles"
+Note that even if an error is returned, you should assume that your transaction is known to the Ethereum network. You can verify whether your transaction was included in a block by querying the transaction count (via `eth_getTransactionCount`) at the `Latest` block height.
 
-```
-"ProviderError(TooFewCycles { expected: 798336000, received: 307392000 })"
-```
-
-You may receive this error if multiple JSON-RPC providers were queried and one did not receive enough cycles for the request. You can safely attach more cycles to your query, since unused cycles will be refunded.
-
-#### Error "Your app has exceeded its compute units per second capacity"
-
-```
-"{\"code\":429,\"message\":\"Your app has exceeded its compute units per second capacity. If you have retries enabled, you can safely ignore this message. If not, check out https://docs.alchemy.com/reference/throughput\"}"
-```
-
-The Alchemy JSON-RPC provider has a low rate limit capacity, and is not recommended to be used in production projects for this reason. It is recommended to use another [JSON-RPC provider](/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/overview#supported-json-rpc-providers) for production applications.
 
 ## Send a raw JSON-RPC request
 
@@ -1096,6 +1084,16 @@ Some RPC services expect the API key in a request header instead of a URI path. 
 ```bash
 dfx canister call evm_rpc updateProvider '(record { providerId = 0; credentialHeaders = opt vec { record { name = "HEADER_NAME"; value = "HEADER_VALUE" } } })'
 ```
+
+## Error messages
+
+### Error "TooFewCycles"
+
+```
+"ProviderError(TooFewCycles { expected: 798336000, received: 307392000 })"
+```
+
+You may receive this error if multiple JSON-RPC providers were queried and one did not receive enough cycles for the request. You can safely attach more cycles to your query, since unused cycles will be refunded.
 
 ## Important notes
 
