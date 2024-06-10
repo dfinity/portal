@@ -637,23 +637,15 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "ICP tokens",
+          label: "Tokens",
           items: [
             "developer-docs/defi/icp-tokens/overview",
             "developer-docs/defi/icp-tokens/ledger-local-setup",
+            "developer-docs/defi/tokens/indexes",
             "developer-docs/defi/icp-tokens/using-the-ledger",
-            "developer-docs/defi/icp-tokens/icp-index-local-setup",
             "developer-docs/defi/icp-tokens/account-trimming",
-          ],
-        },
-        {
-          type: "category",
-          label: "ICRC-1 tokens",
-          items: [
             "developer-docs/defi/icrc-1/token-quickstart",
             "developer-docs/defi/icrc-1/icrc1-ledger-setup",
-            "developer-docs/defi/icrc-1/using-icrc1-ledger",
-            "developer-docs/defi/icrc-1/icrc1-index-setup",
           ],
         },
         {
