@@ -215,7 +215,7 @@ const sidebars = {
             },
             {
               type: "doc",
-              label: "Serving an HTTP request",
+              label: "Serving an HTTPS request",
               id: "developer-docs/smart-contracts/advanced-features/serving-http-request",
             },
             {
@@ -513,22 +513,22 @@ const sidebars = {
         "developer-docs/web-apps/obtain-verify-ic-pubkey",
         {
           type: "category",
-          label: "Using HTTP certification",
+          label: "Using HTTPS certification",
           items: [
             {
               type: "doc",
               id: "developer-docs/web-apps/http-compatible-canisters/custom-http-canisters",
-              label: "Custom HTTP canisters",
+              label: "Custom HTTPS canisters",
             },
             {
               type: "doc",
               id: "developer-docs/web-apps/http-compatible-canisters/serving-json-over-http",
-              label: "Serving JSON over HTTP",
+              label: "Serving JSON over HTTPS",
             },
             {
               type: "doc",
               id: "developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http",
-              label: "Serving static assets over HTTP",
+              label: "Serving static assets over HTTPS",
             },
           ],
         },
