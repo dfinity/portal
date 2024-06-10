@@ -229,6 +229,27 @@ const sidebars = {
                 "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-post",
               ],
             },
+            {
+              type: "category",
+              label: "Using HTTP certification",
+              items: [
+                {
+                  type: "doc",
+                  id: "developer-docs/smart-contracts/advanced-features/http-compatible-canisters/custom-http-canisters",
+                  label: "Custom HTTPS canisters",
+                },
+                {
+                  type: "doc",
+                  id: "developer-docs/smart-contracts/advanced-features/http-compatible-canisters/serving-json-over-http",
+                  label: "Serving JSON over HTTPS",
+                },
+                {
+                  type: "doc",
+                  id: "developer-docs/smart-contracts/advanced-features/http-compatible-canisters/serving-static-assets-over-http",
+                  label: "Serving static assets over HTTPS",
+                },
+              ],
+            },
 	    {
               type: "doc",
               label: "Management canister",
@@ -309,7 +330,7 @@ const sidebars = {
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-build",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-cache",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister",
-		"developer-docs/developer-tools/cli-tools/cli-reference/dfx-cycles",
+		            "developer-docs/developer-tools/cli-tools/cli-reference/dfx-cycles",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-deploy",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-deps",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-generate",
@@ -511,27 +532,6 @@ const sidebars = {
         "developer-docs/web-apps/design-dapps",
         "developer-docs/web-apps/independently-verifying-ic-signatures",
         "developer-docs/web-apps/obtain-verify-ic-pubkey",
-        {
-          type: "category",
-          label: "Using HTTPS certification",
-          items: [
-            {
-              type: "doc",
-              id: "developer-docs/web-apps/http-compatible-canisters/custom-http-canisters",
-              label: "Custom HTTPS canisters",
-            },
-            {
-              type: "doc",
-              id: "developer-docs/web-apps/http-compatible-canisters/serving-json-over-http",
-              label: "Serving JSON over HTTPS",
-            },
-            {
-              type: "doc",
-              id: "developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http",
-              label: "Serving static assets over HTTPS",
-            },
-          ],
-        },
       ],
     },
     {

@@ -344,9 +344,9 @@ const redirects = `
   /docs/current/developer-docs/integrations/internet-identity/creating-ii /docs/current/developer-docs/identity/internet-identity/creating-ii
   /docs/current/developer-docs/integrations/internet-identity/integrate-identity /docs/current/developer-docs/identity/internet-identity/integrate-internet-identity
   /docs/current/developer-docs/integrations/internet-identity/alternative-origins /docs/current/developer-docs/identity/internet-identity/alternative-origins
-  /docs/current/developer-docs/http-compatible-canisters/custom-http-canisters /docs/current/developer-docs/web-apps/http-compatible-canisters/custom-http-canisters
-  /docs/current/developer-docs/http-compatible-canisters/serving-json-over-http /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-json-over-http
-  /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http
+  /docs/current/developer-docs/http-compatible-canisters/custom-http-canisters /docs/current/developer-docs/smart-contracts/advanced-features/http-compatible-canisters/custom-http-canisters
+  /docs/current/developer-docs/http-compatible-canisters/serving-json-over-http /docs/current/developer-docs/smart-contracts/advanced-features/http-compatible-canisters/serving-json-over-http
+  /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/current/developer-docs/smart-contracts/advanced-features/http-compatible-canisters/serving-static-assets-over-http
   /docs/current/developer-docs/integrations/ledger/introduction_and_overview /docs/current/developer-docs/defi/overview
   /docs/current/developer-docs/integrations/ledger/  /docs/current/developer-docs/defi/icp-tokens/overview
   /docs/current/developer-docs/integrations/ledger/ledger-local-setup  /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup
@@ -517,6 +517,9 @@ const redirects = `
   /docs/current/developer-docs/web-apps/user-login/email-password /docs/current/developer-docs/identity/authentication/email-password
   /docs/current/developer-docs/multi-chain/ethereum/using-eth/siwe /docs/current/developer-docs/identity/authentication/siwe
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http /docs/current/developer-docs/smart-contracts/advanced-features/http-compatible-canisters/serving-static-assets-over-http
+  /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-json-over-http /docs/current/developer-docs/smart-contracts/advanced-features/http-compatible-canisters/serving-json-over-http
+  /docs/current/developer-docs/web-apps/http-compatible-canisters/custom-http-canisters /docs/current/developer-docs/smart-contracts/advanced-features/http-compatible-canisters/custom-http-canisters
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
