@@ -252,7 +252,7 @@ const sidebars = {
               label: "On-chain signatures: Threshold ECDSA",
               items: [
                 "developer-docs/smart-contracts/encryption/t-ecdsa",
-                "developer-docs/smart-contracts/encryption/signing-transactions",
+                "developer-docs/smart-contracts/encryption/signing-messages",
               ],
             },
             "developer-docs/smart-contracts/advanced-features/periodic-tasks",

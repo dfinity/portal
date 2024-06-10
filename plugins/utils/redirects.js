@@ -86,6 +86,7 @@ const redirects = `
   /docs/current/developer-docs/build/cdks/motoko-dfinity/* /docs/current/motoko/main/:splat
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/*  /docs/current/developer-docs/backend/rust/:splat
   /docs/current/developer-docs/build/languages/motoko/* /docs/current/motoko/main/:splat
+  /docs/current/developer-docs/build/languages/motoko/* /docs/current/motoko/main/:splat
 
   /docs/developers-guide/ /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/developers-guide/about-this-guide /docs/current/motoko/main/getting-started/motoko-introduction
@@ -519,6 +520,7 @@ const redirects = `
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/defi/icrc-1/icrc1-index-setup /docs/current/developer-docs/defi/tokens/indexes
   /docs/current/defi/icp-tokens/icp-index-local-setup /docs/current/developer-docs/defi/tokens/indexes
+  /docs/current/developer-docs/smart-contracts/encryption/signing-transactions /docs/current/developer-docs/smart-contracts/encryption/signing-messages
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
