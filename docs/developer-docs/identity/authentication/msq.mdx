@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-[MSQ](https://github.com/fort-major/msq/tree/master) is a MetaMask Snap designed to allow users to use Metamask to authenticate with dapps deployed on ICP. MSQ uses a scoped identity architecture, meaning each user gets a unique and dedicated identity for each dapp or website they interact with. Scoped-identity architectures help protect users from signature-stealing attacks.
+[MSQ](https://icp.msq.tech/) is a [MetaMask Snap](https://metamask.io/snaps/) designed to allow users to use Metamask to authenticate with dapps deployed on ICP. MSQ uses a scoped-identity architecture, meaning each user gets a unique and dedicated identity for each dapp or website they interact with. Scoped-identity architectures help protect users from signature-stealing attacks.
 
 It provides two primary features:
 
@@ -20,7 +20,13 @@ It provides two primary features:
 
 ## Installation
 
-To use MSQ, import it into your project's `package.json` file:
+Insall the `msq` package with the command:
+
+```
+npm install @fort-major/msq-client
+```
+
+Then, import it into your project's `package.json` file:
 
 ```json
 "dependencies": {
@@ -126,3 +132,5 @@ MSQ supports ICRC-1 token payments by default through a series of whitelisted IC
 - [MSQ GitHub repo](https://github.com/fort-major/msq/blob/master/)
 
 - [MSQ documentation](https://github.com/fort-major/msq/blob/master/documentation/integration.md)
+
+- [MSQ MetaMask Snap](https://snaps.metamask.io/snap/npm/fort-major/msq/)
