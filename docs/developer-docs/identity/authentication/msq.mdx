@@ -30,7 +30,9 @@ To use MSQ, import it into your project's `package.json` file:
 }
 ```
 
-You will need to connect MSQ to MetaMask Snap. The MSQ client library does this using the following function:
+Users will need to connect to MetaMask and the MSQ Snap. 
+
+The MSQ client library does this using the following function. For example, a user who interacts with a frontend element (e.g., button) that triggers the function will be prompted to connect using Metamask and install the MSQ Snap.
 
 ```
 const result = await MsqClient.create();
