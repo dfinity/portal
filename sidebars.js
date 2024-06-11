@@ -554,9 +554,11 @@ const sidebars = {
               "developer-docs/identity/internet-identity/alternative-origins",
               ],
             },
-              "developer-docs/identity/authentication/siwe",
-              "developer-docs/identity/authentication/nfid",
               "developer-docs/identity/authentication/email-password",
+              "developer-docs/identity/authentication/nfid",
+              "developer-docs/identity/authentication/siwe",
+              "developer-docs/identity/authentication/siws",
+              "developer-docs/identity/authentication/msq",
               ],
             },
           {
