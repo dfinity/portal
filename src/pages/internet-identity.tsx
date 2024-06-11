@@ -69,6 +69,33 @@ const TrustCard: React.FC<TrustCardProps> = ({
   </div>
 );
 
+const users = [
+  {
+    imgSrc: "/img/internet-identity/users-1.svg",
+    title: "Access to 100s of onchain dapps",
+    description:
+      "Access 100s of next generation web3 dapps built end-to-end on the Internet Computer blockchain without needing to create usernames and passwords.",
+  },
+  {
+    imgSrc: "/img/internet-identity/users-2.svg",
+    title: "Browser-based & walletless",
+    description:
+      "No wallet or passphrase needed. Set up in minutes and access apps securely with biometrics and hardware keys. Internet Identity offers fast, secure access to mobile crypto dapps.",
+  },
+  {
+    imgSrc: "/img/internet-identity/users-3.svg",
+    title: "Credential sharing",
+    description:
+      "Share verified credentials privately and selectively to access exclusive experiences. You control the process, ensuring privacy. Internet Computer dapps enable streamlined KYC fundraising and airdrops, offering a seamless user experience.",
+  },
+  {
+    imgSrc: "/img/internet-identity/users-4.svg",
+    title: "Self-sovereign account",
+    description:
+      "You control your Internet Identity—no third party can shut it down. Revoke access from lost or stolen devices without risking a single private key. Share data securely with verifiable credentials while maintaining privacy.",
+  },
+];
+
 function InternetIdentityPage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const bgDark = useDarkHeaderInHero(heroRef);
@@ -104,6 +131,12 @@ function InternetIdentityPage() {
                 Internet Identity is a decentralized federated service running
                 end-to-end on the Internet Computer.
               </motion.p>
+              <Link
+                className="mt-3 md:mt-6 link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
+                href="https://metaissuer.vc/"
+              >
+                <span>Try Verifiable Credentials</span> <LinkArrowRight />
+              </Link>
             </div>
           </div>
           <div className="container-12 relative">
@@ -118,21 +151,89 @@ function InternetIdentityPage() {
           </div>
         </section>
 
-        <section className="container-10 relative mt-40 sm:mt-52 md:mt-40 !pl-0	!pr-0">
+        <section className="container-10 relative mt-40 sm:mt-52 md:mt-60">
           <AnimateSpawn
-            className="md:flex md:items-center"
+            variants={transitions.container}
+            className="bg-white px-10 md:px-16 pt-6 pb-1 md:pb-12 md:pt-12 gap-8 mb-10 sm:mb-40 rounded-xl "
+          >
+            <motion.div>
+              <aside className="container-10 md:flex md:items-center mt-6 md:mt-0 !pl-0	!pr-0">
+                <div className="md:w-1/2">
+                  <motion.h5
+                    className="tw-heading-5 md:tw-heading-4 mb-3 sm:mb-6 "
+                    variants={transitions.item}
+                  >
+                    Separatrix is now live!
+                  </motion.h5>
+                  <motion.p>
+                    With this milestone, ICP offers the infrastructure and
+                    tooling to issue, share, and consume credentials in a
+                    privacy-preserving fashion. Users are in control of their
+                    credentials, giving them a self-sovereign digital identity.
+                    At the same time, new credential issuers, such as a KYC
+                    service, go live on ICP and will enable new use cases such
+                    as security tokens subject to financial regulations.
+                  </motion.p>
+
+                  <motion.ul
+                    className="mb-0 mt-4 md:mt-6 tw-paragraph md:tw-lead-sm text-bold text-black"
+                    variants={transitions.item}
+                  >
+                    <li className="mb-2">Verifiable credentials</li>
+                    <li className="mb-2">SSI SDK for Relying Parties</li>
+                    <li className="mb-2">Verifiable credentials playground</li>
+                  </motion.ul>
+                  <p className="mb-12 md:mb-0 mt-8">
+                    <Link
+                      className="link-primary link-with-icon"
+                      href="/roadmap"
+                    >
+                      <LinkArrowRight />
+                      READ MORE
+                    </Link>
+                  </p>
+                </div>
+                <div className="md:w-1/2 relative md:mt-6 md:mb-3">
+                  <div className="pointer-events-none md:absolute w-full md:-right-20 md:top-1/2  md:-translate-y-1/2">
+                    <motion.img
+                      className="w-[55%] h-full object-cover"
+                      src="/img/internet-identity/separatrix.svg"
+                      alt="roadmap"
+                    />
+                  </div>
+                </div>
+              </aside>
+            </motion.div>
+          </AnimateSpawn>
+          <AnimateSpawn
+            className="mt-16 md:mt-40 "
             variants={transitions.container}
           >
-            <div className="md:w-1/3">
-              <motion.h3 className="tw-heading-5 md:tw-heading-4">
-                Access dapps quickly and securely
+            <motion.h4 className="md:w-7/10 tw-heading-4 md:tw-heading-60 text-gradient">
+              A versatile solution for each stage of the digital identity
+              lifecycle
+            </motion.h4>
+          </AnimateSpawn>
+          <AnimateSpawn
+            className="md:flex md:items-center mt-12 md:mt-40"
+            variants={transitions.container}
+          >
+            <div className="md:w-1/2">
+              <motion.h3 className="tw-heading-4 md:tw-heading-60">
+                Users: access dapps quickly and securely{" "}
               </motion.h3>
-              <motion.p className="text-2xl mb-0 ">
+              <motion.p className="text-2xl mb-0 font-bold md:w-9/10">
                 Internet Identity is a self-sovereign single-sign on solution
-                for dapps built with smart contracts on the internet computer
+                for dapps built with smart contracts on the internet computer.
               </motion.p>
+              <Link
+                className="button-primary mt-6"
+                href="https://identity.ic0.app/"
+              >
+                Launch Internet Identity
+              </Link>
             </div>
-            <div className="md:w-2/3 relative mt-6  md:mt-64 md:mb-64">
+            <div className="md:w-1/2 relative mt-6  md:mt-64 md:mb-64">
               <div className="pointer-events-none md:absolute w-full  md:-right-24 md:top-1/2  md:-translate-y-1/2">
                 <motion.div
                   className="absolute blob blob-white blob-md md:blob-lg blob-x-8 md:blob-x-9 blob-y-15 -z-1"
@@ -147,6 +248,10 @@ function InternetIdentityPage() {
               </div>
             </div>
           </AnimateSpawn>
+          <AnimateSpawn
+            className="mt-4 md:mt-12 "
+            variants={transitions.container}
+          ></AnimateSpawn>
         </section>
 
         <section className="container-12 pt-20 md:pt-30">
