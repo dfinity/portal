@@ -15,7 +15,7 @@ Hello developers, and welcome to this week's developer weekly update! In this we
 
 Attention developers! In the next few weeks, there will be a proposed change regarding Wasm memory limits. This proposed change would reduce the Wasm memory available to a canister from 4GiB to 3GiB through a new field `wasm_memory_limit`, which will be set to 3GiB by default.
 
-Developers will be able tp opt out of this restriction by setting `wasm_memory_limit=4GiB` your in canister settings using `dfx` version` 0.20.1-beta.0` or higher. Opting out of this restriction is risky, and requires you to program your canister very carefully.
+Developers will be able to opt out of this restriction by setting `wasm_memory_limit=4GiB` your in canister settings using `dfx` version` 0.20.1-beta.0` or higher. Opting out of this restriction is risky, and requires you to program your canister very carefully.
 
 The reason for this change is to protect canisters from unrecoverable memory errors. Wasm memory uses a 32-bit architecture and cannot grow beyond 4Gib. When a canister stores user data in Wasm memory rather than stable memory, the memory usage grows with each new user. Canisters using this design could reach that limit of 4GiB, where they would be unable to allocate additional memory, and thus stop working. If this happens to a canister, both the canister and its data are unrecoverable. Even if user data isn't stored in Wasm memory, memory usage can be filled other ways, such as through memory leak.
 
