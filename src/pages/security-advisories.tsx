@@ -25,6 +25,17 @@ const cveData = [
     cvss: "Critical (9.1/10)",
     issued: "Feb 21, 2024",
   },
+  {
+    cve: "CVE-2024-4435",
+    description:
+      "Stable BTreeMap memory leak when deallocating nodes with overflows",
+    reference:
+      "https://github.com/dfinity/stable-structures/security/advisories/GHSA-3rcq-39xp-7xjp",
+    products: "ic-stable-structures (Rust)",
+    versions: ">= 0.6.0, < 0.6.4",
+    cvss: "Medium (5.9/10)",
+    issued: "May 21, 2024",
+  },
 ];
 
 const TableCell = ({ children }) => (
