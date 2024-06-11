@@ -166,7 +166,8 @@ function AIPage() {
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                Run AI models entirely on-chain to benefit from the security, resilience, and power of the ICP blockchain.
+                Run AI models entirely on-chain to benefit from the security,
+                resilience, and power of the ICP blockchain.
               </motion.p>
               {/* <MotionLink
                 className="button-white"
@@ -243,7 +244,7 @@ function AIPage() {
             >
               <div>
                 <h3 className="tw-heading-5 md:tw-heading-4 mb-6">
-                  Tryout the AI demo by yourself
+                  Try out the AI demo by yourself
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-6 text-black/60">
                   Check out the open-source repo on GitHub and tryout the AI
@@ -338,7 +339,7 @@ let result = model.run(tvec!
                       >
                         Research shows
                       </Link>{" "}
-                      that is possible to tamper with AI models in an
+                      that it is possible to tamper with AI models in an
                       undetectable way. This means that the integrity of the
                       AI&apos;s output can be compromised without anyone
                       knowing.
