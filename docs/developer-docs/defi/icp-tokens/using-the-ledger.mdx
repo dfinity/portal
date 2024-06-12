@@ -73,7 +73,7 @@ dfx ledger --network ic transfer --amount <amount> --memo <memo> <receiver-accou
 ## Interacting with ICP ledger via `dfx canister`
 For this subsection it is assumed that you have deployed an ICP ledger either locally or you want to communicate with the mainnet ICP ledger using `dfx canister`. The ICP ledger canister ID is assumed to be `ryjl3-tyaaa-aaaaa-aaaba-cai`, if your locally deployed ICP ledger's canister ID is different you will need to replace `ryjl3-tyaaa-aaaaa-aaaba-cai` with it. You can find all endpoints that can be called in the `icp_ledger.did` file. How to retrieve it is discussed in the [ICP local deployment guide](./ledger-local-setup.mdx).
 
-This guide will only go into the ICP ledger specific endpoints. To call the ICRC-1 endpoints you can have a look at [the ICRC-1 setup guide](/docs/current/developer-docs/defi/icrc-1/using-icrc1-ledger). To find a more detailed description of the data types used in these commands you can have a look at [this guide](/docs/current/references/ledger#_getting_ledger_blocks).
+This guide will only go into the ICP ledger specific endpoints. To call the ICRC-1 endpoints you can have a look at [the ICRC-1 setup guide](/docs/current/developer-docs/defi/tokens/indexes). To find a more detailed description of the data types used in these commands you can have a look at [this guide](/docs/current/references/ledger#_getting_ledger_blocks).
 
 To fetch the symbol of the ICP ledger:
 ```
@@ -219,7 +219,7 @@ It is a similar format but you will only receive the CBOR encoded block:
 
 In order to simplify working with ICP ledger from JavaScript applications, you can use the [ledger-icp](https://github.com/dfinity/ic-js/tree/main/packages/ledger-icp) JavaScript library.
 .
-To interact with the ICRC-1 endpoints of the ICP ledger you can have a look at the guide on [interacting with an ICRC-1 ledger](/docs/current/developer-docs/defi/icrc-1/using-icrc1-ledger).
+To interact with the ICRC-1 endpoints of the ICP ledger you can have a look at the guide on [interacting with an ICRC-1 ledger](/docs/current/developer-docs/defi/tokens/indexes).
 
 ## Interacting with ICP from a canister (inter-canister calls via `ic-cdk`)
 You can look at the documentation of [inter-canister calls] (/docs/developer-docs/backend/rust/intercanister) to see how you can interact with the another canister from inside a canister. This guide will give you a couple of examples on how to make such a call in the case of the ICP ledger.

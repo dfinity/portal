@@ -215,7 +215,7 @@ const sidebars = {
             },
             {
               type: "doc",
-              label: "Serving an HTTP request",
+              label: "Serving an HTTPS request",
               id: "developer-docs/smart-contracts/advanced-features/serving-http-request",
             },
             {
@@ -227,6 +227,27 @@ const sidebars = {
                 "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use",
                 "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-get",
                 "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-post",
+              ],
+            },
+            {
+              type: "category",
+              label: "Using HTTP certification",
+              items: [
+                {
+                  type: "doc",
+                  id: "developer-docs/web-apps/http-compatible-canisters/custom-http-canisters",
+                  label: "Custom HTTPS canisters",
+                },
+                {
+                  type: "doc",
+                  id: "developer-docs/web-apps/http-compatible-canisters/serving-json-over-http",
+                  label: "Serving JSON over HTTPS",
+                },
+                {
+                  type: "doc",
+                  id: "developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http",
+                  label: "Serving static assets over HTTPS",
+                },
               ],
             },
 	    {
@@ -309,7 +330,7 @@ const sidebars = {
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-build",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-cache",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister",
-		"developer-docs/developer-tools/cli-tools/cli-reference/dfx-cycles",
+		            "developer-docs/developer-tools/cli-tools/cli-reference/dfx-cycles",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-deploy",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-deps",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-generate",
@@ -511,27 +532,6 @@ const sidebars = {
         "developer-docs/web-apps/design-dapps",
         "developer-docs/web-apps/independently-verifying-ic-signatures",
         "developer-docs/web-apps/obtain-verify-ic-pubkey",
-        {
-          type: "category",
-          label: "Using HTTP certification",
-          items: [
-            {
-              type: "doc",
-              id: "developer-docs/web-apps/http-compatible-canisters/custom-http-canisters",
-              label: "Custom HTTP canisters",
-            },
-            {
-              type: "doc",
-              id: "developer-docs/web-apps/http-compatible-canisters/serving-json-over-http",
-              label: "Serving JSON over HTTP",
-            },
-            {
-              type: "doc",
-              id: "developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http",
-              label: "Serving static assets over HTTP",
-            },
-          ],
-        },
       ],
     },
     {
@@ -554,9 +554,11 @@ const sidebars = {
               "developer-docs/identity/internet-identity/alternative-origins",
               ],
             },
-              "developer-docs/identity/authentication/siwe",
-              "developer-docs/identity/authentication/nfid",
               "developer-docs/identity/authentication/email-password",
+              "developer-docs/identity/authentication/nfid",
+              "developer-docs/identity/authentication/siwe",
+              "developer-docs/identity/authentication/siws",
+              "developer-docs/identity/authentication/msq",
               ],
             },
           {
@@ -637,23 +639,15 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "ICP tokens",
+          label: "Tokens",
           items: [
             "developer-docs/defi/icp-tokens/overview",
             "developer-docs/defi/icp-tokens/ledger-local-setup",
+            "developer-docs/defi/tokens/indexes",
             "developer-docs/defi/icp-tokens/using-the-ledger",
-            "developer-docs/defi/icp-tokens/icp-index-local-setup",
             "developer-docs/defi/icp-tokens/account-trimming",
-          ],
-        },
-        {
-          type: "category",
-          label: "ICRC-1 tokens",
-          items: [
             "developer-docs/defi/icrc-1/token-quickstart",
             "developer-docs/defi/icrc-1/icrc1-ledger-setup",
-            "developer-docs/defi/icrc-1/using-icrc1-ledger",
-            "developer-docs/defi/icrc-1/icrc1-index-setup",
           ],
         },
         {

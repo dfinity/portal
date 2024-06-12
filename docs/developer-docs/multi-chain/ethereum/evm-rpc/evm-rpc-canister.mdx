@@ -839,7 +839,7 @@ dfx canister call evm_rpc eth_sendRawTransaction "(variant {$RPC_SOURCE}, $RPC_C
 
 ### Error "already known"
 
-Sending a transaction to the Ethereum network is a state changing operation. Since the EVM-RPC canister sends a transaction to some JSON-RPC providers via HTTPs outcalls, each contacted provider will receive the same transaction multiple times. 
+Sending a transaction to the Ethereum network is a state changing operation. Since the EVM-RPC canister sends a transaction to some JSON-RPC providers via HTTPs outcalls, each contacted provider will receive the same transaction multiple times.
 
 Therefore, it is possible that the contacted provider may return the following error:
 
@@ -1107,15 +1107,15 @@ By default, the canister uses three different RPC providers, which may change de
 dfx canister call evm_rpc eth_getTransactionCount '(variant {EthMainnet = opt vec {Cloudflare; PublicNode}}, record {address = "0xdAC17F958D2ee523a2206206994597C13D831ec7"; block = variant {Tag = variant {Latest}}})' --with-cycles 100000000000 --wallet=$(dfx identity get-wallet)
 ```
 
-### HTTP outcall consensus
+### HTTPS outcall consensus
 
-Be sure to verify that RPC requests work as expected on the ICP mainnet. HTTP outcalls performed in the `request` method only reach consensus if the JSON-RPC response is the same each call.
+Be sure to verify that RPC requests work as expected on the ICP mainnet. HTTPS outcalls performed in the `request` method only reach consensus if the JSON-RPC response is the same each call.
 
 If you encounter an issue with consensus, [please let us know](https://github.com/internet-computer-protocol/evm-rpc-canister) and we will look into whether it's possible to add official support for your use case.
 
 ### Response size estimates
 
-In some cases, it's necessary to perform multiple HTTP outcalls with increasing maximum response sizes to complete a request. This is relatively common for the `eth_getLogs` method and may increase the time and cost of performing an RPC call. One solution is to specify an initial response size estimate (in bytes):
+In some cases, it's necessary to perform multiple HTTPS outcalls with increasing maximum response sizes to complete a request. This is relatively common for the `eth_getLogs` method and may increase the time and cost of performing an RPC call. One solution is to specify an initial response size estimate (in bytes):
 
 ```bash
 dfx canister call evm_rpc eth_getLogs "(variant {EthMainnet}, record {responseSizeEstimate = 5000}, record {addresses = vec {\"0xdAC17F958D2ee523a2206206994597C13D831ec7\"}})" --with-cycles=1000000000 --wallet=$(dfx identity get-wallet)
