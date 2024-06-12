@@ -1,0 +1,42 @@
+---
+keywords: [advanced, tutorial, http, http gateways, gateways]
+---
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# HTTP gateways
+
+<MarkdownChipRow labels={["Advanced", "Tutorial"]} />
+
+## Overview
+
+The ICP HTTP gateway protocol enables conventional HTTP clients to interact with the ICP network. Through the HTTP gateway, software such as web browsers can retrieve and digest canister code and assets, such as HTML, JavaScript, images, or videos. The HTTP gateway makes this workflow possible by translating standard HTTP requests into API canister calls that ICP can understand.
+
+There are several HTTP gateway nodes running on ICP, but it should be noted that an HTTP gateway node could become compromised, creating a threat for canisters. Compromised gateways are threats even for canisters that are considered 'secure', such that they use certify assets, use a default client, and do not maintain their own certification checking.
+
+For a more secure solution, it is possible to run your own HTTP gateway instance locally. 
+
+## HTTP gateway architecture
+
+
+### Terminology
+
+- Client:
+
+- Gateway:
+
+- Request:
+
+## Running a local HTTP gateway
+
+
+
+https://github.com/dfinity/http-proxy/
+
+
+
+This whole interaction between client and replica with the HTTP Gateway in the middle is still not very well understood by the community and also something I think we need documentation for. It would help to make sure developers understand these nuances. It's on my backlog 
