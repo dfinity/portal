@@ -1,0 +1,82 @@
+---
+title: Developer weekly update June 12, 2024
+description: In this week's update, we're excited to announce the new ICP Education Hub, discuss a new NNS-related topics, and showcase a new example dapp that uses parallel inter-canister calls.
+tags: [Devs]
+image: /img/blog/dev-update-blog-june-12.jpg
+---
+
+# Developer weekly update June 12, 2024
+
+![June 12 2024](../../static/img/blog/dev-update-blog-june-12.jpg)
+
+Hello developers, and welcome to this week's developer weekly update! In this week's update, we're excited to announce the new ICP Education Hub, discuss new NNS-related topics, and showcase a new example dapp that uses parallel inter-canister calls. Let's get started!
+
+## ICP Education Hub
+
+Introducing the ICP Education Hub! This new webpage aggregates all ICP educational content into one place. Examples include the ICP developer journey video series, the Zero to Dapp series in collaboration with Encode Club, the new Chain Fusion educate video series, blogs, documentation, and more!
+
+[Check out all 130+ resources](https://internetcomputer.org/education-hub).
+
+Have a course or piece of content you want to add? Click the 'Submit your course' button on the page!
+
+## NNS neurons: Request for comment
+
+The DFINITY NNS team has proposed a change to neuron visibility. This change would allow neurons to choose whether they are publicly visible or private, allowing neurons to keep their voting decisions private or allow neurons to advertise themselves publicly for following.
+
+If accepted, the following fields of neurons selected to be 'private' would still be visible to the public:
+
+- Neuron ID
+
+- Stake and voting power
+
+- Dissolve delay and age
+
+In contrast, public nodes would expose the following data:
+
+- Neuron ID
+
+- Controller
+
+- Hot keys
+
+- If the node is KYC verified
+
+- If the node is Not for Profit
+
+- Known neuron data
+
+- Neuron stake, fees, and maturity data
+
+- Time to dissolve and dissolve delay
+
+- Time created and age since creation
+
+- Followees
+
+- Recent ballots
+
+- Timestamp of when the neuron joined the community fund
+
+- Transfer data
+
+[Read more details on the forum and participate in the conversation](https://forum.dfinity.org/t/request-for-comment-public-private-nns-neurons/31597).
+
+## NNS proposal: Add public and restricted `canister_status` visibility
+
+Another forum discussion regarding NNS changes is currently looking for comments and community input. This proposal suggests adding public and restricted `canister_status` visibility options. Currently, the `canister_status` function on the management canister returns information about a canister's controllers, Wasm hash, resource usage, and cycles balance. This endpoint can only be called by the controller of the canister.
+
+This proposal suggests that a canister can voluntarily make this information public so that it can be queried by principals that are not controllers of the canister.
+
+[Read more about this proposal and join the conversation on the forum](https://forum.dfinity.org/t/nns-proposal-add-public-and-restricted-canister-status-visibility/31814/1).
+
+## New example: Parallel inter-canister calls
+
+A new example has been added to the [DFINITY examples repo](https://github.com/dfinity/examples/)! This example, available in both Motoko and Rust, demonstrates how to implement a project that runs inter-canister calls in parallel. Using parallel, independent calls can help lower latency, especially when inter-canister calls are made across multiple subnets. One example use case for parallel calls might be a token swap that launches both token transfer operations at the same time.
+
+Check out this example in [Motoko](https://github.com/dfinity/examples/tree/master/motoko/parallel_calls) and [Rust](https://github.com/dfinity/examples/tree/master/rust/parallel_calls).
+
+
+That'll wrap up this week. Tune back in next week for more developer updates!
+
+-DFINITY
+
