@@ -44,6 +44,22 @@ export function RustLink({ to }) {
   );
 }
 
+export function TypeScriptLink({ to }) {
+  return (
+    <div className="relative flex group">
+      <div className="hidden group-hover:flex items-center justify-center w-40 absolute bottom-full left-1/2 -translate-x-[calc(50%+4px)]">
+        <span className="mb-1 text-white py-1 px-3 h-8 rounded-full bg-black-60 backdrop-blur-2xl items-center">
+          Typescript
+        </span>
+      </div>
+      <Link
+        className="flex items-center justify-center relative h-10 w-10 rounded-full border border-solid border-[#dfdfdf] p-2 text-infinite hover:border-infinite hover:text-white hover:bg-infinite hover:no-underline"
+        to={to}
+      ></Link>
+    </div>
+  );
+}
+
 export function DocsLink({ to }) {
   return (
     <div className="relative flex group">
