@@ -463,21 +463,7 @@
     "usesInternetIdentity": true,
     "logo": "/img/showcase/trax_logo.jpeg"
   },
-  {
-    "id": "liquityfrontend",
-    "name": "Liquity Frontend on ICP",
-    "description": "Liquity is a decentralized borrowing protocol that allows users to draw interest-free loans against Ether used as collateral. Liquity now has a fully decentralized, immutable frontend hosted on the Internet Computer.",
-    "website": "https://imtbl.top/#/",
-    "tags": [
-      "Ethereum",
-      "DeFi"
-    ],
-    "twitter": "https://twitter.com/LiquityProtocol",
-    "usesInternetIdentity": false,
-    "display": "Normal",
-    "logo": "/img/showcase/liquity.webp",
-    "screenshots": []
-  },
+  
   {
     "id": "w3ns",
     "name": "W3NS - Multichain",
@@ -741,7 +727,6 @@
     "description": "The mobile payments app that combines the power of Bitcoin with the convenience of mobile payments. With ckBTC, you can easily swap ckBTC from Bitcoin, view balances, and seamlessly make payments using QR codes.",
     "usesInternetIdentity": true,
     "website": "https://play.google.com/store/apps/details?id=com.foo.arth&pli=1",
-    "github": "https://github.com/s1dc0des/arth_app",
     "display": "Normal",
     "logo": "/img/showcase/arth_logo.png",
     "screenshots": [
@@ -1004,7 +989,6 @@
       "Tools / Infrastructure"
     ],
     "usesInternetIdentity": false,
-    "github": "https://github.com/kawak-org/Kawak-2.0",
     "twitter": "https://twitter.com/KawaK_ICP",
     "youtube": "",
     "submittableId": "35943161"
@@ -1049,7 +1033,6 @@
     ],
     "description": "Introducing CaniPlay (Can I Play), the pioneering, fully on-chain NFT broadcast station. Submit your audio or video content, reach a global audience, and receive recognition and rewards from your listeners. As a listener, enjoy airdrops for actively participating in curating content",
     "usesInternetIdentity": true,
-    "website": "https://u6i3f-pyaaa-aaaao-a2hca-cai.icp0.io",
     "github": "https://github.com/orgs/Canistore",
     "twitter": "https://twitter.com/canistore",
     "display": "Large",
@@ -1164,7 +1147,6 @@
     "id": "dwitter",
     "name": "Dwitter",
     "oneLiner": "AI-powered social network",
-    "website": "https://dwitter.me",
     "tags": [
       "SocialFi"
     ],
@@ -1494,21 +1476,7 @@
       "/img/showcase/nnscat_screenshot_0.jpg"
     ]
   },
-  {
-    "id": "aedile",
-    "name": "aedile",
-    "website": "https://aedile.io",
-    "twitter": "https://twitter.com/aedile_ic",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "Build and fund, 100% on chain aedile is the first open and decentralized service offering individuals, teams, and communities, an alternative to their favorite management tools.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/aedile_logo.webp",
-    "screenshots": [
-      "/img/showcase/aedile_screenshot_0.webp"
-    ]
-  },
+ 
   {
     "id": "icdevs.org",
     "name": "ICDevs.org ",
@@ -1630,18 +1598,7 @@
     "twitter": "https://twitter.com/vansdaynet",
     "submittableId": "22168376"
   },
-  {
-    "id": "motoko-academy",
-    "name": "Motoko Academy",
-    "description": "An app that helps you learn about the Internet Computer and Motoko. It covers everything from the basics to the most obscure, advanced topics",
-    "website": "https://motoko.academy/",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/motoko-academy.webp",
-    "twitter": "https://twitter.com/MotokoAcademy"
-  },
+
   {
     "id": "bink",
     "name": "Bink",
@@ -2023,20 +1980,7 @@
       "/img/showcase/tipjar_screenshot_0.webp"
     ]
   },
-  {
-    "id": "riseofthemagni",
-    "name": "Rise of the Magni",
-    "website": "https://riseofthemagni.com/",
-    "tags": [
-      "Games"
-    ],
-    "description": "Rise of the Magni, built by Toniq Labs, winner of the DSCVR hackathon for games on the Internet Computer. Buy, earn, and trade collectibles, compete in tactical battles online to earn in-game tokens, and venture through story mode to experience one of the first games built on the Internet Computer.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/riseofthemagni_logo.webp",
-    "screenshots": [
-      "/img/showcase/riseofthemagni_screenshot_0.webp"
-    ]
-  },
+  
   {
     "id": "welcomeintothemetaverse",
     "name": "Welcome Into the Metaverse",
@@ -2168,7 +2112,6 @@
     "id": "vibeverse",
     "name": "Vibeverse",
     "oneLiner": "a learning mobile app that teaches ppl how to be creative with ai",
-    "website": "https://vibeverse.xyz/",
     "tags": [
       "AI"
     ],
@@ -2574,7 +2517,6 @@
     "id": "motoko-book",
     "name": "The Motoko Programming Language Book",
     "oneLiner": "Writing Web3 Applications on the Internet Computer",
-    "website": "https://web3.motoko-book.dev/",
     "tags": [
       "Tools / Infrastructure"
     ],
@@ -2766,7 +2708,6 @@
       "Games"
     ],
     "usesInternetIdentity": true,
-    "github": "https://github.com/mgmetastudio/fishverse_dashboard",
     "twitter": "https://twitter.com/TheFishverse",
     "youtube": "https://www.youtube.com/channel/UCdMLfGmuLAsQlVPg9QROfcQ",
     "submittableId": "32119235"
@@ -2808,7 +2749,6 @@
       "DeFi"
     ],
     "usesInternetIdentity": false,
-    "github": "https://github.com/SaorsaLabs/221BravoApp",
     "twitter": "https://twitter.com/221BravoApp",
     "youtube": "",
     "submittableId": "36556639"
@@ -2876,7 +2816,6 @@
       "Enterprise"
     ],
     "usesInternetIdentity": true,
-    "github": "https://github.com/dCentra-io/dflow-icp",
     "twitter": "",
     "youtube": "https://youtu.be/Ik9FSpgHREw?t=139",
     "submittableId": "26384395"
@@ -3024,7 +2963,6 @@
       "DeFi"
     ],
     "usesInternetIdentity": false,
-    "github": "https://github.com/mzurs/InheritX",
     "twitter": "https://twitter.com/icpdelta",
     "youtube": "https://www.youtube.com/@inheritX_0101",
     "submittableId": "41410724"
@@ -3125,7 +3063,6 @@
     "usesInternetIdentity": false,
     "github": "https://github.com/lokaverse",
     "twitter": "https://twitter.com/lokamining",
-    "youtube": "https://www.youtube.com/@LokaMining",
     "submittableId": "43890593"
   },
   {
@@ -3205,8 +3142,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "usesInternetIdentity": true,
-    "github": "https://github.com/id-daniel-mccoy/asset-app"
+    "usesInternetIdentity": true
   },
   {
     "id": "Outank NFT Rarity",
@@ -3947,7 +3883,6 @@
       "DeFi"
     ],
     "twitter": "https://twitter.com/MyOrdinalsLoan",
-    "github": "https://github.com/gladguy/MyOrdinals.Loan",
     "description": "Peer-to-peer Bitcoin lending using ckBTC. Users borrow or lend ckBTC, securing transactions with unique Ordinal Inscriptions (Ordinals) as collateral.",
     "usesInternetIdentity": false,
     "display": "Normal",
@@ -4170,7 +4105,6 @@
     "description": "A decentralized content platform for publishing video/articles and subscribing through mobile payments.",
     "usesInternetIdentity": true,
     "website": "https://www.vfans.org/",
-    "github": "https://github.com/VFans-org/VFANS-IC-Publics",
     "display": "Normal",
     "logo": "/img/showcase/vfans_logo.png",
     "stats": "3,000+ users",
@@ -4301,7 +4235,6 @@
     ],
     "description": "A Layer2 built on ICP.",
     "usesInternetIdentity": true,
-    "website": "https://hk.ex3.one",
     "github": "https://github.com/deland-labs",
     "twitter": "https://twitter.com/DelandLabs",
     "display": "Normal",
