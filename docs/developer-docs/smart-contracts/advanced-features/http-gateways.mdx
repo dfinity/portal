@@ -18,25 +18,92 @@ The ICP HTTP gateway protocol enables conventional HTTP clients to interact with
 
 There are several HTTP gateway nodes running on ICP, but it should be noted that an HTTP gateway node could become compromised, creating a threat for canisters. Compromised gateways are threats even for canisters that are considered 'secure', such that they use certify assets, use a default client, and do not maintain their own certification checking.
 
-For a more secure solution, it is possible to run your own HTTP gateway instance locally. 
-
-## HTTP gateway architecture
-
+For a more secure solution, it is possible to run your own HTTP gateway instance locally.
 
 ### Terminology
 
-- Client:
+- **Request**: A message sent to a server or endpoint.
 
-- Gateway:
+- **Client**: A service that is able to send an HTTP formatted request and receive a response from a server.
 
-- Request:
+- **Gateway**: Enables the transfer for inbound and outbound messages.
+
+## HTTP gateway workflow
+
+On ICP, an HTTP request is handled by an HTTP client using the following workflow:
+
+1. An HTTP client makes an outbound request.
+
+2. The HTTP gateway intercepts the request and resolves the canister ID of the request's destination.
+
+3. The request is encoded with Candid and sent in a query call to the destination canister's `http_request` method.
+
+4. ICP's API gateway intercepts this request, resolves the canister ID based on the hostname address, then forwards request to the relevant replica node. All requests made to ICP through an HTTP gateway are forwarded through this API gateway.
+
+5. The canister receives and processes the request, then returns the response.
+
+6. The HTTP gateway decodes the Candid encoding on the response and sends the request again via an update call to the canister's `http_request_update` method. The update call goes through consensus on the subnet.
+
+7. If necessary, the HTTP gateway fetches additional response body data through query calls.
+
+8. The HTTP gateway validates the response's certificate if applicable.
+
+9. The HTTP gateway returns the decoded response to the HTTP client.
+
+Additional details can be found in the [HTTP gateway specification](https://internetcomputer.org/docs/current/references/http-gateway-protocol-spec).
 
 ## Running a local HTTP gateway
 
+To run your own local HTTP gateway, a proof of concept implementation can be used that enables a secure end-to-end connection with canisters deployed on ICP.
+
+This implementation features:
+
+- Translation between HTTP asset requests and ICP API calls.
+
+- Detects ICP domains from principals and custom domain records.
+
+- Terminates TLS connections locally.
+
+- Bypasses remote gateway denylists.
+
+- Resolves crypto domains.
+
+### Prerequisites
+
+- Download and install [yarn package manger](https://yarnpkg.com/).
+
+- Download and install [Node.js](https://nodejs.org/en).
 
 
-https://github.com/dfinity/http-proxy/
+- #### Step 1: Clone the GitHub repo:
 
+```
+git clone https://github.com/dfinity/http-proxy.git
+```
 
+- #### Step 2: Install the project's dependencies:
 
-This whole interaction between client and replica with the HTTP Gateway in the middle is still not very well understood by the community and also something I think we need documentation for. It would help to make sure developers understand these nuances. It's on my backlog 
+```
+cd http-proxy
+npm install --global yarn
+yarn set version 3.5.0
+yarn install
+```
+
+- #### Step 3: Build and run the project:
+
+```
+yarn build
+yarn start
+```
+
+You should see output that indicates the local HTTP gateway is ready to use:
+
+```
+{"level":30, "time": "2024-06-13T22:41:28.962Z","pid":41696,"hostname":"JessieMgeonsMBP.attlocal.net","name":"IC HTTP Proxy UI","msg":"Preparing interface"}
+{"level":30, "time": "2024-06-13T22:41:28.981Z","pid":41696,"hostname":"JessieMgeonsMBP.attlocal.net","name":"IC HTTP Proxy UI","msg":"Interface is ready"}
+```
+
+## Resources
+
+- [HTTP gateway specification](https://internetcomputer.org/docs/current/references/http-gateway-protocol-spec).
