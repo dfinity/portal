@@ -2,10 +2,6 @@
 keywords: [advanced, tutorial, http, http gateways, gateways]
 ---
 
-import TabItem from "@theme/TabItem";
-import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
-import { AdornedTab } from "/src/components/Tabs/AdornedTab";
-import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # HTTP gateways
@@ -26,7 +22,7 @@ For a more secure solution, it is possible to run your own HTTP gateway instance
 
 - **Client**: A service that is able to send an HTTP formatted request and receive a response from a server.
 
-- **Gateway**: Enables the transfer for inbound and outbound messages.
+- **Gateway**: Enables the transfer of inbound and outbound messages.
 
 ## HTTP gateway workflow
 
@@ -38,7 +34,7 @@ On ICP, an HTTP request is handled by an HTTP client using the following workflo
 
 3. The request is encoded with Candid and sent in a query call to the destination canister's `http_request` method.
 
-4. ICP's API gateway intercepts this request, resolves the canister ID based on the hostname address, then forwards request to the relevant replica node. All requests made to ICP through an HTTP gateway are forwarded through this API gateway.
+4. ICP's API gateway intercepts this request, resolves the canister ID based on the hostname address, and then forwards the request to the relevant replica node. All requests made to ICP through an HTTP gateway are forwarded through this API gateway.
 
 5. The canister receives and processes the request, then returns the response.
 
@@ -46,7 +42,7 @@ On ICP, an HTTP request is handled by an HTTP client using the following workflo
 
 7. If necessary, the HTTP gateway fetches additional response body data through query calls.
 
-8. The HTTP gateway validates the response's certificate if applicable.
+8. The HTTP gateway validates the response's certificate, if applicable.
 
 9. The HTTP gateway returns the decoded response to the HTTP client.
 
@@ -54,7 +50,7 @@ Additional details can be found in the [HTTP gateway specification](https://inte
 
 ## Running a local HTTP gateway
 
-To run your own local HTTP gateway, a proof of concept implementation can be used that enables a secure end-to-end connection with canisters deployed on ICP.
+To run your own local HTTP gateway, a proof-of-concept implementation can be used that enables a secure end-to-end connection with canisters deployed on ICP.
 
 This implementation features:
 
