@@ -91,9 +91,9 @@ An example of this error is:
 
 There are [system wide limits][limits] on the main and stable memory of each canister, as well as limits on the total memory of a subnet. This error could be triggered by any one of those limits being reached.
 
-In addition, canisters may reserve memory using the [`memory-allocation` setting](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister/#options-8). In this case the canister is guaranteed to be able to use up to the allocated memory, but will receive an "Out of memory" error when trying to use more than the allocated amount.
+In addition, canisters may reserve memory using the [`memory-allocation` setting][memory-allocation-setting]. In this case the canister is guaranteed to be able to use up to the allocated memory, but will receive an "Out of memory" error when trying to use more than the allocated amount.
 
-To diagnose this error use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check the canister's current memory usage and memory allocation. The subnet memory usage can also be seen on the [ICP dashboard](https://dashboard.internetcomputer.org/subnets).
+To diagnose this error use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check the canister's current memory usage and memory allocation. The subnet memory usage can also be seen on the [ICP dashboard][dashboard-subnets].
 
 To fix this error, consider:
 
@@ -155,7 +155,7 @@ Since canister's need to pay for their memory each round, growing the memory req
 To fix this error, top up the canister with more cycles on decrease its [freezing threshold][setting-freezing-threshold].
 
 
-### Reserved cyles limit exceeded in memory grow
+### Reserved cycles limit exceeded in memory grow
 Growing the canister's memory would require reserving more cycles than allowed by the canister's reserved cycles limit.
 
 An example of this error is:
@@ -165,7 +165,7 @@ An example of this error is:
 
 When subnets start to run low on memory, using up more memory requires reserving cycles to pay for the future use of that memory. Canisters have a setting that limits the number of cycles that they will reserve and this error indicates that a canister failed to grow its memory because doing so would cause the number of reserved cycles to exceed that limit.
 
-To diagnose this error use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check the canister's current reserved cycles limit. The subnet memory usage can also be seen on the [ICP dashboard](https://dashboard.internetcomputer.org/subnets).
+To diagnose this error use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check the canister's current reserved cycles limit. The subnet memory usage can also be seen on the [ICP dashboard][dashboard-subnets].
 
 To fix this error, consider increasing the canister's reserved cycles limit, or moving to a subnet with lower memory usage.
 
@@ -386,14 +386,346 @@ There is a [limit][limits] on the total size in bytes of the [code section](http
 To fix this error, consider using [`ic-wasm`][ic-wasm] to shrink the size of the code section. If the limit is still exceeded, consider splitting the logic across multiple canisters.
 
 
+### Invalid controller
+An action failed because it can only be performed by the controller of the canister.
+
+An example of this error is:
+```
+  Only the controllers of the canister {} can control it.
+  Canister's controllers: xxx-xxx yyy-yyy
+  Sender's ID: zzz-zzz
+```
+
+Each canister has a number of [controllers](docs/current/developer-docs/smart-contracts/maintain/control/) and certain actions (e.g. updating the canister's Wasm code) can only be performed by controllers. To fix this error, consider performing the action from a [principal](docs/current/concepts/glossary/#principal) which is already a controller and add more controllers if needed.
+
+
+### Canister not found
+An action was performed on a canister that does not exist.
+
+An example of this error is:
+```
+  Canister xxx-xxx not found.
+```
+
+To fix this error, double check that the canister exists (one way would be to search for its ID on the [dashboard](https://dashboard.internetcomputer.org)). If this error is encountered when testing locally with `dfx`, make sure all required canisters are deployed as part of the test setup.
+
+
+### Canister not empty
+There was an attempt to install code on a canister which already has been installed.
+
+An example of this error is:
+```
+  Canister xxx-xxx cannot be installed because the canister is not empty. Try installing with mode='reinstall' instead.
+```
+
+[Installing](docs/current/developer-docs/smart-contracts/install) a Wasm module on a canister is meant to be performed only when the canister has no existing state (it has only been created) and therefore fails if the canister already has an installed Wasm module.
+
+If the intention is to update the Wasm module without wiping the state, then an [upgrade](docs/current/developer-docs/smart-contracts/maintain/upgrade) should be used instead. If the intention is actually to overwrite the canister state, then the [reinstall](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/maintain/settings#reinstall-a-canister) mode can be used.
+
+
+### Subnet compute capacity oversubscribed
+There is not enough compute capacity remaining on the subnet to satisfy a compute allocation request.
+
+An example of this error is:
+```
+  Canister requested a compute allocation of 20% which cannot be satisfied because the Subnet's remaining compute capacity is 10%.
+```
+
+Canisters have a [compute allocation][compute-allocation] setting which can be used to guarantee the canister will run periodically. This error occurs when other canisters on the subnet have already requested enough compute allocation that the requested allocation cannot be met.
+
+To fix this error, consider moving the canister to another subnet or decreasing the compute allocation on other canisters on the current subnet.
+
+
+### Subnet memory capacity oversubscribed
+There is not enough memory remaining on the subnet to satisfy a memory allocation request.
+
+An example of this error is:
+```
+  Canister requested 4 GiB of memory but only 2 GiB are available in the subnet.
+```
+
+Canisters have a [memory allocation][memory-allocation-setting] setting which can be used to guarantee the canister can grow it's memory up to a given size. This error occurs when other canisters on the subnet have already used up too much memory for the request to be satisified.
+
+To fix this error, consider moving the canister to another subnet or trying to reduce the memory usage of other controlled canisters on the current subnet.
+
+
+### Subnet custom section memory capacity oversubscribed
+There is not enough memory for Wasm custom sections on the subnet to allow the Wasm module to be installed.
+
+An example of this error is:
+```
+  Canister requested 10 MiB of Wasm custom sections memory but only 1 MiB are available in the subnet.
+```
+
+Subnets separately track memory that is used to store the custom sections of canister Wasm modules and this error means that there is not enough space for the custom sections of the Wasm module that is being installed.
+
+If custom sections are not required for this canister, the error could be fixed by removing the custom sections (e.g. using [`wasm-strip`](https://github.com/WebAssembly/wabt)). Otherwise consider moving the canister to another subnet or uninstalling other controlled canisters on the subnet that may be using up custom section space.
+
+
+### Delete canister not stopped
+There was an attempt to delete a canister which is not in the stopped state.
+
+An example of this error is:
+```
+  Canister xxx-xxx must be stopped before it is deleted.
+```
+
+Canister's must be stopped before they can be deleted to ensure no calls are left unresolved. To fix this error, [check the status][dfx-canister-status] of the canister. If it is `Stopping` then wait for all outstanding calls to be resolved and the status to move to `Stopped`. Otherwise, try [stopping][dfx-canister-stop] the canister before deleting it.
+
+
+### Delete canister self
+A canister executed a request to delete itself.
+
+An example of this error is:
+```
+  Canister xxx-xxx cannot delete itself.
+```
+
+It is impossible for a canister to delete itself, so this request will never succeed.
+
+To fix this error, consider deleting the canister from one of it's other [controllers][dfx-canister-status]. If the only controller of the canister is itself, then it cannot be directly deleted. However, if it burns enough cycles it will eventually be frozen (when the balance drops below its freezing threshold). If the cycle balance then drops to zero the canister will be deleted.
+
+
+### Delete canister queue not empty
+There was a request to delete a canister which has non-empty input or output queues.
+
+An example of this error is:
+```
+  Canister xxx-xxx has messages in its queues and cannot be deleted now. Please retry after some time.
+```
+
+A canister cannot be deleted while it has pending input or output messages because those messages would be lost. To fix this error, wait until the pending messages have been pulled from the queues. To ensure no new messages appear during that time, consider [stopping the canister][dfx-canister-stop].
+
+
+### Not enough memory allocation given
+The canister does not have enough memory allocation to complete a given request or there was an attempt to lower the canister's memory allocation below the amount it already uses.
+
+An example of this error is:
+```
+  Canister was given 20000000000 memory allocation but at least 30000000000 of memory is needed.
+```
+
+A canister can set a [memory allocation][memory-allocation-setting] which guarantees it will be able to use a given amount of memory, but also limits the canister memory to the allocated amount.
+
+To fix this error, consider increasing the canister's memory allocation, reducing it's memory usage, or switching to best-effort memory allocation.
+
+
+### Create canister not enough cycles
+The request to create a canister did not include enough cycles to pay the creation fee.
+
+An example of this error is:
+```
+  Creating a canister requires a fee of 100000000000 that is deducted from the canister's initial balance but only 1000000 cycles were received with the create_canister request.
+```
+
+To fix this error, include enough cycles with the request to meet the creation fee.
+
+
+### Install code not enough cycles
+A canister doesn't have enough cycles to execute an install message.
+
+An example of this error is:
+```
+  Canister installation failed with `Canister xxx-xxx is out of cycles: please top up the canister with at least 10000000000 additional cycles`.
+```
+
+To fix this error, consider [topping up][topping-up] the canister with additional cycles.
+
+
+### Install code rate limited
+An install message for the given canister cannot be executed because the canister has been rate limited.
+
+An example of this error is:
+```
+  Canister xxx-xxx is rate limited because it executed too many instructions in the previous install_code messages. Please retry installation after several minutes.
+```
+
+There is a limit on how many instructions a canister can execute for installations in a given time period. To fix this error, consider retrying the installation at a later time.
+
+
+### Subnet out of canister ids
+There was an attempt to create a canister on a subnet which cannot hold any more canisters.
+
+An example of this error is:
+```
+  Could not create canister. Subnet has surpassed its canister ID allocation.
+```
+
+To fix this error, consider creating the canister on another subnet.
+
+
+### Invalid settings
+A canister was created with invalid settings or there was an attempt to change the canister settings to an invalid value.
+
+An example of this error is:
+```
+  Could not validate the settings: Invalid settings: 'controllers' length exceeds maximum size allowed of 10.
+```
+
+To fix this error, apply the described changes to make the settings valid.
+
+
+### Maximum number of canisters reached
+There was an attempt to create a canister on a subnet which has reached the maximum number of allowed canisters.
+
+An example of this error is:
+```
+  Subnet yyy-yyy has reached the allowed canister limit of 100000 canisters. Retry creating the canister.
+```
+
+To fix this error, consider creating the canister on another subnet.
+
+
+### Insufficient cycles in compute allocation
+The canister does not have enough cycles to increase its compute allocation.
+
+An example of this error is:
+```
+  Cannot increase compute allocation to 50 due to insufficient cycles. At least 1000000000 additional cycles are required.
+```
+
+Canisters need to pay for [compute allocation][compute-allocation] and there was an attempt to increase the compute allocation of a canister beyond what it can currently pay for. To fix this error, consider [adding the required cycles][topping-up] to the canister.
+
+
+### Insufficient cycles in memory allocation
+The canister does not have enough cycles to increase its memory allocation.
+
+An example of this error is:
+```
+  Cannot increase memory allocation to 40000000000 due to insufficient cycles. At least 10000000000 additional cycles are required.
+```
+
+Canisters need to pay for [memory allocation][memory-allocation-setting] and there was an attempt to increase the memory allocation of a canister beyond what it can currently pay for. To fix this error, consider [adding the required cycles][topping-up] to the canister.
+
+
+### Insufficient cycles in memory grow
+The canister does not have enough cycles to perform an operation that would increase its memory usage.
+
+An example of this error is:
+```
+  Canister cannot grow memory by 1000000000 bytes due to insufficient cycles. At least 10000000000 additional cycles are required.
+```
+
+There are many operations that may increase a canister's memory usage (e.g. uploading a chunk, taking a snapshot, performaning an install). This error indicates that some operation on the canister caused it's memory to increase beyond what the canister currently has enough cycles to pay for.
+
+To fix this error, consider [adding the required cycles][topping-up] to the canister or otherwise reducing the canister's memory usage.
+
+
+### Reserved cycles limit exceeded in memory allocation
+There was an attempt to increase the canisters memory allocation that would require reserving more cycles than allowed by the canister's reserved cycles limit.
+
+An example of this error is:
+```
+  Cannot increase memory allocation to 50000000000 due to its reserved cycles limit. The current limit (1000000000000) would be exceeded by 301000000.
+```
+
+When subnets start to run low on memory, using up more memory requires reserving cycles to pay for the future use of that memory. Canisters have a setting that limits the number of cycles that they will reserve and this error indicates that a canister failed to increase its [memory allocation][memory-allocation-setting] because doing so would cause the number of reserved cycles to exceed that limit.
+
+To diagnose this error use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check the canister's current reserved cycles limit. The subnet memory usage can also be seen on the [ICP dashboard][dashboard-subnets].
+
+To fix this error, consider increasing the canister's reserved cycles limit, or moving to a subnet with lower memory usage.
+
+
+### Wasm chunk store error
+There was an error while executing a method to manipulate the canister's [Wasm chunk store](docs/current/references/ic-interface-spec/#ic-upload_chunk) (e.g. `upload_chunk`, `clear_chunk_store`, `install_chunked_code`, etc.).
+
+An example of this error is:
+```
+  Error from Wasm chunk store: Cannot upload chunk. At least 10000000 additional cycles are required.
+```
+
+To fix this error, consider [topping up][topping-up] the canister if it doesn't have enough cycles, or using the [`stored_chunks` API](docs/current/references/ic-interface-spec/#ic-stored_chunks) to see which chunks have been uploaded if you get errors about mismatching or missing hashes.
+
+
+### Canister snapshot not found
+A canister snapshot operation was performed with a snapshot ID that doesn't exist.
+
+An example of this error is:
+```
+  Could not find the snapshot ID 125-xxx-xxx for canister xxx-xxx.
+```
+
+To fix this error, consider using the `list_canister_snapshot` API to see which snapshots exist on your canister.
+
+
+### Canister heap delta rate limited
+The canister has been rate limited which prevents it from taking or loading a snapshot.
+
+An example of this error is:
+```
+  Canister xxx-xxx is heap delta rate limited: current delta debit is 1000005000, but limit is 1000000000.
+```
+
+Canisters are limited by how much they can write within a given time frame. This error indicates that the canister has recently written a large amount of data which means it cannot currently take or load a snapshot because those operations also generate writes to the blockchain state.
+
+To fix this error, consider waiting a few seconds before trying the operation again. If the error persists, it may be because the canister is continually writing significant amounts of data and is often being rate limited. In this case, it might make sense to stop the canister before taking or loading a snapshot, or it might make sense to shard the data across multiple canisters so that each one can write less.
+
+
+### Canister snapshot invalid ownership
+A canister snapshot operation was performed with a snapshot ID that doesn't belong to the target canister.
+
+An example of this error is:
+```
+  The snapshot 125-xxx-xxx does not belong to canister yyy-yyy.
+```
+
+To fix this error, consider using the `list_canister_snapshot` API to see which snapshots exist on your canister.
+
+
+### Long execution already in progress
+There was an attempt to load a canister snapshot on a canister that is in the middle of a long running execution.
+
+An example of this error is:
+```
+  The canister xxx-xxx is currently executing a long-running message.
+```
+
+Snapshots cannot be loaded while a canister is executing a long message. To fix this error, consider waiting a few seconds for the message execution to complete. If the problem persists, it may be because the canister is executing long messages in a loop and a possible fix could be to stop the canister before loading the snapshot.
+
+
+### Missing upgrade option
+There was an upgrade message which was missing some required fields.
+
+An example of this error is:
+```
+  Missing upgrade option: Enhanced orthogonal persistence requires the `wasm_memory_persistence` upgrade option.
+```
+
+To fix this error, try resending the message with the required fields included.
+
+
+### Invalid upgrade option
+There was an upgrade message with an invalid field.
+
+An example of this error is:
+```
+  Invalid upgrade option: The `wasm_memory_persistence: opt Keep` upgrade option requires that the new canister module supports enhanced orthogonal persistence.
+```
+
+To fix this error, try resending the message with after omitting or modifying the invalid field.
+
+
+
+
+
 [canbench]: docs/current/developer-docs/smart-contracts/test/benchmarking
 
 [canister-status-api]: docs/current/references/ic-interface-spec#ic-canister_status
 
+[compute-allocation]: docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister/#allocating-message-processing
+
+[dashboard-subnets]: https://dashboard.internetcomputer.org/subnets
+
 [dfx-canister-status]: docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-status
+
+[dfx-canister-stop]: docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-stop
 
 [ic-wasm]: https://github.com/dfinity/ic-wasm
 
 [limits]: docs/current/developer-docs/smart-contracts/maintain/resource-limits#resource-constraints-and-limits
 
+[memory-allocation-setting]: docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister/#options-8
+
 [setting-freezing-threshold]: docs/current/tutorials/hackathon-prep-course/managing-canisters/#setting-the-canisters-freezing-threshold
+
+[topping-up]: docs/current/developer-docs/smart-contracts/topping-up/topping-up-canister/
