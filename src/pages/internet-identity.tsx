@@ -292,10 +292,10 @@ function InternetIdentityPage() {
 
   return (
     <Layout
-      title="Internet Identity"
-      description="Internet Identity on ICP redefines user experiences by removing friction from the authentication journey and enabling data sovereignty."
+      title="Secure, seamless and privacy-preserving digital identity"
+      description="Internet Identity is a decentralized federated service running end-to-end on the Internet Computer."
     >
-      <ShareMeta image="/img/shareImages/share-internet-identity.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-internet-identity.webp"></ShareMeta>
 
       <main
         className="text-black relative "
