@@ -29,7 +29,7 @@ const users = [
       <>
         Access{" "}
         <Link
-          href="https://identitysupport.dfinity.org/hc/en-us/articles/17283016756500-Which-dapps-support-Internet-Identity"
+          href="https://internetcomputer.org/ecosystem?tag=Internet+Identity"
           className="link-primary-dark"
           target="_blank"
           rel="noopener noreferrer"
@@ -353,10 +353,10 @@ function InternetIdentityPage() {
                     className="tw-heading-5 md:tw-heading-4 mb-3 sm:mb-6 "
                     variants={transitions.item}
                   >
-                    Separatrix is now live!
+                    Verifiable credentials are live!
                   </motion.h5>
                   <motion.p>
-                    With this milestone, ICP offers the infrastructure and
+                    With the Separatrix milestone, ICP offers the infrastructure and
                     tooling to issue, share, and consume credentials in a
                     privacy-preserving fashion. Users are in control of their
                     credentials, giving them a self-sovereign digital identity.
@@ -369,9 +369,10 @@ function InternetIdentityPage() {
                     className="mb-0 mt-4 md:mt-6 tw-paragraph md:tw-lead-sm text-bold text-black"
                     variants={transitions.item}
                   >
-                    <li className="mb-2">Verifiable credentials</li>
-                    <li className="mb-2">SSI SDK for Relying Parties</li>
-                    <li className="mb-2">Verifiable credentials playground</li>
+                    <li className="mb-2">Proof of unique humanity on DecideID</li>
+                    <li className="mb-2">SDK for Relying Parties</li>
+                    <li className="mb-2">Verifiable credentials playground</li> 
+
                   </motion.ul>
                   <p className="mb-12 md:mb-0 mt-8">
                     <Link
@@ -379,7 +380,7 @@ function InternetIdentityPage() {
                       href="/roadmap"
                     >
                       <LinkArrowRight />
-                      READ MORE
+                      READ THE BLOG POST
                     </Link>
                   </p>
                 </div>
@@ -395,7 +396,7 @@ function InternetIdentityPage() {
               </aside>
             </motion.div>
           </AnimateSpawn>
-          <AnimateSpawn
+          {/* <AnimateSpawn
             className="mt-16 md:mt-40 "
             variants={transitions.container}
           >
@@ -403,7 +404,7 @@ function InternetIdentityPage() {
               A versatile solution for each stage of the digital identity
               lifecycle
             </motion.h4>
-          </AnimateSpawn>
+          </AnimateSpawn> */}
           {/* USERS */}
           <AnimateSpawn
             className="md:flex md:items-center mt-12 md:mt-40"
@@ -411,7 +412,7 @@ function InternetIdentityPage() {
           >
             <div className="md:w-1/2">
               <motion.h3 className="tw-heading-4 md:tw-heading-60">
-                Users: access dapps quickly and securely{" "}
+                Access dapps quickly and securely{" "}
               </motion.h3>
               <motion.p className="text-2xl mb-0 font-bold md:w-9/10">
                 Internet Identity is a self-sovereign single-sign on solution
@@ -453,7 +454,7 @@ function InternetIdentityPage() {
             >
               <div className="md:w-[55%]  pt-16 md:pt-40 ">
                 <motion.h3 className="tw-heading-4 md:tw-heading-60">
-                  Developers: build dapps with a secure authentication method
+                  Build dapps with a secure authentication method
                 </motion.h3>
                 <motion.p className="text-2xl mb-0 font-bold md:w-9/10">
                   Use Internet Identity as the authentication method for your
@@ -461,7 +462,7 @@ function InternetIdentityPage() {
                 </motion.p>
                 <Link
                   className="mt-3 md:mt-6 link-primary-light link-with-icon "
-                  href="https://github.com/dfinity/internet-identity/tree/main/demos/using-dev-build"
+                  href="https://internetcomputer.org/docs/current/developer-docs/identity/internet-identity/integrate-internet-identity"
                 >
                   <LinkArrowRight />
                   <span>Start Building</span>
@@ -498,13 +499,13 @@ function InternetIdentityPage() {
             >
               <div className="md:w-1/2  pt-16 md:pt-40 ">
                 <motion.h3 className="tw-heading-4 md:tw-heading-60">
-                  Issuers: issue verified credentials privately and efficiently
+                  Issue verified credentials privately and efficiently
                 </motion.h3>
                 <motion.p className="text-2xl mb-0 font-bold md:w-9/10">
                   Leverage Internet Identity’s Issuer APIs to easily build a
                   solution that issues privacy-preserving credentials.
                 </motion.p>
-                <Link className="button-primary mt-6" href="">
+                <Link className="button-primary mt-6" href="https://internetcomputer.org/docs/current/developer-docs/identity/verifiable-credentials/issuer">
                   Become an Issuer
                 </Link>
               </div>
@@ -539,7 +540,7 @@ function InternetIdentityPage() {
             >
               <div className="md:w-1/2  pt-16 md:pt-40 ">
                 <motion.h3 className="tw-heading-4 md:tw-heading-60">
-                  A platform designed by identity veterans
+                  Learn more about our innovative identity platform
                 </motion.h3>
                 <motion.p className="text-2xl mb-0 font-bold md:w-9/10">
                   Internet Identity was informed by innovative contributions to
