@@ -30,7 +30,7 @@ const cveData = [
     description:
       "Stable BTreeMap memory leak when deallocating nodes with overflows",
     reference:
-      "https://github.com/dfinity/stable-structures/security/advisories/GHSA-3rcq-39xp-7xjp",
+      "https://github.com/advisories/GHSA-3rcq-39xp-7xjp",
     products: "ic-stable-structures (Rust)",
     versions: ">= 0.6.0, < 0.6.4",
     cvss: "Medium (5.9/10)",
