@@ -71,7 +71,7 @@ function CVEPage(): JSX.Element {
                     "Reference",
                     "Affected products",
                     "Affected versions",
-                    "CVSS score",
+                    "CVSS 3.1",
                     "Issued on",
                   ].map((header) => (
                     <th key={header} className="border border-black p-2">
