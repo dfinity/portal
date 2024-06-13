@@ -621,11 +621,6 @@ const sidebars = {
             },
             {
               type: "doc",
-              label: "Randomness",
-              id: "developer-docs/security/security-best-practices/randomness",
-            },
-            {
-              type: "doc",
               label: "Canister upgrades",
               id: "developer-docs/security/security-best-practices/canister-upgrades",
             },
