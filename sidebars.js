@@ -612,7 +612,7 @@ const sidebars = {
             {
               type: "doc",
               label: "HTTP outcalls",
-              id: "developer-docs/security/security-best-practices/http-outcalls",
+              id: "developer-docs/security/security-best-practices/https-outcalls",
             },
             {
               type: "doc",
