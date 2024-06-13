@@ -20,7 +20,7 @@ const cveData = [
     description:
       "agent-js: Insecure Key Generation in `Ed25519KeyIdentity.generate`",
     reference: "https://github.com/advisories/GHSA-c9vv-fhgv-cjc3",
-    products: "Agent-js @dfinity/auth-client (npm) @dfinity/identity (npm)",
+    products: "@dfinity/auth-client (npm) @dfinity/identity (npm)",
     versions: ">= 0.20.0-beta.0, < 1.0.1",
     cvss: "Critical (9.1/10)",
     issued: "Feb 21, 2024",
