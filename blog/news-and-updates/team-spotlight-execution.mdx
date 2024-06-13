@@ -8,16 +8,16 @@ image: /img/blog/dev-update-blog-exe-1.jpg
 ![Execution Team spotlight](../../static/img/blog/dev-update-blog-exe-1.jpg)
 
 **Welcome to edition of the developer blog's team spotlight series! For this issue, we met with members from the Execution team to get insight into how the ICP's execution environment works and how it fits within the ICP technology stack. Let's start with our usual introduction, what is the purpose of the Execution team?**
-          
+
 *The team’s mission can be summarized as “managing the lifecycle and providing efficient execution of canisters”. We contribute to the system APIs that canisters can use to run on ICP and interact with other canisters as well as scheduling of messages and cycles accounting.*
 
 **What is the composition of the Execution team?**
- 
+
 *The team consists of 5 engineers: Alexandra, Dimitris, Dragoljub, Islam, Maksym and 1 researcher: Bogdan. All team members are based in Switzerland.*
 
 **Let's dive a bit into how execution on ICP works. On a fundamental level, what is ICP’s execution environment? What happens in it?**
 
-*The execution environment is responsible for processing messages (either from users or canisters), keeping track of cycles for canisters and updating their state after message execution completes.*            
+*The execution environment is responsible for processing messages (either from users or canisters), keeping track of cycles for canisters and updating their state after message execution completes.*
 
 **Could you explain how the execution layer fits into the ICP stack?**
 
@@ -36,7 +36,7 @@ image: /img/blog/dev-update-blog-exe-1.jpg
 
 **Thank you for that description! I think that is very insightful for developers to understand what's happening behind the scenes. How do developers interact with the execution layer through canisters?**
 
-*Developers interact with the execution environment through two sets of APIs: the first is a synchronous one, often called the system API. This is analogous to system calls on a regular operating system. The second class is the API provided by the management canister which is asynchronous and is very similar to interacting with any other canister on ICP – this API allows canisters to manage other canisters as well as get access to some of the special features of ICP, including tECDSA and HTTP outcalls.*
+*Developers interact with the execution environment through two sets of APIs: the first is a synchronous one, often called the system API. This is analogous to system calls on a regular operating system. The second class is the API provided by the management canister which is asynchronous and is very similar to interacting with any other canister on ICP – this API allows canisters to manage other canisters as well as get access to some of the special features of ICP, including tECDSA and HTTPS outcalls.*
 
 **How does the Execution team work with other teams?**
 
@@ -45,7 +45,7 @@ image: /img/blog/dev-update-blog-exe-1.jpg
 **How does the ICP execution environment differ from other forms of execution environments?**
 
 *Two major differences of ICP’s execution environment are:*
-    
+
 *1. Orthogonal persistence which allows canisters to transparently persist data that lives on their heap.*
 
 *2. Reverse gas model which makes canisters pay for the actions they take and resource usage, freeing end users from the need of dealing with cycles themselves.*
@@ -55,7 +55,7 @@ image: /img/blog/dev-update-blog-exe-1.jpg
 *One of the biggest challenges for the team is the constant struggle to prioritize all the features and requests we receive to add or improve things on ICP. It’s a good problem to have and we’re glad that through some of the discussions with developers on the forum or ICP.Lab sessions we have managed to identify some of the most important things to tackle and adjusted our priorities to match this feedback.*
 
 **Have there been any improvements made as a direct result of node provider or developer feedback?**
-       
+
 *Many of the features the team has worked on or is currently working on have come from direct feedback from developers. Latest examples include canister timers as a more efficient solution compared to heartbeats, the work on large Wasm installations which is ongoing as well as improvements to the stable structures library that allows canisters to use stable memory efficiently.*
 
 **What is the primary project that the Execution team is working on or focused on currently?**

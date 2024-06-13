@@ -9,13 +9,13 @@ import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# How to use HTTP outcalls: GET
+# How to use HTTPS outcalls: GET
 
 <MarkdownChipRow labels={["Advanced", "Tutorial"]} />
 
 ## Overview
 
-A minimal example to make a `GET` HTTPS request. The purpose of this dapp is only to show how to make HTTP requests from a canister.
+A minimal example to make a `GET` HTTPS request. The purpose of this dapp is only to show how to make HTTPS requests from a canister.
 
 The sample code is in both Motoko and Rust. This sample canister sends a `GET` request to the Coinbase API and retrieves some historical data about the ICP token.
 
@@ -26,7 +26,7 @@ This example takes less than 5 minutes to complete.
 
 ### Sample dapp
 
-The canister in this tutorial will have only **one public method** named `get_icp_usd_exchange()` which, when called, will trigger an HTTP `GET` request to an external service. The canister will not have a frontend (only a backend), but like all canisters, you can interact with its public methods via the Candid web UI, which will look like this:
+The canister in this tutorial will have only **one public method** named `get_icp_usd_exchange()` which, when called, will trigger an HTTPS `GET` request to an external service. The canister will not have a frontend (only a backend), but like all canisters, you can interact with its public methods via the Candid web UI, which will look like this:
 
 
 ![Candid web UI](../_attachments/https-get.webp)
@@ -61,18 +61,18 @@ import Types "Types";
 
 actor {
 
-  //0. method that uses the HTTP outcalls feature and returns a string
+  //0. method that uses the HTTPS outcalls feature and returns a string
   public func foo() : async Text {
 
     //1. DECLARE MANAGEMENT CANISTER
     let ic : Types.IC = actor ("aaaaa-aa");
 
-    //2. SETUP ARGUMENTS FOR HTTP GET request
+    //2. SETUP ARGUMENTS FOR HTTPS GET request
     let request : Types.HttpRequestArgs = {
         //construct the request
     };
 
-    //3. ADD CYCLES TO PAY FOR HTTP REQUEST
+    //3. ADD CYCLES TO PAY FOR HTTPS REQUEST
     //code to add cycles
 
     //4. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
@@ -98,7 +98,7 @@ You will also create some custom types in `Types.mo`. It will look like this:
 ```motoko
 module Types {
 
-    //type declarations for HTTP requests, HTTP responses, management canister, etc...
+    //type declarations for HTTPS requests, HTTPS responses, management canister, etc...
 
 }
 ```
@@ -118,7 +118,7 @@ use ic_cdk::api::management_canister::http_request::{
 //Update method using the HTTPS outcalls feature
 #[ic_cdk::update]
 async fn foo() {
-    //2. SETUP ARGUMENTS FOR HTTP GET request
+    //2. SETUP ARGUMENTS FOR HTTPS GET request
     let request = CanisterHttpRequestArgument {
         //instantiate the request
     };
@@ -215,10 +215,10 @@ actor {
   public func get_icp_usd_exchange() : async Text {
 
     //1. DECLARE MANAGEMENT CANISTER
-    //You need this so you can use it to make the HTTP request
+    //You need this so you can use it to make the HTTPS request
     let ic : Types.IC = actor ("aaaaa-aa");
 
-    //2. SETUP ARGUMENTS FOR HTTP GET request
+    //2. SETUP ARGUMENTS FOR HTTPS GET request
 
     // 2.1 Setup the URL and its query parameters
     let ONE_MINUTE : Nat64 = 60;
@@ -239,7 +239,7 @@ actor {
       context = Blob.fromArray([]);
     };
 
-    // 2.3 The HTTP request
+    // 2.3 The HTTPS request
     let http_request : Types.HttpRequestArgs = {
         url = url;
         max_response_bytes = null; //optional for request
@@ -249,10 +249,10 @@ actor {
         transform = ?transform_context;
     };
 
-    //3. ADD CYCLES TO PAY FOR HTTP REQUEST
+    //3. ADD CYCLES TO PAY FOR HTTPS REQUEST
 
     //The IC specification spec says, "Cycles to pay for the call must be explicitly transferred with the call"
-    //The management canister will make the HTTP request so it needs cycles
+    //The management canister will make the HTTPS request so it needs cycles
     //See: /docs/current/motoko/main/cycles
 
     //The way Cycles.add() works is that it adds those cycles to the next asynchronous call
@@ -266,7 +266,7 @@ actor {
 
     //5. DECODE THE RESPONSE
 
-    //As per the type declarations in `src/Types.mo`, the BODY in the HTTP response
+    //As per the type declarations in `src/Types.mo`, the BODY in the HTTPS response
     //comes back as [Nat8s] (e.g. [2, 5, 12, 11, 23]). Type signature:
 
     //public type HttpResponsePayload = {
@@ -351,7 +351,7 @@ use ic_cdk::api::management_canister::http_request::{
 //Update method using the HTTPS outcalls feature
 #[ic_cdk::update]
 async fn get_icp_usd_exchange() -> String {
-    //2. SETUP ARGUMENTS FOR HTTP GET request
+    //2. SETUP ARGUMENTS FOR HTTPS GET request
 
     // 2.1 Setup the URL and its query parameters
     type Timestamp = u64;
@@ -576,7 +576,7 @@ module Types {
     //2.1 This type describes a function called "TransformRawResponse" used in line 14 above
     //"If provided, the calling canister itself must export this function."
     //In this minimal example for a `GET` request, you declare the type for completeness, but
-    //you do not use this function. You will pass "null" to the HTTP request.
+    //you do not use this function. You will pass "null" to the HTTPS request.
     public type TransformRawResponseFunction = {
         function : shared query TransformArgs -> async HttpResponsePayload;
         context : Blob;
@@ -752,5 +752,5 @@ You can see play with the dapp's `get_icp_usd_exchange` method on-chain here: [h
 
 ## Additional resources
 
-- Sample code of [HTTP GET requests in Rust.](https://github.com/dfinity/examples/tree/master/rust/send_http_get)
-- Sample code of [HTTP GET requests in Motoko.](https://github.com/dfinity/examples/tree/master/motoko/send_http_get)
+- Sample code of [HTTPS GET requests in Rust.](https://github.com/dfinity/examples/tree/master/rust/send_http_get)
+- Sample code of [HTTPS GET requests in Motoko.](https://github.com/dfinity/examples/tree/master/motoko/send_http_get)

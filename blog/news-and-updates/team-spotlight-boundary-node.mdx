@@ -12,13 +12,13 @@ image: /img/blog/dev-update-blog-bn.jpg
 **For our usual introduction to the team, what would you say the purpose of the Boundary Node team is?**
 
 *[The purpose of the Boundary Node team is] to provide seamless and reliable access to the Internet Computer.*
- 
+
 **What is the composition of the Boundary Node team?**
 
 *We are a team of five: four engineers and a research scientist who doubles as a team lead.*
 
 **Developers may not be familiar with boundary nodes on ICP, so to provide some context, what is a boundary node? What purpose does a boundary node serve on ICP?**
-   
+
 *The boundary nodes are the gateway to the Internet Computer. Every single request going to the Internet Computer first reaches one of the boundary nodes. The boundary node routes that request to a replica node in the right subnet, where the target canister is hosted. [Additionally], the boundary nodes improve the user experience by forming a caching layer for the Internet Computer and provide a first layer of protection by applying rate-limits on certain requests.*
 
 *For more details on the internals of a boundary nodes, take a look at [the wiki page](https://wiki.internetcomputer.org/wiki/Boundary_Nodes).*
@@ -33,13 +33,13 @@ image: /img/blog/dev-update-blog-bn.jpg
 
 **Are there different types of boundary nodes?**
 
-*At the moment, there is one type of boundary node that serves two functions: first, it provides the API endpoints according to the [interface specification](/docs/current/references/ic-interface-spec/#http-interface) (e.g., /api/v2/status), and second, it provides the HTTP endpoints for browsers to directly interface with the canisters hosted on ICP (cf. [HTTP gateway protocol specification](/docs/current/references/http-gateway-protocol-spec)). In the very near future, the boundary nodes will be split into two different entities or types: API boundary nodes and HTTP gateways.*
+*At the moment, there is one type of boundary node that serves two functions: first, it provides the API endpoints according to the [interface specification](/docs/current/references/ic-interface-spec/#http-interface) (e.g., /api/v2/status), and second, it provides the HTTPS endpoints for browsers to directly interface with the canisters hosted on ICP (cf. [HTTP gateway protocol specification](/docs/current/references/http-gateway-protocol-spec)). In the very near future, the boundary nodes will be split into two different entities or types: API boundary nodes and HTTPS gateways.*
 
 **By acting as the gateway to ICP, what additional functionalities do boundary nodes provide to the rest of the network?**
 
-*The API boundary nodes will serve the API endpoints. They simply route the call to the right replica node. The HTTP gateways translate the browser requests into ICP API calls and forward them to one of the API boundary nodes. In addition, the HTTP gateways will provide caching of static assets in order to improve the user experience.*
+*The API boundary nodes will serve the API endpoints. They simply route the call to the right replica node. The HTTPS gateways translate the browser requests into ICP API calls and forward them to one of the API boundary nodes. In addition, the HTTPS gateways will provide caching of static assets in order to improve the user experience.*
 
-**Since the boundary nodes provide such an important core piece of the Internet Computer, I can imagine that there are several different teams that the Boundary Node team works with. What are some of those teams?** 
+**Since the boundary nodes provide such an important core piece of the Internet Computer, I can imagine that there are several different teams that the Boundary Node team works with. What are some of those teams?**
 
 *We work closest with the Trust team, which is currently working on the service worker (one implementation of the HTTP gateway protocol). The service worker is hosted by the boundary nodes and served from them. Together, we have to coordinate the releases of new boundary node and service worker versions.*
 
@@ -57,7 +57,7 @@ image: /img/blog/dev-update-blog-bn.jpg
 
 **What’s the biggest challenge the Boundary Node team has faced?**
 
-*We have faced many challenges so far: we worked hard on automating processes and stabilizing the nodes, we enabled developers to set up already over 300 custom domains for their canisters. However, the biggest challenge is yet to come as we are working on the new boundary architecture that splits today’s boundary nodes into API boundary nodes and HTTP gateways.*
+*We have faced many challenges so far: we worked hard on automating processes and stabilizing the nodes, we enabled developers to set up already over 300 custom domains for their canisters. However, the biggest challenge is yet to come as we are working on the new boundary architecture that splits today’s boundary nodes into API boundary nodes and HTTPS gateways.*
 
 **What is the primary project that the Boundary Node team is working on or focused on currently?**
 
@@ -95,6 +95,6 @@ Our main focus is currently on the new boundary node architecture.
 
 *Every couple of weeks, we have a meeting titled “Most important meeting of our lives” during which we take a break and just play some games together. Those are indeed very important meetings for our team spirit. 🙂*
 
-A huge thank you to the Boundary Node team for sitting down with us today to provide an insightful look into what ICP boundary nodes are and what role they play on the network! Be sure to tune in for the next edition of team spotlight, which will focus on the languages team and dive into all things Motoko! 
+A huge thank you to the Boundary Node team for sitting down with us today to provide an insightful look into what ICP boundary nodes are and what role they play on the network! Be sure to tune in for the next edition of team spotlight, which will focus on the languages team and dive into all things Motoko!
 
 -DFINITY
