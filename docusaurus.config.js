@@ -367,6 +367,11 @@ const marketingNav = {
               description: "Join like-minded hackers",
               href: "https://dfinity.org/hackathons",
             },
+            {
+              name: "Education Hub",
+              href: "/education-hub",
+              description: "Comprehensive Learning Resources",
+            },
           ],
           featured: {
             title: "Learn to build step by step",

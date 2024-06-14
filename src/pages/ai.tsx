@@ -166,9 +166,8 @@ function AIPage() {
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                Decentralization unlocked: Train and run AI models as fully
-                on-chain smart contracts to benefit from the security,
-                resilience, and power of ICP.
+                Run AI models entirely on-chain to benefit from the security,
+                resilience, and power of the ICP blockchain.
               </motion.p>
               {/* <MotionLink
                 className="button-white"
@@ -192,9 +191,96 @@ function AIPage() {
             </div>
           </div>
         </section>
-        <section className="container-10 mt-44 md:mt-60 mb-12 md:mb-20 ">
+        <AnimateSpawn
+          el={motion.section}
+          variants={transitions.container}
+          className="mt-48 md:mt-60"
+        >
+          <div className="container-10 mb-10">
+            <div className="flex flex-col md:flex-row gap-6 items-center">
+              <motion.h4
+                className="tw-heading-4 md:tw-heading-60 mb-0 text-gradient"
+                variants={transitions.item}
+              >
+                AI Models on ICP Today
+              </motion.h4>
+              <div>
+                See a series of demos how the Internet Computer has the
+                capability of running AI in a smart contract.
+                <div className="mt-6">
+                  <Link
+                    className="link-primary link-with-icon"
+                    href="https://www.youtube.com/watch?v=6qLvIXiCGcM&list=PLuhDt1vhGcrfWz1ZJrAmJBDS6aFADySwt"
+                  >
+                    Watch the playlist <LinkArrowUpRight></LinkArrowUpRight>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            <AnimateSpawn
+              className="container-10 mt-12 mb-5 !p-0"
+              el={motion.section}
+              variants={transitions.container}
+            >
+              <div id="demo" className="grid grid-cols-1 gap-5 md:grid-cols-2">
+                <motion.div
+                  variants={transitions.item}
+                  className="col-span-1 md:col-span-2 mb-10"
+                >
+                  <VideoCard
+                    image="/img/decentralized-ai/thumb-ai-video-thumb.webp"
+                    title="AI smart contract on ICP"
+                    label="Demo"
+                    link={`https://www.youtube.com/watch?v=6qLvIXiCGcM`}
+                    description="The world's first demonstration of AI inference running directly on the blockchain, presented by Dominic Williams"
+                  />
+                </motion.div>
+              </div>
+            </AnimateSpawn>
+            <AnimateSpawn
+              variants={transitions.item}
+              className="flex flex-col md:flex-row gap-6 md:gap-24 items-center"
+            >
+              <div>
+                <h3 className="tw-heading-5 md:tw-heading-4 mb-6">
+                  Try out the AI demo by yourself
+                </h3>
+                <p className="tw-paragraph md:tw-lead-sm mb-6 text-black/60">
+                  Check out the open-source repo on GitHub and tryout the AI
+                  demo by yourself.
+                </p>
+                <p className="flex flex-col md:flex-row">
+                  <MotionLink
+                    variants={transitions.item}
+                    className="button-outline"
+                    href="https://github.com/dfinity/examples/tree/master/rust/image-classification"
+                  >
+                    GO TO GITHUB REPO
+                  </MotionLink>
+                </p>
+              </div>
+              <div className="w-full md:w-auto rounded-2xl">
+                <CodeBlockString showLineNumbers language="rust">
+                  {`// Setup:
+let proto: ModelProto =     
+ModelProto::decode(onnx_file)?;    
+let model = tract_onnx::onnx()     
+    .model_for_proto_model(&proto)?        
+    .into_optimized()?
+    .into_runnable()?;
+  
+// Inference:
+let result = model.run(tvec!
+(Tensor::from(tensor).into()))?; `}
+                </CodeBlockString>
+              </div>
+            </AnimateSpawn>
+          </div>
+        </AnimateSpawn>
+        <section className="container-10 mt-0 md:mt-30 mb-12 md:mb-20 ">
           <AnimateSpawn
-            className="mt-32 md:mt-24"
+            className="mt-24 md:mt-24"
             variants={transitions.container}
           >
             <motion.h4 className="tw-heading-4 md:tw-heading-60 text-gradient">
@@ -253,7 +339,7 @@ function AIPage() {
                       >
                         Research shows
                       </Link>{" "}
-                      that is possible to tamper with AI models in an
+                      that it is possible to tamper with AI models in an
                       undetectable way. This means that the integrity of the
                       AI&apos;s output can be compromised without anyone
                       knowing.
@@ -299,11 +385,12 @@ function AIPage() {
               />
               <h3 className="tw-lead my-3 md:tw-title-sm ">Model integrity</h3>
               <p className="tw-paragraph-sm text-black/60 md:tw-paragraph mb-0">
-              Users need assurance that their AI prompts are handled by untampered 
-              models. Traditional software integrity methods, such as source 
-              code analysis, are infeasible for AI models because they consist 
-              of complex numerical weights and extensive matrices, rather than 
-              human-readable code, making direct verification impossible.
+                Users need assurance that their AI prompts are handled by
+                untampered models. Traditional software integrity methods, such
+                as source code analysis, are infeasible for AI models because
+                they consist of complex numerical weights and extensive
+                matrices, rather than human-readable code, making direct
+                verification impossible.
               </p>
             </motion.div>
             <motion.div
@@ -395,99 +482,7 @@ function AIPage() {
             </article>
           </section>
         </AnimateSpawn>
-        <AnimateSpawn
-          el={motion.section}
-          variants={transitions.container}
-          className="mt-20 md:mt-40"
-        >
-          <div className="container-10 mb-10">
-            <div className="flex flex-col md:flex-row gap-6 items-center">
-              <motion.h4
-                className="tw-heading-4 md:tw-heading-60 mb-0 text-gradient"
-                variants={transitions.item}
-              >
-                AI Models on ICP Today
-              </motion.h4>
-              <div>
-                See a series of demos how the Internet Computer has the
-                capability of running AI in a smart contract.
-                <div className="mt-6">
-                  <Link
-                    className="link-primary link-with-icon"
-                    href="https://www.youtube.com/watch?v=6qLvIXiCGcM&list=PLuhDt1vhGcrfWz1ZJrAmJBDS6aFADySwt"
-                  >
-                    Watch the playlist <LinkArrowUpRight></LinkArrowUpRight>
-                  </Link>
-                </div>
-              </div>
-            </div>
 
-            <AnimateSpawn
-              className="container-10 mt-12 mb-5 !p-0"
-              el={motion.section}
-              variants={transitions.container}
-            >
-              <div id="demo" className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                <motion.div
-                  variants={transitions.item}
-                  className="col-span-1 md:col-span-2 mb-10"
-                >
-                  <VideoCard
-                    image="/img/decentralized-ai/thumb-ai-video-thumb.webp"
-                    title="AI smart contract on ICP"
-                    label="Demo"
-                    link={`https://www.youtube.com/watch?v=6qLvIXiCGcM`}
-                    description="The world's first demonstration of AI inference running directly on the blockchain, presented by Dominic Williams"
-                  />
-                </motion.div>
-              </div>
-            </AnimateSpawn>
-            <AnimateSpawn
-              variants={transitions.item}
-              className="flex flex-col md:flex-row gap-6 md:gap-24 items-center"
-            >
-              <div>
-                <h3 className="tw-heading-5 md:tw-heading-4 mb-6">
-                  Experience the demo version
-                </h3>
-                <p className="tw-paragraph md:tw-lead-sm mb-6 text-black/60">
-                  Check out the open-source repo on GitHub and tryout the AI
-                  demo by yourself.
-                </p>
-                <p className="flex flex-col md:flex-row">
-                  <MotionLink
-                    variants={transitions.item}
-                    className="button-outline"
-                    href="https://github.com/dfinity/examples/tree/master/rust/image-classification"
-                  >
-                    GO TO GITHUB REPO
-                  </MotionLink>
-                  <Link
-                    href="/docs/current/developer-docs/ai/ai-on-chain"
-                    className="mt-6 md:mt-0 link-primary link-with-icon items-center ml-0 md:ml-6"
-                  >
-                    More about DeAI in the Dev docs <LinkArrowRight />
-                  </Link>
-                </p>
-              </div>
-              <div className="w-full md:w-auto rounded-2xl">
-                <CodeBlockString showLineNumbers language="rust">
-                  {`// Setup:
-let proto: ModelProto =     
-ModelProto::decode(onnx_file)?;    
-let model = tract_onnx::onnx()     
-    .model_for_proto_model(&proto)?        
-    .into_optimized()?
-    .into_runnable()?;
-  
-// Inference:
-let result = model.run(tvec!
-(Tensor::from(tensor).into()))?; `}
-                </CodeBlockString>
-              </div>
-            </AnimateSpawn>
-          </div>
-        </AnimateSpawn>
         <section className="container-10 mt-12 md:mt-44 md:mb-44">
           <AnimateSpawn
             className="mt-16 md:mt-24 mb-60 md:mb-24 relative"
@@ -567,7 +562,7 @@ let result = model.run(tvec!
               <NewsCard
                 news={{
                   title: "AI models as smart contracts on a blockchain.",
-                  dateHuman: "Jan 26, 2024 by @dominic_w",
+                  dateHuman: "Jan 26, 2024",
                   press: "@dominic_w",
                   details: `#ICP says advanced AI models need to run as smart contracts on blockchain. How? Why? It's easiest to understand by example. Imagine an LLM (Large Language Model) AI that acts as a company oracle, which sits...`,
                   url: "https://twitter.com/dominic_w/status/1750886289702834539",

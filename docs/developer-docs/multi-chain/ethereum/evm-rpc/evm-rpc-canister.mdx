@@ -757,6 +757,8 @@ dfx canister call evm_rpc eth_feeHistory "(variant {$RPC_SOURCE}, $RPC_CONFIG, r
 
 ## Send a raw transaction
 
+The EVM RPC canister can also be used to send raw transactions to the Ethereum and other EVM-compatible chains. Examples for using the EVM RPC canister can be found below, or you can view the [documentation for sending a raw ETH transaction](/docs/current/developer-docs/multi-chain/ethereum/using-eth/submit-transactions).
+
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
@@ -834,6 +836,21 @@ dfx canister call evm_rpc eth_sendRawTransaction "(variant {$RPC_SOURCE}, $RPC_C
 
 </TabItem>
 </AdornedTabs>
+
+### Error "already known"
+
+Sending a transaction to the Ethereum network is a state changing operation. Since the EVM-RPC canister sends a transaction to some JSON-RPC providers via HTTPs outcalls, each contacted provider will receive the same transaction multiple times.
+
+Therefore, it is possible that the contacted provider may return the following error:
+
+```
+"{ code: -32603, message: \"already known\" }"
+```
+
+Assuming the sent transaction is valid, one node of the contacted provider should accept the transaction, while the others should return some error such as the one displayed above. Note that the exact error returned is EVM-client specific, as the Ethereum JSON-RPC API itself doesn't specify errors, meaning that other errors could occur, such as an error indicating that consensus on the IC could not be reached.
+
+Note that even if an error is returned, you should assume that your transaction is known to the Ethereum network. You can verify whether your transaction was included in a block by querying the transaction count (via `eth_getTransactionCount`) at the `Latest` block height.
+
 
 ## Send a raw JSON-RPC request
 
@@ -1068,6 +1085,16 @@ Some RPC services expect the API key in a request header instead of a URI path. 
 dfx canister call evm_rpc updateProvider '(record { providerId = 0; credentialHeaders = opt vec { record { name = "HEADER_NAME"; value = "HEADER_VALUE" } } })'
 ```
 
+## Error messages
+
+### Error "TooFewCycles"
+
+```
+"ProviderError(TooFewCycles { expected: 798336000, received: 307392000 })"
+```
+
+You may receive this error if multiple JSON-RPC providers were queried and one did not receive enough cycles for the request. You can safely attach more cycles to your query, since unused cycles will be refunded.
+
 ## Important notes
 
 ### RPC result consistency
@@ -1080,15 +1107,15 @@ By default, the canister uses three different RPC providers, which may change de
 dfx canister call evm_rpc eth_getTransactionCount '(variant {EthMainnet = opt vec {Cloudflare; PublicNode}}, record {address = "0xdAC17F958D2ee523a2206206994597C13D831ec7"; block = variant {Tag = variant {Latest}}})' --with-cycles 100000000000 --wallet=$(dfx identity get-wallet)
 ```
 
-### HTTP outcall consensus
+### HTTPS outcall consensus
 
-Be sure to verify that RPC requests work as expected on the ICP mainnet. HTTP outcalls performed in the `request` method only reach consensus if the JSON-RPC response is the same each call.
+Be sure to verify that RPC requests work as expected on the ICP mainnet. HTTPS outcalls performed in the `request` method only reach consensus if the JSON-RPC response is the same each call.
 
 If you encounter an issue with consensus, [please let us know](https://github.com/internet-computer-protocol/evm-rpc-canister) and we will look into whether it's possible to add official support for your use case.
 
 ### Response size estimates
 
-In some cases, it's necessary to perform multiple HTTP outcalls with increasing maximum response sizes to complete a request. This is relatively common for the `eth_getLogs` method and may increase the time and cost of performing an RPC call. One solution is to specify an initial response size estimate (in bytes):
+In some cases, it's necessary to perform multiple HTTPS outcalls with increasing maximum response sizes to complete a request. This is relatively common for the `eth_getLogs` method and may increase the time and cost of performing an RPC call. One solution is to specify an initial response size estimate (in bytes):
 
 ```bash
 dfx canister call evm_rpc eth_getLogs "(variant {EthMainnet}, record {responseSizeEstimate = 5000}, record {addresses = vec {\"0xdAC17F958D2ee523a2206206994597C13D831ec7\"}})" --with-cycles=1000000000 --wallet=$(dfx identity get-wallet)

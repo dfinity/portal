@@ -4,17 +4,17 @@ keywords: [https outcalls, advanced, concept]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# How to use HTTP outcalls: Intro
+# How to use HTTPS outcalls: Intro
 
 <MarkdownChipRow labels={["Advanced", "Concept"]} />
 
-This feature allows smart contracts to directly make calls to HTTP(S) servers external to the blockchain and use the response in the further processing of the smart contract, without the need for oracles.
+This feature allows smart contracts to directly make calls to HTTPS(S) servers external to the blockchain and use the response in the further processing of the smart contract, without the need for oracles.
 
 ## Key concepts
 
 ### Methods supported
 
-The feature currently supports `GET`, `HEAD`, and `POST` methods for HTTP requests.
+The feature currently supports `GET`, `HEAD`, and `POST` methods for HTTPS requests.
 
 ### ICP management canister
 
@@ -24,7 +24,7 @@ In order for a canister to use HTTPS outcalls, it needs to call the system API o
 
 * [Cycles](/docs/current/developer-docs/gas-cost) used to pay for the call must be explicitly transferred with the call. They are not deducted from the caller's balance implicitly.
 
-## The API for sending HTTP outcalls
+## The API for sending HTTPS outcalls
 
 As per the [Internet Computer interface specification](/docs/current/references/ic-interface-spec), a canister can use the `http_request` method by [following specification](/docs/current/references/ic-interface-spec#ic-http_request):
 
@@ -37,7 +37,7 @@ The following parameters should be supplied within the request:
 
 -   `method`: Currently, only `GET`, `HEAD`, and `POST` are supported.
 
--   `headers`: List of HTTP request headers and their corresponding values.
+-   `headers`: List of HTTPS request headers and their corresponding values.
 
 -   `body`: Optional; The content of the request's body.
 
@@ -57,7 +57,7 @@ The returned response (and the response provided to the `transform` function, if
 
 -   `status`: The response status (e.g., 200, 404).
 
--   `headers`: List of HTTP response headers and their corresponding values.
+-   `headers`: List of HTTPS response headers and their corresponding values.
 
 -   `body`: The response's body.
 

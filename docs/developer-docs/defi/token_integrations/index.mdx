@@ -12,19 +12,19 @@ import '/src/components/CenterImages/center.scss';
 
 Developers have several options for integrating with the ICP or ICRC-1 ledgers. They can use either the ICRC Rosetta or ICP Rosetta implementations, which is commonly recommended, it might be useful for certain workflows  to directly integrate with these ledgers. This section will describe what a direct integration means, how it can be achieved, and how it differs to using Rosetta.
 
-##  Token architecture overview 
+##  Token architecture overview
 
 
 Tokens on ICP are managed by smart contracts. The ICP ledger canister manages the list of balances for ICP tokens and implements methods for transferring tokens. It builds a chain of blocks consisting of all ICP token transactions since genesis. The chain is authenticated by having the ICP sign the tip of the chain. External parties can retrieve this chain and verify it is genuine by:
 - Verifying the signature which requires the public key of ICP.
 - Verifying that the blocks are properly chained, that is, each block contains the hash of the preceding block. Changing the chaining by some malicious party requires breaking the hash function.
 
-:::info 
+:::info
 Smart contract tokens other than ICP, e.g. ckBTC or CHAT, follow the ICRC suite of standards (ICRC-1, ICRC-3, etc) and can be integrated in the similar manner as the main ICP token. For differences in detail, see below.
 :::
 
 :::Info
-Transactions that are executed by ICP are reported on the dashboard under the [Transactions panel](https://dashboard.internetcomputer.org/). This panel distinguishes between update and query calls. The ICP transactions, i.e. the transactions executed by the ICP ledger, appear on the dashboard under the [ICP tab](https://dashboard.internetcomputer.org/transactions). 
+Transactions that are executed by ICP are reported on the dashboard under the [Transactions panel](https://dashboard.internetcomputer.org/). This panel distinguishes between update and query calls. The ICP transactions, i.e. the transactions executed by the ICP ledger, appear on the dashboard under the [ICP tab](https://dashboard.internetcomputer.org/transactions).
 :::
 
 ![IC Architecture](ic_architecture.png)
@@ -41,10 +41,10 @@ There are two ways to integrate with ICP tokens:
 ![Direct Integration](direct_integration.png)
 
 
-- **Rosetta integration**: Requires running an instance of a Rosetta node within the trust domain of an integrator. This is an abstraction layer that hides the ICP network and ledger canister APIs. Interaction with the Rosetta node follows the [Rosetta API standard](https://docs.cdp.coinbase.com/rosetta/docs/welcome) proposed and maintained by Coinbase. 
-The Rosetta node fetches and verifies the ICP token transaction chain and makes it available through the Rosetta API.  In addition, it permanently syncs with the ICP ledger by downloading and verifying the ICP token transaction ledger. It offers endpoints for searching for transactions and blocks in the downloaded chain. 
+- **Rosetta integration**: Requires running an instance of a Rosetta node within the trust domain of an integrator. This is an abstraction layer that hides the ICP network and ledger canister APIs. Interaction with the Rosetta node follows the [Rosetta API standard](https://docs.cdp.coinbase.com/rosetta/docs/welcome) proposed and maintained by Coinbase.
+The Rosetta node fetches and verifies the ICP token transaction chain and makes it available through the Rosetta API.  In addition, it permanently syncs with the ICP ledger by downloading and verifying the ICP token transaction ledger. It offers endpoints for searching for transactions and blocks in the downloaded chain.
 
-The Rosetta node can be run in a Docker container. It requires IPv6 connectivity, and minimal compute, RAM and disk requirements (10 GB disk space currently). 
+The Rosetta node can be run in a Docker container. It requires IPv6 connectivity, and minimal compute, RAM and disk requirements (10 GB disk space currently).
 
 ![Rosetta Integration](rosetta_integration.png)
 
@@ -64,9 +64,9 @@ Direct integration is supported by libraries for Rust and Typescript, but profic
 
 To implement a direct integration, you will need to:
 
-- [Call a method of a canister](#http-call-overview): Calling canister methods is done by constructing a message which specifies among other things the canister, the method and its parameters, and submitting this message to the network. 
+- [Call a method of a canister](#http-call-overview): Calling canister methods is done by constructing a message which specifies among other things the canister, the method and its parameters, and submitting this message to the network.
 
-- Make a call to a canister: To interact with a canister on the Internet Computer, an ingress message is constructed. This message specifies the target canister, the method to be invoked, and the call's payload. Additional parameters include an ingress expiration time, an optional nonce, and the caller's principal identifier. The API of most canisters, including token ledgers, are defined using a [Candid Interface Definition Language (IDL)](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/candid/candid-concepts). Calls can be executed either replicated, or non-replicated, depending on the endpoint where they are submitted. 
+- Make a call to a canister: To interact with a canister on the Internet Computer, an ingress message is constructed. This message specifies the target canister, the method to be invoked, and the call's payload. Additional parameters include an ingress expiration time, an optional nonce, and the caller's principal identifier. The API of most canisters, including token ledgers, are defined using a [Candid Interface Definition Language (IDL)](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/candid/candid-concepts). Calls can be executed either replicated, or non-replicated, depending on the endpoint where they are submitted.
 
 - Read the result of a replicated call: The outcome of a replicated call's execution is temporarily stored in the public ingress history of the respective subnet. To access the result, a read state request is submitted, including the previously generated request ID. Given the asynchronous nature of this execution, results must be actively polled. Results are maintained in the ingress history for a brief period (5 minutes post-execution). Therefore, canisters may provide alternative methods for result retrieval that access the canister's internal state directly, such as ledger canisters offering transaction history and balance book access.
 
@@ -79,8 +79,8 @@ The Internet Computer supports interactions with ICP canisters through official 
 ### Ledger canister API
 The API for ledger canisters is generally standardized, following the [ICRC-1 standard](https://github.com/dfinity/ICRC-1/blob/icrc-3/standards/ICRC-1/README.md) for basic token transfers across the Internet Computer. All tokens adhering to this standard implement it. The [ICRC-3 standard](https://github.com/dfinity/ICRC-1/tree/icrc-3/standards/ICRC-3) further elaborates on how to fetch and verify the authenticity of the transaction chain maintained by canisters, ensuring integrity and trustworthiness in transactions.
 
-## Rosetta node integration 
-The Rosetta node acts as a bridge between the Rosetta API specification by Coinbase and the Internet Computer Protocol (ICP), translating API calls to ICP requests. It can be deployed locally, including in Docker, offering an HTTP REST API interface. This node also fetches and verifies ICP transaction chains, storing data in a SQL database that's accessible both through the Rosetta API and directly with SQL tools.
+## Rosetta node integration
+The Rosetta node acts as a bridge between the Rosetta API specification by Coinbase and the Internet Computer Protocol (ICP), translating API calls to ICP requests. It can be deployed locally, including in Docker, offering an HTTPS REST API interface. This node also fetches and verifies ICP transaction chains, storing data in a SQL database that's accessible both through the Rosetta API and directly with SQL tools.
 
 :::info
 DFINITY does not operate Rosetta nodes for the ICP community, and as of now there are no known third party providers. The Rosetta node should run within the trust domain of an integrator.
