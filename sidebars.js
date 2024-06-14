@@ -616,6 +616,7 @@ const sidebars = {
           type: "category",
           label: "Chain key tokens",
           items: [
+            "/docs/current/developer-docs/multi-chain/chain-key-tokens/overview",
             {
               type: "category",
               label: "ckBTC",
@@ -688,24 +689,24 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "Cycles",
-          items: [
-            "developer-docs/defi/cycles/cycles-ledger",
-            "developer-docs/defi/cycles/cycles-wallet",
-            "developer-docs/defi/cycles/converting_icp_tokens_into_cycles",
-          ]
-        },
-        {
-          type: "category",
           label: "Tokens",
           items: [
-            "developer-docs/defi/icp-tokens/overview",
+            "developer-docs/defi/tokens/token-standards",
             "developer-docs/defi/icp-tokens/ledger-local-setup",
             "developer-docs/defi/tokens/indexes",
             "developer-docs/defi/icp-tokens/using-the-ledger",
             "developer-docs/defi/icp-tokens/account-trimming",
             "developer-docs/defi/icrc-1/token-quickstart",
             "developer-docs/defi/icrc-1/icrc1-ledger-setup",
+            {
+              type: "category",
+              label: "Cycles",
+              items: [
+                "developer-docs/defi/cycles/cycles-ledger",
+                "developer-docs/defi/cycles/cycles-wallet",
+                "developer-docs/defi/cycles/converting_icp_tokens_into_cycles",
+              ]
+            },
           ],
         },
         {

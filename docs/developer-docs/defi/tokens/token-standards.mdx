@@ -1,7 +1,30 @@
+---
+keywords: [intermediate, defi, overview, tokens, icrc-1, icrc-2, icrc-3]
+---
 
-### Basic properties for ICP utility tokens
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-The ICP token is similar to utility tokens governing decentralized networks such as Bitcoin, but also differs in important ways.
+# Token standards
+
+<MarkdownChipRow labels={["Intermediate", "Concept" ]} />
+
+## Overview
+
+Tokens deployed on ICP must adhere to a standard. The network's native token, ICP, adheres to its own standard as it is unique on the network in the sense that it is used for network utility and governance. Tokens created for other purposes on the network typically adhere to one of the ICRC standards.
+
+[ICRC](https://github.com/dfinity/ICRC) stands for `Internet Computer request for comments`. ICRC standards are proposed by the community working group, and are not specific to tokens; they can be created for anything on ICP such as services, canister calls, or authentication methods. However, this documentation will detail the ICRC standards that are specific for tokens.
+
+In the past, the DIP-721 standard was promoted and used by projects on the network for deploying non-fungible tokens. The ICRC-7 standard has since been developed as a newer, alternative to the DIP-721 standard, however some projects still use DIP-721.
+
+## ICP tokens
+
+The ICP token is the network's native token used for various utility and governance functions such as:
+
+- Paying for a canister's resources by being converted into cycles.
+
+- Rewarding node providers for contributing resources to the network.
+
+- Rewarding neurons for staking ICP into the neuron and voting on governance proposals.
 
 The ICP token is similar to Bitcoin in the following ways:
 
@@ -19,14 +42,65 @@ The ICP token differs from Bitcoin in the following ways:
 
 -   Any transaction can store an 8-byte memo — this memo field is used by the Rosetta API to store the nonce that distinguishes between transactions. However, other uses for the field are possible.
 
-## ICP Rosetta implementation
+## ICRC-1
 
-- [ICP Rosetta data API](/docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/)
+The ICRC-1 standard is for fungible tokens on ICP. It uses an `Account` value that corresponds to the pair `(principal, subaccount)`, where a principal can have multiple accounts, and each subaccount of a principal is identified by a 32-byte string.
 
-- [ICP Rosetta construction API](/docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/)
+The ICRC-1 standard is considered the 'base' standard, and intentionally excludes certain features and functions, such as:
 
-ICP tokens are the network's native token and can be used for several network utility actions, such as:
+The base standard intentionally excludes some ledger functions essential for building a rich DeFi ecosystem, for example:
 
-- Being converted into [cycles] to pay for a canister's resources and deployment.
+- Reliable transaction notifications for smart contracts.
 
-- Being staked in a neuron to receive voting power in the [NNS].
+- A block structure and the interface for fetching blocks.
+
+- Pre-signed transactions.
+
+ICRC-1 supports extensions of this standard to implement these missing functions, and the `icrc1_supported_standards` endpoint can be queried to return the name of all supported extensions.
+
+## Token metadata
+
+Available metadata entries for ICRC-1 tokens include:
+
+- `icrc1:symbol`: The token's currency code, such as `variant { Text = "XTKN" }`.
+
+- `icrc1:name`: The token's name, such as `variant { Text = "Test Token" }`.
+
+- `icrc1:decimals`: The number of decimals used by the token, such as `variant { Nat = 8 }`.
+
+- `icrc1:fee`: The token's default transfer fee, such as `variant { Nat = 10_000 }`.
+
+Example ICRC-1 tokens on ICP include:
+
+- [ckBTC](https://internetcomputer.org/docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview)
+
+- [EXE](https://icpex.org/token/detail/rh2pm-ryaaa-aaaan-qeniq-cai)
+
+- [HOT](https://icpex.org/token/detail/6rdgd-kyaaa-aaaaq-aaavq-cai)
+
+- [PANDA](https://icpex.org/token/detail/druyg-tyaaa-aaaaq-aactq-cai)
+
+[Read the full ICRC-1 standard](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1).
+
+## ICRC-2
+
+## ICRC-3
+
+## ICRC-7
+
+https://github.com/dfinity/ICRC/blob/main/ICRCs/ICRC-7/ICRC-7.md
+
+## ICRC-37
+
+https://github.com/dfinity/ICRC/blob/main/ICRCs/ICRC-37/ICRC-37.md
+
+## DIP721
+
+https://github.com/Psychedelic/DIP721
+
+## DIP20
+
+## Standards in development
+
+
+
