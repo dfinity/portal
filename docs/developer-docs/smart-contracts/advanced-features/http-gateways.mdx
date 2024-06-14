@@ -34,7 +34,7 @@ On ICP, an HTTP request goes through the following lifecycle:
 
 3. The request is encoded with Candid and sent in a query call to the destination canister's `http_request` method.
 
-4. ICP's API gateway intercepts this request, resolves the canister ID based on the hostname address, and then forwards the request to the relevant replica node. All requests made to ICP through an HTTP gateway are forwarded through this API gateway.
+4. This request is send to an ICP API boundary node, which will then forward the request to a replica node on the relevant subnet.
 
 5. The canister receives and processes the request, then returns the response.
 
