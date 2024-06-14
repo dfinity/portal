@@ -11,3 +11,6 @@ docs/references/execution-errors.mdx @dfinity/runtime @dfinity/execution
 # Each piece of documentation must be owned by the respective teams
 docs/developer-docssmart-contracts/advanced-features/simd.mdx @dfinity/runtime
 docs/developer-docssmart-contracts/advanced-features/periodic-tasks.mdx @dfinity/runtime
+
+
+src/pages/security-advisories.tsx @dfinity/product-security
