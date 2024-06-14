@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-The ICP HTTP gateway protocol enables conventional HTTP clients to interact with the ICP network. HTTP gateways run adjacent to ICP and provide a connect used by software such as web browsers to retrieve and digest canister code and assets, such as HTML, JavaScript, images, or videos. The HTTP gateway makes this workflow possible by translating standard HTTP requests into API canister calls that ICP can understand.
+The ICP HTTP gateway protocol enables conventional HTTP clients to interact with the ICP network. HTTP gateways run adjacent to ICP and provide a connection used by software such as web browsers send and receive standard HTTP requests and responses, including static assets, such as HTML, JavaScript, images, or videos. The HTTP gateway makes this workflow possible by translating standard HTTP requests into API canister calls that ICP canisters can understand and vice versa for HTTP responses.
 
 There are several HTTP gateway instances maintained for ICP, but it should be noted that an HTTP gateway is a centralized component that could become compromised, creating a threat for users receiving HTTP content. Compromised gateways are threats even for canisters that are considered 'secure', such that they use certify assets, use a default client, and do not maintain their own certification checking.
 
@@ -28,9 +28,9 @@ For a more secure solution, it is possible to run your own HTTP gateway instance
 
 - **Gateway**: Enables the transfer of inbound and outbound messages.
 
-## HTTP gateway workflow
+## HTTP request lifecycle
 
-On ICP, an HTTP request is handled by an HTTP client using the following workflow:
+On ICP, an HTTP request goes through the following lifecycle:
 
 1. An HTTP client makes an outbound request.
 
@@ -38,7 +38,7 @@ On ICP, an HTTP request is handled by an HTTP client using the following workflo
 
 3. The request is encoded with Candid and sent in a query call to the destination canister's `http_request` method.
 
-4. ICP's API gateway intercepts this request, resolves the canister ID based on the hostname address, and then forwards the request to the relevant replica node. All requests made to ICP through an HTTP gateway are forwarded through this API gateway.
+4. This request is send to an ICP API boundary node, which will then forward the request to a replica node on the relevant subnet.
 
 5. The canister receives and processes the request, then returns the response.
 
@@ -46,7 +46,7 @@ On ICP, an HTTP request is handled by an HTTP client using the following workflo
 
 7. If the canister requests it, the gateway sends the request again via an update call to the canister's `http_request_update` method. The update call goes through consensus on the subnet.
 
-8. If necessary, the HTTP gateway fetches additional response body data through query calls.
+8. If the response size [exceeds the maximum response size](/docs/current/developer-docs/smart-contracts/maintain/resource-limits/), the HTTP gateway fetches additional response body data through query calls.
 
 9. The HTTP gateway validates the response's certificate, if applicable.
 
