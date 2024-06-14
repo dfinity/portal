@@ -208,7 +208,7 @@ const marketingNav = {
               description: "Bringing smart contracts to Bitcoin",
             },
             {
-              name: "ICP as an Ethereum sidechain",
+              name: "Ethereum Integration",
               href: "/ethereum-integration",
               description: "Native ETH on Internet Computer",
             },
@@ -219,9 +219,9 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Connect without oracles",
-            href: "/https-outcalls",
-            image: "/img/nav/featured-capabilities.webp",
+            title: "Chain Fusion Technology",
+            href: "/chainfusion",
+            image: "/img/nav/featured-chainfusion.webp",
           },
         },
       ],
@@ -262,7 +262,7 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Hello, Decentralized AI",
+            title: "Run AI models on blockchain",
             href: "/ai",
             image: "/img/nav/featured-ai.webp",
           },
@@ -302,8 +302,8 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Chain Fusion Technology",
-            href: "/chainfusion",
+            title: "Use cases overview",
+            href: "/use-cases",
             image: "/img/nav/featured-use-cases.webp",
           },
         },
@@ -366,6 +366,11 @@ const marketingNav = {
               name: "Hackathons",
               description: "Join like-minded hackers",
               href: "https://dfinity.org/hackathons",
+            },
+            {
+              name: "Education Hub",
+              href: "/education-hub",
+              description: "Comprehensive Learning Resources",
             },
           ],
           featured: {

@@ -3,6 +3,7 @@ keywords: [beginner, governance, tutorial, nns]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import '/src/components/CenterImages/center.scss';
 
 # NNS quickstart
 
@@ -19,6 +20,8 @@ All changes to the configuration and behavior of the Internet Computer are contr
 -   De-activating under-performing nodes to protect the network.
 
 The requests for changes and updates to the network are submitted to the NNS in the form of **proposals**. The NNS decides to adopt or reject proposals based on voting activity by neuron holders.
+
+This guide will showcase how to interface with the NNS through the NNS dapp. You can interact with the NNS through other tools, such as [quill](/docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-parent) and [ic-js](https://github.com/dfinity/ic-js/tree/main/packages/nns).
 
 ## What are neurons?
 
@@ -39,7 +42,7 @@ When a person or organization has ICP utility tokens locked up in a neuron, they
 ### Unlocking the stake held by a neuron
 
 After network participants create a neuron, the locked balance of ICP utility tokens can only be unlocked by fully **dissolving** the neuron.
-It's **dissolve delay** determins the time it takes for a neuron to be unlocked once it is but in the dissolving state. A dissolving neuron can always be put back int the non-dissolving state. When the dissolve timer reaches zero, the neuron owner or an authenticated custodian can dissolve the neuron and unlock the neuron's balance of ICP .
+It's **dissolve delay** determines the time it takes for a neuron to be unlocked once it is but in the dissolving state. A dissolving neuron can always be put back int the non-dissolving state. When the dissolve timer reaches zero, the neuron owner or an authenticated custodian can dissolve the neuron and unlock the neuron's balance of ICP .
 
 The dissolved neuron ceases to exist and the stake of ICP utility tokens that the neuron represented is released to the appropriate ledger canister account.
 

@@ -491,6 +491,7 @@ This pattern can be extended e.g. to work for the following use cases:
 - A global lock that does not only lock per caller. For this, set a boolean flag in the canister state instead of using a `BTreeSet<Principal>`.
 - A guard that makes sure that only a limited number of principals are allowed to execute a method at the same time. For this, one can return an error in `CallerGuard::new()` in case `pending_requests.len() >= MAX_NUM_CONCURRENT_REQUESTS`.
 - A guard that limits the number of times a method can be called in parallel. For this, use a counter in the canister state that is checked and increased in `CallerGuard::new()` and decreased in `Drop`.
+- A guard that makes sure that every task from a set of tasks can only be processed once, independently of the caller who triggered the processing. [View example project](https://github.com/dfinity/examples/tree/master/rust/guards).
 - A lock that uses a different type than `Principal` to grant access to the resource. [View an implementation using generic types](./_attachments/lock.rs).
 
 Finally, note that the same guard can be used in several methods to restrict parallel execution of them.
@@ -830,6 +831,134 @@ Publicly revealing the canister's cycles balance allows an attacker to measure t
 #### Recommendation
 
 Your canisters should not publicly expose their cycles balance (available through the system API), i.e., they should only expose their cycles balance to their controllers or other trusted principals.
+
+### Using secure randomness in canisters
+
+Canister developers often require access to secure randomness in their canisters to perform certain operations. The requirements for a secure randomness source include 
+* **Unbiased:** The value shouldn't be influenced by anyone.
+* **Unpredictable:** The value is unknown to anyone before it is generated.
+
+The Internet Computer exposes the system API [`raw_rand`](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-raw_rand) for this exact purpose, which accepts no input and returns 32 bytes of cryptographically secure randomness. The secure randomness guarantees of `raw_rand` are achieved by the cryptographic properties of the [RandomTape](https://internetcomputer.org/how-it-works/execution-layer/#random-number-generation). It is always recommended to use `raw_rand` as a source of randomness in canisters and **avoid** using other sources with low entropy such as current time.
+
+To illustrate the usage of `raw_rand`, we discuss two examples in Motoko and Rust below, while weighing the benefits and caveats around using them.
+
+#### 1. Direct usage of `raw_rand` as the random number generator
+
+In this Motoko example, the canister provides the requested size of random bytes by calling `raw_rand`. However, it can only generate 32 bytes of secure randomness in a single message and thus subsequent calls to the system API is required to fill the requested size.
+
+```motoko
+import Random "mo:base/Random";
+import Array "mo:base/Array";
+
+actor Randomness {
+  public func random_bytes(n : Nat) : async [Nat8] {
+    let byteArray : [var Nat8] = Array.init<Nat8>(n, 0);
+    let entropy = await Random.blob();
+    var f = Random.Finite(entropy);
+    var i = 0;
+    loop {
+      if (i == n) {
+        return Array.freeze<Nat8>(byteArray);
+      } else {
+        switch (f.byte()) {
+          case (?byte) {
+            byteArray[i] := byte;
+            i := i + 1;
+          };
+          case null {
+            let entropy = await Random.blob();
+            f := Random.Finite(entropy);
+          };
+        };
+      };
+    };
+  };
+};
+```
+
+##### Benefits:
+- The random bytes is guaranteed to be secure.
+
+##### Caveats:
+- The method doesn't scale when large amount of random bytes is requested as `raw_rand` must be called for every 32 bytes.
+
+#### 2. Using `raw_rand` as seed for a psuedo random number generator (PRNG)
+
+In this Rust example, we seed the the output from `raw_rand` in a known PRNG like ChaCha20 in the `init` and `post_upgrade` hooks and generate randomness by calling the `random_bytes` method.
+
+```rust
+use candid::{CandidType, Principal};
+use rand_chacha::rand_core::{RngCore, SeedableRng};
+use rand_chacha::ChaCha20Rng;
+use std::cell::RefCell;
+use std::time::Duration;
+
+thread_local! {
+    static RNG: RefCell<Option<ChaCha20Rng>> = RefCell::new(None);
+}
+
+const SEEDING_INTERVAL: Duration = Duration::from_secs(3600);
+
+#[derive(CandidType)]
+enum RngError {
+    RngNotInitialized(String),
+}
+
+type RandomBytesResult = Result<String, RngError>;
+
+async fn seed_randomness() {
+    let (seed,): ([u8; 32],) = ic_cdk::call(Principal::management_canister(), "raw_rand", ())
+        .await
+        .expect("Failed to call the management canister");
+    RNG.with_borrow_mut(|rng| *rng = Some(ChaCha20Rng::from_seed(seed)));
+}
+
+fn schedule_seeding(duration: Duration) {
+    ic_cdk_timers::set_timer(duration, || {
+        ic_cdk::spawn(async {
+            seed_randomness().await;
+            // Schedule reseeding on a timer with duration SEEDING_INTERVAL
+            schedule_seeding(SEEDING_INTERVAL);
+        })
+    });
+}
+
+#[ic_cdk::init]
+fn init() {
+    // Initialize randomness during canister install or reinstall
+    schedule_seeding(Duration::ZERO);
+}
+
+#[ic_cdk::post_upgrade]
+fn post_upgrade() {
+    // Initialize randomness after a canister upgrade
+    schedule_seeding(Duration::ZERO);
+}
+
+// This must always be an update method or the PRNG state won't be updated
+#[ic_cdk::update]
+fn random_bytes(size: u32) -> RandomBytesResult {
+    let mut buf = vec![0; size as usize];
+    RNG.with_borrow_mut(|rng| match rng.as_mut() {
+        Some(rand) => {
+            rand.fill_bytes(&mut buf);
+            Ok(hex::encode(buf))
+        }
+        None => Err(RngError::RngNotInitialized(
+            "Randomness is not initialized. Please try again later".to_string(),
+        )),
+    })
+}
+```
+
+##### Benefits:
+- This method scales for large random bytes as `raw_rand` needs be called only once and subsequent PRNG computation is local to the canister.
+
+##### Caveats:
+- The `setup_randomness` must **always** be initialized in both the `init` and `post_upgrade` hook as `init` is not invoked during an canister upgrade [see here](https://internetcomputer.org/docs/current/references/ic-interface-spec#system-api-upgrades).
+- The `init` and `post_upgrade` methods doesn't allow async calls and thus a timer is immediately scheduled to seed the randomness.
+- Once the seed is initialized, the outcome of all future `random_bytes` is predicable to anyone having the seed (node providers) as the PRNG is deterministic. This breaks the unpredicatable property of secure randomness. Hence, to balance security vs performance, we recommend frequently reseeding the PRNG on a timer. The example above already does this with duration of **1 hour**. However, based on the sensitivity of their dApp, developers can choose an appropriate reseeding interval by setting `SEEDING_INTERVAL`.
+- The `random_bytes` must **always** be an `update` method, so the PRNG can preserve the state and offer unique randomness on every request.
 
 ## Nonspecific to the Internet Computer
 

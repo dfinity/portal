@@ -47,14 +47,22 @@ export type SampleDomain =
   | "GameFi"
   | "SocialFi"
   | "Blue Sky"
-  | "Public Good / Social Impact";
+  | "Public Good / Social Impact"
+  | "ChainFusion"
+  | "Bitcoin";
 export type SampleContentType =
   | "code samples"
   | "documentation"
   | "live demos"
   | "tutorial"
   | "videos"
-  | "community repo";
+  | "community repo"
+  | "advanced"
+  | "rust"
+  | "bitcoin"
+  | "btc"
+  | "integration"
+  | "bitcoin integration";
 
 export const sampleItems: SampleItem[] = [
   {
@@ -476,6 +484,87 @@ export const sampleItems: SampleItem[] = [
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/token_transfer_from",
       rust: "https://github.com/dfinity/examples/tree/master/rust/token_transfer_from",
+    },
+  },
+  {
+    index: 26,
+    title: "Bitcoin Canister",
+    image: "/img/samples/26.webp",
+    domains: ["Global", "ChainFusion", "Bitcoin"],
+    languages: ["rust"],
+    level: "advanced",
+    contentType: [
+      "advanced",
+      "rust",
+      "bitcoin",
+      "btc",
+      "integration",
+      "bitcoin integration",
+    ],
+    body: "A sample canister smart contract that can send and receive Bitcoin on the IC.",
+    links: {
+      rust: "https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin",
+    },
+  },
+  {
+    index: 27,
+    title: "Inscription Canister",
+    image: "/img/samples/27.webp",
+    domains: ["Global", "ChainFusion", "Bitcoin"],
+    languages: ["rust"],
+    level: "advanced",
+    contentType: [
+      "advanced",
+      "rust",
+      "bitcoin",
+      "btc",
+      "integration",
+      "bitcoin integration",
+    ],
+    body: "This example project explores the possibility of inscribing ordinal inscriptions onto the Bitcoin blockchain using the IC.",
+    links: {
+      rust: "https://github.com/domwoe/inscription_canister",
+    },
+  },
+  {
+    index: 28,
+    title: "ckBTC Canister",
+    image: "/img/samples/28.webp",
+    domains: ["Global", "ChainFusion", "Bitcoin"],
+    languages: ["rust"],
+    level: "advanced",
+    contentType: [
+      "advanced",
+      "rust",
+      "bitcoin",
+      "btc",
+      "integration",
+      "bitcoin integration",
+    ],
+    body: "Canister smart contract for ckBTC, the trustless Bitcoin Digital Twin on the IC.",
+    links: {
+      rust: "https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc",
+    },
+  },
+
+  {
+    index: 29,
+    title: "Ordinal Canister",
+    image: "/img/samples/29.webp",
+    domains: ["Global", "ChainFusion", "Bitcoin"],
+    languages: ["rust"],
+    level: "advanced",
+    contentType: [
+      "advanced",
+      "rust",
+      "bitcoin",
+      "btc",
+      "integration",
+      "bitcoin integration",
+    ],
+    body: "A canister that enables the retrieval of ordinals and their corresponding inscriptions, making them easily accessible on the IC.",
+    links: {
+      rust: "https://github.com/sardariuss/ordinals_canister",
     },
   },
 ];

@@ -1138,10 +1138,10 @@
         "eta": "none",
         "elements": [
           {
-            "title": "Shared canister memory through memory mapping",
-            "overview": "Memory mapping allows canisters to share large common memory areas, e.g., an AI model.",
-            "description": "Memory mapping allows canisters to share large common memory areas, e.g., an AI model.",
-            "status": "",
+            "title": "Increase the instruction limit in queries from 5 billion instructions to 40 billion instructions.",
+            "overview": "The goal of this feature is to bring the instruction limit of queries on par with that of update calls by introducing a way for canisters to opt in into query charging.",
+            "description": "Currently, queries have a lower instruction limit compared to the update calls because canisters do not pay for query execution. The goal of this feature is to bring the instruction limit of queries on par with that of update calls by introducing a way for canisters to opt in into query charging.",
+            "status": "future",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -1158,62 +1158,10 @@
     "description": "Chain Fusion technology enables blockchains like Bitcoin, Ethereum, and Solana to be \"fused\" together with ICP to create a seamless single-chain end-user experience for multi-chain dapps. Canister smart contracts on ICP orchestrate, augment, and interact with smart contracts on other chains using advanced chain-key technology and enhance those smart contracts with ICP's special capabilities and its superior compute and storage capacity and throughput.",
     "milestones": [
       {
-        "name": "Chain Fusion Supports EVM Chains",
-        "description": "ICP’s Chain Fusion technology has full support for Ethereum and other EVM chains. ICP smart contracts can read from and write to EVM chains using a decentralized approach as well as sign transactions in a trustless manner using threshold ECDSA signing. This allows ICP smart contracts to augment EVM-based smart contracts with additional functionality through ICP's superpowers, transfer tokens on other chains, and call smart contracts on EVM chains.",
-        "milestone_id": "Tritium",
-        "eta": "May 23, 2024",
-        "status": "in_progress",
-        "elements": [
-          {
-            "title": "RPC canister for Ethereum & EVM integration",
-            "overview": "Integration of ICP with EVM blockchains via a canister that accesses JSON RPC providers through HTTPS outcalls. Works for Ethereum and other EVM chains with RPC providers.",
-            "description": "This feature is about an RPC-based integration of the Internet Computer with EVM chains, initially targeting the Ethereum network, then also Ethereum L2s and other chains with Ethereum RPC providers. The integration builds a canister smart contract offering a subset of the EVM RPC API on chain, while itself connecting to multiple RPC providers and communicating with them. For security-critical queries multiple RPC providers can be queried and their responses must match unanimously in order to be considered a valid response to the caller of the canister API. This reduces trust in any single entity, thereby making the approach more decentralized.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "is_community": true,
-            "in_beta": false,
-            "milestone_id": "Tritium"
-          },
-          {
-            "title": "Threshold ECDSA signing latency & throughput improvements",
-            "overview": "Reducing the latency of threshold ECDSA signing operations by reducing the number of required consensus rounds through protocol improvements. Also results in a throughput improvement.",
-            "description": "The ICP's initial implementation of threshold ECDSA, also referred to as chain-key ECDSA, requires seven consensus rounds to compute a signature while consuming an available precomputed value (pre-signature). The protocol can be adapted to require fewer rounds for computing a signature, thus noticeably reducing signing latency. Also, the throughput for threshold signing is expected to increase as a byproduct of the optimizations performed. The optimizations will benefit all applications using chain-key ECDSA.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "is_community": true,
-            "in_beta": false,
-            "milestone_id": "Tritium"
-          },
-          {
-            "title": "Chain-key ERC20 (ckERC20) tokens & ckUSDC",
-            "overview": "A subset of Ethereum's ERC20 tokens on ICP in the form of \"twin tokens\" called ckERC20 (chain-key ERC20). ckUSDC is to be among the first ckERC20 tokens.",
-            "description": "This feature established the infrastructure to bring a subset of Ethereum's ERC20 tokens over to the IC in the form of chain-key tokens, i.e., twin tokens of the original tokens on the Ethereum network. The implementation uses HTTPS outcalls to multiple Ethereum JSON RPC providers for reading from and writing to the Ethereum network. Threshold ECDSA signing (threshold ECDSA) is used for creating the required transactions on the Ethereum network in a completely trustless manner. USDC is the first envisioned ERC20 token that will be deployed on ICP as ckUSDC using this infrastructure.",
-            "forum": "https://forum.dfinity.org/t/long-term-r-d-integration-with-the-ethereum-network/9382",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false,
-            "milestone_id": "Tritium",
-            "imported": true
-          }
-        ]
-      },
-      {
-        "name": "Chain Fusion Supports Bitcoin Protocols",
+        "name": "Chain Fusion Supports Bitcoin ordinals and runes",
         "description": "ICP’s Chain Fusion technology has full support for Bitcoin protocols such as BRC20 and Runes. So far, ICP’s fully-on-chain capabilities have been largely applied to use cases where Bitcoin is used as a means of value transfer, its original purpose. This milestone provides additional functionality that enables smart contracts to index and issue prominent types of Bitcoin inscriptions in a completely decentralized manner for the first time, thereby putting ICP into a unique position among all chains.",
         "milestone_id": "Deuterium",
-        "eta": "July 25, 2024",
+        "eta": "August 2024",
         "status": "in_progress",
         "elements": [
           {
@@ -1280,6 +1228,58 @@
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Helium"
+          }
+        ]
+      },
+      {
+        "name": "Chain Fusion Supports EVM Chains",
+        "description": "ICP’s Chain Fusion technology has full support for Ethereum and other EVM chains. ICP smart contracts can read from and write to EVM chains using a decentralized approach as well as sign transactions in a trustless manner using threshold ECDSA signing. This allows ICP smart contracts to augment EVM-based smart contracts with additional functionality through ICP's superpowers, transfer tokens on other chains, and call smart contracts on EVM chains.",
+        "milestone_id": "Tritium",
+        "eta": "May 23, 2024",
+        "status": "deployed",
+        "elements": [
+          {
+            "title": "RPC canister for Ethereum & EVM integration",
+            "overview": "Integration of ICP with EVM blockchains via a canister that accesses JSON RPC providers through HTTPS outcalls. Works for Ethereum and other EVM chains with RPC providers.",
+            "description": "This feature is about an RPC-based integration of the Internet Computer with EVM chains, initially targeting the Ethereum network, then also Ethereum L2s and other chains with Ethereum RPC providers. The integration builds a canister smart contract offering a subset of the EVM RPC API on chain, while itself connecting to multiple RPC providers and communicating with them. For security-critical queries multiple RPC providers can be queried and their responses must match unanimously in order to be considered a valid response to the caller of the canister API. This reduces trust in any single entity, thereby making the approach more decentralized.",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": "Tritium"
+          },
+          {
+            "title": "Threshold ECDSA signing latency & throughput improvements",
+            "overview": "Reducing the latency of threshold ECDSA signing operations by reducing the number of required consensus rounds through protocol improvements. Also results in a throughput improvement.",
+            "description": "The ICP's initial implementation of threshold ECDSA, also referred to as chain-key ECDSA, requires seven consensus rounds to compute a signature while consuming an available precomputed value (pre-signature). The protocol can be adapted to require fewer rounds for computing a signature, thus noticeably reducing signing latency. Also, the throughput for threshold signing is expected to increase as a byproduct of the optimizations performed. The optimizations will benefit all applications using chain-key ECDSA.",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": "Tritium"
+          },
+          {
+            "title": "Chain-key ERC20 (ckERC20) tokens & ckUSDC",
+            "overview": "A subset of Ethereum's ERC20 tokens on ICP in the form of \"twin tokens\" called ckERC20 (chain-key ERC20). ckUSDC is to be among the first ckERC20 tokens.",
+            "description": "This feature established the infrastructure to bring a subset of Ethereum's ERC20 tokens over to the IC in the form of chain-key tokens, i.e., twin tokens of the original tokens on the Ethereum network. The implementation uses HTTPS outcalls to multiple Ethereum JSON RPC providers for reading from and writing to the Ethereum network. Threshold ECDSA signing (threshold ECDSA) is used for creating the required transactions on the Ethereum network in a completely trustless manner. USDC is the first envisioned ERC20 token that will be deployed on ICP as ckUSDC using this infrastructure.",
+            "forum": "https://forum.dfinity.org/t/long-term-r-d-integration-with-the-ethereum-network/9382",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "deployed",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": "Tritium",
+            "imported": true
           }
         ]
       },
@@ -2914,19 +2914,6 @@
         "eta": "none",
         "elements": [
           {
-            "title": "Cycles ledger",
-            "overview": "Ledger for cycles to allow non-canister principals to hold cycles. Simplifies the development workflow.",
-            "description": "The cycles ledger is, as its name suggests, a ledger for cycles on ICP. Its purpose is to hide the limitation that non-canister principals cannot hold cycles in the context of canister development. With the cycles ledger, developers do not need the hard-to-handle and unintuitive concept of cycles wallets any more, but charge cycles into the cycles wallet instead. This creates the impression w.r.t. the developer workflow that the developer principal used to deploy canisters holds cycles itself.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false
-          },
-          {
             "title": "Rosetta for ICRC ledgers",
             "overview": "Implement the Rosetta standard for ICRC-based ledgers. Enables ICRC tokens to be handled by centralized exchanges.",
             "description": "Rosetta is a quasi standard put forth by Coinbase for the integration of blockchain ledgers with centralized exchanges. Besides a Rosetta implementation for the ICP ledger, an implementation for ICRC ledgers using ICRC-3 as block storage format is implemented in the scope of this feature.",
@@ -3334,6 +3321,18 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false
+          },
+          {
+            "title": "Increase reward for SNS launch proposals to 20",
+            "overview": "Increase the reward weight of NNS proposals of topic \"SNS & Neuron’s Fund\" to 20 to incentivize more active voting and have the same rules as for proposals of topic \"Governance\"",
+            "description": "",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false
           }
         ]
       },
@@ -3347,18 +3346,6 @@
             "title": "Visual indicator of actionable proposals in the NNS dapp",
             "overview": "Users will see a ‘notification’-like indicator in the NNS dapp next to the name of different projects that show how many open governance proposals there are that the user can vote on.",
             "description": "Users will see a ‘notification’-like indicator in the NNS dapp next to the different projects that show how many open governance proposals there are that the user has eligible neurons to vote on. This allows users to quickly get a glance of all the proposals that they can still vote on, instead of having to click through every project that may have open proposals.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false
-          },
-          {
-            "title": "Increase reward for SNS launch proposals to 20",
-            "overview": "Increase the reward weight of NNS proposals of topic \"SNS & Neuron’s Fund\" to 20 to incentivize more active voting and have the same rules as for proposals of topic \"Governance\"",
-            "description": "",
             "status": "in_progress",
             "forum": "",
             "proposal": "",
@@ -3697,10 +3684,25 @@
             "wiki": "",
             "docs": "",
             "eta": "",
-            "status": "",
+            "status": "in_progress",
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Beryllium"
+          },
+          {
+            "title": "Cycles Ledger",
+            "overview": "The Cycles Ledger replaces the cycles wallet as the recommended solution for managing cycles across projects.",
+            "description": "The Cycles Ledger replaces the cycles wallet as the recommended solution for managing cycles across projects. Prior to the development of the Cycles Ledger, the Cycles Wallet had been a source of confusion for many newcomers in the ecosystem. It is not a critical path for developing dapps on the Internet Computer and requires extensive prerequisite knowledge in order to be used effectively. Going forward, dfx will use the Cycles Ledger to make it simpler for developers to deploy code to the mainnet. The Cycles Wallet project will be deprecated in dfx, but developers will still be able to install and use it manually.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "Q2 2024",
+            "status": "in_progress",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": "Beryllium",
+            "imported": true
           }
         ]
       },
@@ -3973,28 +3975,18 @@
             "status": "deployed",
             "is_community": true,
             "in_beta": false
-          }
-        ]
-      },
-      {
-        "name": "orphans_future",
-        "description": "Orphans from the future",
-        "milestone_id": "Future features",
-        "eta": "none",
-        "elements": [
+          },
           {
-            "title": "Cycles Ledger",
-            "overview": "The Cycles Ledger replaces the cycles wallet as the recommended solution for managing cycles across projects.",
-            "description": "The Cycles Ledger replaces the cycles wallet as the recommended solution for managing cycles across projects. Prior to the development of the Cycles Ledger, the Cycles Wallet had been a source of confusion for many newcomers in the ecosystem. It is not a critical path for developing dapps on the Internet Computer and requires extensive prerequisite knowledge in order to be used effectively. Going forward, dfx will use the Cycles Ledger to make it simpler for developers to deploy code to the mainnet. The Cycles Wallet project will be deprecated in dfx, but developers will still be able to install and use it manually.",
+            "title": "Higher-level stable memory libraries",
+            "overview": "Create more friendly, higher-level libraries that abstract away the complexity of working with the Stable Memory API.",
+            "description": "The stable memory API is a great abstraction for orthogonal persistence on ICP; however, it is a low-level API and can be difficult to use. Create more friendly, higher-level libraries that abstract away the complexity of working with the Stable Memory API.",
+            "status": "deployed",
             "forum": "",
             "proposal": "",
             "wiki": "",
             "docs": "",
-            "eta": "Q2 2024",
-            "status": "in_progress",
             "is_community": true,
-            "in_beta": false,
-            "imported": true
+            "in_beta": false
           },
           {
             "title": "dfx Version Manager",
@@ -4004,12 +3996,20 @@
             "proposal": "",
             "wiki": "",
             "docs": "",
-            "eta": "Q2 2024",
-            "status": "in_progress",
+            "eta": "2024-02-08",
+            "status": "deployed",
             "is_community": true,
             "in_beta": false,
             "imported": true
-          },
+          }
+        ]
+      },
+      {
+        "name": "orphans_future",
+        "description": "Orphans from the future",
+        "milestone_id": "Future features",
+        "eta": "none",
+        "elements": [
           {
             "title": "dfx extensions",
             "overview": "Plugin architecture for integrating 3rd-party functionality directly into DFX.",
@@ -4093,8 +4093,8 @@
           },
           {
             "title": "Live canister metrics",
-            "overview": "Expose key canister metrics in realtime that can be queried, such as cycle usage or memory consumption.",
-            "description": "It is crucial that canisters be manageable and monitorable in an automated way, much like traditional Web2 services in cloud environments. This requires that key canister metrics be available through a canister API. A good starting point would be metrics such as a canister's cycles drain rate, memory consumption (heap and stable), or received calls per second. Such metrics are crucial for devs in order to ensure their dapps are running reliably and to take mitigating steps in case of issues.",
+            "overview": "Expose key canister metrics in realtime that can be queried, such as a breakdown of its memory usage (heap vs. stable) or received calls per second.",
+            "description": "It is crucial that canisters be manageable and monitorable, much like traditional Web2 services in cloud environments. This requires that key canister metrics be available through a canister API. Besides the cycles insights that are part of another feature, relevant further metrics would be a memory consumption breakdown (heap and stable), or received calls per second. Such metrics are crucial for devs in order to ensure their dapps are running reliably and to take mitigating steps in case of issues.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -4231,18 +4231,6 @@
             "eta": "",
             "status": "",
             "is_community": false,
-            "in_beta": false
-          },
-          {
-            "title": "Higher-level stable memory libraries",
-            "overview": "The stable memory API is a great abstraction for orthogonal persistence on ICP; however, it is a low-level API and can be difficult to use.",
-            "description": "Create more friendly, higher-level libraries that abstract away the complexity of working with the Stable Memory API.",
-            "status": "",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "is_community": true,
             "in_beta": false
           },
           {

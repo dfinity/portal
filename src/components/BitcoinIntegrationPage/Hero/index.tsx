@@ -6,34 +6,51 @@ import React, { forwardRef } from "react";
 
 const Hero = forwardRef<HTMLDivElement, {}>((_, ref) => {
   return (
-    <div className="overflow-hidden" ref={ref}>
+    <div ref={ref}>
       <div className="bg-infinite">
         <AnimateSpawn
           variants={transitions.container}
           className="container-10 relative text-white pt-36  md:pt-60 pb-40 "
         >
-          <div className="blob blob-white blob-md md:blob-xl right-0 translate-x-3/10 translate-y-5/10 md:translate-x-4/10 top-auto bottom-0"></div>
+          <div className="blob blob-white blob-md md:blob-xl md:blob-white-dense md:opacity-60 right-0 translate-x-3/10 translate-y-5/10 md:translate-x-5/10 top-auto bottom-0"></div>
           <motion.h1
             variants={transitions.item}
-            className="tw-heading-3 mb-2 w-5/6 md:tw-heading-2 md:mb-6 md:w-7/12"
+            className="tw-heading-3 mb-2 md:tw-heading-2 md:mb-6 md:w-7/12"
           >
             ICP as a Bitcoin L2
           </motion.h1>
           <motion.p
             variants={transitions.item}
-            className="tw-lead-sm md:tw-lead md:w-7/12 mb-0"
+            className="tw-lead-sm md:tw-lead md:w-6/12 mb-0"
           >
-            The Internet Computer adds the missing smart contract layer to
-            Bitcoin. Leveraging{" "}
-            <Link
-              className="text-white underline hover:no-underline hover:text-white hover:opacity-80 duration-200 ease-in-out"
-              href="/chainfusion"
-            >
-              Chain Fusion Technology
-            </Link>
-            , ICP can directly read and write to Bitcoin, enabling dapps that
-            natively interact with Bitcoin.
+            Leveraging Chain Fusion Technology, ICP canister smart contracts can
+            hold a Bitcoin public key, sign transactions with it, and directly
+            read and write to the Bitcoin network. Build incredible dapps that
+            natively interact with the Bitcoin network.
           </motion.p>
+          <motion.div variants={transitions.item} className="flex gap-4 mt-8">
+            <Link
+              to="/docs/current/references/bitcoin-how-it-works"
+              className="button-white text-center mb-6 md:mb-8 whitespace-nowrap"
+            >
+              Build
+            </Link>
+            <Link
+              to="/ecosystem?tag=Bitcoin"
+              className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
+            >
+              Explore
+            </Link>
+          </motion.div>
+          <motion.div className="container-12 relative pointer-events-none">
+            <div className="absolute w-10/12 translate-x-[5%] translate-y-[105%] bottom-1/2 sm:w-5/12 md:w-8/12 md:bottom-0 md:translate-x-2/3 md:translate-y-1/2">
+              <img
+                src="/img/bitcoin-integration/btc_integration_hero.svg"
+                className="w-full max-w-none"
+                loading="lazy"
+              />
+            </div>
+          </motion.div>
         </AnimateSpawn>
       </div>
     </div>

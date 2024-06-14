@@ -4,6 +4,7 @@ keywords: [beginner, tutorial, developer journey, first dapp]
 
 import DfxNewSnippet from "/src/components/Snippets/DfxNewSnippet.mdx";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import '/src/components/CenterImages/center.scss';
 
 # 1.3 Developing your first dapp
 
@@ -430,8 +431,13 @@ dfx start --clean --background
 Then, you can deploy the dapp with the command:
 
 ```bash
+npm install
 dfx deploy
 ```
+
+:::caution
+If you recieve an error related to a missing package, try using this [package.json](https://github.com/jessiemongeon1/dev-journey-poll-dapp/blob/main/package.json) file.
+:::
 
 You may recall that in the previous module, [exploring a live demo](/docs/current/tutorials/developer-journey/level-1/1.1-live-demo), you used the `--playground` flag to deploy your canister to the Motoko playground network. In this module, you aren't using any flags, which defaults to deploying the canister to the local environment. You can also specify this with the flag `--network local`.
 

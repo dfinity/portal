@@ -1,5 +1,5 @@
 import Link from "@docusaurus/Link";
-import React, { FC } from "react";
+import React, { FC, ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import LinkArrowRight from "../Common/Icons/LinkArrowRight";
 import { NetworkStats } from "./NetworkStats";
@@ -7,6 +7,10 @@ import GuidesIcon from "./guides.svg";
 import TutorialsIcon from "./tutorials.svg";
 import Blog from "./Blog";
 import { TeaserCarousel } from "@site/src/components/DocsHome/TeaserCarousel";
+import {
+  CarouselCard,
+  TeaserCard,
+} from "@site/src/components/DocsHome/TeaserCard";
 
 const queryClient = new QueryClient();
 
@@ -28,9 +32,375 @@ const links = [
   { label: "Bug Bounty Program", href: "https://dfinity.org/bug-bounty/" },
 ];
 
+interface TileDescriptor {
+  isGhostTile?: boolean;
+  action?: ReactNode | null;
+  icon?: ReactNode | null;
+  description?: string;
+  label?: string;
+}
+
+const languagesTiles: TileDescriptor[] = [
+  {
+    label: "Languages",
+    description:
+      "Explore coding, from beginner to pro, with our comprehensive guides, tutorials, samples, and API docs for Rust, Motoko, TypeScript, and Python",
+    icon: null,
+    action: (
+      <Link
+        className="button button-primary rounded-2xl w-32"
+        href="/docs/current/developer-docs/getting-started/overview-of-icp"
+      >
+        View all
+      </Link>
+    ),
+  },
+  {
+    label: "Motoko",
+    description:
+      "Get started with a high level programming language designed specifically for the Internet Computer",
+    icon: (
+      <img
+        src="/img/docs/motoko.webp"
+        alt="Motoko docs"
+        className="w-10 h-10"
+        loading="lazy"
+      />
+    ),
+    action: (
+      <Link
+        href="/docs/current/motoko/main/getting-started/motoko-introduction"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
+        title="Go to Motoko docs"
+      >
+        <span className={"md:hidden"}>Go to Motoko docs</span>
+        <LinkArrowRight />
+      </Link>
+    ),
+  },
+  {
+    label: "Rust",
+    description:
+      "Use Rust - a high performance and safe programming language to build high efficiency apps on Internet Computer",
+    icon: (
+      <img
+        src="/img/docs/rust.webp"
+        alt="Rust docs for the Internet Computer"
+        className="w-10 h-10"
+        loading="lazy"
+      />
+    ),
+    action: (
+      <Link
+        href="/docs/current/developer-docs/backend/rust/"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
+        title="Go to Rust docs"
+      >
+        <span className={"md:hidden"}>Go to Rust docs</span>
+        <LinkArrowRight />
+      </Link>
+    ),
+  },
+  {
+    label: "Typescript",
+    description:
+      "Azle allows you to build Internet Computer apps using TypeScript and JavaScript, the languages of the web",
+    icon: (
+      <img
+        src="/img/docs/typescript.webp"
+        alt="TypeScript docs for the Internet Computer"
+        className="w-10 h-10"
+        loading="lazy"
+      />
+    ),
+    action: (
+      <Link
+        href="/docs/current/developer-docs/backend/typescript/"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
+        title="Go to TypeScript docs"
+      >
+        <span className={"md:hidden"}>Go to TypeScript docs</span>
+        <LinkArrowRight />
+      </Link>
+    ),
+  },
+  {
+    label: "Python",
+    description:
+      "Kybra allows you to build Internet Computer apps using Python, one of the most popular languages in the world",
+    icon: (
+      <img
+        src="/img/docs/python.webp"
+        alt="Python docs for the Internet Computer"
+        className="w-10 h-10"
+        loading="lazy"
+      />
+    ),
+    action: (
+      <Link
+        href="/docs/current/developer-docs/backend/python/"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
+        title="Go to Python docs"
+      >
+        <span className={"md:hidden"}>Go to Python docs</span>
+        <LinkArrowRight />
+      </Link>
+    ),
+  },
+  {
+    label: "Solidity",
+    description:
+      "Bitfinity allows you to deploy smart contracts on the Internet Computer written in Solidity, a popular language for DeFi applications",
+    icon: (
+      <img
+        src="/img/docs/solidity.webp"
+        alt="Solidity docs for the Internet Computer"
+        className="w-10 h-10"
+        loading="lazy"
+      />
+    ),
+    action: (
+      <Link
+        href="/docs/current/developer-docs/backend/solidity/"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
+        title="Go to Solidity docs"
+      >
+        <span className={"md:hidden"}>Go to Solidity docs</span>
+        <LinkArrowRight />
+      </Link>
+    ),
+  },
+  {
+    isGhostTile: true,
+  },
+  {
+    isGhostTile: true,
+  },
+  {
+    isGhostTile: true,
+  },
+  {
+    isGhostTile: true,
+  },
+];
+
+const frameworksTiles: TileDescriptor[] = [
+  {
+    label: "Frameworks",
+    description:
+      "Get started developing on the Internet Computer using frameworks such as Juno, which make deploying canisters on ICP simple and easy using a UI interface",
+    icon: null,
+    action: (
+      <Link
+        className="button button-primary rounded-2xl w-32"
+        href="/docs/current/developer-docs/web-apps/frameworks/juno"
+      >
+        View all
+      </Link>
+    ),
+  },
+  {
+    label: "Juno",
+    description:
+      "Juno is a cutting-edge blockchain-as-a-service platform designed to enable developers to create decentralized applications at lightning speed",
+    icon: (
+      <img
+        src="/img/docs/juno.svg"
+        alt="Juno docs"
+        className="w-10 h-10"
+        loading="lazy"
+      />
+    ),
+    action: (
+      <Link
+        href="/docs/current/developer-docs/web-apps/frameworks/juno"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
+        title="Go to Juno docs"
+      >
+        <span className={"md:hidden"}>Go to Juno docs</span>
+        <LinkArrowRight />
+      </Link>
+    ),
+  },
+  {
+    isGhostTile: true,
+  },
+  {
+    isGhostTile: true,
+  },
+  {
+    isGhostTile: true,
+  },
+];
+
+const quickstartGuidesTiles: TileDescriptor[] = [
+  {
+    label: "Quickstart\nGuides",
+    description:
+      "Start deploying on ICP easily with our Quickstart guides for developers, tailored to your preferred language",
+    icon: null,
+    action: (
+      <Link
+        className="button button-primary rounded-2xl w-32"
+        href="/docs/current/developer-docs/getting-started/quickstart/react-quickstart"
+      >
+        View all
+      </Link>
+    ),
+  },
+  {
+    label: "React",
+    description:
+      "Start here if you're coming to the Internet Computer Protocol as a React developer",
+    icon: (
+      <img
+        src="/img/docs/react.svg"
+        alt="React docs"
+        className="w-10 h-10"
+        loading="lazy"
+      />
+    ),
+    action: (
+      <Link
+        href="/docs/current/developer-docs/getting-started/quickstart/react-quickstart"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
+        title="Go to React quickstart"
+      >
+        <span className={"md:hidden"}>Go to React quickstart</span>
+        <LinkArrowRight />
+      </Link>
+    ),
+  },
+  {
+    label: "Juno",
+    description: "Get started with Juno, a blockchain-as-a-service platform",
+    icon: (
+      <img
+        src="/img/docs/juno.svg"
+        alt="Juno quickstart docs"
+        className="w-10 h-10"
+        loading="lazy"
+      />
+    ),
+    action: (
+      <Link
+        href="/docs/current/developer-docs/getting-started/quickstart/juno-quickstart"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
+        title="Go to Juno quickstart"
+      >
+        <span className={"md:hidden"}>Go to Juno quickstart</span>
+        <LinkArrowRight />
+      </Link>
+    ),
+  },
+  {
+    isGhostTile: true,
+  },
+  {
+    isGhostTile: true,
+  },
+];
+
+const Tile = ({ tile }: { tile: TileDescriptor }) => {
+  return (
+    <div
+      className={`flex flex-col ${
+        tile.isGhostTile
+          ? "bg-grey-200 border-grey-200 hidden lg:block"
+          : "bg-white/70 border-white"
+      } rounded-lg border border-solid p-4 h-[360px] justify-between`}
+    >
+      <div className={"flex flex-col gap-4 items-start"}>
+        <div className={"flex flex-row gap-4"}>
+          {tile.icon}
+          <span className={"tw-heading-5 mb-6 whitespace-pre-wrap"}>
+            {tile.label}
+          </span>
+        </div>
+        <p>{tile.description}</p>
+      </div>
+      {tile.action}
+    </div>
+  );
+};
+
+const Education = () => {
+  const CARDS: Array<CarouselCard> = [
+    {
+      title: (
+        <h2 className={"text-white"}>
+          Start your developer journey with Jessie
+        </h2>
+      ),
+      subtitle: (
+        <p className={"text-white"}>
+          Work your way up to ICP Astronaut with this 5-level video series
+        </p>
+      ),
+      backgroundImage: "/img/docs/teaser-cards/bg-1.svg",
+      cta: (
+        <Link
+          className="button-transparent button-with-icon pl-0"
+          href="/docs/current/tutorials/developer-journey/"
+        >
+          Start tutorials
+          <LinkArrowRight />
+        </Link>
+      ),
+      mainImage: "/img/docs/teaser-cards/main-1.svg",
+    },
+    {
+      title: <h2 className={"text-white"}>Hackathon Prep Course</h2>,
+      subtitle: (
+        <p className={"text-white"}>
+          Jump-start your Hackathon project by learning the ICP essentials{" "}
+        </p>
+      ),
+      backgroundImage: "/img/docs/teaser-cards/bg-0.svg",
+      cta: (
+        <Link
+          className="button-transparent button-with-icon pl-0"
+          href="/docs/current/tutorials/hackathon-prep-course/"
+        >
+          Start course
+          <LinkArrowRight />
+        </Link>
+      ),
+      mainImage: "/img/docs/teaser-cards/hackathon-prep-course.svg",
+    },
+  ];
+  return (
+    <div
+      className={
+        "grid grid-cols-1 md:grid-cols-2 grid-rows-2 md:grid-rows-1 gap-3"
+      }
+    >
+      {CARDS.map((card, index) => {
+        const backgroundStyles = card.backgroundImage
+          ? {
+              backgroundImage: `url(${card.backgroundImage})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
+            }
+          : {};
+        return (
+          <TeaserCard
+            key={index}
+            card={card}
+            style={backgroundStyles}
+            className={
+              "h-full relative py-8 px-8 flex-col rounded-lg grid sm:grid-cols-2 grid-cols-1 gap-2 justify-between flex-1"
+            }
+          />
+        );
+      })}
+    </div>
+  );
+};
+
 const DocsHomePage: FC = () => {
   return (
-    <div className="mt-8">
+    <div className="flex flex-col gap-10">
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         <div className="px-8 py-10 md:p-10 rounded-lg bg-infinite text-white sm:col-span-2 md:row-span-2 bg-[url(/img/docs/hero-bg.webp)] bg-center bg-cover flex flex-col">
           <h1 className="tw-heading-3 sm:tw-heading-60 md:tw-heading-2 mb-14">
@@ -61,340 +431,74 @@ const DocsHomePage: FC = () => {
           <TeaserCarousel />
         </div>
       </section>
-      <section className="mt-10">
+
+      <section>
         <div
           className="
-          py-8 sm:p-10 border border-white border-solid rounded-lg bg-white/70
-          grid 
+          grid
+          auto-cols-fr
+          grid-rows-2
+          grid-cols-1
+          sm:grid-cols-2
+          md:grid-cols-4
+          lg:grid-cols-5
+          px-0
+          gap-3
+        "
+        >
+          {languagesTiles.map((tile, index) => (
+            <Tile tile={tile} key={index} />
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <Education />
+      </section>
+
+      <section>
+        <div
+          className="
+          grid
+          auto-cols-fr
           grid-cols-1
           sm:grid-cols-2 
-          md:grid-cols-6 
+          md:grid-cols-4
+          lg:grid-cols-5
           px-0
-          pb-5 sm:pb-10
+          gap-3
         "
         >
-          <div className="border-0 border-b sm:border-b-0 md:border-r border-solid border-black/10 mx-6 sm:mx-0 md:pr-8 flex flex-col sm:flex-row md:flex-col sm:col-span-2 md:col-span-1 pb-10 sm:pb-10 md:pb-0">
-            <div className="h-[100px] md:h-[200px] flex-1">
-              <h3 className="tw-heading-6 mb-10 sm:mb-0">
-                Languages
-              </h3>
-            </div>
-            <div className="flex-1 flex flex-col">
-              <p className="tw-paragraph text-black/80 mb-6 flex-1">
-                Whether you're new to coding or an experienced developer, our
-                documentation portal has everything you need. We provide
-                easy-to-follow guides, tutorials, code samples, and API
-                references for multiple languages like Rust, Motoko, TypeScript, Python.
-              </p>
-              <p className="mb-0">
-                <Link
-                  href="/docs/current/developer-docs/smart-contracts/write/overview"
-                  className="link-primary link-with-icon"
-                >
-                  View all <LinkArrowRight />
-                </Link>
-              </p>
-            </div>
-          </div>
-          <div className="snap-x flex sm:contents overflow-auto scroll-m-10 pb-5 border-0  border-solid border-black/10 docs-home-languages-scrollbar">
-            <div className="snap-center min-w-[80vw] sm:min-w-0 border-0 border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-0 sm:pr-8 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
-              <div className="mb-16 md:mb-0 md:h-[200px]">
-                <img
-                  src="/img/docs/motoko.png"
-                  alt="Motoko docs"
-                  className="w-10 h-10"
-                  loading="lazy"
-                />
-              </div>
-              <div className="flex-1 flex flex-col">
-                <h4 className="tw-heading-5 mb-6">Motoko</h4>
-                <p className="tw-paragraph text-black/80 mb-6 flex-1">
-                  Get started with a high level programming language designed
-                  specifically for the Internet Computer
-                </p>
-                <p className="mb-0">
-                  <Link
-                    href="/docs/current/motoko/main/getting-started/motoko-introduction"
-                    className="link-primary"
-                    title="Go to Motoko docs"
-                  >
-                    <LinkArrowRight />
-                  </Link>
-                </p>
-              </div>
-            </div>
-
-            <div className="snap-center min-w-[80vw] sm:min-w-0 border-0 border-r sm:border-r-0 md:border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-8 sm:pr-0 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
-              <div className="mb-16 md:mb-0 md:h-[200px]">
-                <img
-                  src="/img/docs/rust.png"
-                  alt="Rust docs for the Internet Computer"
-                  className="w-10 h-10"
-                  loading="lazy"
-                />
-              </div>
-              <div className="flex-1 flex flex-col">
-                <h4 className="tw-heading-5 mb-6">Rust</h4>
-                <p className="tw-paragraph text-black/80 mb-6 flex-1">
-                  Use Rust - a high performance and safe programming language to
-                  build high efficiency apps on Internet Computer
-                </p>
-                <p className="mb-0">
-                  <Link
-                    href="/docs/current/developer-docs/backend/rust/"
-                    className="link-primary"
-                    title="Go to Rust docs"
-                  >
-                    <LinkArrowRight />
-                  </Link>
-                </p>
-              </div>
-            </div>
-            <div className="snap-center min-w-[80vw] sm:min-w-0 border-0 border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-0 sm:pr-8 md:px-6 pt-10  md:pt-0 flex flex-col">
-              <div className="mb-16 md:mb-0 md:h-[200px]">
-                <img
-                  src="/img/docs/typescript.png"
-                  alt="TypeScript docs for the Internet Computer"
-                  className="w-10 h-10"
-                  loading="lazy"
-                />
-              </div>
-              <div className="flex-1 flex flex-col">
-                <h4 className="tw-heading-5 mb-6">TypeScript</h4>
-                <p className="tw-paragraph text-black/80 mb-6 flex-1">
-                  Azle allows you to build Internet Computer apps using
-                  TypeScript and JavaScript, the languages of the web
-                </p>
-                <p className="mb-0">
-                  <Link
-                    href="/docs/current/developer-docs/backend/typescript/"
-                    className="link-primary"
-                    title="Go to Azle docs"
-                  >
-                    <LinkArrowRight />
-                  </Link>
-                </p>
-              </div>
-            </div>
-
-            <div className="snap-center min-w-[80vw] sm:min-w-0 border-0 sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-8 sm:pr-0 md:px-6 pt-10  md:pt-0 flex flex-col">
-              <div className="mb-16 md:mb-0 md:h-[200px]">
-                <img
-                  src="/img/docs/python.png"
-                  alt="Python docs for the Internet Computer"
-                  className="w-10 h-10"
-                  loading="lazy"
-                />
-              </div>
-              <div className="flex-1 flex flex-col">
-                <h4 className="tw-heading-5 mb-6">Python</h4>
-                <p className="tw-paragraph text-black/80 mb-6 flex-1">
-                  Kybra allows you to build Internet Computer apps using Python,
-                  one of the most popular languages in the world
-                </p>
-                <p className="mb-0">
-                  <Link
-                    href="/docs/current/developer-docs/backend/python/"
-                    className="link-primary"
-                    title="Go to Kybra docs"
-                  >
-                    <LinkArrowRight />
-                  </Link>
-                </p>
-              </div>
-            </div>
-
-            <div className="snap-center min-w-[80vw] sm:min-w-0  sm:border-r md:border-r-0 border-0 sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-0 sm:pr-8 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
-              <div className="mb-16 md:mb-0 md:h-[200px]">
-                <img
-                  src="/img/docs/solidity.png"
-                  alt="Motoko docs"
-                  className="w-10 h-10"
-                  loading="lazy"
-                />
-              </div>
-              <div className="flex-1 flex flex-col">
-                <h4 className="tw-heading-5 mb-6">Solidity</h4>
-                <p className="tw-paragraph text-black/80 mb-6 flex-1">
-                  Bitfinity allows you to deploy smart contracts on the Internet
-                  Computer written in Solidity, a popular language for DeFi
-                  applications.
-                </p>
-                <p className="mb-0">
-                  <Link
-                    href="/docs/current/developer-docs/backend/solidity/"
-                    className="link-primary"
-                    title="Go to Solidity"
-                  >
-                    <LinkArrowRight />
-                  </Link>
-                </p>
-              </div>
-            </div>
-          </div>
+          {frameworksTiles.map((tile, index) => (
+            <Tile tile={tile} key={index} />
+          ))}
         </div>
       </section>
 
-      <section className="mt-10">
+      <section>
+        <Blog />
+      </section>
+
+      <section>
         <div
           className="
-          py-8 sm:p-10 border border-white border-solid rounded-lg bg-white/70
           grid
+          auto-cols-fr
           grid-cols-1
           sm:grid-cols-2
-          md:grid-cols-6
+          md:grid-cols-4
+          lg:grid-cols-5
           px-0
-          pb-5 sm:pb-10
+          gap-3
         "
         >
-         <div className="border-0 border-b sm:border-b-0 md:border-r border-solid border-black/10 mx-6 sm:mx-0 md:pr-8 flex flex-col sm:flex-row md:flex-col sm:col-span-2 md:col-span-1 pb-10 sm:pb-10 md:pb-0">
-            <div className="h-[100px] md:h-[200px] flex-1">
-              <h3 className="tw-heading-6 mb-10 sm:mb-0">
-                Frameworks
-              </h3>
-            </div>
-            <div className="flex-1 flex flex-col">
-              <p className="tw-paragraph text-black/80 mb-6 flex-1">
-                Get started developing on the Internet Computer using frameworks such as Juno, which make deploying canisters on ICP simple and easy using a UI interface.
-              </p>
-              <p className="mb-0">
-                <Link
-                  href="/docs/current/developer-docs/web-apps/frameworks/juno"
-                  className="link-primary link-with-icon"
-                >
-                  View all <LinkArrowRight />
-                </Link>
-              </p>
-            </div>
-          </div>
-          <div className="snap-x flex sm:contents overflow-auto scroll-m-10 pb-5 border-0  border-solid border-black/10 docs-home-languages-scrollbar">
-            <div className="snap-center min-w-[80vw] sm:min-w-0 border-0 border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-0 sm:pr-8 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
-              <div className="mb-16 md:mb-0 md:h-[200px]">
-                <img
-                  src="/img/docs/juno.svg"
-                  alt="Juno"
-                  className="h-10"
-                  loading="lazy"
-                />
-              </div>
-              <div className="flex-1 flex flex-col">
-                <h4 className="tw-heading-5 mb-6">Juno</h4>
-                <p className="tw-paragraph text-black/80 mb-6 flex-1">
-                Juno is a cutting-edge blockchain-as-a-service platform designed to enable developers to create decentralized applications at lightning speed.
-                </p>
-                <p className="mb-0">
-                  <Link
-                    href="/docs/current/developer-docs/web-apps/frameworks/juno"
-                    className="link-primary"
-                    title="Juno"
-                  >
-                    <LinkArrowRight />
-                  </Link>
-                </p>
-              </div>
-            </div>
-          </div>
+          {quickstartGuidesTiles.map((tile, index) => (
+            <Tile tile={tile} key={index} />
+          ))}
         </div>
       </section>
 
-      <section className="mt-10">
-        <div
-          className="
-          py-8 sm:p-10 border border-white border-solid rounded-lg bg-white/70
-          grid
-          grid-cols-1
-          sm:grid-cols-2
-          md:grid-cols-6
-          px-0
-          pb-5 sm:pb-10
-        "
-        >
-          <div className="border-0 border-b sm:border-b-0 md:border-r border-solid border-black/10 mx-6 sm:mx-0 md:pr-8 flex flex-col sm:flex-row md:flex-col sm:col-span-2 md:col-span-1 pb-10 sm:pb-10 md:pb-0">
-            <div className="h-[100px] md:h-[200px] flex-1">
-              <h3 className="tw-heading-6 mb-10 sm:mb-0">
-                Quickstart
-                <br />
-                Guides
-              </h3>
-            </div>
-            <div className="flex-1 flex flex-col">
-              <p className="tw-paragraph text-black/80 mb-6 flex-1">
-                If you're a seasoned developer looking to deploy code on ICP,
-                getting started is easy. Our developer Quick Start guides are
-                designed to jumpstart your developer experience on the Internet
-                Computer Protocol using your preferred programming language.
-              </p>
-              <p className="mb-0">
-                <Link
-                  href="/docs/current/developer-docs/getting-started/quickstart/react-quickstart"
-                  className="link-primary link-with-icon"
-                >
-                  View all <LinkArrowRight />
-                </Link>
-              </p>
-            </div>
-            </div>
-          <div className="snap-x flex sm:contents overflow-auto scroll-m-10 pb-5 border-0  border-solid border-black/10 docs-home-languages-scrollbar">
-            <div className="snap-center min-w-[80vw] sm:min-w-0 border-0 border-r sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-0 sm:pr-8 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
-              <div className="mb-16 md:mb-0 md:h-[200px]">
-                <img
-                  src="/img/docs/react.svg"
-                  alt="React quickstart"
-                  className="h-10"
-                  loading="lazy"
-                />
-              </div>
-              <div className="flex-1 flex flex-col">
-                <h4 className="tw-heading-5 mb-6">React</h4>
-                <p className="tw-paragraph text-black/80 mb-6 flex-1">
-                  Start here if you're coming to the Internet Computer Protocol
-                  as a React developer.
-                </p>
-                <p className="mb-0">
-                  <Link
-                    href="/docs/current/developer-docs/getting-started/quickstart/react-quickstart"
-                    className="link-primary"
-                    title="Go to Quickstart for React Devs"
-                  >
-                    <LinkArrowRight />
-                  </Link>
-                </p>
-              </div>
-              </div>
-              <div className="snap-center min-w-[80vw] sm:min-w-0  sm:border-r md:border-r-0 border-0 sm:border-t md:border-t-0 border-solid border-black/10 px-6 sm:pl-0 sm:pr-8 md:px-6 pt-10 sm:pb-10 md:pb-0 md:pt-0 flex flex-col">
-              <div className="mb-16 md:mb-0 md:h-[200px]">
-                <img
-                  src="/img/docs/juno.svg"
-                  alt="Juno quickstart"
-                  className="h-10"
-                  loading="lazy"
-                />
-              </div>
-              <div className="flex-1 flex flex-col">
-                <h4 className="tw-heading-5 mb-6">Juno</h4>
-                <p className="tw-paragraph text-black/80 mb-6 flex-1">
-                  Get started with Juno, a blockchain-as-a-service platform.
-                </p>
-                <p className="mb-0">
-                  <Link
-                    href="/docs/current/developer-docs/getting-started/quickstart/juno-quickstart"
-                    className="link-primary"
-                    title="Go to Juno quickstart"
-                  >
-                    <LinkArrowRight />
-                  </Link>
-                </p>
-              </div>
-            </div>
-            </div>
-            </div>
-      </section>
-
-      <section className="mt-10">
-        <Blog></Blog>
-      </section>
-
-      <section className="bg-infinite -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-[-50px] md:px-[50px] text-white py-10 mt-20 md:pt-14 md:pb-20">
+      <section className="bg-infinite -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-[-50px] md:px-[50px] text-white py-10 md:pt-14 md:pb-20">
         <div className=" bg-gradient-to-r from-[#6A85F199] to-[#C572EF99] rounded-lg px-6 py-8 md:p-8 flex flex-col md:flex-row gap-20">
           <div className="md:flex-[4] md:flex md:flex-col items-start">
             <div className="tw-heading-6 mb-10">

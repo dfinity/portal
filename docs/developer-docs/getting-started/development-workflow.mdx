@@ -41,7 +41,7 @@ In traditional programming, this concept is known as [Application Binary Interfa
 ICP has its own ABI language called **[Candid](/docs/current/developer-docs/backend/candid/)**, which is similar to JSON or Protobuf, but tailored for ICP.
 
 During the build process, `dfx` uses the backend ABI to automatically generate JavaScript boilerplate code for the frontend.
-Under the hood, the boilerplate code uses a library called [agent-js](https://github.com/dfinity/agent-js/tree/main) to encode Candid values and make HTTP requests from the browser to the backend canister.
+Under the hood, the boilerplate code uses a library called [agent-js](https://github.com/dfinity/agent-js/tree/main) to encode Candid values and make HTTPS requests from the browser to the backend canister.
 This is similar to `web3.js` in Ethereum.
 
 The [Wasm standard](https://webassembly.org/) defines only the instructions and the memory of the Wasm virtual machine;

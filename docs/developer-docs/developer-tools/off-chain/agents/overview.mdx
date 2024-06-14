@@ -11,7 +11,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 In the Internet Computer ecosystem, a library that is used to make calls to the ICP public interface is called an **agent**. An agent has a few key responsibilities, which make it convenient to work with in your language of choice.
 
 If you have a canister running, either on your local machine or live on the Internet Computer, you will have two main ways to interact with your canister smart contract.
-You can talk to the canister using the v2 API using an **agent** that follows the interface specification, or you can use the canister's HTTP interface.
+You can talk to the canister using the v2 API using an **agent** that follows the interface specification, or you can use the canister's HTTPS interface.
 
 Smart contracts are able to define their own API's using the Candid Interface Declaration Language (IDL), and they will respond to calls through the public API.
 
@@ -28,7 +28,7 @@ This section of the docs covers the following agents, ordered by languages:
 - Rust
   - [Rust agent by DFINITY](/docs/current/developer-docs/developer-tools/off-chain/agents/rust-agent)
 
-In addition to those, there are several other community-supported agents:
+In addition to those, there are several other community-supported agents. Note that these agents may be unmaintained or may not have undergone a security review, be sure to check their current status before using them:
 
 - .NET
   - [`ICP.NET` by Gekctek](https://github.com/Gekctek/ICP.NET)

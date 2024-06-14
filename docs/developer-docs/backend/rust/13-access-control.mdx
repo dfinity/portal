@@ -634,7 +634,7 @@ Now you can interact with the canister. Aside from the standard functions, it ha
 - `set_name`, `set_symbol`, `set_logo`, and `set_custodian`: these functions update the collection information of the corresponding field from when it was initialized.
 - `is_custodian`: this function checks whether the specified user is a custodian.
 
-The canister also supports a certified HTTP interface; going to `/<nft>/<id>` will return `nft`'s metadata file #`id`, with `/<nft>` returning the first non-preview file.
+The canister also supports a certified HTTPS interface; going to `/<nft>/<id>` will return `nft`'s metadata file #`id`, with `/<nft>` returning the first non-preview file.
 
 :::info
 Remember that query functions are uncertified; the result of functions like `ownerOfDip721` can be modified arbitrarily by a single malicious node. If queried information is depended on, for example if someone might send ICP to the owner of a particular NFT to buy it from them, those calls should be performed as update calls instead. You can force an update call by passing the `--update` flag to `dfx` or using the `Agent::update` function in `agent-rs`.
