@@ -9,6 +9,7 @@ import ShareMeta from "../components/Common/ShareMeta";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import Content from "../components/BitcoinIntegrationPage/Content";
 import News from "../components/BitcoinIntegrationPage/News";
+import CodeSnippets from "../components/BitcoinIntegrationPage/CodeSnippets";
 
 function BitcoinIntegration() {
   const ref = useRef<HTMLDivElement>(null);
@@ -34,6 +35,7 @@ function BitcoinIntegration() {
         <Content></Content>
         {/* <ReleaseTimeline></ReleaseTimeline> */}
         <Videos></Videos>
+        <CodeSnippets />
         <News />
       </main>
     </Layout>
