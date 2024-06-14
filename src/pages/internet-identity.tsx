@@ -499,7 +499,7 @@ function InternetIdentityPage() {
             >
               <div className="md:w-1/2  pt-16 md:pt-40 ">
                 <motion.h3 className="tw-heading-4 md:tw-heading-60">
-                  Issue verified credentials privately and efficiently
+                  Issue verifiable credentials privately and efficiently
                 </motion.h3>
                 <motion.p className="text-2xl mb-0 font-bold md:w-9/10">
                   Leverage Internet Identity’s Issuer APIs to easily build a
