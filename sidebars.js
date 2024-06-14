@@ -910,7 +910,7 @@ const sidebars = {
           },
           ],
         },
-	],
+	      ],
         },
         {
           type: "category",
