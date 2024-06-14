@@ -1,0 +1,32 @@
+
+### Basic properties for ICP utility tokens
+
+The ICP token is similar to utility tokens governing decentralized networks such as Bitcoin, but also differs in important ways.
+
+The ICP token is similar to Bitcoin in the following ways:
+
+-   Each ICP token is divisible 10^8 times.
+
+-   All transactions are stored in the ledger starting with the genesis initial state.
+
+-   Tokens are entirely fungible.
+
+-   `AccountIdentifier`s are 32 bytes and are roughly the equivalent of the hash of a public key, optionally together with some additional sub-account specifier.
+
+The ICP token differs from Bitcoin in the following ways:
+
+-   Rather than using proof of work, staked participant nodes use a variant of threshold BLS signatures to agree on a valid state of the chain.
+
+-   Any transaction can store an 8-byte memo — this memo field is used by the Rosetta API to store the nonce that distinguishes between transactions. However, other uses for the field are possible.
+
+## ICP Rosetta implementation
+
+- [ICP Rosetta data API](/docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/)
+
+- [ICP Rosetta construction API](/docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/)
+
+ICP tokens are the network's native token and can be used for several network utility actions, such as:
+
+- Being converted into [cycles] to pay for a canister's resources and deployment.
+
+- Being staked in a neuron to receive voting power in the [NNS].
