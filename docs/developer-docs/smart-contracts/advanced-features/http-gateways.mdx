@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-The ICP HTTP gateway protocol enables conventional HTTP clients to interact with the ICP network. Through the HTTP gateway, software such as web browsers can retrieve and digest canister code and assets, such as HTML, JavaScript, images, or videos. The HTTP gateway makes this workflow possible by translating standard HTTP requests into API canister calls that ICP can understand.
+The ICP HTTP gateway protocol enables conventional HTTP clients, such as a web browser, to interact with the ICP network. Through the HTTP gateway, web browsers can send and receive standard HTTP requests and responses, including static assets, such as HTML, JavaScript, images, or videos. The HTTP gateway makes this workflow possible by translating standard HTTP requests into API canister calls that ICP canisters can understand and vice versa for HTTP responses.
 
 There are several HTTP gateway nodes running on ICP, but it should be noted that an HTTP gateway node could become compromised, creating a threat for canisters. Compromised gateways are threats even for canisters that are considered 'secure', such that they use certify assets, use a default client, and do not maintain their own certification checking.
 
