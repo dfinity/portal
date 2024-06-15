@@ -18,13 +18,15 @@ import { ArrowIconRight } from "../components/RoadmapPage/Overlay";
 const users = [
   {
     icon: "img/internet-identity/users-1.svg",
-    title: "Credential sharing",
+    title: "Verifiable credentials",
     description:
-      "Share cryptographically-signed information about yourself and gain access to gated experiences. Internet Identity guarantees that credential sharing is private and done on a need-to-know basis. Issuers cannot know which dapp is requesting the credential and you are in control of the sharing process.",
+      "Share cryptographically-signed information about yourself and gain access to gated experiences. \
+      Internet Identity guarantees that sharing attributes is private and done selectively. \
+      Issuers cannot know which dapp is requesting the credential and you are in control of the sharing process.",
   },
   {
     icon: "img/internet-identity/users-2.svg",
-    title: "Access to 100s of onchain dapps",
+    title: "Secure access to 100s of dapps",
     description: (
       <>
         Access{" "}
@@ -34,11 +36,11 @@ const users = [
           target="_blank"
           rel="noopener noreferrer"
         >
-          100s of next generation web3 dapps
+          100s of next generation fully on-chain dapps
         </Link>{" "}
         built end-to-end on the Internet Computer blockchain without needing to
         create usernames and passwords. Secure and seamless authentication and
-        session management.
+        session management powered by passkeys and WebAuthn.
       </>
     ),
   },
@@ -46,7 +48,10 @@ const users = [
     icon: "img/internet-identity/users-3.svg",
     title: "Browser-based & walletless",
     description:
-      "No crypto wallet to download. No passphrase to write down. Get setup in seconds and gain fast and easy access to dapps using only the browser in your phone or laptop. Your signing keys are permanently stored in secure hardware and controlled by your biometrics.",
+      "No crypto wallet to download. No lost passwords or seedphrases. Get setup in \
+       seconds and gain fast and easy access to dapps using only the browser in \
+       your phone or laptop. Your signing keys are permanently stored in secure \
+       hardware and controlled by your biometrics.",
   },
 ];
 
@@ -55,13 +60,15 @@ const developers = [
     icon: "img/internet-identity/features-1.svg",
     title: "A complete credentials platform",
     description:
-      "Easily integrate with verifiable credentials to gate access to experiences without having to collect and store sensitive personal information.",
+      "Easily gate access to experiences without having to collect and store sensitive personal information.",
   },
   {
     icon: "img/internet-identity/features-2.svg",
     title: "Build fully on-chain dapps",
     description:
-      "Build the next generation of secure, tamperproof and fully-on chain web3 applications on the Internet Computer. Dynamic web3 experiences like SocialFi and GameFi built with smart contracts require a new approach to secure authenticated sessions, which Internet Identity provides.",
+      "Build the next generation of secure, tamperproof and fully-on chain web3 applications on the Internet Computer.\
+       Dynamic web3 experiences (SocialFi, GameFi) built with smart contracts require a new approach to secure \
+       authenticated sessions, which Internet Identity provides.",
   },
   {
     icon: "img/internet-identity/features-3.svg",
@@ -69,7 +76,7 @@ const developers = [
     description: (
       <>
         Internet Identity makes it possible to build great web3 applications
-        that your users access through their web browsers. Your dapp can
+        that users access with just their browsers. Your dapp can
         securely hold and interact with tokens and smart contracts across chains
         (thanks to{" "}
         <Link
@@ -94,13 +101,13 @@ const developers = [
     icon: "img/internet-identity/features-5.svg",
     title: "Compliant with W3C standards",
     description:
-      "Built on top of the W3C verified credential standards. Making it easier to integrate with existing solutions.",
+      "Benefit from an existing ecosystem of tooling and libraries inspired by the W3C verifiable credentials standards.",
   },
   {
     icon: "img/internet-identity/features-6.svg",
     title: "Built with WebAuthn",
     description:
-      "Uses webauthn and passkeys as the foundations of its security model for browser-based experiences.",
+      "WebAuthn significantly increases user convenience while reducing the risk of phishing and credential theft by enabling passwordless authentication through biometric data or hardware keys.",
   },
 ];
 
@@ -109,19 +116,19 @@ const issuers = [
     icon: "img/internet-identity/issuers-1.svg",
     title: "Expand your audience",
     description:
-      "When you port your existing issuer application to II or you develop a brand new issuer dapp from scratch, you gain access to a large pool of user and applications that already use internet identity. II currently features 2.5 million internet identities and 100,000 monthly active unique users.",
+      "Grow your audience in a platform that is trusted by 100,000 monthly active users and has registered 2.5 million internet identities.",
   },
   {
     icon: "img/internet-identity/issuers-2.svg",
     title: "A platform built for privacy",
     description:
-      "Issue re-usable credentials to your users, without using global IDs. Avoid the privacy issues associated with issuing credentials to globally unique IDs (which is typical of offline wallet solutions).",
+      "Issue reusable credentials to your users, without using global IDs. Avoid the privacy issues associated with issuing credentials to globally unique IDs (which is typical of offline wallet solutions).",
   },
   {
     icon: "img/internet-identity/issuers-3.svg",
     title: "Versatile",
     description:
-      "Suitable for a range of scenarios from academic credentials, KYC verification, age verification, to organizations issuing credentials to their employees.",
+      "Internet identity's verifiable credentials support a broad range of scenarios, including academic credentials, KYC verification, age verification and proof of employment.",
   },
 ];
 
@@ -356,25 +363,13 @@ function InternetIdentityPage() {
                     Verifiable credentials are live!
                   </motion.h5>
                   <motion.p>
-                    With the Separatrix milestone, ICP offers the infrastructure
-                    and tooling to issue, share, and consume credentials in a
-                    privacy-preserving fashion. Users are in control of their
-                    credentials, giving them a self-sovereign digital identity.
-                    At the same time, new credential issuers, such as a KYC
-                    service, go live on ICP and will enable new use cases such
+                    Having reached the <Link href="https://internetcomputer.org/roadmap/#Identity-Separatrix">Separatrix milestone</Link>, ICP offers the infrastructure and
+                    tooling to issue, share, and consume credentials in a
+                    privacy-preserving fashion. Users are always in control of their
+                    digital identity and decide which attributes to share.
+                    At the same time, new issuers, offering Proof of Humanity credentials are going live on ICP and will enable new use cases such
                     as security tokens subject to financial regulations.
                   </motion.p>
-
-                  <motion.ul
-                    className="mb-0 mt-4 md:mt-6 tw-paragraph md:tw-lead-sm text-bold text-black"
-                    variants={transitions.item}
-                  >
-                    <li className="mb-2">
-                      Proof of unique humanity on DecideID
-                    </li>
-                    <li className="mb-2">SDK for Relying Parties</li>
-                    <li className="mb-2">Verifiable credentials playground</li>
-                  </motion.ul>
                   <p className="mb-12 md:mb-0 mt-8">
                     <Link
                       className="link-primary link-with-icon"
@@ -416,7 +411,7 @@ function InternetIdentityPage() {
                 Access dapps quickly and securely{" "}
               </motion.h3>
               <motion.p className="text-2xl mb-0 font-bold md:w-9/10">
-                Internet Identity is a self-sovereign single-sign on solution
+                Internet Identity is a self-sovereign single sign-on solution
                 for dapps built with smart contracts on the internet computer.
               </motion.p>
               <Link
@@ -455,11 +450,10 @@ function InternetIdentityPage() {
             >
               <div className="md:w-[55%]  pt-16 md:pt-40 ">
                 <motion.h3 className="tw-heading-4 md:tw-heading-60">
-                  Build dapps with a secure authentication method
+                  Add secure authentication to your dapps
                 </motion.h3>
                 <motion.p className="text-2xl mb-0 font-bold md:w-9/10">
-                  Use Internet Identity as the authentication method for your
-                  dapp.
+                  Developers should focus on building dapps, not identity solutions.
                 </motion.p>
                 <Link
                   className="mt-3 md:mt-6 link-primary-light link-with-icon "
@@ -503,8 +497,7 @@ function InternetIdentityPage() {
                   Issue verifiable credentials privately and efficiently
                 </motion.h3>
                 <motion.p className="text-2xl mb-0 font-bold md:w-9/10">
-                  Leverage Internet Identity’s Issuer APIs to easily build a
-                  solution that issues privacy-preserving credentials.
+                  Use Internet Identity's Issuer APIs and SDKs to build credential issuing dapps.
                 </motion.p>
                 <Link
                   className="button-primary mt-6"
@@ -544,14 +537,10 @@ function InternetIdentityPage() {
             >
               <div className="md:w-1/2  pt-16 md:pt-40 ">
                 <motion.h3 className="tw-heading-4 md:tw-heading-60">
-                  Learn more about our innovative identity platform
+                Explore ICP's innovative identity platform
                 </motion.h3>
                 <motion.p className="text-2xl mb-0 font-bold md:w-9/10">
-                  Internet Identity was informed by innovative contributions to
-                  digital identity research, from W3C to DIF. Our researchers
-                  have published over a 100 papers on verifiable credentials &
-                  attribute sharing, privacy-enhancing authentication, and zero
-                  knowledge proofs.
+                Internet Identity contributors include world-leading identity scientists having published over a 100 papers on verifiable credentials & attribute sharing, privacy-enhancing authentication, and zero knowledge proofs.
                 </motion.p>
                 <Link
                   className="button-outline-white mt-6"
