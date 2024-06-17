@@ -556,7 +556,7 @@ function InternetIdentityPage() {
                 </motion.h3>
                 <motion.p className="text-2xl mb-0 font-bold md:w-9/10">
                   Internet Identity contributors include world-leading identity
-                  scientists having published over a 100 papers on verifiable
+                  scientists having published more than 100 papers on verifiable
                   credentials & attribute sharing, privacy-enhancing
                   authentication, and zero knowledge proofs.
                 </motion.p>
