@@ -483,7 +483,7 @@ An example of this error is:
 
 It is impossible for a canister to delete itself, so this request will never succeed.
 
-To fix this error, consider deleting the canister from one of it's other [controllers][dfx-canister-status]. If the only controller of the canister is itself, then it cannot be directly deleted. However, if it burns enough cycles it will eventually be frozen (when the balance drops below its freezing threshold). If the cycle balance then drops to zero the canister will be deleted.
+To fix this error, consider deleting the canister from one of its other [controllers][dfx-canister-status]. If the only controller of the canister is itself, then it cannot be directly deleted. However, if it burns enough cycles it will eventually be frozen (when the balance drops below its freezing threshold). If the cycles balance then drops to zero, the canister will be deleted.
 
 
 ### Delete canister queue not empty
