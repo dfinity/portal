@@ -219,6 +219,11 @@ const sidebars = {
               id: "developer-docs/smart-contracts/advanced-features/serving-http-request",
             },
             {
+              type: "doc",
+              label: "HTTP gateways",
+              id: "developer-docs/smart-contracts/advanced-features/http-gateways",
+            },
+            {
               type: "category",
               label: "HTTPS outcalls",
               items: [
