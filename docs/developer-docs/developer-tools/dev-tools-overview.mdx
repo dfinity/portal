@@ -31,17 +31,17 @@ To deploy canisters to the mainnet or make calls to canisters already deployed o
 
 ### `dfxvm`
 
-[`dfxvm`](/docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-install) is a command-line tool used to installing and switching between different versions of `dfx`. It enables developers to pivot between different projects that are built with different `dfx` versions.
+[`dfxvm`](/docs/current/developer-docs/developer-tools/cli-tools/dfxvm) is a command-line tool used to installing and switching between different versions of `dfx`. It enables developers to pivot between different projects that are built with different `dfx` versions.
 
-- [Install `dfxvm`](/docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-install).
+- [Install `dfxvm`](/docs/current/developer-docs/getting-started/install#installing-dfx).
 
-- [`dfxvm` documentation](/docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-install).
+- [`dfxvm` documentation](/docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfx/).
 
 - [`dfxvm` GitHub repo](https://github.com/dfinity/dfxvm).
 
 ### `quill`
 
-[`quill`](/docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/) is a command-line ledger and governance toolkit designed for interacting with the [Network Nervous System (NNS)](/docs/current/tokenomics/nns/nns-intro) canisters through the use of self-custody keys. It supports using keys in an air-gapped computer, which is a computer that has never been connected to the internet. To support this workflow, `quill` first generates and signs messages based on the user input, then the signed messages are transported to a computer with internet connection (via a USB flash drive or QR code) where they are submitted to ICP to be executed.
+[`quill`](/docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/) is a command-line ledger and governance toolkit designed for interacting with the [Network Nervous System (NNS)](/docs/current/developer-docs/daos/nns/overview) canisters through the use of self-custody keys. It supports using keys in an air-gapped computer, which is a computer that has never been connected to the internet. To support this workflow, `quill` first generates and signs messages based on the user input, then the signed messages are transported to a computer with internet connection (via a USB flash drive or QR code) where they are submitted to ICP to be executed.
 
 - [Install `quill`](https://github.com/dfinity/quill?tab=readme-ov-file#download--install).
 
@@ -145,3 +145,17 @@ The Motoko extension is also available to [VSCodium](https://vscodium.com/) user
 - [VS Code documentation](/docs/current/developer-docs/developer-tools/ide/vs-code).
 
 - [Motoko VS Code extension](https://github.com/dfinity/vscode-motoko).
+
+## Community tools
+
+The following are community contributed and maintained developer tooling for ICP. Please note that these tools may not be maintained, or may be vulnerable to security flaws. Please use these tools with caution.
+
+- [IC inspector](https://chrome.google.com/webstore/detail/ic-inspector/meaadkenfkhjakkkdapaallimhbdofck): A Google Chrome extension that can be used to decode ICP requests and responses.
+
+- [ic-nix](https://github.com/ninegua/ic-nix): Support for building ICP projects with Nix.
+
+- [canister-tools](https://github.com/levifeldman/canister-tools): A series of tools for Rust canisters, such as snapshots and simple upgrades.
+
+- [wasi2ic](https://github.com/wasm-forge/wasi2ic): A tool used to convert WASI binaries into binaries runnable on ICP.
+
+- [setup-dfx](https://github.com/dfinity/setup-dfx): A GitHub Action used to set up `dfx`.

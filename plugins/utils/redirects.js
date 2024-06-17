@@ -40,7 +40,7 @@ const redirects = `
   /docs/samples/codelabs/static-website /samples
   /docs/samples/* /samples
   /docs/security-best-practices/introduction /docs/current/developer-docs/security/general-security-best-practices
-  /docs/current/developer-docs/setup/default-wallet /docs/current/developer-docs/getting-started/cycles/cycles-wallet
+  /docs/current/developer-docs/setup/default-wallet /docs/current/developer-docs/defi/cycles/cycles-wallet
   /docs/current/tokenomics/sns/tokenomics /docs/current/developer-docs/daos/sns/tokenomics/
   /docs/current/developer-docs/integrations/http_requests/http_requests-how-it-works /docs/current/references/https-outcalls-how-it-works
   /docs/current/developer-docs/daos/sns/tokenomics/sns-intro-tokens /docs/current/developer-docs/daos/sns/tokenomics/
@@ -75,7 +75,7 @@ const redirects = `
   /docs/current/developer-docs/build/frontend/webpack-config /docs/current/developer-docs/web-apps/application-frontends/overview#modifying-the-webpack-configuration
   /docs/current/developer-docs/build/install-upgrade-remove /docs/current/developer-docs/getting-started/install/
   /docs/current/developer-docs/build/languages/rust/* /docs/current/developer-docs/backend/rust/
-  /docs/current/developer-docs/build/project-setup/cycles-wallet /docs/current/developer-docs/getting-started/cycles/cycles-wallet
+  /docs/current/developer-docs/build/project-setup/cycles-wallet /docs/current/developer-docs/defi/cycles/cycles-wallet
   /docs/current/developer-docs/build/project-setup/manage-canisters /docs/current/developer-docs/smart-contracts/maintain/settings
   /docs/current/developer-docs/build/project-setup/design-dapps /docs/current/developer-docs/web-apps/design-dapps
   /docs/current/developer-docs/build/troubleshooting /docs/current/developer-docs/smart-contracts/test/troubleshooting
@@ -93,7 +93,7 @@ const redirects = `
   /docs/developers-guide/concepts/bitcoin-integration /bitcoin-integration
   /docs/developers-guide/concepts/concepts-intro /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/developers-guide/customize-projects /docs/current/developer-docs/smart-contracts/compile
-  /docs/developers-guide/default-wallet /docs/current/developer-docs/getting-started/cycles/cycles-wallet
+  /docs/developers-guide/default-wallet /docs/current/developer-docs/defi/cycles/cycles-wallet
   /docs/developers-guide/design-apps /docs/current/developer-docs/web-apps/design-dapps
   /docs/developers-guide/glossary /docs/current/concepts/glossary
   /docs/developers-guide/install-upgrade-remove /docs/current/developer-docs/getting-started/install/
@@ -183,8 +183,8 @@ const redirects = `
   /docs/current/developer-docs/frontend/react-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/current/developer-docs/frontend/svelte-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/current/developer-docs/frontend/vue-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
-  /docs/current/developer-docs/setup/cycles/index /docs/current/developer-docs/getting-started/cycles/cycles-wallet
-  /docs/current/developer-docs/setup/cycles /docs/current/developer-docs/getting-started/cycles/cycles-wallet
+  /docs/current/developer-docs/setup/cycles/index /docs/current/developer-docs/defi/cycles/cycles-wallet
+  /docs/current/developer-docs/setup/cycles /docs/current/developer-docs/defi/cycles/cycles-wallet
   /docs/current/concepts/index /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/concepts /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/developer-docs/backend/candid/index /docs/current/developer-docs/smart-contracts/candid/candid-concepts
@@ -211,8 +211,8 @@ const redirects = `
   /docs/current/developer-docs/setup/install/ /docs/current/developer-docs/getting-started/install/
   /docs/current/developer-docs/setup/accounts /docs/current/developer-docs/getting-started/accounts
   /docs/current/developer-docs/setup/cycles/cycles-faucet /docs/current/developer-docs/getting-started/cycles/cycles-faucet
-  /docs/current/developer-docs/setup/cycles/cycles-wallet /docs/current/developer-docs/getting-started/cycles/cycles-wallet
-  /docs/current/developer-docs/setup/cycles/converting_icp_tokens_into_cycles /docs/current/developer-docs/getting-started/cycles/converting_icp_tokens_into_cycles
+  /docs/current/developer-docs/setup/cycles/cycles-wallet /docs/current/developer-docs/defi/cycles/cycles-wallet
+  /docs/current/developer-docs/setup/cycles/converting_icp_tokens_into_cycles /docs/current/developer-docs/defi/cycles/converting_icp_tokens_into_cycles
   /docs/current/developer-docs/setup/first-canister /docs/current/developer-docs/getting-started/default-template
   /docs/current/developer-docs/setup/deploy-locally /docs/current/developer-docs/getting-started/deploy/local
   /docs/current/developer-docs/setup/deploy-mainnet /docs/current/developer-docs/getting-started/deploy/mainnet
@@ -351,13 +351,13 @@ const redirects = `
   /docs/current/developer-docs/integrations/ledger/  /docs/current/developer-docs/defi/icp-tokens/overview
   /docs/current/developer-docs/integrations/ledger/ledger-local-setup  /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup
   /docs/current/developer-docs/integrations/ledger/interact-with-ledger  /docs/current/developer-docs/defi/icp-tokens/using-the-ledger
-  /docs/current/developer-docs/integrations/ledger/icp-index-local-setup /docs/current/developer-docs/defi/icp-tokens/icp-index-local-setup
+  /docs/current/developer-docs/integrations/ledger/icp-index-local-setup /docs/current/developer-docs/defi/tokens/indexes
   /docs/current/developer-docs/integrations/ledger/collecting-dust /docs/current/developer-docs/defi/icp-tokens/account-trimming
   /docs/current/developer-docs/integrations/icrc-1/index /docs/current/references/icrc1-standard
   /docs/current/developer-docs/integrations/icrc-1/ /docs/current/references/icrc1-standard
   /docs/current/developer-docs/integrations/icrc-1/icrc1-ledger-setup /docs/current/developer-docs/defi/icrc-1/icrc1-ledger-setup
   /docs/current/developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger /docs/current/developer-docs/defi/icrc-1/using-icrc1-ledger
-  /docs/current/developer-docs/integrations/icrc-1/icrc1-index-setup /docs/current/developer-docs/defi/icrc-1/icrc1-index-setup
+  /docs/current/developer-docs/integrations/icrc-1/icrc1-index-setup /docs/current/developer-docs/defi/tokens/indexes
   /docs/current/developer-docs/integrations/exchange-rate/exchange-rate-canister /docs/current/developer-docs/defi/exchange-rate-canister
   /docs/current/developer-docs/integrations/rosetta/index  /docs/current/developer-docs/defi/rosetta/overview
   /docs/current/developer-docs/integrations/rosetta/  /docs/current/developer-docs/defi/rosetta/overview
@@ -466,6 +466,7 @@ const redirects = `
   /motoko/main/motoko /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/version /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/main/motoko-introduction /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/motoko/main/motoko /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/main/basic-concepts /docs/current/motoko/main/getting-started/basic-concepts
   /docs/current/motoko/main/overview /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/main/language-manual /docs/current/motoko/main/reference/language-manual
@@ -515,6 +516,10 @@ const redirects = `
   /docs/current/developer-docs/web-apps/user-login/nfid /docs/current/developer-docs/identity/authentication/nfid
   /docs/current/developer-docs/web-apps/user-login/email-password /docs/current/developer-docs/identity/authentication/email-password
   /docs/current/developer-docs/multi-chain/ethereum/using-eth/siwe /docs/current/developer-docs/identity/authentication/siwe
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/defi/icrc-1/icrc1-index-setup /docs/current/developer-docs/defi/tokens/indexes
+  /docs/current/defi/icp-tokens/icp-index-local-setup /docs/current/developer-docs/defi/tokens/indexes
+  /docs/current/developer-docs/smart-contracts/encryption/signing-transactions /docs/current/developer-docs/smart-contracts/encryption/signing-messages
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

@@ -53,7 +53,7 @@ Several languages are supported, such as:
   Please check [the Kybra website](https://demergent-labs.github.io/kybra/kybra.html) for updates on when it will be ready for production.
 
 ## Choosing the web framework for the frontend
-The [HTTP Gateway protocol](docs/current/references/http-gateway-protocol-spec) of ICP allows browsers to load the web assets such as JS, HTML, CSS from a canister via HTTP.
+The [HTTP Gateway protocol](docs/current/references/http-gateway-protocol-spec) of ICP allows browsers to load the web assets such as JS, HTML, CSS from a canister via HTTPS.
 This means that web assets can be stored fully on-chain and developers don’t need traditional centralized web hosting to serve the UI of their application.
 
 The typical development workflow of the frontend is:
@@ -61,7 +61,7 @@ The typical development workflow of the frontend is:
 1. The developer writes HTML, JS, CSS code.
 1. The developer uses the default asset <GlossaryTooltip>canister</GlossaryTooltip> created by `dfx` or writes their own custom canister to store the web assets on-chain.
 1. Users open the application in the browser by navigating to the URL `https://<canister-id>.ic0.app` or a custom domain that the developer has registered for the canister.
-1. The canister serves the web assets to the browser via its `http_request` endpoint that gets invoked for each HTTP request.
+1. The canister serves the web assets to the browser via its `http_request` endpoint that gets invoked for each HTTPS request.
 1. When the JS code runs in the browser, it can call the backend canister endpoints using the [agent-js](/docs/current/developer-docs/web-apps/browser-js/js-request-api) library, which is analogous to `web3.js` and `ethers.js` of Ethereum.
 
 Since ICP supports general HTML, JS, and CSS code, any web framework should be compatible with ICP.
@@ -92,7 +92,7 @@ It is better to start with the simplest possible architecture and iteratively im
 This is the simplest possible architecture and the recommended starting point for most developers.
 A single <GlossaryTooltip>canister</GlossaryTooltip> can host the entire application stack including its web assets, core logic, and data. To write a single canister that hosts frontend assets and backend core logic, you will need to use a library for the assets storage API, such as the `ic-certified-assets` library for Rust canisters. A few examples of single canister projects include:
 
-- [HTTP greet example](https://github.com/krpeacock/server/tree/main/examples/http_greet).
+- [HTTPS greet example](https://github.com/krpeacock/server/tree/main/examples/http_greet).
 
 - [Internet Identity integration example](https://github.com/dfinity/internet-identity/tree/main/demos/using-dev-build).
 

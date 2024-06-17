@@ -27,8 +27,8 @@ The following formula shows how to calculate the cycles cost for an RPC request:
 (
   3M
   + 60K * nodes_in_subnet // Number of nodes in the subnet
-  + 400 * request_size // Size of the HTTP request in bytes
-  + 800 * max_response // Maximum HTTP response size in bytes
+  + 400 * request_size // Size of the HTTPS request in bytes
+  + 800 * max_response // Maximum HTTPS response size in bytes
   + provider_cost // Fixed cost for selected RPC provider
 ) * nodes_in_subnet //  Fixed canister overhead cost per node in subnet
 ```
@@ -37,7 +37,7 @@ Here is an approximate cost breakdown in USD for an RPC request on the Ethereum 
 
 - Total cost: ~ $0.0021 (assuming consensus between 3 RPC providers)
 
-  - Cost per RPC provider: ~ $0.000686 (assuming 1kb request and 1kb response)
+  - Cost per RPC provider: ~ $0.000686 (assuming 1kB request and 1kB response)
 
     - Canister overhead: ~ $0.0000364
 
@@ -48,6 +48,12 @@ Here is an approximate cost breakdown in USD for an RPC request on the Ethereum 
     - JSON Response: ~ $0.0002 / kB
 
 Note that the cost is multiplied by the number of RPC services used for the agreement / consensus logic. If you specify three different services, it will cost three times as much as a call to a single RPC provider.
+
+The EVM RPC canister automatically refunds any cycles sent beyond the cost of the RPC request.
+
+## Collateral cycles
+
+In addition to the cost of the RPC request itself, callers must also pass at least 0.00028 TC of "collateral cycles" to account for possible future downstream API price increases. The canister currently refunds all of these cycles, but this may change in the future.
 
 ## Attaching the correct amount of cycles
 

@@ -9,16 +9,18 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
 
 ## Overview
-Staking requires transferring tokens to a sub-account of the governance canister. To complete the transfer, you need to know both your ICP ledger account identifier (source of the transfer) and the account identifier of the governance sub-account (destination of the transfer).
-Make sure you have enough ICP in your source account to make the transfer to the governance canister. 
-To derive the account identifier of your public key you can look at how the [derive endpoint works](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/derive.mdx). 
 
-## Deriving the governance canister account identifier
 |               |       |
 |---------------|-------|
 | Since version | 1.3.0 |
 | Idempotent?          | no        |
 | Minimal access level | controller |
+
+Staking requires transferring tokens to a sub-account of the governance canister. To complete the transfer, you need to know both your ICP ledger account identifier (source of the transfer) and the account identifier of the governance sub-account (destination of the transfer).
+Make sure you have enough ICP in your source account to make the transfer to the governance canister. 
+To derive the account identifier of your public key you can look at how the [derive endpoint works](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/derive.mdx). 
+
+## Deriving the governance canister account identifier
 
 For neuron creation on the Internet Computer, the process begins with the transfer of ICP tokens to the address destined to become the neuron. 
 This address, while earmarked for a future neuron, does not yet represent an active neuron until the governance canister acknowledges the deposit. 

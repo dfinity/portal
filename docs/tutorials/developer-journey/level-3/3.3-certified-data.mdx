@@ -22,7 +22,7 @@ Certified variables are part of a more broad concept of **certified data.** Cert
 
 ## How data is certified
 
-The notion of certified data can be used to certify all the assets of a canister's frontend, such as the canister's HTML, CSS, Javascript, image, or video files. When a canister issues a response along with its certificate, a HTTPS gateway can be used to verify that certificate before passing the response off to the client.
+The notion of certified data can be used to certify all the assets of a canister's frontend, such as the canister's HTML, CSS, Javascript, image, or video files. When a canister issues a response along with its certificate, a HTTP gateway can be used to verify that certificate before passing the response off to the client.
 
 In each round of message execution on the Internet Computer, the message routing layer generates a new state tree that contains that round's information. The tree contains a root hash that is then used by the nodes in the subnet to create a certificate. This state tree contains several pieces of information, including the certified variables of each canister. An example of what a state tree looks like can be found below:
 

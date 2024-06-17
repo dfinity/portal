@@ -9,13 +9,13 @@ import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# How to use HTTP outcalls: GET
+# How to use HTTPS outcalls: GET
 
 <MarkdownChipRow labels={["Advanced", "Tutorial"]} />
 
 ## Overview
 
-A minimal example to make a `GET` HTTPS request. The purpose of this dapp is only to show how to make HTTP requests from a canister.
+A minimal example to make a `GET` HTTPS request. The purpose of this dapp is only to show how to make HTTPS requests from a canister.
 
 The sample code is in both Motoko and Rust. This sample canister sends a `GET` request to the Coinbase API and retrieves some historical data about the ICP token.
 
@@ -26,7 +26,7 @@ This example takes less than 5 minutes to complete.
 
 ### Sample dapp
 
-The canister in this tutorial will have only **one public method** named `get_icp_usd_exchange()` which, when called, will trigger an HTTP `GET` request to an external service. The canister will not have a frontend (only a backend), but like all canisters, you can interact with its public methods via the Candid web UI, which will look like this:
+The canister in this tutorial will have only **one public method** named `get_icp_usd_exchange()` which, when called, will trigger an HTTPS `GET` request to an external service. The canister will not have a frontend (only a backend), but like all canisters, you can interact with its public methods via the Candid web UI, which will look like this:
 
 
 ![Candid web UI](../_attachments/https-get.webp)
@@ -61,18 +61,18 @@ import Types "Types";
 
 actor {
 
-  //0. method that uses the HTTP outcalls feature and returns a string
+  //0. method that uses the HTTPS outcalls feature and returns a string
   public func foo() : async Text {
 
     //1. DECLARE MANAGEMENT CANISTER
     let ic : Types.IC = actor ("aaaaa-aa");
 
-    //2. SETUP ARGUMENTS FOR HTTP GET request
+    //2. SETUP ARGUMENTS FOR HTTPS GET request
     let request : Types.HttpRequestArgs = {
         //construct the request
     };
 
-    //3. ADD CYCLES TO PAY FOR HTTP REQUEST
+    //3. ADD CYCLES TO PAY FOR HTTPS REQUEST
     //code to add cycles
 
     //4. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
@@ -98,7 +98,7 @@ You will also create some custom types in `Types.mo`. It will look like this:
 ```motoko
 module Types {
 
-    //type declarations for HTTP requests, HTTP responses, management canister, etc...
+    //type declarations for HTTPS requests, HTTPS responses, management canister, etc...
 
 }
 ```
@@ -118,7 +118,7 @@ use ic_cdk::api::management_canister::http_request::{
 //Update method using the HTTPS outcalls feature
 #[ic_cdk::update]
 async fn foo() {
-    //2. SETUP ARGUMENTS FOR HTTP GET request
+    //2. SETUP ARGUMENTS FOR HTTPS GET request
     let request = CanisterHttpRequestArgument {
         //instantiate the request
     };
@@ -139,7 +139,7 @@ async fn foo() {
 }
 
 // 4. CREATE TRANSFORM FUNCTION
-#[query]
+#[ic_cdk::query]
 fn transform(raw: TransformArgs) -> HttpResponse { }
 ```
 
@@ -215,10 +215,10 @@ actor {
   public func get_icp_usd_exchange() : async Text {
 
     //1. DECLARE MANAGEMENT CANISTER
-    //You need this so you can use it to make the HTTP request
+    //You need this so you can use it to make the HTTPS request
     let ic : Types.IC = actor ("aaaaa-aa");
 
-    //2. SETUP ARGUMENTS FOR HTTP GET request
+    //2. SETUP ARGUMENTS FOR HTTPS GET request
 
     // 2.1 Setup the URL and its query parameters
     let ONE_MINUTE : Nat64 = 60;
@@ -239,7 +239,7 @@ actor {
       context = Blob.fromArray([]);
     };
 
-    // 2.3 The HTTP request
+    // 2.3 The HTTPS request
     let http_request : Types.HttpRequestArgs = {
         url = url;
         max_response_bytes = null; //optional for request
@@ -249,10 +249,10 @@ actor {
         transform = ?transform_context;
     };
 
-    //3. ADD CYCLES TO PAY FOR HTTP REQUEST
+    //3. ADD CYCLES TO PAY FOR HTTPS REQUEST
 
     //The IC specification spec says, "Cycles to pay for the call must be explicitly transferred with the call"
-    //The management canister will make the HTTP request so it needs cycles
+    //The management canister will make the HTTPS request so it needs cycles
     //See: /docs/current/motoko/main/cycles
 
     //The way Cycles.add() works is that it adds those cycles to the next asynchronous call
@@ -266,7 +266,7 @@ actor {
 
     //5. DECODE THE RESPONSE
 
-    //As per the type declarations in `src/Types.mo`, the BODY in the HTTP response
+    //As per the type declarations in `src/Types.mo`, the BODY in the HTTPS response
     //comes back as [Nat8s] (e.g. [2, 5, 12, 11, 23]). Type signature:
 
     //public type HttpResponsePayload = {
@@ -331,13 +331,13 @@ actor {
 ```
 
 - `get_icp_usd_exchange()` is an update call. All methods that make HTTPS outcalls must be update calls because they go through consensus, even if the HTTPS outcall is a `GET`.
-- The code above adds `20_949_972_000` cycles. This is typically is enough for `GET` requests, but this may need to change depending on your use case.
+- The code above adds `20_949_972_000` cycles. This is typically enough for `GET` requests, but this may need to change depending on your use case.
 - The code above imports `Types.mo` to separate the custom types from the actor file (as a best practice).
 
 </TabItem>
 <TabItem value="rust" label="Rust">
 
-Open the `/src/send_http_get_rust_backend/src/lib.rs` file in a text editor and replace content with:
+Open the `/src/send_http_get_rust_backend/src/lib.rs` file in a text editor and replace the content with:
 
 ```rust
 //1. IMPORT MANAGEMENT CANISTER
@@ -347,14 +347,11 @@ use ic_cdk::api::management_canister::http_request::{
     TransformContext, TransformFunc,
 };
 
-use ic_cdk_macros::{query, update};
-
-// This struct is legacy code and is not really used in the code.
 
 //Update method using the HTTPS outcalls feature
-#[update]
+#[ic_cdk::update]
 async fn get_icp_usd_exchange() -> String {
-    //2. SETUP ARGUMENTS FOR HTTP GET request
+    //2. SETUP ARGUMENTS FOR HTTPS GET request
 
     // 2.1 Setup the URL and its query parameters
     type Timestamp = u64;
@@ -366,7 +363,7 @@ async fn get_icp_usd_exchange() -> String {
         host, start_timestamp, start_timestamp, seconds_of_time
     );
 
-    // 2.2 prepare headers for the system http_request call
+    // 2.2 Prepare headers for the system http_request call
     //Note that `HttpHeader` is declared in line 4
     let request_headers = vec![
         HttpHeader {
@@ -386,7 +383,7 @@ async fn get_icp_usd_exchange() -> String {
         body: None,               //optional for request
         max_response_bytes: None, //optional for request
         transform: Some(TransformContext {
-            // The "method" parameter needs to the same name as the function name of your transform function
+            // The "method" parameter needs to have the same name as the function name of your transform function
             function: TransformFunc(candid::Func {
                 principal: ic_cdk::api::id(),
                 method: "transform".to_string(),
@@ -419,7 +416,7 @@ async fn get_icp_usd_exchange() -> String {
             //  1. Call `String::from_utf8()` on response.body
             //  3. You use a switch to explicitly call out both cases of decoding the Blob into ?Text
 
-            //The API response will looks like this:
+            //The API response will look like this:
 
             // ("[[1682978460,5.714,5.718,5.714,5.714,243.5678]]")
 
@@ -449,7 +446,7 @@ async fn get_icp_usd_exchange() -> String {
 }
 
 // Strips all data that is not needed from the original response.
-#[query]
+#[ic_cdk::query]
 fn transform(raw: TransformArgs) -> HttpResponse {
     let headers = vec![
         HttpHeader {
@@ -500,6 +497,34 @@ fn transform(raw: TransformArgs) -> HttpResponse {
 </TabItem>
 </AdornedTabs>
 
+:::caution
+
+Headers in the response may not always be identical across all nodes that process the request for consensus, causing the result of the call to be "No consensus could be reached." This particular error message can be hard to debug, but one method to resolve this error is to edit the response using the transform function. The transform function is run before consensus, and can be used to remove some headers from the response. For example, the following Rust variation removes all headers aside from the body and status code of the call:
+
+```rust
+use ic_cdk::{
+    api::management_canister::http_request::{HttpResponse, TransformArgs},
+    query,
+};
+
+#[query]
+fn transform(raw: TransformArgs) -> HttpResponse {
+    let mut res = HttpResponse {
+        status: raw.response.status.clone(),
+        body: raw.response.body.clone(),
+        ..Default::default()
+    };
+
+    if i32::try_from(res.status.clone().0).unwrap() == 200 {
+        res.body = raw.response.body;
+    } else {
+        ic_cdk::api::print(format!("Received an error from proxy: err = {:?}", raw));
+    }
+
+    res
+}
+```
+:::
 
 
 - #### Step 3: Edit the Type or Candid files.
@@ -551,7 +576,7 @@ module Types {
     //2.1 This type describes a function called "TransformRawResponse" used in line 14 above
     //"If provided, the calling canister itself must export this function."
     //In this minimal example for a `GET` request, you declare the type for completeness, but
-    //you do not use this function. You will pass "null" to the HTTP request.
+    //you do not use this function. You will pass "null" to the HTTPS request.
     public type TransformRawResponseFunction = {
         function : shared query TransformArgs -> async HttpResponsePayload;
         context : Blob;
@@ -586,7 +611,7 @@ module Types {
 </TabItem>
 <TabItem value="rust" label="Rust">
 
-Open the `src/send_http_get_rust_backend/send_http_get_rust_backend.did` file in a text editor and replace content with:
+Open the `src/send_http_get_rust_backend/send_http_get_rust_backend.did` file in a text editor and replace the content with:
 
 You update the Candid interface file so it matches the method `get_icp_usd_exchange()` in `lib.rs`.
 
@@ -596,7 +621,7 @@ service : {
 }
 ```
 
-Open the `src/send_http_get_rust_backend/Cargo.toml` file in a text editor and replace content with:
+Open the `src/send_http_get_rust_backend/Cargo.toml` file in a text editor and replace the content with:
 
 ```bash
 [package]
@@ -610,9 +635,8 @@ edition = "2021"
 crate-type = ["cdylib"]
 
 [dependencies]
-candid = "0.10.2"
-ic-cdk = "0.12.1"
-ic-cdk-macros = "0.8.4"
+candid = "0.10"
+ic-cdk = "0.13"
 ```
 
 </TabItem>
@@ -642,7 +666,7 @@ URLs:
     send_http_get_motoko_backend: http://127.0.0.1:4943/?canisterId=a3shf-5eaaa-aaaaa-qaafa-cai&id=avqkn-guaaa-aaaaa-qaaea-cai
 ```
 
-Open the candid web UI for the backend (the `send_http_get_motoko_backend` one) and call the `get_icp_usd_exchange()` method:
+Open the Candid web UI for the backend (the `send_http_get_motoko_backend` one) and call the `get_icp_usd_exchange()` method:
 
 ![Candid web UI](../_attachments/https-get.webp)
 
@@ -669,7 +693,7 @@ URLs:
     send_http_get_rust_backend: http://127.0.0.1:4943/?canisterId=aovwi-4maaa-aaaaa-qaagq-cai&id=a4tbr-q4aaa-aaaaa-qaafq-cai
 ```
 
-Open the candid web UI for the backend (the `send_http_get_rust_backend` one) and call the `get_icp_usd_exchange()` method:
+Open the Candid web UI for the backend (the `send_http_get_rust_backend` one) and call the `get_icp_usd_exchange()` method:
 
 ![Candid web UI](../_attachments/https-get-candid-3-rust.webp)
 
@@ -728,5 +752,5 @@ You can see play with the dapp's `get_icp_usd_exchange` method on-chain here: [h
 
 ## Additional resources
 
-- Sample code of [HTTP GET requests in Rust.](https://github.com/dfinity/examples/tree/master/rust/send_http_get)
-- Sample code of [HTTP GET requests in Motoko.](https://github.com/dfinity/examples/tree/master/motoko/send_http_get)
+- Sample code of [HTTPS GET requests in Rust.](https://github.com/dfinity/examples/tree/master/rust/send_http_get)
+- Sample code of [HTTPS GET requests in Motoko.](https://github.com/dfinity/examples/tree/master/motoko/send_http_get)

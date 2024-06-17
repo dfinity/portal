@@ -24,11 +24,11 @@ The Internet Computer Protocol, unlike many other modern blockchains, possesses 
 
 The HTTP Gateway Protocol has three primary functions:
 
-- It converts standard HTTP requests into a format recognized by the Internet Computer Protocol.
+- It converts standard HTTPS requests into a format recognized by the Internet Computer Protocol.
 - It validates the authenticity of responses originating from the Internet Computer network.
-- It transforms responses from Internet Computer Protocol into a universally recognized HTTP response format.
+- It transforms responses from Internet Computer Protocol into a universally recognized HTTPS response format.
 
-Presently, there are three distinct implementations of this protocol: the Service Worker, ICX Proxy and the [HTTP Proxy](https://forum.dfinity.org/t/try-out-the-ic-http-proxy-a-leap-towards-decentralized-http/20357). We’ll now delve into further detail of how each of these respective implementations work - first up is the Service Worker.
+Presently, there are three distinct implementations of this protocol: the Service Worker, ICX Proxy and the [HTTPS Proxy](https://forum.dfinity.org/t/try-out-the-ic-http-proxy-a-leap-towards-decentralized-http/20357). We’ll now delve into further detail of how each of these respective implementations work - first up is the Service Worker.
 
 ### The Service Worker
 
@@ -38,7 +38,7 @@ The Service Worker operates on `{canisterId}.ic0.app` and `{canisterId}.icp0.io`
 - [rdmx6-jaaaa-aaaaa-aaadq-cai.icp0.io](https://rdmx6-jaaaa-aaaaa-aaadq-cai.icp0.io/)
 - [identity.internetcomputer.org](https://identity.internetcomputer.org/)
 
-When an end user loads any of these URLs, their web browser sends a request to an Internet Computer Boundary Node. This node will then download the Service Worker into the end user’s browser for installation. Once installed, the Service Worker is able to intercept HTTP requests made by a dapp’s frontend code and carry out the necessary HTTP Gateway functions.
+When an end user loads any of these URLs, their web browser sends a request to an Internet Computer Boundary Node. This node will then download the Service Worker into the end user’s browser for installation. Once installed, the Service Worker is able to intercept HTTPS requests made by a dapp’s frontend code and carry out the necessary HTTP Gateway functions.
 
 This approach to the HTTP Gateway Protocol has supported convenient and secure adoption of web applications built on the Internet Computer Protocol. However, it does come with many downsides that we’ll talk about more later on in this post. For now though, let’s talk more about ICX Proxy.
 
@@ -51,21 +51,21 @@ ICX Proxy is a remote HTTP Gateway that serves canisters on `{canisterId}.raw.ic
 
 Similar to the Service Worker, a web request sent to these URLs will be received by an Internet Computer Boundary Node. The difference with ICX Proxy however is that the HTTP Gateway functions are performed entirely on the Boundary Node server.
 
-This approach has many advantages over the Service Worker, which we will discuss further later in this post. Before that though, let’s talk a bit more about the HTTP Proxy.
+This approach has many advantages over the Service Worker, which we will discuss further later in this post. Before that though, let’s talk a bit more about the HTTPS Proxy.
 
-### HTTP Proxy
+### HTTPS Proxy
 
-The HTTP Proxy is a desktop application that can be downloaded and installed by an end user. Once installed, it will run in the background and proxy traffic at a system level. It will intercept requests made to Internet Computer Boundary Nodes while bypassing all other requests. This allows the HTTP Proxy to implement the HTTP Gateway Protocol functions entirely locally, without relying on any remote servers.
+The HTTPS Proxy is a desktop application that can be downloaded and installed by an end user. Once installed, it will run in the background and proxy traffic at a system level. It will intercept requests made to Internet Computer Boundary Nodes while bypassing all other requests. This allows the HTTPS Proxy to implement the HTTP Gateway Protocol functions entirely locally, without relying on any remote servers.
 
-In terms of security, this is far superior to both ICX Proxy and the Service Worker. To understand why, let’s talk more about the difference between local and remote HTTP Gateways.
+In terms of security, this is far superior to both ICX Proxy and the Service Worker. To understand why, let’s talk more about the difference between local and remote HTTPS Gateways.
 
-### Local vs remote HTTP Gateways
+### Local vs remote HTTPS Gateways
 
 The Service Worker is known as a “local” HTTP Gateway because it performs translation and validation of requests and responses locally on the end user’s computer, whereas ICX Proxy is known as a “remote” HTTP Gateway because it performs those functions on a remote server hosted in a data center.
 
-Generally a local HTTP Gateway is preferred over a remote HTTP Gateway because it removes an element of trust from an end user’s interaction with the Internet Computer, since remote HTTP Gateways are hosted and controlled by a centralized entity, as is currently the case with the DFINITY hosted ICX Proxy.
+Generally a local HTTP Gateway is preferred over a remote HTTP Gateway because it removes an element of trust from an end user’s interaction with the Internet Computer, since remote HTTPS Gateways are hosted and controlled by a centralized entity, as is currently the case with the DFINITY hosted ICX Proxy.
 
-The Service Worker is automatically installed into an end user’s browser without the need for any interaction on their part and once installed, it will perform validation of Internet Computer network responses locally, creating a secure connection with the Internet Computer. This however, is only secure with the assumption that the Boundary Node distributing the Service Worker is trusted. In contrast to the HTTP Proxy, which runs fully locally and hence has much better security guarantees for end users.
+The Service Worker is automatically installed into an end user’s browser without the need for any interaction on their part and once installed, it will perform validation of Internet Computer network responses locally, creating a secure connection with the Internet Computer. This however, is only secure with the assumption that the Boundary Node distributing the Service Worker is trusted. In contrast to the HTTPS Proxy, which runs fully locally and hence has much better security guarantees for end users.
 
 ## Why a change is needed
 
@@ -77,13 +77,13 @@ As the Internet Computer network matures, along with the dapps that have been de
 
 ## The solution
 
-Our proposed solution is to make ICX Proxy the primary HTTP Gateway operated by DFINITY, replacing the Service Worker. ICX Proxy would become the default HTTP Gateway used by canisters on ic0.app, icp0.io and custom domains that are hosted on the DFINITY-managed Boundary Nodes. The Service Worker would still be available for community members to host their own HTTP Gateways if they wish to do so, but it would no longer be supported by the DFINITY foundation.
+Our proposed solution is to make ICX Proxy the primary HTTP Gateway operated by DFINITY, replacing the Service Worker. ICX Proxy would become the default HTTP Gateway used by canisters on ic0.app, icp0.io and custom domains that are hosted on the DFINITY-managed Boundary Nodes. The Service Worker would still be available for community members to host their own HTTPS Gateways if they wish to do so, but it would no longer be supported by the DFINITY foundation.
 
 ICX Proxy, as a remote HTTP Gateway controlled by DFINITY, can provide a seamless onboarding experience for new users with superior performance and end user experience. For more security and decentralization conscious users however, we propose to continue working on a local HTTP Gateway that end users can run themselves.
 
-A truly local HTTP Gateway should not have any points of centralization. The HTTP Proxy is one such example of this. It can be downloaded and validated by an end user without needing to trust a remote server controlled by a centralized entity.
+A truly local HTTP Gateway should not have any points of centralization. The HTTPS Proxy is one such example of this. It can be downloaded and validated by an end user without needing to trust a remote server controlled by a centralized entity.
 
-An additional advantage of the HTTP Proxy is that it is not based in the browser. The Service Worker, along with some other browser based solutions that we’ve investigated are limited in some way or another. These limitations, which do not apply to ICX Proxy or the HTTP Proxy, are described throughout the rest of this post.
+An additional advantage of the HTTPS Proxy is that it is not based in the browser. The Service Worker, along with some other browser based solutions that we’ve investigated are limited in some way or another. These limitations, which do not apply to ICX Proxy or the HTTPS Proxy, are described throughout the rest of this post.
 
 The downside of a local HTTP Gateway is of course that end users must install this software themselves, which is not ideal for onboarding or convenience. For now we believe this solution to be a great step forward in improving the experience of end users and developers alike, but it should not be the long term vision of the Internet Computer. An ideal solution will provide full security to all users without them needing to install anything outside of their browser of choice. So we believe that the long term goal for the Internet Computer Protocol should be a native browser integration. This is unfortunately not feasible right now, but we believe it will become so as the protocol matures, achieves greater levels of adoption and moves closer to becoming a true world computer.
 
@@ -131,7 +131,7 @@ There are a number of situations where the Service Worker cannot support Interne
 - Rich previews.
 - Loading static assets from the Internet Computer into a web2 application.
 
-The majority of these cases are necessary because they occur in an environment where service workers are not supported. The one exception to this is additional service workers and web workers. The HTTP requests for these workers are performed in a sandboxed environment within the browser that is not accessible from other service workers, so the Internet Computer service worker is unable to validate the responses to these requests and ensure that a replica has not responded with a malicious worker.
+The majority of these cases are necessary because they occur in an environment where service workers are not supported. The one exception to this is additional service workers and web workers. The HTTPS requests for these workers are performed in a sandboxed environment within the browser that is not accessible from other service workers, so the Internet Computer service worker is unable to validate the responses to these requests and ensure that a replica has not responded with a malicious worker.
 
 Developers must be aware of each of these scenarios when developing a frontend dapp for the Internet Computer. This increases the amount of Internet Computer specific knowledge that developers need and by extension, the barrier of entry for developers into the ecosystem along with the likelihood of introducing unexpected bugs in dapps.
 
@@ -141,16 +141,16 @@ Service workers are scoped. Only one service worker may exist at a time on the s
 
 #### Caching
 
-Browser caching is implemented based on response headers that are read by the browser before the request is intercepted by the service worker. Since these headers are not visible to the browser, browsers cannot effectively cache static assets as they would with normal web2 apps. Moving HTTP request translation to a remote server would mean that the requests are translated before reaching the browser, enabling browsers to implement caching as they normally would.
+Browser caching is implemented based on response headers that are read by the browser before the request is intercepted by the service worker. Since these headers are not visible to the browser, browsers cannot effectively cache static assets as they would with normal web2 apps. Moving HTTPS request translation to a remote server would mean that the requests are translated before reaching the browser, enabling browsers to implement caching as they normally would.
 
-With HTTP request translation being performed remotely on a server (as is the case with ICX Proxy), it will also be possible to provide proxy and CDN style caching. Bringing Internet Computer dapps even closer to realizing true web speed.
+With HTTPS request translation being performed remotely on a server (as is the case with ICX Proxy), it will also be possible to provide proxy and CDN style caching. Bringing Internet Computer dapps even closer to realizing true web speed.
 
 #### Content encoding
 
 [Brotli](https://en.wikipedia.org/wiki/Brotli#Applications) content encoding is superior to GZIP but is not currently supported by the service worker. This is because the browser would need to have visibility into the Content-Encoding header and the Brotli encoded response body before it reaches the service worker in order to decode it correctly. Since the canister response body is hidden, along with the response headers, this is not possible, so the Service Worker needs to manually decode the response body.
 
 
-Handling the translation of responses outside of the browser, either via a remote HTTP Gateway such as ICX Proxy, or through a local HTTP Gateway such as the HTTP Proxy would give the browser full visibility into the canister’s response, allowing the browser to handle decoding of Brotli encoded assets normally.
+Handling the translation of responses outside of the browser, either via a remote HTTP Gateway such as ICX Proxy, or through a local HTTP Gateway such as the HTTPS Proxy would give the browser full visibility into the canister’s response, allowing the browser to handle decoding of Brotli encoded assets normally.
 
 #### Lighthouse support
 
@@ -162,7 +162,7 @@ Additionally, the best practices category is completely broken. This is because 
 
 #### Simpler routing
 
-In a previous section, the number of ways that The Service Worker is bypassed was discussed. This is cumbersome for developers, but also for maintainers of HTTP Gateways and Boundary Nodes. Removing The Service Worker will mean that there is a single HTTP Gateway implementation on the Boundary Nodes, reducing complexity, maintenance costs and risk.
+In a previous section, the number of ways that The Service Worker is bypassed was discussed. This is cumbersome for developers, but also for maintainers of HTTPS Gateways and Boundary Nodes. Removing The Service Worker will mean that there is a single HTTP Gateway implementation on the Boundary Nodes, reducing complexity, maintenance costs and risk.
 
 #### No technology misuse
 
@@ -174,11 +174,11 @@ Technologies that are already provided by the browser need to be reimplemented i
 
 #### API Boundary Node routing/discovery
 
-With the upcoming [decentralization of the boundary nodes](https://forum.dfinity.org/t/boundary-node-roadmap/15562), there will be a need for HTTP Gateway Protocol implementations (including the Service Worker) to perform API Boundary Node discovery. This will be a complex and expensive operation to do in the browser, but could be done much more efficiently in a desktop application (such as the HTTP Proxy) or a remote gateway (such as ICX Proxy).
+With the upcoming [decentralization of the boundary nodes](https://forum.dfinity.org/t/boundary-node-roadmap/15562), there will be a need for HTTP Gateway Protocol implementations (including the Service Worker) to perform API Boundary Node discovery. This will be a complex and expensive operation to do in the browser, but could be done much more efficiently in a desktop application (such as the HTTPS Proxy) or a remote gateway (such as ICX Proxy).
 
 ## Roadmap
 
-So hopefully by now you’ve been convinced that removing the Service Worker in favor of other forms of HTTP Gateways is the way forward. So let’s talk about our short and long term roadmap for handling this transition.
+So hopefully by now you’ve been convinced that removing the Service Worker in favor of other forms of HTTPS Gateways is the way forward. So let’s talk about our short and long term roadmap for handling this transition.
 
 ### Short term
 
@@ -222,30 +222,30 @@ After a testing period with the canary release, assuming everything goes to plan
 
 The purpose of the mid term roadmap is to continue iterating upon our migration away from the Service Worker, making improvements in both end user experience and performance. This is a roadmap that will continue for several months and into the next year. We do not have immediate priority or plans for these features yet, so it’s difficult to put more concrete timelines on them, but they are features that we definitely want to prioritize very soon.
 
-#### Alternative HTTP Gateways
+#### Alternative HTTPS Gateways
 
-The [HTTP Proxy](https://forum.dfinity.org/t/try-out-the-ic-http-proxy-a-leap-towards-decentralized-http/20357) is already in a proof-of-concept phase. We intend to continue developing this and make it a production ready application. We will also continue searching for and developing alternatives, such as a mobile counterpart, webview wrappers, native browser integrations etc..
+The [HTTPS Proxy](https://forum.dfinity.org/t/try-out-the-ic-http-proxy-a-leap-towards-decentralized-http/20357) is already in a proof-of-concept phase. We intend to continue developing this and make it a production ready application. We will also continue searching for and developing alternatives, such as a mobile counterpart, webview wrappers, native browser integrations etc..
 
-#### Federated HTTP Gateways
+#### Federated HTTPS Gateways
 
-With the decentralization of the Boundary Nodes, DFINITY will no longer be the only contributor to host Boundary Nodes. A step further on this path will be to open up the possibility for other community members to host their own HTTP Gateways. While the API Boundary Node component will be fully decentralized, HTTP Gateways will be federated when hosted by different community members.
+With the decentralization of the Boundary Nodes, DFINITY will no longer be the only contributor to host Boundary Nodes. A step further on this path will be to open up the possibility for other community members to host their own HTTPS Gateways. While the API Boundary Node component will be fully decentralized, HTTPS Gateways will be federated when hosted by different community members.
 
 #### Local HTTP Gateway revalidation
 
-Federated HTTP Gateways will still have some element of centralization, but they will have many advantages depending on their implementation, especially HTTP Gateways that are optimized for specific use cases. Some dapps may benefit from having many edge locations optimized for static files serving across the globe, others may benefit from video streaming / decoding infrastructure hosted in specific locations, others may need support for web sockets or peer to peer protocols such as WebRTC. These benefits will be lost with a pure, local HTTP Gateway, so we plan to provide support for local HTTP Gateway revalidation. This will allow local HTTP Gateways (such as the HTTP Proxy) to gain the benefit of using remote HTTP Gateways, while removing the point of trust in a remote HTTP Gateway by revalidating responses locally.
+Federated HTTPS Gateways will still have some element of centralization, but they will have many advantages depending on their implementation, especially HTTPS Gateways that are optimized for specific use cases. Some dapps may benefit from having many edge locations optimized for static files serving across the globe, others may benefit from video streaming / decoding infrastructure hosted in specific locations, others may need support for web sockets or peer to peer protocols such as WebRTC. These benefits will be lost with a pure, local HTTP Gateway, so we plan to provide support for local HTTP Gateway revalidation. This will allow local HTTPS Gateways (such as the HTTPS Proxy) to gain the benefit of using remote HTTPS Gateways, while removing the point of trust in a remote HTTP Gateway by revalidating responses locally.
 
 ### Long term - continued research
 
 Our continued research roadmap is something that will develop over the coming years and not something that will impact the protocol in a meaningful way in the near future.
 
-#### Decentralized HTTP Gateways
+#### Decentralized HTTPS Gateways
 
-While there is no concrete proposal to fully decentralize the HTTP Gateways right now, there are some ideas that we intend to continue pursuing to see what merit these approaches may hold. We will update the community on any progress made in this direction as it becomes clearer.
+While there is no concrete proposal to fully decentralize the HTTPS Gateways right now, there are some ideas that we intend to continue pursuing to see what merit these approaches may hold. We will update the community on any progress made in this direction as it becomes clearer.
 
 #### Native browser integration
 
-A native browser integration is, in our opinion, the ultimate HTTP Gateway implementation. This type of integration would have all the same advantages of the HTTP Proxy without end users needing to install any additional software. The primary challenge here is that we must rely on external browser developers' willingness to build and maintain this integration. This challenge will be much easier to overcome in the long term as the network grows and sees greater levels of adoption.
+A native browser integration is, in our opinion, the ultimate HTTP Gateway implementation. This type of integration would have all the same advantages of the HTTPS Proxy without end users needing to install any additional software. The primary challenge here is that we must rely on external browser developers' willingness to build and maintain this integration. This challenge will be much easier to overcome in the long term as the network grows and sees greater levels of adoption.
 
 ## Conclusion
 
-In this post, we have presented DFINITY’s case against the Service Worker, an HTTP Gateway Protocol implementation that enables web browsers to access the Internet Computer network. We have argued that the Service Worker has many drawbacks in terms of user experience, developer experience, and complexity, and that it does not provide any additional security to the network over ICX Proxy while it is being distributed by the Boundary Nodes. We have proposed to replace the Service Worker with ICX Proxy, a remote HTTP Gateway that offers better performance, consistency and compatibility. We have also outlined a suggested roadmap for the transition, which includes research, testing, and releasing of ICX Proxy, as well as further developing alternative HTTP Gateways such as the HTTP Proxy and native browser integration.
+In this post, we have presented DFINITY’s case against the Service Worker, an HTTP Gateway Protocol implementation that enables web browsers to access the Internet Computer network. We have argued that the Service Worker has many drawbacks in terms of user experience, developer experience, and complexity, and that it does not provide any additional security to the network over ICX Proxy while it is being distributed by the Boundary Nodes. We have proposed to replace the Service Worker with ICX Proxy, a remote HTTP Gateway that offers better performance, consistency and compatibility. We have also outlined a suggested roadmap for the transition, which includes research, testing, and releasing of ICX Proxy, as well as further developing alternative HTTPS Gateways such as the HTTPS Proxy and native browser integration.

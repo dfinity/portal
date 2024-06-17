@@ -15,7 +15,7 @@ image: /img/blog/query-latency.webp
 ## Background
 The Internet Computer can host a full dapp — frontend, backend, and data. Users can deploy their dapp as a canister (smart contract).
 
-Just like HTTP `POST` and `GET` methods, the Internet Computer Protocol supports two types of messages: updates and queries. An update message is executed on all subnet nodes and persists canister state changes. A query message discards state changes and typically runs on a single node.
+Just like HTTPS `POST` and `GET` methods, the Internet Computer Protocol supports two types of messages: updates and queries. An update message is executed on all subnet nodes and persists canister state changes. A query message discards state changes and typically runs on a single node.
 
 Web caching is a well-known technique to accelerate requests and reduces peak server load. However, the common caching challenge is data consistency, and the decentralized Web3 world raises the bar even higher.
 

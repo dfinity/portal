@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-When developing multiple projects simultaneously, it can be beneficial to deploy each project to a different local network for simplicity or to support different development workflows. Custom networks can be configured with `dfx` at both the system-wide and project-specific levels. 
+When developing multiple projects simultaneously, it can be beneficial to deploy each project to a different local network for simplicity or to support different development workflows. Custom networks can be configured with `dfx` at both the system-wide and project-specific levels.
 
 ## Defining system-wide networks in `networks.json`
 
@@ -42,7 +42,7 @@ By default, this file contains the following configuration:
 }
 ```
 
-Alternatively, if a `network.json` file is not defined locally, `dfx` will by default use the above configuration. 
+Alternatively, if a `network.json` file is not defined locally, `dfx` will by default use the above configuration.
 
 ### Defining a custom network
 
@@ -123,7 +123,7 @@ To define a project-specific network, add a "networks" section to your `dfx.json
   }
 ```
 
-If you are using a [cycles wallet](/docs/current/developer-docs/getting-started/cycles/cycles-wallet), be sure to deploy your cycles wallet to this custom network.
+If you are using a [cycles wallet](/docs/current/developer-docs/defi/cycles/cycles-wallet), be sure to deploy your cycles wallet to this custom network.
 
 ```
 dfx identity --network dev set-wallet $(dfx identity --network ic get-wallet)

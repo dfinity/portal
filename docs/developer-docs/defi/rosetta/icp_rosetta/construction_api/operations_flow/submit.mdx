@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 This section details how to call the `construction/submit` endpoint of the Rosetta construction API.
-The request and response types can be found in the [official documentation](https://docs.cloud.coinbase.com/rosetta/reference/constructionsubmit).
+The request and response types can be found in the [official documentation](https://docs.cdp.coinbase.com/rosetta/reference/constructionsubmit).
 The endpoint sends to transactions to the IC. The first being the `Call Request` which contains the information of what submit, which canister, what function in the canister and with what arguments should be called. 
 The second is a `Read-State Request` which continously fetches the current status of the `Call Request` from the IC. It returns either containing some Error or the response of the canister. 
 This means that a call to the `construction/submit` endpoint is blocking until a result is available. Inside the returned object you will find information about the response from the ledger. 

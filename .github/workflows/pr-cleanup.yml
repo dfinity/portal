@@ -9,7 +9,7 @@ jobs:
     if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     concurrency:
-      group: ${{ github.ref }}
+      group: pr-${{ github.event.pull_request.number || github.event.number }}
       cancel-in-progress: true
 
     steps:
