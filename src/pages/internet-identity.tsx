@@ -185,7 +185,7 @@ const platforms = [
       "Internet Identity enables users to store private keys on the secure hardware of their trusted devices. To authorize secure interactions, users simply unlock their devices. Whether you are on your mobile phone or desktop, you can easily use your secure identity.",
   },
   {
-    icon: "img/internet-identity/issuers-2.svg",
+    icon: "img/internet-identity/platforms-4.svg",
     title: "Privacy-first",
     description:
       "For each user and every dapp, Internet Identity creates a different set of authentication keys. This way, a user cannot be tracked across dapps. When a user selectively discloses an attribute between dapps, II transforms the credential to maintain the user's privacy.",
