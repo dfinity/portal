@@ -60,48 +60,47 @@ const developers = [
     icon: "img/internet-identity/features-1.svg",
     title: "A complete dev platform",
     description: (
-    <>
-      Easily gate access to experiences without having to collect and store sensitive personal information.
-      For developers, the availability of
-      {" "}<Link
+      <>
+        Easily gate access to experiences without having to collect and store
+        sensitive personal information. For developers, the availability of{" "}
+        <Link
           href="https://github.com/dfinity/verifiable-credentials-sdk"
           className="link-primary-light"
           target="_blank"
           rel="noopener noreferrer"
         >
           SDKs
-      </Link>
-      ,
-      {" "}<Link
+        </Link>
+        ,{" "}
+        <Link
           href="https://internetcomputer.org/docs/current/developer-docs/identity/verifiable-credentials/overview"
           className="link-primary-light"
           target="_blank"
           rel="noopener noreferrer"
         >
           documentation
-      </Link>
-      ,
-      {" "}<Link
+        </Link>
+        ,{" "}
+        <Link
           href="https://github.com/dfinity/verifiable-credentials-sdk/tree/main?tab=readme-ov-file#projects"
           className="link-primary-light"
           target="_blank"
           rel="noopener noreferrer"
         >
-         tooling
-      </Link>
-      , and
-      {" "}<Link
+          tooling
+        </Link>
+        , and{" "}
+        <Link
           href="https://github.com/dfinity/vc-playground"
           className="link-primary-light"
           target="_blank"
           rel="noopener noreferrer"
         >
           open source code
-      </Link>{" "}
-
-      increases productivity when building credential sharing dapps.
-    </>
-    )
+        </Link>{" "}
+        increases productivity when building credential sharing dapps.
+      </>
+    ),
   },
   {
     icon: "img/internet-identity/features-2.svg",
@@ -117,9 +116,8 @@ const developers = [
     description: (
       <>
         Internet Identity makes it possible to build great web3 applications
-        that users access with just their browsers. Your dapp can
-        securely hold and interact with tokens and smart contracts across chains
-        (thanks to{" "}
+        that users access with just their browsers. Your dapp can securely hold
+        and interact with tokens and smart contracts across chains (thanks to{" "}
         <Link
           href="/chainfusion"
           className="link-primary-light"
@@ -191,7 +189,7 @@ const platforms = [
     title: "Privacy-first",
     description:
       "For each user and every dapp, Internet Identity creates a different set of authentication keys. This way, a user cannot be tracked across dapps. When a user selectively discloses an attribute between dapps, II transforms the credential to maintain the user's privacy.",
-  }
+  },
 ];
 
 interface FeatureProps {
@@ -340,7 +338,8 @@ function InternetIdentityPage() {
                 className="mt-3 md:mt-6 link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
                 href="https://identity.ic0.app/"
               >
-                <span>Launch Internet Identity</span> <LinkArrowRight />
+                <LinkArrowRight />
+                <span>Launch Internet Identity</span>
               </Link>
             </div>
           </div>
@@ -371,12 +370,18 @@ function InternetIdentityPage() {
                     Verifiable credentials are live!
                   </motion.h5>
                   <motion.p>
-                    Having reached the <Link href="https://internetcomputer.org/roadmap/#Identity-Separatrix">Separatrix milestone</Link>, the Internet Computer offers the infrastructure and
+                    Having reached the{" "}
+                    <Link href="https://internetcomputer.org/roadmap/#Identity-Separatrix">
+                      Separatrix milestone
+                    </Link>
+                    , the Internet Computer offers the infrastructure and
                     tooling to issue, share, and consume credentials in a
-                    privacy-preserving fashion. Users are always in control of their
-                    digital identity and decide which attributes to share.
-                    At the same time, new issuers, offering Proof of Humanity credentials are going live on the Internet Computer and will enable new use cases such
-                    as security tokens subject to financial regulations.
+                    privacy-preserving fashion. Users are always in control of
+                    their digital identity and decide which attributes to share.
+                    At the same time, new issuers, offering Proof of Humanity
+                    credentials are going live on the Internet Computer and will
+                    enable new use cases such as security tokens subject to
+                    financial regulations.
                   </motion.p>
                   <p className="mb-12 md:mb-0 mt-8">
                     <Link
@@ -461,7 +466,8 @@ function InternetIdentityPage() {
                   Add secure authentication to your dapps
                 </motion.h3>
                 <motion.p className="text-2xl mb-0 font-bold md:w-9/10">
-                  Developers should focus on building dapps, not identity solutions.
+                  Developers should focus on building dapps, not identity
+                  solutions.
                 </motion.p>
                 <Link
                   className="mt-3 md:mt-6 link-primary-light link-with-icon "
@@ -505,7 +511,8 @@ function InternetIdentityPage() {
                   Issue verifiable credentials privately and efficiently
                 </motion.h3>
                 <motion.p className="text-2xl mb-0 font-bold md:w-9/10">
-                  Use Internet Identity's Issuer APIs and SDKs to build credential issuing dapps.
+                  Use Internet Identity's Issuer APIs and SDKs to build
+                  credential issuing dapps.
                 </motion.p>
                 <Link
                   className="button-primary mt-6"
@@ -545,10 +552,13 @@ function InternetIdentityPage() {
             >
               <div className="md:w-1/2  pt-16 md:pt-40 ">
                 <motion.h3 className="tw-heading-4 md:tw-heading-60">
-                Explore Internet Computer's innovative identity platform
+                  Explore Internet Computer's innovative identity platform
                 </motion.h3>
                 <motion.p className="text-2xl mb-0 font-bold md:w-9/10">
-                Internet Identity contributors include world-leading identity scientists having published over a 100 papers on verifiable credentials & attribute sharing, privacy-enhancing authentication, and zero knowledge proofs.
+                  Internet Identity contributors include world-leading identity
+                  scientists having published over a 100 papers on verifiable
+                  credentials & attribute sharing, privacy-enhancing
+                  authentication, and zero knowledge proofs.
                 </motion.p>
                 <Link
                   className="button-outline-white mt-6"
@@ -710,31 +720,34 @@ function InternetIdentityPage() {
             <Faq title="What makes Internet Identity secure and usable?">
               <p>
                 Authentication is backed by a TPM chip on your device, which can
-                safely store private keys and sign operations, instead of relying on
-                passwords and seedphrases. Internet Identity builds on the
-                success of WebAuthn to deliver a highly secure and user-friendly
-                authentication system.
+                safely store private keys and sign operations, instead of
+                relying on passwords and seedphrases. Internet Identity builds
+                on the success of WebAuthn to deliver a highly secure and
+                user-friendly authentication system.
               </p>
             </Faq>
             <Faq title="What makes Internet Identity privacy-preserving?">
               <p>
-              Internet Identity derives a new principle (address) for each dapp instead of
-              using a single global principle. This design protects you from malicious dapps
-              and makes financial interactions harder to trace. In addition, Internet Identity
-              extends its privacy-preserving design to verifiable credentials. The relying party
-              forwards the credential request to the issuer using Internet Identity as the proxy.
-              To guarantee privacy, Internet Identity creates a new principle alias, and using
-              threshold signatures, signs two attestations. These attestations prove that the alias
-              can be used instead of the different principles the user holds with the relying party
-              and the issuer.
+                Internet Identity derives a new principle (address) for each
+                dapp instead of using a single global principle. This design
+                protects you from malicious dapps and makes financial
+                interactions harder to trace. In addition, Internet Identity
+                extends its privacy-preserving design to verifiable credentials.
+                The relying party forwards the credential request to the issuer
+                using Internet Identity as the proxy. To guarantee privacy,
+                Internet Identity creates a new principle alias, and using
+                threshold signatures, signs two attestations. These attestations
+                prove that the alias can be used instead of the different
+                principles the user holds with the relying party and the issuer.
               </p>
             </Faq>
             <Faq title="How does Internet Identity compare to other Web3 authentication tools?">
               <p>
                 On most blockchains, you need to authenticate every time you
                 make a request. The Internet Computer enables you to temporarily
-                and securely delegate authentication to the dapp after you connect. This is made possible by
-                creating sessions every time you use an app by leveraging chain key cryptography.
+                and securely delegate authentication to the dapp after you
+                connect. This is made possible by creating sessions every time
+                you use an app by leveraging chain key cryptography.
               </p>
               <Link
                 href="https://medium.com/dfinity/chain-key-technology-one-public-key-for-the-internet-computer-6a3644901e28"
