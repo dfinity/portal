@@ -148,7 +148,7 @@ const developers = [
     icon: "img/internet-identity/features-6.svg",
     title: "Built with WebAuthn",
     description:
-      "WebAuthn significantly increases user convenience while reducing the risk of phishing and credential theft by enabling passwordless authentication through biometric data or hardware keys.",
+      "WebAuthn significantly increases user convenience while reducing the risk of phishing and credential theft. It enables passwordless authentication through biometric data or hardware keys.",
   },
 ];
 
@@ -381,7 +381,7 @@ function InternetIdentityPage() {
                   <p className="mb-12 md:mb-0 mt-8">
                     <Link
                       className="link-primary link-with-icon"
-                      href="/roadmap"
+                      href="https://medium.com/@dfinity/introducing-verifiable-credentials-to-the-internet-computer-898f5538dcfb"
                     >
                       <LinkArrowRight />
                       READ THE BLOG POST
@@ -626,10 +626,6 @@ function InternetIdentityPage() {
                       </li>
                     </ul>
                   </p>
-                  <img
-                    src="/img/internet-identity/authentication.webp"
-                    loading="lazy"
-                  />
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     As a result, Internet Computer requires a digital identity
                     layer that is self-sovereign and protects users from
@@ -679,12 +675,12 @@ function InternetIdentityPage() {
                     parties under different identities using only a browser.
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Internet Identity’s VC platform has been designed to easily
+                    Internet Identity's VC platform has been designed to easily
                     integrate with both dapps and web2 applications. For any web
                     application requiring a verifiable credential to unlock part
                     of its functionality, the VC protocol uses Internet Identity
                     as a trusted intermediary and issues a temporary alias when
-                    requesting and sharing credentials, instead of the user’s
+                    requesting and sharing credentials, instead of the user's
                     existing identity.
                     <div>
                       <Link
@@ -711,24 +707,26 @@ function InternetIdentityPage() {
               </div>
             }
           >
-            <Faq title="What makes Internet Identity so secure?">
+            <Faq title="What makes Internet Identity secure and usable?">
               <p>
                 Authentication is backed by a TPM chip on your device, which can
-                safely store private keys and perform Web3 operations. This way,
-                you rely on a Hardware Security Module to authenticate to
-                applications, instead of your memory. The Internet Computer
-                builds on the success of WebAuthn to deliver a highly secure and
-                user-friendly authentication system.
+                safely store private keys and sign operations, instead of relying on
+                passwords and seedphrases. Internet Identity builds on the
+                success of WebAuthn to deliver a highly secure and user-friendly
+                authentication system.
               </p>
             </Faq>
             <Faq title="What makes Internet Identity privacy-preserving?">
               <p>
-                Using the key pairs stored on your device and owned by you, the
-                Internet Computer derives a new set of key pairs for every dapp you connect to.
-                All of the key pairs are created and stored in a distributed
-                fashion, and cannot be tampered with. This way, you get the
-                privacy of having many different accounts, without the burden of
-                managing them.
+              Internet Identity derives a new principle (address) for each dapp instead of
+              using a single global principle. This design protects you from malicious dapps
+              and makes financial interactions harder to trace. In addition, Internet Identity
+              extends its privacy-preserving design to verifiable credentials. The relying party
+              forwards the credential request to the issuer using Internet Identity as the proxy.
+              To guarantee privacy, Internet Identity creates a new principle alias, and using
+              threshold signatures, signs two attestations. These attestations prove that the alias
+              can be used instead of the different principles the user holds with the relying party
+              and the issuer.
               </p>
             </Faq>
             <Faq title="How does Internet Identity compare to other Web3 authentication tools?">
