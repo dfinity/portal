@@ -4,7 +4,7 @@ keywords: [intermediate, defi, overview, tokens, icrc-1, icrc-2, icrc-3]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Token standards
+# Standards
 
 <MarkdownChipRow labels={["Intermediate", "Concept" ]} />
 
@@ -42,13 +42,15 @@ The ICP token differs from Bitcoin in the following ways:
 
 -   Any transaction can store an 8-byte memo — this memo field is used by the Rosetta API to store the nonce that distinguishes between transactions. However, other uses for the field are possible.
 
+View an example dapp for [ICP transfers](https://github.com/dfinity/examples/tree/master/motoko/icp_transfer).
+
 ## ICRC-1
 
 The ICRC-1 standard is for fungible tokens on ICP. It uses an `Account` value that corresponds to the pair `(principal, subaccount)`, where a principal can have multiple accounts, and each subaccount of a principal is identified by a 32-byte string.
 
 The ICRC-1 standard is considered the 'base' standard, and intentionally excludes certain features and functions, such as:
 
-The base standard intentionally excludes some ledger functions essential for building a rich DeFi ecosystem, for example:
+The base standard intentionally excludes some ledger functions such as:
 
 - Reliable transaction notifications for smart contracts.
 
@@ -58,7 +60,7 @@ The base standard intentionally excludes some ledger functions essential for bui
 
 ICRC-1 supports extensions of this standard to implement these missing functions, and the `icrc1_supported_standards` endpoint can be queried to return the name of all supported extensions.
 
-## Token metadata
+### Token metadata
 
 Available metadata entries for ICRC-1 tokens include:
 
@@ -80,27 +82,104 @@ Example ICRC-1 tokens on ICP include:
 
 - [PANDA](https://icpex.org/token/detail/druyg-tyaaa-aaaaq-aactq-cai)
 
+View an example dapp for [ICRC-1 transfers](https://github.com/dfinity/examples/tree/master/motoko/token_transfer).
+
 [Read the full ICRC-1 standard](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1).
 
 ## ICRC-2
 
-## ICRC-3
+The ICRC-2 standard is an extension of the ICRC-1 standard that enables additional functionality for `icrc2_approve` and `icrc2_transfer_from` transactions. Since it is an extension of ICRC-1, it supports the entire ICRC-1 standard's methods and metadata. The approve functionality allows an account owner to delegate token transfers to a third party on the owner's behalf, while the transfer from method enables approved token transactions to be initiated. This approve functionality is common in the Ethereum ecosystem through the ERC-20 token standard.
+
+The approve and transfer from workflow uses two steps:
+
+1. First, the account owner allows another user to transfer up to X tokens from their account (A) by calling the ledger's `icrc2_approve` method.
+
+2. The user transfers up to X tokens from account A to any account through the `icrc2_transfer_from` method. The number of transfers is not limited as long as the total amount spent is below X.
+
+Example ICRC-2 tokens on ICP include:
+
+- [ckETH]((https://internetcomputer.org/docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview))
+
+- ckUSDC
+
+View an example of dapp for an [ICRC-2 token swap](https://github.com/dfinity/examples/tree/master/motoko/icrc2-swap).
+
+View an example of a dapp that enables the [`transfer_from` workflow](https://github.com/dfinity/examples/tree/master/motoko/token_transfer_from).
+
+[Read the full ICRC-2 standard](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-2).
 
 ## ICRC-7
 
-https://github.com/dfinity/ICRC/blob/main/ICRCs/ICRC-7/ICRC-7.md
+:::caution
+
+ICRC-7 is still in the drafting and development phase. It has not yet been implemented on the ICP mainnet.
+
+:::
+
+ICRC-7 defines a standard for non-fungible tokens (NFTs) on ICP and can be used to create a set of NFTs, also referred to as an NFT collection. It is a minimal standard, and can be thought of as the equivalent of the ICRC-1 standard, but for non-fungible tokens instead of fungible tokens. This base standard intentionally excludes some functions such as:
+
+- Reliable transaction notifications for smart contracts.
+
+- A block structure and the interface for fetching blocks.
+
+- Pre-signed transactions.
+
+ICRC-7 accounts have the same structure and follow the same overall principles as ICRC-1 accounts. ICRC-7 views the ICRC-1 `Account` as a primary concept, meaning that operations like transfers always refer to the full account and not only the principal portion. Some methods include an extra optional `from_subaccount` or `spender_subaccount` parameter that, together with the caller, form an account to perform the respective operation on. Leaving such `subaccount` parameter `null` is executed the same as referring to the default subaccount comprised of all zeroes.
+
+An extension of ICRC-7, ICRC-37, extends the standard in the same manner that ICRC-2 extends ICRC-1 - it enables an approval functionality.
+
+### Token metadata
+
+Available metadata entries for ICRC-7 tokens include:
+
+- `icrc7:symbol`: Type `Text` that defines the token's symbol, similar to a token's currency code.
+
+- `icrc7:name`: Type `Text` that defines the name of the token.
+
+- `icrc7:description`: Type `Text` that provides a description of the token.
+
+- `icrc7:logo`: Type `Text`, an optional URL of the token's logo image.
+
+- `icrc7:total_supply`: Type `Nat`: The current total number of tokens in existence.
+
+- `icrc7:supply_cap`: Type `Nat`, an optional maximum supply of tokens, after which minting new tokens is not possible.
+
+Additional technical metadata elements can be found in the [ICRC-7 specification](https://github.com/dfinity/ICRC/blob/main/ICRCs/ICRC-7/ICRC-7.md#icrc7_collection_metadata).
+
+[Read the full ICRC-7 standard](https://github.com/dfinity/ICRC/blob/main/ICRCs/ICRC-7/ICRC-7.md).
 
 ## ICRC-37
 
-https://github.com/dfinity/ICRC/blob/main/ICRCs/ICRC-37/ICRC-37.md
+:::caution
+
+ICRC-37 is still in the drafting and development phase. It has not yet been implemented on the ICP mainnet.
+
+:::
+
+The ICRC-37 standard is an extension of ICRC-7 that provides additional functionality for an approval workflow. This standard adds support for creating approvals, revoking approvals, querying approval information, and making transfers based on approvals.is  Token ledgers that implement ICRC-37 must implement all of the functions within ICRC-7, but ledgers that support ICRC-7 may choose whether or not to implement ICRC-37 if it intends to offer approve and transfer functionalities. The scope of ICRC-37 was originally part of ICRC-7, but was split into a separate standard for the following reasons:
+
+- ICRC-7 and ICRC-37 are much shorter and hence easier to navigate on their own.
+
+- Ledgers that do not want to implement approval and transfer from semantics do not need to provide dummy implementations of the corresponding methods that fail by default.
+
+### Token metadata
+
+ICRC-37 supports all metadata entries of ICRC-7, but also include the following entires:
+
+- `icrc37:max_approvals_per_token_or_collection`: Type `Nat`, used to define the maximum number of active approvals the ledger implementation allows per principal or per token.
+
+- `icrc37:max_revoke_approvals`: Type `Nat`, an optional number of approvals that may be revoked.
+
+[Read the full ICRC-37 standard](https://github.com/dfinity/ICRC/blob/main/ICRCs/ICRC-37/ICRC-37.md).
 
 ## DIP721
 
-https://github.com/Psychedelic/DIP721
+The DIP-721 standard is a non-fungible token standard for ICP designed to replica the Ethereum standard ERC-721. DIP-721 is a community-contributed standard that has since been replaced by the proposed ICRC-7 standard.
+
+[View the full DIP-721 specification](https://github.com/Psychedelic/DIP721/blob/develop/spec.md).
 
 ## DIP20
 
-## Standards in development
 
 
 
