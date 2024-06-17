@@ -74,7 +74,23 @@ This implementation features:
 
 You can download the pre-built installation package for your [operating system](https://github.com/dfinity/http-proxy?tab=readme-ov-file#installation). 
 
-Once installed, you will have the option to start or stop the IC HTTP proxy service. Start the service to begin using it.
+Once installed, you will have the option to start or stop the IC HTTP proxy service. Start the service to begin using it. Once the proxy is running, it will handle all traffic on your computer. Any traffic that's not meant for the ICP mainnet will pass through the gateway, and traffic that is meant for ICP will be intercepted by the proxy. The proxy will log traffic in the file `$HOME/Library/Preferences/dfinity/ichttpproxy/ic-http-proxy-proxy.log` on macOS machines, or in the `tmp` directory on Windows machines. 
+
+For example, make the following `curl` request to the NNS:
+
+```
+curl -v https://nns.ic0.app
+```
+
+This will result in a log entry of:
+
+```
+{"level":30, "time": "2024-06-17T13:46:40.947Z","pid":43956,"hostname":"JessieMgeonsMBP.attlocal.net","name":"IC HTTP Proxy Server","msg":"Proxying web3 request for nns.ic0.app:443"}
+```
+
+
+
+
 
 ## Resources
 
