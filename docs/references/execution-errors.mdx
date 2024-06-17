@@ -470,7 +470,7 @@ An example of this error is:
   Canister xxx-xxx must be stopped before it is deleted.
 ```
 
-Canister's must be stopped before they can be deleted to ensure no calls are left unresolved. To fix this error, [check the status][dfx-canister-status] of the canister. If it is `Stopping` then wait for all outstanding calls to be resolved and the status to move to `Stopped`. Otherwise, try [stopping][dfx-canister-stop] the canister before deleting it.
+Canisters must be stopped before they can be deleted to ensure no calls are left unresolved. To fix this error, [check the status][dfx-canister-status] of the canister. If it is `Stopping` then wait for all outstanding calls to be resolved and the status to move to `Stopped`. Otherwise, try [stopping][dfx-canister-stop] the canister before deleting it.
 
 
 ### Delete canister self
