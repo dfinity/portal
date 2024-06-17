@@ -91,13 +91,13 @@ const developers = [
       "Plug into a user base of 2.5 million internet identities and 100,000 monthly active unique users.",
   },
   {
-    icon: "img/internet-identity/features-4.svg",
+    icon: "img/internet-identity/features-5.svg",
     title: "Compliant with W3C standards",
     description:
       "Built on top of the W3C verified credential standards. Making it easier to integrate with existing solutions.",
   },
   {
-    icon: "img/internet-identity/features-4.svg",
+    icon: "img/internet-identity/features-6.svg",
     title: "Built with WebAuthn",
     description:
       "Uses webauthn and passkeys as the foundations of its security model for browser-based experiences.",
@@ -356,8 +356,8 @@ function InternetIdentityPage() {
                     Verifiable credentials are live!
                   </motion.h5>
                   <motion.p>
-                    With the Separatrix milestone, ICP offers the infrastructure and
-                    tooling to issue, share, and consume credentials in a
+                    With the Separatrix milestone, ICP offers the infrastructure
+                    and tooling to issue, share, and consume credentials in a
                     privacy-preserving fashion. Users are in control of their
                     credentials, giving them a self-sovereign digital identity.
                     At the same time, new credential issuers, such as a KYC
@@ -369,10 +369,11 @@ function InternetIdentityPage() {
                     className="mb-0 mt-4 md:mt-6 tw-paragraph md:tw-lead-sm text-bold text-black"
                     variants={transitions.item}
                   >
-                    <li className="mb-2">Proof of unique humanity on DecideID</li>
+                    <li className="mb-2">
+                      Proof of unique humanity on DecideID
+                    </li>
                     <li className="mb-2">SDK for Relying Parties</li>
-                    <li className="mb-2">Verifiable credentials playground</li> 
-
+                    <li className="mb-2">Verifiable credentials playground</li>
                   </motion.ul>
                   <p className="mb-12 md:mb-0 mt-8">
                     <Link
@@ -505,7 +506,10 @@ function InternetIdentityPage() {
                   Leverage Internet Identity’s Issuer APIs to easily build a
                   solution that issues privacy-preserving credentials.
                 </motion.p>
-                <Link className="button-primary mt-6" href="https://internetcomputer.org/docs/current/developer-docs/identity/verifiable-credentials/issuer">
+                <Link
+                  className="button-primary mt-6"
+                  href="https://internetcomputer.org/docs/current/developer-docs/identity/verifiable-credentials/issuer"
+                >
                   Become an Issuer
                 </Link>
               </div>
