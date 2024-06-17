@@ -616,7 +616,7 @@ const sidebars = {
           type: "category",
           label: "Chain key tokens",
           items: [
-            "/docs/current/developer-docs/multi-chain/chain-key-tokens/overview",
+            "developer-docs/multi-chain/chain-key-tokens/overview",
             {
               type: "category",
               label: "ckBTC",
