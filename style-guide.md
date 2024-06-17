@@ -241,7 +241,7 @@ The following language and capitalization of certain terms and phrases should be
       - All dfx subcommands should be formatted as in-line code when appearing in a sentence, such as, "The `dfx deps` feature is available in dfx versions 0.14.1 and newer."
 - Ethereum integration
 - Ethereum: should be used in place of ETH or ETH token.
-- HTTP: when referring to the HTTP Gateway protocol and HTTP asset certification.
+- HTTP: when referring to the HTTP Gateway protocol, HTTP asset certification, HTTP requests, HTTP responses, and HTTP servers.
 - HTTPS: when referring to HTTPS outcalls.
 - ICP: When abbreviating 'Internet Computer', it should be referred to as 'ICP' instead of 'IC' or 'the IC'.
     Two exceptions to this are:
@@ -315,10 +315,10 @@ Compute resources, such as storage, should be formatted in the `XiB` format, suc
 For API methods such as `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, or any other API method requests, they should be formatted as such:
 
 - In headings, they should be capitalized without additional formatting.
-    - Example: "Using HTTPS GET calls."
-    - Example: "Using HTTPS PUT calls."
+    - Example: "Using HTTP GET calls."
+    - Example: "Using HTTP PUT calls."
 - In the body of documents, they should be formatted as in-line code, such as:
-    - Example: "A minimal example to make a `GET` HTTPS request."
+    - Example: "A minimal example to make a `GET` HTTP request."
     - Example: "That is, the canister could define the quorum size to be 1 and have only 1 replica execute the `POST` request."
 
 

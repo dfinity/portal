@@ -26,9 +26,9 @@ These are comprised of two types of metadata:
 
 ## Payloads-return structure
 There are multiple payloads that need to be signed by the user. The reason for that is twofold:
-- The first reason has to do with how ICP processes requests. For a call to ICP to be successful and for the user to be able to read the response of the call, two HTTPS calls have to be made:
+- The first reason has to do with how ICP processes requests. For a call to ICP to be successful and for the user to be able to read the response of the call, two HTTP calls have to be made:
 
-        - The first HTTPS call (`Call Request`) contains all the information that ICP needs to know to be able to call 
+        - The first HTTP call (`Call Request`) contains all the information that ICP needs to know to be able to call 
         the correct canister with the desired arguments. This call returns an ID which essentially serves as a ticket for 
         the caller. With this ticket a user can then query ICP periodically (`Read-State Request`) and essentially ask 
         whether the original request has been processed and if there is a response. If the latter is true, ICP will return 
