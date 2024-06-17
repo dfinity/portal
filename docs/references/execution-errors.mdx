@@ -606,7 +606,7 @@ An example of this error is:
   Canister cannot grow memory by 1000000000 bytes due to insufficient cycles. At least 10000000000 additional cycles are required.
 ```
 
-There are many operations that may increase a canister's memory usage (e.g. uploading a chunk, taking a snapshot, performaning an install). This error indicates that some operation on the canister caused it's memory to increase beyond what the canister currently has enough cycles to pay for.
+There are many operations that may increase a canister's memory usage (e.g. uploading a chunk, taking a snapshot, performing an install). This error indicates that some operation on the canister caused its memory to increase beyond what the canister currently has enough cycles to pay for.
 
 To fix this error, consider [adding the required cycles][topping-up] to the canister or otherwise reducing the canister's memory usage.
 
