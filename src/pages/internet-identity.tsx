@@ -632,7 +632,7 @@ function InternetIdentityPage() {
                       <li>
                         Dapps must make authenticated calls to their own
                         canisters as well as shared infrastructure canisters,
-                        for instance the IC Ledger canister.
+                        for instance the <Link href="https://internetcomputer.org/docs/current/developer-docs/defi/icp-tokens/overview">IC Ledger canister</Link>.
                       </li>
                     </ul>
                   </p>
@@ -717,7 +717,7 @@ function InternetIdentityPage() {
               </div>
             }
           >
-            <Faq title="What makes Internet Identity secure and usable?">
+            <Faq title="What makes Internet Identity secure and easy to use?">
               <p>
                 Authentication is backed by a TPM chip on your device, which can
                 safely store private keys and sign operations, instead of
@@ -728,26 +728,23 @@ function InternetIdentityPage() {
             </Faq>
             <Faq title="What makes Internet Identity privacy-preserving?">
               <p>
-                Internet Identity derives a new principle (address) for each
-                dapp instead of using a single global principle. This design
-                protects you from malicious dapps and makes financial
-                interactions harder to trace. In addition, Internet Identity
-                extends its privacy-preserving design to verifiable credentials.
-                The relying party forwards the credential request to the issuer
-                using Internet Identity as the proxy. To guarantee privacy,
-                Internet Identity creates a new principle alias, and using
-                threshold signatures, signs two attestations. These attestations
-                prove that the alias can be used instead of the different
-                principles the user holds with the relying party and the issuer.
+              Internet Identity derives a new principle (address) for each dapp instead of
+              using a single global principle. This design protects you from malicious dapps
+              and makes financial transactions harder to trace. Internet Identity also
+              extends its privacy-preserving design to verifiable credentials. The relying party
+              forwards the credential request to the issuer using Internet Identity as the proxy.
+              To guarantee privacy, Internet Identity creates a new principle alias, and using
+              threshold signatures, signs two attestations. These attestations prove that the alias
+              can be used instead of the different principles the user holds with the relying party
+              and the issuer.
               </p>
             </Faq>
             <Faq title="How does Internet Identity compare to other Web3 authentication tools?">
               <p>
                 On most blockchains, you need to authenticate every time you
                 make a request. The Internet Computer enables you to temporarily
-                and securely delegate authentication to the dapp after you
-                connect. This is made possible by creating sessions every time
-                you use an app by leveraging chain key cryptography.
+                and securely delegate authentication to the dapp after you connect. This is made possible by
+                creating sessions every time you use an app and leverages chain key cryptography.
               </p>
               <Link
                 href="https://medium.com/dfinity/chain-key-technology-one-public-key-for-the-internet-computer-6a3644901e28"
