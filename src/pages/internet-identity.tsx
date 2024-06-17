@@ -58,9 +58,50 @@ const users = [
 const developers = [
   {
     icon: "img/internet-identity/features-1.svg",
-    title: "A complete credentials platform",
-    description:
-      "Easily gate access to experiences without having to collect and store sensitive personal information.",
+    title: "A complete dev platform",
+    description: (
+    <>
+      Easily gate access to experiences without having to collect and store sensitive personal information.
+      For developers, the availability of
+      {" "}<Link
+          href="https://github.com/dfinity/verifiable-credentials-sdk"
+          className="link-primary-light"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          SDKs
+      </Link>
+      ,
+      {" "}<Link
+          href="https://internetcomputer.org/docs/current/developer-docs/identity/verifiable-credentials/overview"
+          className="link-primary-light"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          documentation
+      </Link>
+      ,
+      {" "}<Link
+          href="https://github.com/dfinity/verifiable-credentials-sdk/tree/main?tab=readme-ov-file#projects"
+          className="link-primary-light"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+         tooling
+      </Link>
+      , and
+      {" "}<Link
+          href="https://github.com/dfinity/vc-playground"
+          className="link-primary-light"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          open source code
+      </Link>{" "}
+
+      increases productivity when building credential sharing dapps.
+    </>
+    )
   },
   {
     icon: "img/internet-identity/features-2.svg",
@@ -85,7 +126,7 @@ const developers = [
           target="_blank"
           rel="noopener noreferrer"
         >
-          Chainfusion
+          Chain Fusion
         </Link>
         ) with no app store policies to worry about. 
       </>
@@ -101,7 +142,7 @@ const developers = [
     icon: "img/internet-identity/features-5.svg",
     title: "Compliant with W3C standards",
     description:
-      "Benefit from an existing ecosystem of tooling and libraries inspired by the W3C verifiable credentials standards.",
+      "Benefit from an existing ecosystem of tooling and libraries that support the W3C verifiable credentials standards.",
   },
   {
     icon: "img/internet-identity/features-6.svg",
@@ -128,7 +169,7 @@ const issuers = [
     icon: "img/internet-identity/issuers-3.svg",
     title: "Versatile",
     description:
-      "Internet identity's verifiable credentials support a broad range of scenarios, including academic credentials, KYC verification, age verification and proof of employment.",
+      "Internet Identity's verifiable credentials support a broad range of scenarios, including academic credentials, KYC verification, age verification and proof of employment.",
   },
 ];
 
@@ -137,7 +178,7 @@ const platforms = [
     icon: "img/internet-identity/platforms-1.svg",
     title: "Self-sovereign identity stack",
     description:
-      "Users control their identities and data. ICP offers a faster, lower cost, and more programmable decentralized public key infrastructure (DPKI) than other blockchains. With Internet Identity's tooling, you can issue, share, and consume verifiable credentials.",
+      "Users control their identities and data. The Internet Computer offers a faster, lower cost, and more programmable decentralized public key infrastructure (DPKI) than other blockchains. With Internet Identity's tooling, you can issue, share, and consume verifiable credentials.",
   },
   {
     icon: "img/internet-identity/platforms-3.svg",
@@ -266,7 +307,7 @@ function InternetIdentityPage() {
 
   return (
     <Layout
-      title="Secure, seamless and privacy-preserving digital identity"
+      title="Secure, seamless and, privacy-preserving digital identity"
       description="Internet Identity is a decentralized federated service running end-to-end on the Internet Computer."
     >
       <ShareMeta image="/img/shareImages/share-internet-identity.webp"></ShareMeta>
@@ -285,7 +326,7 @@ function InternetIdentityPage() {
               className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-8/10"
               variants={transitions.item}
             >
-              Secure, seamless and privacy-preserving digital identity
+              Secure, seamless, and privacy-preserving digital identity
             </motion.h1>
             <div className="relative  md:w-5/10">
               <motion.p
@@ -330,11 +371,11 @@ function InternetIdentityPage() {
                     Verifiable credentials are live!
                   </motion.h5>
                   <motion.p>
-                    Having reached the <Link href="https://internetcomputer.org/roadmap/#Identity-Separatrix">Separatrix milestone</Link>, ICP offers the infrastructure and
+                    Having reached the <Link href="https://internetcomputer.org/roadmap/#Identity-Separatrix">Separatrix milestone</Link>, the Internet Computer offers the infrastructure and
                     tooling to issue, share, and consume credentials in a
                     privacy-preserving fashion. Users are always in control of their
                     digital identity and decide which attributes to share.
-                    At the same time, new issuers, offering Proof of Humanity credentials are going live on ICP and will enable new use cases such
+                    At the same time, new issuers, offering Proof of Humanity credentials are going live on the Internet Computer and will enable new use cases such
                     as security tokens subject to financial regulations.
                   </motion.p>
                   <p className="mb-12 md:mb-0 mt-8">
@@ -379,7 +420,7 @@ function InternetIdentityPage() {
               </motion.h3>
               <motion.p className="text-2xl mb-0 font-bold md:w-9/10">
                 Internet Identity is a self-sovereign single sign-on solution
-                for dapps built with smart contracts on the internet computer.
+                for dapps.
               </motion.p>
               <Link
                 className="button-primary mt-6"
@@ -504,7 +545,7 @@ function InternetIdentityPage() {
             >
               <div className="md:w-1/2  pt-16 md:pt-40 ">
                 <motion.h3 className="tw-heading-4 md:tw-heading-60">
-                Explore ICP's innovative identity platform
+                Explore Internet Computer's innovative identity platform
                 </motion.h3>
                 <motion.p className="text-2xl mb-0 font-bold md:w-9/10">
                 Internet Identity contributors include world-leading identity scientists having published over a 100 papers on verifiable credentials & attribute sharing, privacy-enhancing authentication, and zero knowledge proofs.
@@ -632,7 +673,7 @@ function InternetIdentityPage() {
                     of identity attributes that are cryptographically secured. 
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Internet Identity has a built-in Verifiable Credential (VC)
+                    Internet Identity has a built-in verifiable credential (VC)
                     protocol, which is unique because it is walletless and
                     privacy-preserving. Users interact with issuers and relying
                     parties under different identities using only a browser.
@@ -683,7 +724,7 @@ function InternetIdentityPage() {
             <Faq title="What makes Internet Identity privacy-preserving?">
               <p>
                 Using the key pairs stored on your device and owned by you, the
-                IC derives a new set of key pairs for every app you sign into.
+                Internet Computer derives a new set of key pairs for every dapp you connect to.
                 All of the key pairs are created and stored in a distributed
                 fashion, and cannot be tampered with. This way, you get the
                 privacy of having many different accounts, without the burden of
@@ -693,12 +734,9 @@ function InternetIdentityPage() {
             <Faq title="How does Internet Identity compare to other Web3 authentication tools?">
               <p>
                 On most blockchains, you need to authenticate every time you
-                want to make a request. On the IC, we enable you to temporarily
-                delegate authentication to the app after you sign in. This way,
-                you can continually use a Web3 app without authenticating every
-                time you want to update information. This is made possible by
-                creating sessions every time you use an app by leveraging chain
-                key cryptography.
+                make a request. The Internet Computer enables you to temporarily
+                and securely delegate authentication to the dapp after you connect. This is made possible by
+                creating sessions every time you use an app by leveraging chain key cryptography.
               </p>
               <Link
                 href="https://medium.com/dfinity/chain-key-technology-one-public-key-for-the-internet-computer-6a3644901e28"
