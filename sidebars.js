@@ -36,7 +36,11 @@ const sidebars = {
           type: "category",
           label: "Cycles",
           items: [
-            "developer-docs/getting-started/cycles/overview",
+            {
+              label: "Overview",
+              type: "doc",
+              id: "developer-docs/getting-started/cycles/overview",
+            },
             "developer-docs/getting-started/cycles/cycles-faucet",
           ],
         },
@@ -96,7 +100,11 @@ const sidebars = {
           type: "category",
           label: "Write",
           items: [
-            "developer-docs/smart-contracts/write/overview",
+            {
+              label: "Overview",
+              type: "doc",
+              id: "developer-docs/smart-contracts/write/overview",
+            },
             "developer-docs/smart-contracts/write/resources",
           ],
         },
@@ -119,7 +127,11 @@ const sidebars = {
           type: "category",
           label: "Deploy",
           items: [
-            "developer-docs/smart-contracts/deploy/overview",
+            {
+              label: "Overview",
+              type: "doc",
+              id: "developer-docs/smart-contracts/deploy/overview",
+            },
             "developer-docs/smart-contracts/deploy/larger-wasm",
             "developer-docs/smart-contracts/deploy/sharing",
           ],
@@ -227,7 +239,11 @@ const sidebars = {
               type: "category",
               label: "HTTPS outcalls",
               items: [
-                "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview",
+                {
+                  label: "Overview",
+                  type: "doc",
+                  id:  "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview",
+                },
                 "developer-docs/smart-contracts/advanced-features/https-outcalls/making-http-requests",
                 "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use",
                 "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-get",
@@ -467,7 +483,11 @@ const sidebars = {
               type: "category",
               label: "Agents",
               items: [
-                "developer-docs/developer-tools/off-chain/agents/overview",
+                {
+                  label: "Overview",
+                  type: "doc",
+                  id: "developer-docs/developer-tools/off-chain/agents/overview",
+                },
                 "developer-docs/developer-tools/off-chain/agents/javascript-agent",
                 "developer-docs/developer-tools/off-chain/agents/nodejs",
                 "developer-docs/developer-tools/off-chain/agents/rust-agent",
@@ -504,7 +524,11 @@ const sidebars = {
           type: "category",
           label: "Application frontends",
           items: [
-            "developer-docs/web-apps/application-frontends/overview",
+            {
+              label: "Overview",
+              type: "doc",
+              id: "developer-docs/web-apps/application-frontends/overview",
+            },
             "developer-docs/web-apps/application-frontends/custom-frontend",
             "developer-docs/web-apps/application-frontends/existing-frontend",
             "developer-docs/web-apps/application-frontends/serving-static-assets",
@@ -580,12 +604,20 @@ const sidebars = {
       type: "category",
       label: "Chain Fusion",
       items: [
-        "developer-docs/multi-chain/overview",
+        {
+          label: "Overview",
+          type: "doc",
+          id: "developer-docs/multi-chain/overview",
+        },
         {
           type: "category",
           label: "Bitcoin",
           items: [
-            "developer-docs/multi-chain/bitcoin/overview",
+            {
+              label: "Overview",
+              type: "doc",
+              id: "developer-docs/multi-chain/bitcoin/overview",
+            },
             "developer-docs/multi-chain/bitcoin/using-btc/btc-dev-workflow",
             "developer-docs/multi-chain/bitcoin/using-btc/read-state",
             "developer-docs/multi-chain/bitcoin/using-btc/generate-addresses",
@@ -598,7 +630,11 @@ const sidebars = {
           type: "category",
           label: "Ethereum",
           items: [
-            "developer-docs/multi-chain/ethereum/overview",
+            {
+              label: "Overview",
+              type: "doc",
+              id: "developer-docs/multi-chain/ethereum/overview",
+            },
 	    "developer-docs/multi-chain/ethereum/using-eth/eth-dev-workflow",
             "developer-docs/multi-chain/ethereum/using-eth/generating-addresses",
             "developer-docs/multi-chain/ethereum/using-eth/signing-transactions",
@@ -607,7 +643,11 @@ const sidebars = {
               type: "category",
               label: "EVM RPC canister",
               items: [
-                "developer-docs/multi-chain/ethereum/evm-rpc/overview",
+                {
+                  label: "Overview",
+                  type: "doc",
+                  id: "developer-docs/multi-chain/ethereum/evm-rpc/overview",
+                },
                 "developer-docs/multi-chain/ethereum/evm-rpc/how-it-works",
                 "developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister",
                 "developer-docs/multi-chain/ethereum/evm-rpc/costs",
@@ -625,7 +665,11 @@ const sidebars = {
               type: "category",
               label: "ckBTC",
               items: [
-                "developer-docs/multi-chain/chain-key-tokens/ckbtc/overview",
+                {
+                  label: "Overview",
+                  type: "doc",
+                  id: "developer-docs/multi-chain/chain-key-tokens/ckbtc/overview",
+                },
                 "developer-docs/multi-chain/chain-key-tokens/ckbtc/making-transactions",
                 "developer-docs/multi-chain/chain-key-tokens/ckbtc/using-ckbtc-in-dapps",
               ],
@@ -634,7 +678,11 @@ const sidebars = {
               type: "category",
               label: "ckETH",
               items: [
-                "developer-docs/multi-chain/chain-key-tokens/cketh/overview",
+                {
+                  label: "Overview",
+                  type: "doc",
+                  id: "developer-docs/multi-chain/chain-key-tokens/cketh/overview",
+                },
                 "developer-docs/multi-chain/chain-key-tokens/cketh/making-transactions",
                 "developer-docs/multi-chain/chain-key-tokens/cketh/using-cketh-in-dapps",
               ],
@@ -651,13 +699,22 @@ const sidebars = {
 	      type: "category",
 	      label: "Authentication",
 	      items: [
-		"developer-docs/identity/authentication/overview",
+          {
+            label: "Overview",
+            type: "doc",
+            id: "developer-docs/identity/authentication/overview",
+          },
+
 			{
 		  type: "category",
 		  label: "Internet Identity (II)",
 		  items:
 	      [
-	      "developer-docs/identity/internet-identity/overview",
+          {
+            label: "Overview",
+            type: "doc",
+            id:  "developer-docs/identity/internet-identity/overview",
+          },
 	      "developer-docs/identity/internet-identity/creating-ii",
 	      "developer-docs/identity/internet-identity/integrate-internet-identity",
 	      "developer-docs/identity/internet-identity/alternative-origins",
@@ -674,7 +731,11 @@ const sidebars = {
 	    type: "category",
 	    label: "Verifiable credentials",
 	    items: [
-	      "developer-docs/identity/verifiable-credentials/overview",
+        {
+          label: "Overview",
+          type: "doc",
+          id: "developer-docs/identity/verifiable-credentials/overview",
+        },
 	      "developer-docs/identity/verifiable-credentials/how-it-works",
 	      "developer-docs/identity/verifiable-credentials/issuer",
 	      "developer-docs/identity/verifiable-credentials/relying-party",
@@ -704,7 +765,11 @@ const sidebars = {
           type: "category",
           label: "Tokens",
           items: [
-            "developer-docs/defi/icp-tokens/overview",
+            {
+              label: "Overview",
+              type: "doc",
+              id: "developer-docs/defi/icp-tokens/overview",
+            },
             "developer-docs/defi/icp-tokens/ledger-local-setup",
             "developer-docs/defi/tokens/indexes",
             "developer-docs/defi/icp-tokens/using-the-ledger",
@@ -869,7 +934,11 @@ const sidebars = {
       type: "category",
       label: "DeAI",
       items: [
-        "developer-docs/ai/overview",
+          {
+          type: "doc",
+          label: "Overview",
+          id: "developer-docs/ai/overview",
+          },
         "developer-docs/ai/ai-on-chain",
         "developer-docs/ai/machine-learning-sample"
       ],
@@ -882,7 +951,11 @@ const sidebars = {
           type: "category",
           label: "Network Nervous System (NNS)",
           items: [
-            "developer-docs/daos/nns/overview",
+            {
+              type: "doc",
+              label: "Overview",
+              id: "developer-docs/daos/nns/overview",
+              },
             {
               type: "category",
               label: "Using the NNS dapp",
@@ -925,7 +998,11 @@ const sidebars = {
             id: "developer-docs/daos/sns/index",
           },
           items: [
-            "developer-docs/daos/sns/overview",
+            {
+              label: "Overview",
+              type: "doc",
+              id: "developer-docs/daos/sns/overview",
+            },
             {
               type: "category",
               label: "Before an SNS launch",
