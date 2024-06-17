@@ -6,19 +6,19 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Standards
 
-<MarkdownChipRow labels={["Intermediate", "Concept" ]} />
+<MarkdownChipRow labels={["Intermediate", "Concept"]} />
 
 ## Overview
 
 Tokens deployed on ICP must adhere to a standard. The network's native token, ICP, adheres to its own standard as it is unique on the network in the sense that it is used for network utility and governance. Tokens created for other purposes on the network typically adhere to one of the ICRC standards.
 
-[ICRC](https://github.com/dfinity/ICRC) stands for `Internet Computer request for comments`. ICRC standards are proposed by the community working group, and are not specific to tokens; they can be created for anything on ICP such as services, canister calls, or authentication methods. However, this documentation will detail the ICRC standards that are specific for tokens.
+[ICRC](https://github.com/dfinity/ICRC) stands for `Internet Computer Request for Comments'. ICRC standards are proposed by the community working group and are not specific to tokens; they can be created for anything on ICP, such as services, canister calls, or authentication methods. However, this documentation will detail the ICRC standards that are specific to tokens.
 
-In the past, the DIP-721 standard was promoted and used by projects on the network for deploying non-fungible tokens. The ICRC-7 standard has since been developed as a newer, alternative to the DIP-721 standard, however some projects still use DIP-721.
+In the past, the DIP-721 standard was promoted and used by projects on the network for deploying non-fungible tokens. The ICRC-7 standard has since been developed as a newer alternative to the DIP-721 standard.
 
 ## ICP tokens
 
-The ICP token is the network's native token used for various utility and governance functions such as:
+The ICP token is the network's native token used for various utility and governance functions, such as:
 
 - Paying for a canister's resources by being converted into cycles.
 
@@ -28,19 +28,19 @@ The ICP token is the network's native token used for various utility and governa
 
 The ICP token is similar to Bitcoin in the following ways:
 
--   Each ICP token is divisible 10^8 times.
+-   Each ICP token is divisible 10^8 times.
 
--   All transactions are stored in the ledger starting with the genesis initial state.
+-   All transactions are stored in the ledger, starting with the genesis initial state.
 
--   Tokens are entirely fungible.
+-   Tokens are entirely fungible.
 
--   `AccountIdentifier`s are 32 bytes and are roughly the equivalent of the hash of a public key, optionally together with some additional sub-account specifier.
+-   `AccountIdentifier`s are 32 bytes and are roughly the equivalent of the hash of a public key, optionally together with some additional sub-account specifier.
 
 The ICP token differs from Bitcoin in the following ways:
 
--   Rather than using proof of work, staked participant nodes use a variant of threshold BLS signatures to agree on a valid state of the chain.
+-   Rather than using proof of work, staked participant nodes use a variant of threshold BLS signatures to agree on a valid state of the chain.
 
--   Any transaction can store an 8-byte memo — this memo field is used by the Rosetta API to store the nonce that distinguishes between transactions. However, other uses for the field are possible.
+-   Any transaction can store an 8-byte memo; this memo field is used by the Rosetta API to store the nonce that distinguishes between transactions. However, other uses for the field are possible.
 
 View an example dapp for [ICP transfers](https://github.com/dfinity/examples/tree/master/motoko/icp_transfer).
 
@@ -48,9 +48,9 @@ View an example dapp for [ICP transfers](https://github.com/dfinity/examples/tre
 
 The ICRC-1 standard is for fungible tokens on ICP. It uses an `Account` value that corresponds to the pair `(principal, subaccount)`, where a principal can have multiple accounts, and each subaccount of a principal is identified by a 32-byte string.
 
-The ICRC-1 standard is considered the 'base' standard, and intentionally excludes certain features and functions, such as:
+The ICRC-1 standard is considered the 'base' standard and intentionally excludes certain features and functions, such as:
 
-The base standard intentionally excludes some ledger functions such as:
+The base standard intentionally excludes some ledger functions, such as:
 
 - Reliable transaction notifications for smart contracts.
 
@@ -88,7 +88,7 @@ View an example dapp for [ICRC-1 transfers](https://github.com/dfinity/examples/
 
 ## ICRC-2
 
-The ICRC-2 standard is an extension of the ICRC-1 standard that enables additional functionality for `icrc2_approve` and `icrc2_transfer_from` transactions. Since it is an extension of ICRC-1, it supports the entire ICRC-1 standard's methods and metadata. The approve functionality allows an account owner to delegate token transfers to a third party on the owner's behalf, while the transfer from method enables approved token transactions to be initiated. This approve functionality is common in the Ethereum ecosystem through the ERC-20 token standard.
+The ICRC-2 standard is an extension of the ICRC-1 standard that enables additional functionality for `icrc2_approve` and `icrc2_transfer_from` transactions. Since it is an extension of ICRC-1, it supports the entire ICRC-1 standard's methods and metadata. The approve functionality allows an account owner to delegate token transfers to a third party on the owner's behalf, while the transfer from method enables approved token transactions to be initiated. This approval functionality is common in the Ethereum ecosystem through the ERC-20 token standard.
 
 The approve and transfer from workflow uses two steps:
 
@@ -112,11 +112,11 @@ View an example of a dapp that enables the [`transfer_from` workflow](https://gi
 
 :::caution
 
-ICRC-7 is still in the drafting and development phase. It has not yet been implemented on the ICP mainnet.
+ICRC-7 is still in the drafting and development phases. It has not yet been implemented on the ICP mainnet.
 
 :::
 
-ICRC-7 defines a standard for non-fungible tokens (NFTs) on ICP and can be used to create a set of NFTs, also referred to as an NFT collection. It is a minimal standard, and can be thought of as the equivalent of the ICRC-1 standard, but for non-fungible tokens instead of fungible tokens. This base standard intentionally excludes some functions such as:
+ICRC-7 defines a standard for non-fungible tokens (NFTs) on ICP and can be used to create a set of NFTs, also referred to as an NFT collection. It is a minimal standard and can be thought of as the equivalent of the ICRC-1 standard, but for non-fungible tokens instead of fungible tokens. This base standard intentionally excludes some functions, such as:
 
 - Reliable transaction notifications for smart contracts.
 
@@ -124,9 +124,9 @@ ICRC-7 defines a standard for non-fungible tokens (NFTs) on ICP and can be used 
 
 - Pre-signed transactions.
 
-ICRC-7 accounts have the same structure and follow the same overall principles as ICRC-1 accounts. ICRC-7 views the ICRC-1 `Account` as a primary concept, meaning that operations like transfers always refer to the full account and not only the principal portion. Some methods include an extra optional `from_subaccount` or `spender_subaccount` parameter that, together with the caller, form an account to perform the respective operation on. Leaving such `subaccount` parameter `null` is executed the same as referring to the default subaccount comprised of all zeroes.
+ICRC-7 accounts have the same structure and follow the same overall principles as ICRC-1 accounts. ICRC-7 views the ICRC-1 `Account` as a primary concept, meaning that operations like transfers always refer to the full account and not only the principal portion. Some methods include an extra optional `from_subaccount` or `spender_subaccount` parameter that, together with the caller, forms an account to perform the respective operation on. Leaving such `subaccount` parameter `null` is executed the same as referring to the default subaccount comprised of all zeroes.
 
-An extension of ICRC-7, ICRC-37, extends the standard in the same manner that ICRC-2 extends ICRC-1 - it enables an approval functionality.
+An extension of ICRC-7, ICRC-37, extends the standard in the same manner that ICRC-2 extends ICRC-1 as it enables spender approval functionality.
 
 ### Token metadata
 
@@ -152,19 +152,19 @@ Additional technical metadata elements can be found in the [ICRC-7 specification
 
 :::caution
 
-ICRC-37 is still in the drafting and development phase. It has not yet been implemented on the ICP mainnet.
+ICRC-37 is still in the drafting and development phases. It has not yet been implemented on the ICP mainnet.
 
 :::
 
-The ICRC-37 standard is an extension of ICRC-7 that provides additional functionality for an approval workflow. This standard adds support for creating approvals, revoking approvals, querying approval information, and making transfers based on approvals.is  Token ledgers that implement ICRC-37 must implement all of the functions within ICRC-7, but ledgers that support ICRC-7 may choose whether or not to implement ICRC-37 if it intends to offer approve and transfer functionalities. The scope of ICRC-37 was originally part of ICRC-7, but was split into a separate standard for the following reasons:
+The ICRC-37 standard is an extension of ICRC-7 that provides additional functionality for an approval workflow. This standard adds support for creating approvals, revoking approvals, querying approval information, and making transfers based on approvals. Token ledgers that implement ICRC-37 must implement all of the functions within ICRC-7, but ledgers that support ICRC-7 may choose whether or not to implement ICRC-37 if they intend to offer approve and transfer functionalities. The scope of ICRC-37 was originally part of ICRC-7 but was split into a separate standard for the following reasons:
 
-- ICRC-7 and ICRC-37 are much shorter and hence easier to navigate on their own.
+- ICRC-7 and ICRC-37 are much shorter and, hence, easier to navigate on their own.
 
 - Ledgers that do not want to implement approval and transfer from semantics do not need to provide dummy implementations of the corresponding methods that fail by default.
 
 ### Token metadata
 
-ICRC-37 supports all metadata entries of ICRC-7, but also include the following entires:
+ICRC-37 supports all metadata entries in ICRC-7 but also includes the following:
 
 - `icrc37:max_approvals_per_token_or_collection`: Type `Nat`, used to define the maximum number of active approvals the ledger implementation allows per principal or per token.
 
@@ -172,14 +172,26 @@ ICRC-37 supports all metadata entries of ICRC-7, but also include the following 
 
 [Read the full ICRC-37 standard](https://github.com/dfinity/ICRC/blob/main/ICRCs/ICRC-37/ICRC-37.md).
 
-## DIP721
+## DIP-20
 
-The DIP-721 standard is a non-fungible token standard for ICP designed to replica the Ethereum standard ERC-721. DIP-721 is a community-contributed standard that has since been replaced by the proposed ICRC-7 standard.
+The DIP-20 standard is a fungible token standard for ICP designed to replicate the Ethereum standard ERC-20. DIP-20 is a community-contributed standard that has since been replaced by the ICRC-2 standard.
+
+[View the full DIP-20 specification](https://github.com/Psychedelic/DIP20/blob/main/spec.md).
+
+## DIP-721
+
+The DIP-721 standard is a non-fungible token standard for ICP designed to replicate the Ethereum standard ERC-721. DIP-721 is a community-contributed standard that has since been replaced by the proposed ICRC-7 standard.
 
 [View the full DIP-721 specification](https://github.com/Psychedelic/DIP721/blob/develop/spec.md).
 
-## DIP20
+## Resources
 
+- [ICRC](https://github.com/dfinity/ICRC).
 
+- [ICRC-1 standard](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1).
 
+- [ICRC-2 standard](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-2).
 
+- [ICRC-7 standard](https://github.com/dfinity/ICRC/blob/main/ICRCs/ICRC-7/ICRC-7.md).
+
+- [ICRC-37 standard](https://github.com/dfinity/ICRC/blob/main/ICRCs/ICRC-37/ICRC-37.md).
