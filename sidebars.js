@@ -757,7 +757,7 @@ const sidebars = {
           type: "category",
           label: "Tokens",
           items: [
-	    "developer-docs/defi/tokens/standards",
+	    "developer-docs/defi/tokens/token-standards",
             "developer-docs/defi/icp-tokens/ledger-local-setup",
             "developer-docs/defi/tokens/indexes",
             "developer-docs/defi/icp-tokens/using-the-ledger",
