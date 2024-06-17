@@ -656,7 +656,7 @@ An example of this error is:
   Canister xxx-xxx is heap delta rate limited: current delta debit is 1000005000, but limit is 1000000000.
 ```
 
-Canisters are limited by how much they can write within a given time frame. This error indicates that the canister has recently written a large amount of data which means it cannot currently take or load a snapshot because those operations also generate writes to the blockchain state.
+Canisters are limited by how much they can write within a given time frame. This error indicates that the canister has recently written a large amount of data and it cannot currently take or load a snapshot because those operations also generate writes to the blockchain state.
 
 To fix this error, consider waiting a few seconds before trying the operation again. If the error persists, it may be because the canister is continually writing significant amounts of data and is often being rate limited. In this case, it might make sense to stop the canister before taking or loading a snapshot, or it might make sense to shard the data across multiple canisters so that each one can write less.
 
