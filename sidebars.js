@@ -757,11 +757,7 @@ const sidebars = {
           type: "category",
           label: "Tokens",
           items: [
-            {
-              label: "Overview",
-              type: "doc",
-              id: "developer-docs/defi/icp-tokens/overview",
-            },
+	    "developer-docs/defi/tokens/standards",
             "developer-docs/defi/icp-tokens/ledger-local-setup",
             "developer-docs/defi/tokens/indexes",
             "developer-docs/defi/icp-tokens/using-the-ledger",
