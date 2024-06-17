@@ -457,7 +457,7 @@ An example of this error is:
   Canister requested 10 MiB of Wasm custom sections memory but only 1 MiB are available in the subnet.
 ```
 
-Subnets separately track memory that is used to store the custom sections of canister Wasm modules and this error means that there is not enough space for the custom sections of the Wasm module that is being installed.
+Subnets separately track memory that is used to store the custom sections of canister Wasm modules. This error means that there is not enough available memory to install the custom sections of a new Wasm module.
 
 If custom sections are not required for this canister, the error could be fixed by removing the custom sections (e.g. using [`wasm-strip`](https://github.com/WebAssembly/wabt)). Otherwise consider moving the canister to another subnet or uninstalling other controlled canisters on the subnet that may be using up custom section space.
 
