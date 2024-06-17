@@ -215,7 +215,7 @@ const sidebars = {
             },
             {
               type: "doc",
-              label: "Serving an HTTPS request",
+              label: "Serving an HTTP request",
               id: "developer-docs/smart-contracts/advanced-features/serving-http-request",
             },
             {
@@ -236,17 +236,17 @@ const sidebars = {
                 {
                   type: "doc",
                   id: "developer-docs/web-apps/http-compatible-canisters/custom-http-canisters",
-                  label: "Custom HTTPS canisters",
+                  label: "Custom HTTP canisters",
                 },
                 {
                   type: "doc",
                   id: "developer-docs/web-apps/http-compatible-canisters/serving-json-over-http",
-                  label: "Serving JSON over HTTPS",
+                  label: "Serving JSON over HTTP",
                 },
                 {
                   type: "doc",
                   id: "developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http",
-                  label: "Serving static assets over HTTPS",
+                  label: "Serving static assets over HTTP",
                 },
               ],
             },

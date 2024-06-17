@@ -787,7 +787,7 @@
           {
             "title": "HTTPS outcalls V3",
             "overview": "Support HTTPS outcalls also for queries, instead of only update calls.",
-            "description": "HTTPS outcalls on ICP are a feature that allow smart contracts to interact with Web2 services based on the HTTP protocol. This feature addresses HTTPS outcalls for queries in addition to update calls. Doing HTTPS outcalls in queries requires a different architecture and has different trust requirements compared to outcalls in update calls. Queries are executed on a single replica only, without consensus being involved. The same would hold for HTTPS outcalls invoked from queries: They are made from a single replica and do not involve consensus. Thus, they are very similar to how HTTPS calls are made by the typical Web2 service. A challenge w.r.t. this feature is the latency increase for queries when supporting outcalls.",
+            "description": "HTTPS outcalls on ICP are a feature that allow smart contracts to interact with Web2 services based on the HTTP protocol. This feature addresses HTTPS outcalls for queries in addition to update calls. Doing HTTPS outcalls in queries requires a different architecture and has different trust requirements compared to outcalls in update calls. Queries are executed on a single replica only, without consensus being involved. The same would hold for HTTPS outcalls invoked from queries: They are made from a single replica and do not involve consensus. Thus, they are very similar to how HTTP calls are made by the typical Web2 service. A challenge w.r.t. this feature is the latency increase for queries when supporting outcalls.",
             "forum": "",
             "proposal": "",
             "wiki": "",
