@@ -787,7 +787,7 @@
           {
             "title": "HTTPS outcalls V3",
             "overview": "Support HTTPS outcalls also for queries, instead of only update calls.",
-            "description": "HTTPS outcalls on ICP are a feature that allow smart contracts to interact with Web2 services based on the HTTP protocol. This feature addresses HTTPS outcalls for queries in addition to update calls. Doing HTTPS outcalls in queries requires a different architecture and has different trust requirements compared to outcalls in update calls. Queries are executed on a single replica only, without consensus being involved. The same would hold for HTTPS outcalls invoked from queries: They are made from a single replica and do not involve consensus. Thus, they are very similar to how HTTP calls are made by the typical Web2 service. A challenge w.r.t. this feature is the latency increase for queries when supporting outcalls.",
+            "description": "HTTPS outcalls on ICP are a feature that allow smart contracts to interact with Web2 services based on the HTTP protocol. This feature addresses HTTPS outcalls for queries in addition to update calls. Doing HTTPS outcalls in queries requires a different architecture and has different trust requirements compared to outcalls in update calls. Queries are executed on a single replica only, without consensus being involved. The same would hold for HTTPS outcalls invoked from queries: They are made from a single replica and do not involve consensus. Thus, they are very similar to how HTTPS calls are made by the typical Web2 service. A challenge w.r.t. this feature is the latency increase for queries when supporting outcalls.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -2283,7 +2283,7 @@
         "description": "With this milestone, ICP offers the infrastructure and tooling to issue, share, and consume credentials in a privacy-preserving fashion. Users are in control of their credentials, giving them a self-sovereign digital identity. At the same time, new credential issuers, such as a KYC service, go live on ICP and will enable new use cases such as security tokens subject to financial regulations.",
         "milestone_id": "Separatrix",
         "eta": "June 18, 2024",
-        "status": "in_progress",
+        "status": "deployed",
         "elements": [
           {
             "title": "Verifiable credentials",
@@ -2294,7 +2294,7 @@
             "wiki": "",
             "docs": "https://github.com/dfinity/wg-identity-authentication",
             "eta": "",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Separatrix"
@@ -2308,7 +2308,7 @@
             "wiki": "",
             "docs": "",
             "eta": "",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": true,
             "in_beta": true,
             "milestone_id": "Separatrix"
@@ -2317,7 +2317,7 @@
             "title": "Verifiable credentials playground",
             "overview": "A dapp that introduces the concepts of verifiable credentials to prospective identity issuers and relying parties with the aim to facilitate adoption.",
             "description": "The verifiable credentials playground comprises both an issuer and a relying party dapp. The dapps implement a full end-to-end experience using ICP's verifiable credentials capabilities. The dapps are intended for educational purposes and can act as a template for issuer and relying party dapps building on the verifiable credentials feature.",
-            "status": "in_progress",
+            "status": "deployed",
             "forum": "",
             "proposal": "",
             "wiki": "",
