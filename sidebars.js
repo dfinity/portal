@@ -821,6 +821,7 @@ const sidebars = {
             "developer-docs/multi-chain/bitcoin/using-btc/btc-dev-workflow",
             "developer-docs/multi-chain/bitcoin/using-btc/read-state",
             "developer-docs/multi-chain/bitcoin/using-btc/generate-addresses",
+            "developer-docs/multi-chain/bitcoin/using-btc/create-transactions",
             "developer-docs/multi-chain/bitcoin/using-btc/sign-transactions",
             "developer-docs/multi-chain/bitcoin/using-btc/submit-transactions",
             "developer-docs/multi-chain/bitcoin/using-btc/local-development",

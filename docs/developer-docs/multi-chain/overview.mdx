@@ -9,7 +9,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Chain Fusion" ]} />
 
-The Chain Fusion capabilities of the Internet Computer Protocol allow multiple blockchains to interconnect in a decentralized manner, eliminating the need for a single trusted intermediary. The key building blocks enabling this integration are (1) a decentralized bi-directional communication of the Internet Computer with other chains and (2) the ability of IC smart contracts to sign and submit transactions to other chains.
+The Chain Fusion capabilities of the Internet Computer Protocol allow multiple blockchains to interconnect in a decentralized manner, eliminating the need for a single trusted intermediary. The key building blocks enabling this integration are (1) a decentralized bi-directional communication of the Internet Computer with other chains and (2) the ability of ICP smart contracts to sign and submit transactions to other chains.
 
 Chain Fusion augments smart contracts and decentralized applications (dapps) on non-ICP chains with the unique capabilities of ICP, including:
 
@@ -60,7 +60,7 @@ Smart contracts on ICP are called canisters. In addition to unparalleled compute
 
 ### Key management and signing
 
-A key feature of the IC protocol’s Chain Fusion capabilities is [threshold signing](/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa/). This feature allows canisters to have a pair of public and private keys. The private key is divided into small shares and distributed among nodes of a signing subnet.
+A key feature of the ICP's Chain Fusion capabilities is [threshold signing](/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa/). This feature allows canisters to control accounts on other blockchains. The private keys that are used to sign transactions are never accesible in a single physical place, but securely distributed in form of shares among a group of nodes which perform a threshold signing protocol to generate a signature on behalf of the canister.
 
 :::info
 Threshold signing is also referred to as [chain-key cryptography](/docs/current/concepts/glossary/#chain-key).
@@ -72,7 +72,11 @@ A canister’s interaction with external blockchains requires submitting transac
 
 - **Direct integration**: In case of the Bitcoin integration, ICP nodes utilize a special component called the Bitcoin adapter to connect to the Bitcoin p2p network securely and independently. A set of ICP nodes effectively constitutes a native Bitcoin node.
 
-- **Decentralized RPC integration**: When it comes to Ethereum integration, IC utilizes HTTP outcalls to contact three separate JSON RPC providers (such as Ankr, BlockPI, Alchemy, and others) to retrieve the chain state and submit signed transactions.
+- **Decentralized RPC integration**: When it comes to Ethereum integration, ICP utilizes HTTP outcalls to contact three separate JSON RPC providers (such as Ankr, BlockPI, Alchemy, and others) to retrieve the chain state and submit signed transactions.
+
+:::info
+The integration by calling RPC providers can be easily ported to other blockchains. 
+:::
 
 ### Whom do users trust?
 
