@@ -776,6 +776,26 @@ const sidebars = {
           ],
         },
         {
+          type: "category",
+          label: "Wallets",
+          items: [
+            "developer-docs/defi/wallets/overview",
+            {
+              type: "category",
+              label: "Self-custody",
+              items: [
+                "developer-docs/defi/wallets/self-custody/self-custody-quickstart ",
+                "developer-docs/defi/wallets/self-custody/hardware-wallet-cli",
+              ],
+            },
+          ],
+        },
+        {
+          type: "category",
+          label: "NFTs",
+          items: ["developer-docs/defi/nfts/considerations-for-nft-devs"],
+        },
+        {
           type: "doc",
           label: "Exchange rate canister",
           id: "developer-docs/defi/exchange-rate-canister",
@@ -911,20 +931,6 @@ const sidebars = {
           ],
         },
         "developer-docs/defi/token_integrations/index",
-        {
-          type: "category",
-          label: "Asset custody",
-          items: [
-            "developer-docs/defi/asset-custody/custody-options",
-            "developer-docs/defi/asset-custody/self-custody-quickstart",
-            "developer-docs/defi/asset-custody/hardware-wallet-cli",
-          ],
-        },
-        {
-          type: "category",
-          label: "NFTs",
-          items: ["developer-docs/defi/nfts/considerations-for-nft-devs"],
-        },
       ],
     },
     {
