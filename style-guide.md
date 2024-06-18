@@ -1,4 +1,4 @@
-# Internet Computer developer documentation: style, format, and language guide
+# Dev Docs Style Guide
 
 ## Overview
 
@@ -18,94 +18,62 @@ This guide will outline the following:
 - Code snippets and code blocks.
 - Command line syntax.
 - FAQ sections.
-- How to write a guide.
 
 ## Page structure
 
-The developers docs contain a wide variety of different document types, such as tutorials, guides, informational pages, and reference pages. For this reason, the page structure will vary based on what type of document the page is.
+The developers docs contain a wide variety of different document types, such as overview pages, concept pages, feature pages, tutorials, and reference pages. For this reason, the page structure will vary based on what type of document the page is.
 
-The following page structure should be followed for informational pages and guides:
+The following example template can be used:
 
 ```
+---
+keywords: [keyword1, keyword2, keyword3]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
 # Page title
+
+<MarkdownChipRow labels={["label1", "label2", "label3"]} />
 
 ## Overview
 
-Text
+Introduce the feature or tool. What is it? Give a brief overview of how it works, but keep it very high level. Link to additional documents that explain the in-depth concepts behind it (if they exist).
 
-## Prerequisites (Optional; only necessary for guides that require prerequisite conditions or parameters be met.)
+## Prerequisites
 
+Optional; only necessary for documents that require prerequisite conditions or parameters be met.
+
+List all dependencies that the developer will need to download or setup in order to use the feature. The most common prerequisite is downloading dfx. Please link to the dfx installation page.
 - [x] Prerequisite 1.
 - [x] Prerequisite 2.
 - [x] Prerequisite 3.
 
 ## Topic 1
 
-Text
+What is the first topic that the developer should be introduced to? If the tool has several workflows, which should be introduced initially? Is there an initial configuration required?
 
 ### Subtopic 1
 
-Text
-
-### Subtopic 2
-
-- Bullet 1.
-- Bullet 2.
-- Bullet 3.
+Include any information about a subtopic of Topic 1 here. This may include nuances with Topic 1 or best practices that should be noted.
 
 ## Topic 2
 
-Text
+Introduce the second topic.
 
-### Subtopic 3
+This is optional; there may be only one primary topic within the feature. Use your best judgement for what topics and subtopics your document may need.
 
-Text
+## Topic 3
+
+If your document includes a step-by-step walkthrough, introduce the walkthrough as a topic, then use the following format:
 
 - #### Step 1: Description of step for reader to take.
 - #### Step 2: Description of step for reader to take.
 - #### Step 3: Description of step for reader to take.
 
-## Conclusion
-
-Text
-
 ## Resources
 - [Link](link.com)
-```
 
-The following page structure should be followed for tutorials:
-
-```
-# Page title
-
-## Overview
-
-Text
-
-## Prerequisites
-
-- [x] Prerequisite 1.
-- [x] Prerequisite 2.
-- [x] Prerequisite 3.
-
-## Step 1: Description of step
-
-Text
-
-## Step 2: Description of step
-
-Text
-
-## Step 3: Description of step
-
-Text
-
-## Conclusion
-
-Text
-
-## Resources
-- [Link](link.example)
 ```
 
 ## Page headings
@@ -239,7 +207,8 @@ The following is a list of common abbreviations that are capitalized within the 
 - DAO
 - DeFi
 - ECDSA
-- HTTP/HTTPS
+- HTTP
+- HTTPS
 - ICP
 - ICRC-1
 - ICRC-2
@@ -263,23 +232,26 @@ The following language and capitalization of certain terms and phrases should be
 - canister smart contract
 - chain-key signature
 - chain-key cryptography
+- Chain Fusion
+- Chain Fusion technology
 - dapp: should be used in place of any reference to an ICP app, decentralized application, or 'dApp'.
 - DeFi
 - deployed on ICP
-- dfx or `dfx`: should be used in place of any reference to the dfx CLI tool; it may be formatted as in-line code or plain text as long as it is lowercase. 
+- dfx or `dfx`: should be used in place of any reference to the dfx CLI tool; it may be formatted as in-line code or plain text as long as it is lowercase.
       - All dfx subcommands should be formatted as in-line code when appearing in a sentence, such as, "The `dfx deps` feature is available in dfx versions 0.14.1 and newer."
 - Ethereum integration
 - Ethereum: should be used in place of ETH or ETH token.
-- HTTP outcalls
-- ICP: When abbreviating 'Internet Computer', it should be referred to as 'ICP' instead of 'IC' or 'the IC'. 
+- HTTP: when referring to the HTTP Gateway protocol, HTTP asset certification, HTTP requests, HTTP responses, and HTTP servers.
+- HTTPS: when referring to HTTPS outcalls.
+- ICP: When abbreviating 'Internet Computer', it should be referred to as 'ICP' instead of 'IC' or 'the IC'.
     Two exceptions to this are:
-  
+
         - The IC SDK, which should be referred to as 'the IC SDK'.
-  
+
         - The IC interface specification, which should be referred to as 'the IC specification' or 'the IC interface specification'.
-  
+
     When there may be a confusion between ICP referring to Internet Computer Protocol and ICP the token, the words 'Internet Computer Protocol' can be written out for clarity.
-  
+
 - IC SDK: should be used in place of any reference to the IC's SDK.
 - mainnet
     - In context: Deploying `to the mainnet` or `on the mainnet`. Note the use of the word `the`.
@@ -289,6 +261,7 @@ The following language and capitalization of certain terms and phrases should be
     Additionally, mentions of the Bitcoin mainnet should use the same structure (prefaced with the word `the`.)
 - maturity
 - Motoko playground
+- multi-chain
 - neuron
 - node provider
 - open internet service
@@ -301,7 +274,7 @@ The following language and capitalization of certain terms and phrases should be
 
 ### Spelling, grammar, and word choice
 The following spelling, grammar, and word choice rules should be followed:
-- Avoid using language that uses 'we' or 'us'; use a protocol point of view, such as phrases like, "the protocol ensures", "the protocol does", and “it is explained” rather than “we explain”. This is to help make clear that ICP is a protocol that is community-controlled and autonomously governed. 
+- Avoid using language that uses 'we' or 'us'; use a protocol point of view, such as phrases like, "the protocol ensures", "the protocol does", and “it is explained” rather than “we explain”. This is to help make clear that ICP is a protocol that is community-controlled and autonomously governed.
       - An exception to this is the Developer Blog; blog posts are written using a different style for a different audience, and using 'we' or 'us' in this context is acceptable.
 - Do not refer to the Internet Computer as a system or a platform. Say "Internet Computer" or "protocol" instead.
 - Regarding spelling and grammar, American spelling and grammar should be used with the exception that all article titles follow British capitalization rules (see details in the Capitalization section.)
@@ -328,6 +301,15 @@ Numbers should be formatted using the `_` character, and not any other character
 - 54_000
 - 1_000
 
+## Compute resources
+
+Compute resources, such as storage, should be formatted in the `XiB` format, such as:
+
+- 7TiB
+- 5GiB
+- 500MiB
+- 10KiB
+
 ## API methods
 
 For API methods such as `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, or any other API method requests, they should be formatted as such:
@@ -336,7 +318,7 @@ For API methods such as `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, or any other API
     - Example: "Using HTTP GET calls."
     - Example: "Using HTTP PUT calls."
 - In the body of documents, they should be formatted as in-line code, such as:
-    - Example: "A minimal example to make a `GET` HTTPS request."
+    - Example: "A minimal example to make a `GET` HTTP request."
     - Example: "That is, the canister could define the quorum size to be 1 and have only 1 replica execute the `POST` request."
 
 
@@ -351,7 +333,7 @@ The following punctuation standards should be followed:
 - All bullet point lists should be prefaced with introduction text followed by a colon.
 - All items within a bullet point list should end in a period, regardless if the entry is a full sentence or not.
 - All numbered lists should use the format `1.` for numbering each list entry.
-- All user steps for guides and tutorials should use the format `Step 1:` to preface each step's contents.
+- All user steps for tutorials should use the format `Step 1:` to preface each step's contents.
 
 ## Bulleted lists
 
@@ -413,7 +395,7 @@ Links that are referenced within the developer docs should use the following for
 - In-line links should not capitalize the title of the page or section that is being linked. For example:
     - The below section [demonstrating trust](#demonstrating-trust).
     - The Wiki [contains some ideas](https://wiki.internetcomputer.org/wiki/Dealing_with_cycles_limit_exceeded_errors) how one can work around the cycles limit.
-- Links should not use the format of 'See the documentation [here](link)'. 
+- Links should not use the format of 'See the documentation [here](link)'.
     - All links should use the format '[Learn more about ICP](link)'.
 
 ## Code snippets and code blocks
@@ -472,59 +454,4 @@ Answer
 
 - #### Question 2?
 Answer
-```
-
-### Writing a guide
-When contributing a guide, the following general format and structure should be used. It is important to note that the content of guides will vary, and this format can be expanded and elaborated on to include more detailed workflows or content.
-
-```
-# Page title
-
-## Overview
-
-Text
-
-## Prerequisites (Optional; only necessary for guides that require prerequisite conditions or parameters be met.)
-
-- [x] Prerequisite 1.
-- [x] Prerequisite 2.
-- [x] Prerequisite 3.
-
-## Topic 1
-
-Text
-
-### Subtopic 1
-
-Text
-
-- #### Step 1: Description of step for reader to take.
-- #### Step 2: Description of step for reader to take.
-- #### Step 3: Description of step for reader to take.
-
-### Subtopic 2
-
-Text
-
-- #### Step 1: Description of step for reader to take.
-- #### Step 2: Description of step for reader to take.
-- #### Step 3: Description of step for reader to take.
-
-## Topic 2
-
-Text
-
-### Subtopic 3
-
-Text
-
-- #### Step 1: Description of step for reader to take.
-- #### Step 2: Description of step for reader to take.
-- #### Step 3: Description of step for reader to take.
-
-## Conclusion
-Text
-
-## Resources
-- [Link](link.example)
 ```

@@ -14,6 +14,7 @@ import {
 } from "./Stats";
 
 import { QueryClient, QueryClientProvider } from "react-query";
+import Link from "@docusaurus/Link";
 const queryClient = new QueryClient();
 
 const Hero: React.FC<{

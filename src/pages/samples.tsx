@@ -193,7 +193,7 @@ function Samples(): React.ReactNode {
       }
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-samples.jpeg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-samples.jpg"></ShareMeta>
 
       <main className="w-full overflow-hidden">
         <AnimateSpawn variants={transitions.container}>

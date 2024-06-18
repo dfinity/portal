@@ -47,14 +47,22 @@ export type SampleDomain =
   | "GameFi"
   | "SocialFi"
   | "Blue Sky"
-  | "Public Good / Social Impact";
+  | "Public Good / Social Impact"
+  | "ChainFusion"
+  | "Bitcoin";
 export type SampleContentType =
   | "code samples"
   | "documentation"
   | "live demos"
   | "tutorial"
   | "videos"
-  | "community repo";
+  | "community repo"
+  | "advanced"
+  | "rust"
+  | "bitcoin"
+  | "btc"
+  | "integration"
+  | "bitcoin integration";
 
 export const sampleItems: SampleItem[] = [
   {
@@ -104,7 +112,7 @@ export const sampleItems: SampleItem[] = [
   {
     index: 3,
     title: "PoS app for ckBTC",
-    image: "/img/samples/pos-app-for-ckbtc.png",
+    image: "/img/samples/pos-app-for-ckbtc.webp",
     domains: ["Multi-chain"],
     languages: ["motoko"],
     level: "advanced",
@@ -381,11 +389,11 @@ export const sampleItems: SampleItem[] = [
     languages: ["motoko", "rust"],
     level: "advanced",
     contentType: ["code samples", "documentation"],
-    body: "Create a dapp that can transfer tokens to its most active users.",
+    body: "Create a canister that can hold and transfer ICRC-1 tokens.",
     links: {
       motoko:
-        "https://github.com/dfinity/examples/tree/master/motoko/ledger-transfer",
-      rust: "https://github.com/dfinity/examples/tree/master/rust/tokens_transfer",
+        "https://github.com/dfinity/examples/tree/master/motoko/token_transfer",
+      rust: "https://github.com/dfinity/examples/tree/master/rust/token_transfer",
     },
   },
   {
@@ -447,5 +455,116 @@ export const sampleItems: SampleItem[] = [
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/ios-notifications",
     },
-  }
+  },
+  {
+    index: 24,
+    title: "ICP transfer",
+    image: "/img/samples/tokenTransfer.png",
+    domains: ["Global", "Asynchronous DeFi", "Multi-chain"],
+    languages: ["motoko", "rust"],
+    level: "advanced",
+    contentType: ["code samples", "documentation"],
+    body: "Create a canister that can hold and transfer ICP tokens.",
+    links: {
+      motoko:
+        "https://github.com/dfinity/examples/tree/master/motoko/icp_transfer",
+      rust: "https://github.com/dfinity/examples/tree/master/rust/icp_transfer",
+    },
+  },
+  {
+    index: 25,
+    title: "Token transfer_from",
+    image: "/img/samples/tokenTransfer.png",
+    domains: ["Global", "Asynchronous DeFi", "Multi-chain"],
+    languages: ["motoko", "rust"],
+    level: "advanced",
+    contentType: ["code samples", "documentation"],
+    body: "Create a canister that can hold and transfer ICRC-1 tokens on behalf of accounts to other accounts.",
+    links: {
+      motoko:
+        "https://github.com/dfinity/examples/tree/master/motoko/token_transfer_from",
+      rust: "https://github.com/dfinity/examples/tree/master/rust/token_transfer_from",
+    },
+  },
+  {
+    index: 26,
+    title: "Bitcoin Canister",
+    image: "/img/samples/26.webp",
+    domains: ["Global", "ChainFusion", "Bitcoin"],
+    languages: ["rust"],
+    level: "advanced",
+    contentType: [
+      "advanced",
+      "rust",
+      "bitcoin",
+      "btc",
+      "integration",
+      "bitcoin integration",
+    ],
+    body: "A sample canister smart contract that can send and receive Bitcoin on the IC.",
+    links: {
+      rust: "https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin",
+    },
+  },
+  {
+    index: 27,
+    title: "Inscription Canister",
+    image: "/img/samples/27.webp",
+    domains: ["Global", "ChainFusion", "Bitcoin"],
+    languages: ["rust"],
+    level: "advanced",
+    contentType: [
+      "advanced",
+      "rust",
+      "bitcoin",
+      "btc",
+      "integration",
+      "bitcoin integration",
+    ],
+    body: "This example project explores the possibility of inscribing ordinal inscriptions onto the Bitcoin blockchain using the IC.",
+    links: {
+      rust: "https://github.com/domwoe/inscription_canister",
+    },
+  },
+  {
+    index: 28,
+    title: "ckBTC Canister",
+    image: "/img/samples/28.webp",
+    domains: ["Global", "ChainFusion", "Bitcoin"],
+    languages: ["rust"],
+    level: "advanced",
+    contentType: [
+      "advanced",
+      "rust",
+      "bitcoin",
+      "btc",
+      "integration",
+      "bitcoin integration",
+    ],
+    body: "Canister smart contract for ckBTC, the trustless Bitcoin Digital Twin on the IC.",
+    links: {
+      rust: "https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc",
+    },
+  },
+
+  {
+    index: 29,
+    title: "Ordinal Canister",
+    image: "/img/samples/29.webp",
+    domains: ["Global", "ChainFusion", "Bitcoin"],
+    languages: ["rust"],
+    level: "advanced",
+    contentType: [
+      "advanced",
+      "rust",
+      "bitcoin",
+      "btc",
+      "integration",
+      "bitcoin integration",
+    ],
+    body: "A canister that enables the retrieval of ordinals and their corresponding inscriptions, making them easily accessible on the IC.",
+    links: {
+      rust: "https://github.com/sardariuss/ordinals_canister",
+    },
+  },
 ];

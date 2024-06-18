@@ -18,13 +18,13 @@ The “protocol upgrades” feature is designed with the following goals: (1) Al
 Protocol upgrades are made feasible due to our blockchain governance system called Network Nervous System (NNS). In the NNS, there is a component called “registry”, which stores all the configuration of the Internet Computer. A versioning system is implemented for the configuration. Each mutation to the configuration shows up as a new version in the registry. The registry has a record for each subnet which includes a protocol version, list of nodes in the subnet, cryptographic key material to be used by the subnet, etc. Note that the registry stores the desired configuration. The subnets might actually be running one of the older configurations.
 
 <figure>
-<img src="/img/how-it-works/registry-versions.png" alt="Registry implements versioning mechanism" title="Registry implements versioning mechanism" align="center" style="width:700px">
+<img src="/img/how-it-works/registry-versions.png" alt="Registry implements versioning mechanism" title="Registry implements versioning mechanism" align="center" style="width:700px" />
 </figure>
 
 To trigger a protocol upgrade, one has to submit a _proposal_ in the NNS to change the configuration of the registry. The proposal can be voted by anyone who staked their ICP tokens. If a majority of voters accept the proposal, then the registry is changed accordingly.
 
 <figure>
-<img src="/img/how-it-works/upgrade-proposal.png" alt="Proposal to upgrade a subnet to a new replica version" title="Proposal to upgrade a subnet to a new replica version" align="center" style="width:700px">
+<img src="/img/how-it-works/upgrade-proposal.png" alt="Proposal to upgrade a subnet to a new replica version" title="Proposal to upgrade a subnet to a new replica version" align="center" style="width:700px" />
 <figcaption align="left">
 Proposal to upgrade a subnet to a new replica version. The status of all proposals can be viewed at https://dashboard.internetcomputer.org/governance.
 </figcaption>
@@ -37,7 +37,7 @@ In each consensus round, one of the nodes in the subnet (called the _block maker
 After all the nodes in the subnet agree upon the latest registry version via consensus, the obvious next step is to switch to the new version. To avoid forks, it is crucial that all the nodes coordinate and switch their version at the same block height. To achieve this, the consensus protocol is divided into epochs. Each epoch is a few hundred consensus rounds (can be configured in the registry). Throughout an epoch, all the replicas in the subnet run the same Replica version, even if a newer Replica version is found in the registry and included in the blocks. Protocol upgrades happen only at the epoch boundaries.
 
 <figure>
-<img src="/img/how-it-works/protocol-transition.png" alt="Protocol upgrads happens at epoch boundaries" title="Protocol upgrads happens at epoch boundaries" align="center" style="width:700px">
+<img src="/img/how-it-works/protocol-transition.png" alt="Protocol upgrads happens at epoch boundaries" title="Protocol upgrads happens at epoch boundaries" align="center" style="width:700px" />
 </figure>
 
 The first block in each epoch is a _summary block_, which consists of the configuration information (including registry version and cryptographic key material) that will be used during the epoch. The summary block of epoch _x_ specifies both the registry version to be used throughout epoch _x_, and the registry version to be used throughout epoch _x+1_. Therefore, all the nodes agree on what registry version to use for an epoch long before the epoch starts.
@@ -45,7 +45,7 @@ The first block in each epoch is a _summary block_, which consists of the config
 Suppose a protocol upgrade of the subnet is supposed to be done at the beginning of epoch _x_. A blockmaker first proposes the summary block. The nodes then stop processing any new messages, but produce a series of empty blocks until the summary block is finalized, executed and the complete replicated state is certified. Then, all the nodes create a _catch up package (CUP)_, which contains the relevant information that needs to be transferred from the old replica software to the new replica software. The CUP gives enough context for the new replica software to resume consensus. The replicas send the CUP to the orchestrator. The orchestrator runs the new replica software with the CUP as input. Section 8 of the whitepaper describes the contents of the summary block and catch up package in detail.
 
 <figure>
-<img src="/img/how-it-works/handing-cup.png" alt="Catch Up Package is handed over to new replica version" title="Catch Up Package is handed over to new replica version" align="center" style="width:700px">
+<img src="/img/how-it-works/handing-cup.png" alt="Catch Up Package is handed over to new replica version" title="Catch Up Package is handed over to new replica version" align="center" style="width:700px" />
 </figure>
 
 [Upgrading the Internet Computer Protocol](https://medium.com/dfinity/upgrading-the-internet-computer-protocol-45bf6424b268)

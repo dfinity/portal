@@ -41,7 +41,13 @@ The type `persistent` tells `dfx` that the canisters on this network will stay t
 
 ### Configuring a wallet
 
-The cycles wallet for each network is stored separately. The newly created `myStaging` network has no wallet configured yet.
+If you are using a cycles wallet, the cycles wallet for each network is stored separately. The newly created `myStaging` network has no wallet configured yet.
+
+:::caution
+Please note that the cycles wallet will be removed from dfx in a future release.
+
+It is recommended to use the cycles ledger instead.
+:::
 
 To use the same cycles wallet as on the main `ic` network, first make sure the correct identity is set by running the command:
 

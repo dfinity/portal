@@ -135,7 +135,12 @@ const benefits = [
     description: (
       <>
         The SNS DAO framework has undergone security audits by{" "}
-        <Link href="https://www.trailofbits.com/" className="link-subtle">
+        <Link
+          href="https://www.trailofbits.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="link-subtle"
+        >
           Trail of Bits
         </Link>
         , with no severe issues found.

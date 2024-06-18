@@ -138,3 +138,59 @@ export const CardWithBackground: React.FC<{
     </MotionLink>
   );
 };
+
+export const ShowcaseCard: React.FC<{
+  imgSrc: string;
+  title: string;
+  subtitle: string;
+  description: string;
+}> = ({ imgSrc, title, subtitle, description }) => {
+  return (
+    <motion.div
+      className="bg-white/90 border overflow-hidden border-white border-solid rounded-xl px-6 py-8  text-black "
+      variants={transitions.item}
+    >
+      <img src={imgSrc} loading="lazy" alt="" className="w-20 h-20"></img>
+      <h3 className="text-gradient tw-heading-5 mb-2 mt-8 colo">{title}</h3>
+      <h4 className="tw-heading-6 ">{subtitle}</h4>
+      <p className="tw-lead-sm mb-0 text-black/60">{description}</p>
+    </motion.div>
+  );
+};
+
+export const SmallCard = ({ children }: { children: React.ReactNode }) => {
+  return (
+    <div className="rounded-xl bg-white-80 flex px-6 py-8 backdrop-blur-2xl">
+      <div className="flex flex-col gap-2">{children}</div>
+    </div>
+  );
+};
+
+export const PromoCard = ({
+  title,
+  description,
+  link,
+}: {
+  title: string;
+  description?: string;
+  link: {
+    href: string;
+    label: string;
+  };
+}) => {
+  return (
+    <div className="rounded-xl  text-white flex px-6 py-8 backdrop-blur-2xl bg-gradient-100 from-[#3B00B9] to-[#2586B6]">
+      <div className="flex flex-col gap-2">
+        <h3 className="tw-title-sm mb-0">{title}</h3>
+        {description && (
+          <p className="tw-paragraph text-white/60 flex-1 mb-12">
+            {description}
+          </p>
+        )}
+        <Link className="button-white text-center" href={link.href}>
+          {link.label}
+        </Link>
+      </div>
+    </div>
+  );
+};

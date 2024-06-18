@@ -6,11 +6,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-This page provides details on how canister HTTPS outcalls, or canister HTTPS requests, work and important aspects to consider when using the API. You also want to note that there are some limitations and differences  compared to regular (Web 2.0) computer programs making HTTP calls and considerations for programmers for successfully using this feature. Engineers who intend to use this feature are advised to read through this page to get up to speed quickly w.r.t. the feature. The impatient reader who wants to dive into coding right away can skip the conceptual part and jump right away to the [coding section](#coding-https-outcalls) to get started.
-
-:::info
-Note that in the remainder of this documentation may use **HTTP** representative for both **HTTP** and **HTTPS**, referring to the underlying protocol. Practically all HTTP traffic on public networks runs over secured HTTPS these days.
-:::
+This page provides details on how canister HTTPS outcalls, or canister HTTP requests, work and important aspects to consider when using the API. You also want to note that there are some limitations and differences compared to regular (Web 2.0) computer programs making HTTP calls and considerations for programmers for successfully using this feature. Engineers who intend to use this feature are advised to read through this page to get up to speed quickly w.r.t. the feature. The impatient reader who wants to dive into coding right away can skip the conceptual part and jump right away to the [coding section](#coding-https-outcalls) to get started.
 
 ## Architecture
 
@@ -22,7 +18,7 @@ The canister HTTPS outcalls feature is implemented as part of the Internet Compu
 
 - #### Step 1: A canister makes an outgoing HTTP request by calling the management canister API using the `http_request` method.
 - #### Step 2: The request is stored temporarily in the replicated state of the subnet.
-- #### Step 3: Periodically (each round) an **adapter** at the networking layer in each replica fetches the pending HTTP outcalls from replicated state.
+- #### Step 3: Periodically (each round) an **adapter** at the networking layer in each replica fetches the pending HTTPS outcalls from replicated state.
 (In fact, a &lsquo;shim&rsquo; layer of the adapter that is inside the replica process does so as the adapter itself is sandboxed into a separate OS-level process for security reasons.)
 - #### Step 4: The adapter on each replica executes the HTTP request by sending it to the target server.
 - #### Step 5: The corresponding HTTP response from the server is received by the adapter on each replica of the subnet and provided to a component in the replica process.
@@ -44,12 +40,12 @@ As you can see, the transformation function and the Internet Computer Protocol's
 
 ### Trust model and programming Model
 
-The trust model for canister HTTP outcalls is based on the trust model of the called HTTP server and that of ICP:
+The trust model for canister HTTPS outcalls is based on the trust model of the called HTTP server and that of ICP:
 * It is assumed that the HTTP service is honest, otherwise, it can provide any responses to any of the calling replicas of the subnet. This is the case also for calls to the service from a Web 2.0 service or an oracle, thus, the situation is the same as in our scenario of a blockchain making the call to the service.
 * The trust model of ICP assumes that at least $2/3$ of the replicas are honest. In this case, the honest replicas will obtain the same response (after optional transformation) and consensus will be able to agree on the response so that the response can be provided back to the calling canister.
 A dishonest server can easily make requests fail or provide wrong data. Also, $1/3$ or more of dishonest subnet replicas can make requests fail. For providing wrong data, more than $2/3$ of the replicas need to be compromised.
 
-The programming model for this feature is such that the canister making an HTTP outcall acts as **HTTP client**, i.e., needs to, in the general case, interpret various headers and act accordingly. For use cases such as API requests this is rather straightforward and does not require many specific considerations in the standard case. The ICP protocol stack can conceptually be simply seen as a communication pipe between the canister and the conventional HTTP server that makes sure that the HTTP response makes it through consensus and all honest replicas receive the exact same response in execution, i.e., the calling canister receives an agreed-upon response.
+The programming model for this feature is such that the canister making an HTTPS outcall acts as **HTTP client**, i.e., needs to, in the general case, interpret various headers and act accordingly. For use cases such as API requests this is rather straightforward and does not require many specific considerations in the standard case. The ICP protocol stack can conceptually be simply seen as a communication pipe between the canister and the conventional HTTP server that makes sure that the HTTP response makes it through consensus and all honest replicas receive the exact same response in execution, i.e., the calling canister receives an agreed-upon response.
 
 ## HTTPS outcalls and oracles compared
 
@@ -57,22 +53,22 @@ The programming model for this feature is such that the canister making an HTTP 
 
 The basic architecture is that an oracle smart contract is deployed on chain. Users make requests to this oracle contract, which stores the requests temporarily. An oracle, i.e., Web 2.0 server, obtains the stored request from the oracle smart contract through regular means of interacting with it using queries and update calls. Then the oracle executes the request in the Web 2.0 world by means of a regular HTTP call and provides back the response to the oracle smart contract, again using the normal interaction paradigm with the blockchain (update call). Then the oracle smart contract provides back the response to the calling smart contract using a standard on-chain interaction.
 
-In the oracle architecture, a single oracle may fulfill the original request, or a decentralized network of oracles may each issue the request and then provide an agreed-upon response (including evidence) to the oracle contract and ultimately to the calling canister. As you can see, the oracle would effectively achieve the same result as HTTP outcalls, but with a more complex architecture of requiring one or more external parties that want to be paid for their services. Thus, one can assume that HTTP outcalls can replace oracles for many relevant use cases, and do so in a stronger trust model and with lower fees and lower request execution latency.
+In the oracle architecture, a single oracle may fulfill the original request, or a decentralized network of oracles may each issue the request and then provide an agreed-upon response (including evidence) to the oracle contract and ultimately to the calling canister. As you can see, the oracle would effectively achieve the same result as HTTPS outcalls, but with a more complex architecture of requiring one or more external parties that want to be paid for their services. Thus, one can assume that HTTPS outcalls can replace oracles for many relevant use cases, and do so in a stronger trust model and with lower fees and lower request execution latency.
 
-Oracle services may provide additional functionality or services. One prominent example is using multiple data sources for a given information item, e.g., an asset price, and then providing a normalized response, e.g., the median price, as a result. Another example is keeping a selection of historic prices that have been retrieved available on chain for direct access by smart contracts without any oracle interaction. Both those functionalities can be built with the canister HTTP outcalls feature and do not require oracles.
+Oracle services may provide additional functionality or services. One prominent example is using multiple data sources for a given information item, e.g., an asset price, and then providing a normalized response, e.g., the median price, as a result. Another example is keeping a selection of historic prices that have been retrieved available on chain for direct access by smart contracts without any oracle interaction. Both those functionalities can be built with the canister HTTPS outcalls feature and do not require oracles.
 
-Overall, the canister HTTP outcalls feature allows us to achieve what oracles or oracle networks do, but in a stronger model without requiring additional parties that are additional points of failure and want to earn fees for their services. With the canister HTTP outcalls feature, interactions with Web 2.0 servers benefit from reduced fees and lower latency due to the simpler architecture.
+Overall, the canister HTTPS outcalls feature allows us to achieve what oracles or oracle networks do, but in a stronger model without requiring additional parties that are additional points of failure and want to earn fees for their services. With the canister HTTPS outcalls feature, interactions with Web 2.0 servers benefit from reduced fees and lower latency due to the simpler architecture.
 
 ## Benefits for developers
 
-For developers, the canister HTTP requests feature has the benefit that they do not need to make a decision on which party (oracle) they want to trust in addition to the Internet Computer Protocol that they already need to trust anyway. They don't need to decide on whether they want to use a single oracle or multiple oracles to reduce trust assumptions and get better decentralization, but rather they get this out of the box with HTTP outcalls.
+For developers, the canister HTTP requests feature has the benefit that they do not need to make a decision on which party (oracle) they want to trust in addition to the Internet Computer Protocol that they already need to trust anyway. They don't need to decide on whether they want to use a single oracle or multiple oracles to reduce trust assumptions and get better decentralization, but rather they get this out of the box with HTTPS outcalls.
 
-The cost of the HTTP outcall is likely much lower than paying an established oracle provider for their services and the associated ingress cost, thus the Internet Computer has a clear economic advantage to use HTTP calls. Freed from making all those non-trivial trust decisions, a developer can focus on their business logic and simply make the HTTP call they need (and write a corresponding transform function), which is more natural.
+The cost of the HTTPS outcall is likely much lower than paying an established oracle provider for their services and the associated ingress cost, thus the Internet Computer has a clear economic advantage to use HTTP calls. Freed from making all those non-trivial trust decisions, a developer can focus on their business logic and simply make the HTTP call they need (and write a corresponding transform function), which is more natural.
 
 ## Benefits for end users
 
-End users can benefit from HTTP outcalls in various ways as well.
-* **Stronger trust model:** they get stronger security by not relying on any additional parties which resemble further points of failure and thereby benefit from better decentralization. The decentralization gotten using HTTP outcalls is the best that can be achieved as it only involves the subnet replicas and the external service to be called, but no third parties such as oracle services.
+End users can benefit from HTTPS outcalls in various ways as well.
+* **Stronger trust model:** they get stronger security by not relying on any additional parties which resemble further points of failure and thereby benefit from better decentralization. The decentralization gotten using HTTPS outcalls is the best that can be achieved as it only involves the subnet replicas and the external service to be called, but no third parties such as oracle services.
 * **Lower fees:** users typically get a cheaper service as oracle middlemen are cut out in the calculation.
 * **Lower latency:** the latency of direct HTTP calls is lower than making an (Xnet) request to an oracle contract that then gets polled and serviced by an external oracle service, which materializes in a better user experience when interacting with the canister. This is more pronounced for Xnet requests, which are required unless the oracle provider sets up an oracle smart contract on every relevant subnet, which would somewhat contradict the subnet architecture principle of ICP.
 
@@ -106,7 +102,7 @@ As you have seen, completely removing the impact that dishonest replicas can hav
 
 ### IPv6-only support
 
-Currently, as ICP itself is an IPv6-based system, the canister HTTP outcalls feature is therefore an IPv6-only feature. IPv4 support may be added in the future depending on demand from the community. The main reason for not supporting IPv4 now is that the Internet Computer does not have sufficiently many IPv4 addresses such that every replica of ICP could get its own IPv4 address and thus it would need to either route traffic over boundary nodes or use other mechanisms to allow for IPv4 communications. Any of those approaches leads to a reduced decentralization and thus a weaker trust model compared to replicas directly communicating with the Web 2.0 server.
+Currently, as ICP itself is an IPv6-based system, the canister HTTPS outcalls feature is therefore an IPv6-only feature. IPv4 support may be added in the future depending on demand from the community. The main reason for not supporting IPv4 now is that the Internet Computer does not have sufficiently many IPv4 addresses such that every replica of ICP could get its own IPv4 address and thus it would need to either route traffic over boundary nodes or use other mechanisms to allow for IPv4 communications. Any of those approaches leads to a reduced decentralization and thus a weaker trust model compared to replicas directly communicating with the Web 2.0 server.
 
 ### Rate limiting by servers
 
@@ -130,7 +126,7 @@ Next, this guide provides important information for engineers who want to use ca
 
 ### Recipe for coding a canister HTTP call
 
-The following &ldquo;recipe&rdquo; gives you a blueprint of how to best tackle the implementation of a new canister HTTP outcall type.
+The following &ldquo;recipe&rdquo; gives you a blueprint of how to best tackle the implementation of a new canister HTTPS outcall type.
 - #### Step 1:&ldquo;Manually,&rdquo; e.g., using the `curl` tool, make the same HTTP request of interest twice within a short time frame (1-2 seconds) to emulate what would be done by the replicas of a subnet, just with a smaller $n$.
 - #### Step 2: Diff the two responses to find all the items that differ in the two requests.
 Both the body and the headers are important to be considered here. Alternatively, identify the core information of interest and how it can be extracted as the response.
@@ -173,12 +169,12 @@ There are a number of error cases that can happen when using this feature. The m
 
 Developers new to the feature are likely to run into certain problems in the beginning, materializing in one of the following errors. This page lists the most prominent issues when starting with this feature.
 * **If a specific type of canister HTTP request works in the local dfx environment, it may still not work on ICP because the local environment runs $1$ replica, whereas ICP runs $n=13$ replicas on the regular application subnets:** problems here are to be expected when developing such calls, particularly when a developer has not yet gained the necessary experience of working with the feature. The main issues to be expected here are with the lack of or problems with the transformation function. Note that this difference between the dfx environment and a deployment on ICP is not going to change any time soon as it results from the way the dfx environment works: It runs a single replica locally, with all the pros and cons during the engineering process.
-* **Receiving a timeout**: if the requests returned by the HTTP server are not &ldquo;similar&rdquo; as required by the feature, this is most likely caused by an error in the transformation function, i.e., the transformed responses are still not equal on sufficiently many honest replicas in order to allow for consensus and thus no response is added to an ICP block. Eventually, a timeout removes all artifacts related to this HTTP outcall. This issue is best debugged by diffing multiple requests made to the service and ensuring the transformation function does not retain any of the variable parts in the transformation result.
+* **Receiving a timeout**: if the requests returned by the HTTP server are not &ldquo;similar&rdquo; as required by the feature, this is most likely caused by an error in the transformation function, i.e., the transformed responses are still not equal on sufficiently many honest replicas in order to allow for consensus and thus no response is added to an ICP block. Eventually, a timeout removes all artifacts related to this HTTPS outcall. This issue is best debugged by diffing multiple requests made to the service and ensuring the transformation function does not retain any of the variable parts in the transformation result.
 * **Requests consume too many cycles:** canister HTTPS outcalls are charged cycles, but if requests with rather small responses frequently cost very large amounts of cycles, the likely cause is that the `max_response_bytes` parameter is not set in the request. In this case the system assumes and charges for the maximum response size which is $2$ MB. Always set this parameter to a value as close as possible to the actual maximum expected response size, and make sure it is at least as large and not smaller. The `max_response_bytes` parameter comprises both the body and the headers and refers to the network response from the server and not the final response to the canister.
 
 ### Pricing
 
-The cycles cost for a HTTP outcalls request has a fixed and variable component. The fixed part accounts for the constant overheads associated a HTTP outcall, whereas the variable part charges for the resources consumed during the requests. Just like with other functions, the cost is scaled to account for larger subnets. The current prices can be found [here](/docs/current/developer-docs/gas-cost).
+The cycles cost for a HTTPS outcalls request has a fixed and variable component. The fixed part accounts for the constant overheads associated a HTTPS outcall, whereas the variable part charges for the resources consumed during the requests. Just like with other functions, the cost is scaled to account for larger subnets. The current prices can be found [here](/docs/current/developer-docs/gas-cost).
 
 **Formula:**
 ```
@@ -191,7 +187,7 @@ total_cost = scaling_factor * http_outcall_cost
 
 The cycles provided with the call must be sufficient for covering the cost of the request, excessive cycles are returned to the caller.
 
-The current pricing is defined to be rather conservative (expensive) and prices may change in the future with the introduction of an update of the pricing model. However, note that an HTTP outcall with a small response, like the ones used for querying financial APIs, only costs fractions of a USD cent, which is substantially cheaper than fees charged for a call by oracles on most blockchains.
+The current pricing is defined to be rather conservative (expensive) and prices may change in the future with the introduction of an update of the pricing model. However, note that an HTTPS outcall with a small response, like the ones used for querying financial APIs, only costs fractions of a USD cent, which is substantially cheaper than fees charged for a call by oracles on most blockchains.
 
 ## Community contributions
 

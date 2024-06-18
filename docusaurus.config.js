@@ -71,7 +71,10 @@ const subnavItems = [
     label: "Languages",
     items: [
       { label: "Rust", href: "/docs/current/developer-docs/backend/rust/" },
-      { label: "Motoko", href: "/docs/current/motoko/main/motoko/" },
+      {
+        label: "Motoko",
+        href: "/docs/current/motoko/main/getting-started/motoko-introduction",
+      },
       {
         label: "TypeScript",
         href: "/docs/current/developer-docs/backend/typescript/",
@@ -159,11 +162,11 @@ const marketingNav = {
         {
           name: "Start Here",
           items: [
-            {
-              name: "The Basics",
-              href: "/basics",
-              description: "New to ICP? Read this first",
-            },
+            // {
+            //   name: "The Basics",
+            //   href: "/basics",
+            //   description: "New to ICP? Read this first",
+            // },
             {
               name: "What is ICP",
               href: "/what-is-the-ic",
@@ -175,9 +178,9 @@ const marketingNav = {
               description: "Look into the nitty gritty",
             },
             {
-              name: "Technical Roadmap",
-              href: "/roadmap",
-              description: "Milestones and what’s next",
+              name: "Sustainability",
+              href: "/capabilities/sustainability",
+              description: "Building green, efficient tech",
             },
             {
               name: "ICP on YouTube",
@@ -186,9 +189,9 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Blockchain for Sustainable Business",
-            href: "/capabilities/sustainability",
-            image: "/img/nav/featured-start-here.webp",
+            title: "Roadmap",
+            href: "/roadmap",
+            image: "/img/nav/featured-roadmap.webp",
           },
         },
         {
@@ -200,12 +203,12 @@ const marketingNav = {
               description: "Transforming the internet",
             },
             {
-              name: "Bitcoin <> ICP",
+              name: "ICP as a Bitcoin L2",
               href: "/bitcoin-integration",
               description: "Bringing smart contracts to Bitcoin",
             },
             {
-              name: "Ethereum <> ICP",
+              name: "Ethereum Integration",
               href: "/ethereum-integration",
               description: "Native ETH on Internet Computer",
             },
@@ -216,9 +219,9 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Connect without oracles",
-            href: "/https-outcalls",
-            image: "/img/nav/featured-capabilities.webp",
+            title: "Chain Fusion Technology",
+            href: "/chainfusion",
+            image: "/img/nav/featured-chainfusion.webp",
           },
         },
       ],
@@ -259,9 +262,9 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Enter the ICP ecosystem",
-            href: "/ecosystem",
-            image: "/img/nav/featured-web3.webp",
+            title: "Run AI models on blockchain",
+            href: "/ai",
+            image: "/img/nav/featured-ai.webp",
           },
         },
         {
@@ -299,8 +302,8 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Chain Fusion Technology",
-            href: "/multichain",
+            title: "Use cases overview",
+            href: "/use-cases",
             image: "/img/nav/featured-use-cases.webp",
           },
         },
@@ -363,6 +366,11 @@ const marketingNav = {
               name: "Hackathons",
               description: "Join like-minded hackers",
               href: "https://dfinity.org/hackathons",
+            },
+            {
+              name: "Education Hub",
+              href: "/education-hub",
+              description: "Comprehensive Learning Resources",
             },
           ],
           featured: {
@@ -440,9 +448,10 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "ICP around the world",
-            href: "/community",
-            image: "/img/nav/featured-community.webp",
+            title: "OLYMPUS",
+            subtitle: "The On-Chain Acceleration Platform",
+            href: "/olympus",
+            image: "/img/nav/featured-olympus.webp",
           },
         },
       ],

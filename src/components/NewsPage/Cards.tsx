@@ -33,9 +33,12 @@ export const FeaturedNewsCard: React.FC<{
 };
 
 export const NewsCard: React.FC<{
-  news: Omit<Press, "tags" | "date" | "id" | "details">;
+  news: Omit<Press, "tags" | "date" | "id" | "details"> & {
+    details?: string;
+  };
   linkLabel?: string;
-}> = ({ news, linkLabel = "Read Now" }) => {
+  clampText?: boolean;
+}> = ({ news, linkLabel = "Read Now", clampText }) => {
   return (
     <article className="rounded-xl overflow-hidden bg-white flex flex-col w-full">
       <img
@@ -44,12 +47,23 @@ export const NewsCard: React.FC<{
         alt={news.title}
       ></img>
       <div className="px-6 pt-8 pb-6 flex flex-col flex-1">
-        <h3 className="tw-heading-5 mb-3">{news.title}</h3>
+        <h3 className={`tw-heading-5 mb-3 ${clampText && "line-clamp-2"}`}>
+          {news.title}
+        </h3>
         <div className="flex-1"></div>
 
         {news.press && news.dateHuman && (
           <div className="tw-paragraph-sm text-black/60 mb-6">
             {news.dateHuman} {news.press && "by " + news.press}
+          </div>
+        )}
+        {news.details && (
+          <div
+            className={`tw-paragraph-sm text-black/60 mb-6 ${
+              clampText && "line-clamp-3"
+            }`}
+          >
+            {news.details}
           </div>
         )}
         <div className="">

@@ -1,0 +1,100 @@
+---
+title: Project spotlight - Cycles ledger
+description: Today we're excited to announce the highly anticipated cycles ledger has been released in the latest dfx version, 0.19.0!
+tags: [New features]
+image: /img/blog/project-spotlight-cycles-ledger.jpg
+---
+
+# Project spotlight: Cycles ledger
+
+![Project spotlight: Cycles ledger](/img/blog/project-spotlight-cycles-ledger.jpg)
+
+We're excited to announce that the cycles ledger has been released in the latest version of `dfx`, `v0.19.0`! The cycles ledger is a highly anticipated new way to manage cycles through `dfx`.
+
+Today, we sat down with the team behind its development to talk about how the project was designed, how developers can use it, and what the team learned from developing the cycles ledger! 
+
+**To get started, what is the cycles ledger?**
+
+*The cycles ledger is a new canister that simplifies the management of cycles.*
+
+**How does the cycles ledger change how a developer interacts with cycles?**
+
+*Instead of creating one or more cycles wallets, which the developer controls and manages, the cycles ledger is a global ledger under the control of the NNS. That is, the burden of managing cycles wallets themselves is lifted. Developers can now conveniently store cycles in one place - the cycles ledger!*
+
+**Why should developers use the cycles ledger instead of the cycles wallet?**
+
+*The cycles wallet has the following shortcomings:*
+
+- *Cycle wallets are a rather complex solution to the problem that principal IDs cannot hold cycles. Developers must first understand the intricacies of cycle wallets before they can become proficient at implementing canisters.*
+
+- *Cycle wallets themselves consume cycles. It is confusing for developers that they need to pay cycles for storing cycles.*
+
+- *When migrating identities, there is the risk that developers forget to copy the canister IDs of their cycle wallets. If the canister IDs cannot be recovered, the cycles are lost.*
+
+*As a global ledger running on a system subnet, the cycles ledger does not have any of these shortcomings.*
+
+**How can developers use the cycles ledger?**
+
+*The cycles ledger can be used through `dfx` using the new `dfx cycles` command. The command can be used to view the cycles balance of the current `dfx` identity, transfer cycles to other principal IDs, and withdraw cycles to top up canisters. It is also possible to increase [your] cycles balance by burning ICP and create canisters using cycles on the cycles ledger directly, all through `dfx`.*
+
+*Since the cycles ledger complies with the ICRC-1, ICRC-2, and ICRC-3 standards, the cycles ledger can also be easily integrated into dapps, for example in the DeFi space.*
+
+**What are the plans for the cycles ledger in the future?**
+
+*The cycles ledger is meant to remain simple, so there are no concrete plans to develop the cycles ledger further. That being said, the cycles ledger will certainly evolve over time. For example, if new standards come about, we will evaluate if the cycles ledger should support them. Moreover, the cycles ledger may be updated to make use of existing and future features of the Internet Computer. As an example, the cycles ledger may burn as many cycles as it collects in fees using the `cycles_burn128` function.*
+
+**Developers in the past have used the cycles wallet to manage cycles. What are the plans for the cycles wallet in the future now that the cycles ledger is released?**
+
+*The cycles wallet will be turned into an extension that can be added to `dfx` if needed. It is important to note that the cycles wallet provides one functionality that the cycles ledger does not: Unlike the cycles ledger, the cycles wallet can be used to make calls to canisters with cycles attached. If a developer requires this functionality, using the cycles wallet for this purpose is still the recommended approach.*
+
+**What prompted this project?**
+
+*When we started the project, it was the most requested feature on the ICP Developer Feedback board. So, we reacted to the developer’s wishes when prioritizing this project.*
+
+**What was the goal of the project? How does it aim to improve the developer experience?**
+
+*The primary goal was to provide a more convenient way for developers to manage cycles.*
+
+*By adding intuitive commands to `dfx` for the handling of cycles through a global ledger, we believe that the workflows for developers will improve. Specifically, developers new to the Internet Computer ecosystem will likely experience less friction and find it easier to get started with their first projects.*
+
+**How did the team design the project?**
+
+*The first step was to determine a suitable substitute for the cycles wallet. There are many approaches that one could pursue. As an example, support for principal IDs to hold cycles could be added to the replica itself, which would require a lot of changes and there would be many technical details to be worked out. Agreement to develop a global ledger in the form of a canister was reached rather quickly because it is a natural and straightforward solution to the problem. Furthermore, a canister implementation has the added benefit that it can adhere to standards for ICRC tokens, which makes the cycles ledger also interesting for dapps such as DEXs.*
+
+*The design was then worked out around the concept of a global ICRC ledger, also specifying the required changes to `dfx` and the NNS.*
+
+**Are there some portions of the original design that didn’t make it into the final release?**
+
+*Once there was agreement on the core of the design, there were no significant changes. As usual, numerous small changes and extensions were made to the original design but nothing substantial was scrapped.*
+
+**What was the most challenging part of creating the cycles ledger?**
+
+*The project required contributions from several teams with the SDK team and the FI team handling most of the development work. As every project is busy with many important tasks, the most challenging part was the management of available resources to make sure that the project continues to make progress.*
+
+**What teams were involved in creating the cycles ledger?**
+
+*The SDK team led the development, implementing all the required changes in `dfx` and the NNS, as well as the non-ICRC endpoints of the cycles ledger. The FI team was responsible for the development of all functionality related to the ICRC-1, ICRC-2, and IRCR-3 standards. Additionally, the NNS team was involved to oversee the changes to the NNS and the product security team to provide security reviews for the design and the implementation.*
+
+**Were there any other features or tools that were created as a result of this project?**
+
+*The changes to the NNS, making it possible to learn which subnet a canister is/would be installed and also to specify on which subnet a canister is supposed to be installed, will likely be useful in other projects.*
+
+**What was the team’s biggest learning or takeaway from this project? Was there anything that could be applied to future projects or influence the design of tooling in the future?**
+
+*The project nicely showed that we can work well across teams. It was a fun project to work on!*
+
+*It also showed that actively dealing with resource constraints is very important. For example, when the NNS team didn’t have the capacity to help with the implementation work, the SDK team stepped up and implemented the NNS changes, which the NNS team reviewed carefully. Without this effort, the completion of the project would have been delayed indefinitely.*
+
+**Is there anything unique about this project that makes it stand out from other previous projects?**
+
+*The project is special in that it develops a canister-based solution, which is always a dog-fooding exercise to some extent, to a problem that the community cares about.*
+
+**To wrap things up, what makes the cycles ledger exciting for developers?**
+
+*Our current developer base will likely be content to have a simpler workflow at their disposal. New developers will hopefully have an easy time on-boarding, which would be a great sign for us that the project made a difference.*
+
+A huge thank you to the cycles ledger team for sitting down and giving us the inside scoop on this exciting project! We're looking forward to hearing what the community thinks about the cycles ledger on our [developer forum](https://forum.dfinity.org/) and [Discord server](https://discord.gg/jnjVVQaE2C).
+
+Until next time!
+
+-DFINITY

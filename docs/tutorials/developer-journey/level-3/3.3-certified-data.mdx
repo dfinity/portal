@@ -8,6 +8,8 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OztLHEilyuc?si=pEXWrE4fGyMsSBOH" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## Overview
 
 In a previous module, [2.2: Advanced canister calls](/docs/current/tutorials/developer-journey/level-2/2.2-advanced-canister-calls), you briefly touched on certified variables. In this guide, you'll dive deeper into certified data and take a look at an example that displays how to use certified data.
@@ -20,7 +22,7 @@ Certified variables are part of a more broad concept of **certified data.** Cert
 
 ## How data is certified
 
-The notion of certified data can be used to certify all the assets of a canister's frontend, such as the canister's HTML, CSS, Javascript, image, or video files. When a canister issues a response along with its certificate, a HTTPS gateway can be used to verify that certificate before passing the response off to the client.
+The notion of certified data can be used to certify all the assets of a canister's frontend, such as the canister's HTML, CSS, Javascript, image, or video files. When a canister issues a response along with its certificate, a HTTP gateway can be used to verify that certificate before passing the response off to the client.
 
 In each round of message execution on the Internet Computer, the message routing layer generates a new state tree that contains that round's information. The tree contains a root hash that is then used by the nodes in the subnet to create a certificate. This state tree contains several pieces of information, including the certified variables of each canister. An example of what a state tree looks like can be found below:
 
@@ -51,7 +53,7 @@ A certificate for each piece of certified data consists of:
 
 To certify data, a canister uses the following workflow:
 
-- First, a canister must construct a hash tree that maps the paths of HTTPS resources to SHA0256 hashes. An example of this tree is:
+- First, a canister must construct a hash tree that maps the paths of HTTPS resources to SHA-256 hashes. An example of this tree is:
 
 ```bash
 *root*
@@ -101,9 +103,9 @@ pub fn set_certified_data(data: &[u8])
 pub fn data_certificate() -> Option<Vec<u8>>
 ```
 
-## Generating an HTTPS response
+## Generating an HTTP response
 
-On the Internet Computer, there is a built in `http_request` query method. This method uses information related to an HTTPS request as the input and outputs an HTTPS response; specifically, the output includes the request's status, headers, and body. If a canister needs to serve HTTPS requests, this method should be implemented.
+On the Internet Computer, there is a built in `http_request` query method. This method uses information related to an HTTP request as the input and outputs an HTTP response; specifically, the output includes the request's status, headers, and body. If a canister needs to serve HTTP requests, this method should be implemented.
 
 When a canister would like to return a certified asset to a request, the response body will contain the asset and a response header with the name [`IC-Certificate`](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification#IC-Certificate_header) and a value equal to the asset's certificate.
 

@@ -97,7 +97,7 @@ function Samples(): JSX.Element {
       }
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-tooling.jpeg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-tooling.jpg"></ShareMeta>
 
       <main className="w-full overflow-hidden">
         <AnimateSpawn variants={transitions.container}>

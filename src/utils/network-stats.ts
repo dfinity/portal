@@ -65,6 +65,23 @@ export function getEthEquivTxRateMultiplier(): Promise<number> {
     .then((res) => res.icp_txn_vs_eth_txn[1]);
 }
 
+export function getckBTCTotalSupply(): Promise<number> {
+  return fetch(
+    "https://icrc-api.internetcomputer.org/api/v1/ledgers/mxzaz-hqaaa-aaaar-qaada-cai/total-supply"
+  )
+    .then(
+      (res) =>
+        res.json() as Promise<{
+          data: [[timestamp: number, supply: string]];
+        }>
+    )
+    .then((res) => {
+      const supplyInSatoshis = parseInt(res.data[0][1], 10);
+      const supplyInBTC = supplyInSatoshis / 100000000;
+      return supplyInBTC;
+    });
+}
+
 export function getCyclesBurnRate(): Promise<number> {
   return fetch(
     "https://ic-api.internetcomputer.org/api/v3/metrics/cycle-burn-rate"
@@ -112,6 +129,31 @@ export function getBlockRate(): Promise<number> {
         }>
     )
     .then((res) => +res.block_rate[0][1]);
+}
+export function getTransactionData(): Promise<{
+  dailyVolume: number;
+  totalTransactions: number;
+}> {
+  const now = Math.floor(Date.now() / 1000);
+  const startOfDay = now - (now % 86400);
+  const endOfDay = startOfDay + 86400;
+
+  return fetch(
+    `https://icrc-api.internetcomputer.org/api/v1/ledgers/mxzaz-hqaaa-aaaar-qaada-cai/transaction-volume?start=${startOfDay}&end=${endOfDay}&step=3600`
+  )
+    .then((res) => res.json())
+    .then((res) => {
+      const dailyData = res.data;
+      const dailyVolume = dailyData.reduce(
+        (total, entry) => total + parseFloat(entry.volume),
+        0
+      );
+      const totalTransactions = parseInt(
+        res.meta.total_transactions_for_all_time,
+        10
+      );
+      return { dailyVolume, totalTransactions };
+    });
 }
 
 export function getFinalizationRate(): Promise<number> {

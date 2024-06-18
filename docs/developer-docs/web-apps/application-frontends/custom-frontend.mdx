@@ -4,7 +4,7 @@ keywords: [intermediate, tutorial, frontend]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Customizing the default frontend canister
+# Customizing the default frontend
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
@@ -131,27 +131,27 @@ To review the default `dfx.json` configuration file:
 - #### Step 1:  Open the `dfx.json` configuration file in a text editor.
 
 - #### Step 2:  Notice that the `canisters` key includes settings for a `custom_greeting_frontend` canister.
+```json
+{
+  "canisters": {
+    ...
 
-        {
-          "canisters": {
-            ...
-
-            "custom_greeting_frontend": {
-              "dependencies": [
-                "custom_greeting_backend"
-              ],
-              "frontend": {
-                "entrypoint": "src/custom_greeting_frontend/src/index.html"
-              },
-              "source": [
-                "src/custom_greeting_frontend/assets",
-                "dist/custom_greeting_frontend/"
-              ],
-              "type": "assets"
-            }
-          }
-        }
-
+    "custom_greeting_frontend": {
+      "dependencies": [
+        "custom_greeting_backend"
+      ],
+      "frontend": {
+        "entrypoint": "src/custom_greeting_frontend/src/index.html"
+      },
+      "source": [
+        "src/custom_greeting_frontend/assets",
+        "dist/custom_greeting_frontend/"
+      ],
+      "type": "assets"
+    }
+  }
+}
+```
 #### What this does
   Let’s take a look at the settings in this section.
 
@@ -181,31 +181,32 @@ To review the default frontend files:
 
     This file contains standard HTML with references to a CSS file and an image that are located in the `src/custom_greeting_frontend/assets` directory. The default `index.html` file also includes standard HTML syntax for displaying an input field for the `name` argument and a clickable button.
 
-    This is the same default frontend in [Motoko default frontend example](/docs/current/developer-docs/backend/motoko/explore-templates).
+    This is the same default frontend in [Motoko default frontend example](/docs/current/motoko/main/getting-started/motoko-introduction).
 
 - #### Step 2:  Open the `src/custom_greeting_frontend/src/index.js` file in a text editor.
 
 This file by default will contain the following piece of code:
+```js
+import { custom_greeting_backend } from "../../declarations/custom_greeting_backend";
 
-        import { custom_greeting_backend } from "../../declarations/custom_greeting_backend";
+document.querySelector("form").addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const button = e.target.querySelector("button");
 
-        document.querySelector("form").addEventListener("submit", async (e) => {
-                e.preventDefault();
-                const button = e.target.querySelector("button");
+        const name = document.getElementById("name").value.toString();
 
-                const name = document.getElementById("name").value.toString();
+        button.setAttribute("disabled", true);
 
-                button.setAttribute("disabled", true);
+        // Interact with foo actor, calling the greet method
+        const greeting = await custom_greeting_backend.greet(name);
 
-                // Interact with foo actor, calling the greet method
-                const greeting = await custom_greeting_backend.greet(name);
+        button.removeAttribute("disabled");
 
-                button.removeAttribute("disabled");
+        document.getElementById("greeting").innerText = greeting;
 
-                document.getElementById("greeting").innerText = greeting;
-
-                return false;
-        });
+        return false;
+});
+```
 
 #### What this does
 - The `import` statement points to an actor that will allow us to make calls to our `custom_greeting_backend` canister from `"../declarations"`
@@ -228,11 +229,13 @@ To prepare the frontend files:
 The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own.
 :::
 
-        module: {
-          rules: [
-            { test: /\.(js|ts)x?$/, loader: "ts-loader" }
-          ]
-        },
+```
+module: {
+  rules: [
+    { test: /\.(js|ts)x?$/, loader: "ts-loader" }
+  ]
+},
+```
 
 This setting enables the project to use the `ts-loader` compiler for a React JavaScript `index.jsx` file. Note that there’s a commented section in the default `webpack.config.js` file that you can modify to add the `module` key.
 
@@ -412,20 +415,21 @@ render(<MyHello />, document.getElementById("app"));
 
 
 - #### Step 9: Open the default `src/custom_greeting_frontend/src/index.html` file in a text editor, then replace the body contents with the following:
-
-        <!doctype html>
-        <html lang="en">
-         <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width">
-            <title>custom_greeting</title>
-            <base href="/">
-            <link type="text/css" rel="stylesheet" href="main.css" />
-         </head>
-         <body>
-            <div id="app"></div>
-         </body>
-        </html>
+```
+<!doctype html>
+<html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>custom_greeting</title>
+    <base href="/">
+    <link type="text/css" rel="stylesheet" href="main.css" />
+ </head>
+ <body>
+    <div id="app"></div>
+ </body>
+</html>
+```
 
 ## Start the local canister execution environment
 
@@ -438,8 +442,9 @@ To start the environment locally:
 - #### Step 2:  Navigate to the root directory for your project, if necessary.
 
 - #### Step 3:  Start the local canister execution environment on your local computer by running the following command:
-
-        dfx start --clean --background
+```
+dfx start --clean --background
+```
 
 After the local canister execution environment completes its startup operations, you can continue to the next step.
 
@@ -452,8 +457,9 @@ To deploy the dapp locally:
 - #### Step 1:  Check that you are still in the root directory for your project, if needed.
 
 - #### Step 2:  Register, build, and deploy your dapp by running the following command:
-
-        dfx deploy
+```
+dfx deploy
+```
 
 The `dfx deploy` command output displays information about the operations it performs.
 
@@ -464,8 +470,9 @@ You can now access the new frontend for the default dapp by entering the caniste
 To view the custom frontend:
 
 - #### Step 1:  Open a new tab or window of your terminal and run:
-
-        npm start
+```
+npm start
+```
 
 - #### Step 2:  Open a browser and navigate to `http://localhost:4943`.
 
@@ -555,5 +562,6 @@ To stop the local network:
 - #### Step 2:  In the terminal that displays network operations, press Control-C to interrupt the local network process.
 
 - #### Step 3:  Stop the local canister execution environment by running the following command:
-
-        dfx stop
+```
+dfx stop
+```

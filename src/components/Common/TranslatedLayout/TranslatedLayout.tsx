@@ -13,6 +13,7 @@ const TranslatedLayout: React.FC<{
   imageClassName?: string;
   imageWithBlob?: false | string;
   attribution?: React.ReactNode;
+  reverseMobile?: boolean;
 }> = ({
   children,
   reverse = false,
@@ -23,6 +24,7 @@ const TranslatedLayout: React.FC<{
   imageClassName,
   customContent,
   attribution,
+  reverseMobile,
 }) => {
   if (!imageUrl && !video && !customContent) {
     throw new Error("imageUrl or video or customContent must be provided");
@@ -88,7 +90,11 @@ const TranslatedLayout: React.FC<{
       className={clsx("flex flex-col md:flex-row", attribution && "mb-10")}
       variants={transitions.item}
     >
-      <div className="md:w-7/12 flex flex-col justify-center order-2 md:order-1">
+      <div
+        className={`md:w-7/12 flex flex-col justify-center ${
+          reverseMobile ? "order-1" : "order-2"
+        } md:order-1`}
+      >
         <div className="md:mx-auto md:w-[71.4%]">{children}</div>
       </div>
       <div className="flex-1 text-center order-1 md:order-2 relative md:-mr-[50px] md:flex md:justify-end md:items-center">

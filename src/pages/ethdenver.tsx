@@ -63,22 +63,22 @@ const projects: {
   {
     name: "Demergent Labs",
     logo: "/img/ethdenver/demergent-labs.webp",
-    description:
-      "Accelerating the adoption of Web3 and the Internet Computer.",
+    description: "Accelerating the adoption of Web3 and the Internet Computer.",
     agenda: ["Mar 3 / 4, 2023"],
   },
   {
     name: "Itoka",
     logo: "/img/ethdenver/itoka-logo.webp",
-    description: "Become a musician smooth and simple with AI and Web3 technology. Only on ICP.",
+    description:
+      "Become a musician smooth and simple with AI and Web3 technology. Only on ICP.",
     agenda: ["Mar 3 / 4, 2023", "5:00pm - 6:00pm MST"],
-    
   },
 
   {
     name: "ntagle",
     logo: "/img/ethdenver/ntagle-logo.webp",
-    description: "Scalable and cost-effective way to trustlessly bind physical objects to canisters",
+    description:
+      "Scalable and cost-effective way to trustlessly bind physical objects to canisters",
     agenda: ["Mar 4, 2023", "8:00am - 10:00am MST"],
   },
 ];
@@ -163,6 +163,8 @@ function EthDenverPage() {
                     <Link
                       className="link-white link-with-icon"
                       href="https://twitter.com/dfinity"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
                       <TwitterIcon className="w-6 h-6" />
                       Follow us on Twitter for updates
@@ -171,6 +173,8 @@ function EthDenverPage() {
 
                   <Link
                     href="https://www.ethdenver.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label="Go to ETHDenver home page"
                   >
                     <motion.img
@@ -245,6 +249,8 @@ function EthDenverPage() {
               >
                 <Link
                   href="https://app.buidlbox.io/guidl/dfinity"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="button-primary"
                 >
                   Sign Up
@@ -252,6 +258,8 @@ function EthDenverPage() {
                 <Link
                   className="link-primary link-with-icon"
                   href="https://twitter.com/DFINITYDev"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <TwitterIcon />
                   Follow for Developer related updates
@@ -349,8 +357,8 @@ function EthDenverPage() {
                 </h4>
                 <p className="tw-paragraph text-black-60 mb-6">
                   Challenge: explore ways of using the Internet Computer to
-                  govern DAOs on Ethereum or another
-                  EVM-compatible chain as a powerful replacement for Snapshot.
+                  govern DAOs on Ethereum or another EVM-compatible chain as a
+                  powerful replacement for Snapshot.
                 </p>
                 <p className="tw-lead text-gradient-base text-gradient-denver inline-block mb-0">
                   $5,000 + Chance for $25,000 DFINITY Grant
@@ -389,6 +397,8 @@ function EthDenverPage() {
               <MotionLink
                 className="link-white link-with-icon"
                 href="https://twitter.com/dfinity"
+                target="_blank"
+                rel="noopener noreferrer"
                 variants={transitions.item}
               >
                 <TwitterIcon />
@@ -424,9 +434,11 @@ function EthDenverPage() {
                 <p className="mb-0">
                   <Link
                     href="https://youtu.be/awjhuGUdENI"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="link-primary link-with-icon"
                   >
-                    Watch bounty explainer video 
+                    Watch bounty explainer video
                     <LinkArrowUpRight />
                   </Link>
                 </p>
@@ -475,6 +487,8 @@ function EthDenverPage() {
                 <p className="mb-0">
                   <Link
                     href="https://events.ethdenver.com/eden23/attendease/networking/experience/dc39b164-1896-405b-8ee1-3ea5343337cd/44e5155f-8ba2-4fa2-acb2-8515469a1073"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="link-primary link-with-icon"
                   >
                     See full info
@@ -510,6 +524,8 @@ function EthDenverPage() {
                 <p className="mb-0">
                   <Link
                     href="https://events.ethdenver.com/eden23/attendease/networking/experience/fcea70a2-372f-41b7-962d-007ac212dbd9/93aa96fc-3c89-437a-8503-f62bf082d16e"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="link-primary link-with-icon"
                   >
                     See full info
@@ -561,6 +577,8 @@ function EthDenverPage() {
                 <p className="mb-0">
                   <Link
                     href="https://events.ethdenver.com/eden23/attendease/networking/experience/e645c2d5-e178-471c-ab3a-f2ba6c296f20/66a0d48e-8617-463f-b454-a6ee5e6b39fd"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="link-primary link-with-icon"
                   >
                     See full info
@@ -597,6 +615,8 @@ function EthDenverPage() {
                 <p className="mb-0">
                   <Link
                     href="https://www.ethdenver.com/map"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="link-primary link-with-icon"
                   >
                     See map
@@ -639,17 +659,23 @@ function EthDenverPage() {
                   The DFINITY Foundation is giving out bounties in various
                   categories to hackers with talent during the BUIDLathon. For
                   questions and assistance, find our dev reps at the co-working
-                  space. Don’t miss this chance to be a pioneer of Web3. You can 
-                  also join {" "} 
-                  <Link href="https://discord.gg/sporkdao"> 
+                  space. Don’t miss this chance to be a pioneer of Web3. You can
+                  also join{" "}
+                  <Link
+                    href="https://discord.gg/sporkdao"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     Discord
-                  </Link> {" "}
-                  to ask questions and get support. 
+                  </Link>{" "}
+                  to ask questions and get support.
                 </p>
 
                 <p className="mb-0">
                   <Link
                     href="https://medium.com/@dfinity/buidl-the-future-on-the-internet-computer-at-ethdenver-2023-f86fb62aba54"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="link-primary link-with-icon"
                   >
                     See full info
@@ -676,12 +702,14 @@ function EthDenverPage() {
                   Take a look at the Web3 projects currently reinventing the
                   internet on the Internet Computer blockchain.
                 </p>
-              
               </div>
-              <Link className="link-primary link-with-icon" href="https://docs.google.com/spreadsheets/d/1izcKFRYuZTM2yeDS3tj63Ph1rYFuXl-7WA9pB-4DVyk/edit?usp=sharing">
-                  <LinkArrowRight />
-                  See Community Agenda in detail
-                </Link>
+              <Link
+                className="link-primary link-with-icon"
+                href="https://docs.google.com/spreadsheets/d/1izcKFRYuZTM2yeDS3tj63Ph1rYFuXl-7WA9pB-4DVyk/edit?usp=sharing"
+              >
+                <LinkArrowRight />
+                See Community Agenda in detail
+              </Link>
             </div>
             <AnimateSpawn
               className="container-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-5 mt-12"
@@ -874,11 +902,10 @@ function EthDenverPage() {
                 >
                   Web3 still runs on Big Tech's cloud. Blockchains can host
                   tokens, but only tiny amounts of data and compute, and no web.
-                  But not the Internet Computer blockchain. The IC runs
-                  it all on-chain, fully decentralized — from simple dapps, to
-                  high user-volume social networks and games, to oderbook
-                  exchanges and enterprise systems, without the need for
-                  traditional IT.
+                  But not the Internet Computer blockchain. The IC runs it all
+                  on-chain, fully decentralized — from simple dapps, to high
+                  user-volume social networks and games, to oderbook exchanges
+                  and enterprise systems, without the need for traditional IT.
                 </motion.p>
               </div>
               <div className="md:w-6/10">

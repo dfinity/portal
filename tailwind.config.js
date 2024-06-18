@@ -82,6 +82,7 @@ module.exports = {
       },
       transparent: "transparent",
       grey: {
+        200: "#DBDBDB",
         300: "#dfdfdf",
         500: "#b6b6b6",
       },
@@ -236,6 +237,7 @@ module.exports = {
                 '.link-primary-disabled': '@apply tw-heading-6 text-black/60 hover:text-black/60 hover:no-underline',
                 '.link-white': '@apply tw-heading-6 text-white hover:text-white/60 hover:no-underline',
                 '.link-primary-light': '@apply tw-heading-6 text-white hover:text-white-60 hover:no-underline',
+                '.link-primary-dark': '@apply tw-heading-6 text-black hover:text-black-60 hover:no-underline',
                 '.link-external': '@apply link-primary after:ml-2 after:content-externalLink after:hover:content-externalLinkHovered',
                 '.link-with-icon': '@apply inline-flex gap-2 items-start md:items-center',
                 '.container-12': '@apply max-w-page mx-auto px-6 md:px-12.5',
@@ -247,6 +249,7 @@ module.exports = {
                 '.checklist-item-white': '@apply font-book bg-[url(\'/img/checkmark-white.svg\')] bg-no-repeat bg-left-top',
                 '.blob': '@apply absolute bg-contain bg-no-repeat pointer-events-none',
                 '.blob-purple': '@apply bg-[url("/img/gradientBlurredCircle.webp")] aspect-[256/232]',
+                '.blob-azure': '@apply bg-[url("/img/blur_azure.svg")] aspect-[1202/716]',
                 '.blob-infinite': '@apply bg-[url("/img/blob-infinite.webp")] aspect-[256/232]',
                 '.blob-white': '@apply bg-[url("/img/whiteBlurredCircle.webp")] aspect-[256/251]',
                 '.blob-white-dense': '@apply bg-[url("/img/blob-white-dense.webp")] aspect-[512/461]',

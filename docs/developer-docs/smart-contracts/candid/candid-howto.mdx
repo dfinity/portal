@@ -39,7 +39,7 @@ Candid types can be used to describe a service via a Candid service description 
 
 If you write a canister in Motoko, for example, the compiler automatically generates a Candid description when you compile the program. If you use `dfx`, you will typically see the auto-generated `.did` files in the `/declarations` directory of your project. Since these files are auto-generated, it is recommended that they should not be manually edited. Even if you change the `.did` files in your project, they will be overwritten in the next `dfx build`.
 
-For canisters written in Rust, the Candid extractor tool can be used with the IC CDK version `0.11.0` and newer. You can find the full instructions for using the Candid extractor [here](/docs/current/developer-docs/backend/candid/generating-candid).
+For canisters written in Rust, the Candid extractor tool can be used with the IC CDK version `0.11.0` and newer. View the full instructions for using the [Candid extractor](/docs/current/developer-docs/backend/rust/generating-candid).
 
 ### Writing `.did` files
 
@@ -145,17 +145,21 @@ To use the Candid web interface to test the `counter` canister:
 
     For example, the full URL should look similar to the following but with the `CANDID-UI-CANISTER-IDENTIFIER` that was returned by the `dfx canister id` command:
 
-        http://127.0.0.1:4943/?canisterId=<CANDID-UI-CANISTER-IDENTIFIER>
+```
+http://127.0.0.1:4943/?canisterId=<CANDID-UI-CANISTER-IDENTIFIER>
+```
 
-    The browser displays a form for you to specify a canister identifier or choose a Candid description (`.did`) file.
+The browser displays a form for you to specify a canister identifier or choose a Candid description (`.did`) file.
 
-    ![candid ui select id](_attachments/candid-ui-select-id.png)
+![candid ui select id](_attachments/candid-ui-select-id.png)
 
-    If you aren’t sure which canister identifier to use, you can run the `dfx canister id` command to look up the identifier for a specific canister name.
+If you aren’t sure which canister identifier to use, you can run the `dfx canister id` command to look up the identifier for a specific canister name.
 
-    For example, if you want to view the functions for the `counter` service description, you could look up the canister identifier by running the following command:
+For example, if you want to view the functions for the `counter` service description, you could look up the canister identifier by running the following command:
 
-        dfx canister id counter
+```
+    dfx canister id counter
+```
 
 - #### Step 5:  Specify a canister identifier or description file, then click **Go** to display the service description.
 

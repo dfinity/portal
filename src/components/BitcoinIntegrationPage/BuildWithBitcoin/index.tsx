@@ -16,11 +16,11 @@ function Index() {
     },
     {
       title: "Native Bitcoin Docs",
-      href: "/docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works",
+      href: "/docs/current/references/bitcoin-how-it-works",
     },
     {
       title: "Chain-Key ECDSA Docs",
-      href: "/docs/current/developer-docs/integrations/t-ecdsa",
+      href: "/docs/current/references/t-ecdsa-how-it-works",
     },
     {
       title: "Sample Code",

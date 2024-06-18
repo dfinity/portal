@@ -20,7 +20,7 @@ function HTTPSOutcalls() {
       world, opening up a plethora of use cases."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-https-outcalls.jpeg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-https-outcalls.webp"></ShareMeta>
 
       <main className="text-black relative">
         <section className="overflow-hidden bg-infinite text-white">
@@ -102,6 +102,8 @@ function HTTPSOutcalls() {
             <p className="mb-3 mt-6">
               <Link
                 href="https://wiki.internetcomputer.org/wiki/HTTPS_outcalls"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>

@@ -1,0 +1,93 @@
+---
+title: Developer weekly update April 3, 2024
+description: In this week's update, we have a new technical working group announcement, an exciting community project, and details about an upcoming hackathon.
+tags: [Devs]
+image: /img/blog/dev-update-blog-april-3.jpg
+---
+
+# Developer weekly update April 3, 2024
+
+![April 3 2024](../../static/img/blog/dev-update-blog-april-3.jpg)
+
+Hello developers, and welcome to this week's developer weekly update! In this week's update, we have a new technical working group announcement, an exciting community project, and details about an upcoming hackathon. Let's get started!
+
+## Inter-canister event utility working group
+
+A new technical working group has been announced! This working group, titled 'Inter-canister event utility group', has been created by a number of grant recipients who are working on various different applications involving inter-canister calls, primarily using the publish / subscribe workflow. This working group will focus on event systems, addressing challenges such as scaling events, figuring out methods in which they can pay for themselves, and how to transmit events across subnets.
+
+The first goal of the working group will be to agree on a set of ICRC standards pertaining to the publish / subscribe event model, then create a series of libraries that adhere to these standards.
+
+Learn more about the working group, including how to participate, on the [developer forum](https://forum.dfinity.org/t/technical-working-group-inter-canister-event-utility-working-group/29048).
+
+## Sign-in with Solana
+
+An exciting community project has been shared on the forum! This project, titled IC-SIWS, is designed to provide a way for Solana wallets to be used to authenticate on ICP. Here's a quick breakdown of how to use it:
+
+Edit your project's `dfx.json` file to include the IC-SIWS canister:
+
+```json
+{
+  "canisters": {
+    "ic_siws_provider": {
+      "type": "custom",
+      "candid": "https://github.com/kristoferlund/ic-siws/releases/download/v0.0.1/ic_siws_provider.did",
+      "wasm": "https://github.com/kristoferlund/ic-siws/releases/download/v0.0.1/ic_siws_provider.wasm.gz"
+    },
+    ...
+  },
+  ...
+}
+```
+
+This canister validates the authentication payload as an identity provider and generates a delegated identity for the user. This works in the same way that Internet Identity does.
+
+Then, configure your canister with the following project settings during deployment:
+
+```
+dfx deploy ic_siws_provider --argument "( \
+    record { \
+        domain = \"127.0.0.1\"; \
+        uri = \"http://127.0.0.1:5173\"; \
+        salt = \"salt\"; \
+        chain_id = opt \"mainnet\"; \
+        scheme = opt \"http\"; \
+        statement = opt \"Login to the app\"; \
+        sign_in_expires_in = opt 300000000000; /* 5 minutes */ \
+        session_expires_in = opt 604800000000000; /* 1 week */ \
+        targets = opt vec { \
+            \"$$(dfx canister id ic_siws_provider)\"; \
+            \"$$(dfx canister id backend)\"; \
+        }; \
+    } \
+)"
+```
+
+Lastly, you can connect a React-based frontend to interact with the provider canister to generate identities:
+
+```
+import { useSiwsIdentity } from "ic-use-siws-identity";
+
+function LoginButton() {
+  const { login, clear, identity, ... } = useSiwsIdentity();
+  // ...
+}
+```
+
+Check out a [live demo](https://guidq-3qaaa-aaaal-qiteq-cai.icp0.io/), and share your thoughts or feedback on the [developer forum](https://forum.dfinity.org/t/announcing-ic-siws-use-solana-wallets-to-login-to-icp/29261)!
+
+
+## Oxford University ICP hackathon
+
+An online and in-person hackathon hosted at Oxford University will begin on April 9th and run through April 11! There are two tracks that developers can participate in:
+
+- Track 1: Artificial intelligence
+
+- Track 2: Decentralized commerce
+
+Sign-ups are open until April 8th and anyone can participate. There are over $70,000 in prizes available to participants!
+
+You can [sign up here](https://summit.immersiveeducation.org/Oxford/2024/hackathon.html).
+
+That'll wrap up this week. Tune back in next week for more developer updates!
+
+-DFINITY

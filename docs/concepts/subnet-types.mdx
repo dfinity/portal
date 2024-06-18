@@ -84,15 +84,23 @@ You can check the current balance for that principal by running the command:
 dfx ledger --network=ic balance
 ```
 
-To top up your principal's balance, you can send cycles to the principal using the [NNS dapp](https://nns.ic0.app/wallet/), or convert ICP tokens into cycles using the steps outlined [here](/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles#converting-icp-tokens-to-cycles).
+To top up your principal's balance, you can send cycles to the principal using the [NNS dapp](https://nns.ic0.app/wallet/), or [learn how to convert ICP tokens into cycles](/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles#converting-icp-tokens-to-cycles).
 
-Then, to create a new wallet on the European subnet, run the following `dfx ledger` command:
+### Creating a cycles wallet
+
+If you'd like to create a new wallet on the European subnet, run the following `dfx ledger` command:
 
 ```
 dfx ledger --network ic create-canister --amount 0.5 --subnet-type european CONTROLLER
 ```
 
-Replace `CONTROLLER` with the prinicpal ID that you took note of earlier after running the `dfx identity get-principal` command.
+:::info
+Please note that the cycles wallet will be removed from dfx in a future release.
+
+It is recommended to use the cycles ledger instead, which does not require any specific flags for different subnet types.
+:::
+
+Replace `CONTROLLER` with the principal ID that you took note of earlier after running the `dfx identity get-principal` command.
 
 Adjust the `--amount 0.5` to the number of ICP tokens that you want to send the new canister. More information can be found in the [documentation](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-ledger/#options). 
 

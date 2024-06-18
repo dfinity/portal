@@ -90,16 +90,17 @@ softwareupdate --install-rosetta
 ## Failed build when using VMs
 
 If you are running the IC SDK using a virtual machine image on Ubuntu or CentOS, you might see an error message that looks like this when you attempt to run the `dfx build` command:
-
-    Building hello...
-    An error occurred:
-    Io(
-        Os {
-            code: 2,
-            kind: NotFound,
-            message: "No such file or directory",
-        },
-    )
+```
+Building hello...
+An error occurred:
+Io(
+    Os {
+        code: 2,
+        kind: NotFound,
+        message: "No such file or directory",
+    },
+)
+```
 
 ## Address in use error or orphan processes
 
@@ -110,18 +111,21 @@ There are several scenarios in which you might encounter this issue. For example
 If you encounter an issue where you suspect or you receive a message that an address is already in use or that a process is already running in the background, perform the following steps:
 
 - #### Step 1:  Run the following command to see which process is listening to the 4943 port if you are using the default binding to localhost:
-
-        lsof -i tcp:4943
+```
+lsof -i tcp:4943
+```
 
 - #### Step 2:  Run the following command to terminate any orphan processes:
-
-        killall dfx replica
+```
+killall dfx replica
+```
 
 - #### Step 3:  Close the current terminal and open a new terminal window.
 
 - #### Step 4:  In the new terminal, run the following command to run the local canister execution environment in a clean state:
-
-        dfx start --clean --background
+```
+dfx start --clean --background
+```
 
 ## Memory leak
 
@@ -136,5 +140,6 @@ Fixing memory leaks is an ongoing process. If you encounter any error messages r
 - #### Step 4:  Run `dfx start` to restart replica processes.
 
 Alternatively, you can remove the `.cache/dfinity` directory and re-install the latest IC SDK `dfx` binary. For example:
-
-    rm -rf ~/.cache/dfinity && sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"
+```
+rm -rf ~/.cache/dfinity && sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"
+```

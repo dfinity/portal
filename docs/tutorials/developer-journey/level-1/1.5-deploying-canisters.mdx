@@ -97,18 +97,14 @@ Uploading assets to asset canister...
 Deployed canisters.
 ```
 
-If you manually converted ICP tokens into cycles, and your cycles wallet doesn't contain enough cycles to complete this deployment, you can add more cycles to your wallet with a command such as:
+If you manually converted ICP tokens into cycles, and your cycles balance doesn't contain enough cycles to complete this deployment, you can convert more ICP into cycles with the command:
+
 
 ```bash
-dfx ledger top-up 5o6tz-saaaa-aaaaa-qaacq-cai --network ic --amount 1.005
+dfx cycles convert 1.005 --network ic
 ```
 
-This command converts an additional 1.005 ICP tokens to cycles for the `5o6tz-saaaa-aaaaa-qaacq-cai` cycles wallet identifier. The command will return output such as:
-
-```bash
-Transfer sent at BlockHeight: 81520
-Canister was topped up!
-```
+This command converts an additional 1.005 ICP tokens to cycles.
 
 If you used the free cycles coupon, this step is not applicable.
 
@@ -125,6 +121,13 @@ https://5h5yf-eiaaa-aaaaa-qaada-cai.icp0.io
 ```
 
 If you open this URL in your web browser, you will see the same poll dapp frontend that you saw when you deployed it locally. The only difference is that now your dapp is hosted 100% on-chain, does not rely on your local <GlossaryTooltip>replica</GlossaryTooltip> to keep running, and you can send this URL to your friends and get them to vote on your poll!
+
+
+:::caution
+
+To avoid burning through your cycles, once you are finished with this tutorial consider stopping your project's canisters with the `dfx canister stop` command. 
+
+:::
 
 ## Need help?
 

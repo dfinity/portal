@@ -54,18 +54,25 @@ function EnterprisePage() {
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                <b>The future of cloud is serverless: for enterprise, government and Web3 applications.</b>
-                <span style={{display: "block", height: "0.6em"}}></span>
-                A truly <i>autonomous cloud</i> is one which is not controlled by a company or entity, but 
-                is public and decentralized like the internet itself.
-                Now imagine a blockchain protocol that enables an autonomous serverless cloud that hosts 
-                data as well as logic, where software is tamperproof and unstoppable, can scale horizontally,
-                and processes HTTP, where you can build sovereign systems and services 
-                that don't need the protection of firewalls... 
-                <span style={{display: "block", height: "0.6em"}}></span>
+                <b>
+                  The future of cloud is serverless: for enterprise, government
+                  and Web3 applications.
+                </b>
+                <span style={{ display: "block", height: "0.6em" }}></span>A
+                truly <i>autonomous cloud</i> is one which is not controlled by
+                a company or entity, but is public and decentralized like the
+                internet itself. Now imagine a blockchain protocol that enables
+                an autonomous serverless cloud that hosts data as well as logic,
+                where software is tamperproof and unstoppable, can scale
+                horizontally, and processes HTTP, where you can build sovereign
+                systems and services that don't need the protection of
+                firewalls...
+                <span style={{ display: "block", height: "0.6em" }}></span>
                 An efficient cloud that destroys intractable R&D, security and
-                legacy software costs. A platform where you are building more simply using an advanced evolution of
-                smart contract technology hosted on an all-new form of blockchain &mdash; the Internet Computer.
+                legacy software costs. A platform where you are building more
+                simply using an advanced evolution of smart contract technology
+                hosted on an all-new form of blockchain &mdash; the Internet
+                Computer.
               </motion.p>
             </div>
           </AnimateSpawn>
@@ -76,7 +83,7 @@ function EnterprisePage() {
           el={motion.section}
           variants={transitions.fadeIn}
         >
-          <div className="text-center md:w-5/10 relative md:absolute top-30 sm:top-40 md:top-0 -translate-y-1/2 right-0 -mt-30 md:-mt-24">
+          <div className="text-center md:w-5/10 relative md:absolute top-30 sm:top-40 md:top-0 -translate-y-1/2 right-0 md:translate-x-40 -mt-30 md:-mt-24">
             <img
               src="/img/enterprise/enterprise-hero-image.webp"
               alt=""
@@ -94,16 +101,16 @@ function EnterprisePage() {
               className="tw-heading-5 sm:tw-heading-4 md:tw-heading-3 mb-3 md:mb-6 text-gradient"
               variants={transitions.item}
             >
-              Legacy tech stacks, increasing
-              development costs and fleeing talent are just a few 
-              of the blockers holding tech endeavors back from innovating 
-              and staying ahead of the competition &mdash; move forward by building on
-              a serverless cloud that's
-              an <i>everything stack</i> created by an advanced public network.
+              Legacy tech stacks, increasing development costs and fleeing
+              talent are just a few of the blockers holding tech endeavors back
+              from innovating and staying ahead of the competition &mdash; move
+              forward by building on a serverless cloud that's an{" "}
+              <i>everything stack</i> created by an advanced public network.
             </motion.h2>
           </div>
         </AnimateSpawn>
-        <br/><br/>
+        <br />
+        <br />
         <section className="bg-infinite relative overflow-hidden text-white">
           <div className="blob blob-white blob-sm md:blob-xl blob-x-7 blob-y-0"></div>
           <div className="container-10 mt-20 md:mt-40 md:w-6/10 md:mx-auto">
@@ -123,22 +130,24 @@ function EnterprisePage() {
                 Serverless Computing
               </h2>
               <p className="tw-lead-sm">
-               Enterprises and Web3 projects looking for serverless architectures to enable quick and agile
-               development cycles that reduce infrastructure maintenance and operational costs can rely on the 
-               Internet Computer, a decentralized blockchain protocol. 
+                Enterprises and Web3 projects looking for serverless
+                architectures to enable quick and agile development cycles that
+                reduce infrastructure maintenance and operational costs can rely
+                on the Internet Computer, a decentralized blockchain protocol.
               </p>
               <p className="tw-lead-sm">
-                The Internet Computer programming model is also similar to that of
-                serverless clouds in that applications can be written in common
-                languages such as Rust or Python. It is simpler, however, as state
-                is maintained automatically without the need for developer intervention
-                &mdash; a major advance in the field. 
+                The Internet Computer programming model is also similar to that
+                of serverless clouds in that applications can be written in
+                common languages such as Rust or Python. It is simpler, however,
+                as state is maintained automatically without the need for
+                developer intervention &mdash; a major advance in the field.
               </p>
               <p className="tw-lead-sm">
-                Serverless cloud addresses the $1.8 trillion global spend on IT personnel, 
-                the $900 billion spend on software, $600 billion spend on Big Tech's clouds, $224 billion spend 
-                on data center systems, $179 billion spend on cybersecurity, and the $50 billion 
-                cost of cybersecurity incidents, reported by Gartner.
+                Serverless cloud addresses the $1.8 trillion global spend on IT
+                personnel, the $900 billion spend on software, $600 billion
+                spend on Big Tech's clouds, $224 billion spend on data center
+                systems, $179 billion spend on cybersecurity, and the $50
+                billion cost of cybersecurity incidents, reported by Gartner.
               </p>
               <p className="mb-0">
                 <Link
@@ -161,48 +170,53 @@ function EnterprisePage() {
               </p>
               <p className="tw-lead-sm">
                 The Internet Computer offers an alternative technology stack
-                that's open and decentralized. Independently owned and operated "node
-                machines," which are installed in independent data centers around the world,
-                are connected by advanced network protocols to form a seamless serverless
-                cloud that's stateful, tamperproof, unstoppable, autonomous and sovereign,
-                upon which any system can be built. Its software — canister smart contracts
-                — are compiled to WebAssembly, the new Web3 industry standard for
-                cross platform, language agnostic, portable server executable
-                code.
+                that's open and decentralized. Independently owned and operated
+                "node machines," which are installed in independent data centers
+                around the world, are connected by advanced network protocols to
+                form a seamless serverless cloud that's stateful, tamperproof,
+                unstoppable, autonomous and sovereign, upon which any system can
+                be built. Its software — canister smart contracts — are compiled
+                to WebAssembly, the new Web3 industry standard for cross
+                platform, language agnostic, portable server executable code.
               </p>
               <p className="tw-lead-sm">
-                It's an open cloud where you can build sovereign enterprise infrastructure
-                &mdash; which, just like the internet, doesn't have a corporate owner who 
-                can make arbitrary updates, and who has backdoors and kill switches.
+                It's an open cloud where you can build sovereign enterprise
+                infrastructure &mdash; which, just like the internet, doesn't
+                have a corporate owner who can make arbitrary updates, and who
+                has backdoors and kill switches.
               </p>
             </TranslatedLayout>
             <TranslatedLayout
               imageUrl="/img/enterprise/security-teams.webp"
-              reverse={true}>
+              reverse={true}
+            >
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
                 Kill security costs &amp; risks
               </h2>
               <p className="tw-lead-sm">
-                The Internet Computer hosts tamperproof and unstoppable software systems
-                and services, which don't need protection 
-                from firewalls, SIEM logging or other traditional cybersecurity 
-                frameworks. 
+                The Internet Computer hosts tamperproof and unstoppable software
+                systems and services, which don't need protection from
+                firewalls, SIEM logging or other traditional cybersecurity
+                frameworks.
               </p>
               <p className="tw-lead-sm">
-              Simply put, the Internet Computer has no backdoors through which hackers can pass, or hosted 
-              software or data can be attacked by viruses and ransomware. That's because it's a virtual 
-              platform created by advanced math &mdash; fault-tolerant network protocols and cryptography 
-              built by world class cryptographers, engineers and computer scientists in a project 
-              developed in hundreds of person-years of effort.          
+                Simply put, the Internet Computer has no backdoors through which
+                hackers can pass, or hosted software or data can be attacked by
+                viruses and ransomware. That's because it's a virtual platform
+                created by advanced math &mdash; fault-tolerant network
+                protocols and cryptography built by world class cryptographers,
+                engineers and computer scientists in a project developed in
+                hundreds of person-years of effort.
               </p>
               <p className="tw-lead-sm">
-              Now you can move beyond the security flaws of Legacy IT, to a world in which software is tamperproof 
-              and unstoppable by building on the Internet Computer protocol
-              </p>              
+                Now you can move beyond the security flaws of Legacy IT, to a
+                world in which software is tamperproof and unstoppable by
+                building on the Internet Computer protocol
+              </p>
               <p className="tw-lead-sm">
-                Say goodbye to being hacked and encrypted by ransomware, slash your 
-                cybersecurity costs, and focus instead on optimizing business logic and 
-                creating delightful user experiences.
+                Say goodbye to being hacked and encrypted by ransomware, slash
+                your cybersecurity costs, and focus instead on optimizing
+                business logic and creating delightful user experiences.
               </p>
 
               <p className="mb-0">
@@ -214,19 +228,20 @@ function EnterprisePage() {
                   How the Internet Computer is designed
                 </Link>
               </p>
-            </TranslatedLayout>            
+            </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/enterprise/digital-identity.webp">
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
                 Built-in digital identity framework
               </h2>
               <p className="tw-lead-sm mb-6 md:mb-10">
-                No need to build proprietary identity solutions or rely on for-profit
-                companies to keep user data safe and private. Internet Identity is a
-                privacy-enhancing authentication framework native to the Internet
-                Computer. Following the open standards of the FIDO Alliance and W3C,
-                Internet Identity uses secure passkeys and WebAuthn that can be
-                seamlessly integrated with any service running on the Internet Computer. 
-                Zero knowledge proofs enable users to privately share sensitive data.
+                No need to build proprietary identity solutions or rely on
+                for-profit companies to keep user data safe and private.
+                Internet Identity is a privacy-enhancing authentication
+                framework native to the Internet Computer. Following the open
+                standards of the FIDO Alliance and W3C, Internet Identity uses
+                secure passkeys and WebAuthn that can be seamlessly integrated
+                with any service running on the Internet Computer. Zero
+                knowledge proofs enable users to privately share sensitive data.
               </p>
               <p className="mb-0">
                 <Link
@@ -247,26 +262,27 @@ function EnterprisePage() {
               </h2>
               <p className="tw-lead-sm mb-6 md:mb-10">
                 Chain-key cryptography and secure multiparty computation enable
-                enterprise-grade custody of digital assets on the Internet Computer.
-                Security built into the protocol reduces the complexity of digital
-                asset custody associated with traditional solutions.
+                enterprise-grade custody of digital assets on the Internet
+                Computer. Security built into the protocol reduces the
+                complexity of digital asset custody associated with traditional
+                solutions.
               </p>
-            </TranslatedLayout>            
+            </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/enterprise/tokenized-business-models.webp">
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-6">
                 Tokenized business models
               </h2>
               <p className="tw-lead-sm">
                 From loyalty programs to memberships and ticketing, businesses
-                need to manage customer relationships to be successful. The Internet
-                Computer provides a common digital wallet that makes the handling of 
-                digital assets and identities much simpler.
+                need to manage customer relationships to be successful. The
+                Internet Computer provides a common digital wallet that makes
+                the handling of digital assets and identities much simpler.
               </p>
               <p className="tw-lead-sm">
                 Organizations can effectively include their customers in the
                 product development life cycle by leveraging built-in tokenized
-                voting tools that are native to the Internet Computer, incentivizing
-                users to actively participate.
+                voting tools that are native to the Internet Computer,
+                incentivizing users to actively participate.
               </p>
             </TranslatedLayout>
             <TranslatedLayout
@@ -277,28 +293,29 @@ function EnterprisePage() {
                 Extending existing software with blockchain capabilities
               </h2>
               <p className="tw-lead-sm">
-                Internet Computer smart contracts can both process and create HTTP requests, 
-                which allows them to host complete web apps on the blockchain, as well as
-                directly make calls to APIs of any online service running on traditional cloud or
-                elsewhere. This gives businesses the option to add blockchain capabilities to their
-                existing software instead of developing the whole application on the blockchain from
-                scratch.
+                Internet Computer smart contracts can both process and create
+                HTTP requests, which allows them to host complete web apps on
+                the blockchain, as well as directly make calls to APIs of any
+                online service running on traditional cloud or elsewhere. This
+                gives businesses the option to add blockchain capabilities to
+                their existing software instead of developing the whole
+                application on the blockchain from scratch.
               </p>
             </TranslatedLayout>
-            <TranslatedLayout
-              imageUrl="/img/enterprise/x-org-collaboration.webp"
-            >
+            <TranslatedLayout imageUrl="/img/enterprise/x-org-collaboration.webp">
               <h2 className="tw-heading-4 md:tw-heading-3 md:mb-0">
                 Secure X-org collaboration
               </h2>
               <p className="md:mb-6">(coming soon)</p>
               <p className="tw-lead-sm">
-                Enterprises today face a choice of exchanging sensitive documents via emails
-                with no audit trail of who accessed and edited them, or using expensive US
-                hosted SaaS services with the associated vendor lock-in and geographical
-                data protection issues. On-chain encryption enabled by 'Verifiable Encrypted
-                Threshold Keys' (VETKeys) will enable customized cross-org workflows via tamperproof
-                smart contract that store private data securely encrypted on chain.
+                Enterprises today face a choice of exchanging sensitive
+                documents via emails with no audit trail of who accessed and
+                edited them, or using expensive US hosted SaaS services with the
+                associated vendor lock-in and geographical data protection
+                issues. On-chain encryption enabled by 'Verifiable Encrypted
+                Threshold Keys' (VETKeys) will enable customized cross-org
+                workflows via tamperproof smart contract that store private data
+                securely encrypted on chain.
               </p>
             </TranslatedLayout>
           </div>
@@ -319,8 +336,8 @@ function EnterprisePage() {
                   Secure inter-org workflows
                 </h3>
                 <p className="tw-paragraph mb-0">
-                  Privately share documents with other organizations
-                  and customers, using on-chain encryption enabled by VETKeys.
+                  Privately share documents with other organizations and
+                  customers, using on-chain encryption enabled by VETKeys.
                 </p>
               </div>
               <div className="flex flex-col">
@@ -333,8 +350,8 @@ function EnterprisePage() {
                   Digital identity layer
                 </h3>
                 <p className="tw-paragraph mb-0">
-                  Privacy-enhancing identity layer for seamless
-                  and secure authentication across systems and services/applications.
+                  Privacy-enhancing identity layer for seamless and secure
+                  authentication across systems and services/applications.
                 </p>
               </div>
               <div className="flex flex-col">
@@ -387,8 +404,8 @@ function EnterprisePage() {
                 />
                 <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">Supply chain</h3>
                 <p className="tw-paragraph mb-0">
-                  Blockchain transparency and immutability for easy
-                  verification of authenticity.
+                  Blockchain transparency and immutability for easy verification
+                  of authenticity.
                 </p>
               </div>
             </div>
@@ -400,14 +417,12 @@ function EnterprisePage() {
               className="tw-heading-4 md:tw-heading-3 mb-8 text-gradient"
               variants={transitions.item}
             >
-              The Internet Computer processes vast numbers of computational transactions daily,
-              supporting enterprise cloud and blockchain-specific use cases.
+              The Internet Computer processes vast numbers of computational
+              transactions daily, supporting enterprise cloud and
+              blockchain-specific use cases.
             </motion.h2>
             <motion.p className="mb-24">
-              <Link
-                href="mailto:comms@dfinity.org"
-                className="button-primary"
-              >
+              <Link href="mailto:comms@dfinity.org" className="button-primary">
                 Get in touch to talk use cases
               </Link>
             </motion.p>
@@ -417,7 +432,7 @@ function EnterprisePage() {
             alt=""
             className="absolute w-[600px] max-w-none sm:max-w-full sm:w-auto bottom-0 sm:bottom-auto sm:top-5/12 md:top-3/10 sm:-right-3/10"
           />
-        </section>        
+        </section>
         <section className="container-12 py-30 md:py-48">
           <div className="text-center mb-16 md:mb-30">
             <AnimateSpawn
@@ -440,11 +455,12 @@ function EnterprisePage() {
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
                 FEDERITALY is a non-profit organization that promotes and
-                protects Italian entrepreneurship. In collaboration with the ORIGYN
-                Foundation, they are building a solution on the Internet Computer to improve 
-                their “100% made in Italy” verification service. Consumers benefit from 
-                product authenticity of origin certificates stored fully on-chain
-                and protected by tamperproof smart contracts.
+                protects Italian entrepreneurship. In collaboration with the
+                ORIGYN Foundation, they are building a solution on the Internet
+                Computer to improve their “100% made in Italy” verification
+                service. Consumers benefit from product authenticity of origin
+                certificates stored fully on-chain and protected by tamperproof
+                smart contracts.
               </p>
               <Link
                 className="link-primary link-with-icon"
@@ -461,15 +477,20 @@ function EnterprisePage() {
                 NFTs as employee rewards
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-10">
-                  As part of their global rebranding to Pluxee, French multinational, {" "}
-                  <Link className="link-subtle" href="https://www.sodexo.com/en/services/pluxee">
+                As part of their global rebranding to Pluxee, French
+                multinational,{" "}
+                <Link
+                  className="link-subtle"
+                  href="https://www.sodexo.com/en/services/pluxee"
+                >
                   Sodexo Benefits & Rewards Services
-                  </Link>{" "}
-                  partnered with Yumi NFT Marketplace on the
-                  Internet Computer to modernize their employee reward program and create a dynamic
-                  company culture within the organization. Pluxee launched an exclusive NFT collection
-                  (X Collection) for its 5'000 employees. Pluxee pledged to donate to the Stop Hunger
-                  Foundation for each employee NFT claimed.
+                </Link>{" "}
+                partnered with Yumi NFT Marketplace on the Internet Computer to
+                modernize their employee reward program and create a dynamic
+                company culture within the organization. Pluxee launched an
+                exclusive NFT collection (X Collection) for its 5'000 employees.
+                Pluxee pledged to donate to the Stop Hunger Foundation for each
+                employee NFT claimed.
               </p>
               <Link
                 className="link-primary link-with-icon"
@@ -483,10 +504,7 @@ function EnterprisePage() {
               variants={transitions.container}
             >
               <motion.div variants={transitions.container}>
-                <Link
-                  className="button-outline text-center"
-                  href="/ecosystem"
-                >
+                <Link className="button-outline text-center" href="/ecosystem">
                   other projects on the Internet Computer
                 </Link>
               </motion.div>
@@ -505,14 +523,12 @@ function EnterprisePage() {
                 Interested in running a pilot on the Internet Computer?
               </h2>
               <p className="tw-lead-sm md:tw-lead mb-6 md:mb-8">
-                Committing to a new technology stack is a big decision. Speak with experts
-                to get a better sense of how the Internet Computer could benefit your business.
+                Committing to a new technology stack is a big decision. Speak
+                with experts to get a better sense of how the Internet Computer
+                could benefit your business.
               </p>
               <p className="mb-0">
-                <Link
-                  href="mailto:comms@dfinity.org"
-                  className="button-white"
-                >
+                <Link href="mailto:comms@dfinity.org" className="button-white">
                   get in touch
                 </Link>
               </p>

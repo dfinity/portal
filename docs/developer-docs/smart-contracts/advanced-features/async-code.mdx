@@ -12,7 +12,7 @@ before it can continue processing the call it received.
 
 The `async/await` pattern makes this look straightforward, as the developer can write code as if processing happens sequentially and the call to
 the callee is handled “synchronously”. However, given ICP's message passing model, one has to be careful in case there are [concurrent calls that
-message executions can interleave](https://internetcomputer.org/docs/current/references/message-execution-properties/) as these can lead to inconsistencies if they are not anticipated.
+message executions can interleave](/docs/current/references/message-execution-properties/) as these can lead to inconsistencies if they are not anticipated.
 
 ## Overview of language runtime for asynchronous code
 
@@ -25,7 +25,7 @@ is not ready, the code will typically yield execution and the future will be pol
 
 
 In order to implement inter-canister calls on ICP, there would need to be a future which, once created, takes care of calling
-[the respective system APIs](https://internetcomputer.org/docs/current/references/ic-interface-spec#system-api-call) to make the call and will
+[the respective system APIs](/docs/current/references/ic-interface-spec#system-api-call) to make the call and will
 become ready once the response from the calling canister is received. The language runtime can poll the future once it's ready and retrieve the
 result of the inter-canister call.
 
@@ -51,7 +51,7 @@ fn bar() {
 ```
 
 
-When canister A calls B, a future that represents the result of the call is created. The future calls [the system API](https://internetcomputer.org/docs/current/references/ic-interface-spec#system-api-call)
+When canister A calls B, a future that represents the result of the call is created. The future calls [the system API](/docs/current/references/ic-interface-spec#system-api-call)
 to enqueue the outgoing call. The future is not ready yet as it needs the response from canister B, so the code will yield and the message
 execution for canister A will stop at the point before `do_more_work`.
 

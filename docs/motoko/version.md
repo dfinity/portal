@@ -1,6 +1,6 @@
 # Motoko Version
 
-The release of Motoko documented here, currently 0.11.0, may be a few versions
+The release of Motoko documented here, currently 0.11.1, may be a few versions
 ahead of the Motoko compiler that is shipped with dfx.
 
 You can, however, instruct `dfx` to use a newer version of Motoko than the one

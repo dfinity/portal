@@ -150,7 +150,7 @@ function NewsPage() {
           el={motion.section}
         >
           <h2 className="tw-heading-5 mt-10 mb-8">Latest News</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-stretch">
             {filteredEvents
               ?.slice(0, showMaxNews)
               .map((newsOrPromo) =>
