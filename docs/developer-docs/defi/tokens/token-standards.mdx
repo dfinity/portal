@@ -14,7 +14,7 @@ Tokens deployed on ICP must adhere to a standard. The network's native token, IC
 
 [ICRC](https://github.com/dfinity/ICRC) stands for `Internet Computer Request for Comments'. ICRC standards are proposed by the community working group and are not specific to tokens; they can be created for anything on ICP, such as services, canister calls, or authentication methods. However, this documentation will detail the ICRC standards that are specific to tokens.
 
-In the past, the DIP-721 standard was promoted and used by projects on the network for deploying non-fungible tokens. The ICRC-7 standard has since been developed as a newer alternative to the DIP-721 standard.
+In the past, the [DIP-721](#dip-721) standard was promoted and used by projects on the network for deploying non-fungible tokens. The ICRC-7 standard has since been developed as a newer alternative to the DIP-721 standard.
 
 ## ICP tokens
 
@@ -34,7 +34,7 @@ The ICP token is similar to Bitcoin in the following ways:
 
 -   Tokens are entirely fungible.
 
--   `AccountIdentifier`s are 32 bytes and are roughly the equivalent of the hash of a public key, optionally together with some additional sub-account specifier.
+-   Accounts are identified by a pair `(owner, subaccount)`.
 
 The ICP token differs from Bitcoin in the following ways:
 
@@ -50,8 +50,6 @@ The ICRC-1 standard is for fungible tokens on ICP. It uses an `Account` value th
 
 The ICRC-1 standard is considered the 'base' standard and intentionally excludes certain features and functions, such as:
 
-The base standard intentionally excludes some ledger functions, such as:
-
 - Reliable transaction notifications for smart contracts.
 
 - A block structure and the interface for fetching blocks.
@@ -62,7 +60,7 @@ ICRC-1 supports extensions of this standard to implement these missing functions
 
 ### Token metadata
 
-Available metadata entries for ICRC-1 tokens include:
+Token metadata is used to provide information about the token, such as the name, symbol, or fee. Available metadata entries for ICRC-1 tokens include:
 
 - `icrc1:symbol`: The token's currency code, such as `variant { Text = "XTKN" }`.
 
