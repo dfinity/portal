@@ -22,13 +22,9 @@ If you are working in a local development environment, i.e. with a local replica
 
 A ledger account belongs to and is controlled by the account owner who must be a valid principal ID. No account can be owned by two or more principals (no "joint accounts"). However, since a principal can refer to an external user as well as to a canister, joint accounts can be implemented as canisters.
 
-An account owner may control more than one account. In this case, each account corresponds to a pair (account_owner, sub_account). The sub-account is an optional bitstring which helps distinguish between the different sub-accounts of the same owner.
-
-An account on the ledger is identified by its `AccountIdentifier`, which is derived from the principal ID and sub-account identifier.
+An account on the ledger uses an `AccountIdentifier`, which is derived from the principal ID and subaccount identifier. The subaccount is an optional bitstring which helps distinguish between the different sub-accounts of the same owner.
 
 In this context, you can think of principal identifiers as a rough equivalent to the hash of a user’s public key for Bitcoin or Ethereum. You use the corresponding secret key to sign messages and therefore authenticate to the ledger canister and operate on the principal’s account. Canisters can also have accounts in the ledger canister, in which case the address is derived from the canister’s principal.
-
-The ledger canister is initialized using administrative operations that are internal to the Internet Computer. As part of the initialization process, the canister is created with the set of accounts and associated ICP token balances.
 
 :::info Why does the ledger use `AccountIdentifier`s and not just Principal IDs?
 
