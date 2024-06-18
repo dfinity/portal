@@ -9,13 +9,13 @@ import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# How to use HTTP outcalls: GET
+# How to use HTTPS outcalls: GET
 
 <MarkdownChipRow labels={["Advanced", "Tutorial"]} />
 
 ## Overview
 
-A minimal example to make a `GET` HTTPS request. The purpose of this dapp is only to show how to make HTTP requests from a canister.
+A minimal example to make a `GET` HTTP request. The purpose of this dapp is only to show how to make HTTP requests from a canister.
 
 The sample code is in both Motoko and Rust. This sample canister sends a `GET` request to the Coinbase API and retrieves some historical data about the ICP token.
 
@@ -61,7 +61,7 @@ import Types "Types";
 
 actor {
 
-  //0. method that uses the HTTP outcalls feature and returns a string
+  //0. method that uses the HTTPS outcalls feature and returns a string
   public func foo() : async Text {
 
     //1. DECLARE MANAGEMENT CANISTER
@@ -75,7 +75,7 @@ actor {
     //3. ADD CYCLES TO PAY FOR HTTP REQUEST
     //code to add cycles
 
-    //4. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
+    //4. MAKE HTTP REQUEST AND WAIT FOR RESPONSE
     let response : Types.HttpResponsePayload = await ic.http_request(request);
 
     //5. DECODE THE RESPONSE
@@ -98,7 +98,7 @@ You will also create some custom types in `Types.mo`. It will look like this:
 ```motoko
 module Types {
 
-    //type declarations for HTTP requests, HTTP responses, management canister, etc...
+    //type declarations for s, HTTP responses, management canister, etc...
 
 }
 ```
@@ -123,7 +123,7 @@ async fn foo() {
         //instantiate the request
     };
 
-    //3. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
+    //3. MAKE HTTP REQUEST AND WAIT FOR RESPONSE
     //Note: in Rust, `http_request()` already sends the cycles needed
     //so no need for explicit Cycles.add() as in Motoko
     match http_request(request).await {
@@ -260,7 +260,7 @@ actor {
     //See: /docs/current/references/ic-interface-spec/#ic-http_request
     Cycles.add(20_949_972_000);
 
-    //4. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
+    //4. MAKE HTTP REQUEST AND WAIT FOR RESPONSE
     //Since the cycles were added above, you can just call the management canister with HTTPS outcalls below
     let http_response : Types.HttpResponsePayload = await ic.http_request(http_request);
 
@@ -394,7 +394,7 @@ async fn get_icp_usd_exchange() -> String {
         headers: request_headers,
     };
 
-    //3. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
+    //3. MAKE HTTP REQUEST AND WAIT FOR RESPONSE
 
     //Note: in Rust, `http_request()` needs to pass cycles if you are using ic_cdk: ^0.9.0
     let cycles = 230_949_972_000;
@@ -752,5 +752,5 @@ You can see play with the dapp's `get_icp_usd_exchange` method on-chain here: [h
 
 ## Additional resources
 
-- Sample code of [HTTP GET requests in Rust.](https://github.com/dfinity/examples/tree/master/rust/send_http_get)
-- Sample code of [HTTP GET requests in Motoko.](https://github.com/dfinity/examples/tree/master/motoko/send_http_get)
+- Sample code of [HTTP `GET` requests in Rust.](https://github.com/dfinity/examples/tree/master/rust/send_http_get)
+- Sample code of [HTTP `GET` requests in Motoko.](https://github.com/dfinity/examples/tree/master/motoko/send_http_get)
