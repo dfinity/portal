@@ -8,28 +8,28 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Concept", "DeAI" ]} />
 
-Decentralized AI, or DeAI for short, is the moniker that describes the intersection between AI and blockchain technology.
-The term denotes a wide range of applications starting from peripheral elements such as tokenization or decentralized marketplaces and going all the way to running AI models fully onchain as smart contracts.
+Decentralized AI, or DeAI for short, refers to the intersection between AI and blockchain technology.
+The term denotes a wide range of applications, starting from peripheral elements such as tokenization or decentralized marketplaces, and going all the way to running AI models fully on-chain as smart contracts.
 
-## Why DeAI?
+## Why use DeAI?
 
-DeAI in its truest form of running AI onchain as smart contracts can potentially solve the trust problem in AI.
-Today users have to blindly trust AI running on centralized servers.
-Users have no visibility into how their data is used and how AI models produce responses, whether they work correctly, reliably, and consistently.
+DeAI in its truest form can potentially solve AI's trust problem. Today, users have to blindly trust AI running on centralized servers. They have no visibility into how their data is used, how AI models produce responses, or whether they work correctly, reliably, and consistently.
+
 Since AI models behave like black boxes to users, building trustworthy AI models is a difficult challenge.
-This can be addressed if users are able to verify how a model has been trained and the inference process uses that very model that generates an output.
+This can be addressed if users are able to verify how a model has been trained and that the inference process uses that very model to generate an output.
+
+Trustworthy DeAI is possible on ICP using canister smart contracts.
 
 ## DeAI on ICP
 
-Running AI models onchain is too compute and memory-intensive for traditional blockchains.
-ICP was designed to make smart contracts powerful by leveraging the following features:
-1. WebAssembly virtual machine that provides near-native performance.
+Running AI models on-chain is too compute and memory-intensive for traditional blockchains. ICP was designed to make smart contracts powerful by leveraging the following features:
+1. The WebAssembly virtual machine that provides near-native performance.
 2. Deterministic time slicing that automatically splits long-running computation over multiple blocks.
-3. Powerful node hardware with the standardized specification. Nodes have 32-core CPUs, 512GiB RAM, and 30TB NVMe.
+3. Powerful node hardware with a standardized specification. Nodes have 32-core CPUs, 512GiB RAM, and 30TB NVMe.
 
-Today ICP supports onchain inference of small models using AI libraries such as [Sonos Tract](https://github.com/sonos/tract) that compile to WebAssembly.
-Check out [this example](/docs/current/developer-docs/ai/ai-on-chain) of image classification to learn how it works.
-The long-term [vision](https://internetcomputer.org/roadmap#Decentralized%20AI-start) is to support onchain GPU compute to enable both training and inference of larger models.
+Currently, ICP supports on-chain inference of small models using AI libraries such as [Sonos Tract](https://github.com/sonos/tract) that compile to WebAssembly.
+Check out the [image classification example](/docs/current/developer-docs/ai/ai-on-chain) to learn how it works.
+The long-term [vision of DeAI on ICP](https://internetcomputer.org/roadmap#Decentralized%20AI-start) is to support on-chain GPU compute to enable both training and inference of larger models.
 
 ## Technical working group: DeAI
 
