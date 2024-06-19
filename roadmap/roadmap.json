@@ -1382,7 +1382,7 @@
         "elements": [
           {
             "title": "EVM in a canister",
-            "overview": "An low-fee, high-performance EVM implemented as set of canisters on ICP with trustless integration with the Bitcoin network.",
+            "overview": "A low-fee, high-performance EVM implemented as set of canisters on ICP with trustless integration with the Bitcoin network.",
             "description": "The Bitfinity EVM is implemented as a set of canister smart contracts deployed on ICP. Bitfinity offers lower fees, lower latency, and higher throughput than Ethereum. Thanks to chain-key cryptography, the EVM is tightly integrated with the Bitcoin network in a trustless manner.",
             "status": "in_progress",
             "forum": "",
@@ -1396,7 +1396,7 @@
           {
             "title": "Threshold ECDSA — Throughput improvements",
             "overview": "Improving throughput of chain-key ECDSA via multiple protocol improvements such as batching, parallel processing of crypto operations, and cryptographic protocol improvements.",
-            "description": "This feature addresses optimizations of the chain-key ECDSA (i.e., threshold ECDSA) implementation of ICP to improve throughput. Possible approaches used to reach those goals are to introduce batching techniques to process batches of cryptographic operations, thereby improving performance, or to further parallelize cryptographic operations.",
+            "description": "This feature addresses optimizations of the chain-key ECDSA (i.e., threshold ECDSA) implementation on ICP to improve throughput. Possible approaches used to reach those goals are to introduce batching techniques to process batches of cryptographic operations, thereby improving performance, or to further parallelize cryptographic operations.",
             "status": "in_progress",
             "forum": "",
             "proposal": "",
@@ -3704,7 +3704,7 @@
       },
       {
         "name": "Canister Resource Management",
-        "description": "This milestone improves the Cycles management experience on ICP through the introduction of the Cycles Ledger. End users can hold cycles seamlessly and can more easily manage their canisters cycles balance. Furthermore, with the exposure of a key set of metrics, getting insights into your canisters’ operations has been greatly improved, especially with the ability to see a breakdown of your cycles usage and which endpoints are the most expensive ones to call.",
+        "description": "This milestone improves the cycles management experience on ICP through the introduction of the cycles Ledger. End users can hold cycles seamlessly and can more easily manage their canisters cycles balance. Furthermore, with the exposure of a key set of metrics, getting insights into your canisters’ operations has been greatly improved, especially with the ability to see a breakdown of your cycles usage and which endpoints are the most expensive ones to call.",
         "milestone_id": "Thorium",
         "eta": null,
         "status": "in_progress",
