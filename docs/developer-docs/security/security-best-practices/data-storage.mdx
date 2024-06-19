@@ -1,6 +1,4 @@
 ---
-sidebar_position: 6
-sidebar_label: Data storage
 keywords: [security, concept, storage, stable memory, encryption, backup]
 ---
 
@@ -14,7 +12,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ### Security concern
 
-Canisters need global mutable state. In Rust, there are several ways to achieve this. However, some options can lead e.g. to memory corruption.
+Canisters need a global mutable state. In Rust, there are several ways to achieve this. However, some options can lead to vulnerabilities such as to memory corruption.
 
 ### Recommendation
 
@@ -36,23 +34,23 @@ Limit the amount of data that can be stored in a canister per user. This limit h
 
 ### Security concern
 
-Canister memory is not persisted across upgrades. If data needs to be kept across upgrades, a natural thing to do is to serialize the canister memory in `pre_upgrade`, and deserialize it in `post_upgrade`. However, the available number of instructions for these methods is limited. If the memory grows too big, the canister can no longer be updated.
+Canister memory is not persisted across upgrades. If data needs to be kept across upgrades, you may serialize the canister memory in `pre_upgrade`, and deserialize it in `post_upgrade`. However, the available number of instructions for these methods is limited. If the memory grows too big, the canister can no longer be updated.
 
 ### Recommendation
 
 - Stable memory is persisted across upgrades and can be used to address this issue.
 
-- [Consider using stable memory](https://mmapped.blog/posts/01-effective-rust-canisters.html#stable-memory-main) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)). See also the disadvantages discussed there.
+- [Consider using stable memory](https://mmapped.blog/posts/01-effective-rust-canisters.html#stable-memory-main) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)). Take note of the discussed disadvantages.
 
 - [Version stable memory](https://mmapped.blog/posts/01-effective-rust-canisters.html#version-stable-memory) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)).
 
 - [Test the upgrade hooks](https://mmapped.blog/posts/01-effective-rust-canisters.html#test-upgrades) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)).
 
-- See also the section on upgrades in [how to audit an Internet Computer canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister) (though focused on Motoko).
+- See also the section on upgrades in [how to audit an ICP canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister) (focused on Motoko canisters).
 
 - Write tests for stable memory to avoid bugs.
 
-- Some libraries (mostly work in progress or partly unfinished) that people work on:
+- Some libraries commonly used are:
 
     - [https://github.com/dfinity/stable-structures](https://github.com/dfinity/stable-structures)
 
@@ -60,7 +58,11 @@ Canister memory is not persisted across upgrades. If data needs to be kept acros
 
     - [https://github.com/seniorjoinu/ic-stable-memory](https://github.com/seniorjoinu/ic-stable-memory)
 
-- See [current limitations of the Internet Computer](https://wiki.internetcomputer.org/wiki/Current_limitations_of_the_Internet_Computer), sections "Long running upgrades" and "\[de\]serialiser requiring additional wasm memory".
+:::caution
+Please note some of these libraries may be partially unfinished.
+:::
+
+- See [current limitations of the Internet Computer](https://wiki.internetcomputer.org/wiki/Current_limitations_of_the_Internet_Computer), sections "Long running upgrades" and "\[de\]serializer requiring additional Wasm memory".
 
 - For example, [Internet Identity](https://github.com/dfinity/internet-identity) uses stable memory directly to store user data.
 
@@ -80,11 +82,11 @@ By default, canisters provide integrity but not confidentiality. Data stored on 
 
 ### Security concern
 
-A canister could be rendered unusable so it could never be upgraded again e.g. due to the following reasons:
+A canister could be rendered unusable and impossible to upgrade again e.g. due reasons such as:
 
-- It has a faulty upgrade process (due to some bug from the dapp developer).
+- It has a faulty upgrade process due to some bug from the dapp developer.
 
-- The state becomes inconsistent / corrupt because of a bug in the code that persists data.
+- The state becomes inconsistent or corrupt because of a bug in the code that persists data.
 
 ### Recommendation
 

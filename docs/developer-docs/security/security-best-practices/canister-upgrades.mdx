@@ -1,6 +1,4 @@
 ---
-sidebar_position: 9
-sidebar_label: Canister upgrades
 keywords: [security, concept, upgrade, panic, timer]
 ---
 
@@ -18,9 +16,9 @@ If a canister traps or panics in `pre_upgrade`, this can lead to permanently blo
 
 ### Recommendation
 
-- Avoid panics / traps in `pre_upgrade` hooks, unless it is truly unrecoverable, so that any invalid state can fixed by upgrading. Panics in the pre-upgrade hook prevent upgrade, and since the pre-upgrade hook is controlled by the old code, it can permanently block upgrading.
+- Avoid panics / traps in `pre_upgrade` hooks, unless it is truly unrecoverable, so that any invalid state can fixed by upgrading. Panics in the `pre_upgrade` hook prevent upgrade, and since the `pre_upgrade` hook is controlled by the old code, it can permanently block upgrading.
 
-- Panic in the `post_upgrade` hook if state is invalid, so that one can retry the upgrade and try to fix the invalid state. Panics in the the post-upgrade hook abort the upgrade, but one can retry with new code.
+- Panic in the `post_upgrade` hook if state is invalid, so that one can retry the upgrade and try to fix the invalid state. Panics in the the `post_upgrade` hook abort the upgrade, but one can retry with new code.
 
 - [Test the upgrade hooks](https://mmapped.blog/posts/01-effective-rust-canisters.html#test-upgrades) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)).
 
@@ -30,7 +28,7 @@ If a canister traps or panics in `pre_upgrade`, this can lead to permanently blo
 
 ## Reinstantiate timers during upgrades
 
-### Security Concern
+### Security concern
 
 Global timers are deactivated upon changes to the canister's Wasm module. The [IC specification](/docs/current/references/ic-interface-spec#global-timer) states this as follows:
 
@@ -40,15 +38,15 @@ Upgrade is a mode of `install_code` and hence the timers are deactivated during 
 
 This could result in a vulnerability in certain cases where security controls or other critical features rely on these timers to function. For example, a DEX which relies on timers to update the exchange rates of currencies could be vulnerable to arbitraging opportunities if the rates are no longer updated.
 
-Since global timers are used internally by the Motoko `Timer` mechanism, the same holds true for Motoko Timer. As explained in the [pull request](https://github.com/dfinity/motoko/pull/3542) under "The upgrade story", the global timer gets jettisoned on upgrade, and the timers need to be set up in the post-upgrade hook.
+Since global timers are used internally by the Motoko `Timer` mechanism, the same holds true for Motoko Timer. As explained in the [pull request](https://github.com/dfinity/motoko/pull/3542) under "The upgrade story", the global timer gets discarded on upgrade, and the timers need to be set up in the `post_upgrade` hook.
 
-As explained in [this pull request](https://github.com/dfinity/motoko/pull/3542) under "Opting out", the behavior is different when using Motoko and implementing `system func timer`. The `timer` function will be called after an upgrade. In case your canister was using timers for recurring tasks, the `timer` function would likely set the global timer again for a later time. However, the time between invocations of `timer` would not be consistent as the upgrade triggered an "unexpected" call to `timer`.
+This behavior is different when [using Motoko](https://github.com/dfinity/motoko/pull/3542) and implementing `system func timer`. The `timer` function will be called after an upgrade. In case your canister was using timers for recurring tasks, the `timer` function would likely set the global timer again for a later time. However, the time between invocations of `timer` would not be consistent as the upgrade triggered an "unexpected" call to `timer`.
 
-Using the rust CDK, the reccuring timer is also lost on upgrade as explained in the API documentation of [set_timer_interval](https://docs.rs/ic-cdk/0.6.9/ic_cdk/timer/fn.set_timer_interval.html).
+Using the Rust CDK, the recurring timer is also lost on upgrade as explained in the API documentation of [set_timer_interval](https://docs.rs/ic-cdk/0.6.9/ic_cdk/timer/fn.set_timer_interval.html).
 
 ### Recommendation
 
-- Keep track of global timers in the `pre_upgrade` hook. Store any state in stable variables.
+- Keep track of global timers in the `pre_upgrade` hook. Store any state in [stable variables](/docs/current/motoko/main/canister-maintenance/upgrades/).
 - Set timers in the `post_upgrade` hook.
 - See the Motoko documentation on [recurringTimer](/docs/current/motoko/main/base/Timer).
 - See the Rust documentation on [set_timer_interval](https://docs.rs/ic-cdk/0.6.9/ic_cdk/timer/fn.set_timer_interval.html).

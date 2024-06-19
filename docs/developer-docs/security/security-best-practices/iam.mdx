@@ -1,6 +1,4 @@
 ---
-sidebar_position: 3
-sidebar_label: Identity and access management
 keywords: [security, concept, identity, authentication, anonymous principal, message inspection, agent]
 ---
 
@@ -10,7 +8,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Security", "Concept"]} />
 
-## Make sure any action that only a specific user should be able to do requires authentication
+## Make sure specific user actions require authentication
 
 ### Security concern
 
@@ -18,10 +16,9 @@ If this is not the case, an attacker may be able to perform sensitive actions on
 
 ### Recommendation
 
-- By design, for every canister call the caller can be identified. The calling [principal](/docs/current/references/ic-interface-spec#principal) can be accessed using the system API’s methods `ic0.msg_caller_size` and `ic0.msg_caller_copy` (see [here](/docs/current/references/ic-interface-spec#system-api-imports)). If e.g. Internet Identity is used, the principal is the user identity for this specific origin, see [here](/docs/current/references/ii-spec#identity-design-and-data-model). If some actions (e.g. access to user’s account data or account specific operations) should be restricted to a principal or a set of principals, then this must be explicitly checked in the canister call, for example as follows in Rust:
+- The caller of every canister call the caller can be identified. The calling [principal](/docs/current/references/ic-interface-spec#principal) can be accessed using the system API’s methods `ic0.msg_caller_size` and `ic0.msg_caller_copy` (see [here](/docs/current/references/ic-interface-spec#system-api-imports)). If an identity provider such as Internet Identity is used, [the principal is the user identity for this specific origin](/docs/current/references/ii-spec#identity-design-and-data-model). If some actions (e.g. access to user’s account data or account specific operations) should be restricted to a principal or a set of principals, then this must be explicitly checked in the canister call. An example in Rust can be found below:
 
-<!-- -->
-```
+```rust
 // Let pk be the public key of a principal that is allowed to perform
 // this operation. This pk could be stored in the canister's state.
 if caller() != Principal::self_authenticating(pk) {  ic_cdk::trap(...) }
@@ -34,7 +31,7 @@ if let Some(user_data) = user_data_store.get_mut(&caller()) {
     // perform operations on the user's data
 }
 ```
-- In Rust, the `ic_cdk` crate can be used to authenticate the caller using `ic_cdk::api::caller`. Make sure the returned principal is of type `Principal::self_authenticating` and identify the user’s account using the public key of that principal, see the example code above.
+- In Rust, the `ic_cdk` crate can be used to authenticate the caller using `ic_cdk::api::caller`. Make sure the returned principal is of type `Principal::self_authenticating` and identify the user’s account using the public key of that principal. See the example code above.
 
 - Do authentication as early as possible in the call to avoid unauthenticated actions and potentially expensive operations before authentication. It is also a good idea to [deny service to anonymous users](#disallow-the-anonymous-principal-in-authenticated-calls).
 
@@ -44,11 +41,11 @@ if let Some(user_data) = user_data_store.get_mut(&caller()) {
 
 ### Security concern
 
-The caller from the system API (e.g. `ic0::api::caller` in Rust) may also return `Principal::anonymous()`. In authenticated calls, this is probably undesired (and could have security implications) since this would behave like a shared account for anyone that does unauthenticated calls.
+The caller from the system API (e.g. `ic0::api::caller` in Rust) may also return `Principal::anonymous()`. In authenticated calls, this is probably undesired, and could have security implications, since this would behave like a shared account for anyone that does unauthenticated calls.
 
 ### Recommendation
 
-In authenticated calls, make sure the caller is not anonymous and return an error or trap if it is. This could e.g. be done centrally by using a helper method. In Rust it could e.g. look as follows:
+In authenticated calls, make sure the caller is not anonymous and return an error or trap if it is. This could be done centrally by using a helper method. An example in Rust can be found below:
 ```rust
 fn caller() -> Result<Principal, String> {
     let caller = ic0::api::caller();
@@ -67,7 +64,7 @@ fn caller() -> Result<Principal, String> {
 
 ### Security concern
 
-The correct execution of [canister_inspect_message](/docs/current/references/ic-interface-spec#system-api-inspect-message) is not guaranteed because it is executed by a single node and if that node is malicious, it can e.g. simply skip this check. In that case the update call would be executed without any message inspection checks.
+The correct execution of [`canister_inspect_message`](/docs/current/references/ic-interface-spec#system-api-inspect-message) is not guaranteed because it is executed by a single node and if that node is malicious, it can simply skip this check. In that case the update call would be executed without any message inspection checks.
 
 Also note that for inter-canister calls `canister_inspect_message` is not invoked.
 
@@ -83,9 +80,9 @@ Implementing user authentication and canister calls yourself in your web app is 
 
 ### Recommendation
 
--   Consider using e.g. [Internet Identity](https://github.com/dfinity/internet-identity) for authentication, use [agent-js](https://github.com/dfinity/agent-js) for making canister calls, and the [auth-client](https://github.com/dfinity/agent-js/tree/main/packages/auth-client) for interacting with internet identity from your dapp.
+-   Consider using and identity provider such as [Internet Identity](https://github.com/dfinity/internet-identity) for authentication, use [agent-js](https://github.com/dfinity/agent-js) for making canister calls, and the [auth-client](https://github.com/dfinity/agent-js/tree/main/packages/auth-client) for interacting with Internet Identity from your dapp.
 
--   It is of course also an option to consider alternative authentication frameworks on ICP for authentication.
+-   You may consider alternative authentication frameworks on ICP for authentication.
 
 ## Set an appropriate session timeout
 
@@ -95,9 +92,9 @@ Currently, Internet Identity issues delegations with an expiry time. This expiry
 
 ### Recommendation
 
-See the [OWASP recommendations](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#session-expiration). A timeout of 30 min should be set for security sensitive applications.
+See the [OWASP recommendations](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html#session-expiration). A timeout of 30 minutes should be set for security sensitive applications.
 
-The [auth-client](https://github.com/dfinity/agent-js/tree/main/packages/auth-client) supports idle timeouts. More details available [here](https://github.com/dfinity/agent-js/tree/main/packages/auth-client#idle-management).
+The [auth-client](https://github.com/dfinity/agent-js/tree/main/packages/auth-client) supports [idle timeouts](https://github.com/dfinity/agent-js/tree/main/packages/auth-client#idle-management).
 
 ## Don’t use fetchRootKey in agent-js in production
 
