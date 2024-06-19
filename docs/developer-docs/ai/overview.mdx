@@ -4,32 +4,49 @@ keywords: [intermediate, concept, AI, ai, deAI, deai]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# DeAI overview
+# Decentralized AI overview
 
 <MarkdownChipRow labels={["Intermediate", "Concept", "DeAI" ]} />
 
-## What is decentralized AI?
+Decentralized AI, or DeAI for short, is the moniker that describes the intersection between AI and blockchain technology.
+The term denotes a wide range of applications starting from peripheral elements such as tokenization or decentralized marketplaces and going all the way to running AI models fully onchain as smart contracts.
 
-Decentralized artificial intelligence (DeAI or decentralized AI) is a form of AI and machine learning that utilizes blockchain technologies and decentralized protocols such as ICP. ICP enables truly decentralized AI by running services on-chain, providing a permissionless and secure way to run machine learning applications. 
+## Why DeAI?
 
-Canisters can be used to host AI services and run machine learning algorithms using popular AI/ML frameworks and libraries. HTTPS outcalls can be used to make API calls to external AI APIs like OpenAI.
+DeAI in its truest form of running AI onchain as smart contracts can potentially solve the trust problem in AI.
+Today users have to blindly trust AI running on centralized servers.
+Users have no visibility into how their data is used and how AI models produce responses, whether they work correctly, reliably, and consistently.
+Since AI models behave like black boxes to users, building trustworthy AI models is a difficult challenge.
+This can be addressed if users are able to verify how a model has been trained and the inference process uses that very model that generates an output.
+
+## DeAI on ICP
+
+Running AI models onchain is too compute and memory-intensive for traditional blockchains.
+ICP was designed to make smart contracts powerful by leveraging the following features:
+1. WebAssembly virtual machine that provides near-native performance.
+2. Deterministic time slicing that automatically splits long-running computation over multiple blocks.
+3. Powerful node hardware with the standardized specification. Nodes have 32-core CPUs, 512GiB RAM, and 30TB NVMe.
+
+Today ICP supports onchain inference of small models using AI libraries such as [Sonos Tract](https://github.com/sonos/tract) that compile to WebAssembly.
+Check out [this example](/docs/current/developer-docs/ai/ai-on-chain) of image classification to learn how it works.
+The long-term [vision](https://internetcomputer.org/roadmap#Decentralized%20AI-start) is to support onchain GPU compute to enable both training and inference of larger models.
+
+## Technical working group: DeAI
+
+A technical working group dedicated to discussing decentralized AI and related projects meets bi-weekly on Thursdays at 5pm UTC. You can join via the [community Discord server](https://discord.gg/jnjVVQaE2C).
+
+You can learn more about the group, review the notes from previous meetings, and ask questions on the [DFINITY forum](https://forum.dfinity.org/t/technical-working-group-deai/24621).
 
 ## ICP AI projects
 
 Several community projects that showcase how to use AI on ICP are available:
 
-
-### Motoko
-
-- [MotokoLearn](https://github.com/ildefons/motokolearn): A Motoko package that enables on-chain machine learning.
-
-- [In-browser AI chat](https://github.com/patnorris/DecentralizedAIonIC).
-
-- [DeVinci](https://github.com/patnorris/DecentralizedAIonIC): An AI chatbot that uses an open-source LLM. [Check out the canister yourself](https://x6occ-biaaa-aaaai-acqzq-cai.icp0.io/).
-
 ### Rust
 
-- [Tract-IC-AI](https://github.com/jeshli/tract-ic-ai): An ICP variations of Tract.
+- [Sonos Tract](https://github.com/sonos/tract): An open-source AI inference engine that supports ONNX, TensorFlow, PyTorch models and compiles to WebAssembly.
+  [The image classification example](https://github.com/dfinity/examples/tree/master/rust/image-classification) explains show to integrate it into a canister to run on ICP.
+
+- [Tract-IC-AI](https://github.com/jeshli/tract-ic-ai): A fork of Sonos Tract that shows an alternative approach of running the inference engine on ICP.
 
 - [Rust-Connect-Py-AI-to-IC](https://github.com/jeshli/rust-connect-py-ai-to-ic): Open-source tool for deploying Python AI models.
 
@@ -50,6 +67,14 @@ Several community projects that showcase how to use AI on ICP are available:
 - [Vectune](https://github.com/ClankPan/Vectune): Vectune is a lightweight VectorDB with incremental indexing, based on FreshVamana.
 
 - [ICPanda AI](https://github.com/ldclabs/ic-panda/tree/main/src/ic_panda_ai): An AI chatbot canister based on Huggingface’s Candle framework and running Qwen 0.5B model.
+
+### Motoko
+
+- [MotokoLearn](https://github.com/ildefons/motokolearn): A Motoko package that enables on-chain machine learning.
+
+- [In-browser AI chat](https://github.com/patnorris/DecentralizedAIonIC).
+
+- [DeVinci](https://github.com/patnorris/DecentralizedAIonIC): An AI chatbot that uses an open-source LLM. [Check out the canister yourself](https://x6occ-biaaa-aaaai-acqzq-cai.icp0.io/).
 
 ### C++
 
@@ -95,11 +120,4 @@ Lightweight AI models:
 - [SSD-1B](https://huggingface.co/segmind/SSD-1B)
 
 - [Gorilla LLM](https://gorilla.cs.berkeley.edu/)
-
-
-## Technical working group: DeAI
-
-A technical working group dedicated to discussing decentralized AI and related projects meets bi-weekly on Thursdays at 5pm UTC. You can join via the [community Discord server](https://discord.gg/jnjVVQaE2C).
-
-You can learn more about the group, review the notes from previous meetings, and ask questions on the [DFINITY forum](https://forum.dfinity.org/t/technical-working-group-deai/24621).
 
