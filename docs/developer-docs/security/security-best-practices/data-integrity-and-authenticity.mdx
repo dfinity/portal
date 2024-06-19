@@ -20,10 +20,11 @@ ICP offers three modes of operations for canisters namely `update`, `query` and 
 | Relatively less secure since there is no integrity protection. The responding node maybe be malicious  | **Secure response, since it’s certified by the subnet and guarantees integrity**                                                                          |
 
 
-Queries have fast response time but lack integrity guarantees, which makes them unfit for security critical applications. To obtain query like response times and update like certified responses, developers could make use of `certified_data` in the state tree. Alternatively, these calls have to be issued as update calls by the caller (e.g. in agent-js), but that impacts performance by taking a few seconds. Note that every query can also be issued as an update by the caller. Examples are asset certification in [Internet Identity](https://github.com/dfinity/internet-identity/blob/b29a6f68bbe5a49d048e12bc7a3263a9f43d080b/src/internet_identity/src/main.rs#L775-L808), [NNS dapp](https://github.com/dfinity/nns-dapp/blob/372c3562127d70c2fde059bc9c268e8ae858583e/rs/src/assets.rs#L121-L145), or the [canister signature implementation in Internet Identity](https://github.com/dfinity/internet-identity/blob/main/src/internet_identity/src/signature_map.rs).
+Queries have fast response time but lack integrity guarantees, which makes them unfit for security critical applications. To obtain query like response times and update like certified responses, developers could make use of `certified_data` in the state tree to certify the response served in a query. Alternatively, these calls could be issued as update calls by the caller (e.g. in agent-js), but that impacts performance by taking a few seconds. Some examples of Certified Variables are asset certification in [Internet Identity](https://github.com/dfinity/internet-identity/blob/b29a6f68bbe5a49d048e12bc7a3263a9f43d080b/src/internet_identity/src/main.rs#L775-L808), [NNS dapp](https://github.com/dfinity/nns-dapp/blob/372c3562127d70c2fde059bc9c268e8ae858583e/rs/src/assets.rs#L121-L145), or the [canister signature implementation in Internet Identity](https://github.com/dfinity/internet-identity/blob/main/src/internet_identity/src/signature_map.rs).
 
-> [!IMPORTANT]
->  ICP also provides Replica signed queries, where query responses are signed by the answering replica node but however it doesn't have the same security guarantees as `update` calls. Replica signed queries are enabled by default on both `agent-rs` and `agent-js`. You can read more about the feature [here](https://internetcomputer.org/blog/features/replica-signed-queries)
+:::tip
+ICP also provides Replica signed queries, where query responses are signed by the answering replica node but however it doesn't have the same security guarantees as `update` calls. Replica signed queries are enabled by default on both `agent-rs` and `agent-js`. You can read more about the feature [here](https://internetcomputer.org/blog/features/replica-signed-queries)
+:::
 
 ### What's Certified data?
 * A canister can store a small amount of data (32 bytes) during an update call in the state tree under `certified_data` which will be certified by the subnet.
@@ -161,8 +162,9 @@ fn get_user(index: u64) -> CertifiedUser {
 
 Once you have the response `CertifiedUser`, for the secureness guarantee, one must verify the certification in the response. This is broken down into several steps with an example below implementing these steps in Rust.
 
-> [!NOTE]
-> The example has some extra steps to setup the canister with some `User` data before verification. You can ignore the section marked between `// ==== START of canister data setup` and `// ==== END of canister data setup`
+:::note
+The example has some extra steps to setup the canister with some `User` data before verification. You can ignore the section marked between `// ==== START of canister data setup` and `// ==== END of canister data setup`
+:::
 
 1. Recompute the `root_hash` of `certificate.tree` (pruned state tree with the canister's `certified_data`) and verify the `certificate.signature` with `root_hash` as message and `certificate.delegation` and IC root_key as the public key. This confirms that the signature is valid for the current state tree. 
 2. Validate that the response is not stale by verifying the time at `/time` in `certificate.tree` is less than a certain delta of currrent time. The recommended delta is 5 minutes.
