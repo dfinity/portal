@@ -8,19 +8,332 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Security", "Concept"]} />
 
-## Certify query responses if they are relevant for security
+## Using Certified Variables for secure queries 
 
-### Security concern
+ICP offers three modes of operations for canisters namely `update`, `query` and `composite_query`. For the sake of simplicity, we will club `composite_query` under queries for the rest of the section. Let's look into the differences between the two modes of operation,
 
-The responses to [query calls](/docs/current/references/ic-interface-spec#http-interface) are not threshold-signed by the canister and subnet. Thus, a single malicious replica or boundary node may change the data, violating its authenticity. This is especially risky if update calls, which do returned signed responses, depend on the response to query calls.
+| Query calls                                                                                            | Update Calls                                                                                                                                              |
+| ------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Query call is analogous to _READ_                                                                      | Update call is analogous to _WRITE_                                                                                                                       |
+| The query call is executed on a single replica node chosen on random in a subnet by the boundary nodes | On an update call, the request is replicated among all the nodes in the subnet, goes through consensus and the response is threshold signed by the subnet |
+| **Very fast response time**                                                                            | Relatively slow and more expensive (depending on the size of the subnet).                                                                                 |
+| Relatively less secure since there is no integrity protection. The responding node maybe be malicious  | **Secure response, since it’s certified by the subnet and guarantees integrity**                                                                          |
 
-### Recommendation
 
--   All security-relevant query response data that needs authenticity guarantees should be certified by ICP using certified variables. This determination needs to be assessed for each dapp. Consider using existing data structures such as [certified-map](https://github.com/dfinity/cdk-rs/tree/main/library/ic-certified-map). The data certification must be validated in the frontend.
+Queries have fast response time but lack integrity guarantees, which makes them unfit for security critical applications. To obtain query like response times and update like certified responses, developers could make use of `certified_data` in the state tree. Alternatively, these calls have to be issued as update calls by the caller (e.g. in agent-js), but that impacts performance by taking a few seconds. Note that every query can also be issued as an update by the caller. Examples are asset certification in [Internet Identity](https://github.com/dfinity/internet-identity/blob/b29a6f68bbe5a49d048e12bc7a3263a9f43d080b/src/internet_identity/src/main.rs#L775-L808), [NNS dapp](https://github.com/dfinity/nns-dapp/blob/372c3562127d70c2fde059bc9c268e8ae858583e/rs/src/assets.rs#L121-L145), or the [canister signature implementation in Internet Identity](https://github.com/dfinity/internet-identity/blob/main/src/internet_identity/src/signature_map.rs).
 
--   Alternatively, these calls have to be issued as update calls by the caller (e.g. in agent-js), but that impacts performance by taking a few seconds. Note that every query can also be issued as an update by the caller.
+> [!IMPORTANT]
+>  ICP also provides Replica signed queries, where query responses are signed by the answering replica node but however it doesn't have the same security guarantees as `update` calls. Replica signed queries are enabled by default on both `agent-rs` and `agent-js`. You can read more about the feature [here](https://internetcomputer.org/blog/features/replica-signed-queries)
 
--   Examples are asset certification in [Internet Identity](https://github.com/dfinity/internet-identity/blob/b29a6f68bbe5a49d048e12bc7a3263a9f43d080b/src/internet_identity/src/main.rs#L775-L808), [NNS dapp](https://github.com/dfinity/nns-dapp/blob/372c3562127d70c2fde059bc9c268e8ae858583e/rs/src/assets.rs#L121-L145), or the [canister signature implementation in Internet Identity](https://github.com/dfinity/internet-identity/blob/main/src/internet_identity/src/signature_map.rs).
+### What's Certified data?
+* A canister can store a small amount of data (32 bytes) during an update call in the state tree under `certified_data` which will be certified by the subnet.
+* During query call, the canister can obtain a certificate about that data, which can be verified by the IC root public key.
+
+In the rest of the section, we will see an example of how to design a canister, which can serve a certified response for a `query` using `certified_data` and how to verify the response. The examples are written in Rust but can be imported to other languages following the same recommendations.
+
+### Building a canister with Certified Variables
+Let's consider the following canister,
+
+```c
+type User = record {
+    name: text;
+    age: nat8;
+};
+
+type CertifiedUser = record {
+    user : User;
+    certificate : blob;
+    witness : blob;
+};
+
+service : {
+    "set_user": (User) -> (nat64);
+    "get_user": (nat64) -> (CertifiedUser) query;
+}
+```
+
+The canister exposes the following service, 
+* **set_user** - The caller provides a `User` object to the canister. The canister records it and serves a corresponding `index` for the entry as the response. Since `certified_data` can only store 32 bytes of data, we use a specialized data strucutre from `ic_certified_map` to store the `User` data. 
+  * The data strucutre internally stores the data in a `HashTree` and we record the `root_hash` of the data structure in the `certified_data`, which is 32 bytes. 
+  * The `root_hash` cryptographically guarantees that only one tree can correspond to that hash. You can read more about it [here](https://docs.rs/ic-certified-map/latest/ic_certified_map/struct.RbTree.html).
+* **get_user** - The caller provides a `index: nat64` to the canister and gets a Certified response for the corresponding `User`. The CertifiedUser response must have the following strucutre for verifying the response.
+  * **user** - The actual response
+  * **certificate** - The payload for verifying the signature on the `certified_data`. ICP provides the system API `data_certificate()` for this 
+  * **witness** - The witness allows us to complete the final verification of the response with the requested input and `certified_data`.
+
+You can find an example implementation of the canister below. 
+
+```rust
+use candid::CandidType;
+use ic_certified_map::HashTree;
+use ic_certified_map::{leaf_hash, AsHashTree, Hash, RbTree};
+use serde::{Deserialize, Serialize};
+use std::borrow::Cow;
+use std::cell::Cell;
+use std::cell::RefCell;
+
+#[derive(CandidType, Serialize, Deserialize, Clone)]
+struct User {
+    name: String,
+    age: u8,
+}
+
+impl AsHashTree for User {
+    fn root_hash(&self) -> Hash {
+        let user_serialized = serde_cbor::to_vec(&self).unwrap();
+        leaf_hash(&user_serialized[..])
+    }
+    fn as_hash_tree(&self) -> HashTree<'_> {
+        HashTree::Leaf(Cow::from(serde_cbor::to_vec(&self).unwrap()))
+    }
+}
+
+#[derive(CandidType)]
+struct CertifiedUser {
+    user: User,
+    certificate: Vec<u8>,
+    witness: Vec<u8>,
+}
+
+thread_local! {
+    static INDEX : Cell<u64> = Cell::new(0);
+    static TREE: RefCell<RbTree<&'static str, RbTree<[u8; 8], User>>> = RefCell::new(RbTree::new());
+}
+
+#[ic_cdk::update]
+fn set_user(user: User) -> u64 {
+    let index = INDEX.with(|index| {
+        let count = index.get() + 1;
+        index.set(count);
+        count
+    });
+
+    TREE.with_borrow_mut(|tree| {
+        match tree.get(b"user") {
+            Some(_) => {
+                tree.modify(b"user", |inner| {
+                    inner.insert(index.to_be_bytes(), user);
+                });
+            }
+            None => {
+                let mut inner = RbTree::new();
+                inner.insert(index.to_be_bytes(), user);
+                tree.insert("user", inner);
+            }
+        }
+        ic_cdk::api::set_certified_data(&tree.root_hash());
+    });
+    index
+}
+
+#[ic_cdk::query]
+fn get_user(index: u64) -> CertifiedUser {
+    let certificate = ic_cdk::api::data_certificate().expect("No data certificate available");
+
+    TREE.with_borrow(|tree| {
+        let user = match tree.get(b"user") {
+            Some(inner) => {
+                let user = inner.get(&index.to_be_bytes()[..]).expect("User not found");
+                user.to_owned()
+            }
+            None => {
+                panic!("Tree isn't initialized");
+            }
+        };
+
+        let mut witness = vec![];
+        let mut witness_serializer = serde_cbor::Serializer::new(&mut witness);
+        let _ = witness_serializer.self_describe();
+        tree.nested_witness(b"user", |inner| inner.witness(&index.to_be_bytes()[..]))
+            .serialize(&mut witness_serializer)
+            .unwrap();
+
+        CertifiedUser {
+            user,
+            certificate,
+            witness,
+        }
+    })
+}
+```
+
+### Verifying the Certified Variables
+
+Once you have the response `CertifiedUser`, for the secureness guarantee, one must verify the certification in the response. This is broken down into several steps with an example below implementing these steps in Rust.
+
+> [!NOTE]
+> The example has some extra steps to setup the canister with some `User` data before verification. You can ignore the section marked between `// ==== START of canister data setup` and `// ==== END of canister data setup`
+
+1. Recompute the `root_hash` of `certificate.tree` (pruned state tree with the canister's `certified_data`) and verify the `certificate.signature` with `root_hash` as message and `certificate.delegation` and IC root_key as the public key. This confirms that the signature is valid for the current state tree. 
+2. Validate that the response is not stale by verifying the time at `/time` in `certificate.tree` is less than a certain delta of currrent time. The recommended delta is 5 minutes.
+3. Recompute the `root_hash` of witness and verify equality with the `certified_data`. The `certified_data` can be obtained from `certificate.tree` under the path `/canister/<canister_id>/certified_data`
+4. Check if query parameters are in the witness. In our example, the lookup path is `/user/<index>` and it should be present in the witness. 
+5. Validate if the value found in `/user/<index>` matches `user` from the response. 
+6. If all of previous steps succceed, return `user` as the valid response.
+
+```rust
+use arbitrary::{Arbitrary, Unstructured};
+use candid::Encode;
+use candid::Principal;
+use candid::{CandidType, Decode, Deserialize};
+use futures::future::join_all;
+use ic_agent::identity::AnonymousIdentity;
+use ic_agent::Agent;
+use ic_certificate_verification::validate_certificate_time;
+use ic_certificate_verification::VerifyCertificate;
+use ic_certification::hash_tree::HashTree;
+use ic_certification::{Certificate, LookupResult};
+use rand::prelude::*;
+use serde_cbor::Deserializer;
+use std::time::{SystemTime, UNIX_EPOCH};
+
+#[derive(CandidType, Deserialize, Debug, PartialEq, Eq, Arbitrary)]
+struct User {
+    name: String,
+    age: u8,
+}
+
+#[derive(CandidType, Deserialize)]
+struct CertifiedUser {
+    user: User,
+    certificate: Vec<u8>,
+    witness: Vec<u8>,
+}
+
+static URL: &str = "http://localhost:41749";
+static CANISTER: &str = "a3shf-5eaaa-aaaaa-qaafa-cai";
+const MAX_CERT_TIME_OFFSET_NS: u128 = 300_000_000_000; // 5 min
+const MAX_CALLS: usize = 10;
+
+#[tokio::main]
+async fn main() {
+
+    let agent = Agent::builder()
+        .with_url(URL)
+        .with_identity(AnonymousIdentity)
+        .build()
+        .expect("Unable to create agent");
+
+    // This should be done only in demo environments.
+    // When interacting with mainnet, hardcode the root_key.
+    agent
+        .fetch_root_key()
+        .await
+        .expect("Unable to fetch root key");
+    let root_key = agent.read_root_key();
+
+    let canister_id = Principal::from_text(CANISTER).unwrap();
+
+    // ==== START of canister data setup
+    let mut rng = rand::thread_rng();
+    
+    // Make MAX_CALLS to set_user
+    let mut get_user_calls = Vec::new();
+    for _ in 0..MAX_CALLS {
+        let bytes: [u8; 16] = rng.gen();
+        let mut u = Unstructured::new(&bytes[..]);
+        let temp_user = User::arbitrary(&mut u).unwrap();
+
+        println!("Calling set_user with {:?}", temp_user);
+        let response = agent
+            .update(&canister_id, "set_user")
+            .with_effective_canister_id(canister_id)
+            .with_arg(Encode!(&temp_user).unwrap())
+            .call_and_wait();
+        get_user_calls.push(response);
+    }
+    let results: Vec<u64> = join_all(get_user_calls)
+        .await
+        .into_iter()
+        .map(|result| {
+            Decode!(
+                result
+                    .expect("Query call get_user failed")
+                    .as_slice(),
+                u64
+            )
+            .unwrap()
+        })
+        .collect();
+
+    // From response indexes, chose a random index for get_user
+    let index: usize = rng.gen();
+    let index: u64 = *results.get(index % MAX_CALLS).unwrap();
+    // ==== END of canister data setup
+
+    println!("Fetching index {:?}", index);
+
+    let query_response = agent
+        .query(&canister_id, "get_user")
+        .with_effective_canister_id(canister_id)
+        .with_arg(Encode!(&index).unwrap())
+        .call()
+        .await
+        .expect("Unable to call query call get_user");
+
+    let certified_user = Decode!(&query_response, CertifiedUser).unwrap();
+
+    let mut deserializer = Deserializer::from_slice(&certified_user.certificate);
+    let certificate: Certificate = serde::de::Deserialize::deserialize(&mut deserializer).unwrap();
+
+    let start = SystemTime::now();
+    let current_time = start
+        .duration_since(UNIX_EPOCH)
+        .expect("Time went backwards")
+        .as_nanos();
+
+    // Step 1: Check if signature in the certificate can be validated with the root_hash of the tree in certificate as message and root_key as public_key
+    let verification_result = certificate.verify(canister_id.as_slice(), &root_key[..]);
+
+    println!(
+        "Step 1: Digest match & Signature verification: {:?}",
+        verification_result
+    );
+
+    // Step 2: Check if the response is not stale with the given time offset MAX_CERT_TIME_OFFSET_NS.
+    let time_verification_result =
+        validate_certificate_time(&certificate, &current_time, &MAX_CERT_TIME_OFFSET_NS);
+
+    println!("Step 2: Time skew: {:?}", time_verification_result);
+
+    // Step 3: Check if witness root_hash matches the certified_data
+    let lookup_result =
+        certificate
+            .tree
+            .lookup_path([b"canister", canister_id.as_slice(), b"certified_data"]);
+
+    let certified_data: [u8; 32] = match lookup_result {
+        LookupResult::Found(result) => result.try_into().unwrap(),
+        _ => panic!("Certified data not found"),
+    };
+
+    let mut deserializer = Deserializer::from_slice(&certified_user.witness);
+    let witness_decoded: HashTree<Vec<u8>> =
+        serde::de::Deserialize::deserialize(&mut deserializer).unwrap();
+    let witness_digest = witness_decoded.digest();
+
+    println!(
+        "Step 3: Witness digest mataches certified data: {:?} ",
+        witness_digest == certified_data
+    );
+
+    // Step 4: Check if the query parameters are in the witness
+    let witness_lookup: User =
+        match witness_decoded.lookup_path([b"user", &index.to_be_bytes()[..]]) {
+            LookupResult::Found(result) => serde_cbor::from_slice(result).unwrap(),
+            _ => panic!("user {} not found", index),
+        };
+
+    // Step 5: Check if the data found in Witness matches the returned result from the query.
+    println!(
+        "Step 4 & Step 5: Witness data matches User value: {:?}",
+        witness_lookup == certified_user.user
+    );
+
+    // Step 6: Return the result
+    println!("Result: {:?}", certified_user.user);
+}
+```
 
 ## Use HTTP asset certification and avoid serving your dapp through `raw.icp0.io`
 
