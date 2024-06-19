@@ -52,7 +52,8 @@ or Bazel:
 bazel run //rs/ethereum/cketh/minter:principal_to_hex -- $(dfx identity get-principal)
 ```
 
-Call the [minter helper](https://etherscan.io/address/0x7574eB42cA208A4f6960ECCAfDF186D627dCC175#writeContract) contract's `icrc1_balance_of` function with your principal ID encoded and the amount to convert into ckETH as arguments:
+Call the [minter helper](https://etherscan.io/address/0x7574eB42cA208A4f6960ECCAfDF186D627dCC175#writeContract) contract's `deposit` function with your principal ID encoded and the amount to convert into ckETH as arguments.
+Once your transaction has been mined on Ethereum, the corresponding amount of ckETH will be minted after about 20 minutes. You can use `dfx` to check if your funds have arrived:
 
 ```
 dfx canister --network ic call ledger icrc1_balance_of 'record {owner = principal "'"$(dfx identity get-principal)"'" }'
