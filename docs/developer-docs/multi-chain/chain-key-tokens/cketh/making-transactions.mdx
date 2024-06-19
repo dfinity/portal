@@ -96,8 +96,10 @@ The first step uses `LARGE_AMOUNT_WEI` while the second step uses `SMALL_AMOUNT_
 For example, to withdraw 1 ETH:
 
 ```
-dfx canister --network ic call ledger icrc2_approve "(record { spender = record { owner = principal \"$(dfx canister id minter --network ic)\" }; amount = 1_000_000_000_000_000_000 })"
+dfx canister --network ic call minter withdraw_eth "(record {amount = 1_000_000_000_000_000_000; recipient = \"DESTINATION_ADDRESS\"})"
 ```
+
+Replace `DESTINATION_ADDRESS` with your Ethereum address, such as `recipient = \"0xAB586458E47f3e9D350e476fB7E294a57825A3f4\")`.
 
 :::
 
