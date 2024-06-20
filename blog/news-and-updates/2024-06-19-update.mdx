@@ -1,6 +1,6 @@
 ---
 title: Developer weekly update June 19, 2024
-description: In this week's update, we have a new release of dfx that introduces support for PocketIC, the release of the Motoko 2024 roadmap, and a community project to showcase. Let's get started!
+description: In this week's update, we have a new beta of dfx that introduces support for PocketIC, the release of the Motoko 2024 roadmap, and a community project to showcase. Let's get started!
 tags: [Devs]
 image: /img/blog/dev-update-blog-june-19.jpg
 ---
@@ -9,11 +9,11 @@ image: /img/blog/dev-update-blog-june-19.jpg
 
 ![June 19 2024](../../static/img/blog/dev-update-blog-june-19.jpg)
 
-Hello developers, and welcome to this week's developer weekly update! In this week's update, we have a new release of `dfx` that introduces support for PocketIC, the release of the Motoko 2024 roadmap, and a community project to showcase. Let's get started!
+Hello developers, and welcome to this week's developer weekly update! In this week's update, we have a new beta of `dfx` that introduces support for PocketIC, the release of the Motoko 2024 roadmap, and a community project to showcase. Let's get started!
 
-## `dfx v0.20.2`
+## `dfx v0.20.2-beta.0`
 
-In the latest release of `dfx v0.20.2`, the long-awaited support for PocketIC is here! [PocketIC](/docs/current/developer-docs/smart-contracts/test/pocket-ic) is a lightweight testing suite designed for creating fine-grained canister tests on your local machine. It supports running tests in parallel and setting specific testing variables, such as stable memory.
+In the recent beta of `dfx`, version `v0.20.2-beta.0`, the long-awaited support for PocketIC is here! [PocketIC](/docs/current/developer-docs/smart-contracts/test/pocket-ic) is a lightweight testing suite designed for creating fine-grained canister tests on your local machine. It supports running tests in parallel and setting specific testing variables, such as stable memory.
 
 To use PocketIC with `dfx`, you can use the new flag `--pocketic` with `dfx start` to start a PocketIC server instead of the local replica. The PocketIC server is more lightweight than the replica, and the execution environment's internals can be interacted with through REST commands.
 
