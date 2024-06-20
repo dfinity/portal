@@ -338,15 +338,7 @@ async fn main() {
 <TabItem value="javascript" label="JavaScript">
 ```javascript
 import pkg from "@dfinity/agent";
-const {
-  Actor,
-  HttpAgent,
-  Certificate,
-  blsVerify,
-  Cbor,
-  reconstruct,
-  lookup_path,
-} = pkg;
+const { Actor, HttpAgent, Certificate, blsVerify, Cbor, reconstruct, lookup_path} = pkg;
 import { IDL } from "@dfinity/candid";
 import { Principal } from "@dfinity/principal";
 import fetch from "isomorphic-fetch";
