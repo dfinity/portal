@@ -609,7 +609,7 @@ const sidebars = {
             },
             {
               type: "doc",
-              label: "Denial of Service",
+              label: "Denial of service",
               id: "developer-docs/security/security-best-practices/dos",
             },
             {
@@ -619,7 +619,7 @@ const sidebars = {
             },
             {
               type: "doc",
-              label: "Observability and Monitoring",
+              label: "Observability and monitoring",
               id: "developer-docs/security/security-best-practices/observability-and-monitoring",
             },
             {
@@ -700,7 +700,7 @@ const sidebars = {
         "developer-docs/multi-chain/examples",
         {
           type: "category",
-          label: "Chain key tokens",
+          label: "Chain-key tokens",
           items: [
             {
               type: "category",
