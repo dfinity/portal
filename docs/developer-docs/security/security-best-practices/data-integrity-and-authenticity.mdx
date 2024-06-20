@@ -2,9 +2,11 @@
 keywords: [security, concept, authenticity, integrity, certification]
 ---
 
-import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Security best practices: Data integrity and authenticity
 
@@ -336,9 +338,10 @@ async fn main() {
 
 </TabItem>
 <TabItem value="javascript" label="JavaScript">
-```javascript
+
+```js
 import pkg from "@dfinity/agent";
-const { Actor, HttpAgent, Certificate, blsVerify, Cbor, reconstruct, lookup_path} = pkg;
+const { Actor, HttpAgent, Certificate, blsVerify, Cbor, reconstruct, lookup_path } = pkg;
 import { IDL } from "@dfinity/candid";
 import { Principal } from "@dfinity/principal";
 import fetch from "isomorphic-fetch";
