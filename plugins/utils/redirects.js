@@ -17,6 +17,7 @@ const redirects = `
   /showcase /ecosystem
   /multichain /chainfusion
   /basics /what-is-the-ic
+  /community https://linktr.ee/icp_hubs_network
   /docs/videos-tutorials /developers
   /docs /docs/current/home
   /docs/current/ /docs/current/home
