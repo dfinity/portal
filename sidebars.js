@@ -820,6 +820,21 @@ const sidebars = {
           ],
         },
         {
+          type: "category",
+          label: "Wallets",
+          items: [
+            "developer-docs/defi/wallets/overview",
+            {
+              type: "category",
+              label: "Self-custody",
+              items: [
+                "developer-docs/defi/wallets/self-custody/self-custody-quickstart ",
+                "developer-docs/defi/wallets/self-custody/hardware-wallet-cli",
+              ],
+            },
+          ],
+        },
+        {
           type: "doc",
           label: "Exchange rate canister",
           id: "developer-docs/defi/exchange-rate-canister",
