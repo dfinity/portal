@@ -8,22 +8,22 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Security", "Concept"]} />
 
-## Using Certified Variables for secure queries 
+## Using certified variables for secure queries 
 
 ICP offers three modes of operations for canisters namely `update`, `query` and `composite_query`. For the sake of simplicity, we will club `composite_query` under queries for the rest of the section. A detailed overview between `update` and `query` calls can be found [here](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/call/overview/#introduction). In general, queries have fast response time but lack integrity guarantees, which makes them unfit for security critical applications. To obtain query like response times and update like certified responses, developers could make use of `certified_data` in the state tree to certify the response served in a query. Alternatively, these calls could be issued as update calls by the caller (e.g. in agent-js), but that impacts performance by taking a few seconds. Some examples of Certified Variables are asset certification in [Internet Identity](https://github.com/dfinity/internet-identity/blob/b29a6f68bbe5a49d048e12bc7a3263a9f43d080b/src/internet_identity/src/main.rs#L775-L808), [NNS dapp](https://github.com/dfinity/nns-dapp/blob/372c3562127d70c2fde059bc9c268e8ae858583e/rs/src/assets.rs#L121-L145), or the [canister signature implementation in Internet Identity](https://github.com/dfinity/internet-identity/blob/main/src/internet_identity/src/signature_map.rs).
 
 :::tip
-ICP also provides Replica signed queries, where query responses are signed by the answering replica node but however it doesn't have the same security guarantees as `update` calls. Replica signed queries are enabled by default on both `agent-rs` and `agent-js`. You can read more about the feature [here](https://internetcomputer.org/blog/features/replica-signed-queries)
+ICP also provides replica signed queries, where query responses are signed by the answering replica node, however it doesn't have the same security guarantees an `update` call. Replica signed queries are enabled by default on both `agent-rs` and `agent-js`. [Read more about the feature](https://internetcomputer.org/blog/features/replica-signed-queries).
 :::
 
-### What's Certified data?
+### What is certified data?
 * A canister can store a small amount of data (32 bytes) during an update call in the state tree under `certified_data` which will be certified by the subnet.
-* During query call, the canister can obtain a certificate about that data, which can be verified by the IC root public key.
+* During a query call, the canister can obtain a certificate about that data, which can be verified against the IC root public key.
 
-In the rest of the section, we will see an example of how to design a canister, which can serve a certified response for a `query` using `certified_data` and how to verify the response. The examples are written in Rust but can be imported to other languages following the same recommendations.
+The rest of the section shows an example canister, which can serve a certified response for a `query` using `certified_data` which is verified in the frond-end. The examples are written in Rust but the overall design can be implemented in other languages.
 
-### Building a canister with Certified Variables
-Let's consider the following canister,
+### Building a canister with certified variables
+Let's consider the following canister interface:
 
 ```c
 type User = record {
@@ -43,14 +43,14 @@ service : {
 }
 ```
 
-The canister exposes the following service, 
-* **set_user** - The caller provides a `User` object to the canister. The canister records it and serves a corresponding `index` for the entry as the response. Since `certified_data` can only store 32 bytes of data, we use a specialized data strucutre from `ic_certified_map` to store the `User` data. 
-  * The data strucutre internally stores the data in a `HashTree` and we record the `root_hash` of the data structure in the `certified_data`, which is 32 bytes. 
-  * The `root_hash` cryptographically guarantees that only one tree can correspond to that hash. You can read more about it [here](https://docs.rs/ic-certified-map/latest/ic_certified_map/struct.RbTree.html).
-* **get_user** - The caller provides a `index: nat64` to the canister and gets a Certified response for the corresponding `User`. The CertifiedUser response must have the following strucutre for verifying the response.
-  * **user** - The actual response
-  * **certificate** - The payload for verifying the signature on the `certified_data`. ICP provides the system API `data_certificate()` for this 
-  * **witness** - The witness allows us to complete the final verification of the response with the requested input and `certified_data`.
+The canister exposes the following service:
+* **set_user**: The caller provides a `User` object to the canister. The canister records it and serves a corresponding `index` for the entry as the response. Since `certified_data` can only store 32 bytes of data, it uses a specialized data structure from `ic_certified_map` to store the `User` data. 
+  * The data structure internally stores the data in a `HashTree` and records the `root_hash` of the data structure in the `certified_data`, which is 32 bytes. 
+  * The `root_hash` cryptographically guarantees that only one [tree can correspond to that hash](https://docs.rs/ic-certified-map/latest/ic_certified_map/struct.RbTree.html).
+* **get_user**: The caller provides a `index: nat64` to the canister and gets a certified response for the corresponding `User`. The `CertifiedUser` response must have the following structure for verifying the response:
+  * **user**: The actual response.
+  * **certificate**: The payload for verifying the signature on the `certified_data`. ICP provides the system API `data_certificate()` for this.
+  * **witness**: Allows for the final verification of the response to be completed with the requested input and `certified_data`.
 
 You can find an example implementation of the canister below. 
 
@@ -148,20 +148,20 @@ fn get_user(index: u64) -> CertifiedUser {
 }
 ```
 
-### Verifying the Certified Variables
+### Verifying certified variables
 
-Once you have the response `CertifiedUser`, for the secureness guarantee, one must verify the certification in the response. This is broken down into several steps with an example below implementing these steps in Rust.
+Once you have the response `CertifiedUser`, for the integrity guarantee, the front-end must verify the certification in the response. This is broken down into several steps implemented in the Rust example below.
 
 :::note
 The example has some extra steps to setup the canister with some `User` data before verification. You can ignore the section marked between `// ==== START of canister data setup` and `// ==== END of canister data setup`
 :::
 
-1. Recompute the `root_hash` of `certificate.tree` (pruned state tree with the canister's `certified_data`) and verify the `certificate.signature` with `root_hash` as message and `certificate.delegation` and IC root_key as the public key. This confirms that the signature is valid for the current state tree. 
-2. Validate that the response is not stale by verifying the time at `/time` in `certificate.tree` is less than a certain delta of currrent time. The recommended delta is 5 minutes.
-3. Recompute the `root_hash` of witness and verify equality with the `certified_data`. The `certified_data` can be obtained from `certificate.tree` under the path `/canister/<canister_id>/certified_data`
-4. Check if query parameters are in the witness. In our example, the lookup path is `/user/<index>` and it should be present in the witness. 
+1. Recompute the `root_hash` of `certificate.tree` (pruned state tree with the canister's `certified_data`) and verify the `certificate.signature` with `root_hash` as the message,`certificate.delegation`, and the IC `root_key` as the public key. This confirms that the signature is valid for the current state tree. 
+2. Validate that the response is not stale by verifying the time at `/time` in `certificate.tree` is less than a certain delta of current time. The recommended delta is 5 minutes but should be adapted to the use case.
+3. Recompute the `root_hash` of the witness and verify equality with the `certified_data`. The `certified_data` can be obtained from `certificate.tree` under the path `/canister/<canister_id>/certified_data`.
+4. Check if query parameters are in the witness. In this example, the lookup path is `/user/<index>` and should be present in the witness. 
 5. Validate if the value found in `/user/<index>` matches `user` from the response. 
-6. If all of previous steps succceed, return `user` as the valid response.
+6. If all of the previous steps succeed, return `user` as the valid response.
 
 ```rust
 use arbitrary::{Arbitrary, Unstructured};
@@ -248,7 +248,7 @@ async fn main() {
         })
         .collect();
 
-    // From response indexes, chose a random index for get_user
+    // From response indexes, choose a random index for get_user
     let index: usize = rng.gen();
     let index: u64 = *results.get(index % MAX_CALLS).unwrap();
     // ==== END of canister data setup
@@ -274,7 +274,8 @@ async fn main() {
         .expect("Time went backwards")
         .as_nanos();
 
-    // Step 1: Check if signature in the certificate can be validated with the root_hash of the tree in certificate as message and root_key as public_key
+    // Step 1: Check if signature in the certificate can be validated with the 
+    // root_hash of the tree in certificate as message and root_key as public_key
     let verification_result = certificate.verify(canister_id.as_slice(), &root_key[..]);
 
     println!(
@@ -305,7 +306,7 @@ async fn main() {
     let witness_digest = witness_decoded.digest();
 
     println!(
-        "Step 3: Witness digest mataches certified data: {:?} ",
+        "Step 3: Witness digest matches certified data: {:?} ",
         witness_digest == certified_data
     );
 
