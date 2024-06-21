@@ -135,15 +135,15 @@ Remember, by default `dfx new` creates a new project in the Motoko language. If 
 
 ### Locating the Wasm and Candid files
 
-Next, you need to download the ledger's Wasm and Candid files from the latest replica version. You can find the latest replica version on the [dashboard](https://dashboard.internetcomputer.org/releases) under the **Elect new replica binary revision** field.
+Next, you need to download the ledger's Wasm and Candid files from the latest replica version. You can find the latest replica version on the [dashboard](https://dashboard.internetcomputer.org/releases) under the **Elect GuestOS version** field.
 
 Then, use the following URL to download the Wasm module: `https://download.dfinity.systems/ic/<VERSION>/canisters/ledger-canister.wasm.gz`.
 
-For example, in this tutorial you'll use the URL https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ledger-canister.wasm.gz.
+For example, in this tutorial you'll use the URL https://download.dfinity.systems/ic/08f32722df2f56f1e5c1e603fee0c87c40b77cba/canisters/ledger-canister.wasm.gz.
 
 Similarly, the following URL can be used to download the Candid file: `https://raw.githubusercontent.com/dfinity/ic/<VERSION>/rs/rosetta-api/icp_ledger/ledger.did`.
 
-In this tutorial, you'll use the URL https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icp_ledger/ledger.did.
+In this tutorial, you'll use the URL https://raw.githubusercontent.com/dfinity/ic/08f32722df2f56f1e5c1e603fee0c87c40b77cba/rs/rosetta-api/icp_ledger/ledger.did.
 
 Now let's open the `dfx.json` file in the project's directory and replace the existing content with the following:
 
@@ -152,8 +152,8 @@ Now let's open the `dfx.json` file in the project's directory and replace the ex
   "canisters": {
     "icp_ledger_canister": {
       "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icp_ledger/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ledger-canister.wasm.gz",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/08f32722df2f56f1e5c1e603fee0c87c40b77cba/rs/rosetta-api/icp_ledger/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/08f32722df2f56f1e5c1e603fee0c87c40b77cba/canisters/ledger-canister.wasm.gz",
       "remote": {
         "id": {
           "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
@@ -225,11 +225,11 @@ In this command, you can deploy the ICP ledger canister locally and pass paramet
 
 - Set the minting account to the `MINTING_ACCOUNT_ID` environmental variable.
 
-- Mint 100 ICP tokens to the `DEFAULT_ACCOUNT_ID` value.
-
-- Set the transfer fee to `0.0001` ICP.
-
 - Name the token `Local ICP` / `LICP`.
+
+- Mint 100 LICP tokens to the `DEFAULT_ACCOUNT_ID` value.
+
+- Set the transfer fee to `0.0001` LICP.
 
 
 :::info
@@ -278,6 +278,12 @@ dfx ledger transfer --amount AMOUNT --memo MEMO RECEIVER_ACCOUNT_ID
 
 Replace `AMOUNT` with the number of tokens to transfer, `MEMO` with a brief message to describe the reason for the transfer, and `RECEIVER_ACCOUNT_ID` with the account ID to receive the tokens.
 
+:::caution
+
+If you send tokens to the principal ID you set as the minter account, you will receive an error that the burn transfer fee must be set to zero. In the initialization values passed to the ICP ledger canister in this tutorial, no burn fee was set, so the default transfer fee was used, which is `0.0001` LICP in this example. You must set the burn fee value to zero if you wish to burn tokens.
+
+:::
+
 ### Using `dfx canister`
 
 The `dfx canister` command can be used to call additional methods of the ICP ledger canister, such as the token's name. To call the token's name, use the command:
@@ -314,61 +320,6 @@ In our local example, there are no archives that have been created so far, resul
 
 ```bash
 (record { archives = vec {} })
-```
-
-To transfer tokens to another account, you will need to get their `AccountIdentifier`. Their `AccountIdentifier` can be derived by getting the identity's principal with the command:
-
-```bash
-dfx identity get-principal --identity IDENTITY
-```
-
-For example, if you want to send LICP to the `minting` account you created earlier, you can get the principal with the command:
-
-```bash
-dfx identity get-principal --identity minter
-```
-
-This will return the principal:
-
-```bash
-sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe
-```
-
-Then, you can get the `AccountIdentifier` with the command:
-
-```bash
-dfx ledger account-id --of-principal sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe
-```
-
-This will return the following output:
-
-```bash
-d52f7f2b7277f025bcaa5c90b10d122274faba289
-```
-
-Then, let's combine the output of these commands to form a transfer transaction:
-
-```bash
-export TO_ACCOUNT = "d52f7f2b7277f025bcaa5c90b10d122274faba2891bea519105309ae1f0af91d"
-dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai transfer '(record { to = $(python3 -c 'print("vec{" + ";".join([str(b) for b in bytes.fromhex("'$TO_ACCOUNT'")]) + "}")'); memo = 1:nat64; amount = record {e8s = 200_000_000 }; fee = record { e8s = 10_000 }; })'
-```
-
-The output of this command will return the block index that the transaction took place in. Since your example is deployed locally and you haven't run any other commands, your transaction takes place within the first block:
-
-```bash
-(variant { Ok = 1 : nat64 })
-```
-
-To confirm that the transaction was successful, query the balance of the `AccountIdentifier` with the command:
-
-```bash
-dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai account_balance '(record { account = '$(python3 -c 'print("vec{" + ";".join([str(b) for b in bytes.fromhex("'$TO_ACCOUNT'")]) + "}")')' })'
-```
-
-This should return a balance of `200_000_000`:
-
-```bash
-(record { e8s = 200_000_000 : nat64 })
 ```
 
 ### Using the Candid UI
