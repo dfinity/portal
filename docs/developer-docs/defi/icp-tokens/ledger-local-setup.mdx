@@ -20,7 +20,7 @@ If you are working in a local development environment, i.e. with a local replica
 
 ### Accounts
 
-A ledger account belongs to and is controlled by the account owner who must be a valid principal ID. No account can be owned by two or more principals (no "joint accounts"). However, since a principal can refer to an external user as well as to a canister, joint accounts can be implemented as canisters.
+An ICP ledger account (see ICRC-1 standard) belongs to and is controlled by the account owner who must be a valid principal ID. No account can be owned by two or more principals (no "joint accounts"). However, since a principal can refer to an external user as well as to a canister, joint accounts can be implemented as canisters.
 
 An account on the ledger uses an `AccountIdentifier`, which is derived from the principal ID and subaccount identifier. The subaccount is an optional bitstring which helps distinguish between the different sub-accounts of the same owner.
 
