@@ -22,7 +22,7 @@ If you are working in a local development environment, i.e. with a local replica
 
 An ICP ledger account (see ICRC-1 standard) belongs to and is controlled by the account owner who must be a valid principal ID. No account can be owned by two or more principals (no "joint accounts"). However, since a principal can refer to an external user as well as to a canister, joint accounts can be implemented as canisters.
 
-An account on the ledger uses an `AccountIdentifier`, which is derived from the principal ID and subaccount identifier. The subaccount is an optional bitstring which helps distinguish between the different sub-accounts of the same owner.
+An account on the ledger is represented and stored as an `AccountIdentifier`, which is derived from the principal ID and subaccount identifier by computing a hash of the two.  The subaccount is an optional bitstring which helps distinguish between the different sub-accounts of the same owner.
 
 In this context, you can think of principal identifiers as a rough equivalent to the hash of a user’s public key for Bitcoin or Ethereum. You use the corresponding secret key to sign messages and therefore authenticate to the ledger canister and operate on the principal’s account. Canisters can also have accounts in the ledger canister, in which case the address is derived from the canister’s principal.
 
