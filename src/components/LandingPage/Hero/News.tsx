@@ -12,8 +12,7 @@ const MotionLink = motion(Link);
 const NewsPageLink = () => {
   return (
     <Link className="link-white link-with-icon" href="/news">
-      More News
-      <LinkArrowRight />
+      <LinkArrowRight /> More News
     </Link>
   );
 };
