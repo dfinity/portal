@@ -67,34 +67,26 @@ function UseCasesPage() {
             variants={transitions.container}
           >
             <div className="flex flex-col gap-16 md:gap-40 relative">
-              <TranslatedLayout
-                imageUrl="/img/use-cases/1a.webp"
-                reverse={true}
-              >
-                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense translate-x-[5%] -translate-y-2/3 z-0 md:opacity-35 " />
-                <h5 className="tw-heading-6 md:tw-heading-5 mb-2">
-                  Chain Fusion
-                </h5>
+              <TranslatedLayout imageUrl="/img/use-cases/6.webp" reverse={true}>
+                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense translate-x-[20%] -translate-y-[65%] z-0 md:opacity-35 " />
+                <h5 className="tw-heading-6 md:tw-heading-5 mb-2">DeFi </h5>
                 <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
-                  The multichain technology{" "}
+                  On-chain swaps
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                  ICP enables direct interoperability with all major
-                  blockchains, including Bitcoin, Ethereum, other EVMs (and soon
-                  Solana), without relying on any trusted intermediary. Unique
-                  compared to other blockchains, ICP smart contracts can read
-                  from and write to different chains, enabling developers to
-                  write smart contracts spanning different chains. This is chain
-                  fusion.
+                  Imagine a decentralized order-book exchange built exclusively
+                  using smart contracts that directly serve a web experience
+                  like those of centralized exchanges, and incorporates the
+                  world's digital assets without need for insecure bridges.
                 </p>
 
                 <Link
                   className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
-                  href="/chainfusion"
+                  href="/defi"
                 >
-                  Learn about Chain Fusion
+                  Check out ICP Dex’s{" "}
                 </Link>
-              </TranslatedLayout>
+              </TranslatedLayout>{" "}
               <TranslatedLayout
                 imageUrl="/img/use-cases/1.webp"
                 reverse={false}
@@ -208,26 +200,6 @@ function UseCasesPage() {
                   href="/social-media-dapps"
                 >
                   Get Active on web3 Socials
-                </Link>
-              </TranslatedLayout>
-              <TranslatedLayout imageUrl="/img/use-cases/6.webp" reverse={true}>
-                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense translate-x-[20%] -translate-y-[65%] z-0 md:opacity-35 " />
-                <h5 className="tw-heading-6 md:tw-heading-5 mb-2">DeFi </h5>
-                <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
-                  On-chain swaps
-                </h3>
-                <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                  Imagine a decentralized order-book exchange built exclusively
-                  using smart contracts that directly serve a web experience
-                  like those of centralized exchanges, and incorporates the
-                  world's digital assets without need for insecure bridges.
-                </p>
-
-                <Link
-                  className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
-                  href="/defi"
-                >
-                  Check out ICP Dex’s{" "}
                 </Link>
               </TranslatedLayout>
             </div>
