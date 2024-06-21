@@ -728,6 +728,19 @@ const sidebars = {
                 "developer-docs/multi-chain/chain-key-tokens/cketh/using-cketh-in-dapps",
               ],
             },
+            {
+              type: "category",
+              label: "ckERC20",
+              items: [
+                {
+                  label: "Overview",
+                  type: "doc",
+                  id: "developer-docs/multi-chain/chain-key-tokens/ckerc20/overview",
+                },
+                "developer-docs/multi-chain/chain-key-tokens/ckerc20/making-transactions",
+                "developer-docs/multi-chain/chain-key-tokens/ckerc20/using-cketh-in-dapps",
+              ],
+            },
           ],
         },
       ],
