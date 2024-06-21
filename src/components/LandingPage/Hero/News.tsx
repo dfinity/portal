@@ -5,6 +5,7 @@ import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import transitions from "@site/static/transitions.json";
 import { motion } from "framer-motion";
+import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
 
 const MotionLink = motion(Link);
 
@@ -12,7 +13,7 @@ const NewsPageLink = () => {
   return (
     <Link className="link-white link-with-icon" href="/news">
       More News
-      <LinkArrowUpRight></LinkArrowUpRight>
+      <LinkArrowRight />
     </Link>
   );
 };
