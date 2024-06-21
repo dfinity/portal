@@ -936,24 +936,7 @@ dfx canister call evm_rpc request "(variant {$JSON_RPC_SOURCE}, "'"{ \"jsonrpc\"
 </TabItem>
 </AdornedTabs>
 
-### Authorization (local replica)
-
-```bash
-PRINCIPAL=$(dfx identity get-principal)
-dfx canister call evm_rpc authorize "(principal \"$PRINCIPAL\", variant { RegisterProvider })"
-dfx canister call evm_rpc getAuthorized '(variant { RegisterProvider })'
-dfx canister call evm_rpc deauthorize "(principal \"$PRINCIPAL\", variant { RegisterProvider })"
-```
-
-## Custom JSON-RPC requests
-
-Send a raw JSON-RPC request to a custom URL with the `request` method:
-
-```bash
-dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 100000000 request '(variant {Custom={url = "https://ethereum.publicnode.com"}},"{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":[],\"id\":1}",1000)'
-```
-
-## Specifying an EVM chain
+### Specifying an EVM chain
 
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
@@ -988,6 +971,18 @@ dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 1000
 
 </TabItem>
 </AdornedTabs>
+
+## Authorization (local replica)
+
+```bash
+PRINCIPAL=$(dfx identity get-principal)
+dfx canister call evm_rpc authorize "(principal \"$PRINCIPAL\", variant { RegisterProvider })"
+dfx canister call evm_rpc getAuthorized '(variant { RegisterProvider })'
+dfx canister call evm_rpc deauthorize "(principal \"$PRINCIPAL\", variant { RegisterProvider })"
+```
+
+
+
 
 ## Specifying RPC services
 
