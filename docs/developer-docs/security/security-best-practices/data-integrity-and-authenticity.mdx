@@ -59,7 +59,7 @@ The canister exposes the following service:
 
 You can find an example implementation of the canister below. 
 
-<AdornedTabs groupId="cert-var-canister">
+<AdornedTabs groupId="language">
 <TabItem value="rust" label="Rust" default>
 
 ```rust
@@ -160,6 +160,7 @@ fn get_user(index: u64) -> CertifiedUser {
 <TabItem value="motoko" label="Motoko">
 
 ```motoko
+
 import CertifiedData "mo:base/CertifiedData";
 import Blob "mo:base/Blob";
 import Nat8 "mo:base/Nat8";
@@ -310,7 +311,7 @@ The example has some extra steps to setup the canister with some `User` data bef
 5. Validate if the value found in `/user/<index>` matches `user` from the response. 
 6. If all of the previous steps succeed, return `user` as the valid response.
 
-<AdornedTabs groupId="cert-var-verifier">
+<AdornedTabs groupId="language">
 <TabItem value="rust" label="Rust" default>
 ```rust
 use arbitrary::{Arbitrary, Unstructured};
