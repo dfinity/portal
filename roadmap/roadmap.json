@@ -1382,6 +1382,32 @@
         "elements": [
           {
             "title": "EVM in a canister",
+            "overview": "A low-fee, high-performance EVM implemented as set of canisters on ICP with trustless integration with the Bitcoin network.",
+            "description": "The Bitfinity EVM is implemented as a set of canister smart contracts deployed on ICP. Bitfinity offers lower fees, lower latency, and higher throughput than Ethereum. Thanks to chain-key cryptography, the EVM is tightly integrated with the Bitcoin network in a trustless manner.",
+            "status": "in_progress",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "is_community": true,
+            "in_beta": false
+          },
+          {
+            "title": "Threshold ECDSA — Throughput improvements",
+            "overview": "Improving throughput of chain-key ECDSA via multiple protocol improvements such as batching, parallel processing of crypto operations, and cryptographic protocol improvements.",
+            "description": "This feature addresses optimizations of the chain-key ECDSA (i.e., threshold ECDSA) implementation on ICP to improve throughput. Possible approaches used to reach those goals are to introduce batching techniques to process batches of cryptographic operations, thereby improving performance, or to further parallelize cryptographic operations.",
+            "status": "in_progress",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "future",
+            "is_community": true,
+            "in_beta": false
+          },
+          {
+            "title": "EVM in a canister",
             "overview": "An low-fee, high-performance EVM implemented as set of canisters on ICP with trustless integration with the Bitcoin network.",
             "description": "The Bitfinity EVM is implemented as a set of canister smart contracts deployed on ICP. Bitfinity offers lower fees, lower latency, and higher throughput than Ethereum. Thanks to chain-key cryptography, the EVM is tightly integrated with the Bitcoin network in a trustless manner.",
             "status": "in_progress",
@@ -3597,8 +3623,8 @@
     "description": "Developer experience is an essential ingredient for developer adoption. This includes low-friction canister development and operations, expressive smart contract languages, testing frameworks, and a rich set of libraries. Beyond canister development, developer experience also encompasses an inclusive and quality-preserving protocol development.",
     "milestones": [
       {
-        "name": "Canister Operation Insights",
-        "description": "This milestone provides substantial simplifications and improvements for the developer lifecycle of canisters, particularly regarding their development and operations. Snapshotting capabilities, a powerful logging infrastructure and improved error handling, as well as insights into the cycles consumption of canisters and push of relevant events brings canisters closer to Web2 services in terms of DevOps.",
+        "name": "Canister DevOps",
+        "description": "This milestone provides substantial simplifications and improvements for the developer lifecycle of canisters, particularly regarding their development and operations. Snapshotting capabilities, a powerful logging infrastructure and improved error handling as well as push of relevant events brings canisters closer to Web2 services in terms of DevOps.",
         "milestone_id": "Beryllium",
         "eta": null,
         "status": "in_progress",
@@ -3627,21 +3653,6 @@
             "docs": "",
             "eta": "Q2 2024",
             "status": "in_progress",
-            "is_community": true,
-            "in_beta": false,
-            "milestone_id": "Beryllium",
-            "imported": true
-          },
-          {
-            "title": "Cycles consumption insights",
-            "overview": "Give canister controllers insights on cycles consumption of their canisters to help them optimize cycles consumption.",
-            "description": "Tracking down where cycles are consumed during the operation of a canister is currently a tedious job requiring manual efforts. This feature provides people who operate canisters insights into where cycles were spent. These insights can be used to optimize the cycles consumption of canisters.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "",
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Beryllium",
@@ -3688,6 +3699,30 @@
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Beryllium"
+          }
+        ]
+      },
+      {
+        "name": "Canister Resource Management",
+        "description": "This milestone improves the cycles management experience on ICP through the introduction of the cycles Ledger. End users can hold cycles seamlessly and can more easily manage their canisters cycles balance. Furthermore, with the exposure of a key set of metrics, getting insights into your canisters’ operations has been greatly improved, especially with the ability to see a breakdown of your cycles usage and which endpoints are the most expensive ones to call.",
+        "milestone_id": "Thorium",
+        "eta": null,
+        "status": "in_progress",
+        "elements": [
+          {
+            "title": "Cycles and instruction insights",
+            "overview": "Give canister controllers insights on cycles consumption of their canisters to help them optimize cycles consumption.",
+            "description": "Tracking down where cycles are consumed during the operation of a canister is currently a tedious job requiring manual efforts. This feature provides people who operate canisters insights into where cycles were spent. These insights can be used to optimize the cycles consumption of canisters.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": "Thorium",
+            "imported": true
           },
           {
             "title": "Cycles Ledger",
@@ -3701,8 +3736,22 @@
             "status": "in_progress",
             "is_community": true,
             "in_beta": false,
-            "milestone_id": "Beryllium",
+            "milestone_id": "Thorium",
             "imported": true
+          },
+          {
+            "title": "Live canister metrics",
+            "overview": "Expose key canister metrics in realtime that can be queried, such as a breakdown of its memory usage (heap vs. stable) or received calls per second.",
+            "description": "It is crucial that canisters be manageable and monitorable, much like traditional Web2 services in cloud environments. This requires that key canister metrics be available through a canister API. Besides the cycles insights that are part of another feature, relevant further metrics would be a memory consumption breakdown (heap and stable), or received calls per second. Such metrics are crucial for devs in order to ensure their dapps are running reliably and to take mitigating steps in case of issues.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": "Thorium"
           }
         ]
       },
@@ -4090,19 +4139,6 @@
             "is_community": false,
             "in_beta": false,
             "imported": true
-          },
-          {
-            "title": "Live canister metrics",
-            "overview": "Expose key canister metrics in realtime that can be queried, such as a breakdown of its memory usage (heap vs. stable) or received calls per second.",
-            "description": "It is crucial that canisters be manageable and monitorable, much like traditional Web2 services in cloud environments. This requires that key canister metrics be available through a canister API. Besides the cycles insights that are part of another feature, relevant further metrics would be a memory consumption breakdown (heap and stable), or received calls per second. Such metrics are crucial for devs in order to ensure their dapps are running reliably and to take mitigating steps in case of issues.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "future",
-            "is_community": true,
-            "in_beta": false
           },
           {
             "title": "IC agents for additional languages",
