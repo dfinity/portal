@@ -12,7 +12,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 One of the key features of the Internet Computer is known as **chain-key cryptography**. Chain-key cryptography is a feature that encompasses several cryptographic mechanisms that enable novel workflows and functionalities such as chain-key tokens. Chain-key tokens are not wrapped tokens; they are twin tokens that are backed 1:1 with the original token (BTC, ETH) that use chain-key cryptography to transfer and use the original tokens with less fees and higher transfer speeds than using the token's native blockchain network.
 
-Currently, ICP supports an integration with the Bitcoin network that includes the chain-key bitcoin (ckBTC) token, and has an Ethereum integration in development.
+Currently, ICP supports an integration with the Bitcoin network that includes the chain-key bitcoin (ckBTC) token. Other chain-key tokens include ckETH and variations of ckERC20 tokens, such as ckUSDC, and ckLINK.
 
 :::info
 In this tutorial and other pages of ICP developer documentation, note the use of the lowercase version of **bitcoin**, which refers to the token BTC, and use of the uppercase version **Bitcoin**, which refers to the Bitcoin network itself. This capitalization distinction is in accordance with the Bitcoin style guide.
@@ -246,7 +246,7 @@ The `P2PKH` address will be returned in the UI:
 
 ### Receiving BTC
 
-To receive BTC on your local network, you need to mine blocks, since BTC are minted as a reward for mining a block. On the Bitcoin testnet and mainnet, you cannot control when blocks are mined. On tour local Bitcoin network, however, you can manually mine blocks using the following command within the `bitcoind` directory:
+To receive BTC on your local network, you need to mine blocks, since BTC are minted as a reward for mining a block. On the Bitcoin testnet and mainnet, you cannot control when blocks are mined. On your local Bitcoin network, however, you can manually mine blocks using the following command within the `bitcoind` directory:
 
 ```bash
 ./bin/bitcoin-cli -conf=$(pwd)/bitcoin.conf generatetoaddress <number-of-blocks> <address>
@@ -284,7 +284,7 @@ To check the balance of your Bitcoin address to confirm that it received the BTC
 dfx canister call basic_bitcoin get_balance '("BTC_ADDRESS")'
 ```
 
-Replace `BTC_ADDRESS` with your generated `P2PKH` address. Our balance should be `5_000_000_00`, which is equal to 50 BTC.
+Replace `BTC_ADDRESS` with your generated `P2PKH` address. Your balance should be `5_000_000_00`, which is equal to 50 BTC.
 
 ```bash
 (5_000_000_000 : nat64)
@@ -296,7 +296,7 @@ Remember that this is a local deployment. The BTC you mine here is only valid on
 
 ### Sending BTC
 
-Previously, you mined a single block and received a reward of 50 BTC for that block. One prerequisite to sending this BTC to someone else, however, is that first, 100 additional blocks must be mined. This is known as the Coinbase maturity rule.
+Previously, you mined a single block and received a reward of 50 BTC for that block. One prerequisite to sending this BTC to someone else, however, is that first 100 additional blocks must be mined. This is known as the Coinbase maturity rule.
 
 To mine 100 additional blocks, run the command:
 
@@ -323,7 +323,7 @@ This command will create a transaction and send it to the local Bitcoin instance
 In the `bitcoind` directory, run the following command to mine another block:
 
 ```bash
-./bin/bitcoin-cli -conf=$(pwd)/bitcoin.conf generatetoaddress 1 mtbZzVBwLnDmhH4pE9QynWAgh6H3aC1E6M
+./bin/bitcoin-cli -conf=$(pwd)/bitcoin.conf generatetoaddress 1 BTC_ADDRESS
 ```
 
 Now, you can check that the address `n2dcQfuwFw7M2UYzLfM6P7DwewsQaygb8S` has a balance of 1 BTC:
