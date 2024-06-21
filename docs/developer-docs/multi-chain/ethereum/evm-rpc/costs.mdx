@@ -21,6 +21,11 @@ JSON-RPC requests typically cost between 10^8 and 10^9 cycles, which is equivale
 
 Because the Candid-RPC methods of the EVM RPC canister use built-in retries and multiple providers, the amount of cycles required for each RPC call isn't predictable beforehand. The idea for these methods is to send a maximum cycles budget to perform the request.
 
+:::info
+The EVM RPC canister will continue retrying the request until it runs out of cycles sent with the request. This is important for requests such as `eth_getLogs`, where one request might return 100x as much data than the same request a few days earlier if there is a spike in smart contract activity. As a result, the optimal cycles budget is different for each use case. It is suggested to send 10_000_000_000 cycles as a starting point and adjust from there.
+:::
+
+
 The following formula shows how to calculate the cycles cost for an RPC request:
 
 ```
@@ -57,7 +62,7 @@ In addition to the cost of the RPC request itself, callers must also pass at lea
 
 ## Attaching the correct amount of cycles
 
-To determine how many cycles need to be sent with your RPC call, you can use the `requestCost` query method:
+To determine how many cycles need to be sent with your RPC call, you can use the `requestCost` query method. This is used to predict costs for calls to the `request` method:
 
 ```
 `requestCost`
@@ -71,11 +76,7 @@ requestCost : (
 ) query;
 ```
 
-This query method accepts the same arguments as the canister's [`request`](evm-rpc-canister.mdx#custom-json-rpc-requests) and returns the number of cycles to send with an equivalent call to the `request` method.
-
-:::info
-The EVM RPC canister will continue retrying the request until it runs out of cycles sent with the request. This is important for requests such as `eth_getLogs`, where one request might return 100x as much data than the same request a few days earlier if there is a spike in smart contract activity. As a result, the optimal cycles budget is different for each use case. It is suggested to send 10_000_000_000 cycles as a starting point and adjust from there.
-:::
+This query method accepts the same arguments as the canister's [`request`](evm-rpc-canister.mdx#custom-json-rpc-requests) method and returns the number of cycles to send with an equivalent call.
 
 Once you have determined how many cycles your call will need, you can send them in your call through a CDK or using `dfx` with the `--with-cycles` flag.
 
@@ -90,7 +91,6 @@ import Cycles "mo:base/ExperimentalCycles";
 Cycles.add<system>(1000000000);
 let result = await EvmRpc.eth_getBlockByNumber(services, null, #Latest);
 ```
-
 
 </TabItem>
 <TabItem value="rust" label="Rust">
