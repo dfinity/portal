@@ -117,6 +117,20 @@
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Stellarator"
+          },
+          {
+            "title": "Motoko orthogonal persistence",
+            "overview": "Offering simple and scalable persistence across upgrades without needing to use stable memory in Motoko.",
+            "description": "Motoko already offers orthogonal persistence where objects are automatically retained across upgrades if reachable from stable variables. This simple-to-use and safe model will now be made as scalable as stable memory, by implementing instantaneous upgrades without serialization to and from stable memory and by allowing the same amount of orthogonally persistent data as with stable memory. For this purpose, the main memory obtains a self-descriptive format that can be retained across upgrades, while its address space is extended to 64-bit to pass the 4GB data limit.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Stellarator"
           }
         ]
       },
@@ -3651,7 +3665,7 @@
             "proposal": "",
             "wiki": "",
             "docs": "",
-            "eta": "Q2 2024",
+            "eta": "2024-06-12",
             "status": "in_progress",
             "is_community": true,
             "in_beta": false,
@@ -3704,7 +3718,7 @@
       },
       {
         "name": "Canister Resource Management",
-        "description": "This milestone improves the cycles management experience on ICP through the introduction of the cycles Ledger. End users can hold cycles seamlessly and can more easily manage their canisters cycles balance. Furthermore, with the exposure of a key set of metrics, getting insights into your canisters’ operations has been greatly improved, especially with the ability to see a breakdown of your cycles usage and which endpoints are the most expensive ones to call.",
+        "description": "This milestone improves the cycles management experience on ICP through the introduction of the Cycles Ledger. End users can hold cycles seamlessly and can more easily manage their canisters cycles balance. Furthermore, with the exposure of a key set of metrics, getting insights into your canisters’ operations has been greatly improved, especially with the ability to see a breakdown of your cycles usage and which endpoints are the most expensive ones to call.",
         "milestone_id": "Thorium",
         "eta": null,
         "status": "in_progress",
@@ -3718,7 +3732,7 @@
             "wiki": "",
             "docs": "",
             "eta": "",
-            "status": "",
+            "status": "upcoming",
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Thorium",
@@ -4097,19 +4111,6 @@
             "docs": "",
             "eta": "",
             "is_community": true,
-            "in_beta": false
-          },
-          {
-            "title": "Motoko orthogonal persistence",
-            "overview": "Offering simple and scalable persistence across upgrades without needing to use stable memory in Motoko.",
-            "description": "Motoko already offers orthogonal persistence where objects are automatically retained across upgrades if reachable from stable variables. This simple-to-use and safe model will now be made as scalable as stable memory, by implementing instantaneous upgrades without serialization to and from stable memory and by allowing the same amount of orthogonally persistent data as with stable memory. For this purpose, the main memory obtains a self-descriptive format that can be retained across upgrades, while its address space is extended to 64-bit to pass the 4GB data limit.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": false,
             "in_beta": false
           },
           {
