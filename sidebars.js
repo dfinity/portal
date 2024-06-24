@@ -738,7 +738,7 @@ const sidebars = {
                   id: "developer-docs/multi-chain/chain-key-tokens/ckerc20/overview",
                 },
                 "developer-docs/multi-chain/chain-key-tokens/ckerc20/making-transactions",
-                "developer-docs/multi-chain/chain-key-tokens/ckerc20/using-cketh-in-dapps",
+                "developer-docs/multi-chain/chain-key-tokens/ckerc20/using-ckerc20-in-dapps",
               ],
             },
           ],
