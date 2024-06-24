@@ -63,7 +63,7 @@ A user can convert ckERC20 tokens to ERC-20 tokens by following these steps:
 
 1. The user calls the `icrc2_approve` function on the ckETH ledger to approve the ckETH minter to burn some of the user's ckETH tokens as payment for the transaction fees.
 
-2. The user calls the `icrc2_approve` function on the ledger of the given ckERC20 token to approve the minter to burn some of the user' ckERC20 tokens.
+2. The user calls the `icrc2_approve` function on the ledger of the given ckERC20 token to approve the minter to burn some of the user's ckERC20 tokens.
 
 3. The user calls the `withdraw_erc20` function on the ckETH minter, specifying the canister ID of the ledger of the given ckERC20 token, the amount to be withdrawn, and the Ethereum destination address. The ckETH minter then issues transactions to burn the fee in ckETH and the specififed amount of the ckERC20 token. If both operations succeed, it sends an Ethereum transaction that transfers the specified amount from the helper smart contract to the destination address that the user provided.
 
