@@ -58,7 +58,7 @@ In order to convert ERC-20 tokens to the corresponding ckERC20 tokens, the follo
 2. The user calls the `deposit` function of the helper smart contract, specifying the ERC-20 contract, how many ERC-20 tokens should be withdrawn from the user's account, and the principal ID that should be credited for the minted ckERC20 tokens. The helper smart contract transfers the specified number of ERC-20 tokens to itself and, if successful, emits an `event` to be consumed by the ckETH minter.
 
 3. The ckETH minter periodically fetches the logs from the helper smart contract, minting ckERC20 tokens for every newly discovered `event`.
-
+## Converting ckERC20 tokens to ERC-20 tokens
 A user can convert ckERC20 tokens to ERC-20 tokens by following these steps:
 
 1. The user calls the `icrc2_approve` function on the ckETH ledger to approve the ckETH minter to burn some of the user's ckETH tokens as payment for the transaction fees.
