@@ -25,7 +25,23 @@ ICP also provides replica signed queries, where query responses are signed by th
 :::
 
 ### What is certified data?
-A canister can store a small amount of data (32 bytes) during an update call in the state tree under `certified_data` which will be certified by the subnet. During a query call, the canister can obtain a certificate about that data, which can be verified against the IC root public key. The rest of the section shows an example canister, which can serve a certified response for a `query` using `certified_data` which is verified in the frond-end. The examples are written in Rust and Motoko but the overall design can be implemented in other languages.
+A canister can store a small amount of data (32 bytes) during an update call in the state tree under `certified_data` which will be certified by the subnet. During a query call, the canister can obtain a certificate about that data, which can be verified against the IC root public key. Combining these features, a canister should be able to certify a variable in a query response with this [design](https://medium.com/dfinity/how-internet-computer-responses-are-certified-as-authentic-2ff1bb1ea659). 
+
+On a high level, in your canister,
+1. Choose an [authenticated data strucutre](https://cs.brown.edu/research/pubs/pdfs/2003/Tamassia-2003-ADS.pdf) like Merkle trees for storing the value in canister memory.
+2. In the **update** call,
+  - Perform the computation and store the result in the Merkle store.
+  - The lookup path for the result must act as it's `key`. Ideally this `key` should be the parameters provided by the caller in the query method.
+  - Recompute the Merkle proof (`root_hash`)
+  - Store the `root_hash` as the canister's certified data.
+  - Return the `key` as response.
+3. In the **query** call, 
+  - Fetch the result from the Merkle strucutre using the query parameters as the lookup path.
+  - Fetch the current `certified_data` for the canister.
+  - Compute the witness for the result using the same lookup path. Merkle witness provide proof of inclusion that the requested result exists in the Merkle store under the given path.
+  - Return `(result, certified_data, witness)` as the response.
+
+The rest of the section shows an example canister, which can serve a certified response for a `query` using `certified_data` which is verified in the frond-end. The examples are written in Rust and Motoko but the overall design can be implemented in other languages.
 
 ### Building a canister with certified variables
 Let's consider the following canister interface:
