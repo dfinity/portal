@@ -816,6 +816,8 @@ const sidebars = {
                 "developer-docs/defi/wallets/self-custody/hardware-wallet-cli",
               ],
             },
+          ],
+        },
             "developer-docs/defi/icp-tokens/ledger-local-setup",
             "developer-docs/defi/icp-tokens/using-the-ledger",
             "developer-docs/defi/icrc-1/icrc1-ledger-setup",
@@ -823,8 +825,6 @@ const sidebars = {
             "developer-docs/defi/icrc-1/using-icrc1-ledger",
             "developer-docs/defi/tokens/indexes",
             "developer-docs/defi/icp-tokens/account-trimming",
-          ],
-        },
         {
           type: "doc",
           label: "Exchange rate canister",
