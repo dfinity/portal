@@ -14,7 +14,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 ## Overview
 
 A Bitcoin transaction spends a number of unspent transaction outputs (UTXOs) and
-creates new UTXOs. In order to create a Bitcoin transaction, you need to
+creates new UTXOs. In order to create a Bitcoin transaction, you need to:
 
 1. Get the available UTXOs corresponding to a Bitcoin address controlled by the
    canister using the `bitcoin_get_utxos` API endpoint.
@@ -111,8 +111,8 @@ pub struct Outpoint {
 </TabItem>
 </Tabs>
 
-To create a transaction that sends x satoshis to a destination address, then you
-need to select a subset of the available UTXOs that cover the amount x plus the
+To create a transaction that sends `X` satoshis to a destination address, you
+need to select a subset of the available UTXOs that cover the amount `X` plus the
 transaction fee.
 
 ## Calculate transaction fee per byte

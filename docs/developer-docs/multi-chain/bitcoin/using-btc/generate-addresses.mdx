@@ -29,7 +29,7 @@ Bitcoin uses multiple address types:
 ### Legacy addresses
 
 These addresses start with a `1` and are called `P2PKH` (Pay to Public Key Hash)
-addresses. They encode the hash of a ECDSA public key.
+addresses. They encode the hash of an ECDSA public key.
 
 There is also another type of legacy address that starts with a `3` called `P2SH`
 (Pay to Script Hash) that encodes the hash of a
@@ -38,7 +38,7 @@ conditions such as multisig or timelocks.
 
 ### SegWit addresses
 
-SegWit addresses are newer address following the
+SegWit addresses are newer addresses following the
 [`Bech32`](https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki)
 format that start with `bc1`. They are cheaper to spend than legacy addresses
 and solve transaction malleability which is important for advanced use cases
@@ -56,10 +56,10 @@ SegWit addresses can be of three types:
 
 As mentioned above, a Bitcoin address is derived from a public key or a script.
 To generate a Bitcoin address that can only be spent by a specific canister or a
-specific caller of a canister, you need to derive the address from a Canister's
+specific caller of a canister, you need to derive the address from a canister's
 public key available via the
 [`ecdsa_public_key`](/docs/current/references/ic-interface-spec#ic-ecdsa_public_key) API.
-The Basic Bitcoin example demonstrates how to generate a `P2PKH` address from a
+The [basic Bitcoin example](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin) demonstrates how to generate a `P2PKH` address from a
 canister's public key.
 
 <Tabs groupId="language">
