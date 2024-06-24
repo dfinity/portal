@@ -67,6 +67,27 @@ function UseCasesPage() {
             variants={transitions.container}
           >
             <div className="flex flex-col gap-16 md:gap-40 relative">
+              <TranslatedLayout
+                imageUrl="/img/use-cases/1a.webp"
+                reverse={false}
+              >
+                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense translate-x-[5%] -translate-y-2/3 z-0 md:opacity-35 " />
+                <h5 className="tw-heading-6 md:tw-heading-5 mb-2">DeAI</h5>
+                <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
+                  Run your AI models on the blockchain
+                </h3>
+                <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
+                  Run AI models entirely on-chain to benefit from the security,
+                  resilience, and power of the ICP blockchain.
+                </p>
+
+                <Link
+                  className="button-outline-white-30 text-center mb-6 md:mb-8 whitespace-nowrap"
+                  href="/ai"
+                >
+                  AI Models on ICP
+                </Link>
+              </TranslatedLayout>
               <TranslatedLayout imageUrl="/img/use-cases/6.webp" reverse={true}>
                 <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense translate-x-[20%] -translate-y-[65%] z-0 md:opacity-35 " />
                 <h5 className="tw-heading-6 md:tw-heading-5 mb-2">DeFi </h5>
@@ -81,7 +102,7 @@ function UseCasesPage() {
                 </p>
 
                 <Link
-                  className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
+                  className="button-outline-white-30 text-center mb-6 md:mb-8 whitespace-nowrap"
                   href="/defi"
                 >
                   Check out ICP Dex’s{" "}
@@ -108,7 +129,7 @@ function UseCasesPage() {
                 </p>
 
                 <Link
-                  className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
+                  className="button-outline-white-30 text-center mb-6 md:mb-8 whitespace-nowrap"
                   href="/sns"
                 >
                   DAOs on ICP
@@ -131,7 +152,7 @@ function UseCasesPage() {
                 </p>
 
                 <Link
-                  className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
+                  className="button-outline-white-30 text-center mb-6 md:mb-8 whitespace-nowrap"
                   href="/enterprise"
                 >
                   Kickstart a pilot project
@@ -154,7 +175,7 @@ function UseCasesPage() {
                 </p>
 
                 <Link
-                  className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
+                  className="button-outline-white-30 text-center mb-6 md:mb-8 whitespace-nowrap"
                   href="/gaming"
                 >
                   Let’s play
@@ -173,7 +194,7 @@ function UseCasesPage() {
                 </p>
 
                 <Link
-                  className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
+                  className="button-outline-white-30 text-center mb-6 md:mb-8 whitespace-nowrap"
                   href="/nft"
                 >
                   Start an NFT collection
@@ -196,7 +217,7 @@ function UseCasesPage() {
                 </p>
 
                 <Link
-                  className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
+                  className="button-outline-white-30 text-center mb-6 md:mb-8 whitespace-nowrap"
                   href="/social-media-dapps"
                 >
                   Get Active on web3 Socials
