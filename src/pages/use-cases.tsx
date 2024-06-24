@@ -71,7 +71,7 @@ function UseCasesPage() {
                 imageUrl="/img/use-cases/1a.webp"
                 reverse={false}
               >
-                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense translate-x-[5%] -translate-y-2/3 z-0 md:opacity-35 " />
+                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense -translate-x-[70%] -translate-y-[10%] z-0 md:opacity-30 " />
                 <h5 className="tw-heading-6 md:tw-heading-5 mb-2">DeAI</h5>
                 <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
                   Run your AI models on the blockchain
@@ -89,7 +89,7 @@ function UseCasesPage() {
                 </Link>
               </TranslatedLayout>
               <TranslatedLayout imageUrl="/img/use-cases/6.webp" reverse={true}>
-                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense translate-x-[20%] -translate-y-[65%] z-0 md:opacity-35 " />
+                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense -translate-x-[0%] -translate-y-[25%] z-0 md:opacity-30 " />
                 <h5 className="tw-heading-6 md:tw-heading-5 mb-2">DeFi </h5>
                 <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
                   On-chain swaps
@@ -112,7 +112,6 @@ function UseCasesPage() {
                 imageUrl="/img/use-cases/1.webp"
                 reverse={false}
               >
-                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense -translate-x-[75%] -translate-y-2/3 z-0 md:opacity-35 " />
                 <h5 className="tw-heading-6 md:tw-heading-5 mb-2">
                   DAOs on ICP
                 </h5>
@@ -136,7 +135,6 @@ function UseCasesPage() {
                 </Link>
               </TranslatedLayout>
               <TranslatedLayout imageUrl="/img/use-cases/2.webp" reverse={true}>
-                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense translate-x-[5%] -translate-y-[66%] z-0 md:opacity-35 " />
                 <h5 className="tw-heading-6 md:tw-heading-5 mb-2">
                   Enterprise Cloud 3.0{" "}
                 </h5>
@@ -162,6 +160,8 @@ function UseCasesPage() {
                 imageUrl="/img/use-cases/3.webp"
                 reverse={false}
               >
+                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense -translate-x-[75%] -translate-y-[10%] z-0 md:opacity-30 " />
+
                 <h5 className="tw-heading-6 md:tw-heading-5 mb-2">Gaming </h5>
                 <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
                   Paradigm shift in Web3 gaming{" "}
@@ -182,6 +182,8 @@ function UseCasesPage() {
                 </Link>
               </TranslatedLayout>
               <TranslatedLayout imageUrl="/img/use-cases/4.webp" reverse={true}>
+                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense translate-x-[10%] -translate-y-[33%] z-0 md:opacity-30 " />
+
                 <h5 className="tw-heading-6 md:tw-heading-5 mb-2">NFTs </h5>
                 <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
                   NFT’s live fully on-chain{" "}
@@ -204,7 +206,7 @@ function UseCasesPage() {
                 imageUrl="/img/use-cases/5.webp"
                 reverse={false}
               >
-                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense -translate-x-[75%] -translate-y-[65%] z-0 md:opacity-35 " />
+                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense -translate-x-[75%] -translate-y-[65%] z-0 md:opacity-30 " />
                 <h5 className="tw-heading-6 md:tw-heading-5 mb-2">SoFi </h5>
                 <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
                   Reclaim social media
