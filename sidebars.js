@@ -609,7 +609,7 @@ const sidebars = {
             },
             {
               type: "doc",
-              label: "Denial of Service",
+              label: "Denial of service",
               id: "developer-docs/security/security-best-practices/dos",
             },
             {
@@ -619,7 +619,7 @@ const sidebars = {
             },
             {
               type: "doc",
-              label: "Observability and Monitoring",
+              label: "Observability and monitoring",
               id: "developer-docs/security/security-best-practices/observability-and-monitoring",
             },
             {
@@ -700,8 +700,9 @@ const sidebars = {
         "developer-docs/multi-chain/examples",
         {
           type: "category",
-          label: "Chain key tokens",
+          label: "Chain-key tokens",
           items: [
+            "developer-docs/multi-chain/chain-key-tokens/overview",
             {
               type: "category",
               label: "ckBTC",
@@ -804,12 +805,16 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "Tokens",
+          label: "Wallets",
           items: [
+            "developer-docs/defi/wallets/overview",
             {
-              label: "Overview",
-              type: "doc",
-              id: "developer-docs/defi/icp-tokens/overview",
+              type: "category",
+              label: "Self-custody",
+              items: [
+                "developer-docs/defi/wallets/self-custody/self-custody-quickstart",
+                "developer-docs/defi/wallets/self-custody/hardware-wallet-cli",
+              ],
             },
             "developer-docs/defi/icp-tokens/ledger-local-setup",
             "developer-docs/defi/icp-tokens/using-the-ledger",
@@ -956,15 +961,6 @@ const sidebars = {
           ],
         },
         "developer-docs/defi/token_integrations/index",
-        {
-          type: "category",
-          label: "Asset custody",
-          items: [
-            "developer-docs/defi/asset-custody/custody-options",
-            "developer-docs/defi/asset-custody/self-custody-quickstart",
-            "developer-docs/defi/asset-custody/hardware-wallet-cli",
-          ],
-        },
         {
           type: "category",
           label: "NFTs",

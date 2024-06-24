@@ -17,6 +17,7 @@ const redirects = `
   /showcase /ecosystem
   /multichain /chainfusion
   /basics /what-is-the-ic
+  /community https://linktr.ee/icp_hubs_network
   /docs/videos-tutorials /developers
   /docs /docs/current/home
   /docs/current/ /docs/current/home
@@ -126,9 +127,9 @@ const redirects = `
   /docs/current/developer-docs/quickstart/windows-wsl /docs/current/developer-docs/getting-started/install/windows-wsl
   /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/developer-journey/
 
-  /docs/rosetta-api/ledger /docs/current/developer-docs/defi/icp-tokens/overview
+  /docs/rosetta-api/ledger /docs/current/developer-docs/defi/tokens/token-standards
   /docs/rosetta-api/ledger-local-setup /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup
-  /docs/integration/ledger-quick-start /docs/current/developer-docs/defi/icp-tokens/overview
+  /docs/integration/ledger-quick-start /docs/current/developer-docs/defi/tokens/token-standards
   /docs/current/developer-docs/functionality/ledger/* /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup
 
   /docs/base-libraries/* /docs/current/motoko/main/base/:splat
@@ -348,7 +349,7 @@ const redirects = `
   /docs/current/developer-docs/http-compatible-canisters/serving-json-over-http /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-json-over-http
   /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http
   /docs/current/developer-docs/integrations/ledger/introduction_and_overview /docs/current/developer-docs/defi/overview
-  /docs/current/developer-docs/integrations/ledger/  /docs/current/developer-docs/defi/icp-tokens/overview
+  /docs/current/developer-docs/integrations/ledger/  /docs/current/developer-docs/defi/tokens/token-standards
   /docs/current/developer-docs/integrations/ledger/ledger-local-setup  /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup
   /docs/current/developer-docs/integrations/ledger/interact-with-ledger  /docs/current/developer-docs/defi/icp-tokens/using-the-ledger
   /docs/current/developer-docs/integrations/ledger/icp-index-local-setup /docs/current/developer-docs/defi/tokens/indexes
@@ -361,8 +362,8 @@ const redirects = `
   /docs/current/developer-docs/integrations/exchange-rate/exchange-rate-canister /docs/current/developer-docs/defi/exchange-rate-canister
   /docs/current/developer-docs/integrations/rosetta/index  /docs/current/developer-docs/defi/rosetta/overview
   /docs/current/developer-docs/integrations/rosetta/  /docs/current/developer-docs/defi/rosetta/overview
-  /docs/current/tokenomics/token-holders/custody-options-intro /docs/current/developer-docs/defi/asset-custody/custody-options
-  /docs/current/tokenomics/token-holders/self-custody-quickstart /docs/current/developer-docs/defi/asset-custody/self-custody-quickstart
+  /docs/current/tokenomics/token-holders/custody-options-intro /docs/current/developer-docs/defi/wallets/overview
+  /docs/current/tokenomics/token-holders/self-custody-quickstart /docs/current/developer-docs/defi/wallets/self-custody/self-custody-quickstart
   /docs/current/developer-docs/use-cases/considerations-for-nft-devs /docs/current/developer-docs/defi/nfts/considerations-for-nft-devs
   /docs/current/developer-docs/integrations/sns/introduction/sns-intro-high-level /docs/current/developer-docs/daos/sns/overview
   /docs/current/developer-docs/integrations/sns/introduction/sns-architecture /docs/current/developer-docs/daos/sns/overview
@@ -520,6 +521,10 @@ const redirects = `
   /docs/current/developer-docs/defi/icrc-1/icrc1-index-setup /docs/current/developer-docs/defi/tokens/indexes
   /docs/current/defi/icp-tokens/icp-index-local-setup /docs/current/developer-docs/defi/tokens/indexes
   /docs/current/developer-docs/smart-contracts/encryption/signing-transactions /docs/current/developer-docs/smart-contracts/encryption/signing-messages
+  /docs/current/developer-docs/defi/icp-tokens/overview /docs/current/developer-docs/defi/tokens/token-standards
+  /docs/current/developer-docs/defi/asset-custody/self-custody-quickstart /docs/current/developer-docs/defi/wallets/self-custody/self-custody-quickstart
+  /docs/current/developer-docs/defi/asset-custody/hardware-wallet-cli /docs/current/developer-docs/defi/wallets/self-custody/hardware-wallet-cli
+  /docs/current/developer-docs/defi/asset-custody/custody-options /docs/current/developer-docs/defi/wallets/overview
   /docs/current/developer-docs/defi/icrc-1/token-quickstart /docs/current/developer-docs/defi/tokens/create
   `
   .split(/[\r\n]+/)
