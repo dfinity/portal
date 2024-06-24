@@ -20,7 +20,26 @@ NFTs are deployed on-chain using smart contracts to provide a transparent record
 
 - Recording documents such as education certificates or awards.
 
-ICP provides two standards for NFTs, ICRC-7 and ICRC-37.
+NFTs are created by recording the token's data on-chain through a process known as minting. On ICP, minting is done through a canister smart contract that define's the NFT's ownership, data and metadata. It also enables the NFT to be sold or transferred to another account.
+
+Each NFT is assigned a unique identifier that is publicly accessible, along with the NFT's data, metadata, and transaction history. NFTs can be part of a large collection, such as '1 of 1_000', or they can be '1 of 1' tokens. '1 of 1' NFTs are often used for original art, education certificates, or property records, while '1 of 1_000' can be used to provide equal benefits to each NFT holder, such as membership to a website or tickets to an event.
+
+However, even if all 1_000 NFTs in a collection are the exact same image and provide the same benefit, each will have its own unique identifier to distinguish it from the others in the collection.
+
+## NFTs on ICP
+
+ICP enables cross-chain NFT functionality, allowing assets as images, music, or videos to be securely stored entirely on-chain while the NFT itself is minted on various chains, such as on any EVM chain. Refer to [the cross-chain NFT example](https://github.com/domwoe/erc-721-ic-assets) on how to host metadata on the ICP for an ERC-721 NFT minted on an EVM chain.
+
+ICP also supports dynamic NFTs that can be curated to evolve based on both data stored on-chain or obtained through external APIs. NFT assets can be modified in real time by making external API requests using [HTTPS outcalls](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview).
+
+ICP provides two standards for NFTs, [ICRC-7](https://github.com/dfinity/ICRC/blob/main/ICRCs/ICRC-7/ICRC-7.md) and [ICRC-37](https://github.com/dfinity/ICRC/blob/main/ICRCs/ICRC-37/ICRC-37.md). ICRC-7 is a base standard that intentionally excludes certain functions, while ICRC-37 is an extension of ICRC-7 that enables an approval workflow.
+
+:::caution
+
+The ICRC-7 and ICRC-37 standards are still currently in the drafting stages and are not yet live in production.
+
+:::
+
 
 :::info
 
@@ -28,50 +47,29 @@ In the past, the standard [DIP-721](https://github.com/Psychedelic/DIP721) was u
 
 :::
 
-## NFTs on ICP
 
-The Internet Computer Protocol brings a lot of potential for NFTs.
+## Minting NFTs
 
-### NFT asset storage for cross-chain NFTs
-
-NFT assets, including images, sound clips, or videos, can be securely stored on-chain entirely on ICP, even while the NFT itself is minted on various chains, such as on any EVM chain.
-
-Refer to [this example](https://github.com/domwoe/erc-721-ic-assets) on how to host metadata on the ICP of an ERC-721 NFT minted on an EVM chain.
-
-### Generative NFTs
-
-Dynamic NFTs can be curated to evolve based on both data stored on ICP or external APIs. NFT assets can be modified in real-time by calling API requests on-chain using [HTTPS outcalls](/https-outcalls).
-
-### Minting NFTs on ICP
-
-For developers seeking to store assets and mint NFTs directly on the Internet Computer Protocol (ICP), an NFT implementation typically encompasses three core functionalities:
+For developers seeking to store assets and mint NFTs directly on ICP, an NFT implementation typically encompasses three core functionalities:
 
 - A registry to monitor ownership and facilitate transfers.
-- A ledger or transaction history.
+
+- A ledger or other form of transaction history.
+
 - The actual asset itself (in the case of digital assets).
 
-#### NFT interface specifications and implementations
-
-- [DIP-721](https://github.com/Psychedelic/DIP721) is an [ERC-721](https://eips.ethereum.org/EIPS/eip-721) style non-fungible token standard built mirroring its Ethereum counterpart and adapting it to the Internet Computer, maintaining the same interface.
-
-Refer to the [creating NFTs on ICP](/docs/current/tutorials/developer-journey/level-5/5.4-NFT-tutorial#icrc-7) tutorial for more information.
-
-- [ICRC-7](https://github.com/dfinity/ICRC/tree/54d98a82a626daad6f674f1b8e6b815785f6c8c5/ICRCs/ICRC-7) is a standard for the base implementation of non-fungible tokens (NFTs) on the Internet Computer.
-
-:::caution
-The ICRC-7 standard is still currently in the drafting stages and is not yet live in production.
-:::
-
-### NFT marketplaces and launchpads
+## NFT marketplaces and launchpads
 
 Additionally, you have the option to utilize various platforms for minting your NFTs, such as:
 
 - [Entrepot](https://entrepot.app/).
-- [Jelly](https://jelly.xyz/).
+
 - [NFT Anvil](https://nftanvil.com/).
-- [Yumi](https://tppkg-ziaaa-aaaal-qatrq-cai.raw.icp0.io/).
 
+- [Yuku](https://yuku.app/).
 
+- [Kontribute](https://kontribute.app/)
 
+## Next steps
 
-
+Learn how to [create an NFT collection on ICP](nft-collections.mdx)
