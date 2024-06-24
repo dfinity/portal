@@ -17,7 +17,7 @@ const sidebars = {
           label: "Development workflow",
           id: "developer-docs/getting-started/development-workflow",
         },
-	{
+        {
           type: "doc",
           label: "Installing tools",
           id: "developer-docs/getting-started/install/index",
@@ -118,7 +118,7 @@ const sidebars = {
           label: "Compile",
           id: "developer-docs/smart-contracts/compile",
         },
-	{
+        {
           type: "doc",
           label: "Install",
           id: "developer-docs/smart-contracts/install",
@@ -171,7 +171,7 @@ const sidebars = {
             "developer-docs/smart-contracts/maintain/import",
             "developer-docs/smart-contracts/maintain/logs",
             "developer-docs/smart-contracts/maintain/recovery",
-	          "developer-docs/smart-contracts/maintain/resource-limits",
+            "developer-docs/smart-contracts/maintain/resource-limits",
             "developer-docs/smart-contracts/maintain/state",
             "developer-docs/smart-contracts/maintain/settings",
             "developer-docs/smart-contracts/maintain/storage",
@@ -201,7 +201,7 @@ const sidebars = {
           items: [
             "developer-docs/smart-contracts/test/benchmarking",
             "developer-docs/smart-contracts/test/pocket-ic",
-	    "developer-docs/smart-contracts/test/reproducible-builds",
+            "developer-docs/smart-contracts/test/reproducible-builds",
             "developer-docs/smart-contracts/test/staging-environment",
             "developer-docs/smart-contracts/test/troubleshooting",
           ],
@@ -210,7 +210,7 @@ const sidebars = {
           type: "category",
           label: "Advanced features",
           items: [
-	    {
+            {
               type: "doc",
               label: "Async code and inter-canister calls",
               id: "developer-docs/smart-contracts/advanced-features/async-code",
@@ -242,7 +242,7 @@ const sidebars = {
                 {
                   label: "Overview",
                   type: "doc",
-                  id:  "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview",
+                  id: "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview",
                 },
                 "developer-docs/smart-contracts/advanced-features/https-outcalls/making-http-requests",
                 "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use",
@@ -271,7 +271,7 @@ const sidebars = {
                 },
               ],
             },
-	    {
+            {
               type: "doc",
               label: "Management canister",
               id: "developer-docs/smart-contracts/advanced-features/management-canister",
@@ -289,7 +289,7 @@ const sidebars = {
               label: "On-chain randomness",
               id: "developer-docs/smart-contracts/advanced-features/randomness",
             },
-	    {
+            {
               type: "category",
               label: "On-chain signatures: Threshold ECDSA",
               items: [
@@ -298,6 +298,7 @@ const sidebars = {
               ],
             },
             "developer-docs/smart-contracts/advanced-features/periodic-tasks",
+            "developer-docs/smart-contracts/advanced-features/query-stats",
             "developer-docs/smart-contracts/advanced-features/simd",
             "developer-docs/smart-contracts/advanced-features/system-canisters",
           ],
@@ -345,13 +346,13 @@ const sidebars = {
                 type: "doc",
                 id: "developer-docs/developer-tools/cli-tools/cli-reference/index",
               },
-	      items: [
+              items: [
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-parent",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-bootstrap",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-build",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-cache",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister",
-		            "developer-docs/developer-tools/cli-tools/cli-reference/dfx-cycles",
+                "developer-docs/developer-tools/cli-tools/cli-reference/dfx-cycles",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-deploy",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-deps",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-generate",
@@ -499,8 +500,8 @@ const sidebars = {
           type: "category",
           label: "On-chain libraries",
           items: [
-              "developer-docs/developer-tools/on-chain/cdks",
-              "developer-docs/developer-tools/on-chain/ic-js",
+            "developer-docs/developer-tools/on-chain/cdks",
+            "developer-docs/developer-tools/on-chain/ic-js",
           ],
         },
         {
@@ -573,23 +574,63 @@ const sidebars = {
           items: [
             {
               type: "doc",
-              label: "General",
-              id: "developer-docs/security/general-security-best-practices",
+              label: "Overview",
+              id: "developer-docs/security/security-best-practices/overview",
             },
             {
               type: "doc",
-              label: "Rust",
-              id: "developer-docs/security/rust-canister-development-security-best-practices",
+              label: "Inter-canister calls",
+              id: "developer-docs/security/security-best-practices/inter-canister-calls",
             },
             {
               type: "doc",
-              label: "Web apps",
-              id: "developer-docs/security/web-app-development-security-best-practices",
+              label: "Identity and access management",
+              id: "developer-docs/security/security-best-practices/iam",
+            },
+            {
+              type: "doc",
+              label: "Decentralization",
+              id: "developer-docs/security/security-best-practices/decentralization",
+            },
+            {
+              type: "doc",
+              label: "Data integrity and authenticity",
+              id: "developer-docs/security/security-best-practices/data-integrity-and-authenticity",
+            },
+            {
+              type: "doc",
+              label: "Data storage",
+              id: "developer-docs/security/security-best-practices/data-storage",
+            },
+            {
+              type: "doc",
+              label: "HTTP outcalls",
+              id: "developer-docs/security/security-best-practices/https-outcalls",
+            },
+            {
+              type: "doc",
+              label: "Denial of service",
+              id: "developer-docs/security/security-best-practices/dos",
+            },
+            {
+              type: "doc",
+              label: "Canister upgrades",
+              id: "developer-docs/security/security-best-practices/canister-upgrades",
+            },
+            {
+              type: "doc",
+              label: "Observability and monitoring",
+              id: "developer-docs/security/security-best-practices/observability-and-monitoring",
+            },
+            {
+              type: "doc",
+              label: "Miscellaneous",
+              id: "developer-docs/security/security-best-practices/misc",
             },
             {
               type: "doc",
               label: "Important resources",
-              id: "developer-docs/security/security-best-practices-references",
+              id: "developer-docs/security/security-best-practices/resources",
             },
           ],
         },
@@ -600,7 +641,7 @@ const sidebars = {
         },
       ],
     },
-	  {
+    {
       type: "category",
       label: "Chain Fusion",
       items: [
@@ -635,7 +676,7 @@ const sidebars = {
               type: "doc",
               id: "developer-docs/multi-chain/ethereum/overview",
             },
-	    "developer-docs/multi-chain/ethereum/using-eth/eth-dev-workflow",
+            "developer-docs/multi-chain/ethereum/using-eth/eth-dev-workflow",
             "developer-docs/multi-chain/ethereum/using-eth/generating-addresses",
             "developer-docs/multi-chain/ethereum/using-eth/signing-transactions",
             "developer-docs/multi-chain/ethereum/using-eth/submit-transactions",
@@ -659,7 +700,7 @@ const sidebars = {
         "developer-docs/multi-chain/examples",
         {
           type: "category",
-          label: "Chain key tokens",
+          label: "Chain-key tokens",
           items: [
             "developer-docs/multi-chain/chain-key-tokens/overview",
             {
@@ -692,59 +733,59 @@ const sidebars = {
         },
       ],
     },
-	   {
-	  type: "category",
-	  label: "Identity",
-	  items: [
-	    {
-	      type: "category",
-	      label: "Authentication",
-	      items: [
-          {
-            label: "Overview",
-            type: "doc",
-            id: "developer-docs/identity/authentication/overview",
-          },
-
-			{
-		  type: "category",
-		  label: "Internet Identity (II)",
-		  items:
-	      [
-          {
-            label: "Overview",
-            type: "doc",
-            id:  "developer-docs/identity/internet-identity/overview",
-          },
-	      "developer-docs/identity/internet-identity/creating-ii",
-	      "developer-docs/identity/internet-identity/integrate-internet-identity",
-	      "developer-docs/identity/internet-identity/alternative-origins",
-	      ],
-	    },
-	      "developer-docs/identity/authentication/email-password",
-	      "developer-docs/identity/authentication/nfid",
-	      "developer-docs/identity/authentication/siwe",
-	      "developer-docs/identity/authentication/siws",
-	      "developer-docs/identity/authentication/msq",
-	      ],
-	    },
-	  {
-	    type: "category",
-	    label: "Verifiable credentials",
-	    items: [
+    {
+      type: "category",
+      label: "Identity",
+      items: [
         {
-          label: "Overview",
-          type: "doc",
-          id: "developer-docs/identity/verifiable-credentials/overview",
+          type: "category",
+          label: "Authentication",
+          items: [
+            {
+              label: "Overview",
+              type: "doc",
+              id: "developer-docs/identity/authentication/overview",
+            },
+
+            {
+              type: "category",
+              label: "Internet Identity (II)",
+              items:
+                [
+                  {
+                    label: "Overview",
+                    type: "doc",
+                    id: "developer-docs/identity/internet-identity/overview",
+                  },
+                  "developer-docs/identity/internet-identity/creating-ii",
+                  "developer-docs/identity/internet-identity/integrate-internet-identity",
+                  "developer-docs/identity/internet-identity/alternative-origins",
+                ],
+            },
+            "developer-docs/identity/authentication/email-password",
+            "developer-docs/identity/authentication/nfid",
+            "developer-docs/identity/authentication/siwe",
+            "developer-docs/identity/authentication/siws",
+            "developer-docs/identity/authentication/msq",
+          ],
         },
-	      "developer-docs/identity/verifiable-credentials/how-it-works",
-	      "developer-docs/identity/verifiable-credentials/issuer",
-	      "developer-docs/identity/verifiable-credentials/relying-party",
-	    ],
-	  },
-	],
-	},
-	   {
+        {
+          type: "category",
+          label: "Verifiable credentials",
+          items: [
+            {
+              label: "Overview",
+              type: "doc",
+              id: "developer-docs/identity/verifiable-credentials/overview",
+            },
+            "developer-docs/identity/verifiable-credentials/how-it-works",
+            "developer-docs/identity/verifiable-credentials/issuer",
+            "developer-docs/identity/verifiable-credentials/relying-party",
+          ],
+        },
+      ],
+    },
+    {
       type: "category",
       label: "Digital assets",
       items: [
@@ -772,6 +813,21 @@ const sidebars = {
                 "developer-docs/defi/cycles/cycles-wallet",
                 "developer-docs/defi/cycles/converting_icp_tokens_into_cycles",
               ]
+            },
+          ],
+        },
+        {
+          type: "category",
+          label: "Wallets",
+          items: [
+            "developer-docs/defi/wallets/overview",
+            {
+              type: "category",
+              label: "Self-custody",
+              items: [
+                "developer-docs/defi/wallets/self-custody/self-custody-quickstart",
+                "developer-docs/defi/wallets/self-custody/hardware-wallet-cli",
+              ],
             },
           ],
         },
@@ -913,15 +969,6 @@ const sidebars = {
         "developer-docs/defi/token_integrations/index",
         {
           type: "category",
-          label: "Asset custody",
-          items: [
-            "developer-docs/defi/asset-custody/custody-options",
-            "developer-docs/defi/asset-custody/self-custody-quickstart",
-            "developer-docs/defi/asset-custody/hardware-wallet-cli",
-          ],
-        },
-        {
-          type: "category",
           label: "NFTs",
           items: ["developer-docs/defi/nfts/considerations-for-nft-devs"],
         },
@@ -929,13 +976,13 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "DeAI",
+      label: "Decentralized AI",
       items: [
-          {
+        {
           type: "doc",
           label: "Overview",
           id: "developer-docs/ai/overview",
-          },
+        },
         "developer-docs/ai/ai-on-chain",
         "developer-docs/ai/machine-learning-sample"
       ],
@@ -952,40 +999,40 @@ const sidebars = {
               type: "doc",
               label: "Overview",
               id: "developer-docs/daos/nns/overview",
-              },
+            },
             {
               type: "category",
               label: "Using the NNS dapp",
               items: [
-              "developer-docs/daos/nns/nns-app-quickstart",
+                "developer-docs/daos/nns/nns-app-quickstart",
               ],
             },
             {
               type: "category",
               label: "Neurons",
               items: [
-              "developer-docs/daos/nns/neuron-management",
-              "developer-docs/daos/nns/staking-voting-rewards",
-            ],
-          },
-        "developer-docs/daos/nns/neurons-fund",
-        {
-          type: "category",
-          label: "Proposals",
-          items: [
-	    "developer-docs/daos/nns/proposal-overview",
-	    "developer-docs/daos/nns/proposal-lifecycle",
-	    "developer-docs/daos/nns/proposal-voting",
-	    {
+                "developer-docs/daos/nns/neuron-management",
+                "developer-docs/daos/nns/staking-voting-rewards",
+              ],
+            },
+            "developer-docs/daos/nns/neurons-fund",
+            {
               type: "category",
-              label: "Advanced",
+              label: "Proposals",
               items: [
-              "developer-docs/daos/nns/proposal-advanced",
-            ],
-          },
+                "developer-docs/daos/nns/proposal-overview",
+                "developer-docs/daos/nns/proposal-lifecycle",
+                "developer-docs/daos/nns/proposal-voting",
+                {
+                  type: "category",
+                  label: "Advanced",
+                  items: [
+                    "developer-docs/daos/nns/proposal-advanced",
+                  ],
+                },
+              ],
+            },
           ],
-        },
-	],
         },
         {
           type: "category",
@@ -1117,7 +1164,7 @@ const sidebars = {
             "references/samples/motoko/simple-to-do/README",
             "references/samples/motoko/threshold-ecdsa/README",
             "references/samples/motoko/token_transfer/README",
-	    "references/samples/motoko/token_transfer_from/README",
+            "references/samples/motoko/token_transfer_from/README",
             "references/samples/motoko/vetkd/README",
             "references/samples/motoko/whoami/README",
           ],
@@ -1305,14 +1352,14 @@ const sidebars = {
   ],
   motoko: [
     "motoko/tutorial",
-      {
-        type: "category",
-        label: "Motoko language book",
-        items: [
+    {
+      type: "category",
+      label: "Motoko language book",
+      items: [
         {
-        type: "link",
-        label: "1. Introduction",
-        href: "https://motoko-book.dev/introduction.html",
+          type: "link",
+          label: "1. Introduction",
+          href: "https://motoko-book.dev/introduction.html",
         },
         {
           type: "link",
@@ -1342,8 +1389,8 @@ const sidebars = {
       ],
     },
     {
-        type: 'autogenerated',
-        dirName: "motoko/main",
+      type: 'autogenerated',
+      dirName: "motoko/main",
     },
   ],
   solidity: [
