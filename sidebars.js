@@ -798,7 +798,7 @@ const sidebars = {
           type: "category",
           label: "Tokens",
           items: [
-	    "developer-docs/defi/tokens/token-standards",
+	          "developer-docs/defi/tokens/token-standards",
             "developer-docs/defi/icp-tokens/ledger-local-setup",
             "developer-docs/defi/tokens/indexes",
             "developer-docs/defi/icp-tokens/using-the-ledger",
@@ -970,7 +970,20 @@ const sidebars = {
         {
           type: "category",
           label: "NFTs",
-          items: ["developer-docs/defi/nfts/considerations-for-nft-devs"],
+          items: [
+            {
+            type: "category",
+            label: "NFTs",
+            items: [
+            {
+            type: "doc",
+            label: "Overview",
+            id: "developer-docs/defi/nfts/overview",
+          },
+          "developer-docs/defi/nfts/nft-collections",
+          "developer-docs/defi/nfts/marketplaces"],
+          },
+        ],
         },
       ],
     },
