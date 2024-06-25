@@ -268,6 +268,7 @@ The following language and capitalization of certain terms and phrases should be
 - reverse gas model
 - Sybil resistance
 - Sybil attack
+- use case (non-hyphenated)
 - vetKeys
 - Web3
 - World Wide Web
