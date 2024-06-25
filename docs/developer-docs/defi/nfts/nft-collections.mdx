@@ -10,7 +10,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-To create an NFT collection, it is recommended to use the ICRC-7 and ICRC-37 standards.
+An NFT collection is a series of non-fungible tokens that each have a unique identifier value. Each token's metadata may be the same, such as the name, image, and description, or each token's data can be unique and associated with a 'rarity' value, where some metadata values are less common than others. Rarity metadata attributes are common in generative NFT collections, often referring to an NFT collection where the artwork for each image has been randomly generated and some components only appear in a select few of the generated images.
+
+For this basic NFT example, you will create a collection where each token has the same metadata values, with the only difference between each NFT being their unique token identifier value.
+
+To create an NFT collection on ICP, it is recommended to use the ICRC-7 and ICRC-37 standards.
 
 This example combines three standards: ICRC-3, ICRC-7, and ICRC-37:
 
@@ -18,9 +22,7 @@ This example combines three standards: ICRC-3, ICRC-7, and ICRC-37:
 
 - [ICRC-7](https://github.com/dfinity/ICRC/tree/main/ICRCs/ICRC-7): The base NFT standard.
 
-- [ICRC-37](https://github.com/dfinity/ICRC/tree/main/ICRCs/ICRC-37): An extension of ICRC-7 that enables an `approve` workflow.
-
-
+- [ICRC-37](https://github.com/dfinity/ICRC/tree/main/ICRCs/ICRC-37): An extension of ICRC-7 that enables an `approve` workflow. This allows owners of an NFT to allow another user to spend or transfer the NFT on their behalf.
 
 ## Creating an NFT collection
 
