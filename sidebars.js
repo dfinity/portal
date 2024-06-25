@@ -729,6 +729,19 @@ const sidebars = {
                 "developer-docs/multi-chain/chain-key-tokens/cketh/using-cketh-in-dapps",
               ],
             },
+            {
+              type: "category",
+              label: "ckERC20",
+              items: [
+                {
+                  label: "Overview",
+                  type: "doc",
+                  id: "developer-docs/multi-chain/chain-key-tokens/ckerc20/overview",
+                },
+                "developer-docs/multi-chain/chain-key-tokens/ckerc20/making-transactions",
+                "developer-docs/multi-chain/chain-key-tokens/ckerc20/using-ckerc20-in-dapps",
+              ],
+            },
           ],
         },
       ],
@@ -831,6 +844,13 @@ const sidebars = {
             },
           ],
         },
+            "developer-docs/defi/icp-tokens/ledger-local-setup",
+            "developer-docs/defi/icp-tokens/using-the-ledger",
+            "developer-docs/defi/icrc-1/icrc1-ledger-setup",
+            "developer-docs/defi/tokens/create",
+            "developer-docs/defi/icrc-1/using-icrc1-ledger",
+            "developer-docs/defi/tokens/indexes",
+            "developer-docs/defi/icp-tokens/account-trimming",
         {
           type: "doc",
           label: "Exchange rate canister",

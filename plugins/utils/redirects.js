@@ -526,7 +526,7 @@ const redirects = `
   /docs/current/developer-docs/defi/asset-custody/hardware-wallet-cli /docs/current/developer-docs/defi/wallets/self-custody/hardware-wallet-cli
   /docs/current/developer-docs/defi/asset-custody/custody-options /docs/current/developer-docs/defi/wallets/overview
   /docs/current/developer-docs/defi/nfts/considerations-for-nft-devs /docs/current/developer-docs/defi/nfts/overview
-
+  /docs/current/developer-docs/defi/icrc-1/token-quickstart /docs/current/developer-docs/defi/tokens/create
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
