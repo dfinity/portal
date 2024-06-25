@@ -816,7 +816,7 @@ const sidebars = {
             "developer-docs/defi/tokens/indexes",
             "developer-docs/defi/icp-tokens/using-the-ledger",
             "developer-docs/defi/icp-tokens/account-trimming",
-            "developer-docs/defi/icrc-1/token-quickstart",
+            "developer-docs/defi/tokens/create",
             "developer-docs/defi/icrc-1/icrc1-ledger-setup",
             {
               type: "category",
