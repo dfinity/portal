@@ -204,6 +204,10 @@ The following is a list of common abbreviations that are capitalized within the 
 - BTC
 - CDK
 - ckBTC
+- ckETH
+- ckERC20
+- ckUSDC
+- ckLINK
 - DAO
 - DeFi
 - ECDSA
@@ -212,6 +216,9 @@ The following is a list of common abbreviations that are capitalized within the 
 - ICP
 - ICRC-1
 - ICRC-2
+- ICRC-3
+- ICRC-7
+- ICRC-37
 - II
 - IOS
 - NFT
@@ -268,7 +275,7 @@ The following language and capitalization of certain terms and phrases should be
 - reverse gas model
 - Sybil resistance
 - Sybil attack
-- use case (non-hyphenated)
+- use case: should not be hyphenated.
 - vetKeys
 - Web3
 - World Wide Web
