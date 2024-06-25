@@ -94,7 +94,7 @@ Lastly, `ETH_ADDRESS` must be replaced by the desired Ethereum destination addre
 
 ## Transferring ckERC20 tokens
 
-ckERC20 tokens are standard ICRC-1 tokens and can be transferred by calling the `icrc1_transfer` function.
+ckERC20 tokens are ICRC-1 and ICRC-2 compliant and can therefore be transferred by calling the `icrc1_transfer` function.
 
 ```
 dfx canister --ic call CKERC20_LEDGER "(record { to = DESTINATION_ACCOUNT; amount = AMOUNT:nat})"
@@ -128,6 +128,6 @@ Replace the following values:
 
 - `LSO`: The canister ID of the ledger suite orchestrator associated with the targeted Ethereum network (`vxkom-oyaaa-aaaar-qafda-cai` for Ethereum mainnet).
 
-- `CHAIN_ID`: The chain ID of the targeted Ethereum network (`chain_id = 1` for Ethereum mainnet). 
+- `CHAIN_ID`: The chain ID of the targeted Ethereum network (`chain_id = 1` for Ethereum mainnet).
 
 - `ERC_20_CONTRACT_ADDRESS`: The corresponding ERC-20 smart contract address (`address = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"` for USDC).
