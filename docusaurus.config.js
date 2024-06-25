@@ -187,16 +187,6 @@ const marketingNav = {
               href: "https://www.youtube.com/dfinity",
               description: "Watch & Learn",
             },
-          ],
-          featured: {
-            title: "Roadmap",
-            href: "/roadmap",
-            image: "/img/nav/featured-roadmap.webp",
-          },
-        },
-        {
-          name: "Capabilities",
-          items: [
             {
               name: "Capabilities",
               href: "/capabilities",
@@ -219,9 +209,9 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Chain Fusion Technology",
-            href: "/chainfusion",
-            image: "/img/nav/featured-chainfusion.webp",
+            title: "Roadmap",
+            href: "/roadmap",
+            image: "/img/nav/featured-roadmap.webp",
           },
         },
       ],
@@ -260,16 +250,6 @@ const marketingNav = {
               href: "/internet-identity",
               description: "Web3 authentication",
             },
-          ],
-          featured: {
-            title: "Run AI models on blockchain",
-            href: "/ai",
-            image: "/img/nav/featured-ai.webp",
-          },
-        },
-        {
-          name: "Use cases",
-          items: [
             {
               name: "DAOs on ICP",
               href: "/sns",
@@ -302,9 +282,9 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Use cases overview",
-            href: "/use-cases",
-            image: "/img/nav/featured-use-cases.webp",
+            title: "Run AI models on blockchain",
+            href: "/ai",
+            image: "/img/nav/featured-ai.webp",
           },
         },
         // {

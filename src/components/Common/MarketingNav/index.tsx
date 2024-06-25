@@ -180,8 +180,8 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
               ))}
             </div>
           )}
-          <div className="flex  flex-1 pl-8 pr-6 py-6 bg-white min-w-[705px]">
-            <div className="flex-1 flex flex-col gap-5 min-w-[256px] pr-6">
+          <div className="flex lex-1 pl-8 pr-6 py-6 bg-white min-w-[705px]">
+            <div className="flex-1 grid grid-rows-4 grid-flow-col gap-5 gap-x-15 min-w-[256px] pr-6">
               {item.sections[selectedSectionIndex].items.map((item) => (
                 <Link
                   key={item.name}
@@ -193,7 +193,7 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
                     "hover:no-underline group/item hover:text-infinite flex flex-col"
                   )}
                 >
-                  <span className="tw-heading-7 inline-flex gap-2 items-center">
+                  <span className="tw-heading-7 inline-flex gap-2 items-center whitespace-nowrap">
                     {item.name}
 
                     {isLinkExternal(item.href) && (
@@ -215,7 +215,7 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
               ))}
             </div>
             {item.sections[selectedSectionIndex].featured && (
-              <div className="flex-1 pl-6">
+              <div className="pl-6">
                 <Link
                   style={{
                     backgroundImage: `url(${item.sections[selectedSectionIndex].featured.image})`,
