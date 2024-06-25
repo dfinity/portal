@@ -123,4 +123,11 @@ The following command can be used to retrieve the canister IDs of all canisters 
 dfx canister --network ic call LSO canister_ids "(record { chain_id = CHAIN_ID:nat; address = "ERC_20_CONTRACT_ADDRESS"})"
 ```
 
-`LSO` must be replaced by the canister ID of the ledger suite orchestrator associated with the targeted Ethereum network (for example, it is `vxkom-oyaaa-aaaar-qafda-cai` for Ethereum mainnet), `CHAIN_ID` must be replaced by the chain ID of the targeted Ethereum network (for example, `chain_id = 1` for Ethereum mainnet). Lastly, `ERC_20_CONTRACT_ADDRESS` must be replaced by the corresponding ERC-20 smart contract address (for example, `address = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"` for USDC).
+
+Replace the following values:
+
+- `LSO`: The canister ID of the ledger suite orchestrator associated with the targeted Ethereum network (`vxkom-oyaaa-aaaar-qafda-cai` for Ethereum mainnet).
+
+- `CHAIN_ID`: The chain ID of the targeted Ethereum network (`chain_id = 1` for Ethereum mainnet). 
+
+- `ERC_20_CONTRACT_ADDRESS`: The corresponding ERC-20 smart contract address (`address = "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"` for USDC).
