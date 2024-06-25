@@ -12,7 +12,7 @@ A digital asset is an electronically-stored item that has value and can be owned
 
 Digital assets can take many forms, such as:
 
-- Tokens and stablecoins.
+- Tokens, including stablecoins.
 
 - Non-fungible tokens (NFTs).
 
@@ -24,7 +24,7 @@ ICP tokens are the network's native utility token. They are used for different a
 
 [ICRC](https://github.com/dfinity/ICRC) stands for `Internet Computer Request for Comments` and is a working group for various topics. ICRC standards can be created for anything, not just token types. Currently, the protocol supports the ICRC token standards ICRC-1, ICRC-2, ICRC-3, and ICRC-7, with several more in the process of being drafted and developed.
 
-[Chain-key](/docs/current/developer-docs/multi-chain/chain-key-tokens/overview) tokens are created using ICP's chain-key cryptography protocols, such as [threshold signing](https://internetcomputer.org/docs/current/concepts/glossary/#chain-key). The chain-key token ckBTC uses the ICRC-1 standard, while ckETH and ckERC20 use the ICRC-2 standard. Each chain-key token is deployed on ICP and backed 1:1 with the native token, such as BTC, ETH, or ERC20, held 100% on-chain in an ICP smart contract. There are no intermediaries or centralized bridges used for chain-key tokens.
+[Chain-key](/docs/current/developer-docs/multi-chain/chain-key-tokens/overview) tokens are created using ICP's chain-key cryptography protocols, such as [threshold signing](https://internetcomputer.org/docs/current/concepts/glossary/#chain-key). The chain-key tokens ckBTC, ckETH, and ckERC20 use ICRC-1 ledgers that support the ICRC-2 extension. Each chain-key token is deployed on ICP and backed 1:1 with the native token, such as BTC, ETH, or ERC20, are locked and kept on their native chain. There are no intermediaries or centralized bridges used for chain-key tokens.
 
 The older token standards, [DIP-20](https://github.com/Psychedelic/DIP20) and [DIP-721](https://github.com/Psychedelic/DIP721), are designed to resemble the Ethereum ERC-20 and ERC-721 standards respectively. While some projects on ICP still use DIP-20 and DIP-721, the new ICRC-2 and ICRC-7 standards are designed to provide a newer, alternative standard for each.
 
@@ -32,9 +32,9 @@ Each token standard is elaborated on in the [token standards documentation](/doc
 
 ## Terminology
 
-- **Principal**: An entity that can be authenticated by ICP. Principals are used to identify canisters, individuals, services, ledger accounts, or other components deployed on ICP. A principal can have multiple accounts.
+- **Principal**: An entity that can be authenticated by ICP. Principals are used to identify canisters, individuals, services, ledger accounts, or other components deployed on ICP. A principal can have multiple accounts because you can change the bytes of the subaccount. Principals are ICP's representation of a public key of a user.
 
-- **Subaccount**: A 32-byte string representing an account of a principal.
+- **Subaccount**: A optional 32-byte array. Together a principal and a subaccount form an account according to the ICRC-1 standard.
 
 - [**Account**](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#account): Used by ICRC ledgers, it is defined as a struct that contains a `principal` and an optional `subaccount` in the format of `(principal, subaccount)`. `Account` can be converted into an `AccountIdentifier` but not vice versa.
 
@@ -44,7 +44,7 @@ Each token standard is elaborated on in the [token standards documentation](/doc
 
 - **Ledger**: Used to record transactions in a chain of blocks. A ledger serves transaction requests and offers a variety of endpoints to fetch data and information about its state.
 
-- **Index**: Allows for querying a transaction list for a specific account rather than querying a ledger's entire history.
+- **Index**: Allows for querying a transaction list for a specific account rather than querying a ledger's entire history. Indexes can also serve blocks like the ledger and is actually the preferred method of doing so.
 
 - **Decentralized exchange**: A peer-to-peer marketplace for buying, selling, and transferring tokens.
 
@@ -52,7 +52,7 @@ Each token standard is elaborated on in the [token standards documentation](/doc
 
 Ledgers are used to record transactions in a chain of blocks. One block references its parent block forming a blockchain that is immutable without changing all previous blocks in the chain.
 
-ICP utilizes two different types of ledgers:
+Currently, on the Internet Computer you will find two different types of ledgers mainly being used:
 
 - The ICP ledger canister that is running on the [NNS](/docs/current/developer-docs/daos/nns/overview).
 
@@ -60,7 +60,8 @@ ICP utilizes two different types of ledgers:
 
 ### ICP ledger
 
-The main purpose of the ICP ledger is to record `burn`, `mint` and most commonly `transfer` transactions with regards to ICP's native [token](/docs/concepts/tokens-cycles.mdx) `ICP`. The ICP ledger canister services transaction requests and offers a variety of endpoints to fetch data and information about the state of the ICP ledger.
+The main purpose of the ICP ledger is to record `burn`, `mint`, ,`approve`, and most commonly `transfer` transactions with regards to ICP's native [token](/docs/concepts/tokens-cycles.mdx) `ICP`. The ICP ledger canister services transaction requests and offers a variety of endpoints to fetch data and information about the state of the ICP ledger.
+
 There is only one ICP ledger on the mainnet.
 
 See the documentation on [how to interact with the ICP ledger for more info](/docs/current/developer-docs/defi/icp-tokens/using-the-ledger).
@@ -79,7 +80,7 @@ The purpose of the ICRC-1 ledger is to create a universally accepted standard fo
 
 ### Difference between the ICP ledger and ICRC-1 ledgers
 
-The ICP ledger is a specific implement that follows no official standard. It was created before the ICRC-1 standard had been conceptualized and created.
+The ICP ledger does not follow an official standard. It was created before the ICRC-1 standard had been conceptualized and created.
 
 ICRC-1 is a standard, not a specific implementation of a ledger. There is a [reference implementation](https://github.com/dfinity/ic/tree/master/rs/rosetta-api/icrc1/ledger) created by DFINITY, but there may be different ICRC-1 ledgers with different implementations that all follow the same standard.
 
