@@ -122,6 +122,22 @@ The method `reverse` expects a single parameter of type `text` and returns one v
 
 The method `divMod` expects and returns two values, all of type `nat`.
 
+## Service `InitArgs`
+
+Consider the following service definition:
+
+```
+service : (InitArgs) -> {
+   ...
+};
+
+```
+
+This definition can be thought of as a deployment configuration. To initialize this service, you must supply `(InitArgs)` as an `init` argument.
+
+An example of this service definition can be found in the [EVM RPC canister's Candid file](https://github.com/internet-computer-protocol/evm-rpc-canister/blob/main/candid/evm_rpc.did#L253) canister.
+
+
 ## Naming arguments and results
 
 In the previous example, the signature for the `divMod` method includes names for the argument and result values. Naming the arguments or results for a method is purely for documentation purposes. The name you use does not change the method’s type or the values being passed. Instead, arguments and results are identified by their **position**, independent of the name.
