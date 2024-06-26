@@ -1815,7 +1815,7 @@
           {
             "title": "HTTP Gateways",
             "overview": "The HTTP Gateway becomes a standalone component as part of the new Boundary Node architecture.",
-            "description": "The HTTP gateway enables web access to dapps hosted on the IC by implementing the [HTTP gateway protocol](docs/current/references/http-gateway-protocol-spec). Currently integrated into the monolithic boundary node, it will transition to a standalone component in the future. HTTP gateways, independent of NNS control, offer functionalities such as TLS termination, static asset caching, enforcement of denylists for legal compliance, and translation of HTTP requests to IC API calls.",
+            "description": "The HTTP gateway enables web access to dapps hosted on the IC by implementing the [HTTP gateway protocol](/docs/current/references/http-gateway-protocol-spec). Currently integrated into the monolithic boundary node, it will transition to a standalone component in the future. HTTP gateways, independent of NNS control, offer functionalities such as TLS termination, static asset caching, enforcement of denylists for legal compliance, and translation of HTTP requests to IC API calls.",
             "forum": "https://forum.dfinity.org/t/boundary-node-roadmap/15562",
             "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
             "wiki": "",
