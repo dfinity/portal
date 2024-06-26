@@ -552,15 +552,15 @@ const redirects = `
   /docs/current/developer-docs/backend/rust/index /docs/current/developer-docs/backend/rust/
   /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/index /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/
   /docs/current/developer-docs/integrations/icrc-1/deploy-new-token /docs/current/developer-docs/defi/tokens/create
-  /docs/current/developer-docs/setup/cycles/cycles-faucet.md	/docs/current/developer-docs/setup/cycles/cycles-faucet
-  /docs/current/developer-docs/setup/deploy-mainnet.md	/docs/current/developer-docs/setup/deploy-mainnet
-  /docs/current/developer-docs/setup/index.md	/docs/current/developer-docs/setup/index
+  /docs/current/developer-docs/setup/cycles/cycles-faucet.md	/docs/current/developer-docs/getting-started/cycles/cycles-faucet
+  /docs/current/developer-docs/setup/deploy-mainnet.md	/docs/current/developer-docs/getting-started/deploy/mainnet
+  /docs/current/developer-docs/setup/index.md	/docs/current/developer-docs/getting-started/install/
   /docs/current/developer-docs/smart-contracts/candid/index	/docs/current/developer-docs/smart-contracts/candid/
   /docs/current/docs/current/references/ii-spec	/docs/current/references/ii-spec
   /docs/current/motoko /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/ /docs/current/motoko/main/getting-started/motoko-introduction
-  /docs/current/motoko/getting-started/motoko-introduction /docs/current/motoko/main/
-  /docs/current/motoko/main/ /docs/current/motoko/main/
+  /docs/current/motoko/getting-started/motoko-introduction /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/motoko/main/ /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/samples/encrypted-notes/	/docs/current/references/samples/motoko/encrypted-notes-dapp/
   /docs/current/samples/nft	/docs/current/references/samples/motoko/dip721-nft-container/
   /docs/language-guide/cycles.html /docs/current/developer-docs/getting-started/cycles/overview
