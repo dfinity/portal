@@ -1,6 +1,97 @@
 {
   "press": [
     {
+      "id": "nzbnEDp6O1AgYjAHxbYiX",
+      "title": "DeFi’s UX Is Becoming A Deterrent To Adoption – Is AI The Antidote?",
+      "date": "2024-06-20",
+      "dateHuman": "Jun 20, 2024",
+      "press": "Forbes",
+      "url": "https://www.forbes.com/sites/nimrodlehavi/2024/06/20/defis-ux-is-becoming-a-deterrent-to-adoption--is-ai-the-antidote/",
+      "tags": [
+        "Press Coverage"
+      ],
+      "previewImageUrl": "//images.ctfassets.net/ywqk17d3hsnp/fKboj4jTIaSigZG0DjY6r/722fe519b1199790c5f57e64e2f10afd/forbes.webp",
+      "imageUrl": "https://images.ctfassets.net/ywqk17d3hsnp/fKboj4jTIaSigZG0DjY6r/722fe519b1199790c5f57e64e2f10afd/forbes.webp"
+    },
+    {
+      "id": "7H6DjeTTiLpOSuU63xFFVW",
+      "title": "DFINITY – Chain Fusion for the Internet Computer",
+      "date": "2024-06-19",
+      "dateHuman": "Jun 19, 2024",
+      "press": "Brave New Coin",
+      "url": "https://bravenewcoin.com/insights/dfinity-chain-fusion-for-the-internet-computer",
+      "tags": [
+        "Press Coverage"
+      ],
+      "previewImageUrl": "//images.ctfassets.net/ywqk17d3hsnp/7cEhkQYanWmXygurh9jmWq/7502e2156fee6cb0d001afb73cc15150/Screenshot_2024-06-21_at_13.42.52.png",
+      "imageUrl": "https://images.ctfassets.net/ywqk17d3hsnp/7cEhkQYanWmXygurh9jmWq/7502e2156fee6cb0d001afb73cc15150/Screenshot_2024-06-21_at_13.42.52.png"
+    },
+    {
+      "id": "2xjBH3I7o2q6CwhHCUGh9q",
+      "title": "Internet Computer Protocol Launches Walletless Verified Credentials to Build Trust in the Public Discourse",
+      "date": "2024-06-18",
+      "dateHuman": "Jun 18, 2024",
+      "press": "Business Insider",
+      "url": "https://markets.businessinsider.com/news/currencies/internet-computer-protocol-launches-walletless-verified-credentials-to-build-trust-in-the-public-discourse-1033487645#:~:text=Internet%20Computer%20Protocol%20(ICP),,and%20sharing%20of%20personal%20data",
+      "tags": [
+        "Press Coverage"
+      ],
+      "previewImageUrl": "//images.ctfassets.net/ywqk17d3hsnp/ZXbxJjQfHbIupbZECvRMY/56407c9b31cd3f648294765f7c126cbc/jan2.jpeg",
+      "imageUrl": "https://images.ctfassets.net/ywqk17d3hsnp/ZXbxJjQfHbIupbZECvRMY/56407c9b31cd3f648294765f7c126cbc/jan2.jpeg"
+    },
+    {
+      "id": "2p7JDlIcv9NV4CBuGTGUnS",
+      "title": "Internet Computer Protocol (ICP) Unveils Walletless Verified Credentials to Combat Fake Accounts",
+      "date": "2024-06-18",
+      "dateHuman": "Jun 18, 2024",
+      "press": "Crypto News",
+      "url": "https://cryptonews.net/news/altcoins/29256709/",
+      "tags": [
+        "Press Coverage"
+      ],
+      "previewImageUrl": "//images.ctfassets.net/ywqk17d3hsnp/5HWvE907t7VYrrgzYCF7K9/195b59e50dbb64597ecd7bc6b337a18b/Screenshot_2024-06-21_at_13.18.25.png",
+      "imageUrl": "https://images.ctfassets.net/ywqk17d3hsnp/5HWvE907t7VYrrgzYCF7K9/195b59e50dbb64597ecd7bc6b337a18b/Screenshot_2024-06-21_at_13.18.25.png"
+    },
+    {
+      "id": "3V0tc9N6Yqx19QDjjwjNNw",
+      "title": "Internet Computer Protocol Launches Walletless Verified Credentials to Build Trust in the Public Discourse",
+      "date": "2024-06-18",
+      "dateHuman": "Jun 18, 2024",
+      "press": "Next big Future",
+      "url": "https://www.nextbigfuture.com/2024/06/internet-computer-protocol-launches-walletless-verified-credentials-to-build-trust-in-the-public-discourse.html",
+      "tags": [
+        "Press Coverage"
+      ],
+      "previewImageUrl": "//images.ctfassets.net/ywqk17d3hsnp/5lPIvjh7F6XiuClodgBYCz/01790192a4ec6b32279f85188996b66e/icp2.jpg",
+      "imageUrl": "https://images.ctfassets.net/ywqk17d3hsnp/5lPIvjh7F6XiuClodgBYCz/01790192a4ec6b32279f85188996b66e/icp2.jpg"
+    },
+    {
+      "id": "sj7KDiUmF9sGZ2fR8vXnM",
+      "title": "Zurich Blockchain Innovator Attracts Eyeballs with DeFi Solution",
+      "date": "2024-06-11",
+      "dateHuman": "Jun 11, 2024",
+      "press": "Finews",
+      "url": "https://www.finews.com/news/english-news/62991-blockchain-technology-innovator-defi-internet-computer-jan-camenisch-dfinity-foundation-zurich",
+      "tags": [
+        "Press Coverage"
+      ],
+      "previewImageUrl": "//images.ctfassets.net/ywqk17d3hsnp/4vhR5P9fc4B7IJjTnfLh87/1e0a360f3b8512b779f9872c049bc838/jan.jpg",
+      "imageUrl": "https://images.ctfassets.net/ywqk17d3hsnp/4vhR5P9fc4B7IJjTnfLh87/1e0a360f3b8512b779f9872c049bc838/jan.jpg"
+    },
+    {
+      "id": "6D9H4rxSit2ComnIbHa3YF",
+      "title": "Dfinity Senior Scientist: Bitcoin’s Next Significant Wave of Innovation Will Revolve Around DAOs",
+      "date": "2024-05-22",
+      "dateHuman": "May 22, 2024",
+      "press": "Bitcoin.com News",
+      "url": "https://news.bitcoin.com/dfinity-senior-scientist-bitcoins-next-significant-wave-of-innovation-will-revolve-around-daos/",
+      "tags": [
+        "Press Coverage"
+      ],
+      "previewImageUrl": "//images.ctfassets.net/ywqk17d3hsnp/1YhhOPr9XxIYCjuIAKeomA/6d75eca7e839222a20d209ca7e22110d/btc_news.jpg",
+      "imageUrl": "https://images.ctfassets.net/ywqk17d3hsnp/1YhhOPr9XxIYCjuIAKeomA/6d75eca7e839222a20d209ca7e22110d/btc_news.jpg"
+    },
+    {
       "id": "5mXT0rJ88pOVptZ45tTGaY",
       "title": "Omnity Protocol Launches New Integration for Low Fee Runes Trading",
       "date": "2024-04-30",
@@ -10,8 +101,8 @@
       "tags": [
         "Press Coverage"
       ],
-      "previewImageUrl": null,
-      "imageUrl": "/img/news/press-02.webp"
+      "previewImageUrl": "//images.ctfassets.net/ywqk17d3hsnp/2yoaHmWKqYjxgTXMRnvZ6J/e0af4074cf6e154c7c59b7ae5307ec6c/image.png",
+      "imageUrl": "https://images.ctfassets.net/ywqk17d3hsnp/2yoaHmWKqYjxgTXMRnvZ6J/e0af4074cf6e154c7c59b7ae5307ec6c/image.png"
     },
     {
       "id": "1DMkB15rMffNtASi2FRQcv",
@@ -23,8 +114,8 @@
       "tags": [
         "Press Coverage"
       ],
-      "previewImageUrl": null,
-      "imageUrl": "/img/news/press-01.webp"
+      "previewImageUrl": "//images.ctfassets.net/ywqk17d3hsnp/7JOglCxmtJFXbCxOZeddsB/e4d22f6adb00d5d8b0a2e7a8a95d7311/image.png",
+      "imageUrl": "https://images.ctfassets.net/ywqk17d3hsnp/7JOglCxmtJFXbCxOZeddsB/e4d22f6adb00d5d8b0a2e7a8a95d7311/image.png"
     },
     {
       "id": "6vB9J0WcBAexJdIN0D9xxf",
@@ -36,8 +127,8 @@
       "tags": [
         "Press Coverage"
       ],
-      "previewImageUrl": null,
-      "imageUrl": "/img/news/press-12.webp"
+      "previewImageUrl": "//images.ctfassets.net/ywqk17d3hsnp/4y6UJ8TmlMj0i1U7UQKDXI/007bcfe9456ec6fdd31f0fcbfee3e3bc/image.png",
+      "imageUrl": "https://images.ctfassets.net/ywqk17d3hsnp/4y6UJ8TmlMj0i1U7UQKDXI/007bcfe9456ec6fdd31f0fcbfee3e3bc/image.png"
     },
     {
       "id": "4zBbbGAPajmuIcc42H7J5M",
@@ -49,8 +140,8 @@
       "tags": [
         "Press Coverage"
       ],
-      "previewImageUrl": null,
-      "imageUrl": "/img/news/press-11.webp"
+      "previewImageUrl": "//images.ctfassets.net/ywqk17d3hsnp/5CRjhBicDFDZ4mqH2he3xI/5276bdc0e2047dd145b2f649ea2d6402/image.png",
+      "imageUrl": "https://images.ctfassets.net/ywqk17d3hsnp/5CRjhBicDFDZ4mqH2he3xI/5276bdc0e2047dd145b2f649ea2d6402/image.png"
     },
     {
       "id": "31J6rOJcsN0Mod6EBOoYbS",
@@ -88,8 +179,8 @@
       "tags": [
         "Press Coverage"
       ],
-      "previewImageUrl": null,
-      "imageUrl": "/img/news/press-08.webp"
+      "previewImageUrl": "//images.ctfassets.net/ywqk17d3hsnp/SaLpAsp0H7TavPrUL7xlx/47dfe319b5d4af92d6444a1957dae4be/image.png",
+      "imageUrl": "https://images.ctfassets.net/ywqk17d3hsnp/SaLpAsp0H7TavPrUL7xlx/47dfe319b5d4af92d6444a1957dae4be/image.png"
     },
     {
       "id": "2J1fkqTBfI4HhmQyOxNiS5",
@@ -102,7 +193,7 @@
         "Press Coverage"
       ],
       "previewImageUrl": null,
-      "imageUrl": "/img/news/press-07.webp"
+      "imageUrl": "/img/news/press-11.webp"
     },
     {
       "id": "3MPyC3RANf3YXkCVUt1lfH",
@@ -115,7 +206,7 @@
         "Press Coverage"
       ],
       "previewImageUrl": null,
-      "imageUrl": "/img/news/press-06.webp"
+      "imageUrl": "/img/news/press-10.webp"
     },
     {
       "id": "4lmyHtT2WF0pj5DkceIDVR",
@@ -128,7 +219,7 @@
         "Press Coverage"
       ],
       "previewImageUrl": null,
-      "imageUrl": "/img/news/press-05.webp"
+      "imageUrl": "/img/news/press-09.webp"
     },
     {
       "id": "dAKDqqpB8S39wZjNaFvR6",
@@ -141,7 +232,7 @@
         "Press Coverage"
       ],
       "previewImageUrl": null,
-      "imageUrl": "/img/news/press-04.webp"
+      "imageUrl": "/img/news/press-08.webp"
     },
     {
       "id": "7FmiX2OBzYSveRKsRnQILI",
@@ -154,7 +245,7 @@
         "Press Coverage"
       ],
       "previewImageUrl": null,
-      "imageUrl": "/img/news/press-03.webp"
+      "imageUrl": "/img/news/press-07.webp"
     },
     {
       "id": "5VA1d8ZjrUnTMwHdO9TBcs",
@@ -270,8 +361,8 @@
       "tags": [
         "Press Coverage"
       ],
-      "previewImageUrl": null,
-      "imageUrl": "/img/news/press-06.webp"
+      "previewImageUrl": "//images.ctfassets.net/ywqk17d3hsnp/2eQ8COMdYi1l6EVxoZzjqA/f283baced86dd491f0cbb84ba1881715/Screenshot_2024-05-01_at_09.39.50.png",
+      "imageUrl": "https://images.ctfassets.net/ywqk17d3hsnp/2eQ8COMdYi1l6EVxoZzjqA/f283baced86dd491f0cbb84ba1881715/Screenshot_2024-05-01_at_09.39.50.png"
     },
     {
       "id": "2pfwv9NCjrUy4MWMtbZKNT",
@@ -388,7 +479,7 @@
         "Press Coverage"
       ],
       "previewImageUrl": null,
-      "imageUrl": "/img/news/press-09.webp"
+      "imageUrl": "/img/news/press-01.webp"
     },
     {
       "id": "5IhITSSs3EKCXC8DO4cArn",
@@ -401,7 +492,7 @@
         "Press Coverage"
       ],
       "previewImageUrl": null,
-      "imageUrl": "/img/news/press-08.webp"
+      "imageUrl": "/img/news/press-12.webp"
     },
     {
       "id": "21Ng4kpYLvlzG9X8TOslZM",
@@ -505,7 +596,7 @@
         "Press Coverage"
       ],
       "previewImageUrl": null,
-      "imageUrl": "/img/news/press-12.webp"
+      "imageUrl": "/img/news/press-04.webp"
     },
     {
       "id": "4IU98BRSqQAhNRkhH3gMYB",
@@ -531,7 +622,7 @@
         "Press Coverage"
       ],
       "previewImageUrl": null,
-      "imageUrl": "/img/news/press-10.webp"
+      "imageUrl": "/img/news/press-02.webp"
     },
     {
       "id": "29XFhQhXhZwUJjZMJIEOrt",
@@ -544,7 +635,7 @@
         "Press Coverage"
       ],
       "previewImageUrl": null,
-      "imageUrl": "/img/news/press-09.webp"
+      "imageUrl": "/img/news/press-01.webp"
     },
     {
       "id": "rLiGE5wZEwn4r8jISCMjb",
@@ -570,7 +661,7 @@
         "Press Coverage"
       ],
       "previewImageUrl": null,
-      "imageUrl": "/img/news/press-07.webp"
+      "imageUrl": "/img/news/press-11.webp"
     },
     {
       "id": "1M9pcrSGg0nf1JhHsOmwjh",
@@ -583,7 +674,7 @@
         "Press Coverage"
       ],
       "previewImageUrl": null,
-      "imageUrl": "/img/news/press-06.webp"
+      "imageUrl": "/img/news/press-10.webp"
     },
     {
       "id": "4CcLqsuTzmg2YdplbEkk7N",
@@ -596,7 +687,7 @@
         "Press Coverage"
       ],
       "previewImageUrl": null,
-      "imageUrl": "/img/news/press-05.webp"
+      "imageUrl": "/img/news/press-09.webp"
     },
     {
       "id": "1FoCi28W3XMlaoRpTSe7c8",
@@ -609,7 +700,7 @@
         "Press Coverage"
       ],
       "previewImageUrl": null,
-      "imageUrl": "/img/news/press-04.webp"
+      "imageUrl": "/img/news/press-08.webp"
     },
     {
       "id": "AaSdxWde8Qz1gvV57y6Bf",
@@ -622,7 +713,7 @@
         "Press Coverage"
       ],
       "previewImageUrl": null,
-      "imageUrl": "/img/news/press-03.webp"
+      "imageUrl": "/img/news/press-07.webp"
     },
     {
       "id": "61xMlBwjbQ5uqstgxmrvRb",
@@ -635,7 +726,7 @@
         "Press Coverage"
       ],
       "previewImageUrl": null,
-      "imageUrl": "/img/news/press-02.webp"
+      "imageUrl": "/img/news/press-06.webp"
     },
     {
       "id": "3T73nupEAVTqlaVpj8BnC5",
@@ -648,7 +739,7 @@
         "Press Coverage"
       ],
       "previewImageUrl": null,
-      "imageUrl": "/img/news/press-01.webp"
+      "imageUrl": "/img/news/press-05.webp"
     },
     {
       "id": "1s5OD8qQQ7jspzVFlNHeUq",
@@ -674,7 +765,7 @@
         "Press Coverage"
       ],
       "previewImageUrl": null,
-      "imageUrl": "/img/news/press-11.webp"
+      "imageUrl": "/img/news/press-03.webp"
     },
     {
       "id": "3kDWd0DrymN0bPTP9dDUvs",
@@ -703,32 +794,6 @@
       "imageUrl": "https://images.ctfassets.net/ywqk17d3hsnp/7xuRLeeVjGlSYR2vIItxZC/f342fbec22b0b373de98e7a2ca9a7584/image.png"
     },
     {
-      "id": "Olw5eFHtYSHguzp5HCYqC",
-      "title": "Polychain Capital-backed Bioniq to leverage Internet Computer with new Bitcoin Ordinals marketplace",
-      "date": "2023-11-29",
-      "dateHuman": "Nov 29, 2023",
-      "press": "TheBlock",
-      "url": "https://www.theblock.co/post/265171/polygon-capital-backed-bioniq-to-leverage-internet-computer-with-new-bitcoin-ordinals-marketplace",
-      "tags": [
-        "Press Coverage"
-      ],
-      "previewImageUrl": null,
-      "imageUrl": "/img/news/press-08.webp"
-    },
-    {
-      "id": "2kQ6PtQN0uWIB9xKVolO6V",
-      "title": "Bitcoin NFT marketplace Bioniq eyes lofty goal of alleviating network congestion",
-      "date": "2023-11-29",
-      "dateHuman": "Nov 29, 2023",
-      "press": "Cointelegraph",
-      "url": "https://cointelegraph.com/news/bitcoin-nft-marketplace-bioniq-congestion",
-      "tags": [
-        "Press Coverage"
-      ],
-      "previewImageUrl": null,
-      "imageUrl": "/img/news/press-07.webp"
-    },
-    {
       "id": "Y6kkMxs3ugpz2Dzd3CPa2",
       "title": "Bitcoin Ordinals Marketplace Bioniq Launches—On Internet Computer",
       "date": "2023-11-29",
@@ -755,19 +820,6 @@
       "imageUrl": "https://images.ctfassets.net/ywqk17d3hsnp/5599RNuAoILIs3lZEHrRTP/848752ea3395ab1f083a2019d74fce88/image.png"
     },
     {
-      "id": "0PUbO5CsGzssL23gcPU7s",
-      "title": "DFINITY 基金会与 SingularityNET 联合发起 DeAI 计划",
-      "date": "2023-11-20",
-      "dateHuman": "Nov 20, 2023",
-      "press": "wublock123.com",
-      "url": "https://www.wublock123.com/index.php?m=content&c=index&a=show&catid=48&id=20760",
-      "tags": [
-        "Press Coverage"
-      ],
-      "previewImageUrl": null,
-      "imageUrl": "/img/news/press-04.webp"
-    },
-    {
       "id": "1UnTqLQIoC0BWiWgJd2Glz",
       "title": "Dfinity taps SingularityNET to bring AI services to DApps",
       "date": "2023-11-20",
@@ -779,19 +831,6 @@
       ],
       "previewImageUrl": "//images.ctfassets.net/ywqk17d3hsnp/75ViMxCC9QETdCBT4pzxVN/e31c8cd530f19b398051cbfd0778b94b/image.png",
       "imageUrl": "https://images.ctfassets.net/ywqk17d3hsnp/75ViMxCC9QETdCBT4pzxVN/e31c8cd530f19b398051cbfd0778b94b/image.png"
-    },
-    {
-      "id": "7dtnuDsXBQSxROMd6CSchD",
-      "title": "Proving you’re human: Internet Computer app OpenChat to test facial recognition",
-      "date": "2023-11-18",
-      "dateHuman": "Nov 18, 2023",
-      "press": "Crypto News",
-      "url": "https://cryptonews.net/news/blockchain/27860426/",
-      "tags": [
-        "Press Coverage"
-      ],
-      "previewImageUrl": null,
-      "imageUrl": "/img/news/press-02.webp"
     },
     {
       "id": "1NlZom3Aapon2uMWaEnZoO",
@@ -807,19 +846,6 @@
       "imageUrl": "https://images.ctfassets.net/ywqk17d3hsnp/6AJOxgESauFh57L0S1iM81/a0c5df4a7178e234becde86042fc6f41/image.png"
     },
     {
-      "id": "5FAqH0WxooCvCmKaqM6zWL",
-      "title": "At Hong Kong Web3 events, industry players look past recent crypto scandals to promote blockchain for everything",
-      "date": "2023-10-30",
-      "dateHuman": "Oct 30, 2023",
-      "press": "scmp.com",
-      "url": "https://www.scmp.com/tech/policy/article/3239581/hong-kong-web3-events-industry-players-look-past-recent-crypto-scandals-promote-blockchain",
-      "tags": [
-        "Press Coverage"
-      ],
-      "previewImageUrl": null,
-      "imageUrl": "/img/news/press-12.webp"
-    },
-    {
       "id": "6hczFnlsablBGWeYWzLxOP",
       "title": "Dominic Williams of DFINITY Foundation Explores Blockchains and Recycling",
       "date": "2023-10-30",
@@ -831,45 +857,6 @@
       ],
       "previewImageUrl": "//images.ctfassets.net/ywqk17d3hsnp/2PyaN9SBKU9EUpYYOZ4GTV/700394a660af82a1433f098c0d157734/image.png",
       "imageUrl": "https://images.ctfassets.net/ywqk17d3hsnp/2PyaN9SBKU9EUpYYOZ4GTV/700394a660af82a1433f098c0d157734/image.png"
-    },
-    {
-      "id": "1fvFFFqoM1imXiKUcPqajx",
-      "title": "WORLD’S FIRST BLOCKCHAIN INVOICING PLATFORM INVOICEMATE MIGRATES TO INTERNET COMPUTER",
-      "date": "2023-10-20",
-      "dateHuman": "Oct 20, 2023",
-      "press": "Cryptopolitan",
-      "url": "https://www.cryptopolitan.com/invoicemate-migrates-internet-computer/",
-      "tags": [
-        "Press Coverage"
-      ],
-      "previewImageUrl": null,
-      "imageUrl": "/img/news/press-10.webp"
-    },
-    {
-      "id": "2sBnMJrC3PeHcxScrToyuN",
-      "title": "InvoiceMate Partners with the DFINITY Foundation",
-      "date": "2023-10-20",
-      "dateHuman": "Oct 20, 2023",
-      "press": "Bloomberg",
-      "url": "https://www.bloomberg.com/press-releases/2023-10-20/invoicemate-partners-with-the-dfinity-foundation",
-      "tags": [
-        "Press Coverage"
-      ],
-      "previewImageUrl": null,
-      "imageUrl": "/img/news/press-09.webp"
-    },
-    {
-      "id": "5OwJRuv5VsVmwwMgA1Y28c",
-      "title": "InvoiceMate Partners with DFINITY to Migrate to Internet Computer",
-      "date": "2023-10-19",
-      "dateHuman": "Oct 19, 2023",
-      "press": "AlexaBlockchain",
-      "url": "https://alexablockchain.com/invoicemate-to-migrate-to-internet-computer-blockchain/",
-      "tags": [
-        "Press Coverage"
-      ],
-      "previewImageUrl": null,
-      "imageUrl": "/img/news/press-08.webp"
     },
     {
       "id": "2JeWHnh0k5UFxjEsoI6nlN",
