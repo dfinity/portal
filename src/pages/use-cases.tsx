@@ -69,37 +69,49 @@ function UseCasesPage() {
             <div className="flex flex-col gap-16 md:gap-40 relative">
               <TranslatedLayout
                 imageUrl="/img/use-cases/1a.webp"
-                reverse={true}
+                reverse={false}
               >
-                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense translate-x-[5%] -translate-y-2/3 z-0 md:opacity-35 " />
-                <h5 className="tw-heading-6 md:tw-heading-5 mb-2">
-                  Chain Fusion
-                </h5>
+                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense -translate-x-[70%] -translate-y-[10%] z-0 md:opacity-30 " />
+                <h5 className="tw-heading-6 md:tw-heading-5 mb-2">DeAI</h5>
                 <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
-                  The multichain technology{" "}
+                  Run your AI models on the blockchain
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                  ICP enables direct interoperability with all major
-                  blockchains, including Bitcoin, Ethereum, other EVMs (and soon
-                  Solana), without relying on any trusted intermediary. Unique
-                  compared to other blockchains, ICP smart contracts can read
-                  from and write to different chains, enabling developers to
-                  write smart contracts spanning different chains. This is chain
-                  fusion.
+                  Run AI models entirely on-chain to benefit from the security,
+                  resilience, and power of the ICP blockchain.
                 </p>
 
                 <Link
-                  className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
-                  href="/chainfusion"
+                  className="button-outline-white-30 text-center mb-6 md:mb-8 whitespace-nowrap"
+                  href="/ai"
                 >
-                  Learn about Chain Fusion
+                  AI Models on ICP
                 </Link>
               </TranslatedLayout>
+              <TranslatedLayout imageUrl="/img/use-cases/6.webp" reverse={true}>
+                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense -translate-x-[0%] -translate-y-[25%] z-0 md:opacity-30 " />
+                <h5 className="tw-heading-6 md:tw-heading-5 mb-2">DeFi </h5>
+                <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
+                  On-chain swaps
+                </h3>
+                <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
+                  Imagine a decentralized order-book exchange built exclusively
+                  using smart contracts that directly serve a web experience
+                  like those of centralized exchanges, and incorporates the
+                  world's digital assets without need for insecure bridges.
+                </p>
+
+                <Link
+                  className="button-outline-white-30 text-center mb-6 md:mb-8 whitespace-nowrap"
+                  href="/defi"
+                >
+                  Check out ICP Dex’s{" "}
+                </Link>
+              </TranslatedLayout>{" "}
               <TranslatedLayout
                 imageUrl="/img/use-cases/1.webp"
                 reverse={false}
               >
-                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense -translate-x-[75%] -translate-y-2/3 z-0 md:opacity-35 " />
                 <h5 className="tw-heading-6 md:tw-heading-5 mb-2">
                   DAOs on ICP
                 </h5>
@@ -116,14 +128,13 @@ function UseCasesPage() {
                 </p>
 
                 <Link
-                  className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
+                  className="button-outline-white-30 text-center mb-6 md:mb-8 whitespace-nowrap"
                   href="/sns"
                 >
                   DAOs on ICP
                 </Link>
               </TranslatedLayout>
               <TranslatedLayout imageUrl="/img/use-cases/2.webp" reverse={true}>
-                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense translate-x-[5%] -translate-y-[66%] z-0 md:opacity-35 " />
                 <h5 className="tw-heading-6 md:tw-heading-5 mb-2">
                   Enterprise Cloud 3.0{" "}
                 </h5>
@@ -139,7 +150,7 @@ function UseCasesPage() {
                 </p>
 
                 <Link
-                  className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
+                  className="button-outline-white-30 text-center mb-6 md:mb-8 whitespace-nowrap"
                   href="/enterprise"
                 >
                   Kickstart a pilot project
@@ -149,6 +160,8 @@ function UseCasesPage() {
                 imageUrl="/img/use-cases/3.webp"
                 reverse={false}
               >
+                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense -translate-x-[75%] -translate-y-[10%] z-0 md:opacity-30 " />
+
                 <h5 className="tw-heading-6 md:tw-heading-5 mb-2">Gaming </h5>
                 <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
                   Paradigm shift in Web3 gaming{" "}
@@ -162,13 +175,15 @@ function UseCasesPage() {
                 </p>
 
                 <Link
-                  className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
+                  className="button-outline-white-30 text-center mb-6 md:mb-8 whitespace-nowrap"
                   href="/gaming"
                 >
                   Let’s play
                 </Link>
               </TranslatedLayout>
               <TranslatedLayout imageUrl="/img/use-cases/4.webp" reverse={true}>
+                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense translate-x-[10%] -translate-y-[33%] z-0 md:opacity-30 " />
+
                 <h5 className="tw-heading-6 md:tw-heading-5 mb-2">NFTs </h5>
                 <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
                   NFT’s live fully on-chain{" "}
@@ -181,7 +196,7 @@ function UseCasesPage() {
                 </p>
 
                 <Link
-                  className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
+                  className="button-outline-white-30 text-center mb-6 md:mb-8 whitespace-nowrap"
                   href="/nft"
                 >
                   Start an NFT collection
@@ -191,7 +206,7 @@ function UseCasesPage() {
                 imageUrl="/img/use-cases/5.webp"
                 reverse={false}
               >
-                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense -translate-x-[75%] -translate-y-[65%] z-0 md:opacity-35 " />
+                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense -translate-x-[75%] -translate-y-[65%] z-0 md:opacity-30 " />
                 <h5 className="tw-heading-6 md:tw-heading-5 mb-2">SoFi </h5>
                 <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
                   Reclaim social media
@@ -204,30 +219,10 @@ function UseCasesPage() {
                 </p>
 
                 <Link
-                  className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
+                  className="button-outline-white-30 text-center mb-6 md:mb-8 whitespace-nowrap"
                   href="/social-media-dapps"
                 >
                   Get Active on web3 Socials
-                </Link>
-              </TranslatedLayout>
-              <TranslatedLayout imageUrl="/img/use-cases/6.webp" reverse={true}>
-                <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense translate-x-[20%] -translate-y-[65%] z-0 md:opacity-35 " />
-                <h5 className="tw-heading-6 md:tw-heading-5 mb-2">DeFi </h5>
-                <h3 className="tw-heading-4 md:tw-heading-3 mb-6">
-                  On-chain swaps
-                </h3>
-                <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                  Imagine a decentralized order-book exchange built exclusively
-                  using smart contracts that directly serve a web experience
-                  like those of centralized exchanges, and incorporates the
-                  world's digital assets without need for insecure bridges.
-                </p>
-
-                <Link
-                  className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
-                  href="/defi"
-                >
-                  Check out ICP Dex’s{" "}
                 </Link>
               </TranslatedLayout>
             </div>

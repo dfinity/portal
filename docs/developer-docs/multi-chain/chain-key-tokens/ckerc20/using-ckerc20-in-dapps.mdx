@@ -1,34 +1,32 @@
 ---
-keywords: [advanced, ethereum, eth, cketh, chain-key ethereum]
+keywords: [advanced, ethereum, eth, cketh, chain-key ethereum, erc20, ckerc20, ckusdc]
 ---
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Using ckETH in dapps
+# Using ckERC20 tokens in dapps
 
 <MarkdownChipRow labels={["Advanced", "Ethereum" ]} />
 
 ## Overview
 
-ckETH is an ICRC-2 compliant token, meaning it supports the [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) and [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md) token standards.
+All ckERC20 tokens are ICRC-2 compliant tokens, which means that they support the [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) and [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md) token standards.
 
-To integrate ckETH into your dapp, you can simply write code that uses the [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) and [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md) standards. For token transfers and account balances, ckETH requests must be sent to the ckETH ledger canister with principal ID `ss2fx-dyaaa-aaaar-qacoq-cai`.
+To integrate ckERC20 tokens into your dapp, you can simply write code that uses the [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) and [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md) standards. For token transfers and account balances, requests must be sent to the corresponding ckERC20 ledger canister.
 
-## Write a smart contract that uses ckETH
+## Write a smart contract that uses ckERC20 tokens
 
-To write canister code that makes calls to the ckETH ledger, you will need to use inter-canister calls and specify the principal ID of the ckETH ledger canister. Then, to interact with ckETH, you can use the [ICRC-1 endpoints](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1).
+Since ckERC20 tokens are managed by ICRC-2 compliant ledgers, the development project needs to be configured to interact with the ledger of the targeted ckERC20 tokens.
 
-You can deploy the ckETH ledger locally for testing. [Learn more in the ckETH ledger documentation](https://github.com/dfinity/ic/tree/master/rs/ethereum/cketh/mainnet#installing-the-ledger).
-
-Once you have your project configured to use the ckETH ledger, you can interact with it for workflows such as transferring tokens:
+Once you have your project configured to use the correct ledger, you can interact with it for workflows such as transferring tokens. The following code sample uses the ckUSDC ledger as an example:
 
 <Tabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
-import ckethLedger "canister:ledger";
+import ckUsdcLedger "canister:ledger";
 import Debug "mo:base/Debug";
 import Result "mo:base/Result";
 import Option "mo:base/Option";
@@ -47,7 +45,7 @@ actor {
     toAccount : Account;
   };
 
-  public shared ({ caller }) func transfer(args : TransferArgs) : async Result.Result<ckethLedger.BlockIndex, Text> {
+  public shared ({ caller }) func transfer(args : TransferArgs) : async Result.Result<ckUsdcLedger.BlockIndex, Text> {
     Debug.print(
       "Transferring "
       # debug_show (args.amount)
@@ -55,7 +53,7 @@ actor {
       # debug_show (args.toAccount)
     );
 
-    let transferArgs : ckethLedger.TransferArg = {
+    let transferArgs : ckUsdcLedger.TransferArg = {
       // can be used to distinguish between transactions
       memo = null;
       // the amount we want to transfer
@@ -72,7 +70,7 @@ actor {
 
     try {
       // initiate the transfer
-      let transferResult = await ckethLedger.icrc1_transfer(transferArgs);
+      let transferResult = await ckUsdcLedger.icrc1_transfer(transferArgs);
 
       // check if the transfer was successful
       switch (transferResult) {
@@ -132,7 +130,7 @@ async fn transfer(args: TransferArgs) -> Result<BlockIndex, String> {
     ic_cdk::call::<(TransferArg,), (Result<BlockIndex, TransferError>,)>(
         // 2. Convert a textual representation of a Principal into an actual `Principal` object.
         //    `expect` will panic if the conversion fails, ensuring the code does not proceed with an invalid principal.
-        Principal::from_text("ss2fx-dyaaa-aaaar-qacoq-cai")
+        Principal::from_text("xevnm-gaaaa-aaaar-qafnq-cai")
             .expect("Could not decode the principal."),
         // 3. Specify the method name on the target canister to be called, in this case, "icrc1_transfer".
         "icrc1_transfer",
@@ -156,5 +154,3 @@ ic_cdk::export_candid!();
 
 </TabItem>
 </Tabs>
-
-View the [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) and [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md) endpoints for more information on sending and receiving tokens.
