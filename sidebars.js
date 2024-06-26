@@ -660,10 +660,11 @@ const sidebars = {
               id: "developer-docs/multi-chain/bitcoin/overview",
             },
             "developer-docs/multi-chain/bitcoin/using-btc/btc-dev-workflow",
-            "developer-docs/multi-chain/bitcoin/using-btc/read-state",
             "developer-docs/multi-chain/bitcoin/using-btc/generate-addresses",
+            "developer-docs/multi-chain/bitcoin/using-btc/create-transactions",
             "developer-docs/multi-chain/bitcoin/using-btc/sign-transactions",
             "developer-docs/multi-chain/bitcoin/using-btc/submit-transactions",
+            "developer-docs/multi-chain/bitcoin/using-btc/read-state",
             "developer-docs/multi-chain/bitcoin/using-btc/local-development",
           ],
         },
@@ -727,6 +728,19 @@ const sidebars = {
                 },
                 "developer-docs/multi-chain/chain-key-tokens/cketh/making-transactions",
                 "developer-docs/multi-chain/chain-key-tokens/cketh/using-cketh-in-dapps",
+              ],
+            },
+            {
+              type: "category",
+              label: "ckERC20",
+              items: [
+                {
+                  label: "Overview",
+                  type: "doc",
+                  id: "developer-docs/multi-chain/chain-key-tokens/ckerc20/overview",
+                },
+                "developer-docs/multi-chain/chain-key-tokens/ckerc20/making-transactions",
+                "developer-docs/multi-chain/chain-key-tokens/ckerc20/using-ckerc20-in-dapps",
               ],
             },
           ],
@@ -796,11 +810,30 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "Cycles",
+          label: "Tokens",
           items: [
+<<<<<<< HEAD
             "developer-docs/defi/cycles/cycles-ledger",
             "developer-docs/defi/cycles/cycles-wallet",
             "developer-docs/defi/cycles/converting_icp_tokens_into_cycles",
+=======
+	          "developer-docs/defi/tokens/token-standards",
+            "developer-docs/defi/icp-tokens/ledger-local-setup",
+            "developer-docs/defi/tokens/indexes",
+            "developer-docs/defi/icp-tokens/using-the-ledger",
+            "developer-docs/defi/icp-tokens/account-trimming",
+            "developer-docs/defi/tokens/create",
+            "developer-docs/defi/icrc-1/icrc1-ledger-setup",
+            {
+              type: "category",
+              label: "Cycles",
+              items: [
+                "developer-docs/defi/cycles/cycles-ledger",
+                "developer-docs/defi/cycles/cycles-wallet",
+                "developer-docs/defi/cycles/converting_icp_tokens_into_cycles",
+              ]
+            },
+>>>>>>> master
           ],
         },
         {
@@ -818,6 +851,7 @@ const sidebars = {
             },
           ],
         },
+<<<<<<< HEAD
         "developer-docs/defi/icp-tokens/ledger-local-setup",
         "developer-docs/defi/icp-tokens/using-the-ledger",
         "developer-docs/defi/icrc-1/icrc1-ledger-setup",
@@ -825,6 +859,8 @@ const sidebars = {
         "developer-docs/defi/icrc-1/using-icrc1-ledger",
         "developer-docs/defi/tokens/indexes",
         "developer-docs/defi/icp-tokens/account-trimming",
+=======
+>>>>>>> master
         {
           type: "doc",
           label: "Exchange rate canister",
