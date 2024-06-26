@@ -527,6 +527,60 @@ const redirects = `
   /docs/current/developer-docs/defi/asset-custody/custody-options /docs/current/developer-docs/defi/wallets/overview
   /docs/current/developer-docs/defi/nfts/considerations-for-nft-devs /docs/current/developer-docs/defi/nfts/overview
   /docs/current/developer-docs/defi/icrc-1/token-quickstart /docs/current/developer-docs/defi/tokens/create
+  /docs/current/references/ /docs/current/references/ic-interface-spec
+  /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/ /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview
+  /docs/language-guide/motoko.html /docs/current/motoko/main/getting-started/motoko-introduction
+  /education /education-hub
+  /docs/current/developer-docs/integrations/ledger/deploy-new-token /docs/current/developer-docs/defi/tokens/create
+  /docs/current/samples/deploying-your-first-bitcoin-dapp /docs/current/references/samples/motoko/basic_bitcoin/
+  /docs/integration/ledger-quick-start.html /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup
+  /docs/current/developer-docs/integrations/storage/cost /docs/current/developer-docs/gas-cost
+  /docs/token-holders/self-custody-quickstart.html /docs/current/developer-docs/defi/wallets/self-custody/self-custody-quickstart
+  /docs/current/developer-docs/overview/ /docs/current/developer-docs/getting-started/overview-of-icp
+  /docs/current/developer-docs/smart-contracts/overview	/docs/current/developer-docs/smart-contracts/overview/introduction
+  /docs/current/references/dfx-json-reference /docs/current/developer-docs/developer-tools/cli-tools/dfx-json-reference
+  /docs/language-guide/language-manual.html	/docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/developers-guide/default-wallet.html /docs/current/developer-docs/getting-started/cycles/overview
+  /docs/current/references/ic-interface /docs/current/references/ic-interface-spec
+  /docs/current/tokenomics/sns/sns-intro-tokens	/docs/current/developer-docs/daos/sns/tokenomics/tokenomics-intro
+  /docs/developers-guide/sdk-guide.html	/docs/current/developer-docs/getting-started/install/
+  /docs/current/references/cli-reference/dfx-deps	/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-deps
+  /docs/current/samples/internet-identity-sample /docs/current/references/samples/motoko/internet_identity_integration/
+  /docs/current/developer-docs/smart-contracts/advanced-features/threshold-signing /docs/current/developer-docs/smart-contracts/encryption/t-ecdsa
+  /docs/current/backend/candid/generating-candid /docs/current/developer-docs/backend/rust/generating-candid
+  /docs/current/developer-docs/backend/motoko/index.md /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/backend/rust/index /docs/current/developer-docs/backend/rust/
+  /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/index /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/
+  /docs/current/developer-docs/integrations/icrc-1/deploy-new-token /docs/current/developer-docs/defi/tokens/create
+  /docs/current/developer-docs/setup/cycles/cycles-faucet.md	/docs/current/developer-docs/getting-started/cycles/cycles-faucet
+  /docs/current/developer-docs/setup/deploy-mainnet.md	/docs/current/developer-docs/getting-started/deploy/mainnet
+  /docs/current/developer-docs/setup/index.md	/docs/current/developer-docs/getting-started/install/
+  /docs/current/developer-docs/smart-contracts/candid/index	/docs/current/developer-docs/smart-contracts/candid/
+  /docs/current/docs/current/references/ii-spec	/docs/current/references/ii-spec
+  /docs/current/motoko /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/motoko/ /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/motoko/getting-started/motoko-introduction /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/motoko/main/ /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/samples/encrypted-notes/	/docs/current/references/samples/motoko/encrypted-notes-dapp/
+  /docs/current/samples/nft	/docs/current/references/samples/motoko/dip721-nft-container/
+  /docs/language-guide/cycles.html /docs/current/developer-docs/getting-started/cycles/overview
+  /grants	https://dfinity.org/grants
+  /docs/base-libraries/experimentalcycles	/docs/current/motoko/main/base/ExperimentalCycles
+  /docs/base-libraries/motoko-base/Text.html	/docs/current/motoko/main/base/Text
+  /docs/candid-guide/candid-types.html	/docs/current/developer-docs/smart-contracts/candid/candid-howto/
+  /docs/current/developer-docs/deploy/custom-domain	/docs/current/developer-docs/web-apps/custom-domains/using-custom-domains
+  /docs/current/developer-docs/integrations/internet-identity	/docs/current/developer-docs/identity/internet-identity/overview
+  /bitcoin /bitcoin-integration
+  /bootcamp	/education-hub
+  /docs/candid-guide/candid-concepts.html	/docs/current/developer-docs/smart-contracts/candid/
+  /docs/current/blog/features/vetkey-primer	/blog/features/vetkey-primer
+  /docs/current/concepts/chain-key-technology/ /docs/current/developer-docs/multi-chain/overview
+  /docs/current/concepts/concepts-intro.html	/docs/current/developer-docs/getting-started/overview-of-icp
+  /docs/current/concepts/what-is-IC	/docs/current/developer-docs/getting-started/overview-of-icp
+  /docs/current/developer-docs/backend	/docs/current/developer-docs/getting-started/overview-of-icp
+  /docs/current/developer-docs/backend/rust/rust-quickstart	/docs/current/developer-docs/backend/rust/
+  /docs/current/developer-docs/best-practices/	/docs/current/developer-docs/smart-contracts/best-practices/general
+  /docs/current/developer-docs/best-practices/considerations-for-nft-devs /docs/current/developer-docs/defi/nfts/overview
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
