@@ -812,11 +812,6 @@ const sidebars = {
           type: "category",
           label: "Tokens",
           items: [
-<<<<<<< HEAD
-            "developer-docs/defi/cycles/cycles-ledger",
-            "developer-docs/defi/cycles/cycles-wallet",
-            "developer-docs/defi/cycles/converting_icp_tokens_into_cycles",
-=======
 	          "developer-docs/defi/tokens/token-standards",
             "developer-docs/defi/icp-tokens/ledger-local-setup",
             "developer-docs/defi/tokens/indexes",
@@ -833,7 +828,6 @@ const sidebars = {
                 "developer-docs/defi/cycles/converting_icp_tokens_into_cycles",
               ]
             },
->>>>>>> master
           ],
         },
         {
@@ -851,16 +845,6 @@ const sidebars = {
             },
           ],
         },
-<<<<<<< HEAD
-        "developer-docs/defi/icp-tokens/ledger-local-setup",
-        "developer-docs/defi/icp-tokens/using-the-ledger",
-        "developer-docs/defi/icrc-1/icrc1-ledger-setup",
-        "developer-docs/defi/tokens/create",
-        "developer-docs/defi/icrc-1/using-icrc1-ledger",
-        "developer-docs/defi/tokens/indexes",
-        "developer-docs/defi/icp-tokens/account-trimming",
-=======
->>>>>>> master
         {
           type: "doc",
           label: "Exchange rate canister",
