@@ -21,6 +21,20 @@ When the proposal is adopted, this method is called and executed fully on chain.
 
 In some cases, this method is on the SNS governance itself and in other cases, the method that is called can be defined in another canister.
 
+:::warning
+Most proposals can be submitted at any time. However, some proposals are not allowed during the SNS launch, until the swap has finished:
+
+1. `ManageNervousSystemParameters`
+2. `TransferSnsTreasuryFunds`
+3. `MintSnsTokens`
+4. `UpgradeSnsControlledCanister`
+5. `RegisterDappCanisters`
+6. `DeregisterDappCanisters`
+
+This means that it is not easy to upgrade an SNS-controlled dapp canister during the swap. However, since the SNS-controlled dapp canisters are co-owned by NNS root during a swap, it is still possible via an NNS proposal. This is intended to be used on an emergency basis and should be avoided if possible.
+:::
+
+
 ## Using quill to submit proposals
 
 ### Prerequisites

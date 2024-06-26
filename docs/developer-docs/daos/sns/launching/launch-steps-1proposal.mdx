@@ -65,6 +65,19 @@ One example of a special permission might be the ability to change the frontend 
 dfx canister call $CANISTER_ID revoke_permission '(record {of_principal = principal "<developer principal"; permission = variant { Commit;};})'
 ```
 
+:::warning
+Soon, if all goes well you will not personally have control over these canisters anymore. Instead, they will be controlled by the SNS, only updatable through SNS proposals. Furthermore, during the swap, the SNS will be in a restricted mode where some SNS proposal types cannot be submitted:
+
+1. `ManageNervousSystemParameters`
+2. `TransferSnsTreasuryFunds`
+3. `MintSnsTokens`
+4. `UpgradeSnsControlledCanister`
+5. `RegisterDappCanisters`
+6. `DeregisterDappCanisters`
+
+This means that it is not easy to upgrade an SNS-controlled dapp canister during the swap. However, since the SNS-controlled dapp canisters are co-owned by NNS root during a swap, it is still possible via an NNS proposal. This is intended to be used on an emergency basis and should be avoided if possible.
+:::
+
 ### 3. Submit NNS proposal to create SNS.
 
 Anyone who owns an eligible NNS neuron with enough stake can submit an NNS proposal to create an SNS for a given dapp.
@@ -81,6 +94,7 @@ To create such a proposal, a common path is to use `sns-cli` and run the followi
 ```bash
 dfx sns propose --network ic --neuron $NEURON_ID sns_init.yaml
 ```
+
 
 ### 4. The NNS proposal is decided.
 
@@ -116,4 +130,4 @@ of an adopted proposal in Stage 4.
 ### 10. (Automated) SNS swap finalizes.
 
 Nothing technical for dapp developers to do. This is triggered automatically as a result
-of an adopted proposal in Stage 4. At this point, the SNS is fully launched and the dapp canisters are fully decentralized. The SNS root canister is also given full control of the dapp canisters.
+of an adopted proposal in Stage 4. At this point, the SNS is fully launched and the dapp canisters are fully decentralized. The SNS root canister is also given full control of the dapp canisters. The SNS is no longer restricted and any proposal type can be submitted and executed.
