@@ -364,7 +364,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/rosetta/  /docs/current/developer-docs/defi/rosetta/overview
   /docs/current/tokenomics/token-holders/custody-options-intro /docs/current/developer-docs/defi/wallets/overview
   /docs/current/tokenomics/token-holders/self-custody-quickstart /docs/current/developer-docs/defi/wallets/self-custody/self-custody-quickstart
-  /docs/current/developer-docs/use-cases/considerations-for-nft-devs /docs/current/developer-docs/defi/nfts/considerations-for-nft-devs
+  /docs/current/developer-docs/use-cases/considerations-for-nft-devs /docs/current/developer-docs/defi/nfts/overview
   /docs/current/developer-docs/integrations/sns/introduction/sns-intro-high-level /docs/current/developer-docs/daos/sns/overview
   /docs/current/developer-docs/integrations/sns/introduction/sns-architecture /docs/current/developer-docs/daos/sns/overview
   /docs/current/developer-docs/integrations/sns/introduction/sns-launch /docs/current/developer-docs/daos/sns/overview
