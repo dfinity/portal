@@ -16,11 +16,11 @@ const MotionLink = motion(Link);
 function News() {
   return (
     <AnimateSpawn
-      className="container-12 pt-16 md:pt-40 pb-16 md:pb-40"
+      className="container-12 pt-20 md:pt-40 pb-16 md:pb-40"
       el={motion.section}
       variants={transitions.container}
     >
-      <div className="container-10 flex flex-col gap-1  md:gap-5 mb-8 md:flex-row ">
+      <div className="flex flex-col gap-1  md:gap-5 mb-8 md:flex-row">
         <motion.h2
           className="tw-heading-4 mb-0 md:tw-heading-60"
           variants={transitions.item}
