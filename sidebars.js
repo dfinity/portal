@@ -986,10 +986,6 @@ const sidebars = {
           label: "NFTs",
           items: [
             {
-            type: "category",
-            label: "NFTs",
-            items: [
-            {
             type: "doc",
             label: "Overview",
             id: "developer-docs/defi/nfts/overview",
@@ -998,8 +994,6 @@ const sidebars = {
           "developer-docs/defi/nfts/marketplaces"],
           },
         ],
-        },
-      ],
     },
     {
       type: "category",
