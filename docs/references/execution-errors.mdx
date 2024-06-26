@@ -568,6 +568,17 @@ An example of this error is:
 
 To fix this error, apply the described changes to make the settings valid.
 
+### Reserved cycles limit is too low
+There was an attempt to update canister settings and change the reserved cycles limit field to a value that is
+lower than the already reserved cycles balance of the canister.
+
+An example of this error is:
+```
+  Cannot set the reserved cycles limit 1000 below the reserved cycles balance of the canister 2000.
+```
+
+To fix this error, increase the reserved cycles limit to be above the reported reserved cycles balance.
+
 
 ### Maximum number of canisters reached
 There was an attempt to create a canister on a subnet which has reached the maximum number of allowed canisters.
