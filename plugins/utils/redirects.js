@@ -580,8 +580,7 @@ const redirects = `
   /docs/current/developer-docs/backend	/docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/developer-docs/backend/rust/rust-quickstart	/docs/current/developer-docs/backend/rust/
   /docs/current/developer-docs/best-practices/	/docs/current/developer-docs/smart-contracts/best-practices/general
-  /docs/current/developer-docs/best-practices/considerations-for-nft-devs
-  /docs/current/developer-docs/defi/nfts/overview
+  /docs/current/developer-docs/best-practices/considerations-for-nft-devs /docs/current/developer-docs/defi/nfts/overview
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
