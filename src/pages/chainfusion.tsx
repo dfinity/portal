@@ -21,6 +21,11 @@ import LinkArrowUp from "../components/Common/Icons/LinkArrowUp";
 import LinkArrowDown from "../components/Common/Icons/LinkArrowDown";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
+import News from "../components/BitcoinIntegrationPage/News";
+import Newsletter from "../components/Common/Newsletter/Newsletter";
+import GetBiggerPicture from "/img/chainfusion/get-picture.svg";
+import CodeSnippet from "../components/CodeSnippet";
+import { set } from "date-fns";
 
 const ContentCard: React.FC<{
   id: string;
@@ -32,54 +37,6 @@ const ContentCard: React.FC<{
       {children}
     </div>
   );
-};
-
-const Status: React.FC<{
-  children: React.ReactNode;
-  type: "done" | "pending";
-}> = ({ children, type }) => {
-  switch (type) {
-    case "done":
-      return (
-        <span className="inline-flex gap-2 items-center rounded-full py-2 px-4 text-white tw-title-navigation bg-infinite">
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M3 7.99943L6.84682 12L13 5.59977L11.4617 4L6.84682 8.80045L4.53829 6.39966L3 7.99943Z"
-              fill="currentColor"
-            />
-          </svg>
-
-          {children}
-        </span>
-      );
-    case "pending":
-      return (
-        <span className="inline-flex gap-2 items-center rounded-full py-2 px-4 text-white tw-title-navigation bg-black/60">
-          <svg
-            width="16"
-            height="16"
-            viewBox="0 0 16 16"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <circle cx="2.5" cy="8" r="1.5" fill="currentColor" />
-            <circle cx="8" cy="8" r="1.5" fill="currentColor" />
-            <circle cx="13.5" cy="8" r="1.5" fill="currentColor" />
-          </svg>
-
-          {children}
-        </span>
-      );
-
-    default:
-      unreachable(type);
-  }
 };
 
 const StickySectionNav: React.FC<{
@@ -94,7 +51,7 @@ const StickySectionNav: React.FC<{
       {title}
       <ul className="list-none p-0 space-y-4 m-0 hidden md:block">
         {items.map((card, index) => (
-          <li key={card}>
+          <li key={index}>
             <button
               onClick={(e) => onItemClick(e, index)}
               className={clsx(
@@ -113,7 +70,55 @@ const StickySectionNav: React.FC<{
   );
 };
 
-function MultichainPage() {
+const LogoSm = ({ className, color = "white" }) => (
+  <svg
+    viewBox="0 0 583 42"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    <defs>
+      <linearGradient id="textGradientPurple" x1="100%" y1="0%" x2="0%" y2="0%">
+        <stop offset="6.01%" stopColor="#C772EF" />
+        <stop offset="100%" stopColor="#6A85F1" />
+      </linearGradient>
+    </defs>
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M53.7014 24.0234H37.969C36.5627 27.8906 32.1682 28.8281 26.8947 28.8281C20.6252 28.7402 15.2932 27.5684 15.3811 21.1523V20.1855C15.2932 13.7109 20.6252 12.5977 26.8947 12.5098C32.1682 12.5098 36.5334 13.418 37.969 17.2852H53.7014C52.7346 4.01367 41.0744 0.0292969 26.8947 0C12.1291 0.0585938 -0.0583834 4.33594 0.000210397 19.2188V22.0898C-0.0583834 37.002 12.1291 41.2793 26.8947 41.3086C41.0744 41.3086 52.7346 37.3242 53.7014 24.0234ZM409.482 13.9453C409.482 15.6738 414.258 15.9082 420.439 16.2012L420.508 16.2046C431.49 16.761 446.865 17.54 446.836 27.3926C446.836 38.6426 433.945 41.3086 420.117 41.3086C406.318 41.2793 394.863 39.6094 393.398 27.3926H409.482C411.24 30.4395 415.313 31.2305 420.117 31.2305C424.893 31.2305 430.752 30.4395 430.752 27.3926C430.752 25.6641 425.977 25.4004 419.795 25.1074L419.726 25.104C408.745 24.5476 393.369 23.7686 393.398 13.9453C393.398 2.69531 406.289 0 420.117 0C433.916 0.0878906 445.371 1.64062 446.836 13.9453H430.752C428.994 10.8398 424.922 10.1074 420.117 10.1074C415.342 10.1074 409.482 10.8105 409.482 13.9453ZM497.696 0C512.52 0 524.561 4.33594 524.561 19.2188V22.0898C524.619 36.9727 512.49 41.2793 497.696 41.3086C482.871 41.2793 470.742 36.9727 470.801 22.0898V19.2188C470.742 4.30664 482.871 0.0292969 497.696 0ZM509.209 21.123V20.1562C509.297 13.7402 503.965 12.5684 497.696 12.4805C491.397 12.5684 486.065 13.7402 486.153 20.1562V21.123C486.065 27.5684 491.397 28.7402 497.696 28.8281C503.965 28.7402 509.297 27.5684 509.209 21.123ZM567.568 21.8262V0.966797H582.949V40.3418H565.664L544.512 16.2891V40.3418H529.16V0.966797H550.283L567.568 21.8262ZM466.289 0.966797H450.938V40.3418H466.289V0.966797ZM373.623 0.966797V21.1523C373.711 27.627 368.379 28.7402 362.11 28.8281C355.811 28.7402 350.508 27.627 350.567 21.1523V0.966797H335.215V22.1191C335.156 37.002 347.344 41.2793 362.11 41.3086C376.875 41.2793 389.063 37.002 389.004 22.1191V0.966797H373.623ZM282.715 40.4004V1.02539H330.732V13.5059H298.066V18.3105H326.895V29.8242H298.066V40.4004H282.715ZM236.865 0.966797V21.8262L219.58 0.966797H198.457V40.3418H213.809V16.2891L234.961 40.3418H252.246V0.966797H236.865ZM174.961 0.966797H190.312V40.3418H174.961V0.966797ZM138.105 24.0527L143.525 12.4219L148.916 24.0527H138.105ZM134.385 1.02539L113.262 40.4004H130.547L133.652 33.6621H153.369L156.475 40.4004H173.76L152.637 1.02539H134.385ZM96.709 26.8945H73.6523V40.3418H58.3008V0.966797H73.6523V14.4141H96.709V0.966797H112.09V40.3418H96.709V26.8945Z"
+      fill={`${
+        color === "text-gradient-purple" ? "url(#textGradientPurple)" : "white"
+      }`}
+    />
+  </svg>
+);
+
+const LogoNewLine = ({ className, color = "white" }) => (
+  <svg
+    viewBox="0 0 301 102"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+  >
+    <defs>
+      <linearGradient id="textGradientPurple" x1="100%" y1="0%" x2="0%" y2="0%">
+        <stop offset="6.01%" stopColor="#C772EF" />
+        <stop offset="100%" stopColor="#6A85F1" />
+      </linearGradient>
+    </defs>
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M53.7014 24.332H37.969C36.5627 28.1992 32.1682 29.1367 26.8947 29.1367C20.6252 29.0488 15.2932 27.877 15.3811 21.4609V20.4941C15.2932 14.0195 20.6252 12.9062 26.8947 12.8184C32.1682 12.8184 36.5334 13.7266 37.969 17.5938H53.7014C52.7346 4.32227 41.0744 0.337891 26.8947 0.308594C12.1291 0.367188 -0.0583834 4.64453 0.000210397 19.5273V22.3984C-0.0583834 37.3105 12.1291 41.5879 26.8947 41.6172C41.0744 41.6172 52.7346 37.6328 53.7014 24.332ZM236.865 1.27539V22.1348L219.58 1.27539H198.457V40.6504H213.809V16.5977L234.961 40.6504H252.246V1.27539H236.865ZM126.768 74.2539C126.768 75.9824 131.543 76.2168 137.725 76.5098L137.793 76.5132C148.775 77.0696 164.15 77.8486 164.121 87.7012C164.121 98.9512 151.231 101.617 137.402 101.617C123.604 101.588 112.148 99.918 110.684 87.7012H126.768C128.525 90.748 132.598 91.5391 137.402 91.5391C142.178 91.5391 148.037 90.748 148.037 87.7012C148.037 85.9727 143.262 85.709 137.08 85.416L137.012 85.4125C126.03 84.8562 110.654 84.0772 110.684 74.2539C110.684 63.0039 123.574 60.3086 137.402 60.3086C151.201 60.3965 162.656 61.9492 164.121 74.2539H148.037C146.279 71.1484 142.207 70.416 137.402 70.416C132.627 70.416 126.768 71.1191 126.768 74.2539ZM214.981 60.3086C229.805 60.3086 241.846 64.6445 241.846 79.5273V82.3984C241.905 97.2812 229.776 101.588 214.981 101.617C200.156 101.588 188.028 97.2812 188.086 82.3984V79.5273C188.028 64.6152 200.156 60.3379 214.981 60.3086ZM226.494 81.4316V80.4648C226.582 74.0488 221.25 72.877 214.981 72.7891C208.682 72.877 203.35 74.0488 203.438 80.4648V81.4316C203.35 87.877 208.682 89.0488 214.981 89.1367C221.25 89.0488 226.582 87.877 226.494 81.4316ZM284.854 82.1348V61.2754H300.234V100.65H282.949L261.797 76.5977V100.65H246.445V61.2754H267.568L284.854 82.1348ZM183.574 61.2754H168.223V100.65H183.574V61.2754ZM90.9084 61.2754V81.4609C90.9963 87.9355 85.6643 89.0488 79.3947 89.1367C73.0959 89.0488 67.7932 87.9355 67.8518 81.4609V61.2754H52.5002V82.4277C52.4416 97.3105 64.6291 101.588 79.3947 101.617C94.1604 101.588 106.348 97.3105 106.289 82.4277V61.2754H90.9084ZM0 100.709V61.334H48.0176V73.8145H15.3516V78.6191H44.1797V90.1328H15.3516V100.709H0ZM174.961 1.27539H190.312V40.6504H174.961V1.27539ZM138.105 24.3613L143.525 12.7305L148.916 24.3613H138.105ZM134.385 1.33398L113.262 40.709H130.547L133.652 33.9707H153.369L156.475 40.709H173.76L152.637 1.33398H134.385ZM96.709 27.2031H73.6523V40.6504H58.3008V1.27539H73.6523V14.7227H96.709V1.27539H112.09V40.6504H96.709V27.2031Z"
+      fill={`${
+        color === "text-gradient-purple" ? "url(#textGradientPurple)" : "white"
+      }`}
+    />
+  </svg>
+);
+
+function ChainFusion() {
   const heroRef = useRef<HTMLDivElement>(null);
   const codeRef = useRef<HTMLDivElement>(null);
 
@@ -123,8 +128,12 @@ function MultichainPage() {
     id: string;
   };
   const [content, setContent] = React.useState<ContentCardType[]>([]);
-  const [isCodeSnippetExpanded, toggleCodeSnippetExpand] = useState(false);
   const highlight = useScrollSpyMenu(".content-card-with-id");
+  const [codeSnippetsExpanded, setCodeSnippetsExpanded] = useState([
+    false,
+    false,
+    false,
+  ]);
 
   useEffect(() => {
     const cards = document.querySelectorAll(".content-card-with-id");
@@ -172,515 +181,172 @@ function MultichainPage() {
           contain: "paint",
         }}
       >
-        {isDark && <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>}
+        {isDark && <DarkHeroStyles bgColor="infinite"></DarkHeroStyles>}
 
         <section
-          className="overflow-hidden bg-infinite text-white pt-20 relative"
+          className="overflow-hidden bg-[#1E005D] text-white pt-20 relative"
           ref={heroRef}
         >
-          <div className="container-10 pt-20 pb-16 md:pb-20 md:pt-36 relative">
-            <div className="blob blob-purple blob-xl md:blob-xl md:blob-x-8 md:blob-y-10 opacity-75"></div>
-            <div className="md:w-7/10 relative">
-              <h1 className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 animate-fade-up">
-                Chain Fusion Technology
-              </h1>
-              <p className="tw-lead-sm md:tw-lead mb-0 animate-fade-up animation-delay-200">
-                ICP enables direct interoperability with all major blockchains,
-                including Bitcoin, Ethereum, other EVMs (and soon Solana),
-                without relying on any trusted intermediary. Unique compared to
-                other blockchains, ICP smart contracts can read from and write
-                to different chains, enabling developers to write smart
-                contracts spanning different chains. This is Chain Fusion.
-              </p>
-            </div>
-          </div>
-          <div className="relative">
-            <div className="absolute left-0 bottom-0 right-0 h-1/2 bg-page"></div>
-            <div className="container-10 relative animate-fade-up animation-delay-300">
-              {/* The surrounding div gives the image rounded corners */}
-              <div
-                className="relative"
-                style={{ overflow: "hidden", borderRadius: "10px" }}
-              >
+          <img
+            src="img/chainfusion/bg-hero.webp"
+            alt=""
+            className="object-cover absolute inset-0 size-full"
+          />
+          <section className="flex flex-col justify-center w-full bg-black mix-blend-screen">
+            <div className="flex overflow-hidden relative flex-col pt-20 w-full min-h-[927px] max-md:max-w-full">
+              <div className="flex relative flex-col px-20 pb-20 mt-36 w-full max-md:px-5 max-md:mt-10 max-md:max-w-full">
+                <h3 className="self-center tw-heading-5 md:tw-heading-3">
+                  Powered by
+                </h3>
                 <img
-                  src="/img/multichain/hero3.webp"
-                  alt=""
-                  className="w-full h-full object-cover rounded-xl"
+                  src="img/chainfusion/chainfusion-logo.svg"
+                  alt="Company Logo"
+                  className="self-center mt-9 max-w-full aspect-[3.7] w-1/2"
                 />
+                <p className="tw-heading-5 md:tw-heading-3 self-center mt-12 text-right text-white">
+                  Reducing Friction in Web3
+                </p>
+                <Link className="button-white self-start mt-12 mb-28 ml-80 ">
+                  Build with Chain fusion
+                </Link>
               </div>
             </div>
-          </div>
+          </section>
         </section>
 
-        <AnimateSpawn
-          className="container-10 pt-20 md:pt-30"
-          el={motion.section}
-          variants={transitions.container}
-        >
-          <motion.p
-            className="tw-heading-5 md:tw-heading-5 text-gradient mb-0 md:w-8/10"
-            variants={transitions.item}
+        <section className="bg-[#1E005D]">
+          <AnimateSpawn
+            className="container-8 py-20 md:py-30 "
+            variants={transitions.container}
+            el={motion.section}
           >
-            The common web3 pattern is building dapps from different
-            blockchains, for instance Ethereum or Solana to store assets, IPFS
-            or Arweave for serving frontends, and Arbitrum or Optimism for the
-            bulk of smart contract computation. However, building dapps like
-            this is very cumbersome. Developers must adapt to various
-            programming models, transaction costs, and settlement times. Chain
-            fusion tremendously simplifies multi-chain dapp development, making
-            it as straightforward and intuitive as building on a single
-            environment.
-          </motion.p>
-        </AnimateSpawn>
+            <h3 className="tw-heading-4 md:tw-heading-3 text-gradient-purple">
+              <LogoSm className="h-[0.76em] mb-[0.14em] align-middle mr-1 md:mr-2" />{" "}
+              enables ICP smart contracts to interact with other networks, such
+              as Bitcoin and Ethereum, to give them more possibilities.{" "}
+            </h3>
+          </AnimateSpawn>
 
-        <AnimateSpawn
-          className="container-12 py-20 md:py-40 flex flex-col md:flex-row gap-12 md:gap-1/10"
-          variants={transitions.container}
-          el={motion.section}
-        >
-          <motion.div
-            ref={codeRef}
-            className="md:w-4/10 "
-            variants={transitions.item}
+          <AnimateSpawn
+            className="container-6 pt-24 md:pt-24 "
+            variants={transitions.container}
+            el={motion.section}
           >
-            <h2 className="tw-heading-4 md:tw-heading-60 text-gradient mb-3">
-              Example Code
-            </h2>
-            <p className="tw-paragraph md:tw-lead-sm mb-3">
-              To showcase how powerful Chain Fusion is, here is a simple example
-              that shows three chains interacting in one smart contract: a{" "}
-              single{" "}
-              <b>
-                <i>ICP</i>
-              </b>{" "}
-              smart contract that can custody{" "}
-              <b>
-                <i>Bitcoin</i>
-              </b>{" "}
-              and programmatically trigger sending it based on events observed
-              on a{" "}
-              <b>
-                <i>Ethereum</i>
-              </b>{" "}
-              DeFi smart contract.
-            </p>
-
-            <p className="tw-paragraph md:tw-lead-sm mb-3">
-              This code snippet is written in both Rust and the&nbsp;
-              <Link
-                rel="stylesheet"
-                href="/docs/current/tutorials/developer-journey/level-0/intro-languages/#motoko"
-              >
-                Motoko programming language
-              </Link>{" "}
-              but can also be written in TypeScript, Python, and other
-              languages.
-            </p>
-            <p className="mb-0 mt-8">
-              <Link
-                className="link-primary link-with-icon"
-                href="https://play.motoko.org/?tag=3352278366"
-              >
-                <LinkArrowRight></LinkArrowRight>
-                Deploy the contract in online editor
-              </Link>
-            </p>
-          </motion.div>
-          <motion.div className="md:max-w-5/10 space-y-5 ">
-            <AnimatePresence>
-              <motion.div
-                initial={false}
-                animate={{
-                  height: isCodeSnippetExpanded ? "auto" : "24rem",
-                }}
-                className="overflow-hidden rounded-md"
-                transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
-              >
-                <Tabs>
-                  <TabItem value="motoko" label="Motoko" default>
-                    <CodeBlockString language="motoko" showLineNumbers={true}>
-                      {`
-// This is a test canister without API keys, for production use 7hfb6-caaaa-aaaar-qadga-cai
-import evm "ic:a6d44-nyaaa-aaaap-abp7q-cai";
-import ic "ic:aaaaa-aa";
-import Cycles "mo:base/ExperimentalCycles";
-import Timer "mo:base/Timer";
-
-//Actor is the computational unit of ICP smart contract
-actor {
-  let EVM_FEE = 1_000_000_000;
-  let BITCOIN_FEE = 1_000_000_000;
-
-  //Function checks the logs of an ETH smart contract for an event
-  //If a particular event is found, it sends bitcoin to an address
-  func check_evm_log() : async () {
-    Cycles.add<system>(EVM_FEE);
-    let log = await evm.eth_getLogs(
-      #EthMainnet(null),
-      null,
-      {
-        // dummy address. Replace with the right one
-        addresses = ["address"];
-        fromBlock = ? #Finalized;
-        toBlock = ? #Finalized;
-        //dummy topics to look at. Replace with topics of interest
-        topics = ?[["topic1", "topic2"]];
-      },
-    );
-    switch log {
-      case (#Consistent(#Ok(_))) {
-        // if we get a consistent log, send bitcoin
-        await send_bitcoin();
-      };
-      case _ {};
-    };
-  };
-
-  // Function that sends bitcoin. This is used by check_evm_log()
-  func send_bitcoin() : async () {
-    Cycles.add<system>(BITCOIN_FEE);
-    await ic.bitcoin_send_transaction({
-      transaction = "\be\ef";
-      network = #testnet;
-    });
-  };
-
-  // Check for evm logs every 2 seconds
-  let _ = Timer.setTimer<system>(#seconds 2, check_evm_log);
+            <GetBiggerPicture className="overflow-visible" />
+          </AnimateSpawn>
+          <AnimateSpawn
+            className="container-8 pt-8 pb-24 md:pb-40 "
+            variants={transitions.container}
+            el={motion.section}
+          >
+            <img src="/img/chainfusion/chainfusion-grafic.webp" alt="" />
+          </AnimateSpawn>
+        </section>
+        <section>
+          <AnimateSpawn
+            className="container-10 justify-center items-center pt-20 md:pb-20 md:pt-40"
+            variants={transitions.container}
+            el={motion.section}
+          >
+            <Tabs className="justify-center mb-5 md:mb-10">
+              <TabItem value="btc" label="Build with BTC" default>
+                <CodeSnippet
+                  title="Build with BTC"
+                  description="Sed posuere consectetur est at lobortis. Aenean lacinia bibendum nulla sed consectetur. Aenean lacinia bibendum nulla sed consectetur. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit."
+                  link="/docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions#sending-transactions"
+                  snippet={{
+                    language: "motoko",
+                    code: `type ManagementCanisterActor = actor {
+  bitcoin_send_transaction : SendTransactionRequest -> async ();
 };
-
-                              `}
-                    </CodeBlockString>
-                  </TabItem>
-
-                  <TabItem value="rust" label="Rust">
-                    <CodeBlockString language="rust" showLineNumbers={true}>
-                      {`
-#![allow(non_snake_case, clippy::large_enum_variant, clippy::enum_variant_names)]
-use std::time::Duration;
-
-use candid::{self, CandidType, Deserialize, Principal};
-
-pub const SCRAPING_LOGS_INTERVAL: Duration = Duration::from_secs(3 * 60);
-
-fn setup_timers() {
-    // // Start scraping logs immediately after the install, then repeat with the interval.
-    ic_cdk_timers::set_timer(Duration::ZERO, || ic_cdk::spawn(check_evm_log()));
-    ic_cdk_timers::set_timer_interval(SCRAPING_LOGS_INTERVAL, || ic_cdk::spawn(check_evm_log()));
-}
-
-#[ic_cdk::init]
-fn init() {
-    // start timers upon canister initialization
-    setup_timers();
-}
-
-// Function checks the logs of an ETH smart contract for an event
-// If a particular event is found, it sends bitcoin to an address
-async fn check_evm_log() {
-    // the cycles we attach to the message to pay for the service provide by
-    // the EVM RPC canister
-    let cycles = 10_000_000_000;
-    // This is a test canister without API keys, for production use 7hfb6-caaaa-aaaar-qadga-cai
-    let canister_id =
-        Principal::from_text("a6d44-nyaaa-aaaap-abp7q-cai").expect("principal should be valid");
-    // call the eth_getLogs function on the EVM RPC canister
-    let (result,) = ic_cdk::api::call::call_with_payment128::<
-        (RpcServices, Option<RpcConfig>, GetLogsArgs),
-        (MultiGetLogsResult,),
-    >(
-        canister_id,
-        "eth_getLogs",
-        (
-            RpcServices::EthMainnet(None),
-            None,
-            // for more information on eth_getLogs check
-            // https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getlogs
-            GetLogsArgs {
-                fromBlock: Some(BlockTag::Finalized),
-                toBlock: Some(BlockTag::Finalized),
-                addresses: vec!["dummy_address".to_string()],
-                topics: Some(vec![vec!["topic1".to_string()], vec!["topic2".to_string()]]),
-            },
-        ),
-        cycles,
-    )
-    .await
-    .expect("Call failed");
-
-    match result {
-        MultiGetLogsResult::Consistent(_) => send_bitcoin().await,
-        MultiGetLogsResult::Inconsistent(_) => {
-            panic!("RPC providers gave inconsistent results")
-        }
-    }
-}
-
-// Function that sends bitcoin. This is used by check_evm_log()
-async fn send_bitcoin() {
-    // for more information on bitcoin_send_transaction check
-    // https://internetcomputer.org/docs/current/references/ic-interface-spec/#ic-bitcoin_send_transaction
-    ic_cdk::api::management_canister::bitcoin::bitcoin_send_transaction(
-        ic_cdk::api::management_canister::bitcoin::SendTransactionRequest {
-            transaction: b"beef".into(),
-            network: ic_cdk::api::management_canister::bitcoin::BitcoinNetwork::Testnet,
-        },
-    )
-    .await
-    .expect("Call failed");
-}
-
-//TYPE DECLARATIONSpush
-
-#[derive(CandidType, Deserialize, Debug, Clone)]
-pub enum EthSepoliaService {
-    Alchemy,
-    BlockPi,
-    PublicNode,
-    Ankr,
-}
-
-#[derive(CandidType, Deserialize, Debug, Clone)]
-pub struct HttpHeader {
-    pub value: String,
-    pub name: String,
-}
-
-#[derive(CandidType, Deserialize, Debug, Clone)]
-pub struct RpcApi {
-    pub url: String,
-    pub headers: Option<Vec<HttpHeader>>,
-}
-
-#[derive(CandidType, Deserialize, Debug, Clone)]
-pub enum EthMainnetService {
-    Alchemy,
-    BlockPi,
-    Cloudflare,
-    PublicNode,
-    Ankr,
-}
-
-#[derive(CandidType, Deserialize, Debug, Clone)]
-pub enum RpcServices {
-    EthSepolia(Option<Vec<EthSepoliaService>>),
-    Custom { chainId: u64, services: Vec<RpcApi> },
-    EthMainnet(Option<Vec<EthMainnetService>>),
-}
-
-#[derive(CandidType, Deserialize)]
-pub struct RpcConfig {
-    pub responseSizeEstimate: Option<u64>,
-}
-
-#[derive(CandidType, Deserialize, Debug, Clone)]
-pub enum BlockTag {
-    Earliest,
-    Safe,
-    Finalized,
-    Latest,
-    Number(candid::Nat),
-    Pending,
-}
-
-#[derive(CandidType, Deserialize, Debug)]
-pub struct JsonRpcError {
-    pub code: i64,
-    pub message: String,
-}
-
-#[derive(CandidType, Deserialize, Debug)]
-pub enum ProviderError {
-    TooFewCycles {
-        expected: candid::Nat,
-        received: candid::Nat,
-    },
-    MissingRequiredProvider,
-    ProviderNotFound,
-    NoPermission,
-}
-
-#[derive(CandidType, Deserialize, Debug)]
-pub enum ValidationError {
-    CredentialPathNotAllowed,
-    HostNotAllowed(String),
-    CredentialHeaderNotAllowed,
-    UrlParseError(String),
-    Custom(String),
-    InvalidHex(String),
-}
-
-#[derive(CandidType, Deserialize, Debug, PartialEq)]
-pub enum RejectionCode {
-    NoError,
-    CanisterError,
-    SysTransient,
-    DestinationInvalid,
-    Unknown,
-    SysFatal,
-    CanisterReject,
-}
-
-#[derive(CandidType, Deserialize, Debug)]
-pub enum HttpOutcallError {
-    IcError {
-        code: RejectionCode,
-        message: String,
-    },
-    InvalidHttpJsonRpcResponse {
-        status: u16,
-        body: String,
-        parsingError: Option<String>,
-    },
-}
-
-#[derive(CandidType, Deserialize, Debug)]
-pub enum RpcError {
-    JsonRpcError(JsonRpcError),
-    ProviderError(ProviderError),
-    ValidationError(ValidationError),
-    HttpOutcallError(HttpOutcallError),
-}
-
-#[derive(CandidType, Deserialize)]
-pub enum RpcService {
-    EthSepolia(EthSepoliaService),
-    Custom(RpcApi),
-    EthMainnet(EthMainnetService),
-    Chain(u64),
-    Provider(u64),
-}
-
-#[derive(CandidType, Deserialize)]
-pub struct GetLogsArgs {
-    pub fromBlock: Option<BlockTag>,
-    pub toBlock: Option<BlockTag>,
-    pub addresses: Vec<String>,
-    pub topics: Option<Vec<Vec<String>>>,
-}
-
-#[derive(CandidType, Deserialize, Debug, Clone, PartialEq)]
-pub struct LogEntry {
-    pub transactionHash: Option<String>,
-    pub blockNumber: Option<candid::Nat>,
-    pub data: String,
-    pub blockHash: Option<String>,
-    pub transactionIndex: Option<candid::Nat>,
-    pub topics: Vec<String>,
-    pub address: String,
-    pub logIndex: Option<candid::Nat>,
-    pub removed: bool,
-}
-
-#[derive(CandidType, Deserialize)]
-pub enum GetLogsResult {
-    Ok(Vec<LogEntry>),
-    Err(RpcError),
-}
-
-#[derive(CandidType, Deserialize)]
-pub enum MultiGetLogsResult {
-    Consistent(GetLogsResult),
-    Inconsistent(Vec<(RpcService, GetLogsResult)>),
-}
-                      `}
-                    </CodeBlockString>
-                  </TabItem>
-                </Tabs>
-              </motion.div>
-
-              <motion.div className="text-center">
-                <Link
-                  className="link-primary link-with-icon md:hover:cursor-pointer text-center select-none"
-                  onClick={() =>
-                    toggleCodeSnippetExpand(!isCodeSnippetExpanded)
+let management_canister_actor : ManagementCanisterActor = actor("aaaaa-aa");
+public func send_transaction(network : Network, transaction : [Nat8]) : async () {
+  let transaction_fee =
+      SEND_TRANSACTION_BASE_COST_CYCLES + transaction.size() * SEND_TRANSACTION_COST_CYCLES_PER_BYTE;
+  ExperimentalCycles.add(transaction_fee);
+  await management_canister_actor.bitcoin_send_transaction({
+      network;
+      transaction;
+  })
+};`,
+                  }}
+                  isExpanded={codeSnippetsExpanded[0]}
+                  toggleExpand={() =>
+                    setCodeSnippetsExpanded((prev) => {
+                      const newExpanded = [...prev];
+                      newExpanded[0] = !prev[0];
+                      return newExpanded;
+                    })
                   }
-                >
-                  {isCodeSnippetExpanded ? (
-                    <>
-                      Hide <LinkArrowUp></LinkArrowUp>
-                    </>
-                  ) : (
-                    <>
-                      Expand <LinkArrowDown></LinkArrowDown>
-                    </>
-                  )}
-                </Link>
-              </motion.div>
-            </AnimatePresence>
-          </motion.div>
-        </AnimateSpawn>
-
-        <section className="bg-infinite relative overflow-hidden">
-          <div className="container-12 relative">
-            <div className="relative -left-16 sm:left-auto md:absolute md:left-auto md:-right-40 w-full max-w-none md:min-w-0 md:top-60 md:max-w-[calc(65vw-100px)] min-w-[600px] md:w-[800px]">
-              <img src="/img/what-is-the-ic/hero.svg" alt="" />
-            </div>
-          </div>
-          <div className="container-10 pb-20 pt-10 md:py-40">
-            <div className="md:w-6/10 text-white relative">
-              <h3 className="text-gradient-purple tw-heading-4 md:tw-heading-40">
-                How it is solved today
-              </h3>
-              <p className="tw-paragraph md:tw-lead-sm mb-6">
-                Developers today rely on trusted intermediaries acting as
-                bridges that make wrapped copies of native tokens for usage on
-                other blockchains. These bridges are slow, inconvenient, but
-                most importantly: they are the Achilles' heel of web3, this is
-                where the majority of hacks happen, resulting in the loss of
-                tens of billions of dollars of assets.
-                <br />
-                <br />
-                There are also rollups, which rely on the security of the base
-                L1 chain. However, it is still not possible to easily move
-                assets arbitrarily between different rollup chains as each step
-                transfer relies on the main chain thereby, resulting in
-                expensive L1 gas fees and settlement delays lasting days.
-                Rollups also do not solve smart contract interoperability across
-                chains, such as between Bitcoin, Ethereum and Solana, etc.
-              </p>
-
-              <h3 className="text-gradient-purple tw-heading-4 md:tw-heading-40">
-                The two pillars of Chain Fusion
-              </h3>
-
-              <p className="tw-paragraph md:tw-lead-sm mb-6">
-                True multi-chain capability requires enabling smart contracts to
-                read and write across chains. For instance, you can write a{" "}
-                single{" "}
-                <b>
-                  <i>ICP</i>
-                </b>{" "}
-                smart contract that can custody{" "}
-                <b>
-                  <i>Bitcoin</i>
-                </b>{" "}
-                and programmatically trigger sending it based on events observed
-                on a{" "}
-                <b>
-                  <i>Ethereum</i>
-                </b>{" "}
-                DeFi smart contract.
-              </p>
-
-              <p className="tw-paragraph md:tw-lead-sm mb-6">
-                <b>Chain-key cryptography</b> is the scientific breakthrough
-                that allows ICP smart contracts to create and sign transactions
-                that are executed on other blockchains &ndash;{" "}
-                <i>enabling them to write to other blockchains directly.</i>
-              </p>
-
-              <p className="tw-paragraph md:tw-lead-sm mb-6">
-                <b>Direct network integration</b> enables ICP smart contracts to
-                query data and smart contracts from other blockchains, validated
-                by ICP consensus &ndash; <i>reading from other blockchains</i>.
-              </p>
-            </div>
-          </div>
+                />
+              </TabItem>
+              <TabItem value="eth" label="Build with ETH">
+                <CodeSnippet
+                  title="Build with ETH"
+                  description="Sed posuere consectetur est at lobortis. Aenean lacinia bibendum nulla sed consectetur. Aenean lacinia bibendum nulla sed consectetur. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit."
+                  link="/docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions#sending-transactions"
+                  snippet={{
+                    language: "motoko",
+                    code: `type ManagementCanisterActor = actor {
+  bitcoin_send_transaction : SendTransactionRequest -> async ();
+};
+let management_canister_actor : ManagementCanisterActor = actor("aaaaa-aa");
+public func send_transaction(network : Network, transaction : [Nat8]) : async () {
+  let transaction_fee =
+      SEND_TRANSACTION_BASE_COST_CYCLES + transaction.size() * SEND_TRANSACTION_COST_CYCLES_PER_BYTE;
+  ExperimentalCycles.add(transaction_fee);
+  await management_canister_actor.bitcoin_send_transaction({
+      network;
+      transaction;
+  })
+};`,
+                  }}
+                  isExpanded={codeSnippetsExpanded[1]}
+                  toggleExpand={() =>
+                    setCodeSnippetsExpanded((prev) => {
+                      const newExpanded = [...prev];
+                      newExpanded[1] = !prev[1];
+                      return newExpanded;
+                    })
+                  }
+                />
+              </TabItem>
+              <TabItem value="usdc" label="Build with USDC">
+                <CodeSnippet
+                  title="Build with USDC"
+                  description="Sed posuere consectetur est at lobortis. Aenean lacinia bibendum nulla sed consectetur. Aenean lacinia bibendum nulla sed consectetur. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit."
+                  link="/docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions#sending-transactions"
+                  snippet={{
+                    language: "motoko",
+                    code: `type ManagementCanisterActor = actor {
+  bitcoin_send_transaction : SendTransactionRequest -> async ();
+};
+let management_canister_actor : ManagementCanisterActor = actor("aaaaa-aa");
+public func send_transaction(network : Network, transaction : [Nat8]) : async () {
+  let transaction_fee =
+      SEND_TRANSACTION_BASE_COST_CYCLES + transaction.size() * SEND_TRANSACTION_COST_CYCLES_PER_BYTE;
+  ExperimentalCycles.add(transaction_fee);
+  await management_canister_actor.bitcoin_send_transaction({
+      network;
+      transaction;
+  })
+};`,
+                  }}
+                  isExpanded={codeSnippetsExpanded[2]}
+                  toggleExpand={() =>
+                    setCodeSnippetsExpanded((prev) => {
+                      const newExpanded = [...prev];
+                      newExpanded[2] = !prev[2];
+                      return newExpanded;
+                    })
+                  }
+                />
+              </TabItem>
+            </Tabs>{" "}
+          </AnimateSpawn>
         </section>
-
-        <section className="container-12 pt-20 md:pt-40">
-          <div className="md:flex">
+        <section className=" bg-white">
+          <div className="container-10 py-20 md:py-40 md:flex">
             <div className="flex-[5]">
               <StickySectionNav
                 items={content.map((c) => c.title)}
@@ -688,554 +354,172 @@ pub enum MultiGetLogsResult {
                 highlightedIndex={highlight.highlightedIndex}
                 onItemClick={onItemClick}
                 title={
-                  <>
-                    <h2 className="tw-heading-4 md:tw-heading-3 mb-4 text-gradient">
-                      Use cases of Chain Fusion
-                    </h2>
-                    <p className="tw-paragraph-sm md:tw-paragraph mb-2 mr-4">
-                      Explore Chain Fusion technology use cases, including
-                      executing ICP smart contracts on other chains and asset
-                      storage with Bitcoin and Ethereum.
-                    </p>
-
-                    <p className="tw-paragraph-sm md:tw-paragraph mb-10 mr-4">
-                      These applications range from automating tasks on Ethereum
-                      to creating ICP smart contracts that manage
-                      Bitcoin/Ethereum. Developers can also use ckBTC and ckETH
-                      to efficiently build DeFi services, bypassing high costs
-                      and delays.
-                    </p>
-                  </>
+                  <h2 className="tw-heading-4 md:tw-heading-60 mb-4 text-gradient-purple">
+                    How
+                    <LogoNewLine
+                      className="w-3/4 my-2 align-middle"
+                      color="text-gradient-purple"
+                    />{" "}
+                    works
+                  </h2>
                 }
               ></StickySectionNav>
             </div>
             <div className="flex-[7]">
               <div
-                className="lg:pr-[calc(1/7*100%)] space-y-10 md:space-y-20"
+                className="space-y-10 md:space-y-20"
                 ref={(el) => (highlight.elRef.current = el)}
               >
-                {/* Use cases of software orchestration */}
-
-                <ContentCard id="oisy-wallet">
-                  <img
-                    src="/img/multichain/card-oisy.webp"
-                    alt="Create a web-based multi-chain wallet"
-                  />
+                <ContentCard
+                  className="content-card-with-id"
+                  id="Network-Integration"
+                >
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Web-based multi-chain wallet
+                    Network Integration: Direct read/write capabilities.
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    A key problem with hosting traditional wallets such as
-                    MetaMask on a smartphone or laptop is the risk of theft by
-                    extortion, especially in the developing world. For example,
-                    a robber might put a victim up to a wall, and force them to
-                    open their phone under threat of violence. If the victim
-                    maintains crypto in a traditional wallet, it will be seen
-                    and they will lose their crypto.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Chain key makes it possible to create purely web-based
-                    wallets, backed by a canister smart contract that maintains
-                    the crypto. Authentication for such wallets can involve
-                    Internet Identity, Google SSO, or usernames and passwords as
-                    required. These can be opened using a web browser tab in
-                    Incognito mode, which leaves no trace of the wallet when
-                    closed.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The{" "}
-                    <Link
-                      href="https://oisy.com"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="link-subtle"
-                    >
-                      OISY wallet
-                    </Link>{" "}
-                    is a great example. It can custody any ICP asset (including
-                    chain key twins), native bitcoin, native bitcoin BRC20
-                    tokens, and native Ethereum assets, as required.
-                    Self-custodied Ethereum assets can be used in Ethereum DeFi
-                    using the WalletConnect functionality it supports. Users
-                    gain convenience and a better experience, and superior
-                    security.
+                    ICP smart contracts have secure read/write capabilities for
+                    the Bitcoin and Ethereum network. They can read and write
+                    transactions to those chains. There are two types of
+                    integration:{" "}
+                    <span className="font-bold">Native integration</span> and{" "}
+                    <span className="font-bold">RPC-based integration</span>.
                   </p>
                 </ContentCard>
-
-                <ContentCard id="eth-cronjobs">
+                <ContentCard
+                  className="content-card-with-id"
+                  id="bitcoin-support"
+                >
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Cron jobs on Ethereum from ICP
+                    Native Integration: Supports Bitcoin
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    A key challenge involved when hosting DeFi and other
-                    services using Ethereum smart contracts is the secure
-                    initiation of regular jobs. Often, smart contract jobs are
-                    initiated using external scripts running on insecure clouds
-                    such as Amazon Web Services, where the private keys they
-                    maintain to make the calls are vulnerable in the same way as
-                    the private keys used by hot wallets.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The Internet Computer provides a solution. Canister smart
-                    contracts have an API that allows them to schedule their
-                    secure automatic execution for as long as needed into the
-                    future. Using EVM RPC, canisters can be used to initiate
-                    time-based calls into Ethereum smart contracts too – without
-                    a private key being made vulnerable.
-                  </p>
-
-                  <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">in progress</Status>
-                  </p>
-                </ContentCard>
-
-                <ContentCard id="evm-rpc">
-                  <img
-                    src="/img/multichain/card-cketh.webp"
-                    alt="Calling smart contracts on Ethereum from ICP using EVM RPC"
-                  />
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Calling smart contracts on Ethereum from ICP using EVM RPC
-                  </h3>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The Internet Computer makes it possible to build almost any
-                    online service fully on-chain, in a full stack
-                    decentralization model, which can be augmented by placing
-                    the service under the control of an SNS DAO to automate its
-                    maintenance. This is because canister smart contracts can
-                    hold up to 400GiB of memory each, and run in parallel with
-                    great efficiency. Moreover, they can directly serve
-                    interactive web-based user experiences to users by
-                    processing HTTP requests, thanks to ICP’s reverse-gas model
-                    (canister smart contracts pay for their own execution using
-                    “cycles” that they have been charged with). Now they can
-                    also be trustlessly combined with DeFi and other
-                    functionality Ethereum hosts in a World Computer paradigm.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Ethereum Virtual Machine Remote Procedural Calls (EVM RPC)
-                    make it possible for Internet Computer canister smart
-                    contracts to interact with smart contracts on any blockchain
-                    which supports the Ethereum JSON-RPC protocol. Advanced
-                    fully decentralized Web3 services can be created that
-                    maintain the UX and heavy data storage and processing on the
-                    Internet Computer, while relying on Ethereum DeFi where
-                    financial rails are needed. To make this integration easier,
-                    the{" "}
-                    <Link
-                      href="/blog/features/evm-rpc-canister-launch"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="link-subtle"
-                    >
-                      EVM RPC canister
-                    </Link>{" "}
-                    is a service that lets you easily build integrations between
-                    ICP canister smart contracts and Ethereum smart contracts.
-                  </p>
-
-                  <p className="flex gap-2 flex-wrap">
-                    <Status type="done">EVM RPC canister done</Status>
-                  </p>
-                </ContentCard>
-
-                <ContentCard id="unlimited-multichain">
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Unlimited multi-chain via edge routing
-                  </h3>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Thus far, the Internet Computer network has only directly
-                    integrated with the Bitcoin and Ethereum networks, enabling
-                    it to produce twins of assets hosted by those networks.
-                    However, more broad multi-chain functionality is easily
-                    produced.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The Internet Computer enables hosted smart contracts to
-                    create accounts on any other blockchain, and sign
-                    transactions that can run on their networks. Transaction
-                    routing can be performed by the UX of Web3 services.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The UX of a Web3 service can provide very fast, and totally
-                    decentralized, edge routing for transactions. For example,
-                    when a canister smart contract has created a transaction for
-                    execution on another blockchain, the UX (e.g JavaScript
-                    running in the web browser) can retrieve the signed
-                    transaction by making a call to the smart contract, and then
-                    push it to the online API of a node in the destination
-                    network, then poll for the result.
-                  </p>
-                </ContentCard>
-
-                {/* Use cases of storing assets */}
-                <ContentCard id="ckbtc">
-                  <img
-                    src="/img/multichain/card-ckbtc.webp"
-                    alt="The bitcoin twin: ckBTC"
-                  />
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Bitcoin twin: ckBTC
-                  </h3>
-
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Developers use ICP to bring smart contract functionality to
-                    Bitcoin. This new solution brings a new challenge: Bitcoin
-                    costs and wait times. No matter how fast an ICP smart
-                    contract is, moving Bitcoin will have the costs and wait
-                    times of the Bitcoin network.
-                  </p>
-
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    To address this, developers also use ckBTC (“chain key
-                    bitcoin”). This is a trustless "Bitcoin twin" hosted on ICP
-                    that can be used by ICP smart contracts to move Bitcoin
-                    cheaply and quickly. This is possible because ICP nodes talk
-                    to Bitcoin nodes to download the Bitcoin network’s blocks
-                    and maintain its Unspent Transaction Output (UTXO) set.
-                    CkBTC can be directly processed by canister smart contract
-                    logic and transferred with 1 second finality at near zero
-                    cost.
-                  </p>
-
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    <strong>
-                      Canister smart contracts can be used to provide web-based
-                      wallets, and other Web3 services, that directly
-                      incorporate bitcoin – for example,{" "}
+                    Among the network integrations, the Bitcoin / ICP network
+                    have a more robust integration: Native integration. Native
+                    Bitcoin integration means ICP is directly connected to the
+                    Bitcoin network at the protocol level.
+                    <div>
                       <Link
-                        href="https://oc.app/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="link-subtle"
+                        href="/docs/current/developer-docs/identity/verifiable-credentials/how-it-works"
+                        className="mt-4 md:mt-6 link-primary link-with-icon !font-bold no-underline hover:!text-black"
                       >
-                        OpenChat
-                      </Link>{" "}
-                      allows chain key bitcoin to be transferred via instant
-                      chat messages. Canisters can also be used to build a new
-                      generation of “Bitcoin DeFi” services.
-                    </strong>
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    To create ckBTC, a user transfers their bitcoin to a ckBTC
-                    address provided by their wallet (e.g. see functionality
-                    provided at the NNS). Their ckBTC twin can then be sent to
-                    any other ckBTC address, almost instantly for a tiny fee, or
-                    directly to a standard Bitcoin address, causing the bitcoin
-                    twin to return to its native form.
+                        <LinkArrowRight /> Learn More
+                      </Link>
+                    </div>
                   </p>
                 </ContentCard>
-
-                <ContentCard id="bitcoin-ordinals">
+                <ContentCard
+                  className="content-card-with-id"
+                  id="rpc-integration"
+                >
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Ordinals and BRC20
+                    RPC Integration: Ethereum, Solana
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Creating Bitcoin Ordinals can be expensive and slow. ICP can
-                    help here too. ICP canister smart contracts can use the
-                    Bitcoin API to process bitcoin, and also Ordinals, which are
-                    used to create and transfer NFTs on the Bitcoin blockchain.
-                    Fully decentralized Web3 services on the Internet Computer
-                    have taken advantage of the functionality to create
-                    marketplaces for Ordinals e.g.{" "}
-                    <Link
-                      href="https://bioniq.io/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="link-subtle"
-                    >
-                      Bioniq
-                    </Link>
-                    .
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The processing of bitcoin and Ordinals involves the ICP
-                    protocol processing ECDSA cryptography behind the scenes.
-                    However, inscribing Ordinals and creating and processing
-                    BRC20 assets (e.g. meme coins that piggyback on Bitcoin)
-                    involves Schnorr cryptography, which ICP now also supports.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Because ICP supports Schnorr, web-based smart contract
-                    wallets such as OISY can self-host BRC20, Ethereum, and
-                    native ICP assets.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    A further advantage is that canister smart contracts can
-                    sign transactions for execution on chains such as Cardano
-                    and Solana.
-                  </p>
-
-                  <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">Schnorr in progress</Status>
+                    ICP’s integration with Ethereum is facilitated through the
+                    EVM RPC smart contract canister on ICP. This canister
+                    communicates with Ethereum and other EVM blockchains using
+                    an on-chain API. It simplifies the developer experience by
+                    introducing methods that allow communication with Ethereum
+                    and other EVM-compatible networks like Arbitrum, Optimism,
+                    and Base.
+                    <div>
+                      <Link
+                        href="/docs/current/developer-docs/identity/verifiable-credentials/how-it-works"
+                        className="mt-4 md:mt-6 link-primary link-with-icon !font-bold no-underline hover:!text-black"
+                      >
+                        <LinkArrowRight /> Learn More
+                      </Link>
+                    </div>
                   </p>
                 </ContentCard>
-
-                <ContentCard id="cketh">
+                <ContentCard
+                  className="content-card-with-id"
+                  id="threshold-signing"
+                >
                   <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Ethereum asset twins: ckETH and ckERC20
+                    Threshold Signing Services: Secure signing mechanisms
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Developers use ICP to custody Ethereum. This new solution
-                    brings a new developer experience challenge: Ethereum costs
-                    and wait times. To address this, the ICP community uses
-                    ckEth ("chain key Ethereum"), a trustless "Twins of
-                    Ethereum" hosted on ICP such as “ether twin” called ckETH
-                    and “twins'' of ERC20 tokens, such as{" "}
-                    <Link
-                      href="https://dashboard.internetcomputer.org/ethereum/xevnm-gaaaa-aaaar-qafnq-cai"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="link-subtle"
-                    >
-                      ckUSDC (a stablecoin),
-                    </Link>{" "}
-                    ckUSDT, ckUNISWAP, ck1INCH, ckAAVE. These can be directly
-                    processed by smart contracts hosted on ICP.
+                    Threshold signing is a feature of the ICP that allows
+                    canisters to have a pair of public and private keys. The
+                    private key is divided into small shares and distributed
+                    among nodes of a signing subnet, enhancing security. This
+                    mechanism enables secure signing of transactions and
+                    messages.
+                    <div>
+                      <Link
+                        href="/docs/current/developer-docs/identity/verifiable-credentials/how-it-works"
+                        className="mt-4 md:mt-6 link-primary link-with-icon !font-bold no-underline hover:!text-black"
+                      >
+                        <LinkArrowRight /> Learn More
+                      </Link>
+                    </div>
                   </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The “chain key” versions of Ethereum assets live on ledgers
-                    created by ICP smart contracts, where they can be
-                    transferred with 1 second finality and at near zero cost.
-                    Moreover, they can be directly processed by canisters that
-                    provide web-based wallets, and other web3 services hosted on
-                    the ICP, such as SocialFi and GameFi.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    To create chain key Ethereum asset twins, a user transfers
-                    them to an address provided by their wallet. Then they can
-                    be sent to any other chain key address, almost instantly and
-                    at miniscule cost, or directly to a standard Ethereum
-                    address (causing the twin to return to its native form),
-                    after the standard finalization delay and transaction fee.
-                  </p>
-                  <p className="flex gap-2 flex-wrap">
-                    <Status type="done">ckETH done</Status>
-                    <Status type="done">ckUSDC done</Status>
-                    <Status type="pending">ckERC20 is in progress</Status>
-                  </p>
-                </ContentCard>
-
-                <ContentCard id="icpERC20">
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    icpERC20 tokens on Ethereum
-                  </h3>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Ethereum provides the world’s preeminent DeFi rails.
-                    Decentralized exchanges such as Uniswap provide immense
-                    liquidity for trading ERC20 tokens. Popular custody services
-                    such as Fireblocks, which is popular among investment
-                    institutions, custody any ERC20 token as standard.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The ICP protocol makes it possible to publish any native ICP
-                    token hosted on a standard ledger to Ethereum, in the form
-                    of an icpERC20. The twin is a standard ERC20 token and can
-                    be processed by any service that processes ERC20 tokens.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    A service created by a Internet Computer-hosted smart
-                    contract provides functionality (often relayed by wallets)
-                    to create an icpERC20 twin of an ICP token. The service also
-                    allows icpERC20 twins to be returned to the Internet
-                    Computer, where they retain their native form.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Once an icpERC20 token has been created, it can be processed
-                    by Ethereum Layer-2 networks and moved across other chains
-                    using traditional bridges.
-                  </p>
-                  <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">icpERC20 is in progress</Status>
-                  </p>
-                </ContentCard>
-
-                <ContentCard id="bitcoin-ordinals-2">
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Ordinals, BRC20 inscriptions from ICP using tSchnorr
-                  </h3>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Canister smart contracts on the Internet Computer can use a
-                    Bitcoin API to process bitcoin, and also Ordinals, which are
-                    used to create and transfer NFTs on the Bitcoin blockchain.
-                    Fully decentralized Web3 services on the Internet Computer
-                    have taken advantage of the functionality to create
-                    marketplaces for Ordinals e.g.{" "}
-                    <Link
-                      href="https://bioniq.io/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="link-subtle"
-                    >
-                      Bioniq
-                    </Link>
-                    .
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    The processing of bitcoin and Ordinals involves the ICP
-                    protocol processing ECDSA cryptography behind the scenes.
-                    However, inscribing Ordinals and creating and processing
-                    BRC20 assets (e.g. meme coins that piggyback on Bitcoin)
-                    involves Schnorr cryptography, which ICP now also supports.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Because ICP supports Schnorr, web-based smart contract
-                    wallets such as OISY can self-host BRC20, Ethereum, and
-                    native ICP assets.
-                  </p>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    A further advantage is that canister smart contracts can
-                    sign transactions for execution on chains such as Cardano
-                    and Solana.
-                  </p>
-
-                  <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">Schnorr in progress</Status>
-                  </p>
-                </ContentCard>
-
-                <ContentCard id="additional-resources">
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Additional resources
-                  </h3>
-                  <p className="flex flex-col gap-6 items-start mb-0">
-                    <Link
-                      className="link-primary"
-                      href="/docs/current/developer-docs/integrations/multi-chain/user-faq"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <LinkArrowRight /> Multi-chain FAQs
-                    </Link>
-                    <Link
-                      className="link-primary"
-                      href="/ecosystem?tag=Ethereum"
-                    >
-                      <LinkArrowRight /> Open source projects with Ethereum
-                      integration
-                    </Link>
-                    <Link
-                      className="link-primary"
-                      href="/bitcoin-integration/faq"
-                    >
-                      <LinkArrowRight /> FAQ about BTC integration & ckBTC
-                    </Link>
-                    <Link
-                      className="link-primary"
-                      href="/samples?selectedDomains=Asynchronous+DeFi"
-                    >
-                      <LinkArrowRight /> Sample codes of DeFi projects
-                    </Link>
-                    <Link
-                      className="link-primary"
-                      href="https://medium.com/dfinity/hackathon-winners-put-top-icp-features-into-practice-90c9abeef342"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <LinkArrowRight /> Multi-chain Hackathon Projects
-                    </Link>
-                  </p>
-                </ContentCard>
-
-                <ContentCard id="sample-code">
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Multi-chain sample code
-                  </h3>
-                  <p className="flex flex-col gap-6 items-start mb-0">
-                    <Link className="link-primary" href="/samples">
-                      <LinkArrowRight /> More Sample Code
-                    </Link>
-                  </p>
-                  <div className="grid gap-5 grid-cols-1 md:grid-cols-2">
-                    {[
-                      "IC ETH Starter",
-                      "Add ERC-20 to IC ETH Starter",
-                      "OISY",
-                      "PoS app for ckBTC",
-                      "ICRC2 Swap Demo",
-                      "Multi-subnet Bitcoin Custody",
-                      "ETH Payment Tutorials",
-                      "B3 Wallet",
-                      "ckBTC",
-                      "ckETH",
-                    ]
-                      .map((title) =>
-                        sampleItems.find(
-                          (item) =>
-                            item.title.toLowerCase() === title.toLowerCase()!
-                        )
-                      )
-                      .map((sample) => (
-                        <Card
-                          key={sample.index}
-                          image={sample.image}
-                          title={sample.title}
-                          domain={sample.domains[0]}
-                          body={sample.body}
-                          links={sample.links}
-                        />
-                      ))}
-                  </div>
                 </ContentCard>
               </div>
             </div>
           </div>
         </section>
-
-        <section className="container-10 relative mb-20 md:mb-40 mt-30 md:mt-60">
+        <News content="chainfusion" />
+        <section>
           <AnimateSpawn
-            className=" relative text-white"
+            className="container-6"
             variants={transitions.container}
+            el={motion.section}
           >
+            <h3 className="tw-heading-4 md:tw-heading-60 text-gradient-purple text-center">
+              Start building with{" "}
+              <LogoSm className="w-full" color="text-gradient-purple" />{" "}
+            </h3>
             <motion.div
-              className="blob blob-purple blob-md blob-x-5 blob-y-10 z-[-1] md:blob-lg opacity-80"
-              variants={transitions.fadeIn}
-            ></motion.div>
-            <motion.h2
-              className="tw-heading-3 text-center mb-0 w-full mx-auto md:tw-heading-60 md:w-7/10 lg:w-8/12"
-              variants={transitions.item}
+              className="flex flex-col md:flex-row justify-center items-center  gap-6 mt-4 md:mt-16"
+              variants={transitions.container}
             >
-              Learn more about multi&#8209;chain on ICP
-            </motion.h2>
-          </AnimateSpawn>
-          <AnimateSpawn
-            className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-8 md:mt-16"
-            variants={transitions.container}
-          >
-            <CardWithDescription
-              title="ICP - More than a Bitcoin L2"
-              description=""
-              href="/bitcoin-integration"
-            />
-
-            <CardWithDescription
-              title="Ethereum Integration"
-              description=""
-              href="/ethereum-integration"
-            />
-            <CardWithDescription
-              title="Use ETH and BTC in the Ecosystem"
-              description=""
-              href="/ecosystem"
-            />
-            <CardWithDescription
-              title="Multi-chain DeFi"
-              description=""
-              href="/defi"
-            />
+              <Link
+                href="/docs/developers-guide/chain-fusion"
+                className="button-primary"
+              >
+                Build now{" "}
+              </Link>
+              <Link href="/ecosystem" className="link-primary link-with-icon">
+                <LinkArrowRight /> See more ICP Use cases
+              </Link>
+            </motion.div>
           </AnimateSpawn>
         </section>
+        <section className="my-24 md:my-40" id="subscribe">
+          <Newsletter
+            fields={[
+              {
+                name: "EMAIL",
+                placeholder: "Email",
+                type: "email",
+                required: true,
+              },
+            ]}
+            ctaLabel="Get updates!"
+            postUrl="https://dfinity.us16.list-manage.com/subscribe/post?u=33c727489e01ff5b6e1fb6cc6&amp;id=7e9469a315&amp;f_id=00bac2e1f0"
+            decoration={
+              <img
+                src="/img/newsletter/email-image-2.webp"
+                alt=""
+                loading="lazy"
+              />
+            }
+            className="mb-20 relative "
+          >
+            <h2 className="text-white tw-heading-5 md:tw-heading-4 mb-6 md:mb-8 md:pr-10">
+              Sign up for email updates{" "}
+              <span className="text-white-60">
+                to keep up to date with the Internet Computer
+              </span>
+            </h2>
+          </Newsletter>
+        </section>
       </main>
-      <IntraPageNav
-        hasHome={false}
-        links={content.map((c) => ({
-          text: c.title,
-          to: `#${c.id}`,
-        }))}
-        className="md:hidden"
-      ></IntraPageNav>
     </Layout>
   );
 }
 
-export default MultichainPage;
+export default ChainFusion;
