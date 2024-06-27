@@ -5,8 +5,6 @@ shareImage: /img/how-it-works/boundary-nodes.jpg
 slug: boundary-nodes
 ---
 
-# Boundary nodes
-
 The boundary nodes form the globally distributed edge of the Internet Computer (IC) through which all the accesses to the canister smart contracts go. The boundary nodes provide a public endpoint for the IC and route all incoming requests to the right subnet, loadbalance requests across replica nodes, and cache responses for improved performance.
 
 <figure>
@@ -22,9 +20,9 @@ The HTTP gateway allows users to access the dapps hosted on the IC through their
 
 The API boundary node allows IC native applications to directly call the canister smart contracts. In this case, the boundary node simply routes the API canister calls to the right subnet. Hence, no trust is required between the user and the boundary node.
 
-Both the HTTP gateway and the API boundary node are currently combined into the boundary node. Work to separate the two into two independent services is ongoing. Once complete, the API boundary nodes will be fully under the control of the NNS, while the HTTP gateways can be run by anyone in the community ensuring compliance with local jurisdictions. [For more information check our updates in the forum.](https://forum.dfinity.org/t/boundary-node-roadmap/15562)
+Both the HTTP gateway and the API boundary node are currently combined into the boundary node. Work to separate the two into two independent services is ongoing. The first proposal to deploy API boundary nodes under the control of the NNS has been adopted. The next step is to create the HTTP gateways, that can be run by anyone, and shift the traffic from the existing boundary nodes to the HTTP gateways and API boundary nodes. [For more information on the current state check the updates in the forum.](https://forum.dfinity.org/t/boundary-node-roadmap/15562)
 
-In addition to the two endpoints, the boundary nodes provide to access the IC, the boundary nodes also provide caching to improve the performance of the dapps hosted on the IC.
+In addition to the two endpoints, the boundary nodes provide to access the IC, the boundary nodes also provide caching to improve the performance and a [custom domains service](/docs/).
 
 ## Go Even Deeper
 
