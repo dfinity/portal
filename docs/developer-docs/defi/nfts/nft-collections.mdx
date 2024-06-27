@@ -306,7 +306,7 @@ dfx canister call icrc7 icrc37_transfer_from "(vec{record {
   created_at_time = null;}})"
 ```
 
-### Step 9: Use the `approve` functionality from ICRC-37.
+### Step 10: Use the `approve` functionality from ICRC-37.
 
 Next, use the `icrc37_approve_tokens` canister method to approve the `alice` identity to spend token `0`:
 
@@ -322,7 +322,7 @@ dfx canister call icrc7 icrc37_is_approved "(vec { record {spender= record { own
 
 This should return `(vec { true })`.
 
-### Step 10: Create a new identity for `alice` to transfer the token to.
+### Step 11: Create a new identity for `alice` to transfer the token to.
 
 Create a `bob` identity for `alice` to transfer token `0` to:
 
@@ -345,7 +345,7 @@ dfx canister call icrc7 icrc37_transfer_from "(vec {record {
   created_at_time = null;}})"
 ```
 
-### Step 11: Confirm the transfer was successful.
+### Step 12: Confirm the transfer was successful.
 
 Confirm that the token transfer was successful by echoing `bob`'s principal, then viewing the principal that owns token `0`:
 
@@ -356,7 +356,7 @@ dfx canister call icrc7 icrc7_owner_of '(vec {0})' --query
 
 The two principal IDs should match.
 
-### Step 12: Revoke the approval.
+### Step 13: Revoke the approval.
 
 You can revoke the approval with the command:
 
@@ -377,7 +377,7 @@ dfx canister call icrc7 icrc37_get_token_approvals "(vec { 0;},null,null)" --que
 
 This should return `(vec {})`.
 
-### Step 13: Get the full transaction log.
+### Step 14: Get the full transaction log.
 
 To view all transactions with the NFT collection, run the command:
 
