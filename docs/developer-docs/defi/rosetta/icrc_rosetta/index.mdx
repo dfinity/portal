@@ -135,11 +135,11 @@ This message confirms that you are caught up with all blocks.
 Mount the `/data` directory as a [volume](https://docs.docker.com/storage/volumes/).
 
 ```bash
-docker volume create rosetta
+docker volume create ic-icrc-rosetta
 ```
 ```bash
 docker run \
-    --volume rosetta:/data \
+    --volume ic-icrc-rosetta:/data \
     --interactive \
     --tty \
     --publish 8080:8080 \
