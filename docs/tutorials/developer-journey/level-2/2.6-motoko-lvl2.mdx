@@ -211,7 +211,7 @@ In this example, the following happens:
 
     - The remainder value of key (`k`) divided by `n` is used to determine the index (`i`) value of the bucket responsible for that key.
 
-    - If the bucket does not exist, the bucket is installed using an asynchronous call to the constructor function `Buckets.Bucket(i)`. When the result is returned, it records it in the array `buckets`.
+    - If the bucket does not exist, the bucket is installed using an asynchronous call to the constructor function `Buckets.Bucket(n, i)`. When the result is returned, it records it in the array `buckets`.
 
     - Then it delegates the insertion of the key-value pair into the bucket by calling `bucket.put(k, v)`.
 
@@ -331,7 +331,7 @@ First, open the `dfx.json` file in your code editor. Delete the existing content
 }
 ```
 
-In this file, you can see the definition for each of your three canisters with correlate with each of your three actors. Each canister's Motoko file is configured to be at `src/CANISTER_NAME/main.mo`. Since these directories and files do not exist yet, the next step is to create them.
+In this file, you can see the definition for each of your two canisters with correlate with each of your two actors. Each canister's Motoko file is configured to be at `src/CANISTER_NAME/main.mo`. Since these directories and files do not exist yet, the next step is to create them.
 
 ### Creating canister directories and Motoko files
 
@@ -395,9 +395,9 @@ In this example, the following happens:
 
 - A stable variable called `running` is defined as having the value `false`.
 
-- A public function called `launch` is defined. This takes no input and returns an async response of type `Text`. If `running` is equal to `true`, the text response "The daemon process is running" is returned.
+- A public function called `launch` is defined. This takes no input and returns an async response of type `Text`. It updates the value of the `running` variable to `true`, and the text response "The daemon process is running" is returned.
 
-- A public function called `stop` is defined. This takes no input and returns an async response of type `Text`. If `running` is equal to `false`, the text response "The daemon process is stopped" is returned.
+- A public function called `stop` is defined. This takes no input and returns an async response of type `Text`. It updates the value of the `running` variable to `false`, and the text response "The daemon process is stopped" is returned.
 
 
 ### Deploying the actors locally

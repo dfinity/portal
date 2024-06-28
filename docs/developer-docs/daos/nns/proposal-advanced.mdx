@@ -54,21 +54,22 @@ The following proposal type is specific for the Bitcoin canister:
 If you are looking to verify NNS core canister upgrades apart from regularly checking open proposals, you might want to consider the following information for proposals submitted by the DFINITY foundation:
 
 * For updates to the NNS canisters, you can follow [this repository](https://github.com/dfinity/ic). More specifically, the following sub-directories are relevant: 
-      - `rs/rosetta-api/icp_ledger/src`
-      - `rs/rosetta-api/ledger_core`
-      - `rs/rosetta-api/ledger_canister_core`
-      - `rs/packages/icrc-ledger_types`
-      - `rs/registry/canister`
-      - `rs/nns/governance`
-      - `rs/rosetta-api/ledger_canister/ledger`,
-      - `rs/rosetta-api/icp_ledger/archive`
-      - `rs/nns/handlers/root/impl`
-      - `rs/nns/cmc`
-      - `rs/nns/handlers/lifeline`,
-      - `rs/nns/gtc`
-      - `rs/nns/identity`
-      - `rs/nns/nns-ui`
-      - `rs/nns/sns-wasm`
+
+- `rs/rosetta-api/icp_ledger/src`
+- `rs/rosetta-api/ledger_core`
+- `rs/rosetta-api/ledger_canister_core`
+- `rs/packages/icrc-ledger_types`
+- `rs/registry/canister`
+- `rs/nns/governance`
+- `rs/rosetta-api/ledger_canister/ledger`,
+- `rs/rosetta-api/icp_ledger/archive`
+- `rs/nns/handlers/root/impl`
+- `rs/nns/cmc`
+- `rs/nns/handlers/lifeline`,
+- `rs/nns/gtc`
+- `rs/nns/identity`
+- `rs/nns/nns-ui`
+- `rs/nns/sns-wasm`
       
 * NNS core canister upgrade proposals are announced in [this forum thread](https://forum.dfinity.org/t/nns-updates-aggregation-thread/23551).
 * You can find the instructions on how to verify that the Wasm in the proposal was indeed build from the provided `git commit` in the proposal's section "Wasm Verification" (see [this example proposal](https://dashboard.internetcomputer.org/proposal/129394)).
@@ -78,12 +79,12 @@ If you are looking to verify NNS core canister upgrades apart from regularly che
 If you are looking to verify the ledger suite, which includes the ICP ledger and all ICRC ledgers (used for ckBTC, ckETC, ckERC20) apart from regularly checking open proposals, you might want to consider the following information for proposals submitted by the DFINITY foundation:
 
 * For updates to the NNS canisters, you can follow [this repository](https://github.com/dfinity/ic/rosetta-api).
+
 More specifically, the following sub-directories are relevant:
-      - `rs/rosetta-api/icp_ledger` is the  directory for the ICP ledger
-      - `rs/rosetta-api/icrc1/ledger` for the ckBTC, ckETH, and ckERC20 ledgers, where `rs/rosetta-api/icrc1/ledger:ledger_canister` is the Wasm relevant for the ckBTC ledger and `rs/rosetta-api/icrc1/ledger:ledger_canister_u256.wasm` the Wasm for the ckETH and ckERC20 ledgers.
+- `rs/rosetta-api/icp_ledger` is the  directory for the ICP ledger
+- `rs/rosetta-api/icrc1/ledger` for the ckBTC, ckETH, and ckERC20 ledgers, where `rs/rosetta-api/icrc1/ledger:ledger_canister` is the Wasm relevant for the ckBTC ledger and `rs/rosetta-api/icrc1/ledger:ledger_canister_u256.wasm` the Wasm for the ckETH and ckERC20 ledgers.
+
 * You can find the instructions on how to verify that the Wasm in the proposal was indeed build from the provided `git commit` in the proposal.
-
-
 
 #### How to verify Internet Identity upgrades
 
@@ -190,18 +191,18 @@ This topic includes proposals that administer network economics. This topic cont
 * `NetworkEconomics`: Network economics contains the parameters for several operations related to the economy of the network and settings of the NNS DAO that can be changed by a proposal of this type.
 A single proposal can update one or several economic parameters. The default values (0) are considered unchanged. Thus, a valid proposal only needs to set the parameters that it wishes to change. Note that this also means that it is not possible to set any of the values to 0.
 The following parameters can be changed:
-    - **Reject cost**: The amount of ICP the proposer of a rejected proposal will be charged to prevent the spamming of frivolous proposals.
-    - **Minimum neuron stake**: Set the minimum number of ICP required for the creation of a neuron. The same limit must also be respected when increasing the dissolve delay or changing the neuron state from dissolving to aging.
-    - **Neuron management fee**: The cost in ICP per neuron management proposal. Here the NNS is doing work on behalf of a specific neuron, and a small fee will be applied to prevent overuse of this feature (i.e., spam).
-    - **Minimum ICP/SDR rate**: To prevent mistakes, there is a lower bound for the ICP/SDR rate, managed by network economic proposals.
-    - **Dissolve delay of spawned neurons**: The dissolve delay of a neuron spawned from the maturity of an existing neuron.
-    - **Maximum node provider rewards**: The maximum rewards to be distributed to node providers in a single distribution event (proposal).
-    - **Transaction fee**: The transaction fee that must be paid for each ledger transaction.
-    - **Maximum number of proposals to keep per topic**: The maximum number of proposals to keep, per topic. When the total number of proposals for a given topic is greater than this number, the oldest proposals that have reached a “final” state may be deleted to save space.
-    - **Neurons' Fund economics**: This includes all parameters related to the [Neurons' Fund](./neurons-fund.mdx):
-        - `max_theoretical_neurons_fund_participation_amount_xdr`: A theoretical limit which should be smaller than any realistic amount of maturity that practically needs to be reserved from the Neurons' Fund for a given SNS swap.
-        - `neurons_fund_matched_funding_curve_coefficients`: Defines a threshold specifying the shape of the matching function used by the Neurons' Fund to determine how much to contribute for a given direct participation amount.
-        - `minimum_icp_xdr_rate` and `maximum_icp_xdr_rate` are respectively the minimum and maximum value of the ICP/XDR conversion rate used by the Neurons' Fund for converting XDR values into ICP.
+- **Reject cost**: The amount of ICP the proposer of a rejected proposal will be charged to prevent the spamming of frivolous proposals.
+- **Minimum neuron stake**: Set the minimum number of ICP required for the creation of a neuron. The same limit must also be respected when increasing the dissolve delay or changing the neuron state from dissolving to aging.
+- **Neuron management fee**: The cost in ICP per neuron management proposal. Here the NNS is doing work on behalf of a specific neuron, and a small fee will be applied to prevent overuse of this feature (i.e., spam).
+- **Minimum ICP/SDR rate**: To prevent mistakes, there is a lower bound for the ICP/SDR rate, managed by network economic proposals.
+- **Dissolve delay of spawned neurons**: The dissolve delay of a neuron spawned from the maturity of an existing neuron.
+- **Maximum node provider rewards**: The maximum rewards to be distributed to node providers in a single distribution event (proposal).
+- **Transaction fee**: The transaction fee that must be paid for each ledger transaction.
+- **Maximum number of proposals to keep per topic**: The maximum number of proposals to keep, per topic. When the total number of proposals for a given topic is greater than this number, the oldest proposals that have reached a “final” state may be deleted to save space.
+- **Neurons' Fund economics**: This includes all parameters related to the [Neurons' Fund](./neurons-fund.mdx):
+  - `max_theoretical_neurons_fund_participation_amount_xdr`: A theoretical limit which should be smaller than any realistic amount of maturity that practically needs to be reserved from the Neurons' Fund for a given SNS swap.
+  - `neurons_fund_matched_funding_curve_coefficients`: Defines a threshold specifying the shape of the matching function used by the Neurons' Fund to determine how much to contribute for a given direct participation amount.
+  - `minimum_icp_xdr_rate` and `maximum_icp_xdr_rate` are respectively the minimum and maximum value of the ICP/XDR conversion rate used by the Neurons' Fund for converting XDR values into ICP.
 
 ### Topic: `SubnetManagement`
 

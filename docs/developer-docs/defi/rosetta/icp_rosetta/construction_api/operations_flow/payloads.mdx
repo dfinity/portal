@@ -21,14 +21,14 @@ These are comprised of two types of metadata:
     - `ingress_start`: This field stipulates from which point in time onwards the request should be valid from. If not set this field will be set to the current time by Rosetta. 
     - `ingress_end`: This field determines until when the request will be valid. The returned unsigned transaction is only valid until this point in time. 
 - Request-Specific metadata: These are options that can be set for specific request types. For ICP Rosetta they are relevant for `TRANSACTION` request types. 
-    - `memo`: See the [section](/docs/developer-docs/defi/icp-tokens/overview.mdx) for `memo` for the ICP ledger.
-    - `created_at_time`: See the [section](/docs/developer-docs/defi/icp-tokens/overview.mdx) for `created_at_time` for the ICP ledger. 
+    - `memo`: See the [section](/docs/current/developer-docs/defi/tokens/token-standards) for `memo` for the ICP ledger.
+    - `created_at_time`: See the [section](/docs/current/developer-docs/defi/tokens/token-standards) for `created_at_time` for the ICP ledger. 
 
 ## Payloads-return structure
 There are multiple payloads that need to be signed by the user. The reason for that is twofold:
-- The first reason has to do with how ICP processes requests. For a call to ICP to be successful and for the user to be able to read the response of the call, two HTTPS calls have to be made:
+- The first reason has to do with how ICP processes requests. For a call to ICP to be successful and for the user to be able to read the response of the call, two HTTP calls have to be made:
 
-        - The first HTTPS call (`Call Request`) contains all the information that ICP needs to know to be able to call 
+        - The first HTTP call (`Call Request`) contains all the information that ICP needs to know to be able to call 
         the correct canister with the desired arguments. This call returns an ID which essentially serves as a ticket for 
         the caller. With this ticket a user can then query ICP periodically (`Read-State Request`) and essentially ask 
         whether the original request has been processed and if there is a response. If the latter is true, ICP will return 

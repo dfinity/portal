@@ -349,7 +349,7 @@ function CkbtcPage(): JSX.Element {
                   href="https://sonic.ooo/"
                 >
                   <img
-                    src="/img/showcase/sonic_logo.webp"
+                    src="/img/basics/sonic-logo.webp"
                     loading="lazy"
                     alt=""
                     className="w-20 h-20 object-center object-contain"
