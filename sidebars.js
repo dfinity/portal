@@ -813,12 +813,14 @@ const sidebars = {
           label: "Tokens",
           items: [
 	          "developer-docs/defi/tokens/token-standards",
+            "developer-docs/defi/token_integrations/index",
             "developer-docs/defi/icp-tokens/ledger-local-setup",
+            "developer-docs/defi/icrc-1/icrc1-ledger-setup",
             "developer-docs/defi/tokens/indexes",
             "developer-docs/defi/icp-tokens/using-the-ledger",
+            "developer-docs/defi/icrc-1/using-icrc1-ledger",
             "developer-docs/defi/icp-tokens/account-trimming",
             "developer-docs/defi/tokens/create",
-            "developer-docs/defi/icrc-1/icrc1-ledger-setup",
             {
               type: "category",
               label: "Cycles",
@@ -828,7 +830,162 @@ const sidebars = {
                 "developer-docs/defi/cycles/converting_icp_tokens_into_cycles",
               ]
             },
+            {
+              type: "category",
+              label: "Advanced",
+              items: [
+                {
+                  type: "category",
+                  label: "ICP Rosetta implementation",
+                  link: {
+                    type: "doc",
+                    id: "developer-docs/defi/rosetta/icp_rosetta/index",
+                  },
+                  items: [
+                    {
+                      type: "category",
+                      label: "Data API",
+                      link: {
+                        type: "doc",
+                        id: "developer-docs/defi/rosetta/icp_rosetta/data_api/index",
+                      },
+                      items: [
+                        "developer-docs/defi/rosetta/icp_rosetta/data_api/network",
+                        "developer-docs/defi/rosetta/icp_rosetta/data_api/balances",
+                        "developer-docs/defi/rosetta/icp_rosetta/data_api/blocks",
+                        "developer-docs/defi/rosetta/icp_rosetta/data_api/transactions",
+                        "developer-docs/defi/rosetta/icp_rosetta/data_api/list_known_neurons",
+                        "developer-docs/defi/rosetta/icp_rosetta/data_api/get_pending_proposals",
+                        "developer-docs/defi/rosetta/icp_rosetta/data_api/get_proposal_info",
+                      ],
+                    },
+                    {
+                      type: "category",
+                      label: "Construction API",
+                      link: {
+                        type: "doc",
+                        id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/index",
+                      },
+                      items: [
+                        {
+                          type: "category",
+                          label: "Flow of operations",
+                          link: {
+                            type: "doc",
+                            id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/index",
+                          },
+                          items: [
+                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/derive",
+                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/preprocess",
+                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/metadata",
+                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/payloads",
+                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/combine",
+                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/submit",
+                          ],
+                        },
+                        {
+                          type: "category",
+                          label: "Staking and neuron management",
+                          link: {
+                            type: "doc",
+                            id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/index",
+                          },
+                          items: [
+                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/neuron_info",
+                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/derive_neuron_id",
+                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_icp",
+                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/lock_neuron",
+                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/dissolve",
+                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_maturity",
+                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/change_auto_stake_maturity",
+                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/spawn",
+                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/disburse",
+                          ],
+                        },
+                        {
+                          type: "category",
+                          label: "Voting and following",
+                          link: {
+                            type: "doc",
+                            id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/index",
+                          },
+                          items: [
+                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/vote",
+                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/follow",
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "ICRC Rosetta implementation",
+                  link: {
+                    type: "doc",
+                    id: "developer-docs/defi/rosetta/icrc_rosetta/index",
+                  },
+                  items: [
+                    {
+                      type: "category",
+                      label: "Data API",
+                      link: {
+                        type: "doc",
+                        id: "developer-docs/defi/rosetta/icrc_rosetta/data_api/index",
+                      },
+                      items: [
+                        "developer-docs/defi/rosetta/icrc_rosetta/data_api/network",
+                        "developer-docs/defi/rosetta/icrc_rosetta/data_api/balances",
+                        "developer-docs/defi/rosetta/icrc_rosetta/data_api/blocks",
+                        "developer-docs/defi/rosetta/icrc_rosetta/data_api/transactions",
+                      ],
+                    },
+                    {
+                      type: "category",
+                      label: "Construction API",
+                      link: {
+                        type: "doc",
+                        id: "developer-docs/defi/rosetta/icrc_rosetta/construction_api/index",
+                      },
+                      items: [
+                        {
+                          type: "category",
+                          label: "Asset transfer",
+                          link: {
+                            type: "doc",
+                            id: "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/index",
+                          },
+                          items: [
+                            "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/transfer",
+                            "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/approve",
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+
+                {
+                  type: "doc",
+                  label: "Exchange rate canister",
+                  id: "developer-docs/defi/exchange-rate-canister",
+                },
+              ]
+            }
           ],
+        },
+        {
+          type: "category",
+          label: "NFTs",
+          items: [
+            {
+            type: "doc",
+            label: "Overview",
+            id: "developer-docs/defi/nfts/overview",
+          },
+          "developer-docs/defi/nfts/nft-collections",
+          "developer-docs/defi/nfts/marketplaces"
+        ],
         },
         {
           type: "category",
@@ -845,155 +1002,7 @@ const sidebars = {
             },
           ],
         },
-        {
-          type: "doc",
-          label: "Exchange rate canister",
-          id: "developer-docs/defi/exchange-rate-canister",
-        },
-        {
-          type: "category",
-          label: "ICP Rosetta implementation",
-          link: {
-            type: "doc",
-            id: "developer-docs/defi/rosetta/icp_rosetta/index",
-          },
-          items: [
-            {
-              type: "category",
-              label: "Data API",
-              link: {
-                type: "doc",
-                id: "developer-docs/defi/rosetta/icp_rosetta/data_api/index",
-              },
-              items: [
-                "developer-docs/defi/rosetta/icp_rosetta/data_api/network",
-                "developer-docs/defi/rosetta/icp_rosetta/data_api/balances",
-                "developer-docs/defi/rosetta/icp_rosetta/data_api/blocks",
-                "developer-docs/defi/rosetta/icp_rosetta/data_api/transactions",
-                "developer-docs/defi/rosetta/icp_rosetta/data_api/list_known_neurons",
-                "developer-docs/defi/rosetta/icp_rosetta/data_api/get_pending_proposals",
-                "developer-docs/defi/rosetta/icp_rosetta/data_api/get_proposal_info",
-              ],
-            },
-            {
-              type: "category",
-              label: "Construction API",
-              link: {
-                type: "doc",
-                id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/index",
-              },
-              items: [
-                {
-                  type: "category",
-                  label: "Flow of operations",
-                  link: {
-                    type: "doc",
-                    id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/index",
-                  },
-                  items: [
-                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/derive",
-                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/preprocess",
-                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/metadata",
-                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/payloads",
-                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/combine",
-                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/submit",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Staking and neuron management",
-                  link: {
-                    type: "doc",
-                    id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/index",
-                  },
-                  items: [
-                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/neuron_info",
-                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/derive_neuron_id",
-                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_icp",
-                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/lock_neuron",
-                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/dissolve",
-                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_maturity",
-                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/change_auto_stake_maturity",
-                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/spawn",
-                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/disburse",
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Voting and following",
-                  link: {
-                    type: "doc",
-                    id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/index",
-                  },
-                  items: [
-                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/vote",
-                    "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/follow",
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-        {
-          type: "category",
-          label: "ICRC Rosetta implementation",
-          link: {
-            type: "doc",
-            id: "developer-docs/defi/rosetta/icrc_rosetta/index",
-          },
-          items: [
-            {
-              type: "category",
-              label: "Data API",
-              link: {
-                type: "doc",
-                id: "developer-docs/defi/rosetta/icrc_rosetta/data_api/index",
-              },
-              items: [
-                "developer-docs/defi/rosetta/icrc_rosetta/data_api/network",
-                "developer-docs/defi/rosetta/icrc_rosetta/data_api/balances",
-                "developer-docs/defi/rosetta/icrc_rosetta/data_api/blocks",
-                "developer-docs/defi/rosetta/icrc_rosetta/data_api/transactions",
-              ],
-            },
-            {
-              type: "category",
-              label: "Construction API",
-              link: {
-                type: "doc",
-                id: "developer-docs/defi/rosetta/icrc_rosetta/construction_api/index",
-              },
-              items: [
-                {
-                  type: "category",
-                  label: "Asset transfer",
-                  link: {
-                    type: "doc",
-                    id: "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/index",
-                  },
-                  items: [
-                    "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/transfer",
-                    "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/approve",
-                  ],
-                },
-              ],
-            },
-          ],
-        },
-        "developer-docs/defi/token_integrations/index",
-        {
-          type: "category",
-          label: "NFTs",
-          items: [
-            {
-            type: "doc",
-            label: "Overview",
-            id: "developer-docs/defi/nfts/overview",
-          },
-          "developer-docs/defi/nfts/nft-collections",
-          "developer-docs/defi/nfts/marketplaces"],
-          },
-        ],
+    ],
     },
     {
       type: "category",

@@ -7,3 +7,4 @@ replica=The ICP software used to run a node.
 subnet=A collection of nodes that run their own instance of the ICP consensus algorithm.
 subnets=A collection of nodes that run their own instance of the ICP consensus algorithm.
 NNS=The DAO that governs ICP.
+ledger=A smart contract that holds blocks, each containing a single transaction.
