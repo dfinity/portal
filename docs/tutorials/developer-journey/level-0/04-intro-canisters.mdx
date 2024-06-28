@@ -3,6 +3,7 @@ keywords: [beginner, tutorial, developer journey, introduction, canisters]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # 0.4 Introduction to canisters
 
@@ -12,7 +13,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-Smart contracts on the Internet Computer are known as **canisters**. A canister contains both the source code and software state. A canister's source code is compiled into a WebAssembly module and is associated with a module of stable memory.
+Smart contracts on the Internet Computer are known as **canisters**. A <GlossaryTooltip>canister</GlossaryTooltip> contains both the source code and software state. A canister's source code is compiled into a WebAssembly module and is associated with a module of stable memory.
 
 When a dapp is written to be deployed on ICP, the source code is compiled into a WebAssembly module. Then, that WebAssembly module is deployed and executed inside of the canister.  Once a canister is deployed, end-users can interact with the canister through the CLI or through a frontend client such as a web browser.
 
@@ -73,7 +74,7 @@ Additionally, controllers can update the canister code by submitting a new Wasm 
 
 ## Cycles and resource charges
 
-A canister's controller is responsible for ensuring the canister contains enough **cycles**. Cycles are used to pay for the canister's resources, such as memory, computational power, and network bandwidth. Each operation that is performed by a canister on the mainnet has a cost of cycles. A canister has a local cycles account that is used to store the canister's cycles.
+A canister's controller is responsible for ensuring the canister contains enough **<GlossaryTooltip>cycles</GlossaryTooltip>**. Cycles are used to pay for the canister's resources, such as memory, computational power, and network bandwidth. Each operation that is performed by a canister on the mainnet has a cost of cycles. A canister has a local cycles account that is used to store the canister's cycles.
 
 For memory usage, the system keeps track of all memory used by the canister and regularly charges the canister's cycles account. This charging happens at regular intervals for efficiency.
 
