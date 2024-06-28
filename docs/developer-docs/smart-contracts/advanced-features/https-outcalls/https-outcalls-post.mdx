@@ -8,13 +8,13 @@ import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# How to use HTTP outcalls: POST
+# How to use HTTPS outcalls: POST
 
 <MarkdownChipRow labels={["Advanced", "Tutorial"]} />
 
 ## Overview
 
-A minimal example of how to make a `POST` HTTPS request. The purpose of this dapp is only to show how to make HTTP requests from a canister.
+A minimal example of how to make a `POST` HTTP request. The purpose of this dapp is only to show how to make HTTP requests from a canister.
 
 The sample code is in both Motoko and Rust. This sample canister sends a `POST` request with some JSON to a free API where you can verify the headers and body were sent correctly.
 
@@ -49,7 +49,7 @@ In order to verify that your canister sent the HTTP request you expected, this c
 
 ## Important notes on `POST` requests
 
-Because HTTPS outcalls go through consensus, a developer should expect any HTTPS `POST` request from a canister to be sent many times to its destination. Even if you ignore the Web3 component, multiple identical POST requests are not a new problem in HTTP where it is common for clients to retry requests for a variety of reasons (e.g. destination server being unavailable).
+Because HTTP outcalls go through consensus, a developer should expect any HTTP `POST` request from a canister to be sent many times to its destination. Even if you ignore the Web3 component, multiple identical POST requests are not a new problem in HTTPS where it is common for clients to retry requests for a variety of reasons (e.g. destination server being unavailable).
 
 The recommended way for HTTP `POST` requests is to add the idempotency keys in the header so the destination server knows which `POST` requests from the client are the same.
 
@@ -69,7 +69,7 @@ import Types "Types";
 
 actor {
 
-//method that uses the HTTP outcalls feature and returns a string
+//method that uses the HTTPS outcalls feature and returns a string
   public func foo() : async Text {
 
     //1. DECLARE MANAGEMENT CANISTER
@@ -83,7 +83,7 @@ actor {
     //3. ADD CYCLES TO PAY FOR HTTP REQUEST
     //code to add cycles
 
-    //4. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
+    //4. MAKE HTTP REQUEST AND WAIT FOR RESPONSE
     let response : Types.HttpResponsePayload = await ic.http_request(request);
 
     //5. DECODE THE RESPONSE
@@ -123,7 +123,7 @@ async fn foo() {
         //instantiate the request
     };
 
-    //3. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
+    //3. MAKE HTTP REQUEST AND WAIT FOR RESPONSE
     //Note: in Rust, `http_request()` already sends the cycles needed
     //so no need for explicit Cycles.add() as in Motoko
     match http_request(request).await {
@@ -225,7 +225,7 @@ actor {
     // 2.1 Setup the URL and its query parameters
     //This URL is used because it allows you to inspect the HTTP request sent from the canister
     let host : Text = "putsreq.com";
-    let url = "https://putsreq.com/aL1QS5IbaQd4NTqN3a81"; //HTTP that accepts IPV6
+    let url = "https://putsreq.com/aL1QS5IbaQd4NTqN3a81"; //HTTPS that accepts IPV6
 
     // 2.2 Prepare headers for the system http_request call
 
@@ -274,7 +274,7 @@ actor {
     //See: /docs/current/references/ic-interface-spec/#ic-http_request
     Cycles.add(21_850_258_000);
 
-    //4. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
+    //4. MAKE HTTP REQUEST AND WAIT FOR RESPONSE
     //Since the cycles were added above, you can just call the management canister with HTTPS outcalls below
     let http_response : Types.HttpResponsePayload = await ic.http_request(http_request);
 
@@ -421,7 +421,7 @@ async fn send_http_post_request() -> String {
         transform: Some(TransformContext::new(transform, serde_json::to_vec(&context).unwrap())),
     };
 
-    //3. MAKE HTTPS REQUEST AND WAIT FOR RESPONSE
+    //3. MAKE HTTP REQUEST AND WAIT FOR RESPONSE
 
     //Note: in Rust, `http_request()` already sends the cycles needed
     //so no need for explicit Cycles.add() as in Motoko
@@ -748,5 +748,5 @@ You can see play with the dapp's `send_http_post_request` method on-chain here: 
 
 ## Additional resources
 
-* Sample code of [HTTP POST requests in Rust](https://github.com/dfinity/examples/tree/master/rust/send_http_post)
-* Sample code of [HTTP POST requests in Motoko](https://github.com/dfinity/examples/tree/master/motoko/send_http_post)
+* Sample code of [HTTP `POST` requests in Rust](https://github.com/dfinity/examples/tree/master/rust/send_http_post)
+* Sample code of [HTTP `POST` requests in Motoko](https://github.com/dfinity/examples/tree/master/motoko/send_http_post)

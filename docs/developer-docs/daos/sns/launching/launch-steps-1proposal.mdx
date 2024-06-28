@@ -41,7 +41,7 @@ ls bazel-bin/rs/sns/cli/sns
 
 ### 1. Dapp developers choose the initial parameters of the SNS for a dapp.
 
-Typically, dapp developers choose initial parameters that will be used in subsequent proposals.
+Typically, dapp developers choose initial parameters that will be used in the subsequent proposal.
 
 :::info
 These parameters also define the initial neurons with which the SNS governance canister will be installed. Before being fully launched, the SNS governance canister is in a pre-decentralization-swap mode and only few proposals are allowed (see Step 7). However, some SNS proposals might already be used during this time, for example upgrades to the dapp canister(s) while the launch is ongoing or registering custom proposals for that DAO. Such operations require submitting and adopting an SNS proposal during the launch process, and thus before the SNS is fully launched. Some frontends, for example the NNS frontend dapp, do not show neurons of SNSs that are not fully launched and thus neurons controlled by NNS frontend dapp principals will only be visible after a successful launch. Therefore, the initial neurons must be carefully setup in a way so that enough of them can be operated already during the launch process.
@@ -65,6 +65,19 @@ One example of a special permission might be the ability to change the frontend 
 dfx canister call $CANISTER_ID revoke_permission '(record {of_principal = principal "<developer principal"; permission = variant { Commit;};})'
 ```
 
+:::warning
+Soon, if all goes well you will not personally have control over these canisters anymore. Instead, they will be controlled by the SNS, only updatable through SNS proposals. Furthermore, during the swap, the SNS will be in a restricted mode where some SNS proposal types cannot be submitted:
+
+1. `ManageNervousSystemParameters`
+2. `TransferSnsTreasuryFunds`
+3. `MintSnsTokens`
+4. `UpgradeSnsControlledCanister`
+5. `RegisterDappCanisters`
+6. `DeregisterDappCanisters`
+
+This means that it is not easy to upgrade an SNS-controlled dapp canister during the swap. However, since the SNS-controlled dapp canisters are co-owned by NNS root during a swap, it is still possible via an NNS proposal. This is intended to be used on an emergency basis and should be avoided if possible.
+:::
+
 ### 3. Submit NNS proposal to create SNS.
 
 Anyone who owns an eligible NNS neuron with enough stake can submit an NNS proposal to create an SNS for a given dapp.
@@ -82,6 +95,7 @@ To create such a proposal, a common path is to use `sns-cli` and run the followi
 dfx sns propose --network ic --neuron $NEURON_ID sns_init.yaml
 ```
 
+
 ### 4. The NNS proposal is decided.
 
 Nothing technical for dapp developers to do. Community votes.
@@ -91,7 +105,7 @@ Nothing technical for dapp developers to do. Community votes.
 Nothing technical for dapp developers to do. This is triggered automatically as a result
 of an adopted proposal in Stage 4.
 
-### 6. (Automated) SNS-W sets SNS root as sole controller of dapp.
+### 6. (Automated) SNS-W sets SNS root and NNS root as sole controllers of dapp.
 
 Nothing technical for dapp developers to do. This is triggered automatically as a result
 of an adopted proposal in Stage 4.
@@ -116,4 +130,4 @@ of an adopted proposal in Stage 4.
 ### 10. (Automated) SNS swap finalizes.
 
 Nothing technical for dapp developers to do. This is triggered automatically as a result
-of an adopted proposal in Stage 4.
+of an adopted proposal in Stage 4. At this point, the SNS is fully launched and the dapp canisters are fully decentralized. The SNS root canister is also given full control of the dapp canisters. The SNS is no longer restricted and any proposal type can be submitted and executed.

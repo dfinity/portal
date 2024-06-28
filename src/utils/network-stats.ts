@@ -158,7 +158,7 @@ export function getTransactionData(): Promise<{
 
 export function getFinalizationRate(): Promise<number> {
   return fetch(
-    "https://ic-api.internetcomputer.org/api/metrics/finalization-rate"
+    "https://ic-api.internetcomputer.org/api/v3/metrics/block-rate"
   )
     .then(
       (res) =>

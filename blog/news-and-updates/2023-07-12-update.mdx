@@ -15,15 +15,15 @@ Hello devs and welcome to this week’s issue of developer weekly! This week, we
 Let’s dive in!
 
 ## vetKeys
-This week, a new feature was presented to our community via a community conversation: vetKeys! 
+This week, a new feature was presented to our community via a community conversation: vetKeys!
 
-Verifiable Encrypted Threshold Keys (shortened to vetKeys) are a new feature that enables a number of cryptographic functions and use-cases on the Internet Computer. The purpose of vetKeys is to help mitigate some of the challenges that developers face when using security and privacy tools on ICP. Encrypting information locally on a device and storing it on a blockchain is easy, as long as the encryption’s secret key value is not exposed and remains on the local device. If a user wants to retrieve the encrypted information from another device or share it with another user, there isn’t a straightforward way that is secure.
+Verifiable Encrypted Threshold Keys (shortened to vetKeys) are a new feature that enables a number of cryptographic functions and use cases on the Internet Computer. The purpose of vetKeys is to help mitigate some of the challenges that developers face when using security and privacy tools on ICP. Encrypting information locally on a device and storing it on a blockchain is easy, as long as the encryption’s secret key value is not exposed and remains on the local device. If a user wants to retrieve the encrypted information from another device or share it with another user, there isn’t a straightforward way that is secure.
 
-vetKeys strives to resolve this challenge, as it leverages the BLS signatures, which are the native signature scheme on ICP and can be used as cryptographic decryption keys. Since BLS signatures are computed in a distributed manner on ICP, there is no central authority that is assigning or managing keys on the behalf of users. 
+vetKeys strives to resolve this challenge, as it leverages the BLS signatures, which are the native signature scheme on ICP and can be used as cryptographic decryption keys. Since BLS signatures are computed in a distributed manner on ICP, there is no central authority that is assigning or managing keys on the behalf of users.
 
 For a more in-depth look at the technology behind vetKeys, check out the [vetKeys primer](https://internetcomputer.org/blog/features/vetkey-primer).
 
-Use-cases for vetKeys include, but are not limited to:
+use cases for vetKeys include, but are not limited to:
 - End-to-end encryption.
 - Sophisticated access policies.
 - Blockchain-issues signatures and cross-chain bridges.
@@ -34,7 +34,7 @@ Use-cases for vetKeys include, but are not limited to:
 - Witness encryption.
 - One-time programs.
 
-Since this is a new feature still in production, there are a number of bounties available for developers to participate in to help enhance the feature and explore different use-cases. For more information on the bounties and a link to the community conversation, check out [this forum post](https://forum.dfinity.org/t/open-bnt-8-vetkeys-enabling-privacy-preserving-applications-on-the-ic/21294).
+Since this is a new feature still in production, there are a number of bounties available for developers to participate in to help enhance the feature and explore different use cases. For more information on the bounties and a link to the community conversation, check out [this forum post](https://forum.dfinity.org/t/open-bnt-8-vetkeys-enabling-privacy-preserving-applications-on-the-ic/21294).
 
 ## dfx 0.14.2
 The newest release of dfx 0.14.2 primarily provided fixes and enhancements for existing workflows, such as:
@@ -63,7 +63,7 @@ Additionally, new features included in this release include:
 
 The full release notes for dfx 0.14.2 can be found [here](https://github.com/dfinity/sdk/releases/tag/0.14.2).
 
-## Canister optimization available in dfx 0.14.0 and newer 
+## Canister optimization available in dfx 0.14.0 and newer
 
 A new feature now packaged in versions of dfx 0.14.0 and newer includes `wasm-opt`, a general purpose Wasm optimizer. With `wasm-opt`, you can now configure canister optimization options straight from the dfx.json file. For example, to optimize a canister’s cycles consumption, you can use the configuration:
 
@@ -91,11 +91,11 @@ Or, you can reduce binary size with the configuration:
 
 ```
 
-After some benchmark testing, our team estimates that you can expect to see cycle consumptions reduced by around 10% for Motoko canisters and 7% for Rust canisters, and binary size reduction by around 16%. 
+After some benchmark testing, our team estimates that you can expect to see cycle consumptions reduced by around 10% for Motoko canisters and 7% for Rust canisters, and binary size reduction by around 16%.
 
-For more details, check out the full [forum post announcement here](https://forum.dfinity.org/t/canister-optimizer-available-in-dfx-0-14-0/21157). 
+For more details, check out the full [forum post announcement here](https://forum.dfinity.org/t/canister-optimizer-available-in-dfx-0-14-0/21157).
 
-That’s it for this week! If you missed last week’s [team spotlight blog post](https://internetcomputer.org/blog/news-and-updates/team-spotlight-nns) that featured the NNS team, be sure to check it out. For the next installment of the team spotlight series, we’ll dive into the Runtime team; be sure to check in next week for that! 
+That’s it for this week! If you missed last week’s [team spotlight blog post](https://internetcomputer.org/blog/news-and-updates/team-spotlight-nns) that featured the NNS team, be sure to check it out. For the next installment of the team spotlight series, we’ll dive into the Runtime team; be sure to check in next week for that!
 
 -DFINITY
 

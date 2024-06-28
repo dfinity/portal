@@ -17,6 +17,7 @@ const redirects = `
   /showcase /ecosystem
   /multichain /chainfusion
   /basics /what-is-the-ic
+  /community https://linktr.ee/icp_hubs_network
   /docs/videos-tutorials /developers
   /docs /docs/current/home
   /docs/current/ /docs/current/home
@@ -39,7 +40,7 @@ const redirects = `
   /docs/samples/codelabs/simple-nft /samples
   /docs/samples/codelabs/static-website /samples
   /docs/samples/* /samples
-  /docs/security-best-practices/introduction /docs/current/developer-docs/security/general-security-best-practices
+  /docs/security-best-practices/introduction /docs/current/developer-docs/security/security-best-practices/overview
   /docs/current/developer-docs/setup/default-wallet /docs/current/developer-docs/defi/cycles/cycles-wallet
   /docs/current/tokenomics/sns/tokenomics /docs/current/developer-docs/daos/sns/tokenomics/
   /docs/current/developer-docs/integrations/http_requests/http_requests-how-it-works /docs/current/references/https-outcalls-how-it-works
@@ -126,16 +127,16 @@ const redirects = `
   /docs/current/developer-docs/quickstart/windows-wsl /docs/current/developer-docs/getting-started/install/windows-wsl
   /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/developer-journey/
 
-  /docs/rosetta-api/ledger /docs/current/developer-docs/defi/icp-tokens/overview
+  /docs/rosetta-api/ledger /docs/current/developer-docs/defi/tokens/token-standards
   /docs/rosetta-api/ledger-local-setup /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup
-  /docs/integration/ledger-quick-start /docs/current/developer-docs/defi/icp-tokens/overview
+  /docs/integration/ledger-quick-start /docs/current/developer-docs/defi/tokens/token-standards
   /docs/current/developer-docs/functionality/ledger/* /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup
 
   /docs/base-libraries/* /docs/current/motoko/main/base/:splat
   /base-libraries/* /docs/current/motoko/main/base/:splat
   /docs/current/developer-docs/best-practices/* /docs/current/developer-docs/use-cases/:splat
   /docs/current/developer-docs/deploy/* /docs/current/developer-docs/production/:splat
-  /docs/current/references/security/* /docs/current/developer-docs/security/general-security-best-practices
+  /docs/current/references/security/* /docs/current/developer-docs/security/security-best-practices/overview
   /docs/current/tokenomics/nns/community-fund /docs/current/developer-docs/daos/nns/neurons-fund
   /docs/current/tokenomics/sns/* /docs/current/developer-docs/daos/sns/tokenomics/:splat
   /docs/developers-guide/cli-reference/* /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/:splat
@@ -146,7 +147,7 @@ const redirects = `
   /docs/release-notes/* /docs/current/other/updates/release-notes/:splat
   /docs/rosetta-api/* /docs/current/developer-docs/integrations/rosetta/:splat
   /docs/rust-guide/* /docs/current/developer-docs/backend/rust/:splat
-  /docs/security-best-practices/* /docs/current/developer-docs/security/general-security-best-practices
+  /docs/security-best-practices/* /docs/current/developer-docs/security/security-best-practices/inter-canister-calls
   /docs/token-holders/* /docs/current/tokenomics/token-holders/:splat
   /features/* /capabilities/:splat
   /howitworks/* /how-it-works/:splat
@@ -190,8 +191,8 @@ const redirects = `
   /docs/current/developer-docs/backend/candid/index /docs/current/developer-docs/smart-contracts/candid/candid-concepts
   /docs/current/developer-docs/integrations/https-outcalls/index /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use
   /docs/current/developer-docs/integrations/https-outcalls /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use
-  /docs/current/developer-docs/security/index /docs/current/developer-docs/security/general-security-best-practices
-  /docs/current/developer-docs/security /docs/current/developer-docs/security/general-security-best-practices
+  /docs/current/developer-docs/security/index /docs/current/developer-docs/security/security-best-practices/inter-canister-calls
+  /docs/current/developer-docs/security /docs/current/developer-docs/security/security-best-practices/inter-canister-calls
   /docs/current/developer-docs/integrations/index /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/developer-docs/integrations /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/developer-docs/setup/index /docs/current/developer-docs/getting-started/install/
@@ -348,22 +349,22 @@ const redirects = `
   /docs/current/developer-docs/http-compatible-canisters/serving-json-over-http /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-json-over-http
   /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http
   /docs/current/developer-docs/integrations/ledger/introduction_and_overview /docs/current/developer-docs/defi/overview
-  /docs/current/developer-docs/integrations/ledger/  /docs/current/developer-docs/defi/icp-tokens/overview
+  /docs/current/developer-docs/integrations/ledger/  /docs/current/developer-docs/defi/tokens/token-standards
   /docs/current/developer-docs/integrations/ledger/ledger-local-setup  /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup
   /docs/current/developer-docs/integrations/ledger/interact-with-ledger  /docs/current/developer-docs/defi/icp-tokens/using-the-ledger
-  /docs/current/developer-docs/integrations/ledger/icp-index-local-setup /docs/current/developer-docs/defi/icp-tokens/icp-index-local-setup
+  /docs/current/developer-docs/integrations/ledger/icp-index-local-setup /docs/current/developer-docs/defi/tokens/indexes
   /docs/current/developer-docs/integrations/ledger/collecting-dust /docs/current/developer-docs/defi/icp-tokens/account-trimming
   /docs/current/developer-docs/integrations/icrc-1/index /docs/current/references/icrc1-standard
   /docs/current/developer-docs/integrations/icrc-1/ /docs/current/references/icrc1-standard
   /docs/current/developer-docs/integrations/icrc-1/icrc1-ledger-setup /docs/current/developer-docs/defi/icrc-1/icrc1-ledger-setup
   /docs/current/developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger /docs/current/developer-docs/defi/icrc-1/using-icrc1-ledger
-  /docs/current/developer-docs/integrations/icrc-1/icrc1-index-setup /docs/current/developer-docs/defi/icrc-1/icrc1-index-setup
+  /docs/current/developer-docs/integrations/icrc-1/icrc1-index-setup /docs/current/developer-docs/defi/tokens/indexes
   /docs/current/developer-docs/integrations/exchange-rate/exchange-rate-canister /docs/current/developer-docs/defi/exchange-rate-canister
   /docs/current/developer-docs/integrations/rosetta/index  /docs/current/developer-docs/defi/rosetta/overview
   /docs/current/developer-docs/integrations/rosetta/  /docs/current/developer-docs/defi/rosetta/overview
-  /docs/current/tokenomics/token-holders/custody-options-intro /docs/current/developer-docs/defi/asset-custody/custody-options
-  /docs/current/tokenomics/token-holders/self-custody-quickstart /docs/current/developer-docs/defi/asset-custody/self-custody-quickstart
-  /docs/current/developer-docs/use-cases/considerations-for-nft-devs /docs/current/developer-docs/defi/nfts/considerations-for-nft-devs
+  /docs/current/tokenomics/token-holders/custody-options-intro /docs/current/developer-docs/defi/wallets/overview
+  /docs/current/tokenomics/token-holders/self-custody-quickstart /docs/current/developer-docs/defi/wallets/self-custody/self-custody-quickstart
+  /docs/current/developer-docs/use-cases/considerations-for-nft-devs /docs/current/developer-docs/defi/nfts/overview
   /docs/current/developer-docs/integrations/sns/introduction/sns-intro-high-level /docs/current/developer-docs/daos/sns/overview
   /docs/current/developer-docs/integrations/sns/introduction/sns-architecture /docs/current/developer-docs/daos/sns/overview
   /docs/current/developer-docs/integrations/sns/introduction/sns-launch /docs/current/developer-docs/daos/sns/overview
@@ -428,10 +429,10 @@ const redirects = `
   /docs/current/references/glossary /docs/current/concepts/glossary
   /docs/current/samples/host-a-website /docs/current/references/samples/hosting/static-website/
   /docs/current/samples/host-a-webgame /docs/current/references/samples/hosting/unity-webgl-template/
-  /docs/current/references/security/general-security-best-practices/ /docs/current/developer-docs/security/general-security-best-practices
-  /docs/current/references/security/rust-canister-development-security-best-practices /docs/current/developer-docs/security/rust-canister-development-security-best-practices
-  /docs/current/references/security/web-app-development-security-best-practices /docs/current/developer-docs/security/web-app-development-security-best-practices
-  /docs/current/references/security/ /docs/current/developer-docs/security/general-security-best-practices
+  /docs/current/references/security/general-security-best-practices/ /docs/current/developer-docs/security/security-best-practices/inter-canister-calls
+  /docs/current/references/security/rust-canister-development-security-best-practices /docs/current/developer-docs/security/security-best-practices/inter-canister-calls
+  /docs/current/references/security/web-app-development-security-best-practices /docs/current/developer-docs/security/security-best-practices/inter-canister-calls
+  /docs/current/references/security/ /docs/current/developer-docs/security/security-best-practices/inter-canister-calls
   /docs/current/developer-docs/smart-contracts/overview/development-cycle /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle
   /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-identity /docs/current/developer-docs/identity/internet-identity/integrate-internet-identity
   /docs/current/developer-docs/multi-chain/ethereum/cketh /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview
@@ -517,6 +518,69 @@ const redirects = `
   /docs/current/developer-docs/web-apps/user-login/email-password /docs/current/developer-docs/identity/authentication/email-password
   /docs/current/developer-docs/multi-chain/ethereum/using-eth/siwe /docs/current/developer-docs/identity/authentication/siwe
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/defi/icrc-1/icrc1-index-setup /docs/current/developer-docs/defi/tokens/indexes
+  /docs/current/defi/icp-tokens/icp-index-local-setup /docs/current/developer-docs/defi/tokens/indexes
+  /docs/current/developer-docs/smart-contracts/encryption/signing-transactions /docs/current/developer-docs/smart-contracts/encryption/signing-messages
+  /docs/current/developer-docs/defi/icp-tokens/overview /docs/current/developer-docs/defi/tokens/token-standards
+  /docs/current/developer-docs/defi/asset-custody/self-custody-quickstart /docs/current/developer-docs/defi/wallets/self-custody/self-custody-quickstart
+  /docs/current/developer-docs/defi/asset-custody/hardware-wallet-cli /docs/current/developer-docs/defi/wallets/self-custody/hardware-wallet-cli
+  /docs/current/developer-docs/defi/asset-custody/custody-options /docs/current/developer-docs/defi/wallets/overview
+  /docs/current/developer-docs/defi/nfts/considerations-for-nft-devs /docs/current/developer-docs/defi/nfts/overview
+  /docs/current/developer-docs/defi/icrc-1/token-quickstart /docs/current/developer-docs/defi/tokens/create
+  /docs/current/references/ /docs/current/references/ic-interface-spec
+  /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/ /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview
+  /docs/language-guide/motoko.html /docs/current/motoko/main/getting-started/motoko-introduction
+  /education /education-hub
+  /docs/current/developer-docs/integrations/ledger/deploy-new-token /docs/current/developer-docs/defi/tokens/create
+  /docs/current/samples/deploying-your-first-bitcoin-dapp /docs/current/references/samples/motoko/basic_bitcoin/
+  /docs/integration/ledger-quick-start.html /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup
+  /docs/current/developer-docs/integrations/storage/cost /docs/current/developer-docs/gas-cost
+  /docs/token-holders/self-custody-quickstart.html /docs/current/developer-docs/defi/wallets/self-custody/self-custody-quickstart
+  /docs/current/developer-docs/overview/ /docs/current/developer-docs/getting-started/overview-of-icp
+  /docs/current/developer-docs/smart-contracts/overview	/docs/current/developer-docs/smart-contracts/overview/introduction
+  /docs/current/references/dfx-json-reference /docs/current/developer-docs/developer-tools/cli-tools/dfx-json-reference
+  /docs/language-guide/language-manual.html	/docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/developers-guide/default-wallet.html /docs/current/developer-docs/getting-started/cycles/overview
+  /docs/current/references/ic-interface /docs/current/references/ic-interface-spec
+  /docs/current/tokenomics/sns/sns-intro-tokens	/docs/current/developer-docs/daos/sns/tokenomics/tokenomics-intro
+  /docs/developers-guide/sdk-guide.html	/docs/current/developer-docs/getting-started/install/
+  /docs/current/references/cli-reference/dfx-deps	/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-deps
+  /docs/current/samples/internet-identity-sample /docs/current/references/samples/motoko/internet_identity_integration/
+  /docs/current/developer-docs/smart-contracts/advanced-features/threshold-signing /docs/current/developer-docs/smart-contracts/encryption/t-ecdsa
+  /docs/current/backend/candid/generating-candid /docs/current/developer-docs/backend/rust/generating-candid
+  /docs/current/developer-docs/backend/motoko/index.md /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/backend/rust/index /docs/current/developer-docs/backend/rust/
+  /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/index /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/
+  /docs/current/developer-docs/integrations/icrc-1/deploy-new-token /docs/current/developer-docs/defi/tokens/create
+  /docs/current/developer-docs/setup/cycles/cycles-faucet.md	/docs/current/developer-docs/getting-started/cycles/cycles-faucet
+  /docs/current/developer-docs/setup/deploy-mainnet.md	/docs/current/developer-docs/getting-started/deploy/mainnet
+  /docs/current/developer-docs/setup/index.md	/docs/current/developer-docs/getting-started/install/
+  /docs/current/developer-docs/smart-contracts/candid/index	/docs/current/developer-docs/smart-contracts/candid/
+  /docs/current/docs/current/references/ii-spec	/docs/current/references/ii-spec
+  /docs/current/motoko /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/motoko/ /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/motoko/getting-started/motoko-introduction /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/motoko/main/ /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/samples/encrypted-notes/	/docs/current/references/samples/motoko/encrypted-notes-dapp/
+  /docs/current/samples/nft	/docs/current/references/samples/motoko/dip721-nft-container/
+  /docs/language-guide/cycles.html /docs/current/developer-docs/getting-started/cycles/overview
+  /grants	https://dfinity.org/grants
+  /docs/base-libraries/experimentalcycles	/docs/current/motoko/main/base/ExperimentalCycles
+  /docs/base-libraries/motoko-base/Text.html	/docs/current/motoko/main/base/Text
+  /docs/candid-guide/candid-types.html	/docs/current/developer-docs/smart-contracts/candid/candid-howto/
+  /docs/current/developer-docs/deploy/custom-domain	/docs/current/developer-docs/web-apps/custom-domains/using-custom-domains
+  /docs/current/developer-docs/integrations/internet-identity	/docs/current/developer-docs/identity/internet-identity/overview
+  /bitcoin /bitcoin-integration
+  /bootcamp	/education-hub
+  /docs/candid-guide/candid-concepts.html	/docs/current/developer-docs/smart-contracts/candid/
+  /docs/current/blog/features/vetkey-primer	/blog/features/vetkey-primer
+  /docs/current/concepts/chain-key-technology/ /docs/current/developer-docs/multi-chain/overview
+  /docs/current/concepts/concepts-intro.html	/docs/current/developer-docs/getting-started/overview-of-icp
+  /docs/current/concepts/what-is-IC	/docs/current/developer-docs/getting-started/overview-of-icp
+  /docs/current/developer-docs/backend	/docs/current/developer-docs/getting-started/overview-of-icp
+  /docs/current/developer-docs/backend/rust/rust-quickstart	/docs/current/developer-docs/backend/rust/
+  /docs/current/developer-docs/best-practices/	/docs/current/developer-docs/smart-contracts/best-practices/general
+  /docs/current/developer-docs/best-practices/considerations-for-nft-devs /docs/current/developer-docs/defi/nfts/overview
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

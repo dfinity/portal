@@ -5,7 +5,7 @@ keywords: [advanced, Chain Fusion, overview, chain key tokens, cktokens, ck toke
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Overview
+# Chain-key token overview
 
 <MarkdownChipRow labels={["Advanced", "Chain Fusion" ]} />
 
@@ -18,6 +18,21 @@ Chain-key tokens can be swapped for one another seamlessly. Making transactions 
 ## How to use chain-key tokens in a canister
 
 Each implementation of a chain-key token uses the [ICRC](https://github.com/dfinity/ICRC) token standard so that they can be easily integrated by services such as wallets and DEXs. To implement smart contracts that use chain-key tokens, simply make calls from a smart contract to the ICRC ledger for the chain-key token you wish to use. Using chain-key tokens does not require implementing a specific type of smart contract, and implementation is not restricted to a specific programming language.
+
+## Requirements for chain-key tokens
+
+In addition to the requirement that a chain-key token must adhere to the [ICRC](https://github.com/dfinity/ICRC) token standard, there are additional requirements to ensure a high degree of security and decentralization for all chain-key tokens:
+
+- The chain-key token must be a true digital "twin" in the sense that any user can convert the native token to the chain-key token and vice versa, paying only for the transfer and conversion fees. This implies that the chain-key token must be fully backed by the corresponding native token at all times. Conversions may be delayed if one chain is temporarily unavailable but all conversions must be finalized eventually.
+
+- All conversions must be transparent. All tokens must be traceable on-chain. 
+
+- The canister handling the conversions must use chain-key signatures to manage the underlying native token. Moreover, it must read data from the native chain in a decentralized manner.
+
+- All canisters must be decentralized, meaning:
+    - All source code must be open source.
+    - Builds must be reproducible.
+    - The canisters must be immutable or controlled by a DAO, for example, an [SNS](https://internetcomputer.org/docs/current/developer-docs/daos/sns) or a [threshold canister](https://github.com/dfinity/threshold) with a large number of verified voters.
 
 ## Available chain-key tokens
 
@@ -34,3 +49,5 @@ The current chain-key tokens are supported:
 - [ckBTC](./ckbtc/overview.mdx).
 
 - [ckETH](./cketh/overview.mdx).
+
+- [ckERC20](./ckerc20/overview.mdx).

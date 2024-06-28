@@ -9,7 +9,7 @@ const votingRewardsPlugin = async function () {
     async loadContent() {
       if (!cache) {
         const response = await fetch(
-          "https://ic-api.internetcomputer.org/api/nns/metrics",
+          "https://ic-api.internetcomputer.org/api/v3/staking-metrics",
           { method: "GET", retry: 10, pause: 500 }
         ).then((res) => res.json());
 

@@ -367,6 +367,11 @@ const marketingNav = {
               description: "Join like-minded hackers",
               href: "https://dfinity.org/hackathons",
             },
+            {
+              name: "Education Hub",
+              href: "/education-hub",
+              description: "Comprehensive Learning Resources",
+            },
           ],
           featured: {
             title: "Learn to build step by step",
@@ -417,11 +422,6 @@ const marketingNav = {
           name: "Get Involved",
           items: [
             {
-              name: "ICP community",
-              href: "/community",
-              description: "Join the global community",
-            },
-            {
               name: "Sovereign network",
               href: "/node-providers",
               description: "Become a node provider",
@@ -435,6 +435,11 @@ const marketingNav = {
               name: "News",
               href: "/news",
               description: "Stay up to date",
+            },
+            {
+              name: "ICP community",
+              href: "https://linktr.ee/icp_hubs_network",
+              description: "Join the global community",
             },
             {
               name: "Community Blog",
