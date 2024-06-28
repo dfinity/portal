@@ -24,8 +24,64 @@ import TabItem from "@theme/TabItem";
 import News from "../components/BitcoinIntegrationPage/News";
 import Newsletter from "../components/Common/Newsletter/Newsletter";
 import GetBiggerPicture from "/img/chainfusion/get-picture.svg";
+import BenefitsText from "/img/chainfusion/benefits-text.svg";
 import CodeSnippet from "../components/CodeSnippet";
-import { set } from "date-fns";
+import Coins from "/img/chainfusion/coins.svg";
+
+const benefitsData = [
+  {
+    icon: "/img/chainfusion/benefits-1.svg",
+    title: "ICP Smart Contracts hold other Tokens",
+    description:
+      "ckTokens are digital twins of other coins (e.g. ckBTC for BTC) which allow users to send BTC, ETH, USDC cheaper, faster, and more securely.",
+  },
+  {
+    icon: "/img/chainfusion/benefits-2.svg",
+    title: "Using ICP unique Features",
+    description:
+      "If you have a dapp, you can take advantage of ICP features without actually migrating to your smart contract or dapp to ICP. You can now give your dapp: HTTPS outcalls, timers, responding to events, etc...",
+  },
+  {
+    icon: "/img/chainfusion/benefits-3.svg",
+    title: "On-chain orchestration",
+    description:
+      "Seamless cross-chain communication and orchestration. For example: An ICP smart contract can orchestrate your Ethereum dapp's payments to Bitcoin.",
+  },
+  {
+    icon: "/img/chainfusion/benefits-4.svg",
+    title: "Offloading",
+    description:
+      "Due to Chain Fusion, your dapp or smart contract can now offload heavy or expensive compute tasks to ICP without having to migrate your dapp or use an insecure solution. Just standard cryptographic signatures.",
+  },
+];
+
+interface FeatureProps {
+  icon: string;
+  title: string;
+  description: React.ReactNode;
+  fullW?: boolean;
+}
+
+const BenefitFeature: React.FC<FeatureProps> = ({
+  icon,
+  title,
+  description,
+  fullW,
+}) => (
+  <div className="flex flex-col items-start text-left bg-infinite rounded-xl p-12 text-white">
+    <div className="flex items-start">
+      <img loading="lazy" src={icon} className="w-6 aspect-square" />
+    </div>
+    <div
+      className={`tw-heading-5 md:tw-heading-4 font-bold leading-8 mt-3 md:mt-6 ${
+        fullW ? "" : "md:w-8/10"
+      }`}
+    >
+      {title}
+    </div>
+    <p className="mt-2 md:mt-4 text-base leading-6 font-[450]">{description}</p>
+  </div>
+);
 
 const ContentCard: React.FC<{
   id: string;
@@ -35,6 +91,28 @@ const ContentCard: React.FC<{
   return (
     <div className="flex flex-col gap-6 content-card-with-id" id={id}>
       {children}
+    </div>
+  );
+};
+
+const EcosystemCard: React.FC<{
+  title: string;
+  description?: string;
+  img: string;
+}> = ({ title, description, img }) => {
+  return (
+    <div className="bg-white rounded-2xl text-black p-8 text-left">
+      <div className="flex md:flex-col gap-6 md:gap-8 items-center md:items-start">
+        <img
+          src={img}
+          alt="logo"
+          className="w-20 object-cover object-center mx-0 "
+        />
+        <h6 className="tw-heading-5 mt-2 md:-mt-2">{title}</h6>
+      </div>
+      <p className="tw-paragraph md:tw-lead-sm text-black/60 mt-2 md:mt-0">
+        {description}
+      </p>
     </div>
   );
 };
@@ -192,10 +270,16 @@ function ChainFusion() {
             alt=""
             className="object-cover absolute inset-0 size-full"
           />
-          <section className="flex flex-col justify-center w-full bg-black mix-blend-screen">
+          <section className="flex flex-col justify-center w-full">
+            <div
+              style={{
+                background:
+                  "linear-gradient(180deg, rgba(30, 0, 93, 0.00) 0%, #1E005D 100%",
+              }}
+            ></div>
             <div className="flex overflow-hidden relative flex-col pt-20 w-full min-h-[927px] max-md:max-w-full">
               <div className="flex relative flex-col px-20 pb-20 mt-36 w-full max-md:px-5 max-md:mt-10 max-md:max-w-full">
-                <h3 className="self-center tw-heading-5 md:tw-heading-3">
+                <h3 className="self-center tw-heading-5 md:tw-heading-3 flex-end">
                   Powered by
                 </h3>
                 <img
@@ -215,6 +299,13 @@ function ChainFusion() {
         </section>
 
         <section className="bg-[#1E005D]">
+          <AnimateSpawn
+            className="flex justify-center"
+            variants={transitions.container}
+            el={motion.section}
+          >
+            <Coins className="overflow-visible" />
+          </AnimateSpawn>
           <AnimateSpawn
             className="container-8 py-20 md:py-30 "
             variants={transitions.container}
@@ -240,6 +331,81 @@ function ChainFusion() {
             el={motion.section}
           >
             <img src="/img/chainfusion/chainfusion-grafic.webp" alt="" />
+          </AnimateSpawn>
+        </section>
+        <section className="container-10 py-16 md:py-24">
+          <AnimateSpawn
+            className="md:flex md:items-center "
+            variants={transitions.container}
+          >
+            <div className="md:w-[35%]  pt-10 md:pt-40 flex justify-center flex-col text-center">
+              <BenefitsText className="overflow-visible mx-auto" />
+              <motion.p className="tw-paragraph md:tw-lead mt-6">
+                Seamless interoperability between different blockchains,
+                enhancing scalability and flexibility for developers and users.
+              </motion.p>
+            </div>
+            <div className="md:w-[65%] relative">
+              <div className="pointer-events-none md:absolute translate-x-1/12 md:-translate-y-5/12 ">
+                <motion.img
+                  variants={transitions.fadeIn}
+                  src="/img/chainfusion/benefits.webp"
+                  alt=""
+                  className="w-full object-cover"
+                />
+              </div>
+            </div>
+          </AnimateSpawn>
+          <AnimateSpawn
+            className="mt-12 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-5"
+            variants={transitions.container}
+          >
+            {benefitsData.map((benefit, index) => (
+              <BenefitFeature key={index} {...benefit} />
+            ))}
+          </AnimateSpawn>
+        </section>
+        <section className="bg-infinite text-white pt-20 md:pt-30 pb-24 md:pb-40 text-center ">
+          {" "}
+          <AnimateSpawn
+            className="container-6 "
+            variants={transitions.container}
+            el={motion.section}
+          >
+            <motion.h3 className="tw-heading-4 md:tw-heading-60 mb-1 text-gradient-purple">
+              <LogoSm className="w-full" /> empowers the thriving ICP Ecosystem
+            </motion.h3>
+            <motion.p className="tw-paragraph md:tw-lead mt-3 md:mt-6">
+              Chain Fusion is empowering projects to innovate and succeed. By
+              providing advanced features and seamless integration, it enables
+              groundbreaking solutions.
+            </motion.p>
+          </AnimateSpawn>
+          <AnimateSpawn
+            className="container-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-5 mt-12 md:mt-20"
+            variants={transitions.container}
+            el={motion.section}
+          >
+            <EcosystemCard
+              title="ckTokens"
+              description="Consumer-facing tokens like ckBTC, ckETH and more Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit."
+              img="/img/chainfusion/cktokens.svg"
+            />
+            <EcosystemCard
+              title="Omnity"
+              description="Bridges and tools like Runes Bridge and Telegram bot Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit."
+              img="/img/chainfusion/omnity.svg"
+            />
+            <EcosystemCard
+              title="Crosschain DEXes "
+              description="Link Web3 and Bitcoin beyond EVM Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec sed odio dui."
+              img="/img/chainfusion/dex.svg"
+            />
+            <EcosystemCard
+              title="Marketplaces "
+              description="Ordinals and Runes Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec sed odio dui."
+              img="/img/chainfusion/marketplace.svg"
+            />
           </AnimateSpawn>
         </section>
         <section>
