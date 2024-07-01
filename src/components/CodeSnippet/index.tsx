@@ -37,7 +37,7 @@ const CodeSnippet = ({
           <motion.div
             initial={false}
             animate={{ height: isExpanded ? "auto" : "24rem" }}
-            className="overflow-hidden rounded-md"
+            className="overflow-hidden rounded-2xl"
             transition={{ duration: 0.8, ease: [0.04, 0.62, 0.23, 0.98] }}
           >
             <CodeBlockString language={snippet.language} showLineNumbers={true}>

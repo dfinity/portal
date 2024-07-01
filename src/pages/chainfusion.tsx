@@ -229,7 +229,7 @@ const LogoNewLine = ({ className, color = "white" }) => (
       clipRule="evenodd"
       d="M53.7014 24.332H37.969C36.5627 28.1992 32.1682 29.1367 26.8947 29.1367C20.6252 29.0488 15.2932 27.877 15.3811 21.4609V20.4941C15.2932 14.0195 20.6252 12.9062 26.8947 12.8184C32.1682 12.8184 36.5334 13.7266 37.969 17.5938H53.7014C52.7346 4.32227 41.0744 0.337891 26.8947 0.308594C12.1291 0.367188 -0.0583834 4.64453 0.000210397 19.5273V22.3984C-0.0583834 37.3105 12.1291 41.5879 26.8947 41.6172C41.0744 41.6172 52.7346 37.6328 53.7014 24.332ZM236.865 1.27539V22.1348L219.58 1.27539H198.457V40.6504H213.809V16.5977L234.961 40.6504H252.246V1.27539H236.865ZM126.768 74.2539C126.768 75.9824 131.543 76.2168 137.725 76.5098L137.793 76.5132C148.775 77.0696 164.15 77.8486 164.121 87.7012C164.121 98.9512 151.231 101.617 137.402 101.617C123.604 101.588 112.148 99.918 110.684 87.7012H126.768C128.525 90.748 132.598 91.5391 137.402 91.5391C142.178 91.5391 148.037 90.748 148.037 87.7012C148.037 85.9727 143.262 85.709 137.08 85.416L137.012 85.4125C126.03 84.8562 110.654 84.0772 110.684 74.2539C110.684 63.0039 123.574 60.3086 137.402 60.3086C151.201 60.3965 162.656 61.9492 164.121 74.2539H148.037C146.279 71.1484 142.207 70.416 137.402 70.416C132.627 70.416 126.768 71.1191 126.768 74.2539ZM214.981 60.3086C229.805 60.3086 241.846 64.6445 241.846 79.5273V82.3984C241.905 97.2812 229.776 101.588 214.981 101.617C200.156 101.588 188.028 97.2812 188.086 82.3984V79.5273C188.028 64.6152 200.156 60.3379 214.981 60.3086ZM226.494 81.4316V80.4648C226.582 74.0488 221.25 72.877 214.981 72.7891C208.682 72.877 203.35 74.0488 203.438 80.4648V81.4316C203.35 87.877 208.682 89.0488 214.981 89.1367C221.25 89.0488 226.582 87.877 226.494 81.4316ZM284.854 82.1348V61.2754H300.234V100.65H282.949L261.797 76.5977V100.65H246.445V61.2754H267.568L284.854 82.1348ZM183.574 61.2754H168.223V100.65H183.574V61.2754ZM90.9084 61.2754V81.4609C90.9963 87.9355 85.6643 89.0488 79.3947 89.1367C73.0959 89.0488 67.7932 87.9355 67.8518 81.4609V61.2754H52.5002V82.4277C52.4416 97.3105 64.6291 101.588 79.3947 101.617C94.1604 101.588 106.348 97.3105 106.289 82.4277V61.2754H90.9084ZM0 100.709V61.334H48.0176V73.8145H15.3516V78.6191H44.1797V90.1328H15.3516V100.709H0ZM174.961 1.27539H190.312V40.6504H174.961V1.27539ZM138.105 24.3613L143.525 12.7305L148.916 24.3613H138.105ZM134.385 1.33398L113.262 40.709H130.547L133.652 33.9707H153.369L156.475 40.709H173.76L152.637 1.33398H134.385ZM96.709 27.2031H73.6523V40.6504H58.3008V1.27539H73.6523V14.7227H96.709V1.27539H112.09V40.6504H96.709V27.2031Z"
       fill={`${
-        color === "text-gradient-purple" ? "url(#textGradientPurple)" : "white"
+        color === "text-gradient-purple" ? "url(#textGradientPurple)" : color
       }`}
     />
   </svg>
@@ -422,14 +422,17 @@ function ChainFusion() {
             <img src="/img/chainfusion/chainfusion-grafic.webp" alt="" />
           </AnimateSpawn>
         </section>
-        <section className="container-10 py-16 md:py-24">
+        <section className="container-10 pt-12 pb-24 md:py-40">
           <AnimateSpawn
             className="md:flex md:items-center "
             variants={transitions.container}
           >
-            <div className="md:w-[35%]  pt-10 md:pt-40 flex justify-center flex-col text-center">
-              <BenefitsText className="overflow-visible mx-auto" />
-              <motion.p className="tw-paragraph md:tw-lead mt-6">
+            <div className="md:w-[35%] pt-10 md:pt-40 flex flex-col text-left">
+              <LogoNewLine className="w-2/3" color="black" />
+              <motion.h4 className="tw-heading-3 md:tw-heading-60 mt-3 -ml-[3px] md:-ml-1">
+                Benefits
+              </motion.h4>
+              <motion.p className="tw-paragraph md:tw-lead mt-3 md:mt-6">
                 Seamless interoperability between different blockchains,
                 enhancing scalability and flexibility for developers and users.
               </motion.p>
@@ -446,7 +449,7 @@ function ChainFusion() {
             </div>
           </AnimateSpawn>
           <AnimateSpawn
-            className="mt-12 md:mt-20 grid grid-cols-1 md:grid-cols-2 gap-5"
+            className="mt-12 md:mt-30 grid grid-cols-1 md:grid-cols-2 gap-5"
             variants={transitions.container}
           >
             {benefitsData.map((benefit, index) => (
@@ -454,7 +457,7 @@ function ChainFusion() {
             ))}
           </AnimateSpawn>
         </section>
-        <section className="bg-infinite text-white pt-20 md:pt-30 pb-24 md:pb-40 text-center ">
+        <section className="bg-infinite text-white pt-20 md:pt-30 pb-24 md:pb-40 text-left md:text-center ">
           {" "}
           <AnimateSpawn
             className="container-6 "
@@ -499,7 +502,7 @@ function ChainFusion() {
         </section>
         <section>
           <AnimateSpawn
-            className="container-10 justify-center items-center pt-20 md:pb-20 md:pt-40"
+            className="container-10 justify-center items-center pt-18 md:pb-20 md:pt-40"
             variants={transitions.container}
             el={motion.section}
           >
