@@ -7,7 +7,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 # Overview
 <MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
 
-The ICRC Rosetta implementation allows for communication with the ICRC-1 compatible ledgers through the [Rosetta-API standard](https://docs.cloud.coinbase.com/rosetta/docs/welcome). Examples include the [ckBTC ledger](https://dashboard.internetcomputer.org/canister/mxzaz-hqaaa-aaaar-qaada-cai) and the [ckETH ledger](https://dashboard.internetcomputer.org/canister/ss2fx-dyaaa-aaaar-qacoq-cai).
+The ICRC Rosetta implementation allows for communication with the ICRC-1 compatible ledgers through the [Rosetta-API standard](https://docs.cdp.coinbase.com/rosetta/docs/welcome). Examples include the [ckBTC ledger](https://dashboard.internetcomputer.org/canister/mxzaz-hqaaa-aaaar-qaada-cai) and the [ckETH ledger](https://dashboard.internetcomputer.org/canister/ss2fx-dyaaa-aaaar-qacoq-cai).
 This documentation covers the endpoints of the [Data-API](/docs/developer-docs/defi/rosetta/icrc_rosetta/data_api/index.mdx) and the [Construction-API](/docs/developer-docs/defi/rosetta/icrc_rosetta/construction_api/index.mdx). 
 
 ## Set up an ICRC Rosetta node
@@ -45,7 +45,9 @@ docker run \
     dfinity/ic-icrc-rosetta-api \
     --port 8082 \
     --network-type mainnet \
-    --ledger-id mxzaz-hqaaa-aaaar-qaada-cai
+    --ledger-id mxzaz-hqaaa-aaaar-qaada-cai \
+    --store-file /data/db.sqlite
+    
 ```
 This call specifies a port using `--port` which is used to publish through Docker. 
 The default port if not specified is `8080`. The default network is the testnet. 
@@ -134,18 +136,20 @@ This message confirms that you are caught up with all blocks.
 Mount the `/data` directory as a [volume](https://docs.docker.com/storage/volumes/).
 
 ```bash
-docker volume create rosetta
+docker volume create ic-icrc-rosetta
 ```
 ```bash
 docker run \
-    --volume rosetta:/data \
+    --volume ic-icrc-rosetta:/data \
     --interactive \
     --tty \
     --publish 8080:8080 \
     --rm \
    dfinity/ic-icrc-rosetta-api \
     --network-type mainnet \
-    --ledger-id mxzaz-hqaaa-aaaar-qaada-cai
+    --ledger-id mxzaz-hqaaa-aaaar-qaada-cai \
+    --store-file /data/db.sqlite
+
 ```
 
 - #### Is the Rosetta node versioned?

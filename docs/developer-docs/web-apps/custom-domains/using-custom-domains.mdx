@@ -53,7 +53,7 @@ a [concrete example to illustrate these steps](#concrete-example), followed by s
 instructions on [troubleshooting](#troubleshooting).
 
 - #### Step 1: Configure the DNS record of your domain, which is denoted with `CUSTOM_DOMAIN`.
-Add a `CNAME` entry for your domain pointing to `CUSTOM_DOMAIN.icp1.io` such that all the traffic destined to your domain is redirected to the boundary nodes;
+Add an `ALIAS` entry for your domain pointing to `CUSTOM_DOMAIN.icp1.io` such that all the traffic destined to your domain is redirected to the boundary nodes;
 Add a `TXT` entry containing the canister ID to the `_canister-id`-subdomain of your domain (e.g., `_canister-id.CUSTOM_DOMAIN`);
 Add a `CNAME` entry for the `_acme-challenge`-subdomain (e.g., `_acme-challenge.CUSTOM_DOMAIN`) pointing to `_acme-challenge.CUSTOM_DOMAIN.icp2.io` in order for the boundary nodes to acquire the certificate.
 
@@ -69,7 +69,7 @@ For non-apex (e.g. www), the name should be the standard “_canister-id.www” 
 
 - #### Step 2: Create a file named `ic-domains` in your canister under the `.well-known` directory containing the custom domain.
 
-The `.well-known` directory with the `ic-domains` file should be placed within the canister files, not at the root. The location of the files should allow your frontend framework to include the files during the build process. 
+The `.well-known` directory with the `ic-domains` file should be placed within the canister files, not at the root. The location of the files should allow your frontend framework to include the files during the build process.
 
 By default, `dfx` excludes all files and directories whose names start with a `.` from the asset canister. Hence, to include the `ic-domains`-file, you need to create an additional file, called `.ic-assets.json`.
 
@@ -157,13 +157,18 @@ Imagine you wanted to register your domain `foo.bar.com` for your canister with 
 
 | Record Type   | Host                | Value                               |
 |---------------|---------------------|-------------------------------------|
-| `CNAME`       | @                   | foo.bar.com.icp1.io                 |
+| `ALIAS`       | @                   | foo.bar.com.icp1.io                 |
 | `TXT`         | _canister-id        | hwvjt-wqaaa-aaaam-qadra-cai         |
 | `CNAME`       | _acme-challenge     | _acme-challenge.foo.bar.com.icp2.io |
 
 :::info
 Some DNS providers do not require you to specify the main domain. For example, you would just have to specify `foo` instead of `foo.bar.com`, `_canister-id.foo` instead of `_canister-id.foo.bar.com`, and `_acme-challenge.foo` instead of `_acme-challenge.foo.bar.com`.
 :::
+
+### Example on popular registrars
+
+In the [following document](dns-setup.mdx), this guide provides detailed instructions to configure DNS
+records on the example of two popular domain registrars.
 
 ### `.well-known/ic-domains`
 - #### Step 1: Create the `ic-domains` file with the following content in the `.well-known` directory:
@@ -195,11 +200,6 @@ curl -sLv -X POST \
 }
 EOF
 ```
-
-:::info
-In the [following document](dns-setup.mdx), this guide provides detailed instructions to configure DNS
-records on the example of two popular domain registrars.
-:::
 
 ### Troubleshooting
 

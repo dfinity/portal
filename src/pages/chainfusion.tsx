@@ -19,8 +19,8 @@ import { useScrollSpyMenu } from "../utils/use-scroll-spy-menu";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import LinkArrowUp from "../components/Common/Icons/LinkArrowUp";
 import LinkArrowDown from "../components/Common/Icons/LinkArrowDown";
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 const ContentCard: React.FC<{
   id: string;
@@ -158,9 +158,9 @@ function MultichainPage() {
   return (
     <Layout
       title="Chain Fusion Technology"
-      description="ICP enables direct interoperability with all major blockchains, including Bitcoin, Ethereum, and other EVMs (and soon Solana), 
-      without relying on any trusted intermediary. Unlike other blockchains, ICP smart contracts can read from 
-      and write to different chains, enabling developers to write smart contracts that span different chains. This is chain fusion."
+      description="ICP enables direct interoperability with all major blockchains, including Bitcoin, Ethereum, and other EVMs (and soon Solana),
+      without relying on any trusted intermediary. Unlike other blockchains, ICP smart contracts can read from
+      and write to different chains, enabling developers to write smart contracts that span different chains. This is Chain Fusion."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-chainfusion.jpg"></ShareMeta>
@@ -190,7 +190,7 @@ function MultichainPage() {
                 without relying on any trusted intermediary. Unique compared to
                 other blockchains, ICP smart contracts can read from and write
                 to different chains, enabling developers to write smart
-                contracts spanning different chains. This is chain fusion.
+                contracts spanning different chains. This is Chain Fusion.
               </p>
             </div>
           </div>
@@ -247,7 +247,7 @@ function MultichainPage() {
               Example Code
             </h2>
             <p className="tw-paragraph md:tw-lead-sm mb-3">
-              To showcase how powerful chain fusion is, here is a simple example
+              To showcase how powerful Chain Fusion is, here is a simple example
               that shows three chains interacting in one smart contract: a{" "}
               single{" "}
               <b>
@@ -298,9 +298,8 @@ function MultichainPage() {
               >
                 <Tabs>
                   <TabItem value="motoko" label="Motoko" default>
-
-                  <CodeBlockString language="motoko" showLineNumbers={true}>
-                                    {`
+                    <CodeBlockString language="motoko" showLineNumbers={true}>
+                      {`
 // This is a test canister without API keys, for production use 7hfb6-caaaa-aaaar-qadga-cai
 import evm "ic:a6d44-nyaaa-aaaap-abp7q-cai";
 import ic "ic:aaaaa-aa";
@@ -325,7 +324,7 @@ actor {
         fromBlock = ? #Finalized;
         toBlock = ? #Finalized;
         //dummy topics to look at. Replace with topics of interest
-        topics = ?[["topic1", "topic2"]]; 
+        topics = ?[["topic1", "topic2"]];
       },
     );
     switch log {
@@ -351,12 +350,10 @@ actor {
 };
 
                               `}
-                  </CodeBlockString>
-
+                    </CodeBlockString>
                   </TabItem>
 
                   <TabItem value="rust" label="Rust">
-
                     <CodeBlockString language="rust" showLineNumbers={true}>
                       {`
 #![allow(non_snake_case, clippy::large_enum_variant, clippy::enum_variant_names)]
@@ -588,12 +585,8 @@ pub enum MultiGetLogsResult {
 }
                       `}
                     </CodeBlockString>
-
                   </TabItem>
-                  </Tabs>
-               
-                
-
+                </Tabs>
               </motion.div>
 
               <motion.div className="text-center">
@@ -630,12 +623,12 @@ pub enum MultiGetLogsResult {
                 How it is solved today
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6">
-                Developers today rely on trusted intermediaries acting as bridges 
-                that make wrapped copies of native tokens for usage on
+                Developers today rely on trusted intermediaries acting as
+                bridges that make wrapped copies of native tokens for usage on
                 other blockchains. These bridges are slow, inconvenient, but
                 most importantly: they are the Achilles' heel of web3, this is
-                where the majority of hacks happen, resulting in the loss of tens 
-                of billions of dollars of assets.
+                where the majority of hacks happen, resulting in the loss of
+                tens of billions of dollars of assets.
                 <br />
                 <br />
                 There are also rollups, which rely on the security of the base
@@ -648,7 +641,7 @@ pub enum MultiGetLogsResult {
               </p>
 
               <h3 className="text-gradient-purple tw-heading-4 md:tw-heading-40">
-                The two pillars of chain fusion
+                The two pillars of Chain Fusion
               </h3>
 
               <p className="tw-paragraph md:tw-lead-sm mb-6">
@@ -697,7 +690,7 @@ pub enum MultiGetLogsResult {
                 title={
                   <>
                     <h2 className="tw-heading-4 md:tw-heading-3 mb-4 text-gradient">
-                      Use cases of chain fusion
+                      Use cases of Chain Fusion
                     </h2>
                     <p className="tw-paragraph-sm md:tw-paragraph mb-2 mr-4">
                       Explore Chain Fusion technology use cases, including
@@ -776,11 +769,11 @@ pub enum MultiGetLogsResult {
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     A key challenge involved when hosting DeFi and other
                     services using Ethereum smart contracts is the secure
-                    initiation of regular jobs. Often, smart contract jobs are 
-                    initiated using external scripts running on insecure clouds 
-                    such as Amazon Web Services, where the private keys they 
-                    maintain to make the calls are vulnerable in the same way 
-                    as the private keys used by hot wallets.
+                    initiation of regular jobs. Often, smart contract jobs are
+                    initiated using external scripts running on insecure clouds
+                    such as Amazon Web Services, where the private keys they
+                    maintain to make the calls are vulnerable in the same way as
+                    the private keys used by hot wallets.
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     The Internet Computer provides a solution. Canister smart
@@ -827,11 +820,22 @@ pub enum MultiGetLogsResult {
                     fully decentralized Web3 services can be created that
                     maintain the UX and heavy data storage and processing on the
                     Internet Computer, while relying on Ethereum DeFi where
-                    financial rails are needed.
+                    financial rails are needed. To make this integration easier,
+                    the{" "}
+                    <Link
+                      href="/blog/features/evm-rpc-canister-launch"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-subtle"
+                    >
+                      EVM RPC canister
+                    </Link>{" "}
+                    is a service that lets you easily build integrations between
+                    ICP canister smart contracts and Ethereum smart contracts.
                   </p>
 
                   <p className="flex gap-2 flex-wrap">
-                    <Status type="pending">EVM RPC in beta testing</Status>
+                    <Status type="done">EVM RPC canister done</Status>
                   </p>
                 </ContentCard>
 
@@ -977,9 +981,17 @@ pub enum MultiGetLogsResult {
                     and wait times. To address this, the ICP community uses
                     ckEth ("chain key Ethereum"), a trustless "Twins of
                     Ethereum" hosted on ICP such as “ether twin” called ckETH
-                    and “twins'' of ERC20 tokens, such as ckUSDC, ckUSDT,
-                    ckUNISWAP, ck1INCH, ckAAVE. These can be directly processed
-                    by smart contracts hosted on ICP.
+                    and “twins'' of ERC20 tokens, such as{" "}
+                    <Link
+                      href="https://dashboard.internetcomputer.org/ethereum/xevnm-gaaaa-aaaar-qafnq-cai"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="link-subtle"
+                    >
+                      ckUSDC (a stablecoin),
+                    </Link>{" "}
+                    ckUSDT, ckUNISWAP, ck1INCH, ckAAVE. These can be directly
+                    processed by smart contracts hosted on ICP.
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     The “chain key” versions of Ethereum assets live on ledgers
@@ -999,6 +1011,7 @@ pub enum MultiGetLogsResult {
                   </p>
                   <p className="flex gap-2 flex-wrap">
                     <Status type="done">ckETH done</Status>
+                    <Status type="done">ckUSDC done</Status>
                     <Status type="pending">ckERC20 is in progress</Status>
                   </p>
                 </ContentCard>
@@ -1190,13 +1203,13 @@ pub enum MultiGetLogsResult {
             variants={transitions.container}
           >
             <CardWithDescription
-              title="ICP as a Bitcoin L2"
+              title="ICP - More than a Bitcoin L2"
               description=""
               href="/bitcoin-integration"
             />
 
             <CardWithDescription
-              title="ICP as an Ethereum sidechain"
+              title="Ethereum Integration"
               description=""
               href="/ethereum-integration"
             />

@@ -37,6 +37,19 @@ Creating a canister on the mainnet will cost [cycles](/docs/current/developer-do
 
 At this step, settings can be configured for the canister using the optional flags. [View the full list of settings that can be configured](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#options-1).
 
+
+## Troubleshooting
+
+### Failed to install Wasm module, no such file or directory.
+
+If you receive an error such as:
+
+```
+Error: Failed to install wasm module to canister 'test'. Caused by: Failed to install wasm module to canister 'test'. Failed to read /home/gabriel/projects/motoko-test/.dfx/local/canisters/test/test.wasm. No such file or directory (os error 2)
+```
+
+You may need to run `dfx build`, as this error indicates that the canister's Wasm module may not exist because it was not compiled. [Learn more about how to compile a canister's Wasm module](compile.mdx). Alternatively, you can run `dfx deploy`, as it runs `dfx build` and `dfx install` as part of the deployment process.
+
 ## Next steps
 
 - [Create canisters](/docs/current/developer-docs/smart-contracts/create)

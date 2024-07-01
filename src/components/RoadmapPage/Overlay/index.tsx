@@ -5,8 +5,9 @@ import ExternalLinkIcon from "../../../../static/img/external-link.svg";
 import { RoadmapDomain, RoadmapItem } from "../RoadmapTypes";
 import LinkArrowLeft from "../../Common/Icons/LinkArrowLeft";
 import { motion, AnimatePresence } from "framer-motion";
-import { CardBlobs } from "@site/src/pages/roadmap";
+import { CardBlobs, createId } from "@site/src/pages/roadmap";
 import Tooltip from "../../Common/Tooltip";
+import LinkIcon from "@site/static/img/svgIcons/link.svg";
 
 const Blobs: React.FC<{}> = ({}) => {
   return (
@@ -59,7 +60,7 @@ export const ArrowIconRight = () => {
         rx="16.5"
         transform="rotate(-180 49.5 45.5)"
         stroke="white"
-        stroke-opacity="0.3"
+        strokeOpacity="0.3"
         fill="transparent"
         className="circle"
       />
@@ -126,6 +127,20 @@ const FutureIcon = () => (
       clipRule="evenodd"
       d="M15.3148 12L11.9814 15.3333L13.6481 17L18.6481 12L13.6481 7L11.9814 8.66667L15.3148 12Z"
       fill="white"
+    />
+  </svg>
+);
+
+const CheckmarkIcon = () => (
+  <svg
+    className="w-full block"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 17 16"
+    fill="none"
+  >
+    <path
+      d="M14.7493 2.96875H13.6571C13.504 2.96875 13.3587 3.03906 13.2649 3.15937L6.82271 11.3203L3.73365 7.40625C3.68692 7.34692 3.62736 7.29895 3.55943 7.26593C3.49151 7.23292 3.41699 7.21572 3.34146 7.21562H2.24928C2.14459 7.21562 2.08678 7.33594 2.15084 7.41719L6.43053 12.8391C6.63053 13.0922 7.0149 13.0922 7.21646 12.8391L14.8477 3.16875C14.9118 3.08906 14.854 2.96875 14.7493 2.96875V2.96875Z"
+      fill="currentColor"
     />
   </svg>
 );
@@ -288,6 +303,7 @@ const MilestoneDetail: React.FC<{
   color2: string | null;
   expandedMilestone: string | null;
   setExpandedMilestone: (milestone: string | null) => void;
+  openAt: string;
 }> = ({
   name,
   subtitle,
@@ -299,13 +315,26 @@ const MilestoneDetail: React.FC<{
   color2,
   expandedMilestone,
   setExpandedMilestone,
+  openAt,
 }) => {
   const isExpanded = name === expandedMilestone;
   const elementsPerRow = 4;
   const elementsCount = elements.length;
   const emptyCardsCount = elementsPerRow - (elementsCount % elementsPerRow);
-
+  const [showCopied, setShowCopied] = useState(false);
   const emptyCards = Array(emptyCardsCount).fill(null);
+
+  const handleLinkClick = () => {
+    const id = createId(openAt, name);
+    navigator.clipboard.writeText(
+      window.location.origin + window.location.pathname + `#${id}`
+    );
+
+    setShowCopied(true);
+    setTimeout(() => {
+      setShowCopied(false);
+    }, 1000);
+  };
 
   if (name === "Past features") {
     return elements.length === 0 ? (
@@ -447,12 +476,34 @@ const MilestoneDetail: React.FC<{
       <div className="p-5 relative z-3">
         <div className="md:grid md:grid-cols-[6fr,10fr] gap-2">
           <div>
-            <h4 className="tw-heading-5 md:tw-heading-3 mb-2">
+            <h4 className="tw-heading-5 md:tw-heading-3 mb-2 flex items-center group">
               {name.toUpperCase()}
+              {!showCopied ? (
+                <span
+                  onClick={handleLinkClick}
+                  className="ml-2 cursor-pointer hidden group-hover:inline"
+                >
+                  <LinkIcon />
+                </span>
+              ) : (
+                <motion.span
+                  initial={{ opacity: 0.8 }}
+                  animate={{ opacity: 0.3 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 1 }}
+                  className="ml-2 basis-5 w-5 grow-0 shrink-0 opacity-80 "
+                >
+                  <CheckmarkIcon />
+                </motion.span>
+              )}
             </h4>
             {eta && eta != "none" && (
               <p className="tw-paragraph mb-2">
-                <span className="text-white/60">Due Date</span> {eta}
+                <span className="text-white/60">
+                  {" "}
+                  {status === "deployed" ? "Completed" : "Due Date"}
+                </span>{" "}
+                {eta}
               </p>
             )}
 
@@ -492,7 +543,7 @@ const MilestoneDetail: React.FC<{
 
 const Overlay: React.FC<{
   onClose: () => void;
-  openAt: number;
+  openAt: string | null;
   data: RoadmapDomain[];
   anchor: string | null;
   color: string | null;
@@ -518,16 +569,20 @@ const Overlay: React.FC<{
   useEffect(() => {
     if (anchor) {
       const el = document.getElementById(anchor);
+
       if (el) {
         if (anchor === "Past features") {
           setExpandedMilestone(anchor);
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-        } else {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
         }
+
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 100);
       }
     }
   }, [anchor, color]);
+
+  const index = data.findIndex((d) => d.name === openAt);
 
   return (
     <motion.div
@@ -561,7 +616,7 @@ const Overlay: React.FC<{
                 height="30"
                 rx="15"
                 fill="#181818"
-                fill-opacity="0.6"
+                fillOpacity="0.6"
               />
               <path d="M9.34277 9.34375L20.6565 20.6575" stroke="white" />
               <path d="M9.34277 20.6572L20.6565 9.34352" stroke="white" />
@@ -569,21 +624,23 @@ const Overlay: React.FC<{
           </button>
         </div>
         <div className="md:top-20 z-10 pr-0 md:pr-8 ">
-          {data && data[openAt] && (
+          {data && index !== null && (
             <div>
               <section className="my-12 md:my-24">
                 <h2 className="tw-heading-3  font-black md:tw-heading-2 md:w-8/10">
-                  {data[openAt].name.toUpperCase()}
+                  {data[index].name.toUpperCase()}
                 </h2>
                 <p className="tw-lead-sm md:tw-lead md:w-9/10">
-                  {data[openAt].description}
+                  {data[index].description}
                 </p>
               </section>
               <section>
-                {data[openAt].milestones
+                {data[index].milestones
                   .sort((a, b) => {
                     if (a.name === "orphans_past") return -1;
                     if (b.name === "orphans_past") return 1;
+                    if (a.status === "deployed") return -1;
+                    if (b.status === "deployed") return 1;
                     if (a.name === "orphans_future") return 1;
                     if (b.name === "orphans_future") return -1;
                     return 0;
@@ -602,6 +659,7 @@ const Overlay: React.FC<{
                         color2={color2}
                         expandedMilestone={expandedMilestone}
                         setExpandedMilestone={setExpandedMilestone}
+                        openAt={openAt}
                       />
                     );
                   })}

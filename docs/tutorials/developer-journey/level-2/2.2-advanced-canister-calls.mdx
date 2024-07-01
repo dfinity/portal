@@ -3,6 +3,7 @@ keywords: [intermediate, tutorial, developer journey, advanced canister calls, q
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # 2.2 Advanced canister calls
 
@@ -12,11 +13,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-In the previous tutorial where you [created your first dapp](/docs/current/tutorials/developer-journey/level-1/1.3-first-dapp), the developer journey briefly discussed query and update canister calls. In this tutorial, you'll dive deeper into these types of canister calls, but also take a look at advanced canister calls such as composite queries, certified variables, and inter-canister calls.
+In the previous tutorial where you [created your first dapp](/docs/current/tutorials/developer-journey/level-1/1.3-first-dapp), the developer journey briefly discussed query and update <GlossaryTooltip>canister</GlossaryTooltip> calls. In this tutorial, you'll dive deeper into these types of canister calls, but also take a look at advanced canister calls such as composite queries, certified variables, and inter-canister calls.
 
 Let's first define the different types of canister calls and how they differ from one another:
 
-- **Query calls** are executed on a single node within a subnet. Query calls do not alter the state of a canister. They are executed synchronously and answered immediately once received.
+- **Query calls** are executed on a single node within a <GlossaryTooltip>subnet</GlossaryTooltip>. Query calls do not alter the state of a canister. They are executed synchronously and answered immediately once received.
 
 - **Update calls** are able to alter the canister's state. They are executed on all nodes of a subnet, since the result must go through the subnet's consensus process. Update calls are submitted and answered asynchronously.
 
@@ -49,7 +50,7 @@ The amount of security your dapp needs depends on your dapp's use case and funct
 
 ### Example `query` call
 
-Queries are defined by the function modifier `query` in Motoko code. Below is a simple query call used with an `echo` function. It queries the function's result and does not make any changes to the canister's state or data.
+Queries are defined by the function modifier `query` in Motoko code. Below is a simple query call used with a `say` function. It queries the function's result and does not make any changes to the canister's state or data.
 
 
 ```motoko

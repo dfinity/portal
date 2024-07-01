@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-A canister can inspect an ingress message and either accept or decline the message through the canister's HTTP interface. If the message is accepted, the canister will execute it.
+A canister can inspect an ingress message and either accept or decline the message through the canister's HTTPS interface. If the message is accepted, the canister will execute it.
 
 A canister that does not have a Wasm module installed will reject any ingress messages. If the canister does not implement `canister_inspect_message`, all ingress messages will be accepted.
 

@@ -38,30 +38,30 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-Introduce the feature or tool. What is it? Give a brief overview of how it works, but keep it very high level. Link to additional documents that explain the in-depth concepts behind it (if they exist). 
+Introduce the feature or tool. What is it? Give a brief overview of how it works, but keep it very high level. Link to additional documents that explain the in-depth concepts behind it (if they exist).
 
 ## Prerequisites
 
 Optional; only necessary for documents that require prerequisite conditions or parameters be met.
 
-List all dependencies that the developer will need to download or setup in order to use the feature. The most common prerequisite is downloading dfx. Please link to the dfx installation page. 
+List all dependencies that the developer will need to download or setup in order to use the feature. The most common prerequisite is downloading dfx. Please link to the dfx installation page.
 - [x] Prerequisite 1.
 - [x] Prerequisite 2.
 - [x] Prerequisite 3.
 
 ## Topic 1
 
-What is the first topic that the developer should be introduced to? If the tool has several workflows, which should be introduced initially? Is there an initial configuration required? 
+What is the first topic that the developer should be introduced to? If the tool has several workflows, which should be introduced initially? Is there an initial configuration required?
 
 ### Subtopic 1
 
-Include any information about a subtopic of Topic 1 here. This may include nuances with Topic 1 or best practices that should be noted. 
+Include any information about a subtopic of Topic 1 here. This may include nuances with Topic 1 or best practices that should be noted.
 
 ## Topic 2
 
-Introduce the second topic. 
+Introduce the second topic.
 
-This is optional; there may be only one primary topic within the feature. Use your best judgement for what topics and subtopics your document may need. 
+This is optional; there may be only one primary topic within the feature. Use your best judgement for what topics and subtopics your document may need.
 
 ## Topic 3
 
@@ -204,13 +204,21 @@ The following is a list of common abbreviations that are capitalized within the 
 - BTC
 - CDK
 - ckBTC
+- ckETH
+- ckERC20
+- ckUSDC
+- ckLINK
 - DAO
 - DeFi
 - ECDSA
-- HTTP/HTTPS
+- HTTP
+- HTTPS
 - ICP
 - ICRC-1
 - ICRC-2
+- ICRC-3
+- ICRC-7
+- ICRC-37
 - II
 - IOS
 - NFT
@@ -231,24 +239,26 @@ The following language and capitalization of certain terms and phrases should be
 - canister smart contract
 - chain-key signature
 - chain-key cryptography
-- chain fusion
+- Chain Fusion
+- Chain Fusion technology
 - dapp: should be used in place of any reference to an ICP app, decentralized application, or 'dApp'.
 - DeFi
 - deployed on ICP
-- dfx or `dfx`: should be used in place of any reference to the dfx CLI tool; it may be formatted as in-line code or plain text as long as it is lowercase. 
+- dfx or `dfx`: should be used in place of any reference to the dfx CLI tool; it may be formatted as in-line code or plain text as long as it is lowercase.
       - All dfx subcommands should be formatted as in-line code when appearing in a sentence, such as, "The `dfx deps` feature is available in dfx versions 0.14.1 and newer."
 - Ethereum integration
 - Ethereum: should be used in place of ETH or ETH token.
-- HTTP outcalls
-- ICP: When abbreviating 'Internet Computer', it should be referred to as 'ICP' instead of 'IC' or 'the IC'. 
+- HTTP: when referring to the HTTP Gateway protocol, HTTP asset certification, HTTP requests, HTTP responses, and HTTP servers.
+- HTTPS: when referring to HTTPS outcalls.
+- ICP: When abbreviating 'Internet Computer', it should be referred to as 'ICP' instead of 'IC' or 'the IC'.
     Two exceptions to this are:
-  
+
         - The IC SDK, which should be referred to as 'the IC SDK'.
-  
+
         - The IC interface specification, which should be referred to as 'the IC specification' or 'the IC interface specification'.
-  
+
     When there may be a confusion between ICP referring to Internet Computer Protocol and ICP the token, the words 'Internet Computer Protocol' can be written out for clarity.
-  
+
 - IC SDK: should be used in place of any reference to the IC's SDK.
 - mainnet
     - In context: Deploying `to the mainnet` or `on the mainnet`. Note the use of the word `the`.
@@ -265,13 +275,14 @@ The following language and capitalization of certain terms and phrases should be
 - reverse gas model
 - Sybil resistance
 - Sybil attack
+- use case: should not be hyphenated.
 - vetKeys
 - Web3
 - World Wide Web
 
 ### Spelling, grammar, and word choice
 The following spelling, grammar, and word choice rules should be followed:
-- Avoid using language that uses 'we' or 'us'; use a protocol point of view, such as phrases like, "the protocol ensures", "the protocol does", and “it is explained” rather than “we explain”. This is to help make clear that ICP is a protocol that is community-controlled and autonomously governed. 
+- Avoid using language that uses 'we' or 'us'; use a protocol point of view, such as phrases like, "the protocol ensures", "the protocol does", and “it is explained” rather than “we explain”. This is to help make clear that ICP is a protocol that is community-controlled and autonomously governed.
       - An exception to this is the Developer Blog; blog posts are written using a different style for a different audience, and using 'we' or 'us' in this context is acceptable.
 - Do not refer to the Internet Computer as a system or a platform. Say "Internet Computer" or "protocol" instead.
 - Regarding spelling and grammar, American spelling and grammar should be used with the exception that all article titles follow British capitalization rules (see details in the Capitalization section.)
@@ -298,6 +309,15 @@ Numbers should be formatted using the `_` character, and not any other character
 - 54_000
 - 1_000
 
+## Compute resources
+
+Compute resources, such as storage, should be formatted in the `XiB` format, such as:
+
+- 7TiB
+- 5GiB
+- 500MiB
+- 10KiB
+
 ## API methods
 
 For API methods such as `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, or any other API method requests, they should be formatted as such:
@@ -306,7 +326,7 @@ For API methods such as `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, or any other API
     - Example: "Using HTTP GET calls."
     - Example: "Using HTTP PUT calls."
 - In the body of documents, they should be formatted as in-line code, such as:
-    - Example: "A minimal example to make a `GET` HTTPS request."
+    - Example: "A minimal example to make a `GET` HTTP request."
     - Example: "That is, the canister could define the quorum size to be 1 and have only 1 replica execute the `POST` request."
 
 
@@ -383,7 +403,7 @@ Links that are referenced within the developer docs should use the following for
 - In-line links should not capitalize the title of the page or section that is being linked. For example:
     - The below section [demonstrating trust](#demonstrating-trust).
     - The Wiki [contains some ideas](https://wiki.internetcomputer.org/wiki/Dealing_with_cycles_limit_exceeded_errors) how one can work around the cycles limit.
-- Links should not use the format of 'See the documentation [here](link)'. 
+- Links should not use the format of 'See the documentation [here](link)'.
     - All links should use the format '[Learn more about ICP](link)'.
 
 ## Code snippets and code blocks

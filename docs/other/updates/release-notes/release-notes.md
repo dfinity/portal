@@ -2,6 +2,7 @@
 
 | Version | Release Notes                                                       | Migration Guide                                                                                            |
 |---------|---------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------|
+| 0.20.1  | [release notes](https://github.com/dfinity/sdk/releases/tag/0.20.1) |
 | 0.20.0  | [release notes](https://github.com/dfinity/sdk/releases/tag/0.20.0) |
 | 0.19.0  | [release notes](https://github.com/dfinity/sdk/releases/tag/0.19.0) |
 | 0.18.0  | [release notes](https://github.com/dfinity/sdk/releases/tag/0.18.0) | [migration guide](https://github.com/dfinity/sdk/blob/master/docs/migration/dfx-0.18.0-migration-guide.md) |

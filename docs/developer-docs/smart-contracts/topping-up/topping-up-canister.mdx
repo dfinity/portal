@@ -83,8 +83,14 @@ dfx cycles balance --network ic
 dfx cycles top-up `AMOUNT` `CANISTER_ID` --network ic
 ```
 
--   The `cycles balance --network ic` checks the cycles balance of your identity on the mainnet.
--   The `cycles top-up` transfers cycles to the canister of your choice.
+This workflow uses the cycles ledger, a feature that requires `dfx` version `0.19.0`. To enable this feature, you will need to set the following environmental variable:
+
+```
+DFX_CYCLES_LEDGER_SUPPORT_ENABLE=1
+```
+
+-   The `cycles balance --network ic` command checks the cycles balance of your identity on the mainnet.
+-   The `cycles top-up` command transfers cycles to the canister of your choice.
 
 ### Special case: topping up a cycles wallet
 

@@ -1,0 +1,85 @@
+---
+title: Individual spotlight - Software engineer
+description: 'To kick off this series, we sat down with Linwei, a software engineer from the SDK team.'
+tags: [Individual spotlight]
+image: /img/blog/indv-spotlight-1.jpg
+---
+
+![SDK software engineer spotlight](../../static/img/blog/indv-spotlight-1.jpg)
+
+
+**Hello everyone, and welcome to a new dev blog series: individual spotlight! In this series, we're going to sit down with different DFINITY team members across different roles and teams to learn more about the specific projects they're working on. This series is similar to our previous team spotlight series, but with a more narrow focus.**
+
+**To kick off this series, we sat down with Linwei, a software engineer from the SDK team. The SDK team has a fundamental role at DFINITY, as they create tooling such as `dfx` that developers use on a regular basis.**
+
+**To give developers a better insight into what the SDK team does, what tools, projects, or features does the team have ownership of?**
+
+*The name of our team, SDK, encapsulates our core mission: providing the essential software development kits (SDKs) that enable seamless development on the Internet Computer.*
+
+*The core of the SDK is the dfx CLI tool. We also maintain some libraries that fall into two categories:*
+
+- *Agent: For interacting with the IC from outside using HTTPS messages.*
+
+    - *Rust agent (`agent-rs`) and JS agent (`agent-js`)*
+
+- *CDK: For building canisters that invoke the system API and make inter-canister calls.*
+
+    - *Rust CDK*
+
+**What roadmap items from your team are you most excited about?**
+
+*There are several upcoming features that will make the canister development experience more close to traditional (Web2):*
+
+- *Canister logging: Developers can read logs produced by their canisters even when they trap.*
+
+- *Canister backup and restore: Developers will be able to achieve data sovereignty on the ICP.*
+
+- *Canister lifecycle hooks: Developers will get notification when their canisters trap, out of cycles, or other lifecycle events happen.*
+
+**Those features are long-awaited from the ICP dev community, so I agree that those are pretty exciting to see on the roadmap! What about roadmap items from another team? Are there any of those that excite you personally?**
+
+*Decentralized AI. I’m looking forward to seeing how two advanced technologies, AI and blockchain, can work together.**
+
+**That's a good one. I think there are a lot of eyes on DeAI right now, especially from our [AI working group](https://forum.dfinity.org/t/technical-working-group-deai/24621/6).**
+
+**Let's talk about your personal contributions to the SDK team. What is a recent project that you were the primary contributor to?**
+
+*I recently completed the exploration [of] Wasm64 [for the] Rust CDK.*
+
+**What was the goal or focus of that exploration?**
+
+*We are going to enable Wasm64 on [the] IC Wasm runtime. I was in charge of verifying if the proposed new system API can be easily consumed by CDKs like [the] Rust CDK.*
+
+**What was the motivation behind exploring this capability?**
+
+*[It will] enable developers to use more than 4 GiB of main memory for more complicated applications.*
+
+**What were some of the findings from this exploration?**
+
+*To support both Wasm32 and Wasm64, there is some inevitable complexity either on the system (replica) side or on the CDK side. My exploration [of the] Rust CDK provided a case of handling the complexity on the CDK side. That helped the teams reach a consensus that the complexity should be handled on the system side.*
+
+**Was there any developer or internal feedback that was used for this exploration?**
+
+*The wasm64 feature is a cross-team effort. I, representing Rust CDK, provided my exploration result as internal feedback, which made the runtime team revise the design of the system API.*
+
+**What other projects are you currently working on?**
+
+*Trait-bound canister development. Rust canister devs will be able to generate a trait from the "service" in a Candid file. As long as the devs implement all [of] the required methods of the trait for some struct, the canister will fulfill its Candid interface.*
+
+**That sounds like a very useful feature for Rust developers! What was the primary motivation for this project?**
+
+*The existing Rust canister DX is not systematic and type-safe. Developers who take their canisters seriously prefer the interface-first approach. Many internal developers in charge of system canisters are willing to adopt the new development style. We expect many community developers will also love it.*
+
+**As a software engineer, what advice would you give a new developer getting started on ICP?**
+
+*The [wiki site](https://wiki.internetcomputer.org/wiki/Main_Page) is a good knowledge base for new developers. It’s better to get a basic understanding of the key concepts. Some of these concepts are unique to ICP and are not found in other projects.*
+
+**Are there any community projects or tools that you’ve been using recently?**
+
+*Mops is a package manager for Motoko that is developed by community developers. We have been using it for some Motoko-related tests [for] `dfx`.*
+
+**One last question: What’s your favorite thing about ICP?**
+
+*ICP is continuously advancing the boundaries of what blockchain technology can achieve.*
+
+**Thank you, Linwei, for chatting with us today, and be sure to stay tuned for the next installment of the individual spotlight series!**

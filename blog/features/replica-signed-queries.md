@@ -19,7 +19,7 @@ Having a single replica signature in a query response doesn't completely solve t
 
 ## How do replica-signed queries work?
 
-First, a list of node IDs and their corresponding public keys is put into the subnet's state tree so that they can be certified by the subnet. Users can obtain the certificate to validate the node's keys through an HTTP `read_state` call that includes a timestamp value.
+First, a list of node IDs and their corresponding public keys is put into the subnet's state tree so that they can be certified by the subnet. Users can obtain the certificate to validate the node's keys through an HTTPS `read_state` call that includes a timestamp value.
 
 To support replica-signed queries, the query response format has been changed. The response to a query call adds a list with one signature for the returned response produced by the ICP node that evaluated the query call.
 

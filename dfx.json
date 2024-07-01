@@ -24,7 +24,7 @@
     },
     "ic": {
       "providers": [
-        "https://mainnet.dfinity.network"
+        "https://icp-api.io"
       ],
       "type": "persistent"
     }
