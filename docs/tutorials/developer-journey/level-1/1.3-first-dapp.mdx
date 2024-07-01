@@ -5,6 +5,8 @@ keywords: [beginner, tutorial, developer journey, first dapp]
 import DfxNewSnippet from "/src/components/Snippets/DfxNewSnippet.mdx";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import '/src/components/CenterImages/center.scss';
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
 
 # 1.3 Developing your first dapp
 
@@ -14,7 +16,7 @@ import '/src/components/CenterImages/center.scss';
 
 ## Overview
 
-At this point in your developer journey, you've covered the fundamentals of canister development and deployed the default 'Hello, world' project template on the Motoko playground. It's time to get into writing code and developing your own first dapp!
+At this point in your developer journey, you've covered the fundamentals of <GlossaryTooltip>canister</GlossaryTooltip> development and deployed the default 'Hello, world' project template on the Motoko playground. It's time to get into writing code and developing your own first dapp!
 
 For this tutorial, you'll be creating a poll dapp that includes both a backend canister and a frontend canister. To recap, backend canisters are used to host the dapp's smart contract code, while frontend canisters are used to host user interface assets, such as HTML and CSS.
 
@@ -160,7 +162,7 @@ This `getQuestion` method takes the current value of the `question` variable and
 
 ### Query calls vs. update calls
 
-A **query call** is executed on one node of a subnet. It is not possible to use query calls to alter data.
+A **query call** is executed on one node of a <GlossaryTooltip>subnet</GlossaryTooltip>. It is not possible to use query calls to alter data.
 
 An **update call** is executed on all nodes of a subnet. The result must pass through consensus on the subnet and has the ability to alter data.
 
@@ -271,9 +273,9 @@ Then, the `Iter.toArray()` is a standard function that converts `Iter<(Text,Nat)
 :::
 
 
-### Declaring the `votes` method
+### Declaring the `vote` method
 
-Our next step is to create a new method called `votes` that uses an update call to update the canister's state.
+Our next step is to create a new method called `vote` that uses an update call to update the canister's state.
 
 Insert the following code into your `main.mo` file; there are inline comments that help explain the code's logic:
 
@@ -795,7 +797,7 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 ## Next steps
 
-In this tutorial, you only deployed our dapp to your local environment. In the next module, you'll acquire cycles in order for you to deploy your dapp to the Internet Computer mainnet.
+In this tutorial, you only deployed our dapp to your local environment. In the next module, you'll acquire <GlossaryTooltip>cycles</GlossaryTooltip> in order for you to deploy your dapp to the Internet Computer mainnet.
 
 - [1.4 Acquiring and using cycles](/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles).
 

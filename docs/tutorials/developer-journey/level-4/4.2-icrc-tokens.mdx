@@ -68,7 +68,7 @@ The ICRC-1 standard intentionally excludes certain ledger functions that are nec
 
 - Pre-signed transactions.
 
-The ICRC-1 standard defines the `icrc1_supported_standards` endpoint to accommodate these functions through extensions of the standard. This endpoint returns all specifications implemented by the ledger, such as `ICRC-2` or `DIP-20`.
+The ICRC-1 standard defines the `icrc1_supported_standards` endpoint to accommodate these functions through extensions of the standard. This endpoint returns all specifications implemented by the ledger, such as `ICRC-2`.
 
 ## Metadata
 
@@ -78,7 +78,7 @@ The ICRC-1 token standard allows for several optional metadata fields to be spec
 
 - `icrc1:name`: The token's name, such as `variant { Text = "Test Token" }`.
 
-- `icrc1:decimals`: The number of decimals used by the token, such as `variant { Nat = 8 }`
+- `icrc1:decimals`: The number of decimals used by the token, such as `variant { Nat = 8 }`.
 
 - `icrc1:fee`: The token's default transfer fee, such as `variant { Nat = 10_000 }`.
 
@@ -167,9 +167,9 @@ Remember, by default `dfx new` creates a new project in the Motoko language. If 
 
 You can access the Wasm and Candid files in the same way that you located the ICP ledger files. Remember that you'll need the latest replica version, which can be found on the [dashboard](https://dashboard.internetcomputer.org/releases) under the **Elect new replica binary revision** field.
 
-Then, use the following URL to download the Wasm module: `https://download.dfinity.systems/ic/<VERSION>/canisters/ic-icrc1-ledger.wasm.gz`. In this tutorial you'll use the URL https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-icrc1-ledger.wasm.gz.
+Then, use the following URL to download the Wasm module: `https://download.dfinity.systems/ic/<VERSION>/canisters/ic-icrc1-ledger.wasm.gz`. In this tutorial you'll use the URL https://download.dfinity.systems/ic/08f32722df2f56f1e5c1e603fee0c87c40b77cba/canisters/ic-icrc1-ledger.wasm.gz.
 
-Use the following URL can be used to download the Candid file: `https://raw.githubusercontent.com/dfinity/ic/<VERSION>/rs/rosetta-api/icrc1/ledger/ledger.did`. In this tutorial, you'll use the URL https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icrc1/ledger/ledger.did.
+Use the following URL can be used to download the Candid file: `https://raw.githubusercontent.com/dfinity/ic/<VERSION>/rs/rosetta-api/icrc1/ledger/ledger.did`. In this tutorial, you'll use the URL https://raw.githubusercontent.com/dfinity/ic/08f32722df2f56f1e5c1e603fee0c87c40b77cba/rs/rosetta-api/icrc1/ledger/ledger.did.
 
 Open the `dfx.json` file in the project's directory and replace the existing content with the following:
 
@@ -178,8 +178,8 @@ Open the `dfx.json` file in the project's directory and replace the existing con
   "canisters": {
     "icrc1_ledger_canister": {
       "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icrc1/ledger/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-icrc1-ledger.wasm.gz",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/08f32722df2f56f1e5c1e603fee0c87c40b77cba/rs/rosetta-api/icrc1/ledger/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/08f32722df2f56f1e5c1e603fee0c87c40b77cba/canisters/ic-icrc1-ledger.wasm.gz"
     }
   },
   "defaults": {
@@ -197,7 +197,7 @@ Next, you'll use the `minter` identity you created in the last module, [4.1 Usin
 
 ```bash
 dfx identity use minter
-export MINTER_ACCOUNT_ID=$(dfx ledger account-id)
+export MINTER_ACCOUNT_ID=$(dfx identity get-principal)
 ```
 
 The environment variable `MINTER_ACCOUNT_ID` is the principal ID responsible for minting and burning tokens.
@@ -269,7 +269,7 @@ dfx deploy icrc1_ledger_canister --specified-id mxzaz-hqaaa-aaaar-qaada-cai --ar
 record {
      token_symbol = \"${TOKEN_SYMBOL}\";
      token_name = \"${TOKEN_NAME}\";
-     minting_account = record { owner = principal \"${MINTER}\" };
+     minting_account = record { owner = principal \"${MINTER_ACCOUNT_ID}\" };
      transfer_fee = ${TRANSFER_FEE};
      metadata = vec {};
      feature_flags = opt record{icrc2 = ${FEATURE_FLAGS}};
@@ -328,6 +328,10 @@ This should return the following output:
     record {
       url = "https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-2";
       name = "ICRC-2";
+    };
+    record {
+      url = "https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-3";
+      name = "ICRC-3";
     };
   },
 )

@@ -3,6 +3,8 @@ keywords: [beginner, tutorial, developer journey, manage canisters]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
 
 # 1.6 Managing canisters
 
@@ -12,13 +14,13 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-Now that you have canisters deployed on the mainnet, the next step is to learn how to manage those canisters. Managing a canister includes workflows such as obtaining information, setting an identity as the canister's owner, and deleting a canister. You'll dive into these different workflows and more in this guide to assure that you have the core fundamentals of how to maintain canisters.
+Now that you have <GlossaryTooltip>canisters</GlossaryTooltip> deployed on the mainnet, the next step is to learn how to manage those canisters. Managing a canister includes workflows such as obtaining information, setting an identity as the canister's owner, and deleting a canister. You'll dive into these different workflows and more in this guide to assure that you have the core fundamentals of how to maintain canisters.
 
 ## The ICP management canister
 
-To enable canister management, the the management canister exposes management functionality to end users and other canisters. While it is titled the 'management canister', it is not actually a canister that exists with an isolated state, Wasm code, etc; it is a facade. It is important to understand the management canister's role, however, in order to understand some of the advanced ICP features, such as threshold ECDSA and integrations like Bitcoin.
+To enable canister management, the management canister exposes management functionality to end users and other canisters. While it is titled the 'management canister', it is not actually a canister that exists with an isolated state, Wasm code, etc; it is a facade. It is important to understand the management canister's role, however, in order to understand some of the advanced ICP features, such as threshold ECDSA and integrations like Bitcoin.
 
-Management operations such as updating a canister, creating a canister, and stopping or starting a canister, are sent to the management canister and then executed. When executed, the messages are sent to the relevant subnet and intercepted by the execution environment, which triggers the execution of the operation.
+Management operations such as updating a canister, creating a canister, and stopping or starting a canister, are sent to the management canister and then executed. When executed, the messages are sent to the relevant <GlossaryTooltip>subnet</GlossaryTooltip> and intercepted by the execution environment, which triggers the execution of the operation.
 
 ## Prerequisites
 
@@ -71,7 +73,7 @@ To add another identity as an additional controller of the canister, first, let'
 dfx identity new ControllerExample
 ```
 
-Then, get the principal value for this new identity with the command:
+Then, get the <GlossaryTooltip>principal</GlossaryTooltip> value for this new identity with the command:
 
 ```bash
 dfx identity use ControllerExample
@@ -226,7 +228,7 @@ Starting code for canister poll_frontend, with canister_id 5h5yf-eiaaa-aaaaa-qaa
 
 ## Checking the cycles balance of a canister
 
-To check a canister's cycles balance, you must be the controller of the canister. The cycles balance can be seen in the output of the `dfx canister status` command, such as:
+To check a canister's <GlossaryTooltip>cycles</GlossaryTooltip> balance, you must be the controller of the canister. The cycles balance can be seen in the output of the `dfx canister status` command, such as:
 
 ```bash
 dfx canister status 5o6tz-saaaa-aaaaa-qaacq-cai --network ic

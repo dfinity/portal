@@ -2,15 +2,16 @@
 keywords: [intermediate, tokens, concept, defi]
 ---
 
-
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
 
 # Account trimming
 
 <MarkdownChipRow labels={["Intermediate" , "Concept"]} />
 
 ## Overview
-Even if the ledger can index a large number of accounts, it has a finite capacity.
+Even if the <GlossaryTooltip>ledger</GlossaryTooltip> can index a large number of accounts, it has a finite capacity.
 To avoid saturation and maintain good performance,
 some accounts are trimmed if the ledger capacity is reaching a threshold.
 This mechanism prevents dust (i.e. accounts with balance too small to be spent) from accumulating in the ledger.

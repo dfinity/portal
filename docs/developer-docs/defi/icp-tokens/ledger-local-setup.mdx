@@ -9,7 +9,42 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <MarkdownChipRow labels={["Intermediate" , "Tutorial"]} />
 
 ## Overview
-If you are working in a local development environment, i.e. with a local replica instead of the public Internet Computer, you can't access the ICP ledger. In order to test your application that integrates with the ICP ledger locally, you need to deploy a local ledger canister. However, this local ledger canister won't have the history and balances of the live ICP ledger.
+
+The Internet Computer Protocol (ICP) implements management of its utility token (ticker "ICP") using a specialized canister, called the **ICP ledger canister**. There is a single ledger canister which runs alongside other canisters on a special subnet of the Internet Computer - the NNS subnet. The ICP ledger canister is a smart contract that holds **blocks** with each containing a single transaction. These transactions either **mint ICP tokens** for accounts, **transfer ICP tokens** from one account to another, **burn ICP tokens** eliminating them from existence, **approve ICP tokens** to be spent by some other accountidentifier or **transfer ICP from** a previously approved accountidentifier. The ICP ledger canister maintains a traceable history of all transactions starting from its genesis state (initial state).
+
+Each new transaction is placed into a block and each block is associated with a monotonically increasing unique index. The entire chain is regularly signed by the network. The signature used to authenticate the chain can be verified by any third party who has access to the root public key of the Internet Computer. Specific transactions can be retrieved by querying the ICP ledger for blocks.
+
+If you are working in a local development environment, i.e. with a local replica instead of the public Internet Computer, you can't access the ICP ledger running on mainnet. In order to test your application that integrates with the ICP ledger locally, you need to deploy a local ledger canister or install the NNS locally through dfx. However, this local ledger canister won't have the history and balances of the live ICP ledger.
+
+## Architecture
+
+### Accounts
+
+An ICP ledger account (see ICRC-1 standard) belongs to and is controlled by the account owner who must be a valid principal ID. No account can be owned by two or more principals (no "joint accounts"). However, since a principal can refer to an external user as well as to a canister, joint accounts can be implemented as canisters.
+
+An account on the ledger is represented and stored as an `AccountIdentifier`, which is derived from the principal ID and subaccount identifier by computing a hash of the two.  The subaccount is an optional bitstring which helps distinguish between the different sub-accounts of the same owner.
+
+In this context, you can think of principal identifiers as a rough equivalent to the hash of a user’s public key for Bitcoin or Ethereum. You use the corresponding secret key to sign messages and therefore authenticate to the ledger canister and operate on the principal’s account. Canisters can also have accounts in the ledger canister, in which case the address is derived from the canister’s principal.
+
+:::info Why does the ledger use `AccountIdentifier`s and not just Principal IDs?
+
+The main reason for introducing accounts was to allow a principal to control multiple accounts. While this could be abstracted away for a user by a the wallet software, this is not possible for canisters.
+:::
+
+### Transaction types
+
+There are four operations that can change the internal state of the ledger canister:
+
+-   **Minting ICP tokens** for accounts.
+
+-   **Transferring ICP tokens** between accounts.
+
+-   **Burning ICP tokens**.
+
+-   **Approve ICP tokens**.
+
+All operations are recorded as transactions in the ledger canister.
+
 
 :::info
 There are two ways of deploying an ICP ledger locally.
