@@ -5,6 +5,8 @@ keywords: [intermediate, tokens, tutorial, index]
 import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
 
 # Index canisters
 
@@ -12,7 +14,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-On ICP, an index canister is used in conjunction with a ledger canister to provide the ability for transactions to be queried for a specific account. Without an index canister, a ledger's transaction history cannot easily be parsed and used by applications, as the entire transaction history of a ledger would need to be processed.
+On ICP, an index <GlossaryTooltip>canister</GlossaryTooltip> is used in conjunction with a <GlossaryTooltip>ledger</GlossaryTooltip> canister to provide the ability for transactions to be queried for a specific account. Without an index canister, a ledger's transaction history cannot easily be parsed and used by applications, as the entire transaction history of a ledger would need to be processed.
 
 An index canister can be used to:
 
@@ -32,7 +34,7 @@ This guide displays how to deploy an index canister locally and use it in conjun
 
 ## Wasm and Candid files
 
-Go to the [releases overview](https://dashboard.internetcomputer.org/releases) and copy the latest replica binary revision (IC_VERSION). At the time of writing, this is `b9a0f18dd5d6019e3241f205de797bca0d9cc3f8`.
+Go to the [releases overview](https://dashboard.internetcomputer.org/releases) and copy the latest <GlossaryTooltip>replica</GlossaryTooltip> binary revision (IC_VERSION). At the time of writing, this is `b9a0f18dd5d6019e3241f205de797bca0d9cc3f8`.
 
 <AdornedTabs groupId="standards">
 <TabItem value="icp" label="ICP" default>
@@ -275,7 +277,7 @@ Depending on how many mint operations you created while setting up your ICRC-1 l
 
 You can check that the synchronization of the index is working by creating a transaction on the ICP ledger and then checking the status of that transaction.
 If you followed the guide on setting up an ICP ledger locally your default identity should have some ICP to be send.
-Send some ICP to any principal with the command:
+Send some ICP to any <GlossaryTooltip>principal</GlossaryTooltip> with the command:
 
 ```
 dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai icrc1_transfer '(record { to = record { owner = principal "npki3-wdfh4-siaeq-orwh4-bh5of-r7mxr-i35lm-6f2eh-rtmwp-dmzmn-tae";};  amount = 100000:nat;})'

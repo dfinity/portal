@@ -3,10 +3,11 @@ keywords: [intermediate, defi, overview, tokens, deploy a token, create a token,
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Create a token
 
-<MarkdownChipRow labels={["Intermediate"]} />
+<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
 ## Overview
 
@@ -18,7 +19,7 @@ This guide will provide a quickstart on how you can create and deploy your own c
 
 ## Setup a local ICRC-1 ledger
 
-To create a new ICRC-1 token, you will need to first download and configure a local project for the ICRC-1 ledger canister. This is because each token will need its own ledger canister to record the token's balances and transactions. [Follow the ICRC-1 ledger documentation for instructions](/docs/current/developer-docs/defi/icrc-1/icrc1-ledger-setup).
+To create a new ICRC-1 token, you will need to first download and configure a local project for the ICRC-1 <GlossaryTooltip>ledger</GlossaryTooltip> <GlossaryTooltip>canister</GlossaryTooltip>. This is because each token will need its own ledger canister to record the token's balances and transactions. [Follow the ICRC-1 ledger documentation for instructions](/docs/current/developer-docs/defi/icrc-1/icrc1-ledger-setup).
 
 ## Export token settings
 
@@ -48,7 +49,7 @@ export TRANSFER_FEE=10_000
 
 #### `ARCHIVE_CONTROLLER`
 
-The [controller principal](/docs/current/developer-docs/defi/cycles/cycles-wallet#controller-and-custodian-roles) of the archive canisters.
+The [controller <GlossaryTooltip>principal</GlossaryTooltip>](/docs/current/developer-docs/defi/cycles/cycles-wallet#controller-and-custodian-roles) of the archive canisters.
 
 ```
 dfx identity new archive_controller
