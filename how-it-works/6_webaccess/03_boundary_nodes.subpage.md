@@ -22,7 +22,7 @@ The API boundary node allows IC native applications to directly call the caniste
 
 Both the HTTP gateway and the API boundary node are currently combined into the boundary node. Work to separate the two into two independent services is ongoing. The first proposal to deploy API boundary nodes under the control of the NNS has been adopted. The next step is to create the HTTP gateways, that can be run by anyone, and shift the traffic from the existing boundary nodes to the HTTP gateways and API boundary nodes. [For more information on the current state check the updates in the forum.](https://forum.dfinity.org/t/boundary-node-roadmap/15562)
 
-In addition to the two endpoints, the boundary nodes provide to access the IC, the boundary nodes also provide caching to improve the performance and a [custom domains service](/docs/).
+In addition to the two endpoints, the boundary nodes provide to access the IC, the boundary nodes also provide caching to improve the performance and a [custom domains service](/docs/current/developer-docs/web-apps/custom-domains/using-custom-domains).
 
 ## Go Even Deeper
 
