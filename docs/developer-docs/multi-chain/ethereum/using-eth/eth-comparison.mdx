@@ -92,7 +92,7 @@ This comparison provides an overview of the key differences in smart contract de
 **ICP**: Canisters can be written in any language that complies to [Wasm](https://webassembly.org/) or has an interpreter that can compile to Wasm including [Rust](/docs/current/developer-docs/backend/rust/), [Typescript](/docs/current/developer-docs/backend/Typescript), [Motoko](/docs/current/motoko/main/getting-started/motoko-introduction), and [Python](/docs/current/developer-docs/backend/python/).
 
 #### Accounts
-**Ethereum**: On Ethereum, there are two main types of accounts: Externally owned accounts (EOAs) and contract accounts. Externally owned accounts, often referred to as wallets, are controlled by anyone with the private key. A contract account is a smart contract deployed to the network.
+**Ethereum**: On Ethereum, there are two main types of accounts: externally owned accounts (EOAs) and contract accounts. Externally owned accounts, often referred to as wallets, are controlled by anyone with the private key. A contract account is a smart contract deployed to the network.
 
 **ICP**: Similar to EOA accounts, several wallets support ICP as referenced in [this resource](https://support.dfinity.org/hc/en-us/articles/4405480810644-Which-wallets-can-store-ICP-utility-tokens).
 
@@ -116,7 +116,7 @@ Similar to the concept of contract accounts, ICP canisters themselves can hold I
 **Ethereum**: Smart contracts are immutable. To update functionalities, developers need to create a new smart contract and migrate data.
 **ICP**: Developers can create upgradeable or non-upgradable (also known as "blackholed") canisters. Upgradable canisters allow updates by reinstalling the code or deploying a new version. Non-upgradable canisters are similar to Ethereum smart contracts.
 
-## Consensus
+#### Consensus
 
 ***Ethereum**: Ethereum uses [proof of stake](https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/) as its consensus mechanism.
 ***ICP**: The IC consensus protocol provides cryptographically guaranteed finality. The approach on ICP solves the drawbacks of probabilistic finality used in Bitcoin-like protocols, including slow finality times. ICP ensures faster and more secure transaction finality.
@@ -126,6 +126,3 @@ Similar to the concept of contract accounts, ICP canisters themselves can hold I
 - The Internet Computer for Ethereum Developers [blog post](https://medium.com/dfinity/the-internet-computer-for-ethereum-developers-3331b50db31b) by Dominic Wörner
 
 - [Internet Computer Guide for Ethereum Developers](https://github.com/jennifertrin/ICEthereumGuide) by Jennifer Tran
-
-
-
