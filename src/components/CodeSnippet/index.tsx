@@ -5,8 +5,6 @@ import transitions from "@site/static/transitions.json";
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "@docusaurus/Link";
-import LinkArrowUp from "../Common/Icons/LinkArrowUp";
-import LinkArrowDown from "../Common/Icons/LinkArrowDown";
 import LinkArrowRight from "../Common/Icons/LinkArrowRight";
 import CodeBlockString from "@site/src/theme/CodeBlock/Content/String";
 
