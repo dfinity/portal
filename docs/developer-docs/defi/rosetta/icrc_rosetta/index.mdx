@@ -45,7 +45,9 @@ docker run \
     dfinity/ic-icrc-rosetta-api \
     --port 8082 \
     --network-type mainnet \
-    --ledger-id mxzaz-hqaaa-aaaar-qaada-cai
+    --ledger-id mxzaz-hqaaa-aaaar-qaada-cai \
+    --store-file /data/db.sqlite
+    
 ```
 This call specifies a port using `--port` which is used to publish through Docker. 
 The default port if not specified is `8080`. The default network is the testnet. 
@@ -134,18 +136,20 @@ This message confirms that you are caught up with all blocks.
 Mount the `/data` directory as a [volume](https://docs.docker.com/storage/volumes/).
 
 ```bash
-docker volume create rosetta
+docker volume create ic-icrc-rosetta
 ```
 ```bash
 docker run \
-    --volume rosetta:/data \
+    --volume ic-icrc-rosetta:/data \
     --interactive \
     --tty \
     --publish 8080:8080 \
     --rm \
    dfinity/ic-icrc-rosetta-api \
     --network-type mainnet \
-    --ledger-id mxzaz-hqaaa-aaaar-qaada-cai
+    --ledger-id mxzaz-hqaaa-aaaar-qaada-cai \
+    --store-file /data/db.sqlite
+
 ```
 
 - #### Is the Rosetta node versioned?

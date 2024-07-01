@@ -3,6 +3,8 @@ keywords: [intermediate, defi, overview, tokens, icrc-1, icrc-2, icrc-3]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
 
 # Token standards
 
@@ -12,7 +14,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 Tokens deployed on ICP must adhere to a standard. The network's native token, ICP, adheres to its own standard as it is unique on the network in the sense that it is used for network utility and governance. Tokens created for other purposes on the network typically adhere to one of the ICRC standards.
 
-[ICRC](https://github.com/dfinity/ICRC) stands for `Internet Computer Request for Comments'. ICRC standards are proposed by the community working group and are not specific to tokens; they can be created for anything on ICP, such as services, canister calls, or authentication methods. However, this documentation will detail the ICRC standards that are specific to tokens.
+[ICRC](https://github.com/dfinity/ICRC) stands for `Internet Computer Request for Comments'. ICRC standards are proposed by the community working group and are not specific to tokens; they can be created for anything on ICP, such as services, <GlossaryTooltip>canister</GlossaryTooltip> calls, or authentication methods. However, this documentation will detail the ICRC standards that are specific to tokens.
 
 In the past, the [DIP-721](#dip-721) standard was promoted and used by projects on the network for deploying non-fungible tokens. The ICRC-7 standard has since been developed as a newer alternative to the DIP-721 standard.
 
@@ -24,7 +26,7 @@ In the past, the [DIP-721](#dip-721) standard was promoted and used by projects 
 
 - The proposal is refined through improvement iterations by the working group.
 
-- Once the proposal is deemed ready for implementation by the working group, it is proposed to the NNS through an NNS proposal.
+- Once the proposal is deemed ready for implementation by the working group, it is proposed to the <GlossaryTooltip>NNS</GlossaryTooltip> through an NNS proposal.
 
 - The ICRC standard is either adopted or rejected by the NNS. 
 
@@ -42,7 +44,7 @@ View an example dapp for [ICP transfers](https://github.com/dfinity/examples/tre
 
 ## ICRC-1
 
-The ICRC-1 standard is for fungible tokens on ICP. It uses an `Account` value that corresponds to the pair `(principal, subaccount)`, where a principal can have multiple accounts, and each subaccount of a principal is identified by a 32-byte string.
+The ICRC-1 standard is for fungible tokens on ICP. It uses an `Account` value that corresponds to the pair `(principal, subaccount)`, where a <GlossaryTooltip>principal</GlossaryTooltip> can have multiple accounts, and each subaccount of a principal is identified by a 32-byte string.
 
 The ICRC-1 standard is considered the 'base' standard and intentionally excludes certain features and functions, such as:
 
@@ -84,7 +86,7 @@ The ICRC-2 standard is an extension of the ICRC-1 standard that enables addition
 
 The approve and transfer from workflow uses two steps:
 
-1. First, the account owner allows another user to transfer up to X tokens from their account (A) by calling the ledger's `icrc2_approve` method.
+1. First, the account owner allows another user to transfer up to X tokens from their account (A) by calling the <GlossaryTooltip>ledger</GlossaryTooltip>'s `icrc2_approve` method.
 
 2. The user transfers up to X tokens from account A to any account through the `icrc2_transfer_from` method. The number of transfers is not limited as long as the total amount spent is below X.
 
@@ -103,12 +105,6 @@ View an example of a dapp that enables the [`transfer_from` workflow](https://gi
 [Read the full ICRC-2 standard](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-2).
 
 ## ICRC-7
-
-:::caution
-
-ICRC-7 is still in the drafting and development phases. It has not yet been implemented on the ICP mainnet.
-
-:::
 
 ICRC-7 defines a standard for non-fungible tokens (NFTs) on ICP and can be used to create a set of NFTs, also referred to as an NFT collection. It is a minimal standard and can be thought of as the equivalent of the ICRC-1 standard, but for non-fungible tokens instead of fungible tokens. This base standard intentionally excludes some functions, such as:
 
@@ -143,12 +139,6 @@ Additional technical metadata elements can be found in the [ICRC-7 specification
 [Read the full ICRC-7 standard](https://github.com/dfinity/ICRC/blob/main/ICRCs/ICRC-7/ICRC-7.md).
 
 ## ICRC-37
-
-:::caution
-
-ICRC-37 is still in the drafting and development phases. It has not yet been implemented on the ICP mainnet.
-
-:::
 
 The ICRC-37 standard is an extension of ICRC-7 that provides additional functionality for an approval workflow. This standard adds support for creating approvals, revoking approvals, querying approval information, and making transfers based on approvals. Token ledgers that implement ICRC-37 must implement all of the functions within ICRC-7, but ledgers that support ICRC-7 may choose whether or not to implement ICRC-37 if they intend to offer approve and transfer functionalities. The scope of ICRC-37 was originally part of ICRC-7 but was split into a separate standard for the following reasons:
 
