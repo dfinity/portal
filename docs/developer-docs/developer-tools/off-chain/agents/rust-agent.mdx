@@ -10,9 +10,9 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-The Rust agent by DFINTY is a simple library that enables you to build applications and interact with ICP. It serves as a Rust-based low-level backend for the IC SDK.
+The Rust agent (`ic-agent`) by DFINITY is a simple library that enables you to build applications and interact with ICP, serving as a low-level Rust backend for the IC SDK.
 
-The agent is designed to be compatible with multiple versions of the replica API. It exposes both low-level APIs for communicating with ICP components like the replica and provides higher-level APIs for communicating with software applications deployed as canisters.
+The agent is designed to be compatible with multiple versions of the replica API, exposing both low-level APIs for communicating with components like the replica and higher-level APIs for communicating with software applications deployed as canisters.
 
 One example of a project that uses the `ic-agent` is [dfx](https://github.com/dfinity/sdk).
 
@@ -23,6 +23,104 @@ To add the `ic-agent` crate as a dependency in your project, use the command:
 ```
 cargo add ic-agent
 ```
+
+## Initializing the agent
+
+Before using the agent in your project, it must be initialized using the `Agent::builder()` function. This can be done within your Rust code, or in a separate `agent.rs` file that can be imported into other Rust files. Here is an example of how to initialize the Rust agent:
+
+```rust
+use anyhow::Result;
+use ic_agent::{agent::http_transport::reqwest_transport::ReqwestHttpReplicaV2Transport, Agent};
+
+pub async fn create_agent(url: &str) -> Result<Agent> {
+    let transport = ReqwestHttpReplicaV2Transport::create(url)?;
+
+    let agent = Agent::builder().with_transport(transport).build()?;
+    agent.fetch_root_key().await?;
+
+    Ok(agent)
+}
+```
+
+
+## Authentication
+
+The Rust agent's `Identity` object provides signatures that can be used for HTTP requests or identity delegations. It represents the principal ID of the sender.
+
+Identities can be created when the agent is initialized using the `.with_identity(create_identity())` method. Each agent has a single `Identity` object that can contain multiple identity values.
+
+```rust
+async fn create_a_canister() -> Result<Principal, Box<dyn std::error::Error>> {
+  let agent = Agent::builder()
+    .with_url(URL)
+    .with_identity(create_identity())
+    .build()?;
+```
+
+
+## Making calls
+
+The Rust agent can be used to make calls to other canisters. To make a call to a canister, use the `agent.update` method for an update call, or `agent.query` for a query call. Then, pass in the canister's ID and the method of the canister you'd like to call.
+
+For example, to call the management canister's `provisional_create_canister_with_cycles` method, use the following code:
+
+```rust
+  let effective_canister_id = Principal::from_text("rwlgt-iiaaa-aaaaa-aaaaa-cai").unwrap();
+  let response = agent.update(&management_canister_id, "provisional_create_canister_with_cycles")
+    .with_effective_canister_id(effective_canister_id)
+    .with_arg(Encode!(&Argument { amount: None})?)
+    .call_and_wait()
+    .await?;
+
+  let result = Decode!(response.as_slice(), CreateCanisterResult)?;
+  let canister_id: Principal = result.canister_id;
+  Ok(canister_id)
+```
+
+## Asset certification
+
+The `ic-http-certification` library can be used to certify assets using Rust. Asset certification is used to verify that an HTTP response received by an HTTP gateway from a canister is authentic and has not been maliciously altered. For example, to certify that both an HTTP request and an HTTP response are valid, the following code can be used:
+
+```rust
+use ic_http_certification::{HttpCertification, HttpRequest, HttpResponse, DefaultCelBuilder, DefaultResponseCertification};
+
+let cel_expr = DefaultCelBuilder::full_certification()
+    .with_request_headers(vec!["Accept", "Accept-Encoding", "If-None-Match"])
+    .with_request_query_parameters(vec!["foo", "bar", "baz"])
+    .with_response_certification(DefaultResponseCertification::certified_response_headers(vec![
+        "Cache-Control",
+        "ETag",
+    ]))
+    .build();
+
+let request = HttpRequest {
+    method: "GET".to_string(),
+    url: "/index.html?foo=a&bar=b&baz=c".to_string(),
+    headers: vec![
+        ("Accept".to_string(), "application/json".to_string()),
+        ("Accept-Encoding".to_string(), "gzip".to_string()),
+        ("If-None-Match".to_string(), "987654321".to_string()),
+    ],
+    body: vec![],
+};
+
+let response = HttpResponse {
+    status_code: 200,
+    headers: vec![
+        ("Cache-Control".to_string(), "no-cache".to_string()),
+        ("ETag".to_string(), "123456789".to_string()),
+        ("IC-CertificateExpression".to_string(), cel_expr.to_string()),
+    ],
+    body: vec![1, 2, 3, 4, 5, 6],
+    upgrade: None,
+};
+
+let certification = HttpCertification::full(&cel_expr, &request, &response, None);
+```
+
+Note that to perform a full certification, such as in the example above, a Common Expression Language (CEL) expression created from `DefaultCelBuilder::full_certification` must be included, along with both the `HttpRequest` and `HttpResponse`. Optionally, a full certification may include a pre-calculated response body hash.
+
+[Read more about HTTP certification](https://github.com/dfinity/response-verification/tree/main/packages/ic-http-certification).
 
 ## Example
 
@@ -35,47 +133,51 @@ use serde::Deserialize;
 
 #[derive(CandidType)]
 struct Argument {
-  amount: Option<Nat>,
+  amount: Option<Nat>,
 }
 
 #[derive(CandidType, Deserialize)]
 struct CreateCanisterResult {
-  canister_id: Principal,
+  canister_id: Principal,
 }
 
 async fn create_a_canister() -> Result<Principal, Box<dyn std::error::Error>> {
-  let agent = Agent::builder()
-    .with_url(URL)
-    .with_identity(create_identity())
-    .build()?;
-  // Only do the following call when not contacting the IC main net (e.g. a local emulator).
-  // This is important as the main net public key is static and a rogue network could return
-  // a different key.
-  // If you know the root key ahead of time, you can use `agent.set_root_key(root_key);`.
-  agent.fetch_root_key().await?;
-  let management_canister_id = Principal::from_text("aaaaa-aa")?;
+  let agent = Agent::builder()
+    .with_url(URL)
+    .with_identity(create_identity())
+    .build()?;
+  // Only do the following call when not contacting the IC main net (e.g. a local emulator).
+  // This is important as the main net public key is static and a rogue network could return
+  // a different key.
+  // If you know the root key ahead of time, you can use `agent.set_root_key(root_key);`.
+  agent.fetch_root_key().await?;
+  let management_canister_id = Principal::from_text("aaaaa-aa")?;
 
-  // Create a call to the management canister to create a new canister ID,
-  // and wait for a result.
-  // The effective canister id must belong to the canister ranges of the subnet at which the canister is created.
-  let effective_canister_id = Principal::from_text("rwlgt-iiaaa-aaaaa-aaaaa-cai").unwrap();
-  let response = agent.update(&management_canister_id, "provisional_create_canister_with_cycles")
-    .with_effective_canister_id(effective_canister_id)
-    .with_arg(Encode!(&Argument { amount: None})?)
-    .call_and_wait()
-    .await?;
+  // Create a call to the management canister to create a new canister ID,
+  // and wait for a result.
+  // The effective canister id must belong to the canister ranges of the subnet at which the canister is created.
+  let effective_canister_id = Principal::from_text("rwlgt-iiaaa-aaaaa-aaaaa-cai").unwrap();
+  let response = agent.update(&management_canister_id, "provisional_create_canister_with_cycles")
+    .with_effective_canister_id(effective_canister_id)
+    .with_arg(Encode!(&Argument { amount: None})?)
+    .call_and_wait()
+    .await?;
 
-  let result = Decode!(response.as_slice(), CreateCanisterResult)?;
-  let canister_id: Principal = result.canister_id;
-  Ok(canister_id)
+  let result = Decode!(response.as_slice(), CreateCanisterResult)?;
+  let canister_id: Principal = result.canister_id;
+  Ok(canister_id)
 }
 
 let canister_id = create_a_canister().await.unwrap();
 eprintln!("{}", canister_id);
 ```
 
-## Further reading
+## Resources
+
+- [HTTP certification](https://github.com/dfinity/response-verification/tree/main/packages/ic-http-certification).
 
 - [ic-agent documentation](https://docs.rs/ic-agent/latest/ic_agent).
+
 - [Rust agent documentation](https://docs.rs/ic-agent/latest/ic_agent/struct.Agent.html).
+
 - [Rust agent source code](https://github.com/dfinity/agent-rs).

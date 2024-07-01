@@ -10,13 +10,13 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-[Node.js](https://nodejs.org/en) is a runtime environment for JavaScript. To interact with a canister through Node.js, you can use the [JavaScript agent](https://www.npmjs.com/package/@dfinity/agent). Using Node.js can be enable use-cases such as running an oracle, connecting an existing Node.js application to ICP, or introducing a websocket layer to your application.
+[Node.js](https://nodejs.org/en) is a runtime environment for JavaScript. To interact with a canister through Node.js, you can use the [JavaScript agent](https://www.npmjs.com/package/@dfinity/agent). Using Node.js can enable use cases such as running an oracle, connecting an existing Node.js application to ICP, or introducing a websocket layer to your application.
 
 [More information about calling ICP from JavaScript in a web browser](/docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent).
 
 ## Identity management
 
-Before you setup an actor, you will need to have an identity. You can set up an identity that will resolve a seed phrase to a principal by using the following code:
+Before you set up an actor, you will need to have an identity. You can set up an identity that will resolve a seed phrase to a principal by using the following code:
 
 ```js
 // identity.js
@@ -29,10 +29,10 @@ const seed = "test test test test test test test test test test test test";
 export const identity = await Secp256k1KeyIdentity.fromSeedPhrase(seed);
 ```
 
-The seed phrase is derived from the word `test`, repeated 12 times. This is useful for testing purposes and local development. When you are deploying your contract to ICP, you should change the seed out for something private.
+The seed phrase in this example is derived from the word `test` repeated 12 times for testing purposes and local development. When you deploy your contract to ICP, you should change the seed to something private.
 
 :::caution
-Remember to store any seed phrase you use in production in a secure place. Use environment variables and never commit a real seed phrase in plaintext in your codebase.
+Remember to store any seed phrase you use in production in a secure place. Use environment variables, and never commit a real seed phrase in plain text to your codebase.
 :::
 
 
@@ -48,20 +48,20 @@ import { AssetManager } from "@dfinity/assets";
 
 const assetCanisterId = localCanisterIds.asset.local;
 const assetManager = new AssetManager({
-  canisterId: assetCanisterId,
-  agent, // re-use agent
-  concurrency: 32, // Optional (default: 32), max concurrent requests.
-  maxSingleFileSize: 450000, // Optional bytes (default: 450000), larger files will be uploaded as chunks.
-  maxChunkSize: 1900000, // Optional bytes (default: 1900000), size of chunks when file is uploaded as chunks.
+  canisterId: assetCanisterId,
+  agent, // re-use agent
+  concurrency: 32, // Optional (default: 32), max concurrent requests.
+  maxSingleFileSize: 450000, // Optional bytes (default: 450000), larger files will be uploaded as chunks.
+  maxChunkSize: 1900000, // Optional bytes (default: 1900000), size of chunks when file is uploaded as chunks.
 });
 
 async function main() {
-  // ...
-  const uploadedFilePath = `token/${idx}${path.extname(node_example.asset)}`;
-  const uploadedThumbnailPath = `thumbnail/${idx}.jpeg`;
+  // ...
+  const uploadedFilePath = `token/${idx}${path.extname(node_example.asset)}`;
+  const uploadedThumbnailPath = `thumbnail/${idx}.jpeg`;
 
-  await assetManager.store(file, { fileName: uploadedFilePath });
-  await assetManager.store(thumbnail, { fileName: uploadedThumbnailPath });
+  await assetManager.store(file, { fileName: uploadedFilePath });
+  await assetManager.store(thumbnail, { fileName: uploadedThumbnailPath });
 }
 ```
 :::caution
@@ -71,7 +71,7 @@ This example is a **code snippet** that is part of a larger code file. This snip
 
 ## WebSockets
 
-ICP doesn't natively support WebSockets, though the external package [ic-websocket-js](https://www.npmjs.com/package/ic-websocket-js) package can be used to implement WebSockets for ICP dapps.
+ICP doesn't natively support WebSockets, though the external package [ic-websocket-js](https://www.npmjs.com/package/ic-websocket-js) can be used to implement WebSockets for ICP dapps.
 
 You can install this package with the command:
 
@@ -80,7 +80,7 @@ npm install --save ic-websocket-sdk
 ```
 
 :::info
-If your project uses a `@dfinity/…`, it is recommended to use version `v0.20.1` or newer.
+If your project uses any `@dfinity/…` package, it is recommended to use version `v0.20.1` or newer.
 :::
 
 Then, define the constructor of the `IcWebSocket` class:
@@ -94,10 +94,10 @@ const gatewayUrl = "ws://127.0.0.1:8080";
 const icUrl = "http://127.0.0.1:4943";
 
 const wsConfig = createWsConfig({
-  canisterId: backendCanisterId,
-  canisterActor: node_example,
-  identity: generateRandomIdentity(),
-  networkUrl: icUrl,
+  canisterId: backendCanisterId,
+  canisterActor: node_example,
+  identity: generateRandomIdentity(),
+  networkUrl: icUrl,
 });
 
 const ws = new IcWebSocket(gatewayUrl, undefined, wsConfig);
@@ -107,7 +107,7 @@ This implementation is similar to the native browser WebSocket API, though there
 
 - `canisterId`: Your project's backend canister ID.
 
-- `canisterActor`: Imported from your canister's generated declarations (`dfx generate`). Used to serialize and deserialize the WebSocket messages automatically.
+- `canisterActor`: Imported from your canister's generated declarations (`dfx generate`) and used to serialize and deserialize the WebSocket messages automatically.
 
 - `gatewayUrl`: The WebSocket URL of the gateway.
 
@@ -126,33 +126,33 @@ const gatewayUrl = "ws://127.0.0.1:8080";
 const icUrl = "http://127.0.0.1:4943";
 
 const wsConfig = createWsConfig({
-  canisterId: backendCanisterId,
-  canisterActor: node_example,
-  identity: generateRandomIdentity(),
-  networkUrl: icUrl,
+  canisterId: backendCanisterId,
+  canisterActor: node_example,
+  identity: generateRandomIdentity(),
+  networkUrl: icUrl,
 });
 
 const ws = new IcWebSocket(gatewayUrl, undefined, wsConfig);
 
 ws.onopen = () => {
-  console.log("Connected to the canister");
+  console.log("Connected to the canister");
 };
 
 ws.onmessage = async (event) => {
-  console.log("Received message:", event.data);
+  console.log("Received message:", event.data);
 
-  const messageToSend = {
-    text: event.data.text + "-pong",
-  };
-  ws.send(messageToSend);
+  const messageToSend = {
+    text: event.data.text + "-pong",
+  };
+  ws.send(messageToSend);
 };
 
 ws.onclose = () => {
-  console.log("Disconnected from the canister");
+  console.log("Disconnected from the canister");
 };
 
 ws.onerror = (error) => {
-  console.log("Error:", error);
+  console.log("Error:", error);
 };
 ```
 
@@ -172,8 +172,8 @@ import { Principal } from "@dfinity/principal";
 import { e2e_tests_backendCanister, e2e_tests_backend } from "./actor";
 
 test("should handle a basic greeting", async () => {
-  const result1 = await e2e_tests_backend.greet("test");
-  expect(result1).toBe("Hello, test!");
+  const result1 = await e2e_tests_backend.greet("test");
+  expect(result1).toBe("Hello, test!");
 });
 ```
 
@@ -196,17 +196,17 @@ npm test
 The test should be successful and return output such as:
 
 ```
- ✓ src/tests/e2e_tests_backend.test.ts (1)
-   ✓ should handle a basic greeting
+ ✓ src/tests/e2e_tests_backend.test.ts (1)
+   ✓ should handle a basic greeting
 
- Test Files  1 passed (1)
-      Tests  1 passed (1)
-   Start at  16:24:03
-   Duration  205ms (transform 32ms, setup 0ms, collect 68ms, tests 11ms, environment 0ms, prepare 41ms)
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  16:24:03
+   Duration  205ms (transform 32ms, setup 0ms, collect 68ms, tests 11ms, environment 0ms, prepare 41ms)
 
 
- PASS  Waiting for file changes...
-       press h to show help, press q to quit
+ PASS  Waiting for file changes...
+       press h to show help, press q to quit
 ```
 
 Learn more about [testing](/docs/current/tutorials/developer-journey/level-2/2.5-unit-testing) with an agent and [view a more complex test example](/docs/current/tutorials/developer-journey/level-2/2.5-unit-testing#end2end-e2e-testing).
@@ -214,7 +214,7 @@ Learn more about [testing](/docs/current/tutorials/developer-journey/level-2/2.5
 
 ## NFT example
 
-To demonstrate how you can use Node.js to implement functionality to upload assets, create an NFT collection, and mint an NFT for an identity, the following agent-js `src/node/index.js` script can be used in conjunction with the [DIP721 NFT](https://github.com/dfinity/examples/tree/master/motoko/dip721-nft-container) backend canister example:
+To demonstrate how you can use Node.js to implement functionality to upload assets, create an NFT collection, and mint an NFT for an identity, the following agent-js `src/node/index.js` script can be used in conjunction with the [DIP-721 NFT](https://github.com/dfinity/examples/tree/master/motoko/dip721-nft-container) backend canister example:
 
 ```js
 import fetch from "isomorphic-fetch";
@@ -239,114 +239,124 @@ const localCanisterIds = require("../../.dfx/local/canister_ids.json");
 const encoder = new TextEncoder();
 
 const agent = new HttpAgent({
-  identity: await identity,
-  host: "http://127.0.0.1:4943",
-  fetch,
+  identity: await identity,
+  host: "http://127.0.0.1:4943",
+  fetch,
 });
 const effectiveCanisterId =
-  canisterId?.toString() ?? localCanisterIds.nft.local;
+  canisterId?.toString() ?? localCanisterIds.nft.local;
 const assetCanisterId = localCanisterIds.assets.local;
 const actor = createActor(effectiveCanisterId, {
-  agent,
+  agent,
 });
 const assetManager = new AssetManager({
-  canisterId: assetCanisterId,
-  agent,
-  concurrency: 32, // Optional (default: 32), max concurrent requests.
-  maxSingleFileSize: 450000, // Optional bytes (default: 450000), larger files will be uploaded as chunks.
-  maxChunkSize: 1900000, // Optional bytes (default: 1900000), size of chunks when file is uploaded as chunks.
+  canisterId: assetCanisterId,
+  agent,
+  concurrency: 32, // Optional (default: 32), max concurrent requests.
+  maxSingleFileSize: 450000, // Optional bytes (default: 450000), larger files will be uploaded as chunks.
+  maxChunkSize: 1900000, // Optional bytes (default: 1900000), size of chunks when file is uploaded as chunks.
 });
 
 async function main() {
-  nftConfig.forEach(async (nft, idx) => {
-    console.log("starting upload for " + nft.asset);
+  nftConfig.forEach(async (nft, idx) => {
+    console.log("starting upload for " + nft.asset);
 
-    // Parse metadata, if present
-    const metadata = Object.entries(nft.metadata ?? []).map(([key, value]) => {
-      return [key, { TextContent: value }];
-    });
+    // Parse metadata, if present
+    const metadata = Object.entries(nft.metadata ?? []).map(([key, value]) => {
+      return [key, { TextContent: value }];
+    });
 
-    const filePath = path.join(
-      fileURLToPath(import.meta.url),
-      "..",
-      "assets",
-      nft.asset
-    );
+    const filePath = path.join(
+      fileURLToPath(import.meta.url),
+      "..",
+      "assets",
+      nft.asset
+    );
 
-    const file = fs.readFileSync(filePath);
+    const file = fs.readFileSync(filePath);
 
-    const sha = sha256File(filePath);
-    const options = {
-      width: 256,
-      height: 256,
-      responseType: "buffer",
-      jpegOptions: { force: true, quality: 90 },
-    };
-    console.log("generating thumbnail");
-    const thumbnail = await imageThumbnail(filePath, options);
+    const sha = sha256File(filePath);
+    const options = {
+      width: 256,
+      height: 256,
+      responseType: "buffer",
+      jpegOptions: { force: true, quality: 90 },
+    };
+    console.log("generating thumbnail");
+    const thumbnail = await imageThumbnail(filePath, options);
 
-    const magic = await new mmm.Magic(mmm.MAGIC_MIME_TYPE);
-    const contentType = await new Promise((resolve, reject) => {
-      magic.detectFile(filePath, (err, result) => {
-        if (err) reject(err);
-        resolve(result);
-      });
-    });
-    console.log("detected contenttype of ", contentType);
+    const magic = await new mmm.Magic(mmm.MAGIC_MIME_TYPE);
+    const contentType = await new Promise((resolve, reject) => {
+      magic.detectFile(filePath, (err, result) => {
+        if (err) reject(err);
+        resolve(result);
+      });
+    });
+    console.log("detected contenttype of ", contentType);
 
-    /**
-     * For asset in nfts.json
-     *
-     * Take asset
-     * Check extension / mimetype
-     * Sha content
-     * Generate thumbnail
-     * Upload both to asset canister -> file paths
-     * Generate metadata from key / value
-     * Mint ^
-     */
+    /**
+     * For asset in nfts.json
+     *
+     * Take asset
+     * Check extension / mimetype
+     * Sha content
+     * Generate thumbnail
+     * Upload both to asset canister -> file paths
+     * Generate metadata from key / value
+     * Mint ^
+     */
 
-    const uploadedFilePath = `token/${idx}${path.extname(nft.asset)}`;
-    const uploadedThumbnailPath = `thumbnail/${idx}.jpeg`;
+    const uploadedFilePath = `token/${idx}${path.extname(nft.asset)}`;
+    const uploadedThumbnailPath = `thumbnail/${idx}.jpeg`;
 
-    console.log("uploading asset to ", uploadedFilePath);
-    await assetManager.store(file, { fileName: uploadedFilePath });
-    console.log("uploading thumbnail to ", uploadedThumbnailPath);
-    await assetManager.store(thumbnail, { fileName: uploadedThumbnailPath });
+    console.log("uploading asset to ", uploadedFilePath);
+    await assetManager.store(file, { fileName: uploadedFilePath });
+    console.log("uploading thumbnail to ", uploadedThumbnailPath);
+    await assetManager.store(thumbnail, { fileName: uploadedThumbnailPath });
 
-    const principal = await (await identity).getPrincipal();
+    const principal = await (await identity).getPrincipal();
 
-    const data = [
-      [
-        "location",
-        {
-          TextContent: `http://${assetCanisterId}.localhost:4943/${uploadedFilePath}`,
-        },
-      ],
-      [
-        "thumbnail",
-        {
-          TextContent: `http://${assetCanisterId}.localhost:4943/${uploadedThumbnailPath}`,
-        },
-      ],
-      ["contentType", { TextContent: contentType }],
-      ["contentHash", { BlobContent: encoder.encode(sha) }],
-      ...metadata,
-    ];
-    const mintResult = await actor.dip721_mint(principal, BigInt(idx), data);
-    console.log("result: ", mintResult);
-    const metaResult = await actor.tokenMetadata(0n);
-    console.log("new token info: ", metaResult);
-    console.log(
-      "token metadata: ",
-      prettier.format(
-        JSON.stringify(metaResult, (key, value) =>
-          typeof value === "bigint" ? value.toString() : value
-        ),
-        { parser: "json" }
-      )
-    );
-  });
+    const data = [
+      [
+        "location",
+        {
+          TextContent: `http://${assetCanisterId}.localhost:4943/${uploadedFilePath}`,
+        },
+      ],
+      [
+        "thumbnail",
+        {
+          TextContent: `http://${assetCanisterId}.localhost:4943/${uploadedThumbnailPath}`,
+        },
+      ],
+      ["contentType", { TextContent: contentType }],
+      ["contentHash", { BlobContent: encoder.encode(sha) }],
+      ...metadata,
+    ];
+    const mintResult = await actor.dip721_mint(principal, BigInt(idx), data);
+    console.log("result: ", mintResult);
+    const metaResult = await actor.tokenMetadata(0n);
+    console.log("new token info: ", metaResult);
+    console.log(
+      "token metadata: ",
+      prettier.format(
+        JSON.stringify(metaResult, (key, value) =>
+          typeof value === "bigint" ? value.toString() : value
+        ),
+        { parser: "json" }
+      )
+    );
+  });
 }
 main();
 ```
+
+## Resources
+
+- [Agent JS developer docs](/docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent)
+
+- [agent-js](https://www.npmjs.com/package/@dfinity/agent)
+
+- [ic-websocket-js](https://www.npmjs.com/package/ic-websocket-js)
+
+- [End to end testing](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-2/2.5-unit-testing#end2end-e2e-testing)
