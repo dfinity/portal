@@ -141,7 +141,7 @@ const Content: React.FC = () => {
                 >
                   Bitcoin adapters
                 </Link>
-                , ICP nodes provide canister smart contract with real time
+                , ICP nodes provide canister smart contracts with real time
                 access to the latest state of the Bitcoin blockchain. The
                 availability of the Bitcoin UTXO set on ICP enables canister
                 smart contracts to read the balance of any BTC address.
