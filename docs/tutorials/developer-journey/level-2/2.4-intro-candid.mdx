@@ -4,6 +4,7 @@ keywords: [intermediate, tutorial, developer journey, candid, introduction candi
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import '/src/components/CenterImages/center.scss';
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 
 # 2.4 Introduction to Candid
@@ -14,7 +15,7 @@ import '/src/components/CenterImages/center.scss';
 
 ## Overview
 
-Candid is an interface description language that is used to describe the public interface of a service. A **service** is usually in the form of an application deployed as a canister on ICP. Public interfaces of canisters are used to interact with the canister. Candid supports interactions through the IC SDK via the terminal, through a web browser, or through the use of agents. It also provides a way to specify input argument values and display return values from different canister **methods**, regardless of the manner used to interact with the canister. Recall that a method is a piece of code specifying a task which declares a sequence of arguments and their associated result types.
+Candid is an interface description language that is used to describe the public interface of a service. A **service** is usually in the form of an application deployed as a <GlossaryTooltip>canister</GlossaryTooltip> on ICP. Public interfaces of canisters are used to interact with the canister. Candid supports interactions through the IC SDK via the terminal, through a web browser, or through the use of agents. It also provides a way to specify input argument values and display return values from different canister **methods**, regardless of the manner used to interact with the canister. Recall that a method is a piece of code specifying a task which declares a sequence of arguments and their associated result types.
 
 Candid is language-agnostic, which is a key benefit since it allows for the inter-operation between canisters written in different languages, such as Motoko, Rust, and JavasScript, and client applications.
 
