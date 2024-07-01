@@ -678,6 +678,7 @@ const sidebars = {
               id: "developer-docs/multi-chain/ethereum/overview",
             },
             "developer-docs/multi-chain/ethereum/using-eth/eth-dev-workflow",
+            "developer-docs/multi-chain/ethereum/using-eth/eth-comparison",
             "developer-docs/multi-chain/ethereum/using-eth/generating-addresses",
             "developer-docs/multi-chain/ethereum/using-eth/signing-transactions",
             "developer-docs/multi-chain/ethereum/using-eth/submit-transactions",
