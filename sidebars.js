@@ -989,6 +989,17 @@ const sidebars = {
         },
         {
           type: "category",
+          label: "Decentralized exchanges",
+          items: [
+            {
+            type: "doc",
+            label: "Overview",
+            id: "developer-docs/defi/dex/overview",
+          },
+        ],
+        },
+        {
+          type: "category",
           label: "Wallets",
           items: [
             "developer-docs/defi/wallets/overview",
