@@ -13,15 +13,15 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 When developing and deploying canisters on the Internet Computer, developers need to have <GlossaryTooltip>cycles</GlossaryTooltip> to pay for the resources used by their canisters. The **cycles ledger** canister has been developed as an alternative to the **cycles wallet** canister for cycles management.
 
-The biggest difference between the cycles ledger and cycles wallet is that the cycles ledger is a single global ledger canister, whereas the cycles wallet canister must be deployed separately for every developer to be used. Additionally, the cycles wallet has some downsides that the cycles ledger remedies. Some of these are:
+The biggest difference between the cycles <GlossaryTooltip>ledger</GlossaryTooltip> and cycles wallet is that the cycles ledger is a single global ledger canister, whereas the cycles wallet canister must be deployed separately for every developer to be used. Additionally, the cycles wallet has some downsides that the cycles ledger remedies. Some of these are:
 
-- Cycles wallets are a complex solution to associate cycles with principal IDs.
+- Cycles wallets are a complex solution to associate cycles with <GlossaryTooltip>principal</GlossaryTooltip> IDs.
 - Cycles wallets consume cycles themselves, meaning developers need to pay cycles to store cycles.
 - If a cycles wallet canister ID is lost, the cycles in that cycles wallet canister are also lost.
 
 In short, the cycles ledger simplifies cycle management by providing the ability for principal IDs to hold cycles.
 
-The cycles ledger currently complies with the ICRC-1, ICRC-2, and ICRC-3 standards. In addition to standard ledger functionality, the cycles ledger also interacts with the NNS canisters and user canisters to provide cycles ledger-specific functions, such as:
+The cycles ledger currently complies with the ICRC-1, ICRC-2, and ICRC-3 standards. In addition to standard ledger functionality, the cycles ledger also interacts with the <GlossaryTooltip>NNS</GlossaryTooltip> canisters and user canisters to provide cycles ledger-specific functions, such as:
 
 - Accepting incoming cycles sent from other canisters.
 - Sending cycles to other canisters.
@@ -152,7 +152,7 @@ Replace `CANISTER_NAME` with a name for the new canister.
 
 With these two commands, there are two **optional** flags that can be used:
 
-- `dfx create canister CANISTER_NAME --next-to CANISTER_ID:` The new canister will be installed on the same subnet as the canister provided.
+- `dfx create canister CANISTER_NAME --next-to CANISTER_ID:` The new canister will be installed on the same <GlossaryTooltip>subnet</GlossaryTooltip> as the canister provided.
 - `dfx create canister CANISTER_NAME --subnet SUBNET_ID`: The new canister will be installed on the given subnet.
 
 If no flag is specified and there aren't any canisters that exist in the project, a random subnet is used.

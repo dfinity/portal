@@ -4,11 +4,11 @@ keywords: [intermediate, defi, overview, tokens, icrc-1, icrc ledger, token inte
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import '/src/components/CenterImages/center.scss';
-
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Ledger integration options
 
-<MarkdownChipRow labels={["Intermediate"  ]} />
+<MarkdownChipRow labels={["Intermediate", "Concept"  ]} />
 
 Developers have several options for integrating with the ICP or ICRC-1 ledgers. They can use either the ICRC Rosetta or ICP Rosetta implementations, which is commonly recommended, it might be useful for certain workflows  to directly integrate with these ledgers. This section will describe what a direct integration means, how it can be achieved, and how it differs to using Rosetta.
 
@@ -23,7 +23,7 @@ Tokens on ICP are managed by smart contracts. The ICP ledger canister manages th
 Smart contract tokens other than ICP, e.g. ckBTC or CHAT, follow the ICRC suite of standards (ICRC-1, ICRC-3, etc) and can be integrated in the similar manner as the main ICP token. For differences in detail, see below.
 :::
 
-:::Info
+:::info
 Transactions that are executed by ICP are reported on the dashboard under the [Transactions panel](https://dashboard.internetcomputer.org/). This panel distinguishes between update and query calls. The ICP transactions, i.e. the transactions executed by the ICP ledger, appear on the dashboard under the [ICP tab](https://dashboard.internetcomputer.org/transactions).
 :::
 
@@ -66,9 +66,9 @@ To implement a direct integration, you will need to:
 
 - [Call a method of a canister](#http-call-overview): Calling canister methods is done by constructing a message which specifies among other things the canister, the method and its parameters, and submitting this message to the network.
 
-- Make a call to a canister: To interact with a canister on the Internet Computer, an ingress message is constructed. This message specifies the target canister, the method to be invoked, and the call's payload. Additional parameters include an ingress expiration time, an optional nonce, and the caller's principal identifier. The API of most canisters, including token ledgers, are defined using a [Candid Interface Definition Language (IDL)](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/candid/candid-concepts). Calls can be executed either replicated, or non-replicated, depending on the endpoint where they are submitted.
+- Make a call to a canister: To interact with a canister on the Internet Computer, an ingress message is constructed. This message specifies the target canister, the method to be invoked, and the call's payload. Additional parameters include an ingress expiration time, an optional nonce, and the caller's <GlossaryTooltip>principal</GlossaryTooltip> identifier. The API of most canisters, including token ledgers, are defined using a [Candid Interface Definition Language (IDL)](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/candid/candid-concepts). Calls can be executed either replicated, or non-replicated, depending on the endpoint where they are submitted.
 
-- Read the result of a replicated call: The outcome of a replicated call's execution is temporarily stored in the public ingress history of the respective subnet. To access the result, a read state request is submitted, including the previously generated request ID. Given the asynchronous nature of this execution, results must be actively polled. Results are maintained in the ingress history for a brief period (5 minutes post-execution). Therefore, canisters may provide alternative methods for result retrieval that access the canister's internal state directly, such as ledger canisters offering transaction history and balance book access.
+- Read the result of a replicated call: The outcome of a replicated call's execution is temporarily stored in the public ingress history of the respective <GlossaryTooltip>subnet</GlossaryTooltip>. To access the result, a read state request is submitted, including the previously generated request ID. Given the asynchronous nature of this execution, results must be actively polled. Results are maintained in the ingress history for a brief period (5 minutes post-execution). Therefore, canisters may provide alternative methods for result retrieval that access the canister's internal state directly, such as ledger canisters offering transaction history and balance book access.
 
 
 

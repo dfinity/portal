@@ -3,6 +3,7 @@ keywords: [intermediate, tutorial, developer journey, unit testing, e2e testing,
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # 2.5 Unit, integration, and end2end testing
 
@@ -92,7 +93,7 @@ actor {
 
 This unit test does the following:
 
-- First, it imports a canister called `CanisterName`. This allows the result of functions within the canister to be tested.
+- First, it imports a <GlossaryTooltip>canister</GlossaryTooltip> called `CanisterName`. This allows the result of functions within the canister to be tested.
 
 - Then, it imports the `Canister`, `Testable` and `Matchers` packages from the Motoko Matchers project.
 
@@ -120,7 +121,7 @@ You may also consider the [DFINITY Rust guidelines on testing](https://docs.dfin
 
 ## Tests using PocketIC
 
-PocketIC is a community-developed project that provides local canister testing using a Python library. Using PocketIC, developers can write tests for their canister in Python, then deploy the scripts to interact with their local ICP replica. An example test with PocketIC might look like:
+PocketIC is a community-developed project that provides local canister testing using a Python library. Using PocketIC, developers can write tests for their canister in Python, then deploy the scripts to interact with their local ICP <GlossaryTooltip>replica</GlossaryTooltip>. An example test with PocketIC might look like:
 
 ```python
 from pocket_ic import PocketIC

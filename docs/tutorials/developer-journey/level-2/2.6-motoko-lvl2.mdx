@@ -3,6 +3,7 @@ keywords: [intermediate, tutorial, developer journey, motoko]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # 2.6 Motoko level 2
 
@@ -220,7 +221,7 @@ Want to learn more about actor classes? Take a look at the documentation on [act
 
 ## Using multiple actors
 
-Until this point in our developer journey, you've interacted with one actor defined in our `backend` canister Motoko file. Next, you're going to create a project that uses multiple actors. Remember that only one actor can be defined in a Motoko file, and a single actor is always compiled into a single canister. To create multiple actors, you'll create multiple Motoko files and build multiple canisters. To do this, you'll define two canisters in your project's `dfx.json` configuration file.
+Until this point in our developer journey, you've interacted with one actor defined in our `backend` <GlossaryTooltip>canister</GlossaryTooltip> Motoko file. Next, you're going to create a project that uses multiple actors. Remember that only one actor can be defined in a Motoko file, and a single actor is always compiled into a single canister. To create multiple actors, you'll create multiple Motoko files and build multiple canisters. To do this, you'll define two canisters in your project's `dfx.json` configuration file.
 
 You'll create two actors unrelated to one another:
 

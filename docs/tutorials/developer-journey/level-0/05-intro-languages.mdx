@@ -3,6 +3,7 @@ keywords: [beginner, tutorial, developer journey, introduction, languages]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # 0.5 Introduction to languages
 
@@ -14,7 +15,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 When developing canisters, the most common development workflow is to use a software development kit (SDK). The Internet Computer SDK is the most commonly used, which natively supports Motoko and Rust out of the box. 
 
-Since ICP supports dapps that have been compiled into WebAssembly modules, many different programming languages can be used for canister development. However, a canister development kit (CDK) needs to be used. A CDK is an adapter used by the IC SDK that provides a programming language with the necessary features and tools required to create and manage canisters. The IC SDK comes bundled with CDKs for Motoko and Rust. Additionally, there are several community created CDKs for additional languages, such as Python and TypeScript, that can be installed separately. 
+Since ICP supports dapps that have been compiled into WebAssembly modules, many different programming languages can be used for <GlossaryTooltip>canister</GlossaryTooltip> development. However, a canister development kit (CDK) needs to be used. A CDK is an adapter used by the IC SDK that provides a programming language with the necessary features and tools required to create and manage canisters. The IC SDK comes bundled with CDKs for Motoko and Rust. Additionally, there are several community created CDKs for additional languages, such as Python and TypeScript, that can be installed separately.
 
 It is possible to use multiple languages within a single dapp's development. Different canisters can communicate to one another using the Candid language, which is an interface description language (IDL) used by ICP canisters, allowing for multiple canisters in different languages to share and exchange information. 
 
