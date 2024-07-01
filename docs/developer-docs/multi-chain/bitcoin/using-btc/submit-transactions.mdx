@@ -14,13 +14,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-To submit transactions to the Bitcoin network, the Bitcoin integration API exposes the following method:
+To submit transactions to the Bitcoin network, the Bitcoin integration API exposes the `bitcoin_send_transaction` method.
 
-- `bitcoin_send_transaction`: Submits a transaction to the Bitcoin network.
+## Submitting transactions
 
-## Sending transactions
-
-To send transactions to the Bitcoin network, make a call to the `bitcoin_send_transaction` Bitcoin API method. You can create a function in your canister to call this method such as:
+The following snippet shows how to send a signed transaction to the Bitcoin network.
 
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
@@ -43,16 +41,13 @@ To send transactions to the Bitcoin network, make a call to the `bitcoin_send_tr
     })
   };
 ```
-
+<a href="https://github.com/dfinity/examples/blob/0f0ca7df352a1b7953d80ac8ec19767deea359db/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L76">
+    <div align="center">View in the full example.</div>
+</a>
 </TabItem>
-
 <TabItem value="rust" label="Rust" default>
 
 ```rust
-use ic_cdk::api::management_canister::bitcoin::{
-    BitcoinNetwork, GetBalanceRequest, GetCurrentFeePercentilesRequest, GetUtxosRequest,
-    GetUtxosResponse, MillisatoshiPerByte, Satoshi, SendTransactionRequest,
-};
 
 pub async fn send_transaction(network: BitcoinNetwork, transaction: Vec<u8>) {
     let transaction_fee = SEND_TRANSACTION_BASE_CYCLES
@@ -72,18 +67,12 @@ pub async fn send_transaction(network: BitcoinNetwork, transaction: Vec<u8>) {
     res.unwrap();
 }
 ```
-
+<a href="https://github.com/dfinity/examples/blob/0f0ca7df352a1b7953d80ac8ec19767deea359db/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_api.rs#L78">
+    <div align="center">View in the full example.</div>
+</a>
 </TabItem>
 </AdornedTabs>
 
-
-Then make a call to this canister's function with the command:
-
-```
-dfx canister call CANISTER_NAME send '(record { destination_address = "ADDRESS"; amount_in_satoshi = 100000000; })'
-```
-
-Replace `CANISTER_NAME` with your canister's name and replace `ADDRESS` with the destination Bitcoin address. [Learn more about Bitcoin addresses.](generate-addresses.mdx)
 
 ## Resources
 

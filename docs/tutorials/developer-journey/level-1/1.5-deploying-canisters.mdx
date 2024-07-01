@@ -13,7 +13,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 ## Overview
 
-Now that you have some cycles to pay for your canister's resources, you can deploy your dapp on the mainnet. When a canister is deployed to the mainnet, it's code will be hosted on the nodes that make up one of the mainnet's subnets. The canister will be hosted on these nodes until it is manually uninstalled by the developer, or until it runs out of cycles and is uninstalled automatically.
+Now that you have some <GlossaryTooltip>cycles</GlossaryTooltip> to pay for your <GlossaryTooltip>canister</GlossaryTooltip>'s resources, you can deploy your dapp on the mainnet. When a canister is deployed to the mainnet, it's code will be hosted on the nodes that make up one of the mainnet's subnets. The canister will be hosted on these nodes until it is manually uninstalled by the developer, or until it runs out of cycles and is uninstalled automatically.
 
 Once a dapp is deployed on the mainnet, it can be accessed from the canister's public URL by end-users and can communicate with other canisters that are deployed on the mainnet.
 
@@ -121,6 +121,13 @@ https://5h5yf-eiaaa-aaaaa-qaada-cai.icp0.io
 ```
 
 If you open this URL in your web browser, you will see the same poll dapp frontend that you saw when you deployed it locally. The only difference is that now your dapp is hosted 100% on-chain, does not rely on your local <GlossaryTooltip>replica</GlossaryTooltip> to keep running, and you can send this URL to your friends and get them to vote on your poll!
+
+
+:::caution
+
+To avoid burning through your cycles, once you are finished with this tutorial consider stopping your project's canisters with the `dfx canister stop` command. 
+
+:::
 
 ## Need help?
 

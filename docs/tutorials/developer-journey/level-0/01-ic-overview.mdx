@@ -4,6 +4,8 @@ keywords: [beginner, tutorial, developer journey, introduction, overview]
 
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
 
 # 0.1 Overview of the Internet Computer
 
@@ -15,7 +17,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 The **Internet Computer Protocol (ICP)** is a secure and transparent blockchain-based network that can be used to host data and programs. Programs and their data hosted on ICP are referred to as **decentralized applications**, often abbreviated to **dapps**.
 
-Dapps are created by the development and deployment of **smart contracts**, which are known as **canisters** on ICP. Each canister is hosted on an independent blockchain network running on **nodes** called a **subnet**.
+Dapps are created by the development and deployment of **smart contracts**, which are known as **canisters** on ICP. Each <GlossaryTooltip>canister</GlossaryTooltip> is hosted on an independent blockchain network running on **nodes** called a **subnet**.
 
 These terms will be explained a bit further in the next section, [Internet Computer terminology](/docs/current/tutorials/developer-journey/level-0/ic-terms).
 
@@ -60,7 +62,7 @@ The message routing layer receives a block of messages from the consensus layer,
 
 The execution layer is responsible for executing canister smart contract code. Execution is done using WebAssembly (Wasm). There is a Wasm virtual machine that runs on each node that is responsible for this process. Wasm is used since Wasm bytecode can be executed deterministically.
 
-Messages that have been inducted into canister queues on the subnet are executed by the execution layer until either all messages in the queue have been executed or until the cycles limit for the round has been reached.
+Messages that have been inducted into canister queues on the subnet are executed by the execution layer until either all messages in the queue have been executed or until the <GlossaryTooltip>cycles</GlossaryTooltip> limit for the round has been reached.
 
 [Want to go further into this topic?](https://internetcomputer.org/how-it-works/execution-layer/)
 

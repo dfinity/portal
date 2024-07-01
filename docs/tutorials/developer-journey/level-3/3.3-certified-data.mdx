@@ -103,9 +103,9 @@ pub fn set_certified_data(data: &[u8])
 pub fn data_certificate() -> Option<Vec<u8>>
 ```
 
-## Generating an HTTPS response
+## Generating an HTTP response
 
-On the Internet Computer, there is a built in `http_request` query method. This method uses information related to an HTTPS request as the input and outputs an HTTPS response; specifically, the output includes the request's status, headers, and body. If a canister needs to serve HTTPS requests, this method should be implemented.
+On the Internet Computer, there is a built in `http_request` query method. This method uses information related to an HTTP request as the input and outputs an HTTP response; specifically, the output includes the request's status, headers, and body. If a canister needs to serve HTTP requests, this method should be implemented.
 
 When a canister would like to return a certified asset to a request, the response body will contain the asset and a response header with the name [`IC-Certificate`](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification#IC-Certificate_header) and a value equal to the asset's certificate.
 
