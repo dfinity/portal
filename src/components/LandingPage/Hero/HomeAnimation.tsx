@@ -101,38 +101,72 @@ const HomeAnimation = () => {
       ctx.fillRect(0, 0, w, h);
 
       for(let i = 0; i < options.steps; i++) {
+        const relI = i / options.steps;
+
         ctx.save();
         const x = w / 2;
-        const y = (h * .05) + (h * (i / options.steps)) * .8;
+        const y = (h * .05) + (h * relI) * 0.8;
         ctx.translate(
-          x, y
+          Math.floor(x), 
+          Math.floor(y)
         );
 
-        ctx.rotate(noise2d(options.noisePos, i / options.steps) * options.rotation);
-        const currentColor = lerpMultiple(i/options.steps, colors, lerpArr);
+        ctx.rotate(noise2d(options.noisePos, relI) * options.rotation);
+        const currentColor = lerpMultiple(relI, colors, lerpArr);
         ctx.fillStyle = rgbToCSS(currentColor);
 
-        const radius = Math.round(w * .1) + Math.abs(
-          (w * options.radius) + noise2d(options.noisePos, i / options.steps) * w * options.radiusVariation
+        const radius = Math.floor(w * 0.1) + Math.floor(
+          Math.abs(
+            (w * options.radius) + noise2d(options.noisePos, relI) * w * options.radiusVariation
+          )
         );
 
-        const grd = ctx.createLinearGradient(0, 0, radius * options.gradientStartPos, radius * options.gradientStopPos);
+        const grd = ctx.createLinearGradient(
+          0,
+          0,
+          Math.floor(radius * options.gradientStartPos), 
+          Math.floor(radius * options.gradientStopPos)
+        );
 
         const secondColor = lerpMultiple(
-          Math.abs(i - ((options.steps - i) * options.gradientOffset))/options.steps
-          , colors, lerpArr);
+          i - ((options.steps - i) * options.gradientOffset)/options.steps
+          , colors, lerpArr
+        );
         grd.addColorStop(0, rgbToCSS(currentColor));
         grd.addColorStop(1, rgbToCSS(secondColor));
         ctx.fillStyle = grd;
         ctx.beginPath();
 
-        const noIzMoD = Math.abs(noise2d(i / options.steps, options.noisePos) * radius)
+        const noIzMoD = Math.floor(
+          Math.abs(noise2d(relI, options.noisePos) * radius)
+        );
 
         ctx.moveTo(noIzMoD, noIzMoD);
-        ctx.quadraticCurveTo(radius + noIzMoD, noIzMoD, radius + noIzMoD, radius + noIzMoD);
-        ctx.quadraticCurveTo(radius + noIzMoD, radius * 2 + noIzMoD, noIzMoD, radius * 2 + noIzMoD);
-        ctx.quadraticCurveTo(-radius - noIzMoD, radius * 2 + noIzMoD, -radius - noIzMoD, radius);
-        ctx.quadraticCurveTo(-radius - noIzMoD, noIzMoD, noIzMoD, noIzMoD);
+
+        ctx.quadraticCurveTo(
+          radius + noIzMoD, 
+          noIzMoD, 
+          radius + noIzMoD, 
+          radius + noIzMoD
+        );
+        ctx.quadraticCurveTo(
+          radius + noIzMoD, 
+          radius * 2 + noIzMoD, 
+          noIzMoD, 
+          radius * 2 + noIzMoD
+        );
+        ctx.quadraticCurveTo(
+          -radius - noIzMoD, 
+          radius * 2 + noIzMoD, 
+          -radius - noIzMoD, 
+          radius
+        );
+        ctx.quadraticCurveTo(
+          -radius - noIzMoD, 
+          noIzMoD, 
+          noIzMoD, 
+          noIzMoD
+        );
         ctx.fill();
         ctx.restore();
       }
