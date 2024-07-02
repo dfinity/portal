@@ -485,17 +485,17 @@ function ChainFusion() {
             />
             <EcosystemCard
               title="Omnity"
-              description="Bridges and tools like Runes Bridge and Telegram bot Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit."
+              description="An interoperability protocol that leverages Chain Fusion tech. It offers cross-chain infrastructure for modular blockchains and enables the transfer of Runes tokens."
               img="/img/chainfusion/omnity.svg"
             />
             <EcosystemCard
               title="Crosschain DEXes "
-              description="Link Web3 and Bitcoin beyond EVM Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec sed odio dui."
+              description="A Decentralized Exchange (DEX) uses Chain Fusion to facilitate trading of assets from different blockchains, providing a uniform user experience. "
               img="/img/chainfusion/dex.svg"
             />
             <EcosystemCard
               title="Marketplaces "
-              description="Ordinals and Runes Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Donec sed odio dui."
+              description="There are marketplaces for Ordinals and Rune tokens that use Chain Fusion to allow users to purchase or trade efficiently, quickly, and easily."
               img="/img/chainfusion/marketplace.svg"
             />
           </AnimateSpawn>
@@ -734,10 +734,7 @@ public func send_transaction(network : Network, transaction : [Nat8]) : async ()
               className="flex flex-col md:flex-row justify-center items-center  gap-6 mt-4 md:mt-16"
               variants={transitions.container}
             >
-              <Link
-                href="/docs/developers-guide/chain-fusion"
-                className="button-primary"
-              >
+              <Link href="#" className="button-primary">
                 Build now{" "}
               </Link>
               <Link href="/ecosystem" className="link-primary link-with-icon">
