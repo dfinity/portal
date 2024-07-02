@@ -9,6 +9,7 @@ import ParticleAnimation from "./ParticleAnimation";
 import {
   EthEquivalentTxRate,
   LiveStats,
+  OpenStats,
   SmartContractMemory,
   TotalBlocks,
 } from "./Stats";
@@ -31,8 +32,8 @@ const Hero: React.FC<{
   return (
     <section className=" bg-[#1B025A]" id="home" ref={darkRef}>
       {isDark && <DarkHeroStyles bgColor="transparent" />}
-
-      <ParticleAnimation />
+      {/* 
+      <ParticleAnimation /> */}
 
       <div className="pt-[152px] pb-8 md:pt-52 md:pb-30 md:grid relative mt-[-72px] md:mt-[-111px]">
         <div className="container-10 col-start-1 row-start-1 w-full">
@@ -53,12 +54,6 @@ const Hero: React.FC<{
             >
               {headline}
             </h1>
-            <div className="w-full md:w-[550px] mt-4 md:mt-8">
-              <ChatWidget
-                aiPlaceholders={aiPlaceholders}
-                fontLoaded={fontLoaded}
-              />
-            </div>
           </div>
         </div>
         <div className="container-12 w-full col-start-1 row-start-1 md:flex justify-end mt-8 md:mt-0">
@@ -69,10 +64,9 @@ const Hero: React.FC<{
             <QueryClientProvider client={queryClient}>
               <EthEquivalentTxRate />
               <TotalBlocks />
-              <SmartContractMemory />
-              <LiveStats />
             </QueryClientProvider>
-          </AnimateSpawn>
+          </AnimateSpawn>{" "}
+          <OpenStats />
         </div>
       </div>
       <div className="relative">{children}</div>

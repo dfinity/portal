@@ -14,6 +14,7 @@ import { motion } from "framer-motion";
 import Link from "@docusaurus/Link";
 import { DashboardIcon } from "./Dashboardicon";
 import transitions from "@site/static/transitions.json";
+import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 
 function formatNumber(x: number) {
   return x
@@ -343,6 +344,22 @@ export const LiveStats = () => {
       >
         <DashboardIcon />
         See live stats
+      </Link>
+    </motion.div>
+  );
+};
+
+export const OpenStats = () => {
+  return (
+    <motion.div
+      className="backdrop-blur-lg rounded-xl py-3 px-6 bg-white/10 hidden md:flex"
+      variants={transitions.fadeIn}
+    >
+      <Link
+        href="https://dashboard.internetcomputer.org/"
+        className="text-white tw-heading-6 inline-flex gap-2 items-center justify-end hover:no-underline hover:text-white/60 transition-all"
+      >
+        <LinkArrowUpRight />
       </Link>
     </motion.div>
   );
