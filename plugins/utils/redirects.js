@@ -581,7 +581,9 @@ const redirects = `
   /docs/current/developer-docs/backend/rust/rust-quickstart	/docs/current/developer-docs/backend/rust/
   /docs/current/developer-docs/best-practices/	/docs/current/developer-docs/smart-contracts/best-practices/general
   /docs/current/developer-docs/best-practices/considerations-for-nft-devs /docs/current/developer-docs/defi/nfts/overview
+  /docs/current/developer-docs/smart-contracts/advanced-features/serving-http-request /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview
   /docs/current/developer-docs/smart-contracts/candid/index /docs/current/developer-docs/smart-contracts/candid/candid-concepts
+
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

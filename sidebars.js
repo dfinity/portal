@@ -244,7 +244,6 @@ const sidebars = {
                   type: "doc",
                   id: "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview",
                 },
-                "developer-docs/smart-contracts/advanced-features/https-outcalls/making-http-requests",
                 "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use",
                 "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-get",
                 "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-post",

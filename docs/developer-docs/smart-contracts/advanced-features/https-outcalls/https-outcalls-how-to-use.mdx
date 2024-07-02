@@ -18,11 +18,11 @@ The feature currently supports `GET`, `HEAD`, and `POST` methods for HTTP reques
 
 ### ICP management canister
 
-In order for a canister to use HTTPS outcalls, it needs to call the system API of ICP. Canisters can call into the system API by sending messages to the [the ICP management canister](/docs/current/references/ic-interface-spec#ic-management-canister) using the identifier `"aaaaa-aa"`.
+In order for a canister to use HTTPS outcalls, it needs to call the system API of ICP. Canisters can call into the system API by sending messages to [the ICP management canister](/docs/current/references/ic-interface-spec#ic-management-canister) using the identifier `"aaaaa-aa"`.
 
 ### Cycles
 
-* [Cycles](/docs/current/developer-docs/gas-cost) used to pay for the call must be explicitly transferred with the call. They are not deducted from the caller's balance implicitly.
+[Cycles](/docs/current/developer-docs/gas-cost) used to pay for the call must be explicitly transferred with the call. They are not deducted from the caller's balance implicitly.
 
 ## The API for sending HTTPS outcalls
 
