@@ -20,6 +20,7 @@ This table summarizes the key terminology differences between Ethereum and ICP:
 <tr>
   <th> Ethereum term </th>
   <th> ICP term </th>
+  <th> Notes </th>
 </tr>
 </thead>
 
@@ -51,8 +52,17 @@ This table summarizes the key terminology differences between Ethereum and ICP:
 
 <tr>
   <td> DAO </td>
-  <td> SNS, a DAO using ICP's [unique framework](/docs/current/developer-docs/daos/sns/). However, ICP DAOs can launch without using this framework. </td>
+  <td> SNS </td>
+  <td> An SNS refers to a DAO using ICP's [unique framework](/docs/current/developer-docs/daos/sns/)However, ICP DAOs can launch without using this framework. </td>
 </tr>
+
+<tr>
+  <td> Message </td>
+  <td> Memo </td>
+  <td> On Ethereum, you can encode data, often referred to as a message, as a hexadecimal in the optional `data` field of any transaction. Some tools allow you to input text, which they then convert to hexadecimal in the background. On ICP, you can encode data as an arbitary blob, provided it is less than 32 bytes, in the optional `memo` field of any [ICRC1 transaction](/docs/current/references/icrc1-standard/#icrc1_transfer-).
+ </td>
+</tr>
+
 </tbody>
 </table>
 
