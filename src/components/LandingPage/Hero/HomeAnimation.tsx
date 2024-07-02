@@ -136,13 +136,10 @@ const HomeAnimation = () => {
         grd.addColorStop(1, rgbToCSS(secondColor));
         ctx.fillStyle = grd;
         ctx.beginPath();
-
         const noIzMoD = Math.floor(
           Math.abs(noise2d(relI, options.noisePos) * radius)
         );
-
         ctx.moveTo(noIzMoD, noIzMoD);
-
         ctx.quadraticCurveTo(
           radius + noIzMoD, 
           noIzMoD, 
@@ -167,6 +164,7 @@ const HomeAnimation = () => {
           noIzMoD, 
           noIzMoD
         );
+        ctx.closePath();
         ctx.fill();
         ctx.restore();
       }
@@ -201,7 +199,7 @@ const HomeAnimation = () => {
     let requestAnimationFrameHandle: number = 0;
 
     function animate() {
-      options.noisePos += 0.0001;
+      options.noisePos += 0.00005;
     
       draw();
       requestAnimationFrameHandle = requestAnimationFrame(animate);
