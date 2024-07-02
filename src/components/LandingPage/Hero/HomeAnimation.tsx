@@ -25,7 +25,9 @@ const niceSeeds = [
   'i want dean back', 
   'snoopdog',
   'alli mini änteli',
-  'asd'
+  'asd',
+  'fuddie',
+  'caramel+',
 ];
 
 const options = {
@@ -95,49 +97,44 @@ const HomeAnimation = () => {
     const ctx = canvas.getContext("2d");
 
     function draw() {
-      const fakecan = new OffscreenCanvas(w, h);
-      const fakectx = fakecan.getContext("2d");
-      
-      fakectx.fillStyle = rgbToCSS(colors[0]);
-      fakectx.fillRect(0, 0, w, h);
+      ctx.fillStyle = rgbToCSS(colors[0]);
+      ctx.fillRect(0, 0, w, h);
 
       for(let i = 0; i < options.steps; i++) {
-        fakectx.save();
+        ctx.save();
         const x = w / 2;
         const y = (h * .05) + (h * (i / options.steps)) * .8;
-        fakectx.translate(
+        ctx.translate(
           x, y
         );
 
-        fakectx.rotate(noise2d(options.noisePos, i / options.steps) * options.rotation);
+        ctx.rotate(noise2d(options.noisePos, i / options.steps) * options.rotation);
         const currentColor = lerpMultiple(i/options.steps, colors, lerpArr);
-        fakectx.fillStyle = rgbToCSS(currentColor);
+        ctx.fillStyle = rgbToCSS(currentColor);
 
         const radius = Math.round(w * .1) + Math.abs(
           (w * options.radius) + noise2d(options.noisePos, i / options.steps) * w * options.radiusVariation
         );
 
-        const grd = fakectx.createLinearGradient(0, 0, radius * options.gradientStartPos, radius * options.gradientStopPos);
+        const grd = ctx.createLinearGradient(0, 0, radius * options.gradientStartPos, radius * options.gradientStopPos);
 
         const secondColor = lerpMultiple(
           Math.abs(i - ((options.steps - i) * options.gradientOffset))/options.steps
           , colors, lerpArr);
         grd.addColorStop(0, rgbToCSS(currentColor));
         grd.addColorStop(1, rgbToCSS(secondColor));
-        fakectx.fillStyle = grd;
-        fakectx.beginPath();
+        ctx.fillStyle = grd;
+        ctx.beginPath();
 
         const noIzMoD = Math.abs(noise2d(i / options.steps, options.noisePos) * radius)
 
-        fakectx.moveTo(noIzMoD, noIzMoD);
-        fakectx.quadraticCurveTo(radius + noIzMoD, noIzMoD, radius + noIzMoD, radius + noIzMoD);
-        fakectx.quadraticCurveTo(radius + noIzMoD, radius * 2 + noIzMoD, noIzMoD, radius * 2 + noIzMoD);
-        fakectx.quadraticCurveTo(-radius - noIzMoD, radius * 2 + noIzMoD, -radius - noIzMoD, radius);
-        fakectx.quadraticCurveTo(-radius - noIzMoD, noIzMoD, noIzMoD, noIzMoD);
-        fakectx.fill();
-        fakectx.restore();
-
-        ctx.drawImage(fakecan, 0, 0);
+        ctx.moveTo(noIzMoD, noIzMoD);
+        ctx.quadraticCurveTo(radius + noIzMoD, noIzMoD, radius + noIzMoD, radius + noIzMoD);
+        ctx.quadraticCurveTo(radius + noIzMoD, radius * 2 + noIzMoD, noIzMoD, radius * 2 + noIzMoD);
+        ctx.quadraticCurveTo(-radius - noIzMoD, radius * 2 + noIzMoD, -radius - noIzMoD, radius);
+        ctx.quadraticCurveTo(-radius - noIzMoD, noIzMoD, noIzMoD, noIzMoD);
+        ctx.fill();
+        ctx.restore();
       }
     }
     
