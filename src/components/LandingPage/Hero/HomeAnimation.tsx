@@ -146,7 +146,7 @@ const HomeAnimation = () => {
       const relScroll = document.documentElement.scrollTop / $body.scrollHeight;
       relScrollTop = relScroll + 0.1 * relScroll;
 
-      options.noisePos += relScrollTop * .01;
+      options.noisePos += Math.abs(relScrollTop * .01);
     }
 
     window.addEventListener("scroll", onScroll);
