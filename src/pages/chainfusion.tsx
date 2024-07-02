@@ -15,7 +15,6 @@ import TabItem from "@theme/TabItem";
 import News from "../components/BitcoinIntegrationPage/News";
 import Newsletter from "../components/Common/Newsletter/Newsletter";
 import CodeSnippet from "../components/CodeSnippet";
-import Coins from "/img/chainfusion/coins.svg";
 
 const benefitsData = [
   {
@@ -271,22 +270,6 @@ function ChainFusion() {
     }
   }
 
-  const arrowIconDown = () => (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="37"
-      height="36"
-      viewBox="0 0 37 36"
-      fill="none"
-    >
-      <path
-        d="M6.17578 11.8398L18.499 24.1631L30.8223 11.8398"
-        stroke="white"
-        stroke-width="3"
-      />
-    </svg>
-  );
-
   return (
     <Layout
       title="Chain Fusion Technology"
@@ -383,8 +366,22 @@ function ChainFusion() {
             variants={transitions.container}
             el={motion.section}
           >
-            <div className="-mt-24 overflow-hidden relative h-[280px] md:h-[560px]">
-            <Coins className="overflow-visible" />
+            <div className="overflow-x-clip relative h-[13rem] pb-16 mb-16 box-content w-full">
+              <div className="absolute max-w-max top-0 left-1/2 flex gap-2 nft-marquee-right h-1/3">
+                <img className="block max-w-fit" src="/img/chainfusion/coin-row.webp" alt="row of crypto coin logo" />
+                <img className="block max-w-fit" src="/img/chainfusion/coin-row.webp" alt="row of crypto coin logo" />
+                <img className="block max-w-fit" src="/img/chainfusion/coin-row.webp" alt="row of crypto coin logo" />
+              </div>
+              <div className="absolute max-w-max mt-4 top-1/3 left-1/2 flex gap-2 nft-marquee-left h-1/3">
+                <img className="block max-w-fit" src="/img/chainfusion/coin-row.webp" alt="row of crypto coin logo" />
+                <img className="block max-w-fit" src="/img/chainfusion/coin-row.webp" alt="row of crypto coin logo" />
+                <img className="block max-w-fit" src="/img/chainfusion/coin-row.webp" alt="row of crypto coin logo" />
+              </div>
+              <div className="absolute max-w-max mt-8 top-2/3 left-1/2 flex gap-2 nft-marquee-right h-1/3">
+                <img className="block max-w-fit" src="/img/chainfusion/coin-row.webp" alt="row of crypto coin logo" />
+                <img className="block max-w-fit" src="/img/chainfusion/coin-row.webp" alt="row of crypto coin logo" />
+                <img className="block max-w-fit" src="/img/chainfusion/coin-row.webp" alt="row of crypto coin logo" />
+              </div>
             </div>
           </AnimateSpawn>
           <AnimateSpawn
