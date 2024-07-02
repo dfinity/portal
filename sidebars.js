@@ -660,6 +660,7 @@ const sidebars = {
               id: "developer-docs/multi-chain/bitcoin/overview",
             },
             "developer-docs/multi-chain/bitcoin/using-btc/btc-dev-workflow",
+            "developer-docs/multi-chain/bitcoin/using-btc/btc-comparison",
             "developer-docs/multi-chain/bitcoin/using-btc/generate-addresses",
             "developer-docs/multi-chain/bitcoin/using-btc/create-transactions",
             "developer-docs/multi-chain/bitcoin/using-btc/sign-transactions",
