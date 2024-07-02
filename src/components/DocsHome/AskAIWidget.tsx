@@ -25,7 +25,9 @@ export function AskAIWidget() {
           />
         </Head>
         <button
-          className="ask-ai-widget-trigger invisible pointer-events-none docs:visible docs:pointer-events-auto button-white md:button-fancy-ai md:button-with-icon border-none transition-all md:bg-[radial-gradient(67.52%_167.71%_at_50.38%_-41.67%,#EA2B7B_0%,#3B00B9_100%)] hover:text-white/80 stat-fade-in md:button-small font-bold fixed md:relative bottom-0 my-20 md:my-0 flex rounded-full md:rounded-xl h-12 w-12 md:h-[unset] md:w-[unset] items-center p-0 md:px-3 md:py-2"
+          className="ask-ai-widget-trigger button-white button-fancy-ai border-none transition-all
+           bg-[radial-gradient(67.52%_167.71%_at_50.38%_-41.67%,#EA2B7B_0%,#3B00B9_100%)]
+            hover:text-white/80 stat-fade-in button-small md:button-small font-bold mr-9 md:mr-0"
           style={{
             display: "flex",
             alignItems: "center",
@@ -35,7 +37,7 @@ export function AskAIWidget() {
           <span className={"flex-1 flex flex-col items-center"}>
             <BrainIcon className={"md:text-white"} />
           </span>
-          <span className={"hidden md:block font-bold"}>Ask ICP.AI</span>
+          <span className={"hidden md:block font-bold"}></span>
         </button>
       </>
     )
