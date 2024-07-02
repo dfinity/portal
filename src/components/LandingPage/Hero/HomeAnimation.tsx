@@ -15,7 +15,18 @@ const colors = [
   [59/255, 0/255, 185/255],
 ];
 
-const niceSeeds = [6.3, 'Maurice M', 'Rai', 'rei', 'rect..angle', 'i want dean back'];
+const niceSeeds = [
+  'birkenstock',
+  6.3, 
+  'Maurice M', 
+  'Rai', 
+  'rei', 
+  'rect..angle', 
+  'i want dean back', 
+  'snoopdog',
+  'alli mini änteli',
+  'asd'
+];
 
 const options = {
   steps: 300,
