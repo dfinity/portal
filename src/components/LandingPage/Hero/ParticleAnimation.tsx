@@ -1,24 +1,39 @@
 import { useMotionTemplate, useScroll, useTransform } from "framer-motion";
 import React from "react";
 import { useEffect, useRef } from "react";
-import SimplexNoise from "simplex-noise";
-import {
-  Scene,
-  PerspectiveCamera,
-  Fog,
-  BufferGeometry,
-  PointsMaterial,
-  AdditiveBlending,
-  Float32BufferAttribute,
-  Points,
-  WebGLRenderer,
-  BufferAttribute,
-  Texture,
-} from "three";
+import  simplexNoise from "simplex-noise";
+
 import { motion } from "framer-motion";
+
+const colors = [
+  [30/255, 0/255, 93/255], 
+  [59/255, 0/255, 185/255], 
+  [117/255, 78/255, 204/255], 
+  [59/255, 0/255, 185/255], 
+  [218/255, 57/255, 121/255], 
+  [30/255, 0/255, 93/255], 
+  [59/255, 0/255, 185/255],
+];
+
+const options = {
+  steps: 400,
+  seed:  6.3,
+  noisePos: 4.8,
+  rotation: 2,
+  radius: 0.5,
+  radiusVariation: 0.11,
+  gradientStopPos: 0,
+  gradientStartPos: 3,
+  gradientOffset: 0.4,
+  bg: 0,
+};
 
 function clamp(number, min, max) {
   return Math.max(min, Math.min(number, max));
+}
+
+function rgbToCSS(rgb) {
+  return `rgb(${rgb[0] * 255}  ${rgb[1] * 255} ${rgb[2] * 255})`;
 }
 
 const lerp = (percent, lastValue, nextValue) => {
@@ -41,25 +56,14 @@ const lerpMultiple = (percent, points, fn = lerp) => {
   return fn(clampedPercent, points[index], points[index + 1]);
 };
 
-const colorsLinear = [
-  [237, 30, 121],
-  //[241,90, 36], //o
-  [251, 176, 59], //y
-  [251, 176, 59], //y
-  [137, 14, 237], //p
-  [41, 171, 226], //b
-  [237, 30, 121],
-  [59, 0, 185], //pu
-  [41, 171, 226], //b
-].map((cls) => cls.map((n) => n / 255));
-
-const simplex = new SimplexNoise();
-
-// function check if the browser is safari
-// too many particles will make safari perform badly
-const isSafari = () => /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+const simplex = new simplexNoise();
+const noise2d = (x, y) => {
+  return simplex.noise2D(x, y);
+}
 
 const ParticleAnimation = () => {
+  let noisePos = Math.random() * 1000;
+
   const canvasContainer = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({
@@ -71,149 +75,71 @@ const ParticleAnimation = () => {
   const blur = useMotionTemplate`blur(${blurSize}px)`;
 
   useEffect(() => {
-    const scene = new Scene();
-
-    const camera = new PerspectiveCamera(
-      40,
-      window.innerWidth / window.innerHeight,
-      500,
-      3500
-    );
-    camera.position.z = 1000;
-
-    const dotSize = isSafari() ? 12 : 10.5;
-    scene.fog = new Fog(0x1e005d, 2, 3000);
-    camera.lookAt(scene.position);
-
-    const geometry = new BufferGeometry();
-    const vertices = [];
-
-    const pMaterial = new PointsMaterial({
-      size: dotSize,
-      alphaMap: createCanvasMaterial("#ffffff", dotSize * 10),
-      //fog: false,
-      //depthWrite: false,
-      transparent: true,
-      //alphaTest: 0.1,
-      vertexColors: true,
-      blending: AdditiveBlending,
-    });
-
-
-    const particlesPerAxis = isSafari() ? 16 : 30;
-
-    let i = 0;
-
-    const multiplier = isSafari() ? 1.53 : 1;
-
-    for (let x = 0; x < particlesPerAxis; x++) {
-      for (let y = 0; y < particlesPerAxis; y++) {
-        for (let z = 0; z < particlesPerAxis; z++) {
-          vertices.push(
-            -1200 +
-              (x / particlesPerAxis) * 2400 +
-              simplex.noise2D((x / particlesPerAxis) * 0.1, 1) * (particlesPerAxis * 10) +
-              Math.random() * (80 * multiplier),
-            -1000 +
-              (y / particlesPerAxis) * 2000 +
-              simplex.noise2D(1, (y / particlesPerAxis) * 0.1) * (particlesPerAxis * 10) +
-              Math.random() * 70,
-            simplex.noise3D(
-              x / particlesPerAxis,
-              y / particlesPerAxis,
-              z / particlesPerAxis + i
-            ) * 1500
-          );
-        }
-      }
-    }
-
-    let positions = new Float32BufferAttribute(vertices, 3);
-
-    const createColors = (vertices) => {
-      const colors = [];
-
-      for (let i = 0; i < vertices.length; i += 3) {
-        const z = vertices[i + 2];
-        const relZ = (400 + z) / 800;
-        const color = lerpMultiple(relZ, colorsLinear, lerpArr);
-        colors.push(color[0], color[1], color[2], relZ * 1.5);
-      }
-
-      return new BufferAttribute(new Float32Array(colors), 4);
-    };
-
-    geometry.setAttribute("color", createColors(vertices));
-    geometry.setAttribute("position", positions);
-
-    const particles = new Points(geometry, pMaterial);
-    scene.add(particles);
-
-    const renderer = new WebGLRenderer();
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    canvasContainer.current.appendChild(renderer.domElement);
-    renderer.setClearColor(0x1e005d, 1);
-
     let relScrollTop = 0;
+    let w = window.innerWidth;
+    let h = window.innerHeight;
+    
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
 
-    let speed = 0;
+    function draw() {
+      ctx.fillStyle = rgbToCSS(colors[0]);
+      ctx.fillRect(0, 0, w, h);
 
-    function render() {
-      i += 0.0005;
+      for(let i = 0; i < options.steps; i++) {
+        ctx.save();
+        const x = w / 2;
+        const y = (h * .05) + (h * (i / options.steps)) * .8;
+        ctx.translate(
+          x, y
+        );
 
-      speed += ((1 + simplex.noise2D(0, i)) / 2) * 0.002;
-      
-      for (let index = 0; index < vertices.length; index += 3) {
-        let x = vertices[index];
-        let y = vertices[index + 1];
-        let z = vertices[index + 2];
-        z =
-          simplex.noise3D(
-            (x / particlesPerAxis) * ((1 + simplex.noise2D(0, i)) / 2) * 0.02 +
-              speed,
-            (y / particlesPerAxis) * ((1 + simplex.noise2D(i, 0)) / 2) * 0.08 -
-              speed,
-            (z / particlesPerAxis) * 0.01
-          ) * 400;
+        ctx.rotate(noise2d(options.noisePos, i / options.steps) * options.rotation);
+        const currentColor = lerpMultiple(i/options.steps, colors, lerpArr);
+        ctx.fillStyle = rgbToCSS(currentColor);
 
-        geometry.attributes.position.array[index] = x;
-        geometry.attributes.position.array[index + 1] = y;
-        geometry.attributes.position.array[index + 2] = z;
+        const radius = Math.round(w * .1) + Math.abs(
+          (w * options.radius) + noise2d(options.noisePos, i / options.steps) * w * options.radiusVariation
+        );
+
+        const grd = ctx.createLinearGradient(0, 0, radius * options.gradientStartPos, radius * options.gradientStopPos);
+
+        const secondColor = lerpMultiple(
+          Math.abs(i - ((options.steps - i) * options.gradientOffset))/options.steps
+          , colors, lerpArr);
+        grd.addColorStop(0, rgbToCSS(currentColor));
+        grd.addColorStop(1, rgbToCSS(secondColor));
+        ctx.fillStyle = grd;
+        ctx.beginPath();
+
+        const noIzMoD = Math.abs(noise2d(i / options.steps, options.noisePos) * radius)
+
+        ctx.moveTo(noIzMoD, noIzMoD);
+        ctx.quadraticCurveTo(radius + noIzMoD, noIzMoD, radius + noIzMoD, radius + noIzMoD);
+        ctx.quadraticCurveTo(radius + noIzMoD, radius * 2 + noIzMoD, noIzMoD, radius * 2 + noIzMoD);
+        ctx.quadraticCurveTo(-radius - noIzMoD, radius * 2 + noIzMoD, -radius - noIzMoD, radius);
+        ctx.quadraticCurveTo(-radius - noIzMoD, noIzMoD, noIzMoD, noIzMoD);
+        ctx.fill();
+        ctx.restore();
       }
-
-      geometry.attributes.position.needsUpdate = true;
-      geometry.rotateX(1.6 + -relScrollTop * 2);
-      geometry.rotateY(-relScrollTop * 1.5);
-      geometry.rotateZ(relScrollTop * -0.3);
-      geometry.setAttribute("color", createColors(vertices));
-      // geometry.colorsNeedUpdate = true;
-
-      camera.position.z = 100 + 2000 * (1 - relScrollTop * 0.5);
-
-      camera.lookAt(scene.position);
-      renderer.render(scene, camera);
     }
-
-    let requestAnimationFrameHandle: number = 0;
-
-    function animate() {
-      requestAnimationFrameHandle = requestAnimationFrame(animate);
-      render();
+    
+    function onWindowResize() {
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.width = w;
+      canvas.height = h;
     }
+    
+    onWindowResize();
+    draw();
+
+    canvasContainer.current.appendChild(canvas);
+
 
     const $body = document.querySelector("body");
 
     window.addEventListener("resize", onWindowResize, false);
-
-    function onWindowResize() {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    }
-
-    animate();
 
     function onScroll() {
       const relScroll = document.documentElement.scrollTop / $body.scrollHeight;
@@ -222,30 +148,22 @@ const ParticleAnimation = () => {
 
     window.addEventListener("scroll", onScroll);
 
-    function createCanvasMaterial(color, size = 256) {
-      var matCanvas = document.createElement("canvas");
-      matCanvas.width = matCanvas.height = size;
-      var matContext = matCanvas.getContext("2d");
-      // create exture object from canvas.
-      var texture = new Texture(matCanvas);
-      // Draw a circle
-      var center = size / 2;
-      matContext.beginPath();
-      matContext.arc(center, center, size / 2, 0, 2 * Math.PI);
-      matContext.closePath();
-      matContext.fillStyle = color;
-      matContext.fill();
-      // need to set needsUpdate
-      texture.needsUpdate = true;
-      // return a texture made from the canvas
-      return texture;
+    let requestAnimationFrameHandle: number = 0;
+
+    function animate() {
+      options.noisePos += 0.0001;
+    
+      draw();
+      requestAnimationFrameHandle = requestAnimationFrame(animate);
     }
+
+    animate();
 
     return () => {
       window.removeEventListener("resize", onWindowResize);
       window.removeEventListener("scroll", onScroll);
 
-      canvasContainer.current.removeChild(renderer.domElement);
+      canvasContainer.current.removeChild(canvas);
 
       cancelAnimationFrame(requestAnimationFrameHandle);
     };

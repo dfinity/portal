@@ -32,8 +32,7 @@ const Hero: React.FC<{
   return (
     <section className=" bg-[#1B025A]" id="home" ref={darkRef}>
       {isDark && <DarkHeroStyles bgColor="transparent" />}
-      {/* 
-      <ParticleAnimation /> */}
+      <ParticleAnimation />
 
       <div className="pt-[152px] pb-8 md:pt-52 md:pb-30 md:grid relative mt-[-72px] md:mt-[-111px]">
         <div className="container-10 col-start-1 row-start-1 w-full">
