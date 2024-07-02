@@ -15,10 +15,12 @@ const colors = [
   [59/255, 0/255, 185/255],
 ];
 
+
+
 const options = {
-  steps: 400,
+  steps: 200,
   seed:  6.3,
-  noisePos: 4.8,
+  noisePos: 0,
   rotation: 2,
   radius: 0.5,
   radiusVariation: 0.11,
@@ -56,13 +58,13 @@ const lerpMultiple = (percent, points, fn = lerp) => {
   return fn(clampedPercent, points[index], points[index + 1]);
 };
 
-const simplex = new simplexNoise();
+const simplex = new simplexNoise(`${options.seed}`);
 const noise2d = (x, y) => {
   return simplex.noise2D(x, y);
 }
 
 const HomeAnimation = () => {
-  let noisePos = Math.random() * 1000;
+  let relScrollTop = 0;
 
   const canvasContainer = useRef<HTMLDivElement>(null);
 
@@ -75,7 +77,6 @@ const HomeAnimation = () => {
   const blur = useMotionTemplate`blur(${blurSize}px)`;
 
   useEffect(() => {
-    let relScrollTop = 0;
     let w = window.innerWidth;
     let h = window.innerHeight;
     
@@ -144,6 +145,8 @@ const HomeAnimation = () => {
     function onScroll() {
       const relScroll = document.documentElement.scrollTop / $body.scrollHeight;
       relScrollTop = relScroll + 0.1 * relScroll;
+
+      options.noisePos += relScrollTop * .01;
     }
 
     window.addEventListener("scroll", onScroll);
@@ -173,9 +176,9 @@ const HomeAnimation = () => {
     <motion.div
       className="fixed inset-0"
       ref={canvasContainer}
-      style={{
+      /*style={{
         filter: blur,
-      }}
+      }}*/
     ></motion.div>
   );
 };
