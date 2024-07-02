@@ -15,11 +15,11 @@ const colors = [
   [59/255, 0/255, 185/255],
 ];
 
-
+const niceSeeds = [6.3, 'Maurice M', 'Rai', 'rei', 'rect..angle', 'i want dean back'];
 
 const options = {
-  steps: 200,
-  seed:  6.3,
+  steps: 300,
+  seed:  niceSeeds[Math.floor(Math.random() * niceSeeds.length)],
   noisePos: 0,
   rotation: 2,
   radius: 0.5,
