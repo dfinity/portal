@@ -1,19 +1,29 @@
 import Link from "@docusaurus/Link";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
+import Card from "@site/src/components/SamplesPage/Card";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import clsx from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
+import { CardWithDescription } from "../components/Common/Card";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
+import IntraPageNav from "../components/Common/IntraPageNav";
+import { sampleItems } from "../components/Common/sampleItems";
 import ShareMeta from "../components/Common/ShareMeta";
+import CodeBlockString from "../theme/CodeBlock/Content/String";
+import { unreachable } from "../utils/unreachable";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 import { useScrollSpyMenu } from "../utils/use-scroll-spy-menu";
+import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
+import LinkArrowUp from "../components/Common/Icons/LinkArrowUp";
+import LinkArrowDown from "../components/Common/Icons/LinkArrowDown";
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 import News from "../components/BitcoinIntegrationPage/News";
 import Newsletter from "../components/Common/Newsletter/Newsletter";
+import BenefitsText from "/img/chainfusion/benefits-text.svg";
 import CodeSnippet from "../components/CodeSnippet";
 
 const benefitsData = [
