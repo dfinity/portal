@@ -7,7 +7,7 @@ slug: smart-contracts-serve-the-web
 
 # Smart Contracts serve the web
 
-The Internet Computer is the only blockchain that can host an entire dapp – frontend, backend and data.  This is a crucial and distinguishing feature allowing dapps to run 100% on-chain inheriting the security and decentralization of blockchain without sacrificing speed or affordability. Browsing dapps hosted on the Internet Computer is as seamless as browsing Web2 apps. In fact, this very site is hosted 100% on-chain on the Internet Computer and there are many more [dapps hosted on the Internet Computer that can be found here](https://internetcomputer.org/ecosystem/).
+The Internet Computer is the only blockchain that can host an entire dapp – frontend, backend and data.  This is a crucial and distinguishing feature allowing dapps to run 100% on-chain inheriting the security and decentralization of blockchain. Browsing dapps hosted on the Internet Computer is as seamless as browsing Web2 apps. In fact, this very site is hosted 100% on-chain on the Internet Computer and there are many more [dapps hosted on the Internet Computer that can be found here](https://internetcomputer.org/ecosystem/).
 
 All of it is made possible by the [HTTP gateway protocol](https://internetcomputer.org/docs/current/references/http-gateway-protocol-spec), a protocol that translates HTTP requests coming from a client (e.g., your browser) into API canister calls and then the responses back into HTTP responses.
 
@@ -27,9 +27,9 @@ HTTP Gateway converts the format of HTTP Requests to canister API calls, and the
 </figcaption>
 </figure>
 
-So what happens, when one opens [internetcomputer.org](https://internetcomputer.org).
+So let's look at what happens, when one opens [internetcomputer.org](https://internetcomputer.org).
 
-It all starts in the browser. The browser does not know that this site is hosted on the Internet Computer and makes a normal HTTP request, just as it would for any other site. It sends that request to the server hosting internetcomputer.org.
+It all starts in the browser. The browser does not know that this site is hosted on the Internet Computer and makes a normal HTTP request, just as it would for any other site. It sends that request to the server hosting internetcomputer.org, which is running the HTTP gateway protocol.
 
 This server takes the HTTP request and translates it into an API canister call. In particular, it turns the HTTP request into a query call to the `http_request`-method of the target canister and puts the requested path, the HTTP request headers and the body into the payload of that query call. How this works in detail is explained in the [HTTP gateway protocol specification](/docs/current/references/http-gateway-protocol-spec). Today, there exist two main implementations of the [HTTP gateway protocol](/docs/current/references/http-gateway-protocol-spec): `icx-proxy`, a remote HTTP gateway, which runs on the boundary nodes; and the `IC HTTP proxy`, a local HTTP gateway, which can be downloaded and run locally.
 
