@@ -167,15 +167,14 @@ Some DNS providers do not require you to specify the main domain. For example, y
     foo.bar.com
     ```
 - #### Step 2: Create the `.ic-assets.json` file at the root of the canister source:
-
-```
-[
-    {
-        "match": ".well-known",
-        "ignore": false
-    }
-]
-```
+    ```
+    [
+        {
+            "match": ".well-known",
+            "ignore": false
+        }
+    ]
+    ```
 
 - #### Step 3: Deploy the updated canister.
 
