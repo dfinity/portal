@@ -26,7 +26,7 @@ cargo add ic-agent
 
 ## Initializing the agent
 
-Before using the agent in your project, it must be initialized using the `Agent::builder()` function. This can be done within your Rust code, or in a separate `agent.rs` file that can be imported into other Rust files. Here is an example of how to initialize the Rust agent:
+Before using the agent in your project, it must be initialized using the `Agent::builder()` function. Here is an example of how to initialize the Rust agent:
 
 ```rust
 use anyhow::Result;
@@ -46,7 +46,7 @@ pub async fn create_agent(url: &str, is_mainnet: bool) -> Result<Agent> {
 
 The Rust agent's `Identity` object provides signatures that can be used for HTTP requests or identity delegations. It represents the principal ID of the sender.
 
-Identities can be created when the agent is initialized using the `.with_identity(create_identity())` method. Each agent has a single `Identity` object that can contain multiple identity values.
+`Identity` represents a single identity and cannot contain multiple identity values.
 
 ```rust
 async fn create_a_canister() -> Result<Principal, Box<dyn std::error::Error>> {
@@ -61,69 +61,126 @@ async fn create_a_canister() -> Result<Principal, Box<dyn std::error::Error>> {
 
 The Rust agent can be used to make calls to other canisters. To make a call to a canister, use the `agent.update` method for an update call, or `agent.query` for a query call. Then, pass in the canister's ID and the method of the canister you'd like to call.
 
-For example, to call the management canister's `provisional_create_canister_with_cycles` method, use the following code:
+The following example calls the ICP ledger and returns an account balance:
 
 ```rust
-  let effective_canister_id = Principal::from_text("rwlgt-iiaaa-aaaaa-aaaaa-cai").unwrap();
-  let response = agent.update(&management_canister_id, "provisional_create_canister_with_cycles")
-    .with_effective_canister_id(effective_canister_id)
-    .with_arg(Encode!(&Argument { amount: None})?)
-    .call_and_wait()
-    .await?;
-
-  let result = Decode!(response.as_slice(), CreateCanisterResult)?;
-  let canister_id: Principal = result.canister_id;
-  Ok(canister_id)
+let icp_ledger = Principal::from_text("ryjl3-tyaaa-aaaaa-aaaba-cai").unwrap();
+let response = agent.update(&icp_ledger, "account_balance")
+    .with_arg(Encode!(&AccountBalanceArgs { account: some_account_id })?)
+    .call_and_wait()
+    .await?;
+let tokens = Decode!(&response, Tokens)?;
 ```
 
-## Asset certification
+## Response verification
 
-The `ic-http-certification` library can be used to certify assets using Rust. Asset certification is used to verify that an HTTP response received by an HTTP gateway from a canister is authentic and has not been maliciously altered. For example, to certify that both an HTTP request and an HTTP response are valid, the following code can be used:
+When using the [certified queries](/docs/current/developer-docs/smart-contracts/call/overview/#certified-queries) feature, the agent must verify that the certificate returned with the query response is valid. A certificate consists of a tree, a signature on the tree's root hash that is valid under a public key, and an optional delegation linking the public key to the root public key. To validate the root hash, the agent uses the `HashTree` module.
+
+Below is an example annotated with notes that explains how to verify responses using the `HashTree` module:
 
 ```rust
-use ic_http_certification::{HttpCertification, HttpRequest, HttpResponse, DefaultCelBuilder, DefaultResponseCertification};
-
-let cel_expr = DefaultCelBuilder::full_certification()
-    .with_request_headers(vec!["Accept", "Accept-Encoding", "If-None-Match"])
-    .with_request_query_parameters(vec!["foo", "bar", "baz"])
-    .with_response_certification(DefaultResponseCertification::certified_response_headers(vec![
-        "Cache-Control",
-        "ETag",
-    ]))
-    .build();
-
-let request = HttpRequest {
-    method: "GET".to_string(),
-    url: "/index.html?foo=a&bar=b&baz=c".to_string(),
-    headers: vec![
-        ("Accept".to_string(), "application/json".to_string()),
-        ("Accept-Encoding".to_string(), "gzip".to_string()),
-        ("If-None-Match".to_string(), "987654321".to_string()),
-    ],
-    body: vec![],
-};
-
-let response = HttpResponse {
-    status_code: 200,
-    headers: vec![
-        ("Cache-Control".to_string(), "no-cache".to_string()),
-        ("ETag".to_string(), "123456789".to_string()),
-        ("IC-CertificateExpression".to_string(), cel_expr.to_string()),
-    ],
-    body: vec![1, 2, 3, 4, 5, 6],
-    upgrade: None,
-};
-
-let certification = HttpCertification::full(&cel_expr, &request, &response, None);
+// Define a function that initializes the agent and builds a certified query call to get the XDR and ICP conversion rate from the cycles minter canister:
+pub async fn xdr_permyriad_per_icp(agent: &Agent) -> DfxResult<u64> {
+    let canister = Canister::builder()
+        .with_agent(agent)
+        .with_canister_id(MAINNET_CYCLE_MINTER_CANISTER_ID)
+        .build()?;
+    let (certified_rate,): (IcpXdrConversionRateCertifiedResponse,) = canister
+        .query("get_icp_xdr_conversion_rate")
+        .build()
+        .call()
+        .await?;
+    // Check the certificate with a query call
+    let cert = serde_cbor::from_slice(&certified_rate.certificate)?;
+    agent
+        .verify(&cert, MAINNET_CYCLE_MINTER_CANISTER_ID)
+        .context(
+            "The origin of the certificate for the XDR <> ICP exchange rate could not be verified",
+        )?;
+    // Verify that the certificate can be trusted:
+    let witness = lookup_value(
+        &cert,
+        [
+            b"canister",
+            MAINNET_CYCLE_MINTER_CANISTER_ID.as_slice(),
+            b"certified_data",
+        ],
+    )
+    .context("The IC's certificate for the XDR <> ICP exchange rate could not be verified")?;
+    // Call the HashTree for the certified_rate call:
+    let tree = serde_cbor::from_slice::<HashTree<Vec<u8>>>(&certified_rate.hash_tree)?;
+    ensure!(
+        tree.digest() == witness,
+        "The CMC's certificate for the XDR <> ICP exchange rate did not match the IC's certificate"
+    );
+    // Verify that the HashTree can be trusted:
+    let lookup = tree.lookup_path([b"ICP_XDR_CONVERSION_RATE"]);
+    let certified_data = if let LookupResult::Found(content) = lookup {
+        content
+    } else {
+        bail!("The CMC's certificate did not contain the XDR <> ICP exchange rate");
+    };
+    let encoded_data = Encode!(&certified_rate.data)?;
+    ensure!(
+        certified_data == encoded_data,
+        "The CMC's certificate for the XDR <> ICP exchange rate did not match the provided rate"
+    );
+    // If the above checks are successful, you can trust the exchange rate that has been returned:
+    Ok(certified_rate.data.xdr_permyriad_per_icp)
+}
 ```
 
-Note that to perform a full certification, such as in the example above, a Common Expression Language (CEL) expression created from `DefaultCelBuilder::full_certification` must be included, along with both the `HttpRequest` and `HttpResponse`. Optionally, a full certification may include a pre-calculated response body hash.
+Another application of `HashTree` can be found in the [ic-certified-assets](https://github.com/dfinity/sdk/blob/master/src/canisters/frontend/ic-certified-assets/src/asset_certification/tree.rs) code.
 
-[Read more about HTTP certification](https://github.com/dfinity/response-verification/tree/main/packages/ic-http-certification).
+The `ic-asset` canister is written in Rust and uses `agent-rs` to provide a client API that can be used to list assets, return asset properties, and upload assets to the canister. API endpoints of this canister include:
+
+- `api_version`: Returns the current API version.
+
+- `commit_batch`: Used to commit batch operations.
+
+- `compute_evidence`: Compute the hash evidence over the batch operations required to update the assets.
+
+- `create_batch`: Create a batch operation.
+
+- `create_chunk`: Create a chunk operation to be part of a batch.
+
+- `get_asset_properties`: Return an asset's properties.
+
+- `list`: List current assets.
+
+- `propose_commit_batch`: Propose a batch operation to be committed.
+
+For example, the `list` endpoint uses the following code to list assets using the agent:
+
+```
+use crate::canister_api::methods::method_names::LIST;
+use crate::canister_api::types::{asset::AssetDetails, list::ListAssetsRequest};
+use ic_agent::AgentError;
+use ic_utils::call::SyncCall;
+use ic_utils::Canister;
+use std::collections::HashMap;
+
+pub(crate) async fn list_assets(
+    canister: &Canister<'_>,
+) -> Result<HashMap<String, AssetDetails>, AgentError> {
+    let (entries,): (Vec<AssetDetails>,) = canister
+        .query(LIST)
+        .with_arg(ListAssetsRequest {})
+        .build()
+        .call()
+        .await?;
+
+    let assets: HashMap<_, _> = entries.into_iter().map(|d| (d.key.clone(), d)).collect();
+
+    Ok(assets)
+}
+```
+
+More information about the `ic-asset ` canister can be found in the [source code](https://github.com/dfinity/sdk/tree/master/src/canisters/frontend/ic-asset).
 
 ## Example
 
-The following is an example of how to use the agent interface to make a call to a canister deployed on the mainnet. The canister being called is the management canister (`aaaaa-aa`), which then creates a placeholder value for a new canister and returns that value.
+The following is an example of how to use the agent interface to make a call to a canister (in this example, the ICP ledger) deployed on the mainnet:
 
 ```rust
 use ic_agent::{Agent, export::Principal};
@@ -131,44 +188,19 @@ use candid::{Encode, Decode, CandidType, Nat};
 use serde::Deserialize;
 
 #[derive(CandidType)]
-struct Argument {
-  amount: Option<Nat>,
+struct AccountBalanceArgs {
+    account: Vec<u8>,
 }
-
 #[derive(CandidType, Deserialize)]
-struct CreateCanisterResult {
-  canister_id: Principal,
+struct Tokens {
+    e8s: u64,
 }
-
-async fn create_a_canister() -> Result<Principal, Box<dyn std::error::Error>> {
-  let agent = Agent::builder()
-    .with_url(URL)
-    .with_identity(create_identity())
-    .build()?;
-  // Only do the following call when not contacting the IC main net (e.g. a local emulator).
-  // This is important as the main net public key is static and a rogue network could return
-  // a different key.
-  // If you know the root key ahead of time, you can use `agent.set_root_key(root_key);`.
-  agent.fetch_root_key().await?;
-  let management_canister_id = Principal::from_text("aaaaa-aa")?;
-
-  // Create a call to the management canister to create a new canister ID,
-  // and wait for a result.
-  // The effective canister id must belong to the canister ranges of the subnet at which the canister is created.
-  let effective_canister_id = Principal::from_text("rwlgt-iiaaa-aaaaa-aaaaa-cai").unwrap();
-  let response = agent.update(&management_canister_id, "provisional_create_canister_with_cycles")
-    .with_effective_canister_id(effective_canister_id)
-    .with_arg(Encode!(&Argument { amount: None})?)
-    .call_and_wait()
-    .await?;
-
-  let result = Decode!(response.as_slice(), CreateCanisterResult)?;
-  let canister_id: Principal = result.canister_id;
-  Ok(canister_id)
-}
-
-let canister_id = create_a_canister().await.unwrap();
-eprintln!("{}", canister_id);
+let icp_ledger = Principal::from_text("ryjl3-tyaaa-aaaaa-aaaba-cai").unwrap();
+let response = agent.update(&icp_ledger, "account_balance")
+    .with_arg(Encode!(&AccountBalanceArgs { account: some_account_id })?)
+    .call_and_wait()
+    .await?;
+let tokens = Decode!(&response, Tokens)?;
 ```
 
 ## Resources

@@ -11,7 +11,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-An agent is a low-level interface used by a canister's actor to encode and decode messages sent to the ICP mainnet. The JavaScript agent (`agent-js`) is used to interact with the public ICP API endpoints and canisters deployed on ICP. `agent-js` provides `call`, `query`, and `readState` methods, along with other utilities, to an actor.
+An agent is an API client used to interact with ICP. The JavaScript agent (`agent-js`) is used to interact with the public ICP API endpoints and canisters deployed on ICP. `agent-js` provides `call`, `query`, and `readState` methods, along with other utilities, to an actor.
 
 Calls made through the agent are intended to be structured through an actor and configured with a canister's interface that can be generated from a [Candid interface](/docs/current/developer-docs/smart-contracts/candid/candid-concepts). Raw calls are supported, but not recommended per best practices.
 
