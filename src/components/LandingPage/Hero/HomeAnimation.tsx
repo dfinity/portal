@@ -61,7 +61,7 @@ const noise2d = (x, y) => {
   return simplex.noise2D(x, y);
 }
 
-const ParticleAnimation = () => {
+const HomeAnimation = () => {
   let noisePos = Math.random() * 1000;
 
   const canvasContainer = useRef<HTMLDivElement>(null);
@@ -180,4 +180,4 @@ const ParticleAnimation = () => {
   );
 };
 
-export default ParticleAnimation;
+export default HomeAnimation;
