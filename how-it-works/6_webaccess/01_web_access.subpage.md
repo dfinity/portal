@@ -5,8 +5,6 @@ shareImage: /img/how-it-works/web-content.jpg
 slug: smart-contracts-serve-the-web
 ---
 
-# Smart Contracts serve the web
-
 The Internet Computer is the only blockchain that can host an entire dapp – frontend, backend and data.  This is a crucial and distinguishing feature allowing dapps to run 100% on-chain inheriting the security and decentralization of blockchain. Browsing dapps hosted on the Internet Computer is as seamless as browsing Web2 apps. In fact, this very site is hosted 100% on-chain on the Internet Computer and there are many more [dapps hosted on the Internet Computer that can be found here](https://internetcomputer.org/ecosystem/).
 
 All of it is made possible by the [HTTP gateway protocol](https://internetcomputer.org/docs/current/references/http-gateway-protocol-spec), a protocol that translates HTTP requests coming from a client (e.g., your browser) into API canister calls and then the responses back into HTTP responses.
