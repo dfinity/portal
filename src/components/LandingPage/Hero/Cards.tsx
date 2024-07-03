@@ -109,7 +109,8 @@ export const CardsSection = () => {
           </div>
         </div>
       </article>
-      <div className="bg-[linear-gradient(#3B00B9,#9D80DC)] rounded-[32px] text-white overflow-clip mt-6">
+
+      <article className="bg-[linear-gradient(#3B00B9,#9D80DC)] rounded-[32px] text-white overflow-clip mt-6">
         <div className="flex flex-col md:flex-row items-stretch	 ">
           <div className="basis-1/2 relative ">
             <img
@@ -118,22 +119,72 @@ export const CardsSection = () => {
               className="object-cover size-full"
             />
           </div>
-          <div className=" basis-1/2 p-1/10">
+          <div className="basis-1/2 p-1/10">
             <HubsLogo />
 
-            <div className="tw-heading-4 md:tw-heading-60">
+            <h4 className="tw-heading-4 md:tw-heading-60">
               37 countries around the globe
-            </div>
-            <div className="tw-paragraph md:tw-lead-sm mt-6">
+            </h4>
+            <p className="tw-paragraph md:tw-lead-sm mt-6">
               Igniting global innovation & collaboration, connecting ICP
               communities. Join builders, creators, and entrepreneurs all around
               the world.
-            </div>
+            </p>
             <Link className="button-outline-white-30 mt-6" href="#">
               Join thriving Communities
             </Link>
           </div>
         </div>
+      </article>
+
+      <div className="block md:flex gap-4">
+
+        <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
+          <div className="md:flex-row items-stretch	relative z-1">
+            <div className="p-2/10 py-1/10 pb-96">
+              <h5 className="tw-heading-5 md:tw-heading-60">
+                Real World Use Cases
+              </h5>
+              <p className="tw-paragraph md:tw-lead-sm mt-6">
+                Experience full stack decentralization: from DAOs and crypto cloud services to games, NFTs, and social media, the Internet Computer has something for everyone.
+              </p>
+              <Link className="button-outline-white-30 mt-6" href="/use-cases">
+                See for yourself
+              </Link>
+            </div>
+            <div className="absolute z-0 bottom-0 pointer-events-none">
+              <img
+                loading="lazy"
+                src="img/home/dapps-bg.webp"
+                className="object-cover size-full"
+              />
+            </div>
+          </div>
+        </article>
+
+        <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
+          <div className="md:flex-row items-stretch	relative z-1">
+            <div className="p-2/10 py-1/10 pb-96">
+              <h5 className="tw-heading-5 md:tw-heading-60">
+                ICP ROADMAP
+              </h5>
+              <p className="tw-paragraph md:tw-lead-sm mt-6">
+                Explore the ICP Roadmap, focussing on contributions by the DFINITY Foundation. The roadmap is split into nine themes, each highlighting upcoming milestones.
+              </p>
+              <Link className="button-outline-white-30 mt-6" href="/roadmap">
+                get into latest achievements
+              </Link>
+            </div>
+            <div className="absolute z-0 bottom-0  pointer-events-none">
+              <img
+                loading="lazy"
+                src="img/home/roadmap-bg.webp"
+                className="object-cover size-full"
+              />
+            </div>
+          </div>
+        </article>
+
       </div>
     </AnimateSpawn>
   );
