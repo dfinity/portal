@@ -464,7 +464,7 @@ function ChainFusion() {
             el={motion.section}
           >
             <motion.h3 className="tw-heading-5 md:tw-heading-60 mb-1 text-gradient-purple">
-              <LogoSm className="w-full" /> empowers the thriving ICP Ecosystem
+              <LogoSm className="w-full" /> igniting a thriving ICP Ecosystem
             </motion.h3>
             <motion.p className="tw-paragraph md:tw-lead mt-3 md:mt-6">
               Chain Fusion is empowering projects to innovate and succeed. By
