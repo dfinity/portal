@@ -11,6 +11,45 @@ import { arrow } from "@floating-ui/react";
 
 const MotionLink = motion(Link);
 
+const buttonStyle = {
+  background: "rgba(255 255 255 / 10%)",
+  color: "white",
+  backdropFilter: "blur(20px)",
+  width: "3rem",
+  height: "3rem",
+};
+
+
+function NextArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, ...buttonStyle }}
+      onClick={onClick}
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <path fill="#fff" d="m16.38 12-4.75-8.97-1.76.94L14.12 12l-4.25 8.03 1.76.94L16.38 12Z"/>
+      </svg>
+    </div>
+  );
+}
+
+function PrevArrow(props) {
+  const { className, style, onClick } = props;
+  return (
+    <div
+      className={className}
+      style={{ ...style, ...buttonStyle}}
+      onClick={onClick}
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <path fill="#fff" d="m16.38 12-4.75-8.97-1.76.94L14.12 12l-4.25 8.03 1.76.94L16.38 12Z"/>
+      </svg>
+    </div>
+  );
+}
+
 export const CardWithImage: React.FC<{
   children?: React.ReactNode;
   image: string;
@@ -35,6 +74,32 @@ export const CardWithImage: React.FC<{
   );
 };
 
+const css = `
+  .slick-prev:before,
+  .slick-next:before {
+    display: none;
+  }
+
+  .slick-prev svg,
+  .slick-next svg {
+    transform: scale(.5);
+    transition: transform .2s cubic-bezier(0.3, 0.7, 0, 1);
+  }
+
+  .slick-prev svg {
+    transform: rotate(180deg) scale(.5);
+  }
+
+  .slick-prev:hover svg,
+  .slick-next:hover svg {
+    transform: scale(.7);
+  }
+
+  .slick-prev:hover svg {
+    transform: rotate(180deg) scale(.7);
+  }
+`
+
 export const SectionSlider = () => {
   let sliderRef = useRef(null);
 
@@ -50,6 +115,8 @@ export const SectionSlider = () => {
     padding: "20px",
     centerPadding: "20px",
     swipeToSlide: true,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
     responsive: [
       {
         breakpoint: 768,
@@ -62,6 +129,7 @@ export const SectionSlider = () => {
   };
   return (
     <div className="slider-container">
+      <style>{css}</style>
       <Slider ref={(slider) => (sliderRef = slider)} {...settings}>
         <article className="border-box px-3">
           <CardWithImage href="/docs" image="/img/home/carousel-3.webp">
