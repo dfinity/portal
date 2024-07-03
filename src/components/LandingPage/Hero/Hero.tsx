@@ -8,9 +8,6 @@ import { ChatWidget } from "./ChatWidget";
 import HomeAnimation from "./HomeAnimation";
 import {
   EthEquivalentTxRate,
-  LiveStats,
-  OpenStats,
-  SmartContractMemory,
   TotalBlocks,
 } from "./Stats";
 
@@ -72,19 +69,21 @@ const Hero: React.FC<{
                 </Link>
               </div>
             </div>
-            <div className="md:absolute bottom-0 -left-60 backdrop-blur-lg">
-              <div className="">
-                <AnimateSpawn
-                  className="bg-black/20 p-6 rounded-xl relative overflow-hidden min-w-80"
-                  variants={transitions.container}
-                >
-                  <QueryClientProvider client={queryClient}>
-                    <EthEquivalentTxRate />
-                    <TotalBlocks />
-                  </QueryClientProvider>
-                </AnimateSpawn>{" "}
-              </div>
-            </div>
+            <Link 
+              href="https://dashboard.internetcomputer.org/" 
+              className="md:absolute bottom-0 -left-60 backdrop-blur-lg hover:no-underline text-white hover:text-black">
+              <AnimateSpawn
+                className="
+                  bg-black/20 p-6 rounded-xl relative overflow-hidden min-w-80 
+                  hover:bg-white"
+                variants={transitions.container}
+              >
+                <QueryClientProvider client={queryClient}>
+                  <EthEquivalentTxRate />
+                  <TotalBlocks />
+                </QueryClientProvider>
+              </AnimateSpawn>
+            </Link>
           </div>
         </div>
       </div>
