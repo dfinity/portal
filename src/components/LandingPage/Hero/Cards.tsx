@@ -82,7 +82,7 @@ export const CardsSection = () => {
               communities. Join builders, creators, and entrepreneurs all around
               the world.
             </div>
-            <Link className="button-outline-white-30 mt-6" href="/hubs">
+            <Link className="button-outline-white-30 mt-6" href="#">
               Join thriving Communities
             </Link>
           </div>
