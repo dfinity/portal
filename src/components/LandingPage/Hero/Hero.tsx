@@ -30,11 +30,10 @@ const Hero: React.FC<{
   return (
     <section className=" bg-[#1B025A]" id="home" ref={darkRef}>
       {isDark && <DarkHeroStyles bgColor="transparent" />}
-      <HomeAnimation />
-
       <div className="pt-[152px] pb-8 md:pt-52 md:pb-30 md:grid relative mt-[-72px] md:mt-[-111px] text-white">
+        <HomeAnimation />
         <div className="container-8">
-          <div className=" relative">
+          <div className="relative">
             <h1
               className="
                 animate-fade-up 
@@ -53,7 +52,6 @@ const Hero: React.FC<{
               <span className="block md:ml-48">BLOCKCHAIN</span>
             </h1>
             <div className="md:ml-48">
-              {" "}
               <p className="tw-paragraph md:tw-lead-sm mt-6 w-7/10">
                 The Internet Computer reinvents compute on blockchain,
                 incorporating more than a 1000 human years of R&D effort.
@@ -74,8 +72,7 @@ const Hero: React.FC<{
                 </Link>
               </div>
             </div>
-            <div className="md:absolute bottom-0 -left-60 ">
-              <div className="absolute"></div>
+            <div className="md:absolute bottom-0 -left-60 backdrop-blur-lg">
               <div className="">
                 <AnimateSpawn
                   className="bg-black/20 p-6 rounded-xl relative overflow-hidden min-w-80"

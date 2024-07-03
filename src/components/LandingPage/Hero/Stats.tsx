@@ -39,7 +39,7 @@ export const TotalBlocks = () => {
 
   return (
     <motion.div
-      className="backdrop-blur-lg rounded-xl text-white tw-lead-lg py-3 px-6 hidden md:block"
+      className="rounded-xl text-white tw-lead-lg py-3 px-6 hidden md:block"
       variants={transitions.fadeIn}
     >
       <figure className="m-0">
@@ -110,7 +110,7 @@ export const EthEquivalentTxRate = () => {
 
   return (
     <motion.div
-      className="backdrop-blur-lg rounded-xl text-white tw-lead-lg py-3 px-6"
+      className="rounded-xl text-white tw-lead-lg py-3 px-6"
       variants={transitions.fadeIn}
     >
       <figure className="m-0 flex gap-3 justify-center md:block">
