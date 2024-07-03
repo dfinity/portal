@@ -29,27 +29,27 @@ import CodeSnippet from "../components/CodeSnippet";
 const benefitsData = [
   {
     icon: "/img/chainfusion/benefits-1.svg",
-    title: "ICP Smart Contracts hold other Tokens",
+    title: "Smart contracts can hold BTC, ETH, and other tokens",
     description:
-      "ckTokens are digital twins of other coins (e.g. ckBTC for BTC) which allow users to send BTC, ETH, USDC cheaper, faster, and more securely.",
+      "ICP Smart contracts can read, write, own, and program multiple tokens across different networks, abstracting complexity away from the user and breaking the silos introduced by scaling solutions.",
   },
   {
     icon: "/img/chainfusion/benefits-2.svg",
-    title: "Using ICP unique Features",
+    title: "Unique ICP features",
     description:
-      "If you have a dapp, you can take advantage of ICP features without actually migrating to your smart contract or dapp to ICP. You can now give your dapp: HTTPS outcalls, timers, responding to events, etc...",
+      "If you have a dapp, you can profit from ICP features without migrating to your smart contract or dapp to ICP. Chain Fusion enables web2 interaction, timers, reactions to Ethereum or Bitcoin events, and more.",
   },
   {
     icon: "/img/chainfusion/benefits-3.svg",
     title: "On-chain orchestration",
     description:
-      "Seamless cross-chain communication and orchestration. For example: An ICP smart contract can orchestrate your Ethereum dapp's payments to Bitcoin.",
+      "Seamless cross-chain communication and orchestration. An ICP smart contract can orchestrate your Ethereum dapp's payments to the Bitcoin network, or execute DAO votes autonomously across chains.",
   },
   {
     icon: "/img/chainfusion/benefits-4.svg",
-    title: "Offloading",
+    title: "ICP as a Coprocessor",
     description:
-      "Due to Chain Fusion, your dapp or smart contract can now offload heavy or expensive compute tasks to ICP without having to migrate your dapp or use an insecure solution. Just standard cryptographic signatures.",
+      "Your dapp or smart contract can now offload heavy or expensive compute tasks to ICP without having to migrate your dapp or use an insecure solution.",
   },
 ];
 
@@ -432,8 +432,8 @@ function ChainFusion() {
                 Benefits
               </motion.h4>
               <motion.p className="tw-paragraph md:tw-lead mt-3 md:mt-6">
-                Seamless interoperability between different blockchains,
-                enhancing scalability and flexibility for developers and users.
+                Seamless and secure interoperability between different blockchains
+                unlocks new possibilities and provides a unified Web3 experience.
               </motion.p>
             </div>
             <div className="md:w-[65%] relative">
