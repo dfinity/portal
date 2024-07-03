@@ -228,6 +228,29 @@ const marketingNav = {
           },
         },
       ],
+
+      socialIcons: [
+        {
+          label: "Github",
+          href: "https://github.com/dfinity",
+          iconUrl: "/img/svgIcons/purple/github.svg",
+        },
+        {
+          label: "Discord",
+          href: "https://discord.gg/jnjVVQaE2C",
+          iconUrl: "/img/svgIcons/purple/discord.svg",
+        },
+        {
+          label: "X",
+          href: "https://twitter.com/dfinitydev",
+          iconUrl: "/img/svgIcons/purple/twitter.svg",
+        },
+        {
+          label: "Forum",
+          href: "https://forum.dfinity.org/",
+          iconUrl: "/img/svgIcons/purple/forum.svg",
+        },
+      ],
     },
     {
       name: "Use",
@@ -330,6 +353,29 @@ const marketingNav = {
         //     image: "/img/nav/featured-interoperability.webp",
         //   },
         // },
+      ],
+
+      socialIcons: [
+        {
+          label: "Github",
+          href: "https://github.com/dfinity",
+          iconUrl: "/img/svgIcons/purple/github.svg",
+        },
+        {
+          label: "Discord",
+          href: "https://discord.gg/jnjVVQaE2C",
+          iconUrl: "/img/svgIcons/purple/discord.svg",
+        },
+        {
+          label: "X",
+          href: "https://twitter.com/dfinitydev",
+          iconUrl: "/img/svgIcons/purple/twitter.svg",
+        },
+        {
+          label: "Forum",
+          href: "https://forum.dfinity.org/",
+          iconUrl: "/img/svgIcons/purple/forum.svg",
+        },
       ],
     },
     {
@@ -476,7 +522,22 @@ const marketingNav = {
 
       socialIcons: [
         {
-          label: "IC Forum",
+          label: "Github",
+          href: "https://github.com/dfinity",
+          iconUrl: "/img/svgIcons/purple/github.svg",
+        },
+        {
+          label: "Discord",
+          href: "https://discord.gg/jnjVVQaE2C",
+          iconUrl: "/img/svgIcons/purple/discord.svg",
+        },
+        {
+          label: "X",
+          href: "https://twitter.com/dfinitydev",
+          iconUrl: "/img/svgIcons/purple/twitter.svg",
+        },
+        {
+          label: "Forum",
           href: "https://forum.dfinity.org/",
           iconUrl: "/img/svgIcons/purple/forum.svg",
         },
