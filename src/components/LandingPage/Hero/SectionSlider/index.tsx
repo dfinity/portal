@@ -98,6 +98,23 @@ const css = `
   .slick-prev:hover svg {
     transform: rotate(180deg) scale(.7);
   }
+
+  .slick-dots {
+    bottom: -4rem;
+  }
+
+  .slick-dots li button:before {
+    display: none;
+  }
+
+  .slick-dots li button {
+    background: rgba(255 255 255 / 20%);
+    border: none;
+  }
+
+  .slick-dots li.slick-active button {
+    background: #fff;
+  }
 `
 
 export const SectionSlider = () => {
