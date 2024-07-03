@@ -20,7 +20,7 @@ export const CardWithImage: React.FC<{
     <MotionLink
       variants={transitions.item}
       to={href}
-      className="bg-black/60 hover:bg-black/20 backdrop-blur-2xl rounded-xl pl-8 p-5 text-white hover:no-underline transition-all hover:text-white flex flex-col justify-center gap-8 group"
+      className="bg-[#0C0025] rounded-xl pl-8 p-5 text-white hover:no-underline transition-all hover:text-white flex flex-col justify-center gap-8 group"
       style={{
         backgroundImage: `url(${image})`,
         backgroundSize: "contain",
@@ -63,54 +63,69 @@ export const SectionSlider = () => {
   return (
     <div className="slider-container">
       <Slider ref={(slider) => (sliderRef = slider)} {...settings}>
-        <div className="border-box px-3">
+        <article className="border-box px-3">
           <CardWithImage href="/docs" image="/img/home/carousel-3.webp">
-            <div className="tw-paragraph-sm md:tw-heading-7 mb-2 whitespace-nowrap">
-              New Video
-            </div>
-            <div className="tw-heading-7 md:tw-heading-5 mb-0">
-              ICP Developer Journey
-            </div>
-            <div className="text-white/60 tw-paragraph-sm md:tw-paragraph mb-0">
-              Watch now!
+            <div className="py-5 mr-40">
+              <strong className="tw-paragraph-sm md:tw-heading-7 mb-2 truncate">
+                New Video
+              </strong>
+              <h4 className="tw-heading-7 md:tw-heading-5 mb-0 truncate">
+                ICP Developer Journey
+              </h4>
+              <p className="text-white/60 tw-paragraph-sm md:tw-paragraph mb-0 truncate">
+                Watch now!
+              </p>
             </div>
           </CardWithImage>
-        </div>
-        <div className="border-box px-3">
+        </article>
+
+        <article className="border-box px-3">
           <CardWithImage href="/events" image="/img/home/carousel-1.webp">
-            <div className="tw-paragraph-sm md:tw-heading-7 mb-2 whitespace-nowrap">
-              July 9, 6pm – Brussels
-            </div>
-            <div className="tw-heading-7 md:tw-heading-5 mb-0">
-              Chain Fusion NIGHT
-            </div>
-            <div className="text-white/60 tw-paragraph-sm md:tw-paragraph mb-0">
-              Join us in Belgium!
+            <div className="py-5 mr-40">
+              <strong className="tw-paragraph-sm md:tw-heading-7 mb-2 truncate">
+                July 9, 6pm – Brussels
+              </strong>
+              <h4 className="tw-heading-7 md:tw-heading-5 mb-0 truncate">
+                Chain Fusion NIGHT
+              </h4>
+              <p className="text-white/60 tw-paragraph-sm md:tw-paragraph mb-0 truncate">
+                Join us in Belgium!
+              </p>
             </div>
           </CardWithImage>
-        </div>
-        <div className="border-box px-3">
+        </article>
+
+        <article className="border-box px-3">
           <CardWithImage href="/chainfusion" image="/img/home/carousel-2.webp">
-            <div className="tw-paragraph-sm md:tw-heading-7 mb-2 whitespace-nowrap">
-              Milestone achieved 🚀
-            </div>
-            <div className="tw-heading-7 md:tw-heading-5 mb-0">TRITIUM</div>
-            <div className="text-white/60 tw-paragraph-sm md:tw-paragraph mb-0">
-              Chain Fusion supports EVM Chains
+            <div className="py-5 mr-40">
+              <strong className="tw-paragraph-sm md:tw-heading-7 mb-2 truncate">
+                Milestone achieved 🚀
+              </strong>
+              <h4 className="tw-heading-7 md:tw-heading-5 mb-0 truncate">
+                TRITIUM
+              </h4>
+              <p className="text-white/60 tw-paragraph-sm md:tw-paragraph mb-0 truncate">
+                Chain Fusion supports EVM Chains
+              </p>
             </div>
           </CardWithImage>
-        </div>
-        <div className="border-box px-3">
+        </article>
+
+        <article className="border-box px-3">
           <CardWithImage href="/chainfusion" image="/img/home/carousel-4.webp">
-            <div className="tw-paragraph-sm md:tw-heading-7 mb-2 whitespace-nowrap">
-              New Video
-            </div>
-            AI running fully on-chain Demo #4{" "}
-            <div className="text-white/60 tw-paragraph-sm md:tw-paragraph mb-0">
-              Watch now
+            <div className="py-5 mr-40">
+              <strong className="tw-paragraph-sm md:tw-heading-7 mb-2 whitespace-nowrap">
+                New Video
+              </strong>
+              <h4 className="tw-heading-7 md:tw-heading-5 mb-0 truncate">
+                AI running fully on-chain Demo #4
+              </h4>
+              <p className="text-white/60 tw-paragraph-sm md:tw-paragraph mb-0">
+                Watch now
+              </p>
             </div>
           </CardWithImage>
-        </div>
+        </article>
       </Slider>
     </div>
   );
