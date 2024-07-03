@@ -78,7 +78,7 @@ const Hero: React.FC<{
               <div className="absolute"></div>
               <div className="">
                 <AnimateSpawn
-                  className="bg-black/20 p-6 rounded-xl relative overflow-hidden"
+                  className="bg-black/20 p-6 rounded-xl relative overflow-hidden min-w-80"
                   variants={transitions.container}
                 >
                   <QueryClientProvider client={queryClient}>
