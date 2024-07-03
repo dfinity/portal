@@ -27,7 +27,7 @@ const Hero: React.FC<{
   return (
     <section className=" bg-[#1B025A]" id="home" ref={darkRef}>
       {isDark && <DarkHeroStyles bgColor="transparent" />}
-      <div className="pt-[152px] pb-8 md:pt-52 md:pb-30 md:grid relative mt-[-72px] md:mt-[-111px] text-white">
+      <div className="pt-[152px] pb-8 md:pt-52 md:pb-72 md:grid relative mt-[-72px] md:mt-[-111px] text-white -mb-32">
         <HomeAnimation />
         <div className="container-8">
           <div className="relative">
