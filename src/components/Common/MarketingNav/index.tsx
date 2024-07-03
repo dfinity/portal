@@ -190,7 +190,7 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
                     isCurrentPage(item.href, location.pathname)
                       ? "text-infinite"
                       : "text-black",
-                    "hover:no-underline group/item hover:text-infinite flex flex-col"
+                    "hover:no-underline group/item hover:text-infinite flex flex-col min-w-52"
                   )}
                 >
                   <span className="tw-heading-7 inline-flex gap-2 items-center whitespace-nowrap">
