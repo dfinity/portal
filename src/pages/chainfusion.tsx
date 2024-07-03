@@ -351,9 +351,7 @@ function ChainFusion() {
                 alt="Chain Fusion Logo"
                 className="self-center mt-4 md:mt-9 w-full"
               />
-              <div className="tw-heading-5 md:tw-heading-3 self-center md:self-start mt-8 md:mt-12 text-white">
-                Unifying web3 experiences
-              </div>
+
               <Link
                 href="#"
                 className="button-white self-center md:self-start  mt-8  md:mt-12"
@@ -433,7 +431,7 @@ function ChainFusion() {
               </motion.h4>
               <motion.p className="tw-paragraph md:tw-lead mt-3 md:mt-6">
                 Seamless and secure interoperability between different blockchains
-                unlocks new possibilities and provides a unified Web3 experience.
+                unlocks new possibilities.
               </motion.p>
             </div>
             <div className="md:w-[65%] relative">
@@ -639,23 +637,20 @@ public func send_transaction(network : Network, transaction : [Nat8]) : async ()
                     the Bitcoin and Ethereum network. They can read and write
                     transactions to those chains. There are two types of
                     integration:{" "}
-                    <span className="font-bold">Native integration</span> and{" "}
-                    <span className="font-bold">RPC-based integration</span>.
-                  </p>
-                </ContentCard>
-                <ContentCard
-                  className="content-card-with-id"
-                  id="bitcoin-support"
-                >
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Native Integration: Supports Bitcoin
-                  </h3>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Among the network integrations, the Bitcoin / ICP network
-                    have a more robust integration: Native integration. Native
-                    Bitcoin integration means ICP is directly connected to the
-                    Bitcoin network at the protocol level.
-                    <div>
+                    <Link
+                        href="/docs/current/developer-docs/identity/verifiable-credentials/how-it-works"
+                        className="link-primary link-with-icon !font-bold no-underline hover:!text-black"
+                      >
+                        Native integration
+                      </Link>
+                      {" "}and{" "}
+                    <Link
+                        href="/docs/current/developer-docs/identity/verifiable-credentials/how-it-works"
+                        className="link-primary link-with-icon !font-bold no-underline hover:!text-black"
+                      >
+                        RPC-based integration
+                      </Link>.
+                      <div>
                       <Link
                         href="/docs/current/developer-docs/identity/verifiable-credentials/how-it-works"
                         className="mt-4 md:mt-6 link-primary link-with-icon !font-bold no-underline hover:!text-black"
@@ -665,31 +660,7 @@ public func send_transaction(network : Network, transaction : [Nat8]) : async ()
                     </div>
                   </p>
                 </ContentCard>
-                <ContentCard
-                  className="content-card-with-id"
-                  id="rpc-integration"
-                >
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    RPC Integration: Ethereum, Solana
-                  </h3>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    ICP’s integration with Ethereum is facilitated through the
-                    EVM RPC smart contract canister on ICP. This canister
-                    communicates with Ethereum and other EVM blockchains using
-                    an on-chain API. It simplifies the developer experience by
-                    introducing methods that allow communication with Ethereum
-                    and other EVM-compatible networks like Arbitrum, Optimism,
-                    and Base.
-                    <div>
-                      <Link
-                        href="/docs/current/developer-docs/identity/verifiable-credentials/how-it-works"
-                        className="mt-4 md:mt-6 link-primary link-with-icon !font-bold no-underline hover:!text-black"
-                      >
-                        <LinkArrowRight /> Learn More
-                      </Link>
-                    </div>
-                  </p>
-                </ContentCard>
+
                 <ContentCard
                   className="content-card-with-id"
                   id="threshold-signing"
