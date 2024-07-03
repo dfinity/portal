@@ -199,7 +199,7 @@ const HomeAnimation = () => {
     let requestAnimationFrameHandle: number = 0;
 
     function animate() {
-      options.noisePos += 0.00005;
+      options.noisePos += 0.0002;
     
       draw();
       requestAnimationFrameHandle = requestAnimationFrame(animate);
