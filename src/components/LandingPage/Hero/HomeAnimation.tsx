@@ -219,7 +219,7 @@ const HomeAnimation = () => {
 
   return (
     <motion.div
-      className="absolute inset-0"
+      className="absolute inset-0 overflow-clip"
       ref={canvasContainer}
       /*style={{
         filter: blur,
