@@ -479,22 +479,22 @@ function ChainFusion() {
           >
             <EcosystemCard
               title="ckTokens"
-              description="Consumer-facing tokens like ckBTC, ckETH and more Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit."
+              description="Chain-key twin tokens like ckBTC, ckETH allow users to leverage the ICP network for fast, low cost, and user-friendly transfers."
               img="/img/chainfusion/cktokens.svg"
             />
             <EcosystemCard
-              title="Omnity"
-              description="An interoperability protocol that leverages Chain Fusion tech. It offers cross-chain infrastructure for modular blockchains and enables the transfer of Runes tokens."
+              title="Metaprotocols"
+              description="Metaprotocols leverage Chain Fusion to offer decentralized cross-chain infrastructure enabling the transfer and creation of new assets on Bitcoin."
               img="/img/chainfusion/omnity.svg"
             />
             <EcosystemCard
               title="Crosschain DEXes "
-              description="A Decentralized Exchange (DEX) uses Chain Fusion to facilitate trading of assets from different blockchains, providing a uniform user experience. "
+              description="Decentralized Exchanges use Chain Fusion to facilitate trading of assets from different blockchains, providing a uniform user experience. "
               img="/img/chainfusion/dex.svg"
             />
             <EcosystemCard
-              title="Marketplaces "
-              description="There are marketplaces for Ordinals and Rune tokens that use Chain Fusion to allow users to purchase or trade efficiently, quickly, and easily."
+              title="Marketplaces"
+              description="There are marketplaces for Ordinals and Runes that use Chain Fusion to allow users to purchase or trade efficiently, quickly, and easily."
               img="/img/chainfusion/marketplace.svg"
             />
           </AnimateSpawn>
