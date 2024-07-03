@@ -37,19 +37,19 @@ export const CardsSection = () => {
       className="container-12 mt-30"
       variants={transitions.container}
     >
-      <div className="bg-[linear-gradient(48deg,#4DEDD3_-32.7%,#31A782_33.06%,#3B00B9_129.51%)] rounded-[32px] text-white  overflow-clip mt-6">
-        <div className="flex flex-col md:flex-row items-stretch	 ">
-          <div className="basis-1/2 relative ">
-            <img
-              loading="lazy"
-              src="img/home/ai.webp"
-              className="object-cover size-full"
-            />
+      <article className="overflow-clip relative bg-[radial-gradient(circle_at_50%,#000,#3B00B9,#1E005D)] rounded-[32px] text-white  mt-6">
+        <img
+          loading="lazy"
+          src="img/home/chainfusion.webp"
+          className="object-cover size-full absolute"
+        />
+        <div className="flex flex-col md:flex-row items-stretch">
+          <div className="basis-1/2">
           </div>
           <div className=" basis-1/2 p-1/10">
-            <div className="tw-heading-4 md:tw-heading-60">
+            <h4 className="tw-heading-4 md:tw-heading-60">
               Run AI models fully on chain
-            </div>
+            </h4>
             <div className="tw-paragraph md:tw-lead-sm mt-6">
               Nullam id dolor id nibh ultricies vehicula ut id elit. Donec
               ullamcorper nulla non metus auctor fringilla. Vivamus sagittis
@@ -61,7 +61,33 @@ export const CardsSection = () => {
             </Link>
           </div>
         </div>
-      </div>
+      </article>
+
+      <article className="bg-[linear-gradient(48deg,#4DEDD3_-32.7%,#31A782_33.06%,#3B00B9_129.51%)] rounded-[32px] text-white  overflow-clip mt-6">
+        <div className="flex flex-col md:flex-row items-stretch	 ">
+          <div className="basis-1/2 relative ">
+            <img
+              loading="lazy"
+              src="img/home/ai.webp"
+              className="object-cover size-full"
+            />
+          </div>
+          <div className=" basis-1/2 p-1/10">
+            <h4 className="tw-heading-4 md:tw-heading-60">
+              Run AI models fully on chain
+            </h4>
+            <div className="tw-paragraph md:tw-lead-sm mt-6">
+              Nullam id dolor id nibh ultricies vehicula ut id elit. Donec
+              ullamcorper nulla non metus auctor fringilla. Vivamus sagittis
+              lacus vel augue laoreet rutrum faucibus dolor auctor. Donec sed
+              odio dui.
+            </div>
+            <Link className="button-outline-white-30 mt-6" href="/ai">
+              BUILD NOW
+            </Link>
+          </div>
+        </div>
+      </article>
       <div className="bg-[linear-gradient(#3B00B9,#9D80DC)] rounded-[32px] text-white overflow-clip mt-6">
         <div className="flex flex-col md:flex-row items-stretch	 ">
           <div className="basis-1/2 relative ">
