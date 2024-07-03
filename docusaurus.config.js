@@ -168,11 +168,6 @@ const marketingNav = {
             //   description: "New to ICP? Read this first",
             // },
             {
-              name: "ICP Learn Hub",
-              href: "https://csojb-wiaaa-aaaal-qjftq-cai.icp0.io/",
-              description: "Overview of the technology",
-            },
-            {
               name: "What is ICP",
               href: "/what-is-the-ic",
               description: "Get to know ",
@@ -197,6 +192,12 @@ const marketingNav = {
               href: "/roadmap",
               description: "Highlighting upcoming Mil",
             },
+            /*
+            {
+              name: "ICP Learn Hub",
+              href: "https://csojb-wiaaa-aaaal-qjftq-cai.icp0.io/",
+              description: "Overview of the technology",
+            },*/
             {
               name: "Sustainability",
               href: "/capabilities/sustainability",
@@ -249,7 +250,7 @@ const marketingNav = {
             },
             {
               name: "Use cases",
-              href: "/ecosystem",
+              href: "/use-cases",
               description: "Built for the real world",
             },
             {
@@ -263,7 +264,7 @@ const marketingNav = {
               description: "Web3 authentication",
             },
             {
-              name: "Staking and Governance",
+              name: "Staking & Governance",
               href: "/nns",
               description: "Govern and get rewards",
             },
@@ -362,11 +363,10 @@ const marketingNav = {
             {
               name: "Motoko Playground",
               href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
-              description: "Learn the ICP native language",
+              description: "Look into the nitty gritty",
             },
             {
               name: "Programming languages",
-
               description: "ICP supports multiple languages",
               href: "/docs/current/developer-docs/smart-contracts/write/overview",
             },
