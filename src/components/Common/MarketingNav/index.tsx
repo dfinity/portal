@@ -129,7 +129,7 @@ const AuxItems: React.FC<{
   items: AuxItem[];
 }> = ({ items }) => {
   return (
-    <ul className="relative list-none p-0 flex flex-col gap-3 mt-0 mb-0 py-5 border-0 border-t border-solid border-grey-300 md:contents">
+    <ul className="relative list-none p-0 flex flex-col gap-3 mt-0 mb-0 py-5 border-t border-solid border-grey-300 md:contents">
       {items.map((item) => (
         <li key={item.name}>
           <Link
@@ -241,7 +241,7 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
           </div>
         </div>
         {/* desktop aux items */}
-        <div className="bg-[#FAFAFA] py-6 pl-10 pr-6 flex gap-9 items-center border-solid border-slate-50 border-t">
+        <div className="py-6 pl-10 pr-6 flex gap-9 items-center border-solid border-t-grey-200 border-t">
           <AuxItems items={item.auxItems} />
 
           <div className="flex-1"></div>
