@@ -47,7 +47,9 @@ export const SectionSlider = () => {
     autoplaySpeed: 2000,
     pauseOnHover: true,
     centerMode: true,
-    padding: 20,
+    padding: "20px",
+    centerPadding: "20px",
+    swipeToSlide: true,
     responsive: [
       {
         breakpoint: 768,
@@ -61,7 +63,7 @@ export const SectionSlider = () => {
   return (
     <div className="slider-container">
       <Slider ref={(slider) => (sliderRef = slider)} {...settings}>
-        <div>
+        <div className="border-box px-3">
           <CardWithImage href="/docs" image="/img/home/carousel-3.webp">
             <div className="tw-paragraph-sm md:tw-heading-7 mb-2 whitespace-nowrap">
               New Video
@@ -74,7 +76,7 @@ export const SectionSlider = () => {
             </div>
           </CardWithImage>
         </div>
-        <div>
+        <div className="border-box px-3">
           <CardWithImage href="/events" image="/img/home/carousel-1.webp">
             <div className="tw-paragraph-sm md:tw-heading-7 mb-2 whitespace-nowrap">
               July 9, 6pm – Brussels
@@ -87,7 +89,7 @@ export const SectionSlider = () => {
             </div>
           </CardWithImage>
         </div>
-        <div>
+        <div className="border-box px-3">
           <CardWithImage href="/chainfusion" image="/img/home/carousel-2.webp">
             <div className="tw-paragraph-sm md:tw-heading-7 mb-2 whitespace-nowrap">
               Milestone achieved 🚀
@@ -98,7 +100,7 @@ export const SectionSlider = () => {
             </div>
           </CardWithImage>
         </div>
-        <div>
+        <div className="border-box px-3">
           <CardWithImage href="/chainfusion" image="/img/home/carousel-4.webp">
             <div className="tw-paragraph-sm md:tw-heading-7 mb-2 whitespace-nowrap">
               New Video
