@@ -401,8 +401,8 @@ function ChainFusion() {
           >
             <h3 className="tw-heading-5 md:tw-heading-3 text-gradient-purple">
               <LogoSm className="h-[0.76em] mb-[0.14em] align-middle mr-1 md:mr-2" />{" "}
-              enables ICP smart contracts to interact with other networks, such
-              as Bitcoin and Ethereum, to give them more possibilities.{" "}
+              enables smart contracts to interact with multiple networks allowing 
+              developers to realise multichain use cases and profit from ICP features.{" "}
             </h3>
           </AnimateSpawn>
 
