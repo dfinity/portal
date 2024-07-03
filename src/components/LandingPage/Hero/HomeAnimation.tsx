@@ -219,12 +219,28 @@ const HomeAnimation = () => {
 
   return (
     <motion.div
-      className="absolute inset-0 overflow-clip"
+      className="
+        absolute 
+        inset-0 
+        overflow-clip
+      "
       ref={canvasContainer}
       /*style={{
         filter: blur,
       }}*/
-    ></motion.div>
+    >
+
+    <span className="
+        absolute
+        block
+        bottom-0 
+        left-0 
+        right-0 
+        h-24
+        bg-[linear-gradient(transparent,#1B025A)]
+    ">
+    </span>
+    </motion.div>
   );
 };
 
