@@ -28,11 +28,10 @@ export default function Home(): JSX.Element {
       description={siteConfig.tagline}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <Hero>
-        <SectionSlider />
-        <CardsSection />
-        <NewsSection />
-      </Hero>
+      <Hero></Hero>
+      <SectionSlider />
+      <CardsSection />
+      <NewsSection />
 
       <main className="w-full relative bg-[#1B025A] z-[0]">
         <div className="overflow-hidden">

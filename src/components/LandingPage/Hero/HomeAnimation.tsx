@@ -91,7 +91,7 @@ const HomeAnimation = () => {
 
   useEffect(() => {
     let w = window.innerWidth;
-    let h = window.innerHeight;
+    let h = canvasContainer.current.getBoundingClientRect().height || window.innerHeight;
     
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
@@ -172,7 +172,7 @@ const HomeAnimation = () => {
     
     function onWindowResize() {
       w = window.innerWidth;
-      h = window.innerHeight;
+      h = canvasContainer.current.getBoundingClientRect().height || window.innerHeight;
       canvas.width = w;
       canvas.height = h;
     }
