@@ -5,7 +5,7 @@ import React, { useRef } from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import DarkHeroStyles from "../../Common/DarkHeroStyles";
 import { ChatWidget } from "./ChatWidget";
-import ParticleAnimation from "./ParticleAnimation";
+import HomeAnimation from "./HomeAnimation";
 import {
   EthEquivalentTxRate,
   LiveStats,
@@ -30,8 +30,7 @@ const Hero: React.FC<{
   return (
     <section className=" bg-[#1B025A]" id="home" ref={darkRef}>
       {isDark && <DarkHeroStyles bgColor="transparent" />}
-      {/* 
-      <ParticleAnimation /> */}
+      <HomeAnimation />
 
       <div className="pt-[152px] pb-8 md:pt-52 md:pb-30 md:grid relative mt-[-72px] md:mt-[-111px] text-white">
         <div className="container-8">
