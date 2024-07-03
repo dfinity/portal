@@ -63,14 +63,6 @@ export const TotalBlocks = () => {
 
         <figcaption className="tw-paragraph text-white/50 flex items-center gap-1">
           Blocks processed
-          <Info>
-            <h3 className="tw-button-xs mb-1">Throughput</h3>
-            <p className="tw-caption text-white/50 mb-0">
-              Capacity horizontally scales as subnet blockchains are seamlessly
-              combined into one unified blockchain. Blocks and transactions per
-              second are unbounded.
-            </p>
-          </Info>
         </figcaption>
       </figure>
     </motion.div>
@@ -144,19 +136,6 @@ export const EthEquivalentTxRate = () => {
 
         <figcaption className="tw-paragraph-sm md:tw-paragraph text-white/50 flex items-center gap-1">
           ETH eq. TX/s
-          <Info>
-            <h3 className="tw-button-xs mb-1">ETH-equivalent Transactions</h3>
-            <p className="tw-caption text-white/50 mb-0">
-              Not all Transactions are equal. ICP performs ~80x the amount of
-              computational work of Ethereum per transaction.{" "}
-              <Link
-                className="text-white hover:underline hover:text-white"
-                href="https://wiki.internetcomputer.org/wiki/Not_all_transactions_are_equal"
-              >
-                Learn More
-              </Link>
-            </p>
-          </Info>
         </figcaption>
       </figure>
     </motion.div>

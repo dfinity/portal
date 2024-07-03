@@ -3,6 +3,7 @@ import React from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import transitions from "@site/static/transitions.json";
 import { motion } from "framer-motion";
+import HubsLogo from "../../../../static/img/home/icp-hubs-logo.svg";
 
 const MotionLink = motion(Link);
 
@@ -33,54 +34,60 @@ export const CardWithImage: React.FC<{
 export const CardsSection = () => {
   return (
     <AnimateSpawn
-      className="container-10 grid grid-cols-1 md:grid-cols-2 gap-2"
+      className="container-12 mt-30"
       variants={transitions.container}
     >
-
-      <CardWithImage href="/chainfusion" image="/img/home/btc-eth.webp">
-        <div className="tw-heading-7 md:tw-heading-6 mb-2">
-          Native Multi-chain
+      <div className="bg-[linear-gradient(48deg,#4DEDD3_-32.7%,#31A782_33.06%,#3B00B9_129.51%)] rounded-[32px] text-white  overflow-clip mt-6">
+        <div className="flex flex-col md:flex-row items-stretch	 ">
+          <div className="basis-1/2 relative ">
+            <img
+              loading="lazy"
+              src="img/home/ai.webp"
+              className="object-cover size-full"
+            />
+          </div>
+          <div className=" basis-1/2 p-1/10">
+            <div className="tw-heading-4 md:tw-heading-60">
+              Run AI models fully on chain
+            </div>
+            <div className="tw-paragraph md:tw-lead-sm mt-6">
+              Nullam id dolor id nibh ultricies vehicula ut id elit. Donec
+              ullamcorper nulla non metus auctor fringilla. Vivamus sagittis
+              lacus vel augue laoreet rutrum faucibus dolor auctor. Donec sed
+              odio dui.
+            </div>
+            <Link className="button-outline-white-30 mt-6" href="/ai">
+              BUILD NOW
+            </Link>
+          </div>
         </div>
-        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
-          Chain Fusion technology
-        </h2>
-      </CardWithImage>
+      </div>
+      <div className="bg-[linear-gradient(#3B00B9,#9D80DC)] rounded-[32px] text-white overflow-clip mt-6">
+        <div className="flex flex-col md:flex-row items-stretch	 ">
+          <div className="basis-1/2 relative ">
+            <img
+              loading="lazy"
+              src="img/home/icp-hubs.webp"
+              className="object-cover size-full"
+            />
+          </div>
+          <div className=" basis-1/2 p-1/10">
+            <HubsLogo />
 
-      <CardWithImage href="/ai" image="/img/home/ai.webp">
-        <div className="tw-heading-7 md:tw-heading-6 mb-2 whitespace-nowrap">
-          AI models as smart contracts
+            <div className="tw-heading-4 md:tw-heading-60">
+              37 countries around the globe
+            </div>
+            <div className="tw-paragraph md:tw-lead-sm mt-6">
+              Igniting global innovation & collaboration, connecting ICP
+              communities. Join builders, creators, and entrepreneurs all around
+              the world.
+            </div>
+            <Link className="button-outline-white-30 mt-6" href="/hubs">
+              Join thriving Communities
+            </Link>
+          </div>
         </div>
-        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Tamperproof and trustworthy AI</h2>
-      </CardWithImage>
-
-      <CardWithImage
-        href="/roadmap"
-        image="/img/home/roadmap-illustration.webp"
-      >
-        <div className="tw-heading-7 md:tw-heading-6 mb-2">
-          A new era in blockchain
-        </div>
-        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
-          Internet Computer Roadmap
-        </h2>
-      </CardWithImage>
-
-      <CardWithImage href="/ecosystem" image="/img/home/ecosystem-card.webp">
-        <div className="tw-heading-7 md:tw-heading-6 mb-2">Dapps</div>
-        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">ICP Ecosystem</h2>
-      </CardWithImage>
-
-      <CardWithImage href="/docs/current/home" image="/img/home/dev-card.svg">
-        <div className="tw-heading-7 md:tw-heading-6 mb-2">Developer Docs</div>
-        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">Start coding</h2>
-      </CardWithImage>
-
-      <CardWithImage href="/events" image="/img/home/events-card.webp">
-        <div className="tw-heading-7 md:tw-heading-6 mb-2">Global Events</div>
-        <h2 className="tw-heading-5 md:tw-heading-4 mb-0">
-          Meet the community worldwide
-        </h2>
-      </CardWithImage>
+      </div>
     </AnimateSpawn>
   );
 };

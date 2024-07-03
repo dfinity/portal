@@ -28,8 +28,9 @@ export default function Home(): JSX.Element {
       description={siteConfig.tagline}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <Hero headline={<>COMPUTE ON BLOCKCHAIN</>}>
+      <Hero>
         <SectionSlider />
+        <CardsSection />
         <NewsSection />
       </Hero>
 

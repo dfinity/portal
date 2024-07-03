@@ -50,9 +50,9 @@ export const SectionSlider = () => {
     padding: 20,
     responsive: [
       {
-        breakpoint: 768, // Adjust this value based on your needs
+        breakpoint: 768,
         settings: {
-          slidesToShow: 1, // Show 1 slide for screens smaller than 768px
+          slidesToShow: 1,
           arrows: false,
         },
       },
