@@ -3,6 +3,7 @@ keywords: [intermediate, tutorial, nft collection, create an nft, icrc-7, icrc-3
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Creating an NFT collection
 
@@ -41,7 +42,7 @@ git clone https://github.com/PanIndustrial-Org/icrc_nft.mo.git
 cd icrc_nft.mo
 ```
 
-### Step 2: Start the local replica.
+### Step 2: Start the local <GlossaryTooltip>replica</GlossaryTooltip>.
 
 Start `dfx` with the command:
 
@@ -51,7 +52,7 @@ dfx start --clean background
 
 ### Step 3: Create new local identities.
 
-Create two new identities to be used with the NFT canister: `alice` and `icrc7_deployer`. The `alice` identity will be used to demonstrate the approve workflow, and `icrc7_deployer` will be used as the canister's admin controller.
+Create two new identities to be used with the NFT <GlossaryTooltip>canister</GlossaryTooltip>: `alice` and `icrc7_deployer`. The `alice` identity will be used to demonstrate the approve workflow, and `icrc7_deployer` will be used as the canister's admin controller.
 
 
 ```
@@ -283,7 +284,7 @@ dfx canister call icrc7 icrc7_owner_of '(vec {0;1;2})' --query
 )
 ```
 
-You can see that the canister's principal owns all of the minted tokens. To see if your admin principal is approved to spend tokens, make the following canister call:
+You can see that the canister's <GlossaryTooltip>principal</GlossaryTooltip> owns all of the minted tokens. To see if your admin principal is approved to spend tokens, make the following canister call:
 
 ```
 dfx canister call icrc7 icrc37_is_approved "(vec{record { spender=record {owner = principal \"$ADMIN_PRINCIPAL\"; subaccount = null;}; from_subaccount=null; token_id=0;}})" --query
@@ -306,7 +307,7 @@ dfx canister call icrc7 icrc37_transfer_from "(vec{record {
   created_at_time = null;}})"
 ```
 
-### Step 9: Use the `approve` functionality from ICRC-37.
+### Step 10: Use the `approve` functionality from ICRC-37.
 
 Next, use the `icrc37_approve_tokens` canister method to approve the `alice` identity to spend token `0`:
 
@@ -322,7 +323,7 @@ dfx canister call icrc7 icrc37_is_approved "(vec { record {spender= record { own
 
 This should return `(vec { true })`.
 
-### Step 10: Create a new identity for `alice` to transfer the token to.
+### Step 11: Create a new identity for `alice` to transfer the token to.
 
 Create a `bob` identity for `alice` to transfer token `0` to:
 
@@ -345,7 +346,7 @@ dfx canister call icrc7 icrc37_transfer_from "(vec {record {
   created_at_time = null;}})"
 ```
 
-### Step 11: Confirm the transfer was successful.
+### Step 12: Confirm the transfer was successful.
 
 Confirm that the token transfer was successful by echoing `bob`'s principal, then viewing the principal that owns token `0`:
 
@@ -356,7 +357,7 @@ dfx canister call icrc7 icrc7_owner_of '(vec {0})' --query
 
 The two principal IDs should match.
 
-### Step 12: Revoke the approval.
+### Step 13: Revoke the approval.
 
 You can revoke the approval with the command:
 
@@ -377,7 +378,7 @@ dfx canister call icrc7 icrc37_get_token_approvals "(vec { 0;},null,null)" --que
 
 This should return `(vec {})`.
 
-### Step 13: Get the full transaction log.
+### Step 14: Get the full transaction log.
 
 To view all transactions with the NFT collection, run the command:
 

@@ -7,6 +7,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 import '/src/components/CenterImages/center.scss';
 
 
+
 # 1.1 Exploring a live demo
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
@@ -15,13 +16,13 @@ import '/src/components/CenterImages/center.scss';
 
 ## Overview
 
-In the previous segment of our developer journey, introduction to `dfx`, you created a new `dfx` project using the default 'Hello, world' template and looked into the project's structure and code. However, you didn't build or deploy the canister.
+In the previous segment of our developer journey, introduction to `dfx`, you created a new `dfx` project using the default 'Hello, world' template and looked into the project's structure and code. However, you didn't build or deploy the <GlossaryTooltip>canister</GlossaryTooltip>.
 
 In this tutorial, you'll deploy the `hello_world_backend` canister from [0.6: Introduction to dfx](/docs/current/tutorials/developer-journey/level-0/intro-dfx) to the Motoko playground.
 
 ## What is the Motoko playground?
 
-The Motoko playground is a development environment that hosts a 'canister pool' that canisters can be deployed to. When canisters are deployed to the Motoko playground, they temporarily borrow resources from the pool and are allotted a small amount of cycles that can be used during the canister's deployment. Canisters deployed to the playground can run for 20 minutes; after 20 minutes, the canister will be uninstalled and the resources borrowed are returned to the playground's canister pool.
+The Motoko playground is a development environment that hosts a 'canister pool' that canisters can be deployed to. When canisters are deployed to the Motoko playground, they temporarily borrow resources from the pool and are allotted a small amount of <GlossaryTooltip>cycles</GlossaryTooltip> that can be used during the canister's deployment. Canisters deployed to the playground can run for 20 minutes; after 20 minutes, the canister will be uninstalled and the resources borrowed are returned to the playground's canister pool.
 
 :::info
 While the Motoko playground has 'Motoko' in the title, it can be used to deploy canisters written in any development language, not just Motoko.
