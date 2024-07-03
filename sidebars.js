@@ -842,7 +842,7 @@ const sidebars = {
                     id: "developer-docs/defi/tokens/ledger/usage/overview",
                   },
                   items: [
-                    "developer-docs/defi/tokens/ledger/usage/icp_ledger_setup",
+                    "developer-docs/defi/tokens/ledger/usage/icp_ledger_usage",
                     "developer-docs/defi/tokens/ledger/usage/icrc1_ledger_usage"
                   ],
                 },
