@@ -19,7 +19,7 @@ This guide will discuss the different ways to interact with the ICP ledger. In t
 
 ## Interacting with ICP ledger via `dfx ledger`
 
-`dfx` provides a convenience command to interact with the ICP ledger canister and related functionality. You can find the documentation [here](/docs/developer-docs/developer-tools/cli-tools/cli-reference/dfx-ledger) or just enter the following command into your console:
+`dfx` provides a convenience command to interact with the ICP ledger canister and related functionality. You can find the documentation [here](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-ledger) or just enter the following command into your console:
 
 ``` bash
 dfx ledger --help
@@ -71,9 +71,9 @@ dfx ledger --network ic transfer --amount <amount> --memo <memo> <receiver-accou
 ```
 
 ## Interacting with ICP ledger via `dfx canister`
-For this subsection it is assumed that you have deployed an ICP ledger either locally or you want to communicate with the mainnet ICP ledger using `dfx canister`. The ICP ledger canister ID is assumed to be `ryjl3-tyaaa-aaaaa-aaaba-cai`, if your locally deployed ICP ledger's canister ID is different you will need to replace `ryjl3-tyaaa-aaaaa-aaaba-cai` with it. You can find all endpoints that can be called in the `icp_ledger.did` file. How to retrieve it is discussed in the [ICP local deployment guide](/docs/developer-docs/defi/tokens/ledger/setup/icp_ledger_setup.mdx).
+For this subsection it is assumed that you have deployed an ICP ledger either locally or you want to communicate with the mainnet ICP ledger using `dfx canister`. The ICP ledger canister ID is assumed to be `ryjl3-tyaaa-aaaaa-aaaba-cai`, if your locally deployed ICP ledger's canister ID is different you will need to replace `ryjl3-tyaaa-aaaaa-aaaba-cai` with it. You can find all endpoints that can be called in the `icp_ledger.did` file. How to retrieve it is discussed in the [ICP local deployment guide](/docs/current/developer-docs/defi/tokens/ledger/setup/icp_ledger_setup.mdx).
 
-This guide will only go into the ICP ledger specific endpoints. To call the ICRC-1 endpoints you can have a look at [the ICRC-1 setup guide](/docs/developer-docs/defi/tokens/indexes). To find a more detailed description of the data types used in these commands you can have a look at [this guide](/docs/references/ledger#_getting_ledger_blocks).
+This guide will only go into the ICP ledger specific endpoints. To call the ICRC-1 endpoints you can have a look at [the ICRC-1 setup guide](/docs/current/developer-docs/defi/tokens/indexes). To find a more detailed description of the data types used in these commands you can have a look at [this guide](/docs/current/references/ledger#_getting_ledger_blocks).
 
 To fetch the symbol of the ICP ledger:
 ```
@@ -219,7 +219,7 @@ It is a similar format but you will only receive the CBOR encoded block:
 
 In order to simplify working with ICP ledger from JavaScript applications, you can use the [ledger-icp](https://github.com/dfinity/ic-js/tree/main/packages/ledger-icp) JavaScript library.
 .
-To interact with the ICRC-1 endpoints of the ICP ledger you can have a look at the guide on [interacting with an ICRC-1 ledger](/docs/developer-docs/defi/tokens/indexes).
+To interact with the ICRC-1 endpoints of the ICP ledger you can have a look at the guide on [interacting with an ICRC-1 ledger](/docs/current/developer-docs/defi/tokens/indexes).
 
 ## Interacting with ICP from a canister (inter-canister calls via `ic-cdk`)
 You can look at the documentation of [inter-canister calls] (/docs/developer-docs/backend/rust/intercanister) to see how you can interact with the another canister from inside a canister. This guide will give you a couple of examples on how to make such a call in the case of the ICP ledger.
@@ -238,7 +238,7 @@ let ledger_id = Principal::from_text("ryjl3-tyaaa-aaaaa-aaaba-cai").unwrap();
 For all other endpoints you can use the request and response structure from the `ledger.did` Candid file. How to retrieve the Candid file is explained in [the guide on deploying an ICP ledger locally](/docs/developer-docs/defi/tokens/ledger/setup/icp_ledger_setup.mdx).
 
 ### `icrc-ledger-types` Rust crate
-As explained in the [token standards](/docs/developer-docs/defi/tokens/token-standards), the ICP ledger supports all ICRC-1 endpoints. You will need to define the structures used for these endpoints.
+As explained in the [token standards](/docs/current/developer-docs/defi/tokens/token-standards), the ICP ledger supports all ICRC-1 endpoints. You will need to define the structures used for these endpoints.
 To interact with ICRC-1 and ICRC-2 endpoints, the Rust crate [icrc-ledger-types](https://crates.io/crates/icrc-ledger-types) can be used.
 This is true for the ICP ledger as well as any other canister that supports ICRC-1 or any of the ICRC-1 extension standards (i.e ICRC-2, ICRC-3,...).
 The crate can be installed with the command:
@@ -264,7 +264,7 @@ There are currently two main patterns to achieve this. Furthermore, there is a [
 
 #### Direct notification by sender
 
-In this pattern the sender notifies the receiver about the payment. However, the receiver needs to verify the payment by using the [`query_blocks` interface](/docs/references/ledger#_getting_ledger_blocks) of the ledger.
+In this pattern the sender notifies the receiver about the payment. However, the receiver needs to verify the payment by using the [`query_blocks` interface](/docs/current/references/ledger#_getting_ledger_blocks) of the ledger.
 The following diagram shows a simplified illustration of this pattern:
 
 ```plantuml
