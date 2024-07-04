@@ -60,7 +60,7 @@ const Hero: React.FC<{
                 the internet.
               </p>
               <div className="flex flex-col md:flex-row gap-8 mt-8 md:mt-6 md:items-center">
-                <Link className={"button-white w-max"} href="#">
+                <Link className={"button-white w-max"} href="/docs/current/home">
                   Start hacking
                 </Link>
                 <Link
