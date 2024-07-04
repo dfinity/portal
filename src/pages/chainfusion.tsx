@@ -393,33 +393,30 @@ function ChainFusion() {
 
             <div className="overflow-x-clip relative h-[13rem] pb-16 mb-16 box-content w-full">
               <div
-                className="absolute w-full top-0 left-1/2 h-1/3"
+                className="absolute w-full top-0 left-1/2 h-1/3 marqueeRight"
                 style={{
                   backgroundImage: "url('/img/chainfusion/coin-row.webp')",
                   backgroundRepeat: "repeat-x",
                   backgroundSize: isMobile ? "cover" : "contain",
                   width: "300%",
-                  animation: "marqueeRight 50s linear infinite",
                 }}
               ></div>
               <div
-                className="absolute w-full mt-4 top-1/3 left-1/2 h-1/3"
+                className="absolute w-full mt-4 top-1/3 left-1/2 h-1/3 marqueeLeft"
                 style={{
                   backgroundImage: "url('/img/chainfusion/coin-row.webp')",
                   backgroundRepeat: "repeat-x",
                   backgroundSize: isMobile ? "cover" : "contain",
                   width: "300%",
-                  animation: "marqueeLeft 50s linear infinite",
                 }}
               ></div>
               <div
-                className="absolute w-full mt-8 top-2/3 left-1/2 h-1/3"
+                className="absolute w-full mt-8 top-2/3 left-1/2 h-1/3 marqueeRight"
                 style={{
                   backgroundImage: "url('/img/chainfusion/coin-row-2.webp')",
                   backgroundRepeat: "repeat-x",
                   backgroundSize: isMobile ? "cover" : "contain",
                   width: "300%",
-                  animation: "marqueeRight 50s linear infinite",
                 }}
               ></div>
             </div>
