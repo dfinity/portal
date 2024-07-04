@@ -3,7 +3,6 @@ import React from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import transitions from "@site/static/transitions.json";
 import { motion } from "framer-motion";
-import HubsLogo from "../../../../static/img/home/icp-hubs-logo.svg";
 
 const MotionLink = motion(Link);
 
@@ -120,7 +119,11 @@ export const CardsSection = () => {
             />
           </div>
           <div className="basis-1/2 p-1/10">
-            <HubsLogo />
+            <img
+              loading="lazy"
+              src="img/home/hbs1.png"
+              className="w-72 ml-0 mb-4"
+            />
 
             <h4 className="tw-heading-4 md:tw-heading-60">
               37 countries around the globe
