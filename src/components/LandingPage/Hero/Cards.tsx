@@ -117,7 +117,7 @@ export const CardsSection = () => {
             <img
               loading="lazy"
               src="img/home/icp-hubs.webp"
-              className="object-cover size-full"
+              className="w-full"
             />
           </div>
           <div className="basis-1/2 p-1/10">
