@@ -85,14 +85,8 @@ export const CardsSection = () => {
 
       <article className="bg-[linear-gradient(48deg,#4DEDD3_-32.7%,#31A782_33.06%,#3B00B9_129.51%)] rounded-[32px] text-white  overflow-clip mt-6">
         <div className="flex flex-col md:flex-row items-stretch	 ">
-          <div className="basis-1/2 relative ">
-            <img
-              loading="lazy"
-              src="img/home/ai.webp"
-              className="object-cover size-full"
-            />
-          </div>
-          <div className=" basis-1/2 p-1/10">
+
+          <div className=" basis-1/2 p-1/10 md:order-2">
             <h4 className="tw-heading-4 md:tw-heading-60">
               Run AI models fully on chain
             </h4>
@@ -106,12 +100,20 @@ export const CardsSection = () => {
               BUILD NOW
             </Link>
           </div>
+
+          <div className="basis-1/2 relative md:order-1 -mt-24 md:mt-0 overflow-hidden">
+            <img
+              loading="lazy"
+              src="img/home/ai.webp"
+              className="md:absolute bottom-0 left-0 w-full -mb-20 md:mb-0"
+            />
+          </div>
         </div>
       </article>
 
       <article className="bg-[linear-gradient(#3B00B9,#9D80DC)] rounded-[32px] text-white overflow-clip mt-6">
         <div className="flex flex-col md:flex-row items-stretch	 ">
-          <div className="basis-1/2 relative ">
+          <div className="basis-1/2 relative">
             <img
               loading="lazy"
               src="img/home/icp-hubs.webp"
@@ -145,7 +147,7 @@ export const CardsSection = () => {
         <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
           <div className="md:flex-row items-stretch	relative z-1">
             <div className="p-1/10 md:p-2/10 py-1/10 pb-64 md:pb-96">
-              <h5 className="tw-heading-5 md:tw-heading-60">
+              <h5 className="tw-heading-4">
                 Real World Use Cases
               </h5>
               <p className="tw-paragraph md:tw-lead-sm mt-6">
@@ -168,7 +170,7 @@ export const CardsSection = () => {
         <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
           <div className="md:flex-row items-stretch	relative z-1">
             <div className="p-1/10 md:p-2/10 py-1/10 pb-64 md:pb-96">
-              <h5 className="tw-heading-5 md:tw-heading-60">
+              <h5 className="tw-heading-4">
                 ICP ROADMAP
               </h5>
               <p className="tw-paragraph md:tw-lead-sm mt-6">
