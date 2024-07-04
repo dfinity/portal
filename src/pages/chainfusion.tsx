@@ -27,6 +27,7 @@ import BenefitsText from "/img/chainfusion/benefits-text.svg";
 import CodeSnippet from "../components/CodeSnippet";
 import Logo from "../theme/Logo";
 import useMediaQuery from "../utils/use-media-query";
+import { ArrowIconRight } from "../components/RoadmapPage/Overlay";
 
 const benefitsData = [
   {
@@ -83,18 +84,6 @@ const BenefitFeature: React.FC<FeatureProps> = ({
   </div>
 );
 
-const ContentCard: React.FC<{
-  id: string;
-  children: React.ReactNode;
-  className?: string;
-}> = ({ id, children, className }) => {
-  return (
-    <div className="flex flex-col gap-6 content-card-with-id" id={id}>
-      {children}
-    </div>
-  );
-};
-
 const EcosystemCard: React.FC<{
   title: string;
   description?: string;
@@ -113,37 +102,6 @@ const EcosystemCard: React.FC<{
       <p className="tw-paragraph md:tw-lead-sm text-black/60 mt-2 md:mt-0">
         {description}
       </p>
-    </div>
-  );
-};
-
-const StickySectionNav: React.FC<{
-  className?: string;
-  onItemClick: (e, index: number) => void;
-  highlightedIndex: number;
-  title: React.ReactNode;
-  items: string[];
-}> = ({ className, highlightedIndex, onItemClick, items, title }) => {
-  return (
-    <div className={clsx("sticky top-10", className)}>
-      {title}
-      <ul className="list-none p-0 space-y-4 m-0 hidden md:block">
-        {items.map((card, index) => (
-          <li key={index}>
-            <button
-              onClick={(e) => onItemClick(e, index)}
-              className={clsx(
-                "border-none bg-transparent appearance-none text-left font-circular",
-                highlightedIndex !== index
-                  ? "text-black-30 tw-heading-7"
-                  : "tw-heading-6"
-              )}
-            >
-              {card}
-            </button>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 };
@@ -246,42 +204,6 @@ function ChainFusion() {
     title: string;
     id: string;
   };
-  const [content, setContent] = React.useState<ContentCardType[]>([]);
-  const highlight = useScrollSpyMenu(".content-card-with-id");
-  const [codeSnippetsExpanded, setCodeSnippetsExpanded] = useState([
-    false,
-    false,
-    false,
-  ]);
-
-  useEffect(() => {
-    const cards = document.querySelectorAll(".content-card-with-id");
-    const content: {
-      title: string;
-      id: string;
-    }[] = [];
-    for (const card of Array.from(cards)) {
-      const id = card.id;
-      const title = card.querySelector("h3")?.textContent;
-      content.push({ title, id });
-    }
-    setContent(content);
-  }, []);
-
-  function onItemClick(e, index: number) {
-    const target = document.querySelectorAll(`.content-card-with-id`)[index];
-
-    if (target) {
-      const y = target.getBoundingClientRect().top + window.pageYOffset - 115;
-
-      location.hash = content[index].id;
-
-      window.scrollTo({ top: y, behavior: "smooth" });
-
-      e.preventDefault();
-      return false;
-    }
-  }
 
   return (
     <Layout
@@ -357,9 +279,11 @@ function ChainFusion() {
                 alt="Chain Fusion Logo"
                 className="self-center mt-4 md:mt-9 w-full"
               />
-
+              <div className="tw-heading-5 md:tw-heading-3 self-start mt-8 md:mt-12 text-white">
+                Unifying web3 experiences
+              </div>
               <Link
-                href="#"
+                href="/docs/current/developer-docs/multi-chain/overview"
                 className="button-white self-start  mt-8  md:mt-12"
               >
                 Build with Chain fusion
@@ -456,6 +380,13 @@ function ChainFusion() {
               allowing developers to realise multichain use cases and profit
               from ICP features.{" "}
             </h3>
+
+            <Link
+              className="link-white link-with-icon mt-2 md:mt-8"
+              href="/docs/current/developer-docs/multi-chain/supported-chains"
+            >
+              <LinkArrowRight /> See supported chains
+            </Link>
           </AnimateSpawn>
 
           <AnimateSpawn
@@ -565,206 +496,7 @@ function ChainFusion() {
             />
           </AnimateSpawn>
         </section>
-        <section>
-          <AnimateSpawn
-            className="container-10 justify-center items-center pt-18 md:pb-20 md:pt-40"
-            variants={transitions.container}
-            el={motion.section}
-          >
-            <Tabs className="justify-center mb-5 md:mb-10">
-              <TabItem value="btc" label="Build with BTC" default>
-                <CodeSnippet
-                  title="Build with BTC"
-                  description="Sed posuere consectetur est at lobortis. Aenean lacinia bibendum nulla sed consectetur. Aenean lacinia bibendum nulla sed consectetur. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit."
-                  link="/docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions#sending-transactions"
-                  snippet={{
-                    language: "motoko",
-                    code: `type ManagementCanisterActor = actor {
-  bitcoin_send_transaction : SendTransactionRequest -> async ();
-};
-let management_canister_actor : ManagementCanisterActor = actor("aaaaa-aa");
-public func send_transaction(network : Network, transaction : [Nat8]) : async () {
-  let transaction_fee =
-      SEND_TRANSACTION_BASE_COST_CYCLES + transaction.size() * SEND_TRANSACTION_COST_CYCLES_PER_BYTE;
-  ExperimentalCycles.add(transaction_fee);
-  await management_canister_actor.bitcoin_send_transaction({
-      network;
-      transaction;
-  })
-};`,
-                  }}
-                  isExpanded={codeSnippetsExpanded[0]}
-                  toggleExpand={() =>
-                    setCodeSnippetsExpanded((prev) => {
-                      const newExpanded = [...prev];
-                      newExpanded[0] = !prev[0];
-                      return newExpanded;
-                    })
-                  }
-                />
-              </TabItem>
-              <TabItem value="eth" label="Build with ETH">
-                <CodeSnippet
-                  title="Build with ETH"
-                  description="Sed posuere consectetur est at lobortis. Aenean lacinia bibendum nulla sed consectetur. Aenean lacinia bibendum nulla sed consectetur. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit."
-                  link="/docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions#sending-transactions"
-                  snippet={{
-                    language: "motoko",
-                    code: `type ManagementCanisterActor = actor {
-  bitcoin_send_transaction : SendTransactionRequest -> async ();
-};
-let management_canister_actor : ManagementCanisterActor = actor("aaaaa-aa");
-public func send_transaction(network : Network, transaction : [Nat8]) : async () {
-  let transaction_fee =
-      SEND_TRANSACTION_BASE_COST_CYCLES + transaction.size() * SEND_TRANSACTION_COST_CYCLES_PER_BYTE;
-  ExperimentalCycles.add(transaction_fee);
-  await management_canister_actor.bitcoin_send_transaction({
-      network;
-      transaction;
-  })
-};`,
-                  }}
-                  isExpanded={codeSnippetsExpanded[1]}
-                  toggleExpand={() =>
-                    setCodeSnippetsExpanded((prev) => {
-                      const newExpanded = [...prev];
-                      newExpanded[1] = !prev[1];
-                      return newExpanded;
-                    })
-                  }
-                />
-              </TabItem>
-              <TabItem value="usdc" label="Build with USDC">
-                <CodeSnippet
-                  title="Build with USDC"
-                  description="Sed posuere consectetur est at lobortis. Aenean lacinia bibendum nulla sed consectetur. Aenean lacinia bibendum nulla sed consectetur. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit."
-                  link="/docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions#sending-transactions"
-                  snippet={{
-                    language: "motoko",
-                    code: `type ManagementCanisterActor = actor {
-  bitcoin_send_transaction : SendTransactionRequest -> async ();
-};
-let management_canister_actor : ManagementCanisterActor = actor("aaaaa-aa");
-public func send_transaction(network : Network, transaction : [Nat8]) : async () {
-  let transaction_fee =
-      SEND_TRANSACTION_BASE_COST_CYCLES + transaction.size() * SEND_TRANSACTION_COST_CYCLES_PER_BYTE;
-  ExperimentalCycles.add(transaction_fee);
-  await management_canister_actor.bitcoin_send_transaction({
-      network;
-      transaction;
-  })
-};`,
-                  }}
-                  isExpanded={codeSnippetsExpanded[2]}
-                  toggleExpand={() =>
-                    setCodeSnippetsExpanded((prev) => {
-                      const newExpanded = [...prev];
-                      newExpanded[2] = !prev[2];
-                      return newExpanded;
-                    })
-                  }
-                />
-              </TabItem>
-            </Tabs>{" "}
-          </AnimateSpawn>
-        </section>
-        <section className=" bg-white">
-          <div className="container-10 py-20 md:py-40 md:flex">
-            <div className="flex-[5]">
-              <StickySectionNav
-                items={content.map((c) => c.title)}
-                className="md:block pr-10"
-                highlightedIndex={highlight.highlightedIndex}
-                onItemClick={onItemClick}
-                title={
-                  <h2 className="tw-heading-3 md:tw-heading-60 mb-4 text-gradient-purple">
-                    How
-                    {isMobile ? (
-                      <LogoNewLine
-                        className="w-2/3 block mt-1"
-                        color="text-gradient-purple"
-                      />
-                    ) : (
-                      <LogoNewLine
-                        className="w-3/4 my-2 align-middle"
-                        color="text-gradient-purple"
-                      />
-                    )}{" "}
-                    works
-                  </h2>
-                }
-              ></StickySectionNav>
-            </div>
-            <div className="flex-[7]">
-              <div
-                className="space-y-10 md:space-y-20"
-                ref={(el) => (highlight.elRef.current = el)}
-              >
-                <ContentCard
-                  className="content-card-with-id"
-                  id="Network-Integration"
-                >
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Network Integration: Direct read/write capabilities.
-                  </h3>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    ICP smart contracts have secure read/write capabilities for
-                    the Bitcoin and Ethereum network. They can read and write
-                    transactions to those chains. There are two types of
-                    integration:{" "}
-                    <Link
-                      href="/docs/current/developer-docs/identity/verifiable-credentials/how-it-works"
-                      className="link-primary link-with-icon !font-bold no-underline hover:!text-black"
-                    >
-                      Native integration
-                    </Link>{" "}
-                    and{" "}
-                    <Link
-                      href="/docs/current/developer-docs/identity/verifiable-credentials/how-it-works"
-                      className="link-primary link-with-icon !font-bold no-underline hover:!text-black"
-                    >
-                      RPC-based integration
-                    </Link>
-                    .
-                    <div>
-                      <Link
-                        href="/docs/current/developer-docs/identity/verifiable-credentials/how-it-works"
-                        className="mt-4 md:mt-6 link-primary link-with-icon !font-bold no-underline hover:!text-black"
-                      >
-                        <LinkArrowRight /> Learn More
-                      </Link>
-                    </div>
-                  </p>
-                </ContentCard>
 
-                <ContentCard
-                  className="content-card-with-id"
-                  id="threshold-signing"
-                >
-                  <h3 className="tw-heading-4 md:tw-heading-3 mb-0">
-                    Threshold Signing Services: Secure signing mechanisms
-                  </h3>
-                  <p className="tw-paragraph md:tw-lead-sm mb-0">
-                    Threshold signing is a feature of the ICP that allows
-                    canisters to have a pair of public and private keys. The
-                    private key is divided into small shares and distributed
-                    among nodes of a signing subnet, enhancing security. This
-                    mechanism enables secure signing of transactions and
-                    messages.
-                    <div>
-                      <Link
-                        href="/docs/current/developer-docs/identity/verifiable-credentials/how-it-works"
-                        className="mt-4 md:mt-6 link-primary link-with-icon !font-bold no-underline hover:!text-black"
-                      >
-                        <LinkArrowRight /> Learn More
-                      </Link>
-                    </div>
-                  </p>
-                </ContentCard>
-              </div>
-            </div>
-          </div>
-        </section>
         <News content="chainfusion" />
         <section>
           <AnimateSpawn
@@ -780,10 +512,13 @@ public func send_transaction(network : Network, transaction : [Nat8]) : async ()
               className="flex flex-col md:flex-row justify-center items-center  gap-6 mt-4 md:mt-16"
               variants={transitions.container}
             >
-              <Link href="#" className="button-primary">
+              <Link
+                href="/docs/current/developer-docs/multi-chain/overview"
+                className="button-primary"
+              >
                 Build now{" "}
               </Link>
-              <Link href="/ecosystem" className="link-primary link-with-icon">
+              <Link href="/use-cases" className="link-primary link-with-icon">
                 <LinkArrowRight /> See more ICP Use cases
               </Link>
             </motion.div>
