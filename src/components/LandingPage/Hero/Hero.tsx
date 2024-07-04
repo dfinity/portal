@@ -28,7 +28,7 @@ const Hero: React.FC<{
     <section className="bg-[#1B025A]" id="home" ref={darkRef}>
       {isDark && <DarkHeroStyles bgColor="transparent" />}
       <div className="
-        pt-[152px] pb-48 md:pt-52 md:pb-64 md:grid relative 
+        pt-[152px] pb-40 md:pt-52 md:pb-64 md:grid relative 
         mt-[-72px] md:mt-[-111px] text-white -mb-20">
         <HomeAnimation />
         <div className="container-8">
@@ -73,7 +73,7 @@ const Hero: React.FC<{
             </div>
             <Link 
               href="https://dashboard.internetcomputer.org/" 
-              className="hidden md:block absolute bottom-0 -left-60 backdrop-blur-lg hover:no-underline text-white hover:text-black duration-200 ease-in-out">
+              className="block md:absolute mt-8 md:mt-0 bottom-0 -left-60 backdrop-blur-lg hover:no-underline text-white hover:text-black duration-200 ease-in-out">
               <AnimateSpawn
                 className="
                   bg-black/20 p-6 rounded-xl relative overflow-hidden min-w-80 
