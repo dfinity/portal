@@ -816,7 +816,7 @@ const sidebars = {
 	          "developer-docs/defi/tokens/token-standards",
             {
               type: "category",
-              label: "ledgers",
+              label: "Ledgers",
               link: {
                 type: "doc",
                 id: "developer-docs/defi/tokens/ledger/overview",
