@@ -4,7 +4,6 @@ import transitions from "@site/static/transitions.json";
 import React, { useRef } from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import DarkHeroStyles from "../../Common/DarkHeroStyles";
-import { ChatWidget } from "./ChatWidget";
 import HomeAnimation from "./HomeAnimation";
 import {
   EthEquivalentTxRate,
@@ -13,6 +12,7 @@ import {
 
 import { QueryClient, QueryClientProvider } from "react-query";
 import Link from "@docusaurus/Link";
+import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
 const queryClient = new QueryClient();
 
@@ -78,6 +78,7 @@ const Hero: React.FC<{
                   hover:bg-white"
                 variants={transitions.container}
               >
+                <LinkArrowUpRight />
                 <QueryClientProvider client={queryClient}>
                   <EthEquivalentTxRate />
                   <TotalBlocks />

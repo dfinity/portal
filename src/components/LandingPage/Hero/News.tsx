@@ -1,7 +1,6 @@
 import React from "react";
 import data from "@site/.docusaurus/contentful/default/press.json";
 import Link from "@docusaurus/Link";
-import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import transitions from "@site/static/transitions.json";
 import { motion } from "framer-motion";

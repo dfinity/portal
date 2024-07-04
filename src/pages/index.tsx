@@ -1,22 +1,21 @@
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import StartBuildingSection from "@site/src/components/LandingPage/StartBuilding";
+// import StartBuildingSection from "@site/src/components/LandingPage/StartBuilding";
 import Layout from "@theme/Layout";
 import React from "react";
 
-import FeaturesSection from "../components/LandingPage/FeaturesSection/FeaturesSection";
+/*import FeaturesSection from "../components/LandingPage/FeaturesSection/FeaturesSection";
 import FoundationSection from "../components/LandingPage/Foundation";
-import GallerySection from "../components/LandingPage/Gallery";
+import GallerySection from "../components/LandingPage/Gallery";*/
 import { CardsSection } from "../components/LandingPage/Hero/Cards";
 import Hero from "../components/LandingPage/Hero/Hero";
-import IntroCards from "../components/LandingPage/Hero/IntroCards";
+//import IntroCards from "../components/LandingPage/Hero/IntroCards";
 import { NewsSection } from "../components/LandingPage/Hero/News";
-import {
+/*import {
   CollapsedVisionSection,
   VisionSection,
-} from "../components/LandingPage/Hero/VisionSection";
+} from "../components/LandingPage/Hero/VisionSection";*/
 import NewsletterSection from "../components/LandingPage/NewsletterSection/NewsletterSection";
-import SectionsBar from "../components/LandingPage/SectionsBar";
-import Sustainable from "../components/LandingPage/Sustainable/Sustainable";
+//import Sustainable from "../components/LandingPage/Sustainable/Sustainable";
 import SectionSlider from "../components/LandingPage/Hero/SectionSlider";
 
 export default function Home(): JSX.Element {
@@ -45,7 +44,6 @@ export default function Home(): JSX.Element {
           </NewsletterSection>
         </div>
       </main>
-      <SectionsBar />
     </Layout>
   );
 }
