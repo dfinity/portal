@@ -27,7 +27,9 @@ const Hero: React.FC<{
   return (
     <section className="bg-[#1B025A]" id="home" ref={darkRef}>
       {isDark && <DarkHeroStyles bgColor="transparent" />}
-      <div className="pt-[152px] pb-8 md:pt-52 md:pb-64 md:grid relative mt-[-72px] md:mt-[-111px] text-white -mb-20">
+      <div className="
+        pt-[152px] pb-48 md:pt-52 md:pb-64 md:grid relative 
+        mt-[-72px] md:mt-[-111px] text-white -mb-20">
         <HomeAnimation />
         <div className="container-8">
           <div className="relative">
@@ -57,7 +59,7 @@ const Hero: React.FC<{
                 decentralization has arrived on a sovereign network that extends
                 the internet.
               </p>
-              <div className="flex flex-col md:flex-row gap-4 mt-6 items-center ">
+              <div className="flex flex-col md:flex-row gap-8 md:gap-4 mt-8 md:mt-6 md:items-center">
                 <Link className={"button-white"} href="#">
                   Start hacking
                 </Link>
@@ -71,7 +73,7 @@ const Hero: React.FC<{
             </div>
             <Link 
               href="https://dashboard.internetcomputer.org/" 
-              className="md:absolute bottom-0 -left-60 backdrop-blur-lg hover:no-underline text-white hover:text-black">
+              className="hidden md:block absolute bottom-0 -left-60 backdrop-blur-lg hover:no-underline text-white hover:text-black">
               <AnimateSpawn
                 className="
                   bg-black/20 p-6 rounded-xl relative overflow-hidden min-w-80 
