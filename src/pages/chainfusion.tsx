@@ -25,6 +25,8 @@ import News from "../components/BitcoinIntegrationPage/News";
 import Newsletter from "../components/Common/Newsletter/Newsletter";
 import BenefitsText from "/img/chainfusion/benefits-text.svg";
 import CodeSnippet from "../components/CodeSnippet";
+import Logo from "../theme/Logo";
+import useMediaQuery from "../utils/use-media-query";
 
 const benefitsData = [
   {
@@ -237,6 +239,7 @@ const LogoNewLine = ({ className, color = "white" }) => (
 function ChainFusion() {
   const heroRef = useRef<HTMLDivElement>(null);
   const codeRef = useRef<HTMLDivElement>(null);
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   const isDark = useDarkHeaderInHero(heroRef);
   type ContentCardType = {
@@ -473,7 +476,7 @@ function ChainFusion() {
           >
             <div className="md:w-[35%] pt-10 md:pt-40 flex flex-col text-left">
               <LogoNewLine className="w-2/3" color="black" />
-              <motion.h4 className="tw-heading-3 md:tw-heading-60 mt-3 -ml-[3px] md:-ml-1">
+              <motion.h4 className="tw-heading-3 md:tw-heading-60 mt-2 -ml-[3px] md:-ml-1">
                 Benefits
               </motion.h4>
               <motion.p className="tw-paragraph md:tw-lead mt-3 md:mt-6">
@@ -509,7 +512,12 @@ function ChainFusion() {
             el={motion.section}
           >
             <motion.h3 className="tw-heading-5 md:tw-heading-60 mb-1 text-gradient-purple">
-              <LogoSm className="w-full" /> igniting a thriving ICP Ecosystem
+              {isMobile ? (
+                <LogoNewLine className="block w-2/3 mb-2" />
+              ) : (
+                <LogoSm className="w-full" />
+              )}
+              igniting a thriving ICP Ecosystem
             </motion.h3>
             <motion.p className="tw-paragraph md:tw-lead mt-3 md:mt-6">
               Chain Fusion is empowering projects to innovate and succeed. By
@@ -518,7 +526,7 @@ function ChainFusion() {
             </motion.p>
           </AnimateSpawn>
           <AnimateSpawn
-            className="container-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-5 mt-12 md:mt-20"
+            className="container-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 mt-12 md:mt-20"
             variants={transitions.container}
             el={motion.section}
           >
@@ -652,16 +660,23 @@ public func send_transaction(network : Network, transaction : [Nat8]) : async ()
             <div className="flex-[5]">
               <StickySectionNav
                 items={content.map((c) => c.title)}
-                className="hidden md:block pr-10"
+                className="md:block pr-10"
                 highlightedIndex={highlight.highlightedIndex}
                 onItemClick={onItemClick}
                 title={
                   <h2 className="tw-heading-4 md:tw-heading-60 mb-4 text-gradient-purple">
                     How
-                    <LogoNewLine
-                      className="w-3/4 my-2 align-middle"
-                      color="text-gradient-purple"
-                    />{" "}
+                    {isMobile ? (
+                      <LogoSm
+                        className="ml-2 w-[77%] align-middle"
+                        color="text-gradient-purple"
+                      />
+                    ) : (
+                      <LogoNewLine
+                        className="w-3/4 my-2 align-middle"
+                        color="text-gradient-purple"
+                      />
+                    )}{" "}
                     works
                   </h2>
                 }
