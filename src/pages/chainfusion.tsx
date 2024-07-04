@@ -438,7 +438,11 @@ function ChainFusion() {
             el={motion.section}
           >
             <h3 className="tw-heading-5 md:tw-heading-3 text-gradient-purple">
-              <LogoSm className="h-[0.76em] mb-[0.14em] align-middle mr-1 md:mr-2" />{" "}
+              {isMobile ? (
+                <LogoNewLine className="block w-2/3 mb-2" />
+              ) : (
+                <LogoSm className="h-[0.76em] mb-[0.14em] align-middle mr-1 md:mr-2" />
+              )}{" "}
               enables smart contracts to interact with multiple networks
               allowing developers to realise multichain use cases and profit
               from ICP features.{" "}
@@ -667,8 +671,8 @@ public func send_transaction(network : Network, transaction : [Nat8]) : async ()
                   <h2 className="tw-heading-4 md:tw-heading-60 mb-4 text-gradient-purple">
                     How
                     {isMobile ? (
-                      <LogoSm
-                        className="ml-2 w-[77%] align-middle"
+                      <LogoNewLine
+                        className="w-2/3 block mt-1"
                         color="text-gradient-purple"
                       />
                     ) : (
