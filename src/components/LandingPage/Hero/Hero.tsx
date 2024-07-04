@@ -59,7 +59,7 @@ const Hero: React.FC<{
                 decentralization has arrived on a sovereign network that extends
                 the internet.
               </p>
-              <div className="flex flex-col md:flex-row gap-8 md:gap-4 mt-8 md:mt-6 md:items-center">
+              <div className="flex flex-col md:flex-row gap-8 mt-8 md:mt-6 md:items-center">
                 <Link className={"button-white w-max"} href="#">
                   Start hacking
                 </Link>
