@@ -37,7 +37,7 @@ ICP also provides replica signed queries, where query responses are signed by th
 A canister can store a small amount of data (32 bytes) during an update call in the state tree under `certified_data` which will be certified by the subnet. During a query call, the canister can obtain a certificate about that data, which can be verified against the IC root public key. Combining these features, a canister should be able to certify a variable in a query response with this [design](https://medium.com/dfinity/how-internet-computer-responses-are-certified-as-authentic-2ff1bb1ea659). 
 
 On a high level, in your canister,
-1. Choose an [authenticated data strucutre](https://cs.brown.edu/research/pubs/pdfs/2003/Tamassia-2003-ADS.pdf) like Merkle trees for storing the value in canister memory.
+1. Choose an [authenticated data structure](https://cs.brown.edu/research/pubs/pdfs/2003/Tamassia-2003-ADS.pdf) like Merkle trees to store a value in canister memory.
 2. In the **update** call,
   - Perform the computation and store the result in the Merkle store.
   - The lookup path for the result must act as it's `key`. Ideally this `key` should be the parameters provided by the caller in the query method.
@@ -45,9 +45,9 @@ On a high level, in your canister,
   - Store the `root_hash` as the canister's certified data.
   - Return the `key` as response.
 3. In the **query** call, 
-  - Fetch the result from the Merkle strucutre using the query parameters as the lookup path.
+  - Fetch the result from the Merkle structure using the query parameters as the lookup path.
   - Fetch the current `certified_data` for the canister.
-  - Compute the witness for the result using the same lookup path. Merkle witness provide proof of inclusion that the requested result exists in the Merkle store under the given path.
+  - Compute the witness for the result using the same lookup path. The Merkle witness provides proof of inclusion that the requested result exists in the Merkle tree under the given path.
   - Return `(result, certified_data, witness)` as the response.
 
 The rest of the section shows an example canister, which can serve a certified response for a `query` using `certified_data` which is verified in the frond-end. The examples are written in Rust and Motoko but the overall design can be implemented in other languages.
@@ -329,7 +329,7 @@ Once you have the response `CertifiedUser`, for the integrity guarantee, the fro
 The example has some extra steps to setup the canister with some `User` data before verification. You can ignore the section marked between `// ==== START of canister data setup` and `// ==== END of canister data setup`
 :::
 
-1. Recompute the `root_hash` of `certificate.tree` (pruned state tree with the canister's `certified_data`) and verify the `certificate.signature` with `root_hash` as the message,`certificate.delegation`, and the IC `root_key` as the public key. This confirms that the signature is valid for the current state tree. 
+1. Verify the IC certificate: Recompute the `root_hash` of `certificate.tree` (pruned state tree with the canister's `certified_data`) and verify the `certificate.signature` with `root_hash` as the message,`certificate.delegation`, and the IC `root_key` as the public key. This confirms that the signature is valid for the current state tree. 
 2. Validate that the response is not stale by verifying the time at `/time` in `certificate.tree` is less than a certain delta of current time. The recommended delta is 5 minutes but should be adapted to the use case.
 3. Recompute the `root_hash` of the witness and verify equality with the `certified_data`. The `certified_data` can be obtained from `certificate.tree` under the path `/canister/<canister_id>/certified_data`.
 4. Check if query parameters are in the witness. In this example, the lookup path is `/user/<index>` and should be present in the witness. 
