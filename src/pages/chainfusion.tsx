@@ -380,7 +380,7 @@ function ChainFusion() {
             variants={transitions.container}
             el={motion.section}
           >
-            <div className="overflow-x-hidden relative h-[13rem] pb-16 mb-16 box-content w-full">
+            <div className="overflow-x-clip relative h-[13rem] pb-16 mb-16 box-content w-full">
               <div className="absolute max-w-max top-0 left-1/2 flex gap-2 nft-marquee-right h-1/3">
                 <img
                   className="block max-w-fit"
