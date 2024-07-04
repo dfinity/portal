@@ -392,33 +392,57 @@ function ChainFusion() {
             />
 
             <div className="overflow-x-clip relative h-[13rem] pb-16 mb-16 box-content w-full">
-              <div
-                className="absolute w-full top-0 left-1/2 h-1/3 marqueeRight"
-                style={{
-                  backgroundImage: "url('/img/chainfusion/coin-row.webp')",
-                  backgroundRepeat: "repeat-x",
-                  backgroundSize: isMobile ? "cover" : "contain",
-                  width: "300%",
-                }}
-              ></div>
-              <div
-                className="absolute w-full mt-4 top-1/3 left-1/2 h-1/3 marqueeLeft"
-                style={{
-                  backgroundImage: "url('/img/chainfusion/coin-row.webp')",
-                  backgroundRepeat: "repeat-x",
-                  backgroundSize: isMobile ? "cover" : "contain",
-                  width: "300%",
-                }}
-              ></div>
-              <div
-                className="absolute w-full mt-8 top-2/3 left-1/2 h-1/3 marqueeRight"
-                style={{
-                  backgroundImage: "url('/img/chainfusion/coin-row-2.webp')",
-                  backgroundRepeat: "repeat-x",
-                  backgroundSize: isMobile ? "cover" : "contain",
-                  width: "300%",
-                }}
-              ></div>
+              <div className="absolute max-w-max top-0 left-1/2 flex gap-2 nft-marquee-right h-1/3">
+                <img
+                  className="block max-w-fit"
+                  src="/img/chainfusion/coin-row.webp"
+                  alt="row of crypto coin logo"
+                />
+                <img
+                  className="block max-w-fit"
+                  src="/img/chainfusion/coin-row.webp"
+                  alt="row of crypto coin logo"
+                />
+                <img
+                  className="block max-w-fit"
+                  src="/img/chainfusion/coin-row.webp"
+                  alt="row of crypto coin logo"
+                />
+              </div>
+              <div className="absolute max-w-max mt-4 top-1/3 left-1/2 flex gap-2 nft-marquee-left h-1/3">
+                <img
+                  className="block max-w-fit"
+                  src="/img/chainfusion/coin-row.webp"
+                  alt="row of crypto coin logo"
+                />
+                <img
+                  className="block max-w-fit"
+                  src="/img/chainfusion/coin-row.webp"
+                  alt="row of crypto coin logo"
+                />
+                <img
+                  className="block max-w-fit"
+                  src="/img/chainfusion/coin-row.webp"
+                  alt="row of crypto coin logo"
+                />
+              </div>
+              <div className="absolute max-w-max mt-8 top-2/3 left-1/2 flex gap-2 nft-marquee-right h-1/3">
+                <img
+                  className="block max-w-fit"
+                  src="/img/chainfusion/coin-row-2.webp"
+                  alt="row of crypto coin logo"
+                />
+                <img
+                  className="block max-w-fit"
+                  src="/img/chainfusion/coin-row-2.webp"
+                  alt="row of crypto coin logo"
+                />
+                <img
+                  className="block max-w-fit"
+                  src="/img/chainfusion/coin-row-2.webp"
+                  alt="row of crypto coin logo"
+                />
+              </div>
             </div>
           </AnimateSpawn>
           <AnimateSpawn
@@ -506,7 +530,7 @@ function ChainFusion() {
               ) : (
                 <LogoSm className="w-full" />
               )}
-              ignites a thriving ICP ecosystem
+              igniting a thriving ICP Ecosystem
             </motion.h3>
             <motion.p className="tw-paragraph md:tw-lead mt-3 md:mt-6">
               Chain Fusion is empowering projects to innovate and succeed. By
