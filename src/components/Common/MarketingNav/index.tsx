@@ -129,7 +129,7 @@ const AuxItems: React.FC<{
   items: AuxItem[];
 }> = ({ items }) => {
   return (
-    <ul className="relative list-none p-0 flex flex-col gap-3 mt-0 mb-0 py-5 border-0 border-t border-solid border-grey-300 md:contents">
+    <ul className="relative list-none p-0 flex flex-col gap-3 mt-0 mb-0 py-5 md:border-t md:border-solid md:border-grey-300 md:contents">
       {items.map((item) => (
         <li key={item.name}>
           <Link
@@ -180,8 +180,8 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
               ))}
             </div>
           )}
-          <div className="flex  flex-1 pl-8 pr-6 py-6 bg-white min-w-[705px]">
-            <div className="flex-1 flex flex-col gap-5 min-w-[256px] pr-6">
+          <div className="flex lex-1 pl-8 pr-6 py-6 bg-white min-w-[705px]">
+            <div className="flex-1 grid grid-rows-4 grid-flow-col gap-5 gap-x-15 min-w-[256px] pr-6">
               {item.sections[selectedSectionIndex].items.map((item) => (
                 <Link
                   key={item.name}
@@ -190,10 +190,10 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
                     isCurrentPage(item.href, location.pathname)
                       ? "text-infinite"
                       : "text-black",
-                    "hover:no-underline group/item hover:text-infinite flex flex-col"
+                    "hover:no-underline group/item hover:text-infinite flex flex-col min-w-52"
                   )}
                 >
-                  <span className="tw-heading-7 inline-flex gap-2 items-center">
+                  <span className="tw-heading-7 inline-flex gap-2 items-center whitespace-nowrap">
                     {item.name}
 
                     {isLinkExternal(item.href) && (
@@ -215,7 +215,7 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
               ))}
             </div>
             {item.sections[selectedSectionIndex].featured && (
-              <div className="flex-1 pl-6">
+              <div className="pl-6">
                 <Link
                   style={{
                     backgroundImage: `url(${item.sections[selectedSectionIndex].featured.image})`,
@@ -241,7 +241,7 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
           </div>
         </div>
         {/* desktop aux items */}
-        <div className="bg-[#FAFAFA] py-6 pl-10 pr-6 flex gap-9 items-center">
+        <div className="py-6 pl-[1.8rem] pr-5 flex gap-9 items-center border-solid border-t-grey-200 border-t">
           <AuxItems items={item.auxItems} />
 
           <div className="flex-1"></div>
