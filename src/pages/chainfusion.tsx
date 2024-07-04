@@ -397,7 +397,7 @@ function ChainFusion() {
                 style={{
                   backgroundImage: "url('/img/chainfusion/coin-row.webp')",
                   backgroundRepeat: "repeat-x",
-                  backgroundSize: "contain",
+                  backgroundSize: isMobile ? "cover" : "contain",
                   width: "300%",
                   animation: "marqueeRight 50s linear infinite",
                 }}
@@ -407,7 +407,7 @@ function ChainFusion() {
                 style={{
                   backgroundImage: "url('/img/chainfusion/coin-row.webp')",
                   backgroundRepeat: "repeat-x",
-                  backgroundSize: "contain",
+                  backgroundSize: isMobile ? "cover" : "contain",
                   width: "300%",
                   animation: "marqueeLeft 50s linear infinite",
                 }}
@@ -417,7 +417,7 @@ function ChainFusion() {
                 style={{
                   backgroundImage: "url('/img/chainfusion/coin-row-2.webp')",
                   backgroundRepeat: "repeat-x",
-                  backgroundSize: "contain",
+                  backgroundSize: isMobile ? "cover" : "contain",
                   width: "300%",
                   animation: "marqueeRight 50s linear infinite",
                 }}
@@ -509,7 +509,7 @@ function ChainFusion() {
               ) : (
                 <LogoSm className="w-full" />
               )}
-              igniting a thriving ICP Ecosystem
+              ignites a thriving ICP ecosystem
             </motion.h3>
             <motion.p className="tw-paragraph md:tw-lead mt-3 md:mt-6">
               Chain Fusion is empowering projects to innovate and succeed. By
