@@ -454,10 +454,16 @@ function ChainFusion() {
             variants={transitions.container}
             el={motion.section}
           >
-            <img
-              src="/img/chainfusion/chainfusion-grafic-desktop.webp"
-              alt=""
-            />
+            <picture>
+              <source
+                media="(max-width: 768px)"
+                srcSet="/img/chainfusion/chainfusion-grafic-mobile.webp"
+              />
+              <img
+                src="/img/chainfusion/chainfusion-grafic-desktop.webp"
+                alt="Chain Fusion graphic"
+              />
+            </picture>
           </AnimateSpawn>
         </section>
         <section className="container-10 pt-12 pb-24 md:py-40">
