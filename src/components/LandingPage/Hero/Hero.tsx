@@ -51,7 +51,7 @@ const Hero: React.FC<{
               <span className="block md:ml-48">BLOCKCHAIN</span>
             </h1>
             <div className="md:ml-48">
-              <p className="tw-paragraph md:tw-lead-sm mt-6 w-7/10">
+              <p className="tw-paragraph md:tw-lead-sm mt-6 md:w-7/10">
                 The Internet Computer reinvents compute on blockchain,
                 incorporating more than a 1000 human years of R&D effort.
                 Everything is now on-chain. HTTP. Data. Compute. AI. Your Web3
