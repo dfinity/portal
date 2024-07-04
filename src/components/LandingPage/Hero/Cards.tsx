@@ -41,7 +41,7 @@ export const CardsSection = () => {
         <img
           loading="lazy"
           src="img/home/chainfusion.webp"
-          className="object-cover size-full absolute pointer-events-none"
+          className="md:object-cover size-full absolute pointer-events-none"
         />
         <div className="flex flex-col md:flex-row items-stretch md:min-h-[34rem]">
           <div className="basis-1/2 flex items-center">
