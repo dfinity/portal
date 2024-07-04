@@ -300,7 +300,7 @@ function ChainFusion() {
         {isDark && <DarkHeroStyles bgColor="infinite"></DarkHeroStyles>}
 
         <section
-          className="h-dvh md:h-auto overflow-hidden bg-[#1E005D] text-white pt-20 relative"
+          className="h-[90dvh] md:h-auto overflow-hidden bg-[#1E005D] text-white pt-20 relative"
           ref={heroRef}
         >
           <div className="absolute inset-0">
@@ -324,7 +324,7 @@ function ChainFusion() {
                 background: "linear-gradient(transparent, #1E005D)",
               }}
             ></div>
-            <motion.div className="md:hidden flex justify-center items-center">
+            {/* <motion.div className="md:hidden flex justify-center items-center">
               {" "}
               <Link
                 href="#"
@@ -332,7 +332,7 @@ function ChainFusion() {
               >
                 Jump In <div className="text-[3.5rem] -mt-2   font-bold">⌵</div>
               </Link>
-            </motion.div>
+            </motion.div> */}
           </div>
 
           <section className="flex flex-col justify-center w-full">
@@ -340,6 +340,7 @@ function ChainFusion() {
               style={{
                 background:
                   "linear-gradient(180deg, rgba(30, 0, 93, 0.00) 0%, #1E005D 100%",
+                marginTop: `calc(var(--ifm-navbar-height) * -1)`,
               }}
             ></div>
             <div className="relative z-1 container-10 m-48 md:m-60 !mx-auto flex flex-col justify-center items-center">
@@ -354,7 +355,7 @@ function ChainFusion() {
 
               <Link
                 href="#"
-                className="button-white self-center md:self-start  mt-8  md:mt-12"
+                className="button-white self-start  mt-8  md:mt-12"
               >
                 Build with Chain fusion
               </Link>
@@ -368,7 +369,7 @@ function ChainFusion() {
           ></motion.div>
         </section>
 
-        <section className="bg-[#1E005D]">
+        <section className="bg-[#1E005D] -mt-24 md:-mt-16">
           <AnimateSpawn
             className="flex justify-center"
             variants={transitions.container}
@@ -376,19 +377,55 @@ function ChainFusion() {
           >
             <div className="overflow-x-clip relative h-[13rem] pb-16 mb-16 box-content w-full">
               <div className="absolute max-w-max top-0 left-1/2 flex gap-2 nft-marquee-right h-1/3">
-                <img className="block max-w-fit" src="/img/chainfusion/coin-row.webp" alt="row of crypto coin logo" />
-                <img className="block max-w-fit" src="/img/chainfusion/coin-row.webp" alt="row of crypto coin logo" />
-                <img className="block max-w-fit" src="/img/chainfusion/coin-row.webp" alt="row of crypto coin logo" />
+                <img
+                  className="block max-w-fit"
+                  src="/img/chainfusion/coin-row.webp"
+                  alt="row of crypto coin logo"
+                />
+                <img
+                  className="block max-w-fit"
+                  src="/img/chainfusion/coin-row.webp"
+                  alt="row of crypto coin logo"
+                />
+                <img
+                  className="block max-w-fit"
+                  src="/img/chainfusion/coin-row.webp"
+                  alt="row of crypto coin logo"
+                />
               </div>
               <div className="absolute max-w-max mt-4 top-1/3 left-1/2 flex gap-2 nft-marquee-left h-1/3">
-                <img className="block max-w-fit" src="/img/chainfusion/coin-row.webp" alt="row of crypto coin logo" />
-                <img className="block max-w-fit" src="/img/chainfusion/coin-row.webp" alt="row of crypto coin logo" />
-                <img className="block max-w-fit" src="/img/chainfusion/coin-row.webp" alt="row of crypto coin logo" />
+                <img
+                  className="block max-w-fit"
+                  src="/img/chainfusion/coin-row.webp"
+                  alt="row of crypto coin logo"
+                />
+                <img
+                  className="block max-w-fit"
+                  src="/img/chainfusion/coin-row.webp"
+                  alt="row of crypto coin logo"
+                />
+                <img
+                  className="block max-w-fit"
+                  src="/img/chainfusion/coin-row.webp"
+                  alt="row of crypto coin logo"
+                />
               </div>
               <div className="absolute max-w-max mt-8 top-2/3 left-1/2 flex gap-2 nft-marquee-right h-1/3">
-                <img className="block max-w-fit" src="/img/chainfusion/coin-row.webp" alt="row of crypto coin logo" />
-                <img className="block max-w-fit" src="/img/chainfusion/coin-row.webp" alt="row of crypto coin logo" />
-                <img className="block max-w-fit" src="/img/chainfusion/coin-row.webp" alt="row of crypto coin logo" />
+                <img
+                  className="block max-w-fit"
+                  src="/img/chainfusion/coin-row.webp"
+                  alt="row of crypto coin logo"
+                />
+                <img
+                  className="block max-w-fit"
+                  src="/img/chainfusion/coin-row.webp"
+                  alt="row of crypto coin logo"
+                />
+                <img
+                  className="block max-w-fit"
+                  src="/img/chainfusion/coin-row.webp"
+                  alt="row of crypto coin logo"
+                />
               </div>
             </div>
           </AnimateSpawn>
@@ -399,8 +436,9 @@ function ChainFusion() {
           >
             <h3 className="tw-heading-5 md:tw-heading-3 text-gradient-purple">
               <LogoSm className="h-[0.76em] mb-[0.14em] align-middle mr-1 md:mr-2" />{" "}
-              enables smart contracts to interact with multiple networks allowing 
-              developers to realise multichain use cases and profit from ICP features.{" "}
+              enables smart contracts to interact with multiple networks
+              allowing developers to realise multichain use cases and profit
+              from ICP features.{" "}
             </h3>
           </AnimateSpawn>
 
@@ -416,7 +454,10 @@ function ChainFusion() {
             variants={transitions.container}
             el={motion.section}
           >
-            <img src="/img/chainfusion/chainfusion-grafic.webp" alt="" />
+            <img
+              src="/img/chainfusion/chainfusion-grafic-desktop.webp"
+              alt=""
+            />
           </AnimateSpawn>
         </section>
         <section className="container-10 pt-12 pb-24 md:py-40">
@@ -430,8 +471,8 @@ function ChainFusion() {
                 Benefits
               </motion.h4>
               <motion.p className="tw-paragraph md:tw-lead mt-3 md:mt-6">
-                Seamless and secure interoperability between different blockchains
-                unlocks new possibilities.
+                Seamless and secure interoperability between different
+                blockchains unlocks new possibilities.
               </motion.p>
             </div>
             <div className="md:w-[65%] relative">
@@ -638,19 +679,20 @@ public func send_transaction(network : Network, transaction : [Nat8]) : async ()
                     transactions to those chains. There are two types of
                     integration:{" "}
                     <Link
-                        href="/docs/current/developer-docs/identity/verifiable-credentials/how-it-works"
-                        className="link-primary link-with-icon !font-bold no-underline hover:!text-black"
-                      >
-                        Native integration
-                      </Link>
-                      {" "}and{" "}
+                      href="/docs/current/developer-docs/identity/verifiable-credentials/how-it-works"
+                      className="link-primary link-with-icon !font-bold no-underline hover:!text-black"
+                    >
+                      Native integration
+                    </Link>{" "}
+                    and{" "}
                     <Link
-                        href="/docs/current/developer-docs/identity/verifiable-credentials/how-it-works"
-                        className="link-primary link-with-icon !font-bold no-underline hover:!text-black"
-                      >
-                        RPC-based integration
-                      </Link>.
-                      <div>
+                      href="/docs/current/developer-docs/identity/verifiable-credentials/how-it-works"
+                      className="link-primary link-with-icon !font-bold no-underline hover:!text-black"
+                    >
+                      RPC-based integration
+                    </Link>
+                    .
+                    <div>
                       <Link
                         href="/docs/current/developer-docs/identity/verifiable-credentials/how-it-works"
                         className="mt-4 md:mt-6 link-primary link-with-icon !font-bold no-underline hover:!text-black"
