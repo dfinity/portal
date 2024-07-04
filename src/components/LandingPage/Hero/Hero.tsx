@@ -78,7 +78,9 @@ const Hero: React.FC<{
                   hover:bg-white"
                 variants={transitions.container}
               >
-                <LinkArrowUpRight />
+                <span className="absolute top-6 right-6">
+                  <LinkArrowUpRight />
+                </span>
                 <QueryClientProvider client={queryClient}>
                   <EthEquivalentTxRate />
                   <TotalBlocks />
