@@ -130,7 +130,7 @@ export const CardsSection = () => {
               communities. Join builders, creators, and entrepreneurs all around
               the world.
             </p>
-            <Link className="button-outline-white-30 mt-6" href="#">
+            <Link className="button-outline-white-30 mt-6" href="https://linktr.ee/icp_hubs_network">
               Join thriving Communities
             </Link>
           </div>
