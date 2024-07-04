@@ -73,7 +73,7 @@ const Hero: React.FC<{
             </div>
             <Link 
               href="https://dashboard.internetcomputer.org/" 
-              className="hidden md:block absolute bottom-0 -left-60 backdrop-blur-lg hover:no-underline text-white hover:text-black">
+              className="hidden md:block absolute bottom-0 -left-60 backdrop-blur-lg hover:no-underline text-white hover:text-black duration-200 ease-in-out">
               <AnimateSpawn
                 className="
                   bg-black/20 p-6 rounded-xl relative overflow-hidden min-w-80 
