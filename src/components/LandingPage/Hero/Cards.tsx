@@ -97,12 +97,12 @@ export const CardsSection = () => {
             <h4 className="tw-heading-4 md:tw-heading-60">
               Run AI models fully on chain
             </h4>
-            <div className="tw-paragraph md:tw-lead-sm mt-6">
+            <p className="tw-paragraph md:tw-lead-sm mt-6">
               Nullam id dolor id nibh ultricies vehicula ut id elit. Donec
               ullamcorper nulla non metus auctor fringilla. Vivamus sagittis
               lacus vel augue laoreet rutrum faucibus dolor auctor. Donec sed
               odio dui.
-            </div>
+            </p>
             <Link className="button-outline-white-30 mt-6" href="/ai">
               BUILD NOW
             </Link>
@@ -141,7 +141,7 @@ export const CardsSection = () => {
 
         <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
           <div className="md:flex-row items-stretch	relative z-1">
-            <div className="p-2/10 py-1/10 pb-96">
+            <div className="p-1/10 md:p-2/10 py-1/10 pb-64 md:pb-96">
               <h5 className="tw-heading-5 md:tw-heading-60">
                 Real World Use Cases
               </h5>
@@ -164,7 +164,7 @@ export const CardsSection = () => {
 
         <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
           <div className="md:flex-row items-stretch	relative z-1">
-            <div className="p-2/10 py-1/10 pb-96">
+            <div className="p-1/10 md:p-2/10 py-1/10 pb-64 md:pb-96">
               <h5 className="tw-heading-5 md:tw-heading-60">
                 ICP ROADMAP
               </h5>
