@@ -323,6 +323,32 @@ div[class^="announcementBarContent"] {
   }
 }
 
+@keyframes marqueeLeft {
+  from {
+    transform: translate3d(-25%, 0, 0);
+  }
+  to {
+    transform: translate3d(-75%, 0, 0);
+  }
+}
+
+@keyframes marqueeRight {
+  from {
+    transform: translate3d(-75%, 0, 0);
+  }
+  to {
+    transform: translate3d(-25%, 0, 0);
+  }
+}
+
+.marqueeLeft {
+  animation: marqueeLeft 50s linear infinite;
+}
+
+.marqueeRight {
+  animation: marqueeRight 50s linear infinite;
+}
+
 .ethdenver-astronaut {
   animation: ethdenver-astronaut 3s cubic-bezier(0, 0.51, 0.37, 0.94) forwards;
 }
