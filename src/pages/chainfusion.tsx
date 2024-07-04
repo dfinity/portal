@@ -68,7 +68,7 @@ const BenefitFeature: React.FC<FeatureProps> = ({
   description,
   fullW,
 }) => (
-  <div className="flex flex-col items-start text-left bg-infinite rounded-xl p-12 text-white">
+  <div className="flex flex-col items-start text-left bg-infinite rounded-xl p-8 text-white">
     <div className="flex items-start">
       <img loading="lazy" src={icon} className="w-6 aspect-square" />
     </div>
@@ -305,6 +305,9 @@ function ChainFusion() {
         <section
           className="h-[90dvh] md:h-auto overflow-hidden bg-[#1E005D] text-white pt-20 relative"
           ref={heroRef}
+          style={{
+            marginTop: `calc(var(--ifm-navbar-height) * -1)`,
+          }}
         >
           <div className="absolute inset-0">
             <div
@@ -343,7 +346,6 @@ function ChainFusion() {
               style={{
                 background:
                   "linear-gradient(180deg, rgba(30, 0, 93, 0.00) 0%, #1E005D 100%",
-                marginTop: `calc(var(--ifm-navbar-height) * -1)`,
               }}
             ></div>
             <div className="relative z-1 container-10 m-48 md:m-60 !mx-auto flex flex-col justify-center items-center">
@@ -372,28 +374,31 @@ function ChainFusion() {
           ></motion.div>
         </section>
 
-        <section className="bg-[#1E005D] -mt-24 md:-mt-16">
+        <section className="bg-[#1E005D] ">
           <AnimateSpawn
             className="flex justify-center"
             variants={transitions.container}
             el={motion.section}
           >
-            <div className="overflow-x-clip relative h-[13rem] pb-16 mb-16 box-content w-full">
+            <div className="overflow-x-hidden relative h-[13rem] pb-16 mb-16 box-content w-full">
               <div className="absolute max-w-max top-0 left-1/2 flex gap-2 nft-marquee-right h-1/3">
                 <img
                   className="block max-w-fit"
                   src="/img/chainfusion/coin-row.webp"
                   alt="row of crypto coin logo"
+                  loading="lazy"
                 />
                 <img
                   className="block max-w-fit"
                   src="/img/chainfusion/coin-row.webp"
                   alt="row of crypto coin logo"
+                  loading="lazy"
                 />
                 <img
                   className="block max-w-fit"
                   src="/img/chainfusion/coin-row.webp"
                   alt="row of crypto coin logo"
+                  loading="lazy"
                 />
               </div>
               <div className="absolute max-w-max mt-4 top-1/3 left-1/2 flex gap-2 nft-marquee-left h-1/3">
@@ -401,16 +406,19 @@ function ChainFusion() {
                   className="block max-w-fit"
                   src="/img/chainfusion/coin-row.webp"
                   alt="row of crypto coin logo"
+                  loading="lazy"
                 />
                 <img
                   className="block max-w-fit"
                   src="/img/chainfusion/coin-row.webp"
                   alt="row of crypto coin logo"
+                  loading="lazy"
                 />
                 <img
                   className="block max-w-fit"
                   src="/img/chainfusion/coin-row.webp"
                   alt="row of crypto coin logo"
+                  loading="lazy"
                 />
               </div>
               <div className="absolute max-w-max mt-8 top-2/3 left-1/2 flex gap-2 nft-marquee-right h-1/3">
@@ -418,16 +426,19 @@ function ChainFusion() {
                   className="block max-w-fit"
                   src="/img/chainfusion/coin-row.webp"
                   alt="row of crypto coin logo"
+                  loading="lazy"
                 />
                 <img
                   className="block max-w-fit"
                   src="/img/chainfusion/coin-row.webp"
                   alt="row of crypto coin logo"
+                  loading="lazy"
                 />
                 <img
                   className="block max-w-fit"
                   src="/img/chainfusion/coin-row.webp"
                   alt="row of crypto coin logo"
+                  loading="lazy"
                 />
               </div>
             </div>
@@ -438,11 +449,7 @@ function ChainFusion() {
             el={motion.section}
           >
             <h3 className="tw-heading-5 md:tw-heading-3 text-gradient-purple">
-              {isMobile ? (
-                <LogoNewLine className="block w-2/3 mb-2" />
-              ) : (
-                <LogoSm className="h-[0.76em] mb-[0.14em] align-middle mr-1 md:mr-2" />
-              )}{" "}
+              <LogoSm className="h-[0.76em] mb-[0.14em] align-middle mr-1 md:mr-2" />
               enables smart contracts to interact with multiple networks
               allowing developers to realise multichain use cases and profit
               from ICP features.{" "}
@@ -515,7 +522,7 @@ function ChainFusion() {
             variants={transitions.container}
             el={motion.section}
           >
-            <motion.h3 className="tw-heading-5 md:tw-heading-60 mb-1 text-gradient-purple">
+            <motion.h3 className="tw-heading-3 md:tw-heading-60 mb-1 text-gradient-purple">
               {isMobile ? (
                 <LogoNewLine className="block w-2/3 mb-2" />
               ) : (
@@ -668,7 +675,7 @@ public func send_transaction(network : Network, transaction : [Nat8]) : async ()
                 highlightedIndex={highlight.highlightedIndex}
                 onItemClick={onItemClick}
                 title={
-                  <h2 className="tw-heading-4 md:tw-heading-60 mb-4 text-gradient-purple">
+                  <h2 className="tw-heading-3 md:tw-heading-60 mb-4 text-gradient-purple">
                     How
                     {isMobile ? (
                       <LogoNewLine

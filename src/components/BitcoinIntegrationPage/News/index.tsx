@@ -22,7 +22,7 @@ function News({ content = "btc" }) {
     >
       <div className="container-10 !px-0 flex flex-col gap-1  md:gap-5 mb-8 md:flex-row ">
         <motion.h2
-          className="tw-heading-4 mb-0 md:tw-heading-60"
+          className="tw-heading-3 mb-0 md:tw-heading-60"
           variants={transitions.item}
         >
           News & Events
