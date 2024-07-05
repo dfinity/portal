@@ -270,7 +270,7 @@ function ChainFusion() {
         {isDark && <DarkHeroStyles bgColor="infinite"></DarkHeroStyles>}
 
         <section
-          className="h-[90dvh] md:h-auto overflow-hidden bg-[#1E005D] text-white pt-20 relative"
+          className="h-dvh md:h-auto overflow-hidden bg-[#1E005D] text-white pt-20 relative flex flex-col justify-center w-full"
           ref={heroRef}
           style={{
             marginTop: `calc(var(--ifm-navbar-height) * -1)`,
@@ -308,7 +308,7 @@ function ChainFusion() {
             </motion.div> */}
           </div>
 
-          <section className="flex flex-col justify-center w-full">
+          <section className="">
             <div
               style={{
                 background:
@@ -343,7 +343,7 @@ function ChainFusion() {
           ></motion.div>
         </section>
 
-        <section className="bg-[#1E005D] ">
+        <section className="bg-[#1E005D]">
           <AnimateSpawn
             className="flex justify-center"
             variants={transitions.container}
