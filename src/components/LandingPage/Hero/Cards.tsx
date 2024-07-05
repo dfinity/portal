@@ -73,10 +73,10 @@ export const CardsSection = () => {
           </div>
           <div className="basis-1/2 p-1/10 flex items-center">
             <div>
-              <div className="tw-paragraph md:tw-lead-sm mt-6">
+              <div className="tw-paragraph md:tw-lead-sm mt-6 mb-0">
                 Unique compared to other blockchains. Enabling developers to write smart contracts spanning different chains. This is CHAIN FUSION.
               </div>
-              <Link className="button-outline-white-30 mt-6" href="/ai">
+              <Link className="button-outline-white-30 mt-4" href="/ai">
                 Jump right in 
               </Link>
             </div>
@@ -91,22 +91,19 @@ export const CardsSection = () => {
             <h4 className="tw-heading-4 md:tw-heading-60">
               Run AI models fully on chain
             </h4>
-            <p className="tw-paragraph md:tw-lead-sm mt-6">
-              Nullam id dolor id nibh ultricies vehicula ut id elit. Donec
-              ullamcorper nulla non metus auctor fringilla. Vivamus sagittis
-              lacus vel augue laoreet rutrum faucibus dolor auctor. Donec sed
-              odio dui.
+            <p className="tw-paragraph md:tw-lead-sm mt-4 md:mt-6 mb-0">
+              Benefit from the security, resilience, and power of the ICP blockchain.
             </p>
-            <Link className="button-outline-white-30 mt-6" href="/ai">
+            <Link className="button-outline-white-30 mt-4" href="/ai">
               BUILD NOW
             </Link>
           </div>
 
-          <div className="basis-1/2 relative md:order-1 -mt-24 md:mt-0 overflow-hidden">
+          <div className="basis-1/2 relative md:order-1 -mt-[5%] md:mt-0 overflow-hidden">
             <img
               loading="lazy"
               src="img/home/ai.webp"
-              className="md:absolute bottom-0 left-0 w-full -mb-20 md:mb-0"
+              className="md:absolute bottom-0 left-0 w-full -mb-10 md:mb-0"
             />
           </div>
         </div>
@@ -118,8 +115,9 @@ export const CardsSection = () => {
             <img
               loading="lazy"
               src="img/home/icp-hubs.webp"
-              className="w-full"
+              className="w-full hidden md:block"
             />
+            <img loading="lazy" src="img/home/icp-hubs-network-image.webp" className="w-full md:hidden" />
           </div>
           <div className="basis-1/2 p-1/10 md:py-1/12">
             <img
@@ -129,14 +127,9 @@ export const CardsSection = () => {
             />
 
             <h4 className="tw-heading-4 md:tw-heading-60">
-              37 countries around the globe
+              Building crypto ecosystems worldwide
             </h4>
-            <p className="tw-paragraph md:tw-lead-sm mt-6">
-              Igniting global innovation & collaboration, connecting ICP
-              communities. Join builders, creators, and entrepreneurs all around
-              the world.
-            </p>
-            <Link className="button-outline-white-30 mt-6 flex gap-2 w-max" href="https://linktr.ee/icp_hubs_network">
+            <Link className="button-outline-white-30 mt-6 flex gap-2 w-max max-w-full" href="https://linktr.ee/icp_hubs_network">
               <span>Join thriving Communities</span>
               <span className="scale-90 translate-y-0.5 relative w-4 h-4">
                 <LinkArrowUpRight className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"/>
@@ -157,7 +150,7 @@ export const CardsSection = () => {
               <p className="tw-paragraph md:tw-lead-sm mt-6">
                 Experience full stack decentralization: from DAOs and crypto cloud services to games, NFTs, and social media, the Internet Computer has something for everyone.
               </p>
-              <Link className="button-outline-white-30 mt-6" href="/use-cases">
+              <Link className="button-outline-white-30 mt-4" href="/use-cases">
                 See for yourself
               </Link>
             </div>
@@ -180,7 +173,7 @@ export const CardsSection = () => {
               <p className="tw-paragraph md:tw-lead-sm mt-6">
                 Explore the ICP Roadmap, focussing on contributions by the DFINITY Foundation. The roadmap is split into nine themes, each highlighting upcoming milestones.
               </p>
-              <Link className="button-outline-white-30 mt-6" href="/roadmap">
+              <Link className="button-outline-white-30 mt-4" href="/roadmap">
                 get into latest achievements
               </Link>
             </div>
