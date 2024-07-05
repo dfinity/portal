@@ -173,7 +173,7 @@ export const CardsSection = () => {
                 Explore the ICP Roadmap, focussing on contributions by the DFINITY Foundation. The roadmap is split into nine themes, each highlighting upcoming milestones.
               </p>
               <Link className="button-outline-white-30 mt-4" href="/roadmap">
-                get into latest achievements
+                get into it
               </Link>
             </div>
             <div className="absolute z-0 bottom-0  pointer-events-none">
