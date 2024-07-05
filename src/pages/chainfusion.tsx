@@ -326,7 +326,7 @@ function ChainFusion() {
       description="Chain Fusion technology enables smart contracts to interact with multiple networks allowing developers to realise multichain use cases and profit from Internet Computer capabilities."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-chainfusion.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-chainfusion.webp"></ShareMeta>
 
       <main
         className="text-black relative "
