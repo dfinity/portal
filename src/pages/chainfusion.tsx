@@ -56,11 +56,44 @@ const benefitsData = [
   },
 ];
 
+const developersData = [
+  {
+    title: "Bitcoin UTXO API",
+    description:
+      "Developers can create smart contracts that interact directly with the Bitcoin mainnet and testnet networks through ICP's direct integration with Bitcoin. The Bitcoin UTXO API allows to query and return information from the Bitcoin network, e.g. UTXOs and balances or the percentiles of the fees for the last 10'000 transactions.",
+    link: "/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview",
+  },
+  {
+    title: "EVM RPC Canister",
+    description:
+      "EVM RPC is a smart contract that communicates with Ethereum and other EVM blockchains using an on-chain API. Communication includes obtaining and sending information such as the logs of a specific block or transaction, historical data regarding the network's gas fee, transactions for a specific address, or submitting a signed transaction.",
+    link: "/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/overview/",
+  },
+  {
+    title: "Threshold Signing Services",
+    description:
+      "ICP has a suite of threshold signing protocols including ECDSA and Schnorr which allow to sign a variety of transactions across chains like Ethereum and Bitcoin. Further thresold signing protocols like EdDSA and BLS are coming soon.",
+    link: "/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa/",
+  },
+  {
+    title: "HTTPS Outcalls",
+    description:
+      "HTTPS outcalls can be used to directly obtain off-chain data or interact with off-chain systems, such as Web 2.0 services or enterprise IT infrastructure. For example, oracle services can directly integrate with ICP in a trustless manner, dapps can provide user notifications, or communicate with other chains via RPC endpoints.",
+    link: "/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview",
+  },
+];
+
 interface FeatureProps {
   icon: string;
   title: string;
   description: React.ReactNode;
   fullW?: boolean;
+}
+
+interface ReadProps {
+  title: string;
+  description: React.ReactNode;
+  link?: string;
 }
 
 const BenefitFeature: React.FC<FeatureProps> = ({
@@ -81,6 +114,20 @@ const BenefitFeature: React.FC<FeatureProps> = ({
       {title}
     </div>
     <p className="mt-2 md:mt-4 text-base leading-6 font-[450]">{description}</p>
+  </div>
+);
+
+const ReadCard: React.FC<ReadProps> = ({ title, description, link }) => (
+  <div className="flex flex-col items-start text-left bg-white rounded-xl p-8 pr-16 text-black">
+    <div
+      className={`tw-heading-5 md:tw-heading-4 font-bold leading-8 mt-3 md:mt-6 `}
+    >
+      {title}
+    </div>
+    <p className="mt-2 md:mt-4 text-base leading-6 font-[450]">{description}</p>
+    <Link href={link} className="link-primary mt-4">
+      <LinkArrowRight /> Read more{" "}
+    </Link>
   </div>
 );
 
@@ -316,57 +363,33 @@ function ChainFusion() {
             />
 
             <div className="overflow-x-clip relative h-[13rem] pb-16 mb-16 box-content w-full">
-              <div className="absolute max-w-max top-0 left-1/2 flex gap-2 nft-marquee-right h-1/3">
-                <img
-                  className="block max-w-fit"
-                  src="/img/chainfusion/coin-row.webp"
-                  alt="row of crypto coin logo"
-                />
-                <img
-                  className="block max-w-fit"
-                  src="/img/chainfusion/coin-row.webp"
-                  alt="row of crypto coin logo"
-                />
-                <img
-                  className="block max-w-fit"
-                  src="/img/chainfusion/coin-row.webp"
-                  alt="row of crypto coin logo"
-                />
-              </div>
-              <div className="absolute max-w-max mt-4 top-1/3 left-1/2 flex gap-2 nft-marquee-left h-1/3">
-                <img
-                  className="block max-w-fit"
-                  src="/img/chainfusion/coin-row.webp"
-                  alt="row of crypto coin logo"
-                />
-                <img
-                  className="block max-w-fit"
-                  src="/img/chainfusion/coin-row.webp"
-                  alt="row of crypto coin logo"
-                />
-                <img
-                  className="block max-w-fit"
-                  src="/img/chainfusion/coin-row.webp"
-                  alt="row of crypto coin logo"
-                />
-              </div>
-              <div className="absolute max-w-max mt-8 top-2/3 left-1/2 flex gap-2 nft-marquee-right h-1/3">
-                <img
-                  className="block max-w-fit"
-                  src="/img/chainfusion/coin-row-2.webp"
-                  alt="row of crypto coin logo"
-                />
-                <img
-                  className="block max-w-fit"
-                  src="/img/chainfusion/coin-row-2.webp"
-                  alt="row of crypto coin logo"
-                />
-                <img
-                  className="block max-w-fit"
-                  src="/img/chainfusion/coin-row-2.webp"
-                  alt="row of crypto coin logo"
-                />
-              </div>
+              <div
+                className="absolute w-full top-0 left-1/2 h-1/3 nft-marquee-right"
+                style={{
+                  backgroundImage: "url('/img/chainfusion/coin-row.webp')",
+                  backgroundRepeat: "repeat-x",
+                  backgroundSize: isMobile ? "cover" : "contain",
+                  width: "300%",
+                }}
+              ></div>
+              <div
+                className="absolute w-full mt-4 top-1/3 left-1/2 h-1/3 nft-marquee-left"
+                style={{
+                  backgroundImage: "url('/img/chainfusion/coin-row.webp')",
+                  backgroundRepeat: "repeat-x",
+                  backgroundSize: isMobile ? "cover" : "contain",
+                  width: "300%",
+                }}
+              ></div>
+              <div
+                className="absolute w-full mt-8 top-2/3 left-1/2 h-1/3 nft-marquee-right"
+                style={{
+                  backgroundImage: "url('/img/chainfusion/coin-row-2.webp')",
+                  backgroundRepeat: "repeat-x",
+                  backgroundSize: isMobile ? "cover" : "contain",
+                  width: "300%",
+                }}
+              ></div>
             </div>
           </AnimateSpawn>
           <AnimateSpawn
@@ -496,7 +519,93 @@ function ChainFusion() {
             />
           </AnimateSpawn>
         </section>
+        <section className="pt-20 md:pt-30 pb-24 md:pb-40 text-left md:text-center ">
+          {" "}
+          <AnimateSpawn
+            className="container-6 "
+            variants={transitions.container}
+            el={motion.section}
+          >
+            <motion.h3 className="tw-heading-3 md:tw-heading-60 mb-1 text-gradient-purple">
+              {isMobile ? (
+                <LogoNewLine
+                  className="block w-2/3 mb-2"
+                  color="text-gradient-purple"
+                />
+              ) : (
+                <LogoSm className="w-full" color="text-gradient-purple" />
+              )}
+              building blocks for developers
+            </motion.h3>
+            <motion.p className="tw-paragraph md:tw-lead mt-3 md:mt-6">
+              ICP's native Bitcoin integration and RPC integrations, coupled
+              with a suite of threshold signing protocols open a world of
+              possibilities for developers.
+            </motion.p>
+          </AnimateSpawn>
+          <AnimateSpawn
+            className="container-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 gap-5 mt-12 md:mt-20"
+            variants={transitions.container}
+            el={motion.section}
+          >
+            {developersData.map((data, index) => (
+              <ReadCard key={index} {...data} />
+            ))}
+          </AnimateSpawn>
+        </section>
+        <section className="container-12 block md:flex gap-4">
+          <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
+            <div className="md:flex-row items-stretch	relative z-1">
+              <div className="p-1/10 md:p-2/12 py-1/10 pb-64 md:pb-96">
+                <h5 className="tw-heading-4 md:tw-heading-3">Hello, Bitcoin</h5>
+                <p className="tw-paragraph-sm md:tw-paragraph mt-6">
+                  BUILD on Bitcoin at the speed of ICP. Bitcoin on ICP is not
+                  just a future promise, developers are already building
+                  incredible use cases.
+                </p>
+                <Link
+                  className="button-outline-white-30 mt-6"
+                  href="/bitcoin-integration"
+                >
+                  Bitcoin integration{" "}
+                </Link>
+              </div>
+              <div className="absolute z-0 bottom-12 translate-y-16 md:translate-y-24 translate-x-12 pointer-events-none">
+                <img
+                  loading="lazy"
+                  src="img/chainfusion/bitcoin_img.webp"
+                  className="object-cover w-10/12"
+                />
+              </div>
+            </div>
+          </article>
 
+          <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
+            <div className="md:flex-row items-stretch	relative z-1">
+              <div className="p-1/10 md:p-2/12 py-1/10 pb-64 md:pb-96">
+                <h5 className="tw-heading-4 md:tw-heading-3">GM Ethereum</h5>
+                <p className="tw-paragraph-sm md:tw-paragraph mt-6">
+                  Full support for Ethereum and other EVM chains is now live
+                  allowing ICP smart contracts to augment EVM-based smart
+                  contracts with additional functionality.
+                </p>
+                <Link
+                  className="button-outline-white-30 mt-6"
+                  href="/ethereum-integration"
+                >
+                  Ethereum Integration
+                </Link>
+              </div>
+              <div className="absolute z-0 bottom-0  pointer-events-none">
+                <img
+                  loading="lazy"
+                  src="img/chainfusion/eth_img.webp"
+                  className="object-cover size-full"
+                />
+              </div>
+            </div>
+          </article>
+        </section>
         <News content="chainfusion" />
         <section>
           <AnimateSpawn
