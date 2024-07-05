@@ -73,10 +73,10 @@ const Hero: React.FC<{
             </div>
             <Link 
               href="https://dashboard.internetcomputer.org/" 
-              className="block md:absolute mt-8 md:mt-0 bottom-0 -left-60 backdrop-blur-lg hover:no-underline text-white hover:text-black duration-100">
+              className="block md:absolute mt-8 md:mt-0 bottom-0 -left-48 backdrop-blur-lg hover:no-underline text-white hover:text-black duration-100">
               <AnimateSpawn
                 className="
-                  bg-black/20 p-6 rounded-xl relative overflow-hidden min-w-80 
+                  bg-black/20 p-2 px-0 rounded-xl relative overflow-hidden min-w-[15rem] 
                   hover:bg-white trabsition-all duration-100"
                 variants={transitions.container}
               >

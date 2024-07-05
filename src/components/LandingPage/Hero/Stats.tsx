@@ -39,7 +39,8 @@ export const TotalBlocks = () => {
 
   return (
     <motion.div
-      className="rounded-xl text-current tw-lead-lg py-3 px-6"
+      className="rounded-xl text-current py-3 px-6"
+      style={{ fontSize: "24px", fontWeight: 500}}
       variants={transitions.fadeIn}
     >
       <figure className="m-0">
@@ -110,7 +111,9 @@ export const EthEquivalentTxRate = () => {
 
   return (
     <motion.div
-      className="rounded-xl text-current tw-lead-lg py-3 px-6"
+      className="rounded-xl text-current py-3 px-6"
+
+      style={{ fontSize: "24px", fontWeight: 500}}
       variants={transitions.fadeIn}
     >
       <figure className="m-0 gap-3 block">
