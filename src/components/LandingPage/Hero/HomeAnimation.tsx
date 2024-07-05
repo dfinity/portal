@@ -98,12 +98,17 @@ const HomeAnimation = () => {
   useEffect(() => {
     let w = window.innerWidth;
     let h = canvasContainer.current.getBoundingClientRect().height || window.innerHeight;
-    
+    let dirty = true;
+
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
     ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
 
     function draw() {
+      if (!dirty) {
+        return;
+      }
+      dirty = false;
       ctx.fillStyle = rgbToCSS(colors[0]);
       ctx.fillRect(0, 0, w, h);
 
@@ -176,6 +181,7 @@ const HomeAnimation = () => {
     }
     
     function onWindowResize() {
+      dirty = true;
       w = window.innerWidth;
       h = canvasContainer.current.getBoundingClientRect().height || window.innerHeight;
       canvas.width = w * devicePixelRatio || 1;
@@ -193,6 +199,7 @@ const HomeAnimation = () => {
     window.addEventListener("resize", onWindowResize, false);
 
     function onScroll() {
+      dirty = true;
       const relScroll = document.documentElement.scrollTop / $body.scrollHeight;
       relScrollTop = relScroll + 0.1 * relScroll;
 
