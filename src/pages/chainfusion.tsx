@@ -338,7 +338,7 @@ function ChainFusion() {
         {isDark && <DarkHeroStyles bgColor="infinite"></DarkHeroStyles>}
 
         <section
-          className="h-dvh md:h-auto overflow-hidden bg-[#1E005D] text-white pt-20 relative flex flex-col justify-center w-full"
+          className="h-[90vh] md:h-auto overflow-hidden bg-[#1E005D] text-white pt-20 relative flex flex-col justify-center w-full"
           ref={heroRef}
           style={{
             marginTop: `calc(var(--ifm-navbar-height) * -1)`,
