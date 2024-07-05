@@ -604,7 +604,6 @@ function ChainFusion() {
               </div>
               <div className="absolute z-0 bottom-0 pointer-events-none">
                 <img
-                  loading="lazy"
                   src="img/chainfusion/btc.webp"
                   className="object-cover size-full"
                 />
@@ -630,7 +629,6 @@ function ChainFusion() {
               </div>
               <div className="absolute z-0 bottom-0  pointer-events-none">
                 <img
-                  loading="lazy"
                   src="img/chainfusion/eth.webp"
                   className="object-cover size-full"
                 />
