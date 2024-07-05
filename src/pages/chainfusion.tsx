@@ -29,6 +29,74 @@ import Logo from "../theme/Logo";
 import useMediaQuery from "../utils/use-media-query";
 import { ArrowIconRight } from "../components/RoadmapPage/Overlay";
 
+const Marquee = ({ topImages, bottomImages, speed = 30 }) => {
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  useEffect(() => {
+    const imageUrls = [...topImages, ...bottomImages];
+    const imagePromises = imageUrls.map((url) => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = resolve;
+        img.onerror = reject;
+        img.src = url;
+      });
+    });
+
+    Promise.all(imagePromises)
+      .then(() => setImagesLoaded(true))
+      .catch((error) => console.error("Error preloading images:", error));
+  }, [topImages, bottomImages]);
+
+  if (!imagesLoaded) {
+    return <div></div>;
+  }
+
+  return (
+    <div className="marquee-container">
+      <div
+        className="marquee-row marquee-right"
+        style={{ animationDuration: `${speed}s` }}
+      >
+        {topImages.concat(topImages).map((src, index) => (
+          <img
+            key={`top-${index}`}
+            src={src}
+            alt={`Top image ${index + 1}`}
+            className="marquee-image"
+          />
+        ))}
+      </div>
+      <div
+        className="marquee-row marquee-left"
+        style={{ animationDuration: `${speed}s` }}
+      >
+        {topImages.concat(topImages).map((src, index) => (
+          <img
+            key={`middle-${index}`}
+            src={src}
+            alt={`Middle image ${index + 1}`}
+            className="marquee-image"
+          />
+        ))}
+      </div>
+      <div
+        className="marquee-row marquee-right"
+        style={{ animationDuration: `${speed * 1.5}s` }}
+      >
+        {bottomImages.concat(bottomImages).map((src, index) => (
+          <img
+            key={`bottom-${index}`}
+            src={src}
+            alt={`Bottom image ${index + 1}`}
+            className="marquee-image"
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const benefitsData = [
   {
     icon: "/img/chainfusion/benefits-1.svg",
@@ -345,50 +413,15 @@ function ChainFusion() {
 
         <section className="bg-[#1E005D]">
           <AnimateSpawn
-            className="flex justify-center"
+            className=""
             variants={transitions.container}
             el={motion.section}
           >
-            <link
-              rel="preload"
-              as="image"
-              href="/img/chainfusion/coin-row.webp"
+            <Marquee
+              topImages={["/img/chainfusion/coin-row.webp"]}
+              bottomImages={["/img/chainfusion/coin-row-2.webp"]}
+              speed={50}
             />
-            <link
-              rel="preload"
-              as="image"
-              href="/img/chainfusion/coin-row-2.webp"
-            />
-
-            <div className="overflow-x-h relative h-48  w-full">
-              <div
-                className="absolute w-full top-0 left-1/2 h-1/3 nft-marquee-right"
-                style={{
-                  backgroundImage: "url('/img/chainfusion/coin-row.webp')",
-                  backgroundRepeat: "repeat-x",
-                  backgroundSize: isMobile ? "cover" : "contain",
-                  width: "300%",
-                }}
-              ></div>
-              <div
-                className="absolute w-full mt-4 top-1/3 left-1/2 h-1/3 nft-marquee-left"
-                style={{
-                  backgroundImage: "url('/img/chainfusion/coin-row.webp')",
-                  backgroundRepeat: "repeat-x",
-                  backgroundSize: isMobile ? "cover" : "contain",
-                  width: "300%",
-                }}
-              ></div>
-              <div
-                className="absolute w-full mt-8 top-2/3 left-1/2 h-1/3 nft-marquee-right"
-                style={{
-                  backgroundImage: "url('/img/chainfusion/coin-row-2.webp')",
-                  backgroundRepeat: "repeat-x",
-                  backgroundSize: isMobile ? "cover" : "contain",
-                  width: "300%",
-                }}
-              ></div>
-            </div>
           </AnimateSpawn>
           <AnimateSpawn
             className="container-8 py-20 md:py-30 "
@@ -551,6 +584,7 @@ function ChainFusion() {
             ))}
           </AnimateSpawn>
         </section>
+
         <section className="container-12 block md:flex gap-4">
           <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
             <div className="md:flex-row items-stretch	relative z-1">
