@@ -104,12 +104,10 @@ const HomeAnimation = () => {
         const relI = i / options.steps;
 
         ctx.save();
-        const x = w / 2;
-        const y = (h * .05) + (h * relI) * 0.8;
-        ctx.translate(
-          Math.floor(x), 
-          Math.floor(y)
-        );
+        const x = Math.floor( w / 2 );
+        const y = Math.floor( (h * .05) + (h * relI) * 0.8 );
+
+        ctx.translate(x, y);
 
         ctx.rotate(noise2d(options.noisePos, relI) * options.rotation);
         const currentColor = lerpMultiple(relI, colors, lerpArr);
@@ -122,8 +120,7 @@ const HomeAnimation = () => {
         );
 
         const grd = ctx.createLinearGradient(
-          0,
-          0,
+          0, 0,
           Math.floor(radius * options.gradientStartPos), 
           Math.floor(radius * options.gradientStopPos)
         );
@@ -164,6 +161,7 @@ const HomeAnimation = () => {
           noIzMoD, 
           noIzMoD
         );
+
         ctx.closePath();
         ctx.fill();
         ctx.restore();
@@ -199,14 +197,13 @@ const HomeAnimation = () => {
     let requestAnimationFrameHandle: number = 0;
 
     function animate() {
-      //options.noisePos += 0.00001;
+      options.noisePos += 0.001;
       
-    
       draw();
       requestAnimationFrameHandle = requestAnimationFrame(animate);
     }
 
-    //animate();
+    // animate();
 
     return () => {
       window.removeEventListener("resize", onWindowResize);
