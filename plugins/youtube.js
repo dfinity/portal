@@ -29,18 +29,18 @@ async function getMostRecentVideo() {
 // find the first key with a thumbnal at least 480 px wide
 function pickThumbnail(thumbnails) {
   const keys = Object.keys(thumbnails);
+  let maxResThumbnail = { width: 0, url: "" };
+
   for (let i = 0; i < keys.length; i++) {
     const key = keys[i];
-    if (thumbnails[key].width >= 480) {
-      return thumbnails[key].url;
+    const thumbnail = thumbnails[key];
+
+    if (thumbnail.width > maxResThumbnail.width) {
+      maxResThumbnail = thumbnail;
     }
   }
 
-  if (thumbnails.default === undefined) {
-    return "";
-  }
-
-  return thumbnails.default.url;
+  return maxResThumbnail.width > 0 ? maxResThumbnail.url : "";
 }
 
 let cache;
