@@ -522,6 +522,12 @@ function ChainFusion() {
               providing advanced features and seamless integration, it enables
               groundbreaking solutions.
             </motion.p>
+            <Link
+              className="link-white link-with-icon mt-4 md:mt-6 flex items-center"
+              href="/ecosystem?tag=Chainfusion"
+            >
+              <LinkArrowRight /> Discover the Chain Fusion Ecosystem
+            </Link>
           </AnimateSpawn>
           <AnimateSpawn
             className="container-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 mt-12 md:mt-20"
