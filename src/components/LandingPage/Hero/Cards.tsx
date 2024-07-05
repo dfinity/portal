@@ -130,7 +130,7 @@ export const CardsSection = () => {
               Building crypto ecosystems worldwide
             </h4>
             <Link className="button-outline-white-30 mt-6 flex gap-2 w-max max-w-full" href="https://linktr.ee/icp_hubs_network">
-              <span>Join thriving Communities</span>
+              <span>Join Communities</span>
               <span className="scale-90 translate-y-0.5 relative w-4 h-4">
                 <LinkArrowUpRight className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"/>
               </span>
