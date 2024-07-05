@@ -165,13 +165,13 @@ export const SectionSlider = () => {
         </article>
 
         <article className="border-box px-3">
-          <CardWithImage href="/events" image="/img/home/carousel-1.webp">
+          <CardWithImage href="https://lu.ma/icpevents" image="/img/home/chain-fusion-day.webp">
             <div className="py-5 mr-40">
               <strong className="tw-paragraph-sm md:tw-heading-7 mb-2 truncate">
                 July 9, 6pm – Brussels
               </strong>
               <h4 className="tw-heading-7 md:tw-heading-5 mb-0 truncate">
-                Chain Fusion NIGHT
+                Chain Fusion Day
               </h4>
               <p className="text-white/60 tw-paragraph-sm md:tw-paragraph mb-0 truncate">
                 Join us in Belgium!
