@@ -547,7 +547,7 @@ function ChainFusion() {
             <EcosystemCard
               title="Crosschain DEXes "
               description="Decentralized Exchanges use Chain Fusion to facilitate trading of assets from different blockchains, providing a uniform user experience. "
-              img="/img/chainfusion/dex.svg"
+              img="/img/chainfusion/dex.webp"
             />
             <EcosystemCard
               title="Marketplaces"
