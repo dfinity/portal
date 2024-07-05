@@ -197,13 +197,13 @@ const HomeAnimation = () => {
     let requestAnimationFrameHandle: number = 0;
 
     function animate() {
-      options.noisePos += 0.001;
+      //options.noisePos += 0.001;
       
       draw();
       requestAnimationFrameHandle = requestAnimationFrame(animate);
     }
 
-    // animate();
+    animate();
 
     return () => {
       window.removeEventListener("resize", onWindowResize);
