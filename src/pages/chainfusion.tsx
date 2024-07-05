@@ -61,7 +61,7 @@ const developersData = [
     title: "Bitcoin UTXO API",
     description:
       "Developers can create smart contracts that interact directly with the Bitcoin mainnet and testnet networks through ICP's direct integration with Bitcoin. The Bitcoin UTXO API allows to query and return information from the Bitcoin network, e.g. UTXOs and balances or the percentiles of the fees for the last 10'000 transactions.",
-    link: "/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview",
+    link: "/docs/current/developer-docs/multi-chain/bitcoin/using-btc/btc-dev-workflow",
   },
   {
     title: "EVM RPC Canister",
@@ -254,10 +254,8 @@ function ChainFusion() {
 
   return (
     <Layout
-      title="Chain Fusion Technology"
-      description="ICP enables direct interoperability with all major blockchains, including Bitcoin, Ethereum, and other EVMs (and soon Solana),
-      without relying on any trusted intermediary. Unlike other blockchains, ICP smart contracts can read from
-      and write to different chains, enabling developers to write smart contracts that span different chains. This is Chain Fusion."
+      title="CHAIN FUSION – Unifying Web3 experience"
+      description="Chain Fusion technology enables smart contracts to interact with multiple networks allowing developers to realise multichain use cases and profit from Internet Computer capabilities."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-chainfusion.jpg"></ShareMeta>
@@ -327,7 +325,7 @@ function ChainFusion() {
                 className="self-center mt-4 md:mt-9 w-full"
               />
               <div className="tw-heading-5 md:tw-heading-3 self-start mt-8 md:mt-12 text-white">
-                Unifying web3 experiences
+                Unifying Web3 experiences
               </div>
               <Link
                 href="/docs/current/developer-docs/multi-chain/overview"
@@ -570,11 +568,11 @@ function ChainFusion() {
                   Bitcoin integration{" "}
                 </Link>
               </div>
-              <div className="absolute z-0 bottom-12 translate-y-16 md:translate-y-24 translate-x-12 pointer-events-none">
+              <div className="absolute z-0 bottom-0 pointer-events-none">
                 <img
                   loading="lazy"
-                  src="img/chainfusion/bitcoin_img.webp"
-                  className="object-cover w-10/12"
+                  src="img/chainfusion/btc.webp"
+                  className="object-cover size-full"
                 />
               </div>
             </div>
@@ -599,7 +597,7 @@ function ChainFusion() {
               <div className="absolute z-0 bottom-0  pointer-events-none">
                 <img
                   loading="lazy"
-                  src="img/chainfusion/eth_img.webp"
+                  src="img/chainfusion/eth.webp"
                   className="object-cover size-full"
                 />
               </div>
