@@ -28,6 +28,10 @@ const niceSeeds = [
   'asd',
   'fuddie',
   'caramel+',
+  '0.25731258498942355',
+  '0.8350259923003176',
+  '0.7496192609533172',
+  '0.9223304588981254',
 ];
 
 const options = {
@@ -42,6 +46,8 @@ const options = {
   gradientOffset: 0.4,
   bg: 0,
 };
+
+console.log(options.seed)
 
 function clamp(number, min, max) {
   return Math.max(min, Math.min(number, max));
