@@ -308,7 +308,7 @@ function ChainFusion() {
             </motion.div> */}
           </div>
 
-          <section className="">
+          <section className="flex flex-col justify-center w-full">
             <div
               style={{
                 background:
