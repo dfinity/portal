@@ -199,11 +199,11 @@ const HomeAnimation = () => {
     window.addEventListener("resize", onWindowResize, false);
 
     function onScroll() {
-      dirty = true;
+      //dirty = true;
       const relScroll = document.documentElement.scrollTop / $body.scrollHeight;
       relScrollTop = relScroll + 0.1 * relScroll;
 
-      options.noisePos += Math.abs(relScrollTop * .01);
+      //options.noisePos += Math.abs(relScrollTop * .01);
     }
 
     window.addEventListener("scroll", onScroll);

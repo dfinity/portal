@@ -76,7 +76,7 @@ export const CardsSection = () => {
               <div className="tw-paragraph md:tw-lead-sm mt-6 mb-0">
                 Unique compared to other blockchains. Enabling developers to write smart contracts spanning different chains. This is CHAIN FUSION.
               </div>
-              <Link className="button-outline-white-30 mt-4" href="/ai">
+              <Link className="button-outline-white-30 mt-4" href="/chainfusion">
                 Jump right in 
               </Link>
             </div>
