@@ -156,7 +156,6 @@ export const CardsSection = () => {
             </div>
             <div className="absolute z-0 bottom-0 pointer-events-none">
               <img
-                loading="lazy"
                 src="img/home/dapps-bg.webp"
                 className="object-cover size-full"
               />
@@ -179,7 +178,6 @@ export const CardsSection = () => {
             </div>
             <div className="absolute z-0 bottom-0  pointer-events-none">
               <img
-                loading="lazy"
                 src="img/home/roadmap-bg.webp"
                 className="object-cover size-full"
               />
