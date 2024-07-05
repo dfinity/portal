@@ -67,7 +67,7 @@ export const CardWithImage: React.FC<{
         backgroundRepeat: "no-repeat",
       }}
     >
-      <div className="group-hover:-translate-y-2 transition-transform">
+      <div className="md:group-hover:-translate-y-2 transition-transform">
         {children}
       </div>
     </MotionLink>

@@ -3,7 +3,7 @@ import React from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import transitions from "@site/static/transitions.json";
 import { motion } from "framer-motion";
-import HubsLogo from "../../../../static/img/home/icp-hubs-logo.svg";
+import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 
 const MotionLink = motion(Link);
 
@@ -41,9 +41,9 @@ export const CardsSection = () => {
         <img
           loading="lazy"
           src="img/home/chainfusion.webp"
-          className="object-cover size-full absolute pointer-events-none"
+          className="md:object-cover size-full absolute pointer-events-none"
         />
-        <div className="flex flex-col md:flex-row items-stretch md:min-h-[40rem]">
+        <div className="flex flex-col md:flex-row items-stretch md:min-h-[34rem]">
           <div className="basis-1/2 flex items-center">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 475 194" className="w-2/3 m-auto mt-20 md:m-auto md:mr-0">
               <path fill="#fff" d="M277.18 18.56h4.36c2.76 0 4.44-1.6 4.44-4.04 0-2.52-1.68-4.08-4.44-4.08h-4.36v8.12Zm5.04 4.76h-5.08V34h-5.52V5.64h10.6c5.6 0 9.32 3.72 9.32 8.84 0 5.16-3.72 8.84-9.32 8.84Zm19.57 6.44c2.6 0 5-1.88 5-5.6 0-3.72-2.4-5.6-5-5.6s-5 1.88-5 5.6c0 3.68 2.4 5.6 5 5.6Zm0-16.04c5.88 0 10.32 4.36 10.32 10.44 0 6.04-4.44 10.44-10.32 10.44s-10.32-4.4-10.32-10.44c0-6.08 4.44-10.44 10.32-10.44Zm24.07.6h5.6L335.7 27l3.64-12.68h5.28L338.46 34h-5.32l-4.6-13.44L324.02 34h-5.4l-6.28-19.68h5.6l3.64 12.64 4.28-12.64Zm24.4 7.6h8.8c-.07-1.96-1.35-3.88-4.4-3.88a4.26 4.26 0 0 0-4.4 3.88Zm9.33 5.12 4.44 1.32c-1 3.4-4.12 6.24-8.96 6.24-5.4 0-10.16-3.88-10.16-10.52 0-6.28 4.64-10.36 9.68-10.36 6.08 0 9.72 3.88 9.72 10.2 0 .76-.08 1.56-.08 1.64h-14.08c.12 2.6 2.32 4.48 4.96 4.48 2.48 0 3.84-1.24 4.48-3ZM379 14.24v5.36a8.01 8.01 0 0 0-1.6-.16c-2.72 0-5.08 1.32-5.08 5.56v9H367V14.32h5.16v2.92c1.2-2.6 3.92-3.08 5.6-3.08.44 0 .84.04 1.24.08Zm5.87 7.68h8.8c-.08-1.96-1.36-3.88-4.4-3.88a4.26 4.26 0 0 0-4.4 3.88Zm9.32 5.12 4.44 1.32c-1 3.4-4.12 6.24-8.96 6.24-5.4 0-10.16-3.88-10.16-10.52 0-6.28 4.64-10.36 9.68-10.36 6.08 0 9.72 3.88 9.72 10.2 0 .76-.08 1.56-.08 1.64h-14.08c.12 2.6 2.32 4.48 4.96 4.48 2.48 0 3.84-1.24 4.48-3Zm26.46-22v25.4c0 1.32.08 2.76.16 3.56h-5.08c-.08-.4-.2-1.36-.2-2.28-.88 1.56-2.88 2.76-5.52 2.76-5.6 0-9.6-4.4-9.6-10.36 0-5.76 3.88-10.28 9.44-10.28 3.4 0 5 1.4 5.56 2.44V5.04h5.24Zm-14.88 19.08c0 3.52 2.08 5.6 4.88 5.6 2.72 0 4.84-2.08 4.84-5.64 0-3.52-2.12-5.48-4.84-5.48-2.72 0-4.88 2-4.88 5.52ZM437.56 34h-5.16V5.04h5.24v11.44c.88-1.4 3.04-2.68 5.96-2.68 5.76 0 9.08 4.44 9.08 10.28 0 5.96-3.68 10.4-9.28 10.4-2.72 0-4.8-1.2-5.84-2.88V34Zm9.8-9.88c0-3.6-2.16-5.56-4.88-5.56-2.68 0-4.92 1.96-4.92 5.56 0 3.56 2.24 5.6 4.92 5.6 2.72 0 4.88-2 4.88-5.6Zm14.35 17.64h-5.64l4.64-10.24-8.36-17.2h5.96l5.24 11.52 4.84-11.52h5.68l-12.36 27.44Z"/>
@@ -77,7 +77,7 @@ export const CardsSection = () => {
                 Unique compared to other blockchains. Enabling developers to write smart contracts spanning different chains. This is CHAIN FUSION.
               </div>
               <Link className="button-outline-white-30 mt-6" href="/ai">
-                Jump right in
+                Jump right in 
               </Link>
             </div>
           </div>
@@ -85,15 +85,9 @@ export const CardsSection = () => {
       </article>
 
       <article className="bg-[linear-gradient(48deg,#4DEDD3_-32.7%,#31A782_33.06%,#3B00B9_129.51%)] rounded-[32px] text-white  overflow-clip mt-6">
-        <div className="flex flex-col md:flex-row items-stretch	 ">
-          <div className="basis-1/2 relative ">
-            <img
-              loading="lazy"
-              src="img/home/ai.webp"
-              className="object-cover size-full"
-            />
-          </div>
-          <div className=" basis-1/2 p-1/10">
+        <div className="flex flex-col md:flex-row items-stretch">
+
+          <div className="basis-1/2 p-1/10 md:py-1/12 md:order-2">
             <h4 className="tw-heading-4 md:tw-heading-60">
               Run AI models fully on chain
             </h4>
@@ -107,20 +101,32 @@ export const CardsSection = () => {
               BUILD NOW
             </Link>
           </div>
+
+          <div className="basis-1/2 relative md:order-1 -mt-24 md:mt-0 overflow-hidden">
+            <img
+              loading="lazy"
+              src="img/home/ai.webp"
+              className="md:absolute bottom-0 left-0 w-full -mb-20 md:mb-0"
+            />
+          </div>
         </div>
       </article>
 
       <article className="bg-[linear-gradient(#3B00B9,#9D80DC)] rounded-[32px] text-white overflow-clip mt-6">
         <div className="flex flex-col md:flex-row items-stretch	 ">
-          <div className="basis-1/2 relative ">
+          <div className="basis-1/2 relative">
             <img
               loading="lazy"
               src="img/home/icp-hubs.webp"
-              className="object-cover size-full"
+              className="w-full"
             />
           </div>
-          <div className="basis-1/2 p-1/10">
-            <HubsLogo />
+          <div className="basis-1/2 p-1/10 md:py-1/12">
+            <img
+              loading="lazy"
+              src="img/home/hbs1.png"
+              className="w-72 ml-0 mb-4"
+            />
 
             <h4 className="tw-heading-4 md:tw-heading-60">
               37 countries around the globe
@@ -130,8 +136,11 @@ export const CardsSection = () => {
               communities. Join builders, creators, and entrepreneurs all around
               the world.
             </p>
-            <Link className="button-outline-white-30 mt-6" href="https://linktr.ee/icp_hubs_network">
-              Join thriving Communities
+            <Link className="button-outline-white-30 mt-6 flex gap-2 w-max" href="https://linktr.ee/icp_hubs_network">
+              <span>Join thriving Communities</span>
+              <span className="scale-90 translate-y-0.5 relative w-4 h-4">
+                <LinkArrowUpRight className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2"/>
+              </span>
             </Link>
           </div>
         </div>
@@ -142,7 +151,7 @@ export const CardsSection = () => {
         <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
           <div className="md:flex-row items-stretch	relative z-1">
             <div className="p-1/10 md:p-2/10 py-1/10 pb-64 md:pb-96">
-              <h5 className="tw-heading-5 md:tw-heading-60">
+              <h5 className="tw-heading-4">
                 Real World Use Cases
               </h5>
               <p className="tw-paragraph md:tw-lead-sm mt-6">
@@ -165,7 +174,7 @@ export const CardsSection = () => {
         <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
           <div className="md:flex-row items-stretch	relative z-1">
             <div className="p-1/10 md:p-2/10 py-1/10 pb-64 md:pb-96">
-              <h5 className="tw-heading-5 md:tw-heading-60">
+              <h5 className="tw-heading-4">
                 ICP ROADMAP
               </h5>
               <p className="tw-paragraph md:tw-lead-sm mt-6">

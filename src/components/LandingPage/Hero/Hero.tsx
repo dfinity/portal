@@ -28,7 +28,7 @@ const Hero: React.FC<{
     <section className="bg-[#1B025A]" id="home" ref={darkRef}>
       {isDark && <DarkHeroStyles bgColor="transparent" />}
       <div className="
-        pt-[152px] pb-48 md:pt-52 md:pb-64 md:grid relative 
+        pt-[152px] pb-40 md:pt-52 md:pb-64 md:grid relative 
         mt-[-72px] md:mt-[-111px] text-white -mb-20">
         <HomeAnimation />
         <div className="container-8">
@@ -51,7 +51,7 @@ const Hero: React.FC<{
               <span className="block md:ml-48">BLOCKCHAIN</span>
             </h1>
             <div className="md:ml-48">
-              <p className="tw-paragraph md:tw-lead-sm mt-6 w-7/10">
+              <p className="tw-paragraph md:tw-lead-sm mt-6 md:w-7/10">
                 The Internet Computer reinvents compute on blockchain,
                 incorporating more than a 1000 human years of R&D effort.
                 Everything is now on-chain. HTTP. Data. Compute. AI. Your Web3
@@ -60,7 +60,7 @@ const Hero: React.FC<{
                 the internet.
               </p>
               <div className="flex flex-col md:flex-row gap-8 mt-8 md:mt-6 md:items-center">
-                <Link className={"button-white w-max"} href="#">
+                <Link className={"button-white w-max"} href="/docs/current/home">
                   Start hacking
                 </Link>
                 <Link
@@ -73,11 +73,11 @@ const Hero: React.FC<{
             </div>
             <Link 
               href="https://dashboard.internetcomputer.org/" 
-              className="hidden md:block absolute bottom-0 -left-60 backdrop-blur-lg hover:no-underline text-white hover:text-black">
+              className="block md:absolute mt-8 md:mt-0 bottom-0 -left-60 backdrop-blur-lg hover:no-underline text-white hover:text-black duration-100">
               <AnimateSpawn
                 className="
                   bg-black/20 p-6 rounded-xl relative overflow-hidden min-w-80 
-                  hover:bg-white"
+                  hover:bg-white trabsition-all duration-100"
                 variants={transitions.container}
               >
                 <span className="absolute top-6 right-6">

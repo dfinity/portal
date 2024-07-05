@@ -39,7 +39,7 @@ export const TotalBlocks = () => {
 
   return (
     <motion.div
-      className="rounded-xl text-current tw-lead-lg py-3 px-6 hidden md:block"
+      className="rounded-xl text-current tw-lead-lg py-3 px-6"
       variants={transitions.fadeIn}
     >
       <figure className="m-0">
@@ -113,8 +113,8 @@ export const EthEquivalentTxRate = () => {
       className="rounded-xl text-current tw-lead-lg py-3 px-6"
       variants={transitions.fadeIn}
     >
-      <figure className="m-0 flex gap-3 justify-center md:block">
-        <div className="inline-grid relative left-1 md:static md:inline">
+      <figure className="m-0 gap-3 block">
+        <div className="inline-grid relative left-1 static inline">
           {updateTxRate.isFetched && updateTxRate.isSuccess ? (
             <>
               <SpringCounter
@@ -134,7 +134,7 @@ export const EthEquivalentTxRate = () => {
           )}
         </div>
 
-        <figcaption className="tw-paragraph-sm md:tw-paragraph text-current opacity-50 flex items-center gap-1">
+        <figcaption className="tw-paragraph-sm tw-paragraph text-current opacity-50 flex items-center gap-1">
           ETH eq. TX/s
         </figcaption>
       </figure>
@@ -174,7 +174,7 @@ export const CkBTCTotalSupply = () => {
       className="rounded-xl bg-black/25 backdrop-blur-md text-text-current tw-lead-lg py-3 px-6"
       variants={transitions.fadeIn}
     >
-      <figure className="m-0 flex gap-3 justify-center md:block">
+      <figure className="m-0 flex gap-3 md:block">
         <div className="flex flex-col md:flex-row md:items-center gap-3">
           {formattedSupply !== null ? (
             <span className="text-left">{formattedSupply}</span>
