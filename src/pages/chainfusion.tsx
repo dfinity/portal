@@ -523,7 +523,7 @@ function ChainFusion() {
               groundbreaking solutions.
             </motion.p>
             <Link
-              className="link-white link-with-icon mt-4 md:mt-6 flex items-center"
+              className="link-white link-with-icon mt-4 md:mt-6 flex justify-center items-center "
               href="/ecosystem?tag=Chainfusion"
             >
               <LinkArrowRight /> Discover the Chain Fusion Ecosystem
