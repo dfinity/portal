@@ -131,6 +131,20 @@
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Stellarator"
+          },
+          {
+            "title": "Asynchronous Checkpointing",
+            "overview": "Replicas currently persist the replicated state to disk every couple hundreds of rounds in a process called checkpointing. Currently some parts of checkpointing are done synchronously, which leads to drops in the execution rate in the checkpointing rounds and users have to wait longer for their responses during these rounds. The goal of this feature is to make more checkpointing steps run asynchronously in the background to make the IC's performance more consistent and predictable.",
+            "description": "",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Stellarator"
           }
         ]
       },
