@@ -294,7 +294,27 @@ const quickstartGuidesTiles: TileDescriptor[] = [
     ),
   },
   {
-    isGhostTile: true,
+    label: "Testnets",
+    description:
+      "Learn more about testnets — production-like environments that can be used to test code before deployment to the ICP mainnet",
+    icon: (
+      <img
+        src="/img/dfinity_logo.svg"
+        alt="Testnets guide"
+        className="w-10 h-10"
+        loading="lazy"
+      />
+    ),
+    action: (
+      <Link
+        href="/docs/current/developer-docs/smart-contracts/deploy/overview/"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
+        title="Learn more about testnets on ICP"
+      >
+        <span className={"md:hidden"}>Learn more about testnets</span>
+        <LinkArrowRight />
+      </Link>
+    ),
   },
   {
     isGhostTile: true,
