@@ -48,7 +48,7 @@ const languagesTiles: TileDescriptor[] = [
     action: (
       <Link
         className="button button-primary rounded-2xl w-32"
-        href="/docs/current/developer-docs/getting-started/overview-of-icp"
+        href="/docs/current/developer-docs/smart-contracts/write/overview"
       >
         View all
       </Link>

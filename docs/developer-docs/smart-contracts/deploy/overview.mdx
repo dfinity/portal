@@ -14,39 +14,37 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
 After you have built a <GlossaryTooltip>canister</GlossaryTooltip>, you can
-deploy it either on the
-[local canister execution environment](/docs/current/developer-docs/getting-started/deploy/local),
-a sandbox environment such as the
-[Playground](/docs/current/developer-docs/developer-tools/ide/playground) or
-[on the mainnet](/docs/current/developer-docs/getting-started/deploy/mainnet).
-Your canister must be deployed before you can make calls to it and execute
-methods.
+deploy to
 
-## Testnets on ICP
+- <strong>The local canister execution environment</strong> on your machine where
+  no tokens/cycles are required
+- <strong>The playground on mainnet</strong>, a testnet-like sandbox
+  environment. No tokens or cycles are required to deploy and run your canister
+  smart contract but it will be removed after 20 minutes.
+- <strong>Mainnet</strong> for production use. This deployment method will require
+  cycles.
 
-A testnet typically refers to a network that is used by developers to test their
-smart contracts in a production-like environment before deployment to the
-mainnet. This is analagous to a staging environment that is used to "stage" code
-changes before releasing them widely.
+This page will guide you through all 3 deployment methods.
 
-There are no alternative networks on ICP — the ICP mainnet can be used to
-emulate a range of environments, such as a testnet.
+## Testnets
 
-You can deploy your canister to the ICP mainnet for free, thereby isolating your
-deployments from your production stack by using the Playground.
-[Learn more](/docs/current/developer-docs/developer-tools/ide/playground).
+Most blockchain networks have separate testnets that allow smart contract
+developers to test their projects in a production-like environment at
+significantly lower cost than on mainnet. Because the execution of canisters is
+fairly cheap on ICP, there is no testnet for ICP. Developers are encouraged to
+test their canister smart contracts locally or directly on mainnet. In order to
+make test deployments to mainnet faster and even cheaper, you can deploy your
+canister to the so-called playground. You need no cycles or tokens to deploy and
+operate your canister in the playground. But it will be automatically removed
+after 20 minutes.
 
 ## Deployment
 
-- #### Step 1: Open a new terminal and navigate to your project directory.
+Before you deploy your canister open a new terminal and navigate to your project
+directory, and verify the canisters you'd like to deploy are configured in the
+project's `dfx.json` file.
 
-- #### Step 2: Start the local canister execution environment, if necessary.
-
-```
-dfx start
-```
-
-- #### Step 3: Verify the canisters you'd like to deploy are configured in the project's `dfx.json` file.
+:::info
 
 Need to create a project? Check out the
 [Hello, world!](/docs/current/developer-docs/getting-started/hello-world) sample
@@ -54,8 +52,15 @@ project.
 
 An example `dfx.json` file can be found in the
 [default project template document](/docs/current/developer-docs/setup/first-canister).
+:::
 
-- #### Step 4: Deploy all of the canisters within your project.
+### Local deployment
+
+Start the local canister execution environment:
+
+```
+dfx start
+```
 
 To deploy locally, use the command:
 
@@ -63,13 +68,18 @@ To deploy locally, use the command:
 dfx deploy
 ```
 
-To deploy to the
-[Playground](/docs/current/developer-docs/developer-tools/ide/playground), use
-the command:
+[Learn more](<(/docs/current/developer-docs/setup/deploy-locally)>) about
+deploying to the local network.
+
+### Deploying to Playground
+
+To deploy to the Playground, use the command:
 
 ```
 dfx deploy --playground
 ```
+
+### Deploying to Mainnet
 
 To deploy to the mainnet, use the command:
 
@@ -80,25 +90,19 @@ dfx deploy --network ic
 Deploying canisters to the mainnet will cost cycles.
 [Learn more about cycles and how to acquire them](/docs/developer-docs/getting-started/cycles/cycles-faucet.mdx).
 
-This command deploys all canisters configured in your `dfx.json` file. To deploy
-just one canister, specify the canister's name:
+[Learn more](<(/docs/current/developer-docs/setup/deploy-mainnet)>) about
+deploying to the mainnet.
+
+### Deploying specific canisters
+
+The `deploy` command deploys all canisters configured in your `dfx.json` file.
+To deploy just one canister, specify the canister's name:
 
 ```
 dfx deploy hello_backend ## Deploy locally
 dfx deploy hello_backend --playground ## Deploy to the playground
 dfx deploy hello_backend --network ic ## Deploy to the mainnet
 ```
-
-These commands both deploy to the local network since they do not include a
-`--network` flag.
-
-For more information on deploying to the local or mainnet networks:
-
-- [Local deployment](/docs/current/developer-docs/setup/deploy-locally).
-
-- [Playground](/docs/current/developer-docs/developer-tools/ide/playground).
-
-- [Mainnet deployment](/docs/current/developer-docs/setup/deploy-mainnet).
 
 ## Use a custom Motoko version with `dfx deploy`
 
