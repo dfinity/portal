@@ -1,0 +1,39 @@
+---
+keywords: [advanced, ethereum, cketh, erc20, ckerc20, ckusdc, cklink, ckoct, ckpepe, chain-key ethereum, overview]
+---
+
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# How to add a new ckERC20 token
+
+<MarkdownChipRow labels={["Advanced", "Ethereum" ]} />
+
+This checklist summarizes the requirements to launch a new ckERC20 token on ICP. Launching a new ckERC20 token requires both non-technical and technical preparation steps. 
+
+Chain-key ERC-20 (ckERC20) tokens are ICRC-2-compliant tokens on ICP that are backed 1:1 by the corresponding ERC-20-compliant token on Ethereum. 
+
+To learn more about ckERC20, please refer to the [ckERC20 docs](/docs/current/developer-docs/multi-chain/chain-key-tokens/ckerc20/overview).
+
+## 1. Create a forum post
+
+The forum post on the DFINITY forum outlining the following points should be made before proceeding to any technical steps. The post should not necessarily need to come from the founders or foundation behind the token.
+
+- Clearly state the specific ERC20 token and its originating chain you intend to create a ckERC20 version for. 
+- Explain the potential benefits of creating a ckERC20 version of the token to the ICP community.
+- Provide technical validation including links to its open-source ERC20 smart contracts and validation of its deployment (ex. Etherscan link to the smart contract)
+- Share relevant data in regards to token metrics such as market capitalization and price. Include links to source such as CoinMarketCap or Etherscan for reference.
+- Highlight any significant contributions by the token creators or associated foundations to the ICP or the broader web3 ecosystem. Include any relevant whitepapers, documentation, and social media links.
+
+It is suggested to wait two weeks for community feedback before proceeding with a proposal to the Network Nervous System (NNS).
+
+## 2. NNS proposal to upgrade the ledger suite orchestrator
+
+At a high-level, adding a new ERC-20 token involves an NNS upgrade proposal for the ledger suite orchestrator specifying the following:
+
+- Identifier for the new ERC-20 token: this is the pair Ethereum chain ID and the ERC-20 smart contract Ethereum address. 
+- Initialization args for the ICRC ledger.
+- Wasm hash of the ledger.
+- Wasm hash of the index. 
+
+The technical steps in detail are outlined on the [Ledger Suite Orchestrator code README](https://github.com/dfinity/ic/blob/master/rs/ethereum/ledger-suite-orchestrator/README.adoc#adding-a-new-ckerc20-token).
