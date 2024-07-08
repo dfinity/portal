@@ -42,8 +42,12 @@ The limits depend on the message type as shown in the following table.
 | ------------------------------------------------------------------------------------ | ----------- |
 | Wasm heap memory, per canister                                                       | 4GiB        |
 | Wasm stable memory, per canister                                                     | 400GiB      |
-| Wasm stable memory, data access per message                                          | 8GiB        |
-| Wasm stable memory, data written per message                                         | 8GiB        |
+| Wasm stable memory, data access per replicated message                               | 2GiB        |
+| Wasm stable memory, data written per replicated message                              | 2GiB        |
+| Wasm stable memory, data access per upgrade message                                  | 8GiB        |
+| Wasm stable memory, data written per upgrade message                                 | 8GiB        |
+| Wasm stable memory, data access per (replicated) query                               | 1GiB        |
+| Wasm stable memory, data written per (replicated) query                              | 1GiB        |
 
 | Wasm module limits                                                                   | Constraint  |
 | ------------------------------------------------------------------------------------ | ----------- |
