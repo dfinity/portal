@@ -9,6 +9,37 @@ import "slick-carousel/slick/slick-theme.css";
 import "./index.css";
 import { arrow } from "@floating-ui/react";
 
+const sliderData = [
+  {
+    tagline: "July 10, 2024 – Brussels",
+    title: "Chain Fusion Day",
+    description: "Join us in Belgium!",
+    image: "/img/home/slider/update_chain_fusion_brussels.webp",
+    link: "https://lu.ma/icpevents",
+  },
+  {
+    tagline: "Milestone achieved 🚀",
+    title: "TRITIUM",
+    description: "Chain Fusion supports EVM Chains",
+    image: "/img/home/slider/update_evm_tritium_milestone.webp",
+    link: "https://internetcomputer.org/roadmap#Chain%20Fusion-Tritium",
+  },
+  {
+    tagline: "July 26, 2024 – Nashville, US",
+    title: "ICP @ Bitcoin Nashville",
+    description: "Register now!",
+    image: "/img/home/slider/update_chain_fusion_bitcoin_nashville.webp",
+    link: "https://lu.ma/cfdnashville",
+  },
+  {
+    tagline: "New initiative",
+    title: "Universal Trusted Credentials",
+    description: "Read the press release",
+    image: "/img/home/slider/update_undp_initiative.webp",
+    link: "https://www.undp.org/policy-centre/singapore/press-releases/undp-partners-dfinity-foundation-enhance-financial-inclusion-msmes",
+  },
+];
+
 const MotionLink = motion(Link);
 
 const buttonStyle = {
@@ -19,7 +50,6 @@ const buttonStyle = {
   height: "3rem",
 };
 
-
 function NextArrow(props) {
   const { className, style, onClick } = props;
   return (
@@ -29,7 +59,10 @@ function NextArrow(props) {
       onClick={onClick}
     >
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-        <path fill="#fff" d="m16.38 12-4.75-8.97-1.76.94L14.12 12l-4.25 8.03 1.76.94L16.38 12Z"/>
+        <path
+          fill="#fff"
+          d="m16.38 12-4.75-8.97-1.76.94L14.12 12l-4.25 8.03 1.76.94L16.38 12Z"
+        />
       </svg>
     </div>
   );
@@ -40,11 +73,14 @@ function PrevArrow(props) {
   return (
     <div
       className={className}
-      style={{ ...style, ...buttonStyle}}
+      style={{ ...style, ...buttonStyle }}
       onClick={onClick}
     >
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-        <path fill="#fff" d="m16.38 12-4.75-8.97-1.76.94L14.12 12l-4.25 8.03 1.76.94L16.38 12Z"/>
+        <path
+          fill="#fff"
+          d="m16.38 12-4.75-8.97-1.76.94L14.12 12l-4.25 8.03 1.76.94L16.38 12Z"
+        />
       </svg>
     </div>
   );
@@ -115,7 +151,7 @@ const css = `
   .slick-dots li.slick-active button {
     background: #fff;
   }
-`
+`;
 
 export const SectionSlider = () => {
   let sliderRef = useRef(null);
@@ -148,69 +184,23 @@ export const SectionSlider = () => {
     <div className="slider-container">
       <style>{css}</style>
       <Slider ref={(slider) => (sliderRef = slider)} {...settings}>
-        <article className="border-box px-3">
-          <CardWithImage href="/docs" image="/img/home/carousel-3.webp">
-            <div className="py-5 mr-40">
-              <strong className="tw-paragraph-sm md:tw-heading-7 mb-2 truncate">
-                New Video
-              </strong>
-              <h4 className="tw-heading-7 md:tw-heading-5 mb-0 truncate">
-                ICP Developer Journey
-              </h4>
-              <p className="text-white/60 tw-paragraph-sm md:tw-paragraph mb-0 truncate">
-                Watch now!
-              </p>
-            </div>
-          </CardWithImage>
-        </article>
-
-        <article className="border-box px-3">
-          <CardWithImage href="/events" image="/img/home/carousel-1.webp">
-            <div className="py-5 mr-40">
-              <strong className="tw-paragraph-sm md:tw-heading-7 mb-2 truncate">
-                July 9, 6pm – Brussels
-              </strong>
-              <h4 className="tw-heading-7 md:tw-heading-5 mb-0 truncate">
-                Chain Fusion NIGHT
-              </h4>
-              <p className="text-white/60 tw-paragraph-sm md:tw-paragraph mb-0 truncate">
-                Join us in Belgium!
-              </p>
-            </div>
-          </CardWithImage>
-        </article>
-
-        <article className="border-box px-3">
-          <CardWithImage href="/chainfusion" image="/img/home/carousel-2.webp">
-            <div className="py-5 mr-40">
-              <strong className="tw-paragraph-sm md:tw-heading-7 mb-2 truncate">
-                Milestone achieved 🚀
-              </strong>
-              <h4 className="tw-heading-7 md:tw-heading-5 mb-0 truncate">
-                TRITIUM
-              </h4>
-              <p className="text-white/60 tw-paragraph-sm md:tw-paragraph mb-0 truncate">
-                Chain Fusion supports EVM Chains
-              </p>
-            </div>
-          </CardWithImage>
-        </article>
-
-        <article className="border-box px-3">
-          <CardWithImage href="/chainfusion" image="/img/home/carousel-4.webp">
-            <div className="py-5 mr-40">
-              <strong className="tw-paragraph-sm md:tw-heading-7 mb-2 whitespace-nowrap">
-                New Video
-              </strong>
-              <h4 className="tw-heading-7 md:tw-heading-5 mb-0 truncate">
-                AI running fully on-chain Demo #4
-              </h4>
-              <p className="text-white/60 tw-paragraph-sm md:tw-paragraph mb-0">
-                Watch now
-              </p>
-            </div>
-          </CardWithImage>
-        </article>
+        {sliderData.map((data, index) => (
+          <article key={index} className="border-box px-3">
+            <CardWithImage href={data.link} image={data.image}>
+              <div className="py-5 mr-40">
+                <strong className="tw-paragraph-sm md:tw-heading-7 mb-2 !truncate">
+                  {data.tagline}
+                </strong>
+                <h4 className="tw-heading-7 md:tw-heading-5 mb-0 truncate">
+                  {data.title}
+                </h4>
+                <p className="text-white/60 tw-paragraph-sm md:tw-paragraph mb-0 truncate">
+                  {data.description}
+                </p>
+              </div>
+            </CardWithImage>
+          </article>
+        ))}
       </Slider>
     </div>
   );
