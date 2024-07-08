@@ -60,6 +60,11 @@ const sidebars = {
             },
             {
               type: "doc",
+              label: "Testnet deployment",
+              id: "developer-docs/getting-started/deploy/testnet",
+            },
+            {
+              type: "doc",
               label: "Mainnet deployment",
               id: "developer-docs/getting-started/deploy/mainnet",
             },
@@ -132,6 +137,7 @@ const sidebars = {
               type: "doc",
               id: "developer-docs/smart-contracts/deploy/overview",
             },
+            "developer-docs/smart-contracts/deploy/custom-testnets",
             "developer-docs/smart-contracts/deploy/larger-wasm",
             "developer-docs/smart-contracts/deploy/sharing",
           ],

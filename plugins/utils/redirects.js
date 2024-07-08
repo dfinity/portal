@@ -225,7 +225,7 @@ const redirects = `
   /docs/current/developer-docs/agents/nodejs /docs/current/developer-docs/developer-tools/off-chain/agents/nodejs
   /docs/current/developer-docs/agents/ic-agent-dfinity /docs/current/developer-docs/developer-tools/off-chain/agents/rust-agent
   /docs/current/references/gitpod /docs/current/developer-docs/developer-tools/ide/gitpod
-  /docs/current/developer-docs/setup/playground /docs/current/developer-docs/developer-tools/ide/playground
+  /docs/current/developer-docs/setup/playground /docs/current/developer-docs/getting-started/deploy/testnet
   /docs/current/developer-docs/setup/vs-code /docs/current/developer-docs/developer-tools/ide/vs-code
   /docs/current/developer-docs/setup/react-quickstart /docs/current/developer-docs/getting-started/quickstart/react-quickstart
   /docs/current/references/cli-reference/ /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/
