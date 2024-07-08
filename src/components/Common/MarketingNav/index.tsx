@@ -241,7 +241,7 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
           </div>
         </div>
         {/* desktop aux items */}
-        <div className="py-6 pl-[1.8rem] pr-5 flex gap-9 items-center border-solid border-t-grey-200 border-t">
+        <div className="py-6 pl-[1.8rem] pr-5 flex gap-9 items-center border-solid border-b-transparent border-l-transparent border-r-transparent border-t-grey-200 border-t">
           <AuxItems items={item.auxItems} />
 
           <div className="flex-1"></div>

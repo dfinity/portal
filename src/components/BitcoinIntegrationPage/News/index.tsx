@@ -13,16 +13,16 @@ import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 
 const MotionLink = motion(Link);
 
-function News() {
+function News({ content = "btc" }) {
   return (
     <AnimateSpawn
-      className="container-12 pt-16 md:pt-40 pb-16 md:pb-40"
+      className="container-12 pt-20 md:pt-40 pb-16 md:pb-40"
       el={motion.section}
       variants={transitions.container}
     >
-      <div className="container-10 flex flex-col gap-1  md:gap-5 mb-8 md:flex-row ">
+      <div className="container-10 !px-0 flex flex-col gap-1  md:gap-5 mb-8 md:flex-row ">
         <motion.h2
-          className="tw-heading-4 mb-0 md:tw-heading-60"
+          className="tw-heading-3 mb-0 md:tw-heading-60"
           variants={transitions.item}
         >
           News & Events
@@ -32,18 +32,20 @@ function News() {
             className="mb-0 mt-2 tw-paragraph md:tw-lead-sm md:w-1/2"
             variants={transitions.item}
           >
-            Get all the news from the Internet Computer ecosystem
+            {content === "chainfusion"
+              ? "Get all the news and event infos about Chain Fusion Technology on ICP."
+              : "Get all the news from the Internet Computer ecosystem"}
           </motion.p>
           <MotionLink
             variants={transitions.item}
             href="/news"
-            className="link-primary link-with-icon"
+            className="link-primary link-with-icon mt-3"
           >
-            Explore more news <LinkArrowUpRight />
+            <LinkArrowRight /> Explore more news
           </MotionLink>
         </div>
       </div>
-      <div className="mt-6 md:mt-20">
+      <div className="container-10 !px-0 mt-6 md:mt-20">
         <div
           className={
             "md:h-[450px] flex flex-col md:flex-row rounded-xl overflow-hidden"
@@ -54,7 +56,7 @@ function News() {
             href="https://b.tc/conference/2024"
           >
             <img
-              src="https://assets-global.website-files.com/6488b0b0fcd2d95f6b83c9d4/655cf98523549a8b17f9a6e5_B24-OG%20e.jpg"
+              src="img/bitcoin-integration/btc-nashville.webp"
               alt="Bitcoin 2024 Conference"
               className="w-full h-full object-cover"
             />

@@ -3,14 +3,13 @@ import React, { FC, ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import LinkArrowRight from "../Common/Icons/LinkArrowRight";
 import { NetworkStats } from "./NetworkStats";
-import GuidesIcon from "./guides.svg";
-import TutorialsIcon from "./tutorials.svg";
 import Blog from "./Blog";
 import { TeaserCarousel } from "@site/src/components/DocsHome/TeaserCarousel";
 import {
   CarouselCard,
   TeaserCard,
 } from "@site/src/components/DocsHome/TeaserCard";
+import { GlossaryTooltip } from "@site/src/components/Tooltip/GlossaryTooltip";
 
 const queryClient = new QueryClient();
 
@@ -36,7 +35,7 @@ interface TileDescriptor {
   isGhostTile?: boolean;
   action?: ReactNode | null;
   icon?: ReactNode | null;
-  description?: string;
+  description?: ReactNode;
   label?: string;
 }
 
@@ -44,12 +43,12 @@ const languagesTiles: TileDescriptor[] = [
   {
     label: "Languages",
     description:
-      "Explore coding, from beginner to pro, with our comprehensive guides, tutorials, samples, and API docs for Rust, Motoko, TypeScript, and Python",
+      "Explore coding, from beginner to pro, with our comprehensive guides, tutorials, samples, and API docs for Rust, Motoko, and TypeScript",
     icon: null,
     action: (
       <Link
         className="button button-primary rounded-2xl w-32"
-        href="/docs/current/developer-docs/getting-started/overview-of-icp"
+        href="/docs/current/developer-docs/smart-contracts/write/overview"
       >
         View all
       </Link>
@@ -125,29 +124,6 @@ const languagesTiles: TileDescriptor[] = [
     ),
   },
   {
-    label: "Python",
-    description:
-      "Kybra allows you to build Internet Computer apps using Python, one of the most popular languages in the world",
-    icon: (
-      <img
-        src="/img/docs/python.webp"
-        alt="Python docs for the Internet Computer"
-        className="w-10 h-10"
-        loading="lazy"
-      />
-    ),
-    action: (
-      <Link
-        href="/docs/current/developer-docs/backend/python/"
-        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
-        title="Go to Python docs"
-      >
-        <span className={"md:hidden"}>Go to Python docs</span>
-        <LinkArrowRight />
-      </Link>
-    ),
-  },
-  {
     label: "Solidity",
     description:
       "Bitfinity allows you to deploy smart contracts on the Internet Computer written in Solidity, a popular language for DeFi applications",
@@ -170,81 +146,48 @@ const languagesTiles: TileDescriptor[] = [
       </Link>
     ),
   },
-  {
-    isGhostTile: true,
-  },
-  {
-    isGhostTile: true,
-  },
-  {
-    isGhostTile: true,
-  },
-  {
-    isGhostTile: true,
-  },
 ];
 
 const frameworksTiles: TileDescriptor[] = [
   {
-    label: "Frameworks",
-    description:
-      "Get started developing on the Internet Computer using frameworks such as Juno, which make deploying canisters on ICP simple and easy using a UI interface",
-    icon: null,
-    action: (
-      <Link
-        className="button button-primary rounded-2xl w-32"
-        href="/docs/current/developer-docs/web-apps/frameworks/juno"
-      >
-        View all
-      </Link>
-    ),
-  },
-  {
-    label: "Juno",
-    description:
-      "Juno is a cutting-edge blockchain-as-a-service platform designed to enable developers to create decentralized applications at lightning speed",
-    icon: (
-      <img
-        src="/img/docs/juno.svg"
-        alt="Juno docs"
-        className="w-10 h-10"
-        loading="lazy"
-      />
-    ),
-    action: (
-      <Link
-        href="/docs/current/developer-docs/web-apps/frameworks/juno"
-        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
-        title="Go to Juno docs"
-      >
-        <span className={"md:hidden"}>Go to Juno docs</span>
-        <LinkArrowRight />
-      </Link>
-    ),
-  },
-  {
-    isGhostTile: true,
-  },
-  {
-    isGhostTile: true,
-  },
-  {
-    isGhostTile: true,
-  },
-];
-
-const quickstartGuidesTiles: TileDescriptor[] = [
-  {
-    label: "Quickstart\nGuides",
+    label: "Quickstarts\n& Frameworks",
     description:
       "Start deploying on ICP easily with our Quickstart guides for developers, tailored to your preferred language",
     icon: null,
     action: (
       <Link
         className="button button-primary rounded-2xl w-32"
-        href="/docs/current/developer-docs/getting-started/quickstart/react-quickstart"
+        href="/docs/current/developer-docs/web-apps/frameworks/juno"
       >
         View all
+      </Link>
+    ),
+  },
+  {
+    label: "Testnets",
+    description: (
+      <span>
+        In contrast to other blockchain networks, there are no testnets on ICP.
+        Instead you can deploy a smart contract for free in the Playground using
+        the <GlossaryTooltip>IC SDK</GlossaryTooltip>
+      </span>
+    ),
+    icon: (
+      <img
+        src="/img/dfinity_logo.svg"
+        alt="Testnets guide"
+        className="w-10 h-10"
+        loading="lazy"
+      />
+    ),
+    action: (
+      <Link
+        href="/docs/current/developer-docs/smart-contracts/deploy/overview/"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
+        title="Learn more about testnets on ICP"
+      >
+        <span className={"md:hidden"}>Learn more about testnets</span>
+        <LinkArrowRight />
       </Link>
     ),
   },
@@ -273,28 +216,26 @@ const quickstartGuidesTiles: TileDescriptor[] = [
   },
   {
     label: "Juno",
-    description: "Get started with Juno, a blockchain-as-a-service platform",
+    description:
+      "Juno is a cutting-edge blockchain-as-a-service platform designed to enable developers to create decentralized applications at lightning speed",
     icon: (
       <img
         src="/img/docs/juno.svg"
-        alt="Juno quickstart docs"
+        alt="Juno docs"
         className="w-10 h-10"
         loading="lazy"
       />
     ),
     action: (
       <Link
-        href="/docs/current/developer-docs/getting-started/quickstart/juno-quickstart"
+        href="/docs/current/developer-docs/web-apps/frameworks/juno"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
-        title="Go to Juno quickstart"
+        title="Go to Juno docs"
       >
-        <span className={"md:hidden"}>Go to Juno quickstart</span>
+        <span className={"md:hidden"}>Go to Juno docs</span>
         <LinkArrowRight />
       </Link>
     ),
-  },
-  {
-    isGhostTile: true,
   },
   {
     isGhostTile: true,
@@ -437,7 +378,7 @@ const DocsHomePage: FC = () => {
           className="
           grid
           auto-cols-fr
-          grid-rows-2
+          grid-rows-1
           grid-cols-1
           sm:grid-cols-2
           md:grid-cols-4
@@ -477,25 +418,6 @@ const DocsHomePage: FC = () => {
 
       <section>
         <Blog />
-      </section>
-
-      <section>
-        <div
-          className="
-          grid
-          auto-cols-fr
-          grid-cols-1
-          sm:grid-cols-2
-          md:grid-cols-4
-          lg:grid-cols-5
-          px-0
-          gap-3
-        "
-        >
-          {quickstartGuidesTiles.map((tile, index) => (
-            <Tile tile={tile} key={index} />
-          ))}
-        </div>
       </section>
 
       <section className="bg-infinite -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-[-50px] md:px-[50px] text-white py-10 md:pt-14 md:pb-20">

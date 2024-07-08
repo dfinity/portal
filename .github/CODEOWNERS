@@ -7,6 +7,7 @@ docs/developer-docs/build/cdks @dfinity/dx
 docs/developer-docs/integrations/rosetta @dfinity/finint
 docs/developer-docs/security @dfinity/product-security
 docs/references/execution-errors.mdx @dfinity/runtime @dfinity/execution
+docs/developer-docs/web-apps/custom-domains @dfinity/boundary-node
 
 # Each piece of documentation must be owned by the respective teams
 docs/developer-docssmart-contracts/advanced-features/simd.mdx @dfinity/runtime
