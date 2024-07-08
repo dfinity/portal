@@ -13,23 +13,54 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
-After you have built a <GlossaryTooltip>canister</GlossaryTooltip>, you can deploy it either on the [local canister execution environment](/docs/current/developer-docs/getting-started/deploy/local), a sandbox environment such as the [Motoko playground](/docs/current/developer-docs/setup/playground) or [on the mainnet](/docs/current/developer-docs/getting-started/deploy/mainnet). Your canister must be deployed before you can make calls to it and execute methods.
+After you have built a <GlossaryTooltip>canister</GlossaryTooltip>, you can
+deploy to
 
-- #### Step 1:  Open a new terminal and navigate to your project directory.
+- <strong>The local canister execution environment</strong> on your machine where
+  no tokens/cycles are required
+- <strong>The playground on mainnet</strong>, a testnet-like sandbox
+  environment. No tokens or cycles are required to deploy and run your canister
+  smart contract but it will be removed after 20 minutes.
+- <strong>Mainnet</strong> for production use. This deployment method will require
+  cycles.
 
-- #### Step 2:  Start the local canister execution environment, if necessary.
+This page will guide you through all 3 deployment methods.
+
+## Testnets
+
+Most blockchain networks have separate testnets that allow smart contract
+developers to test their projects in a production-like environment at
+significantly lower cost than on mainnet. Because the execution of canisters is
+fairly cheap on ICP, there is no testnet for ICP. Developers are encouraged to
+test their canister smart contracts locally or directly on mainnet. In order to
+make test deployments to mainnet faster and even cheaper, you can deploy your
+canister to the so-called playground. You need no cycles or tokens to deploy and
+operate your canister in the playground. But it will be automatically removed
+after 20 minutes.
+
+## Deployment
+
+Before you deploy your canister open a new terminal and navigate to your project
+directory, and verify the canisters you'd like to deploy are configured in the
+project's `dfx.json` file.
+
+:::info
+
+Need to create a project? Check out the
+[Hello, world!](/docs/current/developer-docs/getting-started/hello-world) sample
+project.
+
+An example `dfx.json` file can be found in the
+[default project template document](/docs/current/developer-docs/setup/first-canister).
+:::
+
+### Local deployment
+
+Start the local canister execution environment:
 
 ```
 dfx start
 ```
-
-- #### Step 3:  Verify the canisters you'd like to deploy are configured in the project's `dfx.json` file.
-
-Need to create a project? Check out the [Hello, world!](/docs/current/developer-docs/getting-started/hello-world) sample project.
-
-An example `dfx.json` file can be found in the [default project template document](/docs/current/developer-docs/setup/first-canister).
-
-- #### Step 4:  Deploy all of the canisters within your project.
 
 To deploy locally, use the command:
 
@@ -37,11 +68,15 @@ To deploy locally, use the command:
 dfx deploy
 ```
 
-To deploy to the [Motoko playground](/docs/current/developer-docs/setup/playground), use the command:
+### Deploying to Playground
+
+To deploy to the Playground, use the command:
 
 ```
 dfx deploy --playground
 ```
+
+### Deploying to Mainnet
 
 To deploy to the mainnet, use the command:
 
@@ -49,9 +84,13 @@ To deploy to the mainnet, use the command:
 dfx deploy --network ic
 ```
 
-Deploying canisters to the mainnet will cost cycles. [Learn more about cycles and how to acquire them](/docs/current/developer-docs/setup/cycles/cycles-faucet).
+Deploying canisters to the mainnet will cost cycles.
+[Learn more about cycles and how to acquire them](/docs/developer-docs/getting-started/cycles/cycles-faucet.mdx).
 
-This command deploys all canisters configured in your `dfx.json` file. To deploy just one canister, specify the canister's name:
+### Deploying specific canisters
+
+The `deploy` command deploys all canisters configured in your `dfx.json` file.
+To deploy just one canister, specify the canister's name:
 
 ```
 dfx deploy hello_backend ## Deploy locally
@@ -59,19 +98,11 @@ dfx deploy hello_backend --playground ## Deploy to the playground
 dfx deploy hello_backend --network ic ## Deploy to the mainnet
 ```
 
-These commands both deploy to the local network since they do not include a `--network` flag.
-
-For more information on deploying to the local or mainnet networks:
-
-- [Local deployment](/docs/current/developer-docs/setup/deploy-locally).
-
-- [Motoko playground](/docs/current/developer-docs/setup/playground).
-
-- [Mainnet deployment](/docs/current/developer-docs/setup/deploy-mainnet).
-
 ## Use a custom Motoko version with `dfx deploy`
 
-To use a custom Motoko version with `dfx deploy`, export the following environment variable that indicates which Motoko base version you'd like `dfx` to use:
+To use a custom Motoko version with `dfx deploy`, export the following
+environment variable that indicates which Motoko base version you'd like `dfx`
+to use:
 
 ```
 DFX_MOC_PATH="$(vessel bin)/moc" dfx deploy
@@ -79,7 +110,8 @@ DFX_MOC_PATH="$(vessel bin)/moc" dfx deploy
 
 ## Setting a canister's init arguments
 
-You can set a canister's init arguments when the canister is deployed by passing the `--argument` flag in either the `dfx install` or `dfx deploy` commands:
+You can set a canister's init arguments when the canister is deployed by passing
+the `--argument` flag in either the `dfx install` or `dfx deploy` commands:
 
 ```
 dfx canister install <CANISTER_NAME> --argument "(arg in candid)"
@@ -89,13 +121,15 @@ dfx canister install <CANISTER_NAME> --argument "(arg in candid)"
 dfx deploy <CANISTER_NAME> --argument "(arg in candid)"
 ```
 
-If several arguments should be used, an argument file can be defined with the `--argument-file` flag instead:
+If several arguments should be used, an argument file can be defined with the
+`--argument-file` flag instead:
 
 ```
 dfx deploy <CANISTER_NAME> --argument-file file.txt
 ```
 
-Alternatively, init arguments can be set in `dfx.json` in `dfx` versions `v0.17.0` and newer:
+Alternatively, init arguments can be set in `dfx.json` in `dfx` versions
+`v0.17.0` and newer:
 
 ```json
 "canisters": {
@@ -108,18 +142,22 @@ Alternatively, init arguments can be set in `dfx.json` in `dfx` versions `v0.17.
  }
 ```
 
-If an init argument is set in `dfx.json` and set with the CLI command, the argument set in the CLI command is used.
+If an init argument is set in `dfx.json` and set with the CLI command, the
+argument set in the CLI command is used.
 
 ## Setting tasks to execute once a canister has been deployed
 
-For certain workflows, it may be important to have a canister execute a task or call as soon as the canister is deployed or started. For this workflow, using [timers](/docs/current/developer-docs/backend/periodic-tasks) can be useful.
+For certain workflows, it may be important to have a canister execute a task or
+call as soon as the canister is deployed or started. For this workflow, using
+[timers](/docs/current/developer-docs/backend/periodic-tasks) can be useful.
 
 Here is an example:
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-This example uses a global timer that gets called immediately after the canister starts:
+This example uses a global timer that gets called immediately after the canister
+starts:
 
 ```motoko
 
@@ -130,12 +168,15 @@ system func timer(setGlobalTimer : Nat64 -> ()) : async () {
 }
 ```
 
-You can learn more in the [Motoko Timer library documentation](/docs/current/motoko/main/base/Timer).
+You can learn more in the
+[Motoko Timer library documentation](/docs/current/motoko/main/base/Timer).
+
 </TabItem>
 
 <TabItem value="rust" label="Rust">
 
-This example creates a periodic timer that gets called immediately after the canister starts:
+This example creates a periodic timer that gets called immediately after the
+canister starts:
 
 ```rust
 #[ic_cdk::init]
@@ -152,133 +193,134 @@ fn init(timer_interval_secs: u64) {
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-This example creates a timer function that must be manually called once a canister starts:
+This example creates a timer function that must be manually called once a
+canister starts:
 
 ```typescript
 import {
-    blob,
-    bool,
-    Canister,
-    Duration,
-    ic,
-    int8,
-    query,
-    Record,
-    serialize,
-    text,
-    TimerId,
-    update,
-    Void
-} from 'azle';
-import { managementCanister } from 'azle/canisters/management';
+  blob,
+  bool,
+  Canister,
+  Duration,
+  ic,
+  int8,
+  query,
+  Record,
+  serialize,
+  text,
+  TimerId,
+  update,
+  Void,
+} from "azle";
+import { managementCanister } from "azle/canisters/management";
 
 const StatusReport = Record({
-    single: bool,
-    inline: int8,
-    capture: text,
-    repeat: int8,
-    singleCrossCanister: blob,
-    repeatCrossCanister: blob
+  single: bool,
+  inline: int8,
+  capture: text,
+  repeat: int8,
+  singleCrossCanister: blob,
+  repeatCrossCanister: blob,
 });
 type StatusReport = typeof StatusReport.tsType;
 
 const TimerIds = Record({
-    single: TimerId,
-    inline: TimerId,
-    capture: TimerId,
-    repeat: TimerId,
-    singleCrossCanister: TimerId,
-    repeatCrossCanister: TimerId
+  single: TimerId,
+  inline: TimerId,
+  capture: TimerId,
+  repeat: TimerId,
+  singleCrossCanister: TimerId,
+  repeatCrossCanister: TimerId,
 });
 type TimerIds = typeof TimerIds.tsType;
 
 let statusReport: StatusReport = {
-    single: false,
-    inline: 0,
-    capture: '',
-    repeat: 0,
-    singleCrossCanister: Uint8Array.from([]),
-    repeatCrossCanister: Uint8Array.from([])
+  single: false,
+  inline: 0,
+  capture: "",
+  repeat: 0,
+  singleCrossCanister: Uint8Array.from([]),
+  repeatCrossCanister: Uint8Array.from([]),
 };
 
 export default Canister({
-    clearTimer: update([TimerId], Void, (timerId) => {
-        ic.clearTimer(timerId);
-        console.log(`timer ${timerId} cancelled`);
-    }),
-    setTimers: update([Duration, Duration], TimerIds, (delay, interval) => {
-        const capturedValue = '🚩';
+  clearTimer: update([TimerId], Void, (timerId) => {
+    ic.clearTimer(timerId);
+    console.log(`timer ${timerId} cancelled`);
+  }),
+  setTimers: update([Duration, Duration], TimerIds, (delay, interval) => {
+    const capturedValue = "🚩";
 
-        const singleId = ic.setTimer(delay, oneTimeTimerCallback);
+    const singleId = ic.setTimer(delay, oneTimeTimerCallback);
 
-        const inlineId = ic.setTimer(delay, () => {
-            statusReport.inline = 1;
-            console.log('Inline timer called');
-        });
+    const inlineId = ic.setTimer(delay, () => {
+      statusReport.inline = 1;
+      console.log("Inline timer called");
+    });
 
-        const captureId = ic.setTimer(delay, () => {
-            statusReport.capture = capturedValue;
-            console.log(`Timer captured value ${capturedValue}`);
-        });
+    const captureId = ic.setTimer(delay, () => {
+      statusReport.capture = capturedValue;
+      console.log(`Timer captured value ${capturedValue}`);
+    });
 
-        const repeatId = ic.setTimerInterval(interval, () => {
-            statusReport.repeat++;
-            console.log(`Repeating timer. Call ${statusReport.repeat}`);
-        });
+    const repeatId = ic.setTimerInterval(interval, () => {
+      statusReport.repeat++;
+      console.log(`Repeating timer. Call ${statusReport.repeat}`);
+    });
 
-        const singleCrossCanisterId = ic.setTimer(
-            delay,
-            singleCrossCanisterTimerCallback
-        );
+    const singleCrossCanisterId = ic.setTimer(
+      delay,
+      singleCrossCanisterTimerCallback
+    );
 
-        const repeatCrossCanisterId = ic.setTimerInterval(
-            interval,
-            repeatCrossCanisterTimerCallback
-        );
+    const repeatCrossCanisterId = ic.setTimerInterval(
+      interval,
+      repeatCrossCanisterTimerCallback
+    );
 
-        return {
-            single: singleId,
-            inline: inlineId,
-            capture: captureId,
-            repeat: repeatId,
-            singleCrossCanister: singleCrossCanisterId,
-            repeatCrossCanister: repeatCrossCanisterId
-        };
-    }),
-    statusReport: query([], StatusReport, () => {
-        return statusReport;
-    })
+    return {
+      single: singleId,
+      inline: inlineId,
+      capture: captureId,
+      repeat: repeatId,
+      singleCrossCanister: singleCrossCanisterId,
+      repeatCrossCanister: repeatCrossCanisterId,
+    };
+  }),
+  statusReport: query([], StatusReport, () => {
+    return statusReport;
+  }),
 });
 
 function oneTimeTimerCallback() {
-    statusReport.single = true;
-    console.log('oneTimeTimerCallback called');
+  statusReport.single = true;
+  console.log("oneTimeTimerCallback called");
 }
 
 async function singleCrossCanisterTimerCallback() {
-    console.log('singleCrossCanisterTimerCallback');
+  console.log("singleCrossCanisterTimerCallback");
 
-    statusReport.singleCrossCanister = await getRandomness();
+  statusReport.singleCrossCanister = await getRandomness();
 }
 
 async function repeatCrossCanisterTimerCallback() {
-    console.log('repeatCrossCanisterTimerCallback');
+  console.log("repeatCrossCanisterTimerCallback");
 
-    statusReport.repeatCrossCanister = Uint8Array.from([
-        ...statusReport.repeatCrossCanister,
-        ...(await getRandomness())
-    ]);
+  statusReport.repeatCrossCanister = Uint8Array.from([
+    ...statusReport.repeatCrossCanister,
+    ...(await getRandomness()),
+  ]);
 }
 
 async function getRandomness(): Promise<blob> {
-    if (process.env.AZLE_TEST_FETCH === 'true') {
-        const response = await fetch(`icp://aaaaa-aa/raw_rand`);
-        const responseJson = await response.json();
+  if (process.env.AZLE_TEST_FETCH === "true") {
+    const response = await fetch(`icp://aaaaa-aa/raw_rand`);
+    const responseJson = await response.json();
 
-        return responseJson;
-    } else {
-        return await ic.call(managementCanister.raw_rand);
-    }
+    return responseJson;
+  } else {
+    return await ic.call(managementCanister.raw_rand);
+  }
 }
 ```
 
@@ -286,7 +328,8 @@ async function getRandomness(): Promise<blob> {
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-This example creates a timer function that must be manually called once a cansiter starts:
+This example creates a timer function that must be manually called once a
+cansiter starts:
 
 ```python
 from kybra import (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ReactElement } from "react";
 import { Tooltip } from "./Tooltip";
 import { useGlossary } from "@site/src/context/GlossaryProvider";
 
@@ -25,6 +25,6 @@ export function GlossaryTooltip(props: GlossaryTooltipProps) {
   if (definition) {
     return <Tooltip text={definition}>{props.children}</Tooltip>;
   } else {
-    return props.children;
+    return <>{props.children}</>;
   }
 }
