@@ -465,7 +465,6 @@ const redirects = `
   /docs/current/developer-docs/backend/motoko/0.11.0-migration-guide /docs/current/motoko/main/migration-guides/0.11.0-migration-guide
   /docs/current/motoko/main/about-this-guide /docs/current/motoko/main/getting-started/motoko-introduction
   /motoko/main/motoko /docs/current/motoko/main/getting-started/motoko-introduction
-  /docs/current/motoko/version /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/main/motoko-introduction /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/main/motoko /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/main/basic-concepts /docs/current/motoko/main/getting-started/basic-concepts
@@ -564,7 +563,6 @@ const redirects = `
   /docs/current/samples/nft	/docs/current/references/samples/motoko/dip721-nft-container/
   /docs/language-guide/cycles.html /docs/current/developer-docs/getting-started/cycles/overview
   /grants	https://dfinity.org/grants
-  /docs/base-libraries/experimentalcycles	/docs/current/motoko/main/base/ExperimentalCycles
   /docs/base-libraries/motoko-base/Text.html	/docs/current/motoko/main/base/Text
   /docs/candid-guide/candid-types.html	/docs/current/developer-docs/smart-contracts/candid/candid-howto/
   /docs/current/developer-docs/deploy/custom-domain	/docs/current/developer-docs/web-apps/custom-domains/using-custom-domains
