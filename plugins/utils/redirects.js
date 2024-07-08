@@ -555,9 +555,8 @@ const redirects = `
   /docs/current/developer-docs/setup/cycles/cycles-faucet.md	/docs/current/developer-docs/getting-started/cycles/cycles-faucet
   /docs/current/developer-docs/setup/deploy-mainnet.md	/docs/current/developer-docs/getting-started/deploy/mainnet
   /docs/current/developer-docs/setup/index.md	/docs/current/developer-docs/getting-started/install/
-  /docs/current/developer-docs/smart-contracts/candid/index	/docs/current/developer-docs/smart-contracts/candid/
+  /docs/current/developer-docs/smart-contracts/candid/index	/docs/current/developer-docs/smart-contracts/candid/candid-concepts
   /docs/current/docs/current/references/ii-spec	/docs/current/references/ii-spec
-  /docs/current/motoko /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/ /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/getting-started/motoko-introduction /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/main/ /docs/current/motoko/main/getting-started/motoko-introduction
@@ -576,13 +575,10 @@ const redirects = `
   /docs/current/blog/features/vetkey-primer	/blog/features/vetkey-primer
   /docs/current/concepts/chain-key-technology/ /docs/current/developer-docs/multi-chain/overview
   /docs/current/concepts/concepts-intro.html	/docs/current/developer-docs/getting-started/overview-of-icp
-  /docs/current/concepts/what-is-IC	/docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/developer-docs/backend	/docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/developer-docs/backend/rust/rust-quickstart	/docs/current/developer-docs/backend/rust/
   /docs/current/developer-docs/best-practices/	/docs/current/developer-docs/smart-contracts/best-practices/general
   /docs/current/developer-docs/best-practices/considerations-for-nft-devs /docs/current/developer-docs/defi/nfts/overview
-  /docs/current/developer-docs/smart-contracts/advanced-features/serving-http-request /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview
-  /docs/current/developer-docs/smart-contracts/candid/index /docs/current/developer-docs/smart-contracts/candid/candid-concepts
 
   `
   .split(/[\r\n]+/)
