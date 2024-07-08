@@ -14,7 +14,7 @@
 [submodule "submodules/interface-spec"]
 	path = submodules/interface-spec
 	url = https://github.com/dfinity/interface-spec.git
-	branch = public
+	branch = master
 [submodule "submodules/samples"]
 	path = submodules/samples
 	url = https://github.com/dfinity/examples.git

@@ -20,13 +20,13 @@ In the previous segment of our developer journey, introduction to `dfx`, you cre
 
 In this tutorial, you'll deploy the `hello_world_backend` canister from [0.6: Introduction to dfx](/docs/current/tutorials/developer-journey/level-0/intro-dfx) to the Motoko playground.
 
-## What is the Motoko playground?
+## What is the playground?
 
-The Motoko playground is a development environment that hosts a 'canister pool' that canisters can be deployed to. When canisters are deployed to the Motoko playground, they temporarily borrow resources from the pool and are allotted a small amount of <GlossaryTooltip>cycles</GlossaryTooltip> that can be used during the canister's deployment. Canisters deployed to the playground can run for 20 minutes; after 20 minutes, the canister will be uninstalled and the resources borrowed are returned to the playground's canister pool.
+The playground is a development environment that hosts a 'canister pool' that canisters can be deployed to. When canisters are deployed to the playground, they temporarily borrow resources from the pool and are allotted a small amount of <GlossaryTooltip>cycles</GlossaryTooltip> that can be used during the canister's deployment.
 
-:::info
-While the Motoko playground has 'Motoko' in the title, it can be used to deploy canisters written in any development language, not just Motoko.
-:::
+Deploying to the playground is ICP's equivalent of deploying to a testnet network.
+
+Canisters deployed to the playground can run for 20 minutes; after 20 minutes, the canister will be uninstalled and the resources borrowed are returned to the playground's canister pool.
 
 The playground is a great way to be able to deploy a canister quickly for short, small-scale testing, or just to get familiar with the deployment process and how to interact with a canister without needing to complete additional deployment steps, such as acquiring cycles.
 
@@ -41,7 +41,7 @@ Since the playground is designed for testing purposes, there are several restric
 
 ## `dfx deploy --playground`
 
-Using the `dfx` command `dfx deploy --playground`, canisters can be deployed directly from the CLI to the Motoko playground.
+Using the `dfx` command `dfx deploy --playground`, canisters can be deployed directly from the CLI to the playground.
 
 First, let's take a look at how to use this command to deploy our canister. Then you'll explore how you can interact with that canister once it has been deployed. This will act as a live demo for you to explore and use to gain an understanding of the deployment and interaction process.
 
@@ -182,6 +182,6 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 ## Next steps
 
-Now that you've explored a live canister deployed on the Motoko playground, you'll move onto developing your own dapp rather than using the default template files. But first, let's go over the basics of Motoko in Motoko level 1.
+Now that you've explored a live canister deployed on the playground, you'll move onto developing your own dapp rather than using the default template files. But first, let's go over the basics of Motoko in Motoko level 1.
 
 - [1.2 Motoko level 1](/docs/current/tutorials/developer-journey/level-1/1.2-motoko-lvl1).

@@ -16,7 +16,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 ## Overview
 
-At this point in your developer journey, you've covered the fundamentals of <GlossaryTooltip>canister</GlossaryTooltip> development and deployed the default 'Hello, world' project template on the Motoko playground. It's time to get into writing code and developing your own first dapp!
+At this point in your developer journey, you've covered the fundamentals of <GlossaryTooltip>canister</GlossaryTooltip> development and deployed the default 'Hello, world' project template on the playground. It's time to get into writing code and developing your own first dapp!
 
 For this tutorial, you'll be creating a poll dapp that includes both a backend canister and a frontend canister. To recap, backend canisters are used to host the dapp's smart contract code, while frontend canisters are used to host user interface assets, such as HTML and CSS.
 
@@ -441,7 +441,7 @@ dfx deploy
 If you recieve an error related to a missing package, try using this [package.json](https://github.com/jessiemongeon1/dev-journey-poll-dapp/blob/main/package.json) file.
 :::
 
-You may recall that in the previous module, [exploring a live demo](/docs/current/tutorials/developer-journey/level-1/1.1-live-demo), you used the `--playground` flag to deploy your canister to the Motoko playground network. In this module, you aren't using any flags, which defaults to deploying the canister to the local environment. You can also specify this with the flag `--network local`.
+You may recall that in the previous module, [exploring a live demo](/docs/current/tutorials/developer-journey/level-1/1.1-live-demo), you used the `--playground` flag to deploy your canister to the playground network. In this module, you aren't using any flags, which defaults to deploying the canister to the local environment. You can also specify this with the flag `--network local`.
 
 Additionally, you aren't specifying a canister name in the `dfx deploy` command, which will deploy all canisters listed in the `dfx.json` file, which by default includes both the `poll_backend` and `poll_frontend` canisters.
 
