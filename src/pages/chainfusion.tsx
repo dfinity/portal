@@ -108,7 +108,7 @@ const benefitsData = [
     icon: "/img/chainfusion/benefits-2.svg",
     title: "Unique ICP features",
     description:
-      "If you have a dapp, you can profit from ICP features without migrating to your smart contract or dapp to ICP. Chain Fusion enables web2 interaction, timers, reactions to Ethereum or Bitcoin events, and more.",
+      "If you have a dapp, you can profit from ICP features without migrating your smart contract or dapp to ICP. Chain Fusion enables web2 interaction, timers, reactions to Ethereum or Bitcoin events, and more.",
   },
   {
     icon: "/img/chainfusion/benefits-3.svg",
