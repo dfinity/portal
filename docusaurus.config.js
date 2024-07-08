@@ -115,7 +115,7 @@ const subnavItems = [
       { label: "Developer Tools", to: "/tooling" },
       { label: "Developer Grants", href: "https://dfinity.org/grants" },
       {
-        label: "Motoko Playground",
+        label: "Playground",
         href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
       },
       {
@@ -407,9 +407,9 @@ const marketingNav = {
               description: "Get inspired by existing projects",
             },
             {
-              name: "Motoko Playground",
+              name: "Playground",
               href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
-              description: "Look into the nitty gritty",
+              description: "Deploy to the playground environment",
             },
             {
               name: "Programming languages",

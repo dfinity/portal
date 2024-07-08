@@ -10,9 +10,13 @@ date: October 4, 2023
 
 Today we're excited to announce a new `dfx` subcommand: `dfx deploy --playground`!
 
-`--playground` (or `--network playground`) is a new network flag for the `dfx deploy` command that deploys the project's canister(s) to the Motoko playground's canister pool instead of deploying them to the local replica (`--network local`) or the mainnet network (`--network ic`). 
+`--playground` (or `--network playground`) is a new network flag for the `dfx deploy` command that deploys the project's canister(s) to the playground's canister pool instead of deploying them to the local replica (`--network local`) or the mainnet network (`--network ic`).
 
-When this flag is used, the canisters are deployed in a manner where they borrow resources from the Motoko playground's canister pool. The Motoko playground provides developers with an environment where canisters can be deployed and tested quickly without needing to manage cycles.
+:::info
+Deploying to the playground is ICP's equivalent of deploying to a testnet network.
+:::
+
+When this flag is used, the canisters are deployed in a manner where they borrow resources from the playground's canister pool. The playground provides developers with an environment where canisters can be deployed and tested quickly without needing to manage cycles.
 
 `dfx deploy --playground` is available in `dfx` versions v0.15.1 and above.
 
@@ -22,7 +26,7 @@ Since the `dfx deploy --playground` feature doesn't require additional configura
 
 ## Using `dfx deploy --playground`
 
-To deploy a canister to the Motoko playground, first create a new `dfx` project with the command, or navigate into an existing project's directory. For the sake of this example, we'll create a new project:
+To deploy a canister to the playground, first create a new `dfx` project with the command, or navigate into an existing project's directory. For the sake of this example, we'll create a new project:
 
 ```
 dfx new hello_world
@@ -48,7 +52,7 @@ This command calls the `hello_world_backend` canister that has been deployed to 
 
 Since the canister has been deployed to the playground, it is important to know the limitations that canisters deployed with the `--playground` flag will be subject to. These restrictions are:
 
-- Cycle transfer instructions are silently ignored by the Motoko playground.
+- Cycle transfer instructions are silently ignored by the playground.
 - Wasm files can't be gzipped.
 - Wasm files will be analyzed to remove any potentially expensive/malicious operations.
 - Canisters can use at most 1GB of memory.
