@@ -197,7 +197,7 @@ export const CardsSection = () => {
               className="button-outline-white-30 mt-6 flex gap-2 w-max max-w-full"
               href="https://linktr.ee/icp_hubs_network"
             >
-              <span>Join thriving Communities</span>
+              <span>Join Communities</span>
               <span className="scale-90 translate-y-0.5 relative w-4 h-4">
                 <LinkArrowUpRight className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2" />
               </span>
@@ -239,7 +239,7 @@ export const CardsSection = () => {
                 highlighting upcoming milestones.
               </p>
               <Link className="button-outline-white-30 mt-4" href="/roadmap">
-                get into latest achievements
+                get into it
               </Link>
             </div>
             <div className="absolute z-0 bottom-0  pointer-events-none">

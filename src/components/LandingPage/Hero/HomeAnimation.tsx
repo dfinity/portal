@@ -47,7 +47,7 @@ const options = {
   bg: 0,
 };
 
-console.log(options.seed)
+//console.log(options.seed)
 
 function clamp(number, min, max) {
   return Math.max(min, Math.min(number, max));
@@ -98,11 +98,17 @@ const HomeAnimation = () => {
   useEffect(() => {
     let w = window.innerWidth;
     let h = canvasContainer.current.getBoundingClientRect().height || window.innerHeight;
-    
+    let dirty = true;
+
     const canvas = document.createElement("canvas");
     const ctx = canvas.getContext("2d");
+    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
 
     function draw() {
+      if (!dirty) {
+        return;
+      }
+      dirty = false;
       ctx.fillStyle = rgbToCSS(colors[0]);
       ctx.fillRect(0, 0, w, h);
 
@@ -175,10 +181,11 @@ const HomeAnimation = () => {
     }
     
     function onWindowResize() {
+      dirty = true;
       w = window.innerWidth;
       h = canvasContainer.current.getBoundingClientRect().height || window.innerHeight;
-      canvas.width = w;
-      canvas.height = h;
+      canvas.width = w * devicePixelRatio || 1;
+      canvas.height = h * devicePixelRatio || 1;
     }
     
     onWindowResize();
@@ -192,10 +199,11 @@ const HomeAnimation = () => {
     window.addEventListener("resize", onWindowResize, false);
 
     function onScroll() {
+      //dirty = true;
       const relScroll = document.documentElement.scrollTop / $body.scrollHeight;
       relScrollTop = relScroll + 0.1 * relScroll;
 
-      options.noisePos += Math.abs(relScrollTop * .01);
+      //options.noisePos += Math.abs(relScrollTop * .01);
     }
 
     window.addEventListener("scroll", onScroll);
@@ -203,7 +211,7 @@ const HomeAnimation = () => {
     let requestAnimationFrameHandle: number = 0;
 
     function animate() {
-      //options.noisePos += 0.001;
+      //options.noisePos += 0.0001;
       
       draw();
       requestAnimationFrameHandle = requestAnimationFrame(animate);
