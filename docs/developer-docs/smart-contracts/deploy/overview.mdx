@@ -14,7 +14,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
 After you have built a <GlossaryTooltip>canister</GlossaryTooltip>, you can
-deploy to
+deploy it to:
 
 - <strong>The local canister execution environment</strong> on your machine where
   no tokens/cycles are required
@@ -32,16 +32,16 @@ Most blockchain networks have separate testnets that allow smart contract
 developers to test their projects in a production-like environment at
 significantly lower cost than on mainnet. Because the execution of canisters is
 fairly cheap on ICP, there is no testnet for ICP. Developers are encouraged to
-test their canister smart contracts locally or directly on mainnet. In order to
+test their canister smart contracts locally or directly on the mainnet. In order to
 make test deployments to mainnet faster and even cheaper, you can deploy your
-canister to the so-called playground. You need no cycles or tokens to deploy and
-operate your canister in the playground. But it will be automatically removed
+canister to the so-called playground. You do not need cycles or tokens to deploy and
+operate your canister in the playground, but it will be automatically removed
 after 20 minutes.
 
 ## Deployment
 
-Before you deploy your canister open a new terminal and navigate to your project
-directory, and verify the canisters you'd like to deploy are configured in the
+Before you deploy your canister, open a new terminal and navigate to your project
+directory. Verify the canisters you'd like to deploy are configured in the
 project's `dfx.json` file.
 
 :::info
@@ -51,7 +51,7 @@ Need to create a project? Check out the
 project.
 
 An example `dfx.json` file can be found in the
-[default project template document](/docs/current/developer-docs/setup/first-canister).
+[default project template document](/docs/current/developer-docs/getting-started/hello-world).
 :::
 
 ### Local deployment
@@ -68,15 +68,15 @@ To deploy locally, use the command:
 dfx deploy
 ```
 
-### Deploying to Playground
+### Deploying to playground
 
-To deploy to the Playground, use the command:
+To deploy to the playground, use the command:
 
 ```
 dfx deploy --playground
 ```
 
-### Deploying to Mainnet
+### Deploying to mainnet
 
 To deploy to the mainnet, use the command:
 
@@ -149,7 +149,7 @@ argument set in the CLI command is used.
 
 For certain workflows, it may be important to have a canister execute a task or
 call as soon as the canister is deployed or started. For this workflow, using
-[timers](/docs/current/developer-docs/backend/periodic-tasks) can be useful.
+[timers](/docs/current/developer-docs/smart-contracts/advanced-features/periodic-tasks) can be useful.
 
 Here is an example:
 
