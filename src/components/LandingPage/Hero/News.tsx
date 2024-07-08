@@ -1,7 +1,6 @@
 import React from "react";
 import data from "@site/.docusaurus/contentful/default/press.json";
 import Link from "@docusaurus/Link";
-import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import transitions from "@site/static/transitions.json";
 import { motion } from "framer-motion";
@@ -28,8 +27,8 @@ export const NewsSection = () => {
         className="flex justify-between mb-8 items-center"
         variants={transitions.item}
       >
-        <h2 className="tw-heading-7-caps mb-0 text-white/60">
-          Latest articles
+        <h2 className="tw-heading-5 md:tw-heading-4 mb-0 text-white">
+          Latest Global Press
         </h2>
         <div className="hidden sm:block">
           <NewsPageLink />
