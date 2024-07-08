@@ -208,7 +208,6 @@ const sidebars = {
             "developer-docs/smart-contracts/test/benchmarking",
             "developer-docs/smart-contracts/test/pocket-ic",
             "developer-docs/smart-contracts/test/reproducible-builds",
-            "developer-docs/smart-contracts/test/staging-environment",
             "developer-docs/smart-contracts/test/troubleshooting",
           ],
         },
