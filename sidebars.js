@@ -60,6 +60,11 @@ const sidebars = {
             },
             {
               type: "doc",
+              label: "Testnet deployment",
+              id: "developer-docs/getting-started/deploy/testnet",
+            },
+            {
+              type: "doc",
               label: "Mainnet deployment",
               id: "developer-docs/getting-started/deploy/mainnet",
             },
@@ -132,6 +137,7 @@ const sidebars = {
               type: "doc",
               id: "developer-docs/smart-contracts/deploy/overview",
             },
+            "developer-docs/smart-contracts/deploy/custom-testnets",
             "developer-docs/smart-contracts/deploy/larger-wasm",
             "developer-docs/smart-contracts/deploy/sharing",
           ],
@@ -202,7 +208,6 @@ const sidebars = {
             "developer-docs/smart-contracts/test/benchmarking",
             "developer-docs/smart-contracts/test/pocket-ic",
             "developer-docs/smart-contracts/test/reproducible-builds",
-            "developer-docs/smart-contracts/test/staging-environment",
             "developer-docs/smart-contracts/test/troubleshooting",
           ],
         },
