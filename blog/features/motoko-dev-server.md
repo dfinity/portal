@@ -31,7 +31,7 @@ Over the past six months, DFINITY has adopted full-stack live reloading in our i
 
 This was made possible using the [Motoko Dev Server](https://github.com/dfinity/motoko-dev-server) (or `mo-dev` for short), a command-line tool which facilitates a live-reload workflow for Motoko dapps and smart contracts.
 
-`mo-dev` is already used in a wide range of projects such as the [Motoko Playground](https://play.motoko.org/), [Developer Experience Feedback Board](https://dx.internetcomputer.org/), and even the language’s own [base library](https://github.com/dfinity/motoko-base).
+`mo-dev` is already used in a wide range of projects such as the [playground](https://play.motoko.org/), [Developer Experience Feedback Board](https://dx.internetcomputer.org/), and even the language’s own [base library](https://github.com/dfinity/motoko-base).
 
 Each use case requires different live-reload capabilities, so we decided to create a Swiss Army knife ([if you will](https://dfinity.org/foundation/)) of features which you can select depending on your project:
 

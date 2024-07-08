@@ -19,6 +19,11 @@ Having a separate deployment environment available where features can be end-to-
 
 In a staging environment it is possible to run any `dfx` command that would otherwise take `--network ic` but using `--network myStaging` instead. `myStaging` can be replaced with any other name, except the three reserved ones: `ic`, `local`, and `playground`.
 
+:::info
+Deploying to the playground is ICP's equivalent of deploying to a testnet network.
+:::
+
+
 Networks are defined in two ways: assumed and explicitly configured. dfx only contains the `ic` network as an assumed environment. The flag `--network ic` can be used to run any command on the mainnet.
 
 All other networks are explicitly configured in `dfx.json`. The `"networks"` section should contain at least the `local` network, which gets chosen by default if no other network is specified with the `--network` flag.
