@@ -16,9 +16,9 @@ In contrast to other blockchain networks, ICP does not have a testnet network wh
 
 This is because <GlossaryTooltip>canister</GlossaryTooltip> smart contracts can be upgraded and changed once they have been deployed on the mainnet, and mainnet deployment is fairly cheap.
 
-For developers who are looking for a testnet environment, however, ICP offers the [playground](https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app/) that allows for simple, small-scale, temporary testing for free. It can be used to build and deploy canisters directly in the web browser, or it can be utilized through the `dfx deploy --playground` command via the CLI or through the [playground UI](/docs/current/developer-docs/developer-tools/ide/playground).
+For developers who are looking for a testnet environment, however, ICP offers the [playground](https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app/) that allows for simple, small-scale, temporary testing for free. It can be used to build and deploy canisters directly in the [web browser](/docs/current/developer-docs/developer-tools/ide/playground), or it can be utilized through the `dfx deploy --playground` command via the CLI.
 
-Canisters deployed to the playground use resources that are borrowed from a canister pool. Each canister has an initial amount of 0.5T cycles that it receives from the resource pool and can be used for 20 minutes once the canister has been deployed. There are function [limitations and restrictions](/docs/current/developer-docs/smart-contracts/deploy/custom-testnets) imposed on canisters deployed to the playground as well.
+Canisters deployed to the playground use resources that are borrowed from a canister pool. Each canister has an initial amount of 0.5T cycles that it receives from the resource pool and can be used for 20 minutes once the canister has been deployed. Note that there are function [limitations and restrictions](/docs/current/developer-docs/smart-contracts/deploy/custom-testnets) imposed on canisters deployed to the playground.
 
 For advanced developers and use cases, there are [custom testnet options](/docs/current/developer-docs/smart-contracts/deploy/custom-testnets).
 
