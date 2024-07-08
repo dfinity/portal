@@ -465,7 +465,6 @@ const redirects = `
   /docs/current/developer-docs/backend/motoko/0.11.0-migration-guide /docs/current/motoko/main/migration-guides/0.11.0-migration-guide
   /docs/current/motoko/main/about-this-guide /docs/current/motoko/main/getting-started/motoko-introduction
   /motoko/main/motoko /docs/current/motoko/main/getting-started/motoko-introduction
-  /docs/current/motoko/version /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/main/motoko-introduction /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/main/motoko /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/main/basic-concepts /docs/current/motoko/main/getting-started/basic-concepts
