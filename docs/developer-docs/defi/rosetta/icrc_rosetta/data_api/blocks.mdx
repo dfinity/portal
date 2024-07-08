@@ -191,10 +191,9 @@ curl --location '0.0.0.0:8082/call'  --header 'Content-Type: application/json' -
 The parameters are the following:
 * `number_of_blocks`: This parameter represents the number of blocks you want to fetch. The maximum value for it is `10'000`.
 * `highest_block_index`: This represents the block you are trying to fetch with the highest block index. All subsequent blocks that you want to fetch in the same call will have a lower block index. 
-If `highest_block_index > X` with `X` being the most recent block in the Rosetta database, then Rosetta will only return the blocks in the range `[highest_block_index,highest_block_index-number_of_blocks)` which have an block index that is smaller or equal `X`. 
+If `highest_block_index > X` with `X` being the most recent block in the Rosetta database, then Rosetta will only return the blocks in the range `[highest_block_index,highest_block_index-number_of_blocks)` which have a block index that is smaller or equal to `X`. 
 This means that Rosetta does not guarentee that all blocks that you asked for are present in the database and it does not guarentee that the exact number of blocks you asked for will be returned. 
 
-A recommended way of using this endpoint is to first fetch the highest block index in the datbase through for example the `network/status` endpoint and then use this index to form a query for multiple blocks. 
 As a result to the call above you will receive 2 blocks:
 ```json
 {
