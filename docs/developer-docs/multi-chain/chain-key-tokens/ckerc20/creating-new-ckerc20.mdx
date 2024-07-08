@@ -21,6 +21,12 @@ Check the ckERC20 token you intend to create is not already available or in the 
 
 To find the current list of ckERC20 tokens, hover over the Chain Fusion tab on the [ICP Data Dashboard](https://dashboard.internetcomputer.org/) to see the current list of ckERC20 tokens. 
 
+Alternatively, you can use the following `dfx` command:
+
+```
+dfx canister --network ic call orchestrator get_orchestrator_info
+```
+
 To find any proposed ckERC20 tokens, find any open governance proposals that intend to upgrade the Ledger Canister Orchestrator which has a canister id of vxkom-oyaaa-aaaar-qafda-cai. Navigate to the [Proposals section on the Governance page](https://dashboard.internetcomputer.org/governance) on the ICP Data Dashboard and check for any open proposals with the title "Upgrade NNS Canister: vxkom-oyaaa-aaaar-qafda-cai to wasm." Click on any proposal with the title to see the details of the intended ckERC20 tokens. For example, [Proposal 130755](https://dashboard.internetcomputer.org/proposal/130755) is the governance proposal to create ckPEPE.
 
 ## 2. Create a forum post
