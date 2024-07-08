@@ -67,7 +67,9 @@ dfx deploy pool
 dfx deploy wasm-utils
 ```
 
-- #### Step 5: Lastly, define the local playground network in your project's `dfx.json` file. In this definition, you will need to set the playground canister's ID (the `pool` canister ID) and define the amount of seconds before a canister is returned to the pool, as shown below:
+- #### Step 5: Lastly, define the local playground network in your project's `dfx.json` file.
+
+In this definition, you will need to set the playground canister's ID (the `pool` canister ID) and define the amount of seconds before a canister is returned to the pool, as shown below:
 
 ```json
 "<network name>": {
@@ -84,12 +86,12 @@ dfx deploy wasm-utils
 If the value `<network name>` is set as `playground`, then the command `dfx deploy --playground` will deploy to your custom playground. Otherwise, the command has to use `--network <network name>`.
 
 :::info
-This network definition can also go into the `networks.json` file, so it applies to every project, not just the current project, since `dfx.json` files are project-specific. To see where the `networks.json` file is located, use the command `dfx info networks-json-path`.
+This network definition can also go into the `networks.json` file, so it applies to every project, not just the current project since `dfx.json` files are project-specific. To see where the `networks.json` file is located, use the command `dfx info networks-json-path`.
 :::
 
 ## Synthetic testnet
 
-Another option to create a custom testnet is to use the `dfx` named network functionality. You can create a custom named network for each project, therefore creating a synthetic testnet that is segmented from the other locally tested projects in your environment. Local deployments mirror the mainnet as closely as possible, but local deployments only run a single subnet. Using a custom local network allows you to test integrations with services and estimate costs once deployed on the mainnet.
+Another option to create a custom testnet is to use the `dfx` named network functionality. You can create a custom named network for each project, therefore creating a synthetic testnet that is segmented from the other locally tested projects in your environment. Local deployments mirror the mainnet as closely as possible, but local deployments only run a single subnet. Using a custom local network allows you to test integrations with services and estimate deployment costs.
 
 In a custom network, it is possible to run any `dfx` command that would otherwise take `--network ic` but using `--network myNetwork` instead. `myNetwork` can be replaced with any other name, except the three reserved ones: `ic`, `local`, and `playground`.
 
@@ -111,7 +113,7 @@ For example:
 
 ```json
 {
-  "network_1": {
+  "myNetwork1": {
     "bind": "localhost:4943",
     "replica": {
       "subnet_type": "application"
@@ -124,13 +126,13 @@ To define multiple networks, use multiple definitions on different domain names:
 
 ```json
 {
-  "network_1": {
+  "myNetwork1": {
     "bind": "localhost:4943",
     "replica": {
       "subnet_type": "application"
     }
   },
-  "network_2": {
+  "myNetwork2": {
     "bind": "127.0.0.1:4943",
     "replica": {
       "subnet_type": "application"
@@ -142,7 +144,7 @@ To define multiple networks, use multiple definitions on different domain names:
 - #### Step 2: Then, to deploy to one of these networks, use the `--network` flag with `dfx deploy`:
 
 ```
-dfx deploy --network network_2
+dfx deploy --network myNetwork2
 ```
 
 ### Project specific networks
@@ -155,7 +157,7 @@ To define a project-specific network, add a "networks" section to your `dfx.json
 
 ```json
 "networks": {
-    "dev": {
+    "myNetwork": {
       "providers": [
         "https://ic0.app"
       ],
@@ -171,7 +173,7 @@ This definition uses the following parameters:
 
 ### Configuring a wallet
 
-If you are using a cycles wallet, the cycles wallet for each network is stored separately. The newly created `myStaging` network has no wallet configured yet.
+If you are using a cycles wallet, the cycles wallet for each network is stored separately.
 
 :::caution
 Please note that the cycles wallet will be removed from dfx in a future release.
@@ -194,13 +196,13 @@ dfx identity get-wallet --network ic
 Set the wallet for the newly defined network with the command:
 
 ```bash
-dfx identity set-wallet <wallet id> --network myStaging
+dfx identity set-wallet <wallet id> --network myNetwork
 ```
 
 These commands can be used together, such as:
 
 ```bash
-dfx identity set-wallet "$(dfx identity get-wallet --network ic)" --network myStaging
+dfx identity set-wallet "$(dfx identity get-wallet --network ic)" --network myNetwork
 ```
 
 If you prefer to use a separate cycles wallet for the staging environment, follow the instructions in the step 'Creating a cycles wallet' in the [deploying to the mainnet guide](/docs/current/developer-docs/getting-started/deploy/mainnet).
@@ -208,8 +210,8 @@ If you prefer to use a separate cycles wallet for the staging environment, follo
 
 ## Resources
 
-- [Deploying to playground](/docs/current/developer-docs/getting-started/deploy/testnet)
+- [Deploying to playground](/docs/current/developer-docs/getting-started/deploy/testnet).
 
 - [Defining custom `dfx` networks](/docs/current/developer-docs/developer-tools/cli-tools/advanced-dfx/networks-json).
 
-- [Using the playground UI](/docs/current/developer-docs/developer-tools/ide/playground)
+- [Using the playground UI](/docs/current/developer-docs/developer-tools/ide/playground).

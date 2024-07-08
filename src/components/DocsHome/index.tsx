@@ -168,7 +168,7 @@ const frameworksTiles: TileDescriptor[] = [
     description: (
       <span>
         In contrast to other blockchain networks, there are no testnets on ICP.
-        Instead you can deploy a smart contract for free in the Playground using
+        Instead, you can deploy a smart contract for free on the playground using
         the <GlossaryTooltip>IC SDK</GlossaryTooltip>
       </span>
     ),
@@ -182,11 +182,11 @@ const frameworksTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/developer-docs/smart-contracts/deploy/overview/"
+        href="/docs/current/developer-docs/getting-started/deploy/testnet"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Learn more about testnets on ICP"
       >
-        <span className={"md:hidden"}>Learn more about testnets</span>
+        <span className={"md:hidden"}>Learn more about the playground</span>
         <LinkArrowRight />
       </Link>
     ),
