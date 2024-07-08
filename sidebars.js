@@ -742,6 +742,7 @@ const sidebars = {
                 },
                 "developer-docs/multi-chain/chain-key-tokens/ckerc20/making-transactions",
                 "developer-docs/multi-chain/chain-key-tokens/ckerc20/using-ckerc20-in-dapps",
+                "developer-docs/multi-chain/chain-key-tokens/ckerc20/creating-new-ckerc20",
               ],
             },
           ],
@@ -813,7 +814,7 @@ const sidebars = {
           type: "category",
           label: "Tokens",
           items: [
-	          "developer-docs/defi/tokens/token-standards",
+            "developer-docs/defi/tokens/token-standards",
             "developer-docs/defi/token_integrations/index",
             "developer-docs/defi/icp-tokens/ledger-local-setup",
             "developer-docs/defi/icrc-1/icrc1-ledger-setup",
@@ -980,24 +981,24 @@ const sidebars = {
           label: "NFTs",
           items: [
             {
-            type: "doc",
-            label: "Overview",
-            id: "developer-docs/defi/nfts/overview",
-          },
-          "developer-docs/defi/nfts/nft-collections",
-          "developer-docs/defi/nfts/marketplaces"
-        ],
+              type: "doc",
+              label: "Overview",
+              id: "developer-docs/defi/nfts/overview",
+            },
+            "developer-docs/defi/nfts/nft-collections",
+            "developer-docs/defi/nfts/marketplaces"
+          ],
         },
         {
           type: "category",
           label: "Decentralized exchanges",
           items: [
             {
-            type: "doc",
-            label: "Overview",
-            id: "developer-docs/defi/dex/overview",
-          },
-        ],
+              type: "doc",
+              label: "Overview",
+              id: "developer-docs/defi/dex/overview",
+            },
+          ],
         },
         {
           type: "category",
@@ -1014,7 +1015,7 @@ const sidebars = {
             },
           ],
         },
-    ],
+      ],
     },
     {
       type: "category",
