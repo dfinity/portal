@@ -171,10 +171,10 @@ The response will give you the transaction within the block, in this case it is 
 ```
 
 ## Querying block ranges
-One limitation of the `/block` endpoint is that you can only query one block at a time. Depending on your setup the fetching ob blocks of rosetta may
-be a bottleneck. To eleviate this issue you can use the `/call` endpoint and parse the method name `query_block_range` to fetch up to `10'000` blocks at a time. 
+One limitation of the `/block` endpoint is that you can only query one block at a time. Depending on your setup, this may
+be a bottleneck. To alleviate this issue you can use the `/call` endpoint and parse the method name `query_block_range` to fetch up to `10_000` blocks at a time. 
 
-An example call could look like the following. 
+An example call resembles the following:
 ```json
 curl --location '0.0.0.0:8082/call'  --header 'Content-Type: application/json' --data '{
     "network_identifier": {
@@ -188,11 +188,11 @@ curl --location '0.0.0.0:8082/call'  --header 'Content-Type: application/json' -
     }
 }'
 ```
-The parameters are the following:
-* `number_of_blocks`: This parameter represents the number of blocks you want to fetch. The maximum value for it is `10'000`.
-* `highest_block_index`: This represents the block you are trying to fetch with the highest block index. All subsequent blocks that you want to fetch in the same call will have a lower block index. 
-If `highest_block_index > X` with `X` being the most recent block in the Rosetta database, then Rosetta will only return the blocks in the range `[highest_block_index,highest_block_index-number_of_blocks)` which have a block index that is smaller or equal to `X`. 
-This means that Rosetta does not guarentee that all blocks that you asked for are present in the database and it does not guarentee that the exact number of blocks you asked for will be returned. 
+The following parameters are used:
+* `number_of_blocks`: The amount of blocks you want to fetch. The maximum value for it is `10_000`.
+* `highest_block_index`: The block you are trying to fetch with the highest block index. All subsequent blocks that you want to fetch in the same call will have a lower block index. 
+If `highest_block_index > X` with `X` being the most recent block in the Rosetta database, then Rosetta will only return the blocks in the range `[highest_block_index,highest_block_index-number_of_blocks]` which have a block index that is smaller or equal to `X`. 
+This means that Rosetta does not guarantee that all blocks that you asked for are present in the database and it does not guarantee that the exact number of blocks you asked for will be returned. 
 
 As a result to the call above you will receive 2 blocks:
 ```json
