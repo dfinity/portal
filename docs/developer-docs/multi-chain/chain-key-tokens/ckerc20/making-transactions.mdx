@@ -22,12 +22,10 @@ There are several different ways to interact with ckERC20 tokens:
 
 ## Converting ERC-20 tokens to ckERC20 tokens
 
-First [download the ckETH repository](https://github.com/dfinity/ic/tree/master/rs/ethereum/cketh). Then, navigate into the subdirectory for either the mainnet (ic/rs/ethereum/cketh/mainnet) or testnet (ic/rs/ethereum/cketh/testnet).
-
 The list of supported ckERC20 tokens can be obtained by running the following command:
 
 ```
-dfx canister --ic call minter get_minter_info
+dfx canister --ic call sv3dd-oaaaa-aaaar-qacoa-cai get_minter_info
 ```
 
 :::info
@@ -53,7 +51,10 @@ Note that the helper smart contract might change. It is therefore recommended to
 
 :::
 
-If the targeted ckERC20 token is listed, the first step is to create an Ethereum transaction that calls the `approve` function on the corresponding ERC-20 contract address, allowing the helper smart contract to withdraw some of the user's funds.
+
+If the targeted ckERC20 token is listed, [download the ckETH repository](https://github.com/dfinity/ic/tree/master/rs/ethereum/cketh). Then, navigate into the subdirectory for either the mainnet (ic/rs/ethereum/cketh/mainnet) or testnet (ic/rs/ethereum/cketh/testnet).
+
+Create an Ethereum transaction that calls the `approve` function on the corresponding ERC-20 contract address, allowing the helper smart contract to withdraw some of the user's funds.
 
 The next step is to call the `deposit` function of the helper smart contract, specifying the ERC-20 smart contract address, the amount to be deposited, and the principal ID that should be credited for the deposit. The principal ID must be encoded as a `bytes32` array. A convenient way to obtain the correct encoding is to use the `Principal → Bytes32 conversion` function on the ckETH minter [dashboard](https://sv3dd-oaaaa-aaaar-qacoa-cai.raw.icp0.io/dashboard).
 

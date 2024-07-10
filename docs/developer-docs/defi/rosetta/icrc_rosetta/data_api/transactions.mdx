@@ -52,7 +52,8 @@ curl --location '0.0.0.0:8082/block/transaction'  --header 'Content-Type: applic
 }'
 ```
 
-The response is similar to that of the block [endpoint](/docs/developer-docs/defi/rosetta/icrc_rosetta/data_api/blocks.mdx) as there is only one transaction within a block.
+The response is similar to that of the block [endpoint](/docs/developer-docs/defi/rosetta/icrc_rosetta/data_api/blocks.mdx) as there is only one transaction within a block. If you want to fetch multiple transactions at a time you may want to have a look
+at the `/call` [endpoint](/docs/developer-docs/defi/rosetta/icrc_rosetta/data_api/blocks.mdx) that allows you to query multiple blocks at a time. 
 
 ```json
 {
