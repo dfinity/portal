@@ -169,3 +169,251 @@ The response will give you the transaction within the block, in this case it is 
     }
 }
 ```
+
+## Querying block ranges
+One limitation of the `/block` endpoint is that you can only query one block at a time. Depending on your setup, this may
+be a bottleneck. To alleviate this issue you can use the `/call` endpoint and parse the method name `query_block_range` to fetch up to `10_000` blocks at a time. 
+
+An example call resembles the following:
+```json
+curl --location '0.0.0.0:8082/call'  --header 'Content-Type: application/json' --data '{
+    "network_identifier": {
+            "blockchain": "Internet Computer",
+            "network": "mxzaz-hqaaa-aaaar-qaada-cai"
+    },
+    "method_name": "query_block_range",
+    "parameters":{
+        "highest_block_index":1646155,
+        "number_of_blocks":2
+    }
+}'
+```
+The following parameters are used:
+* `number_of_blocks`: The amount of blocks you want to fetch. The maximum value for it is `10_000`.
+* `highest_block_index`: The block you are trying to fetch with the highest block index. All subsequent blocks that you want to fetch in the same call will have a lower block index. 
+If `highest_block_index > X` with `X` being the most recent block in the Rosetta database, then Rosetta will only return the blocks in the range `[highest_block_index,highest_block_index-number_of_blocks]` which have a block index that is smaller or equal to `X`. 
+This means that Rosetta does not guarantee that all blocks that you asked for are present in the database and it does not guarantee that the exact number of blocks you asked for will be returned. 
+
+As a result to the call above you will receive 2 blocks:
+```json
+{
+    "result": {
+        "blocks": [
+            {
+                "block_identifier": {
+                    "hash": "6ea4c7fb1e48342f1a0ea5b2de003968a5a36e541e450ff1602a4a474dc29174",
+                    "index": 1646154
+                },
+                "metadata": {
+                    "block_created_at_nano_seconds": 1720421067709600392,
+                    "fee_collector_block_index": 39493
+                },
+                "parent_block_identifier": {
+                    "hash": "dc94daf067417121d713787499acbf03d2e9a1be9397434b00ed8943f12157c7",
+                    "index": 1646153
+                },
+                "timestamp": 1720421067709,
+                "transactions": [
+                    {
+                        "metadata": {
+                            "memo": [
+                                0,
+                                0,
+                                0,
+                                0,
+                                0,
+                                0,
+                                6,
+                                214
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "account": {
+                                    "address": "dwx4w-plydf-jxgs5-uncbu-mfyds-5vjzm-oohax-gmvja-cypv7-tmbt4-dqe",
+                                    "sub_account": {
+                                        "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                                    }
+                                },
+                                "amount": {
+                                    "currency": {
+                                        "decimals": 8,
+                                        "symbol": "ckBTC"
+                                    },
+                                    "value": "3739"
+                                },
+                                "operation_identifier": {
+                                    "index": 0
+                                },
+                                "status": null,
+                                "type": "TRANSFER"
+                            },
+                            {
+                                "account": {
+                                    "address": "nm7k6-wyaaa-aaaag-qcasa-cai",
+                                    "sub_account": {
+                                        "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                                    }
+                                },
+                                "amount": {
+                                    "currency": {
+                                        "decimals": 8,
+                                        "symbol": "ckBTC"
+                                    },
+                                    "value": "-3739"
+                                },
+                                "operation_identifier": {
+                                    "index": 1
+                                },
+                                "status": null,
+                                "type": "TRANSFER"
+                            },
+                            {
+                                "account": {
+                                    "address": "nm7k6-wyaaa-aaaag-qcasa-cai",
+                                    "sub_account": {
+                                        "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                                    }
+                                },
+                                "amount": {
+                                    "currency": {
+                                        "decimals": 8,
+                                        "symbol": "ckBTC"
+                                    },
+                                    "value": "-10"
+                                },
+                                "metadata": {
+                                    "fee_set_by": "User"
+                                },
+                                "operation_identifier": {
+                                    "index": 2
+                                },
+                                "status": null,
+                                "type": "FEE"
+                            }
+                        ],
+                        "transaction_identifier": {
+                            "hash": "ba6c39964c09fa25df5a8f913105dd3bca5906750df792abec3c2bf8ca5e7edb"
+                        }
+                    }
+                ]
+            },
+            {
+                "block_identifier": {
+                    "hash": "a32007da0adc180b437721d8b6d0ff641671a72a61518169bfec9f9999754731",
+                    "index": 1646155
+                },
+                "metadata": {
+                    "block_created_at_nano_seconds": 1720421077260937639,
+                    "fee_collector_block_index": 39493
+                },
+                "parent_block_identifier": {
+                    "hash": "6ea4c7fb1e48342f1a0ea5b2de003968a5a36e541e450ff1602a4a474dc29174",
+                    "index": 1646154
+                },
+                "timestamp": 1720421077260,
+                "transactions": [
+                    {
+                        "metadata": {
+                            "memo": [
+                                0,
+                                0,
+                                0,
+                                0,
+                                0,
+                                2,
+                                42,
+                                160
+                            ]
+                        },
+                        "operations": [
+                            {
+                                "account": {
+                                    "address": "xmiu5-jqaaa-aaaag-qbz7q-cai",
+                                    "sub_account": {
+                                        "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                                    }
+                                },
+                                "amount": {
+                                    "currency": {
+                                        "decimals": 8,
+                                        "symbol": "ckBTC"
+                                    },
+                                    "value": "3719"
+                                },
+                                "operation_identifier": {
+                                    "index": 0
+                                },
+                                "status": null,
+                                "type": "TRANSFER"
+                            },
+                            {
+                                "account": {
+                                    "address": "dwx4w-plydf-jxgs5-uncbu-mfyds-5vjzm-oohax-gmvja-cypv7-tmbt4-dqe",
+                                    "sub_account": {
+                                        "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                                    }
+                                },
+                                "amount": {
+                                    "currency": {
+                                        "decimals": 8,
+                                        "symbol": "ckBTC"
+                                    },
+                                    "value": "-3719"
+                                },
+                                "operation_identifier": {
+                                    "index": 1
+                                },
+                                "status": null,
+                                "type": "TRANSFER"
+                            },
+                            {
+                                "account": {
+                                    "address": "xmiu5-jqaaa-aaaag-qbz7q-cai",
+                                    "sub_account": {
+                                        "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                                    }
+                                },
+                                "operation_identifier": {
+                                    "index": 2
+                                },
+                                "status": null,
+                                "type": "SPENDER"
+                            },
+                            {
+                                "account": {
+                                    "address": "dwx4w-plydf-jxgs5-uncbu-mfyds-5vjzm-oohax-gmvja-cypv7-tmbt4-dqe",
+                                    "sub_account": {
+                                        "address": "0000000000000000000000000000000000000000000000000000000000000000"
+                                    }
+                                },
+                                "amount": {
+                                    "currency": {
+                                        "decimals": 8,
+                                        "symbol": "ckBTC"
+                                    },
+                                    "value": "-10"
+                                },
+                                "metadata": {
+                                    "fee_set_by": "User"
+                                },
+                                "operation_identifier": {
+                                    "index": 3
+                                },
+                                "status": null,
+                                "type": "FEE"
+                            }
+                        ],
+                        "transaction_identifier": {
+                            "hash": "fc3ecc3d72c45e1e7b505c8cb2da0afc1beab9ca23e1873456af0accabd3ebf8"
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    "idempotent": true
+}
+```
+The field `idempotent` indicates whether the query you asked for will return the same result when fetched at a later point in time. This is always true if `highest_block_index` exists in the Rosetta database. Otherwise,
+it may be the case that at a later point in time more blocks have been added to the database and can thus be returned as a result. 
