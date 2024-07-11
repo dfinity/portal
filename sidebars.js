@@ -1348,6 +1348,14 @@ const sidebars = {
         },
         {
           type: "category",
+          label: "Node providers",
+          items: [
+            "references/node-providers/overview",
+            "references/node-providers/node-metrics",
+          ],
+        },
+        {
+          type: "category",
           label: "FAQs",
           items: [
             "developer-docs/multi-chain/faq/user-faq",
