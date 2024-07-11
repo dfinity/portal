@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 A node in regards to ICP is a machine running the Internet Computer Protocol software, often referred to as the replica. By running the replica software, each node machine participates in the network by providing compute and storage resources for running canister smart contracts. Each node machine is owned by a node provider, who are individuals or organizations that receive rewards for their nodes' [useful work](https://wiki.internetcomputer.org/wiki/Proof_of_Useful_Work).
 
-Having a diverse set of node providers makes the mainnet more decentralized and thus more resilient. Node providers can only be added to the network through an NNS proposal, where the community decides whether the node provider is accepted into the network or not.
+Having a diverse set of node providers makes the mainnet more decentralized and, thus, more resilient. Node providers can only be added to the network through an NNS proposal, where the community decides whether the node provider is accepted into the network or not.
 
 To become a node provider, each node machine must meet [specific hardware requirements](https://wiki.internetcomputer.org/wiki/Node_Provider_Machine_Hardware_Guide#Gen_2_Node_Machine_requirements). When the replica is installed on the machine, the `IC-OS` installer will fail if the expected hardware components are not found.
 
@@ -24,7 +24,7 @@ Once the network's subnets have reached capacity and require more resources to r
 
 Public node metrics allow any end-user, developer, or other individual to scrape information about a node and check on its health status. Metrics are provided in a secure manner, where caching and filtering of metrics cannot be used to exploit the node. Public node metrics allow for fully decentralized network maintenance without security compromises.
 
-For example, if you want to check the status and metrics of a node, you can view them through the node's IPv6 address and the URL formats `https://[IPV6]:42372/metrics/hostos_node_exporter` and `https://[IPV6]:42372/metrics/guestos_node_exporter` for the HostOS and GuestOS metrics respectively.
+For example, if you want to check the status and metrics of a node, you can view them through the node's IPv6 address and the URL formats `https://[IPV6]:42372/metrics/hostos_node_exporter` and `https://[IPV6]:42372/metrics/guestos_node_exporter` for the HostOS and GuestOS metrics, respectively.
 
 You can learn more about public node metrics in the [node metrics tutorial](node-metrics.mdx)
 

@@ -49,7 +49,7 @@ Open this IP address in your browser using the following URL format:
 
 https://[2401:7500:1016:0:6800:bbff:fee7:7d39]:42372/metrics/hostos_node_exporter
 
-You will be warned at the certificate is invalid. This is expected, and you can proceed safely.
+You will be warned that the certificate is invalid. This is expected, and you can proceed safely.
 
 Your browser window should display node metrics in text format, such as:
 
@@ -167,9 +167,9 @@ Whenever you change a setting in your stack, re-run these commands to ensure the
 
 This command can be run multiple times, with only the necessary changes being re-applied each time. Whenever you change the settings of your stack within this repository, you should re-run the command to ensure the settings are applied and take effect.
 
-If you selected virtual machine provisioning in the previous step, the virtual machine will be provisioned, K3s will be deployed, and an instance of Prometheus will be deployed.
+If you selected virtual machine provisioning in the previous step, the virtual machine will be provisioned, K3s and an instance of Prometheus will be deployed.
 
-If you selected remote machine provisioning, K3s will be deployed on the remote machine, and an instance of Prometheus will be deployed.
+If you selected remote machine provisioning, K3s and an instance of Prometheus will be deployed.
 
 Once finished, the observability stack is ready to use. Below are some usage examples.
 
