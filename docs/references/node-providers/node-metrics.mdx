@@ -13,7 +13,7 @@ import '/src/components/CenterImages/center.scss';
 
 ICP publishes node metrics publicly and provides an observability stack to collect, inspect, and analyze these metrics. By publishing these metrics worldwide, anyone can monitor the health of ICP nodes, therefore decentralizing the monitoring process, ensuring that more nodes stay healthy, and decreasing the amount of time it takes to resolve any issues. This feature provides increased overall transparency and a more stable network.
 
-The public node metrics feature enables any individual to scrape data about a node's health or metrics through the node's IPv6 address through HTTPS port 42372 at the following URLs:
+The public node metrics feature enables any individual to scrape data about a node's health or metrics using the node's IPv6 address and HTTPS port 42372 at the following URLs:
 
 - `https://[IPV6]:42372/metrics/hostos_node_exporter`: HostOS node exporter metrics.
 
@@ -34,6 +34,46 @@ Metrics included in these exports include:
 - Resource utilization.
 
 Additional metrics may be added in the future based on node provider requirements and security reviews.
+
+## Manually obtaining metrics
+
+To obtain a node's metrics directly in your web browser, first get the node's IPv6 address from the [ICP public dashboard](https://dashboard.internetcomputer.org/nodes).
+
+For example, node `ulyfm-vkxtj-o42dg-e4nam-l4tzf-37wci-ggntw-4ma7y-d267g-ywxi6-iae` has an IP address of `2401:7500:1016:0:6801:bbff:fee7:7d39`.
+
+Then, change the 5th octet of the IP address from `6801` to `6800` to get the HostOS address:
+
+`2401:7500:1016:0:6801:bbff:fee7:7d39` -> `2401:7500:1016:0:6800:bbff:fee7:7d39`
+
+Open this IP address in your browser using the following URL format:
+
+https://[2401:7500:1016:0:6800:bbff:fee7:7d39]:42372/metrics/hostos_node_exporter
+
+You will be warned at the certificate is invalid. This is expected, and you can proceed safely.
+
+Your browser window should display node metrics in text format, such as:
+
+```
+# HELP hostos_version HostOS version string
+# TYPE hostos_version gauge
+hostos_version{version="2e269c77aa2f6b2353ddad6a4ac3d5ddcac196b1"} 1e0
+# HELP node_cpu_frequency_max_hertz Maximum cpu thread frequency in hertz.
+# TYPE node_cpu_frequency_max_hertz gauge
+node_cpu_frequency_max_hertz{cpu="0"} 3.729492e9
+node_cpu_frequency_max_hertz{cpu="1"} 3.729492e9
+node_cpu_frequency_max_hertz{cpu="10"} 3.729492e9
+node_cpu_frequency_max_hertz{cpu="11"} 3.729492e9
+node_cpu_frequency_max_hertz{cpu="12"} 3.729492e9
+node_cpu_frequency_max_hertz{cpu="13"} 3.729492e9
+node_cpu_frequency_max_hertz{cpu="14"} 3.729492e9
+node_cpu_frequency_max_hertz{cpu="15"} 3.729492e9
+node_cpu_frequency_max_hertz{cpu="16"} 3.729492e9
+node_cpu_frequency_max_hertz{cpu="17"} 3.729492e9
+node_cpu_frequency_max_hertz{cpu="18"} 3.729492e9
+node_cpu_frequency_max_hertz{cpu="19"} 3.729492e9
+node_cpu_frequency_max_hertz{cpu="2"} 3.729492e9
+...
+```
 
 ## Using the observability stack
 
@@ -147,3 +187,5 @@ An example of cumulative power usage for all DFINITY nodes:
 - [Forum post announcement](https://forum.dfinity.org/t/public-internet-computer-ic-node-metrics-available-now/32961)
 
 - [ic-observability-stack repo](https://github.com/dfinity/ic-observability-stack/tree/master)
+
+- [Python script example](https://gist.github.com/sasa-tomic/04d9217e5b8847caa0566b619495bb02)
