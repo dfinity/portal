@@ -341,9 +341,98 @@ When modifying this example's frontend, it is recommended to develop using a loc
 
 To start a local development server, run `npm run start`. The output will contain the local address the project is running at, such as `127.0.0.1:4943`.
 
+## End2end testing
+
+To run end2end testing for Internet Identity integrations, you can use the [Internet Identity Playwright plugin](https://github.com/dfinity/internet-identity-playwright).
+
+To use this plugin, first install [Playwright](https://playwright.dev/), then install the plugin itself with a package manager:
+
+```
+# Install with npm
+npm install --save-dev @dfinity/internet-identity-playwright
+
+# Install with pnpm
+pnpm add --save-dev @dfinity/internet-identity-playwright
+
+# Install with yarn
+yarn add -D @dfinity/internet-identity-playwright
+```
+
+Import the plugin into your Playwright test file:
+
+```
+import {testWithII} from '@dfinity/internet-identity-playwright';
+```
+
+Then begin writing your tests, such as:
+
+```
+testWithII('should sign-in with a new user', async ({page, iiPage}) => {
+  await page.goto('/');
+
+  await iiPage.signInWithNewIdentity();
+});
+
+testWithII('should sign-in with an existing new user', async ({page, iiPage}) => {
+  await page.goto('/');
+
+  await iiPage.signInWithIdentity({identity: 10003});
+});
+```
+
+In this test, `iiPage` represents your application's page that initiates the authentication flow with Internet Identity. By default, the test will look for a button identified by `[data-tid=login-button]`. This can be customized by configuring your own selector:
+
+```
+const loginSelector = '#login';
+
+testWithII('should sign-in with a new user', async ({page, iiPage}) => {
+  await page.goto('/');
+
+  await iiPage.signInWithNewIdentity({selector: loginSelector});
+});
+
+testWithII('should sign-in with an existing new user', async ({page, iiPage}) => {
+  await page.goto('/');
+
+  await iiPage.signInWithIdentity({identity: 10003, selector: loginSelector});
+});
+```
+
+If desired, you can have the test wait for Internet Identity to be ready by providing the local replica URL and the canister ID of your local Internet Identity instance:
+
+```
+testWithII.beforeEach(async ({iiPage, browser}) => {
+  const url = 'http://127.0.0.1:4943';
+  const canisterId = 'rdmx6-jaaaa-aaaaa-aaadq-cai';
+
+  await iiPage.waitReady({url, canisterId});
+});
+```
+
+You can also configure a timeout parameter that indicates how long the function should wait for Internet Identity before failing:
+
+```
+testWithII.beforeEach(async ({iiPage, browser}) => {
+  const url = 'http://127.0.0.1:4943';
+  const canisterId = 'rdmx6-jaaaa-aaaaa-aaadq-cai';
+  const timeout = 30000;
+
+  await iiPage.waitReady({url, canisterId, timeout});
+});
+```
+
+Once your tests are ready, run them with the command:
+
+```
+npx playwright test
+```
+
+[View more details in the plugin's repo](https://github.com/dfinity/internet-identity-playwright).
+
 ## Resources
 
 - [Internet Identity dashboard](https://identity.ic0.app/).
 - [Internet Identity specification](/docs/current/references/ii-spec).
 - [Internet Identity GitHub repository](https://github.com/dfinity/internet-identity).
 - [Internet Identity alternative frontend origins](/docs/current/developer-docs/integrations/internet-identity/alternative-origins).
+- [Playwright plugin for E2E testing](https://github.com/dfinity/internet-identity-playwright).
