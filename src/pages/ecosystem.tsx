@@ -298,6 +298,17 @@ const tags = Object.entries(
   }, {} as Record<string, number>)
 );
 
+const prioritizedTags = ["Chainfusion", "AI"];
+const tagsToNotShow = ["Bitcoin", "Ethereum"];
+const filteredTags = tags.filter(([tag]) => !tagsToNotShow.includes(tag));
+
+const sortedTags = [
+  ...prioritizedTags
+    .map((tag) => filteredTags.find(([t]) => t === tag))
+    .filter(Boolean),
+  ...filteredTags.filter(([tag]) => !prioritizedTags.includes(tag)),
+];
+
 function ShowcasePage(): JSX.Element {
   const [queryTag, setQueryTag, queryTagInitialized] =
     useQueryParam<string>("tag");
@@ -360,7 +371,7 @@ function ShowcasePage(): JSX.Element {
                   {projects.length}
                 </PillSecondaryLabel>
               </Pill>
-              {(tags || []).map(([tag, count]) => (
+              {(sortedTags || []).map(([tag, count]) => (
                 <Pill
                   isActive={tag === queryTag}
                   onClick={() => setQueryTag(tag)}
