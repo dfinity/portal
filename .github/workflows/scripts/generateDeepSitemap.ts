@@ -59,15 +59,16 @@ async function main(): Promise<string> {
 }
 
 function writeDeepSitemapToFile(map: Map<string, Set<string>>) {
-  const tmpDir = os.tmpdir();
-  const tmpFile = path.join(tmpDir, "portal-deep-sitemap.json");
   const sitemap = {};
 
   for (let [key, value] of map) {
     sitemap[key] = Array.from(value);
   }
 
+  const tmpDir = os.tmpdir();
+  const tmpFile = path.join(tmpDir, "portal-deep-sitemap.json");
   fs.writeFileSync(tmpFile, JSON.stringify(sitemap, null, 2));
+
   return tmpFile;
 }
 
