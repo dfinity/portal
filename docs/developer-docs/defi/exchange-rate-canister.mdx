@@ -118,7 +118,21 @@ To test the XRC demo locally, first start the local <GlossaryTooltip>replica</Gl
 dfx start --clean --background
 ```
 
-Then, deploy the canisters with the command:
+Before you deploy the XRC demo, you must set your local subnet network to be type 'system' by editing your `networks.json` configuration file for dfx. This file's location can be found by running the command `dfx info networks-json-path`.
+
+Adjust the file's default contents to configure the local replica as type 'system':
+
+```json
+{
+    "local": {
+        "replica": {
+            "subnet_type": "system"
+        }
+    }
+}
+```
+
+Then, you can deploy the XRC canisters with the command:
 
 ```
 dfx deploy --with-cycles 10000000000
