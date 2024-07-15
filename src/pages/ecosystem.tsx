@@ -284,7 +284,7 @@ const LargeCard = ({ project }: { project: ShowcaseProject }) => {
 };
 
 const projects = showcaseData as ShowcaseProject[];
-const tags = Object.entries(
+let tagsUnorderd = Object.entries(
   projects.reduce((tags, p) => {
     if (p.tags) {
       for (const tag of p.tags) {
@@ -297,6 +297,27 @@ const tags = Object.entries(
     return tags;
   }, {} as Record<string, number>)
 );
+
+const tagOrder = [
+  "AI",
+  "Chainfusion",
+  "Tokenization",
+  "Social & Collab",
+  "Internet Identity",
+  "Enterprise",
+  "DeFi",
+  "Tools & Infrastructure",
+  "DAO",
+  "Gaming",
+  "Wallet",
+  "NFT",
+];
+
+const tags = tagOrder.map((tag) => {
+  const count = tagsUnorderd.find(([t]) => t === tag)?.[1] || 0;
+  return [tag, count];
+});
+
 
 function ShowcasePage(): JSX.Element {
   const [queryTag, setQueryTag, queryTagInitialized] =
@@ -386,9 +407,9 @@ function ShowcasePage(): JSX.Element {
               )
             ) : project.display === "Large" &&
               (project.video || project.screenshots?.length > 0) ? (
-              <LargeCard project={project} key={project.website} />
+              <LargeCard project={project} key={project.website || project.github} />
             ) : (
-              <SmallCard project={project} key={project.website} />
+              <SmallCard project={project} key={project.website || project.github} />
             )
           )}
         </section>

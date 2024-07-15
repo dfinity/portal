@@ -9,7 +9,6 @@ const versions = require("./versions.json");
 const lightCodeTheme = require("./codeblock-theme");
 const darkCodeTheme = require("prism-react-renderer/themes/dracula");
 const simplePlantUML = require("@akebifiky/remark-simple-plantuml");
-const homeShowcaseProjectsPlugin = require("./plugins/home-showcase");
 const cryptoPricePlugin = require("./plugins/crypto-price");
 const xdrPricePlugin = require("./plugins/xdr-price");
 const icpXdrPricePlugin = require("./plugins/icp-xdr-price");
@@ -590,7 +589,6 @@ const config = {
     cryptoPricePlugin,
     icpXdrPricePlugin,
     xdrPricePlugin,
-    homeShowcaseProjectsPlugin,
     howItWorksArticlesPlugin,
     howItWorksCardsPlugin,
     votingRewardsPlugin,
