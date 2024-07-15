@@ -39,7 +39,7 @@ const categories = [
     ),
     image: "/img/basics/export-social.webp",
     link: (
-      <a href="/ecosystem?tag=SocialFi" className={styles.link}>
+      <a href="/ecosystem?tag=Social+%26+Collab" className={styles.link}>
         Explore more SocialFi projects <LinkArrowUpRight />
       </a>
     ),
@@ -85,7 +85,7 @@ const categories = [
     ),
     image: "/img/basics/export-metaverse.webp",
     link: (
-      <a href="/ecosystem?tag=Metaverse" className={styles.link}>
+      <a href="/ecosystem?tag=Gaming" className={styles.link}>
         Explore more Metaverse projects <LinkArrowUpRight />
       </a>
     ),

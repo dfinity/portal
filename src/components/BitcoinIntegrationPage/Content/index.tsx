@@ -307,7 +307,7 @@ const Content: React.FC = () => {
           ))}
         </AnimateSpawn>
         <div className="container-10 mt-10 md:mt-16 text-center ">
-          <Link className="button-primary" href="/ecosystem?tag=Bitcoin">
+          <Link className="button-primary" href="/ecosystem?tag=Chainfusion">
             More projects building on Bitcoin
           </Link>
         </div>
