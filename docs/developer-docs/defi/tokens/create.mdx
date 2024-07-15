@@ -121,7 +121,9 @@ export FEATURE_FLAGS=false
 ## Deploy the ledger locally
 
 :::caution
-In this workflow, you cannot deploy this canister to the playground (using the flag `dfx deploy --playground`) because the Motoko playground does not accept gzipped Wasm files.
+Deploying to the playground is ICP's equivalent of deploying to a testnet network.
+
+In this workflow, you cannot deploy this canister to the playground (using the flag `dfx deploy --playground`) because it does not accept gzipped Wasm files.
 :::
 
 Deploy the ICRC-1 ledger canister locally and pass in the arguments to create your token.

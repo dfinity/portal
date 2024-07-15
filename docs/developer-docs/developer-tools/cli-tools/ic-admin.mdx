@@ -13,23 +13,21 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Installing `ic-admin`
 
-To install `ic-admin`, first determine the commit ID of the latest IC release. This commit can be found in [the DFINITY/ic repo](https://github.com/dfinity/ic/releases/latest).
+To install `ic-admin`, first determine the latest IC release version found in [the DFINITY/ic repo](https://github.com/dfinity/ic/releases/latest).
 
-For example, the latest commit at this time is `85bd56a70e55b2cea75cae6405ae11243e5fdad8`.
-
-Then, download the `ic-admin` file for your operating system. For macOS, download the `darwin` file; for Linux, download the `linux` file:
+Then, download the `ic-admin` file for your operating system. For macOS, download the `darwin` file; for Linux, download the `linux` file, replacing `[latest-release]` with the most recent version number such as `release-2024-07-10_23-01-base`:
 
 #### macOS
 
 ```bash
-curl -L "https://github.com/dfinity/ic/releases/download/release-2024-02-21_23-01-p2p/ic-admin-x86_64-darwin.gz" -o - | gunzip > ./ic-admin
+curl -L "https://github.com/dfinity/ic/releases/download/[latest-release]/ic-admin-x86_64-darwin.gz" -o - | gunzip > ./ic-admin
 chmod +x ./ic-admin
 ```
 
 #### Linux
 
 ```bash
-curl -L "https://github.com/dfinity/ic/releases/download/release-2024-02-21_23-01-p2p/ic-admin-x86_64-linux.gz" -o - | gunzip > ./ic-admin
+curl -L "https://github.com/dfinity/ic/releases/download/[latest-release]/ic-admin-x86_64-linux.gz" -o - | gunzip > ./ic-admin
 chmod +x ./ic-admin
 ```
 

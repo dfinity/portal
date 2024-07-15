@@ -191,10 +191,52 @@ function AIPage() {
             </div>
           </div>
         </section>
+
+        <section className="container-10 relative mt-40 sm:mt-52 md:mt-60">
+          <AnimateSpawn
+            variants={transitions.container}
+            className="bg-white px-10 md:px-16 pt-6 pb-1 md:pb-12 md:pt-12 gap-8 mb-10 sm:mb-40 rounded-xl "
+          >
+            <motion.div>
+              <aside className="container-10 md:flex md:items-center mt-6 md:mt-0 !pl-0	!pr-0">
+                <div className="md:w-1/2">
+                  <motion.h5
+                    className="tw-heading-5 md:tw-heading-4 mb-3 sm:mb-6 "
+                    variants={transitions.item}
+                  >
+                    Facial recognition is live!
+                  </motion.h5>
+                  <motion.p>
+                    ICP just reached its latest milestone, Cyclotron, which
+                    focused on performance. Optimizations have been implemented
+                    in the WebAssembly and AI inference engines, which are
+                    expected to increase the speed of inference by 10X or more.
+                    The first use case is facial recognition, run fully onchain.
+                  </motion.p>
+                  <p className="mb-12 md:mb-0 mt-8">
+                    <Link className="link-primary link-with-icon" href="https://medium.com/@dfinity/589183203fc2">
+                      <LinkArrowRight />
+                      READ THE BLOG POST
+                    </Link>
+                  </p>
+                </div>
+                <div className="md:w-1/2 relative md:mt-6 md:mb-3">
+                  <div className="pointer-events-none md:absolute w-full md:-right-20 md:top-1/2  md:-translate-y-1/2">
+                    <motion.img
+                      className="w-[75%] h-full object-cover"
+                      src="/img/roadmap/roadmap-viz.webp"
+                      alt="roadmap"
+                    />
+                  </div>
+                </div>
+              </aside>
+            </motion.div>
+          </AnimateSpawn>
+        </section>
         <AnimateSpawn
           el={motion.section}
           variants={transitions.container}
-          className="mt-48 md:mt-60"
+          className="mt-24 md:mt-40"
         >
           <div className="container-10 mb-10">
             <div className="flex flex-col md:flex-row gap-6 items-center">
@@ -229,10 +271,10 @@ function AIPage() {
                   className="col-span-1 md:col-span-2 mb-10"
                 >
                   <VideoCard
-                    image="/img/decentralized-ai/thumb-ai-video-thumb.webp"
-                    title="AI smart contract on ICP"
+                    image="/img/decentralized-ai/thumb-ai-video-thumb3.webp"
+                    title="On-chain Facial Recognition – AI running on ICP"
                     label="Demo"
-                    link={`https://www.youtube.com/watch?v=6qLvIXiCGcM`}
+                    link={`https://www.youtube.com/watch?v=hEFff_GGj30&list=PLuhDt1vhGcrfWz1ZJrAmJBDS6aFADySwt&index=3`}
                     description="The world's first demonstration of AI inference running directly on the blockchain, presented by Dominic Williams"
                   />
                 </motion.div>
@@ -254,7 +296,7 @@ function AIPage() {
                   <MotionLink
                     variants={transitions.item}
                     className="button-outline"
-                    href="https://github.com/dfinity/examples/tree/master/rust/image-classification"
+                    href="https://github.com/dfinity/examples/tree/master/rust/face-recognition"
                   >
                     GO TO GITHUB REPO
                   </MotionLink>
@@ -262,17 +304,16 @@ function AIPage() {
               </div>
               <div className="w-full md:w-auto rounded-2xl">
                 <CodeBlockString showLineNumbers language="rust">
-                  {`// Setup:
-let proto: ModelProto =     
-ModelProto::decode(onnx_file)?;    
-let model = tract_onnx::onnx()     
-    .model_for_proto_model(&proto)?        
-    .into_optimized()?
-    .into_runnable()?;
-  
-// Inference:
-let result = model.run(tvec!
-(Tensor::from(tensor).into()))?; `}
+                  {`let image = imageops::resize(
+   &image, 160, 160, FilterType::Triangle);
+
+let tensor = Array4::from_shape_fn(
+   (1, 3, 160, 160), |(_, c, y, x)| {
+   image[(x as u32, y as u32)][c] as f32 / 255.0
+});
+
+let result = model.run(
+   tvec!(Tensor::from(tensor).into()))?;`} 
                 </CodeBlockString>
               </div>
             </AnimateSpawn>

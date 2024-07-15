@@ -267,11 +267,11 @@ The following language and capitalization of certain terms and phrases should be
         - `Before deploying on to the mainnet...`
     Additionally, mentions of the Bitcoin mainnet should use the same structure (prefaced with the word `the`.)
 - maturity
-- Motoko playground
 - multi-chain
 - neuron
 - node provider
 - open internet service
+- playground: when referring to the Motoko playground
 - reverse gas model
 - Sybil resistance
 - Sybil attack

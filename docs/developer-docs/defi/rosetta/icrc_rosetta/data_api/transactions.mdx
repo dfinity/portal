@@ -10,8 +10,8 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview 
 There are two endpoints that allow for querying transactions. 
-The `block_transaction` endpoint allows you to fetch a transaction at a certain block height. It is the implementation of the [/block/transaction endpoint](https://docs.cdp.coinbase.com/rosetta/reference/blocktransaction) of the Rosetta API standard. 
-The `search_transactions` endpoint allows you to query for transactions given a set of parameters. It is the implementation of the [/search/transactions endpoint](https://docs.cdp.coinbase.com/rosetta/reference/searchtransactions/).
+The `block_transaction` endpoint allows you to fetch a transaction at a certain block height. It is the implementation of the [/block/transaction endpoint](https://docs.cdp.coinbase.com/mesh/reference/blocktransaction) of the Rosetta API standard. 
+The `search_transactions` endpoint allows you to query for transactions given a set of parameters. It is the implementation of the [/search/transactions endpoint](https://docs.cdp.coinbase.com/mesh/reference/searchtransactions/).
 :::info
 An ICRC-1 ledger block always contains exactly one transaction. The hash of the block as well as the index of the block is guaranteed to be unique while the hash of the transaction is not. 
 :::
@@ -52,7 +52,8 @@ curl --location '0.0.0.0:8082/block/transaction'  --header 'Content-Type: applic
 }'
 ```
 
-The response is similar to that of the block [endpoint](/docs/developer-docs/defi/rosetta/icrc_rosetta/data_api/blocks.mdx) as there is only one transaction within a block.
+The response is similar to that of the block [endpoint](/docs/developer-docs/defi/rosetta/icrc_rosetta/data_api/blocks.mdx) as there is only one transaction within a block. If you want to fetch multiple transactions at a time you may want to have a look
+at the `/call` [endpoint](/docs/developer-docs/defi/rosetta/icrc_rosetta/data_api/blocks.mdx) that allows you to query multiple blocks at a time. 
 
 ```json
 {
@@ -166,7 +167,7 @@ The response is similar to that of the block [endpoint](/docs/developer-docs/def
 ```
 
 ## SearchTransactions endpoint
-There are several parameters that can be used to query transactions. See the [full specification](https://docs.cdp.coinbase.com/rosetta/reference/searchtransactions/) to see what query parameters can be used. 
+There are several parameters that can be used to query transactions. See the [full specification](https://docs.cdp.coinbase.com/mesh/reference/searchtransactions/) to see what query parameters can be used. 
 For example, if you want to fetch all transactions in a given block (range of maximal 10000 blocks) where a specific account was involved, you can make a request to the `search/transactions` endpoint:
 
 ```json

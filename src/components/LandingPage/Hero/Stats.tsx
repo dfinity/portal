@@ -14,6 +14,7 @@ import { motion } from "framer-motion";
 import Link from "@docusaurus/Link";
 import { DashboardIcon } from "./Dashboardicon";
 import transitions from "@site/static/transitions.json";
+import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 
 function formatNumber(x: number) {
   return x
@@ -38,7 +39,8 @@ export const TotalBlocks = () => {
 
   return (
     <motion.div
-      className="backdrop-blur-lg rounded-xl text-white tw-lead-lg py-3 px-6 hidden md:block"
+      className="rounded-xl text-current py-3 px-6"
+      style={{ fontSize: "24px", fontWeight: 500}}
       variants={transitions.fadeIn}
     >
       <figure className="m-0">
@@ -60,16 +62,8 @@ export const TotalBlocks = () => {
         )}
         {/* </div> */}
 
-        <figcaption className="tw-paragraph text-white/50 flex items-center gap-1">
+        <figcaption className="tw-paragraph text-current opacity-50 flex items-center gap-1">
           Blocks processed
-          <Info>
-            <h3 className="tw-button-xs mb-1">Throughput</h3>
-            <p className="tw-caption text-white/50 mb-0">
-              Capacity horizontally scales as subnet blockchains are seamlessly
-              combined into one unified blockchain. Blocks and transactions per
-              second are unbounded.
-            </p>
-          </Info>
         </figcaption>
       </figure>
     </motion.div>
@@ -117,11 +111,13 @@ export const EthEquivalentTxRate = () => {
 
   return (
     <motion.div
-      className="backdrop-blur-lg rounded-xl text-white tw-lead-lg py-3 px-6"
+      className="rounded-xl text-current py-3 px-6"
+
+      style={{ fontSize: "24px", fontWeight: 500}}
       variants={transitions.fadeIn}
     >
-      <figure className="m-0 flex gap-3 justify-center md:block">
-        <div className="inline-grid relative left-1 md:static md:inline">
+      <figure className="m-0 gap-3 block">
+        <div className="inline-grid relative left-1 static inline">
           {updateTxRate.isFetched && updateTxRate.isSuccess ? (
             <>
               <SpringCounter
@@ -141,21 +137,8 @@ export const EthEquivalentTxRate = () => {
           )}
         </div>
 
-        <figcaption className="tw-paragraph-sm md:tw-paragraph text-white/50 flex items-center gap-1">
+        <figcaption className="tw-paragraph-sm tw-paragraph text-current opacity-50 flex items-center gap-1">
           ETH eq. TX/s
-          <Info>
-            <h3 className="tw-button-xs mb-1">ETH-equivalent Transactions</h3>
-            <p className="tw-caption text-white/50 mb-0">
-              Not all Transactions are equal. ICP performs ~80x the amount of
-              computational work of Ethereum per transaction.{" "}
-              <Link
-                className="text-white hover:underline hover:text-white"
-                href="https://wiki.internetcomputer.org/wiki/Not_all_transactions_are_equal"
-              >
-                Learn More
-              </Link>
-            </p>
-          </Info>
         </figcaption>
       </figure>
     </motion.div>
@@ -191,10 +174,10 @@ export const CkBTCTotalSupply = () => {
 
   return (
     <motion.div
-      className="rounded-xl bg-black/25 backdrop-blur-md text-white tw-lead-lg py-3 px-6"
+      className="rounded-xl bg-black/25 backdrop-blur-md text-text-current tw-lead-lg py-3 px-6"
       variants={transitions.fadeIn}
     >
-      <figure className="m-0 flex gap-3 justify-center md:block">
+      <figure className="m-0 flex gap-3 md:block">
         <div className="flex flex-col md:flex-row md:items-center gap-3">
           {formattedSupply !== null ? (
             <span className="text-left">{formattedSupply}</span>
@@ -203,7 +186,7 @@ export const CkBTCTotalSupply = () => {
           )}
         </div>
 
-        <figcaption className="tw-paragraph-sm md:tw-paragraph text-white/50 flex items-center gap-1 relative z-[3]">
+        <figcaption className="tw-paragraph-sm md:tw-paragraph text-text-current opacity-50 flex items-center gap-1 relative z-[3]">
           ckBTC Total Supply
           <Info>
             <h3 className="tw-button-xs mb-1">ckBTC Total Supply</h3>
@@ -246,7 +229,7 @@ export const TransactionStats = () => {
   return (
     <>
       <motion.div
-        className="rounded-xl bg-black/25 backdrop-blur-md text-white tw-lead-lg py-3 px-6"
+        className="rounded-xl bg-black/25 backdrop-blur-md text-current tw-lead-lg py-3 px-6"
         variants={transitions.fadeIn}
       >
         <figure className="m-0 flex gap-3 justify-center md:block">
@@ -261,7 +244,7 @@ export const TransactionStats = () => {
             )}
           </div>
 
-          <figcaption className="tw-paragraph-sm md:tw-paragraph text-white/50 flex items-center gap-1 relative z-[3]">
+          <figcaption className="tw-paragraph-sm md:tw-paragraph text-current opacity-50 flex items-center gap-1 relative z-[3]">
             ckBTC Transactions{" "}
             <Info>
               <h3 className="tw-button-xs mb-1">cckBTC Transactions</h3>
@@ -276,7 +259,7 @@ export const TransactionStats = () => {
         </figure>
       </motion.div>
       <motion.div
-        className="rounded-xl bg-black/25 backdrop-blur-md text-white tw-lead-lg py-3 px-6"
+        className="rounded-xl bg-black/25 backdrop-blur-md text-current tw-lead-lg py-3 px-6"
         variants={transitions.fadeIn}
       >
         <figure className="m-0 flex gap-3 justify-center md:block">
@@ -289,7 +272,7 @@ export const TransactionStats = () => {
             )}
           </div>
 
-          <figcaption className="tw-paragraph-sm md:tw-paragraph text-white/50 flex items-center gap-1 relative z-[3]">
+          <figcaption className="tw-paragraph-sm md:tw-paragraph text-current opacity-50 flex items-center gap-1 relative z-[3]">
             Daily Volume{" "}
             <Info>
               <h3 className="tw-button-xs mb-1">ckBTC Volume</h3>
@@ -310,12 +293,12 @@ export const TransactionStats = () => {
 export const SmartContractMemory = () => {
   return (
     <motion.div
-      className="backdrop-blur-lg rounded-xl text-white tw-lead-lg py-3 px-6  hidden md:block"
+      className="backdrop-blur-lg rounded-xl text-current tw-lead-lg py-3 px-6  hidden md:block"
       variants={transitions.fadeIn}
     >
       <figure className="m-0">
         $5 <span className="tw-lead-sm">/GB/year</span>
-        <figcaption className="tw-paragraph text-white/50 flex items-center gap-1">
+        <figcaption className="tw-paragraph text-current opacity-50 flex items-center gap-1">
           Smart Contract Memory
           <Info>
             <h3 className="tw-button-xs mb-1">Memory is $5/GB/year</h3>
@@ -343,6 +326,22 @@ export const LiveStats = () => {
       >
         <DashboardIcon />
         See live stats
+      </Link>
+    </motion.div>
+  );
+};
+
+export const OpenStats = () => {
+  return (
+    <motion.div
+      className="backdrop-blur-lg rounded-xl py-3 px-6 bg-white/10 hidden md:flex"
+      variants={transitions.fadeIn}
+    >
+      <Link
+        href="https://dashboard.internetcomputer.org/"
+        className="text-white tw-heading-6 inline-flex gap-2 items-center justify-end hover:no-underline hover:text-white/60 transition-all"
+      >
+        <LinkArrowUpRight />
       </Link>
     </motion.div>
   );
