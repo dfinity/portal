@@ -1016,54 +1016,6 @@
     "description": "Today, users have to blindly trust AI models running on centralized servers with no visibility into how data is used and how AI models produce responses. Decentralized AI solves this problem by bringing the trustworthiness, security, verifiability, and resilience of smart contracts to AI applications.",
     "milestones": [
       {
-        "name": "Onchain AI Inference",
-        "description": "Allow smart contracts to run inference using AI models with millions of parameters fully on chain. The focus of this milestone is performance. There are performance optimizations that can be implemented both in the WebAssembly engine and the AI inference engine. The expected speedup is 10x and more.",
-        "milestone_id": "Cyclotron",
-        "eta": null,
-        "status": "in_progress",
-        "elements": [
-          {
-            "title": "Faster deterministic floating-point operations",
-            "overview": "Accelerating deterministic floating point computations in the Wasm engine.",
-            "description": "Floating point operations are crucial for AI inference. In order to run on chain inside a smart contract, these operations need to be deterministic. The goal of this feature is to optimize the part of the Wasm engine that makes these operations deterministic.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Cyclotron"
-          },
-          {
-            "title": "Wasm SIMD instructions",
-            "overview": "Deterministic SIMD (Single Instruction, Multiple Data) support in the Wasm execution engine for better performance of AI inference.",
-            "description": "SIMD stands for Single Instruction, Multiple Data. It is a set of CPU instructions that allow executing multiple operations with a single instruction. The arithmetic operations used in AI can be expressed as SIMD instructions. This feature introduces deterministic SIMD support in the Wasm execution engine, leading to an expected multiple-times performance improvement of AI operations.",
-            "status": "deployed",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "https://internetcomputer.org/docs/current/developer-docs/smart-contracts/advanced-features/simd#",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Cyclotron"
-          },
-          {
-            "title": "Optimizing AI inference engine",
-            "overview": "This feature brings SIMD support to the open source inference engine used on ICP to leverage the upcoming support of SIMD operations in Wasm.",
-            "description": "This feature brings SIMD support to the open source inference engine used on ICP to leverage the upcoming support of SIMD operations in Wasm.",
-            "status": "deployed",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "https://github.com/sonos/tract/pull/1420",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Cyclotron"
-          }
-        ]
-      },
-      {
         "name": "Onchain AI Inference and Training of Large Models",
         "description": "In order to perform AI inference and training of large models on chain, smart contracts need a way to run compute- and memory-intensive computations on hardware such as GPUs. The main challenge of this milestone is to define a deterministic API for smart contracts to access and call GPUs. Additionally, AI-specialized subnets with GPU-enabled nodes need to be added to ICP.",
         "milestone_id": "Gyrotron",
@@ -1134,6 +1086,54 @@
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Gyrotron"
+          }
+        ]
+      },
+      {
+        "name": "Onchain AI Inference",
+        "description": "Allow smart contracts to run inference using AI models with millions of parameters fully on chain. The focus of this milestone is performance. There are performance optimizations that can be implemented both in the WebAssembly engine and the AI inference engine. The expected speedup is 10x and more.",
+        "milestone_id": "Cyclotron",
+        "eta": "July 15, 2024",
+        "status": "deployed",
+        "elements": [
+          {
+            "title": "Faster deterministic floating-point operations",
+            "overview": "Accelerating deterministic floating point computations in the Wasm engine.",
+            "description": "Floating point operations are crucial for AI inference. In order to run on chain inside a smart contract, these operations need to be deterministic. The goal of this feature is to optimize the part of the Wasm engine that makes these operations deterministic.",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "https://medium.com/@dfinity/the-next-step-for-deai-on-chain-inference-enabling-face-recognition-589183203fc2",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Cyclotron"
+          },
+          {
+            "title": "Wasm SIMD instructions",
+            "overview": "Deterministic SIMD (Single Instruction, Multiple Data) support in the Wasm execution engine for better performance of AI inference.",
+            "description": "SIMD stands for Single Instruction, Multiple Data. It is a set of CPU instructions that allow executing multiple operations with a single instruction. The arithmetic operations used in AI can be expressed as SIMD instructions. This feature introduces deterministic SIMD support in the Wasm execution engine, leading to an expected multiple-times performance improvement of AI operations.",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "https://medium.com/@dfinity/the-next-step-for-deai-on-chain-inference-enabling-face-recognition-589183203fc2",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Cyclotron"
+          },
+          {
+            "title": "Optimizing AI inference engine",
+            "overview": "This feature brings SIMD support to the open source inference engine used on ICP to leverage the upcoming support of SIMD operations in Wasm.",
+            "description": "This feature brings SIMD support to the open source inference engine used on ICP to leverage the upcoming support of SIMD operations in Wasm.",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "https://medium.com/@dfinity/the-next-step-for-deai-on-chain-inference-enabling-face-recognition-589183203fc2",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Cyclotron"
           }
         ]
       },
