@@ -15,7 +15,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-The Threshold ECDSA API allows canisters to securely sign messages and transactions without anyone ever having direct access to the corresponding private keys. Each canister can control an unlimited number of keys by specifying different key `derivation_path`s.
+The threshold ECDSA API allows canisters to securely sign messages and transactions without anyone ever having direct access to the corresponding private keys. Each canister can control an unlimited number of keys by specifying different key `derivation_path`s.
 The API provides two methods: 
 
 - `sign_with_ecdsa`: Used to sign messages.
@@ -115,7 +115,7 @@ Currently only the `secp256k1` curve and the following key names are supported:
 ### Cost
 
 The `sign_with_ecdsa` method requires cycles to be attached. When the method in the Rust CDK is used, the required cycles are automatically attached. In Motoko, the cycles need to be added manually.
-[Learn more about Threshold ECDSA costs](/docs/current/references/t-ecdsa-how-it-works).
+[Learn more about threshold ECDSA costs](/docs/current/references/t-ecdsa-how-it-works).
 
 
 ## Obtaining public keys
