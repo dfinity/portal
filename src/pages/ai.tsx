@@ -296,7 +296,7 @@ function AIPage() {
                   <MotionLink
                     variants={transitions.item}
                     className="button-outline"
-                    href="https://github.com/dfinity/examples/tree/master/rust/image-classification"
+                    href="https://github.com/dfinity/examples/tree/master/rust/face-recognition"
                   >
                     GO TO GITHUB REPO
                   </MotionLink>
