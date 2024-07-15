@@ -214,7 +214,7 @@ function AIPage() {
                     The first use case is facial recognition, run fully onchain.
                   </motion.p>
                   <p className="mb-12 md:mb-0 mt-8">
-                    <Link className="link-primary link-with-icon" href="#">
+                    <Link className="link-primary link-with-icon" href="https://medium.com/@dfinity/589183203fc2">
                       <LinkArrowRight />
                       READ THE BLOG POST
                     </Link>
@@ -271,10 +271,10 @@ function AIPage() {
                   className="col-span-1 md:col-span-2 mb-10"
                 >
                   <VideoCard
-                    image="/img/decentralized-ai/thumb-ai-video-thumb.webp"
-                    title="AI smart contract on ICP"
+                    image="/img/decentralized-ai/thumb-ai-video-thumb3.webp"
+                    title="On-chain Facial Recognition – AI running on ICP"
                     label="Demo"
-                    link={`https://www.youtube.com/watch?v=6qLvIXiCGcM`}
+                    link={`https://www.youtube.com/watch?v=hEFff_GGj30&list=PLuhDt1vhGcrfWz1ZJrAmJBDS6aFADySwt&index=3`}
                     description="The world's first demonstration of AI inference running directly on the blockchain, presented by Dominic Williams"
                   />
                 </motion.div>
