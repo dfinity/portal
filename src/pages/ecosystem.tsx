@@ -316,7 +316,7 @@ const tagOrder = [
 const tags = tagOrder.map((tag) => {
   const count = tagsUnorderd.find(([t]) => t === tag)?.[1] || 0;
   return [tag, count];
-});
+}).filter(([_, count]) => count !== 0);
 
 
 function ShowcasePage(): JSX.Element {
