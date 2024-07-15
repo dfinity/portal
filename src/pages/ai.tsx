@@ -296,7 +296,7 @@ function AIPage() {
                   <MotionLink
                     variants={transitions.item}
                     className="button-outline"
-                    href="https://github.com/dfinity/examples/tree/master/rust/image-classification"
+                    href="https://github.com/dfinity/examples/tree/master/rust/face-recognition"
                   >
                     GO TO GITHUB REPO
                   </MotionLink>
@@ -304,17 +304,16 @@ function AIPage() {
               </div>
               <div className="w-full md:w-auto rounded-2xl">
                 <CodeBlockString showLineNumbers language="rust">
-                  {`// Setup:
-let proto: ModelProto =     
-ModelProto::decode(onnx_file)?;    
-let model = tract_onnx::onnx()     
-    .model_for_proto_model(&proto)?        
-    .into_optimized()?
-    .into_runnable()?;
-  
-// Inference:
-let result = model.run(tvec!
-(Tensor::from(tensor).into()))?; `}
+                  {`let image = imageops::resize(
+   &image, 160, 160, FilterType::Triangle);
+
+let tensor = Array4::from_shape_fn(
+   (1, 3, 160, 160), |(_, c, y, x)| {
+   image[(x as u32, y as u32)][c] as f32 / 255.0
+});
+
+let result = model.run(
+   tvec!(Tensor::from(tensor).into()))?;`} 
                 </CodeBlockString>
               </div>
             </AnimateSpawn>
