@@ -340,7 +340,12 @@ function ShowcasePage(): JSX.Element {
         );
       }
     }
-    setFilteredProjects(sortDesktopProjects(filteredProjects));
+    
+    if (filteredProjects?.length > 0) {
+      setFilteredProjects(sortDesktopProjects(filteredProjects));
+    } else {
+      console.log("No projects found for tag", queryTag);
+    }
   }, [queryTagInitialized, queryTag]);
 
   return (
