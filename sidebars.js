@@ -299,7 +299,14 @@ const sidebars = {
               items: [
                 "developer-docs/smart-contracts/encryption/t-ecdsa",
                 "developer-docs/smart-contracts/encryption/threshold-schnorr",
-                "developer-docs/smart-contracts/encryption/signing-messages",
+                {
+                  type: "category",
+                  label: "Signing messages",
+                  items: [
+                          "developer-docs/smart-contracts/encryption/signing-messages-tecdsa",
+                          "developer-docs/smart-contracts/encryption/signing-messages-tschnorr",
+                  ],
+                },
               ],
             },
             "developer-docs/smart-contracts/advanced-features/periodic-tasks",
