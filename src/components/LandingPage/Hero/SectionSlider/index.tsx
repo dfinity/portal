@@ -11,11 +11,11 @@ import { arrow } from "@floating-ui/react";
 
 const sliderData = [
   {
-    tagline: "July 10, 2024 – Brussels",
-    title: "Chain Fusion Day",
-    description: "Join us in Belgium!",
-    image: "/img/home/slider/update_chain_fusion_brussels.webp",
-    link: "https://lu.ma/icpevents",
+    tagline: "New video series 🍿",
+    title: "NNS Explained",
+    description: "Watch now",
+    image: "/img/home/slider/nns_explained.webp",
+    link: "https://www.youtube.com/watch?v=1uX-fRgvXjU&list=PLuhDt1vhGcrclxfmztDd6OKE80dnrFmG6",
   },
   {
     tagline: "Milestone achieved 🚀",
