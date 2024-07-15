@@ -304,20 +304,16 @@ function AIPage() {
               </div>
               <div className="w-full md:w-auto rounded-2xl">
                 <CodeBlockString showLineNumbers language="rust">
-                  {`let image =
-    image::imageops
-    ::resize(&image, 160, 160, ::image
-    ::imageops::FilterType::Triangle);
+                  {`let image = imageops::resize(
+   &image, 160, 160, FilterType::Triangle);
 
-let tensor = tract_ndarray::Array4
-    ::from_shape_fn((1, 3, 160, 160), 
-    |(_, c, y, x)| {
-      image[(x as u32, y as u32)][c] as f32 / 255.0
+let tensor = Array4::from_shape_fn(
+   (1, 3, 160, 160), |(_, c, y, x)| {
+   image[(x as u32, y as u32)][c] as f32 / 255.0
 });
 
- let result = model
-    .run(tvec!(Tensor::from(tensor)
-    .into()))?;`} 
+let result = model.run(
+   tvec!(Tensor::from(tensor).into()))?;`} 
                 </CodeBlockString>
               </div>
             </AnimateSpawn>
