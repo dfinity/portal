@@ -105,7 +105,7 @@ There are two options supported by the AuthClient for secure session management:
 
 1. The `maxTimeToLive` option built into the Internet Identity delegation determines in nanoseconds how long the `DelegationIdentity` returned will be valid for.
 
-2. The Idle Manager, which monitors keyboard, mouse, and touchscreen identity. The Idle Manager will automatically log you out if the browser is not interacted with for a period of time.
+2. The Idle Manager, which monitors keyboard, mouse, and touchscreen activity. The Idle Manager will automatically log you out if the browser is not interacted with for a period of time.
 
     - By default, this period is 10 minutes. After 10 minutes, the `DelegationIdentity` will be removed from from `localStorage` and `window.location.reload()` is called.
 
