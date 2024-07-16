@@ -27,7 +27,7 @@ This architecture is used to prevent the application from trapping or resulting 
 
 The full code example can be found in the [sample's GitHub repo](https://github.com/hoosan/auto-scaling-notes/tree/main). This guide will walk through the code logic of the primary ('main') canister and the secondary ('datastore') canister.
 
-First, this primary canister imports a variety of packages from the Motoko base library and data from the `IC.mo`, `Types.mo`, and `Datastore.mo` files:
+First, this primary canister (stored in the `Main.mo` file) imports a variety of packages from the Motoko base library and data from the `IC.mo`, `Types.mo`, and `Datastore.mo` files:
 
 ```motoko
 import Cycles "mo:base/ExperimentalCycles";
@@ -305,7 +305,7 @@ Lastly, the code defines the upgrade logic for the canister:
 };
 ```
 
-Then, each secondary canister created by the primary canister will implement the following code:
+Then, each secondary canister created by the primary canister will implement the following code (in this example, stored in the `Datastore.mo` file) :
 
 ```motoko
 import Array "mo:base/Array";
