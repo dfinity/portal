@@ -143,10 +143,11 @@ docker run \
     --volume ic-icrc-rosetta:/data \
     --interactive \
     --tty \
-    --publish 8080:8080 \
+    --publish 8082:8082 \
     --rm \
    dfinity/ic-icrc-rosetta-api \
     --network-type mainnet \
+    --port 8082 \
     --ledger-id mxzaz-hqaaa-aaaar-qaada-cai \
     --store-file /data/db.sqlite
 
