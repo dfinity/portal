@@ -43,7 +43,7 @@ First, install the `auth-client` package:
 npm i --save @dfinity/auth-client
 ```
 
-Create an authentication client that will open an `identity.ic0.app` window, save your delegation to `localStorage`, and provide you with an identity:
+Create an authentication client that will open an `identity.ic0.app` window, save your delegation to `indexedDb`, and provide you with an identity:
 
 ```
 const authClient = await AuthClient.create();
