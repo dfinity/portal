@@ -1351,7 +1351,11 @@ const sidebars = {
           type: "category",
           label: "Node providers",
           items: [
-            "references/node-providers/overview",
+            {
+              type: "doc",
+              label: "Overview",
+              id: "references/node-providers/overview",
+            },
             "references/node-providers/node-metrics",
           ],
         },
