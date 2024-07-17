@@ -27,15 +27,6 @@ const projects = [
     link: "https://bioniq.io/",
   },
   {
-    title: "Bitcoin Stablecoin",
-    subtitle: "Taler DAO",
-    description:
-      "Activate BTCFi functionality with Taler protocol, a decentralized and overcollateralized stablecoin platform. This algorithmic stablecoin offers a capital-efficient alternative to highly volatile digital currencies",
-    imgSrc: "/img/bitcoin-integration/a2.webp",
-    altText: "Bitcoin Stablecoin project image",
-    link: "https://talerdao.org/",
-  },
-  {
     title: "Runes",
     subtitle: "Omnity",
     description:
