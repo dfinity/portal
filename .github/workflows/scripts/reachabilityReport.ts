@@ -5,21 +5,33 @@ const Sitemapper = require("sitemapper");
 const path = require("path");
 const fs = require("fs");
 const os = require("os");
+const { spawn } = require("child_process");
 
 let root = process.argv[2];
 
 if (!root) {
-  console.info("A domain was not provided. Using internetcomputer.org.");
+  console.info("Running reachability report");
+  console.debug("No domain provided. Using internetcomputer.org.");
   root = "internetcomputer.org";
 }
 
-main().then((file) => {
-  console.info(`Full sitemap successfully saved`);
+main().then(({ file, result }) => {
+  console.info(`Reachability report successfully saved:`);
   console.log(file);
+
+  console.info(
+    `Found ${result.diff.length} links in site content that do not appear in sitemap:`
+  );
+  result.diff.forEach((entry) => console.log(entry));
+
+  spawn("open", [file]);
   process.exit(0);
 });
 
-async function main(): Promise<string> {
+async function main(): Promise<{
+  file: string;
+  result: Record<string, string[]>;
+}> {
   const { hyperLinks, sitemap } = await collectHyperLinks(root);
 
   // gather all the links that are present throughout site content that DO NOT
@@ -39,10 +51,7 @@ async function main(): Promise<string> {
   const tmpFile = path.join(tmpDir, "internet-computer-reachability.json");
   fs.writeFileSync(tmpFile, JSON.stringify(result, null, 2));
 
-  console.info(
-    `Found ${diff.length} links in site content that do not appear in sitemap:`
-  );
-  return tmpFile;
+  return { file: tmpFile, result };
 }
 
 async function getSitemap(domain: string) {
@@ -64,23 +73,28 @@ async function collectHyperLinks(root: string) {
   for (const url of urls) {
     const page: Page = await browser.newPage();
     await page.setJavaScriptEnabled(false);
-    await page.goto(url);
-    await page.waitForNetworkIdle();
 
-    const hrefsOnPage = await page.$$eval("a", (anchors) =>
-      anchors.map((a) => a.href).filter(Boolean)
-    );
-    console.info(`Collected ${hrefsOnPage.length} links on ${url}`);
+    try {
+      await page.goto(url);
+      await page.waitForNetworkIdle();
 
-    hrefsOnPage.forEach((href) => {
-      try {
-        hrefs.add(sanitizeHyperLink(href));
-      } catch (err) {
-        console.error(`Failed to add url to set: ${href}`);
-      }
-    });
+      const hrefsOnPage = await page.$$eval("a", (anchors) =>
+        anchors.map((a) => a.href).filter(Boolean)
+      );
+      console.info(`Collected ${hrefsOnPage.length} links on ${url}`);
 
-    await page.close();
+      hrefsOnPage.forEach((href) => {
+        try {
+          hrefs.add(sanitizeHyperLink(href));
+        } catch (err) {
+          console.error(`Failed to add url to set: ${href}`);
+        }
+      });
+    } catch (err) {
+      console.error(err.message);
+    } finally {
+      await page.close();
+    }
   }
 
   return {
