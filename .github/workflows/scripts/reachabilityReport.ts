@@ -77,7 +77,12 @@ async function collectHyperLinks(root: string) {
       await page.waitForNetworkIdle();
 
       const hrefsOnPage = await page.$$eval("a", (anchors) =>
-        anchors.map((a) => a.href).filter(Boolean)
+        anchors
+          .map((a) => a.href)
+          // filter out empty values
+          .filter(Boolean)
+          // filter out any urls that include a file extension (e.g. `.pdf`)
+          .filter((url) => !/(\.\w+)$/.test(url))
       );
       console.info(`Collected ${hrefsOnPage.length} links on ${url}`);
 
@@ -95,13 +100,17 @@ async function collectHyperLinks(root: string) {
     }
   }
 
+  const hyperLinks = Array.from(hrefs);
+  const sitemap: Array<string> = urls.map(sanitizeHyperLink);
+
   return {
-    hyperLinks: Array.from(hrefs),
-    sitemap: urls.map(sanitizeHyperLink) as Array<string>,
+    hyperLinks,
+    sitemap,
   };
 }
 
 function sanitizeHyperLink(href: string): string {
   const url = new URL(href);
-  return `${url.protocol}//${url.hostname}${url.port}${url.pathname}${url.search}`;
+  const pathname = url.pathname.replace(/(\/+)$/, "");
+  return `${url.protocol}//${url.hostname}${url.port}${pathname}`;
 }
