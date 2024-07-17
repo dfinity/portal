@@ -39,7 +39,7 @@ async function main(): Promise<{
   // provided domain (e.g. https://internetcomputer.org)
   const diff = hyperLinks
     .filter((x) => !sitemap.includes(x))
-    .filter((x) => new RegExp(`^https:\/\/${root}\/`).test(x));
+    .filter((x) => new RegExp(`^https?:\/\/${root}\/`).test(x));
 
   const result = {
     hyperLinks,
@@ -54,10 +54,8 @@ async function main(): Promise<{
   return { file: tmpFile, result };
 }
 
-async function getSitemap(domain: string) {
-  const sitemapper = new Sitemapper();
-  const protocol = "https:";
-  return sitemapper.fetch(`${protocol}//${domain}/sitemap.xml`);
+async function getSitemap(domain: string, protocol: string = "https") {
+  return new Sitemapper().fetch(`${protocol}//${domain}/sitemap.xml`);
 }
 
 async function collectHyperLinks(root: string) {
