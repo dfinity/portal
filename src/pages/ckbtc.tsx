@@ -419,7 +419,7 @@ function CkbtcPage(): JSX.Element {
 
               <motion.div className="" variants={transitions.item}>
                 <Link
-                  href="/ecosystem/?tag=Bitcoin"
+                  href="/ecosystem/?tag=Chainfusion"
                   className="relative rounded-xl tw-lead-lg min-h-[200px] md:tw-title-sm hover:no-underline hover:text-white hover:-translate-y-3 transition-transform text-white flex px-6 py-8 backdrop-blur-2xl bg-gradient-100 from-[#3B00B9] to-[#2586B6] h-full"
                 >
                   See more projects with Bitcoin support

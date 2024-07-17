@@ -601,14 +601,13 @@ The [Ecosystem Helper](https://mvw4g-yiaaa-aaaam-abnva-cai.icp0.io/) is an on-ch
 The list of tags is not final, and will be updated as the project evolves. For now, the following tags are available:
 
 - `Wallet`
-- `Bitcoin`
+- `Chainfusion` // Ethereum, Bitcoin, etc.
 - `NFT`
-- `SocialFi`
+- `Social & Collab`
 - `DeFi`
-- `Games`
+- `Gaming`
 - `DAO`
-- `Metaverse`
-- `Tools / Infrastructure`
+- `Tools & Infrastructure`
 
 ### Object schema
 
@@ -619,7 +618,7 @@ The list of tags is not final, and will be updated as the project evolves. For n
     oneLiner: string, // short description of the project
     website: string, // URL starting with `https://`
 
-    tags: ('Wallet' | 'Bitcoin' | 'NFT' | 'SocialFi' | 'DeFi' | 'Games' | 'DAO' | 'Metaverse' | 'Tools / Infrastructure')[],
+    tags: ('Wallet' | 'Chainfusion' | 'NFT' | 'Social & Collab' | 'DeFi' | 'Gaming' | 'DAO' | 'Tools & Infrastructure')[],
     description: string, // description of the project
     stats: string, // eg. "10,000 users"
     logo: string, // url to logo file, eg. /img/showcase/awesome-icp-project_logo.webp

@@ -539,7 +539,7 @@ function EthereumIntegrationPage() {
             {" "}
             <Link
               className="button-primary text-center mb-6 md:mb-8"
-              href="/ecosystem?tag=Ethereum"
+              href="/ecosystem?tag=Chainfusion"
             >
               More projects building on Ethereum
             </Link>

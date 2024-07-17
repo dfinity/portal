@@ -279,7 +279,7 @@ function SocialMediaDappsPage() {
             </motion.p>
             <MotionLink
               className="link-external"
-              href="/ecosystem?tag=SocialFi"
+              href="/ecosystem?tag=Social+%26+Collab"
               variants={transitions.item}
             >
               See dapp collection

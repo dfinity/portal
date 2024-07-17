@@ -11,19 +11,18 @@ const maximumStatsLength = 150;
 const maximumDescriptionLength = 500;
 
 const tags = [
-  "SocialFi",
-  "Chainfusion",
-  "Bitcoin",
-  "Ethereum",
   "AI",
-  "NFT",
-  "Tools / Infrastructure",
-  "DeFi",
-  "Wallet",
-  "Metaverse",
-  "Games",
-  "DAO",
+  "Chainfusion",
+  "Tokenization",
+  "Social & Collab",
+  "Internet Identity",
   "Enterprise",
+  "DeFi",
+  "Tools & Infrastructure",
+  "DAO",
+  "Gaming",
+  "Wallet",
+  "NFT",
 ];
 
 function isString(value) {
@@ -174,6 +173,12 @@ module.exports = function validateShowcasePlugin() {
           [(value) => value.length > 0, "missing project tags"],
           [(value) => isArrayOfValues(value, tags), "invalid project tag"],
         ]);
+
+        // make sure none of the tags are duplicated
+        const tagSet = new Set(project.tags);
+        if (tagSet.size !== project.tags.length) {
+          fail("duplicate project tag");
+        }
 
         project.oneLiner &&
           validate(project.oneLiner, [
