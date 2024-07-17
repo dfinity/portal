@@ -141,7 +141,7 @@ const developersData = [
     title: "Threshold Signing Services",
     description:
       "ICP has a suite of threshold signing protocols including ECDSA and Schnorr which allow to sign a variety of transactions across chains like Ethereum and Bitcoin. Further thresold signing protocols like EdDSA and BLS are coming soon.",
-    link: "/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa/",
+    link: "/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa/",
   },
   {
     title: "HTTPS Outcalls",
