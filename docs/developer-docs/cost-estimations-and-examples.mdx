@@ -18,11 +18,11 @@ To get a rough estimate of how much your project may cost, below are common proj
 
 - **Storage**: Cycles charged for canister storage, both Wasm memory and stable memory.
 
-- **Special features**: Include HTTPS outcalls, transmissions using the [Bitcoin API](/docs/current/references/bitcoin-how-it-works), and transmissions using the [chain-key signing API](/docs/current/references/t-ecdsa-how-it-works).
+- **Special features**: Include HTTPS outcalls, transmissions using the [Bitcoin API](/docs/current/references/bitcoin-how-it-works), and transmissions using the [chain-key signing API](/docs/current/references/t-ecdsa-how-it-works/).
 
 ## Units and fiat value
 
-The price of cycles is fixed against the price of [XDR](/docs/current/references/glossary#xdr), where **1 trillion cycles equals 1 XDR**.
+The price of cycles is fixed against the price of [XDR](/docs/current/concepts/glossary#xdr), where **1 trillion cycles equals 1 XDR**.
 
 This documentation will use the following units:
 
@@ -160,4 +160,4 @@ The number of cycles charged to the canister can be estimated using the followin
 - Storage bytes per user: The amount of data that is stored for each user.
 - User-independent storage bytes: The amount of data the canister stores, independent of the storage used per user.
 
-HTTPS outcalls are a special feature that is calculated differently than the other resources. Additionally, if a canister uses the [Bitcoin API](/docs/current/references/bitcoin-how-it-works) or makes transmissions using the [chain-key signing API](/docs/current/references/t-ecdsa-how-it-works), there are additional cycle costs for these special feature transmissions.
+HTTPS outcalls are a special feature that is calculated differently than the other resources. Additionally, if a canister uses the [Bitcoin API](/docs/current/references/bitcoin-how-it-works) or makes transmissions using the [chain-key signing API](/docs/current/references/t-ecdsa-how-it-works/), there are additional cycle costs for these special feature transmissions.

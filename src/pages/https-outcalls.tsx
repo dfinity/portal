@@ -166,7 +166,7 @@ function HTTPSOutcalls() {
             <CardWithDescription
               title="Dev docs"
               description="Start integrating the HTTPS outcalls feature in your dapps and services to connect to off-chain data."
-              href="https://internetcomputer.org/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/"
+              href="https://internetcomputer.org/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use"
             />
             <CardWithDescription
               title="Beyond oracles"
@@ -176,7 +176,7 @@ function HTTPSOutcalls() {
             <CardWithBackground
               title="Sample Code"
               description="Build a dapp with canister outgoing HTTPS outcalls"
-              href="/samples?term=https+outcalls"
+              href="https://internetcomputer.org/samples?term=https+outcalls"
               bgImageClass={"bg-https-outcalls"}
             />
             <CardWithDescription

@@ -12,7 +12,7 @@ before it can continue processing the call it received.
 
 The `async/await` pattern makes this look straightforward, as the developer can write code as if processing happens sequentially and the call to
 the callee is handled “synchronously”. However, given ICP's message passing model, one has to be careful in case there are [concurrent calls that
-message executions can interleave](/docs/current/references/message-execution-properties/) as these can lead to inconsistencies if they are not anticipated.
+message executions can interleave](/docs/current/references/message-execution-properties) as these can lead to inconsistencies if they are not anticipated.
 
 ## Overview of language runtime for asynchronous code
 

@@ -91,7 +91,7 @@ In addition, ICP has implemented similar token standards as Ethereum:
 
 ## Smart contracts
 
-Both Ethereum and ICP allow developers to deploy programs that run on-chain. These programs are referred to as smart contracts on Ethereum and canister smart contracts, or simply just [canisters](/docs/current/developer-docs/smart-contracts/overview/), on ICP.
+Both Ethereum and ICP allow developers to deploy programs that run on-chain. These programs are referred to as smart contracts on Ethereum and canister smart contracts, or simply just [canisters](/docs/current/developer-docs/smart-contracts/overview/introduction), on ICP.
 
 This comparison provides an overview of the key differences in smart contract development on Ethereum and ICP.
 
@@ -99,14 +99,14 @@ This comparison provides an overview of the key differences in smart contract de
 
 #### Creation
 **Ethereum**: Smart contracts are written in Solidity and deployed immutably onto the blockchain.
-**ICP**: Canisters can be written in any language that complies to [Wasm](https://webassembly.org/) or has an interpreter that can compile to Wasm including [Rust](/docs/current/developer-docs/backend/rust/), [Typescript](/docs/current/developer-docs/backend/Typescript), [Motoko](/docs/current/motoko/main/getting-started/motoko-introduction), and [Python](/docs/current/developer-docs/backend/python/).
+**ICP**: Canisters can be written in any language that complies to [Wasm](https://webassembly.org/) or has an interpreter that can compile to Wasm including [Rust](/docs/current/developer-docs/backend/rust/), [Typescript](/docs/current/developer-docs/backend/typescript), [Motoko](/docs/current/motoko/main/getting-started/motoko-introduction), and [Python](/docs/current/developer-docs/backend/python/).
 
 #### Accounts
 **Ethereum**: On Ethereum, there are two main types of accounts: externally owned accounts (EOAs) and contract accounts. Externally owned accounts, often referred to as wallets, are controlled by anyone with the private key. A contract account is a smart contract deployed to the network.
 
 **ICP**: Similar to EOA accounts, several wallets support ICP as referenced in [this resource](https://support.dfinity.org/hc/en-us/articles/4405480810644-Which-wallets-can-store-ICP-utility-tokens).
 
-Similar to the concept of contract accounts, ICP canisters themselves can hold ICP and ICRC1/ICRC2 tokens on ICP. The canister ID serves as a principal or unique identifier that allows you to send tokens to. ICP canisters can generate multiple ECDSA-based public keys using [Threshold ECDSA](/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa/).
+Similar to the concept of contract accounts, ICP canisters themselves can hold ICP and ICRC1/ICRC2 tokens on ICP. The canister ID serves as a principal or unique identifier that allows you to send tokens to. ICP canisters can generate multiple ECDSA-based public keys using [Threshold ECDSA](/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa).
 
 #### Deployment
 **Ethereum**: Developers typically use development frameworks like Hardhat or Truffle to compile and deploy their smart contracts.
@@ -116,15 +116,15 @@ Similar to the concept of contract accounts, ICP canisters themselves can hold I
 
 **Ethereum**: Developers can utilize testnets such as Sepolia for deploying and testing smart contracts before deploying to the mainnet.
 <<<<<<< HEAD
-**ICP**: Currently, testing is done in the local environment. A [playground environment](/docs/current/developer-docs/getting-started/deploy/testnet/) on the mainnet is available for canisters, but deployment time is limited to 20 minutes. However, the ability to upgrade and delete canisters on the mainnet allows developers greater flexibility to iterate and refine their smart contracts than on Ethereum.
+**ICP**: Currently, testing is done in the local environment. A [playground environment](/docs/current/developer-docs/getting-started/deploy/testnet) on the mainnet is available for canisters, but deployment time is limited to 20 minutes. However, the ability to upgrade and delete canisters on the mainnet allows developers greater flexibility to iterate and refine their smart contracts than on Ethereum.
 =======
-**ICP**: Currently, testing is done in the local environment or the [playground environment](/docs/current/developer-docs/developer-tools/ide/playground/). Deploying to the playground is ICP's equivalent of deploying to a testnet network. Deployment time is limited to 20 minutes. However, the ability to upgrade and delete canisters on the mainnet allows developers greater flexibility to iterate and refine their smart contracts than on Ethereum.
+**ICP**: Currently, testing is done in the local environment or the [playground environment](/docs/current/developer-docs/developer-tools/ide/playground). Deploying to the playground is ICP's equivalent of deploying to a testnet network. Deployment time is limited to 20 minutes. However, the ability to upgrade and delete canisters on the mainnet allows developers greater flexibility to iterate and refine their smart contracts than on Ethereum.
 >>>>>>> d79e7c85a44299f2bd1819154e5c159b36c79c90
 
 #### Paying for gas
 
 **Ethereum**: Users pay for gas fees directly using the crypto wallet they connect to the dapp.
-**ICP**: Using the [reverse gas model](/docs/current/developer-docs/gas-cost/#the-reverse-gas-model), the dapp developers, not the users, pay for the gas fees. The reverse gas model aims to provide a smoother user experience by eliminating upfront fees.
+**ICP**: Using the [reverse gas model](/docs/current/developer-docs/gas-cost#the-reverse-gas-model), the dapp developers, not the users, pay for the gas fees. The reverse gas model aims to provide a smoother user experience by eliminating upfront fees.
 
 #### Updates
 **Ethereum**: Smart contracts are immutable. To update functionalities, developers need to create a new smart contract and migrate data.
