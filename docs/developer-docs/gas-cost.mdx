@@ -104,7 +104,7 @@ Note that query messages are currently free, but this may change in the future.
 
 ### Execution
 
-To handle an incoming message or task such as a timer or heartbeat, the canister executes the function specified in the message. The execution cost consists of a fixed execution fee and per-instruction fee (n application subnets (13 nodes), 10 instructions cost 4 cycles) that is charged for each executed WebAssembly instruction:
+To handle an incoming message or task such as a timer or heartbeat, the canister executes the function specified in the message. The execution cost consists of a fixed execution fee and per-instruction fee (on application subnets (13 nodes), 10 instructions cost 4 cycles) that is charged for each executed WebAssembly instruction:
 
 `base-fee` + `per-instruction-fee` * `number-of-instructions`
 
