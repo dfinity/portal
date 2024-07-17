@@ -14,49 +14,18 @@ This guide is designed to help Bitcoin developers understand the core concepts o
 
 ICP uses different terminology for concepts similar to those in Bitcoin. This table summarizes the key terminology differences between Bitcoin and ICP:
 
-<table>
-<thead>
-<tr>
-  <th> Bitcoin term </th>
-  <th> ICP term </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td> Smart contract </td>
-  <td> Canister </td>
-</tr>
-<tr>
-  <td> Gas </td>
-  <td> Cycles </td>
-</tr>
-<tr>
-  <td> Account </td>
-  <td> Principal </td>
-</tr>
-</tbody>
-</table>
+|Bitcoin term   | ICP term |
+|---------------|----------|
+| Smart contract| Canister |
+| Gas           | Cycles   |
+| Account       | Principal|
 
 In addition, ICP has implemented similar token standards as Bitcoin:
 
-<table>
-<thead>
-<tr>
-  <th> Bitcoin standard </th>
-  <th> ICP standard </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-  <td> BRC-20 </td>
-  <td> [ICRC-1/ICRC-2](../../../../references/icrc1-standard) </td>
-</tr>
-<tr>
-  <td> BRC-721 </td>
-  <td> [ICRC-7](https://github.com/dfinity/ICRC/blob/icrc7-wg-draft/ICRCs/ICRC-7/ICRC-7.md) </td>
-</tr>
-</tbody>
-</table>
+| Bitcoin standard | ICP standard |
+|------------------|--------------|
+| BRC-20           | [ICRC-1/ICRC-2](../../../../references/icrc1-standard) |
+| BRC-721          | [ICRC-7](https://github.com/dfinity/ICRC/blob/icrc7-wg-draft/ICRCs/ICRC-7/ICRC-7.md)|
 
 ### Smart contracts
 
@@ -66,7 +35,7 @@ Bitcoin developers who are looking to build complex smart contracts will need to
 
 Canister smart contracts on ICP have special properties that allow developers to develop scalable services. Canisters can be written in any language that complies to Wasm including [Rust](/docs/current/developer-docs/backend/rust/), [Typescript](/docs/current/developer-docs/backend/Typescript), [Motoko](/docs/current/motoko/main/getting-started/motoko-introduction), and [Python](/docs/current/developer-docs/backend/python/). This allows for greater complexity in smart contract development compared to Bitcoin's Script language.
 
-To learn more about full canister smart contract functionality, refer to the [Smart Contracts documentation](/docs/current/developer-docs/smart-contracts/overview/introduction).
+To learn more about full canister smart contract functionality, refer to the [smart contracts documentation](/docs/current/developer-docs/smart-contracts/overview/introduction).
 
 Specifically, through protocol-level integration of ICP with the [Bitcoin network](/docs/current/developer-docs/multi-chain/bitcoin/overview), ICP smart contracts can interact with the Bitcoin network directly. Canister smart contracts can run [queries against the full Bitcoin UTXO](/docs/current/developer-docs/multi-chain/bitcoin/using-btc/read-state) set including finding the balance of any Bitcoin address. They can [hold](/docs/current/developer-docs/multi-chain/bitcoin/using-btc/generate-addresses), [sign](/docs/current/developer-docs/multi-chain/bitcoin/using-btc/sign-transactions), and [submit transactions](/docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions) to the Bitcoin network.
 
