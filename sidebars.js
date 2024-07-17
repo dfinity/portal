@@ -785,6 +785,7 @@ const sidebars = {
             },
             "developer-docs/identity/authentication/email-password",
             "developer-docs/identity/authentication/nfid",
+            "developer-docs/identity/authentication/siwb",
             "developer-docs/identity/authentication/siwe",
             "developer-docs/identity/authentication/siws",
             "developer-docs/identity/authentication/msq",
@@ -1350,7 +1351,11 @@ const sidebars = {
           type: "category",
           label: "Node providers",
           items: [
-            "references/node-providers/overview",
+            {
+              type: "doc",
+              label: "Overview",
+              id: "references/node-providers/overview",
+            },
             "references/node-providers/node-metrics",
           ],
         },

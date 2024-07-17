@@ -145,7 +145,7 @@ Remember, by default `dfx new` creates a new project in the Motoko language. If 
 
 ### Creating an HTTP `GET` request
 
-Then, open the `src/http_get_backend/main.mo` file in your code editor and replace the existing content with:
+Then, open the `src/https_get_backend/main.mo` file in your code editor and replace the existing content with:
 
 ```motoko
 import Debug "mo:base/Debug";
@@ -291,7 +291,7 @@ A few important points to note are:
 
 - `get_icp_usd_exchange()` is an update call. All methods that make HTTPS outcalls must be update calls because they go through consensus, even if the HTTPS outcall is a `GET`.
 
-- The code above adds `20_949_972_000` cycles. This is typically is enough for `GET` requests, but this may need to change depending on your use case.
+- The code above adds `20_949_972_000` cycles. This is typically enough for `GET` requests, but this may need to change depending on your use case.
 
 - The code above imports `Types.mo` to separate the custom types from the actor file as a best practice.
 
@@ -309,7 +309,7 @@ Reject text: Canister http responses were different across replicas, and no cons
 
 This error occurs when the replicas on the subnet don't all return the same value for a piece of data within the HTTP response. For example, if you have an application that sends an HTTP request to the Coinbase API for the current price of a token, due to latency the replicas will not all return the same response. To remedy this, you can request the token price for a specific timestamp to assure that the replicas all return the same response.
 
-Once you've inserted these snippets of code into the `src/http_get_backend/main.mo` file, save the file. The file should look like this:
+Once you've inserted these snippets of code into the `src/https_get_backend/main.mo` file, save the file. The file should look like this:
 
 ```motoko
 import Debug "mo:base/Debug";
@@ -391,13 +391,13 @@ actor {
 };
 ```
 
-Next, create the `src/http_get_backend/Types.mo` file with the command:
+Next, create the `src/https_get_backend/Types.mo` file with the command:
 
 ```bash
-touch `src/http_get_backend/Types.mo`
+touch `src/https_get_backend/Types.mo`
 ```
 
-Then, open the `src/http_get_backend/Types.mo` file in your code editor and insert the following content:
+Then, open the `src/https_get_backend/Types.mo` file in your code editor and insert the following content:
 
 ```motoko
 module Types {
@@ -518,7 +518,7 @@ cd https_post
 
 ### Creating an HTTP `POST` request
 
-Then, open the `src/http_post_backend/main.mo` file in your code editor and replace the existing content with:
+Then, open the `src/https_post_backend/main.mo` file in your code editor and replace the existing content with:
 
 ```motoko
 import Debug "mo:base/Debug";
@@ -649,7 +649,7 @@ The `transform` function in this HTTP `POST` request should be used in the same 
 
 The code above is annotated with detailed notes and explanations. Take a moment to read through the code's content and annotations to fully understand the code's functionality.
 
-Once you've inserted these snippets of code into the `src/http_post_backend/main.mo` file, save the file. The file should look like this:
+Once you've inserted these snippets of code into the `src/https_post_backend/main.mo` file, save the file. The file should look like this:
 
 ```motoko
 import Debug "mo:base/Debug";
@@ -741,13 +741,13 @@ actor {
 };
 ```
 
-Next, create the `src/http_post_backend/Types.mo` file with the command:
+Next, create the `src/https_post_backend/Types.mo` file with the command:
 
 ```bash
-touch `src/http_post_backend/Types.mo`
+touch `src/https_post_backend/Types.mo`
 ```
 
-Open the `src/http_post_backend/Types.mo` file in your code editor and insert the following content:
+Open the `src/https_post_backend/Types.mo` file in your code editor and insert the following content:
 
 ```motoko
 module Types {
