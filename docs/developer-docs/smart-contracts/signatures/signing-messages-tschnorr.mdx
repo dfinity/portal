@@ -28,13 +28,13 @@ Signatures will have different encoding depending on the provided `key_id` algor
 
 - `ed25519`: The signature will be encoded according to [RFC8032, 5.1.6 Sign](https://datatracker.ietf.org/doc/html/rfc8032#section-5.1.6), using 64 bytes.
 
-### Difference between T-ECDSA and T-Schnorr API endpoints
+### Difference between t-ECDSA and t-Schnorr API endpoints
 
 The `sign_with_schnorr` endpoint takes a full message to sign as input rather than a message hash used by the `sign_with_ecdsa` API endpoint. This is because BIP340 and Ed25519 signature messages are hashed together with other information, meaning a canister cannot do the message hashing as it is done for `sign_with_ecdsa`.
 
 ## Signing messages
 
-Canisters can sign threshold Schnorr messages without holding the Schnorr keys themselves. Each key is derived from a master key held by the dedicated threshold Schnorr subnet. When a canister needs a signature, a request is sent to the threshold Schnorr subnet that computes the signature based on the requesting canister's root key and then returns the signature to the canister.
+Canisters can sign message with threshold Schnorr without holding the Schnorr keys themselves. Each key is derived from a master key held by the dedicated threshold Schnorr subnet. When a canister needs a signature, a request is sent to the threshold Schnorr subnet that computes the signature based on the requesting canister's root key and then returns the signature to the canister.
 
 To sign a message, the `sign_with_schnorr` method is used, which requires that you specify the Schnorr algorithm to be used, either `bip340secp256k1` or `ed25519`.
 
@@ -100,7 +100,7 @@ async fn sign(message: String, algorithm: SchnorrAlgorithm) -> Result<SignatureR
 
 ### Cost
 
-The `sign_with_schnorr` method requires cycles to be attached. When the method in the Rust CDK is used, the required cycles are automatically attached. In Motoko, the cycles need to be added manually.
+The `sign_with_schnorr` method requires cycles to be attached.
 
 [Learn more about threshold Schnorr costs](/docs/current/developer-docs/gas-cost).
 
@@ -117,9 +117,9 @@ The first byte of the BIP340 public key needs to be removed for verification. Be
 :::
 
 <AdornedTabs groupId="language">
-<TabItem value="motoko" label="Motoko" default>
+<TabItem value="javascript" label="JavaScript" default>
 
-```motoko
+```js
 import('@noble/curves/secp256k1').then((bip340) => { verify(bip340.schnorr); })
   .catch((err) => { console.log(err) });
 
@@ -183,9 +183,9 @@ fn verify_bip340_secp256k1(
 Ed25519 can be verified using code such as:
 
 <AdornedTabs groupId="language">
-<TabItem value="motoko" label="Motoko" default>
+<TabItem value="javascript" label="JavaScript" default>
 
-```motoko
+```js
 import('@noble/curves/ed25519').then((ed25519) => { verify(ed25519.ed25519); })
   .catch((err) => { console.log(err) });
 
@@ -249,7 +249,7 @@ Verification can be done in other languages using libraries and packages that su
 
 ## Obtaining public keys
 
-To obtain public keys, you will need to call the `schnorr_public_key method` of the IC management canister (`aaaaa-aa`). You can deploy the threshold Schnorr sample [locally](https://github.com/dfinity/examples/tree/master/motoko/threshold-schnorr) and use the Candid UI to call this method, or you can call this method programmatically using Motoko or Rust.
+To obtain public keys, you will need to call the `schnorr_public_key method` of the IC management canister (`aaaaa-aa`). You can deploy the threshold Schnorr sample [locally](https://github.com/dfinity/examples/tree/master/motoko/t-schnorr) and use the Candid UI to call this method, or you can call this method programmatically using Motoko or Rust.
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
@@ -302,7 +302,7 @@ async fn public_key(algorithm: SchnorrAlgorithm) -> Result<PublicKeyReply, Strin
 
 ## Resources
 
-- [Threshold Schnorr sample dapp - Motoko](https://github.com/dfinity/examples/blob/master/motoko/threshold-schnorr/).
+- [Threshold Schnorr sample dapp - Motoko](https://github.com/dfinity/examples/blob/master/motoko/t-schnorr/).
 
-- [Threshold Schnorr sample dapp - Rust](https://github.com/dfinity/examples/blob/master/rust/threshold-schnorr/).
+- [Threshold Schnorr sample dapp - Rust](https://github.com/dfinity/examples/blob/master/rust/t-schnorr/).
 

@@ -582,7 +582,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/signatures/t-ecdsa /docs/current/developer-docs/smart-contracts/signatures/t-ecdsa
   /docs/current/developer-docs/smart-contracts/signatures/vetkeys /docs/current/developer-docs/smart-contracts/signatures/vetkeys
   /docs/current/developer-docs/smart-contracts/signatures/using-vetkeys /docs/current/developer-docs/smart-contracts/signatures/using-vetkeys
-  /docs/current/developer-docs/smart-contracts/signatures/threshold-schnorr /docs/current/developer-docs/smart-contracts/signatures/threshold-schnorr
+  /docs/current/developer-docs/smart-contracts/signatures/t-schnorr /docs/current/developer-docs/smart-contracts/signatures/t-schnorr
   /docs/current/developer-docs/smart-contracts/signatures/signing-messages-tecdsa /docs/current/developer-docs/smart-contracts/signatures/signing-messages-tecdsa
   /docs/current/developer-docs/smart-contracts/signatures/signing-messages-tschnorr /docs/current/developer-docs/smart-contracts/signatures/signing-messages-tschnorr
   `

@@ -298,7 +298,7 @@ const sidebars = {
               label: "On-chain signatures",
               items: [
                 "developer-docs/smart-contracts/signatures/t-ecdsa",
-                "developer-docs/smart-contracts/signatures/threshold-schnorr",
+                "developer-docs/smart-contracts/signatures/t-schnorr",
                 {
                   type: "category",
                   label: "Signing messages",

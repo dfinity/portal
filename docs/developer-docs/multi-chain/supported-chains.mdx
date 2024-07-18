@@ -93,6 +93,11 @@ but they are supported in the same way as Ethereum through the EVM RPC canister.
 | TRON      | [ECDSA](https://github.com/tronprotocol/tips/issues/120)  | [RPC via HTTPS outcalls](docs/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview.mdx)  |      |
 
 
+:::caution
+EdDSA signing is not available in production yet. Threshold EdDSA signing will be released with the [Helium milestone](https://internetcomputer.org/roadmap#Chain%20Fusion-Helium)
+later this year. However, it is already available as a [developer preview](https://github.com/domwoe/schnorr_canister).
+:::
+
 ### Looking for a chain that is not listed?
 
 Most likely, the chain you want to integrate is still supported by ICP. Check
