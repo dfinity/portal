@@ -323,8 +323,8 @@ const redirects = `
   /docs/current/developer-docs/backend/reproducible-builds /docs/current/developer-docs/smart-contracts/test/reproducible-builds
   /docs/current/developer-docs/backend/troubleshooting /docs/current/developer-docs/smart-contracts/test/troubleshooting
   /docs/current/developer-docs/integrations/t-ecdsa /docs/current/developer-docs/smart-contracts/signatures/t-ecdsa
-  /docs/current/developer-docs/integrations/vetkeys/ /docs/current/developer-docs/smart-contracts/signatures/vetkeys
-  /docs/current/developer-docs/integrations/vetkeys/using-vetkeys /docs/current/developer-docs/smart-contracts/signatures/using-vetkeys
+  /docs/current/developer-docs/integrations/vetkeys/ /docs/current/developer-docs/smart-contracts/encryption/vetkeys
+  /docs/current/developer-docs/integrations/vetkeys/using-vetkeys /docs/current/developer-docs/smart-contracts/encryption/using-vetkeys
   /docs/current/developer-docs/integrations/composite-query /docs/current/developer-docs/smart-contracts/advanced-features/composite-query
   /docs/current/developer-docs/backend/periodic-tasks /docs/current/developer-docs/smart-contracts/advanced-features/periodic-tasks
   /docs/current/developer-docs/setup/best-practices/architecture /docs/current/developer-docs/smart-contracts/write/overview
@@ -578,13 +578,11 @@ const redirects = `
   /docs/current/developer-docs/best-practices/	/docs/current/developer-docs/smart-contracts/best-practices/general
   /docs/current/developer-docs/best-practices/considerations-for-nft-devs /docs/current/developer-docs/defi/nfts/overview
   /docs/current/developer-docs/smart-contracts/test/staging-environment /docs/current/developer-docs/smart-contracts/deploy/custom-testnets
-  /docs/current/developer-docs/smart-contracts/signatures/signing-messages /docs/current/developer-docs/smart-contracts/signatures/signing-messages-tecdsa
-  /docs/current/developer-docs/smart-contracts/signatures/t-ecdsa /docs/current/developer-docs/smart-contracts/signatures/t-ecdsa
-  /docs/current/developer-docs/smart-contracts/signatures/vetkeys /docs/current/developer-docs/smart-contracts/signatures/vetkeys
-  /docs/current/developer-docs/smart-contracts/signatures/using-vetkeys /docs/current/developer-docs/smart-contracts/signatures/using-vetkeys
-  /docs/current/developer-docs/smart-contracts/signatures/t-schnorr /docs/current/developer-docs/smart-contracts/signatures/t-schnorr
-  /docs/current/developer-docs/smart-contracts/signatures/signing-messages-tecdsa /docs/current/developer-docs/smart-contracts/signatures/signing-messages-tecdsa
-  /docs/current/developer-docs/smart-contracts/signatures/signing-messages-tschnorr /docs/current/developer-docs/smart-contracts/signatures/signing-messages-tschnorr
+  /docs/current/developer-docs/smart-contracts/encryption/signing-messages /docs/current/developer-docs/smart-contracts/signatures/signing-messages-tecdsa
+  /docs/current/developer-docs/smart-contracts/encryption/t-ecdsa /docs/current/developer-docs/smart-contracts/signatures/t-ecdsa
+  /docs/current/developer-docs/smart-contracts/encryption/t-schnorr /docs/current/developer-docs/smart-contracts/signatures/t-schnorr
+  /docs/current/developer-docs/smart-contracts/encryption/signing-messages-tecdsa /docs/current/developer-docs/smart-contracts/signatures/signing-messages-tecdsa
+  /docs/current/developer-docs/smart-contracts/encryption/signing-messages-tschnorr /docs/current/developer-docs/smart-contracts/signatures/signing-messages-tschnorr
   /docs/current/developer-docs/production/topping-up-canister/ /docs/current/developer-docs/smart-contracts/topping-up/topping-up-canister
   /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/current/motoko/main/reference/language-manual
   `

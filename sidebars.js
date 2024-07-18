@@ -285,8 +285,8 @@ const sidebars = {
               type: "category",
               label: "On-chain encryption: vetKeys",
               items: [
-                "developer-docs/smart-contracts/signatures/vetkeys",
-                "developer-docs/smart-contracts/signatures/using-vetkeys",
+                "developer-docs/smart-contracts/encryption/vetkeys",
+                "developer-docs/smart-contracts/encryption/using-vetkeys",
               ],
             },
             {
