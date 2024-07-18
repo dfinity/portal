@@ -574,7 +574,8 @@ function EnterprisePage() {
             <CardWithDescription
               title="Sample code"
               description=""
-              href="/samples?selectedDomains=Asynchronous+DeFi"
+              href="https://internetcomputer.org/samples?selectedDomains=Asynchronous+DeFi
+"
             />
             <CardWithDescription
               title="Developer docs"

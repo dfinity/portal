@@ -6,11 +6,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-The Bitcoin integration on the Internet Computer allows for direct and trustless interaction 
-with the Bitcoin network, enabling canister smart contracts to create Bitcoin 
-addresses and send and receive bitcoin directly. This opens up new possibilities 
-for decentralized applications and services, such as DeFi, that can leverage the 
-liquidity and security of Bitcoin without relying on centralized bridges, thereby 
+The Bitcoin integration on the Internet Computer allows for direct and trustless interaction
+with the Bitcoin network, enabling canister smart contracts to create Bitcoin
+addresses and send and receive bitcoin directly. This opens up new possibilities
+for decentralized applications and services, such as DeFi, that can leverage the
+liquidity and security of Bitcoin without relying on centralized bridges, thereby
 enhancing security and efficiency
 
 Two advanced engineering challenges needed to be solve to enable Bitcoin smart contracts on ICP:
@@ -25,11 +25,11 @@ Through the protocol-level integration of ICP with the Bitcoin network, ICP can 
 
 ## Chain-key ECDSA signatures
 
-Canisters themselves can have ECDSA keys using a novel chain-key ECDSA signature protocol suite for threshold ECDSA, and so can receive and hold Bitcoin. Canisters also can create Bitcoin transactions and submit them via the Bitcoin API to the Bitcoin network. They use the chain-key ECDSA functionality to request threshold ECDSA signatures to spend UTXOs in a transaction to be submitted to the Bitcoin network. Chain-key ECDSA signatures are a new member of ICP's chain-key cryptography toolbox of protocols. Chain-key ECDSA signatures are much more than just a threshold ECDSA implementation as they for example also comprise protocols for secure distributed key generation and key rotation, which are crucial from a systems perspective to make threshold signing secure and practically viable. Details regarding ICP's chain-key ECDSA signature protocol can be found on the corresponding documentation page [here](/docs/current/references/t-ecdsa-how-it-works).
+Canisters themselves can have ECDSA keys using a novel chain-key ECDSA signature protocol suite for threshold ECDSA, and so can receive and hold Bitcoin. Canisters also can create Bitcoin transactions and submit them via the Bitcoin API to the Bitcoin network. They use the chain-key ECDSA functionality to request threshold ECDSA signatures to spend UTXOs in a transaction to be submitted to the Bitcoin network. Chain-key ECDSA signatures are a new member of ICP's chain-key cryptography toolbox of protocols. Chain-key ECDSA signatures are much more than just a threshold ECDSA implementation as they for example also comprise protocols for secure distributed key generation and key rotation, which are crucial from a systems perspective to make threshold signing secure and practically viable. Details regarding ICP's chain-key ECDSA signature protocol can be found on the corresponding documentation page [here](/docs/current/references/t-ecdsa-how-it-works/).
 
 The protocol-level Bitcoin integration and chain-key ECDSA signature protocols each expose an API on the management canister. Those APIs are the system-level APIs engineers use to write Bitcoin smart contracts on ICP. The APIs are low-level APIs designed around the concepts of Bitcoin UTXOs and transactions and are non-trivial to use and require an in-depth understanding of how Bitcoin works. The chain-key ECDSA signature API is also generically useful for any ECDSA use case, e.g., integration with other blockchains such as Ethereum.
 
-This page gives a high-level overview of the above mentioned technology behind the direct Bitcoin integration. For details, it is recommended to refer the reader to the [Bitcoin page on the Internet Computer wiki](https://wiki.internetcomputer.org/wiki/Bitcoin_integration) as well as the [threshold ECDSA documentation page](/docs/current/references/t-ecdsa-how-it-works).
+This page gives a high-level overview of the above mentioned technology behind the direct Bitcoin integration. For details, it is recommended to refer the reader to the [Bitcoin page on the Internet Computer wiki](https://wiki.internetcomputer.org/wiki/Bitcoin_integration) as well as the [threshold ECDSA documentation page](/docs/current/references/t-ecdsa-how-it-works/).
 
 ## Protocol-level integration of ICP with the Bitcoin network
 
@@ -64,7 +64,7 @@ The ECDSA chain-key signing protocol currently implemented uses a single master 
 
 ECDSA chain-key signing is deployed on one signing subnet of the Internet Computer initially that will answer signing requests of canisters. The signing subnet enforces that only the canister that controls a key may request signatures with this key. All API calls made by canisters need to go through XNet traffic to reach the ECDSA subnet and thus incur the related extra latency accordingly to obtain a signature.
 
-Canisters can query their own or other canisters' public keys, including further derived public keys of canisters. Canisters can request signatures with private keys they control, i.e., their root private key and derived private keys. For requests of public keys or signatures with derived keys, a derivation path can be specified in the respective API or the derivation can be done using BIP-32. You can find more details on the [ECDSA chain-key signatures page](/docs/current/references/t-ecdsa-how-it-works).
+Canisters can query their own or other canisters' public keys, including further derived public keys of canisters. Canisters can request signatures with private keys they control, i.e., their root private key and derived private keys. For requests of public keys or signatures with derived keys, a derivation path can be specified in the respective API or the derivation can be done using BIP-32. You can find more details on the [ECDSA chain-key signatures page](/docs/current/references/t-ecdsa-how-it-works/).
 
 ## Deployment architecture
 

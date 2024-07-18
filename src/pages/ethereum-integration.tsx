@@ -88,9 +88,9 @@ const Prose: React.FC<{
   return (
     <div
       className={clsx(
-        `prose 
+        `prose
       prose-h2:tw-heading-4 prose-h2:md:tw-heading-60 prose-h2:mb-3 prose-h2:mt-0
-      prose-p:tw-paragraph 
+      prose-p:tw-paragraph
       prose-ul:tw-paragraph marker:prose-ul:text-black
       prose-a:no-underline
       prose-h3:tw-heading-5 md:prose-h3:tw-heading-4 prose-h3:mb-4 prose-h3:mt-0
@@ -188,7 +188,7 @@ function EthereumIntegrationPage() {
                 signing services, oracles, DAO frameworks, privacy tools, pass
                 key authentication, smart contract wallets, and reverse gas
                 fees. Augment Ethereum dapps to build seamless multichain
-                solutions for DeFi, NFT trading, payments, SocialFi and more. 
+                solutions for DeFi, NFT trading, payments, SocialFi and more.
               </motion.p>
             </div>
           </AnimateSpawn>
@@ -390,11 +390,11 @@ function EthereumIntegrationPage() {
               EVM on the Internet Computer
             </h2>
             <p className="tw-lead-sm mb-6 md:mb-10">
-            An Ethereum Virtual Machine (EVM) is available on ICP built by Bitfinity — 
-            a team of developers from the ICP community. 
-            Bitfinity offers a turn-key solution for developers to operate their 
-            ETH dapps on the Internet Computer using Solidity, which brings ICP's 
-            1-2s finality, and near-0 transaction fees to established Ethereum dapps, 
+            An Ethereum Virtual Machine (EVM) is available on ICP built by Bitfinity —
+            a team of developers from the ICP community.
+            Bitfinity offers a turn-key solution for developers to operate their
+            ETH dapps on the Internet Computer using Solidity, which brings ICP's
+            1-2s finality, and near-0 transaction fees to established Ethereum dapps,
             providing an incredibly efficient Ethereum scaling solution.
             </p>
             <p className="mb-0">
@@ -539,7 +539,8 @@ function EthereumIntegrationPage() {
             {" "}
             <Link
               className="button-primary text-center mb-6 md:mb-8"
-              href="/ecosystem?tag=Ethereum"
+              href="https://internetcomputer.org/ecosystem?tag=Ethereum
+"
             >
               More projects building on Ethereum
             </Link>

@@ -158,7 +158,7 @@ const Content: React.FC = () => {
                 ICP nodes collaborate to produce{" "}
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/references/t-ecdsa-how-it-works/"
+                  to="/docs/current/references/t-ecdsa-how-it-works//"
                 >
                   threshold-ECDSA signatures
                 </Link>
@@ -208,14 +208,14 @@ const Content: React.FC = () => {
                 integration,{" "}
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/references/https-outcalls-how-it-works/"
+                  to="/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview"
                 >
                   RPC integration
                 </Link>{" "}
                 and
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/references/https-outcalls-how-it-works/"
+                  to="/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview"
                 >
                   {" "}
                   HTTPs outcalls
@@ -268,10 +268,10 @@ const Content: React.FC = () => {
               </h3>
               <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
                 Chain-key bitcoin (ckBTC), a multi-chain bitcoin twin on the
-                Internet Computer, is an 
+                Internet Computer, is an
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/references/https-outcalls-how-it-works/"
+                  to="/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview"
                 >
                   ICRC-1
                 </Link>
@@ -307,7 +307,7 @@ const Content: React.FC = () => {
           ))}
         </AnimateSpawn>
         <div className="container-10 mt-10 md:mt-16 text-center ">
-          <Link className="button-primary" href="/ecosystem?tag=Bitcoin">
+          <Link className="button-primary" href="https://internetcomputer.org/ecosystem?tag=Bitcoin">
             More projects building on Bitcoin
           </Link>
         </div>

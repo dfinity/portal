@@ -90,6 +90,19 @@
   }
 }
 
+.mantine-Modal-body div > div:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+}
+
+.mantine-Text-root {
+  order: 2;
+}
+
+.mantine-Modal-body .mantine-Grid-root {
+  order: 3;
+}
+
 .navbar__inner {
   margin-left: auto;
   margin-right: auto;

@@ -110,6 +110,7 @@ const sidebars = {
               type: "doc",
               id: "developer-docs/smart-contracts/write/overview",
             },
+            "developer-docs/smart-contracts/write/auto-scaling-architecture",
             "developer-docs/smart-contracts/write/resources",
           ],
         },
@@ -1351,7 +1352,11 @@ const sidebars = {
           type: "category",
           label: "Node providers",
           items: [
-            "references/node-providers/overview",
+            {
+              type: "doc",
+              label: "Overview",
+              id: "references/node-providers/overview",
+            },
             "references/node-providers/node-metrics",
           ],
         },
