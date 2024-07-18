@@ -296,10 +296,18 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "On-chain signatures: Threshold ECDSA",
+              label: "On-chain signatures",
               items: [
-                "developer-docs/smart-contracts/encryption/t-ecdsa",
-                "developer-docs/smart-contracts/encryption/signing-messages",
+                "developer-docs/smart-contracts/signatures/t-ecdsa",
+                "developer-docs/smart-contracts/signatures/t-schnorr",
+                {
+                  type: "category",
+                  label: "Signing messages",
+                  items: [
+                          "developer-docs/smart-contracts/signatures/signing-messages-t-ecdsa",
+                          "developer-docs/smart-contracts/signatures/signing-messages-t-schnorr",
+                  ],
+                },
               ],
             },
             "developer-docs/smart-contracts/advanced-features/periodic-tasks",
