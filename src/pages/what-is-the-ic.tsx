@@ -141,8 +141,6 @@ function WhatIsIcpPage() {
                   of a modern CPU, which is many orders of magnitude more than
                   Ethereum smart contracts. For example, the high performance of ICP smart
                   contracts enables the <a
-                  Ethereum smart contracts. For example, the high performance of ICP smart
-                  contracts enables the <a
                     className="text-white underline"
                     href="https://www.youtube.com/watch?v=6qLvIXiCGcM" >
                   demo of an AI inference model running on an ICP smart contract</a>, which is uniquely possible on ICP.
