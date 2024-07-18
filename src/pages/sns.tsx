@@ -488,10 +488,11 @@ function SnsPage() {
               href="/sns/faq"
             />
             <CardWithDescription
-              title="Get SNS governance 
+              title="Get SNS governance
               tokens on ICP DEXs"
               description=""
-              href="/ecosystem?tag=DeFi"
+              href="https://internetcomputer.org/ecosystem?tag=DeFi
+"
             />
           </AnimateSpawn>
         </section>

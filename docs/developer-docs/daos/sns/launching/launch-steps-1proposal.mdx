@@ -19,7 +19,7 @@ through the same, with the difference that the commands here target the canister
 
 ## Prerequisites:
 
-- [x] Install the IC SDK. See: [installing the IC SDK](/docs/current/developer-docs/getting-started/install).
+- [x] Install the IC SDK. See: [installing the IC SDK](/docs/current/developer-docs/getting-started/install/).
 
 - [x] Install `ic-admin`. See: [installing the `ic-admin`](/docs/current/developer-docs/developer-tools/cli-tools/ic-admin).
 
@@ -59,7 +59,7 @@ dfx sns prepare-canisters add-nns-root $CANISTER_ID
 ```
 
 Handing over the dapp's canisters might require additional actions; for example, removing any special permissions that the dapp's developers may have had prior to the decentralization effort.
-One example of a special permission might be the ability to change the frontend canister content on their own. You can review the [SNS asset canister](/docs/current/developer-docs/integrations/sns/managing/sns-asset-canister) documentation for more details.
+One example of a special permission might be the ability to change the frontend canister content on their own. You can review the [SNS asset canister](/docs/current/developer-docs/daos/sns/managing/sns-asset-canister) documentation for more details.
 
 ```bash
 dfx canister call $CANISTER_ID revoke_permission '(record {of_principal = principal "<developer principal"; permission = variant { Commit;};})'

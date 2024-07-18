@@ -206,7 +206,7 @@ document.querySelector("form").addEventListener("submit", async (e) => {
 });
 ```
 
-The JavaScript code running in the browser uses the [`agent-js`](/docs/current/developer-docs/agents/javascript-intro) library to interact with the backend canister. The library creates a wrapper JavaScript object based on the interface of the canister. That wrapper object provides convenience methods for calling the canister functions as if they were JavaScript functions:
+The JavaScript code running in the browser uses the [`agent-js`](/docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent) library to interact with the backend canister. The library creates a wrapper JavaScript object based on the interface of the canister. That wrapper object provides convenience methods for calling the canister functions as if they were JavaScript functions:
 
 ```
 const greeting = await hello_backend.greet(name);

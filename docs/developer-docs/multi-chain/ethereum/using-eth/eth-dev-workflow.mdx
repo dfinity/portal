@@ -19,7 +19,7 @@ To interact with the Ethereum network or another EVM-compatible network, a devel
 
 1. [Generate a public key](generating-addresses.mdx): To sign and submit transactions, your canister will need a public key. You will also need this public key to generate an Ethereum wallet address.
 
-2. [Sign a transaction](signing-transactions.mdx): Next, a transaction must be signed before it can be submitted to the Ethereum network and executed. Transactions are signed using [threshold ECDSA](/docs/current/references/t-ecdsa-how-it-works), a novel protocol as part of ICP's chain-key signatures suite.
+2. [Sign a transaction](signing-transactions.mdx): Next, a transaction must be signed before it can be submitted to the Ethereum network and executed. Transactions are signed using [threshold ECDSA](/docs/current/references/t-ecdsa-how-it-works/), a novel protocol as part of ICP's chain-key signatures suite.
 
 3. [Submit a transaction](submit-transactions.mdx): Signed raw transactions can be submitted using the EVM RPC canister's RPC method `eth_sendRawTransaction`. Code examples for sending transactions can be found in the [EVM RPC canister](/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister) documentation.
 
@@ -45,15 +45,15 @@ The Ethereum integration can be incorporated into dapps for several purposes, su
 
 ## Using ckETH
 
-Chain-key Ethereum (ckETH) is a digital twin token of Ethereum that is backed 1:1 with Ethereum held within an ICP smart contract. ckETH tokens comply with the [ICRC token standard](/docs/current/developer-docs/multi-chain/ethereum/cketh/overview).
+Chain-key Ethereum (ckETH) is a digital twin token of Ethereum that is backed 1:1 with Ethereum held within an ICP smart contract. ckETH tokens comply with the [ICRC token standard](/docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview).
 
 ckETH and other chain-key tokens can be interacted with in the same manner as other ICRC tokens. There aren't any special workflow steps, parameters, or smart contract types that must be used to integrate with chain-key tokens such as ckETH.
 
-[Learn more about ckETH](/docs/current/developer-docs/multi-chain/ethereum/cketh/overview).
+[Learn more about ckETH](/docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview).
 
 ## Using ckERC20 tokens
 
-ckERC20 tokens, such as [ckUSDC](https://dashboard.internetcomputer.org/ethereum/xevnm-gaaaa-aaaar-qafnq-cai), are able to be deployed on ICP and backed 1:1 by their native currency, such as USDC for ckUSDC. Other ckERC20 tokens have been proposed, such as [OCT](https://forum.dfinity.org/t/proposal-to-add-oct-as-a-new-ckerc20-token/32108) and ckLINK. 
+ckERC20 tokens, such as [ckUSDC](https://dashboard.internetcomputer.org/ethereum/xevnm-gaaaa-aaaar-qafnq-cai), are able to be deployed on ICP and backed 1:1 by their native currency, such as USDC for ckUSDC. Other ckERC20 tokens have been proposed, such as [OCT](https://forum.dfinity.org/t/proposal-to-add-oct-as-a-new-ckerc20-token/32108) and ckLINK.
 
 ## Resources
 
@@ -65,4 +65,4 @@ ckERC20 tokens, such as [ckUSDC](https://dashboard.internetcomputer.org/ethereum
 
 - [Submitting transactions](submit-transactions.mdx).
 
-- [ckETH](/docs/current/developer-docs/multi-chain/ethereum/cketh/overview).
+- [ckETH](/docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview).

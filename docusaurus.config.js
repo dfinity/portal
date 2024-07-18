@@ -150,7 +150,7 @@ const marketingNav = {
         { name: "ICP Wiki", href: "https://wiki.internetcomputer.org/" },
         {
           name: "White paper",
-          href: "https://internetcomputer.org/whitepaper.pdf",
+          href: "https://dfinity.org/whitepaper.pdf",
         },
         {
           name: "History of ICP",
@@ -748,7 +748,7 @@ const config = {
               },
               {
                 label: "Press Kit",
-                href: "/press-kit.zip",
+                href: "https://internetcomputer.org/press-kit.zip",
                 isDownload: true,
               },
             ],

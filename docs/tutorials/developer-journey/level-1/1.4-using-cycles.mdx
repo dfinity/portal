@@ -17,7 +17,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 If you recall from the previous module, [Internet Computer terminology](/docs/current/tutorials/developer-journey/level-0/ic-terms), cycles are used to measure the resources, such as memory, storage, and compute power, that are used by a <GlossaryTooltip>canister</GlossaryTooltip>. When a canister is deployed on the mainnet, cycles are 'charged' for every action that a canister performs.
 
-To obtain cycles, the Internet Computer Protocol's utility token, ICP, can be converted into cycles and transferred into a canister to be used to pay for that canister's consumed resources. Cycles have a fixed price in [XDR](https://internetcomputer.org/docs/current/references/glossary#xdr) in order to make canister costs predictable and independent of the price of ICP. One trillion cycles always correspond to one XDR.
+To obtain cycles, the Internet Computer Protocol's utility token, ICP, can be converted into cycles and transferred into a canister to be used to pay for that canister's consumed resources. Cycles have a fixed price in [XDR](https://internetcomputer.org/docs/current/concepts/glossary#xdr) in order to make canister costs predictable and independent of the price of ICP. One trillion cycles always correspond to one XDR.
 
 Since cycles are not a currency and are only used to pay for a canister's consumed resources, developers manage the distribution of cycles through a system canister called the **cycles ledger**. The cycles ledger provides functionality for developers to convert ICP into cycles, accept incoming cycles, send cycles to other canister, and create canisters with cycles.
 
@@ -41,7 +41,7 @@ Before you start, verify that you have set up your developer environment accordi
 
 When you initially use `dfx`, a default developer identity is created. This identity is a `principal` data type, often referred to as your **principal identifier**. This identity is similar to a Bitcoin or Ethereum wallet address that you would use to interact with those ecosystems.
 
-However, your developer identity principal is not the same as your account identifier that is specified in the [ledger](/docs/current/developer-docs/defi/icp-tokens/overview). Your identity principal and your account identifier are related, but they use different formats.
+However, your developer identity principal is not the same as your account identifier that is specified in the [ledger](/docs/current/developer-docs/defi/tokens/token-standards). Your identity principal and your account identifier are related, but they use different formats.
 
 :::info
 Your developer identity is a private/public key pair, while your principal identity is derived from the public key.
