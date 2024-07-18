@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import String from "@theme-original/CodeBlock/Content/String";
 import Container from "@theme/CodeBlock/Container";
 import styles from "./styles.module.css";
@@ -49,24 +49,6 @@ export default function StringWrapper(props) {
   const showRunButton = useMemo(() => {
     return props.className === "language-motoko";
   }, [props.className]);
-
-  /**
-   * Support populating the CodeBlock with
-   * content from a remote source,
-   * e.g. `remote=https://raw.githubusercontent.com/dfinity/internet-identity/main/src/internet_identity/internet_identity.did`
-   */
-  useEffect(() => {
-    if (props.remote) {
-      try {
-        const url = new URL(props.remote);
-        fetch(url.toString())
-          .then((res) => res.text())
-          .then((data) => setCode(data));
-      } catch (err) {
-        console.debug("Failed to fetch remote CodeBlock content");
-      }
-    }
-  }, [props.remote]);
 
   return (
     <div style={{ position: "relative" }}>

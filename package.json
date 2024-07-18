@@ -35,6 +35,7 @@
     "marked": "^4.0.18",
     "motoko": "^3.6.14",
     "prism-react-renderer": "^1.2.1",
+    "raw-loader": "^4.0.2",
     "react": "^16.14.0",
     "react-chartjs-2": "^4.1.0",
     "react-codejar": "^1.1.2",
