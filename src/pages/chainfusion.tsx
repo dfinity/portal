@@ -397,7 +397,7 @@ function ChainFusion() {
               </div>
               <Link
                 href="/docs/current/developer-docs/multi-chain/overview"
-                className="button-white self-start  mt-8  md:mt-12"
+                className="button-white self-start mt-8 md:mt-12"
               >
                 Build with Chain fusion
               </Link>
