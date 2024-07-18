@@ -60,6 +60,7 @@ export function AskAIWidget() {
             data-button-hide="true"
             data-modal-override-open-class="ask-ai-widget-trigger"
             data-modal-ask-ai-input-placeholder="Ask me a question about the Internet Computer Protocol"
+            data-modal-example-questions="What is the ICP token?, How is the Internet Computer governed?, How do I start building fully on-chain Web3?"
             data-modal-disclaimer="This LLM provides responses are generated automatically and may be inaccurate or outdated. Please take care to verify or validate any responses before making any critical decisions."
           />
           <style>{css}</style>
@@ -75,7 +76,7 @@ export function AskAIWidget() {
           }}
         >
           <span className={"flex-1 flex flex-col items-center"}>
-            <BrainIcon className={"md:text-white scale-75 md:scale-100"} />
+            <BrainIcon className={"md:text-white scale-75 md:scale-100"} />{" "}
           </span>
           <span className={"hidden md:block font-bold"}></span>
           {
