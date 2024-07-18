@@ -42,7 +42,7 @@ function RunButton(props) {
 }
 
 export default function StringWrapper(props) {
-  const [code, setCode] = useState(props.children || "");
+  const [code, _] = useState(props.children || "");
   const [output, setOutput] = useState("");
   const [error, setError] = useState("");
 
@@ -64,7 +64,7 @@ export default function StringWrapper(props) {
             />
           </div>
         )}
-        <String {...props} children={code} />
+        <String {...props} />
       </Container>
       {(output || error) && showRunButton ? (
         <Container as="div">
