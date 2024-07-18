@@ -666,3 +666,10 @@ command:
 ```bash
 npm start -- --locale <locale>
 ```
+
+## Generating a Reachability Report
+Generate a report that collects all the stale hyperlinks that appear throughout internetcomputer.org by running the following command:
+
+```shell
+./.github/workflows/scripts/reachability-report.sh
+```
