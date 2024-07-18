@@ -12,7 +12,9 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 When a dapp is deployed to ICP and has a frontend configured, the frontend assets will be displayed via a URL that contains the canister's ID. For local deployments, canisters are accessible through local URLs such as `http://127.0.0.1:4943/?canisterId=<canister-id>`. The port `4943` is the default local deployment port, though this can be changed via the `dfx` configuration or using a `dfx` flag. [Learn more about custom local networks](/docs/current/developer-docs/developer-tools/cli-tools/advanced-dfx/networks-json).
 
-For canisters deployed to the mainnet, the canister can be accessed in a web browser using the canister's ID followed by `.ic0.app`. For example, the [Motoko Playground](https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app/) is an application with a frontend user interface that can be used to deploy canisters in a temporary, sandbox environment. This dapp can be accessed via the URL `https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app/`. 
+For canisters deployed to the mainnet, the canister can be accessed in a web browser using the canister's ID followed by `.ic0.app` or `raw.ic0.app`. For example, the [playground](https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app/) is an application with a frontend user interface that can be used to deploy canisters in a temporary, sandbox environment. This dapp can be accessed via the URL `https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app/`.
+
+The `raw.ic0.app` domain is used for canisters deployed to the mainnet, and provides a way to access the raw HTTP interface of that canister. For local deployments that want to simulate the behavior of the `raw.ic0.app` domain, you must implement a method in your canister that consumes an HTTP request and outputs an HTTP response.
 
 Dapps may have complex frontends that serve dynamic, interactive interfaces, or they can serve simple, static webpages such as HTML and CSS pages. This guide will walkthrough how to display static assets using a frontend canister. 
 
