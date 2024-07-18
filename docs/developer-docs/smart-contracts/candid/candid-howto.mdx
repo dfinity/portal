@@ -246,7 +246,7 @@ When the import dependency of counter canister is processed by the `dfx build` c
 
 ## Publish Candid interfaces privately
 
-By default, `dfx` makes the `candid:service` metadata information public to promote interoperability and make it convenient to use the Candid UI. Candid UI reads this metadata to determine the interface of your canister, and it doesn’t publish any more information than is already public. This metadata can be returned through the `dfx` command:
+By default, `dfx` makes the `candid:service` metadata information public to promote interoperability and make it convenient to use the Candid UI. The Candid UI reads this metadata to determine the interface of your canister, and it doesn’t publish any more information than what is already public. This metadata can be returned through the `dfx` command:
 
 ```
 dfx canister metadata <canister name/id> candid:service
