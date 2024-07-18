@@ -82,6 +82,9 @@ const Hero: React.FC<{
                     hover:no-underline text-white hover:text-black duration-100
                   "
                 >
+                  <span className="absolute top-6 right-6">
+                    <LinkArrowUpRight />
+                  </span>
                   <div
                     className="rounded-xl text-current py-3 px-6"
                     style={{ fontSize: "24px", fontWeight: 500}}
