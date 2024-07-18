@@ -304,8 +304,8 @@ const sidebars = {
                   type: "category",
                   label: "Signing messages",
                   items: [
-                          "developer-docs/smart-contracts/signatures/signing-messages-tecdsa",
-                          "developer-docs/smart-contracts/signatures/signing-messages-tschnorr",
+                          "developer-docs/smart-contracts/signatures/signing-messages-t-ecdsa",
+                          "developer-docs/smart-contracts/signatures/signing-messages-t-schnorr",
                   ],
                 },
               ],

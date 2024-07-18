@@ -582,7 +582,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/encryption/t-ecdsa /docs/current/developer-docs/smart-contracts/signatures/t-ecdsa
   /docs/current/developer-docs/smart-contracts/encryption/t-schnorr /docs/current/developer-docs/smart-contracts/signatures/t-schnorr
   /docs/current/developer-docs/smart-contracts/encryption/signing-messages-tecdsa /docs/current/developer-docs/smart-contracts/signatures/signing-messages-tecdsa
-  /docs/current/developer-docs/smart-contracts/encryption/signing-messages-tschnorr /docs/current/developer-docs/smart-contracts/signatures/signing-messages-tschnorr
+  /docs/current/developer-docs/smart-contracts/encryption/signing-messages-t-schnorr /docs/current/developer-docs/smart-contracts/signatures/signing-messages-t-schnorr
   /docs/current/developer-docs/production/topping-up-canister/ /docs/current/developer-docs/smart-contracts/topping-up/topping-up-canister
   /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/current/motoko/main/reference/language-manual
   `
