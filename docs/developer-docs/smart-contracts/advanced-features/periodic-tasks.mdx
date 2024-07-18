@@ -54,36 +54,143 @@ The library does not handle the canister upgrades. It is up to the canister deve
 For the code composability reasons, i.e. to be able to use different libraries with timers in a single project, canister developers are encouraged to use the CDK timers libraries over the protocol level API or the heartbeats.
 :::
 
-### Example
+### Single timer example
 
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
 import { print } = "mo:base/Debug";
-import { abs } = "mo:base/Int";
-import { now } = "mo:base/Time";
-import { setTimer; recurringTimer } = "mo:base/Timer";
+import { recurringTimer } = "mo:base/Timer";
 
-actor Reminder {
-
-  let solarYearSeconds = 356_925_216;
-
-  private func remind() : async () {
-    print("Happy New Year!");
+actor Alarm {
+  let N = 5;
+  private func ring() : async () {
+    print("Motoko Timer Ring!");
   };
-
-  ignore setTimer<system>(#seconds (solarYearSeconds - abs(now() / 1_000_000_000) % solarYearSeconds),
-    func () : async () {
-      ignore recurringTimer<system>(#seconds solarYearSeconds, remind);
-      await remind();
-  });
-}
+  ignore recurringTimer(#seconds N, ring);
+};
 ```
 
 </TabItem>
 
 <TabItem value="rust" label="Rust">
+
+```rust
+use std::time::Duration;
+
+const N: Duration = Duration::from_secs(5);
+
+fn ring() {
+    ic_cdk::println!("Rust Timer Ring!");
+}
+
+#[ic_cdk::init]
+fn init() {
+    let _timer_id = ic_cdk_timers::set_timer_interval(N, ring);
+}
+
+#[ic_cdk::post_upgrade]
+fn post_upgrade() {
+    init();
+}
+```
+
+</TabItem>
+
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
+
+```typescript
+import {
+    Canister,
+    Duration,
+    ic,
+    TimerId,
+    Tuple,
+    update
+} from 'azle/experimental';
+
+export default Canister({
+    setTimers: update([Duration], Tuple(TimerId, TimerId), (delay) => {
+        const functionTimerId = ic.setTimer(delay, callback);
+
+        const capturedValue = '🚩';
+
+        const closureTimerId = ic.setTimer(delay, () => {
+            console.log(`closure called and captured value ${capturedValue}`);
+        });
+
+        return [functionTimerId, closureTimerId];
+    })
+});
+
+function callback() {
+    console.log('callback called');
+}
+
+```
+
+</AdornedTab>
+
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
+
+```python
+from kybra import (
+    Duration,
+    ic,
+    TimerId,
+    update,
+)
+
+
+@update
+def set_timer(delay: Duration) -> TimerId:
+    return ic.set_timer(delay, timer_callback)
+
+
+def timer_callback():
+    ic.print("timer_callback")
+
+```
+
+</AdornedTab>
+</AdornedTabs>
+
+### Multiple timers example
+
+To use multiple timers in a canister, simply create multiple timer definitions:
+
+<AdornedTabs groupId="languages">
+<TabItem value="motoko" label="Motoko" default>
+
+In Motoko, call the `recurringTimer` function multiple times, setting different durations and callback functions for each timer:
+
+
+```motoko
+import { print } = "mo:base/Debug";
+import { recurringTimer } = "mo:base/Timer";
+
+actor Alarm {
+
+  let N1 = 5;
+  let N2 = 10;
+
+  private func ring1() : async () {
+    print("Motoko Timer 1 Ring!");
+  };
+  private func ring2() : async () {
+    print("Motoko Timer 2 Ring!");
+  };
+  ignore recurringTimer(#seconds N1, ring1);
+  ignore recurringTimer(#seconds N2, ring2);
+};
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust">
+
+In Rust, call the `set_timer_interval` function multiple times, setting different durations and callback functions for each timer:
 
 ```rust
 use std::time::Duration;
@@ -368,6 +475,7 @@ def repeat_cross_canister_timer_callback() -> Async[void]:
 
 </AdornedTab>
 </AdornedTabs>
+
 
 ### Timers library limitations
 
