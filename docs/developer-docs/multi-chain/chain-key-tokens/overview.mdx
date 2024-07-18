@@ -11,7 +11,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 One common way that blockchain networks can enable cross-chain workflows is by 'wrapping' tokens. A wrapped token typically represents an underlying asset on a different blockchain, such as wrapped Bitcoin deployed on Ethereum. Traditional wrapped tokens involve an intermediary that needs to be trusted.
 
-ICP introduces a more secure alternative to wrapped tokens known as **chain-key** tokens. Chain-key tokens are created using ICP's chain-key cryptography protocols, such as [threshold signing](https://internetcomputer.org/docs/current/concepts/glossary/#chain-key). Each chain-key token is deployed on ICP and backed 1:1 with the native token held 100% on-chain by an ICP smart contract. There are no intermediaries or centralized bridges used for chain-key tokens.
+ICP introduces a more secure alternative to wrapped tokens known as **chain-key** tokens. Chain-key tokens are created using ICP's chain-key cryptography protocols, such as [threshold signing](https://internetcomputer.org/docs/current/concepts/glossary#chain-key). Each chain-key token is deployed on ICP and backed 1:1 with the native token held 100% on-chain by an ICP smart contract. There are no intermediaries or centralized bridges used for chain-key tokens.
 
 Chain-key tokens can be swapped for one another seamlessly. Making transactions with chain-key tokens on ICP is often faster and cheaper than transactions on the token's native network.
 
@@ -25,7 +25,7 @@ In addition to the requirement that a chain-key token must adhere to the [ICRC](
 
 - The chain-key token must be a true digital "twin" in the sense that any user can convert the native token to the chain-key token and vice versa, paying only for the transfer and conversion fees. This implies that the chain-key token must be fully backed by the corresponding native token at all times. Conversions may be delayed if one chain is temporarily unavailable but all conversions must be finalized eventually.
 
-- All conversions must be transparent. All tokens must be traceable on-chain. 
+- All conversions must be transparent. All tokens must be traceable on-chain.
 
 - The canister handling the conversions must use chain-key signatures to manage the underlying native token. Moreover, it must read data from the native chain in a decentralized manner.
 

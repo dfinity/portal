@@ -13,7 +13,7 @@ In September, DFINITY proposed to deprecate the Internet Computer Service Worker
 
 Beginning December 7, 2023, the new version of boundary nodes which uses icx-proxy to verify HTTP responses on the boundary node itself has begun to gradually roll out.
 
-For more information on the reasons behind this change, check out the full proposal blog post [here](/blog/features/deprecating-the-service-worker).
+For more information on the reasons behind this change, check out the full proposal blog post [here](https://internetcomputer.org/blog/features/deprecating-the-service-worker).
 
 ### Who is affected
 
@@ -27,4 +27,4 @@ An important note is that streamed resources that are larger than 8MB will not b
 
 ## Resources
 
-You can join the forum discussion on this topic [here](https://forum.dfinity.org/t/deprecating-the-service-worker/23401/6?u=raymondk), and you can read the full proposal on the Dev Blog [here](/blog/features/deprecating-the-service-worker).
+You can join the forum discussion on this topic [here](https://forum.dfinity.org/t/deprecating-the-service-worker/23401/6?u=raymondk), and you can read the full proposal on the Dev Blog [here](https://internetcomputer.org/blog/features/deprecating-the-service-worker).

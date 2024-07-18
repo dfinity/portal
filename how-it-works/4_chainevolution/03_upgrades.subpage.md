@@ -50,7 +50,7 @@ Suppose a protocol upgrade of the subnet is supposed to be done at the beginning
 
 [Upgrading the Internet Computer Protocol](https://medium.com/dfinity/upgrading-the-internet-computer-protocol-45bf6424b268)
 
-[Whitepaper, see Section 8](https://internetcomputer.org/whitepaper.pdf)
+[Whitepaper, see Section 8](https://dfinity.org/whitepaper.pdf)
 
 [![Watch youtube video](https://i.ytimg.com/vi/mPjiO2bk2lI/maxresdefault.jpg)](https://www.youtube.com/watch?v=mPjiO2bk2lI)
 

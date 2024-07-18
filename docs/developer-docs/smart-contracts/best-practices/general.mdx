@@ -18,7 +18,7 @@ This guide outlines essential development best practices for building on the Int
 
 Ensure all canisters have sufficient cycles to sustain operations for several years initially. Given the cost-effectiveness of storage and computation on ICP compared to other platforms, this upfront investment is usually modest.
 
-Refer to [topping up cycles page](/docs/current/developer-docs/production/topping-up-canister) to learn how to top-up cycles effectively.
+Refer to [topping up cycles page](docs/current/developer-docs/smart-contracts/topping-up/topping-up-canister) to learn how to top-up cycles effectively.
 
 Refer to the [cycles estimate](/docs/current/developer-docs/gas-cost) page to estimate cycle usage.
 
@@ -26,7 +26,7 @@ Refer to the [cycles estimate](/docs/current/developer-docs/gas-cost) page to es
 
 ICP features a mechanism to prevent canisters from running out of cycles. Canisters have a configurable `freezing_threshold`, dynamically evaluated in cycles. Set `freezing_threshold` conservatively, ensuring at least 90 to 180 days' worth of cycles for proactive management.
 
-Refer to [this resource](/docs/current/developer-docs/production/topping-up-canister#managing-cycle-depletion-with-freezing-threshold) to learn how to configure the `freezing_threshold` of a canister.
+Refer to [this resource](docs/current/developer-docs/smart-contracts/topping-up/topping-up-canister#managing-cycle-depletion-with-freezing-threshold) to learn how to configure the `freezing_threshold` of a canister.
 
 To make sure you won’t get surprised by a high cycle burn rate or hitting an instruction limit, you can use the recently added [performance counter API](https://internetcomputer.org/blog/features/async-performance-counter) to profile your canisters even before going live.
 
@@ -34,7 +34,7 @@ To make sure you won’t get surprised by a high cycle burn rate or hitting an i
 
 Optimize canister implementation to avoid unnecessary costs.
 
-Use [canister timers](/docs/current/developer-docs/backend/periodic-tasks) over plain heartbeats for reduced daily costs.
+Use [canister timers](/docs/current/developer-docs/smart-contracts/advanced-features/periodic-tasks) over plain heartbeats for reduced daily costs.
 
 #### Motoko
 
@@ -47,7 +47,7 @@ Use [canister timers](/docs/current/developer-docs/backend/periodic-tasks) over 
 
 4. Store large Blobs in stable memory for efficient manual management.
 5. Use the `compacting-gc` setting, especially in append-only scenarios, to allow access to larger heaps and reduce the cost of copying large, stationary objects.
-6. Be mindful of calling an [actor class]((/docs/current/motoko/main/actor-classes), as the overhead is similar to that of installing a fresh canister.
+6. Be mindful of calling an [actor class]((/docs/current/motoko/main/writing-motoko/actor-classes), as the overhead is similar to that of installing a fresh canister.
 
 #### Rust
 1. Exercise caution with `Vec<u8>` and `String` types for state serialization. Due to Rust limitations, using these types would increase the number of instructions required to encode or decode the message

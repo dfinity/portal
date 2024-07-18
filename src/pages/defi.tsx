@@ -304,7 +304,8 @@ function DefiPage() {
             >
               <Link
                 className="button-primary text-center"
-                href="/ecosystem?tag=DeFi"
+                href="https://internetcomputer.org/ecosystem?tag=DeFi
+"
               >
                 Go to all DeFi Dapps
               </Link>
@@ -337,7 +338,7 @@ function DefiPage() {
                   <motion.p className="mb-0" variants={transitions.item}>
                     <Link
                       className="button-outline-white"
-                      href="/ecosystem?tag=Wallets"
+                      href="https://internetcomputer.org/ecosystem?tag=Wallets"
                     >
                       All ICP wallets
                     </Link>
@@ -512,12 +513,13 @@ function DefiPage() {
             <CardWithDescription
               title="DeFi sample code"
               description=""
-              href="/samples?selectedDomains=Asynchronous+DeFi"
+              href="https://internetcomputer.org/samples?selectedDomains=Asynchronous+DeFi
+"
             />
             <CardWithDescription
               title="Code ckBTC"
               description=""
-              href="/docs/current/developer-docs/multi-chain/bitcoin/ckbtc/overview"
+              href="/docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview"
             />
           </AnimateSpawn>
         </section>

@@ -39,7 +39,7 @@ const categories = [
     ),
     image: "/img/basics/export-social.webp",
     link: (
-      <a href="/ecosystem?tag=SocialFi" className={styles.link}>
+      <a href="https://internetcomputer.org/ecosystem?tag=SocialFi" className={styles.link}>
         Explore more SocialFi projects <LinkArrowUpRight />
       </a>
     ),
@@ -62,7 +62,8 @@ const categories = [
     ),
     image: "/img/basics/export-defi.webp",
     link: (
-      <a href="/ecosystem?tag=DeFi" className={styles.link}>
+      <a href="https://internetcomputer.org/ecosystem?tag=DeFi
+" className={styles.link}>
         Explore more DeFi projects <LinkArrowUpRight />
       </a>
     ),

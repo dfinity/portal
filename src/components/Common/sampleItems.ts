@@ -246,7 +246,7 @@ export const sampleItems: SampleItem[] = [
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/threshold-ecdsa",
       rust: "https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa",
-      docs: "/docs/current/developer-docs/integrations/t-ecdsa/",
+      docs: "/docs/current/references/t-ecdsa-how-it-works/",
     },
   },
   {
@@ -286,7 +286,7 @@ export const sampleItems: SampleItem[] = [
       motoko: "https://github.com/dfinity/examples/tree/master/motoko/hello",
       rust: "https://github.com/dfinity/examples/tree/master/rust/hello",
       livePreview: "https://6lqbm-ryaaa-aaaai-qibsa-cai.ic0.app/",
-      docs: "/docs/current/samples/host-a-website",
+      docs: "/docs/current/references/samples/hosting/static-website/",
     },
   },
   {
@@ -420,7 +420,7 @@ export const sampleItems: SampleItem[] = [
     contentType: ["documentation"],
     body: "Demonstrates how to deploy a web game on the IC.",
     links: {
-      docs: "/docs/current/samples/host-a-webgame",
+      docs: "/docs/current/references/samples/hosting/unity-webgl-template/",
     },
   },
   {

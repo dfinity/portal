@@ -99,7 +99,7 @@ function IcpEventPage() {
               the outside world.
             </motion.h2>
             <motion.p variants={transitions.item} className="mb-0">
-         
+
             </motion.p>
           </div>
         </AnimateSpawn>
@@ -234,7 +234,7 @@ function IcpEventPage() {
               <p className="mb-0">
                 <Link
                   className="link-primary link-with-icon"
-                  href="/ecosystem?tag=DAO"
+                  href="https://internetcomputer.org/ecosystem?tag=DAO"
                 >
                   <LinkArrowRight /> DAOs in the Ecosystem
                 </Link>

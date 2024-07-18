@@ -35,9 +35,9 @@ function SustainabilityPage() {
         <AnimateSpawn variants={transitions.container} el={motion.section}>
           <div
             className="
-              overflow-hidden text-white pt-20 
-              bg-[url(/img/features/sustainability/download-report-bg-mobile.webp)] 
-              md:bg-[url(/img/features/sustainability/download-report-bg.webp)] 
+              overflow-hidden text-white pt-20
+              bg-[url(/img/features/sustainability/download-report-bg-mobile.webp)]
+              md:bg-[url(/img/features/sustainability/download-report-bg.webp)]
               bg-[length:100%_100%]
               md:h-screen md:max-h-[760px]
             "
@@ -70,7 +70,7 @@ function SustainabilityPage() {
                 </p>
                 <div className="mt-8">
                   <Link
-                    href="/blockchain_for_sustainable_business_use_cases.pdf"
+                    href="https://internetcomputer.org/blockchain_for_sustainable_business_use_cases.pdf"
                     target="_blank"
                     className="link-white link-with-icon"
                     download
