@@ -135,7 +135,7 @@ const developersData = [
     title: "EVM RPC Canister",
     description:
       "EVM RPC is a smart contract that communicates with Ethereum and other EVM blockchains using an on-chain API. Communication includes obtaining and sending information such as the logs of a specific block or transaction, historical data regarding the network's gas fee, transactions for a specific address, or submitting a signed transaction.",
-    link: "/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/overview/",
+    link: "/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/overview",
   },
   {
     title: "Threshold Signing Services",
@@ -397,7 +397,7 @@ function ChainFusion() {
               </div>
               <Link
                 href="/docs/current/developer-docs/multi-chain/overview"
-                className="button-white self-start  mt-8  md:mt-12"
+                className="button-white self-start mt-8 md:mt-12"
               >
                 Build with Chain fusion
               </Link>
@@ -524,7 +524,7 @@ function ChainFusion() {
             </motion.p>
             <Link
               className="link-white link-with-icon mt-4 md:mt-6 flex justify-center items-center "
-              href="/ecosystem?tag=Chainfusion"
+              href="https://internetcomputer.org/ecosystem?tag=Chainfusion"
             >
               <LinkArrowRight /> Discover the Chain Fusion Ecosystem
             </Link>

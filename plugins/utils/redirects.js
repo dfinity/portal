@@ -299,7 +299,7 @@ const redirects = `
   /docs/current/references/quill-cli-reference/quill-transfer /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-transfer
   /docs/current/references/quill-cli-reference/quill-update-node-provider /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-update-node-provider
   /docs/current/developer-docs/backend/candid/candid-concepts /docs/current/developer-docs/smart-contracts/candid/candid-concepts
-  /docs/current/developer-docs/backend/candid/ /docs/current/developer-docs/smart-contracts/candid/
+  /docs/current/developer-docs/backend/candid/ /docs/current/developer-docs/smart-contracts/candid/candid-concepts
   /docs/current/developer-docs/backend/candid/candid-howto /docs/current/developer-docs/smart-contracts/candid/candid-howto
   /docs/current/developer-docs/backend/candid/generating-candid /docs/current/developer-docs/backend/rust/generating-candid
   /docs/current/developer-docs/setup/deploy /docs/current/developer-docs/smart-contracts/deploy/overview
@@ -349,7 +349,7 @@ const redirects = `
   /docs/current/developer-docs/http-compatible-canisters/serving-json-over-http /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-json-over-http
   /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http
   /docs/current/developer-docs/integrations/ledger/introduction_and_overview /docs/current/developer-docs/defi/overview
-  /docs/current/developer-docs/integrations/ledger/  /docs/current/developer-docs/defi/tokens/token-standards
+  /docs/current/developer-docs/integrations/ledger/  /docs/current/developer-docs/defi/overview
   /docs/current/developer-docs/integrations/ledger/ledger-local-setup  /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup
   /docs/current/developer-docs/integrations/ledger/interact-with-ledger  /docs/current/developer-docs/defi/icp-tokens/using-the-ledger
   /docs/current/developer-docs/integrations/ledger/icp-index-local-setup /docs/current/developer-docs/defi/tokens/indexes
@@ -585,6 +585,8 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/signatures/t-schnorr /docs/current/developer-docs/smart-contracts/signatures/t-schnorr
   /docs/current/developer-docs/smart-contracts/signatures/signing-messages-tecdsa /docs/current/developer-docs/smart-contracts/signatures/signing-messages-tecdsa
   /docs/current/developer-docs/smart-contracts/signatures/signing-messages-tschnorr /docs/current/developer-docs/smart-contracts/signatures/signing-messages-tschnorr
+  /docs/current/developer-docs/production/topping-up-canister/ /docs/current/developer-docs/smart-contracts/topping-up/topping-up-canister
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/current/motoko/main/reference/language-manual
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

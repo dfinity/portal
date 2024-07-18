@@ -1,6 +1,6 @@
 ---
 title: Architecture of the Internet Computer
-abstract: 
+abstract:
 shareImage: /img/how-it-works/ic-architecture.jpg
 slug: architecture-of-the-internet-computer
 ---
@@ -79,7 +79,7 @@ If you want to learn in more detail how the IC works and realizes the vision of 
 [Internet Computer Dashboard](https://dashboard.internetcomputer.org/)
 [Internet Computer Source Code](https://github.com/dfinity/ic)
 [Public Repositories for the Internet Computer](https://github.com/dfinity?q=&type=public&language=&sort=)
-[Internet Computer Interface Specification Docs](https://internetcomputer.org/docs/ic-interface-spec.md)
+[Internet Computer Interface Specification Docs](https://internetcomputer.org/docs/current/references/ic-interface-spec)
 [Internet Computer Primer - Deck](https://dfinity.org/deck/)
 [Internet Computer SDK](https://github.com/dfinity/sdk)
 

@@ -419,7 +419,7 @@ function CkbtcPage(): JSX.Element {
 
               <motion.div className="" variants={transitions.item}>
                 <Link
-                  href="/ecosystem/?tag=Bitcoin"
+                  href="https://internetcomputer.org/ecosystem/?tag=Bitcoin"
                   className="relative rounded-xl tw-lead-lg min-h-[200px] md:tw-title-sm hover:no-underline hover:text-white hover:-translate-y-3 transition-transform text-white flex px-6 py-8 backdrop-blur-2xl bg-gradient-100 from-[#3B00B9] to-[#2586B6] h-full"
                 >
                   See more projects with Bitcoin support
@@ -475,7 +475,7 @@ function CkbtcPage(): JSX.Element {
                       native Bitcoin integration
                     </Link>{" "}
                     and{" "}
-                    <Link href="/docs/current/developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works">
+                    <Link href="/docs/current/references/t-ecdsa-how-it-works/">
                       chain-key ECDSA signing
                     </Link>{" "}
                     — advanced threshold cryptography integrated with ICP. In

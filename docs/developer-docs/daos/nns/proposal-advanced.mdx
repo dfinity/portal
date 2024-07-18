@@ -53,7 +53,7 @@ The following proposal type is specific for the Bitcoin canister:
 #### How to verify NNS core canister upgrades
 If you are looking to verify NNS core canister upgrades apart from regularly checking open proposals, you might want to consider the following information for proposals submitted by the DFINITY foundation:
 
-* For updates to the NNS canisters, you can follow [this repository](https://github.com/dfinity/ic). More specifically, the following sub-directories are relevant: 
+* For updates to the NNS canisters, you can follow [this repository](https://github.com/dfinity/ic). More specifically, the following sub-directories are relevant:
 
 - `rs/rosetta-api/icp_ledger/src`
 - `rs/rosetta-api/ledger_core`
@@ -70,7 +70,7 @@ If you are looking to verify NNS core canister upgrades apart from regularly che
 - `rs/nns/identity`
 - `rs/nns/nns-ui`
 - `rs/nns/sns-wasm`
-      
+
 * NNS core canister upgrade proposals are announced in [this forum thread](https://forum.dfinity.org/t/nns-updates-aggregation-thread/23551).
 * You can find the instructions on how to verify that the Wasm in the proposal was indeed build from the provided `git commit` in the proposal's section "Wasm Verification" (see [this example proposal](https://dashboard.internetcomputer.org/proposal/129394)).
 
@@ -88,7 +88,7 @@ More specifically, the following sub-directories are relevant:
 
 #### How to verify Internet Identity upgrades
 
-If you are looking to verify [Internet Identity (II)](/docs/current/developer-docs/web-apps/user-login/internet-identity/overview) canister upgrades apart from regularly checking open proposals, you might want to consider the following information for proposals submitted by the DFINITY foundation:
+If you are looking to verify [Internet Identity (II)](/docs/current/developer-docs/identity/internet-identity/overview) canister upgrades apart from regularly checking open proposals, you might want to consider the following information for proposals submitted by the DFINITY foundation:
 
 * For updates to the II canister, you can find the code in [the II repository](https://github.com/dfinity/internet-identity).
 * Each proposal points to the relevant commit that was used.
@@ -256,7 +256,7 @@ This topic only includes the following type concerned with KYCing Genesis neuron
 
 * `ApproveGenesisKYC`: When new neurons are created at Genesis, they have `GenesisKYC=false`. This restricts what actions they can perform. Specifically, they cannot spawn new neurons, and once their dissolve delays are zero, they cannot be disbursed and their balances unlocked to new accounts. This proposal sets `GenesisKYC=true` for batches of principals.
 
-:::info 
+:::info
 The Genesis event disburses all ICP in the form of neurons, whose principals must be KYCed. Consequently, all neurons created after Genesis have `GenesisKYC=true` set automatically since they must have been derived from balances that have already been KYCed.
 :::
 

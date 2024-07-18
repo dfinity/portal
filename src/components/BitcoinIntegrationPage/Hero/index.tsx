@@ -36,7 +36,7 @@ const Hero = forwardRef<HTMLDivElement, {}>((_, ref) => {
               Build
             </Link>
             <Link
-              to="/ecosystem?tag=Bitcoin"
+              to="https://internetcomputer.org/ecosystem?tag=Bitcoin"
               className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
             >
               Explore
