@@ -95,6 +95,30 @@ To use the CLI, simply pass the `--argument-file` flag, followed by the relative
 dfx canister install canister_name --argument-file src/candid/icp_ledger_init.did
 ```
 
+An example initialization argument file can be found below:
+
+```did
+(variant {
+  Init = record {
+    minting_account = "xxxxxxxxxx";
+    initial_values = vec {
+      record {
+        "xxxxxxxxxx";
+        record {
+          e8s = 10_000_000_000 : nat64;
+        };
+      };
+    };
+    send_whitelist = vec {};
+    transfer_fee = opt record {
+      e8s = 10_000 : nat64;
+    };
+    token_symbol = opt "LICP";
+    token_name = opt "Local ICP";
+  }
+})
+```
+
 You can also specify the `init_arg_file` for each canister in the `dfx.json` file:
 
 ```json
@@ -121,4 +145,4 @@ You can also specify the `init_arg_file` for each canister in the `dfx.json` fil
 
 - Initialization arguments must be set individually for each canister, either through the CLI for `dfx.json`. To make this easier, `init_arg_file`s can be used, as detailed below.
 
-- When using an argument file, environment variables used within the file will not be passed to the canister.
+- When using an argument file, values referenced as environment variables within the file will not be passed to the canister.
