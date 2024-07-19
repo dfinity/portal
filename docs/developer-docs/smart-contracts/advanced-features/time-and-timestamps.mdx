@@ -91,11 +91,11 @@ For Rust canisters:
 
 - [`datetimeutils`](https://crates.io/crates/datetimeutils):
 
-## Converting UNIX timestamps to DateTime format
+## Converting Unix timestamps to DateTime format
 
-The nanosecond format that system time is returned in uses the UNIX timestamp format, which is simply the total number of nanoseconds, such as `1721402551`. DateTime format uses the structure `YYYY-MM-DD HH:MM:SS`.
+The nanosecond format that system time is returned in uses the Unix timestamp format, which is simply the total number of nanoseconds, such as `1721402551`. DateTime format uses the structure `YYYY-MM-DD HH:MM:SS`.
 
-Below are examples showing how to convert UNIX timestamps to DateTime format.
+Below are examples showing how to convert Unix timestamps to DateTime format.
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko">
@@ -126,7 +126,7 @@ pub fn calendar_date(timestamp: &u64) -> CalendarDate {
 }
 ```
 
-You can also convert UNIX time to an `OffsetDateTime` format:
+You can also convert Unix time to an `OffsetDateTime` format:
 
 ```rust
 
