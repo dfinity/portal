@@ -6,5 +6,22 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 # Ledgers
 
 ## Overview
+In this section you will learn about the different types of ledgers that exist on the Internet Computer. This guide will go into detail what the different ledgers are, what their purpose is and how they differ from ledgers you may be familiar with from other blockchains. 
+
+## ICP ledger
+The ICP ledger is a canister which runs on the subnet 0, or NNS subnet. It is responsible for keeping track of ICP balances, process new transactions and providing clients with data about the history of transactions. The data format that is used to store this historic data is a blockchain. For every transaction a single block is created which points to its parent block by storing the parent block's hash.
+The ICP ledger is using `AccountIdentifiers` as its internal account representation. It is compatible with the ICRC-1 standard, however due to the fact that it is using `AccountIdentifiers` instead of `Accounts` it stores a different block format than ICRC-1 ledgers. The ICP ledger is part of the NNS and its controller is the governance canister. The same is true for the minting account of the ICP ledger. 
+Upgrades to the ICP ledger have to be approved by the NNS and the decision making process on whether to execute and upgrade is thus decentralized. 
+
+## ICRC-1 ledger
+ICRC-1 ledgers are a standardized version of ledgers on the Internet Computer. While ICRC-1 is the standard on how ledgers on the Internet Computer should behave, an ICRC-1 ledger is the implementation of the ICRC-1 standard. It differs to the ICP ledger in so far as it is using `Accounts` as its internal representation. 
+The ICRC-1 ledger is a stand alone implementation but in many cases it is part of a larger software structure such as the SNSes or chain-key tokens. 
+
+## Difference to other blockchains
+One of the biggest differences of ICP and ICRC-1 ledgers to other blockchains is that most account-based blockchains have the balances of accounts backed into their base protocol (e.g. Ethereum). This is not the case with either ICP or ICRC-1 ledgers. 
+The ICP ledger is one smart contract which runs on the NNS subnet, which means it sits on the application layer of the internet computer rather than the protocol level. Consensus on the Internet Computer is independent of the existence of the ICP ledger. Nevertheless, the ICP ledger is fundamentally important to the way the Internet Computer functions, especially due to its importance as a part of the NNS. 
+Transfers of the ICP token do not happen on the base protocol level but are only confined to the canister running the ICP ledger. All ICP token transactions go through this canister. Any information gathered about the blockchain that stores historic ICP token transactions originate from the ICP ledger canister. This includes the ICP index canister which fetches blocks periodically from the ICP ledger canister. 
+
+ICRC-1 ledgers are very similar in this regard, however they resemble tokens from other blockchains more closely. They are also run by a canister that runs the ICRC-1 ledger code and all transactions of the token that is represented by an ICRC-1 ledger go through the ICRC-1 ledger canister. 
 
 
