@@ -60,6 +60,11 @@ const sidebars = {
             },
             {
               type: "doc",
+              label: "Testnet deployment",
+              id: "developer-docs/getting-started/deploy/testnet",
+            },
+            {
+              type: "doc",
               label: "Mainnet deployment",
               id: "developer-docs/getting-started/deploy/mainnet",
             },
@@ -105,6 +110,7 @@ const sidebars = {
               type: "doc",
               id: "developer-docs/smart-contracts/write/overview",
             },
+            "developer-docs/smart-contracts/write/auto-scaling-architecture",
             "developer-docs/smart-contracts/write/resources",
           ],
         },
@@ -132,6 +138,7 @@ const sidebars = {
               type: "doc",
               id: "developer-docs/smart-contracts/deploy/overview",
             },
+            "developer-docs/smart-contracts/deploy/custom-testnets",
             "developer-docs/smart-contracts/deploy/larger-wasm",
             "developer-docs/smart-contracts/deploy/sharing",
           ],
@@ -202,7 +209,6 @@ const sidebars = {
             "developer-docs/smart-contracts/test/benchmarking",
             "developer-docs/smart-contracts/test/pocket-ic",
             "developer-docs/smart-contracts/test/reproducible-builds",
-            "developer-docs/smart-contracts/test/staging-environment",
             "developer-docs/smart-contracts/test/troubleshooting",
           ],
         },
@@ -290,10 +296,18 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "On-chain signatures: Threshold ECDSA",
+              label: "On-chain signatures",
               items: [
-                "developer-docs/smart-contracts/encryption/t-ecdsa",
-                "developer-docs/smart-contracts/encryption/signing-messages",
+                "developer-docs/smart-contracts/signatures/t-ecdsa",
+                "developer-docs/smart-contracts/signatures/t-schnorr",
+                {
+                  type: "category",
+                  label: "Signing messages",
+                  items: [
+                          "developer-docs/smart-contracts/signatures/signing-messages-t-ecdsa",
+                          "developer-docs/smart-contracts/signatures/signing-messages-t-schnorr",
+                  ],
+                },
               ],
             },
             "developer-docs/smart-contracts/advanced-features/periodic-tasks",
@@ -742,6 +756,7 @@ const sidebars = {
                 },
                 "developer-docs/multi-chain/chain-key-tokens/ckerc20/making-transactions",
                 "developer-docs/multi-chain/chain-key-tokens/ckerc20/using-ckerc20-in-dapps",
+                "developer-docs/multi-chain/chain-key-tokens/ckerc20/creating-new-ckerc20",
               ],
             },
           ],
@@ -779,6 +794,7 @@ const sidebars = {
             },
             "developer-docs/identity/authentication/email-password",
             "developer-docs/identity/authentication/nfid",
+            "developer-docs/identity/authentication/siwb",
             "developer-docs/identity/authentication/siwe",
             "developer-docs/identity/authentication/siws",
             "developer-docs/identity/authentication/msq",
@@ -848,6 +864,7 @@ const sidebars = {
                 },
               ],
             },
+            "developer-docs/defi/tokens/token-standards",
             "developer-docs/defi/token_integrations/index",
             "developer-docs/defi/icp-tokens/ledger-local-setup",
             "developer-docs/defi/icrc-1/icrc1-ledger-setup",
@@ -1014,24 +1031,24 @@ const sidebars = {
           label: "NFTs",
           items: [
             {
-            type: "doc",
-            label: "Overview",
-            id: "developer-docs/defi/nfts/overview",
-          },
-          "developer-docs/defi/nfts/nft-collections",
-          "developer-docs/defi/nfts/marketplaces"
-        ],
+              type: "doc",
+              label: "Overview",
+              id: "developer-docs/defi/nfts/overview",
+            },
+            "developer-docs/defi/nfts/nft-collections",
+            "developer-docs/defi/nfts/marketplaces"
+          ],
         },
         {
           type: "category",
           label: "Decentralized exchanges",
           items: [
             {
-            type: "doc",
-            label: "Overview",
-            id: "developer-docs/defi/dex/overview",
-          },
-        ],
+              type: "doc",
+              label: "Overview",
+              id: "developer-docs/defi/dex/overview",
+            },
+          ],
         },
         {
           type: "category",
@@ -1048,7 +1065,7 @@ const sidebars = {
             },
           ],
         },
-    ],
+      ],
     },
     {
       type: "category",
@@ -1372,6 +1389,18 @@ const sidebars = {
             "references/t-ecdsa-how-it-works",
             "references/vetkeys-overview",
             "references/supported-signatures",
+          ],
+        },
+        {
+          type: "category",
+          label: "Node providers",
+          items: [
+            {
+              type: "doc",
+              label: "Overview",
+              id: "references/node-providers/overview",
+            },
+            "references/node-providers/node-metrics",
           ],
         },
         {

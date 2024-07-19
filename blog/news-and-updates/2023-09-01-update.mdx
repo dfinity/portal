@@ -1,6 +1,6 @@
 ---
 title: Developer weekly update September 1, 2023
-description: This week, we're going to recap some of the recent enhancements to the Motoko VS Code extension that have been implemented over the past few months, plus we'll take a look at some major road map items that are in development for dfx. 
+description: This week, we're going to recap some of the recent enhancements to the Motoko VS Code extension that have been implemented over the past few months, plus we'll take a look at some major road map items that are in development for dfx.
 tags: [Devs]
 image: /img/blog/dev-update-blog-sept-1.jpg
 ---
@@ -9,11 +9,11 @@ image: /img/blog/dev-update-blog-sept-1.jpg
 
 ![August 9 2023](../../static/img/blog/dev-update-blog-sept-1.jpg)
 
-Hello devs and welcome back to another installment of developer weekly! This week, we're going to recap some of the recent enhancements to the Motoko VS Code extension that have been implemented over the past few months, plus we'll take a look at some major road map items that are in development for dfx. 
+Hello devs and welcome back to another installment of developer weekly! This week, we're going to recap some of the recent enhancements to the Motoko VS Code extension that have been implemented over the past few months, plus we'll take a look at some major road map items that are in development for dfx.
 
-Let's talk about it! 
+Let's talk about it!
 
-## Motoko VS Code extension enhancements 
+## Motoko VS Code extension enhancements
 
 Over the past few months, several improvements and enhancements have been made to the Motoko VS Code extension. Some of these changes are:
 
@@ -21,23 +21,23 @@ Over the past few months, several improvements and enhancements have been made t
 
 ![Motoko VS Code 1](../../static/img/blog/motoko-vs-code-1.png)
 
-- A Motoko unit test runner has been integrated directly into the VS Code extension, providing functionality for testing libraries such as Motoko Matchers or testing files via the moc interpreter. This unit test runner works out of the box with Wasmer and moc.js, and does not require you to install wasmtime or dfx to locally run base library unit tests. 
+- A Motoko unit test runner has been integrated directly into the VS Code extension, providing functionality for testing libraries such as Motoko Matchers or testing files via the moc interpreter. This unit test runner works out of the box with Wasmer and moc.js, and does not require you to install wasmtime or dfx to locally run base library unit tests.
 
 ![Motoko VS Code2 ](../../static/img/blog/motoko-vs-code-2.png)
 
-- Error messages for common issues with dfx.json, Mops, Vessel, and other workflows have been added for more efficient debugging. 
+- Error messages for common issues with dfx.json, Mops, Vessel, and other workflows have been added for more efficient debugging.
 
-- The go-to-definition for object pattern field aliases has been improved. Previously, go-to-definition on `B` with `import { A = B } "path/to/A"` would have resolved to the location of `B` within the import. With this improvement, the language server automatically follows the import and then places the cursor on the definition of `A`. Additionally, this change provides the ability for tooltip doc comments to be shown in more situations. 
+- The go-to-definition for object pattern field aliases has been improved. Previously, go-to-definition on `B` with `import { A = B } "path/to/A"` would have resolved to the location of `B` within the import. With this improvement, the language server automatically follows the import and then places the cursor on the definition of `A`. Additionally, this change provides the ability for tooltip doc comments to be shown in more situations.
 
-You can learn more about the Motoko VS Code extension [here](https://internetcomputer.org/docs/current/developer-docs/setup/vs-code).
+You can learn more about the Motoko VS Code extension [here](https://internetcomputer.org/docs/current/developer-docs/developer-tools/ide/vs-code).
 
 ## Upcoming `dfx` road map items
 
 ### `dfx new`
 
-The `dfx new` command has some exciting updates and improvements that will be coming out in `dfx release 0.15.1`. One of the biggest changes is that there will be an interactive prompt that will allow you to choose what language template you'd like to create a new project using. Previously, this decision was made using the flag `--type=motoko` or `--type=rust`. Additionally, there will be additional options through this new interactive prompt, such as Azle and Kybra. 
+The `dfx new` command has some exciting updates and improvements that will be coming out in `dfx release 0.15.1`. One of the biggest changes is that there will be an interactive prompt that will allow you to choose what language template you'd like to create a new project using. Previously, this decision was made using the flag `--type=motoko` or `--type=rust`. Additionally, there will be additional options through this new interactive prompt, such as Azle and Kybra.
 
-In this interactive prompt, there are also options to enable add-ons, such as adding a frontend canister using different frontend templates like React or Vue, enabling unit tests, or adding integrations like Internet Identity and Bitcoin. 
+In this interactive prompt, there are also options to enable add-ons, such as adding a frontend canister using different frontend templates like React or Vue, enabling unit tests, or adding integrations like Internet Identity and Bitcoin.
 
 ### `dfx extensions`
 
@@ -45,16 +45,16 @@ In this interactive prompt, there are also options to enable add-ons, such as ad
 
 ```
 dfx extension install nns
-dfx extension install sns 
+dfx extension install sns
 ```
 
-Then, you can use them as you did before, using commands like `dfx nns` and `dfx sns`. `dfx extensions` will be available in `dfx release 0.15.0`. 
+Then, you can use them as you did before, using commands like `dfx nns` and `dfx sns`. `dfx extensions` will be available in `dfx release 0.15.0`.
 
 For more information on `dfx nns` and `dfx sns`, please see the reference documentation [here](https://internetcomputer.org/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-nns)
 
-### `dfx deploy --playground` 
+### `dfx deploy --playground`
 
-As we've mentioned a couple of times already in previous developer weekly updates, the `dfx deploy --playground` feature is also coming in `dfx release 0.15.0`. This feature allows you to quickly deploy canisters directly to the playground without needing to setup a developer environment or cycles wallet to deploy them. 
+As we've mentioned a couple of times already in previous developer weekly updates, the `dfx deploy --playground` feature is also coming in `dfx release 0.15.0`. This feature allows you to quickly deploy canisters directly to the playground without needing to setup a developer environment or cycles wallet to deploy them.
 
 You can read more in our previous update from [July 26](2023-07-26-update.mdx).
 

@@ -20,8 +20,8 @@ function WhatIsIcpPage() {
   return (
     <Layout
       title="What is ICP"
-      description={`The ICP blockchain adds autonomous serverless cloud functionality to 
-      the public Internet - making it possible to build almost any system or service 
+      description={`The ICP blockchain adds autonomous serverless cloud functionality to
+      the public Internet - making it possible to build almost any system or service
       entirely on a decentralized network using "canister software", an evolution of smart contracts.`}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
@@ -73,8 +73,8 @@ function WhatIsIcpPage() {
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-            Learn how the ICP blockchain unlocks the power of smart 
-            contracts and explore the advanced design choices that make this possible.         
+            Learn how the ICP blockchain unlocks the power of smart
+            contracts and explore the advanced design choices that make this possible.
              </motion.p>
             </div>
           </AnimateSpawn>
@@ -137,8 +137,8 @@ function WhatIsIcpPage() {
                   Smart contracts on the ICP blockchain can utilize
                   hundreds of gigabytes of memory and compute at the full speed
                   of a modern CPU, which is many orders of magnitude more than
-                  Ethereum smart contracts. For example, the high performance of ICP smart 
-                  contracts enables the <a 
+                  Ethereum smart contracts. For example, the high performance of ICP smart
+                  contracts enables the <a
                     className="text-white underline"
                     href="https://www.youtube.com/watch?v=6qLvIXiCGcM" >
                   demo of an AI inference model running on an ICP smart contract</a>, which is uniquely possible on ICP.
@@ -207,7 +207,7 @@ function WhatIsIcpPage() {
                 </Link>
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="/docs/current/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp/"
+                  href="/docs/current/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp"
                 >
                   <DocsIcon /> Deploying your first full-stack dapp
                 </Link>
@@ -227,11 +227,11 @@ function WhatIsIcpPage() {
                   signing capabilities. For example, Chain-key Bitcoin (ckBTC),
                   a token backed 1:1 by BTC held entirely on the ICP blockchain,
                   is possible because ICP smart contracts can sign transactions.
-                  Additionally, the{" "} 
-                  <a 
+                  Additionally, the{" "}
+                  <a
                     className="text-white underline"
                     href="/docs/current/developer-docs/defi/exchange-rate-canister/">
-                    exchange rate canister  
+                    exchange rate canister
                   </a> sends and receives HTTP requests to fetch data from major cryptocurrency
                   exchanges.
                 </p>
@@ -250,7 +250,7 @@ function WhatIsIcpPage() {
                 </Link>
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa/"
+                  href="/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa"
                 >
                   <DocsIcon className="mr-1 ml-1 md:ml-0" /> Learn more about
                   ICP contracts threshold signing
@@ -267,7 +267,7 @@ function WhatIsIcpPage() {
                   Developers can write contracts using popular languages like
                   Rust, TypeScript, or Python and easily incorporate libraries
                   from their respective ecosystem, much like they would in
-                  traditional web development. They also have the option to use Motoko, 
+                  traditional web development. They also have the option to use Motoko,
                   a language specifically designed for the ICP environment.
                 </p>
                 <Link
@@ -421,7 +421,7 @@ function WhatIsIcpPage() {
                 </h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
                   ICP's smart contracts operate asynchronously, unlike
-                  Ethereum's synchronous model where the "whole world waits" for one's 
+                  Ethereum's synchronous model where the "whole world waits" for one's
                   smart contract transactions and causes delays as
                   transactions process sequentially. ICP's asynchronous execution allows
                   multiple contracts to process simultaneously.
@@ -520,7 +520,7 @@ function WhatIsIcpPage() {
                 </p>
               </motion.div>
 
-            
+
 
             </AnimateSpawn>
             <div className="flex justify-center items-center mt-10">

@@ -46,4 +46,4 @@ And a test table:
 | Header    | Title       |
 | Paragraph | Text        |
 
-[Go deeper](/how-it-works/canister-lifecycle/)
+[Go deeper](https://internetcomputer.org/how-it-works/canister-lifecycle/)

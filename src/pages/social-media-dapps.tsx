@@ -279,7 +279,7 @@ function SocialMediaDappsPage() {
             </motion.p>
             <MotionLink
               className="link-external"
-              href="/ecosystem?tag=SocialFi"
+              href="https://internetcomputer.org/ecosystem?tag=SocialFi"
               variants={transitions.item}
             >
               See dapp collection
@@ -322,12 +322,12 @@ function SocialMediaDappsPage() {
           {projects.map((p, i) => (
             <div
               className="
-              hidden sm:flex 
-              absolute 
+              hidden sm:flex
+              absolute
               transition-opacity
-              top-0 
+              top-0
               -right-6 xl:right-[calc(50%-440px)] xl:translate-x-1/2
-              w-4/10 
+              w-4/10
               max-w-[600px]
               "
               style={{ opacity: i === openProjectIndex ? 1 : 0 }}
@@ -341,10 +341,10 @@ function SocialMediaDappsPage() {
             src={BlobBlue}
             alt=""
             className="
-              absolute 
-              right-[-700px] md:right-[-800px] 
-              max-w-none w-[1400px] 
-              bottom-[-300px] md:bottom-auto 
+              absolute
+              right-[-700px] md:right-[-800px]
+              max-w-none w-[1400px]
+              bottom-[-300px] md:bottom-auto
               md:top-[-250px]
             "
           />

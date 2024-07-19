@@ -92,7 +92,7 @@ primitives that are not natively available on other chains. For example:
   from the protocol, which is useful in applications where fairness or
   unpredictability is required.
 
-- [Timers](/docs/current/developer-docs/smart-contracts/advanced-features/periodic-tasks/)
+- [Timers](/docs/current/developer-docs/smart-contracts/advanced-features/periodic-tasks)
   let canisters manage their tasks by initiating specific actions periodically
   without depending on any external actors.
 
@@ -104,15 +104,15 @@ primitives that are not natively available on other chains. For example:
 ### Key management and signing
 
 A key feature of the IC protocol’s Chain Fusion capabilities is
-[threshold signing](/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa/).
+[threshold signing](/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa/).
 This feature allows canisters to control accounts on other blockchains. The
-private keys that are used to sign transactions are never accesible in a single
+private keys that are used to sign transactions are never accessible in a single
 physical place, but securely distributed as shares among a group of nodes
 performing a threshold signing protocol to generate signatures on behalf of a
 canister.
 
-:::info 
-Threshold signing is also referred to as [chain-key cryptography](/docs/current/concepts/glossary/#chain-key). 
+:::info
+Threshold signing is also referred to as [chain-key cryptography](/docs/current/concepts/glossary#chain-key).
 :::
 
 ### Integrations
@@ -140,7 +140,7 @@ infrastructure?
 ICP’s decentralization is rooted in the replicated execution and state of
 canister smart contracts which depends on the honesty of a supermajority of
 subnet
-[nodes](/docs/current/developer-docs/getting-started/overview-of-icp/#nodes).
+[nodes](/docs/current/developer-docs/getting-started/overview-of-icp#nodes).
 These nodes are sourced from various identifiable and DAO-approved providers
 that operate in globally distributed data centers.
 
@@ -160,8 +160,8 @@ dapps:
 - **Chain-key tokens**: Using the primitives described above, DFINITY has built
   two canisters implementing the [ICRC-1](https://github.com/dfinity/ICRC) token
   standard to represent native Bitcoin and Ethereum tokens on ICP:
-  [ckBTC](/docs/current/developer-docs/multi-chain/bitcoin/ckbtc) and
-  [ckETH](/docs/current/developer-docs/multi-chain/ethereum/cketh). These tokens
+  [ckBTC](/docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview) and
+  [ckETH](/docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview). These tokens
   are digital twins of their corresponding native token and are backed 1:1 by
   the native assets which are managed 100% on-chain through a canister smart
   contract without any intermediaries.
@@ -171,12 +171,12 @@ dapps:
   [Ethereum](https://ethereum.org/en/) or any other
   [EVM blockchain](https://chainlist.org/?testnets=true).
 
-- **[tECDSA signing](/docs/current/references/t-ecdsa-how-it-works/)**: An ICP
+- **[tECDSA signing](/docs/current/references/t-ecdsa-how-it-works//)**: An ICP
   service implementing the threshold ECDSA protocol by Groth and Shoup as
   described in their [Eurocrypt 2022 paper](https://eprint.iacr.org/2021/1330).
 
 - **[HTTPS outcalls](/docs/current/developer-docs/security/security-best-practices/https-outcalls)**:
   Replicated calls into external web services.
 
-- **[Bitcoin API](/docs/current/references/bitcoin-how-it-works/)**: A protocol
+- **[Bitcoin API](/docs/current/references/bitcoin-how-it-works)**: A protocol
   API that allows canisters to interact with the Bitcoin blockchain directly.

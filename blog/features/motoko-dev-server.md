@@ -25,13 +25,13 @@ However, this feature is almost nonexistent when developing a decentralized appl
 
 ---
 
-This is where the [Motoko programming language](/docs/current/motoko/main/getting-started/motoko-introduction) comes in. With quick compilation times, module-based imports, and [stable variable](/docs/current/motoko/main/upgrades) semantics, Motoko is the ideal candidate for a game-changing live reload workflow.
+This is where the [Motoko programming language](/docs/current/motoko/main/getting-started/motoko-introduction) comes in. With quick compilation times, module-based imports, and [stable variable](/docs/current/motoko/main/canister-maintenance/upgrades) semantics, Motoko is the ideal candidate for a game-changing live reload workflow.
 
 Over the past six months, DFINITY has adopted full-stack live reloading in our internal Motoko projects, saving a huge amount of development time and allowing us to quickly try lots of different ideas to improve the end-user experience of our Internet Computer dapps.
 
 This was made possible using the [Motoko Dev Server](https://github.com/dfinity/motoko-dev-server) (or `mo-dev` for short), a command-line tool which facilitates a live-reload workflow for Motoko dapps and smart contracts.
 
-`mo-dev` is already used in a wide range of projects such as the [Motoko Playground](https://play.motoko.org/), [Developer Experience Feedback Board](https://dx.internetcomputer.org/), and even the language’s own [base library](https://github.com/dfinity/motoko-base).
+`mo-dev` is already used in a wide range of projects such as the [playground](https://play.motoko.org/), [Developer Experience Feedback Board](https://dx.internetcomputer.org/), and even the language’s own [base library](https://github.com/dfinity/motoko-base).
 
 Each use case requires different live-reload capabilities, so we decided to create a Swiss Army knife ([if you will](https://dfinity.org/foundation/)) of features which you can select depending on your project:
 

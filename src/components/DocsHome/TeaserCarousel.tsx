@@ -68,25 +68,6 @@ const CARDS: Array<CarouselCard> = [
     ),
     mainImage: "/img/docs/teaser-cards/main-2.svg",
   },
-  {
-    title: (
-      <h2 className={"text-white"}>Bi-weekly developer SNS office hours</h2>
-    ),
-    subtitle: (
-      <p className={"text-white"}>Every other Wednesday 5PM CEST / 8AM PST</p>
-    ),
-    backgroundImage: "/img/docs/teaser-cards/bg-3.svg",
-    cta: (
-      <Link
-        className="button-transparent button-with-icon pl-0"
-        href="https://dfinity.zoom.us/j/99550279424?pwd=SFlDbkRVVTV2bm1XSjFYMWJjanZmdz09"
-      >
-        Join on Zoom
-        <LinkArrowRight />
-      </Link>
-    ),
-    mainImage: "/img/docs/teaser-cards/main-3.svg",
-  },
 ];
 
 export function TeaserCarousel({ cards = CARDS }: { cards?: CarouselCard[] }) {

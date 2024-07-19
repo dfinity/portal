@@ -1,5 +1,5 @@
 ---
-keywords: [advanced, tutorial, signing messages, signatures]
+keywords: [advanced, tutorial, signing messages, signatures, threshold ecdsa, ecdsa]
 ---
 
 
@@ -9,13 +9,13 @@ import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Signing messages
+# Signing t-ECDSA messages
 
 <MarkdownChipRow labels={["Advanced", "Tutorial"]} />
 
 ## Overview
 
-The Threshold ECDSA API allows canisters to securely sign messages and transactions without anyone ever having direct access to the corresponding private keys. Each canister can control an unlimited number of keys by specifying different key derivation paths.
+The threshold ECDSA API allows canisters to securely sign messages and transactions without anyone ever having direct access to the corresponding private keys. Each canister can control an unlimited number of keys by specifying different key `derivation_path`s.
 The API provides two methods: 
 
 - `sign_with_ecdsa`: Used to sign messages.
@@ -29,7 +29,7 @@ To sign a message, the `sign_with_ecdsa` method is used. It uses the following C
 ```candid
 type sign_with_ecdsa_args = record {
     message_hash : blob;  // The hash of the message to sign.
-    derivation_path : vec blob; // An optional derivation path 
+    derivation_path : vec blob; // An optional derivation path
     key_id : record { curve : ecdsa_curve; name : text };
 };
 
@@ -48,12 +48,6 @@ Currently only the `secp256k1` curve and the following key names are supported:
 - `dfx_test_key1`: Only available on the local replica started by dfx.
 - `test_key_1`: Test key available on the ICP mainnet.
 - `key_1`: Production key available on the ICP mainnet.
-
-### Cost
-
-The `sign_with_ecdsa` method requires cycles to be attached. When the method in the Rust CDK is used, the required cycles are automatically attached. In Motoko, the cycles need to be added manually.
-[Learn more about Threshold ECDSA costs](/docs/current/references/t-ecdsa-how-it-works).
-
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
@@ -77,13 +71,13 @@ The `sign_with_ecdsa` method requires cycles to be attached. When the method in 
   let message_hash: Blob = Blob.fromArray(SHA256.sha256(Blob.toArray(Text.encodeUtf8(message))));
 
   Cycles.add(10_000_000_000);
-  
+
   let { signature } = await ic.sign_with_ecdsa({
     message_hash;
     derivation_path = [];
     key_id = { curve = #secp256k1; name = "dfx_test_key" };
   });
-  
+
 ```
 
 </TabItem>
@@ -93,7 +87,7 @@ The `sign_with_ecdsa` method requires cycles to be attached. When the method in 
 ```rust
 
   use ic_cdk::api::management_canister::ecdsa::{sign_with_ecdsa, EcdsaCurve, EcdsaKeyId, SignWithECDSA};
-  
+
   let message = "Hello, World!";
   // sha256 needs to be imported!
   let message_hash = sha256(&message).to_vec();
@@ -117,6 +111,11 @@ The `sign_with_ecdsa` method requires cycles to be attached. When the method in 
 
 </TabItem>
 </AdornedTabs>
+
+### Cost
+
+The `sign_with_ecdsa` method requires cycles to be attached. When the method in the Rust CDK is used, the required cycles are automatically attached. In Motoko, the cycles need to be added manually.
+[Learn more about threshold ECDSA costs](/docs/current/references/t-ecdsa-how-it-works).
 
 
 ## Obtaining public keys

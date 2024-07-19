@@ -188,10 +188,10 @@ function GamingPage() {
         </section>
 
         <section
-          className="pt-20 md:pt-48 
-          bg-[linear-gradient(180deg,#3b00b9_0%,#3b00b9_85%,transparent_85%,transparent_100%)] 
-          sm:bg-[linear-gradient(180deg,#3b00b9_0%,#3b00b9_87%,transparent_87%,transparent_100%)] 
-          md:bg-[linear-gradient(180deg,#3b00b9_0%,#3b00b9_77%,transparent_77%,transparent_100%)] 
+          className="pt-20 md:pt-48
+          bg-[linear-gradient(180deg,#3b00b9_0%,#3b00b9_85%,transparent_85%,transparent_100%)]
+          sm:bg-[linear-gradient(180deg,#3b00b9_0%,#3b00b9_87%,transparent_87%,transparent_100%)]
+          md:bg-[linear-gradient(180deg,#3b00b9_0%,#3b00b9_77%,transparent_77%,transparent_100%)]
           relative "
         >
           {/* <div className="blob blob-purple blob-sm md:blob-md blob-x-10 blob-y-10"></div> */}
@@ -270,7 +270,7 @@ function GamingPage() {
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
               <Link
-                href="/ecosystem?tag=Games"
+                href="https://internetcomputer.org/ecosystem?tag=Games"
                 className="link-primary link-with-icon"
               >
                 <LinkArrowRight />
@@ -548,9 +548,9 @@ function GamingPage() {
 
         <section
           className="
-          bg-[linear-gradient(180deg,#3b00b9_0%,#3b00b9_75%,transparent_75%,transparent_100%)] 
-          sm:bg-[linear-gradient(180deg,#3b00b9_0%,#3b00b9_87%,transparent_87%,transparent_100%)] 
-          md:bg-[linear-gradient(180deg,#3b00b9_0%,#3b00b9_50%,transparent_50%,transparent_100%)] 
+          bg-[linear-gradient(180deg,#3b00b9_0%,#3b00b9_75%,transparent_75%,transparent_100%)]
+          sm:bg-[linear-gradient(180deg,#3b00b9_0%,#3b00b9_87%,transparent_87%,transparent_100%)]
+          md:bg-[linear-gradient(180deg,#3b00b9_0%,#3b00b9_50%,transparent_50%,transparent_100%)]
           relative
           "
         >

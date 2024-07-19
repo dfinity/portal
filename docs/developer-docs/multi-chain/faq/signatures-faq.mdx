@@ -16,17 +16,15 @@ The threshold ECDSA protocol on ICP also includes protocols for secure distribut
 
 Each canister on any subnet of the Internet Computer has control over a unique ECDSA public key and can request signatures for this public key to be computed. A signature is only issued to the eligible canister, i.e., the legitimate holder of this ECDSA key. Each canister can obtain signatures only for its own ECDSA keys. Note that canisters do not hold any private ECDSA keys or key shares themselves.
 
-For more details, you can refer to the [ICP documentation on Threshold ECDSA](/docs/current/developer-docs/integrations/t-ecdsa#overview).
+For more details, you can refer to the [ICP documentation on Threshold ECDSA](/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa#overview).
 
 ## Does ICP support Schnorr signatures?
 
-Yes, the Internet Computer (ICP) does support Schnorr signatures. This is particularly important for the processing of certain types of assets and transactions. For instance, inscribing Ordinals and creating and processing BRC20 assets involves Schnorr cryptography, which ICP supports. This also enables web-based smart contract wallets such as OISY to self-host BRC20, Ethereum, and native ICP assets.
-
-For more details, you can refer to the [ICP documentation on Trustless multi-chain on ICP](https://internetcomputer.org/multichain).
+ICP supports Schnorr signatures as part of the [Deuterium milestone](https://internetcomputer.org/roadmap#Chain%20Fusion-Deuterium). This is particularly important for the processing of certain types of assets and transactions. For instance, inscribing Ordinals and creating and processing BRC20 assets involves Schnorr cryptography, which ICP supports. This also enables web-based smart contract wallets such as Oisy to self-host BRC20, Ethereum, and native ICP assets.
 
 ## Does ICP support EdDSA signatures?
 
-Not yet.
+ICP will support EdDSA signatures as part of the [Helium milestone](https://internetcomputer.org/roadmap#Chain%20Fusion-Helium).
 
 ## Does ICP support BLS signatures?
 
@@ -34,23 +32,23 @@ Yes, the Internet Computer Protocol (ICP) does support BLS (Boneh-Lynn-Shacham) 
 
 For more information, you can refer to the [ICP documentation](https://internetcomputer.org/docs) or the [ICP wiki](https://wiki.internetcomputer.org/wiki).
 
-## Does ICP support Multi-Signature (Multi-sig)?
+## Does ICP support multi-signature (multi-sig)?
 
 Not currently in the protocol, but there are projects like: [https://github.com/ICPsig/icpsig](https://github.com/ICPsig/icpsig) working on it.
 
-## Does ICP support Hash Time Locked Contracts (HTLCs)?
+## Does ICP support hash time locked contracts (HTLCs)?
 
 Not currently.
 
 For more detailed information on ICP's cryptographic mechanisms, you may want to refer to the [ICP documentation](https://internetcomputer.org/docs) or the [ICP wiki](https://wiki.internetcomputer.org/wiki).
 
-## Does ICP support Zero-Knowledge Succinct Non-Interactive Arguments of Knowledge (zk-SNARKs)?
+## Does ICP support zero-knowledge succinct non-interactive arguments of knowledge (zk-SNARKs)?
 
 Not currently.
 
 For more detailed information on ICP's cryptographic mechanisms, you may want to refer to the [ICP documentation](https://internetcomputer.org/docs) or the [ICP wiki](https://wiki.internetcomputer.org/wiki).
 
-## Does ICP support Proof of Logical Obliviousness (PLONK)?
+## Does ICP support proof of logical obliviousness (PLONK)?
 
 Not currently.
 

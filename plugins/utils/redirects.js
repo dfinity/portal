@@ -225,7 +225,7 @@ const redirects = `
   /docs/current/developer-docs/agents/nodejs /docs/current/developer-docs/developer-tools/off-chain/agents/nodejs
   /docs/current/developer-docs/agents/ic-agent-dfinity /docs/current/developer-docs/developer-tools/off-chain/agents/rust-agent
   /docs/current/references/gitpod /docs/current/developer-docs/developer-tools/ide/gitpod
-  /docs/current/developer-docs/setup/playground /docs/current/developer-docs/developer-tools/ide/playground
+  /docs/current/developer-docs/setup/playground /docs/current/developer-docs/getting-started/deploy/testnet
   /docs/current/developer-docs/setup/vs-code /docs/current/developer-docs/developer-tools/ide/vs-code
   /docs/current/developer-docs/setup/react-quickstart /docs/current/developer-docs/getting-started/quickstart/react-quickstart
   /docs/current/references/cli-reference/ /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/
@@ -299,7 +299,7 @@ const redirects = `
   /docs/current/references/quill-cli-reference/quill-transfer /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-transfer
   /docs/current/references/quill-cli-reference/quill-update-node-provider /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-update-node-provider
   /docs/current/developer-docs/backend/candid/candid-concepts /docs/current/developer-docs/smart-contracts/candid/candid-concepts
-  /docs/current/developer-docs/backend/candid/ /docs/current/developer-docs/smart-contracts/candid/
+  /docs/current/developer-docs/backend/candid/ /docs/current/developer-docs/smart-contracts/candid/candid-concepts
   /docs/current/developer-docs/backend/candid/candid-howto /docs/current/developer-docs/smart-contracts/candid/candid-howto
   /docs/current/developer-docs/backend/candid/generating-candid /docs/current/developer-docs/backend/rust/generating-candid
   /docs/current/developer-docs/setup/deploy /docs/current/developer-docs/smart-contracts/deploy/overview
@@ -319,10 +319,10 @@ const redirects = `
   /docs/current/developer-docs/production/topping-up-canister /docs/current/developer-docs/smart-contracts/topping-up/topping-up-canister
   /docs/current/developer-docs/getting-started/cycles/cycles_management_services /docs/current/developer-docs/smart-contracts/topping-up/cycles_management_services
   /docs/current/developer-docs/setup/pocket-ic /docs/current/developer-docs/smart-contracts/test/pocket-ic
-  /docs/current/developer-docs/production/staging-environment /docs/current/developer-docs/smart-contracts/test/staging-environment
+  /docs/current/developer-docs/production/staging-environment /docs/current/developer-docs/smart-contracts/deploy/custom-testnets
   /docs/current/developer-docs/backend/reproducible-builds /docs/current/developer-docs/smart-contracts/test/reproducible-builds
   /docs/current/developer-docs/backend/troubleshooting /docs/current/developer-docs/smart-contracts/test/troubleshooting
-  /docs/current/developer-docs/integrations/t-ecdsa /docs/current/developer-docs/smart-contracts/encryption/t-ecdsa
+  /docs/current/developer-docs/integrations/t-ecdsa /docs/current/developer-docs/smart-contracts/signatures/t-ecdsa
   /docs/current/developer-docs/integrations/vetkeys/ /docs/current/developer-docs/smart-contracts/encryption/vetkeys
   /docs/current/developer-docs/integrations/vetkeys/using-vetkeys /docs/current/developer-docs/smart-contracts/encryption/using-vetkeys
   /docs/current/developer-docs/integrations/composite-query /docs/current/developer-docs/smart-contracts/advanced-features/composite-query
@@ -349,7 +349,7 @@ const redirects = `
   /docs/current/developer-docs/http-compatible-canisters/serving-json-over-http /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-json-over-http
   /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http
   /docs/current/developer-docs/integrations/ledger/introduction_and_overview /docs/current/developer-docs/defi/overview
-  /docs/current/developer-docs/integrations/ledger/  /docs/current/developer-docs/defi/tokens/token-standards
+  /docs/current/developer-docs/integrations/ledger/  /docs/current/developer-docs/defi/overview
   /docs/current/developer-docs/integrations/ledger/ledger-local-setup  /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup
   /docs/current/developer-docs/integrations/ledger/interact-with-ledger  /docs/current/developer-docs/defi/icp-tokens/using-the-ledger
   /docs/current/developer-docs/integrations/ledger/icp-index-local-setup /docs/current/developer-docs/defi/tokens/indexes
@@ -465,7 +465,6 @@ const redirects = `
   /docs/current/developer-docs/backend/motoko/0.11.0-migration-guide /docs/current/motoko/main/migration-guides/0.11.0-migration-guide
   /docs/current/motoko/main/about-this-guide /docs/current/motoko/main/getting-started/motoko-introduction
   /motoko/main/motoko /docs/current/motoko/main/getting-started/motoko-introduction
-  /docs/current/motoko/version /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/main/motoko-introduction /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/main/motoko /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/main/basic-concepts /docs/current/motoko/main/getting-started/basic-concepts
@@ -520,7 +519,7 @@ const redirects = `
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/defi/icrc-1/icrc1-index-setup /docs/current/developer-docs/defi/tokens/indexes
   /docs/current/defi/icp-tokens/icp-index-local-setup /docs/current/developer-docs/defi/tokens/indexes
-  /docs/current/developer-docs/smart-contracts/encryption/signing-transactions /docs/current/developer-docs/smart-contracts/encryption/signing-messages
+  /docs/current/developer-docs/smart-contracts/signatures/signing-transactions /docs/current/developer-docs/smart-contracts/signatures/signing-messages-t-ecdsa
   /docs/current/developer-docs/defi/icp-tokens/overview /docs/current/developer-docs/defi/tokens/token-standards
   /docs/current/developer-docs/defi/asset-custody/self-custody-quickstart /docs/current/developer-docs/defi/wallets/self-custody/self-custody-quickstart
   /docs/current/developer-docs/defi/asset-custody/hardware-wallet-cli /docs/current/developer-docs/defi/wallets/self-custody/hardware-wallet-cli
@@ -546,7 +545,7 @@ const redirects = `
   /docs/developers-guide/sdk-guide.html	/docs/current/developer-docs/getting-started/install/
   /docs/current/references/cli-reference/dfx-deps	/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-deps
   /docs/current/samples/internet-identity-sample /docs/current/references/samples/motoko/internet_identity_integration/
-  /docs/current/developer-docs/smart-contracts/advanced-features/threshold-signing /docs/current/developer-docs/smart-contracts/encryption/t-ecdsa
+  /docs/current/developer-docs/smart-contracts/advanced-features/threshold-signing /docs/current/developer-docs/smart-contracts/signatures/t-ecdsa
   /docs/current/backend/candid/generating-candid /docs/current/developer-docs/backend/rust/generating-candid
   /docs/current/developer-docs/backend/motoko/index.md /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/backend/rust/index /docs/current/developer-docs/backend/rust/
@@ -555,9 +554,8 @@ const redirects = `
   /docs/current/developer-docs/setup/cycles/cycles-faucet.md	/docs/current/developer-docs/getting-started/cycles/cycles-faucet
   /docs/current/developer-docs/setup/deploy-mainnet.md	/docs/current/developer-docs/getting-started/deploy/mainnet
   /docs/current/developer-docs/setup/index.md	/docs/current/developer-docs/getting-started/install/
-  /docs/current/developer-docs/smart-contracts/candid/index	/docs/current/developer-docs/smart-contracts/candid/
+  /docs/current/developer-docs/smart-contracts/candid/index	/docs/current/developer-docs/smart-contracts/candid/candid-concepts
   /docs/current/docs/current/references/ii-spec	/docs/current/references/ii-spec
-  /docs/current/motoko /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/ /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/getting-started/motoko-introduction /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/main/ /docs/current/motoko/main/getting-started/motoko-introduction
@@ -565,7 +563,6 @@ const redirects = `
   /docs/current/samples/nft	/docs/current/references/samples/motoko/dip721-nft-container/
   /docs/language-guide/cycles.html /docs/current/developer-docs/getting-started/cycles/overview
   /grants	https://dfinity.org/grants
-  /docs/base-libraries/experimentalcycles	/docs/current/motoko/main/base/ExperimentalCycles
   /docs/base-libraries/motoko-base/Text.html	/docs/current/motoko/main/base/Text
   /docs/candid-guide/candid-types.html	/docs/current/developer-docs/smart-contracts/candid/candid-howto/
   /docs/current/developer-docs/deploy/custom-domain	/docs/current/developer-docs/web-apps/custom-domains/using-custom-domains
@@ -576,14 +573,18 @@ const redirects = `
   /docs/current/blog/features/vetkey-primer	/blog/features/vetkey-primer
   /docs/current/concepts/chain-key-technology/ /docs/current/developer-docs/multi-chain/overview
   /docs/current/concepts/concepts-intro.html	/docs/current/developer-docs/getting-started/overview-of-icp
-  /docs/current/concepts/what-is-IC	/docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/developer-docs/backend	/docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/developer-docs/backend/rust/rust-quickstart	/docs/current/developer-docs/backend/rust/
   /docs/current/developer-docs/best-practices/	/docs/current/developer-docs/smart-contracts/best-practices/general
   /docs/current/developer-docs/best-practices/considerations-for-nft-devs /docs/current/developer-docs/defi/nfts/overview
-  /docs/current/developer-docs/smart-contracts/advanced-features/serving-http-request /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview
-  /docs/current/developer-docs/smart-contracts/candid/index /docs/current/developer-docs/smart-contracts/candid/candid-concepts
-
+  /docs/current/developer-docs/smart-contracts/test/staging-environment /docs/current/developer-docs/smart-contracts/deploy/custom-testnets
+  /docs/current/developer-docs/smart-contracts/encryption/signing-messages /docs/current/developer-docs/smart-contracts/signatures/signing-messages-t-ecdsa
+  /docs/current/developer-docs/smart-contracts/encryption/t-ecdsa /docs/current/developer-docs/smart-contracts/signatures/t-ecdsa
+  /docs/current/developer-docs/smart-contracts/encryption/t-schnorr /docs/current/developer-docs/smart-contracts/signatures/t-schnorr
+  /docs/current/developer-docs/smart-contracts/encryption/signing-messages-tecdsa /docs/current/developer-docs/smart-contracts/signatures/signing-messages-t-ecdsa
+  /docs/current/developer-docs/smart-contracts/encryption/signing-messages-t-schnorr /docs/current/developer-docs/smart-contracts/signatures/signing-messages-t-schnorr
+  /docs/current/developer-docs/production/topping-up-canister/ /docs/current/developer-docs/smart-contracts/topping-up/topping-up-canister
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/current/motoko/main/reference/language-manual
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

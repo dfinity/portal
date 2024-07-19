@@ -8,3 +8,4 @@ subnet=A collection of nodes that run their own instance of the ICP consensus al
 subnets=A collection of nodes that run their own instance of the ICP consensus algorithm.
 NNS=The DAO that governs ICP.
 ledger=A smart contract that holds blocks, each containing a single transaction.
+IC SDK=A software development kit for creating and managing canister smart contracts on the Internet Computer (ICP blockchain).

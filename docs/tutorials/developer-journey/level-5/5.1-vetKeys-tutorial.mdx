@@ -108,7 +108,7 @@ To demonstrate how BLS signatures are used on ICP, consider the following scenar
 
 In the scenario of vetKD, the master key of the IBE scheme uses a BLS signature key secret that is shared amongst the nodes. The derived identity is threshold signed, resulting in a signature that acts as a symmetric encryption key.
 
-Each of these components of vetKeys are described further in the [vetKeys primer](/blog/features/vetkey-primer).
+Each of these components of vetKeys are described further in the [vetKeys primer](https://internetcomputer.org/blog/features/vetkey-primer).
 
 ## vetKeys example dapp
 
@@ -293,7 +293,7 @@ shared({ caller = initializer }) actor class() {
 
     // Next, define private fields.
     // Stable actor fields are automatically retained across canister upgrades.
-    // You can learn more about upgrades in the Motoko docs: https://internetcomputer.org/docs/current/motoko/main/upgrades/
+    // You can learn more about upgrades in the Motoko docs: https://internetcomputer.org/docs/current/motoko/main/canister-maintenance/upgrades/
 
     // As a design choice, this canister uses globally unique note identifiers for all users.
     // This identifier is a stable variable, which allows the value to persist across canister upgrades.
@@ -343,7 +343,7 @@ shared({ caller = initializer }) actor class() {
 
     // Remember that shared functions, such as those specified with [shared], are accessible to remote callers.
     // The extra parameter [caller] is the caller's principal.
-    // You can refer to the Motoko docs for more information: https://internetcomputer.org/docs/current/motoko/main/actors-async
+    // You can refer to the Motoko docs for more information: https://internetcomputer.org/docs/current/motoko/main/writing-motoko/actors-async
 
     // The following shared function adds new note for this [caller].
     // This function may be called only by those users that have at least one device registered via [register_device].
@@ -583,7 +583,7 @@ src/frontend
         └── notifications.ts
 ```
 
-This tutorial will not dive into the frontend's configuration, as it is focused on the vetKey implementation within the backend of the dapp. [Learn more about frontend canisters](/docs/current/developer-docs/frontend/).
+This tutorial will not dive into the frontend's configuration, as it is focused on the vetKey implementation within the backend of the dapp. [Learn more about frontend canisters](/docs/current/developer-docs/web-apps/application-frontends/overview).
 
 ### Starting a local replica
 
@@ -764,17 +764,17 @@ Then, you can see the note has been saved in the 'Your notes' section:
 
 ## Resources
 
-- [vetKeys documentation](/docs/current/developer-docs/integrations/vetkeys/).
+- [vetKeys documentation](/docs/current/developer-docs/smart-contracts/encryption/vetkeys).
 
-- [vetKeys technology overview](/docs/current/developer-docs/integrations/vetkeys/technology-overview).
+- [vetKeys technology overview](/docs/current/references/vetkeys-overview).
 
-- [vetKeys example](/docs/current/developer-docs/integrations/vetkeys/using-vetkeys).
+- [vetKeys example](/docs/current/developer-docs/smart-contracts/encryption/using-vetkeys).
 
 - [vetKeys discussion forum post](https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560).
 
 - [The first Community Conversation](https://youtu.be/baM6jHnmMq8).
 
-- [vetKeys primer blog post](https://internetcomputer.org/blog/features/vetkey-primer).
+- [vetKeys primer blog post](ttps://internetcomputer.org/blog/features/vetkey-primer).
 
 - [vetKeys research paper](https://eprint.iacr.org/2023/616.pdf).
 

@@ -1,3 +1,7 @@
+---
+keywords: [beginner, write, resources, architecture, single canister, multi-canister]
+---
+
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
@@ -20,7 +24,7 @@ To begin writing and structuring your smart application, there are a few differe
     It takes care of hosting code and data in canisters such that developers can write Web3 applications using familiar Web2 concepts and patterns.
 	For more details please follow [the official Juno documentation](https://juno.build/docs/intro).
 
-  - [Bitfinity EVM](/docs/current/developer-docs/backend/solidity) is tailored for Solidity developers.
+  - [Bitfinity EVM](/docs/current/developer-docs/backend/solidity/) is tailored for Solidity developers.
     It is a canister that runs an instance of the Ethereum virtual machine and allows developers to upload and execute smart contracts written in Solidity.
 	For more details please follow [the official Bitfinity documentation](https://docs.bitfinity.network/).
 
@@ -124,3 +128,13 @@ This is a new and unprecedented way of programming.
 There hasn’t been a successful implementation of this vision yet.
 A couple of projects that opted for this architecture, but only [NFID Vaults](https://nfidvaults.com) have given the ownership of canisters to the users.
 A common misconception is that the canister-per-user architecture is the most scalable, actually canister-per-subnet is more performant because it can utilize multiple subnets without having the overhead of too many canisters.
+
+### Multi-canister architecture samples
+
+- [Quickstart scaling - Rust](https://github.com/GLicDEV/quickstart_scaling/)
+
+- [Autoscaling notes - Motoko](https://github.com/hoosan/auto-scaling-notes): Live preview: https://yflxa-iaaaa-aaaai-acfja-cai.ic0.app/
+
+- [Autoscaling storage - Motoko](https://github.com/PrimLabs/ICSP)
+
+- [Scaled storage - Rust](https://github.com/scroobius-pip/scaled_storage)

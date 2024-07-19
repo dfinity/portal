@@ -126,7 +126,7 @@ const developers = [
         >
           Chain Fusion
         </Link>
-        ) with no app store policies to worry about. 
+        ) with no app store policies to worry about.
       </>
     ),
   },
@@ -632,7 +632,7 @@ function InternetIdentityPage() {
                       <li>
                         Dapps must make authenticated calls to their own
                         canisters as well as shared infrastructure canisters,
-                        for instance the <Link href="https://internetcomputer.org/docs/current/developer-docs/defi/icp-tokens/overview">IC Ledger canister</Link>.
+                        for instance the <Link href="https://internetcomputer.org/docs/current/developer-docs/defi/tokens/token-standards">IC Ledger canister</Link>.
                       </li>
                     </ul>
                   </p>
@@ -640,7 +640,7 @@ function InternetIdentityPage() {
                     As a result, Internet Computer requires a digital identity
                     layer that is self-sovereign and protects users from
                     malicious dapps. This layer is Internet Identity, a
-                    trustless smart contract that provides: 
+                    trustless smart contract that provides:
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     <ul>
@@ -676,7 +676,7 @@ function InternetIdentityPage() {
                     Verifiable Credentials is an emerging W3C standard and a
                     solution to the ever increasing problem of forged physical
                     and digital identities. It is the technical term for a list
-                    of identity attributes that are cryptographically secured. 
+                    of identity attributes that are cryptographically secured.
                   </p>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     Internet Identity has a built-in verifiable credential (VC)

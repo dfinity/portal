@@ -44,7 +44,7 @@ If you intend to deploy canisters on high-replication subnets, your canister sho
 
 ## Units and fiat value
 
-The price of cycles is fixed against the price of [XDR](/docs/current/references/glossary#xdr), where **1 trillion cycles equals 1 XDR**. As of December 18, 2023, the exchange rate for 1 XDR = $1.336610. The exchange rate for USD/XDR may vary. Learn more about [XDR exchange rates](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx).
+The price of cycles is fixed against the price of [XDR](/docs/current/concepts/glossary#xdr), where **1 trillion cycles equals 1 XDR**. As of December 18, 2023, the exchange rate for 1 XDR = $1.336610. The exchange rate for USD/XDR may vary. Learn more about [XDR exchange rates](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx).
 
 The following table shows units of cycles and the respective fiat values:
 
@@ -104,12 +104,16 @@ Note that query messages are currently free, but this may change in the future.
 
 ### Execution
 
-To handle an incoming message or task such as a timer or heartbeat, the canister executes the function specified in the message. The execution cost consists of a fixed execution fee and per-instruction fee that is charged for each executed WebAssembly instruction: `base-fee` + `per-instruction-fee` * `number-of-instructions`. The current values of fees are `base-fee` = 590K cycles (or $0.0000007885999 USD), `per-instruction-fee` = 0.4 cycles (or $0.0053 USD for 1B instructions).
+To handle an incoming message or task such as a timer or heartbeat, the canister executes the function specified in the message. The execution cost consists of a fixed execution fee and per-instruction fee (on application subnets (13 nodes), 10 instructions cost 4 cycles) that is charged for each executed WebAssembly instruction:
+
+`base-fee` + `per-instruction-fee` * `number-of-instructions`
+
+The current values of fees are `base-fee` = 590K cycles (or $0.0000007885999 USD), `per-instruction-fee` = 0.4 cycles (or $0.0053 USD for 1B instructions).
 
 By default canisters are scheduled for execution in a "best-effort" manner. Canisters that require guaranteed execution can get a share of compute capacity by setting `compute_allocation` in their canister settings. Compute allocation is expressed in percents and denote the percentage of an execution core reserved for the canister. For example, compute allocation of 50% means that the canister will get 50% of an execution core. It will be scheduled at least every other round. Compute allocation of 100% means that the canister will be scheduled every round. The current fee for 1 percent computer allocation per second is 10M cycles (or $0.0000133661 USD).
 
 ### Storage
-Canisters pay for storage consumed by their [Wasm memory](/docs/current/developer-docs/production/storage#heap-memory) and [stable memory](/docs/current/developer-docs/production/storage#stable-memory) per time. Storing 1 GiB for 1 second costs 127k cycles, which amounts to ~4T cycles (or $5.35 USD) for storing 1 GiB for 1 year.
+Canisters pay for storage consumed by their [Wasm memory](/docs/current/developer-docs/smart-contracts/maintain/storage#heap-memory) and [stable memory](/docs/current/developer-docs/smart-contracts/maintain/storage#stable-memory) per time. Storing 1 GiB for 1 second costs 127k cycles, which amounts to ~4T cycles (or $5.35 USD) for storing 1 GiB for 1 year.
 
 Canisters can reserve storage on a subnet through the `memory_allocation` setting. However, the canister will be charged as if the entire amount of allocated storage is being used.
 
@@ -140,7 +144,7 @@ Special features have different costs since they use special infrastructure to p
 
 - **Bitcoin API**: Pricing for the **Bitcoin API** is available in the [Bitcoin API documentation](/docs/current/references/bitcoin-how-it-works).
 
-- **Chain-key signing API**: Pricing for the **Chain-key signing API** is available in the [Chain-key signing / threshold ECDSA documentation](/docs/current/references/t-ecdsa-how-it-works).
+- **Chain-key signing API**: Pricing for the **Chain-key signing API** is available in the [Chain-key signing / threshold ECDSA documentation](/docs/current/references/t-ecdsa-how-it-works/).
 
 - **EVM RPC** Pricing for the **EVM RPC** canister is available in the [EVM RPC canister documentation](/docs/current/developer-docs/multi-chain/ethereum/overview).
 
@@ -185,15 +189,15 @@ The following table shows the calculated storage cost per GiB for a 30-day month
 
 Monitoring cycles usage
    - [Check your canister's cycles balance](/docs/current/developer-docs/defi/cycles/cycles-wallet#check-the-cycle-balance).
-   - [Monitor your canister's cycles usage](/docs/current/developer-docs/getting-started/cycles/cycles_management_services).
+   - [Monitor your canister's cycles usage](/docs/current/developer-docs/smart-contracts/topping-up/cycles_management_services).
    - [Motoko cycles management library](https://github.com/CycleOperators/cycles-manager).
 
 Getting cycles back from a canister
    - To withdraw cycles from a canister, the [canister must be deleted](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#getting-cycles-back-from-a-canister).
 
 Topping up canisters
-   - [Top up your canisters](/docs/current/developer-docs/production/topping-up-canister).
-   - [Cycles management services](/docs/current/developer-docs/getting-started/cycles/cycles_management_services).
+   - [Top up your canisters](docs/current/developer-docs/smart-contracts/topping-up/topping-up-canister).
+   - [Cycles management services](/docs/current/developer-docs/smart-contracts/topping-up/cycles_management_services).
    - [Cycle.express](https://cycle.express/).
 
 Counting instructions

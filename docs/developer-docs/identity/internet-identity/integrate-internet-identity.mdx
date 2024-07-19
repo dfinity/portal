@@ -47,27 +47,27 @@ You will be prompted to select the language that your backend canister will use.
 ```
 ? Select a backend language: ›
 ❯ Motoko
-  Rust
-  TypeScript (Azle)
-  Python (Kybra)
+  Rust
+  TypeScript (Azle)
+  Python (Kybra)
 ```
 
 Then, select a frontend framework for your frontend canister. Select 'Vanilla JS':
 
 ```
-  ? Select a frontend framework: ›
-  SvelteKit
-  React
-  Vue
+  ? Select a frontend framework: ›
+  SvelteKit
+  React
+  Vue
 ❯ Vanilla JS
-  No JS template
-  No frontend canister
+  No JS template
+  No frontend canister
 ```
 
 Lastly, you can include extra features to be added to your project. Select 'Internet Identity'.
 
 ```
-  ? Add extra features (space to select, enter to confirm) ›
+  ? Add extra features (space to select, enter to confirm) ›
 x Internet Identity
 ⬚ Bitcoin (Regtest)
 ⬚ Frontend tests
@@ -98,37 +98,37 @@ Open the `dfx.json` file and replace the existing content with the following:
 
 ```json
 {
-  "canisters": {
-    "ii_integration_backend": {
-      "main": "src/ii_integration_backend/main.mo",
-      "type": "motoko"
-    },
-    "internet_identity" : {
-      "type": "pull",
-      "id": "rdmx6-jaaaa-aaaaa-aaadq-cai"
-    },
-    "ii_integration_frontend": {
-      "dependencies": [
-        "ii_integration_backend"
-      ],
-      "frontend": {
-        "entrypoint": "src/ii_integration_frontend/src/index.html"
-      },
-      "source": [
-        "src/ii_integration_frontend/assets",
-        "dist/ii_integration_frontend/"
-      ],
-      "type": "assets"
-    }
-  },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
-  "output_env_file": ".env",
-  "version": 1
+  "canisters": {
+    "ii_integration_backend": {
+      "main": "src/ii_integration_backend/main.mo",
+      "type": "motoko"
+    },
+    "internet_identity" : {
+      "type": "pull",
+      "id": "rdmx6-jaaaa-aaaaa-aaadq-cai"
+    },
+    "ii_integration_frontend": {
+      "dependencies": [
+        "ii_integration_backend"
+      ],
+      "frontend": {
+        "entrypoint": "src/ii_integration_frontend/src/index.html"
+      },
+      "source": [
+        "src/ii_integration_frontend/assets",
+        "dist/ii_integration_frontend/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
 }
 ```
 
@@ -153,9 +153,9 @@ dfx deps init internet_identity --argument '(null)'
 
 ```motoko
 actor {
-    public shared (msg) func whoami() : async Principal {
-        msg.caller
-    };
+    public shared (msg) func whoami() : async Principal {
+        msg.caller
+    };
 };
 ```
 
@@ -171,8 +171,8 @@ npm install @dfinity/auth-client
 
 ```javascript
 /* A simple webapp that authenticates the user with Internet Identity and that
- * then calls the whoami canister to check the user's principal.
- */
+ * then calls the whoami canister to check the user's principal.
+ */
 
 import { Actor, HttpAgent } from "@dfinity/agent";
 import { AuthClient } from "@dfinity/auth-client";
@@ -181,57 +181,57 @@ const webapp_id = process.env.WHOAMI_CANISTER_ID;
 
 // The interface of the whoami canister
 const webapp_idl = ({ IDL }) => {
-  return IDL.Service({ whoami: IDL.Func([], [IDL.Principal], ["query"]) });
+  return IDL.Service({ whoami: IDL.Func([], [IDL.Principal], ["query"]) });
 };
 export const init = ({ IDL }) => {
-  return [];
+  return [];
 };
 
 // Autofills the <input> for the II Url to point to the correct canister.
 document.body.onload = () => {
-  let iiUrl;
-  if (process.env.DFX_NETWORK === "local") {
-    iiUrl = `http://localhost:4943/?canisterId=${process.env.II_CANISTER_ID}`;
-  } else if (process.env.DFX_NETWORK === "ic") {
-    iiUrl = `https://${process.env.II_CANISTER_ID}.ic0.app`;
-  } else {
-    iiUrl = `https://${process.env.II_CANISTER_ID}.dfinity.network`;
-  }
-  document.getElementById("iiUrl").value = iiUrl;
+  let iiUrl;
+  if (process.env.DFX_NETWORK === "local") {
+    iiUrl = `http://localhost:4943/?canisterId=${process.env.II_CANISTER_ID}`;
+  } else if (process.env.DFX_NETWORK === "ic") {
+    iiUrl = `https://${process.env.II_CANISTER_ID}.ic0.app`;
+  } else {
+    iiUrl = `https://${process.env.II_CANISTER_ID}.dfinity.network`;
+  }
+  document.getElementById("iiUrl").value = iiUrl;
 };
 
 document.getElementById("loginBtn").addEventListener("click", async () => {
-  // When the user clicks, we start the login process.
-  // First we have to create and AuthClient.
-  const authClient = await AuthClient.create();
+  // When the user clicks, we start the login process.
+  // First we have to create and AuthClient.
+  const authClient = await AuthClient.create();
 
-  // Find out which URL should be used for login.
-  const iiUrl = document.getElementById("iiUrl").value;
+  // Find out which URL should be used for login.
+  const iiUrl = document.getElementById("iiUrl").value;
 
-  // Call authClient.login(...) to login with Internet Identity. This will open a new tab
-  // with the login prompt. The code has to wait for the login process to complete.
-  // We can either use the callback functions directly or wrap in a promise.
-  await new Promise((resolve, reject) => {
-    authClient.login({
-      identityProvider: iiUrl,
-      onSuccess: resolve,
-      onError: reject,
-    });
-  });
+  // Call authClient.login(...) to login with Internet Identity. This will open a new tab
+  // with the login prompt. The code has to wait for the login process to complete.
+  // We can either use the callback functions directly or wrap them in a promise.
+  await new Promise((resolve, reject) => {
+    authClient.login({
+      identityProvider: iiUrl,
+      onSuccess: resolve,
+      onError: reject,
+    });
+  });
 
-  // At this point we're authenticated, and we can get the identity from the auth client:
-  const identity = authClient.getIdentity();
-  // Using the identity obtained from the auth client, we can create an agent to interact with the IC.
-  const agent = new HttpAgent({ identity });
-  // Using the interface description of our webapp, we create an actor that we use to call the service methods.
-  const webapp = Actor.createActor(webapp_idl, {
-    agent,
-    canisterId: webapp_id,
-  });
-  // Call whoami which returns the principal (user id) of the current user.
-  const principal = await webapp.whoami();
-  // show the principal on the page
-  document.getElementById("loginStatus").innerText = principal.toText();
+  // At this point we're authenticated, and we can get the identity from the auth client:
+  const identity = authClient.getIdentity();
+  // Using the identity obtained from the auth client, we can create an agent to interact with the IC.
+  const agent = new HttpAgent({ identity });
+  // Using the interface description of our webapp, we create an actor that we use to call the service methods.
+  const webapp = Actor.createActor(webapp_idl, {
+    agent,
+    canisterId: webapp_id,
+  });
+  // Call whoami which returns the principal (user id) of the current user.
+  const principal = await webapp.whoami();
+  // show the principal on the page
+  document.getElementById("loginStatus").innerText = principal.toText();
 });
 ```
 
@@ -250,7 +250,7 @@ This code does the following:
 - Then, uses the interface description of the app to create an actor that's used to call the app's service methods.
 
 :::info
-If you used a project name other than `ii_integration`, you will need to rename the imports and environment variable in the code.
+If you used a project name other than `ii_integration`, you will need to rename the imports and environment variables in the code.
 :::
 
 ### Step 5: Insert the following code into the `src/ii_integration_frontend/src/index.html` file:
@@ -258,36 +258,36 @@ If you used a project name other than `ii_integration`, you will need to rename 
 ```html
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>greet</title>
-    <base href="/" />
-    <link rel="icon" href="favicon.ico" />
-    <link type="text/css" rel="stylesheet" href="main.css" />
-  </head>
-  <body>
-    <main>
-      <img src="logo2.svg" alt="DFINITY logo" />
-      <br />
-      <br />
-      <form>
-        <button id="login">Login!</button>
-      </form>
-      <br />
-      <form>
-        <button id="whoAmI">Who Am I</button>
-      </form>
-      <section id="principal"></section>
-    </main>
-  </body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>greet</title>
+    <base href="/" />
+    <link rel="icon" href="favicon.ico" />
+    <link type="text/css" rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <main>
+      <img src="logo2.svg" alt="DFINITY logo" />
+      <br />
+      <br />
+      <form>
+        <button id="login">Login!</button>
+      </form>
+      <br />
+      <form>
+        <button id="whoAmI">Who Am I</button>
+      </form>
+      <section id="principal"></section>
+    </main>
+  </body>
 </html>
 ```
 
 This code provides a simple UI for us to interact with our application.
 
 :::info
-If you'd rather clone the repo for this code, it can be found [here](https://github.com/letmejustputthishere/ii_integration_example).
+[View the repo for this code](https://github.com/letmejustputthishere/ii_integration_example) if you would rather clone the example.
 :::
 
 ### Step 6: Deploy the project:
@@ -303,7 +303,7 @@ dfx deploy
 
 ### Step 7: Then, select 'Log in'.
 
-You'll be redirected to the II frontend. Since you're running this locally, this will be using a local, non-production Internet Identity. To create one, follow the on-screen steps.
+You'll be redirected to the II frontend. Since you're running this locally, you will be using a local, non-production Internet Identity. To create one, follow the on-screen steps.
 
 ### Step 8: Create a local Internet Identity
 
@@ -315,7 +315,7 @@ You'll be redirected to the II frontend. Since you're running this locally, this
 
 ![Internet Identity 2](../_attachments/II_2.png)
 
-- When prompted, choose how to create your passkey, either on your current device or you can use another device.
+- When prompted, choose how to create your passkey, either on your current device or on another device.
 
 ![Internet Identity 3](../_attachments/II_3.png)
 
@@ -341,9 +341,98 @@ When modifying this example's frontend, it is recommended to develop using a loc
 
 To start a local development server, run `npm run start`. The output will contain the local address the project is running at, such as `127.0.0.1:4943`.
 
+## End-to-end testing
+
+To run end-to-end testing for Internet Identity integrations, you can use the [Internet Identity Playwright plugin](https://github.com/dfinity/internet-identity-playwright).
+
+To use this plugin, first install [Playwright](https://playwright.dev/), then install the plugin itself with a package manager:
+
+```
+# Install with npm
+npm install --save-dev @dfinity/internet-identity-playwright
+
+# Install with pnpm
+pnpm add --save-dev @dfinity/internet-identity-playwright
+
+# Install with yarn
+yarn add -D @dfinity/internet-identity-playwright
+```
+
+Import the plugin into your Playwright test file:
+
+```
+import {testWithII} from '@dfinity/internet-identity-playwright';
+```
+
+Then begin writing your tests, such as:
+
+```
+testWithII('should sign-in with a new user', async ({page, iiPage}) => {
+  await page.goto('/');
+
+  await iiPage.signInWithNewIdentity();
+});
+
+testWithII('should sign-in with an existing new user', async ({page, iiPage}) => {
+  await page.goto('/');
+
+  await iiPage.signInWithIdentity({identity: 10003});
+});
+```
+
+In this test, `iiPage` represents your application's page that initiates the authentication flow with Internet Identity. By default, the test will look for a button identified by `[data-tid=login-button]`. This can be customized by configuring your own selector:
+
+```
+const loginSelector = '#login';
+
+testWithII('should sign-in with a new user', async ({page, iiPage}) => {
+  await page.goto('/');
+
+  await iiPage.signInWithNewIdentity({selector: loginSelector});
+});
+
+testWithII('should sign-in with an existing new user', async ({page, iiPage}) => {
+  await page.goto('/');
+
+  await iiPage.signInWithIdentity({identity: 10003, selector: loginSelector});
+});
+```
+
+If desired, you can have the test wait for Internet Identity to be ready by providing the local replica URL and the canister ID of your local Internet Identity instance:
+
+```
+testWithII.beforeEach(async ({iiPage, browser}) => {
+  const url = 'http://127.0.0.1:4943';
+  const canisterId = 'rdmx6-jaaaa-aaaaa-aaadq-cai';
+
+  await iiPage.waitReady({url, canisterId});
+});
+```
+
+You can also configure a timeout parameter that indicates how long the function should wait for Internet Identity before failing:
+
+```
+testWithII.beforeEach(async ({iiPage, browser}) => {
+  const url = 'http://127.0.0.1:4943';
+  const canisterId = 'rdmx6-jaaaa-aaaaa-aaadq-cai';
+  const timeout = 30000;
+
+  await iiPage.waitReady({url, canisterId, timeout});
+});
+```
+
+Once your tests are ready, run them with the command:
+
+```
+npx playwright test
+```
+
+[View more details in the plugin's repo](https://github.com/dfinity/internet-identity-playwright).
+
 ## Resources
 
 - [Internet Identity dashboard](https://identity.ic0.app/).
 - [Internet Identity specification](/docs/current/references/ii-spec).
 - [Internet Identity GitHub repository](https://github.com/dfinity/internet-identity).
-- [Internet Identity alternative frontend origins](/docs/current/developer-docs/integrations/internet-identity/alternative-origins).
+- [Internet Identity alternative frontend origins](/docs/current/developer-docs/identity/internet-identity/alternative-origins).
+- [Playwright plugin for E2E testing](https://github.com/dfinity/internet-identity-playwright).

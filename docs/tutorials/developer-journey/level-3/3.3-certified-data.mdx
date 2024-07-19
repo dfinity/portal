@@ -70,11 +70,11 @@ To certify data, a canister uses the following workflow:
 
 A canister can interact and change its certified data by calling the following API methods:
 
-- [`ic0.certified_data_set : (src: i32, size : i32) -> ()`](https://internetcomputer.org/docs/current/references/ic-interface-spec/#system-api-certified-data): This method can be used to update the canister's certified data. Data cannot be larger than 32 bytes.
+- [`ic0.certified_data_set : (src: i32, size : i32) -> ()`](https://internetcomputer.org/docs/current/references/ic-interface-spec#system-api-certified-data): This method can be used to update the canister's certified data. Data cannot be larger than 32 bytes.
 
-- [`ic0.data_certificate_present : () -> i32`](https://internetcomputer.org/docs/current/references/ic-interface-spec/#system-api-certified-data): This method returns a `1` if a certificate is present, or a `0` if not.
+- [`ic0.data_certificate_present : () -> i32`](https://internetcomputer.org/docs/current/references/ic-interface-spec#system-api-certified-data): This method returns a `1` if a certificate is present, or a `0` if not.
 
-- [`ic0.data_certificate_size : () -> i32`](https://internetcomputer.org/docs/current/references/ic-interface-spec/#system-api-certified-data) and [`ic0.data_certificate_copy : (dst: i32, offset: i32, size: i32) -> ()`](https://internetcomputer.org/docs/current/references/ic-interface-spec/#system-api-certified-data): These methods are used to copy the certificate for the current value of the certified data to the canister.
+- [`ic0.data_certificate_size : () -> i32`](https://internetcomputer.org/docs/current/references/ic-interface-spec#system-api-certified-data) and [`ic0.data_certificate_copy : (dst: i32, offset: i32, size: i32) -> ()`](https://internetcomputer.org/docs/current/references/ic-interface-spec#system-api-certified-data): These methods are used to copy the certificate for the current value of the certified data to the canister.
 
 ## How developers can certify data
 

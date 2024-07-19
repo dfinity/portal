@@ -38,7 +38,7 @@ It is possible to write a single canister that contains both the program logic a
 Since smart contracts can be written in different languages, it is important that they all agree on the binary format in which they accept their arguments and return results.
 This common format allows users and smart contracts to call other smart contracts regardless of the language they were written in.
 In traditional programming, this concept is known as [Application Binary Interface (ABI)](https://en.wikipedia.org/wiki/Application_binary_interface).
-ICP has its own ABI language called **[Candid](/docs/current/developer-docs/backend/candid/)**, which is similar to JSON or Protobuf, but tailored for ICP.
+ICP has its own ABI language called **[Candid](/docs/current/developer-docs/smart-contracts/candid/candid-concepts)**, which is similar to JSON or Protobuf, but tailored for ICP.
 
 During the build process, `dfx` uses the backend ABI to automatically generate JavaScript boilerplate code for the frontend.
 Under the hood, the boilerplate code uses a library called [agent-js](https://github.com/dfinity/agent-js/tree/main) to encode Candid values and make HTTP requests from the browser to the backend canister.
@@ -57,9 +57,9 @@ There are several different environments that can be used to write, deploy, and 
 
 - [`dfx`](/docs/current/developer-docs/getting-started/install/#installing-dfx): `dfx` is the 'native' way to develop smart contracts. It is a command-line tool that enables canister creation and deployment on macOS and Linux systems. `dfx` is developed and maintained by DFINITY, with new features and improvements being released regularly.
 
-- [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install): `dfx` does not natively support Windows operating systems. To use `dfx` locally on a Windows machine, you can install the Windows Subsystem for Linux. Since this workflow isn't the primary development testing environment that `dfx` is designed for, there may be bugs or errors when using `dfx` on WSL. [Learn more about common WSL errors and troubleshooting](/docs/current/developer-docs/getting-started/install).
+- [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install): `dfx` does not natively support Windows operating systems. To use `dfx` locally on a Windows machine, you can install the Windows Subsystem for Linux. Since this workflow isn't the primary development testing environment that `dfx` is designed for, there may be bugs or errors when using `dfx` on WSL. [Learn more about common WSL errors and troubleshooting](/docs/current/developer-docs/getting-started/install/).
 
-- [Gitpod](/docs/current/developer-docs/developer-tools/ide/gitpod): Gitpod is an open-source cloud-based development environment that can be used to develop in the web browser without downloading tools or dependencies to your local machine. Gitpod can be used for long-term projects, as it does not use a temporary resource allocation system such as the Motoko Playground. Smart contract projects can be developed using Gitpod by spawning a new Gitpod workspace and configuring it to download and install `dfx`. [The Hello, world! Gitpod example can be used to learn more about Gitpod configuration](https://github.com/dfinity/icp-hello-world-motoko).
+- [Gitpod](/docs/current/developer-docs/developer-tools/ide/gitpod): Gitpod is an open-source cloud-based development environment that can be used to develop in the web browser without downloading tools or dependencies to your local machine. Gitpod can be used for long-term projects, as it does not use a temporary resource allocation system such as the playground. Smart contract projects can be developed using Gitpod by spawning a new Gitpod workspace and configuring it to download and install `dfx`. [The Hello, world! Gitpod example can be used to learn more about Gitpod configuration](https://github.com/dfinity/icp-hello-world-motoko).
 
 - [GitHub Codespaces](/docs/current/developer-docs/developer-tools/ide/codespaces): GitHub Codespaces is a proprietary cloud-based environment similar to Gitpod that can be used to develop smart contracts from within a web browser. To develop smart contracts, you can deploy a new codespace environment and download `dfx`. [The Hello, world! GitHub Codespaces example can be used to learn more about using codespaces](https://github.com/dfinity/icp-hello-world-motoko).
 
@@ -87,7 +87,7 @@ There are several different environments that can be used to write, deploy, and 
 
 - [Juno](/docs/current/developer-docs/web-apps/frameworks/juno): Juno is a blockchain-as-a-service platform that can be used to create and deploy smart contracts on ICP without using the traditional `dfx` development workflow. Instead, Juno manages ICP-specific tooling for you on the backend through a Juno 'satellite', allowing you to deploy on-chain dapps by interacting with just the Juno web console or through the CLI.
 
-- [Motoko Playground](/docs/current/developer-docs/developer-tools/ide/playground): Motoko Playground is a sandbox environment that can be used for testing smart contract code in any language, not just Motoko. Motoko Playground is only designed for temporary, short-term testing, as there is a 30 minute limit for each deployment. After 30 minutes, the canister will be deleted so the resources can be used for another deployment.
+- [Playground](/docs/current/developer-docs/getting-started/deploy/testnet): The playground is a sandbox environment that can be used for testing smart contract code in any language. It is only designed for temporary, short-term testing, as there is a 20 minute limit for each deployment. After 20 minutes, the canister will be deleted so the resources can be used for another deployment.
 
 ## Deploying smart contracts
 
@@ -116,7 +116,7 @@ There are three ways to call the functions of the backend smart contract:
    This is the standard way to interact with the smart contract that regular users would also use.
 1. Use the `dfx canister call` command and pass the input arguments as command line arguments.
    Under the hood, `dfx` uses a Rust library called ic-agent to send messages to the smart contract.
-1. Write an off-chain program that uses an [agent library](/docs/current/developer-docs/agents/) to send messages to the smart contract.
+1. Write an off-chain program that uses an [agent library](/docs/current/developer-docs/developer-tools/off-chain/agents/overview) to send messages to the smart contract.
 
 <div class="text--center">
   <img
@@ -126,3 +126,8 @@ There are three ways to call the functions of the backend smart contract:
   />
 </div>
 
+## Next steps
+
+- [Install dev tools](./install/index.mdx).
+
+- [Start the developer journey series](/docs/current/tutorials/developer-journey/).

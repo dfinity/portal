@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 Smart contracts on ICP can directly interact with the Ethereum network and other networks that are using the Ethereum Virtual Machine (EVM), such as Polygon and Avalanche. This integration is possible thanks to ICP's HTTPS outcalls and threshold ECDSA features, which allow Ethereum transactions to be queried and ICP smart contracts to sign and submit transactions to Ethereum.
 
-- **[Threshold ECDSA](/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa)**: A smart contract can have a secret key that is stored in a secure and decentralized way using chain-key cryptography. Messages sent by the smart contract can be signed using this key, enabling signed transactions to be sent to Ethereum from the smart contract.
+- **[Threshold ECDSA](/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa)**: A smart contract can have a secret key that is stored in a secure and decentralized way using chain-key cryptography. Messages sent by the smart contract can be signed using this key, enabling signed transactions to be sent to Ethereum from the smart contract.
 
 - **[HTTPS outcalls](https://internetcomputer.org/https-outcalls)**: To query information from Ethereum and other EVM networks, HTTPS outcalls are used. HTTPS outcalls can obtain information from external sources. In this integration, they're used to obtain data from RPC-JSON services by querying Ethereum's transactions, addresses, and block information. To facilitate RPC-JSON calls, the EVM RPC canister has been created and deployed on the mainnet, providing an API endpoint that smart contracts can use.
 
@@ -26,7 +26,7 @@ You can [learn how to use the EVM RPC canister](/docs/current/developer-docs/mul
 
 ## ckETH
 
-ICP implements a smart contract that uses threshold ECDSA and chain-key cryptography to provide a [**ckETH**](/docs/current/developer-docs/multi-chain/ethereum/cketh/overview) token (chain-key ETH) that is backed 1:1 by ETH.
+ICP implements a smart contract that uses threshold ECDSA and chain-key cryptography to provide a [**ckETH**](/docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview) token (chain-key ETH) that is backed 1:1 by ETH.
 
 The primary value of chain-key tokens, such as ckETH, is that it can be transferred with the low finality time (within seconds) and for a fraction of the cost of a transaction on the token's native network (in this instance, a ETH transaction on Ethereum).
 

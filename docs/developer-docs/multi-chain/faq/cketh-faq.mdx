@@ -12,11 +12,11 @@ The following questions and answers are from the POV of a developer.
 
 For questions from the POV of a user who wishes to know how to hold, send, receive these tokens, please see the user FAQs.
 
-## How do I write a smart contract that uses ckETH?
+### How do I write a smart contract that uses ckETH?
 
 At high-level:
 
-1. ckETH complies with the [ICRC-1 ledger token standard](/docs/current/developer-docs/defi/overview/#icrc-1-ledgers).
+1. ckETH complies with the [ICRC-1 ledger token standard](/docs/current/developer-docs/defi/overview#icrc-1-ledgers).
 
 2. You can write a smart contract that works with ckETH just like you would for any other `ICRC-1`-compliant token.
 
@@ -26,17 +26,17 @@ At high-level:
 
 For detailed information and potential code examples, check out out the [ICP documentation](https://internetcomputer.org/docs), the [DFINITY forum](https://forum.dfinity.org), and the [ckETH minter documentation](https://github.com/dfinity/ic/blob/master/rs/ethereum/ckETH/minter/README.adoc).
 
-## What is the best place to start to write contracts that handle ckETH?
+### What is the best place to start to write contracts that handle ckETH?
 
 * [High level technical summary](https://forum.dfinity.org/t/cketh-a-canister-issued-ether-twin-token-on-the-ic/22819)
 
-## Examples of using the dfx CLI to
+## Examples of using the dfx CLI to:
 
 * [Deposit: ETH to ckETH](https://github.com/dfinity/ic/blob/master/rs/ethereum/cketh/docs/cketh.adoc#deposit-eth-to-cketh)
 
 * [Withdrawal: ckETH to ETH](https://github.com/dfinity/ic/blob/master/rs/ethereum/cketh/docs/cketh.adoc#withdrawal-cketh-to-eth)
 
-## What is the purpose of ckETH? What specific problem does ckETH aim to solve within the ETH ecosystem?
+### What is the purpose of ckETH? What specific problem does ckETH aim to solve within the ETH ecosystem?
 
 ckETH, or chain-key Ether, is an Internet Computer (ICP)-native token that represents Ether (ETH), the native token of Ethereum. It serves as a digital twin of ETH on the Internet Computer blockchain. The purpose of ckETH is to address some of the challenges associated with using Ethereum, particularly in terms of usability and transaction costs.
 
@@ -47,24 +47,16 @@ Another problem that ckETH aims to solve is the complexity and friction involved
 Furthermore, ckETH enables direct interaction between ICP canister smart contracts and Ethereum, bypassing potential attack vectors by directly calling Ethereum RPCs through HTTPS outcalls.
 
 In summary, ckETH aims to enhance the usability of the Ethereum ecosystem by providing a more accessible, cost-effective, and secure way for users to engage with blockchain technology.
-Sources:
-- [A Data-Driven Exploration of ckETH](https://medium.com/dfinity/a-data-driven-exploration-of-ckETH-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#b197)
-- [The Purposes of the Internet Computer](https://medium.com/dfinity/announcing-internet-computer-mainnet-and-a-20-year-roadmap-790e56cbe04a#0289)
 
-## How does ckETH relate to ETH? How is ckETH different from a regular ETH transaction? Can I use ckETH just like I would use ETH?
+### How does ckETH relate to ETH? How is ckETH different from a regular ETH transaction? Can I use ckETH just like I would use ETH?
 
 The main difference between a ckETH transaction and a regular ETH transaction lies in the transaction fees and the blockchain they operate on. Regular ETH transactions occur on the Ethereum network and are subject to Ethereum's gas fees, which can be quite high. On the other hand, ckETH transactions occur on the Internet Computer blockchain, which has significantly lower transaction fees.
 
 Yes, you can use ckETH just like you would use ETH, but within the Internet Computer ecosystem. You can deposit your ETH to a specific function in the ckETH helper contract on Ethereum, which then triggers the ICP ckETH canister smart contract to mint the same amount of ckETH to the specified ICP principal. This ckETH can then be used natively on the Internet Computer, and can be converted back to ETH at any time.
 
 However, it's important to note that while ckETH can be used in a similar manner to ETH, the platforms and services that accept ckETH might be different from those that accept ETH, as they are operating on different blockchains.
-Sources:
-- [A Data-Driven Exploration of ckETH](https://medium.com/dfinity/a-data-driven-exploration-of-ckETH-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#b197)
-- [How does ckETH work?](https://medium.com/dfinity/a-data-driven-exploration-of-ckETH-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#e978)
-- [How to Acquire ckETH](https://medium.com/dfinity/how-to-acquire-ckETH-02d863c835fc#e10f)
-- [Ethereum + ICP > Multi-chain DeFi](https://internetcomputer.org/ethereum-integration)
 
-## What are the benefits of using ckETH over traditional Ethereum transactions?
+### What are the benefits of using ckETH over traditional Ethereum transactions?
 
 The benefits of using ckETH over traditional Ethereum transactions primarily revolve around transaction speed, cost, and interoperability with the ICP ecosystem.
 
@@ -78,13 +70,7 @@ The benefits of using ckETH over traditional Ethereum transactions primarily rev
 
 However, it's important to note that while ckETH provides these benefits, it's not a direct replacement for ETH. Each has its own unique features and use cases, and the choice between them will depend on your specific needs and circumstances.
 
-Sources:
-- [A Data-Driven Exploration of ckETH](https://medium.com/dfinity/a-data-driven-exploration-of-ckETH-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#b197)
-- [The Purposes of the Internet Computer](https://medium.com/dfinity/announcing-internet-computer-mainnet-and-a-20-year-roadmap-790e56cbe04a#0289)
-- [Internet Computer for Ethereum Developers](https://wiki.internetcomputer.org/wiki/The_Internet_Computer_for_Ethereum_Developers#A_very_brief_introduction_to_the_Internet_Computer)
-- [Extend Bitcoin, Ethereum and other blockchains](https://wiki.internetcomputer.org/wiki/Extend_Bitcoin,_Ethereum_and_other_blockchains#firstHeading)
-
-## Why should I choose ckETH for my application or service?
+### Why should I choose ckETH for my application or service?
 
 Choosing ckETH for your application or service can provide several benefits:
 
@@ -102,7 +88,7 @@ Choosing ckETH for your application or service can provide several benefits:
 
 In summary, ckETH provides a secure, cost-effective, and efficient way to interact with the Ethereum blockchain, making it a great choice for your application or service.
 
-## What advantages does ckETH offer in terms of speed, fees, and security?
+### What advantages does ckETH offer in terms of speed, fees, and security?
 
 ckETH offers several advantages in terms of speed, fees, and security:
 
@@ -112,15 +98,7 @@ ckETH offers several advantages in terms of speed, fees, and security:
 
 3. **Security:** ckETH bypasses attack vectors by directly calling Ethereum RPCs through HTTPS outcalls, a feature that enables ICP canister smart contracts to call API requests directly. This minimizes the risk of data leaks, hacks, and breaches.
 
-Sources:
-- [Internet Computer for Ethereum Developers](https://wiki.internetcomputer.org/wiki/The_Internet_Computer_for_Ethereum_Developers#mw-toc-heading)
-- [A data-driven exploration of ckETH](https://medium.com/dfinity/a-data-driven-exploration-of-ckETH-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#b197)
-- [How to Acquire ckETH](https://medium.com/dfinity/how-to-acquire-ckETH-02d863c835fc#c324)
-- [Trustless multi-chain on ICP](https://internetcomputer.org/multichain)
-- [Ethereum &lt;&gt; ICP](https://internetcomputer.org/ethereum-integration)
-- [Multi-chain DeFi](https://internetcomputer.org/defi)
-
-## How can I integrate ckETH into my existing applications or platforms?
+### How can I integrate ckETH into my existing applications or platforms?
 
 To integrate ckETH into your existing applications or platforms, you can follow these steps:
 
@@ -130,19 +108,15 @@ To integrate ckETH into your existing applications or platforms, you can follow 
 4. **Use ckETH**: The ICP principal or wallet address can now use ckETH natively on the Internet Computer.
 5. **Convert back to ETH any time**: When the ICP principal wants to convert ckETH back to ETH, they can request the ckETH canister smart contract with the ETH amount and Ethereum address to which they want to send the ETH.
 
-[Learn more about how ckETH works](https://forum.dfinity.org/t/ckETH-a-canister-issued-ether-twin-token-on-the-ic/22819).
-
 Please note that the ckETH integration is part of a larger Ethereum integration on ICP. [Learn more about the Ethereum integration on ICP](https://internetcomputer.org/ethereum-integration).
 
-Also, remember that the Internet Computer makes it possible to build almost any online service fully on-chain, in a full stack decentralization model. This is because canister smart contracts can hold up to 400GiB of memory each, and run in parallel with great efficiency. Moreover, they can directly serve interactive web-based user experiences to users by processing HTTP requests, thanks to ICP’s reverse-gas model (canister smart contracts pay for their own execution using “cycles” that they have been charged with). Now they can also be trustlessly combined with DeFi and other functionality [Ethereum hosts in a World Computer paradigm](https://internetcomputer.org/multichain).
+Also, remember that the Internet Computer makes it possible to build almost any online service fully on-chain, in a full stack decentralization model. This is because canister smart contracts can hold up to 400GiB of memory each, and run in parallel with great efficiency. Moreover, they can directly serve interactive web-based user experiences to users by processing HTTP requests, thanks to ICP’s reverse-gas model (canister smart contracts pay for their own execution using “cycles” that they have been charged with). Now they can also be trustlessly combined with DeFi and other functionality [Ethereum hosts in a World Computer paradigm](https://internetcomputer.org/chainfusion).
 
-## What are the technical requirements for developers to work with ckETH?
+### What are the technical requirements for developers to work with ckETH?
 
-:::info
-This answer is a work in progress. Please check back later for an updated response.
-:::
+[View the ckETH documentation](/docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview#cketh-production-application-examples)
 
-## How does ckETH ensure the security of the funds it handles?
+### How does ckETH ensure the security of the funds it handles?
 
 ckETH ensures the security of the funds it handles in several ways:
 
@@ -156,13 +130,13 @@ ckETH ensures the security of the funds it handles in several ways:
 
 Remember, while these features enhance the security of ckETH, it's always important to exercise caution and good security practices when dealing with cryptocurrencies.
 
-## Can I trust that my funds are safe when using ckETH?
+### Can I trust that my funds are safe when using ckETH?
 
 Yes, you can trust that your funds are safe when using ckETH. ICP offers several features that enhance the security and trustworthiness of its canister smart contracts, such as ckETH.
 
 However, as with any blockchain technology, it's important to do your own research and understand the risks involved.
 
-## Can I build smart contracts that interact with ckETH? What kind of functionalities can these smart contracts provide?
+### Can I build smart contracts that interact with ckETH? What kind of functionalities can these smart contracts provide?
 
 Yes, you can build smart contracts that interact with ckETH on the Internet Computer. These smart contracts, also known as canisters, can provide a wide range of functionalities. Here are some of the key capabilities:
 
@@ -180,21 +154,15 @@ Yes, you can build smart contracts that interact with ckETH on the Internet Comp
 
 7. **Serving web experiences directly to end users**: Smart contracts on ICP can serve web experiences directly to end users, providing end-to-end blockchain security.
 
-8. **Creating and managing other Ethereum asset twins**: In addition to ckETH, you can also create and manage "twins" of other Ethereum assets, such as ckUSDC, ckUSDT, ckUNISWAP, ck1INCH, ckAAVE .
+8. **Creating and managing other Ethereum asset twins**: In addition to ckETH, you can also create and manage "twins" of other Ethereum [ERC-20 tokens](/docs/current/developer-docs/multi-chain/chain-key-tokens/ckerc20/overview).
 
 Please note that the ICP ETH integration is still in development, and more functionalities will be added in the future.
 
-**Additional reading**
+### What are the transaction fees associated with ckETH?
 
-- [A data driven exploration of ckETH](https://medium.com/dfinity/a-data-driven-exploration-of-ckETH-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#e978).
-- [Developer Journey: 5.2: ICP ETH tutorial](/docs/current/tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial#overview).
-- [ICP Ethereum integration explained](https://medium.com/dfinity/internet-computer-ethereum-integration-explained-6967456e35f9#58f6).
+The transaction fees are 0.000002 ckETH.
 
-## What are the transaction fees associated with ckETH?
-
-The trannsaction fees are 0.000002 ckETH.
-
-## How quickly can transactions be finalized?
+### How quickly can transactions be finalized?
 
 ICP is designed to finalize transactions very quickly. Specifically, it can finalize transactions that update canister smart contract state in 1–2 seconds. This is a significant improvement over traditional blockchains like Bitcoin and Ethereum, which can take much longer to finalize transactions.
 
@@ -202,24 +170,17 @@ In addition, ICP splits canister function execution into two types: "update call
 
 ICP is capable of processing up to over 30 thousand transactions per second (as of [November 2023](https://wiki.internetcomputer.org/wiki/Internet_Computer_performance)), executed with an average 1-second finality on dapp subnets and a 2-second finality on the Network Nervous System (NNS) subnet.
 
-## Who controls the development and governance of ckETH?
+### Who controls the development and governance of ckETH?
 
-Like many ICP canisters, the
-
-The development and governance of ckETH, the digital twin of ETH on the Internet Computer (ICP), is managed by the ICP ecosystem.
+Like many ICP canisters, the development and governance of ckETH is managed by the ICP ecosystem.
 
 Software updates to the ckETH canisters are voted on by the NNS DAO.
 
-**Additional reading**
+### Can you provide examples of current applications that utilize ckETH?
 
-- [Internet Computer Wiki - Decentralization](https://wiki.internetcomputer.org/wiki/Decentralization#firstHeading)
+[View sample projects that use ckETH](/docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview#cketh-production-application-examples)
 
-## Can you provide examples of current applications that utilize ckETH?
-:::info
-This answer is a work in progress. Please check back later for an updated response.
-:::
-
-# What is the current state of ckETH project?
+### What is the current state of ckETH project?
 
 ckETH is live on the Internet Computer mainnet. It has been added to the ICP dashboard. However, with the current ckETH integration, you cannot withdraw to ETH directly from the ICRC-1 wallet.
 
@@ -227,9 +188,20 @@ The integration is being carried out in phases. Phase 0, which enables chain-key
 
 For more information on the current state of the ckETH project, you can join the forum discussion or check out the Ethereum integration page on the ICP website.
 
-**Additional reading**
+## Additional reading
 
-- [Internet Computer Blog - ckETH: now live!](https://internetcomputer.org/blog/2023/12/06/news-and-updates/update#ckETH-now-live).
+- [A data driven exploration of ckETH](https://medium.com/dfinity/a-data-driven-exploration-of-ckETH-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#e978).
+- [Developer Journey: 5.2: ICP ETH tutorial](/docs/current/tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial#overview).
 - [Dfinity - Global R&D: May 2023 Edition - ETH Integration: Status update](https://medium.com/dfinity/global-r-d-may-2023-edition-d96859039ca6#a28d).
-- [Ethereum + ICP - Multi-chain DeFi](https://internetcomputer.org/ethereum-integration).
-- [Ethereum + ICP - Build your own Ethereummulti-chain solution - Tutorial](https://internetcomputer.org/ethereum-integration).
+- [Ethereum + ICP > Multi-chain DeFi](https://internetcomputer.org/ethereum-integration)
+- [Extend Bitcoin, Ethereum and other blockchains](https://wiki.internetcomputer.org/wiki/Extend_Bitcoin,_Ethereum_and_other_blockchains#firstHeading)
+- [How does ckETH work?](https://medium.com/dfinity/a-data-driven-exploration-of-ckETH-the-digital-twin-of-ether-on-the-internet-computer-36b762be72e7#e978)
+- [How to Acquire ckETH](https://medium.com/dfinity/how-to-acquire-ckETH-02d863c835fc#c324)
+- [ICP Ethereum integration explained](https://medium.com/dfinity/internet-computer-ethereum-integration-explained-6967456e35f9#58f6).
+- [Internet Computer Blog - ckETH: now live!](https://internetcomputer.org/blog/2023/12/06/news-and-updates/update#ckETH-now-live).
+- [Internet Computer for Ethereum Developers](https://wiki.internetcomputer.org/wiki/The_Internet_Computer_for_Ethereum_Developers#A_very_brief_introduction_to_the_Internet_Computer)
+- [Internet Computer Wiki - Decentralization](https://wiki.internetcomputer.org/wiki/Decentralization#firstHeading)
+- [Learn more about how ckETH works](https://forum.dfinity.org/t/ckETH-a-canister-issued-ether-twin-token-on-the-ic/22819).
+- [Multi-chain DeFi](https://internetcomputer.org/defi)
+- [The Purposes of the Internet Computer](https://medium.com/dfinity/announcing-internet-computer-mainnet-and-a-20-year-roadmap-790e56cbe04a#0289)
+- [Trustless multi-chain on ICP](https://internetcomputer.org/chainfusion)

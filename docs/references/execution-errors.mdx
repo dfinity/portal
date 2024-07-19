@@ -400,7 +400,7 @@ An example of this error is:
   Sender's ID: zzz-zzz
 ```
 
-Each canister has a number of [controllers](/docs/current/developer-docs/smart-contracts/maintain/control) and certain actions (e.g. updating the canister's Wasm code) can only be performed by controllers. To fix this error, consider performing the action from a [principal](/docs/current/concepts/glossary/#principal) which is already a controller, or have an existing controller add additional principals to the canister's list of controllers.
+Each canister has a number of [controllers](/docs/current/developer-docs/smart-contracts/maintain/control) and certain actions (e.g. updating the canister's Wasm code) can only be performed by controllers. To fix this error, consider performing the action from a [principal](/docs/current/concepts/glossary#principal) which is already a controller, or have an existing controller add additional principals to the canister's list of controllers.
 
 
 ### Canister not found
@@ -411,7 +411,7 @@ An example of this error is:
   Canister xxx-xxx not found.
 ```
 
-To fix this error, double check that the canister exists. One method is to search for its canister ID on the [dashboard](https://dashboard.internetcomputer.org). If this error is encountered when testing locally with `dfx`, make sure the canister is listed in your project's `dfx.json` file and has been deployed with `dfx deploy`. 
+To fix this error, double check that the canister exists. One method is to search for its canister ID on the [dashboard](https://dashboard.internetcomputer.org). If this error is encountered when testing locally with `dfx`, make sure the canister is listed in your project's `dfx.json` file and has been deployed with `dfx deploy`.
 
 
 ### Canister not empty
@@ -631,14 +631,14 @@ To fix this error, consider increasing the canister's reserved cycles limit, or 
 
 
 ### Wasm chunk store error
-There was an error while executing a method to manipulate the canister's [Wasm chunk store](/docs/current/references/ic-interface-spec/#ic-upload_chunk) (e.g. `upload_chunk`, `clear_chunk_store`, `install_chunked_code`, etc.).
+There was an error while executing a method to manipulate the canister's [Wasm chunk store](/docs/current/references/ic-interface-spec#ic-upload_chunk) (e.g. `upload_chunk`, `clear_chunk_store`, `install_chunked_code`, etc.).
 
 An example of this error is:
 ```
   Error from Wasm chunk store: Cannot upload chunk. At least 10000000 additional cycles are required.
 ```
 
-To fix this error, consider [topping up][topping-up] the canister if it doesn't have enough cycles, or using the [`stored_chunks` API](/docs/current/references/ic-interface-spec/#ic-stored_chunks) to see which chunks have been uploaded if you get errors about mismatching or missing hashes.
+To fix this error, consider [topping up][topping-up] the canister if it doesn't have enough cycles, or using the [`stored_chunks` API](/docs/current/references/ic-interface-spec#ic-stored_chunks) to see which chunks have been uploaded if you get errors about mismatching or missing hashes.
 
 
 ### Canister snapshot not found
