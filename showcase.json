@@ -4831,7 +4831,7 @@
   {
     "id": "panorama-block",
     "name": "Panorama Block",
-    "oneLiner": "AI-Powered cross-chain analytics. Offering real-time blockchain data, starting with Bitcoin.",
+    "oneLiner": "AI-powered cross-chain analytics. Offering real-time blockchain data, starting with Bitcoin.",
     "tags": [
       "Tools / Infrastructure",
       "Bitcoin"
@@ -4839,7 +4839,7 @@
     "website": "https://panoramablock.com",
     "github": "https://github.com/Panorama-Block/panorama-block-icp",
     "twitter": "https://twitter.com/panoramablock",
-    "description": "AI-Powered cross-chain analytics. Offering real-time blockchain data, starting with Bitcoin.",
+    "description": "AI-powered cross-chain analytics. Offering real-time blockchain data, starting with Bitcoin.",
     "usesInternetIdentity": false,
     "display": "Normal",
     "logo": "/img/showcase/PanoramaBlock_Logo.png"
