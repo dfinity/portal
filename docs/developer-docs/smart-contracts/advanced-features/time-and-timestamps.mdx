@@ -74,7 +74,7 @@ def time() -> nat64:
     return ic.time()
 ```
 
-</TabItem>
+</AdornedTab>
 </AdornedTabs>
 
 ## Conversion packages
@@ -127,17 +127,17 @@ pub fn calendar_date(timestamp: &u64) -> CalendarDate {
 You can also convert UNIX time to an `OffsetDateTime` format:
 
 ```rust
-import LocalDateTime "mo:datetime/LocalDateTime";
-let components = {
-  year = 2020;
-  month = 2;
-  day = 1;
-  hour = 0;
-  minute = 0;
-  nanosecond = 0;
-};
-let timeZone = #fixed(#hours(-7));
-LocalDateTime(components, timeZone);
+
+use crate::types::utils::CalendarDate;
+use time::{Duration, OffsetDateTime};
+
+fn to_date(timestamp: &u64) -> OffsetDateTime {
+    let nanoseconds = *timestamp as i64;
+    let seconds = nanoseconds / 1_000_000_000;
+    let nanos_remainder = nanoseconds % 1_000_000_000;
+
+    OffsetDateTime::from_unix_timestamp(seconds).unwrap() + Duration::nanoseconds(nanos_remainder)
+}
 ```
 
 </TabItem>
