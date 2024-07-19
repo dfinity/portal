@@ -4828,5 +4828,68 @@
     "usesInternetIdentity": false,
     "display": "Normal",
     "logo": "/img/showcase/PanoramaBlock_Logo.png"
+  },
+  {
+    "id": "relation",
+    "name": "Relation",
+    "oneLiner": "Web3 social graph using a graph database built on ICP.",
+    "tags": [
+      "Tools / Infrastructure",
+      "SocialFi"
+    ],
+    "website": "https://relationlabs.ai/home",
+    "github": "https://github.com/relationlabs/relation-graph-icp",
+    "twitter": "https://twitter.com/relationlabs",
+    "description": "Web3 social graph using a graph database built on ICP.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/relation_logo.png"
+  },
+  {
+    "id": "meddle",
+    "name": "Meddle",
+    "oneLiner": "A software-IoT product that deals with data collection from sensors and industrial machinery.",
+    "tags": [
+      "Tools / Infrastructure",
+      "Enterprise"
+    ],
+    "website": "https://meddleconnect.com",
+    "github": "https://github.com/quinck-io/meddle-icp-be/",
+    "description": "A software-IoT product that deals with data collection from sensors and industrial machinery.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/Meddle_Logo.png"
+  },
+  {
+    "id": "staexvts",
+    "name": "Staex VTS",
+    "oneLiner": "A vehicle tracking system that serves as an infrastructure to track and invoice vehicles.",
+    "tags": [
+      "Tools / Infrastructure",
+      "Enterprise"
+    ],
+    "website": "https://staex.io",
+    "github": "https://github.com/staex-io/vts",
+    "twitter": "https://twitter.com/staex_io",
+    "description": "A vehicle tracking system that serves as an infrastructure to track and invoice vehicles.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/staex_logo.png"
+  },
+  {
+    "id": "rolodex",
+    "name": "rolodex",
+    "oneLiner": "A self-sovereign directory, giving YOU control of your contact information.",
+    "tags": [
+      "Tools / Infrastructure",
+      "Enterprise"
+    ],
+    "website": "https://rolodex.weavechain.com/",
+    "github": "https://github.com/weavechain/rolodex3",
+    "twitter": "https://twitter.com/WeavechainWeb3",
+    "description": "A self-sovereign directory, giving YOU control of your contact information.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/rolodex_logo.png"
   }
 ]
