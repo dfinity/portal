@@ -3165,14 +3165,14 @@
   },
   {
     "name": "ubin",
-    "description": "Allows you to seamlessly launch your own file storage smart contracts on ICP using only a wallet and interact with them via a file explorer in the browser.",
+    "description": "Allows you to seamlessly launch your file storage smart contracts on ICP and interact with them via a file explorer in the browser.",
     "website": "https://h3cjw-syaaa-aaaam-qbbia-cai.ic0.app/",
     "logo": "/img/showcase/asset-app_logo.png",
     "screenshots": [
       "/img/showcase/asset-app.jpg"
     ],
     "id": "ubin",
-    "oneLiner": "Allows you to seamlessly launch your own file storage smart contracts on ICP using only a wallet and interact with them via a file explorer in the browser.",
+    "oneLiner": "Allows you to seamlessly launch your file storage smart contracts on ICP and interact with them via a file explorer in the browser.",
     "tags": [
       "Tools / Infrastructure"
     ],
@@ -4601,7 +4601,7 @@
   {
     "id": "clpfinance",
     "name": "CLP Finance",
-    "oneLiner": "A decentralized financial protocol with low-cost, efficient, and secure digital asset lending services. Users can borrow the stablecoin CUSD by pledging ICP,ckETH or ckBTC.",
+    "oneLiner": "A decentralized financial protocol with low-cost, efficient, and secure digital asset lending services to borrow CUSD using ICP, ckETH, or ckBTC.",
     "website": "https://www.clp.finance/",
     "tags": [
       "DeFi",
@@ -4610,7 +4610,7 @@
       "Chainfusion"
     ],
     "twitter": "https://twitter.com/CLPFinance721",
-    "description": "A decentralized financial protocol with low-cost, efficient, and secure digital asset lending services. Users can borrow the stablecoin CUSD by pledging ICP,ckETH or ckBTC.",
+    "description": "A decentralized financial protocol with low-cost, efficient, and secure digital asset lending services to borrow CUSD using ICP, ckETH, or ckBTC.",
     "usesInternetIdentity": true,
     "display": "Normal",
     "logo": "/img/showcase/clpfinance_logo.png"
@@ -4640,21 +4640,6 @@
       "SocialFi"
     ],
     "twitter": "https://twitter.com/pyorxyz",
-    "github": "https://github.com/Hubmakerlabs/replicatr",
-    "description": "Nostr relay using ICP for inter-relay synchronization.",
-    "usesInternetIdentity": false,
-    "display": "Normal",
-    "logo": "/img/showcase/replicator_logo.jpg"
-  },
-  {
-    "id": "replicatr",
-    "name": "Replicatr",
-    "oneLiner": "Nostr relay using ICP for inter-relay synchronization.",
-    "website": "https://replicatr.dev/",
-    "tags": [
-      "Tools / Infrastructure",
-      "SocialFi"
-    ],
     "github": "https://github.com/Hubmakerlabs/replicatr",
     "description": "Nostr relay using ICP for inter-relay synchronization.",
     "usesInternetIdentity": false,
