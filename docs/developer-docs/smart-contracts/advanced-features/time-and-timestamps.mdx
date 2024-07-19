@@ -2,7 +2,12 @@
 keywords: [beginner, concept, system time, timestamps, time]
 ---
 
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # System time and timestamps
 
@@ -10,57 +15,149 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
+System time is a publicly exposed and verified part of the [IC state tree](/docs/current/references/ic-interface-spec#state-tree). System time is expressed in nanoseconds since `1970-01-01` and indicates the time at which the state is current. It is exposed at `/time`, and all partial state trees include a timestamp.
+
+System time observed by the canister is monotonically increasing, even across canister upgrades. Since the ICP network is decentralized, the system times of different canisters are unrelated, and there is no notion of a timezone, sometimes resulting in calls appearing to travel back in time.
+
+System time, expressed in nanoseconds, may require conversion into different formats, like DateTime. This guide will detail some of the commonly used conversions.
+
 ## Getting system time
 
+Your canister can programmatically get system time to be used within your application.
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko">
+
+```motoko
+import { now } = "mo:base/Time";
+import Debug "mo:base/Debug";
+
+actor {
+    let time = now();
+    Debug.print(debug_show(time));
+};
+
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust">
+
+```rust
+let current_time = IC_API::time();
+```
+
+</TabItem>
+
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
+
+```typescript
+import { Canister, ic, nat64, query } from 'azle/experimental';
+
+export default Canister({
+    time: query([], nat64, () => {
+        return ic.time();
+    })
+});
+```
 
 
-## Converting UNIX timestamps to UTC format
+</AdornedTab>
 
-## Convert timestamp into datetime
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
+```python
+from kybra import ic, nat64, query
 
+@query
+def time() -> nat64:
+    return ic.time()
+```
+
+</TabItem>
+</AdornedTabs>
+
+## Conversion packages
+
+For Motoko canisters:
+
+- [`time` Mops package](https://mops.one/time): Supports functions for converting system time into microseconds, milliseconds, string date format, and more.
+
+- [`dateTime` Mops package](https://mops.one/datetime): Supports functions for converting system time into UTC format, local timezone, and fixed timezones.
+
+For Rust canisters:
+
+- [`time`](https://time-rs.github.io/api/time/index.html):
+
+- [`datetimeutils`](https://crates.io/crates/datetimeutils):
+
+## Converting UNIX timestamps to DateTime format
+
+The nanosecond format that system time is returned in uses the UNIX timestamp format, which is simply the total number of nanoseconds, such as `1721402551`. DateTime format uses the structure `YYYY-MM-DD HH:MM:SS`.
+
+Below are examples showing how to convert UNIX timestamps to DateTime format.
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko">
+
+```motoko
+import Time "mo:time/time";
+import DateTime "mo:datetime/DateTime";
+import Debug "mo:base/Debug";
+
+let now = Time.now();
+let dateTime = DateTime.DateTime(now);
+
+Debug.print(dateTime.toText());
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust">
+
+```rust
 use crate::types::utils::CalendarDate;
 use time::{Duration, OffsetDateTime};
 
-/// Converts a Unix timestamp (in nanoseconds) to an `OffsetDateTime`.
-///
-/// # Arguments
-/// - `timestamp`: A reference to a `u64` Unix timestamp in nanoseconds.
-///
-/// # Returns
-/// An `OffsetDateTime` representing the given timestamp.
-///
-/// # Panics
-/// Panics if the conversion to a timestamp fails, which can happen if the value
-/// represents a time outside the valid range that `OffsetDateTime` can represent.
-fn to_date(timestamp: &u64) -> OffsetDateTime {
-    let nanoseconds = *timestamp as i64;
-    let seconds = nanoseconds / 1_000_000_000;
-    let nanos_remainder = nanoseconds % 1_000_000_000;
-
-    OffsetDateTime::from_unix_timestamp(seconds).unwrap() + Duration::nanoseconds(nanos_remainder)
-}
-
-/// Returns the day of the year for a given timestamp.
-///
-/// # Arguments
-/// - `timestamp`: A reference to a `u64` Unix timestamp in nanoseconds.
-///
-/// # Returns
-/// The day of the year as `usize`, ranging from 1 to 366.
-pub fn day_of_the_year(timestamp: &u64) -> usize {
-    let ordinal = to_date(timestamp).ordinal();
-
-    ordinal as usize
-}
-
-/// Converts a Unix timestamp (in nanoseconds) to a `CalendarDate`.
-///
-/// # Arguments
-/// - `timestamp`: A reference to a `u64` Unix timestamp in nanoseconds.
-///
-/// # Returns
-/// A `CalendarDate` representing the date of the given timestamp.
 pub fn calendar_date(timestamp: &u64) -> CalendarDate {
-    CalendarDate::from(&to_date(timestamp).to_calendar_date())
+    CalendarDate::from(&to_date(timestamp).to_calendar_date())
 }
+```
+
+You can also convert UNIX time to an `OffsetDateTime` format:
+
+```rust
+import LocalDateTime "mo:datetime/LocalDateTime";
+let components = {
+  year = 2020;
+  month = 2;
+  day = 1;
+  hour = 0;
+  minute = 0;
+  nanosecond = 0;
+};
+let timeZone = #fixed(#hours(-7));
+LocalDateTime(components, timeZone);
+```
+
+</TabItem>
+</AdornedTabs>
+
+
+## References
+
+- [Motoko `Time` documentation]
+
+- [`time` Mops package](https://mops.one/time)
+
+- [`dateTime` Mops package](https://mops.one/datetime)
+
+- [Rust `time` documentation](https://time-rs.github.io/api/time/index.html)
+
+- [Rust `datetimeutils` documentation](https://crates.io/crates/datetimeutils)
+
+- [Azle `Time` documentation]
+
+- [Kybra `Time` documentation]
+
+- [`time`](https://time-rs.github.io/api/time/index.html)
