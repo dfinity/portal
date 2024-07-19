@@ -4,6 +4,8 @@ import { useIsDocs } from "@site/src/hooks/useIsDocs";
 import BrainIcon from "../../../static/img/icon-ai-brain.svg";
 import { ProxyStubAgent } from "@dfinity/agent";
 
+const amountOfSparks = 30;
+
 const css = `
 .ai-spark {
   position: absolute;
@@ -80,12 +82,12 @@ export function AskAIWidget() {
           <span className={"hidden md:block font-bold"}></span>
           {
             // add 30 <i></i> elements to create a pulsating effect
-            Array.from({ length: 30 }).map((_, i) => (
+            Array.from({ length: amountOfSparks }).map((_, i) => (
               <i
                 key={i}
                 className="ai-spark"
                 style={{
-                  '--i': i/30,
+                  '--i': i/amountOfSparks,
                   '--rnd': Math.random(),
                   '--r': .5 + Math.random() * .5,
                   '--a': Math.random(),
