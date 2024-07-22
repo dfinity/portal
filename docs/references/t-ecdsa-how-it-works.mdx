@@ -28,7 +28,7 @@ The derivation of further t-sig keys from a canister root key can be done withou
 
 ![Threshold ECDSA Key derivation](./_attachments/key_derivation.png)
 
-Threshold master keys are always referred to through **key identifiers** in the t-sig APIs (as well as in the NNS proposals for managing the rollout). The key identifiers comprise an elliptic curve name and an identifier, e.g., an example key identifier is the 2-tuple `(secp256k1, test_key_1)` for ECDSA or `(bip340secp256k1, test_key_1)` for Schnorr. Those key identifiers are used by the system to refer to the correct key, e.g., for selecting the key share when computing a signature or in the implementation of the XNet routing of API calls and responses to/from the t-sig-enabled subnet holding the key with the corresponding identifier.
+Threshold master keys are always referred to through **key identifiers** in the t-sig APIs (as well as in the NNS proposals for managing the rollout). The key identifiers comprise an elliptic curve name or an algorithm and an identifier, e.g., an example key identifier is the 2-tuple `(secp256k1, test_key_1)` for ECDSA or `(bip340secp256k1, test_key_1)` for Schnorr. Those key identifiers are used by the system to refer to the correct key, e.g., for selecting the key share when computing a signature or in the implementation of the XNet routing of API calls and responses to/from the t-sig-enabled subnet holding the key with the corresponding identifier.
 
 There are currently three master keys deployed, an ECDSA test key, an ECDSA production key, and a Schnorr test key.
 
