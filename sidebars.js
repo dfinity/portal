@@ -829,6 +829,41 @@ const sidebars = {
           type: "category",
           label: "Tokens",
           items: [
+	          "developer-docs/defi/tokens/token-standards",
+            {
+              type: "category",
+              label: "Ledgers",
+              link: {
+                type: "doc",
+                id: "developer-docs/defi/tokens/ledger/overview",
+              },
+              items: [
+                {
+                  type: "category",
+                  label: "Setup",
+                  link: {
+                    type: "doc",
+                    id: "developer-docs/defi/tokens/ledger/setup/overview",
+                  },
+                  items: [
+                    "developer-docs/defi/tokens/ledger/setup/icp_ledger_setup",
+                    "developer-docs/defi/tokens/ledger/setup/icrc1_ledger_setup"
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Usage",
+                  link: {
+                    type: "doc",
+                    id: "developer-docs/defi/tokens/ledger/usage/overview",
+                  },
+                  items: [
+                    "developer-docs/defi/tokens/ledger/usage/icp_ledger_usage",
+                    "developer-docs/defi/tokens/ledger/usage/icrc1_ledger_usage"
+                  ],
+                },
+              ],
+            },
             "developer-docs/defi/tokens/token-standards",
             "developer-docs/defi/token_integrations/index",
             "developer-docs/defi/icp-tokens/ledger-local-setup",
