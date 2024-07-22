@@ -9,7 +9,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Bitcoin" ]} />
 
-The integration of Internet Computer (ICP) with the Bitcoin network allows ICP smart contracts to directly interact with the Bitcoin network. 
+The integration of Internet Computer (ICP) with the Bitcoin network allows ICP smart contracts to directly interact with the Bitcoin network.
 The is important because it brings smart contract functionality to Bitcoin, opening up new possibilities for DeFi and dapp development.
 For example, ICP smart contracts can directly hold, receive, and send BTC, and also facilitate the creation of a ckBTC token that is backed 1:1 by BTC.
 
@@ -21,7 +21,7 @@ Smart contracts can also sign and send Bitcoin transactions, allowing them to di
 
 This direct Bitcoin integration is based on two features:
 
-- **[Threshold ECDSA](/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa)**: A smart contract can have a secret key that is stored in a secure and decentralized way using chain-key cryptography. This key can be used to digitally sign messages. One of the supported signing algorithms, ECDSA is compatible with the Bitcoin blockchain, enabling smart contracts to sign Bitcoin transactions.
+- **[Threshold ECDSA](/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa)** and **[threshold Schnorr](/docs/current/developer-docs/smart-contracts/signatures/t-schnorr)**: A smart contract can have a secret key that is stored in a secure and decentralized way using chain-key cryptography. This key can be used to digitally sign messages. One of the supported signing algorithms, ECDSA is compatible with the Bitcoin blockchain, enabling smart contracts to sign Bitcoin transactions.
 
 - **Bitcoin adapter**: ICP has one subnet whose nodes participate in the Bitcoin network. These nodes are used to fetch the Bitcoin state and blocks and send transactions to the network.
 

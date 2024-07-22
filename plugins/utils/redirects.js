@@ -322,7 +322,7 @@ const redirects = `
   /docs/current/developer-docs/production/staging-environment /docs/current/developer-docs/smart-contracts/deploy/custom-testnets
   /docs/current/developer-docs/backend/reproducible-builds /docs/current/developer-docs/smart-contracts/test/reproducible-builds
   /docs/current/developer-docs/backend/troubleshooting /docs/current/developer-docs/smart-contracts/test/troubleshooting
-  /docs/current/developer-docs/integrations/t-ecdsa /docs/current/developer-docs/smart-contracts/encryption/t-ecdsa
+  /docs/current/developer-docs/integrations/t-ecdsa /docs/current/developer-docs/smart-contracts/signatures/t-ecdsa
   /docs/current/developer-docs/integrations/vetkeys/ /docs/current/developer-docs/smart-contracts/encryption/vetkeys
   /docs/current/developer-docs/integrations/vetkeys/using-vetkeys /docs/current/developer-docs/smart-contracts/encryption/using-vetkeys
   /docs/current/developer-docs/integrations/composite-query /docs/current/developer-docs/smart-contracts/advanced-features/composite-query
@@ -519,7 +519,7 @@ const redirects = `
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/defi/icrc-1/icrc1-index-setup /docs/current/developer-docs/defi/tokens/indexes
   /docs/current/defi/icp-tokens/icp-index-local-setup /docs/current/developer-docs/defi/tokens/indexes
-  /docs/current/developer-docs/smart-contracts/encryption/signing-transactions /docs/current/developer-docs/smart-contracts/encryption/signing-messages
+  /docs/current/developer-docs/smart-contracts/signatures/signing-transactions /docs/current/developer-docs/smart-contracts/signatures/signing-messages-t-ecdsa
   /docs/current/developer-docs/defi/icp-tokens/overview /docs/current/developer-docs/defi/tokens/token-standards
   /docs/current/developer-docs/defi/asset-custody/self-custody-quickstart /docs/current/developer-docs/defi/wallets/self-custody/self-custody-quickstart
   /docs/current/developer-docs/defi/asset-custody/hardware-wallet-cli /docs/current/developer-docs/defi/wallets/self-custody/hardware-wallet-cli
@@ -545,7 +545,7 @@ const redirects = `
   /docs/developers-guide/sdk-guide.html	/docs/current/developer-docs/getting-started/install/
   /docs/current/references/cli-reference/dfx-deps	/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-deps
   /docs/current/samples/internet-identity-sample /docs/current/references/samples/motoko/internet_identity_integration/
-  /docs/current/developer-docs/smart-contracts/advanced-features/threshold-signing /docs/current/developer-docs/smart-contracts/encryption/t-ecdsa
+  /docs/current/developer-docs/smart-contracts/advanced-features/threshold-signing /docs/current/developer-docs/smart-contracts/signatures/t-ecdsa
   /docs/current/backend/candid/generating-candid /docs/current/developer-docs/backend/rust/generating-candid
   /docs/current/developer-docs/backend/motoko/index.md /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/backend/rust/index /docs/current/developer-docs/backend/rust/
@@ -578,6 +578,11 @@ const redirects = `
   /docs/current/developer-docs/best-practices/	/docs/current/developer-docs/smart-contracts/best-practices/general
   /docs/current/developer-docs/best-practices/considerations-for-nft-devs /docs/current/developer-docs/defi/nfts/overview
   /docs/current/developer-docs/smart-contracts/test/staging-environment /docs/current/developer-docs/smart-contracts/deploy/custom-testnets
+  /docs/current/developer-docs/smart-contracts/encryption/signing-messages /docs/current/developer-docs/smart-contracts/signatures/signing-messages-t-ecdsa
+  /docs/current/developer-docs/smart-contracts/encryption/t-ecdsa /docs/current/developer-docs/smart-contracts/signatures/t-ecdsa
+  /docs/current/developer-docs/smart-contracts/encryption/t-schnorr /docs/current/developer-docs/smart-contracts/signatures/t-schnorr
+  /docs/current/developer-docs/smart-contracts/encryption/signing-messages-tecdsa /docs/current/developer-docs/smart-contracts/signatures/signing-messages-t-ecdsa
+  /docs/current/developer-docs/smart-contracts/encryption/signing-messages-t-schnorr /docs/current/developer-docs/smart-contracts/signatures/signing-messages-t-schnorr
   /docs/current/developer-docs/production/topping-up-canister/ /docs/current/developer-docs/smart-contracts/topping-up/topping-up-canister
   /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/current/motoko/main/reference/language-manual
   `

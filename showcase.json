@@ -4890,6 +4890,19 @@
     "description": "A self-sovereign directory, giving YOU control of your contact information.",
     "usesInternetIdentity": false,
     "display": "Normal",
-    "logo": "/img/showcase/rolodex_logo.png"
+    "logo": "/img/showcase/rolodex_logo.png",
+  },
+  {
+    "id": "zon",
+    "name": "Zon Social Media",
+    "oneLiner": "A fusion of social network, marketplace, and Web directory.",
+    "website": "https://zoncircle.com",
+    "tags": ["SocialFi"],
+    "description": "A fusion of social network, marketplace, and Web directory. World as items in folders. On the mission to overcome network effect - well suited for indie authors.",
+    "logo": "/img/showcase/zon_logo.webp",
+    "usesInternetIdentity": true,
+    "authOrigins": "https://zoncircle.com",
+    "github":"https://github.com/vporton/zondirectory2",
+    "twitter": "https://x.com/ZonDirectory"
   }
 ]

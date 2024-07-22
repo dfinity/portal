@@ -164,6 +164,29 @@ const frameworksTiles: TileDescriptor[] = [
     ),
   },
   {
+    label: "Juno",
+    description:
+      "Juno is a cutting-edge blockchain-as-a-service platform designed to enable developers to create decentralized applications at lightning speed",
+    icon: (
+      <img
+        src="/img/docs/juno.svg"
+        alt="Juno docs"
+        className="w-10 h-10"
+        loading="lazy"
+      />
+    ),
+    action: (
+      <Link
+        href="/docs/current/developer-docs/web-apps/frameworks/juno"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
+        title="Go to Juno docs"
+      >
+        <span className={"md:hidden"}>Go to Juno docs</span>
+        <LinkArrowRight />
+      </Link>
+    ),
+  },
+  {
     label: "Testnets",
     description: (
       <span>
@@ -210,29 +233,6 @@ const frameworksTiles: TileDescriptor[] = [
         title="Go to React quickstart"
       >
         <span className={"md:hidden"}>Go to React quickstart</span>
-        <LinkArrowRight />
-      </Link>
-    ),
-  },
-  {
-    label: "Juno",
-    description:
-      "Juno is a cutting-edge blockchain-as-a-service platform designed to enable developers to create decentralized applications at lightning speed",
-    icon: (
-      <img
-        src="/img/docs/juno.svg"
-        alt="Juno docs"
-        className="w-10 h-10"
-        loading="lazy"
-      />
-    ),
-    action: (
-      <Link
-        href="/docs/current/developer-docs/web-apps/frameworks/juno"
-        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
-        title="Go to Juno docs"
-      >
-        <span className={"md:hidden"}>Go to Juno docs</span>
         <LinkArrowRight />
       </Link>
     ),

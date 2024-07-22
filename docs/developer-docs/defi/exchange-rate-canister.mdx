@@ -64,7 +64,7 @@ type GetExchangeRateResult = variant {
 ```
 
 ## Cycles cost
-Each request to the XRC costs 10B cycles to submit the request, otherwise an `ExchangeRateError::NotEnoughCycles` error will be returned. The actual cycles cost of the request call will depend on two factors: the requested asset types and the state of the internal exchange rate cache. These parameters are as follows:
+Each request to the XRC costs 1B cycles to submit the request, otherwise an `ExchangeRateError::NotEnoughCycles` error will be returned. The actual cycles cost of the request call will depend on two factors: the requested asset types and the state of the internal exchange rate cache. These parameters are as follows:
 
 - If the request can be served from the cache, the actual cost is 20M cycles.
 - If both assets are fiat currencies, the cost is 20M cycles.
