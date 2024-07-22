@@ -74,7 +74,7 @@ Support for further elliptic curves and additional corresponding master keys may
 Next, this guide gives an overview of the APIs for threshold signatures. 
 For the authoritative specification, the reader is referred to the corresponding part of the Internet Computer interface specification for [ECDSA](/references/ic-interface-spec.md#ic-ecdsa_public_key) and [Schnorr](/references/ic-interface-spec.md#ic-sign_with_schnorr). 
 The ECDSA API comprises two methods: `ecdsa_public_key` for retrieving threshold ECDSA public keys, and `sign_with_ecdsa` for requesting threshold ECDSA signatures to be computed from the subnet holding the secret-shared private threshold ECDSA key.
-The Schnorr API comprises two methods: `schnorr_public_key` for retrieving threshold Schnorr public keys, and `sign_with_schnorr` for requesting threshold schnorr signatures to be computed from the subnet holding the secret-shared private threshold Schnorr key.
+The Schnorr API comprises two methods: `schnorr_public_key` for retrieving threshold Schnorr public keys, and `sign_with_schnorr` for requesting threshold Schnorr signatures to be computed from the subnet holding the secret-shared private threshold Schnorr key.
 
 Each API call refers to a t-sig master key by virtue of a 2-part identifier comprising a curve or algorithm, and a key id as outlined above. Derivation paths are used to refer to keys below a canister's root key in the key derivation hierarchy. The key derivation from the master key to the canister root key is implicit in the API.
 
