@@ -502,12 +502,14 @@ function ChainFusion() {
                 <style>{svgStyles}</style>
                 <g>
                   <line
-                    x1={281} y1={737}
-                    x2={241} y2={737}
+                    x1={281}
+                    y1={737}
+                    x2={241}
+                    y2={737}
                     stroke="#6A86F2"
                     style={{
                       stroke: "color(display-p3 0.4157 0.5255 0.9490)",
-                      strokeOpacity: 1
+                      strokeOpacity: 1,
                     }}
                     strokeWidth={2}
                   />
@@ -516,7 +518,7 @@ function ChainFusion() {
                     stroke="#6A86F2"
                     style={{
                       stroke: "color(display-p3 0.4157 0.5255 0.9490)",
-                      strokeOpacity: 1
+                      strokeOpacity: 1,
                     }}
                     strokeWidth={2}
                     strokeLinecap="round"
@@ -529,7 +531,7 @@ function ChainFusion() {
                     stroke="#C672F0"
                     style={{
                       stroke: "color(display-p3 0.7765 0.4471 0.9412)",
-                      strokeOpacity: 1
+                      strokeOpacity: 1,
                     }}
                     strokeWidth={2}
                   />
@@ -538,7 +540,7 @@ function ChainFusion() {
                     stroke="#C672F0"
                     style={{
                       stroke: "color(display-p3 0.7765 0.4471 0.9412)",
-                      strokeOpacity: 1
+                      strokeOpacity: 1,
                     }}
                     strokeWidth={2}
                     strokeLinecap="round"
@@ -550,7 +552,10 @@ function ChainFusion() {
                     height={92}
                     rx={15}
                     fill="#1E005D"
-                    style={{ fill: "color(display-p3 0.1176 0.0000 0.3647)", fillOpacity: 1 }}
+                    style={{
+                      fill: "color(display-p3 0.1176 0.0000 0.3647)",
+                      fillOpacity: 1,
+                    }}
                   />
                   <rect
                     x={1}
@@ -561,14 +566,17 @@ function ChainFusion() {
                     stroke="#6A86F2"
                     style={{
                       stroke: "color(display-p3 0.4157 0.5255 0.9490)",
-                      strokeOpacity: 1
+                      strokeOpacity: 1,
                     }}
                     strokeWidth={2}
                   />
                   <path
                     d="M58.5977 579.461H64.8906C64.5039 584.781 59.8398 586.375 54.168 586.375C48.2617 586.363 43.3867 584.652 43.4102 578.688V577.539C43.3867 571.586 48.2617 569.875 54.168 569.852C59.8398 569.863 64.5039 571.457 64.8906 576.766H58.5977C58.0234 575.219 56.2773 574.855 54.168 574.855C51.6602 574.891 49.5273 575.336 49.5625 577.926V578.312C49.5273 580.879 51.6602 581.348 54.168 581.383C56.2773 581.383 58.0352 581.008 58.5977 579.461ZM82.0938 580.609H72.8711V585.988H66.7305V570.238H72.8711V575.617H82.0938V570.238H88.2461V585.988H82.0938V580.609ZM100.82 574.82L98.6523 579.473H102.977L100.82 574.82ZM88.7148 586.012L97.1641 570.262H104.465L112.914 586.012H106L104.758 583.316H96.8711L95.6289 586.012H88.7148ZM113.395 570.238H119.535V585.988H113.395V570.238ZM138.156 578.582V570.238H144.309V585.988H137.395L128.934 576.367V585.988H122.793V570.238H131.242L138.156 578.582ZM156.496 586.012V570.262H175.703V575.254H162.637V577.176H174.168V581.781H162.637V586.012H156.496ZM192.859 578.312V570.238H199.012V578.699C199.035 584.652 194.16 586.363 188.254 586.375C182.348 586.363 177.473 584.652 177.496 578.699V570.238H183.637V578.312C183.613 580.902 185.734 581.348 188.254 581.383C190.762 581.348 192.895 580.902 192.859 578.312ZM207.203 575.43C207.203 576.121 209.113 576.215 211.586 576.332C215.98 576.555 222.156 576.859 222.145 580.809C222.145 585.309 216.988 586.375 211.457 586.375C205.938 586.363 201.355 585.695 200.77 580.809H207.203C207.906 582.027 209.535 582.344 211.457 582.344C213.367 582.344 215.711 582.027 215.711 580.809C215.711 580.117 213.801 580.012 211.328 579.895C206.934 579.672 200.758 579.367 200.77 575.43C200.77 570.93 205.926 569.852 211.457 569.852C216.977 569.887 221.559 570.508 222.145 575.43H215.711C215.008 574.188 213.379 573.895 211.457 573.895C209.547 573.895 207.203 574.176 207.203 575.43ZM223.785 570.238H229.926V585.988H223.785V570.238ZM242.488 569.852C248.418 569.852 253.234 571.586 253.234 577.539V578.688C253.258 584.641 248.406 586.363 242.488 586.375C236.559 586.363 231.707 584.641 231.73 578.688V577.539C231.707 571.574 236.559 569.863 242.488 569.852ZM247.094 578.301V577.914C247.129 575.348 244.996 574.879 242.488 574.844C239.969 574.879 237.836 575.348 237.871 577.914V578.301C237.836 580.879 239.969 581.348 242.488 581.383C244.996 581.348 247.129 580.879 247.094 578.301ZM270.438 578.582V570.238H276.59V585.988H269.676L261.215 576.367V585.988H255.074V570.238H263.523L270.438 578.582Z"
                     fill="#6A86F2"
-                    style={{ fill: "color(display-p3 0.4157 0.5255 0.9490)", fillOpacity: 1 }}
+                    style={{
+                      fill: "color(display-p3 0.4157 0.5255 0.9490)",
+                      fillOpacity: 1,
+                    }}
                   />
                   <path
                     d="M76.943 617H73.127V599.984H84.095V603.584H76.919V607.184H83.231V610.64H76.943V617ZM89.7197 608.48C89.7197 612.032 92.2637 613.616 94.6397 613.616C96.9917 613.616 99.5357 612.032 99.5357 608.48C99.5357 604.928 96.9917 603.32 94.6397 603.32C92.2637 603.32 89.7197 604.928 89.7197 608.48ZM85.7837 608.504C85.7837 603.104 89.8397 599.624 94.6397 599.624C99.4157 599.624 103.472 603.104 103.472 608.504C103.472 613.88 99.4157 617.36 94.6397 617.36C89.8397 617.36 85.7837 613.88 85.7837 608.504ZM112.914 617.384C109.17 617.384 106.17 615.128 106.17 610.856V599.984H109.962V610.544C109.962 612.608 111.114 613.64 112.914 613.64C114.714 613.64 115.866 612.608 115.866 610.544V599.984H119.658V610.856C119.658 615.128 116.658 617.384 112.914 617.384ZM138.114 617H134.106L127.098 605.816V617H123.33V599.984H127.938L134.322 610.328V599.984H138.114V617ZM145.755 613.424H147.963C150.579 613.424 152.715 611.912 152.715 608.504C152.715 605.096 150.579 603.56 147.963 603.56H145.755V613.424ZM148.107 617H141.963V599.984H148.131C153.243 599.984 156.675 603.248 156.675 608.504C156.675 613.76 153.243 617 148.107 617ZM170.188 617L168.964 613.544H162.388L161.164 617H157.18L163.588 599.984H167.98L174.316 617H170.188ZM165.724 604.208L163.636 610.088H167.764L165.724 604.208ZM187.543 603.608H182.287V617H178.495V603.608H173.263V599.984H187.543V603.608ZM193.709 617H189.869V599.984H193.709V617ZM200.509 608.48C200.509 612.032 203.053 613.616 205.429 613.616C207.781 613.616 210.325 612.032 210.325 608.48C210.325 604.928 207.781 603.32 205.429 603.32C203.053 603.32 200.509 604.928 200.509 608.48ZM196.573 608.504C196.573 603.104 200.629 599.624 205.429 599.624C210.205 599.624 214.261 603.104 214.261 608.504C214.261 613.88 210.205 617.36 205.429 617.36C200.629 617.36 196.573 613.88 196.573 608.504ZM231.911 617H227.903L220.895 605.816V617H217.127V599.984H221.735L228.119 610.328V599.984H231.911V617ZM247.544 604.16L244.136 605.12C244.016 604.328 243.368 602.984 241.304 602.984C239.888 602.984 238.976 603.872 238.976 604.808C238.976 605.624 239.48 606.224 240.656 606.44L242.936 606.872C246.176 607.472 247.856 609.56 247.856 611.984C247.856 614.648 245.624 617.36 241.568 617.36C236.864 617.36 234.848 614.312 234.608 611.912L238.088 611.072C238.232 612.632 239.288 614 241.616 614C243.104 614 244.016 613.28 244.016 612.224C244.016 611.36 243.32 610.736 242.192 610.52L239.864 610.088C236.984 609.536 235.232 607.616 235.232 605.096C235.232 601.88 238.064 599.624 241.328 599.624C245.576 599.624 247.184 602.168 247.544 604.16Z"
@@ -576,7 +584,12 @@ function ChainFusion() {
                     style={{ fill: "white", fillOpacity: 1 }}
                   />
                 </g>
-                <a filter="url(#filter0_b_16561_24373)" className="svgcard" href="https://internetcomputer.org/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa" target="_blank">
+                <a
+                  filter="url(#filter0_b_16561_24373)"
+                  className="svgcard"
+                  href="https://internetcomputer.org/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa"
+                  target="_blank"
+                >
                   <rect
                     y={689}
                     width={250}
@@ -599,7 +612,11 @@ function ChainFusion() {
                     fill="var(--sfg, #fff)"
                   />
                 </a>
-                <a href="https://internetcomputer.org/docs/current/developer-docs/multi-chain/overview/#integrations" className="svgcard" target="_blank">
+                <a
+                  href="https://internetcomputer.org/docs/current/developer-docs/multi-chain/overview/#integrations"
+                  className="svgcard"
+                  target="_blank"
+                >
                   <rect
                     y={803}
                     width={250}
@@ -650,7 +667,11 @@ function ChainFusion() {
                     fill="white"
                   />
                 </g>
-                <a className="svgcard" href="https://internetcomputer.org/docs/current/developer-docs/multi-chain/chain-key-tokens/overview/" target="_blank">
+                <a
+                  className="svgcard"
+                  href="https://internetcomputer.org/docs/current/developer-docs/multi-chain/chain-key-tokens/overview/"
+                  target="_blank"
+                >
                   <rect
                     x={636}
                     y={689}
@@ -674,7 +695,10 @@ function ChainFusion() {
                     fill="var(--sfg, #fff)"
                   />
                 </a>
-                <a className="svgcard" href="https://internetcomputer.org/ecosystem?tag=Chainfusion">
+                <a
+                  className="svgcard"
+                  href="https://internetcomputer.org/ecosystem?tag=Chainfusion"
+                >
                   <rect
                     x={636}
                     y={803}
@@ -704,7 +728,7 @@ function ChainFusion() {
                     stroke="#6A86F2"
                     style={{
                       stroke: "color(display-p3 0.4157 0.5255 0.9490)",
-                      strokeOpacity: 1
+                      strokeOpacity: 1,
                     }}
                     strokeWidth={2}
                     strokeLinecap="round"
@@ -714,7 +738,7 @@ function ChainFusion() {
                     stroke="#C672F0"
                     style={{
                       stroke: "color(display-p3 0.7765 0.4471 0.9412)",
-                      strokeOpacity: 1
+                      strokeOpacity: 1,
                     }}
                     strokeWidth={2}
                     strokeLinecap="round"
@@ -746,7 +770,7 @@ function ChainFusion() {
                       fill="#231F20"
                       style={{
                         fill: "color(display-p3 0.1373 0.1216 0.1255)",
-                        fillOpacity: 1
+                        fillOpacity: 1,
                       }}
                     />
                     <path
@@ -908,7 +932,7 @@ function ChainFusion() {
                       stopColor="#ED1E79"
                       style={{
                         stopColor: "color(display-p3 0.9294 0.1176 0.4745)",
-                        stopOpacity: 1
+                        stopOpacity: 1,
                       }}
                     />
                     <stop
@@ -916,7 +940,7 @@ function ChainFusion() {
                       stopColor="#522785"
                       style={{
                         stopColor: "color(display-p3 0.3216 0.1529 0.5216)",
-                        stopOpacity: 1
+                        stopOpacity: 1,
                       }}
                     />
                   </linearGradient>
@@ -933,7 +957,7 @@ function ChainFusion() {
                       stopColor="#F15A24"
                       style={{
                         stopColor: "color(display-p3 0.9451 0.3529 0.1412)",
-                        stopOpacity: 1
+                        stopOpacity: 1,
                       }}
                     />
                     <stop
@@ -941,7 +965,7 @@ function ChainFusion() {
                       stopColor="#FBB03B"
                       style={{
                         stopColor: "color(display-p3 0.9843 0.6902 0.2314)",
-                        stopOpacity: 1
+                        stopOpacity: 1,
                       }}
                     />
                   </linearGradient>
@@ -958,7 +982,7 @@ function ChainFusion() {
                       stopColor="#ED1E79"
                       style={{
                         stopColor: "color(display-p3 0.9294 0.1176 0.4745)",
-                        stopOpacity: 1
+                        stopOpacity: 1,
                       }}
                     />
                     <stop
@@ -966,7 +990,7 @@ function ChainFusion() {
                       stopColor="#522785"
                       style={{
                         stopColor: "color(display-p3 0.3216 0.1529 0.5216)",
-                        stopOpacity: 1
+                        stopOpacity: 1,
                       }}
                     />
                   </linearGradient>
@@ -983,7 +1007,7 @@ function ChainFusion() {
                       stopColor="#F15A24"
                       style={{
                         stopColor: "color(display-p3 0.9451 0.3529 0.1412)",
-                        stopOpacity: 1
+                        stopOpacity: 1,
                       }}
                     />
                     <stop
@@ -991,7 +1015,7 @@ function ChainFusion() {
                       stopColor="#FBB03B"
                       style={{
                         stopColor: "color(display-p3 0.9843 0.6902 0.2314)",
-                        stopOpacity: 1
+                        stopOpacity: 1,
                       }}
                     />
                   </linearGradient>
@@ -1008,7 +1032,7 @@ function ChainFusion() {
                       stopColor="#ED1E79"
                       style={{
                         stopColor: "color(display-p3 0.9294 0.1176 0.4745)",
-                        stopOpacity: 1
+                        stopOpacity: 1,
                       }}
                     />
                     <stop
@@ -1016,7 +1040,7 @@ function ChainFusion() {
                       stopColor="#522785"
                       style={{
                         stopColor: "color(display-p3 0.3216 0.1529 0.5216)",
-                        stopOpacity: 1
+                        stopOpacity: 1,
                       }}
                     />
                   </linearGradient>
@@ -1033,7 +1057,7 @@ function ChainFusion() {
                       stopColor="#F15A24"
                       style={{
                         stopColor: "color(display-p3 0.9451 0.3529 0.1412)",
-                        stopOpacity: 1
+                        stopOpacity: 1,
                       }}
                     />
                     <stop
@@ -1041,7 +1065,7 @@ function ChainFusion() {
                       stopColor="#FBB03B"
                       style={{
                         stopColor: "color(display-p3 0.9843 0.6902 0.2314)",
-                        stopOpacity: 1
+                        stopOpacity: 1,
                       }}
                     />
                   </linearGradient>
@@ -1057,7 +1081,7 @@ function ChainFusion() {
                       stopColor="#C772EF"
                       style={{
                         stopColor: "color(display-p3 0.7800 0.4453 0.9375)",
-                        stopOpacity: 1
+                        stopOpacity: 1,
                       }}
                     />
                     <stop
@@ -1065,7 +1089,7 @@ function ChainFusion() {
                       stopColor="#6A85F1"
                       style={{
                         stopColor: "color(display-p3 0.4138 0.5231 0.9458)",
-                        stopOpacity: 1
+                        stopOpacity: 1,
                       }}
                     />
                   </linearGradient>
@@ -1124,22 +1148,21 @@ function ChainFusion() {
                   src="/img/chainfusion/ck_Tokens.png"
                   alt=""
                   className="absolute w-1/5  top-[-15%] left-[-5%] wiggle"
-                  style={{'--rnd': Math.random()} as React.CSSProperties}
+                  style={{ "--rnd": Math.random() } as React.CSSProperties}
                 />
 
                 <img
                   src="/img/chainfusion/ck_Tokens-2.png"
                   alt=""
                   className="absolute w-[15%] top-[-18%] right-[4%] wiggle"
-                  style={{'--rnd': Math.random()} as React.CSSProperties}
+                  style={{ "--rnd": Math.random() } as React.CSSProperties}
                 />
-
 
                 <img
                   src="/img/chainfusion/ck_Tokens-3.png"
                   alt=""
                   className="absolute w-1/5 top-[30%] right-[-12%] wiggle"
-                  style={{'--rnd': Math.random()} as React.CSSProperties}
+                  style={{ "--rnd": Math.random() } as React.CSSProperties}
                 />
               </div>
             </div>
@@ -1215,12 +1238,12 @@ function ChainFusion() {
             <EcosystemCard
               title="ckTokens"
               description="Chain-key twin tokens like ckBTC, ckETH allow users to leverage the ICP network for fast, low cost, and user-friendly transfers."
-              img="/img/chainfusion/cktokens.svg"
+              img="/img/chainfusion/cktokens.webp"
             />
             <EcosystemCard
               title="Metaprotocols"
               description="Metaprotocols leverage Chain Fusion to offer decentralized cross-chain infrastructure enabling the transfer and creation of new assets on Bitcoin."
-              img="/img/chainfusion/omnity.svg"
+              img="/img/chainfusion/omnity.webp"
             />
             <EcosystemCard
               title="Crosschain DEXes "
@@ -1230,7 +1253,7 @@ function ChainFusion() {
             <EcosystemCard
               title="Marketplaces"
               description="There are marketplaces for Ordinals and Runes that use Chain Fusion to allow users to purchase or trade efficiently, quickly, and easily."
-              img="/img/chainfusion/marketplace.svg"
+              img="/img/chainfusion/marketplace.webp"
             />
           </AnimateSpawn>
         </section>
