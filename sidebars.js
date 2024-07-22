@@ -314,6 +314,7 @@ const sidebars = {
             "developer-docs/smart-contracts/advanced-features/query-stats",
             "developer-docs/smart-contracts/advanced-features/simd",
             "developer-docs/smart-contracts/advanced-features/system-canisters",
+            "developer-docs/smart-contracts/advanced-features/time-and-timestamps",
           ],
         },
         {
