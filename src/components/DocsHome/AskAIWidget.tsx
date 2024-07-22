@@ -70,7 +70,7 @@ export function AskAIWidget() {
            bg-[radial-gradient(67.52%_167.71%_at_50.38%_-41.67%,#EA2B7B_0%,#3B00B9_100%)]
             hover:text-white/80 stat-fade-in button-small md:button-small font-bold  ${
               isDocsPage ? "mr-0" : "mr-9"
-            }md:mr-0 w-10 md:w-12 h-8 md:h-10`}
+            } md:mr-0 w-10 md:w-12 h-8 md:h-10`}
           style={{
             display: "flex",
             alignItems: "center",
