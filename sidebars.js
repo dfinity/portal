@@ -393,6 +393,7 @@ const sidebars = {
                   label: "Advanced dfx workflows",
                   items: [
                     "developer-docs/developer-tools/cli-tools/advanced-dfx/dfx-migration",
+                    "developer-docs/developer-tools/cli-tools/advanced-dfx/init-args",
                     "developer-docs/developer-tools/cli-tools/advanced-dfx/networks-json",
                     "developer-docs/developer-tools/cli-tools/advanced-dfx/specifying-replica-version",
                   ],
