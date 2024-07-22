@@ -887,6 +887,11 @@ const sidebars = {
               label: "Advanced",
               items: [
                 {
+                  type: "doc",
+                  label: "Integration Options",
+                  id: "developer-docs/defi/tokens/advanced/direct_integration",  
+                },
+                {
                   type: "category",
                   label: "ICP Rosetta implementation",
                   link: {
