@@ -4890,7 +4890,7 @@
     "description": "A self-sovereign directory, giving YOU control of your contact information.",
     "usesInternetIdentity": false,
     "display": "Normal",
-    "logo": "/img/showcase/rolodex_logo.png",
+    "logo": "/img/showcase/rolodex_logo.png"
   },
   {
     "id": "zon",
