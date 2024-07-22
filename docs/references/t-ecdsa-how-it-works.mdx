@@ -59,7 +59,7 @@ In case of the unlikely event of one of the subnets getting destroyed beyond rec
 
 ### Deuterium Schnorr release (Beta)
 
-As part of the Deuterium release, a test Schnorr key for curve `secp256k1` has been deployed on one subnet with a replication factor of 13. 
+As part of the Deuterium release, a test Schnorr key according to the `bip340` specification for curve `secp256k1` has been deployed on one subnet with a replication factor of 13. 
 As above, this key may be deleted at some time after the GA Schnorr release and therefore should not be used for anything that has value, but only for development and testing purposes.
 The test key has the id `(bip340secp256k1, test_key_1)` for referring to it in API calls.
 
@@ -76,7 +76,7 @@ For the authoritative specification, the reader is referred to the corresponding
 The ECDSA API comprises two methods: `ecdsa_public_key` for retrieving threshold ECDSA public keys, and `sign_with_ecdsa` for requesting threshold ECDSA signatures to be computed from the subnet holding the secret-shared private threshold ECDSA key.
 The Schnorr API comprises two methods: `schnorr_public_key` for retrieving threshold Schnorr public keys, and `sign_with_schnorr` for requesting threshold schnorr signatures to be computed from the subnet holding the secret-shared private threshold Schnorr key.
 
-Each API call refers to a t-sig master key by virtue of a 2-part identifier comprising a curve and a key id as outlined above. Derivation paths are used to refer to keys below a canister's root key in the key derivation hierarchy. The key derivation from the master key to the canister root key is implicit in the API.
+Each API call refers to a t-sig master key by virtue of a 2-part identifier comprising a curve or algorithm, and a key id as outlined above. Derivation paths are used to refer to keys below a canister's root key in the key derivation hierarchy. The key derivation from the master key to the canister root key is implicit in the API.
 
 -   [`ecdsa_public_key`](/docs/current/references/ic-interface-spec#ic-ecdsa_public_key): this method returns a SEC1-encoded ECDSA public key for the given canister using the given derivation path. 
 If the `canister_id` is unspecified, it will default to the canister id of the caller. 
