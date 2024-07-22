@@ -1111,15 +1111,15 @@ function ChainFusion() {
               <img
                 src="/img/chainfusion/foundations.webp"
                 alt=""
-                className="absolute w-1/3 top-[36.1%]"
+                className="absolute w-1/3 top-[36.1%] z-20"
               />
               <img
                 src="/img/chainfusion/chainapps.webp"
                 alt=""
-                className="absolute w-1/3  top-[36.1%] right-[4%]"
+                className="absolute w-1/3  top-[36.1%] right-[4%] z-20"
               />
 
-              <div className="absolute h-[10%] right-[3.5%] w-[27.2%] top-[76.2%] pointer-events-none">
+              <div className="absolute h-[10%] right-[3.5%] w-[27.2%] top-[76.2%] pointer-events-none z-20">
                 <img
                   src="/img/chainfusion/ck_Tokens.png"
                   alt=""
