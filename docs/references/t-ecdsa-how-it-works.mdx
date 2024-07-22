@@ -140,7 +140,7 @@ And the Schnorr API:
 
 Note that in case of high system load, a request to compute a threshold signature may time out. In this case, the canister may want to back off and retry the request later.
 
-## API Fees
+## API fees
 
 The fees for the t-sig APIs are as defined below. The threshold ECDSA test key and Schnorr test key reside on a regular-sized (13-node) application subnet, while the threshold ECDSA production key resides on an about 30-node-sized fiduciary subnet. The subnet size of the subnet where the t-sig key resides and the signatures are computed define the resulting cost. The size of the subnet of the calling canister does not matter for the fees. For costs in USD, the USD/XDR exchange rate as of of November 23, 2022 has been used.
 
