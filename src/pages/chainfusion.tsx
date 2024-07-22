@@ -487,24 +487,17 @@ function ChainFusion() {
             variants={transitions.container}
             el={motion.section}
           >
-            {/*
-            <picture>
-              <source
-                media="(max-width: 768px)"
-                srcSet="/img/chainfusion/chainfusion-grafic-mobile.webp"
-              />
-              <img
-                src="/img/chainfusion/chainfusion-grafic-desktop.webp"
-                alt="Chain Fusion graphic"
-              />
-            </picture>
-            */}
             <div className="relative">
+              <img
+                src="/img/chainfusion/explode.webp"
+                alt=""
+                className="absolute w-1/2 top-[1%] left-[50%] -translate-x-1/2 z-0"
+              />
               <svg
                 viewBox="0 0 912 897"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-full"
+                className="w-full relative z-10"
               >
                 <style>{svgStyles}</style>
                 <g>
@@ -1114,6 +1107,7 @@ function ChainFusion() {
                   </clipPath>
                 </defs>
               </svg>
+
               <img
                 src="/img/chainfusion/foundations.webp"
                 alt=""
