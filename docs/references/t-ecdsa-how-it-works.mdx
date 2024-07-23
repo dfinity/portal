@@ -106,7 +106,7 @@ This call requires that the Schnorr feature is enabled, and the `canister_id` me
 This public key can be obtained by calling `schnorr_public_key` with the caller's `canister_id`, and the same `derivation_path` and `key_id` used here.
 
 {/* Something about encoding */}
-This call requires that the Schnorr feature is enabled, the caller is a canister, and `message` is 32 bytes long. Otherwise it will be rejected.
+This call requires that the Schnorr feature is enabled and the caller is a canister. Otherwise it will be rejected.
 
 An example of the ECDSA API can be found below:
 
