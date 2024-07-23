@@ -413,7 +413,7 @@ const MarketingNav = () => {
           </div>
 
           {/* right side items: search and hamburger on mobile */}
-          <div className="flex gap-4 items-center">
+          <div className="flex gap-1 md:gap-4 items-center">
             <Search />
             <button
               className="md:hidden flex flex-col gap-[6px] border-none bg-transparent px-[4px] h-8 w-8 p-0 justify-center"

@@ -142,12 +142,24 @@
 @media (max-width: 996px) {
   .navbar__inner .navbar__items:first-child .navbar__toggle {
     order: 2;
-    margin-right: 2.25rem;
+    margin-left: 5rem;
   }
 
   .navbar__inner .navbar__items:first-child .navbar__brand {
-    flex: 1;
     order: 1;
+  }
+
+  .navbar__items--right {
+    margin-right: 2.5rem;
+  }
+
+  .navbar__toggle {
+    position: absolute;
+    right: 20px;
+  }
+
+  .navbar__items--right {
+    gap: 0.5rem;
   }
 }
 

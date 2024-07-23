@@ -56,8 +56,9 @@ const Search = () => {
           font-circular md:text-infinite md:docs:text-black
           flex gap-2 items-center
           md:order-last
+          docs:order-last
           outline-offset-2
-          absolute right-[64px] md:static
+          md:static
           text-black
           dark-hero:text-white dark-hero:border-white/50
 
