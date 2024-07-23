@@ -26,11 +26,11 @@ function Index() {
         </motion.h2>
         <AnimateSpawn
           variants={transitions.container}
-          className="bg-white px-10 md:px-16 pt-6 pb-1 md:pb-12 md:pt-12 gap-8 t-12 mb-6 mt-12 md:mt-40 md:mb-12 rounded-xl overflow-hidden"
+          className="bg-white flex flex-col md:flex-row mb-6 mt-12 md:mt-40 md:mb-12 rounded-xl overflow-hidden"
         >
           <motion.div>
             <aside className="container-10 md:flex md:items-center mt-6 md:mt-0 !pl-0	!pr-0">
-              <div className="md:w-[75%] md:pr-12">
+              <div className="md:w-[65%] md:px-12 px-10 pt-6 pb-1 md:pb-12 md:pt-12 gap-8 md:pr-12 ">
                 <motion.h5
                   className="tw-heading-5 md:tw-heading-4 mb-3 sm:mb-6 "
                   variants={transitions.item}
@@ -62,13 +62,19 @@ function Index() {
                   </Link>
                 </p>
               </div>
-              <div className="md:w-[25%] relative md:mt-6 md:mb-3 ">
-                <div className="pointer-events-none md:absolute md:-right-20 md:top-1/2 translate-y-1/12 md:-translate-y-1/2 w-[150%] md:w-auto -translate-x-[18.5%] md:-translate-x-[5%] ">
-                  <motion.img
-                    className="w-[91%] md:w-full h-full object-cover"
-                    src="/img/bitcoin-integration/deuterium-milestone.webp"
-                    alt="roadmap"
-                  />
+              <div className="md:w-[35%] relative translate-y-12 md:translate-y-0 ">
+                <div className="pointer-events-none">
+                  <picture>
+                    <source
+                      media="(max-width: 997px)"
+                      srcSet="/img/bitcoin-integration/deuterium-mobile.webp"
+                    />
+                    <img
+                      className="w-full h-auto object-cover"
+                      src="/img/bitcoin-integration/deuterium-milestone.webp"
+                      alt="roadmap"
+                    />
+                  </picture>
                 </div>
               </div>
             </aside>
