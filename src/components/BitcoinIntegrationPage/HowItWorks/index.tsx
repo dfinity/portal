@@ -55,14 +55,14 @@ function Index() {
                     from an ICP smart contract.
                   </li>
                 </motion.ul>
-                <p className="mb-0 mt-8">
+                <p className="mt-8 mb-8 md:mb-0">
                   <Link className="link-primary link-with-icon" href="/roadmap">
                     <LinkArrowRight></LinkArrowRight>
                     READ MORE
                   </Link>
                 </p>
               </div>
-              <div className="md:w-[35%] relative translate-y-12 md:translate-y-0 ">
+              <div className="md:w-[35%] relative ">
                 <div className="pointer-events-none">
                   <picture>
                     <source
