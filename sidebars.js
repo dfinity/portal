@@ -570,8 +570,8 @@ const sidebars = {
           type: "category",
           label: "Custom domains",
           items: [
-            "developer-docs/web-apps/custom-domains/using-custom-domains",
             "developer-docs/web-apps/custom-domains/dns-setup",
+            "developer-docs/web-apps/custom-domains/using-custom-domains",
           ],
         },
         "developer-docs/web-apps/design-dapps",
