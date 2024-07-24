@@ -307,7 +307,10 @@ function GlobalEventsPage() {
                 the globe.
               </p>
               <p className="mb-0">
-                <Link href="/community" className="link-primary link-with-icon">
+                <Link
+                  href="/education-hub"
+                  className="link-primary link-with-icon"
+                >
                   <LinkArrowRight />
                   Explore initiatives
                 </Link>
@@ -326,7 +329,7 @@ function GlobalEventsPage() {
               </p>
               <p className="mb-0">
                 <Link
-                  href="/community#hubs"
+                  href="https://linktr.ee/icp_hubs_network"
                   className="link-primary link-with-icon"
                 >
                   <LinkArrowRight />
