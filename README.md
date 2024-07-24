@@ -85,6 +85,8 @@ docs
 
 If proposed documentation additions do not follow the above guidelines, they will need to be revised.
 
+Additionally, it is recommended to create a branch for changes, then submit a PR that compares the Master branch to your branch. This is because the GitHub preview canister can only generate live previews of the proposed changes from branches. It cannot create previews from forks or branches of forks. 
+
 ## Adding a document
 
 To add a new documentation page, first find the category on the sidebar that you'd like to create a new document under. Then, navigate into that subdirectory in the repo and create a new documentation page. See the [repo structure](#repo-structure) outline for more information.
@@ -141,9 +143,9 @@ This audience should be kept in mind when writing docs. For example:
 The structure and content of the documentation page will vary based on the document type. Some common types are:
 
 #### Overview
-An overview of a documentation section or broad concept of ICP. When creating an Overview page that discusses the capabilities of ICP, the benefits and attributes of the possible capabilities should be written about, not only the currently implemented workflows. For example, instead of writing about the currently implemented Bitcoin and Ethereum integrations, the [Chain Fusion overview](/docs/current/developer-docs/multi-chain/overview) page discusses ICP’s cross-chain functionalities and benefits on a much broader scale beyond the two current integrations.
+An overview of a documentation section or broad concept of ICP. When creating an overview page that discusses the capabilities of ICP, the benefits and attributes of the possible capabilities should be written about, not only the currently implemented workflows. For example, instead of writing about the currently implemented Bitcoin and Ethereum integrations, the [Chain Fusion overview](/docs/current/developer-docs/multi-chain/overview) page discusses ICP’s cross-chain functionalities and benefits on a much broader scale beyond the two current integrations.
 
-For Overview pages, using bullet point lists to describe specific benefits or features of ICP is recommended.
+For overview pages, using bullet point lists to describe specific benefits or features of ICP is recommended.
 
 #### Feature or tool detail page
 A page that details a specific tool or feature. Feature or tool pages should provide a deeper explanation of a specific feature or tool, why a developer should use it, and how they can use it. It should describe the currently implemented workflows the feature/tool supports, and should not include details of conceptual ideas that are not currently live for developers to use (future roadmap items, possible improvements in the future, etc.)
@@ -161,11 +163,11 @@ A reference page provides low level detail into a feature or technology. API ref
 ### Content
 Link to resources that go into further detail and provide a brief summary of the concepts within the doc. Some places that may include further details may include additional information:
 
-- The [Reference Technology Overview](https://internetcomputer.org/docs/current/references/bitcoin-how-it-works) pages
+- The [reference technology overview](https://internetcomputer.org/docs/current/references/bitcoin-how-it-works) pages
 
-- The [How It Works](https://internetcomputer.org/how-it-works) section of the website
+- The [how it works](https://internetcomputer.org/how-it-works) section of the website
 
-- The [Core Concepts](https://internetcomputer.org/docs/current/concepts/canisters-code) section of the docs
+- The [core concepts](https://internetcomputer.org/docs/current/concepts/canisters-code) section of the docs
 
 Try to answer the following questions within the document:
 
@@ -430,10 +432,10 @@ git add * # especially submodules
 
 ### Embedding YouTube videos
 
-You can embed YouTube videos by adding the following iframe code, replacing the `src=` link with the YouTube link you'd like to embed:
+You can embed YouTube videos by adding a piece of iframe code. Go to the Youtube video, click 'Share', then click 'Embed' and it will give you the entire `<iframe>` code that you can copy paste. An example can be found below:
 
 ```
-<iframe width="560" height="315" src="https://www.youtube.com/embed/b9_PsPQ24tE?si=0w2pIVuSJFhRWAeX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-se6Se9z-aM?si=cvwDyXYrSKgoBZ4_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 ```
 
 ## Contribution workflow
