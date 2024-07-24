@@ -65,7 +65,6 @@ The test key has the id `(bip340secp256k1, test_key_1)` for referring to it in A
 
 ### Further Aspects
 
-For the Chromium ECDSA test key, the GA ECDSA production key, and the Deuterium Schnorr test key, requests to the t-sig APIs are always XNet requests because the t-sig-enabled subnets do not host user's canisters, thus some seconds of extra latency is incurred due to Xnet communications from the calling canister's subnet to the t-sig-enabled subnet holding the respective key and communicating the response back.
 
 Support for further elliptic curves and additional corresponding master keys may be added in the future. The curve `secp256r1` is interesting for supporting use cases such as decentralized certification authorities (CAs) and is the premier candidate group to be added to facilitate use cases like the mentioned one.
 
