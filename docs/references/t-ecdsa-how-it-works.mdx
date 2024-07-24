@@ -104,7 +104,8 @@ This call requires that the Schnorr feature is enabled, and the `canister_id` me
 -   [`sign_with_schnorr`](/docs/current/references/ic-interface-spec#ic-ecdsa_public_key): Returns a new Schnorr signature of the given `message` of arbitrary size that can be separately verified against a derived Schnorr public key.
 This public key can be obtained by calling `schnorr_public_key` with the caller's `canister_id`, and the same `derivation_path` and `key_id` used here.
 
-{/* Something about encoding */}
+Signatures will have different encoding depending on the provided `key_id` algorithm:
+- `bip340secp256k1`: The signature will be encoded according to [BIP340](https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki), using 64 bytes.
 This call requires that the Schnorr feature is enabled and the caller is a canister. Otherwise it will be rejected.
 
 An example of the ECDSA API can be found below:
