@@ -95,9 +95,11 @@ If the `canister_id` is unspecified, it will default to the canister id of the c
 - The `derivation_path` is a vector of variable length byte strings. 
 - The `key_id` is a struct specifying both a curve and a name. The availability of a particular `key_id` depends on implementation.
 
-For curve `bip340secp256k1`, the public key is derived using a generalization of BIP32 (see [ia.cr/2021/1330](https://eprint.iacr.org/2021/1330), Appendix D). 
+The return value is an extended Schnorr public key consisting of a Schnorr `public_key` and a `chain_code`. The chain code can be used to deterministically derive child keys of the `public_key`. Both the derivation and the encoding of the public key depends on the key ID's algorithm:
 
-{/* Something about derivation and encoding */}
+For algorithm `bip340secp256k1`, the public key is derived using the generalization of BIP32 defined in [ia.cr/2021/1330, Appendix D](https://ia.cr/2021/1330). To derive (non-hardened) [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki)-compatible public keys, each byte string (blob) in the derivation_path must be a 4-byte big-endian encoding of an unsigned integer less than 231. If the `derivation_path` contains a byte string that is not a 4-byte big-endian encoding of an unsigned integer less than 231, then a derived public key will be returned, but that key derivation process will not be compatible with the [BIP32](https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki) standard.
+
+The public key is encoded in [SEC1](https://www.secg.org/sec1-v2.pdf) compressed form. To use BIP32 public keys to verify BIP340 Schnorr signatures, the first byte of the (33-byte) SEC1-encoded public key must be removed (see [BIP-340, Public Key Conversion](https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki#public-key-conversion)).
 
 This call requires that the Schnorr feature is enabled, and the `canister_id` meets the requirement of a canister id. Otherwise it will be rejected.
 
