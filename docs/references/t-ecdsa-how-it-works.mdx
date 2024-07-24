@@ -51,7 +51,7 @@ The test key has the id `(secp256k1, test_key_1)` for referring to it in API cal
 ### General availability release of ECDSA
 
 A single threshold ECDSA production key for the `secp256k1` elliptic curve has been deployed with the GA ECDSA release. 
-The key with id `(secp256k1, key_1)` will be maintained in secret-shared form on two different subnets with high replication factor (around 30 nodes initially). 
+The key with id `(secp256k1, key_1)` will be maintained in secret-shared form on two different subnets with high replication factor (28 nodes initially). 
 The key will be initially generated on a high-replication subnet and kept there and re-shared to a new high-replication subnet using the re-sharing protocol. 
 The latter subnet will be activated to act as the active signing subnet for this key. 
 The further will hold the key in secret-shared form for backup purposes for achieving better key availability, but will not respond to signing requests. 
