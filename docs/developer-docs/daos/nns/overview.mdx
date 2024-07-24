@@ -4,17 +4,68 @@ keywords: [beginner, governance, overview, nns]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# The Network Nervous System (NNS)
+# Network Nervous System (NNS)
 
 <MarkdownChipRow labels={["Beginner", "Governance" ]} />
 
 ## Overview
 <iframe width="560" height="315" src="https://www.youtube.com/watch?v=1uX-fRgvXjU&list=PLuhDt1vhGcrclxfmztDd6OKE80dnrFmG6&index=2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+What the NNS is DAO
+stake based
+open = everyone can pariticpate
 
-## Motivation
 
-## TODO
+
+## The need for the NNS
+
+Why we need the NNS:
+
+Many nodes, protocol, smart canisters
+As w/ any software, need to update (evolve, fix bugs). make decisiosn when to update
+topology changes: ICP consists of many nodes that talk to each other, located in different DCs, organized into different subnets
+=> to scale ICP, need to be able to add more subnets/ nodes
+
+NNS governs full ICP, protoco upgrades, topology changes, updates of governance itself
+
+
+## Neurons
+participants of governance
+high level: locked tokens, everyone can pariticpate by locking tokens
+
+## Proposals
+Suggestions how to evolve ICP (as mentioned above).
+Neurons can submit and vote on proposals
+
+## Voting and proposal lifecycle
+1. Proposal submission:
+Someone submits proposal, e.g, to update protocol
+
+2. Ballot roll with VP
+governance takes snapshot of VP and reserves ballots
+VP depending on stake and how long tokens are locked for
+
+3. Voting
+others vote (w/ voting power)
+can vote directly or follow others in liquid democracy
+
+4. proposal decision
+Propoal decision
+
+standard majority
+voting period
+50% of voted
+3% of total (to ensure people care)
+
+immediate majority
+
+5. proposal execution
+automatically on-chain
+no human needed
+
+
+================================================================
+# OLD VERSION:
 The NNS is the decentralized autonomous organization (DAO) that governs the Internet Computer Protocol. You can access the [on-chain frontend](https://nns.ic0.app/).
 
 It is a fully on-chain, decentralized organization and is, for instance, responsible for making protocol-level upgrades to continuously improve the Internet Computer Protocol.

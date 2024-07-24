@@ -1074,18 +1074,28 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "Using the NNS dapp",
-              items: ["developer-docs/daos/nns/nns-app-quickstart"],
+              label: "Quickstart NNS dapp",
+              items: [
+                "developer-docs/daos/nns/nns-app-quickstart",
+                "developer-docs/daos/nns/nns-dapp-send-and-receive-tokens",
+                "developer-docs/daos/nns/nns-dapp-staking-a-neuron",
+                "developer-docs/daos/nns/nns-dapp-voting-on-proposals",
+                "developer-docs/daos/nns/nns-dapp-following-other-neurons",
+              ],
             },
             {
               type: "category",
               label: "Neurons",
               items: [
-                "developer-docs/daos/nns/neuron-management",
+                "developer-docs/daos/nns/neuron-overview",
                 "developer-docs/daos/nns/staking-voting-rewards",
+                {
+                  type: "category",
+                  label: "Advanced",
+                  items: ["developer-docs/daos/nns/neuron-management"],
+                },
               ],
             },
-            "developer-docs/daos/nns/neurons-fund",
             {
               type: "category",
               label: "Proposals",
@@ -1100,6 +1110,7 @@ const sidebars = {
                 },
               ],
             },
+            "developer-docs/daos/nns/neurons-fund",
           ],
         },
         {
