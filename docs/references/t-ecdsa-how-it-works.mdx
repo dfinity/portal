@@ -5,7 +5,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <MarkdownChipRow labels={["Reference"]} />
 
 ## Overview
-This page gives a high-level outline of threshold signatures on ICP. Some of the information in this section is not required to use threshold signing features, but may be of interest to the technically inclined reader for obtaining background information on the technology. ICP supports **threshold Schnorr** signing and **threshold ECDSA** signing, described by Groth and Shoup in their [Eurocrypt 2022 paper](https://eprint.iacr.org/2021/1330). Groth and Shoup have also published a comprehensive [design and analysis](https://eprint.iacr.org/2022/506) of this distributed signing protocol.
+This page gives a high-level outline of threshold signatures on ICP. 
+Some of the information in this section is not required to use threshold signing features, but may be of interest to the technically inclined reader for obtaining background information on the technology. 
+ICP currently supports **threshold Schnorr** signing and **threshold ECDSA** signing. 
+Further research on ECDSA is described by Groth and Shoup in their [Eurocrypt 2022 paper](https://eprint.iacr.org/2021/1330). Groth and Shoup have also published a comprehensive [design and analysis](https://eprint.iacr.org/2022/506) of ECDSA.
+For Schnorr, various designs were propsed by Groth and Shoup [here](https://eprint.iacr.org/2023/1175) and a security analysis of Schnorr from Shoup can be found [here](https://eprint.iacr.org/2023/1019.pdf).
 
 At a high level, the threshold signature implementations on ICP feature multiple protocols as outlined next, all of which are crucial for a secure system setup and operation. Note that this goes far beyond just threshold signing, which is the reason for calling this a protocol suite for **chain-key signatures**.
 -   **Key generation:** this protocol is executed on a specified subnet; it generates a new threshold key such that the private key is secret shared over the replicas of this subnet.
