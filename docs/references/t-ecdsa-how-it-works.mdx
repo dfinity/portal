@@ -180,6 +180,12 @@ When the replica of the SDK environment is first started up, a new t-sig key is 
 
 For the technically interested readers, it is important to note that the SDK uses the exact same implementations of t-sigs as the mainnet, but only runs a single replica. Thus, the protocol is operating with a single replica, which means it degenerates to a special case and incurs only little overhead, e.g., for key generation and signing, and can thus remain enabled by default in the SDK without noticeably affecting performance of the SDK environment. Also note that the signing throughput and latency in the local SDK environment is not representative for the throughput and latency on ICP.
 
+:::note 
+
+The Deuterium release is currently only supported in [the current beta](https://github.com/dfinity/sdk/releases/tag/0.22.0-beta.0) version of the SDK.
+
+:::
+
 ### Internet Computer
 
 Any canister on any subnet of ICP can call the t-sig APIs exposed by the management canister. The calls are routed via XNet communication to the t-sig-enabled subnet that holds the keys referred to in the API call (only one such signing subnet holding a test key and one signing subnet holding the production key are available currently). Note that test keys are hosted on a subnet with a replication factor of only 13 and may be deleted in the future, thus they should not be used for anything of value, but rather solely for development and testing purposes. The main intended purpose is to facilitate the development and testing of Bitcoin-enabled dapps using Bitcoin testnet.
