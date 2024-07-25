@@ -132,7 +132,7 @@ fn public_key_to_p2pkh_address(network: BitcoinNetwork, public_key: &[u8]) -> St
 
 ### Generating addresses with threshold Schnorr
 A Schnor public key can be retrieved using the
-[`ecdsa_public_key`](/docs/current/references/ic-interface-spec#ic-ecdsa_public_key)
+[`schnorr_public_key`](/docs/current/references/ic-interface-spec#ic-schnorr_public_key)
 API. The [basic Bitcoin
 example](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin)
 also demonstrates how to generate two different types of `P2TR` addresses,
