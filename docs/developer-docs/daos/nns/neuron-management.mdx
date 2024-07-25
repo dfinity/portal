@@ -72,6 +72,20 @@ type ManageNeuron = record {
 You can also use the [ICP Rosetta API](/docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/) for this workflow.
 
 ### Creating a neuron and topping it up
+
+=============
+## Neurons & ledger
+
+For network participants to be able to vote on proposals, they need to lock up a stake of ICP utility tokens for a given period of time to create a representative called a **neuron**.
+
+Because neurons represent a stake of ICP utility tokens, they also represent an identity with a **ICP ledger account** and a principal that controls the  account.
+
+Neurons provide the stability required for responsible governance of the Internet Computer by ensuring that the ICP utility tokens they represent cannot be exchanged for a specific period of time referred to as the **lock-up** period.
+
+The following diagram provides a simplified view of the workflow for creating a neuron and the relationship between the neuron and ledger canisters.
+
+![neuron dissolve](../_attachments/distribute-neurons-diagram.png)
+==============
 Staking ICP utility tokens in a neuron involves three steps:
 1. Compute the neuron's address on the ledger, where the staked tokens will be held. This corresponds to a subaccount of the NNS governance canister.
 2. Send ICP utility tokens to the neuron's address computed in (1).
