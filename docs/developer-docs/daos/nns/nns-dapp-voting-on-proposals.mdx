@@ -9,24 +9,17 @@ import '/src/components/CenterImages/center.scss';
 
 <MarkdownChipRow labels={["Beginner", "Governance", "Tutorial"]} />
 
-TODO
-
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/TGY6AF110e8?si=D3xFV1fq9bzUO4is" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-## Vote on proposals
+Active participation in governance is an important factor in the long-term health of the Internet Computer and is the
+activity for which governance participants receive voting rewards.
 
-Active participation in governance is an important factor in the long-term health of the Internet Computer. Voting on proposals is also an important factor in calculating the rewards you receive in return for locking up ICP utility tokens in neurons.
-
-However, voting directly on every proposal submitted to the NNS presents several challenges. For example, proposals might be submitted and require a vote when you are unavailable or propose changes that you lack the expertise to evaluate. To address these challenges, you can configure neurons to vote automatically to adopt or reject proposals by following the votes of a group of neurons.
-
-To maximize your rewards, you should vote on as many proposals as possible by following the active neuron holders who have interests aligned with your own. For example, you might follow the Internet Computer Association (ICA) on some topics such **SubnetManagement** and other neuron holders on topics such as **Governance**.
-
-You can choose the proposal types and proposal topics that you see and vote on either directly or by following other neuron stakeholders using filters in the Network Nervous System dapp. For example, if you want to review and vote on all proposals that involve network participants such as data center identities and node operators, but aren’t interested in viewing proposals related to the current market value of ICP, as measured by an International Monetary Fund (IMF) Special Drawing Right (SDR), you can select the **ParticipantManagement** topic filter and deselect the **ExchangeRate** topic filter.
+To maximize your rewards, you should vote on as many proposals as possible.
+This can be done by voting manually or by delegating your voting power to other neurons using [following](/docs/current/developer-docs/daos/nns/nns-dapp-voting-on-proposals).
 
 To manually vote on proposals:
 
-- #### Step 1:  From the NNS dapp, select 'Vote' from the left navigation bar.
+- #### Step 1:  From the NNS dapp, select 'Voting' from the left navigation bar.
 
 ![Proposals](../_attachments/nns19.png)
 
@@ -38,6 +31,13 @@ By default, the Internet Computer NNS proposals are shown, but other proposals f
 
 ![Proposal detail](../_attachments/nns20.png)
 
+By default, the NNS dapp will show you all **actionable proposals** where you have have some neurons that can vote on.
+This includes the proposals of all DAOs, NNS and SNSs, where you have neurons.
+
+If you would like to look only at proposals of one DAO, for example the NNS, you can select the respective "Nervous System" on the left.
+You can also use the selection on top to see all proposals, including the ones where you cannot take any action, for example because you do not have a neuorn that is eligible to vote or because you already voted.
+Moreover, you can use the filter on the top right to ony see proposals of a specific topic or in a specific status.
+
 :::info
 For more information about voting and voting rewards, see the following articles:
 
@@ -46,4 +46,8 @@ For more information about voting and voting rewards, see the following articles
 -   [Understanding the Internet Computer’s Network Nervous System, neurons, and ICP utility tokens](https://medium.com/dfinity/understanding-the-internet-computers-network-nervous-system-neurons-and-icp-utility-tokens-730dab65cae8)
 
 -   [Getting started on the Internet Computer’s Network Nervous System app and wallet](https://medium.com/dfinity/getting-started-on-the-internet-computers-network-nervous-system-app-wallet-61ecf111ea11)
+
+For more advanced information about proposals' lifecycle and how to verify proposals in depth when voting,
+refer to [Proposals](/docs/current/developer-docs/daos/nns/proposal-overview)
+and [Verify proposals](/docs/current/developer-docs/daos/nns/voting-verify-proposals).
 :::

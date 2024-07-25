@@ -9,29 +9,33 @@ import '/src/components/CenterImages/center.scss';
 
 <MarkdownChipRow labels={["Beginner", "Governance", "Tutorial"]} />
 
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/XU54fbCzFmE?si=NU3rq9Pz7GlGW3ar" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
 ## Get ICP tokens to your NNS dapp account
-When you log into the NNS dapp for the first time, you can go to the its wallet but you will not yet own any tokens.
-Usually, one of the first things to do is to add tokens to the NNS dapp wallet. This also the first step needed in case you want to stake a neuron later.
+When you log into the NNS dapp for the first time you will not yet have any ICP tokens in your wallet.
+Therefore, you first might want transfer some tokens to the NNS dapp wallet.
+This also the first step required for staking a neuron with the NNS dapp.
 
 ### Get tokens from an exchange
-If you already have ICP tokens on an exchange, you can transfer some of them to your NNS dapp account as explained in the video above.
-To find the right address to send the tokens to, open one of your accounts
+If you already have ICP tokens on an exchange, you can transfer some of them to your NNS dapp account as also explained in this video.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XU54fbCzFmE?si=NU3rq9Pz7GlGW3ar" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+- #### Step 1: Open one of your accounts in the ICP wallet.
 
 ![Send ICP](../_attachments/copy-subaccount.png)
 
-You can find the address to send the tokens to in the top right corner and can copy it by clicking on the symbol next to the number.
+- #### Step 2: Find the address to send the tokens to in the top right corner and can copy it by clicking on the symbol next to the number.
 
-Using this, you can send tokens from any exchange that supports sending ICP to this account.
+- #### Step 3: Go to your exchange and send tokens to the address you just copied.
+
+Using this, you can send tokens from any exchange that supports sending ICP.
 The tokens should be visible in your wallet within a few seconds or minutes.
 
-### Get tokens from a developer identity
+:::info
+Not all exchanges support all features. If you want to do this it is advisable to check if a given exchange
+:::
 
-### Using the CLI
+### Get tokens from a developer identity using the CLI
 
-If you have selected self-custody for holding your ICP utility tokens and the tokens are associated with your developer identity instead of your registered Internet Identity, you need to transfer ICP utility tokens to your accounts if you want to manage them using the [Network Nervous System (NNS)](https://nns.ic0.app) dapp.
+If you have selected self-custody for holding your ICP utility tokens and the tokens are associated with your developer identity instead of your registered Internet Identity, you need to transfer ICP utility tokens to your accounts if you want to manage them using the [NNS dapp](https://nns.ic0.app).
 
 To transfer ICP utility tokens controlled by your developer identity:
 
@@ -73,20 +77,13 @@ dfx ledger --network ic balance
 dfx ledger --network ic transfer <destination-account-id> --icp <ICP-amount> --memo <numeric-memo>
 ```
 
-For example, assume you have the following accounts:
+To find your account on the NNS dapp wallet, proceed as explained above.
+For example, assume your account is `0dff47055d84fd0d89cc55ff477c24026b5c2c9175f8fd36bcb66bb68cac81be`
 
-![accounts](../_attachments/nns4.png)
-
-If you want to transfer one ICP utility token to the `Main` account, you can run the following command:
-
-```
-dfx ledger --network ic transfer dd81336dbfef5c5870e84b48405c7b229c07ad999fdcacb85b9b9850bd60766f --memo 12345 --icp 1
-```
-
-If you also want to transfer one ICP utility token to the `pubs` account, you can run the following command:
+If you want to transfer one ICP utility token to this account, you can run the following command:
 
 ```
-dfx ledger --network ic transfer 183a04888eb20e73766f082bae01587830bd3cd912544f63fda515e9d77a96dc --icp 1 --memo 12346
+dfx ledger --network ic transfer 0dff47055d84fd0d89cc55ff477c24026b5c2c9175f8fd36bcb66bb68cac81be --memo 12345 --icp 1
 ```
 
 :::info
@@ -95,9 +92,11 @@ This example illustrates how to transfer ICP utility tokens to using a whole num
 -   Alternatively, you can use the `--amount` to specify the number of ICP utility tokens to transfer with fractional units up to 8 decimal places, for example, as `5.00000025`.
 :::
 
-The destination address can be an address in the ledger canister running on the Internet Computer network, an account you have added using the [Network Nervous System dapp](https://nns.ic0.app), or the address for a wallet you have on an exchange.
+The destination address can be any address in the ledger canister which might
+correspond to wallet that is owned by a developer principal, by an account you have added using the NNS dapp,
+or the address for a wallet you have on an exchange.
 
-If you transfer the ICP utility tokens to an account in the [Network Nervous System dapp](https://nns.ic0.app), you might need to refresh the browser to see the transaction reflected.
+If you transfer the ICP utility tokens to an account in the [NNS dapp](https://nns.ic0.app), you might need to refresh the browser to see the transaction reflected.
 
 For more information about using the `dfx ledger` command-line options, see [dfx ledger](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-ledger).
 
@@ -105,7 +104,7 @@ For more information about using the `dfx ledger` command-line options, see [dfx
 ## Send ICP tokens with your NNS dapp account
 Once you have ICP tokens in your NNS dapp account, you can send them to other accounts by following these steps.
 
-- #### Step 1: On the default 'Tokens' tab, assure that The Internet Computer token has been selected, then click **Send** on the bottom of the window.
+- #### Step 1: On the default 'Tokens' tab, assure that the Internet Computer token has been selected, then click **Send** on the bottom of the window.
 
 ![Send](../_attachments/nns4.png)
 
@@ -118,3 +117,7 @@ The maximum amount you can send is your token balance minus the ledger fee. The 
 ![Send ICP](../_attachments/nns7.png)
 
 - #### Step 3: Then select **Continue** to send the transaction.
+
+Similarly to the CLI transfer above, the destination address can be any address in the ledger canister which might
+correspond to wallet that is owned by a developer principal, by an account you have added using the NNS dapp,
+or the address for a wallet you have on an exchange.
