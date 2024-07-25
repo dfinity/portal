@@ -57,10 +57,14 @@ SegWit addresses can be of three types:
 As mentioned above, a Bitcoin address is derived from a public key or a script.
 To generate a Bitcoin address that can only be spent by a specific canister or a
 specific caller of a canister, you need to derive the address from a canister's
-public key available via the
-[`ecdsa_public_key`](/docs/current/references/ic-interface-spec#ic-ecdsa_public_key) API.
-The [basic Bitcoin example](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin) demonstrates how to generate a `P2PKH` address from a
-canister's public key.
+public key.
+
+### Generating addresses with threshold ECDSA
+An ECDSA public key can be retrieved using the
+[`ecdsa_public_key`](/docs/current/references/ic-interface-spec#ic-ecdsa_public_key)
+API. The [basic Bitcoin
+example](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin)
+demonstrates how to generate a `P2PKH` address from a canister's public key.
 
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
@@ -87,7 +91,7 @@ func public_key_to_p2pkh_address(network : Network, public_key_bytes : [Nat8]) :
 
 ```
 
-<a href="https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinWallet.mo#L49">
+<a href="https://github.com/dfinity/examples/blob/1d4b8a7d45529f30081d54dfc33a2dd1c39cb22f/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinWallet.mo#L49">
     <div align="center">View in the full example.</div>
 </a>
 </TabItem>
@@ -110,39 +114,153 @@ pub async fn get_p2pkh_address(
 
 // Converts a public key to a P2PKH address.
 fn public_key_to_p2pkh_address(network: BitcoinNetwork, public_key: &[u8]) -> String {
-    // SHA-256 & RIPEMD-160
-    let result = ripemd160(&sha256(public_key));
-
-    let prefix = match network {
-        BitcoinNetwork::Testnet | BitcoinNetwork::Regtest => 0x6f,
-        BitcoinNetwork::Mainnet => 0x00,
-    };
-    let mut data_with_prefix = vec![prefix];
-    data_with_prefix.extend(result);
-
-    let checksum = &sha256(&sha256(&data_with_prefix.clone()))[..4];
-
-    let mut full_address = data_with_prefix;
-    full_address.extend(checksum);
-
-    bs58::encode(full_address).into_string()
+    Address::p2pkh(
+        &PublicKey::from_slice(public_key).expect("failed to parse public key"),
+        transform_network(network),
+    )
+    .to_string()
 }
 
 
 ```
 
-<a href="https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet.rs#L25">
+<a href="https://github.com/dfinity/examples/blob/1d4b8a7d45529f30081d54dfc33a2dd1c39cb22f/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet/p2pkh.rs#L21">
     <div align="center">View in the full example.</div>
 </a>
 </TabItem>
 </Tabs>
 
+### Generating addresses with threshold Schnorr
+A Schnor public key can be retrieved using the
+[`ecdsa_public_key`](/docs/current/references/ic-interface-spec#ic-ecdsa_public_key)
+API. The [basic Bitcoin
+example](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin)
+also demonstrates how to generate two different types of `P2TR` addresses,
+an untweaked key path address and a script spend address, from a
+canister's public key.
+
+:::caution
+The Internet Computer currently supports exclusively one
+of both types of addresses, but not addresses that can use both key path and
+script path, meaning that an address supporting the key path cannot spend with a
+script and vice versa.
+:::
+
+#### Generating an untweaked key path address
+
+:::caution
+It is important to make sure that the address is generated from an *untweaked*
+key or the signature verification and thus the Bitcoin transaction will fail.
+Most libraries will automatically tweak the key when creating a taproot address
+by default, so make sure to use the correct function to generate the address as,
+for example, shown in the example below.
+:::
+
+<Tabs groupId="language">
+<TabItem value="rust" label="Rust" default>
+
+```rust
+
+/// Returns the P2TR address of this canister at the given derivation path.
+pub async fn get_address(
+    network: BitcoinNetwork,
+    key_name: String,
+    derivation_path: Vec<Vec<u8>>,
+) -> Address {
+    let public_key = schnorr_api::schnorr_public_key(key_name, derivation_path).await;
+    let x_only_pubkey =
+        bitcoin::key::XOnlyPublicKey::from(PublicKey::from_slice(&public_key).unwrap());
+    let tweaked_pubkey = TweakedPublicKey::dangerous_assume_tweaked(x_only_pubkey);
+    Address::p2tr_tweaked(tweaked_pubkey, super::common::transform_network(network))
+}
+
+```
+
+<a href="https://github.com/dfinity/examples/blob/1d4b8a7d45529f30081d54dfc33a2dd1c39cb22f/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet/p2tr_raw_key_spend.rs#L18">
+    <div align="center">View in the full example.</div>
+</a>
+</TabItem>
+</Tabs>
+
+#### Generating a script path address
+
+<Tabs groupId="language">
+<TabItem value="rust" label="Rust" default>
+
+```rust
+
+/// Returns the P2TR address of this canister at the given derivation path.
+pub async fn get_address(
+    network: BitcoinNetwork,
+    key_name: String,
+    derivation_path: Vec<Vec<u8>>,
+) -> Address {
+    let public_key = schnorr_api::schnorr_public_key(key_name, derivation_path).await;
+    public_key_to_p2tr_script_spend_address(network, public_key.as_slice())
+}
+
+// Converts a public key to a P2TR address. To compute the address, the public
+// key is tweaked with the taproot value, which is computed from the public key
+// and the Merkelized Abstract Syntax Tree (MAST, essentially a Merkle tree
+// containing scripts, in our case just one). Addresses are computed differently
+// for different Bitcoin networks.
+pub fn public_key_to_p2tr_script_spend_address(
+    bitcoin_network: BitcoinNetwork,
+    public_key: &[u8],
+) -> Address {
+    let network = super::common::transform_network(bitcoin_network);
+    let taproot_spend_info = p2tr_scipt_spend_info(public_key);
+    Address::p2tr_tweaked(taproot_spend_info.output_key(), network)
+}
+
+fn p2tr_scipt_spend_info(public_key: &[u8]) -> TaprootSpendInfo {
+    let spend_script = p2tr_script(public_key);
+    let dummy_random_secp256k1 = Secp256k1::new();
+    let schnorr_public_key = XOnlyPublicKey::from(PublicKey::from_slice(&public_key).unwrap());
+
+    TaprootBuilder::new()
+        .add_leaf(0, spend_script.clone())
+        .expect("adding leaf should work")
+        .finalize(&dummy_random_secp256k1, schnorr_public_key)
+        .expect("finalizing taproot builder should work")
+}
+
+/// Computes a simple P2TR script that allows the `public_key` and no other keys
+/// to be used for spending.
+fn p2tr_script(public_key: &[u8]) -> ScriptBuf {
+    let x_only_public_key = XOnlyPublicKey::from(PublicKey::from_slice(public_key).unwrap());
+    bitcoin::blockdata::script::Builder::new()
+        .push_x_only_key(&x_only_public_key)
+        .push_opcode(bitcoin::blockdata::opcodes::all::OP_CHECKSIG)
+        .into_script()
+}
+
+```
+
+<a href="https://github.com/dfinity/examples/blob/1d4b8a7d45529f30081d54dfc33a2dd1c39cb22f/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet/p2tr_script_spend.rs#L19">
+    <div align="center">View in the full example.</div>
+</a>
+</TabItem>
+</Tabs>
+
+### Learn more
 
 [See more examples of addresses generated using `rust-bitcoin`](https://github.com/domwoe/bitcoin_addresses/).
 
-[Learn more about Bitcoin addresses](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash).
+[Learn more about Bitcoin addresses using
+ECDSA](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash).
 
-[Learn more about the `ecdsa_public_key` API](/docs/current/references/ic-interface-spec#ic-ecdsa_public_key).
+Learn more about Bitcoin addresses using Schnorr: taproot signatures
+[BIP340](https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki),
+taproot address construction
+[BIP341](https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki),
+spending from taproot addresses
+[BIP342](https://github.com/bitcoin/bips/blob/master/bip-0342.mediawiki).
+
+[Learn more about the `ecdsa_public_key`
+API](/docs/current/references/ic-interface-spec#ic-ecdsa_public_key).
+
+[Learn more about the `schnorr_public_key` API](/docs/current/references/ic-interface-spec#ic-schnorr_public_key).
 
 ## Next steps
 
