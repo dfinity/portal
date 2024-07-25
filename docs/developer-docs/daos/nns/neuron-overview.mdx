@@ -6,17 +6,81 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Overview
 
-<MarkdownChipRow labels={["Intermediate", "Governance", "Concept" ]} />
+<MarkdownChipRow labels={["Beginner", "Governance", "Concept" ]} />
+### Neurons
+
+To become vested and obtain voting power, ICP tokens must first
+be staked, and then locked up for a length of time greater than 6
+months to, at most, 8 years.
+
+Just as tokens are held in a user's account, stake is held in a special
+account called a "neuron". Each neuron has its own identifier, and
+several attributes relating to its stake. These include:
+
+* The length of time it is locked for (the "dissolve delay").
+* Whether it is currently dissolving.
+* How much reward it has accrued as a result of voting on proposals (the "maturity").
+
+Once a neuron is locked for more than six months, it gains the ability
+both to submit proposals and to vote on them. Voting in turn generates
+voting rewards, based on how active a neuron is in voting on proposals.
+If you vote on every open proposal, you gain the maximum reward.
+
+A neuron can also "follow" other neurons, which causes it to
+automatically vote the same as the majority of the neurons that it
+follows.
+
+## Why staking matters
+
+Staking is a way of allowing those who support the Internet Computer to
+decide what happens next with the platform.
+
+It is possible for proposals to pass with only a
+majority among 3% of the total voting power, meaning that proposals
+stand a chance even if large entities abstain and the majority of the
+network does not vote.
+
+
+
+## Key concepts
+
+Before explaining how to modify a neuron, it is important to understand the most important parts of a neuron.
+Every user can stake ICP utility tokens into a neuron and participate in the NNS DAO with this neuron.
+
+* **Neuron ID**: Each neuron has an identity selected by NNS governance at neuron creation.
+* **Account**: Each neuron has an associated account on the ICP ledger where the locked ICP balance resides. This account is owned by the NNS governance canister and therefore a user cannot move staked tokens.
+* **Controller**: The principal that controls the neuron and which cannot be changed. A principal corresponds to the public key of a public-private key pair and anyone with possession of the corresponding private key will have full control of the neuron. Therefore, the private key of the controller principal should be kept very secure. A principal can control many neurons.
+* **Hot Keys**: In addition to the controller, a neuron can have hot keys. Hot keys are defined by a list of principal ID and can be used to perform actions with limited privileges, namely voting, following (see below), and reading the full information about the neuron.
+
+* **Dissolve delay & dissolve state**: The tokens in a neuron are locked for a specified duration, called the _dissolve delay_. This can be thought of like a kitchen timer that can only be turned in one direction. It can be arbitrarily increased, but only reduced by turning on the countdown and waiting for the time to pass. A neuron must have a dissolve delay of at least 6 months to be eligible to vote.
+  * A neuron can be _non-dissolving_ which means that the timer is stopped and the neuron's dissolve delay remains the same.
+  * A neuron can be _dissolving_ which means that the timer is decreasing the neuron's dissolve delay as time passes.
+  * Once the timer has counted down, a neuron is _dissolved_ and the ICP tokens can be unstaked again.
+* **Age**: Every non-dissolving neuron has an age, which denotes how long it has been in the non-dissolving state.
+A neuron's voting power increases as its age increases. A neuron's voting power also increases if its controller increases its dissolve delay.
+
+* **Maturity**:  When neurons vote, over time the NNS increases their maturity to reward them. Maturity can be converted into ICP by spawning (see below).
+
+* **Visibility**: TODO - new feature where neurons can be private or public
+
+
 
 
 
 ========================================
 # OLD CONTENT TO ADD HERE
-When a user creates a neuron, the staked ICP can only be taken out of the neuron again by disbursing the neuron.
-Each neuron is configured with a “dissolve delay” that determines the minimum amount of time that you have to wait before you can unlock your staked ICP utility tokens.
-Once a neuron has been placed into “dissolving mode,” its dissolve delay falls over time, rather like a kitchen timer, until it reaches zero, whereupon its owner can perform
+When a user creates a neuron, the staked ICP can only be taken out of the neuron again by disbursing
+the neuron.
+Each neuron is configured with a “dissolve delay” that determines the minimum amount of time that
+you have to wait before you can unlock your staked ICP utility tokens.
+Once a neuron has been placed into “dissolving mode,” its dissolve delay falls over time, rather
+ like a kitchen timer, until it reaches zero, whereupon its owner can perform
 a final disburse action to unlock the balance of ICP.
 
-Neurons with a longer dissolve delay have more voting power and get more rewards so that they are economically incentivized to vote in the best long-term interests of the network.
+Neurons with a longer dissolve delay have more voting power and get more rewards so that they
+are economically incentivized to vote in the best long-term interests of the network.
 
-The number of rewards that neuron receives derive from factors as the amount of staked tokens, the lockup period remaining (the “dissolve delay”), the neuron’s “age”, the proportion of possible votes it has participated in, and the sum of voting activity across all neurons, since the overall total rewards are capped and must be divided between voters.
+The number of rewards that neuron receives derive from factors as the amount of staked tokens,
+ the lockup period remaining (the “dissolve delay”), the neuron’s “age”, the proportion of possible
+ votes it has participated in, and the sum of voting activity across all neurons, since the overall
+ total rewards are capped and must be divided between voters.

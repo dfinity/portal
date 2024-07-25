@@ -4,7 +4,7 @@ keywords: [beginner, governance, concept, nns]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Staking and voting rewards
+# Voting rewards
 
 <MarkdownChipRow labels={["Intermediate", "Governance", "Concept"]} />
 
@@ -17,29 +17,6 @@ In return for participation in governance, the Internet Computer Procotol provid
 Voters can vote actively, or they can use a form liquid democracy to automatically follow other voters.
 
 ## Key concepts
-
-### Neurons
-
-To become vested and obtain voting power, ICP tokens must first
-be staked, and then locked up for a length of time greater than 6
-months to, at most, 8 years.
-
-Just as tokens are held in a user's account, stake is held in a special
-account called a "neuron". Each neuron has its own identifier, and
-several attributes relating to its stake. These include:
-
-* The length of time it is locked for (the "dissolve delay").
-* Whether it is currently dissolving.
-* How much reward it has accrued as a result of voting on proposals (the "maturity").
-
-Once a neuron is locked for more than six months, it gains the ability
-both to submit proposals and to vote on them. Voting in turn generates
-voting rewards, based on how active a neuron is in voting on proposals.
-If you vote on every open proposal, you gain the maximum reward.
-
-A neuron can also "follow" other neurons, which causes it to
-automatically vote the same as the majority of the neurons that it
-follows.
 
 ### Voting power
 
@@ -64,16 +41,6 @@ proposals were made, and the number of proposals it voted on.
 For those who wish to compound gained maturity in their neuron, the most
 natural activity is to "stake maturity" on a regular basis.
 If you wish to liquidate maturity gained, you can use it to produce liquid ICP.
-
-## Why staking matters
-
-Staking is a way of allowing those who support the Internet Computer to
-decide what happens next with the platform.
-
-It is possible for proposals to pass with only a
-majority among 3% of the total voting power, meaning that proposals
-stand a chance even if large entities abstain and the majority of the
-network does not vote.
 
 ## Voting rewards
 
@@ -169,17 +136,3 @@ Inflationary mechanisms:
 ===============================
 
 #ADD
-
-## Spawn new neurons
-
-As you vote on proposals—either directly or by following the votes of other neurons—the maturity associated with your neuron increases, which in turn increases the rewards you earn for participating in governance. When the maturity for a locked stake reaches a minimum threshold of one ICP, you can spawn a new neuron. The spawn operation creates a new neuron that locks a new balance of ICP on the ledger.
-
-For example, if you have a neuron that contains 100 ICP utility tokens and it has a maturity of 10 percent, you can spawn a new neuron that contains approximately 10 new ICP tokens. For the neuron with 100 ICP tokens to reach the minimum threshold for spawning, its maturity would need to be greater than one percent.
-
-After you spawn a new neuron from an existing neuron, the maturity for the existing neuron falls to zero.
-
-To spawn new neurons from an existing neuron:
-
-- #### Step 1:  From the NNS dapp, select 'Neuron Staking', then click the neuron that has reached the minimum maturity required to spawn a new neuron.
-
-- #### Step 2:  Click **Spawn Neuron**.
