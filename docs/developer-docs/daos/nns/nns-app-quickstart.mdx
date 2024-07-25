@@ -9,8 +9,7 @@ import '/src/components/CenterImages/center.scss';
 
 <MarkdownChipRow labels={["Beginner", "Governance", "Tutorial"]} />
 
-The NNS DAO is realised as a set of canister smart contracts on the Internet Computer.
-To participate in governance, there are different ways to interact with the NNS.
+To participate in governance, there are different ways to interact with the NNS DAO.
 
 This guide will showcase how to interface with the NNS through the [NNS dapp](https://nns.ic0.app).
 You can interact with the NNS through other tools, such as [quill](/docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-parent)
@@ -18,16 +17,16 @@ and [ic-js](https://github.com/dfinity/ic-js/tree/main/packages/nns).
 
 We start with a tutorial on how to connect to the NNS with the [NNS dapp](https://nns.ic0.app).
 In the following pages we will see how to use the NNS dapp to
-[transfer tokens](/docs/current/developer-docs/daos/nns/send-and-receive-tokens),
+[transfer tokens](/docs/current/developer-docs/daos/nns/nns-dapp-send-and-receive-tokens),
 [stake tokens in a neuron](/docs/current/developer-docs/daos/nns/nns-dapp-staking-a-neuron) and set up the neuron,
 and how to participate in voting either by [voting manually](/docs/current/developer-docs/daos/nns/nns-dapp-voting-on-proposals)
  or by [following](/docs/current/developer-docs/daos/nns/nns-dapp-following-other-neurons).
 
 
+## Connect to the NNS DAO using the NNS dapp
 
-## Connect to the Internet Computer
-
-To connect to the Internet Computer using the Network Nervous System (NNS) dapp:
+To connect to the NNS using the Network Nervous System (NNS) dapp, follow these steps which are also explained in the first minutes of this video.
+<iframe width="560" height="315" src="https://www.youtube.com/embed/XU54fbCzFmE?si=NU3rq9Pz7GlGW3ar" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 - #### Step 1:  Open a browser and navigate to the [Network Nervous System (NNS)](https://nns.ic0.app) dapp.
 
@@ -74,69 +73,3 @@ To add an account for managing ICP utility tokens:
 - #### Step 3:  Click **New Account**, type an Account Name, then click **Create**.
 
 ![new linked account](../_attachments/nns6.png)
-
-
-
-
-
-============================================================================================================
-# Additional functionality
-In addition to being the portal for interacting with the NNS DAO, the NNS dapp also provides access to the SNS DAOs and their launches and allows users to manage the canisters that they own.
-This is a brief guide to these additional functionalities.
-
-## SNS decentralization swaps
-
-You can participate in SNS decentralization swaps from the NNS dapp using the 'Launchpad' tab. An SNS is an advanced version of a decentralized autonomous organization, where the participants of the SNS can vote on proposals, such as a new feature, roadmap item, or allocation of SNS funds.
-
-You can learn more about SNS [here](https://internetcomputer.org/sns)
-
-To view current and past SNS decentralization swaps from the NNS dapp:
-
-- #### Step 1:  From the NNS dapp, click **Launchpad** from the left navigation bar.
-
-![Launchpad](../_attachments/nns21.png)
-
-- #### Step 2: Select any SNS swap to view the details, such as the status, total participants, token supply, and when the swap ended.
-
-![SNS swap](../_attachments/nns22.png)
-
-## Deploying and managing canisters from the NNS dapp
-
-You must have **cycles** available to create and manage [canisters](/docs/current/concepts/glossary#canister), which are similar to smart contracts. The [Network Nervous System (NNS)](https://nns.ic0.app) dapp provides a convenient way for you to create and manage canisters by enabling you to convert ICP utility tokens into cycles and attach cycles to specific canister identifiers.
-
-To create a new canister:
-
-- #### Step 1:  From the NNS dapp, click **Canisters**, then click **Create Canister** or **Link Canister**.
-
-![My canisters](../_attachments/nns23.png)
-
-- #### Step 2: If you select **Create Canister**, select the source account you'd like to use to create the canister.
-
-![Create a new canister](../_attachments/nns24.png)
-
-- #### Step 3: Then, enter the amount of ICP tokens and cycles to create the canister with. Then select **Review Canister Creation**.
-
-![Create a new canister](../_attachments/nns25.png)
-
-- #### Step 4:  Review the ICP utility tokens to cycles details, then click **Confirm** to continue.
-
-After you click Confirm, you can review:
-- The new canister identifier.
-- The number of cycles available for the canister to use.
-- The controlling principal that currently has full management rights for the new canister.
-
-:::info
-To change the principal used as the controller of the canister, click **Change Controllers**.
-
-To add cycles to the canister, click **Add Cycles**.
-:::
-
-- #### Step 5: To link a canister, input the canister's ID, then select **Confirm**.
-
-![Link canister](../_attachments/nns26.png)
-
-- #### Step 6: Return to the **Canisters** tab to see the canisters you have created.
-
-For example:
-
-![Canister list](../_attachments/nns27.png)
