@@ -1101,12 +1101,24 @@ const sidebars = {
               label: "Proposals",
               items: [
                 "developer-docs/daos/nns/proposal-overview",
-                "developer-docs/daos/nns/proposal-lifecycle",
-                "developer-docs/daos/nns/proposal-voting",
                 {
                   type: "category",
                   label: "Advanced",
                   items: ["developer-docs/daos/nns/proposal-advanced"],
+                },
+              ],
+            },
+            {
+              type: "category",
+              label: "Voting",
+              items: [
+                "developer-docs/daos/nns/voting-direct-voting",
+                "developer-docs/daos/nns/voting-following",
+                "developer-docs/daos/nns/voting-becoming-a-known-neuron",
+                {
+                  type: "category",
+                  label: "Advanced",
+                  items: ["developer-docs/daos/nns/voting-verify-proposals"],
                 },
               ],
             },
