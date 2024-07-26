@@ -20,57 +20,124 @@ View the most up-to-date [`candid` definition for the NNS governance canister](h
 This page will explain some of the relevant definitions from this Candid file.
 To keep up to date with new NNS release proposals from DFINITY, you can subscribe to [this forum thread](https://forum.dfinity.org/t/nns-updates-aggregation-thread/23551).
 
-## Neuron attributes
+## Neuron and NeuronInfo
 
 Find a high level overview of the most important concepts in a neuron in the [Neuron overview](/docs/current/developer-docs/daos/nns/neuron-overview).
 We next present in detail the [`Neuron` record](https://github.com/dfinity/ic/blob/173d06185f77265d97bc363d266ce79410f6b914/rs/nns/governance/canister/governance.did#L363C1-L386C3)
- by presenting all neuron attributes.
+ by presenting all neuron attributes. This represents a full neuron with all details.
 
 * A unique id identifying the neuron. This is a number that is randomly chosen by the governance canister when a neuron is created.
 ```
 id : opt NeuronId;
 ```
-* next
+* The neuron's account on the ledger. This corresponds to a subaccount of the NNS governance canister so that the tokens are locked and can only be transferred by dissolving the neuron.
 ```
-id : opt NeuronId;
+account : blob;
 ```
-
-* 
+* The principal controlling the neuron. This principal has the permissions to read the neuron and perform any operations on the neuron.
 ```
-type Neuron = record {
-
-  staked_maturity_e8s_equivalent : opt nat64;
-  controller : opt principal;
-  recent_ballots : vec BallotInfo;
-  kyc_verified : bool;
-  neuron_type : opt int32;
-  not_for_profit : bool;
-  maturity_e8s_equivalent : nat64;
-  cached_neuron_stake_e8s : nat64;
-  created_timestamp_seconds : nat64;
-  auto_stake_maturity : opt bool;
-  aging_since_timestamp_seconds : nat64;
-  hot_keys : vec principal;
-  account : blob;
-  joined_community_fund_timestamp_seconds : opt nat64;
-  dissolve_state : opt DissolveState;
-  followees : vec record { int32; Followees };
-  neuron_fees_e8s : nat64;
-  visibility : opt int32;
-  transfer : opt NeuronStakeTransfer;
-  known_neuron_data : opt KnownNeuronData;
-  spawn_at_timestamp_seconds : opt nat64;
+controller : opt principal;
+```
+* A list of principals that have limited permissions on the neuron. This can be used for example to use more accessible but less secure keys for everyday operations. Hotkey principals can read the neuron as well as vote with it, which inclues both direct voting and changing following.
+```
+hot_keys : vec principal;
+```
+* The amount of staked ICP tokens, measured in fractions of 10E-8 of an ICP token.
+```
+cached_neuron_stake_e8s : nat64;
+```
+* The amount of ICP that this neuron has forfeited due to making proposals that were rejected or from using the 'manage neurons through proposals' functionality. This value must be smaller than `neuron_stake_e8s`. When a neuron is disbursed, these ICP are burned.
+```
+neuron_fees_e8s : nat64;
+```
+* The timestamp, in seconds from the Unix epoch, when the neuron was created.
+```
+created_timestamp_seconds : nat64;
+```
+* The timer that defines how long the tokens in this neuron are locked for. When the neuron is dissolving, i.e., the timer is running down,
+this this stores the timestamp at which the neuron becomes dissolved `WhenDissolvedTimestampSeconds`. When the neuron is non-dissolving,
+`DissolveDelaySeconds` stores how much time, in seconds, is left until the neuron is dissolved when the dissolve timer is turned on again.
+A neuron is dissolved if `WhenDissolvedTimestampSeconds` is in the past or if `DissolveDelaySeconds` is zero.
+```
+dissolve_state : opt DissolveState;
+type DissolveState = variant {
+  DissolveDelaySeconds : nat64;
+  WhenDissolvedTimestampSeconds : nat64;
 };
 ```
-The
+* The timestamp, in seconds from the Unix epoch, when this neuron last entered the non-dissolving state and has started aging. This value is
+meaningless when the neuron is dissolving and has age zero. The canonical value of this field for a dissolving neuron is `u64::MAX`.
+```
+aging_since_timestamp_seconds : nat64;
+```
+* The followees of a neuron, that is the group of neurons that this neuron follows. They are expressed as maps from proposal topics (expressed by integers) to a list of followees for this particular topic.
+```
+followees : vec record { int32; Followees };
+type Followees = record { followees : vec NeuronId };
+```
+* Information about how this neuron voted in the recent past.
+```
+recent_ballots : vec BallotInfo;
+```
+* The accumulated unstaked maturity of the neuron, in e8s equivalent.
+```
+maturity_e8s_equivalent : nat64;
+```
+* The accumulated staked maturity of the neuron, in e8s equivalent. Staked maturity becomes unstaked maturity once the neuron is dissolved.
+```
+staked_maturity_e8s_equivalent : opt nat64;
+```
+* If set and true the maturity rewarded to this neuron for voting will be automatically staked and will contribute to the neuron's voting power.
+```
+auto_stake_maturity : opt bool;
+```
+* This is used if for neurons that were created to spawn maturity into a neuron. It denotes the timestamp, in seconds from the Unix epoch, at which this
+ neuron's maturity is replaced by newly minted ICP.
+```
+spawn_at_timestamp_seconds : opt nat64;
+```
+* The visibility defines how much information about this neuron is publicly accessible, i.e., visible to those who are neither the controller nor
+ have hot-key priviledges to this neuron. Visibility can be public, private, or undefined.
+ For public neurons, the full neuron is accessible to everyone, for private neurons only a part of the `NeuronInfo` (see below) is visible, excluding the recent_ballots`
+  and `joined_community_fund_timestamp_seconds`.
+```
+visibility : opt int32;
+```
+* A neuron can be registered as a **known neuron** via proposal so that it can be followed by others.
+Known neurons have extra information, a name and optionally a description.
+```
+known_neuron_data : opt KnownNeuronData;
+message KnownNeuronData {
+  string name = 1;
+  optional string description = 2;
+}
+```
+* Timestamp when this neuron joined the community fund.
+```
+joined_community_fund_timestamp_seconds : opt nat64;
+```
+* The record of the transfer that was made to create this neuron.
+```
+transfer : opt NeuronStakeTransfer;
+```
+* This is a field indicating whether genesis neurons have been KYC verified. `false` if this is a genesis neurons that has not been KYC verified.
+```
+kyc_verified : bool;
+```
+*  Whether this neuron is "Not for profit", making it dissolvable by voting on a manage neuron proposal.
+```
+not_for_profit : bool;
+```
+* The type of a neuron, identifying seed neurons and Early Contributor Token (ECT) neurons.
+```
+neuron_type : opt int32;
+```
+
+In addition to this neuron record, `NeuronInfo` provides the most important information about a neuron.
+Refer to the `candid` file for the [`NeuronInfo` record](https://github.com/dfinity/ic/blob/173d06185f77265d97bc363d266ce79410f6b914/rs/nns/governance/canister/governance.did#L408).
 
 
-
-## Neuron attributes
-
-
-============================================================
-### Getting information about a neuron
+## Getting information about a neuron
 Before diving deeper into how a neuron can be created and modified, let's first understand how to get information about a user's existing neurons.
 This can be done by using the following API on the NNS governance canister.
 TODO: add new public / private visibility information
@@ -257,52 +324,12 @@ Only a neuron's controller can start or stop dissolving a neuron or increase its
 You can also use the [ICP Rosetta API](/docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/) for this workflow.
 
 
-### Spawning a neuron's rewards
-When a neuron's maturity has risen above a threshold, one can spawn a portion of the maturity. In a first step, this creates a new neuron in a special spawning state containing the spawned maturity. After 7 days, the maturity is replaced with newly minted ICP, taking some [maturity modulation function](https://wiki.internetcomputer.org/wiki/Maturity_modulation#:~:text=The%20maturity%20modulation%20function%20introduces,NNS%20neurons%20and%20SNS%20neurons.) into account. In the end, the new neuron will be dissolved and have these ICP as stake - which can then be disbursed to any account.
-The new neuron can remain controlled by the same principal as the parent neuron, or be assigned to a new principal.
-
-The following command spawns a neuron.
-```
-type Spawn = record {
-  percentage_to_spawn : opt nat32;
-  new_controller : opt principal;
-  nonce : opt nat64;
-};
-```
-Specify by `percentage_to_spawn` the portion of the maturity that should be spawn into a neuron in percentage. This should be a value between 1 and 100 (inclusive).
-If the spawned neurons should have a different controller than the parent neuron (from which you spawn the maturity), you can optionally define a different controlling principal by `new_controller`. Otherwise, the spawned neuron will have the same controller as the parent neuron.
-Similarly to claiming a neuron (see above), you need to specify the new neuron's ledger address and choose a nonce for this in the last argument `nonce`.
-Based on this nonce and the controlling principal, the neuron's address is uniquely defined (see section _Compute the neuron's address_).
-If no nonce is provided, the governance canister chooses a random one.
-
-_Required permissions:_
-Only a neuron's controller can spawn maturity from a neuron.
-
-You can also use the [ICP Rosetta API](/docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/) for this workflow.
-
-
-
-### Disbursing / unstaking a neuron
-When a neuron is dissolved, i.e., its dissolve delay is zero, the neuron's controlling principal can instruct it to _disburse_ the neuron’s stake.
-This means that the staked ICP balance is transferred to a specified ledger account and is liquid again.
-The following command can be used to disburse a neuron.
-```
-type Disburse = record {
-  to_account : opt AccountIdentifier;
-  amount : opt Amount;
-};
-```
-The command takes as argument the ledger account `to_account` to which the ICP tokens should be transferred to and the amount `amount` that should be disbursed. The latter allows to only disburse a portion of a neuron's stake.
-
-_Required permissions:_
-Only a neuron's controller can disburse a neuron.
-
-
 ### Voting with a neuron
 A neuron represents a participant of the NNS DAO and can participate in governance. Concretely, a neuron can submit proposals or vote on them if its dissolve delay is at least 6 months.
 A neuron can either directly vote to adopt or reject a given proposal or it can _follow_ other neurons for certain decisions - which will automatically cast a ballot for the neuron if enough of the followees voted.
 
 **Vote directly**
+
 To vote directly, first find out what proposals can be voted on and then find the ID of the proposal you want to vote on.
 The following are the relevant NNS governance API and record that can also be found in the candid file.
 ```
@@ -358,6 +385,46 @@ Voting and setting following can be done by a neuron's controller or a neuron's 
 
 You can also use the [ICP Rosetta API](/docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/) for this workflow.
 
+### Spawning a neuron's maturity
+When a neuron's maturity has risen above a threshold, one can spawn a portion of the maturity. In a first step, this creates a new neuron in a special spawning state containing the spawned maturity. After 7 days, the maturity is replaced with newly minted ICP, taking some [maturity modulation function](https://wiki.internetcomputer.org/wiki/Maturity_modulation#:~:text=The%20maturity%20modulation%20function%20introduces,NNS%20neurons%20and%20SNS%20neurons.) into account. In the end, the new neuron will be dissolved and have these ICP as stake - which can then be disbursed to any account.
+The new neuron can remain controlled by the same principal as the parent neuron, or be assigned to a new principal.
+
+The following command spawns a neuron.
+```
+type Spawn = record {
+  percentage_to_spawn : opt nat32;
+  new_controller : opt principal;
+  nonce : opt nat64;
+};
+```
+Specify by `percentage_to_spawn` the portion of the maturity that should be spawn into a neuron in percentage. This should be a value between 1 and 100 (inclusive).
+If the spawned neurons should have a different controller than the parent neuron (from which you spawn the maturity), you can optionally define a different controlling principal by `new_controller`. Otherwise, the spawned neuron will have the same controller as the parent neuron.
+Similarly to claiming a neuron (see above), you need to specify the new neuron's ledger address and choose a nonce for this in the last argument `nonce`.
+Based on this nonce and the controlling principal, the neuron's address is uniquely defined (see section _Compute the neuron's address_).
+If no nonce is provided, the governance canister chooses a random one.
+
+_Required permissions:_
+Only a neuron's controller can spawn maturity from a neuron.
+
+You can also use the [ICP Rosetta API](/docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/) for this workflow.
+
+
+### Disbursing / unstaking a neuron
+When a neuron is dissolved, i.e., its dissolve delay is zero, the neuron's controlling principal can instruct it to _disburse_ the neuron’s stake.
+This means that the staked ICP balance is transferred to a specified ledger account and is liquid again.
+The following command can be used to disburse a neuron.
+```
+type Disburse = record {
+  to_account : opt AccountIdentifier;
+  amount : opt Amount;
+};
+```
+The command takes as argument the ledger account `to_account` to which the ICP tokens should be transferred to and the amount `amount` that should be disbursed. The latter allows to only disburse a portion of a neuron's stake.
+
+_Required permissions:_
+Only a neuron's controller can disburse a neuron.
+
+
 
 ### Splitting a neuron
 A neuron can be split in two neurons, for example to set different dissolve delays.
@@ -375,3 +442,8 @@ new neuron.
 
 _Required permissions:_
 Only a neuron's controller can split a neuron.
+
+
+### Merging two neurons
+TODO
+### TODO: what else is missing?
