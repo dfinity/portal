@@ -139,9 +139,16 @@ Refer to the `candid` file for the [`NeuronInfo` record](https://github.com/dfin
 
 ## Getting information about a neuron
 Before diving deeper into how a neuron can be created and modified, let's first understand how to get information about a user's existing neurons.
-This can be done by using the following API on the NNS governance canister.
-TODO: add new public / private visibility information
 
+### Neuron visibility
+A neuron can be private or public.
+* For public neurons, everyone can view the full neuron. This includes the full `NeuronInfo` which can be viewed as a summary of the most important information.
+* For private neurons,
+    * everyone can view the fields in `NeuronInfo`, except for `recent_ballots` and `joined_community_fund_timestamp_seconds`.
+    * principals who control the neuron or are a hotkey of the neuron can view the full neuron. This includes the full `NeuronInfo`.
+
+### APIs
+Using this API, a user can request information about a list of neurons.
 ```
 list_neurons : (ListNeurons) -> (ListNeuronsResponse) query;
 
@@ -155,13 +162,15 @@ type ListNeuronsResponse = record {
   full_neurons : vec Neuron;
 };
 ```
-By using this API, a user can request information about a list of neurons.
-
 The user can define which neurons to get information from by defining a list of neuron IDs in the argument `neuron_ids`.
 In addition, if the argument `include_neurons_readable_by_caller` is set to true, the neurons who the user is authorized to read are also included (i.e., the neurons for which the user is a controller or hot key).
 
-The answer to such a query is defined by `ListNeuronsResponse`. First, it contains a map that points for each neuron that was requested to the corresponding `NeuronInfo` (assuming the neuron exists). This is the public information about a [neuron and the exact definition](https://github.com/dfinity/ic/blob/7184d168d44f3ba27f750285a0fba43a0c56190a/rs/nns/governance/src/gen/ic_nns_governance.pb.v1.rs#L50).
-In addition, for each requested neuron that exists and for which the calling user is authorized to read the full neuron (controller or hot key), the full neuron is returned.
+The answer to such a query is defined by `ListNeuronsResponse`.
+First, it contains a map that points for each neuron that was requested to the corresponding `NeuronInfo` (assuming the neuron exists).
+For neurons that are public or for which the calling user is the controller or a hotkey, this includes the full `NeuronInfo`.
+For other private neurons `recent_ballots` and `joined_community_fund_timestamp_seconds` are redacted.
+In addition, for each requested neuron that exists and for which the calling user is authorized to read the full neuron (is a controller or hot key or the neuron is public),
+ the full neuron is returned.
 
 ## Interacting with neurons
 All neuron modifications go through the following API on the NNS governance canister. This includes everything in a neuron's lifetime such as the neuron's creation, modifications and voting, and unstaking the ICP tokens.
