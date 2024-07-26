@@ -4,23 +4,72 @@ keywords: [intermediate, governance, concept, nns]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Manage neuron API
+# Neuron management
 
 <MarkdownChipRow labels={["Advanced", "Governance", "Concept"]} />
 
-## Overview
-This page describes the technical APIs used to manage neurons on the NNS.
-If you are building a project that offers neuron staking or custody support, this page is particularly useful.
+## Who should read this page
+This page describes all the operations you can perform on a neuron, including the technical APIs to perform them.
+This page is for you if you want to learn the (technical) details about neuron operations or if you want to integrate with
+ the NNS, for example if you build a project that offers neuron staking or custody support.
 
+For tutorials for users who want to interact with the NNS over the [NNS dapp](https://nns.ic0.app) frontend, refer to the [NNS dapp quickguide](/docs/current/developer-docs/daos/nns/nns-app-quickstart).
+
+## Overview
 View the most up-to-date [`candid` definition for the NNS governance canister](https://github.com/dfinity/ic/blob/master/rs/nns/governance/canister/governance.did).
-This page will focus on the neuron interactions and explain some of the relevant definitions from this Candid file.
+This page will explain some of the relevant definitions from this Candid file.
 To keep up to date with new NNS release proposals from DFINITY, you can subscribe to [this forum thread](https://forum.dfinity.org/t/nns-updates-aggregation-thread/23551).
 
 ## Neuron attributes
 
-TODO: maybe list full API here and include all attributes with a brief explanation
-TODO: add new public / private visibility information
+Find a high level overview of the most important concepts in a neuron in the [Neuron overview](/docs/current/developer-docs/daos/nns/neuron-overview).
+We next present in detail the [`Neuron` record](https://github.com/dfinity/ic/blob/173d06185f77265d97bc363d266ce79410f6b914/rs/nns/governance/canister/governance.did#L363C1-L386C3)
+ by presenting all neuron attributes.
 
+* A unique id identifying the neuron. This is a number that is randomly chosen by the governance canister when a neuron is created.
+```
+id : opt NeuronId;
+```
+* next
+```
+id : opt NeuronId;
+```
+
+* 
+```
+type Neuron = record {
+
+  staked_maturity_e8s_equivalent : opt nat64;
+  controller : opt principal;
+  recent_ballots : vec BallotInfo;
+  kyc_verified : bool;
+  neuron_type : opt int32;
+  not_for_profit : bool;
+  maturity_e8s_equivalent : nat64;
+  cached_neuron_stake_e8s : nat64;
+  created_timestamp_seconds : nat64;
+  auto_stake_maturity : opt bool;
+  aging_since_timestamp_seconds : nat64;
+  hot_keys : vec principal;
+  account : blob;
+  joined_community_fund_timestamp_seconds : opt nat64;
+  dissolve_state : opt DissolveState;
+  followees : vec record { int32; Followees };
+  neuron_fees_e8s : nat64;
+  visibility : opt int32;
+  transfer : opt NeuronStakeTransfer;
+  known_neuron_data : opt KnownNeuronData;
+  spawn_at_timestamp_seconds : opt nat64;
+};
+```
+The
+
+
+
+## Neuron attributes
+
+
+============================================================
 ### Getting information about a neuron
 Before diving deeper into how a neuron can be created and modified, let's first understand how to get information about a user's existing neurons.
 This can be done by using the following API on the NNS governance canister.
@@ -108,8 +157,6 @@ type TransferArgs = record {
   from_subaccount: opt SubAccount;
   to: AccountIdentifier;
   created_at_time: opt TimeStamp;
-};
-
 };
 ```
 To make a transfer to the correct account, choose the `memo` equal to your chosen nonce (from Step (1a)).
