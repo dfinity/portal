@@ -453,15 +453,15 @@ Only a neuron's controller can disburse a neuron.
 
 
 ### Splitting and merging neurons
-TODO INTRO
-
+If you have multiple neurons and you can split and merge them for reorganization.
 
 **Split a neuron**
 
 A neuron can be split in two neurons, for example to set different dissolve delays.
 A user can choose how much of the neuron's stake should be split into a new neuron.
-The new neuron will inherit the parent neuron's hot keys and followees.
-Note that the maturity is not affected and the new neuron will start with no maturity.
+The staked and unstaked maturity also also split proportionally.
+The new neuron will inherit the parent neuron's settigs, such as the hot keys and followees.
+
 
 ```
 type Split = record {
@@ -476,7 +476,19 @@ Only a neuron's controller can split a neuron.
 
 **Merge two neurons**
 
+If you have two neurons, you can merge one neuron, called the source neuron, into another neuron, called the target neuron.
 
-other operations
-join NF
-Leave NF
+The source neuron's stake, maturity and age are moved into the target. Any fees the source neuron are burned before the transfer occurs.
+The dissolve delay of the target neuron is the greater of the dissolve delay of the two, while the source remains unchanged.
+Two neurons can only be merged if they are both non-dissolving. If you with to merge other neurons, you can first use `stop_dissolving`, and increase their dissolve delay if dissolved, and then merge them.
+
+The neuron for which you make this call is the target neuron and you provide the source neuron as argument of your call.
+
+```
+type Merge = record {
+    source_neuron_id : opt NeuronId
+};
+```
+
+_Required permissions:_
+Only a neuron's controller can split a neuron.
