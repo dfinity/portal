@@ -172,7 +172,7 @@ const developersData = [
   {
     title: "Threshold Signing Services",
     description:
-      "ICP has a suite of threshold signing protocols including ECDSA and Schnorr which allow to sign a variety of transactions across chains like Ethereum and Bitcoin. Further thresold signing protocols like EdDSA and BLS are coming soon.",
+      "ICP has a suite of threshold signing protocols including ECDSA and Schnorr which allow to sign a variety of transactions across chains like Ethereum and Bitcoin. Further threshold signing protocols like EdDSA and BLS are coming soon.",
     link: "/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa/",
   },
   {
@@ -587,7 +587,7 @@ function ChainFusion() {
                 <a
                   filter="url(#filter0_b_16561_24373)"
                   className="svgcard"
-                  href="https://internetcomputer.org/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa"
+                  href="https://internetcomputer.org/docs/current/references/t-sigs-how-it-works"
                   target="_blank"
                 >
                   <rect
