@@ -18,20 +18,6 @@ const sliderData = [
     link: "https://www.youtube.com/watch?v=1uX-fRgvXjU&list=PLuhDt1vhGcrclxfmztDd6OKE80dnrFmG6",
   },
   {
-    tagline: "Milestone achieved 🚀",
-    title: "TRITIUM",
-    description: "Chain Fusion supports EVM Chains",
-    image: "/img/home/slider/update_evm_tritium_milestone.webp",
-    link: "https://internetcomputer.org/roadmap#Chain%20Fusion-Tritium",
-  },
-  {
-    tagline: "July 26, 2024 – Nashville, US",
-    title: "ICP @ Bitcoin Nashville",
-    description: "Register now!",
-    image: "/img/home/slider/update_chain_fusion_bitcoin_nashville.webp",
-    link: "https://lu.ma/cfdnashville",
-  },
-  {
     tagline: "New initiative",
     title: "Universal Trusted Credentials",
     description: "Read the press release",
@@ -44,6 +30,13 @@ const sliderData = [
     description: "On-chain AI Inference",
     image: "/img/home/slider/update_ai_milestone.webp",
     link: "https://internetcomputer.org/roadmap#Decentralized%20AI-Cyclotron",
+  },
+  {
+    tagline: "Milestone Test Phase Live 🟢",
+    title: "DEUTERIUM",
+    description: "Chain Fusion supports threshold Schnorr signing.",
+    image: "/img/home/slider/deuterium_milestone_card.webp",
+    link: "https://internetcomputer.org/roadmap#Chain%20Fusion-Deuterium",
   },
 ];
 
