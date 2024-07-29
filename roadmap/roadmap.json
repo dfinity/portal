@@ -84,7 +84,7 @@
             "wiki": "",
             "docs": "",
             "eta": "",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Stellarator"
@@ -1338,7 +1338,7 @@
             "forum": "https://forum.dfinity.org/t/threshold-ecdsa-signatures/6152",
             "proposal": "https://dashboard.internetcomputer.org/proposal/21340",
             "wiki": "",
-            "docs": "https://internetcomputer.org/docs/current/references/t-ecdsa-how-it-works/",
+            "docs": "https://internetcomputer.org/docs/current/references/t-sigs-how-it-works/",
             "eta": "2022",
             "status": "deployed",
             "is_community": false,

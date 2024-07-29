@@ -159,15 +159,16 @@ function AIPage() {
               className="tw-heading-3 md:tw-heading-2 mb-2 md:mb-6 md:w-2/3 "
               variants={transitions.item}
             >
-              Run your AI models on the blockchain
+              Run AI models as real smart contracts
             </motion.h1>
             <div className="relative  md:w-5/10">
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                Run AI models entirely on-chain to benefit from the security,
-                resilience, and power of the ICP blockchain.
+                Al can be run truly on-chain as Internet Computer smart
+                contracts, making it tamperproof and unstoppable, and autonomous
+                if needed
               </motion.p>
               {/* <MotionLink
                 className="button-white"
@@ -214,7 +215,10 @@ function AIPage() {
                     The first use case is facial recognition, run fully onchain.
                   </motion.p>
                   <p className="mb-12 md:mb-0 mt-8">
-                    <Link className="link-primary link-with-icon" href="https://medium.com/@dfinity/589183203fc2">
+                    <Link
+                      className="link-primary link-with-icon"
+                      href="https://medium.com/@dfinity/589183203fc2"
+                    >
                       <LinkArrowRight />
                       READ THE BLOG POST
                     </Link>
@@ -313,7 +317,7 @@ let tensor = Array4::from_shape_fn(
 });
 
 let result = model.run(
-   tvec!(Tensor::from(tensor).into()))?;`} 
+   tvec!(Tensor::from(tensor).into()))?;`}
                 </CodeBlockString>
               </div>
             </AnimateSpawn>
@@ -677,8 +681,7 @@ let result = model.run(
                   imageUrl: "/img/decentralized-ai/news-6.jpg",
                 }}
                 linkLabel="Read Now"
-              />
-               {" "}
+              />{" "}
             </Link>
             <Link
               href="https://www.cointribune.com/en/dfinity-is-revolutionizing-dapps-with-ai-on-icp/"
@@ -686,7 +689,8 @@ let result = model.run(
             >
               <NewsCard
                 news={{
-                  title: "The Next Step for DeAI: On-Chain Inference Enabling Face Recognition",
+                  title:
+                    "The Next Step for DeAI: On-Chain Inference Enabling Face Recognition",
                   dateHuman: "July 15,2024",
                   press: "DFINITY",
                   details: `The replica version e4eeb3 that was approved by the community in Proposal 13094 completes the Cyclotron milestone from ICP’s roadmap.`,
@@ -694,8 +698,7 @@ let result = model.run(
                   imageUrl: "/img/decentralized-ai/news-7.webp",
                 }}
                 linkLabel="Read Now"
-              />
-               {" "}
+              />{" "}
             </Link>
           </div>
         </AnimateSpawn>

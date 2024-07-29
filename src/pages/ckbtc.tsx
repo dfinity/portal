@@ -475,7 +475,7 @@ function CkbtcPage(): JSX.Element {
                       native Bitcoin integration
                     </Link>{" "}
                     and{" "}
-                    <Link href="/docs/current/references/t-ecdsa-how-it-works/">
+                    <Link href="/docs/current/references/t-sigs-how-it-works/">
                       chain-key ECDSA signing
                     </Link>{" "}
                     — advanced threshold cryptography integrated with ICP. In

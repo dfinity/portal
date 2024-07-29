@@ -68,7 +68,7 @@ actor Alarm {
   private func ring() : async () {
     print("Motoko Timer Ring!");
   };
-  ignore recurringTimer(#seconds N, ring);
+  ignore recurringTimer<system>(#seconds N, ring);
 };
 ```
 
@@ -181,8 +181,8 @@ actor Alarm {
   private func ring2() : async () {
     print("Motoko Timer 2 Ring!");
   };
-  ignore recurringTimer(#seconds N1, ring1);
-  ignore recurringTimer(#seconds N2, ring2);
+  ignore recurringTimer<system>(#seconds N1, ring1);
+  ignore recurringTimer<system>(#seconds N2, ring2);
 };
 ```
 
