@@ -11,25 +11,22 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 ## Overview
 
-Each smart contract has settings that control its behavior.
-These settings are also known as *canister settings*.
-Only a controller of the smart contract can read and modify the canister settings.
-Currently, there are seven fields in canister settings:
+Each <GlossaryTooltip>canister</GlossaryTooltip> has a group of possible settings that control its behavior. Only a controller of the canister can read and modify its settings. Currently, there are seven canister setting fields:
 
-1. `controllers`: a list of controllers of the canister.
-1. `compute_allocation`: amount of compute that this canister has allocated.
-1. `memory_allocation`: amount of memory (storage) that this canister has allocated.
-1. `freezing_threshold`: a safety threshold to protect against canister deletion due to running out of cycles.
-1. `reserved_cycles_limit`: a safety threshold to protect against spending too much cycles for resource reservation.
-1. `log_visibility`: a setting that controls who can read the canister logs.
-1. `wasm_memory_limit`: a safety threshold to protect against reaching the 4GiB hard limit of 32-bit Wasm memory.
+1. `controllers`: The list of controllers of the canister.
+1. `compute_allocation`: Amount of compute that this canister has allocated.
+1. `memory_allocation`: Amount of memory (storage) that this canister has allocated.
+1. `freezing_threshold`: A safety threshold to protect against canister deletion due to running out of cycles.
+1. `reserved_cycles_limit`: A safety threshold to protect against spending too many cycles for resource reservation.
+1. `log_visibility`: Controls who can read the canister logs.
+1. `wasm_memory_limit`: A safety threshold to protect against reaching the 4GiB hard limit of 32-bit Wasm memory.
 
-## Reading Settings
+## Viewing a canister's current settings
 
 There are two ways to read the settings of a canister:
 
 1. Command line: `dfx canister status <canister-id>`. Note that this command returns canister settings together with other canister status information.
-1. Programmatically: call the `canister_status` endpoint of the IC management canister.  The canister settings will be in the `settings` field of the result.
+1. Programmatically: Call the `canister_status` endpoint of the IC management canister.  The canister settings will be in the `settings` field of the result.
 
 Note that only a controller of the canister can read canister settings.
 
@@ -71,12 +68,12 @@ async fn read_canister_settings() -> CallResult<DefiniteCanisterSettings> {
 </TabItem>
 </AdornedTabs>
 
-## Modifying Settings
+## Modifying settings
 
 There are two ways to modify the settings of a canister:
 
 1. Command line: `dfx canister update-settings <canister-id> --<field-name> <field-value>`.
-1. Programmatically: call the `update_settings` endpoint of the IC management canister.
+1. Programmatically: Call the `update_settings` endpoint of the IC management canister.
 
 Note that only a controller of the canister can modify canister settings.
 
