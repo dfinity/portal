@@ -201,10 +201,11 @@ function NnsPage() {
           </div>
           <motion.div variants={transitions.item}>
             <VideoCard
-              title="How to stake ICP "
-              label="Tutorial"
-              image="https://i.ytimg.com/vi/Ls_FlVERMjg/hqdefault.jpg"
-              link="https://www.youtube.com/watch?v=Ls_FlVERMjg"
+              title="How to stake ICP"
+              label="NNS Explained: Video Tutorial series"
+              image="https://i3.ytimg.com/vi/3o0eBOaHP_4/maxresdefault.jpg"
+              link="https://www.youtube.com/watch?v=3o0eBOaHP_4&list=PLuhDt1vhGcrclxfmztDd6OKE80dnrFmG6&index=4"
+              description="Step-by-step guide on how to create a neuron in the NNS. How to estimate voting rewards or pick other neurons to follow."
             />
           </motion.div>
         </AnimateSpawn>
