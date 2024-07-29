@@ -217,7 +217,7 @@ You may need to specify a `host` in your frontend code when you are using a cust
 ```ts
 // Point to icp-api for the mainnet. Leaving host undefined will work for localhost
 const host = isProduction ? 'https://icp-api.io' : undefined;
-const agent = new HttpAgent({ host });
+const agent = await HttpAgent.create({ host });
 ```
 :::
 
