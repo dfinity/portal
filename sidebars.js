@@ -665,6 +665,7 @@ const sidebars = {
           type: "doc",
           id: "developer-docs/multi-chain/overview",
         },
+        "developer-docs/multi-chain/supported-chains",
         {
           type: "category",
           label: "Bitcoin",
@@ -775,7 +776,6 @@ const sidebars = {
             },
           ],
         },
-        "developer-docs/multi-chain/supported-chains",
       ],
     },
     {

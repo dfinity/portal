@@ -21,7 +21,7 @@ Smart contracts running on ICP can directly interact with the Bitcoin network wi
 This is possible because ICP nodes can fetch and validate the Bitcoin network's blocks, and then make them available for smart contracts to query and read.
 Smart contracts can also sign and send Bitcoin transactions, allowing them to directly hold BTC.
 
-This direct Bitcoin integration is based on two features:
+This direct Bitcoin integration uses two features:
 
 - **[Threshold ECDSA](/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa)** and **[threshold Schnorr](/docs/current/developer-docs/smart-contracts/signatures/t-schnorr)**: A smart contract can have a secret key that is stored in a secure and decentralized way using chain-key cryptography. This key can be used to digitally sign messages. ECDSA and Schnorr are compatible with the Bitcoin blockchain, enabling smart contracts to sign Bitcoin transactions.
 
