@@ -178,12 +178,12 @@ For instructions, take a look at the steps outlined for GoDaddy under ["Rely on 
 - #### Step 2: Click on the domain to open the DNS settings.
 
 - #### Step 3: Configure your DNS records.
-To configure a subdomain (e.g., `example.ic-domain.net`), add the following records by clicking on **Add new record**:
-  * Create a `CNAME` record for which you set the host field to `example` and the target field to `example.ic-domain.net.icp1.io`;
-  * Create a `CNAME` record for which you set the host field to `_acme-challenge.example` and the target field to `_acme-challenge.example.ic-domain.net.icp2.io`;
+To configure a subdomain (e.g., `example.ic-domain.live`), add the following records by clicking on **Add new record**:
+  * Create a `CNAME` record for which you set the host field to `example` and the target field to `example.ic-domain.live.icp1.io`;
+  * Create a `CNAME` record for which you set the host field to `_acme-challenge.example` and the target field to `_acme-challenge.example.ic-domain.live.icp2.io`;
   * Create a `TXT` record for which you set the host field to `_canister-id.example` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
   The resulting configuration should look similar to the following screenshot:
 
-  ![DNS Configuration for `example.ic-domain.net` on Amazon Route 53](route53-subdomain.png)
+  ![DNS Configuration for `example.ic-domain.live` on Amazon Route 53](route53-subdomain.png)
 
 Now, you are all set to register your custom domain with the boundary nodes, and you can continue with step 2 of the [general custom domains instructions](using-custom-domains#custom-domains-on-the-boundary-nodes).
