@@ -19,8 +19,8 @@ Each <GlossaryTooltip>canister</GlossaryTooltip> has a group of possible setting
 1. `memory_allocation`: Amount of memory (storage) that this canister has allocated.
 1. `freezing_threshold`: A safety threshold to protect against canister deletion due to running out of cycles.
 1. `reserved_cycles_limit`: A safety threshold to protect against spending too many cycles for resource reservation.
-1. `log_visibility`: Controls who can read the canister logs.
 1. `wasm_memory_limit`: A safety threshold to protect against reaching the 4GiB hard limit of 32-bit Wasm memory.
+1. `log_visibility`: Controls who can read the canister logs.
 
 ## Viewing a canister's current settings
 
@@ -117,3 +117,107 @@ async fn modify_canister_settings() -> CallResult<()> {
 </TabItem>
 </AdornedTabs>
 
+## Controllers
+
+The `controllers` field in canister settings contains a list of principals that control the canister.
+Learn more about this field [here](docs/current/developer-docs/smart-contracts/control/).
+
+## Compute allocation
+
+By default canisters are scheduled for execution in a "best-effort" manner.
+Canisters that require guaranteed execution can get a share of compute capacity by setting `compute_allocation` in their canister settings.
+Compute allocation is expressed in percents and denotes the percentage of an execution core reserved for the canister.
+For example, compute allocation of 50% means that the canister will get 50% of an execution core.
+It will be scheduled at least every other round.
+Compute allocation of 100% means that the canister will be scheduled every round.
+
+Canisters pay a rent fee for compute allocation meaning that the payment depends on time and the amount of compute allocation regardless whether canister actually executed or not.
+For example, an idle canister that has compute allocation of 50% for one hour will be charged `base_fee * 50 * 3600`, where `base_fee` is the fee for one percent per second that you can look up [here](docs/current/developer-docs/gas-cost).
+
+The default value of compute allocation is 0%.
+
+## Memory allocation
+
+By default canisters get new memory in a "best-effort" manner.
+For example, when a canister grows its Wasm or stable memory, the system allocates that memory on-demand.
+That operation can fail if the subnet is at capacity.
+
+Canisters can pre-allocate memory by settings `memory_allocation` in their canister settings.
+This field is expressed in bytes and denotes the total amount of memory that the canister pre-allocated.
+When a canister with memory allocation grows its Wasm or stable memory, then the new memory comes from the pre-allocated memory.
+
+:::info
+Currently, `memory_allocation` also denotes the maximum amount of memory that the canister is allowed to use in total.
+For example, if a canister has memory allocation of 8GiB, then it pre-allocates 8GiBs and cannot exceed that amount.
+This constraint is considered a mis-design and may be lifted in the future.
+:::
+
+Canisters pay a rent fee for memory allocation meaning that the payment depends on time and the amount of memory allocation regardless whether canister actually uses that memory or not.
+You can learn more about payment for memory [here](docs/current/developer-docs/gas-cost).
+
+The default value of memory allocation is 0 bytes, which means that there is no memory allocation.
+
+## Freezing threshold
+
+If a canister runs out of cycles, then it gets uninstalled, which means that its code and data are deleted.
+Canister retains only its metadata such as the canister id, controllers, settings, etc.
+
+The freezing threshold protects against canister unexpectedly running out of cycles.
+This field denotes time duration in seconds -- the minimum duration that the canister should exist without running out of cycles.
+
+When the cycles balance of the canister becomes too low, then the system freezes the canister in order to guarantee its freezing threshold.
+A frozen canister does not execute messages and pays only for renting resources such as compute allocation, memory allocation, and memory usage.
+
+:::info
+See also the `idle_cycles_burned_per_day` field in canister status to learn how many cycles a canister consumes in its idle or frozen state.
+:::
+
+The default value of the freezing threshold is 2592000 (approximately 30 days).
+
+## Reserved cycles limit
+
+In addition to the main cycles balance, a canister has a secondary cycles balance called reserved cycles.
+The reserved cycles are cycles that are set aside for future resource payments by the resource reservation mechanism.
+You can learn more about resource reservation [here](docs/current/developer-docs/gas-cost).
+
+The `reserved_cycles_limit` field in canister settings serves as the upper limit on reserved cycles.
+It protects against spending too many cycles in resource reservation.
+
+The default value is 5 trillion cycles.
+
+## Wasm memory limit
+
+A canister has a Wasm memory and a stable memory.
+Currently, the Wasm memory is 32-bit, which means that it cannot grow beyond the hard limit of 4GiB.
+
+If a canister stores user data in the Wasm memory instead of the stable memory, then its memory usage will increase with the number of users.
+Eventually, such a canister could reach 4GiB at which point it won’t be able to allocate more memory and will stop working.
+It is also likely that the pre-upgrade hook will fail to allocate, which will make the canister and its data unrecoverable.
+Even if the canister doesn’t store user data in Wasm memory, its memory usage may increase due to memory leaks.
+
+The `wasm_memory_limit` field in canister settings provides "best-effort" protection against canister running out of Wasm memory.
+The limit is expressed in bytes and it is a soft limit, which means that in some circumstances the canister may grow its Wasm memory above the limit.
+Handling of the limit depends on the message type:
+
+- **update messages**: the limit is enforced up to the first `await` point.
+If the canister attempts to grow its Wasm memory above the limit, then execution fails with the corresponding error message.
+After the `await` point, execution continues in a response callback where the limit is not enforced.
+- **response callback**: the limit is not enforced and the canister may grow its Wasm memory above the limit.
+The motivation for not enforcing the limit is to avoid failing execution after the `await` point that could lead to subtle bugs in the canister code.
+- **hearbeats and timers**: the limit is currently not enforced, but will be enforced in future after the canister logging feature is available.
+Without canister logging it is difficult for developers to debug failures in heartbeat and timers.
+- **queries**: the limit is not enforced in queries because state changes are not preserved in query execution so any increase in memory is tentative and will be reverted after the query execution completes.
+- **canister init**: the limit is enforced and code installation fails if it grows the Wasm memory above the limit.
+- **canister pre-upgrade**: the limit is not enforced in order to allow upgrading the canister to a new version.
+- **canister post-upgrade**: the limit is enforced and code upgrade fails if the new version has Wasm memory usage higher than the limit.
+
+Currently, the default value of the field is 0 bytes, which means that there is no limit.
+In future, the default value will be set to 3GiB.
+
+## Log visibility
+
+The `log_visibility` field in canister settings can take one of two possible values: `controllers` or `public`.
+The former value means that only controllers of the canister can fetch its logs using the `fetch_canister_logs` endpoint of the management canister.
+The latter value means that the logs are public and everyone is allowed to fetch the logs using the `fetch_canister_logs` endpoint of the management canister.
+
+The default value of the field is `controllers`.
