@@ -15,6 +15,8 @@ Chain-key ERC-20 (ckERC20) tokens are
 [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md)-compliant tokens that are backed 1:1 by the corresponding [ERC-20](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/)-compliant token on Ethereum.
 For example, there are chain-key tokens for [USDC](https://dashboard.internetcomputer.org/ethereum/xevnm-gaaaa-aaaar-qafnq-cai) and [LINK](https://dashboard.internetcomputer.org/ethereum/g4tto-rqaaa-aaaar-qageq-cai).
 
+The full list of chain-key tokens can be viewed on the [Internet Computer dashboard](https://dashboard.internetcomputer.org/) under 'Chain Fusion'.
+
 Just like other chain-key tokens, such as [ckBTC](/docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview) and [ckETH](/docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview), the ckERC20 tokens do not rely on any centralized bridge to facilitate the conversion between the ckERC20 token and the ERC-20 token, which makes the conversion substantially more secure compared to other traditional 'wrapped' tokens.
 
 ckERC20 tokens offer the same advantages over their counterparts on Ethereum, including faster and cheaper transactions.
@@ -50,6 +52,7 @@ Specifically, it can perform the following actions:
 - Upgrade all managed ledger suites via an NNS proposal.
 
 - Top up the canisters of all managed ledger suites with cycles.
+
 ## Converting ERC-20 tokens to ckERC20 tokens
 In order to convert ERC-20 tokens to the corresponding ckERC20 tokens, the following steps are carried out:
 
@@ -70,6 +73,10 @@ A user can convert ckERC20 tokens to ERC-20 tokens by following these steps:
 More details on both flows are provided on the [ckERC20 GitHub page](https://github.com/dfinity/ic/blob/master/rs/ethereum/cketh/docs/ckerc20.adoc), whereas a detailed description of the ledger suite orchestrator can be found in its [GitHub repository](https://github.com/dfinity/ic/tree/master/rs/ethereum/ledger-suite-orchestrator).
 
 The ledger and index canisters in any ckERC20 ledger suite are regular ICRC-1 compliant canisters. A guide on how to interact with these canisters can be found in the [using the ICRC-1 ledger](/docs/developer-docs/defi/icrc-1/using-icrc1-ledger.mdx) section.
+
+## Deploying ckERC20 tokens
+
+Tokens deployed on other networks that use the ERC-20 standard can be launched on ICP as ckERC20 tokens. To propose a new ckERC20 be launched on the mainnet, there are several technical and non-technical steps that should be completed. Learn more in [creating a new ckERC20 token](creating-new-ckerc20.mdx)
 
 ## ckERC20 use-cases
 
