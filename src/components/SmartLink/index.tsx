@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from '@docusaurus/Link';
 import clsx from "clsx";
 
@@ -31,7 +31,13 @@ const SmartLink: React.FC<SmartLinkProps & React.HTMLProps<HTMLAnchorElement>> =
   children, 
   ...props 
 }) => {
-  const isExternal = target === '_blank' || (!href.includes(window.location.hostname) && (!href.includes('internetcomputer.org'))  && href.startsWith('http'));
+
+  const [isExternal, setIsExternal] = useState(false);
+  useEffect(() => {
+    setIsExternal(
+      target === '_blank' || (!href.includes(window.location.hostname) && (!href.includes('internetcomputer.org'))  && href.startsWith('http'))
+    );
+  }, []);
 
   const isDocs = href.includes('developer-docs') || href.includes('/docs');
   const iconBefore = isDocs || !isExternal;
