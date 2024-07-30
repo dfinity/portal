@@ -9,6 +9,9 @@ import "slick-carousel/slick/slick-theme.css";
 import "./index.css";
 import { arrow } from "@floating-ui/react";
 
+/* Dates are in YYYY-MM-DD format
+ startDate is the first day the slide should be displayed
+ endDate is the last day the slide should be displayed  */
 const sliderData = [
   {
     tagline: "New video series 🍿",
@@ -16,6 +19,8 @@ const sliderData = [
     description: "Watch now",
     image: "/img/home/slider/nns_explained.webp",
     link: "https://www.youtube.com/watch?v=1uX-fRgvXjU&list=PLuhDt1vhGcrclxfmztDd6OKE80dnrFmG6",
+    startDate: "2024-01-01",
+    endDate: "2024-12-01",
   },
   {
     tagline: "New initiative",
@@ -23,6 +28,8 @@ const sliderData = [
     description: "Read the press release",
     image: "/img/home/slider/update_undp_initiative.webp",
     link: "https://www.undp.org/policy-centre/singapore/press-releases/undp-partners-dfinity-foundation-enhance-financial-inclusion-msmes",
+    startDate: "2024-01-01",
+    endDate: "2024-12-01",
   },
   {
     tagline: "Milestone achieved 🏆",
@@ -30,6 +37,8 @@ const sliderData = [
     description: "On-chain AI Inference",
     image: "/img/home/slider/update_ai_milestone.webp",
     link: "https://internetcomputer.org/roadmap#Decentralized%20AI-Cyclotron",
+    startDate: "2024-01-01",
+    endDate: "2024-12-01",
   },
   {
     tagline: "Milestone Test Phase Live 🟢",
@@ -37,6 +46,8 @@ const sliderData = [
     description: "Chain Fusion supports threshold Schnorr signing.",
     image: "/img/home/slider/deuterium_milestone_card.webp",
     link: "https://internetcomputer.org/roadmap#Chain%20Fusion-Deuterium",
+    startDate: "2024-01-01",
+    endDate: "2024-12-01",
   },
 ];
 
@@ -156,6 +167,14 @@ const css = `
 export const SectionSlider = () => {
   let sliderRef = useRef(null);
 
+  const currentDate = new Date();
+
+  const filteredSliderData = sliderData.filter((data) => {
+    const startDate = new Date(data.startDate);
+    const endDate = new Date(data.endDate);
+    return currentDate >= startDate && currentDate <= endDate;
+  });
+
   const settings = {
     dots: true,
     infinite: true,
@@ -184,7 +203,7 @@ export const SectionSlider = () => {
     <div className="slider-container">
       <style>{css}</style>
       <Slider ref={(slider) => (sliderRef = slider)} {...settings}>
-        {sliderData.map((data, index) => (
+        {filteredSliderData.map((data, index) => (
           <article key={index} className="border-box px-3">
             <CardWithImage href={data.link} image={data.image}>
               <div className="py-5 mr-40">
