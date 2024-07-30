@@ -34,7 +34,7 @@ The provided principal ID and subaccount are concatenated to form the derivation
 
 This public key is encoded as a pay-to-witness-public-key-hash (P2WPKH) Bitcoin address and returned as a text.
 
-Note that the key derivation is not BIP-32 compliant where 31 bits are used for each derivation level. Instead, a single derivation is performed based on the full principal ID and subaccount. Since the derivation is deterministic, a canister can derive the Bitcoin address for a given principal ID and subaccount itself.
+Note that the key derivation is not BIP-32 compliant, where 31 bits are used for each derivation level. Instead, a single derivation is performed based on the full principal ID and subaccount. Since the derivation is deterministic, a canister can derive the Bitcoin address for a given principal ID and subaccount itself.
 
 ### `update_balance(owner: opt principal, subaccount: opt blob)`
 The `update_balance` function is invoked to instruct the ckBTC minter to check if there are new UTXOs for a particular Bitcoin address.
@@ -47,7 +47,7 @@ The endpoint returns an estimate for the fee that must be paid when retrieving t
 
 If there is no change to the internal state of the ckBTC minter and the Bitcoin canister before issuing the request to retrieve Bitcoins, the fee will be exactly the returned estimate.
 
-The fee can change when a new Bitcoin block is mined in the meantime, which causes the Bitcoin canister to update the Bitcoin miner fees or when another retrieval request that spends some of the outputs that were used when estimating the fee is handled first.
+The fee can change when a new Bitcoin block is mined in the meantime, which causes the Bitcoin canister to update the Bitcoin miner fees, or when another retrieval request that spends some of the outputs that were used when estimating the fee is handled first.
 
 ### `get_deposit_fee`
 The endpoint returns the fee that the ckBTC minter charges for minting ckBTC when receiving new UTXOs. Currently, this fee is simply the KYT fee.
@@ -90,4 +90,4 @@ The function returns the following parameters internal to the ckBTC minter:
 ### `get_events(start: nat64, length: nat64)`
 The ckBTC minter tracks the events that change its internal state. Given a start index and a length parameter, the ckBTC minter returns all events sequentially from the event at the given `start` index up to the event at index `start+length-1`.
 
-Note that this endpoint is used for debugging purposes and there is no guarantee that the endpoint will continue to exist in this form.
+Note that this endpoint is used for debugging purposes, and there is no guarantee that the endpoint will continue to exist in this form.

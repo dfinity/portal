@@ -129,8 +129,9 @@ export const CardsSection = () => {
           <div className="basis-1/2 p-1/10 flex items-center">
             <div>
               <div className="tw-paragraph md:tw-lead-sm mt-6 mb-0">
-                Create smart contracts that can trustlessly interact with, and coordinate, multiple blockchains. 
-                Process any token. Interact with any smart contract.
+                Create smart contracts that can trustlessly interact with, and
+                coordinate, multiple blockchains. Process any token. Interact
+                with any smart contract.
               </div>
               <Link
                 className="button-outline-white-30 mt-4"
@@ -147,10 +148,11 @@ export const CardsSection = () => {
         <div className="flex flex-col md:flex-row items-stretch">
           <div className="basis-1/2 p-1/10 md:py-1/12 md:order-2">
             <h4 className="tw-heading-4 md:tw-heading-60">
-              Run AI models as smart contracts
+              Run your AI as a real smart contract
             </h4>
             <p className="tw-paragraph md:tw-lead-sm mt-4 md:mt-6 mb-0">
-              Decentralize AI, making it tamperproof, unstoppable and optionally autonomous
+              Decentralize Al to make it tamperproof and unstoppable, and
+              autonomous if needed
             </p>
             <Link className="button-outline-white-30 mt-4" href="/ai">
               Find out more

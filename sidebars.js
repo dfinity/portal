@@ -296,16 +296,25 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "On-chain signatures: Threshold ECDSA",
+              label: "On-chain signatures",
               items: [
-                "developer-docs/smart-contracts/encryption/t-ecdsa",
-                "developer-docs/smart-contracts/encryption/signing-messages",
+                "developer-docs/smart-contracts/signatures/t-ecdsa",
+                "developer-docs/smart-contracts/signatures/t-schnorr",
+                {
+                  type: "category",
+                  label: "Signing messages",
+                  items: [
+                          "developer-docs/smart-contracts/signatures/signing-messages-t-ecdsa",
+                          "developer-docs/smart-contracts/signatures/signing-messages-t-schnorr",
+                  ],
+                },
               ],
             },
             "developer-docs/smart-contracts/advanced-features/periodic-tasks",
             "developer-docs/smart-contracts/advanced-features/query-stats",
             "developer-docs/smart-contracts/advanced-features/simd",
             "developer-docs/smart-contracts/advanced-features/system-canisters",
+            "developer-docs/smart-contracts/advanced-features/time-and-timestamps",
           ],
         },
         {
@@ -384,6 +393,7 @@ const sidebars = {
                   label: "Advanced dfx workflows",
                   items: [
                     "developer-docs/developer-tools/cli-tools/advanced-dfx/dfx-migration",
+                    "developer-docs/developer-tools/cli-tools/advanced-dfx/init-args",
                     "developer-docs/developer-tools/cli-tools/advanced-dfx/networks-json",
                     "developer-docs/developer-tools/cli-tools/advanced-dfx/specifying-replica-version",
                   ],
@@ -664,14 +674,20 @@ const sidebars = {
               type: "doc",
               id: "developer-docs/multi-chain/bitcoin/overview",
             },
-            "developer-docs/multi-chain/bitcoin/using-btc/btc-dev-workflow",
             "developer-docs/multi-chain/bitcoin/using-btc/btc-comparison",
+            "developer-docs/multi-chain/bitcoin/using-btc/btc-dev-workflow",
+            {
+              type: "category",
+              label: "Interacting with Bitcoin",
+              items: [
             "developer-docs/multi-chain/bitcoin/using-btc/generate-addresses",
             "developer-docs/multi-chain/bitcoin/using-btc/create-transactions",
             "developer-docs/multi-chain/bitcoin/using-btc/sign-transactions",
             "developer-docs/multi-chain/bitcoin/using-btc/submit-transactions",
             "developer-docs/multi-chain/bitcoin/using-btc/read-state",
             "developer-docs/multi-chain/bitcoin/using-btc/local-development",
+                ],
+              },
           ],
         },
         {
@@ -683,11 +699,17 @@ const sidebars = {
               type: "doc",
               id: "developer-docs/multi-chain/ethereum/overview",
             },
-            "developer-docs/multi-chain/ethereum/using-eth/eth-dev-workflow",
             "developer-docs/multi-chain/ethereum/using-eth/eth-comparison",
+            "developer-docs/multi-chain/ethereum/using-eth/eth-dev-workflow",
+            {
+              type: "category",
+              label: "Interacting with Ethereum",
+              items: [
             "developer-docs/multi-chain/ethereum/using-eth/generating-addresses",
             "developer-docs/multi-chain/ethereum/using-eth/signing-transactions",
             "developer-docs/multi-chain/ethereum/using-eth/submit-transactions",
+              ],
+            },
             {
               type: "category",
               label: "EVM RPC canister",
@@ -1343,7 +1365,7 @@ const sidebars = {
             "references/bitcoin-how-it-works",
             "references/ckbtc-reference",
             "references/https-outcalls-how-it-works",
-            "references/t-ecdsa-how-it-works",
+            "references/t-sigs-how-it-works",
             "references/vetkeys-overview",
             "references/supported-signatures",
           ],

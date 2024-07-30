@@ -86,22 +86,16 @@ but they are supported in the same way as Ethereum through the EVM RPC canister.
 | Polkadot  | [ECDSA, EdDSA](https://wiki.polkadot.network/docs/learn-cryptography) | [RPC via HTTPS outcalls](/docs/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview.mdx) |     |
 | Solana    | [EdDSA](https://solana.com/docs/core/accounts#account)  | [Solana RPC](https://github.com/mfactory-lab/ic-solana) <span style={{ display: 'inline-block', verticalAlign: 'super' }}><AlphaChip /></span> | [gSOL](https://galactic-bridge-tzbjl.ondigitalocean.app/) <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span> |
 | Stacks    | [ECDSA](https://github.com/stacks-network/keylib-py)| [RPC via HTTPS outcalls](/docs/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview.mdx) |      |
-| Stellar   | [EdDSA](https://developers.stellar.org/docs/smart-contracts/smart-wallets#secp256r1) | [RPC via HTTPS outcalls](/docs/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview.mdx) |     |   
+| Stellar   | [EdDSA](https://developers.stellar.org/docs/smart-contracts/smart-wallets#secp256r1) | [RPC via HTTPS outcalls](/docs/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview.mdx) |     |
 | Sui       | [ECDSA, EdDSA](https://blog.sui.io/wallet-cryptography-specifications/) | [RPC via HTTPS outcalls](/docs/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview.mdx) |     |
 | XRP       | [ECDSA, EdDSA](https://xrpl.org/docs/concepts/accounts/cryptographic-keys/#signing-algorithms) | [RPC via HTTPS outcalls](/docs/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview.mdx) |    |
 | Toncoin   | EdDSA  | [RPC via HTTPS outcalls](/docs/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview.mdx) |       |
 | TRON      | [ECDSA](https://github.com/tronprotocol/tips/issues/120)  | [RPC via HTTPS outcalls](docs/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview.mdx)  |      |
 
+
 :::caution
-
-Threshold Schnorr and EdDSA signing are not available in production yet.
-Threshold Schnorr signing will be released with the
-[Deuterium milestone](https://internetcomputer.org/roadmap#Chain%20Fusion-Deuterium)
-scheduled for August 2024. Threshold EdDSA signing will be released with the
-[Helium milestone](https://internetcomputer.org/roadmap#Chain%20Fusion-Helium)
-later this year. However, both signing schemes are already available as a
-[developer preview](https://github.com/domwoe/schnorr_canister).
-
+EdDSA signing is not available in production yet. Threshold EdDSA signing will be released with the [Helium milestone](https://internetcomputer.org/roadmap#Chain%20Fusion-Helium)
+later this year. However, it is already available as a [developer preview](https://github.com/domwoe/schnorr_canister).
 :::
 
 ### Looking for a chain that is not listed?
@@ -114,4 +108,4 @@ methods or signature schemes are supported.
 
 - [HTTPS outcalls](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview).
 
-- [Threshold ECDSA](/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa).
+- [Threshold ECDSA](/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa).

@@ -3132,14 +3132,14 @@
   },
   {
     "name": "ubin",
-    "description": "Allows you to seamlessly launch your own file storage smart contracts on ICP using only a wallet and interact with them via a file explorer in the browser.",
+    "description": "Allows you to seamlessly launch your file storage smart contracts on ICP and interact with them via a file explorer in the browser.",
     "website": "https://h3cjw-syaaa-aaaam-qbbia-cai.ic0.app/",
     "logo": "/img/showcase/asset-app_logo.png",
     "screenshots": [
       "/img/showcase/asset-app.jpg"
     ],
     "id": "ubin",
-    "oneLiner": "Allows you to seamlessly launch your own file storage smart contracts on ICP using only a wallet and interact with them via a file explorer in the browser.",
+    "oneLiner": "Allows you to seamlessly launch your file storage smart contracts on ICP and interact with them via a file explorer in the browser.",
     "tags": [
       "Tools / Infrastructure"
     ],
@@ -4615,21 +4615,6 @@
     "logo": "/img/showcase/replicator_logo.jpg"
   },
   {
-    "id": "replicatr",
-    "name": "Replicatr",
-    "oneLiner": "Nostr relay using ICP for inter-relay synchronization.",
-    "website": "https://replicatr.dev/",
-    "tags": [
-      "Tools / Infrastructure",
-      "SocialFi"
-    ],
-    "github": "https://github.com/Hubmakerlabs/replicatr",
-    "description": "Nostr relay using ICP for inter-relay synchronization.",
-    "usesInternetIdentity": false,
-    "display": "Normal",
-    "logo": "/img/showcase/replicator_logo.jpg"
-  },
-  {
     "id": "dotmeet",
     "name": "Dotmeet",
     "oneLiner": "A city-based events calendar app helping web3 communities and companies in effectively reaching their target audience within cities.",
@@ -4799,7 +4784,7 @@
   {
     "id": "panorama-block",
     "name": "Panorama Block",
-    "oneLiner": "AI-Powered cross-chain analytics. Offering real-time blockchain data, starting with Bitcoin.",
+    "oneLiner": "AI-powered cross-chain analytics. Offering real-time blockchain data, starting with Bitcoin.",
     "tags": [
       "Tools / Infrastructure",
       "Bitcoin"
@@ -4807,7 +4792,7 @@
     "website": "https://panoramablock.com",
     "github": "https://github.com/Panorama-Block/panorama-block-icp",
     "twitter": "https://twitter.com/panoramablock",
-    "description": "AI-Powered cross-chain analytics. Offering real-time blockchain data, starting with Bitcoin.",
+    "description": "AI-powered cross-chain analytics. Offering real-time blockchain data, starting with Bitcoin.",
     "usesInternetIdentity": false,
     "display": "Normal",
     "logo": "/img/showcase/PanoramaBlock_Logo.png"
@@ -4910,6 +4895,82 @@
     "description": "An on-chain order-book market trade platform for ICRC-1 tokens on the world-computer.",
     "usesInternetIdentity": true,
     "display": "Normal",
-    "logo": "/img/showcase/waterneuron_logo.png"
+    "logo": "/img/showcase/waterneuron_logo.png",
+  }
+  {
+    "id": "relation",
+    "name": "Relation",
+    "oneLiner": "Web3 social graph using a graph database built on ICP.",
+    "tags": [
+      "Tools / Infrastructure",
+      "SocialFi"
+    ],
+    "website": "https://relationlabs.ai/home",
+    "github": "https://github.com/relationlabs/relation-graph-icp",
+    "twitter": "https://twitter.com/relationlabs",
+    "description": "Web3 social graph using a graph database built on ICP.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/relation_logo.png"
+  },
+  {
+    "id": "meddle",
+    "name": "Meddle",
+    "oneLiner": "A software-IoT product that deals with data collection from sensors and industrial machinery.",
+    "tags": [
+      "Tools / Infrastructure",
+      "Enterprise"
+    ],
+    "website": "https://meddleconnect.com",
+    "github": "https://github.com/quinck-io/meddle-icp-be/",
+    "description": "A software-IoT product that deals with data collection from sensors and industrial machinery.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/Meddle_Logo.png"
+  },
+  {
+    "id": "staexvts",
+    "name": "Staex VTS",
+    "oneLiner": "A vehicle tracking system that serves as an infrastructure to track and invoice vehicles.",
+    "tags": [
+      "Tools / Infrastructure",
+      "Enterprise"
+    ],
+    "website": "https://staex.io",
+    "github": "https://github.com/staex-io/vts",
+    "twitter": "https://twitter.com/staex_io",
+    "description": "A vehicle tracking system that serves as an infrastructure to track and invoice vehicles.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/staex_logo.png"
+  },
+  {
+    "id": "rolodex",
+    "name": "rolodex",
+    "oneLiner": "A self-sovereign directory, giving YOU control of your contact information.",
+    "tags": [
+      "Tools / Infrastructure",
+      "Enterprise"
+    ],
+    "website": "https://rolodex.weavechain.com/",
+    "github": "https://github.com/weavechain/rolodex3",
+    "twitter": "https://twitter.com/WeavechainWeb3",
+    "description": "A self-sovereign directory, giving YOU control of your contact information.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/rolodex_logo.png"
+  },
+  {
+    "id": "zon",
+    "name": "Zon Social Media",
+    "oneLiner": "A fusion of social network, marketplace, and Web directory.",
+    "website": "https://zoncircle.com",
+    "tags": ["SocialFi"],
+    "description": "A fusion of social network, marketplace, and Web directory. World as items in folders. On the mission to overcome network effect - well suited for indie authors.",
+    "logo": "/img/showcase/zon_logo.webp",
+    "usesInternetIdentity": true,
+    "authOrigins": "https://zoncircle.com",
+    "github":"https://github.com/vporton/zondirectory2",
+    "twitter": "https://x.com/ZonDirectory"
   }
 ]
