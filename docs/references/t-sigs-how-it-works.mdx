@@ -9,7 +9,7 @@ This page gives a high-level outline of threshold signatures on ICP.
 Some of the information in this section is not required to use threshold signing features, but may be of interest to the technically inclined reader for obtaining background information on the technology. 
 ICP currently supports **threshold Schnorr** signing and **threshold ECDSA** signing. 
 Further research on ECDSA is described by Groth and Shoup in their [Eurocrypt 2022 paper](https://eprint.iacr.org/2021/1330). Groth and Shoup have also published a comprehensive [design and analysis](https://eprint.iacr.org/2022/506) of ECDSA.
-For Schnorr, various designs were propsed by Groth and Shoup [here](https://eprint.iacr.org/2023/1175) and a security analysis of Schnorr from Shoup can be found [here](https://eprint.iacr.org/2023/1019.pdf).
+For Schnorr, various designs were propsed by [Groth and Shoup](https://eprint.iacr.org/2023/1175) and a [security analysis of Schnorr from Shoup](https://eprint.iacr.org/2023/1019.pdf) was completed.
 
 At a high level, the threshold signature implementations on ICP feature multiple protocols as outlined next, all of which are crucial for a secure system setup and operation. Note that this goes far beyond just threshold signing, which is the reason for calling this a protocol suite for **chain-key signatures**.
 -   **Key generation:** this protocol is executed on a specified subnet; it generates a new threshold key such that the private key is secret shared over the replicas of this subnet.
@@ -67,12 +67,11 @@ As part of the Deuterium release, a test Schnorr key according to the `bip340` s
 As above, this key may be deleted at some time after the GA Schnorr release and therefore should not be used for anything that has value, but only for development and testing purposes.
 The test key has the id `(bip340secp256k1, test_key_1)` for referring to it in API calls.
 
-### Further Aspects
-
+### Further aspects
 
 Support for further elliptic curves and signature schemes may be added in the future. ECDSA signatures over curve `secp256r1` and Ed25519 signatures are interesting for supporting use cases such as decentralized certification authorities (CAs) and are the premier candidate group to be added to facilitate use cases like the mentioned one, as well as enabling the direct integration with other blockchains.
 
-## t-sig APIs
+## Threshold signature APIs
 
 Next, this guide gives an overview of the APIs for threshold signatures. 
 For the authoritative specification, the reader is referred to the corresponding part of the Internet Computer interface specification for [ECDSA](/references/ic-interface-spec.md#ic-ecdsa_public_key) and [Schnorr](/references/ic-interface-spec.md#ic-sign_with_schnorr). 
@@ -159,19 +158,19 @@ The fees for the t-sig APIs are as defined below. The threshold ECDSA test key a
 If a canister using this feature is intended to be blackholed, but also for other canisters, it is recommended to send more cycles with the call than the advertised cost of the call so that if the subnet size of the signing subnet increases in the future, the higher costs per signature are still covered. Any cycles not charged in a call are refunded.
 :::
 
-### Fees for the t-ECDSA Test Key
+### Fees for the t-ECDSA test key
 
 | Transaction                          | Description                                                                                                    | Cycles (test key)                     | USD                         |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
 | Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                | 10_000_000_000              | $0.0132551                  |
 
-### Fees for the t-ECDSA Production Key
+### Fees for the t-ECDSA production key
 
 | Transaction                          | Description                                                                                                    | Cycles (production key)                     | USD                         |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
 | Threshold ECDSA signing              | For computing one threshold ECDSA signature (`sign_with_ecdsa`)                                                | 26_153_846_153              | $0.0346672                  |
 
-### Fees for the t-Schnorr test Key
+### Fees for the t-Schnorr test key
 
 | Transaction                          | Description                                                                                                    | Cycles (test key)                     | USD                         |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
