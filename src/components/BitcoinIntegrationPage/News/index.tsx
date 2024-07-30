@@ -10,6 +10,7 @@ import { motion } from "framer-motion";
 import VideoCard from "../../Common/VideoCard";
 import { NewsCard } from "../../NewsPage/Cards";
 import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
+import SmartLink from "../../SmartLink";
 
 const MotionLink = motion(Link);
 
@@ -36,13 +37,13 @@ function News({ content = "btc" }) {
               ? "Get all the news and event infos about Chain Fusion Technology on ICP."
               : "Get all the news from the Internet Computer ecosystem"}
           </motion.p>
-          <MotionLink
+          <SmartLink
             variants={transitions.item}
             href="/news"
             className="link-primary link-with-icon mt-3"
           >
-            <LinkArrowRight /> Explore more news
-          </MotionLink>
+            Explore more news
+          </SmartLink>
         </div>
       </div>
       <div className="container-10 !px-0 mt-6 md:mt-20">
@@ -51,7 +52,7 @@ function News({ content = "btc" }) {
             "md:h-[450px] flex flex-col md:flex-row rounded-xl overflow-hidden"
           }
         >
-          <Link
+          <SmartLink
             className="aspect-video md:w-7/10 flex relative group"
             href="https://b.tc/conference/2024"
           >
@@ -60,7 +61,7 @@ function News({ content = "btc" }) {
               alt="Bitcoin 2024 Conference"
               className="w-full h-full object-cover"
             />
-          </Link>
+          </SmartLink>
           <div className="md:w-3/10 flex bg-white-80 border border-solid border-white md:rounded-tr-xl rounded-br-xl p-8 md:p-12 backdrop-blur-2xl">
             <div className="self-end">
               <h4 className="text-black tw-paragraph mb-0">
@@ -78,14 +79,14 @@ function News({ content = "btc" }) {
                 neighborhoods & content tracks to accelerate
                 hyperbitcoinizatioin across multiple vectors.
               </p>
-              <Link
+              <SmartLink
                 className="link-primary link-with-icon mt-4"
                 href="https://b.tc/conference/2024"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Register now <LinkArrowUpRight />
-              </Link>
+                Register now
+              </SmartLink>
             </div>
           </div>
         </div>
