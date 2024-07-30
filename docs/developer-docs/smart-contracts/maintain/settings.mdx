@@ -1,7 +1,8 @@
 ---
 keywords: [beginner, tutorial, maintain canisters, settings, canister settings]
 ---
-
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
@@ -65,6 +66,7 @@ async fn read_canister_settings() -> CallResult<DefiniteCanisterSettings> {
     println!("settings: {:?}", response.settings);
     Ok(response.settings)
 }
+```
 </TabItem>
 </AdornedTabs>
 
@@ -111,5 +113,7 @@ async fn modify_canister_settings() -> CallResult<()> {
     })
     .await
 }
+```
 </TabItem>
 </AdornedTabs>
+
