@@ -61,28 +61,26 @@ let (randomBytes,): (Vec<u8>,) = ic_cdk::api::call(Principal.management_canister
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
-import {
-    bool,
-    Canister,
-    float64,
-    postUpgrade,
-    query,
-    update
-} from 'azle/experimental';
+import { IDL, postUpgrade, query, update } from 'azle';
 
 let redeployed = false;
 
-export default Canister({
-    postUpgrade: postUpgrade([], () => {
+export default class {
+    @postUpgrade([])
+    postUpgrade(): void {
         redeployed = true;
-    }),
-    getRedeployed: query([], bool, () => {
+    }
+
+    @query([], IDL.Bool)
+    getRedeployed(): boolean {
         return redeployed;
-    }),
-    randomNumber: update([], float64, () => {
+    }
+
+    @update([], IDL.Float64)
+    randomNumber(): number {
         return Math.random();
-    })
-});
+    }
+}
 ```
 
 </AdornedTab>
