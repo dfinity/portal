@@ -111,57 +111,57 @@ fn http_request(req: HttpRequest) -> HttpResponse {
 
 </TabItem>
 
-<TabItem value="typescript" label="Typescript">
+<TabItem value="typescript" label="TypeScript">
 
 ```typescript
-import {
-    blob,
-    bool,
-    Canister,
-    Func,
-    nat16,
-    None,
-    Opt,
-    query,
-    Record,
-    text,
-    Tuple,
-    Variant,
-    Vec
-} from 'azle';
+    import {
+        blob,
+        bool,
+        Canister,
+        Func,
+        nat16,
+        None,
+        Opt,
+        query,
+        Record,
+        text,
+        Tuple,
+        Variant,
+        Vec
+    } from 'azle';
 
-type HeaderField = [text, text];
-const HeaderField = Tuple(text, text);
+    type HeaderField = [text, text];
+    const HeaderField = Tuple(text, text);
 
-const HttpResponse = Record({
-    status_code: nat16,
-    headers: Vec(HeaderField),
-    body: blob,
-});
+    const HttpResponse = Record({
+        status_code: nat16,
+        headers: Vec(HeaderField),
+        body: blob,
+    });
 
-const HttpRequest = Record({
-    method: text,
-    url: text,
-    headers: Vec(HeaderField),
-    body: blob,
-});
+    const HttpRequest = Record({
+        method: text,
+        url: text,
+        headers: Vec(HeaderField),
+        body: blob,
+    });
 
-export default Canister({
-    http_request: query([HttpRequest], HttpResponse, (req) => {
-        const path = req.url.pathname;
-        if(path == "/hello") {
-            return {
-                status_code: 200,
-                headers: [],
-                body: Buffer.from('hello, world!')
-            };
-        } return {
-            body: Text.encodeUtf8("404 Not found :");
-            headers: [];
-            status_code:404;
-        }
-    })
-});
+    export default Canister({
+        http_request: query([HttpRequest], HttpResponse, (req) => {
+            const path = req.url.pathname;
+            if(path == "/hello") {
+                return {
+                    status_code: 200,
+                    headers: [],
+                    body: Buffer.from('hello, world!')
+                };
+            } return {
+                body: Text.encodeUtf8("404 Not found :");
+                headers: [];
+                status_code:404;
+            }
+        })
+    });
 ```
 
 To learn more about serving an HTTP request in Typescript, refer to [the Azle book reference on incoming HTTP requests](https://demergent-labs.github.io/azle/http.html).

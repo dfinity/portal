@@ -71,15 +71,15 @@ fn get_numbers(numbers: Vec<u32>) -> Vec<u32> {
 
 Azle refers to the `Vec` type to represent the equivalent of an `array` in Typescript. This is because `Vec` aligns with the [Candid](/docs/current/developer-docs/smart-contracts/candid/candid-concepts) type.
 
-```typescript
-import { Canister, int32, Vec, query } from 'azle';
-let numbers = [0,1,2,3];
-export default Canister({
-    get_numbers: query([Vec(int32], Vec(int32), () => {
-        return numbers;
-    })
-});
-```
+    ```typescript
+    import { Canister, int32, Vec, query } from 'azle';
+    let numbers = [0,1,2,3];
+    export default Canister({
+        get_numbers: query([Vec(int32], Vec(int32), () => {
+            return numbers;
+        })
+    });
+    ```
 
 
 To learn more about the `Vec` object in Typescript via Azle, refer to [the Azle book reference on Vec](https://demergent-labs.github.io/azle/reference/candid/vec.html?highlight=array#vec).
@@ -183,39 +183,39 @@ fn get_text(d: Day) -> &'static str {
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-```typescript
-import { Canister,  query, Variant } from 'azle';
+    ```typescript
+    import { Canister,  query, Variant } from 'azle';
 
-const Day = Variant({
-    Sun;
-    Mon;
-    Tue;
-    Wed;
-    Thu;
-    Fri;
-    Sat;
-});
+    const Day = Variant({
+        Sun;
+        Mon;
+        Tue;
+        Wed;
+        Thu;
+        Fri;
+        Sat;
+    });
 
-export default Canister({
-    get_text: query([Day], Day, (d)) => {
-        switch (d) {
-            case Day.Sun:
-                return "Sunday";
-            case Day.Mon:
-                return "Monday";
-            case Day.Tue:
-                return "Tuesday";
-            case Day.Wed:
-                return "Wednesday";
-            case Day.Thu:
-                return "Thursday";
-            case Day.Fri:
-                return "Friday";
-            case Day.Sat:
-                return "Saturday";
+    export default Canister({
+        get_text: query([Day], Day, (d)) => {
+            switch (d) {
+                case Day.Sun:
+                    return "Sunday";
+                case Day.Mon:
+                    return "Monday";
+                case Day.Tue:
+                    return "Tuesday";
+                case Day.Wed:
+                    return "Wednesday";
+                case Day.Thu:
+                    return "Thursday";
+                case Day.Fri:
+                    return "Friday";
+                case Day.Sat:
+                    return "Saturday";
+        }
     }
-}
-});
+    });
 ```
 To learn more about variants in Typescript via Azle, refer to [the Azle book reference on variants](https://demergent-labs.github.io/azle/reference/candid/variant.html?highlight=variant#variant).
 

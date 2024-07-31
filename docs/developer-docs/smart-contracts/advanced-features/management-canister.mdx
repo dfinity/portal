@@ -83,13 +83,13 @@ async fn install_code(canister_id: CanisterId, wasm_module: Vec<u8>) {
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-```typescript
-createCanister: update([], CreateCanisterResult, async () => {
-  return await ic.call(managementCanister.create_canister, {
-    args: [{ settings: None, sender_canister_version: None }],
-    cycles: 50_000_000_000_000n
-  });
-})
+  ```typescript
+  createCanister: update([], CreateCanisterResult, async () => {
+    return await ic.call(managementCanister.create_canister, {
+      args: [{ settings: None, sender_canister_version: None }],
+      cycles: 50_000_000_000_000n
+    });
+  })
 ```
 
 </AdornedTab>

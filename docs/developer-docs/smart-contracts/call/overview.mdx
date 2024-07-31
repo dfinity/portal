@@ -58,22 +58,22 @@ fn increment() {
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-```typescript
-setMessage: update([text], Void, (newMessage) => {
-    message = newMessage; // This change will be persisted
-})
-```
+    ```typescript
+    setMessage: update([text], Void, (newMessage) => {
+        message = newMessage; // This change will be persisted
+    })
+    ```
 
-</AdornedTab>
+    </AdornedTab>
 
-<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
+    <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-```python
-@update
-def set_message(new_message: str) -> void:
-    global message
-    message = new_message
-```
+    ```python
+    @update
+    def set_message(new_message: str) -> void:
+        global message
+        message = new_message
+    ```
 
 </AdornedTab>
 
@@ -117,21 +117,21 @@ fn greet(name: String) -> String {
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-```typescript
-getMessage: query([], text, () => {
-    return message;
-}),
-```
+    ```typescript
+    getMessage: query([], text, () => {
+        return message;
+    }),
+    ```
 
-</AdornedTab>
+    </AdornedTab>
 
-<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
+    <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-```python
-@query
-def get_message() -> str:
-    return message
-```
+    ```python
+    @query
+    def get_message() -> str:
+        return message
+    ```
 
 </AdornedTab>
 </AdornedTabs>

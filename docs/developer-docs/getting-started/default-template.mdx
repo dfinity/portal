@@ -79,31 +79,31 @@ hello/
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```bash
-hello/
-├── README.md      # Default project documentation
-├── dfx.json       # Project configuration file
-├── node_modules   # Libraries for frontend development
-├── package-lock.json
-├── package.json
-├── src            # Source files directory
-│   ├── hello_backend
-│   │   └── package.json
-│   │   └── hello_backend.did
-│   │   └── src
-│       │   ├── index.ts
-│   ├── hello_frontend
-│       ├── assets
-|       |── index.html
-|       |── package.json
-│       └── src
-│           ├── App.js
-│           ├── index.scss
-│           ├── logo2.svg
-│           ├── main.js
-│           └── vite-env.d.ts
-|       |── tsconfig.json
-|       |── vite.config.js
-└── tsconfig.json
+  hello/
+  ├── README.md      # Default project documentation
+  ├── dfx.json       # Project configuration file
+  ├── node_modules   # Libraries for frontend development
+  ├── package-lock.json
+  ├── package.json
+  ├── src            # Source files directory
+  │   ├── hello_backend
+  │   │   └── package.json
+  │   │   └── hello_backend.did
+  │   │   └── src
+  │       │   ├── index.ts
+  │   ├── hello_frontend
+  │       ├── assets
+  |       |── index.html
+  |       |── package.json
+  │       └── src
+  │           ├── App.js
+  │           ├── index.scss
+  │           ├── logo2.svg
+  │           ├── main.js
+  │           └── vite-env.d.ts
+  |       |── tsconfig.json
+  |       |── vite.config.js
+  └── tsconfig.json
 ```
 
 
@@ -242,36 +242,36 @@ By default, the `dfx.json` file will contain automatically generated configurati
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```json
-{
-  "canisters": {
-    "hello_backend": {
-      "build": "npx azle hello_backend",
-      "candid": "src/hello_backend/hello_backend.did",
-      "gzip": true,
-      "main": "src/hello_backend/src/index.ts",
-      "type": "custom",
-      "wasm": ".azle/hello_backend/hello_backend.wasm"
+  {
+    "canisters": {
+      "hello_backend": {
+        "build": "npx azle hello_backend",
+        "candid": "src/hello_backend/hello_backend.did",
+        "gzip": true,
+        "main": "src/hello_backend/src/index.ts",
+        "type": "custom",
+        "wasm": ".azle/hello_backend/hello_backend.wasm"
+      },
+      "hello_frontend": {
+        "dependencies": [
+          "hello_backend"
+        ],
+        "source": [
+          "src/hello_frontend/dist"
+        ],
+        "type": "assets",
+        "workspace": "hello_frontend"
+      }
     },
-    "hello_frontend": {
-      "dependencies": [
-        "hello_backend"
-      ],
-      "source": [
-        "src/hello_frontend/dist"
-      ],
-      "type": "assets",
-      "workspace": "hello_frontend"
-    }
-  },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
-  "output_env_file": ".env",
-  "version": 1
-}
+    "defaults": {
+      "build": {
+        "args": "",
+        "packtool": ""
+      }
+    },
+    "output_env_file": ".env",
+    "version": 1
+  }
 ```
 
 </AdornedTab>
@@ -348,13 +348,13 @@ fn greet(name: String) -> String {
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
-import { Canister, query, text } from 'azle';
+  import { Canister, query, text } from 'azle';
 
-export default Canister({
-    greet: query([text], text, (name) => {
-        return `Hello, ${name}!`;
-    })
-})
+  export default Canister({
+      greet: query([text], text, (name) => {
+          return `Hello, ${name}!`;
+      })
+  })
 ```
 
 </AdornedTab>

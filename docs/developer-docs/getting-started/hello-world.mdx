@@ -194,13 +194,13 @@ fn greet(name: String) -> String {
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript title="src/hello_backend/src/index.ts"
-import { Canister, query, text } from 'azle';
+  import { Canister, query, text } from 'azle';
 
-export default Canister({
-    greet: query([text], text, (name) => {
-        return `Hello, ${name}!`;
-    })
-})
+  export default Canister({
+      greet: query([text], text, (name) => {
+          return `Hello, ${name}!`;
+      })
+  })
 ```
 
 </AdornedTab>
@@ -272,15 +272,15 @@ Output:
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-```bash
-dfx canister call hello_backend greet world
-```
+  ```bash
+  dfx canister call hello_backend greet world
+  ```
 
-Output:
+  Output:
 
-```
-("Hello, world!")
-```
+  ```
+  ("Hello, world!")
+  ```
 
 </AdornedTab>
 
