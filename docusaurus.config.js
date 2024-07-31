@@ -294,7 +294,7 @@ const marketingNav = {
             {
               name: "AI on ICP",
               href: "/ai",
-              description: "Run AI models fully on chain",
+              description: "Run AI models as real smart contracts",
             },
             /*
             {
@@ -334,7 +334,7 @@ const marketingNav = {
             },*/
           ],
           featured: {
-            title: "Run AI models on blockchain",
+            title: "Run AI models as real smart contracts",
             href: "/ai",
             image: "/img/nav/featured-ai.webp",
           },

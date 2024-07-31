@@ -665,6 +665,7 @@ const sidebars = {
           type: "doc",
           id: "developer-docs/multi-chain/overview",
         },
+        "developer-docs/multi-chain/supported-chains",
         {
           type: "category",
           label: "Bitcoin",
@@ -674,14 +675,20 @@ const sidebars = {
               type: "doc",
               id: "developer-docs/multi-chain/bitcoin/overview",
             },
-            "developer-docs/multi-chain/bitcoin/using-btc/btc-dev-workflow",
             "developer-docs/multi-chain/bitcoin/using-btc/btc-comparison",
+            "developer-docs/multi-chain/bitcoin/using-btc/btc-dev-workflow",
+            {
+              type: "category",
+              label: "Interacting with Bitcoin",
+              items: [
             "developer-docs/multi-chain/bitcoin/using-btc/generate-addresses",
             "developer-docs/multi-chain/bitcoin/using-btc/create-transactions",
             "developer-docs/multi-chain/bitcoin/using-btc/sign-transactions",
             "developer-docs/multi-chain/bitcoin/using-btc/submit-transactions",
             "developer-docs/multi-chain/bitcoin/using-btc/read-state",
             "developer-docs/multi-chain/bitcoin/using-btc/local-development",
+                ],
+              },
           ],
         },
         {
@@ -693,11 +700,17 @@ const sidebars = {
               type: "doc",
               id: "developer-docs/multi-chain/ethereum/overview",
             },
-            "developer-docs/multi-chain/ethereum/using-eth/eth-dev-workflow",
             "developer-docs/multi-chain/ethereum/using-eth/eth-comparison",
+            "developer-docs/multi-chain/ethereum/using-eth/eth-dev-workflow",
+            {
+              type: "category",
+              label: "Interacting with Ethereum",
+              items: [
             "developer-docs/multi-chain/ethereum/using-eth/generating-addresses",
             "developer-docs/multi-chain/ethereum/using-eth/signing-transactions",
             "developer-docs/multi-chain/ethereum/using-eth/submit-transactions",
+              ],
+            },
             {
               type: "category",
               label: "EVM RPC canister",
@@ -763,7 +776,6 @@ const sidebars = {
             },
           ],
         },
-        "developer-docs/multi-chain/supported-chains",
       ],
     },
     {
@@ -1353,7 +1365,7 @@ const sidebars = {
             "references/bitcoin-how-it-works",
             "references/ckbtc-reference",
             "references/https-outcalls-how-it-works",
-            "references/t-ecdsa-how-it-works",
+            "references/t-sigs-how-it-works",
             "references/vetkeys-overview",
             "references/supported-signatures",
           ],
