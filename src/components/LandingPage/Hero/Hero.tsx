@@ -56,7 +56,7 @@ const Hero: React.FC<{
                 compute that’s simpler, immune to cyber attack, unstoppable, and
                 controllable by DAOs. Create web3 social networks and media,
                 socialfi, games, multi-chain dapps, AI, or an enterprise app.
-                3rd gen. blockchain has no limits.
+                The internet is evolving.
               </p>
               <div className="flex flex-col md:flex-row gap-8 mt-8 md:mt-6 md:items-center">
                 <Link
@@ -100,7 +100,7 @@ const Hero: React.FC<{
                     <figure className="m-0">
                       <span className="text-3xl font-bold">1000+</span>
                       <figcaption className="tw-paragraph text-current opacity-50 flex items-center gap-1">
-                        ICP R&D person-years
+                        ICP R&D effort/years
                       </figcaption>
                     </figure>
                   </div>

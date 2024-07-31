@@ -148,7 +148,7 @@ export const CardsSection = () => {
         <div className="flex flex-col md:flex-row items-stretch">
           <div className="basis-1/2 p-1/10 md:py-1/12 md:order-2">
             <h4 className="tw-heading-4 md:tw-heading-60">
-              Run your AI as secure blockchain code
+              Make AI immune to cyber attacks
             </h4>
             <p className="tw-paragraph md:tw-lead-sm mt-4 md:mt-6 mb-0">
               Decentralize Al to make it tamperproof and unstoppable, and
@@ -191,7 +191,7 @@ export const CardsSection = () => {
             />
 
             <h4 className="tw-heading-4 md:tw-heading-60">
-              Building crypto ecosystems worldwide
+              Helping the global Web3 ecosystem grow
             </h4>
             <Link
               className="button-outline-white-30 link-with-icon mt-6 flex gap-2 w-max max-w-full"
