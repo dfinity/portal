@@ -84,21 +84,13 @@ async fn install_code(canister_id: CanisterId, wasm_module: Vec<u8>) {
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
-async function createCanister(): Promise<any> {
-    if (process.env.AZLE_TEST_FETCH === 'true') {
-        const response = await fetch(`icp://aaaaa-aa/create_canister`, {
-            body: serialize({
-                args: [{ settings: [], sender_canister_version: [] }],
-                cycles: 50_000_000_000_000n
-            })
-        });
-        return await response.json();
-    } else {
-        return await ic.call(managementCanister.create_canister, {
-            args: [{ settings: None, sender_canister_version: None }],
-            cycles: 50_000_000_000_000n
-        });
-    }
+@update([], CreateCanisterResult)
+async executeCreateCanister(): Promise<CreateCanisterResult> {
+    const createCanisterResult = await createCanister();
+
+    state.createdCanisterId = createCanisterResult.canister_id;
+
+    return createCanisterResult;
 }
 ```
 

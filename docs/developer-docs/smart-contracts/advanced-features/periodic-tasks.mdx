@@ -192,39 +192,48 @@ fn post_upgrade() {
 
 ```typescript
 import {
-    blob,
-    bool,
-    Canister,
-    ic,
-    int8,
-    nat64,
+    call,
+    clearTimer,
+    IDL,
     query,
-    Record,
-    text,
-    update,
-    Void
-} from 'azle/experimental';
-import { managementCanister } from 'azle/experimental/canisters/management';
+    setTimer,
+    setTimerInterval,
+    update
+} from 'azle';
 
-const StatusReport = Record({
-    single: bool,
-    inline: int8,
-    capture: text,
-    repeat: int8,
-    singleCrossCanister: blob,
-    repeatCrossCanister: blob
+const StatusReport = IDL.Record({
+    single: IDL.Bool,
+    inline: IDL.Int8,
+    capture: IDL.Text,
+    repeat: IDL.Int8,
+    singleCrossCanister: IDL.Vec(IDL.Nat8),
+    repeatCrossCanister: IDL.Vec(IDL.Nat8)
 });
-type StatusReport = typeof StatusReport.tsType;
+type StatusReport = {
+    single: boolean;
+    inline: number;
+    capture: string;
+    repeat: number;
+    singleCrossCanister: Uint8Array;
+    repeatCrossCanister: Uint8Array;
+};
 
-const TimerIds = Record({
-    single: nat64,
-    inline: nat64,
-    capture: nat64,
-    repeat: nat64,
-    singleCrossCanister: nat64,
-    repeatCrossCanister: nat64
+const TimerIds = IDL.Record({
+    single: IDL.Nat64,
+    inline: IDL.Nat64,
+    capture: IDL.Nat64,
+    repeat: IDL.Nat64,
+    singleCrossCanister: IDL.Nat64,
+    repeatCrossCanister: IDL.Nat64
 });
-type TimerIds = typeof TimerIds.tsType;
+type TimerIds = {
+    single: bigint;
+    inline: bigint;
+    capture: bigint;
+    repeat: bigint;
+    singleCrossCanister: bigint;
+    repeatCrossCanister: bigint;
+};
 
 let statusReport: StatusReport = {
     single: false,
@@ -235,37 +244,40 @@ let statusReport: StatusReport = {
     repeatCrossCanister: Uint8Array.from([])
 };
 
-export default Canister({
-    clearTimer: update([nat64], Void, (timerId) => {
-        ic.clearTimer(timerId);
+export default class {
+    @update([IDL.Nat64])
+    clearTimer(timerId: bigint): void {
+        clearTimer(timerId);
         console.info(`timer ${timerId} cancelled`);
-    }),
-    setTimers: update([nat64, nat64], TimerIds, (delay, interval) => {
+    }
+
+    @update([IDL.Nat64, IDL.Nat64], TimerIds)
+    setTimers(delay: bigint, interval: bigint): TimerIds {
         const capturedValue = '🚩';
 
-        const singleId = ic.setTimer(delay, oneTimeTimerCallback);
+        const singleId = setTimer(delay, oneTimeTimerCallback);
 
-        const inlineId = ic.setTimer(delay, () => {
+        const inlineId = setTimer(delay, () => {
             statusReport.inline = 1;
             console.info('Inline timer called');
         });
 
-        const captureId = ic.setTimer(delay, () => {
+        const captureId = setTimer(delay, () => {
             statusReport.capture = capturedValue;
             console.info(`Timer captured value ${capturedValue}`);
         });
 
-        const repeatId = ic.setTimerInterval(interval, () => {
+        const repeatId = setTimerInterval(interval, () => {
             statusReport.repeat++;
             console.info(`Repeating timer. Call ${statusReport.repeat}`);
         });
 
-        const singleCrossCanisterId = ic.setTimer(
+        const singleCrossCanisterId = setTimer(
             delay,
             singleCrossCanisterTimerCallback
         );
 
-        const repeatCrossCanisterId = ic.setTimerInterval(
+        const repeatCrossCanisterId = setTimerInterval(
             interval,
             repeatCrossCanisterTimerCallback
         );
@@ -278,11 +290,13 @@ export default Canister({
             singleCrossCanister: singleCrossCanisterId,
             repeatCrossCanister: repeatCrossCanisterId
         };
-    }),
-    statusReport: query([], StatusReport, () => {
+    }
+
+    @query([], StatusReport)
+    statusReport(): StatusReport {
         return statusReport;
-    })
-});
+    }
+}
 
 function oneTimeTimerCallback(): void {
     statusReport.single = true;
@@ -304,15 +318,10 @@ async function repeatCrossCanisterTimerCallback(): Promise<void> {
     ]);
 }
 
-async function getRandomness(): Promise<blob> {
-    if (process.env.AZLE_TEST_FETCH === 'true') {
-        const response = await fetch(`icp://aaaaa-aa/raw_rand`);
-        const responseJson = await response.json();
-
-        return responseJson;
-    } else {
-        return await ic.call(managementCanister.raw_rand);
-    }
+async function getRandomness(): Promise<Uint8Array> {
+    return await call('aaaaa-aa', 'raw_rand', {
+        returnIdlType: IDL.Vec(IDL.Nat8)
+    });
 }
 ```
 
