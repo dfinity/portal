@@ -95,78 +95,31 @@ Check out the [Rust documentation](https://docs.rs/ic-cdk/latest/ic_cdk/attr.que
 </TabItem>
 <TabItem value="typescript" label="TypeScript" default>
 
-    ```typescript
-    import {
-        blob,
-        bool,
-        Canister,
-        Func,
-        nat16,
-        None,
-        Opt,
-        query,
-        Record,
-        text,
-        Tuple,
-        Variant,
-        Vec
-    } from 'azle';
+```typescript
+import express from 'express';
 
-    const Token = Record({
-        // add whatever fields you'd like
-        arbitrary_data: text
+const app = express();
+
+app.use(express.json());
+
+app.post('/https-outcall', async (_req, res) => {
+    const response = await fetch(`https://httpbin.org/headers`, {
+        headers: {
+            'X-Azle-Request-Key-0': 'X-Azle-Request-Value-0',
+            'X-Azle-Request-Key-1': 'X-Azle-Request-Value-1',
+            'X-Azle-Request-Key-2': 'X-Azle-Request-Value-2'
+        }
     });
+    const responseJson = await response.json();
 
-    const StreamingCallbackHttpResponse = Record({
-        body: blob,
-        token: Opt(Token)
-    });
+    res.json(responseJson);
+});
 
-    export const Callback = Func([text], StreamingCallbackHttpResponse, 'query');
-
-    const CallbackStrategy = Record({
-        callback: Callback,
-        token: Token
-    });
-
-    const StreamingStrategy = Variant({
-        Callback: CallbackStrategy
-    });
-
-    type HeaderField = [text, text];
-    const HeaderField = Tuple(text, text);
-
-    const HttpResponse = Record({
-        status_code: nat16,
-        headers: Vec(HeaderField),
-        body: blob,
-        streaming_strategy: Opt(StreamingStrategy),
-        upgrade: Opt(bool)
-    });
-
-    const HttpRequest = Record({
-        method: text,
-        url: text,
-        headers: Vec(HeaderField),
-        body: blob,
-        certificate_version: Opt(nat16)
-    });
-
-    export default Canister({
-        http_request: query([HttpRequest], HttpResponse, (req) => {
-            return {
-                status_code: 200,
-                headers: [],
-                body: Buffer.from('hello'),
-                streaming_strategy: None,
-                upgrade: None
-            };
-        })
-    });
+app.listen();
 
 ```
 
-Check out the [Azle documentation](https://demergent-labs.github.io/azle/http.html) for more info on HTTP requests.
+Check out the [Azle documentation](https://demergent-labs.github.io/azle/fetch.html) for more info on HTTP requests.
 
 </TabItem>
 <TabItem value="python" label="Python" default>
@@ -292,75 +245,102 @@ Check out the [Rust documentation](https://docs.rs/ic-cdk/latest/ic_cdk/attr.upd
 </TabItem>
 <TabItem value="typescript" label="TypeScript" default>
 
-    ```typescript
+```typescript
     import {
-        blob,
-        bool,
-        Canister,
-        Func,
-        nat16,
-        None,
-        Opt,
-        Record,
-        text,
-        Tuple,
-        update,
-        Variant,
-        Vec
-    } from 'azle';
+    Canister,
+    ic,
+    Manual,
+    None,
+    Principal,
+    query,
+    Some,
+    text,
+    update
+} from 'azle/experimental';
+import {
+    HttpResponse,
+    HttpTransformArgs,
+    managementCanister
+} from 'azle/experimental/canisters/management';
 
-    const Token = Record({
-        // add whatever fields you'd like
-        arbitrary_data: text
-    });
+export default Canister({
+    xkcd: update([], text, async () => {
+        if (process.env.AZLE_TEST_FETCH) {
+            ic.setOutgoingHttpOptions({
+                maxResponseBytes: 2_000n,
+                cycles: 50_000_000n,
+                transformMethodName: 'xkcdTransform'
+            });
 
-    const StreamingCallbackHttpResponse = Record({
-        body: blob,
-        token: Opt(Token)
-    });
+            const response = await fetch(`https://xkcd.com/642/info.0.json`);
+            const responseText = await response.text();
 
-    export const Callback = Func([text], StreamingCallbackHttpResponse, 'query');
+            return responseText;
+        } else {
+            const httpResponse = await ic.call(
+                managementCanister.http_request,
+                {
+                    args: [
+                        {
+                            url: `https://xkcd.com/642/info.0.json`,
+                            max_response_bytes: Some(2_000n),
+                            method: {
+                                get: null
+                            },
+                            headers: [],
+                            body: None,
+                            transform: Some({
+                                function: [ic.id(), 'xkcdTransform'] as [
+                                    Principal,
+                                    string
+                                ],
+                                context: Uint8Array.from([])
+                            })
+                        }
+                    ],
+                    cycles: 50_000_000n
+                }
+            );
 
-    const CallbackStrategy = Record({
-        callback: Callback,
-        token: Token
-    });
+            return Buffer.from(httpResponse.body).toString();
+        }
+    }),
+    xkcdRaw: update(
+        [],
+        Manual(HttpResponse),
+        async () => {
+            const httpResponse = await ic.callRaw(
+                Principal.fromText('aaaaa-aa'),
+                'http_request',
+                ic.candidEncode(`
+                (
+                    record {
+                        url = "https://xkcd.com/642/info.0.json";
+                        max_response_bytes = 2_000 : nat64;
+                        method = variant { get };
+                        headers = vec {};
+                        body = null;
+                        transform = record { function = func "${ic
+                            .id()
+                            .toString()}".xkcdTransform; context = vec {} };
+                    }
+                )
+            `),
+                50_000_000n
+            );
 
-    const StreamingStrategy = Variant({
-        Callback: CallbackStrategy
-    });
-
-    type HeaderField = [text, text];
-    const HeaderField = Tuple(text, text);
-
-    const HttpResponse = Record({
-        status_code: nat16,
-        headers: Vec(HeaderField),
-        body: blob,
-        streaming_strategy: Opt(StreamingStrategy),
-        upgrade: Opt(bool)
-    });
-
-    const HttpRequest = Record({
-        method: text,
-        url: text,
-        headers: Vec(HeaderField),
-        body: blob,
-        certificate_version: Opt(nat16)
-    });
-
-    export default Canister({
-        http_request_update: update([HttpRequest], HttpResponse, (req) => {
-            return {
-                status_code: 200,
-                headers: [],
-                body: Buffer.from('hello'),
-                streaming_strategy: None,
-                upgrade: None
-            };
-        })
-    });
-    ```
+            ic.reply({ raw: httpResponse });
+        },
+        { manual: true }
+    ),
+    xkcdTransform: query([HttpTransformArgs], HttpResponse, (args) => {
+        return {
+            ...args.response,
+            headers: []
+        };
+    })
+});
+```
 
 Check out the [Azle documentation](https://demergent-labs.github.io/azle/http.html) for more info on HTTP requests.
 

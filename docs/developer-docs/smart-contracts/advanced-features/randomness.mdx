@@ -58,41 +58,56 @@ let (randomBytes,): (Vec<u8>,) = ic_cdk::api::call(Principal.management_canister
 ```
 </TabItem>
 
-<TabItem value="typescript" label="TypeScript">
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-  ```typescript
-  import { blob, Canister, ic, update } from 'azle';
-  import { managementCanister } from 'azle/canisters/management';
+```typescript
+import {
+    bool,
+    Canister,
+    float64,
+    postUpgrade,
+    query,
+    update
+} from 'azle/experimental';
 
-  export default Canister({
-      randomBytes: update([], blob, async () => {
-          return await ic.call(managementCanister.raw_rand);
-      })
-  });
-  ```
-  </TabItem>
+let redeployed = false;
 
-  <TabItem value="python" label="python">
+export default Canister({
+    postUpgrade: postUpgrade([], () => {
+        redeployed = true;
+    }),
+    getRedeployed: query([], bool, () => {
+        return redeployed;
+    }),
+    randomNumber: update([], float64, () => {
+        return Math.random();
+    })
+});
+```
 
-  ```python
-  from kybra import Async, blob, CallResult, match, update, Variant
-  from kybra.canisters.management import management_canister
+</AdornedTab>
+
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
+
+```python
+from kybra import Async, blob, CallResult, match, update, Variant
+from kybra.canisters.management import management_canister
 
 
-  class RandomBytesResult(Variant, total=False):
-      Ok: blob
-      Err: str
+class RandomBytesResult(Variant, total=False):
+    Ok: blob
+    Err: str
 
 
-  @update
-  def random_bytes() -> Async[RandomBytesResult]:
-      call_result: CallResult[blob] = yield management_canister.raw_rand()
+@update
+def random_bytes() -> Async[RandomBytesResult]:
+    call_result: CallResult[blob] = yield management_canister.raw_rand()
 
-      return match(
-          call_result, {"Ok": lambda ok: {"Ok": ok}, "Err": lambda err: {"Err": err}}
-      )
-  ```
+    return match(
+        call_result, {"Ok": lambda ok: {"Ok": ok}, "Err": lambda err: {"Err": err}}
+    )
+```
 
-</TabItem>
+</AdornedTab>
 </AdornedTabs>
 
