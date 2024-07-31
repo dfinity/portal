@@ -148,7 +148,7 @@ export const CardsSection = () => {
         <div className="flex flex-col md:flex-row items-stretch">
           <div className="basis-1/2 p-1/10 md:py-1/12 md:order-2">
             <h4 className="tw-heading-4 md:tw-heading-60">
-              Run your AI as a real smart contract
+              Run your AI as secure blockchain code
             </h4>
             <p className="tw-paragraph md:tw-lead-sm mt-4 md:mt-6 mb-0">
               Decentralize Al to make it tamperproof and unstoppable, and

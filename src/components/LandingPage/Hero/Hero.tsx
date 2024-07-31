@@ -5,10 +5,7 @@ import React, { useRef } from "react";
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import DarkHeroStyles from "../../Common/DarkHeroStyles";
 import HomeAnimation from "./HomeAnimation";
-import {
-  EthEquivalentTxRate,
-  TotalBlocks,
-} from "./Stats";
+import { EthEquivalentTxRate, TotalBlocks } from "./Stats";
 
 import { QueryClient, QueryClientProvider } from "react-query";
 import Link from "@docusaurus/Link";
@@ -27,9 +24,11 @@ const Hero: React.FC<{
   return (
     <section className="bg-[#1B025A]" id="home" ref={darkRef}>
       {isDark && <DarkHeroStyles bgColor="transparent" />}
-      <div className="
+      <div
+        className="
         pt-[152px] pb-40 md:pt-52 md:pb-64 md:grid relative 
-        mt-[-72px] md:mt-[-111px] text-white -mb-20">
+        mt-[-72px] md:mt-[-111px] text-white -mb-20"
+      >
         <HomeAnimation />
         <div className="container-8">
           <div className="relative">
@@ -47,15 +46,23 @@ const Hero: React.FC<{
                 animationPlayState: fontLoaded ? "running" : "paused",
               }}
             >
-              <span className="block sm:text-left">COMPUTE ON</span>
-              <span className="block md:ml-48">BLOCKCHAIN</span>
+              <span className="block sm:text-left">COMPUTE</span>
+              <span className="block md:ml-48">REINVENTED</span>
             </h1>
             <div className="md:ml-48">
               <p className="tw-paragraph md:tw-lead-sm mt-6 md:w-7/10">
-                The Internet Computer reinvents compute on blockchain. Everything is now on-chain. HTTP. Data. Compute. AI. Your Web3 social network. Your orderbook exchange. Full stack decentralization has arrived on a sovereign network that extends the internet.
+                The Internet Computer enables you to build anything without
+                traditional IT and Big Tech. It hosts decentralized serverless
+                compute that’s simpler, immune to cyber attack, unstoppable, and
+                controllable by DAOs. Create web3 social networks and media,
+                socialfi, games, multi-chain dapps, AI, or an enterprise app.
+                3rd gen. blockchain has no limits.
               </p>
               <div className="flex flex-col md:flex-row gap-8 mt-8 md:mt-6 md:items-center">
-                <Link className={"button-white w-max"} href="/docs/current/home">
+                <Link
+                  className={"button-white w-max"}
+                  href="/docs/current/home"
+                >
                   Start hacking
                 </Link>
                 <Link
@@ -66,16 +73,16 @@ const Hero: React.FC<{
                 </Link>
               </div>
             </div>
-            <aside 
+            <aside
               aria-label="Various stats"
               className="block md:absolute mt-8 md:mt-0 bottom-0 -left-[min(10vw,20rem)] backdrop-blur-lg"
             >
-                <AnimateSpawn
-                    className="
+              <AnimateSpawn
+                className="
                       bg-black/20 p-2 px-0 rounded-t-xl relative overflow-hidden min-w-[15rem] 
                       hover:bg-white trabsition-all duration-100"
-                    variants={transitions.container}
-                  >
+                variants={transitions.container}
+              >
                 <Link
                   href="https://dfinity.org/"
                   className="
@@ -87,7 +94,7 @@ const Hero: React.FC<{
                   </span>
                   <div
                     className="rounded-xl text-current py-3 px-6"
-                    style={{ fontSize: "24px", fontWeight: 500}}
+                    style={{ fontSize: "24px", fontWeight: 500 }}
                     variants={transitions.fadeIn}
                   >
                     <figure className="m-0">
@@ -99,11 +106,12 @@ const Hero: React.FC<{
                   </div>
                 </Link>
 
-                  <hr className="absolute -bottom-8 left-6 right-6 h-px my-8 border-0 opacity-20" />
-                </AnimateSpawn>
-              <Link 
-                href="https://dashboard.internetcomputer.org/" 
-                className="hover:no-underline text-white hover:text-black duration-100">
+                <hr className="absolute -bottom-8 left-6 right-6 h-px my-8 border-0 opacity-20" />
+              </AnimateSpawn>
+              <Link
+                href="https://dashboard.internetcomputer.org/"
+                className="hover:no-underline text-white hover:text-black duration-100"
+              >
                 <AnimateSpawn
                   className="
                     bg-black/20 p-2 px-0 rounded-b-xl relative overflow-hidden min-w-[15rem] 
