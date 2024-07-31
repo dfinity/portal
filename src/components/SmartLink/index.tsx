@@ -6,8 +6,8 @@ import DocsIcon from "@site/static/img/svgIcons/docs.svg";
 import LinkArrowUpRight from '../Common/Icons/LinkArrowUpRight';
 import LinkArrowRight from '../Common/Icons/LinkArrowRight';
 
-const LinkIcon = (to: 'docs' | 'external' | 'internal') => {
-  switch (to) {
+const LinkIcon = (type: 'docs' | 'external' | 'internal') => {
+  switch (type) {
     case 'docs':
       return <DocsIcon />;
     case 'external':
@@ -31,13 +31,14 @@ const SmartLink: React.FC<SmartLinkProps & React.HTMLProps<HTMLAnchorElement>> =
   children, 
   ...props 
 }) => {
-
   const [isExternal, setIsExternal] = useState(false);
+
   useEffect(() => {
     setIsExternal(
-      target === '_blank' || (!href.includes(window.location.hostname) && (!href.includes('internetcomputer.org'))  && href.startsWith('http'))
+      target === '_blank' || 
+      (!href.includes(window.location.hostname) && !href.includes('internetcomputer.org') && href.startsWith('http'))
     );
-  }, []);
+  }, [href, target]);
 
   const isDocs = href.includes('developer-docs') || href.includes('/docs');
   const iconBefore = isDocs || !isExternal;
@@ -52,9 +53,9 @@ const SmartLink: React.FC<SmartLinkProps & React.HTMLProps<HTMLAnchorElement>> =
       className={classNames}
     >
       <span className="flex items-center gap-3">
-      {!noIcon && iconBefore && LinkIcon(isDocs ? 'docs' : isExternal ? 'external' : 'internal')}
-      {children}
-      {!noIcon && !iconBefore  && LinkIcon(isDocs ? 'docs' : isExternal ? 'external' : 'internal')}
+        {!noIcon && iconBefore && LinkIcon(isDocs ? 'docs' : isExternal ? 'external' : 'internal')}
+        {children}
+        {!noIcon && !iconBefore && LinkIcon(isDocs ? 'docs' : isExternal ? 'external' : 'internal')}
       </span>
     </Link>
   );
