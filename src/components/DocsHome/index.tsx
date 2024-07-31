@@ -265,6 +265,124 @@ const Tile = ({ tile }: { tile: TileDescriptor }) => {
   );
 };
 
+
+const chainfusionTiles: TileDescriptor[] = [
+  {
+    label: "Chain Fusion",
+    description:
+      "Develop cross-chain applications using ICP's direct integrations with other networks",
+    icon: null,
+    action: (
+      <Link
+        className="button button-primary rounded-2xl w-50"
+        href="/docs/current/developer-docs/multi-chain/overview"
+      >
+        Learn more
+      </Link>
+    ),
+  },
+  {
+    label: "Supported chains",
+    description:
+      "Learn which chains ICP integrates with and how",
+    icon: (
+      <img
+        src="/img/dfinity_logo.svg"
+        alt="Supported chains"
+        className="w-10 h-10"
+        loading="lazy"
+      />
+    ),
+    action: (
+      <Link
+        href="/docs/current/developer-docs/multi-chain/supported-chains"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
+        title="View the docs"
+      >
+        <span className={"md:hidden"}>View the docs</span>
+        <LinkArrowRight />
+      </Link>
+    ),
+  },
+  {
+    label: "Bitcoin",
+    description: (
+      <span>
+        ICP has a direct integration with the Bitcoin network using a Bitcoin adapter and threshold signatures such as t-ECDSA and t-Schnorr.
+        Learn how your canister can sign and submit transactions for BRC-20, Ordinals, Runes, and more
+      </span>
+    ),
+    icon: (
+      <img
+        src="/img/chainfusion/ck_Tokens.png"
+        alt="Bitcoin integration"
+        className="w-10 h-10"
+        loading="lazy"
+      />
+    ),
+    action: (
+      <Link
+        href="/docs/current/developer-docs/multi-chain/bitcoin/overview"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
+        title="Learn more about the Bitcoin integration"
+      >
+        <span className={"md:hidden"}>Learn more about the Bitcoin integration</span>
+        <LinkArrowRight />
+      </Link>
+    ),
+  },
+  {
+    label: "Ethereum",
+    description:
+      "ICP canisters can sign and submit transactions directly to Ethereum and EVM chains through the EVM RPC canister. Learn more about how you can build Ethereum applications on ICP",
+    icon: (
+      <img
+        src="/img/chainfusion/ck_Tokens-3.png"
+        alt="React docs"
+        className="w-10 h-10"
+        loading="lazy"
+      />
+    ),
+    action: (
+      <Link
+        href="/docs/current/developer-docs/multi-chain/ethereum/overview"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
+        title="Learn more about the Ethereum integration"
+      >
+        <span className={"md:hidden"}>Learn more about the Ethereum integration</span>
+        <LinkArrowRight />
+      </Link>
+    ),
+  },
+  {
+    label: "Chain-key tokens",
+    description: (
+      <span>
+        Chain-key tokens are digital twins of Bitcoin, Ethereum, and ERC-20 tokens that are secured on ICP with chain-key cryptography
+      </span>
+    ),
+    icon: (
+      <img
+        src="/img/chainfusion/ck_Tokens-2.png"
+        alt="Bitcoin integration"
+        className="w-10 h-10"
+        loading="lazy"
+      />
+    ),
+    action: (
+      <Link
+        href="/docs/current/developer-docs/multi-chain/chain-key-tokens/overview"
+        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
+        title="Learn more about chain-key tokens"
+      >
+        <span className={"md:hidden"}>Learn more about chain-key tokens</span>
+        <LinkArrowRight />
+      </Link>
+    ),
+  },
+
+];
+
 const Education = () => {
   const CARDS: Array<CarouselCard> = [
     {
@@ -404,6 +522,25 @@ const DocsHomePage: FC = () => {
           auto-cols-fr
           grid-cols-1
           sm:grid-cols-2 
+          md:grid-cols-4
+          lg:grid-cols-5
+          px-0
+          gap-3
+        "
+        >
+          {chainfusionTiles.map((tile, index) => (
+            <Tile tile={tile} key={index} />
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <div
+          className="
+          grid
+          auto-cols-fr
+          grid-cols-1
+          sm:grid-cols-2
           md:grid-cols-4
           lg:grid-cols-5
           px-0
