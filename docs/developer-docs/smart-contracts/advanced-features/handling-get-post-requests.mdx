@@ -93,33 +93,94 @@ fn respond_to(req: Request<()>) -> http::Result<Response<()>> {
 Check out the [Rust documentation](https://docs.rs/ic-cdk/latest/ic_cdk/attr.query.html) for more info on query calls.
 
 </TabItem>
-<TabItem value="typescript" label="TypeScript" default>
+<TabItem value="typescript" label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
-import express from 'express';
+import {
+    call,
+    candidEncode,
+    id,
+    IDL,
+    Principal,
+    query,
+    reply,
+    update
+} from 'azle';
+import {
+    HttpRequestArgs,
+    HttpResponse,
+    HttpTransformArgs
+} from 'azle/canisters/management';
 
-const app = express();
+export default class {
+    @update([], IDL.Text)
+    async xkcd(): Promise<string> {
+        const httpResponse = await call('aaaaa-aa', 'http_request', {
+            paramIdlTypes: [HttpRequestArgs],
+            returnIdlType: HttpResponse,
+            args: [
+                {
+                    url: `https://xkcd.com/642/info.0.json`,
+                    max_response_bytes: [2_000n],
+                    method: {
+                        get: null
+                    },
+                    headers: [],
+                    body: [],
+                    transform: [
+                        {
+                            function: [id(), 'xkcdTransform'] as [
+                                Principal,
+                                string
+                            ],
+                            context: Uint8Array.from([])
+                        }
+                    ]
+                }
+            ],
+            payment: 50_000_000n
+        });
 
-app.use(express.json());
+        return Buffer.from(httpResponse.body).toString();
+    }
 
-app.post('/https-outcall', async (_req, res) => {
-    const response = await fetch(`https://httpbin.org/headers`, {
-        headers: {
-            'X-Azle-Request-Key-0': 'X-Azle-Request-Value-0',
-            'X-Azle-Request-Key-1': 'X-Azle-Request-Value-1',
-            'X-Azle-Request-Key-2': 'X-Azle-Request-Value-2'
-        }
-    });
-    const responseJson = await response.json();
+    @update([], HttpResponse, { manual: true })
+    async xkcdRaw(): Promise<void> {
+        const httpResponse = await call(
+            Principal.fromText('aaaaa-aa'),
+            'http_request',
+            {
+                raw: candidEncode(`
+                    (
+                        record {
+                            url = "https://xkcd.com/642/info.0.json";
+                            max_response_bytes = 2_000 : nat64;
+                            method = variant { get };
+                            headers = vec {};
+                            body = null;
+                            transform = record { function = func "${id().toString()}".xkcdTransform; context = vec {} };
+                        }
+                    )
+                `),
+                payment: 50_000_000n
+            }
+        );
 
-    res.json(responseJson);
-});
+        reply({ raw: httpResponse });
+    }
 
-app.listen();
+    @query([HttpTransformArgs], HttpResponse)
+    xkcdTransform(args: HttpTransformArgs): HttpResponse {
+        return {
+            ...args.response,
+            headers: []
+        };
+    }
+}
 
 ```
 
-Check out the [Azle documentation](https://demergent-labs.github.io/azle/fetch.html) for more info on HTTP requests.
+Check out the [Azle documentation](https://github.com/demergent-labs/azle/tree/main/tests/end_to_end/candid_rpc/class_syntax/outgoing_http_requests) for more info on HTTP requests.
 
 </TabItem>
 <TabItem value="python" label="Python" default>
@@ -243,106 +304,93 @@ fn respond_to(req: Request<()>) -> http::Result<Response<()>> {
 Check out the [Rust documentation](https://docs.rs/ic-cdk/latest/ic_cdk/attr.update.html) for more info on update calls.
 
 </TabItem>
-<TabItem value="typescript" label="TypeScript" default>
+<TabItem value="typescript" label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
-    import {
-    Canister,
-    ic,
-    Manual,
-    None,
+import {
+    call,
+    candidEncode,
+    id,
+    IDL,
     Principal,
     query,
-    Some,
-    text,
+    reply,
     update
-} from 'azle/experimental';
+} from 'azle';
 import {
+    HttpRequestArgs,
     HttpResponse,
-    HttpTransformArgs,
-    managementCanister
-} from 'azle/experimental/canisters/management';
+    HttpTransformArgs
+} from 'azle/canisters/management';
 
-export default Canister({
-    xkcd: update([], text, async () => {
-        if (process.env.AZLE_TEST_FETCH) {
-            ic.setOutgoingHttpOptions({
-                maxResponseBytes: 2_000n,
-                cycles: 50_000_000n,
-                transformMethodName: 'xkcdTransform'
-            });
-
-            const response = await fetch(`https://xkcd.com/642/info.0.json`);
-            const responseText = await response.text();
-
-            return responseText;
-        } else {
-            const httpResponse = await ic.call(
-                managementCanister.http_request,
+export default class {
+    @update([], IDL.Text)
+    async xkcd(): Promise<string> {
+        const httpResponse = await call('aaaaa-aa', 'http_request', {
+            paramIdlTypes: [HttpRequestArgs],
+            returnIdlType: HttpResponse,
+            args: [
                 {
-                    args: [
+                    url: `https://xkcd.com/642/info.0.json`,
+                    max_response_bytes: [2_000n],
+                    method: {
+                        get: null
+                    },
+                    headers: [],
+                    body: [],
+                    transform: [
                         {
-                            url: `https://xkcd.com/642/info.0.json`,
-                            max_response_bytes: Some(2_000n),
-                            method: {
-                                get: null
-                            },
-                            headers: [],
-                            body: None,
-                            transform: Some({
-                                function: [ic.id(), 'xkcdTransform'] as [
-                                    Principal,
-                                    string
-                                ],
-                                context: Uint8Array.from([])
-                            })
+                            function: [id(), 'xkcdTransform'] as [
+                                Principal,
+                                string
+                            ],
+                            context: Uint8Array.from([])
                         }
-                    ],
-                    cycles: 50_000_000n
+                    ]
                 }
-            );
+            ],
+            payment: 50_000_000n
+        });
 
-            return Buffer.from(httpResponse.body).toString();
-        }
-    }),
-    xkcdRaw: update(
-        [],
-        Manual(HttpResponse),
-        async () => {
-            const httpResponse = await ic.callRaw(
-                Principal.fromText('aaaaa-aa'),
-                'http_request',
-                ic.candidEncode(`
-                (
-                    record {
-                        url = "https://xkcd.com/642/info.0.json";
-                        max_response_bytes = 2_000 : nat64;
-                        method = variant { get };
-                        headers = vec {};
-                        body = null;
-                        transform = record { function = func "${ic
-                            .id()
-                            .toString()}".xkcdTransform; context = vec {} };
-                    }
-                )
-            `),
-                50_000_000n
-            );
+        return Buffer.from(httpResponse.body).toString();
+    }
 
-            ic.reply({ raw: httpResponse });
-        },
-        { manual: true }
-    ),
-    xkcdTransform: query([HttpTransformArgs], HttpResponse, (args) => {
+    @update([], HttpResponse, { manual: true })
+    async xkcdRaw(): Promise<void> {
+        const httpResponse = await call(
+            Principal.fromText('aaaaa-aa'),
+            'http_request',
+            {
+                raw: candidEncode(`
+                    (
+                        record {
+                            url = "https://xkcd.com/642/info.0.json";
+                            max_response_bytes = 2_000 : nat64;
+                            method = variant { get };
+                            headers = vec {};
+                            body = null;
+                            transform = record { function = func "${id().toString()}".xkcdTransform; context = vec {} };
+                        }
+                    )
+                `),
+                payment: 50_000_000n
+            }
+        );
+
+        reply({ raw: httpResponse });
+    }
+
+    @query([HttpTransformArgs], HttpResponse)
+    xkcdTransform(args: HttpTransformArgs): HttpResponse {
         return {
             ...args.response,
             headers: []
         };
-    })
-});
+    }
+}
 ```
 
-Check out the [Azle documentation](https://demergent-labs.github.io/azle/http.html) for more info on HTTP requests.
+Check out the [Azle documentation](https://github.com/demergent-labs/azle/tree/main/tests/end_to_end/candid_rpc/class_syntax/outgoing_http_requests) for more info on HTTP requests.
 
 </TabItem>
 <TabItem value="python" label="Python" default>
