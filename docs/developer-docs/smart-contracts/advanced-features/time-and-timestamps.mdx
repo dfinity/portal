@@ -51,14 +51,11 @@ let current_time = IC_API::time();
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-    ```typescript
-    import { Canister, ic, nat64, query } from 'azle/experimental';
-
-    export default Canister({
-        time: query([], nat64, () => {
-            return ic.time();
-        })
-    });
+```typescript
+    @query([], IDL.Nat64)
+    time(): bigint {
+        return time();
+    }
 ```
 
 

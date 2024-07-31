@@ -89,7 +89,7 @@ function stringToBlob(string: string): blob {
 ```
 
 
-To learn more about the `Vec` object in Typescript via Azle, refer to [the Azle book reference on Vec](https://demergent-labs.github.io/azle/reference/candid/vec.html?highlight=array#vec).
+To learn more about the `Vec` object in Typescript via Azle, refer to [the Azle documentation](https://demergent-labs.github.io/azle/).
 
 </AdornedTab>
 
@@ -191,9 +191,14 @@ fn get_text(d: Day) -> &'static str {
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
+export const ReactionType = IDL.Variant({
+    Fire: IDL.Null,
+    ThumbsUp: IDL.Null,
+    ThumbsDown: IDL.Null
+});
 
 ```
-To learn more about variants in Typescript via Azle, refer to [the Azle book reference on variants](https://demergent-labs.github.io/azle/reference/candid/variant.html?highlight=variant#variant).
+To learn more about variants in Typescript via Azle, refer to [the Azle code](https://github.com/demergent-labs/azle/blob/main/tests/end_to_end/candid_rpc/class_syntax/complex_types/src/candid_types.ts#L3).
 
 </AdornedTab>
 
