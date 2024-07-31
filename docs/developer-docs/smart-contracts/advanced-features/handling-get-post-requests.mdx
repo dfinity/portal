@@ -129,10 +129,7 @@ export default class {
                     body: [],
                     transform: [
                         {
-                            function: [id(), 'xkcdTransform'] as [
-                                Principal,
-                                string
-                            ],
+                            function: [id(), 'xkcdTransform'],
                             context: Uint8Array.from([])
                         }
                     ]
@@ -366,7 +363,7 @@ export default class {
                         record {
                             url = "https://xkcd.com/642/info.0.json";
                             max_response_bytes = 2_000 : nat64;
-                            method = variant { get };
+                            method = variant { post };
                             headers = vec {};
                             body = null;
                             transform = record { function = func "${id().toString()}".xkcdTransform; context = vec {} };

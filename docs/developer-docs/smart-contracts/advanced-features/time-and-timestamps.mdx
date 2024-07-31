@@ -52,12 +52,15 @@ let current_time = IC_API::time();
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
-@query([], IDL.Nat64)
-time(): bigint {
-    return time();
+import { IDL, query, time } from 'azle';
+
+export default class {
+    @query([], IDL.Nat64)
+    time(): bigint {
+        return time();
+    }
 }
 ```
-
 
 </AdornedTab>
 

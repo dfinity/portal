@@ -84,14 +84,40 @@ async fn install_code(canister_id: CanisterId, wasm_module: Vec<u8>) {
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
-@update([], CreateCanisterResult)
-async executeCreateCanister(): Promise<CreateCanisterResult> {
-    const createCanisterResult = await createCanister();
+import { call, IDL, Principal, query, update } from 'azle';
+import {
+    CanisterInfoArgs,
+    CreateCanisterArgs,
+    CreateCanisterResult,
+} from 'azle/canisters/management';
 
-    state.createdCanisterId = createCanisterResult.canister_id;
+type State = {
+    createdCanisterId: Principal;
+};
 
-    return createCanisterResult;
+let state: State = {
+    createdCanisterId: Principal.fromText('aaaaa-aa')
+};
+
+export default class {
+    @update([], CreateCanisterResult)
+    async executeCreateCanister(): Promise<CreateCanisterResult> {
+        const createCanisterResult = await createCanister();
+
+        state.createdCanisterId = createCanisterResult.canister_id;
+
+        return createCanisterResult;
+    }
 }
+async function createCanister(): Promise<CreateCanisterResult> {
+return await call('aaaaa-aa', 'create_canister', {
+    paramIdlTypes: [CreateCanisterArgs],
+    returnIdlType: CreateCanisterResult,
+    args: [{ settings: [], sender_canister_version: [] }],
+    payment: 50_000_000_000_000n
+});
+}
+
 ```
 
 </AdornedTab>

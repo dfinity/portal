@@ -101,7 +101,15 @@ fn post_upgrade() {
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
-const timerId = setTimer(1_000, () => console.log('timer callback called'));
+
+import {
+    IDL, update, setTimer,
+} from 'azle';
+
+export default class {
+    @update([IDL.Nat64])
+    const timerId = setTimer(1_000, () => console.log('timer callback called'));
+},
 ```
 
 </AdornedTab>

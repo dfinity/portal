@@ -113,16 +113,6 @@ fn http_request(req: HttpRequest) -> HttpResponse {
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-To serve HTTP requests, you can use the Azle `http-server` functionality by creating a new project with the flag `--http-server`:
-
-```
-npx azle new http_requests --http-server
-cd http_requests
-```
-
-Then, use the `fetch` functionality to create an HTTP server that can process incoming requests:
-
-
 ```typescript
 import {
     blob,
@@ -157,7 +147,7 @@ const HttpRequest = Record({
 });
 
 export default class{
-    http_request: @query([HttpRequest], HttpResponse, (req) => {
+    @query([HttpRequest], HttpResponse, (req) => {
         const path = req.url.pathname;
         if(path == "/hello") {
             return {
@@ -170,11 +160,9 @@ export default class{
             headers: [];
             status_code:404;
         }
-    }
-});
+    }),
+};
 ```
-
-To learn more about serving an HTTP request in Typescript, refer to [the Azle book reference on fetch](https://demergent-labs.github.io/azle/fetch.html).
 
 </AdornedTab>
 
