@@ -51,9 +51,11 @@ const SmartLink: React.FC<SmartLinkProps & React.HTMLProps<HTMLAnchorElement>> =
       {...props}
       className={classNames}
     >
+      <span className="flex items-center gap-3">
       {!noIcon && iconBefore && LinkIcon(isDocs ? 'docs' : isExternal ? 'external' : 'internal')}
       {children}
       {!noIcon && !iconBefore  && LinkIcon(isDocs ? 'docs' : isExternal ? 'external' : 'internal')}
+      </span>
     </Link>
   );
 };
