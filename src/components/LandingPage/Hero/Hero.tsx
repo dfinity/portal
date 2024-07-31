@@ -98,7 +98,7 @@ const Hero: React.FC<{
                     variants={transitions.fadeIn}
                   >
                     <figure className="m-0">
-                      <span className="text-3xl font-bold">1000+</span>
+                      <span className="text-3xl font-bold">1'000+</span>
                       <figcaption className="tw-paragraph text-current opacity-50 flex items-center gap-1">
                         ICP R&D effort/years
                       </figcaption>
