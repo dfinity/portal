@@ -438,6 +438,7 @@ Since you haven't transferred any tokens, this command returns the amount that y
 To transfer tokens using the ICRC-1 ledger, use the following command:
 
 ```bash
+dfx identity use DevJourney
 dfx canister call icrc1_ledger_canister icrc1_transfer "(record { to = record { owner = principal \"sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe\";};  amount = 10_000;})"
 ```
 
