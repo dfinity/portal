@@ -91,33 +91,21 @@ import {
     CreateCanisterResult,
 } from 'azle/canisters/management';
 
-type State = {
-    createdCanisterId: Principal;
-};
-
-let state: State = {
-    createdCanisterId: Principal.fromText('aaaaa-aa')
-};
-
 export default class {
     @update([], CreateCanisterResult)
-    async executeCreateCanister(): Promise<CreateCanisterResult> {
         const createCanisterResult = await createCanister();
-
-        state.createdCanisterId = createCanisterResult.canister_id;
-
+            async executeCreateCanister(): Promise<CreateCanisterResult> {
+            return await call('aaaaa-aa', 'create_canister', {
+            paramIdlTypes: [CreateCanisterArgs],
+            returnIdlType: CreateCanisterResult,
+            args: [{ settings: [], sender_canister_version: [] }],
+            payment: 50_000_000_000_000n
+        });
         return createCanisterResult;
     }
 }
 async function createCanister(): Promise<CreateCanisterResult> {
-return await call('aaaaa-aa', 'create_canister', {
-    paramIdlTypes: [CreateCanisterArgs],
-    returnIdlType: CreateCanisterResult,
-    args: [{ settings: [], sender_canister_version: [] }],
-    payment: 50_000_000_000_000n
-});
 }
-
 ```
 
 </AdornedTab>

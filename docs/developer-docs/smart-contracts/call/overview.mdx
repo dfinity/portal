@@ -59,17 +59,18 @@ fn increment() {
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
-
-import { update } from 'azle';
+import { IDL, update } from 'azle';
 
 export default class {
-    @update
-    incrementCount: update([], nat64, () => {
-        count += 1n;
+    count: bigint = 0n;
 
-        return count;
-    })
-},
+    @update([], IDL.Nat64)
+    incrementCount(): bigint {
+        this.count += 1n;
+
+        return this.count;
+    }
+}
 ```
 
 </AdornedTab>
@@ -126,14 +127,15 @@ fn greet(name: String) -> String {
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
-
-import { query } from 'azle';
+import { IDL, query } from 'azle';
 
 export default class {
-    @query
-    readCount: query([], nat64, () => {
-        return count;
-    }),
+    count: bigint = 0n;
+
+    @query([], IDL.Nat64)
+    readCount(): bigint {
+        return this.count;
+    }
 }
 ```
 
