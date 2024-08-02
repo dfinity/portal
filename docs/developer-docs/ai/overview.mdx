@@ -13,8 +13,7 @@ The term denotes a wide range of applications, starting from peripheral elements
 
 ## What is DeAI?
 
-Similar to term "Web3", people may mean and refer to different things with term "DeAI".
-In some cases, the term is diluted and used for platforms and applications are neither decentralized nor trustworthy.
+The term "DeAI" may be used to refer to or describe a variety of different things. In some cases, the term is diluted and used by platforms and applications that are neither decentralized nor trustworthy. In other contexts, such as the context of ICP, DeAI refers to artificial intelligence running on a fully decentralized and secure platform. 
 
 Here is a list of various DeAI applications ordered from the strongest to weakest form of decentralization:
 
@@ -22,25 +21,25 @@ Here is a list of various DeAI applications ordered from the strongest to weakes
 This is the truest form of DeAI that brings the security and trustworthiness guarantees of smart contracts to DeAI applications.
 Supporting this use case is the long-term vision of ICP that will become possible after integrating GPU-enabled nodes.
 
-2. **Fully on-chain inference on models trained off-chain**:
-This assumes that the model was trained off-chained and then uploaded on-chain.
+2. **Fully on-chain inference using models trained off-chain**:
+This assumes that the model was trained off-chain and then uploaded on-chain.
 Inference happens fully on-chain and has the same security and trustworthiness guarantees as regular smart contracts.
 ICP currently supports this use case for models with millions of parameters.
 
-3. **Storing the model on-chain and running inference on user's device**:
-This assumes that the model was trained off-chained and then uploaded on-chain.
-Inference happens on user's device after downloading the model.
+3. **Storing the model on-chain and running inference on a user's device**:
+This assumes that the model was trained off-chain and then uploaded on-chain.
+Inference happens on the user's device after downloading the model.
 If the user trusts their own device, then they can trust that the inference ran correctly.
-A disadvantage here is that the model needs to be downloaded to user's device with corresponding drawbacks for confidentiality of the model and for user experience due to increased latency.
+A disadvantage here is that the model needs to be downloaded to the user's device with corresponding drawbacks of less confidentiality of the model and decreased user experience due to increased latency.
 ICP supports this use case for practically all existing models because a smart contract on ICP can store models up to 400GiB.
 
 4. **Tokenization, marketplaces, orchestration**:
-This is about using smart contracts as the tokenization, marketplace, and orchestration layer for AI models and AI hardware.
+This refers to using smart contracts as the tokenization, marketplace, and orchestration layer for AI models and AI hardware.
 Since ICP is a general-purpose blockchain, it supports such smart contracts of arbitrary complexity.
 
 5. **Smart contracts calling Web2 AI services**:
-Smart contract running on ICP can make HTTP requests to Web2 services including services like OpenAI and Claude.
-See [an example](https://github.com/peterpeterparker/juno-openai) of a smart contract calling to OpenAI API.
+Smart contracts running on ICP can make HTTP requests to Web2 services including OpenAI and Claude.
+See [an example](https://github.com/peterpeterparker/juno-openai) of a smart contract calling the OpenAI API.
 
 ## Why use DeAI?
 
