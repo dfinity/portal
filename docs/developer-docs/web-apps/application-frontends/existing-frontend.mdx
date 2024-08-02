@@ -34,13 +34,13 @@ Before you start, verify that you have:
 
 To start, you must generate static files and build your Next.js application. To generate the static files, add this line to your `next.config.js` file:
 
-```
+```js
 output: 'export'
 ```
 
 Your `next.config.js` file should resemble the following:
 
-```
+```js
 const nextConfig = {
   output: 'export',
 };
@@ -50,7 +50,7 @@ Please note that you may have existing settings that you should avoid overriding
 
 Then, build your Next.js application by running the appropriate build command. For example, if you are using npx:
 
-```
+```bash
 npx run build
 ```
 
@@ -66,7 +66,7 @@ When deploying on ICP, these static files are not public to anyone, including th
 
 In the top-level directory of your repository, add a `dfx.json` file containing the following content:
 
-```
+```json
 {
     "canisters": {
       "app": {
@@ -118,5 +118,7 @@ After running either command, you will see a generated link that is now hosting 
 ### Step 5: Navigate to the frontend canister to view the application
 
 Navigate to the frontend canister using the URL you received in the last step.
+
+## Next steps
 
 [Learn about asset security policies](asset-security.mdx).

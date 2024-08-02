@@ -1,16 +1,17 @@
 ---
-keywords: [intermediate, concept, frontend, asset canister, assets]
+keywords: [beginner, concept, frontend, asset canister, assets]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Asset canister overview
 
-<MarkdownChipRow labels={["Intermediate", "Concept"]} />
+<MarkdownChipRow labels={["Beginner", "Concept"]} />
 
 Dapps often utilize a frontend interface to facilitate user interaction with the application through elements such as a dashboard, account page, media player, or other assets that are displayed in the web browser. These assets may be in the form of HTML, JavaScript, CSS, or other frontend frameworks like React.
 
-Application frontends are often referred to as **asset canisters** on ICP, since they are canisters defined as `"type": "asset"` in the `dfx.json` file for a project. Projects created by the `dfx new` command have the option to include a default asset canister named using the project's name and the suffix `_frontend`, such as `hello_world_frontend`.
+Application frontends are often referred to as **asset <GlossaryTooltip>canisters</GlossaryTooltip>** on ICP, since they are canisters defined as `"type": "asset"` in the `dfx.json` file for a project. Projects created by the `dfx new` command have the option to include a default asset canister named using the project's name and the suffix `_frontend`, such as `hello_world_frontend`.
 
 :::info
 The terms 'asset canister' and 'frontend canister' are often used interchangeably.
