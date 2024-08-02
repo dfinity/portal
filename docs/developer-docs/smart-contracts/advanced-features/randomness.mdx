@@ -61,15 +61,16 @@ let (randomBytes,): (Vec<u8>,) = ic_cdk::api::call(Principal.management_canister
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
-import { IDL, update } from 'azle';
+import { call, IDL, update } from 'azle';
 
 export default class {
     @update([], IDL.Nat64)
-    createRand(): bigint {
-      randomInt = await call('aaaaa-aa', 'raw_rand', { returnIdlType: IDL.Vec(IDL.Nat8)
-      });
+    async createRand(): Promise<bigint> {
+        const randomInt = await call('aaaaa-aa', 'raw_rand', {
+            returnIdlType: IDL.Vec(IDL.Nat8)
+        });
 
-      return randomInt;
+        return randomInt;
     }
 }
 ```
