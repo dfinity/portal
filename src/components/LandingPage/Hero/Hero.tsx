@@ -59,7 +59,7 @@ const Hero: React.FC<{
                 socialfi, games, multi-chain dapps, AI, or an enterprise app.
                 The internet is evolving.{" "}
                 <Link
-                  className="link-white link-with-icon !gap-[0.2em] items-center"
+                  className="link-white link-with-icon !gap-[0.2em] !items-center"
                   href="https://x.com/search?q=%23icp"
                 >
                   #ICP <TwitterIcon />
