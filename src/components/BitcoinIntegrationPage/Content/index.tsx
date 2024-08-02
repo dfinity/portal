@@ -27,15 +27,6 @@ const projects = [
     link: "https://bioniq.io/",
   },
   {
-    title: "Bitcoin Stablecoin",
-    subtitle: "Taler DAO",
-    description:
-      "Activate BTCFi functionality with Taler protocol, a decentralized and overcollateralized stablecoin platform. This algorithmic stablecoin offers a capital-efficient alternative to highly volatile digital currencies",
-    imgSrc: "/img/bitcoin-integration/a2.webp",
-    altText: "Bitcoin Stablecoin project image",
-    link: "https://talerdao.org/",
-  },
-  {
     title: "Runes",
     subtitle: "Omnity",
     description:
@@ -158,7 +149,7 @@ const Content: React.FC = () => {
                 ICP nodes collaborate to produce{" "}
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/references/t-ecdsa-how-it-works//"
+                  to="/docs/current/references/t-sigs-how-it-works//"
                 >
                   threshold-ECDSA signatures
                 </Link>

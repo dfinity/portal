@@ -246,7 +246,7 @@ export const sampleItems: SampleItem[] = [
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/threshold-ecdsa",
       rust: "https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa",
-      docs: "/docs/current/references/t-ecdsa-how-it-works/",
+      docs: "/docs/current/references/t-sigs-how-it-works/",
     },
   },
   {

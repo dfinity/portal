@@ -1,1 +1,1 @@
-../../submodules/internetidentity/docs/ii-spec.md
+../../submodules/internetidentity/docs/ii-spec.mdx

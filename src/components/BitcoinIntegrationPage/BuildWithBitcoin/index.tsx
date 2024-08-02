@@ -19,8 +19,8 @@ function Index() {
       href: "/docs/current/references/bitcoin-how-it-works",
     },
     {
-      title: "Chain-Key ECDSA Docs",
-      href: "/docs/current/references/t-ecdsa-how-it-works/",
+      title: "Threshold Signature Docs",
+      href: "/docs/current/references/t-sigs-how-it-works/",
     },
     {
       title: "Sample Code",

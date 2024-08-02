@@ -40,13 +40,13 @@ const css = `
     transform: translate(-50%, -50%) rotate(calc(var(--a) * 360deg)) translateY(calc(var(--r) * 3rem)) scale(calc(var(--rnd) * 1));
   }
 }
-`
+`;
 
 export function AskAIWidget() {
   const { isDocsPage, currentPath } = useIsDocs();
 
   return (
-    currentPath === "/" && (
+    (isDocsPage || currentPath === "/") && (
       // AI chatbot integration via Kapa
       <>
         <Head>
@@ -66,9 +66,11 @@ export function AskAIWidget() {
           <style>{css}</style>
         </Head>
         <button
-          className="relative ask-ai-widget-trigger button-white button-fancy-ai border-none transition-all
+          className={`relative ask-ai-widget-trigger button-white button-fancy-ai border-none transition-all
            bg-[radial-gradient(67.52%_167.71%_at_50.38%_-41.67%,#EA2B7B_0%,#3B00B9_100%)]
-            hover:text-white/80 stat-fade-in button-small md:button-small font-bold mr-9 md:mr-0 w-10 md:w-12 h-8 md:h-10"
+            hover:text-white/80 stat-fade-in button-small md:button-small font-bold  ${
+              isDocsPage ? "mr-0" : "mr-9"
+            } md:mr-0 w-10 md:w-12 h-8 md:h-10`}
           style={{
             display: "flex",
             alignItems: "center",
@@ -85,12 +87,14 @@ export function AskAIWidget() {
               <i
                 key={i}
                 className="ai-spark"
-                style={{
-                  '--i': i/30,
-                  '--rnd': Math.random(),
-                  '--r': .5 + Math.random() * .5,
-                  '--a': Math.random(),
-                } as React.CSSProperties}
+                style={
+                  {
+                    "--i": i / 30,
+                    "--rnd": Math.random(),
+                    "--r": 0.5 + Math.random() * 0.5,
+                    "--a": Math.random(),
+                  } as React.CSSProperties
+                }
               />
             ))
           }

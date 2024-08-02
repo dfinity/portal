@@ -250,7 +250,7 @@ function WhatIsIcpPage() {
                 </Link>
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa"
+                  href="/docs/current/references/t-sigs-how-it-works"
                 >
                   <DocsIcon className="mr-1 ml-1 md:ml-0" /> Learn more about
                   ICP contracts threshold signing

@@ -12,7 +12,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-Before a transaction can be sent to the Ethereum network, it must be signed and formatted into a raw ETH transaction. Transactions are signed using [threshold ECDSA chain-key signatures](/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa).
+Before a transaction can be sent to the Ethereum network, it must be signed and formatted into a raw ETH transaction. Transactions are signed using [threshold ECDSA chain-key signatures](/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa).
 
 A code example using the [`ethers-core`](https://github.com/gakonst/ethers-rs) Rust library to sign and format an ETH [EIP-1559](https://eips.ethereum.org/EIPS/eip-1559) transaction can be found below:
 
@@ -66,7 +66,7 @@ async fn sign_transaction(req: SignRequest) -> String {
 
 ```
 
-Additional examples of signing transactions can be found in the [threshold ECDSA documentation](/docs/current/developer-docs/smart-contracts/encryption/signing-messages).
+Additional examples of signing transactions can be found in the [threshold ECDSA documentation](/docs/current/developer-docs/smart-contracts/signatures/signing-messages-t-ecdsa).
 
 
 ## Next steps

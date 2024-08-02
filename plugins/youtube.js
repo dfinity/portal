@@ -26,21 +26,35 @@ async function getMostRecentVideo() {
   return res.items[0];
 }
 
-// find the first key with a thumbnal at least 480 px wide
-function pickThumbnail(thumbnails) {
-  const keys = Object.keys(thumbnails);
-  for (let i = 0; i < keys.length; i++) {
-    const key = keys[i];
-    if (thumbnails[key].width >= 480) {
-      return thumbnails[key].url;
-    }
-  }
-
-  if (thumbnails.default === undefined) {
+async function pickThumbnail(thumbnails, videoId) {
+  if (!thumbnails || !videoId) {
     return "";
   }
 
-  return thumbnails.default.url;
+  const maxresdefaultUrl = `https://i.ytimg.com/vi/${videoId}/maxresdefault.jpg`;
+
+  const checkImageExists = async (url) => {
+    try {
+      const response = await fetch(url, { method: "HEAD" });
+      return response.ok;
+    } catch (error) {
+      return false;
+    }
+  };
+
+  const maxresdefaultExists = await checkImageExists(maxresdefaultUrl);
+
+  if (maxresdefaultExists) {
+    return maxresdefaultUrl;
+  } else {
+    const qualities = ["high", "medium", "default"];
+    for (const quality of qualities) {
+      if (thumbnails[quality]) {
+        return thumbnails[quality].url;
+      }
+    }
+    return "";
+  }
 }
 
 let cache;
@@ -59,14 +73,17 @@ const youtubePlugin = async function () {
         }
 
         const mostRecentVideo = await getMostRecentVideo();
-        const thumbnal = pickThumbnail(mostRecentVideo.snippet.thumbnails);
+        const thumbnail = await pickThumbnail(
+          mostRecentVideo.snippet.thumbnails,
+          mostRecentVideo?.id?.videoId
+        );
 
         cache = {
           mostRecentVideo: {
             id: mostRecentVideo.id.videoId,
             title: mostRecentVideo.snippet.title,
             description: mostRecentVideo.snippet.description,
-            thumbnail: thumbnal,
+            thumbnail: thumbnail,
             publishedAt: mostRecentVideo.snippet.publishedAt,
           },
         };
