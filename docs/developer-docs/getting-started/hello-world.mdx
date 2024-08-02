@@ -193,14 +193,30 @@ fn greet(name: String) -> String {
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-```typescript title="src/hello_backend/src/index.ts"
-import { Canister, query, text } from 'azle';
+TypeScript canisters can be written using the Azle canister development kit. For Azle projects, you will need to install the Azle `dfx` extension:
 
-export default Canister({
-    greet: query([text], text, (name) => {
-        return `Hello, ${name}!`;
-    })
-})
+```
+npx azle install-dfx-extension
+```
+
+The default canister code for Azle projects contains the following code:
+
+```typescript title="src/hello_backend/src/index.ts"
+import { IDL, query, update } from 'azle';
+
+export default class {
+    message: string = 'Hello world!';
+
+    @query([], IDL.Text)
+    getMessage(): string {
+        return this.message;
+    }
+
+    @update([IDL.Text])
+    setMessage(message: string): void {
+        this.message = message;
+    }
+}
 ```
 
 </AdornedTab>
@@ -273,13 +289,13 @@ Output:
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```bash
-dfx canister call hello_backend greet world
+dfx canister call hello_backend getMessage
 ```
 
 Output:
 
 ```
-("Hello, world!")
+("Hello world!")
 ```
 
 </AdornedTab>

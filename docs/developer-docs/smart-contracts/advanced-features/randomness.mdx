@@ -51,28 +51,33 @@ In addition to the `raw_rand` method, Motoko offers a [Random module](/docs/curr
 
 </TabItem>
 
-<TabItem value="rust" label="rust">
+<TabItem value="rust" label="Rust">
 
 ```rust
 let (randomBytes,): (Vec<u8>,) = ic_cdk::api::call(Principal.management_canister(), "raw_rand", ()).await?;
 ```
 </TabItem>
 
-<TabItem value="typescript" label="typescript">
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
-import { blob, Canister, ic, update } from 'azle';
-import { managementCanister } from 'azle/canisters/management';
+import { call, IDL, update } from 'azle';
 
-export default Canister({
-    randomBytes: update([], blob, async () => {
-        return await ic.call(managementCanister.raw_rand);
-    })
-});
+export default class {
+    @update([], IDL.Vec(IDL.Nat8))
+    async randomBytes(): Promise<Uint8Array> {
+        const bytes: Uint8Array = await call('aaaaa-aa', 'raw_rand', {
+            returnIdlType: IDL.Vec(IDL.Nat8)
+        });
+
+        return bytes;
+    }
+}
 ```
-</TabItem>
 
-<TabItem value="python" label="python">
+</AdornedTab>
+
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```python
 from kybra import Async, blob, CallResult, match, update, Variant
@@ -93,6 +98,6 @@ def random_bytes() -> Async[RandomBytesResult]:
     )
 ```
 
-</TabItem>
+</AdornedTab>
 </AdornedTabs>
 

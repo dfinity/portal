@@ -197,134 +197,140 @@ fn init(timer_interval_secs: u64) {
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-This example creates a timer function that must be manually called once a
-canister starts:
+This example creates a timer function that must be manually called once a canister starts:
 
 ```typescript
 import {
-  blob,
-  bool,
-  Canister,
-  Duration,
-  ic,
-  int8,
-  query,
-  Record,
-  serialize,
-  text,
-  TimerId,
-  update,
-  Void,
-} from "azle";
-import { managementCanister } from "azle/canisters/management";
+    call,
+    clearTimer,
+    IDL,
+    query,
+    setTimer,
+    setTimerInterval,
+    update
+} from 'azle';
 
-const StatusReport = Record({
-  single: bool,
-  inline: int8,
-  capture: text,
-  repeat: int8,
-  singleCrossCanister: blob,
-  repeatCrossCanister: blob,
+const StatusReport = IDL.Record({
+    single: IDL.Bool,
+    inline: IDL.Int8,
+    capture: IDL.Text,
+    repeat: IDL.Int8,
+    singleCrossCanister: IDL.Vec(IDL.Nat8),
+    repeatCrossCanister: IDL.Vec(IDL.Nat8)
 });
-type StatusReport = typeof StatusReport.tsType;
-
-const TimerIds = Record({
-  single: TimerId,
-  inline: TimerId,
-  capture: TimerId,
-  repeat: TimerId,
-  singleCrossCanister: TimerId,
-  repeatCrossCanister: TimerId,
-});
-type TimerIds = typeof TimerIds.tsType;
-
-let statusReport: StatusReport = {
-  single: false,
-  inline: 0,
-  capture: "",
-  repeat: 0,
-  singleCrossCanister: Uint8Array.from([]),
-  repeatCrossCanister: Uint8Array.from([]),
+type StatusReport = {
+    single: boolean;
+    inline: number;
+    capture: string;
+    repeat: number;
+    singleCrossCanister: Uint8Array;
+    repeatCrossCanister: Uint8Array;
 };
 
-export default Canister({
-  clearTimer: update([TimerId], Void, (timerId) => {
-    ic.clearTimer(timerId);
-    console.log(`timer ${timerId} cancelled`);
-  }),
-  setTimers: update([Duration, Duration], TimerIds, (delay, interval) => {
-    const capturedValue = "🚩";
-
-    const singleId = ic.setTimer(delay, oneTimeTimerCallback);
-
-    const inlineId = ic.setTimer(delay, () => {
-      statusReport.inline = 1;
-      console.log("Inline timer called");
-    });
-
-    const captureId = ic.setTimer(delay, () => {
-      statusReport.capture = capturedValue;
-      console.log(`Timer captured value ${capturedValue}`);
-    });
-
-    const repeatId = ic.setTimerInterval(interval, () => {
-      statusReport.repeat++;
-      console.log(`Repeating timer. Call ${statusReport.repeat}`);
-    });
-
-    const singleCrossCanisterId = ic.setTimer(
-      delay,
-      singleCrossCanisterTimerCallback
-    );
-
-    const repeatCrossCanisterId = ic.setTimerInterval(
-      interval,
-      repeatCrossCanisterTimerCallback
-    );
-
-    return {
-      single: singleId,
-      inline: inlineId,
-      capture: captureId,
-      repeat: repeatId,
-      singleCrossCanister: singleCrossCanisterId,
-      repeatCrossCanister: repeatCrossCanisterId,
-    };
-  }),
-  statusReport: query([], StatusReport, () => {
-    return statusReport;
-  }),
+const TimerIds = IDL.Record({
+    single: IDL.Nat64,
+    inline: IDL.Nat64,
+    capture: IDL.Nat64,
+    repeat: IDL.Nat64,
+    singleCrossCanister: IDL.Nat64,
+    repeatCrossCanister: IDL.Nat64
 });
+type TimerIds = {
+    single: bigint;
+    inline: bigint;
+    capture: bigint;
+    repeat: bigint;
+    singleCrossCanister: bigint;
+    repeatCrossCanister: bigint;
+};
 
-function oneTimeTimerCallback() {
-  statusReport.single = true;
-  console.log("oneTimeTimerCallback called");
+let statusReport: StatusReport = {
+    single: false,
+    inline: 0,
+    capture: '',
+    repeat: 0,
+    singleCrossCanister: Uint8Array.from([]),
+    repeatCrossCanister: Uint8Array.from([])
+};
+
+export default class {
+    @update([IDL.Nat64])
+    clearTimer(timerId: bigint): void {
+        clearTimer(timerId);
+        console.info(`timer ${timerId} cancelled`);
+    }
+
+    @update([IDL.Nat64, IDL.Nat64], TimerIds)
+    setTimers(delay: bigint, interval: bigint): TimerIds {
+        const capturedValue = '🚩';
+
+        const singleId = setTimer(delay, oneTimeTimerCallback);
+
+        const inlineId = setTimer(delay, () => {
+            statusReport.inline = 1;
+            console.info('Inline timer called');
+        });
+
+        const captureId = setTimer(delay, () => {
+            statusReport.capture = capturedValue;
+            console.info(`Timer captured value ${capturedValue}`);
+        });
+
+        const repeatId = setTimerInterval(interval, () => {
+            statusReport.repeat++;
+            console.info(`Repeating timer. Call ${statusReport.repeat}`);
+        });
+
+        const singleCrossCanisterId = setTimer(
+            delay,
+            singleCrossCanisterTimerCallback
+        );
+
+        const repeatCrossCanisterId = setTimerInterval(
+            interval,
+            repeatCrossCanisterTimerCallback
+        );
+
+        return {
+            single: singleId,
+            inline: inlineId,
+            capture: captureId,
+            repeat: repeatId,
+            singleCrossCanister: singleCrossCanisterId,
+            repeatCrossCanister: repeatCrossCanisterId
+        };
+    }
+
+    @query([], StatusReport)
+    statusReport(): StatusReport {
+        return statusReport;
+    }
 }
 
-async function singleCrossCanisterTimerCallback() {
-  console.log("singleCrossCanisterTimerCallback");
-
-  statusReport.singleCrossCanister = await getRandomness();
+function oneTimeTimerCallback(): void {
+    statusReport.single = true;
+    console.info('oneTimeTimerCallback called');
 }
 
-async function repeatCrossCanisterTimerCallback() {
-  console.log("repeatCrossCanisterTimerCallback");
+async function singleCrossCanisterTimerCallback(): Promise<void> {
+    console.info('singleCrossCanisterTimerCallback');
 
-  statusReport.repeatCrossCanister = Uint8Array.from([
-    ...statusReport.repeatCrossCanister,
-    ...(await getRandomness()),
-  ]);
+    statusReport.singleCrossCanister = await getRandomness();
 }
 
-async function getRandomness(): Promise<blob> {
-  if (process.env.AZLE_TEST_FETCH === "true") {
-    const response = await fetch(`icp://aaaaa-aa/raw_rand`);
-    const responseJson = await response.json();
+async function repeatCrossCanisterTimerCallback(): Promise<void> {
+    console.info('repeatCrossCanisterTimerCallback');
 
-    return responseJson;
-  } else {
-    return await ic.call(managementCanister.raw_rand);
-  }
+    statusReport.repeatCrossCanister = Uint8Array.from([
+        ...statusReport.repeatCrossCanister,
+        ...(await getRandomness())
+    ]);
+}
+
+async function getRandomness(): Promise<Uint8Array> {
+    return await call('aaaaa-aa', 'raw_rand', {
+        returnIdlType: IDL.Vec(IDL.Nat8)
+    });
 }
 ```
 
@@ -333,7 +339,7 @@ async function getRandomness(): Promise<blob> {
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 This example creates a timer function that must be manually called once a
-cansiter starts:
+canister starts:
 
 ```python
 from kybra import (
