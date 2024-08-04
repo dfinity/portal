@@ -1,0 +1,62 @@
+---
+keywords: [beginner, concept, wallet, wallets, authentication, assets]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Wallet Overview
+
+<MarkdownChipRow labels={["Beginner" , "Concept"]} />
+
+This document provides an overview of the purpose of different types of wallets on the Internet Computer and how to interact with them. 
+
+Users of the Internet Computer use wallets for the following activities:
+
+- Hold, transfer, and receive assets such as fungible including ICP and other ICRC1/ICRC2 tokens (ex. ckBTC, ckETH) and non-fungible tokens.
+- Deploy, upgrade, and perform operations on canisters.
+
+Decentralized applications developed on ICP can authenticate users using wallets or [Internet Identity](/docs/current/developer-docs/identity/internet-identity/overview).
+
+Though not directly considered a wallet, Internet Identity behind the scenes generates a principal. This principal not only identifies you to various user-facing dapps but is also an identifier to send and receive assets on ICP.
+
+## Types of Wallets 
+
+On ICP, users may use different types of wallets for different types of interactions. Here is a table that describes the types of wallets based on interaction:
+
+ <table>
+    <tr>
+        <th>Type of Wallet</th>
+        <th>Activities</th>
+        <th>Examples</th>
+    </tr>
+    <tr>
+        <td>[Asset Wallet](/overview)</td>
+        <td> - Hold, transfer, and receive assets such as fungible tokens including ICP and other ICRC1/ICRC2 tokens (ex. ckBTC, ckETH) and non-fungible tokens
+        - View token holdings
+        - Stake ICP and create a neuron to participate in the NNS
+        - Can also be used for user based authentication
+        </td>
+        <td> - Plug, Stoic, Oisy. Please refer to the [Asset Wallets docs for the full list](/docs/current/developer-docs/defi/wallets/overview#third-party-custody) </td>
+    </tr>
+    <tr>
+        <td>[Canisters](/docs/current/developer-docs/smart-contracts/overview/introduction)</td>
+        <td>Using [Chain Fusion](/docs/current/developer-docs/multi-chain/overview), canisters on ICP can hold, sign, and transact with assets on various chains including ICP, Bitcoin, Ethereum, EVMs, and more.
+        </td>
+        <td>Any canister</td>
+    </tr>
+    <tr>
+        <td>[Cycles](//docs/current/developer-docs/defi/cycles/cycles-wallet) (will be depreciated from dfx) </td>
+        <td> - Holds cycles needed to deploy, upgrade, and perform other operations on canisters
+        - The Cycles Wallet will be replaced by the Cycles ledger. By using the Cycles ledger, cycles will compile to common ICRC1/ICRC2/ICRC3 standards.
+        </td>
+        <td>The Cycles Wallet will be replaced by the [Cycles ledger](docs/current/developer-docs/defi/cycles/cycles-ledger). By using the Cycles ledger, cycles will compile to common ICRC1/ICRC2/ICRC3 standards.</td>
+    </tr>
+</table>
+
+### Other authentication methods
+
+As mentioned, Internet Identity is not directly considered a wallet but more of an authentication method. However, an Internet Identity is tied to a unique principal for each unique domain that can be used to hold and receive assets. 
+
+Decentralized exchanges on ICP such as ICDex, Sonic, and ICPSwap allow users to sign in with Internet Identity and hold and transfer assets using the unique principal generated on their site.
+
+The [NNS Dapp](https://nns.ic0.app/) provides users the same functionality in addition to generating neurons to stake ICP and partifcipate in governance. The Internet Identity integration is often referred to as the [NNS wallet](/docs/current/developer-docs/defi/wallets/overview#nns-dapp).
