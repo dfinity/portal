@@ -590,6 +590,9 @@ const redirects = `
   /docs/current/developer-docs/web-apps/application-frontends/webpack-dev-server /docs/current/developer-docs/web-apps/application-frontends/webpack
   /docs/current/developer-docs/web-apps/application-frontends/serving-static-assets /docs/current/developer-docs/web-apps/application-frontends/default-frontend
   /docs/current/developer-docs/web-apps/application-frontends/custom-frontend /docs/current/developer-docs/web-apps/application-frontends/default-frontend
+  /docs/current/developer-docs/security/rust-canister-development-security-best-practices /docs/current/developer-docs/security/security-best-practices/inter-canister-calls
+  /docs/developers-guide/computation-and-storage-costs.html /docs/current/developer-docs/gas-cost
+  /docs/current/developer-docs/getting-started/ /docs/current/developer-docs/getting-started/overview-of-icp
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
