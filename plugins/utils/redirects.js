@@ -72,7 +72,7 @@ const redirects = `
   /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/smart-contracts/write/overview
   /docs/current/developer-docs/build/backend/reproducible-builds /docs/current/developer-docs/smart-contracts/test/reproducible-builds
   /docs/current/developer-docs/build/cdks/ /docs/current/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/build/frontend/custom-frontend /docs/current/developer-docs/web-apps/application-frontends/custom-frontend
+  /docs/current/developer-docs/build/frontend/default-frontend /docs/current/developer-docs/web-apps/application-frontends/default-frontend
   /docs/current/developer-docs/build/frontend/webpack-config /docs/current/developer-docs/web-apps/application-frontends/overview#modifying-the-webpack-configuration
   /docs/current/developer-docs/build/install-upgrade-remove /docs/current/developer-docs/getting-started/install/
   /docs/current/developer-docs/build/languages/rust/* /docs/current/developer-docs/backend/rust/
@@ -104,7 +104,7 @@ const redirects = `
   /docs/developers-guide/sdk-guide /docs/current/developer-docs/getting-started/install/
   /docs/developers-guide/troubleshooting /docs/current/developer-docs/smart-contracts/test/troubleshooting
   /docs/developers-guide/tutorials-intro /docs/current/motoko/main/getting-started/motoko-introduction
-  /docs/developers-guide/tutorials/custom-frontend /docs/current/developer-docs/web-apps/application-frontends/custom-frontend
+  /docs/developers-guide/tutorials/default-frontend /docs/current/developer-docs/web-apps/application-frontends/default-frontend
   /docs/developers-guide/tutorials/my-contacts /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet
   /docs/developers-guide/webpack-config /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/developers-guide/work-with-languages /docs/current/developer-docs/smart-contracts/write/overview
@@ -333,7 +333,7 @@ const redirects = `
   /docs/current/developer-docs/setup/best-practices/storage /docs/current/developer-docs/smart-contracts/best-practices/storage
   /docs/current/developer-docs/setup/best-practices/troubleshooting /docs/current/developer-docs/smart-contracts/best-practices/troubleshooting
   /docs/current/developer-docs/frontend/ /docs/current/developer-docs/web-apps/application-frontends/overview
-  /docs/current/developer-docs/frontend/custom-frontend /docs/current/developer-docs/web-apps/application-frontends/custom-frontend
+  /docs/current/developer-docs/frontend/default-frontend /docs/current/developer-docs/web-apps/application-frontends/default-frontend
   /docs/current/developer-docs/frontend/add-stylesheet /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet
   /docs/current/developer-docs/frontend/boilerplate-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/current/developer-docs/frontend/existing-frontend /docs/current/developer-docs/web-apps/application-frontends/existing-frontend
@@ -586,6 +586,10 @@ const redirects = `
   /docs/current/developer-docs/production/topping-up-canister/ /docs/current/developer-docs/smart-contracts/topping-up/topping-up-canister
   /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/current/motoko/main/reference/language-manual
   /docs/current/references/t-ecdsa-how-it-works /docs/current/references/t-sigs-how-it-works
+  /docs/current/developer-docs/web-apps/application-frontends/bundlers /docs/current/developer-docs/web-apps/application-frontends/webpack
+  /docs/current/developer-docs/web-apps/application-frontends/webpack-dev-server /docs/current/developer-docs/web-apps/application-frontends/webpack
+  /docs/current/developer-docs/web-apps/application-frontends/serving-static-assets /docs/current/developer-docs/web-apps/application-frontends/default-frontend
+  /docs/current/developer-docs/web-apps/application-frontends/custom-frontend /docs/current/developer-docs/web-apps/application-frontends/default-frontend
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
