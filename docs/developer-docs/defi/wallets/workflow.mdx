@@ -4,28 +4,25 @@ keywords: [beginner, concept, wallet, wallets, authentication, assets]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Wallet Overview
+# Wallet overview
 
 <MarkdownChipRow labels={["Beginner" , "Concept"]} />
 
-This document provides an overview of the purpose of different types of wallets on the Internet Computer and how to interact with them. 
+Users and developers on ICP use wallets for the following activities:
 
-Users of the Internet Computer use wallets for the following activities:
+- Holding, transferring, and receiving assets such as fungible including ICP and other ICRC1/ICRC2 tokens (ex. ckBTC, ckETH) and non-fungible tokens.
+- Deploying, upgrading, and performing operations on canisters.
+- Authenticating with decentralized applications.
 
-- Hold, transfer, and receive assets such as fungible including ICP and other ICRC1/ICRC2 tokens (ex. ckBTC, ckETH) and non-fungible tokens.
-- Deploy, upgrade, and perform operations on canisters.
+On other networks, these activities may all use the same wallet account and workflow. On ICP, each of these activities will likely use a separate wallet address or service. This document provides an overview of each different workflow, the type of account associated with it, and how to interact with it.
 
-Decentralized applications developed on ICP can authenticate users using wallets or [Internet Identity](/docs/current/developer-docs/identity/internet-identity/overview).
+## Types of wallets 
 
-Though not directly considered a wallet, Internet Identity behind the scenes generates a principal. This principal not only identifies you to various user-facing dapps but is also an identifier to send and receive assets on ICP.
-
-## Types of Wallets 
-
-On ICP, users may use different types of wallets for different types of interactions. Here is a table that describes the types of wallets based on interaction:
+On ICP, both developers and end users will use different types of wallets for different interactions. Here is a table that describes each type of wallet and the activities associated with them: 
 
  <table>
     <tr>
-        <th>Type of Wallet</th>
+        <th>Type of wallet</th>
         <th>Activities</th>
         <th>Examples</th>
     </tr>
@@ -43,13 +40,13 @@ On ICP, users may use different types of wallets for different types of interact
         </td>
     </tr>
     <tr>
-        <td>[Canisters](/docs/current/developer-docs/smart-contracts/overview/introduction)</td>
+        <td>[Canister-controlled wallet](/docs/current/developer-docs/smart-contracts/overview/introduction)</td>
         <td>Using [Chain Fusion](/docs/current/developer-docs/multi-chain/overview), canisters on ICP can hold, sign, and transact with assets on various chains including ICP, Bitcoin, Ethereum, EVMs, and more.
         </td>
         <td>Any canister</td>
     </tr>
     <tr>
-        <td>[Cycles](//docs/current/developer-docs/defi/cycles/cycles-wallet) (will be depreciated from dfx) </td>
+        <td>[Cycles wallet](//docs/current/developer-docs/defi/cycles/cycles-wallet) (will be depreciated from dfx) </td>
         <td> - Holds cycles needed to deploy, upgrade, and perform other operations on canisters
         <br />
         - The cycles wallet is still supported, but has been replaced by the [cycles ledger](docs/current/developer-docs/defi/cycles/cycles-ledger). It is recommended to use the cycles ledger instead.
@@ -59,7 +56,7 @@ On ICP, users may use different types of wallets for different types of interact
 
 ### Other authentication methods
 
-As mentioned, Internet Identity is not directly considered a wallet but more of an authentication method. However, an Internet Identity is tied to a unique principal for each unique domain that can be used to hold and receive assets. 
+Internet Identity is not directly considered a wallet but more of an authentication method. However, an Internet Identity is tied to a unique principal for each unique domain that can be used to hold and receive assets. 
 
 Decentralized exchanges on ICP such as ICDex, Sonic, and ICPSwap allow users to sign in with Internet Identity and hold and transfer assets using the unique principal generated on their site.
 
