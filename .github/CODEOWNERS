@@ -6,12 +6,12 @@ docs/developer-docs/build/agents @dfinity/dx
 docs/developer-docs/build/cdks @dfinity/dx
 docs/developer-docs/integrations/rosetta @dfinity/finint
 docs/developer-docs/security @dfinity/product-security
-docs/references/execution-errors.mdx @dfinity/runtime @dfinity/execution
+docs/references/execution-errors.mdx @dfinity/execution
 docs/developer-docs/web-apps/custom-domains @dfinity/boundary-node
 
 # Each piece of documentation must be owned by the respective teams
-docs/developer-docssmart-contracts/advanced-features/simd.mdx @dfinity/runtime
-docs/developer-docssmart-contracts/advanced-features/periodic-tasks.mdx @dfinity/runtime
+docs/developer-docssmart-contracts/advanced-features/simd.mdx @dfinity/execution
+docs/developer-docssmart-contracts/advanced-features/periodic-tasks.mdx @dfinity/execution
 
 
 src/pages/security-advisories.tsx @dfinity/product-security
