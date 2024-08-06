@@ -878,6 +878,7 @@ const sidebars = {
                 },
               ],
             },
+            "developer-docs/defi/tokens/asset_flow/index",
             "developer-docs/defi/tokens/token-standards",
             "developer-docs/defi/token_integrations/index",
             "developer-docs/defi/icp-tokens/ledger-local-setup",

@@ -1,0 +1,139 @@
+---
+keywords: [intermediate, tokens, tutorial, ledger, asset flow]
+---
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+
+# Asset Flow
+
+<MarkdownChipRow labels={["Intermediate" , "Tutorial"]} />
+
+## Overview
+This guide will show you how to conduct different asset flow operations for both, the ICP ledger and ICRC-1 compliant ledgers.
+For reference on what an ICP and ICRC-1 ledgers are, please read the [documentation](/docs/current/developer-docs/defi/tokens/ledger/overview.mdx) on them. 
+For reference on the different standards for these ledger, you can find the relevant documentation [here](/docs/current/developer-docs/defi/tokens/ledger/token-standards.mdx). 
+* Transfer: A simple transfer between two entities.
+* Approve: Approving tokens to be spent by another enitty. 
+* Mint: Creating new tokens (**Requires Minting Account priviledges**) 
+* Burn: Destroying tokens. 
+* TransferFrom: Spend tokens on behalf of a previously approved entity. 
+
+The asset flow methods for both ledger types will be the same. 
+There are multiple ways on how to create the corresponding transactions. In this guide we will show you how to make them via `dfx` and in `Rust`. 
+For the `Rust` part you will need to setup an `ic-agent`. You can find the relevant documentation for that `crate` [here](https://crates.io/crates/ic-agent). 
+For documentation on how to install, setup and use `dfx` you can read up on the documentation [here](https://internetcomputer.org/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-parent). 
+
+## Transfer tokens
+To transfer tokens you will need a few mandatory and then some optional fields.
+The mandatory fields are:
+* `to`: The account that will receive the tokens.
+* `amount`: The amount of tokens to be sent.
+The optional fields are:
+* `from_subaccount`: The subaccount of the approver.
+* `fee`: The fee paid by the sender for the transfer. If not set the default fee will have to be paid. 
+* `memo`: An arbitrary 32 bytes array to ensure transaction hash uniqueness.
+* `created_at_time`: A timestamp that is used to trigger the [deduplication mechanism](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#transaction_deduplication). 
+
+### dfx
+An example command for an approval using `dfx` is the following. 
+```bash
+dfx canister call icrc1_ledger_canister icrc1_transfer "(record { to = record { owner = principal \"sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe\";};  amount = 10_000;})"
+```
+
+### Rust
+An example code snipped of an approval using `Rust` is the following. 
+```bash
+let to = icrc_ledger_types::icrc1::account::Account{ owner:ic_principal::Principal::from_slice(&[1, 2, 3, 4]) , subaccount: None};
+let amount = candid::Nat::from(500u64);
+let transfer_arg = icrc_ledger_types::icrc1::transfer::TransferArg{
+    from_subaccount: None,
+    to,
+    amount,
+    fee: None,
+    memo: : None,
+    created_at_time: : None,
+}
+candid::Decode!(&ic_agent.update("icrc1_transfer", &candid::Encode!(&transfer_arg)?).await.unwrap(), Result<candid::Nat, icrc_ledger_types::icrc1::transfer::TransferError>).unwrap();
+```
+:::info
+Mint and Burn operations are technically speaking also transfers. They work exactly like regular transfers with certain conditions that have to be met. They are the following:
+* For Mint operations the sender of the transfer has to be the minter account. This means that if you want to make Mint transactions you will need to know the private key of the Minter account.
+* For Burn operations the receiver needs to be set to the Mint account. You can request the Minter account by calling the `icrc1_minting_account` endpoint of the ledger. 
+
+
+## Approve tokens
+To approve tokens you will need a few mandatory and then some optional fields.
+The mandatory fields are:
+* `spender`: The account that is allowed to spend the tokens.
+* `amount`: The maximum amount of tokens to be spent by the spender.
+The optional fields are:
+* `from_subaccount`: The subaccount of the approver.
+* `expected_allowance`: If set this field serves as a guarentee that before the new approved amount is set, the expected allowance was the previously set approved amount. 
+* `expires_at`: The timestamp at which the allowance will expire. 
+* `fee`: The fee paid by the approver for the approval. If not set the default fee will have to be paid. 
+* `memo`: An arbitrary 32 bytes array to ensure transaction hash uniqueness.
+* `created_at_time`: A timestamp that is used to trigger the [deduplication mechanism](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#transaction_deduplication). 
+
+### dfx
+An example command for an approval using `dfx` is the following. 
+```bash
+dfx canister call icrc1_ledger_canister icrc2_approve "(record { amount = 500; spender = record{owner = principal \"sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe\";} })"
+```
+
+### Rust
+An example code snipped of an approval using `Rust` is the following. 
+```bash
+let spender = icrc_ledger_types::icrc1::account::Account{ owner:ic_principal::Principal::from_slice(&[1, 2, 3, 4]) , subaccount: None};
+let amount = candid::Nat::from(500u64);
+let approve_args = icrc_ledger_types::icrc1::approve::ApproveArgs{
+    from_subaccount: None,
+    spender,
+    amount,
+    expected_allowance: None,
+    expires_at: None,
+    fee: None,
+    memo: : None,
+    created_at_time: : None,
+}
+candid::Decode!(&ic_agent.update("icrc2_approve", &candid::Encode!(&approve_args)?).await.unwrap(), Result<candid::Nat, icrc_ledger_types::icrc2::approve::ApproveError>).unwrap();
+```
+
+## Transferring approved tokens
+To transfer approved tokens you will need a few mandatory and then some optional fields.
+The mandatory fields are:
+* `to`: The account that will receive the tokens.
+* `from`: The approvers account who's tokens will be transferred. 
+* `amount`: The amount of tokens to be sent.
+The optional fields are:
+* `spender_subaccount`: The subaccount of the spender.
+* `fee`: The fee paid by the sender for the transfer. If not set the default fee will have to be paid. 
+* `memo`: An arbitrary 32 bytes array to ensure transaction hash uniqueness.
+* `created_at_time`: A timestamp that is used to trigger the [deduplication mechanism](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#transaction_deduplication). 
+
+### dfx
+An example command for an approval using `dfx` is the following. 
+```bash
+dfx canister call icrc1_ledger_canister icrc2_transfer_from "(record { from = record { owner = principal \"ltyfs-qiaaa-aaaak-aan3a-cai\";}; to = record { owner = principal \"sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe\";};  amount = 500;})"
+```
+
+### Rust
+An example code snipped of an approval using `Rust` is the following. 
+```bash
+let to = icrc_ledger_types::icrc1::account::Account{ owner:ic_principal::Principal::from_slice(&[1, 2, 3, 4]) , subaccount: None};
+let from = icrc_ledger_types::icrc1::account::Account{ owner:ic_principal::Principal::from_slice(&[5, 6, 7, 8]) , subaccount: None};
+let amount = candid::Nat::from(500u64);
+let transfer_from_arg = icrc_ledger_types::icrc1::transfer_from::TransferFromArgs{
+    spender_subaccount: None,
+    from,
+    to,
+    amount,
+    fee: None,
+    memo: : None,
+    created_at_time: : None,
+}
+candid::Decode!(&ic_agent.update("icrc2_transfer_from", &candid::Encode!(&transfer_from_arg)?).await.unwrap(), Result<candid::Nat, icrc_ledger_types::icrc2::transfer_from::TransferFromError>).unwrap();
+```
