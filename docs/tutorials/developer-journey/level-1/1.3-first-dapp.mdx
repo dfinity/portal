@@ -2,7 +2,6 @@
 keywords: [beginner, tutorial, developer journey, first dapp]
 ---
 
-import DfxNewSnippet from "/src/components/Snippets/DfxNewSnippet.mdx";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import '/src/components/CenterImages/center.scss';
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
@@ -28,13 +27,43 @@ Before you start, verify that you have set up your developer environment accordi
 
 ## Creating a new project
 
-First, you need to create a new `dfx` project. Open a terminal window, navigate into your working directory (`developer_journey`), then use the commands:
+First, you need to create a new `dfx` project. Open a terminal window, navigate into your working directory (`developer_journey`), then use the following commands to start `dfx` and create a new project:
 
 ```bash
 dfx start --clean --background
+dfx new hello_world
 ```
 
-<DfxNewSnippet />
+You will be prompted to select the language that your backend canister will use:
+
+```
+? Select a backend language: ›
+❯ Motoko
+Rust
+TypeScript (Azle)
+Python (Kybra)
+```
+
+Then, select a frontend framework for your frontend canister. In this example, select:
+
+```
+? Select a frontend framework: ›
+SvelteKit
+React
+Vue
+❯ Vanilla JS
+No JS template
+No frontend canister
+```
+
+Lastly, you can include extra features to be added to your project:
+
+```
+? Add extra features (space to select, enter to confirm) ›
+⬚ Internet Identity
+⬚ Bitcoin (Regtest)
+⬚ Frontend tests
+```
 
 ## Reviewing the project's file structure
 

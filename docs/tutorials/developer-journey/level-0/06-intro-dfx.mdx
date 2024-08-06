@@ -2,7 +2,6 @@
 keywords: [beginner, tutorial, developer journey, introduction, dfx]
 ---
 
-import DfxNewSnippet from "/src/components/Snippets/DfxNewSnippet.mdx";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
@@ -87,7 +86,40 @@ Assure that you are in your working directory, `developer_journey`.
 
 ### Step 2: Create a new project with the name 'hello_world' with the command:
 
-<DfxNewSnippet />
+```
+dfx new hello_world
+```
+
+You will be prompted to select the language that your backend canister will use:
+
+```
+? Select a backend language: ›
+❯ Motoko
+Rust
+TypeScript (Azle)
+Python (Kybra)
+```
+
+Then, select a frontend framework for your frontend canister. In this example, select:
+
+```
+? Select a frontend framework: ›
+SvelteKit
+React
+Vue
+❯ Vanilla JS
+No JS template
+No frontend canister
+```
+
+Lastly, you can include extra features to be added to your project:
+
+```
+? Add extra features (space to select, enter to confirm) ›
+⬚ Internet Identity
+⬚ Bitcoin (Regtest)
+⬚ Frontend tests
+```
 
 When no flags are used, the `dfx new` command will create a new project using the default Motoko template. To create a project using the Rust project template, the flag `--type=rust` should be included in the command. 
 

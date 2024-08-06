@@ -2,7 +2,6 @@
 keywords: [beginner, rust, tutorial, deploying canisters, deploying]
 ---
 
-import DfxNewSnippet from "/src/components/Snippets/DfxNewSnippet.mdx";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
@@ -24,9 +23,43 @@ Before getting started, assure you have set up your developer environment accord
 
 Open a terminal window on your local computer, if you don’t already have one open.
 
-First, create a new dfx project with the command:
+Use `dfx new [project_name]` to create a new project:
 
-<DfxNewSnippet />
+```
+dfx new hello_world
+```
+
+You will be prompted to select the language that your backend canister will use:
+
+```
+? Select a backend language: ›
+❯ Motoko
+Rust
+TypeScript (Azle)
+Python (Kybra)
+```
+
+Then, select a frontend framework for your frontend canister. In this example, select:
+
+```
+? Select a frontend framework: ›
+SvelteKit
+React
+Vue
+❯ Vanilla JS
+No JS template
+No frontend canister
+```
+
+Lastly, you can include extra features to be added to your project:
+
+```
+? Add extra features (space to select, enter to confirm) ›
+⬚ Internet Identity
+⬚ Bitcoin (Regtest)
+⬚ Frontend tests
+```
+
 
 By default, the project structure will resemble the following:
 

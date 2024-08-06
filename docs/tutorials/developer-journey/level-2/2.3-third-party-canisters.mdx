@@ -29,16 +29,7 @@ Before you start, verify that you have set up your developer environment accordi
 
 ### Creating a new project
 
-To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_journey`), then use the commands:
-
-
-import TabItem from "@theme/TabItem";
-import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
-import { AdornedTab } from "/src/components/Tabs/AdornedTab";
-import { BetaChip } from "/src/components/Chip/BetaChip";
-
-<AdornedTabs groupId="version">
-<TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
+To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_journey`), then use the following commands to start `dfx` and create a new project:
 
 Use `dfx new <project_name>` to create a new project:
 
@@ -83,23 +74,6 @@ Then, navigate into the new project directory:
 ```
 cd dependencies
 ```
-
-</TabItem>
-
-<TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
-
-```bash
-dfx start --clean --background
-dfx new dependencies --no-frontend
-cd dependencies
-```
-
-Remember, by default `dfx new` creates a new project in the Motoko language. If you'd like to create a Rust project, use the flag `--type=rust`.
-
-
-</TabItem>
-</AdornedTabs>
-
 
 You'll use the default 'Hello world' project in this example, then you'll pull the Internet Identity canister as a dependency of our `dependencies_backend` canister.
 
