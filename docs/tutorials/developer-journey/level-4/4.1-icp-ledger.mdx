@@ -276,7 +276,11 @@ To transfer tokens from one account to another, use the command:
 dfx ledger transfer --amount AMOUNT --memo MEMO RECEIVER_ACCOUNT_ID
 ```
 
-Replace `AMOUNT` with the number of tokens to transfer, `MEMO` with a brief message to describe the reason for the transfer, and `RECEIVER_ACCOUNT_ID` with the account ID to receive the tokens.
+Replace `AMOUNT` with the number of tokens to transfer, `MEMO` with a 64-bit numeric value, and `RECEIVER_ACCOUNT_ID` with the account ID to receive the tokens. 
+
+:::info
+`MEMO` refers to a 64-bit numeric value as defined in the [IC specification](/docs/current/references/ledger#_transferring_tokens). It is used to generate unique hash values for transactions.
+:::
 
 :::caution
 
