@@ -8,16 +8,13 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Beginner" , "Concept"]} />
 
-This document provides an overview of the purpose of different types of wallets on the Internet Computer and how to interact with them. 
+Users and developers on ICP use wallets for the following activities:
 
-Users of the Internet Computer use wallets for the following activities:
+- Holding, transferring, and receiving assets such as fungible including ICP and other ICRC1/ICRC2 tokens (ex. ckBTC, ckETH) and non-fungible tokens.
+- Deploying, upgrading, and performing operations on canisters.
+- Authenticating with decentralized applications.
 
-- Hold, transfer, and receive assets such as fungible including ICP and other ICRC1/ICRC2 tokens (ex. ckBTC, ckETH) and non-fungible tokens.
-- Deploy, upgrade, and perform operations on canisters.
-
-Decentralized applications developed on ICP can authenticate users using wallets or [Internet Identity](/docs/current/developer-docs/identity/internet-identity/overview).
-
-Though not directly considered a wallet, Internet Identity behind the scenes generates a principal. This principal not only identifies you to various user-facing dapps but is also an identifier to send and receive assets on ICP.
+On other networks, these activities may all use the same wallet account and workflow. On ICP, each of these activities will likely use a separate wallet address or service. This document provides an overview of each different workflow, the type of account associated with it, and how to interact with it.
 
 ## Types of wallets 
 
