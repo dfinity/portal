@@ -110,7 +110,6 @@ const sidebars = {
               type: "doc",
               id: "developer-docs/smart-contracts/write/overview",
             },
-            "developer-docs/smart-contracts/write/auto-scaling-architecture",
             "developer-docs/smart-contracts/write/resources",
           ],
         },
