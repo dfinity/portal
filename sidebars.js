@@ -205,10 +205,10 @@ const sidebars = {
           type: "category",
           label: "Test",
           items: [
-            "developer-docs/smart-contracts/test/benchmarking",
             "developer-docs/smart-contracts/test/pocket-ic",
             "developer-docs/smart-contracts/test/reproducible-builds",
             "developer-docs/smart-contracts/test/troubleshooting",
+            "developer-docs/smart-contracts/test/benchmarking",
           ],
         },
         {
