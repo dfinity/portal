@@ -303,8 +303,8 @@ const sidebars = {
                   type: "category",
                   label: "Signing messages",
                   items: [
-                          "developer-docs/smart-contracts/signatures/signing-messages-t-ecdsa",
-                          "developer-docs/smart-contracts/signatures/signing-messages-t-schnorr",
+                    "developer-docs/smart-contracts/signatures/signing-messages-t-ecdsa",
+                    "developer-docs/smart-contracts/signatures/signing-messages-t-schnorr",
                   ],
                 },
               ],
@@ -679,14 +679,14 @@ const sidebars = {
               type: "category",
               label: "Interacting with Bitcoin",
               items: [
-            "developer-docs/multi-chain/bitcoin/using-btc/generate-addresses",
-            "developer-docs/multi-chain/bitcoin/using-btc/create-transactions",
-            "developer-docs/multi-chain/bitcoin/using-btc/sign-transactions",
-            "developer-docs/multi-chain/bitcoin/using-btc/submit-transactions",
-            "developer-docs/multi-chain/bitcoin/using-btc/read-state",
-            "developer-docs/multi-chain/bitcoin/using-btc/local-development",
-                ],
-              },
+                "developer-docs/multi-chain/bitcoin/using-btc/generate-addresses",
+                "developer-docs/multi-chain/bitcoin/using-btc/create-transactions",
+                "developer-docs/multi-chain/bitcoin/using-btc/sign-transactions",
+                "developer-docs/multi-chain/bitcoin/using-btc/submit-transactions",
+                "developer-docs/multi-chain/bitcoin/using-btc/read-state",
+                "developer-docs/multi-chain/bitcoin/using-btc/local-development",
+              ],
+            },
           ],
         },
         {
@@ -704,9 +704,9 @@ const sidebars = {
               type: "category",
               label: "Interacting with Ethereum",
               items: [
-            "developer-docs/multi-chain/ethereum/using-eth/generating-addresses",
-            "developer-docs/multi-chain/ethereum/using-eth/signing-transactions",
-            "developer-docs/multi-chain/ethereum/using-eth/submit-transactions",
+                "developer-docs/multi-chain/ethereum/using-eth/generating-addresses",
+                "developer-docs/multi-chain/ethereum/using-eth/signing-transactions",
+                "developer-docs/multi-chain/ethereum/using-eth/submit-transactions",
               ],
             },
             {
@@ -1025,6 +1025,7 @@ const sidebars = {
               label: "Overview",
               id: "developer-docs/defi/dex/overview",
             },
+            "developer-docs/defi/dex/working-with-dex"
           ],
         },
         {
