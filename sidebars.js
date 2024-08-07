@@ -1024,8 +1024,7 @@ const sidebars = {
               type: "doc",
               label: "Overview",
               id: "developer-docs/defi/dex/overview",
-            },
-            "developer-docs/defi/dex/working-with-dex"
+            }
           ],
         },
         {
