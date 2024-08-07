@@ -63,7 +63,7 @@ candid::Decode!(&ic_agent.update("icrc1_transfer", &candid::Encode!(&transfer_ar
 Mint and Burn operations are technically speaking also transfers. They work exactly like regular transfers with certain conditions that have to be met. They are the following:
 * For Mint operations the sender of the transfer has to be the minter account. This means that if you want to make Mint transactions you will need to know the private key of the Minter account.
 * For Burn operations the receiver needs to be set to the Mint account. You can request the Minter account by calling the `icrc1_minting_account` endpoint of the ledger. 
-
+:::
 
 ## Approve tokens
 To approve tokens you will need a few mandatory and then some optional fields.
