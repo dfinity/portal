@@ -44,10 +44,6 @@ TypeScript (Azle)
 Python (Kybra)
 ```
 
-:::info
-`dfx` versions `v0.17.0` and newer support this `dfx new` interactive prompt. [Learn more about `dfx v0.17.0`](/blog/2024/02/14/news-and-updates/update#dfx-v0170).
-:::
-
 Then, select a frontend framework for your frontend canister. In this example, select:
 
 ```
@@ -55,8 +51,8 @@ Then, select a frontend framework for your frontend canister. In this example, s
 SvelteKit
 React
 Vue
-❯ Vanilla JS
-No JS template
+Vanilla JS
+❯ No JS template
 No frontend canister
 ```
 
@@ -66,7 +62,6 @@ Lastly, you can include extra features to be added to your project:
 ? Add extra features (space to select, enter to confirm) ›
 ⬚ Internet Identity
 ⬚ Bitcoin (Regtest)
-⬚ Frontend tests
 ```
 
 ## Reviewing the project's file structure
@@ -77,14 +72,11 @@ Let's review the project's file structure:
 poll                   # The root of the project
 ├── README.md
 ├── dfx.json           # The configuration file for your Internet Computer dapp
-├── package-lock.json  # Node.js package configuration
-├── package.json       # Node.js package configuration
 ├── src
 │   ├── poll_backend   # Folder containing the source code of your dapp's backend.
 │   │   └── main.mo    # The default source code file; this is what you'll primarily be working with in this tutorial.
 │   └── poll_frontend  # Folder containing the frontend configuration and assets of your dapp.
-│       └── ...
-└── webpack.config.js  # Web dapp bundler configuration.
+│       └── assets
 ```
 
 You will notice that the file structure above has two sub-directories within `src`. That is because when you created the project `poll` via `dfx new poll`, the project by default created **two** canisters that talk to each other:
@@ -779,19 +771,129 @@ function updateLocalVoteCounts(arrayOfVoteArrays){
 The remainder of this code is annotated with comments to help explain how it works. It can be helpful to read through and understand what this code does, but you will not be focusing on the fundamentals of Javascript until a later tutorial.
 :::
 
+You will need to configure the project to use certain `npm` packages. These packages are defined in a file called `package.json`. Create a new `package.json` file in your project's root that contains the following:
+
+```json
+{
+  "name": "poll_frontend",
+  "version": "0.2.0",
+  "description": "Internet Computer starter application",
+  "keywords": [
+    "Internet Computer",
+    "Motoko",
+    "JavaScript",
+    "Canister"
+  ],
+  "scripts": {
+    "build": "webpack",
+    "prebuild": "dfx generate",
+    "start": "webpack serve --mode development --env development",
+    "deploy:local": "dfx deploy --network=local",
+    "deploy:ic": "dfx deploy --network=ic",
+    "generate": "dfx generate poll_backend"
+  },
+  "dependencies": {
+    "@dfinity/agent": "^0.19.2",
+    "@dfinity/candid": "^0.19.2",
+    "@dfinity/principal": "^0.19.2"
+  },
+  "devDependencies": {
+    "assert": "2.0.0",
+    "buffer": "6.0.3",
+    "copy-webpack-plugin": "^11.0.0",
+    "dotenv": "^16.0.3",
+    "events": "3.3.0",
+    "html-webpack-plugin": "5.5.0",
+    "process": "0.11.10",
+    "stream-browserify": "3.0.0",
+    "terser-webpack-plugin": "^5.3.3",
+    "util": "0.12.4",
+    "webpack": "^5.73.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server": "^4.8.1"
+  },
+  "engines": {
+    "node": "^12 || ^14 || ^16 || ^18"
+  },
+  "browserslist": [
+    "last 2 chrome version",
+    "last 2 firefox version",
+    "last 2 safari version",
+    "last 2 edge version"
+  ]
+}
+```
+
+Lastly, update your project's `dfx.json` file to include the a `dist/poll_frontend/` directory definition for the frontend canister. This directory will hold your frontend canister's assets once the canister has been compiled:
+
+```json
+{
+  "canisters": {
+    "poll_backend": {
+      "main": "src/poll_backend/main.mo",
+      "type": "motoko"
+    },
+    "poll_frontend": {
+      "dependencies": [
+        "poll_backend"
+      ],
+      "frontend": {
+        "entrypoint": "src/poll_frontend/src/index.html"
+      },
+      "source": [
+        "src/poll_frontend/assets",
+        "dist/poll_frontend/"
+      ],
+      "type": "assets"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
+```
+
 ## Re-deploying the dapp
 
-Re-deploy the dapp locally with the command:
+Install the `npm` packages defined in the `package.json` file and re-deploy the dapp locally with the commands:
 
 ```bash
+npm install
 dfx deploy
 ```
+
+:::info
+If you receive the error:
+
+```
+Error: Failed while trying to deploy canisters.
+Caused by: Failed to build all canisters.
+Caused by: Failed while trying to build all canisters.
+Caused by: The post-build step failed for canister 'bd3sg-teaaa-aaaaa-qaaba-cai' (poll_frontend)
+Caused by: Failed to assert source paths.
+Caused by: Unable to determine canonical location of asset source path /Users/jessie.mongeon/poll/dist/poll_frontend/
+Caused by: Failed to canonicalize /Users/jessie.mongeon/poll/dist/poll_frontend/
+Caused by: No such file or directory (os error 2)
+```
+
+Run the following command:
+
+```
+mkdir dist/poll_frontend/
+```
+:::
 
 Now, when the terminal's output displays the following, open the `poll_frontend` URL in a web browser:
 
 ```bash
-  Frontend canister via browser
-    poll_frontend: http://127.0.0.1:4943/?canisterId=avqkn-guaaa-aaaaa-qaaea-cai
+  poll_frontend:
+      - http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai
+      - http://bd3sg-teaaa-aaaaa-qaaba-cai.localhost:4943/
   Backend canister via Candid interface:
     poll_backend: http://127.0.0.1:4943/?canisterId=asrmz-lmaaa-aaaaa-qaaeq-cai&id=by6od-j4aaa-aaaaa-qaadq-cai
 ```
