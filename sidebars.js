@@ -1031,6 +1031,7 @@ const sidebars = {
           type: "category",
           label: "Wallets",
           items: [
+            "developer-docs/defi/wallets/workflow",
             "developer-docs/defi/wallets/overview",
             {
               type: "category",
