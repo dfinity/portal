@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./index.css";
-import { arrow } from "@floating-ui/react";
 
 /* Dates are in YYYY-MM-DD format
  startDate is the first day the slide should be displayed
@@ -165,7 +164,7 @@ const css = `
 `;
 
 export const SectionSlider = () => {
-  let sliderRef = useRef(null);
+  const sliderRef = useRef(null);
 
   const currentDate = new Date();
 
@@ -202,7 +201,7 @@ export const SectionSlider = () => {
   return (
     <div className="slider-container">
       <style>{css}</style>
-      <Slider ref={(slider) => (sliderRef = slider)} {...settings}>
+      <Slider ref={sliderRef} {...settings}>
         {filteredSliderData.map((data, index) => (
           <article key={index} className="border-box px-3">
             <CardWithImage href={data.link} image={data.image}>
