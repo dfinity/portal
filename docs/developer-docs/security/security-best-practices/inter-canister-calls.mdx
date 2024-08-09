@@ -285,49 +285,47 @@ mod test {
 
 ```motoko
 import Result "mo:base/Result";
-import Text "mo:base/Text";
 import Map "mo:base/HashMap";
 import Error "mo:base/Error";
 import Principal "mo:base/Principal";
 
 actor {
 
-  let pending_requests = Map.HashMap<Text, Bool>(10, Text.equal, Text.hash);
+  let pending_requests = Map.HashMap<Principal, Bool>(10, Principal.equal, Principal.hash);
 
   private func guard(principal : Principal) : Result.Result<Principal, Error> {
-    if (pending_requests.get(Principal.toText(principal)) != null) {
+    if (pending_requests.get(principal) != null) {
       #err(Error.reject("Already processing a request for principal " # Principal.toText(principal)));
     } else {
-      pending_requests.put(Principal.toText(principal), true);
-      #ok(principal);
+      pending_requests.put(principal, true);
+      #ok principal;
     };
   };
 
   private func drop(principal : Principal) : () {
-    let _ = pending_requests.remove(Principal.toText(principal));
+    ignore pending_requests.remove(principal);
   };
 
-  public shared (msg) func example_call_with_locking_per_caller() : async Result.Result<(), (Error.ErrorCode, Text)> {
-    let caller = msg.caller;
+  public shared ({caller}) func example_call_with_locking_per_caller() : async Result.Result<(), (Error.ErrorCode, Text)> {
     var success = false;
     try {
       // Try to create a lock for `caller`, return an error immediately if there is already a call in progress for `caller`
       switch (guard(caller)) {
-        case (#err(e)) {
+        case (#err e) {
           return #err(Error.code(e), Error.message(e));
         };
-        case (#ok(_p)) {
+        case (#ok _) {
           success := true;
         };
       };
       // do anything, call other canisters
-      #ok(());
-    } catch (e) {
+      #ok;
+    } catch e {
       #err(Error.code(e), Error.message(e));
     } finally {
       // Release the guard (only request's callbacks that have created a block)
-      if (success) {
-        drop(caller);
+      if success {
+        drop caller;
       };
     };
   };
@@ -339,7 +337,7 @@ actor {
 
 This pattern can be extended to work for the following use cases:
 
-- A global lock that does not only lock per caller. For this, set a boolean flag in the canister state instead of using a `BTreeSet<Principal>` (rust) or `Map.HashMap<Text, Bool>` (Motoko).
+- A global lock that does not only lock per caller. For this, set a boolean flag in the canister state instead of using a `BTreeSet<Principal>` (rust) or `Map.HashMap<Principal, Bool>` (Motoko).
 - A guard that makes sure that only a limited number of principals are allowed to execute a method at the same time.
   - Rust: Return an error in `CallerGuard::new()` in case `pending_requests.len() >= MAX_NUM_CONCURRENT_REQUESTS`.
   - Motoko: Return an error in `guard` in case `pending_requests.size() >= MAX_NUM_CONCURRENT_REQUESTS`.
