@@ -4904,5 +4904,17 @@
     "authOrigins": "https://zoncircle.com",
     "github":"https://github.com/vporton/zondirectory2",
     "twitter": "https://x.com/ZonDirectory"
+  },
+  {
+    "id": "fort-major-dao",
+    "name": "Fort Major DAO",
+    "oneLiner": "Fair, Open, Robust and Transparent digital organization with an uplifting vibe.",
+    "website": "https://fort-major.org",
+    "tags": ["DAO"],
+    "description": "Let's build something nice together and share the benefits fairly! Sign in, find a task you can tackle, solve it and claim your rewards.",
+    "stats": "150+ Tasks Already Solved",
+    "logo": "/img/showcase/fort-major-dao_logo.svg",
+    "twitter": "https://x.com/msqwallet",
+    "github": "https://github.com/fort-major/dao"
   }
 ]
