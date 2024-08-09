@@ -203,7 +203,7 @@ TypeScript canisters can be written using the Azle canister development kit. For
 npx azle install-dfx-extension
 ```
 
-The default canister code for Azle projects contains the following code:
+The default canister code for Azle projects contains the following:
 
 ```typescript title="src/hello_backend/src/index.ts"
 import { IDL, query, update } from 'azle';
@@ -227,7 +227,43 @@ export default class {
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-Create the project directory and file structure:
+Python canisters can be written using the Kybra canister development kit. For Kybra projects, you will need to install `dfx` version `0.19.0+`, and you must run all `dfx` commands in a Python virtual environment.
+
+To set up a Python virtual environment, use the following commands:
+
+<Tabs>
+<TabItem value={"linux"} label="Linux">
+```
+curl https://pyenv.run | bash
+~/.pyenv/bin/pyenv install 3.10.7
+~/.pyenv/versions/3.10.7/bin/python -m venv venv
+source venv/bin/activate
+pip install kybra
+```
+</TabItem>
+
+<TabItem value={"macos"} label="macOS">
+```
+brew install pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+source ~/.zprofile
+pyenv install 3.10.7
+~/.pyenv/versions/3.10.7/bin/python -m venv venv
+source venv/bin/activate
+pip install kybra
+```
+</TabItem>
+
+<TabItem value={"windows"} label="Windows">
+
+Refer to the [pyenv-win](https://github.com/pyenv-win/pyenv-win?tab=readme-ov-file) documentation for pyenv installation options on Windows.
+
+</TabItem>
+</Tabs>
+
+The default canister code for Kybra projects contains the following:
 
 ```python title="src/hello_backend/src/main.py"
 from kybra import query

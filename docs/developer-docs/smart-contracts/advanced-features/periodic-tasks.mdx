@@ -2,11 +2,11 @@
 keywords: [advanced, concept, tasks, timers, periodic tasks, periodic timers]
 ---
 
-import TabItem from "@theme/TabItem"; 
-import useBaseUrl from "@docusaurus/useBaseUrl"; 
-import { AdornedTabs } from "/src/components/Tabs/AdornedTabs"; 
-import { AdornedTab } from "/src/components/Tabs/AdornedTab"; 
-import { BetaChip } from "/src/components/Chip/BetaChip"; 
+import TabItem from "@theme/TabItem";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Periodic tasks and timers
@@ -137,6 +137,12 @@ def timer_callback():
     ic.print("timer_callback")
 
 ```
+
+:::caution
+
+Kybra canisters must be deployed from a Python virtual environment. [Learn more in the Kybra docs](/docs/current/developer-docs/backend/python/).
+
+:::
 
 </AdornedTab>
 </AdornedTabs>
@@ -477,6 +483,12 @@ def repeat_cross_canister_timer_callback() -> Async[void]:
     match(result, {"Ok": handle_ok, "Err": lambda err: ic.print(err)})
 ```
 
+:::caution
+
+Kybra canisters must be deployed from a Python virtual environment. [Learn more in the Kybra docs](/docs/current/developer-docs/backend/python/).
+
+:::
+
 </AdornedTab>
 </AdornedTabs>
 
@@ -502,13 +514,13 @@ Because of those limitations, in most cases CDK timers library for [Rust](https:
 
 ## Frequently asked questions
 
-- #### Do timers support deterministic time slicing (DTS)?  
+- #### Do timers support deterministic time slicing (DTS)?
 Yes, as the CDK timers library initiates a self canister call to execute each task, normal [update message instruction limits](/docs/current/developer-docs/smart-contracts/maintain/resource-limits) apply with DTS enabled.
 
-- #### What happens if a timer handler awaits for a call?  
+- #### What happens if a timer handler awaits for a call?
 Normal await point rules apply: any new execution can start at the await point: a new message, another timer handler or a heartbeat. Once that new execution is finished or reached its await point, the execution of the current timer handler might be resumed.
 
-- #### What happens if a 1s periodic timer is executing for 2s?  
+- #### What happens if a 1s periodic timer is executing for 2s?
 If there are no await points in the timer handler, the periodic timer will be rescheduled at the end of the execution. If there are await points, it's implementation-defined when the periodic timer is rescheduled.
 
 ## Tutorials and examples
