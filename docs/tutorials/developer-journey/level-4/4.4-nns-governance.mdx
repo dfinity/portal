@@ -167,7 +167,7 @@ You will be prompted to log in with your Internet Identity. If you need to creat
 
 Once logged in, you can see your balance for each token on the NNS dapp. Tokens include ICP, ckBTC, and dapp-specific tokens for dapps that have an SNS, such as OpenChat (CHAT) and Hot or Not (HOT). For this tutorial, you'll be staking ICP in an ICP neuron, so assure that you have some ICP tokens available.
 
-If you need to obtain ICP tokens, they can be purchased through a crypto exchange, or they can be received through other activities such as receiving grants from the DFINITY foundation. They will need to be sent to the ICP wallet address shown in the NNS dapp. The following screenshot shows this address beneath the current balance under the 'Main' account with the balance of `5.10 ICP`:
+If you need to obtain ICP tokens, they can be purchased through a crypto exchange, or they can be received through other activities such as receiving grants from the DFINITY foundation. They will need to be sent to the ICP wallet address shown in the NNS dapp in the top right corner of the wallet's details:
 
 ![NNS dapp 1](../_attachments/nns1.png)
 
@@ -200,12 +200,16 @@ dfx ledger --network ic transfer <DESTINATION> --icp <ICP-AMOUNT> --memo <MEMO>
 For example, for the 'Main' account in this example, you could transfer 1 ICP to the account with the command:
 
 ```bash
-dfx ledger --network ic transfer 365cf45f3521653e866a078b157a8d8701c3f63183a6d41ff8ddb913c4a978d3 --icp 1 --memo Developer Journey
+dfx ledger --network ic transfer 365cf45f3521653e866a078b157a8d8701c3f63183a6d41ff8ddb913c4a978d3 --icp 1 --memo 1
 ```
+
+:::info
+`MEMO` refers to a 64-bit numeric value as defined in the [IC specification](/docs/current/references/ledger#_transferring_tokens). It is used to generate unique hash values for transactions.
+:::
 
 ### Staking ICP in a neuron
 
-To stake your ICP tokens in a neuron, select 'My Neuron Staking' on the left navigation bar. Then select 'Stake Neurons' in the bottom of the window.
+To stake your ICP tokens in a neuron, select 'Neuron Staking' on the left navigation bar. Then select 'Stake ICP' in the bottom of the window.
 
 ![NNS dapp 2](../_attachments/nns2.png)
 
@@ -245,7 +249,7 @@ Then confirm that your following settings have been updated.
 
 ![NNS dapp 11](../_attachments/nns11.png)
 
-Close this window. Now, let's take a look at the details of our neuron. From the 'My Neuron Staking' page, you will see your neuron, its staked balance, its neuron ID, and its dissolve delay time. Select on the neuron to see additional details.
+Close this window. Now, let's take a look at the details of our neuron. From the 'Neuron Staking' page, you will see your neuron, its staked balance, its neuron ID, and its dissolve delay time. Select on the neuron to see additional details.
 
 ![NNS dapp 12](../_attachments/nns12.png)
 
@@ -271,7 +275,7 @@ If you click on one, however, you'll notice that you cannot vote on it. That's b
 
 ![NNS dapp 17](../_attachments/nns17.png)
 
-For additional information the NNS dapp, proposals, and neuron staking, check out the [NNS quick start guide](/docs/current/developer-docs/daos/nns/nns-app-quickstart).
+For additional information the NNS dapp, proposals, and neuron staking, check out the [NNS quick start guide](/docs/current/developer-docs/daos/nns/nns-app-quickstart) and the [NNS explained series](https://youtu.be/1uX-fRgvXjU?feature=shared).
 
 ## Need help?
 
