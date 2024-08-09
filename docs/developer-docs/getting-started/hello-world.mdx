@@ -343,13 +343,18 @@ Output:
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```bash
-dfx canister call hello_backend greet world
+dfx canister call hello_backend greet '("Hello World!")'
 ```
 
 Output:
 
 ```
-("Hello, world!")
+"metadata": [
+   {
+     "name": "candid:service"
+   }
+]
+("Hello, world!!")
 ```
 
 </AdornedTab>

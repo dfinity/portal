@@ -60,16 +60,12 @@ For the code composability reasons, i.e. to be able to use different libraries w
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
-import { print } = "mo:base/Debug";
-import { recurringTimer } = "mo:base/Timer";
+system func timer(setGlobalTimer : Nat64 -> ()) : async () {
+  let next = Nat64.fromIntWrap(Time.now()) + 20_000_000_000;
+  setGlobalTimer(next); // absolute time in nanoseconds
+  print("Tick!");
+}
 
-actor Alarm {
-  let N = 5;
-  private func ring() : async () {
-    print("Motoko Timer Ring!");
-  };
-  ignore recurringTimer<system>(#seconds N, ring);
-};
 ```
 
 </TabItem>
@@ -121,21 +117,69 @@ export default class {
 
 ```python
 from kybra import (
+    blob,
     Duration,
     ic,
+    query,
+    Record,
     TimerId,
     update,
+    void,
 )
 
 
+class StatusReport(Record):
+    single: bool
+    capture: str
+
+
+class TimerIds(Record):
+    single: TimerId
+    capture: TimerId
+
+
+status: StatusReport = {
+    "single": False,
+    "capture": "",
+}
+
+
 @update
-def set_timer(delay: Duration) -> TimerId:
-    return ic.set_timer(delay, timer_callback)
+def clear_timer(timer_id: TimerId) -> void:
+    ic.clear_timer(timer_id)
+    ic.print(f"timer {timer_id} cancelled")
 
 
-def timer_callback():
-    ic.print("timer_callback")
+@update
+def set_timers(delay: Duration, interval: Duration) -> TimerIds:
+    captured_value = "🚩"
 
+    single_id = ic.set_timer(delay, one_time_timer_callback)
+
+    capture_id = ic.set_timer(
+        delay,
+        lambda: update_capture_status(captured_value)
+        or ic.print(f"Timer captured value: {captured_value}"),
+    )
+
+    return {
+        "single": single_id,
+        "capture": capture_id,
+    }
+
+
+@query
+def status_report() -> StatusReport:
+    return status
+
+
+def one_time_timer_callback():
+    status["single"] = True
+    ic.print("one_time_timer_callback called")
+
+
+def update_capture_status(value: str):
+    status["capture"] = value
 ```
 
 :::caution
@@ -188,13 +232,16 @@ use std::time::Duration;
 
 const N: Duration = Duration::from_secs(5);
 
+const Y: Duration = Duration::from_secs(20);
+
 fn ring() {
     ic_cdk::println!("Rust Timer Ring!");
 }
 
 #[ic_cdk::init]
 fn init() {
-    let _timer_id = ic_cdk_timers::set_timer_interval(N, ring);
+    let _timer_id1 = ic_cdk_timers::set_timer_interval(N, ring);
+    let _timer_id2 = ic_cdk_timers::set_timer_interval(Y, ring);
 }
 
 #[ic_cdk::post_upgrade]
@@ -220,45 +267,30 @@ import {
 
 const StatusReport = IDL.Record({
     single: IDL.Bool,
-    inline: IDL.Int8,
     capture: IDL.Text,
     repeat: IDL.Int8,
-    singleCrossCanister: IDL.Vec(IDL.Nat8),
-    repeatCrossCanister: IDL.Vec(IDL.Nat8)
 });
 type StatusReport = {
     single: boolean;
-    inline: number;
     capture: string;
     repeat: number;
-    singleCrossCanister: Uint8Array;
-    repeatCrossCanister: Uint8Array;
 };
 
 const TimerIds = IDL.Record({
     single: IDL.Nat64,
-    inline: IDL.Nat64,
     capture: IDL.Nat64,
     repeat: IDL.Nat64,
-    singleCrossCanister: IDL.Nat64,
-    repeatCrossCanister: IDL.Nat64
 });
 type TimerIds = {
     single: bigint;
-    inline: bigint;
     capture: bigint;
     repeat: bigint;
-    singleCrossCanister: bigint;
-    repeatCrossCanister: bigint;
 };
 
 let statusReport: StatusReport = {
     single: false,
-    inline: 0,
     capture: '',
     repeat: 0,
-    singleCrossCanister: Uint8Array.from([]),
-    repeatCrossCanister: Uint8Array.from([])
 };
 
 export default class {
@@ -274,11 +306,6 @@ export default class {
 
         const singleId = setTimer(delay, oneTimeTimerCallback);
 
-        const inlineId = setTimer(delay, () => {
-            statusReport.inline = 1;
-            console.info('Inline timer called');
-        });
-
         const captureId = setTimer(delay, () => {
             statusReport.capture = capturedValue;
             console.info(`Timer captured value ${capturedValue}`);
@@ -289,23 +316,10 @@ export default class {
             console.info(`Repeating timer. Call ${statusReport.repeat}`);
         });
 
-        const singleCrossCanisterId = setTimer(
-            delay,
-            singleCrossCanisterTimerCallback
-        );
-
-        const repeatCrossCanisterId = setTimerInterval(
-            interval,
-            repeatCrossCanisterTimerCallback
-        );
-
         return {
             single: singleId,
-            inline: inlineId,
             capture: captureId,
             repeat: repeatId,
-            singleCrossCanister: singleCrossCanisterId,
-            repeatCrossCanister: repeatCrossCanisterId
         };
     }
 
@@ -313,32 +327,6 @@ export default class {
     statusReport(): StatusReport {
         return statusReport;
     }
-}
-
-function oneTimeTimerCallback(): void {
-    statusReport.single = true;
-    console.info('oneTimeTimerCallback called');
-}
-
-async function singleCrossCanisterTimerCallback(): Promise<void> {
-    console.info('singleCrossCanisterTimerCallback');
-
-    statusReport.singleCrossCanister = await getRandomness();
-}
-
-async function repeatCrossCanisterTimerCallback(): Promise<void> {
-    console.info('repeatCrossCanisterTimerCallback');
-
-    statusReport.repeatCrossCanister = Uint8Array.from([
-        ...statusReport.repeatCrossCanister,
-        ...(await getRandomness())
-    ]);
-}
-
-async function getRandomness(): Promise<Uint8Array> {
-    return await call('aaaaa-aa', 'raw_rand', {
-        returnIdlType: IDL.Vec(IDL.Nat8)
-    });
 }
 ```
 
@@ -366,29 +354,20 @@ from kybra.canisters.management import management_canister
 
 class StatusReport(Record):
     single: bool
-    inline: nat8
     capture: str
     repeat: nat8
-    single_cross_canister: blob
-    repeat_cross_canister: blob
 
 
 class TimerIds(Record):
     single: TimerId
-    inline: TimerId
     capture: TimerId
     repeat: TimerId
-    single_cross_canister: TimerId
-    repeat_cross_canister: TimerId
 
 
 status: StatusReport = {
     "single": False,
-    "inline": 0,
     "capture": "",
     "repeat": 0,
-    "single_cross_canister": bytes(),
-    "repeat_cross_canister": bytes(),
 }
 
 
@@ -404,16 +383,6 @@ def set_timers(delay: Duration, interval: Duration) -> TimerIds:
 
     single_id = ic.set_timer(delay, one_time_timer_callback)
 
-    # Note: You cannot set global variables from within a lambda but you can
-    # call a function that sets a global variable. So we've moved the "setting"
-    # functionality out into helper functions while the printing is kept here in
-    # the lambda.
-
-    inline_id = ic.set_timer(
-        delay,
-        lambda: update_inline_status() or ic.print("Inline timer called"),
-    )
-
     capture_id = ic.set_timer(
         delay,
         lambda: update_capture_status(captured_value)
@@ -422,19 +391,10 @@ def set_timers(delay: Duration, interval: Duration) -> TimerIds:
 
     repeat_id = ic.set_timer_interval(interval, repeat_timer_callback)
 
-    single_cross_canister_id = ic.set_timer(delay, single_cross_canister_timer_callback)
-
-    repeat_cross_canister_id = ic.set_timer_interval(
-        interval, repeat_cross_canister_timer_callback
-    )
-
     return {
         "single": single_id,
-        "inline": inline_id,
         "capture": capture_id,
         "repeat": repeat_id,
-        "single_cross_canister": single_cross_canister_id,
-        "repeat_cross_canister": repeat_cross_canister_id,
     }
 
 
@@ -453,34 +413,9 @@ def repeat_timer_callback():
     ic.print(f"Repeating timer. Call {status['repeat']}")
 
 
-def update_inline_status():
-    status["inline"] = 1
-
-
 def update_capture_status(value: str):
     status["capture"] = value
 
-
-def single_cross_canister_timer_callback() -> Async[void]:
-    ic.print("single_cross_canister_timer_callback")
-
-    result: CallResult[blob] = yield management_canister.raw_rand()
-
-    def handle_ok(ok: blob):
-        status["single_cross_canister"] = ok
-
-    match(result, {"Ok": handle_ok, "Err": lambda err: ic.print(err)})
-
-
-def repeat_cross_canister_timer_callback() -> Async[void]:
-    ic.print("repeat_cross_canister_timer_callback")
-
-    result: CallResult[blob] = yield management_canister.raw_rand()
-
-    def handle_ok(ok: blob):
-        status["repeat_cross_canister"] += ok
-
-    match(result, {"Ok": handle_ok, "Err": lambda err: ic.print(err)})
 ```
 
 :::caution

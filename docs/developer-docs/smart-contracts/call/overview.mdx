@@ -35,12 +35,24 @@ Update calls are executed on all nodes of a <GlossaryTooltip>subnet</GlossaryToo
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
-actor countCharacters {
-    public func test(text : Text) : async Bool {
-        let size = Text.size(text);
-        return size % 2 == 0;
-    };
-};
+actor Counter {
+
+  stable var counter = 0;
+
+  // Get the value of the counter.
+  public query func get() : async Nat {
+    return counter;
+  };
+
+  // Set the value of the counter.
+  public func set(n : Nat) : async () {
+    counter := n;
+  };
+
+  // Increment the value of the counter.
+  public func inc() : async () {
+    counter += 1;
+  };
 ```
 
 </TabItem>
@@ -78,10 +90,15 @@ export default class {
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```python
+from kybra import query, update, text, void, nat32
+
+current_count: nat32 = 0
+
 @update
-def set_message(new_message: str) -> void:
-    global message
-    message = new_message
+def simple_update(count: nat32) -> void:
+    global current_count
+
+    current_count = count
 ```
 
 :::caution
@@ -151,9 +168,16 @@ export default class {
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```python
+from kybra import query, update, text, void
+
+current_message: text = ''
+
+
 @query
-def get_message() -> str:
-    return message
+def get_current_message() -> text:
+    return current_message
+
+
 ```
 
 :::caution

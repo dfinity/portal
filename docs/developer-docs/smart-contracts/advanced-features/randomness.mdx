@@ -80,21 +80,32 @@ export default class {
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```python
-from kybra import Async, blob, CallResult, match, update, Variant
-from kybra.canisters.management import management_canister
+from kybra import (
+    Async,
+    blob,
+    CallResult,
+    match,
+    update,
+    Variant,
+)
+from kybra.canisters.management import (
+    management_canister,
+)
 
-
-class RandomBytesResult(Variant, total=False):
+class RawRandResult(Variant, total=False):
     Ok: blob
     Err: str
 
-
 @update
-def random_bytes() -> Async[RandomBytesResult]:
-    call_result: CallResult[blob] = yield management_canister.raw_rand()
+def get_raw_rand() -> Async[RawRandResult]:
+    raw_rand_call_result: CallResult[blob] = yield management_canister.raw_rand()
 
     return match(
-        call_result, {"Ok": lambda ok: {"Ok": ok}, "Err": lambda err: {"Err": err}}
+        raw_rand_call_result,
+        {
+            "Ok": lambda randomness: {"Ok": randomness},
+            "Err": lambda err: {"Err": err},
+        },
     )
 ```
 
