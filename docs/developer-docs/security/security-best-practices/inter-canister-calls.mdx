@@ -2,6 +2,10 @@
 keywords: [security, concept, inter-canister call, messaging, trap, panic, journaling, reentrancy]
 ---
 
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Security best practices: Inter-canister calls
@@ -189,7 +193,13 @@ See also: "Inter-canister calls" section in [how to audit an ICP canister](https
 
 To address issues around message ordering that can lead to bugs, one usually employs locking mechanisms to ensure that a caller or anyone can only execute an entire call, which involves several messages, once at a time. A simple example is also given in the [community conversation](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s) mentioned above.
 
-The locks would usually be released in the callback. That bears the risk that the lock may never be released in case the callback traps, as we discussed in [securely handle traps in callbacks](#securely-handle-traps-in-callbacks). In Rust, there is a nice pattern to avoid this issue by using Rust's `Drop` implementation. The example code below shows how one can implement a lock per caller (`CallerGuard`) with a `Drop` implementation. From Rust CDK version `0.5.1`, any local variables still go out of scope if the callback traps, so the lock on the caller is released even in that case. Technically, the CDK calls into the `ic0.call_on_cleanup` API to release these resources. Rrecall that `ic0.call_on_cleanup` is executed if the `reply` or the `reject` callback executed and trapped.
+The locks would usually be released in the callback. That bears the risk that the lock may never be released in case the callback traps, as we discussed in [securely handle traps in callbacks](#securely-handle-traps-in-callbacks). The code examples below shows how one can securely implement a lock per caller.
+- In Rust, one can use the drop pattern where each caller lock (`CallerGuard` struct) implementats the `Drop` trait to release the lock. From Rust CDK version `0.5.1`, any local variables still go out of scope if the callback traps, so the lock on the caller is released even in that case. Technically, the CDK calls into the `ic0.call_on_cleanup` API to release these resources. Recall that `ic0.call_on_cleanup` is executed if the `reply` or the `reject` callback executed and trapped.
+- In Motoko, one can use `try`/`finally` control flow construct. This construct guarantees lock release execution in the `finally` block regardless of any exceptions in the `try` block.
+
+<AdornedTabs groupId="language">
+<TabItem value="rust" label="Rust" default>
+
 ```rust
 pub struct State {
     pending_requests: BTreeSet<Principal>,
@@ -269,11 +279,73 @@ mod test {
 }
 ```
 
+</TabItem>
+
+<TabItem value="motoko" label="Motoko">
+
+```motoko
+import Result "mo:base/Result";
+import Text "mo:base/Text";
+import Map "mo:base/HashMap";
+import Error "mo:base/Error";
+import Principal "mo:base/Principal";
+
+actor {
+
+  let pending_requests = Map.HashMap<Text, Bool>(10, Text.equal, Text.hash);
+
+  private func guard(principal : Principal) : Result.Result<Principal, Error> {
+    if (pending_requests.get(Principal.toText(principal)) != null) {
+      #err(Error.reject("Already processing a request for principal " # Principal.toText(principal)));
+    } else {
+      pending_requests.put(Principal.toText(principal), true);
+      #ok(principal);
+    };
+  };
+
+  private func drop(principal : Principal) : () {
+    let _ = pending_requests.remove(Principal.toText(principal));
+  };
+
+  public shared (msg) func example_call_with_locking_per_caller() : async Result.Result<(), (Error.ErrorCode, Text)> {
+    let caller = msg.caller;
+    var success = false;
+    try {
+      // Try to create a lock for `caller`, return an error immediately if there is already a call in progress for `caller`
+      switch (guard(caller)) {
+        case (#err(e)) {
+          return #err(Error.code(e), Error.message(e));
+        };
+        case (#ok(_p)) {
+          success := true;
+        };
+      };
+      // do anything, call other canisters
+      #ok(());
+    } catch (e) {
+      #err(Error.code(e), Error.message(e));
+    } finally {
+      // Release the guard (only request's callbacks that have created a block)
+      if (success) {
+        drop(caller);
+      };
+    };
+  };
+};
+```
+
+</TabItem>
+</AdornedTabs>
+
 This pattern can be extended to work for the following use cases:
 
-- A global lock that does not only lock per caller. For this, set a boolean flag in the canister state instead of using a `BTreeSet<Principal>`.
-- A guard that makes sure that only a limited number of principals are allowed to execute a method at the same time. For this, one can return an error in `CallerGuard::new()` in case `pending_requests.len() >= MAX_NUM_CONCURRENT_REQUESTS`.
-- A guard that limits the number of times a method can be called in parallel. For this, use a counter in the canister state that is checked and increased in `CallerGuard::new()` and decreased in `Drop`.
+- A global lock that does not only lock per caller. For this, set a boolean flag in the canister state instead of using a `BTreeSet<Principal>` (rust) or `Map.HashMap<Text, Bool>` (Motoko).
+- A guard that makes sure that only a limited number of principals are allowed to execute a method at the same time.
+  - Rust: Return an error in `CallerGuard::new()` in case `pending_requests.len() >= MAX_NUM_CONCURRENT_REQUESTS`.
+  - Motoko: Return an error in `guard` in case `pending_requests.size() >= MAX_NUM_CONCURRENT_REQUESTS`.
+- A guard that limits the number of times a method can be called in parallel.
+  - Rust: Use a counter in the canister state that is checked and increased in `CallerGuard::new()` and decreased in `Drop`.
+  - Motoko: Increase a counter in the `guard` function and decreased it in the `drop` function.
 - A guard that makes sure that every task from a set of tasks can only be processed once, independently of the caller who triggered the processing. [View example project](https://github.com/dfinity/examples/tree/master/rust/guards).
 - A lock that uses a different type than `Principal` to grant access to the resource. [View an implementation using generic types](./_attachments/lock.rs).
 
