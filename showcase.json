@@ -326,7 +326,7 @@
       "SocialFi",
       "DAO"
     ],
-    "description": "Catalyze is an innovative social dapp that serves as a community organizing tool where users can build groups, interact with other members of your community, create/run events, and transact using their Web3 identity and wallet.",
+    "description": "Catalyze is building the new Web3 social learning hub: Communities, Events & Seamless Token Transfer. Now onboarding KOLs.",
     "usesInternetIdentity": true,
     "oneLiner": "Manage your Web3 communities and events",
     "display": "Large",
@@ -4966,12 +4966,14 @@
     "name": "Zon Social Media",
     "oneLiner": "A fusion of social network, marketplace, and Web directory.",
     "website": "https://zoncircle.com",
-    "tags": ["SocialFi"],
+    "tags": [
+      "SocialFi"
+    ],
     "description": "A fusion of social network, marketplace, and Web directory. World as items in folders. On the mission to overcome network effect - well suited for indie authors.",
     "logo": "/img/showcase/zon_logo.webp",
     "usesInternetIdentity": true,
     "authOrigins": "https://zoncircle.com",
-    "github":"https://github.com/vporton/zondirectory2",
+    "github": "https://github.com/vporton/zondirectory2",
     "twitter": "https://x.com/ZonDirectory"
   },
   {
@@ -4979,7 +4981,9 @@
     "name": "NeuronPool",
     "oneLiner": "Stake your ICP, join the pool and win big rewards!",
     "website": "https://neuronpool.com/",
-    "tags": ["DeFi"],
+    "tags": [
+      "DeFi"
+    ],
     "description": "Stake your ICP, join the pool and win big rewards!",
     "logo": "/img/showcase/neuronpool_logo.png",
     "usesInternetIdentity": true,
@@ -4996,7 +5000,9 @@
     "name": "Fort Major DAO",
     "oneLiner": "Fair, Open, Robust and Transparent digital organization with an uplifting vibe.",
     "website": "https://fort-major.org",
-    "tags": ["DAO"],
+    "tags": [
+      "DAO"
+    ],
     "description": "Let's build something nice together and share the benefits fairly! Sign in, find a task you can tackle, solve it and claim your rewards.",
     "stats": "150+ Tasks Already Solved",
     "logo": "/img/showcase/fort-major-dao_logo.svg",
