@@ -87,7 +87,7 @@ function EducationHubPage() {
   });
   const [selectedContentLanguages, setSelectedContentLanguages] = useQueryParam<
     ContentLanguage[]
-  >("selectedLanguages", [], {
+  >("contentLanguages", [], {
     serialize: serializeStringList,
     deserialize: deserializeStringList,
   });
