@@ -881,11 +881,7 @@ const sidebars = {
             "developer-docs/defi/tokens/asset_flow/index",
             "developer-docs/defi/tokens/token-standards",
             "developer-docs/defi/token_integrations/index",
-            "developer-docs/defi/icp-tokens/ledger-local-setup",
-            "developer-docs/defi/icrc-1/icrc1-ledger-setup",
             "developer-docs/defi/tokens/indexes",
-            "developer-docs/defi/icp-tokens/using-the-ledger",
-            "developer-docs/defi/icrc-1/using-icrc1-ledger",
             "developer-docs/defi/icp-tokens/account-trimming",
             "developer-docs/defi/tokens/create",
             {
