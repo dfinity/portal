@@ -40,12 +40,12 @@ const sliderData = [
     endDate: "2024-12-01",
   },
   {
-    tagline: "Milestone Test Phase Live 🟢",
+    tagline: "Milestone achieved 🚀",
     title: "DEUTERIUM",
     description: "Chain Fusion supports threshold Schnorr signing.",
     image: "/img/home/slider/deuterium_milestone_card.webp",
     link: "https://internetcomputer.org/roadmap#Chain%20Fusion-Deuterium",
-    startDate: "2024-01-01",
+    startDate: "2024-08-14",
     endDate: "2024-12-01",
   },
 ];
