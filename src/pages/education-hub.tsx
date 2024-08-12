@@ -87,7 +87,7 @@ function EducationHubPage() {
   });
   const [selectedContentLanguages, setSelectedContentLanguages] = useQueryParam<
     ContentLanguage[]
-  >("selectedLanguages", [], {
+  >("contentLanguages", [], {
     serialize: serializeStringList,
     deserialize: deserializeStringList,
   });
@@ -240,6 +240,7 @@ function EducationHubPage() {
                   "relative grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 lg:grid-cols-4 transition-opacity items-stretch",
                   filteredCourses.length === 0 ? "" : "mt-11 mb-20"
                 )}
+                ref={coursesStartRef}
               >
                 {filteredCourses.slice(0, numberOfItems).map((course) => (
                   <Card

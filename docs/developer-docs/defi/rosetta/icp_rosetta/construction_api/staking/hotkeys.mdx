@@ -11,7 +11,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 This section will explain how to generate a hotkey for neuron management and add or remove hotkeys to your neuron using ICP Rosetta.
-The recommended way to get hotkeys is to programmatically 
+The recommended way to get hotkeys is to programmatically
 generate them using the same process used in the public `ic` repository.
 However, it is possible to generate hotkeys manually as described
 below.
@@ -100,7 +100,7 @@ This is the public key you can use in Rosetta operations to identify your hotkey
 
 - ##### Why do I get "Algorithm ed25519 not found" while generating the PEM file?
 
-The version of OpenSSL included in MacOS doesn't support ed25519 by default. 
+The version of OpenSSL included in macOS doesn't support ed25519 by default.
 You may have to install another version of OpenSSL (for example through *brew*), or run the command from a Linux machine.
 
 ## Adding hotkeys to a neuron
@@ -111,7 +111,7 @@ You may have to install another version of OpenSSL (for example through *brew*),
 | Minimal access level | controller |
 
 The `ADD_HOTKEY` operation adds a hotkey to the neuron. The Governance canister allows some non-critical operations to be signed with a hotkey instead of the controller’s key (e.g., voting and querying maturity).
-The neuron you are trying to add a hotkey for must not have more than 10 hotkeys already linke to it. 
+The neuron you are trying to add a hotkey for must not have more than 10 hotkeys already linke to it.
 
 The command has two forms: one form accepts an [ICP principal](/references/ic-interface-spec.md#principal) as a hotkey, another form accepts a [public key](https://www.rosetta-api.org/docs/models/PublicKey.html).
 
@@ -152,7 +152,7 @@ curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: ap
 #### Add a public key as a hotkey
 
 ``` json
-curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data 
+curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data
 '{
   "network_identifier": {
     "blockchain": "Internet Computer",
@@ -186,7 +186,7 @@ curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: ap
 }'
 ```
 
-When you call `NeuronInfo` afterwards you can see the hotkey added to the list of hotkeys, like so. 
+When you call `NeuronInfo` afterwards you can see the hotkey added to the list of hotkeys, like so.
 ```json
 {
     "transaction_identifier": {
@@ -246,7 +246,7 @@ curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: ap
 #### Remove a public key as a hotkey
 
 ``` json
-curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data 
+curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data
 ' {
   "operation_identifier": { "index": 0 },
   "type": "REMOVE_HOTKEY",
@@ -261,4 +261,4 @@ curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: ap
 }'
 ```
 
-After this operation the hotekey should not be included in the `NeuronInfo` anymore. 
+After this operation the hotekey should not be included in the `NeuronInfo` anymore.

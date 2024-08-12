@@ -3,6 +3,10 @@ keywords: [intermediate, tutorial, user sign in, user login, internet identity]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 
 # Integrating with II
 
@@ -20,15 +24,7 @@ Before you start, verify that you have:
 - Downloaded and installed [`dfx`](https://github.com/dfinity/sdk/releases/latest) version 0.14.1 or later.
 - [Node.js v16+](https://nodejs.org/en).
 
-### Step 1: To get started, open a terminal window and create a new project:
-
-import TabItem from "@theme/TabItem";
-import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
-import { AdornedTab } from "/src/components/Tabs/AdornedTab";
-import { BetaChip } from "/src/components/Chip/BetaChip";
-
-<AdornedTabs groupId="version">
-<TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
+### Step 1: To get started, open a terminal window and create a new project.
 
 Start `dfx`:
 
@@ -52,6 +48,10 @@ You will be prompted to select the language that your backend canister will use.
   Python (Kybra)
 ```
 
+:::info
+`dfx` versions `v0.17.0` and newer support this `dfx new` interactive prompt. [Learn more about `dfx v0.17.0`](/blog/2024/02/14/news-and-updates/update#dfx-v0170).
+:::
+
 Then, select a frontend framework for your frontend canister. Select 'Vanilla JS':
 
 ```
@@ -72,82 +72,6 @@ x Internet Identity
 ⬚ Bitcoin (Regtest)
 ⬚ Frontend tests
 ```
-
-
-
-</TabItem>
-
-<TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
-
-Start `dfx`:
-
-```
-dfx start --clean --background
-```
-
-Use `dfx new <project_name>` to create a new project:
-
-```bash
-dfx new ii_integration
-```
-
-As mentioned in the introduction, you'll be using the **pullable** version of the Internet Identity canister, which uses the `dfx deps` workflow. The project's `dfx.json` file defines the Internet Identity canister as `"type": "pull"`.
-
-Open the `dfx.json` file and replace the existing content with the following:
-
-
-```json
-{
-  "canisters": {
-    "ii_integration_backend": {
-      "main": "src/ii_integration_backend/main.mo",
-      "type": "motoko"
-    },
-    "internet_identity" : {
-      "type": "pull",
-      "id": "rdmx6-jaaaa-aaaaa-aaadq-cai"
-    },
-    "ii_integration_frontend": {
-      "dependencies": [
-        "ii_integration_backend"
-      ],
-      "frontend": {
-        "entrypoint": "src/ii_integration_frontend/src/index.html"
-      },
-      "source": [
-        "src/ii_integration_frontend/assets",
-        "dist/ii_integration_frontend/"
-      ],
-      "type": "assets"
-    }
-  },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
-  "output_env_file": ".env",
-  "version": 1
-}
-```
-
-Pull the II canister using `dfx deps`:
-
-```
-dfx deps pull
-```
-
-Initialize the canister. You can use the `'(null)'` value passed to the init command to use the default values. To do so, run the command:
-
-```
-dfx deps init internet_identity --argument '(null)'
-```
-
-
-</TabItem>
-</AdornedTabs>
-
 
 ### Step 2: For this project, you'll use a simple 'Who am I?' function for the backend canister. Open the `src/ii_integration_backend/main.mo` file and replace the existing content with the following:
 

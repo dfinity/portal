@@ -2,10 +2,6 @@
 keywords: [beginner, rust, tutorial, project organization]
 ---
 
-import TabItem from "@theme/TabItem";
-import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
-import { AdornedTab } from "/src/components/Tabs/AdornedTab";
-import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # 2: Project organization
@@ -16,9 +12,6 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 When a new Rust project is created with the command:
 
-<AdornedTabs groupId="version">
-<TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
-
 ```
 dfx new example
 
@@ -28,17 +21,6 @@ dfx new example
   TypeScript (Azle)
   Python (Kybra)
 ```
-
-</TabItem>
-
-<TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
-
-```bash
-dfx new --type rust example
-```
-
-</TabItem>
-</AdornedTabs>
 
 the following project structure is generated:
 
@@ -64,6 +46,10 @@ src
         └── index.js
 webpack.config.js
 ```
+
+:::info
+`dfx` versions `v0.17.0` and newer support this `dfx new` interactive prompt. [Learn more about `dfx v0.17.0`](/blog/2024/02/14/news-and-updates/update#dfx-v0170).
+:::
 
 In this structure, you can see the backend canister, in this case `example_backend` contains the following components:
 

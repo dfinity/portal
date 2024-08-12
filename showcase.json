@@ -1083,24 +1083,6 @@
     ]
   },
   {
-    "id": "ntagle",
-    "name": "ntagle",
-    "oneLiner": "Proof of Physical Ownership Platform",
-    "tags": [
-      "Tools / Infrastructure",
-      "Wallet",
-      "Bitcoin",
-      "Chainfusion"
-    ],
-    "description": "ntagle connects inexpensive physical NFC tags to canisters, giving IC dapp developers the ability to create transferrable HW wallets, Physical NFTs, etc. Any tag can use any integration, meaning dapps can make web3 phygital experiences available to all ntagle owners with a single deploy.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/ntagle_icon.webp",
-    "github": "https://github.com/InternetComputerOG/ntagle-core",
-    "twitter": "https://twitter.com/ntagled",
-    "website": "https://github.com/InternetComputerOG/ntagle-core",
-    "screenshots": []
-  },
-  {
     "id": "cosmicrafts",
     "name": "Cosmicrafts",
     "oneLiner": "Blast through the metaverse with Cosmicrafts, where interstellar mayhem meets epic battles for the ultimate cosmic showdown!",
@@ -1168,21 +1150,6 @@
     "screenshots": [
       "/img/showcase/sudograph_screenshot_0.webp"
     ]
-  },
-  {
-    "id": "dwitter",
-    "name": "Dwitter",
-    "oneLiner": "AI-powered social network",
-    "tags": [
-      "SocialFi"
-    ],
-    "description": "Explore Dwitter! Decentralized social network like Twitter, integrated with OpenAI bots. View a shared global feed featuring user-chatbot interactions from around the world.",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/dwitter_logo.png",
-    "github": "https://github.com/azhuravel/Dwitter-Dfinity",
-    "twitter": "https://twitter.com/DwitterWeb3",
-    "screenshots": [],
-    "submittableId": 21958145
   },
   {
     "id": "itoka",
@@ -3499,20 +3466,21 @@
     "submittableId": "44337954"
   },
   {
-    "name": "UncensoredGreats",
-    "description": "Migrating all the World's Books to NFT-form for use in domain-specific AI",
-    "website": "https://www.uncensoredgreats.com/",
+    "name": "Alexandria",
+    "description": "Porting all Web2 content as IC NFTs, and reimagining the Web3 experience as an dapp-store based on an infinite Library",
+    "website": "https://lbry.app/",
     "logo": "/img/showcase/UncensoredGreatsLogo.png",
     "display": "Normal",
-    "id": "UncensoredGreats",
+    "id": "Alexandria",
     "oneLiner": "Migrating all the World's Books to NFT-form for use in domain-specific AI",
     "tags": [
+      "Tools / Infrastructure",
       "SocialFi",
       "AI"
     ],
     "usesInternetIdentity": true,
-    "github": "https://github.com/UncensoredGreats",
-    "twitter": "https://twitter.com/UCG_DAO",
+    "github": "https://github.com/AlexandriaDAO/",
+    "twitter": "https://x.com/alexandria_lbry",
     "submittableId": "43861229"
   },
   {
@@ -3897,7 +3865,7 @@
   {
     "id": "rentspace",
     "name": "RentSpace",
-    "oneLiner": "A property rental platform that enables tenants to pay fees and rent in either cryptocurrency or traditional money.",
+    "oneLiner": "A crypto-friendly property rental platform.",
     "website": "https://rentb.space/",
     "tags": [
       "DeFi",
@@ -3906,7 +3874,7 @@
     "twitter": "https://twitter.com/RentSpaceco",
     "github": "https://github.com/ICP-hub/RentSpace-ICP",
     "discord": "https://discord.gg/hCFmTWFx85",
-    "description": "A property rental platform that enables tenants to pay fees and rent in either cryptocurrency or traditional money.",
+    "description": "A crypto-friendly property rental platform",
     "usesInternetIdentity": false,
     "display": "Normal",
     "logo": "/img/showcase/rentspace_logo.png",
@@ -4601,7 +4569,7 @@
   {
     "id": "clpfinance",
     "name": "CLP Finance",
-    "oneLiner": "A decentralized financial protocol with low-cost, efficient, and secure digital asset lending services to borrow CUSD using ICP, ckETH, or ckBTC.",
+    "oneLiner": "A liquidity protocol and native stablecoin that allows users to deposit assets, borrow stablecoins at zero interest.",
     "website": "https://www.clp.finance/",
     "tags": [
       "DeFi",
@@ -4609,8 +4577,9 @@
       "Ethereum",
       "Chainfusion"
     ],
+    "stats": "5,000 accounts",
     "twitter": "https://twitter.com/CLPFinance721",
-    "description": "A decentralized financial protocol with low-cost, efficient, and secure digital asset lending services to borrow CUSD using ICP, ckETH, or ckBTC.",
+    "description": "A liquidity protocol and native stablecoin that allows users to deposit assets, borrow stablecoins at zero interest.",
     "usesInternetIdentity": true,
     "display": "Normal",
     "logo": "/img/showcase/clpfinance_logo.png"
@@ -4830,6 +4799,106 @@
     "logo": "/img/showcase/PanoramaBlock_Logo.png"
   },
   {
+    "id": "dappradar",
+    "name": "Dapp Radar",
+    "oneLiner": "A dapp discovery portal for blockchain users, provides insights for investors and analysts, and educates visitors about vital blockchain networks.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://dappradar.com/",
+    "twitter": "https://twitter.com/dappradar",
+    "description": "A dapp discovery portal for blockchain users, provides insights for investors and analysts, and educates visitors about vital blockchain networks.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/dappradar_logo.png"
+  },
+  {
+    "id": "motodex",
+    "name": "Motodex",
+    "oneLiner": "A hyper-casual, motorcycle race game where players develop their riders and improve high-speed tracks.",
+    "tags": [
+      "Games",
+      "NFT"
+    ],
+    "website": "https://motodex.dexstudios.games/",
+    "twitter": "https://twitter.com/openbisea",
+    "description": "A hyper-casual, motorcycle race game where players develop their riders and improve high-speed tracks.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/motodex_logo.png"
+  },
+  {
+    "id": "fomowell",
+    "name": "Fomowell",
+    "oneLiner": "The fairest Web3 project launch platform.",
+    "tags": [
+      "SocialFi"
+    ],
+    "stats": "300 users, daily transactions of $3k",
+    "website": "https://fomowell.com/",
+    "twitter": "https://twitter.com/fomowell",
+    "description": "The fairest Web3 project launch platform.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/fomowell_logo.png"
+  },
+  {
+    "id": "metaviz",
+    "name": "Metaviz",
+    "oneLiner": "A visual project collaboration workspace.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://www.metaviz.net/",
+    "github": "https://github.com/dariuszdawidowski/metaviz-server-juno",
+    "twitter": "https://twitter.com/metavizofficial",
+    "description": "A visual project collaboration workspace.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/metaviz_logo.png"
+  },
+  {
+    "id": "alpcafi",
+    "name": "Alpcafi",
+    "oneLiner": "Tools that bring ICP to everyone including AlpacaFi (CoinMarketCap for ICP tokens) and PacaBot (Telegram Trading Bot).",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://alpacafi.xyz",
+    "description": "Tools that bring ICP to everyone including AlpacaFi (CoinMarketCap for ICP tokens) and PacaBot (Telegram Trading Bot).",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/alpacafi_logo.png"
+  },
+  {
+    "id": "waterneuron",
+    "name": "Water Neuron",
+    "oneLiner": "A liquid staking protocol designed for ICP. Staking ICP becomes straightforward and efficient.",
+    "tags": [
+      "DeFi",
+      "DAO"
+    ],
+    "website": "https://waterneuron.fi/stake/",
+    "description": "A liquid staking protocol designed for ICP. Staking ICP becomes straightforward and efficient.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/waterneuron_logo.png"
+  },
+  {
+    "id": "cyclestransferstation",
+    "name": "Cycles Transfer Station",
+    "oneLiner": "An on-chain order-book market trade platform for ICRC-1 tokens on the world-computer.",
+    "tags": [
+      "DeFi",
+      "DAO"
+    ],
+    "website": "https://cycles-transfer-station.com/",
+    "description": "An on-chain order-book market trade platform for ICRC-1 tokens on the world-computer.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/waterneuron_logo.png"
+  },
+  {
     "id": "relation",
     "name": "Relation",
     "oneLiner": "Web3 social graph using a graph database built on ICP.",
@@ -4904,5 +4973,58 @@
     "authOrigins": "https://zoncircle.com",
     "github":"https://github.com/vporton/zondirectory2",
     "twitter": "https://x.com/ZonDirectory"
+  },
+  {
+    "id": "neuronpool",
+    "name": "NeuronPool",
+    "oneLiner": "Stake your ICP, join the pool and win big rewards!",
+    "website": "https://neuronpool.com/",
+    "tags": ["DeFi"],
+    "description": "Stake your ICP, join the pool and win big rewards!",
+    "logo": "/img/showcase/neuronpool_logo.png",
+    "usesInternetIdentity": true,
+    "stats": "Open-source DeFi",
+    "authOrigins": [
+      "https://stake.neuronpool.com",
+      "https://t3c6p-zqaaa-aaaar-qafuq-cai.icp0.io"
+    ],
+    "github": "https://github.com/neuronpool-technologies",
+    "twitter": "https://x.com/NeuronPool"
+  },
+  {
+    "id": "fort-major-dao",
+    "name": "Fort Major DAO",
+    "oneLiner": "Fair, Open, Robust and Transparent digital organization with an uplifting vibe.",
+    "website": "https://fort-major.org",
+    "tags": ["DAO"],
+    "description": "Let's build something nice together and share the benefits fairly! Sign in, find a task you can tackle, solve it and claim your rewards.",
+    "stats": "150+ Tasks Already Solved",
+    "logo": "/img/showcase/fort-major-dao_logo.svg",
+    "twitter": "https://x.com/msqwallet",
+    "github": "https://github.com/fort-major/dao"
+  },
+  {
+    "id": "bit10",
+    "name": "BIT10",
+    "oneLiner": "BIT10 is the S&P500 of Bitcoin DeFi Assets",
+    "description": "BIT10 is an asset manager which gives it's users the opportunity to buy our Index which tracks the biggest crypto tokens, ordinals and BRC-20's in the Bitcoin DeFi ecosystem. BIT10 offers a pre-picked basket of assets that the user can hold simply buying one token.",
+    "website": "https://www.bit10.app",
+    "logo": "/img/showcase/bit10_logo.webp",
+    "screenshots": [
+      "/img/showcase/bit10_screenshot.webp"
+    ],
+    "video": "/img/showcase/bit10_video.mp4",
+    "display": "Normal",
+    "stats": "500+ user signups",
+    "tags": [
+      "Bitcoin",
+      "DeFi"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/ZeyaRabani/BIT10",
+    "twitter": "https://x.com/bit10startup",
+    "youtube": "https://www.youtube.com/watch?v=XBAx1-Py9Oo",
+    "submittableId": "46826692",
+    "videoContentType": "video/mp4"
   }
 ]

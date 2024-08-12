@@ -2,12 +2,8 @@
 keywords: [intermediate, tutorial, machine learning, ml, mnist, rust]
 ---
 
-import TabItem from "@theme/TabItem";
-import useBaseUrl from "@docusaurus/useBaseUrl";
-import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
-import { AdornedTab } from "/src/components/Tabs/AdornedTab";
-import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import '/src/components/CenterImages/center.scss';
 
 # Machine learning sample
@@ -40,9 +36,6 @@ This project is based off of one [found within the Rust Burn examples](https://g
 
 To get started, create a new project in your working directory. Open a terminal window, then use the commands:
 
-<AdornedTabs groupId="version">
-<TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
-
 Use `dfx new <project_name>` to create a new project:
 
 ```
@@ -59,6 +52,10 @@ You will be prompted to select the language that your backend canister will use.
   TypeScript (Azle)
   Python (Kybra)
 ```
+
+:::info
+`dfx` versions `v0.17.0` and newer support this `dfx new` interactive prompt. [Learn more about `dfx v0.17.0`](/blog/2024/02/14/news-and-updates/update#dfx-v0170).
+:::
 
 Then, select a frontend framework for your frontend canister. Select 'Vanilla JS':
 
@@ -86,19 +83,6 @@ Then, navigate into the new project directory:
 ```
 cd machine_learning_sample
 ```
-
-</TabItem>
-
-<TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
-
-```bash
-dfx start --clean --background
-dfx new machine_learning_sample --type=rust
-cd machine_learning_sample
-```
-
-</TabItem>
-</AdornedTabs>
 
 You can also [clone the GitHub repo for this project](https://github.com/smallstepman/ic-mnist.git) if you want to get started quickly.
 
