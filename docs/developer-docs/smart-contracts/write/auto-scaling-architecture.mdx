@@ -5,13 +5,19 @@ keywords: [beginner, write, resources, architecture, multi-canister, primary can
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
-# Auto-scaling architecture
+# Auto-scaling example
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
 ## Overview
 
 Projects deployed on ICP can use a variety of different architectures with regard to how services and assets are organized. Projects may use a single <GlossaryTooltip>canister</GlossaryTooltip> to hold the entire dapp's assets and functions, or they may separate services across different canisters, deploy different canisters on different subnets, or separate different data into different canisters.
+
+:::caution
+
+This page demonstrates the concept of auto-scaling architectures using an older workflow with heap storage. For current projects, it is recommended to use either a single canister architecture with stable memory, as described in the [write overview page](/docs/current/developer-docs/smart-contracts/write/overview), or create an auto-scaling architecture that creates new canisters on a different subnet.
+
+:::
 
 One multi-canister architecture option is to configure a primary canister that has the ability to spawn other canisters based on certain criteria, such as when a new user is created or if the application's total data reaches a certain amount.
 

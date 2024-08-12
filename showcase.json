@@ -4921,5 +4921,41 @@
     ],
     "github": "https://github.com/neuronpool-technologies",
     "twitter": "https://x.com/NeuronPool"
+  },
+  {
+    "id": "fort-major-dao",
+    "name": "Fort Major DAO",
+    "oneLiner": "Fair, Open, Robust and Transparent digital organization with an uplifting vibe.",
+    "website": "https://fort-major.org",
+    "tags": ["DAO"],
+    "description": "Let's build something nice together and share the benefits fairly! Sign in, find a task you can tackle, solve it and claim your rewards.",
+    "stats": "150+ Tasks Already Solved",
+    "logo": "/img/showcase/fort-major-dao_logo.svg",
+    "twitter": "https://x.com/msqwallet",
+    "github": "https://github.com/fort-major/dao"
+  },
+  {
+    "id": "bit10",
+    "name": "BIT10",
+    "oneLiner": "BIT10 is the S&P500 of Bitcoin DeFi Assets",
+    "description": "BIT10 is an asset manager which gives it's users the opportunity to buy our Index which tracks the biggest crypto tokens, ordinals and BRC-20's in the Bitcoin DeFi ecosystem. BIT10 offers a pre-picked basket of assets that the user can hold simply buying one token.",
+    "website": "https://www.bit10.app",
+    "logo": "/img/showcase/bit10_logo.webp",
+    "screenshots": [
+      "/img/showcase/bit10_screenshot.webp"
+    ],
+    "video": "/img/showcase/bit10_video.mp4",
+    "display": "Normal",
+    "stats": "500+ user signups",
+    "tags": [
+      "Bitcoin",
+      "DeFi"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/ZeyaRabani/BIT10",
+    "twitter": "https://x.com/bit10startup",
+    "youtube": "https://www.youtube.com/watch?v=XBAx1-Py9Oo",
+    "submittableId": "46826692",
+    "videoContentType": "video/mp4"
   }
 ]

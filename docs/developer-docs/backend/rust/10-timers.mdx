@@ -2,10 +2,6 @@
 keywords: [beginner, rust, tutorial, periodic tasks, timers]
 ---
 
-import TabItem from "@theme/TabItem";
-import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
-import { AdornedTab } from "/src/components/Tabs/AdornedTab";
-import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
@@ -24,9 +20,6 @@ Before getting started, assure you have set up your developer environment accord
 
 Open a terminal window on your local computer, if you don’t already have one open.
 
-<AdornedTabs groupId="version">
-<TabItem value="0-17-0" label="dfx v0.17.0 or newer" default>
-
 Use `dfx new <project_name>` to create a new project:
 
 ```
@@ -42,6 +35,10 @@ You will be prompted to select the language that your backend canister will use.
   TypeScript (Azle)
   Python (Kybra)
 ```
+
+:::info
+`dfx` versions `v0.17.0` and newer support this `dfx new` interactive prompt. [Learn more about `dfx v0.17.0`](/blog/2024/02/14/news-and-updates/update#dfx-v0170).
+:::
 
 Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
 
@@ -63,17 +60,6 @@ Lastly, you can include extra features to be added to your project:
 ⬚ Bitcoin (Regtest)
 ⬚ Frontend tests
 ```
-
-</TabItem>
-
-<TabItem value="0-16-1" label="dfx v0.16.1 or older" default>
-
-```bash
-dfx new my_timers --type=rust --no-frontend
-```
-
-</TabItem>
-</AdornedTabs>
 
 Then, navigate into your project directory by running the command:
 

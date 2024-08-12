@@ -26,6 +26,18 @@ deploy it to:
 
 This page will guide you through all 3 deployment methods.
 
+:::info
+This page details using the `dfx deploy` command, which does several processes in the background, including:
+
+- [Creating each canister](/docs/current/developer-docs/smart-contracts/create) listed in the `dfx.json` file.
+
+- [Compiling the code](/docs/current/developer-docs/smart-contracts/compile) for each canister into a Wasm module.
+
+- [Installing the Wasm module](/docs/current/developer-docs/smart-contracts/install) into each canister. 
+
+- Deploying the canisters to the deployment endpoint of choice (local, playground, mainnet).
+:::
+
 ## Testnets
 
 Most blockchain networks have separate testnets that allow smart contract

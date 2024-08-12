@@ -232,8 +232,10 @@ The following is a list of common abbreviations that are capitalized within the 
 The following language and capitalization of certain terms and phrases should be used across the ICP developer documentation:
 - Big Tech
 - Bitcoin integration
-- Bitcoin network: should be used in place of "sending bitcoin".
+- Bitcoin: when referring to the network infrastructure of Bitcoin; should be used in place of "sending bitcoin".
+    - "When deploying a transaction to Bitcoin..."
 - bitcoin: should be used when referring to BTC rather than the Bitcoin network.
+    - "To send another use bitcoin..."
 - built on ICP
 - canister
 - canister smart contract
@@ -260,6 +262,7 @@ The following language and capitalization of certain terms and phrases should be
     When there may be a confusion between ICP referring to Internet Computer Protocol and ICP the token, the words 'Internet Computer Protocol' can be written out for clarity.
 
 - IC SDK: should be used in place of any reference to the IC's SDK.
+- macOS: follows the capitalization used by [Apple](https://en.wikipedia.org/wiki/MacOS).
 - mainnet
     - In context: Deploying `to the mainnet` or `on the mainnet`. Note the use of the word `the`.
     - Other contextual usage:
