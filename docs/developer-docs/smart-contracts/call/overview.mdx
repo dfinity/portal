@@ -53,6 +53,7 @@ actor Counter {
   public func inc() : async () {
     counter += 1;
   };
+}
 ```
 
 </TabItem>
@@ -90,15 +91,22 @@ export default class {
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```python
-from kybra import query, update, text, void, nat32
+from kybra import nat64, query, update
 
-current_count: nat32 = 0
+count: nat64 = 0
+
+@query
+def read_count() -> nat64:
+    return count
 
 @update
-def simple_update(count: nat32) -> void:
-    global current_count
+def increment_count() -> nat64:
+    global count
 
-    current_count = count
+    count += 1
+
+    return count
+
 ```
 
 :::caution
@@ -154,11 +162,9 @@ fn greet(name: String) -> String {
 import { IDL, query } from 'azle';
 
 export default class {
-    count: bigint = 0n;
-
-    @query([], IDL.Nat64)
-    readCount(): bigint {
-        return this.count;
+    @query([], IDL.Text)
+    hello(): string {
+        return 'world!';
     }
 }
 ```
@@ -176,8 +182,6 @@ current_message: text = ''
 @query
 def get_current_message() -> text:
     return current_message
-
-
 ```
 
 :::caution

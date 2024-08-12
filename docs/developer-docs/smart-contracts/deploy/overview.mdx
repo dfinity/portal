@@ -172,8 +172,8 @@ Here is an example:
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-This example uses a global timer that gets called immediately after the canister
-starts:
+This example creates a periodic timer that gets called immediately after the
+canister starts:
 
 ```motoko
 
@@ -209,7 +209,7 @@ fn init(timer_interval_secs: u64) {
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-This example creates a timer function that gets called immediately after the
+This example creates a periodic timer that gets called immediately after the
 canister starts:
 
 ```typescript
@@ -231,7 +231,7 @@ export default class {
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-This example creates a timer function that must be manually called once a
+This example creates a periodic timer that gets called immediately after the
 canister starts:
 
 ```python

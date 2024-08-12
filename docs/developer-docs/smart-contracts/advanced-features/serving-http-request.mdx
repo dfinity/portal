@@ -178,28 +178,48 @@ class HttpRequest(Record):
     headers: Vec["Header"]
     body: blob
 
+
 class HttpResponse(Record):
     status_code: nat16
     headers: Vec["Header"]
     body: blob
+    streaming_strategy: Opt["StreamingStrategy"]
+    upgrade: Opt[bool]
+
 
 Header = Tuple[str, str]
 
+
+class StreamingStrategy(Variant):
+    Callback: "CallbackStrategy"
+
+
+class CallbackStrategy(Record):
+    callback: "Callback"
+    token: "Token"
+
+
+Callback = Func(Query[["Token"], "StreamingCallbackHttpResponse"])
+
+
+class StreamingCallbackHttpResponse(Record):
+    body: blob
+    token: Opt["Token"]
+
+
+class Token(Record):
+    arbitrary_data: str
+
+
 @query
 def http_request(req: HttpRequest) -> HttpResponse:
-    path = req.url.path
-    if path == "/hello":
-        return {
-            "status_code": 200,
-            "headers": [],
-            "body": Buffer.from_text("hello, world!").encode("utf-8"),
-        }
-    else:
-        return {
-            "status_code": 404,
-            "headers": [],
-            "body": b"404 Not found :",
-}
+    return {
+        "status_code": 200,
+        "headers": [],
+        "body": bytes(),
+        "streaming_strategy": None,
+        "upgrade": False,
+    }
 ```
 
 :::caution

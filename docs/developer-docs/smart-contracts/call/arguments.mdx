@@ -134,7 +134,11 @@ To learn more about variants in Typescript via Azle, refer to [the Azle code](ht
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```python
-from kybra import nat32, Variant, query
+from kybra import (
+    ic,
+    query,
+    Variant,
+)
 
 class Day(Variant, total=False):
     Sun: str
@@ -145,22 +149,11 @@ class Day(Variant, total=False):
     Fri: str
     Sat: str
 
+
 @query
-def get_text(d: Day) -> str:
-    if d == Day.Sun:
-        return "Sunday"
-    elif d == Day.Mon:
-        return "Monday"
-    elif d == Day.Tue:
-        return "Tuesday"
-    elif d == Day.Wed:
-        return "Wednesday"
-    elif d == Day.Thu:
-        return "Thursday"
-    elif d == Day.Fri:
-        return "Friday"
-    elif d == Day.Sat:
-        return "Saturday"
+def keyword_variant(variant_keyword: Day) -> Day:
+    ic.print(variant_keyword)
+    return variant_keyword
 ```
 
 To learn more about variants in Python in Kybra, refer to [the Kybra book reference on variants](https://demergent-labs.github.io/kybra/reference/candid/variant.html).
@@ -179,7 +172,7 @@ Assuming you have a method named `get_text` that accepts a `Variant` parameter, 
 ```bash
     dfx canister call canister_name get_text '(variant {Sun})'
 ```
-To learn more about calling a method from a canister in bash, refer to the DFX reference on the [dfx canister call command](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-call).
+To learn more about calling a method from a canister in bash, refer to the `dfx` reference on the [dfx canister call command](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-call).
 
 For additional examples, refer to [type variant in the Candid Reference](/docs/current/references/candid-ref#type-variant--n--t--)
 
