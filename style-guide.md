@@ -230,6 +230,7 @@ The following is a list of common abbreviations that are capitalized within the 
 
 ## Language
 The following language and capitalization of certain terms and phrases should be used across the ICP developer documentation:
+- backend
 - Big Tech
 - Bitcoin integration
 - Bitcoin: when referring to the network infrastructure of Bitcoin; should be used in place of "sending bitcoin".
@@ -250,6 +251,7 @@ The following language and capitalization of certain terms and phrases should be
       - All dfx subcommands should be formatted as in-line code when appearing in a sentence, such as, "The `dfx deps` feature is available in dfx versions 0.14.1 and newer."
 - Ethereum integration
 - Ethereum: should be used in place of ETH or ETH token.
+- frontend
 - HTTP: when referring to the HTTP Gateway protocol, HTTP asset certification, HTTP requests, HTTP responses, and HTTP servers.
 - HTTPS: when referring to HTTPS outcalls.
 - ICP: When abbreviating 'Internet Computer', it should be referred to as 'ICP' instead of 'IC' or 'the IC'.
