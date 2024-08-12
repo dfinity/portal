@@ -3499,20 +3499,21 @@
     "submittableId": "44337954"
   },
   {
-    "name": "UncensoredGreats",
-    "description": "Migrating all the World's Books to NFT-form for use in domain-specific AI",
-    "website": "https://www.uncensoredgreats.com/",
+    "name": "Alexandria",
+    "description": "Porting all Web2 content as IC NFTs, and reimagining the Web3 experience as an dapp-store based on an infinite Library",
+    "website": "https://lbry.app/",
     "logo": "/img/showcase/UncensoredGreatsLogo.png",
     "display": "Normal",
-    "id": "UncensoredGreats",
+    "id": "Alexandria",
     "oneLiner": "Migrating all the World's Books to NFT-form for use in domain-specific AI",
     "tags": [
+      "Tools / Infrastructure",
       "SocialFi",
       "AI"
     ],
     "usesInternetIdentity": true,
-    "github": "https://github.com/UncensoredGreats",
-    "twitter": "https://twitter.com/UCG_DAO",
+    "github": "https://github.com/AlexandriaDAO/",
+    "twitter": "https://x.com/alexandria_lbry",
     "submittableId": "43861229"
   },
   {
