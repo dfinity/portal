@@ -128,9 +128,9 @@ const redirects = `
   /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/developer-journey/
 
   /docs/rosetta-api/ledger /docs/current/developer-docs/defi/tokens/token-standards
-  /docs/rosetta-api/ledger-local-setup /docs/developer-docs/defi/tokens/ledger/setup/icp_ledger_setup
+  /docs/rosetta-api/ledger-local-setup /docs/current/developer-docs/defi/tokens/ledger/setup/icp_ledger_setup
   /docs/integration/ledger-quick-start /docs/current/developer-docs/defi/tokens/token-standards
-  /docs/current/developer-docs/functionality/ledger/* /docs/developer-docs/defi/tokens/ledger/setup/icp_ledger_setup
+  /docs/current/developer-docs/functionality/ledger/* /docs/current/developer-docs/defi/tokens/ledger/setup/icp_ledger_setup
 
   /docs/base-libraries/* /docs/current/motoko/main/base/:splat
   /base-libraries/* /docs/current/motoko/main/base/:splat
@@ -350,14 +350,14 @@ const redirects = `
   /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http
   /docs/current/developer-docs/integrations/ledger/introduction_and_overview /docs/current/developer-docs/defi/overview
   /docs/current/developer-docs/integrations/ledger/  /docs/current/developer-docs/defi/overview
-  /docs/current/developer-docs/integrations/ledger/ledger-local-setup  /docs/developer-docs/defi/tokens/ledger/setup/icp_ledger_setup
-  /docs/current/developer-docs/integrations/ledger/interact-with-ledger  /docs/developer-docs/defi/tokens/ledger/icp_ledger_usage
+  /docs/current/developer-docs/integrations/ledger/ledger-local-setup  /docs/current/developer-docs/defi/tokens/ledger/setup/icp_ledger_setup
+  /docs/current/developer-docs/integrations/ledger/interact-with-ledger  /docs/current/developer-docs/defi/tokens/ledger/usage/icp_ledger_usage
   /docs/current/developer-docs/integrations/ledger/icp-index-local-setup /docs/current/developer-docs/defi/tokens/indexes
   /docs/current/developer-docs/integrations/ledger/collecting-dust /docs/current/developer-docs/defi/icp-tokens/account-trimming
   /docs/current/developer-docs/integrations/icrc-1/index /docs/current/references/icrc1-standard
   /docs/current/developer-docs/integrations/icrc-1/ /docs/current/references/icrc1-standard
   /docs/current/developer-docs/integrations/icrc-1/icrc1-ledger-setup /docs/current/developer-docs/defi/tokens/ledger/setup/icrc1_ledger_setup
-  /docs/current/developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger /docs/current/developer-docs/defi/tokens/ledger/icrc1_ledger_usage
+  /docs/current/developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger /docs/current/developer-docs/defi/tokens/ledger/setup/icrc1_ledger_usage
   /docs/current/developer-docs/integrations/icrc-1/icrc1-index-setup /docs/current/developer-docs/defi/tokens/indexes
   /docs/current/developer-docs/integrations/exchange-rate/exchange-rate-canister /docs/current/developer-docs/defi/exchange-rate-canister
   /docs/current/developer-docs/integrations/rosetta/index  /docs/current/developer-docs/defi/rosetta/overview
