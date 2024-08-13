@@ -67,6 +67,11 @@ As part of the Deuterium release, a test Schnorr key according to the `bip340` s
 As above, this key may be deleted at some time after the GA Schnorr release and therefore should not be used for anything that has value, but only for development and testing purposes.
 The test key has the id `(bip340secp256k1, test_key_1)` for referring to it in API calls.
 
+### General availability release of Schnorr
+
+A single threshold Schnorr production key according to the `bip340` specification for curve `secp256k1` has been deployed with the Deuterium Schnorr release.
+The key with id `(bip340secp256k1, key_1)` will be maintained in same manner that the [threshold ECDSA](#general-availability-release-of-ECDSA) key is mainted.
+
 ### Further aspects
 
 Support for further elliptic curves and signature schemes may be added in the future. ECDSA signatures over curve `secp256r1` and Ed25519 signatures are interesting for supporting use cases such as decentralized certification authorities (CAs) and are the premier candidate group to be added to facilitate use cases like the mentioned one, as well as enabling the direct integration with other blockchains.
