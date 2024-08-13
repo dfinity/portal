@@ -15,20 +15,28 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 The ICP accepts and executes <GlossaryTooltip>canister</GlossaryTooltip> code in the WebAssembly (Wasm) binary format.
 Usually, developers write code in a higher-level language and then compile the code into a Wasm binary that can be deployed into a canister.
 
-## Deploy
+[Learn more about writing canister code](../write/overview.mdx).
 
-### Create
+## Create
 
 A developer can create an empty canister on ICP by calling the system canister.
 It can be done using the [<GlossaryTooltip>NNS</GlossaryTooltip> frontend dapp](/docs/current/developer-docs/daos/nns/nns-app-quickstart#deploying-and-managing-canisters-from-the-nns-dapp) in the browser or [`dfx`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/) in the command line.
 The developer can specify the initial canister settings and choose the target <GlossaryTooltip>subnet</GlossaryTooltip>.
 Once the canister is created, the developer gets its canister ID and becomes the controller of the canister.
 
+[Learn more about creating canisters](../create.mdx).
+
 <div class="text--center">
 <img src="/img/docs/create-canister.png" alt="Create canister" width="600"/>
 </div>
 
-### Install
+## Compile
+
+Once an empty canister has been created, the canister's code must be compiled into a Wasm binary. 
+
+[Learn more about compiling code into Wasm](../compile.mdx).
+
+## Install
 
 The next step after writing the code and creating a canister is installing the code into the canister.
 This can be done by calling the `install_code` endpoint of the system canister and passing the canister ID and the Wasm binary to it.
@@ -38,16 +46,21 @@ The `dfx` tool has [a command](/docs/current/developer-docs/developer-tools/cli-
 <img src="/img/docs/install-canister.png" alt="Install canister" width="600"/>
 </div>
 
+## Deploy
+
+Once a canister has an installed Wasm binary, it can be deployed to the local, testnet, or mainnet environments. 
+
+[Learn more about deploying canisters](../deploy/overview.mdx).
+
 ## Call
 
-After installation, the canister accepts and processes messages (calls) from users and other canisters.
+After deployment, the canister accepts and processes messages (calls) from users and other canisters.
 Only the public endpoints of the canister can be called.
 These endpoints correspond to exported Wasm functions that are annotated with `canister_update` or `canister_query` in their names.
 
 <div class="text--center">
 <img src="/img/docs/call-canister.png" alt="Call canister" width="600"/>
 </div>
-
 
 ## Maintain
 
