@@ -29,14 +29,14 @@ const sliderData = [
     title: "CYCLOTRON",
     description: "On-chain AI Inference",
     image: "/img/home/slider/update_ai_milestone.webp",
-    link: "https://internetcomputer.org/roadmap#Decentralized%20AI-Cyclotron",
+    link: "/roadmap#Decentralized%20AI-Cyclotron",
   },
   {
     tagline: "Milestone achieved 🚀",
     title: "DEUTERIUM",
     description: "Chain Fusion supports threshold Schnorr signing.",
     image: "/img/home/slider/deuterium_milestone_card.webp",
-    link: "https://internetcomputer.org/roadmap#Chain%20Fusion-Deuterium",
+    link: "/roadmap#Chain%20Fusion-Deuterium",
   },
 ];
 

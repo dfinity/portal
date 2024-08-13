@@ -51,7 +51,7 @@ function Index() {
                 <p className="mt-8 mb-8 md:mb-0">
                   <Link
                     className="link-primary link-with-icon"
-                    href="https://internetcomputer.org/roadmap#Chain%20Fusion-Deuterium"
+                    href="/roadmap#Chain%20Fusion-Deuterium"
                   >
                     <LinkArrowRight></LinkArrowRight>
                     READ MORE
