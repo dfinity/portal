@@ -29,11 +29,15 @@ function NnsPage() {
       <Head>
         <meta
           property="og:image"
-          content={"https://internetcomputer.org/img/shareImages/share-nns.jpg"}
+          content={
+            "https://internetcomputer.org/img/shareImages/share_nns.webp"
+          }
         />
         <meta
           name="twitter:image"
-          content={"https://internetcomputer.org/img/shareImages/share-nns.jpg"}
+          content={
+            "https://internetcomputer.org/img/shareImages/share_nns.webp"
+          }
         />
       </Head>
       <main className="text-black relative overflow-hidden">
