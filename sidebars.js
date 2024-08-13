@@ -844,6 +844,7 @@ const sidebars = {
           label: "Tokens",
           items: [
 	          "developer-docs/defi/tokens/token-standards",
+	          "developer-docs/defi/tokens/asset_flow/index",
             {
               type: "category",
               label: "Ledgers",
@@ -876,10 +877,10 @@ const sidebars = {
                     "developer-docs/defi/tokens/ledger/usage/icrc1_ledger_usage"
                   ],
                 },
+                "developer-docs/defi/tokens/advanced/direct_integration",  
               ],
             },
-            "developer-docs/defi/tokens/asset_flow/index",
-            "developer-docs/defi/tokens/token-standards",
+            
             "developer-docs/defi/token_integrations/index",
             "developer-docs/defi/tokens/indexes",
             "developer-docs/defi/icp-tokens/account-trimming",
@@ -897,11 +898,6 @@ const sidebars = {
               type: "category",
               label: "Advanced",
               items: [
-                {
-                  type: "doc",
-                  label: "Integration options",
-                  id: "developer-docs/defi/tokens/advanced/direct_integration",  
-                },
                 {
                   type: "category",
                   label: "ICP Rosetta implementation",
