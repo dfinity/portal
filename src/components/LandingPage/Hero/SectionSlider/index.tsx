@@ -32,7 +32,7 @@ const sliderData = [
     link: "https://internetcomputer.org/roadmap#Decentralized%20AI-Cyclotron",
   },
   {
-    tagline: "Milestone Test Phase Live 🟢",
+    tagline: "Milestone achieved 🚀",
     title: "DEUTERIUM",
     description: "Chain Fusion supports threshold Schnorr signing.",
     image: "/img/home/slider/deuterium_milestone_card.webp",
