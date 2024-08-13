@@ -24,39 +24,52 @@ function Index() {
           markets using Ordinals as collateral, or Web3 SocialFi services
           allowing satoshis to be sent via chat messages.
         </motion.h2>
-
-        <div className="md:h-[245px] flex flex-col md:flex-row rounded-xl overflow-hidden mb-6 mt-12 md:mt-40 md:mb-12">
-          <div className="md:w-[150%] flex bg-white-80 border border-solid border-white p-8 pb-2 md:p-8 backdrop-blur-2xl">
-            <div className="self-start">
-              <motion.h5
-                className="tw-heading-5 md:tw-heading-4 mb-1 sm:mb-3 "
-                variants={transitions.item}
-              >
-                Deuterium milestone is now live!
-              </motion.h5>
-              <motion.p className="tw-paragraph-sm md:tw-paragraph text-black/60">
-                ICP's Chain Fusion now supports threshold Schnorr signing. ICP
-                smart contracts can generate Schnorr signatures in a distributed
-                way, which, together with the bitcoin integration, can be used
-                for signing taproot transactions and more.{" "}
-              </motion.p>
-
-              <p className="mt-4 md:mt-8">
-                <Link
-                  className="link-primary link-with-icon"
-                  href="https://internetcomputer.org/roadmap#Chain%20Fusion-Deuterium"
+        <AnimateSpawn
+          variants={transitions.container}
+          className="bg-white flex flex-col md:flex-row mb-6 mt-12 md:mt-40 md:mb-12 rounded-xl overflow-hidden"
+        >
+          <motion.div>
+            <aside className="container-10 md:flex md:items-center mt-6 md:mt-0 !pl-0	!pr-0">
+              <div className="lg:w-[65%] md:w-[58%] md:px-12 px-10 pt-6 pb-1 md:pb-12 md:pt-12 gap-8 md:pr-12 ">
+                <motion.h5
+                  className="tw-heading-5 md:tw-heading-4 mb-3 sm:mb-6 "
+                  variants={transitions.item}
                 >
-                  <LinkArrowRight></LinkArrowRight>
-                  READ MORE
-                </Link>
-              </p>
-            </div>
-          </div>{" "}
-          <img
-            src="/img/bitcoin-integration/deuterium-v2.jpg"
-            className="w-full h-full object-cover"
-          />
-        </div>
+                  Deuterium Milestone Live
+                </motion.h5>
+                <motion.p className="tw-paragraph-sm md:tw-paragraph text-black/60">
+                  ICP's Chain Fusion now supports threshold Schnorr signing. ICP
+                  smart contracts can now generate Schnorr signatures in a
+                  distributed way. This allows one to sign taproot transactions
+                  or manage BRC-20 tokens directly from an ICP smart contract.
+                </motion.p>
+                <motion.p className="tw-paragraph-sm md:tw-paragraph text-black/60">
+                  The milestone also expands ICP's Bitcoin integration by
+                  providing access to all block headers, which makes it possible
+                  to verify full Bitcoin blocks on-chain in a secure manner.
+                </motion.p>
+                <p className="mt-8 mb-8 md:mb-0">
+                  <Link
+                    className="link-primary link-with-icon"
+                    href="https://internetcomputer.org/roadmap#Chain%20Fusion-Deuterium"
+                  >
+                    <LinkArrowRight></LinkArrowRight>
+                    READ MORE
+                  </Link>
+                </p>
+              </div>
+              <div className="lg:w-[35%] md:w-[42%] relative ">
+                <div className="pointer-events-none">
+                  <img
+                    className="w-full h-auto object-cover"
+                    src="/img/bitcoin-integration/deuterium-milestone-2.webp"
+                    alt="roadmap"
+                  />
+                </div>
+              </div>
+            </aside>
+          </motion.div>
+        </AnimateSpawn>
         <motion.div
           variants={transitions.item}
           className="mt-12 mb-6 md:mt-40 md:mb-12"
