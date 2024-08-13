@@ -82,7 +82,11 @@ pub(crate) fn init_rune() {
 
 ## Querying Rune information
 
-To query information about a Rune, you can specify a query call that returns the Rune information for a given UTXO. Here is an example written in Rust:
+To query information about a Rune, you can specify a query call that returns the Rune information for a given UTXO. Here is an example using the Rust [Ordinals crate](https://crates.io/crates/ordinals/0.0.1):
+
+:::info
+The Rust Ordinals crate is not created or maintained by DFINITY. The ICP management canister does not currently provide endpoints to query Ordinal data.
+:::
 
 ```rust
 #[query]
