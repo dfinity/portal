@@ -34,15 +34,16 @@ The derivation of further t-sig keys from a canister root key can be done withou
 
 Threshold master keys are always referred to through **key identifiers** in the t-sig APIs (as well as in the NNS proposals for managing the rollout). The key identifiers comprise an elliptic curve name or an algorithm and an identifier, e.g., an example key identifier is the 2-tuple `(secp256k1, test_key_1)` for ECDSA or `(bip340secp256k1, test_key_1)` for Schnorr. Those key identifiers are used by the system to refer to the correct key, e.g., for selecting the key share when computing a signature or in the implementation of the XNet routing of API calls and responses to/from the t-sig-enabled subnet holding the key with the corresponding identifier.
 
-There are currently three master keys deployed, an ECDSA test key, an ECDSA production key, and a Schnorr test key.
+There are currently four master keys deployed: an ECDSA test key, an ECDSA production key, a Schnorr test key, and a Schnorr production key.
 
 - `(secp256k1, test_key_1)`: The ECDSA test key deployed on a single 13-node subnet.
 - `(secp256k1, key_1)`: The ECDSA production key deployed on two high-replication subnets, one activated for signing, and the other one for backing up the key for better key availability.
 - `(bip340secp256k1, test_key_1)`: The Schnorr test key deployed on a single 13-node subnet.
+- `(bip340secp256k1, key_1)`: The Schnorr production key deployed on two high-replication subnets, one activated for signing, and the other one for backing up the key for better key availability.
 
 ## Deployment
 
-Next, this guide outlines the deployments for the Chromium (Beta) release of the ECDSA test key, the general availability release of the ECDSA production key, and the Deuterium (Beta) release of the Schnorr test key.
+Next, this guide outlines the deployments for the Chromium (Beta) release of the ECDSA test key, the Deuterium (Beta) release of the Schnorr test key, and the general availability release of both ECDSA and Schnorr.
 
 ### Chromium ECDSA release (Beta)
 
@@ -66,6 +67,11 @@ In case of the unlikely event of one of the subnets getting destroyed beyond rec
 As part of the Deuterium release, a test Schnorr key according to the `bip340` specification for curve `secp256k1` has been deployed on one subnet with a replication factor of 13. 
 As above, this key may be deleted at some time after the GA Schnorr release and therefore should not be used for anything that has value, but only for development and testing purposes.
 The test key has the id `(bip340secp256k1, test_key_1)` for referring to it in API calls.
+
+### General availability release of Schnorr
+
+A single threshold Schnorr production key according to the `bip340` specification for curve `secp256k1` has been deployed with the Deuterium milestone release.
+The Schnorr production key with id `(bip340secp256k1, key_1)` will be maintained in same manner that the [threshold ECDSA](#general-availability-release-of-ECDSA) production key is maintained.
 
 ### Further aspects
 
