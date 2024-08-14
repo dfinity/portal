@@ -57,13 +57,7 @@ const Hero: React.FC<{
                 compute that’s simpler, immune to cyber attack, unstoppable, and
                 controllable by DAOs. Create web3 social networks and media,
                 socialfi, games, multi-chain dapps, AI, or an enterprise app.
-                The internet is evolving.{" "}
-                <Link
-                  className="link-white link-with-icon !gap-[0.2em] !items-center"
-                  href="https://x.com/search?q=%23icp"
-                >
-                  #ICP <TwitterIcon />
-                </Link>
+                The internet is evolving.
               </p>
               <div className="flex flex-col md:flex-row gap-8 mt-8 md:mt-6 md:items-center">
                 <Link
