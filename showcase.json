@@ -2827,11 +2827,10 @@
     "id": "doocoins",
     "oneLiner": "Kids rewards dapp",
     "tags": [
-      "Wallet",
-      "Games"
+      "SocialFi"
     ],
     "usesInternetIdentity": true,
-    "github": "https://github.com/jakepeg/doo-coins-parent-mvp",
+    "github": "https://github.com/jakepeg/doocoins-pwa",
     "twitter": "https://twitter.com/DooCoins",
     "youtube": "https://www.youtube.com/watch?v=erIM8kGC7iU&ab_channel=DooCoins",
     "submittableId": "20511180"
@@ -5034,6 +5033,83 @@
     "videoContentType": "video/mp4"
   },
   {
+    "id": "icecube",
+    "name": "icecube",
+    "oneLiner": "An open-source, 100% on-chain social network.",
+    "description": "Ice Cube is a an open-source, 100% on-chain social network.",
+    "website": "https://mjlwf-iqaaa-aaaan-qmtna-cai.icp0.io/home",
+    "logo": "/img/showcase/icecube_logo.png",
+    "display": "Normal",
+    "tags": [
+      "SocialFi"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/NeutronStarDAO/icecube",
+    "twitter": "https://x.com/icecubeapp"
+  },
+  {
+    "id": "bridge-23-app",
+    "name": "Bridge 23",
+    "oneLiner": "Bridge 23 is a fully featured data marketplace running on ICP where everyone can sell their data directly to merchants, companies and institutions.",
+    "description": "Bridge 23 is a fully featured data marketplace running on ICP where everyone can sell their data directly to merchants, companies and institutions.",
+    "stats": "5000+ waitlist, 100+ users, 4000+ tokenized products",
+    "website": "https://alpha.bridge23.app/login",
+    "logo": "/img/showcase/bridge23_logo.png",
+    "display": "Normal",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/bridge-23/Bridge23app.0.1.0-alpha",
+    "twitter": "https://x.com/bridge23inc"
+  },
+  {
+    "id": "event-hub-attention-dao",
+    "name": "Event Hub",
+    "oneLiner": "Event Hub Broadcaster is an event-driven system managed by Attention DAO for connecting ecosystem projects on ICP.",
+    "description": "Event Hub Broadcaster is an event-driven system managed by Attention DAO for connecting ecosystem projects on ICP.",
+    "website": "https://attentiondao.app/dao",
+    "logo": "/img/showcase/eventhub_logo.png",
+    "display": "Normal",
+    "tags": [
+      "Tools / Infrastructure",
+      "DAO"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/Vitiv/event-broadcaster/"
+  },
+  {
+    "id": "gate23",
+    "name": "Gate23",
+    "oneLiner": "Gate23 is an advanced point-of-sale (POS) and business software designed specifically for the food and beverage, e-commerce, and retail industries.",
+    "description": "Gate23 is an advanced point-of-sale (POS) and business software designed specifically for the food and beverage, e-commerce, and retail industries.",
+    "website": "https://alpha-gate23.bridge23.app/",
+    "logo": "/img/showcase/Gate23_logo.png",
+    "display": "Normal",
+    "tags": [
+      "Tools / Infrastructure",
+      "Enterprise",
+      "Ethereum"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/bridge-23/Gate23",
+    "twitter": "https://x.com/bridge23inc"
+  },
+  {
+    "id": "IC-PayPortal",
+    "name": "IC PayPortal",
+    "oneLiner": "The IC-PayPortal Motoko by Expeera is a library that provides developers with a set of functions for managing fiat payments on ICP.",
+    "description": "The IC-PayPortal Motoko is a library that provides developers with a set of functions for managing fiat payments on ICP.",
+    "website": "https://3356i-cqaaa-aaaao-axdqa-cai.icp0.io/",
+    "logo": "/img/showcase/expeera_logo.jpeg",
+    "display": "Normal",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/Expeera/IC-PayPortal/tree/phase-3"
+  },
+{
   "name": "Aegis Finance",
   "description": "The Aegis Finance is an all-in-one exchange for trading, deposits, and withdrawals.",
   "website": "https://aegis-finance.vercel.app/",
