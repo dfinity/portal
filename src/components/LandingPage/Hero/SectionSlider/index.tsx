@@ -198,7 +198,7 @@ export const SectionSlider = () => {
                 <strong className="tw-paragraph-sm md:tw-heading-7 mb-2 !truncate">
                   {data.tagline}
                 </strong>
-                <h4 className="tw-heading-7 md:tw-heading-5 mb-0 truncate">
+                <h4 className="tw-heading-7 md:tw-heading-5 mb-0 line-clamp-2">
                   {data.title}
                 </h4>
                 <p className="text-white/60 tw-paragraph-sm md:tw-paragraph mb-0 truncate">
