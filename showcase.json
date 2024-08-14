@@ -331,9 +331,9 @@
     "oneLiner": "Manage your Web3 communities and events",
     "display": "Large",
     "stats": "360+ Communities",
-    "logo": "/img/showcase/catalyze_logo.webp",
+    "logo": "/img/showcase/catalyze_logo.png",
     "screenshots": [
-      "/img/showcase/catalyze_screenshot.webp"
+      "/img/showcase/catalyze_screenshot.png"
     ]
   },
   {
@@ -5109,28 +5109,28 @@
     "usesInternetIdentity": false,
     "github": "https://github.com/Expeera/IC-PayPortal/tree/phase-3"
   },
-{
-  "name": "Aegis Finance",
-  "description": "The Aegis Finance is an all-in-one exchange for trading, deposits, and withdrawals.",
-  "website": "https://aegis-finance.vercel.app/",
-  "logo": "/img/showcase/aegis-finance_logo.webp",
-  "screenshots": [
-    "/img/showcase/aegis-finance_screenshot.webp"
-  ],
-  "video": "",
-  "display": "Normal",
-  "id": "aegis-finance",
-  "oneLiner": "Unlocking financial freedom, block by block.",
-  "stats": "100k+ $AEGIS TVL",
-  "tags": [
-    "Bitcoin",
-    "Ethereum",
-    "DeFi"
-  ],
-  "usesInternetIdentity": true,
-  "github": "https://github.com/AegisFinance",
-  "twitter": "https://x.com/icpdelta",
-  "youtube": "",
-  "submittableId": ""
-}
+  {
+    "name": "Aegis Finance",
+    "description": "The Aegis Finance is an all-in-one exchange for trading, deposits, and withdrawals.",
+    "website": "https://aegis-finance.vercel.app/",
+    "logo": "/img/showcase/aegis-finance_logo.webp",
+    "screenshots": [
+      "/img/showcase/aegis-finance_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "id": "aegis-finance",
+    "oneLiner": "Unlocking financial freedom, block by block.",
+    "stats": "100k+ $AEGIS TVL",
+    "tags": [
+      "Bitcoin",
+      "Ethereum",
+      "DeFi"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/AegisFinance",
+    "twitter": "https://x.com/icpdelta",
+    "youtube": "",
+    "submittableId": ""
+  }
 ]
