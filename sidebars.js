@@ -848,11 +848,12 @@ const sidebars = {
             {
               type: "category",
               label: "Ledgers",
-              link: {
-                type: "doc",
-                id: "developer-docs/defi/tokens/ledger/overview",
-              },
               items: [
+                   {
+                      type: "doc",
+                      label: "Overview",
+                      id: "developer-docs/defi/tokens/ledger/overview",
+                    },
                 {
                   type: "category",
                   label: "Setup",

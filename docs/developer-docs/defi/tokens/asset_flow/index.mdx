@@ -45,13 +45,13 @@ Additionally, the transaction takes the following optional fields:
 * `created_at_time`: A timestamp that is used to trigger the [deduplication mechanism](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#transaction_deduplication). 
 
 ### dfx
-Here is an example command for a token transfer using `dfx`:
+Here is an example command for a `Transfer` transaction using `dfx`:
 ```bash
 dfx canister call icrc1_ledger_canister icrc1_transfer "(record { to = record { owner = principal \"sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe\";};  amount = 10_000;})"
 ```
 
 ### Rust
-Here is an example Rust code snippet for making a token transfer:
+Here is an example Rust code snippet for making a `Transfer` transaction:
 ```bash
 let to = icrc_ledger_types::icrc1::account::Account{ owner:ic_principal::Principal::from_slice(&[1, 2, 3, 4]) , subaccount: None};
 let amount = candid::Nat::from(500u64);
@@ -87,13 +87,13 @@ Additionally, the transaction takes the following optional fields:
 * `created_at_time`: A timestamp that is used to trigger the [deduplication mechanism](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#transaction_deduplication). 
 
 ### dfx
-Here is an example command for an approval transaction using `dfx`:
+Here is an example command for an `Approve` transaction using `dfx`:
 ```bash
 dfx canister call icrc1_ledger_canister icrc2_approve "(record { amount = 500; spender = record{owner = principal \"sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe\";} })"
 ```
 
 ### Rust
-Here is an example Rust code snippet for making an approval transaction:
+Here is an example Rust code snippet for making an `Approve` transaction:
 ```bash
 let spender = icrc_ledger_types::icrc1::account::Account{ owner:ic_principal::Principal::from_slice(&[1, 2, 3, 4]) , subaccount: None};
 let amount = candid::Nat::from(500u64);
@@ -122,13 +122,13 @@ Additionally, the transaction takes the following optional fields:
 * `created_at_time`: A timestamp that is used to trigger the [deduplication mechanism](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#transaction_deduplication). 
 
 ### dfx
-Here is an example command for a TransferApproved transaction using `dfx`:
+Here is an example command for a `TransferFrom` transaction using `dfx`:
 ```bash
 dfx canister call icrc1_ledger_canister icrc2_transfer_from "(record { from = record { owner = principal \"ltyfs-qiaaa-aaaak-aan3a-cai\";}; to = record { owner = principal \"sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe\";};  amount = 500;})"
 ```
 
 ### Rust
-Here is an example Rust code snippet for making a TransferApprove transaction:
+Here is an example Rust code snippet for making a `TransferFrom` transaction:
 ```bash
 let to = icrc_ledger_types::icrc1::account::Account{ owner:ic_principal::Principal::from_slice(&[1, 2, 3, 4]) , subaccount: None};
 let from = icrc_ledger_types::icrc1::account::Account{ owner:ic_principal::Principal::from_slice(&[5, 6, 7, 8]) , subaccount: None};
