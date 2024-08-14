@@ -84,7 +84,7 @@
             "wiki": "",
             "docs": "",
             "eta": "",
-            "status": "deployed",
+            "status": "in_progress",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Stellarator"
@@ -1186,43 +1186,6 @@
     "description": "Chain Fusion technology enables blockchains like Bitcoin, Ethereum, and Solana to be \"fused\" together with ICP to create a seamless single-chain end-user experience for multi-chain dapps. Canister smart contracts on ICP orchestrate, augment, and interact with smart contracts on other chains using advanced chain-key technology and enhance those smart contracts with ICP's special capabilities and its superior compute and storage capacity and throughput.",
     "milestones": [
       {
-        "name": "Chain Fusion Supports Bitcoin ordinals and runes",
-        "description": "ICP’s Chain Fusion technology has full support for Bitcoin protocols such as BRC20 and Runes. So far, ICP’s fully-on-chain capabilities have been largely applied to use cases where Bitcoin is used as a means of value transfer, its original purpose. This milestone provides additional functionality that enables smart contracts to index and issue prominent types of Bitcoin inscriptions in a completely decentralized manner for the first time, thereby putting ICP into a unique position among all chains.",
-        "milestone_id": "Deuterium",
-        "eta": "August 2024",
-        "status": "in_progress",
-        "elements": [
-          {
-            "title": "Threshold Schnorr signing",
-            "overview": "Threshold Schnorr signing support based on multiparty computation (MPC). Enables trustless integrations with the Bitcoin network using Schnorr-BIP340 for supporting inscriptions.",
-            "description": "ICP already has a suite of threshold signing protocols for realizing threshold ECDSA signatures. Important use cases, however, require Schnorr-BIP340 threshold signatures. Examples for Schnorr-BIP340 are ordinals and other forms of inscriptions on the Bitcoin network.",
-            "status": "in_progress",
-            "eta": "",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "is_community": true,
-            "in_beta": false,
-            "milestone_id": "Deuterium"
-          },
-          {
-            "title": "On-chain Bitcoin block headers",
-            "overview": "Exposing an on-chain API to access all Bitcoin block headers to enable dapps to trustlessly access the full Bitcoin block content.",
-            "description": "The current Bitcoin integration exposes the full UTXO state of the Bitcoin network on chain on a canister API. This is sufficient for many Bitcoin use cases, but not for the novel use cases of inscriptions, such as those using the BRC20 or Runes protocols. Those require access to certain parts of Bitcoin blocks, specifically the SegWit area, where the inscriptions are stored. Making all block headers available on chain through an API allows anyone to trustlessly verify any Bitcoin block obtained over an untrusted channel, e.g., through HTTPS outcalls to a block explorer. This allows for indexing Bitcoin ordinals in a completely decentralized and trustless manner fully on chain.",
-            "status": "",
-            "eta": "",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Deuterium"
-          }
-        ]
-      },
-      {
         "name": "Chain Fusion Supports Solana",
         "description": "This milestone enables Chain Fusion for the Solana network, bringing Solana and ICP closer together, combining the powers of the two networks. Dapps leveraging the capabilities of both networks look and feel like single-network dapps.",
         "milestone_id": "Helium",
@@ -1312,6 +1275,43 @@
         ]
       },
       {
+        "name": "Chain Fusion Supports Bitcoin ordinals and runes",
+        "description": "ICP’s Chain Fusion technology has full support for Bitcoin protocols such as BRC20 and Runes. So far, ICP’s fully-on-chain capabilities have been largely applied to use cases where Bitcoin is used as a means of value transfer, its original purpose. This milestone provides additional functionality that enables smart contracts to index and issue prominent types of Bitcoin inscriptions in a completely decentralized manner for the first time, thereby putting ICP into a unique position among all chains.",
+        "milestone_id": "Deuterium",
+        "eta": "August 13, 2024",
+        "status": "deployed",
+        "elements": [
+          {
+            "title": "Threshold Schnorr signing",
+            "overview": "Threshold Schnorr signing support based on multiparty computation (MPC). Enables trustless integrations with the Bitcoin network using Schnorr-BIP340 for supporting inscriptions.",
+            "description": "ICP already has a suite of threshold signing protocols for realizing threshold ECDSA signatures. Important use cases, however, require Schnorr-BIP340 threshold signatures. Examples for Schnorr-BIP340 are ordinals and other forms of inscriptions on the Bitcoin network.",
+            "status": "deployed",
+            "eta": "",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": "Deuterium"
+          },
+          {
+            "title": "On-chain Bitcoin block headers",
+            "overview": "Exposing an on-chain API to access all Bitcoin block headers to enable dapps to trustlessly access the full Bitcoin block content.",
+            "description": "The current Bitcoin integration exposes the full UTXO state of the Bitcoin network on chain on a canister API. This is sufficient for many Bitcoin use cases, but not for the novel use cases of inscriptions, such as those using the BRC20 or Runes protocols. Those require access to certain parts of Bitcoin blocks, specifically the SegWit area, where the inscriptions are stored. Making all block headers available on chain through an API allows anyone to trustlessly verify any Bitcoin block obtained over an untrusted channel, e.g., through HTTPS outcalls to a block explorer. This allows for indexing Bitcoin ordinals in a completely decentralized and trustless manner fully on chain.",
+            "status": "deployed",
+            "eta": "",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": "Deuterium"
+          }
+        ]
+      },
+      {
         "name": "orphans_past",
         "description": "Orphans from the past",
         "milestone_id": "Past features",
@@ -1338,7 +1338,7 @@
             "forum": "https://forum.dfinity.org/t/threshold-ecdsa-signatures/6152",
             "proposal": "https://dashboard.internetcomputer.org/proposal/21340",
             "wiki": "",
-            "docs": "https://internetcomputer.org/docs/current/references/t-sigs-how-it-works/",
+            "docs": "https://internetcomputer.org/docs/current/developer-docs/integrations/t-ecdsa/",
             "eta": "2022",
             "status": "deployed",
             "is_community": false,
@@ -1408,32 +1408,6 @@
         "milestone_id": "Future features",
         "eta": "none",
         "elements": [
-          {
-            "title": "EVM in a canister",
-            "overview": "A low-fee, high-performance EVM implemented as set of canisters on ICP with trustless integration with the Bitcoin network.",
-            "description": "The Bitfinity EVM is implemented as a set of canister smart contracts deployed on ICP. Bitfinity offers lower fees, lower latency, and higher throughput than Ethereum. Thanks to chain-key cryptography, the EVM is tightly integrated with the Bitcoin network in a trustless manner.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "is_community": true,
-            "in_beta": false
-          },
-          {
-            "title": "Threshold ECDSA — Throughput improvements",
-            "overview": "Improving throughput of chain-key ECDSA via multiple protocol improvements such as batching, parallel processing of crypto operations, and cryptographic protocol improvements.",
-            "description": "This feature addresses optimizations of the chain-key ECDSA (i.e., threshold ECDSA) implementation on ICP to improve throughput. Possible approaches used to reach those goals are to introduce batching techniques to process batches of cryptographic operations, thereby improving performance, or to further parallelize cryptographic operations.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "future",
-            "is_community": true,
-            "in_beta": false
-          },
           {
             "title": "EVM in a canister",
             "overview": "An low-fee, high-performance EVM implemented as set of canisters on ICP with trustless integration with the Bitcoin network.",
@@ -3908,7 +3882,7 @@
             "forum": "https://forum.dfinity.org/t/pocketic-testing-canisters-in-python/22490",
             "proposal": "",
             "wiki": "",
-            "docs": "https://internetcomputer.org/docs/current/developer-docs/smart-contracts/test/pocket-ic",
+            "docs": "https://internetcomputer.org/docs/current/developer-docs/setup/pocket-ic",
             "eta": "Dec 2023",
             "status": "deployed",
             "is_community": false,
