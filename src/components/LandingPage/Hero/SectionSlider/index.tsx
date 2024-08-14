@@ -38,6 +38,13 @@ const sliderData = [
     image: "/img/home/slider/deuterium_milestone_card.webp",
     link: "/roadmap#Chain%20Fusion-Deuterium",
   },
+  {
+    tagline: "ICP Pitch Deck",
+    title: "Compute on Blockchain",
+    description: "Read now",
+    image: "/img/home/slider/icp_deck_highlight.webp",
+    link: "https://deck.internetcomputer.org/",
+  },
 ];
 
 const MotionLink = motion(Link);
