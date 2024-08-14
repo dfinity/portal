@@ -13,16 +13,9 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 When a new Rust project is created with the command:
 
 ```
-dfx new example
+dfx new example --type=rust
 
-? Select a backend language: ›
-  Motoko
-❯ Rust
-  TypeScript (Azle)
-  Python (Kybra)
-```
-
-the following project structure is generated:
+The following project structure is generated:
 
 ```
 Cargo.lock
@@ -53,7 +46,6 @@ webpack.config.js
 
 In this structure, you can see the backend canister, in this case `example_backend` contains the following components:
 
-src/example_backend:
 ```
 │   ├── Cargo.toml //
 │   ├── example_backend.did // The backend canister's Candid file.

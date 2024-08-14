@@ -17,56 +17,11 @@ This guide will showcase a simple 'Hello, world!' example.
 
 ## Prerequisites
 
-Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./3-dev-env.mdx).
+Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./3-dev-env.mdx) and have created a [Rust project](./4-quickstart.mdx).
 
-## Writing the canister
+## Default project structure
 
-Open a terminal window on your local computer, if you don’t already have one open.
-
-Use `dfx new [project_name]` to create a new project:
-
-```
-dfx new hello_world
-```
-
-You will be prompted to select the language that your backend canister will use:
-
-```
-? Select a backend language: ›
-❯ Motoko
-Rust
-TypeScript (Azle)
-Python (Kybra)
-```
-
-:::info
-`dfx` versions `v0.17.0` and newer support this `dfx new` interactive prompt. [Learn more about `dfx v0.17.0`](/blog/2024/02/14/news-and-updates/update#dfx-v0170).
-:::
-
-
-Then, select a frontend framework for your frontend canister. In this example, select:
-
-```
-? Select a frontend framework: ›
-SvelteKit
-React
-Vue
-❯ Vanilla JS
-No JS template
-No frontend canister
-```
-
-Lastly, you can include extra features to be added to your project:
-
-```
-? Add extra features (space to select, enter to confirm) ›
-⬚ Internet Identity
-⬚ Bitcoin (Regtest)
-⬚ Frontend tests
-```
-
-
-By default, the project structure will resemble the following:
+By default, Rust projects created with `dfx new` will have a default project structure that will resemble the following:
 
 ```
 Cargo.lock
@@ -94,8 +49,6 @@ webpack.config.js
 For more information on project structure and code organization, review the [project organization guide](./2-project-organization.mdx).
 
 ## Writing the `lib.rs` file
-
-You'll be focused on the `src/hello_world_backend/src/lib.rs` file in this step.
 
 Open the `src/hello_world_backend/src/lib.rs` file in a text editor. Replace the existing content with the following:
 
@@ -130,9 +83,9 @@ ic-cdk = "0.7.0"
 
 Save the file.
 
-## Deploying the canister to your local canister execution environment
+## Deploying the canister locally
 
-## Creating the canister
+### Create
 
 First, create an empty canister for the canister code to be installed into. To create the canister, run the command:
 
@@ -147,7 +100,7 @@ Creating canister hello_world_backend...
 hello_world_backend canister created with canister id: br5f7-7uaaa-aaaaa-qaaca-cai
 ```
 
-### Building the canister
+### Build
 
 Next, you need to compile your program into a WebAssembly module that can be deployed on ICP by building the canister. To build the canister, run the command:
 
@@ -155,7 +108,7 @@ Next, you need to compile your program into a WebAssembly module that can be dep
 dfx build hello_world_backend
 ```
 
-### Installing the canister
+### Install
 
 Then, install the compiled code into your canister with the command:
 
@@ -163,15 +116,9 @@ Then, install the compiled code into your canister with the command:
 dfx canister install hello_world_backend
 ```
 
-### Deploying to the execution environment
+### Deploy
 
-To deploy the canister, start the dfx local <GlossaryTooltip>replica</GlossaryTooltip> with the command:
-
-```
-dfx start --clean --background
-```
-
-Then, you can deploy the canister with the command:
+To deploy the canister use the command:
 
 ```
 dfx deploy hello_world_backend
