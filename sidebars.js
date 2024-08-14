@@ -841,13 +841,46 @@ const sidebars = {
           type: "category",
           label: "Tokens",
           items: [
-            "developer-docs/defi/tokens/token-standards",
-            "developer-docs/defi/token_integrations/index",
-            "developer-docs/defi/icp-tokens/ledger-local-setup",
-            "developer-docs/defi/icrc-1/icrc1-ledger-setup",
+	          "developer-docs/defi/tokens/token-standards",
+	          "developer-docs/defi/tokens/asset_flow/index",
+            {
+              type: "category",
+              label: "Ledgers",
+              items: [
+                   {
+                      type: "doc",
+                      label: "Overview",
+                      id: "developer-docs/defi/tokens/ledger/overview",
+                    },
+                {
+                  type: "category",
+                  label: "Setup",
+                  link: {
+                    type: "doc",
+                    id: "developer-docs/defi/tokens/ledger/setup/overview",
+                  },
+                  items: [
+                    "developer-docs/defi/tokens/ledger/setup/icp_ledger_setup",
+                    "developer-docs/defi/tokens/ledger/setup/icrc1_ledger_setup"
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Usage",
+                  link: {
+                    type: "doc",
+                    id: "developer-docs/defi/tokens/ledger/usage/overview",
+                  },
+                  items: [
+                    "developer-docs/defi/tokens/ledger/usage/icp_ledger_usage",
+                    "developer-docs/defi/tokens/ledger/usage/icrc1_ledger_usage"
+                  ],
+                },
+                "developer-docs/defi/tokens/advanced/direct_integration",  
+              ],
+            },
+            
             "developer-docs/defi/tokens/indexes",
-            "developer-docs/defi/icp-tokens/using-the-ledger",
-            "developer-docs/defi/icrc-1/using-icrc1-ledger",
             "developer-docs/defi/icp-tokens/account-trimming",
             "developer-docs/defi/tokens/create",
             {
