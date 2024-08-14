@@ -593,6 +593,7 @@ const redirects = `
   /docs/current/developer-docs/security/rust-canister-development-security-best-practices /docs/current/developer-docs/security/security-best-practices/inter-canister-calls
   /docs/developers-guide/computation-and-storage-costs.html /docs/current/developer-docs/gas-cost
   /docs/current/developer-docs/getting-started/ /docs/current/developer-docs/getting-started/overview-of-icp
+  /docs/current/developer-docs/defi/wallets/workflow /docs/current/developer-docs/defi/wallets/overview
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
