@@ -194,7 +194,7 @@ export const SectionSlider = () => {
         {sliderData.map((data, index) => (
           <article key={index} className="border-box px-3">
             <CardWithImage href={data.link} image={data.image}>
-              <div className="h-[120px] md:h-[140px] mr-40 flex flex-col justify-center">
+              <div className="h-[120px] md:h-[140px] mr-44 flex flex-col justify-center">
                 <strong className="tw-paragraph-sm md:tw-heading-7 mb-2 !truncate">
                   {data.tagline}
                 </strong>
