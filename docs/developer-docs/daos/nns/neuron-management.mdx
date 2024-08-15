@@ -473,15 +473,13 @@ type Disburse = record {
   amount : opt Amount;
 };
 ```
-The command takes as argument the ledger account `to_account` to which the ICP tokens should be transferred to and the amount `amount` that should be disbursed. The latter allows to only disburse a portion of a neuron's stake.
+The command takes as argument for the ledger account `to_account` to which the ICP tokens should be transferred to and the amount `amount` that should be disbursed. The latter allows only a portion of a neuron's stake to be disbursed.
 
 _Required permissions:_
 Only a neuron's controller can disburse a neuron.
 
-
-
 ### Splitting and merging neurons
-If you have multiple neurons and you can split and merge them for reorganization.
+If you have multiple neurons, you can split and merge them for reorganization.
 
 **Split a neuron**
 
