@@ -1190,13 +1190,13 @@
         "description": "This milestone enables Chain Fusion for the Solana network, bringing Solana and ICP closer together, combining the powers of the two networks. Dapps leveraging the capabilities of both networks look and feel like single-network dapps.",
         "milestone_id": "Helium",
         "eta": null,
-        "status": "future",
+        "status": "in_progress",
         "elements": [
           {
             "title": "Threshold EdDSA signing",
             "overview": "Threshold EdDSA support using cryptographic multiparty computation (MPC). Enables trustless integrations with all chains using EdDSA on the Ed25519 curve like Solana or Cardano.",
             "description": "ICP already has a suite of threshold signing protocols for realizing threshold ECDSA signatures. Important use cases, however, require EdDSA threshold signatures. An example for the EdDSA requirement is the direct integration with blockchains using EdDSA to sign transactions, such as Cardano or Solana. Schnorr and EdDSA are very similar because EdDSA is based on a variant of Schnorr using a specific family of elliptic curves, thus they can share the same high-level protocol.",
-            "status": "future",
+            "status": "in_progress",
             "eta": "2024",
             "forum": "",
             "proposal": "",
