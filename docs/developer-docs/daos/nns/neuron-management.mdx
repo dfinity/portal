@@ -169,9 +169,9 @@ Additionally:
 * If the argument `include_neurons_readable_by_caller` is set to true, the neurons who the user is authorized to read are also included (i.e., the neurons for which the user is a controller or hotkey).
 * If the argument `include_empty_neurons_readable_by_caller` is set to true, the empty neurons readable by the caller are also included. Neurons are empty if they have 0 stake, 0 maturity, and 0 staked maturity. This field only has an effect when `include_neurons_readable_by_caller` is true. If a neuron is explicitly requested to be returned by including it in the `neuron_ids` field, then the neuron will be included in the response regardless of this value. If this fields is not provided, it defaults to true for backwards compatibility.
 
-The answer to such a query is defined by `ListNeuronsResponse`.
+The answer to such a query is defined by `ListNeuronsResponse`:
 * First, it contains a map that points for each neuron that was requested to the corresponding `NeuronInfo` (assuming the neuron exists). For neurons that are public or for which the calling user is the controller or a hotkey, this includes the full `NeuronInfo`. For other private neurons `recent_ballots` and `joined_community_fund_timestamp_seconds` are redacted.
-* For each requested neuron that exists and for which the calling user is a controller or hot key, the full neuron is returned.
+* For each requested neuron that exists and for which the calling user is a controller or hotkey, the full neuron is returned.
 * If the argument `include_public_neurons_in_full_neurons` is set to true, for each requested public neuron, the full neuron is returned.
 
 ## Interacting with neurons
