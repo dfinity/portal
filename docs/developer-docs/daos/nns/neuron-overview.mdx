@@ -40,13 +40,13 @@ It is important to understand a few key concepts of a neuron.
 Every user can stake ICP utility tokens into a neuron and participate in the NNS DAO.
 
 ### Neuron id and account
-Each neuron has a **neuron id**, which is an identity selected by NNS governance at neuron creation.
+Each neuron has a **neuron id**, which is an identity selected by the NNS when the neuron is created.
 In addition, each neuron has an associated **account** on the ICP ledger where the locked ICP balance resides. This account is owned by the NNS governance canister and therefore a user cannot move staked tokens.
 
 ### Neuron permissions
-The **controller** is a principal that controls the neuron and which cannot be changed. A principal corresponds to the public key of a public-private key pair and anyone with possession of the corresponding private key will have full control of the neuron. Therefore, the private key of the controller principal should be kept very secure. A principal can control many neurons.
+The **controller** is a principal that controls the neuron and which cannot be changed. A principal corresponds to the public key of a public-private key pair, and anyone with possession of the corresponding private key will have full control of the neuron. Therefore, the private key of the controller principal should be kept very secure. A principal can control many neurons.
 
-In addition to the controller, a neuron can have **hot keys**. Hot keys are defined by a list of principal ID and can be used to perform actions with limited privileges, namely voting, following (see below), and reading the full information about the neuron.
+In addition to the controller, a neuron can have **hotkeys**. Hotkeys are defined by a list of principal ID and can be used to perform actions with limited privileges, namely voting, following (see below), and reading the full information about the neuron.
 
 ### Voting power
 The NNS is a stake-based governance system, so the main factor for how much **voting power** a neuron has is its stake. In addition, the
