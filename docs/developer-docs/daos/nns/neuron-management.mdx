@@ -502,13 +502,13 @@ Only a neuron's controller can split a neuron.
 
 **Merge two neurons**
 
-If you have two neurons, you can merge one neuron, called the source neuron, into another neuron, called the target neuron.
+If you have two neurons, you can merge one, called the source neuron, into another, called the target neuron.
 
-The source neuron's stake, maturity and age are moved into the target. Any fees the source neuron are burned before the transfer occurs.
-The dissolve delay of the target neuron is the greater of the dissolve delay of the two, while the source remains unchanged.
-Two neurons can only be merged if they are both non-dissolving. If you with to merge other neurons, you can first use `stop_dissolving`, and increase their dissolve delay if dissolved, and then merge them.
+The source neuron's stake, maturity, and age are moved into the target. Any fees for the source neuron are burned before the transfer occurs. The dissolve delay of the target neuron is the greater of the dissolve delay of the two, while the source remains unchanged.
 
-The neuron for which you make this call is the target neuron and you provide the source neuron as argument of your call.
+Two neurons can only be merged if they are both non-dissolving. If you with to merge other neurons, you can first use `stop_dissolving`, increase their dissolve delay, and then merge them.
+
+The neuron for which you make this call is the target neuron and you provide the source neuron as an argument of your call.
 
 ```
 type Merge = record {
