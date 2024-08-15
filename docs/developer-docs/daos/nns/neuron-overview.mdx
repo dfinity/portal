@@ -49,15 +49,15 @@ The **controller** is a principal that controls the neuron and which cannot be c
 In addition to the controller, a neuron can have **hotkeys**. Hotkeys are defined by a list of principal ID and can be used to perform actions with limited privileges, namely voting, following (see below), and reading the full information about the neuron.
 
 ### Voting power
-The NNS is a stake-based governance system, so the main factor for how much **voting power** a neuron has is its stake. In addition, the
- voting power depends on two more factors.
- The main idea is that a neuron who has tokens locked for longer or has been around for longer has more voting power as it is more commited in the long term interest of the Internet Computer.
+The NNS is a stake-based governance system, so the main factor for how much **voting power** a neuron has is its stake. In addition, the voting power depends on two more factors.
 
-* **Dissolve delay & dissolve state**: The tokens in a neuron are locked for a specified duration, called the **dissolve delay**. This can be thought of like a kitchen timer that can only be turned in one direction. It can be arbitrarily increased, but only reduced by turning on the countdown and waiting for the time to pass. A neuron must have a dissolve delay of at least 6 months to be eligible to vote.
+* **Dissolve delay & dissolve state**: The tokens in a neuron are locked for a specified duration called the **dissolve delay**. This can be thought of like a kitchen timer that can only be turned in one direction. It can be arbitrarily increased, but only reduced by turning on the countdown and waiting for the time to pass. A neuron must have a dissolve delay of at least 6 months to be eligible to vote.
   * A neuron can be _non-dissolving_ which means that the timer is stopped and the neuron's dissolve delay remains the same.
   * A neuron can be _dissolving_ which means that the timer is decreasing the neuron's dissolve delay as time passes.
   * Once the timer has counted down, a neuron is _dissolved_ and the ICP tokens can be unstaked again. This is called **disbursing** a neuron.
 * **Age**: Every non-dissolving neuron has an age, which denotes how long it has been in the non-dissolving state.
+
+The main idea is that a neuron who has tokens locked for longer or has been around for longer has more voting power as it is more committed in the long term interest of the Internet Computer.
 
 Based on these factors, a neuron's voting power can be determined:
 * Principally, by its stake. 1 ICP = the power of 1 vote.
