@@ -439,8 +439,7 @@ Only a neuron's controller can merge maturity.
 
 **Stake maturity**
 
-This method allows a neuron controller to stake some of the currently existing (unstaked) maturity of a neuron, that is move some of it to the staked maturity.
- The caller can choose a percentage of maturity to merge.
+This method allows a neuron controller to stake some of the currently existing (unstaked) maturity of a neuron, moving some of it to the staked maturity. The caller can choose a percentage of maturity to merge.
 ```
 type StakeMaturity = record {
  percentage_to_stake : opt nat32
