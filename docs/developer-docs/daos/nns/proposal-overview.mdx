@@ -66,7 +66,7 @@ Technically, a proposal defines a method on a canister that will be called if th
 When a proposal is adopted, the defined method on the specified canister is automatically called with the given parameters. This is done automatically by the governance canister and does not require any manual intervention.
 A proposal's execution may be successful, in which case the proposal is labeled as `executed`, or it may fail, in which case the proposal is labeled as `failed`.
 
-When a proposal is rejected, most of the time nothing happens. In very few cases some cleanup work is initiated.
+When a proposal is rejected, most of the time nothing happens. In very few cases, some cleanup work is initiated.
 Therefore, `rejected` is also a possible final proposal state.
 
 :::info
@@ -76,5 +76,5 @@ See [staking and voting rewards](./staking-voting-rewards.mdx) for more informat
 :::
 
 ### Reward distribution
-After a proposal is in a final state, that is executed, failed, or rejected, the governance canister will take it into account for the next reward round.
-After the rewards are distributed, a proposal went through the full lifecycle. The proposal's details may be emptied by the govenrance canister to save space.
+After a proposal is in a final state of either executed, failed, or rejected, the governance canister will take it into account for the next reward round.
+After the rewards are distributed, a proposal has been through the full lifecycle. The proposal's details may be emptied by the governance canister to save space.
