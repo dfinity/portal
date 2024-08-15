@@ -48,6 +48,22 @@ Wasm memory limit: 0 Bytes
 An example of programmatically reading canister settings:
 
 <AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko
+actor {
+  let IC =
+    actor "aaaaa-aa" : actor {
+
+      canister_status : { canister_id : Principal } ->
+        async ();
+
+    };
+};
+```
+
+</TabItem>
+
 <TabItem value="rust" label="Rust">
 
 ```rust
@@ -68,6 +84,86 @@ async fn read_canister_settings() -> CallResult<DefiniteCanisterSettings> {
 }
 ```
 </TabItem>
+
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
+
+```typescript
+import { call, IDL, Principal, query, update } from 'azle';
+import {
+    CanisterStatusArgs,
+    CanisterStatusResult,
+} from 'azle/canisters/management';
+
+type State = {
+    createdCanisterId: Principal;
+};
+
+let state: State = {
+    createdCanisterId: Principal.fromText('aaaaa-aa')
+};
+
+export default class {
+
+    @update([CanisterStatusArgs], CanisterStatusResult)
+    async getCanisterStatus(
+        args: CanisterStatusArgs
+    ): Promise<CanisterStatusResult> {
+        return await call('aaaaa-aa', 'canister_status', {
+            paramIdlTypes: [CanisterStatusArgs],
+            returnIdlType: CanisterStatusResult,
+            args: [args]
+        });
+    }
+}
+```
+
+</AdornedTab>
+
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
+```python
+from kybra import (
+    Async,
+    blob,
+    CallResult,
+    match,
+    nat,
+    Principal,
+    query,
+    update,
+    void,
+)
+from kybra.canisters.management import (
+    CanisterStatusArgs,
+    CanisterStatusResult
+    management_canister,
+)
+
+class GetCanisterStatusResult(Variant, total=False):
+    Ok: CanisterStatusResult
+    Err: str
+
+
+class State(TypedDict):
+    created_canister_id: Principal
+
+
+state: State = {"created_canister_id": Principal.from_str("aaaaa-aa")}
+
+@update
+def get_canister_status(args: CanisterStatusArgs) -> Async[GetCanisterStatusResult]:
+    canister_status_result_call_result: CallResult[
+        CanisterStatusResult
+    ] = yield management_canister.canister_status({"canister_id": args["canister_id"]})
+
+    return match(
+        canister_status_result_call_result,
+        {
+            "Ok": lambda canister_status_result: {"Ok": canister_status_result},
+            "Err": lambda err: {"Err": err},
+        },
+    )
+```
+</AdornedTab>
 </AdornedTabs>
 
 ## Modifying settings
@@ -92,6 +188,19 @@ Wasm memory limit: 3_000_000_000 Bytes
 An example of programmatically modifying canister settings:
 
 <AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko
+actor {
+  let IC =
+    actor "aaaaa-aa" : actor {
+      update_settings : { canister_id : Principal,  } ->
+        async ();
+    };
+};
+```
+</TabItem>
+
 <TabItem value="rust" label="Rust">
 
 ```rust
@@ -114,7 +223,100 @@ async fn modify_canister_settings() -> CallResult<()> {
     .await
 }
 ```
+
 </TabItem>
+
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
+
+```typescript
+import { call, IDL, Principal, query, update } from 'azle';
+import {
+    UpdateSettingsArgs,
+} from 'azle/canisters/management';
+
+type State = {
+    createdCanisterId: Principal;
+};
+
+let state: State = {
+    createdCanisterId: Principal.fromText('aaaaa-aa')
+};
+
+export default class {
+    @update([IDL.Principal], IDL.Bool)
+    async executeUpdateSettings(canisterId: Principal): Promise<boolean> {
+        await call('aaaaa-aa', 'update_settings', {
+            paramIdlTypes: [UpdateSettingsArgs],
+            args: [
+                {
+                    canister_id: canisterId,
+                    settings: {
+                        controllers: [],
+                        compute_allocation: [1n],
+                        memory_allocation: [3_000_000n],
+                        freezing_threshold: [2_000_000n],
+                        reserved_cycles_limit: []
+                    },
+                    sender_canister_version: []
+                }
+            ]
+        });
+
+        return true;
+    }
+}
+```
+
+</AdornedTab>
+
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
+
+```python
+from kybra import (
+    Async,
+    blob,
+    CallResult,
+    match,
+    nat,
+    Principal,
+    query,
+    update,
+    void,
+)
+from kybra.canisters.management import (
+    management_canister,
+)
+
+from typing import TypedDict
+
+
+class State(TypedDict):
+    created_canister_id: Principal
+
+
+state: State = {"created_canister_id": Principal.from_str("aaaaa-aa")}
+
+
+@update
+def execute_update_settings(canister_id: Principal) -> Async[DefaultResult]:
+    call_result: CallResult[void] = yield management_canister.update_settings(
+        {
+            "canister_id": canister_id,
+            "settings": {
+                "controllers": None,
+                "compute_allocation": 1,
+                "memory_allocation": 3_000_000,
+                "freezing_threshold": 2_000_000,
+            },
+        }
+    )
+
+    return match(
+        call_result, {"Ok": lambda _: {"Ok": True}, "Err": lambda err: {"Err": err}}
+    )
+```
+
+</AdornedTab>
 </AdornedTabs>
 
 ## Controllers
