@@ -24,43 +24,8 @@ To create a new Rust project using the IC SDK, open a terminal window and run th
 Use `dfx new <project_name>` to create a new project:
 
 ```
-dfx new rust_hello
-```
-
-You will be prompted to select the language that your backend canister will use. Select 'Rust':
-
-```
-? Select a backend language: ›
-  Motoko
-❯ Rust
-  TypeScript (Azle)
-  Python (Kybra)
-```
-
-:::info
-`dfx` versions `v0.17.0` and newer support this `dfx new` interactive prompt. [Learn more about `dfx v0.17.0`](/blog/2024/02/14/news-and-updates/update#dfx-v0170).
-:::
-
-
-Then, select a frontend framework for your frontend canister, or select 'No frontend canister':
-
-```
-  ? Select a frontend framework: ›
-❯ SvelteKit
-  React
-  Vue
-  Vanilla JS
-  No JS template
-  No frontend canister
-```
-
-Lastly, you can include extra features to be added to your project:
-
-```
-  ? Add extra features (space to select, enter to confirm) ›
-⬚ Internet Identity
-⬚ Bitcoin (Regtest)
-⬚ Frontend tests
+dfx start --clean --background
+dfx new rust_hello --type=rust
 ```
 
 
@@ -69,22 +34,6 @@ Next, navigate into your project directory by running the following command:
 ```
 cd rust_hello
 ```
-
-## Starting the local canister execution environment
-
-Next, before you can build your project, you need to connect to either the local <GlossaryTooltip>replica</GlossaryTooltip> running in your development environment or the decentralized Internet Computer mainnet. For this guide, you'll deploy locally in your developer environment. For more information on deploying on the mainnet, check out the next step [deploying canisters](./5-deploying.mdx).
-
-To start the local canister execution environment, first check that you are still in the root directory for your project, if needed.
-
-Then, start the local <GlossaryTooltip>replica</GlossaryTooltip> on your computer in the background by running the following command:
-
-```
-dfx start --clean --background
-```
-
-:::info
-Depending on your platform and local security settings, you might see a warning displayed. If you are prompted to allow or deny incoming network connections, click **Allow**.
-:::
 
 ## Register, build, and deploy your project
 
