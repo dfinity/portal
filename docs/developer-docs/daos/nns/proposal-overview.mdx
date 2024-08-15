@@ -4,7 +4,7 @@ keywords: [intermediate, governance, concept, nns]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Overview and lifecycle
+# Proposal overview and lifecycle
 
 <MarkdownChipRow labels={["Intermediate", "Governance", "Concept"]} />
 
@@ -17,17 +17,17 @@ While other blockchains take weeks or months to upgrade and typically require su
 
 ## Proposal lifecycle
 
-A proposal's lifecycle starts when it is submitted by a governance participants. Then other governance participants form a decision and vote on the proposal. Based on these votes, the governance canister derives a proposal decision, i.e., the proposal is either adopted or rejected.
+A proposal's lifecycle starts when it is submitted by a governance participants. Then, other governance participants form a decision and vote on the proposal. Based on these votes, the governance canister derives a proposal decision, i.e., the proposal is either adopted or rejected.
 
 If the proposal is rejected, usually nothing happens. If the proposal is adopted, the agreed upon decision is automatically executed by the governance canister.
 
 ### Proposal submission
 
-Any eligible neuron can make and submit a proposal. To avoid being inundated by useless proposals, a user submitting a proposal has to pay a fee of 10 ICP when submitting a proposal, that they will receive back if the proposal is adopted but not receive back if the proposal is rejected.
+Any eligible neuron can make and submit a proposal. To avoid being inundated by useless proposals, a user submitting a proposal has to pay a fee of 10 ICP when submitting a proposal that they will receive back if the proposal is adopted, but if the proposal is rejected.
 
 After a proposal is submitted, the proposal is created and stored in the governance canister. The governance canister computes and stores additional information with each proposal.
 
-First, the governance canister looks at all neurons and creates an empty ballot for each eligible neuron that has a
+Then, the governance canister looks at all neurons and creates an empty ballot for each eligible neuron that has a
 dissolve delay of at least 6 months, storing the neuron's voting power in this moment. This means that at the time of the proposal's submission, a neuron snapshot is taken and all neurons can vote on the proposal with the voting power that they have at that moment.
 
 :::info
