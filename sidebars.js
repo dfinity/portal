@@ -226,19 +226,25 @@ const sidebars = {
               id: "developer-docs/smart-contracts/advanced-features/composite-query",
             },
             {
+              type: "category",
+              label: "Incoming HTTP requests",
+              items: [
+            {
               type: "doc",
-              label: "Handling GET/POST requests",
+              label: "GET/POST requests",
               id: "developer-docs/smart-contracts/advanced-features/handling-get-post-requests",
             },
             {
               type: "doc",
-              label: "Serving an HTTP request",
+              label: "Serving requests",
               id: "developer-docs/smart-contracts/advanced-features/serving-http-request",
             },
             {
               type: "doc",
               label: "HTTP gateways",
               id: "developer-docs/smart-contracts/advanced-features/http-gateways",
+            },
+            ],
             },
             {
               type: "category",
@@ -256,7 +262,7 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "Using HTTP certification",
+              label: "HTTP certification",
               items: [
                 {
                   type: "doc",
@@ -365,7 +371,7 @@ const sidebars = {
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-build",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-cache",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister",
-		"developer-docs/developer-tools/cli-tools/cli-reference/dfx-completion",
+		            "developer-docs/developer-tools/cli-tools/cli-reference/dfx-completion",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-cycles",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-deploy",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-deps",
@@ -373,7 +379,7 @@ const sidebars = {
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-help",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-identity",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-info",
-		"developer-docs/developer-tools/cli-tools/cli-reference/dfx-killall",
+		            "developer-docs/developer-tools/cli-tools/cli-reference/dfx-killall",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-ledger",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-new",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-nns",
@@ -878,10 +884,9 @@ const sidebars = {
                     "developer-docs/defi/tokens/ledger/usage/icrc1_ledger_usage"
                   ],
                 },
-                "developer-docs/defi/tokens/advanced/direct_integration",  
+                "developer-docs/defi/tokens/advanced/direct_integration",
               ],
             },
-            
             "developer-docs/defi/tokens/indexes",
             "developer-docs/defi/icp-tokens/account-trimming",
             "developer-docs/defi/tokens/create",
