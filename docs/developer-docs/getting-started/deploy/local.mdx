@@ -157,7 +157,7 @@ This will render a webpage with a form that accepts a string and sends it to the
 
 The source code of the webpage is defined in the `src/hello_frontend/src/index.{html,js}` files.
 
-```html
+```html title="src/hello_frontend/src/index.html"
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -184,7 +184,7 @@ The source code of the webpage is defined in the `src/hello_frontend/src/index.{
 </html>
 ```
 
-```javascript
+```javascript title="src/hello_frontend/src/index.js"
 import { hello_backend } from "../../declarations/hello_backend";
 
 document.querySelector("form").addEventListener("submit", async (e) => {

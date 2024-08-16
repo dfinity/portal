@@ -35,23 +35,35 @@ To understand mutable state, let's take a look at an example where an actor's pr
 Immutable variables use the `let` syntax when being declared, such as:
 
 ```motoko
-let textImmutable  : Text = "Developer Journey";
-let numImmutable  : Nat = 50;
+import Text "mo:base/Text";
+import Nat "mo:base/Nat";
+
+actor {
+  let textImmutable  : Text = "Developer Journey";
+  let numImmutable  : Nat = 50;
+}
 ```
 
 Mutable variables use the `var` syntax when being declared, such as:
 
 ```motoko
-var pairMutable : (Text, Nat) = (textImmutable, numImmutable);
-var textMutable : Text = textImmutable;
+import Text "mo:base/Text";
+import Nat "mo:base/Nat";
+
+actor {
+  var pairMutable : (Text, Nat) = (textImmutable, numImmutable);
+  var textMutable : Text = textImmutable;
+}
 ```
 
 To update the values of the mutable variables, you can use the following syntax with the assignment operation `:=`, which works for all types:
 
 ```motoko
-textMutable := textMutable # "xyz";
-pairMutable := (textMutable, pairMutable.1);
-pairMutable
+actor {
+  textMutable := textMutable # "xyz";
+  pairMutable := (textMutable, pairMutable.1);
+  pairMutable
+}
 ```
 
 In this syntax, you can update each mutable variable using an update rule for their current values. An actor processes calls by performing updates on its internal mutable variables using the same syntax as above.
@@ -61,13 +73,22 @@ In this syntax, you can update each mutable variable using an update rule for th
 When data is read from the actor's state, each mutable and immutable variable will look alike, however they will behave differently. For example, consider the following variable declarations:
 
 ```motoko
-let x : Nat = 0
+import Nat "mo:base/Nat";
+
+actor {
+  let x : Nat = 0
+}
+
 ```
 
 and:
 
 ```motoko
-var x : Nat = 0
+import Nat "mo:base/Nat";
+
+actor {
+  var x : Nat = 0
+}
 ```
 
 The only difference between these two variable declarations is the use of `let` for the immutable variable, and `var` for the mutable variable. However, these variable contain much different meanings, especially in the context of larger projects and programs.
@@ -79,8 +100,12 @@ In the mutable variable definition using `var`, each occurrence of the variable 
 `let` bound variables are more fundamental to a program. To demonstrate why, consider the following `var` bound variable that uses a single element, a mutable array, that is bound to itself using a `let` bound variable:
 
 ```motoko
-var x : Nat       = 0 ;
-let y : [var Nat] = [var 0] ;
+import Nat "mo:base/Nat";
+
+actor {
+  var x : Nat       = 0 ;
+  let y : [var Nat] = [var 0] ;
+}
 ```
 
 In this example, instead of declaring `x` as a mutable variable that initially holds the value `0`, the variable `y` is used, which is an immutable variable that defines a mutable array that holds a single entry of `0`.
@@ -100,13 +125,21 @@ Before going deeper into mutable arrays, first let's cover immutable arrays, whi
 For example, consider the following immutable array:
 
 ```motoko
-let a : [Nat] = [1, 2, 3] ;
+import Nat "mo:base/Nat";
+
+actor {
+  let a : [Nat] = [1, 2, 3] ;
+}
 ```
 
 Then, to read from this array you can use the traditional bracket syntax of `[` and `]`, to read the desired index:
 
 ```motoko
-let x : Nat = a[2] + a[0] ;
+import Nat "mo:base/Nat";
+
+actor {
+  let x : Nat = a[2] + a[0] ;
+}
 ```
 
 ### Mutable arrays
@@ -118,7 +151,11 @@ Mutable arrays cannot be used in place of immutable onces, since the Motoko defi
 To declare a mutable array, the `[var _]` syntax is used. Note that this uses the `var` keyword for both the expression and types:
 
 ```motoko
-let a : [var Nat] = [var 1, 2, 3] ;
+import Nat "mo:base/Nat";
+
+actor {
+  let a : [var Nat] = [var 1, 2, 3] ;
+}
 ```
 
 This array holds three numbers with type `Nat`. These three values can be updated, but the number of entries cannot.
@@ -126,8 +163,13 @@ This array holds three numbers with type `Nat`. These three values can be update
 To declare a mutable array with a dynamic size, such that the number of entries within the array can be updated, the following `Array_init` syntax can be used:
 
 ```motoko
-var size : Nat = 52 ;
-let x : [var Nat] = Array.init<Nat>(size, 5);
+import Nat "mo:base/Nat";
+import Array "mo:base/Array";
+
+actor {
+  ar size : Nat = 52 ;
+  let x : [var Nat] = Array.init<Nat>(size, 5);
+}
 ```
 
 Using this syntax, this mutable array will have `size` number of entries, each with an initial value of `5`. Then, to update this mutable array, you can use the syntax:
@@ -170,15 +212,20 @@ First, let's clearly define the difference between object and actor classes:
 For example, let's look at the following object declaration of the object `counter`:
 
 ```motoko
-object counter {
-  var count = 0;
-  public func inc() { count += 1 };
-  public func read() : Nat { count };
-  public func bump() : Nat {
-    inc();
-    read()
+import Nat "mo:base/Nat";
+
+actor {
+  object counter {
+    var count = 0;
+    public func inc() { count += 1 };
+    public func read() : Nat { count };
+    public func bump() : Nat {
+      inc();
+      read()
+    };
   };
-};
+}
+
 ```
 
 In this declaration, a single object, called `counter` is defined. In this object there are three public functions, `inc`, `read`, and `bump`, which use the keyword `public` to declare each as a sharable function. This object definition also include a single private mutable variable called `count`, defined by the `var` declaration.
@@ -205,12 +252,16 @@ For example, the following variation of the `counter` declaration above uses the
 
 ```motoko
 import Nat8 "mo:base/Nat8";
-object byteCounter {
-  var count : Nat8 = 0;
-  public func inc() { count += 1 };
-  public func read() : Nat { Nat8.toNat(count) };
-  public func bump() : Nat { inc(); read() };
-};
+
+actor {
+  object byteCounter {
+    var count : Nat8 = 0;
+    public func inc() { count += 1 };
+    public func read() : Nat { Nat8.toNat(count) };
+    public func bump() : Nat { inc(); read() };
+  };
+}
+
 ```
 
 ### Object subtyping
@@ -220,13 +271,18 @@ Next, let's take a look at object subtyping. In Motoko, object subtyping refers 
 To demonstrate an example of subtyping, let's use a simple counter with a more general type that uses fewer public functions:
 
 ```motoko
-object bumpCounter {
-  var c = 0;
-  public func bump() : Nat {
-    c += 1;
-    c
+import Nat "mo:base/Nat";
+
+actor {
+  object bumpCounter {
+    var c = 0;
+    public func bump() : Nat {
+      c += 1;
+      c
+    };
   };
-};
+}
+
 ```
 
 The object type for the object `bumpCounter` exposes only one operation, `bump`:
@@ -265,38 +321,51 @@ If a function expects to receive an object using the first type `({ bump: () →
 Now let's move onto object classes. An object class is a package of entities that share a common name. For example, let's define a class example for counters that start at zero:
 
 ```motoko
-class Counter() {
+import Nat "mo:base/Nat";
+
+actor {
+ class Counter() {
   var c = 0;
   public func inc() : Nat {
     c += 1;
     return c;
-  }
-};
+  };
+ }
+}
 ```
 
 Using this definition, you can construct new counters each with their own unique state that start at zero, such as:
 
 ```motoko
-let c1 = Counter();
-let c2 = Counter();
+actor {
+  let c1 = Counter();
+  let c2 = Counter();
+}
 ```
 
 Then, you can use each counter, `c1` and `c2`, independently of one another:
 
 ```motoko
-let x = c1.inc();
-let y = c2.inc();
-(x, y)
+actor{
+  let x = c1.inc();
+  let y = c2.inc();
+  (x, y)
+}
+
 ```
 
 In comparison, the same results can be achieved by using a constructor function to return an object:
 
-```
-func Counter() : { inc : () -> Nat } =
-  object {
-    var c = 0;
-    public func inc() : Nat { c += 1; c }
-  };
+```motoko
+import Nat "mo:base/Nat";
+
+actor {
+  func Counter() : { inc : () -> Nat } =
+    object {
+      var c = 0;
+      public func inc() : Nat { c += 1; c }
+    };
+}
 ```
 
 Note that the return type of this function is `{ inc : () -> Nat }`, which could be named to use in further type declarations, such as `type Counter = { inc : () -> Nat };`.
@@ -306,10 +375,14 @@ Note that the return type of this function is `{ inc : () -> Nat }`, which could
 In your object class, you initialized counter functions to start with a value of zero. If you want to initialize the counter with a value other than zero, you can pass a data argument into the constructor function:
 
 ```motoko
+import Nat "mo:base/Nat";
+
+actor {
 class Counter(init : Nat) {
   var c = init;
   public func inc() : Nat { c += 1; c };
-};
+  };
+}
 ```
 
 Notice that now the value of `c` is set to `init` rather than set to `0`, to reflect that now the counter value will accept a data argument as an initial value.
@@ -343,16 +416,25 @@ system func inspect({}) : Bool { false }
 In comparison, the following `inspect` function example declines all messages where the principal value is anonymous:
 
 ```motoko
-system func inspect({ caller : Principal }) : Bool {
+import Principal "mo:base/Principal";
+import Bool "mo:base/Bool";
+
+actor {
+  system func inspect({ caller : Principal }) : Bool {
     not (Principal.isAnonymous(caller));
 }
+};
 ```
 
 Messages can also be declined based on their raw size in bytes (of their arguments prior to any decoding from the Candid binary to the Motoko value), such as:
 
 ```motoko
-system func inspect({ arg : Blob }) : Bool {
-    arg.size() <= 512;
+import Bool "mo:base/Bool";
+
+actor {
+  system func inspect({ arg : Blob }) : Bool {
+      arg.size() <= 512;
+  }
 }
 ```
 
@@ -376,32 +458,41 @@ Motoko error handling best practices recommend to use `Option` and `Result` erro
 If a function wants to return the value of type `A`, or signal an error can return a value of option type `?A`, the `null` value can designate the error. For example, consider the following `markDone` function that returns an async value of `?Seconds`.
 
 ```motoko
-public shared func markDoneOption(id : TodoId) : async ?Seconds {
-  switch (todos.get(id)) {
-    case (?(#todo(todo))) {
-      let now = Time.now();
-      todos.put(id, #done(now));
-      ?(secondsBetween(todo.opened, now))
-    };
-    case _ { null };
-  }
-};
+import Time "mo:base/Time";
+
+actor {
+  public shared func markDoneOption(id : TodoId) : async ?Seconds {
+    switch (todos.get(id)) {
+      case (?(#todo(todo))) {
+        let now = Time.now();
+        todos.put(id, #done(now));
+        ?(secondsBetween(todo.opened, now))
+      };
+      case _ { null };
+    }
+  };
+}
 ```
 
 Then, you can use the following error callsite:
 
 
 ```motoko
-public shared func doneTodo2(id : Todo.TodoId) : async Text {
-  switch (await Todo.markDoneOption(id)) {
-    case null {
-      "Something went wrong."
-    };
-    case (?seconds) {
-      "Congrats! That took " # Int.toText(seconds) # " seconds."
+import Int "mo:base/Int";
+import Text "mo:base/Text";
+
+actor {
+  public shared func doneTodo2(id : Todo.TodoId) : async Text {
+    switch (await Todo.markDoneOption(id)) {
+      case null {
+        "Something went wrong."
+      };
+      case (?seconds) {
+        "Congrats! That took " # Int.toText(seconds) # " seconds."
+      };
     };
   };
-};
+}
 ```
 
 One drawback of this method is that all possible errors return a single, non-informative `null` value that only tells the user that 'Something went wrong'.
@@ -417,40 +508,51 @@ type Result<Ok, Err> = { #ok : Ok; #err : Err }
 Since `Result` includes the `Err` type parameters, the `Result` type allows you to select the type used to describe errors. Consider the following example that uses `Result` variants to signal errors:
 
 ```Motoko
-public shared func markDoneResult(id : TodoId) : async Result.Result<Seconds, TodoError> {
-  switch (todos.get(id)) {
-    case (?(#todo(todo))) {
-      let now = Time.now();
-      todos.put(id, #done(now));
-      #ok(secondsBetween(todo.opened, now))
-    };
-    case (?(#done(time))) {
-      #err(#alreadyDone(time))
-    };
-    case null {
-      #err(#notFound)
-    };
-  }
-};
+import Result "mo:base/Result";
+import Time "mo:base/Time";
+
+actor {
+  public shared func markDoneResult(id : TodoId) : async Result.Result<Seconds, TodoError> {
+    switch (todos.get(id)) {
+      case (?(#todo(todo))) {
+        let now = Time.now();
+        todos.put(id, #done(now));
+        #ok(secondsBetween(todo.opened, now))
+      };
+      case (?(#done(time))) {
+        #err(#alreadyDone(time))
+      };
+      case null {
+        #err(#notFound)
+      };
+    }
+  };
+}
 ```
 
 Then, you can use the following error callsite:
 
 ```motoko
-public shared func doneTodo3(id : Todo.TodoId) : async Text {
-  switch (await Todo.markDoneResult(id)) {
-    case (#err(#notFound)) {
-      "There is no todo with that ID."
-    };
-    case (#err(#alreadyDone(at))) {
-      let doneAgo = secondsBetween(at, Time.now());
-      "You've already completed this todo " # Int.toText(doneAgo) # " seconds ago."
-    };
-    case (#ok(seconds)) {
-      "Congrats! That took " # Int.toText(seconds) # " seconds."
+import Time "mo:base/Time";
+import Text "mo:base/Text";
+import Int "mo:base/Int";
+
+actor {
+  public shared func doneTodo3(id : Todo.TodoId) : async Text {
+    switch (await Todo.markDoneResult(id)) {
+      case (#err(#notFound)) {
+        "There is no todo with that ID."
+      };
+      case (#err(#alreadyDone(at))) {
+        let doneAgo = secondsBetween(at, Time.now());
+        "You've already completed this todo " # Int.toText(doneAgo) # " seconds ago."
+      };
+      case (#ok(seconds)) {
+        "Congrats! That took " # Int.toText(seconds) # " seconds."
+      };
     };
   };
-};
+}
 ```
 
 This callsite returns more detailed errors, such as 'There is no todo with that ID', or 'You've already completed this todo', which is much more useful than 'Something went wrong'.
@@ -464,34 +566,42 @@ Asynchronous errors is a restricted form of exception error handling. Since Moto
 Asynchronous error handling generally should only be used for catching and signally unexpected, irrecoverable failures. If a failure can be handled by the caller, it should return a `Result` instead. The following example demonstrates a form of asynchronous error handling:
 
 ```motoko
-public shared func markDoneException(id : TodoId) : async Seconds {
-  switch (todos.get(id)) {
-    case (?(#todo(todo))) {
-      let now = Time.now();
-      todos.put(id, #done(now));
-      secondsBetween(todo.opened, now)
-    };
-    case (?(#done(time))) {
-      throw Error.reject("Already done")
-    };
-    case null {
-      throw Error.reject("Not Found")
-    };
-  }
-};
+import Time "mo:base/Time";
+
+actor {
+  public shared func markDoneException(id : TodoId) : async Seconds {
+    switch (todos.get(id)) {
+      case (?(#todo(todo))) {
+        let now = Time.now();
+        todos.put(id, #done(now));
+        secondsBetween(todo.opened, now)
+      };
+      case (?(#done(time))) {
+        throw Error.reject("Already done")
+      };
+      case null {
+        throw Error.reject("Not Found")
+      };
+    }
+  };
+}
 ```
 
 Then, you can use the following error callsite:
 
 ```motoko
-public shared func doneTodo4(id : Todo.TodoId) : async Text {
-  try {
-    let seconds = await Todo.markDoneException(id);
-    "Congrats! That took " # Int.toText(seconds) # " seconds.";
-  } catch (e) {
-    "Something went wrong.";
-  }
-};
+import Text "mo:base/Text";
+
+actor {
+  public shared func doneTodo4(id : Todo.TodoId) : async Text {
+    try {
+      let seconds = await Todo.markDoneException(id);
+      "Congrats! That took " # Int.toText(seconds) # " seconds.";
+    } catch (e) {
+      "Something went wrong.";
+    }
+  };
+}
 ```
 
 ## Resources

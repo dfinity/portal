@@ -36,7 +36,6 @@ The ICP and ICRC-1 ledger use different endpoints, different transactions, diffe
 
 The most important difference between the ICP ledger and the ICRC-1 standard is their implementation of accounts. The ICRC-1 standard specifies `Account`s as a `struct` data type that contains a principal and an optional subaccount.
 
-
 ```candid
 type Subaccount = blob;
 type Account = record { owner : principal; subaccount : opt Subaccount; };
@@ -152,7 +151,7 @@ Use the following URL can be used to download the Candid file: `https://raw.gith
 
 Open the `dfx.json` file in the project's directory and replace the existing content with the following:
 
-```json
+```json title="dfx.json"
 {
   "canisters": {
     "icrc1_ledger_canister": {

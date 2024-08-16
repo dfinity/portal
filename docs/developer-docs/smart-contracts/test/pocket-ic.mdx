@@ -50,7 +50,7 @@ PocketIC is currently not natively supported on Windows systems.
 
 Once the binary file is downloaded, unzip the file and make it executable:
 
-```
+```bash
 gzip -d pocket-ic.gz
 chmod +x pocket-ic
 ```
@@ -67,7 +67,7 @@ The PocketIC binary can be left in your working directory or you can specify the
 
 Add PocketIC Rust do your project with the command:
 
-```
+```bash
 cargo add pocket-ic --dev
 ```
 
@@ -168,7 +168,7 @@ PocketIC is currently not supported natively on Windows systems.
 
 Once the binary file is downloaded, unzip the file and make it executable:
 
-```
+```bash
 gzip -d pocket-ic.gz
 chmod +x pocket-ic
 ```
@@ -176,7 +176,7 @@ chmod +x pocket-ic
 :::info
 On macOS systems, to bypass developer verification from Apple, you may need to run:
 
-```
+```bash
 xattr -dr com.apple.quarantine pocket-ic
 ```
 :::
@@ -185,7 +185,7 @@ The PocketIC binary can be left in your working directory or you can specify the
 
 Then, run the following command to install PocketIC:
 
-```
+```bash
 pip3 install pocket-ic
 ```
 
@@ -204,7 +204,6 @@ pic = PocketIC()
 canister_id = pic.create_canister()
 pic.add_cycles(canister_id, 2_000_000_000_000)
 ```
-
 
 ### Make canister calls
 
@@ -230,7 +229,7 @@ assert(response == 'Hello, PocketIC!')
 
 The following is a simple, but complete testing example with a counter canister:
 
-```python
+```python title="src/example_backend/src/main.py"
 import sys
 import os
 import unittest
@@ -272,7 +271,7 @@ if __name__ == "__main__":
 
 To see more examples and run them locally, clone the [PocketIC Python repo](https://github.com/dfinity/pocketic-py), then run the following command, replacing the example name with the example you'd like to run. For example, to run the `counter_canister` example, use the command:
 
-```
+```bash
 python3 examples/counter_canister/counter_canister_test.py
 ```
 
