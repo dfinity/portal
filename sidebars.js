@@ -1440,17 +1440,20 @@ const sidebars = {
   rust: [
     {
       type: "category",
-      label: "Building with Rust",
-      link: {
-        type: "doc",
-        id: "developer-docs/backend/rust/index",
-      },
+      label: "Rust",
       items: [
-        "developer-docs/backend/rust/infrastructure",
-        "developer-docs/backend/rust/project-organization",
-        "developer-docs/backend/rust/dev-env",
+        {
+          type: "category",
+          label: "Getting started",
+          items: [
+        "developer-docs/backend/rust/index",
         "developer-docs/backend/rust/quickstart",
+        "developer-docs/backend/rust/rust-considerations",
+        "developer-docs/backend/rust/dev-env",
+        "developer-docs/backend/rust/project-organization",
         "developer-docs/backend/rust/deploying",
+          ]
+        },
         "developer-docs/backend/rust/intercanister",
         "developer-docs/backend/rust/upgrading",
         "developer-docs/backend/rust/optimizing",

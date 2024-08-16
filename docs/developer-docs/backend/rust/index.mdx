@@ -1,36 +1,43 @@
 ---
-keywords: [beginner, rust, introduction]
+keywords: [beginner, rust, tutorial, overview]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Introduction to developing canisters in Rust
+# Overview
 
 <MarkdownChipRow labels={["Beginner", "Rust" ]} />
 
 Rust is a powerful and type-sound modern programming language with an active developer community. Because Rust compiles to WebAssembly, it offers a rich development environment for writing dapps to run on the Internet Computer blockchain.
 
-## Overview
-To help pave the way for writing dapps in Rust that can be deployed on ICP, you can use the [IC SDK](/docs/current/developer-docs/getting-started/install/). To create a Rust project using the IC SDK, all you need to do is add the `--type=rust` flag while creating a new project. For example, to create a Rust project named `hello_world`, use the command:
+Developing smart contracts in Rust is supported on ICP through the Rust canister development kit (CDK), which is developed and maintained by DFINITY. Rust is natively supported by ICP developer tools such as [`dfx`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/) and [PocketIC](/docs/current/developer-docs/smart-contracts/test/pocket-ic), and can be used with features such as [HTTP certification](/docs/current/developer-docs/web-apps/http-compatible-canisters/custom-http-canisters), [composite queries](/docs/current/developer-docs/smart-contracts/advanced-features/composite-query), and [query stats](/docs/current/developer-docs/smart-contracts/advanced-features/query-stats).
 
-```
-dfx new hello_world --type=rust
-```
+This guide provides an introduction to using Rust to developer backend canisters and covers the basic infrastructure of Rust canisters, as well as design considerations and observability.
 
-For more information on starting a new project see [Rust quick start](4-quickstart.mdx).
-
-## Architecture
+## Rust CDK
 
 To support Rust development, the IC SDK includes the [Rust canister development kit (Rust CDK)](https://github.com/dfinity/cdk-rs).
 
-**While using the IC SDK is the typical path for most developers, experienced Rust developers may choose to circumvent IC SDK entirely and use the [Rust CDK](https://github.com/dfinity/cdk-rs) directly. This documentation assumes one is using the IC SDK to build Rust canisters.**
+While using the IC SDK is the typical path for most developers, experienced Rust developers may choose to circumvent the IC SDK entirely and use the Rust CDK directly. This documentation assumes the reader is using the IC SDK to build Rust canisters.
 
-### The Rust CDK consists of the following crates:
-- The core of Rust CDK is the [`ic-cdk`](https://crates.io/crates/ic-cdk) crate. It provides the core methods that enable Rust programs to interact with the ICP system API.
+The Rust CDK consists of the following crates:
+- [`ic-cdk`](https://crates.io/crates/ic-cdk): Core methods that enable Rust programs to interact with the ICP system API.
 
-- The [`ic-cdk-macros`](https://crates.io/crates/ic-cdk-macros) crate defines the procedural macros (e.g. `update`, `query`, `import`) that facilitate building operation endpoints and APIs.
+- [`ic-cdk-macros`](https://crates.io/crates/ic-cdk-macros): Defines the procedural macros (e.g. `update`, `query`, `import`) that facilitate building operation endpoints and APIs.
 
-- The [`ic-cdk-timers`](https://crates.io/crates/ic-cdk-timers) crate provides an API to schedule multiple timers and periodic tasks.
+- [`ic-cdk-timers`](https://crates.io/crates/ic-cdk-timers): Provides an API to schedule multiple timers and periodic tasks.
 
-There are a few [examples](https://github.com/dfinity/cdk-rs/tree/main/examples) to get you started building Rust canisters.
+## Rust developer resources
 
+- [Rust samples](https://github.com/dfinity/examples/tree/master/rust)
+
+- [Rust canister best practices](https://medium.com/dfinity/building-effective-rust-canister-smart-contracts-patterns-and-pitfalls-d019221061b2)
+
+- [Video: Rust canister best practices](https://www.youtube.com/watch?v=36L33S_DYHY&ab_channel=DFINITY)
+
+- [Video: Building a dapp in Rust](https://www.youtube.com/watch?v=6wyIhzsFbKw&t=3s&ab_channel=DFINITY)
+
+- [Rust at scale: packages, crates, and modules](https://mmapped.blog/posts/03-rust-packages-crates-modules)
+
+## Next steps
+Now that you've learned about the infrastructure of Rust backend canisters on the Internet Computer, the next step is to learn about [project organization](./2-project-organization.mdx).

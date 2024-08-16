@@ -4,7 +4,7 @@ keywords: [beginner, rust, tutorial, project organization]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# 2: Project organization
+# Rust project organization
 
 <MarkdownChipRow labels={["Beginner", "Rust" ]} />
 
@@ -12,8 +12,9 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 When a new Rust project is created with the command:
 
-```
+```bash
 dfx new example --type=rust
+```
 
 The following project structure is generated:
 
@@ -40,10 +41,6 @@ src
 webpack.config.js
 ```
 
-:::info
-`dfx` versions `v0.17.0` and newer support this `dfx new` interactive prompt. [Learn more about `dfx v0.17.0`](/blog/2024/02/14/news-and-updates/update#dfx-v0170).
-:::
-
 In this structure, you can see the backend canister, in this case `example_backend` contains the following components:
 
 ```
@@ -59,7 +56,7 @@ One of the template files included in your project directory is a default `dfx.j
 
 The configuration file should look like this:
 
-```json
+```json title="dfx.json"
 {
   "canisters": {
     "example_backend": {
@@ -101,24 +98,21 @@ Notice that under the `canisters` key, you have some default settings for the `e
 
 ### `Cargo.toml`
 
-In the root directory, there is a `Cargo.toml` file.
+In the root directory, there is a `Cargo.toml` file. It defines a Rust workspace by specifying paths to each Rust crate. A Rust canister is just a Rust crate compiled to WebAssembly. Here you have one member at `src/example_backend` which is the only Rust canister.
 
-It defines a Rust workspace by specifying paths to each Rust crate. A Rust type canister is just a Rust crate compiled to WebAssembly. Here you have one member at `src/example_backend` which is the only Rust canister.
-
-``` toml
+``` toml title="Cargo.toml"
 [workspace]
 members = [
     "src/example_backend",
 ]
 ```
 
-### `src/example_backend/`
+### Backend canister Cargo.toml file
 
 Now you are in the Rust canister. As any standard Rust crate, it has a `Cargo.toml` file which configures the details to build the Rust crate.
 
-#### `src/example_backend/Cargo.toml`
 
-``` toml
+``` toml title="src/example_backend/Cargo.toml"
 [package]
 name = "example_backend"
 version = "0.1.0"
@@ -136,14 +130,14 @@ serde = { version = "1.0", features = ["derive"] }
 ```
 
 :::info
-Notice the `crate-type = ["cdylib"]` line which is necessary to compile this Rust program into WebAssembly module.
+Notice the `crate-type = ["cdylib"]` line, which is necessary to compile this Rust program into WebAssembly module.
 :::
 
-#### `src/example_backend/src/lib.rs`
+### Default canister code
 
 The default project has a simple `greet` function that uses the Rust CDK `query` macro.
 
-``` rust
+``` rust title="src/example_backend/src/lib.rs"
 #[ic_cdk::query]
 fn greet(name: String) -> String {
     format!("Hello, {}!", name)
@@ -151,7 +145,7 @@ fn greet(name: String) -> String {
 
 ```
 
-#### `src/example_backend/example_backend.did`
+### Candid file
 
 Candid is an interface description language (IDL) for interacting with canisters running on the Internet Computer. Candid files provide a language-independent description of a canister’s interfaces including the names, parameters, and result formats and data types for each function a canister defines.
 
@@ -159,18 +153,15 @@ By adding Candid files to your project, you can ensure that data is properly con
 
 To see details about the Candid interface description language syntax, see the [*Candid Guide*](/docs/current/developer-docs/smart-contracts/candid/candid-concepts) or the [Candid crate documentation](https://docs.rs/candid/).
 
-``` did
+```candid title="src/example_backend/example_backend.did"
 service : {
     "greet": (text) -> (text) query;
 }
-
 ```
 
 This definition specifies that the `greet` function is a `query` method which takes `text` data as input and returns `text` data.
 
 ## Declaring global variables
-
-### Static variables vs flexible variables
 
 **Static variables** are global variables that the protocol preserves across upgrades. For example, a user database should probably be static.
 
@@ -192,7 +183,7 @@ Your Candid file should be the main source of documentation for people who want 
 
 The following is an example of a .did file:
 
-```
+```candid
 type TransferError = variant {
   // The debit account didn't have enough funds
   // for completing the transaction.
@@ -218,7 +209,7 @@ Rust error types tend to make it easy to recover from errors correctly for API c
 
 The following is an example of using variant types to indicate error cases:
 
-```
+```candid
 type CreateEntityResult = variant {
   Ok  : record { entity_id : EntityId; };
   Err : opt variant {
