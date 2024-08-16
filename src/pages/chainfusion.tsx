@@ -351,13 +351,14 @@ function ChainFusion() {
       setIsMobile(window.innerWidth <= 768);
     };
 
-    handleResize(); // Set initial value
+    handleResize();
     window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
   const isDark = useDarkHeaderInHero(heroRef);
   type ContentCardType = {
     title: string;
