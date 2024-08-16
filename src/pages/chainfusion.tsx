@@ -889,7 +889,7 @@ function ChainFusion() {
               igniting a thriving Web3 ecosystem
             </motion.h3>
             <Link
-              className="link-white link-with-icon mt-4 md:mt-6 flex justify-center items-center "
+              className="link-white link-with-icon mt-4 md:mt-6 "
               href="https://internetcomputer.org/ecosystem?tag=Chainfusion"
             >
               <LinkArrowRight /> Enter the Chain Fusion ecosystem
