@@ -156,7 +156,7 @@ By default, the `dfx.json` file will contain automatically generated configurati
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```json
+```json title="dfx.json"
 {
   "canisters": {
     "hello_backend": {
@@ -192,7 +192,7 @@ By default, the `dfx.json` file will contain automatically generated configurati
 
 <TabItem value="rust" label="Rust">
 
-```json
+```json title="dfx.json"
 {
   "canisters": {
     "hello_backend": {
@@ -229,7 +229,7 @@ By default, the `dfx.json` file will contain automatically generated configurati
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-```json
+```json title="dfx.json"
 {
     "canisters": {
         "hello_backend": {
@@ -249,7 +249,7 @@ By default, the `dfx.json` file will contain automatically generated configurati
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-```json
+```json title="dfx.json"
 {
   "canisters": {
     "hello_backend": {
@@ -294,8 +294,8 @@ The backend canister's code will be located in the `src/hello_backend` subdirect
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
-///src/hello_backend/main.mo
+```motoko title="src/hello_backend/main.mo"
+
 actor {
 public query func greet(name : Text) : async Text {
     return "Hello, " # name # "!";
@@ -306,8 +306,7 @@ public query func greet(name : Text) : async Text {
 </TabItem>
 <TabItem value="rust" label="Rust">
 
-```rust
-///src/hello_backend/src/lib.rs
+```rust title="src/hello_backend/src/lib.rs"
 #[ic_cdk::query]
 fn greet(name: String) -> String {
     format!("Hello, {}!", name)
@@ -318,7 +317,7 @@ fn greet(name: String) -> String {
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-```typescript
+```typescript title="src/hello_backend/src/index.ts"
 import { IDL, query, update } from 'azle';
 
 export default class {
@@ -340,7 +339,7 @@ export default class {
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-```python
+```python title="src/hello_backend/src/main.py"
 from kybra import query
 
 @query
