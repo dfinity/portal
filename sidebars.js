@@ -1110,25 +1110,35 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "Using the NNS dapp",
-              items: ["developer-docs/daos/nns/nns-app-quickstart"],
+              label: "Quickstart NNS dapp",
+              items: [
+                "developer-docs/daos/nns/nns-app-quickstart",
+                "developer-docs/daos/nns/nns-dapp-send-and-receive-tokens",
+                "developer-docs/daos/nns/nns-dapp-staking-a-neuron",
+                "developer-docs/daos/nns/nns-dapp-voting-on-proposals",
+                "developer-docs/daos/nns/nns-dapp-following-other-neurons",
+                "developer-docs/daos/nns/nns-dapp-advanced-neuron-operations",
+                "developer-docs/daos/nns/nns-dapp-additional-features",
+              ],
             },
             {
               type: "category",
               label: "Neurons",
               items: [
-                "developer-docs/daos/nns/neuron-management",
+                "developer-docs/daos/nns/neuron-overview",
                 "developer-docs/daos/nns/staking-voting-rewards",
+                {
+                  type: "category",
+                  label: "Advanced",
+                  items: ["developer-docs/daos/nns/neuron-management"],
+                },
               ],
             },
-            "developer-docs/daos/nns/neurons-fund",
             {
               type: "category",
               label: "Proposals",
               items: [
                 "developer-docs/daos/nns/proposal-overview",
-                "developer-docs/daos/nns/proposal-lifecycle",
-                "developer-docs/daos/nns/proposal-voting",
                 {
                   type: "category",
                   label: "Advanced",
@@ -1136,6 +1146,21 @@ const sidebars = {
                 },
               ],
             },
+            {
+              type: "category",
+              label: "Voting",
+              items: [
+                "developer-docs/daos/nns/voting-direct-voting",
+                "developer-docs/daos/nns/voting-following",
+                "developer-docs/daos/nns/voting-becoming-a-known-neuron",
+                {
+                  type: "category",
+                  label: "Advanced",
+                  items: ["developer-docs/daos/nns/voting-verify-proposals"],
+                },
+              ],
+            },
+            "developer-docs/daos/nns/neurons-fund",
           ],
         },
         {

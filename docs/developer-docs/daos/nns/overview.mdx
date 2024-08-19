@@ -4,52 +4,50 @@ keywords: [beginner, governance, overview, nns]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# NNS overview
+# Network Nervous System (NNS)
 
 <MarkdownChipRow labels={["Beginner", "Governance" ]} />
 
-The NNS is the decentralized autonomous organization (DAO) that governs the Internet Computer Protocol. You can access the [on-chain frontend](https://nns.ic0.app/).
+## Overview
+<iframe width="560" height="315" src="https://www.youtube.com/embed/1uX-fRgvXjU?si=VAYJNj7ecJsrfxPb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-It is a fully on-chain, decentralized organization and is, for instance, responsible for making protocol-level upgrades to continuously improve the Internet Computer Protocol.
+The Network Nervous System, NNS for short, is the fully on-chain decentralized autonomous organization (DAO) that governs the Internet Computer Protocol.
+It is a stake-based, open governance system where everyone can participate by staking some ICP utility tokens.
 
-It operates under a liquid democracy in which those who have [staked their ICP in a neuron vote](/docs/current/concepts/governance) on proposals that shape the development of the Internet Computer.
+## The need for the NNS
+The Internet Computer is run by a lot of independent node machines that run the Internet Computer protocol and are organized into different sub-groups, called subnets.
+To ensure that the Internet Computer can evolve in terms of security, efficiency, and scale, decisions such as the following need to be made:
+-   Upgrading the protocol and guest operating system software used by the nodes machines, for cases such as added security or better performance.
+-   Inducting new node machines by new node providers into the network for more robustness.
+-   Creating new subnets to scale the Internet Computer's capacity.
+-   Splitting subnets to balance network load.
 
-Some proposal examples include upgrading the protocol and software used by the node machines that host the network and creating new subnet blockchains to increase network capacity
+The NNS ensures that all these decisions can be made in a decentralized and autonomous way.
 
-A proposal passes based on either:
-- **Absolute Majority** - At any point, even before the voting period ends, if an absolute majority (more than half of the total voting power) has voted "yes," then the proposal is adopted. If an absolute majority has voted "no," then the proposal is rejected.
+## Neurons
+On the Internet Computer, governance participants are called _neurons_.
+Neurons are staked ICP tokens, so anyone can become a part of the NNS governance by staking ICP tokens in a neuron.
+This is incentivized by voting rewards for neurons who participate in decision making.
 
-- **Simple Majority** - When the voting period ends, if a simple majority (more than half of the cast votes) has voted "yes" and the number of these yes votes constitutes at least 3% of the total voting power, then the proposal is adopted. Otherwise, the proposal is rejected.
+For a tutorial on how to stake tokens in a neuron, refer to [Staking a neuron](/docs/current/developer-docs/daos/nns/nns-dapp-staking-a-neuron).
+For more background information on neurons and voting rewards, refer to [Neurons](/docs/current/developer-docs/daos/nns/neuron-overview).
 
-For determining how long proposals are open for voting, the governance uses a so called "Wait-for-quiet" algorithm. This ensures that proposals are decided quickly if all voters agree, but have a longer voting period if they are controversial. Most proposals start with 4 days of voting period that can be extended up to 8 days.
-Once a proposal is adopted, it is autonomously executed on-chain.
-
-While other blockchains take weeks or months to upgrade and typically require substantial manual work and coordination to do so, ICP upgrades itself every week (https://dashboard.internetcomputer.org/releases). Its ability to upgrade and iterate is a comparative "superpower."
-
-## Participation rewards
-Network governance on the Internet Computer is incentivized through a system called "neurons".
-ICP token holders can create a “neuron” by staking ICP up to eight years.
-
-When a user creates a neuron, the staked ICP can only be taken out of the neuron again by disbursing the neuron. Each neuron is configured with a “dissolve delay” that determines the minimum amount of time that you have to wait before you can unlock your staked ICP utility tokens. Once a neuron has been placed into “dissolving mode,” its dissolve delay falls over time, rather like a kitchen timer, until it reaches zero, whereupon its owner can perform a final disburse action to unlock the balance of ICP.
-
-Neurons with a longer dissolve delay have more voting power and get more rewards so that they are economically incentivized to vote in the best long-term interests of the network.
-
-The number of rewards that neuron receives derive from factors as the amount of staked tokens, the lockup period remaining (the “dissolve delay”), the neuron’s “age”, the proportion of possible votes it has participated in, and the sum of voting activity across all neurons, since the overall total rewards are capped and must be divided between voters.
-
-For more information on neurons, refer to the [What are Neurons section in the NNS quickstart](/docs/current/developer-docs/daos/nns/nns-app-quickstart).
-For more information on staking rewards, refer to [Staking and Voting Rewards](/docs/current/developer-docs/daos/nns/staking-voting-rewards).
 
 ## Proposals
-Participants submit proposals to the NNS. Refer to the proposal submission requirements and types at [proposal requirements](/docs/current/developer-docs/daos/nns/proposal-requirements).
+Proposals are suggestion on how to evolve the Internet Computer, including decisions on how to update the protocol, organize node machines
+ into subnets, and update the rules of the NNS DAO itself.
+Any neuron that has tokens staked for at least 6 months can submit and vote on proposals.
 
-Proposals are adopted or rejected based on voting activity by “neurons” that network participants have created.
+On a high level, a proposal goes through the following lifecycle:
 
-## Participation
+1. **Proposal submission**: A neuron submits a proposal with a new suggestion to make a change to the network.
+2. **Establish ballot roll**: The governance canister takes a snapshot and creates (empty) ballots for all eligible neurons.
+3. **Voting**: All eligible neurons can cast their vote. This can either be done by a manual vote or by _following_, which is a mechanism for delegating the voting power to another neuron, also called liquid democracy.
+4. **Proposal decision**: The proposal is decided based on either:
+    - **Absolute Majority** - At any point, even before the voting period ends, if an absolute majority (more than half of the total voting power) has voted "yes," then the proposal is adopted. If an absolute majority has voted "no," then the proposal is rejected.
+    - **Simple Majority** - When the voting period ends, if a simple majority (more than half of the cast votes) has voted "yes" and the number of these yes votes constitutes at least 3% of the total voting power, then the proposal is adopted. Otherwise, the proposal is rejected.
+5. **Proposal execution**: If a proposal is adopted, the NNS DAO automatically and autonomously executes the proposals. For example, if the proposal decided to update the voting rules, the governance canister would automatically initiate an update of the smart contract that implements the NNS DAO which executes this decision. Compared to other DAOs, this has the advantage that no human action is needed for proposal execution, which removes a source of failure and inefficiency.
 
-Neurons can manually vote on all proposals.
-
-If they cannot manually vote on all proposals due to high submission volumes or a lack of expertise, neurons can delegate their vote, called _following_, for specific proposal topic. This ensures efficient decision-making without requiring constant manual input.
-
-Since the incentive to stake ICP in a neuron is high, it is difficult and exorbitantly expensive for an attacker to acquire a sufficiently large stake to gain significant influence.
-
-To participate, navigate to the [NNS app](https://nns.ic0.app/).
+For a tutorial on how to vote on a proposal, refer to [Voting on proposals](/docs/current/developer-docs/daos/nns/nns-dapp-voting-on-proposals) and for a tutorial on how to set following, refer to [Following](/docs/current/developer-docs/daos/nns/nns-dapp-following-other-neurons).
+For more detailed information about proposals, including details of the lifecycle, how to submit proposals, and the precise type of proposals, refer to [Proposals](/docs/current/developer-docs/daos/nns/proposal-overview).
+For more information about voting, the rules of following, and how to verify proposals, refer to [Voting](/docs/current/developer-docs/daos/nns/voting-direct-voting).
