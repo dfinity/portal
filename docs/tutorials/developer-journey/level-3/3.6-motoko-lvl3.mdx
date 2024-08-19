@@ -23,6 +23,8 @@ In Motoko, recall that the `shared` keyword is used to declare a shared function
 To demonstrate this, consider the following function:
 
 ```motoko
+import Nat "mo:base/Nat";
+
 shared(msg) func inc() : async () {
   // ... msg.caller ...
 }
@@ -33,6 +35,8 @@ In this basic demonstration, the shared function `inc()` specifies a `msg` param
 Additionally, the caller of an actor class can be called using the same syntax on the actor class declaration, such as:
 
 ```motoko
+import Nat "mo:base/Nat";
+
 shared(msg) actor class Counter(init : Nat) {
   // ... msg.caller ...
 }
@@ -41,6 +45,8 @@ shared(msg) actor class Counter(init : Nat) {
 To further this example, imagine a scenario where you have the `Counter` actor that you used in a previous example that you want to restrict access to. You can modify the original example so that only the `principal` that installed the actor can modify the actor by recording the `principal` that installed the actor and binding it to an `owner` variable, then checking that the caller of each method is equal to the owner variable:
 
 ```motoko
+import Nat "mo:base/Nat";
+
 shared(msg) actor class Counter(init : Nat) {
 
   let owner = msg.caller;
@@ -150,7 +156,7 @@ Now, let's write the code that sets up the simple access control app. Open the `
 
 Start by importing the base modules:
 
-```motoko
+```motoko title="src/access_hello_backend/main.mo"
 import AssocList "mo:base/AssocList";
 import Error "mo:base/Error";
 import List "mo:base/List";
@@ -158,7 +164,7 @@ import List "mo:base/List";
 
 Then, declare your shared actor class which defines three role-based greetings to display using an if/else statement:
 
-```motoko
+```motoko title="src/access_hello_backend/main.mo"
 shared({ caller = initializer }) actor class() {
 
     public shared({ caller }) func greet(name : Text) : async Text {
@@ -174,7 +180,7 @@ shared({ caller = initializer }) actor class() {
 
 Next, define the custom types `Role` and `Permission`:
 
-```motoko
+```motoko title="src/access_hello_backend/main.mo"
     public type Role = {
         #owner;
         #admin;
@@ -189,14 +195,14 @@ Next, define the custom types `Role` and `Permission`:
 
 Then, define stable variables to store a list of principals and their associated role:
 
-```motoko
+```motoko title="src/access_hello_backend/main.mo"
     private stable var roles: AssocList.AssocList<Principal, Role> = List.nil();
     private stable var role_requests: AssocList.AssocList<Principal, Role> = List.nil();
 ```
 
 Create a function that checks if principal `a` equals principal `b`:
 
-```motoko
+```motoko title="src/access_hello_backend/main.mo"
     func principal_eq(a: Principal, b: Principal): Bool {
         return a == b;
     };
@@ -204,7 +210,7 @@ Create a function that checks if principal `a` equals principal `b`:
 
 Define a function to get the principal's current role, first by checking if the principal is the initializer of the canister, then by checking the list that stores principals and their associated role:
 
-```motoko
+```motoko title="src/access_hello_backend/main.mo"
     func get_role(pal: Principal) : ?Role {
         if (pal == initializer) {
             ?#owner;
@@ -217,7 +223,7 @@ Define a function to get the principal's current role, first by checking if the 
 
 Then, determine if a principal has a role with permissions:
 
-```motoko
+```motoko title="src/access_hello_backend/main.mo"
     func has_permission(pal: Principal, perm : Permission) : Bool {
         let role = get_role(pal);
         switch (role, perm) {
@@ -230,7 +236,7 @@ Then, determine if a principal has a role with permissions:
 
 Define a function that rejects any unauthorized principals:
 
-```motoko
+```motoko title="src/access_hello_backend/main.mo"
     func require_permission(pal: Principal, perm: Permission) : async () {
         if ( has_permission(pal, perm) == false ) {
             throw Error.reject( "unauthorized" );
@@ -240,7 +246,7 @@ Define a function that rejects any unauthorized principals:
 
 Define a function to assign a new role to a principal:
 
-```motoko
+```motoko title="src/access_hello_backend/main.mo"
     public shared({ caller }) func assign_role( assignee: Principal, new_role: ?Role ) : async () {
         await require_permission( caller, #assign_role );
 
@@ -265,7 +271,7 @@ Define a function to assign a new role to a principal:
 
 Return the principal of the message caller/user identity:
 
-```motoko
+```motoko title="src/access_hello_backend/main.mo"
     public shared({ caller }) func callerPrincipal() : async Principal {
         return caller;
     };
@@ -274,7 +280,7 @@ Return the principal of the message caller/user identity:
 
 Return the role of the message caller/user identity:
 
-```motoko
+```motoko title="src/access_hello_backend/main.mo"
     public shared({ caller }) func my_role() : async ?Role {
         return get_role(caller);
     };
@@ -297,7 +303,7 @@ Return the role of the message caller/user identity:
 
 In total, the code in the `src/access_hello_backend/main.mo` file should be:
 
-```motoko
+```motoko title="src/access_hello_backend/main.mo"
 import AssocList "mo:base/AssocList";
 import Error "mo:base/Error";
 import List "mo:base/List";
@@ -527,14 +533,22 @@ In Motoko, **pattern matching** is a feature for testing and decomposing structu
 For example, consider the following function call:
 
 ```motoko
-let name : Text = fullName({ first = "Jane"; mid = "M"; last = "Doe" });
+import Text "mo:base/Text";
+
+actor {
+    let name : Text = fullName({ first = "Jane"; mid = "M"; last = "Doe" });
+};
 ```
 
 This function call constructs a record containing three fields, then passes it to the function called `fullName`. The call's result is bounded to the identifier `name`. The last step that binds the result to the identifier is an example of **pattern matching**, where `name : Text` is one of the simplest forms of a pattern. To further demonstrate, the following is an example of the function:
 
 ```motoko
-func fullName({ first : Text; mid : Text; last : Text }) : Text {
-  first # " " # mid # " " # last
+import Text "mo:base/Text";
+
+actor {
+    func fullName({ first : Text; mid : Text; last : Text }) : Text {
+    first # " " # mid # " " # last
+    }
 };
 ```
 
@@ -543,11 +557,13 @@ The input in this callee is an anonymous object, which is then deconstructed int
 Pattern matching can also be used to declare literal patterns, which resemble literal constants. Literal patterns can be useful in `switch` expressions, since in case the first pattern match fails, the next pattern match can be checked, and so forth. For example:
 
 ```motoko
-switch ("Adrienne", #female) {
-  case (name, #female) { name # " is a girl!" };
-  case (name, #male) { name # " is a boy!" };
-  case (name, _) { name # ", is a human!" };
-}
+actor {
+    switch ("Adrienne", #female) {
+    case (name, #female) { name # " is a girl!" };
+    case (name, #male) { name # " is a boy!" };
+    case (name, _) { name # ", is a human!" };
+    }
+};
 ```
 
 This `switch` expression matches the first case clause, since binding to the identifier name cannot fail, and then the variant literal `#female` is matched by the first case, resulting in the evaluation of "Adrienne is a girl!". The last clause in the `switch` expression uses the wildcard pattern `_`, which cannot fail but won't bind to an identifier.
@@ -591,11 +607,13 @@ In this code, there is a global timer that issues callbacks from a queue maintai
 The following is an example of a global timer expiration callback that gets called immediately after the canister starts, such as immediately after install, then periodically every twenty seconds thereafter:
 
 ```motoko
-system func timer(setGlobalTimer : Nat64 -> ()) : async () {
-  let next = Nat64.fromIntWrap(Time.now()) + 20_000_000_000;
-  setGlobalTimer(next);
-  print("Timer!");
-}
+actor {
+    system func timer(setGlobalTimer : Nat64 -> ()) : async () {
+    let next = Nat64.fromIntWrap(Time.now()) + 20_000_000_000;
+    setGlobalTimer(next);
+    print("Timer!");
+    }
+};
 ```
 
 ## Need help?

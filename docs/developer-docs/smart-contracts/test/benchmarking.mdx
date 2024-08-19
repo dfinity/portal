@@ -40,13 +40,13 @@ cargo install canbench
 
 Add an optional dependency for `canbench` in your `Cargo.toml` file:
 
-```
+``` title="Cargo.toml"
 canbench_rs = { version = "0.1.1", optional = true }
 ```
 
 Then, edit the `canbench.yml` file to point to your canister's Wasm file:
 
-```yml
+```yml title="canbench.yml"
 build_cmd:
   cargo build --release --target wasm32-unknown-unknown --features canbench-rs
 
@@ -58,7 +58,7 @@ wasm_path:
 
 Below is an example canister that uses a `query` function to compute and return the fibonacci sequence of a given number:
 
-```rust
+```rust title="src/example_backend/src/lib.rs"
 #[ic_cdk::query]
 fn fibonacci(n: u32) -> u32 {
     if n == 0 {

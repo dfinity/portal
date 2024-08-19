@@ -71,7 +71,7 @@ dfx deploy wasm-utils
 
 In this definition, you will need to set the playground canister's ID (the `pool` canister ID) and define the amount of seconds before a canister is returned to the pool, as shown below:
 
-```json
+```json title="dfx.json"
 "<network name>": {
   "playground": {
     "playground_canister": "<canister pool id>",
@@ -101,7 +101,7 @@ Networks are defined in two ways: assumed and explicitly configured. `dfx` only 
 
 Custom networks can be configured in the `networks.json` configuration file for `dfx`, which can be found using the following `dfx` command:
 
-```
+```bash
 dfx info networks-json-path
 ```
 
@@ -111,7 +111,7 @@ This will return the file path where your system's `networks.json` file is locat
 
 For example:
 
-```json
+```json title="networks.json"
 {
   "myNetwork1": {
     "bind": "localhost:4943",
@@ -124,7 +124,7 @@ For example:
 
 To define multiple networks, use multiple definitions on different domain names:
 
-```json
+```json title="networks.json"
 {
   "myNetwork1": {
     "bind": "localhost:4943",
@@ -143,7 +143,7 @@ To define multiple networks, use multiple definitions on different domain names:
 
 - #### Step 2: Then, to deploy to one of these networks, use the `--network` flag with `dfx deploy`:
 
-```
+```bash
 dfx deploy --network myNetwork2
 ```
 
@@ -155,7 +155,7 @@ Only canisters defined in that `dfx.json` file can be deployed to that network.
 
 To define a project-specific network, add a "networks" section to your `dfx.json` file, such as:
 
-```json
+```json title="dfx.json"
 "networks": {
     "myNetwork": {
       "providers": [

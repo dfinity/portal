@@ -158,7 +158,7 @@ npm install
 <TabItem value="rust" label="Rust">
 
 ```bash
-dfx new --type=rust send_http_post_rust
+dfx new send_http_post_rust --type=rust
 cd send_http_post_rust
 npm install
 rustup target add wasm32-unknown-unknown
@@ -176,7 +176,7 @@ rustup target add wasm32-unknown-unknown
 
 Open the `src/send_http_post_motoko_backend/main.mo` file in a text editor and replace content with:
 
-```motoko
+```motoko title="src/send_http_post_motoko_backend/main.mo"
 import Debug "mo:base/Debug";
 import Blob "mo:base/Blob";
 import Cycles "mo:base/ExperimentalCycles";
@@ -318,9 +318,9 @@ actor {
 </TabItem>
 <TabItem value="rust" label="Rust">
 
-Open the `/src/send_http_post_rust_backend/src/lib.rs` file in a text editor and replace the content with:
+Open the `src/send_http_post_rust_backend/src/lib.rs` file in a text editor and replace the content with:
 
-```rust
+```rust title="src/send_http_post_rust_backend/src/lib.rs"
 //1. IMPORT MANAGEMENT CANISTER
 //This includes all methods and types needed
 use ic_cdk::api::management_canister::http_request::{
@@ -531,7 +531,7 @@ fn transform(raw: TransformArgs) -> HttpResponse {
 
 Create the `src/send_http_post_motoko_backend/Types.mo` file in a text editor and replace content with:
 
-```motoko
+```motoko title="src/send_http_post_motoko_backend/Types.mo"
 module Types {
 
     //1. Type that describes the Request arguments for an HTTPS outcall
@@ -610,7 +610,7 @@ Open the `src/hello_http_rust_backend/hello_http_rust_backend.did` file in a tex
 
 Update the Candid interface file so it matches the method `send_http_post_request()` in `lib.rs`.
 
-```
+```candid title="src/hello_http_rust_backend/hello_http_rust_backend.did"
 service : {
     "send_http_post_request": () -> (text);
 }
@@ -618,7 +618,7 @@ service : {
 
 Open the `src/send_http_post_rust_backend/Cargo.toml` file in a text editor and replace content with:
 
-```bash
+```bash title="src/send_http_post_rust_backend/Cargo.toml"
 [package]
 name = "send_http_post_rust_backend"
 version = "0.1.0"

@@ -181,7 +181,7 @@ By default, the `dfx.json` file will contain some automatically generated config
 
 To review the default configuration file for the project, open the `dfx.json` file in a code or text editor. The contents will resemble the following:
 
-```json
+```json title="dfx.json"
 {
   "canisters": {
     "hello_world_backend": {
@@ -229,7 +229,7 @@ Now that you've explored the default project structure, let's take a look at the
 
 New Motoko projects will always include a default, template `main.mo` file. To take a look at the file's default contents, open the `src/hello_world_backend/main.mo` file in a code or text editor. The code will resemble the following:
 
-```motoko
+```motoko title="src/hello_world_backend/main.mo"
 actor {
   public query func greet(name : Text) : async Text {
     return "Hello, " # name # "!";

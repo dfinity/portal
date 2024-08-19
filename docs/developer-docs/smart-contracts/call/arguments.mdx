@@ -32,20 +32,30 @@ Motoko differentiates between immutable arrays, which cannot be altered, and mut
 To declare an immutable array (default):
 
 ```motoko
-let a : [Nat] = [0, 1, 2, 3];
+actor {
+    let a : [Nat] = [0, 1, 2, 3];
+}
+
 ```
 
 To declare a mutable array, the `[var _]` syntax is used:
 
-```
-let a : [var Nat] = [var 0, 1, 2, 3] ;
+```motoko
+actor {
+    let a : [var Nat] = [var 0, 1, 2, 3] ;
+}
 ```
 
 To declare a function that returns an array:
 
-```
-public func get_numbers(a: [Nat]) : [Nat] {
-    return a;
+```motoko
+import Nat "mo:base/Nat"
+
+actor {
+    let a : [Nat] = [0, 1, 2, 3];
+    public func get_numbers(a: [Nat]) : async [Nat] {
+        return a;
+    }
 }
 ```
 

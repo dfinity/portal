@@ -276,8 +276,10 @@ The following language and capitalization of certain terms and phrases should be
 - neuron
 - node provider
 - open internet service
+- Ordinal
 - playground: when referring to the Motoko playground
 - reverse gas model
+- Rune
 - Sybil resistance
 - Sybil attack
 - use case: should not be hyphenated.

@@ -38,6 +38,13 @@ const sliderData = [
     image: "/img/home/slider/deuterium_milestone_card.webp",
     link: "/roadmap#Chain%20Fusion-Deuterium",
   },
+  {
+    tagline: "ICP Pitch Deck",
+    title: "Compute on Blockchain",
+    description: "Read now",
+    image: "/img/home/slider/icp_deck_highlight.webp",
+    link: "https://deck.internetcomputer.org/",
+  },
 ];
 
 const MotionLink = motion(Link);
@@ -187,11 +194,11 @@ export const SectionSlider = () => {
         {sliderData.map((data, index) => (
           <article key={index} className="border-box px-3">
             <CardWithImage href={data.link} image={data.image}>
-              <div className="py-5 mr-40">
+              <div className="h-[120px] md:h-[140px] mr-44 flex flex-col justify-center">
                 <strong className="tw-paragraph-sm md:tw-heading-7 mb-2 !truncate">
                   {data.tagline}
                 </strong>
-                <h4 className="tw-heading-7 md:tw-heading-5 mb-0 truncate">
+                <h4 className="tw-heading-7 md:tw-heading-5 mb-0 line-clamp-2">
                   {data.title}
                 </h4>
                 <p className="text-white/60 tw-paragraph-sm md:tw-paragraph mb-0 truncate">

@@ -10,14 +10,14 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 There are two main ways to interact with an ICRC-1 ledger.
-- `dfx canister`: the generic canister call from `dfx`.
-- `ic-cdk`: inter-canister calls for the ICRC-1 ledger.
-- [`ledger-icrc-js`](https://github.com/dfinity/ic-js/tree/main/packages/ledger-icrc): a library for interfacing with ICRC-1 ledger on the Internet Computer.
+- `dfx canister`: The generic canister call from `dfx`.
+- `ic-cdk`: Inter-canister calls for the ICRC-1 ledger.
+- [`ledger-icrc-js`](https://github.com/dfinity/ic-js/tree/main/packages/ledger-icrc): A library for interfacing with ICRC-1 ledger on the Internet Computer.
 
 ## ICRC-1 and ICRC-1 extension endpoints
 
-Whether your ICRC-1 ledger will have all the endpoints discussed in this tutorial will depend on whether you support any of the extensions of ICRC-1 (ICRC-2, ICRC-3,...).
-This tutorial will go through the endpoints for ICRC-1 and the extension ICRC-2. If you have deployed an ICRC-1 ledger according to the [guide](./icrc1-ledger-setup.mdx) you have to make sure that you have enabled ICRC-2 standard. Otherwise these calls will not work.
+Whether your ICRC-1 ledger will have all the endpoints discussed in this tutorial will depend on if you chose to support any of the extensions of ICRC-1 (ICRC-2, ICRC-3,...).
+This tutorial will go through the endpoints for ICRC-1 and the extension ICRC-2. If you have deployed an ICRC-1 ledger according to the [guide](/docs/developer-docs/defi/tokens/ledger/setup/icrc1_ledger_setup.mdx) you have to make sure that you have enabled the ICRC-2 standard, otherwise, the calls demonstrated in this guide will not work.
 
 You can always check which standards are supported by a certain ICRC-1 ledger by calling:
 
@@ -43,7 +43,7 @@ The ICRC-1 ledger used in this guide also supports the extension ICRC-2:
 )
 ```
 
-The return values as well as the canister name `icrc1_ledger_canister` in this tutorial are specific to the deployed ICRC-1 ledger and thus may differ to your return values, depending on which values you chose during your [ICRC-1 ledger setup](./icrc1-ledger-setup.mdx).
+The return values as well as the canister name `icrc1_ledger_canister` in this tutorial are specific to the deployed ICRC-1 ledger and thus may differ to your return values, depending on which values you chose during your [ICRC-1 ledger setup](/docs/developer-docs/defi/tokens/ledger/setup/icrc1_ledger_setup.mdx).
 
 ### ICRC-1 endpoints
 
@@ -185,7 +185,7 @@ If the spender now wants to transfer tokens that were previously approved for th
 dfx canister call icrc1_ledger_canister icrc2_transfer_from "(record { amount = 90_000; from = record{owner = principal \"${DEFAULT}\"}; to= record{owner = principal \"${DEFAULT}\"}; })"
 ```
 Note that you cannot transfer the entire allowance as the fee for making a transfer has to be substracted from the transferred amount. For the reference implementation the fee is `10_000` tokens. Thus, the maximum amount that can be transferred from `DEFAULT` to `7tmcj-ukheu-y6dvi-fhmxv-7qs5t-lwgh2-qzojr-vzt6m-maqv4-hvzlg-5qe` with the spender `sckqo-e2vyl-4rqqu-5g4wf-pqskh-iynjm-46ixm-awluw-ucnqa-4sl6j-mqe` is `90_000`.
-The principal making this call has to be the spender, since they are the once that received the approval.
+The principal making this call has to be the spender, since they are the one that received the approval.
 You will receive the block index as a return value:
 ```
 (variant { Ok = 3 : nat })
@@ -195,7 +195,7 @@ You will receive the block index as a return value:
 You can look at the documentation of [inter-canister calls](/docs/current/developer-docs/backend/rust/intercanister) to see how you can interact with another canister from inside a canister. This guide will give you a couple of examples of how to make such a call in the case of the ICRC-1 ledger.
 
 Here is an example of how to fetch the name from the ICRC-1 ledger using Rust and the `ic-cdk` [library](https://github.com/dfinity/cdk-rs) from within a canister:
-You will need the principal of the ICRC-1 ledger. For this guide,  take the canister ID that was used in the previous guide on [deploying an ICRC-1 ledger](./icrc1-ledger-setup.mdx), which was `mxzaz-hqaaa-aaaar-qaada-cai`.
+You will need the principal of the ICRC-1 ledger. For this guide, take the canister ID that was used in the previous guide on [deploying an ICRC-1 ledger](/docs/developer-docs/defi/tokens/ledger/setup/icrc1_ledger_setup.mdx), which was `mxzaz-hqaaa-aaaar-qaada-cai`.
 ```
 let ledger_id = Principal::from_text("mxzaz-hqaaa-aaaar-qaada-cai").unwrap();
 // The request object of the `icrc1_name` endpoint is empty.
@@ -205,7 +205,7 @@ let ledger_id = Principal::from_text("mxzaz-hqaaa-aaaar-qaada-cai").unwrap();
             .await.unwrap();
 ```
 
-For all other endpoints you can use the request and response structure from the `ledger.did` Candid file. How to retrieve the Candid file is explained in [the guide on deploying an ICRC-1 ledger locally](./icrc1-ledger-setup.mdx).
+For all other endpoints you can use the request and response structure from the `ledger.did` Candid file. How to retrieve the Candid file is explained in [the guide on deploying an ICRC-1 ledger locally](/docs/developer-docs/defi/tokens/ledger/setup/icrc1_ledger_setup.mdx).
 
 ### `icrc-ledger-types` Rust crate
 To interact with ICRC-1 and ICRC-2 endpoints, the Rust crate [icrc-ledger-types](https://crates.io/crates/icrc-ledger-types) can be used. It provides data types, request types and response types as well as error types needed for interacting with ICRC-1 endpoints.

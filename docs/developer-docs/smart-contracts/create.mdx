@@ -22,29 +22,24 @@ When a canister is created, either locally or on the mainnet, the following step
 - The canister ID is registered with the local replica or the mainnet for each canister in the project's `dfx.json` file.
 
 - The following canister components are created:
-
-      - List of controllers.
-
-      - Cycles balance.
-      
-      - Reserved cycles balance.
-
-      - Canister status.
-      
-      - Resource reservations.
+  - List of controllers.
+  - Cycles balance.
+  - Reserved cycles balance.
+  - Canister status.
+  - Resource reservations.
 
 - The canister's ID is returned in the command line.
 
 To create a canister locally, the `dfx canister create` command can be used:
 
-```
+```bash
 dfx canister create hello_world // Create a canister locally
 dfx canister create hello_world --network ic // Create a canister on the mainnet
 dfx canister create --all --network ic // Create all canisters in the project's dfx.json file
 ```
 
 :::caution 
-Creating a canister on the mainnet will cost [cycles](/docs/current/developer-docs/getting-started/cycles/cycles-faucet)
+Creating a canister on the mainnet will cost [cycles](/docs/current/developer-docs/getting-started/cycles/cycles-faucet).
 :::
 
 At this step, settings can be configured for the canister using the optional flags. [View the full list of settings that can be configured](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#options-1).

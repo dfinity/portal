@@ -45,13 +45,13 @@ For canisters written in Rust, the Candid extractor tool can be used with the IC
 
 In other languages, you will have to write the Candid interface description manually. The most simple interface description can be found below, which defines a service with no public methods:
 
-```
+```candid
 service : {}
 ```
 
 To add a public method, add the method's name, followed by the data types that the method accepts and returns:
 
-```
+```candid
 service : {
   ping : () -> ();
 }
@@ -61,7 +61,7 @@ In this `ping` method, it does not accept any types and does not return any type
 
 Here is an example that defines the public method `greet`, which accepts type `text` and returns type `text` using a query call.
 
-```
+```candid
 service : {
     "greet" : (text) -> (text) query;
 };
@@ -79,7 +79,7 @@ This workflow is for Motoko projects.
 
 You can import both interface descriptions into your canister with two import statements:
 
-```
+```motoko
 import A "a.did";  // Imports only type definitions
 import service B "b.did";  // Imports both type definitions and main service
 ```
@@ -96,7 +96,7 @@ When you pass Candid textual values on the command-line, you can specify multipl
 
 The following example illustrates using the `dfx canister call` command to call the `counter` canister service and pass arguments for the `inc` method:
 
-``` bash
+```bash
 $ dfx canister call counter inc '(42)'
 (43)
 ```
@@ -105,7 +105,7 @@ To figure out how to create more complex Candid arguments, please refer to the [
 
 You can also omit the arguments and let the IC SDK generate a random value that matches the method type. For example:
 
-``` bash
+```bash
 $ dfx canister call counter inc
 Unspecified argument, sending the following random argument:
 (1_543_454_453)
@@ -123,27 +123,29 @@ To use the Candid web interface to test the `counter` canister:
 
 - #### Step 1:  Find the Candid UI canister identifier associated with the `counter` canister using the `dfx canister id __Candid_UI` command.
 
-    ``` bash
-    dfx canister id __Candid_UI
-    ```
+``` bash
+dfx canister id __Candid_UI
+```
 
-    The command displays the canister identifier for the Candid UI with output similar to the following:
+The command displays the canister identifier for the Candid UI with output similar to the following:
 
-        r7inp-6aaaa-aaaaa-aaabq-cai
+```
+r7inp-6aaaa-aaaaa-aaabq-cai
+```
 
 #### Step 2:  Start the canister execution environment locally by running the following command:
 
-    ``` bash
-    dfx start --clean --background
-    ```
+```bash
+dfx start --clean --background
+```
 
 - #### Step 3:  Open a browser and navigate to the address and port number specified in the `dfx.json` configuration file.
 
-    By default, the `local` canister execution environment binds to the `127.0.0.1:4943` address and port number.
+By default, the `local` canister execution environment binds to the `127.0.0.1:4943` address and port number.
 
 - #### Step 4:  Add the required `canisterId` parameter and the Candid UI canister identifier returned by the `dfx canister id` command.
 
-    For example, the full URL should look similar to the following, but with the `CANDID-UI-CANISTER-IDENTIFIER` that was returned by the `dfx canister id` command:
+For example, the full URL should look similar to the following, but with the `CANDID-UI-CANISTER-IDENTIFIER` that was returned by the `dfx canister id` command:
 
 ```
 http://127.0.0.1:4943/?canisterId=<CANDID-UI-CANISTER-IDENTIFIER>
@@ -157,8 +159,8 @@ If you aren’t sure which canister identifier to use, you can run the `dfx cani
 
 For example, if you want to view the functions for the `counter` service description, you could look up the canister identifier by running the following command:
 
-```
-    dfx canister id counter
+```bash
+dfx canister id counter
 ```
 
 - #### Step 5:  Specify a canister identifier or description file, then click **Go** to display the service description.
@@ -217,7 +219,7 @@ When the import macro on the `counter` canister—the `#[import(canister = "coun
 
 For other canisters and tools to interact with the `hello` canister, you need to manually create a `.did` file:
 
-``` candid
+```candid
 service : {
     greet : () -> (text);
 }
@@ -233,7 +235,7 @@ The [dfinity/agent npm package](https://www.npmjs.com/package/@dfinity/agent) in
 
 For example, if you want to call the `counter` canister, you can write the following JavaScript program:
 
-``` javascript
+```javascript
 import counter from 'ic:canisters/counter';
 import BigNumber from 'bignumber.js';
 (async () => {
@@ -254,7 +256,7 @@ dfx canister metadata <canister name/id> candid:service
 
 However, you can make this metadata information private so that it is only readable by the controllers of your canister. To do this, add the following configuration information to your canister's definition in the project's `dfx.json` file:
 
-```json
+```json title="dfx.json"
       "metadata": [
         {
           "name": "candid:service",
