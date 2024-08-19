@@ -92,7 +92,7 @@ Before you start, verify that you have set up your developer environment accordi
 
 Open a terminal window and run the following commands to download the NFT example project and navigate inside the project's directory:
 
-```
+```bash
 git clone https://github.com/PanIndustrial-Org/icrc_nft.mo.git
 cd icrc_nft.mo
 ```
@@ -106,7 +106,7 @@ dfx start --clean background
 Then, create two new identities to be used with the NFT canister: `alice` and `icrc7_deployer`. The `alice` identity will be used to demonstrate the approve workflow, and `icrc7_deployer` will be used as the canister's admin controller.
 
 
-```
+```bash
 dfx identity new alice
 dfx identity use alice
 ALICE_PRINCIPAL=$(dfx identity get-principal)
@@ -119,7 +119,8 @@ ADMIN_PRINCIPAL=$(dfx identity get-principal)
 ### Deploy the `icrc7` canister
 
 To configure the settings of your NFT collection, replace the existing content in `example/initial_state/icrc7.mo` with your own configuration, such as:
-```motoko
+
+```motoko title="example/initial_state/icrc7.mo"
 import ICRC7 "mo:icrc7-mo";
 
 module{
@@ -164,19 +165,19 @@ This configuration sets the following parameters for your collection:
 
 Run the `dfx deploy` command with the following init arguments:
 
-```
+```bash
 dfx deploy icrc7 --argument 'record {icrc7_args = null; icrc37_args =null; icrc3_args =null;}' --mode reinstall
 ```
 
 Then, export the canister's ID as an environment variable:
 
-```
+```bash
 ICRC7_CANISTER=$(dfx canister id icrc7)
 ```
 
 Call the canister's `init` function to use the canister.
 
-```
+```bash
 dfx canister call icrc7 init
 ```
 
@@ -187,7 +188,7 @@ This command will initialize an NFT collection using the parameters set in the p
 
 To verify the NFT collection has been initialized correctly, query some information about it, such as the name, symbol, and description:
 
-```
+```bash
 ## Get collection name:
 dfx canister call icrc7 icrc7_name  --query
 
@@ -214,7 +215,7 @@ dfx canister call icrc7 icrc7_logo  --query
 
 Execute the following canister call to mint 5 NFTs in the collection:
 
-```
+```bash
 dfx canister call icrc7 icrcX_mint "(
   vec {
     record {
@@ -313,7 +314,7 @@ dfx canister call icrc7 icrcX_mint "(
 
 If successful, you will receive the output:
 
-```
+```bash
 (
   vec {
     variant { Ok = opt (1 : nat) };
@@ -329,25 +330,25 @@ If successful, you will receive the output:
 
 To verify that the NFTs have been minted properly, query some information about the tokens:
 
-```
+```bash
 ## Get the total supply:
 dfx canister call icrc7 icrc7_total_supply  --query
 ```
 
 This should return the number of tokens that you minted. In this example, that should be 5:
 
-```
+```bash
 (5 : nat)
 ```
 
-```
+```bash
 ## Get supported standards:
 dfx canister call icrc7 icrc10_supported_standards  --query
 ```
 
 This will return all supported token standards, in this case, ICRC-7 and ICRC-37:
 
-```
+```bash
 (
   vec {
     record {
@@ -362,7 +363,7 @@ This will return all supported token standards, in this case, ICRC-7 and ICRC-37
 )
 ```
 
-```
+```bash
 ## List the owner of all tokens:
 dfx canister call icrc7 icrc7_owner_of '(vec {0;1;2;3;4})' --query
 
@@ -394,7 +395,7 @@ dfx canister call icrc7 icrc7_owner_of '(vec {0;1;2;3;4})' --query
 
 You can see that the canister's principal owns all of the minted tokens. To see if your admin principal is approved to spend tokens, make the following canister call:
 
-```
+```bash
 dfx canister call icrc7 icrc37_is_approved "(vec{record { spender=record {owner = principal \"$ADMIN_PRINCIPAL\"; subaccount = null;}; from_subaccount=null; token_id=0;}})" --query
 ```
 
@@ -405,7 +406,7 @@ This should return `(vec { true })`.
 
 Transfer ownership of token `0` from the canister's principal to your admin principal using the canister call:
 
-```
+```bash
 dfx canister call icrc7 icrc37_transfer_from "(vec{record {
   spender = principal \"$ADMIN_PRINCIPAL\";
   from = record { owner = principal \"$ICRC7_CANISTER\"; subaccount = null};
@@ -417,13 +418,13 @@ dfx canister call icrc7 icrc37_transfer_from "(vec{record {
 
 Next, use the `approve` functionality from ICRC-37 by calling the `icrc37_approve_tokens` canister method to approve the `alice` identity to spend token `0`:
 
-```
+```bash
 dfx canister call icrc7 icrc37_approve_tokens "(vec {record { token_id=0; approval_info= record {from_subaccount = null; spender = record {owner = principal \"$ALICE_PRINCIPAL\"; subaccount = null}; memo = null; expires_at = null; created_at_time = null }}})"
 ```
 
 Then, confirm that it was set correctly by calling the `icrc37_is_approved` method:
 
-```
+```bash
 dfx canister call icrc7 icrc37_is_approved "(vec { record {spender= record { owner = principal \"$ALICE_PRINCIPAL\"; subaccount = null;}; from_subaccount=null; token_id=0}})" --query
 ```
 
@@ -431,7 +432,7 @@ This should return `(vec { true })`.
 
 Next, create a `bob` identity for `alice` to transfer token `0` to:
 
-```
+```bash
 dfx identity new bob
 dfx identity use bob
 BOB_PRINCIPAL=$(dfx identity get-principal)
@@ -439,7 +440,7 @@ BOB_PRINCIPAL=$(dfx identity get-principal)
 
 Then, switch back to `alice` and transfer the token to `bob`:
 
-```
+```bash
 dfx identity use alice
 dfx canister call icrc7 icrc37_transfer_from "(vec {record {
   spender = principal \"$ALICE_PRINCIPAL\";
@@ -452,7 +453,7 @@ dfx canister call icrc7 icrc37_transfer_from "(vec {record {
 
 Confirm that the token transfer was successful by echoing `bob`'s principal, then viewing the principal that owns token `0`:
 
-```
+```bash
 echo $BOB_PRINCIPAL
 dfx canister call icrc7 icrc7_owner_of '(vec {0})' --query
 ```
@@ -461,7 +462,7 @@ The two principal IDs should match.
 
 You can revoke the approval with the command:
 
-```
+```bash
 dfx canister call icrc7 icrc37_revoke_collection_approvals "(vec {record {
   from_subaccount = null;
   spender = null;
@@ -472,7 +473,7 @@ dfx canister call icrc7 icrc37_revoke_collection_approvals "(vec {record {
 
 Then confirm that it was revoked properly:
 
-```
+```bash
 dfx canister call icrc7 icrc37_get_token_approvals "(vec { 0;},null,null)" --query
 ```
 
@@ -482,7 +483,7 @@ This should return `(vec {})`.
 
 To view all transactions with the NFT collection, run the command:
 
-```
+```bash
 dfx canister call icrc7 icrc3_get_blocks "(vec {record {start =0; length = 1000}})" --query
 ```
 

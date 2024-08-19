@@ -54,6 +54,8 @@ Queries are defined by the function modifier `query` in Motoko code. Below is a 
 
 
 ```motoko
+import Text "mo:base/Text";
+
 actor Echo {
 
   public query func say(phrase : Text) : async Text {
@@ -73,6 +75,9 @@ In comparison to query calls, update calls have the opposite trade-off of perfor
 Update calls are not defined with a function modifier in Motoko code such as query calls are. Below is a simple update call that counts the number of characters within the inputted string, updates the canister's state, then returns a `true` or `false` value if that number of characters is divisible by 2.
 
 ```motoko
+import Text "mo:base/Text";
+import Bool "mo:base/Bool";
+
 actor countCharacters {
     public func test(text : Text) : async Bool {
         let size = Text.size(text);
@@ -148,8 +153,7 @@ You'll notice that this project structure is a bit different from the ones you'v
 Now let's take a closer look at the `Main.mo` file for our 'Publisher' canister. The code can be found below with comments that explain the code's logic:
 
 
-```motoko
-// Publisher
+```motoko title="src/pub/Main.mo"
 import List "mo:base/List";
 
 // Define an actor called Publisher
@@ -190,8 +194,7 @@ actor Publisher {
 
 Now, let's look at the corresponding 'Subscriber' canister.
 
-```motoko
-// Subscriber
+```motoko title="src/sub/Main.mo"
 
 // Import the Publisher canister
 import Publisher "canister:pub";

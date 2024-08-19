@@ -20,7 +20,7 @@ In this sample, there is a frontend canister that provides a UI using React code
 
 The `src/App.tsx` file by default contains the following content, which has been annotated to explain the code's functionality:
 
-```typescript
+```typescript title="src/App.tsx"
 
 // First, import packages from the 'react' library:
 import { useEffect, useState } from 'react';
@@ -116,7 +116,7 @@ export default App;
 
 The `src/App.css` file by default contains the following content, which is used to edit the styling of the page's UI assets:
 
-```css
+```css title="src/App.css"
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -191,11 +191,11 @@ The `src/App.css` file by default contains the following content, which is used 
 }
 ```
 
-You can learn more about CSS [here](https://www.w3schools.com/css/).
+[Learn more about CSS](https://www.w3schools.com/css/).
 
 Then, the `src/index.html` file by default contains the following content, which imports and refers to the `src/main.tsx` file:
 
-```html
+```html title="src/index.html"
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -213,7 +213,7 @@ Then, the `src/index.html` file by default contains the following content, which
 
 Lastly, the `src/main.tsx` file contains the following content, which imports `App` from the `src/App.tsx` file:
 
-```typescript
+```typescript title="src/main.tsx"
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
@@ -248,7 +248,7 @@ In addition to the JavaScript agent, DFINITY has developed and maintains a Rust 
 
 In your `vite-react-motoko` example, the JavaScript agent file is stored at `src/declarations/frontend/index.js`. This file is generated as part of the `npm run setup` command, and contains the following content:
 
-```javascript
+```javascript title="src/declarations/frontend/index.js"
 import { Actor, HttpAgent } from "@dfinity/agent";
 
 // Imports and re-exports candid interface

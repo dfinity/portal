@@ -126,7 +126,7 @@ Now, let's view the contents of the Candid interface file for the `random_maze` 
 
 `src/declarations/random_maze/random_maze.did`:
 
-```candid
+```candid title="src/declarations/random_maze/random_maze.did"
 service : {
   generate: (nat) -> (text);
 }
@@ -138,7 +138,7 @@ In JavaScript, type `Text` maps to type `String`. You can see a full mapping lis
 
 Next, let's look at the `src/declarations/random_maze/random_maze.did.d.ts`:
 
-```typescript
+```typescript title="src/declarations/random_maze/random_maze.did.d.ts"
 import type { Principal } from '@dfinity/principal';
 import type { ActorMethod } from '@dfinity/agent';
 
@@ -149,7 +149,7 @@ In this file, the `_SERVICE` export includes the generate method with typings fo
 
 Then, open the `src/declarations/random_maze/random_maze.did.js` file:
 
-```javascript
+```javascript title="src/declarations/random_maze/random_maze.did.js"
 export const idlFactory = ({ IDL }) => {
   return IDL.Service({ 'generate' : IDL.Func([IDL.Nat], [IDL.Text], []) });
 };
@@ -164,7 +164,7 @@ In this example, the `idlFactory` represents a service with a `generate` method 
 
 Now, let's put all of these different pieces together in the `src/declarations/random_maze/index.js` file:
 
-```javascript
+```javascript title="src/declarations/random_maze/index.js"
 import { Actor, HttpAgent } from "@dfinity/agent";
 
 // Imports and re-exports candid interface

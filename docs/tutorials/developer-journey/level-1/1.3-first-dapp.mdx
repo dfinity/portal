@@ -99,7 +99,7 @@ In your `src/poll_backend/main.mo` file, paste the following code:
 The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
 :::
 
-```motoko
+```motoko title="src/poll_backend/main.mo"
 actor {
 
     //actor code goes here
@@ -117,7 +117,7 @@ To add this question, insert the following code inside of the actor definition:
 The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
 :::
 
-```motoko
+```motoko title="src/poll_backend/main.mo"
     var question: Text = "What is your favorite programming language?";
 ```
 
@@ -131,7 +131,7 @@ Then, it declares the type of this variable as `Text`, which is the standard typ
 
 Since you are using the type `Text`, you need to import the type `Text` from the Motoko base library. To do this, add an import statement at the top of the file:
 
-```motoko
+```motoko title="src/poll_backend/main.mo"
 import Text "mo:base/Text";
 ```
 
@@ -141,7 +141,7 @@ After all of these changes, your `main.mo` file should look like this:
 The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
 :::
 
-```motoko
+```motoko title="src/poll_backend/main.mo"
 import Text "mo:base/Text";
 
 actor {
@@ -169,7 +169,7 @@ Let's start with the first functionality; obtain the current poll question. To d
 The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
 :::
 
-```motoko
+```motoko title="src/poll_backend/main.mo"
 public query func getQuestion() : async Text {
     question
 };
@@ -204,7 +204,7 @@ A detailed comparison breakdown can be found below:
 
 After adding the `getQuestion` method, your `main.mo` file should look like this:
 
-```motoko
+```motoko title="src/poll_backend/main.mo"
 import Text "mo:base/Text";
 
 
@@ -244,7 +244,7 @@ In order to store and query the `RBTree` data structure, you need to import a fe
 
 To import these packages, add the following import statements to the beginning of the `main.mo` file:
 
-```motoko
+```motoko title="src/poll_backend/main.mo"
 import RBTree "mo:base/RBTree";
 import Nat "mo:base/Nat";
 import Iter "mo:base/Iter";
@@ -253,7 +253,7 @@ import Iter "mo:base/Iter";
 ### Declaring the `votes` variable
 Next, you need to add some code inside the actor to declare the variable for the data structure:
 
-```motoko
+```motoko title="src/poll_backend/main.mo"
     var votes: RBTree.RBTree<Text, Nat> = RBTree.RBTree(Text.compare);
 ```
 
@@ -273,7 +273,7 @@ The following example is a **code snippet** that is part of a larger code file. 
 :::
 
 
-```motoko
+```motoko title="src/poll_backend/main.mo"
 // query the list of entries and votes for each one
 // Example:
 //      * JSON that the frontend will receive using the values above:
@@ -309,7 +309,7 @@ The following example is a **code snippet** that is part of a larger code file. 
 :::
 
 
-```motoko
+```motoko title="src/poll_backend/main.mo"
  // This method takes an entry to vote for, updates the data and returns the updated hashmap
 // Example input: vote("Motoko")
 // Example:
@@ -354,7 +354,7 @@ Insert the following code into your `main.mo` file; there are inline comments th
 The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
 :::
 
-```motoko
+```motoko title="src/poll_backend/main.mo"
 //This method resets the vote count for each option and returns the updated hashmap
 // Example JSON that the frontend will get using the values above
 // [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
@@ -379,7 +379,7 @@ This method is an update call, as it updates the canister's state. All Motoko fu
 
 Once you completed all of the above steps, your `main.mo` file should look like this:
 
-```motoko
+```motoko title="src/poll_backend/main.mo"
 import RBTree "mo:base/RBTree";
 import Nat "mo:base/Nat";
 import Text "mo:base/Text";
@@ -463,7 +463,7 @@ dfx deploy
 ```
 
 :::caution
-If you recieve an error related to a missing package, try using this [package.json](https://github.com/jessiemongeon1/dev-journey-poll-dapp/blob/main/package.json) file.
+If you receive an error related to a missing package, try using this [package.json](https://github.com/jessiemongeon1/dev-journey-poll-dapp/blob/main/package.json) file.
 :::
 
 You may recall that in the previous module, [exploring a live demo](/docs/current/tutorials/developer-journey/level-1/1.1-live-demo), you used the `--playground` flag to deploy your canister to the playground network. In this module, you aren't using any flags, which defaults to deploying the canister to the local environment. You can also specify this with the flag `--network local`.
@@ -484,9 +484,9 @@ URLs:
 
 Now let's create a frontend for users to interact with your dapp. You will use some basic JavaScript to keep it as simple as possible.
 
-Start by creating the file `/src/poll_frontend/src/index.html` that contains the following code:
+Start by creating the file `src/poll_frontend/src/index.html` that contains the following code:
 
-```html
+```html title="src/poll_frontend/src/index.html"
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -624,7 +624,7 @@ Then, the `<head>` tag is used to include some basic CSS for the page's styling.
 
 Next, you will need a `webpack.config.js` file that defines several parameters to facilitate your local development web server. Create the file `webpack.config.js` in the root of your project that contains the following code:
 
-```js
+```js title="webpack.config.js"
 require("dotenv").config();
 const path = require("path");
 const webpack = require("webpack");
@@ -725,10 +725,10 @@ module.exports = {
 
 Lastly, you need to update the `index.js` file in order for your frontend canister to communicate with our backend canister and have the result of that communication reflected within the frontend's HTML.
 
-Create the `/src/poll_frontend/src/index.js` file with the following code:
+Create the `src/poll_frontend/src/index.js` file with the following code:
 
 
-```javascript
+```javascript title="src/poll_frontend/src/index.js"
 const pollForm = document.getElementById("radioForm");
 const resultsDiv = document.getElementById('results');
 const resetButton = document.getElementById('reset');
@@ -746,7 +746,7 @@ In this code, the statement `import { poll_backend } from "../../declarations/po
 
 Next, let's add a query to our backend canister to get the poll's question, and a query to get the current vote count for each option:
 
-```javascript
+```javascript title="src/poll_frontend/src/index.js"
 //Load the Simple Poll's question from the backend when the app loads
 document.addEventListener('DOMContentLoaded', async (e) => {
    //note that this is at beginning of the submit callback, this is deliberate
@@ -769,7 +769,7 @@ document.addEventListener('DOMContentLoaded', async (e) => {
 
 To make this code fully functional, you'll need to add a few other pieces of Javascript. Ultimately, your `index.js` file will need to look like this:
 
-```javascript
+```javascript title="src/poll_frontend/src/index.js"
 const pollForm = document.getElementById("radioForm");
 const resultsDiv = document.getElementById('results');
 const resetButton = document.getElementById('reset');
@@ -874,7 +874,7 @@ The remainder of this code is annotated with comments to help explain how it wor
 
 You will need to configure the project to use certain `npm` packages. These packages are defined in a file called `package.json`. Create a new `package.json` file in your project's root that contains the following:
 
-```json
+```json title="package.json"
 {
   "name": "poll_frontend",
   "version": "0.2.0",
@@ -927,7 +927,7 @@ You will need to configure the project to use certain `npm` packages. These pack
 
 Finally, update your project's `dfx.json` file to include the a `dist/poll_frontend/` directory definition for the frontend canister. This directory will hold your frontend canister's assets once the canister has been compiled:
 
-```json
+```json title="dfx.json"
 {
   "canisters": {
     "poll_backend": {

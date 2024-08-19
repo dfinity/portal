@@ -45,7 +45,7 @@ Your custom domains must be registered with the boundary nodes.
 
 On origin **A**, you will need to provide a file that tells Internet Identity that **B** is a valid alternative origin. You'll be placing the config files in `src/assets` directory of your frontend canister. If your frontend canister is currently configured to deploy assets from a `dist` folder, make sure to update the `sources` for your canister to include both:
 
-```json
+```json title="dfx.json"
 "source": [
     "dist",
     "src/assets"
@@ -60,7 +60,7 @@ The file needs to exactly be named `ii-alternative-origins`, with no file extens
 
 Inside of the file, list your alternative origin for **B**. It will look something like this:
 
-```json
+```json title="src/assets/.well-known/ii-alternative-origins"
 {
   "alternativeOrigins": ["https://internetcomputer.org"]
 }
@@ -97,7 +97,7 @@ Because the dot syntax in `.well-known` ordinarily will be treated as "hidden" b
 
 Then, configure the `.well-known` directory to be included, with:
 
-```json
+```json title="src/project_frontend/src/.ic-assets.json"
 [
   {
     "match": ".well-known",
