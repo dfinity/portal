@@ -18,7 +18,7 @@ Each proposal submitted to the NNS has the following fields:
 
 * **Proposer**: The ID of the neuron that submitted the proposal. When a proposal is submitted, a “charge” is placed on its balance in case it is rejected. The balance needs to be enough to pay the charge on all rejection(s). The NNS requires a neuron to have a dissolve delay of ≥ 6 months to vote, which also applies to submitting proposals.
 
-* **Proposal type**: The type of the proposal determines the function that will process the proposal if it is adopted, and the type and structure of the parameters that will be passed to that function. The type also infers what topic a proposal belongs to, which is used for [following](./proposal-voting).
+* **Proposal type**: The type of the proposal determines the function that will process the proposal if it is adopted, and the type and structure of the parameters that will be passed to that function. The type also infers what topic a proposal belongs to, which is used for [following](./direct-voting).
 
 * **Parameters**: The parameters that will be passed to the system function and invoked if the proposal is adopted, as determined by its type. When a proposal is submitted, the NNS checks these parameters.
 
@@ -26,7 +26,7 @@ The NNS assigns a unique identity to each proposal that it receives.
 
 
 ## How to submit a proposal
-To submit a proposal, it is recommended to use a neuron that can be controlled with a command line tool. 
+To submit a proposal, it is recommended to use a neuron that can be controlled with a command line tool.
 For example, you can review concrete instructions how to [submit a proposal of type `Motion`](https://wiki.internetcomputer.org/wiki/How-To:_Create_an_NNS_motion_proposal).
 
 
@@ -34,7 +34,7 @@ For example, you can review concrete instructions how to [submit a proposal of t
 ## Proposal topics and types
 
 Each proposal has a **proposal type**, which determines what happens if the proposal is adopted or rejected. This defines which canister method is invoked with which arguments.
-Each type of proposal belongs to a specific **proposal topic**. Topics are used for [following](/docs/current/developer-docs/daos/nns/nns-app-quickstart#neuron-following) and also determine some other details about how the proposal is processed.
+Each type of proposal belongs to a specific **proposal topic**. Topics are used for [following](/docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart#neuron-following) and also determine some other details about how the proposal is processed.
 For example, the voting period and the voting reward weight are defined per topic.
 
 We present the proposals grouped by their topics, with the corresponding proposal types that they contain.
