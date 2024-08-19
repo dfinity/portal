@@ -162,7 +162,7 @@ npm install
 <TabItem value="rust" label="Rust">
 
 ```bash
-dfx new send_http_get_rust
+dfx new send_http_get_rust --type=rust
 cd send_http_get_rust
 npm install
 rustup target add wasm32-unknown-unknown
@@ -180,7 +180,7 @@ rustup target add wasm32-unknown-unknown
 
 Open the `src/send_http_get_motoko_backend/main.mo` file in a text editor and replace content with:
 
-```motoko
+```motoko title="src/send_http_get_motoko_backend/main.mo"
 import Debug "mo:base/Debug";
 import Blob "mo:base/Blob";
 import Cycles "mo:base/ExperimentalCycles";
@@ -337,9 +337,9 @@ actor {
 </TabItem>
 <TabItem value="rust" label="Rust">
 
-Open the `/src/send_http_get_rust_backend/src/lib.rs` file in a text editor and replace the content with:
+Open the `src/send_http_get_rust_backend/src/lib.rs` file in a text editor and replace the content with:
 
-```rust
+```rust title="src/send_http_get_rust_backend/src/lib.rs"
 //1. IMPORT MANAGEMENT CANISTER
 //This includes all methods and types needed
 use ic_cdk::api::management_canister::http_request::{
@@ -501,7 +501,7 @@ fn transform(raw: TransformArgs) -> HttpResponse {
 
 Headers in the response may not always be identical across all nodes that process the request for consensus, causing the result of the call to be "No consensus could be reached." This particular error message can be hard to debug, but one method to resolve this error is to edit the response using the transform function. The transform function is run before consensus, and can be used to remove some headers from the response. For example, the following Rust variation removes all headers aside from the body and status code of the call:
 
-```rust
+```rust title="src/send_http_get_rust_backend/src/lib.rs"
 use ic_cdk::{
     api::management_canister::http_request::{HttpResponse, TransformArgs},
     query,
@@ -534,7 +534,7 @@ fn transform(raw: TransformArgs) -> HttpResponse {
 
 Open the `src/send_http_get_motoko_backend/Types.mo` file in a text editor and replace content with:
 
-```motoko
+```motoko title="src/send_http_get_motoko_backend/Types.mo"
 module Types {
 
   public type Timestamp = Nat64;
@@ -615,7 +615,7 @@ Open the `src/send_http_get_rust_backend/send_http_get_rust_backend.did` file in
 
 You update the Candid interface file so it matches the method `get_icp_usd_exchange()` in `lib.rs`.
 
-```
+```candid title="src/send_http_get_rust_backend/send_http_get_rust_backend.did"
 service : {
     "get_icp_usd_exchange": () -> (text);
 }
@@ -623,7 +623,7 @@ service : {
 
 Open the `src/send_http_get_rust_backend/Cargo.toml` file in a text editor and replace the content with:
 
-```bash
+```bash title="src/send_http_get_rust_backend/Cargo.toml"
 [package]
 name = "send_http_get_rust_backend"
 version = "0.1.0"

@@ -58,7 +58,7 @@ Module hash: 0xe7866e1949e3688a78d8d29bd63e1c13cd6bfb8fbe29444fa606a20e0b1e33f0
 
 If you have ICP on the account associated with a `dfx` identity, you can tell the ledger canister to take some of that ICP, convert it to cycles, and give it to a canister of your choice: `dfx ledger [OPTIONS] top-up --amount <AMOUNT> <DESTINATION>`
 
-```
+```bash
 dfx ledger top-up jqylk-byaaa-aaaal-qbymq-cai--network ic --amount 0.1
 ```
 
@@ -85,7 +85,7 @@ dfx cycles top-up `AMOUNT` `CANISTER_ID` --network ic
 
 This workflow uses the cycles ledger, a feature that requires `dfx` version `0.19.0`. To enable this feature, you will need to set the following environmental variable:
 
-```
+```bash
 DFX_CYCLES_LEDGER_SUPPORT_ENABLE=1
 ```
 
@@ -132,13 +132,13 @@ The freezing threshold is important because if a canister runs out of cycles, it
 
 For example, to set a freezing threshold for your `poll_backend` canister, use the command:
 
-```sh
+``````bash
 dfx canister update-settings poll_backend --freezing-threshold 3472000
 ```
 
 Then, you can confirm that this threshold has been set by running the `dfx canister status poll_backend --network ic ` command again:
 
-```
+```bash
 Canister status call result for poll_backend.
 Status: Stopped
 Controllers: lalyb-uhvmt-p7ubs-u5t7l-hce6v-lp7c5-dlmj5-wi2gc-depab-wtgi3-pae

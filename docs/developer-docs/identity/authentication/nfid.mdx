@@ -44,7 +44,7 @@ If using `dfx` v0.17.0 and newer, select 'Motoko' and 'Vanilla JS' when prompted
 
 Replace the default Motoko backend canister code (`src/NFID_backend/main.mo`) with the following:
 
-```motoko
+```motoko title="src/NFID_backend/main.mo"
 import Principal "mo:base/Principal";
 
 actor {
@@ -58,7 +58,7 @@ actor {
 
 Replace the `dfx.json` file's content with the following configuration:
 
-```json
+```json title="dfx.json"
 {
   "canisters": {
     "NFID_backend": {
@@ -100,7 +100,7 @@ npm install --save @dfinity/auth-client
 
 Insert the following code into the `index.html` file:
 
-```html
+```html title="src/NFID_frontend/src/index.html"
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -135,7 +135,7 @@ Insert the following code into the `index.html` file:
 
 Insert the following code into this new `index.js` file:
 
-```javascript
+```javascript title="src/NFID_frontend/src/index.js"
 import { Actor } from "@dfinity/agent";
 import { AuthClient } from "@dfinity/auth-client";
 import { NFID_backend } from "../../declarations/NFID_backend";
@@ -187,13 +187,13 @@ init();
 
 Deploy the project with the command:
 
-```
+```bash
 dfx deploy
 ```
 
 You will receive the URL for the frontend and backend canisters running locally:
 
-```
+```bash
 Deployed canisters.
 URLs:
   Frontend canister via browser
@@ -212,7 +212,7 @@ Currently, the `Log me in` button doesn't have any functionality when clicked. L
 
 Replace the existing `index.js` code with the following:
 
-```
+```javascript title="src/NFID_frontend/src/index.js"
 import { Actor } from "@dfinity/agent";
 import { AuthClient } from "@dfinity/auth-client";
 import { NFID_backend } from "../../declarations/NFID_backend";

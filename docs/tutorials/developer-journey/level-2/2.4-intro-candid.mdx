@@ -211,7 +211,7 @@ Before you start, verify that you have set up your developer environment accordi
 
 To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_journey`), then use the following commands to start `dfx` and create a new project:
 
-```
+```bash
 dfx start --clean --background
 dfx new candid_example
 ```
@@ -259,7 +259,8 @@ cd candid_example
 
 You'll be using the sample Motoko canister that you looked at in the [generating service descriptions](#generating-service-descriptions) section earlier. Open the `src/candid_example_backend/main.mo` file in your code editor and replace the existing code with the following:
 
-```motoko
+```motoko title="src/candid_example_backend/main.mo"
+
 actor {
   var v : Int = 0;
   public func add(d : Nat) : async () { v += d; };
@@ -276,7 +277,7 @@ dfx deploy
 
 Recall that the Motoko compiler will automatically generate the Candid service description file based off of this code. This Candid file can be found at `src/declarations/candid_example_backend/candid_example_backend.did` and will contain the following:
 
-```candid
+```candid title="src/declarations/candid_example_backend/candid_example_backend.did"
 service : {
   add: (nat) -> ();
   get: () -> (int) query;

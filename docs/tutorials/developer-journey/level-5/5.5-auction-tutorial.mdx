@@ -109,7 +109,7 @@ These project files are used for the following purposes:
 
 This project contains three canisters, as seen in the `dfx.json` file:
 
-```json
+```json title="dfx.json"
 {
     "canisters": {
         "backend": {
@@ -153,7 +153,7 @@ This project contains three canisters, as seen in the `dfx.json` file:
 
 Next, open the `src/backend/AuctionServer.mo` file. This file will contain a template that includes placeholder functions; to provide full functionality in your dapp, you will need to replace the template code with functioning code. To do that, start by removing the existing code in the `src/backend/AuctionServer.mo` file and insert the following code that has been annotated to explain the code's logic:
 
-```motoko
+```motoko title="src/backend/AuctionServer.mo"
 /// Import the necessary libraries:
 
 import Principal "mo:base/Principal";
