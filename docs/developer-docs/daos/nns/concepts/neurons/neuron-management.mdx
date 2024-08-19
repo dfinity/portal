@@ -193,7 +193,7 @@ For most of the workflows detailed below, you can also use the [ICP Rosetta API]
 Each neuron's stake is stored on a subaccount of the governance canister on the ICP ledger.
 The following diagram provides a simplified view of the workflow for creating a neuron and the relationship between the neuron and its ledger account.
 
-![neuron dissolve](../_attachments/distribute-neurons-diagram.png)
+![neuron dissolve](../../../_attachments/distribute-neurons-diagram.png)
 
 Staking ICP utility tokens in a neuron involves three steps:
 1. Compute the neuron's address on the ledger, where the staked tokens will be held. This corresponds to a subaccount of the NNS governance canister.
@@ -206,11 +206,11 @@ Let us go through these steps in more detail.
 
 To compute the neuron's address in the first step, proceed as follows.
 
-a) Learn the principal that should control the neuron and choose a nonce. The nonce is used to allow the same principal to control multiple neurons and does not need to be kept secret.
+1. Learn the principal that should control the neuron and choose a nonce. The nonce is used to allow the same principal to control multiple neurons and does not need to be kept secret.
 
-b) Computed the subaccount based on the two inputs from (a). View for example the method [`compute_neuron_staking_subaccount_bytes`](https://github.com/dfinity/ic/blob/master/rs/nervous_system/common/src/ledger.rs) which computes the subaccount given a controller principal and a nonce.
+2. Computed the subaccount based on the two inputs from (a). View for example the method [`compute_neuron_staking_subaccount_bytes`](https://github.com/dfinity/ic/blob/master/rs/nervous_system/common/src/ledger.rs) which computes the subaccount given a controller principal and a nonce.
 
-c) Compute the final account identifier on the ledger (that gives you the address) using the computed subaccount from (b) and the principal ID of the NNS governance canister. View for example the method [`neuron_subaccount`](https://github.com/dfinity/ic/blob/master/rs/nns/governance/src/governance.rs) which computes the account based on a given subaccount and with the NNS governance principal ID `GOVERNANCE_CANISTER_ID`.
+3. Compute the final account identifier on the ledger (that gives you the address) using the computed subaccount from (b) and the principal ID of the NNS governance canister. View for example the method [`neuron_subaccount`](https://github.com/dfinity/ic/blob/master/rs/nns/governance/src/governance.rs) which computes the account based on a given subaccount and with the NNS governance principal ID `GOVERNANCE_CANISTER_ID`.
 
 
 For the above steps, make sure you are using an up-to-date version of this code in your application.

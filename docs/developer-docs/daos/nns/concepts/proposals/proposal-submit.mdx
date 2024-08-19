@@ -34,14 +34,14 @@ For example, you can review concrete instructions how to [submit a proposal of t
 ## Proposal topics and types
 
 Each proposal has a **proposal type**, which determines what happens if the proposal is adopted or rejected. This defines which canister method is invoked with which arguments.
-Each type of proposal belongs to a specific **proposal topic**. Topics are used for [following](https://internetcomputer.org/docs/current/developer-docs/daos/nns/nns-app-quickstart#neuron-following) and also determine some other details about how the proposal is processed.
+Each type of proposal belongs to a specific **proposal topic**. Topics are used for [following](/docs/current/developer-docs/daos/nns/nns-app-quickstart#neuron-following) and also determine some other details about how the proposal is processed.
 For example, the voting period and the voting reward weight are defined per topic.
 
 We present the proposals grouped by their topics, with the corresponding proposal types that they contain.
 
 ### Topic: `NetworkCanisterManagement`
 Installing and upgrading [**system canisters**](/docs/current/developer-docs/smart-contracts/advanced-features/system-canisters/) that belong to the network.
-This includes the NNS DAO canisters, the ICP ledger canister, and other canisters on the system subnets such as Internet Identity (II), ckBTC, ckETH, ckERC20, and the Wasm version of the [SNS canisters](https://internetcomputer.org/docs/current/developer-docs/daos/sns/overview#sns-canisters) (governance, root, ledger, swap).
+This includes the NNS DAO canisters, the ICP ledger canister, and other canisters on the system subnets such as Internet Identity (II), ckBTC, ckETH, ckERC20, and the Wasm version of the [SNS canisters](/docs/current/developer-docs/daos/sns/overview#sns-canisters) (governance, root, ledger, swap).
 
 * `NnsCanisterUpgrade`: A proposal to upgrade an existing system canister. This proposal type is executed by the root canister. Beyond upgrading the Wasm module of the target canister, the proposal can also set the authorization information and the allocations.
 * `NnsCanisterInstall`: A proposal to add a new canister to be installed and executed on the NNS subnet. The root canister, which controls all canisters on the NNS except for itself, handles this proposal type. The call also expects the Wasm module that shall be installed.
@@ -51,7 +51,7 @@ This includes the NNS DAO canisters, the ICP ledger canister, and other canister
 
 The following proposal types are specific for SNS canisters:
 
-* `AddSnsWasm`: Add a new SNS canister Wasm to SNS-W. All SNS DAOs can then upgrade to new versions along the upgrade path defined in [SNS-W](https://internetcomputer.org/docs/current/developer-docs/daos/sns/overview#SNS-W).
+* `AddSnsWasm`: Add a new SNS canister Wasm to SNS-W. All SNS DAOs can then upgrade to new versions along the upgrade path defined in [SNS-W](/docs/current/developer-docs/daos/sns/overview#SNS-W).
 * `InsertSnsWasmUpgradePathEntries`: Insert custom upgrade path entries into SNS-W for all SNSes, or for an SNS specified by its governance canister ID.
 
 The following proposal type is specific for the Bitcoin canister:
@@ -140,7 +140,7 @@ This proposal type is for the first part, i.e., to elect new versions.
 This topic contains the following proposal types:
 
 * `ReviseElectedGuestosVersions`: A proposal to change the set of elected GuestOS versions. The version to elect (identified by the hash of the installation image) is added to the registry. Besides creating a record for that version, the proposal also appends that version to the list of elected versions that can be installed on nodes of a subnet. Only elected GuestOS versions can be deployed.
-* `ReviseElectedHostosVersions`: A proposal to change the set of currently elected HostOS versions by electing a new version, and/or un-electing some priorly elected versions. HostOS versions are identified by the hash of the installation image. The version to elect is added to the registry, and the versions to un-elect are removed from the registry, ensuring that HostOS cannot upgrade to these versions anymore.
+* `ReviseElectedHostosVersions`: A proposal to change the set of currently elected HostOS versions by electing a new version, and/or un-electing some previously elected versions. HostOS versions are identified by the hash of the installation image. The version to elect is added to the registry, and the versions to un-elect are removed from the registry, ensuring that HostOS cannot upgrade to these versions anymore.
 
 #### How to verify Ic OS Version Election proposals
 To upgrade the ICP protocol, the NNS DAO first elects new IC OS versions (the software run by ICP nodes), pre-approves the deployment of the new IC-OS versions, and then upgrades selected parts of the IC to these versions. The `IcOsVersionElection` proposal topic addresses the first part: electing new IC-OS versions.
@@ -193,7 +193,7 @@ This topic includes the following proposal types:
 
 ### Topic: `SnsAndCommunityFund`
 
-This topic includes proposals that concern [SNS DAO launches](/docs/current/developer-docs/daos/sns/launching/) and the [Neurons' Fund](./neurons-fund.mdx) (formerly called Community Fund).
+This topic includes proposals that concern [SNS DAO launches](/docs/current/developer-docs/daos/sns/launching/) and the [Neurons' Fund](../neurons-fund.mdx) (formerly called Community Fund).
 
 In contrast to other topics, this topic has reward weight 20. This means that participation in this topic is rewarded more.
 

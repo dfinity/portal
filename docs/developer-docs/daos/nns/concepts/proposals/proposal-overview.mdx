@@ -44,10 +44,10 @@ This reflects that the proposal already has the support of the user submitting i
 
 Moreover, each proposal has an associated **voting period**, which determines the period of time over which votes for this proposal are accepted.
 
-For more information on how to submit a proposal, refer to [How to submit a proposal](/docs/current/developer-docs/daos/nns/proposal-advanced).
+For more information on how to submit a proposal, refer to [How to submit a proposal](/docs/current/developer-docs/daos/nns/proposal-submit).
 
 ### Proposal decision and wait-for-quiet
-After a proposal is submitted and added to the governance canister, other users who control neurons can [vote on the proposal](/docs/current/developer-docs/daos/nns/voting-direct-voting).
+After a proposal is submitted and added to the governance canister, other users who control neurons can [vote on the proposal](/docs/current/developer-docs/daos/nns/direct-voting).
 The governance canister stores a neuron's choice in the empty ballot where the neuron's voting power has been recorded.
 In this way, the proposal always contains the information of the total voting power of "Yes" and "No" votes.
 
@@ -61,7 +61,7 @@ on the neurons’ votes. In particular, each time a proposal’s outcome is turn
 "No"-majority or vice versa), the proposal’s deadline is increased. Currently, a proposal's initial voting period is 4 days and can be increased by at most another 4 days. That is, the voting period that is taken into account for the above rules can be between 4 and 8 days, depending on the voting activity.
 
 ### Proposal execution
-Technically, a proposal defines a method on a canister that will be called if the proposal is adopted with [some parameters](./proposal-advanced.mdx).
+Technically, a proposal defines a method on a canister that will be called if the proposal is adopted with [some parameters](./proposal-submit.mdx).
 
 When a proposal is adopted, the defined method on the specified canister is automatically called with the given parameters. This is done automatically by the governance canister and does not require any manual intervention.
 A proposal's execution may be successful, in which case the proposal is labeled as `executed`, or it may fail, in which case the proposal is labeled as `failed`.
@@ -72,7 +72,7 @@ Therefore, `rejected` is also a possible final proposal state.
 :::info
 A proposal is adopted or rejected as soon as a decision can be made, which might be before the voting deadline.
 To ensure that neurons can still take their time to vote and get rewards, neurons that vote after the proposals' decision but before the voting period's deadline still get rewards.
-See [staking and voting rewards](./staking-voting-rewards.mdx) for more information on rewards.
+See [staking and voting rewards](../neurons/staking-voting-rewards.mdx) for more information on rewards.
 :::
 
 ### Reward distribution
