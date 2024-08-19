@@ -453,7 +453,7 @@
   {
     "id": "oisy",
     "name": "Oisy Wallet",
-    "oneLiner": "A novel Ethereum wallet hosted on the Internet Computer",
+    "oneLiner": "Oisy is a new browser-based, self-custodial and multi-chain wallet powered by Internet Computer's chain fusion technology.",
     "website": "https://oisy.com",
     "github": "https://github.com/dfinity/oisy-wallet",
     "tags": [
