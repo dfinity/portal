@@ -114,7 +114,7 @@ const redirects = `
   /docs/quickstart/2-quickstart /docs/current/tutorials/developer-journey/
   /docs/quickstart/3-quickstart /docs/current/tutorials/developer-journey/
   /docs/quickstart/4-2-convert-icp-to-cycles /docs/current/tutorials/developer-journey/
-  /docs/quickstart/4-quickstart /docs/current/tutorials/developer-journey/
+  /docs/quickstart/quickstart /docs/current/tutorials/developer-journey/
   /docs/quickstart/5-quickstart /docs/current/tutorials/developer-journey/
   /docs/quickstart/cycles-faucet /docs/current/developer-docs/getting-started/cycles/cycles-faucet
   /docs/quickstart/local-quickstart /docs/current/developer-docs/getting-started/deploy/local

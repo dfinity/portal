@@ -19,7 +19,7 @@ This guide will showcase a simple 'Hello, world!' example.
 
 Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](/docs/current/developer-docs/backend/rust/dev-env) and have created a [Rust project](/docs/current/developer-docs/backend/rust/quickstart).
 
-For more information on project structure and code organization, review the [project organization guide](./2-project-organization.mdx).
+For more information on project structure and code organization, review the [project organization guide](./project-organization.mdx).
 
 ## Writing the `lib.rs` file
 
@@ -28,7 +28,7 @@ Open the `src/hello_world_backend/src/lib.rs` file in a text editor. Replace the
 ```rust title="src/hello_world_backend/src/lib.rs"
 #[ic_cdk::query]
 fn greet(name: String) -> String {
-    format!("Hello there, {}! This is an example greeting returned from a Rust backend canister!", name)
+    format!("Hello there, {}! This is an example greeting returned from a Rust backend canister!", name)
 }
 ```
 
@@ -63,6 +63,7 @@ Save the file.
 First, create an empty canister for the canister code to be installed into. To create the canister, run the command:
 
 ```bash
+dfx start --clean --background
 dfx canister create hello_world_backend
 ```
 
@@ -91,7 +92,7 @@ dfx canister install hello_world_backend
 
 ### Deploy
 
-To deploy the canister use the command:
+To deploy the canister, use the command:
 
 ```bash
 dfx deploy hello_world_backend
@@ -119,7 +120,7 @@ The output should resemble the following:
 
 ```bash
 {
-  "ic_api_version": "0.18.0"  "impl_hash": "d639545e0f38e075ad240fd4ec45d4eeeb11e1f67a52cdd449cd664d825e7fec"  "impl_version": "8dc1a28b4fb9605558c03121811c9af9701a6142"  "replica_health_status": "healthy"  "root_key": [48, 129, 130, 48, 29, 6, 13, 43, 6, 1, 4, 1, 130, 220, 124, 5, 3, 1, 2, 1, 6, 12, 43, 6, 1, 4, 1, 130, 220, 124, 5, 3, 2, 1, 3, 97, 0, 129, 76, 14, 110, 199, 31, 171, 88, 59, 8, 189, 129, 55, 60, 37, 92, 60, 55, 27, 46, 132, 134, 60, 152, 164, 241, 224, 139, 116, 35, 93, 20, 251, 93, 156, 12, 213, 70, 217, 104, 95, 145, 58, 12, 11, 44, 197, 52, 21, 131, 191, 75, 67, 146, 228, 103, 219, 150, 214, 91, 155, 180, 203, 113, 113, 18, 248, 71, 46, 13, 90, 77, 20, 80, 95, 253, 116, 132, 176, 18, 145, 9, 28, 95, 135, 185, 136, 131, 70, 63, 152, 9, 26, 11, 170, 174]
+  "ic_api_version": "0.18.0"  "impl_hash": "d639545e0f38e075ad240fd4ec45d4eeeb11e1f67a52cdd449cd664d825e7fec"  "impl_version": "8dc1a28b4fb9605558c03121811c9af9701a6142"  "replica_health_status": "healthy"  "root_key": [48, 129, 130, 48, 29, 6, 13, 43, 6, 1, 4, 1, 130, 220, 124, 5, 3, 1, 2, 1, 6, 12, 43, 6, 1, 4, 1, 130, 220, 124, 5, 3, 2, 1, 3, 97, 0, 129, 76, 14, 110, 199, 31, 171, 88, 59, 8, 189, 129, 55, 60, 37, 92, 60, 55, 27, 46, 132, 134, 60, 152, 164, 241, 224, 139, 116, 35, 93, 20, 251, 93, 156, 12, 213, 70, 217, 104, 95, 145, 58, 12, 11, 44, 197, 52, 21, 131, 191, 75, 67, 146, 228, 103, 219, 150, 214, 91, 155, 180, 203, 113, 113, 18, 248, 71, 46, 13, 90, 77, 20, 80, 95, 253, 116, 132, 176, 18, 145, 9, 28, 95, 135, 185, 136, 131, 70, 63, 152, 9, 26, 11, 170, 174]
 }
 ```
 
@@ -183,7 +184,7 @@ dfx canister info [canister-name]
 
 ## Testing the canister with PocketIC
 
-[PocketIC](/docs/current/developer-docs/smart-contracts/test/pocket-ic) is a lightweight, deterministic testing solution for programmatic testing of canisters that seamlessly integrates with existing testing infrastructure, such as cargo test.
+[PocketIC](/docs/current/developer-docs/smart-contracts/test/pocket-ic) is a lightweight, deterministic testing solution for programmatic testing of canisters that seamlessly integrates with existing testing infrastructure, such as `cargo test`.
 
 You can learn more about PocketIC and how to install it [here](/docs/current/developer-docs/smart-contracts/test/pocket-ic).
 
@@ -193,7 +194,7 @@ For Rust canisters, PocketIC can be imported into your project with the code:
 use pocket_ic::PocketIc;
 ```
 
-Then, in your code you can create a new PocketIC instance with the code:
+Then, in your code, you can create a new PocketIC instance with the code:
 
 ```rust
 let pic = PocketIc::new();
@@ -205,30 +206,26 @@ The following is a complete example for testing a counter canister:
 use candid::encode_one;
 use pocket_ic::PocketIc;
 
- #[test]
- fn test_counter_canister() {
-    let pic = PocketIc::new();
-    // Create an empty canister as the anonymous principal and add cycles.
-    let canister_id = pic.create_canister();
-    pic.add_cycles(canister_id, 2_000_000_000_000);
+ #[test]
+ fn test_counter_canister() {
+    let pic = PocketIc::new();
+    // Create an empty canister as the anonymous principal and add cycles.
+    let canister_id = pic.create_canister();
+    pic.add_cycles(canister_id, 2_000_000_000_000);
 
-    let wasm_bytes = load_counter_wasm(...);
-    pic.install_canister(canister_id, wasm_bytes, vec![], None);
-    // 'inc' is a counter canister method.
-    call_counter_canister(&pic, canister_id, "inc");
-    // Check if it had the desired effect.
-    let reply = call_counter_canister(&pic, canister_id, "read");
-    assert_eq!(reply, WasmResult::Reply(vec![0, 0, 0, 1]));
- }
+    let wasm_bytes = load_counter_wasm(...);
+    pic.install_canister(canister_id, wasm_bytes, vec![], None);
+    // 'inc' is a counter canister method.
+    call_counter_canister(&pic, canister_id, "inc");
+    // Check if it had the desired effect.
+    let reply = call_counter_canister(&pic, canister_id, "read");
+    assert_eq!(reply, WasmResult::Reply(vec![0, 0, 0, 1]));
+ }
 
 fn call_counter_canister(pic: &PocketIc, canister_id: CanisterId, method: &str) -> WasmResult {
-    pic.update_call(canister_id, Principal::anonymous(), method, encode_one(()).unwrap())
-        .expect("Failed to call counter canister")
+    pic.update_call(canister_id, Principal::anonymous(), method, encode_one(()).unwrap())
+        .expect("Failed to call counter canister")
 }
 ```
 
 [View additional PocketIC testing examples](/docs/current/developer-docs/smart-contracts/test/pocket-ic).
-
-## Next steps
-
-Now that your canister has been written, deployed, and tested, let's take a look at [making inter-canister calls](./6-intercanister.mdx).

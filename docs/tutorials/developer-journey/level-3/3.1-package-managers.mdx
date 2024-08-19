@@ -108,7 +108,7 @@ cd mops_example
 
 Then, open the `dfx.json` file within your project. Add Mops as a `packtool` in the file by adding the following line:
 
-```json
+```json title="dfx.json"
 {
   "defaults": {
     "build": {
@@ -182,7 +182,7 @@ To pull a package using Vessel, edit the `vessel.dhall` file to include what pac
 
 Then, edit your `dfx.json` file to use the `packtool` of `vessel sources`:
 
-```json
+```json title="dfx.json"
 "defaults": {
   "build": {
     "packtool": "vessel sources"
@@ -197,8 +197,9 @@ Once a package has been installed, whether it was installed using Mops or Vessel
 
 You've used this command in previous Motoko code examples to import packages such as the Motoko `base` library. For example, recall the `characterCount` actor code from the previous module [2.6: Motoko level 2](/docs/current/tutorials/developer-journey/level-2/2.6-motoko-lvl2):
 
-```motoko
+```motoko title="src/character_count/main.mo"
 import Text "mo:base/Text";
+import Bool "mo:base/Bool";
 
 actor characterCount {
 

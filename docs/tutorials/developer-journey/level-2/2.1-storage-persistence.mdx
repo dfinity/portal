@@ -67,7 +67,7 @@ For canisters written in Rust, stable memory can be utilized through two Rust cr
 Motoko supports preserving a canister's state using ICP's stable memory through a Motoko-specific feature known as **stable storage**, which is designed to accommodate changes to both the application data and the Motoko compiler. Stable storage utilizes ICP's **stable memory** feature that was discussed previously.
 
 :::info
-Upgrading canisters written in Rust and other languages use a different workflow which incorporates serialization of the canister's data. [Learn more about Rust upgrades](../../../developer-docs/backend/rust/7-upgrading.mdx).
+Upgrading canisters written in Rust and other languages use a different workflow which incorporates serialization of the canister's data. [Learn more about Rust upgrades](../../../developer-docs/backend/rust/upgrading.mdx).
 :::
 
 A **stable variable** is a variable defined within an actor which uses the `stable` keyword as a modifier in the variable's declaration. This indicates that the data stored in the variable should be stored using **stable storage**. If this `stable` keyword is not used, the variable is defined as `flexible` by default, which means it's data does not persist across canister upgrades.
@@ -85,7 +85,7 @@ To get started, create a new project in your working directory. Open a terminal 
 
 Use `dfx new <project_name>` to create a new project:
 
-```
+```bash
 dfx start --clean --background
 dfx new counter
 ```
@@ -137,7 +137,9 @@ Then, open the file `src/counter_backend/main.mo`. Delete all of the content wit
 
 The following code example defines an actor called `Counter`, which includes a stable variable that preserves the counter's value across upgrades. Paste this code into the `src/counter_backend/main.mo` file:
 
-```motoko
+```motoko title="src/counter_backend/main.mo"
+import Nat "mo:base/Nat";
+
 actor Counter {
 
   stable var value = 0;
@@ -194,7 +196,9 @@ dfx canister stop counter_backend
 
 Then, let's alter the code of your canister. To keep things simple, you're going to change the counter increment value from '1' to '3'. Your altered code looks like this:
 
-```motoko
+```motoko title="src/counter_backend/main.mo"
+import Nat "mo:base/Nat";
+
 actor Counter {
 
   stable var value = 0;

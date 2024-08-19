@@ -32,7 +32,7 @@ npm install @fort-major/msq-client
 
 Then, import it into your project's `package.json` file:
 
-```json
+```json title="package.json"
 "dependencies": {
     ...
     "@fort-major/msq-client": "^0.3",
@@ -44,7 +44,7 @@ Users will need to connect to MetaMask and the MSQ Snap.
 
 The MSQ client library does this using the following function. For example, a user who interacts with a frontend element (e.g., button) that triggers the function will be prompted to connect using Metamask and install the MSQ Snap.
 
-```
+```typescript title="src/frontend/index.tsx"
 const result = await MsqClient.create();
 
 if (!("Ok" in result)) {
@@ -54,7 +54,7 @@ if (!("Ok" in result)) {
 
 Then, retrieve the client with the following code:
 
-```
+```typescript title="src/frontend/index.tsx"
 import { TMsqCreateOk, MsqClient } from "@fort-major/msq-client";
 
 const msq: MsqClient = (result as TMsqCreateOk).Ok;
@@ -66,7 +66,7 @@ The MSQ client library version correlates with the respective Snap version. For 
 
 To enable users to authorize with MSQ and interact with your dapp, you can call the `requestLogin()` function of the client:
 
-```
+```typescript title="src/frontend/index.tsx"
 import { Identity } from "@dfinity/identity";
 
 const identity: Identity | null = await msq.requestLogin();
@@ -78,7 +78,7 @@ if (identity === null) {
 
 This function returns an identity object which can then be supplied to an agent's `HttpAgent` constructor which can then be used to call canisters on a user's behalf:
 
-```
+```typescript title="src/frontend/index.tsx"
 import { HttpAgent } from "@dfinity/agent";
 
 const agent = new HttpAgent({ identity });
@@ -86,14 +86,14 @@ const agent = new HttpAgent({ identity });
 
 Authorization for a user lasts indefinitely unless explicitly ended. The following code can be used to check if a user's session exists:
 
-```
+```typescript title="src/frontend/index.tsx"
 if (msq.isAuthorized()) {
 }
 ```
 
 To stop the user's session, use the `requestLogout()` function:
 
-```
+```typescript title="src/frontend/index.tsx"
 if (await msq.requestLogout()) {
 } else {
 }
@@ -105,7 +105,7 @@ You can learn more about user authentication in the [MSQ documentation](https://
 
 MSQ enables users to make payments using a pre-defined ICRC-1 account through the `requestICRC1Payment()` function:
 
-```
+```typescript
 const blockId: bigint | null = await msq.requestICRC1Payment({
     if (blockId === null) {
     renderErrorScreen("Payment failed");

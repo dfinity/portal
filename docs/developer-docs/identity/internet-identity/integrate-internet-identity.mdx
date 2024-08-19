@@ -75,7 +75,7 @@ x Internet Identity
 
 ### Step 2: For this project, you'll use a simple 'Who am I?' function for the backend canister. Open the `src/ii_integration_backend/main.mo` file and replace the existing content with the following:
 
-```motoko
+```motoko title="src/ii_integration_backend/main.mo"
 actor {
     public shared (msg) func whoami() : async Principal {
         msg.caller
@@ -93,7 +93,7 @@ npm install @dfinity/auth-client
 
 ### Step 4: Insert the following code into the `src/ii_integration_frontend/src/index.js` file:
 
-```javascript
+```javascript title="src/ii_integration_frontend/src/index.js"
 /* A simple webapp that authenticates the user with Internet Identity and that
  * then calls the whoami canister to check the user's principal.
  */
@@ -179,7 +179,7 @@ If you used a project name other than `ii_integration`, you will need to rename 
 
 ### Step 5: Insert the following code into the `src/ii_integration_frontend/src/index.html` file:
 
-```html
+```html title="src/ii_integration_frontend/src/index.html"
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -284,13 +284,13 @@ yarn add -D @dfinity/internet-identity-playwright
 
 Import the plugin into your Playwright test file:
 
-```
+```typescript title="e2e/login.spec.ts"
 import {testWithII} from '@dfinity/internet-identity-playwright';
 ```
 
 Then begin writing your tests, such as:
 
-```
+```typescript title="e2e/login.spec.ts"
 testWithII('should sign-in with a new user', async ({page, iiPage}) => {
   await page.goto('/');
 
@@ -306,7 +306,7 @@ testWithII('should sign-in with an existing new user', async ({page, iiPage}) =>
 
 In this test, `iiPage` represents your application's page that initiates the authentication flow with Internet Identity. By default, the test will look for a button identified by `[data-tid=login-button]`. This can be customized by configuring your own selector:
 
-```
+```typescript title="e2e/login.spec.ts"
 const loginSelector = '#login';
 
 testWithII('should sign-in with a new user', async ({page, iiPage}) => {
@@ -324,7 +324,7 @@ testWithII('should sign-in with an existing new user', async ({page, iiPage}) =>
 
 If desired, you can have the test wait for Internet Identity to be ready by providing the local replica URL and the canister ID of your local Internet Identity instance:
 
-```
+```typescript title="e2e/login.spec.ts"
 testWithII.beforeEach(async ({iiPage, browser}) => {
   const url = 'http://127.0.0.1:4943';
   const canisterId = 'rdmx6-jaaaa-aaaaa-aaadq-cai';
@@ -335,7 +335,7 @@ testWithII.beforeEach(async ({iiPage, browser}) => {
 
 You can also configure a timeout parameter that indicates how long the function should wait for Internet Identity before failing:
 
-```
+```typescript title="e2e/login.spec.ts"
 testWithII.beforeEach(async ({iiPage, browser}) => {
   const url = 'http://127.0.0.1:4943';
   const canisterId = 'rdmx6-jaaaa-aaaaa-aaadq-cai';

@@ -207,7 +207,7 @@ mops install ic-certification@0.1.1
 
 You can take a look at the source code for this canister in the `src/demo.mo` file to see how this code works. Let's take a look at a few snippets of it. For example, the function to submit the HTTP request uses the following code:
 
-```motoko
+```motoko title="src/demo.mo"
 public query func http_request(req : HttpRequest) : async HttpResponse {
     let cached = cache.get(req.url);
 
@@ -249,7 +249,7 @@ In this function, if the HTTP `query` request returns a status code of `200`, th
 
 If the HTTP `query` request returns a status code of `404`, the request has failed and the request is upgraded to an `update` request. Then, the `http_request_update` function is called, which uses the following code:
 
-```motoko
+```motoko title="src/demo.mo"
 public func http_request_update(req : HttpRequest) : async HttpResponse {
     let url = req.url;
 

@@ -170,7 +170,7 @@ npm install
 
 First, start by opening the project's `dfx.json` file to review the project's canisters and configuration:
 
-```json
+```json title="dfx.json"
 {
   "canisters": {
     "vetkd_system_api": {
@@ -236,13 +236,13 @@ Here, you can see there are five canisters defined:
 
 You can also see the defined local network, which uses the local address and port `0.0.0.0:8000`. This is the local network that your canisters will be deployed to.
 
-Next, review the `src/encryptedNotes_motoko/main.mo ` file, which contains the core functionality for our dapp. This code has been annotated with notes to explain the program's functionality:
+Next, review the `src/encryptedNotes_motoko/main.mo` file, which contains the core functionality for our dapp. This code has been annotated with notes to explain the program's functionality:
 
 :::info
 It is important to note that this backend canister does *not* perform any encryption, since it assumes that the notes are encrypted end-to-end by the front-end (at the client side).
 :::
 
-```motoko
+```motoko title="src/encryptedNotes_motoko/main.mo"
 // First, import the necessary libraries:
 
 import Map "mo:base/HashMap";
@@ -613,7 +613,7 @@ dfx deploy internet_identity --argument '(null)'
 
 This canister is defined in the project's `dfx.json` file using the following Candid and Wasm files, which are pulled from the given URLs when the `dfx deploy` command is used:
 
-```json
+```json title="dfx.json"
     "internet_identity": {
       "candid": "https://github.com/dfinity/internet-identity/releases/latest/download/internet_identity.did",
       "type": "custom",
@@ -656,7 +656,7 @@ dfx deploy vetkd_system_api
 
 Remember that this canister is created from a local pre-compiled Wasm file, as defined in the project's `dfx.json` file:
 
-```json
+```json title="dfx.json"
     "vetkd_system_api": {
       "candid": "vetkd_system_api.did",
       "type": "custom",

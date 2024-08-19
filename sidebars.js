@@ -692,6 +692,8 @@ const sidebars = {
                 "developer-docs/multi-chain/bitcoin/using-btc/sign-transactions",
                 "developer-docs/multi-chain/bitcoin/using-btc/submit-transactions",
                 "developer-docs/multi-chain/bitcoin/using-btc/read-state",
+                "developer-docs/multi-chain/bitcoin/using-btc/ordinals",
+                "developer-docs/multi-chain/bitcoin/using-btc/runes",
                 "developer-docs/multi-chain/bitcoin/using-btc/local-development",
               ],
             },
@@ -1110,25 +1112,35 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "Using the NNS dapp",
-              items: ["developer-docs/daos/nns/nns-app-quickstart"],
+              label: "Quickstart NNS dapp",
+              items: [
+                "developer-docs/daos/nns/nns-app-quickstart",
+                "developer-docs/daos/nns/nns-dapp-send-and-receive-tokens",
+                "developer-docs/daos/nns/nns-dapp-staking-a-neuron",
+                "developer-docs/daos/nns/nns-dapp-voting-on-proposals",
+                "developer-docs/daos/nns/nns-dapp-following-other-neurons",
+                "developer-docs/daos/nns/nns-dapp-advanced-neuron-operations",
+                "developer-docs/daos/nns/nns-dapp-additional-features",
+              ],
             },
             {
               type: "category",
               label: "Neurons",
               items: [
-                "developer-docs/daos/nns/neuron-management",
+                "developer-docs/daos/nns/neuron-overview",
                 "developer-docs/daos/nns/staking-voting-rewards",
+                {
+                  type: "category",
+                  label: "Advanced",
+                  items: ["developer-docs/daos/nns/neuron-management"],
+                },
               ],
             },
-            "developer-docs/daos/nns/neurons-fund",
             {
               type: "category",
               label: "Proposals",
               items: [
                 "developer-docs/daos/nns/proposal-overview",
-                "developer-docs/daos/nns/proposal-lifecycle",
-                "developer-docs/daos/nns/proposal-voting",
                 {
                   type: "category",
                   label: "Advanced",
@@ -1136,6 +1148,21 @@ const sidebars = {
                 },
               ],
             },
+            {
+              type: "category",
+              label: "Voting",
+              items: [
+                "developer-docs/daos/nns/voting-direct-voting",
+                "developer-docs/daos/nns/voting-following",
+                "developer-docs/daos/nns/voting-becoming-a-known-neuron",
+                {
+                  type: "category",
+                  label: "Advanced",
+                  items: ["developer-docs/daos/nns/voting-verify-proposals"],
+                },
+              ],
+            },
+            "developer-docs/daos/nns/neurons-fund",
           ],
         },
         {
@@ -1454,18 +1481,31 @@ const sidebars = {
         "developer-docs/backend/rust/deploying",
           ]
         },
-        "developer-docs/backend/rust/intercanister",
-        "developer-docs/backend/rust/upgrading",
-        "developer-docs/backend/rust/optimizing",
-        "developer-docs/backend/rust/counter",
-        "developer-docs/backend/rust/timers",
-        "developer-docs/backend/rust/stable-structures",
-        "developer-docs/backend/rust/searching-records",
-        "developer-docs/backend/rust/access-control",
-        "developer-docs/backend/rust/candid",
-        "developer-docs/backend/rust/samples",
-        "developer-docs/backend/rust/generating-candid",
-        "developer-docs/backend/rust/message-inspect",
+        {
+          type: "category",
+          label: "Interacting with canisters",
+          items: [
+            "developer-docs/backend/rust/intercanister",
+            "developer-docs/backend/rust/upgrading",
+            "developer-docs/backend/rust/optimizing",
+            "developer-docs/backend/rust/candid",
+            "developer-docs/backend/rust/generating-candid",
+          ]
+        },
+        {
+          type: "category",
+          label: "Writing Rust canisters",
+          items: [
+            "developer-docs/backend/rust/counter",
+            "developer-docs/backend/rust/timers",
+            "developer-docs/backend/rust/stable-structures",
+            "developer-docs/backend/rust/searching-records",
+            "developer-docs/backend/rust/access-control",
+            "developer-docs/backend/rust/message-inspect",
+            "developer-docs/backend/rust/rust-considerations",
+            "developer-docs/backend/rust/samples",
+          ]
+        },
       ],
     },
   ],
