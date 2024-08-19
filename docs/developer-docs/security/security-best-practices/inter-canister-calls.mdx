@@ -195,7 +195,7 @@ To address issues around message ordering that can lead to bugs, one usually emp
 
 The locks would usually be released in the callback. That bears the risk that the lock may never be released in case the callback traps, as we discussed in [securely handle traps in callbacks](#securely-handle-traps-in-callbacks). The code examples below shows how one can securely implement a lock per caller.
 - In Rust, one can use the drop pattern where each caller lock (`CallerGuard` struct) implementats the `Drop` trait to release the lock. From Rust CDK version `0.5.1`, any local variables still go out of scope if the callback traps, so the lock on the caller is released even in that case. Technically, the CDK calls into the `ic0.call_on_cleanup` API to release these resources. Recall that `ic0.call_on_cleanup` is executed if the `reply` or the `reject` callback executed and trapped.
-- In Motoko, one can use `try`/`finally` control flow construct. This construct guarantees lock release execution in the `finally` block regardless of any exceptions in the `try` block.
+- In Motoko, one can use the [`try`/`finally`](docs/current/motoko/main/reference/language-manual/#try) control flow construct. This construct guarantees that the lock is released in the `finally` block regardless of any errors or traps in the `try` or `catch` blocks.
 
 <AdornedTabs groupId="language">
 <TabItem value="rust" label="Rust" default>
@@ -302,12 +302,12 @@ actor {
     };
   };
 
-  private func drop(principal : Principal) : () {
+  private func drop_guard(principal : Principal) : () {
     ignore pending_requests.remove(principal);
   };
 
   public shared ({caller}) func example_call_with_locking_per_caller() : async Result.Result<(), (Error.ErrorCode, Text)> {
-    var success = false;
+    var guard_acquired = false;
     try {
       // Try to create a lock for `caller`, return an error immediately if there is already a call in progress for `caller`
       switch (guard(caller)) {
@@ -315,7 +315,7 @@ actor {
           return #err(Error.code(e), Error.message(e));
         };
         case (#ok _) {
-          success := true;
+          guard_acquired := true;
         };
       };
       // do anything, call other canisters
@@ -324,8 +324,8 @@ actor {
       #err(Error.code(e), Error.message(e));
     } finally {
       // Release the guard (only request's callbacks that have created a block)
-      if success {
-        drop caller;
+      if guard_acquired {
+        drop_guard caller;
       };
     };
   };
@@ -337,7 +337,7 @@ actor {
 
 This pattern can be extended to work for the following use cases:
 
-- A global lock that does not only lock per caller. For this, set a boolean flag in the canister state instead of using a `BTreeSet<Principal>` (rust) or `Map.HashMap<Principal, Bool>` (Motoko).
+- A global lock that does not only lock per caller. For this, set a boolean flag in the canister state instead of using a `BTreeSet<Principal>` (Rust) or `Map.HashMap<Principal, Bool>` (Motoko).
 - A guard that makes sure that only a limited number of principals are allowed to execute a method at the same time.
   - Rust: Return an error in `CallerGuard::new()` in case `pending_requests.len() >= MAX_NUM_CONCURRENT_REQUESTS`.
   - Motoko: Return an error in `guard` in case `pending_requests.size() >= MAX_NUM_CONCURRENT_REQUESTS`.
