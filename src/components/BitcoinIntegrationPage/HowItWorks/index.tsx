@@ -75,7 +75,7 @@ function Index() {
           className="mt-12 mb-6 md:mt-40 md:mb-12"
         >
           <VideoCard
-            image="img/bitcoin-integration/video_thumb.webp"
+            image="https://internetcomputer.org/img/bitcoin-integration/video_thumb.webp"
             title="BTC <> ICP"
             label=""
             link={`https://www.youtube.com/watch?v=eTe6IXQJNUs`}
