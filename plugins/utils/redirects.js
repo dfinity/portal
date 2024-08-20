@@ -594,6 +594,8 @@ const redirects = `
   /docs/developers-guide/computation-and-storage-costs.html /docs/current/developer-docs/gas-cost
   /docs/current/developer-docs/getting-started/ /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/developer-docs/defi/wallets/workflow /docs/current/developer-docs/defi/wallets/overview
+  /docs/current/developer-docs/backend/rust/infrastructure /docs/current/developer-docs/backend/rust/
+
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

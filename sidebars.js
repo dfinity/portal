@@ -1442,29 +1442,44 @@ const sidebars = {
   rust: [
     {
       type: "category",
-      label: "Building with Rust",
-      link: {
-        type: "doc",
-        id: "developer-docs/backend/rust/index",
-      },
+      label: "Getting started",
       items: [
-        "developer-docs/backend/rust/infrastructure",
-        "developer-docs/backend/rust/project-organization",
-        "developer-docs/backend/rust/dev-env",
+        "developer-docs/backend/rust/index",
         "developer-docs/backend/rust/quickstart",
+        "developer-docs/backend/rust/dev-env",
+        "developer-docs/backend/rust/project-organization",
         "developer-docs/backend/rust/deploying",
-        "developer-docs/backend/rust/intercanister",
-        "developer-docs/backend/rust/upgrading",
-        "developer-docs/backend/rust/optimizing",
+      ]
+    },
+    {
+      type: "category",
+      label: "Writing Rust canisters",
+      items: [
+        "developer-docs/backend/rust/access-control",
+        "developer-docs/backend/rust/searching-records",
         "developer-docs/backend/rust/counter",
+        "developer-docs/backend/rust/rust-considerations",
         "developer-docs/backend/rust/timers",
         "developer-docs/backend/rust/stable-structures",
-        "developer-docs/backend/rust/searching-records",
-        "developer-docs/backend/rust/access-control",
-        "developer-docs/backend/rust/candid",
         "developer-docs/backend/rust/samples",
-        "developer-docs/backend/rust/generating-candid",
+      ],
+    },
+    {
+      type: "category",
+      label: "Interacting with Rust canisters",
+      items: [
+        "developer-docs/backend/rust/intercanister",
         "developer-docs/backend/rust/message-inspect",
+        "developer-docs/backend/rust/optimizing",
+        "developer-docs/backend/rust/upgrading",
+        {
+          type: "category",
+          label: "Candid for Rust canisters",
+          items: [
+          "developer-docs/backend/rust/candid",
+          "developer-docs/backend/rust/generating-candid",
+        ],
+      },
       ],
     },
   ],

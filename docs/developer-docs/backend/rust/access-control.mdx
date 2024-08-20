@@ -5,7 +5,7 @@ keywords: [intermediate, rust, tutorial, access control]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# 13: Access control
+# Access control
 
 <MarkdownChipRow labels={["Intermediate", "Rust", "Tutorial"]} />
 
@@ -14,21 +14,21 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 To demonstrate access control using a Rust backend canister, you'll explore access control in the context of NFTs. NFTs (non-fungible tokens) are unique tokens with arbitrary
 metadata, usually an image of some kind, to form the digital equivalent of trading cards.
 
-There are a few different NFT standards for the Internet Computer (e.g [EXT](https://github.com/Toniq-Labs/extendable-token), [IC-NFT](https://github.com/rocklabs-io/ic-nft)), but for the purposes of this example, you will use [DIP-721](https://github.com/Psychedelic/DIP721). You can see a quick introduction on [YouTube](https://youtu.be/1po3udDADp4).
+The current NFT standards on ICP are the ICRC-7 and ICRC-37 standards, which define parameters for NFTs and the transfer of NFTs on behalf of another use. However, for the purposes of this example, you will use the older NFT standard [DIP-721](https://github.com/Psychedelic/DIP721), as it demonstrates multiple levels of access control using a Rust example. You can see a quick introduction on [YouTube](https://youtu.be/1po3udDADp4).
 
-[DIP-721](https://github.com/Psychedelic/DIP721) specifies multiple levels of control over the NFTs:
-- **Owner**: this person owns an NFT. They can transfer the NFT, add/remove operators, or burn the NFT.
-- **Operator**: sort of a delegated owner. The operator does not own the NFT, but can do the same actions an owner can do.
-- **Custodian**: creator of the NFT collection/canister. They can do anything (transfer, add/remove operators, burn, and even un-burn) to NFTs, but also mint new ones or change the symbol or description of the collection.
+[DIP-721](https://github.com/Psychedelic/DIP721) specifies three levels of access control:
+- **Owner**: This person owns an NFT. They can transfer the NFT, add/remove operators, or burn the NFT.
+- **Operator**: A type of delegated owner. The operator does not own the NFT, but can do the same actions an owner can do.
+- **Custodian**: Creator of the NFT collection/canister. They can do anything (transfer, add/remove operators, burn, and even un-burn) to NFTs, but also mint new ones or change the symbol or description of the collection.
 
-The NFT example canister keeps access control in these three levels very simple:
+The NFT example canister keeps access control very simple:
 - For every level of control, a separate list (or set) of principals is kept.
 - Those three levels are then manually checked every single time someone attempts to do something for which they require authorization.
-- If a user is not authorized to call a certain function an error is returned.
+- If a user is not authorized to call a certain function, an error is returned.
 
 ## Prerequisites
 
-Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./3-dev-env.mdx).
+Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./dev-env.mdx).
 
 ## Creating the project
 
@@ -631,8 +631,8 @@ The canister expects a record parameter with the following fields:
 
 Now you can interact with the canister. Aside from the standard functions, it has five extra functions:
 
-- `set_name`, `set_symbol`, `set_logo`, and `set_custodian`: these functions update the collection information of the corresponding field from when it was initialized.
-- `is_custodian`: this function checks whether the specified user is a custodian.
+- `set_name`, `set_symbol`, `set_logo`, and `set_custodian`: Update the collection information of the corresponding field from when it was initialized.
+- `is_custodian`: Checks whether the specified user is a custodian.
 
 The canister also supports a certified HTTPS interface; going to `/<nft>/<id>` will return `nft`'s metadata file #`id`, with `/<nft>` returning the first non-preview file.
 
@@ -661,7 +661,3 @@ Successfully minted token 0 to x4d3z-ufpaj-lpxs4-v7gmt-v56ze-aub3k-bvifl-y4lsq-s
 ```
 
 Minting is restricted to anyone authorized with the `custodians` parameter or the `set_custodians` function. Since the contents of `--file` are stored on-chain, it's important to prevent arbitrary users from minting tokens, or they will be able to store arbitrarily-sized data in the contract and exhaust the canister's cycles. Be careful not to upload too much data to the canister yourself, or the contract will no longer be able to be upgraded afterwards.
-
-## Next steps
-
-Next, let's dive into using [Candid with Rust canisters.](14-candid.mdx)
