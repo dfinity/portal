@@ -17,21 +17,20 @@ You can call the `ic_cdk::export_candid!()` macro to enable the Candid export be
 
 - #### Step 1: Upgrade `ic-cdk` dependency to v0.11.0 or higher:
 
-```toml
-# Cargo.toml
+```toml title="Cargo.toml"
 [dependencies]
 ic-cdk = "0.11.0"
 ```
 
 - #### Step 2: Install [candid-extractor](https://github.com/dfinity/cdk-rs/tree/main/src/candid-extractor):
 
-```
+```bash
 cargo install candid-extractor
 ```
 
 With `cargo-binstall` you can install the prebuilt binary without waiting for compilation:
 
-```
+```bash
 cargo binstall candid-extractor
 ```
 
@@ -39,7 +38,7 @@ cargo binstall candid-extractor
 
 - #### Step 1. Call the `export_candid` macro at the end of your `lib.rs` file:
 
-```rust
+```rust title="lib.rs"
 #[query]
 fn hello(name: String) -> String {
     format!("Hello, {}!", name)
@@ -56,18 +55,18 @@ ic_cdk::export_candid!();
 
 - #### Step 2: Compile the Canister Wasm module.
 
-```
+```bash
 cargo build --release --target wasm32-unknown-unknown --package <CANISTER>
 ```
 
 The Wasm module will be at:
 
-```
+```bash
 target/wasm32-unknown-unknown/release/<CANISTER>.wasm
 ```
 
 - #### Step 3: Extract candid from the Wasm module and save to a file:
 
-```
+```bash
 candid-extractor target/wasm32-unknown-unknown/release/<CANISTER>.wasm > <CANISTER>.did
 ```
