@@ -40,7 +40,7 @@ const sliderData = [
   },
   {
     tagline: "ICP Pitch Deck",
-    title: "Compute on Blockchain",
+    title: "How the Internet Became Backend Compute Too",
     description: "Read now",
     image: "/img/home/slider/icp_deck_highlight.webp",
     link: "https://deck.internetcomputer.org/",
