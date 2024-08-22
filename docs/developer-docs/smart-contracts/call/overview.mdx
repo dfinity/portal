@@ -87,10 +87,22 @@ export default class {
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```python
+from kybra import nat64, query, update
+
+count: nat64 = 0
+
+@query
+def read_count() -> nat64:
+    return count
+
 @update
-def set_message(new_message: str) -> void:
-    global message
-    message = new_message
+def increment_count() -> nat64:
+    global count
+
+    count += 1
+
+    return count
+
 ```
 
 </AdornedTab>
