@@ -915,7 +915,7 @@ function ChainFusion() {
           >
             <EcosystemCard
               title="ckTokens"
-              description="Chain-key tokens, like ckBTC, ckETH and ckUSDC, are 1:1 backed tokens that enable fast, low-cost, and seamless transfers without third-party intermediaries."
+              description="Chain-key tokens, like ckBTC, ckETH and ckUSDC, are 1:1 twin tokens backed tokens that enable fast, low-cost, and seamless transfers without third-party intermediaries."
               img="/img/chainfusion/cktokens.webp"
             />
             <EcosystemCard
