@@ -149,11 +149,22 @@ class Day(Variant, total=False):
     Fri: str
     Sat: str
 
-
 @query
-def keyword_variant(variant_keyword: Day) -> Day:
-    ic.print(variant_keyword)
-    return variant_keyword
+def get_text(d: Day) -> str:
+    if d == Day.Sun:
+        return "Sunday"
+    elif d == Day.Mon:
+        return "Monday"
+    elif d == Day.Tue:
+        return "Tuesday"
+    elif d == Day.Wed:
+        return "Wednesday"
+    elif d == Day.Thu:
+        return "Thursday"
+    elif d == Day.Fri:
+        return "Friday"
+    elif d == Day.Sat:
+        return "Saturday"
 ```
 
 To learn more about variants in Python in Kybra, refer to [the Kybra book reference on variants](https://demergent-labs.github.io/kybra/reference/candid/variant.html).
