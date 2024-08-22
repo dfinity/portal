@@ -133,7 +133,6 @@ def execute_create_canister() -> Async[ExecuteCreateCanisterResult]:
     def handle_ok(
         create_canister_result: CreateCanisterResult,
     ) -> ExecuteCreateCanisterResult:
-        state["created_canister_id"] = create_canister_result["canister_id"]
 
         return {"Ok": create_canister_result}
 
@@ -141,10 +140,6 @@ def execute_create_canister() -> Async[ExecuteCreateCanisterResult]:
         create_canister_result_call_result,
         {"Ok": handle_ok, "Err": lambda err: {"Err": err}},
     )
-
-@query
-def get_created_canister_id() -> Principal:
-    return state["created_canister_id"]
 ```
 
 :::caution
