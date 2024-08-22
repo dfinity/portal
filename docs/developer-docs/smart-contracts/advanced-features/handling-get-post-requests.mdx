@@ -239,6 +239,7 @@ class HttpRequest(Record):
     url: str
     headers: Vec[HeaderField]
     body: blob
+    certificate_version: opt nat16
 
 
 stable_storage = StableBTreeMap[str, nat](
