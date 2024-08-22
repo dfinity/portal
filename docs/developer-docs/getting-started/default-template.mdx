@@ -266,12 +266,22 @@ By default, the `dfx.json` file will contain automatically generated configurati
 ```json
 {
   "canisters": {
-    "hello_backend": {
-      "build": "python -m kybra hello_backend src/hello_backend/src/main.py src/hello_backend/hello_backend.did",
-      "candid": "src/hello_backend/hello_backend.did",
-      "gzip": true,
-      "type": "custom",
-      "wasm": ".kybra/hello_backend/hello_backend.wasm"
+      "hello_backend": {
+         "type": "custom",
+          "build": "python -m kybra hello_backend src/hello_backend/src/main.py src/hello_backend/hello_backend.did",
+          "candid": "src/hello_backend/hello_backend.did",
+          "gzip": true,
+          "wasm": ".kybra/hello_backend/hello_backend.wasm"
+              "metadata": [
+                  {
+                      "name": "candid:service",
+                      "path": "src/main.did"
+                  },
+                  {
+                      "name": "cdk:name",
+                      "content": "kybra"
+                  }
+              ],
     },
     "hello_frontend": {
       "dependencies": [
