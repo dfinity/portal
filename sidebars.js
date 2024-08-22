@@ -1144,6 +1144,7 @@ const sidebars = {
                 items: [
                   "developer-docs/daos/nns/concepts/proposals/proposal-overview",
                   "developer-docs/daos/nns/concepts/proposals/direct-voting",
+                  "developer-docs/daos/nns/concepts/proposals/proposal-topics",
                   "developer-docs/daos/nns/concepts/proposals/verify-proposals",
                   "developer-docs/daos/nns/concepts/proposals/proposal-submit",
                 ],
