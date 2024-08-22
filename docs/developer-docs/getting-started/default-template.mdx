@@ -88,9 +88,14 @@ hello/
 ├── src                # Source files directory
 │   ├── hello_backend
 |   |   └── index.ts
-│   ├── hello_frontend
-│   │   ├── index.html
-│   │   └── index.ts
+│   ├── hello_frontend
+│       ├── assets
+│       │   ├── logo.png
+│       │   ├── main.css
+│       │   └── sample-asset.txt
+│       └── src
+│           ├── index.html
+│           └── index.js
 └── tsconfig.json
 ```
 
@@ -113,16 +118,12 @@ hello/
 │       │   ├── main.py
 │   ├── hello_frontend
 │       ├── assets
-|       |── index.html
-|       |── package.json
+│       │   ├── logo.png
+│       │   ├── main.css
+│       │   └── sample-asset.txt
 │       └── src
-│           ├── App.js
-│           ├── index.scss
-│           ├── logo2.svg
-│           ├── main.js
-│           └── vite-env.d.ts
-|       |── tsconfig.json
-|       |── vite.config.js
+│           ├── index.html
+│           └── index.js
 └── tsconfig.json
 ```
 
@@ -241,7 +242,20 @@ By default, the `dfx.json` file will contain automatically generated configurati
                 "node_compatibility": true
             }
         }
+        "hello_frontend": {
+          "dependencies": [
+            "hello_backend"
+          ],
+          "frontend": {
+            "entrypoint": "src/hello_frontend/src/index.html"
+          },
+          "source": [
+            "src/hello_frontend/assets",
+            "dist/hello_frontend/"
+          ],
+          "type": "assets"
     }
+  },
 }
 ```
 
@@ -263,10 +277,14 @@ By default, the `dfx.json` file will contain automatically generated configurati
       "dependencies": [
         "hello_backend"
       ],
-      "source": [
-        "src/hello_frontend/assets"
-      ],
-      "type": "assets"
+      "frontend": {
+        "entrypoint": "src/hello_frontend/src/index.html"
+          },
+          "source": [
+            "src/hello_frontend/assets",
+            "dist/hello_frontend/"
+          ],
+          "type": "assets"
     }
   },
   "defaults": {
