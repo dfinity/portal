@@ -46,7 +46,7 @@ Moreover, each proposal has an associated **voting period**, which determines th
 
 For more information on how to submit a proposal, refer to [How to submit a proposal](/docs/current/developer-docs/daos/nns/concepts/proposals/proposal-submit).
 
-### Proposal decision and wait-for-quiet
+### Proposal decision
 After a proposal is submitted and added to the governance canister, other users who control neurons can [vote on the proposal](/docs/current/developer-docs/daos/nns/concepts/proposals/direct-voting).
 The governance canister stores a neuron's choice in the empty ballot where the neuron's voting power has been recorded.
 In this way, the proposal always contains the information of the total voting power of "Yes" and "No" votes.
@@ -56,6 +56,7 @@ A proposal can be decided in two ways:
 1. **Absolute majority before the voting period ends**: At any point, even before the voting period ends, if an absolute majority (more than half of the total voting power stored in the proposal) has voted "Yes", then the proposal is adopted, and if an absolute majority has voted "No", then the proposal is rejected.
 2. **Simple majority at the voting period’s end**: When the voting period ends, if a simple majority (more than half of the cast votes) has voted "Yes" and the number of these "Yes"-votes constitute at least 3% of the total voting power, then the proposal is adopted. Otherwise, the proposal is rejected.
 
+### Wait-for-quiet
 What also plays into this is an algorithm called **wait-for-quiet** that dynamically adjusts the deadline. The idea of wait-for-quiet is to decide proposals quickly when all voters agree, but increase the time that neurons can vote for proposals that are controversial. That means that the voting period can be dynamically increased, depending
 on the neurons’ votes. In particular, each time a proposal’s outcome is turned (either a "Yes"-majority is turned to a
 "No"-majority or vice versa), the proposal’s deadline is increased. Currently, a proposal's initial voting period is 4 days and can be increased by at most another 4 days. That is, the voting period that is taken into account for the above rules can be between 4 and 8 days, depending on the voting activity.
