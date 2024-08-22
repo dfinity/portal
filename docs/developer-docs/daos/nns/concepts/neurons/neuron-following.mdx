@@ -10,11 +10,55 @@ import '/src/components/CenterImages/center.scss';
 <MarkdownChipRow labels={["Beginner", "Governance", "Concept"]} />
 
 ## Overview
-Users may not have the time or knowledge to participate in all voting decisions. Therefore, instead of directly voting on proposals, neuron holders may choose to delegate their vote to other neurons that they trust with certain decisions. This concept of delegating the right to vote to other neurons, who then effectively vote with more voting power, is called **liquid democracy**. In the NNS DAO, this is also called **following**, as a neuron follows the decision of some other neurons.
+Users may not have the time or knowledge to participate in all voting decisions.
+Therefore, instead of directly voting on proposals, neuron holders may choose to delegate their vote to other neurons that they trust with certain decisions.
+This concept, where a neuron follows the decisions of some other neurons, is called **following** in the NNS DAO.
+The delegation of the voting rights to others, who then effectively vote with more voting power, is also called **liquid democracy**.
 
-### How to follow a neuron
-Concretely, proposals are grouped into different [**proposal topics**](/docs/current/developer-docs/daos/nns/concepts/proposals/direct-voting#proposal-topics-and-types) and following is done on a per-topic basis.
-To learn more about the follow rules and how to set up your neuron to follow a group of other neurons on the NNS dapp, refer to [NNS dapp quickstart for following](/docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart#neuron-following).
+For an explanation video how following works and more information how followoing can be set on the NNS dapp,
+refer to [Configuring neuron following](/docs/current/developer-docs/daos/nns/concepts/using-the-nns-dapp/neuron
+-following).
+
+## Following rules
+A neuron can be configured to vote automatically by following the voting decision made by a group of other neurons,
+called **followees**.
+Proposals are grouped into different [**proposal topics**](/docs/current/developer-docs/daos/nns/concepts/proposals/proposal-topics) and following is done on a per-topic basis.
+
+Each neuron can follow at most 15 other neurons for each proposal topic.
+A neuron will only cast a "Yes"-vote if **more than half** of the neurons within the followee-group voted Yes.
+A neuron will only cast a "No"-vote if **at least half** of the neurons within the followee-group voted No.
+
+:::caution
+Your neuron will follow when there are **enough votes to make a decision whether it is a ADOPT or REJECT**.
+For example, if you follow 10 neurons on a topic:
+
+- Your neuron only votes to adopt if at least 6 out of the 10 neurons vote to adopt.
+
+- Your neuron only votes to reject a proposal if at least 5 out of the 10 reject the proposal.
+
+- If less than 5 neurons (out of your 10 followed) vote at all, your neuron will not cast any vote.
+
+This should be considered when choosing to follow multiple neurons on a topic.
+It might be better to follow fewer neurons, and it can be more beneficial to follow an odd number of
+ neurons than an even number.
+:::
+
+## Following "catch-all"
+In addition to setting following for individual topics, neurons may also define a catch-all follow rule which is triggered for proposals with topics for which no other explicit follow rule has been defined.
+However, the catch-all follow rule does not include the proposal topics **SNS & neurons' fund** and **Governance**.
+
+:::caution
+The catch-all follow rule is only applied for proposal topics with no other explicit choice. For example, let's assume neuron A follows neuron B for the catch-all and neuron C on the topic subnet management. If B votes on a subnet management proposal but C does not, no vote will be cast for A.
+
+The catch-all follow rule does not apply for SNS & neurons' fund or governance proposals.
+For example, if neuron A follows neuron B for the catch-all and B votes on a governance proposal, no vote will be cast for A. If neuron A intends to also follow B on such decisions, the user has to explicitly choose to also follow B on the governance topic.
+:::
+
+It is in each neuron's interest to follow other neurons that support the best interests of the network and their own economic interests.
+
+## How to follow a neuron
+To learn more about how to set up your neuron to follow a group of other neurons on the NNS dapp, refer to [NNS dapp
+quickstart for following](/docs/current/developer-docs/daos/nns/using-the-nns-dapp/using-the-nns-dapp/neuron-following).
 
 ### How to find neurons to follow
 In order for a neuron to follow others, there needs to be some neurons that actively vote and can be followed.
