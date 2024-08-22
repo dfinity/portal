@@ -57,7 +57,7 @@ Now that you have a coupon code, enter your coupon code within the faucet UI.
 
 Click **NEXT STEP** to continue.
 
-## Step 8: Setup the IC SDK.
+## Step 8: Setup `dfx``
 
 Next, confirm your computer has `dfx` installed. Run this command to check the version of `dfx` on your computer:
 
@@ -65,7 +65,7 @@ Next, confirm your computer has `dfx` installed. Run this command to check the v
 dfx --version
 ```
 
-If your `dfx` version is below 0.12.0, please run this command:
+If your `dfx` version is below 0.22.0, please run this command:
 
 ```
 dfx upgrade
@@ -91,13 +91,9 @@ Then, set this identity to be used by default:
 dfx identity use MyNewIdentity
 ```
 
-## Step 10: Now, claim your cycles.
+## Step 10: Claim your cycles.
 
 This workflow utilizes the **cycles ledger** feature. If you'd like to use the **cycles wallet** instead, [view the cycles wallet documentation](/docs/current/developer-docs/defi/cycles/cycles-wallet).
-
-:::caution
-The cycles ledger is supported by default in [`dfx` version 0.22.0 and newer](/docs/current/developer-docs/getting-started/install/).
-:::
 
 You will need to claim your free cycles by running this command:
 
