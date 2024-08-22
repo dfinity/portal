@@ -32,6 +32,8 @@ Motoko differentiates between immutable arrays, which cannot be altered, and mut
 To declare an immutable array (default):
 
 ```motoko
+import Nat "mo:base/Nat"
+
 actor {
     let a : [Nat] = [0, 1, 2, 3];
 }
@@ -41,6 +43,8 @@ actor {
 To declare a mutable array, the `[var _]` syntax is used:
 
 ```motoko
+import Nat "mo:base/Nat"
+
 actor {
     let a : [var Nat] = [var 0, 1, 2, 3] ;
 }
