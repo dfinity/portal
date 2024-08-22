@@ -26,6 +26,7 @@ vote on proposals, and create canisters on the Internet Computer.
 Neurons are required to participate in governance to earn rewards. To create a neuron, you must lock up some number of ICP utility tokens for a period of time.
 The minimum stake required to create a neuron is 1 ICP utility token. You can configure the period of time the stake is locked from 6 months up to a maximum of 8 years.
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3o0eBOaHP_4?si=k7vR9eulGzK_iLiY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 To stake ICP utility tokens:
 
 - #### Step 1:  In the NNS dapp, select **Neuron Staking** from the left navigation bar, then click **Stake Neurons** in the bottom of the window.
@@ -58,7 +59,7 @@ These are some of the things you can modify:
 For more tutorials on what you can do with your neuron, we refer to
 [Advanced neuron operations](/docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-advanced-neuron-operations).
 
-### Starting and stopping the dissolve delay
+### Start and stop dissolving the neuron
 
 Creating a new neuron does not automatically start the dissolve delay timer. You must explicitly start the timer countdown by clicking **Start Unlock**.
 
@@ -66,7 +67,7 @@ For example, if you set a dissolve delay of 1 year and want to immediately begin
 
 After you click **Lockup** to stop the dissolve delay, you can click **Start Unlock** to resume the countdown without changing the existing dissolve delay period. If you want to continue a countdown already in progress but extend the lock up period, you can click **Increase Dissolve Delay** then select a longer dissolve delay.
 
-### Adding ICP utility tokens to an existing neuron
+### Top up an existing neuron with additional ICP utility tokens
 
 After you create a neuron, you can increase the number of ICP utility tokens you have staked in that neuron to increase your voting power and rewards. For example, if you initially stake a small number of ICP utility tokens, then decide to purchase additional tokens, you have the option to create a new neuron or "top-up" your existing neuron.
 
@@ -94,7 +95,7 @@ You can use the account identifier for your main ICP ledger account to search fo
 
 ![Increased stake](../../_attachments/nns12.png)
 
-### Disburse dissolved neurons into an account
+### Disburse a dissolved neuron into an account
 
 When the dissolve delay timer for a neuron reaches zero, you can disburse the neuron’s stake and transfer its locked ICP utility token balance to the ledger account you specify.
 
