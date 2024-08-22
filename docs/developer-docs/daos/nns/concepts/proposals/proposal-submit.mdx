@@ -18,14 +18,6 @@ For example, you can review concrete instructions how to [submit a proposal of t
 
 
 
-* `NnsCanisterUpgrade`: A proposal to upgrade an existing system canister. This proposal type is executed by the root canister. Beyond upgrading the Wasm module of the target canister, the proposal can also set the authorization information and the allocations.
-* `NnsCanisterInstall`: A proposal to add a new canister to be installed and executed on the NNS subnet. The root canister, which controls all canisters on the NNS except for itself, handles this proposal type. The call also expects the Wasm module that shall be installed.
-* `NnsRootUpgrade`: A proposal to upgrade the root canister on the NNS subnet. The proposal is processed by the Lifeline canister, which controls the root canister. The proposal updates the Wasm module.
-* `StopOrStartNnsCanister`: Stop or start an NNS canister. Usually this is done as part of a canister upgrade, but this proposal offers the flexibility to just start or stop a canister if needed.
-
-
-
-
 #### How to verify ledger upgrades for ckBTC, ckETH, and ckERC20
 If you are looking to verify the ledger suite for ckBTC, ckETH or ckERC20 apart from regularly checking open proposals, you might want to consider the following information for proposals submitted by the DFINITY foundation:
 

@@ -45,8 +45,8 @@ canister.
 * `InstallCode`: Install, reinstall or upgrade the code of a canister that is controlled by the NNS.
 * `UpdateCanisterSettings`: Update the settings of a canister that is controlled by the NNS.
 * `StopOrStartCanister`: Stop or start a canister that is controlled by the NNS.
+* `NnsRootUpgrade`: A proposal to upgrade the root canister on the NNS subnet. The proposal is processed by the Lifeline canister, which controls the root canister. The proposal updates the Wasm module.
 * `HardResetNnsRootToVersion`: Uninstall and install root with the Wasm provided in the function.  If `InitArgs` are provided, they will be passed to the `canister_init` function of the Wasm provided. This function is meant as a 'break glass' mechanism for when an open call context in the root canister is preventing root or another canisters from upgrading.
-
 
 
 ### Topic: `ServiceNervousSystemManagement`
