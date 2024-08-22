@@ -8,6 +8,40 @@ import '/src/components/CenterImages/center.scss';
 # Verifying proposals
 
 <MarkdownChipRow labels={["Advanced", "Governance", "Concept"]} />
-TODO Tutorials & tips from voting grant
 
-<iframe width="560" height="315" src="TODO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+## Verify protocol canister management proposals
+If you are looking to verify [protocol canister management proposals]
+(/docs/current/developer-docs/daos/nns/concepts/proposals/proposal-topics#Topic:-`ProtocolCanisterManagement`), you
+can refer to this video that explains the process on the example of an NNS governance canister upgrade:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BsIg4JZobqU?si=psrn6IViSJJ7xgnb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+Apart from regularly checking open proposals, you might also want to consider the following information for proposals
+ submitted by the DFINITY foundation.
+
+ ### Verify NNS canister upgrades
+* For updates to the NNS canisters, you can follow [this repository](https://github.com/dfinity/ic). More specifically, the following sub-directories are relevant:
+
+- `rs/rosetta-api/icp_ledger/src`
+- `rs/rosetta-api/ledger_core`
+- `rs/rosetta-api/ledger_canister_core`
+- `rs/packages/icrc-ledger_types`
+- `rs/registry/canister`
+- `rs/nns/governance`
+- `rs/rosetta-api/ledger_canister/ledger`,
+- `rs/rosetta-api/icp_ledger/archive`
+- `rs/nns/handlers/root/impl`
+- `rs/nns/cmc`
+- `rs/nns/handlers/lifeline`,
+- `rs/nns/gtc`
+- `rs/nns/identity`
+- `rs/nns/nns-ui`
+- `rs/nns/sns-wasm`
+
+* NNS core canister upgrade proposals are announced in [this forum thread](https://forum.dfinity.org/t/nns-updates-aggregation-thread/23551).
+* You can find the instructions on how to verify that the Wasm in the proposal was indeed build from the provided `git commit` in the proposal's section "Wasm Verification" (see [this example proposal](https://dashboard.internetcomputer.org/proposal/129394)).
+
+ ### Verify ICP ledger suite upgrades
+* For updates on the ICP ledger suite, you can follow [this repository](https://github.com/dfinity/ic). More specifically, the following sub-directories are relevant:
+- `rs/rosetta-api/icp_ledger` is the  directory for the ICP ledger
+
