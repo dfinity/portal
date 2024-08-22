@@ -333,20 +333,6 @@ def http_request(req: HttpRequest) -> HttpResponse:
         "streaming_strategy": None,
         "upgrade": None,
     }
-
-@query
-def http_streaming(token: Token) -> StreamingCallbackHttpResponse:
-    ic.print("Hello from http_streaming")
-    if token["arbitrary_data"] == "start":
-        return {"body": " is ".encode("utf-8"), "token": {"arbitrary_data": "next"}}
-    if token["arbitrary_data"] == "next":
-        return {
-            "body": f"{stable_storage.get('counter')}".encode("utf-8"),
-            "token": {"arbitrary_data": "last"},
-        }
-    if token["arbitrary_data"] == "last":
-        return {"body": " streaming\n".encode("utf-8"), "token": None}
-    ic.trap("unreachable")
 ```
 
 :::caution
