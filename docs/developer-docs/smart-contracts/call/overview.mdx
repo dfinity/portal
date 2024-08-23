@@ -37,6 +37,8 @@ Update calls are executed on all nodes of a <GlossaryTooltip>subnet</GlossaryToo
 ```motoko
 actor Counter {
 
+  stable var counter = 0;
+
   public func inc() : async () {
     counter += 1;
   };
