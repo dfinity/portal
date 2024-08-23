@@ -1439,6 +1439,113 @@ const sidebars = {
       ],
     },
   ],
+devjourney: [
+    {
+      type: "category",
+      label: "Developer Journey",
+      link: {
+        type: "doc",
+        id: "tutorials/developer-journey/index",
+      },
+      items: [
+        {
+          type: "category",
+          label: "Level 0: Pre-flight operations",
+          items: [
+            "tutorials/developer-journey/level-0/ic-overview",
+            "tutorials/developer-journey/level-0/ic-terms",
+            "tutorials/developer-journey/level-0/dev-env",
+            "tutorials/developer-journey/level-0/intro-canisters",
+            "tutorials/developer-journey/level-0/intro-languages",
+            "tutorials/developer-journey/level-0/intro-dfx",
+      ],
+    },
+      {
+        type: "category",
+        label: "Level 1: Space cadet",
+        items: [
+          "tutorials/developer-journey/level-1/1.1-live-demo",
+          "tutorials/developer-journey/level-1/1.2-motoko-lvl1",
+          "tutorials/developer-journey/level-1/1.3-first-dapp",
+          "tutorials/developer-journey/level-1/1.4-using-cycles",
+          "tutorials/developer-journey/level-1/1.5-deploying-canisters",
+          "tutorials/developer-journey/level-1/1.6-managing-canisters",
+      ],
+    },
+    {
+      type: "category",
+      label: "Level 2: Space explorer",
+      items: [
+        "tutorials/developer-journey/level-2/2.1-storage-persistence",
+        "tutorials/developer-journey/level-2/2.2-advanced-canister-calls",
+        "tutorials/developer-journey/level-2/2.3-third-party-canisters",
+        "tutorials/developer-journey/level-2/2.4-intro-candid",
+        "tutorials/developer-journey/level-2/2.5-unit-testing",
+        "tutorials/developer-journey/level-2/2.6-motoko-lvl2",
+      ],
+    },
+    {
+      type: "category",
+      label: "Level 3: Space engineer",
+      items: [
+        "tutorials/developer-journey/level-3/3.1-package-managers",
+        "tutorials/developer-journey/level-3/3.2-https-outcalls",
+        "tutorials/developer-journey/level-3/3.3-certified-data",
+        "tutorials/developer-journey/level-3/3.4-intro-to-agents",
+        "tutorials/developer-journey/level-3/3.5-identities-and-auth",
+        "tutorials/developer-journey/level-3/3.6-motoko-lvl3",
+    ],
+    },
+    {
+      type: "category",
+      label: "Level 4: Space pilot",
+      items: [
+        "tutorials/developer-journey/level-4/4.1-icp-ledger",
+        "tutorials/developer-journey/level-4/4.2-icrc-tokens",
+        "tutorials/developer-journey/level-4/4.3-ckbtc-and-bitcoin",
+        "tutorials/developer-journey/level-4/4.4-nns-governance",
+        "tutorials/developer-journey/level-4/4.5-using-quill",
+        "tutorials/developer-journey/level-4/4.6-motoko-lvl4",
+    ],
+    },
+    {
+      type: "category",
+      label: "Level 5: Internet Computer astronaut",
+      items: [
+        "tutorials/developer-journey/level-5/5.1-vetKeys-tutorial",
+        "tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial",
+        "tutorials/developer-journey/level-5/5.3-token-swap-tutorial",
+        "tutorials/developer-journey/level-5/5.4-NFT-tutorial",
+        "tutorials/developer-journey/level-5/5.5-auction-tutorial",
+        "tutorials/developer-journey/level-5/5.6-next-steps",
+    ],
+    },
+  ],
+  },
+],
+
+hackathon: [
+  {
+    type: "category",
+    label: "Hackathon prep course",
+    link: {
+      type: "doc",
+      id: "tutorials/hackathon-prep-course/index",
+    },
+    items: [
+      "tutorials/hackathon-prep-course/what-is-icp",
+      "tutorials/hackathon-prep-course/deploying-first-fullstack-dapp",
+      "tutorials/hackathon-prep-course/exploring-the-backend",
+      "tutorials/hackathon-prep-course/exploring-the-frontend",
+      "tutorials/hackathon-prep-course/integrating-with-tokens",
+      "tutorials/hackathon-prep-course/authentication",
+      "tutorials/hackathon-prep-course/obtaining-cycles",
+      "tutorials/hackathon-prep-course/managing-canisters",
+      "tutorials/hackathon-prep-course/sample-starter-projects",
+      "tutorials/hackathon-prep-course/resources",
+    ],
+  },
+],
   rust: [
     {
       type: "category",
