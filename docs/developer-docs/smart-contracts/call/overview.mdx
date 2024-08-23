@@ -71,13 +71,13 @@ fn inc() {
 import { IDL, update } from 'azle';
 
 export default class {
-    count: bigint = 0n;
+    counter: bigint = 0n;
 
     @update([], IDL.Nat64)
-    incrementCount(): bigint {
-        this.count += 1n;
+    inc(): bigint {
+        this.counter += 1n;
 
-        return this.count;
+        return this.counter;
     }
 }
 ```
@@ -89,20 +89,17 @@ export default class {
 ```python
 from kybra import nat64, query, update
 
-count: nat64 = 0
+counter: nat64 = 0
 
 @query
-def read_count() -> nat64:
-    return count
+def count() -> nat64:
+    return counter
 
 @update
-def increment_count() -> nat64:
-    global count
-
-    count += 1
-
-    return count
-
+def inc() -> nat64:
+    global counter
+    counter += 1
+    return counter
 ```
 
 </AdornedTab>
