@@ -86,40 +86,16 @@ type Numbers =
     | { 6: string }
     | { 7: string };
 
-export default class {
-    @query([Numbers], IDL.Text)
-    getText(num: Numbers): string {
-        if ('1' in num) {
-            return num.1;
-        }
-
-        if ('2' in num) {
-            return num.2;
-        }
-
-        if ('3' in num) {
-            return num.3;
-        }
-
-        if ('4' in num) {
-            return num.4;
-        }
-
-        if ('5' in num) {
-            return num.5;
-        }
-
-        if ('6' in num) {
-            return num.6;
-        }
-
-        if ('7' in num) {
-            return num.7;
-        }
-
-        throw new Error(`Variant "Numbers" has unknown tag`);
-    }
-}
+export default Canister({
+    getReaction: query([], Numbers, () => {
+        return {
+            Numbers
+        };
+    }),
+    printReaction: query([Numbers], Numbers, (numbers) => {
+        return numbers;
+    })
+});
 ```
 To learn more about variants in Typescript via Azle, refer to [the Azle code](https://github.com/demergent-labs/azle/blob/main/tests/end_to_end/candid_rpc/class_syntax/complex_types/src/candid_types.ts#L3).
 
@@ -141,20 +117,7 @@ class Numbers(Variant, total=False):
 
 @query
 def get_text(n: Numbers) -> str:
-    if d == Numbers.1:
-        return "1"
-    elif d == Day.2:
-        return "2"
-    elif d == Day.3:
-        return "3"
-    elif d == Day.4:
-        return "4"
-    elif d == Day.5:
-        return "5"
-    elif d == Day.6:
-        return "6"
-    elif d == Day.7:
-        return "7"
+    return Numbers
 ```
 
 To learn more about variants in Python in Kybra, refer to [the Kybra book reference on variants](https://demergent-labs.github.io/kybra/reference/candid/variant.html).
