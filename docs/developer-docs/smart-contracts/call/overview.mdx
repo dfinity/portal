@@ -35,11 +35,13 @@ Update calls are executed on all nodes of a <GlossaryTooltip>subnet</GlossaryToo
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
-actor countCharacters {
-    public func test(text : Text) : async Bool {
-        let size = Text.size(text);
-        return size % 2 == 0;
-    };
+actor Counter {
+
+  stable var counter = 0;
+
+  public func inc() : async () {
+    counter += 1;
+  };
 };
 ```
 
@@ -48,9 +50,16 @@ actor countCharacters {
 <TabItem value="rust" label="Rust">
 
 ```rust
+use candid::types::number::Nat;
+use std::cell::RefCell;
+
+thread_local! {
+    static COUNTER: RefCell<Nat> = RefCell::new(Nat::from(0_u32));
+}
+
 #[ic_cdk_macros::update]
-fn increment() {
-    COUNTER.with(|counter| *counter.borrow_mut() += 1);
+fn inc() {
+    COUNTER.with(|counter| *counter.borrow_mut() += 1_u32);
 }
 ```
 
@@ -62,13 +71,13 @@ fn increment() {
 import { IDL, update } from 'azle';
 
 export default class {
-    count: bigint = 0n;
+    counter: bigint = 0n;
 
     @update([], IDL.Nat64)
-    incrementCount(): bigint {
-        this.count += 1n;
+    inc(): bigint {
+        this.counter += 1n;
 
-        return this.count;
+        return this.counter;
     }
 }
 ```
@@ -78,10 +87,19 @@ export default class {
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```python
+from kybra import nat64, query, update
+
+counter: nat64 = 0
+
+@query
+def count() -> nat64:
+    return counter
+
 @update
-def set_message(new_message: str) -> void:
-    global message
-    message = new_message
+def inc() -> nat64:
+    global counter
+    counter += 1
+    return counter
 ```
 
 </AdornedTab>
@@ -102,11 +120,12 @@ The downside of query calls is that the response is not trusted since it's comin
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
-actor Echo {
+actor {
 
-  public query func say(phrase : Text) : async Text {
-    return phrase;
+  public func greet(name : Text) : async Text {
+    return "Hello, " # name # "!";
   };
+
 };
 ```
 
@@ -130,11 +149,9 @@ fn greet(name: String) -> String {
 import { IDL, query } from 'azle';
 
 export default class {
-    count: bigint = 0n;
-
-    @query([], IDL.Nat64)
-    readCount(): bigint {
-        return this.count;
+    @query([], IDL.Text)
+    greet(name){
+        return "Hello, {name}";
     }
 }
 ```
@@ -144,9 +161,11 @@ export default class {
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```python
+from kybra import query
+
 @query
-def get_message() -> str:
-    return message
+def greet(name: str) -> str:
+    return f"Hello, {name}!"
 ```
 
 </AdornedTab>

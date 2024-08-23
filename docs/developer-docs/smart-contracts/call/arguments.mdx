@@ -29,34 +29,18 @@ The following example defines an array of numbers and a function that returns th
 
 Motoko differentiates between immutable arrays, which cannot be altered, and mutable arrays, which can be modified.
 
-To declare an immutable array (default):
-
 ```motoko
-actor {
-    let a : [Nat] = [0, 1, 2, 3];
-}
-
-```
-
-To declare a mutable array, the `[var _]` syntax is used:
-
-```motoko
-actor {
-    let a : [var Nat] = [var 0, 1, 2, 3] ;
-}
-```
-
-To declare a function that returns an array:
-
-```motoko
-import Nat "mo:base/Nat"
+import Nat "mo:base/Nat";
 
 actor {
-    let a : [Nat] = [0, 1, 2, 3];
-    public func get_numbers(a: [Nat]) : async [Nat] {
+    let numbers1 : [Nat] = [1, 2, 3, 4, 5, 6, 7]; // Immutable array
+    let numbers2 : [var Nat] = [var 1, 2, 3, 4, 5, 6, 7] ; // Mutable array
+
+    public func get_numbers(numbers2: [Nat]) : [Nat] {
         return a;
     }
 }
+
 ```
 
 The `Array` Motoko base library provides utility functions on arrays. To learn more about the `Array` Motoko base library, refer to the [Motoko base library reference on Array](/docs/current/motoko/main/base/Array) and the [Motoko language quick reference on arrays](/docs/current/motoko/main/reference/language-manual#arrays).
@@ -68,7 +52,7 @@ The `Array` Motoko base library provides utility functions on arrays. To learn m
 Rust uses the `vec` type to represent vectors (sequences, lists, arrays).
 
 ```rust
-let numbers = vec![0, 1, 2, 3 ];
+let numbers = vec![1, 2, 3, 4, 5, 6, 7 ];
 #[query]
 fn get_numbers(numbers: Vec<u32>) -> Vec<u32> {
     numbers
@@ -84,59 +68,14 @@ Azle refers to the `Vec` type to represent the equivalent of an `array` in TypeS
 ```typescript
 import { IDL, query } from 'azle';
 
-const Day = IDL.Variant({
-    Sun: IDL.Text,
-    Mon: IDL.Text,
-    Tue: IDL.Text,
-    Wed: IDL.Text,
-    Thu: IDL.Text,
-    Fri: IDL.Text,
-    Sat: IDL.Text
-});
-type Day =
-    | { Sun: string }
-    | { Mon: string }
-    | { Tue: string }
-    | { Wed: string }
-    | { Thu: string }
-    | { Fri: string }
-    | { Sat: string };
-
 export default class {
-    @query([Day], IDL.Text)
-    getText(day: Day): string {
-        if ('Sun' in day) {
-            return day.Sun;
-        }
-
-        if ('Mon' in day) {
-            return day.Mon;
-        }
-
-        if ('Tue' in day) {
-            return day.Tue;
-        }
-
-        if ('Wed' in day) {
-            return day.Wed;
-        }
-
-        if ('Thu' in day) {
-            return day.Thu;
-        }
-
-        if ('Fri' in day) {
-            return day.Fri;
-        }
-
-        if ('Sat' in day) {
-            return day.Sat;
-        }
-
-        throw new Error(`Variant "Day" has unknown tag`);
+    @query([], IDL.Vec(IDL.Nat8))
+    get_numbers(): Nat {
+        return [1, 2, 3, 4, 5, 6, 7];
     }
 }
 ```
+
 To learn more about variants in Typescript via Azle, refer to [the Azle code](https://github.com/demergent-labs/azle/blob/main/tests/end_to_end/candid_rpc/class_syntax/complex_types/src/candid_types.ts#L3).
 
 </AdornedTab>
@@ -144,33 +83,12 @@ To learn more about variants in Typescript via Azle, refer to [the Azle code](ht
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```python
-from kybra import nat32, Variant, query
+from kybra import int32, query, Vec
 
-class Day(Variant, total=False):
-    Sun: str
-    Mon: str
-    Tue: str
-    Wed: str
-    Thu: str
-    Fri: str
-    Sat: str
 
 @query
-def get_text(d: Day) -> str:
-    if d == Day.Sun:
-        return "Sunday"
-    elif d == Day.Mon:
-        return "Monday"
-    elif d == Day.Tue:
-        return "Tuesday"
-    elif d == Day.Wed:
-        return "Wednesday"
-    elif d == Day.Thu:
-        return "Thursday"
-    elif d == Day.Fri:
-        return "Friday"
-    elif d == Day.Sat:
-        return "Saturday"
+def get_numbers() -> Vec[int32]:
+    return [1, 2, 3, 4, 5, 6, 7]
 ```
 
 To learn more about variants in Python in Kybra, refer to [the Kybra book reference on variants](https://demergent-labs.github.io/kybra/reference/candid/variant.html).
@@ -189,7 +107,7 @@ Assuming you have a method named `get_text` that accepts a `Variant` parameter, 
 ```bash
     dfx canister call canister_name get_text '(variant {Sun})'
 ```
-To learn more about calling a method from a canister in bash, refer to the DFX reference on the [dfx canister call command](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-call).
+To learn more about calling a method from a canister in bash, refer to the `dfx` reference on the [dfx canister call command](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-call).
 
 For additional examples, refer to [type variant in the Candid Reference](/docs/current/references/candid-ref#type-variant--n--t--)
 
