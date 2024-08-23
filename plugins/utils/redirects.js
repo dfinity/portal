@@ -128,9 +128,9 @@ const redirects = `
   /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/developer-journey/
 
   /docs/rosetta-api/ledger /docs/current/developer-docs/defi/tokens/token-standards
-  /docs/rosetta-api/ledger-local-setup /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup
+  /docs/rosetta-api/ledger-local-setup /docs/current/developer-docs/defi/tokens/ledger/setup/icp_ledger_setup
   /docs/integration/ledger-quick-start /docs/current/developer-docs/defi/tokens/token-standards
-  /docs/current/developer-docs/functionality/ledger/* /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup
+  /docs/current/developer-docs/functionality/ledger/* /docs/current/developer-docs/defi/tokens/ledger/setup/icp_ledger_setup
 
   /docs/base-libraries/* /docs/current/motoko/main/base/:splat
   /base-libraries/* /docs/current/motoko/main/base/:splat
@@ -350,14 +350,14 @@ const redirects = `
   /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http
   /docs/current/developer-docs/integrations/ledger/introduction_and_overview /docs/current/developer-docs/defi/overview
   /docs/current/developer-docs/integrations/ledger/  /docs/current/developer-docs/defi/overview
-  /docs/current/developer-docs/integrations/ledger/ledger-local-setup  /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup
-  /docs/current/developer-docs/integrations/ledger/interact-with-ledger  /docs/current/developer-docs/defi/icp-tokens/using-the-ledger
+  /docs/current/developer-docs/integrations/ledger/ledger-local-setup  /docs/current/developer-docs/defi/tokens/ledger/setup/icp_ledger_setup
+  /docs/current/developer-docs/integrations/ledger/interact-with-ledger  /docs/current/developer-docs/defi/tokens/ledger/usage/icp_ledger_usage
   /docs/current/developer-docs/integrations/ledger/icp-index-local-setup /docs/current/developer-docs/defi/tokens/indexes
   /docs/current/developer-docs/integrations/ledger/collecting-dust /docs/current/developer-docs/defi/icp-tokens/account-trimming
   /docs/current/developer-docs/integrations/icrc-1/index /docs/current/references/icrc1-standard
   /docs/current/developer-docs/integrations/icrc-1/ /docs/current/references/icrc1-standard
-  /docs/current/developer-docs/integrations/icrc-1/icrc1-ledger-setup /docs/current/developer-docs/defi/icrc-1/icrc1-ledger-setup
-  /docs/current/developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger /docs/current/developer-docs/defi/icrc-1/using-icrc1-ledger
+  /docs/current/developer-docs/integrations/icrc-1/icrc1-ledger-setup /docs/current/developer-docs/defi/tokens/ledger/setup/icrc1_ledger_setup
+  /docs/current/developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger /docs/current/developer-docs/defi/tokens/ledger/usage/icrc1_ledger_usage
   /docs/current/developer-docs/integrations/icrc-1/icrc1-index-setup /docs/current/developer-docs/defi/tokens/indexes
   /docs/current/developer-docs/integrations/exchange-rate/exchange-rate-canister /docs/current/developer-docs/defi/exchange-rate-canister
   /docs/current/developer-docs/integrations/rosetta/index  /docs/current/developer-docs/defi/rosetta/overview
@@ -532,7 +532,7 @@ const redirects = `
   /education /education-hub
   /docs/current/developer-docs/integrations/ledger/deploy-new-token /docs/current/developer-docs/defi/tokens/create
   /docs/current/samples/deploying-your-first-bitcoin-dapp /docs/current/references/samples/motoko/basic_bitcoin/
-  /docs/integration/ledger-quick-start.html /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup
+  /docs/integration/ledger-quick-start.html /docs/current/developer-docs/defi/tokens/ledger/setup/icp_ledger_setup
   /docs/current/developer-docs/integrations/storage/cost /docs/current/developer-docs/gas-cost
   /docs/token-holders/self-custody-quickstart.html /docs/current/developer-docs/defi/wallets/self-custody/self-custody-quickstart
   /docs/current/developer-docs/overview/ /docs/current/developer-docs/getting-started/overview-of-icp
@@ -593,6 +593,9 @@ const redirects = `
   /docs/current/developer-docs/security/rust-canister-development-security-best-practices /docs/current/developer-docs/security/security-best-practices/inter-canister-calls
   /docs/developers-guide/computation-and-storage-costs.html /docs/current/developer-docs/gas-cost
   /docs/current/developer-docs/getting-started/ /docs/current/developer-docs/getting-started/overview-of-icp
+  /docs/current/developer-docs/defi/wallets/workflow /docs/current/developer-docs/defi/wallets/overview
+  /docs/current/developer-docs/backend/rust/infrastructure /docs/current/developer-docs/backend/rust/
+
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

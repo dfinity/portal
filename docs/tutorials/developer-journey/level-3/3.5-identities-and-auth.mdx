@@ -115,7 +115,9 @@ npm install
 
 To start, let's take a look at the backend canister, which uses a simple 'Who am I?' service in the `src/whoami/main.mo` file:
 
-```motoko
+```motoko title="src/whoami/main.mo"
+import Principal "mo:base/Principal";
+
 actor {
     public shared (msg) func whoami() : async Principal {
         msg.caller
@@ -129,14 +131,14 @@ In this code, the actor has one method, `whoami`, which responds with the messag
 
 Next, let's take a look at the assets for the frontend of the application. This demo project comes with a few different options for the frontend, such as React and Vue, but for this guide you'll stick with using the vanilla JavaScript option. If you take a look at the `src/auth_client_demo_assets/vanilla/index.ts` file, you can see that first, you import the `AuthClient` from `@dfinity/auth-client`:
 
-```typescript
+```typescript title="src/auth_client_demo_assets/vanilla/index.ts"
 import { AuthClient } from "@dfinity/auth-client";
 import { handleAuthenticated, renderIndex } from "./views";
 ```
 
 Then, you define some variables to define a day in nanoseconds:
 
-```typescript
+```typescript title="src/auth_client_demo_assets/vanilla/index.ts"
 // One day in nanoseconds
 const days = BigInt(1);
 const hours = BigInt(24);
@@ -145,7 +147,7 @@ const nanoseconds = BigInt(3600000000000);
 
 Next, you'll set some default options, including the `loginOptions`, which will allow the `identityProvider` to be either the II mainnet canister if you are using the local environmental variable `DFX_NETWORK` set to `ic`, or the locally deployed II canister. Your local replica will not accept signatures from the mainnet canister.
 
-```typescript
+```typescript title="src/auth_client_demo_assets/vanilla/index.ts"
 export const defaultOptions = {
   createOptions: {
     idleOptions: {
@@ -172,7 +174,7 @@ Depending on your web browser, you may need to change the `http://localhost:4943
 
 Now, let's initialize the AuthClient. Then, you check to see if the user has previously logged in. If so, their previous identity is verified:
 
-```typescript
+```typescript title="src/auth_client_demo_assets/vanilla/index.ts"
 const init = async () => {
   const authClient = await AuthClient.create(defaultOptions.createOptions);
 
@@ -186,7 +188,7 @@ const init = async () => {
 
 Lastly, you define a function that listens for the button on the frontend to be clicked and initialize the client:
 
-```typescript
+```typescript title="src/auth_client_demo_assets/vanilla/index.ts"
 async function setupToast() {
   const status = document.getElementById("status");
   const closeButton = status?.querySelector("button");
@@ -203,7 +205,7 @@ init();
 
 Now, if you noticed you didn't create a canister for the Internet Identity service. That's because, if you take a look at this project's `dfx.json` file, you **pull** the Internet Identity canister from the mainnet. This is an example of using the `dfx deps` functionality, which you covered in [2.3: Using third-party canisters](/docs/current/tutorials/developer-journey/level-2/2.3-third-party-canisters).
 
-```json
+```json title="dfx.json"
 {
   "canisters": {
     "whoami": {
@@ -275,7 +277,7 @@ download: 197d0423178a6ae2785c924b962648e2b47e6ccb2a25e98d9220d9f3ce5eebf7
 
 Open the `deps/pull.json` file and modify the `wasm_hash` value with the `download` value from the previous output:
 
-```
+```json title="deps/pull.json"
 {
   "canisters": {
     "rdmx6-jaaaa-aaaaa-aaadq-cai": {

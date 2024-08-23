@@ -37,23 +37,10 @@ Update calls are executed on all nodes of a <GlossaryTooltip>subnet</GlossaryToo
 ```motoko
 actor Counter {
 
-  stable var counter = 0;
-
-  // Get the value of the counter.
-  public query func get() : async Nat {
-    return counter;
-  };
-
-  // Set the value of the counter.
-  public func set(n : Nat) : async () {
-    counter := n;
-  };
-
-  // Increment the value of the counter.
   public func inc() : async () {
     counter += 1;
   };
-}
+};
 ```
 
 </TabItem>
@@ -61,9 +48,16 @@ actor Counter {
 <TabItem value="rust" label="Rust">
 
 ```rust
+use candid::types::number::Nat;
+use std::cell::RefCell;
+
+thread_local! {
+    static COUNTER: RefCell<Nat> = RefCell::new(Nat::from(0_u32));
+}
+
 #[ic_cdk_macros::update]
-fn increment() {
-    COUNTER.with(|counter| *counter.borrow_mut() += 1);
+fn inc() {
+    COUNTER.with(|counter| *counter.borrow_mut() += 1_u32);
 }
 ```
 
@@ -75,13 +69,13 @@ fn increment() {
 import { IDL, update } from 'azle';
 
 export default class {
-    count: bigint = 0n;
+    counter: bigint = 0n;
 
     @update([], IDL.Nat64)
-    incrementCount(): bigint {
-        this.count += 1n;
+    inc(): bigint {
+        this.counter += 1n;
 
-        return this.count;
+        return this.counter;
     }
 }
 ```
@@ -93,20 +87,17 @@ export default class {
 ```python
 from kybra import nat64, query, update
 
-count: nat64 = 0
+counter: nat64 = 0
 
 @query
-def read_count() -> nat64:
-    return count
+def count() -> nat64:
+    return counter
 
 @update
-def increment_count() -> nat64:
-    global count
-
-    count += 1
-
-    return count
-
+def inc() -> nat64:
+    global counter
+    counter += 1
+    return counter
 ```
 
 :::caution
@@ -134,11 +125,12 @@ The downside of query calls is that the response is not trusted since it's comin
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
-actor Echo {
+actor {
 
-  public query func say(phrase : Text) : async Text {
-    return phrase;
+  public func greet(name : Text) : async Text {
+    return "Hello, " # name # "!";
   };
+
 };
 ```
 
@@ -163,8 +155,8 @@ import { IDL, query } from 'azle';
 
 export default class {
     @query([], IDL.Text)
-    hello(): string {
-        return 'world!';
+    greet(name){
+        return "Hello, {name}";
     }
 }
 ```
@@ -174,14 +166,11 @@ export default class {
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```python
-from kybra import query, update, text, void
-
-current_message: text = ''
-
+from kybra import query
 
 @query
-def get_current_message() -> text:
-    return current_message
+def greet(name: str) -> str:
+    return f"Hello, {name}!"
 ```
 
 :::caution

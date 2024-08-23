@@ -38,37 +38,75 @@ HTTP `GET` requests are used to retrieve and return existing data from an endpoi
 In Motoko, a `case` configuration can be used to return different `GET` responses based on the endpoint:
 
 ```motoko
-public query func http_request(req : HttpRequest) : async HttpResponse {
-    switch (req.method, not Option.isNull(Array.find(req.headers, isGzip)), req.url) {
-        case ("GET", false, "/stream") {{
-        status_code = 200;
-        headers = [ ("content-type", "text/plain") ];
-        body = Text.encodeUtf8("Counter");
-        streaming_strategy = ?#Callback({
-            callback = http_streaming;
-            token = {
-            arbitrary_data = "start";
-            }
-        });
-        upgrade = ?false;
-        }};
-        case ("GET", false, _) {{
-        status_code = 200;
-        headers = [ ("content-type", "text/plain") ];
-        body = Text.encodeUtf8("Counter is " # Nat.toText(counter) # "\n" # req.url # "\n");
-        streaming_strategy = null;
-        upgrade = null;
-        }};
-        case ("GET", true, _) {{
-        status_code = 200;
-        headers = [ ("content-type", "text/plain"), ("content-encoding", "gzip") ];
-        body = "\1f\8b\08\00\98\02\1b\62\00\03\2b\2c\4d\2d\aa\e4\02\00\d6\80\2b\05\06\00\00\00";
-        streaming_strategy = null;
-        upgrade = null;
-        }};
+import FHM "mo:StableHashMap/FunctionalStableHashMap";
+import SHA256 "mo:motoko-sha/SHA256";
+import CertTree "mo:ic-certification/CertTree";
+import CanisterSigs "mo:ic-certification/CanisterSigs";
+import CertifiedData "mo:base/CertifiedData";
+import HTTP "./Http";
+import Iter "mo:base/Iter";
+import Blob "mo:base/Blob";
+import Option "mo:base/Option";
+import Time "mo:base/Time";
+import Text "mo:base/Text";
+import Debug "mo:base/Debug";
+import Prelude "mo:base/Prelude";
+import Principal "mo:base/Principal";
+import Buffer "mo:base/Buffer";
+import Nat8 "mo:base/Nat8";
+import CertifiedCache "lib";
+import Int "mo:base/Int";
+
+actor Self {
+  type HttpRequest = HTTP.HttpRequest;
+  type HttpResponse = HTTP.HttpResponse;
+
+  var two_days_in_nanos = 2 * 24 * 60 * 60 * 1000 * 1000 * 1000;
+
+  stable var entries : [(Text, (Blob, Nat))] = [];
+  var cache = CertifiedCache.fromEntries<Text, Blob>(
+    entries,
+    Text.equal,
+    Text.hash,
+    Text.encodeUtf8,
+    func(b : Blob) : Blob { b },
+    two_days_in_nanos + Int.abs(Time.now()),
+  );
+
+    public query func http_request(req : HttpRequest) : async HttpResponse {
+        switch (req.method, not Option.isNull(Array.find(req.headers, isGzip)), req.url) {
+            case ("GET", false, "/stream") {{
+            status_code = 200;
+            headers = [ ("content-type", "text/plain") ];
+            body = Text.encodeUtf8("Counter");
+            streaming_strategy = ?#Callback({
+                callback = http_streaming;
+                token = {
+                arbitrary_data = "start";
+                }
+            });
+            upgrade = ?false;
+            }};
+            case ("GET", false, _) {{
+            status_code = 200;
+            headers = [ ("content-type", "text/plain") ];
+            body = Text.encodeUtf8("Counter is " # Nat.toText(counter) # "\n" # req.url # "\n");
+            streaming_strategy = null;
+            upgrade = null;
+            }};
+            case ("GET", true, _) {{
+            status_code = 200;
+            headers = [ ("content-type", "text/plain"), ("content-encoding", "gzip") ];
+            body = "\1f\8b\08\00\98\02\1b\62\00\03\2b\2c\4d\2d\aa\e4\02\00\d6\80\2b\05\06\00\00\00";
+            streaming_strategy = null;
+            upgrade = null;
+            }};
+        };
+    }
+}
 ```
 
-Check out the [certified cache](https://github.com/krpeacock/certified-cache) example project to see this code in use.
+Check out the [certified cache](https://github.com/krpeacock/certified-cache/blob/8657652c4062ef0e91ebe269843ccef1bb4796ae/src/demo.mo#L40) example project to see this code in use.
 
 </TabItem>
 <TabItem value="rust" label="Rust" default>
@@ -357,6 +395,41 @@ HTTP `POST` requests are used to send data to an endpoint with the intention of 
 In Motoko, a `case` configuration can be used to return different `POST` responses based on the endpoint:
 
 ```motoko
+import FHM "mo:StableHashMap/FunctionalStableHashMap";
+import SHA256 "mo:motoko-sha/SHA256";
+import CertTree "mo:ic-certification/CertTree";
+import CanisterSigs "mo:ic-certification/CanisterSigs";
+import CertifiedData "mo:base/CertifiedData";
+import HTTP "./Http";
+import Iter "mo:base/Iter";
+import Blob "mo:base/Blob";
+import Option "mo:base/Option";
+import Time "mo:base/Time";
+import Text "mo:base/Text";
+import Debug "mo:base/Debug";
+import Prelude "mo:base/Prelude";
+import Principal "mo:base/Principal";
+import Buffer "mo:base/Buffer";
+import Nat8 "mo:base/Nat8";
+import CertifiedCache "lib";
+import Int "mo:base/Int";
+
+actor Self {
+  type HttpRequest = HTTP.HttpRequest;
+  type HttpResponse = HTTP.HttpResponse;
+
+  var two_days_in_nanos = 2 * 24 * 60 * 60 * 1000 * 1000 * 1000;
+
+  stable var entries : [(Text, (Blob, Nat))] = [];
+  var cache = CertifiedCache.fromEntries<Text, Blob>(
+    entries,
+    Text.equal,
+    Text.hash,
+    Text.encodeUtf8,
+    func(b : Blob) : Blob { b },
+    two_days_in_nanos + Int.abs(Time.now()),
+  );
+
   public func http_request_update(req : HttpRequest) : async HttpResponse {
     switch (req.method, not Option.isNull(Array.find(req.headers, isGzip))) {
       case ("POST", false) {
@@ -380,9 +453,13 @@ In Motoko, a `case` configuration can be used to return different `POST` respons
           upgrade = null;
         }
       };
+    };
+  };
+}
+
 ```
 
-Check out the [certified cache](https://github.com/krpeacock/certified-cache) example project to see this code in use.
+Check out the [certified cache](https://github.com/krpeacock/certified-cache/blob/8657652c4062ef0e91ebe269843ccef1bb4796ae/src/demo.mo#L76) example project to see this code in use.
 
 </TabItem>
 <TabItem value="rust" label="Rust" default>

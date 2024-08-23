@@ -88,8 +88,10 @@ As you learned earlier, shared functions must be executed asynchronously and the
 To access the result of an async value, the receiver of the future use an `await` expression. For example, using the `Counter` actor you used previously, you can use the result of `Counter.read()` by binding the result value to an identifier (`a`), then await `a` to retrieve the `async Nat` return value, `n`:
 
 ```motoko
-let a : async Nat = Counter.read();
-let n : Nat = await a;
+actor {
+  let a : async Nat = Counter.read();
+  let n : Nat = await a;
+}
 ```
 
 In this code, the following happens:
@@ -101,7 +103,9 @@ In this code, the following happens:
 These two lines can be combined into one to await an asynchronous call directly, such as:
 
 ```motoko
-let n : Nat = await Counter.read();
+actor {
+  let n : Nat = await Counter.read();
+}
 ```
 
 ## Actor classes
@@ -289,7 +293,7 @@ As you've seen in previous portions of our developer journey, when a new project
 
 First, open the `dfx.json` file in your code editor. Delete the existing content and replace it with the following:
 
-```json
+```json title="dfx.json"
 {
   "canisters": {
     "character_count": {
@@ -325,8 +329,9 @@ mkdir src/daemon && touch src/daemon/main.mo
 
 Let's start with the `character_count` canister. Open the `src/character_count/main.mo` file in your code editor and insert the following code:
 
-```motoko
+```motoko title="src/character_count/main.mo"
 import Text "mo:base/Text";
+import Bool "mo:base/Bool";
 
 actor characterCount {
 
@@ -352,7 +357,9 @@ In this example, the following happens:
 
 Next, let's open the `src/daemon/main.mo` file your code editor and insert the following code:
 
-```motoko
+```motoko title="src/daemon/main.mo"
+import Text "mo:base/Text";
+
 actor Daemon {
   stable var running = false;
 

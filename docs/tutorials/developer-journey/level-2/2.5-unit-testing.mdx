@@ -29,7 +29,7 @@ The Motoko base library contains a series of test files that can be used for uni
 
 Many of these tests use a library called Motoko Matchers. Motoko Matchers is a test library that contains several packages that can be imported and used to provide testing functionalities.
 
-Let's take a look at a simple unit test. This unit test will test the program's error messages:
+Let's take a look at a simple unit test. This will test the program's error messages:
 
 
 ```motoko
@@ -121,7 +121,7 @@ You may also consider the [DFINITY Rust guidelines on testing](https://docs.dfin
 
 ## Tests using PocketIC
 
-PocketIC is a community-developed project that provides local canister testing using a Python library. Using PocketIC, developers can write tests for their canister in Python, then deploy the scripts to interact with their local ICP <GlossaryTooltip>replica</GlossaryTooltip>. An example test with PocketIC might look like:
+PocketIC provides local canister testing using a Python library. Using PocketIC, developers can write tests for their canister in Python, then deploy the scripts to interact with their local ICP <GlossaryTooltip>replica</GlossaryTooltip>. An example test with PocketIC might look like:
 
 ```python
 from pocket_ic import PocketIC
@@ -211,7 +211,7 @@ npm install --save-dev vitest isomorphic-fetch
 
 Then, open your `package.json` file and insert `"test": "vitest"` in the `scripts` category, such as:
 
-```json
+```json title="package.json"
 ...
   "scripts": {
     "build": "webpack",
@@ -246,7 +246,7 @@ You'll be diving a bit into using an **agent** in this portion of the tutorial. 
 
 Create a new file in `src/tests/` called `actor.js`, then insert the following content:
 
-```js
+```js title="src/tests/actor.js"
 import { Actor, HttpAgent } from "@dfinity/agent";
 import fetch from "isomorphic-fetch";
 import canisterIds from ".dfx/local/canister_ids.json";
@@ -291,7 +291,7 @@ This API call will fetch a root key for verification of update calls from a sing
 
 Now it's time to create our test file. Create a new file in `src/tests/` called `e2e_tests_backend.test.ts`, then insert the following content:
 
-```ts
+```ts title="src/tests/e2e_tests_backend.test.ts"
 import { expect, test } from "vitest";
 import { Actor, CanisterStatus, HttpAgent } from "@dfinity/agent";
 import { Principal } from "@dfinity/principal";
@@ -343,7 +343,7 @@ The test should be successful and return output such as:
 
 Now let's create a more complex test that checks the canister's metadata using the `CanisterStatus` API. Insert the following code at the end of the `src/tests/e2e_tests_backend.test.ts` file:
 
-```ts
+```ts title="src/tests/e2e_tests_backend.test.ts"
 test("Should contain a candid interface", async () => {
   const agent = Actor.agentOf(e2e_tests_backend) as HttpAgent;
   const id = Principal.from(e2e_tests_backendCanister);
@@ -394,7 +394,7 @@ Now that you have a mini tutorial project to use, you'll use it to demonstrate *
 
 Before you upload your code to Github, first edit the `package.json` file. In the `scripts` section of this file, add the following lines:
 
-```json
+```json title="package.json"
 "ci": "vitest run",
 "preci": "dfx stop; dfx start --clean --background; dfx deploy; dfx generate"
 ```
@@ -410,7 +410,7 @@ mkdir .github/workflows
 
 Create a new file `.github/workflows/e2e.yml`, then insert the following content into this file:
 
-```yml
+```yml title=".github/workflows/e2e.yml"
 name: End to End
 
 on:

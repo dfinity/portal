@@ -79,7 +79,7 @@ by some instructions on [troubleshooting](#troubleshooting).
   │   ├── project_frontend
   │   │   ├── src
   │   │   │   ├── .well-known
-  │   │   │   │   └── ic-domans
+  │   │   │   │   └── ic-domains
   ```
 
   The location of the files should allow your frontend framework to include the
@@ -98,7 +98,7 @@ by some instructions on [troubleshooting](#troubleshooting).
   │   │   ├── src
   │   │   │   ├── .ic-assets.json
   │   │   │   ├── .well-known
-  │   │   │   │   └──ic-domans
+  │   │   │   │   └──ic-domains
   ```
 
   Then, open the `ic-domains` file and insert your domain names. To use multiple
@@ -353,6 +353,6 @@ principals provided by II depend on the domain from which the login request was
 started. If you authenticate your users through the canister URL and want to
 switch over to a custom domain, users will not have the same principals anymore.
 You can prevent this by setting up
-[alternative origins](/docs/current/developer-docs/web-apps/user-login/internet-identity/alternative-origins).
+[custom domains](/docs/current/developer-docs/web-apps/custom-domains/using-custom-domains).
 
 :::

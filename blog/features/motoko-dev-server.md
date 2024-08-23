@@ -19,7 +19,7 @@ We are excited to introduce [mo-dev](https://github.com/dfinity/motoko-dev-serve
 
 Live reloading (or more specifically, [hot module replacement](https://webpack.js.org/concepts/hot-module-replacement/)) is a well-established technology known to massively improve the productivity of web developers. I highly recommend checking out [this blog post](https://blog.logrocket.com/complete-guide-full-stack-live-reload/) for a great explanation of how it works.
 
-This is a solved problem in the world of conventional web development. Robust solutions such as the [Vite](https://vitejs.dev/), [Next.js](https://nextjs.org/docs/architecture/fast-refresh), and [Webpack](https://webpack.js.org/configuration/dev-server/) dev servers make it possible to change a line of front-end code and immediately see the result in your browser, usually without even refreshing the page.
+This is a solved problem in the world of conventional web development. Robust solutions such as the [Vite](https://vitejs.dev/), [Next.js](https://nextjs.org/docs/architecture/fast-refresh), and [Webpack](https://webpack.js.org/configuration/dev-server/) dev servers make it possible to change a line of frontend code and immediately see the result in your browser, usually without even refreshing the page.
 
 However, this feature is almost nonexistent when developing a decentralized application (or “dapp”) running on a blockchain. Several options exist — such as [ZepKit](https://blog.openzeppelin.com/solidity-hot-reloading-using-zepkit) for Solidity smart contracts — but the current state of Web3 live reloading leaves much to be desired given the sky-high expectations from Web2.
 
@@ -73,11 +73,11 @@ The `-y` flag automatically responds “yes” to prompts from [dfx](/docs/curre
 
 ## Full-Stack Dapp
 
-`mo-dev` is specifically designed to play well with popular front-end build tools such as [Vite](https://vitejs.dev/) and [Create React App](https://create-react-app.dev/).
+`mo-dev` is specifically designed to play well with popular frontend build tools such as [Vite](https://vitejs.dev/) and [Create React App](https://create-react-app.dev/).
 
 If you want to start a new project, consider using the [Vite + React + Motoko](https://github.com/rvanasa/vite-react-motoko#readme) template (or the even simpler [plain JavaScript version](https://github.com/rvanasa/vite-react-motoko/tree/simplified-js#readme)).
 
-Otherwise, this is a good starting point for live reloading a back-end Motoko canister:
+Otherwise, this is a good starting point for live reloading a backend Motoko canister:
 
 ```sh
 mo-dev --generate --deploy -y

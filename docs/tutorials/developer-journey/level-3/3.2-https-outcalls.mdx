@@ -125,7 +125,7 @@ cd https_get
 
 Then, open the `src/https_get_backend/main.mo` file in your code editor and replace the existing content with:
 
-```motoko
+```motoko title="src/https_get_backend/main.mo"
 import Debug "mo:base/Debug";
 import Blob "mo:base/Blob";
 import Cycles "mo:base/ExperimentalCycles";
@@ -140,7 +140,7 @@ This piece of code imports the libraries that you'll be using. Each of these lib
 
 Next, insert the following line below these import statements:
 
-```motoko
+```motoko  title="src/https_get_backend/main.mo"
 import Types "Types";
 ```
 
@@ -148,7 +148,7 @@ This line imports the custom types stored in `Types.mo`. You'll create this file
 
 Following the `import Types "Types";` line, now let's insert the code to define our actor. This actor will contain two functions; a function to transform the response that you'll receive from our `GET` response, and a function that sends our `GET` request. The code has been annotated with notes describing in detail what each piece does:
 
-```motoko
+```motoko title="src/https_get_backend/main.mo"
 actor {
 
     // Create a function that transform's the raw content into an HTTP payload.
@@ -289,7 +289,7 @@ This error occurs when the replicas on the subnet don't all return the same valu
 
 Once you've inserted these snippets of code into the `src/https_get_backend/main.mo` file, save the file. The file should look like this:
 
-```motoko
+```motoko title="src/https_get_backend/main.mo"
 import Debug "mo:base/Debug";
 import Blob "mo:base/Blob";
 import Cycles "mo:base/ExperimentalCycles";
@@ -365,8 +365,8 @@ actor {
     };
 
     decoded_text
-
-};
+    };
+}
 ```
 
 Next, create the `src/https_get_backend/Types.mo` file with the command:
@@ -377,7 +377,7 @@ touch `src/https_get_backend/Types.mo`
 
 Then, open the `src/https_get_backend/Types.mo` file in your code editor and insert the following content:
 
-```motoko
+```motoko title="src/https_get_backend/Types.mo"
 module Types {
 
   public type Timestamp = Nat64;
@@ -498,7 +498,7 @@ cd https_post
 
 Then, open the `src/https_post_backend/main.mo` file in your code editor and replace the existing content with:
 
-```motoko
+```motoko title="src/https_post_backend/main.mo"
 import Debug "mo:base/Debug";
 import Blob "mo:base/Blob";
 import Cycles "mo:base/ExperimentalCycles";
@@ -511,7 +511,7 @@ import Types "Types";
 
 This code is the same way you started your HTTP `GET` code. Now, you'll define an actor using that contain two functions; a function to transform the response that you'll receive from our `POST` response, and a function that sends our `POST` request. The code has been annotated with notes describing in detail what each piece does:
 
-```motoko
+```motoko title="src/https_post_backend/main.mo"
 actor {
 
   // This function is used to transform the response received from our POST request
@@ -629,7 +629,7 @@ The code above is annotated with detailed notes and explanations. Take a moment 
 
 Once you've inserted these snippets of code into the `src/https_post_backend/main.mo` file, save the file. The file should look like this:
 
-```motoko
+```motoko title="src/https_post_backend/main.mo"
 import Debug "mo:base/Debug";
 import Blob "mo:base/Blob";
 import Cycles "mo:base/ExperimentalCycles";
@@ -727,7 +727,7 @@ touch `src/https_post_backend/Types.mo`
 
 Open the `src/https_post_backend/Types.mo` file in your code editor and insert the following content:
 
-```motoko
+```motoko title="src/https_post_backend/Types.mo"
 module Types {
 
   // First, define the Type that describes the Request arguments for an HTTPS outcall.

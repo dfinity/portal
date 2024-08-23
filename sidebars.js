@@ -226,19 +226,25 @@ const sidebars = {
               id: "developer-docs/smart-contracts/advanced-features/composite-query",
             },
             {
+              type: "category",
+              label: "Incoming HTTP requests",
+              items: [
+            {
               type: "doc",
-              label: "Handling GET/POST requests",
+              label: "GET/POST requests",
               id: "developer-docs/smart-contracts/advanced-features/handling-get-post-requests",
             },
             {
               type: "doc",
-              label: "Serving an HTTP request",
+              label: "Serving requests",
               id: "developer-docs/smart-contracts/advanced-features/serving-http-request",
             },
             {
               type: "doc",
               label: "HTTP gateways",
               id: "developer-docs/smart-contracts/advanced-features/http-gateways",
+            },
+            ],
             },
             {
               type: "category",
@@ -256,7 +262,7 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "Using HTTP certification",
+              label: "HTTP certification",
               items: [
                 {
                   type: "doc",
@@ -365,6 +371,7 @@ const sidebars = {
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-build",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-cache",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister",
+		            "developer-docs/developer-tools/cli-tools/cli-reference/dfx-completion",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-cycles",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-deploy",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-deps",
@@ -372,6 +379,7 @@ const sidebars = {
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-help",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-identity",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-info",
+		            "developer-docs/developer-tools/cli-tools/cli-reference/dfx-killall",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-ledger",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-new",
                 "developer-docs/developer-tools/cli-tools/cli-reference/dfx-nns",
@@ -684,6 +692,8 @@ const sidebars = {
                 "developer-docs/multi-chain/bitcoin/using-btc/sign-transactions",
                 "developer-docs/multi-chain/bitcoin/using-btc/submit-transactions",
                 "developer-docs/multi-chain/bitcoin/using-btc/read-state",
+                "developer-docs/multi-chain/bitcoin/using-btc/ordinals",
+                "developer-docs/multi-chain/bitcoin/using-btc/runes",
                 "developer-docs/multi-chain/bitcoin/using-btc/local-development",
               ],
             },
@@ -841,13 +851,45 @@ const sidebars = {
           type: "category",
           label: "Tokens",
           items: [
-            "developer-docs/defi/tokens/token-standards",
-            "developer-docs/defi/token_integrations/index",
-            "developer-docs/defi/icp-tokens/ledger-local-setup",
-            "developer-docs/defi/icrc-1/icrc1-ledger-setup",
+	          "developer-docs/defi/tokens/token-standards",
+	          "developer-docs/defi/tokens/asset_flow/index",
+            {
+              type: "category",
+              label: "Ledgers",
+              items: [
+                   {
+                      type: "doc",
+                      label: "Overview",
+                      id: "developer-docs/defi/tokens/ledger/overview",
+                    },
+                {
+                  type: "category",
+                  label: "Setup",
+                  link: {
+                    type: "doc",
+                    id: "developer-docs/defi/tokens/ledger/setup/overview",
+                  },
+                  items: [
+                    "developer-docs/defi/tokens/ledger/setup/icp_ledger_setup",
+                    "developer-docs/defi/tokens/ledger/setup/icrc1_ledger_setup"
+                  ],
+                },
+                {
+                  type: "category",
+                  label: "Usage",
+                  link: {
+                    type: "doc",
+                    id: "developer-docs/defi/tokens/ledger/usage/overview",
+                  },
+                  items: [
+                    "developer-docs/defi/tokens/ledger/usage/icp_ledger_usage",
+                    "developer-docs/defi/tokens/ledger/usage/icrc1_ledger_usage"
+                  ],
+                },
+                "developer-docs/defi/tokens/advanced/direct_integration",
+              ],
+            },
             "developer-docs/defi/tokens/indexes",
-            "developer-docs/defi/icp-tokens/using-the-ledger",
-            "developer-docs/defi/icrc-1/using-icrc1-ledger",
             "developer-docs/defi/icp-tokens/account-trimming",
             "developer-docs/defi/tokens/create",
             {
@@ -1031,16 +1073,13 @@ const sidebars = {
           type: "category",
           label: "Wallets",
           items: [
-            "developer-docs/defi/wallets/workflow",
-            "developer-docs/defi/wallets/overview",
             {
-              type: "category",
-              label: "Self-custody",
-              items: [
-                "developer-docs/defi/wallets/self-custody/self-custody-quickstart",
-                "developer-docs/defi/wallets/self-custody/hardware-wallet-cli",
-              ],
+              type: "doc",
+              label: "Overview",
+              id: "developer-docs/defi/wallets/overview",
             },
+              "developer-docs/defi/wallets/self-custody/self-custody-quickstart",
+              "developer-docs/defi/wallets/self-custody/hardware-wallet-cli",
           ],
         },
       ],
@@ -1403,29 +1442,44 @@ const sidebars = {
   rust: [
     {
       type: "category",
-      label: "Building with Rust",
-      link: {
-        type: "doc",
-        id: "developer-docs/backend/rust/index",
-      },
+      label: "Getting started",
       items: [
-        "developer-docs/backend/rust/infrastructure",
-        "developer-docs/backend/rust/project-organization",
-        "developer-docs/backend/rust/dev-env",
+        "developer-docs/backend/rust/index",
         "developer-docs/backend/rust/quickstart",
+        "developer-docs/backend/rust/dev-env",
+        "developer-docs/backend/rust/project-organization",
         "developer-docs/backend/rust/deploying",
-        "developer-docs/backend/rust/intercanister",
-        "developer-docs/backend/rust/upgrading",
-        "developer-docs/backend/rust/optimizing",
+      ]
+    },
+    {
+      type: "category",
+      label: "Writing Rust canisters",
+      items: [
+        "developer-docs/backend/rust/access-control",
+        "developer-docs/backend/rust/searching-records",
         "developer-docs/backend/rust/counter",
+        "developer-docs/backend/rust/rust-considerations",
         "developer-docs/backend/rust/timers",
         "developer-docs/backend/rust/stable-structures",
-        "developer-docs/backend/rust/searching-records",
-        "developer-docs/backend/rust/access-control",
-        "developer-docs/backend/rust/candid",
         "developer-docs/backend/rust/samples",
-        "developer-docs/backend/rust/generating-candid",
+      ],
+    },
+    {
+      type: "category",
+      label: "Interacting with Rust canisters",
+      items: [
+        "developer-docs/backend/rust/intercanister",
         "developer-docs/backend/rust/message-inspect",
+        "developer-docs/backend/rust/optimizing",
+        "developer-docs/backend/rust/upgrading",
+        {
+          type: "category",
+          label: "Candid for Rust canisters",
+          items: [
+          "developer-docs/backend/rust/candid",
+          "developer-docs/backend/rust/generating-candid",
+        ],
+      },
       ],
     },
   ],

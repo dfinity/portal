@@ -50,7 +50,7 @@ function ReverseGasModelPage(): JSX.Element {
               >
                 A browser is all you need to interact with smart contracts on
                 the Internet Computer. Developers pay for gas. End users access
-                 and use dapps without tokens.
+                and use dapps without tokens.
               </motion.p>
             </div>
           </AnimateSpawn>
@@ -61,7 +61,7 @@ function ReverseGasModelPage(): JSX.Element {
           variants={transitions.container}
           className="container-12 relative -mt-36 md:mt-0 md:h-0 pointer-events-none"
         >
-          <div className="text-center md:text-right aspect-[2/1] relative md:-translate-y-1/2">
+          <div className="text-center md:text-right aspect-[2/1] relative md:-translate-y-1/2 md:translate-x-1/3">
             <motion.img
               variants={transitions.fadeIn}
               src="/img/features/reverse-gas-model.webp"

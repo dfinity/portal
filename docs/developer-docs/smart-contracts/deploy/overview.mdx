@@ -74,13 +74,13 @@ An example `dfx.json` file can be found in the
 
 Start the local canister execution environment:
 
-```
+```bash
 dfx start
 ```
 
 To deploy locally, use the command:
 
-```
+```bash
 dfx deploy
 ```
 
@@ -88,7 +88,7 @@ dfx deploy
 
 To deploy to the playground, use the command:
 
-```
+```bash
 dfx deploy --playground
 ```
 
@@ -96,7 +96,7 @@ dfx deploy --playground
 
 To deploy to the mainnet, use the command:
 
-```
+```bash
 dfx deploy --network ic
 ```
 
@@ -108,7 +108,7 @@ Deploying canisters to the mainnet will cost cycles.
 The `deploy` command deploys all canisters configured in your `dfx.json` file.
 To deploy just one canister, specify the canister's name:
 
-```
+```bash
 dfx deploy hello_backend ## Deploy locally
 dfx deploy hello_backend --playground ## Deploy to the playground
 dfx deploy hello_backend --network ic ## Deploy to the mainnet
@@ -120,7 +120,7 @@ To use a custom Motoko version with `dfx deploy`, export the following
 environment variable that indicates which Motoko base version you'd like `dfx`
 to use:
 
-```
+```bash
 DFX_MOC_PATH="$(vessel bin)/moc" dfx deploy
 ```
 
@@ -129,25 +129,25 @@ DFX_MOC_PATH="$(vessel bin)/moc" dfx deploy
 You can set a canister's init arguments when the canister is deployed by passing
 the `--argument` flag in either the `dfx install` or `dfx deploy` commands:
 
-```
+```bash
 dfx canister install <CANISTER_NAME> --argument "(arg in candid)"
 ```
 
-```
+```bash
 dfx deploy <CANISTER_NAME> --argument "(arg in candid)"
 ```
 
 If several arguments should be used, an argument file can be defined with the
 `--argument-file` flag instead:
 
-```
+```bash
 dfx deploy <CANISTER_NAME> --argument-file file.txt
 ```
 
 Alternatively, init arguments can be set in `dfx.json` in `dfx` versions
 `v0.17.0` and newer:
 
-```json
+```json title="dfx.json"
 "canisters": {
     "hello_backend": {
       "candid": "src/hello_backend/hello_backend.did",
@@ -176,11 +176,16 @@ This example creates a periodic timer that gets called immediately after the
 canister starts:
 
 ```motoko
+import Time "mo:base/Time";
+import Timer "mo:base/Timer";
+import Nat64 "mo:base/Nat64";
 
-system func timer(setGlobalTimer : Nat64 -> ()) : async () {
-  let next = Nat64.fromIntWrap(Time.now()) + 20_000_000_000;
-  setGlobalTimer(next); // absolute time in nanoseconds
-  print("Tick!");
+actor {
+    system func timer(setGlobalTimer : Nat64 -> ()) : async () {
+      let next = Nat64.fromIntWrap(Time.now()) + 20_000_000_000;
+      setGlobalTimer(next); // absolute time in nanoseconds
+      print("Tick!");
+    }
 }
 ```
 

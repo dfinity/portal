@@ -128,6 +128,7 @@ Given a credential specification such as:
         "argument_1": "value_1",
         "another_argument": 42,
     }
+}
 ```
 
 The returned JWT should contain a property named by the value of `credentialType` in `credentialSubject` from the specification, with key-value entries listing the arguments from the specification, namely:
@@ -146,6 +147,7 @@ For example, for a `VerifiedAdult` credential, you would use the following crede
     "credentialType": "VerifiedAdult",
     "arguments": {
         "minAge": 18,
+    }
 }
 ```
 
