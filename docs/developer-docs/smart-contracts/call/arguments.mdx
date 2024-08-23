@@ -68,35 +68,14 @@ Azle refers to the `Vec` type to represent the equivalent of an `array` in TypeS
 ```typescript
 import { IDL, query } from 'azle';
 
-const Numbers = IDL.Variant({
-    1: IDL.Text,
-    2: IDL.Text,
-    3: IDL.Text,
-    4: IDL.Text,
-    5: IDL.Text,
-    6: IDL.Text,
-    7: IDL.Text
-});
-type Numbers =
-    | { 1: string }
-    | { 2: string }
-    | { 3: string }
-    | { 4: string }
-    | { 5: string }
-    | { 6: string }
-    | { 7: string };
-
-export default Canister({
-    getReaction: query([], Numbers, () => {
-        return {
-            Numbers
-        };
-    }),
-    printReaction: query([Numbers], Numbers, (numbers) => {
-        return numbers;
-    })
-});
+export default class {
+    @query([], IDL.Vec(IDL.Nat8))
+    get_numbers(): Nat {
+        return [1, 2, 3, 4, 5, 6, 7];
+    }
+}
 ```
+
 To learn more about variants in Typescript via Azle, refer to [the Azle code](https://github.com/demergent-labs/azle/blob/main/tests/end_to_end/candid_rpc/class_syntax/complex_types/src/candid_types.ts#L3).
 
 </AdornedTab>
@@ -104,20 +83,12 @@ To learn more about variants in Typescript via Azle, refer to [the Azle code](ht
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```python
-from kybra import nat32, Variant, query
+from kybra import int32, query, Vec
 
-class Numbers(Variant, total=False):
-    1: str
-    2: str
-    3: str
-    4: str
-    5: str
-    6: str
-    7: str
 
 @query
-def get_text(n: Numbers) -> str:
-    return Numbers
+def get_numbers() -> Vec[int32]:
+    return [1, 2, 3, 4, 5, 6, 7]
 ```
 
 To learn more about variants in Python in Kybra, refer to [the Kybra book reference on variants](https://demergent-labs.github.io/kybra/reference/candid/variant.html).
