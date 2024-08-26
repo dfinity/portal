@@ -47,7 +47,7 @@
             "wiki": "",
             "docs": "",
             "eta": "",
-            "status": "",
+            "status": "in_progress",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Tokamak"
@@ -1215,7 +1215,7 @@
             "wiki": "",
             "docs": "",
             "eta": "",
-            "status": "",
+            "status": "upcoming",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Helium"
