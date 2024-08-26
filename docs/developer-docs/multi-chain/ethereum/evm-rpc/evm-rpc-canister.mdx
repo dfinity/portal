@@ -120,51 +120,53 @@ import EvmRpc "canister:evm_rpc";
 import Cycles "mo:base/ExperimentalCycles";
 import Debug "mo:base/Debug";
 
-// Configure RPC request
+actor {
+    public func getLogs() : async ?[EvmRpc.LogEntry] {
 
-let services = #EthMainnet;
-let config = null;
+        // Configure RPC request
+        let services = #EthMainnet(null);
+        let config = null;
 
-// Add cycles to next call
+        // Add cycles to next call
+        Cycles.add<system>(1000000000);
 
-Cycles.add<system>(1000000000);
+        // Call an RPC method
+        let result = await EvmRpc.eth_getLogs(
+            services,
+            config,
+            {
+                addresses = ["0xB9B002e70AdF0F544Cd0F6b80BF12d4925B0695F"];
+                fromBlock = ?#Number 19520540;
+                toBlock = ?#Number 19520940;
+                topics = ?[
+                    ["0x4d69d0bd4287b7f66c548f90154dc81bc98f65a1b362775df5ae171a2ccd262b"],
+                    [
+                        "0x000000000000000000000000352413d00d2963dfc58bc2d6c57caca1e714d428",
+                        "0x000000000000000000000000b6bc16189ec3d33041c893b44511c594b1736b8a",
+                    ],
+                ];
+            },
+        );
 
-// Call an RPC method
-
-let result = await EvmRpc.eth_getLogs(
-    services,
-    config,
-    {
-        addresses = ["0xB9B002e70AdF0F544Cd0F6b80BF12d4925B0695F"];
-        fromBlock = ?#Number 19520540;
-        toBlock = ?#Number 19520940;
-        topics = ?[
-            ["0x4d69d0bd4287b7f66c548f90154dc81bc98f65a1b362775df5ae171a2ccd262b"],
-            [
-                "0x000000000000000000000000352413d00d2963dfc58bc2d6c57caca1e714d428",
-                "0x000000000000000000000000b6bc16189ec3d33041c893b44511c594b1736b8a",
-            ],
-        ];
-    },
-);
-
-// Process results
-
-switch result {
-  // Consistent, successful results
-  case (#Consistent(#Ok value)) {
-    Debug.print("Success: " # debug_show value);
-  };
-  // Consistent error message
-  case (#Consistent(#Err error)) {
-    Debug.trap("Error: " # debug_show error);
-  };
-  // Inconsistent results between RPC providers
-  case (#Inconsistent(results)) {
-    Debug.trap("Inconsistent results");
-  };
+        // Process results
+        switch result {
+          // Consistent, successful results
+          case (#Consistent(#Ok value)) {
+            ?value
+          };
+          // Consistent error message
+          case (#Consistent(#Err error)) {
+            Debug.trap("Error: " # debug_show error);
+            null
+          };
+          // Inconsistent results between RPC providers
+          case (#Inconsistent(results)) {
+            Debug.trap("Inconsistent results: " # debug_show results);
+            null
+          };
+        };
+    };
 };
-
 ```
 
 As described in the official [Ethereum JSON-RPC documentation](https://ethereum.org/en/developers/docs/apis/json-rpc/#eth_getlogs), the topics field is an order-dependent two-dimensional array which encodes the boolean logic for the relevant topics.
@@ -236,33 +238,37 @@ import EvmRpc "canister:evm_rpc";
 import Cycles "mo:base/ExperimentalCycles";
 import Debug "mo:base/Debug";
 
-// Configure RPC request
+actor {
+  public func getLatestBlock() : async ?EvmRpc.Block {
 
-let services = #EthMainnet;
-let config = null;
+    // Configure RPC request
+    let services = #EthMainnet(null);
+    let config = null;
 
-// Add cycles to next call
+    // Add cycles to next call
+    Cycles.add<system>(1000000000);
 
-Cycles.add<system>(1000000000);
+    // Call an RPC method
+    let result = await EvmRpc.eth_getBlockByNumber(services, config, #Latest);
 
-// Call an RPC method
-
-let result = await EvmRpc.eth_getBlockByNumber(services, config, #Latest);
-
-// Process results
-
-switch result {
-  // Consistent, successful results
-  case (#Consistent(#Ok value)) {
-    Debug.print("Success: " # debug_show value);
-  };
-  // Consistent error message
-  case (#Consistent(#Err error)) {
-    Debug.trap("Error: " # debug_show error);
-  };
-  // Inconsistent results between RPC providers
-  case (#Inconsistent(results)) {
-    Debug.trap("Inconsistent results");
+    // Process results
+    switch result {
+      // Consistent, successful results
+      case (#Consistent(#Ok block)) {
+        Debug.print("Success: " # debug_show block);
+        ?block
+      };
+      // Consistent error message
+      case (#Consistent(#Err error)) {
+        Debug.trap("Error: " # debug_show error);
+        null
+      };
+      // Inconsistent results between RPC providers
+      case (#Inconsistent(_results)) {
+        Debug.trap("Inconsistent results");
+        null
+      };
+    };
   };
 };
 ```
@@ -320,37 +326,39 @@ import EvmRpc "canister:evm_rpc";
 import Cycles "mo:base/ExperimentalCycles";
 import Debug "mo:base/Debug";
 
-// Configure RPC request
+actor {
+  public func getTransactionReceipt() : async ?EvmRpc.TransactionReceipt {
 
-let services = #EthMainnet;
-let config = null;
+    // Configure RPC request
+    let services = #EthMainnet(null);
+    let config = null;
 
-// Add cycles to next call
+    // Add cycles to next call
+    Cycles.add<system>(1000000000);
 
-Cycles.add<system>(1000000000);
+    // Call an RPC method
+    let result = await EvmRpc.eth_getTransactionReceipt(services, config, "0xdd5d4b18923d7aae953c7996d791118102e889bea37b48a651157a4890e4746f");
 
-// Call an RPC method
-
-let result = await EvmRpc.eth_getTransactionReceipt(services, config, "0xdd5d4b18923d7aae953c7996d791118102e889bea37b48a651157a4890e4746f");
-
-
-// Process results
-
-switch result {
-  // Consistent, successful results
-  case (#Consistent(#Ok value)) {
-    Debug.print("Success: " # debug_show value);
-  };
-  // Consistent error message
-  case (#Consistent(#Err error)) {
-    Debug.trap("Error: " # debug_show error);
-  };
-  // Inconsistent results between RPC providers
-  case (#Inconsistent(results)) {
-    Debug.trap("Inconsistent results");
+    // Process results
+    switch result {
+      // Consistent, successful results
+      case (#Consistent(#Ok receipt)) {
+        Debug.print("Success: " # debug_show receipt);
+        receipt
+      };
+      // Consistent error message
+      case (#Consistent(#Err error)) {
+        Debug.trap("Error: " # debug_show error);
+        null
+      };
+      // Inconsistent results between RPC providers
+      case (#Inconsistent(_results)) {
+        Debug.trap("Inconsistent results");
+        null
+      };
+    };
   };
 };
-
 ```
 
 </TabItem>
@@ -485,41 +493,44 @@ import EvmRpc "canister:evm_rpc";
 import Cycles "mo:base/ExperimentalCycles";
 import Debug "mo:base/Debug";
 
-// Configure RPC request
+actor {
+  public func getTransactionCount() : async ?Nat {
 
-let services = #EthMainnet;
-let config = null;
+    // Configure RPC request
+    let services = #EthMainnet(null);
+    let config = null;
 
-// Add cycles to next call
+    // Add cycles to next call
+    Cycles.add<system>(1000000000);
 
-Cycles.add<system>(1000000000);
-
-// Call an RPC method
-
-let result = await EvmRpc.eth_getTransactionCount(
-    services,
-    config,
-    {
+    // Call an RPC method
+    let result = await EvmRpc.eth_getTransactionCount(
+      services,
+      config,
+      {
         address = "0x1789F79e95324A47c5Fd6693071188e82E9a3558";
         block = #Latest;
-    },
-);
+      },
+    );
 
-
-// Process results
-
-switch result {
-  // Consistent, successful results
-  case (#Consistent(#Ok value)) {
-    Debug.print("Success: " # debug_show value);
-  };
-  // Consistent error message
-  case (#Consistent(#Err error)) {
-    Debug.trap("Error: " # debug_show error);
-  };
-  // Inconsistent results between RPC providers
-  case (#Inconsistent(results)) {
-    Debug.trap("Inconsistent results");
+    // Process results
+    switch result {
+      // Consistent, successful results
+      case (#Consistent(#Ok count)) {
+        Debug.print("Success: " # debug_show count);
+        ?count
+      };
+      // Consistent error message
+      case (#Consistent(#Err error)) {
+        Debug.trap("Error: " # debug_show error);
+        null
+      };
+      // Inconsistent results between RPC providers
+      case (#Inconsistent(_results)) {
+        Debug.trap("Inconsistent results");
+        null
+      };
+    };
   };
 };
 ```
@@ -582,41 +593,44 @@ import EvmRpc "canister:evm_rpc";
 import Cycles "mo:base/ExperimentalCycles";
 import Debug "mo:base/Debug";
 
-// Configure RPC request
+actor {
+  public func getFeeHistory() : async ?EvmRpc.FeeHistory {
 
-let services = #EthMainnet;
-let config = null;
+    // Configure RPC request
+    let services = #EthMainnet(null);
+    let config = null;
 
-// Add cycles to next call
+    // Add cycles to next call
+    Cycles.add<system>(1000000000);
 
-Cycles.add<system>(1000000000);
-
-// Call an RPC method
-
-let result = await EvmRpc.eth_feeHistory(
-    services,
-    config,
-    {
+    // Call an RPC method
+    let result = await EvmRpc.eth_feeHistory(
+      services,
+      config,
+      {
         blockCount = 3;
         newestBlock = #Latest;
         rewardPercentiles = null;
-    },
-);
+      },
+    );
 
-// Process results
+    // Process results
 
-switch result {
-  // Consistent, successful results
-  case (#Consistent(#Ok value)) {
-    Debug.print("Success: " # debug_show value);
-  };
-  // Consistent error message
-  case (#Consistent(#Err error)) {
-    Debug.trap("Error: " # debug_show error);
-  };
-  // Inconsistent results between RPC providers
-  case (#Inconsistent(results)) {
-    Debug.trap("Inconsistent results");
+    switch result {
+      // Consistent, successful results
+      case (#Consistent(#Ok history)) {
+        Debug.print("Success: " # debug_show history);
+        history
+      };
+      // Consistent error message
+      case (#Consistent(#Err error)) {
+        Debug.trap("Error: " # debug_show error);
+      };
+      // Inconsistent results between RPC providers
+      case (#Inconsistent(_results)) {
+        Debug.trap("Inconsistent results");
+      };
+    };
   };
 };
 ```
@@ -695,22 +709,42 @@ import EvmRpc "canister:evm_rpc";
 import Cycles "mo:base/ExperimentalCycles";
 import Debug "mo:base/Debug";
 
-// Configure RPC request
+actor {
+  public func sendRawTransaction() : async ?EvmRpc.SendRawTransactionStatus {
 
-let services = #EthMainnet;
-let config = null;
+    // Configure RPC request
+    let services = #EthMainnet(null);
+    let config = null;
 
-// Add cycles to next call
+    // Add cycles to next call
+    Cycles.add<system>(1000000000);
 
-Cycles.add<system>(1000000000);
+    // Call an RPC method
+    let result = await EvmRpc.eth_sendRawTransaction(
+      services,
+      config,
+      "0xf86c098504a817c800825208943535353535353535353535353535353535353535880de0b6b3a76400008025a028ef61340bd939bc2195fe537567866003e1a15d3c71ff63e1590620aa636276a067cbe9d8997f761aecb703304b3800ccf555c9f3dc64214b297fb1966a3b6d83",
+    );
 
-// Call an RPC method
-
-let result = await canister.eth_sendRawTransaction(
-    services,
-    null,
-    "0xf86c098504a817c800825208943535353535353535353535353535353535353535880de0b6b3a76400008025a028ef61340bd939bc2195fe537567866003e1a15d3c71ff63e1590620aa636276a067cbe9d8997f761aecb703304b3800ccf555c9f3dc64214b297fb1966a3b6d83",
-);
+    switch result {
+      // Consistent, successful results
+      case (#Consistent(#Ok status)) {
+        Debug.print("Status: " # debug_show status);
+        ?status
+      };
+      // Consistent error message
+      case (#Consistent(#Err error)) {
+        Debug.trap("Error: " # debug_show error);
+        null
+      };
+      // Inconsistent results between RPC providers
+      case (#Inconsistent(_results)) {
+        Debug.trap("Inconsistent results");
+        null
+      };
+    };
+  };
+};
 ```
 
 </TabItem>
@@ -790,32 +824,39 @@ import EvmRpc "canister:evm_rpc";
 import Cycles "mo:base/ExperimentalCycles";
 import Debug "mo:base/Debug";
 
-// Configure JSON-RPC request
-let service = #EthMainnet;
-let json = "{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":[],\"id\":1}";
-let maxResponseBytes = 1000;
+actor {
+  public func rawJsonRpcRequest() : async ?Text {
 
-// Optionally retrieve the exact number of cycles for an RPC request
-let cyclesResult = await EvmRpc.requestCost(service, json, maxResponseBytes);
-let cycles = switch cyclesResult {
-    case (#Ok cycles) { cycles };
-    case (#Err err) {
+    // Configure JSON-RPC request
+    let service = #EthMainnet(#PublicNode);
+    let json = "{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":[],\"id\":1}";
+    let maxResponseBytes : Nat64 = 1000;
+
+    // Optionally retrieve the exact number of cycles for an RPC request
+    let cyclesResult = await EvmRpc.requestCost(service, json, maxResponseBytes);
+    let cycles = switch cyclesResult {
+      case (#Ok cycles) { cycles };
+      case (#Err err) {
         Debug.trap("Error while calling `requestCost`: " # debug_show err);
+      };
     };
-};
 
-// Submit the RPC request
-Cycles.add<system>(cycles);
-let result = await EvmRpc.request(service, json, maxResponseBytes);
+    // Submit the RPC request
+    Cycles.add<system>(cycles);
+    let result = await EvmRpc.request(service, json, maxResponseBytes);
 
-// Process response
-let cycles = switch result {
-    case (#Ok response) {
+    // Process response
+    switch result {
+      case (#Ok response) {
         Debug.print("Success:" # debug_show response);
-    };
-    case (#Err err) {
+        ?response
+      };
+      case (#Err err) {
         Debug.trap("Error while calling `request`: " # debug_show err);
+        null
+      };
     };
+  };
 };
 ```
 
