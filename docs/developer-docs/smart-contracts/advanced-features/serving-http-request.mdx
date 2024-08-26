@@ -32,38 +32,59 @@ The following example returns 'Hello, World!' in the body at the `/hello` endpoi
 <TabItem value="motoko" label="Motoko">
 
 ```motoko
-import Buffer "mo:base/Buffer";
+import HashMap = "mo:base/HashMap";
+import Blob = "mo:base/Blob";
+import Text "mo:base/Text";
+import Option "mo:base/Option";
 
-type HeaderField = (Text, Text);
+actor {
 
-type HttpResponse = {
-    status_code: Nat16;
-    headers: [HeaderField];
-    body: Blob;
-};
-
-type HttpRequest = {
-    method: Text;
-    url: Text;
-    headers: [HeaderField];
-    body: Blob;
-  };
-
-public query func http_request(req: HttpRequest): async (HttpResponse) {
-    let path = removeQuery(req.url);
-    if(path == "/hello") {
-        return {
-            status_code = 200,
-            headers = [],
-            body = Buffer.from('Hello, World!'),
-        };
+    public type HttpRequest = {
+        body: Blob;
+        headers: [HeaderField];
+        method: Text;
+        url: Text;
     };
+
+    public type ChunkId = Nat;
+    public type SetAssetContentArguments = {
+        chunk_ids: [ChunkId];
+        content_encoding: Text;
+        key: Key;
+        sha256: ?Blob;
+    };
+    public type Path = Text;
+    public type Key = Text;
+
+    public type HttpResponse = {
+        body: Blob;
+        headers: [HeaderField];
+        status_code: Nat16;
+    };
+
+    public type HeaderField = (Text, Text);
+
+    private func removeQuery(str: Text): Text {
+        return Option.unwrap(Text.split(str, #char '?').next());
+    };
+
+    public query func http_request(req: HttpRequest): async (HttpResponse) {
+        let path = removeQuery(req.url);
+        if(path == "/hello") {
+            return {
+                body = Text.encodeUtf8("root page :" # path);
+                headers = [];
+                status_code = 200;
+            };
+        };
+
         return {
-            body = Text.encodeUtf8("404 Not found :");
+            body = Text.encodeUtf8("404 Not found :" # path);
             headers = [];
             status_code = 404;
+        };
     };
-};
+}
 ```
 
 </TabItem>
