@@ -293,35 +293,33 @@ actor {
 
   let pending_requests = Map.HashMap<Principal, Bool>(10, Principal.equal, Principal.hash);
 
-  private func guard(principal : Principal) : Result.Result<Principal, Error> {
+  private func errResult(e : Error.Error) : { #err : (Error.ErrorCode, Text) } = #err (Error.code e, Error.message e);
+
+  private func guard(principal : Principal) : Result.Result<(), Error> {
     if (pending_requests.get(principal) != null) {
-      #err(Error.reject("Already processing a request for principal " # Principal.toText(principal)));
+      #err (Error.reject("Already processing a request for principal " # Principal.toText(principal)));
     } else {
       pending_requests.put(principal, true);
-      #ok principal;
+      #ok;
     };
   };
 
-  private func drop_guard(principal : Principal) : () {
+  private func drop_guard(principal : Principal) {
     ignore pending_requests.remove(principal);
   };
 
-  public shared ({caller}) func example_call_with_locking_per_caller() : async Result.Result<(), (Error.ErrorCode, Text)> {
+  public shared ({ caller }) func example_call_with_locking_per_caller() : async Result.Result<(), (Error.ErrorCode, Text)> {
     var guard_acquired = false;
     try {
       // Try to create a lock for `caller`, return an error immediately if there is already a call in progress for `caller`
-      switch (guard(caller)) {
-        case (#err e) {
-          return #err(Error.code(e), Error.message(e));
-        };
-        case (#ok _) {
-          guard_acquired := true;
-        };
+      switch (guard caller) {
+        case (#ok) guard_acquired := true;
+        case (#err e) return (errResult e);
       };
       // do anything, call other canisters
-      #ok;
+      #ok
     } catch e {
-      #err(Error.code(e), Error.message(e));
+      errResult e;
     } finally {
       // Release the guard (only request's callbacks that have created a block)
       if guard_acquired {
@@ -329,7 +327,7 @@ actor {
       };
     };
   };
-};
+}; 
 ```
 
 </TabItem>
