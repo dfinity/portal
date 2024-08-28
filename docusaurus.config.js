@@ -748,8 +748,7 @@ const config = {
               },
               {
                 label: "Press Kit",
-                href: "https://internetcomputer.org/press-kit.zip",
-                isDownload: true,
+                href: "https://dfinity.frontify.com/d/pD7yZhsmpqos/press-kit",
               },
             ],
           },
