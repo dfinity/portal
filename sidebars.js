@@ -1568,6 +1568,7 @@ hackathon: [
         "developer-docs/backend/rust/rust-considerations",
         "developer-docs/backend/rust/timers",
         "developer-docs/backend/rust/stable-structures",
+        "developer-docs/backend/rust/rust-limitations",
         "developer-docs/backend/rust/samples",
       ],
     },
