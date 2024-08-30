@@ -22,13 +22,7 @@ function CustomNotFoundPage() {
       title="Page Not Found"
       description="We couldn't find what you were looking for."
     >
-      <main
-        className="text-black relative overflow-hidden"
-        style={{
-          marginTop: `calc(var(--ifm-navbar-height) * -1)`,
-          background: "linear-gradient(63deg, #3B00B9 0%, #D38ED7 100%)",
-        }}
-      >
+      <main className="text-black relative overflow-hidden mt-navbar-negative bg-gradient-to-r from-[#3B00B9] to-[#D38ED7]">
         <section
           className="text-white pt-24 md:pt-60 pb-24 md:pb-60 mb-[10vw] lg:mb-3"
           ref={heroRef}
