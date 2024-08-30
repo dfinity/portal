@@ -1840,12 +1840,12 @@ function ChainFusion() {
               className="mb-0 mt-2 tw-paragraph md:tw-lead-sm"
               variants={transitions.item}
             >
-              Explore the integration of Bitcoin with the Internet Computer
+              Explore the integration of Chain Fusion with the Internet Computer
               through concise code examples and startup collaboration
               opportunities. Access ready-to-use code snippets and connect with
               innovative startups to accelerate your projects. Unleash the
-              potential of Bitcoin and Internet Computer synergy for your next
-              venture.
+              potential of Chain Fusion and Internet Computer synergy for your
+              next venture.
             </motion.p>
           </div>
 
