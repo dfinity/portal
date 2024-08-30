@@ -1724,8 +1724,58 @@ function ChainFusion() {
             </div>
           </AnimateSpawn>
         </section>
+        <section className="container-12 block md:flex gap-4 mt-24 md:mt-32">
+          <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
+            <div className="md:flex-row items-stretch	relative z-1">
+              <div className="p-1/10 md:p-2/12 py-1/10 pb-64 md:pb-96">
+                <h5 className="tw-heading-4 md:tw-heading-3">Hello, Bitcoin</h5>
+                <p className="tw-paragraph-sm md:tw-paragraph mt-6">
+                  BUILD on Bitcoin at the speed of ICP. Bitcoin on ICP is not
+                  just a future promise, developers are already building
+                  incredible use cases.
+                </p>
+                <Link
+                  className="button-outline-white-30 mt-6"
+                  href="/bitcoin-integration"
+                >
+                  Bitcoin integration{" "}
+                </Link>
+              </div>
+              <div className="absolute z-0 bottom-0 pointer-events-none">
+                <img
+                  src="img/chainfusion/btc.webp"
+                  className="object-cover size-full"
+                />
+              </div>
+            </div>
+          </article>
 
-        <section className="container-10 pt-12 pb-24 md:py-40">
+          <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
+            <div className="md:flex-row items-stretch	relative z-1">
+              <div className="p-1/10 md:p-2/12 py-1/10 pb-64 md:pb-96">
+                <h5 className="tw-heading-4 md:tw-heading-3">GM Ethereum</h5>
+                <p className="tw-paragraph-sm md:tw-paragraph mt-6">
+                  Full support for Ethereum and other EVM chains is now live
+                  allowing ICP smart contracts to augment EVM-based smart
+                  contracts with additional functionality.
+                </p>
+                <Link
+                  className="button-outline-white-30 mt-6"
+                  href="/ethereum-integration"
+                >
+                  Ethereum Integration
+                </Link>
+              </div>
+              <div className="absolute z-0 bottom-0  pointer-events-none">
+                <img
+                  src="img/chainfusion/eth.webp"
+                  className="object-cover size-full"
+                />
+              </div>
+            </div>
+          </article>
+        </section>
+        <section className="container-10 pt-12 md:pt-12 pb-24 md:py-40">
           <AnimateSpawn
             className="md:flex md:items-center "
             variants={transitions.container}
@@ -1878,57 +1928,7 @@ function ChainFusion() {
             />
           </AnimateSpawn>
         </section>
-        {/* <section className="container-12 block md:flex gap-4 mt-24 md:mt-32">
-          <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
-            <div className="md:flex-row items-stretch	relative z-1">
-              <div className="p-1/10 md:p-2/12 py-1/10 pb-64 md:pb-96">
-                <h5 className="tw-heading-4 md:tw-heading-3">Hello, Bitcoin</h5>
-                <p className="tw-paragraph-sm md:tw-paragraph mt-6">
-                  BUILD on Bitcoin at the speed of ICP. Bitcoin on ICP is not
-                  just a future promise, developers are already building
-                  incredible use cases.
-                </p>
-                <Link
-                  className="button-outline-white-30 mt-6"
-                  href="/bitcoin-integration"
-                >
-                  Bitcoin integration{" "}
-                </Link>
-              </div>
-              <div className="absolute z-0 bottom-0 pointer-events-none">
-                <img
-                  src="img/chainfusion/btc.webp"
-                  className="object-cover size-full"
-                />
-              </div>
-            </div>
-          </article>
 
-          <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
-            <div className="md:flex-row items-stretch	relative z-1">
-              <div className="p-1/10 md:p-2/12 py-1/10 pb-64 md:pb-96">
-                <h5 className="tw-heading-4 md:tw-heading-3">GM Ethereum</h5>
-                <p className="tw-paragraph-sm md:tw-paragraph mt-6">
-                  Full support for Ethereum and other EVM chains is now live
-                  allowing ICP smart contracts to augment EVM-based smart
-                  contracts with additional functionality.
-                </p>
-                <Link
-                  className="button-outline-white-30 mt-6"
-                  href="/ethereum-integration"
-                >
-                  Ethereum Integration
-                </Link>
-              </div>
-              <div className="absolute z-0 bottom-0  pointer-events-none">
-                <img
-                  src="img/chainfusion/eth.webp"
-                  className="object-cover size-full"
-                />
-              </div>
-            </div>
-          </article>
-        </section> */}
         <section className="pt-20 md:pt-30 text-left md:text-center ">
           {" "}
           <AnimateSpawn
