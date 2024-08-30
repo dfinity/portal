@@ -9,9 +9,19 @@ import '/src/components/CenterImages/center.scss';
 
 <MarkdownChipRow labels={["Advanced", "Governance", "Concept"]} />
 
+The NNS is the decentralized governance system that governs the full Internet Computer. The decentralized nature of
+the NNS is one of the key factors for the Internet Computer's security - it ensures that there is no single point of
+failure.
+Therefore it is important that proposals are verified by as many governance participants as possible.
+According to the decentralized nature, each neuron verifying a proposal can define their own criteria for when a
+proposal should be adopted or rejected. This provides some inputs that can be considered in this process.decentralized
+
+The community is encouraged to discuss proposals and their verification on the [developer forum](https://forum
+.dfinity.org/), using the category `Governance` with sub-category `NNS proposal discussion` and using the proposal’s
+topic as a tag.
+
 ## Verify protocol canister management proposals
-If you are looking to verify [protocol canister management proposals]
-(/docs/current/developer-docs/daos/nns/concepts/proposals/proposal-topics#Topic:-`ProtocolCanisterManagement`), you
+If you are looking to verify [protocol canister management proposals](/docs/current/developer-docs/daos/nns/concepts/proposals/proposal-topics#Topic:-`ProtocolCanisterManagement`), you
 can refer to this video that explains the process on the example of an NNS governance canister upgrade:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/BsIg4JZobqU?si=psrn6IViSJJ7xgnb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -44,6 +54,65 @@ proposals submitted by the DFINITY foundation.
 ### Verify ICP ledger suite upgrades
 * For updates on the ICP ledger suite, you can follow [this repository](https://github.com/dfinity/ic). More specifically, the following sub-directories are relevant:
 - `rs/rosetta-api/icp_ledger` is the  directory for the ICP ledger
+
+
+
+
+## Verify IC OS version election proposals
+
+If you are looking to verify [IC PS version election proposals](/docs/current/developer-docs/daos/nns/concepts/proposals/proposal-topics#Topic:-`IcOsVersionElection`), you
+can refer to this video:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/z3rAQBkO8uI?si=AcIaAl51UN4bppIX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+You can also consider the following information for proposals submitted by the DFINITY foundation:
+
+* Each proposal submitted by the DFINITY foundation has a corresponding post on the forum (see [example](https://forum.dfinity.org/t/proposal-to-elect-new-release-rc-2024-05-01-23-01/30247)). Relevant posts can be found under the `Governance` category with the tags `replica` and `release`.
+* The relevant code is available in [this repository](https://github.com/dfinity/ic).
+* To verify that the code in the proposal is built from the specified `git commit`, follow the instructions in the [README file of the IC repository](https://github.com/dfinity/ic#verifying-releases).
+* Each proposal summary includes instructions for verifying the proposal payload. See this [example](https://dashboard.internetcomputer.org/proposal/130083). These steps are tested on Ubuntu 22.04, which is the recommended operating system for the verification process.
+
+```
+# From https://github.com/dfinity/ic#verifying-releases
+sudo apt-get install -y curl && curl --proto '=https' --tlsv1.2 -sSLO https://raw.githubusercontent.com/dfinity/ic/ec35ebd252d4ffb151d2cfceba3a86c4fb87c6d6/gitlab-ci/tools/repro-check.sh && chmod +x repro-check.sh && ./repro-check.sh -c ec35ebd252d4ffb151d2cfceba3a86c4fb87c6d6
+```
+
+* The reproducibility check script is versioned, cryptographically checksummed, and open-sourced, ensuring it cannot change post-submission. The proposal summary is immutable after submission. The upgrade image contents are cryptographically checksummed, and the checksum is included in the proposal payload and verified during the upgrade process.
+* For GuestOS, DFINITY aims for a weekly release cycle, resulting in approximately one proposal per week plus additional feature builds.
+* For HostOS, there is no fixed release cycle, but an upgrade is typically proposed every 3-6 months.
+
+
+## Verify Participant management proposals
+
+If you are looking to verify [participant management proposals](/docs/current/developer-docs/daos/nns/concepts/proposals/proposal-topics#Topic:-`ParticipantManagement`),
+these are some steps you can consider for verification.
+
+Add or remove node providers (topic participant management): look at least at (1) a proper forum introduction by the new NP (2) self-declaration and Identity documents are uploaded on the wiki (3) hashes of the self-declaration and identity document match the hashes in the proposal (4) if a new region or community, a check in the public chamber of commerce register (if chamber of commerce number is provided)
+
+Add or remove Data Centers (topic participant management): look at least at (1) who submitted the proposal (normally only a new NP) (2) an Internet search whether this is a legitimate data center.
+
+
+## Verify Node Admin proposals
+
+If you are looking to verify [node admin proposals](/docs/current/developer-docs/daos/nns/concepts/proposals/proposal-topics#Topic:-`NodeAdmin`),
+these are some steps you can consider for verification.
+
+Update node config (topic node admin): in such a proposal, a node provider sets the number of nodes and the node_type (Gen1, Gen2). Check these against the originally approved node allowance (whether that allowance was approved, and whether it matches the IC Target topology using the github tooling 5)
+
+Add node operator (topic node admin): this proposal sets the allowance for a particular node provider in a specific data center. (1) Check if it matches the IC Target topology using the github tooling 5. For example, currently such proposals should be rejected as the target topology has been reached. (2) Check whether the node provider-id and data center-id match with the previously submitted proposals (the add node provider proposal, and the add data center proposal)
+\
+Remove nodes from the network (topic node admin): this is a proposal to remove (unhealthy) nodes from the network. Check whether the nodes are indeed unassigned and not in a particular subnet.
+
+
+## Verify Subnet management proposals
+If you are looking to verify [subnet management proposals](/docs/current/developer-docs/daos/nns/concepts/proposals/proposal-topics#Topic:-`SubnetManagement`), these are some steps you can consider for verification.
+
+For node replacement proposals: check whether the nodes are replaced because they are dead/unhealthy or replaced for other good reasons.
+For other proposals of this topic: check whether the reasoning in the proposal makes sense wrt which proposals need to be adopted in which order.
+
+
+
+====================================
 
 ## Verify service nervous system management proposals
 If you are looking to verify [service nervous system management proposals]
@@ -103,32 +172,6 @@ Please refer to the [Bitcoin canister documentation](https://github.com/dfinity/
 * These proposals are not expected to happen frequently, but rather when there are important updates to be applied to the Bitcoin canister. You can expect that a new release will be cut in preparation of an upgrade in the above repository. See this [example release](https://github.com/dfinity/bitcoin-canister/releases/tag/release%2F2024-04-26).
 * There are 2 Bitcoin canisters, one following the Bitcoin testnet and one following the Bitcoin mainnet network. The proposals will be specific to one of these canisters. Typically, you can expect that the proposal to upgrade the Bitcoin testnet canister happens 1 week before the one to upgrade the Bitcoin mainnet canister.
 * You can find the instructions on how to verify that the Wasm in the proposal was indeed built from the provided `git commit` in the proposal's section "How can I verify the Wasm hash of this canister?" (see [this example proposal](https://dashboard.internetcomputer.org/proposal/129499)).
-
-
-
-## Verify IC operating system version election proposals
-
-If you are looking to verify [IC PS version election proposals]
-(/docs/current/developer-docs/daos/nns/concepts/proposals/proposal-topics#Topic:-`IcOsVersionElection`), you
-can refer to this video:
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/z3rAQBkO8uI?si=AcIaAl51UN4bppIX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-You can also consider the following information for proposals submitted by the DFINITY foundation:
-
-* Each proposal submitted by the DFINITY foundation has a corresponding post on the forum (see [example](https://forum.dfinity.org/t/proposal-to-elect-new-release-rc-2024-05-01-23-01/30247)). Relevant posts can be found under the `Governance` category with the tags `replica` and `release`.
-* The relevant code is available in [this repository](https://github.com/dfinity/ic).
-* To verify that the code in the proposal is built from the specified `git commit`, follow the instructions in the [README file of the IC repository](https://github.com/dfinity/ic#verifying-releases).
-* Each proposal summary includes instructions for verifying the proposal payload. See this [example](https://dashboard.internetcomputer.org/proposal/130083). These steps are tested on Ubuntu 22.04, which is the recommended operating system for the verification process.
-
-```
-# From https://github.com/dfinity/ic#verifying-releases
-sudo apt-get install -y curl && curl --proto '=https' --tlsv1.2 -sSLO https://raw.githubusercontent.com/dfinity/ic/ec35ebd252d4ffb151d2cfceba3a86c4fb87c6d6/gitlab-ci/tools/repro-check.sh && chmod +x repro-check.sh && ./repro-check.sh -c ec35ebd252d4ffb151d2cfceba3a86c4fb87c6d6
-```
-
-* The reproducibility check script is versioned, cryptographically checksummed, and open-sourced, ensuring it cannot change post-submission. The proposal summary is immutable after submission. The upgrade image contents are cryptographically checksummed, and the checksum is included in the proposal payload and verified during the upgrade process.
-* For GuestOS, DFINITY aims for a weekly release cycle, resulting in approximately one proposal per week plus additional feature builds.
-* For HostOS, there is no fixed release cycle, but an upgrade is typically proposed every 3-6 months.
 
 
 
