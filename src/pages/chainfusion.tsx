@@ -1741,10 +1741,10 @@ function ChainFusion() {
                   Bitcoin integration{" "}
                 </Link>
               </div>
-              <div className="absolute z-0 bottom-0 pointer-events-none">
+              <div className="absolute z-0 bottom-0 pointer-events-none ">
                 <img
                   src="img/chainfusion/btc.webp"
-                  className="object-cover size-full"
+                  className="object-cover size-full md:translate-y-[9%] sm:w-1/2 md:w-full"
                 />
               </div>
             </div>
@@ -1766,10 +1766,10 @@ function ChainFusion() {
                   Ethereum Integration
                 </Link>
               </div>
-              <div className="absolute z-0 bottom-0  pointer-events-none">
+              <div className="absolute z-0 bottom-0  pointer-events-none ">
                 <img
                   src="img/chainfusion/eth.webp"
-                  className="object-cover size-full"
+                  className="object-cover size-full sm:w-1/2 md:w-full"
                 />
               </div>
             </div>
