@@ -1,5 +1,5 @@
 ---
-keywords: [beginner, governance, concept, overview, nns, neurons]
+keywords: [beginner, governance, concept, overview, nns, neurons, neuron overview, what is a neuron]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -39,9 +39,9 @@ network does not vote.
 It is important to understand a few key concepts of a neuron.
 Every user can stake ICP utility tokens into a neuron and participate in the NNS DAO.
 
-### Neuron id and account
-Each neuron has a **neuron id**, which is an identity selected by the NNS when the neuron is created.
-In addition, each neuron has an associated **account** on the ICP ledger where the locked ICP balance resides. This account is owned by the NNS governance canister and therefore a user cannot move staked tokens.
+### Neuron ID and account
+Each neuron has a **neuron ID**, which is an identity selected by the NNS when the neuron is created.
+In addition, each neuron has an associated **account** on the ICP ledger where the locked ICP balance resides. This account is owned by the NNS governance canister, and therefore a user cannot move staked tokens.
 
 ### Neuron permissions
 The **controller** is a principal that controls the neuron and which cannot be changed. A principal corresponds to the public key of a public-private key pair, and anyone with possession of the corresponding private key will have full control of the neuron. Therefore, the private key of the controller principal should be kept very secure. A principal can control many neurons.
@@ -57,7 +57,7 @@ The NNS is a stake-based governance system, so the main factor for how much **vo
   * Once the timer has counted down, a neuron is _dissolved_ and the ICP tokens can be unstaked again. This is called **disbursing** a neuron.
 * **Age**: Every non-dissolving neuron has an age, which denotes how long it has been in the non-dissolving state.
 
-The main idea is that a neuron who has tokens locked for longer or has been around for longer has more voting power as it is more committed in the long term interest of the Internet Computer.
+The main idea is that a neuron who has tokens locked for longer or has been around for longer has more voting power as it is more committed to the long term interest of the Internet Computer.
 
 Based on these factors, a neuron's voting power can be determined:
 * Principally, by its stake. 1 ICP = the power of 1 vote.
@@ -77,7 +77,7 @@ There are different things that a neuron holder can do with maturity:
 * Maturity can be staked into **staked maturity** into the neuron. Staked maturity is viewed as part of the neuron's stake and contributes to the neuron's voting power. But, similarly to the neuron's stake, it is also locked until the neuron is dissolved. When a neuron dissolves, its staked maturity is converted back to normal un-staked maturity.
 * Maturity can be **auto-staked**. In order to not have to regularly perform the previous action, a neuron can also choose to auto-stake its maturity. This means that all new maturity will automatically be added to the staked maturity.
 
-For more details on voting rewards and spawn maturity, refer to [Voting rewards](/docs/current/developer-docs/daos/nns/concepts/neurons/staking-voting-rewards).
+For more details on voting rewards and spawn maturity, refer to [voting rewards](/docs/current/developer-docs/daos/nns/concepts/neurons/staking-voting-rewards).
 
 ### Neuron visibility
 A neuron can be **public** or **private**.

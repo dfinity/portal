@@ -93,7 +93,7 @@ therefore it would receive `(5 * 2) / (5 * 1 + 5 * 2) = 66%` of the rewards for 
 
 ## Spawning & maturity modulation
 Voting rewards are collected by neurons in the form of maturity.
-As explained in the [Neuron overview](/docs/current/developer-docs/daos/nns/concepts/neurons/neuron-overview), maturity can then either be staked or spawned.
+As explained in the [neuron overview](/docs/current/developer-docs/daos/nns/concepts/neurons/neuron-overview), maturity can then either be staked or spawned.
 
 ### Background and goal
 Maturity is an attribute of a neuron; it is not a tradable asset. The decentralized governance of the Internet Computer can change the treatment of maturity at any time.
@@ -106,16 +106,16 @@ Spawned neurons will have a dissolve delay of 7 days and will be set to dissolvi
 
 ### Description of the maturity modulation function
 
-At the day of modulation, for each of the last 29 days, a 30-day moving average ICP/Cycles conversion rate is determined, which is displayed on the Internet Computer dashboard. These are labeled `a1` through `a29`, where `a1` denotes the average rate on the previous day, `a2` denotes the rate 2 days ago and so on. The 30-day moving average conversion rates are used because they exhibit less variance than day-to-day conversion rates.
+At the day of modulation, for each of the last 29 days, a 30-day moving average ICP/cycles conversion rate is determined, which is displayed on the Internet Computer dashboard. These are labeled `a1` through `a29`, where `a1` denotes the average rate on the previous day, `a2` denotes the rate 2 days ago and so on. The 30-day moving average conversion rates are used because they exhibit less variance than day-to-day conversion rates.
 
 Then, compute the relative 7-day return for each of the last 4 weeks. Thus:
-    * w1 = (a1 - a8) / a8,
-    * w2 = (a8 - a15) / a15,
-    * w3 = (a15 - a22) / a22,
-    * w4 = (a22 - a29) / a29.
+* `w1 = (a1 - a8) / a8`,
+* `w2 = (a8 - a15) / a15`,
+* `w3 = (a15 - a22) / a22`,
+* `w4 = (a22 - a29) / a29`.
 
-* The values w1, w2, w3and w4 are bounded from -0.05 to 0.05 by clipping values to the limits of this range, i.e., capping by 0.05 and flooring by -0.05.
-* Take the average w = (w1 + w2 + w3 + w4) / 4.
+* The values w1, w2, w3, and w4 are bounded from -0.05 to 0.05 by clipping values to the limits of this range, i.e., capping by 0.05 and flooring by -0.05.
+* Take the average `w = (w1 + w2 + w3 + w4) / 4`.
 * The resulting value w is a number between -5% and 5% that determines modulation.
 * The maturity amount x is converted to x * (1+w) units of ICP.
 
@@ -129,7 +129,7 @@ If a user disburses on that day (day of transfer) 100 maturity, then this will r
 
 Evidently, this process introduces a certain amount of uncertainty for the conversion from maturity to ICP. However this uncertainty is limited in two ways:
 * The modulation value w is between -5% and +5%: This implies that, e.g., 100 maturity will be converted into an ICP amount in the range of 95 and 105. This kind of volatility is well in the range of daily conversion rate fluctuations of ICP.
-* The modulation value w is calculated at the day of modulation as w = (w1+ w2+ w3 + w4) / 4. At the day of initiation (7 days prior), the user can already determine (w2+ w3 + w4)/4. The missing value w1 can affect the modulation value at most by 1.25% (5%/4) up or down.
+* The modulation value w is calculated at the day of modulation as `w = (w1+ w2+ w3 + w4) / 4`. At the day of initiation (7 days prior), the user can already determine `(w2+ w3 + w4)/4`. The missing value w1 can affect the modulation value at most by 1.25% (5%/4) up or down.
 
 The modulation value can change by at most 2.5% from one week to the next, as one week drops out of the window and one week enters the calculation window.
 

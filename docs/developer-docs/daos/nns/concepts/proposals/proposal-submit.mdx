@@ -1,5 +1,5 @@
 ---
-keywords: [advanced, governance, concept, nns, proposals]
+keywords: [advanced, governance, concept, nns, proposals, submitting proposals, submit proposal]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -9,9 +9,8 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <MarkdownChipRow labels={["Advanced", "Governance", "Concept"]} />
 
 To submit a proposal, it is recommended to use a neuron that can be controlled with a command line tool.
-We show how this can be done on the example of a motion propoals.
-You can find another example for how to submit a proposal on [Registering a known neuron]
-(/docs/current/developer-docs/daos/nns/neurons/becoming-a-known-neuron).
+This guide will show how this can be done using an example of a motion proposal. 
+You can find another example for how to submit a proposal on [registering a known neuron](/docs/current/developer-docs/daos/nns/neurons/becoming-a-known-neuron).
 
 
 ## How to submit a motion proposal
@@ -22,101 +21,99 @@ To properly follow what is going on, there are a few high-level points worth hig
 
 #### Only Neurons can submit NNS proposals
 
-Neurons with at least 10 ICP and 6 months of dissolve delay can submit NNS proposals. So the first step is to create such a neuron.
+Neurons with at least 10 ICP and 6 months of dissolve delay can submit NNS proposals. Therefore, the first step is to create such a neuron.
 
-#### The NNS Governance Canister accepts motion proposals
+#### The NNS governance canister accepts motion proposals
 
-The Governance Canister is just a canister like any other, so it has a Candid file, it accepts messages, etc... This article describes a way where you can have your local computer send a message to the governance canister (signed on behalf of a neuron) that contains a motion proposal.
+The governance canister is a canister like any other, so it has a Candid file, it accepts messages, etc. This article describes a way where you can have your local computer send a message to the governance canister (signed on behalf of a neuron) that contains a motion proposal.
 
 ### One-time setup
-#### Install '''dfx'''
+#### Install `dfx`
 
-* '''dfx''' is the canister SDK and it will be used to send messages from your machine to NNS
-* [https://smartcontracts.org/ smartcontracts.org]
+* `dfx` is a command line tool that will be used to send messages from your machine to the NNS.
+[Install `dfx`](https://internetcomputer.org/docs/current/developer-docs/getting-started/install/).
 ```
 $ dfx [OPTIONS] <SUBCOMMAND>
-
 ```
 
 #### Install `quill`
 
-* `quill` is a minimalist "governance toolkit". It is wrapper for crafting & sending messages to the NNS and manage one's neuron.
-* https://github.com/dfinity/quill
-* this article will assume that you execute '''quill''' on your local machine by running
+* `quill` is a minimalist "governance toolkit". It is wrapper for crafting & sending messages to the NNS and manage one's neuron. [Install quill](https://github.com/dfinity/quill).
+
+This article will assume that you execute `quill` on your local machine by running:
 ```
-$ quill [OPTIONS] <SUBCOMMAND>
-```
-
-#### Create a neuron via command-line tools
-
-**Create a `private.pem` (private/public keypair) and Ledger `account id`**
-
-Before one starts, they need a private/public keypair.
-
-```
-$ quill generate --seed-file seed.txt --pem-file private.pem
+quill [OPTIONS] <SUBCOMMAND>
 ```
 
-When done, your `account id` should look something like this: 
+#### Create a neuron via command line tools
+
+#### Create a `private.pem` (private/public keypair) and Ledger `account id`.
+
+Before you start, you need a private/public keypair.
+
+```
+quill generate --seed-file seed.txt --pem-file private.pem
+```
+
+When returned, your `account id` should look something like this: 
 `612ec300g9ec990da900d6ec45919e7d5dbb9fa0dd8e69c54d374df93aa28d57`.
 
-**Link this private/public keypair to `dfx` so you can use it as an "Identity"**
+#### Link this private/public keypair to `dfx` so you can use it as an identity.
 
-In this case, the new identity is called "proposals"
+In this case, the new identity is called "proposals".
 
 ```
-$ dfx identity import proposals private.pem
+dfx identity import proposals private.pem
 ```
 
-* If you see “creating identity: proposals” in the terminal, this means it worked
-* further reading on dfx identities: [https://smartcontracts.org/docs/developers-guide/cli-reference/dfx-identity.html dfx identity]
+If you see the message “creating identity: proposals” in the terminal, this means it worked.
 
-**Send ICP to the previously created `account id`
+[Learn more about dfx identities](https://smartcontracts.org/docs/developers-guide/cli-reference/dfx-identity.html dfx identity).
 
-You should send at least 10.001 in order to have enough ICP to create a neuron and pay for the Ledger transaction fees.
+#### Send ICP to the previously created `account id`.
+
+You should send at least 10.001 in order to have enough ICP to create a neuron and pay for the ledger transaction fees.
 
 To send ICP to the account, all you need is to input the `account id` in your wallet of choice.
 
-**Now that the account has the required ICP, spawn a neuron**
+#### Spawn a neuron
 
-Note: This section assumes you have `quill` installed properly.
+To spawn a neuron using quill, run the following command:
 
 ```
-// Craft a message to "stake a the neuron by choosing a 8-character $NAME and an $AMOUNT to stake"
+// Craft a message to stake a neuron by choosing a 8-character $NAME and an $AMOUNT to stake
 // Note: you need to stake at LEAST 10 ICP to send proposals as $AMOUNT
-$ quill --pem-file private.pem neuron-stake --name $NAME --amount $AMOUNT > message.json
+quill --pem-file private.pem neuron-stake --name $NAME --amount $AMOUNT > message.json
 
-//Send the message crafted above.
-$ quill send message.json
+// Send the message crafted above.
+quill send message.json
 ```
 
-* You should see a message with a neuron ID spawned
-* If successful, response will return `neuron ID: 9_218_890_096_040_352_708`. This means the neuron ID is `9218890096040352708`.
+You should see a message with a neuron ID spawned. If successful, response will return `neuron ID: 9_218_890_096_040_352_708`. This means the neuron ID is `9218890096040352708`.
 
-**Increase neuron dissolve to at least 6 months**
+#### Increase neuron dissolve to at least 6 months
 
-* Time is measured in seconds in the NNS
-* One year in seconds: 31557600 seconds
+Time is measured in seconds on the NNS. One year in seconds equals 31557600 seconds.
 
 ```
 // Craft message to increase dissolve delay of neuron to 1 year
-$ quill --pem-file private.pem neuron-manage 9218890096040352708 --additional-dissolve-delay-seconds 31557600 > message.json
+quill --pem-file private.pem neuron-manage 9218890096040352708 --additional-dissolve-delay-seconds 31557600 > message.json
 
 //send message created above to the NNS
-$ quill send message.json
+quill send message.json
 ```
 
 ### How to send a proposal
 
-This sections shows how to create a motion proposal similar to this one: https://dashboard.internetcomputer.org/proposal/42626
+This sections shows how to create a [motion proposal](https://dashboard.internetcomputer.org/proposal/42626).
 
 #### Craft a proposal in markdown
 
-The IC Dashboard and the NNS frontend dapp both render markdown of the `summary` field. It is recommended to use standard markdown for your motion proposal.
+The IC dashboard and the NNS frontend dapp both render markdown of the `summary` field. It is recommended to use standard markdown for your motion proposal.
 
-Example markdown for a NNS motion proposal:
+Below is an example of using markdown for a NNS motion proposal:
 
-```
+```md
 ## Objective
 
 Service nervous systems (SNSs) are algorithmic DAOs that allow developers to create decentralized, token-based governance systems for their dapps. The proposed governance canister design is similar to the  governance canister of the Network Nervous System (NNS) but simpler and more flexible, allowing each SNS community to choose the configurations according to their needs. This design is also presented and discussed in this forum: https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224 .
@@ -143,11 +140,10 @@ To get the design approved by the community, the following schedule was followed
 
 #### Send proposal via dfx
 
-Example structure of sending an NNS motion proposal with placeholders ``$TITLE`, 
-`$MOTION_TEXT`,`$SUMMARY`, and`$NEURON_ID` (these are not meant to be Unix variables and you need to fill them directly within the command):
+Below is an example structure of sending an NNS motion proposal with placeholders `$TITLE`, 
+`$MOTION_TEXT`,`$SUMMARY`, and`$NEURON_ID`. These are not variables and you need to replace them with real values directly within the command:
 
-* note that `rrkah-fqaaa-aaaaa-aaaaq-cai` is the ID of the Governance Canister on the NNS so this command is is
-sending a message to the `manage_neuron` method of the Governance Canister of the NNS.
+`rrkah-fqaaa-aaaaa-aaaaq-cai` is the ID of the governance canister on the NNS so this command is sending a message to the `manage_neuron` method of the governance canister of the NNS.
 
 ```
 dfx --identity proposals canister --network ic call rrkah-fqaaa-aaaaa-aaaaq-cai manage_neuron '(record {id = null; command=opt variant {MakeProposal=record {url=""; title=opt "$TITLE";action=opt variant {Motion=record {motion_text="$MOTION_TEXT"}}; summary="
@@ -157,7 +153,7 @@ $SUMMARY
 "}}; neuron_id_or_subaccount=opt variant {NeuronId=record {id=$NEURON_ID:nat64}}})'
 ```
 
-Example NNS motion proposal with`$TITLE`,`$MOTION_TEXT`,`$SUMMARY`, and`$NEURON_ID` filled out:
+Below is an example NNS motion proposal with`$TITLE`,`$MOTION_TEXT`,`$SUMMARY`, and`$NEURON_ID` filled out:
 
 ```
 dfx --identity proposals canister --network ic call rrkah-fqaaa-aaaaa-aaaaq-cai manage_neuron '(record {id = null; command=opt variant {MakeProposal=record {url=""; title="Open Governance canister for SNS | Design proposal";action=opt variant {Motion=record {motion_text="Present design proposal for Open Governance canister"}}; summary="
@@ -190,7 +186,7 @@ To get the design approved by the community, the following schedule was followed
 
 #### Check dashboard to see proposal was successful
 
-If successful, dfx will return something like this:
+If successful, `dfx` will return output such as:
 
 ```
 (
@@ -204,15 +200,15 @@ If successful, dfx will return something like this:
 )
 ```
 
-where `42_626`  or rather `42626` is the ID of the proposal. Your proposal will have a different ID.
+In this example, `42_626` (or rather `42626`) is the ID of the proposal. Your proposal will have a different ID.
 
-You will be able to see the proposal here: https://dashboard.internetcomputer.org/proposal/42626
+You will be able to see the proposal at the URL `https://dashboard.internetcomputer.org/proposal/42626`.
 
 ### Best practices for motion proposals
 
-#### Writing the Proposal
+#### Writing the proposal
 
-The proposal can accept any free-form text. Below is a recommended starting template for anyone starting to think about how to write one:
+The proposal can accept any free form text. Below is a recommended starting template for anyone starting to think about how to write one:
 
 ```
 # Example Motion Project Proposal

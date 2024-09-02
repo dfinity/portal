@@ -15,7 +15,7 @@ Therefore, instead of directly voting on proposals, neuron holders may choose to
 This concept, where a neuron follows the decisions of some other neurons, is called **following** in the NNS DAO.
 The delegation of the voting rights to others, who then effectively vote with more voting power, is also called **liquid democracy**.
 
-For an explanation video how following works and more information how followoing can be set on the NNS dapp,
+For an explanation video regarding how following works and more information how following can be set on the NNS dapp,
 refer to [configuring neuron following](/docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-following-other-neurons).
 ## Following rules
 A neuron can be configured to vote automatically by following the voting decision made by a group of other neurons,
@@ -43,7 +43,7 @@ It might be better to follow fewer neurons, and it can be more beneficial to fol
 
 ## Following "catch-all"
 In addition to setting following for individual topics, neurons may also define a catch-all follow rule which is triggered for proposals with topics for which no other explicit follow rule has been defined.
-However, the catch-all follow rule does not include the proposal topics **SNS & neurons' fund** and **Governance**.
+However, the catch-all follow rule does not include the proposal topics **SNS & neurons' fund** and **governance**.
 
 :::caution
 The catch-all follow rule is only applied for proposal topics with no other explicit choice. For example, let's assume neuron A follows neuron B for the catch-all and neuron C on the topic subnet management. If B votes on a subnet management proposal but C does not, no vote will be cast for A.
