@@ -163,7 +163,7 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
       <div className="shadow-2xl dark-hero:shadow-none bg-white rounded-3xl overflow-hidden hidden md:flex flex-col">
         <div className="flex-1 flex">
           {item.sections.length > 1 && (
-            <div className="bg-[#F1EEF5] p-6 flex flex-col gap-3 items-stretch min-w-[220px]">
+            <div className="p-6 flex flex-col gap-3 items-stretch min-w-[220px]">
               {item.sections.map((section, index) => (
                 <button
                   key={section.name}
