@@ -1,5 +1,5 @@
 ---
-keywords: [advanced, governance, concept, nns, voting, proposals]
+keywords: [advanced, governance, concept, nns, voting, proposals, proposal details, details about proposals]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -34,7 +34,7 @@ Each type of proposal belongs to a specific **proposal topic**. Topics are used 
 how the proposal is processed. For example, the voting period and the voting reward weight are defined per topic.
 
 We present the proposals grouped by their topics, with the corresponding proposal types that they contain.
-For more information on what to consider when verifying the different kinds of proposals, please refer to [Verifying proposals](/docs/current/developer-docs/daos/nns/concepts/proposals/proposal-topics).
+For more information on what to consider when verifying the different kinds of proposals, please refer to [verifying proposals](/docs/current/developer-docs/daos/nns/concepts/proposals/proposal-topics).
 
 ### Topic: `ProtocolCanisterManagement`
 All proposals to manage [protocol canisters](/docs/current/developer-docs/smart-contracts/advanced-features/system-canisters/), which are considered part of the Internet Computer protocol and are essential for its proper functioning.
@@ -48,7 +48,7 @@ canister.
 
 
 ### Topic: `ServiceNervousSystemManagement`
-All proposals to manage the canisters of service nervous systems (SNS), including upgrading relevant canisters and managing SNS framework canister WASMs through SNS-W.
+All proposals to manage the canisters of service nervous systems (SNS), including upgrading relevant canisters and managing SNS framework canister Wasms through SNS-W.
 
 *  `InstallCode`, `UpdateCanisterSettings`, and `StopOrStartCanister` are the same as in topic
 `ProtocolCanisterManagement` only targeting different canisters.
@@ -63,7 +63,7 @@ All proposals to manage NNS-controlled canisters not covered by other topics (Pr
 `ProtocolCanisterManagement` and `ServiceNervousSystemManagement` only targeting different canisters.
 
 The following proposal type is specific for the Bitcoin canister:
-* `BitcoinSetConfig`: A proposal to set the configuration of the underlying Bitcoin Canister that powers the Bitcoin API. The configuration includes whether or not the Bitcoin Canister should sync new blocks from the network, whether the API is enabled, the fees to charge, etc.
+* `BitcoinSetConfig`: A proposal to set the configuration of the underlying Bitcoin canister that powers the Bitcoin API. The configuration includes whether or not the Bitcoin canister should sync new blocks from the network, whether the API is enabled, the fees to charge, etc.
 
 ### Topic: `IcOsVersionElection`
 To upgrade the ICP protocol, the NNS DAO first elects new IC OS versions (the software that is run by ICP nodes), then in a second step, selected nodes can be upgraded to the previously elected IC OS versions. This proposal type is for the first part, i.e., to elect new versions.
@@ -194,18 +194,4 @@ A special topic that can be used for multiple users to collectively manage a neu
 Because the set of eligible voters for proposals on this topic is restricted, proposals on this topic have a shorter than normal voting period. This topic only includes one proposal type:
 
 * `ManageNeuron`: The proposal calls a major function on a specified target neuron. Only the followers of the target neuron may vote on these proposals.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
