@@ -25,7 +25,7 @@ Apart from regularly checking open proposals, the following sections list some r
 proposals submitted by the DFINITY foundation.
 
 ### NNS canister upgrades
-* For updates to the NNS canisters, you can follow [this repository](https://github.com/dfinity/ic). More specifically, the following sub-directories are relevant:
+* For updates to the NNS canisters, you can follow [the IC repository](https://github.com/dfinity/ic). More specifically, the following sub-directories are relevant:
 
     - `rs/rosetta-api/icp_ledger/src`
     - `rs/rosetta-api/ledger_core`
@@ -43,11 +43,11 @@ proposals submitted by the DFINITY foundation.
     - `rs/nns/nns-ui`
     - `rs/nns/sns-wasm`
 
-* NNS core canister upgrade proposals are announced in [this forum thread](https://forum.dfinity.org/t/nns-updates-aggregation-thread/23551).
+* NNS core canister upgrade proposals are announced [on the developer forum](https://forum.dfinity.org/t/nns-updates-aggregation-thread/23551).
 * You can find the instructions on how to verify that the Wasm in the proposal was indeed build from the provided `git commit` in the proposal's section "Wasm Verification" (see [this example proposal](https://dashboard.internetcomputer.org/proposal/129394)).
 
 ### ICP ledger suite upgrades
-* For updates on the ICP ledger suite, you can follow [this repository](https://github.com/dfinity/ic). More specifically, the following sub-directories are relevant:
+* For updates on the ICP ledger suite, you can follow [the IC repository](https://github.com/dfinity/ic). More specifically, the following sub-directories are relevant:
     - `rs/rosetta-api/icp_ledger` is the  directory for the ICP ledger
 
 
@@ -61,7 +61,7 @@ can refer to this video:
 You can also consider the following information for proposals submitted by the DFINITY foundation:
 
 * Each proposal submitted by the DFINITY foundation has a corresponding post on the forum (see [example](https://forum.dfinity.org/t/proposal-to-elect-new-release-rc-2024-05-01-23-01/30247)). Relevant posts can be found under the `Governance` category with the tags `replica` and `release`.
-* The relevant code is available in [this repository](https://github.com/dfinity/ic).
+* The relevant code is available in [the IC repository](https://github.com/dfinity/ic).
 * To verify that the code in the proposal is built from the specified `git commit`, follow the instructions in the [README file of the IC repository](https://github.com/dfinity/ic#verifying-releases).
 * Each proposal summary includes instructions for verifying the proposal payload. See this [example](https://dashboard.internetcomputer.org/proposal/130083). These steps are tested on Ubuntu 22.04, which is the recommended operating system for the verification process.
 
@@ -80,57 +80,55 @@ If you are looking to verify [participant management proposals](/docs/current/de
 these are some steps you can consider for verification.
 
 ### Add or remove node providers
- For proposals that add or remove node providers, you can check that
- * there is a proper forum introduction by the new NP
- * self-declaration and Identity documents are uploaded on the wiki
- * hashes of the self-declaration and identity document match the hashes in the proposal
- * if this is a new region or community, that there is an entry in the public chamber of commerce register  (if chamber
-  of commerce number is provided)
 
-### Add or remove Data Centers
-For proposals that add or remove data centers, you can
-  * check who submitted the proposal (normally only a new node provider)
-  * perform an Internet search whether this is a legitimate data center.
+For proposals that add or remove node providers, you can check that:
+* There is a proper forum introduction by the new node provider.
+* Self-declaration and identity documents have been uploaded on the wiki.
+* Hashes of the self-declaration and identity document match the hashes in the proposal.
+* If this is a new region or community, there is an entry in the public Chamber of Commerce register (if Chamber
+of Commerce number is provided).
 
-## Verify Node Admin proposals
+### Add or remove data centers
+For proposals that add or remove data centers, you can:
+  * Check who submitted the proposal. This is typically only a new node provider.
+  * Perform an Internet search to verify whether this is a legitimate data center.
+
+## Verify node admin proposals
 If you are looking to verify [node admin proposals](/docs/current/developer-docs/daos/nns/concepts/proposals/proposal-topics#Topic:-`NodeAdmin`),
 these are some steps you can consider for verification.
 
 ### Update node configuration
 In such a proposal, a node provider sets the number of nodes and the `node_type` (Gen1, Gen2).
-You can
-* check these against the originally approved node allowance (whether that allowance was approved, and whether it
-matches the IC Target topology using the [github tooling](https://github.com/StephanusFischer/decentralization)
+You can:
+* Check these against the originally approved node allowance (whether that allowance was approved, and whether it matches the IC target topology using the [GitHub tooling](https://github.com/StephanusFischer/decentralization)
 
 ### Add node operator
- This proposal sets the allowance for a particular node provider in a specific data center.
- You can perform the following checks
- * if it matches the IC Target topology using the [github tooling](https://github.com/StephanusFischer/decentralization). For example, such proposals should be rejected if the target topology has
- been reached.
- * whether the node provider-id and data center-id match with the previously submitted proposals (the add node provider proposal, and the add data center proposal).
+This proposal sets the allowance for a particular node provider in a specific data center.
+You can perform the following checks:
+* If it matches the IC target topology using the [GitHub tooling](https://github.com/StephanusFischer/decentralization). For example, such proposals should be rejected if the target topology has been reached.
+* Whether the node `provider-id` and `data center-id` match with the previously submitted add node provider and add data center proposals.
 
 ### Remove nodes from the network
- This is a proposal to remove (unhealthy) nodes from the network.
- You can
- * check whether the nodes are indeed unassigned and not in a particular subnet.
+This is a proposal to remove (unhealthy) nodes from the network.
+You can:
+* Check whether the nodes are indeed unassigned and not in a particular subnet.
 
 
-## Verify Subnet management proposals
+## Verify subnet management proposals
 If you are looking to verify [subnet management proposals](/docs/current/developer-docs/daos/nns/concepts/proposals/proposal-topics#Topic:-`SubnetManagement`), these are some steps you can consider for verification.
 
 ### Node replacement proposals
- For these proposals you can
- * check whether the nodes are replaced because they are dead/unhealthy or replaced for other good reasons.
+You can:
+* Check whether the nodes are replaced because they are dead/unhealthy, or replaced for other good reasons.
 
 ### Other proposals of this topic
-You can
- * check whether the reasoning in the proposal makes sense wrt which proposals need to be adopted in which order.
-
+You can:
+* Check whether the reasoning in the proposal makes sense with regard to which proposals need to be adopted in which order.
 
 ## Verify service nervous system management proposals
 If you are looking to verify [service nervous system management proposals](/docs/current/developer-docs/daos/nns/concepts/proposals/proposal-topics#Topic:-`ServiceNervousSystemManagement`),
-you can refer to this video that explains the process on the example of an NNS proposal that elects a new SNS
-governance wasm:
+you can refer to this video that explains the process using an example of an NNS proposal that elects a new SNS
+governance Wasm:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/i_ANhb0E1Io?si=BXPTalE8lnBQwuBg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -148,22 +146,21 @@ If you are looking to verify [application canister management proposals](/docs/c
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/J-aJFJ_4zIw?si=e6_iWReqaamEaVYO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-Apart from regularly checking open proposals,  the following sections list some relevant information for proposals submitted by the DFINITY foundation.
+Apart from regularly checking open proposals, the following sections list some relevant information for proposals submitted by the DFINITY foundation.
 
 ### NNS frontend dapp upgrades
-* For updates to the NNS frontend dapp, you can follow [this repository](https://github.com/dfinity/nns-dapp).
+* For updates to the NNS frontend dapp, you can follow [the NNS dapp repository](https://github.com/dfinity/nns-dapp).
 
 ### Ledger upgrades for ckBTC, ckETH, and ckERC20
 
-* For updates to the NNS canisters, you can follow [this repository](https://github.com/dfinity/ic). More specifically, the following sub-directories are relevant:
+* For updates to the NNS canisters, you can follow [the IC repository](https://github.com/dfinity/ic). More specifically, the following sub-directories are relevant:
     - `rs/rosetta-api/icrc1/ledger` for the ckBTC, ckETH, and ckERC20 ledgers, where `rs/rosetta-api/icrc1/ledger:ledger_canister` is the Wasm relevant for the ckBTC ledger and `rs/rosetta-api/icrc1/ledger:ledger_canister_u256.wasm` the Wasm for the ckETH and ckERC20 ledgers.
 
 * You can find the instructions on how to verify that the Wasm in the proposal was indeed build from the provided `git commit` in the proposal.
 
 ### Ledger suite orchestrator canister upgrades
-The ledger suite orchestrator manages all ledger suites of all ckERC20 tokens. That is the orchestrator can
-upgrade managed canisters or add new ckERC20 tokens, see the [README](https://github
-.com/dfinity/ic/blob/master/rs/ethereum/ledger-suite-orchestrator/README.adoc) for more details.
+The ledger suite orchestrator manages all ledger suites of all ckERC20 tokens. The orchestrator can
+upgrade managed canisters or add new ckERC20 tokens. See the [README](https://github.com/dfinity/ic/blob/master/rs/ethereum/ledger-suite-orchestrator/README.adoc) for more details.
 
 * The following sub-directories in the [IC repository](https://github.com/dfinity/ic) are relevant:
     - `rs/ethereum/ledger-suite-orchestrator`
@@ -173,7 +170,7 @@ upgrade managed canisters or add new ckERC20 tokens, see the [README](https://gi
 ### Internet Identity upgrades
 * For updates to the [Internet Identity (II)](/docs/current/developer-docs/identity/internet-identity/overview) canister, you can find the code in [the II repository](https://github.com/dfinity/internet-identity).
 * Each proposal points to the relevant commit that was used.
-* You can find the instructions on how to verify that the Wasm in the proposal was indeed build from the provided `git commit` in the proposal itself (see for example the section "Wasm Verification" in [this example proposal](https://dashboard.internetcomputer.org/proposal/129486)) and in the [Github release pages](https://github.com/dfinity/internet-identity/releases).
+* You can find the instructions on how to verify that the Wasm in the proposal was indeed build from the provided `git commit` in the proposal itself (see for example the section "Wasm Verification" in [this example proposal](https://dashboard.internetcomputer.org/proposal/129486)) and in the [GitHub release pages](https://github.com/dfinity/internet-identity/releases).
 
 
 ### Bitcoin canister upgrades
@@ -183,12 +180,3 @@ Please refer to the [Bitcoin canister documentation](https://github.com/dfinity/
 * These proposals are not expected to happen frequently, but rather when there are important updates to be applied to the Bitcoin canister. You can expect that a new release will be cut in preparation of an upgrade in the above repository. See this [example release](https://github.com/dfinity/bitcoin-canister/releases/tag/release%2F2024-04-26).
 * There are 2 Bitcoin canisters, one following the Bitcoin testnet and one following the Bitcoin mainnet network. The proposals will be specific to one of these canisters. Typically, you can expect that the proposal to upgrade the Bitcoin testnet canister happens 1 week before the one to upgrade the Bitcoin mainnet canister.
 * You can find the instructions on how to verify that the Wasm in the proposal was indeed built from the provided `git commit` in the proposal's section "How can I verify the Wasm hash of this canister?" (see [this example proposal](https://dashboard.internetcomputer.org/proposal/129499)).
-
-
-
-
-
-
-
-
-
