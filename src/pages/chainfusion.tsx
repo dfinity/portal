@@ -1727,7 +1727,7 @@ function ChainFusion() {
         <section className="container-12 block md:flex gap-4 mt-24 md:mt-32">
           <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
             <div className="md:flex-row items-stretch	relative z-1">
-              <div className="p-1/10 md:p-2/12 py-1/10 pb-64 md:pb-[26rem]">
+              <div className="p-1/10 md:p-2/12 py-1/10 pb-64 md:pb-96">
                 <h5 className="tw-heading-4 md:tw-heading-3">Hello, Bitcoin</h5>
                 <p className="tw-paragraph-sm md:tw-paragraph mt-6">
                   BUILD on Bitcoin at the speed of ICP. Bitcoin on ICP is not
@@ -1744,7 +1744,7 @@ function ChainFusion() {
               <div className="absolute z-0 bottom-0 pointer-events-none">
                 <img
                   src="img/chainfusion/btc.webp"
-                  className="object-cover size-full"
+                  className="object-cover size-full md:translate-y-[9%]"
                 />
               </div>
             </div>
@@ -1752,7 +1752,7 @@ function ChainFusion() {
 
           <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
             <div className="md:flex-row items-stretch	relative z-1">
-              <div className="p-1/10 md:p-2/12 py-1/10 pb-64  md:pb-[26rem]">
+              <div className="p-1/10 md:p-2/12 py-1/10 pb-64 md:pb-96">
                 <h5 className="tw-heading-4 md:tw-heading-3">GM Ethereum</h5>
                 <p className="tw-paragraph-sm md:tw-paragraph mt-6">
                   Full support for Ethereum and other EVM chains is now live
