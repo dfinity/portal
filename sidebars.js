@@ -1149,7 +1149,6 @@ const sidebars = {
                   "developer-docs/daos/nns/concepts/proposals/proposal-submit",
                 ],
               },
-            "developer-docs/daos/nns/concepts/proposal-requirements",
             "developer-docs/daos/nns/concepts/neurons-fund",
           ],
         },
