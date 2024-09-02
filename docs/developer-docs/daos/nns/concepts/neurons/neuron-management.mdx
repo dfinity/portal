@@ -153,7 +153,8 @@ To compute the neuron's address in the first step, proceed as follows.
 
 1. Learn the principal that should control the neuron and choose a nonce. The nonce is used to allow the same principal to control multiple neurons and does not need to be kept secret.
 
-2. Compute the subaccount based on the two inputs from (a). View for example the method [`compute_neuron_staking_subaccount_bytes`](https://github.com/dfinity/ic/blob/master/rs/nervous_system/common/src/ledger.rs) which computes the subaccount given a controller principal and a nonce.
+2. Compute the subaccount based on the two inputs from (1). View for example the method
+[`compute_neuron_staking_subaccount_bytes`](https://github.com/dfinity/ic/blob/master/rs/nervous_system/common/src/ledger.rs) which computes the subaccount given a controller principal and a nonce.
 
 3. Compute the final account identifier on the ledger (that gives you the address) using the computed subaccount from (2) and the principal ID of the NNS governance canister. View for example the method [`neuron_subaccount`](https://github.com/dfinity/ic/blob/master/rs/nns/governance/src/governance.rs) which computes the account based on a given subaccount and with the NNS governance principal ID `GOVERNANCE_CANISTER_ID`.
 
