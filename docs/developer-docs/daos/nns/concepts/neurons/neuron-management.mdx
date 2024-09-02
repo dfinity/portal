@@ -374,11 +374,13 @@ Only a neuron's controller can spawn maturity from a neuron.
 
 This method allows a neuron controller to merge the (unstaked) maturity of a neuron into the neuron's stake.
 The caller can choose a percentage of maturity to merge.
+
 ```
 type MergeMaturity = record {
  percentage_to_merge : nat32
 };
 ```
+
 _Required permissions:_
 Only a neuron's controller can merge maturity.
 
