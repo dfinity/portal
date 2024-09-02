@@ -131,7 +131,8 @@ Evidently, this process introduces a certain amount of uncertainty for the conve
 * The modulation value w is between -5% and +5%: This implies that, e.g., 100 maturity will be converted into an ICP amount in the range of 95 and 105. This kind of volatility is well in the range of daily conversion rate fluctuations of ICP.
 * The modulation value w is calculated at the day of modulation as `w = (w1+ w2+ w3 + w4) / 4`. At the day of initiation (7 days prior), the user can already determine `(w2+ w3 + w4)/4`. The missing value w1 can affect the modulation value at most by 1.25% (5%/4) up or down.
 
-The modulation value can change by at most 2.5% from one week to the next, as one week drops out of the window and one week enters the calculation window.
+The modulation value can change by at most 2.5% from one week to the next, as one week drops out of the window and
+one week enters the calculation window.
 
 The modulation function gives an incentive for users to disburse maturity when the ICP/Cycles conversion rate has been increasing over time and to hold back when the ICP has been decreasing recently. For example if the ICP/Cycles conversion rate was monotonically increasing, then w1, w2, w3, w4 are positive and thus also w, incentivizing users to convert a maturity amount x to x * (1+w) units of ICP.
 

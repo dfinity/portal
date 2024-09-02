@@ -76,9 +76,9 @@ You should send at least 10.001 in order to have enough ICP to create a neuron a
 
 To send ICP to the account, all you need is to input the `account id` in your wallet of choice.
 
-#### Spawn a neuron
+#### Stake a neuron
 
-To spawn a neuron using quill, run the following command:
+To stake a neuron using quill, run the following command:
 
 ```
 // Craft a message to stake a neuron by choosing a 8-character $NAME and an $AMOUNT to stake
@@ -89,7 +89,8 @@ quill --pem-file private.pem neuron-stake --name $NAME --amount $AMOUNT > messag
 quill send message.json
 ```
 
-You should see a message with a neuron ID spawned. If successful, response will return `neuron ID: 9_218_890_096_040_352_708`. This means the neuron ID is `9218890096040352708`.
+You should see a message with a neuron ID staked. If successful, response will return `neuron ID:
+9_218_890_096_040_352_708`. This means the neuron ID is `9218890096040352708`.
 
 #### Increase neuron dissolve to at least 6 months
 
@@ -140,8 +141,7 @@ To get the design approved by the community, the following schedule was followed
 
 #### Send proposal via dfx
 
-Below is an example structure of sending an NNS motion proposal with placeholders `$TITLE`, 
-`$MOTION_TEXT`,`$SUMMARY`, and`$NEURON_ID`. These are not variables and you need to replace them with real values directly within the command:
+Below is an example structure of sending an NNS motion proposal with placeholders `$TITLE`, `$MOTION_TEXT`,`$SUMMARY`, and`$NEURON_ID`. These are not variables and you need to replace them with real values directly within the command:
 
 `rrkah-fqaaa-aaaaa-aaaaq-cai` is the ID of the governance canister on the NNS so this command is sending a message to the `manage_neuron` method of the governance canister of the NNS.
 
@@ -186,7 +186,7 @@ To get the design approved by the community, the following schedule was followed
 
 #### Check dashboard to see proposal was successful
 
-If successful, `dfx` will return output such as:
+If successful, `dfx` will return an output such as:
 
 ```
 (
