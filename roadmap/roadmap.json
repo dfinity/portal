@@ -1018,7 +1018,7 @@
       {
         "name": "Onchain AI Inference of Larger Models",
         "description": "In order to perform AI inference and training of larger models on chain, canister smart contracts need to run more compute- and memory-intensive workloads. This milestone expands the compute and memory capabilities of canisters and paves the way for future GPU hardware acceleration. A special focus is being placed on the developer experience by building tools to simplify writing AI applications.",
-        "milestone_id": "Gyrotron",
+        "milestone_id": "Ignition",
         "eta": null,
         "status": "future",
         "elements": [
@@ -1027,7 +1027,7 @@
             "overview": "API for smart contracts that allows them to run hardware-accelerated AI computations. Initially, hardware acceleration will rely on the CPU, paving the way for GPU hardware acceleration in the future.",
             "description": "AI computations are typically a graph of a large number of floating-point operations. Abstracting those operations into an API streamlines the development of AI applications, and paves the way to introduce optiizations to these specialized workload.",
             "status": "",
-            "milestone_id": "Gyrotron",
+            "milestone_id": "Ignition",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -1046,14 +1046,14 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Gyrotron"
+            "milestone_id": "Ignition"
           },
           {
             "title": "Tooling and libraries for developing AI smart contracts",
             "overview": "Providing developer tooling and libraries for building AI smart contracts on ICP, reusing existing AI ecosystem tools wherever possible.",
             "description": "Developers need tooling and libraries to implement AI smart contracts. Ideally, the existing AI ecosystem is reused as much as possible, but specialized tools and libraries might be needed for developing on-chain AI applications.",
             "status": "",
-            "milestone_id": "Gyrotron",
+            "milestone_id": "Ignition",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -1156,7 +1156,7 @@
             "overview": "The ICP community needs to agree and adopt the hardware specification for replica nodes with GPUs.",
             "description": "The ICP community needs to agree and adopt the hardware specification for replica nodes with GPUs.",
             "status": "",
-            "milestone_id": "Gyrotron",
+            "milestone_id": "Ignition",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -1169,7 +1169,7 @@
             "overview": "AI-specialized subnets are created from nodes with GPUs and host AI smart contracts for training and inference of large models.",
             "description": "AI-specialized subnets are created from nodes with GPUs and host AI smart contracts for training and inference of large models.",
             "status": "",
-            "milestone_id": "Gyrotron",
+            "milestone_id": "Ignition",
             "forum": "",
             "proposal": "",
             "wiki": "",
