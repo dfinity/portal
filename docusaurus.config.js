@@ -582,16 +582,7 @@ const config = {
     searchCanisterId: "5qden-jqaaa-aaaam-abfpa-cai",
     marketingNav,
   },
-  markdown: {
-    mermaid: true,
-  },
-  scripts: [
-    {
-      src: "tailwind.config.js",
-      async: false,
-      type: "text/css",
-    },
-  ],
+  scripts: [],
   plugins: [
     "docusaurus-plugin-sass",
     customWebpack,
@@ -838,7 +829,7 @@ const config = {
         playgroundPosition: "bottom",
       },
     },
-  themes: ["@docusaurus/theme-live-codeblock", "@docusaurus/theme-mermaid"],
+  themes: ["@docusaurus/theme-live-codeblock"],
   clientModules: [require.resolve("./static/load_moc.ts")],
 };
 

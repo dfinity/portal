@@ -6,7 +6,6 @@ import ChainFusion from "../pages/chainfusion";
 import CustomNotFoundPage from "../pages/notfound";
 
 export default function NotFound() {
-  const context = useDocusaurusContext();
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -17,15 +16,6 @@ export default function NotFound() {
       style.textContent = " ";
       document.head.appendChild(style);
       requestAnimationFrame(() => document.head.removeChild(style));
-    }
-
-    if (ExecutionEnvironment.canUseDOM) {
-      console.log(
-        "Loaded stylesheets:",
-        Array.from(document.styleSheets)
-          .map((sheet) => sheet.href)
-          .filter(Boolean)
-      );
     }
   }, []);
 
