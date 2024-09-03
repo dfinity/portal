@@ -587,7 +587,7 @@ const config = {
   },
   scripts: [
     {
-      src: "/tailwind.config.js",
+      src: "tailwind.config.js",
       async: false,
       type: "text/css",
     },
