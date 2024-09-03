@@ -141,8 +141,8 @@ export function CodeSnippets() {
             </link> */}
         </motion.p>
 
-        <motion.div className="md:max-w-full space-y-5">
-            <AnimatePresence>
+        <motion.div className="max-w-5xl mx-auto space-y-5">
+          <AnimatePresence>
             <motion.div
                 initial={false}
                 animate={{
@@ -157,16 +157,19 @@ export function CodeSnippets() {
                       language="motoko" 
                       className="text-left"
                       showLineNumbers={true}>
-                    {sampleCodeSnippets.motoko}
+                      {sampleCodeSnippets.motoko}
                     </CodeBlockString>
                 </TabItem>
                 <TabItem value="rust" label="Rust">
-                    <CodeBlockString 
+                  <div style={{ width: '100%', maxWidth: 'none' }}>
+                  <CodeBlockString 
                     language="rust" 
                     className="text-left"
                     showLineNumbers={true}>
-                      {sampleCodeSnippets.rust}
-                    </CodeBlockString>
+                    {sampleCodeSnippets.rust}
+                  </CodeBlockString>
+                </div>
+
                 </TabItem>
                 </AdornedTabs>
             </motion.div>
