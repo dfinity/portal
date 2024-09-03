@@ -1855,7 +1855,7 @@ function ChainFusion() {
               <div className="grid gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
                 {[
                   "IC ETH Starter",
-                  "Add ERC-20 to IC ETH Starter",
+                  "Ordinal Canister",
                   "OISY",
                   "PoS app for ckBTC",
                 ]
