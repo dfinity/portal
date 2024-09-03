@@ -1727,7 +1727,7 @@ function ChainFusion() {
         </section>
 
         {/* Code Snippets Div */}
-        <section className="pt-20 md:pt-30 text-left md:text-center ">
+        <section className="pt-20 md:pt-30 text-left md:text-center">
           {" "}
           <AnimateSpawn
             className="container-6 "
@@ -1745,6 +1745,7 @@ function ChainFusion() {
               )}
               enables Bitcoin and Ethereum to talk to each other
             </motion.h3>
+           
 
 
             <motion.p className="tw-paragraph md:tw-lead mt-3 md:mt-6">
@@ -1961,7 +1962,7 @@ function ChainFusion() {
           </AnimateSpawn>
         </section>
 
-        <section className="pt-20 md:pt-30 text-left md:text-center ">
+        <section className="pt-20 md:pt-30 text-left md:text-center">
           {" "}
           <AnimateSpawn
             className="container-6 "

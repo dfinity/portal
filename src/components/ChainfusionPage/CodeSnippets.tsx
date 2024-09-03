@@ -129,7 +129,7 @@ export function CodeSnippets() {
   const [isCodeSnippetExpanded, toggleCodeSnippetExpand] = React.useState(false);
 
   return (
-    <div>
+      <div >
 
         <motion.p className="tw-paragraph md:tw-lead mt-3 md:mt-6">
             {/* <link
@@ -141,7 +141,7 @@ export function CodeSnippets() {
             </link> */}
         </motion.p>
 
-        <motion.div className="max-w-5xl mx-auto space-y-5">
+        <motion.div className="max-w-6xl mx-auto space-y-5 ">
           <AnimatePresence>
             <motion.div
                 initial={false}
