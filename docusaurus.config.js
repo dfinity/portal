@@ -582,6 +582,9 @@ const config = {
     searchCanisterId: "5qden-jqaaa-aaaam-abfpa-cai",
     marketingNav,
   },
+  markdown: {
+    mermaid: true,
+  },
   scripts: [],
   plugins: [
     "docusaurus-plugin-sass",
@@ -829,7 +832,7 @@ const config = {
         playgroundPosition: "bottom",
       },
     },
-  themes: ["@docusaurus/theme-live-codeblock"],
+  themes: ["@docusaurus/theme-live-codeblock", "@docusaurus/theme-mermaid"],
   clientModules: [require.resolve("./static/load_moc.ts")],
 };
 
