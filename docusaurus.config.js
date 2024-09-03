@@ -582,7 +582,13 @@ const config = {
     searchCanisterId: "5qden-jqaaa-aaaam-abfpa-cai",
     marketingNav,
   },
-  scripts: [],
+  scripts: [
+    {
+      src: "/tailwind.confing.js",
+      async: false,
+      type: "text/css",
+    },
+  ],
   plugins: [
     "docusaurus-plugin-sass",
     customWebpack,
