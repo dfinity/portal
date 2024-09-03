@@ -585,7 +585,13 @@ const config = {
   markdown: {
     mermaid: true,
   },
-  scripts: [],
+  scripts: [
+    {
+      src: "/tailwind.config.js",
+      async: false,
+      type: "text/css",
+    },
+  ],
   plugins: [
     "docusaurus-plugin-sass",
     customWebpack,
