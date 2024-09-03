@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import NotFound from "@theme-original/NotFound";
 import { trackEvent } from "../utils/matomo";
 import CustomNotFoundPage from "../pages/notfound";
