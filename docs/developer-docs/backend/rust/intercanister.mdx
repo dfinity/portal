@@ -83,7 +83,7 @@ async fn publish(counter: Counter) {
 }
 ```
 
-In this code, you can see two inter-canister update calls: `fn subscribe(subscriber: Subscriber)` and `async fn publish(counter: Counter)`. The first method allows for the publisher canister to make a call to the subscriber canister and subscribe to topics. The second method allows the publisher canister to publish information on a topic in the subscriber canister.
+In this code, you can see two inter-canister update calls: `fn subscribe(subscriber: Subscriber)` and `async fn publish(counter: Counter)`. The first method allows for the subscriber canister to make a call to the publisher canister and subscribe to topics. The second method allows the publisher canister to publish information on a topic in the subscriber canister.
 
 ```rust title="src/subscriber/src/lib.rs"
 use candid::{CandidType, Principal};
