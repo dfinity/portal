@@ -83,29 +83,29 @@ function CustomNotFoundPage() {
               className="pointer-events-none relative -z-1 "
             >
               {randomIndex === 0 && (
-                <div className="md:absolute md:w-2/3 md:bottom-0 md:right-6 md:translate-y-[35%]">
+                <div className="md:absolute w-full sm:w-[80%] md:w-2/3 bottom-0 -translate-x-[15%] sm:-translate-x-[8%] md:translate-x-[50%] translate-y-[5%] md:translate-y-[35%]">
                   <motion.img
                     src={imageUrl}
                     alt=""
-                    className="w-full h-full object-cover max-w-sm md:max-w-none"
+                    className="w-full h-full object-cover"
                   />
                 </div>
               )}{" "}
               {randomIndex === 1 && (
-                <div className="md:absolute w-1/2 md:w-1/3 md:bottom-0 md:right-0 md:translate-y-[25%] translate-y-[20%] translate-x-[90%] md:translate-x-0 mb-12 md:mb-0">
+                <div className="md:absolute mx-auto w-[90%] sm:w-1/2 md:w-1/3 bottom-0 md:translate-x-[200%] translate-y-[10%] md:translate-y-[25%]">
                   <motion.img
                     src={imageUrl}
                     alt=""
-                    className="w-full h-full object-cover max-w-sm md:max-w-none"
+                    className="w-full h-full object-cover"
                   />
                 </div>
               )}
               {randomIndex === 2 && (
-                <div className="md:absolute w-1/2 md:w-1/3 md:bottom-0 md:right-0 md:translate-y-[25%] translate-y-[20%] translate-x-[90%] md:-translate-x-[10%] mb-12 md:mb-0">
+                <div className="md:absolute mx-auto w-[90%] sm:w-1/2 md:w-1/3 bottom-0 md:translate-x-[200%] translate-y-[10%] md:translate-y-[25%]">
                   <motion.img
                     src={imageUrl}
                     alt=""
-                    className="w-full h-full object-cover max-w-sm md:max-w-none"
+                    className="w-full h-full object-cover"
                   />
                 </div>
               )}

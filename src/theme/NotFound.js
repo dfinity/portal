@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import CustomNotFoundPage from "../pages/notfound";
+import { trackEvent } from "../utils/matomo";
 
 export default function NotFound() {
   const [isClient, setIsClient] = useState(false);
