@@ -83,7 +83,7 @@ function CustomNotFoundPage() {
               className="pointer-events-none relative -z-1 "
             >
               {randomIndex === 0 && (
-                <div className="md:absolute w-full sm:w-[80%] md:w-2/3 bottom-0 -translate-x-[15%] sm:-translate-x-[8%] md:translate-x-[50%] translate-y-[5%] md:translate-y-[35%]">
+                <div className="md:absolute w-full sm:w-[80%] md:w-2/3 bottom-0 -translate-x-[15%] sm:-translate-x-[8%] md:translate-x-[50%] translate-y-[10%] md:translate-y-[35%]">
                   <motion.img
                     src={imageUrl}
                     alt=""
