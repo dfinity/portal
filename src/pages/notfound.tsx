@@ -21,7 +21,7 @@ const notFoundPages = [
     imageUrl: "/img/notfound/404_hero_1.webp",
   },
   {
-    title: "You've Stumbled Upon a Digital Black Hole",
+    title: "You've stumbled upon a digital black hole",
     description:
       "Don't worry though, the page you're looking for might just be a hop, skip, or a jump away. Use search or navigate back to the homepage.",
     imageUrl: "/img/notfound/404_hero_2.webp",
