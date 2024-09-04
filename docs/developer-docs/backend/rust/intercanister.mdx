@@ -154,7 +154,7 @@ dfx deploy
 First, let's subscribe to a topic. For example, to subscribe to the "Apples" topic, use the command:
 
 ```bash
-dfx canister call subscriber init '("Apples")'
+dfx canister call subscriber setup_subscribe '(principal "<INSERT_PUBLISHER_PRINCIPAL_HERE>", "Apples")'
 ```
 
 Then, to publish a record to the "Apples" topic, use the command:
@@ -166,7 +166,7 @@ dfx canister call publisher publish '(record { "topic" = "Apples"; "value" = 2 }
 Then, you can query and receive the subscription record value with the command:
 
 ```bash
-dfx canister call subscriber getCount
+dfx canister call subscriber get_count
 ```
 
 The output should resemble the following:
