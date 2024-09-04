@@ -1726,8 +1726,8 @@ function ChainFusion() {
           </AnimateSpawn>
         </section>
 
-        {/* Code Snippets Div */}
-        <section className="pt-20 md:pt-30 text-left md:text-center">
+        {/* Code Snippets Section */}
+        {/* <section className="pt-20 md:pt-30 text-left md:text-center">
           {" "}
           <AnimateSpawn
             className="container-6 "
@@ -1749,12 +1749,12 @@ function ChainFusion() {
 
 
             <motion.p className="tw-paragraph md:tw-lead mt-3 md:mt-6">
-                This code snippet is written in both Rust and the Motoko programming language but is also possible for TypeScript, Python, and other languages.
+                This code snippet is written in both Rust and the Motoko programming language but is also possible for Solidity, TypeScript, Python, and other languages.
             </motion.p>
 
             <CodeSnippets />
           </AnimateSpawn>
-        </section>
+        </section> */}
 
 
         <section className="container-12 block md:flex gap-4 mt-24 md:mt-32">
@@ -1847,6 +1847,37 @@ function ChainFusion() {
             ))}
           </AnimateSpawn>
         </section>
+
+       {/* Code Snippets Section */}
+       <section className="pt-20 md:pt-30 text-left md:text-center mb-20">
+          {" "}
+          <AnimateSpawn
+            className="container-6 "
+            variants={transitions.container}
+            el={motion.section}
+          >
+            <motion.h3 className="tw-heading-3 md:tw-heading-60 mb-1 text-gradient-purple">
+              {isMobile ? (
+                <LogoNewLine
+                  className="block w-2/3 mb-2"
+                  color="text-gradient-purple"
+                />
+              ) : (
+                <LogoSm className="w-full" color="text-gradient-purple" />
+              )}
+              enables Bitcoin and Ethereum to talk to each other
+            </motion.h3>
+           
+
+
+            <motion.p className="tw-paragraph md:tw-lead mt-3 md:mt-6">
+                This code snippet is written in both Rust and the Motoko programming language but is also possible for Solidity, TypeScript, Python, and other languages.
+            </motion.p>
+
+            <CodeSnippets />
+          </AnimateSpawn>
+        </section>
+
         <AnimateSpawn
           className="container-12 pb-16 md:pb-40"
           el={motion.section}
