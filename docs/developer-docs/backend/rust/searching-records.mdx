@@ -126,6 +126,31 @@ fn update(profile: Profile) {
         profile_store.borrow_mut().insert(principal_id, profile);
     });
 }
+
+#[query]
+fn search(search_parameter: String) -> Option<Profile> {
+    PROFILE_STORE.with(|profile_store| {
+        let profiles = profile_store.borrow();
+
+        for (_, profile) in profiles.iter() {
+            if profile.name.contains(&search_parameter)
+                || profile.description.contains(&search_parameter)
+            {
+                return Some(profile.clone());
+            }
+
+            if profile
+                .keywords
+                .iter()
+                .any(|keyword| keyword.contains(&search_parameter))
+            {
+                return Some(profile.clone());
+            }
+        }
+
+        None
+    })
+}
 ```
 
 Save your changes and close the file to continue.
