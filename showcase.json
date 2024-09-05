@@ -4886,7 +4886,7 @@
   {
     "id": "cyclestransferstation",
     "name": "CYCLES-TRANSFER-STATION",
-    "oneLiner": "The CYCLES-TRANSFER-STATION is an on-chain order-book market trade platform for ICRC-1 tokens on the world-computer. The key is that the market tokens trade against the native CYCLES, creating a stable trading scenario, and facilitating the general trade of the CYCLES.",
+    "oneLiner": "An on-chain order-book market, where the market tokens trade against the stable CYCLES. Mint, hold, transfer, and trade the CYCLES at the CTS market.",
     "tags": [
       "DeFi",
       "DAO"
