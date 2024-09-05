@@ -4885,17 +4885,17 @@
   },
   {
     "id": "cyclestransferstation",
-    "name": "Cycles Transfer Station",
-    "oneLiner": "An on-chain order-book market trade platform for ICRC-1 tokens on the world-computer.",
+    "name": "CYCLES-TRANSFER-STATION",
+    "oneLiner": "The CYCLES-TRANSFER-STATION is an on-chain order-book market trade platform for ICRC-1 tokens on the world-computer. The key is that the market tokens trade against the native CYCLES, creating a stable trading scenario, and facilitating the general trade of the CYCLES.",
     "tags": [
       "DeFi",
       "DAO"
     ],
-    "website": "https://cycles-transfer-station.com/",
-    "description": "An on-chain order-book market trade platform for ICRC-1 tokens on the world-computer.",
+    "website": "https://cycles-transfer-station.com",
+    "description": "The CYCLES-TRANSFER-STATION is an on-chain order-book market trade platform for ICRC-1 tokens on the world-computer. The key is that the market tokens trade against the native CYCLES, creating a stable trading scenario, and facilitating the general trade of the CYCLES.",
     "usesInternetIdentity": true,
     "display": "Normal",
-    "logo": "/img/showcase/waterneuron_logo.png"
+    "logo": "/img/showcase/cyclestransferstation_logo.png"
   },
   {
     "id": "relation",
