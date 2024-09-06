@@ -20,35 +20,32 @@ function News({ content = "btc" }) {
       el={motion.section}
       variants={transitions.container}
     >
-      <AnimateSpawn className="container-10 " variants={transitions.container}>
-        <div className="flex flex-col gap-6 md:gap-5 mb-8 md:mb-10 md:flex-row md:w-9/10">
-          <motion.h2
-            className="tw-heading-4 mb-0 md:tw-heading-60 md:flex-1"
+      <div className="container-10 !px-0 flex flex-col gap-1  md:gap-5 mb-8 md:flex-row ">
+        <motion.h2
+          className="tw-heading-3 mb-0 md:tw-heading-60"
+          variants={transitions.item}
+        >
+          News & Events
+        </motion.h2>
+        <div className="md:flex-1 md:pt-1 ">
+          <motion.p
+            className="mb-0 mt-2 tw-paragraph md:tw-lead-sm md:w-1/2"
             variants={transitions.item}
           >
-            News & Events
-          </motion.h2>
-          <div className="md:flex-1 md:pt-3">
-            <motion.p
-              className="mb-4 tw-paragraph md:tw-lead-sm"
-              variants={transitions.item}
-            >
-              {content === "chainfusion"
-                ? "Get all the news and event infos about Chain Fusion Technology on ICP."
-                : "Get all the news from the Internet Computer ecosystem"}
-            </motion.p>
-            <MotionLink
-              variants={transitions.item}
-              href="/news"
-              className="link-primary link-with-icon"
-            >
-              <LinkArrowRight />
-              Explore more news
-            </MotionLink>
-          </div>
+            {content === "chainfusion"
+              ? "Get all the news and event infos about Chain Fusion Technology on ICP."
+              : "Get all the news from the Internet Computer ecosystem"}
+          </motion.p>
+          <MotionLink
+            variants={transitions.item}
+            href="/news"
+            className="link-primary link-with-icon mt-3"
+          >
+            <LinkArrowRight /> Explore more news
+          </MotionLink>
         </div>
-      </AnimateSpawn>
-      <div className="container-10">
+      </div>
+      <div className="container-10 !px-0 mt-6 md:mt-20">
         {content === "chainfusion" ? (
           <VideoCard
             image="https://img.youtube.com/vi/cdR40rhi8Wk/maxresdefault.jpg"

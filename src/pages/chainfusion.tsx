@@ -1819,7 +1819,7 @@ function ChainFusion() {
           el={motion.section}
           variants={transitions.container}
         >
-          <div className="container-10 md:grid grid-cols-[1fr,2fr] gap-5 md:gap-10 ">
+          <div className="container-10 !px-0 md:grid grid-cols-[1fr,2fr] gap-5 md:gap-10 ">
             <div>
               {" "}
               <motion.h2
