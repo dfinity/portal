@@ -222,7 +222,7 @@ const marketingNav = {
             },*/
           ],
           featured: {
-            title: "Chain Fusion Technology",
+            title: "Chain Fusion",
             href: "/chainfusion",
             image: "/img/nav/featured-chainfusion.webp",
           },
