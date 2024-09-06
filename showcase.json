@@ -5151,10 +5151,10 @@
   {
     "id": "ICPDA",
     "name": "InternetComputer DA",
-    "description": "Using canisters and threshold signature to build a DA layer compatible with EigenDA, providing reliable and more cost-effective and secure DA infrastructure for blockchains.",
+    "description": "Using canisters and threshold signature to build a DA layer compatible with EigenDA.",
     "logo": "/img/showcase/icpda_logo.png",
     "display": "Normal",
-    "oneLiner": "Using canisters and threshold signature to build a DA layer compatible with EigenDA, providing reliable and more cost-effective and secure DA infrastructure for blockchains.",
+    "oneLiner": "Using canisters and threshold signature to build a DA layer compatible with EigenDA.",
     "tags": [
       "Tools / Infrastructure"
     ],
@@ -5164,10 +5164,10 @@
   {
     "id": "PlexiMail",
     "name": "PlexiMail",
-    "description": "The end-to-end encrypted, ICP canister-based, trustless secure email service with metadata cloaking and workflow extension for electronic signature and notarization.",
+    "description": "The end-to-end encrypted, ICP canister-based, trustless secure email service.",
     "logo": "/img/showcase/pleximail_logo.png",
     "display": "Normal",
-    "oneLiner": "The end-to-end encrypted, ICP canister-based, trustless secure email service with metadata cloaking and workflow extension for electronic signature and notarization.",
+    "oneLiner": "The end-to-end encrypted, ICP canister-based, trustless secure email service.",
     "tags": [
       "Tools / Infrastructure"
     ],
