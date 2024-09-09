@@ -137,7 +137,7 @@ const redirects = `
   /docs/current/developer-docs/best-practices/* /docs/current/developer-docs/use-cases/:splat
   /docs/current/developer-docs/deploy/* /docs/current/developer-docs/production/:splat
   /docs/current/references/security/* /docs/current/developer-docs/security/security-best-practices/overview
-  /docs/current/tokenomics/nns/community-fund /docs/current/developer-docs/daos/nns/neurons-fund
+  /docs/current/tokenomics/nns/community-fund /docs/current/developer-docs/daos/nns/concepts/neurons-fund
   /docs/current/tokenomics/sns/* /docs/current/developer-docs/daos/sns/tokenomics/:splat
   /docs/developers-guide/cli-reference/* /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/:splat
   /docs/developers-guide/concepts/* /docs/current/developer-docs/getting-started/overview-of-icp
@@ -165,7 +165,7 @@ const redirects = `
   /language-guide/ /docs/current/tutorials/developer-journey/level-0/intro-languages
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /docs/current/developer-docs/backend/rust/
   /docs/quickstart/network-quickstart.html /docs/current/developer-docs/getting-started/install/
-  /docs/token-holders/nns-app-quickstart.html /docs/current/developer-docs/daos/nns/nns-app-quickstart
+  /docs/token-holders/nns-app-quickstart.html /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart
   /developers-guide/quickstart.html /docs/current/tutorials/developer-journey/
   /docs/current/tokenomics/identity-auth/auth-how-to /docs/current/developer-docs/identity/internet-identity/overview
   /docs/developers-guide/tutorials-intro.html /docs/current/tutorials/developer-journey/
@@ -391,10 +391,10 @@ const redirects = `
   /docs/current/developer-docs/integrations/sns/managing/sns-asset-canister /docs/current/developer-docs/daos/sns/managing/sns-asset-canister
   /docs/current/developer-docs/integrations/sns/managing/managing-nervous-system-parameters /docs/current/developer-docs/daos/sns/managing/managing-nervous-system-parameters
   /docs/current/tokenomics/nns/nns-intro /docs/current/developer-docs/daos/nns/overview
-  /docs/current/tokenomics/token-holders/nns-app-quickstart /docs/current/developer-docs/daos/nns/nns-app-quickstart
-  /docs/current/tokenomics/nns/neurons-fund /docs/current/developer-docs/daos/nns/neurons-fund
-  /docs/current/tokenomics/nns/nns-staking-voting-rewards /docs/current/developer-docs/daos/nns/staking-voting-rewards
-  /docs/current/tokenomics/nns/proposal-requirements /docs/current/developer-docs/daos/nns/proposal-requirements
+  /docs/current/tokenomics/token-holders/nns-app-quickstart /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart
+  /docs/current/tokenomics/nns/neurons-fund /docs/current/developer-docs/daos/nns/concepts/neurons-fund
+  /docs/current/tokenomics/nns/nns-staking-voting-rewards /docs/current/developer-docs/daos/nns/concepts/neurons/staking-voting-rewards
+  /docs/current/tokenomics/nns/proposal-requirements /docs/current/developer-docs/daos/nns/concepts/proposal-requirements
   /docs/current/tokenomics/index /docs/current/developer-docs/daos/overview
   /docs/current/tokenomics/ /docs/current/developer-docs/daos/overview
   /docs/current/developer-docs/integrations/multi-chain/user-faq /docs/current/developer-docs/multi-chain/faq/user-faq

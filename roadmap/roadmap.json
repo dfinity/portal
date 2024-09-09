@@ -47,7 +47,7 @@
             "wiki": "",
             "docs": "",
             "eta": "",
-            "status": "",
+            "status": "in_progress",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Tokamak"
@@ -84,7 +84,7 @@
             "wiki": "",
             "docs": "",
             "eta": "",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Stellarator"
@@ -1016,57 +1016,18 @@
     "description": "Today, users have to blindly trust AI models running on centralized servers with no visibility into how data is used and how AI models produce responses. Decentralized AI solves this problem by bringing the trustworthiness, security, verifiability, and resilience of smart contracts to AI applications.",
     "milestones": [
       {
-        "name": "Onchain AI Inference and Training of Large Models",
-        "description": "In order to perform AI inference and training of large models on chain, smart contracts need a way to run compute- and memory-intensive computations on hardware such as GPUs. The main challenge of this milestone is to define a deterministic API for smart contracts to access and call GPUs. Additionally, AI-specialized subnets with GPU-enabled nodes need to be added to ICP.",
-        "milestone_id": "Gyrotron",
+        "name": "Onchain AI Inference of Larger Models",
+        "description": "In order to perform AI inference and training of larger models on chain, canister smart contracts need to run more compute- and memory-intensive workloads. This milestone expands the compute and memory capabilities of canisters and paves the way for future GPU hardware acceleration. A special focus is being placed on the developer experience by building tools to simplify writing AI applications.",
+        "milestone_id": "Ignition",
         "eta": null,
         "status": "future",
         "elements": [
           {
-            "title": "Deterministic API for AI computations on GPU",
-            "overview": "API for smart contracts that allows them to run deterministic AI computations on GPUs. Requirement for GPU-based AI on chain.",
-            "description": "All computations running on chain need to be deterministic because they are replicated on multiple nodes and go through consensus. This requirement also applies to AI computations performed on GPUs. The goal of this feature is to design and implement an API that smart contracts can use to run deterministic AI computations on GPUs.",
+            "title": "API for AI computations",
+            "overview": "API for smart contracts that allows them to run hardware-accelerated AI computations. Initially, hardware acceleration will rely on the CPU, paving the way for GPU hardware acceleration in the future.",
+            "description": "AI computations are typically a graph of a large number of floating-point operations. Abstracting those operations into an API streamlines the development of AI applications, and paves the way to introduce optiizations to these specialized workload.",
             "status": "",
-            "milestone_id": "Gyrotron",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false
-          },
-          {
-            "title": "Tooling and libraries for developing AI smart contracts",
-            "overview": "Providing developer tooling and libraries for building AI smart contracts on ICP, reusing existing AI ecosystem tools wherever possible.",
-            "description": "Developers need tooling and libraries to implement AI smart contracts. Ideally, the existing AI ecosystem is reused as much as possible, but specialized tools and libraries might be needed for developing on-chain AI applications.",
-            "status": "",
-            "milestone_id": "Gyrotron",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false
-          },
-          {
-            "title": "Public specification for GPU-enabled nodes",
-            "overview": "The ICP community needs to agree and adopt the hardware specification for replica nodes with GPUs.",
-            "description": "The ICP community needs to agree and adopt the hardware specification for replica nodes with GPUs.",
-            "status": "",
-            "milestone_id": "Gyrotron",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false
-          },
-          {
-            "title": "AI-specialized subnets with GPU-enabled nodes",
-            "overview": "AI-specialized subnets are created from nodes with GPUs and host AI smart contracts for training and inference of large models.",
-            "description": "AI-specialized subnets are created from nodes with GPUs and host AI smart contracts for training and inference of large models.",
-            "status": "",
-            "milestone_id": "Gyrotron",
+            "milestone_id": "Ignition",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -1076,7 +1037,7 @@
           },
           {
             "title": "Wasm64 execution environment",
-            "overview": "The execution environment is lifted to Wasm64 with the benefit of a 64-bit address space and its much larger addressable memory.",
+            "overview": "The execution environment is lifted to Wasm64 with the benefit of a 64-bit address space and its much larger addressable memory, allowing developers to load larger models in main memory.",
             "description": "The execution environment is lifted to Wasm64 with the benefit of a 64-bit address space and its much larger addressable memory.",
             "status": "",
             "forum": "",
@@ -1085,7 +1046,20 @@
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Gyrotron"
+            "milestone_id": "Ignition"
+          },
+          {
+            "title": "Tooling and libraries for developing AI smart contracts",
+            "overview": "Providing developer tooling and libraries for building AI smart contracts on ICP, reusing existing AI ecosystem tools wherever possible.",
+            "description": "Developers need tooling and libraries to implement AI smart contracts. Ideally, the existing AI ecosystem is reused as much as possible, but specialized tools and libraries might be needed for developing on-chain AI applications.",
+            "status": "",
+            "milestone_id": "Ignition",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false
           }
         ]
       },
@@ -1098,7 +1072,7 @@
         "elements": [
           {
             "title": "Faster deterministic floating-point operations",
-            "overview": "Accelerating deterministic floating point computations in the Wasm engine.",
+            "overview": "Accelerating deterministic floating-point computations in the Wasm engine.",
             "description": "Floating point operations are crucial for AI inference. In order to run on chain inside a smart contract, these operations need to be deterministic. The goal of this feature is to optimize the part of the Wasm engine that makes these operations deterministic.",
             "status": "deployed",
             "forum": "",
@@ -1176,6 +1150,32 @@
             "docs": "",
             "is_community": false,
             "in_beta": false
+          },
+          {
+            "title": "Public specification for GPU-enabled nodes",
+            "overview": "The ICP community needs to agree and adopt the hardware specification for replica nodes with GPUs.",
+            "description": "The ICP community needs to agree and adopt the hardware specification for replica nodes with GPUs.",
+            "status": "",
+            "milestone_id": "Ignition",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false
+          },
+          {
+            "title": "AI-specialized subnets with GPU-enabled nodes",
+            "overview": "AI-specialized subnets are created from nodes with GPUs and host AI smart contracts for training and inference of large models.",
+            "description": "AI-specialized subnets are created from nodes with GPUs and host AI smart contracts for training and inference of large models.",
+            "status": "",
+            "milestone_id": "Ignition",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false
           }
         ]
       }
@@ -1215,7 +1215,7 @@
             "wiki": "",
             "docs": "",
             "eta": "",
-            "status": "",
+            "status": "upcoming",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Helium"
@@ -3653,8 +3653,8 @@
             "proposal": "",
             "wiki": "",
             "docs": "",
-            "eta": "2024-06-12",
-            "status": "in_progress",
+            "eta": "2024-08-28",
+            "status": "deployed",
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Beryllium",
@@ -3669,7 +3669,7 @@
             "wiki": "",
             "docs": "",
             "eta": "",
-            "status": "upcoming",
+            "status": "in_progress",
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Beryllium",

@@ -1,0 +1,35 @@
+---
+keywords: [intermediate, governance, concept, nns]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Neuron and proposal details
+
+<MarkdownChipRow labels={["Intermediate", "Governance", "Concept"]} />
+
+## ICP tokens
+ICP are native utility tokens that play three key roles in the network:
+
+* **Facilitating network governance**: ICP tokens can be locked to create neurons that participate in network governance by voting, through which they can earn economic rewards.
+
+* **Production of cycles for compute**: ICP provides a source store of value that can be converted into “cycles,” which power computation in the role of fuel that is burned when it is used. The NNS converts ICP to cycles at a variable rate, so chosen to ensure users of the network can always create new cycles at approximately constant cost concerning IMF SDR, such that the cost of acquiring fuel is predictable.
+
+* **Rewarding participants**: The network provides rewards to incentivize those playing important roles that enable the network to function, including a) the provision of “voting rewards” to those participating in governance, and b) the provision of “node provider rewards” to those operating the node machines that are hosting the network.
+
+## Ledger
+The ICP ledger is hosted within the NNS and records all balances of ICP in the manner similar to a spreadsheet. Each row is called an “account,” which has two fields (i.e., there are two “columns”):
+
+* **Account identifier (bytes)**: A unique value that is derived from the identity of the “principal” that “controls” the account. Currently, the principal must either be (i) the owner of a public key pair, or (ii) a canister smart contract that is part of the NNS. Account identifiers are derived by hashing the concatenation of a domain separator, the principal ID, and the subaccount (or zeros if no subaccount is given).
+
+* **Balance**: The quantity of ICP assigned to the account.
+
+When the principal is a public key or Canister, they can apply the following operation to an account:
+
+* **Send**: Transfer a portion of the ICP balance to another account. If all the ICP is sent to another account, then the transfering account ceases to exist (i.e., is deleted from the ledger).
+
+Operations that require interaction between the ledger and the governance system (Neurons):
+
+* **Create neuron**: When the principal is a public key holder, they may lock a portion of their balance inside a new neuron. Technically, creating the neuron is done in two stages. First, transfer the ICP to be staked to an account of the governance canister (which corresponds to a new neuron — the details of the association are omitted here). Then notify the governance canister of the incoming transfer which updates its internal neuron bookkeeping. To move these ICP to a different account, such as back to the original account, where they can once again be controlled like a normal balance, the associated neuron must be fully dissolved and disbursed (destroyed).
+
+* **Refresh stake**: The stake of a neuron may be increased by transferring to its address/account in the ledger and notifying the governance canister of the incoming transfer. Refreshing the stake will change the maturity and age of the neuron prorated. For example, if the stake is doubled, the maturity and age will be halved, so spawning will yield the same amount and the age bonus will be the same as before (in absolute terms).

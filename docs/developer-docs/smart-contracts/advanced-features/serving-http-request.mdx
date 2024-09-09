@@ -14,56 +14,85 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-Canisters can serve or handle an incoming HTTP request using the [HTTP Gateway Protocol](/docs/current/references/http-gateway-protocol-spec).
+Canisters can serve or handle an incoming HTTP request using the
+[HTTP Gateway Protocol](/docs/current/references/http-gateway-protocol-spec).
 
 This allows developers to host web applications and APIs from a canister.
 
 ## How it works
 
-An HTTP request from a client gets intercepted by the HTTP Gateway Protocol, which identifies the target canister and encodes the request in Candid. This encoded request is then sent to the canister for processing. Once processed, the canister replies with an HTTP response. Finally, the HTTP Gateway Protocol decodes the response using Candid and sends it back to the client, completing the communication loop.
+An HTTP request from a client gets intercepted by the HTTP Gateway Protocol,
+which identifies the target canister and encodes the request in Candid. This
+encoded request is then sent to the canister for processing. Once processed, the
+canister replies with an HTTP response. Finally, the HTTP Gateway Protocol
+decodes the response using Candid and sends it back to the client, completing
+the communication loop.
 
-For detailed information on how it works, please refer to the [HTTP Gateway Protocol specification](/docs/current/references/http-gateway-protocol-spec).
+For detailed information on how it works, please refer to the
+[HTTP Gateway Protocol specification](/docs/current/references/http-gateway-protocol-spec).
 
 ## How to make a request
 
-The following example returns 'Hello, World!' in the body at the `/hello` endpoint.
+The following example returns 'Hello, World!' in the body at the `/hello`
+endpoint.
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko">
 
 ```motoko
-import Buffer "mo:base/Buffer";
+import HashMap = "mo:base/HashMap";
+import Blob = "mo:base/Blob";
+import Text "mo:base/Text";
+import Option "mo:base/Option";
 
-type HeaderField = (Text, Text);
+actor {
 
-type HttpResponse = {
-    status_code: Nat16;
-    headers: [HeaderField];
-    body: Blob;
-};
-
-type HttpRequest = {
-    method: Text;
-    url: Text;
-    headers: [HeaderField];
-    body: Blob;
-  };
-
-public query func http_request(req: HttpRequest): async (HttpResponse) {
-    let path = removeQuery(req.url);
-    if(path == "/hello") {
-        return {
-            status_code = 200,
-            headers = [],
-            body = Buffer.from('Hello, World!'),
-        };
+    public type HttpRequest = {
+        body: Blob;
+        headers: [HeaderField];
+        method: Text;
+        url: Text;
     };
+
+    public type ChunkId = Nat;
+    public type SetAssetContentArguments = {
+        chunk_ids: [ChunkId];
+        content_encoding: Text;
+        key: Key;
+        sha256: ?Blob;
+    };
+    public type Path = Text;
+    public type Key = Text;
+
+    public type HttpResponse = {
+        body: Blob;
+        headers: [HeaderField];
+        status_code: Nat16;
+    };
+
+    public type HeaderField = (Text, Text);
+
+    private func removeQuery(str: Text): Text {
+        return Option.unwrap(Text.split(str, #char '?').next());
+    };
+
+    public query func http_request(req: HttpRequest): async (HttpResponse) {
+        let path = removeQuery(req.url);
+        if(path == "/hello") {
+            return {
+                body = Text.encodeUtf8("root page :" # path);
+                headers = [];
+                status_code = 200;
+            };
+        };
+
         return {
-            body = Text.encodeUtf8("404 Not found :");
+            body = Text.encodeUtf8("404 Not found :" # path);
             headers = [];
             status_code = 404;
+        };
     };
-};
+}
 ```
 
 </TabItem>
@@ -212,26 +241,32 @@ class Token(Record):
 
 @query
 def http_request(req: HttpRequest) -> HttpResponse:
-    return {
-        "status_code": 200,
-        "headers": [],
-        "body": bytes(),
-        "streaming_strategy": None,
-        "upgrade": False,
-    }
+    path = req.url.path
+    if path == "/hello":
+        return {
+            "status_code": 200,
+            "headers": [],
+            "body": Buffer.from_text("hello, world!").encode("utf-8"),
+        }
+    else:
+        return {
+            "status_code": 404,
+            "headers": [],
+            "body": b"404 Not found :",
+}
 ```
 
-:::caution
-
-Kybra canisters must be deployed from a Python virtual environment. [Learn more in the Kybra docs](/docs/current/developer-docs/backend/python/).
-
-:::
-
-To learn more about serving an HTTP request in Python, refer to [the Kybra book reference on incoming HTTP requests](https://demergent-labs.github.io/kybra/http.html).
+To learn more about serving an HTTP request in Python, refer to
+[the Kybra book reference on incoming HTTP requests](https://demergent-labs.github.io/kybra/http.html).
 
 </AdornedTab>
 </AdornedTabs>
 
 ## Additional examples
 
-The [HTTP counter project](../../../references/samples/motoko/http_counter) is an example in Motoko of a 'counter' application that uses the `http_request` method to read the current counter value or access some pre-stored data and the `http_request_update` method to increment the counter and retrieve the updated value.
+The
+[HTTP counter project](https://github.com/dfinity/examples/tree/master/motoko/http_counter)
+is an example in Motoko of a 'counter' application that uses the `http_request`
+method to read the current counter value or access some pre-stored data and the
+`http_request_update` method to increment the counter and retrieve the updated
+value.

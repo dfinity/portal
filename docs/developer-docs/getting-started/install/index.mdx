@@ -71,7 +71,13 @@ You can download and install the latest version of [`dfxvm`](https://github.com/
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ```
 
-If you are using a machine running Apple silicon, you will need to have [Rosetta](https://support.apple.com/en-us/HT211861) installed. You can install Rosetta by running `softwareupdate --install-rosetta` in your terminal.
+If you are using a machine running Apple silicon (M1 or M2 CPU chips), you will need to have [Rosetta](https://support.apple.com/en-us/HT211861) installed, otherwise you will receive the error, `Bad CPU type in executable (os error 86)`. 
+
+You can install Rosetta by running the command:
+
+```
+softwareupdate --install-rosetta
+```
 
 </TabItem>
 <TabItem value="windows" label="Install on Windows">

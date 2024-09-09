@@ -30,7 +30,7 @@ Choose a PIN. To connect your Ledger device to an Internet Identity, select "Rec
 
 - #### Step 3: On your computer, install Ledger Live from ledger.com and start it.
 
-If offered to upgrade to a newer version then do so.
+Upgrade to a newer version if prompted.
 
 - #### Step 4: Connect the Nano device to USB and, if necessary, unlock it with the PIN.
 
@@ -73,6 +73,58 @@ The hardware wallet CLI tool supports the following commands and options:
 - `--network <network>`: Specifies the IC network (local, mainnet). Default value is `"https://ic0.app", env: IC_NETWORK`.
 
 - `--principal <principal>`: Specifies the derivation path to use for the principal.
+
+## Staking ICP with a hardware wallet
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0-nSOBC3bxE?si=OWvwdVfCymtvd97W" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+- #### Step 1: Connect the Ledger device to your computer and [configure the device using the instructions above](#ledger-nano-device-setup).
+
+- #### Step 2: Open the [NNS dapp](https://nns.ic0.app/) and login with Internet Identity.
+
+- #### Step 3: Create a new ICP account in the NNS dapp and select 'New Account (Hardware Wallet)'.
+
+![NNS Hardware account](../../_attachments/hardware-wallet.png)
+
+- #### Step 4: Provide a name for your hardware wallet.
+
+- #### Step 5: A pop-up window will appear asking you to select which hardware wallet connected to the computer you'd like to use. Select the Ledger device.
+
+- #### Step 6: The principal and account identifier for the device will be shown. Copy the account identifier for the hardware wallet.
+
+- #### Step 7: Send ICP tokens to the hardware wallet account identifier from a centralized exchange, decentralized exchange, or another wallet.
+
+- #### Step 8: From the NNS dapp, go to the 'Neuron Staking' tab and select 'Stake ICP'.
+
+- #### Step 9: When prompted for the 'Source' account to use, select the hardware wallet account.
+
+- #### Step 10: Confirm the neuron staking transaction on the Ledger device.
+
+For additional information about using hardware wallets for staking neurons, check out the [NNS explained video](https://www.youtube.com/watch?v=0-nSOBC3bxE).
+
+## Connecting the NNS to a neuron created with quill
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/lKbYUmqF7J4?si=q-tclOeUpjIM87yR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+- #### Step 1: Connect the Ledger device to your computer. Recover the identity you used with [quill on the device](/docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-generate), or configure quill to use the identity already on the device.
+
+- #### Step 2: [Create a neuron with quill](/docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-neuron-stake) using the identity stored on the Ledger device.
+
+- #### Step 3: Open the [NNS dapp](https://nns.ic0.app/) and login with Internet Identity.
+
+- #### Step 4: Create a new ICP account in the NNS dapp and select 'New Account (Hardware Wallet)'.
+
+![NNS Hardware account](../../_attachments/hardware-wallet.png)
+
+- #### Step 5: Select 'Show neurons' from the address's details.
+
+- #### Step 6: Confirm the transaction on the Ledger device.
+
+- #### Step 7: Select 'Add to NNS dapp'.
+
+- #### Step 8: Confirm the addition of a hotkey, then confirm the transaction on the Ledger device.
+
+[Learn more in the NNS explained video](https://www.youtube.com/watch?v=lKbYUmqF7J4).
 
 ## Resources
 

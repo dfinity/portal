@@ -66,13 +66,8 @@ Then, open the template `src/rust_profile_backend/src/lib.rs` file in a text edi
 The next step is to add a Rust program that implements the `getSelf`, `update`, `get`, and `search` functions. To do this, copy and paste this code into the `src/rust_profile_backend/src/lib.rs` file.
 
 ```rust title="src/rust_profile_backend/src/lib.rs"
-use ic_cdk::{
-    export::{
-        candid::{CandidType, Deserialize},
-        Principal,
-    },
-    query, update,
-};
+use candid::{CandidType, Deserialize, Principal};
+use ic_cdk::{query, update};
 use std::cell::RefCell;
 use std::collections::BTreeMap;
 
@@ -125,6 +120,31 @@ fn update(profile: Profile) {
     PROFILE_STORE.with(|profile_store| {
         profile_store.borrow_mut().insert(principal_id, profile);
     });
+}
+
+#[query]
+fn search(search_parameter: String) -> Option<Profile> {
+    PROFILE_STORE.with(|profile_store| {
+        let profiles = profile_store.borrow();
+
+        for (_, profile) in profiles.iter() {
+            if profile.name.contains(&search_parameter)
+                || profile.description.contains(&search_parameter)
+            {
+                return Some(profile.clone());
+            }
+
+            if profile
+                .keywords
+                .iter()
+                .any(|keyword| keyword.contains(&search_parameter))
+            {
+                return Some(profile.clone());
+            }
+        }
+
+        None
+    })
 }
 ```
 

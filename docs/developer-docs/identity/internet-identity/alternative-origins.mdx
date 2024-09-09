@@ -16,7 +16,7 @@ If your application has reached the stage where you want to change domain names,
 
 You may need this guide if you are doing any of the following:
 
-- Moving from `<canister-id>.icp0.io` to a custom domain.
+- Moving from `<canister-id>.icp0.io` to a [custom domain](/docs/current/developer-docs/web-apps/custom-domains/using-custom-domains/).
 - Asking users to login at `/login` instead of `/`.
 - Supporting users using `raw.icp0.io`.
 - Configuring multiple apps in your organization to use the same principals.
@@ -27,7 +27,7 @@ Currently, a maximum of **10** alternative origins can be listed.
 
 II will only follow this specification when the origin configuring these alternatives is hosted on a canister using **certified assets**.
 
-For more information, see the [Internet Identity specification](https://github.com/dfinity/internet-identity/blob/main/docs/ii-spec.md#alternative-frontend-origins).
+For more information, see the [Internet Identity specification](/docs/current/references/ii-spec/#alternative-frontend-origins).
 
 ## Configuring alternative origins
 
@@ -35,11 +35,11 @@ For this example, you will have two domains, **A** and **B**. **A** will be the 
 
 In this example, **A** would be `https://yourcustomdomain.com`.
 
-**B** would be the alternative origin, or `https://www.yourdomain.com`.
-
 :::info
-Your custom domains must be registered with the boundary nodes.
+For production use cases, domain **A** would use a domain on ICP, such as `ic0.app` or `icp0.io`.
 :::
+
+**B** would be the alternative origin, or `https://www.yourdomain.com`.
 
 ### Listing origins
 
