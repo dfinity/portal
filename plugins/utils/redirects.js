@@ -595,6 +595,8 @@ const redirects = `
   /docs/current/developer-docs/getting-started/ /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/developer-docs/defi/wallets/workflow /docs/current/developer-docs/defi/wallets/overview
   /docs/current/developer-docs/backend/rust/infrastructure /docs/current/developer-docs/backend/rust/
+  /docs/current/developer-docs/smart-contracts/deploy/larger-wasm /docs/current/developer-docs/smart-contracts/install
+
 
   `
   .split(/[\r\n]+/)
