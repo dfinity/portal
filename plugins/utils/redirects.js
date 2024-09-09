@@ -595,9 +595,9 @@ const redirects = `
   /docs/current/developer-docs/getting-started/ /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/developer-docs/defi/wallets/workflow /docs/current/developer-docs/defi/wallets/overview
   /docs/current/developer-docs/backend/rust/infrastructure /docs/current/developer-docs/backend/rust/
-
+  /docs/current/developer-docs/smart-contracts/deploy/sharing /docs/current/developer-docs/smart-contracts/deploy/overview
   `
-  .split(/[\r\n]+/)
+.split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
   .filter((l) => l.length > 0)
   .map((l) => l.split(/\s+/));
