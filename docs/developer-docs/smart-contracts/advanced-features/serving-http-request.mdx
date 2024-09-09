@@ -114,54 +114,53 @@ fn http_request(req: HttpRequest) -> HttpResponse {
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
-import {
-    blob,
-    bool,
-    Canister,
-    Func,
-    nat16,
-    None,
-    Opt,
-    query,
-    Record,
-    text,
-    Tuple,
-    Variant,
-    Vec
-} from 'azle';
+import { IDL, query } from 'azle';
 
-type HeaderField = [text, text];
-const HeaderField = Tuple(text, text);
+type HeaderField = [string, string];
+const HeaderField = IDL.Tuple(IDL.Text, IDL.Text);
 
-const HttpResponse = Record({
-    status_code: nat16,
-    headers: Vec(HeaderField),
-    body: blob,
+type HttpResponse = {
+    status_code: number;
+    headers: HeaderField[];
+    body: Uint8Array;
+};
+const HttpResponse = IDL.Record({
+    status_code: IDL.Nat16,
+    headers: IDL.Vec(HeaderField),
+    body: IDL.Vec(IDL.Nat8)
 });
 
-const HttpRequest = Record({
-    method: text,
-    url: text,
-    headers: Vec(HeaderField),
-    body: blob,
+type HttpRequest = {
+    method: string;
+    url: string;
+    headers: HeaderField[];
+    body: Uint8Array;
+};
+const HttpRequest = IDL.Record({
+    method: IDL.Text,
+    url: IDL.Text,
+    headers: IDL.Vec(HeaderField),
+    body: IDL.Vec(IDL.Nat8)
 });
 
-export default class{
-    @query([HttpRequest], HttpResponse, (req) => {
-        const path = req.url.pathname;
-        if(path == "/hello") {
+export default class {
+    @query([HttpRequest], HttpResponse)
+    getThing(req: HttpRequest): HttpResponse {
+        const path = new URL(req.url).pathname;
+        if (path === '/hello') {
             return {
                 status_code: 200,
                 headers: [],
                 body: Buffer.from('hello, world!')
             };
-        } return {
-            body: Text.encodeUtf8("404 Not found :");
-            headers: [];
-            status_code:404;
         }
-    }),
-};
+        return {
+            body: new TextEncoder().encode('404 Not found :'),
+            headers: [],
+            status_code: 404
+        };
+    }
+}
 ```
 
 </AdornedTab>

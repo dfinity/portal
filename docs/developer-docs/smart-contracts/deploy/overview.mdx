@@ -221,7 +221,7 @@ canister starts:
 import { IDL, setTimer, update } from 'azle';
 
 export default class {
-    @update([], IDL.Nat64)
+    @init([], IDL.Nat64)
     createTimer(): bigint {
         const timerId = setTimer(1_000n, () =>
             console.log('timer callback called')
@@ -254,7 +254,7 @@ from kybra import (
 class TimerIds(Record):
     single: TimerId
 
-@update
+@init
 def set_timers(delay: Duration, interval: Duration) -> TimerIds:
 
     single_id = ic.set_timer(delay, one_time_timer_callback)
