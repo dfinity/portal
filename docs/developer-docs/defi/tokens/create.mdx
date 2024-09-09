@@ -99,8 +99,9 @@ export TOKEN_SYMBOL="XMTK"
 
 #### `MINTER`
 
-The account of the principal responsible for minting and burning tokens (see the [ICRC-1 specification](https://github.com/dfinity/ICRC-1)). Transfers from the minting account will create `Mint` transactions. Transfers to the minting account will create `Burn` transactions.
+The account of the principal responsible for minting and burning tokens (see the [ICRC-1 specification](https://github.com/dfinity/ICRC-1)). Transfers from the minting account will generate `Mint` transactions, resulting in the creation of new tokens. To mint tokens, the minting account must call the `icrc1_transfer` function, specifying the recipient in the 'to' value.
 
+Transfers sent to the minting account will generate `Burn` transactions, destroying tokens. A `icrc1_transfer` call from any principal with the 'to' value set as the minting account will burn tokens.
 
 ```
 dfx identity new minter
