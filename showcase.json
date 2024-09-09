@@ -5152,7 +5152,7 @@
     "id": "ICPDA",
     "name": "InternetComputer DA",
     "description": "Using canisters and threshold signature to build a DA layer compatible with EigenDA.",
-    "logo": "/img/showcase/icpda_logo.png",
+    "logo": "/img/showcase/icda_logo.png",
     "display": "Normal",
     "oneLiner": "Using canisters and threshold signature to build a DA layer compatible with EigenDA.",
     "tags": [
