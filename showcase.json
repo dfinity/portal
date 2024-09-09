@@ -5132,5 +5132,46 @@
     "twitter": "https://x.com/icpdelta",
     "youtube": "",
     "submittableId": ""
+  },
+  {
+    "id": "Moonshift",
+    "name": "Moonshift",
+    "description": "Gamified quest board where projects can create “Shifts” or marketing bounties for their community to collect.",
+    "website": "https://moonshift.app",
+    "logo": "/img/showcase/moonshift_logo.png",
+    "display": "Normal",
+    "oneLiner": "Gamified quest board where projects can create “Shifts” or marketing bounties for their community to collect.",
+    "tags": [
+      "SocialFi"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/MemeFighterCo/Moonshift",
+    "twitter": "https://x.com/moonshiftapp"
+  },
+  {
+    "id": "ICPDA",
+    "name": "InternetComputer DA",
+    "description": "Using canisters and threshold signature to build a DA layer compatible with EigenDA.",
+    "logo": "/img/showcase/icda_logo.png",
+    "display": "Normal",
+    "oneLiner": "Using canisters and threshold signature to build a DA layer compatible with EigenDA.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/C-B-Elite/ICDA"
+  },
+  {
+    "id": "PlexiMail",
+    "name": "PlexiMail",
+    "description": "The end-to-end encrypted, ICP canister-based, trustless secure email service.",
+    "logo": "/img/showcase/pleximail_logo.png",
+    "display": "Normal",
+    "oneLiner": "The end-to-end encrypted, ICP canister-based, trustless secure email service.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "website": "https://ai-fi.cc"
   }
 ]
