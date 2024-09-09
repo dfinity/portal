@@ -221,58 +221,164 @@ Check out the [Azle documentation](https://github.com/demergent-labs/azle/tree/m
 <TabItem value="python" label="Python" default>
 
 ```python
-from kybra import blob, Func, nat16, Opt, query, Query, Record, Tuple, Variant, Vec
-
-
-class HttpRequest(Record):
-    method: str
-    url: str
-    headers: Vec["Header"]
-    body: blob
-
-
-class HttpResponse(Record):
-    status_code: nat16
-    headers: Vec["Header"]
-    body: blob
-    streaming_strategy: Opt["StreamingStrategy"]
-    upgrade: Opt[bool]
-
-
-Header = Tuple[str, str]
-
-
-class StreamingStrategy(Variant):
-    Callback: "CallbackStrategy"
-
-
-class CallbackStrategy(Record):
-    callback: "Callback"
-    token: "Token"
-
-
-Callback = Func(Query[["Token"], "StreamingCallbackHttpResponse"])
-
-
-class StreamingCallbackHttpResponse(Record):
-    body: blob
-    token: Opt["Token"]
+from kybra import (
+    Alias,
+    blob,
+    Func,
+    ic,
+    nat,
+    nat16,
+    Opt,
+    Query,
+    query,
+    Record,
+    StableBTreeMap,
+    Tuple,
+    update,
+    Variant,
+    Vec,
+)
 
 
 class Token(Record):
     arbitrary_data: str
 
 
+class StreamingCallbackHttpResponse(Record):
+    body: blob
+    token: Opt[Token]
+
+
+Callback = Func(Query[[Token], StreamingCallbackHttpResponse])
+
+
+class CallbackStrategy(Record):
+    callback: Callback
+    token: Token
+
+
+class StreamingStrategy(Variant, total=False):
+    Callback: CallbackStrategy
+
+
+HeaderField = Alias[Tuple[str, str]]
+
+
+class HttpResponse(Record):
+    status_code: nat16
+    headers: Vec[HeaderField]
+    body: blob
+    streaming_strategy: Opt[StreamingStrategy]
+    upgrade: Opt[bool]
+
+
+class HttpRequest(Record):
+    method: str
+    url: str
+    headers: Vec[HeaderField]
+    body: blob
+    certificate_version: opt nat16
+
+
+stable_storage = StableBTreeMap[str, nat](
+    memory_id=0, max_key_size=15, max_value_size=1_000
+)
+
+stable_storage.insert("counter", 0)
+
+
+def isGzip(x: HeaderField) -> bool:
+    return x[0].lower() == "accept-encoding" and "gzip" in x[1].lower()
+
+
 @query
 def http_request(req: HttpRequest) -> HttpResponse:
+    ic.print("Hello from http_request")
+
+    if req["method"] == "GET":
+        if next(filter(isGzip, req["headers"]), None) is None:
+            if req["url"] == "/stream":
+                return {
+                    "status_code": 200,
+                    "headers": [("content-type", "text/plain")],
+                    "body": "Counter".encode("utf-8"),
+                    "streaming_strategy": {
+                        "Callback": {
+                            "callback": (ic.id(), "http_streaming"),
+                            "token": {"arbitrary_data": "start"},
+                        }
+                    },
+                    "upgrade": False,
+                }
+            return {
+                "status_code": 200,
+                "headers": [("content-type", "text/plain")],
+                "body": f"Counter is {stable_storage.get('counter')}\n{req['url']}".encode(
+                    "utf-8"
+                ),
+                "streaming_strategy": None,
+                "upgrade": None,
+            }
+        return {
+            "status_code": 200,
+            "headers": [("content-type", "text/plain"), ("content-encoding", "gzip")],
+            "body": bytes(
+                [
+                    31,
+                    139,
+                    8,
+                    0,
+                    152,
+                    2,
+                    27,
+                    98,
+                    0,
+                    3,
+                    43,
+                    44,
+                    77,
+                    45,
+                    170,
+                    228,
+                    2,
+                    0,
+                    214,
+                    128,
+                    43,
+                    5,
+                    6,
+                    0,
+                    0,
+                    0,
+                ]
+            ),
+            "streaming_strategy": None,
+            "upgrade": None,
+        }
+
+    if req["method"] == "POST":
+        return {
+            "status_code": 204,
+            "headers": [],
+            "body": "".encode("utf-8"),
+            "streaming_strategy": None,
+            "upgrade": True,
+        }
+
     return {
-        "status_code": 200,
+        "status_code": 400,
         "headers": [],
-        "body": bytes(),
+        "body": "Invalid request".encode("utf-8"),
         "streaming_strategy": None,
-        "upgrade": False,
+        "upgrade": None,
     }
 ```
+
+:::caution
+
+Kybra canisters must be deployed from a Python virtual environment. [Learn more in the Kybra docs](/docs/current/developer-docs/backend/python/).
+
+:::
 
 Check out the [Kybra documentation](https://demergent-labs.github.io/kybra/http.html) for more info on HTTP requests.
 
@@ -470,58 +576,160 @@ Check out the [Azle documentation](https://github.com/demergent-labs/azle/tree/m
 <TabItem value="python" label="Python" default>
 
 ```python
-from kybra import blob, Func, nat16, Opt, query, Query, Record, Tuple, Variant, Vec
-
-
-class HttpRequest(Record):
-    method: str
-    url: str
-    headers: Vec["Header"]
-    body: blob
-
-
-class HttpResponse(Record):
-    status_code: nat16
-    headers: Vec["Header"]
-    body: blob
-    streaming_strategy: Opt["StreamingStrategy"]
-    upgrade: Opt[bool]
-
-
-Header = Tuple[str, str]
-
-
-class StreamingStrategy(Variant):
-    Callback: "CallbackStrategy"
-
-
-class CallbackStrategy(Record):
-    callback: "Callback"
-    token: "Token"
-
-
-Callback = Func(Query[["Token"], "StreamingCallbackHttpResponse"])
-
-
-class StreamingCallbackHttpResponse(Record):
-    body: blob
-    token: Opt["Token"]
+from kybra import (
+    Alias,
+    blob,
+    Func,
+    ic,
+    nat,
+    nat16,
+    Opt,
+    Query,
+    query,
+    Record,
+    StableBTreeMap,
+    Tuple,
+    update,
+    Variant,
+    Vec,
+)
 
 
 class Token(Record):
     arbitrary_data: str
 
 
-@query
+class StreamingCallbackHttpResponse(Record):
+    body: blob
+    token: Opt[Token]
+
+
+Callback = Func(Query[[Token], StreamingCallbackHttpResponse])
+
+
+class CallbackStrategy(Record):
+    callback: Callback
+    token: Token
+
+
+class StreamingStrategy(Variant, total=False):
+    Callback: CallbackStrategy
+
+
+HeaderField = Alias[Tuple[str, str]]
+
+
+class HttpResponse(Record):
+    status_code: nat16
+    headers: Vec[HeaderField]
+    body: blob
+    streaming_strategy: Opt[StreamingStrategy]
+    upgrade: Opt[bool]
+
+
+class HttpRequest(Record):
+    method: str
+    url: str
+    headers: Vec[HeaderField]
+    body: blob
+
+
+stable_storage = StableBTreeMap[str, nat](
+    memory_id=0, max_key_size=15, max_value_size=1_000
+)
+
+stable_storage.insert("counter", 0)
+
+
+def isGzip(x: HeaderField) -> bool:
+    return x[0].lower() == "accept-encoding" and "gzip" in x[1].lower()
+
+@update
 def http_request_update(req: HttpRequest) -> HttpResponse:
+    ic.print("Hello from update")
+    global stable_storage
+
+    if req["method"] == "POST":
+        counter = stable_storage.get("counter") or 0
+        stable_storage.insert("counter", counter + 1)
+
+        if next(filter(isGzip, req["headers"]), None) is None:
+            return {
+                "status_code": 201,
+                "headers": [("content-type", "text/plain")],
+                "body": f"Counter updated to {stable_storage.get('counter')}".encode(
+                    "utf-8"
+                ),
+                "streaming_strategy": None,
+                "upgrade": None,
+            }
+        return {
+            "status_code": 201,
+            "headers": [("content-type", "text/plain"), ("content-encoding", "gzip")],
+            "body": bytes(
+                [
+                    31,
+                    139,
+                    8,
+                    0,
+                    55,
+                    2,
+                    27,
+                    98,
+                    0,
+                    3,
+                    43,
+                    45,
+                    72,
+                    73,
+                    44,
+                    73,
+                    229,
+                    2,
+                    0,
+                    168,
+                    218,
+                    145,
+                    108,
+                    7,
+                    0,
+                    0,
+                    0,
+                ]
+            ),
+            "streaming_strategy": None,
+            "upgrade": None,
+        }
+
     return {
-        "status_code": 200,
+        "status_code": 400,
         "headers": [],
-        "body": bytes(),
+        "body": "Invalid request".encode("utf-8"),
         "streaming_strategy": None,
-        "upgrade": False,
+        "upgrade": None,
     }
+
+
+@query
+def http_streaming(token: Token) -> StreamingCallbackHttpResponse:
+    ic.print("Hello from http_streaming")
+    if token["arbitrary_data"] == "start":
+        return {"body": " is ".encode("utf-8"), "token": {"arbitrary_data": "next"}}
+    if token["arbitrary_data"] == "next":
+        return {
+            "body": f"{stable_storage.get('counter')}".encode("utf-8"),
+            "token": {"arbitrary_data": "last"},
+        }
+    if token["arbitrary_data"] == "last":
+        return {"body": " streaming\n".encode("utf-8"), "token": None}
+    ic.trap("unreachable")
 ```
+
+:::caution
+
+Kybra canisters must be deployed from a Python virtual environment. [Learn more in the Kybra docs](/docs/current/developer-docs/backend/python/).
+
+:::
 
 Check out the [Kybra documentation](https://demergent-labs.github.io/kybra/http.html) for more info on HTTP requests.
 

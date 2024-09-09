@@ -20,6 +20,52 @@ Kybra allows developers to bring their existing Python skills and workflows to I
 Kybra is a community contributed project and is not maintained by DFINITY. Kybra is developed by [Demergent Labs](https://github.com/demergent-labs), a for-profit company that receives a grant from DFINITY for development of Kybra.
 :::
 
+## Using Kybra
+
+To use Kybra:
+
+- It is highly recommended that `dfx` commands should be run in a Python virtual environment that contains the `kybra` package.
+
+- The virtual environment **must** use the following dependencies and the exact versions listed:
+
+    - `dfx v0.19.0`
+
+    - Python `v3.10.7`
+
+To set up a Python virtual environment and install Kybra, use the following commands:
+
+<Tabs>
+<TabItem value={"linux"} label="Linux">
+```
+curl https://pyenv.run | bash
+~/.pyenv/bin/pyenv install 3.10.7
+~/.pyenv/versions/3.10.7/bin/python -m venv venv
+source venv/bin/activate
+pip install kybra
+```
+</TabItem>
+
+<TabItem value={"macos"} label="macOS">
+```
+brew install pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+source ~/.zprofile
+pyenv install 3.10.7
+~/.pyenv/versions/3.10.7/bin/python -m venv venv
+source venv/bin/activate
+pip install kybra
+```
+</TabItem>
+
+<TabItem value={"windows"} label="Windows">
+
+Kybra is not currently supported on Windows. 
+
+</TabItem>
+</Tabs>
+
 ## Documentation
 
 - [Kybra Python CDK documentation](https://demergent-labs.github.io/kybra/).
