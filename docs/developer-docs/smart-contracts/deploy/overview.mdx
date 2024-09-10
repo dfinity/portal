@@ -100,8 +100,30 @@ To deploy to the mainnet, use the command:
 dfx deploy --network ic
 ```
 
-Deploying canisters to the mainnet will cost cycles.
-[Learn more about cycles and how to acquire them](/docs/developer-docs/getting-started/cycles/cycles-faucet.mdx).
+Deploying canisters to the mainnet will cost cycles. [Learn more about cycles and how to acquire them](/docs/developer-docs/getting-started/cycles/cycles-faucet.mdx).
+
+
+## Sharing links to canisters
+
+Once a dapp has been deployed to the mainnet, each canister can be accessed via a public URL. This URL can be shared with anyone, allowing them to view and interact with your dapp without you needing to configure domain names, DNS records, or other networking configurations.
+
+You can use the following URL format to access a canister in the web browser:
+
+```
+https://<canister_id>.icp0.io
+```
+
+For example, to access a canister with a canister ID of `5h5yf-eiaaa-aaaaa-qaada-cai`:
+
+```
+https://5h5yf-eiaaa-aaaaa-qaada-cai.icp0.io
+```
+
+:::info
+If you are sharing a link to a frontend (asset) canister, the frontend of the dapp will be displayed.
+
+If you are sharing a link to a backend canisters, the [CandidUI](/docs/current/developer-docs/smart-contracts/candid/candid-concepts) will be displayed.
+:::
 
 ### Deploying specific canisters
 
