@@ -52,9 +52,10 @@ Here are some examples calling the management canister:
 ```motoko
 actor {
   let ic = actor "aaaaa-aa" : IC.Self;
-  public func startCanister(canisterId: Principal) : async () {
-	await ic.start_canister({canister_id = canisterId});
-  };
+  public func createCanister(settings: ?canister_settings) : async () {
+    await ic.create_canister({canister_id = canisterId});
+    canister_id : canister_id;
+};
 };
 ```
 
@@ -64,20 +65,7 @@ actor {
 
 ```rust
 #[ic_cdk_macros::update]
-async fn install_code(canister_id: CanisterId, wasm_module: Vec<u8>) {
-    use ic_cdk::api::management_canister::{
-        install_code, CanisterInstallMode, InstallCodeArgumentExtended
-    };
-
-    let arg = InstallCodeArgumentExtended {
-        mode: CanisterInstallMode::Install,
-        canister_id,
-        wasm_module,
-        arg: vec![],
-        sender_canister_version: None,
-    };
-    install_code(arg).await;
-}
+let (canister,) : (candid::Principal,) = ic_cdk::api::call(candid::Principal::management_canister(), "create_canister", ()).await?;
 ```
 </TabItem>
 
@@ -108,18 +96,56 @@ export default class {
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```python
+from kybra import (
+    Async,
+    CallResult,
+    match,
+    Principal,
+    update,
+    Variant,
+)
+from kybra.canisters.management import (
+    CreateCanisterResult,
+    management_canister,
+)
+
+from typing import TypedDict
+
+class ExecuteCreateCanisterResult(Variant, total=False):
+    Ok: CreateCanisterResult
+    Err: str
+
+class State(TypedDict):
+    created_canister_id: Principal
+
+state: State = {"created_canister_id": Principal.from_str("aaaaa-aa")}
+
+
 @update
-def get_raw_rand() -> Async[RawRandResult]:
-    raw_rand_call_result: CallResult[blob] = yield management_canister.raw_rand()
+def execute_create_canister() -> Async[ExecuteCreateCanisterResult]:
+    create_canister_result_call_result: CallResult[
+        CreateCanisterResult
+    ] = yield management_canister.create_canister({"settings": None}).with_cycles(
+        50_000_000_000_000
+    )
+
+    def handle_ok(
+        create_canister_result: CreateCanisterResult,
+    ) -> ExecuteCreateCanisterResult:
+
+        return {"Ok": create_canister_result}
 
     return match(
-        raw_rand_call_result,
-        {
-            "Ok": lambda randomness: {"Ok": randomness},
-            "Err": lambda err: {"Err": err},
-        },
+        create_canister_result_call_result,
+        {"Ok": handle_ok, "Err": lambda err: {"Err": err}},
     )
 ```
+
+:::caution
+
+Kybra canisters must be deployed from a Python virtual environment. [Learn more in the Kybra docs](/docs/current/developer-docs/backend/python/).
+
+:::
 
 </AdornedTab>
 </AdornedTabs>

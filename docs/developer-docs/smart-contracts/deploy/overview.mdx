@@ -194,8 +194,8 @@ Here is an example:
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-This example uses a global timer that gets called immediately after the canister
-starts:
+This example creates a periodic timer that gets called immediately after the
+canister starts:
 
 ```motoko
 import Time "mo:base/Time";
@@ -236,140 +236,21 @@ fn init(timer_interval_secs: u64) {
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-This example creates a timer function that must be manually called once a canister starts:
+This example creates a periodic timer that gets called immediately after the
+canister starts:
 
 ```typescript
-import {
-    call,
-    clearTimer,
-    IDL,
-    query,
-    setTimer,
-    setTimerInterval,
-    update
-} from 'azle';
-
-const StatusReport = IDL.Record({
-    single: IDL.Bool,
-    inline: IDL.Int8,
-    capture: IDL.Text,
-    repeat: IDL.Int8,
-    singleCrossCanister: IDL.Vec(IDL.Nat8),
-    repeatCrossCanister: IDL.Vec(IDL.Nat8)
-});
-type StatusReport = {
-    single: boolean;
-    inline: number;
-    capture: string;
-    repeat: number;
-    singleCrossCanister: Uint8Array;
-    repeatCrossCanister: Uint8Array;
-};
-
-const TimerIds = IDL.Record({
-    single: IDL.Nat64,
-    inline: IDL.Nat64,
-    capture: IDL.Nat64,
-    repeat: IDL.Nat64,
-    singleCrossCanister: IDL.Nat64,
-    repeatCrossCanister: IDL.Nat64
-});
-type TimerIds = {
-    single: bigint;
-    inline: bigint;
-    capture: bigint;
-    repeat: bigint;
-    singleCrossCanister: bigint;
-    repeatCrossCanister: bigint;
-};
-
-let statusReport: StatusReport = {
-    single: false,
-    inline: 0,
-    capture: '',
-    repeat: 0,
-    singleCrossCanister: Uint8Array.from([]),
-    repeatCrossCanister: Uint8Array.from([])
-};
+import { IDL, setTimer, update } from 'azle';
 
 export default class {
-    @update([IDL.Nat64])
-    clearTimer(timerId: bigint): void {
-        clearTimer(timerId);
-        console.info(`timer ${timerId} cancelled`);
-    }
-
-    @update([IDL.Nat64, IDL.Nat64], TimerIds)
-    setTimers(delay: bigint, interval: bigint): TimerIds {
-        const capturedValue = '🚩';
-
-        const singleId = setTimer(delay, oneTimeTimerCallback);
-
-        const inlineId = setTimer(delay, () => {
-            statusReport.inline = 1;
-            console.info('Inline timer called');
-        });
-
-        const captureId = setTimer(delay, () => {
-            statusReport.capture = capturedValue;
-            console.info(`Timer captured value ${capturedValue}`);
-        });
-
-        const repeatId = setTimerInterval(interval, () => {
-            statusReport.repeat++;
-            console.info(`Repeating timer. Call ${statusReport.repeat}`);
-        });
-
-        const singleCrossCanisterId = setTimer(
-            delay,
-            singleCrossCanisterTimerCallback
+    @init([], IDL.Nat64)
+    createTimer(): bigint {
+        const timerId = setTimer(1_000n, () =>
+            console.log('timer callback called')
         );
 
-        const repeatCrossCanisterId = setTimerInterval(
-            interval,
-            repeatCrossCanisterTimerCallback
-        );
-
-        return {
-            single: singleId,
-            inline: inlineId,
-            capture: captureId,
-            repeat: repeatId,
-            singleCrossCanister: singleCrossCanisterId,
-            repeatCrossCanister: repeatCrossCanisterId
-        };
+        return timerId;
     }
-
-    @query([], StatusReport)
-    statusReport(): StatusReport {
-        return statusReport;
-    }
-}
-
-function oneTimeTimerCallback(): void {
-    statusReport.single = true;
-    console.info('oneTimeTimerCallback called');
-}
-
-async function singleCrossCanisterTimerCallback(): Promise<void> {
-    console.info('singleCrossCanisterTimerCallback');
-
-    statusReport.singleCrossCanister = await getRandomness();
-}
-
-async function repeatCrossCanisterTimerCallback(): Promise<void> {
-    console.info('repeatCrossCanisterTimerCallback');
-
-    statusReport.repeatCrossCanister = Uint8Array.from([
-        ...statusReport.repeatCrossCanister,
-        ...(await getRandomness())
-    ]);
-}
-
-async function getRandomness(): Promise<Uint8Array> {
-    return await call('aaaaa-aa', 'raw_rand', {
-        returnIdlType: IDL.Vec(IDL.Nat8)
-    });
 }
 ```
 
@@ -377,27 +258,43 @@ async function getRandomness(): Promise<Uint8Array> {
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-This example creates a timer function that must be manually called once a
+This example creates a periodic timer that gets called immediately after the
 canister starts:
 
 ```python
 from kybra import (
-    Duration,
-    ic,
-    TimerId,
-    update,
+    blob,
+    Duration,
+    ic,
+    query,
+    Record,
+    TimerId,
+    update,
+    void,
 )
 
+class TimerIds(Record):
+    single: TimerId
 
-@update
-def set_timer(delay: Duration) -> TimerId:
-    return ic.set_timer(delay, timer_callback)
+@init
+def set_timers(delay: Duration, interval: Duration) -> TimerIds:
 
+    single_id = ic.set_timer(delay, one_time_timer_callback)
 
-def timer_callback():
-    ic.print("timer_callback")
+    return {
+        "single": single_id,
+    }
 
+def one_time_timer_callback():
+    ic.print("one_time_timer_callback called")
 ```
+
+:::caution
+
+Kybra canisters must be deployed from a Python virtual environment. [Learn more in the Kybra docs](/docs/current/developer-docs/backend/python/).
+
+:::
+
 
 </AdornedTab>
 </AdornedTabs>
