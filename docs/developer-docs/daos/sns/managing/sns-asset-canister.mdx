@@ -83,7 +83,7 @@ Once the asset canister has been handed over to the SNS, only the governance can
 To grant a principal permission within an asset canister, the following command can be used:
 
 ```
-dfx canister call --network ic <canister-id> grant_permission <principal>
+dfx canister call --network ic <canister-id> grant_permission '(record {permission = variant {<Permission: Commit / Prepare / ManagePermissions >}; to_principal = principal "<principal>"})'
 ```
 
 ### Revoking permissions
@@ -91,7 +91,7 @@ dfx canister call --network ic <canister-id> grant_permission <principal>
 To revoke a principal's permission within an asset canister, the following command can be used:
 
 ```
-dfx canister call --network ic <canister-id>  revoke_permission <principal>
+dfx canister call --network ic <canister-id>  revoke_permission '(record {permission = variant {<Permission: Commit / Prepare / ManagePermissions >}; of_principal = principal "<principal>"})'
 ```
 
 ### Listing permissions
@@ -111,7 +111,7 @@ dfx canister call --network ic oa7fk-maaaa-aaaam-abgka-cai list_permitted '(reco
 To list all principals with the `Prepare` permission:
 
 ```
-dfx canister call --network ic oa7fk-maaaa-aaaam-abgka-cai list_permitted '(record {permission = variant {Commit}})'
+dfx canister call --network ic oa7fk-maaaa-aaaam-abgka-cai list_permitted '(record {permission = variant {Prepare}})'
 ```
 
 Once the asset canister has been deployed and permissions have been configured, the SNS decentralization swap can be started. You can learn more about launching an SNS [here](../launching/launch-summary-1proposal.mdx)

@@ -56,6 +56,7 @@ In addition to the `raw_rand` method, Motoko offers a [Random module](/docs/curr
 ```rust
 let (randomBytes,): (Vec<u8>,) = ic_cdk::api::call(Principal.management_canister(), "raw_rand", ()).await?;
 ```
+
 </TabItem>
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
@@ -80,23 +81,40 @@ export default class {
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```python
-from kybra import Async, blob, CallResult, match, update, Variant
-from kybra.canisters.management import management_canister
+from kybra import (
+    Async,
+    blob,
+    CallResult,
+    match,
+    update,
+    Variant,
+)
+from kybra.canisters.management import (
+    management_canister,
+)
 
-
-class RandomBytesResult(Variant, total=False):
+class RawRandResult(Variant, total=False):
     Ok: blob
     Err: str
 
-
 @update
-def random_bytes() -> Async[RandomBytesResult]:
-    call_result: CallResult[blob] = yield management_canister.raw_rand()
+def get_raw_rand() -> Async[RawRandResult]:
+    raw_rand_call_result: CallResult[blob] = yield management_canister.raw_rand()
 
     return match(
-        call_result, {"Ok": lambda ok: {"Ok": ok}, "Err": lambda err: {"Err": err}}
+        raw_rand_call_result,
+        {
+            "Ok": lambda randomness: {"Ok": randomness},
+            "Err": lambda err: {"Err": err},
+        },
     )
 ```
+
+:::caution
+
+Kybra canisters must be deployed from a Python virtual environment. [Learn more in the Kybra docs](/docs/current/developer-docs/backend/python/).
+
+:::
 
 </AdornedTab>
 </AdornedTabs>
