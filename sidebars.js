@@ -139,7 +139,6 @@ const sidebars = {
             },
             "developer-docs/smart-contracts/deploy/custom-testnets",
             "developer-docs/smart-contracts/deploy/larger-wasm",
-            "developer-docs/smart-contracts/deploy/sharing",
           ],
         },
         {
