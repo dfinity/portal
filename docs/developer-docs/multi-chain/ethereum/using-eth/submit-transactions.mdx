@@ -16,7 +16,45 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 To submit transactions to the Ethereum network, first the transaction must be signed and formatted as an ETH transaction. [Learn more about signing transactions](signing-transactions.mdx).
 
-Once you have your raw signed transaction, you can use the EVM RPC canister's RPC method `eth_sendRawTransaction`:
+Once you have your raw signed transaction, you can either programmatically submit the transaction, or use the EVM RPC canister's RPC method `eth_sendRawTransaction`.
+
+### Submitting transactions programmatically
+
+Below is an example demonstrating how to submit a raw ETH transaction programmatically using Rust:
+
+```Rust
+pub async fn send_raw_transaction(
+    tx: String,
+    rpc_services: RpcServices,
+    evm_rpc: EvmRpcCanister,
+) -> SendRawTransactionStatus {
+    let cycles = 10_000_000_000;
+
+    match evm_rpc
+        .eth_send_raw_transaction(rpc_services, None, tx, cycles)
+        .await
+    {
+        Ok((res,)) => match res {
+            MultiSendRawTransactionResult::Consistent(status) => match status {
+                SendRawTransactionResult::Ok(status) => status,
+                SendRawTransactionResult::Err(e) => {
+                    ic_cdk::trap(format!("Error: {:?}", e).as_str());
+                }
+            },
+            MultiSendRawTransactionResult::Inconsistent(_) => {
+                ic_cdk::trap("Status is inconsistent");
+            }
+        },
+        Err(e) => ic_cdk::trap(format!("Error: {:?}", e).as_str()),
+    }
+}
+```
+
+[View the full code example on GitHub](https://github.com/letmejustputthishere/chain-fusion-starter/blob/5b97edabc8d5dacac44795c3db005805804fdb46/packages/ic-evm-utils/src/eth_send_raw_transaction.rs#L211).
+
+### Using the EVM RPC canister
+
+To submit a raw transaction with the EVM RPC canister, make a call to the `eth_sendRawTransaction` method:
 
 ```
 # Configuration
