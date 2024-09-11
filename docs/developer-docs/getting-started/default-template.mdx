@@ -88,9 +88,14 @@ hello/
 ├── src                # Source files directory
 │   ├── hello_backend
 |   |   └── index.ts
-│   ├── hello_frontend
-│   │   ├── index.html
-│   │   └── index.ts
+│   ├── hello_frontend
+│       ├── assets
+│       │   ├── logo.png
+│       │   ├── main.css
+│       │   └── sample-asset.txt
+│       └── src
+│           ├── index.html
+│           └── index.js
 └── tsconfig.json
 ```
 
@@ -113,16 +118,12 @@ hello/
 │       │   ├── main.py
 │   ├── hello_frontend
 │       ├── assets
-|       |── index.html
-|       |── package.json
+│       │   ├── logo.png
+│       │   ├── main.css
+│       │   └── sample-asset.txt
 │       └── src
-│           ├── App.js
-│           ├── index.scss
-│           ├── logo2.svg
-│           ├── main.js
-│           └── vite-env.d.ts
-|       |── tsconfig.json
-|       |── vite.config.js
+│           ├── index.html
+│           └── index.js
 └── tsconfig.json
 ```
 
@@ -241,7 +242,20 @@ By default, the `dfx.json` file will contain automatically generated configurati
                 "node_compatibility": true
             }
         }
+        "hello_frontend": {
+          "dependencies": [
+            "hello_backend"
+          ],
+          "frontend": {
+            "entrypoint": "src/hello_frontend/src/index.html"
+          },
+          "source": [
+            "src/hello_frontend/assets",
+            "dist/hello_frontend/"
+          ],
+          "type": "assets"
     }
+  },
 }
 ```
 
@@ -252,23 +266,35 @@ By default, the `dfx.json` file will contain automatically generated configurati
 ```json title="dfx.json"
 {
   "canisters": {
-    "hello_backend": {
-      "build": "python -m kybra hello_backend src/hello_backend/src/main.py src/hello_backend/hello_backend.did",
-      "candid": "src/hello_backend/hello_backend.did",
-      "gzip": true,
-      "post_install": ".kybra/hello_backend/post_install.sh",
-      "type": "custom",
-      "wasm": ".kybra/hello_backend/hello_backend.wasm"
+      "hello_backend": {
+         "type": "custom",
+          "build": "python -m kybra hello_backend src/hello_backend/src/main.py src/hello_backend/hello_backend.did",
+          "candid": "src/hello_backend/hello_backend.did",
+          "gzip": true,
+          "wasm": ".kybra/hello_backend/hello_backend.wasm"
+              "metadata": [
+                  {
+                      "name": "candid:service",
+                      "path": "src/main.did"
+                  },
+                  {
+                      "name": "cdk:name",
+                      "content": "kybra"
+                  }
+              ],
     },
     "hello_frontend": {
       "dependencies": [
         "hello_backend"
       ],
-      "source": [
-        "src/hello_frontend/dist"
-      ],
-      "type": "assets",
-      "workspace": "hello_frontend"
+      "frontend": {
+        "entrypoint": "src/hello_frontend/src/index.html"
+          },
+          "source": [
+            "src/hello_frontend/assets",
+            "dist/hello_frontend/"
+          ],
+          "type": "assets"
     }
   },
   "defaults": {
@@ -281,7 +307,6 @@ By default, the `dfx.json` file will contain automatically generated configurati
   "version": 1
 }
 ```
-
 
 </AdornedTab>
 </AdornedTabs>
