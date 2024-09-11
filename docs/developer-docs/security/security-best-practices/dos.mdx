@@ -4,32 +4,72 @@ keywords: [security, concept, denial of service, dos, cycles, captcha]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Security best practices: Denial of service
+# Security Best Practices: Denial of Service
 
 <MarkdownChipRow labels={["Intermediate", "Security", "Concept"]} />
 
-## Protect against draining the cycles balance
+## Introduction
 
-### Security concern
+Canisters on the Internet Computer are responsible for managing their own resources, including paying for execution, storage, and messaging with cycles. This makes them efficient, but also exposes them to risks such as Denial of Service (DoS) attacks, which can drain their cycles, and the "noisy neighbor" problem, where other canisters consume excessive resources, impacting performance.
 
-Canisters pay for their cycles which makes them inherently vulnerable to attacks that consume all their cycles.
+In this guide, we will explore how to protect your canisters from these risks and manage resources effectively.
 
-### Recommendation
+## 1. Protecting Against DoS and DDoS Attacks
 
-* Consider monitoring, early authentication, and rate limiting on the canister level to mitigate this. Also, be aware that an attacker will aim for the call consuming most cycles. See the "Cycle balance drain attacks section" in [how to audit an ICP canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister).
+### Understanding DoS and DDoS Attacks
 
-* For query calls that cause significant computation and don't modify the state, it is advisable to not execute the expensive computation if the method is called as an update. However, keep in mind that query calls [don't provide authenticity guarantees](/docs/current/developer-docs/security/security-best-practices/data-integrity-and-authenticity#certify-query-responses-if-they-are-relevant-for-security), so this is a trade-off. Unfortunately, the execution mode of the query (whether it was called as query or update) is currently not directly exposed to the user code. However, one can call a method such as `ic0.data_certificate_present()` which returns `1` when called as query, and `0` for update methods. See the Interface Specification [section on certified data](/docs/current/references/ic-interface-spec#system-api-certified-data).
+A Denial of Service (DoS) attack aims to make a system unavailable by overwhelming it with requests or data. A Distributed Denial of Service (DDoS) attack is a more sophisticated version, where the attack originates from multiple sources, making it harder to block. 
 
-* Expensive calls that only need to be called from other canisters can require some amount of cycles to be sent along with the call to compensate for the cycles consumed by the execution.
+In the case of canisters, such attacks can quickly deplete cycles, making the canister unable to process legitimate requests. Learn more about DoS in the [Security Best Practices: Denial of Service](https://internetcomputer.org/docs/current/developer-docs/security/security-best-practices/dos) guide.
 
-* Finally, it is also an option to charge for ingress messages, but that is not currently supported by the protocol itself and a custom solution would need to be designed.
+### Preventing DoS and DDoS Attacks
 
-## For expensive calls, consider using captchas or proof of work
+To protect your canisters from DoS and DDoS attacks, consider the following strategies:
+- **Bot prevention techniques**: Use methods like captchas or proof of work to ensure only legitimate users can access your canister. Captchas help verify that the user is human, while proof of work requires the user to spend computational resources to proceed, deterring automated attacks. An example implementation can be found in the [Internet Identity project](https://github.com/dfinity/internet-identity).
+- **Monitor cycles usage**: Regularly track your canisters cycles consumption and set alerts for any sudden spikes that may indicate an attack.
+- **Ingress message charging**: While charging for ingress messages (external requests to the canister) is not natively supported, custom solutions could be implemented to make sure that any expensive actions have costs associated with them.
 
-### Security concern
+## 2. Managing Resource Allocation
 
-If an update or query call is expensive in terms of memory used or cycles consumed, this may make it easy for bots to render the canister unusable (e.g. by filling up storage).
+### The "Noisy Neighbor" Problem
 
-### Recommendation
+In a shared resource environment like the Internet Computer, multiple canisters can run on the same subnet. If one canister consumes too many resources (CPU, memory, etc.), it can negatively impact the performance of others on the same subnet. This is known as the "noisy neighbor" problem.
 
-If the dapp offers such operations, consider bot prevention techniques such as adding captchas or proof of work. An example captcha implementation can be found in [Internet Identity](https://github.com/dfinity/internet-identity).
+### Protecting Against Noisy Neighbors
+
+To mitigate the "noisy neighbor" issue, manage your canister's resource allocation effectively:
+- **Memory allocation**: You can set a memory reservation for your canister through the `memory_allocation` setting, ensuring that your canister has enough reserved memory to operate even if other canisters consume large amounts of resources.
+- **Compute reservation**: Similar to memory, you can also reserve compute power for your canister, ensuring it has enough processing power to handle requests. Learn more about managing memory and compute resources in our [Storage](https://internetcomputer.org/docs/current/developer-docs/gas-cost#storage) and [Compute](https://internetcomputer.org/docs/current/developer-docs/gas-cost#compute) guides.
+
+## 3. Managing Cycles
+
+### Cycles and Reserved Cycles
+
+Cycles are a key part of the Internet Computer's resource management system, as they are used to pay for canister operations. To prevent your canister from running out of cycles unexpectedly, you can reserve cycles specifically for future use, helping to ensure consistent operation.
+
+### Managing Reserved Cycles
+
+It's important to monitor and adjust your reserved cycles regularly to meet your canister's needs. Learn more about managing cycles in our [Cycle Bookkeeping and Resource Consumption](https://internetcomputer.org/docs/current/references/ic-interface-spec#cycle-bookkeeping-and-resource-consumption) guide.
+
+## 4. Handling Expensive Calls
+
+### Security Concern: Expensive Calls and DoS
+
+Some calls (update or query) might be expensive in terms of the memory or cycles they consume, making it easy for malicious users to render your canister unusable by draining resources.
+
+### Mitigating the Risk
+
+- **Use captchas or proof of work**: If your application provides expensive operations (such as complex computations or large data storage), consider requiring users to complete a captcha or proof of work before proceeding. This can help prevent bots from abusing your system.
+- **Charge for expensive calls**: You can require that certain expensive calls from other canisters include cycles to compensate for the resources consumed. 
+- **Differentiate between update and query calls**: Expensive computations should generally be avoided for update calls unless absolutely necessary. While query calls are not authenticated, they are faster and less resource-intensive. To check whether a method was called as a query or update, you can use `ic0.data_certificate_present()`.
+
+## 5. Conclusion
+
+In summary, protecting your canisters from DoS attacks and noisy neighbors, and effectively managing resources like memory, compute, and cycles, is crucial for ensuring smooth operation on the Internet Computer. Implementing strategies such as bot prevention, cycles monitoring, and resource allocation will help keep your canisters running efficiently.
+
+### Further Recommendations
+
+- Monitor cycles consumption regularly.
+- Implement early authentication and rate limiting for your canisters.
+- Be aware of attacks targeting high cycles-consuming calls.
+- For more information on auditing canisters for security risks, refer to the [Audit an ICP Canister guide](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister).
