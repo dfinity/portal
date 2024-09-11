@@ -35,6 +35,8 @@ In a shared resource environment like the Internet Computer, multiple canisters 
 To mitigate the "noisy neighbor" issue, manage your canister's resource allocation effectively:
 * **Memory allocation**: You can set a memory reservation for your canister through the `memory_allocation` setting, ensuring that your canister has enough reserved memory to operate even if other canisters consume large amounts of resources.
 * **Compute reservation**: Similar to memory, you can also reserve compute power for your canister, ensuring it has enough processing power to handle requests. Learn more about managing memory and compute resources in our [Storage](https://internetcomputer.org/docs/current/developer-docs/gas-cost#storage) and [Compute](https://internetcomputer.org/docs/current/developer-docs/gas-cost#compute) guides.
+* **Subnet and canister distribution**: Implement a smart canister deployment strategy by monitoring the load on subnets. You can choose to deploy new canisters on less busy subnets or adopt a multi-canister architecture that balances the load across subnets. Be mindful to minimize inter-subnet communication for canisters that frequently interact with each other. Additionally, avoid deploying to known high-traffic subnets where possible, though keep in mind that resource usage can change unexpectedly with new dapps.
+
 
 ## Handle Expensive Calls
 
@@ -45,8 +47,8 @@ Some calls (update or query) might be expensive in terms of the memory or cycles
 ### Recommendation
 
 * **Use captchas or proof of work**: If your application provides expensive operations (such as complex computations or large data storage), consider requiring users to complete a captcha or proof of work before proceeding. This can help prevent bots from abusing your system.
-* **Charge for expensive calls**: You can require that certain expensive calls from other canisters include cycles to compensate for the resources consumed. 
-* **Differentiate between update and query calls**: Expensive computations should generally be avoided for update calls unless absolutely necessary. While query calls are not authenticated, they are faster and less resource-intensive. To check whether a method was called as a query or update, you can use `ic0.data_certificate_present()`.
+* **Charge for expensive calls**: You can require that certain expensive calls from other canisters include cycles to compensate for the resources consumed. One can charge for ingress messages as well. However, that is not currently supported by the protocol itself and a custom solution, such as pre-paying a certain amount, would need to be designed.
+* **Differentiate between update and query calls**: Expensive computations should generally be avoided for update calls unless absolutely necessary. While query calls are not authenticated, they are faster and less resource-intensive. To check whether a method was called as a query or update, you can use `ic0.in_replicated_execution()`.
 
 ### Further Recommendations
 
