@@ -231,41 +231,10 @@ export default class {
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-Python canisters can be written using the Kybra canister development kit. 
+Python canisters can be written using the Kybra canister development kit.
 
-To set up a Python virtual environment, use the following commands:
+To set up a Python virtual environment, follow the [Python installation instructions](/docs/current/developer-docs/backend/python/)
 
-<Tabs>
-<TabItem value={"linux"} label="Linux">
-```
-curl https://pyenv.run | bash
-~/.pyenv/bin/pyenv install 3.10.7
-~/.pyenv/versions/3.10.7/bin/python -m venv venv
-source venv/bin/activate
-pip install kybra
-```
-</TabItem>
-
-<TabItem value={"macos"} label="macOS">
-```
-brew install pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-source ~/.zprofile
-pyenv install 3.10.7
-~/.pyenv/versions/3.10.7/bin/python -m venv venv
-source venv/bin/activate
-pip install kybra
-```
-</TabItem>
-
-<TabItem value={"windows"} label="Windows">
-
-Kybra is not currently supported on Windows.
-
-</TabItem>
-</Tabs>
 
 The default canister code for Kybra projects contains the following:
 
