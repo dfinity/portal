@@ -89,7 +89,7 @@ const TrustCard: React.FC<TrustCardProps> = ({
   linkText,
 }) => (
   <div className="flex flex-col text-white">
-    <img src={imageSrc} alt={imageAlt} className="w-3/10" />
+    <img src={imageSrc} alt={imageAlt} className="w-3/10 mr-auto ml-0" />
     <div className="mt-6 tw-heading-5 md:tw-heading-4 font-bold leading-8">
       {title}
     </div>

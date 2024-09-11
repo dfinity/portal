@@ -1,80 +1,20 @@
 ---
-keywords: [beginner, governance, concept, nns]
+keywords: [intermediate, governance, concept, nns, voting, voting rewards, rewards]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Staking and voting rewards
+# Rewards and maturity
 
-<MarkdownChipRow labels={["Beginner", "Governance", "Concept"]} />
+<MarkdownChipRow labels={["Intermediate", "Governance", "Concept"]} />
 
 ## Overview
-Stakeholders gain voting power and can earn voting rewards by staking their ICP tokens.
+Stakeholders gain voting power and can earn voting rewards by staking their ICP tokens in neurons and participating in governance.
 
-The Internet Computer is a decentralized computer whose evolution is decided by its stakeholders through voting. This means decision impacting the future of the Internet Computer are made by people vested in the outcome. In return for participation in governance, the Internet Computer Procotol provides voting rewards. Voters can vote actively, or they can use a form liquid democracy to automatically follow other voters.
-
-## Key concepts
-
-### Neurons
-
-To become vested and obtain voting power, ICP tokens must first
-be staked, and then locked up for a length of time greater than 6
-months to, at most, 8 years.
-
-Just as tokens are held in a user's account, stake is held in a special
-account called a "neuron". Each neuron has its own identifier, and
-several attributes relating to its stake. These include:
-
-* The length of time it is locked for (the "dissolve delay").
-* Whether it is currently dissolving.
-* How much reward it has accrued as a result of voting on proposals (the "maturity").
-
-Once a neuron is locked for more than six months, it gains the ability
-both to submit proposals and to vote on them. Voting in turn generates
-voting rewards, based on how active a neuron is in voting on proposals.
-If you vote on every open proposal, you gain the maximum reward.
-
-A neuron can also "follow" other neurons, which causes it to
-automatically vote the same as the majority of the neurons that it
-follows.
-
-### Voting power
-
-The voting power of a locked neuron is determined by several factors:
-
-* Principally, by its stake. 1 ICP = the power of 1 vote.
-* Next, by its lock up duration, or dissolve delay. 6 months grants a 1.06x voting power bonus, and 8 years grants 2x. All other durations scale linearly between.
-* Lastly, by its age, or length of time spent locked up without dissolving. 4 years grants a 1.25x bonus, multiplicative with any other bonuses. All other durations between 0 seconds and 4 years scale linearly between.
-
-This means that the maximum voting power, of 2.5 votes per ICP staked,
-is only achievable by locking up your neuron for 8 years, and leaving it
-in that locked up state for 4 years. At that time you will have the most
-voting power for the stake committed.
-
-### Maturity
-
-Maturity of a neuron increases as it collects voting rewards. Each day
-the network rewards participants by allocating to every voting neuron a
-portion of the total reward, based both on its voting power at the time
-proposals were made, and the number of proposals it voted on.
-
-For those who wish to compound gained maturity in their neuron, the most
-natural activity is to "stake maturity" on a regular basis.
-If you wish to liquidate maturity gained, you can use it to produce liquid ICP.
-
-## Why staking matters
-
-Staking is a way of allowing those who support the Internet Computer to
-decide what happens next with the platform.
-
-When the Internet Computer first launched, all proposals required a
-majority vote to pass. Gradually, however, this is changing. After an
-update it is now possible for proposals to pass with only a
-majority among 3% of the total voting power, meaning that proposals
-stand a chance even if large entities abstain and the majority of the
-network does not vote.
-
-## Voting rewards
+The Internet Computer is a decentralized platform whose evolution is decided by its stakeholders through voting.
+This means decisions impacting the future of the Internet Computer are made by people vested in the outcome.
+In return for participation in governance, ICP provides voting rewards.
+Voters can vote actively, or they can use a form of liquid democracy to automatically follow other voters.
 
 Voting rewards are an important aspect of neurons and can be compounded to increase your total voting power. So
 to better understand staking and reward, it may be helpful to look at
@@ -109,7 +49,7 @@ following factors:
 
 * Amount of ICP and maturity staked.
 * Length of dissolve delay.
-* "Age" of the neuron (time spent in a non-dissolving state).
+* Age of the neuron (time spent in a non-dissolving state).
 * Number of eligible proposals the neuron has voted on.
 
 These values are combined to calculate the total voting power of a neuron. It is computed as follows:
@@ -151,7 +91,52 @@ If the five proposals the neuron voted on had a reward weight of two,
 it would have a `weight_of_proposal_votes = 5 * 2`, while the `weight_of_all_proposals = 5 * 2 + 5 * 1`,
 therefore it would receive `(5 * 2) / (5 * 1 + 5 * 2) = 66%` of the rewards for which it is eligible that day.
 
-### Inflationary and deflationary mechanisms
+## Spawning & maturity modulation
+Voting rewards are collected by neurons in the form of maturity.
+As explained in the [neuron overview](/docs/current/developer-docs/daos/nns/concepts/neurons/neuron-overview), maturity can then either be staked or spawned.
+
+### Background and goal
+Maturity is an attribute of a neuron; it is not a tradable asset. The decentralized governance of the Internet Computer can change the treatment of maturity at any time.
+To generate income from maturity, a user needs to trigger a non-deterministic process, which is burning maturity to create new ICP via spawning a neuron.
+The maturity modulation function introduces uncertainty in the creation of tokens from maturity.
+
+### Spawning maturity via the maturity modulation function
+The user triggers spawn maturity. A new neuron will be immediately spawned; however, this newly spawned neuron will have no ICP at start, only maturity.
+Spawned neurons will have a dissolve delay of 7 days and will be set to dissolving at the time of spawning. After 7 days when the neuron is dissolved, the amount of ICP, modulated by the function introduced below, will be minted from the neuron's maturity and be available to the user.
+
+### Description of the maturity modulation function
+
+At the day of modulation, for each of the last 29 days, a 30-day moving average ICP/cycles conversion rate is determined, which is displayed on the Internet Computer dashboard. These are labeled `a1` through `a29`, where `a1` denotes the average rate on the previous day, `a2` denotes the rate 2 days ago and so on. The 30-day moving average conversion rates are used because they exhibit less variance than day-to-day conversion rates.
+
+Then, compute the relative 7-day return for each of the last 4 weeks. Thus:
+* `w1 = (a1 - a8) / a8`,
+* `w2 = (a8 - a15) / a15`,
+* `w3 = (a15 - a22) / a22`,
+* `w4 = (a22 - a29) / a29`.
+
+* The values w1, w2, w3, and w4 are bounded from -0.05 to 0.05 by clipping values to the limits of this range, i.e., capping by 0.05 and flooring by -0.05.
+* Take the average `w = (w1 + w2 + w3 + w4) / 4`.
+* The resulting value w is a number between -5% and 5% that determines modulation.
+* The maturity amount x is converted to x * (1+w) units of ICP.
+
+The maturity modulation function is updated once a day.
+
+### Example
+On Feb 1, 2022, the modulation function is 0.73% which is the average of the relative weekly returns w1 = -4.59%, w2 =-0.63%, w3=5.00%, w4 = 3.13%.
+If a user disburses on that day (day of transfer) 100 maturity, then this will result in 100.73 ICP.
+
+### Motivation and Analysis
+
+Evidently, this process introduces a certain amount of uncertainty for the conversion from maturity to ICP. However this uncertainty is limited in two ways:
+* The modulation value w is between -5% and +5%: This implies that, e.g., 100 maturity will be converted into an ICP amount in the range of 95 and 105. This kind of volatility is well in the range of daily conversion rate fluctuations of ICP.
+* The modulation value w is calculated at the day of modulation as `w = (w1+ w2+ w3 + w4) / 4`. At the day of initiation (7 days prior), the user can already determine `(w2+ w3 + w4)/4`. The missing value w1 can affect the modulation value at most by 1.25% (5%/4) up or down.
+
+The modulation value can change by at most 2.5% from one week to the next, as one week drops out of the window and
+one week enters the calculation window.
+
+The modulation function gives an incentive for users to disburse maturity when the ICP/Cycles conversion rate has been increasing over time and to hold back when the ICP has been decreasing recently. For example if the ICP/Cycles conversion rate was monotonically increasing, then w1, w2, w3, w4 are positive and thus also w, incentivizing users to convert a maturity amount x to x * (1+w) units of ICP.
+
+## Inflationary and deflationary mechanisms
 
 Deflationary mechanisms:
 

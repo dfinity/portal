@@ -287,6 +287,11 @@ div[class^="announcementBarContent"] {
 .component-fade-in {
   animation: fade-in 500ms ease-out backwards;
 }
+
+.mt-navbar-negative {
+  margin-top: calc(var(--ifm-navbar-height) * -1);
+}
+
 .marquee-container {
   width: 100%;
   overflow: hidden;

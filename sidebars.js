@@ -138,8 +138,6 @@ const sidebars = {
               id: "developer-docs/smart-contracts/deploy/overview",
             },
             "developer-docs/smart-contracts/deploy/custom-testnets",
-            "developer-docs/smart-contracts/deploy/larger-wasm",
-            "developer-docs/smart-contracts/deploy/sharing",
           ],
         },
         {
@@ -399,6 +397,7 @@ const sidebars = {
                   type: "category",
                   label: "Advanced dfx workflows",
                   items: [
+                    "developer-docs/developer-tools/cli-tools/advanced-dfx/check-chunk-store",
                     "developer-docs/developer-tools/cli-tools/advanced-dfx/dfx-migration",
                     "developer-docs/developer-tools/cli-tools/advanced-dfx/init-args",
                     "developer-docs/developer-tools/cli-tools/advanced-dfx/networks-json",
@@ -1124,32 +1123,47 @@ const sidebars = {
             {
               type: "category",
               label: "Using the NNS dapp",
-              items: ["developer-docs/daos/nns/nns-app-quickstart"],
+              items: [
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart",
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-send-and-receive-tokens",
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-staking-a-neuron",
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-voting-on-proposals",
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-following-other-neurons",
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-advanced-neuron-operations",
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-manage-quill-neurons",
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-additional-features",
+              ],
             },
             {
               type: "category",
-              label: "Neurons",
+              label: "Concepts",
               items: [
-                "developer-docs/daos/nns/neuron-management",
-                "developer-docs/daos/nns/staking-voting-rewards",
-              ],
-            },
-            "developer-docs/daos/nns/neurons-fund",
-            {
-              type: "category",
-              label: "Proposals",
-              items: [
-                "developer-docs/daos/nns/proposal-overview",
-                "developer-docs/daos/nns/proposal-lifecycle",
-                "developer-docs/daos/nns/proposal-voting",
-                {
-                  type: "category",
-                  label: "Advanced",
-                  items: ["developer-docs/daos/nns/proposal-advanced"],
-                },
-              ],
-            },
+              {
+                type: "category",
+                label: "Neurons",
+                items: [
+                  "developer-docs/daos/nns/concepts/neurons/neuron-overview",
+                  "developer-docs/daos/nns/concepts/neurons/neuron-following",
+                  "developer-docs/daos/nns/concepts/neurons/staking-voting-rewards",
+                  "developer-docs/daos/nns/concepts/neurons/neuron-management",
+                  "developer-docs/daos/nns/concepts/neurons/becoming-a-known-neuron",
+                ],
+              },
+              {
+                type: "category",
+                label: "Proposals",
+                items: [
+                  "developer-docs/daos/nns/concepts/proposals/proposal-overview",
+                  "developer-docs/daos/nns/concepts/proposals/direct-voting",
+                  "developer-docs/daos/nns/concepts/proposals/proposal-topics",
+                  "developer-docs/daos/nns/concepts/proposals/verify-proposals",
+                  "developer-docs/daos/nns/concepts/proposals/proposal-submit",
+                ],
+              },
+            "developer-docs/daos/nns/concepts/neurons-fund",
           ],
+        },
+        ],
         },
         {
           type: "category",
@@ -1579,6 +1593,7 @@ hackathon: [
         "developer-docs/backend/rust/rust-considerations",
         "developer-docs/backend/rust/timers",
         "developer-docs/backend/rust/stable-structures",
+        "developer-docs/backend/rust/rust-limitations",
         "developer-docs/backend/rust/samples",
       ],
     },

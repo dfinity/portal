@@ -14,19 +14,27 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-Canisters can serve or handle an incoming HTTP request using the [HTTP Gateway Protocol](/docs/current/references/http-gateway-protocol-spec).
+Canisters can serve or handle an incoming HTTP request using the
+[HTTP Gateway Protocol](/docs/current/references/http-gateway-protocol-spec).
 
 This allows developers to host web applications and APIs from a canister.
 
 ## How it works
 
-An HTTP request from a client gets intercepted by the HTTP Gateway Protocol, which identifies the target canister and encodes the request in Candid. This encoded request is then sent to the canister for processing. Once processed, the canister replies with an HTTP response. Finally, the HTTP Gateway Protocol decodes the response using Candid and sends it back to the client, completing the communication loop.
+An HTTP request from a client gets intercepted by the HTTP Gateway Protocol,
+which identifies the target canister and encodes the request in Candid. This
+encoded request is then sent to the canister for processing. Once processed, the
+canister replies with an HTTP response. Finally, the HTTP Gateway Protocol
+decodes the response using Candid and sends it back to the client, completing
+the communication loop.
 
-For detailed information on how it works, please refer to the [HTTP Gateway Protocol specification](/docs/current/references/http-gateway-protocol-spec).
+For detailed information on how it works, please refer to the
+[HTTP Gateway Protocol specification](/docs/current/references/http-gateway-protocol-spec).
 
 ## How to make a request
 
-The following example returns 'Hello, World!' in the body at the `/hello` endpoint.
+The following example returns 'Hello, World!' in the body at the `/hello`
+endpoint.
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko">
@@ -135,54 +143,53 @@ fn http_request(req: HttpRequest) -> HttpResponse {
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
-import {
-    blob,
-    bool,
-    Canister,
-    Func,
-    nat16,
-    None,
-    Opt,
-    query,
-    Record,
-    text,
-    Tuple,
-    Variant,
-    Vec
-} from 'azle';
+import { IDL, query } from 'azle';
 
-type HeaderField = [text, text];
-const HeaderField = Tuple(text, text);
+type HeaderField = [string, string];
+const HeaderField = IDL.Tuple(IDL.Text, IDL.Text);
 
-const HttpResponse = Record({
-    status_code: nat16,
-    headers: Vec(HeaderField),
-    body: blob,
+type HttpResponse = {
+    status_code: number;
+    headers: HeaderField[];
+    body: Uint8Array;
+};
+const HttpResponse = IDL.Record({
+    status_code: IDL.Nat16,
+    headers: IDL.Vec(HeaderField),
+    body: IDL.Vec(IDL.Nat8)
 });
 
-const HttpRequest = Record({
-    method: text,
-    url: text,
-    headers: Vec(HeaderField),
-    body: blob,
+type HttpRequest = {
+    method: string;
+    url: string;
+    headers: HeaderField[];
+    body: Uint8Array;
+};
+const HttpRequest = IDL.Record({
+    method: IDL.Text,
+    url: IDL.Text,
+    headers: IDL.Vec(HeaderField),
+    body: IDL.Vec(IDL.Nat8)
 });
 
-export default class{
-    @query([HttpRequest], HttpResponse, (req) => {
-        const path = req.url.pathname;
-        if(path == "/hello") {
+export default class {
+    @query([HttpRequest], HttpResponse)
+    getThing(req: HttpRequest): HttpResponse {
+        const path = new URL(req.url).pathname;
+        if (path === '/hello') {
             return {
                 status_code: 200,
                 headers: [],
                 body: Buffer.from('hello, world!')
             };
-        } return {
-            body: Text.encodeUtf8("404 Not found :");
-            headers: [];
-            status_code:404;
         }
-    }),
-};
+        return {
+            body: new TextEncoder().encode('404 Not found :'),
+            headers: [],
+            status_code: 404
+        };
+    }
+}
 ```
 
 </AdornedTab>
@@ -199,12 +206,38 @@ class HttpRequest(Record):
     headers: Vec["Header"]
     body: blob
 
+
 class HttpResponse(Record):
     status_code: nat16
     headers: Vec["Header"]
     body: blob
+    streaming_strategy: Opt["StreamingStrategy"]
+    upgrade: Opt[bool]
+
 
 Header = Tuple[str, str]
+
+
+class StreamingStrategy(Variant):
+    Callback: "CallbackStrategy"
+
+
+class CallbackStrategy(Record):
+    callback: "Callback"
+    token: "Token"
+
+
+Callback = Func(Query[["Token"], "StreamingCallbackHttpResponse"])
+
+
+class StreamingCallbackHttpResponse(Record):
+    body: blob
+    token: Opt["Token"]
+
+
+class Token(Record):
+    arbitrary_data: str
+
 
 @query
 def http_request(req: HttpRequest) -> HttpResponse:
@@ -222,11 +255,18 @@ def http_request(req: HttpRequest) -> HttpResponse:
             "body": b"404 Not found :",
 }
 ```
-To learn more about serving an HTTP request in Python, refer to [the Kybra book reference on incoming HTTP requests](https://demergent-labs.github.io/kybra/http.html).
+
+To learn more about serving an HTTP request in Python, refer to
+[the Kybra book reference on incoming HTTP requests](https://demergent-labs.github.io/kybra/http.html).
 
 </AdornedTab>
 </AdornedTabs>
 
 ## Additional examples
 
-The [HTTP counter project](../../../references/samples/motoko/http_counter) is an example in Motoko of a 'counter' application that uses the `http_request` method to read the current counter value or access some pre-stored data and the `http_request_update` method to increment the counter and retrieve the updated value.
+The
+[HTTP counter project](https://github.com/dfinity/examples/tree/master/motoko/http_counter)
+is an example in Motoko of a 'counter' application that uses the `http_request`
+method to read the current counter value or access some pre-stored data and the
+`http_request_update` method to increment the counter and retrieve the updated
+value.

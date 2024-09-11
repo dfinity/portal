@@ -36,6 +36,17 @@ const cveData = [
     cvss: "Medium (5.9/10)",
     issued: "May 21, 2024",
   },
+  {
+    cve: "CVE-2024-7884",
+    description:
+      "Memory leak when calling a canister method via ic_cdk::call",
+    reference:
+      "https://github.com/advisories/GHSA-rwq6-crjg-9cpw",
+    products: "ic-cdk (Rust)",
+    versions: ">= 0.8.0, < 0.8.2; >= 0.9.0, < 0.9.3; >= 0.10.0, < 0.10.1; >= 0.11.0, < 0.11.5; >= 0.12.0, < 0.12.2; >= 0.13.0, < 0.13.4; >= 0.14.0, < 0.14.1; >= 0.15.0, < 0.15.1",
+    cvss: "High (7.5/10)",
+    issued: "Sep 05, 2024",
+  },
 ];
 
 const TableCell = ({ children }) => (
