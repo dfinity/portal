@@ -1,0 +1,34 @@
+---
+keywords: [advanced, concept, signing transactions, signatures, teddsa, chain-key signatures]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Threshold EdDSA
+
+<MarkdownChipRow labels={["Advanced", "Concept"]} />
+
+## Overview
+The Internet Computer implements a novel threshold EdDSA protocol as part of its chain-key signatures suite. In this protocol, the private EdDSA key exists only as secret shares held by nodes. Secret shares are shards of the EdDSA private key. Signatures are computed using those secret shares without the private key ever being reconstructed. Each replica of such subnet holds a key share that provides no information on its own. More than one third of the nodes are required to generate a threshold signature using their respective key shares.
+
+Besides the actual threshold signing protocol, chain-key EdDSA is comprised of protocols for secure, distributed key generation and periodic key resharing. Distributed key generation enables the nodes on a subnet to collaboratively generate keys, while periodic key resharing allows for EdDSA keys to be re-shared within the subnet. This makes chain-key EdDSA signatures much more powerful than any off-the-shelf threshold EdDSA protocol.
+
+Each canister on a subnet has control over a unique EdDSA public key and can request signatures for this public key. Canisters do not have access to their private EdDSA keys. They can only request signatures. This is because the private key is never stored in a single place.
+
+Threshold EdDSA enables many important use cases:
+
+-   Integration with Solana, Cardano, Polkadot, and other chains that support EdDSA and E25519 signature schemes.
+
+## Signing messages and transactions
+
+Threshold EdDSA can be used by making calls to the threshold Schnorr API and specifying the ed25519 curve.
+
+[Learn how to use Threshold EdDSA to sign messages and transactions](./signing-messages-t-schnorr.mdx).
+
+## Resources
+- [Chain-key ECDSA signatures: technology overview](/docs/current/references/t-sigs-how-it-works/).
+
+- [Eurocrypt 2022 paper](https://eprint.iacr.org/2021/1330).
+
+- [Sample code for `threshold-eddsa`](https://github.com/domwoe/schnorr_canister/blob/main/src/lib.rs).
+

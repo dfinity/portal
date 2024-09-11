@@ -302,6 +302,7 @@ const sidebars = {
               label: "On-chain signatures",
               items: [
                 "developer-docs/smart-contracts/signatures/t-ecdsa",
+                "developer-docs/smart-contracts/signatures/t-eddsa",
                 "developer-docs/smart-contracts/signatures/t-schnorr",
                 {
                   type: "category",
