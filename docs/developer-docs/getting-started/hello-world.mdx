@@ -71,9 +71,14 @@ Download and install the latest version of [dfx](install/index.mdx). `dfx` is a 
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ```
 
-:::info
-For Kybra projects, you will need to install `dfx` version `0.19.0` or newer, and you must run all `dfx` commands in a Python virtual environment.
-:::
+### Install `wasm32-unknown-unknown`
+
+ICP smart contracts are compiled into WebAssembly modules. To support this compilation, install the `wasm32-unknown-unknown` package:
+
+```
+cargo build
+rustup target add wasm32-unknown-unknown
+```
 
 ### Install [Node.js](https://nodejs.org/en/download)
 
@@ -231,41 +236,7 @@ export default class {
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-Python canisters can be written using the Kybra canister development kit. 
-
-To set up a Python virtual environment, use the following commands:
-
-<Tabs>
-<TabItem value={"linux"} label="Linux">
-```
-curl https://pyenv.run | bash
-~/.pyenv/bin/pyenv install 3.10.7
-~/.pyenv/versions/3.10.7/bin/python -m venv venv
-source venv/bin/activate
-pip install kybra
-```
-</TabItem>
-
-<TabItem value={"macos"} label="macOS">
-```
-brew install pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-source ~/.zprofile
-pyenv install 3.10.7
-~/.pyenv/versions/3.10.7/bin/python -m venv venv
-source venv/bin/activate
-pip install kybra
-```
-</TabItem>
-
-<TabItem value={"windows"} label="Windows">
-
-Kybra is not currently supported on Windows.
-
-</TabItem>
-</Tabs>
+Python canisters can be written using the Kybra canister development kit. [Learn more about setting up Kybra](/docs/current/developer-docs/backend/python/).
 
 The default canister code for Kybra projects contains the following:
 

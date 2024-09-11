@@ -69,6 +69,15 @@ The IC SDK is composed of several components that are required for developing on
 - `moc`: The Motoko runtime compiler.
 - `replica`: The Internet Computer's local network binary.
 
+### Install `wasm32-unknown-unknown`
+
+ICP smart contracts are compiled into WebAssembly modules. To support this compilation, install the `wasm32-unknown-unknown` package:
+
+```
+cargo build
+rustup target add wasm32-unknown-unknown
+```
+
 ### Download and install a code editor
 
 To write and edit code, you will need a code editor. macOS and Linux systems come with some basic editors, such as `vi` or `nano`, but these have very limited functionality and can be hard to use.
