@@ -58,7 +58,7 @@ pub async fn transfer_eth(
 
 ## Format, hash, and sign a transaction
 
-Ethereum EIP1559 transactions are hashed and signed using the Keccak256 algorithm. Below is an example written in Rust demonstrating how to format a raw ETH transaction and hash it using Keccak256. This code snippet accomplishes the following:
+Ethereum EIP1559 transactions are first hashed with the Keccak256 algorithm and then signed using the private key. Below is an example written in Rust demonstrating how to format a raw ETH transaction, hash it using Keccak256 and sign the hash using Threshold ECDSA. This code snippet accomplishes the following:
 
 - Formats the transaction.
 
@@ -79,12 +79,15 @@ pub async fn sign_eip1559_transaction(
     let ecdsa_pub_key =
         get_canister_public_key(key_id.clone(), None, derivation_path.clone()).await;
 
+    // Formats the transaction using RLP encoding
     let mut unsigned_tx_bytes = tx.rlp().to_vec();
-    unsigned_tx_bytes.insert(0, EIP1559_TX_ID);
+    unsigned_tx_bytes.insert(0, EIP1559_TX_ID); 
 
+    // Hashes the transaction using Keccak256
     let txhash = keccak256(&unsigned_tx_bytes);
 
-    let signature = sign_with_ecdsa(SignWithEcdsaArgument {
+    // Sign the transaction hash using Threshold Signature
+    let signature = sign_with_ecdsa(SignWithEcdsaArgument { 
         message_hash: txhash.to_vec(),
         derivation_path,
         key_id,
@@ -100,6 +103,7 @@ pub async fn sign_eip1559_transaction(
         s: U256::from_big_endian(&signature[32..64]),
     };
 
+    // Rebuild the raw transaction which includes the VRS signatures
     let mut signed_tx_bytes = tx.rlp_signed(&signature).to_vec();
     signed_tx_bytes.insert(0, EIP1559_TX_ID);
 
@@ -110,8 +114,6 @@ pub async fn sign_eip1559_transaction(
 [View the full code example on GitHub](https://github.com/letmejustputthishere/chain-fusion-starter/blob/5b97edabc8d5dacac44795c3db005805804fdb46/packages/ic-evm-utils/src/evm_signer.rs#L52).
 
 Additional examples of signing transactions can be found in the [threshold ECDSA documentation](/docs/current/developer-docs/smart-contracts/signatures/signing-messages-t-ecdsa).
-
-## Rebuild the raw transaction
 
 ## Submit transaction
 
