@@ -46,7 +46,7 @@ Some calls (update or query) might be expensive in terms of the memory or cycles
 
 * **Use captchas or proof of work**: If your application provides expensive operations (such as complex computations or large data storage), consider requiring users to complete a captcha or proof of work before proceeding. This can help prevent bots from abusing your system.
 * **Charge for expensive calls**: You can require that certain expensive calls from other canisters include cycles to compensate for the resources consumed. One can charge for ingress messages as well. However, that is not currently supported by the protocol itself and a custom solution, such as pre-paying a certain amount, would need to be designed.
-* **Differentiate between update and query calls**: Expensive computations should generally be avoided for update calls unless absolutely necessary. While query calls are not authenticated, they are faster and less resource-intensive. To check whether a method was called as a query or update, you can use `ic0.in_replicated_execution()`.
+* **Differentiate between update and query calls**: Expensive computations should generally be avoided for update calls unless absolutely necessary. While query calls are not authenticated, they are faster and less resource-intensive. To check whether a method was called as a query or update call, you can use `ic0.in_replicated_execution()`.
 
 ### Further Recommendations
 
