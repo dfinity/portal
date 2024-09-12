@@ -595,13 +595,10 @@ const redirects = `
   /docs/current/developer-docs/getting-started/ /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/developer-docs/defi/wallets/workflow /docs/current/developer-docs/defi/wallets/overview
   /docs/current/developer-docs/backend/rust/infrastructure /docs/current/developer-docs/backend/rust/
-<<<<<<< HEAD
   /docs/current/developer-docs/ai/ai-on-chain /docs/current/developer-docs/ai/samples
   /docs/current/developer-docs/ai/machine-learning-sample /docs/current/developer-docs/ai/samples
-=======
   /docs/current/developer-docs/smart-contracts/deploy/larger-wasm /docs/current/developer-docs/smart-contracts/install
   /docs/current/developer-docs/smart-contracts/deploy/sharing /docs/current/developer-docs/smart-contracts/deploy/overview
->>>>>>> master
   `
 .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
