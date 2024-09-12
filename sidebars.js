@@ -341,6 +341,11 @@ const sidebars = {
               label: "Troubleshooting latency",
               id: "developer-docs/smart-contracts/best-practices/troubleshooting",
             },
+            {
+              type: "doc",
+              label: "Retries & Idempotency",
+              id: "developer-docs/smart-contracts/best-practices/idempotency",
+            },
           ],
         },
       ],
