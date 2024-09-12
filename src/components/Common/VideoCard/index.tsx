@@ -2,6 +2,7 @@ import Link from "@docusaurus/Link";
 import PlaySVG from "@site/static/img/svgIcons/play.svg";
 import clsx from "clsx";
 import React, { ReactNode } from "react";
+import LinkArrowUpRight from "../Icons/LinkArrowUpRight";
 
 export const PlayButton: React.FC<{}> = ({}) => {
   return (
@@ -27,6 +28,33 @@ export const ImageOnlyVideoCard: React.FC<{
     >
       <PlayButton />
     </Link>
+  );
+};
+
+export const TitleVideoCard: React.FC<{
+  image: string;
+  href: string;
+  title: string;
+  className?: string;
+}> = ({ image, href, title, className = "" }) => {
+  return (
+    <div className="rounded-xl overflow-hidden bg-white flex flex-col w-full">
+      <Link className="aspect-video flex relative group" href={href}>
+        <img src={image} alt={title} className="w-full h-full object-cover" />
+
+        <PlayButton />
+      </Link>
+      <div className="px-6 pt-8 pb-6 flex flex-col flex-1">
+        <h3 className={`tw-heading-5 mb-3 line-clamp-2`}>{title}</h3>
+        <div className="flex-1"></div>
+        <div>
+          <Link href={href} className="link-primary link-with-icon">
+            Watch now
+            <LinkArrowUpRight />
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 };
 
