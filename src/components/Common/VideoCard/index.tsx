@@ -20,7 +20,7 @@ export const ImageOnlyVideoCard: React.FC<{
   return (
     <Link
       className={clsx(
-        "col-span-1 aspect-video rounded-xl bg-cover bg-center relative group",
+        "col-span-1 aspect-video rounded-2xl bg-cover bg-center relative group",
         className
       )}
       href={href}

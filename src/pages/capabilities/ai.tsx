@@ -143,23 +143,27 @@ function AISubPage() {
                 <LinkArrowRight /> Explore the fastest growing AI Ecosystem in
                 Web3
               </Link>
-              <motion.p
-                className="md:container-8 tw-lead-sm md:tw-lead-lg my-20 md:my-40  text-left"
+              <motion.div
+                className="flex flex-row md:flex-col my-20 md:my-40 text-left"
                 variants={transitions.item}
               >
-                AI will be at the heart of everything, driving economies,
-                industries, and our daily lives.{" "}
-                <span className="text-gradient-violet">
-                  AI on the Internet Computer
-                </span>{" "}
-                marks a major technological leap by bringing AI on-chain,
-                ensuring decentralized, tamper-proof, and privacy-preserving
-                solutions that address critical issues like security,
-                transparency, and reliability. By running AI as smart contracts
-                on ICP, we unlock transformative use cases across sectors, from
-                healthcare to finance, while laying the foundation for a new
-                AI-driven digital economy.
-              </motion.p>
+                <motion.div className="w-full md:w-[30%] flex flex-col">
+                  <ImageOnlyVideoCard
+                    href="https://www.youtube.com/watch?v=6qLvIXiCGcM"
+                    image="/img/ai-chain/video_ai.webp"
+                    className="flex-1"
+                  />
+                  <motion.p className="tw-lead-sm text-black/60 mt-6">
+                    Dominic Williams on AI on ICP
+                  </motion.p>
+                </motion.div>
+                <motion.p className="w-full md:w-[70%] tw-lead-sm md:tw-lead-lg"></motion.p>
+                Al will be at the heart of everything, driving economies and our
+                daily lives. Al on ICP marks a major technological leap by
+                bringing Al on-chain, ensuring decentralized, tamper-proof, and
+                privacy-preserving solutions that address critical issues like
+                security, transparency, and reliability.
+              </motion.div>
             </div>
           </section>
         </AnimateSpawn>
@@ -218,7 +222,7 @@ function AISubPage() {
             </motion.div>
           </AnimateSpawn>
           <aside className="container-12">
-            <motion.div className="bg-white rounded-2xl p-10 md:p-16 flex flex-col md:flex-row gap-8 md:gap-20">
+            <motion.div className="bg-white rounded-2xl p-10 md:p-16 flex flex-col md:flex-row gap-8 md:gap-20 mb-5">
               <article className="flex flex-col justify-start tw-lead-sm md:tw-lead">
                 <div className="md:w-7/10">
                   <span className="text-black">
@@ -248,6 +252,66 @@ function AISubPage() {
                   />
                 </div>
               </article>
+            </motion.div>
+            <motion.div className="flex gap-5">
+              <motion.div className="w-full md:w-1/2 bg-white rounded-2xl p-10 md:p-16 flex flex-col gap-8 md:gap-20">
+                {" "}
+                <article className="flex flex-col justify-start tw-lead-sm md:tw-lead">
+                  <div>
+                    <span className="text-black">
+                      Floating point optimized computation.
+                    </span>
+                    <span className="text-black/50">
+                      {" "}
+                      ICP’s next-gen smart contracts provide significantly
+                      higher computational power per transaction compared to
+                      current-generation blockchains (two orders of magnitude).
+                      In addition, with newly added support for WebAssembly
+                      128-bit SIMD, smart contracts can execute multiple
+                      floating point operations in parallel, making running AI
+                      models much faster and more efficient.
+                    </span>
+                  </div>
+                </article>
+                <article className="flex flex-col justify-start tw-lead-sm md:tw-lead">
+                  <div className="w-[90%]">
+                    <img
+                      src="/img/ai-chain/chart1.svg"
+                      alt=""
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                </article>
+              </motion.div>
+              <motion.div className="w-full md:w-1/2 flex flex-col gap-5">
+                <motion.div className="bg-white rounded-2xl p-10 md:p-16 flex flex-col gap-8 md:gap-20">
+                  <article className="flex flex-col justify-start tw-lead-sm md:tw-lead">
+                    <div>
+                      <span className="text-black">
+                        Hardware-accelerated AI Inference API.
+                      </span>
+                      <span className="text-black/50">
+                        {" "}
+                        With the upcoming AI inference API, smart contracts will
+                        be able to run larger AI models more efficiently. <br />
+                        <br />
+                      </span>
+                    </div>
+                    <div>
+                      <span className="text-black/60 text-paragraph">
+                        This specialized API brings hardware acceleration
+                        features such as 256-bit SIMD and parallelization across
+                        multiple CPU cores. Future GPU subnets will benefit from
+                        GPU acceleration, making AI models substantially more
+                        efficient to run.
+                      </span>
+                    </div>
+                    <div className="self-start text-white rounded-full bg-white-60 gap-[10px] text-[0.75rem] md:text-[1rem] px-4 mt-6 font-[450]">
+                      coming soon
+                    </div>
+                  </article>
+                </motion.div>
+              </motion.div>
             </motion.div>
           </aside>
         </section>
