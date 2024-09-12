@@ -1092,8 +1092,7 @@ const sidebars = {
           label: "Overview",
           id: "developer-docs/ai/overview",
         },
-        "developer-docs/ai/ai-on-chain",
-        "developer-docs/ai/machine-learning-sample",
+        "developer-docs/ai/samples",
       ],
     },
     {
