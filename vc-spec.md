@@ -1,1 +1,0 @@
-../../submodules/internetidentity/docs/vc-spec.md
