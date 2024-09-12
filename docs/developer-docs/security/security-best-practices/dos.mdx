@@ -40,7 +40,9 @@ Learn more about managing memory and compute resources in our [Storage](https://
 
 ### Security Concern
 
-Some calls (update or query) might be expensive in terms of the memory or cycles they consume, making it easy for malicious users to render your canister unusable by draining resources.
+Some calls (update or query) might be expensive in terms of the memory or cycles they consume. For example, any function using chain-key signing or HTTPS outcalls are relatively expensive. See the [additional documentation](https://internetcomputer.org/docs/current/developer-docs/gas-cost#special-features) on cycles cost details and for other examples.
+
+An attacker will target expensive calls to drain cycles balance or available memory quickly.
 
 ### Recommendation
 
