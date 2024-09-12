@@ -13,7 +13,7 @@ connection until the request status has been removed from the state tree (recall
 that ICP will remove the request from the system state tree some time after
 ingress expiry).
 
-Thus, it is important to design and/or use canister APIs such that it is possible to retry requests safely, even when the ICP doesn't provide any information as to previous request attempts. This page describes general approaches to safe retries, both from the side of the canister and from the side of the client.
+Thus, it is important to design and/or use canister APIs such that it is possible to retry requests safely, even when the ICP doesn't provide any information as to previous request attempts. This page describes general approaches that both the canister authors and the clients can adopt to enable safe retries.
 
 ## Idempotent Canister APIs
 
@@ -33,7 +33,7 @@ The advantages of this approach are:
 
 The approach also has some disadvantages:
 1. It limits the throughput. When per-caller sequence numbers are used, it means that the caller can generally perform only one ingress call per consensus block, translating to a throughput of about 1 call per second for that user.
-1. It limits concurrency. The user has to sequentialize all their calls. This can be difficult when the user is using multiple clients or devices to access the canister, for example.
+1. It limits concurrency. The user has to sequentialize all their calls. This can be difficult when the user is using multiple clients or devices to access the canister, for example. It is also not applicable if anonymous users are allowed to trigger update calls.
 1. If the sequence number is stored per user or per account, tracking them for too many users can exhaust the canister memory, even if each individual number is small. This could, e.g., be exploited by an attacker to exhaust the memory. The approach is thus best suited for cases where the user has to pay for the usage in some way (e.g., the ledgers usually require a fee to both create an account and transfer funds), which thwarts attackers by requiring them to invest significant funds in an attack.
 
 ### ID deduplication
