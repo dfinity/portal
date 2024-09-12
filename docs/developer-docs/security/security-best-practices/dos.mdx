@@ -23,7 +23,7 @@ To protect your canisters from DoS and DDoS attacks, consider the following stra
 * **Ingress message charging**: While charging for ingress messages (external requests to the canister) is not natively supported, custom solutions could be implemented to make sure that any expensive actions have costs associated with them.
 * **Filter ingress messages using inspect message**:  Certain non-critical checks can be placed in the inspect message function to filter out ingress update messages before they are executed by all nodes of a subnet. Since this code only runs on a single node, the execution does not consume cycles but it also shouldn't be relied upon for security critical checks such as access control. However, they can efficiently reject certain ingress messages early. Read the corresponding [documentation](https://internetcomputer.org/docs/current/references/ic-interface-spec#system-api-inspect-message) and [security best practice](https://internetcomputer.org/docs/current/developer-docs/security/security-best-practices/iam#do-not-rely-on-ingress-message-inspection) carefully for the caveats.
 
-## Protect Against Noisy Neighbors
+## Protect against noisy neighbors
 
 ### Security Concern
 
