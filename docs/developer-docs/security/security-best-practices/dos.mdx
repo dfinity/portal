@@ -13,9 +13,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ### Security Concern
 
-A Denial of Service (DoS) attack aims to make a system unavailable by overwhelming it with requests or data. A Distributed Denial of Service (DDoS) attack is a more sophisticated version, where the attack originates from multiple sources, making it harder to block. 
-
-In the case of canisters, such attacks can quickly deplete cycles, making the canister unable to process legitimate requests. Learn more about DoS in the [Security Best Practices: Denial of Service](https://internetcomputer.org/docs/current/developer-docs/security/security-best-practices/dos) guide.
+A Denial of Service (DoS) attack aims to make a system unavailable by overwhelming it with requests or data. A Distributed Denial of Service (DDoS) attack is a more sophisticated version, where the attack originates from multiple sources, making it harder to block. An attacker will typically search for operations that are free to be executed by anyone but which are expensive for the application in terms of certain resources such as storage, memory usage, network bandwidth, computing resources, etc. In the case of canisters, such attacks can aim to deplete cycles, making the canister unable to process legitimate requests. The reverse gas model means that a dapp needs to implement strategies to deal with this.
 
 ### Recommendation
 
@@ -34,9 +32,9 @@ In a shared resource environment like the Internet Computer, multiple canisters 
 
 To mitigate the "noisy neighbor" issue, manage your canister's resource allocation effectively:
 * **Memory allocation**: Memory can be reserved per canister by setting `memory_allocation`. This ensures that your canister can always allocate memory up to the requested `memory_allocation`. Thereby preventing other canisters from using up the subnets available memory. Note that this also reduces the upper bound of memory the canister can allocate to the same value. Monitoring actual memory usage against this value is important to avoid availability issues.
-* **Subnet and canister distribution**: Implement a smart canister deployment strategy by monitoring the load on subnets. You can choose to deploy new canisters on less busy subnets or adopt a multi-canister architecture that balances the load across subnets. Be mindful to minimize inter-subnet communication for canisters that frequently interact with each other. Additionally, avoid deploying to known high-traffic subnets where possible, though keep in mind that resource usage can change unexpectedly with new dapps.
 * **Compute reservation**: Similar to memory, computing power can also be reserved by setting `compute_allocation` to a value between 0 and 100 which denotes the percentage of one CPU core to be reserved for this canister. A value of 50 means that every 2 rounds, the canister will be scheduled to execute a message. This guarantees a minimal progress you canister can make which protects against noisy neighbours. Both allocations are reserving resources for your canister on the subnet which prevents the other canisters from using them. Hence, they come at a cost. Memory allocation is charged as if all that memory would be allocated. Compute allocation is currently charged at 10M cycles per percentage point.
 Learn more about managing memory and compute resources in our [Storage](https://internetcomputer.org/docs/current/developer-docs/gas-cost#storage) and [Compute](https://internetcomputer.org/docs/current/developer-docs/gas-cost#execution) guides.
+* **Subnet and canister distribution**: Implement a smart canister deployment strategy by monitoring the load on subnets. You can choose to deploy new canisters on less busy subnets or adopt a multi-canister architecture that balances the load across subnets. Be mindful to minimize inter-subnet communication for canisters that frequently interact with each other. Additionally, avoid deploying to known high-traffic subnets where possible, though keep in mind that resource usage can change unexpectedly with new dapps.
 
 ## Handle Expensive Calls
 
