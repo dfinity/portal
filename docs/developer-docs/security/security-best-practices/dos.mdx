@@ -41,9 +41,9 @@ Learn more about managing memory and compute resources in our [Storage](https://
 When the subnet grows above 450GiB, then the new reservation mechanism activates. Every time a canister allocates new storage bytes, the system sets aside some amount of cycles from the main balance of the canister. These reserved cycles will be used to cover future payments for the newly allocated bytes. The reserved cycles are not transferable and the amount of reserved cycles depends on how full the subnet is. For example, it may cover days, months, or even years of payments for the newly allocated bytes. It is important to note that the reservation mechanism applies only to the newly allocated bytes and does not apply to the storage already in use by the canister. See more at [Reseourse reservations](https://forum.dfinity.org/t/increasing-subnet-storage-capacity-and-introducing-resource-reservation-mechanism/23447).
 :::
 
-## Handle Expensive Calls
+## Handle expensive calls
 
-### Security Concern
+### Security concern
 
 Some calls (update or query) might be expensive in terms of the memory or cycles they consume. For example, any function using chain-key signing or HTTPS outcalls are relatively expensive. See the [additional documentation](https://internetcomputer.org/docs/current/developer-docs/gas-cost#special-features) on cycles cost details and for other examples.
 
@@ -51,12 +51,12 @@ An attacker will target expensive calls to drain cycles balance or available mem
 
 ### Recommendation
 
-* **Use captchas**: Expensive operations should require a captcha to be solved. Try to use a library to implement a captcha instead of a cloud service as such a service would require HTTPS outcalls and isn't decentralized.
+* **Use captchas**: Expensive operations should require a captcha to be solved. Try to use a library to implement a captcha instead of a cloud service, as such a service would require HTTPS outcalls and isn't decentralized.
 * **Use PoW (proof-of-work)**: Require a proof-of-work challenge to be solved by the client for any expensive operation. The parameters need to be carefully chosen to require sufficient computation per call to the expensive operation without creating too much impact for legitimate clients. Don't forget to consider clients on slow and older mobile devices whilst protecting against attackers on modern multi-GPU systems. Certain algorithms can limit the performance increase of GPUs to improve this uneven battlefield.
-* **Charge for expensive calls**: You can require that certain expensive calls from other canisters include cycles to compensate for the resources consumed. One can charge for ingress messages as well. However, that is not currently supported by the protocol itself and a custom solution, such as pre-paying a certain amount, would need to be designed.
+* **Charge for expensive calls**: You can require that certain expensive calls from other canisters include cycles to compensate for the resources consumed. In addition, one can charge for ingress messages. However, that is not currently supported by the protocol itself, and a custom solution, such as pre-paying a certain amount, would need to be designed.
 * **Differentiate between update and query calls**: Expensive computations should generally be avoided for update calls unless absolutely necessary. While query calls are not authenticated, they are faster and less resource-intensive. To check whether a method was called as a query or update call, you can use `ic0.in_replicated_execution()`.
 
-### Further Recommendations
+### Further recommendations
 
 - Automatically monitor cycles consumption and set appropriate alerts for cycles consumption rate and balance. Sudden spikes in cycles consumption could indicate an attack.
 - Implement early authentication and rate limiting for your canisters.
