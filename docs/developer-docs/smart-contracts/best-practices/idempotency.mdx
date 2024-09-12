@@ -26,6 +26,8 @@ We say that a canister endpoint is idempotent if it can be called multiple times
 
 Given an idempotent endpoint, you can implement retries by retrying the call until you observe a certified response (either a replied or rejected status), see the illustration below. If such a response is ever observed, it's sure that the transaction has been executed at least once which, thanks to idempotency, has the same result as executing it once. However, the application may not be willing to wait for a response indefinitely and a timeout could be implemented. Upon timeout, an error should be displayed to the user instructing them to wait until the latest message that has been sent has expired (ingress_expiry) and then manually check the status of the transaction. Ideally, timeouts should be rare and not occur during normal operation.
 
+![Retrying an idempotent call](/img/docs/retry_idempotency.png)
+
 Below are two approaches to making endpoints idempotent: sequence numbers and (time window) ID deduplication.
 
 ### Update sequence numbers
