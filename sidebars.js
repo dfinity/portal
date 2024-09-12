@@ -343,7 +343,7 @@ const sidebars = {
             },
             {
               type: "doc",
-              label: "Retries & idempotency",
+              label: "Safe retries & idempotency",
               id: "developer-docs/smart-contracts/best-practices/idempotency",
             },
           ],
