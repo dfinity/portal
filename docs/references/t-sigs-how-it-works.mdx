@@ -41,42 +41,6 @@ There are currently four master keys deployed: an ECDSA test key, an ECDSA produ
 - `(bip340secp256k1, test_key_1)`: The Schnorr test key deployed on a single 13-node subnet.
 - `(bip340secp256k1, key_1)`: The Schnorr production key deployed on two high-replication subnets, one activated for signing, and the other one for backing up the key for better key availability.
 
-## Deployment
-
-Next, this guide outlines the deployments for the Chromium (Beta) release of the ECDSA test key, the Deuterium (Beta) release of the Schnorr test key, and the general availability release of both ECDSA and Schnorr.
-
-### Chromium ECDSA release (Beta)
-
-As part of the Chromium release, a test ECDSA key for curve `secp256k1` has been deployed on one subnet with a replication factor of 13. 
-This key may be deleted with an according NNS proposal some time after the GA ECDSA release and therefore should not be used for anything that has value, but only for development and testing purposes. 
-More concretely, it is, for example, strongly advised against holding real bitcoin with the test key as those Bitcoin would be lost when the key gets deleted. 
-The test key is rather intended to facilitate development of Bitcoin smart contracts and hold Testnet bitcoin as preparation for the GA ECDSA release. 
-The test key has the id `(secp256k1, test_key_1)` for referring to it in API calls.
-
-### General availability release of ECDSA
-
-A single threshold ECDSA production key for the `secp256k1` elliptic curve has been deployed with the GA ECDSA release. 
-The key with id `(secp256k1, key_1)` will be maintained in secret-shared form on two different subnets with high replication factor (28 nodes initially). 
-The key will be initially generated on a high-replication subnet and kept there and re-shared to a new high-replication subnet using the re-sharing protocol. 
-The latter subnet will be activated to act as the active signing subnet for this key. 
-The further will hold the key in secret-shared form for backup purposes for achieving better key availability, but will not respond to signing requests. 
-In case of the unlikely event of one of the subnets getting destroyed beyond recoverability, the approach of key replication improves key availability by allowing for the key to be re-shared to a different subnet, should this ever be required in case of a disaster.
-
-### Deuterium Schnorr release (Beta)
-
-As part of the Deuterium release, a test Schnorr key according to the `bip340` specification for curve `secp256k1` has been deployed on one subnet with a replication factor of 13. 
-As above, this key may be deleted at some time after the GA Schnorr release and therefore should not be used for anything that has value, but only for development and testing purposes.
-The test key has the id `(bip340secp256k1, test_key_1)` for referring to it in API calls.
-
-### General availability release of Schnorr
-
-A single threshold Schnorr production key according to the `bip340` specification for curve `secp256k1` has been deployed with the Deuterium milestone release.
-The Schnorr production key with id `(bip340secp256k1, key_1)` will be maintained in same manner that the [threshold ECDSA](#general-availability-release-of-ECDSA) production key is maintained.
-
-### Further aspects
-
-Support for further elliptic curves and signature schemes may be added in the future. ECDSA signatures over curve `secp256r1` and Ed25519 signatures are interesting for supporting use cases such as decentralized certification authorities (CAs) and are the premier candidate group to be added to facilitate use cases like the mentioned one, as well as enabling the direct integration with other blockchains.
-
 ## Threshold signature APIs
 
 Next, this guide gives an overview of the APIs for threshold signatures. 
