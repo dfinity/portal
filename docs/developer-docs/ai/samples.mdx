@@ -12,7 +12,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ICP's unique ability to run compute at scale allows AI and neural networks to run directly on-chain within a canister smart contract. Canisters can also interact with LLMs stored off-chain through HTTPS outcalls, or stored locally on a user's device.
 
-## Image classification sample
+## Image classification
 
 To showcase this capability, this demo example displays how an AI that identifies an image can be deployed as a smart contract with a frontend and backend, both running on-chain.
 
@@ -20,7 +20,7 @@ To showcase this capability, this demo example displays how an AI that identifie
 
 You can find the source code for this demo [on GitHub](https://github.com/dfinity/examples/tree/master/rust/image-classification).
 
-## How this example works
+### How this example works
 
 In this example, the ICP smart contract accepts an image as input from the user and runs an image classification inference. The smart contract has two canisters:
 
@@ -36,7 +36,7 @@ In this example, the ICP smart contract accepts an image as input from the user 
   />
 </div>
 
-## ICP features that make it possible
+### ICP features that make it possible
 
 To make running AI in a canister possible, two key ICP features are utilized:
 
@@ -60,13 +60,13 @@ To make running AI in a canister possible, two key ICP features are utilized:
   />
 </div>
 
-### Important notes
+#### Important notes
 
 The ICP mainnet subnets and `dfx` running a replica version older than `463296` may fail with an `instruction-limit-exceeded` error.
 
 Currently, Wasm execution is not optimized for this workload. A single call executes about 24B instructions (~10s).
 
-## Machine learning sample
+## Machine learning
 
 Machine learning is a form of artificial intelligence (AI) that observes statistical algorithms and their data to learn patterns and generalizations. By analyzing these data patterns, machine learning algorithms can execute tasks by predicting the correct result with high accuracy.
 
@@ -80,7 +80,7 @@ View or clone the [GitHub repo for this sample](https://github.com/smallstepman/
 
 This project is based off of one [found within the Rust Burn examples](https://github.com/tracel-ai/burn/tree/main/examples/mnist-inference-web).
 
-## Vector database samples
+## Vector database
 
 - [Vectune](https://github.com/ClankPan/Vectune): Vectune is a lightweight VectorDB with incremental indexing, based on FreshVamana written in Rust.
   See [a forum post](https://forum.dfinity.org/t/worlds-largest-web3-vector-database/33309) that explains how it works.
