@@ -34,12 +34,14 @@ The derivation of further t-sig keys from a canister root key can be done withou
 
 Threshold master keys are always referred to through **key identifiers** in the t-sig APIs (as well as in the NNS proposals for managing the rollout). The key identifiers comprise an elliptic curve name or an algorithm and an identifier, e.g., an example key identifier is the 2-tuple `(secp256k1, test_key_1)` for ECDSA or `(bip340secp256k1, test_key_1)` for Schnorr. Those key identifiers are used by the system to refer to the correct key, e.g., for selecting the key share when computing a signature or in the implementation of the XNet routing of API calls and responses to/from the t-sig-enabled subnet holding the key with the corresponding identifier.
 
-There are currently four master keys deployed: an ECDSA test key, an ECDSA production key, a Schnorr test key, and a Schnorr production key.
+There are currently six master keys deployed: an ECDSA test key, an ECDSA production key, a Schnorr BIP340 test key, a Schnorr BIP340 production key, a Schnorr Ed25519 test key, and a Schnorr Ed25519 production key.
 
 - `(secp256k1, test_key_1)`: The ECDSA test key deployed on a single 13-node subnet.
 - `(secp256k1, key_1)`: The ECDSA production key deployed on two high-replication subnets, one activated for signing, and the other one for backing up the key for better key availability.
-- `(bip340secp256k1, test_key_1)`: The Schnorr test key deployed on a single 13-node subnet.
-- `(bip340secp256k1, key_1)`: The Schnorr production key deployed on two high-replication subnets, one activated for signing, and the other one for backing up the key for better key availability.
+- `(bip340secp256k1, test_key_1)`: The Schnorr BIP340 test key deployed on a single 13-node subnet.
+- `(bip340secp256k1, key_1)`: The Schnorr BIP340 production key deployed on two high-replication subnets, one activated for signing, and the other one for backing up the key for better key availability.
+- `(Ed25519, test_key_1)`: The Schnorr Ed25519 test key deployed on a single 13-node subnet.
+- `(Ed25519, key_1)`: The Schnorr Ed25519 production key deployed on two high-replication subnets, one activated for signing, and the other one for backing up the key for better key availability.
 
 ## Deployment
 
@@ -70,13 +72,11 @@ The test key has the id `(bip340secp256k1, test_key_1)` for referring to it in A
 
 ### General availability release of Schnorr
 
-A single threshold Schnorr production key according to the `bip340` specification for curve `secp256k1` has been deployed with the Deuterium milestone release.
+A threshold Schnorr production key according to the `bip340` specification for curve `secp256k1` has been deployed with the Deuterium milestone release.
 The Schnorr production key with id `(bip340secp256k1, key_1)` will be maintained in the same manner that the [threshold ECDSA](#general-availability-release-of-ECDSA) production key is maintained.
 
-### General availability of Ed25519
-
-A single threshold Ed25519 production key according to curve `ed25519` has been deployed ahead of the Helium milestone release.
-The Ed25519 production key with id `(Ed25519:key_1)` will be maintained in the same manner that the [threshold ECDSA](#general-availability-release-of-ECDSA) production key is maintained.
+A threshold Ed25519 production key according to curve `ed25519` has been deployed ahead of the Helium milestone release.
+The Ed25519 production key with id `(Ed25519, key_1)` will be maintained in the same manner that the [threshold ECDSA](#general-availability-release-of-ECDSA) production key is maintained.
 
 ## Threshold signature APIs
 
@@ -154,26 +154,11 @@ An example of the Schnorr API can be found below:
   }) -> (record { signature : blob });
 ```
 
-An example of the Ed25519 API can be found below:
-
-```
-  ed25519_public_key : (record {
-    canister_id : opt canister_id;
-    derivation_path : vec blob;
-    key_id : record { algorithm: schnorr_algorithm; name: text };
-  }) -> (record { public_key : blob; chain_code : blob; });
-  sign_with_ed25519 : (record {
-    message : blob;
-    derivation_path : vec blob;
-    key_id : record { algorithm: schnorr_algorithm; name: text };
-  }) -> (record { signature : blob });
-```
-
 Note that in cases of high system load, a request to compute a threshold signature may time out. In this case, the canister may want to back off and retry the request later.
 
 ## API fees
 
-The fees for the t-sig APIs are as defined below. The threshold ECDSA test key, Schnorr test key, and Ed25519 test key reside on a regular-sized (13-node) application subnet, while the production keys reside on a 28-node-sized fiduciary subnet. The subnet size of the subnet where the t-sig key resides and the signatures are computed defines the resulting cost. The size of the subnet of the calling canister does not matter for the fees. For costs in USD, the USD/XDR exchange rate as of November 23, 2022 has been used.
+The fees for the t-sig APIs are as defined below. The threshold ECDSA and threshold Schnorr test keys reside on a regular-sized (13-node) application subnet, while the production keys reside on a 28-node-sized fiduciary subnet. The subnet size of the subnet where the t-sig key resides and the signatures are computed defines the resulting cost. The size of the subnet of the calling canister does not matter for the fees. For costs in USD, the USD/XDR exchange rate as of November 23, 2022 has been used.
 
 
 :::note
@@ -203,18 +188,6 @@ If a canister using this feature is intended to be blackholed, but also for othe
 | Transaction                          | Description                                                                                                    | Cycles (production key)                     | USD                         |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
 | Threshold Schnorr signing              | For computing one threshold Schnorr signature (`sign_with_schnorr`)                                                | 26_153_846_153              | $0.0346672                  |
-
-### Fees for the t-Ed25519 test key
-
-| Transaction                          | Description                                                                                                    | Cycles (test key)                     | USD                         |
-|--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
-| Threshold Ed25519 signing              | For computing one threshold Ed25519 signature (`sign_with_ed25519`)                                                | 10_000_000_000              | $0.0130886                  |
-
-### Fees for the t-Ed25519 production key
-
-| Transaction                          | Description                                                                                                    | Cycles (production key)                     | USD                         |
-|--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|
-| Threshold Ed25519 signing              | For computing one threshold Ed25519 signature (`sign_with_ed25519`)                                                | 26_153_846_153              | $0.0346672                  |
 
 ## Environments
 
