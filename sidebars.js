@@ -1092,7 +1092,11 @@ const sidebars = {
           label: "Overview",
           id: "developer-docs/ai/overview",
         },
-        "developer-docs/ai/samples",
+	{
+          type: "doc",
+          label: "Samples",
+          id: "developer-docs/ai/samples",
+        },
       ],
     },
     {
