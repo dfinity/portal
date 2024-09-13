@@ -18,14 +18,12 @@ export const ImageOnlyVideoCard: React.FC<{
   className?: string;
 }> = ({ image, href, className = "" }) => {
   return (
-    <Link
-      className={clsx(
-        "col-span-1 aspect-video rounded-2xl bg-cover bg-center relative group",
-        className
-      )}
-      href={href}
-      style={{ backgroundImage: `url(${image})` }}
-    >
+    <Link className={clsx("col-span-1  relative group", className)} href={href}>
+      <img
+        src={image}
+        alt=""
+        className="w-full h-full object-cover rounded-2xl"
+      />
       <PlayButton />
     </Link>
   );
@@ -41,11 +39,10 @@ export const TitleVideoCard: React.FC<{
     <div className="rounded-xl overflow-hidden bg-white flex flex-col w-full">
       <Link className="aspect-video flex relative group" href={href}>
         <img src={image} alt={title} className="w-full h-full object-cover" />
-
         <PlayButton />
       </Link>
       <div className="px-6 pt-8 pb-6 flex flex-col flex-1">
-        <h3 className={`tw-heading-5 mb-3 line-clamp-2`}>{title}</h3>
+        <h3 className={`tw-lead mb-3 line-clamp-2`}>{title}</h3>
         <div className="flex-1"></div>
         <div>
           <Link href={href} className="link-primary link-with-icon">

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Link from "@docusaurus/Link";
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
@@ -20,6 +20,9 @@ import { NewsCard } from "@site/src/components/NewsPage/Cards";
 import eventsData from "@site/.docusaurus/airtable/default/airtable-events.json";
 import EventCard from "@site/src/components/GlobalEvents/EventCard";
 import { AirtableEvent } from "@site/src/components/GlobalEvents/types";
+import LinkArrowUpRight from "@site/src/components/Common/Icons/LinkArrowUpRight";
+import { useScrollSpyMenu } from "../../utils/use-scroll-spy-menu";
+import AIManifestoModal from "@site/src/components/AIManifestoModal";
 
 interface FeatureCardProps {
   imageSrc: string;
@@ -93,9 +96,16 @@ const MotionLink = motion(Link);
 const { events, websiteCategory, regions } = eventsData;
 
 function AISubPage() {
-  const [filteredEvents, setFilteredEvents] = React.useState<
-    (AirtableEvent | "promo")[] | null
-  >(null);
+  const [manifestoModalOpen, setManifestoModalOpen] = useState(false);
+  function closeOverlay() {
+    document.body.style.overflow = "";
+    setManifestoModalOpen(false);
+  }
+  function openOverlay() {
+    document.body.style.overflow = "hidden";
+    setManifestoModalOpen(true);
+  }
+
   return (
     <Layout
       title="Secure and Trusted AI on-chain"
@@ -125,44 +135,42 @@ function AISubPage() {
                 />
               </div>
               <motion.p
-                className="tw-lead-sm md:tw-lead-lg mb-0"
+                className="tw-lead-sm md:tw-lead-lg mb-8"
                 variants={transitions.item}
               >
                 Secure and Trusted AI on-chain
               </motion.p>
-              <motion.p
-                className="tw-lead-sm md:tw-lead-lg text-black/60 mb-8"
-                variants={transitions.item}
-              >
-                Powered by next generation Smart Contracts.{" "}
-              </motion.p>
+
               <Link
                 href="/ecosystem?tag=AI"
-                className="link-primary link-with-icon"
+                className="link-primary flex justify-center"
               >
                 <LinkArrowRight /> Explore the fastest growing AI Ecosystem in
                 Web3
               </Link>
               <motion.div
-                className="flex flex-row md:flex-col my-20 md:my-40 text-left"
+                className="flex flex-col md:flex-row my-15 md:my-32 text-left gap-10 md:gap-30"
                 variants={transitions.item}
               >
-                <motion.div className="w-full md:w-[30%] flex flex-col">
+                <motion.div className="w-full md:w-[45%] flex flex-col ">
                   <ImageOnlyVideoCard
-                    href="https://www.youtube.com/watch?v=6qLvIXiCGcM"
+                    href="https://www.youtube.com/watch?v=sdthNB-5yag"
                     image="/img/ai-chain/video_ai.webp"
-                    className="flex-1"
+                    className=""
                   />
-                  <motion.p className="tw-lead-sm text-black/60 mt-6">
+                  <motion.p className="tw-lead-sm text-black/60 mt-1">
                     Dominic Williams on AI on ICP
                   </motion.p>
                 </motion.div>
-                <motion.p className="w-full md:w-[70%] tw-lead-sm md:tw-lead-lg"></motion.p>
-                Al will be at the heart of everything, driving economies and our
-                daily lives. Al on ICP marks a major technological leap by
-                bringing Al on-chain, ensuring decentralized, tamper-proof, and
-                privacy-preserving solutions that address critical issues like
-                security, transparency, and reliability.
+                <motion.p className="w-full md:w-[55%] tw-lead-sm md:tw-lead-lg">
+                  Al will be at the heart of everything, driving economies and
+                  our daily lives. Al on ICP marks a major technological leap by
+                  bringing{" "}
+                  <span className="text-gradient-violet">Al on-chain</span>,
+                  ensuring decentralized, tamper-proof, and privacy-preserving
+                  solutions that address critical issues like security,
+                  transparency, and reliability.
+                </motion.p>
               </motion.div>
             </div>
           </section>
@@ -173,19 +181,20 @@ function AISubPage() {
             el={motion.section}
             variants={transitions.container}
           >
-            <div className="md:w-6/10 mb-10 md:mb-20">
+            <div className="md:w-8/10 mb-10 md:mb-20">
               <motion.h2
                 className="tw-title-sm md:tw-title-lg mb-3 md:mb-6"
                 variants={transitions.item}
               >
-                AI on chain - Technological Innovation
+                AI on-chain - a major technological leap
               </motion.h2>
               <motion.p
-                className="tw-lead-sm md:tw-lead mb-0"
+                className="tw-lead-sm md:tw-lead mb-0 text-black/60"
                 variants={transitions.item}
               >
-                ICP's advanced AI on Chain technology addresses five key pillars
-                that define the future of AI.
+                ICP’s advanced AI on chain technology enables five key
+                attributes that will drive transformative AI use cases across
+                industries.
               </motion.p>
             </div>
             <AnimateSpawn
@@ -205,19 +214,23 @@ function AISubPage() {
             variants={transitions.container}
           >
             <motion.div
-              className="md:w-6/10 mb-10 md:mb-20"
+              className="md:w-8/10 mb-10 md:mb-20"
               variants={transitions.item}
             >
               <motion.h4 className="tw-heading-7-caps mb-2">
                 TECHNOLOGY
               </motion.h4>
               <motion.h3 className="tw-title-sm md:tw-title-lg">
-                Industry Innovation
+                R&D at the core of Internet Computer’s AI innovation
               </motion.h3>{" "}
               <motion.p className="tw-lead-sm md:tw-lead text-black/60">
-                The Internet Computer provides unique technical capabilities for
-                decentralized AI and continues to advance its development
-                further.
+                AI on-chain is made possible by the unique technological
+                capabilities of the Internet Computer Protocol (ICP). Running AI
+                as a smart contract on a blockchain is a significant innovation
+                that is based on DFINITY Foundation’s significant R&D efforts in
+                this domain. Over the past 6 months, AI computations have been
+                optimized to run up to 10x faster, enabling larger models to run
+                on-chain.
               </motion.p>
             </motion.div>
           </AnimateSpawn>
@@ -317,66 +330,73 @@ function AISubPage() {
         </section>
         <section className="bg-[#F1EEF5] py-20 md:py-30">
           <AnimateSpawn
-            className="container-12 relative"
-            el={motion.section}
-            variants={transitions.container}
-          >
-            <motion.h3 className="tw-title-sm md:tw-title-lg">
-              Resources
-            </motion.h3>{" "}
-          </AnimateSpawn>
-          <AnimateSpawn
             className="container-12 py-10 md:py-20"
             el={motion.section}
             variants={transitions.container}
           >
             <div className="container-10 !px-0 flex flex-col gap-1  md:gap-5 mb-8 md:flex-row ">
               <motion.h2
-                className="tw-heading-3 mb-0 md:tw-heading-60"
+                className="tw-title-sm w-80"
                 variants={transitions.item}
               >
-                Videos
+                AI Video Demos
               </motion.h2>
               <div className="md:flex-1 md:pt-1 ">
                 <motion.p
-                  className="mb-0 mt-2 tw-paragraph md:tw-lead-sm md:w-1/2"
+                  className="mb-0 mt-2 tw-paragraph md:tw-lead-sm text-black-60"
                   variants={transitions.item}
                 >
-                  Get all the news and event infos about Chain Fusion Technology
-                  on ICP.
+                  Watch these videos to learn more about AI on ICP.
                 </motion.p>
                 <MotionLink
                   variants={transitions.item}
-                  href="/news"
+                  href="https://www.youtube.com/watch?v=sdthNB-5yag&list=PLuhDt1vhGcrfWz1ZJrAmJBDS6aFADySwt"
                   className="link-primary link-with-icon mt-3"
                 >
-                  <LinkArrowRight /> Explore more news
+                  More videos on AI <LinkArrowUpRight />
                 </MotionLink>
               </div>
             </div>
 
             <div className="mt-4 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-5">
               <TitleVideoCard
-                href="https://www.youtube.com/watch?v=hbjeL0MDhG4&list=PLuhDt1vhGcrc4ocJ_WgbuYPXqCw1YYXF4"
-                image="https://img.youtube.com/vi/hbjeL0MDhG4/maxresdefault.jpg"
+                href="https://www.youtube.com/watch?v=sdthNB-5yag"
+                image="https://i.ytimg.com/vi/sdthNB-5yag/maxresdefault.jpg"
                 className="flex-1"
-                title="Internet Computer BUIDL Bitcoin Hackathon Powered by Encode"
+                title="Dominic Williams on AI"
               />
               <TitleVideoCard
-                href="https://www.youtube.com/watch?v=hbjeL0MDhG4&list=PLuhDt1vhGcrc4ocJ_WgbuYPXqCw1YYXF4"
-                image="https://img.youtube.com/vi/hbjeL0MDhG4/maxresdefault.jpg"
+                href="https://www.youtube.com/watch?v=hEFff_GGj30"
+                image="https://i.ytimg.com/vi/hEFff_GGj30/maxresdefault.jpg"
                 className="flex-1"
-                title="Internet Computer BUIDL Bitcoin Hackathon Powered by Encode"
+                title="Dominic Williams on AI"
               />
               <TitleVideoCard
-                href="https://www.youtube.com/watch?v=hbjeL0MDhG4&list=PLuhDt1vhGcrc4ocJ_WgbuYPXqCw1YYXF4"
-                image="https://img.youtube.com/vi/hbjeL0MDhG4/maxresdefault.jpg"
+                href="https://www.youtube.com/watch?v=kP893pQIQvY"
+                image="https://i.ytimg.com/vi/kP893pQIQvY/maxresdefault.jpg"
                 className="flex-1"
-                title="Internet Computer BUIDL Bitcoin Hackathon Powered by Encode"
+                title="Dominic Williams on AI"
               />
             </div>
           </AnimateSpawn>
         </section>
+        <section className="bg-[#3B00B9] py-20 md:py-30">
+          <AnimateSpawn
+            className="container-12 py-10 md:py-20"
+            el={motion.section}
+            variants={transitions.container}
+          >
+            <Link
+              className="link-primary link-white link-with-icon"
+              onClick={openOverlay}
+            >
+              <LinkArrowRight /> Read the full manifesto{" "}
+            </Link>
+          </AnimateSpawn>
+        </section>
+        {manifestoModalOpen && (
+          <AIManifestoModal onClose={closeOverlay}></AIManifestoModal>
+        )}
       </main>
     </Layout>
   );
