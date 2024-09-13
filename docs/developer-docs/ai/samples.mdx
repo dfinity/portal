@@ -40,7 +40,7 @@ In this example, the ICP smart contract accepts an image as input from the user 
 
 To make running AI in a canister possible, two key ICP features are utilized:
 
-- WebAssembly virtual machine: Canister code is compiled into Wasm modules to be deployed on ICP. The WebAssembly virtual machine supports standards such as the WebAssembly System Interface, which can be supported through a community tool called [wasi2ic](https://github.com/wasm-forge/wasi2ic).
+1. **WebAssembly virtual machine**: Canister code is compiled into Wasm modules to be deployed on ICP. The WebAssembly virtual machine supports standards such as the WebAssembly System Interface, which can be supported through a community tool called [wasi2ic](https://github.com/wasm-forge/wasi2ic).
 
 <div class="text-center">
   <img
@@ -50,7 +50,7 @@ To make running AI in a canister possible, two key ICP features are utilized:
   />
 </div>
 
-- Deterministic time slicing (DTS): DTS splits the execution of very large messages that require billions of Wasm instructions across multiple execution rounds.
+2. **Deterministic time slicing (DTS)**: DTS splits the execution of very large messages that require billions of Wasm instructions across multiple execution rounds.
 
 <div class="text-center">
   <img
@@ -60,7 +60,7 @@ To make running AI in a canister possible, two key ICP features are utilized:
   />
 </div>
 
-#### Important notes
+### Important notes
 
 The ICP mainnet subnets and `dfx` running a replica version older than `463296` may fail with an `instruction-limit-exceeded` error.
 
@@ -80,7 +80,7 @@ View or clone the [GitHub repo for this sample](https://github.com/smallstepman/
 
 This project is based off of one [found within the Rust Burn examples](https://github.com/tracel-ai/burn/tree/main/examples/mnist-inference-web).
 
-## Vector database
+## Vector database samples
 
 - [Vectune](https://github.com/ClankPan/Vectune): Vectune is a lightweight VectorDB with incremental indexing, based on FreshVamana written in Rust.
   See [a forum post](https://forum.dfinity.org/t/worlds-largest-web3-vector-database/33309) that explains how it works.
