@@ -42,7 +42,7 @@ API through the `ecdsa_public_key` method, and through the Schnorr API with the
 `schnorr_public_key` method.
 
 - For ECDSA and BIP340, the key derivation uses a backward-compatible extension
-of the BIP-32 key derivation mechanism. The extension allows not only 32-bit
+of the BIP-32 (non-hardened) key derivation mechanism. The extension allows not only 32-bit
 integers, but arbitrary-length byte arrays, to be used as input for each level
 of the key derivation function. See the levels 1 keys based on the canister root
 key and greater in the below figure illustrating the derivation of further
