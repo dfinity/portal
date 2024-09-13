@@ -313,7 +313,7 @@ You should receive output and `dfx` log entries similar to the ones you got for 
 Now you can send BTC using the canister's `send` endpoint. In this example, you'll send 1 BTC to the address `n2dcQfuwFw7M2UYzLfM6P7DwewsQaygb8S`. You can replace this address with any test address you would like.
 
 ```bash
-dfx canister call basic_bitcoin send '(record { destination_address = "n2dcQfuwFw7M2UYzLfM6P7DwewsQaygb8S"; amount_in_satoshi = 100000000; })'
+dfx canister call basic_bitcoin send_from_p2pkh '(record { destination_address = "n2dcQfuwFw7M2UYzLfM6P7DwewsQaygb8S"; amount_in_satoshi = 100000000; })'
 ```
 
 :::info
