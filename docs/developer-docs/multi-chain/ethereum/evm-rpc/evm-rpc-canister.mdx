@@ -792,6 +792,10 @@ dfx canister call evm_rpc eth_sendRawTransaction "(variant {$RPC_SOURCE}, $RPC_C
 </TabItem>
 </AdornedTabs>
 
+Note that some JSON-RPC APIs may only return a `NonceTooLow` status when successfully submitting a transaction. This is because during HTTP outcall consensus, only the first request is successful while the others reply with a duplicate transaction status. 
+
+If you encounter this issue, one possible workaround is to use a deduplicating proxy server such as the community-built C-ATTS EVM RPC proxy ([source code](https://github.com/c-atts/catts-evm-rpc-proxy)). 
+
 ### Error "already known"
 
 Sending a transaction to the Ethereum network is a state changing operation. Since the EVM-RPC canister sends a transaction to some JSON-RPC providers via HTTPs outcalls, each contacted provider will receive the same transaction multiple times.
