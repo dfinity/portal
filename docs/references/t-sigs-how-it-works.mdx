@@ -74,14 +74,18 @@ API calls and responses to/from the t-sig-enabled subnet holding the key with
 the corresponding identifier.
 
 There are currently 6 master keys deployed: 3 test keys (whose name starts with
-`test_key_`) and 3 production keys (whose name starts with `key_`). The test
-keys are deployed on a single 13-node subnet. The production keys are
-deployed on *two* high-replication subnets, one activated for signing, and the
-other one for backing up the key for better key availability.
+`test_key_`) and 3 production keys (whose name starts with `key_`). The keys are
+deployed on 2 different subnets: one activated for signing, and the other one
+for backing up the key for better key availability. The test keys are deployed
+on two 13-node subnets: signing on subnet `fuqsr` and backup on subnet `2fq7c`.
+The production keys are deployed on two high-replication subnets: signing on
+subnet `pzp6e` and backup on subnet `uzr34`.
 
-The following master keys are currently deployed:
+The following ECDSA master keys are currently deployed:
 - `(secp256k1, test_key_1)`
 - `(secp256k1, key_1)`
+
+The following Schnorr master keys are currently deployed:
 - `(bip340secp256k1, test_key_1)`
 - `(bip340secp256k1, key_1)`
 - `(ed25519, test_key_1)`
