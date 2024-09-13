@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Link from "@docusaurus/Link";
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
@@ -23,6 +23,8 @@ import { AirtableEvent } from "@site/src/components/GlobalEvents/types";
 import LinkArrowUpRight from "@site/src/components/Common/Icons/LinkArrowUpRight";
 import { useScrollSpyMenu } from "../../utils/use-scroll-spy-menu";
 import AIManifestoModal from "@site/src/components/AIManifestoModal";
+import { ArrowIconRight } from "@site/src/components/RoadmapPage/Overlay";
+import { useElementSize } from "@site/src/utils/use-element-size";
 
 interface FeatureCardProps {
   imageSrc: string;
@@ -58,10 +60,172 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
   );
 };
 
+interface RoadmapItemProps {
+  number: string;
+  title: string;
+  date: string;
+}
+
+const RoadmapItem: React.FC<RoadmapItemProps> = ({ number, title, date }) => {
+  return (
+    <section className="flex flex-col justify-between flex-1 p-3 md:p-6 pb-5 md:pb-10 bg-[#F1EEF5] rounded-3xl md:min-h-[320px]">
+      <h2 className="tw-lead-sm md:tw-lead text-black-20">{number}</h2>
+      <div className="flex flex-col mt-auto">
+        <h3 className="tw-lead-sm md:tw-lead bg-gradient-to-br from-[#522785] to-[#ED1E79] bg-clip-text text-transparent">
+          {title}
+        </h3>
+        <time className="mt-1 md:mt-3 tw-paragraph-sm md:tw-paragraph text-black">
+          {date}
+        </time>
+      </div>
+    </section>
+  );
+};
+
+interface AIFeatureCardProps {
+  number: string;
+  icon: string;
+  title: string;
+  features: string[];
+}
+
+const AIFeatureCard: React.FC<AIFeatureCardProps> = ({
+  number,
+  icon,
+  title,
+  features,
+}) => {
+  return (
+    <section className="flex flex-col flex-1 min-w-[240px] justify-between bg-white rounded-3xl p-6 pb-10">
+      <header className="flex w-full items-start justify-between gap-10 tw-lead text-black-20 whitespace-nowrap">
+        <span>{number}</span>
+        <img
+          src={icon}
+          alt=""
+          className="w-20 h-20 object-contain mr-0 ml-auto"
+        />
+      </header>
+      <div className="flex flex-col mt-16 w-full">
+        <h2 className="tw-lead text-black">{title}</h2>
+        <ul className="list-none !m-0 !p-0 text-left flex flex-col items-start text-black-60">
+          {features.map((item, index) => (
+            <li
+              key={index}
+              className="flex items-center my-1 text-nowrap tw-paragraph"
+            >
+              <img
+                src="/img/ai-chain/icon-check-circle.svg"
+                alt=""
+                className="h-6 w-6 mr-2 select-none"
+              />
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+};
+const Collapse: React.FC<{
+  title: React.ReactNode;
+  children: React.ReactNode;
+  open: boolean;
+  onClick: () => void;
+}> = ({ title, children, open, onClick }) => {
+  const ref = useRef<HTMLDivElement>();
+  const size = useElementSize(ref);
+
+  return (
+    <div className="w-[calc(100vw-100px)] flex flex-col sm:block sm:w-auto snap-center">
+      <button
+        onClick={onClick}
+        className={clsx(
+          `tw-heading-4  border-none appearance-none whitespace-normal font-circular p-0 transition-colors hover:text-white text-white text-left bg-transparent`,
+          open ? "sm:text-white" : "sm:text-white-30"
+        )}
+      >
+        {title}
+      </button>
+      <div
+        className="hidden sm:block sm:overflow-hidden transition-[height]"
+        style={{
+          height: open && size ? size.height : 0,
+        }}
+        ref={ref}
+      >
+        <div className="pt-4">{children}</div>
+      </div>
+      <div className="sm:hidden pt-4 flex flex-1 flex-col">{children}</div>
+    </div>
+  );
+};
+
+interface FaqItemProps {
+  question: string;
+  answer: string;
+}
+
+const FaqItem: React.FC<FaqItemProps> = ({ question, answer }) => {
+  return (
+    <article className="mb-20">
+      <h2 className="text-black tw-lead-lg mb-6">{question}</h2>
+      <p className="text-black tw-lead-sm leading-7">{answer}</p>
+    </article>
+  );
+};
+
+const ContactCard: React.FC = () => {
+  return (
+    <aside className="bg-white rounded-3xl">
+      <h2 className="text-black tw-lead-lg mb-2">Contact</h2>
+      <p className="text-black tw-lead-sm mb-2">
+        Are you interested in a partnership with DFINITY Foundation? Get in
+        touch with us:
+      </p>
+      <Link href="mailto:ai@dfinity.org" className="link-primary">
+        ai@dfinity.org
+      </Link>
+      <div className="flex flex-start mt-8">
+        <img
+          src="/img/ai-chain/pierre_samaties.webp"
+          alt="Pierre Samaties"
+          className="w-24 h-24 rounded-full mr-4 ml-0"
+        />
+        <div>
+          <h3 className="text-black tw-lead mb-0">Pierre Samaties</h3>
+          <p className="tw-paragraph text-black/60">Chief Business Officer</p>
+        </div>
+      </div>
+      <div className="flex flex-start mb-8 mt-8">
+        <img
+          src="/img/ai-chain/islam_el_ashi.webp"
+          alt="Islam El-Ashi"
+          className="w-24 h-24 rounded-full mr-4 ml-0"
+        />
+        <div>
+          <h3 className="text-black tw-lead mb-0">Islam El-Ashi</h3>
+          <p className="tw-paragraph text-black-60">Head of AI Engineering</p>
+        </div>
+      </div>
+      <div>
+        <motion.p className="tw-lead text-black mb-0">
+          Technical Working Group
+        </motion.p>
+        <Link
+          href="/docs"
+          className="link-primary link-with-icon mt-0 md:text-nowrap"
+        >
+          Join the discussion <LinkArrowUpRight />
+        </Link>
+      </div>
+    </aside>
+  );
+};
+
 const features: FeatureCardProps[] = [
   {
     imageSrc: "/img/ai-chain/1a.svg",
-    title: "Tamper proof.",
+    title: "Immune to cyber attacks.",
     description:
       "Sensitive AI models in finance and public administration need protection beyond individual control. ICP blockchain ensures integrity and prevents tampering.",
   },
@@ -92,11 +256,184 @@ const features: FeatureCardProps[] = [
   },
 ];
 
+const roadmapData = [
+  {
+    number: "01",
+    title: "Data storage to run large AI models",
+    date: "June 2024",
+  },
+  {
+    number: "02",
+    title: "Optimized floating-point arithmetic for faster AI processing",
+    date: "July 2024",
+  },
+  {
+    number: "03",
+    title: "Optimized AI inference API for more performance",
+    date: "2025",
+  },
+  {
+    number: "04",
+    title: "GPU acceleration for enterprise-grade AI workloads",
+    date: "2025",
+  },
+];
+
+const aiFeatures = [
+  {
+    number: "01",
+    icon: "/img/ai-chain/1b.svg",
+    title: "Infrastructure and resources",
+    features: ["Compute marketplaces", "Data storage", "AI Smart Contracts"],
+  },
+  {
+    number: "02",
+    icon: "/img/ai-chain/2b.svg",
+    title: "Development and training",
+    features: ["AI development", "Model training", "Data marketplace"],
+  },
+  {
+    number: "03",
+    icon: "/img/ai-chain/3b.svg",
+    title: "AI inference",
+    features: ["Data analysis", "Content generation", "AI model marketplace"],
+  },
+  {
+    number: "04",
+    icon: "/img/ai-chain/4b.svg",
+    title: "AI verification and security",
+    features: [
+      "Content provenance",
+      "Model verification",
+      "Regulatory compliance",
+    ],
+  },
+];
+
+const projects: {
+  imageUrl: string;
+  title: string;
+  body: React.ReactNode;
+}[] = [
+  {
+    title: "DecideAI",
+    body: "DecideAI offers groundbreaking products that enhance the decentralized AI ecosystem, including Decide ID, an AI-powered Proof of Personhood, and Decide Cortex, a blockchain-based LLM marketplace. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo.",
+    imageUrl: "/img/ai-chain/decideai.webp",
+  },
+  {
+    title: "Kinic",
+    body: "Kinik offers groundbreaking products that enhance the decentralized AI ecosystem, including Decide ID, an AI-powered Proof of Personhood, and Decide Cortex, a blockchain-based LLM marketplace. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo. .",
+    imageUrl: "/img/ai-chain/kinic.webp",
+  },
+  {
+    title: "Elna.ai",
+    body: "Elna offers groundbreaking products that enhance the decentralized AI ecosystem, including Decide ID, an AI-powered Proof of Personhood, and Decide Cortex, a blockchain-based LLM marketplace. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo. ",
+    imageUrl: "/img/ai-chain/elnaai.webp",
+  },
+  {
+    title: "Datapond",
+    body: "Datapond offers groundbreaking products that enhance the decentralized AI ecosystem, including Decide ID, an AI-powered Proof of Personhood, and Decide Cortex, a blockchain-based LLM marketplace. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo. ",
+    imageUrl: "/img/ai-chain/datapond.webp",
+  },
+];
+
+interface FaqData {
+  question: string;
+  answer: string;
+}
+
+const faqData: FaqData[] = [
+  {
+    question: "What is AI on-chain and why is it important?",
+    answer:
+      "AI on-chain refers to running AI models and applications directly on the blockchain, providing decentralized, tamper-proof, and transparent AI solutions. This approach ensures enhanced security, privacy, and data integrity, which are crucial for applications in sectors like finance, healthcare, and beyond.",
+  },
+  {
+    question: "How does ICP enable AI on-chain?",
+    answer:
+      "The Internet Computer (ICP) enables AI on-chain through its unique architecture that supports scalable, secure, and fully decentralized smart contracts called canisters. These canisters allow AI models to run directly on the blockchain, eliminating the need for traditional cloud-based AI solutions.",
+  },
+  {
+    question:
+      "What are the benefits of running AI on-chain compared to traditional methods?",
+    answer:
+      "Running AI on-chain offers several benefits, including enhanced data privacy, resistance to censorship, reduced dependency on centralized cloud providers, and the ability to leverage blockchain's transparency and security features.",
+  },
+  {
+    question:
+      "How can developers get started with AI on the Internet Computer?",
+    answer:
+      "Developers can start by accessing our comprehensive resources, including developer documentation, sample code, demos, and our GitHub repository. These tools provide step-by-step guidance on building and deploying AI applications on ICP. In addition a good starting point is to connect to the DeAI dev group.",
+  },
+  {
+    question:
+      "What tools and programming languages are supported for developing AI on ICP?",
+    answer:
+      "ICP supports development in languages such as Motoko and Rust, which are optimized for creating and managing canisters. These canisters can run AI models and connect with external data sources, providing a flexible environment for AI development.",
+  },
+  {
+    question: "What are the use cases for AI on ICP?",
+    answer:
+      "Use cases for AI on ICP span various industries, including finance, healthcare, supply chain management, and more. AI on-chain can be used for applications such as fraud detection, predictive analytics, personalized medicine, and automated decision-making systems.",
+  },
+  {
+    question:
+      "What makes ICP different from other blockchains for AI applications?",
+    answer:
+      "ICP stands out due to its ability to run AI fully on-chain, its scalability, and its low-cost computation. Unlike other blockchains that might rely on off-chain solutions, ICP offers a seamless, fully integrated environment for decentralized AI.",
+  },
+  {
+    question:
+      "How does ICP ensure the privacy and security of AI models and data?",
+    answer:
+      "ICP utilizes advanced cryptographic techniques and a decentralized architecture to protect AI models and data from tampering, unauthorized access, and data breaches, ensuring that sensitive information remains secure.",
+  },
+  {
+    question: "Can existing AI models be deployed on ICP?",
+    answer:
+      "Yes, existing AI models can be adapted and deployed on ICP. Developers may need to convert their models into a compatible format and use ICP's canister technology to run them on-chain.",
+  },
+  {
+    question:
+      "Where can I find community support and further learning resources?",
+    answer:
+      "Developers and entrepreneurs can join our community forums, attend workshops, and participate in webinars. Additionally, our website provides links to detailed tutorials, the latest updates, and a vibrant community ready to support your journey with AI on ICP.",
+  },
+];
+
 const MotionLink = motion(Link);
 const { events, websiteCategory, regions } = eventsData;
 
 function AISubPage() {
   const [manifestoModalOpen, setManifestoModalOpen] = useState(false);
+  const [openProjectIndex, setOpenProjectIndex] = useState(0);
+
+  type ContentCardType = {
+    title: string;
+    id: string;
+  };
+  const [content, setContent] = useState([]);
+  const highlight = useScrollSpyMenu(".content-card-with-id");
+
+  function onItemClick(e, index) {
+    const target = document.querySelectorAll(`.content-card-with-id`)[index];
+    if (target) {
+      const y = target.getBoundingClientRect().top + window.pageYOffset - 115;
+      window.scrollTo({ top: y, behavior: "smooth" });
+      e.preventDefault();
+    }
+  }
+
+  useEffect(() => {
+    const cards = document.querySelectorAll(".content-card-with-id");
+    const newContent = Array.from(cards).map((card) => ({
+      title: card.querySelector("h3")?.textContent,
+      id: card.id,
+      image: `/img/ai-chain/${card.id}.webp`, // Assuming you have corresponding images
+    }));
+    setContent(newContent);
+  }, []);
+
   function closeOverlay() {
     document.body.style.overflow = "";
     setManifestoModalOpen(false);
@@ -114,7 +451,7 @@ function AISubPage() {
       <ShareMeta image=""></ShareMeta>
 
       <main
-        className="text-black relative overflow-hidden bg-white"
+        className="text-black relative bg-white"
         style={{
           marginTop: `calc(var(--ifm-navbar-height) * -1)`,
         }}
@@ -175,7 +512,7 @@ function AISubPage() {
             </div>
           </section>
         </AnimateSpawn>
-        <section className="bg-[#F1EEF5] py-20 md:py-30">
+        <section className="bg-[#F1EEF5] py-20 md:py-40">
           <AnimateSpawn
             className="container-10 relative"
             el={motion.section}
@@ -207,7 +544,7 @@ function AISubPage() {
             </AnimateSpawn>
           </AnimateSpawn>
         </section>
-        <section className="bg-[#F1EEF5] py-20 md:py-30">
+        <section className="bg-white py-20 md:py-40">
           <AnimateSpawn
             className="container-10 relative"
             el={motion.section}
@@ -217,13 +554,13 @@ function AISubPage() {
               className="md:w-8/10 mb-10 md:mb-20"
               variants={transitions.item}
             >
-              <motion.h4 className="tw-heading-7-caps mb-2">
+              <motion.h4 className="tw-heading-7-caps mb-4 md:mb-8">
                 TECHNOLOGY
               </motion.h4>
-              <motion.h3 className="tw-title-sm md:tw-title-lg">
+              <motion.h3 className="tw-title-sm md:tw-title-lg mb-4 md:mb-8">
                 R&D at the core of Internet Computer’s AI innovation
               </motion.h3>{" "}
-              <motion.p className="tw-lead-sm md:tw-lead text-black/60">
+              <motion.p className="tw-lead-sm md:tw-lead text-black/60 mb-4 md:mb-8">
                 AI on-chain is made possible by the unique technological
                 capabilities of the Internet Computer Protocol (ICP). Running AI
                 as a smart contract on a blockchain is a significant innovation
@@ -232,121 +569,193 @@ function AISubPage() {
                 optimized to run up to 10x faster, enabling larger models to run
                 on-chain.
               </motion.p>
+              <Link
+                href="/roadmap"
+                className="link-primary link-with-icon text-nowrap"
+              >
+                <LinkArrowRight /> More on AI Roadmap
+              </Link>
             </motion.div>
-          </AnimateSpawn>
-          <aside className="container-12">
-            <motion.div className="bg-white rounded-2xl p-10 md:p-16 flex flex-col md:flex-row gap-8 md:gap-20 mb-5">
-              <article className="flex flex-col justify-start tw-lead-sm md:tw-lead">
-                <div className="md:w-7/10">
-                  <span className="text-black">
-                    Handle large amounts of data.{" "}
-                  </span>
-                  <span className="text-black/50">
-                    ICP’s next-gen smart contracts can store and process
-                    gigabytes of data, unlike traditional smart contracts that
-                    can only handle kilobytes. This is required for storing and
-                    executing large AI models as well as processing large
-                    amounts of input data. 
-                  </span>
-                </div>
-              </article>
-              <article className="flex flex-col items-center">
-                <span className="text-gradient-violet text-[2.5rem] md:text-[5rem] font-[900] mb-0 mt-0 md:-mt-[10%]">
-                  1.000.000x
-                </span>
-                <span className="text-black tw-lead-sm md:tw-lead md:-mt-5">
-                  more data storage
-                </span>
-                <div className="w-[200%] md:w-[300%] -translate-x-[12%] md:-translate-x-[25%] mt-12">
-                  <img
-                    src="/img/ai-chain/data.svg"
-                    alt=""
-                    className="w-full h-full object-contain"
+
+            <div className="my-10 md:my-20">
+              <div className="flex flex-col md:flex-row flex-wrap justify-start gap-1 font-book">
+                {roadmapData.map((item, index) => (
+                  <RoadmapItem
+                    key={index}
+                    number={item.number}
+                    title={item.title}
+                    date={item.date}
                   />
-                </div>
-              </article>
-            </motion.div>
-            <motion.div className="flex gap-5">
-              <motion.div className="w-full md:w-1/2 bg-white rounded-2xl p-10 md:p-16 flex flex-col gap-8 md:gap-20">
-                {" "}
-                <article className="flex flex-col justify-start tw-lead-sm md:tw-lead">
-                  <div>
-                    <span className="text-black">
-                      Floating point optimized computation.
-                    </span>
-                    <span className="text-black/50">
-                      {" "}
-                      ICP’s next-gen smart contracts provide significantly
-                      higher computational power per transaction compared to
-                      current-generation blockchains (two orders of magnitude).
-                      In addition, with newly added support for WebAssembly
-                      128-bit SIMD, smart contracts can execute multiple
-                      floating point operations in parallel, making running AI
-                      models much faster and more efficient.
-                    </span>
+                ))}
+              </div>
+            </div>
+
+            <motion.div className="flex flex-col gap-15 md:gap-30">
+              <article className="flex flex-col md:flex-row justify-start tw-lead-sm md:tw-lead">
+                <div className="w-full md:w-1/2 flex flex-col justify-between">
+                  <div className="mb-7 md:mb-14">
+                    <motion.p className="tw-lead md:tw-lead-lg text-black-20 mb-0 md:mb-6">
+                      01
+                    </motion.p>
+                    <motion.span className="text-gradient-violet">
+                      Data storage to run large AI models.{" "}
+                    </motion.span>{" "}
+                    <motion.span className="text-black/50">
+                      ICP’s next-gen smart contracts can store and process
+                      gigabytes of data, unlike traditional smart contracts that
+                      can only handle kilobytes. This is required for storing
+                      and executing large AI models as well as processing large
+                      amounts of input data. 
+                    </motion.span>
                   </div>
-                </article>
-                <article className="flex flex-col justify-start tw-lead-sm md:tw-lead">
-                  <div className="w-[90%]">
+                  <div>
+                    <motion.p className="text-gradient-violet tw-title-sm md:tw-title-lg">
+                      1.000.000x
+                    </motion.p>
+                    <motion.p className="text-black tw-lead-sm md:tw-lead -mt-2 ">
+                      more data storage
+                    </motion.p>
+                  </div>
+                </div>
+                <div className="w-full md:w-1/2">
+                  <div className="w-full mx-auto md:w-[90%] md:translate-x-1/10 md:mt-12">
                     <img
-                      src="/img/ai-chain/chart1.svg"
+                      src="/img/ai-chain/data.svg"
                       alt=""
                       className="w-full h-full object-contain"
                     />
                   </div>
-                </article>
-              </motion.div>
-              <motion.div className="w-full md:w-1/2 flex flex-col gap-5">
-                <motion.div className="bg-white rounded-2xl p-10 md:p-16 flex flex-col gap-8 md:gap-20">
-                  <article className="flex flex-col justify-start tw-lead-sm md:tw-lead">
-                    <div>
-                      <span className="text-black">
-                        Hardware-accelerated AI Inference API.
-                      </span>
-                      <span className="text-black/50">
-                        {" "}
-                        With the upcoming AI inference API, smart contracts will
-                        be able to run larger AI models more efficiently. <br />
-                        <br />
-                      </span>
-                    </div>
-                    <div>
-                      <span className="text-black/60 text-paragraph">
-                        This specialized API brings hardware acceleration
-                        features such as 256-bit SIMD and parallelization across
-                        multiple CPU cores. Future GPU subnets will benefit from
-                        GPU acceleration, making AI models substantially more
-                        efficient to run.
-                      </span>
-                    </div>
-                    <div className="self-start text-white rounded-full bg-white-60 gap-[10px] text-[0.75rem] md:text-[1rem] px-4 mt-6 font-[450]">
-                      coming soon
-                    </div>
-                  </article>
-                </motion.div>
-              </motion.div>
+                </div>
+              </article>
+
+              <article className="flex flex-col md:flex-row justify-start tw-lead-sm md:tw-lead">
+                <div className="w-full md:w-1/2 flex-col justify-between">
+                  <div>
+                    <motion.p className="text-gradient-violet tw-title-sm md:tw-title-lg">
+                      8x
+                    </motion.p>
+                    <motion.p className="text-black tw-lead-sm md:tw-lead -mt-2">
+                      faster
+                    </motion.p>
+                  </div>
+                  <div className="w-full md:w-[90%]">
+                    <img
+                      src="/img/ai-chain/chart.svg"
+                      alt=""
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                </div>
+                <div className="w-full md:w-1/2 ml-0 md:ml-5 flex flex-col justify-between">
+                  <div className="mb-7 md:mb-14">
+                    <motion.p className="tw-lead md:tw-lead-lg text-black-20 mb-0 md:mb-6">
+                      02
+                    </motion.p>
+                    <motion.span className="text-gradient-violet">
+                      Optimized floating-point arithmetic for faster AI
+                      processing.{" "}
+                    </motion.span>{" "}
+                    <motion.span className="text-black/50">
+                      ICP's next-gen smart contracts provide orders of magnitude
+                      more compute per transaction compared to
+                      current-generation blockchains. In addition, with newly
+                      added support for WebAssembly 128-bit SIMD, smart
+                      contracts can execute multiple floating point operations
+                      in parallel, making running AI models much faster and more
+                      efficient.
+                    </motion.span>
+                  </div>
+                </div>
+              </article>
+              <article className="flex flex-col md:flex-row justify-start tw-lead-sm md:tw-lead">
+                <div className="w-full md:w-1/2 flex flex-col justify-between">
+                  <div className="">
+                    <motion.p className="tw-lead md:tw-lead-lg text-black-20 mb-0 md:mb-6">
+                      03
+                    </motion.p>
+                    <motion.span className="text-gradient-violet">
+                      Optimized AI inference API for more performance.{" "}
+                    </motion.span>{" "}
+                    <motion.span className="text-black/50">
+                      With the upcoming AI inference API, smart contracts will
+                      be able to run larger AI models more efficiently. This
+                      specialized API brings hardware acceleration features such
+                      as 256-bit SIMD and parallelization across multiple CPU
+                      cores. Future GPU subnets will benefit from GPU
+                      acceleration, making AI models substantially more
+                      efficient to run.
+                    </motion.span>
+                  </div>
+                  <div className="self-start text-black-60 rounded-full bg-black-20 gap-[10px] px-4 mt-3 tw-paragraph">
+                    coming soon
+                  </div>
+                </div>
+                <div className="w-full md:w-1/2">
+                  <div className="w-full mx-auto md:w-[90%] md:translate-x-1/10 md:mt-6">
+                    <img
+                      src="/img/ai-chain/inference.svg"
+                      alt=""
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                </div>
+              </article>
+              <article className="flex flex-col md:flex-row justify-start tw-lead-sm md:tw-lead">
+                <div className="w-full md:w-1/2">
+                  <div className="w-full mx-auto md:w-[70%]  md:mt-6">
+                    <img
+                      src="/img/ai-chain/gpu.svg"
+                      alt=""
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                </div>
+                <div className="w-full md:w-1/2 flex flex-col justify-between">
+                  <div className="">
+                    <motion.p className="tw-lead md:tw-lead-lg text-black-20 mb-0 md:mb-6">
+                      04
+                    </motion.p>
+                    <motion.span className="text-gradient-violet">
+                      GPU acceleration for enterprise-grade AI workloads.{" "}
+                    </motion.span>{" "}
+                    <motion.span className="text-black/50">
+                      ICP's next-gen smart contracts run on segregated parts of
+                      the Internet Computer known as "subnets". The flexible
+                      architecture of subnets allows the Internet Computer not
+                      only to scale, but to also create subnets with different
+                      characteristics. Work is underway to create subnets with
+                      GPU acceleration, allowing smart contracts to run
+                      enterprise-grade AI models directly on-chain.
+                    </motion.span>
+                  </div>
+                  <div className="self-start text-black-60 rounded-full bg-black-20 gap-[10px] px-4 mt-3 tw-paragraph">
+                    coming soon
+                  </div>
+                </div>
+              </article>
             </motion.div>
-          </aside>
+          </AnimateSpawn>
         </section>
-        <section className="bg-[#F1EEF5] py-20 md:py-30">
+        <section className="pb-20 md:pb-48">
           <AnimateSpawn
-            className="container-12 py-10 md:py-20"
+            className="container-12"
             el={motion.section}
             variants={transitions.container}
           >
             <div className="container-10 !px-0 flex flex-col gap-1  md:gap-5 mb-8 md:flex-row ">
               <motion.h2
-                className="tw-title-sm w-80"
+                className="tw-title-sm md:w-[27rem]"
                 variants={transitions.item}
               >
                 AI Video Demos
               </motion.h2>
               <div className="md:flex-1 md:pt-1 ">
                 <motion.p
-                  className="mb-0 mt-2 tw-paragraph md:tw-lead-sm text-black-60"
+                  className="mb-0 mt-2 tw-paragraph md:tw-lead-sm text-black-60 md:w-8/10"
                   variants={transitions.item}
                 >
-                  Watch these videos to learn more about AI on ICP.
+                  Dominic Williams, Chief Scientist and Founder of DFINITY
+                  Foundation, demos advancements in AI smart contracts on ICP
                 </motion.p>
                 <MotionLink
                   variants={transitions.item}
@@ -360,39 +769,342 @@ function AISubPage() {
 
             <div className="mt-4 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-5">
               <TitleVideoCard
-                href="https://www.youtube.com/watch?v=sdthNB-5yag"
-                image="https://i.ytimg.com/vi/sdthNB-5yag/maxresdefault.jpg"
+                href="https://www.youtube.com/watch?v=6qLvIXiCGcM"
+                image="https://i3.ytimg.com/vi/6qLvIXiCGcM/maxresdefault.jpg"
                 className="flex-1"
-                title="Dominic Williams on AI"
-              />
-              <TitleVideoCard
-                href="https://www.youtube.com/watch?v=hEFff_GGj30"
-                image="https://i.ytimg.com/vi/hEFff_GGj30/maxresdefault.jpg"
-                className="flex-1"
-                title="Dominic Williams on AI"
+                title="AI fully on-chain"
               />
               <TitleVideoCard
                 href="https://www.youtube.com/watch?v=kP893pQIQvY"
                 image="https://i.ytimg.com/vi/kP893pQIQvY/maxresdefault.jpg"
                 className="flex-1"
-                title="Dominic Williams on AI"
+                title="Image classification speed boost"
+              />
+              <TitleVideoCard
+                href="https://www.youtube.com/watch?v=hEFff_GGj30"
+                image="https://i.ytimg.com/vi/hEFff_GGj30/maxresdefault.jpg"
+                className="flex-1"
+                title="On-chain Facial recognition"
               />
             </div>
           </AnimateSpawn>
         </section>
-        <section className="bg-[#3B00B9] py-20 md:py-30">
+        <section
+          style={{
+            background:
+              "linear-gradient(0deg, rgba(0, 0, 0, 0.80) 0%, rgba(0, 0, 0, 0.80) 100%), #3B00B9;",
+          }}
+          className="bg-[#0C0025] py-20 md:py-40 text-white"
+        >
           <AnimateSpawn
-            className="container-12 py-10 md:py-20"
+            className="container-10 relative"
             el={motion.section}
             variants={transitions.container}
           >
-            <Link
-              className="link-primary link-white link-with-icon"
-              onClick={openOverlay}
+            <motion.div
+              className="md:w-8/10 mb-10 md:mb-20"
+              variants={transitions.item}
             >
-              <LinkArrowRight /> Read the full manifesto{" "}
-            </Link>
+              <motion.h4 className="tw-heading-7-caps mb-4 md:mb-8">
+                Ecosystem
+              </motion.h4>
+              <motion.h3 className="tw-title-sm md:tw-title-lg mb-4 md:mb-8">
+                The fastest growing AI Ecosystem in Web3.
+              </motion.h3>{" "}
+              <motion.p className="tw-lead-sm md:tw-lead text-white/60 mb-4 md:mb-8">
+                The ICP ecosystem is home to 60+ AI-related projects. These
+                dapps cover the entire AI value chain from infrastructure,
+                development and training, inference to verification and
+                security. ICP's unique capabilities have made it a preferred
+                platform for builders of AI dapps.
+              </motion.p>
+            </motion.div>
+            <motion.div className="my-20 md:my-40">
+              <motion.h4 className="tw-title-sm md:w-7/10">
+                Our ecosystem is building projects along the entire AI value
+                chain
+              </motion.h4>
+              <motion.div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 w-full gap-1">
+                {aiFeatures.map((feature, index) => (
+                  <AIFeatureCard key={index} {...feature} />
+                ))}
+              </motion.div>
+            </motion.div>
+
+            <motion.div className="">
+              <motion.h3 className="tw-title-sm md:tw-title-lg">
+                AI Ecosystem highlights
+              </motion.h3>
+              <section className="text-white mt-10 md:mt-20">
+                <section className="relative  mb-20 md:mb-40">
+                  <div className=" xl:min-h-[600px]">
+                    <AnimateSpawn
+                      variants={transitions.item}
+                      className="flex overflow-auto sm:overflow-visible -mx-6 sm:mx-0 sm:gap-2/10 snap-x snap-mandatory xl:relative sm:min-h-[40vw] xl:min-h-[450px]"
+                    >
+                      <div className="flex items-stretch gap-6 sm:flex-col sm:gap-10 mx-6 sm:mx-0 mb-6 sm:mb-0 sm:w-5/10 md:w-4/10">
+                        {projects.map((p, i) => (
+                          <Collapse
+                            title={p.title}
+                            open={openProjectIndex === i}
+                            onClick={() => setOpenProjectIndex(i)}
+                          >
+                            <div className="flex-1 tw-paragraph">{p.body}</div>
+
+                            <img
+                              src={projects[i].imageUrl}
+                              alt={p.title}
+                              className="sm:hidden mt-8"
+                            />
+                          </Collapse>
+                        ))}
+                      </div>
+                    </AnimateSpawn>
+                  </div>
+                  {projects.map((p, i) => (
+                    <div
+                      className="
+              hidden sm:flex
+              absolute
+              transition-opacity
+              top-0
+              -right-6 xl:right-[calc(50%-440px)] xl:translate-x-1/2
+              w-4/10
+              max-w-[600px]
+              "
+                      style={{ opacity: i === openProjectIndex ? 1 : 0 }}
+                    >
+                      <img src={p.imageUrl} alt={p.title} />
+                    </div>
+                  ))}
+                </section>
+              </section>
+            </motion.div>
+            <motion.div className="mt-20 md:mt-40">
+              <article className="flex flex-col md:flex-row justify-start tw-lead-sm md:tw-lead">
+                <div className="w-full md:w-1/2">
+                  <div className="w-full mx-auto md:w-[70%]">
+                    <img
+                      src="/img/ai-chain/deai-img.svg"
+                      alt=""
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                </div>
+                <div className="w-full md:w-1/2 flex flex-col">
+                  <div className="text-white mb-4 md:mb-8">
+                    <motion.h3 className="tw-title-sm md:tw-title-lg mb-4 md:mb-8">
+                      DeAI Manifesto
+                    </motion.h3>
+                    <motion.span className="tw-lead-sm md:tw-lead ">
+                      Created by the ICP community, the DeAI manifesto lays out
+                      the principles and reasons for decentralizing AI and
+                      advocating for a fair, transparent, and user-centric AI
+                      ecosystem. Join the movement!
+                    </motion.span>
+                  </div>
+                  <Link
+                    className="link-primary link-white link-with-icon cursor-pointer text-select-none"
+                    onClick={openOverlay}
+                  >
+                    <LinkArrowRight /> Read the full manifesto{" "}
+                  </Link>
+                </div>
+              </article>
+            </motion.div>
           </AnimateSpawn>
+        </section>
+        <section className="bg-[#F1EEF5] py-20 md:py-40">
+          <AnimateSpawn
+            className="container-10 relative"
+            el={motion.section}
+            variants={transitions.container}
+          >
+            <div className="md:flex md:space-x-32">
+              <div className="md:w-5/12 mb-10 md:mb-0">
+                <motion.h4 className="tw-heading-7-caps text-black-60 mb-4 md:mb-8">
+                  DEVELOPERS
+                </motion.h4>
+                <motion.h3
+                  className="tw-lead-lg mb-4"
+                  variants={transitions.item}
+                >
+                  Build your next AI venture on the Internet Computer.{" "}
+                  <motion.span
+                    className="tw-lead-lg text-black/60 mb-6"
+                    variants={transitions.item}
+                  >
+                    Find all the essentials, including developer documentation,
+                    code samples, demos, and our GitHub repository.
+                  </motion.span>
+                </motion.h3>
+
+                <motion.p
+                  className="tw-lead-sm text-black/60 mb-6"
+                  variants={transitions.item}
+                >
+                  These resources are designed to help you get started with
+                  creating decentralized AI applications on-chain. Our DeAI
+                  developer community is also a great way to start.
+                </motion.p>
+                <motion.div variants={transitions.item}>
+                  <Link href="#" className="button-primary">
+                    BUILD AI DAPPS
+                  </Link>
+                </motion.div>
+              </div>
+
+              <div className="md:w-7/12 grid grid-cols-2 gap-6">
+                <motion.div variants={transitions.item} className="space-y-6">
+                  <div className="bg-white rounded-xl p-6 shadow-sm">
+                    <h3 className="tw-lead-lg mb-4">Learn</h3>
+                    <div className="space-y-2">
+                      <motion.p className="tw-lead-sm text-black-60 mb-0">
+                        Overview of AI on-chain
+                      </motion.p>
+                      <Link
+                        href="/docs"
+                        className="link-primary link-with-icon mt-0"
+                      >
+                        Docs <LinkArrowUpRight />
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="bg-white rounded-xl p-6 shadow-sm">
+                    <h3 className="tw-lead-lg mb-4">Connect</h3>
+                    <div className="space-y-8">
+                      <div>
+                        <motion.p className="tw-lead-sm text-black-60 mb-0 md:text-nowrap">
+                          Contribute to the discussion
+                        </motion.p>
+                        <Link
+                          href="/docs"
+                          className="link-primary link-with-icon mt-0 text-nowrap"
+                        >
+                          ICP Forum <LinkArrowUpRight />
+                        </Link>
+                      </div>
+                      <div>
+                        <motion.p className="tw-lead-sm text-black-60 mb-0 md:text-nowrap">
+                          Join the bi-weekly meeeting
+                        </motion.p>
+                        <Link
+                          href="https://discord.com/invite/jnjVVQaE2C"
+                          className="link-primary link-with-icon mt-0 md:text-nowrap"
+                        >
+                          Discover
+                          <LinkArrowUpRight />
+                        </Link>
+                      </div>
+                      <div>
+                        <motion.p className="tw-lead-sm text-black-60 mb-0 md:text-nowrap">
+                          Join the discussion
+                        </motion.p>
+                        <Link
+                          href="/docs"
+                          className="link-primary link-with-icon mt-0 md:text-nowrap"
+                        >
+                          Technical working group
+                          <LinkArrowUpRight />
+                        </Link>
+                      </div>
+                      <div>
+                        <motion.p className="tw-lead-sm text-black-60 mb-0">
+                          Meet the experts IRL
+                        </motion.p>
+                        <Link
+                          href="/events"
+                          className="link-primary link-with-icon mt-0 md:text-nowrap"
+                        >
+                          Events
+                          <LinkArrowUpRight />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  variants={transitions.item}
+                  className="space-y-6 flex flex-col h-full"
+                >
+                  <div className="bg-white rounded-xl p-6 shadow-sm">
+                    <h3 className="tw-lead-lg mb-4">Build</h3>
+                    <div className="space-y-8">
+                      <div>
+                        <motion.p className="tw-lead-sm text-black-60 mb-0">
+                          Explore the work
+                        </motion.p>
+                        <Link
+                          href="/docs"
+                          className="link-primary link-with-icon mt-0"
+                        >
+                          GitHub <LinkArrowUpRight />
+                        </Link>
+                      </div>
+                      <div>
+                        <motion.p className="tw-lead-sm text-black-60 mb-0">
+                          Add short title
+                        </motion.p>
+                        <Link
+                          href="/docs"
+                          className="link-primary link-with-icon mt-0"
+                        >
+                          DFX <LinkArrowUpRight />
+                        </Link>
+                      </div>
+                      <div>
+                        <motion.p className="tw-lead-sm text-black-60 mb-0">
+                          Add short title
+                        </motion.p>
+                        <Link
+                          href="/docs"
+                          className="link-primary link-with-icon mt-0"
+                        >
+                          BOUNTIES <LinkArrowUpRight />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="bg-white rounded-xl p-6 shadow-sm flex-grow flex flex-col justify-between">
+                    <div>
+                      <h3 className="tw-lead-lg mb-4">Grow</h3>
+                      <div>
+                        <motion.p className="tw-lead-sm text-black-60 mb-0">
+                          Apply for the DeAI grant
+                        </motion.p>
+                        <Link
+                          href="/docs"
+                          className="link-primary link-with-icon mt-0 md:text-nowrap"
+                        >
+                          Grants and Programs <LinkArrowUpRight />
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </AnimateSpawn>
+        </section>
+        <section className="container-10 bg-white py-20 md:py-40">
+          <h1 className="text-black text-title-lg mb-12">FAQ</h1>
+          <div className="flex gap-5 flex-col md:flex-row">
+            <div className="w-full md:w-7/12 md:mr-20">
+              {faqData.map((item, index) => (
+                <FaqItem
+                  key={index}
+                  question={item.question}
+                  answer={item.answer}
+                />
+              ))}
+            </div>
+            <div className="w-full md:w-5/12 ">
+              <ContactCard />
+            </div>
+          </div>
         </section>
         {manifestoModalOpen && (
           <AIManifestoModal onClose={closeOverlay}></AIManifestoModal>

@@ -38,10 +38,14 @@ export const TitleVideoCard: React.FC<{
   return (
     <div className="rounded-xl overflow-hidden bg-white flex flex-col w-full">
       <Link className="aspect-video flex relative group" href={href}>
-        <img src={image} alt={title} className="w-full h-full object-cover" />
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover rounded-xl"
+        />
         <PlayButton />
       </Link>
-      <div className="px-6 pt-8 pb-6 flex flex-col flex-1">
+      <div className="py-6 flex flex-col flex-1">
         <h3 className={`tw-lead mb-3 line-clamp-2`}>{title}</h3>
         <div className="flex-1"></div>
         <div>
