@@ -130,9 +130,11 @@ Public Key
 Conversion](https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki#public-key-conversion)).
 
 For algorithm `ed25519`, the public key is derived using a custom mechanism for
-hierarchical key derivation that, just as in extended BIP32, takes a vector of byte strings as input.
-More details about this mechanism can be found in the
-[interface
+hierarchical key derivation that, just as in extended BIP32, takes a vector of
+byte strings as input. The public key is encoded in standard 32-byte compressed
+form (see [RFC8032, 5.1.2
+Encoding](https://datatracker.ietf.org/doc/html/rfc8032#section-5.1.2)) More
+details about the derivation mechanism can be found in the [interface
 specification](/references/ic-interface-spec.md#ed25519-key-derivation).
 
 -   [`sign_with_schnorr`](/docs/current/references/ic-interface-spec#ic-ecdsa_public_key): Returns a new Schnorr signature of the given `message` of arbitrary size that can be separately verified against a derived Schnorr public key.
