@@ -91,7 +91,7 @@ pub async fn get_utxos(network: BitcoinNetwork, address: String) -> GetUtxosResp
 Then make a call to this canister's function with the command:
 
 ```
-dfx canister --network=ic call CANISTER_NAME get_utxos '("ADDRESS")'
+dfx canister --network ic call CANISTER_NAME get_utxos '("ADDRESS")'
 ```
 
 Replace `CANISTER_NAME` with your canister's name and replace `ADDRESS` with your Bitcoin address. [Learn more about Bitcoin addresses.](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash)
@@ -153,7 +153,7 @@ pub async fn get_balance(network: BitcoinNetwork, address: String) -> u64 {
 Then make a call to this canister's function with the command:
 
 ```
-dfx canister --network=ic call CANISTER_NAME get_balance '("ADDRESS")'
+dfx canister --network ic call CANISTER_NAME get_balance '("ADDRESS")'
 ```
 
 Replace `CANISTER_NAME` with your canister's name and replace `ADDRESS` with your Bitcoin address. [Learn more about Bitcoin addresses.](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash)
@@ -215,7 +215,7 @@ pub async fn get_current_fee_percentiles(network: BitcoinNetwork) -> Vec<Millisa
 Then make a call to this canister's function with the command:
 
 ```
-dfx canister --network=ic call CANISTER_NAME get_current_fee_percentiles
+dfx canister --network ic call CANISTER_NAME get_current_fee_percentiles
 ```
 
 Replace `CANISTER_NAME` with your canister's name.
