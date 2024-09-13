@@ -16,24 +16,20 @@ This page provides a general overview of the Bitcoin integration technology. For
 
 ## Protocol-level integration of ICP with the Bitcoin network
 
-Through the protocol-level integration of ICP with the Bitcoin network, ICP can obtain Bitcoin blocks directly from the Bitcoin network and process the contained transactions. This integration makes it possible to maintain the full Bitcoin UTXO set on-chain on ICP. Canisters can run queries against the full Bitcoin UTXO set. This allows canisters to know about the held UTXOs, and thus balance, of any Bitcoin address, including their own addresses.
-
-## Chain-key ECDSA signatures
-
-Canisters themselves can have ECDSA keys using a novel chain-key ECDSA signature protocol suite for threshold ECDSA, and so can receive and hold Bitcoin. Canisters also can create Bitcoin transactions and submit them via the Bitcoin API to the Bitcoin network. They use the chain-key ECDSA functionality to request threshold ECDSA signatures to spend UTXOs in a transaction to be submitted to the Bitcoin network. Chain-key ECDSA signatures are a new member of ICP's chain-key cryptography toolbox of protocols. Chain-key ECDSA signatures are much more than just a threshold ECDSA implementation as they for example also comprise protocols for secure distributed key generation and key rotation, which are crucial from a systems perspective to make threshold signing secure and practically viable. Details regarding ICP's chain-key ECDSA signature protocol can be found on the corresponding documentation page [here](/docs/current/references/t-sigs-how-it-works/).
-
-The protocol-level Bitcoin integration and chain-key ECDSA signature protocols each expose an API on the management canister. Those APIs are the system-level APIs engineers use to write Bitcoin smart contracts on ICP. The APIs are low-level APIs designed around the concepts of Bitcoin UTXOs and transactions, are non-trivial to use, and require an in-depth understanding of how Bitcoin works. The chain-key ECDSA signature API is also generically useful for any ECDSA use case, e.g., integration with other blockchains such as Ethereum.
-
-This page gives a high-level overview of the above mentioned technology behind the direct Bitcoin integration. For details, it is recommended to refer the reader to the [Bitcoin page on the Internet Computer wiki](https://wiki.internetcomputer.org/wiki/Bitcoin_integration) as well as the [threshold ECDSA documentation page](/docs/current/references/t-sigs-how-it-works/).
-
-## Protocol-level integration of ICP with the Bitcoin network
-
 The Internet Computer Protocol has been integrated with the Bitcoin protocol to obtain a direct technical integration between the two networks. This integration can be activated on any number of Internet Computer subnets. At the beginning, there will only be one dedicated Bitcoin-activated subnet, and requests to the Bitcoin API from canisters on any subnet will be routed to this single Bitcoin-activated subnet using ICP's XNet communication capabilities. The integration serves two key purposes:
 
 -   Obtaining the Bitcoin UTXO set and keeping it on chain in the replicated state of the Internet Computer to be able to answer queries for UTXO sets and balances of Bitcoin accounts issued by canisters.
 -   Accepting signed Bitcoin transactions from canisters and submitting them to the Bitcoin network.
 
 ![Bitcoin Integration](./_attachments/bitcoin_integration.png)
+
+### Chain-key signatures
+
+Canisters themselves can have ECDSA and Schnorr keys using novel chain-key ECDSA and Schnorr signature protocols, and therefore can receive and hold bitcoin and other assets. Canisters also can create Bitcoin transactions and submit them via the Bitcoin API to the Bitcoin network. They use the chain-key ECDSA and Schnorr functionality to request threshold signatures to spend UTXOs in a transaction that is then submitted to the Bitcoin network. Chain-key signatures are much more than just a threshold ECDSA and threshold Schnorr implementation as they, for example, also comprise protocols for secure distributed key generation and key rotation, which are crucial from a systems perspective to make threshold signing secure and practically viable. Details regarding ICP's chain-key signature protocol can be found on the [corresponding documentation page](/docs/current/references/t-sigs-how-it-works/).
+
+The protocol-level Bitcoin integration and chain-key signature protocols each expose an API on the management canister. Those APIs are the system-level APIs engineers use to write Bitcoin smart contracts on ICP. The APIs are low-level APIs designed around the concepts of Bitcoin UTXOs and transactions, are non-trivial to use, and require an in-depth understanding of how Bitcoin works. The chain-key ECDSA and Schnorr signature APIs are also generically useful for any use case, e.g., integration with other blockchains such as Ethereum.
+
+This page gives a high-level overview of the above mentioned technology behind the direct Bitcoin integration. For details, it is recommended to refer the reader to the [Bitcoin page on the Internet Computer wiki](https://wiki.internetcomputer.org/wiki/Bitcoin_integration) as well as the [threshold signatures documentation page](/docs/current/references/t-sigs-how-it-works/).
 
 ### Components
 
@@ -50,16 +46,6 @@ The significant complexity of the implementation is in the area of securely reso
 ### Submitting transactions
 
 Canisters can submit Bitcoin transactions to the Bitcoin canister using the corresponding management canister API. Doing so queues the transactions for submission to the Bitcoin network. In every subnet round, adapters obtain the pending transactions from the Bitcoin canister and queue them for being submitted asynchronously to the Bitcoin network. This leads to an efficient and quick distribution of transactions in the Bitcoin network, as every replica of the subnet submits transactions via multiple connected nodes of the Bitcoin network.
-
-## Chain-key ECDSA signatures: a novel threshold ECDSA protocol suite
-
-Chain-key signatures are realized with a novel threshold ECDSA protocol suite, i.e., an implementation of the ECDSA signature protocol using threshold cryptography. In a threshold ECDSA protocol, the private ECDSA key is secret-shared between multiple parties, and only an eligible quorum of the parties can generate a signature using their respective private key shares. The private key never exists in reconstructed form but only in its secret-shared form. Key generation generates private key shares for the parties. But chain-key signing comprises much more than just the threshold ECDSA protocol, e.g., cryptographic multi-party computation protocols for secure threshold key generation and periodic key resharing for hardening the overall security.
-
-The ECDSA chain-key signing protocol currently implemented uses a single master private key from which keys for canisters can be derived using BIP-32-like key derivation. Each canister has one such root key derived using the canister id, and an arbitrary number of additional canister keys can be derived using a backward-compatible extension of BIP-32.
-
-ECDSA chain-key signing is initially deployed on one signing subnet of the Internet Computer initially that will answer signing requests from canisters. The signing subnet enforces that only the canister that controls a key may request signatures with this key. All API calls made by canisters need to go through XNet traffic to reach the ECDSA subnet and thus incur the related extra latency accordingly to obtain a signature.
-
-Canisters can query their own or other canisters' public keys, including further derived public keys of canisters. Canisters can request signatures with private keys they control, i.e., their root private key and derived private keys. For requests of public keys or signatures with derived keys, a derivation path can be specified in the respective API or the derivation can be done using BIP-32. You can find more details on the [ECDSA chain-key signatures page](/docs/current/references/t-sigs-how-it-works/).
 
 ## Deployment architecture
 
