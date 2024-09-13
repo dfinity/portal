@@ -10,7 +10,7 @@ The Bitcoin integration on the Internet Computer allows for direct and trustless
 
 Two advanced engineering challenges needed to be solved to enable Bitcoin smart contracts on ICP:
 - A protocol-level integration of ICP with the Bitcoin network.
-- A chain-key signatures based on novel threshold ECDSA and threshold Schnorr protocols.
+- Chain-key signatures based on novel threshold ECDSA and threshold Schnorr protocols.
 
 This page provides a general overview of the Bitcoin integration technology. For a deeper technical explanation of ckBTC, please see the [wiki page](https://wiki.internetcomputer.org/wiki/Chain-key_Bitcoin).
 
@@ -25,11 +25,11 @@ The Internet Computer Protocol has been integrated with the Bitcoin protocol to 
 
 ### Chain-key signatures
 
-Canisters themselves can have ECDSA and Schnorr keys using novel chain-key ECDSA and Schnorr signature protocols, and therefore can receive and hold bitcoin and other assets. Canisters also can create Bitcoin transactions and submit them via the Bitcoin API to the Bitcoin network. They use the chain-key ECDSA and Schnorr functionality to request threshold signatures to spend UTXOs in a transaction that is then submitted to the Bitcoin network. Chain-key signatures are much more than just a threshold ECDSA and threshold Schnorr implementation as they, for example, also comprise protocols for secure distributed key generation and key rotation, which are crucial from a systems perspective to make threshold signing secure and practically viable. Details regarding ICP's chain-key signature protocol can be found on the [corresponding documentation page](/docs/current/references/t-sigs-how-it-works/).
+Canisters themselves can have ECDSA and Schnorr keys using novel chain-key ECDSA and Schnorr signature protocols, and therefore can receive and hold bitcoin and other assets. Canisters can also create Bitcoin transactions and submit them via the Bitcoin API to the Bitcoin network. They use the chain-key ECDSA and Schnorr functionality to request threshold signatures to spend UTXOs in a transaction that is then submitted to the Bitcoin network. Chain-key signatures are much more than just a threshold ECDSA and threshold Schnorr implementation, as they, for example, also comprise protocols for secure distributed key generation and key rotation, which are crucial from a systems perspective to make threshold signing secure and practically viable. Details regarding ICP's chain-key signature protocol can be found on the [corresponding documentation page](/docs/current/references/t-sigs-how-it-works/).
 
 The protocol-level Bitcoin integration and chain-key signature protocols each expose an API on the management canister. Those APIs are the system-level APIs engineers use to write Bitcoin smart contracts on ICP. The APIs are low-level APIs designed around the concepts of Bitcoin UTXOs and transactions, are non-trivial to use, and require an in-depth understanding of how Bitcoin works. The chain-key ECDSA and Schnorr signature APIs are also generically useful for any use case, e.g., integration with other blockchains such as Ethereum.
 
-This page gives a high-level overview of the above mentioned technology behind the direct Bitcoin integration. For details, it is recommended to refer the reader to the [Bitcoin page on the Internet Computer wiki](https://wiki.internetcomputer.org/wiki/Bitcoin_integration) as well as the [threshold signatures documentation page](/docs/current/references/t-sigs-how-it-works/).
+This page gives a high-level overview of the above-mentioned technology behind the direct Bitcoin integration. For details, it is recommended to refer the reader to the [Bitcoin page on the Internet Computer wiki](https://wiki.internetcomputer.org/wiki/Bitcoin_integration) as well as the [threshold signatures documentation page](/docs/current/references/t-sigs-how-it-works/).
 
 ### Components
 
@@ -86,21 +86,21 @@ The cost per API call in USD uses the USD/XDR exchange rate of July 23, 2024.
 
 | Transaction                          | Description                                                                                                    | Price (Cycles) | Price (USD) | Minimum cycles to send with call |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|------------------|
-| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (`bitcoin_get_utxos`)                                        | 20_000_000 + 0.4 cycles per Wasm instruction | $0.0000265102 + Wasm instruction cost | 4_000_000_000 |
-| Bitcoin fee percentiles              | For obtaining the fee percentiles of the most recent transactions (`bitcoin_get_current_fee_percentiles`)       | 4_000_000                 | $0.00000530204                    | 40_000_000 |
-| Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (`bitcoin_get_balance`)                                  | 4_000_000                 | $0.00000530204                   | 40_000_000 |
-| Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (`bitcoin_send_transaction`)      | 2_000_000_000             | $0.00265102                    | n.a.       |
-| Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (`bitcoin_send_transaction`)  | 8_000_000                 | $0.00001060408                    | n.a.       |
+| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (`bitcoin_get_utxos`)                                        | 20_000_000 + 0.4 cycles per Wasm instruction | $0.0000265102 + Wasm instruction cost | 4_000_000_000 |
+| Bitcoin fee percentiles              | For obtaining the fee percentiles of the most recent transactions (`bitcoin_get_current_fee_percentiles`)       | 4_000_000                 | $0.00000530204                    | 40_000_000 |
+| Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (`bitcoin_get_balance`)                                  | 4_000_000                 | $0.00000530204                   | 40_000_000 |
+| Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (`bitcoin_send_transaction`)      | 2_000_000_000             | $0.00265102                    | n.a.       |
+| Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (`bitcoin_send_transaction`)  | 8_000_000                 | $0.00001060408                    | n.a.       |
 
 ### Bitcoin Mainnet
 
 | Transaction                          | Description                                                                                                    | Price (Cycles) | Price (USD) | Minimum cycles to send with call |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|------------------|
-| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (`bitcoin_get_utxos`)                                        | 50_000_000 + 1 cycle per Wasm instruction | $0.0000662755 + Wasm instruction cost | 10_000_000_000 |
-| Bitcoin fee percentiles              | For obtaining the fee percentiles of the most recent transactions (`bitcoin_get_current_fee_percentiles`)       | 10_000_000                 | $0.0000132551 | 100_000_000 |
-| Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (`bitcoin_get_balance`)                                  | 10_000_000                 | $0.0000132551                    | 100_000_000 |
-| Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (`bitcoin_send_transaction`)      | 5_000_000_000             | $0.00662755                    | n.a.       |
-| Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (`bitcoin_send_transaction`)  | 20_000_000                 | $0.0000265102                    | n.a.       |
+| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (`bitcoin_get_utxos`)                                        | 50_000_000 + 1 cycle per Wasm instruction | $0.0000662755 + Wasm instruction cost | 10_000_000_000 |
+| Bitcoin fee percentiles              | For obtaining the fee percentiles of the most recent transactions (`bitcoin_get_current_fee_percentiles`)       | 10_000_000                 | $0.0000132551 | 100_000_000 |
+| Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (`bitcoin_get_balance`)                                  | 10_000_000                 | $0.0000132551                    | 100_000_000 |
+| Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (`bitcoin_send_transaction`)      | 5_000_000_000             | $0.00662755                    | n.a.       |
+| Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (`bitcoin_send_transaction`)  | 20_000_000                 | $0.0000265102                    | n.a.       |
 
 :::note
 Note that the `bitcoin_get_utxos` call is charged through a baseline fee that amortizes part of the Bitcoin block processing and the cycles cost of the actually-used Wasm instructions. This is the fairest way of charging because a flat fee would be less fair for requests returning a small number of UTXOs, while a fee scaling with the number of UTXOs is hard to define in a clean way. A few informal test measurements have yielded Wasm execution fees anywhere in the range of less than 200K to more than 1,000K cycles per returned UTXO, and in addition, 30M-50M cycles for processing the unstable blocks. This wide variance per UTXO was the reason to not use a charging approach based on the number of UTXOs returned, but it should give you a rough indication of what to expect to pay in terms of fees. For queries with a small number of UTXOs, you can expect around 100M cycles as a fee to be deducted from the provided cycles on the call for the majority of calls.
