@@ -2365,7 +2365,7 @@
         "elements": [
           {
             "title": "Identity signer standards",
-            "overview": "Standards to enable an untrusted relying party (e.g., canister or web app) to request a signer to sign a transaction for ICP after user approval. Alternative to II's delegation model for high-security use cases or when stable identities are required with different canisters.",
+            "overview": "Standards that enable an untrusted relying party (e.g., canister or web app) to request a signer to sign a transaction for ICP after user approval. Alternative to II's delegation model for high-security use cases or when stable identities are required with different canisters.",
             "description": "Users will be able to use a single wallet address across many different applications, making wallets built on the Internet Computer and relying on Internet Identity for key management to be portable. This way, users can bring their digital assets with them across applications and services while relying on Internet Identity for key management.",
             "forum": "",
             "proposal": "",
