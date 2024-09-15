@@ -2357,6 +2357,57 @@
         ]
       },
       {
+        "name": "Signer standards in use by ICP dapps and wallets",
+        "description": "With Synchrotron, ICP finally acquires the capability to create a vibrant and diverse ecosystem of signers, dapps and canisters that can interact with each other, without having to specifically integrate with any particular component.",
+        "milestone_id": "Synchrotron",
+        "eta": "",
+        "status": "in_progress",
+        "elements": [
+          {
+            "title": "Identity signer standards",
+            "overview": "Standards to enable an untrusted relying party (e.g., canister or web app) to request a signer to sign a transaction for ICP after user approval. Alternative to II's delegation model for high-security use cases or when stable identities are required with different canisters.",
+            "description": "Users will be able to use a single wallet address across many different applications, making wallets built on the Internet Computer and relying on Internet Identity for key management to be portable. This way, users can bring their digital assets with them across applications and services while relying on Internet Identity for key management.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "https://github.com/dfinity/wg-identity-authentication",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": true,
+            "in_beta": true,
+            "milestone_id": "Synchrotron"
+          },
+          {
+            "title": "Transaction approval on Ledger's ICP app",
+            "overview": "Signer standards are coming to the Ledger HW ICP app. Specifically, the Leger ICP app will acquire the ability to interact with dapps that support signer standards and display ICRC-21 compatible messages to the user.",
+            "description": "Ledger users will be able to confirm and authorize a digital currency transaction initiated through a compatible dapp. The Ledger device will first validate the BLS-signed incoming message and after the user reviews the transaction details, e.g., recipient address, amount, and any associated fees, the Ledger device will digitally signing and send the transaction.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "https://github.com/dfinity/wg-identity-authentication",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": true,
+            "in_beta": true,
+            "milestone_id": "Synchrotron"
+          },
+          {
+            "title": "Support II authentication to Web2 service",
+            "overview": "Secure, privacy-enhancing authentication for Web2 by bringing ICP's II authentication to Web2 services.",
+            "description": "Secure, privacy-enhancing authentication for Web2 by bringing ICP's II authentication to Web2 services.",
+            "forum": "",
+            "proposal": "",
+            "wiki": "",
+            "docs": "",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": false,
+            "in_beta": true,
+            "milestone_id": "Synchrotron"
+          }
+        ]
+      },
+      {
         "name": "orphans_past",
         "description": "Orphans from the past",
         "milestone_id": "Past features",
@@ -2538,30 +2589,18 @@
         "eta": "none",
         "elements": [
           {
-            "title": "Identity signer standards",
-            "overview": "Standards to enable an untrusted relying party (e.g., canister or Web app) to request a signer to sign a transaction for ICP after user approval. Alternative to II's delegation model for high-security use cases or when stable identities are required with different canisters.",
-            "description": "Users will be able to use a single wallet address across many different applications, making wallets built on the Internet Computer and relying on Internet Identity for key management to be portable. This way, users can bring their digital assets with them across applications and services while relying on Internet Identity for key management.",
+            "title": "Configurable II",
+            "overview": "Dapps can customize their configuration of II to meet the needs of their users and their product.",
+            "description": "Dapps can configure Internet Identity so that only certain authentication methods are exposed to their users. For example, a temporary key may be effective for onboarding users to social dapps, but it is not a secure method for signing financial transactions or managing digital assets. If a user clears their browser history, then the temporary key will be lost, and the user will lose access to the assets associated with it. Therefore, financial dapps may choose not to expose temporary keys as an authentication method for their users.",
             "forum": "",
             "proposal": "",
             "wiki": "",
-            "docs": "https://github.com/dfinity/wg-identity-authentication",
+            "docs": "",
             "eta": "",
-            "status": "in_progress",
+            "status": "future",
             "is_community": true,
-            "in_beta": false
-          },
-          {
-            "title": "Transaction Approval",
-            "overview": "Allows an untrusted relying party (e.g., canister or Web app) to request from a signer to sign a transaction for ICP after user approval. Alternative to II's delegation model for high-security use cases or when stable identities are required with different canisters.",
-            "description": "Users will be able to confirm and authorize a digital currency transaction initiated through the wallet interface. This will require the user to review the transaction details, such as the recipient address, amount, and any associated fees, before digitally signing the transaction by authenticating with their Internet Identity. ",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "https://github.com/dfinity/wg-identity-authentication",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false
+            "in_beta": false,
+            "milestone_id": ""
           },
           {
             "title": "Resident passkeys",
@@ -2617,20 +2656,6 @@
             "milestone_id": ""
           },
           {
-            "title": "Support II authentication to Web2 service",
-            "overview": "Secure, privacy-enhancing authentication for Web2 by bringing ICP's II authentication to Web2 services.",
-            "description": "Secure, privacy-enhancing authentication for Web2 by bringing ICP's II authentication to Web2 services.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": ""
-          },
-          {
             "title": "External services authentication to canisters",
             "overview": "Allowing users to authenticate to canisters via Web2-based authentication services. True Web2-Web3-X-SSO.",
             "description": "Allowing users to authenticate to canisters via Web2-based authentication services. True Web2-Web3-X-SSO.",
@@ -2681,19 +2706,6 @@
             "docs": "",
             "eta": "",
             "status": "future",
-            "is_community": true,
-            "in_beta": false
-          },
-          {
-            "title": "Configurable II",
-            "overview": "Dapps can customize their configuration of II to meet the needs of their users and their product.",
-            "description": "Dapps can configure Internet Identity so that only certain authentication methods are exposed to their users. For example, a temporary key may be effective for onboarding users to social dapps, but it is not a secure method for signing financial transactions or managing digital assets. If a user clears their browser history, then the temporary key will be lost, and the user will lose access to the assets associated with it. Therefore, financial dapps may choose not to expose temporary keys as an authentication method for their users.",
-            "forum": "",
-            "proposal": "",
-            "wiki": "",
-            "docs": "",
-            "eta": "",
-            "status": "",
             "is_community": true,
             "in_beta": false
           },
