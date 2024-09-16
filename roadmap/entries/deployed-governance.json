@@ -1,0 +1,170 @@
+{
+  "categoryName": "",
+  "categoryDescription": "",
+  "elements": [
+    {
+      "title": "NNS FE Dapp Re-write",
+      "overview": "Replacing Flutter with Svelte for the NNS Frontend dapp. Significant speed and UX improvements expected.",
+      "forum": "https://forum.dfinity.org/t/nns-dapp-towards-new-ui-ux-including-test-link/13952",
+      "proposal": "",
+      "docs": "",
+      "eta": "July 2022",
+      "status": "deployed",
+      "is_community": true,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "NNS spam protection (remove financial incentive)",
+      "overview": "Protecting the NNS against proposal spam by removing the financial incentive for such spam by allocating voting rewards differently.",
+      "forum": "https://forum.dfinity.org/t/reproposal-spam-prevention-convert-from-system-based-rewards-to-voter-based-rewards/15352/1",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/80970",
+      "docs": "",
+      "eta": "Q1 23",
+      "status": "deployed",
+      "is_community": true,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Carbon Footprint and Sustainability Policy",
+      "overview": "Conducting a carbon footprint / environmental impact assessment of ICP. Footprint of a subnet, source of electricity, total environmental cost of a tx on ICP.",
+      "forum": "https://forum.dfinity.org/t/sustainability-nns-proposal/11976",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/55487",
+      "docs": "",
+      "eta": "Q2 23",
+      "status": "deployed",
+      "is_community": true,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Service Nervous System (SNS)",
+      "overview": "A DAO factory that allows for proposal-based no-code creation of a DAO, including an initial decentralization swap. Available as part of the ICP governance framework.",
+      "forum": "",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/65132",
+      "docs": "",
+      "eta": "Q1 23",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Community Fund",
+      "overview": "A first version of a community fund that provides means for the NNS community to have a \"treasury\" to invest in projects on ICP.",
+      "forum": "https://forum.dfinity.org/t/community-fund-revised-design-proposal/14691",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/74820",
+      "docs": "",
+      "eta": "Q1 23",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Restriction for SNS swap participation",
+      "overview": "Constraining participation in decentralization swaps of SNSs based on geographic location. Includes custom disclaimers to be confirmed by users before participating.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "Q2 23",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "One-proposal SNS initialization",
+      "overview": "Simplifying decentralization of a dapp from two NNS proposals plus manual steps to a single proposal.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "Q3 23",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Neurons' Fund Enhancements: Matched Funding",
+      "overview": "Enhancing the Neuron's Fund, e.g., to scale with swap participation by the community or having a 10% cap on participation.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "December 23",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Ability to mint SNS tokens and revised thresholds for voting",
+      "overview": "",
+      "forum": "https://forum.dfinity.org/t/new-sns-ability-to-mint-sns-tokens-revised-thresholds-for-voting/23382",
+      "proposal": "",
+      "docs": "",
+      "eta": "Q1 24",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Node Provider Remuneration V2",
+      "overview": "The remuneration scheme v2 improves on the original v1 scheme by reducing remuneration for regions having already many nodes and reducing also for additional nodes of a node provider.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "deployed",
+      "is_community": true,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Enable ICRC-2 for SNS ledgers",
+      "overview": "Update the SNS framework to enable the rollout of ICRC-2 on the SNSs’ ledger canisters.",
+      "status": "deployed",
+      "eta": "Q1 2024",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Safeguards for critical SNS proposals, including the SNS treasury",
+      "overview": "Additional safeguards for transferring funds from an SNS treasury.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "Q1 2024",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Update of SNS ledger parameters",
+      "overview": "Enables parameters of SNS ledgers, such as the SNS token name, to be updated through SNS upgrade proposals.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Increase reward for SNS launch proposals to 20",
+      "overview": "Increase the reward weight of NNS proposals of topic \"SNS & Neuron’s Fund\" to 20 to incentivize more active voting and have the same rules as for proposals of topic \"Governance\"",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false
+    }
+  ]
+}

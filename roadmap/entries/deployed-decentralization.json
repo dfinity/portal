@@ -1,0 +1,124 @@
+{
+  "categoryName": "",
+  "categoryDescription": "",
+  "elements": [
+    {
+      "title": "Gen 2 Replica Node Hardware Specification",
+      "overview": "Specification of the Gen 2 hardware for ICP nodes. Vendor independent. Includes new features such as SEV-SNP CPUs.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "January 2023",
+      "status": "deployed",
+      "is_community": true,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "HostOS upgrades",
+      "overview": "NNS-controlled HostOS upgrades enable also the HostOS to be kept up-to-date and security patched via the NNS.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "Feb 2024",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "ICOS Boundary Nodes",
+      "overview": "Porting the boundary node to the replica's IC OS to simplify operations.",
+      "forum": "https://forum.dfinity.org/t/long-term-r-d-boundary-nodes-proposal/9401",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
+      "docs": "",
+      "eta": "August 2022",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Canister SEO",
+      "overview": "Enables dapps on ICP to be index by search engines and previewed on social media. Boundary nodes redirect requests from crawlers and bots to raw in order to avoid loading the service worker.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "September 2022",
+      "status": "deployed",
+      "is_community": true,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Canister Deny-listing on Boundary Nodes",
+      "overview": "Node providers can deny-list canisters to comply with local regulations and orders. Decentralized content blocking.",
+      "forum": "https://forum.dfinity.org/t/path-forward-on-leveraging-boundary-nodes-for-content-filtering/10911",
+      "proposal": "",
+      "docs": "",
+      "eta": "October 2022",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Custom Domain Names",
+      "overview": "Custom domain names for canisters on ICP. DNS entry of domain redirects to boundary nodes.",
+      "forum": "https://forum.dfinity.org/t/custom-domains-for-ic0-app-community-consideration/6162",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
+      "docs": "https://internetcomputer.org/docs/current/developer-docs/production/custom-domain/",
+      "eta": "February 2023",
+      "status": "deployed",
+      "is_community": true,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "WebSocket support for canisters",
+      "overview": "WebSocket-based communication with canister smart contracts through an IC WebSocket gateway. Enables the canister to push messages to the client.",
+      "forum": "https://forum.dfinity.org/t/23872",
+      "proposal": "",
+      "docs": "https://github.com/omnia-network/ic-websocket-gateway",
+      "eta": "",
+      "status": "deployed",
+      "is_community": true,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Certified Headers",
+      "overview": "Flexible certification of canister-defined response headers besides the response body.",
+      "forum": "https://forum.dfinity.org/t/announcing-response-verification-v2/19135/1",
+      "proposal": "",
+      "docs": "",
+      "eta": "March 2023",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Secure access to ICP without service worker",
+      "overview": "Relying on local and remote HTTP gateways to securely access ICP dapps from the browser.",
+      "forum": "https://forum.dfinity.org/t/deprecating-the-service-worker/23401",
+      "proposal": "",
+      "docs": "",
+      "eta": "Q4 2023",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Replica Node Storage Upgrade",
+      "overview": "Upgrading the storage of existing replica nodes to 32 TB of NVME SSD.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false,
+      "imported": true
+    }
+  ]
+}

@@ -287,7 +287,6 @@ type Element = {
   overview: string;
   status: string;
   forum: string;
-  wiki: string;
   docs: string;
   proposal: string;
 };
@@ -631,7 +630,7 @@ const Overlay: React.FC<{
                   {data[index].name.toUpperCase()}
                 </h2>
                 <p className="tw-lead-sm md:tw-lead md:w-9/10">
-                  {data[index].description}
+                  {data[index].description && data[index].description}
                 </p>
               </section>
               <section>
