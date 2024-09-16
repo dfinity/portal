@@ -3,6 +3,7 @@ keywords: [beginner, python, overview, kybra]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 # Python
 
@@ -34,8 +35,9 @@ To use Kybra:
 
 To set up a Python virtual environment and install Kybra, use the following commands:
 
-<Tabs>
+<AdornedTabs>
 <TabItem value={"linux"} label="Linux">
+
 ```
 curl https://pyenv.run | bash
 ~/.pyenv/bin/pyenv install 3.10.7
@@ -43,9 +45,11 @@ curl https://pyenv.run | bash
 source venv/bin/activate
 pip install kybra
 ```
+
 </TabItem>
 
 <TabItem value={"macos"} label="macOS">
+
 ```
 brew install pyenv
 export PYENV_ROOT="$HOME/.pyenv"
@@ -57,6 +61,7 @@ pyenv install 3.10.7
 source venv/bin/activate
 pip install kybra
 ```
+
 </TabItem>
 
 <TabItem value={"windows"} label="Windows">
@@ -64,7 +69,7 @@ pip install kybra
 Kybra is not currently supported on Windows. 
 
 </TabItem>
-</Tabs>
+</AdornedTabs>
 
 ## Documentation
 

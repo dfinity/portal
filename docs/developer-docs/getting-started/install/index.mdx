@@ -83,7 +83,7 @@ softwareupdate --install-rosetta
 <TabItem value="windows" label="Install on Windows">
 There is no native support for <code>dfx</code> on Windows. However, you can develop ICP canisters on Windows using a Docker container or by installing the Windows Subsystem for Linux (WSL).
 
-## Using Docker
+#### Using Docker
 
 Docker is a containerization software that allows you to run a localized version of another operating system, such as Linux, then run Linux-based software and applications. Containers do not have access to the files and applications outside of the container unless given explicit permission.
 
@@ -134,13 +134,13 @@ This should return the version of `dfx` that was installed:
 dfx 0.18.0
 ```
 
-## Using WSL 2
+#### Using WSL 2
 Follow Microsoft&#39;s instructions for installing the <a href="https://docs.microsoft.com/en-us/windows/wsl/install">Windows Subsystem for Linux</a>. Make sure you are running Windows 10 (version 2004 or higher) or Windows 11.
 
-### Supported WSL Versions
+#### Supported WSL Versions
 Theoretically, WSL 1 and WSL 2 should both allow you to run <code>dfx</code>. However, it is recommended to use WSL 2. <a href="https://docs.microsoft.com/en-us/windows/wsl/compare-versions">WSL Comparison</a> explains the differences between WSL1 and WSL 2.
 
-### Check your WSL version
+#### Check your WSL version
 Run the command <code>wsl –list –verbose (wsl -l -v)</code> to check the Linux distributions installed on your Windows machine. Below is an example output:
 
 ```bash
@@ -150,7 +150,7 @@ Run the command <code>wsl –list –verbose (wsl -l -v)</code> to check the Lin
 
 To learn more about the <code>wsl</code> command, check the <a href="https://docs.microsoft.com/en-us/windows/wsl/basic-commands">command reference for WSL</a>.
 
-### Upgrade from WSL 1
+#### Upgrade from WSL 1
 If you have WSL 1 installed, follow the <a href="https://docs.microsoft.com/en-us/windows/wsl/install#upgrade-version-from-wsl-1-to-wsl-2">upgrade instructions</a> to upgrade to WSL 2. Basically you need to:
 
 <ul>
@@ -158,13 +158,13 @@ If you have WSL 1 installed, follow the <a href="https://docs.microsoft.com/en-u
   <li>Step 2: Run the following command to set your Linux distributions to version 2: <code>wsl--set-version &lt;distribution name&gt; 2</code></li>
 </ul>
 
-## Running Linux
+#### Running Linux
 After you have WSL installed, you can launch the Linux distributions by name.
 
 For example, run the command:
 <code>Ubuntu.exe</code> to start the <code>Ubuntu</code> distribution from the command line.
 
-## Installing `dfx` via `dfxvm`
+#### Installing `dfx` via `dfxvm`
 
 Once you have WSL installed, you can install <code>dfxvm</code> by running:
 ```bash
@@ -172,22 +172,22 @@ Once you have WSL installed, you can install <code>dfxvm</code> by running:
 ```
 This will automatically install the latest version of <code>dfx</code> on your WSL.
 
-## Troubleshooting
+#### Troubleshooting
 
-### Node.js is not properly installed
+#### Node.js is not properly installed
 
 WSL 2 has Node.js <code>10.x.x</code> installed by default. But the latest
 
 <code>dfx</code> requires Node.js <code>16.x.x</code> or <code>18.x.x</code>.
 
-### Permission denied when running <code>dfx start</code>
+#### Permission denied when running <code>dfx start</code>
 
 Projects created from <code>dfx</code> need to be on the Linux filesystem
 instead of the Windows filesystem. Usually <code>cd ~</code> or <code>cd $HOME</code>
 in the WSL terminal will bring you to the home directory, and creating projects in t
 here should work.
 
-### No internet access on WSL
+#### No internet access on WSL
 
 If you don’t have internet access on WSL, for instance you cannot ping any
 server successfully, most likely the nameserver on WSL is set to an internal WSL

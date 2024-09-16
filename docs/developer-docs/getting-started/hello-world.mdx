@@ -71,10 +71,6 @@ Download and install the latest version of [dfx](install/index.mdx). `dfx` is a 
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ```
 
-:::info
-For Kybra projects, you will need to install `dfx` version `0.23.0` or newer, and you must run all `dfx` commands in a Python virtual environment.
-:::
-
 ### Install [Node.js](https://nodejs.org/en/download)
 
 ```bash
@@ -91,9 +87,10 @@ dfx start
 This command starts a local instance of the ICP <GlossaryTooltip>replica</GlossaryTooltip> using a single node testnet. The output will return a dashboard URL that can be used to view information about the local replica:
 
 ```
-Running dfx start for version 0.15.2
+Using the default configuration for the local shared network.
 Initialized replica.
-Dashboard: http://localhost:35375/_/dashboard
+Initialized HTTP gateway.
+Replica API running on 127.0.0.1:4943
 ```
 
 :::info
@@ -186,6 +183,22 @@ actor {
 
 <TabItem value="rust" label="Rust">
 
+### Install Rust
+
+You will need to install Rust in your environment with the command:
+
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+### Install `wasm32-unknown-unknown` target
+
+ICP smart contracts are compiled into WebAssembly modules. To support this compilation, install the `wasm32-unknown-unknown` target:
+
+```
+rustup target add wasm32-unknown-unknown
+```
+
 This Rust smart contract has a single function called greet. It is marked as query because it doesn't modify the state of the canister.
 
 The function accepts a name as input and returns a greetings text.
@@ -231,41 +244,7 @@ export default class {
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-Python canisters can be written using the Kybra canister development kit. 
-
-To set up a Python virtual environment, use the following commands:
-
-<Tabs>
-<TabItem value={"linux"} label="Linux">
-```
-curl https://pyenv.run | bash
-~/.pyenv/bin/pyenv install 3.10.7
-~/.pyenv/versions/3.10.7/bin/python -m venv venv
-source venv/bin/activate
-pip install kybra
-```
-</TabItem>
-
-<TabItem value={"macos"} label="macOS">
-```
-brew install pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-source ~/.zprofile
-pyenv install 3.10.7
-~/.pyenv/versions/3.10.7/bin/python -m venv venv
-source venv/bin/activate
-pip install kybra
-```
-</TabItem>
-
-<TabItem value={"windows"} label="Windows">
-
-Kybra is not currently supported on Windows.
-
-</TabItem>
-</Tabs>
+Python canisters can be written using the Kybra canister development kit. [Learn more about setting up Kybra](/docs/current/developer-docs/backend/python/).
 
 The default canister code for Kybra projects contains the following:
 
