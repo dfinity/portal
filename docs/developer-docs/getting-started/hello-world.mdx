@@ -341,11 +341,11 @@ Output:
 
 This call performs several functions in the background:
 
-- First, it looks up the smart contract's address (known as the canister id) using the smart contract's name `hello_backend` in the file `./.dfx/local/canister_ids.json`.
+- First, it looks up the smart contract's address (known as the canister ID) using the smart contract's name `hello_backend` in the file `./.dfx/local/canister_ids.json`.
 
 - Then, it looks up the smart contract's interface in the file `src/declarations/hello_backend/hello_backend.did`.
 
-- It looks up the signature of function greet in the interface.
+- It looks up the signature of the function `greet` in the interface.
 
 - It constructs a message for the smart contract's `greet` endpoint with the given `name` text as an argument.
 
@@ -355,7 +355,7 @@ This call performs several functions in the background:
 
 - Once the message has been executed, the result was decoded using the interface file and printed to the terminal window.
 
-Alternatively, you can interact with the smart contract via the web browser if a frontend smart contract has been deployed. [Learn more about using the frontend smart contract in the web browser](/docs/current/developer-docs/getting-started/deploy/local)
+Alternatively, you can interact with the smart contract via the web browser if a frontend smart contract has been deployed. [Learn more about using the frontend smart contract in the web browser](/docs/current/developer-docs/getting-started/deploy/local).
 
 
 ## Next steps
