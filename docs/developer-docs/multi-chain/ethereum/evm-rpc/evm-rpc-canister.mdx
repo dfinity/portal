@@ -61,7 +61,7 @@ dfx start --background
 
 # Locally deploy the `evm_rpc` canister
 dfx deps pull
-dfx deps init evm_rpc --argument '(record { nodesInSubnet = 28 })'
+dfx deps init evm_rpc --argument '(record { nodesInSubnet = 31 })'
 dfx deps deploy
 ```
 
@@ -86,11 +86,11 @@ Alternatively, you can include the EVM RPC canister by specifying the Candid and
 }
 ```
 
-Then start the local replica and deploy the canister locally with a specified number of nodes (`28` for the [fiduciary subnet](/docs/current/concepts/subnet-types#fiduciary-subnets)):
+Then start the local replica and deploy the canister locally with a specified number of nodes (`31` for the [fiduciary subnet](/docs/current/concepts/subnet-types#fiduciary-subnets)):
 
 ```
 dfx start --clean --background
-dfx deploy evm_rpc --argument '(record { nodesInSubnet = 28 })'
+dfx deploy evm_rpc --argument '(record { nodesInSubnet = 31 })'
 ```
 
 ### Fork the EVM RPC canister
@@ -104,7 +104,7 @@ git clone https://github.com/internet-computer-protocol/evm-rpc-canister
 To deploy your own canister on the mainnet, run the `dfx deploy` command with the `--network ic` flag:
 
 ```
-dfx deploy evm_rpc --network ic --argument '(record { nodesInSubnet = 28 })'
+dfx deploy evm_rpc --network ic --argument '(record { nodesInSubnet = 31 })'
 ```
 
 Note that when deploying your own canister, you may encounter API rate limits. Refer to the [replacing API keys](#replacing-api-keys) section to learn how to configure API credentials.
