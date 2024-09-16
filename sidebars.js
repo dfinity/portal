@@ -176,6 +176,7 @@ const sidebars = {
             "developer-docs/smart-contracts/maintain/logs",
             "developer-docs/smart-contracts/maintain/recovery",
             "developer-docs/smart-contracts/maintain/resource-limits",
+            "developer-docs/smart-contracts/maintain/snapshots",
             "developer-docs/smart-contracts/maintain/state",
             "developer-docs/smart-contracts/maintain/settings",
             "developer-docs/smart-contracts/maintain/storage",

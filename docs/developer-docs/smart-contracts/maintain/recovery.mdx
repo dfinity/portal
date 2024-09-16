@@ -31,3 +31,6 @@ This step cannot be taken after access to a canister's controllers is already lo
 
 Then, when the canister needs to be recovered, it may be recovered by using the System Canister Management NNS proposal used for upgrading all system canisters. When submitting this proposal, include the canister ID of the broken canister and a new Wasm module for the canister. Once this proposal is submitted, the NNS DAO will vote on whether to upgrade the canister using the proposed new Wasm file or not. If the proposal is passed, the canister will be upgraded and potentially recovered.
 
+## Canister snapshots
+
+Another method for recovering a canister is to roll the canister back to a snapshot if one exists. [Learn more about canister snapshots](snapshots.mdx).
