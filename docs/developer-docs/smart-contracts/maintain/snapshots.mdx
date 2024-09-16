@@ -11,7 +11,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 ## Overview
 
-A <GlossaryTooltip>canister</GlossaryTooltip> contains compiled Wasm code and data, such as the canister ID, settings, and Wasm memory. If a canister stops working as expected, traps, or simply needs to be rolled back to a previous version, the developer can use canister snapshots. Developers can take a snapshot of a stopped canister to save the canister's current data, state, and Wasm module. This snapshot can be loaded at a later date, rolling the canister back to the code and data saved within that snapshot.
+A <GlossaryTooltip>canister</GlossaryTooltip> contains compiled Wasm code and data, such as the canister ID, settings, and Wasm memory. If a canister stops working as expected, traps, or simply needs to be rolled back to a previous version, the developer can use canister snapshots. Developers can take a snapshot of a stopped canister to save the canister's current stable memory, heap memory, data, state, and Wasm module. This snapshot can be loaded at a later date, rolling the canister back to the code and data saved within that snapshot.
 
 :::into
 Canister snapshots are supported in `dfx` version 0.23.0 and newer.
@@ -25,6 +25,12 @@ To create a snapshot, first the canister must be stopped. Then, use the `dfx can
 dfx canister stop <canister-name>
 dfx canister snapshot create <canister-name>
 ```
+
+Only a controller of a canister can take a snapshot and roll a canister back to the snapshot.
+
+:::info
+Currently, only one snapshot per canister can be saved. Taking another snapshot of a canister that already has a snapshot saved will overwrite the previous snapshot.
+:::
 
 :::info
 To take a snapshot of a canister on the mainnet, include the flag `--network ic` in the two commands shown above.
@@ -47,10 +53,6 @@ The canister ID, snapshot size, and timestamp of when the snapshot was taken wil
 ```
 0000000000000000800000000010000a0101: 2.39MiB, taken at 2024-09-16 19:40:23 UTC
 ```
-
-:::caution
-Currently, only one snapshot can be saved for a canister at a time.
-:::
 
 ## Loading a snapshot
 
