@@ -5173,5 +5173,29 @@
     ],
     "usesInternetIdentity": true,
     "website": "https://ai-fi.cc"
+  },
+  {
+    "name": "Digital World",
+    "description": "Digital World Project, a secure platform that integrates decentralized social networking, DeFi services, asset tokenization, real estate registry digitization, and project incubation. It offers e-commerce, chat, digital wallets, personalized profiles, asset conversion, and secure data storage, fostering an efficient ecosystem.",
+    "website": "https://dworld.app",
+    "logo": "/img/showcase/dworld_logo.webp",
+    "screenshots": [
+      "/img/showcase/dworld_screenshot.webp"
+    ],
+    "video": "",
+    "display": "Normal",
+    "id": "dworld",
+    "oneLiner": "The world in one place",
+    "stats": "300K+ Estate records",
+    "tags": [
+      "SocialFi",
+      "Tools / Infrastructure",
+      "DeFi"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/ASPPIBRA-DAO",
+    "twitter": "https://x.com/ASPPIBRA_ORG",
+    "youtube": "https://www.youtube.com/@ASPPIBRA-DAO/videos",
+    "submittableId": ""
   }
 ]
