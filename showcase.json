@@ -5053,15 +5053,16 @@
     "oneLiner": "Bridge 23 is a fully featured data marketplace running on ICP where everyone can sell their data directly to merchants, companies and institutions.",
     "description": "Bridge 23 is a fully featured data marketplace running on ICP where everyone can sell their data directly to merchants, companies and institutions.",
     "stats": "5000+ waitlist, 100+ users, 4000+ tokenized products",
-    "website": "https://alpha.bridge23.app/login",
+    "website": "https://bridge23.app",
     "logo": "/img/showcase/bridge23_logo.png",
     "display": "Normal",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "AI"
     ],
     "usesInternetIdentity": true,
     "github": "https://github.com/bridge-23/Bridge23app.0.1.0-alpha",
-    "twitter": "https://x.com/bridge23inc"
+    "twitter": "https://x.com/bridge23app"
   },
   {
     "id": "event-hub-attention-dao",
