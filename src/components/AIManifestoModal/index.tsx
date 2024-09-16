@@ -61,7 +61,7 @@ const ManifestoPrinciple: React.FC<ManifestoPrincipleProps> = ({
     <section className="flex flex-col w-full md:max-w-[660px] mt-20 md:mt-10 md:self-center tw-lead md:tw-lead-lg">
       <div className="flex items-start gap-3">
         <span className="text-white/30">{number}</span>
-        <h2 className="text-white">{title}</h2>
+        <h2 className="text-white md:mt-[0.4rem]">{title}</h2>
       </div>
       <p className="text-white mt-3 tw-lead-sm">{description}</p>
     </section>

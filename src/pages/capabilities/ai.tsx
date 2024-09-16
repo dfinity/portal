@@ -63,13 +63,13 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
 interface RoadmapItemProps {
   number: string;
   title: string;
-  date: string;
+  date?: string;
 }
 
 const RoadmapItem: React.FC<RoadmapItemProps> = ({ number, title, date }) => {
   return (
-    <section className="flex flex-col justify-between flex-1 p-3 md:p-6 pb-5 md:pb-10 bg-[#F1EEF5] rounded-3xl md:min-h-[320px]">
-      <h2 className="tw-lead-sm md:tw-lead text-black-20">{number}</h2>
+    <section className="min-w-64 flex flex-col justify-between flex-1 p-3 md:p-6 pb-5 md:pb-10 bg-[#F1EEF5] rounded-3xl md:min-h-[320px]">
+      <h2 className="tw-lead text-black-20">{number}</h2>
       <div className="flex flex-col mt-auto">
         <h3 className="tw-lead-sm md:tw-lead bg-gradient-to-br from-[#522785] to-[#ED1E79] bg-clip-text text-transparent">
           {title}
@@ -84,9 +84,9 @@ const RoadmapItem: React.FC<RoadmapItemProps> = ({ number, title, date }) => {
 
 interface AIFeatureCardProps {
   number: string;
-  icon: string;
+  icon?: string;
   title: string;
-  features: string[];
+  features?: string[];
 }
 
 const AIFeatureCard: React.FC<AIFeatureCardProps> = ({
@@ -96,7 +96,8 @@ const AIFeatureCard: React.FC<AIFeatureCardProps> = ({
   features,
 }) => {
   return (
-    <section className="flex flex-col flex-1 min-w-[240px] justify-between bg-white rounded-3xl p-6 pb-10">
+    <article className="flex flex-col flex-shrink-0 w-[80vw] sm:w-auto sm:flex-1 justify-between bg-white rounded-3xl p-6 pb-10">
+      {" "}
       <header className="flex w-full items-start justify-between gap-10 tw-lead text-black-20 whitespace-nowrap">
         <span>{number}</span>
         <img
@@ -123,39 +124,151 @@ const AIFeatureCard: React.FC<AIFeatureCardProps> = ({
           ))}
         </ul>
       </div>
-    </section>
+    </article>
   );
 };
+
+interface ScrollableItemProps {
+  number: string;
+  title: string;
+  date?: string;
+  icon?: string;
+  features?: string[];
+}
+
+interface ScrollableSectionProps {
+  items: ScrollableItemProps[];
+  type: "roadmap" | "aiFeatures";
+  title?: string;
+}
+
+const ScrollableSection: React.FC<ScrollableSectionProps> = ({
+  items,
+  type,
+  title,
+}) => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const container = scrollContainerRef.current;
+      if (container) {
+        const scrollLeft = container.scrollLeft;
+        const containerWidth = container.clientWidth;
+        const scrollWidth = container.scrollWidth;
+        const itemWidth =
+          type === "roadmap" ? containerWidth : containerWidth * 0.8;
+
+        let newIndex = Math.round(scrollLeft / itemWidth);
+
+        if (scrollLeft + containerWidth >= scrollWidth - 10) {
+          newIndex = items.length - 1;
+        }
+
+        setActiveIndex(newIndex);
+      }
+    };
+
+    const container = scrollContainerRef.current;
+    if (container) {
+      container.addEventListener("scroll", handleScroll);
+      return () => container.removeEventListener("scroll", handleScroll);
+    }
+  }, [items.length, type]);
+
+  const ItemComponent = type === "roadmap" ? RoadmapItem : AIFeatureCard;
+
+  return (
+    <div className={type === "roadmap" ? "my-16 sm:my-20" : "my-20 md:my-40"}>
+      {title && (
+        <motion.h4 className="tw-title-sm md:w-7/10 mb-8">{title}</motion.h4>
+      )}
+      <div
+        ref={scrollContainerRef}
+        className={`flex overflow-x-auto ${
+          type === "roadmap" ? "md:overflow-x-visible" : ""
+        } snap-mandatory snap-x hide-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0`}
+      >
+        <div
+          className={`flex gap-4 ${type === "roadmap" ? "pb-4 md:pb-0" : ""}`}
+        >
+          {items.map((item, index) => (
+            <ItemComponent key={index} {...item} />
+          ))}
+        </div>
+      </div>
+      <div
+        className={`flex justify-center mt-8 gap-5 ${
+          type === "roadmap" ? "sm:hidden md:hidden" : "sm:hidden"
+        }`}
+      >
+        {items.map((_, index) => (
+          <div
+            key={index}
+            className={`w-2 h-2 rounded-full ${
+              index === activeIndex
+                ? type === "roadmap"
+                  ? "bg-black"
+                  : "bg-white"
+                : type === "roadmap"
+                ? "bg-black/20"
+                : "bg-white/20"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const Collapse: React.FC<{
   title: React.ReactNode;
   children: React.ReactNode;
   open: boolean;
   onClick: () => void;
-}> = ({ title, children, open, onClick }) => {
+  link: string;
+}> = ({ title, children, open, onClick, link }) => {
   const ref = useRef<HTMLDivElement>();
   const size = useElementSize(ref);
 
   return (
-    <div className="w-[calc(100vw-100px)] flex flex-col sm:block sm:w-auto snap-center">
+    <div className="w-[calc(100vw-100px)] flex flex-col sm:block sm:w-auto snap-center ">
       <button
         onClick={onClick}
         className={clsx(
-          `tw-heading-4  border-none appearance-none whitespace-normal font-circular p-0 transition-colors hover:text-white text-white text-left bg-transparent`,
+          `tw-title-sm  border-none appearance-none whitespace-normal font-circular p-0 transition-colors hover:text-white text-white text-left bg-transparent`,
           open ? "sm:text-white" : "sm:text-white-30"
         )}
       >
         {title}
       </button>
       <div
-        className="hidden sm:block sm:overflow-hidden transition-[height]"
+        className="hidden sm:block sm:overflow-hidden transition-[height] "
         style={{
           height: open && size ? size.height : 0,
         }}
         ref={ref}
       >
-        <div className="pt-4">{children}</div>
+        <div className="pt-4 text-white-60 tw-paragraph">
+          {children}
+          <Link
+            href={link}
+            className="link-primary link-white link-with-icon cursor-pointer text-select-none mt-4 inline-flex items-center"
+          >
+            Visit website <LinkArrowUpRight />
+          </Link>
+        </div>
       </div>
-      <div className="sm:hidden pt-4 flex flex-1 flex-col">{children}</div>
+      <div className="sm:hidden pt-4 flex flex-1 flex-col text-white-60 tw-paragraph">
+        {children}
+        <Link
+          href={link}
+          className="link-primary link-white link-with-icon cursor-pointer text-select-none mt-4 inline-flex items-center"
+        >
+          Visit website <LinkArrowUpRight />
+        </Link>
+      </div>
     </div>
   );
 };
@@ -167,9 +280,11 @@ interface FaqItemProps {
 
 const FaqItem: React.FC<FaqItemProps> = ({ question, answer }) => {
   return (
-    <article className="mb-20">
-      <h2 className="text-black tw-lead-lg mb-6">{question}</h2>
-      <p className="text-black tw-lead-sm leading-7">{answer}</p>
+    <article className="mb-12 md:mb-20">
+      <h2 className="text-black-60 tw-lead md:tw-lead-lg mb-4 md:mb-6">
+        {question}
+      </h2>
+      <p className="text-black tw-lead-sm">{answer}</p>
     </article>
   );
 };
@@ -208,12 +323,12 @@ const ContactCard: React.FC = () => {
         </div>
       </div>
       <div>
-        <motion.p className="tw-lead text-black mb-0">
+        <motion.p className="tw-lead text-black mb-3">
           Technical Working Group
         </motion.p>
         <Link
-          href="/docs"
-          className="link-primary link-with-icon mt-0 md:text-nowrap"
+          href="https://forum.dfinity.org/t/technical-working-group-deai/24621"
+          className="link-primary link-with-icon md:text-nowrap"
         >
           Join the discussion <LinkArrowUpRight />
         </Link>
@@ -227,32 +342,32 @@ const features: FeatureCardProps[] = [
     imageSrc: "/img/ai-chain/1a.svg",
     title: "Immune to cyber attacks.",
     description:
-      "Sensitive AI models in finance and public administration need protection beyond individual control. ICP blockchain ensures integrity and prevents tampering.",
+      "Sensitive AI models like in finance and public administration must be protected from centralized control, a prime cause for cyber attacks. ICP's decentralized infrastructure ensures integrity of AI models.",
   },
   {
     imageSrc: "/img/ai-chain/2a.svg",
     title: "Verifiable Inputs and Outputs.",
     description:
-      "AI focuses on input and output, and for legal compliance, trust comes from auditable, verifiable data. ICP's blockchain ensures transparency and verification.",
+      "AI solutions built on ICP allow to verify inputs and outputs. For use cases like legal compliance, ICP ensures transparency with auditable, verifiable data.",
   },
   {
     imageSrc: "/img/ai-chain/3a.svg",
     title: "Privacy-preserving.",
     description:
-      "AI models manage sensitive data, raising privacy risks. ICP's cryptographic encryption secures AI data, ensuring compliance with protection standards.",
+      "ICP's encryption protects data processed by AI models, making AI useable for confidential data and complying with data protection standards.",
     badge: "coming soon",
   },
   {
     imageSrc: "/img/ai-chain/4a.svg",
     title: "Resilient.",
     description:
-      "AI-driven operations like medical care need constant availability. ICP's decentralized smart contracts ensure high availability, keeping AI models secure and operational.",
+      " AI-driven operations like medical care need constant availability. ICP's decentralized smart contracts ensure high availability, keeping AI models secure and operational.",
   },
   {
     imageSrc: "/img/ai-chain/5a.svg",
     title: "AI-2-X Economy.",
     description:
-      "AI models that run as smart contracts, enable them to autonomously participate in the digital economy by interacting with digital assets such as Bitcoin, Ethereum, Stablecoins, and ICP. This setup facilitates secure, transparent, and automated transactions and contract management without human intervention.",
+      " AI models that run as smart contracts, enable them to autonomously participate in the digital economy by interacting with digital assets such as Bitcoin, Ethereum, Stablecoins, and ICP. This facilitates secure, transparent, and automated transactions and contract management without human intervention.",
   },
 ];
 
@@ -260,17 +375,17 @@ const roadmapData = [
   {
     number: "01",
     title: "Data storage to run large AI models",
-    date: "June 2024",
+    date: "",
   },
   {
     number: "02",
     title: "Optimized floating-point arithmetic for faster AI processing",
-    date: "July 2024",
+    date: "",
   },
   {
     number: "03",
-    title: "Optimized AI inference API for more performance",
-    date: "2025",
+    title: "Seamless Integration with Web 2.0",
+    date: "",
   },
   {
     number: "04",
@@ -314,25 +429,30 @@ const projects: {
   imageUrl: string;
   title: string;
   body: React.ReactNode;
+  link: string;
 }[] = [
   {
     title: "DecideAI",
-    body: "DecideAI offers groundbreaking products that enhance the decentralized AI ecosystem, including Decide ID, an AI-powered Proof of Personhood, and Decide Cortex, a blockchain-based LLM marketplace. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo.",
+    body: "DecideAI offers groundbreaking products that enhance the decentralized AI ecosystem, including Decide ID, an AI-powered Proof of Personhood, and Decide Cortex, a blockchain-based LLM marketplace.",
+    link: "https://decideai.xyz/",
     imageUrl: "/img/ai-chain/decideai.webp",
   },
   {
     title: "Kinic",
-    body: "Kinik offers groundbreaking products that enhance the decentralized AI ecosystem, including Decide ID, an AI-powered Proof of Personhood, and Decide Cortex, a blockchain-based LLM marketplace. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo. .",
+    body: "Kinic DAO's mission is to bring AI ownership to the world: a concept we call personal AI. Personal AI is artificial intelligence and its tooling whose ownership is moved from centralized providers to the users themselves.",
+    link: "https://ai.kinic.io",
     imageUrl: "/img/ai-chain/kinic.webp",
   },
   {
     title: "Elna.ai",
-    body: "Elna offers groundbreaking products that enhance the decentralized AI ecosystem, including Decide ID, an AI-powered Proof of Personhood, and Decide Cortex, a blockchain-based LLM marketplace. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo. ",
+    body: "ELNA is a community-driven decentralized AI agent creation platform that bridges the gap between the development, creation and monetization of AI agents on the blockchain.",
+    link: "https://www.elna.ai/",
     imageUrl: "/img/ai-chain/elnaai.webp",
   },
   {
     title: "Datapond",
     body: "Datapond offers groundbreaking products that enhance the decentralized AI ecosystem, including Decide ID, an AI-powered Proof of Personhood, and Decide Cortex, a blockchain-based LLM marketplace. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo. ",
+    link: "https://x.com/DataPondAI",
     imageUrl: "/img/ai-chain/datapond.webp",
   },
 ];
@@ -408,32 +528,6 @@ function AISubPage() {
   const [manifestoModalOpen, setManifestoModalOpen] = useState(false);
   const [openProjectIndex, setOpenProjectIndex] = useState(0);
 
-  type ContentCardType = {
-    title: string;
-    id: string;
-  };
-  const [content, setContent] = useState([]);
-  const highlight = useScrollSpyMenu(".content-card-with-id");
-
-  function onItemClick(e, index) {
-    const target = document.querySelectorAll(`.content-card-with-id`)[index];
-    if (target) {
-      const y = target.getBoundingClientRect().top + window.pageYOffset - 115;
-      window.scrollTo({ top: y, behavior: "smooth" });
-      e.preventDefault();
-    }
-  }
-
-  useEffect(() => {
-    const cards = document.querySelectorAll(".content-card-with-id");
-    const newContent = Array.from(cards).map((card) => ({
-      title: card.querySelector("h3")?.textContent,
-      id: card.id,
-      image: `/img/ai-chain/${card.id}.webp`, // Assuming you have corresponding images
-    }));
-    setContent(newContent);
-  }, []);
-
   function closeOverlay() {
     document.body.style.overflow = "";
     setManifestoModalOpen(false);
@@ -472,7 +566,7 @@ function AISubPage() {
                 />
               </div>
               <motion.p
-                className="tw-lead-sm md:tw-lead-lg mb-8"
+                className="tw-lead md:tw-lead-lg mb-8"
                 variants={transitions.item}
               >
                 Secure and Trusted AI on-chain
@@ -480,10 +574,9 @@ function AISubPage() {
 
               <Link
                 href="/ecosystem?tag=AI"
-                className="link-primary flex justify-center"
+                className="link-primary flex justify-center text-nowrap"
               >
-                <LinkArrowRight /> Explore the fastest growing AI Ecosystem in
-                Web3
+                <LinkArrowRight /> Fastest growing AI Ecosystem in Web3
               </Link>
               <motion.div
                 className="flex flex-col md:flex-row my-15 md:my-32 text-left gap-10 md:gap-30"
@@ -499,7 +592,7 @@ function AISubPage() {
                     Dominic Williams on AI on ICP
                   </motion.p>
                 </motion.div>
-                <motion.p className="w-full md:w-[55%] tw-lead-sm md:tw-lead-lg">
+                <motion.p className="w-full md:w-[55%] tw-lead md:tw-lead-lg">
                   Al will be at the heart of everything, driving economies and
                   our daily lives. Al on ICP marks a major technological leap by
                   bringing{" "}
@@ -577,24 +670,13 @@ function AISubPage() {
               </Link>
             </motion.div>
 
-            <div className="my-10 md:my-20">
-              <div className="flex flex-col md:flex-row flex-wrap justify-start gap-1 font-book">
-                {roadmapData.map((item, index) => (
-                  <RoadmapItem
-                    key={index}
-                    number={item.number}
-                    title={item.title}
-                    date={item.date}
-                  />
-                ))}
-              </div>
-            </div>
+            <ScrollableSection items={roadmapData} type="roadmap" />
 
-            <motion.div className="flex flex-col gap-15 md:gap-30">
+            <motion.div className="flex flex-col gap-16 md:gap-30">
               <article className="flex flex-col md:flex-row justify-start tw-lead-sm md:tw-lead">
                 <div className="w-full md:w-1/2 flex flex-col justify-between">
-                  <div className="mb-7 md:mb-14">
-                    <motion.p className="tw-lead md:tw-lead-lg text-black-20 mb-0 md:mb-6">
+                  <div className="mb-14">
+                    <motion.p className="tw-lead md:tw-lead-lg text-black-20 mb-6">
                       01
                     </motion.p>
                     <motion.span className="text-gradient-violet">
@@ -608,17 +690,17 @@ function AISubPage() {
                       amounts of input data. 
                     </motion.span>
                   </div>
-                  <div>
-                    <motion.p className="text-gradient-violet tw-title-sm md:tw-title-lg">
+                  <div className="text-center md:text-left">
+                    <motion.p className="text-gradient-violet tw-title-sm md:tw-title-lg mb-0">
                       1.000.000x
                     </motion.p>
-                    <motion.p className="text-black tw-lead-sm md:tw-lead -mt-2 ">
+                    <motion.p className="text-black tw-lead-sm md:tw-lead ">
                       more data storage
                     </motion.p>
                   </div>
                 </div>
                 <div className="w-full md:w-1/2">
-                  <div className="w-full mx-auto md:w-[90%] md:translate-x-1/10 md:mt-12">
+                  <div className="w-full sm:w-1/2 mx-auto md:w-[90%] md:translate-x-1/10 md:mt-12">
                     <img
                       src="/img/ai-chain/data.svg"
                       alt=""
@@ -629,7 +711,7 @@ function AISubPage() {
               </article>
 
               <article className="flex flex-col md:flex-row justify-start tw-lead-sm md:tw-lead">
-                <div className="w-full md:w-1/2 flex-col justify-between">
+                <div className="w-full md:w-1/2 flex-col justify-between order-2 md:order-1">
                   <div>
                     <motion.p className="text-gradient-violet tw-title-sm md:tw-title-lg">
                       8x
@@ -638,7 +720,7 @@ function AISubPage() {
                       faster
                     </motion.p>
                   </div>
-                  <div className="w-full md:w-[90%]">
+                  <div className="w-full sm:w-2/3 sm:mx-auto md:w-[90%]">
                     <img
                       src="/img/ai-chain/chart.svg"
                       alt=""
@@ -646,9 +728,9 @@ function AISubPage() {
                     />
                   </div>
                 </div>
-                <div className="w-full md:w-1/2 ml-0 md:ml-5 flex flex-col justify-between">
-                  <div className="mb-7 md:mb-14">
-                    <motion.p className="tw-lead md:tw-lead-lg text-black-20 mb-0 md:mb-6">
+                <div className="w-full md:w-1/2 ml-0 md:ml-5 flex flex-col justify-between order-1 md:order-2">
+                  <div className="mb-14">
+                    <motion.p className="tw-lead md:tw-lead-lg text-black-20 mb-6">
                       02
                     </motion.p>
                     <motion.span className="text-gradient-violet">
@@ -668,30 +750,30 @@ function AISubPage() {
                 </div>
               </article>
               <article className="flex flex-col md:flex-row justify-start tw-lead-sm md:tw-lead">
-                <div className="w-full md:w-1/2 flex flex-col justify-between">
+                <div className="w-full md:w-1/2 flex flex-col justify-start">
                   <div className="">
-                    <motion.p className="tw-lead md:tw-lead-lg text-black-20 mb-0 md:mb-6">
+                    <motion.p className="tw-lead md:tw-lead-lg text-black-20 mb-6">
                       03
                     </motion.p>
                     <motion.span className="text-gradient-violet">
-                      Optimized AI inference API for more performance.{" "}
+                      Seamless Integration with Web 2.0.
                     </motion.span>{" "}
                     <motion.span className="text-black/50">
-                      With the upcoming AI inference API, smart contracts will
-                      be able to run larger AI models more efficiently. This
-                      specialized API brings hardware acceleration features such
-                      as 256-bit SIMD and parallelization across multiple CPU
-                      cores. Future GPU subnets will benefit from GPU
-                      acceleration, making AI models substantially more
-                      efficient to run.
+                      ICP is the only blockchain where smart contracts can
+                      directly connect to Web 2.0 services using{" "}
+                      <Link href="/https-outcalls" className="link-primary">
+                        HTTPS outcalls
+                      </Link>
+                      , which opens the possibility for AI applications running
+                      on ICP to integrate and fetch data from external services.
                     </motion.span>
                   </div>
-                  <div className="self-start text-black-60 rounded-full bg-black-20 gap-[10px] px-4 mt-3 tw-paragraph">
+                  <div className="self-start text-black-60 rounded-full bg-black-20 gap-[10px] px-4 mt-6 tw-paragraph">
                     coming soon
                   </div>
                 </div>
                 <div className="w-full md:w-1/2">
-                  <div className="w-full mx-auto md:w-[90%] md:translate-x-1/10 md:mt-6">
+                  <div className="w-full sm:w-2/3 mx-auto md:w-[85%] md:translate-x-1/10 mt-16 md:mt-6">
                     <img
                       src="/img/ai-chain/inference.svg"
                       alt=""
@@ -701,8 +783,8 @@ function AISubPage() {
                 </div>
               </article>
               <article className="flex flex-col md:flex-row justify-start tw-lead-sm md:tw-lead">
-                <div className="w-full md:w-1/2">
-                  <div className="w-full mx-auto md:w-[70%]  md:mt-6">
+                <div className="w-full md:w-1/2  order-2 md:order-1">
+                  <div className="w-full sm:w-1/3 mx-auto md:w-[70%] md:-translate-x-[5%] mt-16 md:mt-6">
                     <img
                       src="/img/ai-chain/gpu.svg"
                       alt=""
@@ -710,9 +792,9 @@ function AISubPage() {
                     />
                   </div>
                 </div>
-                <div className="w-full md:w-1/2 flex flex-col justify-between">
+                <div className="w-full md:w-1/2 flex flex-col justify-between order-1 md:order-2">
                   <div className="">
-                    <motion.p className="tw-lead md:tw-lead-lg text-black-20 mb-0 md:mb-6">
+                    <motion.p className="tw-lead md:tw-lead-lg text-black-20 mb-6">
                       04
                     </motion.p>
                     <motion.span className="text-gradient-violet">
@@ -728,7 +810,7 @@ function AISubPage() {
                       enterprise-grade AI models directly on-chain.
                     </motion.span>
                   </div>
-                  <div className="self-start text-black-60 rounded-full bg-black-20 gap-[10px] px-4 mt-3 tw-paragraph">
+                  <div className="self-start text-black-60 rounded-full bg-black-20 gap-[10px] px-4 mt-6 tw-paragraph">
                     coming soon
                   </div>
                 </div>
@@ -747,7 +829,7 @@ function AISubPage() {
                 className="tw-title-sm md:w-[27rem]"
                 variants={transitions.item}
               >
-                AI Video Demos
+                AI Demos
               </motion.h2>
               <div className="md:flex-1 md:pt-1 ">
                 <motion.p
@@ -819,17 +901,11 @@ function AISubPage() {
                 platform for builders of AI dapps.
               </motion.p>
             </motion.div>
-            <motion.div className="my-20 md:my-40">
-              <motion.h4 className="tw-title-sm md:w-7/10">
-                Our ecosystem is building projects along the entire AI value
-                chain
-              </motion.h4>
-              <motion.div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 w-full gap-1">
-                {aiFeatures.map((feature, index) => (
-                  <AIFeatureCard key={index} {...feature} />
-                ))}
-              </motion.div>
-            </motion.div>
+            <ScrollableSection
+              items={aiFeatures}
+              type="aiFeatures"
+              title="Our ecosystem is building projects along the entire AI value chain"
+            />
 
             <motion.div className="">
               <motion.h3 className="tw-title-sm md:tw-title-lg">
@@ -840,7 +916,7 @@ function AISubPage() {
                   <div className=" xl:min-h-[600px]">
                     <AnimateSpawn
                       variants={transitions.item}
-                      className="flex overflow-auto sm:overflow-visible -mx-6 sm:mx-0 sm:gap-2/10 snap-x snap-mandatory xl:relative sm:min-h-[40vw] xl:min-h-[450px]"
+                      className="flex overflow-auto sm:overflow-visible -mx-6 sm:mx-0 sm:gap-2/10 xl:relative sm:min-h-[40vw] xl:min-h-[450px]"
                     >
                       <div className="flex items-stretch gap-6 sm:flex-col sm:gap-10 mx-6 sm:mx-0 mb-6 sm:mb-0 sm:w-5/10 md:w-4/10">
                         {projects.map((p, i) => (
@@ -848,13 +924,14 @@ function AISubPage() {
                             title={p.title}
                             open={openProjectIndex === i}
                             onClick={() => setOpenProjectIndex(i)}
+                            link={p.link}
                           >
                             <div className="flex-1 tw-paragraph">{p.body}</div>
 
                             <img
                               src={projects[i].imageUrl}
                               alt={p.title}
-                              className="sm:hidden mt-8"
+                              className="sm:hidden mt-8 rounded-2xl"
                             />
                           </Collapse>
                         ))}
@@ -874,7 +951,11 @@ function AISubPage() {
               "
                       style={{ opacity: i === openProjectIndex ? 1 : 0 }}
                     >
-                      <img src={p.imageUrl} alt={p.title} />
+                      <img
+                        className="rounded-2xl"
+                        src={p.imageUrl}
+                        alt={p.title}
+                      />
                     </div>
                   ))}
                 </section>
@@ -883,7 +964,7 @@ function AISubPage() {
             <motion.div className="mt-20 md:mt-40">
               <article className="flex flex-col md:flex-row justify-start tw-lead-sm md:tw-lead">
                 <div className="w-full md:w-1/2">
-                  <div className="w-full mx-auto md:w-[70%]">
+                  <div className="w-full sm:w-1/2 mx-auto md:w-[70%]">
                     <img
                       src="/img/ai-chain/deai-img.svg"
                       alt=""
@@ -896,7 +977,7 @@ function AISubPage() {
                     <motion.h3 className="tw-title-sm md:tw-title-lg mb-4 md:mb-8">
                       DeAI Manifesto
                     </motion.h3>
-                    <motion.span className="tw-lead-sm md:tw-lead ">
+                    <motion.span className="tw-lead-sm md:tw-lead text-white-60 ">
                       Created by the ICP community, the DeAI manifesto lays out
                       the principles and reasons for decentralizing AI and
                       advocating for a fair, transparent, and user-centric AI
@@ -926,12 +1007,12 @@ function AISubPage() {
                   DEVELOPERS
                 </motion.h4>
                 <motion.h3
-                  className="tw-lead-lg mb-4"
+                  className="tw-lead md:tw-lead-lg mb-4"
                   variants={transitions.item}
                 >
                   Build your next AI venture on the Internet Computer.{" "}
                   <motion.span
-                    className="tw-lead-lg text-black/60 mb-6"
+                    className="tw-lead md:tw-lead-lg text-black/60 mb-6"
                     variants={transitions.item}
                   >
                     Find all the essentials, including developer documentation,
@@ -940,7 +1021,7 @@ function AISubPage() {
                 </motion.h3>
 
                 <motion.p
-                  className="tw-lead-sm text-black/60 mb-6"
+                  className="tw-paragraph md:tw-lead-sm text-black/60 mb-6"
                   variants={transitions.item}
                 >
                   These resources are designed to help you get started with
@@ -954,143 +1035,142 @@ function AISubPage() {
                 </motion.div>
               </div>
 
-              <div className="md:w-7/12 grid grid-cols-2 gap-6">
-                <motion.div variants={transitions.item} className="space-y-6">
-                  <div className="bg-white rounded-xl p-6 shadow-sm">
-                    <h3 className="tw-lead-lg mb-4">Learn</h3>
-                    <div className="space-y-2">
-                      <motion.p className="tw-lead-sm text-black-60 mb-0">
-                        Overview of AI on-chain
-                      </motion.p>
-                      <Link
-                        href="/docs"
-                        className="link-primary link-with-icon mt-0"
-                      >
-                        Docs <LinkArrowUpRight />
-                      </Link>
-                    </div>
-                  </div>
-
-                  <div className="bg-white rounded-xl p-6 shadow-sm">
-                    <h3 className="tw-lead-lg mb-4">Connect</h3>
-                    <div className="space-y-8">
-                      <div>
-                        <motion.p className="tw-lead-sm text-black-60 mb-0 md:text-nowrap">
-                          Contribute to the discussion
-                        </motion.p>
-                        <Link
-                          href="/docs"
-                          className="link-primary link-with-icon mt-0 text-nowrap"
-                        >
-                          ICP Forum <LinkArrowUpRight />
-                        </Link>
-                      </div>
-                      <div>
-                        <motion.p className="tw-lead-sm text-black-60 mb-0 md:text-nowrap">
-                          Join the bi-weekly meeeting
-                        </motion.p>
-                        <Link
-                          href="https://discord.com/invite/jnjVVQaE2C"
-                          className="link-primary link-with-icon mt-0 md:text-nowrap"
-                        >
-                          Discover
-                          <LinkArrowUpRight />
-                        </Link>
-                      </div>
-                      <div>
-                        <motion.p className="tw-lead-sm text-black-60 mb-0 md:text-nowrap">
-                          Join the discussion
-                        </motion.p>
-                        <Link
-                          href="/docs"
-                          className="link-primary link-with-icon mt-0 md:text-nowrap"
-                        >
-                          Technical working group
-                          <LinkArrowUpRight />
-                        </Link>
-                      </div>
-                      <div>
+              <div className="md:w-7/12">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <motion.div variants={transitions.item} className="space-y-6">
+                    <div className="bg-white rounded-xl p-6 shadow-sm">
+                      <h3 className="tw-lead-lg mb-4">Learn</h3>
+                      <div className="space-y-2">
                         <motion.p className="tw-lead-sm text-black-60 mb-0">
-                          Meet the experts IRL
-                        </motion.p>
-                        <Link
-                          href="/events"
-                          className="link-primary link-with-icon mt-0 md:text-nowrap"
-                        >
-                          Events
-                          <LinkArrowUpRight />
-                        </Link>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  variants={transitions.item}
-                  className="space-y-6 flex flex-col h-full"
-                >
-                  <div className="bg-white rounded-xl p-6 shadow-sm">
-                    <h3 className="tw-lead-lg mb-4">Build</h3>
-                    <div className="space-y-8">
-                      <div>
-                        <motion.p className="tw-lead-sm text-black-60 mb-0">
-                          Explore the work
+                          Overview of AI on-chain
                         </motion.p>
                         <Link
                           href="/docs"
                           className="link-primary link-with-icon mt-0"
                         >
-                          GitHub <LinkArrowUpRight />
-                        </Link>
-                      </div>
-                      <div>
-                        <motion.p className="tw-lead-sm text-black-60 mb-0">
-                          Add short title
-                        </motion.p>
-                        <Link
-                          href="/docs"
-                          className="link-primary link-with-icon mt-0"
-                        >
-                          DFX <LinkArrowUpRight />
-                        </Link>
-                      </div>
-                      <div>
-                        <motion.p className="tw-lead-sm text-black-60 mb-0">
-                          Add short title
-                        </motion.p>
-                        <Link
-                          href="/docs"
-                          className="link-primary link-with-icon mt-0"
-                        >
-                          BOUNTIES <LinkArrowUpRight />
+                          Docs <LinkArrowUpRight />
                         </Link>
                       </div>
                     </div>
-                  </div>
 
-                  <div className="bg-white rounded-xl p-6 shadow-sm flex-grow flex flex-col justify-between">
-                    <div>
-                      <h3 className="tw-lead-lg mb-4">Grow</h3>
-                      <div>
-                        <motion.p className="tw-lead-sm text-black-60 mb-0">
-                          Apply for the DeAI grant
-                        </motion.p>
-                        <Link
-                          href="/docs"
-                          className="link-primary link-with-icon mt-0 md:text-nowrap"
-                        >
-                          Grants and Programs <LinkArrowUpRight />
-                        </Link>
+                    <div className="bg-white rounded-xl p-6 shadow-sm">
+                      <h3 className="tw-lead-lg mb-4">Connect</h3>
+                      <div className="space-y-8">
+                        <div>
+                          <motion.p className="tw-lead-sm text-black-60 mb-0">
+                            Contribute to the discussion
+                          </motion.p>
+                          <Link
+                            href="/docs"
+                            className="link-primary link-with-icon mt-0"
+                          >
+                            ICP Forum <LinkArrowUpRight />
+                          </Link>
+                        </div>
+                        <div>
+                          <motion.p className="tw-lead-sm text-black-60 mb-0">
+                            Join the bi-weekly meeting
+                          </motion.p>
+                          <Link
+                            href="https://discord.com/invite/jnjVVQaE2C"
+                            className="link-primary link-with-icon mt-0"
+                          >
+                            Discover <LinkArrowUpRight />
+                          </Link>
+                        </div>
+                        <div>
+                          <motion.p className="tw-lead-sm text-black-60 mb-0">
+                            Join the discussion
+                          </motion.p>
+                          <Link
+                            href="/"
+                            className="link-primary link-with-icon mt-0"
+                          >
+                            Technical working group <LinkArrowUpRight />
+                          </Link>
+                        </div>
+                        <div>
+                          <motion.p className="tw-lead-sm text-black-60 mb-0">
+                            Meet the experts IRL
+                          </motion.p>
+                          <Link
+                            href="/events"
+                            className="link-primary link-with-icon mt-0"
+                          >
+                            Events <LinkArrowUpRight />
+                          </Link>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </motion.div>
+                  </motion.div>
+
+                  <motion.div
+                    variants={transitions.item}
+                    className="space-y-6 flex flex-col h-full"
+                  >
+                    <div className="bg-white rounded-xl p-6 shadow-sm">
+                      <h3 className="tw-lead-lg mb-4">Build</h3>
+                      <div className="space-y-8">
+                        <div>
+                          <motion.p className="tw-lead-sm text-black-60 mb-0">
+                            Explore the work
+                          </motion.p>
+                          <Link
+                            href="/"
+                            className="link-primary link-with-icon mt-0"
+                          >
+                            GitHub <LinkArrowUpRight />
+                          </Link>
+                        </div>
+                        <div>
+                          <motion.p className="tw-lead-sm text-black-60 mb-0">
+                            Add short title
+                          </motion.p>
+                          <Link
+                            href="/"
+                            className="link-primary link-with-icon mt-0"
+                          >
+                            DFX <LinkArrowUpRight />
+                          </Link>
+                        </div>
+                        <div>
+                          <motion.p className="tw-lead-sm text-black-60 mb-0">
+                            Add short title
+                          </motion.p>
+                          <Link
+                            href="/"
+                            className="link-primary link-with-icon mt-0"
+                          >
+                            BOUNTIES <LinkArrowUpRight />
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-white rounded-xl p-6 shadow-sm flex-grow flex flex-col justify-between">
+                      <div>
+                        <h3 className="tw-lead-lg mb-4">Grow</h3>
+                        <div>
+                          <motion.p className="tw-lead-sm text-black-60 mb-0">
+                            Apply for the DeAI grant
+                          </motion.p>
+                          <Link
+                            href="/"
+                            className="link-primary link-with-icon mt-0"
+                          >
+                            Grants and Programs <LinkArrowUpRight />
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
               </div>
             </div>
           </AnimateSpawn>
         </section>
         <section className="container-10 bg-white py-20 md:py-40">
-          <h1 className="text-black text-title-lg mb-12">FAQ</h1>
+          <h1 className="text-black tw-title-sm md:tw-title-lg mb-10">FAQ</h1>
           <div className="flex gap-5 flex-col md:flex-row">
             <div className="w-full md:w-7/12 md:mr-20">
               {faqData.map((item, index) => (
