@@ -434,7 +434,7 @@ const projects: {
   },
   {
     title: "Elna.ai",
-    body: "ELNA provides the fundamental building blocks for AI development like vector database, LLM inference engines, and deployment tools — creators don't have to build from scratch, and instead use these tools to deploy part of their AI application on-chain.",
+    body: "ELNA provides the fundamental building blocks for AI development like vector database, LLM inference engines, and deployment tools — creators don't have to build from scratch, and instead use these tools to deploy part of their AI application onchain.",
     link: "https://www.elna.ai/",
     imageUrl: "/img/ai-chain/elnaai.webp",
   },
@@ -447,20 +447,20 @@ interface FaqData {
 
 const faqData: FaqData[] = [
   {
-    question: "What is AI on-chain and why is it important?",
+    question: "What is AI onchain and why is it important?",
     answer:
-      "AI on-chain refers to running AI models and applications directly on the blockchain, providing decentralized, tamper-proof, and transparent AI solutions. This approach ensures enhanced security, privacy, and data integrity, which are crucial for applications in sectors like finance, healthcare, and beyond.",
+      "AI onchain refers to running AI models and applications directly on the blockchain, providing decentralized, tamper-proof, and transparent AI solutions. This approach ensures enhanced security, privacy, and data integrity, which are crucial for applications in sectors like finance, healthcare, and beyond.",
   },
   {
-    question: "How does ICP enable AI on-chain?",
+    question: "How does ICP enable AI onchain?",
     answer:
-      "The Internet Computer (ICP) enables AI on-chain through its unique architecture that supports scalable, secure, and fully decentralized smart contracts called canisters. These canisters allow AI models to run directly on the blockchain, eliminating the need for traditional cloud-based AI solutions.",
+      "The Internet Computer (ICP) enables AI onchain through its unique architecture that supports scalable, secure, and fully decentralized smart contracts called canisters. These canisters allow AI models to run directly on the blockchain, eliminating the need for traditional cloud-based AI solutions.",
   },
   {
     question:
-      "What are the benefits of running AI on-chain compared to traditional methods?",
+      "What are the benefits of running AI onchain compared to traditional methods?",
     answer:
-      "Running AI on-chain offers several benefits, including enhanced data privacy, resistance to censorship, reduced dependency on centralized cloud providers, and the ability to leverage blockchain's transparency and security features.",
+      "Running AI onchain offers several benefits, including enhanced data privacy, resistance to censorship, reduced dependency on centralized cloud providers, and the ability to leverage blockchain's transparency and security features.",
   },
   {
     question:
@@ -477,13 +477,13 @@ const faqData: FaqData[] = [
   {
     question: "What are the use cases for AI on ICP?",
     answer:
-      "Use cases for AI on ICP span various industries, including finance, healthcare, supply chain management, and more. AI on-chain can be used for applications such as fraud detection, predictive analytics, personalized medicine, and automated decision-making systems.",
+      "Use cases for AI on ICP span various industries, including finance, healthcare, supply chain management, and more. AI onchain can be used for applications such as fraud detection, predictive analytics, personalized medicine, and automated decision-making systems.",
   },
   {
     question:
       "What makes ICP different from other blockchains for AI applications?",
     answer:
-      "ICP stands out due to its ability to run AI fully on-chain, its scalability, and its low-cost computation. Unlike other blockchains that might rely on off-chain solutions, ICP offers a seamless, fully integrated environment for decentralized AI.",
+      "ICP stands out due to its ability to run AI fully onchain, its scalability, and its low-cost computation. Unlike other blockchains that might rely on off-chain solutions, ICP offers a seamless, fully integrated environment for decentralized AI.",
   },
   {
     question:
@@ -494,7 +494,7 @@ const faqData: FaqData[] = [
   {
     question: "Can existing AI models be deployed on ICP?",
     answer:
-      "Yes, existing AI models can be adapted and deployed on ICP. Developers may need to convert their models into a compatible format and use ICP's canister technology to run them on-chain.",
+      "Yes, existing AI models can be adapted and deployed on ICP. Developers may need to convert their models into a compatible format and use ICP's canister technology to run them onchain.",
   },
   {
     question:
@@ -542,7 +542,7 @@ function AISubPage() {
 
   return (
     <Layout
-      title="Secure and Trusted AI on-chain"
+      title="Secure and Trusted AI onchain"
       description="Powered by next generation Smart Contracts."
     >
       <ShareMeta image=""></ShareMeta>
@@ -572,7 +572,7 @@ function AISubPage() {
                 className="tw-lead md:tw-lead-lg mb-8"
                 variants={transitions.item}
               >
-                Secure and Trusted AI on-chain
+                Secure and Trusted AI onchain
               </motion.p>
 
               <Link
@@ -599,7 +599,7 @@ function AISubPage() {
                   Al will be at the heart of everything, driving economies and
                   our daily lives. Al on ICP marks a major technological leap by
                   bringing{" "}
-                  <span className="text-gradient-violet">Al on-chain</span>,
+                  <span className="text-gradient-violet">Al onchain</span>,
                   ensuring decentralized, tamper-proof, and privacy-preserving
                   solutions that address critical issues like security,
                   transparency, and reliability.
@@ -619,7 +619,7 @@ function AISubPage() {
                 className="tw-title-sm md:tw-title-lg mb-3 md:mb-6"
                 variants={transitions.item}
               >
-                AI on-chain: a major technological leap
+                AI onchain: a major technological leap
               </motion.h2>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-0 text-black/60"
@@ -657,13 +657,13 @@ function AISubPage() {
                 R&D at the core of Internet Computer’s AI innovation
               </motion.h3>{" "}
               <motion.p className="tw-lead-sm md:tw-lead text-black/60 mb-4 md:mb-8">
-                AI on-chain is made possible by the unique technological
+                AI onchain is made possible by the unique technological
                 capabilities of the Internet Computer Protocol (ICP). Running AI
                 as a smart contract on a blockchain is a significant innovation
                 that is based on DFINITY Foundation’s significant R&D efforts in
                 this domain. Over the past 6 months, AI computations have been
                 optimized to run up to 10x faster, enabling larger models to run
-                on-chain.
+                onchain.
               </motion.p>
               <Link
                 href="/roadmap"
@@ -811,7 +811,7 @@ function AISubPage() {
                       only to scale, but to also create subnets with different
                       characteristics. Work is underway to create subnets with
                       GPU acceleration, allowing smart contracts to run
-                      enterprise-grade AI models directly on-chain.
+                      enterprise-grade AI models directly onchain.
                     </motion.span>
                   </div>
                   <div className="self-start text-black-60 rounded-full bg-black-20 gap-[10px] px-4 mt-6 tw-paragraph">
@@ -858,7 +858,7 @@ function AISubPage() {
                 href="https://www.youtube.com/watch?v=6qLvIXiCGcM"
                 image="https://i3.ytimg.com/vi/6qLvIXiCGcM/maxresdefault.jpg"
                 className="flex-1"
-                title="AI fully on-chain"
+                title="AI fully onchain"
               />
               <TitleVideoCard
                 href="https://www.youtube.com/watch?v=kP893pQIQvY"
@@ -870,7 +870,7 @@ function AISubPage() {
                 href="https://www.youtube.com/watch?v=hEFff_GGj30"
                 image="https://i.ytimg.com/vi/hEFff_GGj30/maxresdefault.jpg"
                 className="flex-1"
-                title="On-chain Facial recognition"
+                title="Onchain Facial recognition"
               />
             </div>
           </AnimateSpawn>
@@ -1035,7 +1035,7 @@ function AISubPage() {
                   variants={transitions.item}
                 >
                   These resources are designed to help you get started with
-                  creating decentralized AI applications on-chain. Our DeAI
+                  creating decentralized AI applications onchain. Our DeAI
                   developer community is also a great way to start.
                 </motion.p>
                 <motion.div variants={transitions.item}>
