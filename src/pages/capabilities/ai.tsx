@@ -1049,7 +1049,7 @@ function AISubPage() {
                 <div className="grid md:grid-cols-2 gap-6">
                   <motion.div variants={transitions.item} className="space-y-6">
                     <div className="bg-white rounded-xl p-6">
-                      <h3 className="tw-lead-lg mb-4">Learn</h3>
+                      <h3 className="text-2xl mb-4 font-book">Learn</h3>
                       <div className="">
                         <motion.p className="text-[14px] text-black-60 mb-0">
                           Overview of AI onchain
@@ -1064,8 +1064,8 @@ function AISubPage() {
                     </div>
 
                     <div className="bg-white rounded-xl p-6">
-                      <h3 className="tw-lead-lg mb-4">Connect</h3>
-                      <div className="space-y-8">
+                      <h3 className="text-2xl mb-4 font-book">Connect</h3>
+                      <div className="text-2xl space-y-8">
                         <div>
                           <motion.p className="text-[14px] text-black-60 mb-0">
                             Contribute to the discussion
@@ -1119,7 +1119,7 @@ function AISubPage() {
                     className="space-y-6 flex flex-col h-full"
                   >
                     <div className="bg-white rounded-xl p-6">
-                      <h3 className="tw-lead-lg mb-4">Build</h3>
+                      <h3 className="text-2xl mb-4 font-book">Build</h3>
                       <div className="space-y-8">
                         <div>
                           <motion.p className="text-[14px] text-black-60 mb-0">
@@ -1148,7 +1148,7 @@ function AISubPage() {
 
                     <div className="bg-white rounded-xl p-6 flex-grow flex flex-col justify-between">
                       <div>
-                        <h3 className="tw-lead-lg mb-4">Grow</h3>
+                        <h3 className="text-2xl mb-4 font-book">Grow</h3>
                         <div>
                           <motion.p className="text-[14px] text-black-60 mb-0">
                             Apply for the DeAI grant
