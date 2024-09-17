@@ -1085,7 +1085,7 @@ function AISubPage() {
                             href="https://discord.com/invite/jnjVVQaE2C"
                             className="link-primary link-with-icon mt-0"
                           >
-                            Discover <LinkArrowUpRight />
+                            Discord <LinkArrowUpRight />
                           </Link>
                         </div>
                         <div>
