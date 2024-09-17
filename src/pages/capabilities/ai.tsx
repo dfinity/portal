@@ -794,13 +794,13 @@ function AISubPage() {
                   </div>
                 </div>
               </article>
-              <article className="flex flex-col md:flex-row justify-start tw-lead-sm md:tw-lead">
-                <div className="w-full md:w-1/2  order-2 md:order-1">
-                  <div className="w-full sm:w-1/3 mx-auto md:w-[70%] md:-translate-x-[5%] mt-16 md:mt-6">
+              <article className="flex flex-col md:flex-row justify-start align-middle tw-lead-sm md:tw-lead">
+                <div className="w-full md:w-1/2  order-2 md:order-1 flex flex-col justify-center align-middle">
+                  <div className="w-full sm:w-1/3 mx-auto md:w-[70%] md:-translate-x-[5%] mt-16 md:mt-0">
                     <img
                       src="/img/ai-chain/gpu.svg"
-                      alt=""
-                      className="w-full h-full object-contain"
+                      alt="web gpu"
+                      className="w-full"
                     />
                   </div>
                 </div>
