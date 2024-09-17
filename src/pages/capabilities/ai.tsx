@@ -289,7 +289,7 @@ const ContactCard: React.FC = () => {
       <Link href="mailto:ai@dfinity.org" className="link-primary">
         ai@dfinity.org
       </Link>
-      <div className="flex flex-start mt-8">
+      <div className="flex items-center mt-8">
         <img
           src="/img/ai-chain/pierre_samaties.webp"
           alt="Pierre Samaties"
@@ -297,10 +297,10 @@ const ContactCard: React.FC = () => {
         />
         <div>
           <h3 className="text-black tw-lead mb-0">Pierre Samaties</h3>
-          <p className="tw-paragraph text-black/60">Chief Business Officer</p>
+          <span className="tw-paragraph text-black/60">Chief Business Officer</span>
         </div>
       </div>
-      <div className="flex flex-start mb-8 mt-8">
+      <div className="flex mb-8 mt-8 items-center">
         <img
           src="/img/ai-chain/islam_el_ashi.webp"
           alt="Islam El-Ashi"
@@ -308,7 +308,7 @@ const ContactCard: React.FC = () => {
         />
         <div>
           <h3 className="text-black tw-lead mb-0">Islam El-Ashi</h3>
-          <p className="tw-paragraph text-black-60">Head of AI Engineering</p>
+          <span className="tw-paragraph text-black-60">Head of AI Engineering</span>
         </div>
       </div>
       <div>
