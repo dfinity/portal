@@ -422,27 +422,21 @@ const projects: {
 }[] = [
   {
     title: "DecideAI",
-    body: "DecideAI offers groundbreaking products that enhance the decentralized AI ecosystem, including Decide ID, an AI-powered Proof of Personhood, and Decide Cortex, a blockchain-based LLM marketplace.",
+    body: "DecideAI offers products that enhance the decentralized AI ecosystem, including Decide ID, an AI-powered Proof of Personhood, and Decide Cortex, a blockchain-based LLM marketplace.",
     link: "https://decideai.xyz/",
     imageUrl: "/img/ai-chain/decideai.webp",
   },
   {
     title: "Kinic",
-    body: "Kinic DAO's mission is to bring AI ownership to the world: a concept we call personal AI. Personal AI is artificial intelligence and its tooling whose ownership is moved from centralized providers to the users themselves.",
+    body: "Kinic's mission is to bring AI ownership to the world via personal AI. Kinic's Vector Database solution addresses a pressing need for tamperproof data to fine-tune LLM for queries.",
     link: "https://ai.kinic.io",
     imageUrl: "/img/ai-chain/kinic.webp",
   },
   {
     title: "Elna.ai",
-    body: "ELNA is a community-driven decentralized AI agent creation platform that bridges the gap between the development, creation and monetization of AI agents on the blockchain.",
+    body: "ELNA provides the fundamental building blocks for AI development like vector database, LLM inference engines, and deployment tools — creators don't have to build from scratch, and instead use these tools to deploy part of their AI application on-chain.",
     link: "https://www.elna.ai/",
     imageUrl: "/img/ai-chain/elnaai.webp",
-  },
-  {
-    title: "Datapond",
-    body: "Datapond offers groundbreaking products that enhance the decentralized AI ecosystem, including Decide ID, an AI-powered Proof of Personhood, and Decide Cortex, a blockchain-based LLM marketplace. Maecenas sed diam eget risus varius blandit sit amet non magna. Nullam quis risus eget urna mollis ornare vel eu leo. ",
-    link: "https://x.com/DataPondAI",
-    imageUrl: "/img/ai-chain/datapond.webp",
   },
 ];
 
