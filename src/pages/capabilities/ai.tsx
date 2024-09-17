@@ -115,7 +115,7 @@ const AIFeatureCard: React.FC<AIFeatureCardProps> = ({
           {features.map((item, index) => (
             <li
               key={index}
-              className="flex items-center my-1 text-nowrap tw-paragraph"
+              className="flex items-center my-1 tw-paragraph leading-tight"
             >
               <img
                 src="/img/ai-chain/icon-check-circle.svg"
