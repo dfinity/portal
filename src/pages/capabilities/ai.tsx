@@ -650,7 +650,7 @@ function AISubPage() {
               className="md:w-8/10 mb-10 md:mb-20"
               variants={transitions.item}
             >
-              <motion.h4 className="tw-heading-7-caps mb-4 md:mb-8">
+              <motion.h4 className="tw-heading-7-caps mb-4 md:mb-8 opacity-60">
                 TECHNOLOGY
               </motion.h4>
               <motion.h3 className="tw-title-sm md:tw-title-lg mb-4 md:mb-8">
@@ -891,7 +891,7 @@ function AISubPage() {
               className="md:w-8/10 mb-10 md:mb-20"
               variants={transitions.item}
             >
-              <motion.h4 className="tw-heading-7-caps mb-4 md:mb-8">
+              <motion.h4 className="tw-heading-7-caps mb-4 md:mb-8 opacity-60">
                 Ecosystem
               </motion.h4>
               <motion.h3 className="tw-title-sm md:tw-title-lg mb-4 md:mb-8">
