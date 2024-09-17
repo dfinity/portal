@@ -1136,12 +1136,7 @@ function AISubPage() {
                           <motion.p className="text-[14px] text-black-60 mb-0">
                             Try it now and win
                           </motion.p>
-                          <Link
-                            href="/"
-                            className="link-primary link-with-icon mt-0"
-                          >
-                            BOUNTIES <LinkArrowUpRight />
-                          </Link>
+                          <span>Coming soon</span>
                         </div>
                       </div>
                     </div>
