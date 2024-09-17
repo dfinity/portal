@@ -769,19 +769,17 @@ function AISubPage() {
                     </motion.span>{" "}
                     <motion.span className="text-black/50">
                       ICP is the only blockchain where smart contracts can
-                      directly connect to Web 2.0 services using{" "}
-                      <Link
-                        href="/https-outcalls"
-                        className="link-primary  !tw-lead-sm md:!tw-lead"
-                      >
-                        HTTPS outcalls
-                      </Link>
-                      , which opens the possibility for AI applications running
+                      directly connect to Web 2.0 services using HTTPS outcalls, 
+                      which opens the possibility for AI applications running
                       on ICP to integrate and fetch data from external services.
                     </motion.span>
-                  </div>
-                  <div className="self-start text-black-60 rounded-full bg-black-20 gap-[10px] px-4 mt-6 tw-paragraph">
-                    coming soon
+                    
+                    <Link
+                      href="/https-outcalls"
+                      className="link-primary flex text-nowrap mt-6"
+                    >
+                      <LinkArrowRight /> More on HTTPS outcalls
+                    </Link>
                   </div>
                 </div>
                 <div className="w-full md:w-1/2">
@@ -1138,17 +1136,6 @@ function AISubPage() {
                             className="link-primary link-with-icon mt-0"
                           >
                             GitHub <LinkArrowUpRight />
-                          </Link>
-                        </div>
-                        <div>
-                          <motion.p className="text-[14px] text-black-60 mb-0">
-                            Add short title
-                          </motion.p>
-                          <Link
-                            href="/"
-                            className="link-primary link-with-icon mt-0"
-                          >
-                            DFX <LinkArrowUpRight />
                           </Link>
                         </div>
                         <div>
