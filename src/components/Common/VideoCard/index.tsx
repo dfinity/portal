@@ -22,7 +22,7 @@ export const ImageOnlyVideoCard: React.FC<{
       <img
         src={image}
         alt=""
-        className="w-full h-full object-cover rounded-2xl"
+        className="w-full h-full object-cover rounded-xl"
       />
       <PlayButton />
     </Link>

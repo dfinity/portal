@@ -69,7 +69,7 @@ interface RoadmapItemProps {
 
 const RoadmapItem: React.FC<RoadmapItemProps> = ({ number, title, date }) => {
   return (
-    <section className="min-w-64 flex flex-col justify-between flex-1 p-3 md:p-6 pb-5 md:pb-10 bg-[#F1EEF5] rounded-3xl md:min-h-[320px]">
+    <section className="min-w-64 flex flex-col justify-between flex-1 p-3 md:p-6 pb-5 md:pb-10 bg-[#F1EEF5] rounded-xl md:min-h-[320px]">
       <h2 className="tw-lead text-black-20">{number}</h2>
       <div className="flex flex-col mt-auto flex-start">
         <h3 className="tw-lead-sm md:tw-lead bg-gradient-to-br from-[#522785] to-[#ED1E79] bg-clip-text text-transparent">
@@ -99,7 +99,7 @@ const AIFeatureCard: React.FC<AIFeatureCardProps> = ({
   features,
 }) => {
   return (
-    <article className="flex flex-col flex-shrink-0 w-[80vw] sm:w-auto sm:flex-1 justify-between bg-white rounded-3xl p-6 pb-10">
+    <article className="flex flex-col flex-shrink-0 w-[80vw] sm:w-auto sm:flex-1 justify-between bg-white rounded-xl p-6 pb-10">
       {" "}
       <header className="flex w-full items-start justify-between gap-10 tw-lead text-black-20 whitespace-nowrap">
         <span>{number}</span>
@@ -280,7 +280,7 @@ const FaqItem: React.FC<FaqItemProps> = ({ question, answer }) => {
 
 const ContactCard: React.FC = () => {
   return (
-    <aside className="bg-white rounded-3xl">
+    <aside className="bg-white rounded-xl">
       <h2 className="text-black tw-lead-lg mb-2">Contact</h2>
       <p className="text-black tw-lead-sm mb-2">
         Are you interested in a partnership with DFINITY Foundation? Get in
@@ -918,7 +918,6 @@ function AISubPage() {
               type="aiFeatures"
               title="Our ecosystem is building projects along the entire AI value chain"
             />
-
             <motion.div className="">
               <motion.h3 className="tw-title-sm md:tw-title-lg">
                 AI Ecosystem highlights
@@ -950,7 +949,7 @@ function AISubPage() {
                             <img
                               src={projects[i].imageUrl}
                               alt={p.title}
-                              className="sm:hidden mt-8 rounded-2xl"
+                              className="sm:hidden mt-8 rounded-xl"
                             />
                           </Collapse>
                         ))}
@@ -971,7 +970,7 @@ function AISubPage() {
                       style={{ opacity: i === openProjectIndex ? 1 : 0 }}
                     >
                       <img
-                        className="rounded-2xl"
+                        className="rounded-xl"
                         src={p.imageUrl}
                         alt={p.title}
                       />
