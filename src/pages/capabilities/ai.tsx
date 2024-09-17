@@ -1047,8 +1047,8 @@ function AISubPage() {
                   developer community is also a great way to start.
                 </motion.p>
                 <motion.div variants={transitions.item}>
-                  <Link href="#" className="button-primary">
-                    BUILD AI DAPPS
+                  <Link href="https://internetcomputer.org/docs/current/developer-docs/ai/overview" className="button-primary">
+                    Overview of AI onchain
                   </Link>
                 </motion.div>
               </div>
@@ -1058,12 +1058,12 @@ function AISubPage() {
                   <motion.div variants={transitions.item} className="space-y-6">
                     <div className="bg-white rounded-xl p-6">
                       <h3 className="tw-lead-lg mb-4">Learn</h3>
-                      <div className="space-y-2">
-                        <motion.p className="tw-lead-sm text-black-60 mb-0">
-                          Overview of AI on-chain
+                      <div className="">
+                        <motion.p className="text-[14px] text-black-60 mb-0">
+                          Overview of AI onchain
                         </motion.p>
                         <Link
-                          href="/docs"
+                          href="https://internetcomputer.org/docs/current/developer-docs/ai/overview"
                           className="link-primary link-with-icon mt-0"
                         >
                           Docs <LinkArrowUpRight />
@@ -1075,18 +1075,18 @@ function AISubPage() {
                       <h3 className="tw-lead-lg mb-4">Connect</h3>
                       <div className="space-y-8">
                         <div>
-                          <motion.p className="tw-lead-sm text-black-60 mb-0">
+                          <motion.p className="text-[14px] text-black-60 mb-0">
                             Contribute to the discussion
                           </motion.p>
                           <Link
-                            href="/docs"
+                            href="https://forum.dfinity.org/"
                             className="link-primary link-with-icon mt-0"
                           >
                             ICP Forum <LinkArrowUpRight />
                           </Link>
                         </div>
                         <div>
-                          <motion.p className="tw-lead-sm text-black-60 mb-0">
+                          <motion.p className="text-[14px] text-black-60 mb-0">
                             Join the bi-weekly meeting
                           </motion.p>
                           <Link
@@ -1097,22 +1097,22 @@ function AISubPage() {
                           </Link>
                         </div>
                         <div>
-                          <motion.p className="tw-lead-sm text-black-60 mb-0">
-                            Join the discussion
+                          <motion.p className="text-[14px] text-black-60 mb-0">
+                            Join the DeAI developer meeting
                           </motion.p>
                           <Link
-                            href="/"
+                            href="https://forum.dfinity.org/t/technical-working-group-deai/24621"
                             className="link-primary link-with-icon mt-0"
                           >
                             Technical working group <LinkArrowUpRight />
                           </Link>
                         </div>
                         <div>
-                          <motion.p className="tw-lead-sm text-black-60 mb-0">
+                          <motion.p className="text-[14px] text-black-60 mb-0">
                             Meet the experts IRL
                           </motion.p>
                           <Link
-                            href="/events"
+                            href="https://internetcomputer.org/events"
                             className="link-primary link-with-icon mt-0"
                           >
                             Events <LinkArrowUpRight />
@@ -1130,18 +1130,18 @@ function AISubPage() {
                       <h3 className="tw-lead-lg mb-4">Build</h3>
                       <div className="space-y-8">
                         <div>
-                          <motion.p className="tw-lead-sm text-black-60 mb-0">
+                          <motion.p className="text-[14px] text-black-60 mb-0">
                             Explore the work
                           </motion.p>
                           <Link
-                            href="/"
+                            href="https://github.com/dfinity/awesome-internet-computer?tab=readme-ov-file#decentralized-ai"
                             className="link-primary link-with-icon mt-0"
                           >
                             GitHub <LinkArrowUpRight />
                           </Link>
                         </div>
                         <div>
-                          <motion.p className="tw-lead-sm text-black-60 mb-0">
+                          <motion.p className="text-[14px] text-black-60 mb-0">
                             Add short title
                           </motion.p>
                           <Link
@@ -1152,8 +1152,8 @@ function AISubPage() {
                           </Link>
                         </div>
                         <div>
-                          <motion.p className="tw-lead-sm text-black-60 mb-0">
-                            Add short title
+                          <motion.p className="text-[14px] text-black-60 mb-0">
+                            Try it now and win
                           </motion.p>
                           <Link
                             href="/"
@@ -1169,11 +1169,11 @@ function AISubPage() {
                       <div>
                         <h3 className="tw-lead-lg mb-4">Grow</h3>
                         <div>
-                          <motion.p className="tw-lead-sm text-black-60 mb-0">
+                          <motion.p className="text-[14px] text-black-60 mb-0">
                             Apply for the DeAI grant
                           </motion.p>
                           <Link
-                            href="/"
+                            href="https://dfinity.org/grants/"
                             className="link-primary link-with-icon mt-0"
                           >
                             Grants and Programs <LinkArrowUpRight />
