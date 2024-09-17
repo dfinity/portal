@@ -191,7 +191,7 @@ const ScrollableSection: React.FC<ScrollableSectionProps> = ({
         ref={scrollContainerRef}
         className={`flex overflow-x-auto ${
           type === "roadmap" ? "md:overflow-x-visible" : ""
-        } snap-mandatory snap-x hide-scrollbar -mx-4 px-4 sm:mx-0 sm:px-0`}
+        } snap-mandatory snap-x hide-scrollbar -mx-6 px-4 pl-6 sm:mx-0 sm:px-0`}
       >
         <div
           className={`flex gap-4 ${type === "roadmap" ? "pb-4 md:pb-0" : ""}`}
