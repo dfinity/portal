@@ -25,6 +25,7 @@ import { useScrollSpyMenu } from "../../utils/use-scroll-spy-menu";
 import AIManifestoModal from "@site/src/components/AIManifestoModal";
 import { ArrowIconRight } from "@site/src/components/RoadmapPage/Overlay";
 import { useElementSize } from "@site/src/utils/use-element-size";
+import { useLocation } from "@docusaurus/router";
 
 interface FeatureCardProps {
   imageSrc: string;
@@ -70,13 +71,15 @@ const RoadmapItem: React.FC<RoadmapItemProps> = ({ number, title, date }) => {
   return (
     <section className="min-w-64 flex flex-col justify-between flex-1 p-3 md:p-6 pb-5 md:pb-10 bg-[#F1EEF5] rounded-3xl md:min-h-[320px]">
       <h2 className="tw-lead text-black-20">{number}</h2>
-      <div className="flex flex-col mt-auto">
+      <div className="flex flex-col mt-auto flex-start">
         <h3 className="tw-lead-sm md:tw-lead bg-gradient-to-br from-[#522785] to-[#ED1E79] bg-clip-text text-transparent">
           {title}
         </h3>
-        <time className="mt-1 md:mt-3 tw-paragraph-sm md:tw-paragraph text-black">
-          {date}
-        </time>
+        {date && (
+          <time className="mt-1 md:mt-3 tw-paragraph-sm md:tw-paragraph text-black">
+            {date ? date : ""}
+          </time>
+        )}
       </div>
     </section>
   );
@@ -250,24 +253,10 @@ const Collapse: React.FC<{
         }}
         ref={ref}
       >
-        <div className="pt-4 text-white-60 tw-paragraph">
-          {children}
-          <Link
-            href={link}
-            className="link-primary link-white link-with-icon cursor-pointer text-select-none mt-4 inline-flex items-center"
-          >
-            Visit website <LinkArrowUpRight />
-          </Link>
-        </div>
+        <div className="pt-4 text-white-60 tw-paragraph">{children}</div>
       </div>
       <div className="sm:hidden pt-4 flex flex-1 flex-col text-white-60 tw-paragraph">
         {children}
-        <Link
-          href={link}
-          className="link-primary link-white link-with-icon cursor-pointer text-select-none mt-4 inline-flex items-center"
-        >
-          Visit website <LinkArrowUpRight />
-        </Link>
       </div>
     </div>
   );
@@ -527,14 +516,34 @@ const { events, websiteCategory, regions } = eventsData;
 function AISubPage() {
   const [manifestoModalOpen, setManifestoModalOpen] = useState(false);
   const [openProjectIndex, setOpenProjectIndex] = useState(0);
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash === "#manifesto") {
+      openOverlay();
+    }
+  }, [location]);
 
   function closeOverlay() {
     document.body.style.overflow = "";
     setManifestoModalOpen(false);
+    // Remove the hash from the URL
+    window.history.pushState(
+      "",
+      document.title,
+      window.location.pathname + window.location.search
+    );
   }
+
   function openOverlay() {
     document.body.style.overflow = "hidden";
     setManifestoModalOpen(true);
+    // Add #manifesto to the URL
+    window.history.pushState(
+      "",
+      document.title,
+      window.location.pathname + window.location.search + "#manifesto"
+    );
   }
 
   return (
@@ -616,7 +625,7 @@ function AISubPage() {
                 className="tw-title-sm md:tw-title-lg mb-3 md:mb-6"
                 variants={transitions.item}
               >
-                AI on-chain - a major technological leap
+                AI on-chain: a major technological leap
               </motion.h2>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-0 text-black/60"
@@ -720,7 +729,7 @@ function AISubPage() {
                       faster
                     </motion.p>
                   </div>
-                  <div className="w-full sm:w-2/3 sm:mx-auto md:w-[90%]">
+                  <div className="w-full sm:w-2/3 md:w-[90%]">
                     <img
                       src="/img/ai-chain/chart.svg"
                       alt=""
@@ -761,7 +770,10 @@ function AISubPage() {
                     <motion.span className="text-black/50">
                       ICP is the only blockchain where smart contracts can
                       directly connect to Web 2.0 services using{" "}
-                      <Link href="/https-outcalls" className="link-primary">
+                      <Link
+                        href="/https-outcalls"
+                        className="link-primary  !tw-lead-sm md:!tw-lead"
+                      >
                         HTTPS outcalls
                       </Link>
                       , which opens the possibility for AI applications running
@@ -926,8 +938,15 @@ function AISubPage() {
                             onClick={() => setOpenProjectIndex(i)}
                             link={p.link}
                           >
-                            <div className="flex-1 tw-paragraph">{p.body}</div>
-
+                            <div className="flex-1">
+                              <div className="tw-paragraph">{p.body}</div>
+                              <Link
+                                href={p.link}
+                                className="link-primary link-white link-with-icon cursor-pointer text-select-none mt-4 inline-flex items-center"
+                              >
+                                Visit website <LinkArrowUpRight />
+                              </Link>
+                            </div>
                             <img
                               src={projects[i].imageUrl}
                               alt={p.title}
@@ -1038,7 +1057,7 @@ function AISubPage() {
               <div className="md:w-7/12">
                 <div className="grid md:grid-cols-2 gap-6">
                   <motion.div variants={transitions.item} className="space-y-6">
-                    <div className="bg-white rounded-xl p-6 shadow-sm">
+                    <div className="bg-white rounded-xl p-6">
                       <h3 className="tw-lead-lg mb-4">Learn</h3>
                       <div className="space-y-2">
                         <motion.p className="tw-lead-sm text-black-60 mb-0">
@@ -1053,7 +1072,7 @@ function AISubPage() {
                       </div>
                     </div>
 
-                    <div className="bg-white rounded-xl p-6 shadow-sm">
+                    <div className="bg-white rounded-xl p-6">
                       <h3 className="tw-lead-lg mb-4">Connect</h3>
                       <div className="space-y-8">
                         <div>
@@ -1108,7 +1127,7 @@ function AISubPage() {
                     variants={transitions.item}
                     className="space-y-6 flex flex-col h-full"
                   >
-                    <div className="bg-white rounded-xl p-6 shadow-sm">
+                    <div className="bg-white rounded-xl p-6">
                       <h3 className="tw-lead-lg mb-4">Build</h3>
                       <div className="space-y-8">
                         <div>
@@ -1147,7 +1166,7 @@ function AISubPage() {
                       </div>
                     </div>
 
-                    <div className="bg-white rounded-xl p-6 shadow-sm flex-grow flex flex-col justify-between">
+                    <div className="bg-white rounded-xl p-6 flex-grow flex flex-col justify-between">
                       <div>
                         <h3 className="tw-lead-lg mb-4">Grow</h3>
                         <div>
