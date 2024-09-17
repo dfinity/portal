@@ -1146,7 +1146,7 @@ function AISubPage() {
                       </div>
                     </div>
 
-                    <div className="bg-white rounded-xl p-6 flex-grow flex flex-col justify-between">
+                    <div className="bg-white rounded-xl p-6 flex flex-col justify-between">
                       <div>
                         <h3 className="text-2xl mb-4 font-book">Grow</h3>
                         <div>
