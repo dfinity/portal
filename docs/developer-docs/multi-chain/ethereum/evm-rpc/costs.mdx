@@ -30,31 +30,23 @@ The following formula shows how to calculate the cycles cost for an RPC request:
 
 ```
 (
-  3M
-  + 60K * nodes_in_subnet // Number of nodes in the subnet
-  + 400 * request_size // Size of the HTTP request in bytes
-  + 800 * max_response // Maximum HTTP response size in bytes
-  + provider_cost // Fixed cost for selected RPC provider
-) * nodes_in_subnet //  Fixed canister overhead cost per node in subnet
+  5_912_000
+  + 60_000 * nodes_in_subnet // Number of nodes in the subnet
+  + 2400 * request_size // Size of the HTTP request in bytes
+  + 800 * max_response_size // Maximum HTTP response size in bytes
+) * nodes_in_subnet
+  * rpc_services // Number of RPC services used to check consistency
 ```
 
-Here is an approximate cost breakdown in USD for an RPC request on the Ethereum mainnet using Cloudflare Web3 and assuming a 13-node subnet:
+The total cost for an RPC request (assuming a 1kB request, 1kB response, 34-node subnet, and 1 [XDR](https://internetcomputer.org/docs/current/developer-docs/gas-cost#units-and-fiat-value) = $1.336610 USD)
+is ~ $0.00051 USD.
 
-- Total cost: ~ $0.0021 (assuming consensus between 3 RPC providers)
+Note that the cost is multiplied by the number of RPC services used for the consistency logic. If you specify three different services, it will cost three times as much as a call to a single RPC provider.
 
-  - Cost per RPC provider: ~ $0.000686 (assuming 1kB request and 1kB response)
+In addition, it's necessary to send `10_000_000 * nodes_in_subnet * rpc_services` additional cycles which are currently refunded but may be used to increase the pricing to account for any changes to API costs in the downstream JSON-RPC services.
 
-    - Canister overhead: ~ $0.0000364
-
-    - HTTPS outcall overhead: ~ $0.00025
-
-    - JSON Request: ~ $0.0002 / kB
-
-    - JSON Response: ~ $0.0002 / kB
-
-Note that the cost is multiplied by the number of RPC services used for the agreement / consensus logic. If you specify three different services, it will cost three times as much as a call to a single RPC provider.
-
-The EVM RPC canister automatically refunds any cycles sent beyond the cost of the RPC request.
+The EVM RPC canister automatically refunds any cycles sent beyond the cost of the RPC request, so it's possible to send more cycles than necessary without consequence. 
+Sending extra cycles will also provide a budget to retry the request with a larger maximum response size for Candid-RPC methods such as `eth_getLogs` and `eth_getBlockByNumber`.
 
 ## Collateral cycles
 
