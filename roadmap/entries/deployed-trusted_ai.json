@@ -16,7 +16,7 @@
     },
     {
       "title": "Faster deterministic floating-point operations",
-      "overview": "Accelerating deterministic floating point computations in the Wasm engine.",
+      "overview": "Accelerating deterministic floating-point computations in the Wasm engine.",
       "status": "deployed",
       "forum": "",
       "proposal": "",
@@ -49,6 +49,7 @@
     },
     {
       "title": "Onchain AI Inference",
+      "description": "Allow smart contracts to run inference using AI models with millions of parameters fully on chain. The focus of this milestone is performance. There are performance optimizations that can be implemented both in the WebAssembly engine and the AI inference engine. The expected speedup is 10x and more.",
       "is_milestone": true,
       "milestone_id": "Cyclotron",
       "status": "deployed",
