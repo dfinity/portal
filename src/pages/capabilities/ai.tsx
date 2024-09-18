@@ -1038,11 +1038,6 @@ function AISubPage() {
                   creating decentralized AI applications onchain. Our DeAI
                   developer community is also a great way to start.
                 </motion.p>
-                <motion.div variants={transitions.item}>
-                  <Link href="https://internetcomputer.org/docs/current/developer-docs/ai/overview" className="button-primary">
-                    Overview of AI onchain
-                  </Link>
-                </motion.div>
               </div>
 
               <div className="md:w-7/12">
@@ -1079,7 +1074,7 @@ function AISubPage() {
                         </div>
                         <div>
                           <motion.p className="text-[14px] text-black-60 mb-0">
-                            Join the weekly meeting
+                            Connect with developers
                           </motion.p>
                           <Link
                             href="https://discord.com/invite/jnjVVQaE2C"
@@ -1090,18 +1085,7 @@ function AISubPage() {
                         </div>
                         <div>
                           <motion.p className="text-[14px] text-black-60 mb-0">
-                            Join the DeAI developer meeting
-                          </motion.p>
-                          <Link
-                            href="https://forum.dfinity.org/t/technical-working-group-deai/24621"
-                            className="link-primary link-with-icon mt-0"
-                          >
-                            Technical working group <LinkArrowUpRight />
-                          </Link>
-                        </div>
-                        <div>
-                          <motion.p className="text-[14px] text-black-60 mb-0">
-                            Attend our events
+                            Attend global events
                           </motion.p>
                           <Link
                             href="https://internetcomputer.org/events"
@@ -1147,6 +1131,17 @@ function AISubPage() {
                             className="link-primary link-with-icon mt-0"
                           >
                             Grants and Programs <LinkArrowUpRight />
+                          </Link>
+                        </div>
+                        <div>
+                          <motion.p className="text-[14px] text-black-60 mb-0">
+                            Join the accelerator
+                          </motion.p>
+                          <Link
+                            href="/olympus/"
+                            className="link-primary link-with-icon mt-0"
+                          >
+                            Explore Olympus <LinkArrowUpRight />
                           </Link>
                         </div>
                       </div>
