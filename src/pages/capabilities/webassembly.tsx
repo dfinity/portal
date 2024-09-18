@@ -52,7 +52,7 @@ function WebAssemblyPage() {
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                A advantage of the Internet Computer blockchain is its
+                An advantage of the Internet Computer blockchain is its
                 use of WebAssembly for executing smart contracts and
                 decentralized applications — written in a wide variety of
                 languages that compile to WebAssembly.
@@ -175,7 +175,7 @@ function WebAssemblyPage() {
               </p>
               <Link
                 className="link-primary link-with-icon"
-                href="https://people.mpi-sws.org/~rossberg/"
+                href="https://docs.bitfinity.network"
               >
                 Check out Bitfinity EVM
                 <LinkArrowUpRight />
