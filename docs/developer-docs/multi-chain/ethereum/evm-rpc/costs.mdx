@@ -43,7 +43,7 @@ is ~ $0.00051 USD.
 
 Note that the cost is multiplied by the number of RPC services used for the consistency logic. If you specify three different services, it will cost three times as much as a call to a single RPC provider.
 
-In addition, it's necessary to send `10_000_000 * nodes_in_subnet * rpc_services` additional cycles which are currently refunded but may be used to increase the pricing to account for any changes to API costs in the downstream JSON-RPC services.
+In addition, it's necessary to send `10_000_000 * nodes_in_subnet * rpc_services` additional cycles which are currently refunded and serve as a buffer for any future increases in third-party JSON-RPC API costs.
 
 The EVM RPC canister automatically refunds any cycles sent beyond the cost of the RPC request, so it's possible to send more cycles than necessary without consequence. 
 Sending extra cycles will also provide a budget to retry the request with a larger maximum response size for Candid-RPC methods such as `eth_getLogs` and `eth_getBlockByNumber`.
