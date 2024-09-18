@@ -1079,7 +1079,7 @@ function AISubPage() {
                         </div>
                         <div>
                           <motion.p className="text-[14px] text-black-60 mb-0">
-                            Join the bi-weekly meeting
+                            Join the weekly meeting
                           </motion.p>
                           <Link
                             href="https://discord.com/invite/jnjVVQaE2C"
@@ -1101,13 +1101,13 @@ function AISubPage() {
                         </div>
                         <div>
                           <motion.p className="text-[14px] text-black-60 mb-0">
-                            Meet the experts IRL
+                            Attend our events
                           </motion.p>
                           <Link
                             href="https://internetcomputer.org/events"
                             className="link-primary link-with-icon mt-0"
                           >
-                            Events <LinkArrowUpRight />
+                            Upcoming events <LinkArrowUpRight />
                           </Link>
                         </div>
                       </div>
@@ -1131,12 +1131,6 @@ function AISubPage() {
                           >
                             GitHub <LinkArrowUpRight />
                           </Link>
-                        </div>
-                        <div>
-                          <motion.p className="text-[14px] text-black-60 mb-0">
-                            Try it now and win
-                          </motion.p>
-                          <span>Coming soon</span>
                         </div>
                       </div>
                     </div>
