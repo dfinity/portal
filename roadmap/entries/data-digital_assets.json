@@ -67,6 +67,7 @@
     },
     {
       "title": "The Orbit Multi-Custody Asset Framework",
+      "description": "Orbit is a comprehensive digital assets framework, enabling simple to advanced rules over user digital assets. Initially tailored for token management, it provides robust support for 1-out-of-M to complex approval policies for financial transactions. It also supports secure management of infrastructure like canister installations and upgrades. Teams and businesses can confidently handle ICP, ckETH, and compatible tokens using Orbit's advanced security features, vital for those seeking a stable and reliable management over their treasury.",
       "is_milestone": true,
       "milestone_id": "Poloidal",
       "status": "in_progress",
