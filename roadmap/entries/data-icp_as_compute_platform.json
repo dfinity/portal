@@ -41,6 +41,7 @@
     {
       "title": "Reduced End-to-end Latency",
       "is_milestone": true,
+      "description": "This milestone marks a significant reduction of user-perceived end-to-end latency for processing ingress messages. It is achieved by multiple concerted measures at different levels of the protocol stack and brings the user experience of Web3 closer to Web2.",
       "milestone_id": "Tokamak",
       "eta": "Q3 2024",
       "status": "in_progress"
@@ -121,6 +122,7 @@
     {
       "title": "Increased Storage Capacity and Throughput",
       "is_milestone": true,
+      "description": "Increased storage capacity of ICP subnets, storage per canister smart contract, and message throughput between subnets. Those improvements lead to each subnet being able to host larger workloads and better utilization of ICP’s hardware resources. The world's largest smart contracts can now grow even larger, far surpassing smart contracts on any other chain.",
       "milestone_id": "Stellarator",
       "status": "in_progress",
       "eta": ""

@@ -65,6 +65,7 @@
     {
       "title": "Active Liquid Democracy",
       "is_milestone": true,
+      "description": "The NNS and SNS DAOs facilitate active liquid democracies by lowering the entry barrier for participation and providing better inputs for well-informed decisions. This includes direct voting as well as delegating some voting decisions to others. As a result, more users stake tokens and participate in DAOs to form lively communities. The resulting network effects foster additional adoption and growth.",
       "milestone_id": "Plasma",
       "status": "in_progress",
       "eta": "2025-03"

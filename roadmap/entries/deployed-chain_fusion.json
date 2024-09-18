@@ -113,6 +113,7 @@
     {
       "title": "Chain Fusion Supports EVM Chains",
       "is_milestone": true,
+      "description": "ICP’s Chain Fusion technology has full support for Ethereum and other EVM chains. ICP smart contracts can read from and write to EVM chains using a decentralized approach as well as sign transactions in a trustless manner using threshold ECDSA signing. This allows ICP smart contracts to augment EVM-based smart contracts with additional functionality through ICP's superpowers, transfer tokens on other chains, and call smart contracts on EVM chains.",
       "milestone_id": "Tritium",
       "status": "deployed",
       "eta": "2024-05-23",
@@ -145,6 +146,7 @@
     {
       "title": "Chain Fusion Supports Bitcoin ordinals and runes",
       "is_milestone": true,
+      "description": "ICP’s Chain Fusion technology has full support for Bitcoin protocols such as BRC20 and Runes. So far, ICP’s fully-on-chain capabilities have been largely applied to use cases where Bitcoin is used as a means of value transfer, its original purpose. This milestone provides additional functionality that enables smart contracts to index and issue prominent types of Bitcoin inscriptions in a completely decentralized manner for the first time, thereby putting ICP into a unique position among all chains.",
       "milestone_id": "Deuterium",
       "status": "deployed",
       "eta": "2024-08-13",

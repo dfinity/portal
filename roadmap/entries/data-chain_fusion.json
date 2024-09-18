@@ -29,6 +29,7 @@
     {
       "title": "Chain Fusion Supports Solana",
       "is_milestone": true,
+      "description": "This milestone enables Chain Fusion for the Solana network, bringing Solana and ICP closer together, combining the powers of the two networks. Dapps leveraging the capabilities of both networks look and feel like single-network dapps.",
       "milestone_id": "Helium",
       "status": "in_progress",
       "eta": "Q4 2024"

@@ -181,6 +181,7 @@
     {
       "title": "Verifiable Credentials Platform is Live",
       "is_milestone": true,
+      "description": "With this milestone, ICP offers the infrastructure and tooling to issue, share, and consume credentials in a privacy-preserving fashion. Users are in control of their credentials, giving them a self-sovereign digital identity. At the same time, new credential issuers, such as a KYC service, go live on ICP and will enable new use cases such as security tokens subject to financial regulations.",
       "milestone_id": "Separatrix",
       "eta": "2024-06-18",
       "status": "deployed",
