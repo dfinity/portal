@@ -1999,9 +1999,7 @@ function ChainFusion() {
             ))}
           </AnimateSpawn>
         </section>
-
-        <News content="chainfusion" />
-        <section>
+        <section className="mt-24 md:mt-40">
           <AnimateSpawn
             className="container-6"
             variants={transitions.container}
@@ -2027,7 +2025,9 @@ function ChainFusion() {
             </motion.div>
           </AnimateSpawn>
         </section>
-        <section className="my-24 md:my-40" id="subscribe">
+        <News content="chainfusion" />
+
+        <section className="my-8 md:my-10" id="subscribe">
           <Newsletter
             fields={[
               {
