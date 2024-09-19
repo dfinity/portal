@@ -6,32 +6,33 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Retries and idempotency
 
-In the case of network or other issues, ICP clients (such as agents) that issue
+
+## Overview 
+
+In the case of network issues or other unexpected behavior, ICP clients (such as agents) that issue
 ingress update calls may become unable to determine whether their ingress
 request has been processed. For example, this can happen if the client loses its
-connection until the request status has been removed from the state tree (recall
-that ICP will remove the request from the system state tree some time after
-ingress expiry).
+connection before the request status has been removed from the state tree, since ICP will remove the request from the system state tree some time after the ingress expiry.
 
 This can be risky as the application might decide to retry transactions, potentially leading to serious security vulnerabilities such as double spending. 
 
 Thus, it is important to design and/or use canister APIs such that it is possible to retry requests safely, even when the ICP provides no information about previous request attempts. This page describes general approaches that both the canister authors and the clients can adopt to enable safe retries.
 
-## Idempotent Canister APIs
+## Idempotent canister APIs
 
 We say that a canister endpoint is idempotent if it can be called multiple times without changing the result or canister state beyond the first call. Whenever an endpoint is idempotent or can be made idempotent by the developer, this provides an easy way to implement safe retries.
 
 Given an idempotent endpoint, you can implement retries by simply retrying the call until you observe a certified response (either a replied or rejected status), see the illustration below. If such a response is ever observed, one can be sure that the transaction has been executed exactly once thanks to idempotency. However, the application may not be willing to wait for a response indefinitely and a timeout could be implemented. Upon timeout, an error should be displayed to the user instructing them to wait until the latest message that has been sent has expired (ingress_expiry) and then manually check the status of the transaction. Ideally, timeouts should be rare and not occur during normal operation.
 
-We describe two approaches to making endpoints idempotent: sequence numbers and (time window) ID deduplication.
+Below are two approaches to making endpoints idempotent: sequence numbers and (time window) ID deduplication.
 
 ### Update sequence numbers
 
-An endpoint can make use of sequence numbers to provide idempotency. The endpoint can take a sequence number parameter in the addition to other parameters. In the extreme case, the canister could keep a single sequence counter for every endpoint, and a call could only be accepted if it contains the next expected sequence number, causing the expected sequence number to be incremented upon call execution. This trivially implies that any call can only be executed once. More practically, an expected sequence number is kept for each caller principal, or, in case of ledger-like canisters, each ledger account. Note that Ethereum implements this mechanism.
+An endpoint can make use of sequence numbers to provide idempotency by taking a sequence number parameter in addition to other parameters. In the extreme case, a canister could keep a single sequence counter for every endpoint, and a call could only be accepted if it contained the next expected sequence number, causing the expected sequence number to be incremented upon call execution. This trivially implies that any call can only be executed once. More practically, an expected sequence number is kept for each caller principal, or, in case of ledger-like canisters, each ledger account. Note that Ethereum implements this mechanism.
 
 The advantages of this approach are:
-1. Sequence numbers are simple to implement and understand
-1. When applicable, it has a modest memory footprint, because only the next expected sequence number must be stored (for example, per active account).
+1. Sequence numbers are simple to implement and understand.
+1. When applicable, it has a modest memory footprint because only the next expected sequence number must be stored (for example, per active account).
 
 The approach also has some disadvantages:
 1. It limits the throughput. When per-caller sequence numbers are used, it means that the caller can generally perform only one ingress call per consensus block, translating to a throughput of about 1 call per second for that user.
