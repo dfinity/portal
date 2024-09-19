@@ -1603,7 +1603,7 @@ const communityProjects: SampleItem[] = [
     languages: ["motoko"],
     contentType: ["code samples", "community repo"],
     image:
-      "/img/community-projects/onchain-system-of-record-with-public-notary.png",
+      "/img/community-projects/on-chain-system-of-record-with-public-notary.png",
   },
   {
     index: 98,

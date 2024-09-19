@@ -694,7 +694,7 @@ let result = model.run(
                   dateHuman: "July 15,2024",
                   press: "DFINITY",
                   details: `The replica version e4eeb3 that was approved by the community in Proposal 13094 completes the Cyclotron milestone from ICP’s roadmap.`,
-                  url: "https://medium.com/dfinity/the-next-step-for-deai-onchain-inference-enabling-face-recognition-589183203fc2",
+                  url: "https://medium.com/dfinity/the-next-step-for-deai-on-chain-inference-enabling-face-recognition-589183203fc2",
                   imageUrl: "/img/decentralized-ai/news-7.webp",
                 }}
                 linkLabel="Read Now"

@@ -922,7 +922,7 @@ function SnsFaqPage() {
             title="Video: Next Generation DAOs"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="https://medium.com/dfinity/how-the-service-nervous-system-sns-will-bring-tokenized-governance-to-onchain-dapps-b74fb8364a5c"
+            href="https://medium.com/dfinity/how-the-service-nervous-system-sns-will-bring-tokenized-governance-to-on-chain-dapps-b74fb8364a5c"
             title="SNS Blog"
           ></SmallCardWithDescription>
           <SmallCardWithDescription

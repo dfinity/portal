@@ -120,7 +120,7 @@ const cardsData: CardData[] = [
     description:
       "Search engines like Google can’t index smart contracts running on other blockchains. As developers have to use centralized cloud providers to store the frontends, at least those become searchable. A compromise. The Internet Computer hosts smart contracts that can directly be indexed by all popular search engines. No frontends on public cloud required. This is how true Web3 works.",
     image: "/img/features/seo-image.webp",
-    href: "https://medium.com/dfinity/seo-support-for-100-onchain-websites-built-on-the-internet-computer-19c951d73853",
+    href: "https://medium.com/dfinity/seo-support-for-100-on-chain-websites-built-on-the-internet-computer-19c951d73853",
     refText: "Read the blog",
     imageSide: "right",
   },
