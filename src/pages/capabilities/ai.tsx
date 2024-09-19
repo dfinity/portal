@@ -1120,7 +1120,7 @@ function AISubPage() {
                     </div>
 
                     <div className="bg-white rounded-xl p-6 flex flex-col justify-between">
-                      <div>
+                      <div className="space-y-8">
                         <h3 className="text-2xl mb-4 font-book">Grow</h3>
                         <div>
                           <motion.p className="text-[14px] text-black-60 mb-0">
