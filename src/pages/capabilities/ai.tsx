@@ -678,7 +678,7 @@ function AISubPage() {
             <motion.div className="flex flex-col gap-16 md:gap-30">
               <article className="flex flex-col md:flex-row justify-start tw-lead-sm md:tw-lead">
                 <div className="w-full md:w-1/2 flex flex-col justify-between">
-                  <div className="mb-14">
+                  <div className="mb-6 md:mb-14">
                     <motion.p className="tw-lead md:tw-lead-lg text-black-20 mb-6">
                       01
                     </motion.p>
@@ -732,7 +732,7 @@ function AISubPage() {
                   </div>
                 </div>
                 <div className="w-full md:w-1/2 ml-0 md:ml-5 flex flex-col justify-between order-1 md:order-2">
-                  <div className="mb-14">
+                  <div className="mb-6 md:mb-14">
                     <motion.p className="tw-lead md:tw-lead-lg text-black-20 mb-6">
                       02
                     </motion.p>
@@ -777,7 +777,7 @@ function AISubPage() {
                   </div>
                 </div>
                 <div className="w-full md:w-1/2">
-                  <div className="w-full sm:w-2/3 mx-auto md:w-[85%] md:translate-x-1/10 mt-16 md:mt-6">
+                  <div className="w-full sm:w-2/3 mx-auto md:w-[85%] md:translate-x-1/10 mt-0 md:mt-6">
                     <img
                       src="/img/ai-chain/inference.svg"
                       alt=""
@@ -788,7 +788,7 @@ function AISubPage() {
               </article>
               <article className="flex flex-col md:flex-row justify-start align-middle tw-lead-sm md:tw-lead">
                 <div className="w-full md:w-1/2  order-2 md:order-1 flex flex-col justify-center align-middle">
-                  <div className="w-full sm:w-1/3 mx-auto md:w-[70%] md:-translate-x-[5%] mt-16 md:mt-0">
+                  <div className="w-full sm:w-1/3 mx-auto md:w-[70%] md:-translate-x-[5%] mt-8 md:mt-0">
                     <img
                       src="/img/ai-chain/gpu.svg"
                       alt="web gpu"
