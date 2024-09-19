@@ -576,10 +576,10 @@ function AISubPage() {
               </motion.p>
 
               <Link
-                href="/ecosystem?tag=AI"
-                className="link-primary flex justify-center text-nowrap"
+                href="#ecosystem"
+                className="link-primary"
               >
-                <LinkArrowRight /> Fastest growing AI Ecosystem in Web3
+                Fastest growing AI Ecosystem in Web3
               </Link>
               <motion.div
                 className="flex flex-col md:flex-row my-15 md:my-32 text-left gap-10 md:gap-30"
@@ -891,7 +891,7 @@ function AISubPage() {
               className="md:w-8/10 mb-10 md:mb-20"
               variants={transitions.item}
             >
-              <motion.h4 className="tw-heading-7-caps mb-4 md:mb-8 opacity-60">
+              <motion.h4 className="tw-heading-7-caps mb-4 md:mb-8 opacity-60" id="ecosystem">
                 Ecosystem
               </motion.h4>
               <motion.h3 className="tw-title-sm md:tw-title-lg mb-4 md:mb-8">
@@ -904,6 +904,12 @@ function AISubPage() {
                 security. ICP's unique capabilities have made it a preferred
                 platform for builders of AI dapps.
               </motion.p>
+              <Link
+                href="/ecosystem?tag=AI"
+                className="link-primary text-white hover:text-white-80"
+              >
+                <LinkArrowRight /> Fastest growing AI Ecosystem in Web3
+              </Link>
             </motion.div>
             <ScrollableSection
               items={aiFeatures}
