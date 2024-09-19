@@ -561,11 +561,11 @@ function AISubPage() {
         >
           <section className="container-10 mt-48 md:mt-72 relative">
             <div className="flex justify-center flex-col items-center text-center">
-              <div className="relative w-full sm:w-2/3 md:w-1/2 mb-20">
+              <div className="relative w-full sm:w-2/3 md:w-1/2 mb-16">
                 <img
                   src="/img/ai-chain/chain_logo_black.webp"
                   alt="ai chain logo"
-                  className="pointer-events-none w-full"
+                  className="pointer-events-none w-full block"
                 />
               </div>
               <motion.p
