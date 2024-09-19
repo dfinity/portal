@@ -18,7 +18,7 @@ creates new UTXOs. In order to create a Bitcoin transaction, you need to:
 
 1. Get the available UTXOs corresponding to a Bitcoin address controlled by the
    canister using the `bitcoin_get_utxos` API endpoint.
-2. Calculate an appropriate transaction fee using the `bitcoin_estimate_fee` API
+2. Calculate an appropriate transaction fee using the `bitcoin_get_current_fee_percentiles` API
    endpoint.
 3. Select a subset of the available UTXOs to spend that covers the transaction
    amount and fee.
