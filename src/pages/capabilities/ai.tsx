@@ -777,7 +777,7 @@ function AISubPage() {
                   </div>
                 </div>
                 <div className="w-full md:w-1/2">
-                  <div className="w-full sm:w-2/3 mx-auto md:w-[85%] md:translate-x-1/10 mt-0 md:mt-6">
+                  <div className="w-full sm:w-2/3 mx-auto md:w-[85%] md:translate-x-1/10 mt-8 md:mt-6">
                     <img
                       src="/img/ai-chain/inference.svg"
                       alt=""
