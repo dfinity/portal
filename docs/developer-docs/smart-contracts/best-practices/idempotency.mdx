@@ -41,7 +41,7 @@ The approach also has some disadvantages:
 
 ### ID deduplication
 
-Another approach to idempotency is to make the calls uniquely identifiable on the canister side (e.g. by using user-chosen IDs, sequence numbers, or a combination of several argument fields) to make sure a given call is executed at most once. The canister then deduplicates calls before executing them; if a call with the same ID has been executed previously, the new call is simply ignored (potentially returning the result of the previous call). Thus, the user can safely keep retrying the call, until they get a response.
+Another approach to idempotency is to make the calls uniquely identifiable on the canister side (e.g., by using user-chosen IDs, sequence numbers, or a combination of several argument fields) to make sure a given call is executed at most once. The canister then deduplicates calls before executing them; if a call with the same ID has been executed previously, the new call is simply ignored (potentially returning the result of the previous call). Thus, the user can safely keep retrying the call until they get a response.
 
 For example, the ICRC ledger standard provides deduplication in this way. Using identical values for all call parameters, including the `created_at_time` and `memo` parameters, when issuing a transaction makes the transaction call idempotent by deduplicating calls with the same parameters.
 
