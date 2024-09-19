@@ -120,14 +120,14 @@ const cardsData: CardData[] = [
     description:
       "Search engines like Google can’t index smart contracts running on other blockchains. As developers have to use centralized cloud providers to store the frontends, at least those become searchable. A compromise. The Internet Computer hosts smart contracts that can directly be indexed by all popular search engines. No frontends on public cloud required. This is how true Web3 works.",
     image: "/img/features/seo-image.webp",
-    href: "https://medium.com/dfinity/seo-support-for-100-on-chain-websites-built-on-the-internet-computer-19c951d73853",
+    href: "https://medium.com/dfinity/seo-support-for-100-onchain-websites-built-on-the-internet-computer-19c951d73853",
     refText: "Read the blog",
     imageSide: "right",
   },
   {
     title: "The brain of the Internet Computer",
     description:
-      "The Internet Computer is governed by a fully on-chain permissionless system that regularly upgrades the protocol following the intentions of ICP token holders expressed through their votes.",
+      "The Internet Computer is governed by a fully onchain permissionless system that regularly upgrades the protocol following the intentions of ICP token holders expressed through their votes.",
     image: "/img/features/nns-image.webp",
     href: "/nns",
     refText: "Participate in ICP governance",
@@ -136,7 +136,7 @@ const cardsData: CardData[] = [
   {
     title: "Turn any Web3 service into a DAO",
     description:
-      "The Internet Computer allows developers to turn their dapps into a DAO to achieve full decentralization — 100% on-chain",
+      "The Internet Computer allows developers to turn their dapps into a DAO to achieve full decentralization — 100% onchain",
     image: "/img/features/sns-image.webp",
     href: "/sns",
     refText: "Overview of ICP DAOs",
@@ -208,7 +208,7 @@ caused a major chain to hard fork and a loss of 60 million USD.`,
   {
     title: "Subnets & infinite scalability",
     description: `The Internet Computer incorporates a novel subnet architecture
-  that enables infinite scalability, making 100% on-chain
+  that enables infinite scalability, making 100% onchain
   mass-market Web3 services possible. No cloud servers needed.`,
     href: "/capabilities/limitless-scaling",
   },

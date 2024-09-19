@@ -97,11 +97,11 @@ function SnsFaqPage() {
                 <li>
                   The design of SNSs is similar to that of the{" "}
                   <Link href="/nns">Network Nervous System (NNS)</Link>, which
-                  is the on-chain DAO that governs the whole ICP.
+                  is the onchain DAO that governs the whole ICP.
                 </li>
                 <li>
                   A dapp controlled by an SNS DAO is governed by SNS token
-                  holders submitting and voting on on-chain proposals. No one
+                  holders submitting and voting on onchain proposals. No one
                   developer or group of people controls the dapp, rather the
                   dapp is controlled by voting via tokens.
                 </li>
@@ -124,11 +124,11 @@ function SnsFaqPage() {
                 </strong>{" "}
                 (frontend, backend application logic, and data), so SNS DAOs are
                 unique in that they can fully control (via voting) every aspect
-                of a dapp, since everything is on-chain. Having fully on-chain
+                of a dapp, since everything is onchain. Having fully onchain
                 DAOs is important because it enables all decisions to be
                 executed on the blockchain and thus facilitates true
                 decentralization. This is in contrast to existing DAOs
-                on other blockchains where voting takes place on-chain but the
+                on other blockchains where voting takes place onchain but the
                 execution of the results are often carried out by developers
                 off-chain.{" "}
                 <p>
@@ -199,7 +199,7 @@ function SnsFaqPage() {
           >
             <Faq title="What do I do once I am an SNS DAO member?">
               The most important thing you can do as an SNS DAO member is to
-              participate in governance. On-chain governance is what
+              participate in governance. Onchain governance is what
               differentiates DAOs from traditional web applications, as members
               play a key role in the DAO's success. DAO members can contribute
               in many ways, from pushing code, to designing a logo or a UI, to
@@ -207,7 +207,7 @@ function SnsFaqPage() {
             </Faq>
             <Faq title="In what ways can I participate in an SNS DAO?">
               There are many ways members can participate in an SNS DAO, both
-              on-chain and off-chain. Creating proposals requires coding skills.
+              onchain and off-chain. Creating proposals requires coding skills.
               Some examples include:
               <ul>
                 <li>
@@ -922,7 +922,7 @@ function SnsFaqPage() {
             title="Video: Next Generation DAOs"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="https://medium.com/dfinity/how-the-service-nervous-system-sns-will-bring-tokenized-governance-to-on-chain-dapps-b74fb8364a5c"
+            href="https://medium.com/dfinity/how-the-service-nervous-system-sns-will-bring-tokenized-governance-to-onchain-dapps-b74fb8364a5c"
             title="SNS Blog"
           ></SmallCardWithDescription>
           <SmallCardWithDescription

@@ -312,7 +312,7 @@ function EnterprisePage() {
                 documents via emails with no audit trail of who accessed and
                 edited them, or using expensive US hosted SaaS services with the
                 associated vendor lock-in and geographical data protection
-                issues. On-chain encryption enabled by 'Verifiable Encrypted
+                issues. Onchain encryption enabled by 'Verifiable Encrypted
                 Threshold Keys' (VETKeys) will enable customized cross-org
                 workflows via tamperproof smart contract that store private data
                 securely encrypted on chain.
@@ -337,7 +337,7 @@ function EnterprisePage() {
                 </h3>
                 <p className="tw-paragraph mb-0">
                   Privately share documents with other organizations and
-                  customers, using on-chain encryption enabled by VETKeys.
+                  customers, using onchain encryption enabled by VETKeys.
                 </p>
               </div>
               <div className="flex flex-col">
@@ -459,7 +459,7 @@ function EnterprisePage() {
                 ORIGYN Foundation, they are building a solution on the Internet
                 Computer to improve their “100% made in Italy” verification
                 service. Consumers benefit from product authenticity of origin
-                certificates stored fully on-chain and protected by tamperproof
+                certificates stored fully onchain and protected by tamperproof
                 smart contracts.
               </p>
               <Link

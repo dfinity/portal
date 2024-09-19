@@ -8,7 +8,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 In this section, you will learn about the different types of ledgers that exist on the Internet Computer. This guide will go into detail about what the different ledgers are, what their purposes are, and how they differ from ledgers you may be familiar with from other blockchains. 
 
 ## ICP ledger
-The ICP ledger is a canister that is responsible for keeping track of ICP balances, processing new transactions, and providing clients with data about the history of transactions. It stores all data on-chain. For every transaction, a single block is created, which points to its parent block by storing the parent block's hash.
+The ICP ledger is a canister that is responsible for keeping track of ICP balances, processing new transactions, and providing clients with data about the history of transactions. It stores all data onchain. For every transaction, a single block is created, which points to its parent block by storing the parent block's hash.
 
 The ICP ledger uses `AccountIdentifiers` as its internal account representation. It is compatible with the ICRC-1 standard; however, due to the fact that it uses `AccountIdentifiers` instead of `Accounts'` it stores information in a different block format than ICRC-1 ledgers. The same is true for the minting account of the ICP ledger. 
 
