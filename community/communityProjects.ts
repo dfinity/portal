@@ -2069,21 +2069,6 @@ const communityProjects: SampleItem[] = [
   },
   {
     index: 127,
-    title: "Digital World",
-    body: "Digital World Project, a secure platform that integrates decentralized social networking, DeFi services, asset tokenization, real estate registry digitization, and project incubation. It offers e-commerce, chat, digital wallets, personalized profiles, asset conversion, and secure data storage, fostering an efficient ecosystem.",
-    links: {
-      github: "https://github.com/ASPPIBRA-DAO/DIGITAL-WORLD-APP",
-      livePreview: "https://dworld.app",
-      otherLinks: [],
-    },
-    domains: ["Website / Asynchronous DeFi /SocialFi "],
-    level: "advanced",
-    languages: ["python", "javascript"],
-    contentType: ["code samples", "community repo", "live demos"],
-    image: "/img/showcase/dworld_logo.webp",
-  },
-  {
-    index: 128,
     title: "ASPPIBRA-DAO",
     body: "ASPPIBRA - Association of Property Owners and Possessors in Brazil is a non-profit civil association, founded on April 9, 2016, in the State of Rio de Janeiro-RJ. It is composed of professionals and citizens committed to the technological and socioeconomic development of modern society.",
     links: {

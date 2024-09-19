@@ -5175,28 +5175,6 @@
     "website": "https://ai-fi.cc"
   },
   {
-    "name": "Digital World",
-    "description": "Digital World Project, a secure platform that integrates decentralized social networking, DeFi services, asset tokenization, real estate registry digitization, and project incubation. It offers e-commerce, chat, digital wallets, personalized profiles, asset conversion, and secure data storage, fostering an efficient ecosystem.",
-    "website": "https://dworld.app",
-    "logo": "/img/showcase/dworld_logo.webp",
-    "screenshots": [
-      "/img/showcase/dworld_screenshot.webp"
-    ],
-    "video": "",
-    "display": "Normal",
-    "id": "dworld",
-    "oneLiner": "The world in one place",
-    "stats": "300K+ Estate records",
-    "tags": [
-      "SocialFi",
-      "Tools / Infrastructure",
-      "DeFi"
-    ],
-    "usesInternetIdentity": false,
-    "github": "https://github.com/ASPPIBRA-DAO/DIGITAL-WORLD-APP",
-    "submittableId": ""
-  },
-  {
     "name": "ASPPIBRA-DAO",
     "description": "ASPPIBRA - Association of Property Owners and Possessors in Brazil is a non-profit civil association, founded on April 9, 2016, in the State of Rio de Janeiro-RJ. It is composed of professionals and citizens committed to the technological and socioeconomic development of modern society.",
     "website": "https://www.asppibra.com.br/",
