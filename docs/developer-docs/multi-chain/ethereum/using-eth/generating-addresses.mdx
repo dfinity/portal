@@ -25,31 +25,31 @@ To create an ETH address for your canister, first you will need to obtain an ECD
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
-  // Declare "ic" to be the management canister, which is evoked by `actor("aaaaa-aa")`.:
-  let ic : IC = actor("aaaaa-aa");
+```motoko no-repl
+// Declare "ic" to be the management canister, which is evoked by `actor("aaaaa-aa")`.:
+let ic : IC = actor("aaaaa-aa");
 
-  public shared (msg) func public_key() : async { #Ok : { public_key: Blob }; #Err : Text } {
-    let caller = Principal.toBlob(msg.caller);
+public shared (msg) func public_key() : async { #Ok : { public_key: Blob }; #Err : Text } {
+  let caller = Principal.toBlob(msg.caller);
 
-    try {
+  try {
 
-      // Make a call to the management canister to request an ECDSA public key:
-      let { public_key } = await ic.ecdsa_public_key({
-          canister_id = null;
-          derivation_path = [ caller ];
-          key_id = { curve = #secp256k1; name = "test_key_1" };
-      });
+    // Make a call to the management canister to request an ECDSA public key:
+    let { public_key } = await ic.ecdsa_public_key({
+        canister_id = null;
+        derivation_path = [ caller ];
+        key_id = { curve = #secp256k1; name = "test_key_1" };
+    });
 
-      #Ok({ public_key })
+    #Ok({ public_key })
 
-    } catch (err) {
+  } catch (err) {
 
-      #Err(Error.message(err))
+    #Err(Error.message(err))
 
-    }
+  }
 
-  };
+};
 ```
 
 </TabItem>

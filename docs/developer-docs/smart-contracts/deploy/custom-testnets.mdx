@@ -56,7 +56,7 @@ Some settings you may want to change are:
 
 - Change the [Wasm transformation to fit your desired configuration](https://github.com/dfinity/motoko-playground/blob/main/service/pool/Main.mo#L150). In some cases, this may just be `wasm = args.wasm_module`, since if there is an `allowlist` in place, the principals allowed to install canisters can be trusted, such as:
 
-```motoko
+```motoko no-repl
 let wasm = args.wasm_module;
 ```
 

@@ -114,7 +114,7 @@ Note that when deploying your own canister, you may encounter API rate limits. R
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 import EvmRpc "canister:evm_rpc";
 
 import Cycles "mo:base/ExperimentalCycles";
@@ -232,7 +232,7 @@ This example use case displays a caveat that comes with mapping the `eth_getLogs
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 import EvmRpc "canister:evm_rpc";
 
 import Cycles "mo:base/ExperimentalCycles";
@@ -320,7 +320,7 @@ dfx canister call evm_rpc eth_getBlockByNumber "(variant {$RPC_SOURCE}, $RPC_CON
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 import EvmRpc "canister:evm_rpc";
 
 import Cycles "mo:base/ExperimentalCycles";
@@ -487,7 +487,7 @@ pub async fn eth_call(
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 import EvmRpc "canister:evm_rpc";
 
 import Cycles "mo:base/ExperimentalCycles";
@@ -587,7 +587,7 @@ dfx canister call evm_rpc eth_getTransactionCount "(variant {$RPC_SOURCE}, $RPC_
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 import EvmRpc "canister:evm_rpc";
 
 import Cycles "mo:base/ExperimentalCycles";
@@ -703,7 +703,7 @@ The EVM RPC canister can also be used to send raw transactions to the Ethereum a
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 import EvmRpc "canister:evm_rpc";
 
 import Cycles "mo:base/ExperimentalCycles";
@@ -818,7 +818,7 @@ Note that even if an error is returned, you should assume that your transaction 
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 import EvmRpc "canister:evm_rpc";
 
 import Cycles "mo:base/ExperimentalCycles";
@@ -909,7 +909,7 @@ dfx canister call evm_rpc request "(variant {$JSON_RPC_SOURCE}, "'"{ \"jsonrpc\"
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 let services = #EthMainnet;
 let config = null;
 ```

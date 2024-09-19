@@ -31,7 +31,7 @@ In the newest version of Motoko, the type system has been revised to detect and 
 
 For example, in previous Motoko versions, the following code snippet could be used:
 
-```motoko
+```motoko no-repl
   func splitCycles() {
     let amount = ExperimentalCycles.balance() / 2;
     ExperimentalCycles.add(amount); // new error
@@ -47,7 +47,7 @@ In Motoko v0.11.0 and newer, this code will throw a compiler error:
 
 To support the new changes, the previous code should be rewritten to include the `system` type parameter:
 
-```motoko
+```motoko no-repl
  func splitCycles<system>() {
     let amount = ExperimentalCycles.balance() / 2;
     ExperimentalCycles.add(amount); // warning
