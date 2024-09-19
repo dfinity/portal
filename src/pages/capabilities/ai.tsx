@@ -72,14 +72,14 @@ const RoadmapItem: React.FC<RoadmapItemProps> = ({ number, title, date }) => {
     <section className="min-w-64 flex flex-col justify-between flex-1 p-3 md:p-6 pb-5 md:pb-10 bg-[#F1EEF5] rounded-xl md:min-h-[320px]">
       <h2 className="tw-lead text-black-20">{number}</h2>
       <div className="flex flex-col mt-auto flex-start">
-        <h3 className="tw-lead-sm md:tw-lead bg-gradient-to-br from-[#522785] to-[#ED1E79] bg-clip-text text-transparent">
-          {title}
-        </h3>
         {date && (
-          <time className="mt-1 md:mt-3 tw-paragraph-sm md:tw-paragraph text-black">
+          <time className="mb-1 md:mb-3 tw-paragraph-sm md:tw-paragraph text-black">
             {date ? date : ""}
           </time>
         )}
+        <h3 className="tw-lead-sm md:tw-lead bg-gradient-to-br from-[#522785] to-[#ED1E79] bg-clip-text text-transparent">
+          {title}
+        </h3>
       </div>
     </section>
   );
