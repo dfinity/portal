@@ -43,17 +43,17 @@ Another approach to idempotency is to make the calls uniquely identifiable on th
 For example, the ICRC ledger standard provides deduplication in this way. Using identical values for all call parameters, including the `created_at_time` and `memo` parameters when issuing a transaction makes the transaction call idempotent, by deduplicating calls with the same parameters.
 
 However, a direct implementation of this approach can exhaust the canister memory, as all successfully executed IDs need to be kept around forever.
-Thus, the deduplication is usually time limited to a certain time window. For example, the ICP ledger use a 24 hour window, and the ICRC standard defines a configuration parameter `TX_WINDOW` that determines the window length.
+Thus, the deduplication is usually time limited to a certain time window. For example, the ICP ledger uses a 24 hour window, and the ICRC standard defines a configuration parameter `TX_WINDOW` that determines the window length.
 
 Moreover, the ICP/ICRC ledgers use the `created_at_time` parameter to limit the validity period of a call. Roughly, the call is only considered valid if its `created_at_time` is not in the future and at most 24 hours in the past.[^ledger-created-at-details] This avoids the problem where the deduplication window expiring would allow a retried call to succeed again.
 
 But even with this improvement used in the ledgers, the time window approach implicitly assumes that the client will be able to get a definite answer to their call within the time window. For example, after the 24 hours expire, the user cannot easily tell if their ledger transfer happened; their only option is to analyze the ledger blocks, which is somewhat tedious, and has to be done carefully to avoid asynchrony issues; see the section on [queryable call results](#queryable-call-results).
 
-An alternative is to do away with the time window, and store the deduplication data forever. This requires multiple canisters to prevent exhausting the canister memory, similar to how the ICP/ICRC ledgers store the transaction data in the archive canister. This effectively moves the tedious part of querying the deduplication data (e.g., ledger blocks) from the user to the canister.
+An alternative is to do away with the time window, and store the deduplication data forever. This requires multiple canisters to prevent exhausting the canister memory, similar to how the ICP/ICRC ledgers store the transaction data in the archive canister. This shifts the tedious part of querying the deduplication data (e.g., ledger blocks) from the user to the canister.
 
 Summarizing, the advantages of this approach are:
-1. It can support high throughput
-1. It requires no synchronization on part of the user, and supports use cases like multiple devices
+1. It can support high throughput.
+1. It requires no synchronization on part of the user, and supports use cases like multiple devices.
 
 The disadvantages are:
 1. It is more complicated to implement than sequence numbers.
@@ -62,14 +62,14 @@ The disadvantages are:
 
 ## Other approaches to safe retries
 
-In absence of idempotent endpoints, or even as an addition to them, clients may be able to use other endpoints to make their retries safe.
+In absence of idempotent endpoints, or even in addition to them, clients may be able to use other endpoints to make their retries safe.
 
 ### Queryable call results
 
 If the canister, in addition to the update endpoint, also exposes a query that can inform the user of the result of the update, the client can also use this for safe retries as follows:
 
-1. Attempt to perform the update
-1. If the result of the update is unknown (e.g., not present in the ingress history any more), query the call result endpoint to determine whether the call was applied or not. Moreover, one needs to ensure that the previously sent call call cannot be applied in the future. If both of these are true, the call might be retried, or safely reported as failed.
+1. Attempt to perform the update.
+1. If the result of the update is unknown (e.g., not present in the ingress history anymore), query the call result endpoint to determine whether the update was applied or not. Moreover, one needs to ensure that the previously sent call cannot be applied in the future. If both of these are true, the call might be retried, or safely reported as failed.
 
 In practice, this pattern may be more complicated. For example, the ICP ledger exposes a `query_blocks` method that can be used to implement the above pattern for transfers initiated as ingress messages:
 
