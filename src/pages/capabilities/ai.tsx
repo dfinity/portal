@@ -693,17 +693,17 @@ function AISubPage() {
                       amounts of input data. 
                     </motion.span>
                   </div>
-                  <div className="text-center md:text-left">
+                  <div className="text-left">
                     <motion.p className="text-gradient-violet tw-title-sm md:tw-title-lg mb-0">
                       1.000.000x
                     </motion.p>
-                    <motion.p className="text-black tw-lead-sm md:tw-lead ">
+                    <motion.p className="text-black tw-lead-sm md:tw-lead">
                       more data storage
                     </motion.p>
                   </div>
                 </div>
                 <div className="w-full md:w-1/2">
-                  <div className="w-full sm:w-1/2 mx-auto md:w-[90%] md:translate-x-1/10 md:mt-12">
+                  <div className="w-full sm:w-1/2 md:mx-auto md:w-[90%] md:translate-x-1/10 md:mt-12">
                     <img
                       src="/img/ai-chain/data.svg"
                       alt=""
