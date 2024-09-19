@@ -115,7 +115,7 @@ In this project's configuration, you can see definition of three canisters:
 
 Next, open the `src/swap/main.mo` file and review its contents. This code has been annotated with notes to explain the program's functionality:
 
-```motoko title="src/swap/main.mo"
+```motoko no-repl title="src/swap/main.mo"
 import Blob "mo:base/Blob";
 import Debug "mo:base/Debug";
 import Iter "mo:base/Iter";
@@ -359,7 +359,7 @@ shared (init_msg) actor class Swap(
 
 Next, open the `ICRC.mo` file and review its contents. This file defines several types that are imported in the `main.mo` file:
 
-```motoko title="src/swap/ICRC.mo"
+```motoko no-repl title="src/swap/ICRC.mo"
 module ICRC {
   public type BlockIndex = Nat;
   public type Subaccount = Blob;

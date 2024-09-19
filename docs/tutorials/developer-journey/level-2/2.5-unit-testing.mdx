@@ -32,7 +32,7 @@ Many of these tests use a library called Motoko Matchers. Motoko Matchers is a t
 Let's take a look at a simple unit test. This will test the program's error messages:
 
 
-```motoko
+```motoko no-repl
 import M "mo:matchers/Matchers";
 import T "mo:matchers/Testable";
 import Suite "mo:matchers/Suite";
@@ -65,7 +65,7 @@ This unit test does the following:
 ### Canister unit testing
 In addition to the `Suite`, `Testable` and `Matchers` packages, Motoko Matchers also contains a `Canister` package. The `Canister` package can be used to execute unit tests for canisters. Below is an example that uses this `Canister` package:
 
-```motoko
+```motoko no-repl
 import Canister "canister:CanisterName";
 import C "mo:matchers/Canister";
 import M "mo:matchers/Matchers";
