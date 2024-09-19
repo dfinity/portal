@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 ## Overview 
 
 In the case of network issues or other unexpected behavior, ICP clients (such as agents) that issue
-ingress update calls may become unable to determine whether their ingress
+ingress update calls may be unable to determine whether their ingress
 request has been processed. For example, this can happen if the client loses its
 connection before the request status has been removed from the state tree, since ICP will remove the request from the system state tree some time after the ingress expiry.
 
@@ -22,7 +22,7 @@ Thus, it is important to design and/or use canister APIs such that it is possibl
 
 We say that a canister endpoint is idempotent if it can be called multiple times without changing the result or canister state beyond the first call. Whenever an endpoint is idempotent or can be made idempotent by the developer, this provides an easy way to implement safe retries.
 
-Given an idempotent endpoint, you can implement retries by simply retrying the call until you observe a certified response (either a replied or rejected status), see the illustration below. If such a response is ever observed, one can be sure that the transaction has been executed exactly once thanks to idempotency. However, the application may not be willing to wait for a response indefinitely and a timeout could be implemented. Upon timeout, an error should be displayed to the user instructing them to wait until the latest message that has been sent has expired (ingress_expiry) and then manually check the status of the transaction. Ideally, timeouts should be rare and not occur during normal operation.
+Given an idempotent endpoint, you can implement retries by retrying the call until you observe a certified response (either a replied or rejected status), see the illustration below. If such a response is ever observed, it's sure that the transaction has been executed at least once which, thanks to idempotency, has the same result as executing it once. However, the application may not be willing to wait for a response indefinitely and a timeout could be implemented. Upon timeout, an error should be displayed to the user instructing them to wait until the latest message that has been sent has expired (ingress_expiry) and then manually check the status of the transaction. Ideally, timeouts should be rare and not occur during normal operation.
 
 Below are two approaches to making endpoints idempotent: sequence numbers and (time window) ID deduplication.
 
@@ -43,7 +43,7 @@ The approach also has some disadvantages:
 
 Another approach to idempotency is to make the calls uniquely identifiable on the canister side (e.g. by using user-chosen IDs, sequence numbers, or a combination of several argument fields) to make sure a given call is executed at most once. The canister then deduplicates calls before executing them; if a call with the same ID has been executed previously, the new call is simply ignored (potentially returning the result of the previous call). Thus, the user can safely keep retrying the call, until they get a response.
 
-For example, the ICRC ledger standard provides deduplication in this way. Using identical values for all call parameters, including the `created_at_time` and `memo` parameters when issuing a transaction makes the transaction call idempotent, by deduplicating calls with the same parameters.
+For example, the ICRC ledger standard provides deduplication in this way. Using identical values for all call parameters, including the `created_at_time` and `memo` parameters, when issuing a transaction makes the transaction call idempotent by deduplicating calls with the same parameters.
 
 However, a direct implementation of this approach can exhaust the canister memory, as all successfully executed IDs need to be kept around forever.
 Thus, the deduplication is usually time limited to a certain time window. For example, the ICP ledger uses a 24 hour window, and the ICRC standard defines a configuration parameter `TX_WINDOW` that determines the window length.
@@ -78,7 +78,7 @@ In practice, this pattern may be more complicated. For example, the ICP ledger e
 
 1. Call the `query_blocks` method on the ledger to determine what the last block (as specified in the `chain_length` field of the response) currently is. Let's call this `last_block`.
 1. Attempt to perform a transfer. This ingress message includes an `ingress_expiry` field.
-1. If the result of the transfer is unknown, call the `read_state` endpoint on the ledger canister, to obtain the `/time` branch of the system state tree. Repeat this until the reported time exceeds the `ingress_expiry` time. This ensures that the transfer will not be applied at a later point.
+1. If the result of the transfer is unknown, call the `read_state` endpoint on the ledger canister to obtain the `/time` branch of the system state tree. Repeat this until the reported time exceeds the `ingress_expiry` time. This ensures that the transfer will not be applied at a later point.
 1. Call the `query_blocks` method on the ledger again to retrieve all ledger blocks since `last_block`, and check that the `timestamp` also exceeds the `ingress_expiry` time. Then, scan through the returned blocks to determine whether the transaction has been included or not.
 
 ### 2-step transfers
