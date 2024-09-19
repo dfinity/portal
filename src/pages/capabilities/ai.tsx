@@ -927,7 +927,7 @@ function AISubPage() {
                       variants={transitions.item}
                       className="flex overflow-auto sm:overflow-visible -mx-6 sm:mx-0 sm:gap-2/10 xl:relative sm:min-h-[40vw] xl:min-h-[450px]"
                     >
-                      <div className="flex items-stretch gap-6 sm:flex-col sm:gap-10 mx-6 sm:mx-0 mb-6 sm:mb-0 sm:w-5/10 md:w-4/10">
+                      <div className="flex items-stretch gap-6 sm:flex-col sm:gap-10 mx-6 sm:mx-0 sm:pr-10 mb-6 sm:mb-0 sm:w-5/10 md:w-4/10">
                         {projects.map((p, i) => (
                           <Collapse
                             title={p.title}
