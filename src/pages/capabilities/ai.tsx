@@ -561,7 +561,7 @@ function AISubPage() {
         >
           <section className="container-10 mt-48 md:mt-72 relative">
             <div className="flex justify-center flex-col items-center text-center">
-              <div className="relative w-full sm:w-2/3 md:w-1/2 mb-16">
+              <div className="relative w-full sm:w-2/3 md:w-1/2 mb-4 md:mb-16">
                 <img
                   src="/img/ai-chain/chain_logo_black.webp"
                   alt="ai chain logo"
@@ -569,7 +569,7 @@ function AISubPage() {
                 />
               </div>
               <motion.p
-                className="tw-lead md:tw-lead-lg mb-8"
+                className="tw-lead md:tw-lead-lg md:mb-8"
                 variants={transitions.item}
               >
                 Secure and Trusted AI onchain
