@@ -906,7 +906,7 @@ function AISubPage() {
               </motion.p>
               <Link
                 href="/ecosystem?tag=AI"
-                className="link-primary text-white hover:text-white-80"
+                className="text-white hover:text-white-80 tw-heading-6 hover:no-underline flex items-center gap-4"
               >
                 <LinkArrowRight /> Fastest growing AI Ecosystem in Web3
               </Link>
