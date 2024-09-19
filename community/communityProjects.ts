@@ -2072,10 +2072,9 @@ const communityProjects: SampleItem[] = [
     title: "Digital World",
     body: "Digital World Project, a secure platform that integrates decentralized social networking, DeFi services, asset tokenization, real estate registry digitization, and project incubation. It offers e-commerce, chat, digital wallets, personalized profiles, asset conversion, and secure data storage, fostering an efficient ecosystem.",
     links: {
-      github: "https://github.com/ASPPIBRA-DAO",
+      github: "https://github.com/ASPPIBRA-DAO/DIGITAL-WORLD-APP",
       livePreview: "https://dworld.app",
-      otherLinks: ["https://x.com/ASPPIBRA_ORG",
-        "https://www.youtube.com/@ASPPIBRA-DAO/videos"],
+      otherLinks: [],
     },
     domains: ["Website / Asynchronous DeFi /SocialFi "],
     level: "advanced",
