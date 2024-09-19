@@ -1130,7 +1130,7 @@ function AISubPage() {
                             href="https://dfinity.org/grants/"
                             className="link-primary link-with-icon mt-0"
                           >
-                            Grants and Programs <LinkArrowUpRight />
+                            Grant application <LinkArrowUpRight />
                           </Link>
                         </div>
                         <div>
