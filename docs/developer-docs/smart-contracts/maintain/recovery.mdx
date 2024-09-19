@@ -11,13 +11,19 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 ## Overview
 
-A <GlossaryTooltip>canister</GlossaryTooltip> is managed and maintained by **controllers**. A controller can be a single developer identity, a list of developer identities, or another canister. If a canister does not have a controller, it cannot be upgraded, deleted, or otherwise maintained. Canisters can have several controllers. If access to a canister's controller(s) is lost, the canister cannot be upgraded or further maintained. If a canister's code traps with an unrecoverable error and cannot be upgraded, the canister can potentially be recovered using an NNS proposal.
+A <GlossaryTooltip>canister</GlossaryTooltip> is managed and maintained by **controllers**. A controller can be a single developer identity, a list of developer identities, or another canister. If a canister does not have a controller, it cannot be upgraded, deleted, or otherwise maintained. Canisters can have several controllers. If access to a canister's controller(s) is lost, the canister cannot be upgraded or further maintained. If a canister's code traps with an unrecoverable error and cannot be upgraded, the canister can potentially be recovered using canister snapshots or an NNS proposal.
 
-## Recovering a canister
+## Canister snapshots
 
-If a canister is unable to be upgraded via any of the canister's existing controllers, either due to code failure or loss of access to the canister's controllers, there is no supported method to recover that canister.
+One method for recovering a canister is to roll the canister back to a snapshot if one exists. [Learn more about canister snapshots](snapshots.mdx).
 
-One possible last resort recovery method can be used, however it requires that the canister have the NNS root canister `r7inp-6aaaa-aaaaa-aaabq-cai` configured as a controller of the canister.
+## Recovering a canister that does not have controllers
+
+If a canister is unable to be upgraded via any of the canister's existing controllers, either due to the canister not having controllers or loss of access to the canister's controllers, there is no supported method to recover that canister.
+
+## Recovering a canister with an NNS proposal
+
+If a canister does not have a snapshot that can be used for recovery, one possible last resort recovery method can be used, however it requires that the canister have the NNS root canister `r7inp-6aaaa-aaaaa-aaabq-cai` configured as a controller of the canister.
 
 To add the NNS root canister as a controller of your canister, use the command:
 

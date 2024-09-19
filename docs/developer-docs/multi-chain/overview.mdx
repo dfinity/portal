@@ -132,15 +132,15 @@ This code snippet is written in both Rust and Motoko, but a similar example can 
 
 ```motoko
 
-import evm "ic:a6d44-nyaaa-aaaap-abp7q-cai";
+import evm "ic:7hfb6-caaaa-aaaar-qadga-cai";
 import ic "ic:aaaaa-aa";
 import Cycles "mo:base/ExperimentalCycles";
 import Timer "mo:base/Timer";
 
 //Actor is the computational unit of ICP smart contract
 actor {
-    let EVM_FEE = 1000;
-    let BITCOIN_FEE = 1000;
+    let EVM_FEE = 10000000000;
+    let BITCOIN_FEE = 2016000000;
 
         //Function checks the logs of an ETH smart contract for an event
         //If a particular event is found, it sends bitcoin to an address
@@ -213,7 +213,7 @@ async fn check_evm_log() {
     let cycles = 10_000_000_000;
     // This is a test canister without API keys, for production use 7hfb6-caaaa-aaaar-qadga-cai
     let canister_id =
-        Principal::from_text("a6d44-nyaaa-aaaap-abp7q-cai").expect("principal should be valid");
+        Principal::from_text("7hfb6-caaaa-aaaar-qadga-cai").expect("principal should be valid");
     // call the eth_getLogs function on the EVM RPC canister
     let (result,) = ic_cdk::api::call::call_with_payment128::<
         (RpcServices, Option<RpcConfig>, GetLogsArgs),
@@ -418,6 +418,10 @@ pub enum MultiGetLogsResult {
 </TabItem>
 </AdornedTabs>
 
+:::caution
+This code snippet is for demonstration purposes only as it contains placeholder values. For example, the Bitcoin transaction value must updated with an actual signed transaction, and the Ethereum address and topic values must be replaced.
+:::
+
 ### Building blocks
 
 There are several building blocks available to augment non-ICP smart contracts with ICP’s Chain Fusion capabilities or to leverage Chain Fusion in existing ICP dapps:
@@ -426,7 +430,7 @@ There are several building blocks available to augment non-ICP smart contracts w
 
 - **[EVM RPC canister](/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister)**: A canister smart contract providing an onchain API for communicating with [Ethereum](https://ethereum.org/en/) or any other [EVM blockchain](https://chainlist.org/?testnets=true).
 
-- **[Threshold signatures](/docs/current/references/t-ecdsa-how-it-works//)**: An ICP service implementing the threshold ECDSA and threshold Schnorr protocols.
+- **[Threshold signatures](/docs/current/references/t-ecdsa-how-it-works)**: An ICP service implementing the threshold ECDSA and threshold Schnorr protocols.
 
 - **[HTTPS outcalls](/docs/current/developer-docs/security/security-best-practices/https-outcalls)**: Replicated calls into external web services.
 

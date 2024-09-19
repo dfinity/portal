@@ -597,6 +597,7 @@ const redirects = `
   /docs/current/developer-docs/backend/rust/infrastructure /docs/current/developer-docs/backend/rust/
   /docs/current/developer-docs/smart-contracts/deploy/larger-wasm /docs/current/developer-docs/smart-contracts/install
   /docs/current/developer-docs/smart-contracts/deploy/sharing /docs/current/developer-docs/smart-contracts/deploy/overview
+  /docs/current/developer-docs/integrations/rosetta/staking-support /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/
   `
 .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

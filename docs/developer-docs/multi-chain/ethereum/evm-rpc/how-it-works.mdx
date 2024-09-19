@@ -131,7 +131,6 @@ type RpcService = variant {
   ArbitrumOne : L2MainnetService;
   BaseMainnet : L2MainnetService;
   OptimismMainnet : L2MainnetService;
-  Chain : nat64;
   Provider : nat64;
   Custom : record { url : text; headers : opt vec HttpHeader };
 };
