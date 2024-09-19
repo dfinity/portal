@@ -219,7 +219,7 @@ const redirects = `
   /docs/current/developer-docs/setup/deploy-mainnet /docs/current/developer-docs/getting-started/deploy/mainnet
   /docs/current/developer-docs/production/best-practices /docs/current/developer-docs/smart-contracts/best-practices/general
   /docs/current/references/dev-tools-overview /docs/current/developer-docs/developer-tools/dev-tools-overview
-  /docs/current/references/cdks /docs/current/developer-docs/developer-tools/onchain/cdks
+  /docs/current/references/cdks /docs/current/developer-docs/developer-tools/on-chain/cdks
   /docs/current/developer-docs/agents/ /docs/current/developer-docs/developer-tools/off-chain/agents/overview
   /docs/current/developer-docs/agents/javascript-intro /docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent
   /docs/current/developer-docs/agents/nodejs /docs/current/developer-docs/developer-tools/off-chain/agents/nodejs
