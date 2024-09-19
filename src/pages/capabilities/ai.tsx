@@ -240,7 +240,7 @@ const Collapse: React.FC<{
       <button
         onClick={onClick}
         className={clsx(
-          `tw-title-sm  border-none appearance-none whitespace-normal font-circular p-0 transition-colors hover:text-white text-white text-left bg-transparent`,
+          `tw-title-sm text-[32px] md:text-title-sm md:text-lg border-none appearance-none whitespace-normal font-circular p-0 transition-colors hover:text-white text-white text-left bg-transparent`,
           open ? "sm:text-white" : "sm:text-white-30"
         )}
       >
