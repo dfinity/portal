@@ -49,7 +49,7 @@ Another approach to idempotency is to make the calls uniquely identifiable on th
 
 For example, the ICRC ledger standard provides deduplication in this way. Using identical values for all call parameters, including the `created_at_time` and `memo` parameters, when issuing a transaction makes the transaction call idempotent by deduplicating calls with the same parameters.
 
-However, a direct implementation of this approach can exhaust the canister memory, as all successfully executed IDs need to be kept around forever.
+However, a naive implementation of this approach can exhaust the canister memory, as all successfully executed IDs need to be kept around forever.
 Thus, the deduplication is usually time limited to a certain time window. For example, the ICP ledger uses a 24 hour window, and the ICRC standard defines a configuration parameter `TX_WINDOW` that determines the window length.
 
 Moreover, the ICP/ICRC ledgers use the `created_at_time` parameter to limit the validity period of a call. Roughly, the call is only considered valid if its `created_at_time` is not in the future and at most 24 hours in the past.[^2] This avoids the problem where the deduplication window expiring would allow a retried call to succeed again.
