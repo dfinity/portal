@@ -476,21 +476,19 @@ const DocsHomePage: FC = () => {
                 href="/docs/current/developer-docs/getting-started/overview-of-icp"
               >
               Learn more
-                <LinkArrowRight />
-              </Link>
-            </p>
-            </div>
-            <div className={"flex flex-row gap-4 flex-wrap py-3"}>
-            <p className="mb-0">
-              <Link
-                className="button-white button-with-icon"
-                href="https://github.com/dfinity/examples/"
-              >
-                Start coding
-                <LinkArrowRight />
-              </Link>
-            </p>
-          </div>
+              <LinkArrowRight />
+            </Link>
+          </p>
+          <p className="mb-0">
+            <Link
+              className="button-white button-with-icon"
+              href="https://github.com/dfinity/examples/"
+            >
+              Start coding
+              <LinkArrowRight />
+            </Link>
+          </p>
+        </div>
         </div>
         <div className="px-6 py-8 md:p-10 border border-white border-solid rounded-lg bg-white/70 sm:col-span-2">
           <QueryClientProvider client={queryClient}>
