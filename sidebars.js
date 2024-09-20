@@ -340,6 +340,11 @@ const sidebars = {
               label: "Troubleshooting latency",
               id: "developer-docs/smart-contracts/best-practices/troubleshooting",
             },
+            {
+              type: "doc",
+              label: "Safe retries & idempotency",
+              id: "developer-docs/smart-contracts/best-practices/idempotency",
+            },
           ],
         },
       ],
