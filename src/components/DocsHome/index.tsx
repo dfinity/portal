@@ -475,7 +475,18 @@ const DocsHomePage: FC = () => {
                 className="button-white button-with-icon"
                 href="/docs/current/developer-docs/getting-started/overview-of-icp"
               >
-                Start building
+              Learn more
+                <LinkArrowRight />
+              </Link>
+            </p>
+            </div>
+            <div className={"flex flex-row gap-4 flex-wrap py-3"}>
+            <p className="mb-0">
+              <Link
+                className="button-white button-with-icon"
+                href="https://github.com/dfinity/examples/"
+              >
+                Start coding
                 <LinkArrowRight />
               </Link>
             </p>
