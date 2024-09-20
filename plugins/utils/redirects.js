@@ -560,7 +560,7 @@ const redirects = `
   /docs/current/motoko/getting-started/motoko-introduction /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/main/ /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/samples/encrypted-notes/	/docs/current/references/samples/motoko/encrypted-notes-dapp/
-  /docs/current/samples/nft	/docs/current/references/samples/motoko/dip721-nft-container/
+  /docs/current/samples/nft	/docs/current/developer-docs/defi/nfts/nft-collections
   /docs/language-guide/cycles.html /docs/current/developer-docs/getting-started/cycles/overview
   /grants	https://dfinity.org/grants
   /docs/base-libraries/motoko-base/Text.html	/docs/current/motoko/main/base/Text
