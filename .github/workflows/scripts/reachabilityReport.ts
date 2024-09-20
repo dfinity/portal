@@ -12,7 +12,7 @@ let root = process.argv[2];
 if (!root) {
   console.info("Running reachability report");
   console.debug("No domain provided. Using internetcomputer.org.");
-  root = "internetcomputer.org";
+  root = "https://internetcomputer.org";
 }
 
 main().then(({ file, result }) => {
