@@ -71,13 +71,13 @@ To import the base library, the `import` keyword can be used at the start of you
 
 For example, to import a local module named 'Debug', you can use the following import statement:
 
-```motoko
+```motoko no-repl
 import Debug "mo:base/Debug";
 ```
 
 Then, to use this imported library, you can call the module with a line of code such as:
 
-```motoko
+```motoko no-repl
 Debug.print("hello world");
 ```
 
@@ -85,7 +85,7 @@ In this demonstration, you import Motoko code, indicated by the `mo:` prefix, th
 
 Additionally, you can import Motoko code and other modules using their relative paths. For example, if you have a Motoko program named `types.mo` that you'd like to import into your Motoko file, you can use the following import declaration:
 
-```motoko
+```motoko no-repl
 import Types "./types";
 ```
 

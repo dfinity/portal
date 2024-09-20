@@ -41,7 +41,7 @@ To read unspent transaction outputs from the Bitcoin network, make a call to the
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 type ManagementCanisterActor = actor {
       bitcoin_get_utxos : GetUtxosRequest -> async GetUtxosResponse;
   };
@@ -103,7 +103,7 @@ To read the current balance of a Bitcoin address, make a call to the `bitcoin_ge
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
   type ManagementCanisterActor = actor {
       bitcoin_get_balance : GetBalanceRequest -> async Satoshi;
   };
@@ -168,7 +168,7 @@ The function returns 101 numbers that are fees measured in millisatoshi per virt
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
   type ManagementCanisterActor = actor {
       bitcoin_get_current_fee_percentiles : GetCurrentFeePercentilesRequest -> async [MillisatoshiPerVByte];
   };

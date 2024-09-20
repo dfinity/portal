@@ -52,8 +52,7 @@ Currently only the `secp256k1` curve and the following key names are supported:
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
-
+```motoko no-repl
   // Define the interface for the management canister. Only the `sign_with_ecdsa` method is used in this example:
   type IC = actor {
     sign_with_ecdsa : ({
@@ -146,8 +145,7 @@ The `chain_code` in the result can be used to derive child keys using a derivati
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
-
+```motoko no-repl
   // Define the interface for the management canister. Only the `ecdsa_public_key` method is used in this example:
   type IC = actor {
     ecdsa_public_key : ({

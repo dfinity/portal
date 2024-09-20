@@ -44,12 +44,11 @@ In Motoko canisters, stable memory can be utilized through the Motoko **stable s
 ```motoko
 actor Counter {
 
-  stable var value = 0;
-
-  public func inc() : async Nat {
-    value += 1;
-    return value;
-  };
+  stable var value = 0;
+  public func inc() : async Nat {
+    value += 1;
+    return value;
+  };
 }
 ```
 
