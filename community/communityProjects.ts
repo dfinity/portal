@@ -2081,7 +2081,7 @@ const communityProjects: SampleItem[] = [
     level: "advanced",
     languages: ["python", "javascript"],
     contentType: ["code samples", "community repo", "live demos"],
-    image: "/img/showcase/BR-DAO_logo.webp",
+    image: "/img/showcase/BR-DAO_logo.svg",
   },
 
 
