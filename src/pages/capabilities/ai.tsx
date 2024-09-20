@@ -297,7 +297,9 @@ const ContactCard: React.FC = () => {
         />
         <div>
           <h3 className="text-black tw-lead mb-0">Pierre Samaties</h3>
-          <span className="tw-paragraph text-black/60">Chief Business Officer</span>
+          <span className="tw-paragraph text-black/60">
+            Chief Business Officer
+          </span>
         </div>
       </div>
       <div className="flex mb-8 mt-8 items-center">
@@ -308,7 +310,9 @@ const ContactCard: React.FC = () => {
         />
         <div>
           <h3 className="text-black tw-lead mb-0">Islam El-Ashi</h3>
-          <span className="tw-paragraph text-black-60">Head of AI Engineering</span>
+          <span className="tw-paragraph text-black-60">
+            Head of AI Engineering
+          </span>
         </div>
       </div>
       <div>
@@ -543,9 +547,9 @@ function AISubPage() {
   return (
     <Layout
       title="Secure and Trusted AI onchain"
-      description="Powered by next generation Smart Contracts."
+      description="Powered by nextgeneration Smart Contracts."
     >
-      <ShareMeta image=""></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-ai.webp"></ShareMeta>
 
       <main
         className="text-black relative bg-white"
@@ -575,10 +579,7 @@ function AISubPage() {
                 Secure and Trusted AI onchain
               </motion.p>
 
-              <Link
-                href="#ecosystem"
-                className="link-primary"
-              >
+              <Link href="#ecosystem" className="link-primary">
                 Fastest growing AI Ecosystem in Web3
               </Link>
               <motion.div
@@ -763,11 +764,10 @@ function AISubPage() {
                     </motion.span>{" "}
                     <motion.span className="text-black/50">
                       ICP is the only blockchain where smart contracts can
-                      directly connect to Web 2.0 services using HTTPS outcalls, 
-                      which opens the possibility for AI applications running
-                      on ICP to integrate and fetch data from external services.
+                      directly connect to Web 2.0 services using HTTPS outcalls,
+                      which opens the possibility for AI applications running on
+                      ICP to integrate and fetch data from external services.
                     </motion.span>
-                    
                     <Link
                       href="/https-outcalls"
                       className="link-primary flex text-nowrap mt-6"
@@ -891,7 +891,10 @@ function AISubPage() {
               className="md:w-8/10 mb-10 md:mb-20"
               variants={transitions.item}
             >
-              <motion.h4 className="tw-heading-7-caps mb-4 md:mb-8 opacity-60" id="ecosystem">
+              <motion.h4
+                className="tw-heading-7-caps mb-4 md:mb-8 opacity-60"
+                id="ecosystem"
+              >
                 Ecosystem
               </motion.h4>
               <motion.h3 className="tw-title-sm md:tw-title-lg mb-4 md:mb-8">
