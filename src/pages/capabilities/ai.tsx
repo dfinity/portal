@@ -547,7 +547,7 @@ function AISubPage() {
   return (
     <Layout
       title="Secure and Trusted AI onchain"
-      description="Powered by nextgeneration Smart Contracts."
+      description="Powered by next generation Smart Contracts."
     >
       <ShareMeta image="/img/shareImages/share-ai.webp"></ShareMeta>
 
