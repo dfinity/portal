@@ -1,0 +1,90 @@
+{
+  "categoryName": "",
+  "categoryDescription": "",
+  "elements": [
+    {
+      "title": "ICRC-1: Fungible tokens on ICP",
+      "overview": "Fungible token standard for the Internet Computer, improving on the ICP token standard. Accounts using principal-subaccount pairs instead of hashed addresses.",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "ICRC-2: Approve and transfer_from for ICRC-1 tokens",
+      "overview": "Extending ICRC-1 with ERC-20-stlye approve / transfer_from functionality, but enhanced for the IC.",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Oisy",
+      "overview": "Network custodial wallet for EVM blockchains. Naming derived from Open-Internet-Services-like (OISy).",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "ICRC-3: transaction log for ICRC ledgers standard",
+      "overview": "Standard for the transaction log format for ICRC ledgers. Prerequisite for unified integration of ICRC tokens with centralized exchanges.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "March 2024",
+      "status": "deployed",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "On-ramp for ICP and other tokens",
+      "overview": "On-ramping for ICP and further tokens to simplify the onboarding experience",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "ICRC-7: Basic non-fungible token (NFT) standard",
+      "overview": "Basic non-fungible token (NFT) standard for the Internet Computer featuring batch APIs.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "deployed",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "ICRC-37: Approve / transfer_from extension for ICRC-7.",
+      "overview": "Approve / transfer_from extension for the ICRC-7 basic NFT standard for the Internet Computer. Simplifies many scenarios by avoiding error scenarios of regular transfers.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "deployed",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "ICRC-3 implementation for ICRC-1 ledgers",
+      "overview": "Implementation of the ICRC-3 transaction log standard for the ICRC-1 ledger implementation and rollout to SNS, ckBTC, and ckETH ledger deployments.",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "is_community": true,
+      "in_beta": false
+    }
+  ]
+}
