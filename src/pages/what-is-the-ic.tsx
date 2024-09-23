@@ -75,10 +75,10 @@ function WhatIsIcpPage() {
                 The Internet Computer is a public blockchain network enabled by
                 new science from first principles. It is millions of times more
                 powerful and can replace clouds and traditional IT. The network
-                –created by ICP, or Internet Computer Protocol – is orchestrated
-                by permissionless decentralized governance and is hosted on
-                sovereign hardware devices run by independent parties. Its
-                purpose is to extend the public internet with native cloud
+                – created by ICP, or Internet Computer Protocol – is
+                orchestrated by permissionless decentralized governance and is
+                hosted on sovereign hardware devices run by independent parties.
+                Its purpose is to extend the public internet with native cloud
                 computing functionality.
               </motion.p>
             </div>
@@ -121,15 +121,9 @@ function WhatIsIcpPage() {
         <section className=" bg-infinite text-white mt-16 md:mt-40">
           {/* What Features ICP has to unleash power of smart contracts */}
           <section className="container-12 pt-10 md:pt-20 pb-30 md:pb-20 relative">
-            <div className="text-center mb-16 md:mb-24">
+            <div className="text-center">
               <AnimateSpawn variants={transitions.container}>
                 <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense blob-x-10 blob-y-0 z-0 md:opacity-30 "></div>
-                <motion.h2
-                  className="tw-heading-3 md:tw-heading-60 text-left md:text-center md:w-7/10 inline-block mb-0"
-                  variants={transitions.item}
-                >
-                  What ICP offers today
-                </motion.h2>
               </AnimateSpawn>
             </div>
 
@@ -156,7 +150,7 @@ function WhatIsIcpPage() {
                 </p>
 
                 <Link
-                  className="button-outline-white text-center mb-6 md:mb-8 whitespace-nowrap"
+                  className="button-outline-white text-center mb-6 md:mb-8"
                   href="/ai"
                 >
                   Train and run AI models as smart contracts
@@ -179,7 +173,7 @@ function WhatIsIcpPage() {
                 <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
                   ICP uses advanced science and technology to host smart
                   contract software (network-resident blockchain code) that is
-                  millions of times more efficient— enabling it to replace
+                  millions of times more efficient – enabling it to replace
                   traditional IT.
                 </p>
 
@@ -242,12 +236,12 @@ function WhatIsIcpPage() {
                   a token backed 1:1 by BTC held entirely on the ICP blockchain,
                   is possible because ICP smart contracts can sign transactions.
                   Additionally, the{" "}
-                  <a
-                    className="text-white underline"
+                  <Link
+                    className="link-white"
                     href="/docs/current/developer-docs/defi/exchange-rate-canister/"
                   >
                     exchange rate canister
-                  </a>{" "}
+                  </Link>{" "}
                   sends and receives HTTP requests to fetch data from major
                   cryptocurrency exchanges.
                 </p>
@@ -308,17 +302,7 @@ function WhatIsIcpPage() {
           </section>
         </section>
         {/*what design choices ICP has to achieve vision */}
-        <section className="container-12 pt-10 md:pt-40 pb-30 md:pb-20 relative">
-          <div className="text-center mb-16 md:mb-20">
-            <AnimateSpawn variants={transitions.container}>
-              <motion.h2
-                className="tw-heading-3 md:tw-heading-60 text-gradient text-left md:text-center md:w-7/10 inline-block mb-0"
-                variants={transitions.item}
-              >
-                Key Design Choices Behind ICP's Capabilities
-              </motion.h2>
-            </AnimateSpawn>
-          </div>
+        <section className="container-12 pt-10 md:pt-30 pb-30 md:pb-20 relative">
           <div className="blob blob-white blob-sm md:blob-xl blob-x-7 blob-y-8"></div>
 
           <div>
@@ -567,7 +551,7 @@ function WhatIsIcpPage() {
               className="tw-heading-3 text-center mb-2 w-full mx-auto md:tw-heading-60 md:mb-6 lg:w-6/12"
               variants={transitions.item}
             >
-              Get familiar with ICP{" "}
+              Connect and learn
             </motion.h2>
           </AnimateSpawn>
 
