@@ -527,8 +527,8 @@ const sidebars = {
           type: "category",
           label: "Onchain libraries",
           items: [
-            "developer-docs/developer-tools/onchain/cdks",
-            "developer-docs/developer-tools/onchain/ic-js",
+            "developer-docs/developer-tools/on-chain/cdks",
+            "developer-docs/developer-tools/on-chain/ic-js",
           ],
         },
         {
@@ -1098,7 +1098,7 @@ const sidebars = {
           label: "Overview",
           id: "developer-docs/ai/overview",
         },
-        "developer-docs/ai/ai-onchain",
+        "developer-docs/ai/ai-on-chain",
         "developer-docs/ai/machine-learning-sample",
       ],
     },
