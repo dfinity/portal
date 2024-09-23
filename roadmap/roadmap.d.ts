@@ -8,7 +8,7 @@ interface Milestone {
   name: string;
   description: string;
   milestone_id: string;
-  eta: null | string | string;
+  eta: null | string;
   status?: string;
   elements: Element[];
 }
@@ -28,3 +28,4 @@ interface Element {
   imported?: boolean;
   milestone_id?: string;
 }
+
