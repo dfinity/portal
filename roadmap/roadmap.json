@@ -3176,8 +3176,8 @@
           },
           {
             "title": "Improved SNS upgrades",
-            "overview": "Upgrading SNS canisters are important for SNS DAOs in order to receive the latest features, and security updates. These updates are not straightforward, and may require multiple proposals. This feature is about simplifying SNS upgrades.",
-            "description": "Upgrading SNS canisters are important for SNS DAOs in order to receive the latest features, and security updates. These updates are not straightforward, and may require multiple proposals. This feature is about simplifying SNS upgrades.",
+            "overview": "Upgrading SNS canisters is crucial for SNS DAOs to receive the latest features and security updates. These updates are not straightforward and may require multiple proposals. This feature is about simplifying SNS upgrades.",
+            "description": "Upgrading SNS canisters is crucial for SNS DAOs to receive the latest features and security updates. These updates are not straightforward and may require multiple proposals. This feature is about simplifying SNS upgrades.",
             "forum": "",
             "proposal": "",
             "docs": "",
