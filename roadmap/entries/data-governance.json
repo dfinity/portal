@@ -544,8 +544,8 @@
 
     {
       "title": "Reduce min dissolve delay to 3 months",
-      "overview": "To decrease the barrier of entry for new stakers and make liquid staking protocols more viable, the community adopted a motion proposal to reduce min dissovle delay to 3 months.",
-      "description": "To decrease the barrier of entry for new stakers and make liquid staking protocols more viable, the community adopted a motion proposal to reduce min dissovle delay to 3 months.",
+      "overview": "To lower the barrier of entry for new stakers and make liquid staking protocols more viable, the community adopted a motion proposal to reduce min dissovle delay to 3 months.",
+      "description": "To lower the barrier of entry for new stakers and make liquid staking protocols more viable, the community adopted a motion proposal to reduce min dissovle delay to 3 months.",
       "forum": "https://forum.dfinity.org/t/reducing-the-minimum-dissolve-delay-to-3-months/32714",
       "proposal": "https://dashboard.internetcomputer.org/proposal/131010",
       "wiki": "",
@@ -581,8 +581,8 @@
     },
     {
       "title": "NNS landing page",
-      "overview": "NNS dapp today is focused on providing a simple user interface to interact with ICP's different governance systems. An NNS landing page would give newcomers an introduction of what the NNS is, host documentation, and a release log. Everything that is outside of the NNS dapp itself.",
-      "description": "NNS dapp today is focused on providing a simple user interface to interact with ICP's different governance systems. An NNS landing page would give newcomers an introduction of what the NNS is, host documentation, and a release log. Everything that is outside of the NNS dapp itself.",
+      "overview": "The NNS dapp provides a simple user interface to interact with ICP's different governance systems. The NNS landing page would give newcomers an introduction of what the NNS is, host documentation, and a release log. Everything that is outside of the NNS dapp itself.",
+      "description": "The NNS dapp provides a simple user interface to interact with ICP's different governance systems. The NNS landing page would give newcomers an introduction of what the NNS is, host documentation, and a release log. Everything that is outside of the NNS dapp itself.",
       "forum": "",
       "proposal": "",
       "docs": "",
