@@ -21,7 +21,7 @@
     },
 
     {
-      "title": "By the Users for the Users",
+      "title": "Focus on User Experience",
       "is_milestone": true,
       "description": "All ICP governance milestones have aspects that focus on the end user, as all of ICP's technological innvations must in the end support the user. Nucleon doubles down on the user experience and aims to present ICP's governance systems in ways that are easier to understand and interact with regardless of one's technical skills.",
       "milestone_id": "Nucleon",
@@ -489,20 +489,6 @@
       "in_beta": false
     },
     {
-      "title": "Neurons' Fund phase II",
-      "overview": "Addresses the end-of-investment phase of the Neuron's Fund.",
-      "description": "Addresses the end-of-investment phase of the Neuron's Fund.",
-      "forum": "",
-      "proposal": "",
-      "wiki": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Nucleon"
-    },
-    {
       "title": "Safeguards for critical SNS proposals, including the SNS treasury",
       "overview": "Additional safeguards for transferring funds from an SNS treasury.",
       "description": "Some SNS proposals are more critical than others in that they have a big impact. This feature introduces additional measures to make it harder for them to be adopted, such as requiring a higher approval threshold. In addition, this feature introduces limits for treasury and minting proposals.",
@@ -710,6 +696,19 @@
       "title": "SNS swap participation with additional tokens",
       "overview": "Allow users to participate in SNS decentralization swaps with different tokens than ICP, e.g., ckBTC or ckETH. Also a combination of tokens may be applicable.",
       "description": "Allow users to participate in SNS decentralization swaps with different tokens than ICP, e.g., ckBTC or ckETH. Also a combination of tokens may be applicable.",
+      "forum": "",
+      "proposal": "",
+      "wiki": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Neurons' Fund phase II",
+      "overview": "Addresses the end-of-investment phase of the Neuron's Fund.",
+      "description": "Addresses the end-of-investment phase of the Neuron's Fund.",
       "forum": "",
       "proposal": "",
       "wiki": "",
