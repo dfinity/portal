@@ -1,0 +1,196 @@
+{
+  "categoryName": "Digital Assets",
+  "categoryDescription": "DeFi protocols, real-word asset tokenization, and other digital asset solutions are strong drivers of web3 adoption. ICP’s Chain Fusion capabilities, unparalleled scalability, and the ability to serve web assets from chain opens up novel digital asset classes. Moreover, it makes ICP an attractive platform to build multi chain custody solutions and wallets.",
+  "elements": [
+    {
+      "title": "Oisy",
+      "overview": "Shift Oisy's ownership model to a canister-per-user model. Under this change, the digital assets for each Oisy user will reside in a user-controlled canister.",
+      "status": "in_progress",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Toroidal"
+    },
+    {
+      "title": "Signer standards in Oisy",
+      "overview": "Oisy is upgraded to support the signer standards to foster a vibrant and diverse ecosystem of signers and relying parties. Users can then safely transact with digital assets using their Oisy wallet and signer standards compatible dApps.",
+      "status": "in_progress",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Toroidal"
+    },
+    {
+      "title": "Oisy, a Multi-chain Wallet Powered by Chain Fusion",
+      "is_milestone": true,
+      "description": "Oisy is a wallet with a unique combination of properties. It is the first smart contract wallet that is self-custodial, multi-chain and uses passkeys for authentication, while being fully accessible through the browser. Oisy supports ICP-based dapps through ICRC-21, EVM-based dapps through WalletConnect, and easily converts between native Ethereum tokens and their ck twins.",
+      "milestone_id": "Toroidal",
+      "status": "in_progress",
+      "eta": "2024-12"
+    },
+    {
+      "title": "Orbit Multi custody wallet for ICP",
+      "overview": "Users can securely share ownership of the ICP token with a fully on-chain wallet. From simple 1-out-of-2 configurations to sophisticated approval policy rules, Orbit provides comprehensive support for secure financial transactions with a flexible user-role-based system.",
+      "status": "in_progress",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Poloidal"
+    },
+    {
+      "title": "Secure canister management",
+      "overview": "Teams building their product vision require secure shared access to dapp control. Orbit's rule engine enables policies specifying how many users are needed to approve canister management operations like upgrades and installations, preventing a single member from seizing control.",
+      "status": "",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Poloidal"
+    },
+    {
+      "title": "Orbit supports ICRC-1",
+      "overview": "Users can manage non-ICP tokens like ckBTC and ckETH with confidence using Orbit's advanced security features, ensuring secure multi-token management.",
+      "status": "",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Poloidal"
+    },
+    {
+      "title": "The Orbit Multi-Custody Asset Framework",
+      "description": "Orbit is a comprehensive digital assets framework, enabling simple to advanced rules over user digital assets. Initially tailored for token management, it provides robust support for 1-out-of-M to complex approval policies for financial transactions. It also supports secure management of infrastructure like canister installations and upgrades. Teams and businesses can confidently handle ICP, ckETH, and compatible tokens using Orbit's advanced security features, vital for those seeking a stable and reliable management over their treasury.",
+      "is_milestone": true,
+      "milestone_id": "Poloidal",
+      "status": "in_progress",
+      "eta": ""
+    },
+    {
+      "title": "Rosetta for ICRC ledgers",
+      "overview": "Implement the Rosetta standard for ICRC-based ledgers. Enables ICRC tokens to be handled by centralized exchanges.",
+      "status": "in_progress",
+      "eta": "2024",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "Trust Wallet integration",
+      "overview": "Integrating ICP with the widely-used Trust Wallet project to facilitate adoption of ICP beyond the current audience.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "in_progress",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "ICRC-4: Batch transfers for fungible tokens standard",
+      "overview": "Extension standard for ICRC-1 defining batch transfers for ICRC-1 tokens. Batching transactions improves throughput and can reduce cost.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "in_progress",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "ICRC-21 canister call consent messages",
+      "overview": "Standard for a protocol for obtaining human-readable consent messages for canister calls.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "in_progress",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "ICRC-22 payment request formats",
+      "overview": "Standard for expressing payment requests for tokens on ICP as URLs and thus also QR codes.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "in_progress",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "Implement ICRC-21 in Ledger devices",
+      "overview": "The implmentation of ICRC-21 in Ledger devices will allow us to support generic transactions.",
+      "status": "in_progress",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Chain-key token (ck token) support in the ICP wallet",
+      "overview": "Support for chain-key tokens (ck tokens) in the ICP wallet.",
+      "status": "",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Ledger Live staking integration",
+      "overview": "Ledger live acquires the ability to stake ICP.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "ICRC-7/-37 NFT standard in mobile wallets",
+      "overview": "Bringing the ICRC-7 and ICRC-37 standards for NFTs on ICP to mobile wallets.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "Institutional custody integration for custody & staking of ICP and ICRC tokens",
+      "overview": "An integration of the Internet Computer blockchain with institutional custody providers to support custody and staking for ICP and ICRC tokens.",
+      "status": "",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Ledger metrics",
+      "overview": "This feature collects and exposes certain metrics of ledgers on the Internet Computer. Both the ICP ledger as well as ICRC-1/-2/-3 ledgers receive metrics support.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": true,
+      "in_beta": false
+    }
+  ]
+}

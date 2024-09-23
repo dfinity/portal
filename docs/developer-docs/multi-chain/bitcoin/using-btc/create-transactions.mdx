@@ -18,7 +18,7 @@ creates new UTXOs. In order to create a Bitcoin transaction, you need to:
 
 1. Get the available UTXOs corresponding to a Bitcoin address controlled by the
    canister using the `bitcoin_get_utxos` API endpoint.
-2. Calculate an appropriate transaction fee using the `bitcoin_estimate_fee` API
+2. Calculate an appropriate transaction fee using the `bitcoin_get_current_fee_percentiles` API
    endpoint.
 3. Select a subset of the available UTXOs to spend that covers the transaction
    amount and fee.
@@ -34,7 +34,7 @@ can have multiple UTXOs associated with it.
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 
 let own_utxos = (await BitcoinApi.get_utxos(network, own_address)).utxos;
 
@@ -65,7 +65,7 @@ An UTXO has the following structure:
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 
 /// An unspent transaction output.
 public type Utxo = {
@@ -127,7 +127,7 @@ using the `bitcoin_get_current_fee_percentiles` API endpoint and choosing the
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 
 // Get fee percentiles from previous transactions to estimate our own fee.
 let fee_percentiles = await BitcoinApi.get_current_fee_percentiles(network);
@@ -187,7 +187,7 @@ transaction and requires a signature.
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 
 // Builds a transaction to send the given `amount` of satoshis to the
 // destination address.
