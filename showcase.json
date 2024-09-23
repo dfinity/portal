@@ -557,23 +557,6 @@
     ]
   },
   {
-    "id": "finterest",
-    "name": "Finny",
-    "website": "https://tyhcm-sqaaa-aaaah-abjya-cai.raw.ic0.app/#/",
-    "tags": [
-      "DeFi",
-      "Bitcoin",
-      "Chainfusion"
-    ],
-    "twitter": "https://twitter.com/finterestICP",
-    "description": "Lend and borrow against your crypto without bridging it across chains. Yes, even Bitcoin",
-    "stats": "$1.5M+ Raised",
-    "logo": "/img/showcase/finterest_logo.webp",
-    "screenshots": [
-      "/img/showcase/finterest_screenshot_0.webp"
-    ]
-  },
-  {
     "id": "boom-dao",
     "name": "Boom DAO",
     "oneLiner": "Powering the next generation of fully on-chain games, and providing a collaborative hub for all things web3 gaming.",
@@ -1174,21 +1157,6 @@
     ]
   },
   {
-    "id": "icdrive",
-    "name": "IC Drive",
-    "website": "https://rglue-kyaaa-aaaah-qakca-cai.ic0.app/",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "A decentralized private file storage dapp built on the Internet Computer. Store and securely share any type from anywhere in the world with this decentralized version of Box, or Google Drive. ",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/icdrive_logo.webp",
-    "screenshots": [
-      "/img/showcase/icdrive_screenshot_0.webp",
-      "/img/showcase/icdrive_screenshot_1.webp"
-    ]
-  },
-  {
     "id": "motokoplayground",
     "name": "Motoko Playground",
     "oneLiner": "Free IDE to Learn Motoko",
@@ -1206,21 +1174,6 @@
     "screenshots": []
   },
   {
-    "id": "contentfly",
-    "name": "Content Fly",
-    "website": "https://contentfly.app/",
-    "tags": [
-      "SocialFi"
-    ],
-    "description": "Content Fly is a Web3 Job Management Tool & Marketplace. It allows content buyers & creators to work together with the security of an escrow payment and DAO based dispute resolution. IP is protected and transferred as an NFT.",
-    "usesInternetIdentity": true,
-    "display": "Normal",
-    "logo": "/img/showcase/contentfly_logo.webp",
-    "screenshots": [
-      "/img/showcase/contentfly_screenshot_0.webp"
-    ]
-  },
-  {
     "id": "scinet",
     "name": "SCINET",
     "description": "A licensing application for life-sciences companies. Easily monetize your intellectual property using NFTs.",
@@ -1234,21 +1187,6 @@
     "discord": "https://discord.com/invite/5uH6vpJjeB",
     "logo": "/img/showcase/scinet_logo.png",
     "submittableId": "33285268"
-  },
-  {
-    "id": "faefolk",
-    "name": "FaeFolk",
-    "description": "FaeFolk is a multiplayer, slice of life, NFT role-playing game where you use your NFTs to craft tools, and equipment, and train your skills",
-    "tags": [
-      "Games",
-      "NFT"
-    ],
-    "website": "https://medium.com/faefolk",
-    "github": "https://github.com/ICCards/faefolk",
-    "twitter": "https://twitter.com/_faefolk",
-    "discord": "https://discord.gg/Fe5qYRZrGp",
-    "logo": "/img/showcase/faefolk_logo.webp",
-    "submittableId": "32841408"
   },
   {
     "id": "factland",
@@ -1375,22 +1313,6 @@
       "/img/showcase/metamob_screenshot_0.webp"
     ],
     "submittableId": 32331652
-  },
-  {
-    "id": "sandbless",
-    "name": "Sand Bless",
-    "oneLiner": "Sandblasting and serigraphy artworks",
-    "website": "https://qob3k-7yaaa-aaaao-aahdq-cai.ic0.app/",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "Sandblasting and glass serigraphy. Artistic and craftsmen artworks signed with unique verifiable mark numbers and linked imprints using Internet Computer Canisters technology.",
-    "github": "https://github.com/branciard/SandBlessCanisters",
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/sandbless_logo.webp",
-    "screenshots": [
-      "/img/showcase/sandbless_screenshot_0.webp"
-    ]
   },
   {
     "id": "icpexplorer",
@@ -1855,20 +1777,6 @@
     "submittableId": "22737412"
   },
   {
-    "id": "icnaming",
-    "name": "ICNaming",
-    "website": "https://app-testnet.icnaming.com/",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "ICNaming is a testnet that is enabling the Internet Computer ecosystem to register domain names on the Internet Computer Name Service. Similar to the Ethereum Name Servce (ENS), ICNaming aims to offer a decentralized name service for users to pseudonomize their wallet addresses on ICP, as well as domain names, and canister smart contract IDs. ",
-    "github": "https://github.com/IC-Naming",
-    "usesInternetIdentity": true,
-    "display": "Normal",
-    "logo": "/img/showcase/icnaming_logo.webp",
-    "screenshots": []
-  },
-  {
     "id": "icadashboard",
     "name": "ICA Dashboard",
     "website": "https://dashboard.internetcomputer.org/",
@@ -1928,21 +1836,6 @@
     "description": "The most comprehensive browsing experience for NFTs. Browse any NFT collection on the Internet Computer, sort & filter by price or rarity, expose floors, and much more.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/dgdg_logo.webp"
-  },
-  {
-    "id": "jumpymotoko",
-    "name": "Jumpy Motoko",
-    "website": "https://65t4u-siaaa-aaaal-qbx4q-cai.ic0.app/",
-    "tags": [
-      "Games"
-    ],
-    "description": "Unity play to earn game on Internet Computer. Comes with code sample so you can deploy your own Unity play to earn game too.",
-    "github": "https://github.com/therealbryanho/IC-Code-Sample-Unity-Play-to-Earn-Game",
-    "display": "Normal",
-    "logo": "/img/showcase/jumpymotoko_logo.webp",
-    "screenshots": [
-      "/img/showcase/jumpymotoko_screenshot.webp"
-    ]
   },
   {
     "id": "windowsic",
@@ -2044,34 +1937,6 @@
       "/img/showcase/football-god_screenshot.webp"
     ],
     "twitter": "https://twitter.com/beadle1989"
-  },
-  {
-    "id": "EMC-Protocol",
-    "name": "EMC Protocol",
-    "description": "EMC (EdgeMatrix Computing blockchain) is a Layer-2 protocol on the Internet Computer Protocol (ICP) blockchain. It is an innovative decentralized computing network that is changing the way people use AI applications. EMC's vision is to eliminate the digital divide, eliminate centralized monopolies, and unlock the full potential of AI for everyone. The future of AI will be accessible to everyone, and everyone will be a part of it!",
-    "website": "http://edgematrix.pro/",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "usesInternetIdentity": false,
-    "logo": "/img/showcase/emc_logo.svg",
-    "screenshots": [
-      "/img/showcase/emc_screenshot.png"
-    ],
-    "github": "https://github.com/EMCprotocol/emc_java_sdk",
-    "twitter": "https://twitter.com/EMCprotocol"
-  },
-  {
-    "id": "PHASMA",
-    "name": "PHASMA",
-    "website": "https://toniq.io/marketplace/phasma",
-    "tags": [
-      "Metaverse",
-      "NFT"
-    ],
-    "description": "curated collection of 1,500 unique NFTs on the Internet Computer.",
-    "logo": "/img/showcase/phasma_logo.webp",
-    "twitter": "https://twitter.com/phasmafuture"
   },
   {
     "id": "oneblock",
@@ -2185,31 +2050,6 @@
     "usesInternetIdentity": true,
     "github": "https://github.com/rakeoff-labs",
     "twitter": "https://twitter.com/rakeoff_app"
-  },
-  {
-    "id": "tswaanda",
-    "name": "Tswaanda",
-    "oneLiner": "Bridging farmers to profitable markets, empowering growth through trade and financing",
-    "website": "https://tswaanda.com",
-    "tags": [
-      "DeFi"
-    ],
-    "description": "Tswaanda is revolutionizing African agriculture by connecting smallholder farmers to profitable markets, empowering growth through trade and financial inclusion.",
-    "logo": "/img/showcase/tswaanda_logo.jpg",
-    "usesInternetIdentity": true,
-    "authOrigins": [
-      "https://4qia7-eaaaa-aaaal-qb34a-cai.icp0.io"
-    ],
-    "github": "https://github.com/Tswaanda/tswaanda-marketplace",
-    "youtube": "https://www.youtube.com/@tswaanda",
-    "twitter": "https://twitter.com/tswaanda",
-    "screenshots": [
-      "/img/showcase/tswaanda_screenshot_0.png",
-      "/img/showcase/tswaanda_screenshot_1.png"
-    ],
-    "video": "/img/showcase/tswaanda_video.mp4",
-    "videoContentType": "video/mp4",
-    "submittableId": "35804727"
   },
   {
     "id": "chainsight",
@@ -2562,27 +2402,6 @@
     "submittableId": "36650737"
   },
   {
-    "name": "Safenote",
-    "description": "Safenote is an open-source service that enables secure exchange of the most sensitive communication and leaves no trace. It enables any user to encrypt their message and forward it to another, potentially insecure, platform. Safenote can be thought of as a self-destructible sticky notes system.",
-    "website": "https://safenote.store",
-    "logo": "/img/showcase/safenote_logo.webp",
-    "screenshots": [
-      "/img/showcase/safenote_screenshot.webp"
-    ],
-    "video": "",
-    "display": "Normal",
-    "id": "safenote",
-    "oneLiner": "A tool for secure notes exchanging. Built with privacy in mind.",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "usesInternetIdentity": false,
-    "github": "https://github.com/khejit/Safenote",
-    "twitter": "",
-    "youtube": "",
-    "submittableId": "35796344"
-  },
-  {
     "name": "John Dao",
     "description": "John Dao is community community-controlled twitter/X account. You can post tweet proposals and vote on what the next tweet should be. If your tweet wins you get paid with ICP!",
     "website": "https://johndao.gg",
@@ -2604,26 +2423,6 @@
     "twitter": "https://twitter.com/JohnDao_gg",
     "youtube": "",
     "submittableId": "35119262"
-  },
-  {
-    "name": "IC based storage service",
-    "description": "IC-based storage service to store and organize any kind of files that works with platform deployed on the IC.",
-    "website": "https://dcm-swiss.com/",
-    "logo": "/img/showcase/dcm_logo.svg",
-    "screenshots": [],
-    "video": "",
-    "display": "Normal",
-    "id": "ics2",
-    "oneLiner": "store and organize your files in IC ecosystem",
-    "stats": "100+ users",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "usesInternetIdentity": false,
-    "github": "https://github.com/sergeybykov85/ic-storage-service/tree/main/ic-ss",
-    "twitter": "",
-    "youtube": "",
-    "submittableId": "41213024"
   },
   {
     "name": "aVa",
@@ -2686,28 +2485,6 @@
     "submittableId": "35639090"
   },
   {
-    "id": "fishverse",
-    "name": "FishVerse",
-    "description": "FishVerse is a revolutionary W2E fishing game that is an open world, decentralized, and built on ICP technology. It brings together fishing and GameFi enthusiasts inside of a vibrant community where people can monetize by catching and utilizing NFT fishes, competing in tournaments, missions, providing services, and more...",
-    "website": "https://thefishverse.com/",
-    "logo": "/img/showcase/fishverse_logo.webp",
-    "screenshots": [
-      "/img/showcase/fishverse_screenshot.webp"
-    ],
-    "display": "Normal",
-    "oneLiner": "FishVerse is a W2E fishing game that is built on ICP technology",
-    "stats": "5,000 players",
-    "tags": [
-      "NFT",
-      "Metaverse",
-      "Games"
-    ],
-    "usesInternetIdentity": true,
-    "twitter": "https://twitter.com/TheFishverse",
-    "youtube": "https://www.youtube.com/channel/UCdMLfGmuLAsQlVPg9QROfcQ",
-    "submittableId": "32119235"
-  },
-  {
     "name": "Sama Network",
     "description": "SAMA network, with its original designed consensus and business sharding separation, builds a highly secure and private distributed computational system. It provides data security and computational power for the World Wide Web without altering users’ habits.",
     "website": "https://sama.network/",
@@ -2747,48 +2524,6 @@
     "twitter": "https://twitter.com/221BravoApp",
     "youtube": "",
     "submittableId": "36556639"
-  },
-  {
-    "name": "Tali AI",
-    "description": "Tali is a Discord Support bot that answers common developer queries.",
-    "website": "https://trytali.com",
-    "logo": "/img/showcase/tali_logo.webp",
-    "video": "/img/showcase/tali-ai_video.mp4",
-    "display": "Normal",
-    "id": "tali-ai",
-    "oneLiner": "Tali is a Discord Support bot that answers common developer queries.",
-    "stats": "100k+ devs",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "usesInternetIdentity": false,
-    "twitter": "https://twitter.com/TryTaliAI",
-    "submittableId": "38502751",
-    "videoContentType": "video/mp4",
-    "screenshots": []
-  },
-  {
-    "name": "CARMANIA",
-    "description": "Welcome to the adrenaline-fueled world of \"CARMANIA\" the ultimate automotive customization and racing experience!\nIn this immersive game, you can build-customize your dream car and compete against players from around the globe to dominate the leaderboards.",
-    "website": "https://3tnyu-iiaaa-aaaal-aczcq-cai.raw.icp0.io/",
-    "logo": "/img/showcase/carmania_logo.webp",
-    "screenshots": [
-      "/img/showcase/carmania_screenshot.webp"
-    ],
-    "video": "/img/showcase/carmania_video.mp4",
-    "display": "Normal",
-    "id": "carmania",
-    "oneLiner": "The ultimate automotive customization and racing experience!",
-    "stats": "10,000+ users",
-    "tags": [
-      "Games"
-    ],
-    "usesInternetIdentity": false,
-    "twitter": "https://twitter.com/Carmania_Game",
-    "youtube": "https://youtu.be/KM5Fc-OjTxU",
-    "discord": "https://discord.gg/YTBhnN3N",
-    "submittableId": "41292935",
-    "videoContentType": "video/mp4"
   },
   {
     "name": "dFlow",
@@ -3425,30 +3160,6 @@
     "submittableId": "44265779"
   },
   {
-    "name": "EA Kazi",
-    "description": "A decentralized synergy of Fiver and Udemy providing a verifiable and trust system for the Web3 GIG Economy built on ICP.",
-    "website": "https://eakazi.africa",
-    "logo": "/img/showcase/ea-kazi_logo.webp",
-    "screenshots": [
-      "/img/showcase/ea-kazi_screenshot.webp"
-    ],
-    "video": "/img/showcase/ea-kazi_video.mp4",
-    "display": "Normal",
-    "id": "ea-kazi",
-    "oneLiner": "Elevating freelancing with trust and verifiability",
-    "stats": "4000",
-    "tags": [
-      "SocialFi",
-      "NFT"
-    ],
-    "usesInternetIdentity": true,
-    "github": "https://github.com/vinayakkalra/eakazi-jobs-icp, https://github.com/vinayakkalra/eakazi-backend",
-    "twitter": "https://twitter.com/eakazijobs",
-    "youtube": "https://youtu.be/hQprbPa5VF8",
-    "submittableId": "34907742",
-    "videoContentType": "video/mp4"
-  },
-  {
     "name": "Virtuaseal",
     "description": "An application that will allow users to submit information to and sign documents leveraging a smart contract on the blockchain. Users can create documents from a template or from scratch, verify the robustness and authenticity of the document using hashes, sign documents in a secured manner, and share documents with other parties",
     "website": "https://p3cwv-2aaaa-aaaap-abwba-cai.icp0.io/",
@@ -3463,24 +3174,6 @@
     "github": "https://github.com/KovachTechnologies/ICP-VirtuaSeal/",
     "twitter": "https://twitter.com/kovachtech",
     "submittableId": "44337954"
-  },
-  {
-    "name": "Alexandria",
-    "description": "Porting all Web2 content as IC NFTs, and reimagining the Web3 experience as an dapp-store based on an infinite Library",
-    "website": "https://lbry.app/",
-    "logo": "/img/showcase/UncensoredGreatsLogo.png",
-    "display": "Normal",
-    "id": "Alexandria",
-    "oneLiner": "Migrating all the World's Books to NFT-form for use in domain-specific AI",
-    "tags": [
-      "Tools / Infrastructure",
-      "SocialFi",
-      "AI"
-    ],
-    "usesInternetIdentity": true,
-    "github": "https://github.com/AlexandriaDAO/",
-    "twitter": "https://x.com/alexandria_lbry",
-    "submittableId": "43861229"
   },
   {
     "name": "ArcMind",
@@ -3938,21 +3631,6 @@
     "submittableId": "44626035"
   },
   {
-    "id": "gotcha",
-    "name": "Gotcha Captcha",
-    "oneLiner": "CAPTCHAs to distinguish humans and bots on the Internet in the AI era.",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "CAPTCHAs to distinguish humans and bots on the Internet in the AI era.",
-    "usesInternetIdentity": false,
-    "website": "https://www.gotcha.land/",
-    "twitter": "https://twitter.com/GotCHA_labs",
-    "display": "Normal",
-    "logo": "/img/showcase/gotcha_logo.png",
-    "submittableId": "35891457"
-  },
-  {
     "id": "optigames",
     "name": "OptiGames",
     "oneLiner": "Flexible framework for fully on-chain multiplayer turn-based games. Bulldog Blast is a semi-realtime multiplayer arcade combat game.",
@@ -4104,22 +3782,6 @@
     "logo": "/img/showcase/spotlabs_logo.png"
   },
   {
-    "id": "vfans",
-    "name": "VFans",
-    "oneLiner": "A decentralized content platform for publishing video/articles and subscribing through mobile payments.",
-    "tags": [
-      "SocialFi",
-      "NFT"
-    ],
-    "description": "A decentralized content platform for publishing video/articles and subscribing through mobile payments.",
-    "usesInternetIdentity": true,
-    "website": "https://www.vfans.org/",
-    "display": "Normal",
-    "logo": "/img/showcase/vfans_logo.png",
-    "stats": "3,000+ users",
-    "submittableId": "44324587"
-  },
-  {
     "id": "omnitynetwork",
     "name": "Omnity Network",
     "oneLiner": "1st 100% trustless omnichain interoperability protocol that connects Bitcoin, Ethereum, Appchains, L1s/L2s/L3s within Omnity Network.",
@@ -4188,22 +3850,6 @@
     "logo": "/img/showcase/zkCross_logo.png"
   },
   {
-    "id": "icp-coffee-app",
-    "name": "Plural Finance",
-    "oneLiner": "Enabling coffee farmers to submit data reports on their yields and processes for crop insurance purposes.",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "Enabling coffee farmers to submit data reports on their yields and processes for crop insurance purposes.",
-    "usesInternetIdentity": true,
-    "website": "https://plural.fi/",
-    "github": "https://github.com/nuwrldnf8r/coffee_app_icp",
-    "twitter": "https://www.twitter.com/pluralfi",
-    "display": "Normal",
-    "logo": "/img/showcase/pluralfinance_logo.png",
-    "submittableId": "44635741"
-  },
-  {
     "id": "icpexchange",
     "name": "ICPEx",
     "oneLiner": "Decentralized exchange built entirely on the chain based on the ICP.",
@@ -4219,22 +3865,6 @@
     "stats": "229 tokens and 90 liquidity pools created",
     "logo": "/img/showcase/icpex_logo.png",
     "submittableId": "44773760"
-  },
-  {
-    "id": "orderswaplayer2",
-    "name": "Orderswap Layer2",
-    "oneLiner": "A Layer2 built on ICP.",
-    "tags": [
-      "DeFi",
-      "Tools / Infrastructure"
-    ],
-    "description": "A Layer2 built on ICP.",
-    "usesInternetIdentity": true,
-    "github": "https://github.com/deland-labs",
-    "twitter": "https://twitter.com/DelandLabs",
-    "display": "Normal",
-    "logo": "/img/showcase/deland_labs.png",
-    "submittableId": "35502016"
   },
   {
     "id": "candb",
@@ -4678,25 +4308,10 @@
     "logo": "/img/showcase/tezsign_logo.png"
   },
   {
-    "id": "brownfiamm",
-    "name": "Brownfi AMM",
-    "oneLiner": "A novel AMM with high capital efficiency and simple UX.",
-    "website": "https://browndex.io/",
-    "tags": [
-      "DeFi"
-    ],
-    "twitter": "https://twitter.com/BrownFidex/",
-    "github": "https://github.com/BrownFi/BrownFi-AMM-ICP",
-    "description": "A novel AMM with high capital efficiency and simple UX.",
-    "usesInternetIdentity": false,
-    "display": "Normal",
-    "logo": "/img/showcase/brownfiamm_logo.jpg"
-  },
-  {
     "id": "momint",
     "name": "Momint",
     "oneLiner": "Momint enables fractional trade of renewable energy projects through its Asset Marketplace.",
-    "website": "https://www.momint.io",
+    "website": "https://www.momint.so",
     "tags": [
       "DeFi",
       "NFT"
