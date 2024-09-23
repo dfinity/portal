@@ -101,14 +101,27 @@ This command returns the ICP decimals:
 ```
 (record { decimals = 8 : nat32 })
 ```
+To handle a growing number of transactions within limited canister memory, a new archive canister is created when the history exceeds a threshold, migrating older transactions to it.
 
 To fetch the archives of the ICP ledger:
 ```
 dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai archives '()'
 ```
-This command returns the ICP archives. In this case no archives have been created so far:
+If you are testing locally, no archive canisters should have been created yet:
 ```
 (record { archives = vec {} })
+```
+However, if you are testing on mainnet, the following archive canisters have been created as of the time of writing this document:
+```
+(
+  record {
+    archives = vec {
+      record { canister_id = principal "qjdve-lqaaa-aaaaa-aaaeq-cai" };
+      record { canister_id = principal "qsgjb-riaaa-aaaaa-aaaga-cai" };
+      record { canister_id = principal "q4eej-kyaaa-aaaaa-aaaha-cai" };
+    };
+  },
+)
 ```
 
 To send tokens to the `AccountIdentifier` `d52f7f2b7277f025bcaa5c90b10d122274faba289` you can use the following commands. You will need to derive the `AccountIdentifier` by getting the principal first:
