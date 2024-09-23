@@ -23,6 +23,10 @@ const elementProps = [
     value: validators.string,
   },
   {
+    prop: "description",
+    value: validators.string,
+  },
+  {
     prop: "forum",
     value: validators.url,
   },
