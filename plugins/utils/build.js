@@ -23,6 +23,10 @@ const elementProps = [
     value: validators.string,
   },
   {
+    prop: "description",
+    value: validators.string,
+  },
+  {
     prop: "forum",
     value: validators.url,
   },
@@ -178,6 +182,7 @@ mergedData.forEach((d) => {
       project.milestones.set(e.milestone_id, {
         name: e.title,
         milestone_id: e.milestone_id,
+        description: e.description,
         eta: e.eta_to_render || null,
         status: e.status,
         elements: [],
