@@ -543,6 +543,19 @@
     },
 
     {
+      "title": "Reduce min dissolve delay to 3 months",
+      "overview": "To decrease the barrier of entry for new stakers and make liquid staking protocols more viable, the community adopted a motion proposal to reduce min dissovle delay to 3 months.",
+      "description": "To decrease the barrier of entry for new stakers and make liquid staking protocols more viable, the community adopted a motion proposal to reduce min dissovle delay to 3 months.",
+      "forum": "https://forum.dfinity.org/t/reducing-the-minimum-dissolve-delay-to-3-months/32714",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/131010",
+      "wiki": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
       "title": "Ledger support for SNS tokens",
       "overview": "Allow users to hold and control SNS tokens and neurons using their Ledger hardware wallet.",
       "description": "Allow users to hold and control SNS tokens and neurons using their Ledger hardware wallet.",
@@ -705,33 +718,6 @@
       "status": "future",
       "is_community": false,
       "in_beta": false
-    },
-    {
-      "title": "Standalone \"SNS\" DAO",
-      "overview": "Allow creating a DAO using the SNS governance code, but without going through an NNS proposal, without NNS orchestration, and without the DAO canisters being deployed on the SNS subnet.",
-      "description": "Allow creating a DAO using the SNS governance code, but without going through an NNS proposal, without NNS orchestration, and without the DAO canisters being deployed on the SNS subnet.",
-      "forum": "",
-      "proposal": "",
-      "wiki": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "Simplified SNS life cycle",
-      "overview": "Enhancements to the SNS life-cycle to improve the experience of SNS canister upgrades for SNS communities, e.g., through API versioning and better auditability of error messages on failed upgrades.",
-      "description": "Enhancements to the SNS life-cycle to improve the experience of SNS canister upgrades for SNS communities, e.g., through API versioning and better auditability of error messages on failed upgrades.",
-      "forum": "",
-      "proposal": "",
-      "wiki": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
-      "is_community": false,
-      "in_beta": false
     }
-
   ]
 }
