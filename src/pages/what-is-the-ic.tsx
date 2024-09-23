@@ -66,16 +66,20 @@ function WhatIsIcpPage() {
                 className="tw-heading-3 md:tw-heading-2 mb-8 md:mb-6"
                 variants={transitions.item}
               >
-                What is the
-                <br className="hidden md:block" /> ICP blockchain?
+                What is ICP?
               </motion.h1>
               <motion.p
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                Learn how the ICP blockchain unlocks the power of smart
-                contracts and explore the advanced design choices that make this
-                possible.
+                The Internet Computer is a public blockchain network enabled by
+                new science from first principles. It is millions of times more
+                powerful and can replace clouds and traditional IT. The network
+                –created by ICP, or Internet Computer Protocol – is orchestrated
+                by permissionless decentralized governance and is hosted on
+                sovereign hardware devices run by independent parties. Its
+                purpose is to extend the public internet with native cloud
+                computing functionality.
               </motion.p>
             </div>
           </AnimateSpawn>
@@ -140,13 +144,14 @@ function WhatIsIcpPage() {
                   CPU, which is many orders of magnitude more than Ethereum
                   smart contracts. For example, the high performance of ICP
                   smart contracts enables the
-                  <a
-                    className="text-white underline"
+                  <Link
+                    className="link-white"
                     href="https://www.youtube.com/watch?v=6qLvIXiCGcM"
                   >
+                    {" "}
                     demo of an AI inference model running on an ICP smart
                     contract
-                  </a>
+                  </Link>
                   , which is uniquely possible on ICP.
                 </p>
 
