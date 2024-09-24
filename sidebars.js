@@ -204,10 +204,13 @@ const sidebars = {
           type: "category",
           label: "Test",
           items: [
+            {
+              label: "Overview",
+              type: "doc",
+              id: "developer-docs/smart-contracts/test/overview",
+            },
             "developer-docs/smart-contracts/test/pocket-ic",
-            "developer-docs/smart-contracts/test/reproducible-builds",
             "developer-docs/smart-contracts/test/troubleshooting",
-            "developer-docs/smart-contracts/test/benchmarking",
           ],
         },
         {
@@ -329,6 +332,11 @@ const sidebars = {
               type: "doc",
               label: "General",
               id: "developer-docs/smart-contracts/best-practices/general",
+            },
+            {
+              type: "doc",
+              label: "Reproducible builds",
+              id: "developer-docs/smart-contracts/best-practices/reproducible-builds",
             },
             {
               type: "doc",
@@ -521,6 +529,7 @@ const sidebars = {
                 "developer-docs/developer-tools/off-chain/agents/rust-agent",
               ],
             },
+            "developer-docs/developer-tools/off-chain/canbench",
           ],
         },
         {

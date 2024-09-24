@@ -70,7 +70,7 @@ const redirects = `
   /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/smart-contracts/write/overview
   /docs/current/developer-docs/build/languages/work-with-languages /docs/current/developer-docs/smart-contracts/write/overview
   /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/smart-contracts/write/overview
-  /docs/current/developer-docs/build/backend/reproducible-builds /docs/current/developer-docs/smart-contracts/test/reproducible-builds
+  /docs/current/developer-docs/build/backend/reproducible-builds /docs/current/developer-docs/smart-contracts/best-practices/reproducible-builds
   /docs/current/developer-docs/build/cdks/ /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/build/frontend/default-frontend /docs/current/developer-docs/web-apps/application-frontends/default-frontend
   /docs/current/developer-docs/build/frontend/webpack-config /docs/current/developer-docs/web-apps/application-frontends/overview#modifying-the-webpack-configuration
@@ -321,7 +321,7 @@ const redirects = `
   /docs/current/developer-docs/getting-started/cycles/cycles_management_services /docs/current/developer-docs/smart-contracts/topping-up/cycles_management_services
   /docs/current/developer-docs/setup/pocket-ic /docs/current/developer-docs/smart-contracts/test/pocket-ic
   /docs/current/developer-docs/production/staging-environment /docs/current/developer-docs/smart-contracts/deploy/custom-testnets
-  /docs/current/developer-docs/backend/reproducible-builds /docs/current/developer-docs/smart-contracts/test/reproducible-builds
+  /docs/current/developer-docs/backend/reproducible-builds /docs/current/developer-docs/smart-contracts/best-practices/reproducible-builds
   /docs/current/developer-docs/backend/troubleshooting /docs/current/developer-docs/smart-contracts/test/troubleshooting
   /docs/current/developer-docs/integrations/t-ecdsa /docs/current/developer-docs/smart-contracts/signatures/t-ecdsa
   /docs/current/developer-docs/integrations/vetkeys/ /docs/current/developer-docs/smart-contracts/encryption/vetkeys
@@ -601,6 +601,8 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/deploy/larger-wasm /docs/current/developer-docs/smart-contracts/install
   /docs/current/developer-docs/smart-contracts/deploy/sharing /docs/current/developer-docs/smart-contracts/deploy/overview
   /docs/current/developer-docs/integrations/rosetta/staking-support /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/
+  /docs/current/developer-docs/smart-contracts/test/benchmarking /docs/current/developer-docs/developer-tools/off-chain/canbench
+  /docs/current/developer-docs/smart-contracts/test/reproducible-builds /docs/current/developer-docs/smart-contracts/best-practices/reproducible-builds
   `
 .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
