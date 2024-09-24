@@ -29,7 +29,7 @@
     {
       "title": "Tooling and libraries for developing AI smart contracts",
       "overview": "Providing developer tooling and libraries for building AI smart contracts on ICP, reusing existing AI ecosystem tools wherever possible.",
-      "description": "Developers need tooling and libraries to implement AI smart contracts. Ideally, the existing AI ecosystem is reused as much as possible, but specialized tools and libraries might be needed for developing on-chain AI applications.",
+      "description": "Developers need tooling and libraries to implement AI smart contracts. Ideally, the existing AI ecosystem is reused as much as possible, but specialized tools and libraries might be needed for developing onchain AI applications.",
       "status": "",
       "milestone_id": "Ignition",
       "forum": "",

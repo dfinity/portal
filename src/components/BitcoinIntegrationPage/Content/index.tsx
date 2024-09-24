@@ -48,7 +48,7 @@ const projects = [
     title: "SocialFi",
     subtitle: "Open Chat",
     description:
-      "Send chat messages to others containing tokens like ICP and ckBTC using OpenChat - a decentralized real-time messaging service. Running entirely on-chain on ICP, it offers all the features of a chat app - from GIFs, to creating polls, to offering users rewards.",
+      "Send chat messages to others containing tokens like ICP and ckBTC using OpenChat - a decentralized real-time messaging service. Running entirely onchain on ICP, it offers all the features of a chat app - from GIFs, to creating polls, to offering users rewards.",
     imgSrc: "/img/bitcoin-integration/a5.webp",
     altText: "SocialFi project image",
     link: "https://oc.app/",

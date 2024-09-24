@@ -34,7 +34,7 @@
     },
     {
       "title": "Orbit Multi custody wallet for ICP",
-      "overview": "Users can securely share ownership of the ICP token with a fully on-chain wallet. From simple 1-out-of-2 configurations to sophisticated approval policy rules, Orbit provides comprehensive support for secure financial transactions with a flexible user-role-based system.",
+      "overview": "Users can securely share ownership of the ICP token with a fully onchain wallet. From simple 1-out-of-2 configurations to sophisticated approval policy rules, Orbit provides comprehensive support for secure financial transactions with a flexible user-role-based system.",
       "status": "in_progress",
       "forum": "",
       "proposal": "",

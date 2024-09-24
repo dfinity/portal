@@ -27,7 +27,7 @@ const sliderData = [
   {
     tagline: "Milestone achieved 🏆",
     title: "CYCLOTRON",
-    description: "On-chain AI Inference",
+    description: "Onchain AI Inference",
     image: "/img/home/slider/update_ai_milestone.webp",
     link: "/roadmap#Decentralized%20AI-Cyclotron",
   },
