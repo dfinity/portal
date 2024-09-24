@@ -287,7 +287,7 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "On-chain encryption: vetKeys",
+              label: "Onchain encryption: vetKeys",
               items: [
                 "developer-docs/smart-contracts/encryption/vetkeys",
                 "developer-docs/smart-contracts/encryption/using-vetkeys",
@@ -295,12 +295,12 @@ const sidebars = {
             },
             {
               type: "doc",
-              label: "On-chain randomness",
+              label: "Onchain randomness",
               id: "developer-docs/smart-contracts/advanced-features/randomness",
             },
             {
               type: "category",
-              label: "On-chain signatures",
+              label: "Onchain signatures",
               items: [
                 "developer-docs/smart-contracts/signatures/t-ecdsa",
                 "developer-docs/smart-contracts/signatures/t-schnorr",
@@ -525,7 +525,7 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "On-chain libraries",
+          label: "Onchain libraries",
           items: [
             "developer-docs/developer-tools/on-chain/cdks",
             "developer-docs/developer-tools/on-chain/ic-js",
