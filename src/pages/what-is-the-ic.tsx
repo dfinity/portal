@@ -176,7 +176,7 @@ function WhatIsIcpPage() {
                 </p>
 
                 <Link
-                  className="button-outline-white text-center mb-6 md:mb-b8"
+                  className="button-outline-white text-center mb-6 md:mb-8"
                   href="/capabilities/sustainability"
                 >
                   ICP Sustainability Solutions
