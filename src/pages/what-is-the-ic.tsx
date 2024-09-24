@@ -20,9 +20,7 @@ function WhatIsIcpPage() {
   return (
     <Layout
       title="What is ICP"
-      description={`The ICP blockchain adds autonomous serverless cloud functionality to
-      the public Internet - making it possible to build almost any system or service
-      entirely on a decentralized network using "canister software", an evolution of smart contracts.`}
+      description={`The Internet Computer is a public blockchain network enabled by new science from first principles. It is millions of times more powerful and can replace clouds and traditional IT. `}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-what-is-the-ic.webp"></ShareMeta>
@@ -178,7 +176,7 @@ function WhatIsIcpPage() {
                 </p>
 
                 <Link
-                  className="button-outline-white text-center mb-6 md:mb-8"
+                  className="button-outline-white text-center mb-6 md:mb-           b8"
                   href="/capabilities/sustainability"
                 >
                   ICP Sustainability Solutions
