@@ -12,51 +12,9 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Security", "Concept"]} />
 
-## Message execution basics
+To understand the issues around async inter-canister calls, one needs to understand the [properties of message executions on ICP](/docs/current/references/message-execution-properties). Understanding these properties is a prerequisite for the security issues discussed below.
 
-To understand the issues around async inter-canister calls, one needs to understand a few properties about message execution. This is also explained in the [community conversation on security best practices](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s).
-
-A **call** is a canister's implementation of either an [update](/references/ic-interface-spec.md#http-call) or [query call](/docs/current/references/ic-interface-spec#http-query) that it exposes. For example, if the Rust CDK is used, these are usually annotated with `#[query]` or `#[update]`, respectively. A **message** is a set of consecutive instructions that a subnet executes for a canister. A call can be split into several messages if inter-canister calls are made. The following properties are essential:
-
-- **Property 1**: Only a single message is processed at a time per canister. Message execution is sequential, and never parallel.
-
-- **Property 2**: Each call, query or update, triggers a message. When an inter-canister call is made using `await`, the code after the call (the callback, highlighted in blue) is executed as a separate message.
-
-:::info
-Note that if the code does not `await` the response, the code after the callback is executed in the same message, until the next inter-canister call is triggered using `await`.
-:::
-
-For example, consider the following Motoko code:
-
-![example_highlighted_code](./_attachments/example_highlighted_code.png)
-
-The first message that is executed here are lines 2-3, until the inter-canister call is made using the `await` syntax (orange box). The second message executes lines 3-5: when the inter-canister call returns (blue box). This part is called the _callback_ of the inter-canister call. The two messages involved in this example will always be scheduled sequentially.
-
-:::info
-Note that an `await` in the code does not necessarily mean that an inter-canister call is made and thus a message execution ends and the code after the `await` is executed as a separate message (callback). Async code with the `await` syntax (e.g. in Rust or Motoko) can also be used "internally" in the canister, without issuing an inter-canister call. In that case, the code part including the `await` will be processed within a single message. For Rust, both cases are possible if `await` is used. In Motoko, `await` always commits the current state and triggers a new message send, while `await*` does not necessarily commit the current state or trigger new message sends. See [Motoko `await`](/docs/current/motoko/main/reference/language-manual#await) vs. [Motoko `await*`](/docs/current/motoko/main/reference/language-manual#await-1).
-:::
-
-- **Property 3**: Successfully delivered requests are received in the order in which they were sent. In particular, if a canister A sends `m1` and `m2` to canister B in that order, then, if both are accepted, `m1` is executed before `m2`.
-
-:::info
-Note that this property only gives a guarantee on when the messages are executed, but there is no guarantee on the ordering of the responses received.
-:::
-
-- **Property 4**: Messages from interleaving calls have no reliable execution ordering.
-
-Property 3 provides a guarantee on the execution order of messages on a target canister. However, if multiple calls interleave, one cannot assume additional ordering guarantees for these interleaving calls. To illustrate this, let's consider the above example code again, and assume the method `example` is called twice in parallel, the resulting calls being Call 1 and Call 2. The following illustration shows two possible message orderings. On the left, the first call's messages are scheduled first, and only then the second call's messages are executed. On the right, you can see another possible message scheduling, where the first messages of each call are executed first. Your code should result in a correct state regardless of the message ordering.
-
-![example_orderings](./_attachments/example_orderings.png)
-
-- **Property 5**: On a trap or panic, modifications to the canister state for the current message are not applied.
-
-For example, if a trap in the second message (blue box) of the above example occurs, canister state changes resulting from that message, even earlier in the blue box, are discarded. However, note that any state changes from earlier messages and in particular the first message (orange box) have been applied, as that message executed successfully.
-
-- **Property 6**: Inter-canister calls are not guaranteed to make it to the destination canister, and if a call does reach the destination canister, the destination canister can trap or return a reject response while processing the call.
-
-Every inter-canister call is guaranteed to receive a response, either from the canister, or synthetically produced by the protocol. However, the response does not have to be successful, but can also be a reject response. The reject may come from the called canister, but it may also be generated by ICP. Such protocol-generated rejects can occur at any time before the call reaches the callee-canister, as well as once the call does reach the callee-canister if the callee-canister traps while processing the call. If the call reaches the callee-canister, the callee-canister can produce a reply or reject response and the protocol guarantees that the callee-canister's generated reply or reject response gets back to the caller-canister. Thus, it's important that the calling canister handles reject responses as well. A reject response means that the message hasn't been successfully processed by the receiver but doesn't guarantee that the receivers state wasn't changed.
-
-For more details, refer to the Interface Specification [section on ordering guarantees](/docs/current/references/ic-interface-spec#ordering_guarantees) and the section on [abstract behavior](/docs/current/references/ic-interface-spec#abstract-behavior) which defines message execution in more detail.
+This is also explained in the [community conversation on security best practices](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s).
 
 ## Securely handle traps in callbacks
 
@@ -177,7 +135,7 @@ GoldDAO's GLDT-swap has an implementation of journaling. In their case, the jour
 
 ### Security concern
 
-As described in the [message execution basics](#message-execution-basics) above, messages (but not entire calls) are processed atomically. In particular, as described in Property 4 above, messages from interleaving calls do not have a reliable execution ordering. Thus, the state of the canister (and other canisters) may change between the time an inter-canister call is started and the time when it returns, which may lead to issues if not handled correctly. These issues are generally called 'Reentrancy bugs' (see the [Ethereum best practices on reentrancy](https://consensys.github.io/smart-contract-best-practices/attacks/reentrancy/)). Note however that the messaging guarantees, and thus the bugs, on ICP are different from Ethereum.
+As described in the [properties of message executions on ICP](/docs/current/references/message-execution-properties), messages (but not entire calls) are processed atomically. In particular, as described in Property 4 above, messages from interleaving calls do not have a reliable execution ordering. Thus, the state of the canister (and other canisters) may change between the time an inter-canister call is started and the time when it returns, which may lead to issues if not handled correctly. These issues are generally called 'Reentrancy bugs' (see the [Ethereum best practices on reentrancy](https://consensys.github.io/smart-contract-best-practices/attacks/reentrancy/)). Note however that the messaging guarantees, and thus the bugs, on ICP are different from Ethereum.
 
 Here are two concrete and somewhat similar types of bugs to illustrate potential reentrancy security issues:
 
