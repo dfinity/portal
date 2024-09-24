@@ -25,7 +25,7 @@ const layoutData = [
     image: "img/accelerator/image_2.webp",
     title: "Transparent",
     description:
-      "Metrics and reputation are key factors to make informed decisions. OLYMPUS infrastructure provides on-chain growth data for projects and multi-party rating tools to ensure verifiable reputation at all levels. Startups are publicly rated on a range of parameters including team, product, value proposition, business model, and technology.",
+      "Metrics and reputation are key factors to make informed decisions. OLYMPUS infrastructure provides onchain growth data for projects and multi-party rating tools to ensure verifiable reputation at all levels. Startups are publicly rated on a range of parameters including team, product, value proposition, business model, and technology.",
     reverse: false,
   },
   {
@@ -97,8 +97,8 @@ function AcceleratorPage() {
 
   return (
     <Layout
-      title="OLYMPUS | The On-chain Acceleration Platform"
-      description="OLYMPUS is the first on-chain Web3 acceleration platform connecting founders, investors, mentors and talents across different ecosystems."
+      title="OLYMPUS | The Onchain Acceleration Platform"
+      description="OLYMPUS is the first onchain Web3 acceleration platform connecting founders, investors, mentors and talents across different ecosystems."
     >
       <ShareMeta image="/img/shareImages/share-olympus.jpg"></ShareMeta>
 
@@ -126,14 +126,14 @@ function AcceleratorPage() {
                 OLYMPUS
               </motion.h1>
               <motion.h2 className="tw-heading-4 md:tw-heading-3 mb-2 md:mb-6">
-                The On-Chain Acceleration Platform
+                The Onchain Acceleration Platform
               </motion.h2>
               <div className="relative  md:w-5/10">
                 <motion.p
                   className="tw-lead-sm md:tw-lead mb-8"
                   variants={transitions.item}
                 >
-                  OLYMPUS is the first on-chain Web3 acceleration platform
+                  OLYMPUS is the first onchain Web3 acceleration platform
                   connecting founders, investors, mentors and talents across
                   different ecosystems.
                 </motion.p>

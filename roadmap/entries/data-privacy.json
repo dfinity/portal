@@ -1,6 +1,6 @@
 {
   "categoryName": "Privacy",
-  "categoryDescription": "Canister smart contracts can be used to implement privacy-preserving dapps that give users full control over their data. Leveraging cryptographic protocols, ICP enables developers to build dapps where users store and share encrypted data on-chain. Advanced cryptographic protocols will eventually allow computations on encrypted data.",
+  "categoryDescription": "Canister smart contracts can be used to implement privacy-preserving dapps that give users full control over their data. Leveraging cryptographic protocols, ICP enables developers to build dapps where users store and share encrypted data onchain. Advanced cryptographic protocols will eventually allow computations on encrypted data.",
   "elements": [
     {
       "title": "ICP integrates the vetKeys protocol",

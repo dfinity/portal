@@ -36,7 +36,7 @@ const users = [
           target="_blank"
           rel="noopener noreferrer"
         >
-          100s of next generation fully on-chain dapps
+          100s of next generation fully onchain dapps
         </Link>{" "}
         built end-to-end on the Internet Computer blockchain without needing to
         create usernames and passwords. Secure and seamless authentication and
@@ -104,7 +104,7 @@ const developers = [
   },
   {
     icon: "img/internet-identity/features-2.svg",
-    title: "Build fully on-chain dapps",
+    title: "Build fully onchain dapps",
     description:
       "Build the next generation of secure, tamperproof and fully-on chain web3 applications on the Internet Computer.\
        Dynamic web3 experiences (SocialFi, GameFi) built with smart contracts require a new approach to secure \
@@ -618,7 +618,7 @@ function InternetIdentityPage() {
                   </h3>
                   <p className="tw-paragraph md:tw-lead-sm mb-0">
                     Internet Computer allows anyone to develop and deploy fully
-                    on-chain web applications. With only the browser, users can
+                    onchain web applications. With only the browser, users can
                     operate any dapp and perform transactions beyond the mere
                     transfer of tokens. This design has the following
                     implications:

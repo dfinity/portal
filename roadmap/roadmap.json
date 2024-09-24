@@ -432,7 +432,7 @@
           },
           {
             "title": "Observability Solution for Nodes",
-            "overview": "Consensus-verified on-chain data of node behaviour. Enables monitoring availability of nodes and penalizing non-performing nodes.",
+            "overview": "Consensus-verified onchain data of node behaviour. Enables monitoring availability of nodes and penalizing non-performing nodes.",
             "description": "Currently, no publicly verifiable data is available on chain about the behavior of nodes. This data is crucial for monitoring the availability of nodes and penalising nodes that are off line. A solution is explored to have metrics of node performance available on chain.",
             "forum": "",
             "proposal": "",
@@ -549,7 +549,7 @@
           {
             "title": "Dapp-level metrics",
             "overview": "Dapp-level metrics allow for obtaining insights into statistics of dapps, e.g., the daily / weekly / monthly active users of a dapp.",
-            "description": "Dapp-level metrics are an important aspect of on-chain data analytics. Stakeholder groups such as the dapp developers and potential investors in the dapp or the overall ecosystem have an interest in being able to observe metrics like daily active users (DAUs). The collected metrics can not only be made available within the ICP ecosystem, but also in the systems of major crypto data aggregators, which helps make the data available to a much broader audience beyond the ICP ecosystem. It is still to be determined at which place the metrics are to be collected, e.g., at the protocol level, the Boundary Nodes, through dapps themselves, or a combination thereof.",
+            "description": "Dapp-level metrics are an important aspect of onchain data analytics. Stakeholder groups such as the dapp developers and potential investors in the dapp or the overall ecosystem have an interest in being able to observe metrics like daily active users (DAUs). The collected metrics can not only be made available within the ICP ecosystem, but also in the systems of major crypto data aggregators, which helps make the data available to a much broader audience beyond the ICP ecosystem. It is still to be determined at which place the metrics are to be collected, e.g., at the protocol level, the Boundary Nodes, through dapps themselves, or a combination thereof.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -563,7 +563,7 @@
           {
             "title": "Wallet apps (\"Wapps\")",
             "overview": "Wapps are the next evolutionary step of apps: Install your personal apps directly on the blockchain and keep control over your data.",
-            "description": "Wapps, which stands for Wallet Apps, are the next step in the evolution of apps. Coming from a world where people install apps on their personal mobile devices from the App Store or Google Play, Wapps are canisters installed on the blockchain from an on-chain store on ICP. This is the next evolution of apps and dapps, where users install their own canister for a dapp and this canister holds all the user's data related to this dapp. Thus, the user remains in full control over their apps and data and can easily delete their data if they wish to not participate in the dapp any more. This makes Wapps a strong concept for app decentralization and privacy.",
+            "description": "Wapps, which stands for Wallet Apps, are the next step in the evolution of apps. Coming from a world where people install apps on their personal mobile devices from the App Store or Google Play, Wapps are canisters installed on the blockchain from an onchain store on ICP. This is the next evolution of apps and dapps, where users install their own canister for a dapp and this canister holds all the user's data related to this dapp. Thus, the user remains in full control over their apps and data and can easily delete their data if they wish to not participate in the dapp any more. This makes Wapps a strong concept for app decentralization and privacy.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -932,7 +932,7 @@
           {
             "title": "Blob streaming (download)",
             "overview": "High-throughput download of data from a subnet's blob storage. The implementation of this can have the bulk data bypass consensus when being read by a user.",
-            "description": "Storage blobs need to be read by canisters and dapps. If erasure coding will be the choice for the storage architecture, reading an erasure-coded blob requires one to read data from a number of subnet replicas greater than the 1/3 subnet threshold and recombining the blocks read to the data. Blob streaming realizes this for large storage objects in a chunked fashion to enable more efficient downloads of large contiguous amounts of blob data, e.g., an on-chain video stream or other object like an image. When a user is reading blob data, which is the main envisioned scenario, the bulk data can bypass consensus.",
+            "description": "Storage blobs need to be read by canisters and dapps. If erasure coding will be the choice for the storage architecture, reading an erasure-coded blob requires one to read data from a number of subnet replicas greater than the 1/3 subnet threshold and recombining the blocks read to the data. Blob streaming realizes this for large storage objects in a chunked fashion to enable more efficient downloads of large contiguous amounts of blob data, e.g., an onchain video stream or other object like an image. When a user is reading blob data, which is the main envisioned scenario, the bulk data can bypass consensus.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -945,7 +945,7 @@
           {
             "title": "Blob streaming (upload)",
             "overview": "High-throughput upload of data to a subnet's blob storage. An optimized implementation of this can have the bulk data bypass consensus, if uploaded by a user.",
-            "description": "Blob data needs to be written by canisters and dapps. If erasure coding will be the choice for the storage architecture, writing data to erasure-coded storage requires one to write data to a number of subnet replicas greater than the 1/3 subnet threshold. Streaming does so for large storage objects in a chunked fashion to enable more efficient contiguous uploads of large amounts of blob data, e.g., an on-chain video stream or other object like an image. When a user is writing blob data, which is the main envisioned scenario, the bulk data can bypass consensus.",
+            "description": "Blob data needs to be written by canisters and dapps. If erasure coding will be the choice for the storage architecture, writing data to erasure-coded storage requires one to write data to a number of subnet replicas greater than the 1/3 subnet threshold. Streaming does so for large storage objects in a chunked fashion to enable more efficient contiguous uploads of large amounts of blob data, e.g., an onchain video stream or other object like an image. When a user is writing blob data, which is the main envisioned scenario, the bulk data can bypass consensus.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -1051,7 +1051,7 @@
           {
             "title": "Tooling and libraries for developing AI smart contracts",
             "overview": "Providing developer tooling and libraries for building AI smart contracts on ICP, reusing existing AI ecosystem tools wherever possible.",
-            "description": "Developers need tooling and libraries to implement AI smart contracts. Ideally, the existing AI ecosystem is reused as much as possible, but specialized tools and libraries might be needed for developing on-chain AI applications.",
+            "description": "Developers need tooling and libraries to implement AI smart contracts. Ideally, the existing AI ecosystem is reused as much as possible, but specialized tools and libraries might be needed for developing onchain AI applications.",
             "status": "",
             "milestone_id": "Ignition",
             "forum": "",
@@ -1276,7 +1276,7 @@
       },
       {
         "name": "Chain Fusion Supports Bitcoin ordinals and runes",
-        "description": "ICP’s Chain Fusion technology has full support for Bitcoin protocols such as BRC20 and Runes. So far, ICP’s fully-on-chain capabilities have been largely applied to use cases where Bitcoin is used as a means of value transfer, its original purpose. This milestone provides additional functionality that enables smart contracts to index and issue prominent types of Bitcoin inscriptions in a completely decentralized manner for the first time, thereby putting ICP into a unique position among all chains.",
+        "description": "ICP’s Chain Fusion technology has full support for Bitcoin protocols such as BRC20 and Runes. So far, ICP’s fully-onchain capabilities have been largely applied to use cases where Bitcoin is used as a means of value transfer, its original purpose. This milestone provides additional functionality that enables smart contracts to index and issue prominent types of Bitcoin inscriptions in a completely decentralized manner for the first time, thereby putting ICP into a unique position among all chains.",
         "milestone_id": "Deuterium",
         "eta": "August 13, 2024",
         "status": "deployed",
@@ -1296,8 +1296,8 @@
             "milestone_id": "Deuterium"
           },
           {
-            "title": "On-chain Bitcoin block headers",
-            "overview": "Exposing an on-chain API to access all Bitcoin block headers to enable dapps to trustlessly access the full Bitcoin block content.",
+            "title": "Onchain Bitcoin block headers",
+            "overview": "Exposing an onchain API to access all Bitcoin block headers to enable dapps to trustlessly access the full Bitcoin block content.",
             "description": "The current Bitcoin integration exposes the full UTXO state of the Bitcoin network on chain on a canister API. This is sufficient for many Bitcoin use cases, but not for the novel use cases of inscriptions, such as those using the BRC20 or Runes protocols. Those require access to certain parts of Bitcoin blocks, specifically the SegWit area, where the inscriptions are stored. Making all block headers available on chain through an API allows anyone to trustlessly verify any Bitcoin block obtained over an untrusted channel, e.g., through HTTPS outcalls to a block explorer. This allows for indexing Bitcoin ordinals in a completely decentralized and trustless manner fully on chain.",
             "status": "deployed",
             "eta": "",
@@ -1489,9 +1489,9 @@
             "imported": true
           },
           {
-            "title": "On-chain Bitcoin explorer",
-            "overview": "Fully on-chain Bitcoin explorer running on ICP. Adds a missing piece of decentralized infrastructure to the Bitcoin ecosystem.",
-            "description": "The world's first blockchain, Bitcoin, has a large ecosystem including tools like block explorers. Besides the blockchain itself, all tools are pure Web2 applications typically hosted in public cloud. This feature implements a fully on-chain Bitcoin block explorer, i.e., brings decentralization and stronger security due to reduced reliance on centralized servers also to the broader landscape of the Bitcoin ecosystem.",
+            "title": "Onchain Bitcoin explorer",
+            "overview": "Fully onchain Bitcoin explorer running on ICP. Adds a missing piece of decentralized infrastructure to the Bitcoin ecosystem.",
+            "description": "The world's first blockchain, Bitcoin, has a large ecosystem including tools like block explorers. Besides the blockchain itself, all tools are pure Web2 applications typically hosted in public cloud. This feature implements a fully onchain Bitcoin block explorer, i.e., brings decentralization and stronger security due to reduced reliance on centralized servers also to the broader landscape of the Bitcoin ecosystem.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -1502,9 +1502,9 @@
             "in_beta": false
           },
           {
-            "title": "On-chain Ethereum block explorer",
+            "title": "Onchain Ethereum block explorer",
             "overview": "Ethereum block explorer running fully on chain on ICP. Adding a missing piece of decentralized infrastructure to the Ethereum ecosystem.",
-            "description": "ICP has the mantra of having 100% on-chain dapp experiences. One such 100% on-chain dapp that is intended to be hosted following this paradigm is an Ethereum block explorer. This would close the gap for Ethereum of block explorers being Web2 applications and would help bring Ethereum closer to a fully on-chain decentralized ecosystem, including its core components that are currently hosted off chain.",
+            "description": "ICP has the mantra of having 100% onchain dapp experiences. One such 100% onchain dapp that is intended to be hosted following this paradigm is an Ethereum block explorer. This would close the gap for Ethereum of block explorers being Web2 applications and would help bring Ethereum closer to a fully onchain decentralized ecosystem, including its core components that are currently hosted off chain.",
             "status": "future",
             "forum": "",
             "proposal": "",
@@ -1625,7 +1625,7 @@
   },
   {
     "name": "Privacy",
-    "description": "Canister smart contracts can be used to implement privacy-preserving dapps that give users full control over their data. Leveraging cryptographic protocols, ICP enables developers to build dapps where users store and share encrypted data on-chain. Advanced cryptographic protocols will eventually allow computations on encrypted data.",
+    "description": "Canister smart contracts can be used to implement privacy-preserving dapps that give users full control over their data. Leveraging cryptographic protocols, ICP enables developers to build dapps where users store and share encrypted data onchain. Advanced cryptographic protocols will eventually allow computations on encrypted data.",
     "milestones": [
       {
         "name": "vetKeys for Decentralized Key Management",
@@ -2685,8 +2685,8 @@
           },
           {
             "title": "Decentralized KYC",
-            "overview": "Decentralized on-chain KYC system that provides a real-world identity backbone to ICP.",
-            "description": "Many use cases, such as those related to securities, require users to be subject to KYC and AML verification. This feature builds an on-chain KYC system that provides this functionality to any dapp on ICP, thereby being an important foundation for many types of financial applications.",
+            "overview": "Decentralized onchain KYC system that provides a real-world identity backbone to ICP.",
+            "description": "Many use cases, such as those related to securities, require users to be subject to KYC and AML verification. This feature builds an onchain KYC system that provides this functionality to any dapp on ICP, thereby being an important foundation for many types of financial applications.",
             "forum": "",
             "proposal": "",
             "wiki": "",
@@ -2800,8 +2800,8 @@
         "elements": [
           {
             "title": "Orbit Multi custody wallet for ICP",
-            "overview": "Users can securely share ownership of the ICP token with a fully on-chain wallet. From simple 1-out-of-2 configurations to sophisticated approval policy rules, Orbit provides comprehensive support for secure financial transactions with a flexible user-role-based system.",
-            "description": "Users can securely share ownership of the ICP token with a fully on-chain wallet. From simple 1-out-of-2 configurations to sophisticated approval policy rules, Orbit provides comprehensive support for secure financial transactions with a flexible user-role-based system.",
+            "overview": "Users can securely share ownership of the ICP token with a fully onchain wallet. From simple 1-out-of-2 configurations to sophisticated approval policy rules, Orbit provides comprehensive support for secure financial transactions with a flexible user-role-based system.",
+            "description": "Users can securely share ownership of the ICP token with a fully onchain wallet. From simple 1-out-of-2 configurations to sophisticated approval policy rules, Orbit provides comprehensive support for secure financial transactions with a flexible user-role-based system.",
             "status": "in_progress",
             "forum": "",
             "proposal": "",
@@ -4597,7 +4597,7 @@
           {
             "title": "Motoko package manager shipped with dfx",
             "overview": "Integrating the Mops package manager with dfx to improve DX.",
-            "description": "Motoko currently has two package managers, Vessel, the original package manager for Motoko, and Mops, a fully on-chain package manager that is the recommended package manager for Motoko. This feature is about integrating the Mops Motoko package manager with dfx to further improve the developer experience.",
+            "description": "Motoko currently has two package managers, Vessel, the original package manager for Motoko, and Mops, a fully onchain package manager that is the recommended package manager for Motoko. This feature is about integrating the Mops Motoko package manager with dfx to further improve the developer experience.",
             "forum": "",
             "proposal": "",
             "wiki": "",

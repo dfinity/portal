@@ -89,7 +89,7 @@ function ReverseGasModelPage(): JSX.Element {
               >
                 Traditionally, when end users interact with a blockchain, they
                 must have a wallet set up with tokens to pay gas fees for every
-                on-chain interaction, even interactions as simple as liking a
+                onchain interaction, even interactions as simple as liking a
                 post. Most blockchains get around this by hosting their data and
                 frontends on centralized cloud. Without compromising
                 decentralization, the Internet Computer removes this expensive
