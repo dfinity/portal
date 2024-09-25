@@ -33,7 +33,7 @@ Inference happens on the user's device after downloading the model.
 If the user trusts their own device, then they can trust that the inference ran correctly.
 A disadvantage here is that the model needs to be downloaded to the user's device with corresponding drawbacks of less confidentiality of the model and decreased user experience due to increased latency.
 ICP supports this use case for practically all existing models because a smart contract on ICP can store models up to 400GiB.
-See [an example]((https://github.com/patnorris/DecentralizedAIonIC) of an in-browser AI chatbot that uses an open-source LLM model served from ICP.
+See [an example](https://github.com/patnorris/DecentralizedAIonIC) of an in-browser AI chatbot that uses an open-source LLM model served from ICP.
 
 4. **Tokenization, marketplaces, orchestration**:
 This refers to using smart contracts as the tokenization, marketplace, and orchestration layer for AI models and AI hardware.
@@ -65,6 +65,8 @@ Currently, ICP supports onchain inference of small models using AI libraries suc
 Check out the [image classification example](/docs/current/developer-docs/ai/ai-on-chain) to learn how it works.
 The long-term [vision of DeAI on ICP](https://internetcomputer.org/roadmap#Decentralized%20AI-start) is to support onchain GPU compute to enable both training and inference of larger models.
 
+You can learn more about running AI inference on ICP [here](./inference.mdx).
+
 ## Technical working group: DeAI
 
 A technical working group dedicated to discussing decentralized AI and related projects meets bi-weekly on Thursdays at 5pm UTC. You can join via the [community Discord server](https://discord.gg/jnjVVQaE2C).
@@ -89,12 +91,12 @@ Several community projects that showcase how to use AI on ICP are available.
 
 - [Vectune](https://github.com/ClankPan/Vectune): Vectune is a lightweight VectorDB with incremental indexing, based on FreshVamana written in Rust.
   See [a forum post](https://forum.dfinity.org/t/worlds-largest-web3-vector-database/33309) that explains how it works.
-- [Client-Vector-Search](https://github.com/yusufhilmi/client-vector-search): Client-Vector-Search is a client side vector search library that can embed, store, search, and cache vectors. 
-  [Cipher-AI-Vault](https://forum.dfinity.org/t/introducing-cipher-ai-vault-a-fully-sandboxed-ai-demo-w-memory/34803) has a [working example](https://github.com/supaIC/Cipher-AI-Vault/tree/main/frontend/frontend/hooks/client-vector-search) of the library running in an ICP canister. 
+- [Client-Vector-Search](https://github.com/yusufhilmi/client-vector-search): Client-Vector-Search is a client side vector search library that can embed, store, search, and cache vectors.
+  [Cipher-AI-Vault](https://forum.dfinity.org/t/introducing-cipher-ai-vault-a-fully-sandboxed-ai-demo-w-memory/34803) has a [working example](https://github.com/supaIC/Cipher-AI-Vault/tree/main/frontend/frontend/hooks/client-vector-search) of the library running in an ICP canister.
 
 #### Developed on ICP
 - [ArcMind Vector DB](https://github.com/arcmindai/arcmindvector): A vector database that supports text, image, and audio embedding.
-- [KinicDAO Vector DB](https://xcvai-qiaaa-aaaak-afowq-cai.icp0.io/): A high-performance, completely onchain, tamper-proof vector database specifically built for decentrlized apps. 
+- [KinicDAO Vector DB](https://xcvai-qiaaa-aaaak-afowq-cai.icp0.io/): A high-performance, completely onchain, tamper-proof vector database specifically built for decentrlized apps.
 - [Blueband](https://github.com/highfeast/ic-use-blueband-db): A vector database built based on [Vectra](https://www.vectra.ai/), a local vector database for [Node.js](https://nodejs.org/en).
   See their [forum post](https://forum.dfinity.org/t/blueband-vector-database/33934) for additional details on how it works and demos.
 - [ELNA Vector DB](https://github.com/elna-ai/elna-vector-db): An open-source and fully onchain vector database and vector similarity search engine primarily used to power the [ELNA.ai](https://elna.ai/) application.
