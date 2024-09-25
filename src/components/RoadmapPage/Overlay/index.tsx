@@ -287,7 +287,6 @@ type Element = {
   overview: string;
   status: string;
   forum: string;
-  wiki: string;
   docs: string;
   proposal: string;
 };
@@ -336,7 +335,7 @@ const MilestoneDetail: React.FC<{
     }, 1000);
   };
 
-  if (name === "Past features") {
+  if (name === "Future features") {
     return elements.length === 0 ? (
       <></>
     ) : (
@@ -424,7 +423,7 @@ const MilestoneDetail: React.FC<{
       </article>
     );
   }
-  if (name === "Future features") {
+  if (name === "Past features") {
     return elements.length === 0 ? (
       <></>
     ) : (
@@ -571,7 +570,7 @@ const Overlay: React.FC<{
       const el = document.getElementById(anchor);
 
       if (el) {
-        if (anchor === "Past features") {
+        if (anchor === "Future features") {
           setExpandedMilestone(anchor);
         }
 
@@ -631,18 +630,49 @@ const Overlay: React.FC<{
                   {data[index].name.toUpperCase()}
                 </h2>
                 <p className="tw-lead-sm md:tw-lead md:w-9/10">
-                  {data[index].description}
+                  {data[index].description && data[index].description}
                 </p>
               </section>
               <section>
-                {data[index].milestones
+                {[...data[index].milestones]
                   .sort((a, b) => {
-                    if (a.name === "orphans_past") return -1;
-                    if (b.name === "orphans_past") return 1;
-                    if (a.status === "deployed") return -1;
-                    if (b.status === "deployed") return 1;
-                    if (a.name === "orphans_future") return 1;
-                    if (b.name === "orphans_future") return -1;
+                    // Put "orphans_future" top
+                    if (a.name === "orphans_future") return -1;
+                    if (b.name === "orphans_future") return 1;
+
+                    // Put "orphans_past" bottom
+                    if (a.name === "orphans_past") return 1;
+                    if (b.name === "orphans_past") return -1;
+
+                    // Group in-progress milestones
+                    if (
+                      a.status === "in_progress" &&
+                      b.status !== "in_progress"
+                    )
+                      return -1;
+                    if (
+                      a.status !== "in_progress" &&
+                      b.status === "in_progress"
+                    )
+                      return 1;
+
+                    // Group completed (deployed) milestones
+                    if (a.status === "deployed" && b.status !== "deployed")
+                      return 1;
+                    if (a.status !== "deployed" && b.status === "deployed")
+                      return -1;
+
+                    // For milestones with the same status, reverse the current order
+                    // This assumes that the current order is from oldest to newest
+                    if (a.status === b.status) {
+                      // Use the index in the original array to determine the order
+                      return (
+                        data[index].milestones.indexOf(b) -
+                        data[index].milestones.indexOf(a)
+                      );
+                    }
+
+                    // default cause original order
                     return 0;
                   })
                   .map((milestone, i) => {

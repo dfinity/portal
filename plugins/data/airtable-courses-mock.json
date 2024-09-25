@@ -201,7 +201,7 @@
     "index": "recPRf7i9kmi0EHhb",
     "category": "Course",
     "title": "ICP Developer II (ES)",
-    "body": "The purpose of this ICP Developer II is for you to continue developing the Canister frontend of your project and finish this week with your first DApp running 100% on-chain on the Internet Computer network",
+    "body": "The purpose of this ICP Developer II is for you to continue developing the Canister frontend of your project and finish this week with your first DApp running 100% onchain on the Internet Computer network",
     "languages": [
       "motoko"
     ],
@@ -1122,7 +1122,7 @@
     "index": "recLufGpUa8qh1pTC",
     "category": "Content",
     "title": "What is the Internet Computer (ICP)? A beginner's explanation!",
-    "body": "The Internet Computer is the first of its kind, a decentralized network that hosts unstoppable and tamperproof code at unlimited scale. \nThis blockchain is capable of securely serving web experiences directly to web browsers, processing and storing large amounts of data, interacting with Web 2.0 infrastructure, and even running transactions on other blockchains (Bitcoin, Ethereum, and more...). \nThis allows for the creation of trustless, multi-chain systems and services that can be built fully on-chain. \nThe Internet Computer represents the end-to-end decentralized future of all computing and is driving the growth of Web3. ",
+    "body": "The Internet Computer is the first of its kind, a decentralized network that hosts unstoppable and tamperproof code at unlimited scale. \nThis blockchain is capable of securely serving web experiences directly to web browsers, processing and storing large amounts of data, interacting with Web 2.0 infrastructure, and even running transactions on other blockchains (Bitcoin, Ethereum, and more...). \nThis allows for the creation of trustless, multi-chain systems and services that can be built fully onchain. \nThe Internet Computer represents the end-to-end decentralized future of all computing and is driving the growth of Web3. ",
     "languages": [
       "none"
     ],
@@ -1438,7 +1438,7 @@
     "index": "recr4BiMvsHB8cUUR",
     "category": "Content",
     "title": "Chain-Key Bitcoin: A Decentralized Bitcoin Twin",
-    "body": "Chain-Key Bitcoin (ckBTC) is now live on the Internet Computer. Acting as a bitcoin ‘twin’, ckBTC enables fast, low-fee, cryptographically secure, fully on-chain bitcoin transactions on the Internet Computer, bringing true decentralization to DeFi and the blockchain space.",
+    "body": "Chain-Key Bitcoin (ckBTC) is now live on the Internet Computer. Acting as a bitcoin ‘twin’, ckBTC enables fast, low-fee, cryptographically secure, fully onchain bitcoin transactions on the Internet Computer, bringing true decentralization to DeFi and the blockchain space.",
     "languages": [
       "none"
     ],

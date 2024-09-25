@@ -9,7 +9,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <MarkdownChipRow labels={["Intermediate", "Concept", "DeAI" ]} />
 
 Decentralized AI, or DeAI for short, refers to the intersection between AI and blockchain technology.
-The term denotes a wide range of applications, starting from peripheral elements such as tokenization or decentralized marketplaces, and going all the way to running AI models fully on-chain as smart contracts.
+The term denotes a wide range of applications, starting from peripheral elements such as tokenization or decentralized marketplaces, and going all the way to running AI models fully onchain as smart contracts.
 
 ## What is DeAI?
 
@@ -17,18 +17,18 @@ The term "DeAI" may be used to refer to or describe a variety of different thing
 
 Here is a list of various DeAI applications ordered from the strongest to weakest form of decentralization:
 
-1. **Fully on-chain training and inference**:
+1. **Fully onchain training and inference**:
 This is the truest form of DeAI that brings the security and trustworthiness guarantees of smart contracts to DeAI applications.
 Supporting this use case is the long-term vision of ICP that will become possible after integrating GPU-enabled nodes.
 
-2. **Fully on-chain inference using models trained off-chain**:
-This assumes that the model was trained off-chain and then uploaded on-chain.
-Inference happens fully on-chain and has the same security and trustworthiness guarantees as regular smart contracts.
+2. **Fully onchain inference using models trained off-chain**:
+This assumes that the model was trained off-chain and then uploaded onchain.
+Inference happens fully onchain and has the same security and trustworthiness guarantees as regular smart contracts.
 ICP currently supports this use case for models with millions of parameters.
-See [an example](https://github.com/dfinity/examples/tree/master/rust/image-classification) of on-chain image classification.
+See [an example](https://github.com/dfinity/examples/tree/master/rust/image-classification) of onchain image classification.
 
-3. **Storing the model on-chain and running inference on a user's device**:
-This assumes that the model was trained off-chain and then uploaded on-chain.
+3. **Storing the model onchain and running inference on a user's device**:
+This assumes that the model was trained off-chain and then uploaded onchain.
 Inference happens on the user's device after downloading the model.
 If the user trusts their own device, then they can trust that the inference ran correctly.
 A disadvantage here is that the model needs to be downloaded to the user's device with corresponding drawbacks of less confidentiality of the model and decreased user experience due to increased latency.
@@ -54,14 +54,16 @@ This can be addressed if users are able to verify how a model has been trained a
 
 Trustworthy DeAI is possible on ICP using canister smart contracts.
 
-## Fully on-chain DeAI
+## Fully onchain DeAI
 
-Running AI models on-chain is too compute and memory-intensive for traditional blockchains. ICP was designed to make smart contracts powerful by leveraging the following features:
+Running AI models onchain is too compute and memory-intensive for traditional blockchains. ICP was designed to make smart contracts powerful by leveraging the following features:
 1. The WebAssembly virtual machine that provides near-native performance.
 2. Deterministic time slicing that automatically splits long-running computation over multiple blocks.
 3. Powerful node hardware with a standardized specification. Nodes have 32-core CPUs, 512GiB RAM, and 30TB NVMe.
 
-The long-term [vision of DeAI on ICP](https://internetcomputer.org/roadmap#Decentralized%20AI-start) is to support on-chain GPU compute to enable both training and inference of larger models.
+Currently, ICP supports onchain inference of small models using AI libraries such as [Sonos Tract](https://github.com/sonos/tract) that compile to WebAssembly.
+Check out the [image classification example](/docs/current/developer-docs/ai/ai-on-chain) to learn how it works.
+The long-term [vision of DeAI on ICP](https://internetcomputer.org/roadmap#Decentralized%20AI-start) is to support onchain GPU compute to enable both training and inference of larger models.
 
 You can learn more about running AI inference on ICP [here](./inference.mdx).
 
@@ -75,24 +77,56 @@ You can learn more about the group, review the notes from previous meetings, and
 
 Several community projects that showcase how to use AI on ICP are available.
 
-### Language models, agents, and chatbots
+### Onchain inference frameworks
 
-- [GPT2](https://github.com/modclub-app/rust-connect-py-ai-to-ic/tree/main/internet_computer/examples/gpt2): An example of GPT2 running on-chain.
-- [DeVinci](https://github.com/patnorris/DecentralizedAIonIC): An in-browser AI chatbot that uses an open-source LLM model served from ICP. [Check out the canister yourself](https://x6occ-biaaa-aaaai-acqzq-cai.icp0.io/).
-- [ArcMind AI](https://github.com/arcmindai/arcmindai): An autonomous agent using Chain of Thoughts for reasoning and actions. Try the [app in-browser](https://arcmindai.app).
-- [ELNA AI](https://github.com/elna-ai): A fully on-chain AI agent platform and marketplace. Supports both on-chain and off-chain LLMs. [Try it here](https://dapp.elna.ai/).
+- [Sonos Tract](https://github.com/sonos/tract): An open-source AI inference engine written in Rust that supports ONNX, TensorFlow, PyTorch models and compiles to WebAssembly.
+  [The image classification example](https://github.com/dfinity/examples/tree/master/rust/image-classification) explains how to integrate it into a canister to run on ICP.
+- [Rust-Connect-Py-AI-to-IC](https://github.com/jeshli/rust-connect-py-ai-to-ic): Open-source tool for deploying and running Python AI models onchain using Sonos Tract.
+- [Burn](https://github.com/tracel-ai/burn): An open-source deep learning framework written in Rust that supports ONNX, PyTorch models and compiles to WebAssembly.
+  [The MNIST example](https://github.com/smallstepman/ic-mnist) explains how to integrate it into a canister to run on ICP. [Try it here](https://jsi2g-jyaaa-aaaam-abnia-cai.icp0.io/).
+- [Candle](https://github.com/huggingface/candle): a minimalist ML framework for Rust that compiles to WebAssembly.
+  [An AI chatbot example](https://github.com/ldclabs/ic-panda/tree/main/src/ic_panda_ai) shows how to run a Qwen 0.5B model in a canister on ICP.
 
 ### Vector databases
 
 - [Vectune](https://github.com/ClankPan/Vectune): Vectune is a lightweight VectorDB with incremental indexing, based on FreshVamana written in Rust.
   See [a forum post](https://forum.dfinity.org/t/worlds-largest-web3-vector-database/33309) that explains how it works.
-- [Client-Vector-Search](https://github.com/yusufhilmi/client-vector-search): Client-Vector-Search is a client side vector search library that can embed, store, search, and cache vectors. 
-  [Cipher-AI-Vault](https://forum.dfinity.org/t/introducing-cipher-ai-vault-a-fully-sandboxed-ai-demo-w-memory/34803) has a [working example](https://github.com/supaIC/Cipher-AI-Vault/tree/main/frontend/frontend/hooks/client-vector-search) of the library running in an ICP canister. 
+- [Client-Vector-Search](https://github.com/yusufhilmi/client-vector-search): Client-Vector-Search is a client side vector search library that can embed, store, search, and cache vectors.
+  [Cipher-AI-Vault](https://forum.dfinity.org/t/introducing-cipher-ai-vault-a-fully-sandboxed-ai-demo-w-memory/34803) has a [working example](https://github.com/supaIC/Cipher-AI-Vault/tree/main/frontend/frontend/hooks/client-vector-search) of the library running in an ICP canister.
 
 #### Developed on ICP
 - [ArcMind Vector DB](https://github.com/arcmindai/arcmindvector): A vector database that supports text, image, and audio embedding.
-- [KinicDAO Vector DB](https://xcvai-qiaaa-aaaak-afowq-cai.icp0.io/): A high-performance, completely on-chain, tamper-proof vector database specifically built for decentrlized apps. 
+- [KinicDAO Vector DB](https://xcvai-qiaaa-aaaak-afowq-cai.icp0.io/): A high-performance, completely onchain, tamper-proof vector database specifically built for decentrlized apps.
 - [Blueband](https://github.com/highfeast/ic-use-blueband-db): A vector database built based on [Vectra](https://www.vectra.ai/), a local vector database for [Node.js](https://nodejs.org/en).
   See their [forum post](https://forum.dfinity.org/t/blueband-vector-database/33934) for additional details on how it works and demos.
-- [ELNA Vector DB](https://github.com/elna-ai/elna-vector-db): An open-source and fully on-chain vector database and vector similarity search engine primarily used to power the [ELNA.ai](https://elna.ai/) application.
+- [ELNA Vector DB](https://github.com/elna-ai/elna-vector-db): An open-source and fully onchain vector database and vector similarity search engine primarily used to power the [ELNA.ai](https://elna.ai/) application.
 
+### Language models, agents, and chatbots
+
+- [GPT2](https://github.com/modclub-app/rust-connect-py-ai-to-ic/tree/main/internet_computer/examples/gpt2): An example of GPT2 running onchain.
+- [DeVinci](https://github.com/patnorris/DecentralizedAIonIC): An in-browser AI chatbot that uses an open-source LLM model served from ICP. [Check out the canister yourself](https://x6occ-biaaa-aaaai-acqzq-cai.icp0.io/).
+- [ArcMind AI](https://github.com/arcmindai/arcmindai): An autonomous agent using Chain of Thoughts for reasoning and actions. Try the [app in-browser](https://arcmindai.app).
+- [ELNA AI](https://github.com/elna-ai): A fully onchain AI agent platform and marketplace. Supports both onchain and off-chain LLMs. [Try it here](https://dapp.elna.ai/).
+
+### Calling OpenAI from a canister
+
+- [Juno + OpenAI](https://github.com/peterpeterparker/juno-openai): An example using Juno and OpenAI to generate images from prompts.
+
+### Programming language specific resources
+
+  - **Rust**:
+    - See the links above for Rust examples.
+
+  - **Motoko**:
+    - [MotokoLearn](https://github.com/ildefons/motokolearn): A Motoko package that enables onchain machine learning.
+    - [In-browser AI chat](https://github.com/patnorris/DecentralizedAIonIC).
+
+  - **C++**:
+    - [icpp-pro Getting Started](https://docs.icpp.world/getting-started.html).
+    - [icpp_llm](https://github.com/icppWorld/icpp_llm).
+    - [icpp-llama2 Deployment Tutorial](https://github.com/icppWorld/icpp_llm/blob/main/icpp_llama2/README.md).
+    - [icgpt](https://github.com/icppWorld/icgpt).
+
+  - **TypeScript/JavaScript**:
+    - [Tensorflow on ICP](https://github.com/carlosarturoceron/decentAI): An Azle example that uses a pre-trained model for making predictions.
+    - [ICGPT](https://github.com/icppWorld/icgpt): A React frontend that uses a C/C++ backend running an LLM fully onchain. [Check it out yourself](https://icgpt.icpp.world/).

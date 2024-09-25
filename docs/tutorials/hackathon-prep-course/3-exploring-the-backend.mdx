@@ -77,19 +77,19 @@ Let's breakdown each portion of this code.
 
 First, the code defines an actor called `Backend`. In Motoko, programs consist of an actor expression that is introduced using the keyword `actor`. An actor is a process with encapsulated state that communicates with other running actors. Each canister can only contain one actor. You can learn more about Motoko actors [here](/docs/current/tutorials/developer-journey/level-1/1.2-motoko-lvl1).
 
-```motoko title="backend/Backend.mo"
+```motoko no-repl title="backend/Backend.mo"
 actor class Backend() {
 ```
 
 Next, the code defines a variable (`var`) called `counter` with a value of `0`. This variable is defined with the word `stable`, which indicates it is a **stable variable**. A stable variable is a variable defined within an actor which uses the `stable` keyword in the variable's declaration. This indicates that the data stored in the variable should be persisted during canister upgrades. This tutorial will go further into stable storage in the section [stable memory](#stable-memory) If this stable keyword is not used, the variable is defined as flexible by default.
 
-```motoko title="backend/Backend.mo"
+```motoko no-repl title="backend/Backend.mo"
 stable var counter = 0;
 ```
 
 Next, the code defines a public function called `get()`. The function is modified with the keyword `query`, which defines calls to this function will use a query call. A query call is used for querying information from a canister's method. This tutorial will go into further detail on query calls in the section [query and update calls](#query-and-update-calls). This function simply returns the value of the `counter` variable.
 
-```motoko title="backend/Backend.mo"
+```motoko no-repl title="backend/Backend.mo"
 public query func get() : async Nat {
     counter;
 };
@@ -97,7 +97,7 @@ public query func get() : async Nat {
 
 In the next portion of the code, a public function called `inc()` is defined. This function increases the value of the `counter` variable by `1` every time the function is called.
 
-```motoko title="backend/Backend.mo"
+```motoko no-repl title="backend/Backend.mo"
 public func inc() : async () {
     counter += 1;
 };
@@ -105,7 +105,7 @@ public func inc() : async () {
 
 Lastly, the `add(n : Nat)` function is defined. This function adds `n` to the current count, where `n` is a numerical value passed to the function when it is called. In the frontend UI, the button used to increase the counter value does not use this function, however it can be called manually from the command line or Candid interface of the backend canister. This tutorial will go into further detail on Candid in the section [Candid](#candid).
 
-```motoko title="backend/Backend.mo"
+```motoko no-repl title="backend/Backend.mo"
 public func add(n : Nat) : async () {
     counter += n;
 };

@@ -70,7 +70,7 @@ demonstrates how to generate a `P2PKH` address from a canister's public key.
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 
 /// Returns the P2PKH address of this canister at the given derivation path.
 public func get_p2pkh_address(network : Network, key_name : Text, derivation_path : [[Nat8]]) : async BitcoinAddress {

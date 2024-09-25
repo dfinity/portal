@@ -24,7 +24,7 @@ The vetKeys feature is still in development, and the proposed system API can be 
 
 ## What are vetKeys?
 
-vetKeys stands for Verifiably Encrypted Threshold Keys, and enables several cryptographic functionalities on the Internet Computer. vetKeys focus on facilitating on-chain encryption, data privacy, and security. From a high level, the main objective of vetKeys is to provide a threshold key derivation interface, to allow canisters to obtain encrypted threshold signatures, and to allow for symmetric encryption for public key or identity-based encryption.
+vetKeys stands for Verifiably Encrypted Threshold Keys, and enables several cryptographic functionalities on the Internet Computer. vetKeys focus on facilitating onchain encryption, data privacy, and security. From a high level, the main objective of vetKeys is to provide a threshold key derivation interface, to allow canisters to obtain encrypted threshold signatures, and to allow for symmetric encryption for public key or identity-based encryption.
 
 To understand vetKeys, first let's cover a few fundamental cryptography concepts and some of their disadvantages that vetKeys strives to solve.
 
@@ -242,7 +242,7 @@ Next, review the `src/encryptedNotes_motoko/main.mo` file, which contains the co
 It is important to note that this backend canister does *not* perform any encryption, since it assumes that the notes are encrypted end-to-end by the front-end (at the client side).
 :::
 
-```motoko title="src/encryptedNotes_motoko/main.mo"
+```motoko no-repl title="src/encryptedNotes_motoko/main.mo"
 // First, import the necessary libraries:
 
 import Map "mo:base/HashMap";

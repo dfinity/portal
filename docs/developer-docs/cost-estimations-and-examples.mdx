@@ -14,6 +14,10 @@ To get a rough estimate of how much your project may cost, below are common proj
 
 - **Messaging**: Calls that are made to a canister's methods. Costs depend on the type of call being sent (query, update, inter-canister, etc), the size of the message's request and response bytes, and the total amount of messages a canister sends and receives.
 
+:::info
+Note that query calls are currently free and do not incur a cost.
+:::
+
 - **Execution**: Cycles are charged during execution of messages and tasks. There is a fixed fee for starting execution and a fee per each executed instruction.
 
 - **Storage**: Cycles charged for canister storage, both Wasm memory and stable memory.

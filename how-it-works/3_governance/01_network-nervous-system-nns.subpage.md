@@ -44,7 +44,7 @@ A proposal is adopted if either of the two conditions are met:
 
 
 ## Proposal execution
-As soon as a proposal is adopted, it is executed by the NNS. With very few exceptions, proposals are executed automatically and fully on-chain.
+As soon as a proposal is adopted, it is executed by the NNS. With very few exceptions, proposals are executed automatically and fully onchain.
 
 
 
@@ -58,11 +58,11 @@ The NNS governs the full Internet Computer blockchain. For example, the NNS make
 * *Motion*: These proposals allow for opinion polls and are the only proposals that do not have a direct effect. 
 
 
-With the exception of motion proposals, all these decisions are executed fully on-chain and at low cost compared to other chains. Therefore, decisions can be made efficiently and frequently allowing the NNS to adapt the ICP platform to the community's needs.
+With the exception of motion proposals, all these decisions are executed fully onchain and at low cost compared to other chains. Therefore, decisions can be made efficiently and frequently allowing the NNS to adapt the ICP platform to the community's needs.
 
 
 ## The Architecture of the NNS
-The NNS is implemented as a set of _canister smart contracts_ on a dedicated _NNS system subnet_. Facilitated by the low computation and storage costs on the ICP, and since the NNS subnet is cross-subsidized by other subnets, voting on proposals is free of charge and a high volume of votes and proposals can be processed and stored on-chain.
+The NNS is implemented as a set of _canister smart contracts_ on a dedicated _NNS system subnet_. Facilitated by the low computation and storage costs on the ICP, and since the NNS subnet is cross-subsidized by other subnets, voting on proposals is free of charge and a high volume of votes and proposals can be processed and stored onchain.
 
 
 Two important canisters are the _governance canister_ that manages neurons, proposals, and the voting process, and the _ICP ledger canister_ that implements the ICP token which is the NNS governance token. In addition, there are other canisters for special purposes, for example the _cycles minting canister (CMC)_ that is responsible to mint _cycles_ - the "gas" used for computation and storage on the ICP.

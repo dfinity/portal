@@ -1,0 +1,217 @@
+{
+  "categoryName": "Chain Fusion",
+  "categoryDescription": "Chain Fusion technology enables blockchains like Bitcoin, Ethereum, and Solana to be \"fused\" together with ICP to create a seamless single-chain end-user experience for multi-chain dapps. Canister smart contracts on ICP orchestrate, augment, and interact with smart contracts on other chains using advanced chain-key technology and enhance those smart contracts with ICP's special capabilities and its superior compute and storage capacity and throughput.",
+  "elements": [
+    {
+      "title": "Threshold EdDSA signing",
+      "overview": "Threshold EdDSA support using cryptographic multiparty computation (MPC). Enables trustless integrations with all chains using EdDSA on the Ed25519 curve like Solana or Cardano.",
+      "status": "in_progress",
+      "eta": "2024",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": true,
+      "in_beta": false,
+      "milestone_id": "Helium"
+    },
+    {
+      "title": "Solana RPC canister",
+      "overview": "RPC canister connecting to Solana RPC providers to integrate with the Solana network. Enables two-way communication with the Solana network.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "upcoming",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Helium"
+    },
+    {
+      "title": "Chain Fusion Supports Solana",
+      "is_milestone": true,
+      "description": "This milestone enables Chain Fusion for the Solana network, bringing Solana and ICP closer together, combining the powers of the two networks. Dapps leveraging the capabilities of both networks look and feel like single-network dapps.",
+      "milestone_id": "Helium",
+      "status": "in_progress",
+      "eta": "Q4 2024"
+    },
+    {
+      "title": "EVM in a canister",
+      "overview": "An low-fee, high-performance EVM implemented as set of canisters on ICP with trustless integration with the Bitcoin network.",
+      "status": "in_progress",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "Threshold ECDSA — Throughput improvements",
+      "overview": "Improving throughput of chain-key ECDSA via multiple protocol improvements such as batching, parallel processing of crypto operations, and cryptographic protocol improvements.",
+      "status": "in_progress",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "future",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "Chain-key SOL (ckSOL) token",
+      "overview": "Solana's SOL token on ICP in the form of a \"twin token\" called ckSOL (chain-key SOL).",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": ""
+    },
+    {
+      "title": "Oracles with signed responses",
+      "overview": "Adding exchange rate oracles that threshold sign their responses. Required for adoption of ICP's trustless oracles in other blockchain ecosystems.",
+      "status": "",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "Chain-Key BRC20 (ckBRC20) tokens",
+      "overview": "A generic chain-key variant of BRC20 tokens on ICP to support ordinals.",
+      "status": "future",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Direct Ethereum integration",
+      "overview": "Direct integration of the Internet Computer with the Ethereum blockchain enables canisters to call smart contracts on Ethereum and vice versa in a trustless manner.",
+      "forum": "https://forum.dfinity.org/t/long-term-r-d-integration-with-the-ethereum-network/9382/6",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/35635",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": false,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Onchain Bitcoin explorer",
+      "overview": "Fully onchain Bitcoin explorer running on ICP. Adds a missing piece of decentralized infrastructure to the Bitcoin ecosystem.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "Onchain Ethereum block explorer",
+      "overview": "Ethereum block explorer running fully on chain on ICP. Adding a missing piece of decentralized infrastructure to the Ethereum ecosystem.",
+      "status": "future",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "future",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "Larger threshold for threshold signing and key backup",
+      "overview": "Increasing the threshold of the ECDSA signing and key backup schemes from 1/3 towards up to 1/2 by giving up some availability for stronger security.",
+      "status": "future",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "future",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "Threshold signing with substantially increased throughput",
+      "overview": "Considerably improving threshold signing throughput for threshold Schnorr & threshold EdDSA, based on a new cryptographic protocol architecture.",
+      "status": "future",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "future",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "X-chain token minter V2 (ERC20-ICRC)",
+      "overview": "Enhanced version of the X-chain token minter, generalizing the approach from ICP only to ICRC-1 tokens to be brought to Ethereum.",
+      "status": "future",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "future",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "X-chain token minter V3",
+      "overview": "A further enhanced version of the X-chain token minter, bringing ICP and ICRC-1 tokens to other blockchain networks such as Ethereum L2s and Solana.",
+      "status": "future",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "future",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "ICRC-1 interface for native BTC, ERC20 and others",
+      "overview": "Exposing an ICRC-1 interface to tokens of token standards from other networks, such as BTC or ERC20. This will make X-chain tokens on ICP more easy to use.",
+      "status": "future",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "future",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "Ethereum and Bitcoin optimistic logging and settlement",
+      "overview": "Settling a fingerprint of a canister's state to ultra-high-replication blockchains such as the Bitcoin or Ethereum networks. The first version is optimistic in that the settled value cannot be publicly verified.",
+      "status": "future",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "future",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
+      "title": "Native USDC integration through CCTP",
+      "overview": "Bringing USD Coin (USDC) natively to ICP via integration with Circle's CCTP (Cross-Chain Transfer Protocol).",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "future",
+      "is_community": true,
+      "in_beta": false,
+      "milestone_id": ""
+    },
+    {
+      "title": "BTC ordinals indexer and inscriber",
+      "overview": "BTC ordinals indexer and inscriber running fully on chain on ICP. Adding a missing decentralized piece of infrastructure to the Bitcoin ecosystem to help it become more decentralized.",
+      "status": "",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "is_community": true,
+      "in_beta": false
+    }
+  ]
+}

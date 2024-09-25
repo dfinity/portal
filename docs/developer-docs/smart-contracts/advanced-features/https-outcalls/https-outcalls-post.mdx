@@ -62,7 +62,7 @@ Before you dive in, here is the structure of the code you will touch:
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 
 //Import some custom types from `src/backend_canister/Types.mo` file
 import Types "Types";
@@ -97,7 +97,7 @@ actor {
 
 You will also create some custom types in `Types.mo`. This will look like this:
 
-```motoko
+```motoko no-repl
 module Types {
 
     //type declarations for HTTP requests, HTTP responses, management canister, etc...
@@ -176,7 +176,7 @@ rustup target add wasm32-unknown-unknown
 
 Open the `src/send_http_post_motoko_backend/main.mo` file in a text editor and replace content with:
 
-```motoko title="src/send_http_post_motoko_backend/main.mo"
+```motoko no-repl title="src/send_http_post_motoko_backend/main.mo"
 import Debug "mo:base/Debug";
 import Blob "mo:base/Blob";
 import Cycles "mo:base/ExperimentalCycles";
@@ -531,7 +531,7 @@ fn transform(raw: TransformArgs) -> HttpResponse {
 
 Create the `src/send_http_post_motoko_backend/Types.mo` file in a text editor and replace content with:
 
-```motoko title="src/send_http_post_motoko_backend/Types.mo"
+```motoko no-repl title="src/send_http_post_motoko_backend/Types.mo"
 module Types {
 
     //1. Type that describes the Request arguments for an HTTPS outcall
@@ -717,7 +717,7 @@ URLs:
     send_http_post_motoko_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fc4tu-siaaa-aaaap-qbonq-cai
 ```
 
-You can see play with the dapp's `send_http_post_request` method on-chain here: [https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fc4tu-siaaa-aaaap-qbonq-cai](https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fc4tu-siaaa-aaaap-qbonq-cai).
+You can see play with the dapp's `send_http_post_request` method onchain here: [https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fc4tu-siaaa-aaaap-qbonq-cai](https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fc4tu-siaaa-aaaap-qbonq-cai).
 
 </TabItem>
 <TabItem value="rust" label="Rust">
@@ -740,7 +740,7 @@ URLs:
     send_http_post_rust_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fzzpr-iqaaa-aaaap-qbopa-cai
 ```
 
-You can see play with the dapp's `send_http_post_request` method on-chain here: [https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai](https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai).
+You can see play with the dapp's `send_http_post_request` method onchain here: [https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai](https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/?id=fm664-jyaaa-aaaap-qbomq-cai).
 
 </TabItem>
 </AdornedTabs>

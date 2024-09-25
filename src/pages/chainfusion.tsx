@@ -150,7 +150,7 @@ const benefitsData = [
     icon: "/img/chainfusion/benefits-2.svg",
     title: "Unique ICP features",
     description:
-      "You can utilize ICP’s core tech stack without migrating your smart contract or dapp to ICP. Chain Fusion technology enhances other Web3 ecosystems through unique features like chain-key signing, compute on-chain, and HTTPs outcalls, enabling builders to augment their crypto dapps.",
+      "You can utilize ICP’s core tech stack without migrating your smart contract or dapp to ICP. Chain Fusion technology enhances other Web3 ecosystems through unique features like chain-key signing, compute onchain, and HTTPs outcalls, enabling builders to augment their crypto dapps.",
   },
   {
     icon: "/img/chainfusion/benefits-1.svg",
@@ -160,7 +160,7 @@ const benefitsData = [
   },
   {
     icon: "/img/chainfusion/benefits-3.svg",
-    title: "On-chain orchestration",
+    title: "Onchain orchestration",
     description:
       "Seamless cross-chain communication and orchestration. An ICP smart contract can orchestrate your Ethereum dapp's payments to the Bitcoin network, or execute DAO votes autonomously across chains.",
   },
@@ -1999,9 +1999,7 @@ function ChainFusion() {
             ))}
           </AnimateSpawn>
         </section>
-
-        <News content="chainfusion" />
-        <section>
+        <section className="mt-24 md:mt-40">
           <AnimateSpawn
             className="container-6"
             variants={transitions.container}
@@ -2027,7 +2025,9 @@ function ChainFusion() {
             </motion.div>
           </AnimateSpawn>
         </section>
-        <section className="my-24 md:my-40" id="subscribe">
+        <News content="chainfusion" />
+
+        <section className="my-8 md:my-10" id="subscribe">
           <Newsletter
             fields={[
               {

@@ -33,14 +33,13 @@ Motoko differentiates between immutable arrays, which cannot be altered, and mut
 import Nat "mo:base/Nat";
 
 actor {
-    let numbers1 : [Nat] = [1, 2, 3, 4, 5, 6, 7]; // Immutable array
-    let numbers2 : [var Nat] = [var 1, 2, 3, 4, 5, 6, 7] ; // Mutable array
+    let _numbers1 : [Nat] = [1, 2, 3, 4, 5, 6, 7]; // Immutable array
+    let _numbers2 : [var Nat] = [var 1, 2, 3, 4, 5, 6, 7] ; // Mutable array
 
-    public func get_numbers(numbers2: [Nat]) : [Nat] {
-        return a;
+    public func get_numbers(numbers1: [Nat]) : async [Nat] {
+        return numbers1;
     }
 }
-
 ```
 
 The `Array` Motoko base library provides utility functions on arrays. To learn more about the `Array` Motoko base library, refer to the [Motoko base library reference on Array](/docs/current/motoko/main/base/Array) and the [Motoko language quick reference on arrays](/docs/current/motoko/main/reference/language-manual#arrays).
