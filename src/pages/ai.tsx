@@ -645,146 +645,147 @@ function AIPage() {
               <motion.h4 className="tw-heading-7-caps mb-4 md:mb-8 opacity-60">
                 TECHNOLOGY
               </motion.h4>
-              <div>
-                See a series of demos how the Internet Computer has the
-                capability of running AI in a smart contract.
-                <div className="mt-6">
-                  <Link
-                    className="link-primary link-with-icon"
-                    href="https://www.youtube.com/watch?v=6qLvIXiCGcM&list=PLuhDt1vhGcrfWz1ZJrAmJBDS6aFADySwt"
-                  >
-                    Watch the playlist <LinkArrowUpRight></LinkArrowUpRight>
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            <AnimateSpawn
-              className="container-10 mt-12 mb-5 !p-0"
-              el={motion.section}
-              variants={transitions.container}
-            >
-              <div id="demo" className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                <motion.div
-                  variants={transitions.item}
-                  className="col-span-1 md:col-span-2 mb-10"
-                >
-                  <VideoCard
-                    image="/img/decentralized-ai/thumb-ai-video-thumb3.webp"
-                    title="On-chain Facial Recognition – AI running on ICP"
-                    label="Demo"
-                    link={`https://www.youtube.com/watch?v=hEFff_GGj30&list=PLuhDt1vhGcrfWz1ZJrAmJBDS6aFADySwt&index=3`}
-                    description="The world's first demonstration of AI inference running directly on the blockchain, presented by Dominic Williams"
-                  />
-                </motion.div>
-              </div>
-            </AnimateSpawn>
-            <AnimateSpawn
-              variants={transitions.item}
-              className="flex flex-col md:flex-row gap-6 md:gap-24 items-center"
-            >
-              <div>
-                <h3 className="tw-heading-5 md:tw-heading-4 mb-6">
-                  Try out the AI demo by yourself
-                </h3>
-                <p className="tw-paragraph md:tw-lead-sm mb-6 text-black/60">
-                  Check out the open-source repo on GitHub and tryout the AI
-                  demo by yourself.
-                </p>
-                <p className="flex flex-col md:flex-row">
-                  <MotionLink
-                    variants={transitions.item}
-                    className="button-outline"
-                    href="https://github.com/dfinity/examples/tree/master/rust/face-recognition"
-                  >
-                    GO TO GITHUB REPO
-                  </MotionLink>
-                </p>
-              </div>
-              <div className="w-full md:w-auto rounded-2xl">
-                <CodeBlockString showLineNumbers language="rust">
-                  {`let image = imageops::resize(
-   &image, 160, 160, FilterType::Triangle);
-
-let tensor = Array4::from_shape_fn(
-   (1, 3, 160, 160), |(_, c, y, x)| {
-   image[(x as u32, y as u32)][c] as f32 / 255.0
-});
-
-let result = model.run(
-   tvec!(Tensor::from(tensor).into()))?;`}
-                </CodeBlockString>
-              </div>
-            </AnimateSpawn>
-          </div>
-        </AnimateSpawn>
-        <section className="container-10 mt-0 md:mt-30 mb-12 md:mb-20 ">
-          <AnimateSpawn
-            className="mt-24 md:mt-24"
-            variants={transitions.container}
-          >
-            <motion.h4 className="tw-heading-4 md:tw-heading-60 text-gradient">
-              A recent study on AI finds that nearly half of the respondents
-              (49%) are concerned about the misuse of AI for nefarious purposes.
-            </motion.h4>
-            <motion.p className="my-8">
-              Survey in the{" "}
+              <motion.h3 className="tw-title-sm md:tw-title-lg mb-4 md:mb-8">
+                R&D at the core of Internet Computer’s AI innovation
+              </motion.h3>{" "}
+              <motion.p className="tw-lead-sm md:tw-lead text-black/60 mb-4 md:mb-8">
+                AI onchain is made possible by the unique technological
+                capabilities of the Internet Computer Protocol (ICP). Running AI
+                as a smart contract on a blockchain is a significant innovation
+                that is based on DFINITY Foundation’s significant R&D efforts in
+                this domain. Over the past 6 months, AI computations have been
+                optimized to run up to 10x faster, enabling larger models to run
+                onchain.
+              </motion.p>
               <Link
-                className="font-bold"
-                to="https://aiindex.stanford.edu/wp-content/uploads/2024/04/HAI_AI-Index-Report-2024.pdf"
-                target="_blank"
+                href="/roadmap"
+                className="link-primary link-with-icon text-nowrap"
               >
-                Artificial Intelligence Index Report 2024
-              </Link>{" "}
-              by Stanford University.
-            </motion.p>
-          </AnimateSpawn>
-        </section>
-        <section className="container-12 relative mt-24 sm:mt-52 md:mt-40">
-          <AnimateSpawn variants={transitions.container}>
-            <aside className="container-10 md:mt-40 md:flex md:items-center !pl-0 !pr-0	">
-              <div className=" w-[115%] -ml-6 md:-ml-0 md:w-2/3 relative mt-6 md:mt-64 md:mb-64">
-                <div className="pointer-events-none md:absolute w-full right-0 md:right-20 md:top-1/2  md:-translate-y-1/2">
-                  <motion.img
-                    variants={transitions.fadeIn}
-                    src="/img/decentralized-ai/trust-img-1.webp"
-                    alt=""
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-              <div className=" md:w-1/3">
-                <div>
-                  <motion.h3
-                    className="tw-heading-3 md:tw-heading-60 mb-4 md:mb-6"
-                    variants={transitions.item}
-                  >
-                    Problems with traditional AI
-                  </motion.h3>
-                </div>
+                <LinkArrowRight /> More on AI Roadmap
+              </Link>
+            </motion.div>
 
-                <div>
-                  <motion.h4
-                    className="tw-heading-5 md:tw-heading-40 mb-4 md:mb-6"
-                    variants={transitions.item}
-                  >
-                    The Tampering Problem
-                  </motion.h4>
-                  <motion.p className="text-2xl mb-0 ">
-                    <p>
-                      <Link
-                        className="font-bold"
-                        to="https://twitter.com/AnthropicAI/status/1745854907968880970"
-                        target="_blank"
-                      >
-                        Research shows
-                      </Link>{" "}
-                      that it is possible to tamper with AI models in an
-                      undetectable way. This means that the integrity of the
-                      AI&apos;s output can be compromised without anyone
-                      knowing.
-                    </p>
-                  </motion.p>
+            <ScrollableSection items={roadmapData} type="roadmap" />
+
+            <motion.div className="flex flex-col gap-16 md:gap-30">
+              <article className="flex flex-col md:flex-row justify-start tw-lead-sm md:tw-lead">
+                <div className="w-full md:w-1/2 flex flex-col justify-between">
+                  <div className="mb-6 md:mb-14">
+                    <motion.p className="tw-lead md:tw-lead-lg text-black-20 mb-6">
+                      01
+                    </motion.p>
+                    <motion.span className="text-gradient-violet">
+                      Data storage to run large AI models.{" "}
+                    </motion.span>{" "}
+                    <motion.span className="text-black/50">
+                      ICP’s next-gen smart contracts can store and process
+                      gigabytes of data, unlike traditional smart contracts that
+                      can only handle kilobytes. This is required for storing
+                      and executing large AI models as well as processing large
+                      amounts of input data.
+                    </motion.span>
+                  </div>
+                  <div className="text-left">
+                    <motion.p className="text-gradient-violet tw-title-sm md:tw-title-lg mb-0">
+                      1.000.000x
+                    </motion.p>
+                    <motion.p className="text-black tw-lead-sm md:tw-lead">
+                      more data storage
+                    </motion.p>
+                  </div>
+                </div>
+                <div className="w-full md:w-1/2">
+                  <div className="w-full sm:w-1/2 md:mx-auto md:w-[90%] md:translate-x-1/10 md:mt-12">
+                    <img
+                      src="/img/ai-chain/data.svg"
+                      alt=""
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                </div>
+              </article>
+
+              <article className="flex flex-col md:flex-row justify-start tw-lead-sm md:tw-lead">
+                <div className="w-full md:w-1/2 flex-col justify-between order-2 md:order-1">
+                  <div>
+                    <motion.p className="text-gradient-violet tw-title-sm md:tw-title-lg">
+                      8x
+                    </motion.p>
+                    <motion.p className="text-black tw-lead-sm md:tw-lead -mt-2">
+                      faster
+                    </motion.p>
+                  </div>
+                  <div className="w-full sm:w-2/3 md:w-[90%]">
+                    <img
+                      src="/img/ai-chain/chart.svg"
+                      alt=""
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                </div>
+                <div className="w-full md:w-1/2 ml-0 md:ml-5 flex flex-col justify-between order-1 md:order-2">
+                  <div className="mb-6 md:mb-14">
+                    <motion.p className="tw-lead md:tw-lead-lg text-black-20 mb-6">
+                      02
+                    </motion.p>
+                    <motion.span className="text-gradient-violet">
+                      Optimized floating-point arithmetic for faster AI
+                      processing.{" "}
+                    </motion.span>{" "}
+                    <motion.span className="text-black/50">
+                      ICP's next-gen smart contracts provide orders of magnitude
+                      more compute per transaction compared to
+                      current-generation blockchains. In addition, with newly
+                      added support for WebAssembly 128-bit SIMD, smart
+                      contracts can execute multiple floating point operations
+                      in parallel, making running AI models much faster and more
+                      efficient.
+                    </motion.span>
+                  </div>
+                </div>
+              </article>
+              <article className="flex flex-col md:flex-row justify-start tw-lead-sm md:tw-lead">
+                <div className="w-full md:w-1/2 flex flex-col justify-start">
+                  <div className="">
+                    <motion.p className="tw-lead md:tw-lead-lg text-black-20 mb-6">
+                      03
+                    </motion.p>
+                    <motion.span className="text-gradient-violet">
+                      Seamless Integration with Web 2.0.
+                    </motion.span>{" "}
+                    <motion.span className="text-black/50">
+                      ICP is the only blockchain where smart contracts can
+                      directly connect to Web 2.0 services using HTTPS outcalls,
+                      which opens the possibility for AI applications running on
+                      ICP to integrate and fetch data from external services.
+                    </motion.span>
+                    <Link
+                      href="/https-outcalls"
+                      className="link-primary flex text-nowrap mt-6"
+                    >
+                      <LinkArrowRight /> More on HTTPS outcalls
+                    </Link>
+                  </div>
+                </div>
+                <div className="w-full md:w-1/2">
+                  <div className="w-full sm:w-2/3 mx-auto md:w-[85%] md:translate-x-1/10 mt-8 md:mt-6">
+                    <img
+                      src="/img/ai-chain/inference.svg"
+                      alt=""
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                </div>
+              </article>
+              <article className="flex flex-col md:flex-row justify-start align-middle tw-lead-sm md:tw-lead">
+                <div className="w-full md:w-1/2  order-2 md:order-1 flex flex-col justify-center align-middle">
+                  <div className="w-full sm:w-1/3 mx-auto md:w-[70%] md:-translate-x-[5%] mt-8 md:mt-0">
+                    <img
+                      src="/img/ai-chain/gpu.svg"
+                      alt="web gpu"
+                      className="w-full"
+                    />
+                  </div>
                 </div>
                 <div className="w-full md:w-1/2 flex flex-col justify-between order-1 md:order-2">
                   <div className="">
@@ -1004,161 +1005,173 @@ let result = model.run(
             </motion.div>
           </AnimateSpawn>
         </section>
+        <section className="bg-[#F1EEF5] py-20 md:py-40">
+          <AnimateSpawn
+            className="container-10 relative"
+            el={motion.section}
+            variants={transitions.container}
+          >
+            <div className="md:flex md:space-x-32">
+              <div className="md:w-5/12 mb-10 md:mb-0">
+                <motion.h4 className="tw-heading-7-caps text-black-60 mb-4 md:mb-8">
+                  DEVELOPERS
+                </motion.h4>
+                <motion.h3
+                  className="tw-lead md:tw-lead-lg mb-4"
+                  variants={transitions.item}
+                >
+                  Build your next AI venture on the Internet Computer.{" "}
+                  <motion.span
+                    className="tw-lead md:tw-lead-lg text-black/60 mb-6"
+                    variants={transitions.item}
+                  >
+                    Find all the essentials, including developer documentation,
+                    code samples, demos, and our GitHub repository.
+                  </motion.span>
+                </motion.h3>
 
-        <AnimateSpawn
-          className="container-12 pt-16 md:pt-40"
-          el={motion.section}
-          variants={transitions.container}
-        >
-          <div className="flex flex-col gap-6 !p-0 md:gap-5 mb-8 md:flex-row container-10">
-            <motion.h2
-              className="tw-heading-4 mb-0 md:tw-heading-60"
-              variants={transitions.item}
-            >
-              News & media
-            </motion.h2>
-            <div className="md:flex-1 md:pt-1">
-              <motion.p
-                className="mb-0 mt-2 tw-paragraph md:tw-lead-sm"
-                variants={transitions.item}
-              >
-                Get all the news from the Internet Computer ecosystem
-              </motion.p>
-              <MotionLink
-                variants={transitions.item}
-                href="/news"
-                className="link-primary link-with-icon"
-              >
-                Explore more news <LinkArrowUpRight />
-              </MotionLink>
+                <motion.p
+                  className="tw-paragraph md:tw-lead-sm text-black/60 mb-6"
+                  variants={transitions.item}
+                >
+                  These resources are designed to help you get started with
+                  creating decentralized AI applications onchain. Our DeAI
+                  developer community is also a great way to start.
+                </motion.p>
+              </div>
+
+              <div className="md:w-7/12">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <motion.div variants={transitions.item} className="space-y-6">
+                    <div className="bg-white rounded-xl p-6">
+                      <h3 className="text-2xl mb-4 font-book">Learn</h3>
+                      <div className="">
+                        <motion.p className="text-[14px] text-black-60 mb-0">
+                          Overview of AI onchain
+                        </motion.p>
+                        <Link
+                          href="https://internetcomputer.org/docs/current/developer-docs/ai/overview"
+                          className="link-primary link-with-icon mt-0"
+                        >
+                          Docs <LinkArrowUpRight />
+                        </Link>
+                      </div>
+                    </div>
+
+                    <div className="bg-white rounded-xl p-6">
+                      <h3 className="text-2xl mb-4 font-book">Connect</h3>
+                      <div className="text-2xl space-y-8">
+                        <div>
+                          <motion.p className="text-[14px] text-black-60 mb-0">
+                            Contribute to the discussion
+                          </motion.p>
+                          <Link
+                            href="https://forum.dfinity.org/"
+                            className="link-primary link-with-icon mt-0"
+                          >
+                            ICP Forum <LinkArrowUpRight />
+                          </Link>
+                        </div>
+                        <div>
+                          <motion.p className="text-[14px] text-black-60 mb-0">
+                            Connect with developers
+                          </motion.p>
+                          <Link
+                            href="https://discord.com/invite/jnjVVQaE2C"
+                            className="link-primary link-with-icon mt-0"
+                          >
+                            Discord <LinkArrowUpRight />
+                          </Link>
+                        </div>
+                        <div>
+                          <motion.p className="text-[14px] text-black-60 mb-0">
+                            Attend global events
+                          </motion.p>
+                          <Link
+                            href="https://internetcomputer.org/events"
+                            className="link-primary link-with-icon mt-0"
+                          >
+                            Upcoming events <LinkArrowUpRight />
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  <motion.div
+                    variants={transitions.item}
+                    className="space-y-6 flex flex-col h-full"
+                  >
+                    <div className="bg-white rounded-xl p-6">
+                      <h3 className="text-2xl mb-4 font-book">Build</h3>
+                      <div className="space-y-8">
+                        <div>
+                          <motion.p className="text-[14px] text-black-60 mb-0">
+                            Explore the work
+                          </motion.p>
+                          <Link
+                            href="https://github.com/dfinity/awesome-internet-computer?tab=readme-ov-file#decentralized-ai"
+                            className="link-primary link-with-icon mt-0"
+                          >
+                            GitHub <LinkArrowUpRight />
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-white rounded-xl p-6 flex flex-col justify-between">
+                      <div className="space-y-8">
+                        <h3 className="text-2xl mb-4 font-book">Grow</h3>
+                        <div>
+                          <motion.p className="text-[14px] text-black-60 mb-0">
+                            Apply for the DeAI grant
+                          </motion.p>
+                          <Link
+                            href="https://dfinity.org/grants/"
+                            className="link-primary link-with-icon mt-0"
+                          >
+                            Grant application <LinkArrowUpRight />
+                          </Link>
+                        </div>
+                        <div>
+                          <motion.p className="text-[14px] text-black-60 mb-0">
+                            Join the accelerator
+                          </motion.p>
+                          <Link
+                            href="/olympus/"
+                            className="link-primary link-with-icon mt-0"
+                          >
+                            Explore Olympus <LinkArrowUpRight />
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              </div>
+            </div>
+          </AnimateSpawn>
+        </section>
+        <section className="container-10 bg-white py-20 md:py-40">
+          <h1 className="text-black tw-title-sm md:tw-title-lg mb-10">FAQ</h1>
+          <div className="flex gap-5 flex-col md:flex-row">
+            <div className="w-full md:w-7/12 md:mr-20">
+              {faqData.map((item, index) => (
+                <FaqItem
+                  key={index}
+                  question={item.question}
+                  answer={item.answer}
+                />
+              ))}
+            </div>
+            <div className="w-full md:w-5/12 ">
+              <ContactCard />
             </div>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <Link
-              href="https://twitter.com/dominic_w/status/1750886289702834539"
-              className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
-            >
-              <NewsCard
-                news={{
-                  title: "AI models as smart contracts on a blockchain.",
-                  dateHuman: "Jan 26, 2024",
-                  press: "@dominic_w",
-                  details: `#ICP says advanced AI models need to run as smart contracts on blockchain. How? Why? It's easiest to understand by example. Imagine an LLM (Large Language Model) AI that acts as a company oracle, which sits...`,
-                  url: "https://twitter.com/dominic_w/status/1750886289702834539",
-                  imageUrl: "/img/decentralized-ai/news-1.jpg",
-                }}
-                linkLabel="See the post"
-              />
-            </Link>
-            <Link
-              href="https://www.coindesk.com/consensus-magazine/2023/07/29/crypto-networks-reliant-on-aws-wont-bring-transparency-to-ai/"
-              className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
-            >
-              <NewsCard
-                news={{
-                  title:
-                    "AWS-Reliant Blockchains Won’t Bring Transparency to AI",
-                  dateHuman: "Jul 29, 2023",
-                  press: "Dominic Williams",
-                  details: `The rapid progress of artificial intelligence (AI) has captivated the world, with many asking what is next for this technological breakthrough. While AI has already demonstrated its potential to transform various industries...`,
-                  url: "https://www.coindesk.com/consensus-magazine/2023/07/29/crypto-networks-reliant-on-aws-wont-bring-transparency-to-ai/",
-                  imageUrl: "/img/decentralized-ai/news-2.jpg",
-                }}
-                linkLabel="Read Now"
-              />
-            </Link>
-
-            <Link
-              href="https://www.fastcompany.com/91055087/bitcoin-ai-cryptos-gaining-value-cryptocurrency"
-              className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
-            >
-              <NewsCard
-                news={{
-                  title: "AI-related crypto are quickly gaining value",
-                  dateHuman: "Nov 03, 2024",
-                  press: "fastcompany.com",
-                  details: `Internet Computer (ICP) is the biggest AI crypto, by a wide margin. It’s a decentralized web platform whose goal is to build a secure network for public use—and it’s using large language models to help achieve that.`,
-                  url: "https://www.fastcompany.com/91055087/bitcoin-ai-cryptos-gaining-value-cryptocurrency",
-                  imageUrl: "/img/decentralized-ai/news-4.jpg",
-                }}
-                linkLabel="Read Now"
-              />
-            </Link>
-            <Link
-              href="https://metanews.com/decentralized-ai-offers-new-hope-for-user-data-security/"
-              className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
-            >
-              <NewsCard
-                news={{
-                  title:
-                    "Decentralized AI Offers New Hope for User Data Security",
-                  dateHuman: "March 15, 2024",
-                  press: "metanews.com",
-                  details: `One of the biggest risks with the increased use of AI chatbots like ChatGPT is the emergence of new threats to user data. But some companies are starting to build decentralized AI systems that they hope will make personal data leaks...`,
-                  url: "https://metanews.com/decentralized-ai-offers-new-hope-for-user-data-security/",
-                  imageUrl: "/img/decentralized-ai/news-5.jpg",
-                }}
-                linkLabel="Read Now"
-              />{" "}
-            </Link>
-            <Link
-              href="https://www.cointribune.com/en/dfinity-is-revolutionizing-dapps-with-ai-on-icp/"
-              className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
-            >
-              <NewsCard
-                news={{
-                  title: "DFINITY is revolutionizing dApps with AI on ICP!",
-                  dateHuman: "Sat 16 Mar 2024",
-                  press: "cointribune.com",
-                  details: `DFINITY, the foundation behind the innovative Internet Computer Protocol (ICP), has just unveiled a remarkable opportunity for decentralized application (dApp) developers. This new feature involves the ability to integrate OpenAI’s...`,
-                  url: "https://www.cointribune.com/en/dfinity-is-revolutionizing-dapps-with-ai-on-icp/",
-                  imageUrl: "/img/decentralized-ai/news-6.jpg",
-                }}
-                linkLabel="Read Now"
-              />{" "}
-            </Link>
-            <Link
-              href="https://www.cointribune.com/en/dfinity-is-revolutionizing-dapps-with-ai-on-icp/"
-              className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
-            >
-              <NewsCard
-                news={{
-                  title:
-                    "The Next Step for DeAI: On-Chain Inference Enabling Face Recognition",
-                  dateHuman: "July 15,2024",
-                  press: "DFINITY",
-                  details: `The replica version e4eeb3 that was approved by the community in Proposal 13094 completes the Cyclotron milestone from ICP’s roadmap.`,
-                  url: "https://medium.com/dfinity/the-next-step-for-deai-on-chain-inference-enabling-face-recognition-589183203fc2",
-                  imageUrl: "/img/decentralized-ai/news-7.webp",
-                }}
-                linkLabel="Read Now"
-              />{" "}
-            </Link>
-          </div>
-        </AnimateSpawn>
-
-        <LinkCardsSection
-          className="mb-20 md:mb-30 mt-30 md:mt-40"
-          title="Explore AI on ICP"
-          cards={[
-            {
-              label: "Apply to DeAI Grants",
-              href: "https://dfinity.org/grants",
-            },
-            {
-              label: "Start building DeAI",
-              href: "/docs/current/developer-docs/ai/overview",
-            },
-            {
-              label: "Chat with AI to learn more about ICP",
-              href: "/",
-            },
-            {
-              label: "Join the DeAI working group",
-              href: "https://forum.dfinity.org/t/technical-working-group-deai/24621",
-            },
-          ]}
-        />
+        </section>
+        {manifestoModalOpen && (
+          <AIManifestoModal onClose={closeOverlay}></AIManifestoModal>
+        )}
       </main>
     </Layout>
   );
