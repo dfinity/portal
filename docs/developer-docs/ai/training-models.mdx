@@ -1,0 +1,52 @@
+---
+keywords: [Motoko Learn, AI, machine learning, training, Internet Computer, GPU support]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Training models
+
+<MarkdownChipRow labels={[“Intermediate”, "Motoko", "Concept"]} />
+
+## Overview
+
+Training AI models on the Internet Computer (ICP) provides developers with a decentralized infrastructure and simplifies the setup process. ICP’s built-in computation and storage capabilities remove the need for external hardware. With GPU support on the roadmap, ICP will soon further enhance its AI capabilities and allow developers to train complex models, including large-scale machine learning systems.
+
+## Leveraging ICP for model training
+
+ICP provides a convenient, secure environment for training AI models. Developers can utilize the ICP network’s computation and storage infrastructure to run their training processes without needing to manage hardware. This decentralized infrastructure ensures data integrity and security throughout the training lifecycle, similar to the guarantees of Web3 for onchain computation.
+
+By storing training data within canisters, developers can ensure that both the data and model are decentralized and secure. This adds an extra layer of trust in the model training process, as all computations are verifiable and transparent.
+
+## Current and future hardware support
+
+As of September 2024, the ICP infrastructure runs on CPU hardware, which is suitable for many computational tasks. However, complex AI models, such as deep neural networks, require more powerful hardware like GPUs. There are plans to integrate GPU support in the future to enable the training of more advanced AI models, such as large language models (LLMs).
+
+GPUs are well-suited for the parallel processing required to train large models with vast datasets. Once GPUs are integrated into the ICP network, developers will be able to train more sophisticated AI systems directly on the decentralized infrastructure of the network.
+
+## Motoko Learn
+
+[Motoko Learn](https://github.com/ildefons/motokolearn) is a machine learning toolkit designed for the Motoko programming language. It allows developers to train models like classification trees, regression trees, and random forest classifiers. These well-established algorithms are useful for solving common AI problems where data is limited and the desired solution is well understood.
+
+It currently supports workflows for training models such as:
+
+- Classification and regression tree (CART) classifier trees.
+- CART regression trees.
+- Random forest classifiers.
+- Random forest regressions.
+
+This toolkit also supports tools for inference.
+
+[Learn more about training models using Motoko Learn](https://github.com/ildefons/motokolearn?tab=readme-ov-file#uploading-custom-dataset-using-dfx).
+
+### Benefits of using classical algorithms
+
+Classical algorithms, like those available in Motoko Learn, are effective for many AI tasks. They require fewer data and computational resources compared to complex models like neural networks, which makes them accessible to a broader range of developers. For example, random forest models and regression trees can handle predictive tasks without needing massive datasets or specialized hardware. This makes the ICP a suitable environment for training these models.
+
+### Data considerations for training AI models
+
+The success of AI model training depends on the quality of data used. High-quality datasets are essential, with the number of samples varying based on the algorithm. Simpler models may require as few as 100 samples, while more advanced AI models could need terabytes of data. ICP facilitates secure data storage in canisters and allows developers to maintain full control over their datasets while benefiting from security and decentralization.
+
+## Resources
+
+- [Motoko Learn GitHub Repository](https://github.com/ildefons/motokolearn)
