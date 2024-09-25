@@ -43,10 +43,11 @@ Check out the [image classification example](/docs/current/developer-docs/ai/ai-
 
 ## Inference on-device
 
-An alternative to running the model on-chain would be for the user to download the model from a canister smart contract, and the inference then happens on the user's device.
-If the user trusts their own device, then they can trust that the inference ran correctly.
-A disadvantage here is that the model needs to be downloaded to the user's device with corresponding drawbacks of less confidentiality of the model and decreased user experience due to increased latency.
-ICP supports this use case for practically all existing models because a smart contract on ICP can store models up to 400GiB.
+An alternative to running the model on-chain would be to download the model from a canister, then run the inference on the local device. If the user trusts their own device, then they can trust that the inference ran correctly.
+
+A disadvantage of this workflow is that the model needs to be downloaded to the user's device, resulting in less confidentiality of the model and decreased user experience due to increased latency.
+
+ICP supports this workflow for most existing models because a smart contract on ICP can store models up to 400GiB.
 
 ### Examples
 
