@@ -27,7 +27,7 @@ function FeaturePage() {
                 is decentralized, runs fully onchain and is, for instance,
                 responsible for making protocol level upgrades to continuously
                 improve the Internet Computer. ICP neuron holders vote on
-                proposals that uprade the IC. Once such a proposal is accepted,
+                proposals that upgrade the IC. Once such a proposal is accepted,
                 it is autonomously executed across the blockchain (no human
                 intervention).
                 <br />

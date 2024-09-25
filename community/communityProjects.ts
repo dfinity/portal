@@ -2067,6 +2067,24 @@ const communityProjects: SampleItem[] = [
     contentType: ["code samples", "community repo", "live demos"],
     image: "/img/community-projects/d-vote.png",
   },
+  {
+    index: 127,
+    title: "ASPPIBRA-DAO",
+    body: "ASPPIBRA - Association of Property Owners and Possessors in Brazil is a non-profit civil association, founded on April 9, 2016, in the State of Rio de Janeiro-RJ. It is composed of professionals and citizens committed to the technological and socioeconomic development of modern society.",
+    links: {
+      github: "https://github.com/ASPPIBRA-DAO",
+      livePreview: "https://www.asppibra.com.br/",
+      otherLinks: ["https://x.com/ASPPIBRA_ORG",
+        "https://www.youtube.com/@ASPPIBRA-DAO/videos"],
+    },
+    domains: ["Public Good / Social Impact"],
+    level: "advanced",
+    languages: ["python", "javascript"],
+    contentType: ["code samples", "community repo", "live demos"],
+    image: "/img/showcase/BR-DAO_logo.svg",
+  },
+
+
 ];
 
 export default communityProjects;
