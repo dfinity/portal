@@ -1595,7 +1595,7 @@ const communityProjects: SampleItem[] = [
     links: {
       github: "https://github.com/amirhyoussefi/ic-sorn",
       external:
-        "https://supernova.devpost.com/submissions/334423-onchain-system-of-record-with-public-notary",
+        "https://supernova.devpost.com/submissions/334423-on-chain-system-of-record-with-public-notary",
       otherLinks: [],
     },
     domains: ["Blue Sky"],
