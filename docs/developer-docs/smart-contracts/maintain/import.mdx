@@ -100,7 +100,7 @@ The `pullable` object will be serialized as a part of the `dfx` metadata and att
 To better understand the `pullable` object, let's look at each property in depth.
 
 - `wasm_url`: A URL used to download the canister Wasm module which will be deployed locally.
-- `wasm_hash`: A SHA256 hash of the Wasm module located at `wasm_url`. This field is optional. In most cases, the Wasm module at `wasm_url` will be the same as the on-chain Wasm module. This means that dfx can read the state tree to obtain and verify the module hash. In some cases, the Wasm module at `wasm_url` is not the same as the on-chain Wasm module. For example, the Internet Identity canister provides a `development` variant to be integrated locally. In these cases, `wasm_hash` provides the expected hash, and `dfx` verifies the downloaded Wasm against this.
+- `wasm_hash`: A SHA256 hash of the Wasm module located at `wasm_url`. This field is optional. In most cases, the Wasm module at `wasm_url` will be the same as the onchain Wasm module. This means that dfx can read the state tree to obtain and verify the module hash. In some cases, the Wasm module at `wasm_url` is not the same as the onchain Wasm module. For example, the Internet Identity canister provides a `development` variant to be integrated locally. In these cases, `wasm_hash` provides the expected hash, and `dfx` verifies the downloaded Wasm against this.
 
 :::caution
 If the `wasm_hash` of the Wasm module at `wasm_url` does not match, dfx will abort with an error message indicating that there is a hash mismatch. In this scenario, the service consumer should contact the service provider. It is the responsibility of the service provider to assure that the correct Wasm module can be downloaded from the `wasm_url`.

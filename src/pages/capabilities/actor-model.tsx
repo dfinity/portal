@@ -134,7 +134,7 @@ function FeaturePage() {
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
-                See examples of dapps 100% on-chain
+                See examples of dapps 100% onchain
               </Link>
             </p>
           </div>

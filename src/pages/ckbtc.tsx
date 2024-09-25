@@ -299,7 +299,7 @@ function CkbtcPage(): JSX.Element {
                   ></img>
                   <h3 className="tw-heading-5 mb-2 mt-8">ICDex</h3>
                   <p className="tw-lead-sm mb-0 text-black/60">
-                    First orderbook-based DEX running fully on-chain. Bypass
+                    First orderbook-based DEX running fully onchain. Bypass
                     CEXs and get ICP or CHAT tokens for your BTC.{" "}
                   </p>
                 </Link>
@@ -356,7 +356,7 @@ function CkbtcPage(): JSX.Element {
                   ></img>
                   <h3 className="tw-heading-5 mb-2 mt-8">Sonic</h3>
                   <p className="tw-lead-sm mb-0 text-black/60">
-                    Swap tokens, or provide liquidity on a fully on-chain DEX.
+                    Swap tokens, or provide liquidity on a fully onchain DEX.
                   </p>
                 </Link>
               </motion.div>
@@ -595,7 +595,7 @@ function CkbtcPage(): JSX.Element {
                   </p>
                   <p className="tw-paragraph mb-3">
                     Canister smart contracts can programmatically hold and
-                    transfer ckBTC, making it possible to develop fully on-chain
+                    transfer ckBTC, making it possible to develop fully onchain
                     Layer-2 applications for Bitcoin, which is not possible
                     using the Lightning Network.
                   </p>

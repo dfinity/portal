@@ -81,7 +81,7 @@ const projects: {
 }[] = [
   {
     title: "distrikt",
-    body: "distrikt combines the best of Twitter and Linkedin. It is the world's first web3 microblogging social media platform built entirely on-chain. Own your data and identity, make new connections, and build a community.",
+    body: "distrikt combines the best of Twitter and Linkedin. It is the world's first web3 microblogging social media platform built entirely onchain. Own your data and identity, make new connections, and build a community.",
     imageUrl: "/img/social-media-dapps/Distrikt.webp",
   },
   {
@@ -273,7 +273,7 @@ function SocialMediaDappsPage() {
             </motion.h2>
             <motion.p className="tw-lead-sm mb-8" variants={transitions.item}>
               The Internet Computer is a true world computer. It hosts the
-              largest collection of Web3 social media services fully on-chain.
+              largest collection of Web3 social media services fully onchain.
               Services like OpenChat, DSCVR and distrikt are already well on
               their way to mass adoption, with over 300,000 users combined.
             </motion.p>
@@ -380,10 +380,10 @@ function SocialMediaDappsPage() {
                       Provides out of the box anonymous authentication system
                     </li>
                     <li className="checklist-item leading-6 pl-8">
-                      Store large amounts of data on-chain
+                      Store large amounts of data onchain
                     </li>
                     <li className="checklist-item leading-6 pl-8">
-                      Store private data on-chain
+                      Store private data onchain
                     </li>
                   </ul>
                   <p>

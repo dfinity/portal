@@ -60,7 +60,7 @@ const projects = [
     altText: "Orally Logo",
     title: "Orally",
     description:
-      "Orally is a decentralized data oracle provider. The goal of Orally's suite of products is to make digital asset data and real world data accessible on-chain.",
+      "Orally is a decentralized data oracle provider. The goal of Orally's suite of products is to make digital asset data and real world data accessible onchain.",
     link: "https://orally.network/",
   },
   {
@@ -322,7 +322,7 @@ function EthereumIntegrationPage() {
                 alt=""
                 className="mb-6"
               ></img>
-              <h3 className="sm:tw-heading-5 mb-2">100% on-chain Web3</h3>
+              <h3 className="sm:tw-heading-5 mb-2">100% onchain Web3</h3>
               <p className="tw-paragraph mb-0">
                 Decentralize your Ethereum dapp by hosting frontend and backend
                 data on the Internet Computer.
@@ -381,7 +381,7 @@ function EthereumIntegrationPage() {
               ckETH and ckERC-20 expose ICRC-1 and 2 ledger interfaces (the
               token standards of ICP), making it simple for all ICP wallets to
               offer ckETH support. Total value of ckETH is fully backed 1:1 by
-              ETH, and can always be verified by viewing the on-chain dashboard
+              ETH, and can always be verified by viewing the onchain dashboard
               and metrics of the canisters.
             </p>
           </TranslatedLayout>
@@ -415,7 +415,7 @@ function EthereumIntegrationPage() {
             <p className="tw-lead-sm font-bold mt-1">EVM RPC</p>
             <p className="tw-lead-sm mb-6 md:mb-10">
               The EVM RPC canister is an ICP smart contract for communicating
-              with Ethereum and other EVM blockchains using an on-chain API. It
+              with Ethereum and other EVM blockchains using an onchain API. It
               introduces methods that massively simplify the developer
               experience. The Tritium milestone allows communication with
               Ethereum, Arbitrum, Optimism and Base. Interoperability can be
