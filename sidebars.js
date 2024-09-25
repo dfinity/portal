@@ -1368,6 +1368,11 @@ const sidebars = {
           id: "references/message-execution-properties",
         },
         {
+          type: "doc",
+          label: "Ingress messages",
+          id: "references/ingress-messages",
+        },
+        {
           type: "category",
           label: "Languages",
           items: [
