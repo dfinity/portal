@@ -1107,8 +1107,19 @@ const sidebars = {
           label: "Overview",
           id: "developer-docs/ai/overview",
         },
-        "developer-docs/ai/ai-on-chain",
-        "developer-docs/ai/machine-learning-sample",
+        {
+          type: "category",
+          label: "Inference",
+          items: [
+            {
+              type: "doc",
+              label: "Overview",
+              id: "developer-docs/ai/inference",
+	    },
+	    "developer-docs/ai/ai-on-chain",
+	    "developer-docs/ai/machine-learning-sample",
+	  ]
+        },
       ],
     },
     {

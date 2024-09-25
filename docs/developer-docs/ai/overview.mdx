@@ -33,7 +33,7 @@ Inference happens on the user's device after downloading the model.
 If the user trusts their own device, then they can trust that the inference ran correctly.
 A disadvantage here is that the model needs to be downloaded to the user's device with corresponding drawbacks of less confidentiality of the model and decreased user experience due to increased latency.
 ICP supports this use case for practically all existing models because a smart contract on ICP can store models up to 400GiB.
-See [an example]((https://github.com/patnorris/DecentralizedAIonIC) of an in-browser AI chatbot that uses an open-source LLM model served from ICP.
+See [an example](https://github.com/patnorris/DecentralizedAIonIC) of an in-browser AI chatbot that uses an open-source LLM model served from ICP.
 
 4. **Tokenization, marketplaces, orchestration**:
 This refers to using smart contracts as the tokenization, marketplace, and orchestration layer for AI models and AI hardware.
@@ -64,6 +64,8 @@ Running AI models onchain is too compute and memory-intensive for traditional bl
 Currently, ICP supports onchain inference of small models using AI libraries such as [Sonos Tract](https://github.com/sonos/tract) that compile to WebAssembly.
 Check out the [image classification example](/docs/current/developer-docs/ai/ai-on-chain) to learn how it works.
 The long-term [vision of DeAI on ICP](https://internetcomputer.org/roadmap#Decentralized%20AI-start) is to support onchain GPU compute to enable both training and inference of larger models.
+
+You can learn more about running AI inference on ICP [here](./inference.mdx).
 
 ## Technical working group: DeAI
 
