@@ -131,7 +131,7 @@ Then, it declares the type of this variable as `Text`, which is the standard typ
 
 Since you are using the type `Text`, you need to import the type `Text` from the Motoko base library. To do this, add an import statement at the top of the file:
 
-```motoko title="src/poll_backend/main.mo"
+```motoko no-repl title="src/poll_backend/main.mo"
 import Text "mo:base/Text";
 ```
 
@@ -169,7 +169,7 @@ Let's start with the first functionality; obtain the current poll question. To d
 The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
 :::
 
-```motoko title="src/poll_backend/main.mo"
+```motoko no-repl title="src/poll_backend/main.mo"
 public query func getQuestion() : async Text {
     question
 };
@@ -207,7 +207,6 @@ After adding the `getQuestion` method, your `main.mo` file should look like this
 ```motoko title="src/poll_backend/main.mo"
 import Text "mo:base/Text";
 
-
 actor {
     var question: Text = "What is your favorite programming language?";
 
@@ -244,7 +243,7 @@ In order to store and query the `RBTree` data structure, you need to import a fe
 
 To import these packages, add the following import statements to the beginning of the `main.mo` file:
 
-```motoko title="src/poll_backend/main.mo"
+```motoko no-repl title="src/poll_backend/main.mo"
 import RBTree "mo:base/RBTree";
 import Nat "mo:base/Nat";
 import Iter "mo:base/Iter";
@@ -253,7 +252,7 @@ import Iter "mo:base/Iter";
 ### Declaring the `votes` variable
 Next, you need to add some code inside the actor to declare the variable for the data structure:
 
-```motoko title="src/poll_backend/main.mo"
+```motoko no-repl title="src/poll_backend/main.mo"
     var votes: RBTree.RBTree<Text, Nat> = RBTree.RBTree(Text.compare);
 ```
 
@@ -273,7 +272,7 @@ The following example is a **code snippet** that is part of a larger code file. 
 :::
 
 
-```motoko title="src/poll_backend/main.mo"
+```motoko no-repl title="src/poll_backend/main.mo"
 // query the list of entries and votes for each one
 // Example:
 //      * JSON that the frontend will receive using the values above:
@@ -309,7 +308,7 @@ The following example is a **code snippet** that is part of a larger code file. 
 :::
 
 
-```motoko title="src/poll_backend/main.mo"
+```motoko no-repl title="src/poll_backend/main.mo"
  // This method takes an entry to vote for, updates the data and returns the updated hashmap
 // Example input: vote("Motoko")
 // Example:
@@ -354,7 +353,7 @@ Insert the following code into your `main.mo` file; there are inline comments th
 The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
 :::
 
-```motoko title="src/poll_backend/main.mo"
+```motoko no-repl title="src/poll_backend/main.mo"
 //This method resets the vote count for each option and returns the updated hashmap
 // Example JSON that the frontend will get using the values above
 // [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
@@ -385,7 +384,6 @@ import Nat "mo:base/Nat";
 import Text "mo:base/Text";
 import Iter "mo:base/Iter";
 
-
 actor {
 
   var question: Text = "What is your favorite programming language?";
@@ -407,9 +405,7 @@ actor {
 
     };
 
-
-
- // This method takes an entry to vote for, updates the data and returns the updated hashmap
+// This method takes an entry to vote for, updates the data and returns the updated hashmap
 // Example input: vote("Motoko")
 // Example:
 //      * JSON that the frontend will receive using the values above:
@@ -890,7 +886,7 @@ You will need to configure the project to use certain `npm` packages. These pack
     "prebuild": "dfx generate",
     "start": "webpack serve --mode development --env development",
     "deploy:local": "dfx deploy --network=local",
-    "deploy:ic": "dfx deploy --network=ic",
+    "deploy:ic": "dfx deploy --network ic",
     "generate": "dfx generate poll_backend"
   },
   "dependencies": {

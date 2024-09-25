@@ -97,10 +97,13 @@ The current fees are:
 
 | Message type | Base fee | Per byte fee |
 |--------------|----------|--------------|
+| Query call    | 0       |  0           |
 | Canister-to-canister | 260K | 1K |
 | User-to-canister (ingress) | 1.2M | 2K |
 
+:::info
 Note that query messages are currently free, but this may change in the future.
+:::
 
 ### Execution
 
@@ -163,6 +166,7 @@ The table below details the cost of compute, storage transmissions and canister 
 
 | Canister transmission | Description | Who is responsible for paying the cycles fee? | 13-node subnets cycles cost | 13-node subnets USD cost | 34-node subnets | 34-node subnets USD cost |
 | ----------------- | ------------------------------- | -------------------------------------------------- | ----------------------------------------------- | --------------------------------------- | ------------------------------------- | --------------------------- | ------------------------------------ |
+| Query call|         | Query information from a canister. | N/A | Free |  Free | Free | Free |
 | Canister creation | For creating canisters on a subnet. | Created canister | 100B | $0.133661000000 | 100B / 13 * 34 | $0.349574923077 |
 | Compute percent allocated per second | For each percent of the reserved compute allocation (a scarce resource). | Canister with allocation | 10M | $0.000013366100 | 10M / 13 * 34 | $0.000034957492 |
 | Update message execution | For every update message executed. | Target canister | 590K | $0.000000788600 | 590K / 13 * 34 | $0.000002062492 |

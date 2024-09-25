@@ -204,15 +204,16 @@ the canister ID `hwvjt-wqaaa-aaaam-qadra-cai`.
 
 ### DNS configuration
 
-| Record Type   | Host                  | Value                                |
-| ------------- | --------------------- | ------------------------------------ |
-| `CNAME`       | @                     | foo.bar.com.icp1.io                  |
-| `TXT`         | \_canister-id         | hwvjt-wqaaa-aaaam-qadra-cai          |
-| `CNAME`       | \_acme-challenge      | \_acme-challenge.foo.bar.com.icp2.io |
+| Record Type   | Host                          | Value                                |
+| ------------- | ----------------------------- | ------------------------------------ |
+| `CNAME`       | foo.bar.com                   | foo.bar.com.icp1.io                  |
+| `TXT`         | \_canister-id.foo.bar.com     | hwvjt-wqaaa-aaaam-qadra-cai          |
+| `CNAME`       | \_acme-challenge.foo.bar.com  | \_acme-challenge.foo.bar.com.icp2.io |
 
 :::info
 
-Some DNS providers do not require you to specify the main domain. For example:
+Some DNS providers do not require you to specify the main domain (`bar.com`).
+For example:
 
 - `foo` instead of `foo.bar.com`.
 

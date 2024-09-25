@@ -27,7 +27,7 @@ const sliderData = [
   {
     tagline: "Milestone achieved 🏆",
     title: "CYCLOTRON",
-    description: "On-chain AI Inference",
+    description: "Onchain AI Inference",
     image: "/img/home/slider/update_ai_milestone.webp",
     link: "/roadmap#Decentralized%20AI-Cyclotron",
   },
@@ -40,7 +40,7 @@ const sliderData = [
   },
   {
     tagline: "ICP Pitch Deck",
-    title: "How the Internet Became Backend Compute Too",
+    title: "ICP makes the internet into a World Computer",
     description: "Read now",
     image: "/img/home/slider/icp_deck_highlight.webp",
     link: "https://deck.internetcomputer.org/",
@@ -102,17 +102,15 @@ export const CardWithImage: React.FC<{
     <MotionLink
       variants={transitions.item}
       to={href}
-      className="bg-[#0C0025] rounded-xl pl-8 p-5 text-white hover:no-underline transition-all hover:text-white flex flex-col justify-center gap-8 group"
-      style={{
-        backgroundImage: `url(${image})`,
-        backgroundSize: "contain",
-        backgroundPosition: "bottom right",
-        backgroundRepeat: "no-repeat",
-      }}
+      className="bg-[#0C0025] rounded-xl pl-8 p-5 text-white hover:no-underline transition-all hover:text-white flex flex-col justify-center gap-8 group relative overflow-hidden"
     >
-      <div className="md:group-hover:-translate-y-2 transition-transform">
+      <div className="md:group-hover:-translate-y-2 transition-transform relative z-10">
         {children}
       </div>
+      <div
+        className="absolute inset-y-0 right-0 w-1/3 bg-cover bg-no-repeat bg-right"
+        style={{ backgroundImage: `url(${image})` }}
+      />
     </MotionLink>
   );
 };
@@ -194,7 +192,7 @@ export const SectionSlider = () => {
         {sliderData.map((data, index) => (
           <article key={index} className="border-box px-3">
             <CardWithImage href={data.link} image={data.image}>
-              <div className="h-[120px] md:h-[140px] mr-44 flex flex-col justify-center">
+              <div className="h-[120px] w-2/3 md:h-[140px] mr-44 flex flex-col justify-center">
                 <strong className="tw-paragraph-sm md:tw-heading-7 mb-2 !truncate">
                   {data.tagline}
                 </strong>

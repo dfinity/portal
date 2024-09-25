@@ -16,7 +16,7 @@ Instead of manually topping up a canister via `dfx` or scripting a custom soluti
 ## Popular cycles management services
 Popular cycles management services include:
 
-* [CycleOps](https://cycleops.dev): On-chain, proactive, no-code canister monitoring with historical trend graphs, top up email notifications & downloadable transaction history.
+* [CycleOps](https://cycleops.dev): Onchain, proactive, no-code canister monitoring with historical trend graphs, top up email notifications & downloadable transaction history.
 * [TipJar](https://k25co-pqaaa-aaaab-aaakq-cai.ic0.app/): Donate cycles to your favorite canisters on the Internet Computer and keep them alive and healthy!
 * [Canistergeek](https://cusyh-iyaaa-aaaah-qcpba-cai.raw.icp0.io/): Top up your canisters, monitor cycles, memory, and logs, and get your monthly reports in one place.
 
@@ -40,7 +40,7 @@ You will still need to top up the CyclesManager canister manually.
 
 Here is example code for the 'CyclesManager' canister:
 
-```motoko title="CyclesManager.mo"
+```motoko no-repl title="CyclesManager.mo"
 // Import packages
 import { logand } "mo:base/Bool";
 import { trap } "mo:base/Debug";
@@ -122,7 +122,7 @@ actor CyclesManager {
 
 Here is example code for the 'Child' canister:
 
-```motoko Child.mo
+```motoko no-repl Child.mo
 
 // Import the Mops package CyclesManager
 import CyclesRequester "mo:cycles-manager/CyclesRequester";

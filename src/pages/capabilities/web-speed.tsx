@@ -22,7 +22,7 @@ function FeaturePage() {
               <p className="tw-lead-sm md:tw-lead mb-0">
                 Users can interact with dapps on the Internet Computer (IC) with
                 speeds comparable to traditional web applications. Developers
-                can therefore build a much broader range of fully on-chain dapps
+                can therefore build a much broader range of fully onchain dapps
                 without relying on cloud services and risking single points of
                 failure.
                 <br />
@@ -113,7 +113,7 @@ function FeaturePage() {
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
-                See other 100% on-chain dapps
+                See other 100% onchain dapps
               </Link>
             </p>
           </div>

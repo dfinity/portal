@@ -11,7 +11,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 A **non-fungible token**, often shortened to NFT, is a record on a blockchain that is associated with a unique digital or physical asset. Unlike fungible tokens that can be traded 1:1 for each other, non-fungible tokens often have varying values and cannot be directly swapped.
 
-NFTs are deployed on-chain using smart contracts to provide a transparent record of ownership and proof of the asset's validity. Some common use cases for NFTs include:
+NFTs are deployed onchain using smart contracts to provide a transparent record of ownership and proof of the asset's validity. Some common use cases for NFTs include:
 
 - Buying and selling unique art, including digital art, paintings, videos, or music.
 
@@ -21,7 +21,7 @@ NFTs are deployed on-chain using smart contracts to provide a transparent record
 
 - Recording documents such as education certificates or awards.
 
-NFTs are created by recording the token's data on-chain through a process known as minting. On ICP, minting is done through a <GlossaryTooltip>canister</GlossaryTooltip> smart contract that defines the NFT's ownership, data, and metadata. It also enables the NFT to be sold or transferred to another account.
+NFTs are created by recording the token's data onchain through a process known as minting. On ICP, minting is done through a <GlossaryTooltip>canister</GlossaryTooltip> smart contract that defines the NFT's ownership, data, and metadata. It also enables the NFT to be sold or transferred to another account.
 
 Each NFT is assigned a unique identifier that is publicly accessible, along with the NFT's data, metadata, and transaction history. NFTs can be part of a large collection, such as '1 of 1_000', or they can be '1 of 1' tokens. '1 of 1' NFTs are often used for original art, education certificates, or property records, while '1 of 1_000' can be used to provide equal benefits to each NFT holder, such as membership to a website or tickets to an event.
 
@@ -29,9 +29,9 @@ However, even if all 1_000 NFTs in a collection are the exact same image and pro
 
 ## NFTs on ICP
 
-ICP enables cross-chain NFT functionality, allowing assets such as images, music, or videos to be securely stored entirely on-chain while the NFT itself is minted on various chains, such as any EVM chain. Refer to [the cross-chain NFT example](https://github.com/domwoe/erc-721-ic-assets) on how to host metadata on the ICP for an ERC-721 NFT minted on an EVM chain.
+ICP enables cross-chain NFT functionality, allowing assets such as images, music, or videos to be securely stored entirely onchain while the NFT itself is minted on various chains, such as any EVM chain. Refer to [the cross-chain NFT example](https://github.com/domwoe/erc-721-ic-assets) on how to host metadata on the ICP for an ERC-721 NFT minted on an EVM chain.
 
-ICP also supports dynamic NFTs that can be curated to evolve based on both data stored on-chain or obtained through external APIs. NFT assets can be modified in real time by making external API requests using [HTTPS outcalls](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview).
+ICP also supports dynamic NFTs that can be curated to evolve based on both data stored onchain or obtained through external APIs. NFT assets can be modified in real time by making external API requests using [HTTPS outcalls](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview).
 
 ICP provides two standards for NFTs, [ICRC-7](https://github.com/dfinity/ICRC/blob/main/ICRCs/ICRC-7/ICRC-7.md) and [ICRC-37](https://github.com/dfinity/ICRC/blob/main/ICRCs/ICRC-37/ICRC-37.md). ICRC-7 is a base standard that intentionally excludes certain functions, while ICRC-37 is an extension of ICRC-7 that enables an approval workflow.
 
