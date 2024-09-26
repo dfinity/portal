@@ -292,7 +292,7 @@ const FaqItem = ({ question, answer }) => {
             }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            <div className="p-6 pt-0">
+            <div className="p-6 !pt-0">
               <p className="tw-paragraph !mb-0">{answer}</p>
             </div>
           </motion.div>
