@@ -6,7 +6,7 @@ import ShareMeta from "@site/src/components/Common/ShareMeta";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import clsx from "clsx";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import LightHeroStyles from "@site/src/components/Common/LightHeroStyles";
 import VideoCard, {
   ImageOnlyVideoCard,
@@ -17,6 +17,10 @@ import LinkArrowUpRight from "@site/src/components/Common/Icons/LinkArrowUpRight
 import AIManifestoModal from "@site/src/components/AIManifestoModal";
 import { useElementSize } from "@site/src/utils/use-element-size";
 import { useLocation } from "@docusaurus/router";
+import LinkArrowUp from "../components/Common/Icons/LinkArrowUp";
+import LinkArrowDown from "../components/Common/Icons/LinkArrowDown";
+import ChevronDown from "../components/Common/Icons/ChevronDown";
+import ChevronUp from "../components/Common/Icons/ChevronUp";
 
 interface FeatureCardProps {
   imageSrc: string;
@@ -253,19 +257,48 @@ const Collapse: React.FC<{
   );
 };
 
-interface FaqItemProps {
-  question: string;
-  answer: string;
-}
+const FaqItem = ({ question, answer }) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-const FaqItem: React.FC<FaqItemProps> = ({ question, answer }) => {
+  const toggleOpen = () => setIsOpen(!isOpen);
+
   return (
-    <article className="mb-12 md:mb-20">
-      <h2 className="text-black-60 tw-lead md:tw-lead-lg mb-4 md:mb-6">
-        {question}
-      </h2>
-      <p className="text-black tw-lead-sm">{answer}</p>
-    </article>
+    <motion.article
+      initial={false}
+      animate={{ backgroundColor: isOpen ? "#F1EEF5" : "#FFFFFF" }}
+      className={`flex flex-col rounded-xl mb-4 text-black overflow-hidden border-solid border-[1px] border-[#F1EEF5]`}
+    >
+      <header
+        className="flex w-full items-center gap-6 tw-lead-sm justify-between p-6 cursor-pointer select-none"
+        onClick={toggleOpen}
+      >
+        <div className="flex-1">{question}</div>
+        {isOpen ? (
+          <ChevronUp className="w-6 h-6 text-black" />
+        ) : (
+          <ChevronDown className="w-6 h-6 text-black" />
+        )}
+      </header>
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            key="content"
+            initial="collapsed"
+            animate="open"
+            exit="collapsed"
+            variants={{
+              open: { opacity: 1, height: "auto" },
+              collapsed: { opacity: 0, height: 0 },
+            }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <div className="p-6 pt-0">
+              <p className="tw-paragraph !mb-0">{answer}</p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.article>
   );
 };
 
