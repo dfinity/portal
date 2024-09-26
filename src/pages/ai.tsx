@@ -556,6 +556,7 @@ let result = model.run(
               className=" w-[120%] sm:w-7/10 md:w-[85%]
               absolute
               bottom-0
+              
               translate-y-[110%] translate-x-[-10%] md:translate-y-[45%] md:translate-x-[55%]
               sm:translate-y-[80%] sm:translate-x-[20%]
               select-none 
