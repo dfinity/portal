@@ -595,10 +595,10 @@ const Overlay: React.FC<{
     >
       <div className="fixed inset-0"></div>
       <div
-        className="relative container-10 p-12 text-white rounded-xl mt-10 overflow-clip"
+        className="relative container-10 p-12 text-white rounded-[36px] mt-10 overflow-clip"
         onClick={(e) => e.stopPropagation()}
         style={{
-          'backgroundColor': `color-mix(in lab, ${color} 50%, rgba(0 0 0 / 60%))`, 
+          'backgroundColor': `color-mix(in lab, ${color} 20%, rgba(0 0 0 / 60%))`, 
         }}
       >
         <div className="float-right pointer-events-none sticky top-8 md:top-20 z-10 z-30">
