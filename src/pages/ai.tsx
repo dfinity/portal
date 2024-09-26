@@ -64,7 +64,7 @@ interface RoadmapItemProps {
 
 const RoadmapItem: React.FC<RoadmapItemProps> = ({ number, title, date }) => {
   return (
-    <section className="min-w-64 flex flex-col justify-between flex-1 p-3 md:p-6 pb-5 md:pb-10 bg-[#F1EEF5] rounded-xl md:min-h-[320px]">
+    <section className="snap-start min-w-64 flex flex-col justify-between flex-1 p-3 md:p-6 pb-5 md:pb-10 bg-[#F1EEF5] rounded-xl md:min-h-[320px]">
       <h2 className="tw-lead text-black-20">{number}</h2>
       <div className="flex flex-col mt-auto flex-start">
         {date && (
@@ -94,7 +94,7 @@ const AIFeatureCard: React.FC<AIFeatureCardProps> = ({
   features,
 }) => {
   return (
-    <article className="flex flex-col flex-shrink-0 w-[80vw] sm:w-auto sm:flex-1 justify-between bg-white rounded-xl p-6 pb-10">
+    <article className="snap-start flex flex-col flex-shrink-0 w-[80vw] sm:w-auto sm:flex-1 justify-between bg-white rounded-xl p-6 pb-10">
       {" "}
       <header className="flex w-full items-start justify-between gap-10 tw-lead text-black-20 whitespace-nowrap">
         <span>{number}</span>
@@ -182,14 +182,12 @@ const ScrollableSection: React.FC<ScrollableSectionProps> = ({
       {title && (
         <motion.h4 className="tw-title-sm md:w-7/10 mb-8">{title}</motion.h4>
       )}
-      <div
-        ref={scrollContainerRef}
-        className={`flex overflow-x-auto ${
-          type === "roadmap" ? "md:overflow-x-visible" : ""
-        } snap-mandatory snap-x hide-scrollbar -mx-6 px-4 pl-6`}
-      >
+      <div className={`flex -mx-6 px-4 pl-6`}>
         <div
-          className={`flex gap-4 ${type === "roadmap" ? "pb-4 md:pb-0" : ""}`}
+          ref={scrollContainerRef}
+          className={`flex gap-4 snap-start snap-mandatory snap-x ${
+            type === "roadmap" ? "pb-4 md:pb-0 md:overflow-x-visible" : " "
+          } overflow-x-auto hide-scrollbar`}
         >
           {items.map((item, index) => (
             <ItemComponent key={index} {...item} />
