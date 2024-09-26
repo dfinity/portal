@@ -521,6 +521,7 @@ const sidebars = {
                 "developer-docs/developer-tools/off-chain/agents/rust-agent",
               ],
             },
+            "developer-docs/developer-tools/off-chain/canpack",
           ],
         },
         {
