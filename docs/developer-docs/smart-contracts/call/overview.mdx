@@ -222,6 +222,12 @@ Replicated queries, also referred to as the "query-as-update" execution model, a
 
 Inter-canister calls are used to make calls between different canisters. An inter-canister call involves two messages: a request from the caller to the callee along with a response that the callee will return to the caller.
 
+### Authorized calls
+
+An authorized call on ICP refers to a call to a canister that can only be made by a principal (a user or another canister) that has the necessary permissions to perform the call. For example, only a controller of a canister can call the canister's `install_code` function.
+
+Authorized calls that return a value of `()` indicate that the function may not take an argument, or no meaningful value is returned.
+
 ## Making calls with IDLs
 
 On the protocol level, calls on ICP use blobs to describe arguments and results passed to and returned from canisters. It's typically easier to use an [Interface description language](https://en.wikipedia.org/wiki/Interface_description_language) (IDL) to define a canister's interfaces that can be called by end users or other canisters.
