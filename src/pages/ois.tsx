@@ -86,7 +86,7 @@ function OpenChatPage() {
                   </b>
                   <span style={{ display: "block", height: "0.6em" }}></span>
                   An "open internet service" (OIS) keeps all its code, user
-                  experience, compute and data on-chain, and must be
+                  experience, compute and data onchain, and must be
                   transparently configured, updated and instructed by an
                   advanced DAO: a public governance framework called a "service
                   nervous system" (SNS).
@@ -149,7 +149,7 @@ function OpenChatPage() {
           className="container-10 mt-24 md:mt-30 "
         >
           <VideoCard
-            label="Fully On-chain with DFINITY"
+            label="Fully Onchain with DFINITY"
             title="Next Generation DAOs"
             description="Episode #2 | SNS"
             image={`https://i.ytimg.com/vi/WxRgm6JAGpQ/maxresdefault.jpg`}
@@ -177,7 +177,7 @@ function OpenChatPage() {
                   #ICP
                 </a>
                 , which store and process all its data, and serve the user
-                experience into web browsers. Because it runs fully on-chain,
+                experience into web browsers. Because it runs fully onchain,
                 without centralization, an advanced community DAO has taken over
                 responsibility for pushing updates to its software logic.
               </p>

@@ -1548,8 +1548,8 @@
     {
       "id": "reclnlbtZ2kY2OeVW",
       "eventName": "Astro Online Hackathon",
-      "marketingText": "Este Hackathon es organizado por ICP Hub Latam y Zona Tres. Internet Computer es un ecosistema Blockchain que se destaca por el desarrollo de Canisters en JavaScript, Python, Motoko y Rust, almacenamiento de información on-chain.\nSi ya tienes experiencia desarrollando en alguno de estos lenguajes, esta oportunidad es para ti!!\nAlgunos de los premios:\n🏆 Premios:\n- Primer premio de 1500 USD\n- Segundo premio de 1000 USD\n- Tercer premio de 500 USD\n- Premios bono a mejores integraciones, incluyendo premios a los mejores proyectos que integren ckBTC y el ckETH.\nHaz click aquí para inscribirte: <https://lu.ma/Astro>\n\n",
-      "description": "Este Hackathon es organizado por ICP Hub Latam y Zona Tres. Internet Computer es un ecosistema Blockchain que se destaca por el desarrollo de Canisters en JavaScript, Python, Motoko y Rust, almacenamiento de información on-chain.\n\nSi ya tienes experiencia desarrollando en alguno de estos lenguajes, esta oportunidad es para ti!!\n\nAlgunos de los premios:\n\n🏆 Premios:\n- Primer premio de 1500 USD\n- Segundo premio de 1000 USD\n- Tercer premio de 500 USD\n- Premios bono a mejores integraciones, incluyendo premios a los mejores proyectos que integren ckBTC y el ckETH.\n\nHaz click aquí para inscribirte: https://lu.ma/Astro",
+      "marketingText": "Este Hackathon es organizado por ICP Hub Latam y Zona Tres. Internet Computer es un ecosistema Blockchain que se destaca por el desarrollo de Canisters en JavaScript, Python, Motoko y Rust, almacenamiento de información onchain.\nSi ya tienes experiencia desarrollando en alguno de estos lenguajes, esta oportunidad es para ti!!\nAlgunos de los premios:\n🏆 Premios:\n- Primer premio de 1500 USD\n- Segundo premio de 1000 USD\n- Tercer premio de 500 USD\n- Premios bono a mejores integraciones, incluyendo premios a los mejores proyectos que integren ckBTC y el ckETH.\nHaz click aquí para inscribirte: <https://lu.ma/Astro>\n\n",
+      "description": "Este Hackathon es organizado por ICP Hub Latam y Zona Tres. Internet Computer es un ecosistema Blockchain que se destaca por el desarrollo de Canisters en JavaScript, Python, Motoko y Rust, almacenamiento de información onchain.\n\nSi ya tienes experiencia desarrollando en alguno de estos lenguajes, esta oportunidad es para ti!!\n\nAlgunos de los premios:\n\n🏆 Premios:\n- Primer premio de 1500 USD\n- Segundo premio de 1000 USD\n- Tercer premio de 500 USD\n- Premios bono a mejores integraciones, incluyendo premios a los mejores proyectos que integren ckBTC y el ckETH.\n\nHaz click aquí para inscribirte: https://lu.ma/Astro",
       "eventLink": "https://lu.ma/Astro",
       "topic": [
         "Blockchain",
@@ -1592,7 +1592,7 @@
     },
     {
       "id": "recDrm0GgkHUCq5xu",
-      "eventName": "Namasté ICP | On-Chain Night",
+      "eventName": "Namasté ICP | Onchain Night",
       "description": null,
       "eventLink": "https://lu.ma/NamasteICP",
       "topic": [
