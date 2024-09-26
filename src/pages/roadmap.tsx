@@ -10,6 +10,7 @@ import ShareMeta from "../components/Common/ShareMeta";
 import Overlay, {
   ArrowIconRight,
   DeployedIcon,
+  InProgressIcon,
 } from "../components/RoadmapPage/Overlay";
 import { RootObject } from "../components/RoadmapPage/RoadmapTypes";
 import BlobGradient from "@site/static/img/gradientBlurredCircle.webp";
@@ -153,7 +154,7 @@ const milestoneComponent = (
   } as React.CSSProperties;
 
   let wrapperClasses =
-    "milestone relative snap-start text-white rounded-md shrink-0 grow-0  p-4 p-5 md:p-8 md:px-10 flex flex-col min-h-64 scroll-ml-[var(--offcut)] cursor-pointer";
+    "milestone relative snap-start text-white rounded-md shrink-0 grow-0  p-4 p-5 md:p-10 md:px-10 flex flex-col min-h-64 scroll-ml-[var(--offcut)] cursor-pointer";
   const isOrphan =
     milestone.name === "orphans_past" || milestone.name === "orphans_future";
   if (isOrphan) {
@@ -189,6 +190,16 @@ const milestoneComponent = (
       onClick={overlayTrigger}
     >
       {isActiveMilestone && <CardBlobs></CardBlobs>}
+      {(milestone.status === "deployed" || milestone.name === "orphans_past") && (
+        <div className="absolute w-[48px] right-5 top-5 md:right-10 md:top-10">
+          <DeployedIcon glowing={true} isDark={true} />
+        </div>
+      )}
+      {milestone.status === "in_progress" && (
+        <div className="absolute w-[48px] right-5 top-5 md:right-10 md:top-10">
+          <InProgressIcon isDark={true} />
+        </div>
+      )}
       {isOrphan ? (
         <div
           className={`grow flex flex-col ${
@@ -197,16 +208,11 @@ const milestoneComponent = (
               : "justify-end"
           } md:justify-end`}
         >
-          {milestone.name === "orphans_past" && (
-            <div className="w-9 ml-auto mr-0 mt-1 md:mt-0">
-              <DeployedIcon glowing={true} />
-            </div>
-          )}
-          <div>
-            <strong className="block text-[120px] font-light leading-none !text-right">
+          <div className="min-w-[140px]">
+            <strong className="block text-[80px] font-light leading-none !text-right">
               {milestone.elements!.length}
             </strong>
-            <strong className="!text-right">
+            <strong className="block text-right">
               {milestone.name === "orphans_past"
                 ? `Past feature${
                     milestone.elements && milestone.elements.length > 1
@@ -225,7 +231,7 @@ const milestoneComponent = (
         <div className="flex min-h-full gap-8 md:gap-20 relative">
           <div className="grow flex flex-col justify-between">
             <header>
-              <h2 className="mb-0 tw-heading-4 uppercase">
+              <h2 className="mb-0 tw-heading-5">
                 {milestone.milestone_id == "none"
                   ? milestoneName(milestone.name)
                   : milestone.milestone_id}
@@ -247,13 +253,8 @@ const milestoneComponent = (
             </header>
             <p className="mb-0 mt-3">{milestoneName(milestone.name)}</p>
           </div>
-          <div className="self-end">
-            {milestone.status === "deployed" && (
-              <div className="w-9 ml-auto mr-2 mt-1 md:mt-0">
-                <DeployedIcon glowing={true} />
-              </div>
-            )}
-            <strong className="block text-[120px] font-light leading-none text-right">
+          <div className="self-end mt-24">
+            <strong className="block text-[80px] font-light leading-none text-right">
               {milestone.elements!.length}
             </strong>
             <strong>Feature{milestone.elements!.length > 1 ? "s" : ""}</strong>
