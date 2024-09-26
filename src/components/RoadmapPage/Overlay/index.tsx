@@ -601,7 +601,7 @@ const Overlay: React.FC<{
           'backgroundColor': `color-mix(in lab, ${color} 20%, rgba(0 0 0 / 60%))`, 
         }}
       >
-        <div className="float-right pointer-events-none sticky top-8 md:top-20 z-10 z-30">
+        <div className="float-right pointer-events-none sticky top-[50px] z-10 z-30">
           <button
             className="pointer-events-auto flex w-12 h-12 rounded-full border-none bg-[#181818] justify-center items-center"
             onClick={onClose}
@@ -625,8 +625,10 @@ const Overlay: React.FC<{
             </svg>
           </button>
         </div>
-        <div className="sticky top-0 z-20 backdrop-blur-xl -mx-12 -mt-12 px-12 pt-12 pb-4">
-          <h2 className="tw-heading-3 font-black md:tw-heading-2 md:w-8/10">
+        <div 
+          className="sticky top-0 z-20 backdrop-blur-xl -mx-12 -mt-12 px-12 pt-12 pb-2"
+        >
+          <h2 className="tw-heading-3 font-black md:tw-heading-3 md:w-8/10">
             {data[index].name}
           </h2>
         </div>
