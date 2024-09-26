@@ -157,11 +157,10 @@ const proposalIcon = (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect x="0.5" y="0.5" width="39" height="39" rx="19.5" fill="white" />
-    <rect x="0.5" y="0.5" width="39" height="39" rx="19.5" stroke="#DFDFDF" />
+    <rect x="0.5" y="0.5" width="39" height="39" rx="19.5" fill="none" stroke="rgba(255 255 255 / 18%)" strokeWidth={1.25}/>
     <path
       d="M20 30C14.477 30 10 25.523 10 20C10 14.477 14.477 10 20 10C25.523 10 30 14.477 30 20C30 25.523 25.523 30 20 30ZM19 19V25H21V19H19ZM19 15V17H21V15H19Z"
-      fill="#3B00B9"
+      fill="#fff"
     />
   </svg>
 );
@@ -173,13 +172,12 @@ const forumIcon = (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect x="0.5" y="0.5" width="39" height="39" rx="19.5" fill="white" />
-    <rect x="0.5" y="0.5" width="39" height="39" rx="19.5" stroke="#DFDFDF" />
+    <rect x="0.5" y="0.5" width="39" height="39" rx="19.5" fill="none" stroke="rgba(255 255 255 / 18%)" strokeWidth={1.25}/>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
       d="M10.0889 29.3024L15.3799 28.1264C16.8285 28.9008 18.4462 29.3048 20.0889 29.3024C25.6119 29.3024 30.0889 24.8254 30.0889 19.3024C30.0889 13.7794 25.6119 9.30237 20.0889 9.30237C14.5659 9.30237 10.0889 13.7794 10.0889 19.3024C10.0864 20.945 10.4904 22.5628 11.2649 24.0114L10.0889 29.3024ZM21.1039 16.7653C21.9983 15.9495 22.8457 15.5357 23.6225 15.5357C25.482 15.5357 26.9943 17.0668 27.0003 18.9527C27.0003 19.2247 26.9648 19.4907 26.906 19.7449C26.9038 19.7546 26.898 19.7763 26.8875 19.8075C26.5065 21.2627 25.1901 22.3403 23.6298 22.3461C22.3378 22.3461 21.032 21.1057 20.0635 19.9866L20.058 19.9933C20.058 19.9933 19.6226 19.5026 19.1459 18.9764C19.1459 18.9764 18.6045 18.3497 18.0278 17.7999C17.8707 17.6504 17.2838 17.177 16.5853 16.8983C16.5424 16.8921 16.5042 16.8898 16.4707 16.8898C15.3527 16.9016 14.4464 17.8179 14.4464 18.9412C14.4464 20.0763 15.3527 20.9926 16.4707 20.9926C16.765 20.9926 17.2887 20.8389 18.0831 20.1176C18.5127 19.7275 18.8834 19.2959 19.1424 18.9767C19.619 19.5028 20.0545 19.9935 20.0545 19.9935C19.7838 20.3246 19.413 20.7384 18.9894 21.1227C18.0949 21.9385 17.2475 22.3524 16.4707 22.3524C14.6053 22.3524 13.093 20.8212 13.093 18.9353C13.093 18.6633 13.1283 18.3973 13.1871 18.1431C13.1912 18.1256 13.2068 18.0691 13.2404 17.9879C13.6503 16.5766 14.9451 15.5414 16.4743 15.5357C17.766 15.5357 19.0712 16.7753 20.0356 17.8941L20.0403 17.8886L20.042 17.8905C20.3124 17.5601 20.6819 17.1481 21.1039 16.7653ZM23.6225 20.9983C23.6047 20.9983 23.5855 20.9976 23.565 20.996C22.8434 20.7245 22.2318 20.2355 22.0704 20.0819C21.5126 19.5501 20.9879 18.9465 20.9541 18.9074C21.2128 18.5886 21.5823 18.1589 22.0101 17.7704C22.8045 17.0432 23.3223 16.8954 23.6225 16.8954C24.7406 16.8954 25.6468 17.8117 25.6468 18.9469C25.6468 20.0701 24.7406 20.9864 23.6225 20.9983Z"
-      fill="#3B00B9"
+      fill="#fff"
     />
   </svg>
 );
@@ -191,12 +189,11 @@ const docsIcon = (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect x="1" y="0.5" width="39" height="39" rx="19.5" fill="white" />
-    <rect x="1" y="0.5" width="39" height="39" rx="19.5" stroke="#DFDFDF" />
+    <rect x="1" y="0.5" width="39" height="39" rx="19.5" fill="none" stroke="rgba(255 255 255 / 18%)" strokeWidth={1.25}/>
     <g clipPath="url(#clip0_14156_10811)">
       <path
         d="M29.5 12H15.5C14.9696 12 14.4609 12.2107 14.0858 12.5858C13.7107 12.9609 13.5 13.4696 13.5 14C13.5 14.5304 13.7107 15.0391 14.0858 15.4142C14.4609 15.7893 14.9696 16 15.5 16H29.5V29C29.5 29.2652 29.3946 29.5196 29.2071 29.7071C29.0196 29.8946 28.7652 30 28.5 30H15.5C14.4391 30 13.4217 29.5786 12.6716 28.8284C11.9214 28.0783 11.5 27.0609 11.5 26V14C11.5 12.9391 11.9214 11.9217 12.6716 11.1716C13.4217 10.4214 14.4391 10 15.5 10H28.5C28.7652 10 29.0196 10.1054 29.2071 10.2929C29.3946 10.4804 29.5 10.7348 29.5 11V12ZM13.5 26C13.5 26.5304 13.7107 27.0391 14.0858 27.4142C14.4609 27.7893 14.9696 28 15.5 28H27.5V18H15.5C14.7978 18.0011 14.1078 17.8166 13.5 17.465V26ZM28.5 15H15.5C15.2348 15 14.9804 14.8946 14.7929 14.7071C14.6054 14.5196 14.5 14.2652 14.5 14C14.5 13.7348 14.6054 13.4804 14.7929 13.2929C14.9804 13.1054 15.2348 13 15.5 13H28.5V15Z"
-        fill="#3B00B9"
+        fill="#fff"
       />
     </g>
     <defs>
@@ -222,7 +219,7 @@ const MilestoneCard: React.FC<Element> = ({
   proposal,
 }) => {
   return (
-    <article className="flex flex-col justify-between px-6 pt-6 pb-6 bg-white rounded-lg text-black">
+    <article className="flex flex-col justify-between px-6 pt-6 pb-6 bg-white/10 rounded-lg text-white">
       <div>
         {" "}
         <header className="flex gap-2 justify-between self-stretch">
@@ -233,7 +230,7 @@ const MilestoneCard: React.FC<Element> = ({
                 tooltip="Deployed"
                 className="text-center bg-black/75 rounded-lg whitespace-nowrap	"
               >
-                <DeployedIcon glowing={false} />
+                <DeployedIcon glowing={false} isDark={true} />
               </Tooltip>
             )}
             {status === "in_progress" && (
@@ -241,7 +238,7 @@ const MilestoneCard: React.FC<Element> = ({
                 tooltip="In Progress"
                 className="text-center bg-black/75 rounded-lg whitespace-nowrap	"
               >
-                <InProgressIcon />
+                <InProgressIcon isDark={true} />
               </Tooltip>
             )}
             {/* {status === "future" && (
@@ -356,7 +353,7 @@ const MilestoneDetail: React.FC<{
           >
             <div className="flex">
               {" "}
-              {name.toUpperCase()}{" "}
+              {name}{" "}
               {elements.length > 0 && !isExpanded && (
                 <span className=" flex justify-center items-center rounded-2xl px-3 py-2 h-7 text-black bg-white ml-3 align-text-bottom translate-y-1/12 md:translate-y-5/12 ">
                   <span className=" text-[1.2rem] md:tw-lead ">
@@ -439,7 +436,7 @@ const MilestoneDetail: React.FC<{
         <Blobs />
         <div className="p-5">
           <h4 className="tw-heading-5 md:tw-heading-3 mb-3">
-            {name.toUpperCase()}
+            {name}
           </h4>
         </div>
         <div className="m-1">
@@ -471,9 +468,6 @@ const MilestoneDetail: React.FC<{
     <article
       id={name}
       className={`milestone-large border-2 border-solid border-[var(--color)] rounded-xl mb-15 md:mb-30 relative  scroll-mt-36 md:scroll-mt-15 overflow-hidden`}
-      style={{
-        backgroundColor: status === "in_progress" ? color : "",
-      }}
     >
       {status === "in_progress" && <CardBlobs />}
       <Blobs />
@@ -481,7 +475,7 @@ const MilestoneDetail: React.FC<{
         <div className="md:grid md:grid-cols-[6fr,10fr] gap-2">
           <div>
             <h4 className="tw-heading-5 md:tw-heading-3 mb-2 flex items-center group">
-              {name.toUpperCase()}
+              {name}
               {!showCopied ? (
                 <span
                   onClick={handleLinkClick}
@@ -565,6 +559,7 @@ const Overlay: React.FC<{
       }
     }
     window.addEventListener("keydown", onKeydown);
+
     return () => {
       window.removeEventListener("keydown", onKeydown);
     };
@@ -600,10 +595,13 @@ const Overlay: React.FC<{
     >
       <div className="fixed inset-0"></div>
       <div
-        className="relative container-10 px-6 py-12 text-white"
+        className="relative container-10 p-12 text-white rounded-xl mt-10 overflow-clip"
         onClick={(e) => e.stopPropagation()}
+        style={{
+          'backgroundColor': `color-mix(in lab, ${color} 50%, rgba(0 0 0 / 60%))`, 
+        }}
       >
-        <div className="float-right pointer-events-none sticky top-8 md:top-20 z-10 md:pr-8">
+        <div className="float-right pointer-events-none sticky top-8 md:top-20 z-10 z-30">
           <button
             className="pointer-events-auto flex w-12 h-12 rounded-full border-none bg-[#181818] justify-center items-center"
             onClick={onClose}
@@ -627,13 +625,16 @@ const Overlay: React.FC<{
             </svg>
           </button>
         </div>
-        <div className="md:top-20 z-10 pr-0 md:pr-8 ">
+        <div className="sticky top-0 z-20 backdrop-blur-xl -mx-12 -mt-12 px-12 pt-12 pb-4">
+          <h2 className="tw-heading-3 font-black md:tw-heading-2 md:w-8/10">
+            {data[index].name}
+          </h2>
+        </div>
+        <div className="md:top-20 z-10">
           {data && index !== null && (
             <div>
-              <section className="my-12 md:my-24">
-                <h2 className="tw-heading-3  font-black md:tw-heading-2 md:w-8/10">
-                  {data[index].name.toUpperCase()}
-                </h2>
+              <section className="mb-12 md:mb-24">
+
                 <p className="tw-lead-sm md:tw-lead md:w-9/10">
                   {data[index].description && data[index].description}
                 </p>

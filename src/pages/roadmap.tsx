@@ -318,14 +318,18 @@ const RoadmapPage: React.FC = () => {
     setOverlayOpen(true);
     setOverlayColor(color);
     //update current url with output from createId as an anchor
-    window.location.hash = createId(at, anchor || "start");
+    //window.location.hash = createId(at, anchor || "start");
+    window.history.pushState(null, "", `#${createId(at, anchor || "start")}`);
+    window.addEventListener("popstate", closeOverlay);
   }
 
   function closeOverlay() {
     document.body.style.overflow = "";
     setOverlayOpen(false);
     history.replaceState(null, "", " ");
+    window.removeEventListener("popstate", closeOverlay);
   }
+
 
   const parseId = (id: string, separator = "-") => {
     const [theme, milestone] = id.split(separator);
