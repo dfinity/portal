@@ -353,32 +353,6 @@ const RoadmapPage: React.FC = () => {
     }
   }, []);
 
-  // useEffect(() => {
-  //   const observer = new ResizeObserver((entries) => {
-  //     const rect = entries[0].contentRect;
-  //     scrollRefs.forEach((ref) => {
-  //       const controls = ref.current.parentElement.querySelectorAll(
-  //         "[data-slidecontrol]"
-  //       );
-  //       if (elementHasOverflown(ref.current)) {
-  //         controls.forEach((el: HTMLElement) => {
-  //           el.classList.remove("hidden");
-  //         });
-  //       } else {
-  //         controls.forEach((el: HTMLElement) => {
-  //           el.classList.add("hidden");
-  //         });
-  //       }
-  //     });
-  //   });
-
-  //   observer.observe(document.documentElement);
-
-  //   return () => {
-  //     observer.unobserve(document.documentElement);
-  //   };
-  // }, []);
-
   return (
     <Layout
       title="Roadmap"
