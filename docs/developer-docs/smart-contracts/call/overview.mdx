@@ -226,7 +226,7 @@ Inter-canister calls are used to make calls between different canisters. An inte
 
 An authorized call on ICP refers to a call to a canister that can only be made by a principal (a user or another canister) that has the necessary permissions to perform the call. For example, only a controller of a canister can call the canister's `install_code` function.
 
-Authorized calls that return a value of `()` indicate that the function may not take an argument, or no meaningful value is returned.
+Authorized calls that return a value of `()` indicate that the function was successful, but may not take an argument or return a meaningful value. If an authorized call is unsuccessful, it will return an error.
 
 ## Making calls with IDLs
 
