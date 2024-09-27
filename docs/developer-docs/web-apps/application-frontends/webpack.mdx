@@ -39,7 +39,7 @@ DFX_NETWORK=ic NODE_ENV=production HELLO_CANISTER_ID=rrkah... npm run build
 
 ### Ensuring Node.js is available in a project
 
-Because projects rely on webpack to provide the framework for the default frontend, you must have `Node.js` installed in
+Because projects rely on webpack to provide the framework for the default frontend, you must have `Node.js` `16.0.0` or newer installed in
 your development environment and accessible in the project directory.
 
 - If you want to develop your project without using the default webpack configuration and canister aliases, you can remove the `frontend` canister from the `dfx.json` file or build your project using a specific canister name. For example, you can choose to build only the `hello` program's backend canister without building the frontend assets by running the following command:
