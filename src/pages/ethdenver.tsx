@@ -90,7 +90,7 @@ function EthDenverPage() {
   return (
     <Layout
       title="Internet Computer blockchain @ ETHDenver 2023"
-      description={`Visit us @ ETHDenver 2023, February 24 - March 5, 2023. Lightning fast and fully on-chain dapps running on the Internet Computer blockchain, the only true World Computer that enables a fully decentralized ecosystem.`}
+      description={`Visit us @ ETHDenver 2023, February 24 - March 5, 2023. Lightning fast and fully onchain dapps running on the Internet Computer blockchain, the only true World Computer that enables a fully decentralized ecosystem.`}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-ethdenver-2.jpg"></ShareMeta>
@@ -151,7 +151,7 @@ function EthDenverPage() {
                     className="tw-lead-sm md:tw-lead mb-8 mt-10 md:mt-0"
                     variants={transitions.item}
                   >
-                    Lightning fast and fully on-chain dapps running on the
+                    Lightning fast and fully onchain dapps running on the
                     Internet Computer blockchain, the only true World Computer
                     that enables a fully decentralized ecosystem.
                   </motion.p>
@@ -353,7 +353,7 @@ function EthDenverPage() {
                 variants={transitions.item}
               >
                 <h4 className="tw-heading-5 mb-3">
-                  On-chain Governance for EVM DAOs
+                  Onchain Governance for EVM DAOs
                 </h4>
                 <p className="tw-paragraph text-black-60 mb-6">
                   Challenge: explore ways of using the Internet Computer to
@@ -903,7 +903,7 @@ function EthDenverPage() {
                   Web3 still runs on Big Tech's cloud. Blockchains can host
                   tokens, but only tiny amounts of data and compute, and no web.
                   But not the Internet Computer blockchain. The IC runs it all
-                  on-chain, fully decentralized — from simple dapps, to high
+                  onchain, fully decentralized — from simple dapps, to high
                   user-volume social networks and games, to oderbook exchanges
                   and enterprise systems, without the need for traditional IT.
                 </motion.p>
@@ -928,7 +928,7 @@ function EthDenverPage() {
         <StartBuildingSection
           id="start-building"
           title="Be a pioneer of Web3"
-          body="Start a DAO, create a token, build dapps and host assets with the full stack entirely on-chain."
+          body="Start a DAO, create a token, build dapps and host assets with the full stack entirely onchain."
           cta="BUILD REAL WEB3"
           ctaLink="/developers"
           cards={[
@@ -944,7 +944,7 @@ function EthDenverPage() {
             },
             {
               title: "Sample Code",
-              body: "From a simple DEX, to on-chain encrypted storage, NFT minting, and a basic DAO, learn how to build on the Internet Computer.",
+              body: "From a simple DEX, to onchain encrypted storage, NFT minting, and a basic DAO, learn how to build on the Internet Computer.",
               link: "/samples",
             },
             {

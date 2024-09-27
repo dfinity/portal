@@ -40,7 +40,7 @@ For _critical_ proposals, these rules are more strict and passing a proposal req
 
 
 ### Proposal execution
-As soon as a proposal is adopted, it is executed by the SNS. With very few exceptions, proposals are executed automatically and fully on-chain and thus do not require trusting any third party.
+As soon as a proposal is adopted, it is executed by the SNS. With very few exceptions, proposals are executed automatically and fully onchain and thus do not require trusting any third party.
 
 ## The Architecture of an SNS
 

@@ -440,11 +440,11 @@ function TokenHolders(): JSX.Element {
                       src="/img/showcase/icdex_logo.webp"
                       loading="lazy"
                       alt=""
-                      className="w-20 h-20"
+                      className="w-20 h-20 ml-0 mr-auto"
                     ></img>
                     <h3 className="tw-heading-5 mb-2 mt-8">ICDex</h3>
                     <p className="tw-lead-sm mb-0 text-black/60">
-                      First orderbook-based DEX running fully on-chain. Bypass
+                      First orderbook-based DEX running fully onchain. Bypass
                       CEXs and get ICP or CHAT tokens for your BTC.{" "}
                     </p>
                   </Link>
@@ -458,7 +458,7 @@ function TokenHolders(): JSX.Element {
                       src="/img/showcase/icpswap_logo.webp"
                       loading="lazy"
                       alt=""
-                      className="w-20 h-20"
+                      className="w-20 h-20 ml-0 mr-auto"
                     ></img>
                     <h3 className="tw-heading-5 mb-2 mt-8">ICP.Swap</h3>
                     <p className="tw-lead-sm mb-0 text-black/60">

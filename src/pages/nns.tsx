@@ -57,7 +57,7 @@ function NnsPage() {
                   variants={transitions.item}
                 >
                   The NNS is one of the world's largest DAOs that governs the
-                  Internet Computer. It is a 100% on-chain, permissionless
+                  Internet Computer. It is a 100% onchain, permissionless
                   system that continuously upgrades the Internet Computer based
                   on the voting of ICP token holders.
                 </motion.p>

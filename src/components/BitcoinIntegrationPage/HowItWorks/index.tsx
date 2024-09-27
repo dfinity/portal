@@ -46,7 +46,7 @@ function Index() {
                 <motion.p className="tw-paragraph-sm md:tw-paragraph text-black/60">
                   The milestone also expands ICP's Bitcoin integration by
                   providing access to all block headers, which makes it possible
-                  to verify full Bitcoin blocks on-chain in a secure manner.
+                  to verify full Bitcoin blocks onchain in a secure manner.
                 </motion.p>
                 <p className="mt-8 mb-8 md:mb-0">
                   <Link

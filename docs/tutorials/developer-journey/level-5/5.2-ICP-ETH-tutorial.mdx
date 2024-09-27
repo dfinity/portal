@@ -25,7 +25,7 @@ The Bitcoin integration is a direct integration, meaning there are nodes running
   />
 </div>
 
-The EVM RPC canister enables your dapp to sign and submit transactions to Ethereum and other EVM networks using [HTTPS outcalls](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview) and [threshold ECDSA signatures](/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa). The EVM RPC canister will eventually be replaced by an on-chain Ethereum API on ICP, made possible by running full Ethereum nodes on each ICP replica.
+The EVM RPC canister enables your dapp to sign and submit transactions to Ethereum and other EVM networks using [HTTPS outcalls](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview) and [threshold ECDSA signatures](/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa). The EVM RPC canister will eventually be replaced by an onchain Ethereum API on ICP, made possible by running full Ethereum nodes on each ICP replica.
 
 Through ICP's chain-key cryptography feature, the ETH integration also includes chain-key tokens, similar to the design of ckBTC. The ETH integration expands the possibilities of chain-key tokens to include ckETH and ckERC-20 tokens, including ckUSDC, ckEURC, and ckUSDT.
 
@@ -105,7 +105,6 @@ In this file, you can see the definitions for the project's four canisters:
 Next, let's take a look at the source code for the backend canister. Open the `backend/Backend.mo` file, which will contain the following content. This code has been annotated with notes to explain the code's logic:
 
 ```motoko no-repl title="backend/Backend.mo"
-
 import EvmRpc "canister:evm_rpc";
 
 import Debug "mo:base/Debug";
@@ -210,11 +209,11 @@ In this tutorial, you deployed this starter dapp locally. To deploy this dapp on
 You can make calls directly to the EVM RPC canister from the CLI. For example, to get the latest Ethereum gas fee information, use the `dfx` command:
 
 ```bash
-IDENTITY=default
-CYCLES=1500000000
-WALLET=$(dfx identity get-wallet)
-RPC_SOURCE=EthMainnet
-RPC_CONFIG=null
+export IDENTITY=default
+export CYCLES=2000000000
+export WALLET=$(dfx identity get-wallet)
+export RPC_SOURCE=EthMainnet
+export RPC_CONFIG=null
 
 dfx canister call evm_rpc eth_feeHistory "(variant {$RPC_SOURCE}, $RPC_CONFIG, record {blockCount = 3; newestBlock = variant {Latest}})" --with-cycles=$CYCLES --wallet=$WALLET
 ```
@@ -312,12 +311,11 @@ If the results returned are 'Inconsistent', each individual response will be ret
 You can also sign and submit transactions directly to Ethereum with a command such as:
 
 ```bash
-NETWORK=local
-IDENTITY=default
-CYCLES=1500000000
-WALLET=$(dfx identity get-wallet)
-RPC_SOURCE=EthMainnet
-RPC_CONFIG=null
+export IDENTITY=default
+export CYCLES=2000000000
+export WALLET=$(dfx identity get-wallet)
+export RPC_SOURCE=EthMainnet
+export RPC_CONFIG=null
 
 dfx canister call evm_rpc eth_sendRawTransaction "(variant {$RPC_SOURCE}, $RPC_CONFIG, \"0xf86c098504a817c800825208943535353535353535353535353535353535353535880de0b6b3a76400008025a028ef61340bd939bc2195fe537567866003e1a15d3c71ff63e1590620aa636276a067cbe9d8997f761aecb703304b3800ccf555c9f3dc64214b297fb1966a3b6d83\")" --with-cycles=$CYCLES --wallet=$WALLET
 ```
@@ -334,6 +332,10 @@ Your transaction ID will be returned from the RPC provider. For example, here is
     };
   };
 ```
+
+:::info
+Some JSON-RPC APIs may only return a `NonceTooLow` status when successfully submitting a transaction. This is because during the HTTP outcall consensus, only the first request is successful, while the others reply with a duplicate transaction status.
+:::
 
 ## Resources
 
