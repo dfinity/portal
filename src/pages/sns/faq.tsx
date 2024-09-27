@@ -968,4 +968,4 @@ function SnsFaqPage() {
   );
 }
 
-export default SnsFaqPage;
+export default SnsFaqPage
