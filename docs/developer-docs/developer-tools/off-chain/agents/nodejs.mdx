@@ -16,7 +16,16 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Identity management
 
-Before you set up an actor, you will need to have an identity. You can set up an identity that will resolve a seed phrase to a principal by using the following code:
+Before you set up an actor, you will need to have an identity.
+
+### Using keys through `agent-js`
+
+You can configure an authentication identity for Node.JS through `agent-js`'s default ECDSA private key. [Learn more in the agent-js docs](https://internetcomputer.org/docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent).
+
+
+### Seed phrase
+
+Alternatively, you can set up an identity that will resolve a seed phrase to a principal by using the following code:
 
 ```js
 // identity.js
@@ -34,7 +43,6 @@ The seed phrase in this example is derived from the word `test` repeated 12 time
 :::caution
 Remember to store any seed phrase you use in production in a secure place. Use environment variables, and never commit a real seed phrase in plain text to your codebase.
 :::
-
 
 ## Asset uploading
 
