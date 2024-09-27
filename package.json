@@ -17,6 +17,7 @@
     "postbuild": "sh download-redirected-files.sh"
   },
   "dependencies": {
+    "@cookbookdev/docsbot": "^4.21.23",
     "@dfinity/agent": "^0.15.4",
     "@dfinity/candid": "^0.15.4",
     "@dfinity/principal": "^0.15.4",
