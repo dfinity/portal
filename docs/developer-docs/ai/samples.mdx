@@ -12,11 +12,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-ICP's unique ability to run compute at scale allows AI and neural networks to run directly on-chain within a canister smart contract. Canisters can also interact with LLMs stored off-chain through HTTPS outcalls, or stored locally on a user's device.
+ICP's unique ability to run compute at scale allows AI and neural networks to run directly onchain within a canister smart contract. Canisters can also interact with LLMs stored off-chain through HTTPS outcalls, or stored locally on a user's device.
 
 ## Image classification
 
-To showcase this capability, this demo example displays how an AI that identifies an image can be deployed as a smart contract with a frontend and backend, both running on-chain.
+To showcase this capability, this demo example displays how an AI that identifies an image can be deployed as a smart contract with a frontend and backend, both running onchain.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/6qLvIXiCGcM?si=Jf_m5JfszeNvouL9" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
@@ -62,15 +62,7 @@ To make running AI in a canister possible, two key ICP features are utilized:
   />
 </div>
 
-### Important notes
-
-The ICP mainnet subnets and `dfx` running a replica version older than `463296` may fail with an `instruction-limit-exceeded` error.
-
-Currently, Wasm execution is not optimized for this workload. A single call executes about 24B instructions (~10s).
-
-## Machine learning
-
-Machine learning is a form of artificial intelligence (AI) that observes statistical algorithms and their data to learn patterns and generalizations. By analyzing these data patterns, machine learning algorithms can execute tasks by predicting the correct result with high accuracy.
+## MNIST
 
 One common machine learning model that is used to train data sets is the Modified National Institute of Standards and Technology (MNIST) database which contains a collection of handwritten numbers. This database is commonly used for training different image processing systems and testing different machine learning platforms.
 
@@ -87,7 +79,7 @@ This project is based off of one [found within the Rust Burn examples](https://g
 - [Vectune](https://github.com/ClankPan/Vectune): Vectune is a lightweight VectorDB with incremental indexing, based on FreshVamana written in Rust.
   See [a forum post](https://forum.dfinity.org/t/worlds-largest-web3-vector-database/33309) that explains how it works.
 - [ArcMind Vector DB](https://github.com/arcmindai/arcmindvector): A vector database that supports text, image, and audio embedding.
-- [KinicDAO Vector DB](https://xcvai-qiaaa-aaaak-afowq-cai.icp0.io/): A high-performance, completely on-chain, tamper-proof vector database specifically built for decentralized apps.
+- [KinicDAO Vector DB](https://xcvai-qiaaa-aaaak-afowq-cai.icp0.io/): A high-performance, completely onchain, tamper-proof vector database specifically built for decentralized apps.
 - [Blueband](https://github.com/highfeast/ic-use-blueband-db): A vector database built based on [Vectra](https://www.vectra.ai/), a local vector database for [Node.js](https://nodejs.org/en).
   See their [forum post](https://forum.dfinity.org/t/blueband-vector-database/33934) for additional details on how it works and demos.
-- [ELNA Vector DB](https://github.com/elna-ai/elna-vector-db): An open-source and fully on-chain vector database and vector similarity search engine primarily used to power the [ELNA.ai](https://elna.ai/) application.
+- [ELNA Vector DB](https://github.com/elna-ai/elna-vector-db): An open-source and fully onchain vector database and vector similarity search engine primarily used to power the [ELNA.ai](https://elna.ai/) application.
