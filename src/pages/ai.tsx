@@ -6,7 +6,7 @@ import ShareMeta from "@site/src/components/Common/ShareMeta";
 import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import clsx from "clsx";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useAnimation } from "framer-motion";
 import LightHeroStyles from "@site/src/components/Common/LightHeroStyles";
 import VideoCard, {
   ImageOnlyVideoCard,
@@ -21,6 +21,7 @@ import LinkArrowUp from "../components/Common/Icons/LinkArrowUp";
 import LinkArrowDown from "../components/Common/Icons/LinkArrowDown";
 import ChevronDown from "../components/Common/Icons/ChevronDown";
 import ChevronUp from "../components/Common/Icons/ChevronUp";
+import { useInView } from "react-intersection-observer";
 
 interface FeatureCardProps {
   imageSrc: string;
@@ -531,7 +532,49 @@ const faqData: FaqData[] = [
 ];
 
 const MotionLink = motion(Link);
-const { events, websiteCategory, regions } = eventsData;
+const AnimatedCountUp = ({ end, duration = 2000 }) => {
+  const [count, setCount] = useState(0);
+  const controls = useAnimation();
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      controls.start({
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.5 },
+      });
+
+      let start = 0;
+      const increment = end / (duration / 16);
+
+      const timer = setInterval(() => {
+        start += increment;
+        setCount(Math.floor(start));
+        if (start >= end) {
+          clearInterval(timer);
+          setCount(end);
+        }
+      }, 16);
+
+      return () => clearInterval(timer);
+    }
+  }, [inView, controls]);
+
+  return (
+    <motion.p
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={controls}
+      className="text-gradient-violet tw-title-sm md:tw-title-lg mb-0"
+    >
+      {count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")}x
+    </motion.p>
+  );
+};
 
 function AIPage() {
   const [manifestoModalOpen, setManifestoModalOpen] = useState(false);
@@ -717,9 +760,7 @@ function AIPage() {
                     </motion.span>
                   </div>
                   <div className="text-left">
-                    <motion.p className="text-gradient-violet tw-title-sm md:tw-title-lg mb-0">
-                      1.000.000x
-                    </motion.p>
+                    <AnimatedCountUp end={1000000} />
                     <motion.p className="text-black tw-lead-sm md:tw-lead">
                       more data storage
                     </motion.p>
@@ -739,9 +780,7 @@ function AIPage() {
               <article className="flex flex-col md:flex-row justify-start tw-lead-sm md:tw-lead">
                 <div className="w-full md:w-1/2 flex-col justify-between order-2 md:order-1">
                   <div>
-                    <motion.p className="text-gradient-violet tw-title-sm md:tw-title-lg">
-                      8x
-                    </motion.p>
+                    <AnimatedCountUp end={8} duration={500} />
                     <motion.p className="text-black tw-lead-sm md:tw-lead -mt-2">
                       faster
                     </motion.p>
