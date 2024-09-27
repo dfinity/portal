@@ -603,6 +603,8 @@ const redirects = `
   /docs/current/developer-docs/integrations/rosetta/staking-support /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/
   /docs/current/developer-docs/smart-contracts/test/benchmarking /docs/current/developer-docs/developer-tools/off-chain/canbench
   /docs/current/developer-docs/smart-contracts/test/reproducible-builds /docs/current/developer-docs/smart-contracts/best-practices/reproducible-builds
+  /docs/current/developer-docs/ai/ai-on-chain  /docs/current/developer-docs/ai/samples
+  /docs/current/developer-docs/ai/machine-learning-sample /docs/current/developer-docs/ai/samples
   `
 .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
