@@ -12,7 +12,7 @@ const maximumDescriptionLength = 500;
 
 const tags = [
   "SocialFi",
-  "Chainfusion",
+  "Chain Fusion",
   "Bitcoin",
   "Ethereum",
   "AI",

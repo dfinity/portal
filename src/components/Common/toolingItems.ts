@@ -236,7 +236,7 @@ export const communityToolingItems = [
   {
     title: "MOPS",
     tags: ["CLI", "website", "development"],
-    description: "An on-chain package manager for Motoko.",
+    description: "An onchain package manager for Motoko.",
     links: {
       external: "https://j4mwm-bqaaa-aaaam-qajbq-cai.ic0.app/",
       github: "https://github.com/ZenVoich/mops"
@@ -245,7 +245,7 @@ export const communityToolingItems = [
   {
     title: "ICPipeline",
     tags: [ "development", "service", "testing", "CLI", "website", "starter"],
-    description: "Multi-tiered IC development framework with on-chain admin console, repeatable deployments, on-demand environments, canister backups and more.",
+    description: "Multi-tiered IC development framework with onchain admin console, repeatable deployments, on-demand environments, canister backups and more.",
     links: {
       external: "https://www.icpipeline.com/",
       github: "https://github.com/icpipeline-framework",

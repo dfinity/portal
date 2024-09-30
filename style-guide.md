@@ -275,6 +275,7 @@ The following language and capitalization of certain terms and phrases should be
 - multi-chain
 - neuron
 - node provider
+- onchain
 - open internet service
 - Ordinal
 - playground: when referring to the Motoko playground
