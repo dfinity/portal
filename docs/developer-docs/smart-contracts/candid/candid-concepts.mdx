@@ -305,6 +305,8 @@ Regardless of the host language you use, it is important to know the mapping bet
 
 ## Best practices
 
+### Use descriptive type names
+
 It is recommended to use Candid records with descriptive names for types:
 
 ```candid
@@ -319,3 +321,24 @@ type Recycler =
    nick: text;
  };
 ```
+
+### Deprecating fields
+
+To deprecate a Candid field, you can update the field's type to `opt empty`, indicating the field is not used:
+
+```
+record {
+  first_name : text; middle_name : opt empty; second_name : text; score : nat; country : text
+}
+```
+
+However, it is best practice to mark a field as `reserved` to prevent future developers from using the field in an unexpected manner:
+
+```
+record {
+  first_name : text; middle_name : reserved; second_name : text; score : nat; country : text
+}
+```
+
+For more information, refer to the blog post on [Candid for engineers](https://mmapped.blog/posts/20-candid-for-engineers#faq).
+

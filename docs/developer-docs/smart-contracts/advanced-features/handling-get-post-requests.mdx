@@ -16,6 +16,8 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 Canisters running on ICP can use HTTP requests in two ways: incoming and outgoing. Incoming HTTP requests refer to HTTP requests that are sent to a canister and can be used to retrieve data from a canister or send new data to the canister. Outgoing HTTP requests refer to HTTP requests that the canister sends to other canisters or external services to retrieve data or send new data.
 
+### Outgoing HTTP requests
+
 For outgoing HTTP requests, the [HTTPS outcalls](./https-outcalls/https-outcalls-how-to-use.mdx) feature should be used.
 
 - [How to use HTTPS outcalls](./https-outcalls/https-outcalls-how-to-use.mdx)
@@ -26,7 +28,15 @@ For outgoing HTTP requests, the [HTTPS outcalls](./https-outcalls/https-outcalls
 
 - [HTTPS outcalls: technology overview](/docs/current/references/https-outcalls-how-it-works)
 
+### Incoming HTTP requests
+
 To handle incoming HTTP requests, canisters must define methods for `http_requests` and `http_requests_update` for `GET` and `POST` requests respectively.
+
+All HTTP requests are handled by the ICP HTTP Gateway, therefore you cannot make direct `POST` calls to a canister's `http_request_update` method with HTTP clients such as curl. Instead, you can make a `POST` call to a canister's HTTP endpoint, then configure the canister's `http_request` method to [upgrade the call to `http_request_update` if necessary](/docs/current/references/http-gateway-protocol-spec#upgrade-to-update-calls). Below is an example `POST` call to a canister's endpoint:
+
+```
+curl -X POST -H "Content-Type: application/json" -d '{"key":"value"}' https://<canister-id>.raw.ic0.app/<endpoint>
+```
 
 ## `GET` requests
 
@@ -386,7 +396,7 @@ Check out the [Kybra documentation](https://demergent-labs.github.io/kybra/http.
 
 ## `POST` requests
 
-HTTP `POST` requests are used to send data to an endpoint with the intention of retaining that data. To handle incoming `POST` requests, the `htt_request_update` method can be used. This method uses an `update` call, which can be used to change a canister's state. The following examples display how to configure `http_request_update` method within your canister.
+HTTP `POST` requests are used to send data to an endpoint with the intention of retaining that data. To handle incoming `POST` requests, the `http_request_update` method can be used. This method uses an `update` call, which can be used to change a canister's state. The following examples display how to configure `http_request_update` method within your canister.
 
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>

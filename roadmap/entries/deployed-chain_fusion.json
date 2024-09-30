@@ -132,8 +132,8 @@
       "milestone_id": "Deuterium"
     },
     {
-      "title": "On-chain Bitcoin block headers",
-      "overview": "Exposing an on-chain API to access all Bitcoin block headers to enable dapps to trustlessly access the full Bitcoin block content.",
+      "title": "Onchain Bitcoin block headers",
+      "overview": "Exposing an onchain API to access all Bitcoin block headers to enable dapps to trustlessly access the full Bitcoin block content.",
       "status": "deployed",
       "eta": "",
       "forum": "",
@@ -146,7 +146,7 @@
     {
       "title": "Chain Fusion Supports Bitcoin ordinals and runes",
       "is_milestone": true,
-      "description": "ICP’s Chain Fusion technology has full support for Bitcoin protocols such as BRC20 and Runes. So far, ICP’s fully-on-chain capabilities have been largely applied to use cases where Bitcoin is used as a means of value transfer, its original purpose. This milestone provides additional functionality that enables smart contracts to index and issue prominent types of Bitcoin inscriptions in a completely decentralized manner for the first time, thereby putting ICP into a unique position among all chains.",
+      "description": "ICP’s Chain Fusion technology has full support for Bitcoin protocols such as BRC20 and Runes. So far, ICP’s fully-onchain capabilities have been largely applied to use cases where Bitcoin is used as a means of value transfer, its original purpose. This milestone provides additional functionality that enables smart contracts to index and issue prominent types of Bitcoin inscriptions in a completely decentralized manner for the first time, thereby putting ICP into a unique position among all chains.",
       "milestone_id": "Deuterium",
       "status": "deployed",
       "eta": "2024-08-13",

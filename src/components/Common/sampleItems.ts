@@ -89,7 +89,7 @@ export const sampleItems: SampleItem[] = [
     languages: ["motoko", "rust"],
     level: "advanced",
     contentType: ["code samples", "documentation", "community repo"],
-    body: "How to Verify ERC-20 Ownership On-Chain",
+    body: "How to Verify ERC-20 Ownership Onchain",
     links: {
       github: "https://github.com/jennifertrin/erc20icp",
     },
