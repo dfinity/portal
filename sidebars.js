@@ -167,6 +167,14 @@ const sidebars = {
         },
         {
           type: "category",
+          label: "Cost",
+          items: [
+            "developer-docs/gas-cost",
+            "developer-docs/cost-estimations-and-examples",
+          ],
+        },
+        {
+          type: "category",
           label: "Maintain",
           items: [
             "developer-docs/smart-contracts/maintain/control",
@@ -182,14 +190,6 @@ const sidebars = {
             "developer-docs/smart-contracts/maintain/storage",
             "developer-docs/smart-contracts/maintain/trapping",
             "developer-docs/smart-contracts/maintain/upgrade",
-            {
-              type: "category",
-              label: "Cost",
-              items: [
-                "developer-docs/gas-cost",
-                "developer-docs/cost-estimations-and-examples",
-              ],
-            },
             {
               type: "category",
               label: "Topping up canisters",
