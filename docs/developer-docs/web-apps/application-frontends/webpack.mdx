@@ -34,7 +34,10 @@ module: {
 If your application does not use `dfx` to run your build script, you can provide the variables yourself. For example:
 
 ```
-DFX_NETWORK=ic NODE_ENV=production HELLO_CANISTER_ID=rrkah... npm run build
+export DFX_NETWORK=ic 
+export NODE_ENV=production 
+export HELLO_CANISTER_ID=j2o3j-fiaaa-aaaab-qbifa-cai
+npm run build
 ```
 
 ### Ensuring Node.js is available in a project
@@ -64,7 +67,7 @@ You may want to use a bundler other than webpack. Per-bundler instructions are n
 
 - #### Step 4: Modify `declarations/<canister_name>/index.js` and replace `process.env.<CANISTER_NAME>_CANISTER_ID` with the equivalent pattern for environment variables for your bundler.
 
-    - Alternately, hardcode the canister ID if that is your preferred workflow.
+Alternately, hardcode the canister ID if that is your preferred workflow.
 
 - #### Step 5: Commit the declarations and import them in your codebase.
 
