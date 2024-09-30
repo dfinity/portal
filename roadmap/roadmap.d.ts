@@ -5,19 +5,21 @@ interface RootObject {
 }
 
 interface Milestone {
-  name?: string | string;
+  name: string;
+  description: string;
   milestone_id: string;
-  eta: null | string;
+  eta: null | string | string;
   status?: string;
   elements: Element[];
-  description?: string;
 }
 
 interface Element {
   title: string;
   overview: string;
+  description: string;
   forum: string;
   proposal: string;
+  wiki?: string;
   docs: string;
   eta?: string;
   status: string;
@@ -26,4 +28,3 @@ interface Element {
   imported?: boolean;
   milestone_id?: string;
 }
-
