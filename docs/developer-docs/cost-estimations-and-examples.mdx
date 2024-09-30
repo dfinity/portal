@@ -10,16 +10,16 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-To get a rough estimate of how much your project may cost, below is a a pricing calculator that can be used to estimate the cost of a dapp deployed on ICP. Costs are charged to a canister in cycles, which are fixed against the price of [XDR](/docs/current/concepts/glossary#xdr), where **1 trillion cycles equals 1 XDR**.
+To get a rough estimate of how much your project may cost, below is a pricing calculator that can be used to estimate the cost of a dapp deployed on ICP. Costs are charged to a canister in cycles, which are fixed against the price of [XDR](/docs/current/concepts/glossary#xdr), where **1 trillion cycles equals 1 XDR**.
 Cycles costs are calculated based on:
 
-- **Messaging**: Calls that are made to a canister's methods. Costs depend on the type of call being sent (query, update, inter-canister, etc), the size of the message's request and response bytes, and the total amount of messages a canister sends and receives.
+- **Messaging**: Calls that are made to a canister's methods. Costs depend on the type of call being sent (query, update, inter-canister, etc.), the size of the message's request and response bytes, and the total number of messages a canister sends and receives.
 
 :::info
 Note that query calls are currently free and do not incur a cost.
 :::
 
-- **Execution**: Cycles are charged during execution of messages and tasks. There is a fixed fee for starting execution and a fee per each executed instruction.
+- **Execution**: Cycles are charged during execution of messages and tasks. There is a fixed fee for starting execution and a fee per executed instruction.
 
 - **Storage**: Cycles charged for canister storage, both Wasm memory and stable memory.
 
@@ -30,35 +30,35 @@ Note that query calls are currently free and do not incur a cost.
 The calculator below estimates costs in USD, though your project will be charged in [cycles](gas-cost.mdx). Cycles have a fixed cost, where **1 trillion cycles equals 1 [XDR](/docs/current/concepts/glossary#xdr)**. [Learn more about how to obtain cycles](/docs/current/developer-docs/defi/cycles/converting_icp_tokens_into_cycles).
 
 <style>
-  {`
-    #course-iframe {
-      margin: 10 auto;
-      display: block;
-      width: 100%;
-      height: calc(100dvh - 140px);
-    }
-    .theme-doc-footer {
-      display: none;
-    }
-    .pagination-nav {
-      display: none;
-    }
-    .container .row .col {
-      margin: 10;
-      padding: 10;
-    }
-    .container .row .col > div {
-      padding: 10 !important;
-    }
-  `}
+  {`
+    #course-iframe {
+      margin: 10 auto;
+      display: block;
+      width: 100%;
+      height: calc(100dvh - 140px);
+    }
+    .theme-doc-footer {
+      display: none;
+    }
+    .pagination-nav {
+      display: none;
+    }
+    .container .row .col {
+      margin: 10;
+      padding: 10;
+    }
+    .container .row .col > div {
+      padding: 10 !important;
+    }
+  `}
 </style>
 
 <iframe
-  id="course-iframe"
-  src="https://3d5wy-5aaaa-aaaag-qkhsq-cai.icp0.io/"
-  frameborder="0"
-  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
-  allowfullscreen
+  id="course-iframe"
+  src="https://3d5wy-5aaaa-aaaag-qkhsq-cai.icp0.io/"
+  frameborder="0"
+  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen"
+  allowfullscreen
 ></iframe>
 
 
