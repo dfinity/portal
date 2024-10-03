@@ -46,45 +46,45 @@ This API can be used to obtain the following information programmatically:
 - Daily stats.
 - Health check endpoint.
 - Prometheus metrics, including:
-    - Message execute rate.
-    - Node count.
-    - Total memory.
-    - Total CPU cores.
-    - Memory usage.
-    - Block rate.
-    - Block count.
-    - Egress bandwidth.
-    - Ingress bandwidth.
-    - Boundary nodes.
-    - Governance neurons.
-    - Internet Identity user count.
-    - Total governance voting power.
-    - Average total governance voting power.
-    - Cycle burn rate.
-    - Total subnets.
-    - Last neuron reward event.
-    - Total neuron rewards available.
-    - Average neuron reward.
-    - Total community fund staked.
-    - Total community fund maturity.
-    - Total rewardable nodes.
-    - Total registered canisters.
-    - Block height.
-    - Total nodes that are in 'Active' status.
-    - Total nodes that are in 'Awaiting' status.
-    - Total nodes that are in 'Offline' status.
-    - Energy consumption rate.
-    - Total energy consumption.
-    - Node consumption rate.
-    - Transaction rate.
-    - Transactions per second for the past 90 days.
-    - Instruction rate.
-    - ICP transaction rate versus Ethereum transaction rate.
-    - Ethereum transaction equivalent for ICP transactions.
-    - Number of neurons not dissolving.
-    - Number of neurons dissolving.
-    - Number of neurons staked for 8 years that aren't dissolving.
-    - Number of neurons staked for 8 years that are dissolving.
+    - Message execute rate.
+    - Node count.
+    - Total memory.
+    - Total CPU cores.
+    - Memory usage.
+    - Block rate.
+    - Block count.
+    - Egress bandwidth.
+    - Ingress bandwidth.
+    - Boundary nodes.
+    - Governance neurons.
+    - Internet Identity user count.
+    - Total governance voting power.
+    - Average total governance voting power.
+    - Cycle burn rate.
+    - Total subnets.
+    - Last neuron reward event.
+    - Total neuron rewards available.
+    - Average neuron reward.
+    - Total community fund staked.
+    - Total community fund maturity.
+    - Total rewardable nodes.
+    - Total registered canisters.
+    - Block height.
+    - Total nodes that are in 'Active' status.
+    - Total nodes that are in 'Awaiting' status.
+    - Total nodes that are in 'Offline' status.
+    - Energy consumption rate.
+    - Total energy consumption.
+    - Node consumption rate.
+    - Transaction rate.
+    - Transactions per second for the past 90 days.
+    - Instruction rate.
+    - ICP transaction rate versus Ethereum transaction rate.
+    - Ethereum transaction equivalent for ICP transactions.
+    - Number of neurons not dissolving.
+    - Number of neurons dissolving.
+    - Number of neurons staked for 8 years that aren't dissolving.
+    - Number of neurons staked for 8 years that are dissolving.
 - Message count.
 - Message count over time.
 
@@ -114,17 +114,17 @@ This API can be used to obtain the following information programmatically:
 
 ### Images
 - Generated images for:
-    - Proposals.
-    - Canisters.
-    - Data centers.
-    - Neurons.
-    - Nodes.
-    - Node providers.
-    - Replica versions.
-    - Subnets.
-    - Accounts.
-    - Account transaction flow.
-    - Transactions.
+    - Proposals.
+    - Canisters.
+    - Data centers.
+    - Neurons.
+    - Nodes.
+    - Node providers.
+    - Replica versions.
+    - Subnets.
+    - Accounts.
+    - Account transaction flow.
+    - Transactions.
 
 ## Metrics API
 
@@ -149,7 +149,7 @@ Data supported through this API includes:
 
 ## ICRC API
 
-The ICRC API can be used to pull data about any ICRC token as long as you have the token's ledger canister ID. This API's endpoint is: https://icrc-api.internetcomputer.org/
+The ICRC API can be used to pull data about any ICRC token as long as you have the token's ledger canister ID. This API's endpoint is: https://icrc-api.internetcomputer.org/api/v1/
 
 Docs for each method supported by this endpoint can be found at: https://icrc-api.internetcomputer.org/docs
 
@@ -179,7 +179,7 @@ Using this API, you can obtain ICRC token data such as:
 
 ## Ledger API
 
-The ledger API can be used to obtain data about ICP tokens. For tokens other than ICP, such as ICRC-1 or ICRC-2 tokens, use the [ICRC API](#icrc-api). This API's endpoint is: https://ledger-api.internetcomputer.org/
+The ledger API can be used to obtain data about ICP tokens. For tokens other than ICP, such as ICRC-1 or ICRC-2 tokens, use the [ICRC API](#icrc-api). This API's endpoint is: https://ledger-api.internetcomputer.org/api/v1/
 
 Docs for each method supported by this endpoint can be found at: https://ledger-api.internetcomputer.org/swagger-ui/
 
@@ -205,7 +205,18 @@ Data supported through this API includes:
 
 ## SNS API
 
-sns-api: https://sns-api.dev.ch1-intdev1.dfinity.network/docs
+The SNS API can be used to obtain information about the Service Nervous Systems (SNSs) that have been deployed on ICP. This API's endpoint is: https://sns-api.internetcomputer.org/api/v1/
 
+Docs for each method supported by this endpoint can be found at: https://sns-api.internetcomputer.org/docs
 
+Data supported through this API includes:
 
+- A list of all current SNSs on ICP.
+- Images for an SNS, an SNS's neurons, a specific SNS neuron, an SNS's proposals, and a specific SNS proposal.
+- An SNS health check.
+- A list of all neurons within an SNS.
+- Details about a specific SNS neuron.
+- The number of neurons within an SNS.
+- All proposals for an SNS.
+- Details on a specific SNS proposal.
+- The number of proposals for an SNS.
