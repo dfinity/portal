@@ -11,6 +11,8 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 ## Overview
 
+The ICP dashboard is a graphical user interface that can be used to obtain detailed data about the ICP network architecture, canisters deployed on the network, tokenomics and token transactions, and information about each active SNS. Data displayed by the dashboard can also be obtained through one of several [data APIs](dashboard-apis.mdx). This page will detail using the graphic user interface to obtain different data.
+
 ## Home
 
 From the ICP dashboard home, you can view data that gives you a high-level overview of the entire network.
@@ -157,7 +159,13 @@ Details about the subnet will include the subnet's transactions per second, fina
 
 ## Node providers
 
-The dashboard [node providers](https://dashboard.internetcomputer.org/providers) section provides a table that details each registered node provider on the network, including their name, principal ID, the amount of node machines that they run, the number of subnets that those nodes participate in, and the number of geographic locations (data centers) that those nodes spread between.
+The dashboard [node providers](https://dashboard.internetcomputer.org/providers) section provides a table that details each registered node provider on the network, including:
+
+- Their name.
+- Principal ID
+- The number of node machines that they operate.
+- The number of subnets that those nodes participate in.
+- The number of geographic locations (data centers) that those nodes are spread between.
 
 ![ICP dashboard node providers](_attachments/dashboard_15.png)
 
@@ -169,7 +177,15 @@ Additional information about the node provider on this page include details abou
 
 ## Node machines
 
-The [node machines dashboard](https://dashboard.internetcomputer.org/nodes) displays information about every node machine that is part of the network, whether it is currently running or not. Node overview information includes the node's ID, provider, location, data center owner, status, subnet ID, and the type of node.
+The [node machines dashboard](https://dashboard.internetcomputer.org/nodes) displays information about every node machine that is part of the network, whether it is currently running or not. Node overview information includes:
+
+- The node's ID.
+- Provider.
+- Location.
+- Data center owner
+- Status.
+- Subnet ID
+- The type of node.
 
 ![ICP dashboard node machines](_attachments/dashboard_17.png)
 
@@ -187,18 +203,65 @@ The dashboard's [releases](https://dashboard.internetcomputer.org/releases) page
 
 ## Canisters
 
+The [canister dashboard](https://dashboard.internetcomputer.org/canisters) provides a list of every canister running on ICP. It shows the canister's ID, the canister's controller principals, and the subnet ID that the canister is deployed on.
 
+![ICP dashboard canisters](_attachments/dashboard_20.png)
+
+To view detailed information about a canister, click on the canister ID.
+
+![ICP dashboard canister detail](_attachments/dashboard_21.png)
+
+Additional details about the canister will include the canister's controllers, subnet ID, Wasm module hash, and it will display the canister's public methods if it has any. If there is a specific canister you want to view this information about, you can use the URL `https://dashboard.internetcomputer.org/canister/CANISTER_ID`.
 
 ## ICP transactions
 
+To view all token transactions for the ICP token, navigate to the [ICP transactions dashboard page](https://dashboard.internetcomputer.org/transactions). The chart on this page shows each ICP transaction, the transaction hash, the ICP amount, timestamp, type of transaction, and the to and from accounts involved in the transaction.
+
+![ICP dashboard transactions](_attachments/dashboard_22.png)
+
+To view additional details about a transaction, click on the transaction hash.
+
+![ICP dashboard transaction details](_attachments/dashboard_23.png)
+
+Additional details on this page include the transaction fee, spender account, transaction memo, status, and transaction index.
+
 ## Circulation
+
+The [circulation page](https://dashboard.internetcomputer.org/circulation) displays metrics regarding ICP tokenomics, including the total ICP supply, voting rewards, disbursed voting rewards, undisbursed voting rewards, node provider rewards, and total ICP burned.
+
+![ICP circulation](_attachments/dashboard_24.png)
 
 ## Chain Fusion
 
+The 'Chain Fusion' tab displays all chain-key tokens, including 'testnet' tokens that are not live on the ICP mainnet. To view details about a token, select it from the 'Chain Fusion' menu.
+
+![ICP chain fusion](_attachments/dashboard_25.png)
+
+The detail page for a chain-key token will include a description of the token, the total supply, the canisters that facilitate the token's transfers on ICP such as the archive, ledger, index, and minter canisters, and the token's transaction history.
+
+![ICP chain fusion](_attachments/dashboard_26.png)
+
 ## Bitcoin
+
+The [Bitcoin dashboard page](https://dashboard.internetcomputer.org/bitcoin) provides details about the ICP integration with Bitcoin and the chain-key token ckBTC. Details on this page include:
+
+- ckBTC total supply.
+- Tracked Bitcoin UTXOs.
+- Bitcoin canister stable memory usage.
+- Synced Bitcoin block height.
+- ckBTC canisters, including the index, archive, ledger, and KYC canisters.
+- ckBTC transactions.
+
+![ICP dashboard Bitcoin](_attachments/dashboard_27.png)
 
 ## Ethereum
 
+The [Ethereum dashboard page](https://dashboard.internetcomputer.org/bitcoin) provides details about the ICP integration with Ethereum and the chain-key token ckETH. Details on this page include the ckETH total supply, ckETH canisters, including the index, archive, and ledger, and ckETH transactions.
+
+![ICP dashboard Ethereum](_attachments/dashboard_28.png)
+
 ## Using the dashboard search
 
+To search for specific information, such as a transaction hash, account, canister ID, or proposal ID, select 'Search' and insert the value you'd like to search. To refine the search, you can select which type of value you're searching for, such as 'canister':
 
+![ICP search](_attachments/dashboard_30.png)

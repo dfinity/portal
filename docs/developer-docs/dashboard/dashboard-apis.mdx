@@ -13,9 +13,129 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 ## IC API
 
-ic-api: https://ic-api.internetcomputer.org/api/v3/swagger 
+The `ic-api` API can be used to obtain general information about ICP. This API's endpoint is: https://ic-api.internetcomputer.org/api/v3/
+
+Docs for each method supported by this endpoint can be found at: https://ic-api.internetcomputer.org/api/v3/swagger
+
+This API can be used to obtain the following information programmatically:
+
+### Tokens and conversions
+
+- Average ICP/XDR conversion rates.
+- Current ICP/USD rate.
+- ICP/XDR conversion rates.
+
+### Network architecture
+
+- Boundary node locations.
+- Data centers.
+- List of all nodes.
+- Node details.
+- Node provider details.
+- Number of node providers.
+- Nodes owned by a node provider.
+- Subnets.
+- Subnet replica versions.
+
+
+### Network metrics
+
+- Bitcoin metrics.
+- Block heights.
+- Block heights over time.
+- Daily stats.
+- Health check endpoint.
+- Prometheus metrics, including:
+    - Message execute rate.
+    - Node count.
+    - Total memory.
+    - Total CPU cores.
+    - Memory usage.
+    - Block rate.
+    - Block count.
+    - Egress bandwidth.
+    - Ingress bandwidth.
+    - Boundary nodes.
+    - Governance neurons.
+    - Internet Identity user count.
+    - Total governance voting power.
+    - Average total governance voting power.
+    - Cycle burn rate.
+    - Total subnets.
+    - Last neuron reward event.
+    - Total neuron rewards available.
+    - Average neuron reward.
+    - Total community fund staked.
+    - Total community fund maturity.
+    - Total rewardable nodes.
+    - Total registered canisters.
+    - Block height.
+    - Total nodes that are in 'Active' status.
+    - Total nodes that are in 'Awaiting' status.
+    - Total nodes that are in 'Offline' status.
+    - Energy consumption rate.
+    - Total energy consumption.
+    - Node consumption rate.
+    - Transaction rate.
+    - Transactions per second for the past 90 days.
+    - Instruction rate.
+    - ICP transaction rate versus Ethereum transaction rate.
+    - Ethereum transaction equivalent for ICP transactions.
+    - Number of neurons not dissolving.
+    - Number of neurons dissolving.
+    - Number of neurons staked for 8 years that aren't dissolving.
+    - Number of neurons staked for 8 years that are dissolving.
+- Message count.
+- Message count over time.
+
+### Governance
+
+- Governance metrics, including static metrics.
+- Number of neurons.
+- Neuron details for a specific ID.
+- Proposals that a neuron has voted on.
+- Recent proposals that a neuron has voted on.
+- Proposals that a known neuron has voted on.
+- Neuron maturity modulations.
+- Neuron voting power.
+- Proposals.
+- Proposal participation rate.
+- Proposal details.
+- Latest proposal ID.
+- Latest proposal details.
+- Proposals over time.
+- Proposal tallies.
+- Proposal deadline extensions.
+- Node provider rewards.
+
+### Canisters
+
+- Canisters, including canister ID, canister name, and a list of currently deployed canisters.
+
+### Images
+- Generated images for:
+    - Proposals.
+    - Canisters.
+    - Data centers.
+    - Neurons.
+    - Nodes.
+    - Node providers.
+    - Replica versions.
+    - Subnets.
+    - Accounts.
+    - Account transaction flow.
+    - Transactions.
 
 ## Metrics API
+
+The metrics API can be used to pull data about specific metrics on ICP. This API's endpoint is: https://metrics-api.internetcomputer.org/api/v1/
+
+Docs for each method supported by this endpoint can be found at: https://metrics-api.internetcomputer.org/api/v1/docs
+
+Data supported through this API includes:
+
+- General ICP metrics, including cycle burn rate and transaction rate.
+- Governance metrics, such as total voting power.
 
 metrics-api: https://metrics-api.internetcomputer.org/api/v1/docs 
 
