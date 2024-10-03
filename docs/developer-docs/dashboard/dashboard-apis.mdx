@@ -136,16 +136,72 @@ Data supported through this API includes:
 
 - General ICP metrics, including cycle burn rate and transaction rate.
 - Governance metrics, such as total voting power.
-
-metrics-api: https://metrics-api.internetcomputer.org/api/v1/docs 
+- Conversion rates for ICP to XDR.
+- Bitcoin metrics.
+- Transaction metrics.
+- Instruction metrics.
+- Block metrics.
+- Boundary node count.
+- Internet Identity user count.
+- Network energy consumption.
+- Number of canisters.
+- Trustworthy metrics for block total.
 
 ## ICRC API
 
-icrc-api: https://icrc-api.internetcomputer.org/docs 
+The ICRC API can be used to pull data about any ICRC token as long as you have the token's ledger canister ID. This API's endpoint is: https://icrc-api.internetcomputer.org/
+
+Docs for each method supported by this endpoint can be found at: https://icrc-api.internetcomputer.org/docs
+
+Using this API, you can obtain ICRC token data such as:
+
+- Accounts that hold the token.
+- Daily transaction balances for an account
+- All transactions for an account
+- An account owner.
+- Total number of accounts that meet a certain criteria.
+- The blocks for the ledger canister.
+- Details on a specific block.
+- The circulating supply of the token.
+- Circulating supply values for the ledger.
+- Graph image for the ledger's transactions.
+- Graph image for a specific transaction.
+- Graph image for an account.
+- Graph image for the ledger.
+- Total tokens burned per day.
+- Total new accounts per day.
+- Total new accounts created through a certain date.
+- Total transactions.
+- Details about a specific transaction.
+- Transaction count.
+- Transaction volume.
+- Total token supply.
 
 ## Ledger API
 
-ledger-api: https://ledger-api.internetcomputer.org/swagger-ui/ 
+The ledger API can be used to obtain data about ICP tokens. For tokens other than ICP, such as ICRC-1 or ICRC-2 tokens, use the [ICRC API](#icrc-api). This API's endpoint is: https://ledger-api.internetcomputer.org/
+
+Docs for each method supported by this endpoint can be found at: https://ledger-api.internetcomputer.org/swagger-ui/
+
+Data supported through this API includes:
+
+- List of accounts that have made a transaction.
+- Latest account information for an account ID.
+- Account balance history.
+- Transaction history for an account.
+- Transaction flow for an account returned in graph form.
+- Total ICP burned.
+- Transaction volume metrics.
+- Transactions per day.
+- Transactions over time.
+- Unique accounts per day.
+- Total ICP circulation supply.
+- Total ICP supply.
+- Total supply for a period of time.
+- Total circulating supply for a period of time.
+- Transaction history.
+- Transaction details.
+
 
 ## SNS API
 
