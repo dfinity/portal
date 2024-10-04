@@ -674,8 +674,10 @@ const CardWithImage: React.FC<{
       to={href}
       className="bg-[#0C0025] text-white rounded-xl flex hover:no-underline transition-all hover:text-white relative overflow-hidden"
     >
-      <div className="md:group-hover:-translate-y-1 pl-4 md:pl-8 transition-transform relative z-10 flex md:min-w-[240px] flex-1 flex-col justify-center">
-        <h2 className="text-white tw-lead-sm mb-0">{title}</h2>
+      <div className="pl-4 md:pl-8 md:hover:-translate-y-2 transition-transform relative z-10 flex md:min-w-[240px] flex-1 flex-col justify-center">
+        <h2 className="text-white tw-lead-sm mb-0 line-clamp-2 md:line-clamp-3 lg:line-clamp-3">
+          {title}
+        </h2>
         <p className="tw-caption text-white/60 mb-0">{source}</p>
       </div>
       <img
@@ -745,7 +747,7 @@ const SectionSlider = () => {
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 1,
-    autoplay: false,
+    autoplay: true,
     autoplaySpeed: 2000,
     pauseOnHover: true,
     centerMode: true,
@@ -880,7 +882,7 @@ function AIPage() {
           el={motion.section}
           className="overflow-hidden"
         >
-          <section className="container-10 mt-48 md:mt-72 mb-32 relative">
+          <section className="container-10 mt-48 md:mt-60 mb-32 relative">
             <div className="flex justify-center flex-col items-center text-center">
               <svg
                 viewBox="0 0 587 106"
