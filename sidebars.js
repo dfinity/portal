@@ -1428,7 +1428,6 @@ const sidebars = {
             "developer-docs/dashboard/dashboard-apis",
           ],
         },
-        },
         {
           type: "category",
           label: "Node providers",
