@@ -190,7 +190,8 @@ const milestoneComponent = (
       onClick={overlayTrigger}
     >
       {isActiveMilestone && <CardBlobs></CardBlobs>}
-      {(milestone.status === "deployed" || milestone.name === "orphans_past") && (
+      {(milestone.status === "deployed" ||
+        milestone.name === "orphans_past") && (
         <div className="absolute w-[48px] right-5 top-5 md:right-10 md:top-10">
           <DeployedIcon glowing={true} isDark={true} />
         </div>
@@ -201,13 +202,7 @@ const milestoneComponent = (
         </div>
       )}
       {isOrphan ? (
-        <div
-          className={`grow flex flex-col ${
-            milestone.name === "orphans_past"
-              ? "justify-between"
-              : "justify-end"
-          } md:justify-end`}
-        >
+        <div className={`grow flex flex-col justify-end`}>
           <div className="min-w-[140px]">
             <strong className="block text-[80px] font-light leading-none !text-right">
               {milestone.elements!.length}
@@ -329,7 +324,6 @@ const RoadmapPage: React.FC = () => {
     history.replaceState(null, "", " ");
     window.removeEventListener("popstate", closeOverlay);
   }
-
 
   const parseId = (id: string, separator = "-") => {
     const [theme, milestone] = id.split(separator);

@@ -1033,7 +1033,7 @@
           {
             "title": "Threshold EdDSA signing",
             "overview": "Threshold EdDSA support using cryptographic multiparty computation (MPC). Enables trustless integrations with all chains using EdDSA on the Ed25519 curve like Solana or Cardano.",
-            "status": "in_progress",
+            "status": "deployed",
             "eta": "2024",
             "forum": "",
             "proposal": "",

@@ -73,10 +73,7 @@ export const ArrowIconRight = () => {
   );
 };
 
-export const DeployedIcon = ({ 
-  glowing,
-  isDark = false
- }) => (
+export const DeployedIcon = ({ glowing, isDark = false }) => (
   <svg
     className="w-full block rounded-full"
     viewBox="0 0 24 24"
@@ -96,9 +93,7 @@ export const DeployedIcon = ({
   </svg>
 );
 
-export const InProgressIcon = ({ 
-  isDark = false
- }) => (
+export const InProgressIcon = ({ isDark = false }) => (
   <svg
     className="w-full block"
     viewBox="0 0 25 24"
@@ -108,7 +103,7 @@ export const InProgressIcon = ({
     <rect x="0.5" width="24" height="24" rx="12" fill="#FBB549" />
     <path
       d="M12.5 7C13.4889 7 14.4556 7.29324 15.2779 7.84265C16.1001 8.39206 16.741 9.17295 17.1194 10.0866C17.4978 11.0002 17.5969 12.0055 17.4039 12.9755C17.211 13.9454 16.7348 14.8363 16.0355 15.5355C15.3363 16.2348 14.4454 16.711 13.4755 16.9039C12.5055 17.0969 11.5002 16.9978 10.5866 16.6194C9.67295 16.241 8.89206 15.6001 8.34265 14.7779C7.79324 13.9556 7.5 12.9889 7.5 12H9.5C9.5 12.5933 9.67595 13.1734 10.0056 13.6667C10.3352 14.1601 10.8038 14.5446 11.3519 14.7716C11.9001 14.9987 12.5033 15.0581 13.0853 14.9424C13.6672 14.8266 14.2018 14.5409 14.6213 14.1213C15.0409 13.7018 15.3266 13.1672 15.4424 12.5853C15.5581 12.0033 15.4987 11.4001 15.2716 10.8519C15.0446 10.3038 14.6601 9.83524 14.1667 9.50559C13.6734 9.17595 13.0933 9 12.5 9V7Z"
-      fill={isDark ? "#000" : "#fff"} 
+      fill={isDark ? "#000" : "#fff"}
     />
   </svg>
 );
@@ -157,7 +152,16 @@ const proposalIcon = (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect x="0.5" y="0.5" width="39" height="39" rx="19.5" fill="none" stroke="rgba(255 255 255 / 18%)" strokeWidth={1.25}/>
+    <rect
+      x="0.5"
+      y="0.5"
+      width="39"
+      height="39"
+      rx="19.5"
+      fill="none"
+      stroke="rgba(255 255 255 / 18%)"
+      strokeWidth={1.25}
+    />
     <path
       d="M20 30C14.477 30 10 25.523 10 20C10 14.477 14.477 10 20 10C25.523 10 30 14.477 30 20C30 25.523 25.523 30 20 30ZM19 19V25H21V19H19ZM19 15V17H21V15H19Z"
       fill="#fff"
@@ -172,7 +176,16 @@ const forumIcon = (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect x="0.5" y="0.5" width="39" height="39" rx="19.5" fill="none" stroke="rgba(255 255 255 / 18%)" strokeWidth={1.25}/>
+    <rect
+      x="0.5"
+      y="0.5"
+      width="39"
+      height="39"
+      rx="19.5"
+      fill="none"
+      stroke="rgba(255 255 255 / 18%)"
+      strokeWidth={1.25}
+    />
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -189,7 +202,16 @@ const docsIcon = (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect x="1" y="0.5" width="39" height="39" rx="19.5" fill="none" stroke="rgba(255 255 255 / 18%)" strokeWidth={1.25}/>
+    <rect
+      x="1"
+      y="0.5"
+      width="39"
+      height="39"
+      rx="19.5"
+      fill="none"
+      stroke="rgba(255 255 255 / 18%)"
+      strokeWidth={1.25}
+    />
     <g clipPath="url(#clip0_14156_10811)">
       <path
         d="M29.5 12H15.5C14.9696 12 14.4609 12.2107 14.0858 12.5858C13.7107 12.9609 13.5 13.4696 13.5 14C13.5 14.5304 13.7107 15.0391 14.0858 15.4142C14.4609 15.7893 14.9696 16 15.5 16H29.5V29C29.5 29.2652 29.3946 29.5196 29.2071 29.7071C29.0196 29.8946 28.7652 30 28.5 30H15.5C14.4391 30 13.4217 29.5786 12.6716 28.8284C11.9214 28.0783 11.5 27.0609 11.5 26V14C11.5 12.9391 11.9214 11.9217 12.6716 11.1716C13.4217 10.4214 14.4391 10 15.5 10H28.5C28.7652 10 29.0196 10.1054 29.2071 10.2929C29.3946 10.4804 29.5 10.7348 29.5 11V12ZM13.5 26C13.5 26.5304 13.7107 27.0391 14.0858 27.4142C14.4609 27.7893 14.9696 28 15.5 28H27.5V18H15.5C14.7978 18.0011 14.1078 17.8166 13.5 17.465V26ZM28.5 15H15.5C15.2348 15 14.9804 14.8946 14.7929 14.7071C14.6054 14.5196 14.5 14.2652 14.5 14C14.5 13.7348 14.6054 13.4804 14.7929 13.2929C14.9804 13.1054 15.2348 13 15.5 13H28.5V15Z"
@@ -214,7 +236,6 @@ const MilestoneCard: React.FC<Element> = ({
   overview,
   status,
   forum,
-  wiki,
   docs,
   proposal,
 }) => {
@@ -343,7 +364,7 @@ const MilestoneDetail: React.FC<{
     ) : (
       <article
         id={name}
-        className={`milestone-large border-2 border-solid border-[var(--color)] rounded-xl mb-15 md:mb-30 relative scroll-mt-30 md:scroll-mt-15`}
+        className={`milestone-large border-2 border-solid border-[var(--color)] rounded-xl mb-15 md:mb-30 relative scroll-mt-44 md:scroll-mt-32`}
       >
         <Blobs />
         <div className="p-5">
@@ -406,7 +427,6 @@ const MilestoneDetail: React.FC<{
                       overview={element.overview}
                       status={element.status}
                       forum={element.forum}
-                      wiki={element.wiki}
                       docs={element.docs}
                       proposal={element.proposal}
                     />
@@ -431,13 +451,11 @@ const MilestoneDetail: React.FC<{
     ) : (
       <article
         id={name}
-        className={`milestone-large border-2 border-solid border-[var(--color)] rounded-xl mb-15 md:mb-30 relative  scroll-mt-30 md:scroll-mt-15`}
+        className={`milestone-large border-2 border-solid border-[var(--color)] rounded-xl mb-15 md:mb-30 relative scroll-mt-44 md:scroll-mt-32`}
       >
         <Blobs />
         <div className="p-5">
-          <h4 className="tw-heading-5 md:tw-heading-3 mb-3">
-            {name}
-          </h4>
+          <h4 className="tw-heading-5 md:tw-heading-3 mb-3">{name}</h4>
         </div>
         <div className="m-1">
           <div className="grid gap-1 grid-cols-1 sm:grid-cols-2 md:grid-cols-4">
@@ -448,7 +466,6 @@ const MilestoneDetail: React.FC<{
                 overview={element.overview}
                 status={element.status}
                 forum={element.forum}
-                wiki={element.wiki}
                 docs={element.docs}
                 proposal={element.proposal}
               />
@@ -467,7 +484,7 @@ const MilestoneDetail: React.FC<{
   return (
     <article
       id={name}
-      className={`milestone-large border-2 border-solid border-[var(--color)] rounded-xl mb-15 md:mb-30 relative  scroll-mt-36 md:scroll-mt-15 overflow-hidden`}
+      className={`milestone-large border-2 border-solid border-[var(--color)] rounded-xl mb-15 md:mb-30 relative scroll-mt-48 md:scroll-mt-32`}
     >
       {status === "in_progress" && <CardBlobs />}
       <Blobs />
@@ -522,7 +539,6 @@ const MilestoneDetail: React.FC<{
               overview={element.overview}
               status={element.status}
               forum={element.forum}
-              wiki={element.wiki}
               docs={element.docs}
               proposal={element.proposal}
             />
@@ -598,7 +614,7 @@ const Overlay: React.FC<{
         className="relative container-10 p-12 text-white rounded-[36px] mt-10 overflow-clip"
         onClick={(e) => e.stopPropagation()}
         style={{
-          'backgroundColor': `color-mix(in lab, ${color} 20%, rgba(0 0 0 / 60%))`, 
+          backgroundColor: `color-mix(in lab, ${color} 20%, rgba(0 0 0 / 60%))`,
         }}
       >
         <div className="float-right pointer-events-none sticky top-[50px] z-10 z-30">
@@ -625,9 +641,7 @@ const Overlay: React.FC<{
             </svg>
           </button>
         </div>
-        <div 
-          className="sticky top-0 z-20 backdrop-blur-xl -mx-12 -mt-12 px-12 pt-12 pb-2"
-        >
+        <div className="sticky top-0 z-20 backdrop-blur-xl -mx-12 -mt-12 px-12 pt-12 pb-2">
           <h2 className="tw-heading-3 font-black md:tw-heading-3 md:w-8/10">
             {data[index].name}
           </h2>
@@ -636,7 +650,6 @@ const Overlay: React.FC<{
           {data && index !== null && (
             <div>
               <section className="mb-12 md:mb-24">
-
                 <p className="tw-lead-sm md:tw-lead md:w-9/10">
                   {data[index].description && data[index].description}
                 </p>

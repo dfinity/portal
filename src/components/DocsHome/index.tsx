@@ -482,7 +482,7 @@ const DocsHomePage: FC = () => {
           <p className="mb-0">
             <Link
               className="button-white button-with-icon"
-              href="https://github.com/dfinity/examples/"
+              href="https://play.motoko.org"
             >
               Start coding
               <LinkArrowRight />
