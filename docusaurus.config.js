@@ -190,7 +190,7 @@ const marketingNav = {
             {
               name: "ICP Roadmap",
               href: "/roadmap",
-              description: "Highlighting upcoming Mil",
+              description: "Highlighting upcoming milestones",
             },
             /*
             {
