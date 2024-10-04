@@ -4110,7 +4110,7 @@
   {
     "id": "omnitynetwork",
     "name": "Omnity Network",
-    "oneLiner": "A turbo engine for the Bitcoin Token Boom. Includes the first 100% trustless omnichain interoperability protocol that extends all Runes primitives and AI agent for dynamic token distribution.",
+    "oneLiner": "1st 100% trustless omnichain interoperability protocol that connects Bitcoin, Ethereum, Appchains, L1s/L2s/L3s within Omnity Network.",
     "tags": [
       "Bitcoin",
       "Ethereum",
@@ -4118,7 +4118,7 @@
       "Chain Fusion",
       "AI"
     ],
-    "description": "1st 100% trustless omnichain interoperability protocol that connects Bitcoin, Ethereum, Appchains, L1s/L2s/L3s within Omnity Network.",
+    "description": "A turbo engine for the Bitcoin Token Boom. Includes the first 100% trustless omnichain interoperability protocol that extends all Runes primitives and AI agent for dynamic token distribution.",
     "usesInternetIdentity": false,
     "website": "https://www.omnity.network/",
     "twiter": "https://twitter.com/OmnityNetwork",
