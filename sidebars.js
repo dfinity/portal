@@ -1422,10 +1422,10 @@ const sidebars = {
             {
               type: "doc",
               label: "Overview",
-              id: "developer-docs/dashboard/overview",
+              id: "references/dashboard/overview",
             },
-            "developer-docs/dashboard/using-the-dashboard",
-            "developer-docs/dashboard/dashboard-apis",
+            "references/dashboard/using-the-dashboard",
+            "references/dashboard/dashboard-apis",
           ],
         },
         },
