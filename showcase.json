@@ -5224,7 +5224,7 @@
       "AI",
       "Tools / Infrastructure"
     ],
-    "usesInternetIdentity": true,
+    "usesInternetIdentity": false,
     "twitter": "https://twitter.com/zcloaknetwork",
     "website": "https://zcloak.network/"
   }
