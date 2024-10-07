@@ -35,7 +35,7 @@
     {
       "title": "Orbit Multi custody wallet for ICP",
       "overview": "Users can securely share ownership of the ICP token with a fully onchain wallet. From simple 1-out-of-2 configurations to sophisticated approval policy rules, Orbit provides comprehensive support for secure financial transactions with a flexible user-role-based system.",
-      "status": "in_progress",
+      "status": "deployed",
       "forum": "",
       "proposal": "",
       "docs": "",
@@ -46,7 +46,7 @@
     {
       "title": "Secure canister management",
       "overview": "Teams building their product vision require secure shared access to dapp control. Orbit's rule engine enables policies specifying how many users are needed to approve canister management operations like upgrades and installations, preventing a single member from seizing control.",
-      "status": "",
+      "status": "in_progress",
       "forum": "",
       "proposal": "",
       "docs": "",
@@ -57,7 +57,7 @@
     {
       "title": "Orbit supports ICRC-1",
       "overview": "Users can manage non-ICP tokens like ckBTC and ckETH with confidence using Orbit's advanced security features, ensuring secure multi-token management.",
-      "status": "",
+      "status": "in_progress",
       "forum": "",
       "proposal": "",
       "docs": "",
