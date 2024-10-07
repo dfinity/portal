@@ -744,13 +744,13 @@ function InternetIdentityPage() {
                 On most blockchains, you need to authenticate every time you
                 make a request. The Internet Computer enables you to temporarily
                 and securely delegate authentication to the dapp after you connect. This is made possible by
-                creating sessions every time you use an app and leverages chain key cryptography.
+                creating sessions every time you use an app and leverages chain-key cryptography.
               </p>
               <Link
                 href="https://medium.com/dfinity/chain-key-technology-one-public-key-for-the-internet-computer-6a3644901e28"
                 className="link-primary link-with-icon !font-bold no-underline hover:!text-black mt-6"
               >
-                <LinkArrowUpRight /> Blog:  Chain key cryptography{" "}
+                <LinkArrowUpRight /> Blog:  Chain-key cryptography{" "}
               </Link>
             </Faq>
           </FaqSection>
