@@ -1052,6 +1052,36 @@ dfx canister call evm_rpc updateProvider '(record { providerId = 0; credentialHe
 
 You may receive this error if multiple JSON-RPC providers were queried and one did not receive enough cycles for the request. You can safely attach more cycles to your query, since unused cycles will be refunded.
 
+## Filtering logs
+
+The `consoleFilter` argument can be passed to the EVM RPC canister to filter what log messages are shown.
+
+The default configuration is to show all logs:
+
+```
+dfx deploy evm_rpc --argument "(record { consoleFilter = opt variant { ShowAll } })"
+```
+
+Hide all logs:
+
+```
+dfx deploy evm_rpc --argument "(record { consoleFilter = opt variant { HideAll } })"
+```
+
+The `ShowPattern` and `HidePattern` arguments can be used to filter out regular expressions, such as filtering out logs tagged with `INFO`:
+
+```
+dfx deploy evm_rpc --argument "(record { consoleFilter = opt variant { ShowPattern = "^INFO" } })"
+```
+
+Or, hide logs tagged with `TRACE_HTTP`:
+
+```
+dfx deploy evm_rpc --argument "(record { consoleFilter = opt variant { HidePattern = "^TRACE_HTTP" } })"
+```
+
+`ShowPattern` and `HidePattern` are evaluated using the [regex](https://docs.rs/regex/latest/regex/) crate.
+
 ## Important notes
 
 ### RPC result consistency
