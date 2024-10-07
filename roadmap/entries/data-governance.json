@@ -10,7 +10,6 @@
       "status": "in_progress",
       "eta": ""
     },
-
     {
       "title": "Prepare for Scaling",
       "is_milestone": true,
@@ -19,7 +18,6 @@
       "status": "future",
       "eta": ""
     },
-
     {
       "title": "Focus on User Experience",
       "is_milestone": true,
@@ -28,8 +26,6 @@
       "status": "future",
       "eta": ""
     },
-
-
     {
       "title": "Neurons table design",
       "overview": "The neurons table view provides several improvements over the grid layout from the initial design, making it easier for users to quickly get an overview of their neurons.",
@@ -134,7 +130,6 @@
       "in_beta": false,
       "milestone_id": "Plasma"
     },
-
     {
       "title": "Periodic Followee Confirmation",
       "overview": "Require neuron owners to confirm their neurons’ following settings periodically.",
@@ -254,7 +249,6 @@
       "in_beta": false,
       "milestone_id": "Neon"
     },
-
     {
       "title": "Improve staking user experience",
       "overview": "Simplify ICP/SNS staking process in the NNS dapp to eliminate barriers of entry for first-time users. Allow new users to quickly set up several neurons with the following strategy of their choosing.",
@@ -335,7 +329,6 @@
       "in_beta": false,
       "milestone_id": "Nucleon"
     },
-
     {
       "title": "NNS FE Dapp Re-write",
       "overview": "Replacing Flutter with Svelte for the NNS Frontend dapp. Significant speed and UX improvements expected.",
@@ -527,7 +520,6 @@
       "is_community": false,
       "in_beta": false
     },
-
     {
       "title": "Reduce min dissolve delay to 3 months",
       "overview": "To lower the barrier of entry for new stakers and make liquid staking protocols more viable, the community adopted a motion proposal to reduce min dissovle delay to 3 months.",
@@ -602,7 +594,6 @@
       "is_community": false,
       "in_beta": false
     },
-
     {
       "title": "Allow ecosystem wallets to connect to the NNS dapp",
       "overview": "Allow ecosystem wallets to control tokens and governance neurons in the NNS dapp to foster an interoperable ICP ecosystem.",

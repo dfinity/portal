@@ -321,11 +321,11 @@ function WhatIsIcpPage() {
                   className="tw-lead my-3 lg:text-[2rem] xl:tw-title-sm
 "
                 >
-                  Chain Key verification
+                  chain-key verification
                 </h3>
                 <p className="tw-paragraph-sm text-black/60 md:tw-paragraph-sm mb-2 md:text-center">
                   When software in a web browser, or another place, submits a
-                  call to ICP, the transaction result in signed by a "chain key"
+                  call to ICP, the transaction result in signed by a "chain-key"
                   signature proving both that it was produced correctly, and
                   that it's tamper-free. One perpetual 48-byte key can be used
                   to validate responses from the entire network, forever...
