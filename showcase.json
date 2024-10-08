@@ -3770,20 +3770,6 @@
     "logo": "/img/showcase/onicai_logo.png"
   },
   {
-    "id": "spotlabs",
-    "name": "Spotlabs",
-    "oneLiner": "A DeAI app for business tooling and infrastructure.",
-    "tags": [
-      "AI",
-      "Tools / Infrastructure"
-    ],
-    "description": "A DeAI app for business tooling and infrastructure.",
-    "usesInternetIdentity": true,
-    "github": "https://github.com/SpotLabsAI/SpotLabs/",
-    "display": "Normal",
-    "logo": "/img/showcase/spotlabs_logo.png"
-  },
-  {
     "id": "omnitynetwork",
     "name": "Omnity Network",
     "oneLiner": "1st 100% trustless omnichain interoperability protocol that connects Bitcoin, Ethereum, Appchains, L1s/L2s/L3s within Omnity Network.",
