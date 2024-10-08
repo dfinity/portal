@@ -5,7 +5,7 @@
     {
       "title": "Threshold EdDSA signing",
       "overview": "Threshold EdDSA support using cryptographic multiparty computation (MPC). Enables trustless integrations with all chains using EdDSA on the Ed25519 curve like Solana or Cardano.",
-      "status": "in_progress",
+      "status": "deployed",
       "eta": "2024",
       "forum": "",
       "proposal": "",
@@ -103,8 +103,8 @@
       "imported": true
     },
     {
-      "title": "On-chain Bitcoin explorer",
-      "overview": "Fully on-chain Bitcoin explorer running on ICP. Adds a missing piece of decentralized infrastructure to the Bitcoin ecosystem.",
+      "title": "Onchain Bitcoin explorer",
+      "overview": "Fully onchain Bitcoin explorer running on ICP. Adds a missing piece of decentralized infrastructure to the Bitcoin ecosystem.",
       "forum": "",
       "proposal": "",
       "docs": "",
@@ -114,7 +114,7 @@
       "in_beta": false
     },
     {
-      "title": "On-chain Ethereum block explorer",
+      "title": "Onchain Ethereum block explorer",
       "overview": "Ethereum block explorer running fully on chain on ICP. Adding a missing piece of decentralized infrastructure to the Ethereum ecosystem.",
       "status": "future",
       "forum": "",

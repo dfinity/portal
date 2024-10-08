@@ -7,7 +7,7 @@ slug: smart-contracts-serve-the-web
 
 # Smart Contracts serve the web
 
-The Internet Computer is the only blockchain that can host a full dapp – frontend, backend and data. Any user can deploy their dapp as a canister (smart contract) on the Internet Computer. Canisters are computational units that bundle together code and state. Canisters can store data, deliver HTML, CSS and Javascript pages, and answer API requests. Canisters are incredibly fast and can deliver webpages within 200ms. Canisters can store up to 400 GB of data at an incredibly low cost ($5 per GB per annum). Browsing dapps hosted on the Internet Computer is as seamless as browsing Web2 apps hosted on cloud. All these factors enable developers to deploy even large-scale social media applications entirely on-chain without needing any cloud services. Try out a few [dapps deployed on the Internet Computer](https://internetcomputer.org/ecosystem/).
+The Internet Computer is the only blockchain that can host a full dapp – frontend, backend and data. Any user can deploy their dapp as a canister (smart contract) on the Internet Computer. Canisters are computational units that bundle together code and state. Canisters can store data, deliver HTML, CSS and Javascript pages, and answer API requests. Canisters are incredibly fast and can deliver webpages within 200ms. Canisters can store up to 400 GB of data at an incredibly low cost ($5 per GB per annum). Browsing dapps hosted on the Internet Computer is as seamless as browsing Web2 apps hosted on cloud. All these factors enable developers to deploy even large-scale social media applications entirely onchain without needing any cloud services. Try out a few [dapps deployed on the Internet Computer](https://internetcomputer.org/ecosystem/).
 
 ## Workflow
 
@@ -44,7 +44,7 @@ There are many other ways of implementing the HTTP Gateway protocol. The gateway
 
 ## SEO
 
-The dapps running on the Internet Computer seamlessly integrate into the Web 2.0 world as crawlers are able to access them directly on-chain. This allows dapps to be indexed by search engines and for their metadata to be read in order to generate previews and cards on social platforms. A tutorial on using the Search Engine Optimization (SEO) features of the Internet Computer can be found in this [blog post](https://medium.com/dfinity/how-to-configure-dapps-for-social-platform-previews-and-seo-62a55ee63d33).
+The dapps running on the Internet Computer seamlessly integrate into the Web 2.0 world as crawlers are able to access them directly onchain. This allows dapps to be indexed by search engines and for their metadata to be read in order to generate previews and cards on social platforms. A tutorial on using the Search Engine Optimization (SEO) features of the Internet Computer can be found in this [blog post](https://medium.com/dfinity/how-to-configure-dapps-for-social-platform-previews-and-seo-62a55ee63d33).
 
 [Serving web content](https://internetcomputer.org/capabilities/serve-web-content/)
 

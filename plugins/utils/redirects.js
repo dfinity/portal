@@ -70,7 +70,7 @@ const redirects = `
   /docs/current/developer-docs/build/languages/other-languages/* /docs/current/developer-docs/smart-contracts/write/overview
   /docs/current/developer-docs/build/languages/work-with-languages /docs/current/developer-docs/smart-contracts/write/overview
   /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/smart-contracts/write/overview
-  /docs/current/developer-docs/build/backend/reproducible-builds /docs/current/developer-docs/smart-contracts/test/reproducible-builds
+  /docs/current/developer-docs/build/backend/reproducible-builds /docs/current/developer-docs/smart-contracts/best-practices/reproducible-builds
   /docs/current/developer-docs/build/cdks/ /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/build/frontend/default-frontend /docs/current/developer-docs/web-apps/application-frontends/default-frontend
   /docs/current/developer-docs/build/frontend/webpack-config /docs/current/developer-docs/web-apps/application-frontends/overview#modifying-the-webpack-configuration
@@ -166,6 +166,7 @@ const redirects = `
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /docs/current/developer-docs/backend/rust/
   /docs/quickstart/network-quickstart.html /docs/current/developer-docs/getting-started/install/
   /docs/token-holders/nns-app-quickstart.html /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart
+  /docs/current/developer-docs/daos/nns/nns-app-quickstart /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart
   /developers-guide/quickstart.html /docs/current/tutorials/developer-journey/
   /docs/current/tokenomics/identity-auth/auth-how-to /docs/current/developer-docs/identity/internet-identity/overview
   /docs/developers-guide/tutorials-intro.html /docs/current/tutorials/developer-journey/
@@ -320,7 +321,7 @@ const redirects = `
   /docs/current/developer-docs/getting-started/cycles/cycles_management_services /docs/current/developer-docs/smart-contracts/topping-up/cycles_management_services
   /docs/current/developer-docs/setup/pocket-ic /docs/current/developer-docs/smart-contracts/test/pocket-ic
   /docs/current/developer-docs/production/staging-environment /docs/current/developer-docs/smart-contracts/deploy/custom-testnets
-  /docs/current/developer-docs/backend/reproducible-builds /docs/current/developer-docs/smart-contracts/test/reproducible-builds
+  /docs/current/developer-docs/backend/reproducible-builds /docs/current/developer-docs/smart-contracts/best-practices/reproducible-builds
   /docs/current/developer-docs/backend/troubleshooting /docs/current/developer-docs/smart-contracts/test/troubleshooting
   /docs/current/developer-docs/integrations/t-ecdsa /docs/current/developer-docs/smart-contracts/signatures/t-ecdsa
   /docs/current/developer-docs/integrations/vetkeys/ /docs/current/developer-docs/smart-contracts/encryption/vetkeys
@@ -394,7 +395,9 @@ const redirects = `
   /docs/current/tokenomics/token-holders/nns-app-quickstart /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart
   /docs/current/tokenomics/nns/neurons-fund /docs/current/developer-docs/daos/nns/concepts/neurons-fund
   /docs/current/tokenomics/nns/nns-staking-voting-rewards /docs/current/developer-docs/daos/nns/concepts/neurons/staking-voting-rewards
+  /docs/current/developer-docs/daos/nns/staking-voting-rewards /docs/current/developer-docs/daos/nns/concepts/neurons/staking-voting-rewards
   /docs/current/tokenomics/nns/proposal-requirements /docs/current/developer-docs/daos/nns/concepts/proposal-requirements
+  /docs/current/developer-docs/daos/nns/proposal-requirements /docs/current/developer-docs/daos/nns/concepts/proposal-requirements
   /docs/current/tokenomics/index /docs/current/developer-docs/daos/overview
   /docs/current/tokenomics/ /docs/current/developer-docs/daos/overview
   /docs/current/developer-docs/integrations/multi-chain/user-faq /docs/current/developer-docs/multi-chain/faq/user-faq
@@ -598,6 +601,8 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/deploy/larger-wasm /docs/current/developer-docs/smart-contracts/install
   /docs/current/developer-docs/smart-contracts/deploy/sharing /docs/current/developer-docs/smart-contracts/deploy/overview
   /docs/current/developer-docs/integrations/rosetta/staking-support /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/
+  /docs/current/developer-docs/smart-contracts/test/benchmarking /docs/current/developer-docs/developer-tools/off-chain/canbench
+  /docs/current/developer-docs/smart-contracts/test/reproducible-builds /docs/current/developer-docs/smart-contracts/best-practices/reproducible-builds
   `
 .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

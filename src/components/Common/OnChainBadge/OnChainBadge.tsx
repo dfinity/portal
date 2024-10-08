@@ -10,12 +10,12 @@ export const OnChainBadge: FC<{ className?: string; sizeClasses?: string }> = ({
   return (
     <span
       className={clsx("grid grid-cols-1", sizeClasses, className)}
-      aria-label="This website is 100% on-chain"
+      aria-label="This website is 100% onchain"
     >
       <img
         src={inner}
         className="col-span-full row-span-full"
-        alt="This website is hosted 100% on-chain"
+        alt="This website is hosted 100% onchain"
       ></img>
       <img
         src={outer}

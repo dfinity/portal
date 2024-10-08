@@ -25,7 +25,7 @@ function FeaturePage() {
                 On the Internet Computer, you can create smart contracts that
                 directly interact with other blockchains, without trusted
                 centralized bridges that can get hacked and do rug pulls. This
-                has been made possible using Chain Key Cryptography.
+                has been made possible using Chain-Key Cryptography.
               </p>
             </div>
           </div>
@@ -96,7 +96,7 @@ function FeaturePage() {
 
             <h3>Threshold ECDSA</h3>
             <p>
-              The chain key cryptography protocol engine was extended so that
+              The chain-key cryptography protocol engine was extended so that
               hosted smart contracts can maintain ECDSA public keys, and make
               corresponding signatures, without need to store a private key on
               the blockchain in a way that would allow it to be stolen.
@@ -148,7 +148,7 @@ function FeaturePage() {
             Build on the IC
           </p>
           <p className="tw-lead-sm mb-2 text-center mx-auto md:mb-6 md:w-6/12">
-            Using the power of chain key cryptography, the Internet Computer can
+            Using the power of chain-key cryptography, the Internet Computer can
             thus be used as an orchestration blockchain, or meta blockchain,
             upon which new services can be built that combine functionality and
             assets provided by other blockchains in the Web3 universe - all

@@ -167,6 +167,14 @@ const sidebars = {
         },
         {
           type: "category",
+          label: "Cost",
+          items: [
+            "developer-docs/gas-cost",
+            "developer-docs/cost-estimations-and-examples",
+          ],
+        },
+        {
+          type: "category",
           label: "Maintain",
           items: [
             "developer-docs/smart-contracts/maintain/control",
@@ -184,14 +192,6 @@ const sidebars = {
             "developer-docs/smart-contracts/maintain/upgrade",
             {
               type: "category",
-              label: "Cost",
-              items: [
-                "developer-docs/gas-cost",
-                "developer-docs/cost-estimations-and-examples",
-              ],
-            },
-            {
-              type: "category",
               label: "Topping up canisters",
               items: [
                 "developer-docs/smart-contracts/topping-up/topping-up-canister",
@@ -204,10 +204,13 @@ const sidebars = {
           type: "category",
           label: "Test",
           items: [
+            {
+              label: "Overview",
+              type: "doc",
+              id: "developer-docs/smart-contracts/test/overview",
+            },
             "developer-docs/smart-contracts/test/pocket-ic",
-            "developer-docs/smart-contracts/test/reproducible-builds",
             "developer-docs/smart-contracts/test/troubleshooting",
-            "developer-docs/smart-contracts/test/benchmarking",
           ],
         },
         {
@@ -287,7 +290,7 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "On-chain encryption: vetKeys",
+              label: "Onchain encryption: vetKeys",
               items: [
                 "developer-docs/smart-contracts/encryption/vetkeys",
                 "developer-docs/smart-contracts/encryption/using-vetkeys",
@@ -295,12 +298,12 @@ const sidebars = {
             },
             {
               type: "doc",
-              label: "On-chain randomness",
+              label: "Onchain randomness",
               id: "developer-docs/smart-contracts/advanced-features/randomness",
             },
             {
               type: "category",
-              label: "On-chain signatures",
+              label: "Onchain signatures",
               items: [
                 "developer-docs/smart-contracts/signatures/t-ecdsa",
                 "developer-docs/smart-contracts/signatures/t-schnorr",
@@ -329,6 +332,11 @@ const sidebars = {
               type: "doc",
               label: "General",
               id: "developer-docs/smart-contracts/best-practices/general",
+            },
+            {
+              type: "doc",
+              label: "Reproducible builds",
+              id: "developer-docs/smart-contracts/best-practices/reproducible-builds",
             },
             {
               type: "doc",
@@ -521,11 +529,13 @@ const sidebars = {
                 "developer-docs/developer-tools/off-chain/agents/rust-agent",
               ],
             },
+            "developer-docs/developer-tools/off-chain/canpack",
+            "developer-docs/developer-tools/off-chain/canbench",
           ],
         },
         {
           type: "category",
-          label: "On-chain libraries",
+          label: "Onchain libraries",
           items: [
             "developer-docs/developer-tools/on-chain/cdks",
             "developer-docs/developer-tools/on-chain/ic-js",
@@ -1098,8 +1108,19 @@ const sidebars = {
           label: "Overview",
           id: "developer-docs/ai/overview",
         },
-        "developer-docs/ai/ai-on-chain",
-        "developer-docs/ai/machine-learning-sample",
+        {
+          type: "category",
+          label: "Inference",
+          items: [
+            {
+              type: "doc",
+              label: "Overview",
+              id: "developer-docs/ai/inference",
+	    },
+	    "developer-docs/ai/ai-on-chain",
+	    "developer-docs/ai/machine-learning-sample",
+	  ]
+        },
       ],
     },
     {
@@ -1411,6 +1432,19 @@ const sidebars = {
             "references/t-sigs-how-it-works",
             "references/vetkeys-overview",
             "references/supported-signatures",
+          ],
+        },
+        {
+          type: "category",
+          label: "ICP dashboard",
+          items: [
+            {
+              type: "doc",
+              label: "Overview",
+              id: "references/dashboard/overview",
+            },
+            "references/dashboard/using-the-dashboard",
+            "references/dashboard/dashboard-apis",
           ],
         },
         {

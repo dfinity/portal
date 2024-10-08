@@ -222,7 +222,7 @@ function NftPage() {
                     Entrepot
                   </h4>
                   <p className="tw-paragraph-sm md:tw-lead-sm mb-3 md:mb-8 text-black-60">
-                    The first <abbr title="non-fungible tokens">NFT</abbr> marketplace on the Internet Computer. This marketplace has  launched 100s of collections with their no-code minting tool, and have over 1TB of assets stored fully on-chain.
+                    The first <abbr title="non-fungible tokens">NFT</abbr> marketplace on the Internet Computer. This marketplace has  launched 100s of collections with their no-code minting tool, and have over 1TB of assets stored fully onchain.
                   </p>
                   <span className="tw-paragraph-sm md:tw-lead-sm px-4 py-2 md:px-5 md:py-[10px] bg-[#F1EEF5] rounded-full">
                     $36M+ in trading
@@ -272,7 +272,7 @@ function NftPage() {
               Make the most out of <abbr title="non-fungible tokens">NFT</abbr>s
             </h2>
             <p className="tw-lead-sm md:mb-6">
-              The Internet Computer enables a wide variety of unique <abbr title="non-fungible tokens">NFT</abbr>s. Since canister smart contracts can store over 100GB of data, every part of an ICP <abbr title="non-fungible tokens">NFT</abbr> can be hosted on the blockchain giving complete ownership to collectors. All data and code being on-chain allows developers to make any digital object, even full websites, or chat groups into <abbr title="non-fungible tokens">NFT</abbr>s.
+              The Internet Computer enables a wide variety of unique <abbr title="non-fungible tokens">NFT</abbr>s. Since canister smart contracts can store over 100GB of data, every part of an ICP <abbr title="non-fungible tokens">NFT</abbr> can be hosted on the blockchain giving complete ownership to collectors. All data and code being onchain allows developers to make any digital object, even full websites, or chat groups into <abbr title="non-fungible tokens">NFT</abbr>s.
             </p>
             <p className="mb-0">
               <Link
@@ -325,7 +325,7 @@ function NftPage() {
           <div className="container-12">
             <h2 className="tw-heading-4 md:tw-heading-60  text-white-60 md:w-8/12 md:mx-auto mb-10 md:mb-20">
               Cost of storing <span className="text-white">1GB</span> of NFT
-              collections on-chain
+              collections onchain
             </h2>
 
             <div className="flex flex-col md:flex-row gap-4 mb-16 md:mb-24">
@@ -455,7 +455,7 @@ function NftPage() {
               />
               <h3 className="mt-4 tw-heading-3 text-gradient">Collect digital pets</h3>
               <p>
-                There’s no doubt that people love to foster and collect endearing creatures to inhabit their favorite digital universes. Think of Pokémon, Digimon and Axie Infinity. ToyoWorld is creating an on-chain digi monster universe, so you own and collect fun digital pets. 
+                There’s no doubt that people love to foster and collect endearing creatures to inhabit their favorite digital universes. Think of Pokémon, Digimon and Axie Infinity. ToyoWorld is creating an onchain digi monster universe, so you own and collect fun digital pets. 
               </p>
               <Link
                 className="link-primary link-with-icon"
