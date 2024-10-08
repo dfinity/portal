@@ -158,10 +158,13 @@ by default, so make sure to use the correct function to generate the address as 
 
 ```motoko no-repl
 
-/// Returns the P2PKH address of this canister at the given derivation path.
-public func get_p2tr_raw_key_spend_address() : async BitcoinAddress {
-  await P2trRawKeySpend.get_address(NETWORK, KEY_NAME, DERIVATION_PATH);
-};
+  // Main.mo
+  
+  public func get_p2tr_raw_key_spend_address() : async BitcoinAddress {
+    await P2trRawKeySpend.get_address(NETWORK, KEY_NAME, DERIVATION_PATH);
+  };
+
+  // P2trRawKeySpend.mo
 
   public func get_address(network : Network, key_name : Text, derivation_path : [[Nat8]]) : async BitcoinAddress {
     // Fetch the public key of the given derivation path.
@@ -229,24 +232,13 @@ pub async fn get_address(
 
 ```motoko no-repl
 
-/// Returns the P2PKH address of this canister at the given derivation path.
-public func get_p2tr_raw_key_spend_address() : async BitcoinAddress {
-  await P2trRawKeySpend.get_address(NETWORK, KEY_NAME, DERIVATION_PATH);
-};
+  // Main.mo
 
-  public func get_address(network : Network, key_name : Text, derivation_path : [[Nat8]]) : async BitcoinAddress {
   public func get_p2tr_script_spend_address() : async BitcoinAddress {
     await P2trScriptSpend.get_address(NETWORK, KEY_NAME, DERIVATION_PATH);
   };
 
-  public func get_address(network : Network, key_name : Text, derivation_path : [[Nat8]]) : async BitcoinAddress {
-    // Fetch the public key of the given derivation path.
-    let sec1_public_key = await SchnorrApi.schnorr_public_key(key_name, Array.map(derivation_path, Blob.fromArray));
-    assert sec1_public_key.size() == 33;
-    let bip340_public_key_bytes = Array.subArray(Blob.toArray(sec1_public_key), 1, 32);
-    let { tweaked_address; is_even = _ } = public_key_to_p2tr_script_spend_address(network, bip340_public_key_bytes);
-    tweaked_address;
-  };
+  // P2trScriptSpend.mo
 
   public func get_address(network : Network, key_name : Text, derivation_path : [[Nat8]]) : async BitcoinAddress {
       // Fetch the public key of the given derivation path.
