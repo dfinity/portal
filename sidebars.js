@@ -1436,6 +1436,19 @@ const sidebars = {
         },
         {
           type: "category",
+          label: "ICP dashboard",
+          items: [
+            {
+              type: "doc",
+              label: "Overview",
+              id: "references/dashboard/overview",
+            },
+            "references/dashboard/using-the-dashboard",
+            "references/dashboard/dashboard-apis",
+          ],
+        },
+        {
+          type: "category",
           label: "Node providers",
           items: [
             {

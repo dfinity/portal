@@ -83,7 +83,7 @@ function FeaturePage() {
                 performance tests
               </Link>{" "}
             </p>
-            <h3>Chain Key Cryptography</h3>
+            <h3>Chain-Key Cryptography</h3>
             <p>
               The main advantage of using a blockchain or decentralized protocol
               is that the central point of trust is removed. This advantage
@@ -98,7 +98,7 @@ function FeaturePage() {
               inefficiency as verifying many individual signatures can be slow.
               One of the key innovations of the IC is the introduction of{" "}
               <Link href="https://medium.com/dfinity/chain-key-technology-one-public-key-for-the-internet-computer-6a3644901e28">
-                Chain Key (CK) Cryptography
+                Chain-Key (CK) Cryptography
               </Link>{" "}
               which allows IC signatures to be verified with a single public
               key, hence reducing friction for all types of devices (node
