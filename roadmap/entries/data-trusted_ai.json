@@ -44,7 +44,8 @@
       "status": "in_progress",
       "is_milestone": true,
       "milestone_id": "Ignition",
-      "eta": ""
+      "eta": "",
+      "eta_to_render": ""
     },
     {
       "title": "Increase the instruction limit in queries from 5 billion instructions to 40 billion instructions.",

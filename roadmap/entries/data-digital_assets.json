@@ -30,7 +30,8 @@
       "description": "Oisy is a wallet with a unique combination of properties. It is the first smart contract wallet that is self-custodial, multi-chain and uses passkeys for authentication, while being fully accessible through the browser. Oisy supports ICP-based dapps through ICRC-21, EVM-based dapps through WalletConnect, and easily converts between native Ethereum tokens and their ck twins.",
       "milestone_id": "Toroidal",
       "status": "in_progress",
-      "eta": "2024-12"
+      "eta": "2024-12",
+      "eta_to_render": ""
     },
     {
       "title": "Orbit Multi custody wallet for ICP",
@@ -71,7 +72,8 @@
       "is_milestone": true,
       "milestone_id": "Poloidal",
       "status": "in_progress",
-      "eta": ""
+      "eta": "",
+      "eta_to_render": "November 2024"
     },
     {
       "title": "Rosetta for ICRC ledgers",
