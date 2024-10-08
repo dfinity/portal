@@ -374,12 +374,7 @@ const RoadmapPage: React.FC = () => {
                 the future and not yet scoped in detail, as well as past
                 achievements.
               </p>
-              <Link
-                to="https://medium.com/@dfinity/the-internet-computer-roadmap-62487bdce289"
-                className="link-primary !text-white select-none hover:!text-white/70"
-              >
-                Roadmap Milestones explained <LinkArrowUpRight />{" "}
-              </Link>
+      
             </div>
           </div>
 
