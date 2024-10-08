@@ -155,6 +155,7 @@ by default, so make sure to use the correct function to generate the address as 
 
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
+
 ```motoko no-repl
 
 /// Returns the P2PKH address of this canister at the given derivation path.
@@ -189,13 +190,13 @@ public func get_p2tr_raw_key_spend_address() : async BitcoinAddress {
       case (#err msg) Debug.trap("Error encoding segwit address: " # msg);
     };
   };
+
 ```
 
 <a href="https://github.com/dfinity/examples/blob/eea5afe1a7e421b349e7fa08dd548d59aee92b61/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L64">
     <div align="center">View in the full example.</div>
 </a>
 </TabItem>
-
 <TabItem value="rust" label="Rust" default>
 
 ```rust
@@ -225,6 +226,7 @@ pub async fn get_address(
 
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
+
 ```motoko no-repl
 
 /// Returns the P2PKH address of this canister at the given derivation path.
@@ -272,13 +274,13 @@ public func get_p2tr_raw_key_spend_address() : async BitcoinAddress {
         is_even;
     };
   };
+
 ```
 
 <a href="https://github.com/dfinity/examples/blob/eea5afe1a7e421b349e7fa08dd548d59aee92b61/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L72">
     <div align="center">View in the full example.</div>
 </a>
 </TabItem>
-
 <TabItem value="rust" label="Rust" default>
 
 ```rust
