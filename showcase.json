@@ -4842,5 +4842,80 @@
     "usesInternetIdentity": false,
     "twitter": "https://twitter.com/zcloaknetwork",
     "website": "https://zcloak.network/"
+  },
+  {
+    "id": "zkLama",
+    "name": "zkLama",
+    "description": "Originally known as yllama.oc, zkLama is a framework that can generate programmable ICP canister smart contracts using text-based prompts.",
+    "logo": "/img/showcase/zkllama_logo.png",
+    "display": "Normal",
+    "oneLiner": "Originally known as yllama.oc, zkLama is a framework that can generate programmable ICP canister smart contracts using text-based prompts.",
+    "tags": [
+      "AI",
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/gip/yllama.oc",
+    "submittableId": "47012670"
+  },
+  {
+    "id": "upas",
+    "name": "User Public Achievement Standard (UPAS)",
+    "description": "A decentralized open-source reputation standard that utilizes ICP securely and autonomously verify user achievements and issue credentials.",
+    "logo": "/img/showcase/upas_logo.png",
+    "display": "Normal",
+    "oneLiner": "A decentralized open-source reputation standard that utilizes ICP securely and autonomously verify user achievements and issue credentials.",
+    "tags": [
+      "SocialFi",
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/relinkd/UPAS",
+    "website": "https://5j4ti-jqaaa-aaaaj-qncma-cai.icp0.io/",
+    "submittableId": "45854414"
+  },
+  {
+    "id": "civic",
+    "name": "Civic Pass",
+    "description": "A digital identity platform enabling developers to quickly leverage a variety of verification services and provide users with a reusable identity to more quickly onboard into new applications.",
+    "logo": "/img/showcase/civic_logo.png",
+    "display": "Normal",
+    "oneLiner": "A leading provider of identity and access management solutions.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/civicteam/civic-icp-canister",
+    "website": "https://www.civic.com",
+    "submittableId": "45489206"
+  },
+  {
+    "id": "toyoworld",
+    "name": "Toyoworld",
+    "description": "Collect, battle and track down mythical creatures in this open world adventure game!",
+    "logo": "/img/showcase/toyoworld_logo.png",
+    "display": "Normal",
+    "oneLiner": "Collect, battle and track down mythical creatures in this open world adventure game!",
+    "tags": [
+      "Games"
+    ],
+    "usesInternetIdentity": false,
+    "website": "https://gi72u-lqaaa-aaaal-ac3ga-cai.raw.icp0.io/",
+    "submittableId": "44404548"
+  },
+  {
+    "id": "satoshinotes",
+    "name": "Satoshi Notes",
+    "description": "A free note taking software that allows you to sell your valuable notes for Bitcoin, and also keeps your files secure in your PC or the blockchain.",
+    "logo": "/img/showcase/satoshi_notes_logo.png",
+    "display": "Normal",
+    "oneLiner": "A free note taking software that allows you to sell your valuable notes for Bitcoin, and also keeps your files secure in your PC or the blockchain.",
+    "tags": [
+      "Bitcoin"
+    ],
+    "usesInternetIdentity": false,
+    "website": "https://satoshinotes.org/",
+    "twitter": "https://x.com/satoshinotesbtc",
+    "submittableId": "44404548"
   }
 ]
