@@ -65,6 +65,7 @@ const airtablePlugin = async function () {
           );
           const mockEvents = require("./data/airtable-events-mock.json");
           const mockCourses = require("./data/airtable-courses-mock.json");
+          
           cache = {
             events: mockEvents,
             courses: mockCourses,
@@ -81,7 +82,7 @@ const airtablePlugin = async function () {
         });
 
         // Process events data
-        events = processEventsData(events);
+        events = await processEventsData(events);
 
         // Load courses
         let courses = await fetchAirtableRecords({
@@ -154,8 +155,20 @@ async function fetchAirtableRecords({ apiKey, baseId, tableName, viewId }) {
   return records;
 }
 
-function processEventsData(records) {
-  records = records.map(parseAirtableData);
+async function processEventsData(records) {
+  records = await Promise.all(records.map(async (record) => {
+    const parsedRecord = parseAirtableData(record);
+    
+    let imageUrl = await fetchShareImage(parsedRecord.eventLink);
+    
+    // If no share image is found, use a default image
+    if (!imageUrl) {
+      imageUrl = getDefaultEventImage(parsedRecord);
+    }
+    
+    return { ...parsedRecord, imageUrl };
+  }));
+
   const endDatecutoff = new Date(Date.now() - 6 * 30 * 24 * 60 * 60 * 1000)
     .toISOString()
     .split("T")[0];
@@ -250,6 +263,52 @@ function processEventsData(records) {
     modes: Array.from(modes),
     websiteCategory: Array.from(websiteCategory),
   };
+}
+
+async function fetchShareImage(url) {
+  if (!url || url === '#') return null;
+
+  try {
+    const response = await fetch(url);
+    const html = await response.text();
+    const $ = cheerio.load(html);
+    
+    let imageUrl = $('meta[property="og:image"]').attr('content');
+    
+    if (!imageUrl) {
+      imageUrl = $('meta[name="twitter:image"]').attr('content');
+    }
+    
+    return imageUrl;
+  } catch (error) {
+    console.warn(`Failed to fetch share image from ${url}: ${error.message}`);
+    return null;
+  }
+}
+
+
+function getDefaultEventImage(event) {
+  const defaultImages = [
+    '/img/events/event-01.webp',
+    '/img/events/event-02.webp',
+    '/img/events/event-03.webp',
+    '/img/events/event-04.webp',
+    '/img/events/event-05.webp',
+    '/img/events/event-06.webp',
+    '/img/events/event-07.webp',
+    '/img/events/event-08.webp',
+    '/img/events/event-09.webp',
+    '/img/events/event-10.webp',
+    '/img/events/event-11.webp',
+    '/img/events/event-12.webp',
+    '/img/events/event-13.webp',
+    '/img/events/event-14.webp',
+    '/img/events/event-15.webp',
+
+  ];
+
+  const index = parseInt(event.id, 36) % defaultImages.length;
+  return defaultImages[index];
 }
 
 let noneImageIndex = 0;
