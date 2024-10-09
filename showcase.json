@@ -4844,3 +4844,15 @@
     "website": "https://zcloak.network/"
   }
 ]
+ {
+  "id": "PHASMA",
+  "name": "PHASMA",
+  "description": "Explore a curated collection of ghostly NFTs, where art meets the ethereal.",
+  "logo": "/img/showcase/phasma_logo.webp",
+  "display": "Normal",
+  "tags": [
+    "NFT"
+  ],
+  "twitter": "https://x.com/phasmafuture",
+  "website": "https://entrepot.app/marketplace/phasma"
+}
