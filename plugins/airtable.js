@@ -237,20 +237,6 @@ async function processEventsData(records) {
   // from oldest to newest
   records.sort((a, b) => b.startDate.localeCompare(a.startDate));
 
-  // enumerate images in ../static/img/news, with pattern event-*.webp
-  const eventImageUrls = fs
-    .readdirSync(path.join(__dirname, "..", "static", "img", "events"))
-    .filter(
-      (filename) => filename.startsWith("event-") && filename.endsWith(".webp")
-    )
-    .map((filename) => `/img/events/${filename}`);
-
-  // assign images to event articles, old articles keep their images, new articles get new images
-  records.forEach((news, i) => {
-    news.imageUrl = eventImageUrls[i % eventImageUrls.length];
-  });
-
-  // reverse the order, so that newest articles get the newest images
   records.reverse();
 
   return {
