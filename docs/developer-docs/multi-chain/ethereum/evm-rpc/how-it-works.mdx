@@ -16,7 +16,7 @@ The [Ethereum Virtual Machine](https://ethereum.org/en/developers/docs/evm/) (EV
 
 To make calls to these external chains, the EVM RPC canister utilizes the ICP [HTTPS outcalls](/docs/current/references/https-outcalls-how-it-works) feature to make calls to JSON-RPC endpoints. HTTPS outcalls are used to make outgoing HTTP calls to traditional Web2 servers. The response returned from these servers can be used safely in the context of a canister without the risk of state divergence between the replicas on a subnet.
 
-When a canister makes an HTTPS outcall, it calls the management canister API using the `http_request` method. The networking adapter on each replica executes the HTTP request by sending it to the external server. When the response is returned from the external server, the response goes through consensus on the subnet where at least 2/3 of the subnet's nodes must agree on the response. Once the response is validated, it is sent to the management canister, which returns it to the canister that made originated the request.
+When a canister makes an HTTPS outcall, it calls the management canister API using the `http_request` method. The networking adapter on each replica executes the HTTP request by sending it to the external server. When the response is returned from the external server, the response goes through consensus on the subnet, where at least 2/3 of the subnet's nodes must agree on the response. Once the response is validated, it is sent to the management canister, which returns it to the canister that originated the request.
 
 In the case of the EVM RPC canister, a canister makes a request to the EVM RPC canister for a specified RPC method, and the EVM RPC canister makes the HTTPS outcall to one or more RPC endpoints on behalf of that canister.
 
@@ -26,9 +26,9 @@ By default for Candid-RPC methods such as `eth_getTransactionReceipt`, the EVM R
 
 Each call to a JSON-RPC endpoint requires an API key to authenticate with the RPC provider. The EVM RPC canister manages these keys on behalf of the developer, but a developer's personal keys may be passed to the call instead if desired. API keys typically have a subscription fee associated with them, but developers who use the EVM RPC canister's pre-configured keys do not need to subscribe to the RPC services themselves.
 
-When using using no API keys, developers should be mindful of:
+When not using API keys, developers should be mindful of:
 
-- The limit on number of requests per hour, day, month, etc. depending on the provider.
+- The limit on the number of requests per hour, day, month, etc. depending on the provider.
 
 - Rate limits shared with other dapps on the same subnet.
 
@@ -36,7 +36,7 @@ When attaching personal keys to a call, developers should be mindful of:
 
 - All nodes on the ICP subnet will be able to view the API key.
 
-- If this is necessary, it is recommended to configure an IP address allowlist and monitoring API key usage.
+- If this is necessary, it is recommended to configure an IP address allowlist and monitor API key usage.
 
 When using keys managed by the EVM RPC canister, developers should be mindful of:
 
@@ -60,47 +60,47 @@ type EthSepoliaService = variant { Alchemy; Ankr; BlockPi; PublicNode; ... };
 type L2MainnetService = variant { Alchemy; Ankr; BlockPi; PublicNode; ... };
 
 type RpcServices = variant {
-  EthMainnet : opt vec EthMainnetService;
-  EthSepolia : opt vec EthSepoliaService;
-  ArbitrumOne : opt vec L2MainnetService;
-  BaseMainnet : opt vec L2MainnetService;
-  OptimismMainnet : opt vec L2MainnetService;
-  Custom : record {
-    chainId : nat64;
-    services : vec record { url : text; headers : opt vec HttpHeader };
-  };
+  EthMainnet : opt vec EthMainnetService;
+  EthSepolia : opt vec EthSepoliaService;
+  ArbitrumOne : opt vec L2MainnetService;
+  BaseMainnet : opt vec L2MainnetService;
+  OptimismMainnet : opt vec L2MainnetService;
+  Custom : record {
+    chainId : nat64;
+    services : vec record { url : text; headers : opt vec HttpHeader };
+  };
 };
 
 type RpcConfig = record {
-  responseSizeEstimate : opt nat64,
-  ...
+  responseSizeEstimate : opt nat64,
+  ...
 };
 
 type MultiRpcResult<T> = variant {
-  Consistent : Result<T, RpcError>;
-  Inconsistent : vec (
-    variant {  Ethereum : EthereumService;  Sepolia : SepoliaService; ... },
-    Result<T, RpcError>
-  );
+  Consistent : Result<T, RpcError>;
+  Inconsistent : vec (
+    variant {  Ethereum : EthereumService;  Sepolia : SepoliaService; ... },
+    Result<T, RpcError>
+  );
 };
 
 eth_getLogs : (RpcServices, RpcConfig, EthGetLogsParam)
-  -> (MultiRpcResult<vec LogEntry>);
+  -> (MultiRpcResult<vec LogEntry>);
 
 eth_getBlockByNumber : (RpcServices, RpcConfig, BlockTag)
-  -> (MultiRpcResult<Block>);
+  -> (MultiRpcResult<Block>);
 
 eth_getTransactionReceipt : (RpcServices, RpcConfig, Hash)
-  -> (MultiRpcResult<opt TransactionReceipt>);
+  -> (MultiRpcResult<opt TransactionReceipt>);
 
 eth_getTransactionCount : (RpcServices, RpcConfig, GetTransactionCountArgs)
-  -> (MultiRpcResult<TransactionCount>);
+  -> (MultiRpcResult<TransactionCount>);
 
 eth_feeHistory : (RpcServices, RpcConfig, FeeHistoryArgs)
-  -> (MultiRpcResult<FeeHistory>);
+  -> (MultiRpcResult<FeeHistory>);
 
 eth_sendRawTransaction : (RpcServices, RpcConfig, text)
-  -> (MultiRpcResult<SendRawTransactionResult>);
+  -> (MultiRpcResult<SendRawTransactionResult>);
 
 ```
 
@@ -126,21 +126,21 @@ This endpoint also offers an improved developer experience when using the [ether
 
 ```
 type RpcService = variant {
-  EthMainnet : EthMainnetService;
-  EthSepolia : EthSepoliaService;
-  ArbitrumOne : L2MainnetService;
-  BaseMainnet : L2MainnetService;
-  OptimismMainnet : L2MainnetService;
-  Provider : nat64;
-  Custom : record { url : text; headers : opt vec HttpHeader };
+  EthMainnet : EthMainnetService;
+  EthSepolia : EthSepoliaService;
+  ArbitrumOne : L2MainnetService;
+  BaseMainnet : L2MainnetService;
+  OptimismMainnet : L2MainnetService;
+  Provider : nat64;
+  Custom : record { url : text; headers : opt vec HttpHeader };
 };
 
 request : (
-  service : RpcService,
-  jsonRequest : text,
-  maxResponseBytes : nat64
+  service : RpcService,
+  jsonRequest : text,
+  maxResponseBytes : nat64
 ) -> (
-  Result<text, RpcError>
+  Result<text, RpcError>
 );
 ```
 
