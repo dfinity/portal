@@ -86,7 +86,7 @@ Let's take a look at using the JavaScript agent to connect to ICP in a web brows
 Before you start, verify that you have set up your developer environment according to the instructions in [0.3: Developer environment setup](/docs/current/tutorials/developer-journey/level-0/dev-env).
 
 :::info
-Certain versions of Node.js may cause errors with agent-js. It is recommended to use versions 12, 14, or 16 to avoid potential errors.
+Certain versions of Node.js may cause errors with the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent). It is recommended to use versions 12, 14, or 16 to avoid potential errors.
 :::
 
 ### Creating a new project
@@ -213,9 +213,9 @@ export const random_maze = createActor(canisterId);
 In this code, the constructor first creates an `HTTPAgent` which wraps the JavaScript API, then uses it to encode calls through the public API. If the deployment is on the mainnet, the root key of the replica is fetched. Then, an actor is created using the automatically generated Candid interface for the canister and is passed the canister ID and the `HTTPAgent`.
 
 :::caution
-This example uses `fetchRootKey`. It is not recommended that dapps deployed on the mainnet call this function from agent-js, since using `fetchRootKey` on the mainnet poses severe security concerns for the dapp that's making the call. It is recommended to put it behind a condition so that it only runs locally.
+This example uses `fetchRootKey`. It is not recommended that dapps deployed on the mainnet call this function from the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), since using `fetchRootKey` on the mainnet poses severe security concerns for the dapp that's making the call. It is recommended to put it behind a condition so that it only runs locally.
 
-This API call will fetch a root key for verification of update calls from a single replica, so it’s possible for that replica to respond with a malicious key. A verified mainnet root key is already embedded into agent-js, so this only needs to be called on your local replica, which will have a different key from mainnet that agent-js does not know ahead of time.
+This API call will fetch a root key for verification of update calls from a single replica, so it’s possible for that replica to respond with a malicious key. A verified mainnet root key is already embedded into the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), so this only needs to be called on your local replica, which will have a different key from mainnet that the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) does not know ahead of time.
 :::
 
 Now our actor is set up to call all of the defined service methods; in this instance, there is just the `generate` method.

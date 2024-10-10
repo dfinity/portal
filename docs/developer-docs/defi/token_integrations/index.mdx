@@ -74,7 +74,7 @@ To implement a direct integration, you will need to:
 
 #### Support and libraries
 
-The Internet Computer supports interactions with ICP canisters through official JavaScript/TypeScript ([agent-js](https://github.com/dfinity/agent-js)) and Rust ([agent-rs](https://docs.rs/ic-agent/latest/ic_agent/)) libraries. Additionally, third-party libraries exist for other languages like Java, C, C++, and Go.
+The Internet Computer supports interactions with ICP canisters through official JavaScript/TypeScript ([ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent)) and Rust ([[ICP Rust agent](https://docs.rs/ic-agent/latest/ic_agent/)](https://docs.rs/ic-agent/latest/ic_agent/)) libraries. Additionally, third-party libraries exist for other languages like Java, C, C++, and Go.
 
 ### Ledger canister API
 The API for ledger canisters is generally standardized, following the [ICRC-1 standard](https://github.com/dfinity/ICRC-1/blob/icrc-3/standards/ICRC-1/README.md) for basic token transfers across the Internet Computer. All tokens adhering to this standard implement it. The [ICRC-3 standard](https://github.com/dfinity/ICRC-1/tree/icrc-3/standards/ICRC-3) further elaborates on how to fetch and verify the authenticity of the transaction chain maintained by canisters, ensuring integrity and trustworthiness in transactions.
