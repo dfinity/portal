@@ -18,7 +18,7 @@ If the Rust CDK is used, these are usually annotated with `#[update]` or `#[quer
 
 A **message** is a set of consecutive instructions that a subnet executes for a canister. The code execution for any such entry point can be split into several messages if inter-canister calls are made. The following properties are essential:
 
-- **Property 1**: Only a single message is processed at a time per canister. Message execution is sequential, and never parallel.
+- **Property 1**: Only a single message is processed at a time per canister. Message execution is atomic and sequential, and never parallel.
 
 - **Property 2**: Each call, query or update, triggers a message. When using `await` on the response from an inter-canister call, the code after the `await` (the callback, highlighted in blue) is executed as a separate message.
 
