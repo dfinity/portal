@@ -300,6 +300,8 @@ module.exports = {
                 '.text-gradient-white': '@apply text-gradient-base bg-[linear-gradient(191deg,#ffffff_22.86%,#4e377f_90%)]',
                 '.text-gradient-denver': '@apply text-gradient-base bg-[linear-gradient(90deg,#6A85F1_22.19%,#C572EF_79.9%)]',
                 '.text-gradient-green': '@apply text-gradient-base bg-[linear-gradient(48.09deg,#4DEDD3_-32.7%,#31A782_46.37%,#3B00B9_129.51%)]',
+                '.text-gradient-violet': '@apply text-gradient-base bg-[linear-gradient(310deg,#ED1E79_37.48%,#522785_86.69%)]',
+
                 '.input-text': '@apply block border border-solid rounded-xl tw-paragraph bg-transparent py-[14px] px-4 outline-offset-1',
                 '.input-text-white': '@apply border-white-80 text-white placeholder:text-white-60',
 

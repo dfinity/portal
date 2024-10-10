@@ -555,6 +555,17 @@ div[class^="announcementBarContent"] {
   }
 }
 
+.hide-scrollbar {
+  /*FireFox*/
+  scrollbar-width: none;
+  /*IE10+*/
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  /*Chrome, Safari, Edge*/
+  display: none;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

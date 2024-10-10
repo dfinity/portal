@@ -177,26 +177,26 @@ export const CardsSection = () => {
         </div>
       </article>
 
-      <article className="bg-[linear-gradient(48deg,#4DEDD3_-32.7%,#31A782_33.06%,#3B00B9_129.51%)] rounded-[32px] text-white  overflow-clip mt-6">
+      <article className="bg-[#F1EEF5] rounded-[32px] text-black  overflow-clip mt-6">
         <div className="flex flex-col md:flex-row items-stretch">
-          <div className="basis-1/2 p-1/10 md:py-1/12 md:order-2">
+          <div className="basis-1/2 p-1/10 md:py-1/12 md:order-1">
             <h4 className="tw-heading-4 md:tw-heading-60">
-              Make AI immune to cyber attacks
+              Secure and Trusted AI onchain
             </h4>
             <p className="tw-paragraph md:tw-lead-sm mt-4 md:mt-6 mb-0">
-              Decentralize Al to make it tamperproof and unstoppable, and
-              autonomous if needed
+              Benefit from the security, resilience, and power of the ICP
+              blockchain.
             </p>
-            <Link className="button-outline-white-30 mt-4" href="/ai">
-              Find out more
+            <Link className="button-outline mt-4" href="/ai">
+              Build now
             </Link>
           </div>
 
-          <div className="basis-1/2 relative md:order-1 -mt-[5%] md:mt-0 overflow-hidden">
+          <div className="basis-1/2 relative md:order-2 -mt-[5%] md:mt-0 overflow-hidden">
             <img
               loading="lazy"
               src="img/home/ai.webp"
-              className="md:absolute bottom-0 left-0 w-full -mb-10 md:mb-0"
+              className="md:absolute bottom-0 left-0 w-full translate-x-[10%] md:translate-x-[5%] md:translate-y-[20%] -mb-10 md:mb-0"
             />
           </div>
         </div>
