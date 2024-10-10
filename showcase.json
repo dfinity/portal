@@ -1967,27 +1967,6 @@
     "github": "https://github.com/ICEvent/Escrow"
   },
   {
-    "id": "vibeverse",
-    "name": "Vibeverse",
-    "oneLiner": "a learning mobile app that teaches ppl how to be creative with ai",
-    "tags": [
-      "AI"
-    ],
-    "description": "Vibeverse is a vibrant digital playground where creators, filmmakers, and artists harness AI tools to craft, share, and celebrate unique content in a decentralized community.",
-    "stats": "",
-    "logo": "/img/showcase/vibeverse_logo.png",
-    "website": "https://www.vibeverse.ai/",
-    "usesInternetIdentity": true,
-    "github": "https://github.com/vibeverse-team/vibeverse",
-    "youtube": "https://youtu.be/8__wlPEDhWw",
-    "twitter": "https://twitter.com/vibeverse_ai",
-    "screenshots": [
-      "/img/showcase/vibeverse_screenshot_0.jpg",
-      "/img/showcase/vibeverse_screenshot_1.jpg"
-    ],
-    "submittableId": "41394313"
-  },
-  {
     "name": "DSign",
     "description": "Collaborative Product Design Innovation Hub",
     "website": "https://dsign.ooo",
@@ -3542,21 +3521,6 @@
     "submittableId": "43814286"
   },
   {
-    "id": "Jobgrader",
-    "name": "Jobgrader",
-    "oneLiner": "Enabling the crowdworking market to train AI and any other micro tasks onchain.",
-    "website": "https://jobgrader.app",
-    "tags": [
-      "AI"
-    ],
-    "twitter": "https://twitter.com/FrontRowIC",
-    "description": "Enabling the crowdworking market to train AI and any other micro tasks onchain.",
-    "usesInternetIdentity": false,
-    "display": "Normal",
-    "logo": "/img/showcase/jobgrader_logo.png",
-    "submittableId": "44503915"
-  },
-  {
     "id": "rentspace",
     "name": "RentSpace",
     "oneLiner": "A crypto-friendly property rental platform.",
@@ -4919,15 +4883,15 @@
     "submittableId": "44404548"
   },
   {
-  "id": "PHASMA",
-  "name": "PHASMA",
-  "description": "Explore a curated collection of ghostly NFTs, where art meets the ethereal.",
-  "logo": "/img/showcase/phasma_logo.webp",
-  "display": "Normal",
-  "tags": [
-    "NFT"
-  ],
-  "twitter": "https://x.com/phasmafuture",
-  "website": "https://entrepot.app/marketplace/phasma"
+    "id": "PHASMA",
+    "name": "PHASMA",
+    "description": "Explore a curated collection of ghostly NFTs, where art meets the ethereal.",
+    "logo": "/img/showcase/phasma_logo.webp",
+    "display": "Normal",
+    "tags": [
+      "NFT"
+    ],
+    "twitter": "https://x.com/phasmafuture",
+    "website": "https://entrepot.app/marketplace/phasma"
   }
 ]
