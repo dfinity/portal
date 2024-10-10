@@ -25,6 +25,8 @@ Canisters implement methods that can be called via update or query calls. A quer
 <img src="/img/docs/update_vs_query.png" alt="Update vs Query" width="400"/>
 </div>
 
+See the reference on [ingress messages](/docs/current/references/ingress-messages) for a more technical discussion of this topic.
+
 ## Update calls
 
 Update calls are executed on all nodes of a <GlossaryTooltip>subnet</GlossaryTooltip> since the result must go through consensus. This makes them slower compared to query calls. They are submitted asynchronously and answered synchronously.
