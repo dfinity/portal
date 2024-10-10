@@ -117,11 +117,11 @@ The current values of fees are `base-fee` = 590K cycles (or $0.0000007885999 USD
 
 By default, canisters are scheduled for execution in a "best-effort" manner. Canisters that require guaranteed execution can get a share of compute capacity by setting `compute_allocation` in their canister settings. Compute allocation is expressed in percents and denotes the percentage of an execution core reserved for the canister.
 
-Setting even 1% compute allocation gives a significant boost over the best effort canisters:
+Setting even 1% compute allocation provides a significant advantage over canisters that use the "best-effort" scheduling:
 
 - For 1% compute allocation, the canister will receive 1% of an execution core and is guaranteed to be scheduled every 100 rounds (assuming it executes only non-DTS messages).
 
-- For 2% compute allocation, the canister will receive 2% of an execution core and is guaranteed to be scheduled in 50 rounds.
+- For 2% compute allocation, the canister will receive 2% of an execution core and is guaranteed to be scheduled every 50 rounds.
 
 - For 50% compute allocation, the canister will receive 50% of an execution core and is guaranteed to be scheduled every other round.
 
@@ -129,7 +129,7 @@ Setting even 1% compute allocation gives a significant boost over the best effor
 
 The allocatable compute capacity is 299% **per subnet**. Compute allocation is guaranteed if it is configured.
 
-Compute is a finite resource, and is priced as such. The current fee for 1% compute allocation per second is 10M cycles (or $0.0000133661 USD). Therefore, a canister that requests 100% compute allocation would be charged 10M * 100 cycles per second.
+Compute is a finite resource and is priced as such. The current fee for 1% compute allocation per second is 10M cycles (or $0.0000133661 USD). Therefore, a canister that requests 100% compute allocation would be charged 10M * 100 cycles per second.
 
 ### Storage
 Canisters pay for storage consumed by their [Wasm memory](/docs/current/developer-docs/smart-contracts/maintain/storage#heap-memory) and [stable memory](/docs/current/developer-docs/smart-contracts/maintain/storage#stable-memory) per time. Storing 1 GiB for 1 second costs 127k cycles, which amounts to ~4T cycles (or $5.35 USD) for storing 1 GiB for 1 year.
