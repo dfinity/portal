@@ -362,7 +362,7 @@ const features: FeatureCardProps[] = [
     imageSrc: "/img/ai-chain/1a.svg",
     title: "Immune to cyber attacks.",
     description:
-      "Sensitive AI models like in finance and public administration must be protected from centralized control, a prime cause for cyber attacks. ICP's decentralized infrastructure ensures integrity of AI models.",
+      "The integrity of AI models is protected by the blockchain. Unauthorized changes and tampering is not possible, which is crucial for applications in sensitive sectors.",
   },
   {
     imageSrc: "/img/ai-chain/2a.svg",
