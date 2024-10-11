@@ -4,9 +4,9 @@ import { useNavbarMobileSidebar } from "@docusaurus/theme-common/internal";
 
 export default function DocSidebarNavbarItem(props) {
   const mobileSidebar = useNavbarMobileSidebar();
-
+  
   const handleClick = (e) => {
-    if (window.innerWidth <= 996) {
+    if (window.innerWidth <= 996 && !mobileSidebar.shown) {
       mobileSidebar.toggle();
     }
 
