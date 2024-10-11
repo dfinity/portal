@@ -6,7 +6,6 @@ export default function DocSidebarNavbarItem(props) {
   const mobileSidebar = useNavbarMobileSidebar();
   
   const handleClick = useCallback((e) => {
-    console.log('click');
     if (window.innerWidth <= 996) {
       setTimeout(() => {
         mobileSidebar.toggle();
