@@ -1,42 +1,22 @@
 [
   {
-    "id": "helix",
-    "name": "Helix Markets",
-    "oneLiner": "Bringing true ownership and full transparency to crypto trading",
-    "website": "https://www.helixmarkets.io/",
+    "id": "bitfinity-evm",
+    "name": "Bitfinity EVM",
+    "website": "https://bitfinity.network/",
     "tags": [
-      "Ethereum",
-      "Bitcoin",
       "DeFi",
+      "Tools / Infrastructure",
+      "Ethereum",
       "Chain Fusion"
     ],
-    "display": "Large",
-    "stats": "2,000+ users",
-    "twitter": "https://twitter.com/HelixMarkets",
-    "description": "Helix Markets is a decentralized exchange that aims to bring true ownership and full transparency to crypto trading.",
+    "twitter": "https://twitter.com/bitfinitynet",
+    "description": "Bitfinity is the EVM compatibility layer for the IC. Using Bitfinity, you can deploy your Solidity smart contracts to the Internet Computer, taking advantage of its many advantageous DeFi capabilities: HTTPS Outcalls, the BTC integration, and more.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/helix_logo.webp",
-    "screenshots": [
-      "/img/showcase/helix_screenshot.png"
-    ]
-  },
-  {
-    "id": "bioniq",
-    "name": "Bioniq",
-    "oneLiner": "The fastest Ordinals marketplace",
-    "website": "https://bioniq.io/",
-    "tags": [
-      "Bitcoin",
-      "Enterprise",
-      "NFT",
-      "Chain Fusion"
-    ],
-    "description": "Bioniq is the fastest Ordinals marketplace. Buy, sell, and trade with no gas fees, near-instant finality, and decentralized secure token bridging..",
+    "stats": "1,000+ TPS",
     "display": "Large",
-    "stats": "45,000+ users",
-    "logo": "/img/showcase/bioniq-logo.jpeg",
+    "logo": "/img/showcase/bitfinity_evm.png",
     "screenshots": [
-      "/img/showcase/bioniq-screenshot-min.png"
+      "/img/showcase/bitfinity_showcase.webp"
     ]
   },
   {
@@ -219,23 +199,22 @@
     "video": "/img/showcase/hot_or_not_video.mp4"
   },
   {
-    "id": "bitfinity-evm",
-    "name": "Bitfinity EVM",
-    "website": "https://bitfinity.network/",
+    "id": "bioniq",
+    "name": "Bioniq",
+    "oneLiner": "The fastest Ordinals marketplace",
+    "website": "https://bioniq.io/",
     "tags": [
-      "DeFi",
-      "Tools / Infrastructure",
-      "Ethereum",
+      "Bitcoin",
+      "Enterprise",
+      "NFT",
       "Chain Fusion"
     ],
-    "twitter": "https://twitter.com/bitfinitynet",
-    "description": "Bitfinity is the EVM compatibility layer for the IC. Using Bitfinity, you can deploy your Solidity smart contracts to the Internet Computer, taking advantage of its many advantageous DeFi capabilities: HTTPS Outcalls, the BTC integration, and more.",
-    "usesInternetIdentity": true,
-    "stats": "1,000+ TPS",
+    "description": "Bioniq is the fastest Ordinals marketplace. Buy, sell, and trade with no gas fees, near-instant finality, and decentralized secure token bridging..",
     "display": "Large",
-    "logo": "/img/showcase/bitfinity_evm.png",
+    "stats": "45,000+ users",
+    "logo": "/img/showcase/bioniq-logo.jpeg",
     "screenshots": [
-      "/img/showcase/bitfinity_showcase.webp"
+      "/img/showcase/bioniq-screenshot-min.png"
     ]
   },
   {
@@ -256,21 +235,24 @@
     "logo": "/img/showcase/iclighthouse_logo.webp"
   },
   {
-    "id": "entrepot",
-    "name": "Entrepot",
-    "oneLiner": "ICP's most popular NFT marketplace",
-    "website": "https://entrepot.app/",
+    "id": "omnitynetwork",
+    "name": "Omnity Network",
+    "oneLiner": "1st 100% trustless omnichain interoperability protocol that connects Bitcoin, Ethereum, Appchains, L1s/L2s/L3s within Omnity Network.",
     "tags": [
-      "NFT"
+      "Bitcoin",
+      "Ethereum",
+      "Tools / Infrastructure",
+      "Chain Fusion",
+      "AI"
     ],
-    "twitter": "https://twitter.com/toniqlabs",
-    "description": "Entrepot is a decentralized NFT marketplace developed by ToniqLabs, the creators behind Rise of the Magni, Stoic Wallet, Cronic NFTs, and Exponent. Entrepot provides users with tools and onchain services to design, deploy, and manage NFTs and traditional tokens.",
+    "description": "A turbo engine for the Bitcoin Token Boom. Includes the first 100% trustless omnichain interoperability protocol that extends all Runes primitives and AI agent for dynamic token distribution.",
     "usesInternetIdentity": false,
-    "stats": "1,000,000+ ICP volume",
-    "display": "Large",
-    "logo": "/img/showcase/entrepot_logo.webp",
+    "website": "https://www.omnity.network/",
+    "twiter": "https://twitter.com/OmnityNetwork",
+    "display": "Normal",
+    "logo": "/img/showcase/omnitynetwork_logo.jpeg",
     "screenshots": [
-      "/img/showcase/entrepot_screenshot.webp"
+      "/img/showcase/omnity_screenshot.png"
     ]
   },
   {
@@ -320,6 +302,27 @@
     ]
   },
   {
+    "id": "helix",
+    "name": "Helix Markets",
+    "oneLiner": "Bringing true ownership and full transparency to crypto trading",
+    "website": "https://www.helixmarkets.io/",
+    "tags": [
+      "Ethereum",
+      "Bitcoin",
+      "DeFi",
+      "Chain Fusion"
+    ],
+    "display": "Normal",
+    "stats": "2,000+ users",
+    "twitter": "https://twitter.com/HelixMarkets",
+    "description": "Helix Markets is a decentralized exchange that aims to bring true ownership and full transparency to crypto trading.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/helix_logo.webp",
+    "screenshots": [
+      "/img/showcase/helix_screenshot.png"
+    ]
+  },
+  {
     "id": "catalyze",
     "name": "Catalyze",
     "website": "https://aqs24-xaaaa-aaaal-qbbea-cai.ic0.app/",
@@ -360,22 +363,23 @@
     "youtube": "https://www.youtube.com/watch?v=mr_9XArcG9Y"
   },
   {
-    "id": "bitfinitywallet",
-    "name": "Bitfinity Wallet",
-    "oneLiner": "A wallet to store and manage NFTs, Tokens, and connect to dapps on the Internet Computer.",
-    "website": "https://wallet.infinityswap.one/",
+    "id": "kinic",
+    "name": "Kinic",
+    "oneLiner": "The world's first Web3 search engine",
+    "website": "https://74iy7-xqaaa-aaaaf-qagra-cai.ic0.app/",
     "tags": [
-      "Wallet",
-      "Bitcoin",
-      "Ethereum",
-      "Chain Fusion"
+      "Tools / Infrastructure",
+      "DAO",
+      "AI"
     ],
-    "description": "The Bitfinity Wallet is a multi-chain wallet built and open-sourced by InfinitySwap. It is a browser extension that allows you to store and transfer your BTC, ICP, SNS-1, NFT, and other tokens - as well as log into Internet Computer dapps with a single click. The InfinitySwap Wallet also supports Internet Identity, the powerful authentication framework provided by the Internet Computer.",
+    "twitter": "https://twitter.com/kinic_app?s=20&t=PVKALcCRCdZIgr0U4sDWeg",
+    "description": "Kinic provides artificial intelligence tooling for the new web. Deploy vector databases, machine learning instances, and much more leveraging web3.",
+    "stats": "3,000,000+ searches",
     "display": "Large",
-    "logo": "/img/showcase/bitfinitywallet_logo.webp",
-    "videoContentType": "video/mp4",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/kinic_logo.webp",
     "screenshots": [
-      "/img/showcase/bitfinitywallet_screenshot.webp"
+      "/img/showcase/kinic_screenshot.webp"
     ]
   },
   {
@@ -596,7 +600,7 @@
     "twitter": "https://twitter.com/PlethoraGame",
     "description": "Plethora is a Web3 platformer with the goal of rewarding users both with fun gameplay and NFTs. Plethora empowers NFT projects to launch their collections with immersive experiences customized for you. Play now to compete, have fun, and earn rewards.",
     "oneLiner": "3D platformer meets Web3 with NFT rewards",
-    "display": "Large",
+    "display": "Normal",
     "stats": "10,000+ users",
     "logo": "/img/showcase/plethora_logo.webp",
     "screenshots": [
@@ -606,6 +610,7 @@
   {
     "id": "decideai",
     "name": "DecideAI",
+    "display": "Large",
     "oneLiner": "A fullstack decentralized AI platform",
     "website": "https://decideai.xyz",
     "twitter": "https://twitter.com/DecideAI_",
@@ -1031,23 +1036,21 @@
     ]
   },
   {
-    "id": "Caniplay",
-    "name": "Caniplay",
-    "oneLiner": "The world's First NFT Broadcast Station",
+    "id": "waterneuron",
+    "name": "Water Neuron",
+    "oneLiner": "A liquid staking protocol designed for ICP. Staking ICP becomes straightforward and efficient.",
     "tags": [
-      "NFT",
-      "SocialFi"
+      "DeFi",
+      "DAO"
     ],
-    "description": "Introducing CaniPlay (Can I Play), the pioneering, fully onchain NFT broadcast station. Submit your audio or video content, reach a global audience, and receive recognition and rewards from your listeners. As a listener, enjoy airdrops for actively participating in curating content",
+    "website": "https://waterneuron.fi/stake/",
+    "description": "A liquid staking protocol designed for ICP. Staking ICP becomes straightforward and efficient.",
     "usesInternetIdentity": true,
-    "github": "https://github.com/orgs/Canistore",
-    "twitter": "https://twitter.com/canistore",
     "display": "Large",
-    "logo": "/img/showcase/CaniPlay_logo.png",
+    "logo": "/img/showcase/waterneuron_logo.png",
     "screenshots": [
-      "/img/showcase/CaniPlay_SS.webp"
-    ],
-    "submittableId": "41319392"
+      "/img/showcase/waterneuron_screenshot.png"
+    ]
   },
   {
     "id": "nuance",
@@ -1578,28 +1581,23 @@
     ]
   },
   {
-    "id": "obsidian-tears",
-    "name": "Obsidian Tears",
-    "oneLiner": "Obsidian Tears is a 2D RPG similar to old-time classics, complete with NFT and blockchain integration on the Internet Computer.",
-    "website": "https://obsidiantears.xyz/",
+    "id": "bitomni",
+    "name": "Bitomni",
+    "oneLiner": "BTCFi-driven omnichain asset management protocol.",
     "tags": [
-      "Games",
-      "NFT",
-      "Metaverse"
+      "Bitcoin",
+      "DeFi",
+      "Chain Fusion"
     ],
-    "description": "Obsidian Tears is a 2D adventure featuring original art, story, music, and over 50 collectible NFT artifacts. Our mission is to make a great story after our favorite old-time classics, and to empower others to do the same.",
-    "logo": "/img/showcase/obsidian-tears-logo.webp",
+    "description": "BTCFi-driven omnichain asset management protocol with built-in BTCFi DApps across multiple blockchains.",
+    "usesInternetIdentity": true,
+    "website": "https://bitomni.io",
+    "twitter": "https://x.com/Bitomni_Global",
     "display": "Large",
-    "usesInternetIdentity": false,
-    "github": "https://github.com/obsidian-tears",
-    "youtube": "https://youtu.be/PqlVY9Qy74M",
-    "twitter": "https://twitter.com/obsidian__tears",
+    "logo": "/img/showcase/bitomni_logo.png",
     "screenshots": [
-      "/img/showcase/obsidian-tears-screenshot0.webp"
-    ],
-    "video": "/img/showcase/obsidian-tears-trailer.mp4",
-    "videoContentType": "video/mp4",
-    "submittableId": "25983021"
+      "/img/showcase/bitomni_screenshot.png"
+    ]
   },
   {
     "id": "polycrypt",
@@ -2074,26 +2072,22 @@
     "submittableId": "36057758"
   },
   {
-    "id": "scoge",
-    "name": "SCOGÉ Universe",
-    "oneLiner": "T.A.O.S City’s finest distributor of Luxury Fashion and Consumer goods",
-    "website": "https://uqjdj-siaaa-aaaag-aaoxq-cai.icp0.io",
-    "tags": [
-      "NFT",
-      "Metaverse",
-      "Games"
-    ],
-    "description": "SCOGÉ is a cutting-edge fashion-centric gamified metaverse platform that revolutionizes the way styles are born, stories are told, and interaction between users. Users embark on an enthralling journey, wielding unique powers to craft thrilling experiences while discovering T.A.O.S City and the evolving SCOGÉ Universe.",
-    "logo": "/img/showcase/scoge_logo.webp",
+    "id": "zcloak",
+    "name": "zCloak Network",
+    "description": "Defend trust and privacy in the age of AI by offering rapid, cost-effective, and secure zero-knowledge proof verification services for blockchains.",
+    "logo": "/img/showcase/zCloak_logo.svg",
     "display": "Large",
-    "usesInternetIdentity": false,
-    "twitter": "https://twitter.com/_scoge_",
-    "screenshots": [
-      "/img/showcase/scoge_screenshots.webp"
+    "oneLiner": "DID and ZKP Infrastructure for Web3",
+    "tags": [
+      "AI",
+      "Tools / Infrastructure"
     ],
-    "video": "/img/showcase/scoge_video.mp4",
-    "videoContentType": "video/mp4",
-    "submittableId": "34276514"
+    "usesInternetIdentity": false,
+    "twitter": "https://twitter.com/zcloaknetwork",
+    "website": "https://zcloak.network/",
+    "screenshots": [
+      "/img/showcase/zcloak_screenshot.png"
+    ]
   },
   {
     "id": "d-vote",
@@ -2826,23 +2820,22 @@
     "submittableId": "41203767"
   },
   {
-    "id": "kinic",
-    "name": "Kinic",
-    "oneLiner": "The world's first Web3 search engine",
-    "website": "https://74iy7-xqaaa-aaaaf-qagra-cai.ic0.app/",
+    "id": "bitfinitywallet",
+    "name": "Bitfinity Wallet",
+    "oneLiner": "A wallet to store and manage NFTs, Tokens, and connect to dapps on the Internet Computer.",
+    "website": "https://wallet.infinityswap.one/",
     "tags": [
-      "Tools / Infrastructure",
-      "DAO",
-      "AI"
+      "Wallet",
+      "Bitcoin",
+      "Ethereum",
+      "Chain Fusion"
     ],
-    "twitter": "https://twitter.com/kinic_app?s=20&t=PVKALcCRCdZIgr0U4sDWeg",
-    "description": "Kinic provides artificial intelligence tooling for the new web. Deploy vector databases, machine learning instances, and much more leveraging web3.",
-    "stats": "3,000,000+ searches",
+    "description": "The Bitfinity Wallet is a multi-chain wallet built and open-sourced by InfinitySwap. It is a browser extension that allows you to store and transfer your BTC, ICP, SNS-1, NFT, and other tokens - as well as log into Internet Computer dapps with a single click. The InfinitySwap Wallet also supports Internet Identity, the powerful authentication framework provided by the Internet Computer.",
     "display": "Large",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/kinic_logo.webp",
+    "logo": "/img/showcase/bitfinitywallet_logo.webp",
+    "videoContentType": "video/mp4",
     "screenshots": [
-      "/img/showcase/kinic_screenshot.webp"
+      "/img/showcase/bitfinitywallet_screenshot.webp"
     ]
   },
   {
@@ -3770,22 +3763,22 @@
     "logo": "/img/showcase/onicai_logo.png"
   },
   {
-    "id": "omnitynetwork",
-    "name": "Omnity Network",
-    "oneLiner": "1st 100% trustless omnichain interoperability protocol that connects Bitcoin, Ethereum, Appchains, L1s/L2s/L3s within Omnity Network.",
+    "id": "entrepot",
+    "name": "Entrepot",
+    "oneLiner": "ICP's most popular NFT marketplace",
+    "website": "https://entrepot.app/",
     "tags": [
-      "Bitcoin",
-      "Ethereum",
-      "Tools / Infrastructure",
-      "Chain Fusion",
-      "AI"
+      "NFT"
     ],
-    "description": "A turbo engine for the Bitcoin Token Boom. Includes the first 100% trustless omnichain interoperability protocol that extends all Runes primitives and AI agent for dynamic token distribution.",
+    "twitter": "https://twitter.com/toniqlabs",
+    "description": "Entrepot is a decentralized NFT marketplace developed by ToniqLabs, the creators behind Rise of the Magni, Stoic Wallet, Cronic NFTs, and Exponent. Entrepot provides users with tools and onchain services to design, deploy, and manage NFTs and traditional tokens.",
     "usesInternetIdentity": false,
-    "website": "https://www.omnity.network/",
-    "twiter": "https://twitter.com/OmnityNetwork",
+    "stats": "1,000,000+ ICP volume",
     "display": "Normal",
-    "logo": "/img/showcase/omnitynetwork_logo.jpeg"
+    "logo": "/img/showcase/entrepot_logo.webp",
+    "screenshots": [
+      "/img/showcase/entrepot_screenshot.webp"
+    ]
   },
   {
     "name": "ICPanda DAO",
@@ -3961,20 +3954,28 @@
     "logo": "/img/showcase/amplify_logo.png"
   },
   {
-    "id": "bitomni",
-    "name": "Bitomni",
-    "oneLiner": "BTCFi-driven omnichain asset management protocol.",
+    "id": "obsidian-tears",
+    "name": "Obsidian Tears",
+    "oneLiner": "Obsidian Tears is a 2D RPG similar to old-time classics, complete with NFT and blockchain integration on the Internet Computer.",
+    "website": "https://obsidiantears.xyz/",
     "tags": [
-      "Bitcoin",
-      "DeFi",
-      "Chain Fusion"
+      "Games",
+      "NFT",
+      "Metaverse"
     ],
-    "description": "BTCFi-driven omnichain asset management protocol with built-in BTCFi DApps across multiple blockchains.",
-    "usesInternetIdentity": true,
-    "website": "https://bitomni.io",
-    "twitter": "https://x.com/Bitomni_Global",
+    "description": "Obsidian Tears is a 2D adventure featuring original art, story, music, and over 50 collectible NFT artifacts. Our mission is to make a great story after our favorite old-time classics, and to empower others to do the same.",
+    "logo": "/img/showcase/obsidian-tears-logo.webp",
     "display": "Normal",
-    "logo": "/img/showcase/bitomni_logo.png"
+    "usesInternetIdentity": false,
+    "github": "https://github.com/obsidian-tears",
+    "youtube": "https://youtu.be/PqlVY9Qy74M",
+    "twitter": "https://twitter.com/obsidian__tears",
+    "screenshots": [
+      "/img/showcase/obsidian-tears-screenshot0.webp"
+    ],
+    "video": "/img/showcase/obsidian-tears-trailer.mp4",
+    "videoContentType": "video/mp4",
+    "submittableId": "25983021"
   },
   {
     "id": "b3wallet",
@@ -4475,18 +4476,23 @@
     "logo": "/img/showcase/alpacafi_logo.png"
   },
   {
-    "id": "waterneuron",
-    "name": "Water Neuron",
-    "oneLiner": "A liquid staking protocol designed for ICP. Staking ICP becomes straightforward and efficient.",
+    "id": "Caniplay",
+    "name": "Caniplay",
+    "oneLiner": "The world's First NFT Broadcast Station",
     "tags": [
-      "DeFi",
-      "DAO"
+      "NFT",
+      "SocialFi"
     ],
-    "website": "https://waterneuron.fi/stake/",
-    "description": "A liquid staking protocol designed for ICP. Staking ICP becomes straightforward and efficient.",
+    "description": "Introducing CaniPlay (Can I Play), the pioneering, fully onchain NFT broadcast station. Submit your audio or video content, reach a global audience, and receive recognition and rewards from your listeners. As a listener, enjoy airdrops for actively participating in curating content",
     "usesInternetIdentity": true,
+    "github": "https://github.com/orgs/Canistore",
+    "twitter": "https://twitter.com/canistore",
     "display": "Normal",
-    "logo": "/img/showcase/waterneuron_logo.png"
+    "logo": "/img/showcase/CaniPlay_logo.png",
+    "screenshots": [
+      "/img/showcase/CaniPlay_SS.webp"
+    ],
+    "submittableId": "41319392"
   },
   {
     "id": "cyclestransferstation",
@@ -4829,19 +4835,26 @@
     "website": "https://qehbq-rqaaa-aaaan-ql2iq-cai.icp0.io/"
   },
   {
-    "id": "zcloak",
-    "name": "zCloak Network",
-    "description": "Defend trust and privacy in the age of AI by offering rapid, cost-effective, and secure zero-knowledge proof verification services for blockchains.",
-    "logo": "/img/showcase/zCloak_logo.svg",
-    "display": "Normal",
-    "oneLiner": "DID and ZKP Infrastructure for Web3",
+    "id": "scoge",
+    "name": "SCOGÉ Universe",
+    "oneLiner": "T.A.O.S City’s finest distributor of Luxury Fashion and Consumer goods",
+    "website": "https://uqjdj-siaaa-aaaag-aaoxq-cai.icp0.io",
     "tags": [
-      "AI",
-      "Tools / Infrastructure"
+      "NFT",
+      "Metaverse",
+      "Games"
     ],
+    "description": "SCOGÉ is a cutting-edge fashion-centric gamified metaverse platform that revolutionizes the way styles are born, stories are told, and interaction between users. Users embark on an enthralling journey, wielding unique powers to craft thrilling experiences while discovering T.A.O.S City and the evolving SCOGÉ Universe.",
+    "logo": "/img/showcase/scoge_logo.webp",
+    "display": "Normal",
     "usesInternetIdentity": false,
-    "twitter": "https://twitter.com/zcloaknetwork",
-    "website": "https://zcloak.network/"
+    "twitter": "https://twitter.com/_scoge_",
+    "screenshots": [
+      "/img/showcase/scoge_screenshots.webp"
+    ],
+    "video": "/img/showcase/scoge_video.mp4",
+    "videoContentType": "video/mp4",
+    "submittableId": "34276514"
   },
   {
     "id": "zkLama",
@@ -4919,15 +4932,15 @@
     "submittableId": "44404548"
   },
   {
-  "id": "PHASMA",
-  "name": "PHASMA",
-  "description": "Explore a curated collection of ghostly NFTs, where art meets the ethereal.",
-  "logo": "/img/showcase/phasma_logo.webp",
-  "display": "Normal",
-  "tags": [
-    "NFT"
-  ],
-  "twitter": "https://x.com/phasmafuture",
-  "website": "https://entrepot.app/marketplace/phasma"
+    "id": "PHASMA",
+    "name": "PHASMA",
+    "description": "Explore a curated collection of ghostly NFTs, where art meets the ethereal.",
+    "logo": "/img/showcase/phasma_logo.webp",
+    "display": "Normal",
+    "tags": [
+      "NFT"
+    ],
+    "twitter": "https://x.com/phasmafuture",
+    "website": "https://entrepot.app/marketplace/phasma"
   }
 ]
