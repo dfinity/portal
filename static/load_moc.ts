@@ -38,7 +38,9 @@ function attachOnRunButton() {
     });
     document.head.appendChild(script);
   } else {
-    console.log("motoko not loaded");
+    if (process.env.NODE_ENV === "development") {
+      console.log("motoko not loaded");
+    }
   }
 }
 
