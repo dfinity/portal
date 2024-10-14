@@ -605,7 +605,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/test/benchmarking /docs/current/developer-docs/developer-tools/off-chain/canbench
   /docs/current/developer-docs/smart-contracts/test/reproducible-builds /docs/current/developer-docs/smart-contracts/best-practices/reproducible-builds
   /docs/current/developer-docs/security/general-security-best-practices /docs/current/developer-docs/security/security-best-practices/overview
-  /docs/current/samples/game-of-life /docs/current/references/samples/motoko/life
+  /docs/current/samples/game-of-life /docs/current/references/samples/motoko/life/
   `
 .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
