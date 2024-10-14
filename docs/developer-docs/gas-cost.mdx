@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-Canisters pay for consumed resources by burning cycles. These resources include storage, messaging, and execution. To obtain cycles, ICP tokens can be converted into cycles.
+Canisters pay for consumed resources by burning cycles. These resources include storage, messaging, execution, and special features. To obtain cycles, ICP tokens can be converted into cycles.
 
 - [Replication](#replication)
    - [Local development](#local-development)
@@ -29,11 +29,11 @@ Canisters pay for consumed resources by burning cycles. These resources include 
 
 ## Replication
 
-Replication refers to the number of times a canister is replicated, which is dependant on the canister's subnet.
+Replication refers to the number of times a canister is replicated. Replication is dependant on the canister's subnet.
 
 ### Local development
 
-When a canister is deployed to a local development environment, the canister is deployed to a single node. Cycles charged to locally deployed canisters have a cost that is 1/13th the cost when deployed to a 13-node subnet. In local development environments, cycles can be fabricated using dfx.
+When a canister is deployed to a local development environment, the canister is deployed to a single node. Cycles charged to locally deployed canisters have a cost that is 1/13th the cost when deployed to a 13-node subnet. In local development environments, cycles can be fabricated using `dfx`.
 
 ### Mainnet development
 
