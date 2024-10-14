@@ -396,6 +396,7 @@ const redirects = `
   /docs/current/tokenomics/nns/neurons-fund /docs/current/developer-docs/daos/nns/concepts/neurons-fund
   /docs/current/tokenomics/nns/nns-staking-voting-rewards /docs/current/developer-docs/daos/nns/concepts/neurons/staking-voting-rewards
   /docs/current/developer-docs/daos/nns/staking-voting-rewards /docs/current/developer-docs/daos/nns/concepts/neurons/staking-voting-rewards
+  /docs/current/developer-docs/daos/nns/staking-voting-rewards/ docs/current/developer-docs/daos/nns/concepts/neurons/staking-voting-rewards
   /docs/current/tokenomics/nns/proposal-requirements /docs/current/developer-docs/daos/nns/concepts/proposal-requirements
   /docs/current/developer-docs/daos/nns/proposal-requirements /docs/current/developer-docs/daos/nns/concepts/proposal-requirements
   /docs/current/tokenomics/index /docs/current/developer-docs/daos/overview
@@ -603,6 +604,8 @@ const redirects = `
   /docs/current/developer-docs/integrations/rosetta/staking-support /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/
   /docs/current/developer-docs/smart-contracts/test/benchmarking /docs/current/developer-docs/developer-tools/off-chain/canbench
   /docs/current/developer-docs/smart-contracts/test/reproducible-builds /docs/current/developer-docs/smart-contracts/best-practices/reproducible-builds
+  /docs/current/developer-docs/security/general-security-best-practices /docs/current/developer-docs/security/security-best-practices/overview
+  /docs/current/samples/game-of-life /docs/current/references/samples/motoko/life
   `
 .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
