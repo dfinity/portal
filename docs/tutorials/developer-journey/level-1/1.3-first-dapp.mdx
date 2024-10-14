@@ -13,6 +13,10 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/nUB7_KjE-uU?si=TRqLKWJqJ-apPVxo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+:::caution
+The video corresponding to this tutorial is outdated and follows a different project structure than what is written on this page.
+:::
+
 ## Overview
 
 At this point in your developer journey, you've covered the fundamentals of <GlossaryTooltip>canister</GlossaryTooltip> development and deployed the default 'Hello, world' project template on the playground. It's time to get into writing code and developing your own first dapp!
@@ -31,7 +35,7 @@ First, you need to create a new `dfx` project. Open a terminal window, navigate 
 
 ```bash
 dfx start --clean --background
-dfx new hello_world
+dfx new poll
 ```
 
 You will be prompted to select the language that your backend canister will use:
@@ -69,9 +73,9 @@ Lastly, you can include extra features to be added to your project:
 Let's review the project's file structure:
 
 ```bash
-poll                   # The root of the project
+poll                   # The root of the project.
 ├── README.md
-├── dfx.json           # The configuration file for your Internet Computer dapp
+├── dfx.json           # The configuration file for your Internet Computer dapp.
 ├── src
 │   ├── poll_backend   # Folder containing the source code of your dapp's backend.
 │   │   └── main.mo    # The default source code file; this is what you'll primarily be working with in this tutorial.
@@ -197,7 +201,7 @@ A detailed comparison breakdown can be found below:
 |----------------------|----------------------------|------------------------|
 | Resource consumption | Low                        | High                   |
 | Response times       | Fast (300ms-900ms)         | Slow (2s-10s)          |
-| Cost                 | Low                       | Cost cycles            |
+| Cost                 | Free (may incur a cost in the future)  | Cost cycles            |
 | Data change         | Not allowed to change data | Allowed to change data |
 | Security            | Results not certified by default | Results [certified by default](https://internetcomputer.org/how-it-works/asset-certification/) |
 
@@ -618,7 +622,11 @@ The HTML code above is a simple form that provides the end user with options to 
 Then, the `<head>` tag is used to include some basic CSS for the page's styling. To learn more about adding a stylesheet, see: [add a stylesheet](/docs/current/developer-docs/web-apps/application-frontends/add-stylesheet).
 :::
 
-Next, you will need a `webpack.config.js` file that defines several parameters to facilitate your local development web server. Create the file `webpack.config.js` in the root of your project that contains the following code:
+Next, you will need a `webpack.config.js` file that defines several parameters to facilitate your local development web server.
+
+:::info
+By default, `dfx`
+Create the file `webpack.config.js` in the root of your project that contains the following code:
 
 ```js title="webpack.config.js"
 require("dotenv").config();
