@@ -396,7 +396,7 @@ const redirects = `
   /docs/current/tokenomics/nns/neurons-fund /docs/current/developer-docs/daos/nns/concepts/neurons-fund
   /docs/current/tokenomics/nns/nns-staking-voting-rewards /docs/current/developer-docs/daos/nns/concepts/neurons/staking-voting-rewards
   /docs/current/developer-docs/daos/nns/staking-voting-rewards /docs/current/developer-docs/daos/nns/concepts/neurons/staking-voting-rewards
-  /docs/current/developer-docs/daos/nns/staking-voting-rewards/ docs/current/developer-docs/daos/nns/concepts/neurons/staking-voting-rewards
+  /docs/current/developer-docs/daos/nns/staking-voting-rewards/ /docs/current/developer-docs/daos/nns/concepts/neurons/staking-voting-rewards
   /docs/current/tokenomics/nns/proposal-requirements /docs/current/developer-docs/daos/nns/concepts/proposal-requirements
   /docs/current/developer-docs/daos/nns/proposal-requirements /docs/current/developer-docs/daos/nns/concepts/proposal-requirements
   /docs/current/tokenomics/index /docs/current/developer-docs/daos/overview
