@@ -85,7 +85,7 @@ docs
 
 If proposed documentation additions do not follow the above guidelines, they will need to be revised.
 
-Additionally, it is recommended to create a branch for changes, then submit a PR that compares the Master branch to your branch. This is because the GitHub preview canister can only generate live previews of the proposed changes from branches. It cannot create previews from forks or branches of forks. 
+Additionally, it is recommended to create a branch for changes, then submit a PR that compares the Master branch to your branch. This is because the GitHub preview canister can only generate live previews of the proposed changes from branches. It cannot create previews from forks or branches of forks.
 
 ## Adding a document
 
@@ -287,7 +287,7 @@ SEO keywords are required for all documentation pages. They can be added to the 
 
 ```
 ---
-keywords: [intermediate, browser js, javascript, agent js, agents]
+keywords: [intermediate, browser js, javascript, ICP JavaScript agent, agents]
 ---
 ```
 
