@@ -16,6 +16,7 @@ import { RootObject } from "../components/RoadmapPage/RoadmapTypes";
 import BlobGradient from "@site/static/img/gradientBlurredCircle.webp";
 import RightArrowIcon from "@site/static/img/svgIcons/rightArrowIcon.svg";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
+import Tooltip from "../components/Common/Tooltip";
 
 const MotionLink = motion(Link);
 
@@ -192,13 +193,21 @@ const milestoneComponent = (
       {isActiveMilestone && <CardBlobs></CardBlobs>}
       {(milestone.status === "deployed" ||
         milestone.name === "orphans_past") && (
-        <div className="absolute w-[48px] right-5 top-5 md:right-10 md:top-10">
-          <DeployedIcon glowing={true} isDark={true} />
+        <div className="absolute w-[48px] right-5 top-5 md:right-10 md:top-10 z-10">
+          <Tooltip 
+            tooltip="Deployed"
+          >
+            <DeployedIcon glowing={true} isDark={true} />
+          </Tooltip>
         </div>
       )}
       {milestone.status === "in_progress" && (
-        <div className="absolute w-[48px] right-5 top-5 md:right-10 md:top-10">
-          <InProgressIcon isDark={true} />
+        <div className="absolute w-[48px] right-5 top-5 md:right-10 md:top-10 z-10">
+          <Tooltip 
+            tooltip="In Progress"
+          >
+            <InProgressIcon isDark={true} />
+          </Tooltip>
         </div>
       )}
       {isOrphan ? (
