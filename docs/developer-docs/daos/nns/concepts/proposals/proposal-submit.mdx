@@ -9,7 +9,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <MarkdownChipRow labels={["Advanced", "Governance", "Concept"]} />
 
 To submit a proposal, it is recommended to use a neuron that can be controlled with a command line tool.
-This guide will show how this can be done using an example of a motion proposal. 
+This guide will show how this can be done using an example of a motion proposal. 
 You can find another example for how to submit a proposal on [registering a known neuron]
 (/docs/current/developer-docs/daos/nns/concepts/neurons/becoming-a-known-neuron).
 
@@ -39,7 +39,7 @@ $ dfx [OPTIONS] <SUBCOMMAND>
 
 #### Install `quill`
 
-* `quill` is a minimalist "governance toolkit". It is wrapper for crafting & sending messages to the NNS and manage one's neuron. [Install quill](https://github.com/dfinity/quill).
+* `quill` is a minimalist "governance toolkit". It is a wrapper for crafting and sending messages to the NNS and managing one's neuron. [Install quill](https://github.com/dfinity/quill).
 
 This article will assume that you execute `quill` on your local machine by running:
 ```
@@ -53,15 +53,25 @@ quill [OPTIONS] <SUBCOMMAND>
 Before you start, you need a private/public keypair.
 
 ```
-quill generate --seed-file seed.txt --pem-file private.pem
+quill generate --pem-file private.pem
 ```
 
-When returned, your `account id` should look something like this: 
+:::info
+quill encrypts the identity by default.
+:::
+
+When returned, your `account ID` should look something like this: 
 `612ec300g9ec990da900d6ec45919e7d5dbb9fa0dd8e69c54d374df93aa28d57`.
 
 #### Link this private/public keypair to `dfx` so you can use it as an identity.
 
-In this case, the new identity is called "proposals".
+To use the identity with `dfx`, first you must decrypt the `private.pem` file:
+
+```
+quill decrypt-pem private.pem
+```
+
+Then, import the pem file into `dfx`. In this case, the new identity is called "proposals".
 
 ```
 dfx identity import proposals private.pem
@@ -69,7 +79,13 @@ dfx identity import proposals private.pem
 
 If you see the message “creating identity: proposals” in the terminal, this means it worked.
 
-[Learn more about dfx identities](https://smartcontracts.org/docs/developers-guide/cli-reference/dfx-identity.html dfx identity).
+Alternatively, you can also import your identity using the seed file:
+
+```
+dfx identity import --seed-file seed.txt
+```
+
+[Learn more about dfx identities](https://smartcontracts.org/docs/developers-guide/cli-reference/dfx-identity).
 
 #### Send ICP to the previously created `account id`.
 
@@ -82,7 +98,7 @@ To send ICP to the account, all you need is to input the `account id` in your wa
 To stake a neuron using quill, run the following command:
 
 ```
-// Craft a message to stake a neuron by choosing a 8-character $NAME and an $AMOUNT to stake
+// Craft a message to stake a neuron by choosing an 8-character $NAME and an $AMOUNT to stake
 // Note: you need to stake at LEAST 10 ICP to send proposals as $AMOUNT
 quill --pem-file private.pem neuron-stake --name $NAME --amount $AMOUNT > message.json
 
@@ -118,14 +134,14 @@ Below is an example of using markdown for a NNS motion proposal:
 ```md
 ## Objective
 
-Service nervous systems (SNSs) are algorithmic DAOs that allow developers to create decentralized, token-based governance systems for their dapps. The proposed governance canister design is similar to the  governance canister of the Network Nervous System (NNS) but simpler and more flexible, allowing each SNS community to choose the configurations according to their needs. This design is also presented and discussed in this forum: https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224 .
+Service nervous systems (SNSs) are algorithmic DAOs that allow developers to create decentralized, token-based governance systems for their dapps. The proposed governance canister design is similar to the  governance canister of the Network Nervous System (NNS) but simpler and more flexible, allowing each SNS community to choose the configurations according to their needs. This design is also presented and discussed in this forum: https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224 .
 
 ## Background
 
 ### Relation to the original SNS design & overall approach
 DFINITY Foundation presented a first proposed [SNS design](https://www.youtube.com/watch?v=L4443aaAP5A) in October 2021.
 
-## Community conversation & Timeline
+## Community conversation and timeline
 The NNS team is ready to work on this feature!
 To get the design approved by the community, the following schedule was followed:
 
@@ -161,7 +177,7 @@ dfx --identity proposals canister --network ic call rrkah-fqaaa-aaaaa-aaaaq-cai 
 
 ## Objective
 
-Service nervous systems (SNSs) are algorithmic DAOs that allow developers to create decentralized, token-based governance systems for their dapps. The proposed governance canister design is similar to the  governance canister of the Network Nervous System (NNS) but simpler and more flexible, allowing each SNS community to choose the configurations according to their needs. This design is also presented and discussed in this forum: https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224 .
+Service nervous systems (SNSs) are algorithmic DAOs that allow developers to create decentralized, token-based governance systems for their dapps. The proposed governance canister design is similar to the  governance canister of the Network Nervous System (NNS) but simpler and more flexible, allowing each SNS community to choose the configurations according to their needs. This design is also presented and discussed in this forum: https://forum.dfinity.org/t/open-governance-canister-for-sns-design-proposal/10224 .
 
 ## Background
 
@@ -191,13 +207,13 @@ If successful, `dfx` will return an output such as:
 
 ```
 (
-  record {
-    2_171_433_291 = opt variant {
-      3_217_030_240 = record {
-        2_744_746_248 = opt record { 23_515 = 42_626 : nat64 };
-      }
-    };
-  },
+  record {
+    2_171_433_291 = opt variant {
+      3_217_030_240 = record {
+        2_744_746_248 = opt record { 23_515 = 42_626 : nat64 };
+      }
+    };
+  },
 )
 ```
 
@@ -252,4 +268,3 @@ Developer forum: https://forum.dfinity.org/t/long-term-r-d-tokenomics-proposal/9
 Once the proposal is live, it will be open to voting for 4 days, and if there is a lot of contesting of votes, that deadline will be automatically extended up to an additional 4 days.
 
 Proposals typically require significant communication and promotion (like in any organization) to make sure enough people vote for it. It is very common for proposals to be promoted 'before' submission so its intended voters are aware of it.
-
