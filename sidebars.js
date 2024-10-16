@@ -1142,6 +1142,7 @@ const sidebars = {
               items: [
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-send-and-receive-tokens",
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-importing-tokens",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-staking-a-neuron",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-voting-on-proposals",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-following-other-neurons",
