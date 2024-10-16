@@ -393,17 +393,6 @@
       "in_beta": false
     },
     {
-      "title": "Reduction of call latencies",
-      "overview": "Reduce call latencies for the most-used call patterns that negatively affect dapp responsiveness.",
-      "status": "",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "is_community": true,
-      "in_beta": false
-    },
-    {
       "title": "WASI V2 support",
       "overview": "WASI V2 is the upcoming standard for running Wasm programs outside of browser environments. It is expected to become the de-facto standard and be targeted by many libraries and thus should be supported by ICP.",
       "status": "",
@@ -494,17 +483,6 @@
     {
       "title": "Subnet splitting V2",
       "overview": "An enhanced version of subnet splitting where all the heavy lifting is done by the protocol.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "P2P unicast",
-      "overview": "Utilizing unicast at the P2P layer to communicate artefacts instead of gossip to decrease bandwidth requirements and improve throughput.",
       "forum": "",
       "proposal": "",
       "docs": "",
