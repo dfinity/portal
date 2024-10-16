@@ -34,7 +34,7 @@ This guide displays how to deploy an index canister locally and use it in conjun
 
 ## Wasm and Candid files
 
-Go to the [releases overview](https://dashboard.internetcomputer.org/releases) and copy the latest <GlossaryTooltip>replica</GlossaryTooltip> binary revision (IC_VERSION). At the time of writing, this is `b9a0f18dd5d6019e3241f205de797bca0d9cc3f8`.
+Go to the [releases overview](https://dashboard.internetcomputer.org/releases) and copy the latest <GlossaryTooltip>replica</GlossaryTooltip> binary revision (IC_VERSION). At the time of writing, this is `c43a4880199c00135c8415957851e823b3fb769e`.
 
 <AdornedTabs groupId="standards">
 <TabItem value="icp" label="ICP" default>
@@ -44,7 +44,7 @@ Go to the [releases overview](https://dashboard.internetcomputer.org/releases) a
 Command to download this Wasm file using curl:
 
 ```
-curl -o index.wasm.gz "https://download.dfinity.systems/ic/b9a0f18dd5d6019e3241f205de797bca0d9cc3f8/canisters/ic-icp-index-canister.wasm.gz"
+curl -o index.wasm.gz "https://download.dfinity.systems/ic/c43a4880199c00135c8415957851e823b3fb769e/canisters/ic-icp-index-canister.wasm.gz"
 ```
 
 **Candid URL:** https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icp_ledger/index/index.did
@@ -52,7 +52,7 @@ curl -o index.wasm.gz "https://download.dfinity.systems/ic/b9a0f18dd5d6019e3241f
 Command to download this Candid file using curl:
 
 ```
-curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/b9a0f18dd5d6019e3241f205de797bca0d9cc3f8/rs/rosetta-api/icp_ledger/index/index.did"
+curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/c43a4880199c00135c8415957851e823b3fb769e/rs/rosetta-api/icp_ledger/index/index.did"
 ```
 
 </TabItem>
@@ -70,7 +70,7 @@ The URL for the ICRC-1 index .did file is `curl -o index.did "`, so with the abo
 Command to download this Wasm file using curl:
 
 ```
-curl -o index.wasm.gz "https://download.dfinity.systems/ic/b9a0f18dd5d6019e3241f205de797bca0d9cc3f8/canisters/ic-icrc1-index-ng.wasm.gz"
+curl -o index.wasm.gz "https://download.dfinity.systems/ic/c43a4880199c00135c8415957851e823b3fb769e/canisters/ic-icrc1-index-ng.wasm.gz"
 ```
 
 **Candid URL:** https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icrc1/index-ng/index-ng.did
@@ -78,7 +78,7 @@ curl -o index.wasm.gz "https://download.dfinity.systems/ic/b9a0f18dd5d6019e3241f
 Command to download this Candid file using curl:
 
 ```
-curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/b9a0f18dd5d6019e3241f205de797bca0d9cc3f8/rs/rosetta-api/icrc1/index-ng/index-ng.did"
+curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/c43a4880199c00135c8415957851e823b3fb769e/rs/rosetta-api/icrc1/index-ng/index-ng.did"
 ```
 
 </TabItem>
@@ -101,7 +101,7 @@ If you followed the guide on local ledger setup and used the same project folder
     "icp_index_canister": {
       "type": "custom",
       "candid": "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icp_ledger/index/index.did",
-      "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-icp-index-canister.wasm.gz",
+      "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-icp-index-canister.wasm.gz"
             "remote": {
         "id": {
           "ic": "qhbym-qaaaa-aaaaa-aaafq-cai"
@@ -111,7 +111,7 @@ If you followed the guide on local ledger setup and used the same project folder
     "icp_ledger_canister": {
       "type": "custom",
       "candid": "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icp_ledger/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ledger-canister.wasm.gz",
+      "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ledger-canister.wasm.gz"
       "remote": {
         "id": {
           "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
@@ -138,12 +138,12 @@ Open the `dfx.json` file in your project's directory. Add the `icrc1_index_canis
     "icrc1_index_canister": {
       "type": "custom",
       "candid": "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icrc1/index-ng/index-ng.did",
-      "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-icrc1-index-ng.wasm.gz",
+      "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-icrc1-index-ng.wasm.gz"
     },
     "icrc1_ledger_canister": {
       "type": "custom",
       "candid": "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icrc1/ledger/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-icrc1-ledger.wasm.gz",
+      "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ic-icrc1-ledger.wasm.gz"
     }
   },
   "output_env_file": ".env",
@@ -193,7 +193,7 @@ In this workflow, you cannot deploy this canister to the playground (using flag 
 :::
 
 ```
-dfx deploy icp_index_canister --specified-id qhbym-qaaaa-aaaaa-aaafq-cai --argument '(record {ledger_id = principal "ryjl3-tyaaa-aaaaa-aaaba-cai"})'
+dfx deploy icp_index_canister --specified-id qhbym-qaaaa-aaaaa-aaafq-cai --argument '(record {ledger_id = principal "ryjl3-tyaaa-aaaaa-aaaba-cai")'
 ```
 
 The ICP index canister will start synching right away and will automatically try to fetch new blocks from the ICP ledger every few seconds.
@@ -205,7 +205,7 @@ The ICP index canister will start synching right away and will automatically try
 Here it is assumed that the canister ID of your local ICRC-1 ledger is `mxzaz-hqaaa-aaaar-qaada-cai`, otherwise replace it with your ICRC-1 ledger canister ID.
 
 ```
-dfx deploy icrc1_index_canister --argument '(opt variant{Init = record {ledger_id = principal "mxzaz-hqaaa-aaaar-qaada-cai"}})'
+dfx deploy icrc1_index_canister --argument '(opt variant{Init = record {ledger_id = principal "mxzaz-hqaaa-aaaar-qaada-cai" retrieve_blocks_from_ledger_interval_seconds: Some(10)}})'
 ```
 
 :::caution
@@ -214,7 +214,7 @@ Deploying to the playground is ICP's equivalent of deploying to a testnet networ
 In this workflow, you cannot deploy this canister to the playground (using flag `dfx deploy --playground`) because it does not accept gzipped Wasm files.
 :::
 
-The ICRC-1 index canister will start synching right away and will automatically try to fetch new blocks from the ICRC-1 ledger every few seconds.
+The ICRC-1 index canister will start synching right away and will automatically try to fetch new blocks according to the seconds specified in `retrieve_blocks_from_ledger_interval_seconds`. 
 
 </TabItem>
 </AdornedTabs>

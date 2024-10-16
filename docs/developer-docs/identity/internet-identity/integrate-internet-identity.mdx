@@ -22,17 +22,19 @@ This project uses the **pullable** version of the Internet identity canister. A 
 Before you start, verify that you have:
 
 - Downloaded and installed [`dfx`](https://github.com/dfinity/sdk/releases/latest) version 0.14.1 or later.
-- [Node.js v16+](https://nodejs.org/en).
+- [Node.js `16.0.0` or newer](https://nodejs.org/en).
 
-### Step 1: To get started, open a terminal window and create a new project.
+## Creating a simple app with II authentication
 
-Start `dfx`:
+### Step 1: Create a new project.
+
+First, start `dfx`:
 
 ```
 dfx start --clean --background
 ```
 
-Use `dfx new <project_name>` to create a new project:
+Then use `dfx new <project_name>` to create a new project:
 
 ```
 dfx new ii_integration
@@ -73,7 +75,9 @@ x Internet Identity
 ⬚ Frontend tests
 ```
 
-### Step 2: For this project, you'll use a simple 'Who am I?' function for the backend canister. Open the `src/ii_integration_backend/main.mo` file and replace the existing content with the following:
+### Step 2: Edit the backend code.
+
+For this project, you'll use a simple 'Who am I?' function for the backend canister. Open the `src/ii_integration_backend/main.mo` file and replace the existing content with the following:
 
 ```motoko title="src/ii_integration_backend/main.mo"
 actor {
@@ -85,13 +89,15 @@ actor {
 
 In this actor, there is a single method that responds with the caller's principal. This will show if you make a request from the application's frontend using an authenticated Internet Identity or an AnonymousIdentity.
 
-### Step 3: Install the @dfinity/auth-client package:
+### Step 3: Install the @dfinity/auth-client package.
 
 ```
 npm install @dfinity/auth-client
 ```
 
-### Step 4: Insert the following code into the `src/ii_integration_frontend/src/index.js` file:
+### Step 4: Edit the frontend canister's `index.js` file.
+
+Insert the following code into the `src/ii_integration_frontend/src/index.js` file:
 
 ```javascript title="src/ii_integration_frontend/src/index.js"
 /* A simple webapp that authenticates the user with Internet Identity and that
@@ -177,7 +183,9 @@ This code does the following:
 If you used a project name other than `ii_integration`, you will need to rename the imports and environment variables in the code.
 :::
 
-### Step 5: Insert the following code into the `src/ii_integration_frontend/src/index.html` file:
+### Step 5: Edit the frontend canister's `index.html` file.
+
+Insert the following code into the `src/ii_integration_frontend/src/index.html` file:
 
 ```html title="src/ii_integration_frontend/src/index.html"
 <!DOCTYPE html>
@@ -214,22 +222,24 @@ This code provides a simple UI for us to interact with our application.
 [View the repo for this code](https://github.com/letmejustputthishere/ii_integration_example) if you would rather clone the example.
 :::
 
-### Step 6: Deploy the project:
+### Step 6: Deploy the project.
 
 ```
 dfx deps deploy
 dfx deploy
 ```
 
-### Step 8: Navigate to the frontend canister's URL in your web browser. You will see the frontend of the app:
+### Step 7: Open the application.
+
+Navigate to the frontend canister's URL in your web browser. You will see the frontend of the app:
 
 ![Local integration](../_attachments/II_greet_1.png)
 
-### Step 7: Then, select 'Log in'.
+### Step 8: Login to the app.
 
 You'll be redirected to the II frontend. Since you're running this locally, you will be using a local, non-production Internet Identity. To create one, follow the on-screen steps.
 
-### Step 8: Create a local Internet Identity
+#### Step 9: Create a local Internet Identity
 
 - Select 'Create New' from the UI.
 
@@ -253,13 +263,15 @@ This number is your Internet Identity. With this number and your passkey, you wi
 
 Once you save it, select the 'I saved it, continue' button.
 
-### Step 9: Once you are redirected back to the frontend of the app, click the 'Click me!' button.
+### Step 10: Test the app's functionality.
 
-### Step 10: Your Internet Identity's principal ID will be returned:
+Once you are redirected back to the frontend of the app, click the 'Click me!' button.
+
+Your Internet Identity's principal ID will be returned:
 
 ![Local integration 4](../_attachments/II_greet_2.png)
 
-### Local frontend development
+## Local frontend development
 
 When modifying this example's frontend, it is recommended to develop using a local development server instead of using the deployed frontend canister. This is because using a local development server will enable Hot Module Reloading, allowing you to see any modifications made to your frontend instantaneously, rather than having to redeploy the frontend canister to see the changes.
 

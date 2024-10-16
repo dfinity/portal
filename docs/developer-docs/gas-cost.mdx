@@ -64,7 +64,7 @@ ICP charges the canister smart contract for the resources it consumes. This allo
 ICP does not use the term 'gas', it uses the term 'cycles'.
 :::
 
-You can learn more about the [reverse gas model](https://internetcomputer.org/capabilities/reverse-gas).
+You can learn more about the [reverse gas model](/capabilities/reverse-gas).
 
 One downside of the ICP reverse gas model is that it requires prerequisite steps and ongoing maintenance for developers. Canisters must have their cycles balances maintained and regularly topped up as they continuously use resources. The canister will be removed from the network if it runs out of cycles. However, a [freezing threshold](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#setting-the-canisters-freezing-threshold) can be set that pauses a canister's executions if the cycles amount is expected to fall below a certain amount. There are several community tools that have been developed to automate managing a canister's cycles, such as [CycleOps](https://cycleops.dev/).
 
@@ -113,7 +113,23 @@ To handle an incoming message or task such as a timer or heartbeat, the canister
 
 The current values of fees are `base-fee` = 590K cycles (or $0.0000007885999 USD), `per-instruction-fee` = 0.4 cycles (or $0.0053 USD for 1B instructions).
 
-By default canisters are scheduled for execution in a "best-effort" manner. Canisters that require guaranteed execution can get a share of compute capacity by setting `compute_allocation` in their canister settings. Compute allocation is expressed in percents and denote the percentage of an execution core reserved for the canister. For example, compute allocation of 50% means that the canister will get 50% of an execution core. It will be scheduled at least every other round. Compute allocation of 100% means that the canister will be scheduled every round. The current fee for 1 percent computer allocation per second is 10M cycles (or $0.0000133661 USD).
+### Compute allocation
+
+By default, canisters are scheduled for execution in a "best-effort" manner. Canisters that require guaranteed execution can get a share of compute capacity by setting `compute_allocation` in their canister settings. Compute allocation is expressed in percents and denotes the percentage of an execution core reserved for the canister.
+
+Setting even 1% compute allocation provides a significant advantage over canisters that use the "best-effort" scheduling:
+
+- For 1% compute allocation, the canister will receive 1% of an execution core and is guaranteed to be scheduled every 100 rounds (assuming it executes only non-DTS messages).
+
+- For 2% compute allocation, the canister will receive 2% of an execution core and is guaranteed to be scheduled every 50 rounds.
+
+- For 50% compute allocation, the canister will receive 50% of an execution core and is guaranteed to be scheduled every other round.
+
+- For 100% compute allocation, the canister will receive 100% of an execution core and is guaranteed to be scheduled every round.
+
+The allocatable compute capacity is 299% **per subnet**. Compute allocation is guaranteed if it is configured.
+
+Compute is a finite resource and is priced as such. The current fee for 1% compute allocation per second is 10M cycles (or $0.0000133661 USD). Therefore, a canister that requests 100% compute allocation would be charged 10M * 100 cycles per second.
 
 ### Storage
 Canisters pay for storage consumed by their [Wasm memory](/docs/current/developer-docs/smart-contracts/maintain/storage#heap-memory) and [stable memory](/docs/current/developer-docs/smart-contracts/maintain/storage#stable-memory) per time. Storing 1 GiB for 1 second costs 127k cycles, which amounts to ~4T cycles (or $5.35 USD) for storing 1 GiB for 1 year.
@@ -162,7 +178,7 @@ Canisters are responsible for paying cycles for their own canister creation, com
 
 ## Cycles price breakdown
 
-The table below details the cost of compute, storage transmissions and canister calls. A thorough example of how the cost of running a canister on a 13-node subnet is computed can be found [on the wiki](https://wiki.internetcomputer.org/wiki/Comparing_Canister_Cycles_vs_Performance_Counter).
+The table below details the cost of compute, storage transmissions and canister calls. The ICP [pricing calculator](https://3d5wy-5aaaa-aaaag-qkhsq-cai.icp0.io/) can be used to get a comprehensive estimate of what a dapp may cost based on the number of canisters, calls, and features used.
 
 | Canister transmission | Description | Who is responsible for paying the cycles fee? | 13-node subnets cycles cost | 13-node subnets USD cost | 34-node subnets | 34-node subnets USD cost |
 | ----------------- | ------------------------------- | -------------------------------------------------- | ----------------------------------------------- | --------------------------------------- | ------------------------------------- | --------------------------- | ------------------------------------ |
@@ -188,8 +204,21 @@ The following table shows the calculated storage cost per GiB for a 30-day month
 |----------------------|------------------------------------|-----------------------------|-----------------------------|
 | GiB Storage Per Month | For storing a GiB of data per month | $0.446150495 | $1.70 |
 
-## Further readings
+## Errors related to cycles
 
+Common errors related to cycles include:
+
+- [Insufficient cycles in memory grow](/docs/current/references/execution-errors#insufficient-cycles-in-memory-grow)
+- [Reserved cycles limit exceeded in memory grow](/docs/current/references/execution-errors#reserved-cycles-limit-exceeded-in-memory-grow)
+- [Insufficient cycles in message memory grow](/docs/current/references/execution-errors#insufficient-cycles-in-message-memory-grow)
+- [Insufficient cycles in compute allocation](/docs/current/references/execution-errors#insufficient-cycles-in-compute-allocation)
+- [Insufficient cycles in memory allocation](/docs/current/references/execution-errors#insufficient-cycles-in-memory-allocation)
+- [Insufficient cycles in memory grow](/docs/current/references/execution-errors#insufficient-cycles-in-memory-grow-1)
+- [Reserved cycles limit exceeded in memory allocation](/docs/current/references/execution-errors#reserved-cycles-limit-exceeded-in-memory-allocation)
+- [Install code not enough cycles](/docs/current/references/execution-errors#install-code-not-enough-cycles)
+- [Create canister not enough cycles](/docs/current/references/execution-errors#create-canister-not-enough-cycles)
+
+## Further readings
 
 Monitoring cycles usage
    - [Check your canister's cycles balance](/docs/current/developer-docs/defi/cycles/cycles-wallet#check-the-cycle-balance).

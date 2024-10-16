@@ -23,6 +23,6 @@ Motoko is a new programming language for smart contracts. It is designed to seam
 
 [Motoko style guidelines](https://internetcomputer.org/docs/current/motoko/main/reference/style)
 
-[Motoko grammar](https://internetcomputer.org/docs/current/motoko/main/getting-started/motoko-introduction-grammar)
+[Motoko grammar](https://internetcomputer.org/docs/current/motoko/main/reference/motoko-grammar)
 
 [Motoko base library](https://internetcomputer.org/docs/current/motoko/main/base/)

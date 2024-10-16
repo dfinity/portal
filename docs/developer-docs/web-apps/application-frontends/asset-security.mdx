@@ -42,7 +42,7 @@ View more details on the [default CSP](/docs/current/references/asset-canister).
 
 ### `dfx v0.21.0` and older
 
-`dfx` versions `0.21.0` and older include `script-src 'unsafe-eval'` in the default security policy. This is required for older versions because previous versions of `agent-js` used a WebAssembly module for the BLS signature validation. This has since been removed and is no longer included in the most recent versions of `dfx`.
+`dfx` versions `0.21.0` and older include `script-src 'unsafe-eval'` in the default security policy. This is required for older versions because previous versions of the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) used a WebAssembly module for the BLS signature validation. This has since been removed and is no longer included in the most recent versions of `dfx`.
 
 If you are using an older version of `dfx`, we recommend updating your security policy to remove the `script-src 'unsafe-eval'` portion.
 

@@ -167,6 +167,14 @@ const sidebars = {
         },
         {
           type: "category",
+          label: "Cost",
+          items: [
+            "developer-docs/gas-cost",
+            "developer-docs/cost-estimations-and-examples",
+          ],
+        },
+        {
+          type: "category",
           label: "Maintain",
           items: [
             "developer-docs/smart-contracts/maintain/control",
@@ -182,14 +190,6 @@ const sidebars = {
             "developer-docs/smart-contracts/maintain/storage",
             "developer-docs/smart-contracts/maintain/trapping",
             "developer-docs/smart-contracts/maintain/upgrade",
-            {
-              type: "category",
-              label: "Cost",
-              items: [
-                "developer-docs/gas-cost",
-                "developer-docs/cost-estimations-and-examples",
-              ],
-            },
             {
               type: "category",
               label: "Topping up canisters",
@@ -529,6 +529,7 @@ const sidebars = {
                 "developer-docs/developer-tools/off-chain/agents/rust-agent",
               ],
             },
+            "developer-docs/developer-tools/off-chain/canpack",
             "developer-docs/developer-tools/off-chain/canbench",
           ],
         },
@@ -1431,6 +1432,19 @@ const sidebars = {
             "references/t-sigs-how-it-works",
             "references/vetkeys-overview",
             "references/supported-signatures",
+          ],
+        },
+        {
+          type: "category",
+          label: "ICP dashboard",
+          items: [
+            {
+              type: "doc",
+              label: "Overview",
+              id: "references/dashboard/overview",
+            },
+            "references/dashboard/using-the-dashboard",
+            "references/dashboard/dashboard-apis",
           ],
         },
         {

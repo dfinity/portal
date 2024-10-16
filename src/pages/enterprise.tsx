@@ -330,7 +330,7 @@ function EnterprisePage() {
                 <img
                   src="/img/enterprise/development-costs-2.svg"
                   alt=""
-                  className="w-24 md:w-30"
+                  className="w-24 md:w-30 ml-0 mr-auto"
                 />
                 <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
                   Secure inter-org workflows
@@ -344,7 +344,7 @@ function EnterprisePage() {
                 <img
                   src="/img/enterprise/digital-identity.svg"
                   alt=""
-                  className="w-24 md:w-30"
+                  className="w-24 md:w-30 ml-0 mr-auto"
                 />
                 <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
                   Digital identity layer
@@ -358,7 +358,7 @@ function EnterprisePage() {
                 <img
                   src="/img/enterprise/loyalty-programs.svg"
                   alt=""
-                  className="w-24 md:w-30"
+                  className="w-24 md:w-30 ml-0 mr-auto"
                 />
                 <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
                   Tokenized reward programs
@@ -372,7 +372,7 @@ function EnterprisePage() {
                 <img
                   src="/img/enterprise/secure-sharing.svg"
                   alt=""
-                  className="w-24 md:w-30"
+                  className="w-24 md:w-30 ml-0 mr-auto"
                 />
                 <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
                   Verifiable credentials
@@ -386,7 +386,7 @@ function EnterprisePage() {
                 <img
                   src="/img/enterprise/ownership.svg"
                   alt=""
-                  className="w-24 md:w-30"
+                  className="w-24 md:w-30 ml-0 mr-auto"
                 />
                 <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">
                   Simple self-custody
@@ -400,7 +400,7 @@ function EnterprisePage() {
                 <img
                   src="/img/enterprise/supply-chain.svg"
                   alt=""
-                  className="w-24 md:w-30"
+                  className="w-24 md:w-30 ml-0 mr-auto"
                 />
                 <h3 className="mt-4 md:mt-6 mb-2 tw-heading-5">Supply chain</h3>
                 <p className="tw-paragraph mb-0">

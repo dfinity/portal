@@ -5,7 +5,7 @@
     {
       "title": "Threshold EdDSA signing",
       "overview": "Threshold EdDSA support using cryptographic multiparty computation (MPC). Enables trustless integrations with all chains using EdDSA on the Ed25519 curve like Solana or Cardano.",
-      "status": "in_progress",
+      "status": "deployed",
       "eta": "2024",
       "forum": "",
       "proposal": "",
@@ -32,7 +32,8 @@
       "description": "This milestone enables Chain Fusion for the Solana network, bringing Solana and ICP closer together, combining the powers of the two networks. Dapps leveraging the capabilities of both networks look and feel like single-network dapps.",
       "milestone_id": "Helium",
       "status": "in_progress",
-      "eta": "Q4 2024"
+      "eta": "Q4 2024",
+      "eta_to_render": ""
     },
     {
       "title": "EVM in a canister",

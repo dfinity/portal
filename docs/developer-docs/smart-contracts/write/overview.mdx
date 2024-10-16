@@ -64,9 +64,9 @@ The typical development workflow of the frontend is:
 
 1. The developer writes HTML, JS, CSS code.
 1. The developer uses the default asset <GlossaryTooltip>canister</GlossaryTooltip> created by `dfx` or writes their own custom canister to store the web assets onchain.
-1. Users open the application in the browser by navigating to the URL `https://<canister-id>.ic0.app` or a custom domain that the developer has registered for the canister.
+1. Users open the application in the browser by navigating to the URL `https://<canister-id>.icp0.io` or a custom domain that the developer has registered for the canister.
 1. The canister serves the web assets to the browser via its `http_request` endpoint that gets invoked for each HTTP request.
-1. When the JS code runs in the browser, it can call the backend canister endpoints using the [agent-js](/docs/current/developer-docs/web-apps/browser-js/js-request-api) library, which is analogous to `web3.js` and `ethers.js` of Ethereum.
+1. When the JS code runs in the browser, it can call the backend canister endpoints using the [ICP JavaScript agent](/docs/current/developer-docs/web-apps/browser-js/js-request-api) library, which is analogous to `web3.js` and `ethers.js` of Ethereum.
 
 Since ICP supports general HTML, JS, and CSS code, any web framework should be compatible with ICP.
 SvelteKit, React, Vue have been used successfully in production.

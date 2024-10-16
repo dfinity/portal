@@ -141,7 +141,7 @@ function DefiPage() {
               variants={transitions.item}
             >
               Everything
-              <br className="hidden md:block" /> on chain
+              <br className="hidden md:block" /> onchain
             </motion.h2>
             <motion.p
               className="tw-lead-sm md:tw-lead mb-0"

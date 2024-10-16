@@ -190,7 +190,7 @@ const marketingNav = {
             {
               name: "ICP Roadmap",
               href: "/roadmap",
-              description: "Highlighting upcoming Mil",
+              description: "Highlighting upcoming milestones",
             },
             /*
             {
@@ -753,10 +753,6 @@ const config = {
           },
           {
             items: [
-              {
-                label: "ICP Careers",
-                href: "https://careers.internetcomputer.org/",
-              },
               { label: "Developer Grants", href: "https://dfinity.org/grants" },
               {
                 label: "Support & Feedback",
