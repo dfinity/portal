@@ -7,7 +7,7 @@
         "name": "Reduced End-to-end Latency",
         "milestone_id": "Tokamak",
         "description": "This milestone marks a significant reduction of user-perceived end-to-end latency for processing ingress messages. It is achieved by multiple concerted measures at different levels of the protocol stack and brings the user experience of Web3 closer to Web2.",
-        "eta": null,
+        "eta": "October 2024",
         "status": "in_progress",
         "elements": [
           {
@@ -52,7 +52,7 @@
         "name": "Increased Storage Capacity and Throughput",
         "milestone_id": "Stellarator",
         "description": "Increased storage capacity of ICP subnets, storage per canister smart contract, and message throughput between subnets. Those improvements lead to each subnet being able to host larger workloads and better utilization of ICP’s hardware resources. The world's largest smart contracts can now grow even larger, far surpassing smart contracts on any other chain.",
-        "eta": null,
+        "eta": "November 2024",
         "status": "in_progress",
         "elements": [
           {
@@ -1545,7 +1545,7 @@
         "name": "Edge Infrastructure is Fully Decentralized",
         "milestone_id": "Solenoid",
         "description": "ICP is accessible through a decentralized edge infrastructure, which is split into NNS-controlled API Boundary Nodes and HTTP Gateways. The NNS will appoint node machines to run API Boundary Nodes and anyone will be able to run HTTP Gateways, enabling a much more decentralized ICP edge infrastructure with a diverse set of service providers.",
-        "eta": null,
+        "eta": "December 2024",
         "status": "in_progress",
         "elements": [
           {
@@ -2389,7 +2389,7 @@
         "name": "Oisy, a Multi-chain Wallet Powered by Chain Fusion",
         "milestone_id": "Toroidal",
         "description": "Oisy is a wallet with a unique combination of properties. It is the first smart contract wallet that is self-custodial, multi-chain and uses passkeys for authentication, while being fully accessible through the browser. Oisy supports ICP-based dapps through ICRC-21, EVM-based dapps through WalletConnect, and easily converts between native Ethereum tokens and their ck twins.",
-        "eta": null,
+        "eta": "November 2024",
         "status": "in_progress",
         "elements": [
           {
@@ -2420,7 +2420,7 @@
         "name": "The Orbit Multi-Custody Asset Framework",
         "milestone_id": "Poloidal",
         "description": "Orbit is a comprehensive digital assets framework, enabling simple to advanced rules over user digital assets. Initially tailored for token management, it provides robust support for 1-out-of-M to complex approval policies for financial transactions. It also supports secure management of infrastructure like canister installations and upgrades. Teams and businesses can confidently handle ICP, ckETH, and compatible tokens using Orbit's advanced security features, vital for those seeking a stable and reliable management over their treasury.",
-        "eta": null,
+        "eta": "November 2024",
         "status": "in_progress",
         "elements": [
           {
@@ -3558,7 +3558,7 @@
         "name": "Canister DevOps",
         "milestone_id": "Beryllium",
         "description": "This milestone provides substantial simplifications and improvements for the developer lifecycle of canisters, particularly regarding their development and operations. Snapshotting capabilities, a powerful logging infrastructure and improved error handling as well as push of relevant events brings canisters closer to Web2 services in terms of DevOps.",
-        "eta": null,
+        "eta": "October 2024",
         "status": "in_progress",
         "elements": [
           {
