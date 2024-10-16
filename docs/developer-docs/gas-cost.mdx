@@ -12,6 +12,10 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 Canister smart contracts pay for consumed resources (storage, messaging, execution, and special features) by burning **cycles**. Developers can obtain cycles by converting ICP tokens into cycles using [`dfx`](/docs/current/developer-docs/defi/cycles/converting_icp_tokens_into_cycles).
 
+For pricing estimations, you can use the [pricing calculator](/docs/current/developer-docs/cost-estimations-and-examples). 
+
+This page will provide details about how costs are calculated.
+
 ## The reverse gas model
 
 ICP charges each canister smart contract for the resources that it consumes. It's the developer's responsibility to load each of their canisters with adequate cycles to pay for these resources. This cost model is known as ICP's **reverse gas model**.
@@ -44,11 +48,11 @@ The following table shows units of cycles and the respective fiat values:
 
 ## Replication
 
-Replication refers to the number of times a canister is replicated. Replication is dependant on the canister's subnet. The amount of cycles that a canister is charged will vary based on the amount of times the canister is replicated:
+Replication refers to the number of instances of a canister. Each canister is automatically replicated on every node on a subnet. The amount of cycles that a canister is charged will vary based on the amount of times the canister is replicated:
 
 - Canisters deployed **locally** are deployed on a single node and therefore are replicated once. Cycles charged to locally deployed canisters have a cost that is `1 / 13` the cost when deployed to a 13-node subnet. In local development environments, cycles can be fabricated using `dfx`.
 
-- Canisters deployed to a **13-node subnet** are replicated 13 times, as they are deployed on 13 nodes. Cycle cost amounts are based on a 13-node subnet, i.e., there is no calculation used to determine the cost based on the subnet's replication factor.
+- Canisters deployed to a **13-node subnet** are replicated 13 times, as they are deployed on 13 nodes. Cycle cost amounts are based on a 13-node subnet, i.e., there is no calculation needed to determine the cost based on the subnet's replication factor.
 
 - Canisters deployed to a **34-node subnet** are replicated 34 times, as they are deployed on 34 nodes. Cycles costs on 34-node subnets can be calculated as `cost / 13 * 34`.
 
