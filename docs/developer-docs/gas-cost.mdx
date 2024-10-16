@@ -88,11 +88,9 @@ The current fees are:
 Note that query messages are currently free, but this may change in the future.
 :::
 
-### Execution
+### Execution and compute allocation
 
 To handle an incoming message or task such as a timer or heartbeat, the canister executes the function specified in the message.
-
-### Compute allocation
 
 By default, canisters are scheduled for execution in a "best-effort" manner. Canisters that require guaranteed execution can get a share of compute capacity by setting `compute_allocation` in their canister settings. Compute allocation is expressed in percents and denotes the percentage of an execution core reserved for the canister.
 
