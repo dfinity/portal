@@ -34,7 +34,7 @@ This guide displays how to deploy an index canister locally and use it in conjun
 
 ## Wasm and Candid files
 
-Go to the [releases overview](https://dashboard.internetcomputer.org/releases) and copy the latest <GlossaryTooltip>replica</GlossaryTooltip> binary revision (IC_VERSION). At the time of writing, this is `c43a4880199c00135c8415957851e823b3fb769e`.
+Go to the [releases overview](https://dashboard.internetcomputer.org/releases) and copy the latest <GlossaryTooltip>replica</GlossaryTooltip> binary revision (IC_VERSION). At the time of writing, this is `aba60ffbc46acfc8990bf4d5685c1360bd7026b9`.
 
 <AdornedTabs groupId="standards">
 <TabItem value="icp" label="ICP" default>
@@ -44,7 +44,7 @@ Go to the [releases overview](https://dashboard.internetcomputer.org/releases) a
 Command to download this Wasm file using curl:
 
 ```
-curl -o index.wasm.gz "https://download.dfinity.systems/ic/c43a4880199c00135c8415957851e823b3fb769e/canisters/ic-icp-index-canister.wasm.gz"
+curl -o index.wasm.gz "https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ic-icp-index-canister.wasm.gz"
 ```
 
 **Candid URL:** https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icp_ledger/index/index.did
@@ -52,7 +52,7 @@ curl -o index.wasm.gz "https://download.dfinity.systems/ic/c43a4880199c00135c841
 Command to download this Candid file using curl:
 
 ```
-curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/c43a4880199c00135c8415957851e823b3fb769e/rs/rosetta-api/icp_ledger/index/index.did"
+curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/rosetta-api/icp_ledger/index/index.did"
 ```
 
 </TabItem>
@@ -60,25 +60,22 @@ curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/c43a4880199c0013
 <TabItem value="icrc" label="ICRC" default>
 
 
-The URL for the IPC index Wasm module is `curl -o index.wasm.gz ""`, so with the above revision it would be ``.
+The URL for the ICRC-1 index Wasm module is `https://download.dfinity.systems/ic/$IC_VERSION/canisters/ic-icrc1-index-ng.wasm.gz`, so with the above revision it would be `https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ic-icrc1-index-ng.wasm.gz`.
 
-The URL for the ICRC-1 index .did file is `curl -o index.did "`, so with the above revision it would be `curl -o index.did .
-
-
-**Wasm URL:** https://download.dfinity.systems/ic/$IC_VERSION/canisters/ic-icrc1-index-ng.wasm.gz
-
-Command to download this Wasm file using curl:
+To download this Wasm file using curl, run the command:
 
 ```
-curl -o index.wasm.gz "https://download.dfinity.systems/ic/c43a4880199c00135c8415957851e823b3fb769e/canisters/ic-icrc1-index-ng.wasm.gz"
+curl -o index.wasm.gz "https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ic-icrc1-index-ng.wasm.gz"
 ```
 
-**Candid URL:** https://raw.githubusercontent.com/dfinity/ic/$IC_VERSION/rs/rosetta-api/icrc1/index-ng/index-ng.did
 
-Command to download this Candid file using curl:
+The URL for the ICRC-1 index Candid file is `https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ic-icrc1-index-ng.wasm.gz`, so with the above revision it would be `https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/rosetta-api/icrc1/index-ng/index-ng.did`.
+
+
+To download this Candid file using curl, run the command:
 
 ```
-curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/c43a4880199c00135c8415957851e823b3fb769e/rs/rosetta-api/icrc1/index-ng/index-ng.did"
+curl -o index.did "https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/rosetta-api/icrc1/index-ng/index-ng.did"
 ```
 
 </TabItem>
