@@ -54,9 +54,7 @@ When a canister is deployed to a subnet, it is automatically replicated on every
 
 - Canisters deployed to a **13-node subnet** are replicated 13 times. Cycle cost amounts are based on a 13-node subnet, i.e., there is no calculation needed to determine the cost based on the subnet's replication factor.
 
-- Canisters deployed to a **34-node subnet** are replicated 34 times. Cycles costs on 34-node subnets can be calculated as `cost / 13 * 34`.
-
-If you intend to deploy canisters on high-replication subnets (greater than 13 nodes), your canister should be prepared for an increase in cycles prices. Calls made to high-replication subnets will also require more cycles.
+- Canisters deployed to a **34-node subnet** are replicated 34 times. If you intend to deploy canisters on high-replication subnets (greater than 13 nodes), your canister should be prepared for an increase in cycles prices. Calls made to high-replication subnets will also require more cycles. Cycles costs on 34-node subnets can be calculated as `cost / 13 * 34`.
 
 ## Cost details: canister operations and resources
 
