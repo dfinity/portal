@@ -119,6 +119,49 @@ If you only want to support the ICRC-1 standard, then you can set the flag to `f
 export FEATURE_FLAGS=false
 ```
 
+## Edit the project's dfx.json file
+
+Next, insert these environment variables into your project's `dfx.json` file as init arguments for your ledger canister:
+
+```json
+{
+    "canisters": {
+        "icrc1_ledger_canister": {
+            "type": "custom",
+            "candid": "https://raw.githubusercontent.com/dfinity/ic/<REVISION>/rs/ledger_suite/icrc1/ledger/ledger.did",
+            "wasm": "https://download.dfinity.systems/ic/<REVISION>/canisters/ic-icrc1-ledger.wasm.gz",
+            "init_arg": "(variant {Init =
+            record {
+                 token_symbol = \"$TOKEN_SYMBOL\";
+                 token_name = \"$TOKEN_NAME\";
+                 minting_account = record { owner = principal \"$MINTER\" };
+                 transfer_fee = $TRANSFER_FEE;
+                 metadata = vec {};
+                 feature_flags = opt record{icrc2 = ${FEATURE_FLAGS}};
+                 initial_balances = vec { record { record { owner = principal \"$DEFAULT\"; }; \"$PRE_MINTED_TOKENS\"; }; };
+                 archive_options = record {
+                     num_blocks_to_archive = \"$NUM_OF_BLOCK_TO_ARCHIVE\";
+                     trigger_threshold = \"$TRIGGER_THRESHOLD\";
+                     controller_id = principal \"$ARCHIVE_CONTROLLER\";
+                     cycles_for_archive_creation = opt \"$CYCLE_FOR_ARCHIVE_CREATION\";
+                 };
+             }
+            })"
+            },
+    },
+    "defaults": {
+        "build": {
+            "args": "",
+            "packtool": ""
+        }
+        },
+    "output_env_file": ".env",
+    "version": 1
+}
+```
+
+Alternatively, you can pass these init arguments to the canister through the command line. [Learn more about canister init arguments](/docs/current/developer-docs/developer-tools/cli-tools/advanced-dfx/init-args).
+
 ## Deploy the ledger locally
 
 :::caution
@@ -131,23 +174,7 @@ Deploy the ICRC-1 ledger canister locally and pass in the arguments to create yo
 
 ``` sh
 dfx start --clean --background
-dfx deploy icrc1_ledger_canister --specified-id mxzaz-hqaaa-aaaar-qaada-cai --argument "(variant {Init =
-record {
-     token_symbol = \"${TOKEN_SYMBOL}\";
-     token_name = \"${TOKEN_NAME}\";
-     minting_account = record { owner = principal \"${MINTER}\" };
-     transfer_fee = ${TRANSFER_FEE};
-     metadata = vec {};
-     feature_flags = opt record{icrc2 = ${FEATURE_FLAGS}};
-     initial_balances = vec { record { record { owner = principal \"${DEFAULT}\"; }; ${PRE_MINTED_TOKENS}; }; };
-     archive_options = record {
-         num_blocks_to_archive = ${NUM_OF_BLOCK_TO_ARCHIVE};
-         trigger_threshold = ${TRIGGER_THRESHOLD};
-         controller_id = principal \"${ARCHIVE_CONTROLLER}\";
-         cycles_for_archive_creation = opt ${CYCLE_FOR_ARCHIVE_CREATION};
-     };
- }
-})"
+dfx deploy icrc1_ledger_canister --specified-id mxzaz-hqaaa-aaaar-qaada-cai
 ```
 
 For additional details, you can learn more in the [ICRC-1 ledger documentation](/docs/current/developer-docs/defi/tokens/ledger/setup/icrc1_ledger_setup).
