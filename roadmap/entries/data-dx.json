@@ -46,10 +46,10 @@
       "proposal": "https://dashboard.internetcomputer.org/proposal/106146",
       "docs": "",
       "eta": "",
-      "status": "in_progress",
+      "status": "upcoming",
       "is_community": true,
       "in_beta": false,
-      "milestone_id": "Beryllium",
+      "milestone_id": "Thorium",
       "imported": true
     },
     {
@@ -81,7 +81,8 @@
       "description": "This milestone provides substantial simplifications and improvements for the developer lifecycle of canisters, particularly regarding their development and operations. Snapshotting capabilities, a powerful logging infrastructure and improved error handling as well as push of relevant events brings canisters closer to Web2 services in terms of DevOps.",
       "milestone_id": "Beryllium",
       "eta": "",
-      "status": "in_progress"
+      "status": "in_progress",
+      "eta_to_render": "October 2024"
     },
     {
       "title": "Cycles and instruction insights",
@@ -127,7 +128,8 @@
       "description": "This milestone improves the cycles management experience on ICP through the introduction of the Cycles Ledger. End users can hold cycles seamlessly and can more easily manage their canisters cycles balance. Furthermore, with the exposure of a key set of metrics, getting insights into your canisters’ operations has been greatly improved, especially with the ability to see a breakdown of your cycles usage and which endpoints are the most expensive ones to call.",
       "milestone_id": "Thorium",
       "eta": "",
-      "status": "in_progress"
+      "status": "in_progress",
+      "eta_to_render": ""
     },
     {
       "title": "dfx ergonomics",

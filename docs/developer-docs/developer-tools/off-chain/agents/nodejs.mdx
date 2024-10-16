@@ -18,9 +18,9 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 Before you set up an actor, you will need to have an identity.
 
-### Using keys through `agent-js`
+### Using keys through ICP JavaScript agent
 
-You can configure an authentication identity for Node.js through `agent-js`'s using the ECDSA or Ed25519 private keys. [Learn more in the agent-js docs](https://internetcomputer.org/docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent).
+You can configure an authentication identity for Node.js through the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent)'s using the ECDSA or Ed25519 private keys. [Learn more in the ICP JavaScript agent docs](https://internetcomputer.org/docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent).
 
 
 ### Seed phrase
@@ -170,7 +170,7 @@ You can view a full example using this library with a [Rust](https://github.com/
 
 ## Testing
 
-To create an end-to-end (e2e) test for your project's backend canister using `agent-js`, first create a new test file in your project's `src/tests/` subdirectory. Name the file `e2e_tests_backend.test.ts`, then insert the following content:
+To create an end-to-end (e2e) test for your project's backend canister using the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), first create a new test file in your project's `src/tests/` subdirectory. Name the file `e2e_tests_backend.test.ts`, then insert the following content:
 
 
 ```ts
@@ -222,7 +222,7 @@ Learn more about [testing](/docs/current/tutorials/developer-journey/level-2/2.5
 
 ## NFT example
 
-To demonstrate how you can use Node.js to implement functionality to upload assets, create an NFT collection, and mint an NFT for an identity, the following agent-js `src/node/index.js` script can be used in conjunction with the [DIP-721 NFT](https://github.com/dfinity/examples/tree/master/motoko/dip721-nft-container) backend canister example:
+To demonstrate how you can use Node.js to implement functionality to upload assets, create an NFT collection, and mint an NFT for an identity, the following [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) `src/node/index.js` script can be used in conjunction with the [DIP-721 NFT](https://github.com/dfinity/examples/tree/master/motoko/dip721-nft-container) backend canister example:
 
 ```js
 import fetch from "isomorphic-fetch";
@@ -361,9 +361,9 @@ main();
 
 ## Resources
 
-- [Agent JS developer docs](/docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent)
+- [ICP JavaScript agent developer docs](/docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent)
 
-- [agent-js](https://www.npmjs.com/package/@dfinity/agent)
+- [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent)
 
 - [ic-websocket-js](https://www.npmjs.com/package/ic-websocket-js)
 

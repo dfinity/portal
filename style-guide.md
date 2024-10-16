@@ -263,6 +263,8 @@ The following language and capitalization of certain terms and phrases should be
 
     When there may be a confusion between ICP referring to Internet Computer Protocol and ICP the token, the words 'Internet Computer Protocol' can be written out for clarity.
 
+- ICP JavaScript agent: when referring to the `@dfinity/agent` package. This text should be formatted with a link to `https://www.npmjs.com/package/@dfinity/agent`.
+- ICP Rust agent: when referring to the `ic-agent` Rust crate. This text should be formatted with a link to `https://docs.rs/ic-agent/latest/ic_agent/`.
 - IC SDK: should be used in place of any reference to the IC's SDK.
 - macOS: follows the capitalization used by [Apple](https://en.wikipedia.org/wiki/MacOS).
 - mainnet

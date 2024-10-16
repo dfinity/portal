@@ -96,7 +96,7 @@ As already hinted at above, a compromised replica is a more general problem: Suc
 
 Note, however, that this problem cannot be easily solved with oracles either: A compromised oracle can do exactly the same as a compromised replica. Multiple oracles do not solve the problem either for `POST`s. Solving this requires either advanced (cryptographic) mechanisms such as threshold TLS being used or some support from the side of the server. E.g., the server could keep a log of all state changes being done for a given API key and the canister can read back this log securely and at least detect calls made by compromised replicas. Tracking the IP address of the requestor may help in identifying the faulty replica and taking legal and other action against it.
 
-One example of securing the write integration between the Internet Computer and Web 2.0 servers is to sign `POST` requests with a subnet signature using chain key cryptography and to have the server check the signature. Such approach requires adaptation of the server, but can resolve the remaining security problems of dishonest replicas making arbitrary requests.
+One example of securing the write integration between the Internet Computer and Web 2.0 servers is to sign `POST` requests with a subnet signature using chain-key cryptography and to have the server check the signature. Such approach requires adaptation of the server, but can resolve the remaining security problems of dishonest replicas making arbitrary requests.
 
 As you have seen, completely removing the impact that dishonest replicas can have on `POST` calls may require support by the HTTP 2.0 service. With such support, seamless and secure interoperability between Web 3.0 and Web 2.0 can be achieved.
 

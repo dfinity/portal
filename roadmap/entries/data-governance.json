@@ -8,7 +8,8 @@
       "description": "The NNS and SNS DAOs facilitate active liquid democracies by lowering the entry barrier for participation and providing better inputs for well-informed decisions. This includes direct voting as well as delegating some voting decisions to others. As a result, more users stake tokens and participate in DAOs to form lively communities. The resulting network effects foster additional adoption and growth.",
       "milestone_id": "Plasma",
       "status": "in_progress",
-      "eta": ""
+      "eta": "",
+      "eta_to_render": ""
     },
 
     {
@@ -17,7 +18,8 @@
       "description": "As both the number of SNS DAOs and the number of DAO participants grow within them, it is crucial to have a robust system that can handle the ever-growing communities. Preparing for growth means not only improving the underlying infrustucture to handle increased load, but also enhancing the user experience at all levels (from developers to end users), so when new people come to the ICP ecosystem, they will have a frictionless onboarding.",
       "milestone_id": "Neon",
       "status": "future",
-      "eta": ""
+      "eta": "",
+      "eta_to_render": ""
     },
 
     {
@@ -26,7 +28,8 @@
       "description": "All ICP governance milestones have aspects that focus on the end user, as all of ICP's technological innvations must in the end support the user. Nucleon doubles down on the user experience and aims to present ICP's governance systems in ways that are easier to understand and interact with regardless of one's technical skills.",
       "milestone_id": "Nucleon",
       "status": "future",
-      "eta": ""
+      "eta": "",
+      "eta_to_render": ""
     },
 
 

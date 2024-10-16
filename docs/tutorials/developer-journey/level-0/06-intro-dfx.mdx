@@ -71,7 +71,7 @@ If there is a specific release of `dfx` you'd like to use, you can set the `DFX_
 To set the `DFX_VERSION` variable and install a specific version of `dfx`, run the command:
 
 ```bash
-DFX_VERSION=0.14.1 sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"
+DFX_VERSION=0.23.0 sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"
 ```
 
 ## Creating a new project with dfx
@@ -150,20 +150,24 @@ hello_world/
 ├── README.md      # Default project documentation
 ├── dfx.json       # Project configuration file
 ├── node_modules   # Libraries for frontend development
-├── package-lock.json
 ├── package.json
 ├── src            # Source files directory
-│   ├── hello_world_backend
-│   │   └── main.mo
-│   ├── hello_world_frontend
-│       ├── assets
-│       │   ├── logo.png
-│       │   ├── main.css
-│       │   └── sample-asset.txt
-│       └── src
-│           ├── index.html
-│           └── index.js
-└── webpack.config.js
+│   ├── hello_world_backend
+│   │   └── main.mo
+│   └── hello_world_frontend
+│       ├── assets
+│       │   └── favicon.ico
+│       ├── index.html
+│       ├── package.json
+│       ├── src
+│       │   ├── App.js
+│       │   ├── index.scss
+│       │   ├── logo2.svg
+│       │   ├── main.js
+│       │   └── vite-env.d.ts
+│       ├── tsconfig.json
+│       └── vite.config.js
+└── tsconfig.json
 ```
 
 In this directory, the following files and directories are notable:
@@ -192,15 +196,13 @@ To review the default configuration file for the project, open the `dfx.json` fi
       "dependencies": [
         "hello_world_backend"
       ],
-      "frontend": {
-        "entrypoint": "src/hello_world_frontend/src/index.html"
-      },
       "source": [
-        "src/hello_world_frontend/assets",
-        "dist/hello_world_frontend/"
+        "src/hello_world_frontend/dist"
       ],
-      "type": "assets"
+      "type": "assets",
+      "workspace": "hello_world_frontend"
     }
+
   },
   "defaults": {
     "build": {
@@ -219,8 +221,7 @@ Let's explore these settings a bit further:
 - The `hello_world_backend` canister has a `main` attribute which specifies the file path of the program's core file, `main.mo`.
 - The `hello_world_backend` canister has a `type` of 'motoko', which specifies the programming language. If the canister was written in Rust, this value would read 'rust'. 
 - The `hello_world_frontend` canister has a dependency of the `hello_world_backend` canister, meaning it relies on the backend canister to be deployed and running for it to be deployed and ran. 
-- The `hello_world_frontend` canister has a frontend endpoint of `src/hello_world_frontend/src/index.html`, which specifies the primary frontend asset. 
-- Additional assets for the `hello_world_frontend` canister are specified in the `source` configuration. 
+- The `hello_world_frontend` canister's assets are specified in the `source` configuration.
 - Lastly, the `hello_world_frontend` canister has a `type` of 'assets', configuring it as a frontend asset canister. 
 
 ## Reviewing the default program code

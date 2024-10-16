@@ -44,23 +44,13 @@
       "status": "in_progress",
       "is_milestone": true,
       "milestone_id": "Ignition",
-      "eta": ""
-    },
-    {
-      "title": "Increase the instruction limit in queries from 5 billion instructions to 40 billion instructions.",
-      "overview": "The goal of this feature is to bring the instruction limit of queries on par with that of update calls by introducing a way for canisters to opt in into query charging.",
-      "status": "future",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false
+      "eta": "",
+      "eta_to_render": ""
     },
     {
       "title": "Public specification for GPU-enabled nodes",
       "overview": "The ICP community needs to agree and adopt the hardware specification for replica nodes with GPUs.",
-      "status": "",
-      "milestone_id": "Ignition",
+      "status": "future",
       "forum": "",
       "proposal": "",
       "docs": "",
@@ -70,8 +60,17 @@
     {
       "title": "AI-specialized subnets with GPU-enabled nodes",
       "overview": "AI-specialized subnets are created from nodes with GPUs and host AI smart contracts for training and inference of large models.",
-      "status": "",
-      "milestone_id": "Ignition",
+      "status": "future",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Increase the instruction limit in queries from 5 billion instructions to 40 billion instructions.",
+      "overview": "The goal of this feature is to bring the instruction limit of queries on par with that of update calls by introducing a way for canisters to opt in into query charging.",
+      "status": "future",
       "forum": "",
       "proposal": "",
       "docs": "",

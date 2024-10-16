@@ -55,11 +55,11 @@ The query's signature (whose type is denoted as node-signature) is a [CBOR](/doc
 
 The actual parts that are signed include the query response from the execution layer, the timestamp and the request ID of the query, which is a SHA256 hash of the query's contents. With this `request_id` value, signatures for one query cannot be confused or exchanged for another.
 
-Query response verification is done via agents, such as agent-rs and agent-js, and other agents developed by members of the ICP community. Agents now introduce a new `AgentError` type that indicates a verification failure.
+Query response verification is done via agents, such as the [ICP Rust agent](https://docs.rs/ic-agent/latest/ic_agent/) and [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), and other agents developed by members of the ICP community. Agents now introduce a new `AgentError` type that indicates a verification failure.
 
-replica-signed queries are supported in agent-rs [versions v0.30.0](https://github.com/dfinity/agent-rs/releases) and newer.
+replica-signed queries are supported in the [ICP Rust agent](https://docs.rs/ic-agent/latest/ic_agent/) [versions v0.30.0](https://github.com/dfinity/agent-rs/releases) and newer.
 
-replica-signed queries are supported in agent-js [versions v0.20.0](https://github.com/dfinity/agent-js/releases) and newer.
+replica-signed queries are supported in the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) [versions v0.20.0](https://github.com/dfinity/agent-js/releases) and newer.
 
 ## How are query responses verified?
 
@@ -71,9 +71,9 @@ Then, to verify the certificate, the timestamp stored at `/time` of the node key
 
 On ICP, the replica has already begun producing signatures on query responses.
 
-To use agent-rs, signature verification on query responses is enabled by default on versions v0.30.0 and newer. Tools such as dfx will be updated to use the latest version of agent-rs in the next release (v0.15.2).
+To use the [ICP Rust agent](https://docs.rs/ic-agent/latest/ic_agent/), signature verification on query responses is enabled by default on versions v0.30.0 and newer. Tools such as dfx will be updated to use the latest version of the [ICP Rust agent](https://docs.rs/ic-agent/latest/ic_agent/) in the next release (v0.15.2).
 
-To use agent-js, existing applications will need to update their agent-js version to v0.20.0 and newer. dfx always uses the `@latest` version of agent-js, meaning new applications will automatically have signature verification enabled on query responses.
+To use the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), existing applications will need to update their [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) version to v0.20.0 and newer. dfx always uses the `@latest` version of the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), meaning new applications will automatically have signature verification enabled on query responses.
 
 Older versions of the agents will automatically ignore the `signature` field.
 
@@ -81,7 +81,7 @@ Older versions of the agents will automatically ignore the `signature` field.
 
 In conclusion, replica-signed queries are a new feature that aims to provide a level of trustworthiness to query calls by preventing attacks that may alter the response of a query call.
 
-Replica-signed queries are available in agent-js [versions v0.20.0](https://github.com/dfinity/agent-js/releases) and newer, agent-rs [versions v0.30.0](https://github.com/dfinity/agent-rs/releases) and newer, and dfx [versions v0.15.2](https://github.com/dfinity/sdk/releases) and newer.
+Replica-signed queries are available in the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) [versions v0.20.0](https://github.com/dfinity/agent-js/releases) and newer, the [ICP Rust agent](https://docs.rs/ic-agent/latest/ic_agent/) [versions v0.30.0](https://github.com/dfinity/agent-rs/releases) and newer, and dfx [versions v0.15.2](https://github.com/dfinity/sdk/releases) and newer.
 
 
 
