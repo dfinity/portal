@@ -866,7 +866,7 @@ function AIPage() {
   return (
     <Layout
       title="Secure and Trusted AI onchain"
-      description="Powered by next generation Smart Contracts."
+      description="Al on ICP marks a major technological leap by bringing Al onchain, ensuring decentralized, tamper-proof, and privacy-preserving solutions that address critical issues like security, transparency, and reliability."
     >
       <ShareMeta image="/img/shareImages/share-ai-chain.webp"></ShareMeta>
 
@@ -1079,7 +1079,7 @@ function AIPage() {
                 className="tw-lead-sm md:tw-lead mb-0 text-black/60"
                 variants={transitions.item}
               >
-                ICP’s advanced AI on chain technology enables five key
+                ICP’s advanced AI onchain technology enables six key
                 attributes that will drive transformative AI use cases across
                 industries.
               </motion.p>
