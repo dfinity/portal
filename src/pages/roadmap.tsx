@@ -444,7 +444,7 @@ const RoadmapPage: React.FC = () => {
                   ref={scrollRefs[indexTheme]}
                   data-scroll={indexTheme}
                   aria-label="milestones"
-                  className="flex gap-2 md:gap-6 items-stretch overflow-x-auto snap-mandatory snap-x pt-10 pb-20 -mb-2 w-full scrollbar-hide box-border pl-[var(--offcut)] pr-[var(--offcut)]"
+                  className="flex gap-2 md:gap-6 items-stretch overflow-x-auto snap-mandatory snap-x pt-10 pb-20 -mb-2 w-full hide-scrollbar box-border pl-[var(--offcut)] pr-[var(--offcut)]"
                   style={
                     {
                       scrollbarWidth: "none",
