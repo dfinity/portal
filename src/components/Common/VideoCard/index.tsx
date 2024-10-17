@@ -2,6 +2,7 @@ import Link from "@docusaurus/Link";
 import PlaySVG from "@site/static/img/svgIcons/play.svg";
 import clsx from "clsx";
 import React, { ReactNode } from "react";
+import LinkArrowUpRight from "../Icons/LinkArrowUpRight";
 
 export const PlayButton: React.FC<{}> = ({}) => {
   return (
@@ -17,16 +18,43 @@ export const ImageOnlyVideoCard: React.FC<{
   className?: string;
 }> = ({ image, href, className = "" }) => {
   return (
-    <Link
-      className={clsx(
-        "col-span-1 aspect-video rounded-xl bg-cover bg-center relative group",
-        className
-      )}
-      href={href}
-      style={{ backgroundImage: `url(${image})` }}
-    >
+    <Link className={clsx("col-span-1  relative group", className)} href={href}>
+      <img
+        src={image}
+        alt=""
+        className="w-full h-full object-cover rounded-xl"
+      />
       <PlayButton />
     </Link>
+  );
+};
+
+export const TitleVideoCard: React.FC<{
+  image: string;
+  href: string;
+  title: string;
+  className?: string;
+}> = ({ image, href, title, className = "" }) => {
+  return (
+    <div className="rounded-xl overflow-hidden bg-[#F1EEF5] flex flex-col w-full">
+      <Link className="aspect-video flex relative group" href={href}>
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover rounded-t-xl"
+        />
+        <PlayButton />
+      </Link>
+      <div className=" p-6 flex flex-col flex-1">
+        <h3 className={`tw-lead-sm md:tw-lead mb-3 line-clamp-2`}>{title}</h3>
+        <div>
+          <Link href={href} className="link-primary link-with-icon">
+            Watch the video
+            <LinkArrowUpRight />
+          </Link>
+        </div>
+      </div>
+    </div>
   );
 };
 
