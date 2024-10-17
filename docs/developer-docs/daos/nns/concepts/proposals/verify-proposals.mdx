@@ -27,28 +27,27 @@ proposals submitted by the DFINITY foundation.
 ### NNS canister upgrades
 * For updates to the NNS canisters, you can follow [the IC repository](https://github.com/dfinity/ic). More specifically, the following sub-directories are relevant:
 
-    - `rs/ledger_suite/icp_ledger/src`
-    - `rs/ledger_suite/ledger_core`
-    - `rs/ledger_suite/ledger_canister_core`
-    - `rs/packages/icrc-ledger_types`
-    - `rs/registry/canister`
-    - `rs/nns/governance`
-    - `rs/ledger_suite/ledger_canister/ledger`,
-    - `rs/ledger_suite/icp_ledger/archive`
-    - `rs/nns/handlers/root/impl`
+    - `rs/ledger_suite/common/ledger_canister_core`
+    - `rs/ledger_suite/common/ledger_core`
+    - `rs/ledger_suite/icp/archive`
+    - `rs/ledger_suite/icp/index`,
+    - `rs/ledger_suite/icp/ledger/src`
     - `rs/nns/cmc`
-    - `rs/nns/handlers/lifeline`,
+    - `rs/nns/governance`
     - `rs/nns/gtc`
+    - `rs/nns/handlers/lifeline`,
+    - `rs/nns/handlers/root/impl`
     - `rs/nns/identity`
     - `rs/nns/nns-ui`
-    - `rs/nns/sns-wasm`
+    - `rs/packages/icrc-ledger_types`
+    - `rs/registry/canister`
 
 * NNS core canister upgrade proposals are announced [on the developer forum](https://forum.dfinity.org/t/nns-updates-aggregation-thread/23551).
 * You can find the instructions on how to verify that the Wasm in the proposal was indeed build from the provided `git commit` in the proposal's section "Wasm Verification" (see [this example proposal](https://dashboard.internetcomputer.org/proposal/129394)).
 
 ### ICP ledger suite upgrades
 * For updates on the ICP ledger suite, you can follow [the IC repository](https://github.com/dfinity/ic). More specifically, the following sub-directories are relevant:
-    - `rs/ledger_suite/icp_ledger` is the directory for the ICP ledger
+    - `rs/ledger_suite/icp/ledger` is the directory for the ICP ledger
 
 
 ## Verify IC OS version election proposals
