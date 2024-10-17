@@ -71,11 +71,7 @@ Download and install the latest version of [dfx](install/index.mdx). `dfx` is a 
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ```
 
-:::info
-For Kybra projects, you will need to install `dfx` version `0.19.0` or newer, and you must run all `dfx` commands in a Python virtual environment.
-:::
-
-### Install [Node.js](https://nodejs.org/en/download)
+### Install [Node.js](https://nodejs.org/en/download) `16.0.0` or newer
 
 ```bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
@@ -88,16 +84,17 @@ nvm install 18
 dfx start
 ```
 
-This command starts a local instance of the ICP <GlossaryTooltip>replica</GlossaryTooltip> using a single node testnet. The output will return a dashboard URL that can be used to view information about the local replica:
+This command starts a local instance of the ICP <GlossaryTooltip>replica</GlossaryTooltip> using a single node testnet. 
 
 ```
-Running dfx start for version 0.15.2
+Using the default configuration for the local shared network.
 Initialized replica.
-Dashboard: http://localhost:35375/_/dashboard
+Initialized HTTP gateway.
+Replica API running on 127.0.0.1:4943
 ```
 
 :::info
-While `dfx start` is running, you will not be able to run other commands in the terminal window. You can open another window, or start `dfx` in the background with the `dfx start --clean --background` flag.
+While `dfx start` is running, you will not be able to run other commands in the terminal window. You can open another window, or start `dfx` in the background with the `--background` flag.
 :::
 
 
@@ -186,6 +183,22 @@ actor {
 
 <TabItem value="rust" label="Rust">
 
+### Install Rust
+
+You will need to install Rust in your environment with the command:
+
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+### Install `wasm32-unknown-unknown` target
+
+ICP smart contracts are compiled into WebAssembly modules. To support this compilation, install the `wasm32-unknown-unknown` target:
+
+```
+rustup target add wasm32-unknown-unknown
+```
+
 This Rust smart contract has a single function called greet. It is marked as query because it doesn't modify the state of the canister.
 
 The function accepts a name as input and returns a greetings text.
@@ -231,10 +244,7 @@ export default class {
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-Python canisters can be written using the Kybra canister development kit.
-
-To set up a Python virtual environment, follow the [Python installation instructions](/docs/current/developer-docs/backend/python/)
-
+Python canisters can be written using the Kybra canister development kit. [Learn more about setting up Kybra](/docs/current/developer-docs/backend/python/).
 
 The default canister code for Kybra projects contains the following:
 
@@ -255,7 +265,8 @@ def greet(name: str) -> str:
 Deploy the project's <GlossaryTooltip>canisters</GlossaryTooltip> locally:
 
 ```
-dfx deploy
+npm install // Installs node dependencies 
+dfx deploy // Deploys the project locally
 ```
 
 This command performs several functions in the background:
@@ -331,11 +342,11 @@ Output:
 
 This call performs several functions in the background:
 
-- First, it looks up the smart contract's address (known as the canister id) using the smart contract's name `hello_backend` in the file `./.dfx/local/canister_ids.json`.
+- First, it looks up the smart contract's address (known as the canister ID) using the smart contract's name `hello_backend` in the file `./.dfx/local/canister_ids.json`.
 
 - Then, it looks up the smart contract's interface in the file `src/declarations/hello_backend/hello_backend.did`.
 
-- It looks up the signature of function greet in the interface.
+- It looks up the signature of the function `greet` in the interface.
 
 - It constructs a message for the smart contract's `greet` endpoint with the given `name` text as an argument.
 
@@ -345,7 +356,7 @@ This call performs several functions in the background:
 
 - Once the message has been executed, the result was decoded using the interface file and printed to the terminal window.
 
-Alternatively, you can interact with the smart contract via the web browser if a frontend smart contract has been deployed. [Learn more about using the frontend smart contract in the web browser](/docs/current/developer-docs/getting-started/deploy/local)
+Alternatively, you can interact with the smart contract via the web browser if a frontend smart contract has been deployed. [Learn more about using the frontend smart contract in the web browser](/docs/current/developer-docs/getting-started/deploy/local).
 
 
 ## Next steps

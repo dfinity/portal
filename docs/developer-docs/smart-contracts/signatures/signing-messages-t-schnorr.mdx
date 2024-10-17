@@ -47,7 +47,7 @@ To deploy code using the `sign_with_schnorr` method, you will need to specify th
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
   public shared ({ caller }) func sign(message_arg : Text, algorithm_arg : SchnorrAlgotirhm) : async {
     #Ok : { signature_hex : Text };
     #Err : Text;
@@ -68,7 +68,7 @@ To deploy code using the `sign_with_schnorr` method, you will need to specify th
 
 </TabItem>
 
-<TabItem value="rust" label="rust">
+<TabItem value="rust" label="Rust">
 
 ```rust
 #[update]
@@ -135,7 +135,7 @@ function verify(bip340) {
 
 </TabItem>
 
-<TabItem value="rust" label="rust">
+<TabItem value="rust" label="Rust">
 
 ```rust
 #[query]
@@ -200,7 +200,7 @@ function verify(ed25519) {
 ```
 
 </TabItem>
-<TabItem value="rust" label="rust">
+<TabItem value="rust" label="Rust">
 
 ```rust
 #[query]
@@ -254,7 +254,7 @@ To obtain public keys, you will need to call the `schnorr_public_key` method of 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
   public shared ({ caller }) func public_key(algorithm_arg : SchnorrAlgotirhm) : async {
     #Ok : { public_key_hex : Text };
     #Err : Text;

@@ -1,0 +1,52 @@
+---
+title: Developer weekly update September 18, 2024
+description: In this week's update, there is a new release of the ICP JavaScript agent, a new release of Pocket IC, and a new tool for estimating the costs of HTTPS outcalls.
+tags: [Devs]
+image: /img/blog/dev-update-blog-sept-18.jpg
+---
+
+# Developer weekly update September 18, 2024
+
+![September 18 2024](../../static/img/blog/dev-update-blog-sept-18.jpg)
+
+Hello developers, and welcome to this week's developer weekly update! In this week's update, there is a new release of the ICP JavaScript agent, a new release of Pocket IC, and a new tool for estimating the costs of HTTPS outcalls. Let's get started!
+
+## ICP JavaScript agent v2.1.0
+
+A new version of the ICP JavaScript agent has been released! This release features the new synchronous call API, allowing calls to the mainnet to bypass polling. This release also includes allowing HttpAgent to set and read the replicaTime value, allowing for improvements regarding time disagreements between client and replica. Other notable additions include:
+
+- Support for the threshold Schnorr management canister interface.
+
+- React hook for `use-auth-client`.
+
+- Ensure that the seed phrase produces a 64-byte seed.
+
+- New options for setting a root key during the creation of the agent.
+
+For the full release notes, check out the [GitHub repo](https://github.com/dfinity/agent-js/releases/tag/v2.1.0).
+
+## PocketIC v6.0.0
+
+A new version of the PocketIC testing suite has been released! This release features:
+
+- Support for threshold ECDSA and Schnorr signature testing for canisters integrating with Bitcoin and Solana.
+
+- Query statistics support.
+
+- New option to specify the IP address that the PocketIC server should listen at.
+
+- New endpoint `/api/v2/subnet` to support HTTP subnet read state requests.
+
+- Test multiple diverging canister HTTP outcalls responses to determine how your canister handles errors from remote servers.
+
+Read the full release notes [on GitHub](https://github.com/dfinity/ic/blob/5aa7ad88dfd29ba9b6e166552d1e84f48001acb3/rs/pocket_ic_server/CHANGELOG.md#600---2024-09-12).
+
+## HTTPS outcalls cost calculator
+
+Looking for a way to calculate how much an HTTPS outcall will cost? There's a new tool that can help estimate these costs by submitting a request and response size manually, or you can provide a URL. If you provide a URL, the maximum response size of 2MiB will be used for the estimation.
+
+[Try out the tool](https://7joko-hiaaa-aaaal-ajz7a-cai.icp0.io/) or take a look at the [code on GitHub](https://github.com/domwoe/HTTPS-Outcalls-Calculator).
+
+That'll wrap up this week. Tune back in next week for more developer updates!
+
+-DFINITY

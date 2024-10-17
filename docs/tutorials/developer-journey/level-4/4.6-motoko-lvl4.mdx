@@ -8,6 +8,8 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Tutorial"]} />
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/E7JxP3-CjH8?si=db1zJWYxOs98tVLJ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 ## Overview
 
 In this final Motoko module of the developer journey series, you'll cover the following Motoko concepts and components:
@@ -46,7 +48,7 @@ actor {
 
 Mutable variables use the `var` syntax when being declared, such as:
 
-```motoko
+```motoko no-repl
 import Text "mo:base/Text";
 import Nat "mo:base/Nat";
 
@@ -58,7 +60,7 @@ actor {
 
 To update the values of the mutable variables, you can use the following syntax with the assignment operation `:=`, which works for all types:
 
-```motoko
+```motoko no-repl
 actor {
   textMutable := textMutable # "xyz";
   pairMutable := (textMutable, pairMutable.1);
@@ -124,7 +126,7 @@ Before going deeper into mutable arrays, first let's cover immutable arrays, whi
 
 For example, consider the following immutable array:
 
-```motoko
+```motoko no-repl
 import Nat "mo:base/Nat";
 
 actor {
@@ -162,19 +164,19 @@ This array holds three numbers with type `Nat`. These three values can be update
 
 To declare a mutable array with a dynamic size, such that the number of entries within the array can be updated, the following `Array_init` syntax can be used:
 
-```motoko
+```motoko no-repl
 import Nat "mo:base/Nat";
 import Array "mo:base/Array";
 
 actor {
-  ar size : Nat = 52 ;
+  ar size : Nat;
   let x : [var Nat] = Array.init<Nat>(size, 5);
 }
 ```
 
 Using this syntax, this mutable array will have `size` number of entries, each with an initial value of `5`. Then, to update this mutable array, you can use the syntax:
 
-```motoko
+```motoko no-repl
 x[2] := 42;
 ```
 
@@ -236,7 +238,7 @@ By default, all declarations in an object block are private, such as the variabl
 
 In the previous object declaration, `counter` has the following object type, which is expressed using a list of `field` type pairs:
 
-```motoko
+```motoko no-repl
 {
   inc  : () -> () ;
   read : () -> Nat ;
@@ -287,7 +289,7 @@ actor {
 
 The object type for the object `bumpCounter` exposes only one operation, `bump`:
 
-```motoko
+```motoko no-repl
 {
   bump : () -> Nat ;
 }
@@ -295,7 +297,7 @@ The object type for the object `bumpCounter` exposes only one operation, `bump`:
 
 This example exposes the most common operation and only permits a certain behavior. In another part of a program, you may want to implement another version with more generality, such as our example from earlier:
 
-```motoko
+```motoko no-repl
 {
   inc  : () -> () ;
   read : () -> Nat ;
@@ -305,7 +307,7 @@ This example exposes the most common operation and only permits a certain behavi
 
 Lastly, you may implement a type with additional operations, such as a `write` operation:
 
-```motoko
+```motoko no-repl
 {
   inc  : () -> () ;
   read : () -> Nat ;
@@ -320,7 +322,7 @@ If a function expects to receive an object using the first type `({ bump: () →
 
 Now let's move onto object classes. An object class is a package of entities that share a common name. For example, let's define a class example for counters that start at zero:
 
-```motoko
+```motoko no-repl
 import Nat "mo:base/Nat";
 
 actor {
@@ -336,7 +338,7 @@ actor {
 
 Using this definition, you can construct new counters each with their own unique state that start at zero, such as:
 
-```motoko
+```motoko no-repl
 actor {
   let c1 = Counter();
   let c2 = Counter();
@@ -345,13 +347,12 @@ actor {
 
 Then, you can use each counter, `c1` and `c2`, independently of one another:
 
-```motoko
+```motoko no-repl
 actor{
   let x = c1.inc();
   let y = c2.inc();
   (x, y)
 }
-
 ```
 
 In comparison, the same results can be achieved by using a constructor function to return an object:
@@ -409,7 +410,7 @@ The inspect system function should not be used as a definitive form of access co
 
 Consider the following `inspect` function example that denies all ingress messages and ignores all message information:
 
-```motoko
+```motoko no-repl
 system func inspect({}) : Bool { false }
 ```
 
@@ -457,7 +458,7 @@ Motoko error handling best practices recommend to use `Option` and `Result` erro
 
 If a function wants to return the value of type `A`, or signal an error can return a value of option type `?A`, the `null` value can designate the error. For example, consider the following `markDone` function that returns an async value of `?Seconds`.
 
-```motoko
+```motoko no-repl
 import Time "mo:base/Time";
 
 actor {
@@ -477,7 +478,7 @@ actor {
 Then, you can use the following error callsite:
 
 
-```motoko
+```motoko no-repl
 import Int "mo:base/Int";
 import Text "mo:base/Text";
 
@@ -501,13 +502,13 @@ One drawback of this method is that all possible errors return a single, non-inf
 
 As an alternative to using `Option` types, `Result` variants can be used to return richer, more defined errors that provide better descriptions of what went wrong. `Result` variants are a built-in type that is defined as such:
 
-```Motoko
+```motoko no-repl
 type Result<Ok, Err> = { #ok : Ok; #err : Err }
 ```
 
 Since `Result` includes the `Err` type parameters, the `Result` type allows you to select the type used to describe errors. Consider the following example that uses `Result` variants to signal errors:
 
-```Motoko
+```motoko no-repl
 import Result "mo:base/Result";
 import Time "mo:base/Time";
 
@@ -532,7 +533,7 @@ actor {
 
 Then, you can use the following error callsite:
 
-```motoko
+```motoko no-repl
 import Time "mo:base/Time";
 import Text "mo:base/Text";
 import Int "mo:base/Int";
@@ -565,7 +566,7 @@ Asynchronous errors is a restricted form of exception error handling. Since Moto
 
 Asynchronous error handling generally should only be used for catching and signally unexpected, irrecoverable failures. If a failure can be handled by the caller, it should return a `Result` instead. The following example demonstrates a form of asynchronous error handling:
 
-```motoko
+```motoko no-repl
 import Time "mo:base/Time";
 
 actor {
@@ -589,7 +590,7 @@ actor {
 
 Then, you can use the following error callsite:
 
-```motoko
+```motoko no-repl
 import Text "mo:base/Text";
 
 actor {

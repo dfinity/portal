@@ -49,7 +49,7 @@ This actor declares three public functions and one field:
 
 This actor `Counter` has the following type:
 
-```motoko
+```motoko no-repl
 actor {
   inc  : shared () -> async ();
   read : shared () -> async Nat;
@@ -61,7 +61,7 @@ In this definition, there are three 'members' of the actor which correlate to th
 
 In this type definition, you can see that each has the `shared` modifier for each member of the actor. Motoko allows you to omit this modifier when authoring an actor type, thus this can be simplified as:
 
-```motoko
+```motoko no-repl
 actor {
   inc  : () -> async ();
   read : () -> async Nat;
@@ -87,7 +87,7 @@ As you learned earlier, shared functions must be executed asynchronously and the
 
 To access the result of an async value, the receiver of the future use an `await` expression. For example, using the `Counter` actor you used previously, you can use the result of `Counter.read()` by binding the result value to an identifier (`a`), then await `a` to retrieve the `async Nat` return value, `n`:
 
-```motoko
+```motoko no-repl
 actor {
   let a : async Nat = Counter.read();
   let n : Nat = await a;
@@ -102,7 +102,7 @@ In this code, the following happens:
 
 These two lines can be combined into one to await an asynchronous call directly, such as:
 
-```motoko
+```motoko no-repl
 actor {
   let n : Nat = await Counter.read();
 }
@@ -160,7 +160,7 @@ Both the functions `get(k)` and `put(k, v)` use the `class` parameters of `n` an
 
 Then, you'll implement a coordinating `Map` actor in a file called `Map.mo`:
 
-```motoko
+```motoko no-repl
 import Array "mo:base/Array";
 import Buckets "Buckets";
 

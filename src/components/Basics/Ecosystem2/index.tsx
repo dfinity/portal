@@ -11,7 +11,7 @@ const categories = [
   {
     title: (
       <>
-        Mint and store <span style={{ color: "#18D0B5" }}>NFT's</span> on-chain
+        Mint and store <span style={{ color: "#18D0B5" }}>NFT's</span> onchain
       </>
     ),
     image: "/img/basics/export-nft.webp",

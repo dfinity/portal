@@ -1,6 +1,6 @@
 ---
 title: Developer weekly update February 21, 2024
-description: In this week's update, we have a very important message about a critical security bug in Agent JS, updates from the NFT working group, and info about ICP at ETHDenver next week!
+description: In this week's update, we have a very important message about a critical security bug in the ICP JavaScript agent, updates from the NFT working group, and info about ICP at ETHDenver next week!
 tags: [Devs]
 image: /img/blog/dev-update-blog-feb-21.jpg
 ---
@@ -9,13 +9,13 @@ image: /img/blog/dev-update-blog-feb-21.jpg
 
 ![February 21 2024](../../static/img/blog/dev-update-blog-feb-21.jpg)
 
-Hello developers, and welcome to this week's developer weekly update! In this week's update, we have a very important message about a critical security bug in Agent JS, updates from the NFT working group, and info about ICP at ETHDenver next week! Let's get started.
+Hello developers, and welcome to this week's developer weekly update! In this week's update, we have a very important message about a critical security bug in the ICP JavaScript agent, updates from the NFT working group, and info about ICP at ETHDenver next week! Let's get started.
 
-## Critical security vulnerability in Agent JS v1.0.0
+## Critical security vulnerability in the ICP JavaScript agent v1.0.0
 
-A critical security vulnerability in Agent JS versions 1.0.0 and older has been identified and patched. This vulnerability had to do with the agent-js library's `Ed25519KeyIdentity.generate` function, which generates an ed25519 key pair with the optional parameter to provide a 32 byte seed value. Due to a recent change in agent-js, this function was altered so that when no seed value was provided, the library generated an insecure seed for key pair generation. The resulting principal was a constant identity that was based on an all-zero private key. With this vulnerability, attackers could steal funds associated with this principal on a ledger or compromise access to canisters controlled by this principal. 
+A critical security vulnerability in the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) versions 1.0.0 and older has been identified and patched. This vulnerability had to do with the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) library's `Ed25519KeyIdentity.generate` function, which generates an ed25519 key pair with the optional parameter to provide a 32 byte seed value. Due to a recent change in the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), this function was altered so that when no seed value was provided, the library generated an insecure seed for key pair generation. The resulting principal was a constant identity that was based on an all-zero private key. With this vulnerability, attackers could steal funds associated with this principal on a ledger or compromise access to canisters controlled by this principal.
 
-The patch for the vulnerability is available in agent-js [v1.0.1](https://github.com/dfinity/agent-js/releases/tag/v1.0.1). It is encouraged that all developers upgrade and deploy their canisters immediately.
+The patch for the vulnerability is available in [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) [v1.0.1](https://github.com/dfinity/agent-js/releases/tag/v1.0.1). It is encouraged that all developers upgrade and deploy their canisters immediately.
 
 - [Forum post](https://forum.dfinity.org/t/agent-js-insecure-key-generation-in-ed25519keyidentity-generate/27732).
 
@@ -27,15 +27,15 @@ The patch for the vulnerability is available in agent-js [v1.0.1](https://github
 
 The NFT working group has recently concluded work on the ICRC-7 standard and is looking ahead to the next steps for NFTs on ICP. The group has put together 4 possible new ICRC standards that can be pursued by the working group moving forward:
 
-- ICRC-8: Ledger markets: This standard would define marketplace standards for fungible or non-fungible ledgers, including the data structures and workflows necessary to support other token standards and achieve atomic trades. 
+- ICRC-8: Ledger markets: This standard would define marketplace standards for fungible or non-fungible ledgers, including the data structures and workflows necessary to support other token standards and achieve atomic trades.
 
-- ICRC-56: Infinitely scalable multi-canister file system: This standard would define parameters for a standard file system that can be used for storing on-chain NFT media. 
+- ICRC-56: Infinitely scalable multi-canister file system: This standard would define parameters for a standard file system that can be used for storing onchain NFT media.
 
-- ICRC-59: Static NFT metadata interface standard: This standard would define a static standard for NFT metadata. 
+- ICRC-59: Static NFT metadata interface standard: This standard would define a static standard for NFT metadata.
 
-- ICRC-60: Dynamic NFT metadata interface standard: This standard would define a dynamic standard for NFT metadata. 
+- ICRC-60: Dynamic NFT metadata interface standard: This standard would define a dynamic standard for NFT metadata.
 
-The NFT working group meets every other Tuesday at 5PM CEST. 
+The NFT working group meets every other Tuesday at 5PM CEST.
 
 [Read more and participate in the discussion on the forum](https://forum.dfinity.org/t/nft-working-group-next-steps-icrc-8-icrc-56-icrc-59-icrc-60/27698).
 
@@ -43,7 +43,7 @@ The NFT working group meets every other Tuesday at 5PM CEST.
 
 If you're going to ETHDenver, be sure to stop by the ICP booth! Our team will be hosting and participating in some exciting events:
 
-- Our DevRel engineer Jennifer Tran will be joining the [Encode Club panel](https://www.encode.club/denver2024) to cover L2s. 
+- Our DevRel engineer Jennifer Tran will be joining the [Encode Club panel](https://www.encode.club/denver2024) to cover L2s.
 
 - [ICP Hubs Meetup Buidl community and technology](https://lu.ma/icp-denver).
 
@@ -51,7 +51,7 @@ If you're going to ETHDenver, be sure to stop by the ICP booth! Our team will be
 
 - [Stop by the booth to participate in one of the ETHDenver bounties!](https://www.ethdenver.com/buidlathon).
 
-Want to learn more or sign up for email updates on these events? [Join the mailing list](https://mailchi.mp/internetcomputer/ethdenver2024) to stay updated! 
+Want to learn more or sign up for email updates on these events? [Join the mailing list](https://mailchi.mp/internetcomputer/ethdenver2024) to stay updated!
 
 That'll wrap up this week. Tune back in next week for more developer updates!
 

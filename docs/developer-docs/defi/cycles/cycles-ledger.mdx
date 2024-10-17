@@ -33,6 +33,13 @@ It is important to note that the cycles ledger does not provide the ability to m
 If you need to make arbitrary calls to other canisters with cycles, a cycles wallet can be used as before. The cycles ledger can be used to load the cycles wallet with cycles.
 :::
 
+## Canister IDs
+
+| Canister name | Canister ID | Dashboard link |
+|---------------|-------------|----------------|
+| Cycles ledger | um5iw-rqaaa-aaaaq-qaaba-cai | https://dashboard.internetcomputer.org/canister/um5iw-rqaaa-aaaaq-qaaba-cai |
+| Cycles ledger index | ul4oc-4iaaa-aaaaq-qaabq-cai | https://dashboard.internetcomputer.org/canister/ul4oc-4iaaa-aaaaq-qaabq-cai |
+
 ## Using the cycles ledger
 
 :::caution
@@ -114,7 +121,7 @@ Replace `AMOUNT` with the number of ICP to convert into cycles, such as `2.7`. A
 To transfer cycles to another principal ID, use the command:
 
 ```
-dfx cycles transfer PRINCIPAL_ID (--subaccount [SUBACCOUNT]) AMOUNT --network ic
+dfx cycles transfer AMOUNT PRINCIPAL_ID (--subaccount [SUBACCOUNT]) --network ic
 ```
 
 Replace `PRINCIPAL_ID` with the principal ID you'd like to transfer the cycles to, such as `tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe` and `AMOUNT` with the number of cycles, such as `34000000`. Optionally, a subaccount can be provided, in which case the recipient will receive the funds in the provided subaccount.

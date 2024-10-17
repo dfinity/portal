@@ -102,7 +102,7 @@ individual subscription, API key, management, etc.
 
 The EVM RPC canister abstracts away much of the complexity around managing keys
 and querying the Ethereum network for blocks, transactions, and other data with
-an easy to use, on-chain API. It performs automatic consensus inference by
+an easy to use, onchain API. It performs automatic consensus inference by
 sending requests to multiple providers in parallel and ensuring the responses
 agree. It also lets you send requests to other EVM chains through a generic
 `request` interface. Overall, it simplifies what you as a developer need to
@@ -169,7 +169,7 @@ dfx start --clean --background
 Set the init args for the EVM RPC canister:
 
 ```bash
-dfx deps init evm_rpc --argument '(record { nodesInSubnet = 28 })'
+dfx deps init evm_rpc --argument '(record { nodesInSubnet = 31 })'
 ```
 
 Locally deploy the `evm_rpc` canister:

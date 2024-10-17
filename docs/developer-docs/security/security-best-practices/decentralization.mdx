@@ -20,7 +20,7 @@ Dapps are commonly reachable over their own custom domain name instead of ic0.ap
 
 A dapp might have privileged features which are only accessible to principals that are on an allow list. For example, minting new tokens, debug functions, permissions management, removing NFTs for digital rights violations, etc. This means that whoever controls that principal (such as the dapp developers) may have central control over these privileged features.
 
-For performance or privacy reasons, some components of a dapp may be hosted off-chain. These off-chain components often control principals used to interact with the on-chain components, and are usually controlled by a developer holding credentials to the off-chain cloud environment. On top of that, off-chain entities such as providers can inspect and manipulate data in this environment if they choose. They could take ICP principal private keys out of this environment and call privileged operations on the canisters. Off-chain components can quickly lead to many additional centrally trusted parties. Depending on the value managed by a dapp, these parties could be tempted to act maliciously.
+For performance or privacy reasons, some components of a dapp may be hosted off-chain. These off-chain components often control principals used to interact with the onchain components, and are usually controlled by a developer holding credentials to the off-chain cloud environment. On top of that, off-chain entities such as providers can inspect and manipulate data in this environment if they choose. They could take ICP principal private keys out of this environment and call privileged operations on the canisters. Off-chain components can quickly lead to many additional centrally trusted parties. Depending on the value managed by a dapp, these parties could be tempted to act maliciously.
 
 ### Recommendations
 
@@ -63,7 +63,7 @@ If you interact with a canister that you require to be decentralized, make sure 
 
 Loading untrusted JavaScript from domains other than `<canister-id>.icp0.io` means you completely trust that domain. Also, assets loaded from these domains (incl. `<canister-id>.raw.icp0.io`) will not use asset certification.
 
-If they deliver malicious JavaScript they can take over the web app or account. This could for example happen by reading the private key managed by agent-js from the browser's local storage.
+If they deliver malicious JavaScript they can take over the web app or account. This could for example happen by reading the private key managed by the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) from the browser's local storage.
 
 Note that also loading other assets such [as CSS](https://xsleaks.dev/docs/attacks/css-injection/) from untrusted domains is a security risk.
 

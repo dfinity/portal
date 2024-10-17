@@ -5,7 +5,7 @@ keywords: [intermediate, tutorial, developer journey, unit testing, e2e testing,
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
-# 2.5 Unit, integration, and end2end testing
+# 2.5 Unit, integration, and end-to-end testing
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
@@ -21,7 +21,7 @@ There are three primary types of testing:
 
 - **Integration testing:** Tests several functions, calculations, and portions of the code together; tests how different parts *integrate* with one another. A common form of integration testing is known as *continuous integration* testing, or CI testing.
 
-- **End2end (e2e) testing:** Tests the app's complete workflow, including buttons, forms, and frontend assets; tests the app from *end to end*.
+- **End-to-end (e2e) testing:** Tests the app's complete workflow, including buttons, forms, and frontend assets; tests the app from *end to end*.
 
 ## Motoko unit testing
 
@@ -32,7 +32,7 @@ Many of these tests use a library called Motoko Matchers. Motoko Matchers is a t
 Let's take a look at a simple unit test. This will test the program's error messages:
 
 
-```motoko
+```motoko no-repl
 import M "mo:matchers/Matchers";
 import T "mo:matchers/Testable";
 import Suite "mo:matchers/Suite";
@@ -65,7 +65,7 @@ This unit test does the following:
 ### Canister unit testing
 In addition to the `Suite`, `Testable` and `Matchers` packages, Motoko Matchers also contains a `Canister` package. The `Canister` package can be used to execute unit tests for canisters. Below is an example that uses this `Canister` package:
 
-```motoko
+```motoko no-repl
 import Canister "canister:CanisterName";
 import C "mo:matchers/Canister";
 import M "mo:matchers/Matchers";
@@ -117,8 +117,6 @@ In this developer journey series, you'll continue to focus on exploring and usin
 
 [Learn more about Rust unit testing](https://mmapped.blog/posts/01-effective-rust-canisters.html).
 
-You may also consider the [DFINITY Rust guidelines on testing](https://docs.dfinity.systems/dfinity/spec/meta/rust.html#_tests).
-
 ## Tests using PocketIC
 
 PocketIC provides local canister testing using a Python library. Using PocketIC, developers can write tests for their canister in Python, then deploy the scripts to interact with their local ICP <GlossaryTooltip>replica</GlossaryTooltip>. An example test with PocketIC might look like:
@@ -137,15 +135,15 @@ assert(response == 'Hello, PocketIC!')
 
 [Learn more about PocketIC](https://github.com/dfinity/pocketic-py#readme).
 
-### Tests using Light Replica
+## Tests using Light Replica
 
 Light Replica is a community-developed project designed to provide a local testing and development environment similar to Ethereum's Truffle or Hardhat tools. Light Replica creates a local node designed to replicate the behavior of a real ICP node that includes additional logging and functions to assist with testing. Using this local node, any Wasm file can be tested and interacted with as if it were deployed on a live production node. The Light Replica's codebase includes tests primarily written in Rust and Typescript, and can be beneficial as a tool for Rust development testing, but can be used with any canister that has been compiled into a Wasm file.
 
 [Learn more about Light Replica](https://github.com/icopen/lightic/tree/main).
 
-## End2end (e2e) testing
+## End-to-end (e2e) testing
 
-Now, let's take a look at creating a project and setting up end2end (e2e) testing for the project.
+Now, let's take a look at creating a project and setting up end-to-end (e2e) testing for the project.
 
 ### Prerequisites
 
@@ -218,7 +216,7 @@ Then, open your `package.json` file and insert `"test": "vitest"` in the `script
     "prebuild": "dfx generate",
     "start": "webpack serve --mode development --env development",
     "deploy:local": "dfx deploy --network=local",
-    "deploy:ic": "dfx deploy --network=ic",
+    "deploy:ic": "dfx deploy --network ic",
     "generate": "dfx generate e2e_tests_backend",
     "test": "vitest"
   },
@@ -282,9 +280,9 @@ This agent file does the following:
 - Creates a default actor.
 
 :::caution
-This example uses `fetchRootKey`. It is not recommended that dapps deployed on the mainnet call this function from agent-js, since using `fetchRootKey` on the mainnet poses severe security concerns for the dapp that's making the call. It is recommended to put it behind a condition so that it only runs locally.
+This example uses `fetchRootKey`. It is not recommended that dapps deployed on the mainnet call this function from the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), since using `fetchRootKey` on the mainnet poses severe security concerns for the dapp that's making the call. It is recommended to put it behind a condition so that it only runs locally.
 
-This API call will fetch a root key for verification of update calls from a single replica, so it’s possible for that replica to respond with a malicious key. A verified mainnet root key is already embedded into agent-js, so this only needs to be called on your local replica, which will have a different key from mainnet that agent-js does not know ahead of time.
+This API call will fetch a root key for verification of update calls from a single replica, so it’s possible for that replica to respond with a malicious key. A verified mainnet root key is already embedded into the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), so this only needs to be called on your local replica, which will have a different key from mainnet that the ICP JavaScript agent does not know ahead of time.
 :::
 
 ### Creating a test file

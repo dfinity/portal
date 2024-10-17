@@ -70,7 +70,7 @@ demonstrates how to generate a `P2PKH` address from a canister's public key.
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 
 /// Returns the P2PKH address of this canister at the given derivation path.
 public func get_p2pkh_address(network : Network, key_name : Text, derivation_path : [[Nat8]]) : async BitcoinAddress {
@@ -91,7 +91,7 @@ func public_key_to_p2pkh_address(network : Network, public_key_bytes : [Nat8]) :
 
 ```
 
-<a href="https://github.com/dfinity/examples/blob/c4cbbfc72c4262c7aad34268ac48e85f3851b40b/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinWallet.mo#L49">
+<a href="https://github.com/dfinity/examples/blob/eea5afe1a7e421b349e7fa08dd548d59aee92b61/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L55">
     <div align="center">View in the full example.</div>
 </a>
 </TabItem>
@@ -154,6 +154,52 @@ by default, so make sure to use the correct function to generate the address as 
 :::
 
 <Tabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl
+
+  // Main.mo
+  
+  public func get_p2tr_raw_key_spend_address() : async BitcoinAddress {
+    await P2trRawKeySpend.get_address(NETWORK, KEY_NAME, DERIVATION_PATH);
+  };
+
+  // P2trRawKeySpend.mo
+
+  public func get_address(network : Network, key_name : Text, derivation_path : [[Nat8]]) : async BitcoinAddress {
+    // Fetch the public key of the given derivation path.
+    let sec1_public_key = await SchnorrApi.schnorr_public_key(key_name, Array.map(derivation_path, Blob.fromArray));
+    assert sec1_public_key.size() == 33;
+
+    let bip340_public_key_bytes = Array.subArray(Blob.toArray(sec1_public_key), 1, 32);
+
+    public_key_to_p2tr_key_spend_address(network, bip340_public_key_bytes);
+  };
+
+  // Converts a public key to a P2TR raw key spend address.
+  public func public_key_to_p2tr_key_spend_address(network : Network, bip340_public_key_bytes : [Nat8]) : BitcoinAddress {
+    // human-readable part of the address
+    let hrp = switch (network) {
+      case (#mainnet) "bc";
+      case (#testnet) "tb";
+      case (#regtest) "bcrt";
+    };
+
+    let version : Nat8 = 1;
+    assert bip340_public_key_bytes.size() == 32;
+
+    switch (Segwit.encode(hrp, { version; program = bip340_public_key_bytes })) {
+      case (#ok address) address;
+      case (#err msg) Debug.trap("Error encoding segwit address: " # msg);
+    };
+  };
+
+```
+
+<a href="https://github.com/dfinity/examples/blob/eea5afe1a7e421b349e7fa08dd548d59aee92b61/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L64">
+    <div align="center">View in the full example.</div>
+</a>
+</TabItem>
 <TabItem value="rust" label="Rust" default>
 
 ```rust
@@ -182,6 +228,51 @@ pub async fn get_address(
 #### Generating a script path address
 
 <Tabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl
+
+  // Main.mo
+
+  public func get_p2tr_script_spend_address() : async BitcoinAddress {
+    await P2trScriptSpend.get_address(NETWORK, KEY_NAME, DERIVATION_PATH);
+  };
+
+  // P2trScriptSpend.mo
+
+  public func get_address(network : Network, key_name : Text, derivation_path : [[Nat8]]) : async BitcoinAddress {
+      // Fetch the public key of the given derivation path.
+      let sec1_public_key = await SchnorrApi.schnorr_public_key(key_name, Array.map(derivation_path, Blob.fromArray));
+      assert sec1_public_key.size() == 33;
+      let bip340_public_key_bytes = Array.subArray(Blob.toArray(sec1_public_key), 1, 32);
+      let { tweaked_address; is_even = _ } = public_key_to_p2tr_script_spend_address(network, bip340_public_key_bytes);
+      tweaked_address;
+  };
+
+  // Converts a public key to a P2TR script spend address.
+  public func public_key_to_p2tr_script_spend_address(network : Network, bip340_public_key_bytes : [Nat8]) : {
+      tweaked_address : BitcoinAddress;
+      is_even : Bool;
+  } {
+      let leaf_script = Utils.get_ok(leafScript(bip340_public_key_bytes));
+      let leaf_hash = leafHash(leaf_script);
+      let tweak = Utils.get_ok(tweakFromKeyAndHash(bip340_public_key_bytes, leaf_hash));
+      let { bip340_public_key = tweaked_public_key; is_even } = Utils.get_ok(tweakPublicKey(bip340_public_key_bytes, tweak));
+
+      // we can reuse `public_key_to_p2tr_key_spend_address` because this
+      // essentially encodes the input public key as a P2TR address without tweaking
+      {
+        tweaked_address = P2trRawKeySpend.public_key_to_p2tr_key_spend_address(network, tweaked_public_key);
+        is_even;
+    };
+  };
+
+```
+
+<a href="https://github.com/dfinity/examples/blob/eea5afe1a7e421b349e7fa08dd548d59aee92b61/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L72">
+    <div align="center">View in the full example.</div>
+</a>
+</TabItem>
 <TabItem value="rust" label="Rust" default>
 
 ```rust

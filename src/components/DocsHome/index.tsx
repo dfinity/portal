@@ -475,11 +475,20 @@ const DocsHomePage: FC = () => {
                 className="button-white button-with-icon"
                 href="/docs/current/developer-docs/getting-started/overview-of-icp"
               >
-                Start building
-                <LinkArrowRight />
-              </Link>
-            </p>
-          </div>
+              Learn more
+              <LinkArrowRight />
+            </Link>
+          </p>
+          <p className="mb-0">
+            <Link
+              className="button-white button-with-icon"
+              href="https://play.motoko.org"
+            >
+              Start coding
+              <LinkArrowRight />
+            </Link>
+          </p>
+        </div>
         </div>
         <div className="px-6 py-8 md:p-10 border border-white border-solid rounded-lg bg-white/70 sm:col-span-2">
           <QueryClientProvider client={queryClient}>

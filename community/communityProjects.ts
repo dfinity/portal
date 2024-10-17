@@ -979,7 +979,7 @@ const communityProjects: SampleItem[] = [
   {
     index: 58,
     title: "C3-Protocol (Co-Created Collectibles)",
-    body: "CCC is a platform for on-chain creation and collaboration. It takes advantage of Dfinity’s low threshold in order to introduce Web2 creators to Web3.",
+    body: "CCC is a platform for onchain creation and collaboration. It takes advantage of Dfinity’s low threshold in order to introduce Web2 creators to Web3.",
     links: {
       github: "https://github.com/C3-Protocol/CoCreate",
       external:
@@ -1088,7 +1088,7 @@ const communityProjects: SampleItem[] = [
   {
     index: 65,
     title: "PRESTO: Escrow, Title, & Trust dApp",
-    body: "Presto is an Internet Computer dApp for creating and managing escrows & trusts and for registering ownership of any type of property on-chain.",
+    body: "Presto is an Internet Computer dApp for creating and managing escrows & trusts and for registering ownership of any type of property onchain.",
     links: {
       github: "https://github.com/hafezrouzati/presto",
       livePreview: "https://3us5k-qyaaa-aaaak-qap3a-cai.ic0.app/",
@@ -1258,7 +1258,7 @@ const communityProjects: SampleItem[] = [
   {
     index: 76,
     title: "MOPS",
-    body: "Motoko package manager with on-chain package registry",
+    body: "Motoko package manager with onchain package registry",
     links: {
       github: "https://github.com/ZenVoich/mops",
       livePreview: "https://distrikt.app/u/mops",
@@ -1590,8 +1590,8 @@ const communityProjects: SampleItem[] = [
   },
   {
     index: 97,
-    title: "On-chain System of Record with Public Notary",
-    body: "We use IC's low cost on-chain storage and inter-canister async calls features to make a cheap and scalable System of Record with Public Notary with features of Oracle, billing and Decrypt+Share.",
+    title: "Onchain System of Record with Public Notary",
+    body: "We use IC's low cost onchain storage and inter-canister async calls features to make a cheap and scalable System of Record with Public Notary with features of Oracle, billing and Decrypt+Share.",
     links: {
       github: "https://github.com/amirhyoussefi/ic-sorn",
       external:
@@ -2067,6 +2067,24 @@ const communityProjects: SampleItem[] = [
     contentType: ["code samples", "community repo", "live demos"],
     image: "/img/community-projects/d-vote.png",
   },
+  {
+    index: 127,
+    title: "ASPPIBRA-DAO",
+    body: "ASPPIBRA - Association of Property Owners and Possessors in Brazil is a non-profit civil association, founded on April 9, 2016, in the State of Rio de Janeiro-RJ. It is composed of professionals and citizens committed to the technological and socioeconomic development of modern society.",
+    links: {
+      github: "https://github.com/ASPPIBRA-DAO",
+      livePreview: "https://www.asppibra.com.br/",
+      otherLinks: ["https://x.com/ASPPIBRA_ORG",
+        "https://www.youtube.com/@ASPPIBRA-DAO/videos"],
+    },
+    domains: ["Public Good / Social Impact"],
+    level: "advanced",
+    languages: ["python", "javascript"],
+    contentType: ["code samples", "community repo", "live demos"],
+    image: "/img/showcase/BR-DAO_logo.svg",
+  },
+
+
 ];
 
 export default communityProjects;

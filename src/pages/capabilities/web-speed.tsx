@@ -22,7 +22,7 @@ function FeaturePage() {
               <p className="tw-lead-sm md:tw-lead mb-0">
                 Users can interact with dapps on the Internet Computer (IC) with
                 speeds comparable to traditional web applications. Developers
-                can therefore build a much broader range of fully on-chain dapps
+                can therefore build a much broader range of fully onchain dapps
                 without relying on cloud services and risking single points of
                 failure.
                 <br />
@@ -83,7 +83,7 @@ function FeaturePage() {
                 performance tests
               </Link>{" "}
             </p>
-            <h3>Chain Key Cryptography</h3>
+            <h3>Chain-Key Cryptography</h3>
             <p>
               The main advantage of using a blockchain or decentralized protocol
               is that the central point of trust is removed. This advantage
@@ -98,7 +98,7 @@ function FeaturePage() {
               inefficiency as verifying many individual signatures can be slow.
               One of the key innovations of the IC is the introduction of{" "}
               <Link href="https://medium.com/dfinity/chain-key-technology-one-public-key-for-the-internet-computer-6a3644901e28">
-                Chain Key (CK) Cryptography
+                Chain-Key (CK) Cryptography
               </Link>{" "}
               which allows IC signatures to be verified with a single public
               key, hence reducing friction for all types of devices (node
@@ -113,7 +113,7 @@ function FeaturePage() {
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
-                See other 100% on-chain dapps
+                See other 100% onchain dapps
               </Link>
             </p>
           </div>

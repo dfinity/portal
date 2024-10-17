@@ -19,15 +19,15 @@ Unlike other blockchains, ICP canisters can automatically execute tasks after a 
 
 There are two ways to schedule an automatic canister execution on ICP:
 
-1. **Timers**: single-expiration or periodic canister calls with specified minimum timeout or interval. A canister can implement multiple timers.
-2. **Heartbeats**: legacy periodic canister invocations with intervals close to the blockchain finalization rate (1s). Heartbeats are supported by ICP for backward compatibility and some very special use cases. **Newly developed canisters should prefer using timers over the heartbeats.**
+1. **Timers**: Single-expiration or periodic canister calls with specified minimum timeout or interval. A canister can implement multiple timers. Each timer will receive a unique ID to identify it within the context of the canister.
+2. **Heartbeats**: Legacy periodic canister invocations with intervals close to the blockchain finalization rate (1s). Heartbeats are supported by ICP for backward compatibility and some very special use cases. **Newly developed canisters should prefer using timers over the heartbeats.**
 
 ## Timers
 
 Timers are implemented on two layers:
 
-- **The protocol level implementation:** the Internet Computer protocol supports minimalistic on-shot global timer per canister via `ic0.global_timer_set()` system API call and `canister_global_timer` handler (see the [Internet Computer interface specification](/docs/current/references/ic-interface-spec#timer)).
-- **The CDK timers library level:** the library wraps the minimalistic protocol implementation, adding multiple and periodic timers on top. Canister developers can enjoy the familiar timers functionality using the CDK timers library for:
+- **The protocol level implementation:** The Internet Computer protocol supports one minimalistic on-shot global timer per canister via `ic0.global_timer_set()` system API call and `canister_global_timer` handler (see the [Internet Computer interface specification](/docs/current/references/ic-interface-spec#timer)).
+- **The CDK timers library level:** The library wraps the minimalistic protocol implementation, adding multiple and periodic timers on top. Canister developers can enjoy the familiar timers functionality using the CDK timers library for:
 
 - [Rust](https://crates.io/crates/ic-cdk-timers)
 
@@ -39,7 +39,7 @@ Timers are implemented on two layers:
 
 Internally the CDK timers libraries do the following:
 
-1. The library keeps a global list of multiple and periodic tasks inside the canister.
+1. The library keeps a global list of all periodic tasks inside the canister.
 2. Calls the `ic0.global_timer_set()` system API to schedule the next task from the list.
 3. Implements the `canister_global_timer` method with the following logic:
    * For each expired task, the handler initiates a self canister call to isolate the tasks from each other and from the library code. Note, the [normal inter-canister call costs](/docs/current/developer-docs/gas-cost) costs apply.
@@ -59,7 +59,7 @@ For the code composability reasons, i.e. to be able to use different libraries w
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 system func timer(setGlobalTimer : Nat64 -> ()) : async () {
   let next = Nat64.fromIntWrap(Time.now()) + 20_000_000_000;
   setGlobalTimer(next); // absolute time in nanoseconds
@@ -200,7 +200,7 @@ To use multiple timers in a canister, simply create multiple timer definitions:
 In Motoko, call the `recurringTimer` function multiple times, setting different durations and callback functions for each timer:
 
 
-```motoko
+```motoko no-repl
 import { print } = "mo:base/Debug";
 import { recurringTimer } = "mo:base/Timer";
 

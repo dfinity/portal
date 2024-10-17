@@ -63,16 +63,33 @@ Error: Failed to install wasm module to canister 'test'. Caused by: Failed to in
 
 You may need to run `dfx build`, as this error indicates that the canister's Wasm module may not exist because it was not compiled. [Learn more about how to compile a canister's Wasm module](compile.mdx). Alternatively, you can run `dfx deploy`, as it runs `dfx build` and `dfx install` as part of the deployment process.
 
+## Errors related to Wasm modules
+
+Common errors related to installation and Wasm modules include:
+
+- [Install code rate limited](/docs/current/references/execution-errors#install-code-rate-limited).
+- [Canister not empty](/docs/current/references/execution-errors#canister-not-empty).
+- [Wasm module not found](/docs/current/references/execution-errors#wasm-module-not-found).
+- [Wasm module too large](/docs/current/references/execution-errors#wasm-module-too-large).
+- [Wasm module duplicate exports](/docs/current/references/execution-errors#wasm-module-duplicate-exports).
+- [Wasm module exports too many methods](/docs/current/references/execution-errors#wasm-module-exports-too-many-methods).
+- [Wasm module sum of exported name lengths too large](/docs/current/references/execution-errors#wasm-module-sum-of-exported-name-lengths-too-large).
+- [Wasm module too many functions](/docs/current/references/execution-errors#wasm-module-too-many-functions).
+- [Wasm module too many globals](/docs/current/references/execution-errors#wasm-module-too-many-globals).
+- [Wasm module function complexity too high](/docs/current/references/execution-errors#wasm-module-function-complexity-too-high).
+- [Wasm module function too large](/docs/current/references/execution-errors#wasm-module-function-too-large).
+- [Wasm module code section too large](/docs/current/references/execution-errors#wasm-module-code-section-too-large).
+
 ## Next steps
 
-- [Create canisters](/docs/current/developer-docs/smart-contracts/create)
+- [Create canisters](/docs/current/developer-docs/smart-contracts/create).
 
-- [Delete canisters](/docs/current/developer-docs/smart-contracts/maintain/delete)
+- [Delete canisters](/docs/current/developer-docs/smart-contracts/maintain/delete).
 
-- [Canister history](/docs/current/developer-docs/smart-contracts/maintain/history)
+- [Canister history](/docs/current/developer-docs/smart-contracts/maintain/history).
 
-- [Import canisters](//docs/current/developer-docs/smart-contracts/maintain/import)
+- [Import canisters](//docs/current/developer-docs/smart-contracts/maintain/import).
 
-- [Recover canisters](/docs/current/developer-docs/smart-contracts/maintain/recovery)
+- [Recover canisters](/docs/current/developer-docs/smart-contracts/maintain/recovery).
 
-- [Canister settings](/docs/current/developer-docs/smart-contracts/maintain/settings)
+- [Canister settings](/docs/current/developer-docs/smart-contracts/maintain/settings).

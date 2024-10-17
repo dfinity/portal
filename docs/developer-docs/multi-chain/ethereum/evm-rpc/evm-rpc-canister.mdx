@@ -61,7 +61,7 @@ dfx start --background
 
 # Locally deploy the `evm_rpc` canister
 dfx deps pull
-dfx deps init evm_rpc --argument '(record { nodesInSubnet = 28 })'
+dfx deps init evm_rpc --argument '(record { nodesInSubnet = 31 })'
 dfx deps deploy
 ```
 
@@ -86,11 +86,11 @@ Alternatively, you can include the EVM RPC canister by specifying the Candid and
 }
 ```
 
-Then start the local replica and deploy the canister locally with a specified number of nodes (`28` for the [fiduciary subnet](/docs/current/concepts/subnet-types#fiduciary-subnets)):
+Then start the local replica and deploy the canister locally with a specified number of nodes (`31` for the [fiduciary subnet](/docs/current/concepts/subnet-types#fiduciary-subnets)):
 
 ```
 dfx start --clean --background
-dfx deploy evm_rpc --argument '(record { nodesInSubnet = 28 })'
+dfx deploy evm_rpc --argument '(record { nodesInSubnet = 31 })'
 ```
 
 ### Fork the EVM RPC canister
@@ -104,7 +104,7 @@ git clone https://github.com/internet-computer-protocol/evm-rpc-canister
 To deploy your own canister on the mainnet, run the `dfx deploy` command with the `--network ic` flag:
 
 ```
-dfx deploy evm_rpc --network ic --argument '(record { nodesInSubnet = 28 })'
+dfx deploy evm_rpc --network ic --argument '(record { nodesInSubnet = 31 })'
 ```
 
 Note that when deploying your own canister, you may encounter API rate limits. Refer to the [replacing API keys](#replacing-api-keys) section to learn how to configure API credentials.
@@ -114,7 +114,7 @@ Note that when deploying your own canister, you may encounter API rate limits. R
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 import EvmRpc "canister:evm_rpc";
 
 import Cycles "mo:base/ExperimentalCycles";
@@ -128,7 +128,7 @@ actor {
         let config = null;
 
         // Add cycles to next call
-        Cycles.add<system>(1000000000);
+        Cycles.add<system>(2000000000);
 
         // Call an RPC method
         let result = await EvmRpc.eth_getLogs(
@@ -187,7 +187,7 @@ For example:
 async fn get_logs(get_logs_args: GetLogsArgs) -> Vec<evm_rpc::LogEntry> {
     let rpc_providers = RpcServices::EthMainnet(Some(vec![EthMainnetService::Alchemy]));
 
-    let cycles = 10_000_000_000_000;
+    let cycles = 20_000_000_000_000;
     let (result,) = EVM_RPC
         .eth_get_logs(rpc_providers, None, get_logs_args, cycles)
         .await
@@ -211,11 +211,11 @@ async fn get_logs(get_logs_args: GetLogsArgs) -> Vec<evm_rpc::LogEntry> {
 
 ```bash
 # Configuration
-IDENTITY=default
-CYCLES=1000000000
-WALLET=$(dfx identity get-wallet)
-RPC_SOURCE=EthMainnet
-RPC_CONFIG=null
+export IDENTITY=default
+export CYCLES=2000000000
+export WALLET=$(dfx identity get-wallet)
+export RPC_SOURCE=EthMainnet
+export RPC_CONFIG=null
 
 dfx canister call evm_rpc eth_getLogs "(variant {$RPC_SOURCE}, $RPC_CONFIG, record {addresses = vec {\"ADDRESS\"}})" --with-cycles=$CYCLES --wallet=$WALLET
 
@@ -231,7 +231,7 @@ This example use case displays a caveat that comes with mapping the `eth_getLogs
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 import EvmRpc "canister:evm_rpc";
 
 import Cycles "mo:base/ExperimentalCycles";
@@ -245,7 +245,7 @@ actor {
     let config = null;
 
     // Add cycles to next call
-    Cycles.add<system>(1000000000);
+    Cycles.add<system>(2000000000);
 
     // Call an RPC method
     let result = await EvmRpc.eth_getBlockByNumber(services, config, #Latest);
@@ -279,7 +279,7 @@ actor {
 use ic_cdk::api::call::call_with_payment128;
 use declarations::evm_rpc::{Block, BlockTag, MultiGetBlockByNumberResult, RpcError, RpcService, EVM_RPC as evm_rpc};
 
-let cycles = 1000000000;
+let cycles = 2000000000;
 let (results,): (MultiGetBlockByNumberResult,) = call_with_payment128(
     evm_rpc.0,
     "eth_getBlockByNumber",
@@ -300,11 +300,11 @@ let (results,): (MultiGetBlockByNumberResult,) = call_with_payment128(
 
 ```bash
 # Configuration
-IDENTITY=default
-CYCLES=1000000000
-WALLET=$(dfx identity get-wallet)
-RPC_SOURCE=EthMainnet
-RPC_CONFIG=null
+export IDENTITY=default
+export CYCLES=2000000000
+export WALLET=$(dfx identity get-wallet)
+export RPC_SOURCE=EthMainnet
+export RPC_CONFIG=null
 
 dfx canister call evm_rpc eth_getBlockByNumber "(variant {$RPC_SOURCE}, $RPC_CONFIG, variant {Latest})" --with-cycles=$CYCLES --wallet=$WALLET
 
@@ -318,7 +318,7 @@ dfx canister call evm_rpc eth_getBlockByNumber "(variant {$RPC_SOURCE}, $RPC_CON
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 import EvmRpc "canister:evm_rpc";
 
 import Cycles "mo:base/ExperimentalCycles";
@@ -332,7 +332,7 @@ actor {
     let config = null;
 
     // Add cycles to next call
-    Cycles.add<system>(1000000000);
+    Cycles.add<system>(2000000000);
 
     // Call an RPC method
     let result = await EvmRpc.eth_getTransactionReceipt(services, config, "0xdd5d4b18923d7aae953c7996d791118102e889bea37b48a651157a4890e4746f");
@@ -368,7 +368,7 @@ use declarations::evm_rpc::{
     BlockTag, MultiGetTransactionReceiptResult, RpcError, RpcServices, evm_rpc,
 };
 
-let cycles = 10000000000;
+let cycles = 20000000000;
 let (results,): (MultiGetTransactionReceiptResult,) = call_with_payment128(
     evm_rpc.0,
     "eth_getTransactionReceipt",
@@ -389,11 +389,11 @@ let (results,): (MultiGetTransactionReceiptResult,) = call_with_payment128(
 
 ```bash
 # Configuration
-IDENTITY=default
-CYCLES=1000000000
-WALLET=$(dfx identity get-wallet)
-RPC_SOURCE=EthMainnet
-RPC_CONFIG=null
+export IDENTITY=default
+export CYCLES=1000000000
+export WALLET=$(dfx identity get-wallet)
+export RPC_SOURCE=EthMainnet
+export RPC_CONFIG=null
 
 dfx canister call evm_rpc eth_getTransactionReceipt "(variant {$RPC_SOURCE}, $RPC_CONFIG, \"TRANSACTION_ID\")" --with-cycles=$CYCLES --wallet=$WALLET
 
@@ -484,7 +484,7 @@ pub async fn eth_call(
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 import EvmRpc "canister:evm_rpc";
 
 import Cycles "mo:base/ExperimentalCycles";
@@ -498,7 +498,7 @@ actor {
     let config = null;
 
     // Add cycles to next call
-    Cycles.add<system>(1000000000);
+    Cycles.add<system>(2000000000);
 
     // Call an RPC method
     let result = await EvmRpc.eth_getTransactionCount(
@@ -541,7 +541,7 @@ use declarations::evm_rpc::{
     BlockTag, GetTransactionCountArgs, MultiGetTransactionCountResult, RpcError, RpcServices, evm_rpc,
 };
 
-let cycles = 10000000000;
+let cycles = 20000000000;
 let (results,): (MultiGetTransactionCountResult,) = call_with_payment128(
     evm_rpc.0,
     "eth_getTransactionCount",
@@ -565,11 +565,11 @@ let (results,): (MultiGetTransactionCountResult,) = call_with_payment128(
 
 ```bash
 # Configuration
-IDENTITY=default
-CYCLES=1000000000
-WALLET=$(dfx identity get-wallet)
-RPC_SOURCE=EthMainnet
-RPC_CONFIG=null
+export IDENTITY=default
+export CYCLES=1000000000
+export WALLET=$(dfx identity get-wallet)
+export RPC_SOURCE=EthMainnet
+export RPC_CONFIG=null
 
 dfx canister call evm_rpc eth_getTransactionCount "(variant {$RPC_SOURCE}, $RPC_CONFIG, record {address = \"CONTRACT_ADDRESS\"; block = variant {Latest}})" --with-cycles=$CYCLES --wallet=$WALLET
 
@@ -583,7 +583,7 @@ dfx canister call evm_rpc eth_getTransactionCount "(variant {$RPC_SOURCE}, $RPC_
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 import EvmRpc "canister:evm_rpc";
 
 import Cycles "mo:base/ExperimentalCycles";
@@ -597,7 +597,7 @@ actor {
     let config = null;
 
     // Add cycles to next call
-    Cycles.add<system>(1000000000);
+    Cycles.add<system>(2000000000);
 
     // Call an RPC method
     let result = await EvmRpc.eth_feeHistory(
@@ -654,7 +654,7 @@ pub async fn fee_history(
         _ => RpcServices::EthSepolia(None),
     };
 
-    let cycles = 10000000;
+    let cycles = 20000000;
     match EvmRpcCanister::eth_fee_history(services, config, args, cycles).await {
         Ok((res,)) => match res {
             MultiFeeHistoryResult::Consistent(fee_history) => match fee_history {
@@ -678,11 +678,11 @@ pub async fn fee_history(
 
 ```bash
 # Configuration
-IDENTITY=default
-CYCLES=1000000000
-WALLET=$(dfx identity get-wallet)
-RPC_SOURCE=EthMainnet
-RPC_CONFIG=null
+export IDENTITY=default
+export CYCLES=2000000000
+export WALLET=$(dfx identity get-wallet)
+export RPC_SOURCE=EthMainnet
+export RPC_CONFIG=null
 
 dfx canister call evm_rpc eth_feeHistory "(variant {$RPC_SOURCE}, $RPC_CONFIG, record {blockCount = 3; newestBlock = variant {Latest}})" --with-cycles=$CYCLES --wallet=$WALLET
 
@@ -698,7 +698,7 @@ The EVM RPC canister can also be used to send raw transactions to the Ethereum a
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 import EvmRpc "canister:evm_rpc";
 
 import Cycles "mo:base/ExperimentalCycles";
@@ -712,7 +712,7 @@ actor {
     let config = null;
 
     // Add cycles to next call
-    Cycles.add<system>(1000000000);
+    Cycles.add<system>(2000000000);
 
     // Call an RPC method
     let result = await EvmRpc.eth_sendRawTransaction(
@@ -754,7 +754,7 @@ pub async fn send_raw_transaction(network: String, raw_tx: String) -> SendRawTra
         _ => RpcServices::EthSepolia(None),
     };
 
-    let cycles = 10000000;
+    let cycles = 20000000;
     match EvmRpcCanister::eth_send_raw_transaction(services, config, raw_tx, cycles).await {
         Ok((res,)) => match res {
             MultiSendRawTransactionResult::Consistent(status) => match status {
@@ -778,12 +778,12 @@ pub async fn send_raw_transaction(network: String, raw_tx: String) -> SendRawTra
 
 ```bash
 # Configuration
-NETWORK=local
-IDENTITY=default
-CYCLES=1000000000
-WALLET=$(dfx identity get-wallet)
-RPC_SOURCE=EthMainnet
-RPC_CONFIG=null
+export NETWORK=local
+export IDENTITY=default
+export CYCLES=2000000000
+export WALLET=$(dfx identity get-wallet)
+export RPC_SOURCE=EthMainnet
+export RPC_CONFIG=null
 
 dfx canister call evm_rpc eth_sendRawTransaction "(variant {$RPC_SOURCE}, $RPC_CONFIG, \"0xf86c098504a817c800825208943535353535353535353535353535353535353535880de0b6b3a76400008025a028ef61340bd939bc2195fe537567866003e1a15d3c71ff63e1590620aa636276a067cbe9d8997f761aecb703304b3800ccf555c9f3dc64214b297fb1966a3b6d83\")" --with-cycles=$CYCLES --wallet=$WALLET
 
@@ -792,9 +792,10 @@ dfx canister call evm_rpc eth_sendRawTransaction "(variant {$RPC_SOURCE}, $RPC_C
 </TabItem>
 </AdornedTabs>
 
-Note that some JSON-RPC APIs may only return a `NonceTooLow` status when successfully submitting a transaction. This is because during HTTP outcall consensus, only the first request is successful while the others reply with a duplicate transaction status. 
-
+:::
+Some JSON-RPC APIs may only return a `NonceTooLow` status when successfully submitting a transaction. This is because during the HTTP outcall consensus, only the first request is successful, while the others reply with a duplicate transaction status.
 If you encounter this issue, one possible workaround is to use a deduplicating proxy server such as the community-built C-ATTS EVM RPC proxy ([source code](https://github.com/c-atts/catts-evm-rpc-proxy)). 
+:::
 
 ### Error "already known"
 
@@ -816,7 +817,7 @@ Note that even if an error is returned, you should assume that your transaction 
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 import EvmRpc "canister:evm_rpc";
 
 import Cycles "mo:base/ExperimentalCycles";
@@ -864,7 +865,7 @@ actor {
 ```rust
 use declarations::evm_rpc::{RpcError, RpcService, evm_rpc};
 
-let cycles = 1000000000;
+let cycles = 2000000000;
 let params = (
     RpcService::EthMainnet,
     "{\"jsonrpc\":\"2.0\",\"method\":\"eth_gasPrice\",\"params\":null,\"id\":1}".to_string(),
@@ -888,11 +889,11 @@ match result {
 
 ```bash
 # Configuration
-IDENTITY=default
-CYCLES=1000000000
-WALLET=$(dfx identity get-wallet)
-RPC_SOURCE=EthMainnet
-RPC_CONFIG=null
+export IDENTITY=default
+export CYCLES=2000000000
+export WALLET=$(dfx identity get-wallet)
+export RPC_SOURCE=EthMainnet
+export RPC_CONFIG=null
 
 dfx canister call evm_rpc request "(variant {$JSON_RPC_SOURCE}, "'"{ \"jsonrpc\": \"2.0\", \"method\": \"eth_gasPrice\", \"params\": [], \"id\": 1 }"'", 1000)" --with-cycles=$CYCLES --wallet=$WALLET // Local deployment
 
@@ -906,7 +907,7 @@ dfx canister call evm_rpc request "(variant {$JSON_RPC_SOURCE}, "'"{ \"jsonrpc\"
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
+```motoko no-repl
 let services = #EthMainnet;
 let config = null;
 ```
@@ -945,9 +946,6 @@ dfx canister call evm_rpc authorize "(principal \"$PRINCIPAL\", variant { Regist
 dfx canister call evm_rpc getAuthorized '(variant { RegisterProvider })'
 dfx canister call evm_rpc deauthorize "(principal \"$PRINCIPAL\", variant { RegisterProvider })"
 ```
-
-
-
 
 ## Specifying RPC services
 
@@ -1053,6 +1051,36 @@ dfx canister call evm_rpc updateProvider '(record { providerId = 0; credentialHe
 ```
 
 You may receive this error if multiple JSON-RPC providers were queried and one did not receive enough cycles for the request. You can safely attach more cycles to your query, since unused cycles will be refunded.
+
+## Filtering logs
+
+The `consoleFilter` argument can be passed to the EVM RPC canister to filter what log messages are shown.
+
+The default configuration is to show all logs:
+
+```
+dfx deploy evm_rpc --argument "(record { consoleFilter = opt variant { ShowAll } })"
+```
+
+Hide all logs:
+
+```
+dfx deploy evm_rpc --argument "(record { consoleFilter = opt variant { HideAll } })"
+```
+
+The `ShowPattern` and `HidePattern` arguments can be used to filter out regular expressions, such as filtering out logs tagged with `INFO`:
+
+```
+dfx deploy evm_rpc --argument "(record { consoleFilter = opt variant { ShowPattern = "^INFO" } })"
+```
+
+Or, hide logs tagged with `TRACE_HTTP`:
+
+```
+dfx deploy evm_rpc --argument "(record { consoleFilter = opt variant { HidePattern = "^TRACE_HTTP" } })"
+```
+
+`ShowPattern` and `HidePattern` are evaluated using the [regex](https://docs.rs/regex/latest/regex/) crate.
 
 ## Important notes
 

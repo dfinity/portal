@@ -11,7 +11,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 ## Overview
 
-On ICP developers accounts, or **identities**, use a private/public key pair for authentication. Accounts are identified by a **principal** which is a generic identifier value that is used for users, <GlossaryTooltip>canisters</GlossaryTooltip>, and potentially other future concepts. Each developer account's principal value is derived from the account's public key from the private/public key pair.
+On ICP, developer accounts, or **identities**, use a private/public key pair for authentication. Accounts are identified by a **principal**, which is a generic identifier value that is used for users, <GlossaryTooltip>canisters</GlossaryTooltip>, and potentially other future concepts. Each developer account's principal value is derived from the account's public key from the private/public key pair.
 
 ICP developer accounts can be compared to a Bitcoin or Ethereum wallet address. One primary difference, however, is that ICP accounts do not have an initial balance.
 
@@ -21,9 +21,9 @@ Other ICP identity-related terms you may come across include:
 
 - Ledger account identifier: The identifier associated with your ICP ledger account.
 
-- Wallets: Used to store forms of currency. Developers can use a cycles wallet to send <GlossaryTooltip>cycles</GlossaryTooltip> to and from canisters, however the cycles ledger is the most optimal way for using and managing cycles.
+- Wallets: Used to store forms of currency. Developers can use a cycles wallet to send <GlossaryTooltip>cycles</GlossaryTooltip> to and from canisters; however, the cycles ledger is the most optimal way for using and managing cycles.
 
-- Internet Identity: ICP's native authentication service. Internet Identity doesn't use usernames and passwords; instead it uses a passkey that is stored in your local device's hardware.
+- Internet Identity: ICP's native authentication service. Internet Identity doesn't use usernames and passwords; instead, it uses a passkey that is stored in your local device's hardware.
 
 ### Difference between a ledger and a wallet
 
@@ -79,7 +79,7 @@ Ar821EwGwp1Qc9Vv93FGPTvRb4HVXQ==
 
 When a new identity is created with dfx, the private key is stored in the `~/.config/dfx/identity/<identity_name>/identity.pem` file. This file should be backed up to a secure location.
 
-The `--storage-mode` flag is available, which can be used to create a password-protected or plaintext PEM file instead. These flags can be used such as:
+The `--storage-mode` flag is available, which can be used to create a password-protected or plaintext PEM file instead. These flags can be used, such as:
 
 ```
 dfx identity new <identity_name> --storage-mode password-protected

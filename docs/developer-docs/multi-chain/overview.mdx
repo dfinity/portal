@@ -35,7 +35,7 @@ contracts with the decentralized compute power of ICP.
 
 - **Storage**: Using a competitive pricing model, a single smart contract on ICP
 offers up to 400GiB of storage, enabling all application data to be stored
-on-chain. Through Chain Fusion, these decentralized storage capacities are
+onchain. Through Chain Fusion, these decentralized storage capacities are
 made available to non-ICP dapps.
 
 - **Autonomy**: Unlike traditional blockchains, smart contracts on ICP are
@@ -67,7 +67,7 @@ different blockchains.
 - **In-browser multi-chain wallet**: Similar to a DEX, a single browser-based
 wallet that manages assets from different and unrelated blockchains.
 
-- **On-chain frontend**: Hosting an immutable or DAO-managed frontend for a
+- **Onchain frontend**: Hosting an immutable or DAO-managed frontend for a
 smart contract on another blockchain.
 
 - **Decentralized oracle**: Linking Web2 services and smart contracts on other
@@ -132,15 +132,15 @@ This code snippet is written in both Rust and Motoko, but a similar example can 
 
 ```motoko
 
-import evm "ic:a6d44-nyaaa-aaaap-abp7q-cai";
+import evm "ic:7hfb6-caaaa-aaaar-qadga-cai";
 import ic "ic:aaaaa-aa";
 import Cycles "mo:base/ExperimentalCycles";
 import Timer "mo:base/Timer";
 
 //Actor is the computational unit of ICP smart contract
 actor {
-    let EVM_FEE = 1000;
-    let BITCOIN_FEE = 1000;
+    let EVM_FEE = 10000000000;
+    let BITCOIN_FEE = 2016000000;
 
         //Function checks the logs of an ETH smart contract for an event
         //If a particular event is found, it sends bitcoin to an address
@@ -155,7 +155,7 @@ actor {
             fromBlock = ? #Finalized;
             toBlock = ? #Finalized;
             //dummy topics to look at. Replace with topics of interest
-            topics = ?[["topic1", "topic2"]]; 
+            topics = ?[["topic1", "topic2"]];
         },
         );
         switch log {
@@ -213,7 +213,7 @@ async fn check_evm_log() {
     let cycles = 10_000_000_000;
     // This is a test canister without API keys, for production use 7hfb6-caaaa-aaaar-qadga-cai
     let canister_id =
-        Principal::from_text("a6d44-nyaaa-aaaap-abp7q-cai").expect("principal should be valid");
+        Principal::from_text("7hfb6-caaaa-aaaar-qadga-cai").expect("principal should be valid");
     // call the eth_getLogs function on the EVM RPC canister
     let (result,) = ic_cdk::api::call::call_with_payment128::<
         (RpcServices, Option<RpcConfig>, GetLogsArgs),
@@ -418,16 +418,28 @@ pub enum MultiGetLogsResult {
 </TabItem>
 </AdornedTabs>
 
+:::caution
+This code snippet is for demonstration purposes only as it contains placeholder values. For example, the Bitcoin transaction value must updated with an actual signed transaction, and the Ethereum address and topic values must be replaced.
+
+For a fully working example, view the [Chain Fusion starter project](https://github.com/letmejustputthishere/chain-fusion-starter).
+:::
+
 ### Building blocks
 
 There are several building blocks available to augment non-ICP smart contracts with ICP’s Chain Fusion capabilities or to leverage Chain Fusion in existing ICP dapps:
 
-- **Chain-key tokens**: Using the primitives described above, DFINITY has built canisters implementing the [ICRC-2](https://github.com/dfinity/ICRC) token standard to represent native Bitcoin, Ethereum, and ERC-20 tokens on ICP: [ckBTC](/docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview), [ckETH](/docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview), and [ckERC20](/docs/current/developer-docs/multi-chain/chain-key-tokens/ckerc20/overview). These tokens are digital twins of their corresponding native token and are backed 1:1 by the native assets which are managed 100% on-chain through a canister smart contract without any intermediaries.
+- **Chain-key tokens**: Using the primitives described above, DFINITY has built canisters implementing the [ICRC-2](https://github.com/dfinity/ICRC) token standard to represent native Bitcoin, Ethereum, and ERC-20 tokens on ICP: [ckBTC](/docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview), [ckETH](/docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview), and [ckERC20](/docs/current/developer-docs/multi-chain/chain-key-tokens/ckerc20/overview). These tokens are digital twins of their corresponding native token and are backed 1:1 by the native assets which are managed 100% onchain through a canister smart contract without any intermediaries.
 
-- **[EVM RPC canister](/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister)**: A canister smart contract providing an on-chain API for communicating with [Ethereum](https://ethereum.org/en/) or any other [EVM blockchain](https://chainlist.org/?testnets=true).
+- **[EVM RPC canister](/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister)**: A canister smart contract providing an onchain API for communicating with [Ethereum](https://ethereum.org/en/) or any other [EVM blockchain](https://chainlist.org/?testnets=true).
 
-- **[Threshold signatures](/docs/current/references/t-ecdsa-how-it-works//)**: An ICP service implementing the threshold ECDSA and threshold Schnorr protocols.
+- **[Threshold signatures](/docs/current/references/t-ecdsa-how-it-works)**: An ICP service implementing the threshold ECDSA and threshold Schnorr protocols.
 
 - **[HTTPS outcalls](/docs/current/developer-docs/security/security-best-practices/https-outcalls)**: Replicated calls into external web services.
 
 - **[Bitcoin API](/docs/current/references/bitcoin-how-it-works)**: A protocol API that allows canisters to interact with the Bitcoin blockchain directly.
+
+## Resources
+
+- [ICP Chain Fusion Educate - Bitcoin Edition: Introduction to ICP and Chain Fusion](https://www.youtube.com/watch?v=A0K9GXsfw74&list=PLfEHHr3qexv_L0t6KrCyJ-l2ZaHaO-m85).
+
+- [ICP Chain Fusion Educate Powered by Encode Club](https://www.youtube.com/playlist?list=PLfEHHr3qexv9bjbFNp3ItK7yBZ5IQVXjf).

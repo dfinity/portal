@@ -190,7 +190,7 @@ const marketingNav = {
             {
               name: "ICP Roadmap",
               href: "/roadmap",
-              description: "Highlighting upcoming Mil",
+              description: "Highlighting upcoming milestones",
             },
             /*
             {
@@ -324,13 +324,13 @@ const marketingNav = {
             {
               name: "DeFi",
               href: "/defi",
-              description: "On-chain swaps",
+              description: "Onchain swaps",
             },*/
             /*
             {
               name: "NFTs",
               href: "/nft",
-              description: "NFT’s live fully on-chain",
+              description: "NFT’s live fully onchain",
             },*/
           ],
           featured: {
@@ -508,12 +508,12 @@ const marketingNav = {
             {
               name: "OLYMPUS",
               href: "/olympus",
-              description: "The On-Chain Acceleration Platform",
+              description: "The Onchain Acceleration Platform",
             },
           ],
           featured: {
             title: "OLYMPUS",
-            subtitle: "The On-Chain Acceleration Platform",
+            subtitle: "The Onchain Acceleration Platform",
             href: "/olympus",
             image: "/img/nav/featured-olympus.webp",
           },
@@ -568,7 +568,7 @@ function getImageDataUrl(url) {
 const config = {
   title: "Internet Computer",
   tagline:
-    "Step into the era of blockchain as a limitless smart contract cloud that hosts everything on-chain: data, content, computations, and user experiences.",
+    "Step into the era of blockchain as a limitless smart contract cloud that hosts everything onchain: data, content, computations, and user experiences.",
   url: isDeployPreview
     ? `https://${process.env.PREVIEW_CANISTER_ID}.icp0.io`
     : "https://internetcomputer.org",
@@ -597,7 +597,7 @@ const config = {
       "data-modal-ask-ai-input-placeholder":
         "Ask me a question about the Internet Computer Protocol",
       "data-modal-example-questions":
-        "What is the ICP token?, How is the Internet Computer governed?, How do I start building fully on-chain Web3?",
+        "What is the ICP token?, How is the Internet Computer governed?, How do I start building fully onchain Web3?",
       "data-modal-disclaimer":
         " This LLM provides responses are generated automatically and may be inaccurate or outdated. Please take care to verify or validate any responses before making any critical decisions.",
       async: true,
@@ -753,10 +753,6 @@ const config = {
           },
           {
             items: [
-              {
-                label: "ICP Careers",
-                href: "https://careers.internetcomputer.org/",
-              },
               { label: "Developer Grants", href: "https://dfinity.org/grants" },
               {
                 label: "Support & Feedback",

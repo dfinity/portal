@@ -22,11 +22,15 @@ Application subnets are the most common type of subnet on ICP. Almost all canist
 
 ## System subnets
 
-System subnets are reserved for running canisters that provide a system functionality to ICP, such as the NNS canisters. System subnets have special configurations, such as not charging cycles to any of the canisters running on the subnet since system canisters need to be available at all times. System subnets also have a more generous per-call instruction limit and a more generous Wasm module size limit.
+System subnets are reserved for running canisters that provide a system functionality to ICP, such as the NNS canisters. System subnets may have special configurations, such as not charging cycles to any of the canisters running on the subnet since system canisters need to be available at all times. System subnets also have a more generous per-call instruction limit and a more generous Wasm module size limit.
+
+The subnet [`uzr34`](https://dashboard.internetcomputer.org/subnet/uzr34-akd3s-xrdag-3ql62-ocgoh-ld2ao-tamcv-54e7j-krwgb-2gm4z-oqe) is a system subnet that contains 28 nodes. It hosts the canisters for [Internet Identity](/docs/current/developer-docs/identity/internet-identity/overview), the [cycles ledger](/docs/current/developer-docs/defi/cycles/cycles-ledger), the [exchange rate canister](/docs/current/developer-docs/defi/exchange-rate-canister/) and dashboard, and stores the backup threshold signature keys.
 
 ## Fiduciary subnets
 
 A fiduciary subnet is a subnet larger than 13 nodes. Canisters running on this larger subnet will pay more cycles compared to canisters running on 13 node subnets, but in return they will have a higher level of security due to the bigger subnet size. The cycle costs scale linearly to the number of nodes. The fiduciary subnet type was created to enable safer deployment of DeFi applications which need even stronger guarantees than the ones that a 13-node subnet can provide.
+
+The subnet [`pzp6e`](https://dashboard.internetcomputer.org/subnet/pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae) is a fiduciary subnet that contains 31 nodes, hosts the EVM RPC canister, and stores the threshold signature (tECDSA and tSchnorr) signing keys.
 
 You can deploy to a fiduciary subnet using the command `dfx ledger create-canister --subnet-type fiduciary`.
 
@@ -81,7 +85,7 @@ Save this principal ID to be used as the `CONTROLLER` value in a future step.
 You can check the current balance for that principal by running the command:
 
 ```
-dfx ledger --network=ic balance
+dfx ledger --network ic balance
 ```
 
 To top up your principal's balance, you can send cycles to the principal using the [NNS dapp](https://nns.ic0.app/wallet/), or [learn how to convert ICP tokens into cycles](/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles#converting-icp-tokens-to-cycles).
@@ -123,7 +127,7 @@ Then, whenever you create new canisters using that `WALLET_CANISTER_ID`, the new
 You can check the wallet balance of the wallet canister with the command:
 
 ```
-dfx wallet --network=ic balance
+dfx wallet --network ic balance
 ```
 
 The current wallet settings are stored in your local file system in the file `$HOME/.config/dfx/identity/<identity_name>/wallets.json`. The file's contents will resemble the following:

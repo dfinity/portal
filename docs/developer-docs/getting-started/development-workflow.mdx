@@ -41,7 +41,7 @@ In traditional programming, this concept is known as [Application Binary Interfa
 ICP has its own ABI language called **[Candid](/docs/current/developer-docs/smart-contracts/candid/candid-concepts)**, which is similar to JSON or Protobuf, but tailored for ICP.
 
 During the build process, `dfx` uses the backend ABI to automatically generate JavaScript boilerplate code for the frontend.
-Under the hood, the boilerplate code uses a library called [agent-js](https://github.com/dfinity/agent-js/tree/main) to encode Candid values and make HTTP requests from the browser to the backend canister.
+Under the hood, the boilerplate code uses a library called the [ICP JavaScript agent](https://github.com/dfinity/agent-js/tree/main) to encode Candid values and make HTTP requests from the browser to the backend canister.
 This is similar to `web3.js` in Ethereum.
 
 The [Wasm standard](https://webassembly.org/) defines only the instructions and the memory of the Wasm virtual machine;
@@ -85,7 +85,7 @@ There are several different environments that can be used to write, deploy, and 
 
 - [Using containers](/docs/current/developer-docs/developer-tools/ide/dev-containers): Developer containers, such as [Docker containers](https://www.docker.com/), can be used for creating smart contracts and deploying them locally in a containerized environment. Containers can be useful for running several different projects simultaneously in your local environment that may be using different versions of `dfx` and different dependencies.
 
-- [Juno](/docs/current/developer-docs/web-apps/frameworks/juno): Juno is a blockchain-as-a-service platform that can be used to create and deploy smart contracts on ICP without using the traditional `dfx` development workflow. Instead, Juno manages ICP-specific tooling for you on the backend through a Juno 'satellite', allowing you to deploy on-chain dapps by interacting with just the Juno web console or through the CLI.
+- [Juno](/docs/current/developer-docs/web-apps/frameworks/juno): Juno is a blockchain-as-a-service platform that can be used to create and deploy smart contracts on ICP without using the traditional `dfx` development workflow. Instead, Juno manages ICP-specific tooling for you on the backend through a Juno 'satellite', allowing you to deploy onchain dapps by interacting with just the Juno web console or through the CLI.
 
 - [Playground](/docs/current/developer-docs/getting-started/deploy/testnet): The playground is a sandbox environment that can be used for testing smart contract code in any language. It is only designed for temporary, short-term testing, as there is a 20 minute limit for each deployment. After 20 minutes, the canister will be deleted so the resources can be used for another deployment.
 
@@ -112,7 +112,7 @@ However, it is possible to change the URL by editing the dfx configuration file.
 There are three ways to call the functions of the backend smart contract:
 
 1. Use the browser to load the webpage hosted in the frontend <GlossaryTooltip>canister</GlossaryTooltip> and use the UI of the webpage to interact with the backend <GlossaryTooltip>canister</GlossaryTooltip>.
-   Under the hood, the UI uses JavaScript and `agent-js` to send messages to the backend smart contract.
+   Under the hood, the UI uses JavaScript and the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) to send messages to the backend smart contract.
    This is the standard way to interact with the smart contract that regular users would also use.
 1. Use the `dfx canister call` command and pass the input arguments as command line arguments.
    Under the hood, `dfx` uses a Rust library called ic-agent to send messages to the smart contract.

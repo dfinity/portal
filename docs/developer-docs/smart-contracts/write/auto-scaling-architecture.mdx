@@ -35,7 +35,7 @@ The full code example can be found in the [sample's GitHub repo](https://github.
 
 First, this primary canister (stored in the `Main.mo` file) imports a variety of packages from the Motoko base library and data from the `IC.mo`, `Types.mo`, and `Datastore.mo` files:
 
-```motoko
+```motoko no-repl
 import Cycles "mo:base/ExperimentalCycles";
 import Debug "mo:base/Debug";
 import Iter "mo:base/Iter";
@@ -54,7 +54,7 @@ import Datastore "./Datastore";
 
 Then, it creates a shared actor class containing type definitions:
 
-```motoko
+```motoko no-repl
 shared ({ caller }) actor class Self() {
 
   type UserId = Types.UserId;
@@ -69,39 +69,39 @@ shared ({ caller }) actor class Self() {
 
 Bind the caller principal to an _admin variable:
 
-```motoko
+```motoko no-repl
   let _admin : Principal = caller;
 ```
 
 Set a variable for the management canister:
 
-```motoko
+```motoko no-repl
   // The IC management canister.
   let IC : ICType.Self = actor "aaaaa-aa";
 ```
 
 Currently, a single canister smart contract is limited to 4 GiB of heap storage. In this project, you will ensure that the datastore canister does not meet this limit by restricting the memory usage to 2 GiB:
 
-```motoko
+```motoko no-repl
   let DATASTORE_CANISTER_CAPACITY : Byte = 2_000_000_000;
 ```
 
 This application will store notes. Each note will be limited to 1 MiB:
 
-```motoko
+```motoko no-repl
   let NOTE_DATA_SIZE = 1_000_000;
 ```
 
 The number of notes on a single datastore canister can be calculated as follows:
 
-```motoko
+```motoko no-repl
   // DATASTORE_CANISTER_CAPACITY / NOTE_DATA_SIZE
   let _numberOfDataPerCanister : Nat = DATASTORE_CANISTER_CAPACITY / NOTE_DATA_SIZE;
 ```
 
 Configure stable variables for the application:
 
-```motoko
+```motoko no-repl
   stable var _count = 0;
   stable var _currentDatastoreCanisterId : ?DatastoreCanisterId = null;
   stable var _stableUsers : [(UserId, User)] = [];
@@ -116,7 +116,7 @@ Configure stable variables for the application:
 
 Define a series of functions for different purposes:
 
-```motoko
+```motoko no-repl
   // Returns the current number of notes.
   public query func count() : async Nat {
     _count;
@@ -202,7 +202,7 @@ Define a series of functions for different purposes:
 
 Define the logic to create a new note in the current datastore caller:
 
-```motoko
+```motoko no-repl
   // Traps if:
   //   - [caller] is not a registered user.
   //   - there is no datastore canister.
@@ -254,7 +254,7 @@ Define the logic to create a new note in the current datastore caller:
 
 Below is the logic that spawns a new canister from this master canister:
 
-```motoko
+```motoko no-repl
   // Generates a new datastore canister.
   // Returns a canister id of the generated canister.
   // Traps if it fails to generate a new canister.
@@ -291,7 +291,7 @@ Below is the logic that spawns a new canister from this master canister:
 
 Lastly, the code defines the upgrade logic for the canister:
 
-```motoko
+```motoko no-repl
   // The work required before a canister upgrade begins.
   system func preupgrade() {
     Debug.print("Starting pre-upgrade hook...");
@@ -313,7 +313,7 @@ Lastly, the code defines the upgrade logic for the canister:
 
 Then, each secondary canister created by the primary canister will implement the following code (in this example, stored in the `Datastore.mo` file) :
 
-```motoko
+```motoko no-repl
 import Array "mo:base/Array";
 import Buffer "mo:base/Buffer";
 import Debug "mo:base/Debug";

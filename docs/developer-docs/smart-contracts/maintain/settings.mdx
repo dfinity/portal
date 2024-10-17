@@ -197,7 +197,7 @@ An example of programmatically modifying canister settings:
 actor {
   let IC =
     actor "aaaaa-aa" : actor {
-      update_settings : { canister_id : Principal,  } ->
+      update_settings : { canister_id : Principal } ->
         async ();
     };
 };
@@ -336,6 +336,12 @@ Compute allocation is expressed in percents and denotes the percentage of an exe
 Canisters pay a rental fee for compute allocation, meaning that the payment depends on time and the amount of compute allocation regardless whether the canister actually executed or not.
 For example, an idle canister that has compute allocation of 50% for one hour will be charged `base_fee * 50 * 3600`, where `base_fee` is the fee for [one percent per second](/docs/current/developer-docs/gas-cost).
 
+:::info
+The rental fee increases the amount of cycles a canister consumes while idle or frozen.
+To successfully increase the compute allocation, a canister must have sufficient cycles
+to run for at least [freezing threshold](#freezing-threshold) seconds.
+:::
+
 The default value of compute allocation is 0%.
 
 ## Memory allocation
@@ -352,6 +358,12 @@ This constraint may be lifted in the future.
 
 Canisters pay a rental fee for memory allocation, meaning that the payment depends on the time duration and the amount of memory allocation, regardless whether the canister actually uses that memory or not.
 [Learn more about payment for memory](/docs/current/developer-docs/gas-cost).
+
+:::info
+The rental fee increases the amount of cycles a canister consumes while idle or frozen.
+To successfully increase the memory allocation, a canister must have sufficient cycles
+to run for at least [freezing threshold](#freezing-threshold) seconds.
+:::
 
 The default value of memory allocation is 0 bytes, which means that there is no default memory allocation.
 
@@ -413,3 +425,9 @@ The `log_visibility` field in a canister's settings can take one of two possible
 `Public` means that the logs are public and everyone is able to fetch the logs using the `fetch_canister_logs` endpoint of the management canister.
 
 The default value of the field is `controllers`.
+
+## Errors related to canister settings
+
+Common errors related to canister settings include:
+
+- [Invalid settings](/docs/current/references/execution-errors#invalid-settings).

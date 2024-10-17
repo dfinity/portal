@@ -44,12 +44,11 @@ In Motoko canisters, stable memory can be utilized through the Motoko **stable s
 ```motoko
 actor Counter {
 
-  stable var value = 0;
-
-  public func inc() : async Nat {
-    value += 1;
-    return value;
-  };
+  stable var value = 0;
+  public func inc() : async Nat {
+    value += 1;
+    return value;
+  };
 }
 ```
 
@@ -116,3 +115,13 @@ To utilize stable memory when upgrading a Rust canister, the following workflow 
 - The canister's new code is installed using the `--mode upgrade` flag.
 - The canister has been started and now runs the newly upgraded code.
 - A `post_upgrade` hook is called on the newly created instance if one is defined. The init function is not executed.
+
+## Errors related to canister memory
+
+Common errors related to canister memory include:
+
+- [Out of memory](/docs/current/references/execution-errors#out-of-memory).
+- [Memory access limit exceeded](/docs/current/references/execution-errors#memory-access-limit-exceeded).
+- [Wasm memory limit exceeded](/docs/current/references/execution-errors#wasm-memory-limit-exceeded).
+- [Not enough memory allocation given](/docs/current/references/execution-errors#not-enough-memory-allocation-given).
+- [Wasm chunk store error](/docs/current/references/execution-errors#wasm-chunk-store-error).
