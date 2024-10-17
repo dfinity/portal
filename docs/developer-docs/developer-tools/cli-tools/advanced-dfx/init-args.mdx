@@ -50,38 +50,29 @@ dfx canister install icp_ledger_canister --argument
 Alternatively, you can pass these arguments to the canister directly in the `dfx.json` file:
 
 ```json
-"canisters": {
-    "icp_ledger": {
+{
+  "canisters": {
+    "icp_ledger_canister": {
       "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/ec35ebd252d4ffb151d2cfceba3a86c4fb87c6d6/rs/rosetta-api/icp_ledger/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/ec35ebd252d4ffb151d2cfceba3a86c4fb87c6d6/canisters/ledger-canister.wasm.gz",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icp_ledger/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ledger-canister.wasm.gz",
       "remote": {
         "id": {
           "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
         }
       },
-      "init_arg": "(variant {
-    Init = record {
-      minting_account = \"$MINTER_ACCOUNT_ID\";
-      initial_values = vec {
-        record {
-          \"$DEFAULT_ACCOUNT_ID\";
-          record {
-            e8s = 10_000_000_000 : nat64;
-          };
-        };
-      };
-      send_whitelist = vec {};
-      transfer_fee = opt record {
-        e8s = 10_000 : nat64;
-      };
-      token_symbol = opt \"LICP\";
-      token_name = opt \"Local ICP\";
+      "init_arg" : "(variant { Init = record { minting_account = "MINTER_ACCOUNT_ID"; initial_values = vec { record { "DEFAULT_ACCOUNT_ID"; record { e8s = 10_000_000_000 : nat64; }; }; }; send_whitelist = vec {}; transfer_fee = opt record { e8s = 10_000 : nat64; }; token_symbol = opt \"LICP\"; token_name = opt \"Local ICP\"; } })"
     }
-    })
-    "
-    },
-    ...
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
 ```
 
 ## Using an `init_arg_file`
@@ -100,10 +91,10 @@ An example initialization argument file can be found below:
 ```did
 (variant {
   Init = record {
-    minting_account = "xxxxxxxxxx";
+    minting_account = "MINTER_ACCOUNT_ID";
     initial_values = vec {
       record {
-        "xxxxxxxxxx";
+        "DEFAULT_ACCOUNT_ID";
         record {
           e8s = 10_000_000_000 : nat64;
         };
@@ -145,4 +136,4 @@ You can also specify the `init_arg_file` for each canister in the `dfx.json` fil
 
 - Initialization arguments must be set individually for each canister, either through the CLI for `dfx.json`. To make this easier, `init_arg_file`s can be used, as detailed below.
 
-- When using an argument file, values referenced as environment variables within the file will not be passed to the canister.
+- When using `dfx.json` or an argument file, values referenced as environment variables within the file will not be passed to the canister.
