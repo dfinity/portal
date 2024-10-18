@@ -119,11 +119,11 @@ Next, you need to download the ledger's Wasm and Candid files from the latest re
 
 Then, use the following URL to download the Wasm module: `https://download.dfinity.systems/ic/<VERSION>/canisters/ledger-canister.wasm.gz`.
 
-For example, in this tutorial you'll use the URL https://download.dfinity.systems/ic/08f32722df2f56f1e5c1e603fee0c87c40b77cba/canisters/ledger-canister.wasm.gz.
+For example, in this tutorial you'll use the URL https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ledger-canister.wasm.gz.
 
-Similarly, the following URL can be used to download the Candid file: `https://raw.githubusercontent.com/dfinity/ic/<VERSION>/rs/rosetta-api/icp_ledger/ledger.did`.
+Similarly, the following URL can be used to download the Candid file: `https://raw.githubusercontent.com/dfinity/ic/<VERSION>/rs/ledger_suite/icp/ledger.did`.
 
-In this tutorial, you'll use the URL https://raw.githubusercontent.com/dfinity/ic/08f32722df2f56f1e5c1e603fee0c87c40b77cba/rs/rosetta-api/icp_ledger/ledger.did.
+In this tutorial, you'll use the URL https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/ledger_suite/icp/ledger.did.
 
 Now let's open the `dfx.json` file in the project's directory and replace the existing content with the following:
 
@@ -132,8 +132,8 @@ Now let's open the `dfx.json` file in the project's directory and replace the ex
   "canisters": {
     "icp_ledger_canister": {
       "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/08f32722df2f56f1e5c1e603fee0c87c40b77cba/rs/rosetta-api/icp_ledger/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/08f32722df2f56f1e5c1e603fee0c87c40b77cba/canisters/ledger-canister.wasm.gz",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/ledger_suite/icp/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ledger-canister.wasm.gz",
       "remote": {
         "id": {
           "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
