@@ -19,10 +19,10 @@
       "overview": "RPC canister connecting to Solana RPC providers to integrate with the Solana network. Enables two-way communication with the Solana network.",
       "forum": "",
       "proposal": "",
-      "docs": "",
+      "docs": "https://github.com/mfactory-lab/ic-solana",
       "eta": "",
-      "status": "upcoming",
-      "is_community": false,
+      "status": "in_progress",
+      "is_community": true,
       "in_beta": false,
       "milestone_id": "Helium"
     },
