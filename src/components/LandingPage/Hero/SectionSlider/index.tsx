@@ -52,6 +52,13 @@ const sliderData = [
     image: "/img/home/slider/crypto-ai.webp",
     link: "https://lu.ma/icpevents",
   },
+  {
+    tagline: "Nov 8-10, 2024 – Bangkok",
+    title: "Chain Fusion Hacker House",
+    description: "Register now",
+    image: "/img/home/slider/hacker-house.webp",
+    link: "https://lu.ma/nq8qzppm",
+  },
 ];
 
 const MotionLink = motion(Link);
