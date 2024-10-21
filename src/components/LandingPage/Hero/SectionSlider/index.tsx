@@ -45,6 +45,13 @@ const sliderData = [
     image: "/img/home/slider/icp_deck_highlight.webp",
     link: "https://deck.internetcomputer.org/",
   },
+  {
+    tagline: "November 9-10, 2024 – Lisbon",
+    title: "CRYPTO AI:CON",
+    description: "Register now",
+    image: "/img/home/slider/crypto-ai.webp",
+    link: "https://lu.ma/icpevents",
+  },
 ];
 
 const MotionLink = motion(Link);
@@ -104,11 +111,11 @@ export const CardWithImage: React.FC<{
       to={href}
       className="bg-[#0C0025] rounded-xl pl-8 p-5 text-white hover:no-underline transition-all hover:text-white flex flex-col justify-center gap-8 group relative overflow-hidden"
     >
-      <div className="md:group-hover:-translate-y-2 transition-transform relative z-10">
+      <div className="md:group-hover:-translate-y-2 transition-transform relative z-10 mr-4">
         {children}
       </div>
       <div
-        className="absolute inset-y-0 right-0 w-1/3 bg-cover bg-no-repeat bg-right"
+        className="absolute inset-y-0 right-0 w-1/3 bg-cover bg-no-repeat bg-center"
         style={{ backgroundImage: `url(${image})` }}
       />
     </MotionLink>
