@@ -23,7 +23,7 @@ export default function Home(): JSX.Element {
 
   return (
     <Layout
-      title="Home"
+      title="World Computer"
       description={siteConfig.tagline}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >

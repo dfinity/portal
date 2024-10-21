@@ -568,7 +568,7 @@ function getImageDataUrl(url) {
 const config = {
   title: "Internet Computer",
   tagline:
-    "Step into the era of blockchain as a limitless smart contract cloud that hosts everything onchain: data, content, computations, and user experiences.",
+    "The Internet Computer enables you to build anything without traditional IT and Big Tech. It hosts decentralized serverless compute that's simpler, immune to cyber attack, unstoppable, and controllable by DAOs. Create web3 social networks and media, socialfi, games, multi-chain dapps, Al, or an enterprise app. The internet is evolving.",
   url: isDeployPreview
     ? `https://${process.env.PREVIEW_CANISTER_ID}.icp0.io`
     : "https://internetcomputer.org",
@@ -687,7 +687,7 @@ const config = {
     // but to do that type preset- classic had to be disabled below
     // /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     {
-      image: "/img/share.jpg",
+      image: "/img/share.webp",
       colorMode: {
         disableSwitch: true,
         defaultMode: "light",
