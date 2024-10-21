@@ -47,17 +47,12 @@ const Hero: React.FC<{
                 animationPlayState: fontLoaded ? "running" : "paused",
               }}
             >
-              <span className="block sm:text-left">COMPUTE</span>
-              <span className="block md:ml-48">REINVENTED</span>
+              <span className="block sm:text-left">WORLD</span>
+              <span className="block md:ml-48">COMPUTER</span>
             </h1>
             <div className="md:ml-48">
               <p className="tw-paragraph md:tw-lead-sm mt-6 md:w-7/10">
-                The Internet Computer enables you to build anything without
-                traditional IT and Big Tech. It hosts decentralized serverless
-                compute that’s simpler, immune to cyber attack, unstoppable, and
-                controllable by DAOs. Create web3 social networks and media,
-                socialfi, games, multi-chain dapps, AI, or an enterprise app.
-                The internet is evolving.
+              The Internet Computer enables you to build anything without traditional IT and Big Tech. It hosts decentralized serverless compute that's simpler, immune to cyber attack, unstoppable, and controllable by DAOs. Create web3 social networks and media, socialfi, games, multi-chain dapps, Al, or an enterprise app. The internet is evolving.
               </p>
               <div className="flex flex-col md:flex-row gap-8 mt-8 md:mt-6 md:items-center">
                 <Link
