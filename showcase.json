@@ -180,23 +180,26 @@
     "screenshots": []
   },
   {
-    "id": "hot-or-not",
-    "name": "Hot or Not",
+    "id": "yral",
+    "name": "Yral",
     "oneLiner": "Token rewards for both content creators and lurkers",
-    "website": "https://hotornot.wtf/",
+    "website": "https://yral.com",
     "tags": [
       "SocialFi",
+      "Games",
       "DAO"
     ],
-    "description": "Hot or Not is a decentralized short-form video-based social media platform, which integrates prediction markets for content. In addition to sharing their own videos, users can also speculate on videos of other users by staking tokens and voting whether a video will become 'Hot' or 'Not' to earn rewards.",
-    "usesInternetIdentity": true,
-    "stats": "55,000+ users",
-    "logo": "/img/showcase/hot_or_not_logo.png",
+    "description": "Yral is a decentralized short-form video-based social media platform, which integrates gamification on content. In addition to sharing their own videos, users can also speculate on videos of other users by staking tokens and voting whether a video will become 'Hot' or 'Not' to earn rewards.",
+    "usesInternetIdentity": false,
+    "stats": "200,000+ users",
+    "logo": "/img/showcase/yral_logo.png",
+    "github": "https://github.com/yral-dapp",
+    "twitter": "https://x.com/Yral_app",
     "screenshots": [
-      "/img/showcase/hot_or_not_screenshot_0.jpg"
+      "/img/showcase/yral_screenshot_0.webp"
     ],
     "videoContentType": "video/mp4",
-    "video": "/img/showcase/hot_or_not_video.mp4"
+    "video": "/img/showcase/yral_video.mp4"
   },
   {
     "id": "bioniq",
