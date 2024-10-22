@@ -42,7 +42,7 @@ const Hero: React.FC<{
                 md:text-[100px] 
                 lg:text-[110px] 
                 text-white
-                grid mb-0 mx-auto"
+                grid mb-0"
               style={{
                 animationPlayState: fontLoaded ? "running" : "paused",
               }}
