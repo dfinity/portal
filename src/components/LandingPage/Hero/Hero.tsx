@@ -42,7 +42,7 @@ const Hero: React.FC<{
                 md:text-[100px] 
                 lg:text-[110px] 
                 text-white
-                grid mb-0"
+                grid mb-0 mx-auto"
               style={{
                 animationPlayState: fontLoaded ? "running" : "paused",
               }}
@@ -52,7 +52,12 @@ const Hero: React.FC<{
             </h1>
             <div className="md:ml-48">
               <p className="tw-paragraph md:tw-lead-sm mt-6 md:w-7/10">
-              The Internet Computer enables you to build anything without traditional IT and Big Tech. It hosts decentralized serverless compute that's simpler, immune to cyber attack, unstoppable, and controllable by DAOs. Create web3 social networks and media, socialfi, games, multi-chain dapps, Al, or an enterprise app. The internet is evolving.
+                The Internet Computer enables you to build anything without
+                traditional IT and Big Tech. It hosts decentralized serverless
+                compute that's simpler, immune to cyber attack, unstoppable, and
+                controllable by DAOs. Create web3 social networks and media,
+                socialfi, games, multi-chain dapps, Al, or an enterprise app.
+                The internet is evolving.
               </p>
               <div className="flex flex-col md:flex-row gap-8 mt-8 md:mt-6 md:items-center">
                 <Link

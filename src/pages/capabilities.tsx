@@ -4,9 +4,11 @@ import transitions from "@site/static/transitions.json";
 import Layout from "@theme/Layout";
 import clsx from "clsx";
 import { motion } from "framer-motion";
-import React from "react";
+import React, { useRef } from "react";
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import ShareMeta from "../components/Common/ShareMeta/ShareMeta";
+import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
+import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 
 const SplitCard: React.FC<{
   children: React.ReactNode;
@@ -214,7 +216,112 @@ caused a major chain to hard fork and a loss of 60 million USD.`,
   },
 ];
 
+interface FeatureCardProps {
+  imageSrc: string;
+  title: string;
+  description: string;
+  badge?: string;
+}
+
+const FeatureCard: React.FC<FeatureCardProps> = ({
+  imageSrc,
+  title,
+  description,
+  badge,
+}) => {
+  return (
+    <article className="flex flex-col justify-start tw-lead-sm md:tw-lead">
+      <img
+        loading="lazy"
+        src={imageSrc}
+        alt=""
+        className="aspect-square object-contain ml-0 mr-auto w-[120px] max-w-full max-h-full p-0.5"
+      />
+      <div className="mt-6 w-full">
+        <span className="text-white">{title} </span>
+        <span className="text-white/50">{description}</span>
+      </div>
+      {badge && (
+        <div className="self-start rounded-full bg-white mt-4 gap-[10px] text-[0.75rem] md:text-[1rem] text-black/60 px-4 py-0.5 flex">
+          <img
+            loading="lazy"
+            src="/img/features/exclusive.svg"
+            alt=""
+            className="aspect-square w-5 "
+          />
+          {badge}
+        </div>
+      )}
+    </article>
+  );
+};
+
+const features = [
+  {
+    imageSrc: "/img/features/1a.svg",
+    title: "Web Native Contracts.",
+    description:
+      "The Internet Computer is the first blockchain to host smart contracts capable of processing Web2 interactions at web speed, enabling users to engage directly through seamless web experiences they create.",
+    badge: "ICP exclusive",
+  },
+  {
+    imageSrc: "/img/features/2a.svg",
+    title: "Reverse Gas Model.",
+    description:
+      "ICP was the first blockchain that allowed smart contracts to pay for their own computation, so users can interact with them seamlessly.",
+  },
+  {
+    imageSrc: "/img/features/3a.svg",
+    title: "Single public key for verification by users.",
+    description:
+      "ICP enables efficient verification, scalability, autonomous evolution, and built-in authentication using a single public key, making it more efficient than traditional blockchains like Ethereum.",
+    badge: "ICP exclusive",
+  },
+  {
+    imageSrc: "/img/features/4a.svg",
+    title: "Smart contract state in the order of hundreds of GBs.",
+    description:
+      "Most blockchain contracts can practically host a few KB of data, but that is not enough for web applications. ICP is the first first blockchain whose smart contracts can host data in 100s of gigabytes. Many orders of magnitude larger.",
+    badge: "ICP exclusive",
+  },
+  {
+    imageSrc: "/img/features/5a.svg",
+    title: "Multichain integration.",
+    description:
+      "ICP is the first blockchain with native Bitcoin and Ethereum integration without bridges, enabling decentralized smart contracts to read and write directly to the their network.",
+    badge: "ICP exclusive",
+  },
+  {
+    imageSrc: "/img/features/6a.svg",
+    title: "Queries.",
+    description:
+      "ICP is the first blockchain that separates smart contract messages into stateful 'Updates' and 'Queries', where queries are faster, cheaper and can be used to create applications that provide a good user experience.",
+  },
+  {
+    imageSrc: "/img/features/7a.svg",
+    title: "Dynamic Sharding.",
+    description:
+      "The Internet Computer was the first blockchain to introduce sharding, and the first to introduce dynamic sharding.",
+  },
+  {
+    imageSrc: "/img/features/8a.svg",
+    title: "Threshold signing secure under asynchrony.",
+    description:
+      "Unlike many protocols that assume a synchronous network, ICP's protocol adapts to real-world conditions by operating under asynchronous communication, enhancing its resilience.",
+    badge: "ICP exclusive",
+  },
+  {
+    imageSrc: "/img/features/9a.svg",
+    title: "Automatic upgrades triggered by community voting.",
+    description:
+      "ICP is the first blockchain whose protocol and code are fully controlled by a DAO where users control the version of the code being run.",
+  },
+];
+
 function FeaturesPage() {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const isDark = useDarkHeaderInHero(heroRef);
+
   return (
     <Layout
       title="World Computer capabilities"
@@ -223,36 +330,94 @@ function FeaturesPage() {
     for Web3 and the world..."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-features.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-features.webp"></ShareMeta>
 
-      <main className="text-black relative overflow-hidden">
-        <AnimateSpawn
-          variants={transitions.container}
-          el={motion.section}
-          className="overflow-hidden"
+      <main
+        style={{
+          marginTop: `calc(var(--ifm-navbar-height) * -1)`,
+        }}
+        className="text-black relative overflow-hidden"
+      >
+        {isDark && <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>}
+        <section
+          className=" bg-infinite text-white pt-20 pb-24 md:pb-40"
+          ref={heroRef}
         >
-          <div className="container-10 pt-12 mb-40 md:mb-60 md:pt-30 relative">
-            <div className="md:w-7/10 lg:w-6/10">
-              <motion.h1
-                className="tw-heading-3 md:tw-heading-2 mb-6"
-                variants={transitions.item}
-              >
-                World Computer capabilities
-              </motion.h1>
-              <motion.p
-                className="tw-lead-sm md:tw-lead mb-0"
-                variants={transitions.item}
-              >
-                The Internet Computer provides numerous unique capabilities that
-                enable it to play the role of World Computer, provide a
-                foundation for transforming the internet, and deliver
-                opportunity to builders and users.
-              </motion.p>
+          <AnimateSpawn variants={transitions.container} el={motion.section}>
+            <div className="container-10 pt-12 mb-40 md:mb-60 md:pt-72 relative flex flex-col md:flex-row">
+              <div className="md:w-[55%]">
+                <motion.h1
+                  className="tw-heading-3 md:tw-heading-2 mb-6"
+                  variants={transitions.item}
+                >
+                  World Computer capabilities
+                </motion.h1>
+                <motion.p
+                  className="tw-lead-sm md:tw-lead-lg mb-0"
+                  variants={transitions.item}
+                >
+                  The Internet Computer is pushing the boundaries of what is
+                  possible in blockchain technology today with its revolutionary
+                  capabilities.
+                </motion.p>
+              </div>
             </div>
-          </div>
-        </AnimateSpawn>
+            <div className="container-12 relative z-1 pointer-events-none mt-72 sm:mt-[30rem] md:mt-0">
+              <div className="absolute w-10/12 sm:w-8/12 md:w-1/2 bottom-0 md:-translate-y-1/3 md:translate-x-[93%]">
+                <img
+                  src="/img/features/hero.webp"
+                  alt="World Computer capabilities"
+                  className="w-full max-w-none"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </AnimateSpawn>
+          <AnimateSpawn
+            variants={transitions.container}
+            className="pt-24 md:pt-0"
+          >
+            <aside className="container-10 flex flex-col md:flex-row md:items-center">
+              <div className="order-2 md:order-1 md:w-[40%] relative mt-6">
+                <div className="pointer-events-none md:absolute w-[70%] mx-auto md:w-[110%] -translate-y-1/12 md:-translate-y-1/2">
+                  <motion.img
+                    variants={transitions.fadeIn}
+                    src="/img/features/1st-cup.webp"
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              <div className="order-1 md:order-2 md:w-[60%] md:mx-12">
+                <div>
+                  <motion.h3
+                    className="tw-heading-5 text-gradient-purple md:tw-heading-4 mb-4 md:mb-6"
+                    variants={transitions.item}
+                  >
+                    The Internet Computer has pioneered numerous{" "}
+                    <span className="text-white">
+                      World-first 🥇 Innovations{" "}
+                    </span>{" "}
+                    in blockchain and the internet. From including web speed
+                    transactions, seamless smart contracts, and scalable dApps.
+                    For many of these capabilities, ICP is still the only
+                    blockchain that supports them.
+                  </motion.h3>
+                </div>
+              </div>
+            </aside>
+          </AnimateSpawn>
+          <AnimateSpawn
+            className="container-10 grid sm:grid-cols-2 md:grid-cols-3 gap-y-12 sm:gap-x-12 md:gap-x-[4.5rem] md:gap-y-20 mt-20 md:mt-48"
+            variants={transitions.container}
+          >
+            {features.map((feature, index) => (
+              <FeatureCard key={index} {...feature} />
+            ))}
+          </AnimateSpawn>
+        </section>
         <AnimateSpawn
-          className="container-10 text-white relative mb-32 md:mb-20"
+          className="container-10 text-white relative mt-24 md:mt-40 mb-32 md:mb-20"
           el={motion.section}
           variants={transitions.container}
         >
