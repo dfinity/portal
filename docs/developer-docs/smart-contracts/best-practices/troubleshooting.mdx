@@ -18,15 +18,11 @@ This document will detail some troubleshooting methods and performance optimizat
 
 On subnets with low loads, query calls are answered in about 100 milliseconds and update calls are answered in about 2 seconds.
 
-On subnets with higher loads, your application may experience elevated latencies or reduced accessibility. To get more information about the subnet your canister is running on, view the canister's information on the [ICP dashboard](https://dashboard.internetcomputer.org/canisters).
+On subnets with higher loads, your application may experience elevated latencies or reduced accessibility. To get more information about the subnet your canister is running on, view the canister's information on the [ICP dashboard](https://dashboard.internetcomputer.org/canisters). Look for the number of "Million Instructions Executed Per Second" compared to other subnets.
 
 ### Recommendation: Consider moving the canister to another subnet.
 
-If your canister is running on a subnet that has a consistently high load and thus elevated latency, consider adding an endpoint within the canister to export and import canister data. Then, export the data from your canister and create a new canister on another subnet with a lower load. Import the data from the previous canister into the new canister.
-
-:::info
-Additional solutions and recommendations for dealing with subnet latencies are currently in progress. Stay up to date by participating in the [forum discussion on subnet latencies](https://forum.dfinity.org/t/subnets-with-heavy-compute-load-what-can-you-do-now-next-steps/35762).
-:::
+If your canister is running on a subnet that has a consistently high load and thus elevated latency, consider adding a [compute allocation](docs/current/developer-docs/gas-cost#execution-and-compute-allocation) setting. Compute allocation will gauruntee your canister is scheduled for execution once every 100 rounds (if a compute allocation of 1% is set). 
 
 ## Troubleshooting best practices
 
