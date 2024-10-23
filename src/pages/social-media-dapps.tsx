@@ -78,20 +78,24 @@ const projects: {
   imageUrl: string;
   title: string;
   body: React.ReactNode;
+  link: React.ReactNode;
 }[] = [
   {
     title: "distrikt",
     body: "distrikt combines the best of Twitter and Linkedin. It is the world's first web3 microblogging social media platform built entirely onchain. Own your data and identity, make new connections, and build a community.",
+    link: <Link href="https://distrikt.app/">Try out distrikt</Link>,
     imageUrl: "/img/social-media-dapps/Distrikt.webp",
   },
   {
     title: "DSCVR",
     body: "DSCVR’s mission is to create a decentralized social content aggregation platform where users not only control the content, but also the platform itself. Communities form groups called Portals around topics of interest. Key features include NFT gating, token airdrops, tipping with crypto and more - all of which is impossible on web2.",
+    link: <Link href="https://dscvr.one/">Try out DSCVR</Link>,
     imageUrl: "/img/social-media-dapps/DSCVR.webp",
   },
   {
     title: "OpenChat",
     body: "OpenChat is the first instant messaging service running 100% on the blockchain. This web3 dapp is backed by the security of chain-key cryptography. Plus users can easily send crypto to friends via messages, or vote on ICP governance proposals without leaving the dapp.",
+    link: <Link href="https://oc.app/">Try out OpenChat</Link>,
     imageUrl: "/img/social-media-dapps/OpenChat.webp",
   },
 ];
@@ -102,7 +106,7 @@ function SocialMediaDappsPage() {
   return (
     <Layout
       title="Social media decentralized"
-      description="Take full ownership and control over your social media plaforms."
+      description="Take full ownership and control over your social media platforms."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <Head>
@@ -308,6 +312,7 @@ function SocialMediaDappsPage() {
                     onClick={() => setOpenProjectIndex(i)}
                   >
                     <div className="flex-1 tw-paragraph">{p.body}</div>
+                    <div className="flex-1 tw-paragraph">{p.link}</div>
 
                     <img
                       src={projects[i].imageUrl}
@@ -364,7 +369,7 @@ function SocialMediaDappsPage() {
                   Distrupt the world of social media by coding your own. The
                   Internet Computer blockchain provides the first complete tech
                   stack for developers to build a new era of DAO-governed social
-                  media sevices to replace Big Tech.
+                  media services to replace Big Tech.
                 </p>
 
                 <div className="">
