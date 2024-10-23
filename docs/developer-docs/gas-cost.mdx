@@ -92,6 +92,8 @@ Note that query messages are currently free, but this may change in the future.
 
 To handle an incoming message or task such as a timer or heartbeat, the canister executes the function specified in the message.
 
+ICP reserves cycles to execute the message's response callback or cleanup. The amount reserved is equivalent to the amount that would be needed for maximum execution. For example, a DTS execution of 40B instructions on a 13-node subnet would reserve 16B cycles. From this reservation, 5% is reserved for the cleanup callback. The cleanup callback can hit the 5% limit, though it is not expected.
+
 By default, canisters are scheduled for execution in a "best-effort" manner. Canisters that require guaranteed execution can get a share of compute capacity by setting `compute_allocation` in their canister settings. Compute allocation is expressed in percents and denotes the percentage of an execution core reserved for the canister.
 
 Setting even 1% compute allocation provides a significant advantage over canisters that use the "best-effort" scheduling:
