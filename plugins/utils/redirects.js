@@ -18,6 +18,9 @@ const redirects = `
   /multichain /chainfusion
   /basics /what-is-the-ic
   /community https://linktr.ee/icp_hubs_network
+  /icp-event /events
+  /videos /news
+  /icp-newsletter /news
   /docs/videos-tutorials /developers
   /docs /docs/current/home
   /docs/current/ /docs/current/home
@@ -609,7 +612,7 @@ const redirects = `
   /docs/current/developer-docs/security/general-security-best-practices /docs/current/developer-docs/security/security-best-practices/overview
   /docs/current/samples/game-of-life /docs/current/references/samples/motoko/life/
   `
-.split(/[\r\n]+/)
+  .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
   .filter((l) => l.length > 0)
   .map((l) => l.split(/\s+/));

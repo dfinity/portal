@@ -52,19 +52,20 @@ const Hero: React.FC<{
             </h1>
             <div className="md:ml-48">
               <p className="tw-paragraph md:tw-lead-sm mt-6 md:w-7/10">
-                The Internet Computer enables you to build anything without
-                traditional IT and Big Tech. It hosts decentralized serverless
-                compute that's simpler, immune to cyber attack, unstoppable, and
-                controllable by DAOs. Create web3 social networks and media,
-                socialfi, games, multi-chain dapps, Al, or an enterprise app.
-                The internet is evolving.
+                The Internet Computer hosts secure, network-resident code and
+                data. Build web apps without Big Tech and current IT.
+                Applications are immune to cyber attacks and unstoppable,
+                capable of processing tokens, and can run under exclusive DAO
+                control. Build web3 social media, games, DeFi, multi-chain apps,
+                secure front-ends, ledgers, enterprise apps, and AI models. The
+                internet is evolving fast.
               </p>
               <div className="flex flex-col md:flex-row gap-8 mt-8 md:mt-6 md:items-center">
                 <Link
                   className={"button-white w-max"}
                   href="/docs/current/home"
                 >
-                  Start hacking
+                  DEVELOP
                 </Link>
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"

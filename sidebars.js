@@ -545,6 +545,7 @@ const sidebars = {
           type: "category",
           label: "IDE",
           items: [
+            "developer-docs/developer-tools/ide/icp-ninja",
             "developer-docs/developer-tools/ide/vs-code",
             "developer-docs/developer-tools/ide/playground",
             "developer-docs/developer-tools/ide/gitpod",

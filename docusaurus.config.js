@@ -568,7 +568,7 @@ function getImageDataUrl(url) {
 const config = {
   title: "Internet Computer",
   tagline:
-    "The Internet Computer enables you to build anything without traditional IT and Big Tech. It hosts decentralized serverless compute that's simpler, immune to cyber attack, unstoppable, and controllable by DAOs. Create web3 social networks and media, socialfi, games, multi-chain dapps, Al, or an enterprise app. The internet is evolving.",
+    " The Internet Compute hosts secure, network-resident code and data. Build web apps without Big Tech and current IT. Applications are immune to cyber attack and unstoppable, can process tokens, and can run under exclusive DAO control. Create web3 social media, games, defi, multi-chain apps, secure front-ends, ledgers, and enterprise apps and AI models. The internet is evolving fast.",
   url: isDeployPreview
     ? `https://${process.env.PREVIEW_CANISTER_ID}.icp0.io`
     : "https://internetcomputer.org",
