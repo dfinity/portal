@@ -237,7 +237,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
         alt=""
         className="aspect-square object-contain ml-0 mr-auto w-[120px] max-w-full max-h-full p-0.5"
       />
-      <div className="mt-6 w-full">
+      <div className="mt-3 w-full">
         <span className="text-white">{title} </span>
         <span className="text-white/50">{description}</span>
       </div>
@@ -325,9 +325,7 @@ function FeaturesPage() {
   return (
     <Layout
       title="World Computer capabilities"
-      description="The Internet Computer is 'alien tech' crypto. It extends the
-    internet by smashing through historical limitations, unlocking new capabilities
-    for Web3 and the world..."
+      description="The Internet Computer is pushing the boundaries of what is possible in blockchain technology today with its revolutionary capabilities."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-features.webp"></ShareMeta>
@@ -363,7 +361,7 @@ function FeaturesPage() {
               </div>
             </div>
             <div className="container-12 relative z-1 pointer-events-none mt-72 sm:mt-[30rem] md:mt-0">
-              <div className="absolute w-10/12 sm:w-8/12 md:w-1/2 bottom-0 md:-translate-y-1/3 md:translate-x-[93%]">
+              <div className="absolute sm:w-8/12 md:w-1/2 bottom-0 translate-y-1/12 md:-translate-y-1/3 -translate-x-1/12 md:translate-x-[93%]">
                 <img
                   src="/img/features/hero.webp"
                   alt="World Computer capabilities"
@@ -408,7 +406,7 @@ function FeaturesPage() {
             </aside>
           </AnimateSpawn>
           <AnimateSpawn
-            className="container-10 grid sm:grid-cols-2 md:grid-cols-3 gap-y-12 sm:gap-x-12 md:gap-x-[4.5rem] md:gap-y-20 mt-20 md:mt-48"
+            className="container-10 grid sm:grid-cols-2 md:grid-cols-3 gap-y-16 sm:gap-x-12 md:gap-x-[4.5rem] md:gap-y-20 mt-20 md:mt-48"
             variants={transitions.container}
           >
             {features.map((feature, index) => (
