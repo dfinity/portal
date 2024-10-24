@@ -25,10 +25,15 @@ If a canister traps during a message execution, then two things happen:
 
 ## Traps during upgrades
 
+:::danger
+Using pre_ and post_upgrade hooks is discouraged. It is error-prone and can render a canister unusable. Per best practices, using these methods should be avoided if possible.
+:::
+
 Special care should be taken when writing a `pre_upgrade` hook for your canister which will run during an upgrade. If the [pre_upgrade](/docs/current/references/ic-interface-spec#system-api-upgrades) hook traps,
 then the canister upgrade would fail. This is extremely important as it can mean your canister can be permanently bricked if such a trap occurs
-in the `pre_upgrade` hook as this will always run against the current canister's Wasm module. In order to avoid unexpected surprises, it is strongly
-recommended that your canisters use stable memory directly which removes the need for having a `pre_upgrade` hook in the first place.
+in the `pre_upgrade` hook as this will always run against the current canister's Wasm module.
+
+In order to avoid unexpected surprises, it is strongly recommended that your canisters use stable memory directly, which removes the need for having a `pre_upgrade` hook in the first place.
 
 
 ## Traps during inter-canister calls

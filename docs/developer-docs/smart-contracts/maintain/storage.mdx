@@ -52,14 +52,17 @@ actor Counter {
 }
 ```
 
-To utilize stable memory when upgrading a Motoko canister, the following workflow can be used:
+To utilize stable memory when upgrading a Motoko canister, the following workflow is used:
 
 - The canister must be stopped.
-- A `pre_upgrade` hook can be executed if one is defined. `pre_upgrade` hooks can be used for functions such as creating a backup of the canister's data.
 - The canister's heap memory is discarded, and a new version of the canister's Wasm module is initialized. Data stored in stable memory is made available to the new Wasm module.
 - The canister's new code is installed using the `--mode upgrade` flag.
 - The canister is started and now runs the newly upgraded code.
-- Stable variables are re-loaded as part of a `post_upgrade` hook. Stable memory bytes that store those variables are overwritten with zeros to minimize stable memory costs for the canister.
+- Stable variables are re-loaded. Stable memory bytes that store those variables are overwritten with zeros to minimize stable memory costs for the canister.
+
+:::danger
+Pre_ and post_upgrade hooks are not included in this workflow, as using them is discouraged. It is error-prone and can render a canister unusable. Per best practices, using these methods should be avoided if possible.
+:::
 
 #### Garbage collection
 
@@ -107,14 +110,16 @@ To utilize stable memory for canisters written in Rust, the crates [ic-stable-me
 
 As good practice, stable memory should be versioned since the stable memory decoding mechanism may need to guess the data's format in situations where the serialization format or stable data layout of a canister drastically changes. To make this process easier, stable memory should be versioned. This can be as simple as declaring that the first byte of the canister's stable memory will be used to represent the version number.
 
-To utilize stable memory when upgrading a Rust canister, the following workflow can be used:
+To utilize stable memory when upgrading a Rust canister, the following workflow is used:
 
 - The canister must be stopped.
-- A `pre_upgrade` hook can be executed if one is defined. `pre_upgrade` hooks can be used for functions such as creating a backup of the canister's data.
 - The canister's heap memory is discarded, and a new version of the canister's Wasm module is initialized. Data stored in stable memory is made available to the new Wasm module.
 - The canister's new code is installed using the `--mode upgrade` flag.
-- The canister has been started and now runs the newly upgraded code.
-- A `post_upgrade` hook is called on the newly created instance if one is defined. The init function is not executed.
+- The canister has been started and now runs the newly upgraded code. The init function is not executed.
+
+:::danger
+Pre_ and post_upgrade hooks are not included in this workflow, as using them is discouraged. It is error-prone and can render a canister unusable. Per best practices, using these methods should be avoided if possible.
+:::
 
 ## Errors related to canister memory
 
