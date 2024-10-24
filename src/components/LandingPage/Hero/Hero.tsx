@@ -32,7 +32,7 @@ const Hero: React.FC<{
       >
         <HomeAnimation />
         <div className="container-8">
-          <div className="relative mx-auto px-0 sm:px-6 lg:px-8">
+          <div className="relative mx-auto px-0 md:px-8">
             <h1
               className="
                 animate-fade-up 
