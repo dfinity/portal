@@ -9,7 +9,7 @@
       "milestone_id": "Plasma",
       "status": "in_progress",
       "eta": "",
-      "eta_to_render": ""
+      "eta_to_render": "November 2024"
     },
 
     {
@@ -17,7 +17,7 @@
       "is_milestone": true,
       "description": "As both the number of SNS DAOs and the number of DAO participants grow within them, it is crucial to have a robust system that can handle the ever-growing communities. Preparing for growth means not only improving the underlying infrustucture to handle increased load, but also enhancing the user experience at all levels (from developers to end users), so when new people come to the ICP ecosystem, they will have a frictionless onboarding.",
       "milestone_id": "Neon",
-      "status": "future",
+      "status": "in_progress",
       "eta": "",
       "eta_to_render": ""
     },
