@@ -32,7 +32,7 @@ const Hero: React.FC<{
       >
         <HomeAnimation />
         <div className="container-8">
-          <div className="relative">
+          <div className="relative mx-auto px-0 sm:px-6 lg:px-8">
             <h1
               className="
                 animate-fade-up 
@@ -42,7 +42,7 @@ const Hero: React.FC<{
                 md:text-[100px] 
                 lg:text-[110px] 
                 text-white
-                grid mb-0"
+                grid mb-0 mx-auto"
               style={{
                 animationPlayState: fontLoaded ? "running" : "paused",
               }}
