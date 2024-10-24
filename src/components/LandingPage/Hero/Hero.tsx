@@ -52,7 +52,7 @@ const Hero: React.FC<{
             </h1>
             <div className="md:ml-48">
               <p className="tw-paragraph md:tw-lead-sm mt-6 md:w-7/10">
-                The Internet Compute hosts secure, network-resident code and
+                The Internet Computer hosts secure, network-resident code and
                 data. Build web apps without Big Tech and current IT.
                 Applications are immune to cyber attack and unstoppable, can
                 process tokens, and can run under exclusive DAO control. Create
