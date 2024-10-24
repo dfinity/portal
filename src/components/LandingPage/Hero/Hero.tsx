@@ -54,10 +54,10 @@ const Hero: React.FC<{
               <p className="tw-paragraph md:tw-lead-sm mt-6 md:w-7/10">
                 The Internet Computer hosts secure, network-resident code and
                 data. Build web apps without Big Tech and current IT.
-                Applications are immune to cyber attack and unstoppable, can
-                process tokens, and can run under exclusive DAO control. Create
-                web3 social media, games, defi, multi-chain apps, secure
-                front-ends, ledgers, and enterprise apps and AI models. The
+                Applications are immune to cyber attacks and unstoppable,
+                capable of processing tokens, and can run under exclusive DAO
+                control. Build web3 social media, games, DeFi, multi-chain apps,
+                secure front-ends, ledgers, enterprise apps, and AI models. The
                 internet is evolving fast.
               </p>
               <div className="flex flex-col md:flex-row gap-8 mt-8 md:mt-6 md:items-center">
