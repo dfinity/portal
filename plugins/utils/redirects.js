@@ -12,7 +12,7 @@ const redirects = `
   /docs/current/references/motoko-ref/* /docs/current/motoko/main/base/:splat
   /features/green /capabilities/sustainability
   /features /capabilities
-  /openchat /ois
+  /openchat /sns
   /howitworks /how-it-works
   /showcase /ecosystem
   /multichain /chainfusion
@@ -21,6 +21,8 @@ const redirects = `
   /icp-event /events
   /videos /news
   /icp-newsletter /news
+  /icp-tokens /how-it-works/tokenomics
+  /ois /sns
   /docs/videos-tutorials /developers
   /docs /docs/current/home
   /docs/current/ /docs/current/home
