@@ -32,7 +32,7 @@ const Hero: React.FC<{
       >
         <HomeAnimation />
         <div className="container-8">
-          <div className="relative mx-auto px-0 md:px-8">
+          <div className="relative mx-auto px-0 md:pl-8 md:pr-16">
             <h1
               className="
                 animate-fade-up 
@@ -51,7 +51,7 @@ const Hero: React.FC<{
               <span className="block md:ml-48">COMPUTER</span>
             </h1>
             <div className="md:ml-48">
-              <p className="tw-paragraph md:tw-lead-sm mt-6 md:w-7/10">
+              <p className="tw-paragraph md:tw-lead-sm mt-6 md:w-full">
                 The Internet Compute hosts secure, network-resident code and
                 data. Build web apps without Big Tech and current IT.
                 Applications are immune to cyber attack and unstoppable, can
