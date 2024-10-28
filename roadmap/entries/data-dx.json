@@ -3,6 +3,16 @@
   "categoryDescription": "Developer experience is an essential ingredient for developer adoption. This includes low-friction canister development and operations, expressive smart contract languages, testing frameworks, and a rich set of libraries. Beyond canister development, developer experience also encompasses an inclusive and quality-preserving protocol development.",
   "elements": [
     {
+      "title": "ICP Ninja",
+      "overview": "ICP Ninja is your go-to online platform for developing and deploying smart contracts on the Internet Computer (ICP)",
+      "status": "deployed",
+      "forum": "https://forum.dfinity.org/t/announcing-icp-ninja/36396",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": true
+    },
+    {
       "title": "dfx extensions",
       "overview": "Plugin architecture for integrating 3rd-party functionality directly into DFX.",
       "forum": "",
