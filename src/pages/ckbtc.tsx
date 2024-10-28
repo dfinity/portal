@@ -78,11 +78,11 @@ function CkbtcPage(): JSX.Element {
                   className="tw-lead-sm md:tw-lead mb-0 relative"
                   variants={transitions.item}
                 >
-                  ckBTC — a multi-chain bitcoin twin, trustlessly created by
-                  chain-key cryptography and Internet Computer smart contracts
-                  that directly hold raw bitcoin. Send and receive ckBTC with
-                  1-2 second finality and negligible fees. Only possible because
-                  ICP smart contracts can call into the Bitcoin network.
+                  ckBTC — a multi-chain bitcoin twin, created by chain-key
+                  cryptography and Internet Computer smart contracts that
+                  directly hold raw bitcoin. Send and receive ckBTC with 1-2
+                  second finality and negligible fees. Only possible because ICP
+                  smart contracts can call into the Bitcoin network.
                 </motion.p>
               </div>
             </AnimateSpawn>
@@ -107,8 +107,8 @@ function CkbtcPage(): JSX.Element {
                 variants={transitions.item}
               >
                 Hold, send and receive native bitcoin as if the Internet
-                Computer and the Bitcoin network were one blockchain. No bridges
-                or off-chain intermediaries.
+                Computer and the Bitcoin network were one blockchain. No
+                off-chain intermediaries.
               </motion.h2>
             </div>
           </AnimateSpawn>
@@ -299,8 +299,8 @@ function CkbtcPage(): JSX.Element {
                   ></img>
                   <h3 className="tw-heading-5 mb-2 mt-8">ICDex</h3>
                   <p className="tw-lead-sm mb-0 text-black/60">
-                    First orderbook-based DEX running fully onchain. Bypass
-                    CEXs and get ICP or CHAT tokens for your BTC.{" "}
+                    First orderbook-based DEX running fully onchain. Bypass CEXs
+                    and get ICP or CHAT tokens for your BTC.{" "}
                   </p>
                 </Link>
               </motion.div>
@@ -466,7 +466,7 @@ function CkbtcPage(): JSX.Element {
               <div className="flex-[6] space-y-12 md:space-y-20">
                 <div>
                   <h3 className="tw-heading-5 md:tw-heading-3 mb-6">
-                    Why it’s not a bridged token.
+                    Why it’s not a wrapped token.
                   </h3>
 
                   <p className="tw-paragraph mb-3">
