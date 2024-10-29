@@ -8,9 +8,10 @@
       "status": "deployed",
       "forum": "https://forum.dfinity.org/t/announcing-icp-ninja/36396",
       "proposal": "",
-      "docs": "",
+      "docs": "https://internetcomputer.org/docs/current/developer-docs/developer-tools/ide/icp-ninja",
       "is_community": false,
-      "in_beta": true
+      "in_beta": true,
+      "milestone_id": "coulumb"
     },
     {
       "title": "dfx extensions",
