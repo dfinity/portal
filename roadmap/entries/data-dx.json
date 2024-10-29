@@ -6,10 +6,10 @@
       "title": "Code Authoring and Development Workflows",
       "is_milestone": true,
       "description": "This milestone introduces new products aimed towards making building on ICP fast, fun, and effective.",
-      "milestone_id": "coulumb",
+      "milestone_id": "Coulumb",
       "eta": "",
-      "status": "deployed",
-      "eta_to_render": "October 2024"
+      "status": "in_progress",
+      "eta_to_render": ""
     },
     {
       "title": "ICP Ninja",
@@ -20,7 +20,7 @@
       "docs": "https://internetcomputer.org/docs/current/developer-docs/developer-tools/ide/icp-ninja",
       "is_community": false,
       "in_beta": true,
-      "milestone_id": "coulumb"
+      "milestone_id": "Coulumb"
     },
     {
       "title": "dfx extensions",
