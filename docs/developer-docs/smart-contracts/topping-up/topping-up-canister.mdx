@@ -1,5 +1,9 @@
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+import TabItem from "@theme/TabItem";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 
 # Topping up a canister
 
@@ -62,6 +66,35 @@ Memory Size: Nat(2471918)
 Balance: 9_811_813_913_485 Cycles
 Module hash: 0xe7866e1949e3688a78d8d29bd63e1c13cd6bfb8fbe29444fa606a20e0b1e33f0
 ```
+
+Canisters can check their own balance programmatically. For example:
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+Motoko canisters can use the [ExperimentalCycles library](/docs/current/motoko/main/base/ExperimentalCycles) to interact with cycles:
+
+``` motoko no-repl
+import Cycles "mo:base/ExperimentalCycles";
+import Debug "mo:base/Debug";
+
+actor {
+  public func main() : async() {
+    Debug.print("Main balance: " # debug_show(Cycles.balance()));
+  };
+}
+
+</TabItem>
+
+<TabItem value="rust" label="Rust">
+
+Rust canisters can use the function `canister_balance128()` from the [Rust IC CDK](https://docs.rs/ic-cdk/latest/ic_cdk/api/fn.canister_balance128.html):
+
+```rust
+let current_canister_balance = ic_cdk::api::canister_balance();
+```
+
+</TabItem>
 
 ### Option 1: If you have ICP on your account
 
