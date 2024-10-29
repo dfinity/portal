@@ -25,6 +25,10 @@ In this document, the term **upgrade** refers to deploying an upgraded version o
 The term **update** refers to changing or updating the assets stored within an asset canister.
 :::
 
+## Asset canister example
+
+An example of an SNS asset canister is canister `sqbzf-5aaaa-aaaam-aavya-cai`, which is an asset canister part of the [Dragginz Dapp SNS](https://dashboard.internetcomputer.org/canister/sqbzf-5aaaa-aaaam-aavya-cai).
+
 ## Deploying an asset canister
 
 The general overview of deploying an asset canister during an SNS launch is as follows:
@@ -53,7 +57,7 @@ An example of configuring an asset canister within the `dfx.json` file can be fo
 To deploy your asset canister locally for testing purposes, the following command can be used:
 
 ```
-dfx deploy assets --network "local"
+dfx deploy assets
 ```
 
 ### Deploying on the mainnet
@@ -65,7 +69,7 @@ To deploy to the mainnet, you will need a wallet that contains cycles. For more 
 To deploy your asset canister to the mainnet, the following command can be used:
 
 ```
-dfx deploy assets --network "ic"
+dfx deploy assets --network ic
 ```
 
 ## Configuring an asset canister's permissions
@@ -162,9 +166,9 @@ To use a generic proposal, first this new proposal type has to be "registered" i
 
 To submit a new `AddGenericNervousSystemFunction` SNS Proposal to support the `commit_proposed_batch` API, the target canister id should be the asset canister (that is updated in the update steps below) and the target function is `commit_proposed_batch`. The validate function should be `validate_commit_proposed_batch`.
 
-The [`ExecuteGenericNervousSystemFunction`](/docs/current/developer-docs/daos/sns/managing/making-proposals#executegenericnervoussystemfunction) SNS proposal is used to execute the newly registered proposal. To submit an `ExecuteGenericNervousSystemFunction` SNS Proposal with the output from `dfx deploy <frontend canister name> --network ic --by-proposal` see update steps below.
+The [`ExecuteGenericNervousSystemFunction`](/docs/current/developer-docs/daos/sns/managing/making-proposals#executegenericnervoussystemfunction) SNS proposal is used to execute the newly registered proposal. To submit an `ExecuteGenericNervousSystemFunction` SNS Proposal with the output from `dfx deploy FRONTEND_CANISTER_NAME --network ic --by-proposal` see update steps below.
 
-## Submitting an SNS proposal and upgrading an asset canister
+## Submitting an SNS proposal to upgrade an asset canister
 
 Once an asset canister is under the control of the SNS, any changes must be done via an SNS proposal.
 
@@ -173,7 +177,7 @@ Before submitting an SNS proposal to update an asset canister, assure that the a
 - #### Step 1: To submit an SNS proposal, first have a principal with `Prepare` permission run:
 
 ```
-dfx deploy <frontend canister name> --network ic --by-proposal
+dfx deploy FRONTEND_CANISTER_NAME --network ic --by-proposal
 ```
 
 The output will contain something like this:
@@ -182,15 +186,23 @@ The output will contain something like this:
 Proposed commit of batch 2 with evidence e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855. Either commit it by proposal, or delete it.
 ```
 
-- #### Step 2: Save the batch number and the evidence value for use with the asset canister API.
+- #### Step 2: Encode the evidence and batch number.
+
+The evidence and batch bytes must be Candid-encoded bytes. These are the arguments you will submit with the `ExecuteGenericNervousSystemFunction` proposal.
+
+```
+EVIDENCE_STRING=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+BATCH_ID=123
+didc encode "(record{ batch_id = $BATCH_ID : nat; evidence = blob \"$(echo $EVIDENCE_STRING | sed 's/../\\&/g')\"; })"
+```
 
 - #### Step 3: To ensure that others would be able to verify the evidence in the proposal, have someone else clone the dapp repo and run:
 
 ```
-dfx deploy <frontend canister name> --network ic --compute-evidence
+dfx deploy FRONTEND_CANISTER_NAME --network ic --compute-evidence
 ```
 
-The computed evidence should match the evidence from step 2.
+The computed evidence should match the evidence from step 1.
 
 - #### Step 4: Submit a new proposal to commit the batch, using the APIs below:
 
@@ -217,8 +229,78 @@ If the proposal is rejected, the preparer should use this new asset canister API
   delete_batch: (DeleteBatchArguments) -> ();
 ```
 
+## Asset canister upgrade proposal example
 
-## Asset canister example
+Below is an example script that can be run to setup the necessary proposals to upgrade an asset canister:
 
-An example of an SNS asset canister is canister `sqbzf-5aaaa-aaaam-aavya-cai`, which is an asset canister part of the [Dragginz Dapp SNS](https://dashboard.internetcomputer.org/canister/sqbzf-5aaaa-aaaam-aavya-cai).
+```bash
+#!/bin/bash
 
+# Set current directory to the scripts root
+SCRIPT=$(readlink -f "$0")
+SCRIPT_DIR=$(dirname "$SCRIPT")
+cd $SCRIPT_DIR
+
+TITLE="Update Frontend Canister Permissions."
+SUMMARY="Update the frontend canister permissions, adding commit permissions for the governance canister."
+URL="https://example.com"
+
+CANISTER_NAME=example_frontend
+NETWORK="ic"
+
+# Get the target canister id
+TARGET_CANISTER_ID=$(dfx -qq canister --network $NETWORK id $CANISTER_NAME)
+
+dfx identity use ic_admin
+OWNER_IDENTITY=$(dfx identity whoami)
+PEM_FILE="$(readlink -f "$HOME/.config/dfx/identity/${OWNER_IDENTITY}/identity.pem")"
+PROPOSER_NEURON_ID=be1741c21c35da7e386d2ccf59a3d5d14c97d9b82b36045f4a8d4c336864f6dc
+
+UPGRADE_ARG="(opt variant {
+  Upgrade = record {
+    set_permissions = opt record {
+      prepare = vec {
+        principal \"detjl-sqaaa-aaaaq-aacqa-cai\";
+        principal \"4jijx-ekel7-4t2kx-32cyf-wzo3t-i4tas-qsq4k-ujnug-oxke7-o5aci-eae\"
+      };
+      commit = vec { principal \"detjl-sqaaa-aaaaq-aacqa-cai\"};
+      manage_permissions = vec { principal \"detjl-sqaaa-aaaaq-aacqa-cai\"}
+    }
+  }
+})"
+
+echo UPGRADE_ARG
+# Make the proposal using quill
+quill sns --canister-ids-file ../../utils/sns_canister_ids.json --pem-file $PEM_FILE make-upgrade-canister-proposal  --title "$TITLE" --url "$URL" --summary "$SUMMARY"  $PROPOSER_NEURON_ID  --target-canister-id $TARGET_CANISTER_ID --wasm-path '../../../.dfx/ic/canisters/example_frontend/assetstorage.wasm.gz' --canister-upgrade-arg "$UPGRADE_ARG" > msg.json
+quill send msg.json
+rm -f msg.json
+```
+
+Then, deploy the asset canister to be upgraded via proposal:
+
+```
+dfx deploy example_frontend --network ic --by-proposal
+```
+
+Lastly, submit the proposal to upgrade the asset canister:
+
+```bash
+#!/bin/bash
+
+# Set current directory to the scripts root
+SCRIPT=$(readlink -f "$0")
+SCRIPT_DIR=$(dirname "$SCRIPT")
+cd $SCRIPT_DIR
+
+TITLE="Update Frontend Canister."
+SUMMARY="Update frontend canister with evidence batch id 1."
+URL="https://example.com"
+
+EVIDENCE_STRING=55d25c6fb1d28bff2f1f5df99c39d5b50f60d97e892caad03933e2622af4a797
+BATCH_ID=1
+FUNCTION_ID=24000
+
+# Submit the proposal
+
+../../utils/make_custom_function_proposal_frontend.sh $FUNCTION_ID "$TITLE" "$SUMMARY" "$URL" "$EVIDENCE_STRING" "$BATCH_ID" "commit_proposed_batch"
+```
