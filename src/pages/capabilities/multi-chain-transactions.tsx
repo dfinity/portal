@@ -89,9 +89,7 @@ function FeaturePage() {
               service built using Ethereum is not running in the mode of a
               decentralized protocol). Therefore, it would be better if the user
               experience could be created on the Internet Computer using
-              canister smart contracts, which are controlled by a DAO. A means
-              has been provided to do this (please check developers docs to see
-              what is in production at any one time).
+              canister smart contracts, which can be controlled by a DAO.
             </p>
 
             <h3>Threshold ECDSA</h3>
