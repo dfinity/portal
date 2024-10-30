@@ -29,6 +29,39 @@ A canister's controller is able to retrieve the canister's logs, even when execu
 Non-replicated calls are not currently supported for logging.
 :::
 
+## Log visibility
+
+By default, a canister's logs are only visible to the controllers of the canister. A canister's logs can be made public with the `--log-visibility` flag:
+
+```
+dfx canister update-settings CANISTER_ID --log-visibility public
+```
+
+### Log viewer allow lists
+
+Canister log allow lists enable principals that are not controllers of the canister to view the logs without the logs being public. Log allow lists are supported in `dfx` versions `0.24.2` and newer.
+
+To add a principal to the canister's log allow list, update the canister's settings with the `--set-log-viewer` or `--add-log-viewer` flags:
+
+```
+dfx canister update-settings CANISTER_ID --set-log-viewer PRINCIPAL_ID // Set a single principal as a log viewer
+dfx canister update-settings CANISTER_ID --add-log-viewer PRINCIPAL_ID // Add a principal to a list of log viewers
+```
+
+You can also configure a principal as a log viewer when you create a canister with:
+
+```
+dfx canister create CANISTER_NAME --log-viewer PRINCIPAL_ID
+```
+
+Or, you can set the `canisters[].initialization_values.log_visibility.allowed_viewers` configuration setting in your project's `dfx.json` file.
+
+To remove a principal from the canister's log allow list, use the `--remove-log-viewer` flag:
+
+```
+dfx canister update-settings CANISTER_ID --remove-log-viewer PRINCIPAL_ID
+```
+
 ## Using `dfx`
 
 A canister's logs can be viewed using the [`dfx canister logs`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister/#dfx-canister-logs) command.
@@ -89,5 +122,3 @@ dfx canister logs logs_backend
 [1. 2024-06-04T21:18:18.094003Z]: counter: 1
 [2. 2024-06-04T21:18:46.036022Z]: counter: 2
 ```
-
-
