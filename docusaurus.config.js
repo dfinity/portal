@@ -124,7 +124,7 @@ const subnavItems = [
       },
       {
         label: "Dev Discord",
-        href: "https://discord.gg/jnjVVQaE2C",
+        href: "https://discord.internetcomputer.org",
       },
     ],
   },
@@ -237,7 +237,7 @@ const marketingNav = {
         },
         {
           label: "Discord",
-          href: "https://discord.gg/jnjVVQaE2C",
+          href: "https://discord.internetcomputer.org",
           iconUrl: "/img/svgIcons/purple/discord.svg",
         },
         {
@@ -363,7 +363,7 @@ const marketingNav = {
         },
         {
           label: "Discord",
-          href: "https://discord.gg/jnjVVQaE2C",
+          href: "https://discord.internetcomputer.org",
           iconUrl: "/img/svgIcons/purple/discord.svg",
         },
         {
@@ -448,7 +448,7 @@ const marketingNav = {
         },
         {
           label: "Discord",
-          href: "https://discord.gg/jnjVVQaE2C",
+          href: "https://discord.internetcomputer.org",
           iconUrl: "/img/svgIcons/purple/discord.svg",
         },
         {
@@ -528,7 +528,7 @@ const marketingNav = {
         },
         {
           label: "Discord",
-          href: "https://discord.gg/jnjVVQaE2C",
+          href: "https://discord.internetcomputer.org",
           iconUrl: "/img/svgIcons/purple/discord.svg",
         },
         {
