@@ -66,7 +66,7 @@ function CkbtcPage(): JSX.Element {
               variants={transitions.container}
             >
               <div className="blob blob-purple blob-x-5 blob-y-10 blob-md z-0 opacity-50"></div>
-              <div className="md:w-7/10">
+              <div className="md:w-6/10">
                 <motion.h1
                   className="tw-heading-3 md:tw-heading-2 mb-8 md:mb-6 relative"
                   variants={transitions.item}
@@ -138,7 +138,7 @@ function CkbtcPage(): JSX.Element {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <LinkArrowRight /> Read the press release
+                Read the press release <LinkArrowUpRight />
               </Link>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/bitcoin-integration/openchat.webp">
@@ -166,7 +166,7 @@ function CkbtcPage(): JSX.Element {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <LinkArrowRight /> Join the OpenChat network
+                Join the OpenChat network <LinkArrowUpRight />
               </Link>
             </TranslatedLayout>
             <TranslatedLayout imageUrl="/img/nft/social.webp" reverse={true}>
@@ -190,8 +190,7 @@ function CkbtcPage(): JSX.Element {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <LinkArrowRight />
-                Check out DSCVR
+                Check out DSCVR <LinkArrowUpRight />
               </Link>
             </TranslatedLayout>
           </section>
@@ -503,8 +502,7 @@ function CkbtcPage(): JSX.Element {
                       className="link-primary"
                       href="https://support.dfinity.org/hc/en-us/articles/20708056282132-What-is-ckBTC-#h_01HE64A4QKANB6JX8VERRP5Y80"
                     >
-                      <LinkArrowRight />
-                      ckBTC &lt;&gt; ICP user guide
+                      ckBTC &lt;&gt; ICP user guide <LinkArrowUpRight />
                     </Link>
                   </p>
                 </div>
@@ -525,8 +523,7 @@ function CkbtcPage(): JSX.Element {
                     className="link-primary link-with-icon"
                     href="https://medium.com/dfinity/taking-security-seriously-two-top-icp-features-assessed-by-trail-of-bits-4a0023ab1e68"
                   >
-                    <LinkArrowUpRight />
-                    ckBTC security audit
+                    ckBTC security audit <LinkArrowUpRight />
                   </Link>
                 </div>
 
@@ -556,8 +553,7 @@ function CkbtcPage(): JSX.Element {
                     className="link-primary link-with-icon"
                     href="https://medium.com/dfinity/taking-security-seriously-two-top-icp-features-assessed-by-trail-of-bits-4a0023ab1e68"
                   >
-                    <LinkArrowUpRight />
-                    ckBTC security audit
+                    ckBTC security audit <LinkArrowUpRight />
                   </Link>
                 </div>
 
@@ -604,8 +600,8 @@ function CkbtcPage(): JSX.Element {
                     className="link-primary link-with-icon"
                     href="https://medium.com/dfinity/chain-key-bitcoin-a-decentralized-bitcoin-twin-ceb8f4ddf95e"
                   >
+                    Blog: Chain-Key Bitcoin: A Decentralized Bitcoin Twin{" "}
                     <LinkArrowUpRight />
-                    Blog: Chain-Key Bitcoin: A Decentralized Bitcoin Twin
                   </Link>
                 </div>
               </div>
