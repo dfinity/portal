@@ -1354,8 +1354,6 @@ const sidebars = {
       type: "category",
       label: "Core concepts",
       items: [
-        "concepts/canisters-code",
-        "concepts/governance",
         "concepts/nodes-subnets",
         "concepts/subnet-types",
         "concepts/tokens-cycles",
