@@ -54,7 +54,7 @@ function CkbtcPage(): JSX.Element {
     <QueryClientProvider client={queryClient}>
       <Layout
         title="ckBTC is bitcoin on Web3"
-        description="ckBTC can be sent with 1-2 second finality and negligible fees — a multi-chain bitcoin twin, trustlessly created by chain-key cryptography and Internet Computer smart contracts that directly hold raw bitcoin."
+        description="ckBTC can be sent with 1-2 second finality and negligible fees — a multi-chain bitcoin twin, created by chain-key cryptography and Internet Computer smart contracts that directly hold raw bitcoin."
         editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
       >
         <main className="overflow-hidden">
@@ -261,7 +261,7 @@ function CkbtcPage(): JSX.Element {
                 </p>
                 <ul className="checklist space-y-3 mb-0">
                   <li className="checklist-item pl-8">
-                    No centralized custodians or bridges{" "}
+                    No centralized off-chain intermediaries
                   </li>
                   <li className="checklist-item pl-8">
                     Chain-key integrations with other networks like Ethereum
@@ -466,7 +466,7 @@ function CkbtcPage(): JSX.Element {
               <div className="flex-[6] space-y-12 md:space-y-20">
                 <div>
                   <h3 className="tw-heading-5 md:tw-heading-3 mb-6">
-                    Why it’s not a wrapped token.
+                    Why it's more secure than traditional bridged tokens
                   </h3>
 
                   <p className="tw-paragraph mb-3">
@@ -491,29 +491,13 @@ function CkbtcPage(): JSX.Element {
                     recreating the original secret key.
                   </p>
                   <p className="tw-paragraph mb-3">
-                    This enables a pair of canister smart contracts to
-                    trustlessly create ckBTC, a multichain bitcoin twin that can
-                    be controlled by smart contracts and sent with near instant
-                    finality for negligible fees — all without the need for
-                    bridges or centralized custodians.
+                    This enables a pair of canister smart contracts to create
+                    ckBTC, a multichain bitcoin twin that can be controlled by
+                    smart contracts and sent with near instant finality for
+                    negligible fees — all without the need for centralized
+                    custodians.
                   </p>
-                  <p className="tw-paragraph mb-3">
-                    This is important, because blockchain bridges are
-                    centralized, insecure, cumbersome and costly. The insecurity
-                    alone is a dealbreaker: between 2021-2022, more than 2
-                    billion dollars was stolen by exploiting blockchain bridges.
-                  </p>
-                  <p className="tw-paragraph mb-3">
-                    The recent incident where the FTX exchange acted as the
-                    custodian, and Sollet the bridge for wrapping and unwrapping
-                    BTC and ETH on Solana, demonstrates how bridges and
-                    intermediaries can act as single points of failures and are
-                    highly vulnerable to hacks. Ethereum smart contracts behind
-                    a bridge make asset transfers between blockchains possible,
-                    but users must still trust a third-party centralized
-                    custodian to manage the digital assets whose code is often
-                    not publicly verifiable.
-                  </p>
+
                   <p className="mt-10">
                     <Link
                       className="link-primary"
@@ -526,7 +510,7 @@ function CkbtcPage(): JSX.Element {
                 </div>
                 <div>
                   <h3 className="tw-heading-5 md:tw-heading-3 mb-6">
-                    Why it’s not a wrapped token
+                    Better than a wrapped token
                   </h3>
 
                   <p className="tw-paragraph mb-3">
