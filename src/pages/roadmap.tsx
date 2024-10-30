@@ -22,11 +22,6 @@ const MotionLink = motion(Link);
 
 const data = roadmapData as RootObject[];
 
-function elementCount(milestoneElements: any[], status: string) {
-  return milestoneElements.filter((element) => element.status === status)
-    .length;
-}
-
 const css = `
   @keyframes blob {
     0% {
@@ -289,10 +284,6 @@ function scrollBy(ref: RefObject<T>, direction: 1) {
     left: (window.innerWidth / 4) * direction,
     behavior: "smooth",
   });
-}
-
-function elementHasOverflown(element: HTMLElement) {
-  return element.scrollWidth > element.clientWidth;
 }
 
 const RoadmapPage: React.FC = () => {
