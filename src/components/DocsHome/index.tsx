@@ -23,7 +23,7 @@ const links = [
     href: "https://forum.dfinity.org/t/announcing-technical-working-groups/11781",
   },
   { label: "Join the Dev Forum", href: "https://forum.dfinity.org" },
-  { label: "Dev Discord Office Hours", href: "https://discord.internetcomputer.org" },
+  { label: "Dev Discord Office Hours", href: "https://discord.internetcomputer.orgter.org" },
   {
     label: "Developer Grants and Bounties",
     href: "https://dfinity.org/grants/",
