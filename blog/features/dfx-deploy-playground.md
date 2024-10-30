@@ -59,6 +59,6 @@ Since the canister has been deployed to the playground, it is important to know 
 - Canisters can call the management canister to manage itself without being the controller.
 - Deployed canisters expire after 20 minutes.
 
-As always, we'd love to hear your thoughts and feedback on this new feature, so please feel free to let us know through our [community forum](https://forum.dfinity.org/) or [Discord](https://discord.gg/jnjVVQaE2C) server. 
+As always, we'd love to hear your thoughts and feedback on this new feature, so please feel free to let us know through our [community forum](https://forum.dfinity.org/) or [Discord](https://discord.internetcomputer.org) server. 
 
 -DFINITY
