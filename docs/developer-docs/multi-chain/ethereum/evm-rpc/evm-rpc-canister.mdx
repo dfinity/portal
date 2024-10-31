@@ -111,6 +111,14 @@ dfx deploy evm_rpc --network ic --argument '(record {})'
 
 Note that when deploying your own canister, you may encounter API rate limits. Refer to the [replacing API keys](#replacing-api-keys) section to learn how to configure API credentials.
 
+### `ic-alloy`
+
+The [`ic-alloy`](https://github.com/ic-alloy) Rust crate can be used to interact with the EVM RPC canister from Rust code. It simplifies the code necessary to perform common EVM operations.
+
+The `ic-alloy-toolkit` includes a collection of examples demonstrating how `ic-alloy` can be used.
+
+[View the `ic-alloy` documentation for more information](https://o7kje-7yaaa-aaaal-qnaua-cai.icp0.io).
+
 ## Get event logs
 
 <AdornedTabs groupId="languages">
