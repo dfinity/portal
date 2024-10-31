@@ -23,7 +23,7 @@ To interact with the Bitcoin testnet or mainnet networks, a developer needs to u
 
 2. [Create a Bitcoin transaction](create-transactions.mdx): If the canister controls BTC, it can create a transaction to spend them.
 
-3. [Sign a transaction](sign-transactions.mdx): Next, the transaction must be signed using the `sign_with_ecdsa` API endpoint of the [management canister](/docs/current/developer-docs/smart-contracts/advanced-features/management-canister#signing-and-submitting-bitcoin-transactions). Transactions cannot be sent to the Bitcoin network until they are signed.
+3. [Sign a transaction](sign-transactions.mdx): Next, the transaction must be signed with tECDSA using the `sign_with_ecdsa` API endpoint of the [management canister](/docs/current/developer-docs/smart-contracts/advanced-features/management-canister#signing-and-submitting-bitcoin-transactions). Transactions cannot be sent to the Bitcoin network until they are signed.
 
 4. [Submit a transaction](submit-transactions.mdx): Once a transaction has been signed, it can be submitted to the Bitcoin network to be executed using the Bitcoin API's [`bitcoin_send_transaction`](/docs/current/references/ic-interface-spec#ic-bitcoin_send_transaction) endpoint, which must specify a `blob` of a Bitcoin transaction and a Bitcoin network (mainnet or testnet).
 
