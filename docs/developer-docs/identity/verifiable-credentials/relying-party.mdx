@@ -258,7 +258,7 @@ The field `verifiableCredential` within `vp` should contain two more verifiable 
 
 When the `id_alias` credential is decoded, the following info is returned:
 
-```
+```json
 {
   "exp": <expiration>,
   "iss": "https://identity.ic0.app/",
@@ -273,7 +273,8 @@ When the `id_alias` credential is decoded, the following info is returned:
     ],
     "credentialSubject": {
       "InternetIdentityIdAlias": {
-        "hasIdAlias": <id-alias>
+        "hasIdAlias": <id-alias>,
+        "derivationOrigin": <user-principal-derivation-origin>
      }
     }
   }
@@ -329,6 +330,8 @@ The relying party should verify the following data:
   - The `sub` in `id_alias` contains the principal of the user in the relying party.
 
   - The credential type is `InternetIdentityIdAlias`.
+
+  - The `derivationOrigin` is the derivation origin when logging in the relying party.
 
 - From the requested credential JWT:
 
