@@ -37,6 +37,33 @@ export const CardsSection = () => {
       className="container-12 mt-30"
       variants={transitions.container}
     >
+      {" "}
+      nn
+      <article className="bg-[linear-gradient(54deg,_#3B00B9_0%,_#D38ED7_131.95%)] rounded-[32px] text-white  overflow-clip mt-6">
+        <div className="flex flex-col md:flex-row items-stretch">
+          <div className="basis-1/2 p-1/10 md:py-1/12 md:order-2">
+            <h4 className="tw-heading-4 md:tw-heading-60">
+              World Computer capabilities
+            </h4>
+            <p className="tw-paragraph md:tw-lead-sm mt-4 md:mt-6 mb-0">
+              The Internet Computer is pushing the boundaries of what is
+              possible in blockchain technology today with its revolutionary
+              capabilities.
+            </p>
+            <Link className="button-outline-white-30 mt-4" href="/capabilities">
+              Get into it
+            </Link>
+          </div>
+
+          <div className="basis-1/2 relative md:order-1 -mt-[5%] flex justify-center items-center md:mt-0 overflow-hidden">
+            <img
+              loading="lazy"
+              src="img/home/1st.webp"
+              className="md:absolute  w-[75%] translate-x-1/12"
+            />
+          </div>
+        </div>
+      </article>
       <article
         aria-label="powered by chain fusion"
         className="overflow-clip relative bg-[radial-gradient(circle_at_50%,#000,#3B00B9,#1E005D)] rounded-[32px] text-white  mt-6"
@@ -176,7 +203,6 @@ export const CardsSection = () => {
           </div>
         </div>
       </article>
-
       <article className="bg-[linear-gradient(48deg,#4DEDD3_-32.7%,#31A782_33.06%,#3B00B9_129.51%)] rounded-[32px] text-white  overflow-clip mt-6">
         <div className="flex flex-col md:flex-row items-stretch">
           <div className="basis-1/2 p-1/10 md:py-1/12 md:order-2">
@@ -201,7 +227,6 @@ export const CardsSection = () => {
           </div>
         </div>
       </article>
-
       <article className="bg-[linear-gradient(#3B00B9,#9D80DC)] rounded-[32px] text-white overflow-clip mt-6">
         <div className="flex flex-col md:flex-row items-stretch	 ">
           <div className="basis-1/2 relative">
@@ -236,7 +261,6 @@ export const CardsSection = () => {
           </div>
         </div>
       </article>
-
       <div className="block md:flex gap-4">
         <article className="basis-1/2 bg-black rounded-[32px] text-white overflow-clip mt-6">
           <div className="md:flex-row items-stretch	relative z-1">
