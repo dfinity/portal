@@ -87,7 +87,7 @@
     {
       "title": "Code Authoring and Development Workflows",
       "is_milestone": true,
-      "description": "This milestone introduces new products aimed towards making building on ICP fast, fun, and effective.",
+      "description": "This milestone introduces new products that make building on ICP fast, fun, and educational.",
       "milestone_id": "Coulomb",
       "eta": "",
       "status": "in_progress",
@@ -105,8 +105,8 @@
       "milestone_id": "Coulomb"
     },
     {
-      "title": "TODO ICP NINJA FEATURE 1",
-      "overview": "",
+      "title": "ICP Ninja User Experience Enhancements",
+      "overview": "ICP Ninja will receive a number of new user experience enhancements, such as dark mode and the ability to modify the file tree",
       "status": "in_progress",
       "forum": "",
       "proposal": "",
@@ -116,14 +116,25 @@
       "milestone_id": "Coulomb"
     },
     {
-      "title": "TODO ICP NINJA FEATURE 2",
-      "overview": "",
+      "title": "ICP Ninja Developer Experience Enhancements",
+      "overview": "ICP Ninja will get additional features that improve developer productivity, such as the ability to view logs and see live compilation feedback.",
       "status": "in_progress",
       "forum": "",
       "proposal": "",
       "docs": "",
       "is_community": false,
       "in_beta": true,
+      "milestone_id": "Coulomb"
+    },
+    {
+      "title": "Revamped Onboarding",
+      "overview": "The developer documentation will receive a number of updates focused on improving the onboarding journey for first time ICP developers.",
+      "status": "in_progress",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false,
       "milestone_id": "Coulomb"
     },
     {
