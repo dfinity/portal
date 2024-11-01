@@ -99,6 +99,7 @@ const sidebars = {
             "developer-docs/smart-contracts/overview/introduction",
             "developer-docs/smart-contracts/overview/inside-canisters",
             "developer-docs/smart-contracts/overview/canister-lifecycle",
+            "developer-docs/smart-contracts/overview/trust-in-canisters",
           ],
         },
         {
@@ -1352,17 +1353,6 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Core concepts",
-      items: [
-        "concepts/nodes-subnets",
-        "concepts/subnet-types",
-        "concepts/tokens-cycles",
-        "concepts/trust-in-canisters",
-        "concepts/glossary",
-      ],
-    },
-    {
-      type: "category",
       label: "References",
       items: [
         {
@@ -1373,11 +1363,6 @@ const sidebars = {
             "references/ic-interface-spec",
             "references/id-encoding-spec",
           ],
-        },
-        {
-          type: "doc",
-          label: "Message execution properties",
-          id: "references/message-execution-properties",
         },
         {
           type: "category",
@@ -1423,6 +1408,11 @@ const sidebars = {
           ],
         },
         {
+          type: "doc",
+          label: "Execution errors",
+          id: "references/execution-errors",
+        },
+        {
           type: "category",
           label: "Feature references",
           items: [
@@ -1433,6 +1423,11 @@ const sidebars = {
             "references/vetkeys-overview",
             "references/supported-signatures",
           ],
+        },
+        {
+          type: "doc",
+          label: "Glossary",
+          id: "references/glossary",
         },
         {
           type: "category",
@@ -1448,6 +1443,11 @@ const sidebars = {
           ],
         },
         {
+          type: "doc",
+          label: "Message execution properties",
+          id: "references/message-execution-properties",
+        },
+        {
           type: "category",
           label: "Node providers",
           items: [
@@ -1460,6 +1460,18 @@ const sidebars = {
           ],
         },
         {
+            type: "category",
+            label: "Subnets",
+            items: [
+              {
+                type: "doc",
+                label: "Overview",
+                id: "references/subnets/overview",
+              },
+              "references/subnets/subnet-types",
+            ],
+          },
+        {
           type: "category",
           label: "FAQs",
           items: [
@@ -1469,11 +1481,6 @@ const sidebars = {
             "developer-docs/multi-chain/faq/ckerc20-faq",
             "developer-docs/multi-chain/faq/signatures-faq",
           ],
-        },
-        {
-          type: "doc",
-          label: "Execution errors",
-          id: "references/execution-errors",
         },
       ],
     },
