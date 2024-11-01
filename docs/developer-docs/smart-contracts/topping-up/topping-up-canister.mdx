@@ -43,7 +43,7 @@ For ease of use, you can copy/paste the cycles amounts below:
 
 ## Canister top up workflows
 
-The following examples will demonstrate how to interact with and top up a canister with the canister ID `jqylk-byaaa-aaaal-qbymq-cai` with a million cycles (1000000). These instructions will work for any canister ID or cycles amount.
+The following examples will demonstrate how to interact with and top up a canister with the canister ID `jqylk-byaaa-aaaal-qbymq-cai` with one trillion cycles (1000000000000) or one ICP's worth of cycles. These instructions will work for any canister ID or cycles/ICP amount.
 
 ### Checking the cycles balance of a canister
 
@@ -119,7 +119,7 @@ If you have a cycles balance associated with your developer identity, you can to
 
 ```bash
 dfx cycles balance --network ic
-dfx cycles top-up jqylk-byaaa-aaaal-qbymq-cai 1 --network ic
+dfx cycles top-up jqylk-byaaa-aaaal-qbymq-cai 1T --network ic
 ```
 
 :::warning
@@ -147,11 +147,11 @@ In this example, it is assumed you are sending cycles to a cycles wallet with th
 
 ```bash
 dfx wallet balance --network ic
-dfx wallet send 1000000 dfds-sddds-aaaal-qbsms-cai --network ic
+dfx wallet send 1T dfds-sddds-aaaal-qbsms-cai --network ic
 ```
 
 -   The `wallet balance --network ic ` checks the cycles balance of your cycles wallet on the mainnet.
--   The `wallet send 1000000 dfds-sddds-aaaal-qbsms-cai --network ic` takes 1000000 cycles from your cycles wallet and sends them to cycles wallet `dfds-sddds-aaaal-qbsms-cai`.
+-   The `wallet send 1T dfds-sddds-aaaal-qbsms-cai --network ic` takes one trillion cycles from your cycles wallet and sends them to cycles wallet `dfds-sddds-aaaal-qbsms-cai`.
 
 ## Topping up a canister with the NNS frontend dapp
 
