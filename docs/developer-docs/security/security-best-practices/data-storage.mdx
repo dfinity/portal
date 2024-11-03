@@ -34,7 +34,7 @@ Limit the amount of data that can be stored in a canister per user. This limit h
 
 ### Security concern
 
-Canister memory is not persisted across upgrades. If data needs to be kept across upgrades, you may serialize the canister memory in `pre_upgrade`, and deserialize it in `post_upgrade`. However, the available number of instructions for these methods is limited. If the memory grows too big, the canister can no longer be updated.
+Canister memory is not persisted across upgrades. If data needs to be kept across upgrades, you may serialize the canister memory in `pre_upgrade`, and deserialize it in `post_upgrade`. Using `pre_upgrade` and `post_upgrade` methods are not recommended and should be avoided. The available number of instructions for these methods is limited. If the memory grows too big, the canister can no longer be updated.
 
 ### Recommendation
 

@@ -1288,7 +1288,6 @@ const sidebars = {
             "references/samples/motoko/encrypted-notes-dapp/README",
             "references/samples/motoko/life/README",
             "references/samples/motoko/hello_cycles/README",
-            "references/samples/motoko/http_counter/README",
             "references/samples/motoko/send_http_get/README",
             "references/samples/motoko/send_http_post/README",
             "references/samples/motoko/ic-pos/README",
@@ -1354,8 +1353,6 @@ const sidebars = {
       type: "category",
       label: "Core concepts",
       items: [
-        "concepts/canisters-code",
-        "concepts/governance",
         "concepts/nodes-subnets",
         "concepts/subnet-types",
         "concepts/tokens-cycles",

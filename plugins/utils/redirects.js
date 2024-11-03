@@ -613,6 +613,8 @@ const redirects = `
   /docs/current/developer-docs/ai/machine-learning-sample /docs/current/developer-docs/ai/samples
   /docs/current/developer-docs/security/general-security-best-practices /docs/current/developer-docs/security/security-best-practices/overview
   /docs/current/samples/game-of-life /docs/current/references/samples/motoko/life/
+  /docs/current/concepts/canisters-code /docs/current/developer-docs/smart-contracts/overview/introduction
+  /docs/current/concepts/governance /docs/current/developer-docs/daos/nns/overview
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

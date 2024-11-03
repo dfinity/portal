@@ -33,7 +33,7 @@
       "proposal": "",
       "docs": "",
       "eta": "",
-      "status": "in_progress",
+      "status": "deployed",
       "is_community": false,
       "in_beta": false,
       "milestone_id": "Tokamak"
@@ -45,7 +45,7 @@
       "milestone_id": "Tokamak",
       "eta": "Q3 2024",
       "status": "in_progress",
-      "eta_to_render": "October 2024"
+      "eta_to_render": "November 2024"
     },
     {
       "title": "Increase Stable Memory Limit to 500GiB",
@@ -136,7 +136,7 @@
       "proposal": "https://dashboard.internetcomputer.org/proposal/105322",
       "docs": "",
       "eta": "2024",
-      "status": "in_progress",
+      "status": "deployed",
       "is_community": true,
       "in_beta": false,
       "imported": true
@@ -255,7 +255,7 @@
       "proposal": "",
       "docs": "",
       "eta": "",
-      "status": "in_progress",
+      "status": "deployed",
       "is_community": false,
       "in_beta": false
     },

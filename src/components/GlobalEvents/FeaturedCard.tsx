@@ -15,7 +15,7 @@ const FeaturedCard: React.FC<{ event: AirtableEvent }> = ({ event }) => {
         href={event.eventLink}
       >
         <img
-          src="/img/events/featured.webp"
+          src="/img/events/featured_devcon.webp"
           alt={event.eventName}
           className="w-full h-full object-cover"
         />

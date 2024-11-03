@@ -16,7 +16,7 @@ If a canister traps or panics in `pre_upgrade`, this can lead to permanently blo
 
 ### Recommendation
 
-- Avoid panics / traps in `pre_upgrade` hooks, unless it is truly unrecoverable, so that any invalid state can fixed by upgrading. Panics in the `pre_upgrade` hook prevent upgrade, and since the `pre_upgrade` hook is controlled by the old code, it can permanently block upgrading.
+- Avoid using `pre_upgrade` hooks if possible. Panics in the `pre_upgrade` hook prevent upgrade, and since the `pre_upgrade` hook is controlled by the old code, it can permanently block upgrading.
 
 - Panic in the `post_upgrade` hook if state is invalid, so that one can retry the upgrade and try to fix the invalid state. Panics in the the `post_upgrade` hook abort the upgrade, but one can retry with new code.
 
@@ -46,8 +46,9 @@ Using the Rust CDK, the recurring timer is also lost on upgrade as explained in 
 
 ### Recommendation
 
-- Keep track of global timers in the `pre_upgrade` hook. Store any state in [stable variables](/docs/current/motoko/main/canister-maintenance/upgrades/).
-- Set timers in the `post_upgrade` hook.
+- In Motoko canisters, global timers should be set up in the actor initialiser for canister installation or re-installation. Canister-wide timers should be set in the `post_upgrade` hook for upgrades, as timers do not survive upgrades and must be explicitly set up thereafter.
+
 - See the Motoko documentation on [recurringTimer](/docs/current/motoko/main/base/Timer).
+
 - See the Rust documentation on [set_timer_interval](https://docs.rs/ic-cdk/0.6.9/ic_cdk/timer/fn.set_timer_interval.html).
 
