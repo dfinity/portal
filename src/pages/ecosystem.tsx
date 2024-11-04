@@ -238,7 +238,7 @@ const ReportCard = () => {
   return (
     <div className="rounded-xl  text-white flex px-6 py-8 backdrop-blur-2xl bg-[#240d4e]">
       <div className="flex flex-col gap-2">
-        <h3 className="tw-title-sm mb-0">
+        <h3 className="tw-title-sm text-[35px] mb-0">
           ICP Chain Fusion Ecosystem Report 2024
         </h3>
         <p className="tw-paragraph text-white/60 flex-1 mb-12">
