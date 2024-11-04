@@ -246,7 +246,7 @@ const ReportCard = () => {
         </p>
         <Link
           className="button-white link text-center"
-          href="/icp_ecosystem_report_03_2024.pdf"
+          href="/ICP-ChainFusion-Ecosystem-Report-2024.pdf"
           target="_blank"
           rel="noopener noreferrer"
           download
@@ -296,25 +296,7 @@ const tags = Object.entries(
     }
     return tags;
   }, {} as Record<string, number>)
-)
-  .map(([tag, count]): [string, number] =>
-    tag === "Chainfusion" ? ["Chain Fusion", count] : [tag, count]
-  )
-  .sort((a, b) => {
-    const priorityOrder = ["AI", "Chain Fusion", "Bitcoin", "Ethereum"];
-    const indexA = priorityOrder.indexOf(a[0]);
-    const indexB = priorityOrder.indexOf(b[0]);
-
-    if (indexA !== -1 && indexB !== -1) {
-      return indexA - indexB;
-    } else if (indexA !== -1) {
-      return -1;
-    } else if (indexB !== -1) {
-      return 1;
-    } else {
-      return a[0].localeCompare(b[0]);
-    }
-  });
+);
 
 function ShowcasePage(): JSX.Element {
   const [queryTag, setQueryTag, queryTagInitialized] =
