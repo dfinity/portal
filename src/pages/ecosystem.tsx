@@ -249,7 +249,7 @@ const ReportCard = () => {
           success stories from within the Chain Fusion ecosystem.
         </p>
         <Link
-          className="button-white link link-with-icon gap-4"
+          className="button-white link link-with-icon !gap-4"
           href="/ICP-ChainFusion-Ecosystem-Report-2024.pdf"
           target="_blank"
           rel="noopener noreferrer"
