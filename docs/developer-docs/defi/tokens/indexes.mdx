@@ -202,7 +202,7 @@ The ICP index canister will start synching right away and will automatically try
 Here it is assumed that the canister ID of your local ICRC-1 ledger is `mxzaz-hqaaa-aaaar-qaada-cai`, otherwise replace it with your ICRC-1 ledger canister ID.
 
 ```
-dfx deploy icrc1_index_canister --argument '(opt variant{Init = record {ledger_id = principal "mxzaz-hqaaa-aaaar-qaada-cai" retrieve_blocks_from_ledger_interval_seconds: Some(10)}})'
+dfx deploy icrc1_index_canister --argument '(opt variant { Init = record { ledger_id = principal "mxzaz-hqaaa-aaaar-qaada-cai"; retrieve_blocks_from_ledger_interval_seconds = opt 10; } })'
 ```
 
 :::caution
