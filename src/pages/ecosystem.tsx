@@ -17,6 +17,8 @@ import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import { Pill, PillSecondaryLabel } from "../components/Common/Pills/Pills";
+import DownloadFile from "@site/plugins/utils/download-file";
+import Download from "../components/Common/Icons/Download";
 
 type EnrichedShowcaseProjects = Array<ShowcaseProject | "promo" | "report">;
 
@@ -247,13 +249,13 @@ const ReportCard = () => {
           success stories from within the Chain Fusion ecosystem.
         </p>
         <Link
-          className="button-white link text-center"
+          className="button-white link link-with-icon gap-4"
           href="/ICP-ChainFusion-Ecosystem-Report-2024.pdf"
           target="_blank"
           rel="noopener noreferrer"
           download
         >
-          Download Report
+          <Download /> Download Report
         </Link>
       </div>
     </div>
