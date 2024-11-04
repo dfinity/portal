@@ -246,7 +246,7 @@ const ReportCard = () => {
         </p>
         <Link
           className="button-white link text-center"
-          href="/icp_ecosystem_report_03_2024.pdf"
+          href="/ICP-ChainFusion-Ecosystem-Report-2024.pdf"
           target="_blank"
           rel="noopener noreferrer"
           download
