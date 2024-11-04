@@ -665,35 +665,43 @@ const Overlay: React.FC<{
                     if (a.name === "orphans_past") return 1;
                     if (b.name === "orphans_past") return -1;
 
-                    // Group in-progress milestones
-                    if (
-                      a.status === "in_progress" &&
-                      b.status !== "in_progress"
-                    )
-                      return -1;
-                    if (
-                      a.status !== "in_progress" &&
-                      b.status === "in_progress"
-                    )
-                      return 1;
+                    // Group by status first
+                    if (a.status !== b.status) {
+                      // In progress first
+                      if (a.status === "in_progress") return -1;
+                      if (b.status === "in_progress") return 1;
 
-                    // Group completed (deployed) milestones
-                    if (a.status === "deployed" && b.status !== "deployed")
-                      return 1;
-                    if (a.status !== "deployed" && b.status === "deployed")
-                      return -1;
+                      // Future features second
+                      if (a.status === "future") return -1;
+                      if (b.status === "future") return 1;
 
-                    // For milestones with the same status, reverse the current order
-                    // This assumes that the current order is from oldest to newest
-                    if (a.status === b.status) {
-                      // Use the index in the original array to determine the order
-                      return (
-                        data[index].milestones.indexOf(b) -
-                        data[index].milestones.indexOf(a)
-                      );
+                      // Deployed (completed) last
+                      if (a.status === "deployed") return 1;
+                      if (b.status === "deployed") return -1;
                     }
 
-                    // default cause original order
+                    // For items with the same status, apply different chronological orders
+                    if (a.status === b.status) {
+                      const originalOrder =
+                        data[index].milestones.indexOf(a) -
+                        data[index].milestones.indexOf(b);
+
+                      // For current (in_progress) - chronological order
+                      if (a.status === "in_progress") {
+                        return originalOrder;
+                      }
+
+                      // For completed (deployed) - reverse chronological order
+                      if (a.status === "deployed") {
+                        return -originalOrder;
+                      }
+
+                      // For future - chronological order
+                      if (a.status === "future") {
+                        return originalOrder;
+                      }
+                    }
+
                     return 0;
                   })
                   .map((milestone, i) => {
