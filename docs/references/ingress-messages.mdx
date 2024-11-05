@@ -78,7 +78,11 @@ ICP provides a built-in deduplication feature. Namely, if two calls with identic
 As ICP rejects `ingress_expiry` that is too far in the future, the time window for retrying is limited. To maximize the window, one can maximize `ingress_expiry` in this case and time out the retries after `ingress_expiry` as well.
 
 There are two options for retries:
-* Only poll `read_state` until `ingress_expiry` is reached. Note that this may be hard if the IC time and local time differ. This is currently the behaviour of agent-js and agent-rs.
-* Poll `read_state` for e.g. `30s` and then retry the `call`, loop until `ingress_expiry` (e.g. `5min`). This can be beneficial because a call that didn’t make it would be retried.
+* Submit the `call` once, and poll `read_state` while at least one of the following conditions is met: 
+  * `ingress_expiry` is not reached.
+  * The call status is `processing`.
 
-If the expiry is reached, there is no way for the client to determine if the call was successful unless the canister’s API provides this information. In this case, after the message has expired, the user must be instructed to manually check the status of the call using application-specific APIs. There can be (hopefully uncommon) cases where the APIs don't allow checking this, in which case the user simply can’t tell if the message has been executed. Ideally, applications set expiry values such that under typical load timeouts are rare.
+  Evaluating the first condition may be hard if the IC time and local time differ. Currently, agent-js and agent-rs by default poll until `ingress_expiry` is reached. 
+* Do the same as above, but resubmit the initiall `call` (same `request_id`) e.g. every `30s`. This can be beneficial because a call that didn’t make it is retried.
+
+Some time after expiry is reached, there is no way for the client to determine if the call was successful unless the canister’s API provides this information. In this case, the client can check the status of the call using application-specific APIs. There can be (hopefully uncommon) cases where the APIs don't allow checking this, in which case the client simply can’t tell if the message has been executed. Ideally, applications set expiry values such that under typical load timeouts are rare.
