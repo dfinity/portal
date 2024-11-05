@@ -3,88 +3,49 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   build: [
-    {
+      {
+        type: "doc",
+        label: "Overview of ICP",
+        id: "developer-docs/getting-started/overview-of-icp",
+      },
+      {
       type: "category",
-      label: "Getting started",
+      label: "Start building",
       items: [
         {
           type: "doc",
-          label: "Overview of ICP",
-          id: "developer-docs/getting-started/overview-of-icp",
+          label: "Explore examples",
+          id: "developer-docs/getting-started/explore-examples",
         },
         {
           type: "doc",
-          label: "Development workflow",
-          id: "developer-docs/getting-started/development-workflow",
-        },
-        {
-          type: "doc",
-          label: "Installing tools",
+          label: "Install tools",
           id: "developer-docs/getting-started/install/index",
         },
         {
           type: "doc",
-          label: "Hello, world!",
-          id: "developer-docs/getting-started/hello-world",
-        },
-        {
-          type: "doc",
-          label: "Developer accounts",
+          label: "Create an account",
           id: "developer-docs/getting-started/accounts",
         },
         {
-          type: "category",
-          label: "Cycles",
-          items: [
-            {
-              label: "Overview",
-              type: "doc",
-              id: "developer-docs/getting-started/cycles/overview",
-            },
-            "developer-docs/getting-started/cycles/cycles-faucet",
-          ],
+          type: "doc",
+          label: "Tokens and cycles",
+          id: "developer-docs/getting-started/tokens-and-cycles",
         },
         {
           type: "doc",
-          label: "Default project template",
-          id: "developer-docs/getting-started/default-template",
+          label: "Write smart contracts",
+          id: "developer-docs/getting-started/write-smart-contracts",
         },
         {
-          type: "category",
-          label: "Deploy smart contracts",
-          items: [
-            {
-              type: "doc",
-              label: "Local deployment",
-              id: "developer-docs/getting-started/deploy/local",
-            },
-            {
-              type: "doc",
-              label: "Testnet deployment",
-              id: "developer-docs/getting-started/deploy/testnet",
-            },
-            {
-              type: "doc",
-              label: "Mainnet deployment",
-              id: "developer-docs/getting-started/deploy/mainnet",
-            },
-          ],
+          type: "doc",
+          label: "Deploy and manage",
+          id: "developer-docs/getting-started/deploy-and-manage",
         },
         {
-          type: "category",
-          label: "Quickstart guides",
-          items: [
-            {
-              type: "doc",
-              label: "Quickstart for React developers",
-              id: "developer-docs/getting-started/quickstart/react-quickstart",
-            },
-            {
-              type: "doc",
-              label: "Juno quickstart",
-              id: "developer-docs/getting-started/quickstart/juno-quickstart",
-            },
-          ],
+          type: "doc",
+          label: "Next steps",
+          id: "developer-docs/getting-started/next-steps",
         },
       ],
     },
@@ -103,6 +64,11 @@ const sidebars = {
           ],
         },
         {
+          type: "doc",
+          label: "Development workflow",
+          id: "developer-docs/smart-contracts/development-workflow",
+        },
+        {
           type: "category",
           label: "Write",
           items: [
@@ -110,6 +76,11 @@ const sidebars = {
               label: "Overview",
               type: "doc",
               id: "developer-docs/smart-contracts/write/overview",
+            },
+            {
+              type: "doc",
+              label: "Default project template",
+              id: "developer-docs/smart-contracts/write/default-template",
             },
             "developer-docs/smart-contracts/write/resources",
           ],

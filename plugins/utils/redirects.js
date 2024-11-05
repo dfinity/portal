@@ -121,14 +121,14 @@ const redirects = `
   /docs/quickstart/4-2-convert-icp-to-cycles /docs/current/tutorials/developer-journey/
   /docs/quickstart/4-quickstart /docs/current/tutorials/developer-journey/
   /docs/quickstart/5-quickstart /docs/current/tutorials/developer-journey/
-  /docs/quickstart/cycles-faucet /docs/current/developer-docs/getting-started/cycles/cycles-faucet
+  /docs/quickstart/cycles-faucet /docs/current/developer-docs/getting-started/tokens-and-cycles
   /docs/quickstart/local-quickstart /docs/current/developer-docs/getting-started/deploy/local
   /docs/quickstart/network-quickstart /docs/current/developer-docs/getting-started/deploy/mainnet
   /docs/quickstart/quickstart-intro /docs/current/tutorials/developer-journey/
   /docs/quickstart/newcomers /docs/current/home
   /docs/current/developer-docs/quickstart/* /docs/current/tutorials/developer-journey/
   /developers-guide/quickstart /docs/current/tutorials/developer-journey/
-  /docs/current/developer-docs/quickstart/cycles-faucet /docs/current/developer-docs/getting-started/cycles/cycles-faucet
+  /docs/current/developer-docs/quickstart/cycles-faucet /docs/current/developer-docs/getting-started/tokens-and-cycles
   /docs/current/developer-docs/quickstart/windows-wsl /docs/current/developer-docs/getting-started/install/windows-wsl
   /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/developer-journey/
 
@@ -213,14 +213,14 @@ const redirects = `
   /docs/current/developer-docs/index /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/developer-docs /docs/current/developer-docs/getting-started/overview-of-icp
   /docs/current/concepts/what-is-ic /docs/current/developer-docs/getting-started/overview-of-icp
-  /docs/current/developer-docs/setup/development-workflow /docs/current/developer-docs/getting-started/development-workflow
-  /docs/current/developer-docs/setup/hello-world /docs/current/developer-docs/getting-started/hello-world
+  /docs/current/developer-docs/setup/development-workflow /docs/current/developer-docs/smart-contracts/development-workflow
+  /docs/current/developer-docs/setup/hello-world /docs/current/developer-docs/getting-started/write-smart-contracts
   /docs/current/developer-docs/setup/install/ /docs/current/developer-docs/getting-started/install/
   /docs/current/developer-docs/setup/accounts /docs/current/developer-docs/getting-started/accounts
-  /docs/current/developer-docs/setup/cycles/cycles-faucet /docs/current/developer-docs/getting-started/cycles/cycles-faucet
+  /docs/current/developer-docs/setup/cycles/cycles-faucet /docs/current/developer-docs/getting-started/tokens-and-cycles
   /docs/current/developer-docs/setup/cycles/cycles-wallet /docs/current/developer-docs/defi/cycles/cycles-wallet
   /docs/current/developer-docs/setup/cycles/converting_icp_tokens_into_cycles /docs/current/developer-docs/defi/cycles/converting_icp_tokens_into_cycles
-  /docs/current/developer-docs/setup/first-canister /docs/current/developer-docs/getting-started/default-template
+  /docs/current/developer-docs/setup/first-canister /docs/current/developer-docs/smart-contracts/write/default-template
   /docs/current/developer-docs/setup/deploy-locally /docs/current/developer-docs/getting-started/deploy/local
   /docs/current/developer-docs/setup/deploy-mainnet /docs/current/developer-docs/getting-started/deploy/mainnet
   /docs/current/developer-docs/production/best-practices /docs/current/developer-docs/smart-contracts/best-practices/general
@@ -233,7 +233,7 @@ const redirects = `
   /docs/current/references/gitpod /docs/current/developer-docs/developer-tools/ide/gitpod
   /docs/current/developer-docs/setup/playground /docs/current/developer-docs/getting-started/deploy/testnet
   /docs/current/developer-docs/setup/vs-code /docs/current/developer-docs/developer-tools/ide/vs-code
-  /docs/current/developer-docs/setup/react-quickstart /docs/current/developer-docs/getting-started/quickstart/react-quickstart
+  /docs/current/developer-docs/setup/react-quickstart /docs/current/developer-docs/web-apps/application-frontends/quickstart/react-quickstart
   /docs/current/references/cli-reference/ /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/
   /docs/current/references/cli-reference/dfx-parent /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-parent
   /docs/current/references/cli-reference/dfx-bootstrap /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-bootstrap
@@ -548,7 +548,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/overview	/docs/current/developer-docs/smart-contracts/overview/introduction
   /docs/current/references/dfx-json-reference /docs/current/developer-docs/developer-tools/cli-tools/dfx-json-reference
   /docs/language-guide/language-manual.html	/docs/current/motoko/main/getting-started/motoko-introduction
-  /docs/developers-guide/default-wallet.html /docs/current/developer-docs/getting-started/cycles/overview
+  /docs/developers-guide/default-wallet.html /docs/current/developer-docs/getting-started/tokens-and-cycles
   /docs/current/references/ic-interface /docs/current/references/ic-interface-spec
   /docs/current/tokenomics/sns/sns-intro-tokens	/docs/current/developer-docs/daos/sns/tokenomics/tokenomics-intro
   /docs/developers-guide/sdk-guide.html	/docs/current/developer-docs/getting-started/install/
@@ -560,7 +560,7 @@ const redirects = `
   /docs/current/developer-docs/backend/rust/index /docs/current/developer-docs/backend/rust/
   /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/index /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/
   /docs/current/developer-docs/integrations/icrc-1/deploy-new-token /docs/current/developer-docs/defi/tokens/create
-  /docs/current/developer-docs/setup/cycles/cycles-faucet.md	/docs/current/developer-docs/getting-started/cycles/cycles-faucet
+  /docs/current/developer-docs/setup/cycles/cycles-faucet.md	/docs/current/developer-docs/getting-started/tokens-and-cycles
   /docs/current/developer-docs/setup/deploy-mainnet.md	/docs/current/developer-docs/getting-started/deploy/mainnet
   /docs/current/developer-docs/setup/index.md	/docs/current/developer-docs/getting-started/install/
   /docs/current/developer-docs/smart-contracts/candid/index	/docs/current/developer-docs/smart-contracts/candid/candid-concepts
@@ -570,7 +570,7 @@ const redirects = `
   /docs/current/motoko/main/ /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/samples/encrypted-notes/	/docs/current/references/samples/motoko/encrypted-notes-dapp/
   /docs/current/samples/nft	/docs/current/developer-docs/defi/nfts/nft-collections
-  /docs/language-guide/cycles.html /docs/current/developer-docs/getting-started/cycles/overview
+  /docs/language-guide/cycles.html /docs/current/developer-docs/getting-started/tokens-and-cycles
   /grants	https://dfinity.org/grants
   /docs/base-libraries/motoko-base/Text.html	/docs/current/motoko/main/base/Text
   /docs/candid-guide/candid-types.html	/docs/current/developer-docs/smart-contracts/candid/candid-howto/
@@ -619,6 +619,12 @@ const redirects = `
   /docs/current/concepts/subnet-types /docs/current/references/subnets/subnet-types
   /docs/current/concepts/glossary /docs/current/references/glossary
   /docs/current/concepts/trust-in-canisters /docs/current/developer-docs/smart-contracts/overview/trust-in-canisters
+  /docs/current/developer-docs/getting-started/quickstart/juno-quickstart /docs/current/developer-docs/web-apps/frameworks/juno
+  /docs/current/developer-docs/getting-started/quickstart/react-quickstart /docs/current/developer-docs/web-apps/application-frontends/quickstart/react-quickstart
+  /docs/current/developer-docs/getting-started/development-workflow /docs/current/developer-docs/smart-contracts/development-workflow
+  /docs/current/developer-docs/getting-started/default-template /docs/current/developer-docs/smart-contracts/write/default-template
+  /docs/current/developer-docs/getting-started/hello-world /docs/current/developer-docs/getting-started/write-smart-contracts
+  /docs/current/developer-docs/getting-started/cycles/overview /docs/current/developer-docs/getting-started/tokens-and-cycles
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

@@ -10,6 +10,8 @@ import {
   TeaserCard,
 } from "@site/src/components/DocsHome/TeaserCard";
 import { GlossaryTooltip } from "@site/src/components/Tooltip/GlossaryTooltip";
+import DocsCard from "@site/src/components/Card/";
+
 
 const queryClient = new QueryClient();
 
@@ -228,7 +230,7 @@ const frameworksTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/developer-docs/getting-started/quickstart/react-quickstart"
+        href="/docs/current/developer-docs/web-apps/application-frontends/quickstart/react-quickstart"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to React quickstart"
       >
@@ -475,20 +477,15 @@ const DocsHomePage: FC = () => {
                 className="button-white button-with-icon"
                 href="/docs/current/developer-docs/getting-started/overview-of-icp"
               >
-              Learn more
+              Learn more about ICP
               <LinkArrowRight />
             </Link>
-          </p>
-          <p className="mb-0">
-            <Link
-              className="button-white button-with-icon"
-              href="https://play.motoko.org"
-            >
-              Start coding
-              <LinkArrowRight />
-            </Link>
-          </p>
-        </div>
+            </p>
+            <div className="border border-black border-solid rounded-lg bg-white/10">
+            <DocsCard ></DocsCard>
+            </div>
+          </div>
+
         </div>
         <div className="px-6 py-8 md:p-10 border border-white border-solid rounded-lg bg-white/70 sm:col-span-2">
           <QueryClientProvider client={queryClient}>

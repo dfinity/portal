@@ -5,12 +5,20 @@ keywords: [beginner, getting started, what is icp, icp overview, overview]
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+import DocsCard from "@site/src/components/Card/";
 
 # Overview of ICP
 
 <MarkdownChipRow labels={["Beginner", "Getting started" ]} />
 
-The Internet Computer Protocol (ICP) is a blockchain based on [threshold cryptography](https://en.wikipedia.org/wiki/Threshold_cryptosystem), [state machine replication](https://en.wikipedia.org/wiki/State_machine_replication), and [a novel consensus algorithm](https://eprint.iacr.org/2021/632.pdf).
+<div class="text--center">
+<p> </p>
+</div>
+<div class="text--center">
+<iframe width="860" height="515" src="https://www.youtube.com/embed/oBUpJ4CqmN0?si=BlGt-pDzRu1lLJEI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+The Internet Computer Protocol (ICP) is a secure compute platform based on [threshold cryptography](https://en.wikipedia.org/wiki/Threshold_cryptosystem), [state machine replication](https://en.wikipedia.org/wiki/State_machine_replication), and [a novel consensus algorithm](https://eprint.iacr.org/2021/632.pdf). Anyone can build an application on ICP without going through a centralized authority.
 
 It was carefully designed to give smart contracts near native performance and scalability while maintaining the security of decentralized execution.
 In addition to classical DeFi smart contracts, such as ledgers and exchanges, ICP can run compute- and storage-heavy applications such as [image classification](https://github.com/dfinity/examples/tree/master/rust/image-classification) fully onchain.
@@ -28,7 +36,7 @@ These features, combined with threshold signatures, give smart contracts the abi
   />
 </div>
 
-Read on to learn more about how these features are made possible.
+**Read on to learn more about how these features are made possible, or [start building](#ready-to-start-building).**
 
 ## Subnets
 A blockchain can only run as fast and offer as many resources as a single node.
@@ -317,3 +325,7 @@ Currently, subnets contain between 13 and 40 nodes, and most of them are geograp
 
 </tbody>
 </table>
+
+## Ready to start building?
+
+<DocsCard />

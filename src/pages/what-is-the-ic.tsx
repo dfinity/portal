@@ -284,7 +284,7 @@ function WhatIsIcpPage() {
                 </p>
                 <Link
                   className="button-outline-white text-center mb-6 md:mb-8"
-                  href="/docs/current/developer-docs/getting-started/hello-world"
+                  href="/docs/current/developer-docs/getting-started/write-smart-contracts"
                 >
                   Start building
                 </Link>{" "}
