@@ -467,7 +467,7 @@ const DocsHomePage: FC = () => {
           </h1>
           <p className="tw-lead mb-20 flex-1">
             Start a DAO, create a token, build dapps and host assets with the
-            full tech stack entirely 100% on chain.
+            full tech stack entirely 100% onchain.
           </p>
           <div className={"flex flex-row gap-2 flex-wrap"}>
             <p className="mb-0">
