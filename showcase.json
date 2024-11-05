@@ -30,6 +30,7 @@
       "DAO",
       "Chain Fusion"
     ],
+    "twitter": "https://x.com/OpenChat",
     "description": "OpenChat is a fully decentralized real-time messaging service that is indistinguishable from Web2 chat apps while living 100% on the blockchain. This allows users to send crypto to each other - including Bitcoin - and own a part of OpenChat through CHAT tokens.",
     "usesInternetIdentity": true,
     "display": "Large",
@@ -51,6 +52,7 @@
       "DAO",
       "Chain Fusion"
     ],
+    "twitter": "https://x.com/ICPSwap",
     "description": "ICPSwap is an AMM DEX built completely onchain that is the premier hub for full-stack financial and DAO services on ICP",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/icpswap_logo.webp",
@@ -212,6 +214,7 @@
       "NFT",
       "Chain Fusion"
     ],
+    "twitter": "https://x.com/bioniqMarket",
     "description": "Bioniq is the fastest Ordinals marketplace. Buy, sell, and trade with no gas fees, near-instant finality, and decentralized secure token bridging..",
     "display": "Large",
     "stats": "45,000+ users",
@@ -248,6 +251,7 @@
       "Chain Fusion",
       "AI"
     ],
+    "twitter": "https://x.com/OmnityNetwork",
     "description": "A turbo engine for the Bitcoin Token Boom. Includes the first 100% trustless omnichain interoperability protocol that extends all Runes primitives and AI agent for dynamic token distribution.",
     "usesInternetIdentity": false,
     "website": "https://www.omnity.network/",
@@ -293,6 +297,7 @@
       "Ethereum",
       "Chain Fusion"
     ],
+    "twitter": "https://x.com/plug_wallet",
     "description": "Your Plug into the #InternetComputer Identity + Wallet in one Principal ID Hold, send, swap, deposit cycles, ICP, NFTs and log into IC apps in a click! Available on mobile IOS & Android, and as a browser extension on Chrome & Firefox.",
     "github": "https://github.com/Psychedelic/plug",
     "stats": "150,000+ users",
@@ -333,6 +338,7 @@
       "SocialFi",
       "DAO"
     ],
+    "twitter": "https://x.com/catalyze_one",
     "description": "Catalyze is building the new Web3 social learning hub: Communities, Events & Seamless Token Transfer. Now onboarding KOLs.",
     "usesInternetIdentity": true,
     "oneLiner": "Manage your Web3 communities and events",
@@ -435,6 +441,7 @@
       "Ethereum",
       "Chain Fusion"
     ],
+    "twitter": "https://x.com/klever_io",
     "description": "Klever.io is a non-custodial mobile wallet that supports dozens of protocols and is tying them all together with the Internet Computer blockchain. Manage, store, stake, transfer, and in the future, swap ICP right within Klever.io. Klever has integrated with the Internet Computer's Network Nervous System in order to support staking with voting rewards. ",
     "logo": "/img/showcase/kleverio_logo.webp",
     "screenshots": [
@@ -1016,6 +1023,7 @@
       "SocialFi",
       "DAO"
     ],
+    "twitter": "https://x.com/SeersApp",
     "description": "What if there was decentralized Twitter that included prediction markets? Seers is a Web3 social media platform hosted 100% onchain combining social media features with prediction markets.",
     "usesInternetIdentity": true,
     "stats": "10,000 users + TVL",
@@ -1030,6 +1038,7 @@
     "tags": [
       "NFT"
     ],
+    "twitter": "https://x.com/pokedstudiouk",
     "description": "PokedStudio Bots is a collection of 10,000 unique bots designed by acclaimed digital artist, Jonathan Ball. The Ultimate Master Bot which sold for 3,000 ICP (~$172,140), marks the largest single NFT purchase on the Internet Computer and is one of the largest across all blockchain projects to date. The NFT Bots are all unique and possess differing rarities and attributes that will transfer into a future metaverse gaming experience in beautiful technicolor.",
     "oneLiner": "Record Highest Selling NFT",
     "display": "Large",
@@ -1047,6 +1056,7 @@
       "DAO"
     ],
     "website": "https://waterneuron.fi/stake/",
+    "twitter": "https://x.com/WaterNeuron",
     "description": "A liquid staking protocol designed for ICP. Staking ICP becomes straightforward and efficient.",
     "usesInternetIdentity": true,
     "display": "Large",
@@ -1065,6 +1075,7 @@
       "Bitcoin",
       "Chain Fusion"
     ],
+    "twitter": "https://x.com/nuancedapp",
     "description": "Nuance is a Web3.0 blogging platform that is hosted onchain end-to-end on the Internet Computer. Developed by Aikin Dapps, the alpha of the world's first blogging platform to be hosted entirely on a blockchain has now launched. Nuance aims to bring NFTs into the world of editorial content ownership.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/nuance_logo.webp",
@@ -1801,6 +1812,7 @@
       "DeFi",
       "DAO"
     ],
+    "twitter": "https://x.com/ICPCoins",
     "description": "IC coins by market cap. Aggregates stats from all Internet Computer based DEXes. Price, Volume & liquidity score charts.",
     "usesInternetIdentity": false,
     "stats": "1,000+ users",
@@ -4437,6 +4449,7 @@
       "Tools / Infrastructure"
     ],
     "website": "https://alpacafi.xyz",
+    "twitter": "https://x.com/alpacafi_icp",
     "description": "Tools that bring ICP to everyone including AlpacaFi (CoinMarketCap for ICP tokens) and PacaBot (Telegram Trading Bot).",
     "usesInternetIdentity": false,
     "display": "Normal",
