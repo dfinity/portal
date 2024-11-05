@@ -351,7 +351,7 @@ function BitcoinFaqPage() {
               </p>
               <p>
                 Canister smart contracts can programmatically hold and transfer
-                ckBTC, making it possible to develop fully on-chain Layer-2
+                ckBTC, making it possible to develop fully onchain Layer-2
                 applications for Bitcoin, which is not possible using the
                 Lightning Network.
               </p>

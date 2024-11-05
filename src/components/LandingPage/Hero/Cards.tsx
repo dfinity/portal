@@ -38,7 +38,7 @@ export const CardsSection = () => {
       variants={transitions.container}
     >
       <article
-        aria-label="powered by chainfusilli"
+        aria-label="powered by chain fusion"
         className="overflow-clip relative bg-[radial-gradient(circle_at_50%,#000,#3B00B9,#1E005D)] rounded-[32px] text-white  mt-6"
       >
         <img

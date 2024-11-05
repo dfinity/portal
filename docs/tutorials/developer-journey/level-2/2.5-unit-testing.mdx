@@ -280,9 +280,9 @@ This agent file does the following:
 - Creates a default actor.
 
 :::caution
-This example uses `fetchRootKey`. It is not recommended that dapps deployed on the mainnet call this function from agent-js, since using `fetchRootKey` on the mainnet poses severe security concerns for the dapp that's making the call. It is recommended to put it behind a condition so that it only runs locally.
+This example uses `fetchRootKey`. It is not recommended that dapps deployed on the mainnet call this function from the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), since using `fetchRootKey` on the mainnet poses severe security concerns for the dapp that's making the call. It is recommended to put it behind a condition so that it only runs locally.
 
-This API call will fetch a root key for verification of update calls from a single replica, so it’s possible for that replica to respond with a malicious key. A verified mainnet root key is already embedded into agent-js, so this only needs to be called on your local replica, which will have a different key from mainnet that agent-js does not know ahead of time.
+This API call will fetch a root key for verification of update calls from a single replica, so it’s possible for that replica to respond with a malicious key. A verified mainnet root key is already embedded into the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), so this only needs to be called on your local replica, which will have a different key from mainnet that the ICP JavaScript agent does not know ahead of time.
 :::
 
 ### Creating a test file
@@ -455,7 +455,7 @@ To learn more about Github workflows, check out the [Github documentation](https
 
 Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
-- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
+- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
 - [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
@@ -471,7 +471,7 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Upcoming hackathons](https://dfinity.org/hackathons/).
 
-- [Weekly developer office hours](https://discord.gg/4a7SZzRk?event=1164114241893187655) to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on our [developer Discord](https://discord.com/invite/cA7y6ezyE2) group.
+- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
 
 - Submit your feedback to the [ICP Developer feedback board](http://dx.internetcomputer.org).
 

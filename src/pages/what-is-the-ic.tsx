@@ -272,7 +272,7 @@ function WhatIsIcpPage() {
                   Developer Empowerment
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-6 md:mb-8">
-                  Developers can create truly on-chain apps on the Internet
+                  Developers can create truly onchain apps on the Internet
                   Computer, and place them under the full control of
                   decentralized governance in an advancement of the open source
                   paradigm. Moreover, any programming language that can be

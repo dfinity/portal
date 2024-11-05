@@ -21,31 +21,43 @@ This guide explains how to use the **cycles faucet** to acquire 10T free cycles 
 
 - [x] Install the [Internet Computer SDK](/docs/current/developer-docs/getting-started/install/).
 
-## Step 1: Get a coupon.
+## Step 1: Open the cycles faucet.
 
-First, you will need to navigate to [https://faucet.dfinity.org](https://faucet.dfinity.org). You will need to put in a request for cycles on the [DFINITY dev official Discord](https://discord.gg/jnjVVQaE2C) server. You can click on the **REQUEST CYCLES** button on the faucet page to join the Discord server.
+Navigate to [https://faucet.dfinity.org](https://faucet.dfinity.org).
 
 ![Getting Coupon](_attachments/faucet_step_1.png)
 
-## Step 2: Once inside the Discord server, navigate into the `#cycles-faucet` channel.
+## Step 2: Join the developer Discord server.
+
+You will need to put in a request for cycles on the [Discord](https://discord.internetcomputer.org) server. You can click on the **REQUEST CYCLES** button on the faucet page to join the Discord server.
+
+Once inside the Discord server, navigate into the `#cycles-faucet` channel.
 
 ![Cycles-faucet](./_attachments/cycles-faucet.png)
 
-## Step 3: In this channel, execute the following slash command:
+## Step 3: Request a coupon.
+
+In this channel, execute the following slash command:
 
 ```
 /request
 ```
 
-## Step 4: After you send this message, you are prompted to fill out a survey.
+## Step 4: Complete survey.
 
-## Step 5: Once completed, our team will review your submission. If accepted, the faucet bot will send you a private message with a coupon code.
+After you send this message, you are prompted to fill out a survey.
+
+## Step 5: Receive coupon code.
+
+Once completed, our team will review your submission. If accepted, the faucet bot will send you a private message with a coupon code.
 
 :::caution
 Please ensure that your Discord settings are set to allow direct messages from other users. If you do not have this setting enabled, you will not receive a direct message from the faucet bot.
 :::
 
-## Step 6: Head back to the [https://faucet.dfinity.org](https://faucet.dfinity.org) webpage.
+## Step 6: Return to the faucet webpage.
+
+Head back to the [https://faucet.dfinity.org](https://faucet.dfinity.org) webpage.
 
 Now, click **NEXT STEP** to continue.
 
@@ -57,7 +69,7 @@ Now that you have a coupon code, enter your coupon code within the faucet UI.
 
 Click **NEXT STEP** to continue.
 
-## Step 8: Setup `dfx`
+## Step 8: Setup `dfx`.
 
 Next, confirm your computer has `dfx` installed. Run this command to check the version of `dfx` on your computer:
 
@@ -65,7 +77,7 @@ Next, confirm your computer has `dfx` installed. Run this command to check the v
 dfx --version
 ```
 
-If your `dfx` version is below 0.22.0, please run this command:
+If your `dfx` version is below 0.22.0, please run the command:
 
 ```
 dfx upgrade
@@ -105,19 +117,17 @@ dfx cycles --network ic redeem-faucet-coupon <your-coupon-code>
 
 Click **NEXT STEP** to continue.
 
-## Step 11: Verify your balance
+## Step 11: Verify your balance.
 
 The last step is to verify the coupon was redeemed correctly by checking your balance using the `dfx cycles --network ic balance` command:
 
 ![Verify coupon balance](_attachments/faucet_step_6.png)
 
-## Conclusion
-
 Now you are ready to deploy a canister on the mainnet!
 
 ## Resources
 
-To further explore cycle management please see the following articles:
+To further explore cycles management, please see the following articles:
 
 - [Using a cycles wallet](/docs/current/developer-docs/defi/cycles/cycles-wallet).
 

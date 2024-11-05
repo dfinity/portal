@@ -32,7 +32,7 @@ const Hero: React.FC<{
       >
         <HomeAnimation />
         <div className="container-8">
-          <div className="relative">
+          <div className="relative mx-auto px-0 md:pl-16 md:pr-8">
             <h1
               className="
                 animate-fade-up 
@@ -42,29 +42,30 @@ const Hero: React.FC<{
                 md:text-[100px] 
                 lg:text-[110px] 
                 text-white
-                grid mb-0"
+                grid mb-0 mx-auto"
               style={{
                 animationPlayState: fontLoaded ? "running" : "paused",
               }}
             >
-              <span className="block sm:text-left">COMPUTE</span>
-              <span className="block md:ml-48">REINVENTED</span>
+              <span className="block sm:text-left">WORLD</span>
+              <span className="block md:ml-48">COMPUTER</span>
             </h1>
             <div className="md:ml-48">
-              <p className="tw-paragraph md:tw-lead-sm mt-6 md:w-7/10">
-                The Internet Computer enables you to build anything without
-                traditional IT and Big Tech. It hosts decentralized serverless
-                compute that’s simpler, immune to cyber attack, unstoppable, and
-                controllable by DAOs. Create web3 social networks and media,
-                socialfi, games, multi-chain dapps, AI, or an enterprise app.
-                The internet is evolving.
+              <p className="tw-paragraph md:tw-lead-sm mt-6 md:w-full">
+                The Internet Computer hosts secure, network-resident code and
+                data. Build web apps without Big Tech and current IT.
+                Applications are immune to cyber attacks and unstoppable,
+                capable of processing tokens, and can run under exclusive DAO
+                control. Build web3 social media, games, DeFi, multi-chain apps,
+                secure front-ends, ledgers, enterprise apps, and AI models. The
+                internet is evolving fast.
               </p>
               <div className="flex flex-col md:flex-row gap-8 mt-8 md:mt-6 md:items-center">
                 <Link
                   className={"button-white w-max"}
                   href="/docs/current/home"
                 >
-                  Start hacking
+                  DEVELOP
                 </Link>
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"

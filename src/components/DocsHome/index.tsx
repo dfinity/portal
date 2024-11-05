@@ -23,7 +23,7 @@ const links = [
     href: "https://forum.dfinity.org/t/announcing-technical-working-groups/11781",
   },
   { label: "Join the Dev Forum", href: "https://forum.dfinity.org" },
-  { label: "Dev Discord Office Hours", href: "https://discord.gg/jnjVVQaE2C" },
+  { label: "Dev Discord Office Hours", href: "https://discord.internetcomputer.org" },
   {
     label: "Developer Grants and Bounties",
     href: "https://dfinity.org/grants/",
@@ -482,7 +482,7 @@ const DocsHomePage: FC = () => {
           <p className="mb-0">
             <Link
               className="button-white button-with-icon"
-              href="https://github.com/dfinity/examples/"
+              href="https://play.motoko.org"
             >
               Start coding
               <LinkArrowRight />

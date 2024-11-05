@@ -145,9 +145,9 @@ cd icrc1_ledger_canister
 
 You can access the Wasm and Candid files in the same way that you located the ICP ledger files. Remember that you'll need the latest replica version, which can be found on the [dashboard](https://dashboard.internetcomputer.org/releases) under the **Elect new replica binary revision** field.
 
-Then, use the following URL to download the Wasm module: `https://download.dfinity.systems/ic/<VERSION>/canisters/ic-icrc1-ledger.wasm.gz`. In this tutorial you'll use the URL https://download.dfinity.systems/ic/08f32722df2f56f1e5c1e603fee0c87c40b77cba/canisters/ic-icrc1-ledger.wasm.gz.
+Then, use the following URL to download the Wasm module: `https://download.dfinity.systems/ic/<VERSION>/canisters/ic-icrc1-ledger.wasm.gz`. In this tutorial you'll use the URL https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ic-icrc1-ledger.wasm.gz.
 
-Use the following URL can be used to download the Candid file: `https://raw.githubusercontent.com/dfinity/ic/<VERSION>/rs/rosetta-api/icrc1/ledger/ledger.did`. In this tutorial, you'll use the URL https://raw.githubusercontent.com/dfinity/ic/08f32722df2f56f1e5c1e603fee0c87c40b77cba/rs/rosetta-api/icrc1/ledger/ledger.did.
+Use the following URL can be used to download the Candid file: `https://raw.githubusercontent.com/dfinity/ic/<VERSION>/rs/ledger_suite/icrc1/ledger/ledger.did`. In this tutorial, you'll use the URL https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/ledger_suite/icrc1/ledger/ledger.did.
 
 Open the `dfx.json` file in the project's directory and replace the existing content with the following:
 
@@ -156,8 +156,8 @@ Open the `dfx.json` file in the project's directory and replace the existing con
   "canisters": {
     "icrc1_ledger_canister": {
       "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/08f32722df2f56f1e5c1e603fee0c87c40b77cba/rs/rosetta-api/icrc1/ledger/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/08f32722df2f56f1e5c1e603fee0c87c40b77cba/canisters/ic-icrc1-ledger.wasm.gz"
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/ledger_suite/icrc1/ledger/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ic-icrc1-ledger.wasm.gz"
     }
   },
   "defaults": {
@@ -489,7 +489,7 @@ This URL will display the following Candid UI:
 
 Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
-- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
+- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
 - [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
@@ -505,7 +505,7 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Upcoming hackathons](https://dfinity.org/hackathons/).
 
-- [Weekly developer office hours](https://discord.gg/4a7SZzRk?event=1164114241893187655) to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on our [developer Discord](https://discord.com/invite/cA7y6ezyE2) group.
+- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
 
 - Submit your feedback to the [ICP Developer feedback board](http://dx.internetcomputer.org).
 

@@ -14,6 +14,16 @@ When a dapp or canister is running with a high amount of latency, there are some
 
 This document will detail some troubleshooting methods and performance optimizations that developers can use when troubleshooting latency.
 
+## Troubleshooting subnet latency
+
+On subnets with low loads, query calls are answered in about 100 milliseconds and update calls are answered in about 2 seconds.
+
+On subnets with higher loads, your application may experience elevated latencies or reduced accessibility. To get more information about the subnet your canister is running on, view the canister's information on the [ICP dashboard](https://dashboard.internetcomputer.org/canisters). Look for subnet your canister is deployed on, then compare the number of "Million Instructions Executed Per Second" for that subnet to other subnets.
+
+### Recommendation: Consider moving the canister to another subnet.
+
+If your canister is running on a subnet that has a consistently high load and thus elevated latency, consider adding a [compute allocation](docs/current/developer-docs/gas-cost#execution-and-compute-allocation) setting. A compute allocation of 1% will guarantee your canister is scheduled for execution once every 100 rounds. 
+
 ## Troubleshooting best practices
 
 ### Recommendation: Use query calls instead of update calls when possible.

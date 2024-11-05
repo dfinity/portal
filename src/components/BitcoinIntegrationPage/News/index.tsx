@@ -55,49 +55,7 @@ function News({ content = "btc" }) {
             description="Chain Fusion Day - Bitcoin Edition was a half-day side event at Bitcoin Nashville 2024 that brought together researchers, founders, builders, and investors committed to developing a scalable Bitcoin economy."
           />
         ) : (
-          <div
-            className={
-              "md:h-[450px] flex flex-col md:flex-row rounded-xl overflow-hidden"
-            }
-          >
-            <Link
-              className="aspect-video md:w-7/10 flex relative group"
-              href="https://b.tc/conference/2024"
-            >
-              <img
-                src="img/bitcoin-integration/btc-nashville.webp"
-                alt="Bitcoin 2024 Conference"
-                className="w-full h-full object-cover"
-              />
-            </Link>
-            <div className="md:w-3/10 flex bg-white-80 border border-solid border-white md:rounded-tr-xl rounded-br-xl p-8 md:p-12 backdrop-blur-2xl">
-              <div className="self-end">
-                <h4 className="text-black tw-paragraph mb-0">
-                  Jul 25 - 27 <span className="mx-1 md:mx-2">|</span>Nashville,
-                  Tennessee
-                </h4>
-
-                <p className="mb-0 tw-heading-5 md:tw-heading-4 !font-[450] mt-2 md:mt-3">
-                  Bitcoin Nashville
-                </p>
-
-                <p className="text-black-60 tw-paragraph md:tw-prag mb-0 mt-3 line-clamp-4">
-                  With the upcoming Halvening, 2024 is shaping up to be the
-                  biggest year for bitcoin yet. We are building out core
-                  neighborhoods & content tracks to accelerate
-                  hyperbitcoinizatioin across multiple vectors.
-                </p>
-                <Link
-                  className="link-primary link-with-icon mt-4"
-                  href="https://b.tc/conference/2024"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Register now <LinkArrowUpRight />
-                </Link>
-              </div>
-            </div>
-          </div>
+          <></>
         )}
       </div>
       <div className="mt-4 md:mt-20 grid grid-cols-1 md:grid-cols-3 gap-5">

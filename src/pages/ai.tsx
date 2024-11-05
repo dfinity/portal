@@ -166,7 +166,7 @@ function AIPage() {
                 className="tw-lead-sm md:tw-lead mb-8"
                 variants={transitions.item}
               >
-                Al can be run truly on-chain as Internet Computer smart
+                Al can be run truly onchain as Internet Computer smart
                 contracts, making it tamperproof and unstoppable, and autonomous
                 if needed
               </motion.p>
@@ -276,7 +276,7 @@ function AIPage() {
                 >
                   <VideoCard
                     image="/img/decentralized-ai/thumb-ai-video-thumb3.webp"
-                    title="On-chain Facial Recognition – AI running on ICP"
+                    title="Onchain Facial Recognition – AI running on ICP"
                     label="Demo"
                     link={`https://www.youtube.com/watch?v=hEFff_GGj30&list=PLuhDt1vhGcrfWz1ZJrAmJBDS6aFADySwt&index=3`}
                     description="The world's first demonstration of AI inference running directly on the blockchain, presented by Dominic Williams"
@@ -690,7 +690,7 @@ let result = model.run(
               <NewsCard
                 news={{
                   title:
-                    "The Next Step for DeAI: On-Chain Inference Enabling Face Recognition",
+                    "The Next Step for DeAI: Onchain Inference Enabling Face Recognition",
                   dateHuman: "July 15,2024",
                   press: "DFINITY",
                   details: `The replica version e4eeb3 that was approved by the community in Proposal 13094 completes the Cyclotron milestone from ICP’s roadmap.`,

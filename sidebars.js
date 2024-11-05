@@ -99,6 +99,7 @@ const sidebars = {
             "developer-docs/smart-contracts/overview/introduction",
             "developer-docs/smart-contracts/overview/inside-canisters",
             "developer-docs/smart-contracts/overview/canister-lifecycle",
+            "developer-docs/smart-contracts/overview/trust-in-canisters",
           ],
         },
         {
@@ -167,6 +168,14 @@ const sidebars = {
         },
         {
           type: "category",
+          label: "Cost",
+          items: [
+            "developer-docs/gas-cost",
+            "developer-docs/cost-estimations-and-examples",
+          ],
+        },
+        {
+          type: "category",
           label: "Maintain",
           items: [
             "developer-docs/smart-contracts/maintain/control",
@@ -182,14 +191,6 @@ const sidebars = {
             "developer-docs/smart-contracts/maintain/storage",
             "developer-docs/smart-contracts/maintain/trapping",
             "developer-docs/smart-contracts/maintain/upgrade",
-            {
-              type: "category",
-              label: "Cost",
-              items: [
-                "developer-docs/gas-cost",
-                "developer-docs/cost-estimations-and-examples",
-              ],
-            },
             {
               type: "category",
               label: "Topping up canisters",
@@ -529,6 +530,7 @@ const sidebars = {
                 "developer-docs/developer-tools/off-chain/agents/rust-agent",
               ],
             },
+            "developer-docs/developer-tools/off-chain/canpack",
             "developer-docs/developer-tools/off-chain/canbench",
           ],
         },
@@ -544,6 +546,7 @@ const sidebars = {
           type: "category",
           label: "IDE",
           items: [
+            "developer-docs/developer-tools/ide/icp-ninja",
             "developer-docs/developer-tools/ide/vs-code",
             "developer-docs/developer-tools/ide/playground",
             "developer-docs/developer-tools/ide/gitpod",
@@ -1107,10 +1110,21 @@ const sidebars = {
           label: "Overview",
           id: "developer-docs/ai/overview",
         },
-        "developer-docs/ai/ai-on-chain",
-        "developer-docs/ai/machine-learning-sample",
-      ],
-    },
+        {
+          type: "category",
+          label: "Inference",
+          items: [
+            {
+              type: "doc",
+              label: "Overview",
+              id: "developer-docs/ai/inference",
+            },
+            "developer-docs/ai/samples",
+            ],
+          },
+          "developer-docs/ai/training-models",
+        ],
+      },
     {
       type: "category",
       label: "Governance",
@@ -1130,6 +1144,7 @@ const sidebars = {
               items: [
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-send-and-receive-tokens",
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-importing-tokens",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-staking-a-neuron",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-voting-on-proposals",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-following-other-neurons",
@@ -1274,7 +1289,6 @@ const sidebars = {
             "references/samples/motoko/encrypted-notes-dapp/README",
             "references/samples/motoko/life/README",
             "references/samples/motoko/hello_cycles/README",
-            "references/samples/motoko/http_counter/README",
             "references/samples/motoko/send_http_get/README",
             "references/samples/motoko/send_http_post/README",
             "references/samples/motoko/ic-pos/README",
@@ -1338,19 +1352,6 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Core concepts",
-      items: [
-        "concepts/canisters-code",
-        "concepts/governance",
-        "concepts/nodes-subnets",
-        "concepts/subnet-types",
-        "concepts/tokens-cycles",
-        "concepts/trust-in-canisters",
-        "concepts/glossary",
-      ],
-    },
-    {
-      type: "category",
       label: "References",
       items: [
         {
@@ -1361,16 +1362,6 @@ const sidebars = {
             "references/ic-interface-spec",
             "references/id-encoding-spec",
           ],
-        },
-        {
-          type: "doc",
-          label: "Message execution properties",
-          id: "references/message-execution-properties",
-        },
-        {
-          type: "doc",
-          label: "Ingress messages",
-          id: "references/ingress-messages",
         },
         {
           type: "category",
@@ -1416,6 +1407,11 @@ const sidebars = {
           ],
         },
         {
+          type: "doc",
+          label: "Execution errors",
+          id: "references/execution-errors",
+        },
+        {
           type: "category",
           label: "Feature references",
           items: [
@@ -1426,6 +1422,34 @@ const sidebars = {
             "references/vetkeys-overview",
             "references/supported-signatures",
           ],
+        },
+        {
+          type: "doc",
+          label: "Glossary",
+          id: "references/glossary",
+        },
+        {
+          type: "category",
+          label: "ICP dashboard",
+          items: [
+            {
+              type: "doc",
+              label: "Overview",
+              id: "references/dashboard/overview",
+            },
+            "references/dashboard/using-the-dashboard",
+            "references/dashboard/dashboard-apis",
+          ],
+        },
+        {
+          type: "doc",
+          label: "Message execution properties",
+          id: "references/message-execution-properties",
+        },
+        {
+          type: "doc",
+          label: "Ingress messages",
+          id: "references/ingress-messages",
         },
         {
           type: "category",
@@ -1440,6 +1464,18 @@ const sidebars = {
           ],
         },
         {
+            type: "category",
+            label: "Subnets",
+            items: [
+              {
+                type: "doc",
+                label: "Overview",
+                id: "references/subnets/overview",
+              },
+              "references/subnets/subnet-types",
+            ],
+          },
+        {
           type: "category",
           label: "FAQs",
           items: [
@@ -1449,11 +1485,6 @@ const sidebars = {
             "developer-docs/multi-chain/faq/ckerc20-faq",
             "developer-docs/multi-chain/faq/signatures-faq",
           ],
-        },
-        {
-          type: "doc",
-          label: "Execution errors",
-          id: "references/execution-errors",
         },
       ],
     },

@@ -36,7 +36,7 @@ If you are working in a local development environment, i.e., with a local replic
 
 ### Accounts
 
-An ICP ledger account (see [ICRC-1 standard](/docs/current/developer-docs/defi/tokens/token-standards#icrc-1) belongs to and is controlled by the account owner, who must have a valid principal ID. No account can be owned by two or more principals (no "joint accounts"). However, since a principal can refer to an external user as well as to a canister, joint accounts can be implemented as canisters.
+An ICP ledger account (see [ICRC-1 standard](/docs/current/developer-docs/defi/tokens/token-standards#icrc-1)) belongs to and is controlled by the account owner, who must have a valid principal ID. No account can be owned by two or more principals (no "joint accounts"). However, since a principal can refer to an external user as well as to a canister, joint accounts can be implemented as canisters.
 
 An account on the ledger is represented and stored as an `AccountIdentifier`, which is derived from the principal ID and subaccount identifier by computing a hash of the two. The subaccount is an optional bitstring that helps distinguish between the different sub-accounts of the same owner.
 
@@ -46,8 +46,6 @@ In this context, you can think of principal identifiers as a rough equivalent to
 
 The main reason for introducing accounts was to allow a principal to control multiple accounts. While this could be abstracted away for a user by the wallet software, this is not possible for canisters.
 :::
-
-
 
 
 ## Deploying the ledger locally
@@ -82,36 +80,62 @@ If using `dfx` version 0.17.1 or newer, choose 'Motoko' for the backend language
 
 ### Step 3: Determine the ledger file locations.
 
-Go to the [releases overview](https://dashboard.internetcomputer.org/releases) and copy the latest replica binary revision. At the time of writing, this is `d87954601e4b22972899e9957e800406a0a6b929`.
+Go to the [releases overview](https://dashboard.internetcomputer.org/releases) and copy the latest replica binary revision. At the time of writing, this is `aba60ffbc46acfc8990bf4d5685c1360bd7026b9`.
 
-The URL for the ledger Wasm module is `https://download.dfinity.systems/ic/<REVISION>/canisters/ledger-canister.wasm.gz`, so with the above revision it would be `https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ledger-canister.wasm.gz`.
+The URL for the ledger Wasm module is `https://download.dfinity.systems/ic/<REVISION>/canisters/ledger-canister.wasm.gz`, so with the above revision it would be `https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ledger-canister.wasm.gz`.
 
-The URL for the ledger.did file is `https://raw.githubusercontent.com/dfinity/ic/<REVISION>/rs/rosetta-api/icp_ledger/ledger.did`, so with the above revision it would be `https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icp_ledger/ledger.did`.
+The URL for the ledger.did file is `https://raw.githubusercontent.com/dfinity/ic/<REVISION>/rs/ledger_suite/icp/ledger.did`, so with the above revision it would be `https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/ledger_suite/icp/ledger.did`.
 
-[OPTIONAL]
+#### Optional
 If you want to make sure you have the latest ICP ledger files, you can run the following script. Please ensure that you have [`jq`](https://jqlang.github.io/jq/) installed as the script relies on it.
 ``` sh
-curl -o download_latest_icp_ledger.sh "https://raw.githubusercontent.com/dfinity/ic/00a4ab409e6236d4082cee4a47544a2d87b7190d/rs/rosetta-api/scripts/download_latest_icp_ledger.sh"
+curl -o download_latest_icp_ledger.sh "https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/rosetta-api/scripts/download_latest_icp_ledger.sh"
 chmod +x download_latest_icp_ledger.sh
 ./download_latest_icp_ledger.sh
 ```
 
-### Step 4: Configure the `dfx.json` file.
+### Step 4: Create a new identity that will work as a minting account:
 
-Open the `dfx.json` file in your project's directory. Replace the existing content with the following:
+``` sh
+dfx identity new minter
+dfx identity use minter
+echo $(dfx ledger account-id)
+```
+
+Record the output of these commands as your minting account ID.
+
+Transfers from the minting account will create `Mint` transactions. Transfers to the minting account will create `Burn` transactions.
+
+### Step 5: Switch back to your default identity and record its ledger account identifier.
+
+``` sh
+dfx identity use default
+echo $(dfx ledger account-id)
+```
+
+Record the output of these commands as your default account ID.
+
+### Step 6: Configure the `dfx.json` file.
+
+Open the `dfx.json` file in your project's directory. Replace the existing content with the following, updating the values of `MINTER_ACCOUNT_ID` and `DEFAULT_ACCOUNT_ID` with the values obtained in the previous steps:
+
+:::info
+`dfx.json` does not support referring to values through environment variables. Values must be hardcoded in plain text.
+:::
 
 ``` json
 {
   "canisters": {
     "icp_ledger_canister": {
       "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/d87954601e4b22972899e9957e800406a0a6b929/rs/rosetta-api/icp_ledger/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/d87954601e4b22972899e9957e800406a0a6b929/canisters/ledger-canister.wasm.gz",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/ledger_suite/icp/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ledger-canister.wasm.gz",
       "remote": {
         "id": {
           "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
         }
-      }
+      },
+      "init_arg" : "(variant { Init = record { minting_account = "MINTER_ACCOUNT_ID"; initial_values = vec { record { "DEFAULT_ACCOUNT_ID"; record { e8s = 10_000_000_000 : nat64; }; }; }; send_whitelist = vec {}; transfer_fee = opt record { e8s = 10_000 : nat64; }; token_symbol = opt \"LICP\"; token_name = opt \"Local ICP\"; } })"
     }
   },
   "defaults": {
@@ -134,29 +158,19 @@ If you chose to download the ICP ledger files with the script you need to replac
   ...
 ```
 
-In an existing project you would only need to add the `icp_ledger_canister` canister to the `canisters` section.
+This `dfx.json` file also defines the init arguments for the ledger canister:
 
-### Step 5: Start a local replica.
+- Sets the minting account to the account identifier you saved in a previous step (`MINTER_ACCOUNT_ID`).
+- Mints 100 ICP tokens to the `DEFAULT_ACCOUNT_ID` (1 ICP is equal to 10^8 e8s).
+- Sets the transfer fee to 0.0001 ICP.
+- Names the token `Local ICP / LICP`.
+
+You can also pass these init args to the canister using the command line. [Learn more about init args](/docs/current/developer-docs/developer-tools/cli-tools/advanced-dfx/init-args/).
+
+### Step 7: Start a local replica.
 
 ``` sh
 dfx start --clean --background
-```
-
-### Step 6: Create a new identity that will work as a minting account:
-
-``` sh
-dfx identity new minter
-dfx identity use minter
-export MINTER_ACCOUNT_ID=$(dfx ledger account-id)
-```
-
-Transfers from the minting account will create `Mint` transactions. Transfers to the minting account will create `Burn` transactions.
-
-### Step 7: Switch back to your default identity and record its ledger account identifier.
-
-``` sh
-dfx identity use default
-export DEFAULT_ACCOUNT_ID=$(dfx ledger account-id)
 ```
 
 ### Step 8: Deploy the ledger canister locally:
@@ -166,35 +180,10 @@ In this workflow, you cannot deploy this canister to the playground (using flag 
 :::
 
 ```
-dfx deploy --specified-id ryjl3-tyaaa-aaaaa-aaaba-cai icp_ledger_canister --argument "
-  (variant {
-    Init = record {
-      minting_account = \"$MINTER_ACCOUNT_ID\";
-      initial_values = vec {
-        record {
-          \"$DEFAULT_ACCOUNT_ID\";
-          record {
-            e8s = 10_000_000_000 : nat64;
-          };
-        };
-      };
-      send_whitelist = vec {};
-      transfer_fee = opt record {
-        e8s = 10_000 : nat64;
-      };
-      token_symbol = opt \"LICP\";
-      token_name = opt \"Local ICP\";
-    }
-  })
-"
+dfx deploy --specified-id ryjl3-tyaaa-aaaaa-aaaba-cai icp_ledger_canister
 ```
 
-Take a moment to read the details of the call made above. Not only are you deploying the ICP ledger canister, you are also:
-- Deploying the canister to the same canister ID as the mainnet ledger canister. This is to make it easier to switch between local and mainnet deployments.
-- Setting the minting account to the account identifier you saved in a previous step (`MINTER_ACCOUNT_ID`).
-- Minting 100 ICP tokens to the `DEFAULT_ACCOUNT_ID` (1 ICP is equal to 10^8 e8s).
-- Setting the transfer fee to 0.0001 ICP.
-- Naming the token `Local ICP / LICP`
+Take a moment to read the details of the call made above. Not only are you deploying the ICP ledger canister, you are also deploying the canister to the same canister ID as the mainnet ledger canister. This is to make it easier to switch between local and mainnet deployments.
 
 ### Step 9: Interact with the canister.
 

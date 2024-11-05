@@ -224,6 +224,12 @@ Replicated queries, also referred to as the "query-as-update" execution model, a
 
 Inter-canister calls are used to make calls between different canisters. An inter-canister call involves two messages: a request from the caller to the callee along with a response that the callee will return to the caller.
 
+### Authorized calls
+
+An authorized call on ICP refers to a call to a canister that can only be made by a principal (a user or another canister) that has the necessary permissions to perform the call. For example, only a controller of a canister can call the canister's `install_code` function.
+
+Authorized calls that return a value of `()` indicate that the function was successful, but may not take an argument or return a meaningful value. If an authorized call is unsuccessful, it will return an error.
+
 ## Making calls with IDLs
 
 On the protocol level, calls on ICP use blobs to describe arguments and results passed to and returned from canisters. It's typically easier to use an [Interface description language](https://en.wikipedia.org/wiki/Interface_description_language) (IDL) to define a canister's interfaces that can be called by end users or other canisters.
@@ -232,3 +238,17 @@ While any IDL can be used for this purpose, most canisters on ICP use Candid, a 
 - [What is Candid?](/docs/current/developer-docs/smart-contracts/candid/candid-concepts)
 - [Using Candid](/docs/current/developer-docs/smart-contracts/candid/candid-howto)
 - [Generating Candid files for Rust canisters](/docs/current/developer-docs/backend/rust/generating-candid)
+
+## Errors related to calling canisters
+
+Common errors related to calling canisters include:
+
+- [Method not found](/docs/current/references/execution-errors#method-not-found).
+
+- [Calling a system API from the wrong mode](/docs/current/references/execution-errors#calling-a-system-api-from-the-wrong-mode).
+
+- [Canister made a call with too large method name](/docs/current/references/execution-errors#canister-made-a-call-with-too-large-method-name).
+
+- [Canister made a call with too large payload](/docs/current/references/execution-errors#canister-made-a-call-with-too-large-payload).
+
+- [Canister made a call with too long timeout](/docs/current/references/execution-errors#canister-made-a-call-with-too-long-timeout).

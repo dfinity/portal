@@ -1,5 +1,5 @@
 ---
-keywords: [intermediate, browser js, javascript, agent js, agents]
+keywords: [intermediate, browser js, javascript, ICP JavaScript agent, agents]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -10,19 +10,19 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Overview
 
-To make API calls to ICP endpoints and canisters from a JavaScript program, the JavaScript agent (`agent-js`) can be used. `agent-js` provides call, query, and readState methods to an actor.
+To make API calls to ICP endpoints and canisters from a JavaScript program, the ICP JavaScript agent can be used. It provides call, query, and readState methods to an actor.
 
-## Install `agent-js`
+## Install the ICP JavaScript agent
 
-To install `agent-js` with `npm`, use the command:
+To install the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) with `npm`, use the command:
 
 ```
 npm i --save @dfinity/agent
 ```
 
-## Import `agent-js` in the browser
+## Import the ICP JavaScript agent in the browser
 
-To import `agent-js` in the browser, use the import statement:
+To import the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) in the browser, use the import statement:
 
 ```
 import * as agent from "@dfinity/agent";
@@ -36,7 +36,7 @@ import { Actor, HttpAgent } from '@dfinity/agent';
 
 ## Making API calls
 
-To make API calls, `agent-js` uses the [`fetch`](https://www.npmjs.com/package/isomorphic-fetch) API. Here is an example:
+To make API calls, the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) uses the [`fetch`](https://www.npmjs.com/package/isomorphic-fetch) API. Here is an example:
 
 ```javascript
 import fetch from 'isomorphic-fetch';
@@ -68,12 +68,11 @@ const fetchOptions = {
 
 const agent = new HttpAgent({ fetch, host, fetchOptions });
 ```
+## ICP JavaScript agent documentation
 
-## `agent-js` documentation
-
-To learn more about `agent-js`, check out the [`agent-js` documentation page](/docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent).
+To learn more about the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), check out the [ICP JavaScript agent documentation page](/docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent).
 
 
 ## Resources
 
-You can learn more about using `agent-js` to make API calls in the [`agent-js` API documentation](https://agent-js.icp.xyz/agent/index.html).
+You can learn more about using the ICP JavaScript agent to make API calls in the [API documentation](https://agent-js.icp.xyz/agent/index.html).

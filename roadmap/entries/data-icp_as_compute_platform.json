@@ -33,7 +33,7 @@
       "proposal": "",
       "docs": "",
       "eta": "",
-      "status": "in_progress",
+      "status": "deployed",
       "is_community": false,
       "in_beta": false,
       "milestone_id": "Tokamak"
@@ -44,7 +44,8 @@
       "description": "This milestone marks a significant reduction of user-perceived end-to-end latency for processing ingress messages. It is achieved by multiple concerted measures at different levels of the protocol stack and brings the user experience of Web3 closer to Web2.",
       "milestone_id": "Tokamak",
       "eta": "Q3 2024",
-      "status": "in_progress"
+      "status": "in_progress",
+      "eta_to_render": "November 2024"
     },
     {
       "title": "Increase Stable Memory Limit to 500GiB",
@@ -125,7 +126,8 @@
       "description": "Increased storage capacity of ICP subnets, storage per canister smart contract, and message throughput between subnets. Those improvements lead to each subnet being able to host larger workloads and better utilization of ICP’s hardware resources. The world's largest smart contracts can now grow even larger, far surpassing smart contracts on any other chain.",
       "milestone_id": "Stellarator",
       "status": "in_progress",
-      "eta": ""
+      "eta": "",
+      "eta_to_render": "November 2024"
     },
     {
       "title": "Configurable Wasm memory limit",
@@ -134,7 +136,7 @@
       "proposal": "https://dashboard.internetcomputer.org/proposal/105322",
       "docs": "",
       "eta": "2024",
-      "status": "in_progress",
+      "status": "deployed",
       "is_community": true,
       "in_beta": false,
       "imported": true
@@ -253,7 +255,7 @@
       "proposal": "",
       "docs": "",
       "eta": "",
-      "status": "in_progress",
+      "status": "deployed",
       "is_community": false,
       "in_beta": false
     },
@@ -391,17 +393,6 @@
       "in_beta": false
     },
     {
-      "title": "Reduction of call latencies",
-      "overview": "Reduce call latencies for the most-used call patterns that negatively affect dapp responsiveness.",
-      "status": "",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "is_community": true,
-      "in_beta": false
-    },
-    {
       "title": "WASI V2 support",
       "overview": "WASI V2 is the upcoming standard for running Wasm programs outside of browser environments. It is expected to become the de-facto standard and be targeted by many libraries and thus should be supported by ICP.",
       "status": "",
@@ -492,17 +483,6 @@
     {
       "title": "Subnet splitting V2",
       "overview": "An enhanced version of subnet splitting where all the heavy lifting is done by the protocol.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "P2P unicast",
-      "overview": "Utilizing unicast at the P2P layer to communicate artefacts instead of gossip to decrease bandwidth requirements and improve throughput.",
       "forum": "",
       "proposal": "",
       "docs": "",

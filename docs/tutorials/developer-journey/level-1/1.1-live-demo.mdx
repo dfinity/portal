@@ -62,7 +62,7 @@ To deploy a canister to the playground network, first open a terminal window if 
 Then, navigate into the project that you created in the [0.6: Introduction to dfx](/docs/current/tutorials/developer-journey/level-0/intro-dfx) module. You can use a command such as:
 
 ```bash
-cd developer_journey
+cd developer_journey/hello_world
 ```
 
 For more information on file system navigation using the CLI, check out the documentation on the [`cd` command](https://linuxcommand.org/lc3_man_pages/cdh.html).
@@ -92,11 +92,16 @@ This command deploys just the backend canister, since that will be the canister 
 The output of this command will resemble the following:
 
 ```bash
+WARN: The default identity is not stored securely. Do not use it to control a lot of cycles/ICP. Create a new identity with `dfx identity new` and use it in mainnet-facing commands with the `--identity` flag
 Deployed canisters.
 URLs:
   Backend canister via Candid interface:
-    hello_world_backend: http://bkyz2-fmaaa-aaaaa-qaaaq-cai.icp0.io
+    hello_world_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=zeh3m-fiaaa-aaaab-qacda-cai
 ```
+
+:::info
+The identity warning returned in the output of this command is expected. At this point, we have not configured `dfx` to use an identity, so the default is used. The default identity's seed phrase is not stored securely, and therefore should not be used to control cycles or ICP tokens.
+:::
 
 ### Interacting with the canister via the CLI
 
@@ -160,7 +165,7 @@ You can play around with this user interface by inputting different text, such a
 
 Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
-- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
+- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
 - [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
@@ -176,7 +181,7 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Upcoming hackathons](https://dfinity.org/hackathons/).
 
-- [Weekly developer office hours](https://discord.gg/4a7SZzRk?event=1164114241893187655) to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on our [developer Discord](https://discord.com/invite/cA7y6ezyE2) group.
+- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
 
 - Submit your feedback to the [ICP Developer feedback board](http://dx.internetcomputer.org).
 

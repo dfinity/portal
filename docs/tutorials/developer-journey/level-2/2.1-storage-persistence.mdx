@@ -45,22 +45,22 @@ Upgrading a canister is a key feature of ICP, since it allows canister smart con
 For canisters written in Motoko, stable memory can be utilized through the Motoko stable storage and stable variable features. These features are most notably used in the canister upgrade process. The upgrade process for Motoko canisters is as follows:
 
 - First, the canister must be stopped so it does not accept any new incoming requests.
-- A `pre_upgrade` hook is executed if one is defined. This hook can be used for functions such as creating a backup of data. Note: Having a `pre_upgrade` hook is not recommended, since the `pre_upgrade` hook is run in the current Wasm. If there are any bugs or errors, the canister will trap.
+- A `pre_upgrade` hook is executed if one is defined. This hook can be used for functions such as creating a backup of data. Note: Having a `pre_upgrade` hook is strongly discouraged and not best practice, since the `pre_upgrade` hook is run in the current Wasm. If there are any bugs or errors, the canister will trap.
 - Then, the system discards the canister's heap memory and initializes a new version of the canister's Wasm module. Stable memory is preserved and made available to the new Wasm module.
 - Next, the new canister code is installed using the `--mode upgrade` flag.
 - Then, the canister is started, now running the newly upgraded code.
-- Any stable variables are re-loaded as part of the `post_upgrade` hook. After the stable variables are re-loaded, the stable memory bytes that stored those variables are overwritten with zeroes to minimize stable memory costs for the canister.
+- Any stable variables are re-loaded as part of the `post_upgrade` hook. Note: Having a `pre_upgrade` hook is strongly discouraged and not best practice. After the stable variables are re-loaded, the stable memory bytes that stored those variables are overwritten with zeroes to minimize stable memory costs for the canister.
 
 ### Rust stable memory workflow
 
 For canisters written in Rust, stable memory can be utilized through two Rust crates: [ic-stable-memory](https://github.com/seniorjoinu/ic-stable-memory) and [ic-stable-structures](https://github.com/dfinity/stable-structures). These features are most notably used in the canister upgrade process. The upgrade process for Rust canisters is as follows:
 
 - First, the canister must be stopped so it does not accept any new incoming requests.
-- A `pre_upgrade` hook is executed if one is defined. This hook can be used for functions such as creating a backup of data.
+- A `pre_upgrade` hook is executed if one is defined. This hook can be used for functions such as creating a backup of data. Note: Having a `pre_upgrade` hook is strongly discouraged and not best practice, since the `pre_upgrade` hook is run in the current Wasm. If there are any bugs or errors, the canister will trap
 - Then, the system discards the canister's heap memory and initializes a new version of the canister's Wasm module. Stable memory is preserved and made available to the new Wasm module.
 - Next, the new canister code is installed using the `--mode upgrade` flag.
 - Then, the canister is started, now running the newly upgraded code.
-- A `post_upgrade` hook is called on the newly created instance if one is defined. The `init` function is not executed.
+- A `post_upgrade` hook is called on the newly created instance if one is defined. The `init` function is not executed. Note: Having a `pre_upgrade` hook is strongly discouraged and not best practice.
 
 ## Stable storage and stable variables
 
@@ -246,7 +246,7 @@ Now, navigate back to the Candid UI URL provided in the output and click the 'Ca
 
 Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
-- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
+- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
 - [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
@@ -260,7 +260,7 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Upcoming hackathons](https://dfinity.org/hackathons/).
 
-- [Weekly developer office hours](https://discord.gg/4a7SZzRk?event=1164114241893187655) to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on our [developer Discord](https://discord.com/invite/cA7y6ezyE2) group.
+- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
 
 - Submit your feedback to the [ICP Developer feedback board](http://dx.internetcomputer.org).
 

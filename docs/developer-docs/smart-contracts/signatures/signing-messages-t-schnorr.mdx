@@ -8,13 +8,13 @@ import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Signing t-Schnorr messages
+# Signing with t-Schnorr
 
 <MarkdownChipRow labels={["Advanced", "Tutorial"]} />
 
 ## Overview
 
-The threshold Schnorr API allows canisters to securely sign messages and transactions without anyone ever having direct access to the corresponding private keys. Each canister can control an unlimited number of keys by specifying different key `derivation_path`s and `key_id`s.
+The threshold Schnorr API allows canisters to securely sign messages and transactions without the corresponding private keys ever existing. Each canister can control an unlimited number of keys by specifying different key `derivation_path`s and `key_id`s.
 
 The API provides two methods:
 
@@ -68,7 +68,7 @@ To deploy code using the `sign_with_schnorr` method, you will need to specify th
 
 </TabItem>
 
-<TabItem value="rust" label="rust">
+<TabItem value="rust" label="Rust">
 
 ```rust
 #[update]
@@ -135,7 +135,7 @@ function verify(bip340) {
 
 </TabItem>
 
-<TabItem value="rust" label="rust">
+<TabItem value="rust" label="Rust">
 
 ```rust
 #[query]
@@ -200,7 +200,7 @@ function verify(ed25519) {
 ```
 
 </TabItem>
-<TabItem value="rust" label="rust">
+<TabItem value="rust" label="Rust">
 
 ```rust
 #[query]

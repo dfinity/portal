@@ -5,7 +5,7 @@
     {
       "title": "Threshold EdDSA signing",
       "overview": "Threshold EdDSA support using cryptographic multiparty computation (MPC). Enables trustless integrations with all chains using EdDSA on the Ed25519 curve like Solana or Cardano.",
-      "status": "in_progress",
+      "status": "deployed",
       "eta": "2024",
       "forum": "",
       "proposal": "",
@@ -19,10 +19,10 @@
       "overview": "RPC canister connecting to Solana RPC providers to integrate with the Solana network. Enables two-way communication with the Solana network.",
       "forum": "",
       "proposal": "",
-      "docs": "",
+      "docs": "https://github.com/mfactory-lab/ic-solana",
       "eta": "",
-      "status": "upcoming",
-      "is_community": false,
+      "status": "in_progress",
+      "is_community": true,
       "in_beta": false,
       "milestone_id": "Helium"
     },
@@ -32,7 +32,8 @@
       "description": "This milestone enables Chain Fusion for the Solana network, bringing Solana and ICP closer together, combining the powers of the two networks. Dapps leveraging the capabilities of both networks look and feel like single-network dapps.",
       "milestone_id": "Helium",
       "status": "in_progress",
-      "eta": "Q4 2024"
+      "eta": "Q4 2024",
+      "eta_to_render": ""
     },
     {
       "title": "EVM in a canister",
@@ -103,8 +104,8 @@
       "imported": true
     },
     {
-      "title": "On-chain Bitcoin explorer",
-      "overview": "Fully on-chain Bitcoin explorer running on ICP. Adds a missing piece of decentralized infrastructure to the Bitcoin ecosystem.",
+      "title": "Onchain Bitcoin explorer",
+      "overview": "Fully onchain Bitcoin explorer running on ICP. Adds a missing piece of decentralized infrastructure to the Bitcoin ecosystem.",
       "forum": "",
       "proposal": "",
       "docs": "",
@@ -114,7 +115,7 @@
       "in_beta": false
     },
     {
-      "title": "On-chain Ethereum block explorer",
+      "title": "Onchain Ethereum block explorer",
       "overview": "Ethereum block explorer running fully on chain on ICP. Adding a missing piece of decentralized infrastructure to the Ethereum ecosystem.",
       "status": "future",
       "forum": "",
