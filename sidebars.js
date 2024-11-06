@@ -20,7 +20,7 @@ const sidebars = {
         {
           type: "doc",
           label: "Install tools",
-          id: "developer-docs/getting-started/install/index",
+          id: "developer-docs/getting-started/install",
         },
         {
           type: "doc",

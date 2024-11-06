@@ -24,7 +24,7 @@ To deploy a simple 'Hello, world!' smart contract, you can use a variety of deve
 
 - Cloud-based environments such as Gitpod or GitHub Codespaces.
 
-Each developer environment uses [`dfx`](./install/index.mdx), a command-line tool that is used for developing and deploying smart contracts on ICP. 
+Each developer environment uses [`dfx`](/docs/current/developer-docs/getting-started/install), a command-line tool that is used for developing and deploying smart contracts on ICP. 
 
 :::info
 
@@ -65,7 +65,7 @@ Gitpod and GitHub Codespaces are cloud-based developer environments that can be 
 
 ### Install `dfx`
 
-Download and install the latest version of [dfx](install/index.mdx). `dfx` is a CLI tool used for developing and deploying ICP smart contracts:
+Download and install the latest version of [dfx](/docs/current/developer-docs/getting-started/install). `dfx` is a CLI tool used for developing and deploying ICP smart contracts:
 
 ```bash
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
@@ -390,3 +390,76 @@ Currently supported CDKs include:
 - [Bitfinity EVM for Solidity (Beta)](/docs/current/developer-docs/backend/solidity/).
 
 - [C++ CDK](https://docs.icpp.world/).
+
+
+## Installing a CDK
+
+### Motoko
+
+By default, Motoko is installed with `dfx`. Alternatively, you can build it from
+source following
+[these instructions](https://github.com/dfinity/motoko/blob/master/Building.md).
+
+### Rust
+
+By default, the Rust CDK is installed with `dfx`. Alternatively, you can install
+it yourself by adding the following dependency in your `Cargo.toml` file:
+
+```toml
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+ic-cdk = "0.12"
+# Only necessary if you want to define Candid data types
+candid = "0.10"
+```
+
+Below is a brief example on how to use the Rust CDK:
+
+```rust
+#[ic_cdk::query]
+fn hello() -> String {
+    "world".to_string()
+}
+```
+
+### TypeScript / JavaScript
+
+The TypeScript and JavaScript CDK, known as Azle, is supported by `dfx`. Learn more about how to [install and use Azle](/docs/current/developer-docs/backend/typescript/).
+
+:::caution
+
+Azle is currently in beta and should be used with caution.
+
+:::
+
+### Python
+
+The Python CDK, known as Kybra, is supported by `dfx`. Learn more about how to [install and use Kybra](/docs/current/developer-docs/backend/python/).
+
+:::caution
+
+Kybra is currently in beta and should be used with caution.
+
+:::
+
+### Solidity
+
+Solidity smart contracts can be created using the Bitfinity EVM. To use the
+Bitfinity EVM, you can make calls to the
+[Bitfinity mainnet or testnet](https://docs.bitfinity.network/getting-started/network-endpoints).
+
+Learn more about how to use the [Bitfinity EVM](https://docs.bitfinity.network/ic-agent/overview).
+
+:::caution
+Bitfinity EVM is currently in beta and should be used with caution.
+:::
+
+### C++
+
+C++ is supported through the [ICPP-pro CDK](https://docs.icpp.world/installation.html).
+
+## Next steps
+
+- [Learn about developer accounts](/docs/current/developer-docs/getting-started/accounts).

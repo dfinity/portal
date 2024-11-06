@@ -1,0 +1,42 @@
+#### Troubleshooting
+
+#### Node.js is not properly installed
+
+WSL 2 has Node.js <code>10.x.x</code> installed by default. But the latest
+
+<code>dfx</code> requires Node.js <code>16.x.x</code> or <code>18.x.x</code>.
+
+#### Permission denied when running <code>dfx start</code>
+
+Projects created from <code>dfx</code> need to be on the Linux filesystem
+instead of the Windows filesystem. Usually <code>cd ~</code> or <code>cd $HOME</code>
+in the WSL terminal will bring you to the home directory, and creating projects in t
+here should work.
+
+#### No internet access on WSL
+
+If you don’t have internet access on WSL, for instance you cannot ping any
+server successfully, most likely the nameserver on WSL is set to an internal WSL
+proxy. You can check the <code>/etc/resolv.conf</code> file to see if it’s the
+case. If it’s true, please follow the below steps to set to a valid nameserver:
+
+<br />
+
+<ul>
+  <li>
+    Step 1: Create the <code>/etc/wsl.conf</code> file and add the below content
+    to it, this will prevent WSL from regenerating the{" "}
+    <code>/etc/resolv.conf</code> file after restarting.
+  </li>
+</ul>
+
+```bash
+  [network]
+  generateResolvConf = false
+```
+
+<ul>
+  <li>Step 2: Modify the nameserver in the <code>/etc/resolv.conf</code> file to a valid one, for example the Google nameserver <code>8.8.8.8</code>.</li>
+  <li>Step 3: On Windows, restart WSL to let this fix take effect.</li>
+  <code>wsl.exe --shutdown</code>
+</ul>

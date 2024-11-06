@@ -129,7 +129,7 @@ const redirects = `
   /docs/current/developer-docs/quickstart/* /docs/current/tutorials/developer-journey/
   /developers-guide/quickstart /docs/current/tutorials/developer-journey/
   /docs/current/developer-docs/quickstart/cycles-faucet /docs/current/developer-docs/getting-started/tokens-and-cycles
-  /docs/current/developer-docs/quickstart/windows-wsl /docs/current/developer-docs/getting-started/install/windows-wsl
+  /docs/current/developer-docs/quickstart/windows-wsl /docs/current/developer-docs/getting-started/install
   /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/developer-journey/
 
   /docs/rosetta-api/ledger /docs/current/developer-docs/defi/tokens/token-standards

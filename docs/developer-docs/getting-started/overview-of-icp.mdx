@@ -11,13 +11,6 @@ import DocsCard from "@site/src/components/Card/";
 
 <MarkdownChipRow labels={["Beginner", "Getting started" ]} />
 
-<div class="text--center">
-<p> </p>
-</div>
-<div class="text--center">
-<iframe width="860" height="515" src="https://www.youtube.com/embed/oBUpJ4CqmN0?si=BlGt-pDzRu1lLJEI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
 The Internet Computer Protocol (ICP) is a secure compute platform based on [threshold cryptography](https://en.wikipedia.org/wiki/Threshold_cryptosystem), [state machine replication](https://en.wikipedia.org/wiki/State_machine_replication), and [a novel consensus algorithm](https://eprint.iacr.org/2021/632.pdf). Anyone can build an application on ICP without going through a centralized authority.
 
 It was carefully designed to give smart contracts near native performance and scalability while maintaining the security of decentralized execution.
@@ -28,6 +21,9 @@ Smart contracts on ICP can host web assets and serve HTTP requests from users, t
 They can also interact with RPC nodes of other blockchains and Web2 servers through secure HTTP requests.
 These features, combined with threshold signatures, give smart contracts the ability to hold assets and make transactions on other blockchains such as Bitcoin and Ethereum.
 
+#### Read on to learn more about how these features are made possible, watch the [video below](#video-overview-of-icp) for a high-level overview, or [start building](#ready-to-start-building).
+
+
 <div class="text--center">
   <img
     src={useBaseUrl("/img/docs/icp-intro.png")}
@@ -36,7 +32,15 @@ These features, combined with threshold signatures, give smart contracts the abi
   />
 </div>
 
-**Read on to learn more about how these features are made possible, or [start building](#ready-to-start-building).**
+## Video: Overview of ICP
+
+<div class="text--center">
+<p> </p>
+</div>
+<div class="text--center">
+<iframe width="860" height="515" src="https://www.youtube.com/embed/oBUpJ4CqmN0?si=BlGt-pDzRu1lLJEI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
 
 ## Subnets
 A blockchain can only run as fast and offer as many resources as a single node.
@@ -190,13 +194,8 @@ It is possible to participate in governance without having a node, and vice vers
 Becoming a node provider on ICP requires voting from the DAO community.
 There are two reasons for this:
 
-1. It ensures that the hardware meets the high standards of ICP: 64 CPU cores, 512GiB of RAM, 30TB of NVMe SSD.
-   Such nodes can sustain high throughput and enable powerful Web3 applications.
-1. It ensures that the identity of the node provider is known to the community.
-   The node provider has signed a declaration of good intent and may be liable if the node misbehaves.
-   This makes Sybil attacks harder to pull off and allows for the ability to reduce the number of nodes while keeping the Nakamoto coefficient high.
-   Nodes are assigned to subnets such that they maximize decentralization, in terms of operators, geography, and jurisdiction.
-   This is called **deterministic decentralization**.
+1. It ensures that the hardware meets the high standards of ICP: 64 CPU cores, 512GiB of RAM, 30TB of NVMe SSD. Such nodes can sustain high throughput and enable powerful Web3 applications.
+1. It ensures that the identity of the node provider is known to the community. The node provider has signed a declaration of good intent and may be liable if the node misbehaves. This makes Sybil attacks harder to pull off and allows for the ability to reduce the number of nodes while keeping the Nakamoto coefficient high. Nodes are assigned to subnets such that they maximize decentralization, in terms of operators, geography, and jurisdiction. This is called **deterministic decentralization**.
 
 Currently, subnets contain between 13 and 40 nodes, and most of them are geographically distributed. However, there can also be localized subnets to support applications that need to comply with local regulations.
 

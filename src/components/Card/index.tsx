@@ -1,7 +1,5 @@
 import Link from "@docusaurus/Link";
 import React, { FC, ReactNode } from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
-import LinkArrowRight from "../Common/Icons/LinkArrowRight";
 
 interface TileDescriptor {
   isGhostTile?: boolean;
@@ -27,7 +25,7 @@ const languagesTiles: TileDescriptor[] = [
     action: (
       <Link
         href="/docs/current/developer-docs/getting-started/explore-examples"
-        className="button button-ghost bg-white/90 rounded-2xl button-with-icon"
+        className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Get started with ICP Ninja"
       >
         <span>Get started with ICP Ninja</span>
@@ -40,16 +38,16 @@ const languagesTiles: TileDescriptor[] = [
       "dfx is a command line tool used to create, deploy, and manage ICP smart contracts. Jump into developing in a local environment.",
     icon: (
       <img
-        src="/img/docs/dfinity-logo.png"
+        src="/img/dfinity_logo.svg"
         alt="Get started with dfx"
-        className="w-20 h-10"
+        className="w-10 h-10"
         loading="lazy"
       />
     ),
     action: (
       <Link
-        href="/docs/current/developer-docs/getting-started/install-tools"
-        className="button button-ghost bg-white/90 rounded-2xl button-with-icon"
+        href="/docs/current/developer-docs/getting-started/install"
+        className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Get started with dfx"
       >
         <span>Get started with dfx</span>
@@ -64,13 +62,13 @@ const Tile = ({ tile }: { tile: TileDescriptor }) => {
       className={`flex flex-col ${
         tile.isGhostTile
           ? "bg-grey-200 border-grey-200 hidden lg:block"
-          : "bg-grey-70 border-grey"
-      } rounded-lg border border-solid p-4 h-[260px]`}
+          : "bg-page"
+      } rounded-lg border p-4 h-[260px]`}
     >
       <div className={"flex flex-col gap-2 items-start"}>
         <div className={"flex flex-row gap-2"}>
           {tile.icon}
-          <span className={"tw-heading-5 mb-6 whitespace-pre-wrap"}>
+          <span className={"tw-heading-4 mb-6 whitespace-pre-wrap"}>
             {tile.label}
           </span>
         </div>

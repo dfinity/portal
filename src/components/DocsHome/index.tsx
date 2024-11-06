@@ -10,8 +10,6 @@ import {
   TeaserCard,
 } from "@site/src/components/DocsHome/TeaserCard";
 import { GlossaryTooltip } from "@site/src/components/Tooltip/GlossaryTooltip";
-import DocsCard from "@site/src/components/Card/";
-
 
 const queryClient = new QueryClient();
 
@@ -481,12 +479,18 @@ const DocsHomePage: FC = () => {
               <LinkArrowRight />
             </Link>
             </p>
-            <div className="border border-black border-solid rounded-lg bg-white/10">
-            <DocsCard ></DocsCard>
-            </div>
+            <p className="mb-0">
+              <Link
+                className="button-white button-with-icon"
+                href="https://icp.ninja"
+              >
+              Start coding
+              <LinkArrowRight />
+            </Link>
+            </p>
           </div>
-
         </div>
+
         <div className="px-6 py-8 md:p-10 border border-white border-solid rounded-lg bg-white/70 sm:col-span-2">
           <QueryClientProvider client={queryClient}>
             <NetworkStats></NetworkStats>
