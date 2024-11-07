@@ -80,15 +80,15 @@ As ICP rejects `ingress_expiry` that is too far in the future, the time window f
 In summary, there are two options for a client:
 * _No retries, only poll `read_state`:_ Submit the `call` once, and poll `read_state` until at least one of the following conditions is met:
   * A certified response was produced. That is, the call status is `replied`, `rejected`, or `done`.
-  * `ingress_expiry` is reached, and the call status is not `received` or `processing`.
+  * The subnet time exceeds`ingress_expiry`, and the call status is not `processing`.
   
   Evaluating the second condition may be hard if the subnet time and local time of the user differ. 
 * _Retry the call while polling `read_state`_ Do the same as above, but resubmit the initial `call` (same `request_id`) periodically (e.g. every `30s`) until at least one of the following conditions is met: 
-  * The call is processing or a certified response was produced. That is, the call status is `received`, `processing`, `replied`, `rejected`, or `done`.
+  * The call is known to the system. That is, the call status is `received`, `processing`, `replied`, `rejected`, or `done`.
   * `ingress_expiry` is reached.
 
   This can be beneficial because a call that didn’t make it is retried. For example, if the first call was dropped due to a network issue or by a malicious replica, a subsequent call could make it through e.g. if it is successfully routed to an honest replica. 
 
-At the time of writing, both agent-js (v2.1.3) and agent-rs (v0.39.1) don't retry `call`, so they follow the first option above. By default, agent-js uses `ingress_expiry` of five minutes and also polls for five minutes. agent-rs sets a default `ingress_expiry` of four minutes and polls for five minutes, but whenever it observes a `received` or `processing` status, it resets the timer to allow for an additional four minutes of polling. 
+At the time of writing, both agent-js (v2.1.3) and agent-rs (v0.39.1) don't retry `call`, so they follow the first option above. By default, both agent-rs and agent-js use `ingress_expiry` of four minutes and poll for five minutes. Additionally, agent-rs resets the timer to allow for an additional five minutes of polling whenever it observes a `received` or `processing` status.
 
 Some time after expiry is reached, there is no way for the client to determine if the call was successful unless the canister’s API provides this information. In this case, the client can check the status of the call using application-specific APIs. There can be (hopefully uncommon) cases where the APIs don't allow checking this, in which case the client simply can’t tell if the message has been executed. Ideally, applications set expiry values such that under typical load timeouts are rare.
