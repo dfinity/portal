@@ -478,7 +478,7 @@
       "Wallet",
       "Chain Fusion"
     ],
-    "twitter": "https://x.com/OISY_Wallet"
+    "twitter": "https://x.com/OISY_Wallet",
     "description": "Oisy is a new browser-based, self-custodial and multi-chain wallet powered by Internet Computer's chain fusion technology.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/oisy_logo.svg"
@@ -646,7 +646,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "twitter":"https://x.com/querio_io"
+    "twitter":"https://x.com/querio_io",
     "description": "Querio is the most advanced web3.0 search engine of exceptional speed and accuracy, that empowers its users to search over the Internet Computer.",
     "logo": "/img/showcase/Querio_Logo.webp",
     "screenshots": []
@@ -969,7 +969,7 @@
     "tags": [
       "SocialFi"
     ],
-    "twitter":"https://x.com/DSocialApp"
+    "twitter":"https://x.com/DSocialApp",
     "description": "DSocial is a decentralized version of YouTube -- enabling content creators to be fairly rewarded for their work, and engagement. This Web3 media platform is hosted end-to-end on the Internet Computer interoperating with Arweave for decentralized video content.",
     "usesInternetIdentity": true,
     "display": "Normal",
