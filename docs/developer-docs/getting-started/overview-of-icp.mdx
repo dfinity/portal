@@ -13,7 +13,7 @@ import DocsCard from "@site/src/components/Card/";
 
 The Internet Computer Protocol (ICP) is a secure compute platform based on [threshold cryptography](https://en.wikipedia.org/wiki/Threshold_cryptosystem), [state machine replication](https://en.wikipedia.org/wiki/State_machine_replication), and [a novel consensus algorithm](https://eprint.iacr.org/2021/632.pdf). Anyone can build an application on ICP without going through a centralized authority.
 
-It was carefully designed to give smart contracts near native performance and scalability while maintaining the security of decentralized execution.
+It was carefully designed to give smart contracts near-native performance and scalability while maintaining the security of decentralized execution.
 In addition to classical DeFi smart contracts, such as ledgers and exchanges, ICP can run compute- and storage-heavy applications such as [image classification](https://github.com/dfinity/examples/tree/master/rust/image-classification) fully onchain.
 
 Another important design aspect of ICP is its seamless and secure integration with existing ecosystems.
@@ -83,9 +83,9 @@ This makes validation of the state and results trivial for users since all they 
 This feature has profound implications and use cases:
 
 - There is no need to keep the blocks in the blockchain available forever, which would be a scalability bottleneck.
-  In fact, ICP actively garbage collects old blocks to keep storage usage bounded.
+In fact, ICP actively garbage collects old blocks to keep storage usage bounded.
 - Smart contracts [can have their own secret keys](https://medium.com/dfinity/how-icps-bitcoin-integration-secures-private-keys-c2af14597846) and can sign transactions for other blockchains such as Bitcoin and Ethereum.
-  This enables trustless interaction with those blockchains.
+This enables trustless interaction with those blockchains.
 
 <div class="text--center">
   <img
@@ -102,7 +102,7 @@ This feature is called **Chain-Key Cryptography** on ICP.
 ## Smart contracts
 
 ICP uses [WebAssembly](https://internetcomputer.org/capabilities/webassembly) as the virtual machine for executing smart contracts.
-This means developers can write smart contracts in popular programming languages such as JavaScript, TypeScript, Rust, Python, and Motoko, which is specifically designed for ICP.
+This means developers can write smart contracts in popular programming languages such as JavaScript, TypeScript, Rust, Python, or Motoko, which is specifically designed for ICP.
 
 Furthermore, a single smart contract on ICP is powerful enough to host an entire Ethereum Virtual Machine (EVM).
 This allows the deployment of EVM smart contracts written in Solidity.
@@ -163,7 +163,7 @@ If a smart contract implements ICRC-2, then it implements a fungible token and h
 
 ## Messages
 
-The programming model of ICP is similar to the [Actor model](https://en.wikipedia.org/wiki/Actor_model), where calls are made by sending messages instead of transactions.
+The programming model of ICP is similar to the [actor model](https://en.wikipedia.org/wiki/Actor_model), where calls are made by sending messages instead of transactions.
 The difference between a transaction and a message becomes apparent only when the smart contract calls other smart contracts.
 A transaction is atomic in the sense that it rolls back all state changes if any of the calls fail.
 A message does not have such atomicity guarantees across calls.
@@ -173,8 +173,8 @@ If the smart contract does not make any calls, then the message behaves exactly 
 ## Cycles
 
 On other blockchains, such as Ethereum, users pay a variable fee for sending and executing transactions depending on the current gas price.
-In order to simplify the experience of users browsing Web3 applications, ICP employs a “reverse gas model”, where <GlossaryTooltip>canisters</GlossaryTooltip> pay for consumed resources by burning **cycles**.
-This is similar to gas in Ethereum, but has a fixed price correlating to a group of fiat currencies.
+In order to simplify the experience of users browsing Web3 applications, ICP employs a “reverse gas model," where <GlossaryTooltip>canisters</GlossaryTooltip> pay for consumed resources by burning **cycles**.
+This is similar to gas in Ethereum but has a fixed price correlating to a group of fiat currencies.
 
 ## Governance
 
@@ -185,8 +185,7 @@ All operational changes to ICP, such as upgrading nodes, go through voting.
 NNS automatically executes proposals that have passed voting, which ensures that nodes run the same version of the protocol and thus avoids hard forks.
 
 :::info
-Governance and node ownership are decoupled.
-It is possible to participate in governance without having a node, and vice versa.
+Governance and node ownership are decoupled. It is possible to participate in governance without having a node, and vice versa.
 :::
 
 ## Nodes
@@ -194,8 +193,8 @@ It is possible to participate in governance without having a node, and vice vers
 Becoming a node provider on ICP requires voting from the DAO community.
 There are two reasons for this:
 
-1. It ensures that the hardware meets the high standards of ICP: 64 CPU cores, 512GiB of RAM, 30TB of NVMe SSD. Such nodes can sustain high throughput and enable powerful Web3 applications.
-1. It ensures that the identity of the node provider is known to the community. The node provider has signed a declaration of good intent and may be liable if the node misbehaves. This makes Sybil attacks harder to pull off and allows for the ability to reduce the number of nodes while keeping the Nakamoto coefficient high. Nodes are assigned to subnets such that they maximize decentralization, in terms of operators, geography, and jurisdiction. This is called **deterministic decentralization**.
+1. It ensures that the hardware meets the high standards of ICP: 64 CPU cores, 512GiB of RAM, and 30TiB of NVMe SSD. Such nodes can sustain high throughput and enable powerful Web3 applications.
+1. It ensures that the identity of the node provider is known to the community. The node provider has signed a declaration of good intent and may be liable if the node misbehaves. This makes Sybil attacks harder to pull off and allows for the ability to reduce the number of nodes while keeping the Nakamoto coefficient high. Nodes are assigned to subnets such that they maximize decentralization in terms of operators, geography, and jurisdiction. This is called **deterministic decentralization**.
 
 Currently, subnets contain between 13 and 40 nodes, and most of them are geographically distributed. However, there can also be localized subnets to support applications that need to comply with local regulations.
 

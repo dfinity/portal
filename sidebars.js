@@ -24,8 +24,8 @@ const sidebars = {
         },
         {
           type: "doc",
-          label: "Create an account",
-          id: "developer-docs/getting-started/accounts",
+          label: "Create an identity",
+          id: "developer-docs/getting-started/identities",
         },
         {
           type: "doc",

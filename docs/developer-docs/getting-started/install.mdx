@@ -6,8 +6,9 @@ import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import CodeBlock from "@theme/CodeBlock";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { Chip } from "/src/components/Chip/Chip";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
-import LinkArrowRight from "@site/src/components/Common/Icons/LinkArrowRight";
+import LinkArrowDocs from "@site/src/components/Common/Icons/LinkArrowDocs";
 import Link from "@docusaurus/Link";
 
 # Install tools
@@ -112,7 +113,7 @@ sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 
 This will automatically install the latest version of <code>dfx</code> on your WSL 2 system.
 
-For troubleshooting common WSL 2 errors, please see [WSL 2 troubleshooting](/docs/current/developer-docs/getting-started/wsl-troubleshoot).
+For troubleshooting common WSL errors, please see [WSL troubleshooting](/docs/current/developer-docs/getting-started/wsl-troubleshoot).
 
 </TabItem>
 </AdornedTabs>
@@ -207,18 +208,13 @@ To view help information for `dfx`, you can use the `dfx help` command or view t
 
 Next, you must create a developer identity. This identity will be used to control and manage your project's canisters.
 
-- [x] [Explore examples with ICP Ninja](/docs/current/developer-docs/getting-started/explore-examples).
+- [x] Explore examples with ICP Ninja.
 
-- [x] [Install tools](/docs/current/developer-docs/getting-started/install).
+- [x] Install tools.
 
-<LinkArrowRight /> <Link
-        href="/docs/current/developer-docs/getting-started/accounts"
-      >
-        Create a developer identity
-      </Link>.
-
-- [ ] [Tokens and cycles](/docs/current/developer-docs/getting-started/tokens-and-cycles).
-
-- [ ] [Write smart contracts](/docs/current/developer-docs/getting-started/write-smart-contracts).
-
-- [ ] [Deploy and manage](/docs/current/developer-docs/getting-started/deploy-and-manage).
+<LinkArrowDocs />
+<Link
+href="/docs/current/developer-docs/getting-started/identities"
+>
+Create a developer identity
+</Link>.
