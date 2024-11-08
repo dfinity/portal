@@ -406,11 +406,11 @@ const redirects = `
   /docs/current/developer-docs/daos/nns/proposal-requirements /docs/current/developer-docs/daos/nns/concepts/proposal-requirements
   /docs/current/tokenomics/index /docs/current/developer-docs/daos/overview
   /docs/current/tokenomics/ /docs/current/developer-docs/daos/overview
-  /docs/current/developer-docs/integrations/multi-chain/user-faq /docs/current/developer-docs/multi-chain/faq/user-faq
-  /docs/current/developer-docs/integrations/multi-chain/ckbtc-faq /docs/current/developer-docs/multi-chain/faq/ckbtc-faq
-  /docs/current/developer-docs/integrations/multi-chain/cketh-faq /docs/current/developer-docs/multi-chain/faq/cketh-faq
-  /docs/current/developer-docs/integrations/multi-chain/ckerc20-faq /docs/current/developer-docs/multi-chain/faq/ckerc20-faq
-  /docs/current/developer-docs/integrations/multi-chain/signatures-faq /docs/current/developer-docs/multi-chain/faq/signatures-faq
+  /docs/current/developer-docs/integrations/multi-chain/user-faq /docs/current/developer-docs/multi-chain/overview
+  /docs/current/developer-docs/integrations/multi-chain/ckbtc-faq /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview
+  /docs/current/developer-docs/integrations/multi-chain/cketh-faq /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview
+  /docs/current/developer-docs/integrations/multi-chain/ckerc20-faq /docs/current/developer-docs/multi-chain/chain-key-tokens/ckerc20/overview
+  /docs/current/developer-docs/integrations/multi-chain/signatures-faq /docs/current/references/t-sigs-how-it-works
   /docs/current/developer-docs/integrations/bitcoin/ /docs/current/developer-docs/multi-chain/bitcoin/overview
   /docs/current/developer-docs/integrations/bitcoin/index /docs/current/developer-docs/multi-chain/bitcoin/overview
   /docs/current/developer-docs/integrations/bitcoin/ckbtc /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview
@@ -619,6 +619,11 @@ const redirects = `
   /docs/current/concepts/subnet-types /docs/current/references/subnets/subnet-types
   /docs/current/concepts/glossary /docs/current/references/glossary
   /docs/current/concepts/trust-in-canisters /docs/current/developer-docs/smart-contracts/overview/trust-in-canisters
+  /docs/current/developer-docs/multi-chain/faq/user-faq /docs/current/developer-docs/multi-chain/overview
+  /docs/current/developer-docs/multi-chain/faq/ckbtc-faq /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview
+  /docs/current/developer-docs/multi-chain/faq/cketh-faq /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview
+  /docs/current/developer-docs/multi-chain/faq/ckerc20-faq /docs/current/developer-docs/multi-chain/chain-key-tokens/ckerc20/overview
+  /docs/current/developer-docs/multi-chain/faq/signatures-faq /docs/current/references/t-sigs-how-it-works
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
