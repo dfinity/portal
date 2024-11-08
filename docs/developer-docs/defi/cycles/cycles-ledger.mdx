@@ -145,11 +145,11 @@ New canisters can be created using the cycles ledger by using the `dfx canister 
 Both of these commands have the following options and syntax to create a new canister:
 
 ```
-dfx canister create CANISTER_NAME --network ic
+dfx canister create CANISTER_NAME --with-cycles AMOUNT --network ic
 dfx deploy CANISTER_NAME --network ic
 ```
 
-Replace `CANISTER_NAME` with a name for the new canister.
+Replace `CANISTER_NAME` with a name for the new canister and `AMOUNT` with the number of cycles to deposit into the canister's cycles balance.
 
 With these two commands, there are two **optional** flags that can be used:
 
