@@ -185,6 +185,6 @@ All commands shown below are for workflows involving mainnet development. For lo
 | Transferring cycles |  `dfx wallet send PRINCIPAL_ID AMOUNT --network ic`   | `dfx cycles transfer AMOUNT PRINCIPAL_ID (--subaccount [SUBACCOUNT]) --network ic` |
 | Redeeming a cycles coupon |  `dfx wallet redeem-faucet-coupon 'ABCDE-ABCDE-ABCDE'`     |  `dfx cycles redeem-faucet-coupon ABCDE-ABCDE-ABCDE --network ic`  |
 | Topping up a canister     | `dfx wallet send PRINCIPAL_ID AMOUNT --network ic` | `dfx cycles top-up CANISTER_ID AMOUNT --network ic` |
-| Creating a canister with cycles | `dfx canister call CYCLES_WALLET_CANISTER_ID wallet_create_canister '(record { cycles = 5000000000000 : nat64; controller = principal "PRINCIPAL_ID"})' --network ic` |  `dfx canister create CANISTER_NAME --network ic` |
+| Creating a canister with cycles | `dfx canister call CYCLES_WALLET_CANISTER_ID wallet_create_canister '(record { cycles = 5000000000000 : nat64; controller = principal "PRINCIPAL_ID"})' --network ic` |  `dfx canister create CANISTER_NAME --with-cycles AMOUNT --network ic` |
 
 
