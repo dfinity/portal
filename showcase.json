@@ -4927,4 +4927,28 @@
     "twitter": "https://x.com/phasmafuture",
     "website": "https://entrepot.app/marketplace/phasma"
   }
+  {
+  "name": "Rentmase",
+  "description": "Rentmase is the world's first decentralized SuperApp fully hosted on-chain. Rentmase offers a comprehensive platform that integrates multiple services including property management, e-commerce, fractional ownership, property financing, and an innovative metaverse experience.",
+  "website": "https:// app.rentmase.com/",
+  "logo": "/img/showcase/rentmase_logo.png",
+  "screenshots": [
+    "/img/showcase/rentmase_screenshot.webp"
+  ],
+  "video": "",
+  "display": "Normal",
+  "id": "rentmase",
+  "oneLiner": "World's first fully decentralized Real Estate SuperApp ",
+  "stats": "13,000+",
+  "tags": [
+    "Tools / Infrastructure",
+    "Metaverse",
+    "DAO"
+  ],
+  "usesInternetIdentity": true,
+  "github": "https://github.com/rentmase-org",
+  "twitter": "https://x.com/RentMaSe",
+  "youtube": "",
+  "submittableId": ""
+}
 ]
