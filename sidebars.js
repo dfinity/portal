@@ -9,7 +9,7 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          label: "Overview of ICP",
+          label: "Network overview",
           id: "developer-docs/getting-started/overview-of-icp",
         },
         {
