@@ -1,5 +1,5 @@
 ---
-keywords: [beginner, getting started, tutorial, hello world]
+keywords: [beginner, getting started, tutorial, hello world, writing code, writing smart contracts, write, smart contracts, write code]
 ---
 
 import TabItem from "@theme/TabItem";
@@ -10,372 +10,13 @@ import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
-# Hello, world!
+# Write smart contracts
 
 <MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
 
-This guide shows how to get started developing on ICP quickly by deploying your first 'Hello, world!' smart contract.
+## Overview
 
-## Choosing a developer environment 
-
-To deploy a simple 'Hello, world!' smart contract, you can use a variety of developer environments, such as:
-
-- Native installation of tools on Linux, Mac, or Windows (using WSL) systems.
-
-- Cloud-based environments such as Gitpod or GitHub Codespaces.
-
-Each developer environment uses [`dfx`](/docs/current/developer-docs/getting-started/install), a command-line tool that is used for developing and deploying smart contracts on ICP. 
-
-:::info
-
-**Which environment should you choose?**
-
-Native installation requires downloading and installing `dfx` and its dependencies manually. Using a native installation of `dfx` is better suited for large projects.
-
-Gitpod and GitHub Codespaces are cloud-based developer environments that can be accessed via a web browser. The Gitpod and GitHub Codespace examples linked on this page come with the necessary tools and dependencies pre-installed. These environments use limited cloud resources and may not scale well for building large, complex projects. 
-
-:::
-
-<AdornedTabs groupId="environments">
-<TabItem value="gitpod" label="Gitpod" default>
-
-#### Motoko variation
-
-[![Open the Motoko variation in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dfinity/icp-hello-world-motoko)
-
-#### Rust variation
-
-[![Open the Rust variation in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dfinity/icp-hello-world-rust)
-
-</TabItem>
-
-<TabItem value="codespaces" label="GitHub Codespaces">
-
-#### Motoko variation
-
-[![Open the Motoko variation in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dfinity/icp-hello-world-motoko?quickstart=1)
-
-#### Rust variation
-
-[![Open the Rust variation in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/dfinity/icp-hello-world-rust?quickstart=1)
-
-</TabItem>
-
-<TabItem value="dfx" label="Native installation">
-
-### Install `dfx`
-
-Download and install the latest version of [dfx](/docs/current/developer-docs/getting-started/install). `dfx` is a CLI tool used for developing and deploying ICP smart contracts:
-
-```bash
-sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-```
-
-### Install [Node.js](https://nodejs.org/en/download) `16.0.0` or newer
-
-```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-nvm install 18
-```
-
-## Start the local replica
-
-```bash
-dfx start
-```
-
-This command starts a local instance of the ICP <GlossaryTooltip>replica</GlossaryTooltip> using a single node testnet. 
-
-```
-Using the default configuration for the local shared network.
-Initialized replica.
-Initialized HTTP gateway.
-Replica API running on 127.0.0.1:4943
-```
-
-:::info
-While `dfx start` is running, you will not be able to run other commands in the terminal window. You can open another window, or start `dfx` in the background with the `--background` flag.
-:::
-
-
-## Create a new project
-
-Use `dfx new <project_name>` to create a new project:
-
-```
-dfx new hello
-```
-
-You will be prompted to select the language that your backend <GlossaryTooltip>canister</GlossaryTooltip> will use:
-
-```
-? Select a backend language: ›
-❯ Motoko
-  Rust
-  TypeScript (Azle)
-  Python (Kybra)
-```
-
-:::info
-`dfx` versions `v0.17.0` and newer support this `dfx new` interactive prompt. [Learn more about `dfx v0.17.0`](/blog/2024/02/14/news-and-updates/update#dfx-v0170).
-:::
-
-Then, select a frontend framework for your frontend <GlossaryTooltip>canister</GlossaryTooltip>, or select 'No frontend canister':
-
-```
-  ? Select a frontend framework: ›
-❯ SvelteKit
-  React
-  Vue
-  Vanilla JS
-  No JS template
-  No frontend canister
-```
-
-Lastly, you can include extra features to be added to your project:
-
-```
-  ? Add extra features (space to select, enter to confirm) ›
-⬚ Internet Identity
-⬚ Bitcoin (Regtest)
-⬚ Frontend tests
-```
-
-</TabItem>
-</AdornedTabs>
-
-## Smart contract code
-
-The default `Hello, world!` dapp uses `dfx`'s default template which contains two canisters, `hello_backend` and `hello_frontend`.
-
-The `hello_frontend` canister is used to store the dapp's frontend assets. This includes files such as HTML, CSS, JavaScript, React, images, and videos.
-
-The `hello_backend` canister is used to store the dapp's functions and core logic. 
-
-<div class="text--center">
-  <img
-    src={useBaseUrl("/img/docs/default-dapp-arch.png")}
-    alt="Application architecture"
-    width="800"
-  />
-</div>
-
-:::info
-It is important to note that a canister is capable of storing both the frontend assets and backend code. However, `dfx` by default uses a project template with a dedicated canister for the frontend since this allows any language to be used for the backend canister without needing to use a library for the assets storage API. 
-:::
-
-<AdornedTabs groupId="language">
-<TabItem value="motoko" label="Motoko" default>
-
-Motoko is an actor-based language and it represents the smart contract as an actor with various methods that the users and other smart contract can call.
-
-This hello world actor has a single function called greet. It is marked as query because it doesn't modify the state of the actor. The function accepts a name as input and returns a greetings text.
-
-```motoko title="src/hello_backend/main.mo"
-actor {
-  public query func greet(name : Text) : async Text {
-    return "Hello, " # name # "!";
-  };
-};
-```
-
-</TabItem>
-
-<TabItem value="rust" label="Rust">
-
-### Install Rust
-
-You will need to install Rust in your environment with the command:
-
-```
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
-
-### Install `wasm32-unknown-unknown` target
-
-ICP smart contracts are compiled into WebAssembly modules. To support this compilation, install the `wasm32-unknown-unknown` target:
-
-```
-rustup target add wasm32-unknown-unknown
-```
-
-This Rust smart contract has a single function called greet. It is marked as query because it doesn't modify the state of the canister.
-
-The function accepts a name as input and returns a greetings text.
-
-```rust title="src/hello_backend/src/lib.rs"
-#[ic_cdk::query]
-fn greet(name: String) -> String {
-    format!("Hello, {}!", name)
-}
-```
-
-</TabItem>
-
-<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
-
-TypeScript canisters can be written using the Azle canister development kit. For Azle projects, you will need to install the Azle `dfx` extension:
-
-```
-npx azle install-dfx-extension
-```
-
-The default canister code for Azle projects contains the following:
-
-```typescript title="src/hello_backend/src/index.ts"
-import { IDL, query, update } from 'azle';
-
-export default class {
-    message: string = 'Hello world!';
-
-    @query([], IDL.Text)
-    getMessage(): string {
-        return this.message;
-    }
-
-    @update([IDL.Text])
-    setMessage(message: string): void {
-        this.message = message;
-    }
-}
-```
-
-</AdornedTab>
-
-<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
-
-Python canisters can be written using the Kybra canister development kit. [Learn more about setting up Kybra](/docs/current/developer-docs/backend/python/).
-
-The default canister code for Kybra projects contains the following:
-
-```python title="src/hello_backend/src/main.py"
-from kybra import query
-
-@query
-def greet(name: str) -> str:
-    return f"Hello, {name}!"
-```
-
-</AdornedTab>
-</AdornedTabs>
-
-
-## Deploy to the local environment
-
-Deploy the project's <GlossaryTooltip>canisters</GlossaryTooltip> locally:
-
-```
-npm install // Installs node dependencies 
-dfx deploy // Deploys the project locally
-```
-
-This command performs several functions in the background:
-
-- It sets up a special `cycle-wallet` smart contract for storing <GlossaryTooltip>cycles</GlossaryTooltip>. All operations require payments in cycles. In your local testnet, this wallet comes prefilled with cycles.
-
-- It builds the smart contracts defined in the `dfx.json` file into Wasm binaries.
-
-- It creates smart contracts on the local testnet and saves their addresses in the file `./.dfx/local/canister_ids.json`.
-
-- It installs the Wasm binaries onto the new smart contracts.
-
-## Call the smart contracts from the CLI
-
-<AdornedTabs groupId="language">
-<TabItem value="motoko" label="Motoko" default>
-
-```bash
-dfx canister call hello_backend greet world
-```
-
-Output:
-
-```
-("Hello, world!")
-```
-
-
-</TabItem>
-<TabItem value="rust" label="Rust">
-
-```bash
-dfx canister call hello_backend greet world
-```
-
-Output:
-
-```
-("Hello, world!")
-```
-
-</TabItem>
-
-<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
-
-```bash
-dfx canister call hello_backend getMessage
-```
-
-Output:
-
-```
-("Hello world!")
-```
-
-</AdornedTab>
-
-<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
-
-```bash
-dfx canister call hello_backend greet world
-```
-
-Output:
-
-```
-("Hello, world!")
-```
-
-</AdornedTab>
-</AdornedTabs>
-
-
-This call performs several functions in the background:
-
-- First, it looks up the smart contract's address (known as the canister ID) using the smart contract's name `hello_backend` in the file `./.dfx/local/canister_ids.json`.
-
-- Then, it looks up the smart contract's interface in the file `src/declarations/hello_backend/hello_backend.did`.
-
-- It looks up the signature of the function `greet` in the interface.
-
-- It constructs a message for the smart contract's `greet` endpoint with the given `name` text as an argument.
-
-- It signs the message with the private key of the [developer account](/docs/current/developer-docs/getting-started/identities).
-
-- It sends the message to the local testnet (<GlossaryTooltip>replica</GlossaryTooltip>).
-
-- Once the message has been executed, the result was decoded using the interface file and printed to the terminal window.
-
-Alternatively, you can interact with the smart contract via the web browser if a frontend smart contract has been deployed. [Learn more about using the frontend smart contract in the web browser](/docs/current/developer-docs/getting-started/deploy/local).
-
-
-## Next steps
-
-- [Create a developer account](/docs/current/developer-docs/getting-started/identities).
-
-- [Acquire cycles](/docs/current/developer-docs/getting-started/tokens-and-cycles).
-
-- [Deploy to the mainnet](/docs/current/developer-docs/getting-started/deploy/mainnet).
-
-- [Start the developer journey series](/docs/current/tutorials/developer-journey/).
-
-- [Sample dapps](/docs/current/samples/overview).
-
-- [Basic DAO example](/docs/current/references/samples/motoko/basic_dao/).
-
-- [Token swap example](/docs/current/references/samples/motoko/icrc2-swap/).
-
-- [IC POS example](/docs/current/references/samples/motoko/ic-pos/).
+## Canister development kits (CDKs)
 
 Currently supported CDKs include:
 
@@ -391,8 +32,6 @@ Currently supported CDKs include:
 
 - [C++ CDK](https://docs.icpp.world/).
 
-
-## Installing a CDK
 
 ### Motoko
 
@@ -463,3 +102,233 @@ C++ is supported through the [ICPP-pro CDK](https://docs.icpp.world/installation
 ## Next steps
 
 - [Learn about developer accounts](/docs/current/developer-docs/getting-started/identities).
+
+
+## Asset canister frameworks
+
+## Inside a canister
+
+Canisters are WebAssembly (Wasm) programs with additional features that allow them to store persistent data, communicate with users and other canisters, and be managed by entities such as DAOs.
+To enable these functionalities, canisters have additional components alongside the the standard Wasm code and memory. These components are outlined in the diagram below.
+
+<div class="text--center">
+<img src="/img/docs/inside-canister.png" alt="Canister" width="600"/>
+</div>
+
+## Canister ID
+A canister has a unique identifier that is often referred to as the address of the canister or the <GlossaryTooltip>principal</GlossaryTooltip> of the canister.
+When a user or a canister sends a message to another canister, they specify the target canister by its id in the header of the message.
+The system then routes the message to the target canister and adds it to the input queue of that canister.
+
+## Input queue
+Canisters have queues for incoming messages.
+When a canister is scheduled for execution, it takes one message from the queue and runs the corresponding Wasm function specified by that message.
+The code of the function is stored in the Wasm binary of the canister.
+During execution, the function reads the payload of the message and modifies data stored in the canister.
+
+:::info
+The order of messages in the queue depends on the implementation and it is not necessarily FIFO (first-in first-out).
+:::
+
+## Canister storage
+There are two [storages](/docs/current/developer-docs/smart-contracts/maintain/storage) available to the canister: the Wasm memory and the stable memory.
+The function doesn’t need to do anything special to use the Wasm memory since this memory type is automatically used for heap-allocated objects.
+Wasm memory is currently 32-bit, with a maximum size limitation of 4GiB.
+Stable memory is 64-bit and allows the canister to scale beyond 4GiB.
+The function can access the stable memory by calling special [system functions](/docs/current/references/ic-interface-spec#system-api-stable-memory) such as `stable64_read` and `stable64_write`.
+
+Both the Wasm and stable memories are persistent in the sense that the system automatically commits all memory modifications after a successful execution of a message.
+If the message execution fails, then the changes are not committed.
+The difference between the Wasm and the stable memory becomes important during canister upgrades to a new Wasm code.
+A canister upgrade clears the Wasm memory, but preserves the stable memory (hence the name).
+
+## Output queue
+During execution, the canister may send messages to other canisters.
+These messages are enqueued in the output queue of the canister after a successful execution.
+Later on, ICP delivers these messages to the target canisters for processing.
+
+:::info
+Canister-to-canister calls are implemented on top of messages. Each call consists of two messages: the call message from the caller to callee and the response message from the callee to the caller.
+:::
+
+## Cycles balance
+Canisters pay for execution in [cycles](/docs/current/developer-docs/gas-cost).
+The cost of execution depends on the number and type of executed Wasm instructions.
+The system charges this cost from the cycles balance of the canister both for successful and failed executions.
+
+## Controllers
+Only [controllers](/docs/current/developer-docs/smart-contracts/maintain/control) of the canister can do certain system level operations on the canister such as stopping it, starting it, upgrading it, etc.
+The list of controller principals is stored in the canister.
+Both users and canisters can be controllers.
+If the canister has no controllers, then it is immutable in the sense that its Wasm code cannot be changed.
+
+## Settings
+A canister also has various other settings and flags that can be modified by controllers of the canister.
+For example, a controller can set the freezing threshold of the canister such that the canister becomes frozen and doesn't execute messages when it is low on cycles in order to reduce chances of running out of cycles.
+[View the full list of canister settings](/docs/current/references/ic-interface-spec#ic-create_canister).
+
+
+### Code and state
+
+### WebAssembly
+
+WebAssembly (Wasm) is a platform independent binary format that can be executed in the Wasm virtual machine.
+Many modern compilers support Wasm as the compilation target along with the traditional targets such as x86 and arm32.
+
+There are three types of Wasm depending on where the Wasm virtual machine is hosted and how it interacts with users and the host environment:
+
+- **Web browser**: the Wasm program interacts with the users via the JavaScript bindings of the browser. The primary toolchain for compiling Wasm for browsers is [Emscripten](https://emscripten.org/). Note that such Wasm programs are incompatible with ICP.
+
+- **WASI**: this abbreviation stands for [WebAssembly System Interface](https://wasi.dev/). It is becoming the standard for running Wasm programs outside of Web browsers. Major Wasm runtimes such as Wasmtime and Wasmer support this standard. Compilers denote this target as `wasm32-wasi`. ICP does not directly support WASI, but it is possible to preprocess a WASI program and make it runnable on ICP with the community project [`wasi2ic`](https://github.com/wasm-forge/wasi2ic).
+
+- **Vanilla Wasm**: there is no standard API for interacting with users and the host environment. Every host environment provides their own API. ICP uses this approach and provides the set of functions called the System API to the Wasm program. Many compilers denote this target as `wasm32-unknown-unknown` since they do not know the target host environment and do not make any assumptions about the available APIs.
+
+The Canister Development Kit (CDK) of supported programming language comes with build scripts that link the System API and compile the code to Wasm programs that are compatible with ICP:
+
+- Rust and Motoko compile to the `wasm32-unknown-unknown` target directly under the hood.
+- Azle and Kybra first compile to the `wasm32-wasi` target and then convert the Wasm binary to `wasm32-unknown-unknown` using the `wasi2ic` tool.
+
+For convenience of developers, `dfx` wraps the CDK specific build scripts and provides the `dfx build` command to compile the code to a Wasm binary.
+
+
+### Types of memory
+
+When developing projects on ICP, there are two primary forms of data storage that your <GlossaryTooltip>canisters</GlossaryTooltip> can utilize. The first type of storage is the canister's **heap memory**, sometimes referred to as the canister's *main memory*. Heap memory is **temporary**, and any data stored in a canister's heap memory is cleared whenever the canister is stopped or upgraded.
+
+The second type of storage available to a canister is **stable memory**. Stable memory is a unique feature of ICP that  defines a separate data store aside from a canister's regular Wasm heap memory data storage. It is a secondary storage type that can be used to store data long-term, since all data stored in stable memory will persist across all canister processes.
+
+## Heap memory
+
+Heap memory refers to a canister's regular Wasm memory. It does not persist and does not store data long-term. A canister's heap memory is cleared whenever a canister is stopped or upgraded. Heap memory is used by default for storing things such as variable values, the result of an executed function, or other arguments passed to your canister.
+
+Heap memory is limited to a maximum of 4GiB of data.
+
+## Stable memory
+
+Stable memory is a feature unique to the Internet Computer Protocol that provides a long-term, persistent data storage option separate from a canister's heap memory. When a canister is stopped or upgraded, the data stored in stable memory is not cleared or removed. The stable memory is preserved throughout the process, while any other WebAssembly state is discarded.
+
+To use stable memory, you must anticipate which portions of the canister's data you want to persist across upgrades by indicating this within the canister code. More information about this can be found in the section below, [Storage handling in different languages](#storage-handling-in-different-languages).
+
+By default, a canister's stable memory is empty. The maximum storage limit for stable memory is 400GiB if the <GlossaryTooltip>subnet</GlossaryTooltip> the canister is deployed on can accommodate it. If a canister uses more than 400GiB of stable memory, the canister will trap and become unrecoverable.
+
+
+## `dfx.json`
+
+```json title="dfx.json"
+{
+  "canisters": {
+    "hello_world_backend": {
+      "main": "src/hello_world_backend/main.mo",
+      "type": "motoko"
+    },
+    "hello_world_frontend": {
+      "dependencies": [
+        "hello_world_backend"
+      ],
+      "source": [
+        "src/hello_world_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "hello_world_frontend"
+    }
+
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
+```
+
+## Writing code
+
+### Default project template
+
+### Using randomness
+
+### Using timers
+
+### Using HTTPS outcalls
+
+## Next steps
+
+
+
+The default `Hello, world!` dapp uses `dfx`'s default template which contains two canisters, `hello_backend` and `hello_frontend`.
+
+The `hello_frontend` canister is used to store the dapp's frontend assets. This includes files such as HTML, CSS, JavaScript, React, images, and videos.
+
+The `hello_backend` canister is used to store the dapp's functions and core logic.
+
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/default-dapp-arch.png")}
+    alt="Application architecture"
+    width="800"
+  />
+</div>
+
+:::info
+It is important to note that a canister is capable of storing both the frontend assets and backend code. However, `dfx` by default uses a project template with a dedicated canister for the frontend since this allows any language to be used for the backend canister without needing to use a library for the assets storage API.
+:::
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+Motoko is an actor-based language and it represents the smart contract as an actor with various methods that the users and other smart contract can call.
+
+This hello world actor has a single function called greet. It is marked as query because it doesn't modify the state of the actor. The function accepts a name as input and returns a greetings text.
+
+```motoko title="src/hello_backend/main.mo"
+actor {
+  public query func greet(name : Text) : async Text {
+    return "Hello, " # name # "!";
+  };
+};
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust">
+
+### Install Rust
+
+You will need to install Rust in your environment with the command:
+
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+### Install `wasm32-unknown-unknown` target
+
+ICP smart contracts are compiled into WebAssembly modules. To support this compilation, install the `wasm32-unknown-unknown` target:
+
+```
+rustup target add wasm32-unknown-unknown
+```
+
+This Rust smart contract has a single function called greet. It is marked as query because it doesn't modify the state of the canister.
+
+The function accepts a name as input and returns a greetings text.
+
+```rust title="src/hello_backend/src/lib.rs"
+#[ic_cdk::query]
+fn greet(name: String) -> String {
+    format!("Hello, {}!", name)
+}
+```
+
+</TabItem>
+
+</AdornedTabs>
+
+
+
+
+
+
+
