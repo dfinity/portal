@@ -180,7 +180,7 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
               ))}
             </div>
           )}
-          <div className="flex lex-1 pl-8 pr-6 py-6 bg-white min-w-[705px]">
+          <div className="flex lex-1 pl-6 pr-6 py-6 bg-white min-w-[705px]">
             {item.sections[selectedSectionIndex].featured && (
               <div className="pr-6">
                 <Link
