@@ -162,6 +162,15 @@ html[data-theme='dark']:root, /* we did this so the darkmode does not affect any
     color: #fff;
     border-color: rgba(255,255,255, 0.2);
   }
+
+  .slidetile {
+    background: #000;
+    color: #fff;
+    border-color: rgba(255,255,255, 0.2);
+    * {
+      color: #fff;
+    }
+  }
 }
 
 /* browser resets */
