@@ -73,6 +73,12 @@ const Hero: React.FC<{
                 >
                   <LinkArrowRight /> <span>What is ICP</span>
                 </Link>
+                <Link
+                  className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
+                  href="https://internetcomputer.docsend.com/view/dzkwezufykwpb7p8"
+                >
+                  <span>Read the ICP Deck</span> <LinkArrowUpRight />
+                </Link>
               </div>
             </div>
             <aside
