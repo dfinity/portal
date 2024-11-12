@@ -10,6 +10,7 @@ import {
   TeaserCard,
 } from "@site/src/components/DocsHome/TeaserCard";
 import { GlossaryTooltip } from "@site/src/components/Tooltip/GlossaryTooltip";
+import LinkArrowUpRight from "../Common/Icons/LinkArrowUpRight";
 
 const queryClient = new QueryClient();
 
@@ -399,10 +400,10 @@ const Education = () => {
       cta: (
         <Link
           className="button-transparent button-with-icon pl-0"
-          href="/docs/current/tutorials/hackathon-prep-course/"
+          href="https://www.youtube.com/playlist?list=PLuhDt1vhGcrcRcHvSKmxIgJAh1b3rcR7N&si=sIElj5bAkJeMqDoA"
         >
-          Start course
-          <LinkArrowRight />
+          Watch now
+          <LinkArrowUpRight />
         </Link>
       ),
       mainImage: "/img/docs/teaser-cards/main-zero-to-dapp.webp",
@@ -525,9 +526,9 @@ const footerCards: Array<CarouselCard> = [
 
 const DocsHomePage: FC = () => {
   return (
-    <div className="flex flex-col gap-10 overflow-hidden">
+    <div className="flex flex-col gap-10">
       <section className="flex flex-col gap-8">
-        <div className="px-8 py-10 md:p-10 rounded-lg bg-infinite text-white sm:col-span-2 md:row-span-2 bg-center bg-cover flex flex-col">
+        <div className="px-8 py-10 md:p-10 rounded-lg bg-infinite text-white sm:col-span-2 md:row-span-2 bg-center bg-cover flex flex-col relative overflow-hidden">
           <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense -translate-y-[10%] z-0 md:opacity-30 " />
 
           <h1 className="tw-heading-3 sm:tw-heading-60 md:tw-heading-2 mb-14">
@@ -538,45 +539,45 @@ const DocsHomePage: FC = () => {
             <p className="mb-0">
               <Link
                 className="button-white button-with-icon"
-                href="/docs/current/developer-docs/getting-started/network-overview"
+                href="https://icp.ninja/"
               >
-                SDK BUILD
+                INSTANT WEB IDE
                 <LinkArrowRight />
               </Link>
             </p>
             <p className="mb-0">
               <Link
                 className="button-white button-with-icon"
-                href="https://play.motoko.org"
+                href="/docs/current/developer-docs/getting-started/hello-world"
               >
-                INSTANT WEB IDE
+                SDK BUILD
                 <LinkArrowRight />
               </Link>
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-[2fr,1fr,1fr] gap-8 mt-12 tw-lead">
-            <div className="mt-auto">
+            <div className="mb-auto">
               Become a “World Computer” developer who builds sovereign social
-              media, games, enterprise apps, AI, Web3, DeFi and…
+              media, games, enterprise apps, AI, Web3, DeFi and_
             </div>
-            <div className="tw-paragraph text-white-80 flex flex-col gap-2">
+            <div className="mb-auto tw-paragraph text-white-80 flex flex-col gap-2">
               The Internet Computer (ICP) provides a 100% decentralized platform
               where devs can build without Big Tech and traditional IT.
             </div>
-            <div className="tw-paragraph text-white-80 flex flex-col gap-2">
+            <div className="mb-auto tw-paragraph text-white-80 flex flex-col gap-2">
               End-to-end decentralization makes services immune to cyber attack,
               unstoppable, censorship-resistant, and optionally tokenized and
               autonomous.
             </div>
           </div>
         </div>
-        <div className="px-6 py-8 md:p-10 border md:mx-auto md:min-w-[900px] sm:col-span-2">
+        <div className="px-6 py-0 md:p-10 border md:mx-auto md:min-w-[900px] sm:col-span-2 relative z-2 md:-mt-10">
           <QueryClientProvider client={queryClient}>
             <NetworkStats></NetworkStats>
           </QueryClientProvider>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-[2fr,4fr] gap-24">
+        <div className="grid grid-cols-1 md:grid-cols-[2fr,4fr] gap-24 relative z-2">
           <div>
             <h2 className="tw-heading-4 md:tw-heading-3">Languages</h2>
             <p className="tw-paragraph">
@@ -599,7 +600,7 @@ const DocsHomePage: FC = () => {
           </div>
         </div>
 
-        <div className="mt-10">
+        <div className="mt-20">
           <div>
             <h2 className="tw-heading-4 md:tw-heading-3">Courses</h2>
             <Education />
@@ -607,7 +608,7 @@ const DocsHomePage: FC = () => {
         </div>
       </section>
 
-      <div className="grid grid-cols-1 md:grid-cols-[2fr,4fr] gap-24">
+      <div className="grid grid-cols-1 md:grid-cols-[2fr,4fr] gap-24 mt-20">
         <div>
           <h2 className="tw-heading-4 md:tw-heading-3">Chain Fusion</h2>
           <p className="tw-paragraph">
@@ -616,7 +617,7 @@ const DocsHomePage: FC = () => {
           </p>
           <Link
             className="button-primary rounded-2xl"
-            href="/docs/current/developer-docs/smart-contracts/write/overview"
+            href="/docs/current/developer-docs/multi-chain/overview"
           >
             LEARN MORE
           </Link>
@@ -629,7 +630,7 @@ const DocsHomePage: FC = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-[2fr,4fr] gap-24">
+      <div className="grid grid-cols-1 md:grid-cols-[2fr,4fr] gap-24 mt-20">
         <div>
           <h2 className="tw-heading-4 md:tw-heading-3">
             Quick starts & frameworks
@@ -640,7 +641,7 @@ const DocsHomePage: FC = () => {
           </p>
           <Link
             className="button-primary rounded-2xl"
-            href="/docs/current/developer-docs/smart-contracts/write/overview"
+            href="/docs/current/developer-docs/web-apps/frameworks/juno"
           >
             VIEW ALL
           </Link>
@@ -657,49 +658,51 @@ const DocsHomePage: FC = () => {
       <section>
         <Blog />
       </section>
-      <div className="grid grid-cols-1 md:grid-cols-[1fr,1fr] gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr,1fr] gap-4 mt-20">
         {footerCards.map((card, index) => (
           <TeaserCardFooter card={card} key={index} className="rounded-lg" />
         ))}
       </div>
-      <section className="bg-infinite -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-[-50px] md:px-[50px] text-white py-10 md:pt-14 md:pb-20">
-        <div className=" bg-gradient-to-r from-[#6A85F199] to-[#C572EF99] rounded-lg px-6 py-8 md:p-8 flex flex-col md:flex-row gap-20">
-          <div className="md:flex-[4] md:flex md:flex-col items-start">
-            <div className="tw-heading-6 mb-10">
-              Contribute to the
-              <br />
-              Internet Computer
-            </div>
-            <h2 className="tw-heading-3 mb-4 sm:w-5/10 md:w-8/10">
-              Help us make the docs better
-            </h2>
-            <p className="tw-paragraph mb-10 sm:w-6/10 md:w-8/10 md:flex-1">
-              These docs are a community effort. Create a PR if you see
-              mistakes, room for improvement, or new opportunities to help IC
-              developers.
-            </p>
-            <Link
-              href="https://github.com/dfinity/portal"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="button-outline-white"
-            >
-              Contribute
-            </Link>
-          </div>
-          <div className="flex flex-col gap-2 md:flex-[5]">
-            {links.map(({ label, href }) => (
+      <section className="bg-infinite">
+        <section className="bg-infinite -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-[-50px] md:px-[50px] text-white py-10 md:pt-14 md:pb-20">
+          <div className=" bg-gradient-to-r from-[#6A85F199] to-[#C572EF99] rounded-lg px-6 py-8 md:p-8 flex flex-col md:flex-row gap-20">
+            <div className="md:flex-[4] md:flex md:flex-col items-start">
+              <div className="tw-heading-6 mb-10">
+                Contribute to the
+                <br />
+                Internet Computer
+              </div>
+              <h2 className="tw-heading-3 mb-4 sm:w-5/10 md:w-8/10">
+                Help us make the docs better
+              </h2>
+              <p className="tw-paragraph mb-10 sm:w-6/10 md:w-8/10 md:flex-1">
+                These docs are a community effort. Create a PR if you see
+                mistakes, room for improvement, or new opportunities to help IC
+                developers.
+              </p>
               <Link
-                className="px-8 py-6 bg-infinite/60 text-white tw-heading-6 flex justify-between items-center gap-4 border border-solid border-[#672AE999] rounded-lg hover:opacity-80 hover:text-white hover:no-underline"
-                href={href}
-                key={label}
+                href="https://github.com/dfinity/portal"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="button-outline-white"
               >
-                {label}
-                <LinkArrowRight />
+                Contribute
               </Link>
-            ))}
+            </div>
+            <div className="flex flex-col gap-2 md:flex-[5]">
+              {links.map(({ label, href }) => (
+                <Link
+                  className="px-8 py-6 bg-infinite/60 text-white tw-heading-6 flex justify-between items-center gap-4 border border-solid border-[#672AE999] rounded-lg hover:opacity-80 hover:text-white hover:no-underline"
+                  href={href}
+                  key={label}
+                >
+                  {label}
+                  <LinkArrowRight />
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
       </section>
     </div>
   );
