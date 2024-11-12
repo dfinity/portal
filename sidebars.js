@@ -4,28 +4,40 @@
 const sidebars = {
   build: [
     {
+      type: "doc",
+      label: "Network overview",
+      id: "developer-docs/getting-started/network-overview",
+    },
+    {
       type: "category",
-      label: "Getting started",
+      label: "Quick starts",
       items: [
         {
           type: "doc",
-          label: "Network overview",
-          id: "developer-docs/getting-started/network-overview",
+          label: "First smart contract",
+          id: "developer-docs/getting-started/first-smart-contract",
         },
         {
           type: "doc",
-          label: "Development workflow",
+          label: "React",
+          id: "developer-docs/getting-started/quickstart/react-quickstart",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Dev environment setup",
+      items: [
+
+        {
+          type: "doc",
+          label: "Workflow",
           id: "developer-docs/getting-started/development-workflow",
         },
         {
           type: "doc",
-          label: "Installing tools",
+          label: "Installation",
           id: "developer-docs/getting-started/install/index",
-        },
-        {
-          type: "doc",
-          label: "Hello, world!",
-          id: "developer-docs/getting-started/hello-world",
         },
         {
           type: "doc",
@@ -51,7 +63,7 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "Deploy smart contracts",
+          label: "Deploy",
           items: [
             {
               type: "doc",
@@ -67,22 +79,6 @@ const sidebars = {
               type: "doc",
               label: "Mainnet deployment",
               id: "developer-docs/getting-started/deploy/mainnet",
-            },
-          ],
-        },
-        {
-          type: "category",
-          label: "Quickstart guides",
-          items: [
-            {
-              type: "doc",
-              label: "Quickstart for React developers",
-              id: "developer-docs/getting-started/quickstart/react-quickstart",
-            },
-            {
-              type: "doc",
-              label: "Juno quickstart",
-              id: "developer-docs/getting-started/quickstart/juno-quickstart",
             },
           ],
         },
