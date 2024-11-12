@@ -690,7 +690,7 @@ const config = {
       image: "/img/share.webp",
       colorMode: {
         disableSwitch: true,
-        defaultMode: "dark",
+        defaultMode: "light",
         respectPrefersColorScheme: false,
       },
       metadata: [
