@@ -3,7 +3,7 @@
   .logofill path {
     fill: #181818;
   }
-  @media (prefers-color-scheme: dark) {
+  [data-theme="dark"] {
     .logofill path {
       fill: #fff;
     }
