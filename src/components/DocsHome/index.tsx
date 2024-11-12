@@ -23,7 +23,10 @@ const links = [
     href: "https://forum.dfinity.org/t/announcing-technical-working-groups/11781",
   },
   { label: "Join the Dev Forum", href: "https://forum.dfinity.org" },
-  { label: "Dev Discord Office Hours", href: "https://discord.internetcomputer.org" },
+  {
+    label: "Dev Discord Office Hours",
+    href: "https://discord.internetcomputer.org",
+  },
   {
     label: "Developer Grants and Bounties",
     href: "https://dfinity.org/grants/",
@@ -191,8 +194,8 @@ const frameworksTiles: TileDescriptor[] = [
     description: (
       <span>
         In contrast to other blockchain networks, there are no testnets on ICP.
-        Instead, you can deploy a smart contract for free on the playground using
-        the <GlossaryTooltip>IC SDK</GlossaryTooltip>
+        Instead, you can deploy a smart contract for free on the playground
+        using the <GlossaryTooltip>IC SDK</GlossaryTooltip>
       </span>
     ),
     icon: (
@@ -265,7 +268,6 @@ const Tile = ({ tile }: { tile: TileDescriptor }) => {
   );
 };
 
-
 const chainfusionTiles: TileDescriptor[] = [
   {
     label: "Chain Fusion",
@@ -283,8 +285,7 @@ const chainfusionTiles: TileDescriptor[] = [
   },
   {
     label: "Supported chains",
-    description:
-      "Learn which chains ICP integrates with and how",
+    description: "Learn which chains ICP integrates with and how",
     icon: (
       <img
         src="/img/dfinity_logo.svg"
@@ -308,8 +309,10 @@ const chainfusionTiles: TileDescriptor[] = [
     label: "Bitcoin",
     description: (
       <span>
-        ICP has a direct integration with the Bitcoin network using a Bitcoin adapter and threshold signatures such as t-ECDSA and t-Schnorr.
-        Learn how your canister can sign and submit transactions for BRC-20, Ordinals, Runes, and more
+        ICP has a direct integration with the Bitcoin network using a Bitcoin
+        adapter and threshold signatures such as t-ECDSA and t-Schnorr. Learn
+        how your canister can sign and submit transactions for BRC-20, Ordinals,
+        Runes, and more
       </span>
     ),
     icon: (
@@ -326,7 +329,9 @@ const chainfusionTiles: TileDescriptor[] = [
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Learn more about the Bitcoin integration"
       >
-        <span className={"md:hidden"}>Learn more about the Bitcoin integration</span>
+        <span className={"md:hidden"}>
+          Learn more about the Bitcoin integration
+        </span>
         <LinkArrowRight />
       </Link>
     ),
@@ -349,7 +354,9 @@ const chainfusionTiles: TileDescriptor[] = [
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Learn more about the Ethereum integration"
       >
-        <span className={"md:hidden"}>Learn more about the Ethereum integration</span>
+        <span className={"md:hidden"}>
+          Learn more about the Ethereum integration
+        </span>
         <LinkArrowRight />
       </Link>
     ),
@@ -358,7 +365,8 @@ const chainfusionTiles: TileDescriptor[] = [
     label: "Chain-key tokens",
     description: (
       <span>
-        Chain-key tokens are digital twins of Bitcoin, Ethereum, and ERC-20 tokens that are secured on ICP with chain-key cryptography
+        Chain-key tokens are digital twins of Bitcoin, Ethereum, and ERC-20
+        tokens that are secured on ICP with chain-key cryptography
       </span>
     ),
     icon: (
@@ -380,7 +388,6 @@ const chainfusionTiles: TileDescriptor[] = [
       </Link>
     ),
   },
-
 ];
 
 const Education = () => {
@@ -460,35 +467,75 @@ const Education = () => {
 const DocsHomePage: FC = () => {
   return (
     <div className="flex flex-col gap-10">
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div className="px-8 py-10 md:p-10 rounded-lg bg-infinite text-white sm:col-span-2 md:row-span-2 bg-[url(/img/docs/hero-bg.webp)] bg-center bg-cover flex flex-col">
+      <section className="flex flex-col gap-8">
+        <div className="px-8 py-10 md:p-10 rounded-lg bg-infinite text-white sm:col-span-2 md:row-span-2 bg-center bg-cover flex flex-col">
+          <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense  -translate-y-[10%] z-0 md:opacity-30 " />
+
           <h1 className="tw-heading-3 sm:tw-heading-60 md:tw-heading-2 mb-14">
-            Developer Docs
+            Quick Start
           </h1>
-          <p className="tw-lead mb-20 flex-1">
-            Start a DAO, create a token, build dapps and host assets with the
-            full tech stack entirely 100% onchain.
-          </p>
+
           <div className={"flex flex-row gap-2 flex-wrap"}>
             <p className="mb-0">
               <Link
                 className="button-white button-with-icon"
                 href="/docs/current/developer-docs/getting-started/network-overview"
               >
-              Learn more
-              <LinkArrowRight />
-            </Link>
-          </p>
-          <p className="mb-0">
-            <Link
-              className="button-white button-with-icon"
-              href="https://play.motoko.org"
-            >
-              Start coding
-              <LinkArrowRight />
-            </Link>
-          </p>
-        </div>
+                Learn more
+                <LinkArrowRight />
+              </Link>
+            </p>
+            <p className="mb-0">
+              <Link
+                className="button-white button-with-icon"
+                href="https://play.motoko.org"
+              >
+                Start coding
+                <LinkArrowRight />
+              </Link>
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-[66%_33%_33%] gap-4 mt-12 tw-lead">
+            <div>
+              Become a “World Computer” developer who builds sovereign social
+              media, games, enterprise apps, AI, Web3, DeFi and…
+            </div>
+            <div className="tw-paragraph text-white-80 flex flex-col gap-2">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 12C3 10.067 4.567 8.5 6.5 8.5C7.7035 8.5 8.51959 8.9338 9.19914 9.61336C9.9255 10.3397 10.4851 11.3322 11.1258 12.4856L11.1595 12.5462C11.7605 13.6283 12.4431 14.8573 13.3866 15.8009C14.3946 16.8088 15.7035 17.5 17.5 17.5C20.5376 17.5 23 15.0376 23 12C23 8.96243 20.5376 6.5 17.5 6.5C15.8394 6.5 14.3508 7.2359 13.3423 8.39937C13.7887 9.05406 14.1574 9.70577 14.464 10.2574C15.0681 9.20718 16.2014 8.5 17.5 8.5C19.433 8.5 21 10.067 21 12C21 13.933 19.433 15.5 17.5 15.5C16.2965 15.5 15.4804 15.0662 14.8009 14.3866C14.0745 13.6603 13.5149 12.6678 12.8742 11.5144L12.8405 11.4538C12.2395 10.3717 11.5569 9.14265 10.6134 8.19914C9.60541 7.1912 8.2965 6.5 6.5 6.5C3.46243 6.5 1 8.96243 1 12C1 15.0376 3.46243 17.5 6.5 17.5C8.16056 17.5 9.64923 16.7641 10.6577 15.6006C10.2113 14.9459 9.84262 14.2942 9.53605 13.7426C8.93194 14.7928 7.79856 15.5 6.5 15.5C4.567 15.5 3 13.933 3 12Z"
+                  fill="white"
+                  fill-opacity="0.8"
+                />
+              </svg>
+              End-to-end decentralization makes services immune to cyber attack,
+              unstoppable, censorship-resistant, and optionally tokenized and
+              autonomous.
+            </div>
+            <div className="tw-paragraph text-white-80 flex flex-col gap-2">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M3 12C3 10.067 4.567 8.5 6.5 8.5C7.7035 8.5 8.51959 8.9338 9.19914 9.61336C9.9255 10.3397 10.4851 11.3322 11.1258 12.4856L11.1595 12.5462C11.7605 13.6283 12.4431 14.8573 13.3866 15.8009C14.3946 16.8088 15.7035 17.5 17.5 17.5C20.5376 17.5 23 15.0376 23 12C23 8.96243 20.5376 6.5 17.5 6.5C15.8394 6.5 14.3508 7.2359 13.3423 8.39937C13.7887 9.05406 14.1574 9.70577 14.464 10.2574C15.0681 9.20718 16.2014 8.5 17.5 8.5C19.433 8.5 21 10.067 21 12C21 13.933 19.433 15.5 17.5 15.5C16.2965 15.5 15.4804 15.0662 14.8009 14.3866C14.0745 13.6603 13.5149 12.6678 12.8742 11.5144L12.8405 11.4538C12.2395 10.3717 11.5569 9.14265 10.6134 8.19914C9.60541 7.1912 8.2965 6.5 6.5 6.5C3.46243 6.5 1 8.96243 1 12C1 15.0376 3.46243 17.5 6.5 17.5C8.16056 17.5 9.64923 16.7641 10.6577 15.6006C10.2113 14.9459 9.84262 14.2942 9.53605 13.7426C8.93194 14.7928 7.79856 15.5 6.5 15.5C4.567 15.5 3 13.933 3 12Z"
+                  fill="white"
+                  fill-opacity="0.8"
+                />
+              </svg>
+              The Internet Computer (ICP) provides a 100% decentralized platform
+              where devs can build without Big Tech and traditional IT.
+            </div>
+          </div>
         </div>
         <div className="px-6 py-8 md:p-10 border border-white border-solid rounded-lg bg-white/70 sm:col-span-2">
           <QueryClientProvider client={queryClient}>
