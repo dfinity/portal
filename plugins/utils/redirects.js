@@ -23,6 +23,7 @@ const redirects = `
   /icp-newsletter /news
   /icp-tokens /how-it-works/tokenomics
   /ois /sns
+  /docs/current/developer-docs/getting-started/ /docs/current/developer-docs/getting-started/network-overview
   /docs/videos-tutorials /developers
   /docs /docs/current/home
   /docs/current/ /docs/current/home
