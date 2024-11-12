@@ -76,7 +76,7 @@ html[data-theme='dark']:root, /* we did this so the darkmode does not affect any
 
     --ifm-menu-color: #fff;
 
-    --ic0-nav-border: 1px solid white;
+    --ic0-nav-border: 1px solid #151515;
     --ic0-article-background: linear-gradient(180deg, #f5f5f5 0%, #f2eff6 100%);
     --ic0-docs-background: #151515;
 
@@ -118,6 +118,18 @@ html[data-theme='dark']:root, /* we did this so the darkmode does not affect any
 
       .tabs-container {
         color: #000;
+      }
+
+      .navbar__search-button {
+        border-color: #fff;
+        color: #fff;
+        span {
+          color: #fff;
+        }
+      }
+
+      .mainsearchinput {
+        color: #000
       }
   }
 
