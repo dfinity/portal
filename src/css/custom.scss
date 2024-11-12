@@ -58,7 +58,7 @@ html[data-theme='dark']:root, /* we did this so the darkmode does not affect any
     --ifm-color-primary-lightest: #4d00f1;
     --ifm-background-color: #f1eef5;
     --ifm-navbar-height: 110px;
-    --ifm-navbar-x-padding: Max(calc((100vw - 1320px) / 2), 50px);
+    --ifm-navbar-x-padding: max(calc((100vw - 1320px) / 2), 50px);
     --ifm-navbar-background-color: rgb(241, 238, 245);
     --ifm-navbar-shadow: 0px 2px 4px rgba(0, 0, 0, 0);
     --ifm-navbar-search-input-color: rgba(24, 24, 24, 0.6);
@@ -68,6 +68,8 @@ html[data-theme='dark']:root, /* we did this so the darkmode does not affect any
     --ifm-footer-background-color: #3b00b9;
     --ic0-color: #3b00b9;
     scroll-behavior: smooth;
+    --ifm-tabs-color: #000;
+    --ifm-font-color-base: #000;
 
     --ifm-navbar-link-hover-color: #da3979;
     --ifm-navbar-link-active-color: #da3979;
@@ -113,6 +115,10 @@ html[data-theme='dark']:root, /* we did this so the darkmode does not affect any
           }
         }
       }
+
+      .tabs-container {
+        color: #000;
+      }
   }
 
   .navbar {
@@ -123,6 +129,7 @@ html[data-theme='dark']:root, /* we did this so the darkmode does not affect any
   .subnav, .menu {
     background: #151515;
     color: #fff;
+    border-color: transparent;
   }
 
   
