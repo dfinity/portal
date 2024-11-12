@@ -36,7 +36,7 @@ const sliderData = [
     title: "Tokamak, Beryllium & Stellarator",
     description: "Read now",
     image: "/img/home/slider/milestones_highlight_1.webp",
-    link: "/",
+    link: "https://medium.com/dfinity",
   },
 ];
 
