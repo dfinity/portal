@@ -44,7 +44,7 @@ export const NetworkStats = () => {
   const canisterCount = useQuery(["canisterCount"], getCanisterCount);
 
   return (
-    <div className="flex flex-col sm:flex-row justify-between items-stretch whitespace-nowrap">
+    <div className="networkstats flex flex-col sm:flex-row justify-between items-stretch whitespace-nowrap">
       <figure className="m-0 text-center flex flex-col items-center">
         <figcaption className="tw-paragraph-sm font-medium text-black/60 inline-flex gap-2 items-center mb-2">
           Storage Costs

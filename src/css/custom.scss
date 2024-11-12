@@ -143,8 +143,25 @@ html[data-theme='dark']:root, /* we did this so the darkmode does not affect any
     color: #fff;
     border-color: transparent;
   }
+  .container:has(.docshome),
+  .docshome {
+    background: #151515;
+    color: #fff;
+  }
 
-  
+  .networkstats figcaption {
+    color: #fff;
+  }
+
+  .networkstats svg path {
+  fill: #fff;
+  }
+
+  .tile {
+    background: #000;
+    color: #fff;
+    border-color: rgba(255,255,255, 0.2);
+  }
 }
 
 /* browser resets */

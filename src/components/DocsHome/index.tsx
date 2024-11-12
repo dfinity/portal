@@ -218,7 +218,7 @@ const frameworksTiles: TileDescriptor[] = [
 const Tile = ({ tile }: { tile: TileDescriptor }) => {
   return (
     <div
-      className={`flex flex-col ${"bg-white/70 border-white"} rounded-lg border border-solid p-4 justify-between`}
+      className={`tile flex flex-col ${"bg-white/70 border-white"} rounded-lg border border-solid p-4 justify-between`}
     >
       <div className={"flex flex-col gap-4 items-start"}>
         <div className={"flex flex-row gap-4"}>
@@ -526,7 +526,7 @@ const footerCards: Array<CarouselCard> = [
 
 const DocsHomePage: FC = () => {
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-10 docshome">
       <section className="flex flex-col gap-8">
         <div className="px-8 py-10 md:p-10 rounded-lg bg-infinite text-white sm:col-span-2 md:row-span-2 bg-center bg-cover flex flex-col relative overflow-hidden">
           <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense -translate-y-[10%] z-0 md:opacity-30 " />
