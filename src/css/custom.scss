@@ -43,9 +43,12 @@ html[data-theme='dark']:root, /* we did this so the darkmode does not affect any
   --ic0-nav-border: 1px solid white;
   --ic0-article-background: linear-gradient(180deg, #f5f5f5 0%, #f2eff6 100%);
   --ic0-docs-background: white;
+  --ifm-color-content: #000;
 }
 
-.docs-wrapper[data-theme='dark'] {
+html.docs-wrapper[data-theme='dark'] {
+  
+  --ifm-color-content: #fff;
   body {
     --ifm-menu-color-active: #925fff;
     --ifm-link-color: #925fff;
@@ -69,7 +72,6 @@ html[data-theme='dark']:root, /* we did this so the darkmode does not affect any
     --ic0-color: #3b00b9;
     scroll-behavior: smooth;
     --ifm-tabs-color: #000;
-    --ifm-font-color-base: #000;
 
     --ifm-navbar-link-hover-color: #da3979;
     --ifm-navbar-link-active-color: #da3979;
