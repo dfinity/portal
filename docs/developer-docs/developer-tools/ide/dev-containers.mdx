@@ -21,51 +21,38 @@ Dev containers have additional benefits, including:
 
 ## Using developer containers
 
-To use developer containers, you must download [Docker](https://www.docker.com/get-started/), [VS Code](https://code.visualstudio.com/), and the [Dev Containers extension](https://containers.dev/supporting#dev-containers).
+To use developer containers, you must download and install:
 
-### Creating a blank container
+- [Docker](https://www.docker.com/get-started/).
 
-You can create a blank container by opening the VS Code command palette and running the command:
+- [VS Code](https://code.visualstudio.com/).
 
-```
-> New dev
-```
+- The [Dev Containers VS Code extension](https://containers.dev/supporting#dev-containers).
 
-![Dev containers 1](./_attachments/dev-containers1.png)
+Make sure Docker is running, then navigate into your project's directory. Create a file called `devcontainer.json` that contains the following:
 
-Then, you'll be prompted to select a new dev container configuration. Search for and select the 'Internet Computer vvv-interactive' template.
-
-![Dev containers 2](./_attachments/dev-containers2.png)
-
-This template includes a local version of the ledger and NNS.
-
-If you want to use a dev container sample, check out the [Internet Computer Start repo](https://github.com/infu/internet-computer-start/tree/main) for dev container samples.
-
-### Open a GitHub repo in a container
-
-You can open a GitHub repo in the container using a URL such as:
-
-```
-https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=[GITHUB_URL]
-```
-
-For example, to open the ICP Hello World Motoko example, open the URL:
-
-```
-https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/dfinity/icp-hello-world-motoko
-```
-
-When prompted, select 'Open Visual Studio Code'.
-
-Upon opening in VS Code, you may be prompted to install the required plugins to use the developer containers feature.
-
-## Using Docker directly
-
-You can also use Docker directly instead of through the VS Code dev containers extension. To use Docker directly, first [install Docker Desktop](https://www.docker.com/products/docker-desktop/) and start the Docker Daemon. Then, open a command line window, pull the DFINITY ICP developer environment Docker image and run an instance of the image:
-
-```
-docker pull ghcr.io/dfinity/icp-dev-env:latest
-docker run --platform linux/x86_64 -dit ghcr.io/dfinity/icp-dev-env:latest
+```json
+{
+  "name": "ICP Dev Environment",
+  "image": "ghcr.io/dfinity/icp-dev-env-slim:13",
+  "forwardPorts": [4943, 5173],
+  "portsAttributes": {
+    "4943": {
+      "label": "dfx",
+      "onAutoForward": "ignore"
+    },
+    "5173": {
+      "label": "vite",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["dfinity-foundation.vscode-motoko"]
+    }
+  }
+}
 ```
 
+Then, start the Dev Container by opening the VS Code command palette (F1 or Ctrl+Shift+P), then select `Dev-Containers: Reopen in Container`.
 

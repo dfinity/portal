@@ -7,6 +7,7 @@ docs/developer-docs/build/cdks @dfinity/dx
 docs/developer-docs/integrations/rosetta @dfinity/finint
 docs/developer-docs/security @dfinity/product-security
 docs/references/execution-errors.mdx @dfinity/execution
+docs/references/ingress-messages.mdx @dfinity/product-security
 docs/references/message-execution-properties.mdx @dfinity/product-security
 docs/developer-docs/web-apps/custom-domains @dfinity/boundary-node
 

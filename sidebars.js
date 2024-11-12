@@ -5,8 +5,8 @@ const sidebars = {
   build: [
       {
         type: "doc",
-        label: "Overview of ICP",
-        id: "developer-docs/getting-started/overview-of-icp",
+        label: "Network overview",
+        id: "developer-docs/getting-started/network-overview",
       },
       {
       type: "category",
@@ -1120,6 +1120,7 @@ const sidebars = {
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-voting-on-proposals",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-following-other-neurons",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-advanced-neuron-operations",
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-making-neurons-public",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-manage-quill-neurons",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-additional-features",
               ],
@@ -1418,6 +1419,11 @@ const sidebars = {
           id: "references/message-execution-properties",
         },
         {
+          type: "doc",
+          label: "Ingress messages",
+          id: "references/ingress-messages",
+        },
+        {
           type: "category",
           label: "Node providers",
           items: [
@@ -1441,17 +1447,6 @@ const sidebars = {
               "references/subnets/subnet-types",
             ],
           },
-        {
-          type: "category",
-          label: "FAQs",
-          items: [
-            "developer-docs/multi-chain/faq/user-faq",
-            "developer-docs/multi-chain/faq/ckbtc-faq",
-            "developer-docs/multi-chain/faq/cketh-faq",
-            "developer-docs/multi-chain/faq/ckerc20-faq",
-            "developer-docs/multi-chain/faq/signatures-faq",
-          ],
-        },
       ],
     },
   ],
