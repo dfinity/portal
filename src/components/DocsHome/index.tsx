@@ -558,7 +558,7 @@ const DocsHomePage: FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-[2fr,1fr,1fr] gap-8 mt-12 tw-lead">
             <div className="mb-auto">
               Become a “World Computer” developer who builds sovereign social
-              media, games, enterprise apps, AI, Web3, DeFi and_
+              media, games, enterprise apps, AI, Web3, DeFi and _
             </div>
             <div className="mb-auto tw-paragraph text-white-80 flex flex-col gap-2">
               The Internet Computer (ICP) provides a 100% decentralized platform
@@ -658,7 +658,7 @@ const DocsHomePage: FC = () => {
       <section>
         <Blog />
       </section>
-      <div className="grid grid-cols-1 md:grid-cols-[1fr,1fr] gap-4 mt-20">
+      <div className="grid grid-cols-1 md:grid-cols-[1fr,1fr] gap-4 ">
         {footerCards.map((card, index) => (
           <TeaserCardFooter card={card} key={index} className="rounded-lg" />
         ))}
