@@ -89,8 +89,8 @@
             "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "imported": true,
-            "milestone_id": "Stellarator"
+            "milestone_id": "Stellarator",
+            "imported": true
           },
           {
             "title": "Improved consensus throughput and latency",
@@ -115,7 +115,7 @@
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Stellarator"
-          }
+          },
         ]
       },
       {
@@ -414,17 +414,6 @@
         "milestone_id": "Future features",
         "eta": "none",
         "elements": [
-          {
-            "title": "Asynchronous Checkpointing",
-            "overview": "Replicas currently persist the replicated state to disk every couple hundreds of rounds in a process called checkpointing. Currently some parts of checkpointing are done synchronously, which leads to drops in the execution rate in the checkpointing rounds and users have to wait longer for their responses during these rounds. The goal of this feature is to make more checkpointing steps run asynchronously in the background to make the IC's performance more consistent and predictable.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": false,
-            "in_beta": false
-          },
           {
             "title": "Best-effort messaging",
             "overview": "Extend canister messaging by an additional message type that enables more scalable and responsive dApps.",
@@ -989,6 +978,18 @@
             "docs": "",
             "is_community": false,
             "in_beta": false
+          },	
+          {
+            "title": "Asynchronous Checkpointing",
+            "overview": "Replicas currently persist the replicated state to disk every couple hundreds of rounds in a process called checkpointing. Currently some parts of checkpointing are done synchronously, which leads to drops in the execution rate in the checkpointing rounds and users have to wait longer for their responses during these rounds. The goal of this feature is to make more checkpointing steps run asynchronously in the background to make the IC's performance more consistent and predictable.",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Stellarator"
           }
         ]
       }
@@ -3535,13 +3536,13 @@
         "name": "Canister DevOps",
         "milestone_id": "Beryllium",
         "description": "This milestone provides substantial simplifications and improvements for the developer lifecycle of canisters, particularly regarding their development and operations. Snapshotting capabilities, a powerful logging infrastructure and improved error handling as well as push of relevant events brings canisters closer to Web2 services in terms of DevOps.",
-        "eta": "November 2024",
+        "eta": "October 2024",
         "status": "in_progress",
         "elements": [
           {
             "title": "Canister snapshots",
             "overview": "Allow for canister snapshots to be created on chain. Snapshots can be exported to and imported from off-chain storage.",
-            "status": "deployed",
+            "status": "in_progress",
             "forum": "https://forum.dfinity.org/t/canister-backup-and-restore-community-consideration/22597",
             "proposal": "",
             "docs": "",
@@ -3566,7 +3567,7 @@
           {
             "title": "Standardized canister response codes",
             "overview": "Standardize canister response codes, particularly error codes, to enable better composability of services from canister smart contracts.",
-            "status": "deployed",
+            "status": "upcoming",
             "forum": "",
             "proposal": "",
             "docs": "",
@@ -3581,63 +3582,10 @@
             "proposal": "",
             "docs": "",
             "eta": "",
-            "status": "deployed",
+            "status": "in_progress",
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Beryllium"
-          }
-        ]
-      },
-      {
-        "name": "Code Authoring and Development Workflows",
-        "milestone_id": "Coulomb",
-        "description": "This milestone introduces new products that make building on ICP fast, fun, and educational.",
-        "eta": null,
-        "status": "in_progress",
-        "elements": [
-          {
-            "title": "ICP Ninja BETA",
-            "overview": "ICP Ninja is your go-to online platform for developing and deploying smart contracts on the Internet Computer (ICP).",
-            "status": "deployed",
-            "forum": "https://forum.dfinity.org/t/announcing-icp-ninja/36396",
-            "proposal": "",
-            "docs": "https://internetcomputer.org/docs/current/developer-docs/developer-tools/ide/icp-ninja",
-            "is_community": false,
-            "in_beta": true,
-            "milestone_id": "Coulomb"
-          },
-          {
-            "title": "ICP Ninja User Experience Enhancements",
-            "overview": "ICP Ninja will receive a number of new user experience enhancements, such as dark mode and the ability to modify the file tree.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": true,
-            "milestone_id": "Coulomb"
-          },
-          {
-            "title": "ICP Ninja Developer Productivity Enhancements",
-            "overview": "ICP Ninja will get additional features that improve developer productivity, such as the ability to view logs and see live compilation feedback.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": true,
-            "milestone_id": "Coulomb"
-          },
-          {
-            "title": "Revamped Onboarding",
-            "overview": "The developer documentation will receive a number of updates focused on improving the onboarding journey for first time ICP developers.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Coulomb"
           }
         ]
       },
@@ -3655,7 +3603,7 @@
             "proposal": "https://dashboard.internetcomputer.org/proposal/106146",
             "docs": "",
             "eta": "",
-            "status": "in_progress",
+            "status": "upcoming",
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Thorium",
@@ -3681,7 +3629,7 @@
             "proposal": "",
             "docs": "",
             "eta": "Q2 2024",
-            "status": "deployed",
+            "status": "in_progress",
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Thorium",
