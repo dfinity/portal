@@ -181,6 +181,30 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
             </div>
           )}
           <div className="flex lex-1 pl-8 pr-6 py-6 bg-white min-w-[705px]">
+            {item.sections[selectedSectionIndex].featured && (
+              <div className="pr-6">
+                <Link
+                  style={{
+                    backgroundImage: `url(${item.sections[selectedSectionIndex].featured.image})`,
+                  }}
+                  className="bg-cover bg-center aspect-video rounded-xl flex w-[300px] p-6 group/featured hover:no-underline"
+                  href={item.sections[selectedSectionIndex].featured.href}
+                >
+                  <span className="tw-heading-5 text-white flex-[3] group-hover/featured:-translate-y-2 transition-transform">
+                    {item.sections[selectedSectionIndex].featured.title}
+                    {item.sections[selectedSectionIndex].featured.subtitle && (
+                      <h6 className="tw-heading-7 leading-6 mt-2  text-white flex-[2] group-hover/featured:-translate-y-2 transition-transform">
+                        {item.sections[selectedSectionIndex].featured.subtitle}
+                      </h6>
+                    )}
+                  </span>
+
+                  <span className="flex-1  text-right ">
+                    <FeaturedArrowRight />
+                  </span>
+                </Link>
+              </div>
+            )}
             <div className="flex-1 grid grid-rows-4 grid-flow-col gap-5 gap-x-15 min-w-[256px] pr-6">
               {item.sections[selectedSectionIndex].items.map((item) => (
                 <Link
@@ -214,30 +238,6 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
                 </Link>
               ))}
             </div>
-            {item.sections[selectedSectionIndex].featured && (
-              <div className="pl-6">
-                <Link
-                  style={{
-                    backgroundImage: `url(${item.sections[selectedSectionIndex].featured.image})`,
-                  }}
-                  className="bg-cover bg-center aspect-video rounded-xl flex w-[300px] p-6 group/featured hover:no-underline"
-                  href={item.sections[selectedSectionIndex].featured.href}
-                >
-                  <span className="tw-heading-5 text-white flex-[3] group-hover/featured:-translate-y-2 transition-transform">
-                    {item.sections[selectedSectionIndex].featured.title}
-                    {item.sections[selectedSectionIndex].featured.subtitle && (
-                      <h6 className="tw-heading-7 leading-6 mt-2  text-white flex-[2] group-hover/featured:-translate-y-2 transition-transform">
-                        {item.sections[selectedSectionIndex].featured.subtitle}
-                      </h6>
-                    )}
-                  </span>
-
-                  <span className="flex-1  text-right ">
-                    <FeaturedArrowRight />
-                  </span>
-                </Link>
-              </div>
-            )}
           </div>
         </div>
         {/* desktop aux items */}

@@ -399,7 +399,7 @@ const marketingNav = {
             {
               name: "Developer Docs",
               href: "/docs/current/home",
-              description: "Start coding",
+              description: "Find the resources you need quickly",
             },
             {
               name: "Sample code",
@@ -407,9 +407,9 @@ const marketingNav = {
               description: "Get inspired by existing projects",
             },
             {
-              name: "Playground",
-              href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
-              description: "Deploy to the playground environment",
+              name: "Web IDE",
+              href: "https://icp.ninja",
+              description: "Deploy your first dapp with ICP.Ninja",
             },
             {
               name: "Programming languages",
@@ -433,8 +433,8 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Start building step by step",
-            href: "/docs/current/tutorials/developer-journey/",
+            title: "Developer Docs",
+            href: "/docs/current/home",
             image: "/img/nav/featured-building.webp",
           },
         },
@@ -690,7 +690,7 @@ const config = {
       image: "/img/share.webp",
       colorMode: {
         disableSwitch: true,
-        defaultMode: "light",
+        defaultMode: "dark",
         respectPrefersColorScheme: false,
       },
       metadata: [
