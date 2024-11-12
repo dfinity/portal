@@ -21,7 +21,6 @@ const redirects = `
   /icp-event /events
   /videos /news
   /icp-newsletter /news
-  /icp-tokens /how-it-works/tokenomics
   /ois /sns
   /docs/current/developer-docs/getting-started/overview-of-icp /docs/current/developer-docs/getting-started/network-overview
   /docs/videos-tutorials /developers

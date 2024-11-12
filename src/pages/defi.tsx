@@ -10,7 +10,9 @@ import AnimateSpawn from "../components/Common/AnimateSpawn";
 import { CardWithDescription } from "../components/Common/Card";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
-import RotatingStatPanel, { RotatingStat } from "../components/Common/RotatingStatsPanel";
+import RotatingStatPanel, {
+  RotatingStat,
+} from "../components/Common/RotatingStatsPanel";
 import ShareMeta from "../components/Common/ShareMeta";
 import TranslatedLayout from "../components/Common/TranslatedLayout/TranslatedLayout";
 import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
@@ -338,7 +340,7 @@ function DefiPage() {
                   <motion.p className="mb-0" variants={transitions.item}>
                     <Link
                       className="button-outline-white"
-                      href="https://internetcomputer.org/ecosystem?tag=Wallets"
+                      href="https://internetcomputer.org/ecosystem?tag=Wallet"
                     >
                       All ICP wallets
                     </Link>
