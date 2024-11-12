@@ -10,7 +10,7 @@ const sidebars = {
         {
           type: "doc",
           label: "First smart contract",
-          id: "developer-docs/getting-started/first-smart-contract",
+          id: "developer-docs/getting-started/quickstart/first-smart-contract",
         },
         {
           type: "doc",
