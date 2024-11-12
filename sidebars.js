@@ -4,11 +4,6 @@
 const sidebars = {
   build: [
     {
-      type: "doc",
-      label: "Network overview",
-      id: "developer-docs/getting-started/network-overview",
-    },
-    {
       type: "category",
       label: "Quick starts",
       items: [
@@ -23,6 +18,11 @@ const sidebars = {
           id: "developer-docs/getting-started/quickstart/react-quickstart",
         },
       ],
+    },
+    {
+      type: "doc",
+      label: "Network overview",
+      id: "developer-docs/getting-started/network-overview",
     },
     {
       type: "category",
