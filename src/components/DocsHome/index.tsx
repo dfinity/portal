@@ -44,20 +44,6 @@ interface TileDescriptor {
 
 const languagesTiles: TileDescriptor[] = [
   {
-    label: "Languages",
-    description:
-      "Explore coding, from beginner to pro, with our comprehensive guides, tutorials, samples, and API docs for Rust, Motoko, and TypeScript",
-    icon: null,
-    action: (
-      <Link
-        className="button button-primary rounded-2xl w-32"
-        href="/docs/current/developer-docs/smart-contracts/write/overview"
-      >
-        View all
-      </Link>
-    ),
-  },
-  {
     label: "Motoko",
     description:
       "Get started with a high level programming language designed specifically for the Internet Computer",
@@ -153,20 +139,6 @@ const languagesTiles: TileDescriptor[] = [
 
 const frameworksTiles: TileDescriptor[] = [
   {
-    label: "Quickstarts\n& Frameworks",
-    description:
-      "Start deploying on ICP easily with our Quickstart guides for developers, tailored to your preferred language",
-    icon: null,
-    action: (
-      <Link
-        className="button button-primary rounded-2xl w-32"
-        href="/docs/current/developer-docs/web-apps/frameworks/juno"
-      >
-        View all
-      </Link>
-    ),
-  },
-  {
     label: "Juno",
     description:
       "Juno is a cutting-edge blockchain-as-a-service platform designed to enable developers to create decentralized applications at lightning speed",
@@ -240,19 +212,12 @@ const frameworksTiles: TileDescriptor[] = [
       </Link>
     ),
   },
-  {
-    isGhostTile: true,
-  },
 ];
 
 const Tile = ({ tile }: { tile: TileDescriptor }) => {
   return (
     <div
-      className={`flex flex-col ${
-        tile.isGhostTile
-          ? "bg-grey-200 border-grey-200 hidden lg:block"
-          : "bg-white/70 border-white"
-      } rounded-lg border border-solid p-4 h-[360px] justify-between`}
+      className={`flex flex-col ${"bg-white/70 border-white"} rounded-lg border border-solid p-4 justify-between`}
     >
       <div className={"flex flex-col gap-4 items-start"}>
         <div className={"flex flex-row gap-4"}>
@@ -269,20 +234,6 @@ const Tile = ({ tile }: { tile: TileDescriptor }) => {
 };
 
 const chainfusionTiles: TileDescriptor[] = [
-  {
-    label: "Chain Fusion",
-    description:
-      "Develop cross-chain applications using ICP's direct integrations with other networks",
-    icon: null,
-    action: (
-      <Link
-        className="button button-primary rounded-2xl w-50"
-        href="/docs/current/developer-docs/multi-chain/overview"
-      >
-        Learn more
-      </Link>
-    ),
-  },
   {
     label: "Supported chains",
     description: "Learn which chains ICP integrates with and how",
@@ -434,11 +385,33 @@ const Education = () => {
       ),
       mainImage: "/img/docs/teaser-cards/hackathon-prep-course.svg",
     },
+    {
+      title: (
+        <h2 className={"text-white"}>ICP Demystified: Learn the Essentials</h2>
+      ),
+      subtitle: (
+        <p className={"text-white"}>
+          Explore the protocol and its features with our “Zero to dApp Educate
+          Series”.
+        </p>
+      ),
+      backgroundImage: "/img/docs/teaser-cards/zero-dapp.webp",
+      cta: (
+        <Link
+          className="button-transparent button-with-icon pl-0"
+          href="/docs/current/tutorials/hackathon-prep-course/"
+        >
+          Start course
+          <LinkArrowRight />
+        </Link>
+      ),
+      mainImage: "/img/docs/teaser-cards/main-zero-to-dapp.webp",
+    },
   ];
   return (
     <div
       className={
-        "grid grid-cols-1 md:grid-cols-2 grid-rows-2 md:grid-rows-1 gap-3"
+        "grid grid-cols-1 md:grid-cols-3 grid-rows-2 md:grid-rows-1 gap-3"
       }
     >
       {CARDS.map((card, index) => {
@@ -454,9 +427,7 @@ const Education = () => {
             key={index}
             card={card}
             style={backgroundStyles}
-            className={
-              "h-full relative py-8 px-8 flex-col rounded-lg grid sm:grid-cols-2 grid-cols-1 gap-2 justify-between flex-1"
-            }
+            className={"h-full p-8 rounded-lg"}
           />
         );
       })}
@@ -464,24 +435,112 @@ const Education = () => {
   );
 };
 
+function TeaserCardFooter({
+  card,
+  className,
+}: {
+  card: CarouselCard;
+  className?: string;
+}) {
+  const backgroundStyles = card.backgroundImage
+    ? {
+        backgroundImage: `url(${card.backgroundImage})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }
+    : {};
+  return (
+    <div
+      className={className}
+      style={{
+        ...backgroundStyles,
+      }}
+    >
+      <div className={"p-6 flex flex-col justify-between "}>
+        <div className={"flex flex-col"}>
+          {card.title}
+          {card.subtitle}
+          {card.cta}
+        </div>
+        {card.mainImage && (
+          <img
+            loading="lazy"
+            className={"sm:hidden"}
+            src={card.mainImage}
+            alt={typeof card.title === "string" ? card.title : "Card image"}
+          />
+        )}
+      </div>
+      {card.mainImage && (
+        <div className={"justify-center hidden sm:flex"}>
+          <img
+            className={"mt-auto"}
+            src={card.mainImage}
+            alt={typeof card.title === "string" ? card.title : "Card image"}
+          />
+        </div>
+      )}
+    </div>
+  );
+}
+
+const footerCards: Array<CarouselCard> = [
+  {
+    title: (
+      <h2 className={"text-white"}>Follow @DFINITYDev on X for tech news</h2>
+    ),
+    subtitle: (
+      <p className={"text-white"}>All devs, geeks, & tech fans welcome</p>
+    ),
+    backgroundImage: "/img/docs/teaser-cards/bg-0.svg",
+    cta: (
+      <Link
+        className="button-transparent button-with-icon pl-0"
+        href="https://twitter.com/DFINITYDev"
+      >
+        Follow now
+        <LinkArrowRight />
+      </Link>
+    ),
+    mainImage: "/img/docs/teaser-cards/main-0.svg",
+  },
+  {
+    title: <h2 className={"text-white"}>Developer office hours on Discord</h2>,
+    subtitle: (
+      <p className={"text-white"}>Every Wednesday 9AM CEST and 10:30AM PST</p>
+    ),
+    backgroundImage: "/img/docs/teaser-cards/bg-2.svg",
+    cta: (
+      <Link
+        className="button-transparent button-with-icon pl-0"
+        href="https://discord.com/invite/5PJMmmETQB"
+      >
+        RSVP at #event channel
+        <LinkArrowRight />
+      </Link>
+    ),
+    mainImage: "/img/docs/teaser-cards/main-2.svg",
+  },
+];
+
 const DocsHomePage: FC = () => {
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-10 overflow-hidden">
       <section className="flex flex-col gap-8">
         <div className="px-8 py-10 md:p-10 rounded-lg bg-infinite text-white sm:col-span-2 md:row-span-2 bg-center bg-cover flex flex-col">
-          <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense  -translate-y-[10%] z-0 md:opacity-30 " />
+          <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense -translate-y-[10%] z-0 md:opacity-30 " />
 
           <h1 className="tw-heading-3 sm:tw-heading-60 md:tw-heading-2 mb-14">
             Quick Start
           </h1>
 
-          <div className={"flex flex-row gap-2 flex-wrap"}>
+          <div className={"flex flex-row gap-2 flex-wrap items-end"}>
             <p className="mb-0">
               <Link
                 className="button-white button-with-icon"
                 href="/docs/current/developer-docs/getting-started/network-overview"
               >
-                Learn more
+                SDK BUILD
                 <LinkArrowRight />
               </Link>
             </p>
@@ -490,13 +549,13 @@ const DocsHomePage: FC = () => {
                 className="button-white button-with-icon"
                 href="https://play.motoko.org"
               >
-                Start coding
+                INSTANT WEB IDE
                 <LinkArrowRight />
               </Link>
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-[66%_33%_33%] gap-4 mt-12 tw-lead">
-            <div>
+          <div className="grid grid-cols-1 md:grid-cols-[2fr,1fr,1fr] gap-8 mt-12 tw-lead">
+            <div className="mt-auto">
               Become a “World Computer” developer who builds sovereign social
               media, games, enterprise apps, AI, Web3, DeFi and…
             </div>
@@ -537,82 +596,99 @@ const DocsHomePage: FC = () => {
             </div>
           </div>
         </div>
-        <div className="px-6 py-8 md:p-10 border border-white border-solid rounded-lg bg-white/70 sm:col-span-2">
+        <div className="px-6 py-8 md:p-10 border md:mx-auto md:min-w-[900px] sm:col-span-2">
           <QueryClientProvider client={queryClient}>
             <NetworkStats></NetworkStats>
           </QueryClientProvider>
         </div>
-        <div className="sm:col-span-2 md:h-96">
-          <TeaserCarousel />
+
+        <div className="grid grid-cols-1 md:grid-cols-[2fr,4fr] gap-24">
+          <div>
+            <h2 className="tw-heading-4 md:tw-heading-3">Languages</h2>
+            <p className="tw-paragraph">
+              Explore coding, from beginner to pro, with our comprehensive
+              guides, tutorials, samples, and API docs for Rust, Motoko, and
+              TypeScript
+            </p>
+            <Link
+              className="button-primary rounded-2xl"
+              href="/docs/current/developer-docs/smart-contracts/write/overview"
+            >
+              View all
+            </Link>
+          </div>
+          <div>
+            <div className="grid md:grid-cols-2 gap-4">
+              {languagesTiles.map((tile, index) => (
+                <Tile tile={tile} key={index} />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-10">
+          <div>
+            <h2 className="tw-heading-4 md:tw-heading-3">Courses</h2>
+            <Education />
+          </div>
         </div>
       </section>
 
-      <section>
-        <div
-          className="
-          grid
-          auto-cols-fr
-          grid-rows-1
-          grid-cols-1
-          sm:grid-cols-2
-          md:grid-cols-4
-          lg:grid-cols-5
-          px-0
-          gap-3
-        "
-        >
-          {languagesTiles.map((tile, index) => (
-            <Tile tile={tile} key={index} />
-          ))}
+      <div className="grid grid-cols-1 md:grid-cols-[2fr,4fr] gap-24">
+        <div>
+          <h2 className="tw-heading-4 md:tw-heading-3">Chain Fusion</h2>
+          <p className="tw-paragraph">
+            Develop cross-chain applications using ICP's direct integrations
+            with other networks
+          </p>
+          <Link
+            className="button-primary rounded-2xl"
+            href="/docs/current/developer-docs/smart-contracts/write/overview"
+          >
+            LEARN MORE
+          </Link>
         </div>
-      </section>
-
-      <section>
-        <Education />
-      </section>
-
-      <section>
-        <div
-          className="
-          grid
-          auto-cols-fr
-          grid-cols-1
-          sm:grid-cols-2 
-          md:grid-cols-4
-          lg:grid-cols-5
-          px-0
-          gap-3
-        "
-        >
-          {chainfusionTiles.map((tile, index) => (
-            <Tile tile={tile} key={index} />
-          ))}
+        <div>
+          <div className="grid md:grid-cols-2 gap-4">
+            {chainfusionTiles.map((tile, index) => (
+              <Tile tile={tile} key={index} />
+            ))}
+          </div>
         </div>
-      </section>
-
-      <section>
-        <div
-          className="
-          grid
-          auto-cols-fr
-          grid-cols-1
-          sm:grid-cols-2
-          md:grid-cols-4
-          lg:grid-cols-5
-          px-0
-          gap-3
-        "
-        >
-          {frameworksTiles.map((tile, index) => (
-            <Tile tile={tile} key={index} />
-          ))}
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-[2fr,4fr] gap-24">
+        <div>
+          <h2 className="tw-heading-4 md:tw-heading-3">
+            Quick starts & frameworks
+          </h2>
+          <p className="tw-paragraph">
+            Start deploying on ICP easily with our Quickstart guides for
+            developers, tailored to your preferred language
+          </p>
+          <Link
+            className="button-primary rounded-2xl"
+            href="/docs/current/developer-docs/smart-contracts/write/overview"
+          >
+            VIEW ALL
+          </Link>
         </div>
-      </section>
+        <div>
+          <div className="grid md:grid-cols-2 gap-4">
+            {frameworksTiles.map((tile, index) => (
+              <Tile tile={tile} key={index} />
+            ))}
+          </div>
+        </div>
+      </div>
 
       <section>
         <Blog />
       </section>
-
+      <div className="grid grid-cols-1 md:grid-cols-[1fr,1fr] gap-4">
+        {footerCards.map((card, index) => (
+          <TeaserCardFooter card={card} key={index} className="rounded-lg" />
+        ))}
+      </div>
       <section className="bg-infinite -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-[-50px] md:px-[50px] text-white py-10 md:pt-14 md:pb-20">
         <div className=" bg-gradient-to-r from-[#6A85F199] to-[#C572EF99] rounded-lg px-6 py-8 md:p-8 flex flex-col md:flex-row gap-20">
           <div className="md:flex-[4] md:flex md:flex-col items-start">

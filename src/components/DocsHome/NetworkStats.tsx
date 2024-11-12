@@ -35,7 +35,7 @@ function Divider() {
 function formatNumber(x: number) {
   return x
     .toLocaleString("en-US", {
-      maximumFractionDigits: 0
+      maximumFractionDigits: 0,
     })
     .replace(/,/g, "\u2019");
 }
