@@ -625,12 +625,15 @@ const redirects = `
   /docs/current/developer-docs/multi-chain/faq/ckerc20-faq /docs/current/developer-docs/multi-chain/chain-key-tokens/ckerc20/overview
   /docs/current/developer-docs/multi-chain/faq/signatures-faq /docs/current/references/t-sigs-how-it-works
   /docs/current/developer-docs/getting-started/quickstart/juno-quickstart /docs/current/developer-docs/web-apps/frameworks/juno
+<<<<<<< HEAD
   /docs/current/developer-docs/getting-started/quickstart/react-quickstart /docs/current/developer-docs/web-apps/application-frontends/quickstart/react-quickstart
   /docs/current/developer-docs/getting-started/development-workflow /docs/current/developer-docs/smart-contracts/development-workflow
   /docs/current/developer-docs/getting-started/default-template /docs/current/developer-docs/smart-contracts/write/default-template
   /docs/current/developer-docs/getting-started/hello-world /docs/current/developer-docs/getting-started/write-smart-contracts
   /docs/current/developer-docs/getting-started/cycles/overview /docs/current/developer-docs/getting-started/tokens-and-cycles
   /docs/current/developer-docs/getting-started/accounts /docs/current/developer-docs/getting-started/identities
+=======
+>>>>>>> 023a1639adf8c999dd5515e6e24dc37d42f182ce
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

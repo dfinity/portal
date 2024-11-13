@@ -8,7 +8,7 @@
         "milestone_id": "Tokamak",
         "description": "This milestone marks a significant reduction of user-perceived end-to-end latency for processing ingress messages. It is achieved by multiple concerted measures at different levels of the protocol stack and brings the user experience of Web3 closer to Web2.",
         "eta": "November 2024",
-        "status": "in_progress",
+        "status": "deployed",
         "elements": [
           {
             "title": "QUIC-based transport and P2P layer for consensus",
@@ -29,7 +29,7 @@
             "proposal": "",
             "docs": "",
             "eta": "Q2 2024",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Tokamak"
