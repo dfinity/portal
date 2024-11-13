@@ -54,7 +54,7 @@
       "proposal": "",
       "docs": "",
       "eta": "Q2 2024",
-      "status": "in_progress",
+      "status": "deployed",
       "is_community": false,
       "in_beta": false,
       "milestone_id": "Stellarator"
@@ -78,11 +78,11 @@
       "proposal": "",
       "docs": "",
       "eta": "",
-      "status": "in_progress",
+      "status": "deployed",
       "is_community": false,
       "in_beta": false,
-      "milestone_id": "Stellarator",
-      "imported": true
+      "imported": true,
+      "milestone_id": "Stellarator"
     },
     {
       "title": "Improved consensus throughput and latency",
@@ -117,8 +117,7 @@
       "eta": "",
       "status": "in_progress",
       "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Stellarator"
+      "in_beta": false
     },
     {
       "title": "Increased Storage Capacity and Throughput",

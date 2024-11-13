@@ -25,20 +25,6 @@ const sliderData = [
     link: "https://www.undp.org/policy-centre/singapore/press-releases/undp-partners-dfinity-foundation-enhance-financial-inclusion-msmes",
   },
   {
-    tagline: "Milestone achieved 🏆",
-    title: "CYCLOTRON",
-    description: "Onchain AI Inference",
-    image: "/img/home/slider/update_ai_milestone.webp",
-    link: "/roadmap#Decentralized%20AI-Cyclotron",
-  },
-  {
-    tagline: "Milestone achieved 🚀",
-    title: "DEUTERIUM",
-    description: "Chain Fusion supports threshold Schnorr signing.",
-    image: "/img/home/slider/deuterium_milestone_card.webp",
-    link: "/roadmap#Chain%20Fusion-Deuterium",
-  },
-  {
     tagline: "ICP Pitch Deck",
     title: "ICP makes the internet into a World Computer",
     description: "Read now",
@@ -46,18 +32,11 @@ const sliderData = [
     link: "https://deck.internetcomputer.org/",
   },
   {
-    tagline: "November 9-10, 2024 – Lisbon",
-    title: "CRYPTO AI:CON",
-    description: "Register now",
-    image: "/img/home/slider/crypto-ai.webp",
-    link: "https://lu.ma/icpevents",
-  },
-  {
-    tagline: "Nov 8-10, 2024 – Bangkok",
-    title: "Chain Fusion Hacker House",
-    description: "Register now",
-    image: "/img/home/slider/hacker-house.webp",
-    link: "https://lu.ma/nq8qzppm",
+    tagline: "New Milestones achieved ✨",
+    title: "Tokamak, Beryllium & Stellarator",
+    description: "Read now",
+    image: "/img/home/slider/milestones_highlight_1.webp",
+    link: "https://medium.com/dfinity",
   },
 ];
 

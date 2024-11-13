@@ -138,7 +138,7 @@ const Search: FC<{ onClose: () => void }> = ({ onClose }) => {
                 />
                 <input
                   // type="search"
-                  className="block border-none tw-lead-sm bg-transparent py-[22px] px-4 pl-14 w-full focus:outline-none"
+                  className="mainsearchinput block border-none tw-lead-sm bg-transparent py-[22px] px-4 pl-14 w-full focus:outline-none"
                   placeholder="Search for anything"
                   ref={inputRef}
                   value={term}
