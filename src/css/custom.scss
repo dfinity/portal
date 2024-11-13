@@ -47,12 +47,44 @@ html[data-theme='dark']:root, /* we did this so the darkmode does not affect any
 }
 
 html.docs-wrapper[data-theme='dark'] {
-  
-  --ifm-color-content: #fff;
+
+  --icp-white: #fff;
+  --icp-black: #000;
+  --icp-raven: oklch(from var(--icp-black) calc(l + .2) c h);
+  --icp-purple: #9a6cff;
+  --icp-pink: #e300b6;
+
+  --icp-surface: var(--icp-raven);
+  --icp-on-surface: var(--icp-white);
+
+  --icp-surface-box: oklch(from var(--icp-raven) calc(l + .05) c h);
+  --icp-on-surface-box: var(--icp-white);
+
+  --icp-surface-highlight: oklch(100% 0 0);
+  --icp-on-surface-highlight: var(--icp-black);
+
+  --icp-line: oklch(from var(--icp-surface-box) calc(l - .05) c h);
+
+  --icp-interaction: var(--icp-purple);
+  --icp-interaction-hover: var(--icp-pink);
+  --icp-on-interaction: var(--icp-white);
+
+  --icp-interaction-text: var(--icp-purple);
+  --icp-interaction-text-hover: var(--icp-pink);
+
+  --ifm-color-content: var(--icp-on-surface);
+
   body {
-    --ifm-menu-color-active: #925fff;
-    --ifm-link-color: #925fff;
-    --ifm-color-primary: #925fff;
+    --ifm-menu-color-active: var(--icp-interaction-text);
+    --ifm-menu-color-background-hover: var(--icp-surface-box);
+
+    --ifm-link-color: var(--icp-interaction-text);
+    --ifm-color-primary: var(--icp-interaction-text);
+
+    --ifm-link-hover-color: var(--icp-interaction-text-hover);
+    --ifm-pagination-nav-color-hover: var(--icp-interaction-text-hover);
+
+
     --ifm-color-primary-dark: #3500a7;
     --ifm-color-primary-darker: #32009d;
     --ifm-color-primary-darkest: #290082;
@@ -82,13 +114,11 @@ html.docs-wrapper[data-theme='dark'] {
     --ic0-article-background: linear-gradient(180deg, #f5f5f5 0%, #f2eff6 100%);
     --ic0-docs-background: #151515;
 
-
-
-    --ifm-navbar-padding-horizontal: 24px;
+      --ifm-navbar-padding-horizontal: 24px;
       --ifm-navbar-y-padding: 0;
       --ifm-navbar-height: 88px;
       --ifm-subnav-height: 54px;
-      --ifm-navbar-link-hover-color: #a70fd6;
+      --ifm-navbar-link-hover-color: var(--icp-interaction-text-hover);
       --ifm-navbar-x-padding: 50px;
     
       @media (max-width: 996px) {
@@ -104,7 +134,7 @@ html.docs-wrapper[data-theme='dark'] {
       .navbar {
         padding: var(--ifm-navbar-y-padding) var(--ifm-navbar-x-padding);
     
-        --ifm-color-primary: #702eff;
+        --ifm-color-primary: var(--icp-interaction-text);
     
         // color the dropdown caret on hover
         .navbar__item:hover {
@@ -119,56 +149,57 @@ html.docs-wrapper[data-theme='dark'] {
       }
 
       .tabs-container {
-        color: #000;
+        background: var(--icp-surface-highlight);
+        color: var(--icp-on-surface-highlight);
       }
 
       .navbar__search-button {
-        border-color: #fff;
-        color: #fff;
+        border-color: currentColor;
+        color: var(--icp-on-surface);
         span {
-          color: #fff;
+          color: rgb(from var(--icp-on-surface) r g b / 50%);
         }
       }
 
       .mainsearchinput {
-        color: #000
+        color: var(--icp-on-surface-highlight);
       }
   }
 
   .navbar {
-    background: #151515;
-    color: #fff;
+    background: var(--icp-surface);
+    color: var(--icp-on-surface);
   }
 
   .subnav, .menu {
-    background: #151515;
-    color: #fff;
+    background: var(--icp-surface);
+    color: var(--icp-on-surface);
     border-color: transparent;
   }
   .container:has(.docshome),
   .docshome {
-    background: #151515;
-    color: #fff;
+    background: var(--icp-surface);
+    color: var(--icp-on-surface);
   }
 
   .networkstats figcaption {
-    color: #fff;
+    color: var(--icp-on-surface);
   }
 
   .networkstats svg path {
-  fill: #fff;
+    fill: var(--icp-on-surface);
   }
 
   .tile {
-    background: #000;
-    color: #fff;
-    border-color: rgba(255,255,255, 0.2);
+    background: var(--icp-surface-box);
+    color: var(--icp-on-surface-box);
+    border-color: var(--icp-line);
   }
 
   .slidetile {
     background: #000;
     color: #fff;
-    border-color: rgba(255,255,255, 0.2);
+    border-color: var(--icp-line);
     * {
       color: #fff;
     }
