@@ -1,5 +1,5 @@
 import Link from "@docusaurus/Link";
-import { useThemeConfig } from "@docusaurus/theme-common";
+import { useThemeConfig, useColorMode } from "@docusaurus/theme-common";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import React from "react";
@@ -8,22 +8,27 @@ export default function Logo(props) {
   const {
     siteConfig: { title },
   } = useDocusaurusContext();
-
   const {
     navbar: { title: navbarTitle, logo: originalLogo },
   } = useThemeConfig();
+  const { colorMode } = useColorMode();
 
   const { imageClassName, titleClassName, ...propsRest } = props;
   const logo = { ...originalLogo };
-
   const logoLink = useBaseUrl("/");
 
-  // If visible title is shown, fallback alt text should be
-  // an empty string to mark the logo as decorative.
-  const fallbackAlt = navbarTitle ? "" : title;
-  // Use logo alt text if provided (including empty string),
-  // and provide a sensible fallback otherwise.
-  const alt = logo?.alt ?? fallbackAlt;
+  const isDocs = document.documentElement.classList.contains("docs-doc-page");
+  const isDarkHero = document.documentElement.hasAttribute("data-hero-theme");
+
+  let logoSrc = logo.src;
+  if (isDocs && colorMode === "dark") {
+    logoSrc = "/img/IC_logo_horizontal_white.svg";
+  } else if (isDarkHero && !isDocs) {
+    logoSrc = "/img/IC_logo_horizontal_white.svg";
+  }
+
+  const alt = logo?.alt ?? (navbarTitle ? "" : title);
+
   return (
     <Link
       to={logoLink}
@@ -32,7 +37,7 @@ export default function Logo(props) {
     >
       {logo && (
         <div className={imageClassName}>
-          <img src={logo.src} alt={alt} className="!h-[32px] md:!h-[40px]" />
+          <img src={logoSrc} alt={alt} className="!h-[32px] md:!h-[40px]" />
         </div>
       )}
       {navbarTitle != null && <b className={titleClassName}>{navbarTitle}</b>}
