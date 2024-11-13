@@ -6,7 +6,7 @@ import {
   getTransactionRateV3,
   getckBTCTotalSupply,
 } from "@site/src/utils/network-stats";
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { useCallback, ReactNode, useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { ConstantRateCounter, SpringCounter } from "../PreHero/Counters";
 import InfoIcon from "../PreHero/InfoIcon";
@@ -27,14 +27,23 @@ function formatNumber(x: number) {
     .replace(/,/g, "\u2019");
 }
 
-const BlockCounter = () => {
-  const [displayCount, setDisplayCount] = useState<number | null>(null);
-  const [targetCount, setTargetCount] = useState<number | null>(null);
+interface CounterState {
+  displayCount: number | null;
+  targetCount: number | null;
+  rate: number | null;
+  lastFetchTime: number;
+}
 
-  // Fetch both block height and rate simultaneously on initial load
-  const { data: initialData } = useQuery(
-    "initialBlockData",
-    async () => {
+const BlockCounter = () => {
+  const [state, setState] = useState<CounterState>({
+    displayCount: null,
+    targetCount: null,
+    rate: null,
+    lastFetchTime: 0,
+  });
+
+  const fetchData = useCallback(async (isInitial: boolean) => {
+    try {
       const [heightResponse, rateResponse] = await Promise.all([
         fetch(
           "https://ic-api.internetcomputer.org/api/v3/metrics/block-height"
@@ -48,51 +57,80 @@ const BlockCounter = () => {
       const currentHeight = parseInt(heightData.block_height[1]);
       const currentRate = parseFloat(rateData.block_rate[0][1]);
 
-      // Calculate a starting point slightly behind current height
-      const startingHeight =
-        currentHeight - currentRate * (FETCH_INTERVAL / 1000);
-
-      return {
-        startHeight: startingHeight,
-        currentHeight,
-        rate: currentRate,
-      };
-    },
-    {
-      refetchInterval: FETCH_INTERVAL,
-      onSuccess: (data) => {
-        if (displayCount === null) {
-          setDisplayCount(data.startHeight);
-          setTargetCount(data.currentHeight);
-        } else {
-          setTargetCount(data.currentHeight);
+      setState((prev) => {
+        // For initial fetch, start slightly behind
+        if (isInitial || !prev.displayCount) {
+          const startingHeight =
+            currentHeight - currentRate * (FETCH_INTERVAL / 1000);
+          return {
+            displayCount: startingHeight,
+            targetCount: currentHeight,
+            rate: currentRate,
+            lastFetchTime: Date.now(),
+          };
         }
-      },
+
+        // For subsequent fetches, ensure we never go backwards
+        return {
+          ...prev,
+          targetCount: Math.max(currentHeight, prev.targetCount || 0),
+          rate: currentRate,
+          lastFetchTime: Date.now(),
+        };
+      });
+    } catch (error) {
+      console.error("Error fetching block data:", error);
     }
-  );
+  }, []);
 
-  // Smooth counter animation
+  // Initial fetch
   useEffect(() => {
-    if (!initialData || displayCount === null || targetCount === null) return;
+    fetchData(true);
+  }, [fetchData]);
 
-    const incrementPerInterval = (initialData.rate * ANIMATION_INTERVAL) / 1000;
+  // Regular fetch interval
+  useEffect(() => {
+    const interval = setInterval(() => {
+      fetchData(false);
+    }, FETCH_INTERVAL);
+
+    return () => clearInterval(interval);
+  }, [fetchData]);
+
+  // Animation
+  useEffect(() => {
+    if (!state.displayCount || !state.targetCount || !state.rate) return;
 
     const interval = setInterval(() => {
-      setDisplayCount((current) => {
-        if (current === null) return targetCount;
-        const next = current + incrementPerInterval;
-        return next <= targetCount ? next : targetCount;
+      setState((prev) => {
+        if (!prev.displayCount || !prev.targetCount || !prev.rate) return prev;
+
+        // Calculate progress since last fetch
+        const timeSinceLastFetch = Date.now() - prev.lastFetchTime;
+        const expectedProgress = (prev.rate * timeSinceLastFetch) / 1000;
+
+        const next =
+          prev.displayCount + (prev.rate * ANIMATION_INTERVAL) / 1000;
+        const adjustedNext = Math.min(
+          next,
+          prev.targetCount + expectedProgress
+        );
+
+        return {
+          ...prev,
+          displayCount: adjustedNext,
+        };
       });
     }, ANIMATION_INTERVAL);
 
     return () => clearInterval(interval);
-  }, [initialData, displayCount, targetCount]);
+  }, [state.displayCount, state.targetCount, state.rate]);
 
   return (
     <figure className="m-0">
       <div className="text-2xl font-medium">
-        {displayCount !== null
-          ? formatNumber(Math.floor(displayCount))
+        {state.displayCount !== null
+          ? formatNumber(Math.floor(state.displayCount))
           : "\u00A0"}
       </div>
       <figcaption className="tw-paragraph text-current opacity-50 flex items-center gap-1">
