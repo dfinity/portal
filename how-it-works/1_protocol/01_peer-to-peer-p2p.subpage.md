@@ -13,7 +13,7 @@ A key feature is the guaranteed message delivery to all required subnet nodes de
 
 ## Abortable Broadcast
 
-At the heart of the P2P layer is the Abortable Broadcast primitive, which is critical for efficient inter-replica communication in Byzantine Fault Tolerant (BFT) settings. It provides strong delivery guarantees in the presence of network congestion, peer or link failures, and backpressure. By preserving bandwidth and bounding data structures, Abortable Broadcast prevents overload from malicious peers while maintaining consistent updates in IC. It resembles a publish–subscribe model, with the added ability to abort in-flight messages when needed.
+At the heart of the P2P layer is the Abortable Broadcast primitive, which is critical for efficient inter-replica communication in Byzantine Fault Tolerant (BFT) settings. It provides strong delivery guarantees in the presence of network congestion, peer or link failures, and backpressure. By preserving bandwidth and bounding the size of its data structures, Abortable Broadcast prevents overload from malicious peers while ensuring consistency for messages from honest nodes. It resembles a publish–subscribe model, with the added ability to abort in-flight messages when needed.
 
 ## QUIC Transport
 
