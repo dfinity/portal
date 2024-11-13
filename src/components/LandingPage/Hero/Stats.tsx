@@ -16,6 +16,9 @@ import { DashboardIcon } from "./Dashboardicon";
 import transitions from "@site/static/transitions.json";
 import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 
+const FETCH_INTERVAL = 20000; // 20 seconds
+const ANIMATION_INTERVAL = 50; // 50ms for smooth counting
+
 function formatNumber(x: number) {
   return x
     .toLocaleString("en-US", {
@@ -23,6 +26,70 @@ function formatNumber(x: number) {
     })
     .replace(/,/g, "\u2019");
 }
+
+const BlockCounter = () => {
+  const [displayCount, setDisplayCount] = useState<number | null>(null);
+
+  // Fetch both block height and rate simultaneously on initial load
+  const { data: initialData } = useQuery(
+    "initialBlockData",
+    async () => {
+      const [heightResponse, rateResponse] = await Promise.all([
+        fetch(
+          "https://ic-api.internetcomputer.org/api/v3/metrics/block-height"
+        ),
+        fetch("https://ic-api.internetcomputer.org/api/v3/metrics/block-rate"),
+      ]);
+
+      const heightData = await heightResponse.json();
+      const rateData = await rateResponse.json();
+
+      return {
+        height: parseInt(heightData.block_height[1]),
+        rate: parseFloat(rateData.block_rate[0][1]),
+      };
+    },
+    {
+      refetchInterval: FETCH_INTERVAL,
+      onSuccess: (data) => {
+        if (displayCount === null) {
+          setDisplayCount(data.height);
+        }
+      },
+    }
+  );
+
+  // Smooth counter animation
+  useEffect(() => {
+    if (!initialData || displayCount === null) return;
+
+    const incrementPerInterval = (initialData.rate * ANIMATION_INTERVAL) / 1000;
+    const maxCount = initialData.height;
+
+    const interval = setInterval(() => {
+      setDisplayCount((current) => {
+        if (current === null) return maxCount;
+        const next = current + incrementPerInterval;
+        return next <= maxCount ? next : maxCount;
+      });
+    }, ANIMATION_INTERVAL);
+
+    return () => clearInterval(interval);
+  }, [initialData, displayCount]);
+
+  return (
+    <figure className="m-0">
+      <div className="text-2xl font-medium">
+        {displayCount !== null
+          ? formatNumber(Math.floor(displayCount))
+          : "\u00A0"}
+      </div>
+      <figcaption className="tw-paragraph text-current opacity-50 flex items-center gap-1">
+        Blocks processed
+      </figcaption>
+    </figure>
+  );
+};
 
 function getFigureSpacer(value) {
   const valueDigitCount = value.toString().length;
@@ -33,39 +100,13 @@ function getFigureSpacer(value) {
 }
 
 export const TotalBlocks = () => {
-  const blockInfoQuery = useQuery(["blockRate"], () =>
-    Promise.all([getBlockCount(), getBlockRate()])
-  );
-
   return (
     <motion.div
       className="rounded-xl text-current py-3 px-6"
-      style={{ fontSize: "24px", fontWeight: 500}}
+      style={{ fontSize: "24px", fontWeight: 500 }}
       variants={transitions.fadeIn}
     >
-      <figure className="m-0">
-        {/* <div className="mb-2 inline-grid relative left-1"> */}
-        {blockInfoQuery.isFetched && blockInfoQuery.isSuccess ? (
-          <>
-            <ConstantRateCounter
-              start={blockInfoQuery.data[0]}
-              ratePerSec={blockInfoQuery.data[1]}
-              format={formatNumber}
-              className="col-start-1 row-start-1 text-left"
-            ></ConstantRateCounter>
-            {/* <span className="col-start-1 row-start-1 invisible pointer-events-none pr-[2px]">
-                {getFigureSpacer(Math.floor(blockInfoQuery.data[0]))}
-              </span> */}
-          </>
-        ) : (
-          <>&nbsp;</>
-        )}
-        {/* </div> */}
-
-        <figcaption className="tw-paragraph text-current opacity-50 flex items-center gap-1">
-          Blocks processed
-        </figcaption>
-      </figure>
+      <BlockCounter />
     </motion.div>
   );
 };
@@ -112,8 +153,7 @@ export const EthEquivalentTxRate = () => {
   return (
     <motion.div
       className="rounded-xl text-current py-3 px-6"
-
-      style={{ fontSize: "24px", fontWeight: 500}}
+      style={{ fontSize: "24px", fontWeight: 500 }}
       variants={transitions.fadeIn}
     >
       <figure className="m-0 gap-3 block">
