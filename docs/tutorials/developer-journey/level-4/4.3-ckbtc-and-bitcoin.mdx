@@ -1,5 +1,5 @@
 ---
-keywords: [advanced, tutorial, developer journey, ckbtc, bitcoin]
+keywords: [advanced, tutorial, developer ladder, ckbtc, bitcoin]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -32,7 +32,7 @@ At the core of this integration is a novel protocol for chain-key signatures tha
 
 On a high level, subnets that have ECDSA enabled hold a threshold ECDSA master key, which is generated using ICP's key generation protocol. A master key can be used to generate canister ECDSA keys. It is important to know that an ECDSA private key only exists in a secret-shared form during it's lifetime, whether it is being generated, shared within a subnet, or shared from one subnet to another.
 
-The developer journey will dive deeper into threshold ECDSA in a future tutorial. You can also take a deep dive in the [technology overview to learn more](/docs/current/references/t-sigs-how-it-works/).
+The developer ladder will dive deeper into threshold ECDSA in a future tutorial. You can also take a deep dive in the [technology overview to learn more](/docs/current/references/t-sigs-how-it-works/).
 
 On the protocol-level, the [Bitcoin integration](https://wiki.internetcomputer.org/wiki/Bitcoin_Integration) and chain-key ECDSA each expose an API on the management canister. Remember that the management canister isn't a canister but a facade that is used to enable functionality for management operations such as starting or stopping a canister. While the Bitcoin API is specific to the Bitcoin network, the chain-key ECDSA signature API can be used for other workflows, such as the integration with other blockchains like Ethereum.
 
@@ -67,7 +67,7 @@ The ICP's Bitcoin integration enables use cases such as:
 In this tutorial, you'll be deploying an example application using a local instance of the Bitcoin network and then simulate Bitcoin transactions using it. This example showcases ICP's Bitcoin integration, however it does not use ckBTC.
 
 :::info
-Developing with ckBTC uses a different workflow, which will be showcased in a future variation of the developer journey series focused entirely on ckBTC.
+Developing with ckBTC uses a different workflow, which will be showcased in a future variation of the developer ladder series focused entirely on ckBTC.
 :::
 
 For this tutorial, you'll take a look at developing and testing a Bitcoin dapp using `dfx`, which supports both the Bitcoin API and the ECDSA API.
@@ -346,7 +346,7 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
+- [Developer ladder forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 

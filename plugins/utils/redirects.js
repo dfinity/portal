@@ -624,6 +624,7 @@ const redirects = `
   /docs/current/developer-docs/multi-chain/faq/cketh-faq /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview
   /docs/current/developer-docs/multi-chain/faq/ckerc20-faq /docs/current/developer-docs/multi-chain/chain-key-tokens/ckerc20/overview
   /docs/current/developer-docs/multi-chain/faq/signatures-faq /docs/current/references/t-sigs-how-it-works
+  /docs/current/developer-docs/getting-started/quickstart/juno-quickstart /docs/current/developer-docs/web-apps/frameworks/juno
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
