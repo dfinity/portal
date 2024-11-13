@@ -1478,7 +1478,7 @@ const sidebars = {
 devjourney: [
     {
       type: "category",
-      label: "Developer Journey",
+      label: "Developer Ladder",
       link: {
         type: "doc",
         id: "tutorials/developer-journey/index",
