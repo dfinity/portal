@@ -6,6 +6,8 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 import LinkArrowDocs from "@site/src/components/Common/Icons/LinkArrowDocs";
 import Link from "@docusaurus/Link";
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 # Tokens and cycles
 
@@ -15,7 +17,7 @@ import Link from "@docusaurus/Link";
 
 On the Internet Computer, there are three types of token assets: ICP tokens, cycles, and ICRC tokens. The first two, ICP and cycles, are the most important for every developer to understand and use, as they are necessary for deploying and maintaining an application.
 
-ICP tokens are important because they can be converted to cycles that, in turn, are used to pay for resource consumption. Cycles reflect the real costs of operations for applications hosted on the Internet Computer, including resources such as physical hardware, rack space, energy, storage devices, and bandwidth.
+ICP tokens are important because they can be converted to cycles and used to pay for resource consumption. Cycles reflect the real cost of operations for applications hosted on the Internet Computer, including resources such as physical hardware, rack space, energy, storage devices, and bandwidth.
 
 ## ICP tokens
 
@@ -29,346 +31,86 @@ There are three primary ways to use ICP tokens:
 
 - Stake ICP in a [neuron](/docs/current/developer-docs/daos/nns/concepts/neurons/neuron-overview) in return for network governance participation and rewards.
 
-![ICP tokens diagram](_attachments/icp-tokens-how-to-use.svg)
-
 ## Cycles
 
 The Internet Computer runs on a network of nodes owned and operated by a community of independent node providers distributed across the globe. Node providers spend money to run and maintain nodes, such that they purchase hardware and pay for the electricity and network bandwidth used by the node. The Internet Computer compensates these node providers on a monthly basis by minting and distributing rewards in the form of ICP tokens.
 
 To make ICP sustainable, canisters are required to pay for the resources they consume, including storage and compute. Resource consumption is not paid in ICP tokens but **cycles**. As the canister is used, its cycles balance is continuously reduced. Eventually, the canister needs to be "topped up" with more cycles. The canister’s developer is responsible for topping up the canister.
 
-To get cycles, you must convert ICP tokens into cycles, effectively burning the ICP tokens.
+To get cycles, you must convert ICP tokens into cycles.
 
-### When to use cycles
-
-
-### Why are cycles different from ICP tokens?
+:::info Why are cycles different from ICP tokens?
 
 While the value of an ICP token is volatile, cycles are not. Cycles are pegged to [XDR](https://en.wikipedia.org/wiki/Special_drawing_rights), a group of fiat currencies. This allows resource consumption and canister execution on ICP to be a rather stable price.
+:::
 
 ## Other token types
 
-The Internet Computer supports creating and deploying your own custom fungible or non-fungible tokens through the ICRC standards. Each ICRC standard defines a set of parameters that must be met to adhere to the standard. Not all ICRC standards are for tokens; some of them are for notifications, architectures, or other network functions.
+The Internet Computer supports creating and deploying your own custom fungible or non-fungible tokens through the [ICRC standards](/docs/current/developer-docs/defi/tokens/token-standards). Each ICRC standard defines a set of parameters that must be met to adhere to the standard. Not all ICRC standards are for tokens; some of them are for notifications, architectures, or other network functions.
 
-The most notable ICRC standards for tokens are:
+## What is a ledger?
 
-- ICRC-1: Fungible token standard.
+Anyone can deploy a custom token that adheres to an ICRC standard if they deploy a [ledger](/docs/current/developer-docs/defi/tokens/ledger/overview) and [index](/docs/current/developer-docs/defi/tokens/indexes) canister that implements the standard's requirements.
 
-- ICRC-2: Fungible token standard with approval function.
-
-- ICRC-7: Non-fungible token standard.
-
-- ICRC-37: Non-fungible token standard with approval function.
-
-Anyone can deploy a custom token that adheres to one of these standards if they deploy a [ledger](/docs/current/developer-docs/defi/tokens/ledger/overview) and [index](/docs/current/developer-docs/defi/tokens/indexes) canister that implements the standard's requirements.
-
-### What is a ledger?
-
-On the Internet Computer, a **ledger** is a system canister used to store accounts and their transactions. Users have a **ledger account identifier**.
+A **ledger** is a system canister used to store accounts and their transactions. Each developer identity has a **ledger account identifier**.
 
 Each token on the Internet Computer has its **own** ledger. This means that there are separate ledgers for ICP tokens, cycles, and every ICRC token that has been deployed on the network.
 
-For example, here are a few examples of separate ledgers for different tokens:
-
-- [ICP ledger](https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai).
-
-- [ckBTC ledger](https://dashboard.internetcomputer.org/canister/mxzaz-hqaaa-aaaar-qaada-cai) (An [ICRC-2](/docs/current/developer-docs/defi/tokens/token-standards#icrc-2) [chain-key](/docs/current/developer-docs/multi-chain/chain-key-tokens/overview) token).
-
-- [CHAT ledger](https://dashboard.internetcomputer.org/canister/2ouva-viaaa-aaaaq-aaamq-cai) (An [ICRC-2](/docs/current/developer-docs/defi/tokens/token-standards#icrc-2) [SNS DAO](/docs/current/developer-docs/daos/sns/overview) token).
-
 [Learn more about ledgers](/docs/current/developer-docs/defi/tokens/ledger/overview).
 
-## Using tokens and cycles
-
-In a typical developer workflow, you will follow these steps to use tokens and cycles:
-
-1. Obtain ICP tokens and receive them in your developer identity's ledger account.
-
-2. Convert ICP tokens into cycles. The price of cycles is fixed against the price of [XDR](/docs/current/references/glossary#xdr), where 1 trillion cycles equals 1 XDR.
-
-:::info
-Cycles are measured in very large numbers, such as billions and trillions. When you talk about cycle transfers and replenishment, you will usually operate with trillions of cycles.
-:::
-
-3. Deploy your application on the mainnet. Creating a canister costs 100B cycles.
-
-4. Top up your canister as needed. If a canister runs out of cycles, it will be deleted. To avoid canisters from being deleted, you can set a [freezing threshold](#freezing-threshold) or use a cycles management tool like [CycleOps](#cycles-management-tools).
-
-### Getting ICP tokens
-
-There are a few different ways you might acquire ICP tokens:
-
--   Purchase ICP tokens directly through an exchange that lists ICP tokens available for trade.
-
--   Convert [rewards](/docs/current/developer-docs/daos/nns/concepts/neurons/staking-voting-rewards) (maturity) obtained for participating in the network's governance into ICP tokens.
-
--   Receive tokens as remuneration for being a [node provider](/docs/current/references/node-providers/overview) and operating an Internet Computer node.
-
--   Receive a [grant of tokens](https://dfinity.org/grants) from the DFINITY Foundation.
-
-### Using ICP tokens
-
-After creating a [developer identity](/docs/current/developer-docs/getting-started/identities), you will need to receive ICP in your identity's ledger account.
+## Converting ICP to cycles
 
 First, get your account's ledger account ID:
 
 ```
-dfx identity use IDENTITY_NAME
 dfx ledger account-id
 ```
 
-This will return your account ID on the ICP ledger:
+<details>
+<summary>Output</summary>
 
-```
+<code>
 e213184a548871a47fb526f3cba24e2ee2fbbc8129c4ab497ef2ce535130a0a4
-```
+</code>
+</details>
 
-Send your ICP tokens to this ledger account ID. Once you have sent the ICP tokens, you can check the balance using the command:
+**Send ICP tokens to this ledger account ID.** You can obtain ICP tokens from an [exchange](https://www.coingecko.com/en/exchanges) or through a [developer grant](https://dfinity.org/grants).
+
+Check the balance:
 
 ```
 dfx ledger balance --network ic
 ```
 
-The output should reflect the number of ICP tokens you sent to the account.
+Converting ICP to cycles is done through the **cycles ledger**, a ledger canister that enables developer identities to directly convert, hold, send, and receive cycles.
 
-### Converting ICP into cycles
+The price of cycles is fixed against the price of [XDR](/docs/current/references/glossary#xdr), where 1 trillion cycles equals 1 XDR.
 
-Once you have a balance of ICP, you need to convert some or all of it into cycles. To do this, you can use the **cycles ledger**. The cycles ledger is a ledger canister that implements the ICRC-1, ICRC-2, and ICRC-3 standards. Through the cycles ledger, developer identities can directly convert, hold, send, and receive cycles.
+Cycles are measured in very large numbers, such as billions and trillions. When you talk about cycle transfers and replenishment, you will usually operate with trillions of cycles.
 
-To convert ICP into cycles, use the `dfx cycles convert` command:
+Convert ICP into cycles:
 
 ```
 dfx cycles convert --amount AMOUNT --network ic
 ```
 
-### Calculating how many cycles you need
+:::info Calculating how many cycles you need
 
 The amount of cycles that your application will use depends on a variety of factors. Cycles are charged for storage, compute, update messages, special features, and more. To get an approximation, you can view the [detailed cycles cost table](/docs/current/developer-docs/gas-cost) or use the [cycles pricing calculator](/docs/current/developer-docs/cost-estimations-and-examples).
 
-## Using cycles
+:::
 
-### Checking your identity's cycles balance
+Checking your identity's cycles balance
 
-To confirm that your ICP was successfully converted into cycles, check your cycles balance with the command:
+To confirm that your ICP was successfully converted into cycles, check your cycles balance:
 
 ```
 dfx cycles balance --network ic
 ```
 
-### Transferring cycles
+## Next step
 
-To transfer cycles to another developer identity, use the command:
-
-```
-dfx cycles transfer AMOUNT PRINCIPAL_ID --network ic
-```
-
-### Checking a canister's balance
-
-Cycles are used to pay for the resources used by a canister after it has been deployed. Before a canister can be deployed, it must first be created. It costs 100B cycles to create a canister.
-
-To create a canister, first you need a project.
-
-- If you downloaded your ICP Ninja project, navigate into that project folder using a command like `cd /path/to/icp/ninja/project`.
-
-- If you would like to start from a brand new project, run the command `dfx new PROJECT_NAME`, then `cd PROJECT_NAME`.
-
-You should be in a directory that contains a file called `dfx.json`. The `dfx.json` file is used to configure your project's settings. It includes the project's canister definitions, such as the canister's type, source code file, and dependencies.
-
-```json
-  "canisters": {
-    "backend": {
-      "main": "backend/main.mo",
-      "type": "motoko"
-    },
-    "frontend": {
-      "dependencies": ["backend"],
-      "frontend": {
-        "entrypoint": "frontend/index.html"
-      },
-      "source": ["frontend/dist"],
-      "type": "assets"
-    },
-...
-```
-
-The `dfx.json` file will be covered more extensively in the [write smart contracts](/docs/current/developer-docs/getting-started/write-smart-contracts) page.
-
-You will need to create each canister defined in this file using the command:
-
-```
-dfx canister create CANISTER_NAME --network ic
-```
-
-This command creates an empty canister. It does not compile or install code into the canister; it simply reserves the canister's ID and sets up the canister's initial settings. You will receive the canister's ID once it has been created:
-
-```
-Creating canister backend...
-backend canister created on network ic with canister id: ttdiw-gqaaa-aaaak-ao5da-cai
-```
-
-Then, view the canister's default settings with the command:
-
-```
-dfx canister status CANISTER_ID --network ic
-```
-
-The default settings will be returned:
-
-```
-Canister status call result for ttdiw-gqaaa-aaaak-ao5da-cai.
-Status: Running
-Controllers: hoqq7-3eo6j-dee4s-aiabk-6rqxw-kwgyo-rhru7-bdgmk-k5ipv-chkhx-cqe mwylj-4aaaa-aaaak-aflyq-cai
-Memory allocation: 0
-Compute allocation: 0
-Freezing threshold: 2_592_000
-Idle cycles burned per day: 1_757
-Memory Size: Nat(172)
-Balance: 2_999_998_684_000 Cycles
-Reserved: 0 Cycles
-Reserved cycles limit: 5_000_000_000_000 Cycles
-Wasm memory limit: 3_221_225_472 Bytes
-Module hash: None
-Number of queries: 0
-Instructions spent in queries: 0
-Total query request payload size (bytes): 0
-Total query response payload size (bytes): 0
-Log visibility: controllers
-```
-
-In these settings, there are a few that are important in regards to cycles:
-
-- **Balance**: The current cycles balance of the canister. By default, this is 3T cycles. This default balance can be changed by passing the `--with-cycles` flag to the `dfx canister create` command. This amount must be more than 100B, as the 100B cycles creation fee will be deducted from the amount you specify in `--with-cycles`.
-
-- **Freezing threshold**: A length of time specified in seconds. It reflects the amount of time estimated until the canister runs out of cycles based on the number of idle cycles burned by the canister.
-
-- **Idle cycles burned per day**: A calculation of how many cycles the canister burns per day without considering ingress or egress messages. The number of idle cycles is estimated based on the canister's size and the current cost of storage on the network.
-
-- **Reserved**: A separate cycles balance set aside for resource payments.
-
-- **Reserved cycles limit**: The maximum amount of cycles that can be set as 'reserved'.
-
-The other canister settings are explained in the [deploy-and-manage](/docs/current/developer-docs/getting-started/deploy-and-manage) page.
-
-### Topping up canisters
-
-A canister will burn cycles in an idle state to pay for the network storage it uses. Additional costs will be charged whenever the canister sends and receives messages, uses compute resources, or uses special features like HTTPS outcalls or using threshold signatures.
-
-Therefore, even static canisters will eventually need to have their cycles balance replenished; otherwise, the canister will be deleted. This is known as 'topping up' the canister.
-
-Anyone can top up a canister. You do not need to be a controller of the canister to send it cycles. To top up a canister, use the command:
-
-```
-dfx cycles top-up CANISTER_ID AMOUNT --network ic
-```
-
-To check that your top up was successful, check the balance of the canister with `dfx canister status CANISTER_ID --network ic`.
-
-### Freezing threshold
-
-To prevent a canister from running out of cycles and being deleted, you can set what is known as a **freezing threshold**. This threshold is a duration of time set in seconds, indicating the minimum duration that the canister should exist without running out of cycles. Once a canister hits this threshold, it will not execute messages. It will only pay for the network resources it uses, such as compute allocation, memory usage, and storage allocation.
-
-The default value of the freezing threshold is 2_592_000 (approximately 30 days). To change the freezing threshold, update the canister's settings with the command:
-
-```
-dfx canister update-settings CANISTER_ID --freezing-threshold seconds
-```
-
-:::caution
-If you set a freezing threshold longer than 1.5 years, you will need to include an additional flag: `--confirm-very-long-freezing-threshold`.
-:::
-
-## Cycles management tools
-
-Manually monitoring canisters to determine when they are getting close to the freezing threshold can be time consuming and complicated if you have a project with many canisters. Several community tools exist to make monitoring canisters easy. Some of them allow you to set automation rules to automatically top up canisters if their cycles balance dips below a certain amount, while others provide a one-time top up workflow. Some of these tools include:
-
-- [CycleOps](https://cycleops.dev/app/personal): A comprehensive canister monitoring tool that provides top up automation, a statistics dashboard, email alerts, and the ability to create teams for synchronized management of collaborative projects.
-
-- [ICPTopup.com](https://www.icptopup.com/): A simplified version of CycleOps that allows you to top up several canisters (up to 50) at one time.
-
-- [Cycle Express](https://cycle.express/): A service that allows you to buy cycles with fiat currency through Stripe.
-
-## Getting started with free cycles
-
-- #### Step 1: Open the cycles faucet.
-
-Navigate to [https://faucet.dfinity.org](https://faucet.dfinity.org).
-
-- #### Step 2: Join the developer Discord server.
-
-You will need to put in a request for cycles on the [Discord](https://discord.internetcomputer.org) server. You can click on the **REQUEST CYCLES** button on the faucet page to join the Discord server.
-
-Once inside the Discord server, navigate into the `#cycles-faucet` channel.
-
-- #### Step 3: Request a coupon.
-
-In this channel, execute the following command:
-
-```
-/request
-```
-
-- #### Step 4: Complete survey.
-
-After you send this message, you are prompted to fill out a survey.
-
-- #### Step 5: Receive coupon code.
-
-Once completed, the team will review your submission. If accepted, the faucet bot will send you a private message with a coupon code.
-
-:::caution
-This step is done manually by a team member. Response times may vary.
-
-Please ensure that your Discord settings are set to allow direct messages from other users. If you do not have this setting enabled, you will not receive a direct message from the faucet bot.
-:::
-
-- #### Step 6: Return to the faucet webpage.
-
-Head back to the [https://faucet.dfinity.org](https://faucet.dfinity.org) webpage. Click **NEXT STEP** to continue.
-
-- #### Step 7: Redeem the coupon.
-
-Now that you have a coupon code, enter your coupon code within the faucet UI.
-
-Click **NEXT STEP** to continue.
-
-Confirm you are using the [developer identity](/docs/current/developer-docs/getting-started/identities) you created previously and not the default identity.
-
-```
-dfx identity use IDENTITY_NAME
-```
-
-- #### Step 8: Claim your cycles.
-
-This workflow utilizes the **cycles ledger** feature. If you'd like to use the **cycles wallet** instead, [view the cycles wallet documentation](/docs/current/developer-docs/defi/cycles/cycles-wallet).
-
-Claim your free cycles by running the command:
-
-```
-dfx cycles --network ic redeem-faucet-coupon <your-coupon-code>
-```
-
-Click **NEXT STEP** to continue.
-
-- #### Step 9: Verify your balance.
-
-The last step is to verify the coupon was redeemed correctly by checking your balance using the command:
-
-```
-dfx cycles --network ic balance
-```
-
-## Next steps
-
-Next, its time to write the code for your application.
-
-- [x] Explore examples with ICP Ninja.
-
-- [x] Install tools.
-
-- [x] Create an identity.
-
-- [x] Tokens and cycles.
+Next, its time to write the code for a smart contract.
 
 <LinkArrowDocs />
 <Link

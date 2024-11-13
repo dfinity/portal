@@ -1,0 +1,165 @@
+
+
+
+
+
+
+
+
+### Checking a canister's balance
+
+Cycles are used to pay for the resources used by a canister after it has been deployed. **Before a canister can be deployed, it must first be created**. It costs 100B cycles to create a canister.
+
+:::info To create a canister, first you need a project.
+
+If you downloaded your ICP Ninja project, navigate into that project folder using a command like `cd /path/to/icp/ninja/project`.
+
+If you did not download an ICP Ninja project or if you would like to start from a new project, run:
+
+<AdornedTabs>
+<TabItem value="motoko" label="Motoko" default={true}>
+
+```
+dfx new PROJECT_NAME --type=motoko
+cd PROJECT_NAME
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```
+dfx new PROJECT_NAME --type=rust
+cd PROJECT_NAME
+```
+
+</TabItem>
+</AdornedTabs>
+:::
+
+
+You should be in a directory that contains a file called `dfx.json`. This file is used to configure your project's settings. It includes the project's canister definitions, such as the canister's type, source code file, and dependencies.
+
+```json
+  "canisters": {
+    "backend": {  // Canister name
+      "main": "backend/main.mo",  // Canister source code
+      "type": "motoko" // Canister type
+    },
+    "frontend": {  // Canister name
+      "dependencies": ["backend"],
+      "frontend": {
+        "entrypoint": "frontend/index.html" // Canister source code
+      },
+      "source": ["frontend/dist"],
+      "type": "assets"  // Canister type
+    },
+...
+```
+
+The `dfx.json` file will be covered more extensively in the [write smart contracts](/docs/current/developer-docs/getting-started/write-smart-contracts) page.
+
+You will need to create each canister defined in this file using the command:
+
+```
+dfx canister create CANISTER_NAME --network ic
+```
+
+<details>
+<summary>Output</summary>
+
+```
+Creating canister backend...
+backend canister created on network ic with canister id: ttdiw-gqaaa-aaaak-ao5da-cai
+```
+
+</details>
+
+This command creates an empty canister. It does not compile or install code into the canister; it simply reserves the canister's ID and sets up the canister's initial settings.
+
+View the canister's default settings with the command:
+
+```
+dfx canister status CANISTER_ID --network ic
+```
+
+<details>
+<summary>Output</summary>
+
+```
+Canister status call result for ttdiw-gqaaa-aaaak-ao5da-cai.
+Status: Running
+Controllers: hoqq7-3eo6j-dee4s-aiabk-6rqxw-kwgyo-rhru7-bdgmk-k5ipv-chkhx-cqe mwylj-4aaaa-aaaak-aflyq-cai
+Memory allocation: 0
+Compute allocation: 0
+Freezing threshold: 2_592_000
+Idle cycles burned per day: 1_757
+Memory Size: Nat(172)
+Balance: 2_999_998_684_000 Cycles
+Reserved: 0 Cycles
+Reserved cycles limit: 5_000_000_000_000 Cycles
+Wasm memory limit: 3_221_225_472 Bytes
+Module hash: None
+Number of queries: 0
+Instructions spent in queries: 0
+Total query request payload size (bytes): 0
+Total query response payload size (bytes): 0
+Log visibility: controllers
+```
+
+In these settings, there are a few that are important in regards to cycles:
+
+- **Balance**: The current cycles balance of the canister. By default, this is 3T cycles. This default balance can be changed by passing the `--with-cycles` flag to the `dfx canister create` command. This amount must be more than 100B, as the 100B cycles creation fee will be deducted from the amount you specify in `--with-cycles`.
+
+- **Freezing threshold**: A length of time specified in seconds. It reflects the amount of time estimated until the canister runs out of cycles based on the number of idle cycles burned by the canister.
+
+- **Idle cycles burned per day**: A calculation of how many cycles the canister burns per day without considering ingress or egress messages. The number of idle cycles is estimated based on the canister's size and the current cost of storage on the network.
+
+- **Reserved**: A separate cycles balance set aside for resource payments.
+
+- **Reserved cycles limit**: The maximum amount of cycles that can be set as 'reserved'.
+
+The other canister settings are explained in the [deploy-and-manage](/docs/current/developer-docs/getting-started/deploy-and-manage) page.
+
+</details>
+
+### Topping up canisters
+
+A canister will burn cycles in an idle state to pay for the network storage it uses. Additional costs will be charged whenever the canister sends and receives messages, uses compute resources, or uses special features like HTTPS outcalls and threshold signatures.
+
+Even static canisters will eventually need to have their cycles balance replenished; otherwise, the canister will be deleted. This is known as "topping up" the canister.
+
+:::tip
+Anyone can top up a canister. You do not need to be a controller of the canister to send it cycles.
+:::
+
+To top up a canister:
+
+```
+dfx cycles top-up CANISTER_ID AMOUNT --network ic
+```
+
+To check that your top up was successful, check the balance of the canister with `dfx canister status CANISTER_ID --network ic`.
+
+### Freezing threshold
+
+To prevent a canister from running out of cycles and being deleted, you can set what is known as a **freezing threshold**. This threshold is a duration of time set in seconds, indicating the minimum duration that the canister should exist without running out of cycles. Once a canister hits this threshold, it will not execute messages. It will only pay for the network resources it uses, such as compute allocation, memory usage, and storage allocation.
+
+The default value of the freezing threshold is 2_592_000 (approximately 30 days). To change the freezing threshold, update the canister's settings with the command:
+
+```
+dfx canister update-settings CANISTER_ID --freezing-threshold seconds
+```
+
+:::caution
+If you set a freezing threshold longer than 1.5 years, you will need to include an additional flag: `--confirm-very-long-freezing-threshold`.
+:::
+
+## Cycles management tools
+
+Manually monitoring canisters to determine when they are getting close to the freezing threshold can be time consuming and complicated if you have a project with many canisters. Several community tools exist to make monitoring canisters easy. Some of them allow you to set automation rules to automatically top up canisters if their cycles balance dips below a certain amount, while others provide a one-time top up workflow. Some of these tools include:
+
+- [CycleOps](https://cycleops.dev/app/personal): A comprehensive canister monitoring tool that provides top up automation, a statistics dashboard, email alerts, and the ability to create teams for synchronized management of collaborative projects.
+
+- [ICPTopup.com](https://www.icptopup.com/): A simplified version of CycleOps that allows you to top up several canisters (up to 50) at one time.
+
+- [Cycle Express](https://cycle.express/): A service that allows you to buy cycles with fiat currency through Stripe.

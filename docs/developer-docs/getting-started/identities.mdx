@@ -17,10 +17,6 @@ On the Internet Computer (ICP), a developer **identity** is essential to develop
 
 Developer identities are identified by a **principal**, which is a generic identifier value that is used to identify users, <GlossaryTooltip>canisters</GlossaryTooltip>, and potentially other entities on the network in the future. Each developer identity's principal value is derived from the identity's public key from the private/public key pair.
 
-:::info
-ICP developer identities can be compared to a Bitcoin or Ethereum wallet address. One primary difference, however, is that ICP identities do not have an initial balance.
-:::
-
 ## What are developer identities used for?
 
 When a canister is created and deployed, the developer identity that created the canister is automatically set as a **controller** of that canister. A controller has permission to manage the canister, including:
@@ -51,55 +47,29 @@ Developer identities are not the only form of identity on ICP. Other ICP identit
 
 - **Internet Identity**: ICP's native authentication service. Internet Identity doesn't use usernames and passwords; instead, it uses a passkey that is stored in your local device's hardware.
 
-## Creating your identity
+## Creating your developer identity
 
-By default, `dfx` will use the `default` identity. This identity is not stored securely and should not be used for creating or deploying canisters.
+By default, `dfx` will use the `default` identity. ***This identity is not stored securely and should not be used for creating or deploying canisters.***
 
-Therefore, it is highly recommended that you create a new identity with the command:
+It is highly recommended that you create a new identity with the command:
 
 ```
 dfx identity new IDENTITY_NAME
 ```
 
-:::info
-Identities created with `dfx` are global; they are not confined to a specific project's context. Identity names must use the characters `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.-_@0123456789`.
+:::note
+Identities created with `dfx` are global; they are not confined to a specific project's context.
+
+Identity names must use the characters `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.-_@0123456789`.
 :::
 
-### Storing the identity's keys
+### Storing the identity's private key
 
-When a new identity is created with `dfx`, the private key is stored in the `~/.config/dfx/identity/IDENTITY_NAME/identity.pem` file. This file should be backed up to a secure location.
+The private key for an identity is stored in the `~/.config/dfx/identity/IDENTITY_NAME/identity.pem` file. ***This file should be backed up to a secure location.***
 
-The `--storage-mode` flag is available, which can be used to create a password-protected or plaintext PEM file instead. These flags can be used such as:
+## Using your identity
 
-```
-dfx identity new IDENTITY_NAME --storage-mode password-protected
-```
-
-or:
-
-```
-dfx identity new IDENTITY_NAME --storage-mode plaintext
-```
-
-If stored in plaintext, you can inspect the corresponding private key by running:
-
-```
-dfx identity export IDENTITY_NAME
-```
-
-The result will resemble the following:
-
-```
------BEGIN EC PRIVATE KEY-----
-MHQCAQEEIIGTvo7+8q+dRVoDWPVp1hBziKUEOffo1PDkY2Vn8sKMoAcGBSuBBAAK
-oUQDQgAEXFFBa0oxGdamv537nusjtgVuzElEMtEbbj4dQ1xyu2WMa+PU9q9LIK26
-Ar821EwGwp1Qc9Vv93FGPTvRb4HVXQ==
------END EC PRIVATE KEY-----
-```
-
-### Using your identity
-
-Once your identity is created, you must tell `dfx` that this is the identity you want to use. If you do not, the `default` identity will be used and any canister creation and management you execute will not be securely executed.
+Once your identity is created, you must tell `dfx` that this is the identity you want to use. If you do not, the `default` identity will be used and any canister creation and management you execute will not be secure.
 
 To use your new identity, run the command:
 
@@ -109,28 +79,22 @@ dfx identity use IDENTITY_NAME
 
 ### Getting your identity's principal
 
-To obtain the principal identifier for your identity, use the commands:
+To obtain the principal identifier for your identity, use the command:
 
 ```
-dfx identity use IDENTITY_NAME
 dfx identity get-principal
 ```
 
-The principal will look something like this:
-
-```
+<details>
+<summary> Output </summary>
+<code>
 itk7v-ihlxk-ktdrh-fcnst-vkoou-orj77-52ogl-jqwj5-zpfdv-az3lr-xqe
-```
+</code>
+</details>
 
-## Next steps
+## Next step
 
 Next, you must obtain cycles. Cycles are required to pay for the resources a canister consumes.
-
-- [x] Explore examples with ICP Ninja.
-
-- [x] Install tools.
-
-- [x] Create an identity.
 
 <LinkArrowDocs />
 <Link

@@ -62,7 +62,7 @@ const Tile = ({ tile }: { tile: TileDescriptor }) => {
       className={`flex flex-col ${
         tile.isGhostTile
           ? "bg-grey-200 border-grey-200 hidden lg:block"
-          : "bg-page"
+          : "bg-black-60"
       } rounded-lg border p-4 h-[260px]`}
     >
       <div className={"flex flex-col gap-2 items-start"}>

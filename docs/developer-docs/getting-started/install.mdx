@@ -15,15 +15,17 @@ import Link from "@docusaurus/Link";
 
 ## Overview
 
-To develop and deploy applications on the Internet Computer (ICP) from a local developer environment, two primary tools are used:
-
-- **IC SDK**, a software development kit that includes `dfx`, a command-line tool used to create, deploy, and manage <GlossaryTooltip>canisters</GlossaryTooltip>.
-
-- A **canister development kit** (CDK) which provides an environment for writing canister code in different programming languages while supporting ICP's unique features.
+The IC SDK is a software development kit used to develop and deploy applications on the Internet Computer (ICP) from a local developer environment. It includes several necessary tools for developing ICP applications.
 
 ## Installing the IC SDK
 
-`dfx` is natively supported on Linux or macOS 12.\* Monterey or later. Windows users should install Windows Subsystem for Linux (WSL 2) to use `dfx`.
+The IC SDK is natively supported on Linux or macOS 12.\* Monterey and newer. Windows users should install Windows Subsystem for Linux (WSL 2).
+
+:::danger
+
+If you followed the [quick start](/docs/current/developer-docs/getting-started/quickstart/first-smart-contract) guide, you can skip this step.
+
+:::
 
 <AdornedTabs>
 <TabItem value="linux" label="Linux" default={true}>
@@ -102,13 +104,13 @@ dfx --version
 
 </AdornedTabs>
 
-To customize your `dfx` installation, you can set [environment variables](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-envars) for a session by exporting the variable in your terminal or adding a line to your `.profile` file.
+To customize your IC SDK installation, you can set [environment variables](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-envars) for a session by exporting the variable in your terminal or adding a line to your `.profile` file.
 
 The [IC SDK](https://github.com/dfinity/sdk) is comprised of:
 
-- `dfx`: A CLI tool.
+- `dfx`: A CLI tool used to create and manage projects, developer identities, and <GlossaryTooltip>cycles</GlossaryTooltip>.
 
-- [`dfxvm`](/docs/current/developer-docs/developer-tools/dev-tools-overview#dfxvm): A version manager for `dfx`. It is used to download a specific version of `dfx`, set a default version, and update to the latest `dfx` version.
+- [`dfxvm`](/docs/current/developer-docs/developer-tools/dev-tools-overview#dfxvm): A version manager for `dfx`. It is used to download a specific version of `dfx`, set a default version, and update to the latest version.
 
 - `moc`: The [Motoko](/docs/current/motoko/main/getting-started/motoko-introduction) compiler to support Motoko canister development.
 
@@ -116,9 +118,9 @@ The [IC SDK](https://github.com/dfinity/sdk) is comprised of:
 
 It also has dependencies on a few additional, important packages:
 
-- **Rust CDK**: A set of tools for developing Rust canisters.
+- [**Rust CDK**](/docs/current/developer-docs/backend/rust/): A set of tools for developing Rust canisters.
 
-- **Candid**: An interface description language (IDL) used to interact with a canister's methods. A **method** is a function exposed by the canister that can be called by a user, another canister, or the application's frontend.
+- [**Candid**](/docs/current/developer-docs/smart-contracts/candid/candid-concepts): An interface description language (IDL) used to interact with a canister's methods. A **method** is a function exposed by the canister that can be called by a user, another canister, or the application's frontend.
 
 
 ## Starting `dfx`
@@ -131,9 +133,6 @@ To start `dfx`, use the command:
 
 - `dfx start --background`: Runs the processes in the background and allows you to continue running commands in the current terminal.
 
-
-The `--clean` flag can also be used with `dfx start`, which removes checkpoints from your project's cache. This flag can be helpful when troubleshooting or debugging.
-
 ## Stopping `dfx`
 
 To stop `dfx`, simply use the `dfx stop` command.
@@ -144,13 +143,9 @@ If there are unresponsive `dfx` processes that are not stopped by `dfx stop`, yo
 
 To view help information for `dfx`, you can use the `dfx help` command or view the [`dfx` reference documentation](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/).
 
-## Next steps
+## Next step
 
 Next, you must create a developer identity. This identity will be used to control and manage your project's canisters.
-
-- [x] Explore examples with ICP Ninja.
-
-- [x] Install tools.
 
 <LinkArrowDocs />
 <Link

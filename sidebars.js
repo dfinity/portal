@@ -55,6 +55,11 @@ const sidebars = {
     },
     {
       type: "doc",
+      label: "Deploy and manage",
+      id: "developer-docs/getting-started/deploy-and-manage",
+    },
+    {
+      type: "doc",
       label: "Next steps",
       id: "developer-docs/getting-started/next-steps",
       },

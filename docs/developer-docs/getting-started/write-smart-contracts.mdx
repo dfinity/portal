@@ -16,233 +16,101 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 ## Overview
 
-## Canister development kits (CDKs)
-
-Currently supported CDKs include:
-
-- [Motoko](/docs/current/motoko/main/getting-started/motoko-introduction): ICP's native programming language.
-
-- [Rust CDK](https://github.com/dfinity/cdk-rs).
-
-- [Kybra: Python CDK (Beta)](/docs/current/developer-docs/backend/python/).
-
-- [Azle: TypeScript CDK (Beta)](/docs/current/developer-docs/backend/typescript/).
-
-- [Bitfinity EVM for Solidity (Beta)](/docs/current/developer-docs/backend/solidity/).
-
-- [C++ CDK](https://docs.icpp.world/).
-
-
-### Motoko
-
-By default, Motoko is installed with `dfx`. Alternatively, you can build it from
-source following
-[these instructions](https://github.com/dfinity/motoko/blob/master/Building.md).
-
-### Rust
-
-By default, the Rust CDK is installed with `dfx`. Alternatively, you can install
-it yourself by adding the following dependency in your `Cargo.toml` file:
-
-```toml
-[lib]
-crate-type = ["cdylib"]
-
-[dependencies]
-ic-cdk = "0.12"
-# Only necessary if you want to define Candid data types
-candid = "0.10"
-```
-
-Below is a brief example on how to use the Rust CDK:
-
-```rust
-#[ic_cdk::query]
-fn hello() -> String {
-    "world".to_string()
-}
-```
-
-### TypeScript / JavaScript
-
-The TypeScript and JavaScript CDK, known as Azle, is supported by `dfx`. Learn more about how to [install and use Azle](/docs/current/developer-docs/backend/typescript/).
-
-:::caution
-
-Azle is currently in beta and should be used with caution.
-
-:::
-
-### Python
-
-The Python CDK, known as Kybra, is supported by `dfx`. Learn more about how to [install and use Kybra](/docs/current/developer-docs/backend/python/).
-
-:::caution
-
-Kybra is currently in beta and should be used with caution.
-
-:::
-
-### Solidity
-
-Solidity smart contracts can be created using the Bitfinity EVM. To use the
-Bitfinity EVM, you can make calls to the
-[Bitfinity mainnet or testnet](https://docs.bitfinity.network/getting-started/network-endpoints).
-
-Learn more about how to use the [Bitfinity EVM](https://docs.bitfinity.network/ic-agent/overview).
-
-:::caution
-Bitfinity EVM is currently in beta and should be used with caution.
-:::
-
-### C++
-
-C++ is supported through the [ICPP-pro CDK](https://docs.icpp.world/installation.html).
-
-## Next steps
-
-- [Learn about developer accounts](/docs/current/developer-docs/getting-started/identities).
-
-
-## Asset canister frameworks
-
-## Inside a canister
-
-Canisters are WebAssembly (Wasm) programs with additional features that allow them to store persistent data, communicate with users and other canisters, and be managed by entities such as DAOs.
-To enable these functionalities, canisters have additional components alongside the the standard Wasm code and memory. These components are outlined in the diagram below.
+Canisters are an enhanced type of smart contract. All canister code is compiled into a WebAssembly (Wasm) program before it is deployed on ICP, providing it with additional features and capabilities that traditional smart contracts do not have. These features include the ability to store persistent data, be managed by entities such as DAOs, and host entire applications. Each canister has the following components:
 
 <div class="text--center">
 <img src="/img/docs/inside-canister.png" alt="Canister" width="600"/>
 </div>
 
-## Canister ID
-A canister has a unique identifier that is often referred to as the address of the canister or the <GlossaryTooltip>principal</GlossaryTooltip> of the canister.
-When a user or a canister sends a message to another canister, they specify the target canister by its id in the header of the message.
-The system then routes the message to the target canister and adds it to the input queue of that canister.
+[Learn more about each component of a canister](/docs/current/developer-docs/smart-contracts/overview/inside-canisters).
 
-## Input queue
-Canisters have queues for incoming messages.
-When a canister is scheduled for execution, it takes one message from the queue and runs the corresponding Wasm function specified by that message.
-The code of the function is stored in the Wasm binary of the canister.
-During execution, the function reads the payload of the message and modifies data stored in the canister.
+## Canister code
 
-:::info
-The order of messages in the queue depends on the implementation and it is not necessarily FIFO (first-in first-out).
-:::
+To write code for a canister, a canister development kit (CDK) should be used. CDKs are designed to provide build scripts that link to the ICP system API and compile the canister code into Wasm programs that are compatible with ICP. For the convenience of developers, `dfx` automatically wraps these build scripts into commands such as `dfx build`.
 
-## Canister storage
-There are two [storages](/docs/current/developer-docs/smart-contracts/maintain/storage) available to the canister: the Wasm memory and the stable memory.
-The function doesn’t need to do anything special to use the Wasm memory since this memory type is automatically used for heap-allocated objects.
-Wasm memory is currently 32-bit, with a maximum size limitation of 4GiB.
-Stable memory is 64-bit and allows the canister to scale beyond 4GiB.
-The function can access the stable memory by calling special [system functions](/docs/current/references/ic-interface-spec#system-api-stable-memory) such as `stable64_read` and `stable64_write`.
+Currently supported CDKs include:
 
-Both the Wasm and stable memories are persistent in the sense that the system automatically commits all memory modifications after a successful execution of a message.
-If the message execution fails, then the changes are not committed.
-The difference between the Wasm and the stable memory becomes important during canister upgrades to a new Wasm code.
-A canister upgrade clears the Wasm memory, but preserves the stable memory (hence the name).
+- [Motoko](/docs/current/motoko/main/getting-started/motoko-introduction): ICP's native programming language. By default, Motoko is installed with the IC SDK. Alternatively, you can [build it from source](https://github.com/dfinity/motoko/blob/master/Building.md).
 
-## Output queue
-During execution, the canister may send messages to other canisters.
-These messages are enqueued in the output queue of the canister after a successful execution.
-Later on, ICP delivers these messages to the target canisters for processing.
+- [Rust CDK](https://github.com/dfinity/cdk-rs): By default, the Rust CDK is included as a dependency of the IC SDK. Alternatively, you can [install it yourself](https://crates.io/crates/ic-cdk).
 
-:::info
-Canister-to-canister calls are implemented on top of messages. Each call consists of two messages: the call message from the caller to callee and the response message from the callee to the caller.
-:::
+- [Kybra: Python CDK (Beta)](/docs/current/developer-docs/backend/python/): Learn more about how to [install and use Azle](/docs/current/developer-docs/backend/typescript/).
 
-## Cycles balance
-Canisters pay for execution in [cycles](/docs/current/developer-docs/gas-cost).
-The cost of execution depends on the number and type of executed Wasm instructions.
-The system charges this cost from the cycles balance of the canister both for successful and failed executions.
+- [Azle: TypeScript CDK (Beta)](/docs/current/developer-docs/backend/typescript/): Learn more about how to [install and use Kybra](/docs/current/developer-docs/backend/python/).
 
-## Controllers
-Only [controllers](/docs/current/developer-docs/smart-contracts/maintain/control) of the canister can do certain system level operations on the canister such as stopping it, starting it, upgrading it, etc.
-The list of controller principals is stored in the canister.
-Both users and canisters can be controllers.
-If the canister has no controllers, then it is immutable in the sense that its Wasm code cannot be changed.
+- [Bitfinity EVM for Solidity (Beta)](/docs/current/developer-docs/backend/solidity/): Learn more about how to use the [Bitfinity EVM](https://docs.bitfinity.network/ic-agent/overview).
 
-## Settings
-A canister also has various other settings and flags that can be modified by controllers of the canister.
-For example, a controller can set the freezing threshold of the canister such that the canister becomes frozen and doesn't execute messages when it is low on cycles in order to reduce chances of running out of cycles.
-[View the full list of canister settings](/docs/current/references/ic-interface-spec#ic-create_canister).
+- [C++ CDK](https://docs.icpp.world/): Supported through the [ICPP-pro CDK](https://docs.icpp.world/installation.html).
 
 
-### Code and state
 
-### WebAssembly
+:::info To create a canister, first you need a project.
 
-WebAssembly (Wasm) is a platform independent binary format that can be executed in the Wasm virtual machine.
-Many modern compilers support Wasm as the compilation target along with the traditional targets such as x86 and arm32.
+If you downloaded your ICP Ninja project, navigate into that project folder using a command like `cd /path/to/icp/ninja/project`.
 
-There are three types of Wasm depending on where the Wasm virtual machine is hosted and how it interacts with users and the host environment:
+If you did not download an ICP Ninja project or if you would like to start from a new project, run:
 
-- **Web browser**: the Wasm program interacts with the users via the JavaScript bindings of the browser. The primary toolchain for compiling Wasm for browsers is [Emscripten](https://emscripten.org/). Note that such Wasm programs are incompatible with ICP.
+<AdornedTabs>
+<TabItem value="motoko" label="Motoko" default={true}>
 
-- **WASI**: this abbreviation stands for [WebAssembly System Interface](https://wasi.dev/). It is becoming the standard for running Wasm programs outside of Web browsers. Major Wasm runtimes such as Wasmtime and Wasmer support this standard. Compilers denote this target as `wasm32-wasi`. ICP does not directly support WASI, but it is possible to preprocess a WASI program and make it runnable on ICP with the community project [`wasi2ic`](https://github.com/wasm-forge/wasi2ic).
-
-- **Vanilla Wasm**: there is no standard API for interacting with users and the host environment. Every host environment provides their own API. ICP uses this approach and provides the set of functions called the System API to the Wasm program. Many compilers denote this target as `wasm32-unknown-unknown` since they do not know the target host environment and do not make any assumptions about the available APIs.
-
-The Canister Development Kit (CDK) of supported programming language comes with build scripts that link the System API and compile the code to Wasm programs that are compatible with ICP:
-
-- Rust and Motoko compile to the `wasm32-unknown-unknown` target directly under the hood.
-- Azle and Kybra first compile to the `wasm32-wasi` target and then convert the Wasm binary to `wasm32-unknown-unknown` using the `wasi2ic` tool.
-
-For convenience of developers, `dfx` wraps the CDK specific build scripts and provides the `dfx build` command to compile the code to a Wasm binary.
-
-
-### Types of memory
-
-When developing projects on ICP, there are two primary forms of data storage that your <GlossaryTooltip>canisters</GlossaryTooltip> can utilize. The first type of storage is the canister's **heap memory**, sometimes referred to as the canister's *main memory*. Heap memory is **temporary**, and any data stored in a canister's heap memory is cleared whenever the canister is stopped or upgraded.
-
-The second type of storage available to a canister is **stable memory**. Stable memory is a unique feature of ICP that  defines a separate data store aside from a canister's regular Wasm heap memory data storage. It is a secondary storage type that can be used to store data long-term, since all data stored in stable memory will persist across all canister processes.
-
-## Heap memory
-
-Heap memory refers to a canister's regular Wasm memory. It does not persist and does not store data long-term. A canister's heap memory is cleared whenever a canister is stopped or upgraded. Heap memory is used by default for storing things such as variable values, the result of an executed function, or other arguments passed to your canister.
-
-Heap memory is limited to a maximum of 4GiB of data.
-
-## Stable memory
-
-Stable memory is a feature unique to the Internet Computer Protocol that provides a long-term, persistent data storage option separate from a canister's heap memory. When a canister is stopped or upgraded, the data stored in stable memory is not cleared or removed. The stable memory is preserved throughout the process, while any other WebAssembly state is discarded.
-
-To use stable memory, you must anticipate which portions of the canister's data you want to persist across upgrades by indicating this within the canister code. More information about this can be found in the section below, [Storage handling in different languages](#storage-handling-in-different-languages).
-
-By default, a canister's stable memory is empty. The maximum storage limit for stable memory is 400GiB if the <GlossaryTooltip>subnet</GlossaryTooltip> the canister is deployed on can accommodate it. If a canister uses more than 400GiB of stable memory, the canister will trap and become unrecoverable.
-
-
-## `dfx.json`
-
-```json title="dfx.json"
-{
-  "canisters": {
-    "hello_world_backend": {
-      "main": "src/hello_world_backend/main.mo",
-      "type": "motoko"
-    },
-    "hello_world_frontend": {
-      "dependencies": [
-        "hello_world_backend"
-      ],
-      "source": [
-        "src/hello_world_frontend/dist"
-      ],
-      "type": "assets",
-      "workspace": "hello_world_frontend"
-    }
-
-  },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
-  "output_env_file": ".env",
-  "version": 1
-}
 ```
+dfx new PROJECT_NAME --type=motoko
+cd PROJECT_NAME
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```
+dfx new PROJECT_NAME --type=rust
+cd PROJECT_NAME
+```
+
+</TabItem>
+</AdornedTabs>
+:::
+
+
+You should be in a directory that contains a file called `dfx.json`. This file is used to configure your project's settings. It includes the project's canister definitions, such as the canister's type, source code file, and dependencies.
+
+```json
+  "canisters": {
+    "backend": {  // Canister name
+      "main": "backend/main.mo",  // Canister source code
+      "type": "motoko" // Canister type
+    },
+    "frontend": {  // Canister name
+      "dependencies": ["backend"],
+      "frontend": {
+        "entrypoint": "frontend/index.html" // Canister source code
+      },
+      "source": ["frontend/dist"],
+      "type": "assets"  // Canister type
+    },
+...
+```
+
+The `dfx.json` file will be covered more extensively in the [write smart contracts](/docs/current/developer-docs/getting-started/write-smart-contracts) page.
+
+You will need to create each canister defined in this file using the command:
+
+```
+dfx canister create CANISTER_NAME --network ic
+```
+
+<details>
+<summary>Output</summary>
+
+```
+Creating canister backend...
+backend canister created on network ic with canister id: ttdiw-gqaaa-aaaak-ao5da-cai
+```
+
+</details>
+
+This command creates an empty canister. It does not compile or install code into the canister; it simply reserves the canister's ID and sets up the canister's initial settings.
+
+
 
 ## Writing code
 
@@ -332,3 +200,38 @@ fn greet(name: String) -> String {
 
 
 
+
+```
+import Random "mo:base/Random";
+import Timer "mo:base/Timer";
+import Nat8 "mo:base/Nat8";
+import Debug "mo:base/Debug";
+import Blob "mo:base/Blob";
+import Array "mo:base/Array";
+import Nat "mo:base/Nat";
+
+actor {
+    // Store the current random number
+    stable var currentRandomNumber : Nat = 0;
+
+    // Function to generate a new random number
+    private func generateNewNumber() : async () {
+        let entropy = await Random.blob();
+        let randomBytes = Blob.toArray(entropy);
+        if (randomBytes.size() > 0) {
+            // Use the first byte to generate a number between 0 and 255
+            currentRandomNumber := Nat8.toNat(randomBytes[0]);
+        };
+        Debug.print("Generated new random number: " # Nat.toText(currentRandomNumber));
+    };
+
+    // Initialize timer to generate new number every 30 seconds
+    let timer = Timer.recurringTimer(#seconds 30, generateNewNumber);
+
+    // Public query to get current random number
+    public query func getCurrentNumber() : async Nat {
+        currentRandomNumber
+    };
+
+}
+```
