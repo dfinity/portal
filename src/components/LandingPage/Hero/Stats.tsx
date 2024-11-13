@@ -29,6 +29,7 @@ function formatNumber(x: number) {
 
 const BlockCounter = () => {
   const [displayCount, setDisplayCount] = useState<number | null>(null);
+  const [targetCount, setTargetCount] = useState<number | null>(null);
 
   // Fetch both block height and rate simultaneously on initial load
   const { data: initialData } = useQuery(
@@ -44,16 +45,27 @@ const BlockCounter = () => {
       const heightData = await heightResponse.json();
       const rateData = await rateResponse.json();
 
+      const currentHeight = parseInt(heightData.block_height[1]);
+      const currentRate = parseFloat(rateData.block_rate[0][1]);
+
+      // Calculate a starting point slightly behind current height
+      const startingHeight =
+        currentHeight - currentRate * (FETCH_INTERVAL / 1000);
+
       return {
-        height: parseInt(heightData.block_height[1]),
-        rate: parseFloat(rateData.block_rate[0][1]),
+        startHeight: startingHeight,
+        currentHeight,
+        rate: currentRate,
       };
     },
     {
       refetchInterval: FETCH_INTERVAL,
       onSuccess: (data) => {
         if (displayCount === null) {
-          setDisplayCount(data.height);
+          setDisplayCount(data.startHeight);
+          setTargetCount(data.currentHeight);
+        } else {
+          setTargetCount(data.currentHeight);
         }
       },
     }
@@ -61,21 +73,20 @@ const BlockCounter = () => {
 
   // Smooth counter animation
   useEffect(() => {
-    if (!initialData || displayCount === null) return;
+    if (!initialData || displayCount === null || targetCount === null) return;
 
     const incrementPerInterval = (initialData.rate * ANIMATION_INTERVAL) / 1000;
-    const maxCount = initialData.height;
 
     const interval = setInterval(() => {
       setDisplayCount((current) => {
-        if (current === null) return maxCount;
+        if (current === null) return targetCount;
         const next = current + incrementPerInterval;
-        return next <= maxCount ? next : maxCount;
+        return next <= targetCount ? next : targetCount;
       });
     }, ANIMATION_INTERVAL);
 
     return () => clearInterval(interval);
-  }, [initialData, displayCount]);
+  }, [initialData, displayCount, targetCount]);
 
   return (
     <figure className="m-0">
