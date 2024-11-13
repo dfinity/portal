@@ -1,26 +1,25 @@
+import useIsBrowser from "@docusaurus/useIsBrowser";
+
 export enum OsType {
   Linux = "Linux",
   macOs = "macOS",
   Windows = "Windows",
-  Unknown = "Unknown",
 }
 
 export function useOs(): { current: OsType } {
+  const isBrowser = useIsBrowser();
+
   const getOS = () => {
-    const userAgent = window.navigator.userAgent,
-      platform = window.navigator.platform,
-      macosPlatforms = ["macOS", "Macintosh", "MacIntel", "MacPPC", "Mac68K"],
-      windowsPlatforms = ["Win32", "Win64", "Windows", "WinCE"];
+    let os: OsType | null = null;
 
-    let os = OsType.Unknown;
-
-    if (macosPlatforms.indexOf(platform) !== -1) {
-      os = OsType.macOs;
-    } else if (windowsPlatforms.indexOf(platform) !== -1) {
-      os = OsType.Windows;
-    } else if (/Linux/.test(platform)) {
-      os = OsType.Linux;
-    } else {
+    if (isBrowser) {
+      if (window.navigator.userAgent.indexOf("Windows") != -1) {
+        os = OsType.Windows;
+      } else if (window.navigator.userAgent.indexOf("Mac OS") != -1) {
+        os = OsType.macOs;
+      } else if (window.navigator.userAgent.indexOf("Linux") != -1) {
+        os = OsType.Linux;
+      }
     }
 
     return os;
