@@ -1,20 +1,21 @@
 ---
-keywords: [beginner, getting started, quick start, react]
+keywords: [beginner, getting started, first smart contract, first deployment, deploy a smart contract, quickstart, quick start]
 ---
 
+import useBaseUrl from "@docusaurus/useBaseUrl";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import CodeBlock from "@theme/CodeBlock";
 
-# React quick start
+# Quick start
 
-<MarkdownChipRow labels={["Beginner", "Getting started", "Quick start"]} />
+<MarkdownChipRow labels={["Beginner", "Getting started" ]} />
 
-One key feature of ICP is its ability to serve web assets directly in a web browser. When an application is deployed to ICP, users from around the world can access it using only the smart contract's URL without requiring the developer set up a domain name or other web configuration.
+Build Web3, DeFi, fully network-resident social media, games, enterprise apps, and just about anything else you can imagine. Your projects are immune to cyber attacks and unstoppable.
 
-**Deploy a React app in minutes using these steps.**
+**Deploy in minutes using these steps.**
 
 <AdornedTabs>
 <TabItem value="linux" label="Linux" default={true}>
@@ -37,6 +38,34 @@ Confirm the IC SDK has been installed:
 ```bash
 dfx --version
 ```
+
+#### 2. Start `dfx`.
+
+```bash
+dfx start --background
+```
+
+#### 3. Create a new project.
+
+The default project created by `dfx` is "Hello, world!"
+
+
+```bash
+dfx new hello --type=motoko 
+```
+
+Creates a new Motoko project. Options are [motoko, rust, azle, kybra].
+
+#### 4. Deploy your project.
+
+```bash
+cd hello
+dfx deploy --playground
+```
+
+#### 5. Interact with your project.
+
+Open the URL in your web browser that `dfx` returned after deploying your project.
 
 </TabItem>
 <TabItem value="macOS" label="macOS">
@@ -62,6 +91,33 @@ Confirm the IC SDK has been installed:
 ```bash
 dfx --version
 ```
+
+#### 2. Start `dfx`.
+
+```bash
+dfx start --background
+```
+
+#### 3. Create a new project.
+
+The default project created by `dfx` is "Hello, world!"
+
+```bash
+dfx new hello --type=motoko
+```
+
+Creates a new Motoko project. Options are [motoko, rust, azle, kybra].
+
+#### 4. Deploy your project.
+
+```bash
+cd hello
+dfx deploy --playground
+```
+
+#### 5. Interact with your project.
+
+Open the URL in your web browser that `dfx` returned after deploying your project.
 
 </TabItem>
 
@@ -89,43 +145,36 @@ Confirm the IC SDK has been installed:
 dfx --version
 ```
 
+#### 2. Start `dfx`.
+
+```bash
+dfx start --background
+```
+
+#### 3. Create a new project.
+
+The default project created by `dfx` is "Hello, world!"
+
+```bash
+dfx new hello --type=motoko
+```
+
+Creates a new Motoko project. Options are [motoko, rust, azle, kybra].
+
+#### 4. Deploy your project.
+
+```bash
+cd hello
+dfx deploy --playground
+```
+
+#### 5. Interact with your project.
+
+Open the URL in your web browser that `dfx` returned after deploying your project.
+
 </TabItem>
 
 </AdornedTabs>
 
 
-#### 2. Download the React template.
-
-Create a new empty directory, then download the [project template](https://github.com/rvanasa/vite-react-motoko/tree/main/src):
-
-```
-mkdir react-project
-cd react-project
-npx degit rvanasa/vite-react-motoko
-```
-
-This example project uses [Motoko](/docs/current/motoko/main/getting-started/motoko-introduction), React, and TypeScript template to create a simple counter application.
-
-#### 3. Start `dfx`
-
-```
-dfx start --background
-```
-
-#### 4. Setup the project using `npm`.
-
-```
-npm run setup
-```
-
-#### 5. Deploy the project.
-
-```
-dfx deploy --playground
-```
-
-#### 6. Interact with the app.
-
-Open the `frontend` URL in a web browser. You'll see the template React frontend interface.
-
-*Congratulations, you just created your first internet-native React dapp!*
+*Congratulations, you just created your first internet-native dapp!*
