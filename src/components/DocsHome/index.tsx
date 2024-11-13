@@ -548,7 +548,7 @@ const DocsHomePage: FC = () => {
             <p className="mb-0">
               <Link
                 className="button-white button-with-icon"
-                href="/docs/current/developer-docs/getting-started/hello-world"
+                href="/docs/current/developer-docs/getting-started/quickstart/first-smart-contract"
               >
                 SDK BUILD
                 <LinkArrowRight />
