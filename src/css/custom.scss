@@ -50,7 +50,7 @@ html.docs-wrapper[data-theme='dark'] {
 
   --icp-white: #fff;
   --icp-black: #000;
-  --icp-raven: oklch(from var(--icp-black) calc(l + .2) c h);
+  --icp-raven: oklch(from var(--icp-black) calc(l + .25) c h);
   --icp-purple: #AE9EFF;
   --icp-pink: #e300b6;
 
@@ -60,8 +60,8 @@ html.docs-wrapper[data-theme='dark'] {
   --icp-surface-box: oklch(from var(--icp-raven) calc(l + .05) c h);
   --icp-on-surface-box: var(--icp-white);
 
-  --icp-surface-highlight: oklch(100% 0 0);
-  --icp-on-surface-highlight: var(--icp-black);
+  --icp-surface-highlight: var(--icp-surface-box);
+  --icp-on-surface-highlight: var(--icp-white);
 
   --icp-line: oklch(from var(--icp-surface-box) calc(l - .05) c h);
 
@@ -74,6 +74,7 @@ html.docs-wrapper[data-theme='dark'] {
 
   --ifm-color-content: var(--icp-on-surface);
 
+
   body {
     --ifm-menu-color-active: var(--icp-interaction-text);
     --ifm-menu-color-background-hover: var(--icp-surface-box);
@@ -83,7 +84,6 @@ html.docs-wrapper[data-theme='dark'] {
 
     --ifm-link-hover-color: var(--icp-interaction-text-hover);
     --ifm-pagination-nav-color-hover: var(--icp-interaction-text-hover);
-
 
     --ifm-color-primary-dark: #3500a7;
     --ifm-color-primary-darker: #32009d;
@@ -104,7 +104,12 @@ html.docs-wrapper[data-theme='dark'] {
     --ic0-color: #3b00b9;
     scroll-behavior: smooth;
     --ifm-tabs-color: #000;
+    --ic0-docs-background: var(--icp-surface);
 
+    --ifm-tabs-color-active: var(--icp-interaction-text);
+    --ifm-tabs-color-active-border: var(--icp-interaction-text);
+    --ifm-tabs-color: var(--icp-on-surface);
+    
     --ifm-navbar-link-hover-color: #da3979;
     --ifm-navbar-link-active-color: #da3979;
 
@@ -149,8 +154,9 @@ html.docs-wrapper[data-theme='dark'] {
       }
 
       .tabs-container {
-        background: var(--icp-surface-highlight);
+        background: var(--icp-surface-highlight) !important;
         color: var(--icp-on-surface-highlight);
+        border-color: var(--icp-line) !important;
       }
 
       .navbar__search-button {
@@ -163,6 +169,10 @@ html.docs-wrapper[data-theme='dark'] {
 
       .mainsearchinput {
         color: var(--icp-on-surface-highlight);
+      }
+
+      main[class*=docMainContainer_] {
+        background: var(--icp-surface); 
       }
   }
 
