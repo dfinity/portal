@@ -19,19 +19,89 @@ import Link from "@docusaurus/Link";
 
 To develop and deploy applications on the Internet Computer (ICP) from a local developer environment, two primary tools are used:
 
-- **`dfx`**, a command-line tool used to create, deploy, and manage <GlossaryTooltip>canisters</GlossaryTooltip>. `dfx` is developed and maintained by DFINITY. It supports the latest features of ICP.
+- **IC SDK**, a software development kit that includes `dfx`, a command-line tool used to create, deploy, and manage <GlossaryTooltip>canisters</GlossaryTooltip>.
 
-- A **canister development kit** (CDK) which provides an environment for writing canister code in different programming languages while supporting ICP's features. CDKs exist for several languages, but only the CDKs for Motoko and Rust are developed and maintained by DFINITY. Other CDKs are community-developed.
+- A **canister development kit** (CDK) which provides an environment for writing canister code in different programming languages while supporting ICP's unique features.
 
-These two tools are used in conjunction with one another. By default, `dfx` is packaged with the CDKs for Motoko and Rust canister development and has some limited support for TypeScript and Python development through the community-developed CDKs Azle and Kybra.
+## Installing the IC SDK
 
-## What is `dfx`?
+`dfx` is natively supported on Linux or macOS 12.\* Monterey or later. Windows users should install Windows Subsystem for Linux (WSL 2) to use `dfx`.
 
-`dfx` is part of the [IC SDK](https://github.com/dfinity/sdk). The IC SDK is comprised of:
+<AdornedTabs>
+<TabItem value="linux" label="Linux" default={true}>
+
+#### Prerequisites
+
+- [x] Download and [install Node.js](https://nodejs.org/en/download/package-manager).
+
+#### 1. Install the IC SDK.
+
+```bash
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+source "$HOME/.local/share/dfx/env"
+```
+
+Confirm the IC SDK has been installed:
+
+```bash
+dfx --version
+```
+
+</TabItem>
+<TabItem value="macOS" label="macOS">
+
+#### Prerequisites
+
+- [x] Download and [install Node.js](https://nodejs.org/en/download/package-manager). Using [HomeBrew](https://brew.sh/) is recommended.
+
+- [x] Apple silicon machines: Download and install Rosetta: `softwareupdate --install-rosetta`
+
+#### 1. Install the IC SDK.
+
+```bash
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+source "$HOME/.local/share/dfx/env"
+```
+
+Confirm the IC SDK has been installed:
+
+```bash
+dfx --version
+```
+
+</TabItem>
+
+<TabItem value="windows" label="Windows">
+
+#### Prerequisites
+
+- [x] Download and install [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install). Review the [WSL troubleshooting](/docs/current/developer-docs/getting-started/wsl-troubleshooting) if necessary.
+
+- [x] Download and [install Node.js](https://nodejs.org/en/download/package-manager) within your WSL environment.
+
+#### 1. Install the IC SDK.
+
+```bash
+sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
+source "$HOME/.local/share/dfx/env"
+```
+
+Confirm the IC SDK has been installed:
+
+```bash
+dfx --version
+```
+
+</TabItem>
+</AdornedTabs>
+
+To customize your `dfx` installation, you can set [environment variables](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-envars) for a session by exporting the variable in your terminal or adding a line to your `.profile` file.
+
+The [IC SDK](https://github.com/dfinity/sdk) is comprised of:
 
 - `dfx`: A CLI tool.
 
-- `dfxvm`: A version manager for `dfx`.
+- [`dfxvm`](/docs/current/developer-docs/developer-tools/dev-tools-overview#dfxvm): A version manager for `dfx`. It is used to download a specific version of `dfx`, set a default version, and update to the latest `dfx` version.
 
 - `moc`: The [Motoko](/docs/current/motoko/main/getting-started/motoko-introduction) compiler to support Motoko canister development.
 
@@ -43,143 +113,6 @@ It also has dependencies on a few additional, important packages:
 
 - **Candid**: An interface description language (IDL) used to interact with a canister's methods. A **method** is a function exposed by the canister that can be called by a user, another canister, or the application's frontend.
 
-When you install `dfx`, the entire IC SDK is installed. For advanced developers who may be interested in the binaries installed with `dfx`, you can view them at the path `$(dfx cache show)`.
-
-## Installing `dfx`
-
-`dfx` is natively supported on Linux or macOS 12.\* Monterey or later.
-
-There is no native support for `dfx` on Windows. However, by installing the Windows Subsystem for Linux (WSL 2), you can run `dfx` on a Windows system as described below.
-
-### dfxvm
-
-To install `dfx`, the version manager tool [`dfxvm`](/docs/current/developer-docs/developer-tools/dev-tools-overview#dfxvm) is used. You can download and install the latest version of dfxvm by running the command:
-
-<AdornedTabs>
-<TabItem value="apple" label="Install on macOS/Linux" default={true}>
-
-```bash
-sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-```
-
-If you are using a machine running Apple silicon (M1 or M2 CPU chips), you will need to have [Rosetta](https://support.apple.com/en-us/HT211861) installed, otherwise you will receive the error, `Bad CPU type in executable (os error 86)`.
-
-You can install Rosetta by running the command:
-
-```
-softwareupdate --install-rosetta
-```
-
-</TabItem>
-<TabItem value="windows" label="Install on Windows">
-There is no native support for <code>dfx</code> on Windows. However, there are a few different options for developers who are using a Windows machine:
-
-- [Developer containers](/docs/current/developer-docs/developer-tools/ide/dev-containers).
-
-- Cloud-based environments, such as [GitHub Codespaces](/docs/current/developer-docs/developer-tools/ide/codespaces) or [Gitpod](/docs/current/developer-docs/developer-tools/ide/gitpod).
-
-- Windows Subsystem for Linux (WSL 2).
-
-#### Using WSL 2
-
-:::caution
-Not all features of `dfx` may be supported on WSL 2.
-:::
-
-Follow Microsoft&#39;s instructions for installing the <a href="https://docs.microsoft.com/en-us/windows/wsl/install">Windows Subsystem for Linux</a>. Make sure you are running Windows 10 (version 2004 or higher) or Windows 11.
-
-It is recommended to use WSL 2 instead of WSL 1.
-
-:::info
-WSL 2 is supported on both Windows 10 and Windows 11, although Windows 11 is preferred as it has better support for WSL 2.
-:::
-
-#### Upgrade from WSL 1
-If you have WSL 1 installed, follow the <a href="https://docs.microsoft.com/en-us/windows/wsl/install#upgrade-version-from-wsl-1-to-wsl-2">upgrade instructions</a> to upgrade to WSL 2.
-
-#### Running Linux
-After you have WSL 2 installed, you can launch the Linux distributions by name.
-
-For example, run the command:
-<code>Ubuntu.exe</code> to start the <code>Ubuntu</code> distribution from the command line.
-
-#### Installing `dfxvm`
-
-Then, install <code>dfxvm</code> by running:
-
-```bash
-sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-```
-
-This will automatically install the latest version of <code>dfx</code> on your WSL 2 system.
-
-For troubleshooting common WSL errors, please see [WSL troubleshooting](/docs/current/developer-docs/getting-started/wsl-troubleshoot).
-
-</TabItem>
-</AdornedTabs>
-
-### Installing a specific `dfx` version
-
-To install a specific version of `dfx`, use the command:
-
-```
-dfxvm install <version>
-```
-
-### Setting the default `dfx` version
-
-To set the default `dfx` version that your local environment will use, use the command:
-
-```
-dfxvm default <version>
-```
-
-If the specified version is not installed, it will be installed, then set as the default.
-
-To view which default version is currently configured, use the command:
-
-```
-dfxvm default
-```
-
-### Listing all `dfx` versions installed
-
-To list all `dfx` versions that are installed, use the command:
-
-```
-dfxvm list
-```
-
-
-### Updating to the latest version
-
-To update to the latest `dfx` version and set it as the default, use the command:
-
-```
-dfxvm update
-```
-
-## Setting environment variables
-
-To customize your `dfx` installation, you can set environment variables for a session by exporting the variable in your terminal or adding a line to your `.profile` file.
-
-To specify the installation location for the `dfx` binary, set the `DFX_INSTALLATION_ROOT` variable:
-
-```
-export DFX_INSTALLATION_ROOT=/path/to/install/dir
-```
-
-To specify a different location for the `dfx` subdirectories `.cache` and `.config`, set the `DFX_CONFIG_ROOT` such as:
-
-```
-export DFX_CONFIG_ROOT=/path/to/config/root
-```
-
-To set the version of `dfx` you want to install, set the `DFX_VERSION` variable:
-
-```
-export DFX_VERSION=0.21.0
-```
 
 ## Starting `dfx`
 
@@ -192,7 +125,7 @@ dfx start // Returns replica output in the terminal window. A new terminal windo
 dfx start --background // Runs the processes in the background and allows you to continue running commands in the current terminal.
 ```
 
-The `--clean` flag can also be used with `dfx start`, which removes checkpoints from your project cache. This flag can be helpful when troubleshooting or debugging.
+The `--clean` flag can also be used with `dfx start`, which removes checkpoints from your project's cache. This flag can be helpful when troubleshooting or debugging.
 
 ## Stopping `dfx`
 
