@@ -6,7 +6,13 @@ import {
   getTransactionRateV3,
   getckBTCTotalSupply,
 } from "@site/src/utils/network-stats";
-import React, { useCallback, ReactNode, useEffect, useState } from "react";
+import React, {
+  useCallback,
+  ReactNode,
+  useEffect,
+  useState,
+  useRef,
+} from "react";
 import { useQuery } from "react-query";
 import { ConstantRateCounter, SpringCounter } from "../PreHero/Counters";
 import InfoIcon from "../PreHero/InfoIcon";
@@ -15,7 +21,6 @@ import Link from "@docusaurus/Link";
 import { DashboardIcon } from "./Dashboardicon";
 import transitions from "@site/static/transitions.json";
 import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
-
 const FETCH_INTERVAL = 20000; // 20 seconds
 const ANIMATION_INTERVAL = 50; // 50ms for smooth counting
 
@@ -70,10 +75,15 @@ const BlockCounter = () => {
           };
         }
 
-        // For subsequent fetches, ensure we never go backwards
+        // For subsequent fetches, ensure we never go backwards and consider expected progress
+        const timeSinceLastFetch = Date.now() - prev.lastFetchTime;
+        const expectedProgress =
+          ((prev.rate || currentRate) * timeSinceLastFetch) / 1000;
+        const projectedCount = (prev.displayCount || 0) + expectedProgress;
+
         return {
           ...prev,
-          targetCount: Math.max(currentHeight, prev.targetCount || 0),
+          targetCount: Math.max(currentHeight, projectedCount),
           rate: currentRate,
           lastFetchTime: Date.now(),
         };
@@ -105,7 +115,6 @@ const BlockCounter = () => {
       setState((prev) => {
         if (!prev.displayCount || !prev.targetCount || !prev.rate) return prev;
 
-        // Calculate progress since last fetch
         const timeSinceLastFetch = Date.now() - prev.lastFetchTime;
         const expectedProgress = (prev.rate * timeSinceLastFetch) / 1000;
 
