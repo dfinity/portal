@@ -183,6 +183,10 @@ html.docs-doc-page:not(.docs-doc-id-home) {
         font-weight: 500;
         text-transform: uppercase;
       }
+
+      &:empty {
+        display: none;
+      }
     }
 
     .tabs-container {
@@ -565,27 +569,6 @@ div[class^="announcementBarContent"] {
   /*Chrome, Safari, Edge*/
   display: none;
 }
-
-div[class*="tableOfContents"] {
-      top: calc(var(--ifm-navbar-height) + var(--ifm-subnav-height) + 40px);
-      max-height: calc(100vh - (var(--ifm-navbar-height) + 7rem));
-      padding-right: 40px;
-
-      .table-of-contents {
-        padding-top: 0;
-      }
-
-      &:before {
-        // TODO: can this string be localized?
-        content: "On this page";
-        font-weight: 500;
-        text-transform: uppercase;
-      }
-
-      &:empty {
-        display: none;
-      }
-    }
 
 @tailwind base;
 @tailwind components;
