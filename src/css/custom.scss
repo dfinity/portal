@@ -378,10 +378,14 @@ html.docs-doc-page:not(.docs-doc-id-home) {
         font-weight: 500;
         text-transform: uppercase;
       }
+    }
 
-      &:empty {
-        display: none;
-      }
+    div[class*="docItemCol"] {
+      max-width: unset !important;
+    }
+    // Hides "On this page" section if it is empty
+    .col--3:has(div[class*="tableOfContents"]:empty) {
+      display: none;
     }
 
     .tabs-container {
