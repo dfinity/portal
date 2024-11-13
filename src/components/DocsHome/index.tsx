@@ -41,6 +41,7 @@ interface TileDescriptor {
   icon?: ReactNode | null;
   description?: ReactNode;
   label?: string;
+  invertIconDarkMode?: boolean;
 }
 
 const languagesTiles: TileDescriptor[] = [
@@ -50,7 +51,7 @@ const languagesTiles: TileDescriptor[] = [
       "Get started with an easy to learn domain-specific language that is able to leverage ICP features and is also perfect to let AI code solo when desired. This is a great choice for beginners.",
     icon: (
       <img
-        src="/img/docs/motoko.webp"
+        src="/img/docs/motoko.svg"
         alt="Motoko docs"
         className="w-10 h-10"
         loading="lazy"
@@ -79,6 +80,7 @@ const languagesTiles: TileDescriptor[] = [
         loading="lazy"
       />
     ),
+    invertIconDarkMode: true,
     action: (
       <Link
         href="/docs/current/developer-docs/backend/rust/"
@@ -218,12 +220,14 @@ const frameworksTiles: TileDescriptor[] = [
 const Tile = ({ tile }: { tile: TileDescriptor }) => {
   return (
     <div
-      className={`flex flex-col ${"bg-white/70 border-white"} rounded-lg border border-solid p-4 justify-between`}
+      className={`tile flex flex-col ${"bg-white/70 border-white"} rounded-lg border border-solid p-4 justify-between`}
     >
       <div className={"flex flex-col gap-4 items-start"}>
-        <div className={"flex flex-row gap-4"}>
-          {tile.icon}
-          <span className={"tw-heading-5 mb-6 whitespace-pre-wrap"}>
+        <div className={"flex flex-row gap-4 items-center"}>
+          <i className={`tile__icon ${tile?.invertIconDarkMode ? 'tile__icon--invert' : ''}`}>
+            {tile.icon}
+          </i>
+          <span className={"tw-heading-5 whitespace-pre-wrap"}>
             {tile.label}
           </span>
         </div>
@@ -526,7 +530,7 @@ const footerCards: Array<CarouselCard> = [
 
 const DocsHomePage: FC = () => {
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-10 docshome">
       <section className="flex flex-col gap-8">
         <div className="px-8 py-10 md:p-10 rounded-lg bg-infinite text-white sm:col-span-2 md:row-span-2 bg-center bg-cover flex flex-col relative overflow-hidden">
           <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense -translate-y-[10%] z-0 md:opacity-30 " />
