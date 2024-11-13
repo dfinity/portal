@@ -624,6 +624,8 @@ const redirects = `
   /docs/current/developer-docs/multi-chain/faq/cketh-faq /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview
   /docs/current/developer-docs/multi-chain/faq/ckerc20-faq /docs/current/developer-docs/multi-chain/chain-key-tokens/ckerc20/overview
   /docs/current/developer-docs/multi-chain/faq/signatures-faq /docs/current/references/t-sigs-how-it-works
+  /docs/current/developer-docs/integrations/rosetta/staking-tutorial/ /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_icp
+   /docs/current/developer-docs/getting-started/cycles/cycles-wallet /docs/current/developer-docs/defi/cycles/cycles-wallet
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
