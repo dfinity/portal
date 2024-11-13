@@ -3,125 +3,61 @@
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
   build: [
+    {
+    type: "category",
+    label: "Quick starts",
+    items: [
       {
         type: "doc",
-        label: "Network overview",
-        id: "developer-docs/getting-started/network-overview",
+        label: "First smart contract",
+        id: "developer-docs/getting-started/quickstart/first-smart-contract",
       },
       {
-      type: "category",
-<<<<<<< HEAD
-      label: "Start building",
-      items: [
-        {
-          type: "doc",
-          label: "Explore examples",
-          id: "developer-docs/getting-started/explore-examples",
-        },
-        {
-          type: "doc",
-          label: "Install tools",
-          id: "developer-docs/getting-started/install",
-        },
-        {
-          type: "doc",
-          label: "Create an identity",
-          id: "developer-docs/getting-started/identities",
-        },
-        {
-          type: "doc",
-          label: "Tokens and cycles",
-          id: "developer-docs/getting-started/tokens-and-cycles",
-        },
-        {
-          type: "doc",
-          label: "Write smart contracts",
-          id: "developer-docs/getting-started/write-smart-contracts",
-=======
-      label: "Quick starts",
-      items: [
-        {
-          type: "doc",
-          label: "First smart contract",
-          id: "developer-docs/getting-started/quickstart/first-smart-contract",
-        },
-        {
-          type: "doc",
-          label: "React",
-          id: "developer-docs/getting-started/quickstart/react-quickstart",
-        },
-      ],
+        type: "doc",
+        label: "React",
+        id: "developer-docs/getting-started/quickstart/react-quickstart",
+      },
+    ],
+  },
+  {
+    type: "doc",
+    label: "Network overview",
+    id: "developer-docs/getting-started/network-overview",
+  },
+  {
+  type: "category",
+  label: "Dev environment setup",
+  items: [
+    {
+      type: "doc",
+      label: "Explore examples",
+      id: "developer-docs/getting-started/explore-examples",
     },
     {
       type: "doc",
-      label: "Network overview",
-      id: "developer-docs/getting-started/network-overview",
+      label: "Install tools",
+      id: "developer-docs/getting-started/install",
     },
     {
-      type: "category",
-      label: "Dev environment setup",
-      items: [
-
-        {
-          type: "doc",
-          label: "Workflow",
-          id: "developer-docs/getting-started/development-workflow",
-        },
-        {
-          type: "doc",
-          label: "Installation",
-          id: "developer-docs/getting-started/install/index",
-        },
-        {
-          type: "doc",
-          label: "Developer accounts",
-          id: "developer-docs/getting-started/accounts",
-        },
-        {
-          type: "category",
-          label: "Cycles",
-          items: [
-            {
-              label: "Overview",
-              type: "doc",
-              id: "developer-docs/getting-started/cycles/overview",
-            },
-            "developer-docs/getting-started/cycles/cycles-faucet",
-          ],
->>>>>>> 023a1639adf8c999dd5515e6e24dc37d42f182ce
-        },
-        {
-          type: "doc",
-          label: "Deploy and manage",
-          id: "developer-docs/getting-started/deploy-and-manage",
-        },
-        {
-<<<<<<< HEAD
-          type: "doc",
-          label: "Next steps",
-          id: "developer-docs/getting-started/next-steps",
-=======
-          type: "category",
-          label: "Deploy",
-          items: [
-            {
-              type: "doc",
-              label: "Local deployment",
-              id: "developer-docs/getting-started/deploy/local",
-            },
-            {
-              type: "doc",
-              label: "Testnet deployment",
-              id: "developer-docs/getting-started/deploy/testnet",
-            },
-            {
-              type: "doc",
-              label: "Mainnet deployment",
-              id: "developer-docs/getting-started/deploy/mainnet",
-            },
-          ],
->>>>>>> 023a1639adf8c999dd5515e6e24dc37d42f182ce
-        },
+      type: "doc",
+      label: "Create an identity",
+      id: "developer-docs/getting-started/identities",
+    },
+    {
+      type: "doc",
+      label: "Tokens and cycles",
+      id: "developer-docs/getting-started/tokens-and-cycles",
+    },
+    {
+      type: "doc",
+      label: "Write smart contracts",
+      id: "developer-docs/getting-started/write-smart-contracts",
+    },
+    {
+      type: "doc",
+      label: "Next steps",
+      id: "developer-docs/getting-started/next-steps",
+      },
       ],
     },
     {

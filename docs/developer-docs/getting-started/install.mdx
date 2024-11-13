@@ -5,7 +5,6 @@ keywords: [beginner, getting started, tutorial, tools, installing tools, install
 import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
-import { Chip } from "/src/components/Chip/Chip";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 import LinkArrowDocs from "@site/src/components/Common/Icons/LinkArrowDocs";
 import Link from "@docusaurus/Link";
@@ -31,7 +30,9 @@ To develop and deploy applications on the Internet Computer (ICP) from a local d
 
 #### Prerequisites
 
-- [x] Download and [install Node.js](https://nodejs.org/en/download/package-manager).
+<input type="checkbox"/> Download and <a href="https://nodejs.org/en/download/package-manager">install Node.js</a>.
+
+---------
 
 #### 1. Install the IC SDK.
 
@@ -51,9 +52,12 @@ dfx --version
 
 #### Prerequisites
 
-- [x] Download and [install Node.js](https://nodejs.org/en/download/package-manager). Using [HomeBrew](https://brew.sh/) is recommended.
+<input type="checkbox"/> Download and <a href="https://nodejs.org/en/download/package-manager">install Node.js</a>. Using <a href="https://brew.sh/"> HomeBrew </a> is recommended.
+<div>
+</div>
+<input type="checkbox"/> Apple silicon machines: Download and install Rosetta: <code>softwareupdate --install-rosetta</code>
 
-- [x] Apple silicon machines: Download and install Rosetta: `softwareupdate --install-rosetta`
+---------
 
 #### 1. Install the IC SDK.
 
@@ -74,9 +78,12 @@ dfx --version
 
 #### Prerequisites
 
-- [x] Download and install [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install). Review the [WSL troubleshooting](/docs/current/developer-docs/getting-started/wsl-troubleshooting) if necessary.
+<input type="checkbox"/> Download and install <a href="https://docs.microsoft.com/en-us/windows/wsl/install"> Windows Subsystem for Linux</a>.
+<div>
+</div>
+<input type="checkbox"/> Download and <a href="https://nodejs.org/en/download/package-manager">install Node.js</a> within your WSL environment.
 
-- [x] Download and [install Node.js](https://nodejs.org/en/download/package-manager) within your WSL environment.
+---------
 
 #### 1. Install the IC SDK.
 
@@ -92,6 +99,7 @@ dfx --version
 ```
 
 </TabItem>
+
 </AdornedTabs>
 
 To customize your `dfx` installation, you can set [environment variables](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-envars) for a session by exporting the variable in your terminal or adding a line to your `.profile` file.
@@ -119,10 +127,10 @@ Before you can start using `dfx` commands, you need to start `dfx`, which will r
 
 To start `dfx`, use the command:
 
-```
-dfx start // Returns replica output in the terminal window. A new terminal window will need to be opened to continue running commands.
-dfx start --background // Runs the processes in the background and allows you to continue running commands in the current terminal.
-```
+- `dfx start`: Returns replica output in the terminal window. A new terminal window will need to be opened to continue running commands.
+
+- `dfx start --background`: Runs the processes in the background and allows you to continue running commands in the current terminal.
+
 
 The `--clean` flag can also be used with `dfx start`, which removes checkpoints from your project's cache. This flag can be helpful when troubleshooting or debugging.
 
@@ -130,7 +138,7 @@ The `--clean` flag can also be used with `dfx start`, which removes checkpoints 
 
 To stop `dfx`, simply use the `dfx stop` command.
 
-If there are zombie `dfx` processes that are not stopped by `dfx stop`, you can use `dfx killall` to forcibly end them.
+If there are unresponsive `dfx` processes that are not stopped by `dfx stop`, you can use `dfx killall` to forcibly end them.
 
 ## Getting help
 

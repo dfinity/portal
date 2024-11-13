@@ -541,31 +541,13 @@ const DocsHomePage: FC = () => {
                 className="button-white button-with-icon"
                 href="https://icp.ninja/"
               >
-<<<<<<< HEAD
-              Learn more about ICP
-              <LinkArrowRight />
-            </Link>
-=======
                 INSTANT WEB IDE
                 <LinkArrowRight />
               </Link>
->>>>>>> 023a1639adf8c999dd5515e6e24dc37d42f182ce
             </p>
             <p className="mb-0">
               <Link
                 className="button-white button-with-icon"
-<<<<<<< HEAD
-                href="https://icp.ninja"
-              >
-              Start coding
-              <LinkArrowRight />
-            </Link>
-            </p>
-          </div>
-        </div>
-
-        <div className="px-6 py-8 md:p-10 border border-white border-solid rounded-lg bg-white/70 sm:col-span-2">
-=======
                 href="/docs/current/developer-docs/getting-started/quickstart/first-smart-contract"
               >
                 SDK BUILD
@@ -590,7 +572,6 @@ const DocsHomePage: FC = () => {
           </div>
         </div>
         <div className="px-6 py-0 md:p-10 border md:mx-auto md:min-w-[900px] sm:col-span-2 relative z-2 md:-mt-10">
->>>>>>> 023a1639adf8c999dd5515e6e24dc37d42f182ce
           <QueryClientProvider client={queryClient}>
             <NetworkStats></NetworkStats>
           </QueryClientProvider>
