@@ -41,6 +41,7 @@ interface TileDescriptor {
   icon?: ReactNode | null;
   description?: ReactNode;
   label?: string;
+  invertIconDarkMode?: boolean;
 }
 
 const languagesTiles: TileDescriptor[] = [
@@ -79,6 +80,7 @@ const languagesTiles: TileDescriptor[] = [
         loading="lazy"
       />
     ),
+    invertIconDarkMode: true,
     action: (
       <Link
         href="/docs/current/developer-docs/backend/rust/"
@@ -221,9 +223,11 @@ const Tile = ({ tile }: { tile: TileDescriptor }) => {
       className={`tile flex flex-col ${"bg-white/70 border-white"} rounded-lg border border-solid p-4 justify-between`}
     >
       <div className={"flex flex-col gap-4 items-start"}>
-        <div className={"flex flex-row gap-4"}>
-          {tile.icon}
-          <span className={"tw-heading-5 mb-6 whitespace-pre-wrap"}>
+        <div className={"flex flex-row gap-4 items-center"}>
+          <i className={`tile__icon ${tile?.invertIconDarkMode ? 'tile__icon--invert' : ''}`}>
+            {tile.icon}
+          </i>
+          <span className={"tw-heading-5 whitespace-pre-wrap"}>
             {tile.label}
           </span>
         </div>

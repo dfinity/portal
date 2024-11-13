@@ -190,18 +190,35 @@ html.docs-wrapper[data-theme='dark'] {
     fill: var(--icp-on-surface);
   }
 
+  .chip {
+    background: var(--icp-interaction);
+    color: var(--icp-on-interaction);
+  }
+
   .tile {
     background: var(--icp-surface-box);
     color: var(--icp-on-surface-box);
     border-color: var(--icp-line);
   }
 
+  .tile__icon {
+    overflow: hidden;
+    border-radius: 0.2em;
+  }
+
+  .tile__icon--invert {
+    filter: invert(1);
+  }
+
   .slidetile {
-    background: #000;
-    color: #fff;
+    background: var(--icp-surface-box);
+    color: var(--icp-on-surface-box);
     border-color: var(--icp-line);
     * {
-      color: #fff;
+      color: var(--icp-on-surface-box);
+    }
+    .border {
+      border-color: var(--icp-line);
     }
   }
 }
