@@ -1,24 +1,19 @@
----
-keywords: [beginner, getting started, first smart contract, first deployment, deploy a smart contract, quickstart, quick start]
----
-
-import useBaseUrl from "@docusaurus/useBaseUrl";
+import { AdornedTabs } from "../../../../src/components/Tabs/AdornedTabs";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
-import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 import TabItem from "@theme/TabItem";
-import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
-import CodeBlock from "@theme/CodeBlock";
+import { OsType, useOs } from "../../../../src/hooks/useOs";
 
 # Quick start
 
-<MarkdownChipRow labels={["Beginner", "Getting started" ]} />
+<MarkdownChipRow labels={["Beginner", "Getting started"]} />
 
-Build Web3, DeFi, fully network-resident social media, games, enterprise apps, and just about anything else you can imagine. Your projects are immune to cyber attacks and unstoppable.
+Build Web3, DeFi, fully network-resident social media, games, enterprise apps,
+and just about anything else you can imagine. Your projects are immune to cyberattacks and unstoppable.
 
 **Deploy in minutes using these steps.**
 
-<AdornedTabs>
-<TabItem value="linux" label="Linux" default={true}>
+<AdornedTabs defaultValue={useOs().current}>
+<TabItem value={OsType.Linux} label="Linux">
 
 #### Prerequisites
 
@@ -49,9 +44,8 @@ dfx start --background
 
 The default project created by `dfx` is "Hello, world!"
 
-
 ```bash
-dfx new hello --type=motoko 
+dfx new hello --type=motoko
 ```
 
 Creates a new Motoko project. Options are [motoko, rust, azle, kybra].
@@ -65,10 +59,11 @@ dfx deploy --playground
 
 #### 5. Interact with your project.
 
-Open the URL in your web browser that `dfx` returned after deploying your project.
+Open the URL in your web browser that `dfx` returned after deploying your
+project.
 
 </TabItem>
-<TabItem value="macOS" label="macOS">
+<TabItem value={OsType.macOs} label="macOS">
 
 #### Prerequisites
 
@@ -117,11 +112,12 @@ dfx deploy --playground
 
 #### 5. Interact with your project.
 
-Open the URL in your web browser that `dfx` returned after deploying your project.
+Open the URL in your web browser that `dfx` returned after deploying your
+project.
 
 </TabItem>
 
-<TabItem value="windows" label="Windows">
+<TabItem value={OsType.Windows} label="Windows">
 
 #### Prerequisites
 
@@ -170,11 +166,11 @@ dfx deploy --playground
 
 #### 5. Interact with your project.
 
-Open the URL in your web browser that `dfx` returned after deploying your project.
+Open the URL in your web browser that `dfx` returned after deploying your
+project.
 
 </TabItem>
 
 </AdornedTabs>
-
 
 *Congratulations, you just created your first internet-native dapp!*

@@ -19,6 +19,7 @@ export function AdornedTabs(props: AdornedTabsProps) {
     .map((tabItem) => {
       return {
         ...tabItem,
+        default: tabItem.default ?? props.defaultValue === tabItem.value,
         label: (
           <span className={"flex gap-2"}>
             {tabItem.startAdornment}
