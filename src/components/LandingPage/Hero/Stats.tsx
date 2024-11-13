@@ -21,6 +21,7 @@ import Link from "@docusaurus/Link";
 import { DashboardIcon } from "./Dashboardicon";
 import transitions from "@site/static/transitions.json";
 import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
+
 const FETCH_INTERVAL = 20000; // 20 seconds
 const ANIMATION_INTERVAL = 50; // 50ms for smooth counting
 
@@ -47,7 +48,13 @@ const BlockCounter = () => {
     lastFetchTime: 0,
   });
 
+  const isFetchingRef = useRef(false);
+  const currentCountRef = useRef<number | null>(null);
+
   const fetchData = useCallback(async (isInitial: boolean) => {
+    if (isFetchingRef.current) return;
+    isFetchingRef.current = true;
+
     try {
       const [heightResponse, rateResponse] = await Promise.all([
         fetch(
@@ -63,10 +70,11 @@ const BlockCounter = () => {
       const currentRate = parseFloat(rateData.block_rate[0][1]);
 
       setState((prev) => {
-        // For initial fetch, start slightly behind
         if (isInitial || !prev.displayCount) {
+          // Start slightly behind for initial fetch
           const startingHeight =
             currentHeight - currentRate * (FETCH_INTERVAL / 1000);
+          currentCountRef.current = startingHeight;
           return {
             displayCount: startingHeight,
             targetCount: currentHeight,
@@ -75,21 +83,17 @@ const BlockCounter = () => {
           };
         }
 
-        // For subsequent fetches, ensure we never go backwards and consider expected progress
-        const timeSinceLastFetch = Date.now() - prev.lastFetchTime;
-        const expectedProgress =
-          ((prev.rate || currentRate) * timeSinceLastFetch) / 1000;
-        const projectedCount = (prev.displayCount || 0) + expectedProgress;
-
+        // For subsequent fetches, just update the rate
         return {
           ...prev,
-          targetCount: Math.max(currentHeight, projectedCount),
           rate: currentRate,
           lastFetchTime: Date.now(),
         };
       });
     } catch (error) {
       console.error("Error fetching block data:", error);
+    } finally {
+      isFetchingRef.current = false;
     }
   }, []);
 
@@ -100,40 +104,35 @@ const BlockCounter = () => {
 
   // Regular fetch interval
   useEffect(() => {
-    const interval = setInterval(() => {
+    const intervalId = setInterval(() => {
       fetchData(false);
     }, FETCH_INTERVAL);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(intervalId);
   }, [fetchData]);
 
-  // Animation
+  // Constant rate counter animation
   useEffect(() => {
-    if (!state.displayCount || !state.targetCount || !state.rate) return;
+    if (!state.rate) return;
 
     const interval = setInterval(() => {
       setState((prev) => {
-        if (!prev.displayCount || !prev.targetCount || !prev.rate) return prev;
+        if (!prev.rate || currentCountRef.current === null) return prev;
 
-        const timeSinceLastFetch = Date.now() - prev.lastFetchTime;
-        const expectedProgress = (prev.rate * timeSinceLastFetch) / 1000;
-
-        const next =
-          prev.displayCount + (prev.rate * ANIMATION_INTERVAL) / 1000;
-        const adjustedNext = Math.min(
-          next,
-          prev.targetCount + expectedProgress
-        );
+        const newCount =
+          (currentCountRef.current || 0) +
+          (prev.rate * ANIMATION_INTERVAL) / 1000;
+        currentCountRef.current = newCount;
 
         return {
           ...prev,
-          displayCount: adjustedNext,
+          displayCount: newCount,
         };
       });
     }, ANIMATION_INTERVAL);
 
     return () => clearInterval(interval);
-  }, [state.displayCount, state.targetCount, state.rate]);
+  }, [state.rate]);
 
   return (
     <figure className="m-0">
