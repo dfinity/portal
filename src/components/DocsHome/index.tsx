@@ -51,7 +51,7 @@ const languagesTiles: TileDescriptor[] = [
       "Get started with an easy to learn domain-specific language that is able to leverage ICP features and is also perfect to let AI code solo when desired. This is a great choice for beginners.",
     icon: (
       <img
-        src="/img/docs/motoko.webp"
+        src="/img/docs/motoko.svg"
         alt="Motoko docs"
         className="w-10 h-10"
         loading="lazy"

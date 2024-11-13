@@ -231,6 +231,12 @@ html.docs-wrapper[data-theme='dark'] {
       border-color: var(--icp-line);
     }
   }
+
+  .button-ghost {
+    background: oklch(from var(--icp-surface-box) calc(l + .05) c h);
+    color: var(--icp-on-surface-box);
+    border-color: var(--icp-line);
+  }
 }
 
 /* browser resets */

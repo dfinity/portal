@@ -8,7 +8,7 @@
         "milestone_id": "Tokamak",
         "description": "This milestone marks a significant reduction of user-perceived end-to-end latency for processing ingress messages. It is achieved by multiple concerted measures at different levels of the protocol stack and brings the user experience of Web3 closer to Web2.",
         "eta": "November 2024",
-        "status": "deployed",
+        "status": "in_progress",
         "elements": [
           {
             "title": "QUIC-based transport and P2P layer for consensus",
@@ -29,7 +29,7 @@
             "proposal": "",
             "docs": "",
             "eta": "Q2 2024",
-            "status": "deployed",
+            "status": "in_progress",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Tokamak"
@@ -2363,41 +2363,10 @@
     "description": "DeFi protocols, real-word asset tokenization, and other digital asset solutions are strong drivers of web3 adoption. ICP’s Chain Fusion capabilities, unparalleled scalability, and the ability to serve web assets from chain opens up novel digital asset classes. Moreover, it makes ICP an attractive platform to build multi chain custody solutions and wallets.",
     "milestones": [
       {
-        "name": "Oisy, a Multi-chain Wallet Powered by Chain Fusion",
-        "milestone_id": "Toroidal",
-        "description": "Oisy is a wallet with a unique combination of properties. It is the first smart contract wallet that is self-custodial, multi-chain and uses passkeys for authentication, while being fully accessible through the browser. Oisy supports ICP-based dapps through ICRC-21, EVM-based dapps through WalletConnect, and easily converts between native Ethereum tokens and their ck twins.",
-        "eta": "November 2024",
-        "status": "in_progress",
-        "elements": [
-          {
-            "title": "Oisy",
-            "overview": "Shift Oisy's ownership model to a canister-per-user model. Under this change, the digital assets for each Oisy user will reside in a user-controlled canister.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Toroidal"
-          },
-          {
-            "title": "Signer standards in Oisy",
-            "overview": "Oisy is upgraded to support the signer standards to foster a vibrant and diverse ecosystem of signers and relying parties. Users can then safely transact with digital assets using their Oisy wallet and signer standards compatible dApps.",
-            "status": "in_progress",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Toroidal"
-          }
-        ]
-      },
-      {
         "name": "The Orbit Multi-Custody Asset Framework",
         "milestone_id": "Poloidal",
         "description": "Orbit is a comprehensive digital assets framework, enabling simple to advanced rules over user digital assets. Initially tailored for token management, it provides robust support for 1-out-of-M to complex approval policies for financial transactions. It also supports secure management of infrastructure like canister installations and upgrades. Teams and businesses can confidently handle ICP, ckETH, and compatible tokens using Orbit's advanced security features, vital for those seeking a stable and reliable management over their treasury.",
-        "eta": "November 2024",
+        "eta": "January 2025",
         "status": "in_progress",
         "elements": [
           {
@@ -2432,6 +2401,48 @@
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Poloidal"
+          }
+        ]
+      },
+      {
+        "name": "Oisy, a Multi-chain Wallet Powered by Chain Fusion",
+        "milestone_id": "Toroidal",
+        "description": "Oisy is a wallet with a unique combination of properties. It is the first smart contract wallet that is self-custodial, multi-chain and uses passkeys for authentication, while being fully accessible through the browser. Oisy supports ICP-based dapps through ICRC-21, EVM-based dapps through WalletConnect, and easily converts between native Ethereum tokens and their ck twins.",
+        "eta": "November 2024",
+        "status": "deployed",
+        "elements": [
+          {
+            "title": "Oisy ownership model",
+            "overview": "Shift Oisy's ownership model to a canister-per-user model. Under this change, the digital assets for each Oisy user will reside in a user-controlled canister.",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Toroidal"
+          },
+          {
+            "title": "Oisy Beta Launch",
+            "overview": "Make the Oisy wallet accessible to external users.",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "docs": "https://oisy.com/",
+            "is_community": false,
+            "in_beta": true,
+            "milestone_id": "Toroidal"
+          },
+          {
+            "title": "Signer standards in Oisy",
+            "overview": "Oisy is upgraded to support the signer standards to foster a vibrant and diverse ecosystem of signers and relying parties. Users can then safely transact with digital assets using their Oisy wallet and signer standards compatible dApps.",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Toroidal"
           }
         ]
       },
@@ -3536,7 +3547,7 @@
         "milestone_id": "Beryllium",
         "description": "This milestone provides substantial simplifications and improvements for the developer lifecycle of canisters, particularly regarding their development and operations. Snapshotting capabilities, a powerful logging infrastructure and improved error handling as well as push of relevant events brings canisters closer to Web2 services in terms of DevOps.",
         "eta": "November 2024",
-        "status": "in_progress",
+        "status": "deployed",
         "elements": [
           {
             "title": "Canister snapshots",
