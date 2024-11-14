@@ -394,10 +394,6 @@ The following submoules and their corresponding repos are currently used:
     - `/docs/current/references/ii-spec`
 	- GitHub Repo: https://github.com/dfinity/internet-identity.git
 
-- Interface Spec
-    - `/docs/current/references/ic-interface-spec `
-    - GitHub Repo: https://github.com/dfinity/interface-spec.git
-
 - Sample projects
     - `/docs/current/references/samples`
     - GitHub Repo: https://github.com/dfinity/examples.git
