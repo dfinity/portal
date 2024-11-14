@@ -12,18 +12,6 @@
       "eta_to_render": ""
     },
     {
-      "title": "Query call metrics",
-      "overview": "Metrics about query calls executed for a canister during a time period. Requirement for a fair charging of cycles for query calls.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "deployed",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": "Stellarator"
-    },
-    {
       "title": "Asynchronous Checkpointing",
       "overview": "Replicas currently persist the replicated state to disk every couple hundreds of rounds in a process called checkpointing. Currently some parts of checkpointing are done synchronously, which leads to drops in the execution rate in the checkpointing rounds and users have to wait longer for their responses during these rounds. The goal of this feature is to make more checkpointing steps run asynchronously in the background to make the IC's performance more consistent and predictable.",
       "forum": "",
