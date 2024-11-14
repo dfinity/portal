@@ -5,6 +5,7 @@ type snapshot_id = blob;
 type log_visibility = variant {
     controllers;
     public;
+    allowed_viewers : vec principal;
 };
 
 type canister_settings = record {
