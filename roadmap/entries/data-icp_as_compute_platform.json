@@ -3,110 +3,13 @@
   "categoryDescription": "Blockchain Singularity — all computations of the world can run on ICP. ICP is a decentralized compute platform operating as an extension of the Internet, offering cost effective compute and storage services, with infrastructure provided by independent entities around the globe. The platform allows anyone to deploy canister smart contracts on the Internet and run them in a decentralized manner.",
   "elements": [
     {
-      "title": "QUIC-based transport and P2P layer for consensus",
-      "overview": "A QUIC-based implementation of the transport and P2P layer for consensus that cuts down latency and increases throughput.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "Q1 2024",
-      "status": "deployed",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Tokamak"
-    },
-    {
-      "title": "Synchronous message submission endpoint",
-      "overview": "Providing a synchronous ingress submission endpoint in addition to the current asynchronous endpoint to reduce perceived end-to-end client-observed latency.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "Q2 2024",
-      "status": "in_progress",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Tokamak"
-    },
-    {
-      "title": "Latency-aware ingress routing",
-      "overview": "Boundary nodes route ingress messages to subnet nodes with lower network distance in terms of latency instead of random nodes.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "deployed",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Tokamak"
-    },
-    {
-      "title": "Reduced End-to-end Latency",
+      "title": "Increase scalability and compute capacity",
       "is_milestone": true,
-      "description": "This milestone marks a significant reduction of user-perceived end-to-end latency for processing ingress messages. It is achieved by multiple concerted measures at different levels of the protocol stack and brings the user experience of Web3 closer to Web2.",
-      "milestone_id": "Tokamak",
-      "eta": "Q3 2024",
+      "description": "ICP subnets can handle even more compute load, by better handling many distinct canisters and by using more CPU threads. When a subnet's load grows even beyond that, this milestone introduces canister migration, which enables better load balancing between subnets, ensuring all ICP subnets are well utilized.",
+      "milestone_id": "Flux",
       "status": "in_progress",
-      "eta_to_render": "November 2024"
-    },
-    {
-      "title": "Increase Stable Memory Limit to 500GiB",
-      "overview": "Increasing the stable memory limit of a canister to 500GiB.",
-      "forum": "https://forum.dfinity.org/t/increased-canister-smart-contract-memory/6148/128",
-      "proposal": "",
-      "docs": "",
-      "eta": "Q2 2024",
-      "status": "deployed",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Stellarator"
-    },
-    {
-      "title": "Log-structured merge tree (LSMT) storage layer",
-      "overview": "Rewrite the storage layer to rely on log-structured merge trees (LSMTs) instead of XFS reflinking. This will give more fine-grained control over what happens during checkpointing and thus enable further, more targeted, performance improvements.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
       "eta": "",
-      "status": "deployed",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Stellarator"
-    },
-    {
-      "title": "Support 1TB of replicated storage",
-      "overview": "Protocol improvements and optimizations of on-disk access and for syncing to reach 1TB of replicated state.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "deployed",
-      "is_community": false,
-      "in_beta": false,
-      "imported": true,
-      "milestone_id": "Stellarator"
-    },
-    {
-      "title": "Improved consensus throughput and latency",
-      "overview": "Improved consensus throughput and latency by better, and less bursty, node bandwidth use. Achieved through not including full messages, but only their hashes and other metadata, in blocks.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "in_progress",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Stellarator"
-    },
-    {
-      "title": "Motoko orthogonal persistence",
-      "overview": "Offering simple and scalable persistence across upgrades without needing to use stable memory in Motoko.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "in_progress",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Stellarator"
+      "eta_to_render": ""
     },
     {
       "title": "Asynchronous Checkpointing",
@@ -117,16 +20,20 @@
       "eta": "",
       "status": "in_progress",
       "is_community": false,
-      "in_beta": false
+      "in_beta": false,
+      "milestone_id": "Flux"
     },
     {
-      "title": "Increased Storage Capacity and Throughput",
-      "is_milestone": true,
-      "description": "Increased storage capacity of ICP subnets, storage per canister smart contract, and message throughput between subnets. Those improvements lead to each subnet being able to host larger workloads and better utilization of ICP’s hardware resources. The world's largest smart contracts can now grow even larger, far surpassing smart contracts on any other chain.",
-      "milestone_id": "Stellarator",
-      "status": "in_progress",
+      "title": "Canister migration",
+      "overview": "Migrating canisters between subnets. Important for balancing subnet utilization and scaling the IC.",
+      "status": "future",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
       "eta": "",
-      "eta_to_render": "November 2024"
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Flux"
     },
     {
       "title": "Configurable Wasm memory limit",
@@ -161,17 +68,6 @@
       "docs": "",
       "eta": "",
       "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "Query call metrics",
-      "overview": "Metrics about query calls executed for a canister during a time period. Requirement for a fair charging of cycles for query calls.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "in_progress",
-      "is_community": true,
       "in_beta": false
     },
     {
@@ -340,17 +236,6 @@
     {
       "title": "Hyper-scalable inter-subnet message routing",
       "overview": "Hyper-scalable XNet messaging protocol and implementation supporting a practically unlimited number of subnets. The current implementation works well up to a reasonably large number of subnets.",
-      "status": "future",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "Canister migration",
-      "overview": "Migrating canisters between subnets. Important for balancing subnet utilization and scaling the IC.",
       "status": "future",
       "forum": "",
       "proposal": "",
