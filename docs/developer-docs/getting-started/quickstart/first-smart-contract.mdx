@@ -10,7 +10,7 @@ import { OsType, useOs } from "/src/hooks/useOs";
 Build Web3, DeFi, fully network-resident social media, games, enterprise apps,
 and just about anything else you can imagine. Your projects are immune to cyberattacks and unstoppable.
 
-**Deploy in minutes using these steps.**
+**Open your terminal and deploy in minutes using these steps.**
 
 <AdornedTabs defaultValue={useOs().current}>
 <TabItem value={OsType.Linux} label="Linux">
@@ -25,10 +25,9 @@ and just about anything else you can imagine. Your projects are immune to cybera
 
 ```bash
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-source "$HOME/.local/share/dfx/env"
 ```
 
-Confirm the IC SDK has been installed:
+Confirm the IC SDK has been installed (you may need to open a new terminal window):
 
 ```bash
 dfx --version
@@ -65,16 +64,16 @@ project.
 <div>
 </div>
 <input type="checkbox"/> Apple silicon machines (M1, M2, etc): Download and install Rosetta: <code>softwareupdate --install-rosetta</code>
+
 ---------
 
 #### 1. Install the IC SDK.
 
 ```bash
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-source "$HOME/Library/Application Support/org.dfinity.dfx/env"
 ```
 
-Confirm the IC SDK has been installed:
+Confirm the IC SDK has been installed (you may need to open a new terminal window):
 
 ```bash
 dfx --version
@@ -119,10 +118,9 @@ project.
 
 ```bash
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-source "$HOME/.local/share/dfx/env"
 ```
 
-Confirm the IC SDK has been installed:
+Confirm the IC SDK has been installed (you may need to open a new terminal window):
 
 ```bash
 dfx --version
