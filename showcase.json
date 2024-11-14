@@ -4926,5 +4926,21 @@
     ],
     "twitter": "https://x.com/phasmafuture",
     "website": "https://entrepot.app/marketplace/phasma"
+  },
+  {
+    "id": "icptokens",
+    "name": "ICP Tokens",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "15,000+ users",
+    "website": "https://icptokens.net",
+    "github": "https://github.com/CyberNinjasLab",
+    "youtube": "https://www.youtube.com/watch?v=2hKfVcJviTM",
+    "twitter": "https://x.com/ICPTokens",
+    "description": "Advanced tool for tracking ICP tokens, designed to simplify the way you monitor, analyze, and manage tokens within the Internet Computer DeFi ecosystem. Portfolio insights, advanced charts and bubble maps for visual insights.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/icptokens_logo.svg"
   }
 ]
