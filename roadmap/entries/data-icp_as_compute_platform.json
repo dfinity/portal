@@ -21,7 +21,19 @@
       "status": "in_progress",
       "is_community": false,
       "in_beta": false,
-      "milestone_id": "Stellarator"
+      "milestone_id": "Flux"
+    },
+    {
+      "title": "Canister migration",
+      "overview": "Migrating canisters between subnets. Important for balancing subnet utilization and scaling the IC.",
+      "status": "future",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Flux"
     },
     {
       "title": "Configurable Wasm memory limit",
@@ -224,17 +236,6 @@
     {
       "title": "Hyper-scalable inter-subnet message routing",
       "overview": "Hyper-scalable XNet messaging protocol and implementation supporting a practically unlimited number of subnets. The current implementation works well up to a reasonably large number of subnets.",
-      "status": "future",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "Canister migration",
-      "overview": "Migrating canisters between subnets. Important for balancing subnet utilization and scaling the IC.",
       "status": "future",
       "forum": "",
       "proposal": "",
