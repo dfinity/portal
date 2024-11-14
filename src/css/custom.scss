@@ -46,24 +46,23 @@ html[data-theme='dark']:root, /* we did this so the darkmode does not affect any
   --ifm-color-content: #000;
 }
 
-html.docs-wrapper[data-theme='dark'] {
-
+html.docs-wrapper[data-theme="dark"] {
   --icp-white: #fff;
   --icp-black: #000;
-  --icp-raven: oklch(from var(--icp-black) calc(l + .25) c h);
-  --icp-purple: #AE9EFF;
+  --icp-raven: oklch(from var(--icp-black) calc(l + 0.25) c h);
+  --icp-purple: #ae9eff;
   --icp-pink: #e300b6;
 
   --icp-surface: var(--icp-raven);
   --icp-on-surface: var(--icp-white);
 
-  --icp-surface-box: oklch(from var(--icp-raven) calc(l + .05) c h);
+  --icp-surface-box: oklch(from var(--icp-raven) calc(l + 0.05) c h);
   --icp-on-surface-box: var(--icp-white);
 
   --icp-surface-highlight: var(--icp-surface-box);
-  --icp-on-surface-highlight: var(--icp-white);
+  --icp-on-surface-highlight: var(--icp-black);
 
-  --icp-line: oklch(from var(--icp-surface-box) calc(l - .05) c h);
+  --icp-line: oklch(from var(--icp-surface-box) calc(l - 0.05) c h);
 
   --icp-interaction: var(--icp-purple);
   --icp-interaction-hover: var(--icp-pink);
