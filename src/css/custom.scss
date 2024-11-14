@@ -56,6 +56,7 @@ html.docs-wrapper[data-theme='dark'] {
 
   --icp-surface: var(--icp-raven);
   --icp-on-surface: var(--icp-white);
+  --icp-on-surface--inverted: var(--icp-black);
 
   --icp-surface-box: oklch(from var(--icp-raven) calc(l + .05) c h);
   --icp-on-surface-box: var(--icp-white);
@@ -168,7 +169,7 @@ html.docs-wrapper[data-theme='dark'] {
       }
 
       .mainsearchinput {
-        color: var(--icp-on-surface-highlight);
+        color: var(--icp-on-surface--inverted);
       }
 
       main[class*=docMainContainer_] {
