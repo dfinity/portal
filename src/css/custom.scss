@@ -9,7 +9,8 @@
 @import "fonts.css";
 
 /* You can override the default Infima variables here. */
-html[data-theme='dark']:root, /* we did this so the darkmode does not affect any page but we can still use the feature for the docs pages */
+html[data-theme='dark']:root,
+/* we did this so the darkmode does not affect any page but we can still use the feature for the docs pages */
 :root {
   font-family: "CircularXX", sans-serif;
   --ifm-font-family-base: "CircularXX", sans-serif;
@@ -56,6 +57,7 @@ html.docs-wrapper[data-theme='dark'] {
 
   --icp-surface: var(--icp-raven);
   --icp-on-surface: var(--icp-white);
+  --icp-on-surface--inverted: var(--icp-black);
 
   --icp-surface-box: oklch(from var(--icp-raven) calc(l + .05) c h);
   --icp-on-surface-box: var(--icp-white);
@@ -109,7 +111,7 @@ html.docs-wrapper[data-theme='dark'] {
     --ifm-tabs-color-active: var(--icp-interaction-text);
     --ifm-tabs-color-active-border: var(--icp-interaction-text);
     --ifm-tabs-color: var(--icp-on-surface);
-    
+
     --ifm-navbar-link-hover-color: #da3979;
     --ifm-navbar-link-active-color: #da3979;
 
@@ -119,61 +121,62 @@ html.docs-wrapper[data-theme='dark'] {
     --ic0-article-background: linear-gradient(180deg, #f5f5f5 0%, #f2eff6 100%);
     --ic0-docs-background: #151515;
 
-      --ifm-navbar-padding-horizontal: 24px;
-      --ifm-navbar-y-padding: 0;
-      --ifm-navbar-height: 88px;
-      --ifm-subnav-height: 54px;
-      --ifm-navbar-link-hover-color: var(--icp-interaction-text-hover);
-      --ifm-navbar-x-padding: 50px;
-    
-      @media (max-width: 996px) {
-        --ifm-navbar-x-padding: var(--ifm-navbar-padding-horizontal);
-      }
-    
-      // sets the filter color (e.g. for pseudo elements) to --ifm-color-primary (#791E94) on hover
-      // NOTE: if `--ifm-color-primary` changes, the filter value should be recomputed
-      // the following can be used to create a filter for a target hex color: https://codepen.io/sosuke/pen/Pjoqqp
-      // also see https://stackoverflow.com/questions/42966641/how-to-transform-black-into-any-given-color-using-only-css-filters/43960991#43960991
-      --ifm-color-primary-filter: brightness(0) saturate(100%) invert(15%) sepia(45%) saturate(5162%) hue-rotate(277deg) brightness(98%) contrast(95%);
-    
-      .navbar {
-        padding: var(--ifm-navbar-y-padding) var(--ifm-navbar-x-padding);
-    
-        --ifm-color-primary: var(--icp-interaction-text);
-    
-        // color the dropdown caret on hover
-        .navbar__item:hover {
-          &.dropdown {
-            .navbar__link {
-              &:after {
-                filter: var(--ifm-color-primary-filter);
-              }
+    --ifm-navbar-padding-horizontal: 24px;
+    --ifm-navbar-y-padding: 0;
+    --ifm-navbar-height: 88px;
+    --ifm-subnav-height: 54px;
+    --ifm-navbar-link-hover-color: var(--icp-interaction-text-hover);
+    --ifm-navbar-x-padding: 50px;
+
+    @media (max-width: 996px) {
+      --ifm-navbar-x-padding: var(--ifm-navbar-padding-horizontal);
+    }
+
+    // sets the filter color (e.g. for pseudo elements) to --ifm-color-primary (#791E94) on hover
+    // NOTE: if `--ifm-color-primary` changes, the filter value should be recomputed
+    // the following can be used to create a filter for a target hex color: https://codepen.io/sosuke/pen/Pjoqqp
+    // also see https://stackoverflow.com/questions/42966641/how-to-transform-black-into-any-given-color-using-only-css-filters/43960991#43960991
+    --ifm-color-primary-filter: brightness(0) saturate(100%) invert(15%) sepia(45%) saturate(5162%) hue-rotate(277deg) brightness(98%) contrast(95%);
+
+    .navbar {
+      padding: var(--ifm-navbar-y-padding) var(--ifm-navbar-x-padding);
+
+      --ifm-color-primary: var(--icp-interaction-text);
+
+      // color the dropdown caret on hover
+      .navbar__item:hover {
+        &.dropdown {
+          .navbar__link {
+            &:after {
+              filter: var(--ifm-color-primary-filter);
             }
           }
         }
       }
+    }
 
-      .tabs-container {
-        background: var(--icp-surface-highlight) !important;
-        color: var(--icp-on-surface-highlight);
-        border-color: var(--icp-line) !important;
-      }
+    .tabs-container {
+      background: var(--icp-surface-highlight) !important;
+      color: var(--icp-on-surface-highlight);
+      border-color: var(--icp-line) !important;
+    }
 
-      .navbar__search-button {
-        border-color: currentColor;
-        color: var(--icp-on-surface);
-        span {
-          color: rgb(from var(--icp-on-surface) r g b / 50%);
-        }
-      }
+    .navbar__search-button {
+      border-color: currentColor;
+      color: var(--icp-on-surface);
 
-      .mainsearchinput {
-        color: var(--icp-on-surface-highlight);
+      span {
+        color: rgb(from var(--icp-on-surface) r g b / 50%);
       }
+    }
 
-      main[class*=docMainContainer_] {
-        background: var(--icp-surface); 
-      }
+    .mainsearchinput {
+      color: var(--icp-on-surface--inverted);
+    }
+
+    main[class*=docMainContainer_] {
+      background: var(--icp-surface);
+    }
   }
 
   .navbar {
@@ -181,11 +184,13 @@ html.docs-wrapper[data-theme='dark'] {
     color: var(--icp-on-surface);
   }
 
-  .subnav, .menu {
+  .subnav,
+  .menu {
     background: var(--icp-surface);
     color: var(--icp-on-surface);
     border-color: transparent;
   }
+
   .container:has(.docshome),
   .docshome {
     background: var(--icp-surface);
@@ -224,9 +229,11 @@ html.docs-wrapper[data-theme='dark'] {
     background: var(--icp-surface-box);
     color: var(--icp-on-surface-box);
     border-color: var(--icp-line);
+
     * {
       color: var(--icp-on-surface-box);
     }
+
     .border {
       border-color: var(--icp-line);
     }
@@ -259,7 +266,8 @@ abbr[title] {
 
 // specifically target the dev docs namespace;
 // we don't want to apply these styles to the marketing pages
-html.docs-doc-page,,
+html.docs-doc-page,
+,
 html.plugin-docs,
 html.plugin-blog {
   --ifm-navbar-padding-horizontal: 24px;
@@ -278,8 +286,7 @@ html.plugin-blog {
   // NOTE: if `--ifm-color-primary` changes, the filter value should be recomputed
   // the following can be used to create a filter for a target hex color: https://codepen.io/sosuke/pen/Pjoqqp
   // also see https://stackoverflow.com/questions/42966641/how-to-transform-black-into-any-given-color-using-only-css-filters/43960991#43960991
-  --ifm-color-primary-filter: brightness(0) saturate(100%) invert(15%)
-    sepia(45%) saturate(5162%) hue-rotate(277deg) brightness(98%) contrast(95%);
+  --ifm-color-primary-filter: brightness(0) saturate(100%) invert(15%) sepia(45%) saturate(5162%) hue-rotate(277deg) brightness(98%) contrast(95%);
 
   .navbar {
     padding: var(--ifm-navbar-y-padding) var(--ifm-navbar-x-padding);
@@ -356,6 +363,7 @@ html.docs-doc-page:not(.docs-doc-id-home) {
     }
 
     @media (min-width: 996px) {
+
       div[class*="docItemContainer_"],
       div.blog-post-content-layout {
         // padding around article content
@@ -383,6 +391,7 @@ html.docs-doc-page:not(.docs-doc-id-home) {
     div[class*="docItemCol"] {
       max-width: unset !important;
     }
+
     // Hides "On this page" section if it is empty
     .col--3:has(div[class*="tableOfContents"]:empty) {
       display: none;
@@ -395,8 +404,8 @@ html.docs-doc-page:not(.docs-doc-id-home) {
       background: #fdfdfd;
     }
 
-    .ic-chip-row + p:first-of-type,
-    .ic-chip-row + iframe {
+    .ic-chip-row+p:first-of-type,
+    .ic-chip-row+iframe {
       margin-top: 1rem;
     }
   }
@@ -404,16 +413,14 @@ html.docs-doc-page:not(.docs-doc-id-home) {
 
 
 div[class^="announcementBarContent"] {
-  background: linear-gradient(
-    90.1deg,
-    #fbb03b 1.35%,
-    #f57c2d 15.43%,
-    #f15a24 26.38%,
-    #ed1e79 45.16%,
-    #be217d 54.55%,
-    #5c2684 76.97%,
-    #29abe2 99.92%
-  );
+  background: linear-gradient(90.1deg,
+      #fbb03b 1.35%,
+      #f57c2d 15.43%,
+      #f15a24 26.38%,
+      #ed1e79 45.16%,
+      #be217d 54.55%,
+      #5c2684 76.97%,
+      #29abe2 99.92%);
   color: white;
   font-weight: bold;
 }
@@ -444,36 +451,28 @@ div[class^="announcementBarContent"] {
 }
 
 .panel-gradient {
-  background: linear-gradient(
-    105.94deg,
-    rgba(255, 255, 255, 0.24) 0%,
-    rgba(255, 255, 255, 0) 38.54%,
-    rgba(255, 255, 255, 0.136216) 100%
-  );
+  background: linear-gradient(105.94deg,
+      rgba(255, 255, 255, 0.24) 0%,
+      rgba(255, 255, 255, 0) 38.54%,
+      rgba(255, 255, 255, 0.136216) 100%);
 }
 
 .hero-stat-red {
-  background: linear-gradient(
-    141.63deg,
-    #ffffff 19.8%,
-    rgba(236, 0, 140, 0.5) 112.99%
-  );
+  background: linear-gradient(141.63deg,
+      #ffffff 19.8%,
+      rgba(236, 0, 140, 0.5) 112.99%);
 }
 
 .hero-stat-blue {
-  background: linear-gradient(
-    141.63deg,
-    #ffffff 19.8%,
-    rgba(59, 0, 185, 0.5) 112.99%
-  );
+  background: linear-gradient(141.63deg,
+      #ffffff 19.8%,
+      rgba(59, 0, 185, 0.5) 112.99%);
 }
 
 .hero-stat-green {
-  background: linear-gradient(
-    141.63deg,
-    #ffffff 19.8%,
-    rgba(24, 208, 181, 0.5) 112.99%
-  );
+  background: linear-gradient(141.63deg,
+      #ffffff 19.8%,
+      rgba(24, 208, 181, 0.5) 112.99%);
 }
 
 .component-fade-in {
@@ -513,6 +512,7 @@ div[class^="announcementBarContent"] {
   0% {
     transform: translateX(-100%);
   }
+
   100% {
     transform: translateX(0);
   }
@@ -522,14 +522,17 @@ div[class^="announcementBarContent"] {
   0% {
     transform: translateX(0);
   }
+
   100% {
     transform: translateX(-100%);
   }
 }
+
 @keyframes nft-marquee-left {
   from {
     transform: translateX(-25%);
   }
+
   to {
     transform: translateX(-75%);
   }
@@ -539,6 +542,7 @@ div[class^="announcementBarContent"] {
   from {
     transform: translateX(-75%);
   }
+
   to {
     transform: translateX(-25%);
   }
@@ -556,6 +560,7 @@ div[class^="announcementBarContent"] {
   from {
     transform: translate(-40px, 100px);
   }
+
   to {
     transform: translate(0px, 0px);
   }
@@ -569,6 +574,7 @@ div[class^="announcementBarContent"] {
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -582,6 +588,7 @@ div[class^="announcementBarContent"] {
   from {
     width: 0;
   }
+
   to {
     width: 100%;
   }
@@ -604,7 +611,7 @@ div[class^="announcementBarContent"] {
 }
 
 // mobile top level sidebar
-.navbar-sidebar__item > :not(.theme-doc-sidebar-menu).menu__list {
+.navbar-sidebar__item> :not(.theme-doc-sidebar-menu).menu__list {
   .navbar__link--divider {
     display: block;
     margin: 0;
@@ -625,7 +632,7 @@ div[class^="announcementBarContent"] {
     }
   }
 
-  > .menu__list-item {
+  >.menu__list-item {
     margin-bottom: 14px;
     padding: 0 0 14px;
     border-bottom: 1px solid #18181814;
@@ -637,13 +644,16 @@ div[class^="announcementBarContent"] {
 
   .menu__list {
     padding: 0;
+
     .menu__list-item {
       margin: 0;
+
       a {
         color: var(--ifm-color-primary);
         padding: 0 8px;
         line-height: 52px;
       }
+
       a:hover,
       a.menu__link--active {
         background: #f1eef5;
@@ -692,16 +702,18 @@ div[class^="announcementBarContent"] {
   .dropdown__menu li:first-child {
     padding-top: 12px;
   }
+
   .dropdown__menu li:last-child {
     padding-bottom: 12px;
   }
 
-  .navbar__link.dropdown--custom + .dropdown__menu {
+  .navbar__link.dropdown--custom+.dropdown__menu {
     display: grid;
   }
 
-  .navbar__link.dropdown--custom.dropdown--columns-2 + .dropdown__menu {
+  .navbar__link.dropdown--custom.dropdown--columns-2+.dropdown__menu {
     grid-template-columns: minmax(240px, 1fr) minmax(min-content, 1fr);
+
     li:nth-child(odd) {
       border-right: 1px solid rgba(59, 0, 185, 0.1);
     }
@@ -740,6 +752,7 @@ div[class^="announcementBarContent"] {
 }
 
 .link-primary:not(.link-with-icon) {
+
   svg,
   img {
     vertical-align: text-bottom;
@@ -753,6 +766,7 @@ div[class^="announcementBarContent"] {
   /*IE10+*/
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
+
 .hide-scrollbar::-webkit-scrollbar {
   /*Chrome, Safari, Edge*/
   display: none;
