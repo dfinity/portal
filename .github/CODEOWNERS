@@ -1,17 +1,38 @@
 .github/ @dfinity/idx
 * @dfinity/editorial
 
+# Each piece of documentation must be owned by the respective teams
 docs/developer-docs/updates/release-notes/ @dfinity/dx
+docs/developer-docs/getting-started/ @dfinity/dx
 docs/developer-docs/build/agents @dfinity/dx
 docs/developer-docs/build/cdks @dfinity/dx
-docs/developer-docs/integrations/rosetta @dfinity/finint
+docs/developer-docs/smart-contracts/ @dfinity/dx
+docs/developer-docs/smart-contracts/encryption/ @dfinity/crypto-team
+docs/developer-docs/smart-contracts/signatures @dfinity/crypto-team
+docs/developer-docs/smart-contracts/test/pocket-ic.mdx @dfinity/pocket-ic
+docs/developer-docs/developer-tools/ @dfinity/dx
+docs/developer-docs/web-apps/ @dfinity/dx
 docs/developer-docs/security @dfinity/product-security
+docs/developer-docs/defi/ @dfinity/finint
+docs/developer-docs/multi-chain/ @dfinity/cross-chain-team
+docs/developer-docs/identity/ @dfinity/gix
+docs/developer-docs/ai/ @dfinity/engineering
+docs/developer-docs/daos @dfinity/nns-team
+docs/samples/ @dfinity/growth
+docs/references/bitcoin-how-it-works.mdx @dfinity/cross-chain-team
+docs/references/ckbtc-reference.mdx @dfinity/cross-chain-team
+docs/references/https-outcalls-how-it-works.mdx @dfinity/engineering
+docs/references/t-sigs-how-it-works.mdx @dfinity/crypto-team
+docs/references/vetkeys-overview.mdx @dfinity/crypto-team
+docs/references/supported-signatures.mdx @dfinity/crypto-team
+docs/references/glossary.mdx @dfinity/dx
+docs/references/dashboard/ @dfinity/platform-operations
+docs/references/node-providers/ @dfinity/node
+docs/references/subnets/ @dfinity/networking
 docs/references/execution-errors.mdx @dfinity/execution
 docs/references/ingress-messages.mdx @dfinity/product-security
 docs/references/message-execution-properties.mdx @dfinity/product-security
 docs/developer-docs/web-apps/custom-domains @dfinity/boundary-node
-
-# Each piece of documentation must be owned by the respective teams
 docs/developer-docssmart-contracts/advanced-features/simd.mdx @dfinity/execution
 docs/developer-docssmart-contracts/advanced-features/periodic-tasks.mdx @dfinity/execution
 docs/developer-docs/smart-contracts/best-practices/idempotency.mdx @dfinity/research @dfinity/product-security
