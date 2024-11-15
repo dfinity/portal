@@ -122,8 +122,8 @@ const redirects = `
   /docs/quickstart/4-quickstart /docs/current/tutorials/developer-journey/
   /docs/quickstart/5-quickstart /docs/current/tutorials/developer-journey/
   /docs/quickstart/cycles-faucet /docs/current/developer-docs/getting-started/tokens-and-cycles
-  /docs/quickstart/local-quickstart /docs/current/developer-docs/getting-started/deploy/local
-  /docs/quickstart/network-quickstart /docs/current/developer-docs/getting-started/deploy/mainnet
+  /docs/quickstart/local-quickstart /docs/current/developer-docs/getting-started/deploy-and-manage
+  /docs/quickstart/network-quickstart /docs/current/developer-docs/getting-started/deploy-and-manage
   /docs/quickstart/quickstart-intro /docs/current/tutorials/developer-journey/
   /docs/quickstart/newcomers /docs/current/home
   /docs/current/developer-docs/quickstart/* /docs/current/tutorials/developer-journey/
@@ -221,8 +221,8 @@ const redirects = `
   /docs/current/developer-docs/setup/cycles/cycles-wallet /docs/current/developer-docs/defi/cycles/cycles-wallet
   /docs/current/developer-docs/setup/cycles/converting_icp_tokens_into_cycles /docs/current/developer-docs/defi/cycles/converting_icp_tokens_into_cycles
   /docs/current/developer-docs/setup/first-canister /docs/current/developer-docs/smart-contracts/write/default-template
-  /docs/current/developer-docs/setup/deploy-locally /docs/current/developer-docs/getting-started/deploy/local
-  /docs/current/developer-docs/setup/deploy-mainnet /docs/current/developer-docs/getting-started/deploy/mainnet
+  /docs/current/developer-docs/setup/deploy-locally /docs/current/developer-docs/getting-started/deploy-and-manage
+  /docs/current/developer-docs/setup/deploy-mainnet /docs/current/developer-docs/getting-started/deploy-and-manage
   /docs/current/developer-docs/production/best-practices /docs/current/developer-docs/smart-contracts/best-practices/general
   /docs/current/references/dev-tools-overview /docs/current/developer-docs/developer-tools/dev-tools-overview
   /docs/current/references/cdks /docs/current/developer-docs/developer-tools/on-chain/cdks
@@ -231,7 +231,7 @@ const redirects = `
   /docs/current/developer-docs/agents/nodejs /docs/current/developer-docs/developer-tools/off-chain/agents/nodejs
   /docs/current/developer-docs/agents/ic-agent-dfinity /docs/current/developer-docs/developer-tools/off-chain/agents/rust-agent
   /docs/current/references/gitpod /docs/current/developer-docs/developer-tools/ide/gitpod
-  /docs/current/developer-docs/setup/playground /docs/current/developer-docs/getting-started/deploy/testnet
+  /docs/current/developer-docs/setup/playground /docs/current/developer-docs/getting-started/deploy-and-manage
   /docs/current/developer-docs/setup/vs-code /docs/current/developer-docs/developer-tools/ide/vs-code
   /docs/current/developer-docs/setup/react-quickstart /docs/current/developer-docs/web-apps/application-frontends/quickstart/react-quickstart
   /docs/current/references/cli-reference/ /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/
@@ -561,7 +561,7 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/index /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/
   /docs/current/developer-docs/integrations/icrc-1/deploy-new-token /docs/current/developer-docs/defi/tokens/create
   /docs/current/developer-docs/setup/cycles/cycles-faucet.md	/docs/current/developer-docs/getting-started/tokens-and-cycles
-  /docs/current/developer-docs/setup/deploy-mainnet.md	/docs/current/developer-docs/getting-started/deploy/mainnet
+  /docs/current/developer-docs/setup/deploy-mainnet.md	/docs/current/developer-docs/getting-started/deploy-and-manage
   /docs/current/developer-docs/setup/index.md	/docs/current/developer-docs/getting-started/install/
   /docs/current/developer-docs/smart-contracts/candid/index	/docs/current/developer-docs/smart-contracts/candid/candid-concepts
   /docs/current/docs/current/references/ii-spec	/docs/current/references/ii-spec
@@ -630,6 +630,9 @@ const redirects = `
   /docs/current/developer-docs/getting-started/hello-world /docs/current/developer-docs/getting-started/write-smart-contracts
   /docs/current/developer-docs/getting-started/cycles/overview /docs/current/developer-docs/getting-started/tokens-and-cycles
   /docs/current/developer-docs/getting-started/accounts /docs/current/developer-docs/getting-started/identities
+  /docs/current/developer-docs/getting-started/deploy/local /docs/current/developer-docs/getting-started/deploy-and-manage
+  /docs/current/developer-docs/getting-started/deploy/testnet /docs/current/developer-docs/getting-started/deploy-and-manage
+  /docs/current/developer-docs/getting-started/deploy-and-manage  /docs/current/developer-docs/getting-started/deploy-and-manage
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

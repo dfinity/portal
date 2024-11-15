@@ -34,11 +34,11 @@ Available CDKs include:
 
 - [Rust CDK](https://github.com/dfinity/cdk-rs): By default, the Rust CDK is included as a dependency of the IC SDK. Alternatively, you can [install it yourself](https://crates.io/crates/ic-cdk).
 
-- [Kybra: Python CDK](/docs/current/developer-docs/backend/python/)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to [install and use Azle](/docs/current/developer-docs/backend/typescript/).
+- [Kybra: Python CDK](/docs/current/developer-docs/backend/python/)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to [install and use Azle](/docs/current/developer-docs/backend/typescript/).
 
-- [Azle: TypeScript CDK](/docs/current/developer-docs/backend/typescript/)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to [install and use Kybra](/docs/current/developer-docs/backend/python/).
+- [Azle: TypeScript CDK](/docs/current/developer-docs/backend/typescript/)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to [install and use Kybra](/docs/current/developer-docs/backend/python/).
 
-- [Bitfinity EVM for Solidity](/docs/current/developer-docs/backend/solidity/)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to use the [Bitfinity EVM](https://docs.bitfinity.network/ic-agent/overview).
+- [Bitfinity EVM for Solidity](/docs/current/developer-docs/backend/solidity/)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to use the [Bitfinity EVM](https://docs.bitfinity.network/ic-agent/overview).
 
 - [C++ CDK](https://docs.icpp.world/): Supported through the [ICPP-pro CDK](https://docs.icpp.world/installation.html).
 
@@ -56,10 +56,10 @@ dfx new PROJECT_NAME --type=motoko
 cd PROJECT_NAME
 ```
 
-Options for the `--type` flag are `motoko`, `rust`, `azle`, `kybra`.
+Options for the `--type` flag are `motoko`, `rust`, 'azle', and `kybra`.
 
 :::caution
-Using [Rust](/docs/current/developer-docs/backend/rust/dev-env), [Azle](/docs/current/developer-docs/backend/typescript/), or [Kybra](/docs/current/developer-docs/backend/python/) may require additional dependencies be installed if you have not developed with those languages in your environment before. View their corresponding documentation for more information.
+Using [Rust](/docs/current/developer-docs/backend/rust/dev-env), [Azle](/docs/current/developer-docs/backend/typescript/), or [Kybra](/docs/current/developer-docs/backend/python/) may require additional dependencies to be installed if you have not developed with those languages in your environment before. View their corresponding documentation for more information.
 :::
 
 </TabItem>
@@ -78,30 +78,30 @@ You should be in a directory that contains a file called `dfx.json`. This file i
 
 ```json title=dfx.json
 {
-  "canisters": {
-    "PROJECT_NAME_backend": { // Backend canister name
-      "main": "src/PROJECT_NAME_backend/main.mo", // Backend canister source code
-      "type": "motoko" // Canister language
-    },
-    "PROJECT_NAME_frontend": { // Frontend canister name
-      "dependencies": [
-        "PROJECT_NAME_backend"
-      ],
-      "source": [
-        "src/PROJECT_NAME_frontend/dist" // Frontend canister source code
-      ],
-      "type": "assets", // All frontend canisters will be type 'assets' regardless of the frontend framework used
-      "workspace": "PROJECT_NAME_frontend"
-    }
-  },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
-  "output_env_file": ".env",
-  "version": 1
+  "canisters": {
+    "PROJECT_NAME_backend": { // Backend canister name
+      "main": "src/PROJECT_NAME_backend/main.mo", // Backend canister source code
+      "type": "motoko" // Canister language
+    },
+    "PROJECT_NAME_frontend": { // Frontend canister name
+      "dependencies": [
+        "PROJECT_NAME_backend"
+      ],
+      "source": [
+        "src/PROJECT_NAME_frontend/dist" // Frontend canister source code
+      ],
+      "type": "assets", // All frontend canisters will have type 'assets' regardless of the frontend framework used
+      "workspace": "PROJECT_NAME_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
 }
 ```
 
@@ -114,11 +114,11 @@ The `backend` canister is used to store the dapp's functions and core logic.
 The `frontend` canister is used to store the dapp's frontend assets. This includes files such as HTML, CSS, JavaScript, React, images, and videos.
 
 <div class="text--center">
-  <img
-    src={useBaseUrl("/img/docs/default-dapp-arch.png")}
-    alt="Application architecture"
-    width="800"
-  />
+  <img
+    src={useBaseUrl("/img/docs/default-dapp-arch.png")}
+    alt="Application architecture"
+    width="800"
+  />
 </div>
 
 ## Writing code
@@ -143,11 +143,11 @@ For writing Motoko code, the [Motoko VS Code extension](https://marketplace.visu
 
 For Motoko projects, this file will be `src/PROJECT_NAME_backend/main.mo`.
 
-For Rust projects, this file will be `src/PROJECT_NAME_BACKEND/src/lib.rs`.
+For Rust projects, this file will be `src/PROJECT_NAME_backend/src/lib.rs`.
 
 For [Azle](https://demergent-labs.github.io/azle/get_started.html) or [Kybra](https://demergent-labs.github.io/kybra/) projects, please refer to their respective documentation for details about their default code files.
 
-If you are using the default template created by `dfx`, you will see the following default code:
+If you are using the default template created by `dfx`, you will see the following default "Hello, world!" code:
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
@@ -155,8 +155,8 @@ If you are using the default template created by `dfx`, you will see the followi
 ```motoko title="src/PROJECT_NAME_backend/main.mo"
 actor {
 public query func greet(name : Text) : async Text {
-    return "Hello, " # name # "!";
-  };
+    return "Hello, " # name # "!";
+  };
 };
 ```
 
@@ -166,7 +166,7 @@ public query func greet(name : Text) : async Text {
 ```rust title="src/PROJECT_NAME_backend/src/lib.rs"
 #[ic_cdk::query]
 fn greet(name: String) -> String {
-    format!("Hello, {}!", name)
+    format!("Hello, {}!", name)
 }
 ```
 
@@ -175,17 +175,15 @@ fn greet(name: String) -> String {
 
 :::danger
 
-If you are using the default `dfx new` template, this will be a simple "Hello, world!" application.
-
 If you are using an ICP Ninja project, this code will vary based on the example you downloaded.
 
 :::
 
-### 2. Add randomness
+### 2. Add randomness.
 
-A key feature of ICP is its ability to generate [onchain randomness](/docs/current/developer-docs/smart-contracts/advanced-features/randomness) using a Verifiable Random Function (VRF) and [chain-key cryptography](https://internetcomputer.org/how-it-works/chain-key-technology). In each round of consensus on a subnet, the VRF is evaluated using the number of the round as input, producing a fresh set of random bytes. Then, the bytes are used as the seed for a pseudorandom number generator (PRNG), called random tape, which uses chain-key cryptography to create a random, unique value for each canister that requests it. Through this process, it is impossible to predict future outputs.
+A key feature of ICP is its ability to generate [onchain randomness](/docs/current/developer-docs/smart-contracts/advanced-features/randomness) using a verifiable random function (VRF) and [chain-key cryptography](https://internetcomputer.org/how-it-works/chain-key-technology). In each round of consensus on a subnet, the VRF is evaluated using the number of the round as input, producing a fresh set of random bytes. Then, the bytes are used as the seed for a pseudorandom number generator (PRNG), called random tape, which uses chain-key cryptography to create a random, unique value for each canister that requests it. Through this process, it is impossible to predict future outputs.
 
-To use randomness in your application, you need to make a call to the `raw_rand` method of the [management canister](/docs/current/developer-docs/smart-contracts/advanced-features/management-canister).
+To use randomness in your canister, you need to make a call to the `raw_rand` method of the [management canister](/docs/current/developer-docs/smart-contracts/advanced-features/management-canister).
 
 To demonstrate how to use randomness, you will create a simple app that generates a random number.
 
@@ -202,33 +200,33 @@ import Blob "mo:base/Blob";
 import Nat "mo:base/Nat";
 
 actor {
-    // Create a stable variable to store the current random number.
-    // Stable variables persist across canister upgrades.
-    stable var currentRandomNumber : Nat = 0;
+    // Create a stable variable to store the current random number.
+    // Stable variables persist across canister upgrades.
+    stable var currentRandomNumber : Nat = 0;
 
-    // The management canister's principal ID is "aaaaa-aa".
-    // This code provides the logic to call the raw_rand method of the management canister.
-    let SubnetManager : actor {
-      raw_rand() : async Blob;
-    } = actor "aaaaa-aa";
+    // The management canister's principal ID is "aaaaa-aa".
+    // This code provides the logic to call the raw_rand method of the management canister.
+    let CallRand : actor {
+      raw_rand() : async Blob;
+    } = actor "aaaaa-aa";
 
-    // Create a function to generate a new random number.
-    // This function calls the raw_rand method of the management canister.
-    // Then it uses the random bytes returned to generate a random number.
-    private func generateNewNumber() : async () {
-        let randomBytes = await SubnetManager.raw_rand();
-        if (randomBytes.size() > 0) {
-            // Use the first byte to generate a number between 0 and 255
-            let bytes : [Nat8] = Blob.toArray(randomBytes);
-            currentRandomNumber := Nat8.toNat(bytes[0]);
-            Debug.print("Generated new random number: " # Nat.toText(currentRandomNumber));
-        };
-    };
+    // Create a function to generate a new random number.
+    // This function calls the raw_rand method of the management canister.
+    // Then it uses the random bytes returned to generate a random number.
+    private func generateNewNumber() : async () {
+        let randomBytes = await CallRand.raw_rand();
+        if (randomBytes.size() > 0) {
+            // Use the first byte to generate a number between 0 and 255
+            let bytes : [Nat8] = Blob.toArray(randomBytes);
+            currentRandomNumber := Nat8.toNat(bytes[0]);
+            Debug.print("Generated new random number: " # Nat.toText(currentRandomNumber));
+        };
+    };
 
-    // Use a query call to get current random number.
-    public query func getCurrentNumber() : async Nat {
-        currentRandomNumber
-    };
+    // Use a query call to get current random number.
+    public query func getCurrentNumber() : async Nat {
+        currentRandomNumber
+    };
 }
 ```
 
@@ -263,33 +261,38 @@ import Blob "mo:base/Blob";
 import Nat "mo:base/Nat";
 
 actor {
-    // Store the current random number
-    stable var currentRandomNumber : Nat = 0;
+    // Create a stable variable to store the current random number.
+    // Stable variables persist across canister upgrades.
+    stable var currentRandomNumber : Nat = 0;
 
-    let SubnetManager : actor {
-      raw_rand() : async Blob;
-    } = actor "aaaaa-aa";
+    // The management canister's principal ID is "aaaaa-aa".
+    // This code provides the logic to call the raw_rand method of the management canister.
+    let CallRand : actor {
+      raw_rand() : async Blob;
+    } = actor "aaaaa-aa";
 
-    // Function to generate a new random number
-    private func generateNewNumber() : async () {
-        let randomBytes = await SubnetManager.raw_rand();
-        if (randomBytes.size() > 0) {
-            // Use the first byte to generate a number between 0 and 255
-            let bytes : [Nat8] = Blob.toArray(randomBytes);
-            currentRandomNumber := Nat8.toNat(bytes[0]);
-        };
-        Debug.print("Generated new random number: " # Nat.toText(currentRandomNumber));
-    };
+    // Create a function to generate a new random number.
+    // This function calls the raw_rand method of the management canister.
+    // Then it uses the random bytes returned to generate a random number.
+    private func generateNewNumber() : async () {
+        let randomBytes = await CallRand.raw_rand();
+        if (randomBytes.size() > 0) {
+            // Use the first byte to generate a number between 0 and 255
+            let bytes : [Nat8] = Blob.toArray(randomBytes);
+            currentRandomNumber := Nat8.toNat(bytes[0]);
+            Debug.print("Generated new random number: " # Nat.toText(currentRandomNumber));
+        };
+    };
 
-    // Public query to get current random number
-    public query func getCurrentNumber() : async Nat {
-        currentRandomNumber
-    };
+    // Use a query call to get the current random number.
+    public query func getCurrentNumber() : async Nat {
+        currentRandomNumber
+    };
 
-    // highlight-start
-    // Initialize timer to generate new number every 5 seconds
-    let timer = Timer.recurringTimer(#seconds 5, generateNewNumber);
-    // highlight-end
+    // highlight-start
+    // Initialize timer to generate a new number every 5 seconds
+    let timer = Timer.recurringTimer(#seconds 5, generateNewNumber);
+    // highlight-end
 }
 ```
 
@@ -304,7 +307,318 @@ actor {
 </TabItem>
 </AdornedTabs>
 
+### 4. Retrieve data.
+
+HTTPS outcalls can be used to obtain data from any external source, including other blockchains, traditional Web2 APIs, and other web services. When HTTPS outcalls are used locally, the returned result is not validated since the local replica is only a single node. HTTPS outcalls used on the mainnet, however, validate the returned result through the subnet's consensus, providing security that the data obtained has not been maliciously tampered with during transport.
+
+HTTPS outcalls currently support `GET` and `POST` HTTPS methods.
+
+To demonstrate how to create and send HTTPS outcalls, let's add an HTTPS outcall GET request that returns information about ICP's daily stats from the ICP API. Insert the following highlighted code into your backend source code file:
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko title="src/PROJECT_NAME_backend/main.mo"
+import Timer "mo:base/Timer";
+import Nat8 "mo:base/Nat8";
+import Debug "mo:base/Debug";
+import Blob "mo:base/Blob";
+import Nat "mo:base/Nat";
+
+// highlight-start
+import Cycles "mo:base/ExperimentalCycles";
+import Text "mo:base/Text";
+import Types "Types";
+// highlight-end
+
+actor {
+    // Create a stable variable to store the current random number.
+    // Stable variables persist across canister upgrades.
+    stable var currentRandomNumber : Nat = 0;
+
+    // The management canister's principal ID is "aaaaa-aa".
+    // This code provides the logic to call the raw_rand method of the management canister.
+    let CallRand : actor {
+      raw_rand() : async Blob;
+    } = actor "aaaaa-aa";
+
+    // Create a function to generate a new random number.
+    // This function calls the raw_rand method of the management canister.
+    // Then it uses the random bytes returned to generate a random number.
+    private func generateNewNumber() : async () {
+        let randomBytes = await CallRand.raw_rand();
+        if (randomBytes.size() > 0) {
+            // Use the first 2 bytes to generate a number between 0 and 255
+            let bytes : [Nat8] = Blob.toArray(randomBytes);
+            currentRandomNumber := Nat8.toNat(bytes[0]);
+            Debug.print("Generated new random number: " # Nat.toText(currentRandomNumber));
+        };
+    };
+
+    // Use a query call to get the current random number.
+    public query func getCurrentNumber() : async Nat {
+        currentRandomNumber
+    };
+
+    // Initialize timer to generate a new number every 5 seconds.
+    let timer = Timer.recurringTimer<system>(#seconds 5, generateNewNumber);
+
+    // highlight-start
+
+    // Define a public function to get the daily stats about ICP from the ICP API.
+    public func getIcpInfo() : async Text {
+
+      // This code provides the logic to call the http_request method of the management canister.
+      let HttpRequest : actor {
+        http_request(Types.HttpRequestArgs) : async Types.HttpResponsePayload
+      } = actor "aaaaa-aa";
+
+      // Define the API endpoints to obtain data from.
+      // This example uses the IC API, but any API endpoint can be used.
+      let url = "https://ic-api.internetcomputer.org/api/v3/daily-stats?format=json";
+      let transform_context : Types.TransformContext = {
+        function = transform;
+        context = Blob.fromArray([]);
+      };
+
+      // Define the http_request components.
+      let http_request : Types.HttpRequestArgs = {
+          url = url;
+          max_response_bytes = null; //optional for request
+          headers = [];
+          body = null; //optional for request
+          method = #get;
+          transform = ?transform_context;
+      };
+
+      // HTTP outcalls require cycles to be attached to the call.
+      Cycles.add<system>(20_949_972_000);
+
+      // Define the http_response
+      let http_response : Types.HttpResponsePayload = await HttpRequest.http_request(http_request);
+
+      let response_body: Blob = Blob.fromArray(http_response.body);
+      switch (Text.decodeUtf8(response_body)) {
+          case (null) { "No value returned" };
+          case (?y) { y };
+      };
+    };
+
+    // Define a transform function to return the status response and body.
+    public query func transform(raw : Types.TransformArgs) : async Types.CanisterHttpResponsePayload {
+        {
+            status = raw.response.status;
+            body = raw.response.body;
+            headers = [ ];
+        };
+    };
+// highlight-end
+}
+```
+
+This HTTP outcalls code references custom types, as indicated by the import statement `import Types "Types";` and code statements like `Types.CanisterHttpResponsePayload`. Custom type definitions can be created from within the `main.mo` file, but for types that may be used in several different source code files, it can be beneficial to define them in a single `Types.mo` file, then import them as needed.
+
+Create a new file called `src/PROJECT_NAME_backend/Types.mo` that contains the following:
+
+```motoko title="src/PROJECT_NAME_backend/Types.mo"
+module Types {
+
+  public type Timestamp = Nat64;
+
+    // Define the type that describes the request arguments for an HTTPS outcall.
+    public type HttpRequestArgs = {
+        url : Text;
+        max_response_bytes : ?Nat64;
+        headers : [HttpHeader];
+        body : ?[Nat8];
+        method : HttpMethod;
+        transform : ?TransformRawResponseFunction;
+    };
+
+    public type HttpHeader = {
+        name : Text;
+        value : Text;
+    };
+
+    public type HttpMethod = {
+        #get;
+        #post;
+        #head;
+    };
+
+    public type HttpResponsePayload = {
+        status : Nat;
+        headers : [HttpHeader];
+        body : [Nat8];
+    };
+
+    // HTTPS outcalls have an optional "transform" key. These two types help describe it.
+    // The transform function may transform the body in any way, add or remove headers, modify headers, etc.
+
+    public type TransformRawResponseFunction = {
+        function : shared query TransformArgs -> async HttpResponsePayload;
+        context : Blob;
+    };
+
+    public type TransformArgs = {
+        response : HttpResponsePayload;
+        context : Blob;
+    };
+
+    public type CanisterHttpResponsePayload = {
+        status : Nat;
+        headers : [HttpHeader];
+        body : [Nat8];
+    };
+
+    public type TransformContext = {
+        function : shared query TransformArgs -> async HttpResponsePayload;
+        context : Blob;
+    };
+
+}
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust title="src/PROJECT_NAME_backend/src/lib.rs"
+
+
+```
+</TabItem>
+</AdornedTabs>
+
+### 5. Putting it all together.
+
+At this point, we have three functions in this code that demonstrate three different ICP features: **onchain randomness**, **timers** for autonomous execution, and **HTTPS outcalls** to obtain data. Let's edit the code to use them in conjunction with one another rather than separately:
+
+1. Onchain randomness will be used to generate a number between 133000 and 133255. This number will be used to select a recent NNS proposal at random.
+
+:::tip
+The [Network Nervous System (NNS)](/docs/current/developer-docs/daos/nns/overview) is the decentralized organization that governs the ICP network. To make changes to the network, a proposal must be submitted and voted on.
+:::
+
+2. The random number will be passed into the HTTPS outcall. The HTTPS outcall will query the IC API endpoint for details about that specific proposal number.
+
+3. Timers will be used to generate a new number every 30 seconds and send a new HTTPS outcall every 35 seconds.
+
+Replace the backend canister source code with the following revised code:
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko title="src/PROJECT_NAME_backend/main.mo"
+import Timer "mo:base/Timer";
+import Nat8 "mo:base/Nat8";
+import Debug "mo:base/Debug";
+import Blob "mo:base/Blob";
+import Nat "mo:base/Nat";
+import Cycles "mo:base/ExperimentalCycles";
+import Text "mo:base/Text";
+import Types "Types";
+
+actor {
+    // Create a stable variable to store the current random number.
+    // Stable variables persist across canister upgrades.
+    stable var currentRandomNumber : Nat = 0;
+    stable var proposalNumber : Text = "1";
+
+    // The management canister's principal ID is "aaaaa-aa".
+    // This code provides the logic to call the raw_rand method of the management canister.
+    let CallRand : actor {
+      raw_rand() : async Blob;
+    } = actor "aaaaa-aa";
+
+    // Create a function to generate a new random number.
+    // This function calls the raw_rand method of the management canister.
+    // Then it uses the random bytes returned to generate a random number.
+    private func generateNewNumber() : async () {
+        let randomBytes = await CallRand.raw_rand();
+        if (randomBytes.size() > 0) {
+            // Use the first byte to generate a number between 133000 and 133255 (recent proposal numbers).
+            let bytes : [Nat8] = Blob.toArray(randomBytes);
+            currentRandomNumber := Nat8.toNat(bytes[0]) + 133000;
+            proposalNumber := Nat.toText(currentRandomNumber);
+        };
+    };
+
+    // Define a public function to get proposal information.
+    // Public functions can be called by users or other canisters.
+    // Private functions can only be called by other functions within this code.
+    public func getIcpInfo() : async Text {
+
+      // This code provides the logic to call the http_request method of the management canister.
+      let HttpRequest : actor {
+        http_request(Types.HttpRequestArgs) : async Types.HttpResponsePayload
+      } = actor "aaaaa-aa";
+
+      // Define the API endpoints to obtain data from.
+      // This example uses the IC API, but any API endpoint can be used.
+      let url = "https://ic-api.internetcomputer.org/api/v3/proposals/" # proposalNumber ;
+      let transform_context : Types.TransformContext = {
+        function = transform;
+        context = Blob.fromArray([]);
+      };
+
+      // Define the http_request components.
+      let http_request : Types.HttpRequestArgs = {
+          url = url;
+          max_response_bytes = null; //optional for request
+          headers = [];
+          body = null; //optional for request
+          method = #get;
+          transform = ?transform_context;
+      };
+
+      // HTTP outcalls require cycles to be attached to the call.
+      Cycles.add<system>(20_949_972_000);
+
+      // Define the http_response
+      let http_response : Types.HttpResponsePayload = await HttpRequest.http_request(http_request);
+
+      let response_body: Blob = Blob.fromArray(http_response.body);
+      switch (Text.decodeUtf8(response_body)) {
+          case (null) { "No value returned" };
+          case (?y) { y };
+      };
+    };
+
+    // Define a transform function to return the status response and body.
+    public query func transform(raw : Types.TransformArgs) : async Types.CanisterHttpResponsePayload {
+        {
+            status = raw.response.status;
+            body = raw.response.body;
+            headers = [ ];
+        };
+    };
+
+    private func printResults() : async () {
+      Debug.print("Generated new random proposal number: " # Nat.toText(currentRandomNumber));
+      let result : Text = await getIcpInfo();
+      Debug.print("Proposal info obtained through HTTPS outcall: " # result);
+    };
+
+    // Initialize timer to generate a new number every 30 seconds.
+    let timer1 = Timer.recurringTimer<system>(#seconds 30, generateNewNumber);
+    let timer2 = Timer.recurringTimer<system>(#seconds 35, printResults);
+}
+```
+
+You do not need to make any edits to the `Types.mo` file.
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust title="src/PROJECT_NAME_backend/src/lib.rs"
+
+
+```
+</TabItem>
+</AdornedTabs>
 
 ## Next step
 
-- [x] [Learn how to deploy and manage your canister](/docs/current/developer-docs/getting-started/deploy-and-manage).
+Now that you have written the canister's code, the canister needs to be deployed.
+
+- [x] [Deploy and manage](/docs/current/developer-docs/getting-started/deploy-and-manage).

@@ -11,7 +11,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 ## Overview
 
-On the Internet Computer (ICP), a developer **identity** is essential to developing canisters. Developer identities use a private/public key pair for authentication. The public key can be distributed openly, as it will be used by services to encrypt messages. The private key must be kept secret and stored securely.
+On the Internet Computer (ICP), a developer **identity** is essential to developing canisters. Developer identities use a private/public key pair for authentication. The public key can be distributed openly as it will be used by services to encrypt messages. The private key must be kept secret and stored securely.
 
 Developer identities have a **principal**, which is a generic identifier value that is used to identify users, <GlossaryTooltip>canisters</GlossaryTooltip>, and potentially other entities on the network in the future. Each developer identity's principal value is derived from the identity's public key.
 
@@ -82,7 +82,7 @@ The private key for an identity is stored in the `~/.config/dfx/identity/IDENTIT
 
 ## Using your identity
 
-Once your identity is created, you must tell `dfx` that this is the identity you want to use. If you do not, the `default` identity will be used and any canister creation and management you execute will not be secure.
+Once your identity is created, you must tell `dfx` that this is the identity you want to use. If you do not, the `default` identity will be used, and any canister creation and management you execute will not be secure.
 
 To use your new identity, run the command:
 

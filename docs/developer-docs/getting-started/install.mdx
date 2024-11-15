@@ -13,7 +13,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 ## Overview
 
-The IC SDK is a software development kit used to develop and deploy applications on the Internet Computer (ICP) from a local developer environment. It includes several necessary tools for developing ICP applications.
+The IC SDK is a software development kit used to develop and deploy applications on the Internet Computer (ICP) from a local developer environment. It is comprised of several tools.
 
 ## Installing the IC SDK
 
@@ -30,6 +30,9 @@ If you followed the [quick start](/docs/current/developer-docs/getting-started/q
 
 #### Prerequisites
 
+<input type="checkbox"/> Open a terminal window.
+<div>
+</div>
 <input type="checkbox"/> Download and <a href="https://nodejs.org/en/download/package-manager">install Node.js</a>.
 
 ---------
@@ -38,10 +41,11 @@ If you followed the [quick start](/docs/current/developer-docs/getting-started/q
 
 ```bash
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-source "$HOME/.local/share/dfx/env"
 ```
 
-Confirm the IC SDK has been installed:
+To customize your IC SDK installation, you can use the interactive installation prompt or set [environment variables](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-envars) for a session.
+
+Confirm the IC SDK has been installed (you may need to open a new terminal window):
 
 ```bash
 dfx --version
@@ -52,6 +56,9 @@ dfx --version
 
 #### Prerequisites
 
+<input type="checkbox"/> Open a terminal window.
+<div>
+</div>
 <input type="checkbox"/> Download and <a href="https://nodejs.org/en/download/package-manager">install Node.js</a>. Using <a href="https://brew.sh/"> HomeBrew </a> is recommended.
 <div>
 </div>
@@ -63,10 +70,11 @@ dfx --version
 
 ```bash
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-source "$HOME/.local/share/dfx/env"
 ```
 
-Confirm the IC SDK has been installed:
+To customize your IC SDK installation, you can use the interactive installation prompt or set [environment variables](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-envars) for a session.
+
+Confirm the IC SDK has been installed (you may need to open a new terminal window):
 
 ```bash
 dfx --version
@@ -81,6 +89,9 @@ dfx --version
 <input type="checkbox"/> Download and install <a href="https://docs.microsoft.com/en-us/windows/wsl/install"> Windows Subsystem for Linux</a>.
 <div>
 </div>
+<input type="checkbox"/> Open a WSL terminal window.
+<div>
+</div>
 <input type="checkbox"/> Download and <a href="https://nodejs.org/en/download/package-manager">install Node.js</a> within your WSL environment.
 
 ---------
@@ -89,10 +100,11 @@ dfx --version
 
 ```bash
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-source "$HOME/.local/share/dfx/env"
 ```
 
-Confirm the IC SDK has been installed:
+To customize your IC SDK installation, you can use the interactive installation prompt or set [environment variables](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-envars) for a session.
+
+Confirm the IC SDK has been installed (you may need to open a new terminal window):
 
 ```bash
 dfx --version
@@ -101,8 +113,6 @@ dfx --version
 </TabItem>
 
 </AdornedTabs>
-
-To customize your IC SDK installation, you use the interactive installation prompt or set [environment variables](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-envars) for a session.
 
 The [IC SDK](https://github.com/dfinity/sdk) is comprised of:
 

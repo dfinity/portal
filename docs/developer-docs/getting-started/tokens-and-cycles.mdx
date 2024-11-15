@@ -13,9 +13,9 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 ## Overview
 
-On the Internet Computer, there are three types of token assets: ICP tokens, cycles, and ICRC tokens. ICP and cycles are the most important for every developer to understand and use, as they are necessary for deploying and maintaining an application.
+On the Internet Computer, there are three types of token assets: ICP tokens, cycles, and ICRC tokens. ICP and cycles are the most important for every developer to understand and use, as they are necessary for deploying and maintaining a canister.
 
-ICP tokens are important because they can be converted into cycles and used to pay for resource consumption. Cycles reflect the real cost of operations for applications hosted on the Internet Computer, including resources such as physical hardware, rack space, energy, storage devices, and bandwidth.
+ICP tokens are important because they can be converted into cycles and used to pay for a canister's resource consumption. Cycles reflect the real cost of operations for resources such as physical hardware, rack space, energy, storage devices, and bandwidth.
 
 ## ICP tokens
 
@@ -23,7 +23,7 @@ ICP is the Internet Computer's native utility token. Its value is determined on 
 
 There are three primary ways to use ICP tokens:
 
-- Convert ICP into [cycles](#what-are-cycles), which are required to pay for a <GlossaryTooltip>canister's</GlossaryTooltip> resources. **All dapp developers will need to acquire cycles if they want to deploy their application onto the mainnet.**
+- Convert ICP into [cycles](#what-are-cycles), which are required to pay for a <GlossaryTooltip>canister's</GlossaryTooltip> resources. **All dapp developers will need to acquire cycles if they want to deploy their canister onto the mainnet.**
 
 - Trade ICP for other assets, such as other tokens.
 
@@ -33,7 +33,9 @@ There are three primary ways to use ICP tokens:
 
 The Internet Computer runs on a network of nodes owned and operated by a community of independent node providers distributed across the globe. Node providers spend money to run and maintain nodes, such that they purchase hardware and pay for the electricity and network bandwidth used by the node. The Internet Computer compensates these node providers on a monthly basis by minting and distributing rewards in the form of ICP tokens.
 
-To make ICP sustainable, canisters are required to pay for the resources they consume, including storage and compute. Resource consumption is not paid in ICP tokens but **cycles**. As the canister is used, its cycles balance is continuously reduced. Eventually, the canister needs to be "topped up" with more cycles. The canister’s developer is responsible for topping up the canister.
+Canisters consume the resources provided by these nodes when they are deployed on the mainnet. To make ICP sustainable, canisters are required to pay for the resources they use.
+
+Resource consumption is not paid in ICP tokens but **cycles**. As the canister is used, its cycles balance is continuously reduced. Eventually, the canister needs to be "topped up" with more cycles. The canister’s developer is responsible for topping up the canister.
 
 To get cycles, you must convert ICP tokens into cycles.
 
@@ -48,15 +50,15 @@ The Internet Computer supports creating and deploying your own custom fungible o
 
 ## What is a ledger?
 
-Anyone can deploy a custom token that adheres to an ICRC standard if they deploy a [ledger](/docs/current/developer-docs/defi/tokens/ledger/overview) and [index](/docs/current/developer-docs/defi/tokens/indexes) canister that implements the standard's requirements.
-
-A **ledger** is a system canister used to store accounts and their transactions. Each developer identity has a **ledger account identifier**.
+A [**ledger**](/docs/current/developer-docs/defi/tokens/ledger/overview) is a system canister used to store accounts and their transactions. Each developer identity has a **ledger account identifier**.
 
 Each token on the Internet Computer has its **own** ledger. This means that there are separate ledgers for ICP tokens, cycles, and every ICRC token that has been deployed on the network.
 
 [Learn more about ledgers](/docs/current/developer-docs/defi/tokens/ledger/overview).
 
-## Converting ICP to cycles
+## Obtaining cycles
+
+You will need to obtain ICP tokens, then convert them into cycles using `dfx`. However, you may also obtain a small amount of free cycles from the [cycles faucet](https://anv4y-qiaaa-aaaal-qaqxq-cai.ic0.app/).
 
 ### 1. Get your account's ledger account ID.
 
@@ -73,9 +75,11 @@ b0d7beee54be8679a42e999218a16a0d396f223d7e44d259ac089848c1b820bf
 
 </details>
 
-**Send ICP tokens to this ledger account ID.** You can obtain ICP tokens from an [exchange](https://www.coingecko.com/en/exchanges) or through a [developer grant](https://dfinity.org/grants).
+### 2. Send ICP tokens to this ledger account ID.
 
-### 2. Check the balance.
+You can obtain ICP tokens from an [exchange](https://www.coingecko.com/en/exchanges) or through a [developer grant](https://dfinity.org/grants). If you are using an exchange, initiate a withdraw transaction, then enter the ledger account ID as the "destination" address to send ICP tokens to.
+
+### 3. Check the balance.
 
 ```
 dfx ledger balance --network ic
@@ -96,7 +100,7 @@ The price of cycles is fixed against the price of [XDR](/docs/current/references
 
 Cycles are measured in very large numbers, such as billions and trillions. When you talk about cycle transfers and replenishment, you will usually operate with trillions of cycles.
 
-### 3. Convert ICP into cycles.
+### 4. Convert ICP into cycles.
 
 ```
 dfx cycles convert --amount AMOUNT --network ic
@@ -115,11 +119,11 @@ Account was topped up with 6_229_700_000_000 cycles! New balance is 6_229_600_00
 
 :::info Calculating how many cycles you need
 
-The amount of cycles that your application will use depends on a variety of factors. Cycles are charged for storage, compute, update messages, special features, and more. To get an approximation, you can view the [detailed cycles cost table](/docs/current/developer-docs/gas-cost) or use the [cycles pricing calculator](/docs/current/developer-docs/cost-estimations-and-examples).
+The amount of cycles that your canister will use depends on a variety of factors. Cycles are charged for storage, compute, update messages, special features, and more. To get an approximation, you can view the [detailed cycles cost table](/docs/current/developer-docs/gas-cost) or use the [cycles pricing calculator](/docs/current/developer-docs/cost-estimations-and-examples).
 
 :::
 
-### 4. Confirm the balance.
+### 5. Confirm the balance.
 
 ```
 dfx cycles balance --network ic
