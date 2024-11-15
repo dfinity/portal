@@ -1,6 +1,6 @@
 ## Changelog {#changelog}
 
-### ∞ (unreleased)
+### 0.29.0 (2024-11-14) {#0_29_0}
 * Allow anonymous query and read state requests with invalid `ingress_expiry`.
 * Add allowed viewers variant to canister log visibility.
 * Deprecate the Bitcoin API of the management canister.
