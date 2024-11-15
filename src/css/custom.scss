@@ -388,15 +388,6 @@ html.docs-doc-page:not(.docs-doc-id-home) {
       }
     }
 
-    div[class*="docItemCol"] {
-      max-width: unset !important;
-    }
-
-    // Hides "On this page" section if it is empty
-    .col--3:has(div[class*="tableOfContents"]:empty) {
-      display: none;
-    }
-
     .tabs-container {
       padding: 8px 16px 32px 16px;
       border-radius: 16px;
