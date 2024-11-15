@@ -677,9 +677,9 @@ The HTTP response to this request can have the following forms:
     
     -   If the update call completed, a certificate for the state of the update call is produced, and returned in a CBOR (see [CBOR](#cbor)) map with the fields specified below:
 
-        -   `status` (`text`): `"certified_state"`
+        -   `status` (`text`): `"replied"`
 
-        -   `reply` (`blob`):  A certificate (see [Certification](#certification)) with subtrees at `/request_status/<request_id>` and `/time`, where `<request_id>` is the [request ID](#request-id) of the update call. See [Request status](#state-tree-request-status) for more details on the request status.
+        -   `certificate` (`blob`):  A certificate (see [Certification](#certification)) with subtrees at `/request_status/<request_id>` and `/time`, where `<request_id>` is the [request ID](#request-id) of the update call. See [Request status](#state-tree-request-status) for more details on the request status.
 
     -   If a non-replicated pre-processing error occurred (e.g., due to the [canister inspect message](#system-api-inspect-message)), then a body with information about the IC specific error encountered is returned. The body is a CBOR map with the following fields:
 
@@ -931,6 +931,8 @@ It must be contained in the canister ranges of a subnet, otherwise the correspon
 
     -   If the call is to the `provisional_create_canister_with_cycles` method, then any principal can be used as the effective canister id for this call.
 
+    -   If the call is to the `install_chunked_code` method and the `arg` is a Candid-encoded record with a `target_canister` field of type `principal`, then the effective canister id must be that principal.
+
     -   Otherwise, if the `arg` is a Candid-encoded record with a `canister_id` field of type `principal`, then the effective canister id must be that principal.
 
     -   Otherwise, the call is rejected by the system independently of the effective canister id.
@@ -959,7 +961,7 @@ All requests coming in via the HTTPS interface need to be either *anonymous* or 
 
 -   `nonce` (`blob`, optional): Arbitrary user-provided data of length at most 32 bytes, typically randomly generated. This can be used to create distinct requests with otherwise identical fields.
 
--   `ingress_expiry` (`nat`, required): An upper limit on the validity of the request, expressed in nanoseconds since 1970-01-01 (like [ic0.time()](#system-api-time)). This avoids replay attacks: The IC will not accept requests, or transition requests from status `received` to status `processing`, if their expiry date is in the past. The IC may refuse to accept requests with an ingress expiry date too far in the future. This applies not only to update calls, but all requests alike (and could have been called `request_expiry`).
+-   `ingress_expiry` (`nat`, required): An upper limit on the validity of the request, expressed in nanoseconds since 1970-01-01 (like [ic0.time()](#system-api-time)). This avoids replay attacks: The IC will not accept requests, or transition requests from status `received` to status `processing`, if their expiry date is in the past. The IC may refuse to accept requests with an ingress expiry date too far in the future. These rules for ingress expiry apply not only to update calls but all requests alike (and could have been called `request_expiry`), except for anonymous `query` and anonymous `read_state` requests for which the IC may accept any provided expiry timestamp.
 
 -   `sender` (`Principal`, required): The user who issued the request.
 
@@ -1718,7 +1720,7 @@ There must be at most one call to `ic0.call_on_cleanup` between `ic0.call_new` a
 
     This deducts `MAX_CYCLES_PER_RESPONSE` cycles from the canister balance and sets them aside for response processing.
 
-    If the function returns `0` as the `err_code`, the IC was able to enqueue the call. In this case, the call will either be delivered, returned because the destination canister does not exist or returned because of an out of cycles condition. This also means that exactly one of the reply or reject callbacks will be executed.
+    If the function returns `0` as the `err_code`, the IC was able to enqueue the call. In this case, the call will either be delivered, returned because the destination canister does not exist, returned due to a lack of resources within the IC, or returned because of an out of cycles condition. This also means that exactly one of the reply or reject callbacks will be executed.
 
     If the function returns a non-zero value, the call cannot (and will not be) performed. This can happen due to a lack of resources within the IC, but also if it would reduce the current cycle balance to a level below where the canister would be frozen.
 
@@ -2615,7 +2617,12 @@ The canister logs are *not* collected in canister methods running in non-replica
 The total size of all returned logs does not exceed 4KiB.
 If new logs are added resulting in exceeding the maximum total log size of 4KiB, the oldest logs will be removed.
 Logs persist across canister upgrades and they are deleted if the canister is reinstalled or uninstalled.
-The log visibility is defined in the `log_visibility` field of `canister_settings`: logs can be either public (visible to everyone) or only visible to the canister's controllers (by default).
+
+The log visibility is defined in the `log_visibility` field of `canister_settings` and can be one of the following variants:
+
+- `controllers`: only the canister's controllers can fetch logs (default);
+- `public`: everyone can fetch logs;
+- `allowed_viewers` (`vec principal`): only principals in the provided list and the canister's controllers can fetch logs, the maximum length of the list is 10.
 
 A single log is a record with the following fields:
 
@@ -2632,9 +2639,17 @@ Replica-signed queries may improve security because the recipient can verify the
 
 ## The IC Bitcoin API {#ic-bitcoin-api}
 
-The Bitcoin functionality is exposed via the management canister. Information about Bitcoin can be found in the [Bitcoin developer guides](https://developer.bitcoin.org/devguide/). Invoking the functions of the Bitcoin API will cost cycles. We refer the reader to the [Bitcoin documentation](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works) for further relevant information and the [IC pricing page](https://internetcomputer.org/docs/current/developer-docs/gas-cost) for information on pricing for the Bitcoin mainnet and testnet.
+The Bitcoin API exposed by the management canister is DEPRECATED.
+Developers should interact with the Bitcoin canisters (`ghsi2-tqaaa-aaaan-aaaca-cai` for Bitcoin mainnet and `g4xu7-jiaaa-aaaan-aaaaq-cai` for Bitcoin testnet) directly.
+Information about Bitcoin and the IC Bitcoin integration can be found in the [Bitcoin developer guides](https://developer.bitcoin.org/devguide/) and  the [Bitcoin integration documentation](https://internetcomputer.org/docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works).
 
 ### IC method `bitcoin_get_utxos` {#ic-bitcoin_get_utxos}
+
+:::note
+
+This method is DEPRECATED. Canister developers are advised to call the method of the same name on the Bitcoin (mainnet or testnet) canister.
+
+:::
 
 This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
 
@@ -2670,6 +2685,12 @@ The recommended workflow is to issue a request with the desired number of confir
 
 ### IC method `bitcoin_get_balance` {#ic-bitcoin_get_balance}
 
+:::note
+
+This method is DEPRECATED. Canister developers are advised to call the method of the same name on the Bitcoin (mainnet or testnet) canister.
+
+:::
+
 This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
 
 Given a `get_balance_request`, which must specify a Bitcoin address and a Bitcoin network (`mainnet` or `testnet`), the function returns the current balance of this address in `Satoshi` (10^8 Satoshi = 1 Bitcoin) in the specified Bitcoin network. The same address formats as for [`bitcoin_get_utxos`](#ic-bitcoin_get_utxos) are supported.
@@ -2681,6 +2702,12 @@ The optional `min_confirmations` parameter can be used to limit the set of consi
 Given an address and the optional `min_confirmations` parameter, `bitcoin_get_balance` iterates over all UTXOs, i.e., the same balance is returned as when calling [`bitcoin_get_utxos`](#ic-bitcoin_get_utxos) for the same address and the same number of confirmations and, if necessary, using pagination to get all UTXOs for the same tip hash.
 
 ### IC method `bitcoin_send_transaction` {#ic-bitcoin_send_transaction}
+
+:::note
+
+This method is DEPRECATED. Canister developers are advised to call the method of the same name on the Bitcoin (mainnet or testnet) canister.
+
+:::
 
 This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
 
@@ -2698,6 +2725,12 @@ If the transaction passes these tests, the transaction is forwarded to the speci
 
 ### IC method `bitcoin_get_current_fee_percentiles` {#ic-bitcoin_get_current_fee_percentiles}
 
+:::note
+
+This method is DEPRECATED. Canister developers are advised to call the method of the same name on the Bitcoin (mainnet or testnet) canister.
+
+:::
+
 This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
 
 The transaction fees in the Bitcoin network change dynamically based on the number of pending transactions. It must be possible for a canister to determine an adequate fee when creating a Bitcoin transaction.
@@ -2710,7 +2743,7 @@ The [standard nearest-rank estimation method](https://en.wikipedia.org/wiki/Perc
 
 :::note
 
-The `bitcoin_get_block_headers` endpoint is considered EXPERIMENTAL. Canister developers must be aware that this endpoint may evolve in a non-backward-compatible way.
+This method is DEPRECATED. Canister developers are advised to call the method of the same name on the Bitcoin (mainnet or testnet) canister.
 
 :::
 
@@ -3387,6 +3420,7 @@ CanisterHistory = {
 CanisterLogVisibility
   = Controllers
   | Public
+  | AllowedViewers [Principal]
 CanisterLog = {
   idx : Nat;
   timestamp_nanos : Nat;
@@ -3624,6 +3658,7 @@ delegation_targets(D)
 A `Request` has an effective canister id according to the rules in [Effective canister id](#http-effective-canister-id):
 ```
 is_effective_canister_id(Request {canister_id = ic_principal, method = provisional_create_canister_with_cycles, …}, p)
+is_effective_canister_id(Request {canister_id = ic_principal, method = install_chunked_code, arg = candid({target_canister = p, …}), …}, p)
 is_effective_canister_id(Request {canister_id = ic_principal, arg = candid({canister_id = p, …}), …}, p)
 is_effective_canister_id(Request {canister_id = p, …}, p), if p ≠ ic_principal
 ```
@@ -6144,7 +6179,11 @@ Q.canister_id = ic_principal
 Q.method_name = 'fetch_canister_logs'
 Q.arg = candid(A)
 A.canister_id = effective_canister_id
-S[A.canister_id].canister_log_visibility = Public or Q.sender in S[A.canister_id].controllers
+(S[A.canister_id].canister_log_visibility = Public)
+  or
+  (S[A.canister_id].canister_log_visibility = Controllers and Q.sender in S[A.canister_id].controllers)
+  or
+  (S[A.canister_id].canister_log_visibility = AllowedViewers Principals and (Q.sender in S[A.canister_id].controllers or Q.sender in Principals))
 
 ```
 
@@ -6282,7 +6321,7 @@ E.content = CanisterQuery Q
 Q.canister_id ∈ verify_envelope(E, Q.sender, S.system_time)
 |Q.nonce| <= 32
 is_effective_canister_id(E.content, ECID)
-S.system_time <= Q.ingress_expiry
+S.system_time <= Q.ingress_expiry or Q.sender = anonymous_id
 
 ```
 
@@ -6344,7 +6383,7 @@ Conditions
 E.content = ReadState RS
 TS = verify_envelope(E, RS.sender, S.system_time)
 |E.content.nonce| <= 32
-S.system_time <= RS.ingress_expiry
+S.system_time <= RS.ingress_expiry or RS.sender = anonymous_id
 ∀ path ∈ RS.paths. may_read_path_for_canister(S, R.sender, path)
 ∀ (["request_status", Rid] · _) ∈ RS.paths.  ∀ R ∈ dom(S.requests). hash_of_map(R) = Rid => R.canister_id ∈ TS
 
@@ -7197,15 +7236,13 @@ ic0.call_peform<es>() : ( err_code : i32 ) =
   if es.context ∉ {U, CQ, Ry, Rt, CRy, CRt, T} then Trap {cycles_used = es.cycles_used;}
   if es.pending_call = NoPendingCall then Trap {cycles_used = es.cycles_used;}
 
-  es.balance := es.balance - MAX_CYCLES_PER_RESPONSE
-
-  // are we below the freezing threshold?
-  // Or maybe the system has other reasons to not perform this
-  if liquid_balance(es) < 0 or system_cannot_do_this_call_now()
+  // `system_cannot_do_this_call_now` abstracts over resource issues preventing the call from being made
+  if liquid_balance(es) < MAX_CYCLES_PER_RESPONSE or system_cannot_do_this_call_now()
   then
     discard_pending_call<es>()
     return <implementation-specific>
   or
+    es.balance := es.balance - MAX_CYCLES_PER_RESPONSE
     es.calls := es.calls · es.pending_call
     es.pending_call := NoPendingCall
     return 0
@@ -7213,7 +7250,7 @@ ic0.call_peform<es>() : ( err_code : i32 ) =
 // helper function
 discard_pending_call<es>() =
   if es.pending_call ≠ NoPendingCall then
-    es.balance := es.balance + MAX_CYCLES_PER_RESPONSE + es.pending_call.transferred_cycles
+    es.balance := es.balance + es.pending_call.transferred_cycles
     es.pending_call := NoPendingCall
 
 ic0.stable_size<es>() : (page_count : i32) =
