@@ -1469,6 +1469,7 @@ The following sections describe various System API functions, also referred to a
 
     ic0.time : () -> (timestamp : i64);                                         // *
     ic0.global_timer_set : (timestamp : i64) -> i64;                            // I G U Ry Rt C T
+    ic0.canister_limit : (limit_type : i32) -> (limit : i64);                   // * s
     ic0.performance_counter : (counter_type : i32) -> (counter : i64);          // * s
     ic0.is_controller: (src: i32, size: i32) -> ( result: i32);                 // * s
     ic0.in_replicated_execution: () -> (result: i32);                           // * s
@@ -1943,6 +1944,26 @@ The argument `type` decides which performance counter to return:
     - For non-replicated message execution, it is the number of WebAssembly instructions the canister has executed within the corresponding `composite_query_helper` in [Query call](#query-call). The counter monotonically increases across the executions of the composite query method and the composite query callbacks until the corresponding `composite_query_helper` returns (ignoring WebAssembly instructions executed within any further downstream calls of `composite_query_helper`).
 
 In the future, the IC might expose more performance counters.
+
+### Canister limit {#system-api-canister-limit}
+
+The canister can query one of the "canister limits", which denotes a resource limit of the canister imposed by the current configuration of the IC and/or canister. This allows runtime logic, such garbage collector or persistence mechanism, to adapt to the system limits without recompilation and redeployment.
+
+`ic0.canister_limit : (limit_type : i32) -> i64`
+
+The argument `limit_type` determines which resource limit to return:
+
+-   0 : The [soft Wasm heap memory limit](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/maintain/settings#wasm-memory-limit), or the IC-defined [hard Wasm memory limit](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/maintain/resource-limits#resource-constraints-and-limits), whatever is smaller. The limit is specific to the canister, depending on the canister configuration (for the soft limit) and on whether it uses 32-bit or 64-bit Wasm memory.
+
+-   1 : The [instruction limit per update message](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/maintain/settings#wasm-memory-limit).
+
+-   2 : The [instruction limit per upgrade message](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/maintain/settings#wasm-memory-limit).
+
+-   3 : The [maximum number of stable memory Wasm pages that can be accessed per update message](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/maintain/settings#wasm-memory-limit).
+
+-   4 : The [maximum number of stable memory Wasm pages that can be accessed per upgrade message](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/maintain/settings#wasm-memory-limit).
+
+In the future, this IC method might expose more canister limits.
 
 ### Replicated execution check {#system-api-replicated-execution-check}
 
@@ -7337,6 +7358,9 @@ ic0.global_timer_set<es>(timestamp: i64) : i64 =
   if prev_global_timer = NoGlobalTimer
   then return es.params.sysenv.global_timer
   else return prev_global_timer
+
+ic0.canister_limit<es>(limit_type : i32) : i64 =
+  arbitrary()
 
 ic0.performance_counter<es>(counter_type : i32) : i64 =
   arbitrary()
