@@ -399,7 +399,7 @@ actor {
 
       let response_body: Blob = Blob.fromArray(http_response.body);
       switch (Text.decodeUtf8(response_body)) {
-          case (null) { "No value returned" };
+          case null { "No value returned" };
           case (?y) { y };
       };
     };
@@ -519,89 +519,87 @@ import Text "mo:base/Text";
 import Types "Types";
 
 actor {
-    // Create a stable variable to store the current random number.
-    // Stable variables persist across canister upgrades.
-    stable var currentRandomNumber : Nat = 0;
-    stable var proposalNumber : Text = "1";
+    // Create a stable variable to store the current random number.
+    // Stable variables persist across canister upgrades.
+    stable var currentRandomNumber : Nat = 0;
+    stable var proposalId : Text = "1";
 
-    // The management canister's principal ID is "aaaaa-aa".
-    // This code provides the logic to call the raw_rand method of the management canister.
-    let CallRand : actor {
-      raw_rand() : async Blob;
-    } = actor "aaaaa-aa";
+    // The management canister's principal ID is "aaaaa-aa".
+    // This code provides the logic to call the raw_rand method of the management canister.
+    let CallRand : actor {
+      raw_rand() : async Blob;
+    } = actor "aaaaa-aa";
 
-    // Create a function to generate a new random number.
-    // This function calls the raw_rand method of the management canister.
-    // Then it uses the random bytes returned to generate a random number.
-    private func generateNewNumber() : async () {
-        let randomBytes = await CallRand.raw_rand();
-        if (randomBytes.size() > 0) {
-            // Use the first byte to generate a number between 133000 and 133255 (recent proposal numbers).
-            let bytes : [Nat8] = Blob.toArray(randomBytes);
-            currentRandomNumber := Nat8.toNat(bytes[0]) + 133000;
-            proposalNumber := Nat.toText(currentRandomNumber);
-        };
-    };
+    // Create a function to generate a new random number.
+    // This function calls the raw_rand method of the management canister.
+    // Then it uses the random bytes returned to generate a random number.
+    private func generateNewNumber() : async () {
+        let randomBytes = await CallRand.raw_rand();
+        if (randomBytes.size() > 0) {
+            // Use the first byte to generate a number between 133000 and 133255 (recent proposal numbers)
+            let bytes : [Nat8] = Blob.toArray(randomBytes);
+            currentRandomNumber := Nat8.toNat(bytes[0]) + 133000;
+            proposalId := Nat.toText(currentRandomNumber);
+        };
+    };
 
-    // Define a public function to get proposal information.
-    // Public functions can be called by users or other canisters.
-    // Private functions can only be called by other functions within this code.
-    public func getIcpInfo() : async Text {
+    // Define a public function to get proposal information.
+    public func getIcpInfo() : async Text {
 
-      // This code provides the logic to call the http_request method of the management canister.
-      let HttpRequest : actor {
-        http_request(Types.HttpRequestArgs) : async Types.HttpResponsePayload
-      } = actor "aaaaa-aa";
+      // This code provides the logic to call the http_request method of the management canister.
+      let HttpRequest : actor {
+        http_request(Types.HttpRequestArgs) : async Types.HttpResponsePayload
+      } = actor "aaaaa-aa";
 
-      // Define the API endpoints to obtain data from.
-      // This example uses the IC API, but any API endpoint can be used.
-      let url = "https://ic-api.internetcomputer.org/api/v3/proposals/" # proposalNumber ;
-      let transform_context : Types.TransformContext = {
-        function = transform;
-        context = Blob.fromArray([]);
-      };
+      // Define the API endpoints to obtain data from.
+      // This example uses the IC API, but any API endpoint can be used.
+      let url = "https://ic-api.internetcomputer.org/api/v3/proposals/" # proposalId ;
+      let transform_context : Types.TransformContext = {
+        function = transform;
+        context = Blob.fromArray([]);
+      };
 
-      // Define the http_request components.
-      let http_request : Types.HttpRequestArgs = {
-          url = url;
-          max_response_bytes = null; //optional for request
-          headers = [];
-          body = null; //optional for request
-          method = #get;
-          transform = ?transform_context;
-      };
+      // Define the http_request components.
+      let http_request : Types.HttpRequestArgs = {
+          url = url;
+          max_response_bytes = null; //optional for request
+          headers = [];
+          body = null; //optional for request
+          method = #get;
+          transform = ?transform_context;
+      };
 
-      // HTTP outcalls require cycles to be attached to the call.
-      Cycles.add<system>(20_949_972_000);
+      // HTTP outcalls require cycles be attached to the call.
+      Cycles.add<system>(20_949_972_000);
 
-      // Define the http_response
-      let http_response : Types.HttpResponsePayload = await HttpRequest.http_request(http_request);
+      // Define the http_response
+      let http_response : Types.HttpResponsePayload = await HttpRequest.http_request(http_request);
 
-      let response_body: Blob = Blob.fromArray(http_response.body);
-      switch (Text.decodeUtf8(response_body)) {
-          case (null) { "No value returned" };
-          case (?y) { y };
-      };
-    };
+      let response_body: Blob = Blob.fromArray(http_response.body);
+      switch (Text.decodeUtf8(response_body)) {
+          case null { "No value returned" };
+          case (?y) { y };
+      };
+    };
 
-    // Define a transform function to return the status response and body.
-    public query func transform(raw : Types.TransformArgs) : async Types.CanisterHttpResponsePayload {
-        {
-            status = raw.response.status;
-            body = raw.response.body;
-            headers = [ ];
-        };
-    };
+    // Define a transform function to return the status response and body.
+    public query func transform(raw : Types.TransformArgs) : async Types.CanisterHttpResponsePayload {
+        {
+            status = raw.response.status;
+            body = raw.response.body;
+            headers = [ ];
+        };
+    };
 
-    private func printResults() : async () {
-      Debug.print("Generated new random proposal number: " # Nat.toText(currentRandomNumber));
-      let result : Text = await getIcpInfo();
-      Debug.print("Proposal info obtained through HTTPS outcall: " # result);
-    };
+    private func printResults() : async () {
+      Debug.print("Generated new random proposal number: " # Nat.toText(currentRandomNumber));
+      let result : Text = await getIcpInfo();
+      Debug.print("Proposal info obtained through HTTPS outcall: " # result);
+    };
 
-    // Initialize timer to generate a new number every 30 seconds.
-    let timer1 = Timer.recurringTimer<system>(#seconds 30, generateNewNumber);
-    let timer2 = Timer.recurringTimer<system>(#seconds 35, printResults);
+    // Initialize timer to generate new number every 30 seconds
+    let timer1 = Timer.recurringTimer<system>(#seconds 30, generateNewNumber);
+    let timer2 = Timer.recurringTimer<system>(#seconds 32, printResults);
 }
 ```
 
