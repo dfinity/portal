@@ -33,8 +33,8 @@ docs/references/execution-errors.mdx @dfinity/execution @dfinity/editorial
 docs/references/ingress-messages.mdx @dfinity/product-security @dfinity/editorial
 docs/references/message-execution-properties.mdx @dfinity/product-security @dfinity/editorial
 docs/developer-docs/web-apps/custom-domains @dfinity/boundary-node @dfinity/editorial
-docs/developer-docssmart-contracts/advanced-features/simd.mdx @dfinity/execution @dfinity/editorial
-docs/developer-docssmart-contracts/advanced-features/periodic-tasks.mdx @dfinity/execution @dfinity/editorial
+docs/developer-docs/smart-contracts/advanced-features/simd.mdx @dfinity/execution @dfinity/editorial
+docs/developer-docs/smart-contracts/advanced-features/periodic-tasks.mdx @dfinity/execution @dfinity/editorial
 docs/developer-docs/smart-contracts/best-practices/idempotency.mdx @dfinity/research @dfinity/product-security @dfinity/editorial
 
 # The Interface Specification
