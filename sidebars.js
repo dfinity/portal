@@ -26,7 +26,7 @@ const sidebars = {
   },
   {
   type: "category",
-  label: "Dev environment setup",
+  label: "Essentials",
   items: [
     {
       type: "doc",

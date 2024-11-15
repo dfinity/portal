@@ -4,8 +4,6 @@ keywords: [beginner, tutorial, cycles, overview, icp tokens, using icp tokens, u
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
-import LinkArrowDocs from "@site/src/components/Common/Icons/LinkArrowDocs";
-import Link from "@docusaurus/Link";
 import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
@@ -15,9 +13,9 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 ## Overview
 
-On the Internet Computer, there are three types of token assets: ICP tokens, cycles, and ICRC tokens. The first two, ICP and cycles, are the most important for every developer to understand and use, as they are necessary for deploying and maintaining an application.
+On the Internet Computer, there are three types of token assets: ICP tokens, cycles, and ICRC tokens. ICP and cycles are the most important for every developer to understand and use, as they are necessary for deploying and maintaining an application.
 
-ICP tokens are important because they can be converted to cycles and used to pay for resource consumption. Cycles reflect the real cost of operations for applications hosted on the Internet Computer, including resources such as physical hardware, rack space, energy, storage devices, and bandwidth.
+ICP tokens are important because they can be converted into cycles and used to pay for resource consumption. Cycles reflect the real cost of operations for applications hosted on the Internet Computer, including resources such as physical hardware, rack space, energy, storage devices, and bandwidth.
 
 ## ICP tokens
 
@@ -60,7 +58,7 @@ Each token on the Internet Computer has its **own** ledger. This means that ther
 
 ## Converting ICP to cycles
 
-First, get your account's ledger account ID:
+### 1. Get your account's ledger account ID.
 
 ```
 dfx ledger account-id
@@ -69,18 +67,28 @@ dfx ledger account-id
 <details>
 <summary>Output</summary>
 
-<code>
-e213184a548871a47fb526f3cba24e2ee2fbbc8129c4ab497ef2ce535130a0a4
-</code>
+```
+b0d7beee54be8679a42e999218a16a0d396f223d7e44d259ac089848c1b820bf
+```
+
 </details>
 
 **Send ICP tokens to this ledger account ID.** You can obtain ICP tokens from an [exchange](https://www.coingecko.com/en/exchanges) or through a [developer grant](https://dfinity.org/grants).
 
-Check the balance:
+### 2. Check the balance.
 
 ```
 dfx ledger balance --network ic
 ```
+
+<details>
+<summary>Output</summary>
+
+```
+2.00000000 ICP
+```
+
+</details>
 
 Converting ICP to cycles is done through the **cycles ledger**, a ledger canister that enables developer identities to directly convert, hold, send, and receive cycles.
 
@@ -88,11 +96,22 @@ The price of cycles is fixed against the price of [XDR](/docs/current/references
 
 Cycles are measured in very large numbers, such as billions and trillions. When you talk about cycle transfers and replenishment, you will usually operate with trillions of cycles.
 
-Convert ICP into cycles:
+### 3. Convert ICP into cycles.
 
 ```
 dfx cycles convert --amount AMOUNT --network ic
 ```
+
+<details>
+<summary>Output</summary>
+
+```
+Transfer sent at block height 16146446
+Using transfer at block height 16146446
+Account was topped up with 6_229_700_000_000 cycles! New balance is 6_229_600_000_000 cycles.
+```
+
+</details>
 
 :::info Calculating how many cycles you need
 
@@ -100,21 +119,23 @@ The amount of cycles that your application will use depends on a variety of fact
 
 :::
 
-Checking your identity's cycles balance
-
-To confirm that your ICP was successfully converted into cycles, check your cycles balance:
+### 4. Confirm the balance.
 
 ```
 dfx cycles balance --network ic
 ```
 
+<details>
+<summary>Output</summary>
+
+```
+6.230 TC (trillion cycles).
+```
+
+</details>
+
 ## Next step
 
 Next, its time to write the code for a smart contract.
 
-<LinkArrowDocs />
-<Link
-href="/docs/current/developer-docs/getting-started/write-smart-contracts"
->
-Write smart contracts
-</Link>.
+- [x] [Write smart contracts](/docs/current/developer-docs/getting-started/write-smart-contracts).

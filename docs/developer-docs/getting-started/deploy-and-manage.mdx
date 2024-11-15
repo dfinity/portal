@@ -1,8 +1,140 @@
+---
+keywords: [beginner, getting started, tutorial, deploy canisters, deploy smart contract, deploy project, deploy, deploy locally, deploy mainnet, manage smart contract, manage project, manage canister, set freezing threshold, check cycles balance, top up canister, start canister, stop canister, canister settings]
+---
+
+import TabItem from "@theme/TabItem";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# Deploy and manage
+
+<MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
+
+## Overview
+
+
+## Start the replica
+
+Start the local replica, which simulates the mainnet environment for local development and testing.
+
+- `dfx start`: Returns replica output in the terminal window. A new terminal window will need to be opened to continue running commands.
+
+- `dfx start --background`: Runs the processes in the background and allows you to continue running commands in the current terminal.
+
+## Deploy locally
+
+```
+dfx deploy
+```
+
+This will deploy your project to the local replica. You can view the project's frontend by opening the `PROJECT_NAME_frontend` URL returned in the deployment output.
+
+```
+Deployed canisters.
+URLs:
+  Frontend canister via browser
+    PROJECT_NAME_frontend:
+      - http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai
+      - http://bd3sg-teaaa-aaaaa-qaaba-cai.localhost:4943/
+  Backend canister via Candid interface:
+    PROJECT_NAME_backend: http://127.0.0.1:4943/?canisterId=be2us-64aaa-aaaaa-qaabq-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+```
+
+:::info
+
+
+## Upgrade a canister
+
+Canisters can be upgraded, allowing for the same canister ID to be retained for an application. Canister upgrades preserve the state of a canister while allowing you to change the code. However, canister upgrades clear the canister's Wasm memory. Any data not stored in [stable memory](/docs/current/developer-docs/smart-contracts/maintain/storage) will be removed.
+
+To upgrade your canister to use the new code:
+
+```
+dfx canister install PROJECT_NAME_backend --mode upgrade
+```
+
+<details>
+<summary>Output</summary>
+
+```
+Upgrading code for canister PROJECT_NAME_backend, with canister ID bkyz2-fmaaa-aaaaa-qaaaq-cai
+Module hash 6c29216f6a5b64eb7af4245d102505eb44ff1e4b75ebfafcfd72d140e7231efd is already installed.
+```
+
+</details>
+
+### 6. Test the code.
+
+Redeploy your upgraded canister to test it:
+
+```
+dfx deploy PROJECT_NAME_backend
+```
+
+Once the canister is running, you can interact with it in your web browser through the [Candid UI](/docs/current/developer-docs/smart-contracts/candid/candid-concepts) URL that was returned in the deployment output. Candid is an interface description language used to interact with a canister's public methods. This canister has one public method, `getCurrentNumber()`.
+
+It uses a [query call](/docs/current/developer-docs/smart-contracts/call/overview#query-calls) to return the current randomly generated number. Query calls are only used to return information; they cannot edit a canister's state.
+
+From the Candid UI in your web browser, select the "Query" button to interact with the query call. The random number will be returned in the "Output log" on the right.
 
 
 
+Then, upgrade and redeploy your canister to use the timer functionality:
+
+```
+dfx canister install PROJECT_NAME_backend --mode upgrade
+dfx deploy PROJECT_NAME_backend
+```
+
+In the terminal window, you will see a new randomly generated number print every 5 seconds:
+
+```
+2024-11-14 21:50:50.516172026 UTC: [Canister bkyz2-fmaaa-aaaaa-qaaaq-cai] Generated new random number: 14
+2024-11-14 21:50:55.626007762 UTC: [Canister bkyz2-fmaaa-aaaaa-qaaaq-cai] Generated new random number: 20
+2024-11-14 21:51:00.833194456 UTC: [Canister bkyz2-fmaaa-aaaaa-qaaaq-cai] Generated new random number: 243
+```
+
+## Deploy to the mainnet
+
+Now that the canister has been tested, you can deploy it to the mainnet. **Deploying to the mainnet costs [cycles](/docs/current/developer-docs/getting-started/tokens-and-cycles).**
+
+Confirm that you are using the correct developer identity and that you have an available cycles balance:
+
+```
+dfx identity whoami
+dfx cycles balance --network ic
+```
+
+Then, deploy to the mainnet:
+
+```
+dfx deploy PROJECT_NAME_backend --network-ic
+```
+
+The canister's Candid UI URL hosted on the mainnet will be returned:
+
+```
+Deployed canisters.
+URLs:
+  Backend canister via Candid interface:
+    PROJECT_NAME_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=y4oop-liaaa-aaaab-qacha-cai
+```
 
 
+
+## Stopping `dfx`
+
+To stop `dfx`, simply use the `dfx stop` command.
+
+If there are unresponsive `dfx` processes that are not stopped by `dfx stop`, you can use `dfx killall` to forcibly end them.
+
+## Getting help
+
+To view help information for `dfx`, you can use the `dfx help` command or view the [`dfx` reference documentation](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/).
 
 
 

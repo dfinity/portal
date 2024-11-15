@@ -6,8 +6,6 @@ import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
-import LinkArrowDocs from "@site/src/components/Common/Icons/LinkArrowDocs";
-import Link from "@docusaurus/Link";
 
 # Install tools
 
@@ -104,7 +102,7 @@ dfx --version
 
 </AdornedTabs>
 
-To customize your IC SDK installation, you can set [environment variables](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-envars) for a session by exporting the variable in your terminal or adding a line to your `.profile` file.
+To customize your IC SDK installation, you use the interactive installation prompt or set [environment variables](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-envars) for a session.
 
 The [IC SDK](https://github.com/dfinity/sdk) is comprised of:
 
@@ -122,34 +120,8 @@ It also has dependencies on a few additional, important packages:
 
 - [**Candid**](/docs/current/developer-docs/smart-contracts/candid/candid-concepts): An interface description language (IDL) used to interact with a canister's methods. A **method** is a function exposed by the canister that can be called by a user, another canister, or the application's frontend.
 
-
-## Starting `dfx`
-
-Before you can start using `dfx` commands, you need to start `dfx`, which will run a local replica instance on your machine so you can create, deploy, and manage canisters.
-
-To start `dfx`, use the command:
-
-- `dfx start`: Returns replica output in the terminal window. A new terminal window will need to be opened to continue running commands.
-
-- `dfx start --background`: Runs the processes in the background and allows you to continue running commands in the current terminal.
-
-## Stopping `dfx`
-
-To stop `dfx`, simply use the `dfx stop` command.
-
-If there are unresponsive `dfx` processes that are not stopped by `dfx stop`, you can use `dfx killall` to forcibly end them.
-
-## Getting help
-
-To view help information for `dfx`, you can use the `dfx help` command or view the [`dfx` reference documentation](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/).
-
 ## Next step
 
 Next, you must create a developer identity. This identity will be used to control and manage your project's canisters.
 
-<LinkArrowDocs />
-<Link
-href="/docs/current/developer-docs/getting-started/identities"
->
-Create a developer identity
-</Link>.
+- [x] [Create a developer identity](/docs/current/developer-docs/getting-started/identities).

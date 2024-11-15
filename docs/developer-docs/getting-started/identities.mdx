@@ -4,18 +4,16 @@ keywords: [beginner, getting started, tutorial, accounts, developer account]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
-import LinkArrowDocs from "@site/src/components/Common/Icons/LinkArrowDocs";
-import Link from "@docusaurus/Link";
 
-# Creating a developer identity
+# Create a developer identity
 
 <MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
 
 ## Overview
 
-On the Internet Computer (ICP), a developer **identity** is essential to developing canisters. Developer identities use a private/public key pair for authentication. Private/public key pairs are a set of cryptographically generated keys. The public key can be distributed openly, as it will be used by services to encrypt messages. Only the holder of the corresponding private key can decrypt these messages, therefore the private key must be kept secret and stored securely.
+On the Internet Computer (ICP), a developer **identity** is essential to developing canisters. Developer identities use a private/public key pair for authentication. The public key can be distributed openly, as it will be used by services to encrypt messages. The private key must be kept secret and stored securely.
 
-Developer identities are identified by a **principal**, which is a generic identifier value that is used to identify users, <GlossaryTooltip>canisters</GlossaryTooltip>, and potentially other entities on the network in the future. Each developer identity's principal value is derived from the identity's public key from the private/public key pair.
+Developer identities have a **principal**, which is a generic identifier value that is used to identify users, <GlossaryTooltip>canisters</GlossaryTooltip>, and potentially other entities on the network in the future. Each developer identity's principal value is derived from the identity's public key.
 
 ## What are developer identities used for?
 
@@ -23,41 +21,56 @@ When a canister is created and deployed, the developer identity that created the
 
 - Starting and stopping the canister.
 
-- Installing canister code.
+- Installing and upgrading canister code.
 
-- Upgrading the canister.
-
-- Viewing the canister's status.
-
-- Viewing the canister's logs.
+- Viewing the canister's status and logs.
 
 - Configuring the settings of the canister, such as setting the resource allocation or adding additional controllers.
 
-If you are working on a project collaboratively with others, your identity's principal can be added as a controller of that project's canisters so you have permission to manage those canisters.
+If you are working on a project collaboratively with others, your identity's principal can be added as a controller of that project's canisters.
 
-Once a canister is deployed, it will consume resources such as storage and compute. Canisters must pay for these resources using **cycles**. Your developer identity is used to mint and transfer cycles through the **cycles ledger**.
+Once a canister is deployed, it will consume resources such as storage and compute. Canisters must pay for these resources using **cycles**. Your developer identity is used to mint and transfer cycles to your canisters.
 
-### ICP identity terms
+:::tip ICP identity terms
 
-Developer identities are not the only form of identity on ICP. Other ICP identity-related terms you may come across include:
+Developer identities are not the only form of identity on ICP. Other ICP identity-related terms you will come across include:
 
 - **Ledger account identifier**: The identifier associated with your ICP ledger account.
 
-- **Wallets**: Used to store forms of currency.
-
 - **Internet Identity**: ICP's native authentication service. Internet Identity doesn't use usernames and passwords; instead, it uses a passkey that is stored in your local device's hardware.
 
-## Creating your developer identity
+:::
 
-By default, `dfx` will use the `default` identity. ***This identity is not stored securely and should not be used for creating or deploying canisters.***
+## Creating your identity
 
-It is highly recommended that you create a new identity with the command:
+By default, `dfx` will create and use the `default` identity. ***This identity is not stored securely. It is recommended you create your own personal identity.***
+
+First, use `dfx` to list all current identities. If none exist, it will automatically create the `default` identity.
+
+```
+dfx identity list
+```
+
+Then, create your personal password-protected developer identity with the command:
 
 ```
 dfx identity new IDENTITY_NAME
 ```
 
-:::note
+<details>
+<summary>Output</summary>
+
+```
+Please enter a passphrase for your identity: [hidden]
+Encryption complete.
+Your seed phrase for identity 'IDENTITY_NAME': hotel knock any token tooth deal fossil salmon coral idea tip weapon cotton save fiction major arrive history library clerk depth poet path guide
+This can be used to reconstruct your key in case of emergency, so write it down in a safe place.
+Created identity: "IDENTITY_NAME".
+```
+
+</details>
+
+:::tip
 Identities created with `dfx` are global; they are not confined to a specific project's context.
 
 Identity names must use the characters `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.-_@0123456789`.
@@ -65,7 +78,7 @@ Identity names must use the characters `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmn
 
 ### Storing the identity's private key
 
-The private key for an identity is stored in the `~/.config/dfx/identity/IDENTITY_NAME/identity.pem` file. ***This file should be backed up to a secure location.***
+The private key for an identity is stored in the `~/.config/dfx/identity/IDENTITY_NAME/identity.pem.encrypted`. ***This file should be backed up to a secure location.***
 
 ## Using your identity
 
@@ -77,9 +90,16 @@ To use your new identity, run the command:
 dfx identity use IDENTITY_NAME
 ```
 
-### Getting your identity's principal
+<details>
+<summary> Output </summary>
 
-To obtain the principal identifier for your identity, use the command:
+```
+Using identity: "IDENTITY_NAME".
+```
+
+</details>
+
+To view the principal identifier for your identity:
 
 ```
 dfx identity get-principal
@@ -87,18 +107,15 @@ dfx identity get-principal
 
 <details>
 <summary> Output </summary>
-<code>
-itk7v-ihlxk-ktdrh-fcnst-vkoou-orj77-52ogl-jqwj5-zpfdv-az3lr-xqe
-</code>
+
+```
+aez2y-7yvs5-e6dpq-gwlld-t6ozx-l5hoo-j4vwr-mimoy-me2xq-yrxkx-rae
+```
+
 </details>
 
 ## Next step
 
 Next, you must obtain cycles. Cycles are required to pay for the resources a canister consumes.
 
-<LinkArrowDocs />
-<Link
-href="/docs/current/developer-docs/getting-started/tokens-and-cycles"
->
-Tokens and cycles
-</Link>.
+- [x] [Tokens and cycles](/docs/current/developer-docs/getting-started/tokens-and-cycles)

@@ -16,7 +16,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 ## Overview
 
-Canisters are an enhanced type of smart contract. All canister code is compiled into a WebAssembly (Wasm) program before it is deployed on ICP, providing it with additional features and capabilities that traditional smart contracts do not have. These features include the ability to store persistent data, be managed by entities such as DAOs, and host entire applications. Each canister has the following components:
+Canisters are an enhanced type of smart contract. Before a canister is deployed to ICP, the canister's code is compiled into a WebAssembly (Wasm) program, providing it with the ability to store persistent data, be managed by entities such as DAOs, host entire applications, and more. Each canister has the following components:
 
 <div class="text--center">
 <img src="/img/docs/inside-canister.png" alt="Canister" width="600"/>
@@ -24,113 +24,94 @@ Canisters are an enhanced type of smart contract. All canister code is compiled 
 
 [Learn more about each component of a canister](/docs/current/developer-docs/smart-contracts/overview/inside-canisters).
 
-## Canister code
+## Canister development kits (CDKs)
 
-To write code for a canister, a canister development kit (CDK) should be used. CDKs are designed to provide build scripts that link to the ICP system API and compile the canister code into Wasm programs that are compatible with ICP. For the convenience of developers, `dfx` automatically wraps these build scripts into commands such as `dfx build`.
+A canister development kit (CDK) can be used to write the code for a canister. CDKs provide build scripts that compile the canister code into Wasm programs that are compatible with ICP.
 
-Currently supported CDKs include:
+Available CDKs include:
 
-- [Motoko](/docs/current/motoko/main/getting-started/motoko-introduction): ICP's native programming language. By default, Motoko is installed with the IC SDK. Alternatively, you can [build it from source](https://github.com/dfinity/motoko/blob/master/Building.md).
+- [Motoko](/docs/current/motoko/main/getting-started/motoko-introduction): ICP's native programming language. By default, Motoko is installed with the IC SDK.
 
 - [Rust CDK](https://github.com/dfinity/cdk-rs): By default, the Rust CDK is included as a dependency of the IC SDK. Alternatively, you can [install it yourself](https://crates.io/crates/ic-cdk).
 
-- [Kybra: Python CDK (Beta)](/docs/current/developer-docs/backend/python/): Learn more about how to [install and use Azle](/docs/current/developer-docs/backend/typescript/).
+- [Kybra: Python CDK](/docs/current/developer-docs/backend/python/)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to [install and use Azle](/docs/current/developer-docs/backend/typescript/).
 
-- [Azle: TypeScript CDK (Beta)](/docs/current/developer-docs/backend/typescript/): Learn more about how to [install and use Kybra](/docs/current/developer-docs/backend/python/).
+- [Azle: TypeScript CDK](/docs/current/developer-docs/backend/typescript/)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to [install and use Kybra](/docs/current/developer-docs/backend/python/).
 
-- [Bitfinity EVM for Solidity (Beta)](/docs/current/developer-docs/backend/solidity/): Learn more about how to use the [Bitfinity EVM](https://docs.bitfinity.network/ic-agent/overview).
+- [Bitfinity EVM for Solidity](/docs/current/developer-docs/backend/solidity/)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to use the [Bitfinity EVM](https://docs.bitfinity.network/ic-agent/overview).
 
 - [C++ CDK](https://docs.icpp.world/): Supported through the [ICPP-pro CDK](https://docs.icpp.world/installation.html).
 
+## Creating a project
 
-
-:::info To create a canister, first you need a project.
-
-If you downloaded your ICP Ninja project, navigate into that project folder using a command like `cd /path/to/icp/ninja/project`.
-
-If you did not download an ICP Ninja project or if you would like to start from a new project, run:
+Before you can begin writing canister code, you need to create a project.
 
 <AdornedTabs>
-<TabItem value="motoko" label="Motoko" default={true}>
+<TabItem value="create-new" label="Create a new project" default={true}>
+
+If you did not download an [ICP Ninja](/docs/current/developer-docs/getting-started/explore-examples) project, or if you would like to create a new project, run:
 
 ```
 dfx new PROJECT_NAME --type=motoko
 cd PROJECT_NAME
 ```
 
+Options for the `--type` flag are `motoko`, `rust`, `azle`, `kybra`.
+
+:::caution
+Using [Rust](/docs/current/developer-docs/backend/rust/dev-env), [Azle](/docs/current/developer-docs/backend/typescript/), or [Kybra](/docs/current/developer-docs/backend/python/) may require additional dependencies be installed if you have not developed with those languages in your environment before. View their corresponding documentation for more information.
+:::
+
 </TabItem>
-<TabItem value="rust" label="Rust">
+<TabItem value="use-ninja" label="Use an ICP Ninja project">
+
+Navigate into the directory where you downloaded your [ICP Ninja](/docs/current/developer-docs/getting-started/explore-examples) project using a command like:
 
 ```
-dfx new PROJECT_NAME --type=rust
-cd PROJECT_NAME
+cd /path/to/icp/ninja/project
 ```
 
 </TabItem>
 </AdornedTabs>
-:::
-
 
 You should be in a directory that contains a file called `dfx.json`. This file is used to configure your project's settings. It includes the project's canister definitions, such as the canister's type, source code file, and dependencies.
 
-```json
-  "canisters": {
-    "backend": {  // Canister name
-      "main": "backend/main.mo",  // Canister source code
-      "type": "motoko" // Canister type
-    },
-    "frontend": {  // Canister name
-      "dependencies": ["backend"],
-      "frontend": {
-        "entrypoint": "frontend/index.html" // Canister source code
-      },
-      "source": ["frontend/dist"],
-      "type": "assets"  // Canister type
-    },
-...
+```json title=dfx.json
+{
+  "canisters": {
+    "PROJECT_NAME_backend": { // Backend canister name
+      "main": "src/PROJECT_NAME_backend/main.mo", // Backend canister source code
+      "type": "motoko" // Canister language
+    },
+    "PROJECT_NAME_frontend": { // Frontend canister name
+      "dependencies": [
+        "PROJECT_NAME_backend"
+      ],
+      "source": [
+        "src/PROJECT_NAME_frontend/dist" // Frontend canister source code
+      ],
+      "type": "assets", // All frontend canisters will be type 'assets' regardless of the frontend framework used
+      "workspace": "PROJECT_NAME_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
 ```
 
-The `dfx.json` file will be covered more extensively in the [write smart contracts](/docs/current/developer-docs/getting-started/write-smart-contracts) page.
+## Default project architecture
 
-You will need to create each canister defined in this file using the command:
+The default project architecture used by `dfx new` and ICP Ninja projects contains two canisters, a `backend` and a `frontend`.
 
-```
-dfx canister create CANISTER_NAME --network ic
-```
+The `backend` canister is used to store the dapp's functions and core logic.
 
-<details>
-<summary>Output</summary>
-
-```
-Creating canister backend...
-backend canister created on network ic with canister id: ttdiw-gqaaa-aaaak-ao5da-cai
-```
-
-</details>
-
-This command creates an empty canister. It does not compile or install code into the canister; it simply reserves the canister's ID and sets up the canister's initial settings.
-
-
-
-## Writing code
-
-### Default project template
-
-### Using randomness
-
-### Using timers
-
-### Using HTTPS outcalls
-
-## Next steps
-
-
-
-The default `Hello, world!` dapp uses `dfx`'s default template which contains two canisters, `hello_backend` and `hello_frontend`.
-
-The `hello_frontend` canister is used to store the dapp's frontend assets. This includes files such as HTML, CSS, JavaScript, React, images, and videos.
-
-The `hello_backend` canister is used to store the dapp's functions and core logic.
+The `frontend` canister is used to store the dapp's frontend assets. This includes files such as HTML, CSS, JavaScript, React, images, and videos.
 
 <div class="text--center">
   <img
@@ -140,50 +121,49 @@ The `hello_backend` canister is used to store the dapp's functions and core logi
   />
 </div>
 
-:::info
-It is important to note that a canister is capable of storing both the frontend assets and backend code. However, `dfx` by default uses a project template with a dedicated canister for the frontend since this allows any language to be used for the backend canister without needing to use a library for the assets storage API.
+## Writing code
+
+:::danger
+
+This section will focus on writing backend canister code. If you want to explore some examples with application frontends, [view the ICP Ninja projects](https://icp.ninja).
+
 :::
+
+### Prerequisites
+
+- [x] Download and install an IDE or code editor. [VS Code](https://code.visualstudio.com/) is recommended.
+
+:::tip
+
+For writing Motoko code, the [Motoko VS Code extension](https://marketplace.visualstudio.com/items?itemName=dfinity-foundation.vscode-motoko) is highly recommended for syntax highlighting.
+
+:::
+
+### 1. Open the backend canister source code file in your code editor.
+
+For Motoko projects, this file will be `src/PROJECT_NAME_backend/main.mo`.
+
+For Rust projects, this file will be `src/PROJECT_NAME_BACKEND/src/lib.rs`.
+
+For [Azle](https://demergent-labs.github.io/azle/get_started.html) or [Kybra](https://demergent-labs.github.io/kybra/) projects, please refer to their respective documentation for details about their default code files.
+
+If you are using the default template created by `dfx`, you will see the following default code:
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-Motoko is an actor-based language and it represents the smart contract as an actor with various methods that the users and other smart contract can call.
-
-This hello world actor has a single function called greet. It is marked as query because it doesn't modify the state of the actor. The function accepts a name as input and returns a greetings text.
-
-```motoko title="src/hello_backend/main.mo"
+```motoko title="src/PROJECT_NAME_backend/main.mo"
 actor {
-  public query func greet(name : Text) : async Text {
+public query func greet(name : Text) : async Text {
     return "Hello, " # name # "!";
   };
 };
 ```
 
 </TabItem>
-
 <TabItem value="rust" label="Rust">
 
-### Install Rust
-
-You will need to install Rust in your environment with the command:
-
-```
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-```
-
-### Install `wasm32-unknown-unknown` target
-
-ICP smart contracts are compiled into WebAssembly modules. To support this compilation, install the `wasm32-unknown-unknown` target:
-
-```
-rustup target add wasm32-unknown-unknown
-```
-
-This Rust smart contract has a single function called greet. It is marked as query because it doesn't modify the state of the canister.
-
-The function accepts a name as input and returns a greetings text.
-
-```rust title="src/hello_backend/src/lib.rs"
+```rust title="src/PROJECT_NAME_backend/src/lib.rs"
 #[ic_cdk::query]
 fn greet(name: String) -> String {
     format!("Hello, {}!", name)
@@ -191,47 +171,140 @@ fn greet(name: String) -> String {
 ```
 
 </TabItem>
-
 </AdornedTabs>
 
+:::danger
 
+If you are using the default `dfx new` template, this will be a simple "Hello, world!" application.
 
+If you are using an ICP Ninja project, this code will vary based on the example you downloaded.
 
+:::
 
+### 2. Add randomness
 
+A key feature of ICP is its ability to generate [onchain randomness](/docs/current/developer-docs/smart-contracts/advanced-features/randomness) using a Verifiable Random Function (VRF) and [chain-key cryptography](https://internetcomputer.org/how-it-works/chain-key-technology). In each round of consensus on a subnet, the VRF is evaluated using the number of the round as input, producing a fresh set of random bytes. Then, the bytes are used as the seed for a pseudorandom number generator (PRNG), called random tape, which uses chain-key cryptography to create a random, unique value for each canister that requests it. Through this process, it is impossible to predict future outputs.
 
+To use randomness in your application, you need to make a call to the `raw_rand` method of the [management canister](/docs/current/developer-docs/smart-contracts/advanced-features/management-canister).
 
-```
-import Random "mo:base/Random";
+To demonstrate how to use randomness, you will create a simple app that generates a random number.
+
+Remove the existing code in your backend source code file. Then, insert the following:
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko title="src/PROJECT_NAME_backend/main.mo"
 import Timer "mo:base/Timer";
 import Nat8 "mo:base/Nat8";
 import Debug "mo:base/Debug";
 import Blob "mo:base/Blob";
-import Array "mo:base/Array";
+import Nat "mo:base/Nat";
+
+actor {
+    // Create a stable variable to store the current random number.
+    // Stable variables persist across canister upgrades.
+    stable var currentRandomNumber : Nat = 0;
+
+    // The management canister's principal ID is "aaaaa-aa".
+    // This code provides the logic to call the raw_rand method of the management canister.
+    let SubnetManager : actor {
+      raw_rand() : async Blob;
+    } = actor "aaaaa-aa";
+
+    // Create a function to generate a new random number.
+    // This function calls the raw_rand method of the management canister.
+    // Then it uses the random bytes returned to generate a random number.
+    private func generateNewNumber() : async () {
+        let randomBytes = await SubnetManager.raw_rand();
+        if (randomBytes.size() > 0) {
+            // Use the first byte to generate a number between 0 and 255
+            let bytes : [Nat8] = Blob.toArray(randomBytes);
+            currentRandomNumber := Nat8.toNat(bytes[0]);
+            Debug.print("Generated new random number: " # Nat.toText(currentRandomNumber));
+        };
+    };
+
+    // Use a query call to get current random number.
+    public query func getCurrentNumber() : async Nat {
+        currentRandomNumber
+    };
+}
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust title="src/PROJECT_NAME_backend/src/lib.rs"
+
+
+```
+
+</TabItem>
+</AdornedTabs>
+
+
+### 3. Add a timer.
+
+At this point, the canister code generates a single random number and stores it in a variable. You can retrieve that value with a query function. To demonstrate another feature of ICP, let's add a timer that generates a new random number every 5 seconds.
+
+Timers are used to automatically execute actions after a specified interval or delay, enabling canisters to perform autonomous tasks.
+
+Add the following highlighted line to your backend code:
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko title="src/PROJECT_NAME_backend/main.mo"
+import Timer "mo:base/Timer";
+import Nat8 "mo:base/Nat8";
+import Debug "mo:base/Debug";
+import Blob "mo:base/Blob";
 import Nat "mo:base/Nat";
 
 actor {
     // Store the current random number
     stable var currentRandomNumber : Nat = 0;
 
+    let SubnetManager : actor {
+      raw_rand() : async Blob;
+    } = actor "aaaaa-aa";
+
     // Function to generate a new random number
     private func generateNewNumber() : async () {
-        let entropy = await Random.blob();
-        let randomBytes = Blob.toArray(entropy);
+        let randomBytes = await SubnetManager.raw_rand();
         if (randomBytes.size() > 0) {
             // Use the first byte to generate a number between 0 and 255
-            currentRandomNumber := Nat8.toNat(randomBytes[0]);
+            let bytes : [Nat8] = Blob.toArray(randomBytes);
+            currentRandomNumber := Nat8.toNat(bytes[0]);
         };
         Debug.print("Generated new random number: " # Nat.toText(currentRandomNumber));
     };
-
-    // Initialize timer to generate new number every 30 seconds
-    let timer = Timer.recurringTimer(#seconds 30, generateNewNumber);
 
     // Public query to get current random number
     public query func getCurrentNumber() : async Nat {
         currentRandomNumber
     };
 
+    // highlight-start
+    // Initialize timer to generate new number every 5 seconds
+    let timer = Timer.recurringTimer(#seconds 5, generateNewNumber);
+    // highlight-end
 }
 ```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust title="src/PROJECT_NAME_backend/src/lib.rs"
+
+
+```
+
+</TabItem>
+</AdornedTabs>
+
+
+## Next step
+
+- [x] [Learn how to deploy and manage your canister](/docs/current/developer-docs/getting-started/deploy-and-manage).
