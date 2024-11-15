@@ -1229,7 +1229,11 @@ We want to leverage advanced WebAssembly features, such as WebAssembly host refe
 
 In order for a WebAssembly module to be usable as the code for the canister, it needs to conform to the following requirements:
 
+-   It may declare (import or export) at most one memory.
+
 -   It may only import a function if it is listed in [Overview of imports](#system-api-imports).
+    The value of `I ∈ {i32, i64}` specifying whether the imported functions have 32-bit or 64-bit pointers
+    is derived from the bit-width of the declared memory defaulting to `I = i32` if the canister declares no memory.
 
 -   It may have a `(start)` function.
 
@@ -1295,7 +1299,9 @@ The canister provides entry points which are invoked by the IC under various cir
 
 -   The canister may export functions with name `canister_composite_query <name>` and type `() -> ()`.
 
--   The canister table may contain functions of type `(env : i32) -> ()` which may be used as callbacks for inter-canister calls and composite query methods.
+-   The canister table may contain functions of type `(env : I) -> ()` which may be used as callbacks for inter-canister calls and composite query methods.
+    The value of `I ∈ {i32, i64}` specifying whether the imported functions have 32-bit or 64-bit pointers
+    is derived from the bit-width of the declared memory defaulting to `I = i32` if the canister declares no memory.
 
 If the execution of any of these entry points traps for any reason, then all changes to the WebAssembly state, as well as the effect of any externally visible system call (like `ic0.msg_reply`, `ic0.msg_reject`, `ic0.call_perform`), are discarded. For upgrades, this transactional behavior applies to the `canister_pre_upgrade`/`canister_post_upgrade` sequence as a whole.
 
@@ -1403,78 +1409,89 @@ The 32-bit stable memory System API (`ic0.stable_size`, `ic0.stable_grow`, `ic0.
 
 The following sections describe various System API functions, also referred to as system calls, which we summarize here.
 
+In the following, the value of `I ∈ {i32, i64}` specifies whether the imported functions have 32-bit or 64-bit pointers.
+Given a canister module, the value of `I ∈ {i32, i64}` is derived from the bit-width of the declared memory
+defaulting to `I = i32` if the canister declares no memory.
+
 ```
-    ic0.msg_arg_data_size : () -> i32;                                          // I U RQ NRQ CQ Ry CRy F
-    ic0.msg_arg_data_copy : (dst : i32, offset : i32, size : i32) -> ();        // I U RQ NRQ CQ Ry CRy F
-    ic0.msg_caller_size : () -> i32;                                            // *
-    ic0.msg_caller_copy : (dst : i32, offset: i32, size : i32) -> ();           // *
-    ic0.msg_reject_code : () -> i32;                                            // Ry Rt CRy CRt
-    ic0.msg_reject_msg_size : () -> i32;                                        // Rt CRt
-    ic0.msg_reject_msg_copy : (dst : i32, offset : i32, size : i32) -> ();      // Rt CRt
+    ic0.msg_arg_data_size : () -> I;                                                      // I U RQ NRQ CQ Ry CRy F
+    ic0.msg_arg_data_copy : (dst : I, offset : I, size : I) -> ();                        // I U RQ NRQ CQ Ry CRy F
+    ic0.msg_caller_size : () -> I;                                                        // *
+    ic0.msg_caller_copy : (dst : I, offset : I, size : I) -> ();                          // *
+    ic0.msg_reject_code : () -> i32;                                                      // Ry Rt CRy CRt
+    ic0.msg_reject_msg_size : () -> I  ;                                                  // Rt CRt
+    ic0.msg_reject_msg_copy : (dst : I, offset : I, size : I) -> ();                      // Rt CRt
 
-    ic0.msg_reply_data_append : (src : i32, size : i32) -> ();                  // U RQ NRQ CQ Ry Rt CRy CRt
-    ic0.msg_reply : () -> ();                                                   // U RQ NRQ CQ Ry Rt CRy CRt
-    ic0.msg_reject : (src : i32, size : i32) -> ();                             // U RQ NRQ CQ Ry Rt CRy CRt
+    ic0.msg_reply_data_append : (src : I, size : I) -> ();                                // U RQ NRQ CQ Ry Rt CRy CRt
+    ic0.msg_reply : () -> ();                                                             // U RQ NRQ CQ Ry Rt CRy CRt
+    ic0.msg_reject : (src : I, size : I) -> ();                                           // U RQ NRQ CQ Ry Rt CRy CRt
 
-    ic0.msg_cycles_available : () -> i64;                                       // U Rt Ry
-    ic0.msg_cycles_available128 : (dst : i32) -> ();                            // U Rt Ry
-    ic0.msg_cycles_refunded : () -> i64;                                        // Rt Ry
-    ic0.msg_cycles_refunded128 : (dst : i32) -> ();                             // Rt Ry
-    ic0.msg_cycles_accept : (max_amount : i64) -> (amount : i64);               // U Rt Ry
-    ic0.msg_cycles_accept128 : (max_amount_high : i64, max_amount_low: i64, dst : i32)
-                           -> ();                                               // U Rt Ry
+    ic0.msg_cycles_available128 : (dst : I) -> ();                                        // U Rt Ry
+    ic0.msg_cycles_refunded128 : (dst : I) -> ();                                         // Rt Ry
+    ic0.msg_cycles_accept128 : (max_amount_high : i64, max_amount_low: i64, dst : I)
+                           -> ();                                                         // U Rt Ry
 
-    ic0.cycles_burn128 : (amount_high : i64, amount_low : i64, dst : i32) -> ();               // I G U Ry Rt C T
+    ic0.cycles_burn128 : (amount_high : i64, amount_low : i64, dst : I)
+                           -> ();                                                         // I G U Ry Rt C T
 
-    ic0.canister_self_size : () -> i32;                                         // *
-    ic0.canister_self_copy : (dst : i32, offset : i32, size : i32) -> ();       // *
-    ic0.canister_cycle_balance : () -> i64;                                     // *
-    ic0.canister_cycle_balance128 : (dst : i32) -> ();                          // *
-    ic0.canister_status : () -> i32;                                            // *
-    ic0.canister_version : () -> i64;                                           // *
+    ic0.canister_self_size : () -> I;                                                     // *
+    ic0.canister_self_copy : (dst : I, offset : I, size : I) -> ();                       // *
+    ic0.canister_cycle_balance128 : (dst : I) -> ();                                      // *
+    ic0.canister_status : () -> i32;                                                      // *
+    ic0.canister_version : () -> i64;                                                     // *
 
-    ic0.msg_method_name_size : () -> i32;                                       // F
-    ic0.msg_method_name_copy : (dst : i32, offset : i32, size : i32) -> ();     // F
-    ic0.accept_message : () -> ();                                              // F
+    ic0.msg_method_name_size : () -> I;                                                   // F
+    ic0.msg_method_name_copy : (dst : I, offset : I, size : I) -> ();                     // F
+    ic0.accept_message : () -> ();                                                        // F
 
-    ic0.call_new :                                                              // U CQ Ry Rt CRy CRt T
-      ( callee_src  : i32,
-        callee_size : i32,
-        name_src : i32,
-        name_size : i32,
-        reply_fun : i32,
-        reply_env : i32,
-        reject_fun : i32,
-        reject_env : i32
-      ) -> ();
-    ic0.call_on_cleanup : (fun : i32, env : i32) -> ();                         // U CQ Ry Rt CRy CRt T
-    ic0.call_data_append : (src : i32, size : i32) -> ();                       // U CQ Ry Rt CRy CRt T
-    ic0.call_cycles_add : (amount : i64) -> ();                                 // U Ry Rt T
-    ic0.call_cycles_add128 : (amount_high : i64, amount_low: i64) -> ();        // U Ry Rt T
-    ic0.call_perform : () -> ( err_code : i32 );                                // U CQ Ry Rt CRy CRt T
+    ic0.call_new :
+      ( callee_src  : I,
+        callee_size : I,
+        name_src    : I,
+        name_size   : I,
+        reply_fun   : I,
+        reply_env   : I,
+        reject_fun  : I,
+        reject_env  : I
+      ) -> ();                                                                            // U CQ Ry Rt CRy CRt T
+    ic0.call_on_cleanup : (fun : I, env : I) -> ();                                       // U CQ Ry Rt CRy CRt T
+    ic0.call_data_append : (src : I, size : I) -> ();                                     // U CQ Ry Rt CRy CRt T
+    ic0.call_cycles_add128 : (amount_high : i64, amount_low: i64) -> ();                  // U Ry Rt T
+    ic0.call_perform : () -> ( err_code : i32 );                                          // U CQ Ry Rt CRy CRt T
 
-    ic0.stable_size : () -> (page_count : i32);                                 // * s
-    ic0.stable_grow : (new_pages : i32) -> (old_page_count : i32);              // * s
-    ic0.stable_write : (offset : i32, src : i32, size : i32) -> ();             // * s
-    ic0.stable_read : (dst : i32, offset : i32, size : i32) -> ();              // * s
-    ic0.stable64_size : () -> (page_count : i64);                               // * s
-    ic0.stable64_grow : (new_pages : i64) -> (old_page_count : i64);            // * s
-    ic0.stable64_write : (offset : i64, src : i64, size : i64) -> ();           // * s
-    ic0.stable64_read : (dst : i64, offset : i64, size : i64) -> ();            // * s
+    ic0.stable64_size : () -> (page_count : i64);                                         // * s
+    ic0.stable64_grow : (new_pages : i64) -> (old_page_count : i64);                      // * s
+    ic0.stable64_write : (offset : i64, src : i64, size : i64) -> ();                     // * s
+    ic0.stable64_read : (dst : i64, offset : i64, size : i64) -> ();                      // * s
 
-    ic0.certified_data_set : (src: i32, size: i32) -> ();                       // I G U Ry Rt T
-    ic0.data_certificate_present : () -> i32;                                   // *
-    ic0.data_certificate_size : () -> i32;                                      // NRQ CQ
-    ic0.data_certificate_copy : (dst: i32, offset: i32, size: i32) -> ();       // NRQ CQ
+    ic0.certified_data_set : (src : I, size : I) -> ();                                   // I G U Ry Rt T
+    ic0.data_certificate_present : () -> i32;                                             // *
+    ic0.data_certificate_size : () -> I;                                                  // NRQ CQ
+    ic0.data_certificate_copy : (dst : I, offset : I, size : I) -> ();                    // NRQ CQ
 
-    ic0.time : () -> (timestamp : i64);                                         // *
-    ic0.global_timer_set : (timestamp : i64) -> i64;                            // I G U Ry Rt C T
-    ic0.performance_counter : (counter_type : i32) -> (counter : i64);          // * s
-    ic0.is_controller: (src: i32, size: i32) -> ( result: i32);                 // * s
-    ic0.in_replicated_execution: () -> (result: i32);                           // * s
+    ic0.time : () -> (timestamp : i64);                                                   // *
+    ic0.global_timer_set : (timestamp : i64) -> i64;                                      // I G U Ry Rt C T
+    ic0.performance_counter : (counter_type : i32) -> (counter : i64);                    // * s
+    ic0.is_controller: (src : I, size : I) -> ( result: i32);                             // * s
+    ic0.in_replicated_execution: () -> (result: i32);                                     // * s
 
-    ic0.debug_print : (src : i32, size : i32) -> ();                            // * s
-    ic0.trap : (src : i32, size : i32) -> ();                                   // * s
+    ic0.debug_print : (src : I, size : I) -> ();                                          // * s
+    ic0.trap : (src : I, size : I) -> ();                                                 // * s
+```
+
+The following System API functions are only available if `I = i32`, i.e., if the bit-width of the declared memory is 32
+or if the canister declares no memory.
+
+```
+    ic0.msg_cycles_available : () -> i64;                                                 // U Rt Ry
+    ic0.msg_cycles_refunded : () -> i64;                                                  // Rt Ry
+    ic0.msg_cycles_accept : (max_amount : i64) -> (amount : i64);                         // U Rt Ry
+    ic0.canister_cycle_balance : () -> i64;                                               // *
+    ic0.call_cycles_add : (amount : i64) -> ();                                           // U Ry Rt T
+    ic0.stable_size : () -> (page_count : i32);                                           // * s
+    ic0.stable_grow : (new_pages : i32) -> (old_page_count : i32);                        // * s
+    ic0.stable_write : (offset : i32, src : i32, size : i32) -> ();                       // * s
+    ic0.stable_read : (dst : i32, offset : i32, size : i32) -> ();                        // * s
 ```
 
 The comment after each function lists from where these functions may be invoked:
@@ -1520,15 +1537,18 @@ Since Wasm doesn't have a 128-bit number type, calls requiring 128-bit arguments
 WebAssembly functions parameter and result types can only be primitive number types. To model functions that accept or return blobs or text values, the following idiom is used:
 
 To provide access to a string or blob `foo`, the System API provides two functions:
-
-    ic0.foo_size : () -> i32
-    ic0.foo_copy : (dst : i32, offset: i32, size : i32) -> ()
+```
+ic0.foo_size : () -> I; I ∈ {i32, i64}
+ic0.foo_copy : (dst : I, offset : I, size : I) -> (); I ∈ {i32, i64}
+```
 
 The `*_size` function indicates the size, in bytes, of `foo`. The `*_copy` function copies `size` bytes from `foo[offset..offset+size]` to `memory[dst..dst+size]`. This traps if `offset+size` is greater than the size of `foo`, or if `dst+size` exceeds the size of the Wasm memory.
 
 Dually, a System API function that conceptually takes a blob or string as a parameter `foo` has two parameters:
 
-    ic0.set_foo : (src : i32, size: i32) -> …
+```
+ic0.set_foo : (src : I, size : I) -> …; I ∈ {i32, i64}
+```
 
 which copies, at the time of function invocation, the data referred to by `src`/`size` out of the canister. Unless otherwise noted, this traps if `src+size` exceeds the size of the WebAssembly memory.
 
@@ -1536,11 +1556,11 @@ which copies, at the time of function invocation, the data referred to by `src`/
 
 The canister can access an argument. For `canister_init`, `canister_post_upgrade` and method entry points, the argument is the argument of the call; in a reply callback, it refers to the received reply. So the lifetime of the argument data is a single WebAssembly function execution, not the whole method call tree.
 
--   `ic0.msg_arg_data_size : () → i32` and `ic0.msg_arg_data_copy : (dst : i32, offset : i32, size : i32) → ()`
+-   `ic0.msg_arg_data_size : () → I` and `ic0.msg_arg_data_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
 
     The message argument data.
 
--   `ic0.msg_caller_size : () → i32` and `ic0.msg_caller_copy : (dst : i32, offset: i32, size : i32) → ()`
+-   `ic0.msg_caller_size : () → I` and `ic0.msg_caller_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
 
     The identity of the caller, which may be a canister id or a user id. During canister installation or upgrade, this is the id of the user or canister requesting the installation or upgrade. During a system task (heartbeat or global timer), this is the id of the management canister.
 
@@ -1550,7 +1570,7 @@ The canister can access an argument. For `canister_init`, `canister_post_upgrade
 
     It returns the special "no error" code `0` if the callback is *not* invoked as a reject callback; this allows canisters to use a single entry point for both the reply and reject callback, if they choose to do so.
 
--   `ic0.msg_reject_msg_size : () → i32` and `ic0.msg_reject_msg_copy : (dst : i32, offset : i32, size : i32) → ()`
+-   `ic0.msg_reject_msg_size : () → I` and `ic0.msg_reject_msg_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
 
     The reject message. Traps if there is no reject message (i.e. if `reject_code` is `0`).
 
@@ -1558,7 +1578,7 @@ The canister can access an argument. For `canister_init`, `canister_post_upgrade
 
 Eventually, the canister will want to respond to the original call, either by replying (indicating success) or rejecting (signalling an error):
 
--   `ic0.msg_reply_data_append : (src : i32, size : i32) → ()`
+-   `ic0.msg_reply_data_append : (src : I, size : I) → ()`; `I ∈ {i32, i64}`
 
     Appends data it to the (initially empty) data reply. Traps if the total appended data exceeds the [maximum response size](https://internetcomputer.org/docs/current/developer-docs/backend/resource-limits#resource-constraints-and-limits).
 
@@ -1580,7 +1600,7 @@ This can be invoked multiple times within the same message execution to build up
 
     See [Cycles](#system-api-cycles) for how this interacts with cycles available on this call.
 
--   `ic0.msg_reject : (src : i32, size : i32) → ()`
+-   `ic0.msg_reject : (src : I, size : I) → ()`; `I ∈ {i32, i64}`
 
     Rejects the call. The data referred to by `src`/`size` is used for the diagnostic message.
 
@@ -1617,7 +1637,7 @@ The `canister_inspect_message` is *not* invoked for query calls, inter-canister 
 
 A canister can learn about its own identity:
 
--   `ic0.canister_self_size : () → i32` and `ic0.canister_self_copy: (dst : i32, offset : i32, size : i32) → ()`
+-   `ic0.canister_self_size : () → I` and `ic0.canister_self_copy: (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
 
     These functions allow the canister to query its own canister id (as a blob).
 
@@ -1648,19 +1668,19 @@ During the canister upgrade process, `canister_pre_upgrade` sees the old counter
 When handling an update call (or a callback), a canister can do further calls to another canister. Calls are assembled in a builder-like fashion, starting with `ic0.call_new`, adding more attributes using the `ic0.call_*` functions, and eventually performing the call with `ic0.call_perform`.
 
 -   `ic0.call_new :
-    ( callee_src : i32,
-      callee_size : i32,
-      name_src : i32,
-      name_size : i32,
-      reply_fun : i32,
-      reply_env : i32,
-      reject_fun : i32,
-      reject_env : i32,
-    ) → ()`
+    ( callee_src  : I,
+      callee_size : I,
+      name_src    : I,
+      name_size   : I,
+      reply_fun   : I,
+      reply_env   : I,
+      reject_fun  : I,
+      reject_env  : I,
+    ) → ()`; `I ∈ {i32, i64}`
 
 Begins assembling a call to the canister specified by `callee_src/_size` at method `name_src/_size`.
 
-The IC records two mandatory callback functions, represented by a table entry index `*_fun` and some additional value `*_env`. When the response comes back, the table is read at the corresponding index, expected to be a function of type `(env : i32) -> ()`, and passed the corresponding `*_env` value.
+The IC records two mandatory callback functions, represented by a table entry index `*_fun` and some additional value `*_env`. When the response comes back, the table is read at the corresponding index, expected to be a function of type `(env : I) -> ()`, and passed the corresponding `*_env` value.
 
 The reply callback is executed upon successful completion of the method call, which can query the reply using `ic0.msg_arg_data_*`.
 
@@ -1668,9 +1688,9 @@ The reject callback is executed if the method call fails asynchronously or the o
 
 Subsequent calls to the following functions set further attributes of that call, until the call is concluded (with `ic0.call_perform`) or discarded (by returning without calling `ic0.call_perform` or by starting a new call with `ic0.call_new`.)
 
--   `ic0.call_on_cleanup : (fun : i32, env : i32) → ()`
+-   `ic0.call_on_cleanup : (fun : I, env : I) → ()`; `I ∈ {i32, i64}`
 
-If a cleanup callback (of type `(env : i32) -> ()`) is specified for this call, it is executed if and only if the `reply` or the `reject` callback was executed and trapped (for any reason).
+If a cleanup callback (of type `(env : I) -> ()`) is specified for this call, it is executed if and only if the `reply` or the `reject` callback was executed and trapped (for any reason).
 
 During the execution of the `cleanup` function, only a subset of the System API is available (namely `ic0.debug_print`, `ic0.trap` and the `ic0.stable_*` functions). The cleanup function is expected to run swiftly (within a fixed, yet to be specified cycle limit) and serves to free resources associated with the callback.
 
@@ -1678,7 +1698,7 @@ If this traps (e.g. runs out of cycles), the state changes from the `cleanup` fu
 
 There must be at most one call to `ic0.call_on_cleanup` between `ic0.call_new` and `ic0.call_perform`.
 
--   `ic0.call_data_append : (src : i32, size : i32) -> ()`
+-   `ic0.call_data_append : (src : I, size : I) -> ()`; `I ∈ {i32, i64}`
 
     Appends the specified bytes to the argument of the call. Initially, the argument is empty. Traps if the total appended data exceeds the [maximum inter-canister call payload](https://internetcomputer.org/docs/current/developer-docs/backend/resource-limits#resource-constraints-and-limits).
 
@@ -1746,7 +1766,7 @@ This call traps if the current balance does not fit into a 64-bit value. Caniste
 
 :::
 
--   `ic0.canister_cycle_balance128 : (dst : i32) → ()`
+-   `ic0.canister_cycle_balance128 : (dst : I) → ()`; `I ∈ {i32, i64}`
 
     Indicates the current cycle balance of the canister by copying the value at the location `dst` in the canister memory. It is the canister balance before the execution of the current message, minus a reserve to pay for the execution of the current message, minus any cycles queued up to be sent via `ic0.call_cycles_add` and `ic0.call_cycles_add128`. After execution of the message, the IC may add unused cycles from the reserve back to the balance.
 
@@ -1762,7 +1782,7 @@ This call traps if the amount of cycles available does not fit into a 64-bit val
 
 :::
 
--   `ic0.msg_cycles_available128 : (dst : i32) → ()`
+-   `ic0.msg_cycles_available128 : (dst : I) → ()`; `I ∈ {i32, i64}`
 
     Indicates the number of cycles transferred by the caller of the current call, still available in this message. The amount of cycles is represented by a 128-bit value. This call copies this value starting at the location `dst` in the canister memory.
 
@@ -1788,7 +1808,7 @@ Example: To accept all cycles provided in a call, invoke `ic0.msg_cycles_accept(
 
 :::
 
--   `ic0.msg_cycles_accept128 : (max_amount_high : i64, max_amount_low : i64, dst : i32) → ()`
+-   `ic0.msg_cycles_accept128 : (max_amount_high : i64, max_amount_low : i64, dst : I) → ()`; `I ∈ {i32, i64}`
 
     This moves cycles from the call to the canister balance. It moves as many cycles as possible, up to these constraints:
 
@@ -1802,7 +1822,7 @@ Example: To accept all cycles provided in a call, invoke `ic0.msg_cycles_accept(
 
     This does not trap.
 
--   `ic0.cycles_burn128 : (amount_high : i64, amount_low : i64, dst : i32) -> ()`
+-   `ic0.cycles_burn128 : (amount_high : i64, amount_low : i64, dst : I) -> ()`; `I ∈ {i32, i64}`
 
     This burns cycles from the canister. It burns as many cycles as possible, up to these constraints:
 
@@ -1826,7 +1846,7 @@ This call traps if the amount of cycles refunded does not fit into a 64-bit valu
 
 :::
 
--   `ic0.msg_cycles_refunded128 : (dst : i32) → ()`
+-   `ic0.msg_cycles_refunded128 : (dst : I) → ()`; `I ∈ {i32, i64}`
 
     This function can only be used in a callback handler (reply or reject), and indicates the amount of cycles that came back with the response as a refund. The refund has already been added to the canister balance automatically.
 
@@ -1956,7 +1976,7 @@ Returns 1 if the canister is being run in replicated mode and 0 otherwise.
 
 The canister can check whether a given principal is one of its controllers.
 
-`ic0.is_controller : (src : i32, size: i32) -> (result: i32)`
+`ic0.is_controller : (src : I, size : I) -> (result: i32)`; `I ∈ {i32, i64}`
 
 Checks whether the principal identified by `src`/`size` is one of the controllers of the canister. If yes, then a value of 1 is returned, otherwise a 0 is returned. It can be called multiple times.
 
@@ -1966,7 +1986,7 @@ This system call traps if `src+size` exceeds the size of the WebAssembly memory 
 
 For each canister, the IC keeps track of "certified data", a canister-defined blob. For fresh canisters (upon install or reinstall), this blob is the empty blob (`""`).
 
--   `ic0.certified_data_set : (src: i32, size : i32) -> ()`
+-   `ic0.certified_data_set : (src : I, size : I) -> ()`; `I ∈ {i32, i64}`
 
     The canister can update the certified data with this call. The passed data must be no larger than 32 bytes. This can be used any number of times.
 
@@ -1980,7 +2000,7 @@ When executing a query or composite query method via a query call (i.e. in non-r
 
     This will return `0` for update methods, if a query or composite query method is executed in replicated mode (e.g. when invoked via an update call or inter-canister call), and in composite query method callbacks and in query and composite query methods evaluated on canisters other than the target canister of a query call.
 
--   `ic0.data_certificate_size : () → i32` and `ic0.data_certificate_copy : (dst: i32, offset: i32, size: i32) → ()`
+-   `ic0.data_certificate_size : () → I` and `ic0.data_certificate_copy : (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
 
     Copies the certificate for the current value of the certified data to the canister.
 
@@ -1994,7 +2014,7 @@ When executing a query or composite query method via a query call (i.e. in non-r
 
 In a local canister execution environment, the canister needs a way to emit textual trace messages. On the "real" network, these do not do anything.
 
--   `ic0.debug_print : (src : i32, size : i32) -> ()`
+-   `ic0.debug_print : (src : I, size : I) -> ()`; `I ∈ {i32, i64}`
 
     When executing in an environment that supports debugging, this copies out the data specified by `src` and `size`, and logs, prints or stores it in an environment-appropriate way. The copied data may likely be a valid string in UTF8-encoding, but the environment should be prepared to handle binary data (e.g. by printing it in escaped form). The data does typically not include a terminating `\0` or `\n`.
 
@@ -2002,7 +2022,7 @@ In a local canister execution environment, the canister needs a way to emit text
 
 Similarly, the System API allows the canister to effectively trap, but give some indication about why it trapped:
 
--   `ic0.trap : (src : i32, size : i32) -> ()`
+-   `ic0.trap : (src : I, size : I) -> ()`; `I ∈ {i32, i64}`
 
     This function always traps.
 
@@ -6511,9 +6531,10 @@ We model `mem` as an array of bytes, and `table` as an array of execution functi
 
 The abstract `Callback` type above models an entry point for responses:
 ```
+I ∈ {i32, i64}
 Closure = {
-    fun   : i32,
-    env   : i32,
+    fun   : I,
+    env   : I,
 }
 Callback = {
   on_reply : Closure;
@@ -6877,6 +6898,7 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
 
 -   The function `callbacks` of the `CanisterModule` is defined as follows
     ```
+    I ∈ {i32, i64}
     callbacks = λ(callbacks, response, refunded_cycles, sysenv, available) → λ wasm_state →
       let params0 = empty_params with {
         sysenv
@@ -6899,45 +6921,45 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
       try
         if fun > |es.wasm_state.store.table| then Trap
         let func = es.wasm_state.store.table[fun]
-        if typeof(func) ≠ func (i32) -> () then Trap
-
-            func<es>(env)
-            discard_pending_call<es>()
-            Return {
-              new_state = es.wasm_state;
-              new_calls = es.calls;
-              new_certified_data = es.certified_data;
-              new_global_timer = es.new_global_timer;
-              response = es.response;
-              cycles_accepted = es.cycles_accepted;
-              cycles_used = es.cycles_used;
-            }
-          with Trap
-            if callbacks.on_cleanup = NoClosure then Trap {cycles_used = es.cycles_used;}
-            if callbacks.on_cleanup.fun > |es.wasm_state.store.table| then Trap {cycles_used = es.cycles_used;}
-            let func = es.wasm_state.store.table[callbacks.on_cleanup.fun]
-            if typeof(func) ≠ func (i32) -> () then Trap {cycles_used = es.cycles_used;}
-
-        let es' = ref { empty_execution_state with
-          wasm_state = wasm_state;
-          context = C;
-        }
-        try func<es'>(callbacks.on_cleanup.env) with Trap then Trap {cycles_used = es.cycles_used + es'.cycles_used;}
+        if typeof(func) ≠ func (I) -> () then Trap
+        func<es>(env)
+        discard_pending_call<es>()
         Return {
-          new_state = es'.wasm_state;
-          new_calls = [];
-          new_certified_data = NoCertifiedData;
-          new_global_timer = es'.new_global_timer;
-          response = NoResponse;
-          cycles_accepted = 0;
-          cycles_used = es.cycles_used + es'.cycles_used;
+          new_state = es.wasm_state;
+          new_calls = es.calls;
+          new_certified_data = es.certified_data;
+          new_global_timer = es.new_global_timer;
+          response = es.response;
+          cycles_accepted = es.cycles_accepted;
+          cycles_used = es.cycles_used;
         }
+      with Trap
+        if callbacks.on_cleanup = NoClosure then Trap {cycles_used = es.cycles_used;}
+        if callbacks.on_cleanup.fun > |es.wasm_state.store.table| then Trap {cycles_used = es.cycles_used;}
+        let func = es.wasm_state.store.table[callbacks.on_cleanup.fun]
+        if typeof(func) ≠ func (I) -> () then Trap {cycles_used = es.cycles_used;}
+
+      let es' = ref { empty_execution_state with
+        wasm_state = wasm_state;
+        context = C;
+      }
+      try func<es'>(callbacks.on_cleanup.env) with Trap then Trap {cycles_used = es.cycles_used + es'.cycles_used;}
+      Return {
+        new_state = es'.wasm_state;
+        new_calls = [];
+        new_certified_data = NoCertifiedData;
+        new_global_timer = es'.new_global_timer;
+        response = NoResponse;
+        cycles_accepted = 0;
+        cycles_used = es.cycles_used + es'.cycles_used;
+      }
     ```
 
     Note that if the initial callback handler traps, the cleanup callback (if present) is executed, and the canister has the chance to update its state.
 
 -   The function `composite_callbacks` of the `CanisterModule` is defined as follows
     ```
+    I ∈ {i32, i64}
     composite_callbacks = λ(callbacks, response, sysenv) → λ wasm_state →
       let params0 = empty_params with {
         sysenv
@@ -6958,33 +6980,32 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
       try
         if fun > |es.wasm_state.store.table| then Trap
         let func = es.wasm_state.store.table[fun]
-        if typeof(func) ≠ func (i32) -> () then Trap
-
-            func<es>(env)
-            discard_pending_call<es>()
-            Return {
-              new_state = es.wasm_state;
-              new_calls = es.calls;
-              response = es.response;
-              cycles_used = es.cycles_used;
-            }
-          with Trap
-            if callbacks.on_cleanup = NoClosure then Trap {cycles_used = es.cycles_used;}
-            if callbacks.on_cleanup.fun > |es.wasm_state.store.table| then Trap {cycles_used = es.cycles_used;}
-            let func = es.wasm_state.store.table[callbacks.on_cleanup.fun]
-            if typeof(func) ≠ func (i32) -> () then Trap {cycles_used = es.cycles_used;}
-
-        let es' = ref { empty_execution_state with
-          wasm_state = wasm_state;
-          context = CC;
-        }
-        try func<es'>(callbacks.on_cleanup.env) with Trap then Trap {cycles_used = es.cycles_used + es'.cycles_used;}
+        if typeof(func) ≠ func (I) -> () then Trap
+        func<es>(env)
+        discard_pending_call<es>()
         Return {
-          new_state = es'.wasm_state;
-          new_calls = [];
-          response = NoResponse;
-          cycles_used = es.cycles_used + es'.cycles_used;
+          new_state = es.wasm_state;
+          new_calls = es.calls;
+          response = es.response;
+          cycles_used = es.cycles_used;
         }
+      with Trap
+        if callbacks.on_cleanup = NoClosure then Trap {cycles_used = es.cycles_used;}
+        if callbacks.on_cleanup.fun > |es.wasm_state.store.table| then Trap {cycles_used = es.cycles_used;}
+        let func = es.wasm_state.store.table[callbacks.on_cleanup.fun]
+        if typeof(func) ≠ func (I) -> () then Trap {cycles_used = es.cycles_used;}
+
+      let es' = ref { empty_execution_state with
+        wasm_state = wasm_state;
+        context = CC;
+      }
+      try func<es'>(callbacks.on_cleanup.env) with Trap then Trap {cycles_used = es.cycles_used + es'.cycles_used;}
+      Return {
+        new_state = es'.wasm_state;
+        new_calls = [];
+        response = NoResponse;
+        cycles_used = es.cycles_used + es'.cycles_used;
+      }
     ```
 
     Note that if the initial callback handler traps, the cleanup callback (if present) is executed.
@@ -7020,21 +7041,24 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
 
 In the following section, we use the these helper functions
 ```
-copy_to_canister<es>(dst : i32, offset : i32, size : i32, data : blob) =
+I ∈ {i32, i64}
+copy_to_canister<es>(dst : I, offset : I, size : I, data : blob) =
   if offset+size > |data| then Trap {cycles_used = es.cycles_used;}
   if dst+size > |es.wasm_state.store.mem| then Trap {cycles_used = es.cycles_used;}
   es.wasm_state.store.mem[dst..dst+size] := data[offset..offset+size]
 
-copy_from_canister<es>(src : i32, size : i32) blob =
+I ∈ {i32, i64}
+copy_from_canister<es>(src : I, size : I) blob =
   if src+size > |es.wasm_state.store.mem| then Trap {cycles_used = es.cycles_used;}
   return es.wasm_state.store.mem[src..src+size]
 ```
 
 Cycles are represented by 128-bit values so they require 16 bytes of memory.
 ```
-copy_cycles_to_canister<es>(dst : i32, data : blob) =
- let size = 16;
- if dst+size > |es.wasm_state.store.mem| then Trap {cycles_used = es.cycles_used;}
+I ∈ {i32, i64}
+copy_cycles_to_canister<es>(dst : I, data : blob) =
+  let size = 16;
+  if dst+size > |es.wasm_state.store.mem| then Trap {cycles_used = es.cycles_used;}
   es.wasm_state.store.mem[dst..dst+size] := data[0..size]
 ```
 
@@ -7044,19 +7068,23 @@ Upon *instantiation* of the WebAssembly module, we can provide the following fun
 
 The pseudo-code below does *not* explicitly enforce the restrictions of which imports are available in which contexts; for that the table in [Overview of imports](#system-api-imports) is authoritative, and is assumed to be part of the implementation.
 ```
-ic0.msg_arg_data_size<es>() : i32 =
+I ∈ {i32, i64}
+ic0.msg_arg_data_size<es>() : I =
   if es.context ∉ {I, U, RQ, NRQ, CQ, Ry, CRy, F} then Trap {cycles_used = es.cycles_used;}
   return |es.params.arg|
 
-ic0.msg_arg_data_copy<es>(dst:i32, offset:i32, size:i32) =
+I ∈ {i32, i64}
+ic0.msg_arg_data_copy<es>(dst : I, offset : I, size : I) =
   if es.context ∉ {I, U, RQ, NRQ, CQ, Ry, CRy, F} then Trap {cycles_used = es.cycles_used;}
   copy_to_canister<es>(dst, offset, size, es.params.arg)
 
-ic0.msg_caller_size() : i32 =
+I ∈ {i32, i64}
+ic0.msg_caller_size() : I =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
   return |es.params.caller|
 
-ic0.msg_caller_copy(dst:i32, offset:i32, size:i32) : i32 =
+I ∈ {i32, i64}
+ic0.msg_caller_copy(dst : I, offset : I, size : I) =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
   copy_to_canister<es>(dst, offset, size, es.params.caller)
 
@@ -7064,15 +7092,18 @@ ic0.msg_reject_code<es>() : i32 =
   if es.context ∉ {Ry, Rt, CRy, CRt} then Trap {cycles_used = es.cycles_used;}
   es.params.reject_code
 
-ic0.msg_reject_msg_size<es>() : i32 =
+I ∈ {i32, i64}
+ic0.msg_reject_msg_size<es>() : I =
   if es.context ∉ {Rt, CRt} then Trap {cycles_used = es.cycles_used;}
   return |es.params.reject_msg|
 
-ic0.msg_reject_msg_copy<es>(dst:i32, offset:i32, size:i32) : i32 =
+I ∈ {i32, i64}
+ic0.msg_reject_msg_copy<es>(dst : I, offset : I, size : I) =
   if es.context ∉ {Rt, CRt} then Trap {cycles_used = es.cycles_used;}
   copy_to_canister<es>(dst, offset, size, es.params.reject_msg)
 
-ic0.msg_reply_data_append<es>(src : i32, size : i32) =
+I ∈ {i32, i64}
+ic0.msg_reply_data_append<es>(src : I, size : I) =
   if es.context ∉ {U, RQ, NRQ, CQ, Ry, Rt, CRy, CRt} then Trap {cycles_used = es.cycles_used;}
   if es.response ≠ NoResponse then Trap {cycles_used = es.cycles_used;}
   es.reply_params.arg := es.reply_params.arg · copy_from_canister<es>(src, size)
@@ -7083,7 +7114,8 @@ ic0.msg_reply<es>() =
   es.response := Reply (es.reply_params.arg)
   es.cycles_available := 0
 
-ic0.msg_reject<es>(src : i32, size : i32) =
+I ∈ {i32, i64}
+ic0.msg_reject<es>(src : I, size : I) =
   if es.context ∉ {U, RQ, NRQ, CQ, Ry, Rt, CRy, CRt} then Trap {cycles_used = es.cycles_used;}
   if es.response ≠ NoResponse then Trap {cycles_used = es.cycles_used;}
   es.response := Reject (CANISTER_REJECT, copy_from_canister<es>(src, size))
@@ -7094,7 +7126,8 @@ ic0.msg_cycles_available<es>() : i64 =
   if es.cycles_available >= 2^64 then Trap {cycles_used = es.cycles_used;}
   return es.cycles_available
 
-ic0.msg_cycles_available128<es>(dst : i32) =
+I ∈ {i32, i64}
+ic0.msg_cycles_available128<es>(dst : I) =
   if es.context ∉ {U, Rt, Ry} then Trap {cycles_used = es.cycles_used;}
   let amount = es.cycles_available
   copy_cycles_to_canister<es>(dst, amount.to_little_endian_bytes())
@@ -7104,7 +7137,8 @@ ic0.msg_cycles_refunded<es>() : i64 =
   if es.params.cycles_refunded >= 2^64 then Trap {cycles_used = es.cycles_used;}
   return es.params.cycles_refunded
 
-ic0.msg_cycles_refunded128<es>(dst : i32) =
+I ∈ {i32, i64}
+ic0.msg_cycles_refunded128<es>(dst : I) =
   if es.context ∉ {Rt, Ry} then Trap {cycles_used = es.cycles_used;}
   let amount = es.params.cycles_refunded
   copy_cycles_to_canister<es>(dst, amount.to_little_endian_bytes())
@@ -7117,7 +7151,8 @@ ic0.msg_cycles_accept<es>(max_amount : i64) : i64 =
   es.balance := es.balance + amount
   return amount
 
-ic0.msg_cycles_accept128<es>(max_amount_high : i64, max_amount_low : i64, dst : i32) =
+I ∈ {i32, i64}
+ic0.msg_cycles_accept128<es>(max_amount_high : i64, max_amount_low : i64, dst : I) =
   if es.context ∉ {U, Rt, Ry} then Trap {cycles_used = es.cycles_used;}
   let max_amount = max_amount_high * 2^64 + max_amount_low
   let amount = min(max_amount, es.cycles_available)
@@ -7126,18 +7161,21 @@ ic0.msg_cycles_accept128<es>(max_amount_high : i64, max_amount_low : i64, dst : 
   es.balance := es.balance + amount
   copy_cycles_to_canister<es>(dst, amount.to_little_endian_bytes())
 
-ic0.cycles_burn128<es>(amount_high : i64, amount_low : i64, dst : i32) =
+I ∈ {i32, i64}
+ic0.cycles_burn128<es>(amount_high : i64, amount_low : i64, dst : I) =
   if es.context ∉ {I, G, U, Ry, Rt, C, T} then Trap {cycles_used = es.cycles_used;}
   let amount = amount_high * 2^64 + amount_low
   let burned_amount = min(amount, liquid_balance(es))
   es.balance := es.balance - burned_amount
   copy_cycles_to_canister<es>(dst, burned_amount.to_little_endian_bytes())
 
-ic0.canister_self_size<es>() : i32 =
+I ∈ {i32, i64}
+ic0.canister_self_size<es>() : I =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
   return |es.wasm_state.self_id|
 
-ic0.canister_self_copy<es>(dst:i32, offset:i32, size:i32) =
+I ∈ {i32, i64}
+ic0.canister_self_copy<es>(dst : I, offset : I, size : I) =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
   copy_to_canister<es>(dst, offset, size, es.wasm_state.self_id)
 
@@ -7146,7 +7184,8 @@ ic0.canister_cycle_balance<es>() : i64 =
   if es.balance >= 2^64 then Trap {cycles_used = es.cycles_used;}
   return es.balance
 
-ic0.canister_cycles_balance128<es>(dst : i32) =
+I ∈ {i32, i64}
+ic0.canister_cycles_balance128<es>(dst : I) =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
   let amount = es.balance
   copy_cycles_to_canister<es>(dst, amount.to_little_endian_bytes())
@@ -7162,11 +7201,13 @@ ic0.canister_version<es>() : i64 =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
   return es.params.sysenv.canister_version
 
-ic0.msg_method_name_size<es>() : i32 =
+I ∈ {i32, i64}
+ic0.msg_method_name_size<es>() : I =
   if es.context ∉ {F} then Trap {cycles_used = es.cycles_used;}
   return |es.method_name|
 
-ic0.msg_method_name_copy<es>(dst : i32, offset : i32, size : i32) : i32 =
+I ∈ {i32, i64}
+ic0.msg_method_name_copy<es>(dst : I, offset : I, size : I) =
   if es.context ∉ {F} then Trap {cycles_used = es.cycles_used;}
   copy_to_canister<es>(dst, offset, size, es.params.method_name)
 
@@ -7175,15 +7216,16 @@ ic0.accept_message<es>() =
   if es.ingress_filter = Accept then Trap {cycles_used = es.cycles_used;}
   es.ingress_filter = Accept
 
+I ∈ {i32, i64}
 ic0.call_new<es>(
-    callee_src  : i32,
-    callee_size : i32,
-    name_src    : i32,
-    name_size   : i32,
-    reply_fun   : i32,
-    reply_env   : i32,
-    reject_fun  : i32,
-    reject_env  : i32,
+    callee_src  : I,
+    callee_size : I,
+    name_src    : I,
+    name_size   : I,
+    reply_fun   : I,
+    reply_env   : I,
+    reject_fun  : I,
+    reject_env  : I,
   ) =
   if es.context ∉ {U, CQ, Ry, Rt, CRy, CRt, T} then Trap {cycles_used = es.cycles_used;}
 
@@ -7204,13 +7246,15 @@ ic0.call_new<es>(
     };
   }
 
-ic0.call_on_cleanup<es> (fun : i32, env : i32) =
+I ∈ {i32, i64}
+ic0.call_on_cleanup<es> (fun : I, env : I) =
   if es.context ∉ {U, CQ, Ry, Rt, CRy, CRt, T} then Trap {cycles_used = es.cycles_used;}
   if es.pending_call = NoPendingCall then Trap {cycles_used = es.cycles_used;}
   if es.pending_call.callback.on_cleanup ≠ NoClosure then Trap {cycles_used = es.cycles_used;}
   es.pending_call.callback.on_cleanup := Closure { fun = fun; env = env}
 
-ic0.call_data_append<es> (src : i32, size : i32) =
+I ∈ {i32, i64}
+ic0.call_data_append<es> (src : I, size : I) =
   if es.context ∉ {U, CQ, Ry, Rt, CRy, CRt, T} then Trap {cycles_used = es.cycles_used;}
   if es.pending_call = NoPendingCall then Trap {cycles_used = es.cycles_used;}
   es.pending_call.arg := es.pending_call.arg · copy_from_canister<es>(src, size)
@@ -7306,7 +7350,8 @@ ic0.stable64_read<es>(dst : i64, offset : i64, size : i64)
 
   es.wasm_state.store.mem[offset..offset+size] := es.wasm_state.stable.mem[src..src+size]
 
-ic0.certified_data_set<es>(src: i32, size: i32) =
+I ∈ {i32, i64}
+ic0.certified_data_set<es>(src : I, size : I) =
   if es.context ∉ {I, G, U, Ry, Rt, T} then Trap {cycles_used = es.cycles_used;}
   es.new_certified_data := es.wasm_state[src..src+size]
 
@@ -7316,17 +7361,19 @@ ic0.data_certificate_present<es>() : i32 =
   then return 0
   else return 1
 
-ic0.data_certificate_size<es>() : i32 =
+I ∈ {i32, i64}
+ic0.data_certificate_size<es>() : I =
   if es.context ∉ {NRQ, CQ} then Trap {cycles_used = es.cycles_used;}
   if es.params.sysenv.certificate = NoCertificate then Trap {cycles_used = es.cycles_used;}
   return |es.params.sysenv.certificate|
 
-ic0.data_certificate_copy<es>(dst: i32, offset: i32, size: i32) =
+I ∈ {i32, i64}
+ic0.data_certificate_copy<es>(dst : I, offset : I, size : I) =
   if es.context ∉ {NRQ, CQ} then Trap {cycles_used = es.cycles_used;}
   if es.params.sysenv.certificate = NoCertificate then Trap {cycles_used = es.cycles_used;}
   copy_to_canister<es>(dst, offset, size, es.params.sysenv.certificate)
 
-ic0.time<es>() : i32 =
+ic0.time<es>() : i64 =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
   return es.params.sysenv.time
 
@@ -7341,7 +7388,8 @@ ic0.global_timer_set<es>(timestamp: i64) : i64 =
 ic0.performance_counter<es>(counter_type : i32) : i64 =
   arbitrary()
 
-ic0.is_controller<es>(src: i32, size: i32) : (result: i32) =
+I ∈ {i32, i64}
+ic0.is_controller<es>(src : I, size : I) : (result: i32) =
   bytes = copy_from_canister<es>(src, size)
   if bytes encode a principal then
     if bytes ∉ es.params.sysenv.controllers
@@ -7355,10 +7403,12 @@ ic0.in_replicated_execution<es>() : i32 =
   then return 1
   else return 0
 
-ic0.debug_print<es>(src : i32, size : i32) =
+I ∈ {i32, i64}
+ic0.debug_print<es>(src : I, size : I) =
   return
 
-ic0.trap<es>(src : i32, size : i32) =
+I ∈ {i32, i64}
+ic0.trap<es>(src : I, size : I) =
   Trap {cycles_used = es.cycles_used;}
 ```
 <Changelog/>
