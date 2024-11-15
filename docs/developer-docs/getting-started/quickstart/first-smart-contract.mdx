@@ -10,7 +10,7 @@ import { OsType, useOs } from "/src/hooks/useOs";
 Build Web3, DeFi, fully network-resident social media, games, enterprise apps,
 and just about anything else you can imagine. Your projects are immune to cyberattacks and unstoppable.
 
-**Deploy in minutes using these steps.**
+**Open your terminal and deploy in minutes using these steps.**
 
 <AdornedTabs defaultValue={useOs().current}>
 <TabItem value={OsType.Linux} label="Linux">
@@ -25,22 +25,15 @@ and just about anything else you can imagine. Your projects are immune to cybera
 
 ```bash
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-source "$HOME/.local/share/dfx/env"
 ```
 
-Confirm the IC SDK has been installed:
+Confirm the IC SDK has been installed (you may need to open a new terminal window):
 
 ```bash
 dfx --version
 ```
 
-#### 2. Start `dfx`.
-
-```bash
-dfx start --background
-```
-
-#### 3. Create a new project.
+#### 2. Create a new project.
 
 The default project created by `dfx` is "Hello, world!"
 
@@ -50,14 +43,14 @@ dfx new hello --type=motoko
 
 Creates a new Motoko project. Options are [motoko, rust, azle, kybra].
 
-#### 4. Deploy your project.
+#### 3. Deploy your project.
 
 ```bash
 cd hello
-dfx deploy
+dfx deploy --playground
 ```
 
-#### 5. Interact with your project.
+#### 4. Interact with your project.
 
 Open the URL in your web browser that `dfx` returned after deploying your
 project.
@@ -70,7 +63,7 @@ project.
 <input type="checkbox"/> Download and <a href="https://nodejs.org/en/download/package-manager">install Node.js</a>. Using <a href="https://brew.sh/"> HomeBrew </a> is recommended.
 <div>
 </div>
-<input type="checkbox"/> Apple silicon machines: Download and install Rosetta: <code>softwareupdate --install-rosetta</code>
+<input type="checkbox"/> Apple silicon machines (M1, M2, etc): Download and install Rosetta: <code>softwareupdate --install-rosetta</code>
 
 ---------
 
@@ -78,22 +71,15 @@ project.
 
 ```bash
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-source "$HOME/.local/share/dfx/env"
 ```
 
-Confirm the IC SDK has been installed:
+Confirm the IC SDK has been installed (you may need to open a new terminal window):
 
 ```bash
 dfx --version
 ```
 
-#### 2. Start `dfx`.
-
-```bash
-dfx start --background
-```
-
-#### 3. Create a new project.
+#### 2. Create a new project.
 
 The default project created by `dfx` is "Hello, world!"
 
@@ -103,14 +89,14 @@ dfx new hello --type=motoko
 
 Creates a new Motoko project. Options are [motoko, rust, azle, kybra].
 
-#### 4. Deploy your project.
+#### 3. Deploy your project.
 
 ```bash
 cd hello
-dfx deploy
+dfx deploy --playground
 ```
 
-#### 5. Interact with your project.
+#### 4. Interact with your project.
 
 Open the URL in your web browser that `dfx` returned after deploying your
 project.
@@ -132,22 +118,15 @@ project.
 
 ```bash
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-source "$HOME/.local/share/dfx/env"
 ```
 
-Confirm the IC SDK has been installed:
+Confirm the IC SDK has been installed (you may need to open a new terminal window):
 
 ```bash
 dfx --version
 ```
 
-#### 2. Start `dfx`.
-
-```bash
-dfx start --background
-```
-
-#### 3. Create a new project.
+#### 2. Create a new project.
 
 The default project created by `dfx` is "Hello, world!"
 
@@ -157,14 +136,14 @@ dfx new hello --type=motoko
 
 Creates a new Motoko project. Options are [motoko, rust, azle, kybra].
 
-#### 4. Deploy your project.
+#### 3. Deploy your project.
 
 ```bash
 cd hello
-dfx deploy
+dfx deploy --playground
 ```
 
-#### 5. Interact with your project.
+#### 4. Interact with your project.
 
 Open the URL in your web browser that `dfx` returned after deploying your
 project.
