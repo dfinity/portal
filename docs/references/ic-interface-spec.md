@@ -484,7 +484,7 @@ The state tree contains information about the topology of the Internet Computer.
      - `canister_state_bytes` (`nat`): The total size of the state in bytes taken by canisters on this subnet since this subnet was created.
      - `consumed_cycles_total` (`map`): The total number of cycles consumed by all current and deleted canisters on this subnet. It's a map of two values, a low part of type `nat` and a high part of type `opt nat`.
      - `update_transactions_total` (`nat`): The total number of transactions processed on this subnet since this subnet was created.
-
+     - `certified_height` (`nat`): The certified block height of the subnet.
 
 :::note
 
