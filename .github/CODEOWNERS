@@ -2,40 +2,40 @@
 * @dfinity/editorial
 
 # Each piece of documentation must be owned by the respective teams
-docs/developer-docs/updates/release-notes/ @dfinity/dx
-docs/developer-docs/getting-started/ @dfinity/dx
-docs/developer-docs/build/agents @dfinity/dx
-docs/developer-docs/build/cdks @dfinity/dx
-docs/developer-docs/smart-contracts/ @dfinity/dx
-docs/developer-docs/smart-contracts/encryption/ @dfinity/crypto-team
-docs/developer-docs/smart-contracts/signatures @dfinity/crypto-team
-docs/developer-docs/smart-contracts/test/pocket-ic.mdx @dfinity/pocket-ic
-docs/developer-docs/developer-tools/ @dfinity/dx
-docs/developer-docs/web-apps/ @dfinity/dx
-docs/developer-docs/security @dfinity/product-security
-docs/developer-docs/defi/ @dfinity/finint
-docs/developer-docs/multi-chain/ @dfinity/cross-chain-team
-docs/developer-docs/identity/ @dfinity/gix
-docs/developer-docs/ai/ @dfinity/engineering
-docs/developer-docs/daos @dfinity/nns-team
-docs/samples/ @dfinity/growth
-docs/references/bitcoin-how-it-works.mdx @dfinity/cross-chain-team
-docs/references/ckbtc-reference.mdx @dfinity/cross-chain-team
-docs/references/https-outcalls-how-it-works.mdx @dfinity/engineering
-docs/references/t-sigs-how-it-works.mdx @dfinity/crypto-team
-docs/references/vetkeys-overview.mdx @dfinity/crypto-team
-docs/references/supported-signatures.mdx @dfinity/crypto-team
-docs/references/glossary.mdx @dfinity/dx
-docs/references/dashboard/ @dfinity/platform-operations
-docs/references/node-providers/ @dfinity/node
-docs/references/subnets/ @dfinity/networking
-docs/references/execution-errors.mdx @dfinity/execution
-docs/references/ingress-messages.mdx @dfinity/product-security
-docs/references/message-execution-properties.mdx @dfinity/product-security
-docs/developer-docs/web-apps/custom-domains @dfinity/boundary-node
-docs/developer-docssmart-contracts/advanced-features/simd.mdx @dfinity/execution
-docs/developer-docssmart-contracts/advanced-features/periodic-tasks.mdx @dfinity/execution
-docs/developer-docs/smart-contracts/best-practices/idempotency.mdx @dfinity/research @dfinity/product-security
+docs/developer-docs/updates/release-notes/ @dfinity/dx @dfinity/editorial
+docs/developer-docs/getting-started/ @dfinity/dx @dfinity/editorial
+docs/developer-docs/build/agents @dfinity/dx @dfinity/editorial
+docs/developer-docs/build/cdks @dfinity/dx @dfinity/editorial
+docs/developer-docs/smart-contracts/ @dfinity/dx @dfinity/editorial
+docs/developer-docs/smart-contracts/encryption/ @dfinity/crypto-team @dfinity/editorial
+docs/developer-docs/smart-contracts/signatures @dfinity/crypto-team @dfinity/editorial
+docs/developer-docs/smart-contracts/test/pocket-ic.mdx @dfinity/pocket-ic @dfinity/editorial
+docs/developer-docs/developer-tools/ @dfinity/dx @dfinity/editorial
+docs/developer-docs/web-apps/ @dfinity/dx @dfinity/editorial
+docs/developer-docs/security @dfinity/product-security @dfinity/editorial
+docs/developer-docs/defi/ @dfinity/finint @dfinity/editorial
+docs/developer-docs/multi-chain/ @dfinity/cross-chain-team @dfinity/editorial
+docs/developer-docs/identity/ @dfinity/gix @dfinity/editorial
+docs/developer-docs/ai/ @dfinity/engineering @dfinity/editorial
+docs/developer-docs/daos @dfinity/nns-team @dfinity/editorial
+docs/samples/ @dfinity/growth @dfinity/editorial
+docs/references/bitcoin-how-it-works.mdx @dfinity/cross-chain-team @dfinity/editorial
+docs/references/ckbtc-reference.mdx @dfinity/cross-chain-team @dfinity/editorial
+docs/references/https-outcalls-how-it-works.mdx @dfinity/engineering @dfinity/editorial
+docs/references/t-sigs-how-it-works.mdx @dfinity/crypto-team @dfinity/editorial
+docs/references/vetkeys-overview.mdx @dfinity/crypto-team @dfinity/editorial
+docs/references/supported-signatures.mdx @dfinity/crypto-team @dfinity/editorial
+docs/references/glossary.mdx @dfinity/dx @dfinity/editorial
+docs/references/dashboard/ @dfinity/platform-operations @dfinity/editorial
+docs/references/node-providers/ @dfinity/node @dfinity/editorial
+docs/references/subnets/ @dfinity/networking @dfinity/editorial
+docs/references/execution-errors.mdx @dfinity/execution @dfinity/editorial
+docs/references/ingress-messages.mdx @dfinity/product-security @dfinity/editorial
+docs/references/message-execution-properties.mdx @dfinity/product-security @dfinity/editorial
+docs/developer-docs/web-apps/custom-domains @dfinity/boundary-node @dfinity/editorial
+docs/developer-docssmart-contracts/advanced-features/simd.mdx @dfinity/execution @dfinity/editorial
+docs/developer-docssmart-contracts/advanced-features/periodic-tasks.mdx @dfinity/execution @dfinity/editorial
+docs/developer-docs/smart-contracts/best-practices/idempotency.mdx @dfinity/research @dfinity/product-security @dfinity/editorial
 
 # The Interface Specification
 docs/references/_attachments/certificates.cddl @dfinity/canister-os
