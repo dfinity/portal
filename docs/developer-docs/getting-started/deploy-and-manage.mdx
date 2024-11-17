@@ -79,7 +79,7 @@ In your backend canister source code file, make a change, such as increasing the
 Then, upgrade your canister to use the edited code:
 
 ```
-dfx canister install PROJECT_NAME_backend --mode upgrade
+dfx canister install PROJECT_NAME_backend --network=local --mode upgrade
 ```
 
 <details>
@@ -231,7 +231,7 @@ To prevent a canister from running out of cycles and being deleted, you can set 
 The default value of the freezing threshold is 2_592_000 (approximately 30 days). To change the freezing threshold, update the canister's settings with the command:
 
 ```
-dfx canister update-settings PROJECT_NAME_backend --network=ic --freezing-threshold seconds
+dfx canister update-settings PROJECT_NAME_backend --network=ic --freezing-threshold SECONDS
 ```
 
 :::caution
