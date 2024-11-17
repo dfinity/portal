@@ -108,13 +108,13 @@ Confirm that you are using the correct developer identity and that you have an a
 
 ```
 dfx identity whoami
-dfx cycles balance --network ic
+dfx cycles balance --network=ic
 ```
 
 Then, deploy to the mainnet:
 
 ```
-dfx deploy PROJECT_NAME_backend --network-ic
+dfx deploy PROJECT_NAME_backend --network=ic
 ```
 
 The canister's Candid UI URL that is now hosted on the mainnet will be returned:
@@ -135,7 +135,7 @@ When a canister is running on the mainnet, you will always need to pass the `--n
 After a canister is deployed to the mainnet, it will constantly be consuming resources and cycles. To view information about how many resources and cycles currently being used, along with other information, view the canister's settings:
 
 ```
-dfx canister status PROJECT_NAME_backend --network ic
+dfx canister status PROJECT_NAME_backend --network=ic
 ```
 
 <details>
@@ -231,7 +231,7 @@ To prevent a canister from running out of cycles and being deleted, you can set 
 The default value of the freezing threshold is 2_592_000 (approximately 30 days). To change the freezing threshold, update the canister's settings with the command:
 
 ```
-dfx canister update-settings PROJECT_NAME_backend --freezing-threshold seconds
+dfx canister update-settings PROJECT_NAME_backend --network=ic --freezing-threshold seconds
 ```
 
 :::caution
@@ -252,7 +252,7 @@ dfx canister logs PROJECT_NAME_backend --network=ic
 By default, canister logs are only visible to the canister's controllers, but they can be made public by updating the canister's settings:
 
 ```
-dfx canister update-settings CANISTER_ID --log-visibility public
+dfx canister update-settings PROJECT_NAME_backend --network=ic --log-visibility public
 ```
 
 ## Snapshots
