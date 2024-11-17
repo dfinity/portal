@@ -502,7 +502,7 @@ The [Network Nervous System (NNS)](/docs/current/developer-docs/daos/nns/overvie
 
 2. The random number will be passed into the HTTPS outcall. The HTTPS outcall will query the IC API endpoint for details about that specific proposal number.
 
-3. Timers will be used to generate a new number every 30 seconds and send a new HTTPS outcall every 35 seconds.
+3. Timers will be used to generate a new number every 30 seconds and send a new HTTPS outcall every 32 seconds.
 
 Replace the backend canister source code with the following revised code:
 
@@ -570,7 +570,7 @@ actor {
           transform = ?transform_context;
       };
 
-      // HTTP outcalls require cycles be attached to the call.
+      // HTTP outcalls require cycles are attached to the call.
       Cycles.add<system>(20_949_972_000);
 
       // Define the http_response
@@ -600,6 +600,7 @@ actor {
 
     // Initialize timer to generate new number every 30 seconds
     let timer1 = Timer.recurringTimer<system>(#seconds 30, generateNewNumber);
+    // Initialize timer to send an HTTPS outcall and print the results every 32 seconds
     let timer2 = Timer.recurringTimer<system>(#seconds 32, printResults);
 }
 ```
