@@ -159,7 +159,7 @@ const Flyout: React.FC<{ item: NavItem; isActive }> = ({ item, isActive }) => {
   }, [isActive]);
 
   return (
-    <div className="absolute z-[1000] top-20 left-1/2 -translate-x-1/2 p-4 opacity-0 pointer-events-none cursor-default invisible group-hover:opacity-100 group-hover:pointer-events-auto group-hover:visible">
+    <div className="absolute z-[1000] top-[4.85rem] left-1/2 -translate-x-1/2 p-4 opacity-0 pointer-events-none cursor-default invisible group-hover:opacity-100 group-hover:pointer-events-auto group-hover:visible">
       <div className="shadow-2xl dark-hero:shadow-none bg-white rounded-3xl overflow-hidden hidden md:flex flex-col">
         <div className="flex-1 flex">
           {item.sections.length > 1 && (
