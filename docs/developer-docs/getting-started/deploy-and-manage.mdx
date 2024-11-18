@@ -41,9 +41,9 @@ dfx deploy PROJECT_NAME_backend --network=local
 The `--network=local` flag here is redundant and shown for educational purposes. The local network is the default setting for `dfx` commands; therefore, no flag is needed to target it.
 :::
 
-This will deploy your project to the local replica. In the background, this command will:
+This will deploy your project to the local replica. In the background, this command:
 
-- Creates the canister(s) that you specified in the command; if no canister name was specified, it will deploy all canisters listed in the `dfx.json` file.
+- Creates the canister(s) specified in the command; if no canister name was specified, it will deploy all canisters listed in the `dfx.json` file.
 
 - Compiles the code for each canister into a Wasm module.
 
