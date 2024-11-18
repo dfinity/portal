@@ -66,7 +66,7 @@ docs
 ├── motoko // Motoko documentation - submodule
 ├── references // reference documentation
 ├── samples // sample projects - submodule
-├── tutorials // tutorial series (developer journey, hackathon prep course, etc).
+├── tutorials // tutorial series (developer ladder, hackathon prep course, etc).
 ```
 
 # Contributing to the Dev Docs
@@ -155,7 +155,7 @@ Concept pages describe in more detail a specific concept of ICP. Concept pages s
 Concept pages should remain simple and high-level without providing unnecessary, in-depth details. Readers should be able to quickly understand the technology and its benefits, convincing them to continue learning more and begin developing using the technology.
 
 #### Tutorial
-A tutorial uses a step-by-step format to walk a user through a specific workflow. The Developer Journey is an example of a tutorial series.
+A tutorial uses a step-by-step format to walk a user through a specific workflow. The Developer Ladder is an example of a tutorial series.
 
 #### Reference
 A reference page provides low level detail into a feature or technology. API reference pages are an example that provide in-depth detail about different endpoints and methods. Some examples include:
@@ -393,10 +393,6 @@ The following submoules and their corresponding repos are currently used:
 - Internet Identity
     - `/docs/current/references/ii-spec`
 	- GitHub Repo: https://github.com/dfinity/internet-identity.git
-
-- Interface Spec
-    - `/docs/current/references/ic-interface-spec `
-    - GitHub Repo: https://github.com/dfinity/interface-spec.git
 
 - Sample projects
     - `/docs/current/references/samples`

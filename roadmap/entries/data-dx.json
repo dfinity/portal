@@ -81,7 +81,7 @@
       "description": "This milestone provides substantial simplifications and improvements for the developer lifecycle of canisters, particularly regarding their development and operations. Snapshotting capabilities, a powerful logging infrastructure and improved error handling as well as push of relevant events brings canisters closer to Web2 services in terms of DevOps.",
       "milestone_id": "Beryllium",
       "eta": "",
-      "status": "in_progress",
+      "status": "deployed",
       "eta_to_render": "November 2024"
     },
     {

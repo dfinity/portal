@@ -21,13 +21,13 @@ const redirects = `
   /icp-event /events
   /videos /news
   /icp-newsletter /news
-  /icp-tokens /how-it-works/tokenomics
   /ois /sns
+  /docs/current/developer-docs/getting-started/overview-of-icp /docs/current/developer-docs/getting-started/network-overview
   /docs/videos-tutorials /developers
   /docs /docs/current/home
   /docs/current/ /docs/current/home
   /docs/current/concepts/bitcoin-integration /bitcoin-integration
-  /docs/current/developer-docs/ic-overview /docs/current/developer-docs/getting-started/overview-of-icp
+  /docs/current/developer-docs/ic-overview /docs/current/developer-docs/getting-started/network-overview
   /docs/current/developer-docs/production/computation-and-storage-costs /docs/current/developer-docs/gas-cost
   /docs/current/developer-docs/deploy/computation-and-storage-costs /docs/current/developer-docs/gas-cost
   /docs/current/ic-overview  /docs/current/home
@@ -97,7 +97,7 @@ const redirects = `
   /docs/developers-guide/about-this-guide /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/developers-guide/basic-syntax-rules /docs/current/motoko/main/reference/language-manual
   /docs/developers-guide/concepts/bitcoin-integration /bitcoin-integration
-  /docs/developers-guide/concepts/concepts-intro /docs/current/developer-docs/getting-started/overview-of-icp
+  /docs/developers-guide/concepts/concepts-intro /docs/current/developer-docs/getting-started/network-overview
   /docs/developers-guide/customize-projects /docs/current/developer-docs/smart-contracts/compile
   /docs/developers-guide/default-wallet /docs/current/developer-docs/defi/cycles/cycles-wallet
   /docs/developers-guide/design-apps /docs/current/developer-docs/web-apps/design-dapps
@@ -145,7 +145,7 @@ const redirects = `
   /docs/current/tokenomics/nns/community-fund /docs/current/developer-docs/daos/nns/concepts/neurons-fund
   /docs/current/tokenomics/sns/* /docs/current/developer-docs/daos/sns/tokenomics/:splat
   /docs/developers-guide/cli-reference/* /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/:splat
-  /docs/developers-guide/concepts/* /docs/current/developer-docs/getting-started/overview-of-icp
+  /docs/developers-guide/concepts/* /docs/current/developer-docs/getting-started/network-overview
   /docs/developers-guide/tutorials/* /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/ic-identity-guide/* /docs/current/tokenomics/identity-auth/:splat
   /docs/language-guide/* /docs/current/motoko/main/:splat
@@ -177,11 +177,11 @@ const redirects = `
   /docs/developers-guide/tutorials-intro.html /docs/current/tutorials/developer-journey/
   /docs/quickstart/quickstart.html /docs/current/developer-docs/getting-started/install/
   /apis/site/proxy /docs/current/references/http-gateway-protocol-spec
-  /docs/developers-guide/concepts/what-is-ic /docs/current/developer-docs/getting-started/overview-of-icp
+  /docs/developers-guide/concepts/what-is-ic /docs/current/developer-docs/getting-started/network-overview
   /language-guide/index /docs/current/tutorials/developer-journey/level-0/intro-languages
   /docs/current/developer-docs/production/instruction-limits /docs/current/developer-docs/smart-contracts/maintain/resource-limits
   /docs/current/developer-docs/backend/resource-limits /docs/current/developer-docs/smart-contracts/maintain/resource-limits
-  /docs/current/concepts/data-centers /docs/current/developer-docs/getting-started/overview-of-icp
+  /docs/current/concepts/data-centers /docs/current/developer-docs/getting-started/network-overview
   /docs/current/developer-docs/build/languages/rust/rust-intro /docs/current/developer-docs/backend/rust/
   /docs/current/developer-docs/build/languages/motoko /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/integrations/sns/launching/launch-summary /docs/current/developer-docs/daos/sns/launching/launch-summary-1proposal
@@ -192,27 +192,27 @@ const redirects = `
   /docs/current/developer-docs/frontend/vue-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/current/developer-docs/setup/cycles/index /docs/current/developer-docs/defi/cycles/cycles-wallet
   /docs/current/developer-docs/setup/cycles /docs/current/developer-docs/defi/cycles/cycles-wallet
-  /docs/current/concepts/index /docs/current/developer-docs/getting-started/overview-of-icp
-  /docs/current/concepts /docs/current/developer-docs/getting-started/overview-of-icp
+  /docs/current/concepts/index /docs/current/developer-docs/getting-started/network-overview
+  /docs/current/concepts /docs/current/developer-docs/getting-started/network-overview
   /docs/current/developer-docs/backend/candid/index /docs/current/developer-docs/smart-contracts/candid/candid-concepts
   /docs/current/developer-docs/integrations/https-outcalls/index /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use
   /docs/current/developer-docs/integrations/https-outcalls /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use
   /docs/current/developer-docs/security/index /docs/current/developer-docs/security/security-best-practices/inter-canister-calls
   /docs/current/developer-docs/security /docs/current/developer-docs/security/security-best-practices/inter-canister-calls
-  /docs/current/developer-docs/integrations/index /docs/current/developer-docs/getting-started/overview-of-icp
-  /docs/current/developer-docs/integrations /docs/current/developer-docs/getting-started/overview-of-icp
+  /docs/current/developer-docs/integrations/index /docs/current/developer-docs/getting-started/network-overview
+  /docs/current/developer-docs/integrations /docs/current/developer-docs/getting-started/network-overview
   /docs/current/developer-docs/setup/index /docs/current/developer-docs/getting-started/install/
   /docs/current/developer-docs/setup /docs/current/developer-docs/getting-started/install/
   /docs/current/developer-docs/setup/quickstart /docs/current/developer-docs/getting-started/install/
-  /docs/current/tutorials/index /docs/current/developer-docs/getting-started/overview-of-icp
-  /docs/current/tutorials/ /docs/current/developer-docs/getting-started/overview-of-icp
+  /docs/current/tutorials/index /docs/current/developer-docs/getting-started/network-overview
+  /docs/current/tutorials/ /docs/current/developer-docs/getting-started/network-overview
   /docs/current/developer-docs/backend/eu-subnets /docs/current/references/subnets/subnet-types
   /docs/current/samples/* /docs/current/samples/overview
   /docs/current/developer-docs/backend/choosing-language /docs/current/developer-docs/smart-contracts/write/overview
   /docs/current/developer-docs/production/deploying-and-upgrading /docs/current/developer-docs/smart-contracts/deploy/overview
-  /docs/current/developer-docs/index /docs/current/developer-docs/getting-started/overview-of-icp
-  /docs/current/developer-docs /docs/current/developer-docs/getting-started/overview-of-icp
-  /docs/current/concepts/what-is-ic /docs/current/developer-docs/getting-started/overview-of-icp
+  /docs/current/developer-docs/index /docs/current/developer-docs/getting-started/network-overview
+  /docs/current/developer-docs /docs/current/developer-docs/getting-started/network-overview
+  /docs/current/concepts/what-is-ic /docs/current/developer-docs/getting-started/network-overview
   /docs/current/developer-docs/setup/development-workflow /docs/current/developer-docs/getting-started/development-workflow
   /docs/current/developer-docs/setup/hello-world /docs/current/developer-docs/getting-started/hello-world
   /docs/current/developer-docs/setup/install/ /docs/current/developer-docs/getting-started/install/
@@ -544,7 +544,7 @@ const redirects = `
   /docs/integration/ledger-quick-start.html /docs/current/developer-docs/defi/tokens/ledger/setup/icp_ledger_setup
   /docs/current/developer-docs/integrations/storage/cost /docs/current/developer-docs/gas-cost
   /docs/token-holders/self-custody-quickstart.html /docs/current/developer-docs/defi/wallets/self-custody/self-custody-quickstart
-  /docs/current/developer-docs/overview/ /docs/current/developer-docs/getting-started/overview-of-icp
+  /docs/current/developer-docs/overview/ /docs/current/developer-docs/getting-started/network-overview
   /docs/current/developer-docs/smart-contracts/overview	/docs/current/developer-docs/smart-contracts/overview/introduction
   /docs/current/references/dfx-json-reference /docs/current/developer-docs/developer-tools/cli-tools/dfx-json-reference
   /docs/language-guide/language-manual.html	/docs/current/motoko/main/getting-started/motoko-introduction
@@ -581,8 +581,8 @@ const redirects = `
   /docs/candid-guide/candid-concepts.html	/docs/current/developer-docs/smart-contracts/candid/
   /docs/current/blog/features/vetkey-primer	/blog/features/vetkey-primer
   /docs/current/concepts/chain-key-technology/ /docs/current/developer-docs/multi-chain/overview
-  /docs/current/concepts/concepts-intro.html	/docs/current/developer-docs/getting-started/overview-of-icp
-  /docs/current/developer-docs/backend	/docs/current/developer-docs/getting-started/overview-of-icp
+  /docs/current/concepts/concepts-intro.html	/docs/current/developer-docs/getting-started/network-overview
+  /docs/current/developer-docs/backend	/docs/current/developer-docs/getting-started/network-overview
   /docs/current/developer-docs/backend/rust/rust-quickstart	/docs/current/developer-docs/backend/rust/
   /docs/current/developer-docs/best-practices/	/docs/current/developer-docs/smart-contracts/best-practices/general
   /docs/current/developer-docs/best-practices/considerations-for-nft-devs /docs/current/developer-docs/defi/nfts/overview
@@ -601,7 +601,7 @@ const redirects = `
   /docs/current/developer-docs/web-apps/application-frontends/custom-frontend /docs/current/developer-docs/web-apps/application-frontends/default-frontend
   /docs/current/developer-docs/security/rust-canister-development-security-best-practices /docs/current/developer-docs/security/security-best-practices/inter-canister-calls
   /docs/developers-guide/computation-and-storage-costs.html /docs/current/developer-docs/gas-cost
-  /docs/current/developer-docs/getting-started/ /docs/current/developer-docs/getting-started/overview-of-icp
+  /docs/current/developer-docs/getting-started/ /docs/current/developer-docs/getting-started/network-overview
   /docs/current/developer-docs/defi/wallets/workflow /docs/current/developer-docs/defi/wallets/overview
   /docs/current/developer-docs/backend/rust/infrastructure /docs/current/developer-docs/backend/rust/
   /docs/current/developer-docs/smart-contracts/deploy/larger-wasm /docs/current/developer-docs/smart-contracts/install
@@ -624,6 +624,9 @@ const redirects = `
   /docs/current/developer-docs/multi-chain/faq/cketh-faq /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview
   /docs/current/developer-docs/multi-chain/faq/ckerc20-faq /docs/current/developer-docs/multi-chain/chain-key-tokens/ckerc20/overview
   /docs/current/developer-docs/multi-chain/faq/signatures-faq /docs/current/references/t-sigs-how-it-works
+  /docs/current/developer-docs/integrations/rosetta/staking-tutorial/ /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_icp
+  /docs/current/developer-docs/getting-started/cycles/cycles-wallet /docs/current/developer-docs/defi/cycles/cycles-wallet
+  /docs/current/developer-docs/getting-started/quickstart/juno-quickstart /docs/current/developer-docs/web-apps/frameworks/juno
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
