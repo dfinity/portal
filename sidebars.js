@@ -94,36 +94,42 @@ const sidebars = {
           items: [
             "developer-docs/smart-contracts/overview/introduction",
             "developer-docs/smart-contracts/overview/inside-canisters",
-            "developer-docs/smart-contracts/overview/canister-lifecycle",
             "developer-docs/smart-contracts/overview/trust-in-canisters",
           ],
         },
+        "developer-docs/smart-contracts/overview/canister-lifecycle",
         {
           type: "category",
-          label: "Write",
+          label: "Create & install",
           items: [
             {
-              label: "Overview",
-              type: "doc",
-              id: "developer-docs/smart-contracts/write/overview",
+              type: "category",
+              label: "Write",
+              items: [
+                {
+                  label: "Overview",
+                  type: "doc",
+                  id: "developer-docs/smart-contracts/write/overview",
+                },
+                "developer-docs/smart-contracts/write/resources",
+              ],
             },
-            "developer-docs/smart-contracts/write/resources",
+            {
+              type: "doc",
+              label: "Create",
+              id: "developer-docs/smart-contracts/create",
+            },
+            {
+              type: "doc",
+              label: "Compile",
+              id: "developer-docs/smart-contracts/compile",
+            },
+            {
+              type: "doc",
+              label: "Install",
+              id: "developer-docs/smart-contracts/install",
+            },
           ],
-        },
-        {
-          type: "doc",
-          label: "Create",
-          id: "developer-docs/smart-contracts/create",
-        },
-        {
-          type: "doc",
-          label: "Compile",
-          id: "developer-docs/smart-contracts/compile",
-        },
-        {
-          type: "doc",
-          label: "Install",
-          id: "developer-docs/smart-contracts/install",
         },
         {
           type: "category",
