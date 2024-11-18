@@ -19,11 +19,11 @@ ICP tokens are important because they can be converted into cycles and used to p
 
 ## ICP tokens
 
-ICP is the Internet Computer's native utility token. Its value is determined on the open market. ICP tokens play a key role in both the governance and the economics of the Internet Computer.
+ICP is the Internet Computer's native utility token. Its value is determined on the open market. ICP tokens play a key role in the governance and economics of the Internet Computer.
 
 There are three primary ways to use ICP tokens:
 
-- Convert ICP into [cycles](#what-are-cycles), which are required to pay for a <GlossaryTooltip>canister's</GlossaryTooltip> resources. **All dapp developers will need to acquire cycles if they want to deploy their canister onto the mainnet.**
+- Convert ICP into [cycles](#what-are-cycles), which are required to pay for a <GlossaryTooltip>canister's</GlossaryTooltip> resources. **All dapp developers must acquire cycles to deploy their canister onto the mainnet.**
 
 - Trade ICP for other assets, such as other tokens.
 
@@ -46,7 +46,7 @@ While the value of an ICP token is volatile, cycles are not. Cycles are pegged t
 
 ## Other token types
 
-The Internet Computer supports creating and deploying your own custom fungible or non-fungible tokens through the [ICRC standards](/docs/current/developer-docs/defi/tokens/token-standards). Each ICRC standard defines a set of parameters that must be met to adhere to the standard. Not all ICRC standards are for tokens; some of them are for notifications, architectures, or other network functions.
+The Internet Computer supports creating and deploying custom fungible or non-fungible tokens through the [ICRC standards](/docs/current/developer-docs/defi/tokens/token-standards). Each ICRC standard defines a set of parameters that must be met to adhere to the standard. Not all ICRC standards are for tokens; some are for notifications, architectures, or other network functions.
 
 ## What is a ledger?
 
@@ -58,7 +58,7 @@ Each token on the Internet Computer has its **own** ledger. This means that ther
 
 ## Obtaining cycles
 
-You will need to obtain ICP tokens, then convert them into cycles using `dfx`. However, you may also obtain a small amount of free cycles from the [cycles faucet](https://anv4y-qiaaa-aaaal-qaqxq-cai.ic0.app/).
+You need to obtain ICP tokens, then convert them into cycles using `dfx`. However, you may also get a small number of free cycles from the [cycles faucet](https://anv4y-qiaaa-aaaal-qaqxq-cai.ic0.app/).
 
 ### 1. Get your account's ledger account ID.
 
@@ -94,7 +94,7 @@ dfx ledger balance --network=ic
 
 </details>
 
-Converting ICP to cycles is done through the **cycles ledger**, a ledger canister that enables developer identities to directly convert, hold, send, and receive cycles.
+Converting ICP to cycles is done through the **cycles ledger**, a ledger canister that enables developer identities to convert, hold, send, and receive cycles.
 
 The price of cycles is fixed against the price of [XDR](/docs/current/references/glossary#xdr), where 1 trillion cycles equals 1 XDR.
 
@@ -142,6 +142,6 @@ dfx cycles balance --network=ic
 
 ## Next step
 
-Next, its time to write the code for a smart contract.
+Next, it's time to write the code for a smart contract.
 
 - [x] [Write smart contracts](/docs/current/developer-docs/getting-started/write-smart-contracts).
