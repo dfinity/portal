@@ -16,13 +16,13 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 ## Overview
 
-Canisters are an enhanced type of smart contract. Before a canister is deployed to ICP, the canister's code is compiled into a WebAssembly (Wasm) program, providing it with the ability to store persistent data, be managed by entities such as DAOs, host entire applications, and more. Each canister has the following components:
+Canisters are an enhanced type of smart contract. Before a canister is deployed to ICP, the canister's code is compiled into a WebAssembly (Wasm) program, enabling it to store persistent data, be managed by entities such as DAOs, host entire applications, and more. Each canister has the following components:
 
 <div class="text--center">
 <img src="/img/docs/inside-canister.png" alt="Canister" width="600"/>
 </div>
 
-[Learn more about each component of a canister](/docs/current/developer-docs/smart-contracts/overview/inside-canisters).
+[Learn more about canister components](/docs/current/developer-docs/smart-contracts/overview/inside-canisters).
 
 ## Canister development kits (CDKs)
 
@@ -244,7 +244,7 @@ actor {
 
 ### 3. Add a timer.
 
-At this point, the canister code generates a single random number and stores it in a variable. You can retrieve that value with a query function. To demonstrate another feature of ICP, let's add a timer that generates a new random number every 5 seconds.
+At this point, the canister code generates a random number and stores it in a variable. You can retrieve that value with a query function. To demonstrate another feature of ICP, let's add a timer that generates a new random number every 5 seconds.
 
 Timers are used to automatically execute actions after a specified interval or delay, enabling canisters to perform autonomous tasks.
 
@@ -416,7 +416,7 @@ actor {
 }
 ```
 
-This HTTP outcalls code references custom types, as indicated by the import statement `import Types "Types";` and code statements like `Types.CanisterHttpResponsePayload`. Custom type definitions can be created from within the `main.mo` file, but for types that may be used in several different source code files, it can be beneficial to define them in a single `Types.mo` file, then import them as needed.
+This HTTP outcalls code references custom types, as indicated by the import statement `import Types "Types";` and code statements like `Types.CanisterHttpResponsePayload`. Custom type definitions can be created from within the `main.mo` file, but for types that may be used in several different source code files, it can be beneficial to define them in a single `Types.mo` file, and then import them as needed.
 
 Create a new file called `src/PROJECT_NAME_backend/Types.mo` that contains the following:
 
