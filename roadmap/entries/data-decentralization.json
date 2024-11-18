@@ -38,13 +38,26 @@
       "imported": true
     },
     {
+      "title": "Incident Handling under the New Boundary Node Architecture",
+      "overview": "To protect the core of the Internet Computer, processes must be established to configure temporary rate limits at API boundary nodes during incidents.",
+      "forum": "https://forum.dfinity.org/t/incident-handling-with-the-new-boundary-node-architecture/36390",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/134031",
+      "docs": "",
+      "eta": "",
+      "status": "in_progress",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Solenoid",
+      "imported": true
+    },
+    {
       "title": "Community-owned HTTP Gateways",
       "overview": "As part of the new boundary-node architecture, the HTTP gateway is turned into a standalone service, which is easily deployable by anyone, including end users.",
       "forum": "https://forum.dfinity.org/t/boundary-node-roadmap/15562",
       "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
-      "docs": "",
+      "docs": "https://github.com/dfinity/ic-gateway",
       "eta": "",
-      "status": "upcoming",
+      "status": "in_progress",
       "is_community": false,
       "in_beta": false,
       "milestone_id": "Solenoid"
@@ -114,17 +127,6 @@
       "in_beta": false
     },
     {
-      "title": "Public access to a subset of node metrics",
-      "overview": "Giving node providers access to a subnet of node metrics to help them find out what is failing in case of node issues.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "in_progress",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
       "title": "Off-chain observability stack for Node Providers",
       "overview": "Observability solution for Node Providers to enable them to independently triage node health and take corrective action in case of problems.",
       "forum": "",
@@ -133,18 +135,6 @@
       "eta": "",
       "status": "in_progress",
       "is_community": false,
-      "in_beta": false,
-      "imported": true
-    },
-    {
-      "title": "Alerting of NP in case of Node Failure",
-      "overview": "Alert Node Providers if one of their nodes starts misbehaving or underperforming.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "in_progress",
-      "is_community": true,
       "in_beta": false,
       "imported": true
     },
@@ -227,13 +217,13 @@
       "in_beta": false
     },
     {
-      "title": "Penalties for non-compliant node providers",
+      "title": "Performance-based node provider rewards",
       "overview": "Non-compliant node providers are penalized economically or excluded from future network participation. This creates a cryptoeconomic incentive to encourage honest node provider behaviour.",
-      "forum": "",
+      "forum": "https://forum.dfinity.org/t/performance-based-node-rewards/35208",
       "proposal": "",
       "docs": "",
       "eta": "",
-      "status": "",
+      "status": "in_progress",
       "is_community": false,
       "in_beta": false
     },

@@ -119,6 +119,29 @@
       "is_community": false,
       "in_beta": false,
       "imported": true
+    },
+    {
+      "title": "Alerting of NP in case of Node Failure",
+      "overview": "Alert Node Providers if one of their nodes starts misbehaving or underperforming.",
+      "forum": "",
+      "proposal": "",
+      "docs": "https://wiki.internetcomputer.org/wiki/Node_Provider_Alerting_Options",
+      "eta": "",
+      "status": "deployed",
+      "is_community": true,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Public access to a subset of node metrics",
+      "overview": "Giving node providers access to a subnet of node metrics to help them find out what is failing in case of node issues.",
+      "forum": "",
+      "proposal": "",
+      "docs": "https://github.com/dfinity/ic-observability-stack",
+      "eta": "",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false
     }
   ]
 }
