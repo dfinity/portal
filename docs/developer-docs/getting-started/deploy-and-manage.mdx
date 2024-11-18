@@ -75,9 +75,9 @@ You can interact with the canister's public methods either in your web browser t
 
 ## Upgrades
 
-Canisters can be upgraded, allowing for the same canister ID to be retained for an application. Upgrades preserve the state of a canister while allowing you to change the code. However, canister upgrades clear the canister's Wasm memory. Any data not stored in [stable memory](/docs/current/developer-docs/smart-contracts/maintain/storage) will be removed.
+Canisters can be upgraded, allowing the same canister ID to be retained for an application. Upgrades preserve the state of a canister while allowing you to change the code. However, canister upgrades clear the canister's Wasm memory. Any data not stored in [stable memory](/docs/current/developer-docs/smart-contracts/maintain/storage) will be removed.
 
-In your backend canister source code file, make a change, such as increasing the timer to 60 seconds rather than 30 seconds. Save the file.
+In your backend canister source code file, make a change such as increasing the timer to 60 seconds rather than 30 seconds. Save the file.
 
 Then, upgrade your canister to use the edited code:
 
