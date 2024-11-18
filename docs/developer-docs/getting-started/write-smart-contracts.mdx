@@ -214,7 +214,7 @@ actor {
     // This function calls the raw_rand method of the management canister.
     // Then it uses the random bytes returned to generate a random number.
     private func generateNewNumber() : async () {
-        let randomBytes = await CallRand.raw_rand();
+        let randomBytes = await IC.raw_rand();
         if (randomBytes.size() > 0) {
             // Use the first byte to generate a number between 0 and 255
             let bytes : [Nat8] = Blob.toArray(randomBytes);
