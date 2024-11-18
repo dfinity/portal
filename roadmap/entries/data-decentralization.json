@@ -14,17 +14,6 @@
       "in_beta": false
     },
     {
-      "title": "API Boundary Nodes (NNS controlled)",
-      "overview": "In the new boundary-node architecture, API boundary nodes are placed under the full control of the NNS and function as the edge of the IC.",
-      "status": "in_progress",
-      "forum": "https://forum.dfinity.org/t/boundary-node-roadmap/15562",
-      "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Solenoid"
-    },
-    {
       "title": "HTTP Gateways",
       "overview": "The HTTP Gateway becomes a standalone component as part of the new Boundary Node architecture.",
       "forum": "https://forum.dfinity.org/t/boundary-node-roadmap/15562",

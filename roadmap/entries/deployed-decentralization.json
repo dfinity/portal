@@ -135,13 +135,24 @@
     {
       "title": "Public access to a subset of node metrics",
       "overview": "Giving node providers access to a subnet of node metrics to help them find out what is failing in case of node issues.",
-      "forum": "",
+      "forum": "https://forum.dfinity.org/t/public-internet-computer-ic-node-metrics-available-now/32961",
       "proposal": "",
       "docs": "https://github.com/dfinity/ic-observability-stack",
       "eta": "",
       "status": "deployed",
       "is_community": false,
       "in_beta": false
+    },
+    {
+      "title": "API Boundary Nodes (NNS controlled)",
+      "overview": "In the new boundary-node architecture, API boundary nodes are placed under the full control of the NNS and function as the edge of the IC.",
+      "status": "deployed",
+      "forum": "https://forum.dfinity.org/t/boundary-node-roadmap/15562",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
+      "docs": "https://github.com/dfinity/ic/tree/master/rs/boundary_node/ic_boundary",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Solenoid"
     }
   ]
 }
