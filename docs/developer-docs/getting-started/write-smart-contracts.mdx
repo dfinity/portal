@@ -44,7 +44,7 @@ Available CDKs include:
 
 ## Creating a project
 
-Before you can begin writing canister code, you need to create a project.
+Before writing canister code, you need to create a project.
 
 <AdornedTabs>
 <TabItem value="create-new" label="Create a new project" default={true}>
@@ -56,7 +56,7 @@ dfx new PROJECT_NAME --type=motoko
 cd PROJECT_NAME
 ```
 
-Options for the `--type` flag are `motoko`, `rust`, 'azle', and `kybra`.
+Options for the `--type` flag are `motoko`, `rust`, `azle`, and `kybra`.
 
 :::caution
 Using [Rust](/docs/current/developer-docs/backend/rust/dev-env), [Azle](/docs/current/developer-docs/backend/typescript/), or [Kybra](/docs/current/developer-docs/backend/python/) may require additional dependencies to be installed if you have not developed with those languages in your environment before. View their corresponding documentation for more information.
@@ -109,9 +109,9 @@ You should be in a directory that contains a file called `dfx.json`. This file i
 
 The default project architecture used by `dfx new` and ICP Ninja projects contains two canisters, a `backend` and a `frontend`.
 
-The `backend` canister is used to store the dapp's functions and core logic.
+The `backend` canister stores the dapp's functions and core logic.
 
-The `frontend` canister is used to store the dapp's frontend assets. This includes files such as HTML, CSS, JavaScript, React, images, and videos.
+The `frontend` canister stores the app's frontend assets, including files such as HTML, CSS, JavaScript, React, images, and videos.
 
 <div class="text--center">
   <img
@@ -309,7 +309,7 @@ actor {
 
 ### 4. Retrieve data.
 
-HTTPS outcalls can be used to obtain data from any external source, including other blockchains, traditional Web2 APIs, and other web services. When HTTPS outcalls are used locally, the returned result is not validated since the local replica is only a single node. HTTPS outcalls used on the mainnet, however, validate the returned result through the subnet's consensus, providing security that the data obtained has not been maliciously tampered with during transport.
+HTTPS outcalls can obtain data from any external source, including other blockchains, traditional Web2 APIs, and other web services. When HTTPS outcalls are used locally, the returned result is not validated since the local replica is only a single node. HTTPS outcalls used on the mainnet validate the returned result through the subnet's consensus, providing security that the data obtained has not been maliciously tampered with during transport.
 
 HTTPS outcalls currently support `GET` and `POST` HTTPS methods.
 
@@ -360,7 +360,7 @@ actor {
         currentRandomNumber
     };
 
-    // Initialize timer to generate a new number every 5 seconds.
+    // Initialize a timer to generate a new number every 5 seconds.
     let timer = Timer.recurringTimer<system>(#seconds 5, generateNewNumber);
 
     // highlight-start
