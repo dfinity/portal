@@ -332,11 +332,6 @@ actor {
     // Stable variables persist across canister upgrades.
     stable var currentRandomNumber : Nat = 0;
 
-    // The management canister's principal ID is "aaaaa-aa".
-    // This code provides the logic to call the raw_rand method of the management canister.
-    let CallRand : actor {
-      raw_rand() : async Blob;
-    } = actor "aaaaa-aa";
 
     // Create a function to generate a new random number.
     // This function calls the raw_rand method of the management canister.
