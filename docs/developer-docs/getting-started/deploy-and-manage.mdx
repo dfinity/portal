@@ -101,7 +101,11 @@ Redeploy your upgraded canister to test it:
 dfx deploy PROJECT_NAME_backend --network=local
 ```
 
-Confirm that the change you made results in the expected functionality or behavior.
+Confirm that the change you made results in the expected functionality or behavior. Then, stop the canister:
+
+```
+dfx canister stop PROJECT_NAME_backend --network=local
+```
 
 ## Deploy to the mainnet
 
@@ -211,13 +215,13 @@ Even static canisters will eventually need to have their cycles balance replenis
 Anyone can top up a canister. You do not need to be a controller of the canister to send it cycles.
 :::
 
-To top up a canister:
+To top up a canister, replace AMOUNT with the number of cycles to top up the canister with (i.e., `3T` to send 3 trillion cycles):
 
 ```
 dfx cycles top-up PROJECT_NAME_backend AMOUNT --network ic
 ```
 
-To check that your top up was successful, check the balance of the canister with `dfx canister status PROJECT_NAME_backend --network ic`.
+To check that your top up was successful, check the balance of the canister with `dfx canister status PROJECT_NAME_backend --network=ic`.
 
 ### Cycles management tools
 
@@ -308,6 +312,10 @@ dfx canister snapshot list PROJECT_NAME_backend --network=ic
 
 Deleting a canister removes the canister identifier, code, and state. The canister's source code will still be stored in your local environment and can be deployed as a new canister at any time. A canister must be stopped before it can be deleted.
 
+:::tip
+Any cycles remaining in the canister's balance will be returned to your developer identity.
+:::
+
 ```
 dfx canister delete PROJECT_NAME_backend --network=ic
 ```
@@ -316,7 +324,7 @@ dfx canister delete PROJECT_NAME_backend --network=ic
 
 To stop `dfx`, simply use the `dfx stop` command.
 
-If there are unresponsive `dfx` processes that are not stopped by `dfx stop`, you can use `dfx killall` to forcibly end them.
+For unresponsive `dfx` processes that are not stopped by `dfx stop`, you can use `dfx killall` to forcibly end them.
 
 ## Getting help
 
