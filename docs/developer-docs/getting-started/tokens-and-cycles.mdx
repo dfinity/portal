@@ -77,12 +77,12 @@ b0d7beee54be8679a42e999218a16a0d396f223d7e44d259ac089848c1b820bf
 
 ### 2. Send ICP tokens to this ledger account ID.
 
-You can obtain ICP tokens from an [exchange](https://www.coingecko.com/en/exchanges) or through a [developer grant](https://dfinity.org/grants). If you are using an exchange, initiate a withdraw transaction, then enter the ledger account ID as the "destination" address to send ICP tokens to.
+You can obtain ICP tokens from an [exchange](https://www.coingecko.com/en/exchanges) or through a [developer grant](https://dfinity.org/grants). If you are using an exchange, initiate a withdrawal transaction, then enter the ledger account ID as the "destination" address to send ICP tokens to.
 
 ### 3. Check the balance.
 
 ```
-dfx ledger balance --network ic
+dfx ledger balance --network=ic
 ```
 
 <details>
@@ -102,8 +102,10 @@ Cycles are measured in very large numbers, such as billions and trillions. When 
 
 ### 4. Convert ICP into cycles.
 
+Replace `AMOUNT` with the number of ICP tokens you want to convert into cycles.
+
 ```
-dfx cycles convert --amount AMOUNT --network ic
+dfx cycles convert --amount AMOUNT --network=ic
 ```
 
 <details>
@@ -126,7 +128,7 @@ The amount of cycles that your canister will use depends on a variety of factors
 ### 5. Confirm the balance.
 
 ```
-dfx cycles balance --network ic
+dfx cycles balance --network=ic
 ```
 
 <details>
