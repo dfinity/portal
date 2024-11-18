@@ -359,11 +359,6 @@ actor {
     // Define a public function to get the daily stats about ICP from the ICP API.
     public func getIcpInfo() : async Text {
 
-      // This code provides the logic to call the http_request method of the management canister.
-      let HttpRequest : actor {
-        http_request(Types.HttpRequestArgs) : async Types.HttpResponsePayload
-      } = actor "aaaaa-aa";
-
       // Define the API endpoints to obtain data from.
       // This example uses the IC API, but any API endpoint can be used.
       let url = "https://ic-api.internetcomputer.org/api/v3/daily-stats?format=json";
@@ -373,7 +368,7 @@ actor {
       };
 
       // Define the http_request components.
-      let http_request : Types.HttpRequestArgs = {
+      let http_request = {
           url = url;
           max_response_bytes = null; //optional for request
           headers = [];
@@ -385,10 +380,10 @@ actor {
       // HTTP outcalls require cycles to be attached to the call.
       Cycles.add<system>(20_949_972_000);
 
-      // Define the http_response
-      let http_response : Types.HttpResponsePayload = await HttpRequest.http_request(http_request);
+      // Execute the HTTP outcall.
+      let http_response = await IC.http_request(http_request);
 
-      let response_body: Blob = Blob.fromArray(http_response.body);
+      let response_body: Blob = httpResponse.body;
       switch (Text.decodeUtf8(response_body)) {
           case null { "No value returned" };
           case (?y) { y };
@@ -396,7 +391,7 @@ actor {
     };
 
     // Define a transform function to return the status response and body.
-    public query func transform(raw : Types.TransformArgs) : async Types.CanisterHttpResponsePayload {
+    public query func transform(raw : Types.TransformArgs) : async IC.http_request_result {
         {
             status = raw.response.status;
             body = raw.response.body;
@@ -407,68 +402,31 @@ actor {
 }
 ```
 
-This HTTP outcalls code references custom types, as indicated by the import statement `import Types "Types";` and code statements like `Types.CanisterHttpResponsePayload`. Custom type definitions can be created from within the `main.mo` file, but for types that may be used in several different source code files, it can be beneficial to define them in a single `Types.mo` file, and then import them as needed.
+This HTTP outcalls code references custom types, as indicated by the import statement `import Types "Types";` and code statements like `Types.TransformContext`. Custom type definitions can be created from within the `main.mo` file, but for types that may be used in several different source code files, it can be beneficial to define them in a single `Types.mo` file, and then import them as needed.
 
 Create a new file called `src/PROJECT_NAME_backend/Types.mo` that contains the following:
 
 ```motoko title="src/PROJECT_NAME_backend/Types.mo"
+import IC "ic:aaaaa-aa";
+
 module Types {
 
   public type Timestamp = Nat64;
 
-  // Define the type that describes the request arguments for an HTTPS outcall.
-  public type HttpRequestArgs = {
-    url : Text;
-    max_response_bytes : ?Nat64;
-    headers : [HttpHeader];
-    body : ?[Nat8];
-    method : HttpMethod;
-    transform : ?TransformRawResponseFunction;
-  };
-
-  public type HttpHeader = {
-    name : Text;
-    value : Text;
-  };
-
-  public type HttpMethod = {
-    #get;
-    #post;
-    #head;
-  };
-
-  public type HttpResponsePayload = {
-    status : Nat;
-    headers : [HttpHeader];
-    body : [Nat8];
-  };
-
   // HTTPS outcalls have an optional "transform" key. These two types help describe it.
   // The transform function may transform the body in any way, add or remove headers, modify headers, etc.
 
-  public type TransformRawResponseFunction = {
-    function : shared query TransformArgs -> async HttpResponsePayload;
-    context : Blob;
-  };
-
   public type TransformArgs = {
-    response : HttpResponsePayload;
+    response : IC.http_request_result;
     context : Blob;
-  };
-
-  public type CanisterHttpResponsePayload = {
-    status : Nat;
-    headers : [HttpHeader];
-    body : [Nat8];
   };
 
   public type TransformContext = {
-    function : shared query TransformArgs -> async HttpResponsePayload;
+    function : shared query TransformArgs -> async IC.http_request_result;
     context : Blob;
   };
 
 }
-
 ```
 
 </TabItem>
@@ -510,89 +468,81 @@ import Cycles "mo:base/ExperimentalCycles";
 import Text "mo:base/Text";
 import Types "Types";
 
+// The management canister's principal ID is "aaaaa-aa".
+import IC "ic:aaaaa-aa";
+
 actor {
-    // Create a stable variable to store the current random number.
-    // Stable variables persist across canister upgrades.
-    stable var currentRandomNumber : Nat = 0;
-    stable var proposalId : Text = "1";
+  // Create a stable variable to store the current random number.
+  // Stable variables persist across canister upgrades.
+  stable var currentRandomNumber : Nat = 0;
+  stable var proposalId : Text = "1";
 
-    // The management canister's principal ID is "aaaaa-aa".
-    // This code provides the logic to call the raw_rand method of the management canister.
-    let CallRand : actor {
-      raw_rand() : async Blob;
-    } = actor "aaaaa-aa";
-
-    // Create a function to generate a new random number.
-    // This function calls the raw_rand method of the management canister.
-    // Then it uses the random bytes returned to generate a random number.
-    private func generateNewNumber() : async () {
-        let randomBytes = await CallRand.raw_rand();
-        if (randomBytes.size() > 0) {
-            // Use the first byte to generate a number between 133000 and 133255 (recent proposal numbers)
-            let bytes : [Nat8] = Blob.toArray(randomBytes);
-            currentRandomNumber := Nat8.toNat(bytes[0]) + 133000;
-            proposalId := Nat.toText(currentRandomNumber);
-        };
-    };
-
-    // Define a public function to get proposal information.
-    public func getIcpInfo() : async Text {
-
-      // This code provides the logic to call the http_request method of the management canister.
-      let HttpRequest : actor {
-        http_request(Types.HttpRequestArgs) : async Types.HttpResponsePayload
-      } = actor "aaaaa-aa";
-
-      // Define the API endpoints to obtain data from.
-      // This example uses the IC API, but any API endpoint can be used.
-      let url = "https://ic-api.internetcomputer.org/api/v3/proposals/" # proposalId ;
-      let transform_context : Types.TransformContext = {
-        function = transform;
-        context = Blob.fromArray([]);
+  // Create a function to generate a new random number.
+  // This function calls the raw_rand method of the management canister.
+  // Then it uses the random bytes returned to generate a random number.
+  private func generateNewNumber() : async () {
+      let randomBytes = await CallRand.raw_rand();
+      if (randomBytes.size() > 0) {
+          // Use the first byte to generate a number between 133000 and 133255 (recent proposal numbers)
+          let bytes : [Nat8] = Blob.toArray(randomBytes);
+          currentRandomNumber := Nat8.toNat(bytes[0]) + 133000;
+          proposalId := Nat.toText(currentRandomNumber);
       };
+  };
 
-      // Define the http_request components.
-      let http_request : Types.HttpRequestArgs = {
-          url = url;
-          max_response_bytes = null; //optional for request
-          headers = [];
-          body = null; //optional for request
-          method = #get;
-          transform = ?transform_context;
+  // Define a public function to get proposal information.
+  public func getIcpInfo() : async Text {
+
+    // Define the API endpoints to obtain data from.
+    // This example uses the IC API, but any API endpoint can be used.
+    let url = "https://ic-api.internetcomputer.org/api/v3/proposals/" # proposalId ;
+    let transform_context = {
+      function = transform;
+      context = Blob.fromArray([]);
+    };
+
+    // Define the http_request components.
+    let http_request = {
+        url = url;
+        max_response_bytes = null; //optional for request
+        headers = [];
+        body = null; //optional for request
+        method = #get;
+        transform = ?transform_context;
+    };
+
+    // HTTP outcalls require cycles are attached to the call.
+    Cycles.add<system>(20_949_972_000);
+
+    // Execute the HTTPS outcall.
+    let http_response = await IC.http_request(http_request);
+
+    let response_body: Blob = Blob.fromArray(http_response.body);
+    switch (Text.decodeUtf8(response_body)) {
+        case null { "No value returned" };
+        case (?y) { y };
+    };
+  };
+
+  // Define a transform function to return the status response and body.
+  public query func transform(raw : Types.TransformArgs) : async IC.http_request_result {
+      {
+          status = raw.response.status;
+          body = raw.response.body;
+          headers = [ ];
       };
+  };
 
-      // HTTP outcalls require cycles are attached to the call.
-      Cycles.add<system>(20_949_972_000);
+  private func printResults() : async () {
+    Debug.print("Generated new random proposal number: " # Nat.toText(currentRandomNumber));
+    let result : Text = await getIcpInfo();
+    Debug.print("Proposal info obtained through HTTPS outcall: " # result);
+  };
 
-      // Define the http_response
-      let http_response : Types.HttpResponsePayload = await HttpRequest.http_request(http_request);
-
-      let response_body: Blob = Blob.fromArray(http_response.body);
-      switch (Text.decodeUtf8(response_body)) {
-          case null { "No value returned" };
-          case (?y) { y };
-      };
-    };
-
-    // Define a transform function to return the status response and body.
-    public query func transform(raw : Types.TransformArgs) : async Types.CanisterHttpResponsePayload {
-        {
-            status = raw.response.status;
-            body = raw.response.body;
-            headers = [ ];
-        };
-    };
-
-    private func printResults() : async () {
-      Debug.print("Generated new random proposal number: " # Nat.toText(currentRandomNumber));
-      let result : Text = await getIcpInfo();
-      Debug.print("Proposal info obtained through HTTPS outcall: " # result);
-    };
-
-    // Initialize timer to generate new number every 30 seconds
-    let timer1 = Timer.recurringTimer<system>(#seconds 30, generateNewNumber);
-    // Initialize timer to send an HTTPS outcall and print the results every 32 seconds
-    let timer2 = Timer.recurringTimer<system>(#seconds 32, printResults);
+  // Initialize timer to generate new number every 30 seconds
+  let timer1 = Timer.recurringTimer<system>(#seconds 30, generateNewNumber);
+  // Initialize timer to send an HTTPS outcall and print the results every 32 seconds
+  let timer2 = Timer.recurringTimer<system>(#seconds 32, printResults);
 }
 ```
 
