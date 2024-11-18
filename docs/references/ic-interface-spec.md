@@ -1416,15 +1416,15 @@ The following sections describe various System API functions, also referred to a
     ic0.msg_reply : () -> ();                                                   // U RQ NRQ CQ Ry Rt CRy CRt
     ic0.msg_reject : (src : i32, size : i32) -> ();                             // U RQ NRQ CQ Ry Rt CRy CRt
 
-    ic0.msg_cycles_available : () -> i64;                                       // U Rt Ry
-    ic0.msg_cycles_available128 : (dst : i32) -> ();                            // U Rt Ry
+    ic0.msg_cycles_available : () -> i64;                                       // U RQ Rt Ry
+    ic0.msg_cycles_available128 : (dst : i32) -> ();                            // U RQ Rt Ry
     ic0.msg_cycles_refunded : () -> i64;                                        // Rt Ry
     ic0.msg_cycles_refunded128 : (dst : i32) -> ();                             // Rt Ry
-    ic0.msg_cycles_accept : (max_amount : i64) -> (amount : i64);               // U Rt Ry
+    ic0.msg_cycles_accept : (max_amount : i64) -> (amount : i64);               // U RQ Rt Ry
     ic0.msg_cycles_accept128 : (max_amount_high : i64, max_amount_low: i64, dst : i32)
-                           -> ();                                               // U Rt Ry
+                           -> ();                                               // U RQ Rt Ry
 
-    ic0.cycles_burn128 : (amount_high : i64, amount_low : i64, dst : i32) -> ();               // I G U Ry Rt C T
+    ic0.cycles_burn128 : (amount_high : i64, amount_low : i64, dst : i32) -> ();               // I G U RQ Ry Rt C T
 
     ic0.canister_self_size : () -> i32;                                         // *
     ic0.canister_self_copy : (dst : i32, offset : i32, size : i32) -> ();       // *
@@ -1635,7 +1635,7 @@ This function allows a canister to find out if it is running, stopping or stoppe
 
 ### Canister version {#system-api-canister-version}
 
-For each canister, the system maintains a *canister version*. Upon canister creation, it is set to 0, and it is **guaranteed** to be incremented upon every change of the canister's code, settings, running status (Running, Stopping, Stopped), and memory (WASM and stable memory), i.e., upon every successful management canister call of methods `update_settings`, `load_canister_snapshot`, `install_code`, `install_chunked_code`, `uninstall_code`, `start_canister`, and `stop_canister` on that canister, code uninstallation due to that canister running out of cycles, canister's running status transitioning from Stopping to Stopped, and successful execution of update methods, response callbacks, heartbeats, and global timers. The system can arbitrarily increment the canister version also if the canister's code, settings, running status, and memory do not change.
+For each canister, the system maintains a *canister version*. Upon canister creation, it is set to 0, and it is **guaranteed** to be incremented upon every change of the canister's code, settings, running status (Running, Stopping, Stopped), cycles balance, and memory (WASM and stable memory), i.e., upon every successful management canister call of methods `update_settings`, `load_canister_snapshot`, `install_code`, `install_chunked_code`, `uninstall_code`, `start_canister`, and `stop_canister` on that canister, code uninstallation due to that canister running out of cycles, canister's running status transitioning from Stopping to Stopped, and successful execution of update methods, replicated query methods, response callbacks, heartbeats, and global timers. The system can arbitrarily increment the canister version also if the canister's code, settings, running status, and memory do not change.
 
 -   `ic0.canister_version : () → i64`
 
@@ -3161,6 +3161,7 @@ The [WebAssembly System API](#system-api) is relatively low-level, and some of i
     }
     QueryFunc = WasmState -> Trap { cycles_used : Nat; } | Return {
       response : Response;
+      cycles_accepted : Nat;
       cycles_used : Nat;
     }
     CompositeQueryFunc = WasmState -> Trap { cycles_used : Nat; } | Return {
@@ -3180,35 +3181,36 @@ The [WebAssembly System API](#system-api) is relatively low-level, and some of i
     AvailableCycles = Nat
     RefundedCycles = Nat
 
-        CanisterModule = {
-          init : (CanisterId, Arg, CallerId, Env) -> Trap { cycles_used : Nat; } | Return {
-            new_state : WasmState;
-            new_certified_data : NoCertifiedData | Blob;
-            new_global_timer : NoGlobalTimer | Nat;
-            cycles_used : Nat;
-          }
-          pre_upgrade : (WasmState, Principal, Env) -> Trap { cycles_used : Nat; } | Return {
-            new_state : WasmState;
-            new_certified_data : NoCertifiedData | Blob;
-            cycles_used : Nat;
-          }
-          post_upgrade : (WasmState, Arg, CallerId, Env) -> Trap { cycles_used : Nat; } | Return {
-            new_state : WasmState;
-            new_certified_data : NoCertifiedData | Blob;
-            new_global_timer : NoGlobalTimer | Nat;
-            cycles_used : Nat;
-          }
-          update_methods : MethodName ↦ ((Arg, CallerId, Env, AvailableCycles) -> UpdateFunc)
-          query_methods : MethodName ↦ ((Arg, CallerId, Env) -> QueryFunc)
-          composite_query_methods : MethodName ↦ ((Arg, CallerId, Env) -> CompositeQueryFunc)
-          heartbeat : (Env) -> SystemTaskFunc
-          global_timer : (Env) -> SystemTaskFunc
-          callbacks : (Callback, Response, RefundedCycles, Env, AvailableCycles) -> UpdateFunc
-          composite_callbacks : (Callback, Response, Env) -> UpdateFunc
-          inspect_message : (MethodName, WasmState, Arg, CallerId, Env) -> Trap | Return {
-            status : Accept | Reject;
-          }
-        }
+    CanisterModule = {
+      init : (CanisterId, Arg, CallerId, Env) -> Trap { cycles_used : Nat; } | Return {
+        new_state : WasmState;
+        new_certified_data : NoCertifiedData | Blob;
+        new_global_timer : NoGlobalTimer | Nat;
+        cycles_used : Nat;
+      }
+      pre_upgrade : (WasmState, Principal, Env) -> Trap { cycles_used : Nat; } | Return {
+        new_state : WasmState;
+        new_certified_data : NoCertifiedData | Blob;
+        cycles_used : Nat;
+      }
+      post_upgrade : (WasmState, Arg, CallerId, Env) -> Trap { cycles_used : Nat; } | Return {
+        new_state : WasmState;
+        new_certified_data : NoCertifiedData | Blob;
+        new_global_timer : NoGlobalTimer | Nat;
+        cycles_used : Nat;
+      }
+      update_methods : MethodName ↦ ((Arg, CallerId, Env, AvailableCycles) -> UpdateFunc)
+      query_methods : MethodName ↦ ((Arg, CallerId, Env) -> QueryFunc)
+      composite_query_methods : MethodName ↦ ((Arg, CallerId, Env) -> CompositeQueryFunc)
+      heartbeat : (Env) -> SystemTaskFunc
+      global_timer : (Env) -> SystemTaskFunc
+      callbacks : (Callback, Response, RefundedCycles, Env, AvailableCycles) -> UpdateFunc
+      composite_callbacks : (Callback, Response, Env) -> UpdateFunc
+      inspect_message : (MethodName, WasmState, Arg, CallerId, Env) -> Trap | Return {
+        status : Accept | Reject;
+      }
+    }
+    ```
 
 This high-level interface presents a pure, mathematical model of a canister, and hides the bookkeeping required to provide the System API as seen in Section [Canister interface (System API)](#system-api).
 
@@ -4031,7 +4033,7 @@ Available = S.call_contexts[M.call_contexts].available_cycles
 )
 or
 ( M.entry_point = PublicMethod Name Caller Arg
-  F = query_as_update(Mod.query_methods[Name], Arg, Caller, Env)
+  F = query_as_update(Mod.query_methods[Name], Arg, Caller, Env, Available)
   New_canister_version = S.canister_version[M.receiver]
   Wasm_memory_limit = 0
 )
@@ -4181,8 +4183,8 @@ validate_sender_canister_version(new_calls, canister_version_from_system) =
 
 The functions `query_as_update` and `system_task_as_update` turns a query function (note that composite query methods cannot be called when executing a message during this transition) resp the heartbeat or global timer into an update function; this is merely a notational trick to simplify the rule:
 ```
-query_as_update(f, arg, env) = λ wasm_state →
-  match f(arg, env)(wasm_state) with
+query_as_update(f, arg, caller, env, available) = λ wasm_state →
+  match f(arg, caller, env, available)(wasm_state) with
     Trap trap → Trap trap
     Return res → Return {
       new_state = wasm_state;
@@ -4190,7 +4192,7 @@ query_as_update(f, arg, env) = λ wasm_state →
       new_certified_data = NoCertifiedData;
       new_global_timer = NoGlobalTimer;
       response = res.response;
-      cycles_accepted = 0;
+      cycles_accepted = res.cycles_accepted;
       cycles_used = res.cycles_used;
     }
     
@@ -6784,16 +6786,18 @@ Finally, we can specify the abstract `CanisterModule` that models a concrete Web
 
 -   The partial map `query_methods` of the `CanisterModule` is defined for all method names `method` for which the WebAssembly program exports a function `func` named `canister_query <method>`, and has value
     ```
-    query_methods[method] = λ (arg, caller, sysenv) → λ wasm_state →
+    query_methods[method] = λ (arg, caller, sysenv, available) → λ wasm_state →
       let es = ref {empty_execution_state with
           wasm_state = wasm_state;
           params = empty_params with { arg = arg; caller = caller; sysenv }
           balance = sysenv.balance
+          cycles_available = available
           context = Q
         }
       try func<es>() with Trap then Trap {cycles_used = es.cycles_used;}
       Return {
         response = es.response;
+        cycles_accepted = es.cycles_accepted;
         cycles_used = es.cycles_used;
       }
     ```
@@ -7090,12 +7094,12 @@ ic0.msg_reject<es>(src : i32, size : i32) =
   es.cycles_available := 0
 
 ic0.msg_cycles_available<es>() : i64 =
-  if es.context ∉ {U, Rt, Ry} then Trap {cycles_used = es.cycles_used;}
+  if es.context ∉ {U, RQ, Rt, Ry} then Trap {cycles_used = es.cycles_used;}
   if es.cycles_available >= 2^64 then Trap {cycles_used = es.cycles_used;}
   return es.cycles_available
 
 ic0.msg_cycles_available128<es>(dst : i32) =
-  if es.context ∉ {U, Rt, Ry} then Trap {cycles_used = es.cycles_used;}
+  if es.context ∉ {U, RQ, Rt, Ry} then Trap {cycles_used = es.cycles_used;}
   let amount = es.cycles_available
   copy_cycles_to_canister<es>(dst, amount.to_little_endian_bytes())
 
@@ -7110,7 +7114,7 @@ ic0.msg_cycles_refunded128<es>(dst : i32) =
   copy_cycles_to_canister<es>(dst, amount.to_little_endian_bytes())
 
 ic0.msg_cycles_accept<es>(max_amount : i64) : i64 =
-  if es.context ∉ {U, Rt, Ry} then Trap {cycles_used = es.cycles_used;}
+  if es.context ∉ {U, RQ, Rt, Ry} then Trap {cycles_used = es.cycles_used;}
   let amount = min(max_amount, es.cycles_available)
   es.cycles_available := es.cycles_available - amount
   es.cycles_accepted := es.cycles_accepted + amount
@@ -7118,7 +7122,7 @@ ic0.msg_cycles_accept<es>(max_amount : i64) : i64 =
   return amount
 
 ic0.msg_cycles_accept128<es>(max_amount_high : i64, max_amount_low : i64, dst : i32) =
-  if es.context ∉ {U, Rt, Ry} then Trap {cycles_used = es.cycles_used;}
+  if es.context ∉ {U, RQ, Rt, Ry} then Trap {cycles_used = es.cycles_used;}
   let max_amount = max_amount_high * 2^64 + max_amount_low
   let amount = min(max_amount, es.cycles_available)
   es.cycles_available := es.cycles_available - amount
@@ -7127,7 +7131,7 @@ ic0.msg_cycles_accept128<es>(max_amount_high : i64, max_amount_low : i64, dst : 
   copy_cycles_to_canister<es>(dst, amount.to_little_endian_bytes())
 
 ic0.cycles_burn128<es>(amount_high : i64, amount_low : i64, dst : i32) =
-  if es.context ∉ {I, G, U, Ry, Rt, C, T} then Trap {cycles_used = es.cycles_used;}
+  if es.context ∉ {I, G, U, RQ, Ry, Rt, C, T} then Trap {cycles_used = es.cycles_used;}
   let amount = amount_high * 2^64 + amount_low
   let burned_amount = min(amount, liquid_balance(es))
   es.balance := es.balance - burned_amount
