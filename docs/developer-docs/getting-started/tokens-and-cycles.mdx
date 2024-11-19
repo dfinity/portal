@@ -50,15 +50,21 @@ The Internet Computer supports creating and deploying custom fungible or non-fun
 
 ## What is a ledger?
 
-A [**ledger**](/docs/current/developer-docs/defi/tokens/ledger/overview) is a system canister used to store accounts and their transactions. Each developer identity has a **ledger account identifier**.
-
-Each token on the Internet Computer has its **own** ledger. This means that there are separate ledgers for ICP tokens, cycles, and every ICRC token that has been deployed on the network.
+A [**ledger**](/docs/current/developer-docs/defi/tokens/ledger/overview) is a system canister used to store accounts and their transactions. Each token on the Internet Computer has its **own** ledger. This means that there are separate ledgers for ICP tokens, cycles, and every ICRC token that has been deployed on the network.
 
 [Learn more about ledgers](/docs/current/developer-docs/defi/tokens/ledger/overview).
 
 ## Obtaining cycles
 
 You need to obtain ICP tokens, then convert them into cycles using `dfx`. However, you may also get a small number of free cycles from the [cycles faucet](https://anv4y-qiaaa-aaaal-qaqxq-cai.ic0.app/).
+
+:::tip
+Each developer identity has both a **principal** and a **ledger account identifier**. 
+
+A principal has the format `itk7v-ihlxk-ktdrh-fcnst-vkoou-orj77-52ogl-jqwj5-zpfdv-az3lr-xqe` and is used for canister ownership, management, and holding cycles.
+
+A ledger account identifier has the format `e213184a548871a47fb526f3cba24e2ee2fbbc8129c4ab497ef2ce535130a0a4` and is used to send and receive tokens like ICP. 
+:::
 
 ### 1. Get your account's ledger account ID.
 
