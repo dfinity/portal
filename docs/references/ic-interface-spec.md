@@ -755,15 +755,23 @@ In order to read parts of the [The system state tree](#state-tree), the user mak
 
 -   `paths` (sequence of paths): A list of at most 1000 paths, where a path is itself a sequence of at most 127 blobs.
 
-The HTTP response to this request consists of a CBOR (see [CBOR](#cbor)) map with the following fields:
+The HTTP response to this request can have the following forms:
 
--   `certificate` (`blob`): A certificate (see [Certification](#certification)).
+-   200 HTTP status with a non-empty body consisting of a CBOR (see [CBOR](#cbor)) map with the following fields:
 
-    If this `certificate` includes a subnet delegation (see [Delegation](#certification-delegation)), then
+    -   `certificate` (`blob`): A certificate (see [Certification](#certification)).
 
-    - for requests to `/api/v2/canister/<effective_canister_id>/read_state`, the `<effective_canister_id>` must be included in the delegation's canister id range,
+-   4xx HTTP status for client errors (e.g. malformed request). Except for 429 HTTP status, retrying the request will likely have the same outcome.
 
-    - for requests to `/api/v2/subnet/<subnet_id>/read_state`, the `<subnet_id>` must match the delegation's subnet id.
+-   5xx HTTP status when the server has encountered an error or is otherwise incapable of performing the request. The request might succeed if retried at a later time.
+
+In the following, we list properties of the returned certificate and specify conditions on the requested paths.
+
+If the `certificate` includes a subnet delegation (see [Delegation](#certification-delegation)), then
+
+- for requests to `/api/v2/canister/<effective_canister_id>/read_state`, the `<effective_canister_id>` must be included in the delegation's canister id range,
+
+- for requests to `/api/v2/subnet/<subnet_id>/read_state`, the `<subnet_id>` must match the delegation's subnet id.
 
 The returned certificate reveals all values whose path has a requested path as a prefix except for
 
@@ -824,7 +832,9 @@ See [The system state tree](#state-tree) for details on the state tree.
 
 ### Request: Query call {#http-query}
 
-A query call is a fast, but less secure way to call a canister. Only methods that are explicitly marked as "query methods" and "composite query methods" by the canister can be called this way. In contrast to a query method, a composite query method can make further calls to query and composite query methods of canisters on the same subnet.
+A query call is a fast, but less secure way to call canister methods that do not change the canister state.
+Only methods that are explicitly marked as "query methods" and "composite query methods" by the canister can be called this way.
+In contrast to a query method, a composite query method can make further calls to query and composite query methods of canisters on the same subnet.
 
 The following limits apply to the evaluation of a query call:
 
@@ -852,27 +862,31 @@ In order to make a query call to a canister, the user makes a POST request to `/
 
 -   `arg` (`blob`): Argument to pass to the canister method.
 
-Canister methods that do not change the canister state (except for cycle balance changes due to message execution) can be executed more efficiently. This method provides that ability, and returns the canister's response directly within the HTTP response.
+The HTTP response to this request can have the following forms:
 
-If the query call resulted in a reply, the response is a CBOR (see [CBOR](#cbor)) map with the following fields:
+-   200 HTTP status with a non-empty body consisting of a CBOR (see [CBOR](#cbor)) map with the following fields:
 
--   `status` (`text`): `"replied"`
+    -   `status` (`text`): `"replied"`
 
--   `reply`: a CBOR map with the field `arg` (`blob`) which contains the reply data.
+    -   `reply`: a CBOR map with the field `arg` (`blob`) which contains the reply data.
 
--   `signatures` (`[+ node-signature]`): a list containing one node signature for the returned query response.
+    -   `signatures` (`[+ node-signature]`): a list containing one node signature for the returned query response.
 
-If the call resulted in a reject, the response is a CBOR map with the following fields:
+-   200 HTTP status with a non-empty body consisting of a CBOR (see [CBOR](#cbor)) map with the following fields:
 
--   `status` (`text`): `"rejected"`
+    -   `status` (`text`): `"rejected"`
 
--   `reject_code` (`nat`): The reject code (see [Reject codes](#reject-codes)).
+    -   `reject_code` (`nat`): The reject code (see [Reject codes](#reject-codes)).
 
--   `reject_message` (`text`): a textual diagnostic message.
+    -   `reject_message` (`text`): a textual diagnostic message.
 
--   `error_code` (`text`): an optional implementation-specific textual error code (see [Error codes](#error-codes)).
+    -   `error_code` (`text`): an optional implementation-specific textual error code (see [Error codes](#error-codes)).
 
--   `signatures` (`[+ node-signature]`): a list containing one node signature for the returned query response.
+    -   `signatures` (`[+ node-signature]`): a list containing one node signature for the returned query response.
+
+-   4xx HTTP status for client errors (e.g. malformed request). Except for 429 HTTP status, retrying the request will likely have the same outcome.
+
+-   5xx HTTP status when the server has encountered an error or is otherwise incapable of performing the request. The request might succeed if retried at a later time.
 
 :::note
 
@@ -881,7 +895,7 @@ if we include more signatures in a future version of the protocol specification.
 
 :::
 
-The response to a query call contains a list with one signature for the returned response produced by the IC node that evaluated the query call. The signature (whose type is denoted as `node-signature`) is a CBOR (see [CBOR](#cbor)) map with the following fields:
+A successful response to a query call (200 HTTP status) contains a list with one signature for the returned response produced by the IC node that evaluated the query call. The signature (whose type is denoted as `node-signature`) is a CBOR (see [CBOR](#cbor)) map with the following fields:
 
 -   `timestamp` (`nat`): the timestamp of the signature.
 
@@ -890,6 +904,7 @@ The response to a query call contains a list with one signature for the returned
 -   `identity` (`principal`): the principal of the node producing the signature.
 
 Given a query (the `content` map from the request body) `Q`, a response `R`, and a certificate `Cert` that is obtained by requesting the path `/subnet` in a **separate** read state request to `/api/v2/canister/<effective_canister_id>/read_state`, the following predicate describes when the returned response `R` is correctly signed:
+
 ```
 verify_response(Q, R, Cert)
   = verify_cert(Cert) ∧
