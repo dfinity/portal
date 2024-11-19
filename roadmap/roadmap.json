@@ -4,11 +4,44 @@
     "description": "Blockchain Singularity — all computations of the world can run on ICP. ICP is a decentralized compute platform operating as an extension of the Internet, offering cost effective compute and storage services, with infrastructure provided by independent entities around the globe. The platform allows anyone to deploy canister smart contracts on the Internet and run them in a decentralized manner.",
     "milestones": [
       {
+        "name": "Increase scalability and compute capacity",
+        "milestone_id": "Flux",
+        "description": "ICP subnets can handle even more compute load, by better handling many distinct canisters and by using more CPU threads. When a subnet's load grows even beyond that, this milestone introduces canister migration, which enables better load balancing between subnets, ensuring all ICP subnets are well utilized.",
+        "eta": null,
+        "status": "in_progress",
+        "elements": [
+          {
+            "title": "Asynchronous Checkpointing",
+            "overview": "Replicas currently persist the replicated state to disk every couple hundreds of rounds in a process called checkpointing. Currently some parts of checkpointing are done synchronously, which leads to drops in the execution rate in the checkpointing rounds and users have to wait longer for their responses during these rounds. The goal of this feature is to make more checkpointing steps run asynchronously in the background to make the IC's performance more consistent and predictable.",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Flux"
+          },
+          {
+            "title": "Canister migration",
+            "overview": "Migrating canisters between subnets. Important for balancing subnet utilization and scaling the IC.",
+            "status": "future",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "eta": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Flux"
+          }
+        ]
+      },
+      {
         "name": "Reduced End-to-end Latency",
         "milestone_id": "Tokamak",
         "description": "This milestone marks a significant reduction of user-perceived end-to-end latency for processing ingress messages. It is achieved by multiple concerted measures at different levels of the protocol stack and brings the user experience of Web3 closer to Web2.",
         "eta": "November 2024",
-        "status": "in_progress",
+        "status": "deployed",
         "elements": [
           {
             "title": "QUIC-based transport and P2P layer for consensus",
@@ -29,7 +62,7 @@
             "proposal": "",
             "docs": "",
             "eta": "Q2 2024",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Tokamak"
@@ -53,7 +86,7 @@
         "milestone_id": "Stellarator",
         "description": "Increased storage capacity of ICP subnets, storage per canister smart contract, and message throughput between subnets. Those improvements lead to each subnet being able to host larger workloads and better utilization of ICP’s hardware resources. The world's largest smart contracts can now grow even larger, far surpassing smart contracts on any other chain.",
         "eta": "November 2024",
-        "status": "in_progress",
+        "status": "deployed",
         "elements": [
           {
             "title": "Increase Stable Memory Limit to 500GiB",
@@ -99,7 +132,7 @@
             "proposal": "",
             "docs": "",
             "eta": "",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Stellarator"
@@ -111,7 +144,7 @@
             "proposal": "",
             "docs": "",
             "eta": "",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Stellarator"
@@ -145,6 +178,17 @@
             "eta": "",
             "status": "deployed",
             "is_community": false,
+            "in_beta": false
+          },
+          {
+            "title": "Query call metrics",
+            "overview": "Metrics about query calls executed for a canister during a time period. Requirement for a fair charging of cycles for query calls.",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "eta": "",
+            "status": "deployed",
+            "is_community": true,
             "in_beta": false
           },
           {
@@ -415,17 +459,6 @@
         "eta": "none",
         "elements": [
           {
-            "title": "Asynchronous Checkpointing",
-            "overview": "Replicas currently persist the replicated state to disk every couple hundreds of rounds in a process called checkpointing. Currently some parts of checkpointing are done synchronously, which leads to drops in the execution rate in the checkpointing rounds and users have to wait longer for their responses during these rounds. The goal of this feature is to make more checkpointing steps run asynchronously in the background to make the IC's performance more consistent and predictable.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": false,
-            "in_beta": false
-          },
-          {
             "title": "Best-effort messaging",
             "overview": "Extend canister messaging by an additional message type that enables more scalable and responsive dApps.",
             "status": "in_progress",
@@ -446,17 +479,6 @@
             "docs": "",
             "eta": "",
             "is_community": false,
-            "in_beta": false
-          },
-          {
-            "title": "Query call metrics",
-            "overview": "Metrics about query calls executed for a canister during a time period. Requirement for a fair charging of cycles for query calls.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": true,
             "in_beta": false
           },
           {
@@ -613,17 +635,6 @@
           {
             "title": "Hyper-scalable inter-subnet message routing",
             "overview": "Hyper-scalable XNet messaging protocol and implementation supporting a practically unlimited number of subnets. The current implementation works well up to a reasonably large number of subnets.",
-            "status": "future",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "is_community": false,
-            "in_beta": false
-          },
-          {
-            "title": "Canister migration",
-            "overview": "Migrating canisters between subnets. Important for balancing subnet utilization and scaling the IC.",
             "status": "future",
             "forum": "",
             "proposal": "",
