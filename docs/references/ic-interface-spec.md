@@ -2565,6 +2565,14 @@ A single metric entry is a record with the following fields:
 
 - `num_block_failures_total` (`nat64`): the number of failed block proposals by this node.
 
+### IC method `subnet_info` {#ic-subnet-info}
+
+This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
+
+Given a subnet ID as input, this method returns a record `subnet_info` containing metadata about that subnet.
+
+Currently, the only field returned is the `replica_version` (`text`) of the targeted subnet.
+
 ### IC method `take_canister_snapshot` {#ic-take_canister_snapshot}
 
 This method can be called by canisters as well as by external users via ingress messages.
@@ -5488,6 +5496,33 @@ S with
       }
 
 ```
+
+#### IC Management Canister: Subnet information
+
+The management canister returns subnet metadata given a subnet ID.
+
+Conditions
+
+```html
+S.messages = Older_messages · CallMessage M · Younger_messages 
+(M.queue = Unordered) or (∀ CallMessage M' | FuncMessage M' ∈ Older_messages. M'.queue ≠ M.queue) 
+M.callee = ic_principal 
+M.method_name = 'subnet_info'
+R = <implementation-specific> 
+```
+
+State after
+
+```html
+S with 
+    messages = Older_messages · Younger_messages · 
+      ResponseMessage { 
+        origin = M.origin 
+        response = Reply (candid(R)) 
+        refunded_cycles = M.transferred_cycles 
+      }
+```
+
 
 #### IC Management Canister: Canister creation with cycles
 
