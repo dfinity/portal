@@ -5482,7 +5482,7 @@ S with
 
 ```
 
-#### IC Management Canister: Subnet Metrics
+#### IC Management Canister: Subnet information
 
 The management canister returns subnet metadata given a subnet ID.
 
