@@ -129,7 +129,7 @@
     },
     {
       "title": "Performance-based node provider rewards",
-      "overview": "Non-compliant node providers are penalized economically or excluded from future network participation. This creates a cryptoeconomic incentive to encourage honest node provider behaviour.",
+      "overview": "Node rewards are awarded according to the node's contributions to the protocol, based on trustworthy node metrics, which are provided and signed by the IC network itself. This creates a cryptoeconomic incentive to encourage honest node provider behaviour.",
       "forum": "https://forum.dfinity.org/t/performance-based-node-rewards/35208",
       "proposal": "",
       "docs": "",

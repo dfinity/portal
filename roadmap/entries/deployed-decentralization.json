@@ -121,7 +121,7 @@
       "imported": true
     },
     {
-      "title": "Alerting of NP in case of Node Failure",
+      "title": "Alerting of Node Providers in case of Node Failure",
       "overview": "Alert Node Providers if one of their nodes starts misbehaving or underperforming.",
       "forum": "",
       "proposal": "",
@@ -134,7 +134,7 @@
     },
     {
       "title": "Public access to a subset of node metrics",
-      "overview": "Giving node providers access to a subnet of node metrics to help them find out what is failing in case of node issues.",
+      "overview": "Giving node providers access to a subset of node metrics to help them find out in a fully decentralized manner whether nodes are behaving well, and to roughly compare node performance.",
       "forum": "https://forum.dfinity.org/t/public-internet-computer-ic-node-metrics-available-now/32961",
       "proposal": "",
       "docs": "https://github.com/dfinity/ic-observability-stack",
