@@ -76,6 +76,8 @@ html.docs-wrapper[data-theme='dark'] {
 
   --ifm-color-content: var(--icp-on-surface);
 
+  --docusaurus-highlighted-code-line-bg: oklch(from var(--icp-pink) calc(l - .3) c h);
+
 
   body {
     --ifm-menu-color-active: var(--icp-interaction-text);
