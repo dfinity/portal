@@ -62,12 +62,12 @@ const redirects = `
   /docs/current/developer-docs/quickstart/local-quickstart /docs/current/developer-docs/getting-started/install/
   /docs/current/developer-docs/setup/install/index.mdx /docs/current/developer-docs/getting-started/install/
 
-  /docs/candid-guide /docs/current/developer-docs/smart-contracts/candid/
+  /docs/candid-guide /docs/current/developer-docs/smart-contracts/candid/candid-concepts
   /docs/candid-guide/candid /docs/current/developer-docs/smart-contracts/candid/candid-concepts
-  /docs/candid-guide/candid-intro /docs/current/developer-docs/smart-contracts/candid/
+  /docs/candid-guide/candid-intro /docs/current/developer-docs/smart-contracts/candid/candid-concepts
   /docs/candid-guide/candid-ref /docs/current/references/candid-ref
   /docs/candid-guide/candid-types /docs/current/references/candid-ref
-  /docs/current/developer-docs/build/candid/candid-intro /docs/current/developer-docs/smart-contracts/candid/
+  /docs/current/developer-docs/build/candid/candid-intro /docs/current/developer-docs/smart-contracts/candid/candid-concepts
   /docs/current/developer-docs/build/candid/candid-howto /docs/current/developer-docs/smart-contracts/candid/candid-howto
 
   /docs/current/developer-docs/build/ /docs/current/developer-docs/smart-contracts/write/overview
@@ -88,7 +88,7 @@ const redirects = `
   /docs/current/developer-docs/build/agents/ /docs/current/developer-docs/developer-tools/off-chain/agents/overview
   /docs/current/developer-docs/build/agents/javascript/javascript-intro /docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent
   /docs/current/developer-docs/build/agents/javascript/*  /docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent
-  /docs/current/developer-docs/build/languages/candid/* /docs/current/developer-docs/smart-contracts/candid/:splat
+  /docs/current/developer-docs/build/languages/candid/* /docs/current/developer-docs/smart-contracts/candid/candid-concepts
   /docs/current/developer-docs/build/cdks/motoko-dfinity/* /docs/current/motoko/main/:splat
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/*  /docs/current/developer-docs/backend/rust/:splat
   /docs/current/developer-docs/build/languages/motoko/* /docs/current/motoko/main/:splat
@@ -578,7 +578,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/internet-identity	/docs/current/developer-docs/identity/internet-identity/overview
   /bitcoin /bitcoin-integration
   /bootcamp	/education-hub
-  /docs/candid-guide/candid-concepts.html	/docs/current/developer-docs/smart-contracts/candid/
+  /docs/candid-guide/candid-concepts.html	/docs/current/developer-docs/smart-contracts/candid/candid-concepts
   /docs/current/blog/features/vetkey-primer	/blog/features/vetkey-primer
   /docs/current/concepts/chain-key-technology/ /docs/current/developer-docs/multi-chain/overview
   /docs/current/concepts/concepts-intro.html	/docs/current/developer-docs/getting-started/network-overview
@@ -630,6 +630,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/write/auto-scaling-architecture /docs/current/developer-docs/smart-contracts/write/overview
   /docs/current/developer-docs/smart-contracts/write/resources /docs/current/developer-docs/smart-contracts/write/overview
   /docs/current/developer-docs/smart-contracts/call/arguments /docs/current/developer-docs/smart-contracts/call/overview
+  /docs/current/developer-docs/smart-contracts/candid/ /docs/current/developer-docs/smart-contracts/candid/candid-concepts
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
