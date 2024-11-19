@@ -7,9 +7,9 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 ## Overview
 
-ICP does not have a public testnet network that developers can use to deploy and test canister smart contracts because canisters deployed to the mainnet can be upgraded and changed, plus deployment costs are fairly low compared to other chains.
+ICP does not have a public testnet network that developers can use to deploy and test canisters because canisters deployed to the mainnet can be upgraded and changed. Plus, deployment costs are fairly low compared to other chains.
 
-To provide a testnet-like environment, ICP has a smart contract [playground](https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app/) network that can be used for small-scale, temporary testing. Canisters deployed to the playground are restricted to certain parameters. These limitations are:
+To provide a testnet-like environment, ICP has a [playground](https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app/) network that can be used for small-scale, temporary testing. Canisters deployed to the playground are restricted to certain parameters. These limitations are:
 
 - Cycle transfer instructions are silently ignored by the playground.
 - Canisters can use at most 1GiB of memory.
@@ -171,46 +171,15 @@ This definition uses the following parameters:
 - `providers`: The network provider; can be `localhost` or any other domain name. Domain names must be a full URL, such as `https://domain.com`.
 - `type`: The type of network, either `ephemeral` or `persistent`. Ephemeral networks do not retain the same IDs for canisters, while persistent networks will retain the same canister IDs.
 
-### Configuring a wallet
+:::caution
 
 If you are using a cycles wallet, the cycles wallet for each network is stored separately.
 
-:::caution
-Please note that the cycles wallet will be removed from dfx in a future release.
+[Learn more about cycles wallets](/docs/current/developer-docs/defi/cycles/cycles-wallet).
 
-It is recommended to use the cycles ledger instead.
 :::
 
-To use the same cycles wallet as on the main `ic` network, first make sure the correct identity is set by running the command:
-
-```bash
-dfx identity use <identity name>
-```
-
-Then, read the `ic` network's currently configured wallet using:
-
-```bash
-dfx identity get-wallet --network ic
-```
-
-Set the wallet for the newly defined network with the command:
-
-```bash
-dfx identity set-wallet <wallet id> --network myNetwork
-```
-
-These commands can be used together, such as:
-
-```bash
-dfx identity set-wallet "$(dfx identity get-wallet --network ic)" --network myNetwork
-```
-
-If you prefer to use a separate cycles wallet for the staging environment, follow the instructions in the step 'Creating a cycles wallet' in the [deploying to the mainnet guide](/docs/current/developer-docs/getting-started/deploy/mainnet).
-
-
 ## Resources
-
-- [Deploying to playground](/docs/current/developer-docs/getting-started/deploy/testnet).
 
 - [Defining custom `dfx` networks](/docs/current/developer-docs/developer-tools/cli-tools/advanced-dfx/networks-json).
 

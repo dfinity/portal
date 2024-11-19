@@ -103,16 +103,9 @@ const sidebars = {
           label: "Create & install",
           items: [
             {
-              type: "category",
+              type: "doc",
               label: "Write",
-              items: [
-                {
-                  label: "Overview",
-                  type: "doc",
-                  id: "developer-docs/smart-contracts/write/overview",
-                },
-                "developer-docs/smart-contracts/write/resources",
-              ],
+              id: "developer-docs/smart-contracts/write/overview",
             },
             {
               type: "doc",
@@ -151,11 +144,6 @@ const sidebars = {
               type: "doc",
               label: "Overview",
               id: "developer-docs/smart-contracts/call/overview",
-            },
-            {
-              type: "doc",
-              label: "Passing in arguments",
-              id: "developer-docs/smart-contracts/call/arguments",
             },
             {
               type: "category",
@@ -222,7 +210,7 @@ const sidebars = {
           items: [
             {
               type: "doc",
-              label: "Async code and inter-canister calls",
+              label: "Async code & inter-canister calls",
               id: "developer-docs/smart-contracts/advanced-features/async-code",
             },
             {
@@ -624,7 +612,7 @@ const sidebars = {
             },
             {
               type: "doc",
-              label: "Identity and access management",
+              label: "Identity & access management",
               id: "developer-docs/security/security-best-practices/iam",
             },
             {
@@ -634,7 +622,7 @@ const sidebars = {
             },
             {
               type: "doc",
-              label: "Data integrity and authenticity",
+              label: "Data integrity & authenticity",
               id: "developer-docs/security/security-best-practices/data-integrity-and-authenticity",
             },
             {
@@ -659,7 +647,7 @@ const sidebars = {
             },
             {
               type: "doc",
-              label: "Observability and monitoring",
+              label: "Observability & monitoring",
               id: "developer-docs/security/security-best-practices/observability-and-monitoring",
             },
             {
@@ -975,7 +963,7 @@ const sidebars = {
                         },
                         {
                           type: "category",
-                          label: "Staking and neuron management",
+                          label: "Staking & neuron management",
                           link: {
                             type: "doc",
                             id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/index",
@@ -994,7 +982,7 @@ const sidebars = {
                         },
                         {
                           type: "category",
-                          label: "Voting and following",
+                          label: "Voting & following",
                           link: {
                             type: "doc",
                             id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/index",

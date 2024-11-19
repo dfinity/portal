@@ -427,7 +427,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/vetkeys/technology-overview /docs/current/references/vetkeys-overview
   /docs/current/developer-docs/developer-tools/cli-tools/networks-json /docs/current/developer-docs/developer-tools/cli-tools/advanced-dfx/networks-json
   /docs/current/developer-docs/production/system-canisters /docs/current/developer-docs/smart-contracts/advanced-features/system-canisters
-  /docs/current/developer-docs/backend/arguments /docs/current/developer-docs/smart-contracts/call/arguments
+  /docs/current/developer-docs/backend/arguments /docs/current/developer-docs/smart-contracts/call/overview
   /docs/current/developer-docs/frontend/index /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-get /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-get
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use
@@ -627,6 +627,9 @@ const redirects = `
   /docs/current/developer-docs/integrations/rosetta/staking-tutorial/ /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_icp
   /docs/current/developer-docs/getting-started/cycles/cycles-wallet /docs/current/developer-docs/defi/cycles/cycles-wallet
   /docs/current/developer-docs/getting-started/quickstart/juno-quickstart /docs/current/developer-docs/web-apps/frameworks/juno
+  /docs/current/developer-docs/smart-contracts/write/auto-scaling-architecture /docs/current/developer-docs/smart-contracts/write/overview
+  /docs/current/developer-docs/smart-contracts/write/resources /docs/current/developer-docs/smart-contracts/write/overview
+  /docs/current/developer-docs/smart-contracts/call/arguments /docs/current/developer-docs/smart-contracts/call/overview
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

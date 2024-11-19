@@ -11,38 +11,46 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 ## Overview
 
-After you have written the code for your project's <GlossaryTooltip>canisters</GlossaryTooltip>, you need to compile the code into a WebAssembly module before it can be deployed on ICP.
+After you have [written the code](/docs/current/developer-docs/smart-contracts/write/overview) for your project's <GlossaryTooltip>canisters</GlossaryTooltip> and [created them](/docs/current/developer-docs/smart-contracts/create), you need to compile the code into a WebAssembly module before it can be deployed on ICP.
+
+:::danger
+
+You must [create your canisters](/docs/current/developer-docs/smart-contracts/create) before you can build them, otherwise you will receive an error that they do not exist.
+
+:::
+
+`dfx build` looks for source code to compile for each canister configured under the `canisters` section in the [`dfx.json`](/docs/current/developer-docs/developer-tools/cli-tools/dfx-json-reference) file. It can be used to compile a specific canister or all canisters defined in the project.
+
+Verify the location of your project's files and their file names. Be sure to edit your project's `dfx.json` file to reflect the current intended configuration if necessary.
 
 ## Compiling your canister
 
 To compile your canister's Wasm module, you can use the [`dfx build`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-build) command.
 
+Compile your canisters from within the project's directory:
+
+- `dfx build <canister_name>`: Compile a canister locally. The local replica must be running to compile a canister locally. Start it with `dfx start --background`.
+
+- `dfx build <canister_name> --network=playground`: Compile a canister on the playground. Compiling a canister on the playground is free, but canisters are temporary and will be removed after 20 minutes.
+
+- `dfx build <canister_name> --network=ic`: Compile a canister on the mainnet. Compiling a canister on the mainnet will cost [cycles](/docs/current/developer-docs/gas-cost).
+
+- `dfx build --network=ic`: Compile all canisters in the project's `dfx.json` file on the mainnet.
+
 :::tip
-`dfx` isn't the only workflow that can be used for compiling code. For example, Rust canisters can be compiled using `cargo`. 
-:::
-
-`dfx build` looks for source code to compile for each canister configured under the `canisters` section in the [`dfx.json`](/docs/current/developer-docs/developer-tools/cli-tools/dfx-json-reference) file. It can be used to compile a specific canister or all canisters defined in the project.
-
-Before using the `dfx build` command, first you need to [create the canister](/docs/current/developer-docs/smart-contracts/create) and verify the location of your project's files and their file names. If you modify these settings, be sure to edit your project's `dfx.json` file to reflect the current intended configuration.
-
-Compile your canister code from within the project's directory:
-
-```bash
-dfx build
-```
-
-:::caution
 Compilation happens on the local machine of the developer.
-Compiled Wasm binary is then installed on the target canister, which costs [cycles](/docs/current/developer-docs/getting-started/cycles/cycles-faucet).
+
+`dfx build` isn't the only workflow that can be used for compiling code. For example, Rust canisters can be compiled using `cargo`.
 :::
+
 
 When this command is executed, the following steps happen:
 
-- The source code for each canister defined in `dfx.json` is compiled into a Wasm module.
+- The source code for a canister is compiled into a Wasm module.
 
-- If a canister being built is written in Motoko, type declarations are automatically generated using Candid.
+- If a canister is written in Motoko, type declarations are automatically generated using Candid.
 
-- If a canister being built is written in Rust, the build process checks for Rust vulnerabilities.
+- If a canister is written in Rust, the build process checks for Rust vulnerabilities.
 
 ## How code is compiled to Wasm
 
