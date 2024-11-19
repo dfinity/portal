@@ -30,22 +30,7 @@ import {
 const { events, websiteCategory, regions } = data;
 const DEFAULT_MAX_EVENTS = 12;
 
-const featuredEvent = {
-  id: "devcon",
-  eventName: "Chain Fusion Hub @ Devcon SEA",
-  description: null,
-  eventLink: "https://lu.ma/ChainFusionHubTH",
-  topic: ["ChainFusion"],
-  startDate: "2024-11-08T00:00:00.000Z",
-  endDate: "2024-11-11T00:00:00.000Z",
-  regions: "Asia",
-  country: "Thailand",
-  type: "Conference",
-  websiteCategory: "Conferences",
-  mode: ["IRL"],
-  status: "Completed",
-  imageUrl: "/img/events/event-02.webp",
-};
+const featuredEvent = getFeaturedEvent(events);
 
 function GlobalEventsPage() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -180,9 +165,11 @@ function GlobalEventsPage() {
               bg-[linear-gradient(0deg,#F1EEF5_0%,#F1EEF5_50%,transparent_50%,transparent_100%)]
             "
             >
-              <div className="container-10">
-                <FeaturedCard event={featuredEvent}></FeaturedCard>
-              </div>
+              {featuredEvent && (
+                <div className="container-10">
+                  <FeaturedCard event={featuredEvent}></FeaturedCard>
+                </div>
+              )}
             </div>
           </section>
         </AnimateSpawn>

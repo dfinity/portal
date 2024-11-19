@@ -5,27 +5,39 @@ const sidebars = {
   build: [
     {
       type: "category",
-      label: "Getting started",
+      label: "Quick starts",
       items: [
         {
           type: "doc",
-          label: "Overview of ICP",
-          id: "developer-docs/getting-started/overview-of-icp",
+          label: "First smart contract",
+          id: "developer-docs/getting-started/quickstart/first-smart-contract",
         },
         {
           type: "doc",
-          label: "Development workflow",
+          label: "React",
+          id: "developer-docs/getting-started/quickstart/react-quickstart",
+        },
+      ],
+    },
+    {
+      type: "doc",
+      label: "Network overview",
+      id: "developer-docs/getting-started/network-overview",
+    },
+    {
+      type: "category",
+      label: "Dev environment setup",
+      items: [
+
+        {
+          type: "doc",
+          label: "Workflow",
           id: "developer-docs/getting-started/development-workflow",
         },
         {
           type: "doc",
-          label: "Installing tools",
+          label: "Installation",
           id: "developer-docs/getting-started/install/index",
-        },
-        {
-          type: "doc",
-          label: "Hello, world!",
-          id: "developer-docs/getting-started/hello-world",
         },
         {
           type: "doc",
@@ -51,7 +63,7 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "Deploy smart contracts",
+          label: "Deploy",
           items: [
             {
               type: "doc",
@@ -67,22 +79,6 @@ const sidebars = {
               type: "doc",
               label: "Mainnet deployment",
               id: "developer-docs/getting-started/deploy/mainnet",
-            },
-          ],
-        },
-        {
-          type: "category",
-          label: "Quickstart guides",
-          items: [
-            {
-              type: "doc",
-              label: "Quickstart for React developers",
-              id: "developer-docs/getting-started/quickstart/react-quickstart",
-            },
-            {
-              type: "doc",
-              label: "Juno quickstart",
-              id: "developer-docs/getting-started/quickstart/juno-quickstart",
             },
           ],
         },
@@ -1149,6 +1145,7 @@ const sidebars = {
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-voting-on-proposals",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-following-other-neurons",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-advanced-neuron-operations",
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-making-neurons-public",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-manage-quill-neurons",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-additional-features",
               ],
@@ -1475,24 +1472,13 @@ const sidebars = {
               "references/subnets/subnet-types",
             ],
           },
-        {
-          type: "category",
-          label: "FAQs",
-          items: [
-            "developer-docs/multi-chain/faq/user-faq",
-            "developer-docs/multi-chain/faq/ckbtc-faq",
-            "developer-docs/multi-chain/faq/cketh-faq",
-            "developer-docs/multi-chain/faq/ckerc20-faq",
-            "developer-docs/multi-chain/faq/signatures-faq",
-          ],
-        },
       ],
     },
   ],
 devjourney: [
     {
       type: "category",
-      label: "Developer Journey",
+      label: "Developer Ladder",
       link: {
         type: "doc",
         id: "tutorials/developer-journey/index",
