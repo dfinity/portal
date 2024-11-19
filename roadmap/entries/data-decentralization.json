@@ -197,7 +197,7 @@
     {
       "title": "Strengthened node provider checks and audits",
       "overview": "Strengthening the checks of entities intending to join ICP as node providers. May also include node provider audits.",
-      "forum": "",
+      "forum": "https://forum.dfinity.org/t/technical-working-group-node-providers/30255",
       "proposal": "",
       "docs": "",
       "eta": "",
@@ -248,18 +248,6 @@
       "status": "",
       "is_community": false,
       "in_beta": false
-    },
-    {
-      "title": "Decentralized virtual personhood validation",
-      "overview": "Scalable, decentralized, virtual proof of personhood to distinguish people from machines.",
-      "forum": "https://forum.dfinity.org/t/long-term-r-d-people-parties-proof-of-human-proposal/9636",
-      "proposal": "https://dashboard.internetcomputer.org/proposal/35668",
-      "docs": "",
-      "eta": "",
-      "status": "",
-      "is_community": false,
-      "in_beta": false,
-      "imported": true
     },
     {
       "title": "Public contributions to IC repository",
