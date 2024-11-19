@@ -128,6 +128,17 @@
       "imported": true
     },
     {
+      "title": "Performance-based node provider rewards",
+      "overview": "Non-compliant node providers are penalized economically or excluded from future network participation. This creates a cryptoeconomic incentive to encourage honest node provider behaviour.",
+      "forum": "https://forum.dfinity.org/t/performance-based-node-rewards/35208",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "in_progress",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
       "title": "HTTP Asset Caching",
       "overview": "Building on response verification v2, HTTP gateways support caching of static assets such as HTML pages, JavaScript code, and images.",
       "forum": "https://forum.dfinity.org/t/long-term-r-d-boundary-nodes-proposal/9401",
@@ -202,17 +213,6 @@
       "docs": "",
       "eta": "",
       "status": "",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "Performance-based node provider rewards",
-      "overview": "Non-compliant node providers are penalized economically or excluded from future network participation. This creates a cryptoeconomic incentive to encourage honest node provider behaviour.",
-      "forum": "https://forum.dfinity.org/t/performance-based-node-rewards/35208",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "in_progress",
       "is_community": false,
       "in_beta": false
     },
