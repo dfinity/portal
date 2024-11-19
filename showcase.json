@@ -4931,7 +4931,7 @@
     "id": "KongSwap",
     "name": "KongSwap",
     "description": "The one-stop token shop - Trade tokens across all chains with ease using KongSwap.",
-    "logo": "https://github.com/KongSwap/documentation/blob/main/kong_logo.png",
+    "logo": "/img/showcase/kong_logo.png",
     "display": "Normal",
     "tags": [
       "DeFi",
