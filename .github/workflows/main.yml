@@ -1,9 +1,10 @@
-name: Validate Comments on Docs PRs
+name: Validate Docs PR comments
 on:
   issue_comment:
     types: [created]
     paths:
       - docs/developer-docs/
+
 jobs:
   check_comment:
     permissions: write-all
@@ -26,16 +27,3 @@ jobs:
             } else {
               await comments.create(context, github, `PR content has been validated by a reviewer.`);
             }
-        
-  docs-tag:
-    name: Tag PR with documentation
-    permissions: write-all
-    if: ${{ github.event_name == 'pull_request' }}
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Tag PR with documentation
-      run: |
-        gh pr edit ${{ github.event.pull_request.number }} --add-label documentation
-
