@@ -1455,6 +1455,9 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.canister_status : () -> i32;                                                      // *
     ic0.canister_version : () -> i64;                                                     // *
 
+    ic0.subnet_self_size : () -> I;                                                       // *
+    ic0.subnet_self_copy : (dst : I, offset : I, size : I) -> ();                         // *
+
     ic0.msg_method_name_size : () -> I;                                                   // F
     ic0.msg_method_name_copy : (dst : I, offset : I, size : I) -> ();                     // F
     ic0.accept_message : () -> ();                                                        // F
@@ -1655,6 +1658,12 @@ A canister can learn about its own identity:
 -   `ic0.canister_self_size : () → I` and `ic0.canister_self_copy: (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
 
     These functions allow the canister to query its own canister id (as a blob).
+
+A canister can learn about the subnet it is running on:
+
+-   `ic0.subnet_self_size : () → I` and `ic0.subnet_self_copy: (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
+
+    These functions allow the canister to query the subnet id (as a blob) of the subnet on which the canister is running.
 
 ### Canister status {#system-api-canister-status}
 
@@ -3177,6 +3186,7 @@ The [WebAssembly System API](#system-api) is relatively low-level, and some of i
       memory_usage_chunk_store : Nat;
       memory_usage_snapshot : Nat;
       freezing_threshold : Nat;
+      subnet_id : Principal;
       subnet_size : Nat;
       certificate : NoCertificate | Blob;
       status : Running | Stopping | Stopped;
@@ -3756,6 +3766,7 @@ is_effective_canister_id(E.content, ECID)
     memory_usage_chunk_store = memory_usage_chunk_store(S.chunk_store[E.content.canister_id]);
     memory_usage_snapshot = memory_usage_snapshot(S.snapshots[E.content.canister_id]);
     freezing_threshold = S.freezing_threshold[E.content.canister_id];
+    subnet_id = S.canister_subnet[E.content.canister_id].subnet_id;
     subnet_size = S.canister_subnet[E.content.canister_id].subnet_size;
     certificate = NoCertificate;
     status = simple_status(S.canister_status[E.content.canister_id]);
@@ -4060,6 +4071,7 @@ Env = {
   memory_usage_chunk_store = memory_usage_chunk_store(S.chunk_store[M.receiver]);
   memory_usage_snapshot = memory_usage_snapshot(S.snapshots[M.receiver]);
   freezing_threshold = S.freezing_threshold[M.receiver];
+  subnet_id = S.canister_subnet[M.receiver].subnet_id;
   subnet_size = S.canister_subnet[M.receiver].subnet_size;
   certificate = NoCertificate;
   status = simple_status(S.canister_status[M.receiver]);
@@ -4801,6 +4813,7 @@ Env = {
   memory_usage_chunk_store = memory_usage_chunk_store(New_chunk_store);
   memory_usage_snapshot = memory_usage_snapshot(S.snapshots[A.canister_id]);
   freezing_threshold = S.freezing_threshold[A.canister_id];
+  subnet_id = S.canister_subnet[A.canister_id].subnet_id;
   subnet_size = S.canister_subnet[A.canister_id].subnet_size;
   certificate = NoCertificate;
   status = simple_status(S.canister_status[A.canister_id]);
@@ -4920,6 +4933,7 @@ Env = {
   memory_usage_chunk_store = memory_usage_chunk_store(S.chunk_store[A.canister_id]);
   memory_usage_snapshot = memory_usage_snapshot(S.snapshots[A.canister_id]);
   freezing_threshold = S.freezing_threshold[A.canister_id];
+  subnet_id = S.canister_subnet[A.canister_id].subnet_id;
   subnet_size = S.canister_subnet[A.canister_id].subnet_size;
   certificate = NoCertificate;
   status = simple_status(S.canister_status[A.canister_id]);
@@ -6313,6 +6327,7 @@ composite_query_helper(S, Cycles, Depth, Root_canister_id, Caller, Canister_id, 
               memory_usage_chunk_store = memory_usage_chunk_store(S.chunk_store[Canister_id]);
               memory_usage_snapshot = memory_usage_snapshot(S.snapshots[Canister_id]);
               freezing_threshold = S.freezing_threshold[Canister_id];
+              subnet_id = S.canister_subnet[Canister_id].subnet_id;
               subnet_size = S.canister_subnet[Canister_id].subnet_size;
               certificate = Cert;
               status = simple_status(S.canister_status[Canister_id]);
@@ -7226,6 +7241,11 @@ ic0.canister_self_size<es>() : I =
 
 I ∈ {i32, i64}
 ic0.canister_self_copy<es>(dst : I, offset : I, size : I) =
+  if es.context = s then Trap {cycles_used = es.cycles_used;}
+  copy_to_canister<es>(dst, offset, size, es.wasm_state.self_id)
+
+I ∈ {i32, i64}
+ic0.subnet_self_copy<es>(dst : I, offset : I, size : I) =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
   copy_to_canister<es>(dst, offset, size, es.wasm_state.self_id)
 
