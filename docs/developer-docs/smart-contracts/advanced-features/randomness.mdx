@@ -37,26 +37,23 @@ Developers can directly access randomness through the `raw_rand` method in the m
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
-actor {
-  let SubnetManager : actor {
-    raw_rand() : async Blob;
-  } = actor "aaaaa-aa";
+import Random "mo:base/Random";
 
+actor {
   public func random_bytes() : async Blob {
-    let bytes = await SubnetManager.raw_rand();
-    return bytes;
+    await Random.blob();
   };
 };
 ```
 
-In addition to the `raw_rand` method, Motoko offers a [Random module](/docs/current/motoko/main/base/Random) for generating random numbers.
+In addition to the `Random.blob()` method, developers can call the `raw_rand` method function on the management canister directly.
 
 </TabItem>
 
 <TabItem value="rust" label="Rust">
 
 ```rust
-let (randomBytes,): (Vec<u8>,) = ic_cdk::api::call(Principal.management_canister(), "raw_rand", ()).await?;
+let (randomBytes,): (Vec<u8>,) = ic_cdk::api::management_canister::main::raw_rand().await?;
 ```
 
 </TabItem>
