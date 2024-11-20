@@ -57,8 +57,8 @@
       "description": "ICP is accessible through a decentralized edge infrastructure, which is split into NNS-controlled API Boundary Nodes and HTTP Gateways. The NNS will appoint node machines to run API Boundary Nodes and anyone will be able to run HTTP Gateways, enabling a much more decentralized ICP edge infrastructure with a diverse set of service providers.",
       "milestone_id": "Solenoid",
       "status": "in_progress",
-      "eta": "Q2 2024",
-      "eta_to_render": "December 2024"
+      "eta": "Q1 2025",
+      "eta_to_render": "January 2025"
     },
     {
       "title": "SEV-SNP-protected API Boundary Nodes",
