@@ -74,7 +74,7 @@ thread_local! {
     static COUNTER: RefCell<Nat> = RefCell::new(Nat::from(0_u32));
 }
 
-#[ic_cdk_macros::update]
+#[ic_cdk::update]
 fn inc() {
     COUNTER.with(|counter| *counter.borrow_mut() += 1_u32);
 }
@@ -85,18 +85,9 @@ fn inc() {
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
-import { IDL, update } from 'azle';
+Azle code coming soon.
 
-export default class {
-    counter: bigint = 0n;
-
-    @update([], IDL.Nat64)
-    inc(): bigint {
-        this.counter += 1n;
-
-        return this.counter;
-    }
-}
+[Learn more about Azle.](https://demergent-labs.github.io/azle/)
 ```
 
 </AdornedTab>
@@ -104,19 +95,9 @@ export default class {
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```python
-from kybra import nat64, query, update
+Kybra code coming soon.
 
-counter: nat64 = 0
-
-@query
-def count() -> nat64:
-    return counter
-
-@update
-def inc() -> nat64:
-    global counter
-    counter += 1
-    return counter
+[Learn more about Kybra.](https://demergent-labs.github.io/kybra/)
 ```
 
 :::caution
@@ -180,14 +161,9 @@ fn greet(name: String) -> String {
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
-import { IDL, query } from 'azle';
+Azle code coming soon.
 
-export default class {
-    @query([], IDL.Text)
-    greet(name){
-        return "Hello, {name}";
-    }
-}
+[Learn more about Azle.](https://demergent-labs.github.io/azle/)
 ```
 
 </AdornedTab>
@@ -195,11 +171,9 @@ export default class {
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 ```python
-from kybra import query
+Kybra code coming soon.
 
-@query
-def greet(name: str) -> str:
-    return f"Hello, {name}!"
+[Learn more about Kybra.](https://demergent-labs.github.io/kybra/)
 ```
 
 :::caution

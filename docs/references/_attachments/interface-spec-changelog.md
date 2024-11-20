@@ -1,5 +1,9 @@
 ## Changelog {#changelog}
 
+### 0.30.0 (2024-11-19) {#0_30_0}
+* Add management canister endpoint `subnet_info`.
+* Support for wasm64: 64-bit system API.
+
 ### 0.29.0 (2024-11-14) {#0_29_0}
 * Allow anonymous query and read state requests with invalid `ingress_expiry`.
 * Add allowed viewers variant to canister log visibility.

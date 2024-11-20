@@ -2,8 +2,12 @@
 keywords: [beginner, tutorial, compile]
 ---
 
+import TabItem from "@theme/TabItem";
+import Tabs from "/src/components/Tabs";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
-import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Compile
 
@@ -24,6 +28,20 @@ You must [create your canisters](/docs/current/developer-docs/smart-contracts/cr
 Verify the location of your project's files and their file names. Be sure to edit your project's `dfx.json` file to reflect the current intended configuration if necessary.
 
 ## Compiling your canister
+
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
+
+<input type="checkbox"/> <a href="/docs/current/developer-docs/getting-started/install">Install the IC SDK.</a>
+<div>
+</div>
+<input type="checkbox"/> <a href="/docs/current/developer-docs/smart-contracts/write/overview">Write a smart contract.</a>
+<div>
+</div>
+<input type="checkbox"/> <a href="/docs/current/developer-docs/smart-contracts/create">Create your canister.</a>
+
+</TabItem>
+</Tabs>
 
 To compile your canister's Wasm module, you can use the [`dfx build`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-build) command.
 

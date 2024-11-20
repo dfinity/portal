@@ -3,6 +3,7 @@ keywords: [beginner, tutorial, deploy, deploy canisters, local deployment, local
 ---
 
 import TabItem from "@theme/TabItem";
+import Tabs from "/src/components/Tabs";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { BetaChip } from "/src/components/Chip/BetaChip";
@@ -49,6 +50,25 @@ For most developers, the playground option can be used. For more advanced develo
 - [Synthetic testnets](/docs/current/developer-docs/smart-contracts/deploy/custom-testnets): The `dfx` named network feature can be used to create custom local networks that can be used for local testing segmented from other projects deployed locally.
 
 ## Deploying canisters
+
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
+
+<input type="checkbox"/> <a href="/docs/current/developer-docs/getting-started/install">Install the IC SDK.</a>
+<div>
+</div>
+<input type="checkbox"/> <a href="/docs/current/developer-docs/smart-contracts/write/overview">Write a smart contract.</a>
+<div>
+</div>
+<input type="checkbox"/> <a href="/docs/current/developer-docs/smart-contracts/create">Create your canister.</a>
+<div>
+</div>
+<input type="checkbox"/> <a href="/docs/current/developer-docs/smart-contracts/compile">Compile your canister code into Wasm.</a>
+<div>
+</div>
+<input type="checkbox"/> <a href="/docs/current/developer-docs/smart-contracts/install">Install the Wasm module into your canister.</a>
+</TabItem>
+</Tabs>
 
 Verify you are in your project's directory and the canisters you'd like to deploy are configured in the project's `dfx.json` file.
 
