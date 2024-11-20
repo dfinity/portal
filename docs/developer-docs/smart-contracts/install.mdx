@@ -13,6 +13,8 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 When a <GlossaryTooltip>canister</GlossaryTooltip> has been initially created, it is empty and does not contain code or state. It only contains information such as the settings, canister ID, cycles balance, and controllers. [Learn more about creating a canister](/docs/current/developer-docs/smart-contracts/create).
 
+Canister code must be [compiled](/docs/current/developer-docs/smart-contracts/compile) into Wasm. Then, the Wasm module can be installed into the empty canister. 
+
 ## Installing canister code
 
 Code must be installed into a canister using the [`dfx canister install`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-install) command from the project's directory:
