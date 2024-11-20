@@ -6,6 +6,7 @@ on:
       - docs/developer-docs/
 jobs:
   check_comment:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
      - uses: actions/checkout@v3
@@ -25,11 +26,10 @@ jobs:
             } else {
               await comments.create(context, github, `PR content has been validated by a reviewer.`);
             }
-       env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
   docs-tag:
     name: Tag PR with documentation
+    permissions: write-all
     if: ${{ github.event_name == 'pull_request' }}
     runs-on: ubuntu-latest
     steps:
@@ -38,5 +38,4 @@ jobs:
     - name: Tag PR with documentation
       run: |
         gh pr edit ${{ github.event.pull_request.number }} --add-label documentation
-      env:
-        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
