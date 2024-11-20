@@ -79,7 +79,13 @@ Canisters can be upgraded, allowing the same canister ID to be retained for an a
 
 In your backend canister source code file, make a change such as increasing the timer to 60 seconds rather than 30 seconds. Save the file.
 
-Then, upgrade your canister to use the edited code:
+Next, you must compile the updated canister code into a new Wasm module. `dfx build` is used for compilation:
+
+```
+dfx build PROJECT_NAME_backend --network=local
+```
+
+Then, upgrade your canister to use the new Wasm module:
 
 ```
 dfx canister install PROJECT_NAME_backend --network=local --mode upgrade
@@ -90,16 +96,9 @@ dfx canister install PROJECT_NAME_backend --network=local --mode upgrade
 
 ```
 Upgrading code for canister PROJECT_NAME_backend, with canister ID bkyz2-fmaaa-aaaaa-qaaaq-cai
-Module hash 6c29216f6a5b64eb7af4245d102505eb44ff1e4b75ebfafcfd72d140e7231efd is already installed.
 ```
 
 </details>
-
-Redeploy your upgraded canister to test it:
-
-```
-dfx deploy PROJECT_NAME_backend --network=local
-```
 
 Confirm that the change you made results in the expected functionality or behavior. Then, stop the canister:
 
