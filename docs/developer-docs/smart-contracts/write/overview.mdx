@@ -150,7 +150,7 @@ hello/
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```bash
-  hello/
+hello/
 ├── README.md          # Default project documentation
 ├── dfx.json           # Project configuration file
 ├── node_modules
@@ -221,7 +221,7 @@ The backend canister's code will be located in the `src/hello_backend` subdirect
 actor {
 public query func greet(name : Text) : async Text {
     return "Hello, " # name # "!";
-};
+  };
 };
 ```
 
@@ -243,17 +243,17 @@ fn greet(name: String) -> String {
 import { IDL, query, update } from 'azle';
 
 export default class {
-    message: string = 'Hello world!';
+  message: string = 'Hello world!';
 
-    @query([], IDL.Text)
-    getMessage(): string {
-        return this.message;
-    }
+  @query([], IDL.Text)
+  getMessage(): string {
+      return this.message;
+  }
 
-    @update([IDL.Text])
-    setMessage(message: string): void {
-        this.message = message;
-    }
+  @update([IDL.Text])
+  setMessage(message: string): void {
+      this.message = message;
+  }
 }
 ```
 
