@@ -1,0 +1,12 @@
+name: Confirm documentation has been reviewed.
+on:
+  pull_request:
+    paths:
+      - docs/developer-docs/
+jobs:
+    find_comment:
+        uses: peter-evans/find-comment@v3
+        id: fc
+        with:
+          issue-number: 1
+          body-includes: I agree that I have run the commands and code included in this PR and have confirmed their accuracy and functionality.
