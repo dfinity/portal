@@ -68,7 +68,7 @@ The following subsections explain the pricing for the different operation and re
 
 ### Canister creation
 
-Canister creation costs 100B cycles or approximately $0.13 USD. Canisters can be created by users or other canisters.
+Canister creation costs 500B cycles or approximately $0.65 USD. Canisters can be created by users or other canisters.
 
 ### Messaging
 
@@ -168,10 +168,10 @@ You can use the [pricing calculator](https://3d5wy-5aaaa-aaaag-qkhsq-cai.icp0.io
 | Canister transmission | Description | Who is responsible for paying the cycles fee? | 13-node subnets cycles cost | 13-node subnets USD cost | 34-node subnets | 34-node subnets USD cost |
 | ----------------- | ------------------------------- | -------------------------------------------------- | ----------------------------------------------- | --------------------------------------- | ------------------------------------- | --------------------------- | ------------------------------------ |
 | Query call|         | Query information from a canister. | N/A | Free |  Free | Free | Free |
-| Canister creation | For creating canisters on a subnet. | Created canister | 100B | $0.133661000000 | 100B / 13 * 34 | $0.349574923077 |
+| Canister creation | For creating canisters on a subnet. | Created canister | 500B | $0.668305000000 | 500B / 13 * 34 | $1.74787461538 |
 | Compute percent allocated per second | For each percent of the reserved compute allocation (a scarce resource). | Canister with allocation | 10M | $0.000013366100 | 10M / 13 * 34 | $0.000034957492 |
-| Update message execution | For every update message executed. | Target canister | 590K | $0.000000788600 | 590K / 13 * 34 | $0.000002062492 |
-| 1B executed instructions | For every 1B instructions executed when executing update type messages. | Canister executing instructions | 400M | $0.000534644000 | 400M / 13 * 34 | $0.001398299692 |
+| Update message execution | For every update message executed. | Target canister | 5M | $0.000006683050 | 5M / 13 * 34 | $0.000017478740 |
+| 1B executed instructions | For every 1B instructions executed when executing update type messages. | Canister executing instructions | 1B | $0.001336610000 | 1B / 13 * 34 | $0.003495749230 |
 | Xnet call | For every inter-canister call performed (includes the cost for sending the request and receiving the response). | Sending canister | 260K | $0.000000347519 | 260K / 13 * 34 | $0.000000908895 |
 | Xnet byte transmission | For every byte sent in an inter-canister call (for bytes sent in the request and response). | Sending canister | 1K | $0.000000001337 | 1K / 13 * 34 | $0.000000003496 |
 | Ingress message reception | For every ingress message received. | Receiving canister | 1.2M | $0.000001603932 | 1.2M / 13 * 34 | $0.000004194899 |
@@ -205,7 +205,7 @@ The execution cost consists of a fixed execution fee and per-instruction fee (on
 
 `base-fee` + `per-instruction-fee` * `number-of-instructions`
 
-The current values of fees are `base-fee` = 590K cycles (or $0.0000007885999 USD), `per-instruction-fee` = 0.4 cycles (or $0.0053 USD for 1B instructions).
+The current values of fees are `base-fee` = 5M cycles (or $0.00000668305 USD), `per-instruction-fee` = 1 cycle (or $0.01325 USD for 1B instructions).
 
 ### HTTPS outcalls
 
