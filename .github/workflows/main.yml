@@ -1,21 +1,12 @@
-name: Confirm documentation has been reviewed.
 on:
-  pull_request:
+  issue_comment:
+    types: [created]
     paths:
       - docs/developer-docs/
 jobs:
-  docscheck:
-    name: Check PR comments.
+  check_comment:
     runs-on: ubuntu-latest
     steps:
-    - name: Find comment.
-      uses: peter-evans/find-comment@v3
-      with:
-          body-includes: I agree that I have run the commands and code included in this PR and have confirmed their accuracy and functionality.
-    - name: Comment on PR.
-      run: |
-            echo ${{ steps.fc.outputs.comment-id }}
-            echo ${{ steps.fc.outputs.comment-node-id }}
-            echo ${{ steps.fc.outputs.comment-body }}
-            echo ${{ steps.fc.outputs.comment-author }}
-            echo ${{ steps.fc.outputs.comment-created-at }}
+      - name: Check PR comments
+        if: contains(github.event.comment.body, 'I agree that I have run the commands and code included in this PR and have confirmed their accuracy and functionality.')
+        run: echo ${{ steps.fc.outputs.comment-author }}
