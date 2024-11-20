@@ -7,13 +7,11 @@ jobs:
   check_comment:
     runs-on: ubuntu-latest
     steps:
-      - name: Check PR comments
-        if: contains(github.event.comment.body, 'I agree that I have run the commands and code included in this PR and have confirmed their accuracy and functionality.')
-        run: echo "PR has been commented on."  
       - uses: actions/github-script@v6
+        if: contains(github.event.comment.body, 'I agree that I have run the commands and code included in this PR and have confirmed their accuracy and functionality.')
         with:
           script: |
-            const comments = require('./.github/workflows/scripts/comments.js');
+            const comments = require('/.github/workflows/scripts/comments.js');
             const maybeComment = await comments.get(context, github);
             if (maybeComment) {
               await comments.update(context, github, maybeComment.id,  `PR content has been validated by a reviewer.`);
