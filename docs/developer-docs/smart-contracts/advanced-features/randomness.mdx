@@ -37,16 +37,16 @@ Developers can directly access randomness through the `raw_rand` method in the m
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
-import Random "mo:base/Random";
+import IC "ic:aaaaa-aa";
 
 actor {
   public func random_bytes() : async Blob {
-    await Random.blob();
+    await IC.raw_rand();
   };
 };
 ```
 
-In addition to the `Random.blob()` method, developers can call the `raw_rand` method function on the management canister directly.
+In addition to the raw_rand method, Motoko offers a [Random module](https://internetcomputer.org/docs/current/motoko/main/base/Random) for generating random numbers.
 
 </TabItem>
 
