@@ -1,3 +1,4 @@
+name: Validate Comments on Docs PRs
 on:
   issue_comment:
     types: [created]
@@ -5,6 +6,7 @@ on:
       - docs/developer-docs/
 jobs:
   check_comment:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
      - uses: actions/checkout@v3
