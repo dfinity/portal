@@ -9,4 +9,8 @@ jobs:
     steps:
       - name: Check PR comments
         if: contains(github.event.comment.body, 'I agree that I have run the commands and code included in this PR and have confirmed their accuracy and functionality.')
-        run: echo ${{ steps.fc.outputs.comment-author }}
+      - name: Comment on PR  
+        uses: actions/github-script@v6
+        with:
+          script: |
+              await comments.create(context, github, `PR content has been validated by a reviewer.`);
