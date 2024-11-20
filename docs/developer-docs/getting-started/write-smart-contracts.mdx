@@ -229,8 +229,39 @@ actor {
 <TabItem value="rust" label="Rust">
 
 ```rust title="src/PROJECT_NAME_backend/src/lib.rs"
+use candid::Nat;
+// Import the management canister's raw_rand method
+use ic_cdk::api::management_canister::main::raw_rand;
+use std::time::Duration;
 
+// Define a variable to hold the current random number.
+thread_local! {
+    static CURRENT_RANDOM_NUMBER: std::cell::RefCell<Nat> = std::cell::RefCell::new(Nat::from(0u8));
+}
 
+// Define an init function to generate a new random number.
+#[ic_cdk::init]
+fn generate_new_number() {
+  let _ = ic_cdk::spawn(async {
+      let random_bytes = raw_rand().await.unwrap().0;
+      if !random_bytes.is_empty() {
+          CURRENT_RANDOM_NUMBER.with_borrow_mut(|n| {
+              *n = Nat::from(random_bytes[0]);
+          });
+          // Print the random number
+          ic_cdk::println!(
+              "New random number generated: {}",
+              CURRENT_RANDOM_NUMBER.with_borrow(|n| n.clone())
+          );
+      }
+  });
+}
+
+// Define a query function to get the random number.
+#[ic_cdk::query]
+fn get_current_number() -> Nat {
+    CURRENT_RANDOM_NUMBER.with_borrow(|n| n.clone())
+}
 ```
 
 </TabItem>
@@ -293,8 +324,51 @@ actor {
 <TabItem value="rust" label="Rust">
 
 ```rust title="src/PROJECT_NAME_backend/src/lib.rs"
+use candid::Nat;
+// Import the management canister's raw_rand method
+use ic_cdk::api::management_canister::main::raw_rand;
 
+// highlight-start
+// Import time duration for timers.
+use std::time::Duration;
+// highlight-end 
 
+thread_local! {
+    static CURRENT_RANDOM_NUMBER: std::cell::RefCell<Nat> = std::cell::RefCell::new(Nat::from(0u8));
+}
+
+// highlight-start
+const N: Duration = Duration::from_secs(30);
+
+// Create a timer that executes the generate_new_number function every 30 seconds.
+#[ic_cdk::init]
+async fn init() {
+    let _timer_id = ic_cdk_timers::set_timer_interval(N, generate_new_number);
+}   
+// highlight-end 
+
+// Define a method to generate a new random number.
+#[ic_cdk::update]
+fn generate_new_number() {
+let _ = ic_cdk::spawn(async {
+    let random_bytes = raw_rand().await.unwrap().0;
+    if !random_bytes.is_empty() {
+        CURRENT_RANDOM_NUMBER.with_borrow_mut(|n| {
+            *n = Nat::from(random_bytes[0]);
+        });
+        ic_cdk::println!(
+            "New random number generated: {}",
+            CURRENT_RANDOM_NUMBER.with_borrow(|n| n.clone())
+        );
+    }
+});
+}
+
+// Define a query method to get the random number.
+#[ic_cdk::query]
+fn get_current_number() -> Nat {
+    CURRENT_RANDOM_NUMBER.with_borrow(|n| n.clone())
+}
 ```
 
 </TabItem>
@@ -428,8 +502,123 @@ module Types {
 <TabItem value="rust" label="Rust">
 
 ```rust title="src/PROJECT_NAME_backend/src/lib.rs"
+use candid::Nat;
+// Import the management canister's raw_rand method
+use ic_cdk::api::management_canister::main::raw_rand;
 
+// Import time duration for timers.
+use std::time::Duration;
 
+// highlight-start
+// Import the management canister's http_request method
+use ic_cdk::api::management_canister::http_request::{
+    http_request, CanisterHttpRequestArgument, HttpMethod, HttpResponse, TransformArgs,
+    TransformContext, TransformFunc,
+};
+// highlight-end
+
+thread_local! {
+    static CURRENT_RANDOM_NUMBER: std::cell::RefCell<Nat> = std::cell::RefCell::new(Nat::from(0u8));
+}
+
+const N: Duration = Duration::from_secs(30);
+
+// Create a timer that executes the generate_new_number function every 30 seconds.
+#[ic_cdk::init]
+async fn init() {
+    let _timer_id = ic_cdk_timers::set_timer_interval(N, generate_new_number);
+}   
+
+// Define a method to generate a new random number.
+#[ic_cdk::update]
+fn generate_new_number() {
+let _ = ic_cdk::spawn(async {
+    let random_bytes = raw_rand().await.unwrap().0;
+    if !random_bytes.is_empty() {
+        CURRENT_RANDOM_NUMBER.with_borrow_mut(|n| {
+            *n = Nat::from(random_bytes[0]);
+        });
+        ic_cdk::println!(
+            "New random number generated: {}",
+            CURRENT_RANDOM_NUMBER.with_borrow(|n| n.clone())
+        );
+    }
+});
+}
+
+// Define a query method to get the random number.
+#[ic_cdk::query]
+fn get_current_number() -> Nat {
+    CURRENT_RANDOM_NUMBER.with_borrow(|n| n.clone())
+}
+
+// highlight-start
+// Define an update method using the HTTPS outcalls feature.
+#[ic_cdk::update]
+async fn get_icp_info() -> String {
+    let url = format!(
+        "https://ic-api.internetcomputer.org/api/v3/daily-stats?format=json",
+    );
+
+    // Define the HTTP request arguments.
+    let request = CanisterHttpRequestArgument {
+        url: url.to_string(),
+        method: HttpMethod::GET,
+        body: None,               // Optional.
+        max_response_bytes: None, // Optional.
+        transform: Some(TransformContext {
+            // The "method" parameter must have the same name as the function name of your transform function.
+            function: TransformFunc(candid::Func {
+                principal: ic_cdk::api::id(),
+                method: "transform".to_string(),
+            }),
+            context: vec![],
+        }),
+        headers:  vec![],
+    };
+
+    // HTTPS outcalls require cycles.
+    let cycles = 230_949_972_000;
+
+    match http_request(request, cycles).await {
+        // Decode and return the response.
+        // Learn more: https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/struct.HttpResponse.html
+
+        Ok((response,)) => {
+
+            // Return the body as a string and end the method.
+            String::from_utf8(response.body).expect("Transformed response is not UTF-8 encoded.")
+        }
+        Err((r, m)) => {
+            let message =
+                format!("The http_request resulted into error. RejectionCode: {r:?}, Error: {m}");
+
+            // Return the error as a string and end the method.
+            message
+        }
+    }
+}
+
+// Define a transform method.
+// Strips all data that is not needed from the original response.
+#[ic_cdk::query]
+fn transform(raw: TransformArgs) -> HttpResponse {
+    let headers = vec![];
+
+    let mut res = HttpResponse {
+        status: raw.response.status.clone(),
+        body: raw.response.body.clone(),
+        headers,
+    };
+
+    if res.status == 200u64 {
+        res.body = raw.response.body;
+    } else {
+        ic_cdk::api::print(format!("Received an error = {:?}", raw));
+    }
+    res
+}
+// highlight-end
 ```
 </TabItem>
 </AdornedTabs>
@@ -551,6 +740,14 @@ You do not need to make any edits to the `Types.mo` file.
 
 ```
 </TabItem>
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
+
+Azle code coming soon.
+</AdornedTab>
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
+
+Kybra code coming soon.
+</AdornedTab>
 </AdornedTabs>
 
 ## Next step
