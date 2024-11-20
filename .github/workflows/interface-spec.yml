@@ -41,8 +41,10 @@ jobs:
     if: ${{ github.event_name == 'pull_request' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Tag PR with interface-spec
-        run: |
-          gh pr edit ${{ github.event.pull_request.number }} --add-label interface-spec
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Tag PR with interface-spec
+      run: |
+        gh pr edit ${{ github.event.pull_request.number }} --add-label interface-spec
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
