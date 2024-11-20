@@ -171,6 +171,31 @@ fn greet(name: String) -> String {
 ```
 
 </TabItem>
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
+
+```typescript title="src/hello_backend/src/index.ts"
+import { Canister, query, text } from 'azle';
+
+export default Canister({
+    greet: query([text], text, (name) => {
+        return `Hello, ${name}!`;
+    })
+})
+```
+
+</AdornedTab>
+
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
+
+```python title="src/hello_backend/src/main.py"
+from kybra import query
+
+@query
+def greet(name: str) -> str:
+    return f"Hello, {name}!"
+```
+
+</AdornedTab>
 </AdornedTabs>
 
 :::danger
@@ -272,6 +297,9 @@ Azle code coming soon.
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 Kybra code coming soon.
+
+[Learn more about Kybra](https://demergent-labs.github.io/kybra/)
+
 </AdornedTab>
 </AdornedTabs>
 
@@ -346,9 +374,9 @@ thread_local! {
 }
 
 // highlight-start
-const N: Duration = Duration::from_secs(30);
+const N: Duration = Duration::from_secs(5);
 
-// Create a timer that executes the generate_new_number function every 30 seconds.
+// Create a timer that executes the generate_new_number function every 5 seconds.
 #[ic_cdk::init]
 async fn init() {
     let _timer_id = ic_cdk_timers::set_timer_interval(N, generate_new_number);
@@ -387,6 +415,9 @@ Azle code coming soon.
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 Kybra code coming soon.
+
+[Learn more about Kybra](https://demergent-labs.github.io/kybra/)
+
 </AdornedTab>
 </AdornedTabs>
 
@@ -537,9 +568,9 @@ thread_local! {
     static CURRENT_RANDOM_NUMBER: std::cell::RefCell<Nat> = std::cell::RefCell::new(Nat::from(0u8));
 }
 
-const N: Duration = Duration::from_secs(30);
+const N: Duration = Duration::from_secs(5);
 
-// Create a timer that executes the generate_new_number function every 30 seconds.
+// Create a timer that executes the generate_new_number function every 5 seconds.
 #[ic_cdk::init]
 async fn init() {
     let _timer_id = ic_cdk_timers::set_timer_interval(N, generate_new_number);
@@ -644,6 +675,8 @@ Azle code coming soon.
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 Kybra code coming soon.
+
+[Learn more about Kybra](https://demergent-labs.github.io/kybra/)
 </AdornedTab>
 </AdornedTabs>
 
