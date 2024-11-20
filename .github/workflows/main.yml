@@ -21,9 +21,4 @@ jobs:
        with:
           script: |
             const comments = require('./.github/workflows/scripts/comments.js');
-            const maybeComment = await comments.get(context, github);
-            if (maybeComment) {
-              await comments.update(context, github, maybeComment.id,  `PR content has been validated by a reviewer.`);
-            } else {
-              await comments.create(context, github, `PR content has been validated by a reviewer.`);
-            }
+            await comments.create(context, github, `PR content has been validated by a reviewer.`);
