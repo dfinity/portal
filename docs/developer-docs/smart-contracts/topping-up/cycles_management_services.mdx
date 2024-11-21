@@ -25,12 +25,15 @@ Popular cycles management services include:
 ### Motoko
 
 * [cycles-manager](https://github.com/CycleOperators/cycles-manager): Provides a simplified, permissioned cycles management framework for multi-canister applications (sponsored by CycleOps).
-* [canistergeek-ic-motoko](https://github.com/usergeek/canistergeek-ic-motoko): An open source Motoko tool for Internet Computer to track your project canisters cycles and memory status and collect log messages.
-* [canistergeek_ic_rust](https://github.com/usergeek/canistergeek_ic_rust): An open source Rust tool for Internet Computer to track your project canisters cycles and memory status and collect log messages.
+* [canistergeek-ic-motoko](https://github.com/usergeek/canistergeek-ic-motoko): An open-source Motoko tool for Internet Computer to track your project canisters cycles and memory status and collect log messages.
 
-## Creating custom autonomous top up solutions
+### Rust
+* [canfund](https://github.com/dfinity/canfund): An open-source library for automated cycles management of canisters on the Internet Computer.
+* [canistergeek_ic_rust](https://github.com/usergeek/canistergeek_ic_rust): An open-source Rust tool for Internet Computer to track your project canisters cycles and memory status and collect log messages.
 
-To create an autonomous canister that doesn't rely on a third-party service, you can create your own autonomous canister top up solution. One option is to use a similar architecture implemented by [CycleOps](https://github.com/CycleOperators/cycles-manager/tree/main), where one canister acts as the cycles manager for the project and provides the API used to request more cycles when a canister within the project has its cycles balance dip below a preset threshold. Below is sample code for this architecture, where 'CyclesManager' is the management canister and 'Child' is another canister in the project that requests cycles from the 'CyclesManager'.
+## Creating custom autonomous top-up solutions
+
+To create an autonomous canister that doesn't rely on a third-party service, you can create your own autonomous canister top-up solution. One option is to use a similar architecture implemented by [CycleOps](https://github.com/CycleOperators/cycles-manager/tree/main), where one canister acts as the cycles manager for the project and provides the API used to request more cycles when a canister within the project has its cycles balance dip below a preset threshold. Below is a sample code for this architecture, where 'CyclesManager' is the management canister and 'Child' is another canister in the project that requests cycles from the 'CyclesManager'.
 
 :::caution
 

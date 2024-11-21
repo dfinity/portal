@@ -124,7 +124,7 @@ const subnavItems = [
       },
       {
         label: "Dev Discord",
-        href: "https://discord.gg/jnjVVQaE2C",
+        href: "https://discord.internetcomputer.org",
       },
     ],
   },
@@ -237,7 +237,7 @@ const marketingNav = {
         },
         {
           label: "Discord",
-          href: "https://discord.gg/jnjVVQaE2C",
+          href: "https://discord.internetcomputer.org",
           iconUrl: "/img/svgIcons/purple/discord.svg",
         },
         {
@@ -363,7 +363,7 @@ const marketingNav = {
         },
         {
           label: "Discord",
-          href: "https://discord.gg/jnjVVQaE2C",
+          href: "https://discord.internetcomputer.org",
           iconUrl: "/img/svgIcons/purple/discord.svg",
         },
         {
@@ -399,7 +399,7 @@ const marketingNav = {
             {
               name: "Developer Docs",
               href: "/docs/current/home",
-              description: "Start coding",
+              description: "Find the resources you need quickly",
             },
             {
               name: "Sample code",
@@ -407,9 +407,9 @@ const marketingNav = {
               description: "Get inspired by existing projects",
             },
             {
-              name: "Playground",
-              href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
-              description: "Deploy to the playground environment",
+              name: "Web IDE",
+              href: "https://icp.ninja",
+              description: "Deploy your first dapp with ICP.Ninja",
             },
             {
               name: "Programming languages",
@@ -433,8 +433,8 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Start building step by step",
-            href: "/docs/current/tutorials/developer-journey/",
+            title: "Developer Docs",
+            href: "/docs/current/home",
             image: "/img/nav/featured-building.webp",
           },
         },
@@ -448,7 +448,7 @@ const marketingNav = {
         },
         {
           label: "Discord",
-          href: "https://discord.gg/jnjVVQaE2C",
+          href: "https://discord.internetcomputer.org",
           iconUrl: "/img/svgIcons/purple/discord.svg",
         },
         {
@@ -528,7 +528,7 @@ const marketingNav = {
         },
         {
           label: "Discord",
-          href: "https://discord.gg/jnjVVQaE2C",
+          href: "https://discord.internetcomputer.org",
           iconUrl: "/img/svgIcons/purple/discord.svg",
         },
         {
@@ -568,7 +568,7 @@ function getImageDataUrl(url) {
 const config = {
   title: "Internet Computer",
   tagline:
-    " The Internet Compute hosts secure, network-resident code and data. Build web apps without Big Tech and current IT. Applications are immune to cyber attack and unstoppable, can process tokens, and can run under exclusive DAO control. Create web3 social media, games, defi, multi-chain apps, secure front-ends, ledgers, and enterprise apps and AI models. The internet is evolving fast.",
+    "The Internet Computer hosts secure, network-resident code and data. Build web apps without Big Tech and current IT. Applications are immune to cyber attacks and unstoppable, capable of processing tokens, and can run under exclusive DAO control. Build web3 social media, games, DeFi, multi-chain apps, secure front-ends, ledgers, enterprise apps, and AI models. The internet is evolving fast.",
   url: isDeployPreview
     ? `https://${process.env.PREVIEW_CANISTER_ID}.icp0.io`
     : "https://internetcomputer.org",
@@ -689,9 +689,9 @@ const config = {
     {
       image: "/img/share.webp",
       colorMode: {
-        disableSwitch: true,
+        disableSwitch: false,
         defaultMode: "light",
-        respectPrefersColorScheme: false,
+        respectPrefersColorScheme: true,
       },
       metadata: [
         {

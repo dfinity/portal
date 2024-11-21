@@ -88,7 +88,7 @@ Alternatively, you can include the EVM RPC canister by specifying the Candid and
 }
 ```
 
-Then start the local replica and deploy the canister locally with a specified number of nodes (`31` for the [fiduciary subnet](/docs/current/concepts/subnet-types#fiduciary-subnets)):
+Then start the local replica and deploy the canister locally with a specified number of nodes (`31` for the [fiduciary subnet](/docs/current/references/subnets/subnet-types#fiduciary-subnets)):
 
 ```
 dfx start --clean --background
@@ -110,6 +110,14 @@ dfx deploy evm_rpc --network ic --argument '(record {})'
 ```
 
 Note that when deploying your own canister, you may encounter API rate limits. Refer to the [replacing API keys](#replacing-api-keys) section to learn how to configure API credentials.
+
+### `ic-alloy`
+
+The [`ic-alloy`](https://github.com/ic-alloy) Rust crate can be used to interact with the EVM RPC canister from Rust code. It simplifies the code necessary to perform common EVM operations.
+
+The `ic-alloy-toolkit` includes a collection of examples demonstrating how `ic-alloy` can be used.
+
+[View the `ic-alloy` documentation for more information](https://o7kje-7yaaa-aaaal-qnaua-cai.icp0.io).
 
 ## Get event logs
 
@@ -409,7 +417,7 @@ dfx canister call evm_rpc eth_getTransactionReceipt "(variant {$RPC_SOURCE}, $RP
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-Calling an Ethereum smart contract from Motoko isn't currently supported.
+Calling an Ethereum smart contract from Motoko is possible but not yet officially supported.
 
 </TabItem>
 <TabItem value="rust" label="Rust">
@@ -796,7 +804,7 @@ dfx canister call evm_rpc eth_sendRawTransaction "(variant {$RPC_SOURCE}, $RPC_C
 
 :::
 Some JSON-RPC APIs may only return a `NonceTooLow` status when successfully submitting a transaction. This is because during the HTTP outcall consensus, only the first request is successful, while the others reply with a duplicate transaction status.
-If you encounter this issue, one possible workaround is to use a deduplicating proxy server such as the community-built C-ATTS EVM RPC proxy ([source code](https://github.com/c-atts/catts-evm-rpc-proxy)). 
+If you encounter this issue, one possible workaround is to use a deduplicating proxy server such as the community-built C-ATTS EVM RPC proxy ([source code](https://github.com/c-atts/catts-evm-rpc-proxy)).
 :::
 
 ### Error "already known"

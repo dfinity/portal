@@ -22,11 +22,6 @@ const MotionLink = motion(Link);
 
 const data = roadmapData as RootObject[];
 
-function elementCount(milestoneElements: any[], status: string) {
-  return milestoneElements.filter((element) => element.status === status)
-    .length;
-}
-
 const css = `
   @keyframes blob {
     0% {
@@ -194,18 +189,14 @@ const milestoneComponent = (
       {(milestone.status === "deployed" ||
         milestone.name === "orphans_past") && (
         <div className="absolute w-[48px] right-5 top-5 md:right-10 md:top-10 z-10">
-          <Tooltip 
-            tooltip="Deployed"
-          >
+          <Tooltip tooltip="Deployed">
             <DeployedIcon glowing={true} isDark={true} />
           </Tooltip>
         </div>
       )}
       {milestone.status === "in_progress" && (
         <div className="absolute w-[48px] right-5 top-5 md:right-10 md:top-10 z-10">
-          <Tooltip 
-            tooltip="In Progress"
-          >
+          <Tooltip tooltip="In Progress">
             <InProgressIcon isDark={true} />
           </Tooltip>
         </div>
@@ -295,10 +286,6 @@ function scrollBy(ref: RefObject<T>, direction: 1) {
   });
 }
 
-function elementHasOverflown(element: HTMLElement) {
-  return element.scrollWidth > element.clientWidth;
-}
-
 const RoadmapPage: React.FC = () => {
   const [overlayOpen, setOverlayOpen] = useState(false);
   const [overlayOpenAt, setOverlayOpenAt] = useState(null);
@@ -342,10 +329,23 @@ const RoadmapPage: React.FC = () => {
   useEffect(() => {
     scrollRefs.forEach((ref) => {
       if (ref.current) {
+        // Find all past cards (completed milestones)
         const pastCards = ref.current.getElementsByClassName("past-card");
         if (pastCards.length > 0) {
+          // Calculate the total width of all past cards plus any gaps
+          const totalPastWidth = Array.from(pastCards).reduce(
+            (total: number, card: HTMLElement) => {
+              const cardWidth = card.getBoundingClientRect().width;
+              // Add 24px for the gap (md:gap-6 = 1.5rem = 24px)
+              return total + cardWidth + 24;
+            },
+            0
+          );
+
+          // Scroll to show the first non-past card
           ref.current.scrollTo({
-            left: pastCards[0].offsetWidth,
+            left: totalPastWidth,
+            behavior: "instant", // avoid animation on load
           });
         }
       }
@@ -383,7 +383,6 @@ const RoadmapPage: React.FC = () => {
                 the future and not yet scoped in detail, as well as past
                 achievements.
               </p>
-      
             </div>
           </div>
 

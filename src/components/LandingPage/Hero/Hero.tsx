@@ -32,7 +32,7 @@ const Hero: React.FC<{
       >
         <HomeAnimation />
         <div className="container-8">
-          <div className="relative">
+          <div className="relative mx-auto px-0 md:pl-16 md:pr-8">
             <h1
               className="
                 animate-fade-up 
@@ -42,7 +42,7 @@ const Hero: React.FC<{
                 md:text-[100px] 
                 lg:text-[110px] 
                 text-white
-                grid mb-0"
+                grid mb-0 mx-auto"
               style={{
                 animationPlayState: fontLoaded ? "running" : "paused",
               }}
@@ -51,13 +51,13 @@ const Hero: React.FC<{
               <span className="block md:ml-48">COMPUTER</span>
             </h1>
             <div className="md:ml-48">
-              <p className="tw-paragraph md:tw-lead-sm mt-6 md:w-7/10">
-                The Internet Compute hosts secure, network-resident code and
+              <p className="tw-paragraph md:tw-lead-sm mt-6 md:w-full">
+                The Internet Computer hosts secure, network-resident code and
                 data. Build web apps without Big Tech and current IT.
-                Applications are immune to cyber attack and unstoppable, can
-                process tokens, and can run under exclusive DAO control. Create
-                web3 social media, games, defi, multi-chain apps, secure
-                front-ends, ledgers, and enterprise apps and AI models. The
+                Applications are immune to cyber attacks and unstoppable,
+                capable of processing tokens, and can run under exclusive DAO
+                control. Build web3 social media, games, DeFi, multi-chain apps,
+                secure front-ends, ledgers, enterprise apps, and AI models. The
                 internet is evolving fast.
               </p>
               <div className="flex flex-col md:flex-row gap-8 mt-8 md:mt-6 md:items-center">
@@ -72,6 +72,12 @@ const Hero: React.FC<{
                   href="/what-is-the-ic"
                 >
                   <LinkArrowRight /> <span>What is ICP</span>
+                </Link>
+                <Link
+                  className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
+                  href="https://internetcomputer.docsend.com/view/dzkwezufykwpb7p8"
+                >
+                  <span>Read the ICP Deck</span> <LinkArrowUpRight />
                 </Link>
               </div>
             </div>

@@ -63,45 +63,36 @@ export function TeaserCard({
 }) {
   return (
     <div className={className} style={style}>
-      <div className={"flex flex-col justify-between"}>
-        <div className={"flex flex-col"}>
-          {card.title}
-          {card.subtitle}
-          {card.cta}
-        </div>
+      <div className={"flex flex-col"}>
+        {card.title}
+        {card.subtitle}
+        {card.cta}
         {card.mainImage && (
-          <img
-            loading="lazy"
-            className={"sm:hidden"}
-            src={card.mainImage}
-            alt={typeof card.title === "string" ? card.title : "Card image"}
-          />
-        )}
-        {paginationEnabled && (
-          <div className={"flex flex-row gap-1 items-center"}>
-            <Link
-              className="button-transparent button-with-icon cursor-pointer"
-              onClick={onClickLeftArrow}
-            >
-              <ArrowLeft />
-            </Link>
-            <span className={"text-white"}>{paginationLabel}</span>
-            <Link
-              className="button-transparent button-with-icon cursor-pointer"
-              onClick={onClickRightArrow}
-            >
-              <ArrowRight />
-            </Link>
+          <div className={"justify-center hidden sm:flex"}>
+            <img
+              className={"mt-auto"}
+              src={card.mainImage}
+              alt={typeof card.title === "string" ? card.title : "Card image"}
+            />
           </div>
         )}
       </div>
-      {card.mainImage && (
-        <div className={"justify-center hidden sm:flex"}>
-          <img
-            className={"mt-auto"}
-            src={card.mainImage}
-            alt={typeof card.title === "string" ? card.title : "Card image"}
-          />
+
+      {paginationEnabled && (
+        <div className={"flex flex-row gap-1 items-center"}>
+          <Link
+            className="button-transparent button-with-icon cursor-pointer"
+            onClick={onClickLeftArrow}
+          >
+            <ArrowLeft />
+          </Link>
+          <span className={"text-white"}>{paginationLabel}</span>
+          <Link
+            className="button-transparent button-with-icon cursor-pointer"
+            onClick={onClickRightArrow}
+          >
+            <ArrowRight />
+          </Link>
         </div>
       )}
     </div>

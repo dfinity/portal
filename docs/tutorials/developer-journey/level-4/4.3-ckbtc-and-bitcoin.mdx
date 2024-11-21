@@ -1,5 +1,5 @@
 ---
-keywords: [advanced, tutorial, developer journey, ckbtc, bitcoin]
+keywords: [advanced, tutorial, developer ladder, ckbtc, bitcoin]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -8,7 +8,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Tutorial"]} />
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/LmoE3-jzwmo?si=-ODc1BYFu_HSLhTA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class="text--center">
+<p> </p>
+</div>
+<div class="text--center">
+<iframe width="660" height="415" src="https://www.youtube.com/embed/LmoE3-jzwmo?si=-ODc1BYFu_HSLhTA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
 ## Overview
 
@@ -28,7 +32,7 @@ At the core of this integration is a novel protocol for chain-key signatures tha
 
 On a high level, subnets that have ECDSA enabled hold a threshold ECDSA master key, which is generated using ICP's key generation protocol. A master key can be used to generate canister ECDSA keys. It is important to know that an ECDSA private key only exists in a secret-shared form during it's lifetime, whether it is being generated, shared within a subnet, or shared from one subnet to another.
 
-The developer journey will dive deeper into threshold ECDSA in a future tutorial. You can also take a deep dive in the [technology overview to learn more](/docs/current/references/t-sigs-how-it-works/).
+The developer ladder will dive deeper into threshold ECDSA in a future tutorial. You can also take a deep dive in the [technology overview to learn more](/docs/current/references/t-sigs-how-it-works/).
 
 On the protocol-level, the [Bitcoin integration](https://wiki.internetcomputer.org/wiki/Bitcoin_Integration) and chain-key ECDSA each expose an API on the management canister. Remember that the management canister isn't a canister but a facade that is used to enable functionality for management operations such as starting or stopping a canister. While the Bitcoin API is specific to the Bitcoin network, the chain-key ECDSA signature API can be used for other workflows, such as the integration with other blockchains like Ethereum.
 
@@ -63,7 +67,7 @@ The ICP's Bitcoin integration enables use cases such as:
 In this tutorial, you'll be deploying an example application using a local instance of the Bitcoin network and then simulate Bitcoin transactions using it. This example showcases ICP's Bitcoin integration, however it does not use ckBTC.
 
 :::info
-Developing with ckBTC uses a different workflow, which will be showcased in a future variation of the developer journey series focused entirely on ckBTC.
+Developing with ckBTC uses a different workflow, which will be showcased in a future variation of the developer ladder series focused entirely on ckBTC.
 :::
 
 For this tutorial, you'll take a look at developing and testing a Bitcoin dapp using `dfx`, which supports both the Bitcoin API and the ECDSA API.
@@ -76,11 +80,7 @@ Before you start, verify that you have set up your developer environment accordi
 
 To develop a Bitcoin dapp locally, first a local Bitcoin network instance must be running. A local Bitcoin network allows developers to mine blocks quickly, which facilitates testing without having to rely on the slow Bitcoin testnet or the Bitcoin mainnet.
 
-To get started, first download the [Bitcoin core](https://bitcoin.org/en/download). It is recommended to use the `.tar.gz` version for Mac users.
-
-:::info
-At the time of this guide, the latest version is Bitcoin `25.0`. If you are downloading another version, be sure to change the version number in the following commands.
-:::
+To get started, first download the [Bitcoin core v25](https://bitcoin.org/bin/bitcoin-core-25.0/). It is recommended to use the `.tar.gz` version for Mac users.
 
 Then, unpack the `.tar.gz` file with the command:
 
@@ -125,7 +125,7 @@ Once running, the Bitcoin instance will take a moment to spin up and synchronize
 
 Now that our local instance of the Bitcoin network is up and running, it's time to start developing a Bitcoin dapp locally.
 
-To get started, open a new terminal window, navigate into your working directory (`developer_journey`), then use the following commands to clone the DFINITY examples repo and navigate into the `basic_bitcoin` directory:
+To get started, open a new terminal window, navigate into your working directory (`developer_ladder`), then use the following commands to clone the DFINITY examples repo and navigate into the `basic_bitcoin` directory:
 
 ```bash
 git clone https://github.com/dfinity/examples/
@@ -344,9 +344,9 @@ dfx canister call basic_bitcoin get_balance '("n2dcQfuwFw7M2UYzLfM6P7DwewsQaygb8
 
 Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
-- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
+- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
+- [Developer ladder forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -360,7 +360,7 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Upcoming hackathons](https://dfinity.org/hackathons/).
 
-- [Weekly developer office hours](https://discord.gg/4a7SZzRk?event=1164114241893187655) to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on our [developer Discord](https://discord.com/invite/cA7y6ezyE2) group.
+- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
 
 - Submit your feedback to the [ICP Developer feedback board](http://dx.internetcomputer.org).
 

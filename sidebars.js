@@ -5,27 +5,39 @@ const sidebars = {
   build: [
     {
       type: "category",
-      label: "Getting started",
+      label: "Quick starts",
       items: [
         {
           type: "doc",
-          label: "Overview of ICP",
-          id: "developer-docs/getting-started/overview-of-icp",
+          label: "First smart contract",
+          id: "developer-docs/getting-started/quickstart/first-smart-contract",
         },
         {
           type: "doc",
-          label: "Development workflow",
+          label: "React",
+          id: "developer-docs/getting-started/quickstart/react-quickstart",
+        },
+      ],
+    },
+    {
+      type: "doc",
+      label: "Network overview",
+      id: "developer-docs/getting-started/network-overview",
+    },
+    {
+      type: "category",
+      label: "Dev environment setup",
+      items: [
+
+        {
+          type: "doc",
+          label: "Workflow",
           id: "developer-docs/getting-started/development-workflow",
         },
         {
           type: "doc",
-          label: "Installing tools",
+          label: "Installation",
           id: "developer-docs/getting-started/install/index",
-        },
-        {
-          type: "doc",
-          label: "Hello, world!",
-          id: "developer-docs/getting-started/hello-world",
         },
         {
           type: "doc",
@@ -51,7 +63,7 @@ const sidebars = {
         },
         {
           type: "category",
-          label: "Deploy smart contracts",
+          label: "Deploy",
           items: [
             {
               type: "doc",
@@ -70,22 +82,6 @@ const sidebars = {
             },
           ],
         },
-        {
-          type: "category",
-          label: "Quickstart guides",
-          items: [
-            {
-              type: "doc",
-              label: "Quickstart for React developers",
-              id: "developer-docs/getting-started/quickstart/react-quickstart",
-            },
-            {
-              type: "doc",
-              label: "Juno quickstart",
-              id: "developer-docs/getting-started/quickstart/juno-quickstart",
-            },
-          ],
-        },
       ],
     },
     {
@@ -99,6 +95,7 @@ const sidebars = {
             "developer-docs/smart-contracts/overview/introduction",
             "developer-docs/smart-contracts/overview/inside-canisters",
             "developer-docs/smart-contracts/overview/canister-lifecycle",
+            "developer-docs/smart-contracts/overview/trust-in-canisters",
           ],
         },
         {
@@ -1148,6 +1145,7 @@ const sidebars = {
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-voting-on-proposals",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-following-other-neurons",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-advanced-neuron-operations",
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-making-neurons-public",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-manage-quill-neurons",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-additional-features",
               ],
@@ -1288,7 +1286,6 @@ const sidebars = {
             "references/samples/motoko/encrypted-notes-dapp/README",
             "references/samples/motoko/life/README",
             "references/samples/motoko/hello_cycles/README",
-            "references/samples/motoko/http_counter/README",
             "references/samples/motoko/send_http_get/README",
             "references/samples/motoko/send_http_post/README",
             "references/samples/motoko/ic-pos/README",
@@ -1352,19 +1349,6 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Core concepts",
-      items: [
-        "concepts/canisters-code",
-        "concepts/governance",
-        "concepts/nodes-subnets",
-        "concepts/subnet-types",
-        "concepts/tokens-cycles",
-        "concepts/trust-in-canisters",
-        "concepts/glossary",
-      ],
-    },
-    {
-      type: "category",
       label: "References",
       items: [
         {
@@ -1375,11 +1359,6 @@ const sidebars = {
             "references/ic-interface-spec",
             "references/id-encoding-spec",
           ],
-        },
-        {
-          type: "doc",
-          label: "Message execution properties",
-          id: "references/message-execution-properties",
         },
         {
           type: "category",
@@ -1425,6 +1404,11 @@ const sidebars = {
           ],
         },
         {
+          type: "doc",
+          label: "Execution errors",
+          id: "references/execution-errors",
+        },
+        {
           type: "category",
           label: "Feature references",
           items: [
@@ -1435,6 +1419,11 @@ const sidebars = {
             "references/vetkeys-overview",
             "references/supported-signatures",
           ],
+        },
+        {
+          type: "doc",
+          label: "Glossary",
+          id: "references/glossary",
         },
         {
           type: "category",
@@ -1450,6 +1439,16 @@ const sidebars = {
           ],
         },
         {
+          type: "doc",
+          label: "Message execution properties",
+          id: "references/message-execution-properties",
+        },
+        {
+          type: "doc",
+          label: "Ingress messages",
+          id: "references/ingress-messages",
+        },
+        {
           type: "category",
           label: "Node providers",
           items: [
@@ -1462,28 +1461,24 @@ const sidebars = {
           ],
         },
         {
-          type: "category",
-          label: "FAQs",
-          items: [
-            "developer-docs/multi-chain/faq/user-faq",
-            "developer-docs/multi-chain/faq/ckbtc-faq",
-            "developer-docs/multi-chain/faq/cketh-faq",
-            "developer-docs/multi-chain/faq/ckerc20-faq",
-            "developer-docs/multi-chain/faq/signatures-faq",
-          ],
-        },
-        {
-          type: "doc",
-          label: "Execution errors",
-          id: "references/execution-errors",
-        },
+            type: "category",
+            label: "Subnets",
+            items: [
+              {
+                type: "doc",
+                label: "Overview",
+                id: "references/subnets/overview",
+              },
+              "references/subnets/subnet-types",
+            ],
+          },
       ],
     },
   ],
 devjourney: [
     {
       type: "category",
-      label: "Developer Journey",
+      label: "Developer Ladder",
       link: {
         type: "doc",
         id: "tutorials/developer-journey/index",

@@ -1,5 +1,5 @@
 ---
-keywords: [advanced, tutorial, developer journey, icp tokens, icp ledger]
+keywords: [advanced, tutorial, developer ladder, icp tokens, icp ledger]
 ---
 
 
@@ -11,7 +11,11 @@ import '/src/components/CenterImages/center.scss';
 
 <MarkdownChipRow labels={["Advanced", "Tutorial"]} />
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/oUz35IopyuQ?si=t6kAv37_yshWbvdv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class="text--center">
+<p> </p>
+</div>
+<div class="text--center">
+<iframe width="660" height="415" src="https://www.youtube.com/embed/oUz35IopyuQ?si=t6kAv37_yshWbvdv" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
 ## Overview
 
@@ -19,7 +23,7 @@ Recall from previous modules that ICP is the native token of the Internet Comput
 
 - Facilitating the network's governance through neuron staking. You'll dive deeper into staking tokens in [4.4 NNS governance and staking](/docs/current/tutorials/developer-journey/level-4/4.4-nns-governance).
 
-- Creating cycles by converting ICP into cycles, which are then used to pay for canister computation and resources. The developer journey briefly covered converting ICP into cycles in [1.4 Acquiring and using cycles](/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles).
+- Creating cycles by converting ICP into cycles, which are then used to pay for canister computation and resources. The developer ladder briefly covered converting ICP into cycles in [1.4 Acquiring and using cycles](/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles).
 
 - Rewarding NNS participants by providing ICP tokens to users that stake ICP in neurons and actively participate in voting on proposals. You'll dive deeper into NNS rewards in [4.4 NNS governance and staking](/docs/current/tutorials/developer-journey/level-4/4.4-nns-governance).
 
@@ -65,7 +69,7 @@ Before you start, verify that you have set up your developer environment accordi
 
 ### Creating a new project
 
-To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_journey`), then use the following commands to start `dfx` and create a new project:
+To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_ladder`), then use the following commands to start `dfx` and create a new project:
 
 ```bash
 dfx start --clean --background
@@ -256,7 +260,7 @@ To transfer tokens from one account to another, use the command:
 dfx ledger transfer --amount AMOUNT --memo MEMO RECEIVER_ACCOUNT_ID
 ```
 
-Replace `AMOUNT` with the number of tokens to transfer, `MEMO` with a 64-bit numeric value, and `RECEIVER_ACCOUNT_ID` with the account ID to receive the tokens. 
+Replace `AMOUNT` with the number of tokens to transfer, `MEMO` with a 64-bit numeric value, and `RECEIVER_ACCOUNT_ID` with the account ID to receive the tokens.
 
 :::info
 `MEMO` refers to a 64-bit numeric value as defined in the [IC specification](/docs/current/references/ledger#_transferring_tokens). It is used to generate unique hash values for transactions.
@@ -326,9 +330,9 @@ After navigating to this URL in a web browser, the Candid UI will resemble the f
 
 Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
-- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
+- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
+- [Developer ladder forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -342,7 +346,7 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Upcoming hackathons](https://dfinity.org/hackathons/).
 
-- [Weekly developer office hours](https://discord.gg/4a7SZzRk?event=1164114241893187655) to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on our [developer Discord](https://discord.com/invite/cA7y6ezyE2) group.
+- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
 
 - Submit your feedback to the [ICP Developer feedback board](http://dx.internetcomputer.org).
 
