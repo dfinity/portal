@@ -518,9 +518,9 @@ const footerCards: Array<CarouselCard> = [
     cta: (
       <Link
         className="button-transparent button-with-icon pl-0"
-        href="https://discord.com/invite/5PJMmmETQB"
+        href="https://discord.internetcomputer.org"
       >
-        RSVP at #event channel
+        Join Discord
         <LinkArrowRight />
       </Link>
     ),

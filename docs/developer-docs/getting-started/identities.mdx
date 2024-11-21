@@ -11,9 +11,9 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 ## Overview
 
-On the Internet Computer (ICP), a developer **identity** is essential to developing canisters. Developer identities use a private/public key pair for authentication. The public key can be distributed openly as it will be used by services to encrypt messages. The private key must be kept secret and stored securely.
+On the Internet Computer (ICP), a developer **identity** is essential to developing canisters. Developer identities use a private/public key pair for authentication. The public key can be distributed openly as it will be used to encrypt messages. The private key must be kept secret and stored securely.
 
-Developer identities have a **principal**, which is a generic identifier value that is used to identify users, <GlossaryTooltip>canisters</GlossaryTooltip>, and potentially other entities on the network in the future. Each developer identity's principal value is derived from the identity's public key.
+Developer identities have a **principal**, a generic identifier value used to identify users, <GlossaryTooltip>canisters</GlossaryTooltip>, and potentially other entities on the network in the future. Each developer identity's principal value is derived from the identity's public key.
 
 ## What are developer identities used for?
 
@@ -35,9 +35,9 @@ Once a canister is deployed, it will consume resources such as storage and compu
 
 Developer identities are not the only form of identity on ICP. Other ICP identity-related terms you will come across include:
 
-- **Ledger account identifier**: The identifier associated with your ICP ledger account.
+- **Ledger account identifier**: The identifier associated with your ICP ledger account; used to send and receive ICP tokens.
 
-- **Internet Identity**: ICP's native authentication service. Internet Identity doesn't use usernames and passwords; instead, it uses a passkey that is stored in your local device's hardware.
+- **Internet Identity**: ICP's native authentication service. Internet Identity doesn't use usernames and passwords; instead, it uses a passkey stored in your local device's hardware.
 
 :::
 
@@ -51,7 +51,7 @@ First, use `dfx` to list all current identities. If none exist, it will automati
 dfx identity list
 ```
 
-Then, create your personal password-protected developer identity with the command:
+Then, create your personal developer identity with the command:
 
 ```
 dfx identity new IDENTITY_NAME
@@ -61,24 +61,29 @@ dfx identity new IDENTITY_NAME
 <summary>Output</summary>
 
 ```
-Please enter a passphrase for your identity: [hidden]
-Encryption complete.
 Your seed phrase for identity 'IDENTITY_NAME': hotel knock any token tooth deal fossil salmon coral idea tip weapon cotton save fiction major arrive history library clerk depth poet path guide
-This can be used to reconstruct your key in case of emergency, so write it down in a safe place.
+Write it down in a safe place, as this information can be used to reconstruct your key in case of emergency.
 Created identity: "IDENTITY_NAME".
 ```
 
 </details>
 
 :::tip
+
 Identities created with `dfx` are global; they are not confined to a specific project's context.
 
 Identity names must use the characters `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.-_@0123456789`.
+
+To recover an identity, use `dfx identity import --seed-file seedphrase.txt`, where `seedphrase.txt` contains the seed phrase shown when you created your identity.
 :::
 
 ### Storing the identity's private key
 
-The private key for an identity is stored in the `~/.config/dfx/identity/IDENTITY_NAME/identity.pem.encrypted`. ***This file should be backed up to a secure location.***
+The private key for an identity is stored in the `~/.config/dfx/identity/IDENTITY_NAME/identity.pem`. ***This file should be backed up to a secure location.***
+
+:::caution 
+By default, `dfx` will store your identity in the local keyring/keychain. If a keyring/keychain is unavailable, it will prompt you to choose a password, then store your private key locally in a password-protected PEM file at `~/.config/dfx/identity/IDENTITY_NAME/identity.pem.encrypted`.
+:::
 
 ## Using your identity
 
@@ -98,6 +103,8 @@ Using identity: "IDENTITY_NAME".
 ```
 
 </details>
+
+Your developer identity will have a principal identifier in the format `itk7v-ihlxk-ktdrh-fcnst-vkoou-orj77-52ogl-jqwj5-zpfdv-az3lr-xqe`. 
 
 To view the principal identifier for your identity:
 
