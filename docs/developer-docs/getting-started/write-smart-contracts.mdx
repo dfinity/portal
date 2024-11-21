@@ -802,8 +802,163 @@ You do not need to make any edits to the `Types.mo` file.
 <TabItem value="rust" label="Rust">
 
 ```rust title="src/PROJECT_NAME_backend/src/lib.rs"
+use candid::Nat;
+// Import the management canister's raw_rand method
+use ic_cdk::api::management_canister::main::raw_rand;
 
+// Import time duration for timers.
+use std::time::Duration;
 
+// Import the management canister's http_request method
+use ic_cdk::api::management_canister::http_request::{
+    http_request, CanisterHttpRequestArgument, HttpMethod, HttpResponse, TransformArgs,
+    TransformContext, TransformFunc,
+};
+
+// Import packages for generating a random number within specific range
+use rand::Rng;
+use rand::SeedableRng;
+use rand_chacha::ChaCha8Rng;
+use std::cell::RefCell;
+
+thread_local! {
+    static CURRENT_RANDOM_NUMBER: RefCell<Nat> = RefCell::new(Nat::from(0_u8));
+}
+
+const N: Duration = Duration::from_secs(30);
+const X: Duration = Duration::from_secs(32);
+
+// Create two timers.
+// One that executes the generate_new_number function every 30 seconds.
+// One that executes the print_results function eery 32 seconds.
+#[ic_cdk::init]
+async fn init() {
+    let _timer_id_1 =
+        ic_cdk_timers::set_timer_interval(N, || ic_cdk::spawn(generate_new_number(133000, 133255)));
+    let _timer_id_2 = ic_cdk_timers::set_timer_interval(X, || ic_cdk::spawn(print_results()));
+}
+
+// Define a method to generate a new random number.
+#[ic_cdk::update]
+async fn generate_new_number(min: u64, max: u64) {
+    let random_bytes = raw_rand().await.unwrap().0;
+    if !random_bytes.is_empty() {
+        let seed: [u8; 32] = random_bytes.try_into().unwrap_or([0; 32]);
+        let mut rng = ChaCha8Rng::from_seed(seed);
+        let random_number = rng.gen_range(min..=max);
+
+        CURRENT_RANDOM_NUMBER.with_borrow_mut(|n| {
+            *n = Nat::from(random_number);
+        });
+
+        ic_cdk::println!(
+            "New random number generated between {} and {}: {}",
+            min,
+            max,
+            CURRENT_RANDOM_NUMBER.with_borrow(|n| n.clone())
+        );
+    }
+}
+
+// Define a query method to get the random number.
+#[ic_cdk::query]
+fn get_current_number() -> Nat {
+    CURRENT_RANDOM_NUMBER.with_borrow(|n| n.clone())
+}
+
+// Define an update method using the HTTPS outcalls feature.
+#[ic_cdk::update]
+async fn get_icp_info() -> String {
+    let url = format!(
+        "https://ic-api.internetcomputer.org/api/v3/proposals/{}",
+        CURRENT_RANDOM_NUMBER.with_borrow(|number| number.clone())
+    );
+
+    // Define the HTTP request arguments.
+    let request = CanisterHttpRequestArgument {
+        url: url.to_string(),
+        method: HttpMethod::GET,
+        body: None,               // Optional.
+        max_response_bytes: None, // Optional.
+        transform: Some(TransformContext {
+            // The "method" parameter must have the same name as the function name of your transform function.
+            function: TransformFunc(candid::Func {
+                principal: ic_cdk::api::id(),
+                method: "transform".to_string(),
+            }),
+            context: vec![],
+        }),
+        headers: vec![],
+    };
+
+    // HTTPS outcalls require cycles. Unused cycles will be refunded.
+    let cycles = 230_949_972_000;
+
+    match http_request(request, cycles).await {
+        // Decode and return the response.
+        // Learn more: https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/struct.HttpResponse.html
+        Ok((response,)) => {
+            // Return the body as a string and end the method.
+            String::from_utf8(response.body).expect("Transformed response is not UTF-8 encoded.")
+        }
+        Err((r, m)) => {
+            let message =
+                format!("The http_request resulted in an error. RejectionCode: {r:?}, Error: {m}");
+
+            // Return the error as a string and end the method.
+            message
+        }
+    }
+}
+
+// Define a transform method.
+// Strips all data that is not needed from the original response.
+#[ic_cdk::query]
+fn transform(raw: TransformArgs) -> HttpResponse {
+    let headers = vec![];
+
+    let mut res = HttpResponse {
+        status: raw.response.status.clone(),
+        body: raw.response.body.clone(),
+        headers,
+    };
+
+    if res.status == 200_u64 {
+        res.body = raw.response.body;
+    } else {
+        ic_cdk::api::print(format!("Received an error = {:?}", raw));
+    }
+    res
+}
+
+// Define a query method to get the random number.
+#[ic_cdk::query]
+async fn print_results() {
+    let results = get_icp_info().await;
+    ic_cdk::println!("{results}");
+}
+
+```
+
+The function to generate a random number uses two packages that must be added to the project's `Cargo.toml` file: `rand` and `rand_chacha`. Update the `Cargo.toml` file to contain the following:
+
+```rust title="src/PROJECT_NAME_backend/src/Cargo.toml"
+[package]
+name = "hello_backend"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+rand = { version = "0.8.5", default-features = false }
+rand_chacha = "0.3.1"
+candid = "0.10"
+ic-cdk = "0.16"
+ic-cdk-timers = "0.10"                                 # Feel free to remove this dependency if you don't need timers
 ```
 </TabItem>
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
