@@ -171,9 +171,9 @@ html.docs-wrapper[data-theme='dark'] {
         color: rgb(from var(--icp-on-surface) r g b / 50%);
       }
     }
-
-    .mainsearchinput {
-      color: var(--icp-on-surface--inverted);
+    .mainsearchinput,
+    input.mainsearchinput {
+      color: var(--icp-on-surface--inverted, #000);
     }
 
     main[class*=docMainContainer_] {
@@ -245,6 +245,13 @@ html.docs-wrapper[data-theme='dark'] {
     background: oklch(from var(--icp-surface-box) calc(l + .05) c h);
     color: var(--icp-on-surface-box);
     border-color: var(--icp-line);
+  }
+}
+
+html[data-theme='dark'] {
+  .mainsearchinput,
+  input.mainsearchinput {
+    color: #000;
   }
 }
 
