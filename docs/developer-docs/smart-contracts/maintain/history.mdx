@@ -10,14 +10,13 @@ import { BetaChip } from "/src/components/Chip/BetaChip"
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
-
 # History
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
 ## Overview
 
-The Internet Computer tracks the history of a deployed <GlossaryTooltip>canister</GlossaryTooltip> through the canister's Wasm module hashes and controller changes. This tracking provides insight into the canister's history, such as what code has been used to run the canister, and which controller deployed that code.
+The Internet Computer tracks the history of a deployed <GlossaryTooltip>canister</GlossaryTooltip> through the canister's Wasm module hashes and controller changes. This tracking provides insight into the canister's history, such as what code has been used to run the canister and which controller deployed that code.
 
 Viewing a canister's history can be important in use cases such as:
 
@@ -31,8 +30,8 @@ Canister history was introduced and released by the NNS DAO proposal [122617](ht
 
 Canister history information is made available via inter-canister calls made to the `canister_info` method of the management canister, using a canister's ID as an argument for the call. A canister's history stores the 20 most recent changes to the canister, including the canister's creation, Wasm module installations, reinstallations, upgrades, and changes to the list of canister controllers. It is important to note that since only the 20 most recent changes are stored, this feature cannot be used for auditing canisters that are frequently changed within a short period of time.
 
-:::info
-Note that canister history is only available for changes that have happened since this feature was rolled out on 023-06-05, 9:47:46 AM UTC, across all <GlossaryTooltip>subnets</GlossaryTooltip>.
+:::danger
+Canister history is only available for changes that have happened since this feature was rolled out on 023-06-05, 9:47:46 AM UTC, across all <GlossaryTooltip>subnets</GlossaryTooltip>.
 :::
 
 You can read more about this feature on the [developer forum](https://forum.dfinity.org/t/canister-history-on-the-ic/21745).
@@ -48,11 +47,15 @@ To get a canister's history, make a call to the IC management canister's `canist
 actor {
   let IC =
     actor "aaaaa-aa" : actor {
-
-      canister_info : { canister_id : Principal } ->
-        async ();
-
+        canister_info : {
+        canister_id : Principal;
+        num_requested_changes : ?Nat64;
+    } -> async {
+        total_num_changes : Nat64;
+        // module_hash : ?Blob;
+        controllers : [Principal];
     };
+    }
 };
 ```
 
@@ -60,57 +63,29 @@ actor {
 
 <TabItem value="rust" label="Rust">
 
-```rust
-use candid::{CandidType, Principal};
-use ic_cdk::api::management_canister::main::{
-    canister_info, CanisterChange,
-    CanisterChangeDetails::{CodeDeployment, CodeUninstall, ControllersChange, Creation},
-    CanisterChangeOrigin::{FromCanister, FromUser},
-    CanisterInfoRequest, CanisterInfoResponse,
-};
-use serde::Deserialize;
-
-/// Returns canister info with all available canister changes for a canister characterized by a given principal.
-/// Traps if the canister_info management call is rejected (in particular, if the principal does not characterize a canister).
-#[ic_cdk::update]
-async fn info(canister_id: Principal) -> CanisterInfoResponse {
-    let request = CanisterInfoRequest {
-        canister_id,
-        num_requested_changes: Some(20),
-    };
-    canister_info(request).await.unwrap().0
-}
-```
+View the [Rust `canister-info` sample project](https://github.com/dfinity/examples/blob/master/rust/canister-info/src/lib.rs) for a detailed example of how to use `canister_info` in a Rust canister.
 
 </TabItem>
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 ```typescript
-import { call, IDL, Principal, query, update } from 'azle';
-import {
-    CanisterInfoArgs,
-    CanisterInfoResult,
-} from 'azle/canisters/management';
 
-type State = {
-    createdCanisterId: Principal;
-};
+Azle code coming soon.
 
-let state: State = {
-    createdCanisterId: Principal.fromText('aaaaa-aa')
-};
+[Learn more about Azle](https://demergent-labs.github.io/azle/get_started.html).
 
-export default class {
-    @update([CanisterInfoArgs], CanisterInfoResult)
-    async getCanisterInfo(args: CanisterInfoArgs): Promise<CanisterInfoResult> {
-        return await call('aaaaa-aa', 'canister_info', {
-            paramIdlTypes: [CanisterInfoArgs],
-            returnIdlType: CanisterInfoResult,
-            args: [args]
-        });
-    }
-}
+```
+
+</AdornedTab>
+
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
+
+```typescript
+
+Kybra code coming soon.
+
+[Learn more about Kybra](https://demergent-labs.github.io/kybra/).
 
 ```
 
