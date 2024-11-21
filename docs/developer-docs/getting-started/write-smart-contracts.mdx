@@ -217,7 +217,7 @@ Remove the existing code in your backend source code file. Then, insert the foll
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko title="src/PROJECT_NAME_backend/main.mo"
+```motoko title="src/PROJECT_NAME_backend/main.mo" no-repl
 import Nat8 "mo:base/Nat8";
 import Debug "mo:base/Debug";
 import Blob "mo:base/Blob";
@@ -318,7 +318,7 @@ Add the following highlighted line to your backend code:
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko title="src/PROJECT_NAME_backend/main.mo"
+```motoko title="src/PROJECT_NAME_backend/main.mo" no-repl
 import Nat8 "mo:base/Nat8";
 import Debug "mo:base/Debug";
 import Blob "mo:base/Blob";
@@ -438,7 +438,7 @@ To demonstrate how to create and send HTTPS outcalls, let's add an HTTPS outcall
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko title="src/PROJECT_NAME_backend/main.mo"
+```motoko title="src/PROJECT_NAME_backend/main.mo" no-repl
 import Nat8 "mo:base/Nat8";
 import Debug "mo:base/Debug";
 import Blob "mo:base/Blob";
@@ -530,7 +530,7 @@ This HTTP outcalls code references custom types, as indicated by the import stat
 
 Create a new file called `src/PROJECT_NAME_backend/Types.mo` that contains the following:
 
-```motoko title="src/PROJECT_NAME_backend/Types.mo"
+```motoko title="src/PROJECT_NAME_backend/Types.mo" no-repl
 import IC "ic:aaaaa-aa";
 
 module Types {
@@ -708,7 +708,7 @@ Replace the backend canister source code with the following revised code:
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko title="src/PROJECT_NAME_backend/main.mo"
+```motoko title="src/PROJECT_NAME_backend/main.mo" no-repl
 import Timer "mo:base/Timer";
 import Nat8 "mo:base/Nat8";
 import Debug "mo:base/Debug";
@@ -803,163 +803,96 @@ You do not need to make any edits to the `Types.mo` file.
 
 ```rust title="src/PROJECT_NAME_backend/src/lib.rs"
 use candid::Nat;
-// Import the management canister's raw_rand method
-use ic_cdk::api::management_canister::main::raw_rand;
-
-// Import time duration for timers.
-use std::time::Duration;
-
-// Import the management canister's http_request method
 use ic_cdk::api::management_canister::http_request::{
     http_request, CanisterHttpRequestArgument, HttpMethod, HttpResponse, TransformArgs,
     TransformContext, TransformFunc,
 };
+use ic_cdk::api::management_canister::main::raw_rand;
+use std::time::Duration;
 
-// Import packages for generating a random number within specific range
-use rand::Rng;
-use rand::SeedableRng;
-use rand_chacha::ChaCha8Rng;
-use std::cell::RefCell;
-
+// NOTE: These thread_local! variables are not stored in the stable memory and are not persisted across canister upgrades.
 thread_local! {
-    static CURRENT_RANDOM_NUMBER: RefCell<Nat> = RefCell::new(Nat::from(0_u8));
+    static CURRENT_RANDOM_NUMBER: std::cell::RefCell<Nat> = std::cell::RefCell::new(Nat::from(0u8));
+    static PROPOSAL_ID: std::cell::RefCell<String> = std::cell::RefCell::new("1".to_string());
 }
 
-const N: Duration = Duration::from_secs(30);
-const X: Duration = Duration::from_secs(32);
-
-// Create two timers.
-// One that executes the generate_new_number function every 30 seconds.
-// One that executes the print_results function eery 32 seconds.
 #[ic_cdk::init]
 async fn init() {
-    let _timer_id_1 =
-        ic_cdk_timers::set_timer_interval(N, || ic_cdk::spawn(generate_new_number(133000, 133255)));
-    let _timer_id_2 = ic_cdk_timers::set_timer_interval(X, || ic_cdk::spawn(print_results()));
+    // Initialize timer to generate new number every 30 seconds
+    ic_cdk_timers::set_timer_interval(Duration::from_secs(30), generate_new_number);
+    // Initialize timer to send an HTTPS outcall and print the results every 32 seconds
+    ic_cdk_timers::set_timer_interval(Duration::from_secs(32), print_results);
 }
 
-// Define a method to generate a new random number.
-#[ic_cdk::update]
-async fn generate_new_number(min: u64, max: u64) {
-    let random_bytes = raw_rand().await.unwrap().0;
-    if !random_bytes.is_empty() {
-        let seed: [u8; 32] = random_bytes.try_into().unwrap_or([0; 32]);
-        let mut rng = ChaCha8Rng::from_seed(seed);
-        let random_number = rng.gen_range(min..=max);
-
-        CURRENT_RANDOM_NUMBER.with_borrow_mut(|n| {
-            *n = Nat::from(random_number);
-        });
-
-        ic_cdk::println!(
-            "New random number generated between {} and {}: {}",
-            min,
-            max,
-            CURRENT_RANDOM_NUMBER.with_borrow(|n| n.clone())
-        );
-    }
+// Create a function to generate a new random number.
+// This function calls the raw_rand method of the management canister.
+// Then it uses the random bytes returned to generate a random number.
+fn generate_new_number() {
+    ic_cdk::spawn(async {
+        let random_bytes = raw_rand().await.unwrap().0;
+        if !random_bytes.is_empty() {
+            // Use the first byte to generate a number between 133000 and 133255 (recent proposal numbers)
+            let current_random_number = random_bytes[0] as u32 + 133000u32;
+            CURRENT_RANDOM_NUMBER.with_borrow_mut(|n| {
+                *n = Nat::from(current_random_number).clone();
+            });
+            PROPOSAL_ID.with_borrow_mut(|p| {
+                *p = current_random_number.to_string();
+            });
+        }
+    });
 }
 
-// Define a query method to get the random number.
-#[ic_cdk::query]
-fn get_current_number() -> Nat {
-    CURRENT_RANDOM_NUMBER.with_borrow(|n| n.clone())
-}
-
-// Define an update method using the HTTPS outcalls feature.
+// Define a public function to get proposal information.
 #[ic_cdk::update]
 async fn get_icp_info() -> String {
+    // Define the API endpoints to obtain data from.
+    // This example uses the IC API, but any API endpoint can be used.
     let url = format!(
         "https://ic-api.internetcomputer.org/api/v3/proposals/{}",
-        CURRENT_RANDOM_NUMBER.with_borrow(|number| number.clone())
+        PROPOSAL_ID.with_borrow(|p| p.clone())
     );
-
-    // Define the HTTP request arguments.
-    let request = CanisterHttpRequestArgument {
-        url: url.to_string(),
+    let arg = CanisterHttpRequestArgument {
+        url,
+        max_response_bytes: None,
         method: HttpMethod::GET,
-        body: None,               // Optional.
-        max_response_bytes: None, // Optional.
+        headers: vec![],
+        body: None,
         transform: Some(TransformContext {
-            // The "method" parameter must have the same name as the function name of your transform function.
             function: TransformFunc(candid::Func {
-                principal: ic_cdk::api::id(),
                 method: "transform".to_string(),
+                principal: ic_cdk::id(),
             }),
             context: vec![],
         }),
-        headers: vec![],
     };
+    // HTTP outcalls require cycles are attached to the call.
+    let http_response = http_request(arg, 20_949_972_000).await.unwrap().0;
 
-    // HTTPS outcalls require cycles. Unused cycles will be refunded.
-    let cycles = 230_949_972_000;
-
-    match http_request(request, cycles).await {
-        // Decode and return the response.
-        // Learn more: https://docs.rs/ic-cdk/latest/ic_cdk/api/management_canister/http_request/struct.HttpResponse.html
-        Ok((response,)) => {
-            // Return the body as a string and end the method.
-            String::from_utf8(response.body).expect("Transformed response is not UTF-8 encoded.")
-        }
-        Err((r, m)) => {
-            let message =
-                format!("The http_request resulted in an error. RejectionCode: {r:?}, Error: {m}");
-
-            // Return the error as a string and end the method.
-            message
-        }
-    }
+    String::from_utf8(http_response.body).unwrap()
 }
 
-// Define a transform method.
-// Strips all data that is not needed from the original response.
 #[ic_cdk::query]
 fn transform(raw: TransformArgs) -> HttpResponse {
-    let headers = vec![];
-
-    let mut res = HttpResponse {
-        status: raw.response.status.clone(),
-        body: raw.response.body.clone(),
-        headers,
-    };
-
-    if res.status == 200_u64 {
-        res.body = raw.response.body;
-    } else {
-        ic_cdk::api::print(format!("Received an error = {:?}", raw));
+    HttpResponse {
+        status: raw.response.status,
+        headers: vec![],
+        body: raw.response.body,
     }
-    res
 }
 
-// Define a query method to get the random number.
-#[ic_cdk::query]
-async fn print_results() {
-    let results = get_icp_info().await;
-    ic_cdk::println!("{results}");
+fn print_results() {
+    ic_cdk::println!(
+        "Generated new random proposal number: {}",
+        CURRENT_RANDOM_NUMBER.with_borrow(|n| n.clone())
+    );
+    ic_cdk::spawn(async {
+        let result = get_icp_info().await;
+        ic_cdk::println!("Proposal info obtained through HTTPS outcall: {}", result);
+    });
 }
-
 ```
 
-The function to generate a random number uses two packages that must be added to the project's `Cargo.toml` file: `rand` and `rand_chacha`. Update the `Cargo.toml` file to contain the following:
-
-```rust title="src/PROJECT_NAME_backend/src/Cargo.toml"
-[package]
-name = "hello_backend"
-version = "0.1.0"
-edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[lib]
-crate-type = ["cdylib"]
-
-[dependencies]
-rand = { version = "0.8.5", default-features = false }
-rand_chacha = "0.3.1"
-candid = "0.10"
-ic-cdk = "0.16"
-ic-cdk-timers = "0.10"                                 # Feel free to remove this dependency if you don't need timers
-```
 </TabItem>
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
