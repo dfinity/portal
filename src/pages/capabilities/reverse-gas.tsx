@@ -199,7 +199,7 @@ function ReverseGasModelPage(): JSX.Element {
               storage costs into their budgets.
             </p>
             <p className="text-black tw-lead-sm mb-6">
-              Cycles can only be used for computation and storage, and
+              Cycles can only be used to pay for a canister's resources, and
               cannot be converted back to ICP.
             </p>
             <p className="text-black tw-lead-sm mb-6">
