@@ -3834,11 +3834,11 @@
   {
     "id": "icpexchange",
     "name": "ICPEx",
-    "oneLiner": "Full-chain decentralized exchange powered by the Proactive Market Maker (PMM) algorithm.",
+    "oneLiner": "A fully on-chain decentralized exchange powered by the Proactive Market Maker (PMM) algorithm.",
     "tags": [
       "DeFi"
     ],
-    "description": "A full-chain decentralized exchange powered by the Proactive Market Maker (PMM) algorithm and is committed to becoming a decentralized financial hub serving Web3.",
+    "description": "A fully on-chain decentralized exchange powered by the Proactive Market Maker (PMM) algorithm and is committed to becoming a decentralized financial hub serving Web3.",
     "usesInternetIdentity": true,
     "website": "https://icpex.org/",
     "github": "https://github.com/ICPExchange",
