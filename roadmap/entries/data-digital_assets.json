@@ -37,7 +37,7 @@
     },
     {
       "title": "OISY Wallet v1.0 - The official Launch",
-      "description": "With the Helios release, officially named v1.0.0, OISY will step out of the beta status into its first productive version. This includes functional coverage of all key features like buy, receive, send, swap, and convert from and to chain-key tokens, and with several major blockchains integrated, also a true multi-chain nature. Behind the scenes, it also includes setting up proper processes for product improvement, marketing, automated testing, and setting up a user friendly support process.",
+      "description": "With the Helios release, officially named v1.0, OISY will step out of the beta status into its first production version. This includes functional coverage of all key features like buy, receive, send, swap, and convert from and to chain-key tokens, and with several major blockchains integrated, also a true multi-chain nature. Behind the scenes, it also includes setting up proper processes for product improvement, marketing, automated testing, and setting up a user friendly support process.",
       "is_milestone": true,
       "milestone_id": "Helios",
       "status": "in_progress",
