@@ -123,6 +123,12 @@ Then, deploy to the mainnet:
 dfx deploy PROJECT_NAME_backend --network=ic
 ```
 
+:::tip
+
+The flag `--ic` is shorthand for `--network=ic`.
+
+:::
+
 The canister's Candid UI URL that is now hosted on the mainnet will be returned:
 
 ```
@@ -272,6 +278,10 @@ dfx canister stop PROJECT_NAME_backend --network=ic
 ```
 
 Then, take a snapshot of the canister's current Wasm code and data.
+
+:::info
+The cost of a canister snapshot's memory consumption is charged to the canister itself.
+:::
 
 ```
 dfx canister snapshot create PROJECT_NAME_backend --network=ic
