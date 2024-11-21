@@ -1716,7 +1716,7 @@
     "github": "https://github.com/canister-app",
     "youtube": "https://youtu.be/pFgVswCqzdk",
     "twitter": "https://twitter.com/canister_app",
-    "display": "Large",
+    "display": "Normal",
     "logo": "/img/showcase/canister-store_logo.png",
     "screenshots": [
       "/img/showcase/canister-store_screenshot_0.png"
@@ -1724,6 +1724,23 @@
     "video": "/img/showcase/canister-store_video.mp4",
     "videoContentType": "video/mp4",
     "submittableId": "35750450"
+  },
+  {
+    "id": "KongSwap",
+    "name": "KongSwap",
+    "description": "The one-stop token shop - Trade tokens across all chains with ease using KongSwap.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/kong_logo.png",
+    "screenshots": [
+      "/img/showcase/kongswap_screenshot.png"
+    ],
+    "display": "Large",
+    "tags": [
+      "DeFi",
+      "Chain Fusion"
+    ],
+    "twitter": "https://x.com/kongswap",
+    "website": "https://www.kongswap.io/"
   },
   {
     "name": "cyql.io",
@@ -2050,7 +2067,7 @@
   },
   {
     "id": "chainsight",
-    "name": "Chainsight Demo",
+    "name": "Chainsight",
     "oneLiner": "Interchain Data Processing Layer",
     "tags": [
       "Tools / Infrastructure",
@@ -2258,7 +2275,7 @@
     "usesInternetIdentity": false,
     "github": "https://github.com/NnsDao/podcast-fe",
     "twitter": "https://twitter.com/Looncasts",
-    "display": "Large",
+    "display": "Normal",
     "logo": "/img/showcase/icpodcast_logo.png",
     "screenshots": [
       "/img/showcase/icpodcast_screenshot.png"
