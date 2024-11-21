@@ -177,7 +177,7 @@ use ic_cdk::api::management_canister::ecdsa::{
     ecdsa_public_key, EcdsaCurve, EcdsaKeyId, EcdsaPublicKeyArgument,
 };
 
-let request = ECDSAPublicKey {
+let request = EcdsaPublicKeyArgument {
   canister_id: None,
   derivation_path: vec![],
   key_id: EcdsaKeyId {
