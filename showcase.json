@@ -3429,7 +3429,7 @@
   {
     "id": "gamebloc",
     "name": "Game Bloc",
-    "oneLiner": "A decentralized platform that lets gamers and gaming organizations create and join game tournaments.",
+    "oneLiner": "A decentralized platform empowering gamers and gaming organizations to create, manage, and participate in game tournaments.",
     "website": "https://cv4ma-4qaaa-aaaal-adntq-cai.icp0.io/",
     "github": "https://github.com/Game-Bloc/Gamebloc-ICP",
     "twitter": "https://twitter.com/game_bloc",
@@ -3439,7 +3439,7 @@
       "Games",
       "SocialFi"
     ],
-    "description": "A decentralized platform that lets gamers and gaming organizations create and join game tournaments.",
+    "description": "A decentralized platform empowering gamers and gaming organizations to create, manage, and participate in game tournaments.",
     "usesInternetIdentity": true,
     "display": "Normal",
     "logo": "/img/showcase/gamebloc_logo.png",
@@ -3838,7 +3838,7 @@
     "tags": [
       "DeFi"
     ],
-    "description": "A fully on-chain decentralized exchange powered by the Proactive Market Maker (PMM) algorithm and is committed to becoming a decentralized financial hub serving Web3.",
+    "description": "A fully on-chain decentralized exchange powered by the Proactive Market Maker (PMM) algorithm that is committed to becoming the leading decentralized financial hub serving Web3.",
     "usesInternetIdentity": true,
     "website": "https://icpex.org/",
     "github": "https://github.com/ICPExchange",
