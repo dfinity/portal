@@ -351,7 +351,7 @@ const Education = () => {
     {
       title: (
         <h2 className={"text-white"}>
-          Start your developer journey with Jessie
+          Start your developer ladder with Jessie
         </h2>
       ),
       subtitle: (
@@ -369,7 +369,7 @@ const Education = () => {
           <LinkArrowRight />
         </Link>
       ),
-      mainImage: "/img/docs/teaser-cards/main-1.svg",
+      mainImage: "/img/docs/teaser-cards/developerLadder.svg",
     },
     {
       title: <h2 className={"text-white"}>Hackathon Prep Course</h2>,
