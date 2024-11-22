@@ -1,0 +1,31 @@
+name: Allow only SVG files in the showcase
+
+on:
+  push:
+    paths:
+      - statuc/img/showcase/**  # Monitor the directory where images are stored
+  pull_request:
+    paths:
+      - statuc/img/showcase/**  # Run on PRs that modify files in this directory
+
+jobs:
+  check-svgs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Check for non-SVG files
+        run: |
+          # Find new or modified files in the "images" directory
+          files=$(git diff --name-only ${{ github.event.before }} HEAD -- statuc/img/showcase/)
+          
+          # Loop through the files and check extensions
+          for file in $files; do
+            if [[ "$file" != *.svg ]]; then
+              echo "❌ Non-SVG file detected: $file"
+              exit 1
+            fi
+          done
+          echo "✅ All added/modified files are SVGs"
