@@ -47,11 +47,11 @@ To compile your canister's Wasm module, you can use the [`dfx build`](/docs/curr
 
 Compile your canisters from within the project's directory:
 
-- `dfx build <canister_name>`: Compile a canister locally. The local replica must be running to compile a canister locally. Start it with `dfx start --background`.
+- `dfx build <canister-name>`: Compile a canister locally. The local replica must be running to compile a canister locally. Start it with `dfx start --background`.
 
-- `dfx build <canister_name> --network=playground`: Compile a canister on the playground. Compiling a canister on the playground is free, but canisters are temporary and will be removed after 20 minutes.
+- `dfx build <canister-name> --network=playground`: Compile a canister on the playground. Compiling a canister on the playground is free, but canisters are temporary and will be removed after 20 minutes.
 
-- `dfx build <canister_name> --network=ic`: Compile a canister on the mainnet. Compiling a canister on the mainnet will cost [cycles](/docs/current/developer-docs/gas-cost).
+- `dfx build <canister-name> --network=ic`: Compile a canister on the mainnet. Compiling a canister on the mainnet will cost [cycles](/docs/current/developer-docs/gas-cost).
 
 - `dfx build --network=ic`: Compile all canisters in the project's `dfx.json` file on the mainnet.
 
