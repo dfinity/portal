@@ -95,16 +95,6 @@ To make a query call to a canister, use the [`dfx canister call`](/docs/current/
 
 - `dfx canister call --query <canister-name> <method_name> --network=ic`: Make a query call to a canister deployed on the mainnet. Query calls are free.
 
-### Making query calls
-
-To make a query call to a canister, use the [`dfx canister call`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-call) command with the `--query` flag:
-
-- `dfx canister call --query <canister_name> <method_name>`: Make a query call to a canister deployed locally. The local replica must be running to create a canister locally. Start it with `dfx start --background`.
-
-- `dfx canister call --query <canister_name> <method_name> --network=playground`: Make a query call to a canister deployed on the playground. Query calls are free, but canisters are temporary and will be removed after 20 minutes.
-
-- `dfx canister call --query <canister_name> <method_name> --network=ic`: Make a query call to a canister deployed on the mainnet. Query calls are free.
-
 :::caution
 The downside of query calls is that the response is not trusted since it's coming from a single node. An update call or a [certified query](#certified-queries) should be used for security-critical calls.
 :::
