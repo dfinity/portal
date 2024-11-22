@@ -632,7 +632,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/call/arguments /docs/current/developer-docs/smart-contracts/call/overview
   /docs/current/developer-docs/smart-contracts/candid/ /docs/current/developer-docs/smart-contracts/candid/candid-concepts
   /docs/current/developer-docs/getting-started/development-workflow /docs/current/developer-docs/smart-contracts/development-workflow
-  /docs/current/developer-docs/getting-started/default-template /docs/current/developer-docs/smart-contracts/write/default-template
+  /docs/current/developer-docs/getting-started/default-template /docs/current/developer-docs/smart-contracts/write/overview
   /docs/current/developer-docs/getting-started/hello-world /docs/current/developer-docs/getting-started/write-smart-contracts
   /docs/current/developer-docs/getting-started/cycles/overview /docs/current/developer-docs/getting-started/tokens-and-cycles
   /docs/current/developer-docs/getting-started/accounts /docs/current/developer-docs/getting-started/identities

@@ -34,6 +34,10 @@ See the reference on [ingress messages](/docs/current/references/ingress-message
 
 Update calls are executed on all nodes of a <GlossaryTooltip>subnet</GlossaryTooltip> since the result of the call must go through consensus. This makes them slower than query calls. They are submitted asynchronously and answered synchronously.
 
+:::danger
+Update calls do not go through consensus on the local replica.
+:::
+
 ### Making update calls
 
 To make a update call to a canister, use the [`dfx canister call`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-call) command with the `--update` flag:

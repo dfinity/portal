@@ -47,7 +47,9 @@ Examples of production smart contracts that use Motoko include [ICDex](https://g
 ### Choosing a web framework for the frontend
 
 The [HTTP Gateway protocol](/docs/current/references/http-gateway-protocol-spec) of ICP allows browsers to load web assets such as JS, HTML, and CSS from a canister via HTTP.
-This means that web assets can be stored fully onchain and developers don’t need to use traditional centralized web hosting to serve the UI of their application.
+This means that [web assets can be stored fully onchain](/docs/current/developer-docs/web-apps/application-frontends/overview) and developers don’t need to use traditional centralized web hosting to serve the UI of their application.
+
+[Svelte](https://svelte.dev/), [React](https://react.dev/), and [Vue](https://vuejs.org/) have been used successfully in production. `dfx v0.17.0` and newer can be used to generate project templates that include one of these frameworks. [Learn more](/docs/current/developer-docs/web-apps/browser-js/js-frameworks).
 
 The typical development workflow of the frontend is:
 
@@ -57,9 +59,6 @@ The typical development workflow of the frontend is:
 4. Users open the application in the browser by navigating to the URL `https://<canister-id>.icp0.io` or a [custom domain](/docs/current/developer-docs/web-apps/custom-domains/using-custom-domains) if one has been registered for the canister.
 5. The canister serves the web assets to the browser via its `http_request` endpoint that gets invoked for each HTTP request.
 6. When the JS code runs in the browser, it can call the backend canister endpoints using the [ICP JavaScript agent](/docs/current/developer-docs/web-apps/browser-js/js-request-api) library, which is analogous to `web3.js` and `ethers.js` of Ethereum.
-
-Since ICP supports general HTML, JS, and CSS code, any web framework should be compatible with ICP.
-For example, SvelteKit, React, and Vue have been used successfully in production. `dfx v0.17.0` and newer can be used to generate project templates that include one of these frameworks. [Learn more](/docs/current/developer-docs/web-apps/browser-js/js-frameworks).
 
 #### Limitations
 Server-side rendering (SSR) does not work in canisters because they require JS code that is not built into canisters.
@@ -284,16 +283,20 @@ def greet(name: str) -> str:
 
 ## Architecture considerations
 A common question when developing an application is how and where to store the data. In contrast to traditional platforms, ICP does not provide a database.
-Instead, ICP automatically persists changes in the canister state, including its Wasm and stable memories.
-This means that developers have a lot of freedom in organizing and storing the data. The recommended practice is to use already existing libraries, such as the Rust [stable-structures](https://github.com/dfinity/stable-structures) library, to store data in the stable memory.
+Instead, ICP can persists changes in the canister state using stable memory.
+This means that developers have a lot of freedom in organizing and storing the data. The recommended practice is to use already existing libraries, such as the Motoko [stable regions](https://internetcomputer.org/docs/current/motoko/main/stable-memory/stable-regions) library or the Rust [stable-structures](https://github.com/dfinity/stable-structures) library, to store data in the stable memory.
 
 Another question that developers should ask is how to structure their application. It is possible to build an application consisting of multiple canisters that communicate with each other.
 A common pitfall for new developers is designing the application for millions of users from the get-go without understanding the underlying trade-offs of the system.
 It is better to start with the simplest possible architecture and iteratively improve it with user growth.
 
+### Canister per service architecture
+Canisters can be thought of as microservices, where each canister is responsible for a specific service of the application, such as managing users, storing data, or processing data.
+Note that all benefits and disadvantages of the traditional microservice architecture apply here as well.
+The default project structure that [`dfx new`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-new) generates can be viewed as the simplest microservice architecture, with the frontend canister being responsible for serving web assets and the backend canister being responsible for the core logic and of the application.
+
 ### Single canister architecture
 
-This is the simplest possible architecture and the recommended starting point for most developers.
 A single canister can host the entire application stack, including its web assets, core logic, and data. To write a single canister that hosts frontend assets and backend core logic, you will need to use a library for the asset storage API, such as the `ic-certified-assets` library for Rust canisters. A few examples of single canister projects include:
 
 - [HTTPS greet example](https://github.com/krpeacock/server/tree/main/examples/http_greet).
@@ -301,11 +304,6 @@ A single canister can host the entire application stack, including its web asset
 - [Internet Identity integration example](https://github.com/dfinity/internet-identity/tree/main/demos/using-dev-build).
 
 Even though this architecture is simple, it can scale to thousands of users and gigabytes of data.
-
-### Canister per service architecture
-Canisters can be thought of as microservices, where each canister is responsible for a specific service of the application, such as managing users, storing data, or processing data.
-Note that all benefits and disadvantages of the traditional microservice architecture apply here as well.
-The default project structure that [`dfx new`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-new) generates can be viewed as the simplest microservice architecture, with the frontend canister being responsible for serving web assets and the backend canister being responsible for the core logic and of the application.
 
 ### Canister per subnet architecture
 
