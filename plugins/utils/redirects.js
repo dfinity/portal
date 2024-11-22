@@ -220,7 +220,7 @@ const redirects = `
   /docs/current/developer-docs/setup/cycles/cycles-faucet /docs/current/developer-docs/getting-started/tokens-and-cycles
   /docs/current/developer-docs/setup/cycles/cycles-wallet /docs/current/developer-docs/defi/cycles/cycles-wallet
   /docs/current/developer-docs/setup/cycles/converting_icp_tokens_into_cycles /docs/current/developer-docs/defi/cycles/converting_icp_tokens_into_cycles
-  /docs/current/developer-docs/setup/first-canister /docs/current/developer-docs/smart-contracts/write/default-template
+  /docs/current/developer-docs/setup/first-canister /docs/current/developer-docs/smart-contracts/write/overview
   /docs/current/developer-docs/setup/deploy-locally /docs/current/developer-docs/getting-started/deploy-and-manage
   /docs/current/developer-docs/setup/deploy-mainnet /docs/current/developer-docs/getting-started/deploy-and-manage
   /docs/current/developer-docs/production/best-practices /docs/current/developer-docs/smart-contracts/best-practices/general
@@ -632,13 +632,14 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/call/arguments /docs/current/developer-docs/smart-contracts/call/overview
   /docs/current/developer-docs/smart-contracts/candid/ /docs/current/developer-docs/smart-contracts/candid/candid-concepts
   /docs/current/developer-docs/getting-started/development-workflow /docs/current/developer-docs/smart-contracts/development-workflow
-  /docs/current/developer-docs/getting-started/default-template /docs/current/developer-docs/smart-contracts/write/default-template
+  /docs/current/developer-docs/getting-started/default-template /docs/current/developer-docs/smart-contracts/write/overview
   /docs/current/developer-docs/getting-started/hello-world /docs/current/developer-docs/getting-started/write-smart-contracts
   /docs/current/developer-docs/getting-started/cycles/overview /docs/current/developer-docs/getting-started/tokens-and-cycles
   /docs/current/developer-docs/getting-started/accounts /docs/current/developer-docs/getting-started/identities
   /docs/current/developer-docs/getting-started/deploy/local /docs/current/developer-docs/getting-started/deploy-and-manage
   /docs/current/developer-docs/getting-started/deploy/testnet /docs/current/developer-docs/getting-started/deploy-and-manage
   /docs/current/developer-docs/getting-started/deploy-and-manage  /docs/current/developer-docs/getting-started/deploy-and-manage
+  /docs/current/developer-docs/smart-contracts/write/default-template /docs/current/developer-docs/smart-contracts/write/overview
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
