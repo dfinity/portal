@@ -26,24 +26,28 @@ A query method can be called as both an update and a query, whereas update metho
 | Goes through consensus | Does not go through consensus |
 | Synchronous response | Synchronous response |
 | Executed on all nodes of a subnet | Executed on a single node |
-
+| Cost cycles | Free |
 
 See the reference on [ingress messages](/docs/current/references/ingress-messages) for a more technical discussion of this topic.
 
 ## Update calls
 
-Update calls are executed on all nodes of a <GlossaryTooltip>subnet</GlossaryTooltip> since the result of the call must go through consensus. This makes them slower than query calls. They are submitted asynchronously and answered synchronously.
+Update calls are executed on all nodes of the <GlossaryTooltip>subnet</GlossaryTooltip> that the canister is deployed on since the result of the call must go through consensus. This makes them slower than query calls. They are submitted asynchronously and answered synchronously.
+
+:::danger
+Update calls do not go through consensus on the local replica.
+:::
 
 ### Making update calls
 
 To make a update call to a canister, use the [`dfx canister call`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-call) command with the `--update` flag:
 
 
-- `dfx canister call --update <canister_name> <method_name>` : Make an update call to a canister deployed locally. The local replica must be running to create a canister locally. Start it with `dfx start --background`.
+- `dfx canister call --update <canister-name> <method_name>` : Make an update call to a canister deployed locally. The local replica must be running to create a canister locally. Start it with `dfx start --background`.
 
-- `dfx canister call --update <canister_name> <method_name> --network=playground`: Make an update call to a canister deployed on the playground. Making update calls to canisters deployed on the playground is free, but canisters are temporary and will be removed after 20 minutes.
+- `dfx canister call --update <canister-name> <method_name> --network=playground`: Make an update call to a canister deployed on the [playground](/docs/current/developer-docs/smart-contracts/deploy/overview#testnets). Making update calls to canisters deployed on the playground is free, but canisters are temporary and will be removed after 20 minutes.
 
-- `dfx canister call --update <canister_name> <method_name> --network=ic`: Make an update call to a canister deployed on the mainnet. Update calls will cost [cycles](/docs/current/developer-docs/gas-cost).
+- `dfx canister call --update <canister-name> <method_name> --network=ic`: Make an update call to a canister deployed on the mainnet. Update calls will cost [cycles](/docs/current/developer-docs/gas-cost).
 
 
 ### Using update calls from within canisters
@@ -51,61 +55,27 @@ To make a update call to a canister, use the [`dfx canister call`](/docs/current
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
-actor Counter {
-
-  stable var counter = 0;
-
-  public func inc() : async () {
-    counter += 1;
-  };
-};
+```motoko file=../../../references/samples/motoko/counter/src/Main.mo#L10-L13
 ```
 
 </TabItem>
 
 <TabItem value="rust" label="Rust">
 
-```rust
-use candid::types::number::Nat;
-use std::cell::RefCell;
-
-thread_local! {
-    static COUNTER: RefCell<Nat> = RefCell::new(Nat::from(0_u32));
-}
-
-#[ic_cdk::update]
-fn inc() {
-    COUNTER.with(|counter| *counter.borrow_mut() += 1_u32);
-}
+```rust file=../../../references/samples/rust/counter/src/lib.rs#L14-L19
 ```
 
 </TabItem>
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-```typescript
-Azle code coming soon.
-
 [Learn more about Azle.](https://demergent-labs.github.io/azle/)
-```
 
 </AdornedTab>
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-```python
-Kybra code coming soon.
-
 [Learn more about Kybra.](https://demergent-labs.github.io/kybra/)
-```
-
-:::caution
-
-Kybra canisters must be deployed from a Python virtual environment. [Learn more in the Kybra docs](/docs/current/developer-docs/backend/python/).
-
-:::
-
 
 </AdornedTab>
 
@@ -119,11 +89,11 @@ Query calls, also referred to as non-replicated queries, are executed on a singl
 
 To make a query call to a canister, use the [`dfx canister call`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-call) command with the `--query` flag:
 
-- `dfx canister call --query <canister_name> <method_name>`: Make a query call to a canister deployed locally. The local replica must be running to create a canister locally. Start it with `dfx start --background`.
+- `dfx canister call --query <canister-name> <method_name>`: Make a query call to a canister deployed locally. The local replica must be running to create a canister locally. Start it with `dfx start --background`.
 
-- `dfx canister call --query <canister_name> <method_name> --network=playground`: Make a query call to a canister deployed on the playground. Query calls are free, but canisters are temporary and will be removed after 20 minutes.
+- `dfx canister call --query <canister-name> <method_name> --network=playground`: Make a query call to a canister deployed on the [playground](/docs/current/developer-docs/smart-contracts/deploy/overview#testnets). Query calls are free, but canisters are temporary and will be removed after 20 minutes.
 
-- `dfx canister call --query <canister_name> <method_name> --network=ic`: Make a query call to a canister deployed on the mainnet. Query calls are free.
+- `dfx canister call --query <canister-name> <method_name> --network=ic`: Make a query call to a canister deployed on the mainnet. Query calls are free.
 
 :::caution
 The downside of query calls is that the response is not trusted since it's coming from a single node. An update call or a [certified query](#certified-queries) should be used for security-critical calls.
@@ -134,14 +104,7 @@ The downside of query calls is that the response is not trusted since it's comin
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
-actor {
-
-  public func greet(name : Text) : async Text {
-    return "Hello, " # name # "!";
-  };
-
-};
+```motoko no-repl file=../../../references/samples/motoko/counter/src/Main.mo#L5-L9
 ```
 
 
@@ -149,39 +112,20 @@ actor {
 
 <TabItem value="rust" label="Rust">
 
-```rust
-#[ic_cdk::query]
-fn greet(name: String) -> String {
-    format!("Hello, {}!", name)
-}
+```rust file=../../../references/samples/rust/counter/src/lib.rs#L8-L12
 ```
 
 </TabItem>
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-```typescript
-Azle code coming soon.
-
 [Learn more about Azle.](https://demergent-labs.github.io/azle/)
-```
 
 </AdornedTab>
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-```python
-Kybra code coming soon.
-
 [Learn more about Kybra.](https://demergent-labs.github.io/kybra/)
-```
-
-:::caution
-
-Kybra canisters must be deployed from a Python virtual environment. [Learn more in the Kybra docs](/docs/current/developer-docs/backend/python/).
-
-:::
-
 
 </AdornedTab>
 </AdornedTabs>
@@ -198,11 +142,11 @@ Typically, a call is processed within a single message execution unless there ar
 
 ### Composite queries
 
-Composite queries are query calls that can call other queries on the same <GlossaryTooltip>subnet</GlossaryTooltip>. They can only be invoked by end users and not by other canisters.
+[Composite queries](/docs/current/developer-docs/smart-contracts/advanced-features/composite-query) are query calls that can call other queries on the same <GlossaryTooltip>subnet</GlossaryTooltip>. They can only be invoked by end users and not by other canisters.
 
 ### Certified queries
 
-Certified queries use certified variables to prove the authenticity of a piece of data that comes along with the query's response. Certified variables can be set via an update call, then read via a query call.
+Certified queries use [certified variables](/docs/current/references/samples/motoko/cert-var/) to prove the authenticity of a piece of data that comes along with the query's response. Certified variables can be set via an update call, then read via a query call.
 
 ### Replicated queries
 

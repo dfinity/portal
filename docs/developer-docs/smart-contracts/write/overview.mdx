@@ -15,11 +15,11 @@ import { BetaChip } from "/src/components/Chip/BetaChip";
 <MarkdownChipRow labels={["Beginner", "Concept"]} />
 
 ICP supports a wide range of applications and architecture types.
-Apps can range from single smart contracts to complex, multi-<GlossaryTooltip>canister</GlossaryTooltip> projects that are controlled by a DAO and everything in between.
+Apps can range from a single canister to complex, multi-<GlossaryTooltip>canister</GlossaryTooltip> projects and everything in between.
 
 You can begin writing and structuring your application using one of two primary workflows:
 
-- **Standard workflow**: The developer writes both the frontend code and the backend code, then deploys both to ICP as canisters.
+- **Standard workflow**: The developer writes both the frontend and backend code, then deploys both to ICP as canisters.
 
 - **Framework-based workflow**: An external framework is used to help facilitate creating and deploying canisters. [Learn more about frameworks](#framework-based-workflow).
 
@@ -47,7 +47,9 @@ Examples of production smart contracts that use Motoko include [ICDex](https://g
 ### Choosing a web framework for the frontend
 
 The [HTTP Gateway protocol](/docs/current/references/http-gateway-protocol-spec) of ICP allows browsers to load web assets such as JS, HTML, and CSS from a canister via HTTP.
-This means that web assets can be stored fully onchain and developers don’t need to use traditional centralized web hosting to serve the UI of their application.
+This means that [web assets can be stored fully onchain](/docs/current/developer-docs/web-apps/application-frontends/overview) and developers don’t need to use traditional centralized web hosting to serve the UI of their application.
+
+[Svelte](https://svelte.dev/), [React](https://react.dev/), and [Vue](https://vuejs.org/) have been used successfully in production. `dfx v0.17.0` and newer can be used to generate project templates that include one of these frameworks. [Learn more](/docs/current/developer-docs/web-apps/browser-js/js-frameworks).
 
 The typical development workflow of the frontend is:
 
@@ -58,11 +60,8 @@ The typical development workflow of the frontend is:
 5. The canister serves the web assets to the browser via its `http_request` endpoint that gets invoked for each HTTP request.
 6. When the JS code runs in the browser, it can call the backend canister endpoints using the [ICP JavaScript agent](/docs/current/developer-docs/web-apps/browser-js/js-request-api) library, which is analogous to `web3.js` and `ethers.js` of Ethereum.
 
-Since ICP supports general HTML, JS, and CSS code, any web framework should be compatible with ICP.
-For example, SvelteKit, React, and Vue have been used successfully in production. `dfx v0.17.0` and newer can be used to generate project templates that include one of these frameworks. [Learn more](/docs/current/developer-docs/web-apps/browser-js/js-frameworks).
-
 #### Limitations
-One feature of modern web frameworks that currently doesn’t work in a canister is server-side rendering (SSR). That’s because SSR requires running JS code in the canister.
+Server-side rendering (SSR) does not work in canisters because they require JS code that is not built into canisters.
 In the future, this might become possible with Azle. Until then, if SSR is required, then one solution is to host the frontend outside of ICP while keeping the core logic in the backend canister.
 
 Having no frontend at all is also a valid option for smart contracts that don’t have a UI and are callable only by users or other smart contracts.
@@ -73,6 +72,15 @@ Having no frontend at all is also a valid option for smart contracts that don’
 <TabItem value="prereq" label="Prerequisites" default>
 
 <input type="checkbox"/> <a href="/docs/current/developer-docs/getting-started/install">Install the IC SDK.</a>
+<div>
+</div>
+<input type="checkbox"/> Download and install an IDE or code editor. <a href="https://code.visualstudio.com/">VS Code</a> is recommended.
+
+:::tip
+
+For writing Motoko code, the [Motoko VS Code extension](https://marketplace.visualstudio.com/items?itemName=dfinity-foundation.vscode-motoko) is highly recommended for syntax highlighting.
+
+:::
 
 </TabItem>
 </Tabs>
@@ -99,7 +107,7 @@ Navigate into your project directory:
 cd hello
 ```
 
-By default, the project structure will resemble the following:
+For projects created with `dfx new`, the project structure will resemble the following. If you are using an ICP Ninja project or other sample project, project structure may vary. 
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
@@ -182,7 +190,7 @@ hello/
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-```
+```bash
 hello/
 ├── README.md      # Default project documentation
 ├── dfx.json       # Project configuration file
@@ -211,20 +219,19 @@ hello/
 In this directory, the following files and directories are notable:
 
 - `README.md`: The default README file to be used for documenting your project.
-- `dfx.json`: The default configuration file used to set configurable options for your project.
+- `dfx.json`: The default ICP configuration file used to set configurable options for your project.
 - `src/`: The source directory that contains all of your dapp's source files.
 - `hello_backend`: The source directory that contains your dapp's backend code files.
 - `hello_frontend`: The source directory that contains your dapp's frontend code files.
 
 ### Reviewing the default program code
 
-The backend canister's code will be located in the `src/hello_backend` subdirectory.
+Open the backend canister source code file in your code editor. The backend canister's code will be located in the `src/hello_backend` subdirectory. For projects created with `dfx new`, the default backend code will resemble the following. If you are using an ICP Ninja project or other sample project, program code will vary. 
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko title="src/hello_backend/main.mo"
-
 actor {
 public query func greet(name : Text) : async Text {
     return "Hello, " # name # "!";
@@ -246,28 +253,13 @@ fn greet(name: String) -> String {
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-```typescript title="src/hello_backend/src/index.ts"
-import { Canister, query, text } from 'azle';
-
-export default Canister({
-    greet: query([text], text, (name) => {
-        return `Hello, ${name}!`;
-    })
-})
-```
+[Learn more about Azle.](https://demergent-labs.github.io/azle/)
 
 </AdornedTab>
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-```python title="src/hello_backend/src/main.py"
-from kybra import query
-
-@query
-def greet(name: str) -> str:
-    return f"Hello, {name}!"
-```
-
+[Learn more about Kybra.](https://demergent-labs.github.io/kybra/)
 
 </AdornedTab>
 </AdornedTabs>
@@ -284,16 +276,20 @@ def greet(name: str) -> str:
 
 ## Architecture considerations
 A common question when developing an application is how and where to store the data. In contrast to traditional platforms, ICP does not provide a database.
-Instead, ICP automatically persists changes in the canister state, including its Wasm and stable memories.
-This means that developers have a lot of freedom in organizing and storing the data. The recommended practice is to use already existing libraries, such as the Rust [stable-structures](https://github.com/dfinity/stable-structures) library, to store data in the stable memory.
+Instead, ICP can persists changes in the canister state using stable memory.
+This means that developers have a lot of freedom in organizing and storing the data. The recommended practice is to use already existing libraries, such as the Motoko [stable regions](https://internetcomputer.org/docs/current/motoko/main/stable-memory/stable-regions) library or the Rust [stable-structures](https://github.com/dfinity/stable-structures) library, to store data in the stable memory.
 
 Another question that developers should ask is how to structure their application. It is possible to build an application consisting of multiple canisters that communicate with each other.
 A common pitfall for new developers is designing the application for millions of users from the get-go without understanding the underlying trade-offs of the system.
 It is better to start with the simplest possible architecture and iteratively improve it with user growth.
 
+### Canister per service architecture
+Canisters can be thought of as microservices, where each canister is responsible for a specific service of the application, such as managing users, storing data, or processing data.
+Note that all benefits and disadvantages of the traditional microservice architecture apply here as well.
+The default project structure that [`dfx new`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-new) generates can be viewed as the simplest microservice architecture, with the frontend canister being responsible for serving web assets and the backend canister being responsible for the core logic and of the application.
+
 ### Single canister architecture
 
-This is the simplest possible architecture and the recommended starting point for most developers.
 A single canister can host the entire application stack, including its web assets, core logic, and data. To write a single canister that hosts frontend assets and backend core logic, you will need to use a library for the asset storage API, such as the `ic-certified-assets` library for Rust canisters. A few examples of single canister projects include:
 
 - [HTTPS greet example](https://github.com/krpeacock/server/tree/main/examples/http_greet).
@@ -301,11 +297,6 @@ A single canister can host the entire application stack, including its web asset
 - [Internet Identity integration example](https://github.com/dfinity/internet-identity/tree/main/demos/using-dev-build).
 
 Even though this architecture is simple, it can scale to thousands of users and gigabytes of data.
-
-### Canister per service architecture
-Canisters can be thought of as microservices, where each canister is responsible for a specific service of the application, such as managing users, storing data, or processing data.
-Note that all benefits and disadvantages of the traditional microservice architecture apply here as well.
-The default project structure that [`dfx new`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-new) generates can be viewed as the simplest microservice architecture, with the frontend canister being responsible for serving web assets and the backend canister being responsible for the core logic and of the application.
 
 ### Canister per subnet architecture
 
