@@ -62,7 +62,7 @@ Since ICP supports general HTML, JS, and CSS code, any web framework should be c
 For example, SvelteKit, React, and Vue have been used successfully in production. `dfx v0.17.0` and newer can be used to generate project templates that include one of these frameworks. [Learn more](/docs/current/developer-docs/web-apps/browser-js/js-frameworks).
 
 #### Limitations
-One feature of modern web frameworks that currently doesn’t work in a canister is server-side rendering (SSR). That’s because SSR requires running JS code in the canister.
+Server-side rendering (SSR) does not work in canisters because they require JS code that is not built into canisters.
 In the future, this might become possible with Azle. Until then, if SSR is required, then one solution is to host the frontend outside of ICP while keeping the core logic in the backend canister.
 
 Having no frontend at all is also a valid option for smart contracts that don’t have a UI and are callable only by users or other smart contracts.
