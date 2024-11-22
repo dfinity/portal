@@ -301,11 +301,6 @@ A single canister can host the entire application stack, including its web asset
 
 Even though this architecture is simple, it can scale to thousands of users and gigabytes of data.
 
-### Canister per service architecture
-Canisters can be thought of as microservices, where each canister is responsible for a specific service of the application, such as managing users, storing data, or processing data.
-Note that all benefits and disadvantages of the traditional microservice architecture apply here as well.
-The default project structure that [`dfx new`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-new) generates can be viewed as the simplest microservice architecture, with the frontend canister being responsible for serving web assets and the backend canister being responsible for the core logic and of the application.
-
 ### Canister per subnet architecture
 
 ICP scales horizontally via <GlossaryTooltip>subnets</GlossaryTooltip>, so applications can also scale by utilizing more subnets.
