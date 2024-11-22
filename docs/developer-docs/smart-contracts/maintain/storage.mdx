@@ -105,7 +105,7 @@ This garbage collector is still in beta testing and should be used with caution.
 
 ### Rust storage handling
 
-To utilize stable memory for canisters written in Rust, the crates [ic-stable-memory](https://github.com/seniorjoinu/ic-stable-memory) and [ic-stable-structures](https://github.com/dfinity/stable-structures) can be used. It is recommended to review the documentation for these crates to learn more, or [review the tutorial on the stable structures crate](https://mmapped.blog/posts/14-stable-structures.html).
+To utilize stable memory for canisters written in Rust, the crate [ic-stable-structures](https://github.com/dfinity/stable-structures) can be used. It is recommended to review the documentation for these crates to learn more, or [review the tutorial on the stable structures crate](https://mmapped.blog/posts/14-stable-structures.html).
 
 As good practice, stable memory should be versioned since the stable memory decoding mechanism may need to guess the data's format in situations where the serialization format or stable data layout of a canister drastically changes. This can be as simple as declaring that the first byte of the canister's stable memory will be used to represent the version number.
 
