@@ -4943,5 +4943,19 @@
     ],
     "twitter": "https://x.com/phasmafuture",
     "website": "https://entrepot.app/marketplace/phasma"
+  },
+  {
+    "id": "medblock",
+    "name": "Medblock",
+    "description": "Medblock is a secure mobile app that puts medical records in patients' hands while helping hospitals manage healthcare data efficiently through blockchain technology.",
+    "logo": "/img/showcase/medblock.svg",
+    "display": "Normal",
+    "tags": [
+      "Enterprise"
+    ],
+    "github": "https://github.com/baliola/Medblock",
+    "twitter": "https://x.com/medblockid",
+    "website": "https://medblock.id",
+    "submittableId": "44389918"
   }
 ]
