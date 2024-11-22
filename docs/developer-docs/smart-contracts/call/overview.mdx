@@ -56,7 +56,7 @@ To make a update call to a canister, use the [`dfx canister call`](/docs/current
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
-# /submodules/motoko/counter/src/Main.mo
+# /submodules/motoko/counter/src/Main.mo#L10-L13
 ```
 
 </TabItem>
@@ -64,7 +64,7 @@ To make a update call to a canister, use the [`dfx canister call`](/docs/current
 <TabItem value="rust" label="Rust">
 
 ```rust
-# /submodules/rust/counter/src/Main.mo
+# /submodules/rust/counter/src/lib.rs#L14-L19
 ```
 
 </TabItem>
@@ -107,13 +107,7 @@ The downside of query calls is that the response is not trusted since it's comin
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko
-actor {
-
-  public func greet(name : Text) : async Text {
-    return "Hello, " # name # "!";
-  };
-
-};
+# /submodules/motoko/counter/src/Main.mo#L5-L9
 ```
 
 
@@ -122,10 +116,7 @@ actor {
 <TabItem value="rust" label="Rust">
 
 ```rust
-#[ic_cdk::query]
-fn greet(name: String) -> String {
-    format!("Hello, {}!", name)
-}
+# /submodules/rust/counter/src/lib.rs#L8-L12
 ```
 
 </TabItem>
