@@ -106,13 +106,11 @@ const subnavItems = [
         label: "Awesome Internet Computer",
         href: "https://github.com/dfinity/awesome-internet-computer#readme",
       },
-      { label: "Sample Code", to: "/samples" },
       {
         label: "SDK Release Notes",
         type: "doc",
         docId: "other/updates/release-notes/release-notes",
       },
-      { label: "Developer Tools", to: "/tooling" },
       { label: "Developer Grants", href: "https://dfinity.org/grants" },
       {
         label: "Playground",
