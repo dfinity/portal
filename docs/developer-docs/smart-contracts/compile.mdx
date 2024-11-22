@@ -43,7 +43,7 @@ To compile your canister's Wasm module, you can use the `dfx build` command.
 
 The `dfx build` command looks for source code to compile for each canister configured under the `canisters` section in the `dfx.json` configuration file. It can be used to compile a specific canister or all canisters defined in the project's [`dfx.json`](/docs/current/developer-docs/developer-tools/cli-tools/dfx-json-reference) file.
 
-Check out the [default project template](/docs/current/developer-docs/getting-started/default-template) for more information on `dfx.json`.
+Check out the [default project template](/docs/current/developer-docs/smart-contracts/write/default-template) for more information on `dfx.json`.
 
 Before using the `dfx build` command, first you need to [create the canister](/docs/current/developer-docs/smart-contracts/create) and verify the location of your project's files and their file names. If you modify these settings, be sure to edit your project's `dfx.json` file to reflect the current intended configuration.
 
@@ -55,7 +55,7 @@ dfx build
 
 :::caution
 Compilation happens on the local machine of the developer.
-Compiled Wasm binary is then installed on the target canister, which costs [cycles](/docs/current/developer-docs/getting-started/cycles/cycles-faucet).
+Compiled Wasm binary is then installed on the target canister, which costs [cycles](/docs/current/developer-docs/getting-started/tokens-and-cycles).
 :::
 
 This command must be run from within the project's directory.

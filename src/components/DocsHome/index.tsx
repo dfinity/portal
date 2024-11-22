@@ -183,7 +183,7 @@ const frameworksTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/developer-docs/getting-started/deploy/testnet"
+        href="/docs/current/developer-docs/getting-started/deploy-and-manage"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Learn more about testnets on ICP"
       >
@@ -206,7 +206,7 @@ const frameworksTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/developer-docs/getting-started/quickstart/react-quickstart"
+        href="/docs/current/developer-docs/web-apps/application-frontends/quickstart/react-quickstart"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to React quickstart"
       >
@@ -518,9 +518,9 @@ const footerCards: Array<CarouselCard> = [
     cta: (
       <Link
         className="button-transparent button-with-icon pl-0"
-        href="https://discord.com/invite/5PJMmmETQB"
+        href="https://discord.internetcomputer.org"
       >
-        RSVP at #event channel
+        Join Discord
         <LinkArrowRight />
       </Link>
     ),
