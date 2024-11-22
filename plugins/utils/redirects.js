@@ -62,12 +62,12 @@ const redirects = `
   /docs/current/developer-docs/quickstart/local-quickstart /docs/current/developer-docs/getting-started/install
   /docs/current/developer-docs/setup/install/index.mdx /docs/current/developer-docs/getting-started/install
 
-  /docs/candid-guide /docs/current/developer-docs/smart-contracts/candid/
+  /docs/candid-guide /docs/current/developer-docs/smart-contracts/candid/candid-concepts
   /docs/candid-guide/candid /docs/current/developer-docs/smart-contracts/candid/candid-concepts
-  /docs/candid-guide/candid-intro /docs/current/developer-docs/smart-contracts/candid/
+  /docs/candid-guide/candid-intro /docs/current/developer-docs/smart-contracts/candid/candid-concepts
   /docs/candid-guide/candid-ref /docs/current/references/candid-ref
   /docs/candid-guide/candid-types /docs/current/references/candid-ref
-  /docs/current/developer-docs/build/candid/candid-intro /docs/current/developer-docs/smart-contracts/candid/
+  /docs/current/developer-docs/build/candid/candid-intro /docs/current/developer-docs/smart-contracts/candid/candid-concepts
   /docs/current/developer-docs/build/candid/candid-howto /docs/current/developer-docs/smart-contracts/candid/candid-howto
 
   /docs/current/developer-docs/build/ /docs/current/developer-docs/smart-contracts/write/overview
@@ -88,7 +88,7 @@ const redirects = `
   /docs/current/developer-docs/build/agents/ /docs/current/developer-docs/developer-tools/off-chain/agents/overview
   /docs/current/developer-docs/build/agents/javascript/javascript-intro /docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent
   /docs/current/developer-docs/build/agents/javascript/*  /docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent
-  /docs/current/developer-docs/build/languages/candid/* /docs/current/developer-docs/smart-contracts/candid/:splat
+  /docs/current/developer-docs/build/languages/candid/* /docs/current/developer-docs/smart-contracts/candid/candid-concepts
   /docs/current/developer-docs/build/cdks/motoko-dfinity/* /docs/current/motoko/main/:splat
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/*  /docs/current/developer-docs/backend/rust/:splat
   /docs/current/developer-docs/build/languages/motoko/* /docs/current/motoko/main/:splat
@@ -220,7 +220,7 @@ const redirects = `
   /docs/current/developer-docs/setup/cycles/cycles-faucet /docs/current/developer-docs/getting-started/tokens-and-cycles
   /docs/current/developer-docs/setup/cycles/cycles-wallet /docs/current/developer-docs/defi/cycles/cycles-wallet
   /docs/current/developer-docs/setup/cycles/converting_icp_tokens_into_cycles /docs/current/developer-docs/defi/cycles/converting_icp_tokens_into_cycles
-  /docs/current/developer-docs/setup/first-canister /docs/current/developer-docs/smart-contracts/write/default-template
+  /docs/current/developer-docs/setup/first-canister /docs/current/developer-docs/smart-contracts/write/overview
   /docs/current/developer-docs/setup/deploy-locally /docs/current/developer-docs/getting-started/deploy-and-manage
   /docs/current/developer-docs/setup/deploy-mainnet /docs/current/developer-docs/getting-started/deploy-and-manage
   /docs/current/developer-docs/production/best-practices /docs/current/developer-docs/smart-contracts/best-practices/general
@@ -427,7 +427,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/vetkeys/technology-overview /docs/current/references/vetkeys-overview
   /docs/current/developer-docs/developer-tools/cli-tools/networks-json /docs/current/developer-docs/developer-tools/cli-tools/advanced-dfx/networks-json
   /docs/current/developer-docs/production/system-canisters /docs/current/developer-docs/smart-contracts/advanced-features/system-canisters
-  /docs/current/developer-docs/backend/arguments /docs/current/developer-docs/smart-contracts/call/arguments
+  /docs/current/developer-docs/backend/arguments /docs/current/developer-docs/smart-contracts/call/overview
   /docs/current/developer-docs/frontend/index /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-get /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-get
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use
@@ -578,7 +578,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/internet-identity	/docs/current/developer-docs/identity/internet-identity/overview
   /bitcoin /bitcoin-integration
   /bootcamp	/education-hub
-  /docs/candid-guide/candid-concepts.html	/docs/current/developer-docs/smart-contracts/candid/
+  /docs/candid-guide/candid-concepts.html	/docs/current/developer-docs/smart-contracts/candid/candid-concepts
   /docs/current/blog/features/vetkey-primer	/blog/features/vetkey-primer
   /docs/current/concepts/chain-key-technology/ /docs/current/developer-docs/multi-chain/overview
   /docs/current/concepts/concepts-intro.html	/docs/current/developer-docs/getting-started/network-overview
@@ -627,14 +627,19 @@ const redirects = `
   /docs/current/developer-docs/integrations/rosetta/staking-tutorial/ /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_icp
   /docs/current/developer-docs/getting-started/cycles/cycles-wallet /docs/current/developer-docs/defi/cycles/cycles-wallet
   /docs/current/developer-docs/getting-started/quickstart/juno-quickstart /docs/current/developer-docs/web-apps/frameworks/juno
+  /docs/current/developer-docs/smart-contracts/write/auto-scaling-architecture /docs/current/developer-docs/smart-contracts/write/overview
+  /docs/current/developer-docs/smart-contracts/write/resources /docs/current/developer-docs/smart-contracts/write/overview
+  /docs/current/developer-docs/smart-contracts/call/arguments /docs/current/developer-docs/smart-contracts/call/overview
+  /docs/current/developer-docs/smart-contracts/candid/ /docs/current/developer-docs/smart-contracts/candid/candid-concepts
   /docs/current/developer-docs/getting-started/development-workflow /docs/current/developer-docs/smart-contracts/development-workflow
-  /docs/current/developer-docs/getting-started/default-template /docs/current/developer-docs/smart-contracts/write/default-template
+  /docs/current/developer-docs/getting-started/default-template /docs/current/developer-docs/smart-contracts/write/overview
   /docs/current/developer-docs/getting-started/hello-world /docs/current/developer-docs/getting-started/write-smart-contracts
   /docs/current/developer-docs/getting-started/cycles/overview /docs/current/developer-docs/getting-started/tokens-and-cycles
   /docs/current/developer-docs/getting-started/accounts /docs/current/developer-docs/getting-started/identities
   /docs/current/developer-docs/getting-started/deploy/local /docs/current/developer-docs/getting-started/deploy-and-manage
   /docs/current/developer-docs/getting-started/deploy/testnet /docs/current/developer-docs/getting-started/deploy-and-manage
   /docs/current/developer-docs/getting-started/deploy-and-manage  /docs/current/developer-docs/getting-started/deploy-and-manage
+  /docs/current/developer-docs/smart-contracts/write/default-template /docs/current/developer-docs/smart-contracts/write/overview
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
