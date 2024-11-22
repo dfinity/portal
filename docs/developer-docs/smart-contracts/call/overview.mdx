@@ -32,7 +32,7 @@ See the reference on [ingress messages](/docs/current/references/ingress-message
 
 ## Update calls
 
-Update calls are executed on all nodes of a <GlossaryTooltip>subnet</GlossaryTooltip> since the result of the call must go through consensus. This makes them slower than query calls. They are submitted asynchronously and answered synchronously.
+Update calls are executed on all nodes of the <GlossaryTooltip>subnet</GlossaryTooltip> that the canister is deployed on since the result of the call must go through consensus. This makes them slower than query calls. They are submitted asynchronously and answered synchronously.
 
 :::danger
 Update calls do not go through consensus on the local replica.
