@@ -55,9 +55,9 @@ Instead, developers should use language-specific Canister Development Kit (CDK) 
 
 There are several different environments that can be used to write, deploy, and test smart contracts. Each environment has different characteristics and benefits.
 
-- [`dfx`](/docs/current/developer-docs/getting-started/install/#installing-dfx): `dfx` is the 'native' way to develop smart contracts. It is a command-line tool that enables canister creation and deployment on macOS and Linux systems. `dfx` is developed and maintained by DFINITY, with new features and improvements being released regularly.
+- [`dfx`](/docs/current/developer-docs/getting-started/install#installing-dfx): `dfx` is the 'native' way to develop smart contracts. It is a command-line tool that enables canister creation and deployment on macOS and Linux systems. `dfx` is developed and maintained by DFINITY, with new features and improvements being released regularly.
 
-- [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install): `dfx` does not natively support Windows operating systems. To use `dfx` locally on a Windows machine, you can install the Windows Subsystem for Linux. Since this workflow isn't the primary development testing environment that `dfx` is designed for, there may be bugs or errors when using `dfx` on WSL. [Learn more about common WSL errors and troubleshooting](/docs/current/developer-docs/getting-started/install/).
+- [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install): `dfx` does not natively support Windows operating systems. To use `dfx` locally on a Windows machine, you can install the Windows Subsystem for Linux. Since this workflow isn't the primary development testing environment that `dfx` is designed for, there may be bugs or errors when using `dfx` on WSL. [Learn more about common WSL errors and troubleshooting](/docs/current/developer-docs/getting-started/install).
 
 - [Gitpod](/docs/current/developer-docs/developer-tools/ide/gitpod): Gitpod is an open-source cloud-based development environment that can be used to develop in the web browser without downloading tools or dependencies to your local machine. Gitpod can be used for long-term projects, as it does not use a temporary resource allocation system such as the playground. Smart contract projects can be developed using Gitpod by spawning a new Gitpod workspace and configuring it to download and install `dfx`. [The Hello, world! Gitpod example can be used to learn more about Gitpod configuration](https://github.com/dfinity/icp-hello-world-motoko).
 
@@ -87,7 +87,7 @@ There are several different environments that can be used to write, deploy, and 
 
 - [Juno](/docs/current/developer-docs/web-apps/frameworks/juno): Juno is a blockchain-as-a-service platform that can be used to create and deploy smart contracts on ICP without using the traditional `dfx` development workflow. Instead, Juno manages ICP-specific tooling for you on the backend through a Juno 'satellite', allowing you to deploy onchain dapps by interacting with just the Juno web console or through the CLI.
 
-- [Playground](/docs/current/developer-docs/getting-started/deploy/testnet): The playground is a sandbox environment that can be used for testing smart contract code in any language. It is only designed for temporary, short-term testing, as there is a 20 minute limit for each deployment. After 20 minutes, the canister will be deleted so the resources can be used for another deployment.
+- [Playground](/docs/current/developer-docs/getting-started/deploy-and-manage): The playground is a sandbox environment that can be used for testing smart contract code in any language. It is only designed for temporary, short-term testing, as there is a 20 minute limit for each deployment. After 20 minutes, the canister will be deleted so the resources can be used for another deployment.
 
 ## Deploying smart contracts
 
@@ -98,7 +98,7 @@ Note that as of writing, ICP doesn’t have an official public testnet.
 
 In order to deploy smart contracts on the mainnet, the developer needs either ICP tokens or cycles.
 When using ICP tokens, `dfx` automatically converts the necessary amount of tokens to cycles since all operations with smart contracts require payment in cycles.
-See this [guide](/docs/current/developer-docs/getting-started/cycles/cycles-faucet) for more information on how to obtain cycles.
+See this [guide](/docs/current/developer-docs/getting-started/tokens-and-cycles) for more information on how to obtain cycles.
 
 The command for deploying smart contracts is `dfx deploy`.
 It automatically builds the source code into Wasm binaries and deploys them to the target network.
@@ -128,6 +128,6 @@ There are three ways to call the functions of the backend smart contract:
 
 ## Next steps
 
-- [Install dev tools](./install/index.mdx).
+- [Install dev tools](/docs/current/developer-docs/getting-started/install).
 
 - [Start the developer ladder series](/docs/current/tutorials/developer-journey/).
