@@ -232,7 +232,6 @@ Open the backend canister source code file in your code editor. The backend cani
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko title="src/hello_backend/main.mo"
-
 actor {
 public query func greet(name : Text) : async Text {
     return "Hello, " # name # "!";
@@ -254,28 +253,13 @@ fn greet(name: String) -> String {
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-```typescript title="src/hello_backend/src/index.ts"
-import { Canister, query, text } from 'azle';
-
-export default Canister({
-    greet: query([text], text, (name) => {
-        return `Hello, ${name}!`;
-    })
-})
-```
+[Learn more about Azle.](https://demergent-labs.github.io/azle/)
 
 </AdornedTab>
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-```python title="src/hello_backend/src/main.py"
-from kybra import query
-
-@query
-def greet(name: str) -> str:
-    return f"Hello, {name}!"
-```
-
+[Learn more about Kybra.](https://demergent-labs.github.io/kybra/)
 
 </AdornedTab>
 </AdornedTabs>
