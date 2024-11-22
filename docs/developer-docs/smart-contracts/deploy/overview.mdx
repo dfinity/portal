@@ -72,11 +72,11 @@ For most developers, the playground option can be used. For more advanced develo
 
 Verify you are in your project's directory and the canisters you'd like to deploy are configured in the project's `dfx.json` file.
 
-- `dfx deploy hello_world`: Deploy a canister locally. The local replica must be running to deploy a canister locally. Start it with `dfx start --background`.
+- `dfx deploy <canister-name>`: Deploy a canister locally. The local replica must be running to deploy a canister locally. Start it with `dfx start --background`.
 
-- `dfx deploy hello_world --network=playground`: Deploy a canister on the playground. Deploying a canister on the playground is free, but canisters are temporary and will be removed after 20 minutes.
+- `dfx deploy <canister-name> --network=playground`: Deploy a canister on the playground. Deploying a canister on the playground is free, but canisters are temporary and will be removed after 20 minutes.
 
-- `dfx deploy hello_world --network=ic`: Deploy a canister on the mainnet. Deploying a canister on the mainnet will cost [cycles](/docs/current/developer-docs/gas-cost).
+- `dfx deploy <canister-name> --network=ic`: Deploy a canister on the mainnet. Deploying a canister on the mainnet will cost [cycles](/docs/current/developer-docs/gas-cost).
 
 - `dfx deploy --network=ic`: Deploy all canisters in the project's `dfx.json` file on the mainnet.
 
