@@ -4957,5 +4957,25 @@
     "twitter": "https://x.com/medblockid",
     "website": "https://medblock.id",
     "submittableId": "44389918"
+  },
+  {
+    "id": "linkpin",
+    "name": "Linkpin",
+    "description": "A minimal bookmark manager on ICP. Save your favorite websites securely, using II login. You can also easily check click counts and last visit.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/linkpin_logo.png",
+    "screenshots": [
+      "/img/showcase/linkpin_screenshot.png"
+    ],
+    "display": "Large",
+    "stats": "20+ signed up",
+    "oneLiner": "Bookmark on Blockchain",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/tagoso/linkpin",
+    "twitter": "https://x.com/tagoso",
+    "website": "https://3sfzu-siaaa-aaaal-qr6uq-cai.icp0.io/",
+    "submittableId": ""
   }
 ]
