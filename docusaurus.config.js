@@ -589,6 +589,7 @@ const config = {
     {
       src: "https://widget.kapa.ai/kapa-widget.bundle.js",
       "data-website-id": "08910249-851f-465b-b60f-238d84e1afc1",
+
       "data-project-name": "Internet Computer",
       "data-project-color": "#172234",
       "data-project-logo":
@@ -600,7 +601,7 @@ const config = {
         "What is the ICP token?, How is the Internet Computer governed?, How do I start building fully onchain Web3?",
       "data-modal-disclaimer":
         " This LLM provides responses are generated automatically and may be inaccurate or outdated. Please take care to verify or validate any responses before making any critical decisions.",
-      "data-user-analytics-fingerprint-enabled=": "true",
+      "data-user-analytics-fingerprint-enabled": "true",
       async: true,
     },
   ],
