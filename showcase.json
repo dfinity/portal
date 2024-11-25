@@ -4967,15 +4967,13 @@
     "screenshots": [
       "/img/showcase/linkpin_screenshot.png"
     ],
-    "display": "Large",
-    "stats": "20+ signed up",
+    "display": "Normal",
     "oneLiner": "Bookmark on Blockchain",
     "tags": [
       "Tools / Infrastructure"
     ],
+    "usesInternetIdentity": true,
     "github": "https://github.com/tagoso/linkpin",
-    "twitter": "https://x.com/tagoso",
     "website": "https://3sfzu-siaaa-aaaal-qr6uq-cai.icp0.io/",
-    "submittableId": ""
   }
 ]
