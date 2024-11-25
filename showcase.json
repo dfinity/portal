@@ -5016,9 +5016,9 @@
     "name": "Linkpin",
     "description": "A minimal bookmark manager on ICP. Save your favorite websites securely, using II login. You can also easily check click counts and last visit.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/linkpin_logo.png",
+    "logo": "/img/showcase/linkpin_logo.webpg",
     "screenshots": [
-      "/img/showcase/linkpin_screenshot.png"
+      "/img/showcase/linkpin_screenshot.webpg"
     ],
     "display": "Normal",
     "oneLiner": "Bookmark on Blockchain",
