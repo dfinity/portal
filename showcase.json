@@ -3549,24 +3549,6 @@
     "submittableId": "43814286"
   },
   {
-    "id": "rentspace",
-    "name": "RentSpace",
-    "oneLiner": "A crypto-friendly property rental platform.",
-    "website": "https://rentb.space/",
-    "tags": [
-      "DeFi",
-      "SocialFi"
-    ],
-    "twitter": "https://twitter.com/RentSpaceco",
-    "github": "https://github.com/ICP-hub/RentSpace-ICP",
-    "discord": "https://discord.gg/hCFmTWFx85",
-    "description": "A crypto-friendly property rental platform",
-    "usesInternetIdentity": false,
-    "display": "Normal",
-    "logo": "/img/showcase/rentspace_logo.png",
-    "submittableId": "44394368"
-  },
-  {
     "id": "myordinalsloan",
     "name": "MyOrdinals.Loan",
     "oneLiner": "Peer-to-peer Bitcoin lending using ckBTC. Users borrow or lend ckBTC, securing transactions with unique Ordinal Inscriptions (Ordinals) as collateral.",
@@ -4957,5 +4939,58 @@
     "twitter": "https://x.com/medblockid",
     "website": "https://medblock.id",
     "submittableId": "44389918"
+  },
+  {
+    "id": "tap-protocol",
+    "name": "Tap Protocol",
+    "description": "Tap is the most programmable layer 1 Bitcoin protocol, enabling full smart-contract functionality without having to wrap or bridge any assets, and without the need for any L2 infrastructure.",
+    "logo": "/img/showcase/tapprotocol_logo.svg",
+    "display": "Normal",
+    "tags": [
+      "Bitcoin",
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "twitter": "https://x.com/tap_protocol",
+    "website": "https://www.tap-protocol.com"
+  },
+  {
+    "id": "ic-toolkit",
+    "name": "IC Toolkit",
+    "description": "IC Toolkit simplifies canister management, project collaboration, and decentralized governance on ICP.",
+    "logo": "/img/showcase/ictoolkit_logo.png",
+    "display": "Normal",
+    "tags": [
+      "DAO",
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "twitter": "https://x.com/ic_toolkit",
+    "website": "https://ic-toolkit.app"
+  },
+  {
+    "id": "nfid-identitykit",
+    "name": "NFID IdentityKit",
+    "description": "NFID IdentityKit is the best way to connect an ICP wallet to your dapp.",
+    "logo": "/img/showcase/nfididentitykit_logo.svg",
+    "display": "Normal",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/internet-identity-labs/identitykit",
+    "twitter": "https://x.com/NFIDIdentityKit",
+    "website": "https://www.identitykit.xyz/"
+  },
+  {
+    "id": "dfxdashboard",
+    "name": "DFX Dashboard",
+    "description": "DFX Dashboard is a GUI for using dfx, the CLI tool for ICP development.",
+    "logo": "/img/showcase/dfxdashboard_logo.svg",
+    "display": "Normal",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/tolgayayci/dfx-dashboard",
+    "website": "https://dfx-dashboard-docs.netlify.app/"
   }
 ]
