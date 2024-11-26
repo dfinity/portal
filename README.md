@@ -394,10 +394,6 @@ The following submoules and their corresponding repos are currently used:
     - `/docs/current/references/ii-spec`
 	- GitHub Repo: https://github.com/dfinity/internet-identity.git
 
-- Interface Spec
-    - `/docs/current/references/ic-interface-spec `
-    - GitHub Repo: https://github.com/dfinity/interface-spec.git
-
 - Sample projects
     - `/docs/current/references/samples`
     - GitHub Repo: https://github.com/dfinity/examples.git
@@ -602,15 +598,19 @@ The [Ecosystem Helper](https://mvw4g-yiaaa-aaaam-abnva-cai.icp0.io/) is an oncha
 
 The list of tags is not final, and will be updated as the project evolves. For now, the following tags are available:
 
-- `Wallet`
+- `AI`
+- `Chain Fusion`
 - `Bitcoin`
+- `Ethereum`
+- `DAO`
+- `DeFi`
+- `Enterprise`
+- `Games`
+- `Metaverse`
 - `NFT`
 - `SocialFi`
-- `DeFi`
-- `Games`
-- `DAO`
-- `Metaverse`
 - `Tools / Infrastructure`
+- `Wallet`
 
 ### Object schema
 
@@ -621,7 +621,7 @@ The list of tags is not final, and will be updated as the project evolves. For n
     oneLiner: string, // short description of the project
     website: string, // URL starting with `https://`
 
-    tags: ('Wallet' | 'Bitcoin' | 'NFT' | 'SocialFi' | 'DeFi' | 'Games' | 'DAO' | 'Metaverse' | 'Tools / Infrastructure')[],
+    tags: ('AI' | 'Chain Fusion' | 'Bitcoin' | 'Ethereum' | 'DAO' | 'DeFi' | 'Enterprise' | 'Games' | 'Metaverse' | 'NFT' | 'SocialFi' | 'Tools / Infrastructure' | 'Wallet')[],
     description: string, // description of the project
     stats: string, // eg. "10,000 users"
     logo: string, // url to logo file, eg. /img/showcase/awesome-icp-project_logo.webp

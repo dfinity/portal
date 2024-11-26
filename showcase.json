@@ -517,19 +517,20 @@
   {
     "id": "rubaru",
     "name": "RuBaRu",
-    "oneLiner": "Building Onchain Regenerative Creator-Consumer Economy",
+    "oneLiner": "The fully on-chain content creator/influencer platform: own your profile, own your content, and earn fair incentives.",
     "website": "https://rubaru.app/",
     "tags": [
       "SocialFi"
     ],
-    "description": "RuBaRu aims to create a vibrant 100% Onchain DAO-based tokenized economy owned & governed by the community, where creators, influencers, consumers, and brands coexist harmoniously. By doing so, we unlock new opportunities, reshape digital creativity, drive economic growth, and foster a thriving ecosystem of shared prosperity.",
+    "stats": "190+ canisters N/W, On-chain content : 15k+ images & 5k+ videos",
+    "description": "The fully on-chain content creator/influencer platform: own your profile, own your content, and earn fair incentives.",
     "logo": "/img/showcase/rubaru_logo.png",
     "display": "Large",
     "usesInternetIdentity": true,
     "youtube": "https://youtu.be/CBumSMJRV08",
     "twitter": "https://twitter.com/RuBaRu_app",
     "screenshots": [
-      "/img/showcase/rubaru_dapp_screenshots.png"
+      "/img/showcase/rubaru_dapp_screenshot.png"
     ],
     "video": "/img/showcase/rubaru_video.mp4",
     "videoContentType": "video/mp4",
@@ -1716,7 +1717,7 @@
     "github": "https://github.com/canister-app",
     "youtube": "https://youtu.be/pFgVswCqzdk",
     "twitter": "https://twitter.com/canister_app",
-    "display": "Large",
+    "display": "Normal",
     "logo": "/img/showcase/canister-store_logo.png",
     "screenshots": [
       "/img/showcase/canister-store_screenshot_0.png"
@@ -1724,6 +1725,23 @@
     "video": "/img/showcase/canister-store_video.mp4",
     "videoContentType": "video/mp4",
     "submittableId": "35750450"
+  },
+  {
+    "id": "KongSwap",
+    "name": "KongSwap",
+    "description": "The one-stop token shop - Trade tokens across all chains with ease using KongSwap.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/kong_logo.png",
+    "screenshots": [
+      "/img/showcase/kongswap_screenshot.png"
+    ],
+    "display": "Large",
+    "tags": [
+      "DeFi",
+      "Chain Fusion"
+    ],
+    "twitter": "https://x.com/kongswap",
+    "website": "https://www.kongswap.io/"
   },
   {
     "name": "cyql.io",
@@ -2050,22 +2068,22 @@
   },
   {
     "id": "chainsight",
-    "name": "Chainsight Demo",
-    "oneLiner": "Interchain Data Processing Layer",
+    "name": "Chainsight",
+    "oneLiner": "An advanced on-chain data hub that aggregates data from various markets and makes it accessible on-chain.",
     "tags": [
       "Tools / Infrastructure",
       "Ethereum",
       "Chain Fusion"
     ],
-    "description": "Chainsight is an interchain data processing layer that makes blockchain data available for decentralized applications. It allows time series analysis and forecasting based on historical data to be incorporated into onchain application logic in a trustless manner.",
+    "description": "An advanced on-chain data hub that aggregates data from various markets and makes it accessible on-chain.",
     "usesInternetIdentity": false,
-    "website": "https://demo.chainsight.network",
+    "website": "https://chainsight.network",
     "github": "https://github.com/horizonx-tech",
     "twitter": "https://twitter.com/Chainsight_",
     "display": "Large",
     "logo": "/img/showcase/chainsight_logo.webp",
     "screenshots": [
-      "/img/showcase/chainsight_screenshot.webp"
+      "/img/showcase/chainsight_screenshot.png"
     ],
     "submittableId": "36057758"
   },
@@ -2258,7 +2276,7 @@
     "usesInternetIdentity": false,
     "github": "https://github.com/NnsDao/podcast-fe",
     "twitter": "https://twitter.com/Looncasts",
-    "display": "Large",
+    "display": "Normal",
     "logo": "/img/showcase/icpodcast_logo.png",
     "screenshots": [
       "/img/showcase/icpodcast_screenshot.png"
@@ -2905,10 +2923,9 @@
   {
     "id": "icgpt",
     "name": "icgpt",
-    "oneLiner": "A fun dApp to demonstrate onchain LLMs",
+    "oneLiner": "A chat app that uses Qwen2.5-instruct LLM with 0.5 billion parameters, the largest LLM currently live on ICP.",
     "website": "https://icgpt.icpp.world/",
-    "description": "A llama2 LLM, trained on the tiny Stories dataset is running in a canister. You can interact with it via a ChatGPT style frontend, served from an IC canister. You provide the start of a story as the prompt, and the LLM will generate a tiny story.",
-    "stats": "15M parameter llama2",
+    "description": "A chat app that uses Qwen2.5-instruct LLM with 0.5 billion parameters, the largest LLM currently live on ICP.",
     "tags": [
       "Tools / Infrastructure",
       "AI"
@@ -3037,12 +3054,11 @@
   {
     "name": "ICSoccerWorld",
     "description": "Soccer simulation built for ICP using ICPP. Based on code sample from book \"AI Game Programming by Example\". Demo is built in C++ and uses Jolt physics Engine.",
-    "website": "https://github.com/ktimam/ICSimpleSoccer",
+    "website": "https://gb4ri-5yaaa-aaaal-ac3hq-cai.raw.icp0.io/",
     "logo": "/img/showcase/ICSoccerWorld.png",
     "display": "Normal",
     "id": "ICSoccerWorld",
-    "oneLiner": "Physics Based Soccer Simulation.",
-    "stats": "Community Dev Demo",
+    "oneLiner": "Soccer simulation built for ICP using ICPP. ",
     "tags": [
       "NFT",
       "Metaverse",
@@ -3052,9 +3068,7 @@
     "usesInternetIdentity": false,
     "github": "https://github.com/ktimam/ICSimpleSoccer",
     "twitter": "https://twitter.com/ICSoccerWorld",
-    "youtube": "",
-    "submittableId": "44414655",
-    "videoContentType": "video/mp4"
+    "submittableId": "44414655"
   },
   {
     "name": "Mapz",
@@ -3415,18 +3429,20 @@
   {
     "id": "gamebloc",
     "name": "Game Bloc",
-    "oneLiner": "A decentralised platform for hosting game tournaments which can either be crowdfunded or prepaid.",
+    "oneLiner": "A decentralized platform empowering gamers and gaming organizations to create, manage, and participate in game tournaments.",
     "website": "https://cv4ma-4qaaa-aaaal-adntq-cai.icp0.io/",
     "github": "https://github.com/Game-Bloc/Gamebloc-ICP",
     "twitter": "https://twitter.com/game_bloc",
     "discord": "https://discord.gg/wgRuenwTEK",
+    "youtube": "https://www.youtube.com/@Game_bloc",
     "tags": [
-      "Games"
+      "Games",
+      "SocialFi"
     ],
-    "description": "A decentralised platform for hosting game tournaments which can either be crowdfunded or prepaid.",
+    "description": "A decentralized platform empowering gamers and gaming organizations to create, manage, and participate in game tournaments.",
     "usesInternetIdentity": true,
     "display": "Normal",
-    "logo": "/img/showcase/gameblock_logo.png",
+    "logo": "/img/showcase/gamebloc_logo.png",
     "submittableId": "44503915"
   },
   {
@@ -3818,15 +3834,16 @@
   {
     "id": "icpexchange",
     "name": "ICPEx",
-    "oneLiner": "Decentralized exchange built entirely on the chain based on the ICP.",
+    "oneLiner": "A fully on-chain decentralized exchange powered by the Proactive Market Maker (PMM) algorithm.",
     "tags": [
       "DeFi"
     ],
-    "description": "Decentralized exchange built entirely on the chain based on the ICP.",
+    "description": "A fully on-chain decentralized exchange powered by the Proactive Market Maker (PMM) algorithm that is committed to becoming the leading decentralized financial hub serving Web3.",
     "usesInternetIdentity": true,
     "website": "https://icpex.org/",
     "github": "https://github.com/ICPExchange",
     "twitter": "https://twitter.com/ICPExchange",
+    "youtube": "https://www.youtube.com/@ICPExchange",
     "display": "Normal",
     "stats": "229 tokens and 90 liquidity pools created",
     "logo": "/img/showcase/icpex_logo.png",
@@ -4926,5 +4943,72 @@
     ],
     "twitter": "https://x.com/phasmafuture",
     "website": "https://entrepot.app/marketplace/phasma"
+  },
+  {
+    "id": "medblock",
+    "name": "Medblock",
+    "description": "Medblock is a secure mobile app that puts medical records in patients' hands while helping hospitals manage healthcare data efficiently through blockchain technology.",
+    "logo": "/img/showcase/medblock.svg",
+    "display": "Normal",
+    "tags": [
+      "Enterprise"
+    ],
+    "github": "https://github.com/baliola/Medblock",
+    "twitter": "https://x.com/medblockid",
+    "website": "https://medblock.id",
+    "submittableId": "44389918"
+  },
+  {
+    "id": "tap-protocol",
+    "name": "Tap Protocol",
+    "description": "Tap is the most programmable layer 1 Bitcoin protocol, enabling full smart-contract functionality without having to wrap or bridge any assets, and without the need for any L2 infrastructure.",
+    "logo": "/img/showcase/tapprotocol_logo.svg",
+    "display": "Normal",
+    "tags": [
+      "Bitcoin",
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "twitter": "https://x.com/tap_protocol",
+    "website": "https://www.tap-protocol.com"
+  },
+  {
+    "id": "ic-toolkit",
+    "name": "IC Toolkit",
+    "description": "IC Toolkit simplifies canister management, project collaboration, and decentralized governance on ICP.",
+    "logo": "/img/showcase/ictoolkit_logo.png",
+    "display": "Normal",
+    "tags": [
+      "DAO",
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "twitter": "https://x.com/ic_toolkit",
+    "website": "https://ic-toolkit.app"
+  },
+  {
+    "id": "nfid-identitykit",
+    "name": "NFID IdentityKit",
+    "description": "NFID IdentityKit is the best way to connect an ICP wallet to your dapp.",
+    "logo": "/img/showcase/nfididentitykit_logo.svg",
+    "display": "Normal",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/internet-identity-labs/identitykit",
+    "twitter": "https://x.com/NFIDIdentityKit",
+    "website": "https://www.identitykit.xyz/"
+  },
+  {
+    "id": "dfxdashboard",
+    "name": "DFX Dashboard",
+    "description": "DFX Dashboard is a GUI for using dfx, the CLI tool for ICP development.",
+    "logo": "/img/showcase/dfxdashboard_logo.svg",
+    "display": "Normal",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/tolgayayci/dfx-dashboard",
+    "website": "https://dfx-dashboard-docs.netlify.app/"
   }
 ]
