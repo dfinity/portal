@@ -1547,7 +1547,7 @@
     ],
     "description": "Connect, engage and inspire your audience while owning your data and your identity.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/bink_logo.png"
+    "logo": "/img/showcase/bink_logo.svg"
   },
   {
     "id": "pythonagent",
