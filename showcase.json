@@ -3549,24 +3549,6 @@
     "submittableId": "43814286"
   },
   {
-    "id": "rentspace",
-    "name": "RentSpace",
-    "oneLiner": "A crypto-friendly property rental platform.",
-    "website": "https://rentb.space/",
-    "tags": [
-      "DeFi",
-      "SocialFi"
-    ],
-    "twitter": "https://twitter.com/RentSpaceco",
-    "github": "https://github.com/ICP-hub/RentSpace-ICP",
-    "discord": "https://discord.gg/hCFmTWFx85",
-    "description": "A crypto-friendly property rental platform",
-    "usesInternetIdentity": false,
-    "display": "Normal",
-    "logo": "/img/showcase/rentspace_logo.png",
-    "submittableId": "44394368"
-  },
-  {
     "id": "myordinalsloan",
     "name": "MyOrdinals.Loan",
     "oneLiner": "Peer-to-peer Bitcoin lending using ckBTC. Users borrow or lend ckBTC, securing transactions with unique Ordinal Inscriptions (Ordinals) as collateral.",
