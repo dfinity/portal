@@ -478,7 +478,7 @@
       "Wallet",
       "Chain Fusion"
     ],
-    "twitter": "https://x.com/OISY_Wallet",
+    "twitter": "https://x.com/oisy",
     "description": "Oisy is a new browser-based, self-custodial and multi-chain wallet powered by Internet Computer's chain fusion technology.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/oisy_logo.svg"
