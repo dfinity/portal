@@ -372,6 +372,28 @@
     ],
     "youtube": "https://www.youtube.com/@junobuild"
   },
+
+{
+  "id": "oisy",
+  "name": "OISY Wallet",
+  "oneLiner": "Browser-based multi-chain wallet",
+  "website": "https://oisy.com",
+  "github": "https://github.com/dfinity/oisy-wallet",
+  "display": "Large",
+  "tags": [
+    "Ethereum",
+    "DeFi",
+    "Wallet",
+    "Chain Fusion"
+  ],
+  "twitter": "https://x.com/oisy",
+  "description": "OISY Wallet is a new browser-based multi-chain wallet, powered by Internet Computer’s chain fusion technology. It is fully on-chain and implements network custody, an innovative approach that leverages the Internet Computer’s advanced cryptography to eliminate the need for you to handle private keys directly.",
+  "usesInternetIdentity": true,
+  "logo": "/img/showcase/oisy_logo.svg",
+  "screenshots": [
+    "/img/showcase/oisy-preview.webp"
+  ]
+},
   {
     "id": "kinic",
     "name": "Kinic",
@@ -465,23 +487,6 @@
     "description": "The NNS front-end dapp allows anyone to interact with the Internet Computer's Network Nervous System with a user-friendly UI. Served completely end-to-end through blockchain, this dapp allows you to manage ICP, stake neurons, participate in voting, and earn governance rewards.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/nnsfront-enddapp_logo-dark.webp"
-  },
-  {
-    "id": "oisy",
-    "name": "OISY Wallet",
-    "oneLiner": "Browser-based multi-chain wallet",
-    "website": "https://oisy.com",
-    "github": "https://github.com/dfinity/oisy-wallet",
-    "tags": [
-      "Ethereum",
-      "DeFi",
-      "Wallet",
-      "Chain Fusion"
-    ],
-    "twitter": "https://x.com/oisy",
-    "description": "Oisy is a new browser-based, self-custodial and multi-chain wallet powered by Internet Computer's chain fusion technology.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/oisy_logo.svg"
   },
   {
     "id": "trax",
