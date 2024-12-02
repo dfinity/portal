@@ -23,7 +23,7 @@ const redirects = `
   /icp-newsletter /news
   /ois /sns
   /docs/current/developer-docs/getting-started/overview-of-icp /docs/current/developer-docs/getting-started/network-overview
-  /docs/videos-tutorials /developers
+  /docs/videos-tutorials /docs/current/home
   /docs /docs/current/home
   /docs/current/ /docs/current/home
   /docs/current/concepts/bitcoin-integration /bitcoin-integration
@@ -627,6 +627,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/rosetta/staking-tutorial/ /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_icp
   /docs/current/developer-docs/getting-started/cycles/cycles-wallet /docs/current/developer-docs/defi/cycles/cycles-wallet
   /docs/current/developer-docs/getting-started/quickstart/juno-quickstart /docs/current/developer-docs/web-apps/frameworks/juno
+  /developers /docs/current/home
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
