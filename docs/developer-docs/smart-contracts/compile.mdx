@@ -4,6 +4,7 @@ keywords: [beginner, tutorial, compile]
 
 import TabItem from "@theme/TabItem";
 import Tabs from '@theme/Tabs';
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { BetaChip } from "/src/components/Chip/BetaChip";
@@ -19,13 +20,13 @@ After you have [written the code](/docs/current/developer-docs/smart-contracts/w
 
 :::danger
 
-You must [create your canisters](/docs/current/developer-docs/smart-contracts/create) before you can build them, otherwise you will receive an error that they do not exist.
+You must [create your canisters](/docs/current/developer-docs/smart-contracts/create) before you can build them; otherwise, you will receive an error message saying they do not exist.
 
 :::
 
 `dfx build` looks for source code to compile for each canister configured under the `canisters` section in the [`dfx.json`](/docs/current/developer-docs/developer-tools/cli-tools/dfx-json-reference) file. It can be used to compile a specific canister or all canisters defined in the project.
 
-Verify the location of your project's files and their file names. Be sure to edit your project's `dfx.json` file to reflect the current intended configuration if necessary.
+Verify the location of your project's files and their file names. If necessary, edit your project's `dfx.json` file to reflect the current intended configuration.
 
 ## Compiling your canister
 
@@ -72,16 +73,16 @@ When this command is executed, the following steps happen:
 
 ## How code is compiled to Wasm
 
-WebAssembly (Wasm) is a platform independent binary format that can be executed in the Wasm virtual machine.
-Many modern compilers support Wasm as the compilation target along with the traditional targets such as x86 and arm32.
+WebAssembly (Wasm) is a platform-independent binary format that can be executed in the Wasm virtual machine.
+Many modern compilers support Wasm as the compilation target along with traditional targets such as x86 and arm32.
 
 There are three types of Wasm depending on where the Wasm virtual machine is hosted and how it interacts with users and the host environment:
 
-- **Web browser**: the Wasm program interacts with the users via the JavaScript bindings of the browser. The primary toolchain for compiling Wasm for browsers is [Emscripten](https://emscripten.org/). Note that such Wasm programs are incompatible with ICP.
+- **Web browser**: The Wasm program interacts with the users via the JavaScript bindings of the browser. The primary toolchain for compiling Wasm for browsers is [Emscripten](https://emscripten.org/). Note that such Wasm programs are incompatible with ICP.
 
-- **WASI**: this abbreviation stands for [WebAssembly System Interface](https://wasi.dev/). It is becoming the standard for running Wasm programs outside of Web browsers. Major Wasm runtimes such as Wasmtime and Wasmer support this standard. Compilers denote this target as `wasm32-wasi`. ICP does not directly support WASI, but it is possible to preprocess a WASI program and make it runnable on ICP with the community project [`wasi2ic`](https://github.com/wasm-forge/wasi2ic).
+- **WASI**: This abbreviation stands for [WebAssembly System Interface](https://wasi.dev/). It is becoming the standard for running Wasm programs outside of Web browsers. Major Wasm runtimes such as Wasmtime and Wasmer support this standard. Compilers denote this target as `wasm32-wasi`. ICP does not directly support WASI, but it is possible to preprocess a WASI program and make it runnable on ICP with the community project [`wasi2ic`](https://github.com/wasm-forge/wasi2ic).
 
-- **Vanilla Wasm**: there is no standard API for interacting with users and the host environment. Every host environment provides their own API. ICP uses this approach and provides the set of functions called the System API to the Wasm program. Many compilers denote this target as `wasm32-unknown-unknown` since they do not know the target host environment and do not make any assumptions about the available APIs.
+- **Vanilla Wasm**: There is no standard API for interacting with users and the host environment. Every host environment provides its own API. ICP uses this approach and provides a set of functions, called the System API, to the Wasm program. Many compilers denote this target as `wasm32-unknown-unknown` since they do not know the target host environment and do not make any assumptions about the available APIs.
 
 The Canister Development Kit (CDK) of supported programming language comes with build scripts that link the System API and compile the code to Wasm programs that are compatible with ICP:
 
