@@ -69,7 +69,7 @@ const subnavItems = [
     type: "docSidebar",
     sidebarId: "tokens",
     position: "left",
-    label: "Tokens",
+    label: "DeFi",
     activeBasePath: "/docs/current/developer-docs/defi/overview",
   },
   {
@@ -375,8 +375,8 @@ const marketingNav = {
         },
         { name: "Developer grants", href: "https://dfinity.org/grants" },
         {
-          name: "Free Cycles",
-          href: "/docs/current/developer-docs/getting-started/cycles/cycles-faucet",
+          name: "Using cycles",
+          href: "/docs/current/developer-docs/getting-started/tokens-and-cycles",
         },
       ],
 
@@ -588,6 +588,7 @@ const config = {
         "What is the ICP token?, How is the Internet Computer governed?, How do I start building fully onchain Web3?",
       "data-modal-disclaimer":
         " This LLM provides responses are generated automatically and may be inaccurate or outdated. Please take care to verify or validate any responses before making any critical decisions.",
+      "data-user-analytics-fingerprint-enabled": "true",
       async: true,
     },
   ],
