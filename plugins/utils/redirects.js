@@ -23,7 +23,7 @@ const redirects = `
   /icp-newsletter /news
   /ois /sns
   /docs/current/developer-docs/getting-started/overview-of-icp /docs/current/developer-docs/getting-started/network-overview
-  /docs/videos-tutorials /developers
+  /docs/videos-tutorials /docs/current/home
   /docs /docs/current/home
   /docs/current/ /docs/current/home
   /docs/current/concepts/bitcoin-integration /bitcoin-integration
@@ -640,6 +640,7 @@ const redirects = `
   /docs/current/developer-docs/getting-started/deploy/testnet /docs/current/developer-docs/getting-started/deploy-and-manage
   /docs/current/developer-docs/getting-started/deploy-and-manage  /docs/current/developer-docs/getting-started/deploy-and-manage
   /docs/current/developer-docs/smart-contracts/write/default-template /docs/current/developer-docs/smart-contracts/write/overview
+  /developers /docs/current/home
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
