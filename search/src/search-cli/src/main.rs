@@ -1,6 +1,6 @@
 use candid::{CandidType, Encode};
 use clap::{Parser, Subcommand};
-use ic_agent::agent::http_transport::ReqwestHttpReplicaV2Transport;
+use ic_agent::agent::http_transport::ReqwestTransport;
 use ic_agent::identity::Secp256k1Identity;
 use ic_agent::{export::Principal, Agent};
 use indicatif::ProgressBar;
@@ -68,13 +68,11 @@ enum Commands {
 
 #[derive(Deserialize)]
 struct ParsedDoc {
-    // id: String,
     content: String,
     url: String,
     page_url: String,
     title: String,
     excerpt: String,
-    // title_level: i32,
     page_title: String,
 }
 
@@ -86,6 +84,7 @@ struct UploadDocsArgs(Vec<Doc>);
 
 #[derive(CandidType)]
 struct SetStopWordsArgs(Vec<String>);
+
 #[derive(CandidType)]
 struct UploadIndexEntriesArgs(Vec<(String, Vec<IndexEntry>)>);
 
@@ -139,7 +138,6 @@ async fn main() {
             }
             pb.finish();
 
-            // serializing index into output.json
             let content = serde_json::to_string(&index).unwrap();
             fs::write(output, content).expect("Unable to write file");
         }
@@ -165,11 +163,10 @@ async fn main() {
             let identity =
                 Secp256k1Identity::from_pem_file(identity).expect("Failed to load identity");
 
+            let transport = ReqwestTransport::create(url.clone()).expect("Could not create transport");
             let agent = Agent::builder()
-                .with_transport(
-                    ReqwestHttpReplicaV2Transport::create(url.clone())
-                        .expect("Could not create transport"),
-                )
+                .with_url(url.clone())
+                .with_transport(transport)
                 .with_identity(identity)
                 .build()
                 .expect("Could not create agent");
@@ -200,7 +197,7 @@ async fn main() {
             println!("Uploading stop words...");
             agent
                 .update(&Principal::from_text(&canister).unwrap(), "set_stop_words")
-                .with_arg(&Encode!(&SetStopWordsArgs(stop_words)).expect("Could not encode update"))
+                .with_arg(Encode!(&SetStopWordsArgs(stop_words)).expect("Could not encode update"))
                 .call_and_wait()
                 .await
                 .expect("Could not call set_stop_words method");
@@ -208,43 +205,34 @@ async fn main() {
             println!("Uploading docs...");
             let pb = ProgressBar::new(index.docs.len() as u64);
             for chunk in index.docs.chunks(1000) {
-                // println!("Uploading {} docs", chunk.len());
                 agent
                     .update(
                         &Principal::from_text(&canister).unwrap(),
                         "upload_index_documents",
                     )
-                    .with_arg(
-                        &Encode!(&UploadDocsArgs(chunk.to_vec())).expect("Could not encode update"),
-                    )
+                    .with_arg(Encode!(&UploadDocsArgs(chunk.to_vec())).expect("Could not encode update"))
                     .call_and_wait()
                     .await
                     .expect("Could not call query method");
 
                 pb.inc(chunk.len() as u64);
-                // println!("Indexed {} docs", result);
             }
             pb.finish();
 
             println!("Uploading index...");
             let pb = ProgressBar::new(index.index.len() as u64);
             for chunk in index.index.into_iter().collect::<Vec<_>>().chunks(1000) {
-                // println!("Uploading {} docs", chunk.len());
                 agent
                     .update(
                         &Principal::from_text(&canister).unwrap(),
                         "upload_index_entries",
                     )
-                    .with_arg(
-                        &Encode!(&UploadIndexEntriesArgs(chunk.to_vec()))
-                            .expect("Could not encode update"),
-                    )
+                    .with_arg(Encode!(&UploadIndexEntriesArgs(chunk.to_vec())).expect("Could not encode update"))
                     .call_and_wait()
                     .await
                     .expect("Could not call query method");
 
                 pb.inc(chunk.len() as u64);
-                // println!("Indexed {} docs", result);
             }
             pb.finish();
 
