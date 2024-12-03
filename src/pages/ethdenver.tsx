@@ -766,7 +766,7 @@ function EthDenverPage() {
                 <Link className="button-primary" href="/ecosystem">
                   Check out the Ecosystem
                 </Link>
-                <Link className="link-white link-with-icon" href="/developers">
+                <Link className="link-white link-with-icon" href="/docs/current/home">
                   <LinkArrowRight />
                   Build your own
                 </Link>
@@ -930,7 +930,7 @@ function EthDenverPage() {
           title="Be a pioneer of Web3"
           body="Start a DAO, create a token, build dapps and host assets with the full stack entirely onchain."
           cta="BUILD REAL WEB3"
-          ctaLink="/developers"
+          ctaLink="/docs/current/home"
           cards={[
             {
               title: "Dev Forum",
