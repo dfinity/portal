@@ -2633,7 +2633,9 @@ The optional `sender_canister_version` parameter can contain the caller's canist
 
 This method can be called by canisters as well as by external users via ingress messages.
 
-This method lists the snapshots of the canister identified by `canister_id`. Only controllers of the canister can list its snapshots. Currently, at most one snapshot per canister will be stored.
+It returns a list of snapshots for the canister specified by `canister_id`. Only controllers of the canister can list its snapshots.
+
+Currently, at most one snapshot per canister will be stored.
 
 ### IC method `delete_canister_snapshot` {#ic-delete_canister_snapshot}
 
