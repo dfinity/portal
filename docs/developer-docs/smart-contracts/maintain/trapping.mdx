@@ -59,7 +59,7 @@ Some of the common root causes of canister traps include:
 
 - *“Integer division by zero”*: The canister attempted to divide by zero. Inspect the canister's code for any division operations.
 
-- *“Unreachable”*: Typically produced when the canister panic's, e.g. for Rust canisters. It's recommended to use the [panic hook](https://github.com/dfinity/cdk-rs/blob/08cbe397fcbaf62dd1edbec218492f967e80dd00/src/ic-cdk/src/printer.rs#L5) so that panic's are converted to an explicit call to [ic0.trap](/docs/current/references/ic-interface-spec#debugging-aids) which will append an error message that will be more useful for debugging.
+- *“Unreachable”*: Typically produced when the canister panics, e.g. for Rust canisters. It's recommended to use the [panic hook](https://github.com/dfinity/cdk-rs/blob/08cbe397fcbaf62dd1edbec218492f967e80dd00/src/ic-cdk/src/printer.rs#L5) so that panics are converted to an explicit call to [ic0.trap](/docs/current/references/ic-interface-spec#debugging-aids) which will append an error message that will be more useful for debugging.
 
 ## Errors related to canister trapping
 
