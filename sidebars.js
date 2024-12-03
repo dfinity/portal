@@ -183,9 +183,10 @@ const sidebars = {
               id: "developer-docs/smart-contracts/test/overview",
             },
             "developer-docs/smart-contracts/test/pocket-ic",
-            "developer-docs/smart-contracts/test/troubleshooting",
           ],
         },
+      ],
+    },
         {
           type: "category",
           label: "Advanced features",
@@ -201,25 +202,9 @@ const sidebars = {
               id: "developer-docs/smart-contracts/advanced-features/composite-query",
             },
             {
-              type: "category",
-              label: "Incoming HTTP requests",
-              items: [
-            {
               type: "doc",
-              label: "GET/POST requests",
+              label: "HTTP gateways & incoming requests",
               id: "developer-docs/smart-contracts/advanced-features/handling-get-post-requests",
-            },
-            {
-              type: "doc",
-              label: "Serving requests",
-              id: "developer-docs/smart-contracts/advanced-features/serving-http-request",
-            },
-            {
-              type: "doc",
-              label: "HTTP gateways",
-              id: "developer-docs/smart-contracts/advanced-features/http-gateways",
-            },
-            ],
             },
             {
               type: "category",
@@ -328,8 +313,6 @@ const sidebars = {
             },
           ],
         },
-      ],
-    },
     {
       type: "category",
       label: "Developer tools",
