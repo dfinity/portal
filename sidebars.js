@@ -799,10 +799,6 @@ const sidebars = {
         },
       ],
     },
-    {
-      type: "category",
-      label: "Identity",
-      items: [
         {
           type: "category",
           label: "Authentication",
@@ -833,8 +829,6 @@ const sidebars = {
             "developer-docs/identity/authentication/siwe",
             "developer-docs/identity/authentication/siws",
             "developer-docs/identity/authentication/msq",
-          ],
-        },
         {
           type: "category",
           label: "Verifiable credentials",
@@ -847,252 +841,6 @@ const sidebars = {
             "developer-docs/identity/verifiable-credentials/how-it-works",
             "developer-docs/identity/verifiable-credentials/issuer",
             "developer-docs/identity/verifiable-credentials/relying-party",
-          ],
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Digital assets",
-      items: [
-        {
-          type: "doc",
-          label: "Overview",
-          id: "developer-docs/defi/overview",
-        },
-        {
-          type: "category",
-          label: "Tokens",
-          items: [
-	          "developer-docs/defi/tokens/token-standards",
-	          "developer-docs/defi/tokens/asset_flow/index",
-            {
-              type: "category",
-              label: "Ledgers",
-              items: [
-                   {
-                      type: "doc",
-                      label: "Overview",
-                      id: "developer-docs/defi/tokens/ledger/overview",
-                    },
-                {
-                  type: "category",
-                  label: "Setup",
-                  link: {
-                    type: "doc",
-                    id: "developer-docs/defi/tokens/ledger/setup/overview",
-                  },
-                  items: [
-                    "developer-docs/defi/tokens/ledger/setup/icp_ledger_setup",
-                    "developer-docs/defi/tokens/ledger/setup/icrc1_ledger_setup"
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "Usage",
-                  link: {
-                    type: "doc",
-                    id: "developer-docs/defi/tokens/ledger/usage/overview",
-                  },
-                  items: [
-                    "developer-docs/defi/tokens/ledger/usage/icp_ledger_usage",
-                    "developer-docs/defi/tokens/ledger/usage/icrc1_ledger_usage"
-                  ],
-                },
-                "developer-docs/defi/tokens/advanced/direct_integration",
-              ],
-            },
-            "developer-docs/defi/tokens/indexes",
-            "developer-docs/defi/icp-tokens/account-trimming",
-            "developer-docs/defi/tokens/create",
-            {
-              type: "category",
-              label: "Cycles",
-              items: [
-                "developer-docs/defi/cycles/cycles-ledger",
-                "developer-docs/defi/cycles/cycles-wallet",
-                "developer-docs/defi/cycles/converting_icp_tokens_into_cycles",
-              ]
-            },
-            {
-              type: "category",
-              label: "Advanced",
-              items: [
-                {
-                  type: "category",
-                  label: "ICP Rosetta implementation",
-                  link: {
-                    type: "doc",
-                    id: "developer-docs/defi/rosetta/icp_rosetta/index",
-                  },
-                  items: [
-                    {
-                      type: "category",
-                      label: "Data API",
-                      link: {
-                        type: "doc",
-                        id: "developer-docs/defi/rosetta/icp_rosetta/data_api/index",
-                      },
-                      items: [
-                        "developer-docs/defi/rosetta/icp_rosetta/data_api/network",
-                        "developer-docs/defi/rosetta/icp_rosetta/data_api/balances",
-                        "developer-docs/defi/rosetta/icp_rosetta/data_api/blocks",
-                        "developer-docs/defi/rosetta/icp_rosetta/data_api/transactions",
-                        "developer-docs/defi/rosetta/icp_rosetta/data_api/list_known_neurons",
-                        "developer-docs/defi/rosetta/icp_rosetta/data_api/get_pending_proposals",
-                        "developer-docs/defi/rosetta/icp_rosetta/data_api/get_proposal_info",
-                      ],
-                    },
-                    {
-                      type: "category",
-                      label: "Construction API",
-                      link: {
-                        type: "doc",
-                        id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/index",
-                      },
-                      items: [
-                        {
-                          type: "category",
-                          label: "Flow of operations",
-                          link: {
-                            type: "doc",
-                            id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/index",
-                          },
-                          items: [
-                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/derive",
-                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/preprocess",
-                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/metadata",
-                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/payloads",
-                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/combine",
-                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/submit",
-                          ],
-                        },
-                        {
-                          type: "category",
-                          label: "Staking and neuron management",
-                          link: {
-                            type: "doc",
-                            id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/index",
-                          },
-                          items: [
-                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/neuron_info",
-                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/derive_neuron_id",
-                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_icp",
-                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/lock_neuron",
-                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/dissolve",
-                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_maturity",
-                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/change_auto_stake_maturity",
-                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/spawn",
-                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/disburse",
-                          ],
-                        },
-                        {
-                          type: "category",
-                          label: "Voting and following",
-                          link: {
-                            type: "doc",
-                            id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/index",
-                          },
-                          items: [
-                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/vote",
-                            "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/follow",
-                          ],
-                        },
-                      ],
-                    },
-                  ],
-                },
-                {
-                  type: "category",
-                  label: "ICRC Rosetta implementation",
-                  link: {
-                    type: "doc",
-                    id: "developer-docs/defi/rosetta/icrc_rosetta/index",
-                  },
-                  items: [
-                    {
-                      type: "category",
-                      label: "Data API",
-                      link: {
-                        type: "doc",
-                        id: "developer-docs/defi/rosetta/icrc_rosetta/data_api/index",
-                      },
-                      items: [
-                        "developer-docs/defi/rosetta/icrc_rosetta/data_api/network",
-                        "developer-docs/defi/rosetta/icrc_rosetta/data_api/balances",
-                        "developer-docs/defi/rosetta/icrc_rosetta/data_api/blocks",
-                        "developer-docs/defi/rosetta/icrc_rosetta/data_api/transactions",
-                      ],
-                    },
-                    {
-                      type: "category",
-                      label: "Construction API",
-                      link: {
-                        type: "doc",
-                        id: "developer-docs/defi/rosetta/icrc_rosetta/construction_api/index",
-                      },
-                      items: [
-                        {
-                          type: "category",
-                          label: "Asset transfer",
-                          link: {
-                            type: "doc",
-                            id: "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/index",
-                          },
-                          items: [
-                            "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/transfer",
-                            "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/approve",
-                          ],
-                        },
-                      ],
-                    },
-                  ],
-                },
-
-                {
-                  type: "doc",
-                  label: "Exchange rate canister",
-                  id: "developer-docs/defi/exchange-rate-canister",
-                },
-              ]
-            }
-          ],
-        },
-        {
-          type: "category",
-          label: "NFTs",
-          items: [
-            {
-              type: "doc",
-              label: "Overview",
-              id: "developer-docs/defi/nfts/overview",
-            },
-            "developer-docs/defi/nfts/nft-collections",
-            "developer-docs/defi/nfts/marketplaces"
-          ],
-        },
-        {
-          type: "category",
-          label: "Decentralized exchanges",
-          items: [
-            {
-              type: "doc",
-              label: "Overview",
-              id: "developer-docs/defi/dex/overview",
-            }
-          ],
-        },
-        {
-          type: "category",
-          label: "Wallets",
-          items: [
-            {
-              type: "doc",
-              label: "Overview",
-              id: "developer-docs/defi/wallets/overview",
-            },
-              "developer-docs/defi/wallets/self-custody/self-custody-quickstart",
-              "developer-docs/defi/wallets/self-custody/hardware-wallet-cli",
           ],
         },
       ],
@@ -1121,232 +869,6 @@ const sidebars = {
           "developer-docs/ai/training-models",
         ],
       },
-    {
-      type: "category",
-      label: "Governance",
-      items: [
-        {
-          type: "category",
-          label: "Network Nervous System (NNS)",
-          items: [
-            {
-              type: "doc",
-              label: "Overview",
-              id: "developer-docs/daos/nns/overview",
-            },
-            {
-              type: "category",
-              label: "Using the NNS dapp",
-              items: [
-                "developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart",
-                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-send-and-receive-tokens",
-                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-importing-tokens",
-                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-staking-a-neuron",
-                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-voting-on-proposals",
-                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-following-other-neurons",
-                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-advanced-neuron-operations",
-                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-making-neurons-public",
-                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-manage-quill-neurons",
-                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-additional-features",
-              ],
-            },
-            {
-              type: "category",
-              label: "Concepts",
-              items: [
-              {
-                type: "category",
-                label: "Neurons",
-                items: [
-                  "developer-docs/daos/nns/concepts/neurons/neuron-overview",
-                  "developer-docs/daos/nns/concepts/neurons/neuron-following",
-                  "developer-docs/daos/nns/concepts/neurons/staking-voting-rewards",
-                  "developer-docs/daos/nns/concepts/neurons/neuron-management",
-                  "developer-docs/daos/nns/concepts/neurons/becoming-a-known-neuron",
-                ],
-              },
-              {
-                type: "category",
-                label: "Proposals",
-                items: [
-                  "developer-docs/daos/nns/concepts/proposals/proposal-overview",
-                  "developer-docs/daos/nns/concepts/proposals/direct-voting",
-                  "developer-docs/daos/nns/concepts/proposals/proposal-topics",
-                  "developer-docs/daos/nns/concepts/proposals/verify-proposals",
-                  "developer-docs/daos/nns/concepts/proposals/proposal-submit",
-                ],
-              },
-            "developer-docs/daos/nns/concepts/neurons-fund",
-          ],
-        },
-        ],
-        },
-        {
-          type: "category",
-          label: "Service Nervous System (SNS)",
-          link: {
-            type: "doc",
-            id: "developer-docs/daos/sns/index",
-          },
-          items: [
-            {
-              label: "Overview",
-              type: "doc",
-              id: "developer-docs/daos/sns/overview",
-            },
-            {
-              type: "category",
-              label: "Before an SNS launch",
-              link: {
-                type: "doc",
-                id: "developer-docs/daos/sns/tokenomics/index",
-              },
-              items: [
-                "developer-docs/daos/sns/tokenomics/predeployment-considerations",
-                "developer-docs/daos/sns/tokenomics/tokenomics-intro",
-                "developer-docs/daos/sns/tokenomics/rewards",
-                "developer-docs/daos/sns/tokenomics/preparation",
-                "developer-docs/daos/sns/tokenomics/sns-checklist",
-              ],
-            },
-            {
-              type: "category",
-              label: "Launching an SNS",
-              link: {
-                type: "doc",
-                id: "developer-docs/daos/sns/launching/index",
-              },
-              items: [
-                "developer-docs/daos/sns/launching/launch-summary-1proposal",
-                "developer-docs/daos/sns/launching/launch-steps-1proposal",
-                "developer-docs/daos/sns/launching/integrating",
-              ],
-            },
-            {
-              type: "category",
-              label: "Testing an SNS",
-              link: {
-                type: "doc",
-                id: "developer-docs/daos/sns/testing/testing-before-launch",
-              },
-              items: [
-                "developer-docs/daos/sns/testing/testing-locally",
-                "developer-docs/daos/sns/testing/testing-on-mainnet",
-              ],
-            },
-            {
-              type: "category",
-              label: "Managing an SNS",
-              link: {
-                type: "doc",
-                id: "developer-docs/daos/sns/managing/manage-sns-intro",
-              },
-              items: [
-                "developer-docs/daos/sns/managing/making-proposals",
-                "developer-docs/daos/sns/managing/cycles-usage",
-                "developer-docs/daos/sns/managing/sns-asset-canister",
-                "developer-docs/daos/sns/managing/managing-nervous-system-parameters",
-              ],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Sample apps",
-      items: [
-        "samples/overview",
-        {
-          type: "category",
-          label: "Hosting",
-          items: [
-            "references/samples/hosting/godot-html5-template/README",
-            "references/samples/hosting/photo-storage/README",
-            "references/samples/hosting/static-website/README",
-            "references/samples/hosting/unity-webgl-template/README",
-          ],
-        },
-        {
-          type: "category",
-          label: "Motoko",
-          items: [
-            "references/samples/motoko/basic_bitcoin/README",
-            "references/samples/motoko/basic_dao/README",
-            "references/samples/motoko/cert-var/README",
-            "references/samples/motoko/classes/README",
-            "references/samples/motoko/composite_query/README",
-            "references/samples/motoko/counter/README",
-            {
-              type: "doc",
-              label: "CRUD example",
-              id: "references/samples/motoko/superheroes/README",
-            },
-            "references/samples/motoko/encrypted-notes-dapp-vetkd/README",
-            "references/samples/motoko/encrypted-notes-dapp/README",
-            "references/samples/motoko/life/README",
-            "references/samples/motoko/hello_cycles/README",
-            "references/samples/motoko/send_http_get/README",
-            "references/samples/motoko/send_http_post/README",
-            "references/samples/motoko/ic-pos/README",
-            "references/samples/motoko/icrc2-swap/README",
-            "references/samples/motoko/internet_identity_integration/README",
-            "references/samples/motoko/minimal-counter-dapp/README",
-            "references/samples/motoko/parallel_calls/README",
-            "references/samples/motoko/pub-sub/README",
-            "references/samples/motoko/random_maze/README",
-            "references/samples/motoko/threshold-ecdsa/README",
-            "references/samples/motoko/token_transfer/README",
-            "references/samples/motoko/token_transfer_from/README",
-            "references/samples/motoko/vetkd/README",
-          ],
-        },
-        {
-          type: "category",
-          label: "Rust",
-          items: [
-            "references/samples/rust/basic_bitcoin/README",
-            "references/samples/rust/basic_dao/README",
-            "references/samples/rust/canister-info/README",
-            "references/samples/rust/composite_query/README",
-            "references/samples/rust/counter/README",
-            "references/samples/rust/defi/src/frontend/README",
-	    "references/samples/rust/encrypted-notes-dapp-vetkd/README",
-            "references/samples/rust/encrypted-notes-dapp/README",
-            "references/samples/rust/icp_transfer/README",
-            "references/samples/rust/nft-wallet/README",
-            "references/samples/rust/parallel_calls/README",
-            "references/samples/rust/performance_counters/README",
-            "references/samples/rust/periodic_tasks/README",
-            "references/samples/rust/pub-sub/README",
-            "references/samples/rust/qrcode/README",
-            "references/samples/rust/send_http_get/README",
-            "references/samples/rust/send_http_post/README",
-            "references/samples/rust/threshold-ecdsa/README",
-            "references/samples/rust/token_transfer/README",
-            "references/samples/rust/token_transfer_from/README",
-            "references/samples/rust/vetkd/README",
-          ],
-        },
-        {
-          type: "category",
-          label: "Native dapps",
-          items: [
-            "references/samples/native-apps/unity_ii_applink/README",
-            "references/samples/native-apps/unity_ii_deeplink/README",
-            "references/samples/native-apps/unity_ii_deeplink/ii_integration_dapp/README",
-          ],
-        },
-        {
-          type: "category",
-          label: "Svelte",
-          items: [
-            "references/samples/svelte/svelte-motoko-starter/README",
-            "references/samples/svelte/svelte-starter/README",
-          ],
-        },
-      ],
-    },
     {
       type: "category",
       label: "References",
@@ -1670,28 +1192,389 @@ hackathon: [
       dirName: "motoko/main",
     },
   ],
-  solidity: [
+  governance : [
     {
-      type: "doc",
-      label: "Solidity",
-      id: "developer-docs/backend/solidity/index",
+      type: "category",
+      label: "Governance",
+      items: [
+        {
+          type: "category",
+          label: "Network Nervous System (NNS)",
+          items: [
+            {
+              type: "doc",
+              label: "Overview",
+              id: "developer-docs/daos/nns/overview",
+            },
+            {
+              type: "category",
+              label: "Using the NNS dapp",
+              items: [
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart",
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-send-and-receive-tokens",
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-importing-tokens",
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-staking-a-neuron",
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-voting-on-proposals",
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-following-other-neurons",
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-advanced-neuron-operations",
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-making-neurons-public",
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-manage-quill-neurons",
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-additional-features",
+              ],
+            },
+            {
+              type: "category",
+              label: "Concepts",
+              items: [
+              {
+                type: "category",
+                label: "Neurons",
+                items: [
+                  "developer-docs/daos/nns/concepts/neurons/neuron-overview",
+                  "developer-docs/daos/nns/concepts/neurons/neuron-following",
+                  "developer-docs/daos/nns/concepts/neurons/staking-voting-rewards",
+                  "developer-docs/daos/nns/concepts/neurons/neuron-management",
+                  "developer-docs/daos/nns/concepts/neurons/becoming-a-known-neuron",
+                ],
+              },
+              {
+                type: "category",
+                label: "Proposals",
+                items: [
+                  "developer-docs/daos/nns/concepts/proposals/proposal-overview",
+                  "developer-docs/daos/nns/concepts/proposals/direct-voting",
+                  "developer-docs/daos/nns/concepts/proposals/proposal-topics",
+                  "developer-docs/daos/nns/concepts/proposals/verify-proposals",
+                  "developer-docs/daos/nns/concepts/proposals/proposal-submit",
+                ],
+              },
+            "developer-docs/daos/nns/concepts/neurons-fund",
+          ],
+        },
+        ],
+        },
+        {
+          type: "category",
+          label: "Service Nervous System (SNS)",
+          link: {
+            type: "doc",
+            id: "developer-docs/daos/sns/index",
+          },
+          items: [
+            {
+              label: "Overview",
+              type: "doc",
+              id: "developer-docs/daos/sns/overview",
+            },
+            {
+              type: "category",
+              label: "Before an SNS launch",
+              link: {
+                type: "doc",
+                id: "developer-docs/daos/sns/tokenomics/index",
+              },
+              items: [
+                "developer-docs/daos/sns/tokenomics/predeployment-considerations",
+                "developer-docs/daos/sns/tokenomics/tokenomics-intro",
+                "developer-docs/daos/sns/tokenomics/rewards",
+                "developer-docs/daos/sns/tokenomics/preparation",
+                "developer-docs/daos/sns/tokenomics/sns-checklist",
+              ],
+            },
+            {
+              type: "category",
+              label: "Launching an SNS",
+              link: {
+                type: "doc",
+                id: "developer-docs/daos/sns/launching/index",
+              },
+              items: [
+                "developer-docs/daos/sns/launching/launch-summary-1proposal",
+                "developer-docs/daos/sns/launching/launch-steps-1proposal",
+                "developer-docs/daos/sns/launching/integrating",
+              ],
+            },
+            {
+              type: "category",
+              label: "Testing an SNS",
+              link: {
+                type: "doc",
+                id: "developer-docs/daos/sns/testing/testing-before-launch",
+              },
+              items: [
+                "developer-docs/daos/sns/testing/testing-locally",
+                "developer-docs/daos/sns/testing/testing-on-mainnet",
+              ],
+            },
+            {
+              type: "category",
+              label: "Managing an SNS",
+              link: {
+                type: "doc",
+                id: "developer-docs/daos/sns/managing/manage-sns-intro",
+              },
+              items: [
+                "developer-docs/daos/sns/managing/making-proposals",
+                "developer-docs/daos/sns/managing/cycles-usage",
+                "developer-docs/daos/sns/managing/sns-asset-canister",
+                "developer-docs/daos/sns/managing/managing-nervous-system-parameters",
+              ],
+            },
+          ],
+        },
+      ],
     },
   ],
-  python: [
-    {
-      type: "doc",
-      label: "Python",
-      id: "developer-docs/backend/python/index",
-    },
-  ],
-  typescript: [
-    {
-      type: "doc",
-      label: "TypeScript",
-      id: "developer-docs/backend/typescript/index",
-    },
-  ],
-};
+
+tokens: [
+  {
+    type: "category",
+    label: "Digital assets",
+    items: [
+      {
+        type: "doc",
+        label: "Overview",
+        id: "developer-docs/defi/overview",
+      },
+      {
+        type: "category",
+        label: "Tokens",
+        items: [
+          "developer-docs/defi/tokens/token-standards",
+          "developer-docs/defi/tokens/asset_flow/index",
+          {
+            type: "category",
+            label: "Ledgers",
+            items: [
+                 {
+                    type: "doc",
+                    label: "Overview",
+                    id: "developer-docs/defi/tokens/ledger/overview",
+                  },
+              {
+                type: "category",
+                label: "Setup",
+                link: {
+                  type: "doc",
+                  id: "developer-docs/defi/tokens/ledger/setup/overview",
+                },
+                items: [
+                  "developer-docs/defi/tokens/ledger/setup/icp_ledger_setup",
+                  "developer-docs/defi/tokens/ledger/setup/icrc1_ledger_setup"
+                ],
+              },
+              {
+                type: "category",
+                label: "Usage",
+                link: {
+                  type: "doc",
+                  id: "developer-docs/defi/tokens/ledger/usage/overview",
+                },
+                items: [
+                  "developer-docs/defi/tokens/ledger/usage/icp_ledger_usage",
+                  "developer-docs/defi/tokens/ledger/usage/icrc1_ledger_usage"
+                ],
+              },
+              "developer-docs/defi/tokens/advanced/direct_integration",
+            ],
+          },
+          "developer-docs/defi/tokens/indexes",
+          "developer-docs/defi/icp-tokens/account-trimming",
+          "developer-docs/defi/tokens/create",
+          {
+            type: "category",
+            label: "Cycles",
+            items: [
+              "developer-docs/defi/cycles/cycles-ledger",
+              "developer-docs/defi/cycles/cycles-wallet",
+              "developer-docs/defi/cycles/converting_icp_tokens_into_cycles",
+            ]
+          },
+          {
+            type: "category",
+            label: "Advanced",
+            items: [
+              {
+                type: "category",
+                label: "ICP Rosetta implementation",
+                link: {
+                  type: "doc",
+                  id: "developer-docs/defi/rosetta/icp_rosetta/index",
+                },
+                items: [
+                  {
+                    type: "category",
+                    label: "Data API",
+                    link: {
+                      type: "doc",
+                      id: "developer-docs/defi/rosetta/icp_rosetta/data_api/index",
+                    },
+                    items: [
+                      "developer-docs/defi/rosetta/icp_rosetta/data_api/network",
+                      "developer-docs/defi/rosetta/icp_rosetta/data_api/balances",
+                      "developer-docs/defi/rosetta/icp_rosetta/data_api/blocks",
+                      "developer-docs/defi/rosetta/icp_rosetta/data_api/transactions",
+                      "developer-docs/defi/rosetta/icp_rosetta/data_api/list_known_neurons",
+                      "developer-docs/defi/rosetta/icp_rosetta/data_api/get_pending_proposals",
+                      "developer-docs/defi/rosetta/icp_rosetta/data_api/get_proposal_info",
+                    ],
+                  },
+                  {
+                    type: "category",
+                    label: "Construction API",
+                    link: {
+                      type: "doc",
+                      id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/index",
+                    },
+                    items: [
+                      {
+                        type: "category",
+                        label: "Flow of operations",
+                        link: {
+                          type: "doc",
+                          id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/index",
+                        },
+                        items: [
+                          "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/derive",
+                          "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/preprocess",
+                          "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/metadata",
+                          "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/payloads",
+                          "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/combine",
+                          "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/submit",
+                        ],
+                      },
+                      {
+                        type: "category",
+                        label: "Staking and neuron management",
+                        link: {
+                          type: "doc",
+                          id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/index",
+                        },
+                        items: [
+                          "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/neuron_info",
+                          "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/derive_neuron_id",
+                          "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_icp",
+                          "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/lock_neuron",
+                          "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/dissolve",
+                          "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_maturity",
+                          "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/change_auto_stake_maturity",
+                          "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/spawn",
+                          "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/disburse",
+                        ],
+                      },
+                      {
+                        type: "category",
+                        label: "Voting and following",
+                        link: {
+                          type: "doc",
+                          id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/index",
+                        },
+                        items: [
+                          "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/vote",
+                          "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/follow",
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
+                type: "category",
+                label: "ICRC Rosetta implementation",
+                link: {
+                  type: "doc",
+                  id: "developer-docs/defi/rosetta/icrc_rosetta/index",
+                },
+                items: [
+                  {
+                    type: "category",
+                    label: "Data API",
+                    link: {
+                      type: "doc",
+                      id: "developer-docs/defi/rosetta/icrc_rosetta/data_api/index",
+                    },
+                    items: [
+                      "developer-docs/defi/rosetta/icrc_rosetta/data_api/network",
+                      "developer-docs/defi/rosetta/icrc_rosetta/data_api/balances",
+                      "developer-docs/defi/rosetta/icrc_rosetta/data_api/blocks",
+                      "developer-docs/defi/rosetta/icrc_rosetta/data_api/transactions",
+                    ],
+                  },
+                  {
+                    type: "category",
+                    label: "Construction API",
+                    link: {
+                      type: "doc",
+                      id: "developer-docs/defi/rosetta/icrc_rosetta/construction_api/index",
+                    },
+                    items: [
+                      {
+                        type: "category",
+                        label: "Asset transfer",
+                        link: {
+                          type: "doc",
+                          id: "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/index",
+                        },
+                        items: [
+                          "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/transfer",
+                          "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/approve",
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+
+              {
+                type: "doc",
+                label: "Exchange rate canister",
+                id: "developer-docs/defi/exchange-rate-canister",
+              },
+            ]
+          }
+        ],
+      },
+      {
+        type: "category",
+        label: "NFTs",
+        items: [
+          {
+            type: "doc",
+            label: "Overview",
+            id: "developer-docs/defi/nfts/overview",
+          },
+          "developer-docs/defi/nfts/nft-collections",
+          "developer-docs/defi/nfts/marketplaces"
+        ],
+      },
+      {
+        type: "category",
+        label: "Decentralized exchanges",
+        items: [
+          {
+            type: "doc",
+            label: "Overview",
+            id: "developer-docs/defi/dex/overview",
+          }
+        ],
+      },
+      {
+        type: "category",
+        label: "Wallets",
+        items: [
+          {
+            type: "doc",
+            label: "Overview",
+            id: "developer-docs/defi/wallets/overview",
+          },
+            "developer-docs/defi/wallets/self-custody/self-custody-quickstart",
+            "developer-docs/defi/wallets/self-custody/hardware-wallet-cli",
+        ],
+      },
+    ],
+  },
+],
+}
 
 /**
  * Add UI tests in development mode

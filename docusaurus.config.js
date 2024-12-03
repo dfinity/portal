@@ -66,30 +66,24 @@ const subnavItems = [
     activeBasePath: "/docs/current/developer-docs/",
   },
   {
-    type: "dropdown",
+    type: "docSidebar",
+    sidebarId: "tokens",
     position: "left",
-    label: "Languages",
-    items: [
-      { label: "Rust", href: "/docs/current/developer-docs/backend/rust/" },
-      {
-        label: "Motoko",
-        href: "/docs/current/motoko/main/getting-started/motoko-introduction",
-      },
-      {
-        label: "TypeScript",
-        href: "/docs/current/developer-docs/backend/typescript/",
-      },
-      { label: "Python", href: "/docs/current/developer-docs/backend/python/" },
-      {
-        label: "Solidity",
-        href: "/docs/current/developer-docs/backend/solidity/",
-      },
-    ],
+    label: "Tokens",
+    activeBasePath: "/docs/current/developer-docs/defi/overview",
   },
+  {
+    type: "docSidebar",
+    sidebarId: "governance",
+    position: "left",
+    label: "Governance",
+    activeBasePath: "/docs/current/developer-docs/daos/overview",
+  },
+
   {
     type: "dropdown",
     position: "left",
-    label: "Frameworks",
+    label: "Examples",
     items: [
       {
         label: "Juno",
@@ -100,19 +94,17 @@ const subnavItems = [
   {
     type: "dropdown",
     position: "left",
-    label: "Additional Resources",
+    label: "Resources",
     items: [
       {
         label: "Awesome Internet Computer",
         href: "https://github.com/dfinity/awesome-internet-computer#readme",
       },
-      { label: "Sample Code", to: "/samples" },
       {
         label: "SDK Release Notes",
         type: "doc",
         docId: "other/updates/release-notes/release-notes",
       },
-      { label: "Developer Tools", to: "/tooling" },
       { label: "Developer Grants", href: "https://dfinity.org/grants" },
       {
         label: "Playground",
@@ -131,10 +123,6 @@ const subnavItems = [
   /**
    * Add UI tests in development mode
    */
-  process.env.NODE_ENV === "development" && {
-    label: "UI Tests",
-    href: "/docs/current/tests/all",
-  },
 ].filter(Boolean);
 
 /** @type {import("./src/components/Common/MarketingNav").MarketingNavType} */
