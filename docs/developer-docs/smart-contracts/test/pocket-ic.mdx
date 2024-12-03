@@ -42,25 +42,10 @@ While PocketIC can support integration with any language, Rust and Python will b
 
 ## PocketIC Rust
 
-To use PocketIC, the latest PocketIC server binary must be downloaded from the PocketIC repo. You can download the latest version for macOS or Linux systems [here](https://github.com/dfinity/pocketic#download-the-pocketic-server).
+To use PocketIC, the latest PocketIC server binary must be downloaded from the PocketIC repo. [Download the latest version for macOS or Linux systems](https://github.com/dfinity/pocketic?tab=readme-ov-file#download-the-pocketic-server).
 
 :::info
 PocketIC is currently not natively supported on Windows systems.
-:::
-
-Once the binary file is downloaded, unzip the file and make it executable:
-
-```bash
-gzip -d pocket-ic.gz
-chmod +x pocket-ic
-```
-
-:::info
-On macOS systems, to bypass developer verification from Apple, you may need to run:
-
-```
-xattr -dr com.apple.quarantine pocket-ic
-```
 :::
 
 The PocketIC binary can be left in your working directory or you can specify the path to the binary by setting the `POCKET_IC_BIN` environmental variable.
@@ -83,37 +68,11 @@ Then, in your code you can create a new PocketIC instance with the code:
 let pic = PocketIc::new();
 ```
 
-### Example: Single canister testing on a single subnet
+### Single canister testing on a single subnet
 
-The following is a simple, but complete testing example with a counter canister:
+[View an example of testing a canister on a single subnet](https://crates.io/crates/pocket-ic).
 
-```rust
-use candid::encode_one;
-use pocket_ic::PocketIc;
-
- #[test]
- fn test_counter_canister() {
-    let pic = PocketIc::new();
-    // Create an empty canister as the anonymous principal and add cycles.
-    let canister_id = pic.create_canister();
-    pic.add_cycles(canister_id, 2_000_000_000_000);
-
-    let wasm_bytes = load_counter_wasm(...);
-    pic.install_canister(canister_id, wasm_bytes, vec![], None);
-    // 'inc' is a counter canister method.
-    call_counter_canister(&pic, canister_id, "inc");
-    // Check if it had the desired effect.
-    let reply = call_counter_canister(&pic, canister_id, "read");
-    assert_eq!(reply, WasmResult::Reply(vec![0, 0, 0, 1]));
- }
-
-fn call_counter_canister(pic: &PocketIc, canister_id: CanisterId, method: &str) -> WasmResult {
-    pic.update_call(canister_id, Principal::anonymous(), method, encode_one(()).unwrap())
-        .expect("Failed to call counter canister")
-}
-```
-
-### Example: Multi-subnet testing
+### Multi-subnet testing
 
 Versions of PocketIC `v2.0.0` and newer support multi-subnet testing. Multi-subnet testing allows for simulating multiple, different types of subnets locally. For example, to create an IC instance with an NNS subnet and two application subnets, use the code:
 
@@ -160,26 +119,7 @@ For a larger, more complex example that uses cross canister calls on two differe
 
 ## PocketIC Python
 
-To use PocketIC, the latest PocketIC server binary must be downloaded from the PocketIC repo. You can download the latest version for macOS or Linux systems [here](https://github.com/dfinity/pocketic#download-the-pocketic-server).
-
-:::info
-PocketIC is currently not supported natively on Windows systems.
-:::
-
-Once the binary file is downloaded, unzip the file and make it executable:
-
-```bash
-gzip -d pocket-ic.gz
-chmod +x pocket-ic
-```
-
-:::info
-On macOS systems, to bypass developer verification from Apple, you may need to run:
-
-```bash
-xattr -dr com.apple.quarantine pocket-ic
-```
-:::
+To use PocketIC, the latest PocketIC server binary must be downloaded from the PocketIC repo. [Download the latest version for macOS or Linux systems](https://github.com/dfinity/pocketic#download-the-pocketic-server).
 
 The PocketIC binary can be left in your working directory or you can specify the path to the binary by setting the `POCKET_IC_BIN` environmental variable.
 
@@ -195,22 +135,9 @@ To import PocketIC into your Python code, use the line:
 from pocket_ic import PocketIC
 ```
 
-### Example: Create a canister with <GlossaryTooltip>cycles</GlossaryTooltip>
+### Create a canister with <GlossaryTooltip>cycles</GlossaryTooltip> and call the canister
 
-```python
-from pocket_ic import PocketIC
-
-pic = PocketIC()
-canister_id = pic.create_canister()
-pic.add_cycles(canister_id, 2_000_000_000_000)
-```
-
-### Make canister calls
-
-```python
-response = pic.update_call(canister_id, method="greeting", ...)
-assert(response == 'Hello, PocketIC!')
-```
+[View an example of how to create a canister with cycles, and then call the canister](https://pypi.org/project/pocket-ic/).
 
 ### Make a call directly with a canister object
 
@@ -225,49 +152,9 @@ response = my_canister.greeting()
 assert(response == 'Hello, PocketIC!')
 ```
 
-### Example: Single canister testing on a single subnet
+### Single canister testing on a single subnet
 
-The following is a simple, but complete testing example with a counter canister:
-
-```python title="src/example_backend/src/main.py"
-import sys
-import os
-import unittest
-import ic
-from pocket_ic import PocketIC
-
-
-class CounterCanisterTests(unittest.TestCase):
-    def test_counter_canister(self):
-        pic = PocketIC()
-        canister_id = pic.create_canister()
-        pic.add_cycles(canister_id, 1_000_000_000_000_000_000)
-
-        with open("counter.wasm", "rb") as wasm_file:
-            wasm_module = wasm_file.read()
-        pic.install_code(canister_id, bytes(wasm_module), [])
-
-        self.assertEqual(
-            pic.update_call(canister_id, "read", ic.encode([])),
-            [0, 0, 0, 0],
-        )
-        self.assertEqual(
-            pic.update_call(canister_id, "write", ic.encode([])),
-            [1, 0, 0, 0],
-        )
-        self.assertEqual(
-            pic.update_call(canister_id, "write", ic.encode([])),
-            [2, 0, 0, 0],
-        )
-        self.assertEqual(
-            pic.update_call(canister_id, "read", ic.encode([])),
-            [2, 0, 0, 0],
-        )
-
-
-if __name__ == "__main__":
-    unittest.main()
-```
+[View a complete example of testing a single canister on a single subnet](https://github.com/dfinity/pocketic-py/blob/main/examples/counter_canister/counter_canister_test.py).
 
 To see more examples and run them locally, clone the [PocketIC Python repo](https://github.com/dfinity/pocketic-py), then run the following command, replacing the example name with the example you'd like to run. For example, to run the `counter_canister` example, use the command:
 
