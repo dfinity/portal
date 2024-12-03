@@ -86,8 +86,16 @@ const subnavItems = [
     label: "Examples",
     items: [
       {
-        label: "Juno",
-        href: "/docs/current/developer-docs/web-apps/frameworks/juno",
+        label: "Motoko",
+        href: "/samples?selectedLanguages=motoko",
+      },
+      {
+        label: "Rust",
+        href: "/samples?selectedLanguages=rust",
+      },
+      {
+        label: "JavaScript",
+        href: "/samples?selectedLanguages=javascript",
       },
     ],
   },
