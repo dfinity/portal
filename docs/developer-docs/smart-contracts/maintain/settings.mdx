@@ -34,7 +34,7 @@ Currently, there are seven canister setting fields:
 There are two ways to read the settings of a canister:
 
 1. Command line: [`dfx canister status <canister-name>`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-status). Note that this command returns the canister's settings, along with other canister status information.
-2. Programmatically: Call the [`canister_status`](https://internetcomputer.org/docs/current/references/ic-interface-spec) endpoint of the IC management canister. The canister's settings will be in the `settings` field of the result.
+2. Programmatically: Call the [`canister_status`](/docs/current/references/ic-interface-spec) endpoint of the IC management canister. The canister's settings will be in the `settings` field of the result.
 
 ### Command line
 
@@ -44,8 +44,9 @@ dfx canister status ajuq4-ruaaa-aaaaa-qaaga-cai
 
 <details>
 <summary>Output</summary>
+
 ```
-Canister status call result for ajuq4-ruaaa-aaaaa-qaaga-cai.
+Canister status call result for <canister-name>.
 Status: Running
 Controllers: hoqq7-3eo6j-dee4s-aiabk-6rqxw-kwgyo-rhru7-bdgmk-k5ipv-chkhx-cqe mwylj-4aaaa-aaaak-aflyq-cai
 Memory allocation: 0
@@ -64,6 +65,7 @@ Total query request payload size (bytes): 1_626_898
 Total query response payload size (bytes): 1_161_862
 Log visibility: controllers
 ```
+
 </details>
 
 ### Programmatically
@@ -106,7 +108,7 @@ Note that only a controller of the canister can modify canister settings.
 ### Command line
 
 ```bash
-dfx canister update-settings my_canister --wasm-memory-limit 3000000000
+dfx canister update-settings <canister-name> --wasm-memory-limit 3000000000
 ```
 
 ### Programmatically

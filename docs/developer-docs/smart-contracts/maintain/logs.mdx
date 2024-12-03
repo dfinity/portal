@@ -23,7 +23,7 @@ The <GlossaryTooltip>canister</GlossaryTooltip> logging feature is designed to p
 
 - Queries, only if called in replicated mode.
 
-A canister's controller is able to retrieve the canister's logs, even when executions trap, using [`dfx canister logs`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-logs):
+A canister's controller is able to retrieve the canister's logs, even when executions trap, using [`dfx canister logs <canister-name>`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-logs):
 
 ```
 dfx canister logs <canister-name>
@@ -45,18 +45,18 @@ dfx canister update-settings <canister-name> --log-visibility public
 
 Canister log allow lists enable principals that are not controllers of the canister to view the logs without the logs being public. Log allow lists are supported in `dfx` versions `0.24.2` and newer.
 
-To add a principal to the canister's log allow list, update the canister's settings with the flags:
+To specify principals in the canister's log allow list, update the canister's settings with the flags:
 
-- `dfx canister update-settings <canister-name> --set-log-viewer PRINCIPAL_ID`: Set a single principal as a log viewer.
+- `dfx canister update-settings <canister-name> --set-log-viewer <principal-id>`: Set a single principal as a log viewer.
 
-- `dfx canister update-settings <canister-name> --add-log-viewer PRINCIPAL_ID`: Add a principal to a list of log viewers.
+- `dfx canister update-settings <canister-name> --add-log-viewer <principal-id>`: Add a principal to a list of log viewers.
 
-- `dfx canister update-settings <canister-name> --remove-log-viewer PRINCIPAL_ID`: Remove a principal from the log viewer list.
+- `dfx canister update-settings <canister-name> --remove-log-viewer <principal-id>`: Remove a principal from the log viewer list.
 
 You can also configure a principal as a log viewer when you create a canister:
 
 ```
-dfx canister create <canister-name> --log-viewer PRINCIPAL_ID
+dfx canister create <canister-name> --log-viewer <principal-id>
 ```
 
-Or, you can set the `canisters[].initialization_values.log_visibility.allowed_viewers` configuration setting in your project's `dfx.json` file.
+Or, you can set the `canisters[].initialization_values.log_visibility.allowed_viewers` configuration setting in your project's `dfx.json` file to set the canister log allowed viewers upon canister creation.

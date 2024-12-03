@@ -23,7 +23,7 @@ const redirects = `
   /icp-newsletter /news
   /ois /sns
   /docs/current/developer-docs/getting-started/overview-of-icp /docs/current/developer-docs/getting-started/network-overview
-  /docs/videos-tutorials /developers
+  /docs/videos-tutorials /docs/current/home
   /docs /docs/current/home
   /docs/current/ /docs/current/home
   /docs/current/concepts/bitcoin-integration /bitcoin-integration
@@ -639,13 +639,11 @@ const redirects = `
   /docs/current/developer-docs/getting-started/deploy/local /docs/current/developer-docs/getting-started/deploy-and-manage
   /docs/current/developer-docs/getting-started/deploy/testnet /docs/current/developer-docs/getting-started/deploy-and-manage
   /docs/current/developer-docs/getting-started/deploy-and-manage  /docs/current/developer-docs/getting-started/deploy-and-manage
-<<<<<<< HEAD
   /docs/current/developer-docs/smart-contracts/test/troubleshooting /docs/current/developer-docs/getting-started/troubleshooting
   /docs/current/developer-docs/smart-contracts/advanced-features/http-gateways /docs/current/developer-docs/smart-contracts/advanced-features/handling-get-post-requests
   /docs/current/developer-docs/smart-contracts/advanced-features/serving-http-request /docs/current/developer-docs/smart-contracts/advanced-features/handling-get-post-requests
-=======
   /docs/current/developer-docs/smart-contracts/write/default-template /docs/current/developer-docs/smart-contracts/write/overview
->>>>>>> 2270aca2b69d38ac7f4cb5443b5005756c2c6982
+  /developers /docs/current/home
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

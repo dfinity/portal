@@ -39,7 +39,7 @@ If a service canister depends on other canisters, those dependencies should also
 
 If the canister is meant for personal use and not intended for others, the canister should not be `pullable`.
 
-If a canister's Wasm is published for other developers to use, then the canister should not be `pullable` since the canister ID of the instance is not static. Users can test integrations locally and deploy them directly using the Wasm file directly.
+If a canister's Wasm is published for other developers to use, then the canister should not be `pullable` since the canister ID of the instance is not static. Users can test integrations locally and deploy them using the Wasm file directly.
 
 ## Service provider workflow
 First, a service provider must configure a canister to be `pullable` by setting it as such in the `dfx.json` file.
