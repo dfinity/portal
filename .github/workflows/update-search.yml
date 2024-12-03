@@ -13,6 +13,8 @@ jobs:
       - run: git submodule update --init
       - working-directory: search
         run: |
+          cargo --version
+          rustc --version
           cargo run --release --bin search-cli -- --help
 
       - run: exit 1
