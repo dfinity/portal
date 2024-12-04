@@ -27,8 +27,7 @@ module.exports = function validateLinks() {
       }
       if (!isExpectedLink(url)) {
         console.warn(
-          `Unexpected link: \`${url}\` (plugins/remark/validate-links.js)`,
-          node.position
+          `Unexpected link: \`${url}\` (plugins/remark/validate-links.js)`
         );
       }
     });
