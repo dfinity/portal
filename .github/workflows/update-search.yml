@@ -1,5 +1,6 @@
 name: Update search index
 on:
+  push:
   # run every 24 hours
   schedule:
     - cron: "0 0 * * *"
@@ -10,6 +11,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: git submodule update --init
+      - working-directory: search
+        run: |
+          cargo run --release --bin search-cli -- --help
+
+      - run: exit 1
+
       - uses: actions/setup-node@v3
         with:
           node-version: 18
