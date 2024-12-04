@@ -1,7 +1,6 @@
 name: Update search index
 on:
   push:
-  # run every 24 hours
   schedule:
     - cron: "0 0 * * *"
 
@@ -11,32 +10,26 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: git submodule update --init
-      - working-directory: search
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Dump Identity
         run: |
-          cargo run --release --bin search-cli -- --help
+          mkdir -p ~/.config/dfx/identity/default
+          echo $DFX_IDENTITY_PREVIEW | base64 -d > ~/.config/dfx/identity/default/identity.pem
+        env:
+          DFX_IDENTITY_PREVIEW: ${{ secrets.DFX_IDENTITY_PREVIEW }}
 
-      - run: exit 1
-
-      # - uses: actions/setup-node@v3
-      #   with:
-      #     node-version: 18
-      # - name: Dump Identity
-      #   run: |
-      #     mkdir -p ~/.config/dfx/identity/default
-      #     echo $DFX_IDENTITY_PREVIEW | base64 -d > ~/.config/dfx/identity/default/identity.pem
-      #   env:
-      #     DFX_IDENTITY_PREVIEW: ${{ secrets.DFX_IDENTITY_PREVIEW }}
-
-      # - name: Build website
-      #   run: |
-      #     npm install
-      #     npm run build
-      #   env:
-      #     CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
-      #     CONTENTFUL_HOST: ${{ secrets.CONTENTFUL_HOST }}
-      #     CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
-      #     AIRTABLE_KEY: ${{ secrets.AIRTABLE_SA_PORTAL_SERVICE_ACCOUNT }}
-      #     YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+      - name: Build website
+        run: |
+          npm install
+          npm run build
+        env:
+          CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
+          CONTENTFUL_HOST: ${{ secrets.CONTENTFUL_HOST }}
+          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
+          AIRTABLE_KEY: ${{ secrets.AIRTABLE_SA_PORTAL_SERVICE_ACCOUNT }}
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
 
       - name: Update search index
         run: |
