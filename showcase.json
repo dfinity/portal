@@ -14,7 +14,7 @@
     "usesInternetIdentity": true,
     "stats": "1,000+ TPS",
     "display": "Large",
-    "logo": "/img/showcase/bitfinity_evm.png",
+    "logo": "/img/showcase/bitfinity_evm.svg",
     "screenshots": [
       "/img/showcase/bitfinity_showcase.webp"
     ]
@@ -164,7 +164,7 @@
     "usesInternetIdentity": true,
     "twitter": "https://twitter.com/dragginzgame",
     "description": "Dragginz is a virtual pets game from the creators of Neopets. Hatch and raise Dragginz to accompany you on your adventures..",
-    "logo": "/img/showcase/dragginz_logo.svg"
+    "logo": "/img/showcase/dragginz_logo.png"
   },
   {
     "id": "icdex",
@@ -326,7 +326,7 @@
     "twitter": "https://twitter.com/HelixMarkets",
     "description": "Helix Markets is a decentralized exchange that aims to bring true ownership and full transparency to crypto trading.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/helix_logo.webp",
+    "logo": "/img/showcase/helix_logo.svg",
     "screenshots": [
       "/img/showcase/helix_screenshot.png"
     ]
@@ -370,8 +370,30 @@
     "screenshots": [
       "/img/showcase/juno_social_image.jpg"
     ],
-    "youtube": "https://www.youtube.com/watch?v=mr_9XArcG9Y"
+    "youtube": "https://www.youtube.com/@junobuild"
   },
+
+{
+  "id": "oisy",
+  "name": "OISY Wallet",
+  "oneLiner": "Browser-based multi-chain wallet",
+  "website": "https://oisy.com",
+  "github": "https://github.com/dfinity/oisy-wallet",
+  "display": "Large",
+  "tags": [
+    "Ethereum",
+    "DeFi",
+    "Wallet",
+    "Chain Fusion"
+  ],
+  "twitter": "https://x.com/oisy",
+  "description": "OISY Wallet is a new browser-based multi-chain wallet, powered by Internet Computer’s chain fusion technology. It is fully on-chain and implements network custody, an innovative approach that leverages the Internet Computer’s advanced cryptography to eliminate the need for you to handle private keys directly.",
+  "usesInternetIdentity": true,
+  "logo": "/img/showcase/oisy_logo.svg",
+  "screenshots": [
+    "/img/showcase/oisy-preview.webp"
+  ]
+},
   {
     "id": "kinic",
     "name": "Kinic",
@@ -467,23 +489,6 @@
     "logo": "/img/showcase/nnsfront-enddapp_logo-dark.webp"
   },
   {
-    "id": "oisy",
-    "name": "OISY Wallet",
-    "oneLiner": "Browser-based multi-chain wallet",
-    "website": "https://oisy.com",
-    "github": "https://github.com/dfinity/oisy-wallet",
-    "tags": [
-      "Ethereum",
-      "DeFi",
-      "Wallet",
-      "Chain Fusion"
-    ],
-    "twitter": "https://x.com/OISY_Wallet",
-    "description": "Oisy is a new browser-based, self-custodial and multi-chain wallet powered by Internet Computer's chain fusion technology.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/oisy_logo.svg"
-  },
-  {
     "id": "trax",
     "name": "Trax",
     "tags": [
@@ -494,7 +499,7 @@
     "description": "Trax is a content aggregator and social marketplace, catering specifically to music artists and their die-hard fans, often referred to as “superfans”. By facilitating exclusive content drops and events, TRAX aims to help artists cultivate closer relationships with their superfans and generate higher revenue. ",
     "website": "https://trax.so/",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/trax_logo.jpeg"
+    "logo": "/img/showcase/trax_logo.webp"
   },
   {
     "id": "w3ns",
@@ -588,7 +593,7 @@
     ],
     "description": "BOOM DAO is an all-in-one web3 game platform and protocol running 100% onchain on the Internet Computer. We are on a mission to build the gaming vertical of the Internet Computer blockchain, power the next generation of fully onchain games on ICP, and provide a collaborative hub for all things web3 gaming.",
     "stats": "23,000+ DAO Members",
-    "logo": "/img/showcase/boom-dao-logo.webp",
+    "logo": "/img/showcase/boom-dao-logo.png",
     "display": "Large",
     "usesInternetIdentity": true,
     "github": "https://github.com/BoomDAO/",
@@ -1101,7 +1106,7 @@
     "description": "Unleash your inner commander and dominate the metaverse in the action-packed universe of Cosmicrafts. Engage in thrilling interstellar battles, strategize with allies, and conquer the cosmos. Are you ready to claim your place among the stars?",
     "usesInternetIdentity": true,
     "stats": "10,000+ users",
-    "logo": "/img/showcase/cosmicrafts_logo.webp",
+    "logo": "/img/showcase/cosmicrafts_logo.png",
     "video": "/img/showcase/cosmicrafts_video.mp4",
     "videoContentType": "video/mp4",
     "screenshots": [
@@ -1547,7 +1552,7 @@
     ],
     "description": "Connect, engage and inspire your audience while owning your data and your identity.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/bink_logo.webp"
+    "logo": "/img/showcase/bink_logo.svg"
   },
   {
     "id": "pythonagent",
@@ -1613,7 +1618,7 @@
     "website": "https://bitomni.io",
     "twitter": "https://x.com/Bitomni_Global",
     "display": "Large",
-    "logo": "/img/showcase/bitomni_logo.png",
+    "logo": "/img/showcase/bitomni_logo.svg",
     "screenshots": [
       "/img/showcase/bitomni_screenshot.png"
     ]
@@ -1808,7 +1813,7 @@
     "website": "https://dbox.foundation/",
     "twitter": "https://twitter.com/DBOXFoundation?s=20&t=AlMLUWAfM1UU2f_mRzwqCg",
     "discord": "https://discord.gg/rEN6ygpCxK",
-    "logo": "/img/showcase/dbox_logo.webp",
+    "logo": "/img/showcase/dbox_logo.png",
     "submittableId": "22737412"
   },
   {
@@ -2771,7 +2776,7 @@
     "name": "Hobbi",
     "description": "With Hobbi, you can create a profile and record all the multimedia content you consume. Whether it's a movie, a book, or even a video game, register and share your profile with whomever you want.",
     "website": "https://hobbi.me",
-    "logo": "/img/showcase/hobbi_logo.png",
+    "logo": "/img/showcase/hobbi_logo.svg",
     "screenshots": [
       "/img/showcase/hobbi_screenshot.png"
     ],
@@ -2868,7 +2873,7 @@
     "github": "https://github.com/Zondax/vault-k8s-canister",
     "youtube": "https://youtu.be/99MahI1SO7c",
     "twitter": "https://twitter.com/_zondax_",
-    "logo": "/img/showcase/zondax-logo.jpg",
+    "logo": "/img/showcase/zondax-logo.svg",
     "screenshots": [
       "/img/showcase/vault-k8s.jpg"
     ],
@@ -3218,7 +3223,7 @@
     "name": "Accelar",
     "description": "Accelar is a unified product development infrastructure that allows for efficient development, launching, and management of web3 features including LLMs on ICP. Create canisters, workflows, identities, and interact with dApps through a non-custodial wallet.",
     "website": "https://www.accelar.io",
-    "logo": "/img/showcase/accelar_logo.png",
+    "logo": "/img/showcase/accelar_logo.svg",
     "display": "Normal",
     "id": "Accelar",
     "oneLiner": "A unified product development infrastructure that allows for efficient development, launching, and management of web3 features including LLMs on ICP.",
@@ -3330,7 +3335,7 @@
     "description": "A MultiSignature wallet and omnichain module designed for cross-chain message signing, suitable for multiple blockchain ecosystems.",
     "usesInternetIdentity": true,
     "display": "Normal",
-    "logo": "/img/showcase/blendsafe.png",
+    "logo": "/img/showcase/blendsafe.svg",
     "submittableId": "44514818"
   },
   {
@@ -3549,24 +3554,6 @@
     "submittableId": "43814286"
   },
   {
-    "id": "rentspace",
-    "name": "RentSpace",
-    "oneLiner": "A crypto-friendly property rental platform.",
-    "website": "https://rentb.space/",
-    "tags": [
-      "DeFi",
-      "SocialFi"
-    ],
-    "twitter": "https://twitter.com/RentSpaceco",
-    "github": "https://github.com/ICP-hub/RentSpace-ICP",
-    "discord": "https://discord.gg/hCFmTWFx85",
-    "description": "A crypto-friendly property rental platform",
-    "usesInternetIdentity": false,
-    "display": "Normal",
-    "logo": "/img/showcase/rentspace_logo.png",
-    "submittableId": "44394368"
-  },
-  {
     "id": "myordinalsloan",
     "name": "MyOrdinals.Loan",
     "oneLiner": "Peer-to-peer Bitcoin lending using ckBTC. Users borrow or lend ckBTC, securing transactions with unique Ordinal Inscriptions (Ordinals) as collateral.",
@@ -3621,7 +3608,7 @@
     "website": "https://app.appic.solutions/",
     "github": "https://github.com/Appic-Solutions",
     "display": "Normal",
-    "logo": "/img/showcase/appic_logo.jpg",
+    "logo": "/img/showcase/appic_logo.png",
     "submittableId": "44626035"
   },
   {
@@ -3829,7 +3816,7 @@
     "github": "https://github.com/zkCross-Network/zkCross-ICP",
     "twitter": "https://twitter.com/ZkCrossNetwork",
     "display": "Normal",
-    "logo": "/img/showcase/zkCross_logo.png"
+    "logo": "/img/showcase/zkCross_logo.svg"
   },
   {
     "id": "icpexchange",
@@ -3923,7 +3910,7 @@
     "website": "https://owqnd-biaaa-aaaak-qidaq-cai.icp0.io/",
     "twitter": "https://twitter.com/icfootprint",
     "display": "Normal",
-    "logo": "/img/showcase/ic_footprint_logo.png"
+    "logo": "/img/showcase/ic_footprint_logo.svg"
   },
   {
     "id": "galactic-bridge",
@@ -4021,7 +4008,7 @@
     "website": "https://hamsternet.io/",
     "twitter": "https://twitter.com/Hamsternetio",
     "display": "Normal",
-    "logo": "/img/showcase/hamster_logo.png"
+    "logo": "/img/showcase/hamster_logo.svg"
   },
   {
     "name": "MSQ - Safe ICP Wallet",
@@ -4082,7 +4069,7 @@
     "name": "Konectª",
     "description": "A new protocol that gathers notifications and events from all your apps implementing it, and compiles them into a user-specific canister.",
     "website": "https://qmtwu-wqaaa-aaaan-qlrya-cai.icp0.io/",
-    "logo": "/img/showcase/konecta_logo.png",
+    "logo": "/img/showcase/konecta_logo.svg",
     "display": "Normal",
     "oneLiner": "A new protocol that gathers notifications and events from all your apps implementing it, and compiles them into a user-specific canister.",
     "tags": [
@@ -4249,7 +4236,7 @@
     "description": "A city-based events calendar app helping web3 communities and companies in effectively reaching their target audience within cities.",
     "usesInternetIdentity": true,
     "display": "Normal",
-    "logo": "/img/showcase/dotmeet_logo.jpg"
+    "logo": "/img/showcase/dotmeet_logo.svg"
   },
   {
     "id": "syron",
@@ -4596,7 +4583,7 @@
       "DeFi"
     ],
     "description": "Stake your ICP, join the pool and win big rewards!",
-    "logo": "/img/showcase/neuronpool_logo.png",
+    "logo": "/img/showcase/neuronpool_logo.svg",
     "usesInternetIdentity": true,
     "stats": "Open-source DeFi",
     "authOrigins": [

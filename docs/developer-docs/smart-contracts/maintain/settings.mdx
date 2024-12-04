@@ -9,162 +9,89 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Settings
 
-<MarkdownChipRow labels={["Beginner"]} />
+<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
 ## Overview
 
-Each <GlossaryTooltip>canister</GlossaryTooltip> has a group of possible settings that control its behavior. Only a controller of the canister can read and modify its settings. Currently, there are seven canister setting fields:
+Each <GlossaryTooltip>canister</GlossaryTooltip> has a group of possible settings that control its behavior.
+
+:::caution
+Only a controller of the canister can read and modify a canister's settings.
+:::
+
+Currently, there are seven canister setting fields:
 
 1. `controllers`: The list of controllers of the canister.
-1. `compute_allocation`: Amount of compute that this canister has allocated.
-1. `memory_allocation`: Amount of memory (storage) that this canister has allocated.
-1. `freezing_threshold`: A safety threshold to protect against canister deletion due to running out of cycles.
+1. `compute_allocation`: Amount of compute that the canister has allocated.
+1. `memory_allocation`: Amount of memory (storage) that the canister has allocated.
+1. `freezing_threshold`: A safety threshold to prevent the canister from running out of cycles and avoid being deleted.
 1. `reserved_cycles_limit`: A safety threshold to protect against spending too many cycles for resource reservation.
 1. `wasm_memory_limit`: A safety threshold to protect against reaching the 4GiB hard limit of 32-bit Wasm memory.
 1. `log_visibility`: Controls who can read the canister logs.
 
-## Viewing a canister's current settings
+## Viewing current settings
 
 There are two ways to read the settings of a canister:
 
-1. Command line: `dfx canister status <canister-id>`. Note that this command returns canister settings together with other canister status information.
-1. Programmatically: Call the `canister_status` endpoint of the IC management canister.  The canister settings will be in the `settings` field of the result.
+1. Command line: [`dfx canister status <canister-name>`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-status). Note that this command returns the canister's settings, along with other canister status information.
+2. Programmatically: Call the [`canister_status`](/docs/current/references/ic-interface-spec) endpoint of the IC management canister. The canister's settings will be in the `settings` field of the result.
 
-Note that only a controller of the canister can read canister settings.
-
-An example of using `dfx` in a command line:
+### Command line
 
 ```bash
-> dfx canister status ajuq4-ruaaa-aaaaa-qaaga-cai
-Canister status call result for ajuq4-ruaaa-aaaaa-qaaga-cai.
-Controllers: bi7oa-57tth-fsnsf-6xrdb-rruo4-fsiws-xkedg-2uzrc-t6jas-7fo3c-jqe bnz7o-iuaaa-aaaaa-qaaaa-cai
+dfx canister status ajuq4-ruaaa-aaaaa-qaaga-cai
+```
+
+<details>
+<summary>Output</summary>
+
+```
+Canister status call result for <canister-name>.
+Status: Running
+Controllers: hoqq7-3eo6j-dee4s-aiabk-6rqxw-kwgyo-rhru7-bdgmk-k5ipv-chkhx-cqe mwylj-4aaaa-aaaak-aflyq-cai
 Memory allocation: 0
 Compute allocation: 0
 Freezing threshold: 2_592_000
+Idle cycles burned per day: 31_243_414
+Memory Size: Nat(3057320)
+Balance: 196_157_756_924 Cycles
+Reserved: 0 Cycles
 Reserved cycles limit: 5_000_000_000_000 Cycles
-Wasm memory limit: 0 Bytes
-...
+Wasm memory limit: 3_221_225_472 Bytes
+Module hash: 0x46cb1e5494b8467a13d0b6a68156b044eb79ce1325aa4bd4a697e36c9b967129
+Number of queries: 1_469
+Instructions spent in queries: 429_285_142
+Total query request payload size (bytes): 1_626_898
+Total query response payload size (bytes): 1_161_862
+Log visibility: controllers
 ```
 
-An example of programmatically reading canister settings:
+</details>
+
+### Programmatically
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
-actor {
-  let IC =
-    actor "aaaaa-aa" : actor {
-
-      canister_status : { canister_id : Principal } ->
-        async ();
-
-    };
-};
+```motoko no-repl file=../../../references/samples/motoko/query_stats/src/query_stats_backend/main.mo
 ```
 
 </TabItem>
 <TabItem value="rust" label="Rust">
 
-```rust
-use ic_cdk::api::call::CallResult;
-use ic_cdk::api::management_canister::main::{
-    canister_status, CanisterIdRecord, DefiniteCanisterSettings,
-};
-
-#[ic_cdk::update]
-async fn read_canister_settings() -> CallResult<DefiniteCanisterSettings> {
-    let response = canister_status(CanisterIdRecord {
-        canister_id: ic_cdk::id(),
-    })
-    .await?
-    .0;
-    println!("settings: {:?}", response.settings);
-    Ok(response.settings)
-}
+```rust file=../../../references/samples/rust/query_stats/src/lib.rs
 ```
-
 </TabItem>
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-```typescript
-import { call, IDL, Principal, query, update } from 'azle';
-import {
-    CanisterStatusArgs,
-    CanisterStatusResult,
-} from 'azle/canisters/management';
-
-type State = {
-    createdCanisterId: Principal;
-};
-
-let state: State = {
-    createdCanisterId: Principal.fromText('aaaaa-aa')
-};
-
-export default class {
-
-    @update([CanisterStatusArgs], CanisterStatusResult)
-    async getCanisterStatus(
-        args: CanisterStatusArgs
-    ): Promise<CanisterStatusResult> {
-        return await call('aaaaa-aa', 'canister_status', {
-            paramIdlTypes: [CanisterStatusArgs],
-            returnIdlType: CanisterStatusResult,
-            args: [args]
-        });
-    }
-}
-```
+[Learn more about Azle](https://demergent-labs.github.io/azle/the_azle_book.html).
 
 </AdornedTab>
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-```python
-from kybra import (
-    Async,
-    blob,
-    CallResult,
-    match,
-    nat,
-    Principal,
-    query,
-    update,
-    void,
-)
-from kybra.canisters.management import (
-    CanisterStatusArgs,
-    CanisterStatusResult
-    management_canister,
-)
-
-class GetCanisterStatusResult(Variant, total=False):
-    Ok: CanisterStatusResult
-    Err: str
-
-
-class State(TypedDict):
-    created_canister_id: Principal
-
-
-state: State = {"created_canister_id": Principal.from_str("aaaaa-aa")}
-
-@update
-def get_canister_status(args: CanisterStatusArgs) -> Async[GetCanisterStatusResult]:
-    canister_status_result_call_result: CallResult[
-        CanisterStatusResult
-    ] = yield management_canister.canister_status({"canister_id": args["canister_id"]})
-
-    return match(
-        canister_status_result_call_result,
-        {
-            "Ok": lambda canister_status_result: {"Ok": canister_status_result},
-            "Err": lambda err: {"Err": err},
-        },
-    )
-```
+[Learn more about Kybra](https://demergent-labs.github.io/kybra/).
 
 </AdornedTab>
 </AdornedTabs>
@@ -173,154 +100,20 @@ def get_canister_status(args: CanisterStatusArgs) -> Async[GetCanisterStatusResu
 
 There are two ways to modify the settings of a canister:
 
-1. Command line: `dfx canister update-settings <canister-id> --<field-name> <field-value>`.
-1. Programmatically: Call the `update_settings` endpoint of the IC management canister.
+1. Command line: `dfx canister update-settings <canister-name> --<field-name> <field-value>`.
+1. Programmatically: Call the [`update_settings`](/docs/current/references/ic-interface-spec#ic-update_settings) endpoint of the IC management canister.
 
 Note that only a controller of the canister can modify canister settings.
 
-An example of using `dfx` in a command line:
+### Command line
 
 ```bash
-> dfx canister update-settings ajuq4-ruaaa-aaaaa-qaaga-cai --wasm-memory-limit 3000000000
-> dfx canister status ajuq4-ruaaa-aaaaa-qaaga-cai
-...
-Wasm memory limit: 3_000_000_000 Bytes
-...
+dfx canister update-settings <canister-name> --wasm-memory-limit 3000000000
 ```
 
-An example of programmatically modifying canister settings:
+### Programmatically
 
-<AdornedTabs groupId="language">
-<TabItem value="motoko" label="Motoko" default>
-
-```motoko
-actor {
-  let IC =
-    actor "aaaaa-aa" : actor {
-      update_settings : { canister_id : Principal } ->
-        async ();
-    };
-};
-```
-</TabItem>
-
-<TabItem value="rust" label="Rust">
-
-```rust
-use ic_cdk::api::call::CallResult;
-use ic_cdk::api::management_canister::main::{
-    update_settings, CanisterSettings, UpdateSettingsArgument,
-};
-use candid::Nat;
-
-#[ic_cdk::update]
-async fn modify_canister_settings() -> CallResult<()> {
-    update_settings(UpdateSettingsArgument{
-        canister_id: ic_cdk::id(),
-        settings: CanisterSettings {
-            wasm_memory_limit: Some(Nat::from(3_000_000_000_u64)),
-            // Other fields remain the same.
-            .. CanisterSettings::default()
-        }
-    })
-    .await
-}
-```
-
-</TabItem>
-
-<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
-
-```typescript
-import { call, IDL, Principal, query, update } from 'azle';
-import {
-    UpdateSettingsArgs,
-} from 'azle/canisters/management';
-
-type State = {
-    createdCanisterId: Principal;
-};
-
-let state: State = {
-    createdCanisterId: Principal.fromText('aaaaa-aa')
-};
-
-export default class {
-    @update([IDL.Principal], IDL.Bool)
-    async executeUpdateSettings(canisterId: Principal): Promise<boolean> {
-        await call('aaaaa-aa', 'update_settings', {
-            paramIdlTypes: [UpdateSettingsArgs],
-            args: [
-                {
-                    canister_id: canisterId,
-                    settings: {
-                        controllers: [],
-                        compute_allocation: [1n],
-                        memory_allocation: [3_000_000n],
-                        freezing_threshold: [2_000_000n],
-                        reserved_cycles_limit: []
-                    },
-                    sender_canister_version: []
-                }
-            ]
-        });
-
-        return true;
-    }
-}
-```
-
-</AdornedTab>
-
-<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
-
-```python
-from kybra import (
-    Async,
-    blob,
-    CallResult,
-    match,
-    nat,
-    Principal,
-    query,
-    update,
-    void,
-)
-from kybra.canisters.management import (
-    management_canister,
-)
-
-from typing import TypedDict
-
-
-class State(TypedDict):
-    created_canister_id: Principal
-
-
-state: State = {"created_canister_id": Principal.from_str("aaaaa-aa")}
-
-
-@update
-def execute_update_settings(canister_id: Principal) -> Async[DefaultResult]:
-    call_result: CallResult[void] = yield management_canister.update_settings(
-        {
-            "canister_id": canister_id,
-            "settings": {
-                "controllers": None,
-                "compute_allocation": 1,
-                "memory_allocation": 3_000_000,
-                "freezing_threshold": 2_000_000,
-            },
-        }
-    )
-
-    return match(
-        call_result, {"Ok": lambda _: {"Ok": True}, "Err": lambda err: {"Err": err}}
-    )
-```
-
-</AdornedTab>
-</AdornedTabs>
+From within your canister, make a call to the [`update_settings`](/docs/current/references/ic-interface-spec#ic-update_settings) endpoint of the IC management canister.
 
 ## Controllers
 
@@ -339,7 +132,7 @@ For example, an idle canister that has compute allocation of 50% for one hour wi
 :::info
 The rental fee increases the amount of cycles a canister consumes while idle or frozen.
 To successfully increase the compute allocation, a canister must have sufficient cycles
-to run for at least [freezing threshold](#freezing-threshold) seconds.
+to run for at least the current [freezing threshold](#freezing-threshold) number of seconds.
 :::
 
 The default value of compute allocation is 0%.
@@ -362,7 +155,7 @@ Canisters pay a rental fee for memory allocation, meaning that the payment depen
 :::info
 The rental fee increases the amount of cycles a canister consumes while idle or frozen.
 To successfully increase the memory allocation, a canister must have sufficient cycles
-to run for at least [freezing threshold](#freezing-threshold) seconds.
+to run for at least the current [freezing threshold](#freezing-threshold) number of seconds.
 :::
 
 The default value of memory allocation is 0 bytes, which means that there is no default memory allocation.
@@ -382,7 +175,7 @@ A frozen canister does not execute messages and pays only for renting resources 
 See also the `idle_cycles_burned_per_day` field in the canister's status to learn how many cycles a canister consumes in its idle or frozen state.
 :::
 
-The default value of the freezing threshold is 2592000 (approximately 30 days).
+The default value of the freezing threshold is 2_592_000 (approximately 30 days).
 
 ## Reserved cycles limit
 

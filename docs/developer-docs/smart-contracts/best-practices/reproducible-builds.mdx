@@ -26,7 +26,7 @@ However, build tools aren’t perfect, and may fail to ensure reproducible build
 
 ICP does not allow you to access the Wasm module of an arbitrary canister. This is a design decision, as developers might want to keep some code private. However, ICP does allow anyone to access the SHA-256 of the Wasm module.
 
-To obtain this hash, you must first note the principal of the canister whose code you want to check. For example, to check the code of the Internet Identity canister, the principal is `rdmx6-jaaaa-aaaaa-aaadq-cai`. Then, the easiest way to access this data is using [`dfx`](docs/current/developer-docs/getting-started/install) from a command line using the following command:
+To obtain this hash, you must first note the principal of the canister whose code you want to check. For example, to check the code of the Internet Identity canister, the principal is `rdmx6-jaaaa-aaaaa-aaadq-cai`. Then, the easiest way to access this data is using [`dfx`](/docs/current/developer-docs/getting-started/install) from a command line using the following command:
 
 ```bash
 dfx canister --network ic info rdmx6-jaaaa-aaaaa-aaadq-cai
