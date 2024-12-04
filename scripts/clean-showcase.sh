@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# The objective of this script is to flag entries to be removed by a human reviewer.
+# An entry is flagged if it meets one of the next requirements:
+# 1. The `usesInternetIdentity` field is set to `true` and the `website` field is a GitHub URL.
+# 2. The website is unreachable (HTTP status code in the 4XX or 5XX range).
+
 # Input JSON file
 INPUT_FILE="showcase.json"
 
