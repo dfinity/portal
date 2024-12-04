@@ -2,7 +2,7 @@
 
 const visit = require("unist-util-visit");
 
-function isValidLink(url) {
+function isExpectedLink(url) {
   return (
     url.startsWith("https://") ||
     url.startsWith("http://localhost") ||
@@ -20,11 +20,15 @@ module.exports = function validateLinks() {
   return async (ast) => {
     visit(ast, "link", (node) => {
       const url = node.url;
-      if (!isValidLink(url)) {
+      if (!url.startsWith("docs/developer-docs/")) {
         throw new Error(
-          `Unexpected link: \`${url}\``,
-          node.position,
-          "validate-links"
+          `Link requires a leading \`/\` character: \`${url}\` (plugins/remark/validate-links.js)`
+        );
+      }
+      if (!isExpectedLink(url)) {
+        console.warn(
+          `Unexpected link: \`${url}\` (plugins/remark/validate-links.js)`,
+          node.position
         );
       }
     });
