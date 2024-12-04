@@ -1006,6 +1006,22 @@
     "submittableId": "35943161"
   },
   {
+    "id": "seers",
+    "name": "Seers",
+    "website": "https://seers.social/",
+    "tags": [
+      "SocialFi",
+      "DAO"
+    ],
+    "twitter": "https://x.com/SeersApp",
+    "description": "What if there was decentralized Twitter that included prediction markets? Seers is a Web3 social media platform hosted 100% onchain combining social media features with prediction markets.",
+    "usesInternetIdentity": true,
+    "stats": "10,000 users + TVL",
+    "display": "Normal",
+    "logo": "/img/showcase/seers_logo.webp",
+    "screenshots": []
+  },
+  {
     "id": "pokedstudiobots",
     "name": "PokedStudio Bots",
     "website": "https://entrepot.app/marketplace/poked",
@@ -1395,6 +1411,25 @@
     "github": "https://github.com/icdevs/Icdevs_fleeksite",
     "logo": "/img/showcase/icdevs.org_logo.webp",
     "submittableId": "33212854"
+  },
+  {
+    "id": "uniswapfrontendontheic",
+    "name": "Uniswap Frontend on ICP",
+    "website": "https://yrog5-xqaaa-aaaap-qa5za-cai.ic0.app/#/swap",
+    "github": "https://github.com/domwoe/uniswap_ui_on_ic",
+    "tags": [
+      "DeFi",
+      "Ethereum",
+      "Chain Fusion"
+    ],
+    "description": "Uniswap's frontend hosted on the Internet Computer with canister-based wallet integration. Thanks to the Internet Computer, traditional DeFi solutions can now be completely decentralized, having their frontend hosted on ICP. There is no longer a need to include centralized cloud providers in a decentralized application.",
+    "usesInternetIdentity": true,
+    "oneLiner": "Front-End Onchain",
+    "display": "Normal",
+    "logo": "/img/showcase/uniswapfrontendontheic_logo.webp",
+    "video": "/img/showcase/uniswapfrontendontheic_video.mp4",
+    "videoContentType": "video/mp4",
+    "screenshots": []
   },
   {
     "id": "difibase",
@@ -2270,6 +2305,20 @@
     "submittableId": ""
   },
   {
+    "id": "pluto",
+    "name": "Pluto",
+    "oneLiner": "HTTP router on blockchain",
+    "website": "https://t5mcf-cqaaa-aaaag-qcjna-cai.raw.icp0.io/",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "description": "Pluton is an HTTP router implemented on the Internet Computer to facilitate working with HTTP. This router is a framework that allows you to write REST API applications on the blockchain in almost the same way as in Web 2",
+    "logo": "/img/showcase/pluto_logo.webp",
+    "usesInternetIdentity": false,
+    "github": "https://github.com/pu0238/pluto",
+    "submittableId": "36517192"
+  },
+  {
     "id": "motoko-book",
     "name": "The Motoko Programming Language Book",
     "oneLiner": "Writing Web3 Applications on the Internet Computer",
@@ -2940,6 +2989,27 @@
     "github": "https://github.com/ktimam/ICSimpleSoccer",
     "twitter": "https://twitter.com/ICSoccerWorld",
     "submittableId": "44414655"
+  },
+  {
+    "name": "Mapz",
+    "description": "Transforming EV Charging Access with a Community-Driven, Blockchain-Enabled Platform",
+    "website": "https://onzmk-taaaa-aaaal-acw4a-cai.icp0.io/",
+    "logo": "/img/showcase/Mapz_logo.png",
+    "screenshots": [
+      "/img/showcase/Mapz_screenshot.png"
+    ],
+    "display": "Normal",
+    "id": "mapz",
+    "oneLiner": "Airbnb for EV charging powered by Blockchain",
+    "stats": "3000+ users",
+    "tags": [
+      "NFT"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/nbelthan/Mapz-navigator",
+    "twitter": "https://twitter.com/Mapzlive",
+    "youtube": "",
+    "submittableId": "43548962"
   },
   {
     "id": "IcpKit",
@@ -3663,6 +3733,21 @@
     "logo": "/img/showcase/candb_logo.png"
   },
   {
+    "id": "personal-dao",
+    "name": "Personal DAO",
+    "oneLiner": "A web3 app that functions as a gated DAO, treasury, data storage solution, and more.",
+    "tags": [
+      "DAO"
+    ],
+    "description": "A web3 app that functions as a gated DAO, treasury, data storage solution, and more.",
+    "usesInternetIdentity": true,
+    "website": "https://fkkq7-siaaa-aaaap-qaaya-cai.ic0.app/",
+    "twitter": "https://x.com/Personal_DAO",
+    "discord": "https://discord.gg/r85DtR2TjG",
+    "display": "Normal",
+    "logo": "/img/showcase/personal_dao_logo.png"
+  },
+  {
     "id": "icp-canister-bridge",
     "name": "ICP Canister Bridge",
     "oneLiner": "A bridge powered by ICP that enables seamless swaps between the Lightning Network and EVM-compatible chains.",
@@ -4188,6 +4273,20 @@
     "logo": "/img/showcase/PanoramaBlock_Logo.png"
   },
   {
+    "id": "dappradar",
+    "name": "Dapp Radar",
+    "oneLiner": "A dapp discovery portal for blockchain users, provides insights for investors and analysts, and educates visitors about vital blockchain networks.",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://dappradar.com/",
+    "twitter": "https://twitter.com/dappradar",
+    "description": "A dapp discovery portal for blockchain users, provides insights for investors and analysts, and educates visitors about vital blockchain networks.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/dappradar_logo.png"
+  },
+  {
     "id": "motodex",
     "name": "Motodex",
     "oneLiner": "A hyper-casual, motorcycle race game where players develop their riders and improve high-speed tracks.",
@@ -4445,6 +4544,23 @@
     "github": "https://github.com/Vitiv/event-broadcaster/"
   },
   {
+    "id": "gate23",
+    "name": "Gate23",
+    "oneLiner": "Gate23 is an advanced point-of-sale (POS) and business software designed specifically for the food and beverage, e-commerce, and retail industries.",
+    "description": "Gate23 is an advanced point-of-sale (POS) and business software designed specifically for the food and beverage, e-commerce, and retail industries.",
+    "website": "https://alpha-gate23.bridge23.app/",
+    "logo": "/img/showcase/Gate23_logo.png",
+    "display": "Normal",
+    "tags": [
+      "Tools / Infrastructure",
+      "Enterprise",
+      "Ethereum"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/bridge-23/Gate23",
+    "twitter": "https://x.com/bridge23inc"
+  },
+  {
     "id": "IC-PayPortal",
     "name": "IC PayPortal",
     "oneLiner": "The IC-PayPortal Motoko by Expeera is a library that provides developers with a set of functions for managing fiat payments on ICP.",
@@ -4686,6 +4802,20 @@
     ],
     "twitter": "https://x.com/tap_protocol",
     "website": "https://www.tap-protocol.com"
+  },
+  {
+    "id": "ic-toolkit",
+    "name": "IC Toolkit",
+    "description": "IC Toolkit simplifies canister management, project collaboration, and decentralized governance on ICP.",
+    "logo": "/img/showcase/ictoolkit_logo.png",
+    "display": "Normal",
+    "tags": [
+      "DAO",
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "twitter": "https://x.com/ic_toolkit",
+    "website": "https://ic-toolkit.app"
   },
   {
     "id": "nfid-identitykit",
