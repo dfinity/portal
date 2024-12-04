@@ -44,17 +44,17 @@ The call is calculated using the content record, which allows the signature to b
 
 A transaction's signature can be delegated from one key to another. If delegation is used, the `sender_delegation` field contains an array of delegations with the following fields:
 
-- `delegation` (`map`): A map containing the fields:
+`delegation` (`map`): A map containing the fields:
 
-    - `pubkey` (`blob`): A public key.
+   - `pubkey` (`blob`): A public key.
 
-    - `expiration` (`nat`): The delegation's expiration, defined in nanoseconds analogously to the `ingress_expiry`.
+   - `expiration` (`nat`): The delegation's expiration, defined in nanoseconds analogously to the `ingress_expiry`.
 
-    - `targets` (`array` of `CanisterId`, optional): Sets the delegation to apply only for requests sent to the canisters within the canister list; has a maximum of 1000 canisters.
+   - `targets` (`array` of `CanisterId`, optional): Sets the delegation to apply only for requests sent to the canisters within the canister list; has a maximum of 1000 canisters.
 
-    - `senders` (`array` of `Principal`, optional): Sets the delegation to only apply for requests originating from the principals in the list.
+   - `senders` (`array` of `Principal`, optional): Sets the delegation to only apply for requests originating from the principals in the list.
 
-    - `signature` (`blob`): The signature for the `32-byte` delegation field map, using the 27 bytes `\x1Aic-request-auth-delegation` as the domain separator.
+   - `signature` (`blob`): The signature for the `32-byte` delegation field map, using the 27 bytes `\x1Aic-request-auth-delegation` as the domain separator.
 
 The first delegation in the array has a signature created using the public key corresponding to the `sender_pubkey` field. All subsequent delegations are signed with the public key corresponding to the key contained in the preceding delegation.
 
@@ -64,15 +64,9 @@ The `sender_sig` field is calculated by concatenating the domain separator, `\x0
 
 To verify a signature with an agent, an accepted identity is required. The following are accepted identity and signature types:
 
-- Ed25519 and ECDSA signatures.
+- Ed25519 and ECDSA signatures: Plain signatures are supported for these schemes.
 
-    - Plain signatures are supported for the schemes.
-
-- Ed25519 or ECDSA on curve P-256 (also known as secp256r1).
-
-    - Using SHA-256 as a hash function.
-
-    - Using the Koblitz curve in secp256k1.
+- Ed25519 or ECDSA on curve P-256 (also known as secp256r1): Support for using SHA-256 as a hash function or using the Koblitz curve in secp256k1.
 
 When these identities are encoded as a `Principal`, an agent will attach a suffix byte, which indicates whether the identity is anonymous or self-authenticating.
 
@@ -125,7 +119,7 @@ match result {
 
 [Reference the crate's implementation logic](https://sourcegraph.com/github.com/dfinity/ic/-/blob/rs/validator/src/ingress_validation.rs?L605) for additional context.
 
-## Verifying signatures with the library `@dfinity/standalone-sig-verifier-web`
+## Verifying signatures with the JavaScript/TypeScript wrapper `@dfinity/standalone-sig-verifier-web`
 
 An `npm` library has been created as a JavaScript/TypeScript wrapper for the [`ic-standalone-sig-verifier`](https://github.com/dfinity/ic/tree/master/rs/crypto/standalone-sig-verifier) Rust crate.
 
