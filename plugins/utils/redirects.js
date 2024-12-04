@@ -83,7 +83,7 @@ const redirects = `
   /docs/current/developer-docs/build/languages/rust/* /docs/current/developer-docs/backend/rust/
   /docs/current/developer-docs/build/project-setup/cycles-wallet /docs/current/developer-docs/defi/cycles/cycles-wallet
   /docs/current/developer-docs/build/project-setup/manage-canisters /docs/current/developer-docs/smart-contracts/maintain/settings
-  /docs/current/developer-docs/build/project-setup/design-dapps /docs/current/developer-docs/web-apps/design-dapps
+  /docs/current/developer-docs/build/project-setup/design-dapps /docs/current/developer-docs/smart-contracts/overview/introduction
   /docs/current/developer-docs/build/troubleshooting /docs/current/developer-docs/getting-started/troubleshooting
   /docs/current/developer-docs/build/agents/ /docs/current/developer-docs/developer-tools/off-chain/agents/overview
   /docs/current/developer-docs/build/agents/javascript/javascript-intro /docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent
@@ -100,7 +100,7 @@ const redirects = `
   /docs/developers-guide/concepts/concepts-intro /docs/current/developer-docs/getting-started/network-overview
   /docs/developers-guide/customize-projects /docs/current/developer-docs/smart-contracts/compile
   /docs/developers-guide/default-wallet /docs/current/developer-docs/defi/cycles/cycles-wallet
-  /docs/developers-guide/design-apps /docs/current/developer-docs/web-apps/design-dapps
+  /docs/developers-guide/design-apps /docs/current/developer-docs/smart-contracts/overview/introduction
   /docs/developers-guide/glossary /docs/current/references/glossary
   /docs/developers-guide/install-upgrade-remove /docs/current/developer-docs/getting-started/install
   /docs/developers-guide/lang-service-ide /docs/current/developer-docs/developer-tools/ide/vs-code
@@ -345,7 +345,7 @@ const redirects = `
   /docs/current/developer-docs/frontend/existing-frontend /docs/current/developer-docs/web-apps/application-frontends/existing-frontend
   /docs/current/developer-docs/production/custom-domain/ /docs/current/developer-docs/web-apps/custom-domains/using-custom-domains
   /docs/current/developer-docs/production/custom-domain/dns-setup /docs/current/developer-docs/web-apps/custom-domains/dns-setup
-  /docs/current/developer-docs/backend/design-dapps /docs/current/developer-docs/web-apps/design-dapps
+  /docs/current/developer-docs/backend/design-dapps /docs/current/developer-docs/smart-contracts/overview/introduction
   /docs/current/developer-docs/integrations/independently-verifying-ic-signatures /docs/current/developer-docs/web-apps/independently-verifying-ic-signatures
   /docs/current/developer-docs/integrations/internet-identity/overview  /docs/current/developer-docs/identity/internet-identity/overview
   /docs/current/developer-docs/integrations/internet-identity/creating-ii /docs/current/developer-docs/identity/internet-identity/creating-ii
@@ -522,7 +522,7 @@ const redirects = `
   /docs/current/developer-docs/web-apps/user-login/internet-identity/creating-ii /docs/current/developer-docs/identity/internet-identity/creating-ii
   /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity /docs/current/developer-docs/identity/internet-identity/integrate-internet-identity
   /docs/current/developer-docs/web-apps/user-login/internet-identity/alternative-origins /docs/current/developer-docs/identity/internet-identity/alternative-origins
-  /docs/current/developer-docs/web-apps/user-login/nfid /docs/current/developer-docs/identity/authentication/nfid
+  /docs/current/developer-docs/web-apps/user-login/nfid /docs/current/developer-docs/identity/authentication/overview
   /docs/current/developer-docs/web-apps/user-login/email-password /docs/current/developer-docs/identity/authentication/email-password
   /docs/current/developer-docs/multi-chain/ethereum/using-eth/siwe /docs/current/developer-docs/identity/authentication/siwe
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/current/motoko/main/getting-started/motoko-introduction
@@ -644,6 +644,22 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/advanced-features/serving-http-request /docs/current/developer-docs/smart-contracts/advanced-features/handling-get-post-requests
   /docs/current/developer-docs/smart-contracts/write/default-template /docs/current/developer-docs/smart-contracts/write/overview
   /developers /docs/current/home
+
+
+
+  /docs/current/developer-docs/identity/authentication/email-password /docs/current/identity/authentication/overview
+  /docs/current/developer-docs/identity/authentication/nfid /docs/current/identity/authentication/overview
+  /docs/current/developer-docs/identity/authentication/siwb /docs/current/identity/authentication/overview
+  /docs/current/developer-docs/identity/authentication/siwe /docs/current/identity/authentication/overview
+  /docs/current/developer-docs/identity/authentication/siws /docs/current/identity/authentication/overview
+  /docs/current/developer-docs/identity/authentication/msq /docs/current/identity/authentication/overview
+  /docs/current/developer-docs/web-apps/browser-js/js-request-api /docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent
+  /docs/current/developer-docs/defi/tokens/asset_flow/index /docs/current/developer-docs/defi/overview
+  /docs/current/developer-docs/defi/tokens/ledger/overview /docs/current/developer-docs/defi/overview
+  /docs/current/developer-docs/defi/tokens/ledger/setup/overview /docs/current/developer-docs/defi/overview
+  /docs/current/developer-docs/defi/tokens/ledger/usage/overview /docs/current/developer-docs/defi/overview
+  /docs/current/developer-docs/web-apps/obtain-verify-ic-pubkey /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-ping
+  /docs/current/developer-docs/web-apps/design-dapps /docs/current/developer-docs/smart-contracts/overview/introduction
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

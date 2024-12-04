@@ -14,17 +14,17 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 ## Overview
 
-When interacting with the [ICP or ICRC-1 ledgers](/docs/developer-docs/defi/tokens/ledger/overview.mdx), there are different asset flow operations that can be executed.  These operations are:
+When interacting with the [ICP or ICRC-1 ledgers](/docs/developer-docs//defi/overview.mdx), there are different asset flow operations that can be executed.  These operations are:
 
 * **Transfer**: A simple transfer between two entities.
-* **Approve**: Approving tokens to be spent by another entity. 
+* **Approve**: Approving tokens to be spent by another entity.
 * **Mint**: Creating new tokens (**Requires minting account privileges**).
-* **Burn**: Destroying tokens. 
-* **TransferFrom**: Spend approved tokens on behalf of another entity. 
+* **Burn**: Destroying tokens.
+* **TransferFrom**: Spend approved tokens on behalf of another entity.
 
-Both ledger types support these operations. There are several ways on how to create transactions corresponding to each asset flow operation. This guide will demonstrate how to use `dfx` using `Rust` code. 
+Both ledger types support these operations. There are several ways on how to create transactions corresponding to each asset flow operation. This guide will demonstrate how to use `dfx` using `Rust` code.
 
-### Prerequisites 
+### Prerequisites
 
 * Download and install [`dfx`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-parent).
 
@@ -32,7 +32,7 @@ Both ledger types support these operations. There are several ways on how to cre
 
 ## Transfer tokens
 
-To transfer tokens, your transaction will need the following required fields: 
+To transfer tokens, your transaction will need the following required fields:
 
 * `to`: The account that will receive the tokens.
 * `amount`: The amount of tokens to be sent.
@@ -40,9 +40,9 @@ To transfer tokens, your transaction will need the following required fields:
 Additionally, the transaction takes the following optional fields:
 
 * `from_subaccount`: The subaccount of the approver.
-* `fee`: The fee paid by the sender for the transfer. If not set, the default fee will have to be paid. 
+* `fee`: The fee paid by the sender for the transfer. If not set, the default fee will have to be paid.
 * `memo`: An arbitrary 32 bytes array to ensure transaction hash uniqueness.
-* `created_at_time`: A timestamp that is used to trigger the [deduplication mechanism](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#transaction_deduplication). 
+* `created_at_time`: A timestamp that is used to trigger the [deduplication mechanism](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#transaction_deduplication).
 
 ### dfx
 Here is an example command for a `Transfer` transaction using `dfx`:
@@ -68,11 +68,11 @@ candid::Decode!(&ic_agent.update("icrc1_transfer", &candid::Encode!(&transfer_ar
 :::info
 Mint and burn operations are technically speaking also transfers. They work exactly like regular transfers with certain conditions that have to be met. They are the following:
 * For **mint** operations, the sender of the transfer has to be the minter account. This means that if you want to make mint transactions, you will need to know the private key of the minter account. The recipient will receive the newly minted tokens.
-* For **burn** operations, the receiver needs to be set to the mint account while the sender can be any account. You can request the minter account by calling the `icrc1_minting_account` endpoint of the ledger. 
+* For **burn** operations, the receiver needs to be set to the mint account while the sender can be any account. You can request the minter account by calling the `icrc1_minting_account` endpoint of the ledger.
 :::
 
 ## Approve tokens
-To approve tokens, your transaction will need the following required fields: 
+To approve tokens, your transaction will need the following required fields:
 
 * `spender`: The account that is allowed to spend the tokens.
 * `amount`: The maximum amount of tokens to be spent by the spender.
@@ -80,11 +80,11 @@ To approve tokens, your transaction will need the following required fields:
 Additionally, the transaction takes the following optional fields:
 
 * `from_subaccount`: The subaccount of the approver.
-* `expected_allowance`: If set, this field serves as a guarantee that before the new approved amount is set, the expected allowance reflects the previously set approved amount. 
-* `expires_at`: The timestamp at which the allowance will expire. 
-* `fee`: The fee paid by the approver for the approval. If not set, the default fee will have to be paid. 
+* `expected_allowance`: If set, this field serves as a guarantee that before the new approved amount is set, the expected allowance reflects the previously set approved amount.
+* `expires_at`: The timestamp at which the allowance will expire.
+* `fee`: The fee paid by the approver for the approval. If not set, the default fee will have to be paid.
 * `memo`: An arbitrary 32 bytes array to ensure transaction hash uniqueness.
-* `created_at_time`: A timestamp that is used to trigger the [deduplication mechanism](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#transaction_deduplication). 
+* `created_at_time`: A timestamp that is used to trigger the [deduplication mechanism](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#transaction_deduplication).
 
 ### dfx
 Here is an example command for an `Approve` transaction using `dfx`:
@@ -111,15 +111,15 @@ candid::Decode!(&ic_agent.update("icrc2_approve", &candid::Encode!(&approve_args
 ```
 
 ## Transferring approved tokens
-To transfer approved tokens, your transaction will need the following required fields: 
+To transfer approved tokens, your transaction will need the following required fields:
 * `to`: The account that will receive the tokens.
-* `from`: The approvers account who's tokens will be transferred. 
+* `from`: The approvers account who's tokens will be transferred.
 * `amount`: The amount of tokens to be sent.
 Additionally, the transaction takes the following optional fields:
 * `spender_subaccount`: The subaccount of the spender.
-* `fee`: The fee paid by the sender for the transfer. If not set the default fee will have to be paid. 
+* `fee`: The fee paid by the sender for the transfer. If not set the default fee will have to be paid.
 * `memo`: An arbitrary 32 bytes array to ensure transaction hash uniqueness.
-* `created_at_time`: A timestamp that is used to trigger the [deduplication mechanism](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#transaction_deduplication). 
+* `created_at_time`: A timestamp that is used to trigger the [deduplication mechanism](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md#transaction_deduplication).
 
 ### dfx
 Here is an example command for a `TransferFrom` transaction using `dfx`:
