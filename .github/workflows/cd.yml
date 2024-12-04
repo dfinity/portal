@@ -34,7 +34,7 @@ jobs:
       - name: Install DFX
         uses: dfinity/setup-dfx@main
         with:
-          dfx-version: "0.22.0"
+          dfx-version: "0.24.0"
 
       - name: Dump Identity
         run: |
