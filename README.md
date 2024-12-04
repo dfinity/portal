@@ -588,11 +588,11 @@ The [Ecosystem Helper](https://mvw4g-yiaaa-aaaam-abnva-cai.icp0.io/) is an oncha
 
 ### Asset guidelines
 
-| Asset       |          | Requirements                    | Format               | Notes                                                                                   |
-|-------------|----------|---------------------------------|----------------------|-----------------------------------------------------------------------------------------|
-| logo        | required | 112x112px (1:1 aspect ratio)    | svg(recommended)/png | Optimize file size with [SVGOMG](https://svgomg.net/) or [TinyPNG](https://tinypng.com) |
-| screenshots | optional | 1024x576px                      | webp/jpg             | The schema supports multiple files, but only the first one will be displayed            |
-| video       | optional | max 10MB                        | webm/mp4             | If there is a video file specified, it will be displayed instead of a screenshot.       |
+| Asset       |          | Requirements                    | Format               | Notes                                                                                  |
+|-------------|----------|---------------------------------|----------------------|----------------------------------------------------------------------------------------|
+| logo        | required | 112x112px (1:1 aspect ratio)    | svg(recommended)/png | Optimize file size with [SVGOMG](https://svgomg.net) or [TinyPNG](https://tinypng.com) |
+| screenshots | optional | 1024x576px                      | webp/jpg             | The schema supports multiple files, but only the first one will be displayed           |
+| video       | optional | max 10MB                        | webm/mp4             | If there is a video file specified, it will be displayed instead of a screenshot.      |
 
 ### Tags
 
