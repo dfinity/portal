@@ -79,6 +79,22 @@ const sidebars = {
             "developer-docs/smart-contracts/overview/trust-in-canisters",
           ],
         },
+        {
+          type: "category",
+          label: "Languages",
+          items: [
+            {
+              type: "link",
+              label: "Motoko",
+              href: "/docs/current/motoko/main/getting-started/motoko-introduction",
+            },
+            {
+              type: "link",
+              label: "Rust",
+              href: "/docs/current/developer-docs/backend/rust/",
+            },
+        ],
+      },
         "developer-docs/smart-contracts/overview/canister-lifecycle",
         {
           type: "category",
@@ -770,135 +786,133 @@ const sidebars = {
           },
         ],
       },
-    {
-      type: "category",
-      label: "References",
-      items: [
-        {
-          type: "category",
-          label: "Internet Computer specification",
-          items: [
-            "references/http-gateway-protocol-spec",
-            "references/ic-interface-spec",
-            "references/id-encoding-spec",
-          ],
-        },
-        {
-          type: "category",
-          label: "Languages",
-          items: [
-            "references/candid-ref",
-            {
-              type: "link",
-              label: "Motoko base library",
-              href: "/docs/current/motoko/main/base/",
-            },
-            {
-              type: "link",
-              label: "Rust CDK references",
-              href: "https://docs.rs/ic-cdk/",
-            },
-          ],
-        },
-        "developer-docs/smart-contracts/advanced-features/system-canisters",
-        {
-          type: "category",
-          label: "Core services",
-          items: [
-            {
-              type: "doc",
-              label: "Asset canister",
-              id: "references/asset-canister",
-            },
-            {
-              type: "doc",
-              label: "ICRC-1 token standard",
-              id: "references/icrc1-standard",
-            },
-            {
-              type: "doc",
-              label: "Internet Identity",
-              id: "references/ii-spec",
-            },
-            {
-              type: "doc",
-              label: "Ledger canister",
-              id: "references/ledger",
-            },
-          ],
-        },
-        {
-          type: "doc",
-          label: "Execution errors",
-          id: "references/execution-errors",
-        },
-        {
-          type: "category",
-          label: "Feature references",
-          items: [
-            "references/bitcoin-how-it-works",
-            "references/ckbtc-reference",
-            "references/https-outcalls-how-it-works",
-            "references/t-sigs-how-it-works",
-            "references/vetkeys-overview",
-            "references/supported-signatures",
-          ],
-        },
-        {
-          type: "doc",
-          label: "Glossary",
-          id: "references/glossary",
-        },
-        {
-          type: "category",
-          label: "ICP dashboard",
-          items: [
-            {
-              type: "doc",
-              label: "Overview",
-              id: "references/dashboard/overview",
-            },
-            "references/dashboard/using-the-dashboard",
-            "references/dashboard/dashboard-apis",
-          ],
-        },
-        {
-          type: "doc",
-          label: "Message execution properties",
-          id: "references/message-execution-properties",
-        },
-        {
-          type: "doc",
-          label: "Ingress messages",
-          id: "references/ingress-messages",
-        },
-        {
-          type: "category",
-          label: "Node providers",
-          items: [
-            {
-              type: "doc",
-              label: "Overview",
-              id: "references/node-providers/overview",
-            },
-            "references/node-providers/node-metrics",
-          ],
-        },
-        {
-            type: "category",
-            label: "Subnets",
-            items: [
-              {
-                type: "doc",
-                label: "Overview",
-                id: "references/subnets/overview",
-              },
-              "references/subnets/subnet-types",
-            ],
+    ],
+
+references :[
+      {
+        type: "category",
+        label: "Internet Computer specification",
+        items: [
+          "references/ic-interface-spec",
+          "references/http-gateway-protocol-spec",
+          "references/id-encoding-spec",
+        ],
+      },
+      {
+        type: "category",
+        label: "Languages",
+        items: [
+          "references/candid-ref",
+          {
+            type: "link",
+            label: "Motoko base library",
+            href: "/docs/current/motoko/main/base/",
           },
-      ],
-    },
-  ],
+          {
+            type: "link",
+            label: "Rust CDK references",
+            href: "https://docs.rs/ic-cdk/",
+          },
+        ],
+      },
+      {
+        type: "category",
+        label: "Core services",
+        items: [
+          {
+            type: "doc",
+            label: "Asset canister",
+            id: "references/asset-canister",
+          },
+          {
+            type: "doc",
+            label: "ICRC-1 token standard",
+            id: "references/icrc1-standard",
+          },
+          {
+            type: "doc",
+            label: "Internet Identity",
+            id: "references/ii-spec",
+          },
+          {
+            type: "doc",
+            label: "Ledger canister",
+            id: "references/ledger",
+          },
+        ],
+      },
+      {
+        type: "category",
+        label: "Feature references",
+        items: [
+          "references/bitcoin-how-it-works",
+          "references/ckbtc-reference",
+          "references/https-outcalls-how-it-works",
+          "references/t-sigs-how-it-works",
+          "references/vetkeys-overview",
+          "references/supported-signatures",
+        ],
+      },
+      {
+        type: "category",
+        label: "ICP dashboard",
+        items: [
+          {
+            type: "doc",
+            label: "Overview",
+            id: "references/dashboard/overview",
+          },
+          "references/dashboard/using-the-dashboard",
+          "references/dashboard/dashboard-apis",
+        ],
+      },
+      {
+        type: "doc",
+        label: "Glossary",
+        id: "references/glossary",
+      },
+      {
+        type: "doc",
+        label: "Execution errors",
+        id: "references/execution-errors",
+      },
+      {
+        type: "doc",
+        label: "Ingress messages",
+        id: "references/ingress-messages",
+      },
+      {
+        type: "doc",
+        label: "Message execution properties",
+        id: "references/message-execution-properties",
+      },
+
+      "developer-docs/smart-contracts/advanced-features/system-canisters",
+      {
+        type: "category",
+        label: "Node providers",
+        items: [
+          {
+            type: "doc",
+            label: "Overview",
+            id: "references/node-providers/overview",
+          },
+          "references/node-providers/node-metrics",
+        ],
+      },
+      {
+          type: "category",
+          label: "Subnets",
+          items: [
+            {
+              type: "doc",
+              label: "Overview",
+              id: "references/subnets/overview",
+            },
+            "references/subnets/subnet-types",
+          ],
+        },
+    ],
 
 devjourney: [
     {
@@ -1229,8 +1243,103 @@ tokens: [
         label: "Overview",
         id: "developer-docs/defi/overview",
       },
+      {
+        type: "category",
+        label: "Rosetta",
+        items: [
+          {
+            type: "category",
+            label: "ICP Rosetta implementation",
+            items: [
+              {
+                type: "category",
+                label: "Data API",
+                items: [
+                  "developer-docs/defi/rosetta/icp_rosetta/data_api/network",
+                  "developer-docs/defi/rosetta/icp_rosetta/data_api/balances",
+                  "developer-docs/defi/rosetta/icp_rosetta/data_api/blocks",
+                  "developer-docs/defi/rosetta/icp_rosetta/data_api/transactions",
+                  "developer-docs/defi/rosetta/icp_rosetta/data_api/list_known_neurons",
+                  "developer-docs/defi/rosetta/icp_rosetta/data_api/get_pending_proposals",
+                  "developer-docs/defi/rosetta/icp_rosetta/data_api/get_proposal_info",
+                ],
+              },
+              {
+                type: "category",
+                label: "Construction API",
+                items: [
+                  {
+                    type: "category",
+                    label: "Flow of operations",
+                    items: [
+                      "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/derive",
+                      "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/preprocess",
+                      "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/metadata",
+                      "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/payloads",
+                      "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/combine",
+                      "developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/submit",
+                    ],
+                  },
+                  {
+                    type: "category",
+                    label: "Staking & neuron management",
+                    items: [
+                      "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/neuron_info",
+                      "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/derive_neuron_id",
+                      "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_icp",
+                      "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/lock_neuron",
+                      "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/dissolve",
+                      "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_maturity",
+                      "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/change_auto_stake_maturity",
+                      "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/spawn",
+                      "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/disburse",
+                    ],
+                  },
+                  {
+                    type: "category",
+                    label: "Voting & following",
+                    items: [
+                      "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/vote",
+                      "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/follow",
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            type: "category",
+            label: "ICRC Rosetta implementation",
+            items: [
+              {
+                type: "category",
+                label: "Data API",
+                items: [
+                  "developer-docs/defi/rosetta/icrc_rosetta/data_api/network",
+                  "developer-docs/defi/rosetta/icrc_rosetta/data_api/balances",
+                  "developer-docs/defi/rosetta/icrc_rosetta/data_api/blocks",
+                  "developer-docs/defi/rosetta/icrc_rosetta/data_api/transactions",
+                ],
+              },
+              {
+                type: "category",
+                label: "Construction API",
+                items: [
+                  {
+                    type: "category",
+                    label: "Asset transfer",
+                    items: [
+                      "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/transfer",
+                      "developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/approve",
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
           "developer-docs/defi/tokens/token-standards",
-          "developer-docs/defi/tokens/asset_flow/index",
           "developer-docs/defi/tokens/create",
           {
             type: "category",
@@ -1239,10 +1348,6 @@ tokens: [
               {
                 type: "category",
                 label: "Setup",
-                link: {
-                  type: "doc",
-                  id: "developer-docs/defi/tokens/ledger/setup/overview",
-                },
                 items: [
                   "developer-docs/defi/tokens/ledger/setup/icp_ledger_setup",
                   "developer-docs/defi/tokens/ledger/setup/icrc1_ledger_setup"
@@ -1312,6 +1417,20 @@ tokens: [
           },
         ],
       },
+      {
+        type: "category",
+        label: "Wallets",
+        items: [
+          {
+            type: "doc",
+            label: "Overview",
+            id: "developer-docs/defi/wallets/overview",
+          },
+            "developer-docs/defi/wallets/self-custody/self-custody-quickstart",
+            "developer-docs/defi/wallets/self-custody/hardware-wallet-cli",
+            "developer-docs/defi/cycles/cycles-wallet",
+        ],
+      },
           {
             type: "doc",
             label: "Decentralized exchanges",
@@ -1335,22 +1454,8 @@ tokens: [
           "developer-docs/defi/nfts/marketplaces"
         ],
       },
-      {
-        type: "category",
-        label: "Wallets",
-        items: [
-          {
-            type: "doc",
-            label: "Overview",
-            id: "developer-docs/defi/wallets/overview",
-          },
-            "developer-docs/defi/wallets/self-custody/self-custody-quickstart",
-            "developer-docs/defi/wallets/self-custody/hardware-wallet-cli",
-            "developer-docs/defi/cycles/cycles-wallet",
-        ],
-      },
-    ],
-  }
+    ]
+}
 
 /**
  * Add UI tests in development mode

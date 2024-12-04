@@ -79,6 +79,13 @@ const subnavItems = [
     label: "Governance",
     activeBasePath: "/docs/current/developer-docs/daos/overview",
   },
+  {
+    type: "docSidebar",
+    sidebarId: "references",
+    position: "left",
+    label: "References",
+    activeBasePath: "/references/ic-interface-spec",
+  },
 
   {
     type: "dropdown",
@@ -105,6 +112,14 @@ const subnavItems = [
     label: "Resources",
     items: [
       {
+        label: "Dev Forum",
+        href: "https://forum.dfinity.org/",
+      },
+      {
+        label: "Dev Discord",
+        href: "https://discord.internetcomputer.org",
+      },
+      {
         label: "Awesome Internet Computer",
         href: "https://github.com/dfinity/awesome-internet-computer#readme",
       },
@@ -114,18 +129,6 @@ const subnavItems = [
         docId: "other/updates/release-notes/release-notes",
       },
       { label: "Developer Grants", href: "https://dfinity.org/grants" },
-      {
-        label: "Playground",
-        href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
-      },
-      {
-        label: "Dev Forum",
-        href: "https://forum.dfinity.org/",
-      },
-      {
-        label: "Dev Discord",
-        href: "https://discord.internetcomputer.org",
-      },
     ],
   },
   /**
