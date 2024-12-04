@@ -644,9 +644,6 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/advanced-features/serving-http-request /docs/current/developer-docs/smart-contracts/advanced-features/handling-get-post-requests
   /docs/current/developer-docs/smart-contracts/write/default-template /docs/current/developer-docs/smart-contracts/write/overview
   /developers /docs/current/home
-
-
-
   /docs/current/developer-docs/identity/authentication/email-password /docs/current/identity/authentication/overview
   /docs/current/developer-docs/identity/authentication/nfid /docs/current/identity/authentication/overview
   /docs/current/developer-docs/identity/authentication/siwb /docs/current/identity/authentication/overview
