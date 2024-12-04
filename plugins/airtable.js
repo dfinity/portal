@@ -156,11 +156,21 @@ async function fetchAirtableRecords({ apiKey, baseId, tableName, viewId }) {
 }
 
 async function processEventsData(records) {
+  const endDateCutoff = new Date(Date.now() - 6 * 30 * 24 * 60 * 60 * 1000)
+    .toISOString()
+    .split("T")[0];
+
+  const today = new Date().toISOString().split("T")[0];
+
   records = await Promise.all(
     records.map(async (record) => {
       const parsedRecord = parseAirtableData(record);
 
-      let imageUrl = await fetchShareImage(parsedRecord.eventLink);
+      // Only fetch share image for current/future events
+      let imageUrl = null;
+      if (parsedRecord.endDate >= today) {
+        imageUrl = await fetchShareImage(parsedRecord.eventLink);
+      }
 
       // If no share image is found, use a default image
       if (!imageUrl) {
@@ -170,10 +180,6 @@ async function processEventsData(records) {
       return { ...parsedRecord, imageUrl };
     })
   );
-
-  const endDatecutoff = new Date(Date.now() - 6 * 30 * 24 * 60 * 60 * 1000)
-    .toISOString()
-    .split("T")[0];
 
   records = records.filter((rec) => {
     if (!rec.startDate || new Date(rec.startDate) == "Invalid Date") {
@@ -186,7 +192,7 @@ async function processEventsData(records) {
       return false;
     }
 
-    if (rec.endDate < endDatecutoff) {
+    if (rec.endDate < endDateCutoff) {
       // old event
       return false;
     }
