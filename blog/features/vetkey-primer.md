@@ -63,7 +63,7 @@ Considering that blockchains are very public places where transparency has been 
 Note that we care most about the secret ***key derivation*** here, as that is the most sensitive part which we want to protect from one central (potentially untrusted, unauthorized, or compromised) party, and hence the **KD** in VETKD. To deal with the centralization point, we need to move into the distributed setting.  Assuming there is no one trusted party, we distribute trust amongst multiple parties, and require that some *threshold* of them collaborate on shares of the master secret key to derive decryption keys.
 
 How do parties **get shares** of the master secret key? This is done by leveraging a distributed key generation (DKG) protocol, where a threshold of honest parties (or nodes) work together to obtain a set of master key shares. Assuming no collusion between nodes, at no point does any one node hold the full private key.
-Click around to learn more about [threshold cryptography]( https://en.wikipedia.org/wiki/Threshold_cryptosystem), [DKG](https://en.wikipedia.org/wiki/Distributed_key_generation) and chapter 22 in the [Boneh-Shoup book](http://toc.cryptobook.us/).
+Click around to learn more about [threshold cryptography]( https://en.wikipedia.org/wiki/Threshold_cryptosystem), [DKG](https://en.wikipedia.org/wiki/Distributed_key_generation) and chapter 22 in the [Boneh-Shoup book](https://toc.cryptobook.us/).
 
 It’s clear from above that we don't want a centralised key derivation process and this is why we need the **T** for the KD process, but what about **V** and **E**? Perhaps this is best highlighted by a scenario.
 
@@ -100,7 +100,7 @@ At a first glance, we could guess that we will need a distributed key generation
 Crucially, An observation buried in [BF01] gives us the answer. Moni Naor noted that an IBE scheme can be directly converted into a signature scheme. Considering the key derivation of Boneh-Franklin IBE specifically, the resulting signature scheme happens to be BLS.
 
 ### BLS signatures
-Digital signatures are used everywhere in cryptography and in the blockchain world to attest to the authenticity of a message, transaction, or other pieces of information. As they are so prevalent, it’s really worth spending time getting to know them. You can get a high level view on wikipedia ([Digital Signatures](https://en.wikipedia.org/wiki/Digital_signature) and [BLS](https://en.wikipedia.org/wiki/BLS_digital_signature)), and dive into the [Boneh-Shoup book](http://toc.cryptobook.us/) when you want more formal details.
+Digital signatures are used everywhere in cryptography and in the blockchain world to attest to the authenticity of a message, transaction, or other pieces of information. As they are so prevalent, it’s really worth spending time getting to know them. You can get a high level view on wikipedia ([Digital Signatures](https://en.wikipedia.org/wiki/Digital_signature) and [BLS](https://en.wikipedia.org/wiki/BLS_digital_signature)), and dive into the [Boneh-Shoup book](https://toc.cryptobook.us/) when you want more formal details.
 
 BLS signatures are a particular type of digital signature introduced in by Dan Boneh, Ben Lynn, and Hovav Shacham in 2001. 
 
@@ -132,7 +132,7 @@ This page contains a high level view and description of VETKD and its building b
 It also shows one possible way of building VETKD, there are others, some with fancy features, that are described more in the paper. There are many use cases and motivations for building VETKD, these are discussed in [the video](https://youtu.be/baM6jHnmMq8) and can be written up if you like. There are also extensions that could be built depending on what is needed in the community. Finally, note that this page is hosted onchain.
 
 ## References
-* [BS23](http://toc.cryptobook.us/) - The Boneh-Shoup Book.
+* [BS23](https://toc.cryptobook.us/) - The Boneh-Shoup Book.
 * [BF01](https://crypto.stanford.edu/~dabo/papers/bfibe.pdf) - The IBE paper.
 * [BLS01](https://www.iacr.org/archive/asiacrypt2001/22480516.pdf) - The BLS paper.
 * [DH76](https://ee.stanford.edu/~hellman/publications/24.pdf) - Diffie and Hellman's New Directions paper.
