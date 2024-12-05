@@ -2563,15 +2563,15 @@
   },
   {
     "name": "Verity",
-    "description": "Verity (fka CCAMP) is a network and framework for creating verifiable data flows. It connects private data from multiple sources and verifies it on any blockchain. Build your own Oracles or use existing ones for secure off-chain data access. Verity's MPC layer enables shared computation between the Internet Computer (IC) and ZK processes, using the IC as a co-processor.",
+    "description": "Verity (formerly CCAMP) is a server-side zkTLS protocol designed for creating verifiable data pipelines. It enhances the Internet Computer (IC) as a co-processor, reducing the cost of data sourcing for indexing and processing.",
     "website": "https://go.usher.so/ccamp",
     "logo": "/img/showcase/ccamp_logo.webp",
     "screenshots": [
-      "/img/showcase/ccamp_screenshot.webp"
+      "/img/showcase/verity_diagram.webp"
     ],
     "video": "",
     "display": "Normal",
-    "id": "ccamp",
+    "id": "verity",
     "oneLiner": "Connect private or restricted data from many sources to verify on any blockchain",
     "tags": [
       "Bitcoin",
@@ -2580,7 +2580,7 @@
       "Chain Fusion"
     ],
     "usesInternetIdentity": false,
-    "github": "https://github.com/usherlabs/ccamp",
+    "github": "https://github.com/usherlabs/verity-dp",
     "twitter": "https://twitter.com/usher_web3",
     "youtube": "https://www.youtube.com/@usher_web3",
     "submittableId": "36108625"
