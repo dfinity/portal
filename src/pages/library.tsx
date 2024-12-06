@@ -106,7 +106,7 @@ function Library() {
       description="Find resources to learn more about the Internet Computer and its capabilities."
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
-      <ShareMeta image="/img/shareImages/share-news.jpg"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-library.webp"></ShareMeta>
 
       <main
         className="text-black relative overflow-hidden"
