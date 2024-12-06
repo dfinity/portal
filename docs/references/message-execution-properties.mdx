@@ -14,26 +14,26 @@ The [community conversation on security best practices](https://www.youtube.com/
 
 To interact with a canister's methods, there are two primary types of **calls** that can be used: [update](/references/ic-interface-spec.md#http-call) calls and [query](/docs/current/references/ic-interface-spec#http-query) calls.
 
-If the Rust CDK is used, these are usually annotated with `#[update]` or `#[query]`, respectively. In Motoko, updates are declared as `public func`, and queries uss the dedicated keyword: `public query func`. ICP also supports additional [entry points](/references/ic-interface-spec.md#entry-points) such as heartbeats, timers, initialization or upgrade hooks.
+The call must be addressed to an entry point of a canister, which is called a **method**. If the Rust CDK is used, these are usually annotated with `#[update]` or `#[query]`, respectively. In Motoko, updates are declared as `public func`, and queries uss the dedicated keyword: `public query func`. ICP also supports additional [entry points](/references/ic-interface-spec.md#entry-points) such as heartbeats, timers, initialization or upgrade hooks.
 
-A **message** is a set of consecutive instructions that a subnet executes for a canister. The code execution for any such entry point can be split into several messages if inter-canister calls are made. The following properties are essential:
+A **message execution** is a set of consecutive instructions that a subnet executes when a canister's entry point is invoked. The code execution for any such entry point can be split into several message executions if inter-canister calls are made. The following properties are essential:
 
-- **Property 1**: Only a single message is processed at a time per canister. Message execution is atomic and sequential, and never parallel.
+- **Property 1**: Only a single message execution is run at a time per canister. Message execution is atomic and sequential, and never parallel.
 
-- **Property 2**: Each call, query or update, triggers a message. When using `await` on the response from an inter-canister call, the code after the `await` (the callback, highlighted in blue) is executed as a separate message.
+- **Property 2**: Each downstream call that a canister makes, query or update, triggers a message. When using `await` on the response from an inter-canister call, the code after the `await` (the callback, highlighted in blue) is executed as a separate message execution.
 
 For example, consider the following Motoko code:
 
 ![example_highlighted_code](./_attachments/example_highlighted_code.png)
 
-The first message that is executed here are lines 2-3, until the inter-canister call is made using the `await` syntax (orange box). The second message executes lines 3-5: when the inter-canister call returns (blue box). This part is called the _callback_ of the inter-canister call. The two messages involved in this example will always be scheduled sequentially.
+The first message execution spans the lines 2-3, until the inter-canister call is made using the `await` syntax (orange box). The second message execution spans lines 3-5: when the inter-canister call returns (blue box). This part is called the _callback_ of the inter-canister call. The two message executions involved in this example will always be scheduled sequentially.
 
 :::info
-Note that an `await` in the code does not necessarily mean that an inter-canister call is made and thus a message execution ends and the code after the `await` is executed as a separate message (callback). Async code with the `await` syntax (e.g. in Rust or Motoko) can also be used "internally" in the canister, without issuing an inter-canister call. In that case, the code part including the `await` will be processed within a single message. For Rust, both cases are possible if `await` is used. An inter-canister call is only made if the system API `ic0.call_perform` is called, e.g. by using the CDK's call method. In Motoko, `await` always commits the current state and triggers a new message send, while `await*` does not necessarily commit the current state or trigger new message sends. See [Motoko `await`](/docs/current/motoko/main/reference/language-manual#await) vs. [Motoko `await*`](/docs/current/motoko/main/reference/language-manual#await-1).
+Note that an `await` in the code does not necessarily mean that an inter-canister call is made and thus a message execution ends and the code after the `await` is executed as a separate message execution (callback). Async code with the `await` syntax (e.g. in Rust or Motoko) can also be used "internally" in the canister, without issuing an inter-canister call. In that case, the code part including the `await` will be processed within a single message. For Rust, both cases are possible if `await` is used. An inter-canister call is only made if the system API `ic0.call_perform` is called, e.g. by using the CDK's call method. In Motoko, `await` always commits the current state and triggers a new message send, while `await*` does not necessarily commit the current state or trigger new message sends. See [Motoko `await`](/docs/current/motoko/main/reference/language-manual#await) vs. [Motoko `await*`](/docs/current/motoko/main/reference/language-manual#await-1).
 :::
 
 :::info
-Note that if the code does not `await` the response, the code after the callback is executed in the same message, until the next inter-canister call is triggered using `await`.
+Note that if the code does not `await` the response, the code after the callback is executed in the same message execution, until the next inter-canister call is triggered using `await`.
 
 Also, multiple outgoing calls can be triggered in parallel from the same message execution; see the [Rust](https://internetcomputer.org/docs/current/references/samples/rust/parallel_calls/) and [Motoko](https://internetcomputer.org/docs/current/references/samples/motoko/parallel_calls/) examples.
 :::
@@ -51,16 +51,18 @@ Property 3 provides a guarantee on the execution order of messages on a target c
 
 ![example_orderings](./_attachments/example_orderings.png)
 
-- **Property 5**: On a trap or panic, modifications to the canister state for the current message are not applied.
+- **Property 5**: On a trap or panic, modifications to the canister state for the current message execution are not applied.
 
-For example, if a trap in the second message (blue box) of the above example occurs, canister state changes resulting from that message, even earlier in the blue box, are discarded. However, note that any state changes from earlier messages and in particular the first message (orange box) have been applied, as that message executed successfully.
+For example, if a trap occurs in the execution of the second message (blue box) of the above example, canister state changes resulting from that message execution, even earlier in the blue box, are discarded. However, note that any state changes from earlier message execution and in particular the first message execution (orange box) have been applied, as that message executed successfully.
 
 - **Property 6**: Inter-canister calls are not guaranteed to make it to the destination canister, and if a call does reach the destination canister, the destination canister can trap or return a reject response while processing the call.
 
+There are many reasons why a call might not be delivered to the destination canister. Some of them are under the control of the canister developers, such as the destination having sufficient cycles to process the call. Others are not; the Internet Computer may decide to fail the call if it's under high load.
+
 - **Property 7**: Every inter-canister call is guaranteed to receive a response, either from the canister, or synthetically produced by the protocol.
 
-However, a malicious destination canister could choose to delay the response for arbitrarily long if it is willing to put in the required cycles. Also, the response does not have to be successful, but can also be a reject response. The reject may come from the called canister, but it may also be generated by ICP. Such protocol-generated rejects can occur at any time before the call reaches the callee-canister, as well as once the call does reach the callee-canister if the callee-canister traps while processing the call. Thus, it's important that the calling canister handles reject responses as well. A reject response means that the message hasn't been successfully processed by the receiver but doesn't guarantee that the receiver's state wasn't changed.
+However, a malicious destination canister could choose to delay the response for arbitrarily long if it is willing to put in the required cycles. Also, the response does not have to be successful, but can also be a reject response. The reject may come from the called canister, but it may also be generated by ICP. Such protocol-generated rejects can occur at any time before the call reaches the callee-canister, as well as once the call does reach the callee-canister, for example if the callee-canister traps while processing the call. Thus, it's important that the calling canister handles reject responses as well. A reject response means that the message hasn't been successfully processed by the receiver but doesn't guarantee that the receiver's state wasn't changed.
 
-- **Property 8**: If the calling canister made a guaranteed response (as opposed to a best-effort response) inter-canister call, and the call reaches the callee-canister which then produces a reply or reject response, the protocol guarantees that the callee-canister's generated reply or reject response gets back to the caller-canister. 
+- **Property 8**: If the calling canister made a guaranteed response (as opposed to a best-effort response) inter-canister call, and the call reaches the callee-canister which then produces a reply or reject response, the protocol guarantees that the callee-canister's generated reply or reject response gets back to the caller-canister.
 
 For more details, refer to the Interface Specification [section on ordering guarantees](/docs/current/references/ic-interface-spec#ordering_guarantees) and the section on [abstract behavior](/docs/current/references/ic-interface-spec#abstract-behavior) which defines message execution in more detail.
