@@ -8,24 +8,12 @@ import Layout from "@theme/Layout";
 import { motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import DownloadIcon from "../components/Common/Icons/DownloadIcon";
+import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 
 const presentationCards = [
   {
-    title: "Internet Computer in a Nutshell",
-    description:
-      "This is a short description of the content of this doc. It quickly summarizes who this is for, what topics it covers and what the goal is. ",
-    url: "https://internetcomputer..com/view/dzkwezufykwpb7p8",
-  },
-  {
-    title: "Internet Computer in a Nutshell (German)",
-    description:
-      "This is a short description of the content of this doc. It quickly summarizes who this is for, what topics it covers and what the goal is. ",
-    url: "/docs/current/developers/guides/internet-computer-in-a-nutshell",
-  },
-  {
     title: "ICP makes the Internet into a World Computer",
-    description:
-      "This is a short description of the content of this doc. It quickly summarizes who this is for, what topics it covers and what the goal is. ",
+    description: "",
     url: "https://internetcomputer.docsend.com/view/dzkwezufykwpb7p8",
   },
 ];
@@ -100,7 +88,7 @@ const LibraryCard: React.FC<{
           </div>
 
           <div className="button-round-icon mt-auto" aria-label={`Download`}>
-            <DownloadIcon />
+            <LinkArrowRight />
           </div>
         </div>
       </article>
