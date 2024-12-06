@@ -44,7 +44,7 @@ const whitepaperCards = [
   {
     title:
       "Advancing Blockchain Scalability: A Linear Optimization Framework for Diversified Node Allocation in Shards",
-    description: "Bjorn Assmann, Samuel J. Burri",
+    description: "Björn Assmann, Samuel J. Burri",
     url: "/whitepapers/Advancing Blockchain Scalability_ A Linear Optimization Framework for Diversified Node Allocation in Shards.pdf",
   },
   {
@@ -176,7 +176,7 @@ const LibraryCard: React.FC<{
           <div
             className={`button-round-icon mt-auto ${
               highlighted
-                ? "bg-transparent border-white/30 text-white hover:bg-white hover:text-[#240d4e] hover:border-white"
+                ? "!bg-transparent !border-white/30 !text-white hover:!bg-white hover:!text-[#240d4e] hover:!border-white"
                 : ""
             }`}
             aria-label={`Download`}
