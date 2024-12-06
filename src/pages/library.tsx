@@ -164,7 +164,6 @@ function Library() {
           <h2 className="tw-heading-4 md:tw-heading-60 mb-1 md:mb-3">
             Presentations
           </h2>
-          <p className="tw-body">Read the latest presentations. </p>
           <div className="mt-4 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
             {presentationCards.map((card) => (
               <LibraryCard
@@ -175,11 +174,10 @@ function Library() {
             ))}
           </div>
         </section>
-        <section className="container-10 py-20 mb-20">
+        <section className="container-10 py-4 md:py-20 mb-20">
           <h2 className="tw-heading-4 md:tw-heading-60 mb-1 md:mb-3">
             Whitepapers
           </h2>
-          <p className="tw-body">Read the latest whitepapers.</p>
           <div className="mt-4 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
             {whitepaperCards.map((card) => (
               <LibraryCard
