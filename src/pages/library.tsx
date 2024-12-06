@@ -12,82 +12,175 @@ import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 
 const presentationCards = [
   {
-    title: "ICP makes the Internet into a World Computer",
-    description: "",
+    title: "ICP makes the Internet into a World Computer - Deck",
     url: "https://internetcomputer.docsend.com/view/dzkwezufykwpb7p8",
+  },
+  {
+    title: "UTOPIA Deck",
+    url: "https://utopia.docsend.com/view/ez8f34n53q2fg2de",
+  },
+  {
+    title: "Internet Computer in a nutshell EN",
+    url: "/presentations/Internet Computer in a nutshell EN.pdf",
+  },
+  {
+    title: "Internet Computer in a nutshell DE",
+    url: "/presentations/Internet Computer in a nutshell DE.pdf",
   },
 ];
 
 const whitepaperCards = [
   {
-    title: "Secure Noise Sampling for DP in MPC with Finite Precision",
-    subtitle: "ARES 2024",
-    description:
-      "Hannah Keller, Helen Möllering, Thomas Schneider, Oleksandr Tkachenko, Liang Zhao",
-    url: "https://eprint.iacr.org/2023/1594.pdf",
+    title: "The Internet Computer for Geeks",
+    description: "The DFINITY Team",
+    url: "/whitepapers/The Internet Computer for Geeks.pdf",
   },
   {
-    title: "ScionFL: Secure Quantized Aggregation for Federated Learning",
-    subtitle: "SaTML 2024",
+    title: "Internet Computer Consensus",
     description:
-      "Yaniv Ben-Itzhak, Helen Möllering, Benny Pinkas, Thomas Schneider, Ajith Suresh, Oleksandr Tkachenko, Shay Vargaftik, Christian Weinert, Hossein Yalame, Avishay Yanai",
-    url: "https://eprint.iacr.org/2023/652.pdf",
+      "Jan Camenisch, Manu Drijvers, Timo Hanke, Yvonne-Anne Pignolet, Victor Shoup, Dominic Williams",
+    url: "/whitepapers/Internet Computer Consensus.pdf",
   },
   {
     title:
-      "Bringing Order to Chaos: The Case of Collision-Resistant Chameleon-Hashes",
-    subtitle: "Journal of Cryptology 37, 29 (2024)",
-    description: "David Derler, Kai Samelin, Daniel Slamanig",
-    url: "https://link.springer.com/content/pdf/10.1007/s00145-024-09510-9.pdf",
+      "Advancing Blockchain Scalability: A Linear Optimization Framework for Diversified Node Allocation in Shards",
+    description: "Bjorn Assmann, Samuel J. Burri",
+    url: "/whitepapers/Advancing Blockchain Scalability_ A Linear Optimization Framework for Diversified Node Allocation in Shards.pdf",
   },
   {
+    title:
+      "Decentralized and Stateful Serverless Computing on the Internet Computer Blockchain",
+    description:
+      "Maksym Arutyunyan, Andriy Berestovskyy, Adam Bratschi-Kaye, Ulan Degenbaev, Manu Drijvers, Islam El-Ashi, Stefan Kaestle, Roman Kashitsyn, Maciej Kot, Yvonne-Anne Pignolet, Rostislav Rumenov, Dimitris Sarlis, Alin Sinpalean, Alexandru Uta, Bogdan Warinschi, and Alexandra Zapuc",
+    url: "/whitepapers/Decentralized and Stateful Serverless Computing on the Internet Computer Blockchain.pdf",
+  },
+  {
+    title: "Non-interactive distributed key generation and key resharing",
+    description: "Jens Groth",
+    url: "/whitepapers/Non-interactive distributed key generation and  key resharing.pdf",
+  },
+  {
+    title: "vetKeys: How a Blockchain Can Keep Many Secrets",
+    description:
+      "Andrea Cerulli, Aisling Connolly, Gregory Neven, Franz-Stefan Preiss, Victor Shoup",
+    url: "/whitepapers/vetKeys_ How a Blockchain Can Keep Many Secrets.pdf",
+  },
+
+  {
     title: "Smarter Contract Upgrades with Orthogonal Persistence",
-    subtitle: "VMIL 2024",
     description:
       "Luc Bläser, Claudio Russo, Gabor Greif, Ryan Vandersmith, Jason Ibrahim",
-    url: "https://dl.acm.org/doi/pdf/10.1145/3689490.3690401",
+    url: "/whitepapers/Smarter Contract Upgrades with Orthogonal Persistence.pdf",
+  },
+  {
+    title: "Collecting Garbage on the Blockchain",
+    description:
+      "Luc Bläser, Claudio Russo, Ulan Degenbaev, Ömer S. Agacan, Gabor Greif, Jason Ibrahim",
+    url: "/whitepapers/Collecting Garbage on the Blockchain.pdf",
+  },
+  {
+    title: "A Decentralized Mechanism for Know-Your-Transaction Compliance",
+    description: "Thomas Locher",
+    url: "/whitepapers/A Decentralized Mechanism for Know-Your-Transaction Compliance.pdf",
   },
   {
     title:
       "Byzantine Reliable Broadcast with Low Communication and Time Complexity",
-    subtitle: "OPODIS 2024",
     description: "Thomas Locher",
-    url: "https://arxiv.org/pdf/2404.08070",
+    url: "/whitepapers/Byzantine Reliable Broadcast with Low Communicationand Time Complexity.pdf",
+  },
+  {
+    title: "Design and analysis of a distributed ECDSA signing service",
+    description: "Jens Groth and Victor Shoup",
+    url: "/whitepapers/Design and analysis of a distributed ECDSA signing service.pdf",
+  },
+  {
+    title: "Fully on-chain DAOs on the Internet Computer",
+    description: "Björn Assman and Lara Schmid",
+    url: "/whitepapers/Fully on-chain DAOs on the Internet Computer.pdf",
   },
   {
     title:
-      "On the Interplay between Deadline-Constrained Traffic and the Number of Allowed Retransmissions in Random Access Networks",
-    subtitle: "CVA CFP 2024",
-    description: "N Nomikos, T Charalambous, R Wichman, YA Pignolet, N Pappas",
-    url: "https://www.mdpi.com/1099-4300/26/8/655",
+      "Lightweight Asynchronous Verifiable Secret Sharing with Optimal Resilience",
+    description: "Victor Shoup and Nigel P. Smart",
+    url: "/whitepapers/Lightweight Asynchronous Verifiable Secret Sharing with Optimal  Resilience.pdf",
+  },
+  {
+    title: "Monitoring the Internet Computer",
+    description:
+      "David Basin, Daniel Stefan Dietiker, Srđan Krstić, Yvonne-Anne Pignolet, Martin Raszyk, Joshua Schneider & Arshavir Ter-Gabrielyan",
+    url: "/whitepapers/Monitoring the Internet Computer.pdf",
+  },
+
+  {
+    title:
+      "On the security of ECDSA with additive key derivation and presignatures",
+    description: "Jens Groth and Victor Shoup",
+    url: "/whitepapers/On the security of ECDSA with additive key derivation and  presignatures.pdf",
+  },
+  {
+    title: "Trustworthy confidential virtual machines for the masses",
+    description:
+      "Anna Galanou, Khushboo Bindlish, Luca Preibsch, Yvonne-Anne Pignolet, Christof Fetzer, Rüdiger Kapitza",
+    url: "/whitepapers/Trustworthy confidential virtual machines for the masses.pdf",
+  },
+  {
+    title: "User-centric authentication in Web 3.0",
+    description: "Björn Tackmann, DFINITY Foundation",
+    url: "/whitepapers/User-centric authentication in Web 3.0.pdf",
   },
 ];
+
 const LibraryCard: React.FC<{
   title: string;
   subtitle?: string;
-  description: string;
+  description?: string;
   url: string;
-}> = ({ title, subtitle, description, url }) => {
+  highlighted?: boolean;
+}> = ({ title, subtitle, description, url, highlighted }) => {
   return (
     <Link
-      className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black h-full"
+      className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform h-full"
       href={url}
       target="_blank"
       rel="noopener noreferrer"
     >
-      <article className="rounded-xl overflow-hidden bg-white flex flex-col h-full">
+      <article
+        className={`rounded-xl overflow-hidden flex flex-col h-full w-full ${
+          highlighted ? "bg-[#240d4e] text-white" : "bg-white text-black"
+        }`}
+      >
         <div className="px-6 pt-8 pb-6 flex flex-col flex-1">
           <h3 className="tw-heading-5 mb-2 line-clamp-3 min-h-[4.5rem]">
             {title}
           </h3>
           {subtitle && (
-            <div className="tw-paragraph-sm text-black/60 mb-2">{subtitle}</div>
+            <div
+              className={`tw-paragraph-sm mb-2 ${
+                highlighted ? "text-white/60" : "text-black/60"
+              }`}
+            >
+              {subtitle}
+            </div>
           )}
-          <div className="tw-paragraph-sm line-clamp-4 text-black/60 mb-6 flex-1">
-            {description}
-          </div>
+          {description && (
+            <div
+              className={`tw-paragraph-sm line-clamp-4 mb-6 flex-1 ${
+                highlighted ? "text-white/60" : "text-black/60"
+              }`}
+            >
+              {description}
+            </div>
+          )}
 
-          <div className="button-round-icon mt-auto" aria-label={`Download`}>
+          <div
+            className={`button-round-icon mt-auto ${
+              highlighted
+                ? "bg-transparent border-white/30 text-white hover:bg-white hover:text-[#240d4e] hover:border-white"
+                : ""
+            }`}
+            aria-label={`Download`}
+          >
             <LinkArrowRight />
           </div>
         </div>
@@ -154,11 +247,7 @@ function Library() {
           </h2>
           <div className="mt-4 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
             {presentationCards.map((card) => (
-              <LibraryCard
-                title={card.title}
-                description={card.description}
-                url={card.url}
-              />
+              <LibraryCard key={card.title} title={card.title} url={card.url} />
             ))}
           </div>
         </section>
@@ -167,12 +256,13 @@ function Library() {
             Whitepapers
           </h2>
           <div className="mt-4 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-            {whitepaperCards.map((card) => (
+            {whitepaperCards.map((card, idx) => (
               <LibraryCard
+                key={card.title}
                 title={card.title}
-                subtitle={card.subtitle}
                 description={card.description}
                 url={card.url}
+                highlighted={idx === 0}
               />
             ))}
           </div>
