@@ -315,7 +315,7 @@ Not handling the error cases correctly is risky: For example, if a ledger transf
 
 ### Recommendation
 
-When making inter-canister calls, always handle the error cases (rejects) correctly. Other than the `SYS_UNKNOWN` error code, these errors imply that the message has not been successfully executed. For  `SYS_UKNOWN`, follow the guidelines in the [safe retries & idempotency](/docs/current/developer-docs/smart-contracts/best-practices/idempotency) document to handle this scenario correctly.
+When making inter-canister calls, always handle the error cases (rejects) correctly. Other than the `SYS_UNKNOWN` error code, these errors imply that the message has not been successfully executed. For  `SYS_UNKNOWN`, follow the guidelines in the [safe retries & idempotency](/docs/current/developer-docs/smart-contracts/best-practices/idempotency) document to handle this scenario correctly.
 
 ## Be aware of the risks involved in calling untrustworthy canisters
 
@@ -323,7 +323,7 @@ When making inter-canister calls, always handle the error cases (rejects) correc
 
 - If inter-canister calls are made to potentially malicious canisters, this can lead to DoS issues or there could be issues related to candid decoding. Also, the data returned from a canister call could be assumed to be trustworthy when it is not.
 
-- When a canister `C1` calls a canister `C2` using a guaranteed-response inter-canister call, and the `C2` stalls the response indefinitely by not responding, the result would be a DoS on `C1`. Additionally, since the call registers a callback on `C1`, `C1` can no longer be stopped because of the outstanding callback, and thus can no longer be cleanly upgraded.. Recovery would require wiping the state of the canister by reinstalling it. Note that even if `C2` was trustworthy it could still stall indefinitely. This could happen due to a bug, however, such a bug seems rather unlikely to occur. But yet another cause could be a stall of the subnet hosting `C2` (assuming that `C1` and `C2` are on different subnets).
+- When a canister `C1` calls a canister `C2` using a guaranteed-response inter-canister call, and the `C2` stalls the response indefinitely by not responding, the result would be a DoS on `C1`. Additionally, since the call registers a callback on `C1`, `C1` can no longer be stopped because of the outstanding callback, and thus can no longer be cleanly upgraded. Recovery would require wiping the state of the canister by reinstalling it. Note that even if `C2` was trustworthy it could still stall indefinitely. This could happen due to a bug, however, such a bug seems rather unlikely to occur. But yet another cause could be a stall of the subnet hosting `C2` (assuming that `C1` and `C2` are on different subnets).
 
 - In summary, this can DoS a canister, consume an excessive amount of resources, or lead to logic bugs if the behavior of the canister depends on the inter-canister call response.
 
