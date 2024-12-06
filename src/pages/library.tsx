@@ -10,22 +10,25 @@ import React, { useEffect, useRef, useState } from "react";
 import DownloadIcon from "../components/Common/Icons/DownloadIcon";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 
-const presentationCards = [
+const quickstartCards = [
   {
-    title: "ICP makes the Internet into a World Computer - Deck",
-    url: "https://internetcomputer.docsend.com/view/dzkwezufykwpb7p8",
-  },
-  {
-    title: "UTOPIA Deck",
-    url: "https://utopia.docsend.com/view/ez8f34n53q2fg2de",
-  },
-  {
-    title: "Internet Computer in a nutshell EN",
+    title: "Internet Computer in a Nutshell",
     url: "/presentations/Internet Computer in a nutshell EN.pdf",
   },
   {
-    title: "Internet Computer in a nutshell DE",
+    title: "Der Internet Computer in Kürze (German)",
     url: "/presentations/Internet Computer in a nutshell DE.pdf",
+  },
+];
+
+const presentationCards = [
+  {
+    title: "ICP makes the Internet into a World Computer",
+    url: "https://internetcomputer.docsend.com/view/dzkwezufykwpb7p8",
+  },
+  {
+    title: "UTOPIA",
+    url: "https://utopia.docsend.com/view/ez8f34n53q2fg2de",
   },
 ];
 
@@ -241,7 +244,17 @@ function Library() {
             </motion.div>
           </AnimateSpawn>
         </div>
-        <section className="container-10 py-20">
+        <section className="container-10 mt-8 py-20">
+          <h2 className="tw-heading-4 md:tw-heading-60 mb-1 md:mb-3">
+            Quick Starts
+          </h2>
+          <div className="mt-4 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+            {quickstartCards.map((card) => (
+              <LibraryCard key={card.title} title={card.title} url={card.url} />
+            ))}
+          </div>
+        </section>
+        <section className="container-10 pt-4 pb-20 md:py-12 ">
           <h2 className="tw-heading-4 md:tw-heading-60 mb-1 md:mb-3">
             Presentations
           </h2>
