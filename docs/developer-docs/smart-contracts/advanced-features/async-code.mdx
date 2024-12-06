@@ -1,90 +1,94 @@
 ---
-keywords: [advanced, concept, async code, inter-canister calls, async inter-canister, async]
+keywords: [beginner, concept, async code, inter-canister calls, async inter-canister, async]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Async code and inter-canister calls
+# Inter-canister calls & async code
 
-<MarkdownChipRow labels={["Advanced", "Concept"]} />
+<MarkdownChipRow labels={["Beginner", "Concept"]} />
 
 ## Overview
 
-In programming, the [async/await pattern](https://en.wikipedia.org/wiki/Async/await) is a syntactic feature of many programming languages that allows an asynchronous, non-blocking function to be structured in a similar way to an ordinary synchronous function.
+The ICP allows canisters to seamlessly interact with other canisters by calling their methods, just like external users call canisters. You are likely to need inter-canister calls early on: they are necessary to transfer the ICP token, or to access certain system functionality through the [management canister](/docs/current/developer-docs/smart-contracts/advanced-features/management-canister). This remote procedure call (RPC) mechanism, based on a request-response paradigm, will feel familiar if you are coming from Ethereum or other smart-contract enabled blockchains, but there are also important differences that you should also understand:
 
-On ICP, `async/await` is useful in the context of inter-canister calls. Inter-canister calls cannot be handled synchronously (as the two canisters
-interacting might not even be in the same subnet), so when a canister sends a call to another, it will have to wait until a response comes back
-before it can continue processing the call it received.
+- On ICP, inter-canister calls are **asynchronous**. That means that while an inter-canister call is in progress other calls can still be processed. This significantly increases the canisters' scalability. However, it also means that canister authors have to correctly handle calls executing concurrently. In particular, this differs from the transactional nature of Ethereum's smart contract calls.
 
-The `async/await` pattern makes this look straightforward, as the developer can write code as if processing happens sequentially and the call to
-the callee is handled “synchronously”. However, given ICP's message passing model, one has to be careful in case there are [concurrent calls that
-message executions can interleave](/docs/current/references/message-execution-properties) as these can lead to inconsistencies if they are not anticipated.
+- Since the calls are asynchronous, they are based on **callbacks**: when issuing a request to the callee canister, the caller also specifies a callback that will handle the callee's response. Many programming languages provide syntactic sugar for handling asynchronous calls in the form of `async/await` syntax, which obviates the need for explicit callbacks and allows structuring asynchronous code similar to an ordinary synchronous function. Motoko, the Rust Canister Development Kit (CDK), Azle (Typescript CDK) and Kybra (Python CDK) all support such syntactic sugar.
 
-## Overview of language runtime for asynchronous code
+- The requests are not guaranteed to be delivered. This allows the system to use its resources more optimally overall, but again differs from Ethereum and many other blockchains, and needs to be handled correctly. Moreover, calls can be made in either best-effort or guaranteed response modes. The best-effort mode supports many more messages and is much more resilient to high system load, but in this mode the "true" response from the callee is not guaranteed to be delivered, and can be replaced by a system generated error instead.
 
-Most languages implement asynchronous code through constructs that they typically call [futures](https://docs.rs/futures/latest/futures/)
-([promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) in Javascript). A future is a representation
-of an eventual value produced by some asynchronous computation. Typically, a future is modeled to have different states depending on whether the
-result of the asynchronous computation is ready or not. The language runtime can poll the future to learn about its result. As long as the result
-is not ready, the code will typically yield execution and the future will be polled again later.
+- ICP canisters can be written in any language that compiles down to Wasm. That means that the caller and callee canisters can be written in different languages, and need some common data format to exchange messages. While the ICP doesn't enforce a data format, [Candid](/docs/current/developer-docs/smart-contracts/candid/candid-concepts) is the de facto standard.
 
-In order to implement inter-canister calls on ICP, there would need to be a future which, once created, takes care of calling
-[the respective system APIs](/docs/current/references/ic-interface-spec#system-api-call) to make the call and will
-become ready once the response from the calling canister is received. The language runtime can poll the future once it's ready and retrieve the
-result of the inter-canister call.
+## Service discovery
 
-## Inter-canister calls
+Before you can call other canisters that are not part of your project, you need to learn the available endpoints (methods) that you can call, as well as their arguments and return values. Candid serves both as a data format and as an interface description language, and the ICP SDK will by default bundle the interface description (if available) in the `candid:service` metadata section of the canister code. For example, you can examine the interface of the ICP ledger canister (whose principal is `ryjl3-tyaaa-aaaaa-aaaba-cai`) using [`dfx`](/docs/current/developer-docs/getting-started/install).
 
-Let's look at an example where two canisters interact with each other. In the following example, canister A calls into canister B.
+```bash
+$ dfx canister metadata ryjl3-tyaaa-aaaaa-aaaba-cai candid:service --network ic
+```
+
+If you are using Candid, you should also write or generate service description files for your own canisters so that other canisters and external applications can easily call into your canister. See the [Candid documentation](/docs/current/developer-docs/smart-contracts/candid/candid-howto) for more instructions.
+
+When the canister authors support it, remote canisters can also be made "pullable", such that you can easily test against the canisters locally. See the [dfx documentation](/docs/current/developer-docs/developer-tools/cli-tools/dfx-json#pullable-canisters) for more details.
+
+## Performing inter-canister calls
+
+Once you know the endpoints you want to call, in most cases you will want to use the CDK of your language to perform the calls. The CDK will generally take care of Candid encoding and decoding, and provide an `async/await` based syntax for your inter-canister calls. Refer to the language documentation
+([Motoko](/docs/current/motoko/main/writing-motoko/intercanister-calls), [Rust](/docs/current/developer-docs/backend/rust/intercanister),  [Typescript](/docs/current/developer-docs/backend/typescript/), [Python](/docs/current/developer-docs/backend/python/))
+for more details.
+
+
+### Low-level API
+
+Under the hood, the CDKs use the low-level Wasm API to perform inter-canister calls, relying on callbacks. Most users will not need to interact with this API, but you can find more details in the [Internet Computer interface specification](/docs/current/references/ic-interface-spec/#system-api-call).
+
+
+### Attaching cycles
+
+[Cycles](/docs/current/developer-docs/gas-cost) are the currency in which canisters pay for their resource usage. Canisters can send some of the cycles they hold to other canisters. This can be done either by directly attaching cycles to any call to the target canister through the [`deposit_cycles`](/docs/current/references/ic-interface-spec/#ic-deposit_cycles) method of the management canister. The target canister must explicitly accept part or all of the sent cycles; the remainder is refunded to the caller.
+
+Some endpoints require the caller to attach cycles to the call. For example, the [on-chain signature](/docs/current/developer-docs/smart-contracts/signatures/signing-messages-t-ecdsa) operations of the management canister require cycles to be attached. Requiring cycles can be used to implement a "direct-gas" model, as opposed to the default "reverse-gas" model of ICP.
+
+Refer to the language documentation ([Motoko](/docs/current/motoko/main/writing-motoko/intercanister-calls), [Rust](/docs/current/developer-docs/backend/rust/intercanister),  [Typescript](/docs/current/developer-docs/backend/typescript/), [Python](/docs/current/developer-docs/backend/python/)) for details on how to send and accept cycles.
+
+## Guaranteed response vs best-effort response calls
+
+ICP supports two kind of inter-canister calls:
+
+* Guaranteed response calls provide the caller with the guarantee that, if the callee produces a response (which may be unsuccessful, i.e., an error during call processing), that exact response will be delivered to the caller. Furthermore, if the request isn't successfully delivered to the callee (which can happen during high load, callee running out of cycles, and other reasons), the response will notify the caller of this.
+
+* Best-effort response calls drop this guarantee. They allow the caller to specify a timeout (which is capped from above by the system to some maximum value, such as 5 minutes), after which the system will return an error to the caller. The request may or may not be processed by the callee; the caller must, if necessary, determine whether the call took place or not by some other mechanism.
+
+Guaranteed response calls are a legacy call mechanism. While on the surface they make it easier to write correct applications, they also suffer some significant drawbacks:
+
+* If the callee is unresponsive (which could happen because of high load on the callee, high load or an error on the callee's subnet, or even because the callee is malicious and delays the response on purpose), the caller canister is stalled and has no control over when it can resume processing or provide an answer. Furthermore, the caller canister cannot be safely stopped and upgraded.
+* They do not scale well. When the system is under high load, canisters may be unable to issue further inter-canister calls.
+
+Best-effort calls address both of these problems. However, they can require more effort on the part of the caller to handle the additional error case. Here are some guidelines how to choose between the two types of calls:
+
+* Always prefer best-effort response calls for calls that don't change the state of the callee, i.e., reads.
+* For endpoints that change the state of the callee, the best practice is to make such endpoints amenable to [safe retries](/docs/current/developer-docs/smart-contracts/best-practices/idempotency), since this is also required for safely handling external user calls. Use best-effort responses calls for such endpoints, and handle the additional edge cases.
+* Use guaranteed response calls for endpoints that mutate state and do not enable safe retries, or calls that perform larger cycle transfers. Best-effort response calls can currently lose cycles in edge cases. Be aware of the limitations of guaranteed response calls listed above. If safe upgrades are needed, consider using a stateless proxy canister (see the [security best practices](https://internetcomputer.org/docs/current/developer-docs/security/security-best-practices/inter-canister-calls) for more information).
+
+## `async/await` syntax, concurrency and state changes
+
+The ``async/await`` syntax allows canister methods to issue asynchronous inter-canister calls and still be structured like an ordinary synchronous function. In this syntax, a method `foo` on a canister `A` could be written something like (in Rust-like syntax):
 
 ```
-/// Canister A
 async fn foo() {
   do_work();
   call(canister_b, 'bar').await;
   do_more_work(res);
 }
-
-/// Canister B
-fn bar() {
-  do_some_more_work();
-}
 ```
 
-When canister A calls B, a future that represents the result of the call is created. The future calls [the system API](/docs/current/references/ic-interface-spec#system-api-call)
-to enqueue the outgoing call. The future is not ready yet as it needs the response from canister B, so the code will yield and the message
-execution for canister A will stop at the point before `do_more_work`.
+While this looks like an ordinary function, there are important differences in behavior between synchronous functions and functions that perform inter-canister calls.
 
-Once the response from B is delivered, the future will be ready and contain the result of the call. Once polled (by the language's runtime when
-the callback handler is invoked) it will pass the result to canister A and execution can proceed with the remaining part (i.e. `do_more_work`).
+As already mentioned, unlike, say, Ethereum, multiple method call executions on the same canister can be executed concurrently in the presence of inter-canister calls. This increases the canister's throughput, but it also means that the code needs to be correct also in the presence of concurrent behaviors. In particular, the developers have to ensure that no re-entrancy issues occur.
 
-## Asynchronous functions
+Furthermore, canister methods that use inter-canister calls are **not atomic**. A failure somewhere in the method might not roll back all the changes that the method performed. Under the hood, such methods use the (low-level Wasm API)[### Low-level API] calls, and are translated into multiple *message handler Wasm functions*: an initial handler function that handles the method call itself (corresponding to `do_work` above), and other handler functions that serve as callbacks to handle the responses for any inter-canister calls that have been issued (`do_more_work` in the example above). The execution of each message handler is atomic on its own; an error (more precisely, a Wasm trap) rolls back only the changes performed by the current message handler, but does not affect the changes made by the other handlers.
 
-In the following example, another call is added to a local function to canister A before making the inter-canister call to canister B.
+For these reasons, to write correct code in the presence of inter-canister calls you should understand how the CDK for your language of choice desugars the `async/await` syntax into Wasm code, and in particular where the message handler boundaries are, as these are both "commit points" for state changes and potential interleaving points for concurrent executions.
 
-```
-/// Canister A
-async fn foo() {
-  baz().await;
-  call(canister_b, 'bar').await;
-  do_more_work(res);
-}
-
-async fn baz() {
-  do_local_work();
-}
-
-/// Canister B
-fn bar() {
-  do_some_more_work();
-}
-```
-
-When `baz().await` is called a future is created to represent its result. The result can actually be immediately available since there's only
-local computation (i.e. no inter-canister call involved) happening in `baz`. So, the future can return a result directly when polled and message
-execution can still proceed up to the point where the call to canister B is made (similar to the example from the previous section).
-
-The above behavior is one possibility depending on how the language runtime handles the `async/await` pattern. Rust follows this approach.
-In contrast, Motoko takes another approach where every async/await call will be converted to an inter-canister call, more specifically a self-call
-in case a local function is called. This means that in Motoko `foo` would be split across 3 message executions -- the first would be until `baz` is
-called, the second until canister B is called and the final one until the end of the function body.
+A [separate document](https://internetcomputer.org/docs/current/references/message-execution-properties) contains more details on interleaving/commit points and message execution properties. Refer to the [security best practices](/docs/current/developer-docs/security/security-best-practices/inter-canister-calls) for advice on how to handle concurrency and state rollback issues correctly. Finally, refer to the CDK documentation for your language to learn more about desugaring of `async/await` and interleaving/commit points.
