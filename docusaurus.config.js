@@ -201,6 +201,11 @@ const marketingNav = {
               href: "/capabilities/sustainability",
               description: "Building green, efficient tech",
             },
+            {
+              name: "Library",
+              href: "/library",
+              description: "Resources to get you started",
+            },
             /*
             {
               name: "ICP as a Bitcoin L2",
