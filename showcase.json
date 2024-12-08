@@ -14,7 +14,7 @@
     "usesInternetIdentity": true,
     "stats": "1,000+ TPS",
     "display": "Large",
-    "logo": "/img/showcase/bitfinity_evm.png",
+    "logo": "/img/showcase/bitfinity_evm.svg",
     "screenshots": [
       "/img/showcase/bitfinity_showcase.webp"
     ]
@@ -164,7 +164,7 @@
     "usesInternetIdentity": true,
     "twitter": "https://twitter.com/dragginzgame",
     "description": "Dragginz is a virtual pets game from the creators of Neopets. Hatch and raise Dragginz to accompany you on your adventures..",
-    "logo": "/img/showcase/dragginz_logo.svg"
+    "logo": "/img/showcase/dragginz_logo.png"
   },
   {
     "id": "icdex",
@@ -326,7 +326,7 @@
     "twitter": "https://twitter.com/HelixMarkets",
     "description": "Helix Markets is a decentralized exchange that aims to bring true ownership and full transparency to crypto trading.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/helix_logo.webp",
+    "logo": "/img/showcase/helix_logo.svg",
     "screenshots": [
       "/img/showcase/helix_screenshot.png"
     ]
@@ -370,7 +370,28 @@
     "screenshots": [
       "/img/showcase/juno_social_image.jpg"
     ],
-    "youtube": "https://www.youtube.com/watch?v=mr_9XArcG9Y"
+    "youtube": "https://www.youtube.com/@junobuild"
+  },
+  {
+    "id": "oisy",
+    "name": "OISY Wallet",
+    "oneLiner": "Browser-based multi-chain wallet",
+    "website": "https://oisy.com",
+    "github": "https://github.com/dfinity/oisy-wallet",
+    "display": "Large",
+    "tags": [
+      "Ethereum",
+      "DeFi",
+      "Wallet",
+      "Chain Fusion"
+    ],
+    "twitter": "https://x.com/oisy",
+    "description": "OISY Wallet is a new browser-based multi-chain wallet, powered by Internet Computer’s chain fusion technology. It is fully on-chain and implements network custody, an innovative approach that leverages the Internet Computer’s advanced cryptography to eliminate the need for you to handle private keys directly.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/oisy_logo.svg",
+    "screenshots": [
+      "/img/showcase/oisy-preview.webp"
+    ]
   },
   {
     "id": "kinic",
@@ -467,23 +488,6 @@
     "logo": "/img/showcase/nnsfront-enddapp_logo-dark.webp"
   },
   {
-    "id": "oisy",
-    "name": "OISY Wallet",
-    "oneLiner": "Browser-based multi-chain wallet",
-    "website": "https://oisy.com",
-    "github": "https://github.com/dfinity/oisy-wallet",
-    "tags": [
-      "Ethereum",
-      "DeFi",
-      "Wallet",
-      "Chain Fusion"
-    ],
-    "twitter": "https://x.com/OISY_Wallet",
-    "description": "Oisy is a new browser-based, self-custodial and multi-chain wallet powered by Internet Computer's chain fusion technology.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/oisy_logo.svg"
-  },
-  {
     "id": "trax",
     "name": "Trax",
     "tags": [
@@ -494,7 +498,7 @@
     "description": "Trax is a content aggregator and social marketplace, catering specifically to music artists and their die-hard fans, often referred to as “superfans”. By facilitating exclusive content drops and events, TRAX aims to help artists cultivate closer relationships with their superfans and generate higher revenue. ",
     "website": "https://trax.so/",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/trax_logo.jpeg"
+    "logo": "/img/showcase/trax_logo.webp"
   },
   {
     "id": "w3ns",
@@ -517,19 +521,20 @@
   {
     "id": "rubaru",
     "name": "RuBaRu",
-    "oneLiner": "Building Onchain Regenerative Creator-Consumer Economy",
+    "oneLiner": "The fully on-chain content creator/influencer platform: own your profile, own your content, and earn fair incentives.",
     "website": "https://rubaru.app/",
     "tags": [
       "SocialFi"
     ],
-    "description": "RuBaRu aims to create a vibrant 100% Onchain DAO-based tokenized economy owned & governed by the community, where creators, influencers, consumers, and brands coexist harmoniously. By doing so, we unlock new opportunities, reshape digital creativity, drive economic growth, and foster a thriving ecosystem of shared prosperity.",
+    "stats": "190+ canisters N/W, On-chain content : 15k+ images & 5k+ videos",
+    "description": "The fully on-chain content creator/influencer platform: own your profile, own your content, and earn fair incentives.",
     "logo": "/img/showcase/rubaru_logo.png",
     "display": "Large",
     "usesInternetIdentity": true,
     "youtube": "https://youtu.be/CBumSMJRV08",
     "twitter": "https://twitter.com/RuBaRu_app",
     "screenshots": [
-      "/img/showcase/rubaru_dapp_screenshots.png"
+      "/img/showcase/rubaru_dapp_screenshot.png"
     ],
     "video": "/img/showcase/rubaru_video.mp4",
     "videoContentType": "video/mp4",
@@ -587,7 +592,7 @@
     ],
     "description": "BOOM DAO is an all-in-one web3 game platform and protocol running 100% onchain on the Internet Computer. We are on a mission to build the gaming vertical of the Internet Computer blockchain, power the next generation of fully onchain games on ICP, and provide a collaborative hub for all things web3 gaming.",
     "stats": "23,000+ DAO Members",
-    "logo": "/img/showcase/boom-dao-logo.webp",
+    "logo": "/img/showcase/boom-dao-logo.png",
     "display": "Large",
     "usesInternetIdentity": true,
     "github": "https://github.com/BoomDAO/",
@@ -735,25 +740,6 @@
     "screenshots": [
       "/img/showcase/internetidentity_screenshot_0.gif"
     ]
-  },
-  {
-    "id": "Arth",
-    "name": "Arth",
-    "tags": [
-      "DeFi",
-      "Wallet",
-      "Bitcoin",
-      "Chain Fusion"
-    ],
-    "description": "The mobile payments app that combines the power of Bitcoin with the convenience of mobile payments. With ckBTC, you can easily swap ckBTC from Bitcoin, view balances, and seamlessly make payments using QR codes.",
-    "usesInternetIdentity": true,
-    "website": "https://play.google.com/store/apps/details?id=com.foo.arth&pli=1",
-    "display": "Normal",
-    "logo": "/img/showcase/arth_logo.png",
-    "screenshots": [
-      "/img/showcase/arth_ss.webp"
-    ],
-    "submittableId": "36143434"
   },
   {
     "id": "astrox",
@@ -1100,7 +1086,7 @@
     "description": "Unleash your inner commander and dominate the metaverse in the action-packed universe of Cosmicrafts. Engage in thrilling interstellar battles, strategize with allies, and conquer the cosmos. Are you ready to claim your place among the stars?",
     "usesInternetIdentity": true,
     "stats": "10,000+ users",
-    "logo": "/img/showcase/cosmicrafts_logo.webp",
+    "logo": "/img/showcase/cosmicrafts_logo.png",
     "video": "/img/showcase/cosmicrafts_video.mp4",
     "videoContentType": "video/mp4",
     "screenshots": [
@@ -1546,7 +1532,7 @@
     ],
     "description": "Connect, engage and inspire your audience while owning your data and your identity.",
     "usesInternetIdentity": true,
-    "logo": "/img/showcase/bink_logo.webp"
+    "logo": "/img/showcase/bink_logo.svg"
   },
   {
     "id": "pythonagent",
@@ -1612,7 +1598,7 @@
     "website": "https://bitomni.io",
     "twitter": "https://x.com/Bitomni_Global",
     "display": "Large",
-    "logo": "/img/showcase/bitomni_logo.png",
+    "logo": "/img/showcase/bitomni_logo.svg",
     "screenshots": [
       "/img/showcase/bitomni_screenshot.png"
     ]
@@ -1716,7 +1702,7 @@
     "github": "https://github.com/canister-app",
     "youtube": "https://youtu.be/pFgVswCqzdk",
     "twitter": "https://twitter.com/canister_app",
-    "display": "Large",
+    "display": "Normal",
     "logo": "/img/showcase/canister-store_logo.png",
     "screenshots": [
       "/img/showcase/canister-store_screenshot_0.png"
@@ -1724,6 +1710,23 @@
     "video": "/img/showcase/canister-store_video.mp4",
     "videoContentType": "video/mp4",
     "submittableId": "35750450"
+  },
+  {
+    "id": "KongSwap",
+    "name": "KongSwap",
+    "description": "The one-stop token shop - Trade tokens across all chains with ease using KongSwap.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/kong_logo.png",
+    "screenshots": [
+      "/img/showcase/kongswap_screenshot.png"
+    ],
+    "display": "Large",
+    "tags": [
+      "DeFi",
+      "Chain Fusion"
+    ],
+    "twitter": "https://x.com/kongswap",
+    "website": "https://www.kongswap.io/"
   },
   {
     "name": "cyql.io",
@@ -1790,21 +1793,8 @@
     "website": "https://dbox.foundation/",
     "twitter": "https://twitter.com/DBOXFoundation?s=20&t=AlMLUWAfM1UU2f_mRzwqCg",
     "discord": "https://discord.gg/rEN6ygpCxK",
-    "logo": "/img/showcase/dbox_logo.webp",
+    "logo": "/img/showcase/dbox_logo.png",
     "submittableId": "22737412"
-  },
-  {
-    "id": "icadashboard",
-    "name": "ICA Dashboard",
-    "website": "https://dashboard.internetcomputer.org/",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "description": "The Internet Computer Association maintains a public dashboard where anyone can track the latest statistics for the Internet Computer blockchain. Tracking everything from blocks per second, to NNS proposals and their information and voting record, as well the latest state of the network, and transaction data. ",
-    "oneLiner": "ICA Official Dashboard",
-    "display": "Normal",
-    "logo": "/img/showcase/icadashboard_logo.webp",
-    "screenshots": []
   },
   {
     "id": "icpcoins",
@@ -1895,19 +1885,6 @@
     "logo": "/img/showcase/welcomeintothemetaverse_logo.webp",
     "screenshots": [
       "/img/showcase/welcomeintothemetaverse_screenshot_0.webp"
-    ]
-  },
-  {
-    "id": "lo-fiplayer",
-    "name": "Lo-Fi Player",
-    "website": "https://hl2zz-gyaaa-aaaad-qas3a-cai.raw.ic0.app/",
-    "tags": [
-      "Games"
-    ],
-    "description": "Lo-Fi Player is a dapp hosted on the Internet Computer that lets users listen to relaxing beats delivered by blockchain. The back-end is using machine learning to build and develop the AI produced tunes, and users can interact within the player to change the sound to their liking. ",
-    "logo": "/img/showcase/lo-fiplayer_logo.webp",
-    "screenshots": [
-      "/img/showcase/lo-fiplayer_screenshot_0.webp"
     ]
   },
   {
@@ -2050,22 +2027,22 @@
   },
   {
     "id": "chainsight",
-    "name": "Chainsight Demo",
-    "oneLiner": "Interchain Data Processing Layer",
+    "name": "Chainsight",
+    "oneLiner": "An advanced on-chain data hub that aggregates data from various markets and makes it accessible on-chain.",
     "tags": [
       "Tools / Infrastructure",
       "Ethereum",
       "Chain Fusion"
     ],
-    "description": "Chainsight is an interchain data processing layer that makes blockchain data available for decentralized applications. It allows time series analysis and forecasting based on historical data to be incorporated into onchain application logic in a trustless manner.",
+    "description": "An advanced on-chain data hub that aggregates data from various markets and makes it accessible on-chain.",
     "usesInternetIdentity": false,
-    "website": "https://demo.chainsight.network",
+    "website": "https://chainsight.network",
     "github": "https://github.com/horizonx-tech",
     "twitter": "https://twitter.com/Chainsight_",
     "display": "Large",
     "logo": "/img/showcase/chainsight_logo.webp",
     "screenshots": [
-      "/img/showcase/chainsight_screenshot.webp"
+      "/img/showcase/chainsight_screenshot.png"
     ],
     "submittableId": "36057758"
   },
@@ -2258,7 +2235,7 @@
     "usesInternetIdentity": false,
     "github": "https://github.com/NnsDao/podcast-fe",
     "twitter": "https://twitter.com/Looncasts",
-    "display": "Large",
+    "display": "Normal",
     "logo": "/img/showcase/icpodcast_logo.png",
     "screenshots": [
       "/img/showcase/icpodcast_screenshot.png"
@@ -2478,24 +2455,6 @@
     "submittableId": "35639090"
   },
   {
-    "name": "Sama Network",
-    "description": "SAMA network, with its original designed consensus and business sharding separation, builds a highly secure and private distributed computational system. It provides data security and computational power for the World Wide Web without altering users’ habits.",
-    "website": "https://sama.network/",
-    "logo": "/img/showcase/sama_network_logo.png",
-    "display": "Normal",
-    "id": "sama_network",
-    "oneLiner": "A blockchain OS with high throughput, business data full-stack encryption, and distributed computing capabilities.",
-    "stats": "Private alpha testnet has been launched; the network and user interface are ready for operation.",
-    "tags": [
-      "Tools / Infrastructure",
-      "Enterprise"
-    ],
-    "usesInternetIdentity": false,
-    "twitter": "https://twitter.com/sama_network",
-    "youtube": "https://www.youtube.com/@sama_network",
-    "submittableId": "40741075"
-  },
-  {
     "name": "221Bravo App",
     "description": "Home for ICP Data-Detectives. Token Stats, Visual Explorer, Account Searching and more.",
     "website": "https://221Bravo.app",
@@ -2649,27 +2608,6 @@
     "submittableId": "44034269"
   },
   {
-    "id": "taxlint",
-    "name": "TaxLint",
-    "oneLiner": "A decentralised, private, and secure automated Tax Report aimed to help users to count ICP and ICRC1 token transactions.",
-    "website": "https://www.taxlint.online/",
-    "tags": [
-      "DeFi",
-      "Tools / Infrastructure"
-    ],
-    "description": "A decentralised, private, and secure automated Tax Report aimed to help users to count ICP and ICRC1 token transactions.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/taxlint_logo.png",
-    "github": "https://github.com/TaxLintDAO/taxlint",
-    "twitter": "https://twitter.com/taxlint",
-    "display": "Normal",
-    "stats": "150+ users",
-    "screenshots": [
-      "/img/showcase/taxlint_screenshot.png"
-    ],
-    "submittableId": "43956470"
-  },
-  {
     "name": "InheritX",
     "description": "InheritX is a blockchain-based application developed on Internet Computer (ICP) that allows users to create a digital will and bequeath their assets to designated beneficiaries in the event of their death.",
     "website": "https://inherit-x.vercel.app/",
@@ -2753,7 +2691,7 @@
     "name": "Hobbi",
     "description": "With Hobbi, you can create a profile and record all the multimedia content you consume. Whether it's a movie, a book, or even a video game, register and share your profile with whomever you want.",
     "website": "https://hobbi.me",
-    "logo": "/img/showcase/hobbi_logo.png",
+    "logo": "/img/showcase/hobbi_logo.svg",
     "screenshots": [
       "/img/showcase/hobbi_screenshot.png"
     ],
@@ -2846,11 +2784,11 @@
     ],
     "description": "POC of a decentralized secret management solution that leverages Internet Computer (IC) technology. It aims to provide a means for services to share secrets in a flexible, transparent, and secure way. It simplifies the flow of secret management between consumers in the cluster as well as rotate secrets based on config for added security.",
     "stats": "100% on chain ACL",
-    "usesInternetIdentity": true,
+    "usesInternetIdentity": false,
     "github": "https://github.com/Zondax/vault-k8s-canister",
     "youtube": "https://youtu.be/99MahI1SO7c",
     "twitter": "https://twitter.com/_zondax_",
-    "logo": "/img/showcase/zondax-logo.jpg",
+    "logo": "/img/showcase/zondax-logo.svg",
     "screenshots": [
       "/img/showcase/vault-k8s.jpg"
     ],
@@ -2898,17 +2836,16 @@
       "Tools / Infrastructure"
     ],
     "description": "POC of a decentralized mind and body data management tooling that leverages Internet Computer (IC) technology. This POC provides methods and interface to submit HTTP Outcall requests to a proxy API that interfaces with a Firebase FIrestore database. It provides an example front end react application that interacts with a motoko backend.",
-    "usesInternetIdentity": true,
+    "usesInternetIdentity": false,
     "github": "https://github.com/blueberryxtech/ic-mind-body-canister",
     "submittableId": "44190088"
   },
   {
     "id": "icgpt",
     "name": "icgpt",
-    "oneLiner": "A fun dApp to demonstrate onchain LLMs",
+    "oneLiner": "A chat app that uses Qwen2.5-instruct LLM with 0.5 billion parameters, the largest LLM currently live on ICP.",
     "website": "https://icgpt.icpp.world/",
-    "description": "A llama2 LLM, trained on the tiny Stories dataset is running in a canister. You can interact with it via a ChatGPT style frontend, served from an IC canister. You provide the start of a story as the prompt, and the LLM will generate a tiny story.",
-    "stats": "15M parameter llama2",
+    "description": "A chat app that uses Qwen2.5-instruct LLM with 0.5 billion parameters, the largest LLM currently live on ICP.",
     "tags": [
       "Tools / Infrastructure",
       "AI"
@@ -3037,12 +2974,11 @@
   {
     "name": "ICSoccerWorld",
     "description": "Soccer simulation built for ICP using ICPP. Based on code sample from book \"AI Game Programming by Example\". Demo is built in C++ and uses Jolt physics Engine.",
-    "website": "https://github.com/ktimam/ICSimpleSoccer",
+    "website": "https://gb4ri-5yaaa-aaaal-ac3hq-cai.raw.icp0.io/",
     "logo": "/img/showcase/ICSoccerWorld.png",
     "display": "Normal",
     "id": "ICSoccerWorld",
-    "oneLiner": "Physics Based Soccer Simulation.",
-    "stats": "Community Dev Demo",
+    "oneLiner": "Soccer simulation built for ICP using ICPP. ",
     "tags": [
       "NFT",
       "Metaverse",
@@ -3052,9 +2988,7 @@
     "usesInternetIdentity": false,
     "github": "https://github.com/ktimam/ICSimpleSoccer",
     "twitter": "https://twitter.com/ICSoccerWorld",
-    "youtube": "",
-    "submittableId": "44414655",
-    "videoContentType": "video/mp4"
+    "submittableId": "44414655"
   },
   {
     "name": "Mapz",
@@ -3204,7 +3138,7 @@
     "name": "Accelar",
     "description": "Accelar is a unified product development infrastructure that allows for efficient development, launching, and management of web3 features including LLMs on ICP. Create canisters, workflows, identities, and interact with dApps through a non-custodial wallet.",
     "website": "https://www.accelar.io",
-    "logo": "/img/showcase/accelar_logo.png",
+    "logo": "/img/showcase/accelar_logo.svg",
     "display": "Normal",
     "id": "Accelar",
     "oneLiner": "A unified product development infrastructure that allows for efficient development, launching, and management of web3 features including LLMs on ICP.",
@@ -3316,7 +3250,7 @@
     "description": "A MultiSignature wallet and omnichain module designed for cross-chain message signing, suitable for multiple blockchain ecosystems.",
     "usesInternetIdentity": true,
     "display": "Normal",
-    "logo": "/img/showcase/blendsafe.png",
+    "logo": "/img/showcase/blendsafe.svg",
     "submittableId": "44514818"
   },
   {
@@ -3415,35 +3349,21 @@
   {
     "id": "gamebloc",
     "name": "Game Bloc",
-    "oneLiner": "A decentralised platform for hosting game tournaments which can either be crowdfunded or prepaid.",
+    "oneLiner": "A decentralized platform empowering gamers and gaming organizations to create, manage, and participate in game tournaments.",
     "website": "https://cv4ma-4qaaa-aaaal-adntq-cai.icp0.io/",
     "github": "https://github.com/Game-Bloc/Gamebloc-ICP",
     "twitter": "https://twitter.com/game_bloc",
     "discord": "https://discord.gg/wgRuenwTEK",
+    "youtube": "https://www.youtube.com/@Game_bloc",
     "tags": [
-      "Games"
-    ],
-    "description": "A decentralised platform for hosting game tournaments which can either be crowdfunded or prepaid.",
-    "usesInternetIdentity": true,
-    "display": "Normal",
-    "logo": "/img/showcase/gameblock_logo.png",
-    "submittableId": "44503915"
-  },
-  {
-    "id": "allkinds",
-    "name": "AllKinds",
-    "oneLiner": "A web3 social network where people find more meaningful connections.",
-    "website": "https://allkinds.xyz/",
-    "github": "https://github.com/AllKinds/AllkindsICP",
-    "twitter": "https://twitter.com/Allkindsxyz",
-    "tags": [
+      "Games",
       "SocialFi"
     ],
-    "description": "A web3 social network where people find more meaningful connections.",
+    "description": "A decentralized platform empowering gamers and gaming organizations to create, manage, and participate in game tournaments.",
     "usesInternetIdentity": true,
     "display": "Normal",
-    "logo": "/img/showcase/allkinds_logo.svg",
-    "submittableId": "43688836"
+    "logo": "/img/showcase/gamebloc_logo.png",
+    "submittableId": "44503915"
   },
   {
     "id": "dmail-network",
@@ -3533,41 +3453,6 @@
     "submittableId": "43814286"
   },
   {
-    "id": "rentspace",
-    "name": "RentSpace",
-    "oneLiner": "A crypto-friendly property rental platform.",
-    "website": "https://rentb.space/",
-    "tags": [
-      "DeFi",
-      "SocialFi"
-    ],
-    "twitter": "https://twitter.com/RentSpaceco",
-    "github": "https://github.com/ICP-hub/RentSpace-ICP",
-    "discord": "https://discord.gg/hCFmTWFx85",
-    "description": "A crypto-friendly property rental platform",
-    "usesInternetIdentity": false,
-    "display": "Normal",
-    "logo": "/img/showcase/rentspace_logo.png",
-    "submittableId": "44394368"
-  },
-  {
-    "id": "myordinalsloan",
-    "name": "MyOrdinals.Loan",
-    "oneLiner": "Peer-to-peer Bitcoin lending using ckBTC. Users borrow or lend ckBTC, securing transactions with unique Ordinal Inscriptions (Ordinals) as collateral.",
-    "website": "https://myordinals.loan/",
-    "tags": [
-      "Bitcoin",
-      "DeFi",
-      "Chain Fusion"
-    ],
-    "twitter": "https://twitter.com/MyOrdinalsLoan",
-    "description": "Peer-to-peer Bitcoin lending using ckBTC. Users borrow or lend ckBTC, securing transactions with unique Ordinal Inscriptions (Ordinals) as collateral.",
-    "usesInternetIdentity": false,
-    "display": "Normal",
-    "logo": "/img/showcase/myordinalsloan_logo.png",
-    "submittableId": "41341564"
-  },
-  {
     "id": "icto",
     "name": "ICTO",
     "oneLiner": "ICTO is a one-stop platform automating token operations on the Internet Computer.",
@@ -3605,7 +3490,7 @@
     "website": "https://app.appic.solutions/",
     "github": "https://github.com/Appic-Solutions",
     "display": "Normal",
-    "logo": "/img/showcase/appic_logo.jpg",
+    "logo": "/img/showcase/appic_logo.png",
     "submittableId": "44626035"
   },
   {
@@ -3813,20 +3698,21 @@
     "github": "https://github.com/zkCross-Network/zkCross-ICP",
     "twitter": "https://twitter.com/ZkCrossNetwork",
     "display": "Normal",
-    "logo": "/img/showcase/zkCross_logo.png"
+    "logo": "/img/showcase/zkCross_logo.svg"
   },
   {
     "id": "icpexchange",
     "name": "ICPEx",
-    "oneLiner": "Decentralized exchange built entirely on the chain based on the ICP.",
+    "oneLiner": "A fully on-chain decentralized exchange powered by the Proactive Market Maker (PMM) algorithm.",
     "tags": [
       "DeFi"
     ],
-    "description": "Decentralized exchange built entirely on the chain based on the ICP.",
+    "description": "A fully on-chain decentralized exchange powered by the Proactive Market Maker (PMM) algorithm that is committed to becoming the leading decentralized financial hub serving Web3.",
     "usesInternetIdentity": true,
     "website": "https://icpex.org/",
     "github": "https://github.com/ICPExchange",
     "twitter": "https://twitter.com/ICPExchange",
+    "youtube": "https://www.youtube.com/@ICPExchange",
     "display": "Normal",
     "stats": "229 tokens and 90 liquidity pools created",
     "logo": "/img/showcase/icpex_logo.png",
@@ -3906,7 +3792,7 @@
     "website": "https://owqnd-biaaa-aaaak-qidaq-cai.icp0.io/",
     "twitter": "https://twitter.com/icfootprint",
     "display": "Normal",
-    "logo": "/img/showcase/ic_footprint_logo.png"
+    "logo": "/img/showcase/ic_footprint_logo.svg"
   },
   {
     "id": "galactic-bridge",
@@ -4004,7 +3890,7 @@
     "website": "https://hamsternet.io/",
     "twitter": "https://twitter.com/Hamsternetio",
     "display": "Normal",
-    "logo": "/img/showcase/hamster_logo.png"
+    "logo": "/img/showcase/hamster_logo.svg"
   },
   {
     "name": "MSQ - Safe ICP Wallet",
@@ -4065,7 +3951,7 @@
     "name": "Konectª",
     "description": "A new protocol that gathers notifications and events from all your apps implementing it, and compiles them into a user-specific canister.",
     "website": "https://qmtwu-wqaaa-aaaan-qlrya-cai.icp0.io/",
-    "logo": "/img/showcase/konecta_logo.png",
+    "logo": "/img/showcase/konecta_logo.svg",
     "display": "Normal",
     "oneLiner": "A new protocol that gathers notifications and events from all your apps implementing it, and compiles them into a user-specific canister.",
     "tags": [
@@ -4232,7 +4118,7 @@
     "description": "A city-based events calendar app helping web3 communities and companies in effectively reaching their target audience within cities.",
     "usesInternetIdentity": true,
     "display": "Normal",
-    "logo": "/img/showcase/dotmeet_logo.jpg"
+    "logo": "/img/showcase/dotmeet_logo.svg"
   },
   {
     "id": "syron",
@@ -4579,7 +4465,7 @@
       "DeFi"
     ],
     "description": "Stake your ICP, join the pool and win big rewards!",
-    "logo": "/img/showcase/neuronpool_logo.png",
+    "logo": "/img/showcase/neuronpool_logo.svg",
     "usesInternetIdentity": true,
     "stats": "Open-source DeFi",
     "authOrigins": [
@@ -4641,22 +4527,6 @@
     "usesInternetIdentity": true,
     "github": "https://github.com/NeutronStarDAO/icecube",
     "twitter": "https://x.com/icecubeapp"
-  },
-  {
-    "id": "bridge-23-app",
-    "name": "Bridge 23",
-    "oneLiner": "Bridge 23 is a fully featured data marketplace running on ICP where everyone can sell their data directly to merchants, companies and institutions.",
-    "description": "Bridge 23 is a fully featured data marketplace running on ICP where everyone can sell their data directly to merchants, companies and institutions.",
-    "stats": "5000+ waitlist, 100+ users, 4000+ tokenized products",
-    "website": "https://alpha.bridge23.app/login",
-    "logo": "/img/showcase/bridge23_logo.png",
-    "display": "Normal",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "usesInternetIdentity": true,
-    "github": "https://github.com/bridge-23/Bridge23app.0.1.0-alpha",
-    "twitter": "https://x.com/bridge23inc"
   },
   {
     "id": "event-hub-attention-dao",
@@ -4819,28 +4689,6 @@
     "website": "https://qehbq-rqaaa-aaaan-ql2iq-cai.icp0.io/"
   },
   {
-    "id": "scoge",
-    "name": "SCOGÉ Universe",
-    "oneLiner": "T.A.O.S City’s finest distributor of Luxury Fashion and Consumer goods",
-    "website": "https://uqjdj-siaaa-aaaag-aaoxq-cai.icp0.io",
-    "tags": [
-      "NFT",
-      "Metaverse",
-      "Games"
-    ],
-    "description": "SCOGÉ is a cutting-edge fashion-centric gamified metaverse platform that revolutionizes the way styles are born, stories are told, and interaction between users. Users embark on an enthralling journey, wielding unique powers to craft thrilling experiences while discovering T.A.O.S City and the evolving SCOGÉ Universe.",
-    "logo": "/img/showcase/scoge_logo.webp",
-    "display": "Normal",
-    "usesInternetIdentity": false,
-    "twitter": "https://twitter.com/_scoge_",
-    "screenshots": [
-      "/img/showcase/scoge_screenshots.webp"
-    ],
-    "video": "/img/showcase/scoge_video.mp4",
-    "videoContentType": "video/mp4",
-    "submittableId": "34276514"
-  },
-  {
     "id": "zkLama",
     "name": "zkLama",
     "description": "Originally known as yllama.oc, zkLama is a framework that can generate programmable ICP canister smart contracts using text-based prompts.",
@@ -4926,6 +4774,73 @@
     ],
     "twitter": "https://x.com/phasmafuture",
     "website": "https://entrepot.app/marketplace/phasma"
+  },
+  {
+    "id": "medblock",
+    "name": "Medblock",
+    "description": "Medblock is a secure mobile app that puts medical records in patients' hands while helping hospitals manage healthcare data efficiently through blockchain technology.",
+    "logo": "/img/showcase/medblock.svg",
+    "display": "Normal",
+    "tags": [
+      "Enterprise"
+    ],
+    "github": "https://github.com/baliola/Medblock",
+    "twitter": "https://x.com/medblockid",
+    "website": "https://medblock.id",
+    "submittableId": "44389918"
+  },
+  {
+    "id": "tap-protocol",
+    "name": "Tap Protocol",
+    "description": "Tap is the most programmable layer 1 Bitcoin protocol, enabling full smart-contract functionality without having to wrap or bridge any assets, and without the need for any L2 infrastructure.",
+    "logo": "/img/showcase/tapprotocol_logo.svg",
+    "display": "Normal",
+    "tags": [
+      "Bitcoin",
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "twitter": "https://x.com/tap_protocol",
+    "website": "https://www.tap-protocol.com"
+  },
+  {
+    "id": "ic-toolkit",
+    "name": "IC Toolkit",
+    "description": "IC Toolkit simplifies canister management, project collaboration, and decentralized governance on ICP.",
+    "logo": "/img/showcase/ictoolkit_logo.png",
+    "display": "Normal",
+    "tags": [
+      "DAO",
+      "Tools / Infrastructure"
+    ],
+    "usesInternetIdentity": true,
+    "twitter": "https://x.com/ic_toolkit",
+    "website": "https://ic-toolkit.app"
+  },
+  {
+    "id": "nfid-identitykit",
+    "name": "NFID IdentityKit",
+    "description": "NFID IdentityKit is the best way to connect an ICP wallet to your dapp.",
+    "logo": "/img/showcase/nfididentitykit_logo.svg",
+    "display": "Normal",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/internet-identity-labs/identitykit",
+    "twitter": "https://x.com/NFIDIdentityKit",
+    "website": "https://www.identitykit.xyz/"
+  },
+  {
+    "id": "dfxdashboard",
+    "name": "DFX Dashboard",
+    "description": "DFX Dashboard is a GUI for using dfx, the CLI tool for ICP development.",
+    "logo": "/img/showcase/dfxdashboard_logo.svg",
+    "display": "Normal",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/tolgayayci/dfx-dashboard",
+    "website": "https://dfx-dashboard-docs.netlify.app/"
   },
   {
     "id": "icptokens",

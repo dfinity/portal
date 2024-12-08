@@ -19,64 +19,15 @@ To obtain cycles, the Internet Computer Protocol's utility token, ICP, can be co
 
 Cycles are only associated with canisters and user or developer principals. Canisters require cycles to perform operations and pay for the resources they use. Developers manage the distribution and ownership of cycles through the **cycles ledger**. The cycles ledger is used to convert ICP tokens into cycles, send cycles to canisters, and create new canisters with cycles.
 
-## Acquiring cycles using a cycles coupon
+## Option A: Redeeming a cycles faucet coupon
 
-For new developers, a free cycles coupon can be obtained and redeemed for 10T free cycles that can be used to get started with dapp deployment. This coupon is good for new developers since it doesn't require that you transfer ICP tokens into cycles, and doesn't require a purchase of tokens to get started.
+At hackathon events, DFINITY may offer cycles faucet coupons to participants, which can be redeemed for 10T free cycles.
 
-To obtain this coupon, first, navigate to the website https://faucet.dfinity.org. To obtain a coupon code to use the cycles faucet, you need to put in a written request for the coupon via the DFINITY official developer Discord server.
+If such cycles faucet coupon was handed out to you, navigate to the website [https://faucet.dfinity.org](https://faucet.dfinity.org) and follow the instructions there.
 
-Click on the `REQUEST CYCLES` button on the faucet web page to join the Discord server.
+## Option B: Converting ICP tokens to cycles
 
-![Getting Coupon](_attachments/faucet_step_1.png)
-
-Once inside the Discord server, navigate into the `#cycles-faucet` channel.
-
-![Cycles-faucet](_attachments/cycles-faucet.png)
-
-In this channel, execute the following slash command:
-
-```
-/request
-```
-
-This command will call the IC Cycles Faucet Bot. This bot will send you a survey that will need to be filled out and submitted. Once the survey has been completed, our team will review your submission. If accepted, the faucet bot will send you a private message with a coupon code.
-
-:::info
-Please ensure that your Discord settings are set to allow direct messages from other users. If you do not have this setting enabled, you will not receive a direct message from the faucet bot.
-:::
-
-Once you have your coupon code, head back to the [https://faucet.dfinity.org](https://faucet.dfinity.org) webpage.
-
-Now, click **NEXT STEP** to continue. Once you have a coupon code, enter your coupon code within the faucet UI.
-
-![Enter Coupon](_attachments/faucet_step_3.png)
-
-Click **NEXT STEP** to continue.
-
-Return to your terminal window. If you closed the window in the process, run the following commands to start `dfx` and use your identity. Replace `MyIdentity` with the name of your developer identity:
-
-```sh
-dfx start --clean --background
-dfx identity use MyIdentity
-```
-
-Then, redeem your coupon with the command, replacing **COUPON_CODE** with the cycles coupon code sent to you by the DFINITY faucet bot:
-
-```sh
-dfx cycles --network ic redeem-faucet-coupon COUPON_CODE
-```
-
-Verify your cycles balance with the command:
-
-```sh
-dfx cycles --network ic balance
-```
-
-This should return an output showing 10T cycles.
-
-## Converting ICP tokens to cycles
-
-If you've already redeemed a cycles coupon in the past, you can convert ICP tokens into cycles. Before you can convert ICP tokens into cycles, first you need to obtain ICP tokens. ICP tokens can be purchased through a crypto exchange, or they can be received through other activities such as participating in the NNS governance and receiving grants from the DFINITY foundation.
+The typical way to obtain cycles is to convert ICP tokens. You first you need to obtain [ICP tokens](https://internetcomputer.org/icp-tokens) through a crypto exchange, or they can be received through other activities such as participating in the NNS governance and receiving grants from the DFINITY foundation.
 
 To get your account ID so you know where to send your ICP tokens, run the command:
 

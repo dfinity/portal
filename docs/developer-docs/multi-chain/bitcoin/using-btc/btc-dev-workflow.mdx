@@ -21,6 +21,14 @@ To interact with the Bitcoin testnet or mainnet networks, a developer needs to u
 
 1. [Generate a Bitcoin address](generate-addresses.mdx): To receive BTC, your canister must generate a Bitcoin address using the `ecdsa_public_key` API endpoint of the [management canister](/docs/current/developer-docs/smart-contracts/advanced-features/management-canister#signing-and-submitting-bitcoin-transactions).
 
+:::danger
+
+The Bitcoin Testnet API is currently disabled and the ckTestBTC minter canister has been stopped. This is temporary and they will be re-enabled in the future.
+
+[Learn more](https://forum.dfinity.org/t/direct-integration-with-bitcoin/6147/745).
+
+:::
+
 2. [Create a Bitcoin transaction](create-transactions.mdx): If the canister controls BTC, it can create a transaction to spend them.
 
 3. [Sign a transaction](sign-transactions.mdx): Next, the transaction must be signed with tECDSA using the `sign_with_ecdsa` API endpoint of the [management canister](/docs/current/developer-docs/smart-contracts/advanced-features/management-canister#signing-and-submitting-bitcoin-transactions). Transactions cannot be sent to the Bitcoin network until they are signed.

@@ -4,84 +4,65 @@
 const sidebars = {
   build: [
     {
-      type: "category",
-      label: "Quick starts",
-      items: [
-        {
-          type: "doc",
-          label: "First smart contract",
-          id: "developer-docs/getting-started/quickstart/first-smart-contract",
-        },
-        {
-          type: "doc",
-          label: "React",
-          id: "developer-docs/getting-started/quickstart/react-quickstart",
-        },
-      ],
+    type: "category",
+    label: "Quick starts",
+    items: [
+      {
+        type: "doc",
+        label: "First smart contract",
+        id: "developer-docs/getting-started/quickstart/first-smart-contract",
+      },
+      {
+        type: "doc",
+        label: "React",
+        id: "developer-docs/getting-started/quickstart/react-quickstart",
+      },
+    ],
+  },
+  {
+    type: "doc",
+    label: "Network overview",
+    id: "developer-docs/getting-started/network-overview",
+  },
+  {
+  type: "category",
+  label: "Essentials",
+  items: [
+    {
+      type: "doc",
+      label: "Explore examples",
+      id: "developer-docs/getting-started/explore-examples",
     },
     {
       type: "doc",
-      label: "Network overview",
-      id: "developer-docs/getting-started/network-overview",
+      label: "Install tools",
+      id: "developer-docs/getting-started/install",
     },
     {
-      type: "category",
-      label: "Dev environment setup",
-      items: [
-
-        {
-          type: "doc",
-          label: "Workflow",
-          id: "developer-docs/getting-started/development-workflow",
-        },
-        {
-          type: "doc",
-          label: "Installation",
-          id: "developer-docs/getting-started/install/index",
-        },
-        {
-          type: "doc",
-          label: "Developer accounts",
-          id: "developer-docs/getting-started/accounts",
-        },
-        {
-          type: "category",
-          label: "Cycles",
-          items: [
-            {
-              label: "Overview",
-              type: "doc",
-              id: "developer-docs/getting-started/cycles/overview",
-            },
-            "developer-docs/getting-started/cycles/cycles-faucet",
-          ],
-        },
-        {
-          type: "doc",
-          label: "Default project template",
-          id: "developer-docs/getting-started/default-template",
-        },
-        {
-          type: "category",
-          label: "Deploy",
-          items: [
-            {
-              type: "doc",
-              label: "Local deployment",
-              id: "developer-docs/getting-started/deploy/local",
-            },
-            {
-              type: "doc",
-              label: "Testnet deployment",
-              id: "developer-docs/getting-started/deploy/testnet",
-            },
-            {
-              type: "doc",
-              label: "Mainnet deployment",
-              id: "developer-docs/getting-started/deploy/mainnet",
-            },
-          ],
-        },
+      type: "doc",
+      label: "Create an identity",
+      id: "developer-docs/getting-started/identities",
+    },
+    {
+      type: "doc",
+      label: "Tokens and cycles",
+      id: "developer-docs/getting-started/tokens-and-cycles",
+    },
+    {
+      type: "doc",
+      label: "Write smart contracts",
+      id: "developer-docs/getting-started/write-smart-contracts",
+    },
+    {
+      type: "doc",
+      label: "Deploy and manage",
+      id: "developer-docs/getting-started/deploy-and-manage",
+    },
+    {
+      type: "doc",
+      label: "Next steps",
+      id: "developer-docs/getting-started/next-steps",
+      },
       ],
     },
     {
@@ -94,36 +75,36 @@ const sidebars = {
           items: [
             "developer-docs/smart-contracts/overview/introduction",
             "developer-docs/smart-contracts/overview/inside-canisters",
-            "developer-docs/smart-contracts/overview/canister-lifecycle",
+            "developer-docs/smart-contracts/development-workflow",
             "developer-docs/smart-contracts/overview/trust-in-canisters",
           ],
         },
+        "developer-docs/smart-contracts/overview/canister-lifecycle",
         {
           type: "category",
-          label: "Write",
+          label: "Create & install",
           items: [
             {
-              label: "Overview",
               type: "doc",
+              label: "Write",
               id: "developer-docs/smart-contracts/write/overview",
             },
-            "developer-docs/smart-contracts/write/resources",
+            {
+              type: "doc",
+              label: "Create",
+              id: "developer-docs/smart-contracts/create",
+            },
+            {
+              type: "doc",
+              label: "Compile",
+              id: "developer-docs/smart-contracts/compile",
+            },
+            {
+              type: "doc",
+              label: "Install",
+              id: "developer-docs/smart-contracts/install",
+            },
           ],
-        },
-        {
-          type: "doc",
-          label: "Create",
-          id: "developer-docs/smart-contracts/create",
-        },
-        {
-          type: "doc",
-          label: "Compile",
-          id: "developer-docs/smart-contracts/compile",
-        },
-        {
-          type: "doc",
-          label: "Install",
-          id: "developer-docs/smart-contracts/install",
         },
         {
           type: "category",
@@ -148,9 +129,15 @@ const sidebars = {
             },
             {
               type: "doc",
-              label: "Passing in arguments",
-              id: "developer-docs/smart-contracts/call/arguments",
+              label: "Async code & inter-canister calls",
+              id: "developer-docs/smart-contracts/advanced-features/async-code",
             },
+            {
+              type: "doc",
+              label: "Composite queries",
+              id: "developer-docs/smart-contracts/advanced-features/composite-query",
+            },
+            "developer-docs/smart-contracts/advanced-features/query-stats",
             {
               type: "category",
               label: "Candid",
@@ -207,78 +194,60 @@ const sidebars = {
               id: "developer-docs/smart-contracts/test/overview",
             },
             "developer-docs/smart-contracts/test/pocket-ic",
-            "developer-docs/smart-contracts/test/troubleshooting",
           ],
         },
+      ],
+    },
         {
           type: "category",
           label: "Advanced features",
           items: [
             {
-              type: "doc",
-              label: "Async code and inter-canister calls",
-              id: "developer-docs/smart-contracts/advanced-features/async-code",
-            },
-            {
-              type: "doc",
-              label: "Composite queries",
-              id: "developer-docs/smart-contracts/advanced-features/composite-query",
-            },
-            {
               type: "category",
-              label: "Incoming HTTP requests",
-              items: [
-            {
-              type: "doc",
-              label: "GET/POST requests",
-              id: "developer-docs/smart-contracts/advanced-features/handling-get-post-requests",
-            },
-            {
-              type: "doc",
-              label: "Serving requests",
-              id: "developer-docs/smart-contracts/advanced-features/serving-http-request",
-            },
-            {
-              type: "doc",
-              label: "HTTP gateways",
-              id: "developer-docs/smart-contracts/advanced-features/http-gateways",
-            },
-            ],
-            },
-            {
-              type: "category",
-              label: "HTTPS outcalls",
-              items: [
-                {
-                  label: "Overview",
-                  type: "doc",
-                  id: "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview",
-                },
-                "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use",
-                "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-get",
-                "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-post",
-              ],
-            },
-            {
-              type: "category",
-              label: "HTTP certification",
-              items: [
+              label: "HTTP/HTTPS",
+              items:
+              [
                 {
                   type: "doc",
-                  id: "developer-docs/web-apps/http-compatible-canisters/custom-http-canisters",
-                  label: "Custom HTTP canisters",
+                  label: "HTTP gateways & incoming requests",
+                  id: "developer-docs/smart-contracts/advanced-features/handling-get-post-requests",
                 },
                 {
-                  type: "doc",
-                  id: "developer-docs/web-apps/http-compatible-canisters/serving-json-over-http",
-                  label: "Serving JSON over HTTP",
+                  type: "category",
+                  label: "HTTPS outcalls",
+                  items: [
+                    {
+                      label: "Overview",
+                      type: "doc",
+                      id: "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview",
+                    },
+                    "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use",
+                    "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-get",
+                    "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-post",
+                  ],
                 },
                 {
-                  type: "doc",
-                  id: "developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http",
-                  label: "Serving static assets over HTTP",
+                  type: "category",
+                  label: "HTTP certification",
+                  items: [
+                    {
+                      type: "doc",
+                      id: "developer-docs/web-apps/http-compatible-canisters/custom-http-canisters",
+                      label: "Custom HTTP canisters",
+                    },
+                    {
+                      type: "doc",
+                      id: "developer-docs/web-apps/http-compatible-canisters/serving-json-over-http",
+                      label: "Serving JSON over HTTP",
+                    },
+                    {
+                      type: "doc",
+                      id: "developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http",
+                      label: "Serving static assets over HTTP",
+                    },
+                  ],
                 },
-              ],
+              ]
             },
             {
               type: "doc",
@@ -312,12 +281,11 @@ const sidebars = {
                     "developer-docs/smart-contracts/signatures/signing-messages-t-schnorr",
                   ],
                 },
+                "developer-docs/web-apps/independently-verifying-ic-signatures",
               ],
             },
             "developer-docs/smart-contracts/advanced-features/periodic-tasks",
-            "developer-docs/smart-contracts/advanced-features/query-stats",
             "developer-docs/smart-contracts/advanced-features/simd",
-            "developer-docs/smart-contracts/advanced-features/system-canisters",
             "developer-docs/smart-contracts/advanced-features/time-and-timestamps",
           ],
         },
@@ -352,8 +320,6 @@ const sidebars = {
             },
           ],
         },
-      ],
-    },
     {
       type: "category",
       label: "Developer tools",
@@ -573,17 +539,9 @@ const sidebars = {
           ],
         },
         {
-          type: "category",
-          label: "Browser JS",
-          items: [
-            "developer-docs/web-apps/browser-js/js-frameworks",
-            "developer-docs/web-apps/browser-js/js-request-api",
-          ],
-        },
-        {
-          type: "category",
-          label: "Frameworks",
-          items: ["developer-docs/web-apps/frameworks/juno"],
+          type: "doc",
+          label: "JS frameworks",
+          id: "developer-docs/web-apps/browser-js/js-frameworks",
         },
         {
           type: "category",
@@ -593,9 +551,7 @@ const sidebars = {
             "developer-docs/web-apps/custom-domains/using-custom-domains",
           ],
         },
-        "developer-docs/web-apps/design-dapps",
-        "developer-docs/web-apps/independently-verifying-ic-signatures",
-        "developer-docs/web-apps/obtain-verify-ic-pubkey",
+        "developer-docs/web-apps/frameworks/juno",
       ],
     },
     {
@@ -618,7 +574,7 @@ const sidebars = {
             },
             {
               type: "doc",
-              label: "Identity and access management",
+              label: "Identity & access management",
               id: "developer-docs/security/security-best-practices/iam",
             },
             {
@@ -628,7 +584,7 @@ const sidebars = {
             },
             {
               type: "doc",
-              label: "Data integrity and authenticity",
+              label: "Data integrity & authenticity",
               id: "developer-docs/security/security-best-practices/data-integrity-and-authenticity",
             },
             {
@@ -653,7 +609,7 @@ const sidebars = {
             },
             {
               type: "doc",
-              label: "Observability and monitoring",
+              label: "Observability & monitoring",
               id: "developer-docs/security/security-best-practices/observability-and-monitoring",
             },
             {
@@ -800,10 +756,6 @@ const sidebars = {
       ],
     },
     {
-      type: "category",
-      label: "Identity",
-      items: [
-        {
           type: "category",
           label: "Authentication",
           items: [
@@ -812,7 +764,6 @@ const sidebars = {
               type: "doc",
               id: "developer-docs/identity/authentication/overview",
             },
-
             {
               type: "category",
               label: "Internet Identity (II)",
@@ -827,14 +778,6 @@ const sidebars = {
                 "developer-docs/identity/internet-identity/alternative-origins",
               ],
             },
-            "developer-docs/identity/authentication/email-password",
-            "developer-docs/identity/authentication/nfid",
-            "developer-docs/identity/authentication/siwb",
-            "developer-docs/identity/authentication/siwe",
-            "developer-docs/identity/authentication/siws",
-            "developer-docs/identity/authentication/msq",
-          ],
-        },
         {
           type: "category",
           label: "Verifiable credentials",
@@ -865,23 +808,13 @@ const sidebars = {
           label: "Tokens",
           items: [
 	          "developer-docs/defi/tokens/token-standards",
-	          "developer-docs/defi/tokens/asset_flow/index",
             {
               type: "category",
               label: "Ledgers",
               items: [
-                   {
-                      type: "doc",
-                      label: "Overview",
-                      id: "developer-docs/defi/tokens/ledger/overview",
-                    },
                 {
                   type: "category",
                   label: "Setup",
-                  link: {
-                    type: "doc",
-                    id: "developer-docs/defi/tokens/ledger/setup/overview",
-                  },
                   items: [
                     "developer-docs/defi/tokens/ledger/setup/icp_ledger_setup",
                     "developer-docs/defi/tokens/ledger/setup/icrc1_ledger_setup"
@@ -890,10 +823,6 @@ const sidebars = {
                 {
                   type: "category",
                   label: "Usage",
-                  link: {
-                    type: "doc",
-                    id: "developer-docs/defi/tokens/ledger/usage/overview",
-                  },
                   items: [
                     "developer-docs/defi/tokens/ledger/usage/icp_ledger_usage",
                     "developer-docs/defi/tokens/ledger/usage/icrc1_ledger_usage"
@@ -916,7 +845,7 @@ const sidebars = {
             },
             {
               type: "category",
-              label: "Advanced",
+              label: "Rosetta",
               items: [
                 {
                   type: "category",
@@ -969,7 +898,7 @@ const sidebars = {
                         },
                         {
                           type: "category",
-                          label: "Staking and neuron management",
+                          label: "Staking & neuron management",
                           link: {
                             type: "doc",
                             id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/index",
@@ -988,7 +917,7 @@ const sidebars = {
                         },
                         {
                           type: "category",
-                          label: "Voting and following",
+                          label: "Voting & following",
                           link: {
                             type: "doc",
                             id: "developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/index",
@@ -1254,101 +1183,6 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Sample apps",
-      items: [
-        "samples/overview",
-        {
-          type: "category",
-          label: "Hosting",
-          items: [
-            "references/samples/hosting/godot-html5-template/README",
-            "references/samples/hosting/photo-storage/README",
-            "references/samples/hosting/static-website/README",
-            "references/samples/hosting/unity-webgl-template/README",
-          ],
-        },
-        {
-          type: "category",
-          label: "Motoko",
-          items: [
-            "references/samples/motoko/basic_bitcoin/README",
-            "references/samples/motoko/basic_dao/README",
-            "references/samples/motoko/cert-var/README",
-            "references/samples/motoko/classes/README",
-            "references/samples/motoko/composite_query/README",
-            "references/samples/motoko/counter/README",
-            {
-              type: "doc",
-              label: "CRUD example",
-              id: "references/samples/motoko/superheroes/README",
-            },
-            "references/samples/motoko/encrypted-notes-dapp-vetkd/README",
-            "references/samples/motoko/encrypted-notes-dapp/README",
-            "references/samples/motoko/life/README",
-            "references/samples/motoko/hello_cycles/README",
-            "references/samples/motoko/send_http_get/README",
-            "references/samples/motoko/send_http_post/README",
-            "references/samples/motoko/ic-pos/README",
-            "references/samples/motoko/icrc2-swap/README",
-            "references/samples/motoko/internet_identity_integration/README",
-            "references/samples/motoko/minimal-counter-dapp/README",
-            "references/samples/motoko/parallel_calls/README",
-            "references/samples/motoko/pub-sub/README",
-            "references/samples/motoko/random_maze/README",
-            "references/samples/motoko/threshold-ecdsa/README",
-            "references/samples/motoko/token_transfer/README",
-            "references/samples/motoko/token_transfer_from/README",
-            "references/samples/motoko/vetkd/README",
-          ],
-        },
-        {
-          type: "category",
-          label: "Rust",
-          items: [
-            "references/samples/rust/basic_bitcoin/README",
-            "references/samples/rust/basic_dao/README",
-            "references/samples/rust/canister-info/README",
-            "references/samples/rust/composite_query/README",
-            "references/samples/rust/counter/README",
-            "references/samples/rust/defi/src/frontend/README",
-	    "references/samples/rust/encrypted-notes-dapp-vetkd/README",
-            "references/samples/rust/encrypted-notes-dapp/README",
-            "references/samples/rust/icp_transfer/README",
-            "references/samples/rust/nft-wallet/README",
-            "references/samples/rust/parallel_calls/README",
-            "references/samples/rust/performance_counters/README",
-            "references/samples/rust/periodic_tasks/README",
-            "references/samples/rust/pub-sub/README",
-            "references/samples/rust/qrcode/README",
-            "references/samples/rust/send_http_get/README",
-            "references/samples/rust/send_http_post/README",
-            "references/samples/rust/threshold-ecdsa/README",
-            "references/samples/rust/token_transfer/README",
-            "references/samples/rust/token_transfer_from/README",
-            "references/samples/rust/vetkd/README",
-          ],
-        },
-        {
-          type: "category",
-          label: "Native dapps",
-          items: [
-            "references/samples/native-apps/unity_ii_applink/README",
-            "references/samples/native-apps/unity_ii_deeplink/README",
-            "references/samples/native-apps/unity_ii_deeplink/ii_integration_dapp/README",
-          ],
-        },
-        {
-          type: "category",
-          label: "Svelte",
-          items: [
-            "references/samples/svelte/svelte-motoko-starter/README",
-            "references/samples/svelte/svelte-starter/README",
-          ],
-        },
-      ],
-    },
-    {
-      type: "category",
       label: "References",
       items: [
         {
@@ -1448,6 +1282,7 @@ const sidebars = {
           label: "Ingress messages",
           id: "references/ingress-messages",
         },
+        "developer-docs/smart-contracts/advanced-features/system-canisters",
         {
           type: "category",
           label: "Node providers",
