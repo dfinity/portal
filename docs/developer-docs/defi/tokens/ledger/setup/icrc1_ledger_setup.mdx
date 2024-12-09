@@ -33,11 +33,11 @@ If using `dfx` version 0.17.1 or newer, choose 'Motoko' for the backend language
 
 ### Step 3: Determine ledger file locations.
 
-Go to the [releases overview](https://dashboard.internetcomputer.org/releases) and copy the latest replica binary revision. At the time of writing, this is `aba60ffbc46acfc8990bf4d5685c1360bd7026b9`.
+Search for [ledger-suite-icrc releases](https://github.com/dfinity/ic/releases?q=ledger-suite-icrc&expanded=false) and select the latest ICRC ledger suite release. At the time of writing, this is [`ledger-suite-icrc-2024-11-28`](https://github.com/dfinity/ic/releases/tag/ledger-suite-icrc-2024-11-28).
 
-The URL for the ledger Wasm module is `https://download.dfinity.systems/ic/<REVISION>/canisters/ic-icrc1-ledger.wasm.gz`, so with the above revision it would be `https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ic-icrc1-ledger.wasm.gz`.
+The URL for the ledger Wasm module is `https://github.com/dfinity/ic/releases/download/<RELEASE>/ic-icrc1-ledger.wasm.gz`, so with the above release it would be `https://github.com/dfinity/ic/releases/download/ledger-suite-icrc-2024-11-28/ic-icrc1-ledger.wasm.gz`.
 
-The URL for the ledger .did file is `https://raw.githubusercontent.com/dfinity/ic/<REVISION>/rs/ledger_suite/icrc1/ledger/ledger.did`, so with the above revision it would be `https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/ledger_suite/icrc1/ledger/ledger.did`.
+The URL for the ledger .did file is `https://github.com/dfinity/ic/releases/download/<RELEASE>/ledger.did`, so with the above release it would be `https://github.com/dfinity/ic/releases/download/ledger-suite-icrc-2024-11-28/ledger.did`.
 
 
 #### Optional:
@@ -51,15 +51,15 @@ chmod +x download_latest_icrc1_ledger.sh
 These files will be used by the `dfx.json` file as described in the next step.
 
 ### Step 4: Configure the `dfx.json` file.
-Open the `dfx.json` file in your project's directory. Replace the existing content with the following and make sure you replace `<REVISION>` in the `candid` and `wasm` URLs as shown in step 3:
+Open the `dfx.json` file in your project's directory. Replace the existing content with the following and make sure you replace `<RELEASE>` in the `candid` and `wasm` URLs as shown in step 3:
 
 ``` json
 {
   "canisters": {
     "icrc1_ledger_canister": {
       "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/<REVISION>/rs/ledger_suite/icrc1/ledger/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/<REVISION>/canisters/ic-icrc1-ledger.wasm.gz"
+      "candid": "https://github.com/dfinity/ic/releases/download/<RELEASE>/ledger.did",
+      "wasm": "https://github.com/dfinity/ic/releases/download/<RELEASE>/ic-icrc1-ledger.wasm.gz"
     }
   },
   "defaults": {
