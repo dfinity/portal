@@ -110,11 +110,9 @@ For outgoing HTTP requests, the [HTTPS outcalls](./https-outcalls/https-outcalls
 
 ## Incoming HTTP requests
 
-All HTTP requests are handled by the ICP HTTP Gateway, therefore you cannot make direct `POST` calls to a canister's `http_request_update` method with HTTP clients such as curl. Instead, you can make a `POST` call to a canister's HTTP endpoint, then configure the canister's `http_request` method to [upgrade the call to `http_request_update`](/docs/current/references/http-gateway-protocol-spec#upgrade-to-update-calls). Below is an example `POST` call to a canister's endpoint:
+Every HTTP request first goes to `http_request`, and only if you return `upgrade: true` will it be upgraded and re-called as `http_request_update`. The HTTP method (`GET`, `POST`) does not matter.
 
-```
-curl -X POST -H "Content-Type: application/json" -d '{"key":"value"}' https://<canister-id>.raw.ic0.app/<endpoint>
-```
+View the [HTTP Candid interface reference](/docs/current/references/http-gateway-protocol-spec#canister-http-interface) for more information.
 
 ## `GET` requests
 
@@ -150,7 +148,9 @@ Check out the [Rust documentation](https://docs.rs/ic-cdk/latest/ic_cdk/attr.que
 
 ## `POST` requests
 
-HTTP `POST` requests are used to send data to an endpoint with the intention of retaining that data. To handle incoming `POST` requests, the `http_request_update` method can be used. This method uses an `update` call, which can be used to change a canister's state. The following examples display how to configure `http_request_update` method within your canister.
+HTTP `POST` requests are used to send data to an endpoint with the intention of retaining that data. You cannot make direct `POST` calls to a canister's `http_request_update` method with HTTP clients such as curl. Instead, you can make a `POST` call to a canister's HTTP endpoint, then configure the canister's `http_request` method to [upgrade the call to `http_request_update`](/docs/current/references/http-gateway-protocol-spec#upgrade-to-update-calls). 
+
+The following examples display how to configure `http_request_update` method within your canister.
 
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
