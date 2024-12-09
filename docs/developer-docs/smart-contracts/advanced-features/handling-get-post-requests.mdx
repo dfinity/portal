@@ -110,9 +110,7 @@ For outgoing HTTP requests, the [HTTPS outcalls](./https-outcalls/https-outcalls
 
 ## Incoming HTTP requests
 
-To handle incoming HTTP requests, canisters must define methods for `http_requests` and `http_requests_update` for `GET` and `POST` requests respectively.
-
-All HTTP requests are handled by the ICP HTTP Gateway, therefore you cannot make direct `POST` calls to a canister's `http_request_update` method with HTTP clients such as curl. Instead, you can make a `POST` call to a canister's HTTP endpoint, then configure the canister's `http_request` method to [upgrade the call to `http_request_update` if necessary](/docs/current/references/http-gateway-protocol-spec#upgrade-to-update-calls). Below is an example `POST` call to a canister's endpoint:
+All HTTP requests are handled by the ICP HTTP Gateway, therefore you cannot make direct `POST` calls to a canister's `http_request_update` method with HTTP clients such as curl. Instead, you can make a `POST` call to a canister's HTTP endpoint, then configure the canister's `http_request` method to [upgrade the call to `http_request_update`](/docs/current/references/http-gateway-protocol-spec#upgrade-to-update-calls). Below is an example `POST` call to a canister's endpoint:
 
 ```
 curl -X POST -H "Content-Type: application/json" -d '{"key":"value"}' https://<canister-id>.raw.ic0.app/<endpoint>
