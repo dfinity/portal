@@ -14,6 +14,8 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
 
+
+
 Once a canister's code has been written, it must be compiled into Wasm, installed into the canister itself, and then deployed to a network. The `dfx deploy` command executes each of these tasks as part of the deployment process; however, `dfx` commands also exist for running each step individually.
 
 It is recommended to deploy canisters locally or to the temporary [playground](/docs/current/developer-docs/smart-contracts/deploy/overview#deploying-to-playground) network to test canister functionality and make adjustments before considering the canister production-ready and deploying it to the mainnet. Deploying canisters locally and to the playground is free and does not cost cycles. Once a canister is deployed to the mainnet, it will consistently consume cycles and will need to be topped up periodically.
