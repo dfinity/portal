@@ -2566,9 +2566,6 @@
     "description": "Verity (formerly CCAMP) is a server-side zkTLS protocol designed for creating verifiable data pipelines. It enhances the Internet Computer (IC) as a co-processor, reducing the cost of data sourcing for indexing and processing.",
     "website": "https://go.usher.so/ccamp",
     "logo": "/img/showcase/ccamp_logo.webp",
-    "screenshots": [
-      "/img/showcase/verity_diagram.webp"
-    ],
     "video": "",
     "display": "Normal",
     "id": "verity",
