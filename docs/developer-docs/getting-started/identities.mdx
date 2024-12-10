@@ -9,8 +9,6 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
 
-
-
 On the Internet Computer (ICP), a developer **identity** is essential to developing canisters. Developer identities use a private/public key pair for authentication. The public key can be distributed openly as it will be used to encrypt messages. The private key must be kept secret and stored securely.
 
 Developer identities have a **principal**, a generic identifier value used to identify users, <GlossaryTooltip>canisters</GlossaryTooltip>, and potentially other entities on the network in the future. Each developer identity's principal value is derived from the identity's public key.
@@ -40,8 +38,6 @@ Developer identities are not the only form of identity on ICP. Other ICP identit
 - **Internet Identity**: ICP's native authentication service. Internet Identity doesn't use usernames and passwords; instead, it uses a passkey stored in your local device's hardware.
 
 :::
-
-## Creating your identity
 
 By default, `dfx` will create and use the `default` identity. ***This identity is not stored securely. It is recommended you create your own personal identity.***
 
@@ -77,7 +73,7 @@ Identity names must use the characters `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmn
 To recover an identity, use `dfx identity import --seed-file seedphrase.txt`, where `seedphrase.txt` contains the seed phrase shown when you created your identity.
 :::
 
-### Storing the identity's private key
+### Storing the developer identity's private key
 
 The private key for an identity is stored in the `~/.config/dfx/identity/IDENTITY_NAME/identity.pem`. ***This file should be backed up to a secure location.***
 
@@ -125,4 +121,4 @@ aez2y-7yvs5-e6dpq-gwlld-t6ozx-l5hoo-j4vwr-mimoy-me2xq-yrxkx-rae
 
 Next, you must obtain cycles. Cycles are required to pay for the resources a canister consumes.
 
-- [x] [Tokens and cycles](/docs/current/developer-docs/getting-started/tokens-and-cycles)
+- [x] [Using tokens and cycles](/docs/current/developer-docs/getting-started/tokens-and-cycles)

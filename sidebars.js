@@ -45,7 +45,7 @@ const sidebars = {
     },
     {
       type: "doc",
-      label: "Tokens and cycles",
+      label: "Using tokens and cycles",
       id: "developer-docs/getting-started/tokens-and-cycles",
     },
     {
