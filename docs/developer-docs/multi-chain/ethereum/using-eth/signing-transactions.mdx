@@ -10,9 +10,9 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Ethereum", "Tutorial"]} />
 
-## Overview
 
-Before a transaction can be sent to the Ethereum network, it must be signed and formatted into a raw ETH transaction. Transactions are signed using [threshold ECDSA chain-key signatures](/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa). For this example, the transaction standard EIP1559 will be used.
+
+Before a transaction can be sent to the Ethereum network, it must be signed and formatted into a raw ETH transaction. Transactions are signed with [threshold ECDSA](/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa). For this example, the transaction standard EIP1559 will be used.
 
 ## Build a transaction
 
@@ -58,7 +58,7 @@ pub async fn transfer_eth(
 
 ## Format, hash, and sign a transaction
 
-Ethereum EIP1559 transactions are first hashed with the Keccak256 algorithm and then signed using the private key. Below is an example written in Rust demonstrating how to format a raw ETH transaction, hash it using Keccak256 and sign the hash using Threshold ECDSA. This code snippet accomplishes the following:
+Ethereum EIP1559 transactions are first hashed with the Keccak256 algorithm and then signed using the private key. Below is an example written in Rust demonstrating how to format a raw ETH transaction, hash it using Keccak256 and sign the hash using threshold ECDSA. This code snippet accomplishes the following:
 
 - Formats the transaction.
 
@@ -113,7 +113,7 @@ pub async fn sign_eip1559_transaction(
 
 [View the full code example on GitHub](https://github.com/letmejustputthishere/chain-fusion-starter/blob/5b97edabc8d5dacac44795c3db005805804fdb46/packages/ic-evm-utils/src/evm_signer.rs#L52).
 
-Additional examples of signing transactions can be found in the [threshold ECDSA documentation](/docs/current/developer-docs/smart-contracts/signatures/signing-messages-t-ecdsa).
+Additional examples of signing transactions with threshold ECDSA can be found in the [threshold ECDSA documentation](/docs/current/developer-docs/smart-contracts/signatures/signing-messages-t-ecdsa).
 
 ## Submit transaction
 

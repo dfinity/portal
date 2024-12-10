@@ -12,9 +12,9 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Concept"]} />
 
-## Overview
 
-The ICP management canister is used to provide access to system features, such as managing canisters, integrating with Bitcoin, making HTTPS outcalls, signing with threshold ECDSA, and securely retrieving randomness.
+
+The ICP management canister is used to provide access to system features, such as managing canisters, integrating with Bitcoin, making HTTPS outcalls, signing with threshold signatures, and securely retrieving randomness.
 
 
 The management canister is a virtual canister in the sense that it does not exist with an isolated state or Wasm module, but rather is implemented as part of ICP itself. For most practical purposes, the management canister behaves like a canister, i.e. it can accept messages from users or other canisters and can respond to those messages just like any other canister.
@@ -24,7 +24,7 @@ The address of the ICP management canister is `aaaaa-aa` (i.e. the empty blob). 
 
 :::note
 
-Certain functionalities, such as threshold signing or access to the bitcoin APIs, are only enabled on certain subnets.
+Certain functionalities, such as threshold signing or access to the Bitcoin APIs, are only enabled on certain subnets.
 
 :::
 
@@ -163,7 +163,7 @@ The most commonly used APIs of the management canister are those that are relate
 
 ### Signing and submitting Bitcoin transactions
 
-One of the special features of ICP is its direct integration with the [Bitcoin](/docs/current/developer-docs/multi-chain/bitcoin/overview) network. This is exposed to users through a set of APIs on the management canister that allow users to sign transactions using [threshold ECDSA](/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa) signatures and submit transactions to the Bitcoin network, all done through smart contracts on ICP. The relevant APIs are [sign_with_ecdsa](/docs/current/references/ic-interface-spec#ic-sign_with_ecdsa) and [bitcoin_send_transaction](/docs/current/references/ic-interface-spec#ic-bitcoin_send_transaction).
+One of the special features of ICP is its direct integration with the [Bitcoin](/docs/current/developer-docs/multi-chain/bitcoin/overview) network. This is exposed to users through a set of API methods on the management canister that allow users to sign transactions with [threshold ECDSA](/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa) signatures and submit transactions to the Bitcoin network, all done through smart contracts on ICP. The relevant APIs are [sign_with_ecdsa](/docs/current/references/ic-interface-spec#ic-sign_with_ecdsa) and [bitcoin_send_transaction](/docs/current/references/ic-interface-spec#ic-bitcoin_send_transaction).
 
 [Read more about ICP's direct integration with Bitcoin.](/docs/current/developer-docs/multi-chain/bitcoin/overview)
 

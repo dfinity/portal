@@ -9,7 +9,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
-## Overview
+
 
 When developing and deploying canisters on the Internet Computer, developers need to have <GlossaryTooltip>cycles</GlossaryTooltip> to pay for the resources used by their canisters. The **cycles ledger** canister has been developed as an alternative to the **cycles wallet** canister for cycles management.
 
@@ -43,7 +43,7 @@ If you need to make arbitrary calls to other canisters with cycles, a cycles wal
 ## Using the cycles ledger
 
 :::caution
-The cycles ledger is supported by default in [`dfx` version 0.22.0 and newer](/docs/current/developer-docs/getting-started/install/).
+The cycles ledger is supported by default in [`dfx` version 0.22.0 and newer](/docs/current/developer-docs/getting-started/install).
 :::
 
 ### Obtaining ICP
@@ -133,7 +133,7 @@ Using suffixes such as `500k` or `5TC` is supported. [View the full list of suff
 To transfer cycles into a canister to top it up, use the command:
 
 ```
-dfx cycles top-up `CANISTER_ID` `AMOUNT` --network ic
+dfx cycles top-up CANISTER_ID AMOUNT --network ic
 ```
 
 Replace `CANISTER_ID` with the canister ID you'd like to transfer the cycles to, such as `gastn-uqaaa-aaaae-aaafq-cai`, and `AMOUNT` with the number of cycles, such as `100000000`.
@@ -145,11 +145,11 @@ New canisters can be created using the cycles ledger by using the `dfx canister 
 Both of these commands have the following options and syntax to create a new canister:
 
 ```
-dfx canister create CANISTER_NAME --network ic
+dfx canister create CANISTER_NAME --with-cycles AMOUNT --network ic
 dfx deploy CANISTER_NAME --network ic
 ```
 
-Replace `CANISTER_NAME` with a name for the new canister.
+Replace `CANISTER_NAME` with a name for the new canister and `AMOUNT` with the number of cycles to deposit into the canister's cycles balance.
 
 With these two commands, there are two **optional** flags that can be used:
 
@@ -185,6 +185,6 @@ All commands shown below are for workflows involving mainnet development. For lo
 | Transferring cycles |  `dfx wallet send PRINCIPAL_ID AMOUNT --network ic`   | `dfx cycles transfer AMOUNT PRINCIPAL_ID (--subaccount [SUBACCOUNT]) --network ic` |
 | Redeeming a cycles coupon |  `dfx wallet redeem-faucet-coupon 'ABCDE-ABCDE-ABCDE'`     |  `dfx cycles redeem-faucet-coupon ABCDE-ABCDE-ABCDE --network ic`  |
 | Topping up a canister     | `dfx wallet send PRINCIPAL_ID AMOUNT --network ic` | `dfx cycles top-up CANISTER_ID AMOUNT --network ic` |
-| Creating a canister with cycles | `dfx canister call CYCLES_WALLET_CANISTER_ID wallet_create_canister '(record { cycles = 5000000000000 : nat64; controller = principal "PRINCIPAL_ID"})' --network ic` |  `dfx canister create CANISTER_NAME --network ic` |
+| Creating a canister with cycles | `dfx canister call CYCLES_WALLET_CANISTER_ID wallet_create_canister '(record { cycles = 5000000000000 : nat64; controller = principal "PRINCIPAL_ID"})' --network ic` |  `dfx canister create CANISTER_NAME --with-cycles AMOUNT --network ic` |
 
 

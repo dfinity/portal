@@ -66,7 +66,7 @@ docs
 ├── motoko // Motoko documentation - submodule
 ├── references // reference documentation
 ├── samples // sample projects - submodule
-├── tutorials // tutorial series (developer journey, hackathon prep course, etc).
+├── tutorials // tutorial series (developer ladder, hackathon prep course, etc).
 ```
 
 # Contributing to the Dev Docs
@@ -155,7 +155,7 @@ Concept pages describe in more detail a specific concept of ICP. Concept pages s
 Concept pages should remain simple and high-level without providing unnecessary, in-depth details. Readers should be able to quickly understand the technology and its benefits, convincing them to continue learning more and begin developing using the technology.
 
 #### Tutorial
-A tutorial uses a step-by-step format to walk a user through a specific workflow. The Developer Journey is an example of a tutorial series.
+A tutorial uses a step-by-step format to walk a user through a specific workflow. The Developer Ladder is an example of a tutorial series.
 
 #### Reference
 A reference page provides low level detail into a feature or technology. API reference pages are an example that provide in-depth detail about different endpoints and methods. Some examples include:
@@ -394,10 +394,6 @@ The following submoules and their corresponding repos are currently used:
     - `/docs/current/references/ii-spec`
 	- GitHub Repo: https://github.com/dfinity/internet-identity.git
 
-- Interface Spec
-    - `/docs/current/references/ic-interface-spec `
-    - GitHub Repo: https://github.com/dfinity/interface-spec.git
-
 - Sample projects
     - `/docs/current/references/samples`
     - GitHub Repo: https://github.com/dfinity/examples.git
@@ -592,25 +588,29 @@ The [Ecosystem Helper](https://mvw4g-yiaaa-aaaam-abnva-cai.icp0.io/) is an oncha
 
 ### Asset guidelines
 
-| Asset       |          | Requirements | Format       | Notes                                                                             |
-|-------------|----------|--------------|--------------|-----------------------------------------------------------------------------------|
-| logo        | required | 112x112px    | webp/svg/png | Currently displayed 56x56px                                                       |
-| screenshots | optional | 1024x576px   | webp/jpg     | The schema supports multiple files, but only the first one will be displayed      |
-| video       | optional | max 10MB     | webm/mp4     | If there is a video file specified, it will be displayed instead of a screenshot. |
+| Asset       |          | Requirements                    | Format                    | Notes                                                                                  |
+|-------------|----------|---------------------------------|---------------------------|----------------------------------------------------------------------------------------|
+| logo        | required | 112x112px (1:1 aspect ratio)    | svg(recommended)/png/webp | Optimize file size with [SVGOMG](https://svgomg.net) or [TinyPNG](https://tinypng.com) |
+| screenshots | optional | 1024x576px                      | webp/jpg                  | The schema supports multiple files, but only the first one will be displayed           |
+| video       | optional | max 10MB                        | webm/mp4                  | If there is a video file specified, it will be displayed instead of a screenshot.      |
 
 ### Tags
 
 The list of tags is not final, and will be updated as the project evolves. For now, the following tags are available:
 
-- `Wallet`
+- `AI`
+- `Chain Fusion`
 - `Bitcoin`
+- `Ethereum`
+- `DAO`
+- `DeFi`
+- `Enterprise`
+- `Games`
+- `Metaverse`
 - `NFT`
 - `SocialFi`
-- `DeFi`
-- `Games`
-- `DAO`
-- `Metaverse`
 - `Tools / Infrastructure`
+- `Wallet`
 
 ### Object schema
 
@@ -621,7 +621,7 @@ The list of tags is not final, and will be updated as the project evolves. For n
     oneLiner: string, // short description of the project
     website: string, // URL starting with `https://`
 
-    tags: ('Wallet' | 'Bitcoin' | 'NFT' | 'SocialFi' | 'DeFi' | 'Games' | 'DAO' | 'Metaverse' | 'Tools / Infrastructure')[],
+    tags: ('AI' | 'Chain Fusion' | 'Bitcoin' | 'Ethereum' | 'DAO' | 'DeFi' | 'Enterprise' | 'Games' | 'Metaverse' | 'NFT' | 'SocialFi' | 'Tools / Infrastructure' | 'Wallet')[],
     description: string, // description of the project
     stats: string, // eg. "10,000 users"
     logo: string, // url to logo file, eg. /img/showcase/awesome-icp-project_logo.webp

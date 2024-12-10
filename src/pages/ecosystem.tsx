@@ -17,6 +17,8 @@ import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 import DarkHeroStyles from "../components/Common/DarkHeroStyles";
 import { Pill, PillSecondaryLabel } from "../components/Common/Pills/Pills";
+import DownloadFile from "@site/plugins/utils/download-file";
+import Download from "../components/Common/Icons/Download";
 
 type EnrichedShowcaseProjects = Array<ShowcaseProject | "promo" | "report">;
 
@@ -238,20 +240,22 @@ const ReportCard = () => {
   return (
     <div className="rounded-xl  text-white flex px-6 py-8 backdrop-blur-2xl bg-[#240d4e]">
       <div className="flex flex-col gap-2">
-        <h3 className="tw-title-sm mb-0">ICP Ecosystem Report</h3>
+        <h3 className="tw-title-sm text-[35px] mb-0">
+          ICP Chain Fusion Ecosystem Report 2024
+        </h3>
         <p className="tw-paragraph text-white/60 flex-1 mb-12">
-          The first ICP ecosystem report recaps the most substantial ecosystem
-          achievements from 2023 as well as zooms in on several success stories
-          from within the ecosystem.
+          The ICP Chain Fusion Ecosystem Report recaps the most substantial
+          ecosystem achievements from 2024 as well as zooms in on several
+          success stories from within the Chain Fusion ecosystem.
         </p>
         <Link
-          className="button-white link text-center"
-          href="/icp_ecosystem_report_03_2024.pdf"
+          className="button-white link link-with-icon !gap-4"
+          href="/ICP-ChainFusion-Ecosystem-Report-2024.pdf"
           target="_blank"
           rel="noopener noreferrer"
           download
         >
-          Download Report
+          <Download /> Download Report
         </Link>
       </div>
     </div>

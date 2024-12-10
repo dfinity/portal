@@ -154,15 +154,6 @@ const dePinCardsData: CardData[] = [
     refText: "Learn more",
     imageSide: "right",
   },
-  {
-    title: "RentSpace",
-    description:
-      "RentSpace is pioneering the future of property rentals by harnessing the power of blockchain technology and Web3 innovations. Their mission is to revolutionize the real estate industry by providing features like Tik-Tok-style video marketing, crypto and fiat payment integrations, collaborative booking, and action-based rewards programs.",
-    image: "/img/features/sns_image.webp",
-    href: "https://rentb.space",
-    refText: "Learn more",
-    imageSide: "left",
-  },
 ];
 
 const smallCardsData = [

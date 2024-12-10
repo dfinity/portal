@@ -317,4 +317,5 @@ module.exports = {
     }),
   ],
   corePlugins: { preflight: false },
+  darkMode: ["class", '[data-theme="dark"]'],
 };

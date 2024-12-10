@@ -9,7 +9,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Beginner", "Rust", "Tutorial"]} />
 
-## Overview
+
 This guide demonstrates how to create a small dapp with a periodic task. The task is triggered automatically by the ICP network with a specified interval.
 
 ## Prerequisites
@@ -145,6 +145,8 @@ This code establishes the following:
 
 :::info
 Note: As described in the [periodic tasks and timers](/docs/current/developer-docs/smart-contracts/advanced-features/periodic-tasks) page, the timers library does not handle canister upgrades. It is up to the canister developer to serialize the timers in the `canister_pre_upgrade` and reactivate the timers in the `canister_post_upgrade` method if needed.
+
+Using pre_ and post_upgrade hooks is discouraged. It is error-prone and can render a canister unusable. Per best practices, using these methods should be avoided if possible.
 :::
 
 For the sake of simplicity, in this guide, the `canister_post_upgrade` method just calls `canister_init` to reinitialize the timer.

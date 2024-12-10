@@ -1,5 +1,5 @@
 ---
-keywords: [advanced, tutorial, developer journey, nfts]
+keywords: [advanced, tutorial, developer ladder, nfts]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -10,7 +10,14 @@ import '/src/components/CenterImages/center.scss';
 
 <MarkdownChipRow labels={["Advanced", "Tutorial"]} />
 
-## Overview
+<div class="text--center">
+<p> </p>
+</div>
+<div class="text--center">
+<iframe width="660" height="415" src="https://www.youtube.com/embed/3dSrNHmhXqk?si=JKd2ysJPJVEgjY3j" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
+
+
+
 
 A **non-fungible token**, commonly referred to as an NFT, is a type of tokenized asset that is assigned a unique identifier that is used to distinguish one NFT from another. An NFT cannot be replicated or reproduced since it is cryptographically unique. A non-fungible token is a type of token that cannot be exchanged 1:1 with another token of the same type, as the value of the NFT token can vary. In comparison, a **fungible** token can always be transferred 1:1 for another token of the same type.
 
@@ -119,8 +126,8 @@ module{
   public let defaultConfig = func(caller: Principal) : ICRC7.InitArgs{
       ?{
         symbol = ?"DEVS";
-        name = ?"Developer Journey Astronauts";
-        description = ?"ICP Developer Journey Astronauts";
+        name = ?"Developer Ladder Astronauts";
+        description = ?"ICP Developer Ladder Astronauts";
         logo = ?"https://internetcomputer.org/img/ethdenver/astronaut.webp";
         supply_cap = ?50;
         allow_transfers = null;
@@ -184,7 +191,7 @@ To verify the NFT collection has been initialized correctly, query some informat
 ## Get collection name:
 dfx canister call icrc7 icrc7_name  --query
 
-("Developer Journey Astronauts")
+("Developer Ladder Astronauts")
 
 ## Get the collection symbol:
 dfx canister call icrc7 icrc7_symbol  --query
@@ -194,7 +201,7 @@ dfx canister call icrc7 icrc7_symbol  --query
 ## Get the collection description:
 dfx canister call icrc7 icrc7_description  --query
 
-(opt "ICP Developer Journey Astronauts")
+(opt "ICP Developer Ladder Astronauts")
 
 ## Get the collection logo:
 dfx canister call icrc7 icrc7_logo  --query
@@ -568,9 +575,9 @@ This will return long output, such as:
 
 Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
-- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
+- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
+- [Developer ladder forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -584,9 +591,9 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Upcoming hackathons](https://dfinity.org/hackathons/).
 
-- [Weekly developer office hours](https://discord.gg/4a7SZzRk?event=1164114241893187655) to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on our [developer Discord](https://discord.com/invite/cA7y6ezyE2) group.
+- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
 
-- Submit your feedback to the [ICP Developer feedback board](http://dx.internetcomputer.org).
+- Submit your feedback to the [ICP Developer feedback board](https://dx.internetcomputer.org).
 
 ## Next steps
 

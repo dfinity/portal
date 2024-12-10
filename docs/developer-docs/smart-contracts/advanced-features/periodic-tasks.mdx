@@ -14,7 +14,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <MarkdownChipRow labels={["Advanced", "Concept"]} />
 
 
-## Overview
+
 Unlike other blockchains, ICP canisters can automatically execute tasks after a specified delay or interval.
 
 There are two ways to schedule an automatic canister execution on ICP:
@@ -48,6 +48,8 @@ Internally the CDK timers libraries do the following:
 
 :::info
 The library does not handle the canister upgrades. It is up to the canister developer to serialize the timers in the `canister_pre_upgrade` hook and reactivate the timers in the `canister_post_upgrade` method if necessary.
+
+Using pre_ and post_upgrade hooks is discouraged. It is error-prone and can render a canister unusable. Per best practices, using these methods should be avoided if possible.
 :::
 
 :::caution

@@ -8,7 +8,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Beginner", "Dev Tools" ]} />
 
-## Overview
+
 
 Developer tools are used to create, manage, and interact with canisters. They can come in several formats, such as command line tools, onchain and off-chain libraries, and integrated development environments. For ICP developers, there are tools within each of these categories available for you to utilize when developing your ICP canisters.
 
@@ -18,11 +18,11 @@ Developer tools are used to create, manage, and interact with canisters. They ca
 
 [`dfx`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/) is the primary tool used by developers to create, build, deploy, manage, and call canisters. `dfx` is also referred to as the IC SDK, or the Internet Computer Software Development Kit.
 
-`dfx` supports [local development](/docs/current/developer-docs/getting-started/deploy/local) and deployment through the [`dfx start`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-start) command, which runs a local instance of the ICP replica that can be used to deploy and test canisters on your local machine.
+`dfx` supports [local development](/docs/current/developer-docs/getting-started/deploy-and-manage) and deployment through the [`dfx start`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-start) command, which runs a local instance of the ICP replica that can be used to deploy and test canisters on your local machine.
 
 To deploy canisters to the mainnet or make calls to canisters already deployed on the mainnet, the `--network ic` flag can be used with most `dfx` commands.
 
-- [Install `dfx`](/docs/current/developer-docs/getting-started/install/).
+- [Install `dfx`](/docs/current/developer-docs/getting-started/install).
 
 - [`dfx` documentation](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/).
 
@@ -90,6 +90,10 @@ Additionally, there are several community-developed and maintained agents:
 ### Canbench
 
 - [Canbench](/docs/current/developer-docs/developer-tools/off-chain/canbench): A Rust crate that provides canister benchmarking tooling so developers can gain an insight into how their canister uses memory, instructions, and other resources.
+
+### `ic-alloy`
+
+The [`ic-alloy`](https://github.com/ic-alloy) Rust crate can be used to interact with the EVM RPC canister from Rust code. [View the `ic-alloy` documentation for more information](https://o7kje-7yaaa-aaaal-qnaua-cai.icp0.io).
 
 ## Onchain libraries
 

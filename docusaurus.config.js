@@ -38,6 +38,14 @@ const snsDataPlugin = require("./plugins/sns-data");
 const airtablePlugin = require("./plugins/airtable");
 const youtubePlugin = require("./plugins/youtube");
 
+const remarkPlugins = [
+  math,
+  simplePlantUML,
+  require("remark-code-import"),
+  require("./plugins/remark/validate-links.js"),
+];
+const rehypePlugins = [katex];
+
 const isDeployPreview = !!process.env.PREVIEW_CANISTER_ID;
 
 if (process.env.PREVIEW_CANISTER_ID) {
@@ -89,30 +97,17 @@ const subnavItems = [
   {
     type: "dropdown",
     position: "left",
-    label: "Frameworks",
-    items: [
-      {
-        label: "Juno",
-        href: "/docs/current/developer-docs/web-apps/frameworks/juno",
-      },
-    ],
-  },
-  {
-    type: "dropdown",
-    position: "left",
     label: "Additional Resources",
     items: [
       {
         label: "Awesome Internet Computer",
         href: "https://github.com/dfinity/awesome-internet-computer#readme",
       },
-      { label: "Sample Code", to: "/samples" },
       {
         label: "SDK Release Notes",
         type: "doc",
         docId: "other/updates/release-notes/release-notes",
       },
-      { label: "Developer Tools", to: "/tooling" },
       { label: "Developer Grants", href: "https://dfinity.org/grants" },
       {
         label: "Playground",
@@ -124,7 +119,7 @@ const subnavItems = [
       },
       {
         label: "Dev Discord",
-        href: "https://discord.gg/jnjVVQaE2C",
+        href: "https://discord.internetcomputer.org",
       },
     ],
   },
@@ -203,6 +198,11 @@ const marketingNav = {
               href: "/capabilities/sustainability",
               description: "Building green, efficient tech",
             },
+            {
+              name: "Library",
+              href: "/library",
+              description: "Resources to get you started",
+            },
             /*
             {
               name: "ICP as a Bitcoin L2",
@@ -237,7 +237,7 @@ const marketingNav = {
         },
         {
           label: "Discord",
-          href: "https://discord.gg/jnjVVQaE2C",
+          href: "https://discord.internetcomputer.org",
           iconUrl: "/img/svgIcons/purple/discord.svg",
         },
         {
@@ -363,7 +363,7 @@ const marketingNav = {
         },
         {
           label: "Discord",
-          href: "https://discord.gg/jnjVVQaE2C",
+          href: "https://discord.internetcomputer.org",
           iconUrl: "/img/svgIcons/purple/discord.svg",
         },
         {
@@ -387,8 +387,8 @@ const marketingNav = {
         },
         { name: "Developer grants", href: "https://dfinity.org/grants" },
         {
-          name: "Free Cycles",
-          href: "/docs/current/developer-docs/getting-started/cycles/cycles-faucet",
+          name: "Using cycles",
+          href: "/docs/current/developer-docs/getting-started/tokens-and-cycles",
         },
       ],
 
@@ -399,7 +399,7 @@ const marketingNav = {
             {
               name: "Developer Docs",
               href: "/docs/current/home",
-              description: "Start coding",
+              description: "Find the resources you need quickly",
             },
             {
               name: "Sample code",
@@ -407,9 +407,9 @@ const marketingNav = {
               description: "Get inspired by existing projects",
             },
             {
-              name: "Playground",
-              href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
-              description: "Deploy to the playground environment",
+              name: "Web IDE",
+              href: "https://icp.ninja",
+              description: "Deploy your first dapp with ICP.Ninja",
             },
             {
               name: "Programming languages",
@@ -433,8 +433,8 @@ const marketingNav = {
             },
           ],
           featured: {
-            title: "Start building step by step",
-            href: "/docs/current/tutorials/developer-journey/",
+            title: "Developer Docs",
+            href: "/docs/current/home",
             image: "/img/nav/featured-building.webp",
           },
         },
@@ -448,7 +448,7 @@ const marketingNav = {
         },
         {
           label: "Discord",
-          href: "https://discord.gg/jnjVVQaE2C",
+          href: "https://discord.internetcomputer.org",
           iconUrl: "/img/svgIcons/purple/discord.svg",
         },
         {
@@ -528,7 +528,7 @@ const marketingNav = {
         },
         {
           label: "Discord",
-          href: "https://discord.gg/jnjVVQaE2C",
+          href: "https://discord.internetcomputer.org",
           iconUrl: "/img/svgIcons/purple/discord.svg",
         },
         {
@@ -600,6 +600,7 @@ const config = {
         "What is the ICP token?, How is the Internet Computer governed?, How do I start building fully onchain Web3?",
       "data-modal-disclaimer":
         " This LLM provides responses are generated automatically and may be inaccurate or outdated. Please take care to verify or validate any responses before making any critical decisions.",
+      "data-user-analytics-fingerprint-enabled": "true",
       async: true,
     },
   ],
@@ -655,16 +656,16 @@ const config = {
           },
 
           sidebarPath: require.resolve("./sidebars.js"),
-          remarkPlugins: [math, simplePlantUML, require("remark-code-import")],
-          rehypePlugins: [katex],
+          remarkPlugins,
+          rehypePlugins,
           editUrl: "https://github.com/dfinity/portal/edit/master/",
         },
         blog: {
           path: "blog",
           blogSidebarCount: "ALL",
           postsPerPage: "ALL",
-          remarkPlugins: [math, simplePlantUML, require("remark-code-import")],
-          rehypePlugins: [katex],
+          remarkPlugins,
+          rehypePlugins,
         },
         theme: {
           customCss: require.resolve("./src/css/custom.scss"),
@@ -689,9 +690,9 @@ const config = {
     {
       image: "/img/share.webp",
       colorMode: {
-        disableSwitch: true,
+        disableSwitch: false,
         defaultMode: "light",
-        respectPrefersColorScheme: false,
+        respectPrefersColorScheme: true,
       },
       metadata: [
         {

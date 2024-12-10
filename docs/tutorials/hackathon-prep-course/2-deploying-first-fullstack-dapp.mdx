@@ -10,7 +10,7 @@ import '/src/components/CenterImages/center.scss';
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
-## Overview
+
 
 To get started developing on ICP, there are several sample projects, boilerplate templates, and other resources to help you get started. In this tutorial, you'll learn how to deploy your first full-stack dapp using a boilerplate sample. This sample dapp uses Motoko for the backend canister and the frameworks Vite and React to create a frontend user interface (UI) that makes calls to a simple counter method in the backend canister. When the button in the UI is clicked, the counter function increases the value of the count by an increment of 1. The updated count value is then reflected in the UI.
 
@@ -129,8 +129,6 @@ You can learn more about identities and principals [here](/docs/current/tutorial
 
 Cycles are used to measure and pay for the resources that are used by a canister, such as the memory, storage, and compute power. For canisters deployed locally, cycles can be fabricated. However, once a canister is deployed to the mainnet, real cycles are charged to pay for the resources being used on the network. This is known as the ICP's 'reverse gas model', which enables developers to pay for the gas costs of their dapp, rather than end-users having to pay gas fees when using a dapp. This helps aid in onboarding new users onto dapps deployed on ICP, since there aren't prerequisites such as needing a cryptowallet containing tokens to interact with a dapp.
 
-To get cycles, you can convert ICP tokens into cycles, or you can obtain a [cycles coupon](/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles#acquiring-cycles-using-a-cycles-coupon) if you haven't previously received one before.
-
 You will learn how to obtain and use cycles in the upcoming module, [7: Obtaining cycles and deploying to the mainnet](/docs/current/tutorials/hackathon-prep-course/obtaining-cycles).
 
 ## Deploying the project using Gitpod
@@ -170,7 +168,7 @@ Before you can deploy your first dapp on ICP, you will need to set up your devel
 
 - [x] A command line interface (CLI) window open. This window is also referred to as the 'terminal' window.
 
-- [x] Download and install the IC SDK package as described in the [installing the IC SDK](/docs/current/developer-docs/getting-started/install/) page. The IC SDK includes the CLI tool `dfx`, which is the primary tool used to creating, managing, and deploying canisters. It also includes Motoko, which is ICP's native programming language.
+- [x] Download and install the IC SDK package as described in the [installing the IC SDK](/docs/current/developer-docs/getting-started/install) page. The IC SDK includes the CLI tool `dfx`, which is the primary tool used to creating, managing, and deploying canisters. It also includes Motoko, which is ICP's native programming language.
 
 - [x] A code editor installed. The [VSCode IDE](https://code.visualstudio.com/download) is a popular choice.
 

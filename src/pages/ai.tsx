@@ -55,7 +55,7 @@ const trustCards = [
     imageAlt: "Scalability icon",
     title: "Scalable",
     description:
-      "ICP aims to give smart contracts near native performance and scalability. Currently, smart contracts can execute billions of instructions per message and use 4GiB of the main memory and 400GiB of stable memory. The future vision is to give smart contracts access to AI hardware such as GPUs.",
+      "ICP aims to give smart contracts near native performance and scalability. Currently, smart contracts can execute billions of instructions per message and use 4GiB of the main memory and 500GiB of stable memory. The future vision is to give smart contracts access to AI hardware such as GPUs.",
   },
   {
     imageSrc: "/img/decentralized-ai/trust-icon-5.svg",

@@ -4,11 +4,44 @@
     "description": "Blockchain Singularity — all computations of the world can run on ICP. ICP is a decentralized compute platform operating as an extension of the Internet, offering cost effective compute and storage services, with infrastructure provided by independent entities around the globe. The platform allows anyone to deploy canister smart contracts on the Internet and run them in a decentralized manner.",
     "milestones": [
       {
+        "name": "Increase scalability and compute capacity",
+        "milestone_id": "Flux",
+        "description": "ICP subnets can handle even more compute load, by better handling many distinct canisters and by using more CPU threads. When a subnet's load grows even beyond that, this milestone introduces canister migration, which enables better load balancing between subnets, ensuring all ICP subnets are well utilized.",
+        "eta": null,
+        "status": "in_progress",
+        "elements": [
+          {
+            "title": "Asynchronous Checkpointing",
+            "overview": "Replicas currently persist the replicated state to disk every couple hundreds of rounds in a process called checkpointing. Currently some parts of checkpointing are done synchronously, which leads to drops in the execution rate in the checkpointing rounds and users have to wait longer for their responses during these rounds. The goal of this feature is to make more checkpointing steps run asynchronously in the background to make the IC's performance more consistent and predictable.",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Flux"
+          },
+          {
+            "title": "Canister migration",
+            "overview": "Migrating canisters between subnets. Important for balancing subnet utilization and scaling the IC.",
+            "status": "future",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "eta": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Flux"
+          }
+        ]
+      },
+      {
         "name": "Reduced End-to-end Latency",
         "milestone_id": "Tokamak",
         "description": "This milestone marks a significant reduction of user-perceived end-to-end latency for processing ingress messages. It is achieved by multiple concerted measures at different levels of the protocol stack and brings the user experience of Web3 closer to Web2.",
-        "eta": null,
-        "status": "in_progress",
+        "eta": "November 2024",
+        "status": "deployed",
         "elements": [
           {
             "title": "QUIC-based transport and P2P layer for consensus",
@@ -29,7 +62,7 @@
             "proposal": "",
             "docs": "",
             "eta": "Q2 2024",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Tokamak"
@@ -52,8 +85,8 @@
         "name": "Increased Storage Capacity and Throughput",
         "milestone_id": "Stellarator",
         "description": "Increased storage capacity of ICP subnets, storage per canister smart contract, and message throughput between subnets. Those improvements lead to each subnet being able to host larger workloads and better utilization of ICP’s hardware resources. The world's largest smart contracts can now grow even larger, far surpassing smart contracts on any other chain.",
-        "eta": null,
-        "status": "in_progress",
+        "eta": "November 2024",
+        "status": "deployed",
         "elements": [
           {
             "title": "Increase Stable Memory Limit to 500GiB",
@@ -62,7 +95,7 @@
             "proposal": "",
             "docs": "",
             "eta": "Q2 2024",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Stellarator"
@@ -86,11 +119,11 @@
             "proposal": "",
             "docs": "",
             "eta": "",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Stellarator",
-            "imported": true
+            "imported": true,
+            "milestone_id": "Stellarator"
           },
           {
             "title": "Improved consensus throughput and latency",
@@ -99,7 +132,7 @@
             "proposal": "",
             "docs": "",
             "eta": "",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Stellarator"
@@ -111,19 +144,7 @@
             "proposal": "",
             "docs": "",
             "eta": "",
-            "status": "in_progress",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Stellarator"
-          },
-          {
-            "title": "Asynchronous Checkpointing",
-            "overview": "Replicas currently persist the replicated state to disk every couple hundreds of rounds in a process called checkpointing. Currently some parts of checkpointing are done synchronously, which leads to drops in the execution rate in the checkpointing rounds and users have to wait longer for their responses during these rounds. The goal of this feature is to make more checkpointing steps run asynchronously in the background to make the IC's performance more consistent and predictable.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Stellarator"
@@ -136,6 +157,40 @@
         "milestone_id": "Past features",
         "eta": "none",
         "elements": [
+          {
+            "title": "Configurable Wasm memory limit",
+            "overview": "Introduce an explicitly configurable Wasm heap limit. Exceeding the limit alerts the developer instead of bricking the canister when hitting the 4GiB limit.",
+            "forum": "https://forum.dfinity.org/t/proposal-configurable-wasm-heap-limit/17794",
+            "proposal": "https://dashboard.internetcomputer.org/proposal/105322",
+            "docs": "",
+            "eta": "2024",
+            "status": "deployed",
+            "is_community": true,
+            "in_beta": false,
+            "imported": true
+          },
+          {
+            "title": "Canister control audit trail",
+            "overview": "Seamless audit trail of management actions on canisters (creation, update, deletion). Allows to trace the sequence of installed canister versions to source code through a Wasm hash.",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "eta": "",
+            "status": "deployed",
+            "is_community": false,
+            "in_beta": false
+          },
+          {
+            "title": "Query call metrics",
+            "overview": "Metrics about query calls executed for a canister during a time period. Requirement for a fair charging of cycles for query calls.",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "eta": "",
+            "status": "deployed",
+            "is_community": true,
+            "in_beta": false
+          },
           {
             "title": "Increase Stable Memory Limit to 32GiB",
             "overview": "Increasing the stable memory limit of a canister from 8GiB to 32 GiB.",
@@ -404,18 +459,6 @@
         "eta": "none",
         "elements": [
           {
-            "title": "Configurable Wasm memory limit",
-            "overview": "Introduce an explicitly configurable Wasm heap limit. Exceeding the limit alerts the developer instead of bricking the canister when hitting the 4GiB limit.",
-            "forum": "https://forum.dfinity.org/t/proposal-configurable-wasm-heap-limit/17794",
-            "proposal": "https://dashboard.internetcomputer.org/proposal/105322",
-            "docs": "",
-            "eta": "2024",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false,
-            "imported": true
-          },
-          {
             "title": "Best-effort messaging",
             "overview": "Extend canister messaging by an additional message type that enables more scalable and responsive dApps.",
             "status": "in_progress",
@@ -436,17 +479,6 @@
             "docs": "",
             "eta": "",
             "is_community": false,
-            "in_beta": false
-          },
-          {
-            "title": "Query call metrics",
-            "overview": "Metrics about query calls executed for a canister during a time period. Requirement for a fair charging of cycles for query calls.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": true,
             "in_beta": false
           },
           {
@@ -520,17 +552,6 @@
             "in_beta": false,
             "milestone_id": "",
             "imported": true
-          },
-          {
-            "title": "Canister control audit trail",
-            "overview": "Seamless audit trail of management actions on canisters (creation, update, deletion). Allows to trace the sequence of installed canister versions to source code through a Wasm hash.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": false,
-            "in_beta": false
           },
           {
             "title": "Improved state certification",
@@ -623,17 +644,6 @@
             "in_beta": false
           },
           {
-            "title": "Canister migration",
-            "overview": "Migrating canisters between subnets. Important for balancing subnet utilization and scaling the IC.",
-            "status": "future",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "is_community": false,
-            "in_beta": false
-          },
-          {
             "title": "Subnet deletion",
             "overview": "Enable subnets to be deleted via NNS proposals.",
             "status": "future",
@@ -662,17 +672,6 @@
             "docs": "",
             "eta": "",
             "status": "",
-            "is_community": true,
-            "in_beta": false
-          },
-          {
-            "title": "Reduction of call latencies",
-            "overview": "Reduce call latencies for the most-used call patterns that negatively affect dapp responsiveness.",
-            "status": "",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
             "is_community": true,
             "in_beta": false
           },
@@ -767,17 +766,6 @@
           {
             "title": "Subnet splitting V2",
             "overview": "An enhanced version of subnet splitting where all the heavy lifting is done by the protocol.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "",
-            "is_community": false,
-            "in_beta": false
-          },
-          {
-            "title": "P2P unicast",
-            "overview": "Utilizing unicast at the P2P layer to communicate artefacts instead of gossip to decrease bandwidth requirements and improve throughput.",
             "forum": "",
             "proposal": "",
             "docs": "",
@@ -1045,10 +1033,10 @@
             "overview": "RPC canister connecting to Solana RPC providers to integrate with the Solana network. Enables two-way communication with the Solana network.",
             "forum": "",
             "proposal": "",
-            "docs": "",
+            "docs": "https://github.com/mfactory-lab/ic-solana",
             "eta": "",
-            "status": "upcoming",
-            "is_community": false,
+            "status": "in_progress",
+            "is_community": true,
             "in_beta": false,
             "milestone_id": "Helium"
           }
@@ -1418,8 +1406,8 @@
             "forum": "https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560",
             "proposal": "",
             "docs": "https://internetcomputer.org/docs/current/developer-docs/integrations/vetkeys/technology-overview",
-            "eta": "2024",
-            "status": "",
+            "eta": "Q2 2025",
+            "status": "in_progress",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Niobium",
@@ -1431,8 +1419,8 @@
             "forum": "",
             "proposal": "",
             "docs": "",
-            "eta": "2024",
-            "status": "",
+            "eta": "Q2 2025",
+            "status": "in_progress",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Niobium",
@@ -1545,7 +1533,7 @@
         "name": "Edge Infrastructure is Fully Decentralized",
         "milestone_id": "Solenoid",
         "description": "ICP is accessible through a decentralized edge infrastructure, which is split into NNS-controlled API Boundary Nodes and HTTP Gateways. The NNS will appoint node machines to run API Boundary Nodes and anyone will be able to run HTTP Gateways, enabling a much more decentralized ICP edge infrastructure with a diverse set of service providers.",
-        "eta": null,
+        "eta": "December 2024",
         "status": "in_progress",
         "elements": [
           {
@@ -2386,33 +2374,44 @@
     "description": "DeFi protocols, real-word asset tokenization, and other digital asset solutions are strong drivers of web3 adoption. ICP’s Chain Fusion capabilities, unparalleled scalability, and the ability to serve web assets from chain opens up novel digital asset classes. Moreover, it makes ICP an attractive platform to build multi chain custody solutions and wallets.",
     "milestones": [
       {
-        "name": "Oisy, a Multi-chain Wallet Powered by Chain Fusion",
-        "milestone_id": "Toroidal",
-        "description": "Oisy is a wallet with a unique combination of properties. It is the first smart contract wallet that is self-custodial, multi-chain and uses passkeys for authentication, while being fully accessible through the browser. Oisy supports ICP-based dapps through ICRC-21, EVM-based dapps through WalletConnect, and easily converts between native Ethereum tokens and their ck twins.",
-        "eta": null,
+        "name": "OISY Wallet v1.0 - The official Launch",
+        "milestone_id": "Helios",
+        "description": "With the Helios release, officially named v1.0, OISY will step out of the beta status into its first production version. This includes functional coverage of all key features like buy, receive, send, swap, and convert from and to chain-key tokens, and with several major blockchains integrated, also a true multi-chain nature. Behind the scenes, it also includes setting up proper processes for product improvement, marketing, automated testing, and setting up a user friendly support process.",
+        "eta": "January 2025",
         "status": "in_progress",
         "elements": [
           {
-            "title": "Oisy",
-            "overview": "Shift Oisy's ownership model to a canister-per-user model. Under this change, the digital assets for each Oisy user will reside in a user-controlled canister.",
+            "title": "Solana Integration",
+            "overview": "OISY widens its multi-chain reach beyond Bitcoin and Ethereum, and will integrate with the most important networks. Solana is the first one to be implemented, a crucial step forward in our mission to deliver a true multi-chain wallet for decentralized finance (DeFi) users.",
             "status": "in_progress",
             "forum": "",
             "proposal": "",
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Toroidal"
+            "milestone_id": "Helios"
           },
           {
-            "title": "Signer standards in Oisy",
-            "overview": "Oisy is upgraded to support the signer standards to foster a vibrant and diverse ecosystem of signers and relying parties. Users can then safely transact with digital assets using their Oisy wallet and signer standards compatible dApps.",
+            "title": "In-Wallet Swaps",
+            "overview": "Introducing in-wallet swaps, this release will enhance flexibility for managing assets, allowing users to seamlessly change their asset allocation directly in OISY using DEX liquidity, mitigating risk or aiming for a higher yield.",
             "status": "in_progress",
             "forum": "",
             "proposal": "",
             "docs": "",
             "is_community": false,
             "in_beta": false,
-            "milestone_id": "Toroidal"
+            "milestone_id": "Helios"
+          },
+          {
+            "title": "Promote Chain-Key Tokens",
+            "overview": "With improved screens, flows, and helper texts for chain fusion conversions, OISY will provide users with the right information at the right places to make informed decisions to easily convert native tokens into their chain fusion twins or vice versa.",
+            "status": "in_progress",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Helios"
           }
         ]
       },
@@ -2420,13 +2419,13 @@
         "name": "The Orbit Multi-Custody Asset Framework",
         "milestone_id": "Poloidal",
         "description": "Orbit is a comprehensive digital assets framework, enabling simple to advanced rules over user digital assets. Initially tailored for token management, it provides robust support for 1-out-of-M to complex approval policies for financial transactions. It also supports secure management of infrastructure like canister installations and upgrades. Teams and businesses can confidently handle ICP, ckETH, and compatible tokens using Orbit's advanced security features, vital for those seeking a stable and reliable management over their treasury.",
-        "eta": null,
+        "eta": "January 2025",
         "status": "in_progress",
         "elements": [
           {
             "title": "Orbit Multi custody wallet for ICP",
             "overview": "Users can securely share ownership of the ICP token with a fully onchain wallet. From simple 1-out-of-2 configurations to sophisticated approval policy rules, Orbit provides comprehensive support for secure financial transactions with a flexible user-role-based system.",
-            "status": "in_progress",
+            "status": "deployed",
             "forum": "",
             "proposal": "",
             "docs": "",
@@ -2437,7 +2436,7 @@
           {
             "title": "Secure canister management",
             "overview": "Teams building their product vision require secure shared access to dapp control. Orbit's rule engine enables policies specifying how many users are needed to approve canister management operations like upgrades and installations, preventing a single member from seizing control.",
-            "status": "",
+            "status": "in_progress",
             "forum": "",
             "proposal": "",
             "docs": "",
@@ -2448,13 +2447,55 @@
           {
             "title": "Orbit supports ICRC-1",
             "overview": "Users can manage non-ICP tokens like ckBTC and ckETH with confidence using Orbit's advanced security features, ensuring secure multi-token management.",
-            "status": "",
+            "status": "in_progress",
             "forum": "",
             "proposal": "",
             "docs": "",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Poloidal"
+          }
+        ]
+      },
+      {
+        "name": "Oisy, a Multi-chain Wallet Powered by Chain Fusion",
+        "milestone_id": "Toroidal",
+        "description": "Oisy is a wallet with a unique combination of properties. It is the first smart contract wallet that is self-custodial, multi-chain and uses passkeys for authentication, while being fully accessible through the browser. Oisy supports ICP-based dapps through ICRC-21, EVM-based dapps through WalletConnect, and easily converts between native Ethereum tokens and their ck twins.",
+        "eta": "November 2024",
+        "status": "deployed",
+        "elements": [
+          {
+            "title": "Oisy ownership model",
+            "overview": "Shift Oisy's ownership model to a canister-per-user model. Under this change, the digital assets for each Oisy user will reside in a user-controlled canister.",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Toroidal"
+          },
+          {
+            "title": "Oisy Beta Launch",
+            "overview": "Make the Oisy wallet accessible to external users.",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "docs": "https://oisy.com/",
+            "is_community": false,
+            "in_beta": true,
+            "milestone_id": "Toroidal"
+          },
+          {
+            "title": "Signer standards in Oisy",
+            "overview": "Oisy is upgraded to support the signer standards to foster a vibrant and diverse ecosystem of signers and relying parties. Users can then safely transact with digital assets using their Oisy wallet and signer standards compatible dApps.",
+            "status": "deployed",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Toroidal"
           }
         ]
       },
@@ -2687,7 +2728,7 @@
         "name": "Active Liquid Democracy",
         "milestone_id": "Plasma",
         "description": "The NNS and SNS DAOs facilitate active liquid democracies by lowering the entry barrier for participation and providing better inputs for well-informed decisions. This includes direct voting as well as delegating some voting decisions to others. As a result, more users stake tokens and participate in DAOs to form lively communities. The resulting network effects foster additional adoption and growth.",
-        "eta": null,
+        "eta": "November 2024",
         "status": "in_progress",
         "elements": [
           {
@@ -2756,14 +2797,14 @@
             "milestone_id": "Plasma"
           },
           {
-            "title": "Improved SNS upgrades",
-            "overview": "Upgrading SNS canisters is crucial for SNS DAOs to receive the latest features and security updates. These updates are not straightforward and may require multiple proposals. This feature is about simplifying SNS upgrades.",
-            "description": "Upgrading SNS canisters is crucial for SNS DAOs to receive the latest features and security updates. These updates are not straightforward and may require multiple proposals. This feature is about simplifying SNS upgrades.",
-            "forum": "",
+            "title": "ICRC-1 token imports",
+            "overview": "One of the most requested community features is to allow users of the NNS dapp to import any token that supports ICRC-1 to store in their account.",
+            "description": "One of the most requested community features is to allow users of the NNS dapp to import any token that supports ICRC-1 to store in their account.",
+            "forum": "https://forum.dfinity.org/t/feature-proposal-importing-tokens-to-the-nns-dapp/31230",
             "proposal": "",
             "docs": "",
             "eta": "",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Plasma"
@@ -2776,16 +2817,16 @@
             "proposal": "",
             "docs": "https://internetcomputer.org/docs/current/developer-docs/daos/nns/concepts/neurons/neuron-management",
             "eta": "",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Plasma"
           },
           {
-            "title": "ICRC-1 token imports",
-            "overview": "One of the most requested community features is to allow users of the NNS dapp to import any token that supports ICRC-1 to store in their account.",
-            "description": "One of the most requested community features is to allow users of the NNS dapp to import any token that supports ICRC-1 to store in their account.",
-            "forum": "https://forum.dfinity.org/t/feature-proposal-importing-tokens-to-the-nns-dapp/31230",
+            "title": "Improved SNS upgrades",
+            "overview": "Upgrading SNS canisters is crucial for SNS DAOs to receive the latest features and security updates. These updates are not straightforward and may require multiple proposals. This feature is about simplifying SNS upgrades.",
+            "description": "Upgrading SNS canisters is crucial for SNS DAOs to receive the latest features and security updates. These updates are not straightforward and may require multiple proposals. This feature is about simplifying SNS upgrades.",
+            "forum": "",
             "proposal": "",
             "docs": "",
             "eta": "",
@@ -2801,7 +2842,7 @@
         "milestone_id": "Neon",
         "description": "As both the number of SNS DAOs and the number of DAO participants grow within them, it is crucial to have a robust system that can handle the ever-growing communities. Preparing for growth means not only improving the underlying infrustucture to handle increased load, but also enhancing the user experience at all levels (from developers to end users), so when new people come to the ICP ecosystem, they will have a frictionless onboarding.",
         "eta": null,
-        "status": "future",
+        "status": "in_progress",
         "elements": [
           {
             "title": "Periodic Followee Confirmation",
@@ -3558,13 +3599,13 @@
         "name": "Canister DevOps",
         "milestone_id": "Beryllium",
         "description": "This milestone provides substantial simplifications and improvements for the developer lifecycle of canisters, particularly regarding their development and operations. Snapshotting capabilities, a powerful logging infrastructure and improved error handling as well as push of relevant events brings canisters closer to Web2 services in terms of DevOps.",
-        "eta": null,
-        "status": "in_progress",
+        "eta": "November 2024",
+        "status": "deployed",
         "elements": [
           {
             "title": "Canister snapshots",
             "overview": "Allow for canister snapshots to be created on chain. Snapshots can be exported to and imported from off-chain storage.",
-            "status": "in_progress",
+            "status": "deployed",
             "forum": "https://forum.dfinity.org/t/canister-backup-and-restore-community-consideration/22597",
             "proposal": "",
             "docs": "",
@@ -3587,22 +3628,9 @@
             "imported": true
           },
           {
-            "title": "Canister lifecycle hooks",
-            "overview": "Push model for canisters receiving notifications from the ICP, e.g., when they are low on cycles. More resource efficient than periodic pulling.",
-            "forum": "https://forum.dfinity.org/t/canister-lifecycle-hooks/17089",
-            "proposal": "https://dashboard.internetcomputer.org/proposal/106146",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": true,
-            "in_beta": false,
-            "milestone_id": "Beryllium",
-            "imported": true
-          },
-          {
             "title": "Standardized canister response codes",
             "overview": "Standardize canister response codes, particularly error codes, to enable better composability of services from canister smart contracts.",
-            "status": "upcoming",
+            "status": "deployed",
             "forum": "",
             "proposal": "",
             "docs": "",
@@ -3617,10 +3645,63 @@
             "proposal": "",
             "docs": "",
             "eta": "",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Beryllium"
+          }
+        ]
+      },
+      {
+        "name": "Code Authoring and Development Workflows",
+        "milestone_id": "Coulomb",
+        "description": "This milestone introduces new products that make building on ICP fast, fun, and educational.",
+        "eta": null,
+        "status": "in_progress",
+        "elements": [
+          {
+            "title": "ICP Ninja BETA",
+            "overview": "ICP Ninja is your go-to online platform for developing and deploying smart contracts on the Internet Computer (ICP).",
+            "status": "deployed",
+            "forum": "https://forum.dfinity.org/t/announcing-icp-ninja/36396",
+            "proposal": "",
+            "docs": "https://internetcomputer.org/docs/current/developer-docs/developer-tools/ide/icp-ninja",
+            "is_community": false,
+            "in_beta": true,
+            "milestone_id": "Coulomb"
+          },
+          {
+            "title": "ICP Ninja User Experience Enhancements",
+            "overview": "ICP Ninja will receive a number of new user experience enhancements, such as dark mode and the ability to modify the file tree.",
+            "status": "in_progress",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": true,
+            "milestone_id": "Coulomb"
+          },
+          {
+            "title": "ICP Ninja Developer Productivity Enhancements",
+            "overview": "ICP Ninja will get additional features that improve developer productivity, such as the ability to view logs and see live compilation feedback.",
+            "status": "in_progress",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": true,
+            "milestone_id": "Coulomb"
+          },
+          {
+            "title": "Revamped Onboarding",
+            "overview": "The developer documentation will receive a number of updates focused on improving the onboarding journey for first time ICP developers.",
+            "status": "in_progress",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Coulomb"
           }
         ]
       },
@@ -3631,6 +3712,19 @@
         "eta": null,
         "status": "in_progress",
         "elements": [
+          {
+            "title": "Canister lifecycle hooks",
+            "overview": "Push model for canisters receiving notifications from the ICP, e.g., when they are low on cycles. More resource efficient than periodic pulling.",
+            "forum": "https://forum.dfinity.org/t/canister-lifecycle-hooks/17089",
+            "proposal": "https://dashboard.internetcomputer.org/proposal/106146",
+            "docs": "",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": true,
+            "in_beta": false,
+            "milestone_id": "Thorium",
+            "imported": true
+          },
           {
             "title": "Cycles and instruction insights",
             "overview": "Give canister controllers insights on cycles consumption of their canisters to help them optimize cycles consumption.",
@@ -3651,7 +3745,7 @@
             "proposal": "",
             "docs": "",
             "eta": "Q2 2024",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Thorium",

@@ -8,7 +8,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Concept"]} />
 
-## Overview
+
 The Internet Computer implements a novel threshold ECDSA protocol as part of its chain-key signatures suite. In this protocol, the private ECDSA key exists only as secret shares held by nodes. Secret shares are shards of the ECDSA private key. Signatures are computed using those secret shares without the private key ever being reconstructed. Each replica of such subnet holds a key share that provides no information on its own. More than one third of the nodes are required to generate a threshold signature using their respective key shares.
 
 Besides the actual threshold signing protocol, chain-key ECDSA is comprised of protocols for secure, distributed key generation and periodic key resharing. Distributed key generation enables the nodes on a subnet to collaboratively generate keys, while periodic key resharing allows for ECDSA keys to be re-shared within the subnet. This makes chain-key ECDSA signatures much more powerful than any off-the-shelf threshold ECDSA protocol.
@@ -28,9 +28,9 @@ Threshold ECDSA enables many important use cases:
 
 ## Signing messages and transactions
 
-Threshold ECDSA can be used by making calls to the Threshold ECDSA API.
+Threshold ECDSA can be used by making calls to the threshold ECDSA API methods.
 
-[Learn how to use Threshold ECDSA to sign messages and transactions](./signing-messages-t-ecdsa.mdx).
+[Learn how sign messages and transactions with threshold ECDSA](./signing-messages-t-ecdsa.mdx).
 
 ## Resources
 - [Chain-key ECDSA signatures: technology overview](/docs/current/references/t-sigs-how-it-works/).
