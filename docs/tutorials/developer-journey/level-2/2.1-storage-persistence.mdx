@@ -18,7 +18,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/-aXjKSz_oXc?si=Tr9dl9-fXac3SfCS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
-## Overview
+
 
 The Internet Computer handles persistent data storage using a feature known as **stable memory**. **Stable memory** is a unique feature of the Internet Computer that defines a data store separate from the <GlossaryTooltip>canister</GlossaryTooltip>'s regular Wasm memory data store, which is known as **heap memory**. A canister's heap memory is not persistent storage and does not persist across canister upgrades; canister data and state stored in heap memory is removed when a canister is upgraded or reinstalled. For immutable canisters that use less than the heap memory limit of 4GiB, heap memory can be used. For larger canisters, and especially those that intend to be upgraded and changed over time, stable memory is important since it persists across canister upgrades, has a much larger storage capacity than heap memory, and is very beneficial for vertically scaling a dapp.
 
@@ -266,7 +266,7 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
 
-- Submit your feedback to the [ICP Developer feedback board](http://dx.internetcomputer.org).
+- Submit your feedback to the [ICP Developer feedback board](https://dx.internetcomputer.org).
 
 ## Next steps
 

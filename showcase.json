@@ -334,13 +334,13 @@
   {
     "id": "catalyze",
     "name": "Catalyze",
-    "website": "https://aqs24-xaaaa-aaaal-qbbea-cai.ic0.app/",
+    "website": "https://catalyze.one/",
     "tags": [
       "SocialFi",
       "DAO"
     ],
+    "description": "Catalyze is building the new Web3 social learning hub: Communities, Events & Seamless Token Transfer, all in one place.",
     "twitter": "https://x.com/catalyze_one",
-    "description": "Catalyze is building the new Web3 social learning hub: Communities, Events & Seamless Token Transfer. Now onboarding KOLs.",
     "usesInternetIdentity": true,
     "oneLiner": "Manage your Web3 communities and events",
     "display": "Large",
@@ -2580,7 +2580,7 @@
     "github": "https://github.com/usherlabs/verity-dp",
     "twitter": "https://twitter.com/usher_web3",
     "youtube": "https://www.youtube.com/@usher_web3",
-    "submittableId": "36108625"
+    "submittableId": "45961889"
   },
   {
     "name": "Isotopic Game Store",
@@ -4838,5 +4838,21 @@
     ],
     "github": "https://github.com/tolgayayci/dfx-dashboard",
     "website": "https://dfx-dashboard-docs.netlify.app/"
+  },
+  {
+    "id": "icptokens",
+    "name": "ICP Tokens",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "15,000+ users",
+    "website": "https://icptokens.net",
+    "github": "https://github.com/CyberNinjasLab",
+    "youtube": "https://www.youtube.com/watch?v=2hKfVcJviTM",
+    "twitter": "https://x.com/ICPTokens",
+    "description": "Advanced tool for tracking ICP tokens, designed to simplify the way you monitor, analyze, and manage tokens within the Internet Computer DeFi ecosystem. Portfolio insights, advanced charts and bubble maps for visual insights.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/icptokens_logo.svg"
   }
 ]
