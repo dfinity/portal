@@ -14,7 +14,7 @@ The ICP allows canisters to seamlessly interact with other canisters by calling 
 
 - On ICP, inter-canister calls are **asynchronous**. That means that while an inter-canister call is in progress other calls can still be processed. This significantly increases the canisters' scalability. However, it also means that canister authors have to correctly handle calls executing concurrently. In particular, this differs from the transactional nature of Ethereum's smart contract calls.
 
-- Since the calls are asynchronous, they are based on **callbacks**: when issuing a request to the callee canister, the caller also specifies a callback that will handle the callee's response. Many programming languages provide syntactic sugar for handling asynchronous calls in the form of `async/await` syntax, which obviates the need for explicit callbacks and allows structuring asynchronous code similar to an ordinary synchronous function. Motoko, the Rust Canister Development Kit (CDK), Azle (Typescript CDK) and Kybra (Python CDK) all support such syntactic sugar.
+- Since the calls are asynchronous, they are based on **callbacks**: When issuing a request to the callee canister, the caller also specifies a callback that will handle the callee's response. Many programming languages provide syntactic sugar for handling asynchronous calls in the form of `async/await` syntax, which obviates the need for explicit callbacks and allows structuring asynchronous code similar to an ordinary synchronous function. Motoko, the Rust Canister Development Kit (CDK), Azle (Typescript CDK) and Kybra (Python CDK) all support such syntactic sugar.
 
 - The requests are not guaranteed to be delivered. This allows the system to use its resources more optimally overall, but again differs from Ethereum and many other blockchains, and needs to be handled correctly. Moreover, calls can be made in either best-effort or guaranteed response modes. The best-effort mode supports a higher volume of messages and is much more resilient under high system load, but in this mode the "true" response from the callee is not guaranteed to be delivered, and can be replaced by a system generated error instead.
 
@@ -22,7 +22,7 @@ The ICP allows canisters to seamlessly interact with other canisters by calling 
 
 ## Service discovery
 
-Before you can call other canisters that are not part of your project, you need to learn the available endpoints (methods) that you can call, as well as their arguments and return values. Candid serves both as a data format and as an interface description language, and the ICP SDK will by default bundle the interface description (if available) in the `candid:service` metadata section of the canister code. For example, you can examine the interface of the ICP ledger canister (whose principal is `ryjl3-tyaaa-aaaaa-aaaba-cai`) using [`dfx`](/docs/current/developer-docs/getting-started/install).
+Before you can call other canisters that are not part of your project, you need to learn the available endpoints (methods) that you can call, as well as their arguments and return values. Candid serves both as a data format and an interface description language. The IC SDK will by default bundle the interface description (if available) in the `candid:service` metadata section of the canister code. For example, you can examine the interface of the ICP ledger canister (whose principal is `ryjl3-tyaaa-aaaaa-aaaba-cai`) using [`dfx`](/docs/current/developer-docs/getting-started/install).
 
 ```bash
 $ dfx canister metadata ryjl3-tyaaa-aaaaa-aaaba-cai candid:service --network ic
@@ -35,7 +35,7 @@ When the canister authors support it, remote canisters can also be made "pullabl
 ## Performing inter-canister calls
 
 Once you know the endpoints you want to call, in most cases you will want to use the CDK of your language to perform the calls. The CDK will generally take care of Candid encoding and decoding, and provide an `async/await` based syntax for your inter-canister calls. Refer to the language documentation
-([Motoko](/docs/current/motoko/main/writing-motoko/intercanister-calls), [Rust](/docs/current/developer-docs/backend/rust/intercanister),  [Typescript](/docs/current/developer-docs/backend/typescript/), [Python](/docs/current/developer-docs/backend/python/))
+([Motoko](/docs/current/motoko/main/writing-motoko/intercanister-calls), [Rust](/docs/current/developer-docs/backend/rust/intercanister), [Typescript](https://demergent-labs.github.io/azle/), [Python](https://demergent-labs.github.io/kybra/))
 for more details.
 
 
@@ -48,7 +48,7 @@ Under the hood, the CDKs use the low-level Wasm API to perform inter-canister ca
 
 [Cycles](/docs/current/developer-docs/gas-cost) are the currency in which canisters pay for their resource usage. Canisters can send some of the cycles they hold to other canisters. This can be done either by directly attaching cycles to any call to the target canister, or by calling the dedicated [`deposit_cycles`](/docs/current/references/ic-interface-spec/#ic-deposit_cycles) method of the management canister. When attaching cycles to a call (i.e., not using `deposit_cycles`), the target canister must explicitly accept part or all of the sent cycles; the remainder is refunded to the caller.
 
-Some endpoints require the caller to attach cycles to the call. For example, the [on-chain signature](/docs/current/developer-docs/smart-contracts/signatures/signing-messages-t-ecdsa) operations of the management canister require cycles to be attached. Requiring cycles can be used to implement a "direct gas" model, as opposed to the default ["reverse gas"](/docs/current/developer-docs/gas-cost) model of ICP.
+Some endpoints require the caller to attach cycles to the call. For example, the [onchain signature](/docs/current/developer-docs/smart-contracts/signatures/signing-messages-t-ecdsa) operations of the management canister require cycles to be attached. Requiring cycles can be used to implement a "direct gas" model, as opposed to the default ["reverse gas"](/docs/current/developer-docs/gas-cost) model of ICP.
 
 Refer to the language documentation ([Motoko](/docs/current/motoko/main/writing-motoko/intercanister-calls), [Rust](/docs/current/developer-docs/backend/rust/intercanister),  [Typescript](/docs/current/developer-docs/backend/typescript/), [Python](/docs/current/developer-docs/backend/python/)) for details on how to send and accept cycles.
 
@@ -56,7 +56,7 @@ Refer to the language documentation ([Motoko](/docs/current/motoko/main/writing-
 
 ICP supports two kind of inter-canister calls:
 
-* Guaranteed response calls provide the caller with the guarantee that, if the callee produces a response (which may be unsuccessful, i.e., an error during call processing), that exact response will be delivered to the caller. Furthermore, if the request isn't successfully delivered to the callee (which can happen during high load, callee running out of cycles, and other reasons), the response will notify the caller of this.
+* Guaranteed response calls provide the caller with the guarantee that if the callee produces a response (which may be unsuccessful, i.e., an error during call processing), that exact response will be delivered to the caller. Furthermore, if the request isn't successfully delivered to the callee (which can happen during high load, callee running out of cycles, and other reasons), the response will notify the caller of this.
 
 * Best-effort response calls drop this guarantee. They allow the caller to specify a timeout (which is capped from above by the system to some maximum value, such as 5 minutes), after which the system will return an error to the caller. The request may or may not be processed by the callee; the caller must, if necessary, determine whether the call took place or not by some other mechanism.
 
@@ -73,7 +73,7 @@ Best-effort calls address both of these problems. However, they can require more
 
 ## `async/await` syntax, concurrency and state changes
 
-The ``async/await`` syntax allows canister methods to issue asynchronous inter-canister calls and still be structured like an ordinary synchronous function. In this syntax, a method `foo` on a canister `A` could be written something like (in Rust-like syntax):
+The ``async/await`` syntax allows canister methods to issue asynchronous inter-canister calls and still be structured like an ordinary synchronous function. In this syntax, a method `foo` on a canister `A` could be written something like this: (in a Rust-like syntax):
 
 ```
 async fn foo() {
