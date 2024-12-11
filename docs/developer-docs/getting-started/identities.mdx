@@ -5,11 +5,9 @@ keywords: [beginner, getting started, tutorial, accounts, developer account]
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
-# Create a developer identity
+# Creating a developer identity
 
 <MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
-
-
 
 On the Internet Computer (ICP), a developer **identity** is essential to developing canisters. Developer identities use a private/public key pair for authentication. The public key can be distributed openly as it will be used to encrypt messages. The private key must be kept secret and stored securely.
 
@@ -40,8 +38,6 @@ Developer identities are not the only form of identity on ICP. Other ICP identit
 - **Internet Identity**: ICP's native authentication service. Internet Identity doesn't use usernames and passwords; instead, it uses a passkey stored in your local device's hardware.
 
 :::
-
-## Creating your identity
 
 By default, `dfx` will create and use the `default` identity. ***This identity is not stored securely. It is recommended you create your own personal identity.***
 
@@ -77,7 +73,7 @@ Identity names must use the characters `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmn
 To recover an identity, use `dfx identity import --seed-file seedphrase.txt`, where `seedphrase.txt` contains the seed phrase shown when you created your identity.
 :::
 
-### Storing the identity's private key
+### Storing the developer identity's private key
 
 The private key for an identity is stored in the `~/.config/dfx/identity/IDENTITY_NAME/identity.pem`. ***This file should be backed up to a secure location.***
 
@@ -85,7 +81,7 @@ The private key for an identity is stored in the `~/.config/dfx/identity/IDENTIT
 By default, `dfx` will store your identity in the local keyring/keychain. If a keyring/keychain is unavailable, it will prompt you to choose a password, then store your private key locally in a password-protected PEM file at `~/.config/dfx/identity/IDENTITY_NAME/identity.pem.encrypted`.
 :::
 
-## Using your identity
+## Using your developer identity
 
 Once your identity is created, you must tell `dfx` that this is the identity you want to use. If you do not, the `default` identity will be used, and any canister creation and management you execute will not be secure.
 
@@ -125,4 +121,4 @@ aez2y-7yvs5-e6dpq-gwlld-t6ozx-l5hoo-j4vwr-mimoy-me2xq-yrxkx-rae
 
 Next, you must obtain cycles. Cycles are required to pay for the resources a canister consumes.
 
-- [x] [Tokens and cycles](/docs/current/developer-docs/getting-started/tokens-and-cycles)
+- [x] [Using tokens and cycles](/docs/current/developer-docs/getting-started/tokens-and-cycles)

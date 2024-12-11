@@ -10,17 +10,15 @@ import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
-# Deploy and manage
+# Deploying and managing canisters
 
 <MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
-
-
 
 Once a canister's code has been written, it must be compiled into Wasm, installed into the canister itself, and then deployed to a network. The `dfx deploy` command executes each of these tasks as part of the deployment process; however, `dfx` commands also exist for running each step individually.
 
 It is recommended to deploy canisters locally or to the temporary [playground](/docs/current/developer-docs/smart-contracts/deploy/overview#deploying-to-playground) network to test canister functionality and make adjustments before considering the canister production-ready and deploying it to the mainnet. Deploying canisters locally and to the playground is free and does not cost cycles. Once a canister is deployed to the mainnet, it will consistently consume cycles and will need to be topped up periodically.
 
-## Start the local replica
+## Starting the local replica
 
 To deploy your canister locally, first start the local replica. This simulates the mainnet environment with a single node for local development and testing.
 
@@ -29,7 +27,7 @@ To deploy your canister locally, first start the local replica. This simulates t
 - `dfx start --background`: Runs the processes in the background and allows you to continue running commands in the current terminal.
 
 
-## Deploy locally 
+## Deploying the project locally
 
 Deploy the backend canister that you have written code for:
 
@@ -73,7 +71,7 @@ Your deployed canister will now be executing two timers and printing the output 
 
 You can interact with the canister's public methods either in your web browser through the [Candid UI](/docs/current/developer-docs/smart-contracts/candid/candid-concepts) URL that was returned in the deployment output or using the command line. Candid is an interface description language used to interact with a canister's public methods.
 
-## Upgrades
+## Upgrading canisters
 
 Canisters can be upgraded, allowing the same canister ID to be retained for an application. Upgrades preserve the state of a canister while allowing you to change the code. However, canister upgrades clear the canister's Wasm memory. Any data not stored in [stable memory](/docs/current/developer-docs/smart-contracts/maintain/storage) will be removed.
 
@@ -106,7 +104,7 @@ Confirm that the change you made results in the expected functionality or behavi
 dfx canister stop PROJECT_NAME_backend --network=local
 ```
 
-## Deploy to the mainnet
+## Deploying your project to the mainnet
 
 Now that the canister has been tested, you can deploy it to the mainnet. **Deploying to the mainnet costs [cycles](/docs/current/developer-docs/getting-started/tokens-and-cycles).**
 
@@ -142,7 +140,7 @@ URLs:
 When a canister is running on the mainnet, you will always need to pass the `--network=ic` flag to interact with it.
 :::
 
-## Settings
+## Canister settings
 
 After a canister is deployed to the mainnet, it will constantly be consuming resources and cycles. To view information about how many resources and cycles currently being used, along with other information, view the canister's settings:
 
@@ -210,7 +208,7 @@ Log visibility: controllers
 
 </details>
 
-## Topping up
+## Topping up canisters
 
 A canister will burn cycles even in an idle state to pay for the network storage it uses. Additional costs will be charged whenever the canister sends and receives messages, uses compute resources, or uses special features like HTTPS outcalls and threshold signatures.
 
@@ -236,7 +234,7 @@ Manually monitoring canisters to determine when they are getting close to the fr
 
 - [ICPTopup.com](https://www.icptopup.com/): A simplified version of CycleOps that allows you to top up several canisters (up to 50) at one time.
 
-### Freezing threshold
+### Cycles freezing threshold
 
 To prevent a canister from running out of cycles and being deleted, you can set what is known as a **freezing threshold**. This threshold is a duration of time set in seconds, indicating the minimum duration that the canister should exist without running out of cycles. Once a canister hits this threshold, it will not execute messages. It will only pay for the network resources it uses, such as compute allocation, memory usage, and storage allocation.
 
@@ -251,7 +249,7 @@ If you set a freezing threshold longer than 1.5 years, you will need to include 
 :::
 
 
-## Logging
+## Canister logging
 
 [Canister logs](/docs/current/developer-docs/smart-contracts/maintain/logs) can be used to gain insight into a canister's behavior and assist with debugging situations such as when a canister traps.
 
@@ -267,7 +265,7 @@ By default, canister logs are only visible to the canister's controllers, but th
 dfx canister update-settings PROJECT_NAME_backend --network=ic --log-visibility public
 ```
 
-## Snapshots
+## Canister snapshots
 
 Canister snapshots are used as a checkpoint that can be used to roll back your canister to a previous version in the event that the latest upgraded version becomes unresponsive or stops working as expected.
 
@@ -329,16 +327,12 @@ Any cycles remaining in the canister's balance will be returned to your develope
 dfx canister delete PROJECT_NAME_backend --network=ic
 ```
 
-## Stopping `dfx`
+## Stopping the local replica
 
-To stop `dfx`, simply use the `dfx stop` command.
+To stop the local replica, simply use the `dfx stop` command.
 
 For unresponsive `dfx` processes that are not stopped by `dfx stop`, you can use `dfx killall` to forcibly end them.
 
 ## Getting help
 
 To view help information for `dfx`, you can use the `dfx help` command or view the [`dfx` reference documentation](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/).
-
-## Next steps
-
-- [x] View the [developer next steps](/docs/current/developer-docs/getting-started/next-steps).
