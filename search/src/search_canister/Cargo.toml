@@ -8,9 +8,9 @@ path = "src/lib.rs"
 crate-type = ["cdylib"]
 
 [dependencies]
-candid = "0.10.10"
-ic-cdk = "0.17.0"
-ic-cdk-macros = "0.17.0"
+candid = "0.8.4"
+ic-cdk = "0.7.1"
+ic-cdk-macros = "0.6.9"
 search = { path = "../search" }
 
 [dev-dependencies]

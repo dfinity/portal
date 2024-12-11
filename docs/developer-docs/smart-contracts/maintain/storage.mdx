@@ -7,9 +7,9 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Storage
 
-<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
+<MarkdownChipRow labels={["Beginner", "Concept"]} />
 
-## Overview
+
 
 When developing projects on ICP, there are two primary forms of data storage that your <GlossaryTooltip>canisters</GlossaryTooltip> can utilize. The first type of storage is the canister's **heap memory**, sometimes referred to as the canister's *main memory*. Heap memory is **temporary**, and any data stored in a canister's heap memory is cleared whenever the canister is reinstalled or upgraded.
 
@@ -31,7 +31,7 @@ By default, a canister's stable memory is empty. The maximum storage limit for s
 
 ## Storage cost
 
-Storage cost is calculated on the GiB of storage used by a canister per second, costing `127_000` <GlossaryTooltip>cycles</GlossaryTooltip> on a 13-node subnet and `127_000 / 13 * 34` cycles on a subnet with 34 nodes. In USD, this works out to about $0.431 and $1.127, respectively, for storing 1 GiB of data for a 30-day month. The cost is the same whether the canister is using heap memory, stable memory, or both.
+Storage cost is calculated based on the GiB of storage used by a canister per second, costing `127_000` <GlossaryTooltip>cycles</GlossaryTooltip> on a 13-node subnet and `127_000 / 13 * 34` cycles on a subnet with 34 nodes. In USD, this works out to about $0.43 and $1.13, respectively, for storing 1 GiB of data for a 30-day month. The cost is the same whether the canister is using heap memory, stable memory, or both.
 
 [Learn more about storage costs](/docs/current/developer-docs/gas-cost).
 
@@ -39,11 +39,10 @@ Storage cost is calculated on the GiB of storage used by a canister per second, 
 
 ### Motoko storage handling
 
-In Motoko canisters, stable memory can be utilized through the Motoko **stable storage** and **stable variable** features. Stable storage is a Motoko-specific term used to refer to Motoko's implementation of stable memory used to persist data across canister upgrades. Stable variables are Motoko-defined variables that use the `stable` modifying keyword to indicate that the variable's value should persist across canister upgrades, such as:
+In Motoko canisters, stable memory can be utilized through the Motoko **stable storage** and **stable variable** features. Stable storage is a Motoko-specific term used to refer to Motoko's implementation of stable memory to persist data across canister upgrades. Stable variables are Motoko-defined variables that use the `stable` modifying keyword to indicate that the variable's value should persist across canister upgrades, such as:
 
 ```motoko
 actor Counter {
-
   stable var value = 0;
   public func inc() : async Nat {
     value += 1;
@@ -106,9 +105,9 @@ This garbage collector is still in beta testing and should be used with caution.
 
 ### Rust storage handling
 
-To utilize stable memory for canisters written in Rust, the crates [ic-stable-memory](https://github.com/seniorjoinu/ic-stable-memory) and [ic-stable-structures](https://github.com/dfinity/stable-structures) can be used. It is recommended to review the documentation for these crates to learn more, or [review the tutorial on the stable structures crate](https://mmapped.blog/posts/14-stable-structures.html).
+To utilize stable memory for canisters written in Rust, the crate [ic-stable-structures](https://github.com/dfinity/stable-structures) can be used. It is recommended to review the documentation for these crates to learn more, or [review the tutorial on the stable structures crate](https://mmapped.blog/posts/14-stable-structures.html).
 
-As good practice, stable memory should be versioned since the stable memory decoding mechanism may need to guess the data's format in situations where the serialization format or stable data layout of a canister drastically changes. To make this process easier, stable memory should be versioned. This can be as simple as declaring that the first byte of the canister's stable memory will be used to represent the version number.
+As good practice, stable memory should be versioned since the stable memory decoding mechanism may need to guess the data's format in situations where the serialization format or stable data layout of a canister drastically changes. This can be as simple as declaring that the first byte of the canister's stable memory will be used to represent the version number.
 
 To utilize stable memory when upgrading a Rust canister, the following workflow is used:
 

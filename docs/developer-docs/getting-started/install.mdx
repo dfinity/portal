@@ -11,7 +11,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
 
-## Overview
+
 
 The IC SDK is a software development kit used to develop and deploy applications on the Internet Computer (ICP) from a local developer environment. It is comprised of several tools.
 
@@ -86,6 +86,8 @@ dfx --version
 
 #### Prerequisites
 
+`dfx` is not natively supported on Windows. You will need to install a Linux instance via Windows Subsystem for Linux and run all commands within that Linux instance.
+
 <input type="checkbox"/> Download and install <a href="https://docs.microsoft.com/en-us/windows/wsl/install"> Windows Subsystem for Linux</a>.
 <div>
 </div>
@@ -135,6 +137,8 @@ It also has dependencies of a few additional, important packages:
 - [**Rust CDK**](/docs/current/developer-docs/backend/rust/): A set of tools for developing Rust canisters.
 
 - [**Candid**](/docs/current/developer-docs/smart-contracts/candid/candid-concepts): An interface description language (IDL) used to interact with a canister's methods. A **method** is a function exposed by the canister that can be called by a user, another canister, or the application's frontend.
+
+For troubleshooting common `dfx` errors, see [IC SDK troubleshooting](troubleshooting.mdx).
 
 ## Next step
 

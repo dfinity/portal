@@ -83,8 +83,8 @@ const redirects = `
   /docs/current/developer-docs/build/languages/rust/* /docs/current/developer-docs/backend/rust/
   /docs/current/developer-docs/build/project-setup/cycles-wallet /docs/current/developer-docs/defi/cycles/cycles-wallet
   /docs/current/developer-docs/build/project-setup/manage-canisters /docs/current/developer-docs/smart-contracts/maintain/settings
-  /docs/current/developer-docs/build/project-setup/design-dapps /docs/current/developer-docs/web-apps/design-dapps
-  /docs/current/developer-docs/build/troubleshooting /docs/current/developer-docs/smart-contracts/test/troubleshooting
+  /docs/current/developer-docs/build/project-setup/design-dapps /docs/current/developer-docs/smart-contracts/overview/introduction
+  /docs/current/developer-docs/build/troubleshooting /docs/current/developer-docs/getting-started/troubleshooting
   /docs/current/developer-docs/build/agents/ /docs/current/developer-docs/developer-tools/off-chain/agents/overview
   /docs/current/developer-docs/build/agents/javascript/javascript-intro /docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent
   /docs/current/developer-docs/build/agents/javascript/*  /docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent
@@ -100,14 +100,14 @@ const redirects = `
   /docs/developers-guide/concepts/concepts-intro /docs/current/developer-docs/getting-started/network-overview
   /docs/developers-guide/customize-projects /docs/current/developer-docs/smart-contracts/compile
   /docs/developers-guide/default-wallet /docs/current/developer-docs/defi/cycles/cycles-wallet
-  /docs/developers-guide/design-apps /docs/current/developer-docs/web-apps/design-dapps
+  /docs/developers-guide/design-apps /docs/current/developer-docs/smart-contracts/overview/introduction
   /docs/developers-guide/glossary /docs/current/references/glossary
   /docs/developers-guide/install-upgrade-remove /docs/current/developer-docs/getting-started/install
   /docs/developers-guide/lang-service-ide /docs/current/developer-docs/developer-tools/ide/vs-code
   /docs/developers-guide/reinstalling-dfx /docs/current/developer-docs/getting-started/install
   /docs/developers-guide/sample-apps /samples
   /docs/developers-guide/sdk-guide /docs/current/developer-docs/getting-started/install
-  /docs/developers-guide/troubleshooting /docs/current/developer-docs/smart-contracts/test/troubleshooting
+  /docs/developers-guide/troubleshooting /docs/current/developer-docs/getting-started/troubleshooting
   /docs/developers-guide/tutorials-intro /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/developers-guide/tutorials/default-frontend /docs/current/developer-docs/web-apps/application-frontends/default-frontend
   /docs/developers-guide/tutorials/my-contacts /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet
@@ -327,7 +327,7 @@ const redirects = `
   /docs/current/developer-docs/setup/pocket-ic /docs/current/developer-docs/smart-contracts/test/pocket-ic
   /docs/current/developer-docs/production/staging-environment /docs/current/developer-docs/smart-contracts/deploy/custom-testnets
   /docs/current/developer-docs/backend/reproducible-builds /docs/current/developer-docs/smart-contracts/best-practices/reproducible-builds
-  /docs/current/developer-docs/backend/troubleshooting /docs/current/developer-docs/smart-contracts/test/troubleshooting
+  /docs/current/developer-docs/backend/troubleshooting /docs/current/developer-docs/getting-started/troubleshooting
   /docs/current/developer-docs/integrations/t-ecdsa /docs/current/developer-docs/smart-contracts/signatures/t-ecdsa
   /docs/current/developer-docs/integrations/vetkeys/ /docs/current/developer-docs/smart-contracts/encryption/vetkeys
   /docs/current/developer-docs/integrations/vetkeys/using-vetkeys /docs/current/developer-docs/smart-contracts/encryption/using-vetkeys
@@ -345,7 +345,7 @@ const redirects = `
   /docs/current/developer-docs/frontend/existing-frontend /docs/current/developer-docs/web-apps/application-frontends/existing-frontend
   /docs/current/developer-docs/production/custom-domain/ /docs/current/developer-docs/web-apps/custom-domains/using-custom-domains
   /docs/current/developer-docs/production/custom-domain/dns-setup /docs/current/developer-docs/web-apps/custom-domains/dns-setup
-  /docs/current/developer-docs/backend/design-dapps /docs/current/developer-docs/web-apps/design-dapps
+  /docs/current/developer-docs/backend/design-dapps /docs/current/developer-docs/smart-contracts/overview/introduction
   /docs/current/developer-docs/integrations/independently-verifying-ic-signatures /docs/current/developer-docs/web-apps/independently-verifying-ic-signatures
   /docs/current/developer-docs/integrations/internet-identity/overview  /docs/current/developer-docs/identity/internet-identity/overview
   /docs/current/developer-docs/integrations/internet-identity/creating-ii /docs/current/developer-docs/identity/internet-identity/creating-ii
@@ -419,7 +419,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/bitcoin/local-development /docs/current/developer-docs/multi-chain/bitcoin/using-btc/local-development
   /docs/current/developer-docs/integrations/ethereum/overview /docs/current/developer-docs/multi-chain/ethereum/overview
   /docs/current/developer-docs/integrations/ethereum/evm-rpc /docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister
-  /docs/current/developer-docs/integrations/ethereum/siwe /docs/current/developer-docs/identity/authentication/siwe
+  /docs/current/developer-docs/integrations/ethereum/siwe /docs/current/developer-docs/identity/authentication/overview
   /docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works /docs/current/references/bitcoin-how-it-works
   /docs/current/developer-docs/integrations/bitcoin/ckbtc-reference /docs/current/references/ckbtc-reference
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works /docs/current/references/https-outcalls-how-it-works
@@ -445,7 +445,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/overview/development-cycle /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle
   /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-identity /docs/current/developer-docs/identity/internet-identity/integrate-internet-identity
   /docs/current/developer-docs/multi-chain/ethereum/cketh /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview
-  /docs/current/developer-docs/multi-chain/ethereum/siwe /docs/current/developer-docs/identity/authentication/siwe
+  /docs/current/developer-docs/multi-chain/ethereum/siwe /docs/current/developer-docs/identity/authentication/overview
   /docs/current/developer-docs/multi-chain/bitcoin/ckbtc /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/multi-chain/bitcoin/read-state /docs/current/developer-docs/multi-chain/bitcoin/using-btc/read-state
   /docs/current/developer-docs/multi-chain/bitcoin/submit-transactions /docs/current/developer-docs/multi-chain/bitcoin/using-btc/submit-transactions
@@ -522,9 +522,9 @@ const redirects = `
   /docs/current/developer-docs/web-apps/user-login/internet-identity/creating-ii /docs/current/developer-docs/identity/internet-identity/creating-ii
   /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity /docs/current/developer-docs/identity/internet-identity/integrate-internet-identity
   /docs/current/developer-docs/web-apps/user-login/internet-identity/alternative-origins /docs/current/developer-docs/identity/internet-identity/alternative-origins
-  /docs/current/developer-docs/web-apps/user-login/nfid /docs/current/developer-docs/identity/authentication/nfid
-  /docs/current/developer-docs/web-apps/user-login/email-password /docs/current/developer-docs/identity/authentication/email-password
-  /docs/current/developer-docs/multi-chain/ethereum/using-eth/siwe /docs/current/developer-docs/identity/authentication/siwe
+  /docs/current/developer-docs/web-apps/user-login/nfid /docs/current/developer-docs/identity/authentication/overview
+  /docs/current/developer-docs/web-apps/user-login/email-password /docs/current/developer-docs/identity/authentication/overview
+  /docs/current/developer-docs/multi-chain/ethereum/using-eth/siwe /docs/current/developer-docs/identity/authentication/overview
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/defi/icrc-1/icrc1-index-setup /docs/current/developer-docs/defi/tokens/indexes
   /docs/current/defi/icp-tokens/icp-index-local-setup /docs/current/developer-docs/defi/tokens/indexes
@@ -639,8 +639,24 @@ const redirects = `
   /docs/current/developer-docs/getting-started/deploy/local /docs/current/developer-docs/getting-started/deploy-and-manage
   /docs/current/developer-docs/getting-started/deploy/testnet /docs/current/developer-docs/getting-started/deploy-and-manage
   /docs/current/developer-docs/getting-started/deploy-and-manage  /docs/current/developer-docs/getting-started/deploy-and-manage
+  /docs/current/developer-docs/smart-contracts/test/troubleshooting /docs/current/developer-docs/getting-started/troubleshooting
+  /docs/current/developer-docs/smart-contracts/advanced-features/http-gateways /docs/current/developer-docs/smart-contracts/advanced-features/handling-get-post-requests
+  /docs/current/developer-docs/smart-contracts/advanced-features/serving-http-request /docs/current/developer-docs/smart-contracts/advanced-features/handling-get-post-requests
   /docs/current/developer-docs/smart-contracts/write/default-template /docs/current/developer-docs/smart-contracts/write/overview
   /developers /docs/current/home
+  /docs/current/developer-docs/identity/authentication/email-password /docs/current/developer-docs/identity/authentication/overview
+  /docs/current/developer-docs/identity/authentication/nfid /docs/current/developer-docs/identity/authentication/overview
+  /docs/current/developer-docs/identity/authentication/siwb /docs/current/developer-docs/identity/authentication/overview
+  /docs/current/developer-docs/identity/authentication/siwe /docs/current/developer-docs/identity/authentication/overview
+  /docs/current/developer-docs/identity/authentication/siws /docs/current/developer-docs/identity/authentication/overview
+  /docs/current/developer-docs/identity/authentication/msq /docs/current/developer-docs/identity/authentication/overview
+  /docs/current/developer-docs/web-apps/browser-js/js-request-api /docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent
+  /docs/current/developer-docs/defi/tokens/asset_flow/index /docs/current/developer-docs/defi/overview
+  /docs/current/developer-docs/defi/tokens/ledger/overview /docs/current/developer-docs/defi/overview
+  /docs/current/developer-docs/defi/tokens/ledger/setup/overview /docs/current/developer-docs/defi/overview
+  /docs/current/developer-docs/defi/tokens/ledger/usage/overview /docs/current/developer-docs/defi/overview
+  /docs/current/developer-docs/web-apps/obtain-verify-ic-pubkey /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-ping
+  /docs/current/developer-docs/web-apps/design-dapps /docs/current/developer-docs/smart-contracts/overview/introduction
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

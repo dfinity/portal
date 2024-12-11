@@ -9,7 +9,7 @@
       "milestone_id": "Plasma",
       "status": "in_progress",
       "eta": "",
-      "eta_to_render": "November 2024"
+      "eta_to_render": "January 2025"
     },
 
     {
@@ -132,7 +132,7 @@
       "proposal": "",
       "docs": "",
       "eta": "",
-      "status": "in_progress",
+      "status": "deployed",
       "is_community": true,
       "in_beta": false,
       "milestone_id": "Plasma"

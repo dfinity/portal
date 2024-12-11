@@ -38,6 +38,14 @@ const snsDataPlugin = require("./plugins/sns-data");
 const airtablePlugin = require("./plugins/airtable");
 const youtubePlugin = require("./plugins/youtube");
 
+const remarkPlugins = [
+  math,
+  simplePlantUML,
+  require("remark-code-import"),
+  require("./plugins/remark/validate-links.js"),
+];
+const rehypePlugins = [katex];
+
 const isDeployPreview = !!process.env.PREVIEW_CANISTER_ID;
 
 if (process.env.PREVIEW_CANISTER_ID) {
@@ -89,30 +97,17 @@ const subnavItems = [
   {
     type: "dropdown",
     position: "left",
-    label: "Frameworks",
-    items: [
-      {
-        label: "Juno",
-        href: "/docs/current/developer-docs/web-apps/frameworks/juno",
-      },
-    ],
-  },
-  {
-    type: "dropdown",
-    position: "left",
     label: "Additional Resources",
     items: [
       {
         label: "Awesome Internet Computer",
         href: "https://github.com/dfinity/awesome-internet-computer#readme",
       },
-      { label: "Sample Code", to: "/samples" },
       {
         label: "SDK Release Notes",
         type: "doc",
         docId: "other/updates/release-notes/release-notes",
       },
-      { label: "Developer Tools", to: "/tooling" },
       { label: "Developer Grants", href: "https://dfinity.org/grants" },
       {
         label: "Playground",
@@ -202,6 +197,11 @@ const marketingNav = {
               name: "Sustainability",
               href: "/capabilities/sustainability",
               description: "Building green, efficient tech",
+            },
+            {
+              name: "Library",
+              href: "/library",
+              description: "Resources to get you started",
             },
             /*
             {
@@ -656,16 +656,16 @@ const config = {
           },
 
           sidebarPath: require.resolve("./sidebars.js"),
-          remarkPlugins: [math, simplePlantUML, require("remark-code-import")],
-          rehypePlugins: [katex],
+          remarkPlugins,
+          rehypePlugins,
           editUrl: "https://github.com/dfinity/portal/edit/master/",
         },
         blog: {
           path: "blog",
           blogSidebarCount: "ALL",
           postsPerPage: "ALL",
-          remarkPlugins: [math, simplePlantUML, require("remark-code-import")],
-          rehypePlugins: [katex],
+          remarkPlugins,
+          rehypePlugins,
         },
         theme: {
           customCss: require.resolve("./src/css/custom.scss"),
