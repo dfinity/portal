@@ -18,7 +18,7 @@ Once a canister's code has been written, it must be compiled into Wasm, installe
 
 It is recommended to deploy canisters locally or to the temporary [playground](/docs/current/developer-docs/smart-contracts/deploy/overview#deploying-to-playground) network to test canister functionality and make adjustments before considering the canister production-ready and deploying it to the mainnet. Deploying canisters locally and to the playground is free and does not cost cycles. Once a canister is deployed to the mainnet, it will consistently consume cycles and will need to be topped up periodically.
 
-## Start the local replica
+## Starting the local replica
 
 To deploy your canister locally, first start the local replica. This simulates the mainnet environment with a single node for local development and testing.
 
@@ -26,8 +26,7 @@ To deploy your canister locally, first start the local replica. This simulates t
 
 - `dfx start --background`: Runs the processes in the background and allows you to continue running commands in the current terminal.
 
-
-## Deploy the project locally
+## Deploying the project locally
 
 Deploy the backend canister that you have written code for:
 
@@ -327,9 +326,9 @@ Any cycles remaining in the canister's balance will be returned to your develope
 dfx canister delete PROJECT_NAME_backend --network=ic
 ```
 
-## Stopping `dfx`
+## Stopping the local replica
 
-To stop `dfx`, simply use the `dfx stop` command.
+To stop the local replica, simply use the `dfx stop` command.
 
 For unresponsive `dfx` processes that are not stopped by `dfx stop`, you can use `dfx killall` to forcibly end them.
 
