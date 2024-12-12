@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ICRC-1 is a [token standard](https://github.com/dfinity/ICRC-1) used to create and deploy fungible tokens on the Internet Computer. Each token deployed on the network has its own dedicated ledger. Thus, deploying a new token that is ICRC-1-compatible is synonymous with deploying an ICRC-1 ledger.
 
-The ICRC-1 ledger used in this guide is a reference implementation used to demonstrate how to setup an existing ICRC-1 ledger implementation rather than how to build an ICRC-1 ledger yourself.
+The ICRC-1 ledger used in this guide is a reference implementation used to demonstrate how to set up an existing ICRC-1 ledger implementation rather than how to build an ICRC-1 ledger yourself.
 
 ## Deploying the ICRC ledger locally
 
@@ -33,7 +33,7 @@ The URL for the ledger Wasm module is `https://github.com/dfinity/ic/releases/do
 The URL for the ledger Candid file is `https://github.com/dfinity/ic/releases/download/<RELEASE>/ledger.did`.
 
 #### Optional
-If you want to make sure you have the latest ICRC-1 ledger files you can run the following script that downloads the files into your local directory:
+If you want to make sure you have the latest ICRC-1 ledger files, you can run the following script that downloads the files into your local directory:
 
 ``` sh
 curl -o download_latest_icrc1_ledger.sh "https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/rosetta-api/scripts/download_latest_icrc1_ledger.sh"
@@ -47,21 +47,21 @@ Open the `dfx.json` file in your project's directory. Replace the existing conte
 
 ``` json
 {
-  "canisters": {
-    "icrc1_ledger_canister": {
-      "type": "custom",
-      "candid": "https://github.com/dfinity/ic/releases/download/<RELEASE>/ledger.did",
-      "wasm": "https://github.com/dfinity/ic/releases/download/<RELEASE>/ic-icrc1-ledger.wasm.gz"
-    }
-  },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
-  "output_env_file": ".env",
-  "version": 1
+  "canisters": {
+    "icrc1_ledger_canister": {
+      "type": "custom",
+      "candid": "https://github.com/dfinity/ic/releases/download/<RELEASE>/ledger.did",
+      "wasm": "https://github.com/dfinity/ic/releases/download/<RELEASE>/ic-icrc1-ledger.wasm.gz"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
 }
 ```
 
@@ -71,7 +71,7 @@ If you chose to download the ICRC-1 ledger files with the script, you need to re
 ...
 "candid": "icrc1_ledger.did",
 "wasm" : "icrc1_ledger.wasm.gz"
-  ...
+  ...
 ```
 
 :::info
