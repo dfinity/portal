@@ -55,7 +55,7 @@ Property 3 provides a guarantee on the execution order of messages on a target c
 
 For example, if a trap occurs in the execution of the second message (blue box) of the above example, canister state changes resulting from that message execution, i.e. everything in the blue box, are discarded. However, note that any state changes from earlier message executions and in particular the first message execution (orange box) have been applied, as that message executed successfully.
 
-- **Property 6**: Inter-canister calls are not guaranteed to make it to the destination canister, and if a call does reach the destination canister, the destination canister can trap or return a reject response while processing the call.
+- **Property 6**: Inter-canister calls are not guaranteed to be delivered to the destination canister. When a call does reach the destination canister, the destination canister may trap or return a reject response while processing the call.
 
 There are many reasons why a call might not be delivered to the destination canister. Some of them are under the control of the canister developers, such as the destination having sufficient cycles to process the call. Others are not; the Internet Computer may decide to fail the call if it's under high load.
 
