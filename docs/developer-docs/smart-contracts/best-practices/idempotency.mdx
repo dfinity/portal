@@ -91,7 +91,7 @@ In practice, this pattern may be more complicated. For example, the ICP ledger e
 1. Attempt to perform a transfer. This ingress message includes an `ingress_expiry` field.
 1. If the result of the transfer is unknown, ensure that the transfer will not be applied at a later point:
    * If using ingress messages, call the `read_state` endpoint on the ledger canister to obtain the `/time` branch of the system state tree. Repeat this until the reported time exceeds the `ingress_expiry` time.
-    * If using inter-canister calls, perform all subsequent calls from the same canister that initiated the transfer. The [ordering guarantees](/docs/current/references/message-execution-properties) then ensure that the transfer cannot happen later.
+    * If using inter-canister calls, perform all subsequent calls (`query_blocks`) listed below from the same canister that initiated the transfer. The [ordering guarantees](/docs/current/references/message-execution-properties) then ensure that the transfer cannot happen later.
 1. Call the `query_blocks` method on the ledger again to retrieve all ledger blocks since `last_block`, and check that the `timestamp` also exceeds the `ingress_expiry` time. In case of failure, retry until a result is obtained. Then, scan through the returned blocks to determine whether the transaction has been included or not.
 
 ### 2-step transfers
