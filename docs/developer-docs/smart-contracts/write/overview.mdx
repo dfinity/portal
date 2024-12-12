@@ -58,7 +58,7 @@ The typical development workflow of the frontend is:
 3. The developer deploys the project. `dfx` will compile the frontend asset files into an asset canister.
 4. Users open the application in the browser by navigating to the URL `https://<canister-id>.icp0.io` or a [custom domain](/docs/current/developer-docs/web-apps/custom-domains/using-custom-domains) if one has been registered for the canister.
 5. The canister serves the web assets to the browser via its `http_request` endpoint that gets invoked for each HTTP request.
-6. When the JS code runs in the browser, it can call the backend canister endpoints using the [ICP JavaScript agent](/docs/current/developer-docs/web-apps/browser-js/js-request-api) library, which is analogous to `web3.js` and `ethers.js` of Ethereum.
+6. When the JS code runs in the browser, it can call the backend canister endpoints using the [ICP JavaScript agent](/docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent) library, which is analogous to `web3.js` and `ethers.js` of Ethereum.
 
 #### Limitations
 Server-side rendering (SSR) does not work in canisters because they require JS code that is not built into canisters.
@@ -107,7 +107,7 @@ Navigate into your project directory:
 cd hello
 ```
 
-For projects created with `dfx new`, the project structure will resemble the following. If you are using an ICP Ninja project or other sample project, project structure may vary. 
+For projects created with `dfx new`, the project structure will resemble the following. If you are using an ICP Ninja project or other sample project, project structure may vary.
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
@@ -226,7 +226,7 @@ In this directory, the following files and directories are notable:
 
 ### Reviewing the default program code
 
-Open the backend canister source code file in your code editor. The backend canister's code will be located in the `src/hello_backend` subdirectory. For projects created with `dfx new`, the default backend code will resemble the following. If you are using an ICP Ninja project or other sample project, program code will vary. 
+Open the backend canister source code file in your code editor. The backend canister's code will be located in the `src/hello_backend` subdirectory. For projects created with `dfx new`, the default backend code will resemble the following. If you are using an ICP Ninja project or other sample project, program code will vary.
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
