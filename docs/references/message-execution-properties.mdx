@@ -53,7 +53,7 @@ Property 3 provides a guarantee on the execution order of messages on a target c
 
 - **Property 5**: On a trap or panic, modifications to the canister state for the current message execution are not applied.
 
-For example, if a trap occurs in the execution of the second message (blue box) of the above example, canister state changes resulting from that message execution, even earlier in the blue box, are discarded. However, note that any state changes from earlier message execution and in particular the first message execution (orange box) have been applied, as that message executed successfully.
+For example, if a trap occurs in the execution of the second message (blue box) of the above example, canister state changes resulting from that message execution, i.e. everything in the blue box, are discarded. However, note that any state changes from earlier message executions and in particular the first message execution (orange box) have been applied, as that message executed successfully.
 
 - **Property 6**: Inter-canister calls are not guaranteed to make it to the destination canister, and if a call does reach the destination canister, the destination canister can trap or return a reject response while processing the call.
 
