@@ -14,7 +14,7 @@ const sidebars = {
       },
       {
         type: "doc",
-        label: "React",
+        label: "First web app",
         id: "developer-docs/getting-started/quickstart/react-quickstart",
       },
     ],
@@ -35,34 +35,29 @@ const sidebars = {
     },
     {
       type: "doc",
-      label: "Install tools",
+      label: "Installing developer tools",
       id: "developer-docs/getting-started/install",
     },
     {
       type: "doc",
-      label: "Create an identity",
+      label: "Creating a developer identity",
       id: "developer-docs/getting-started/identities",
     },
     {
       type: "doc",
-      label: "Tokens and cycles",
+      label: "Using tokens and cycles",
       id: "developer-docs/getting-started/tokens-and-cycles",
     },
     {
       type: "doc",
-      label: "Write smart contracts",
+      label: "Writing smart contracts",
       id: "developer-docs/getting-started/write-smart-contracts",
     },
     {
       type: "doc",
-      label: "Deploy and manage",
+      label: "Deploying and managing dapps",
       id: "developer-docs/getting-started/deploy-and-manage",
     },
-    {
-      type: "doc",
-      label: "Next steps",
-      id: "developer-docs/getting-started/next-steps",
-      },
       ],
     },
     {

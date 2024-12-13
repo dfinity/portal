@@ -7,11 +7,9 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
-# Tokens and cycles
+# Using tokens and cycles
 
 <MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
-
-## Overview
 
 On the Internet Computer, there are three types of token assets: ICP tokens, cycles, and ICRC tokens. ICP and cycles are the most important for every developer to understand and use, as they are necessary for deploying and maintaining a canister.
 
@@ -85,7 +83,7 @@ b0d7beee54be8679a42e999218a16a0d396f223d7e44d259ac089848c1b820bf
 
 You can obtain [ICP tokens](https://internetcomputer.org/icp-tokens) from an [exchange](https://coinmarketcap.com/currencies/internet-computer/markets) or through a [developer grant](https://dfinity.org/grants). If you are using an exchange, initiate a withdrawal transaction, then enter the ledger account ID as the "destination" address to send ICP tokens to.
 
-### 3. Check the balance.
+### 3. Check the ICP balance.
 
 ```
 dfx ledger balance --network=ic
@@ -135,7 +133,7 @@ The amount of cycles that your canister will use depends on a variety of factors
 
 :::
 
-### 5. Confirm the balance.
+### 5. Confirm the cycles balance.
 
 ```
 dfx cycles balance --network=ic
@@ -154,4 +152,4 @@ dfx cycles balance --network=ic
 
 Next, it's time to write the code for a smart contract.
 
-- [x] [Write smart contracts](/docs/current/developer-docs/getting-started/write-smart-contracts).
+- [x] [Writing smart contracts](/docs/current/developer-docs/getting-started/write-smart-contracts).
