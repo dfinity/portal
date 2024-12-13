@@ -1,6 +1,6 @@
-# Dev Docs Style Guide
+# ICP Developer Documentation style guide
 
-## Overview
+## Purpose of this guide
 
 This guide outlines the format, language, and style that should be used when contributing pages to the Internet Computer developer documentation. This is designed to assist with standardizing the documentation to create a cohesive, uniform look and feel across all pages of documentation that have been contributed by multiple individuals and teams.
 
@@ -21,7 +21,7 @@ This guide will outline the following:
 
 ## Page structure
 
-The developers docs contain a wide variety of different document types, such as overview pages, concept pages, feature pages, tutorials, and reference pages. For this reason, the page structure will vary based on what type of document the page is.
+The developers docs contain a wide variety of different document types, such as introduction pages, concept pages, feature pages, tutorials, and reference pages. For this reason, the page structure will vary based on what type of document the page is.
 
 The following example template can be used:
 
@@ -36,8 +36,6 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["label1", "label2", "label3"]} />
 
-## Overview
-
 Introduce the feature or tool. What is it? Give a brief overview of how it works, but keep it very high level. Link to additional documents that explain the in-depth concepts behind it (if they exist).
 
 ## Prerequisites
@@ -45,9 +43,15 @@ Introduce the feature or tool. What is it? Give a brief overview of how it works
 Optional; only necessary for documents that require prerequisite conditions or parameters be met.
 
 List all dependencies that the developer will need to download or setup in order to use the feature. The most common prerequisite is downloading dfx. Please link to the dfx installation page.
-- [x] Prerequisite 1.
-- [x] Prerequisite 2.
-- [x] Prerequisite 3.
+
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
+
+Before you start, verify that you have:
+<input type="checkbox"/> <a href="/docs/current/developer-docs/getting-started/install">Install the IC SDK.</a>
+
+</TabItem>
+</Tabs>
 
 ## Topic 1
 
@@ -90,7 +94,7 @@ There are 4 types of headings used throughout the ICP developer docs:
 | Heading size | Usage |
 |--------------|-------|
 | Heading 1    | Page title only; not used within the page's content.|
-| Heading 2    | Used for primary topics amongst the page; used for consistent page headings such as 'Overview', 'Prerequisites', 'Conclusion' and 'References'.|
+| Heading 2    | Used for primary topics amongst the page; used for consistent page headings such as 'Prerequisites', 'Conclusion' and 'References'.|
 | Heading 3    | Used for subtopics under primary topics amongst the page or user steps within a tutorial. Note; there are some instances where using Heading 2 for a tutorial step is more fitting, such as when a step contains several different concepts or subtopics. Please refer to the writing a tutorial section below for further information.|
 | Heading 4    | Used for listing steps a user should take within a guide document, where the guide document includes several different, separate walkthroughs for the user to follow; in this scenario, this heading should be used in conjunction with a bullet point. Heading 4 is also used for listing terms within the `glossary` document page and for subtopics under an already existing Heading 3 subtopic heading. |
 
