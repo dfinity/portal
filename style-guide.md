@@ -105,8 +105,6 @@ The following is a sample guide document that showcases how the 4 types of headi
 ```
 # File management
 
-## Overview
-
 This document describes basic file management workflows.
 
 ### Workflows covered
@@ -160,7 +158,6 @@ Capitalization within the developer documentation should follow these outlined s
     - Example: Using Internet Identity with a dapp
     - Example: Motoko reference guide
 - Only the first word of a page heading should be capitalized unless the title includes a proper noun.
-    - Example: Overview
     - Example: Register, build, and deploy the dapp
     - Example: Using Motoko canisters
 - Titles of links to other documentation pages or external articles, such as blog posts, should not be capitalized except for the proper nouns within the title.
