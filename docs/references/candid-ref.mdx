@@ -175,6 +175,12 @@ We can use type annotation to distinguish different integer types.
 (42 : nat64)
 ```
 
+Canister init arguments passed to `dfx` must be explicit with data types, such as:
+
+```
+field = 5 : nat64
+```
+
 #### Corresponding Motoko type  
 `natN` translates by default to `NatN`, but can also correspond to `WordN` when required.
 
