@@ -1110,9 +1110,9 @@ hash_of_map({ request_type: "call", sender: 0x04, ingress_expiry: 16855704000000
 
 ### Reject codes {#reject-codes}
 
-An API request or inter-canister call that is pending in the IC will eventually result in either a *reply* (indicating success, and carrying data) or a *reject* (indicating an error of some sorts). A reject contains a *rejection code* that classifies the error and a hopefully helpful *reject message* string.
+An API request or inter-canister call that is pending in the IC will eventually result in either a *reply* (indicating success, and carrying data) or a *reject* (indicating an error of some sorts). A reject contains a *reject code* that classifies the error and a hopefully helpful *reject message* string.
 
-Rejection codes are member of the following enumeration:
+Reject codes are member of the following enumeration:
 
 -   `SYS_FATAL` (1): Fatal system error, retry unlikely to be useful.
 
@@ -1755,9 +1755,9 @@ There must be at most one call to `ic0.call_on_cleanup` between `ic0.call_new` a
 
     This deducts `MAX_CYCLES_PER_RESPONSE` cycles from the canister balance and sets them aside for response processing.
 
-    If the function returns `0` as the `err_code`, the IC was able to enqueue the call. In this case, the call will either be delivered, returned because the destination canister does not exist, returned due to a lack of resources within the IC, or returned because of an out of cycles condition. This also means that exactly one of the reply or reject callbacks will be executed.
+    The returned `err_code` is always one of `0`, `1`, `2`, and `3`. An `err_code` of `0` means that no error occurred and that the IC could enqueue the call. In this case, the call will either be delivered, returned because the destination canister does not exist, returned due to a lack of resources within the IC, or returned because of an out of cycles condition. This also means that exactly one of the reply or reject callbacks will be executed.
 
-    If the function returns a non-zero value, the call cannot (and will not be) performed. This can happen due to a lack of resources within the IC, but also if it would reduce the current cycle balance to a level below where the canister would be frozen.
+    Non-``0` values of `err_code` indicate that the call could not be performed, and the semantics of the values are the same as for [reject codes](#reject-codes) (i.e., the `err_code` `1` has the semantics of `SYS_FATAL`, `2` of `SYS_TRANSIENT`, and `3` of `DESTINATION_INVALID`). A non-`0` code could arise due to a lack of resources within the IC, but also if the call would reduce the current cycle balance to a level below where the canister would be frozen. No callbacks are executed in this case.
 
     After `ic0.call_perform` and before the next call to `ic0.call_new`, all other `ic0.call_*` function calls trap.
 
