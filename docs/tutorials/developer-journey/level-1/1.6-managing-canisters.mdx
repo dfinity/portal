@@ -17,7 +17,6 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <iframe width="660" height="415" src="https://www.youtube.com/embed/_grEFfKCXf4?si=XrtPPHnLmeX19La4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
 
-
 Now that you have <GlossaryTooltip>canisters</GlossaryTooltip> deployed on the mainnet, the next step is to learn how to manage those canisters. Managing a canister includes workflows such as obtaining information, setting an identity as the canister's owner, and deleting a canister. You'll dive into these different workflows and more in this guide to assure that you have the core fundamentals of how to maintain canisters.
 
 ## The ICP management canister
@@ -53,6 +52,12 @@ If you want to get the canister ID for a locally deployed canister, simply omit 
 ```bash
 dfx canister id poll_backend
 ```
+
+:::danger
+
+This tutorial will reference locally deployed canisters from this point forward.
+
+:::
 
 ## Obtaining canister information
 
@@ -151,13 +156,13 @@ Canisters are placed in the **Running** state by default, but there may be situa
 To check the current state of all canisters, you can use the command:
 
 ```bash
-dfx canister status --network ic --all
+dfx canister status --all
 ```
 
 Or, you can check the status of a single canister by specifying it's name, such as:
 
 ```bash
-dfx canister status poll_backend --network ic
+dfx canister status poll_backend
 ```
 
 The output of the command will resemble the following:
@@ -179,13 +184,13 @@ Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 Stopping a canister works in a similar fashion. For example, to stop a single canister, run the command:
 
 ```bash
-dfx canister stop poll_backend --network ic
+dfx canister stop poll_backend
 ```
 
 Or, to stop all canisters, use the command:
 
 ```bash
-dfx canister stop --network ic --all
+dfx canister stop --all
 ```
 
 This command displays output similar to the following:
@@ -198,7 +203,7 @@ Stopping code for canister poll_frontend, with canister_id 5h5yf-eiaaa-aaaaa-qaa
 Then you can verify that the canisters have been stopped by rerunning the `dfx canister status` command:
 
 ```bash
-dfx canister status --network ic poll_backend
+dfx canister status poll_backend
 ```
 
 Which should return:
@@ -220,7 +225,7 @@ Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 Then to start the canister again, run the command:
 
 ```bash
-dfx canister start --network ic --all
+dfx canister start --all
 ```
 
 This will return a confirmation such as:
@@ -235,7 +240,7 @@ Starting code for canister poll_frontend, with canister_id 5h5yf-eiaaa-aaaaa-qaa
 To check a canister's <GlossaryTooltip>cycles</GlossaryTooltip> balance, you must be the controller of the canister. The cycles balance can be seen in the output of the `dfx canister status` command, such as:
 
 ```bash
-dfx canister status 5o6tz-saaaa-aaaaa-qaacq-cai --network ic
+dfx canister status 5o6tz-saaaa-aaaaa-qaacq-cai
 ```
 
 The output will resemble the following, where the value `Balance` refers to the main cycles balance and `Reserved` refers to the reserved cycles balance:
@@ -278,8 +283,8 @@ These reserved cycles are used for [future storage payments](/docs/current/devel
 You can control the maximum amount of reserved cycles by setting the reserved cycles limit:
 
 ```bash
-dfx canister update-settings 5o6tz-saaaa-aaaaa-qaacq-cai --reserved-cycles-limit 42 --network ic
-dfx canister status 5o6tz-saaaa-aaaaa-qaacq-cai --network ic
+dfx canister update-settings 5o6tz-saaaa-aaaaa-qaacq-cai --reserved-cycles-limit 42
+dfx canister status 5o6tz-saaaa-aaaaa-qaacq-cai
 ```
 
 The first command sets the reserved cycles limit to `42` and the second command queries the canister status and shows the following output:
@@ -308,7 +313,7 @@ Such errors can be fixed by increasing the reserved cycles limit.
 If you currently have a balance of ICP tokens within your dfx ledger account ID, you can use the `dfx ledger top-up` command to automatically convert that ICP into cycles and deposit it into the specified canister, for example:
 
 ```bash
-dfx ledger top-up 5o6tz-saaaa-aaaaa-qaacq-cai --amount 2.7 --network ic
+dfx ledger top-up 5o6tz-saaaa-aaaaa-qaacq-cai --amount 2.7
 ```
 
 ### Using the cycles ledger
@@ -316,7 +321,7 @@ dfx ledger top-up 5o6tz-saaaa-aaaaa-qaacq-cai --amount 2.7 --network ic
 You can top up a canister using the cycles balance associated with your identity and the cycles ledger with the command:
 
 ```bash
-dfx cycles top-up `AMOUNT` `CANISTER_ID` --network ic
+dfx cycles top-up `AMOUNT` `CANISTER_ID`
 ```
 
 ## Getting cycles back from a canister
@@ -338,8 +343,8 @@ This will return your cycles balance, such as:
 Then, you can stop and delete the canister with the commands:
 
 ```bash
-dfx canister stop jqylk-byaaa-aaaal-qbymq-cai --network ic
-dfx canister delete jqylk-byaaa-aaaal-qbymq-cai --network ic
+dfx canister stop jqylk-byaaa-aaaal-qbymq-cai
+dfx canister delete jqylk-byaaa-aaaal-qbymq-cai
 ```
 
 The output of the `dfx canister delete` command will return information regarding the cycles withdraw:
@@ -371,7 +376,7 @@ For example, to set a freezing threshold for your `poll_backend` canister, use t
 dfx canister update-settings poll_backend --freezing-threshold 3472000
 ```
 
-Then, you can confirm that this threshold has been set by running the `dfx canister status poll_backend --network ic ` command again:
+Then, you can confirm that this threshold has been set by running the `dfx canister status poll_backend ` command again:
 
 ```
 Canister status call result for poll_backend.
@@ -391,20 +396,20 @@ Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 The last portion of canister management that will be covered in this guide is deleting canisters. To delete a single canister, first you need to stop the canister with the command:
 
 ```bash
-dfx canister stop poll_frontend --network ic
+dfx canister stop poll_frontend
 ```
 
 Then you can run the command:
 
 ```bash
-dfx canister delete poll_frontend --network ic
+dfx canister delete poll_frontend
 ```
 
 When a canister is deleted, the canister's code, state, and canister ID are removed. Canisters must be stopped before they can be deleted. Alternatively, all canisters for a project can be deleted with the commands:
 
 ```bash
-dfx canister stop --network ic  --all
-dfx canister delete --network ic  --all
+dfx canister stop  --all
+dfx canister delete  --all
 ```
 
 ## Need help?

@@ -29,6 +29,10 @@ You will be building off of the previous two modules, [1.3 Developing your first
 
 ## Deploying to the mainnet
 
+:::danger
+If you did not obtain cycles in the previous tutorial, [1.4 Acquiring and using cycles](/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles), then you can skip this module and continue with the rest of the tutorial series.
+:::
+
 To deploy your dapp to the mainnet, first assure that your terminal window is open and you've navigated into the directory of your `poll` dapp that you created in module [1.3 Developing your first dapp](/docs/current/tutorials/developer-journey/level-1/1.3-first-dapp).
 
 Then, assure that all necessary packages are installed for the project's frontend with the command:
@@ -101,7 +105,7 @@ Uploading assets to asset canister...
 Deployed canisters.
 ```
 
-If you manually converted ICP tokens into cycles, and your cycles balance doesn't contain enough cycles to complete this deployment, you can convert more ICP into cycles with the command:
+If your cycles balance doesn't contain enough cycles to complete this deployment, you can convert more ICP into cycles with the command:
 
 
 ```bash
@@ -109,8 +113,6 @@ dfx cycles convert 1.005 --network ic
 ```
 
 This command converts an additional 1.005 ICP tokens to cycles.
-
-If you used the free cycles coupon, this step is not applicable.
 
 Now, let's use your dapp! To access the dapp's frontend, first you need to get the canister's URL. To get this, run the command:
 

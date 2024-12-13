@@ -17,8 +17,6 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/eynEk3Bz7QY?si=EBRlMgOyjHQKkPy4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> </div>
 
-
-
 If you recall from the previous module, [Internet Computer terminology](/docs/current/tutorials/developer-journey/level-0/ic-terms), cycles are used to measure the resources, such as memory, storage, and compute power, that are used by a <GlossaryTooltip>canister</GlossaryTooltip>. When a canister is deployed on the mainnet, cycles are 'charged' for every action that a canister performs.
 
 To obtain cycles, the Internet Computer Protocol's utility token, ICP, can be converted into cycles and transferred into a canister to be used to pay for that canister's consumed resources. Cycles have a fixed price in [XDR](https://internetcomputer.org/docs/current/references/glossary#xdr) in order to make canister costs predictable and independent of the price of ICP. One trillion cycles always correspond to one XDR.
@@ -91,8 +89,11 @@ The principal will resemble the following format:
 tsqwz-udeik-5migd-ehrev-pvoqv-szx2g-akh5s-fkyqc-zy6q7-snav6-uqe
 ```
 
+## Acquiring cycles
 
-## Acquiring cycles using a cycles coupon
+:::danger
+Cycles are required to deploy to the mainnet. If you only plan to deploy to your local environment for testing, cycles are not required. The following tutorials will focus on local deployment to assure anyone can complete this tutorial series.
+:::
 
 Cycles can be obtained by converting ICP tokens into cycles. There are a few ways to obtain ICP tokens, such as:
 
@@ -100,130 +101,56 @@ Cycles can be obtained by converting ICP tokens into cycles. There are a few way
 - Receiving ICP tokens as a reward for participating in the NNS governance.
 - Receiving a grant of ICP tokens through the DFINITY Foundation.
 - Receiving ICP tokens in return for providing resources as a node provider.
+You need to obtain [ICP tokens](https://internetcomputer.org/icp-tokens), then convert them into cycles using `dfx`. However, when participating at DFINITY events like [hackathons](https://dfinity.org/hackathons) or working on a [developer grant](https://dfinity.org/grants), you will receive a coupon which you can redeem to claim free cycles from the [cycles faucet](https://anv4y-qiaaa-aaaal-qaqxq-cai.ic0.app/).
 
-For new developers, a free cycles coupon can be obtained and redeemed for 10T free cycles that can be used to get started with dapp deployment. For this tutorial, you'll be obtaining and using that free cycles coupon.
+:::tip
+Each developer identity has both a **principal** and a **ledger account identifier**.
 
-This coupon is good for new developers since it doesn't require that you transfer ICP tokens into cycles, and doesn't require a purchase of tokens to get started.
+A principal has the format `itk7v-ihlxk-ktdrh-fcnst-vkoou-orj77-52ogl-jqwj5-zpfdv-az3lr-xqe` and is used for canister ownership, management, and holding cycles.
 
-First, navigate to the website [https://faucet.dfinity.org](https://faucet.dfinity.org).
-
-To obtain a coupon code to use the cycles faucet, you need to put in a written request for the coupon via the [Discord](https://discord.internetcomputer.org) server.
-
-Click on the **REQUEST CYCLES** button on the faucet web page to join the Discord server.
-
-![Getting Coupon](../_attachments/faucet_step_1.png)
-
-Once inside the Discord server, navigate into the `#cycles-faucet` channel.
-
-![Cycles-faucet](../_attachments/cycles-faucet.png)
-
-In this channel, execute the following slash command:
-
-```
-/request
-```
-
-This command will make a call to the IC Cycles Faucet Bot. This bot will prompt you to fill out a survey in the channel.
-
-Once the survey has been completed, our team will review your submission. If accepted, the faucet bot will send you a private message with a coupon code.
-
-:::info
-Please ensure that your Discord settings are set to allow direct messages from other users. If you do not have this setting enabled, you will not receive a direct message from the faucet bot.
+A ledger account identifier has the format `e213184a548871a47fb526f3cba24e2ee2fbbc8129c4ab497ef2ce535130a0a4` and is used to send and receive tokens like ICP.
 :::
 
-Head back to the [https://faucet.dfinity.org](https://faucet.dfinity.org) webpage.
+First, get your account's ledger account ID:
 
-Now, click **NEXT STEP** to continue.
-
-Now that you have a coupon code, enter your coupon code within the faucet UI.
-
-![Enter Coupon](../_attachments/faucet_step_3.png)
-
-Click **NEXT STEP** to continue.
-
-Return to your terminal window. If you closed the window in the process, run the following commands to start `dfx` and use your previously created identity:
-
-```bash
-dfx start --clean --background
-dfx identity use DevJourney
 ```
-
-This workflow utilizes the **cycles ledger** feature. If you'd like to use the **cycles wallet** instead, [view the cycles wallet documentation](/docs/current/developer-docs/defi/cycles/cycles-wallet).
-
-:::caution
-The cycles ledger is supported by default in [`dfx` version 0.22.0 and newer](/docs/current/developer-docs/getting-started/install).
-:::
-
-Then, redeem your coupon with the command:
-
-```bash
-dfx cycles --network ic redeem-faucet-coupon COUPON_CODE
-```
-
-Replace **COUPON_CODE** with the cycles coupon code sent to you by the DFINITY faucet bot.
-
-Verify your cycles balance with the command:
-
-```bash
-dfx cycles --network ic balance
-```
-
-This should return an output showing 10T cycles associated with your identity.
-
-## Converting ICP tokens to cycles
-
-If you've already redeemed a cycles coupon in the past, or if you've already used the cycles from your coupon, you can convert ICP tokens into cycles.
-
-Before you can convert ICP tokens into cycles, first you need to obtain ICP tokens. ICP tokens can be purchased through a crypto exchange, or they can be received through other activities such as participating in the NNS governance and receiving grants from the DFINITY foundation.
-
-To get your account ID so you know where to send your ICP tokens, run the command:
-
-```bash
 dfx ledger account-id
 ```
 
-This will display your account number on the ICP ledger, which will resemble the following:
+Then, send ICP tokens to this ledger account ID. You can obtain [ICP tokens](https://internetcomputer.org/icp-tokens) from an [exchange](https://coinmarketcap.com/currencies/internet-computer/markets) or through a [developer grant](https://dfinity.org/grants). If you are using an exchange, initiate a withdrawal transaction, then enter the ledger account ID as the "destination" address to send ICP tokens to.
 
-```bash
-e213184a548871a47fb526f3cba24e2ee2fbbc8129c4ab497ef2ce535130a0a4
-```
-
-Once you have sent some ICP to this account ID, you can verify that they were received by checking the balance with the command:
-
-```bash
-dfx ledger --network ic balance
-```
-
-This will output something like this:
-
-```bash
-12.49840000 ICP
-```
-
-Once you have your ICP tokens ready, you will need to convert them into cycles. To convert ICP into cycles using the cycles ledger, use the command:
+After you have sent ICP tokens to your ledger account, check the ICP balance.
 
 ```
-dfx cycles convert --amount AMOUNT --network ic
+dfx ledger balance --network=ic
 ```
 
-:::info
-This workflow utilizes the **cycles ledger** feature. If you'd like to use the **cycles wallet** instead, [view the cycles wallet documentation](/docs/current/developer-docs/defi/cycles/cycles-wallet).
+Converting ICP to cycles is done through the **cycles ledger**, a ledger canister that enables developer identities to convert, hold, send, and receive cycles.
 
-Please note that the cycles wallet will be removed from dfx in a future release.
+The price of cycles is fixed against the price of [XDR](/docs/current/references/glossary#xdr), where 1 trillion cycles equals 1 XDR.
+
+Cycles are measured in very large numbers, such as billions and trillions. When you talk about cycle transfers and replenishment, you will usually operate with trillions of cycles.
+
+:::danger
+These commands must be run with the `--network=ic` flag. The cycles ledger is not necessary for local development and therefore not part of the local replica.
 :::
 
-Replace the **AMOUNT** with the number of ICP to convert into cycles.
+Next, convert ICP into cycles. Replace `AMOUNT` with the number of ICP tokens you want to convert into cycles.
 
-To verify that your ICP was converted into cycles properly, query the balance of the wallet with the command:
-
-```bash
-dfx cycles balance --network ic
+```
+dfx cycles convert --amount AMOUNT --network=ic
 ```
 
-This should return your balance in cycles:
+:::info Calculating how many cycles you need
 
-```bash
-6.951 TC (trillion cycles).
+The amount of cycles that your canister will use depends on a variety of factors. Cycles are charged for storage, compute, update messages, special features, and more. To get an approximation, you can view the [detailed cycles cost table](/docs/current/developer-docs/gas-cost) or use the [cycles pricing calculator](/docs/current/developer-docs/cost-estimations-and-examples).
+
+:::
+
+Lastly, confirm that the ICP was properly converted into cycles by checking the cycles balance.
+
+```
+dfx cycles balance --network=ic
 ```
 
 ## Resources
