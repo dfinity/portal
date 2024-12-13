@@ -12,8 +12,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 Developers have several options for integrating with the ICP or ICRC-1 ledgers. They can use either the ICRC Rosetta or ICP Rosetta implementations, which is commonly recommended, it might be useful for certain workflows  to directly integrate with these ledgers. This section will describe what a direct integration means, how it can be achieved, and how it differs to using Rosetta.
 
-##  Token architecture overview
-
+##  Token architecture
 
 Tokens on ICP are managed by smart contracts. The ICP ledger canister manages the list of balances for ICP tokens and implements methods for transferring tokens. It builds a chain of blocks consisting of all ICP token transactions since genesis. The chain is authenticated by having the ICP sign the tip of the chain. External parties can retrieve this chain and verify it is genuine by:
 - Verifying the signature which requires the public key of ICP.
