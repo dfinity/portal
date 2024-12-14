@@ -4864,7 +4864,7 @@
     "oneLiner": "Live Bingo games hosted 100% on the Internet Computer Protocol blockchain",
     "website": "https://stcjb-wyaaa-aaaap-akm2a-cai.icp0.io/",
     "tags": ["Games", "SocialFi"],
-    "description": "Blockchain Bingo is a decentralized application (dApp) that brings the classic game of Bingo to the blockchain. Leveraging the power of the Internet Computer, Bingo offers a secure and transparent platform where players can generate unique Bingo cards, participate in real-time games, and experience the thrill of winning wether it's a free game or game for a prize of ICP.",
+    "description": "Blockchain Bingo is a decentralized application (dApp) that brings the classic game of Bingo to the blockchain. Leveraging the power of the Internet Computer, Bingo offers a secure and transparent platform where players can generate unique Bingo cards, participate in real-time games, and experience the thrill of winning wether it's a free game or game for a prize of ICP. Created from the template that is generated with dfx new.",
     "logo": "/static/img/showcase/blockchain-bingo_logo.png",
     "usesInternetIdentity": true,
     "authOrigins": ["https://identity.ic0.app/#authorize"],
