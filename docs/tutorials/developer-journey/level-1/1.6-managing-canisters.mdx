@@ -240,7 +240,7 @@ Starting code for canister poll_frontend, with canister_id 5h5yf-eiaaa-aaaaa-qaa
 To check a canister's <GlossaryTooltip>cycles</GlossaryTooltip> balance, you must be the controller of the canister. The cycles balance can be seen in the output of the `dfx canister status` command, such as:
 
 ```bash
-dfx canister status 5o6tz-saaaa-aaaaa-qaacq-cai
+dfx canister status poll_backend
 ```
 
 The output will resemble the following, where the value `Balance` refers to the main cycles balance and `Reserved` refers to the reserved cycles balance:
@@ -274,8 +274,7 @@ There are a few ways to top up a canister:
 
 This tutorial will cover the first two workflows. [Learn more about using a third-party service for cycles management](/docs/current/developer-docs/smart-contracts/topping-up/cycles_management_services).
 
-
-## Setting the reserved cycles limit
+### Setting the reserved cycles limit
 
 When a canister allocates storage bytes, the system may reserve some amount of cycles by moving them from the main cycles balance of the canister to the reserved cycles balance.
 These reserved cycles are used for [future storage payments](/docs/current/developer-docs/gas-cost).
@@ -283,8 +282,8 @@ These reserved cycles are used for [future storage payments](/docs/current/devel
 You can control the maximum amount of reserved cycles by setting the reserved cycles limit:
 
 ```bash
-dfx canister update-settings 5o6tz-saaaa-aaaaa-qaacq-cai --reserved-cycles-limit 42
-dfx canister status 5o6tz-saaaa-aaaaa-qaacq-cai
+dfx canister update-settings poll_backend --reserved-cycles-limit 42
+dfx canister status poll_backend
 ```
 
 The first command sets the reserved cycles limit to `42` and the second command queries the canister status and shows the following output:
@@ -310,46 +309,22 @@ Such errors can be fixed by increasing the reserved cycles limit.
 
 ### Using ICP
 
-If you currently have a balance of ICP tokens within your dfx ledger account ID, you can use the `dfx ledger top-up` command to automatically convert that ICP into cycles and deposit it into the specified canister, for example:
+If you currently have a balance of ICP tokens within your `dfx ledger` account ID, you can use the `dfx ledger top-up` command to automatically convert that ICP into cycles and deposit it into the specified canister, for example:
 
 ```bash
-dfx ledger top-up 5o6tz-saaaa-aaaaa-qaacq-cai --amount 2.7
+dfx ledger top-up poll_backend --amount 2.7
 ```
 
 ### Using the cycles ledger
 
-You can top up a canister using the cycles balance associated with your identity and the cycles ledger with the command:
+If your canister is running on the mainnet, you can top up a canister using the cycles balance associated with your identity and the cycles ledger with the command:
+
+:::danger
+This command must be run on the mainnet.
+:::
 
 ```bash
-dfx cycles top-up `AMOUNT` `CANISTER_ID`
-```
-
-## Getting cycles back from a canister
-
-To withdraw cycles from a canister, the canister must be deleted. The cycles will be returned to the identity associated with the canister's controller principal.
-
-You can stop and delete the canister with the commands:
-
-```bash
-dfx canister stop jqylk-byaaa-aaaal-qbymq-cai
-dfx canister delete jqylk-byaaa-aaaal-qbymq-cai
-```
-
-The output of the `dfx canister delete` command will return information regarding the cycles withdraw:
-
-```
-Beginning withdrawal of cycles to canister jqylk-byaaa-aaaal-qbymq-cai; on failure try --no-wallet --no-withdrawal.
-Setting the controller to identity principal.
-Installing temporary wallet in canister poll_backend to enable transfer of cycles.
-Attempting to transfer 3089393970000 cycles to canister jqylk-byaaa-aaaal-qbymq-cai.
-Successfully withdrew 3089393970000 cycles.
-Deleting canister poll_backend, with canister_id jqylk-byaaa-aaaal-qbymq-cai
-```
-
-To confirm that the cycles were withdrawn properly, check your cycles balance again with `dfx cycles balance --network=ic`. The balance should be increased, such as:
-
-```
-93.789 TC (trillion cycles).
+dfx cycles top-up `AMOUNT` `CANISTER_ID` --network=ic
 ```
 
 ## Setting the canister's freezing threshold
@@ -381,16 +356,18 @@ Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 
 ## Deleting a canister
 
-The last portion of canister management that will be covered in this guide is deleting canisters. To delete a single canister, first you need to stop the canister with the command:
+The last portion of canister management that will be covered in this guide is deleting canisters. Deleting a canister will withdraw any cycles from that canister and return them to the identity associated with the canister's controller principal.
+
+To delete a single canister, first you need to stop the canister with the command:
 
 ```bash
-dfx canister stop poll_frontend
+dfx canister stop poll_backend
 ```
 
 Then you can run the command:
 
 ```bash
-dfx canister delete poll_frontend
+dfx canister delete poll_backend
 ```
 
 When a canister is deleted, the canister's code, state, and canister ID are removed. Canisters must be stopped before they can be deleted. Alternatively, all canisters for a project can be deleted with the commands:
