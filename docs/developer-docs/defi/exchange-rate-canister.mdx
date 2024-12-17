@@ -4,12 +4,12 @@ keywords: [intermediate, tutorial, exchange rate canister]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
 
 # Exchange rate canister
 
 <MarkdownChipRow labels={["Intermediate" , "Tutorial"]} />
-
-
 
 The exchange rate canister, referred to as the XRC, is a canister that runs on the **uzr34 system subnet**. The XRC uses [HTTPS outcalls](https://internetcomputer.org/https-outcalls/) to fetch data from major cryptocurrency exchanges by using the exchange's public API to retrieve real time or historical cryptocurrency pricing information. The XRC also queries the public APIs for foreign exchange data providers around the world periodically in order to get forex rates.
 
@@ -93,13 +93,15 @@ Alternatively, you can run a local XRC demo application to test the functionalit
 It is worth noting that this sample dapp is very simple. If there is an error, it always returns `0` because the return value is simply a float.
 :::
 
-### Prerequisites
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
 
--   [x] Download and install the IC SDK package as described in the [download and install](/docs/current/developer-docs/getting-started/install) page.
+<input type="checkbox"/> <a href="/docs/current/developer-docs/getting-started/install">Install the IC SDK.</a>
 
--   [x] Download and install [Nodejs and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+<input type="checkbox"/> Download and install <a href="https://git-scm.com/downloads">git.</a>
 
--   [x] Download and install [git](https://git-scm.com/downloads).
+</TabItem>
+</Tabs>
 
 Then, clone the sample repository, install the dependencies, and build the canisters with the following commands:
 

@@ -7,23 +7,25 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import Tabs from "@theme/Tabs";
 
 # vetKeys API demo
 
 <MarkdownChipRow labels={["Advanced", "Tutorial"]} />
 
-
-
 This demo provides a canister (`src/system_api`) that offers the [proposed vetKD system API](https://github.com/dfinity/interface-spec/pull/158), implemented demonstration, testing, and initial development purposes. We stress that it does not offer security yet as no threshold cryptography is used yet to secure the key.
 
 This demo uses files found in [this repository](https://github.com/dfinity/examples/tree/master/rust/vetkd).
 
-## Prerequisites
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
 
-- [x] Download and install the IC SDK package as described in the [installing the IC SDK](/docs/current/developer-docs/getting-started/install) page.
-- [x] Download and install [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
-- [x] Download and install [git](https://git-scm.com/downloads).
+<input type="checkbox"/> <a href="/docs/current/developer-docs/getting-started/install">Install the IC SDK.</a>
 
+<input type="checkbox"/> Download and install <a href="https://git-scm.com/downloads">git.</a>
+
+</TabItem>
+</Tabs>
 
 ### Step 1: Begin by cloning the Github repository containing this project:
 
@@ -37,7 +39,7 @@ cd examples/motoko/vetkd
 
 </TabItem>
 
-<TabItem value="rust" label="rust" default>
+<TabItem value="rust" label="Rust" default>
 
 ```
 git clone https://github.com/dfinity/examples/
@@ -47,11 +49,9 @@ cd examples/rust/vetkd
 </TabItem>
 </AdornedTabs>
 
-### Step 2: Then, start a local instance of the Internet Computer:
+### Step 2: Start a local instance of the replica.
 
-```sh
-dfx start --clean --background
-```
+First, [start the local replica](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-start) if necessary and [create](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-new) or open a project.
 
 ### Step 3: Ensure the dfx uses the canister IDs that are hard-coded in the source code:
 
