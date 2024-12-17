@@ -328,19 +328,7 @@ dfx cycles top-up `AMOUNT` `CANISTER_ID`
 
 To withdraw cycles from a canister, the canister must be deleted. The cycles will be returned to the identity associated with the canister's controller principal.
 
-First, check the cycles balance of your identity:
-
-```
-dfx cycles balance
-```
-
-This will return your cycles balance, such as:
-
-```
-90.700 TC (trillion cycles).
-```
-
-Then, you can stop and delete the canister with the commands:
+You can stop and delete the canister with the commands:
 
 ```bash
 dfx canister stop jqylk-byaaa-aaaal-qbymq-cai
@@ -358,7 +346,7 @@ Successfully withdrew 3089393970000 cycles.
 Deleting canister poll_backend, with canister_id jqylk-byaaa-aaaal-qbymq-cai
 ```
 
-To confirm that the cycles were withdrawn properly, check your cycles balance again with `dfx cycles balance`. The balance should be increased, such as:
+To confirm that the cycles were withdrawn properly, check your cycles balance again with `dfx cycles balance --network=ic`. The balance should be increased, such as:
 
 ```
 93.789 TC (trillion cycles).
