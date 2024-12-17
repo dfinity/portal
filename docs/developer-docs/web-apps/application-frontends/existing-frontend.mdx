@@ -4,45 +4,38 @@ keywords: [intermediate, tutorial, frontend, assets, asset canister]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
 
 
 # Using an existing frontend application
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
-
-
 While numerous starter projects and examples exist for those who prefer to start from scratch, deploying an existing frontend application as a frontend <GlossaryTooltip>canister</GlossaryTooltip> is also a viable option for building an application on ICP.
-
-This guide provides an overview of how to deploy an existing Next.js application as a frontend canister.
 
 :::caution
 Server methods such as `getServerSideProps` are not supported, since it will be deployed as a client-only application.
 :::
 
-## Next.js
+## Using a Next.js frontend
 
 [Next.js](https://nextjs.org/) is an open-source web development framework providing React-based web applications with server-side rendering and static website generation.
 
 [View the GitHub repo for this example](https://github.com/jennifertrin/nextjsicp).
 
-### Prerequisites
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
 
-Before you start, verify that you have:
+<input type="checkbox"/> <a href="/docs/current/developer-docs/getting-started/install">Install the IC SDK.</a>
 
-- [x] Downloaded and installed [`dfx`](https://github.com/dfinity/sdk/releases/latest).
+</TabItem>
+</Tabs>
 
-- [x] An existing Next.js application. This guide will use the [Next.js ICP example](https://github.com/jennifertrin/nextjsicp).
-
-### Step 1: Build your Next.js application
+- #### Step 1: Build your Next.js application.
 
 To start, you must generate static files and build your Next.js application. To generate the static files, add this line to your `next.config.js` file:
-
-```js
-output: 'export'
-```
-
-Your `next.config.js` file should resemble the following:
 
 ```js
 const nextConfig = {
@@ -50,33 +43,28 @@ const nextConfig = {
 };
 ```
 
-Please note that you may have existing settings that you should avoid overriding.
+:::danger
+Please note that you may have existing settings that you should avoid overwriting.
+:::
 
-Then, build your Next.js application by running the appropriate build command. For example, if you are using npx:
+Then, build your Next.js application by running the appropriate build command. You should reference your `package.json`'s `scripts` section to determine the correct build command.
+ For example, if you are using npx:
 
 ```bash
 npx run build
 ```
 
-You should reference your `package.json` `scripts` section to determine the correct build command.
-
 This should generate an `out` folder, which consists of the static assets that make up the frontend.
 
-:::info
-When deploying on ICP, these static files are not public to anyone, including the nodes. Only the Wasm file, which is a binary instruction file that does not leak any of your code, is public.
-:::
-
-### Step 2: Create a `dfx.json` file
+- #### Step 2: Create a `dfx.json` file
 
 In the top-level directory of your repository, add a `dfx.json` file containing the following content:
 
 ```json
 {
     "canisters": {
-      "app": {
-        "frontend": {
+        "frontend": {
           "entrypoint": "out/index.html"
-        },
         "source": ["out"],
         "type": "assets"
       }
@@ -85,13 +73,13 @@ In the top-level directory of your repository, add a `dfx.json` file containing 
 }
 ```
 
-`dfx.json` is the configuration file for deploying your to ICP as a canister. In this example, this file is configuring a canister called 'app'. Note that you can adjust `app` to refer to the name of your canister. Also, make sure that these point to the correct files:
+`dfx.json` is the configuration file used for configuring and deploying your app to ICP as a canister. In this example, this file is configuring a canister called 'app'. Note that you can adjust `app` to refer to the name of your canister. Also, make sure that these point to the correct files:
 
-- `"entrypoint": "out/index.html"`
+- `"entrypoint": "out/index.html"`: The index or entrance point for the application's files.
 
-- `"source": ["out"]`
+- `"source": ["out"]`: The directory hosting the application's web assets.
 
-### Step 3: Generate Candid definitions
+- #### Step 3: Generate Candid definitions.
 
 Run the following command to generate the correct [Candid](/docs/current/developer-docs/smart-contracts/candid/candid-concepts) type definitions:
 
@@ -99,7 +87,7 @@ Run the following command to generate the correct [Candid](/docs/current/develop
 dfx generate
 ```
 
-### Step 4: Deploy the project
+- #### Step 4: Deploy the project.
 
 Then, you can deploy the Next.js application locally for testing:
 
@@ -119,10 +107,7 @@ Deploying to the mainnet will cost [cycles](/docs/current/developer-docs/getting
 
 After running either command, you will see a generated link that is now hosting your Next.js application. The local url will be in the format `http://127.0.0.1:4943/?canisterId=<canister-id>`, while the mainnet URL will be in the format `https://<canister-id>.icp0.io/`.
 
-### Step 5: Navigate to the frontend canister to view the application
+- #### Step 5: Open the application.
 
 Navigate to the frontend canister using the URL you received in the last step.
 
-## Next steps
-
-[Learn about asset security policies](asset-security.mdx).
