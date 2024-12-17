@@ -142,11 +142,6 @@ This audience should be kept in mind when writing docs. For example:
 ### Documentation types
 The structure and content of the documentation page will vary based on the document type. Some common types are:
 
-#### Overview
-An overview of a documentation section or broad concept of ICP. When creating an overview page that discusses the capabilities of ICP, the benefits and attributes of the possible capabilities should be written about, not only the currently implemented workflows. For example, instead of writing about the currently implemented Bitcoin and Ethereum integrations, the [Chain Fusion overview](/docs/current/developer-docs/multi-chain/overview) page discusses ICP’s cross-chain functionalities and benefits on a much broader scale beyond the two current integrations.
-
-For overview pages, using bullet point lists to describe specific benefits or features of ICP is recommended.
-
 #### Feature or tool detail page
 A page that details a specific tool or feature. Feature or tool pages should provide a deeper explanation of a specific feature or tool, why a developer should use it, and how they can use it. It should describe the currently implemented workflows the feature/tool supports, and should not include details of conceptual ideas that are not currently live for developers to use (future roadmap items, possible improvements in the future, etc.)
 
