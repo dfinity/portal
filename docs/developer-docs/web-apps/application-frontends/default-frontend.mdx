@@ -15,7 +15,7 @@ Dapps may have complex frontends that serve dynamic, interactive interfaces, or 
 
 ## What is an asset canister?
 
-When a project has a frontend canister configured in its `dfx.json` file, `dfx` will compile the project's web assets into an **asset canister**. An asset canister is a special type of custom canister that uses Rust to compile the project's asset files into a Wasm module that can be installed and deployed to ICP. This is because canisters deployed on ICP must have a Wasm module.
+When a project has a frontend canister configured in its `dfx.json` file as `"type": "asset"`, `dfx` will compile the project's web assets into an **asset canister**. An asset canister is a special type of canister that uses Rust to compile the project's asset files into a Wasm module that can be installed and deployed to ICP. This is because canisters deployed on ICP must have a Wasm module.
 
 ## Application URLs
 
