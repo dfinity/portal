@@ -519,7 +519,6 @@ const sidebars = {
             id: "developer-docs/web-apps/application-frontends/overview",
           },
           items: [
-            "developer-docs/web-apps/application-frontends/default-frontend",
             "developer-docs/web-apps/application-frontends/existing-frontend",
             "developer-docs/web-apps/application-frontends/asset-security",
             "developer-docs/web-apps/application-frontends/webpack",
