@@ -520,7 +520,6 @@ const sidebars = {
           },
           items: [
             "developer-docs/web-apps/application-frontends/default-frontend",
-            "developer-docs/web-apps/application-frontends/add-stylesheet",
             "developer-docs/web-apps/application-frontends/existing-frontend",
             "developer-docs/web-apps/application-frontends/asset-security",
             "developer-docs/web-apps/application-frontends/webpack",
