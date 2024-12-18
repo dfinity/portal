@@ -315,11 +315,7 @@ const tags = Object.entries(
   reducedTags
 )
   .filter(([tag]) => tagsNavigation.includes(tag))
-  // .map(([tag, count]): [string, number] =>
-  //   tag === "Chainfusion" ? ["Chain Fusion", count] : [tag, count]
-  // )
   .sort((a, b) => {
-    // const priorityOrder = ["AI", "Chain Fusion", "Bitcoin", "Ethereum"];
     const priorityOrder = tagsNavigation;
     const indexA = priorityOrder.indexOf(a[0]);
     const indexB = priorityOrder.indexOf(b[0]);

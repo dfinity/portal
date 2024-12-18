@@ -24,6 +24,8 @@ const tags = [
   "Games",
   "DAO",
   "Enterprise",
+  "Analytics",
+  "Creator Economy",
 ];
 
 function isString(value) {

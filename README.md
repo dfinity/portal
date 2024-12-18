@@ -606,6 +606,8 @@ The list of tags is not final, and will be updated as the project evolves. For n
 - `SocialFi`
 - `Tools / Infrastructure`
 - `Wallet`
+- `Analytics`
+- `Creator Economy`
 
 ### Object schema
 
