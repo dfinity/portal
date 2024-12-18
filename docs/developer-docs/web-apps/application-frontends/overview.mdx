@@ -107,7 +107,25 @@ The [Express HTTP server](https://demergent-labs.github.io/azle/) package via Az
 
 The frontend canister can host roughly 1GiB in static files. It is recommended that you distribute your files across multiple canisters if the total size of all your assets begins to exceed this amount. Once you exceed this figure, your canister may fail to upgrade.
 
-## Dynamic URLs
+## Application URLs
+
+Frontend canisters serve the application's web assets via a URL that contains the <GlossaryTooltip>canister</GlossaryTooltip>'s ID. Local deployments use local URLs such as `http://127.0.0.1:4943/?canisterId=<canister-id>`, while applications deployed to the mainnet use public URLs containing the canister's ID followed by `.ic0.app`, `.icp0.io` or `raw.icp0.io`.
+
+### Raw HTTP interfaces
+
+The `raw.icp0.io` domain provides a way to access the raw HTTP interface of that canister. For local deployments that want to simulate the behavior of the `raw.icp0.io` domain, you must implement a method in your canister that consumes an HTTP request and outputs an HTTP response. Here is an example written in Motoko:
+
+```motoko no-repl
+public shared(msg) func http_request(req: HttpRequest) : async HttpResponse {
+    {
+        status = { code = 200; reason = "OK" };
+        headers = [( "Content-Type", "text/plain" )];
+        body = Text.encodeUtf8("Hello, World!");
+    }
+};
+```
+
+### Dynamic URLs
 
 Dynamic URLs are currently not supported by the default frontend canister.
 
