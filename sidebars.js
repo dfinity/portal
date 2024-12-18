@@ -223,6 +223,16 @@ const sidebars = {
                   items: [
                     {
                       type: "doc",
+                      id: "developer-docs/web-apps/http-compatible-canisters/ic-asset-certification-library",
+                      label: "The asset certification library",
+                    },
+                    {
+                      type: "doc",
+                      id: "developer-docs/web-apps/http-compatible-canisters/example-canister-serving-assets",
+                      label: "Example canister serving assets",
+                    },
+                    {
+                      type: "doc",
                       id: "developer-docs/web-apps/http-compatible-canisters/custom-http-canisters",
                       label: "Custom HTTP canisters",
                     },
