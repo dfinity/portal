@@ -955,14 +955,13 @@ const sidebars = {
                     },
                   ],
                 },
-
-                {
-                  type: "doc",
-                  label: "Exchange rate canister",
-                  id: "developer-docs/defi/exchange-rate-canister",
-                },
               ]
             }
+	{
+	  type: "doc",
+	  label: "Exchange rate canister",
+	  id: "developer-docs/defi/exchange-rate-canister",
+	},
           ],
         },
         {
