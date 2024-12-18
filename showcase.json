@@ -1,4 +1,24 @@
 [
+   {
+    "id": "decideai",
+    "name": "DecideAI",
+    "display": "Large",
+    "oneLiner": "A fullstack decentralized AI platform",
+    "website": "https://decideai.xyz",
+    "twitter": "https://twitter.com/DecideAI_",
+    "tags": [
+      "AI",
+      "Tools / Infrastructure"
+    ],
+    "stats": "50,000+ inference requests",
+    "description": "DecideAI is an ecosystem that consists of three products, Decide Protocol, Decide ID, and Decide Cortex, designed to meet the needs of the high-end, specialized LLM market.",
+    "usesInternetIdentity": true,
+    "logo": "/img/showcase/decideai_logo.png",
+    "screenshots": [
+      "/img/showcase/decideai_screenshot_0.png"
+    ],
+    "github": "https://github.com/modclub-app"
+  },
   {
     "id": "bitfinity-evm",
     "name": "Bitfinity EVM",
@@ -13,7 +33,7 @@
     "description": "Bitfinity is the EVM compatibility layer for the IC. Using Bitfinity, you can deploy your Solidity smart contracts to the Internet Computer, taking advantage of its many advantageous DeFi capabilities: HTTPS Outcalls, the BTC integration, and more.",
     "usesInternetIdentity": true,
     "stats": "1,000+ TPS",
-    "display": "Large",
+    "display": "Normal",
     "logo": "/img/showcase/bitfinity_evm.svg",
     "screenshots": [
       "/img/showcase/bitfinity_showcase.webp"
@@ -334,13 +354,13 @@
   {
     "id": "catalyze",
     "name": "Catalyze",
-    "website": "https://aqs24-xaaaa-aaaal-qbbea-cai.ic0.app/",
+    "website": "https://catalyze.one/",
     "tags": [
       "SocialFi",
       "DAO"
     ],
+    "description": "Catalyze is building the new Web3 social learning hub: Communities, Events & Seamless Token Transfer, all in one place.",
     "twitter": "https://x.com/catalyze_one",
-    "description": "Catalyze is building the new Web3 social learning hub: Communities, Events & Seamless Token Transfer. Now onboarding KOLs.",
     "usesInternetIdentity": true,
     "oneLiner": "Manage your Web3 communities and events",
     "display": "Large",
@@ -623,26 +643,6 @@
     "screenshots": [
       "/img/showcase/plethora_screenshot.webp"
     ]
-  },
-  {
-    "id": "decideai",
-    "name": "DecideAI",
-    "display": "Large",
-    "oneLiner": "A fullstack decentralized AI platform",
-    "website": "https://decideai.xyz",
-    "twitter": "https://twitter.com/DecideAI_",
-    "tags": [
-      "AI",
-      "Tools / Infrastructure"
-    ],
-    "stats": "50,000+ inference requests",
-    "description": "DecideAI is an ecosystem that consists of three products, Decide Protocol, Decide ID, and Decide Cortex, designed to meet the needs of the high-end, specialized LLM market.",
-    "usesInternetIdentity": true,
-    "logo": "/img/showcase/decideai_logo.png",
-    "screenshots": [
-      "/img/showcase/decideai_screenshot_0.png"
-    ],
-    "github": "https://github.com/modclub-app"
   },
   {
     "id": "querio",

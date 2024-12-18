@@ -14,7 +14,7 @@ const sidebars = {
       },
       {
         type: "doc",
-        label: "React",
+        label: "First web app",
         id: "developer-docs/getting-started/quickstart/react-quickstart",
       },
     ],
@@ -35,34 +35,29 @@ const sidebars = {
     },
     {
       type: "doc",
-      label: "Install tools",
+      label: "Installing developer tools",
       id: "developer-docs/getting-started/install",
     },
     {
       type: "doc",
-      label: "Create an identity",
+      label: "Creating a developer identity",
       id: "developer-docs/getting-started/identities",
     },
     {
       type: "doc",
-      label: "Tokens and cycles",
+      label: "Using tokens and cycles",
       id: "developer-docs/getting-started/tokens-and-cycles",
     },
     {
       type: "doc",
-      label: "Write smart contracts",
+      label: "Writing smart contracts",
       id: "developer-docs/getting-started/write-smart-contracts",
     },
     {
       type: "doc",
-      label: "Deploy and manage",
+      label: "Deploying and managing dapps",
       id: "developer-docs/getting-started/deploy-and-manage",
     },
-    {
-      type: "doc",
-      label: "Next steps",
-      id: "developer-docs/getting-started/next-steps",
-      },
       ],
     },
     {
@@ -71,9 +66,12 @@ const sidebars = {
       items: [
         {
           type: "category",
-          label: "Overview",
+          label: "What are canisters?",
+	  link: {
+            type: "doc",
+            id: "developer-docs/smart-contracts/overview/introduction",
+          },
           items: [
-            "developer-docs/smart-contracts/overview/introduction",
             "developer-docs/smart-contracts/overview/inside-canisters",
             "developer-docs/smart-contracts/development-workflow",
             "developer-docs/smart-contracts/overview/trust-in-canisters",
@@ -109,24 +107,22 @@ const sidebars = {
         {
           type: "category",
           label: "Deploy",
+          link: {
+            type: "doc",
+            id: "developer-docs/smart-contracts/deploy/overview",
+          },
           items: [
-            {
-              label: "Overview",
-              type: "doc",
-              id: "developer-docs/smart-contracts/deploy/overview",
-            },
             "developer-docs/smart-contracts/deploy/custom-testnets",
           ],
         },
         {
           type: "category",
           label: "Call",
+          link: {
+            type: "doc",
+            id: "developer-docs/smart-contracts/call/overview",
+          },
           items: [
-            {
-              type: "doc",
-              label: "Overview",
-              id: "developer-docs/smart-contracts/call/overview",
-            },
             {
               type: "doc",
               label: "Async code & inter-canister calls",
@@ -187,12 +183,11 @@ const sidebars = {
         {
           type: "category",
           label: "Test",
+          link: {
+            type: "doc",
+            id: "developer-docs/smart-contracts/test/overview",
+          },
           items: [
-            {
-              label: "Overview",
-              type: "doc",
-              id: "developer-docs/smart-contracts/test/overview",
-            },
             "developer-docs/smart-contracts/test/pocket-ic",
           ],
         },
@@ -215,12 +210,11 @@ const sidebars = {
                 {
                   type: "category",
                   label: "HTTPS outcalls",
+                  link: {
+                    type: "doc",
+                    id: "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview",
+                  },
                   items: [
-                    {
-                      label: "Overview",
-                      type: "doc",
-                      id: "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview",
-                    },
                     "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use",
                     "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-get",
                     "developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-post",
@@ -323,12 +317,11 @@ const sidebars = {
     {
       type: "category",
       label: "Developer tools",
+      link: {
+        type: "doc",
+        id: "developer-docs/developer-tools/dev-tools-overview",
+      },
       items: [
-        {
-          type: "doc",
-          label: "Overview",
-          id: "developer-docs/developer-tools/dev-tools-overview",
-        },
         {
           type: "category",
           label: "Command line",
@@ -481,12 +474,11 @@ const sidebars = {
             {
               type: "category",
               label: "Agents",
+              link: {
+                type: "doc",
+                id: "developer-docs/developer-tools/off-chain/agents/overview",
+              },
               items: [
-                {
-                  label: "Overview",
-                  type: "doc",
-                  id: "developer-docs/developer-tools/off-chain/agents/overview",
-                },
                 "developer-docs/developer-tools/off-chain/agents/javascript-agent",
                 "developer-docs/developer-tools/off-chain/agents/nodejs",
                 "developer-docs/developer-tools/off-chain/agents/rust-agent",
@@ -525,14 +517,12 @@ const sidebars = {
         {
           type: "category",
           label: "Application frontends",
+          link: {
+            type: "doc",
+            id: "developer-docs/web-apps/application-frontends/overview",
+          },
           items: [
-            {
-              label: "Overview",
-              type: "doc",
-              id: "developer-docs/web-apps/application-frontends/overview",
-            },
             "developer-docs/web-apps/application-frontends/default-frontend",
-            "developer-docs/web-apps/application-frontends/add-stylesheet",
             "developer-docs/web-apps/application-frontends/existing-frontend",
             "developer-docs/web-apps/application-frontends/asset-security",
             "developer-docs/web-apps/application-frontends/webpack",
@@ -561,12 +551,11 @@ const sidebars = {
         {
           type: "category",
           label: "Security best practices",
+          link: {
+            type: "doc",
+            id: "developer-docs/security/security-best-practices/overview",
+          },
           items: [
-            {
-              type: "doc",
-              label: "Overview",
-              id: "developer-docs/security/security-best-practices/overview",
-            },
             {
               type: "doc",
               label: "Inter-canister calls",
@@ -634,22 +623,20 @@ const sidebars = {
     {
       type: "category",
       label: "Chain Fusion",
+      link: {
+        type: "doc",
+        id: "developer-docs/multi-chain/overview",
+      },
       items: [
-        {
-          label: "Overview",
-          type: "doc",
-          id: "developer-docs/multi-chain/overview",
-        },
         "developer-docs/multi-chain/supported-chains",
         {
           type: "category",
           label: "Bitcoin",
+          link: {
+            type: "doc",
+            id: "developer-docs/multi-chain/bitcoin/overview",
+          },
           items: [
-            {
-              label: "Overview",
-              type: "doc",
-              id: "developer-docs/multi-chain/bitcoin/overview",
-            },
             "developer-docs/multi-chain/bitcoin/using-btc/btc-comparison",
             "developer-docs/multi-chain/bitcoin/using-btc/btc-dev-workflow",
             {
@@ -671,12 +658,11 @@ const sidebars = {
         {
           type: "category",
           label: "Ethereum",
+          link: {
+            type: "doc",
+            id: "developer-docs/multi-chain/ethereum/overview",
+          },
           items: [
-            {
-              label: "Overview",
-              type: "doc",
-              id: "developer-docs/multi-chain/ethereum/overview",
-            },
             "developer-docs/multi-chain/ethereum/using-eth/eth-comparison",
             "developer-docs/multi-chain/ethereum/using-eth/eth-dev-workflow",
             {
@@ -691,12 +677,11 @@ const sidebars = {
             {
               type: "category",
               label: "EVM RPC canister",
+              link: {
+                type: "doc",
+                id: "developer-docs/multi-chain/ethereum/evm-rpc/overview",
+              },
               items: [
-                {
-                  label: "Overview",
-                  type: "doc",
-                  id: "developer-docs/multi-chain/ethereum/evm-rpc/overview",
-                },
                 "developer-docs/multi-chain/ethereum/evm-rpc/how-it-works",
                 "developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister",
                 "developer-docs/multi-chain/ethereum/evm-rpc/costs",
@@ -709,17 +694,19 @@ const sidebars = {
         {
           type: "category",
           label: "Chain-key tokens",
+          link: {
+            type: "doc",
+            id: "developer-docs/multi-chain/chain-key-tokens/overview",
+          },
           items: [
-            "developer-docs/multi-chain/chain-key-tokens/overview",
             {
               type: "category",
               label: "ckBTC",
+              link: {
+                type: "doc",
+                id: "developer-docs/multi-chain/chain-key-tokens/ckbtc/overview",
+              },
               items: [
-                {
-                  label: "Overview",
-                  type: "doc",
-                  id: "developer-docs/multi-chain/chain-key-tokens/ckbtc/overview",
-                },
                 "developer-docs/multi-chain/chain-key-tokens/ckbtc/making-transactions",
                 "developer-docs/multi-chain/chain-key-tokens/ckbtc/using-ckbtc-in-dapps",
               ],
@@ -727,12 +714,11 @@ const sidebars = {
             {
               type: "category",
               label: "ckETH",
+              link: {
+                type: "doc",
+                id: "developer-docs/multi-chain/chain-key-tokens/cketh/overview",
+              },
               items: [
-                {
-                  label: "Overview",
-                  type: "doc",
-                  id: "developer-docs/multi-chain/chain-key-tokens/cketh/overview",
-                },
                 "developer-docs/multi-chain/chain-key-tokens/cketh/making-transactions",
                 "developer-docs/multi-chain/chain-key-tokens/cketh/using-cketh-in-dapps",
               ],
@@ -740,12 +726,11 @@ const sidebars = {
             {
               type: "category",
               label: "ckERC20",
+              link: {
+                type: "doc",
+                id: "developer-docs/multi-chain/chain-key-tokens/ckerc20/overview",
+              },
               items: [
-                {
-                  label: "Overview",
-                  type: "doc",
-                  id: "developer-docs/multi-chain/chain-key-tokens/ckerc20/overview",
-                },
                 "developer-docs/multi-chain/chain-key-tokens/ckerc20/making-transactions",
                 "developer-docs/multi-chain/chain-key-tokens/ckerc20/using-ckerc20-in-dapps",
                 "developer-docs/multi-chain/chain-key-tokens/ckerc20/creating-new-ckerc20",
@@ -758,21 +743,19 @@ const sidebars = {
     {
           type: "category",
           label: "Authentication",
+          link: {
+            type: "doc",
+            id: "developer-docs/identity/authentication/overview",
+          },
           items: [
-            {
-              label: "Overview",
-              type: "doc",
-              id: "developer-docs/identity/authentication/overview",
-            },
             {
               type: "category",
               label: "Internet Identity (II)",
+              link: {
+                type: "doc",
+                id: "developer-docs/identity/internet-identity/overview",
+              },
               items: [
-                {
-                  label: "Overview",
-                  type: "doc",
-                  id: "developer-docs/identity/internet-identity/overview",
-                },
                 "developer-docs/identity/internet-identity/creating-ii",
                 "developer-docs/identity/internet-identity/integrate-internet-identity",
                 "developer-docs/identity/internet-identity/alternative-origins",
@@ -781,12 +764,11 @@ const sidebars = {
         {
           type: "category",
           label: "Verifiable credentials",
+          link: {
+            type: "doc",
+            id: "developer-docs/identity/verifiable-credentials/overview",
+          },
           items: [
-            {
-              label: "Overview",
-              type: "doc",
-              id: "developer-docs/identity/verifiable-credentials/overview",
-            },
             "developer-docs/identity/verifiable-credentials/how-it-works",
             "developer-docs/identity/verifiable-credentials/issuer",
             "developer-docs/identity/verifiable-credentials/relying-party",
@@ -797,12 +779,11 @@ const sidebars = {
     {
       type: "category",
       label: "Digital assets",
+      link: {
+        type: "doc",
+        id: "developer-docs/defi/overview",
+      },
       items: [
-        {
-          type: "doc",
-          label: "Overview",
-          id: "developer-docs/defi/overview",
-        },
         {
           type: "category",
           label: "Tokens",
@@ -990,12 +971,11 @@ const sidebars = {
         {
           type: "category",
           label: "NFTs",
+          link: {
+            type: "doc",
+            id: "developer-docs/defi/nfts/overview",
+          },
           items: [
-            {
-              type: "doc",
-              label: "Overview",
-              id: "developer-docs/defi/nfts/overview",
-            },
             "developer-docs/defi/nfts/nft-collections",
             "developer-docs/defi/nfts/marketplaces"
           ],
@@ -1003,23 +983,21 @@ const sidebars = {
         {
           type: "category",
           label: "Decentralized exchanges",
+          link: {
+            type: "doc",
+            id: "developer-docs/defi/dex/overview",
+          },
           items: [
-            {
-              type: "doc",
-              label: "Overview",
-              id: "developer-docs/defi/dex/overview",
-            }
           ],
         },
         {
           type: "category",
           label: "Wallets",
+          link: {
+            type: "doc",
+            id: "developer-docs/defi/wallets/overview",
+          },
           items: [
-            {
-              type: "doc",
-              label: "Overview",
-              id: "developer-docs/defi/wallets/overview",
-            },
               "developer-docs/defi/wallets/self-custody/self-custody-quickstart",
               "developer-docs/defi/wallets/self-custody/hardware-wallet-cli",
           ],
@@ -1029,21 +1007,19 @@ const sidebars = {
     {
       type: "category",
       label: "Decentralized AI",
+      link: {
+        type: "doc",
+        id: "developer-docs/ai/overview",
+      },
       items: [
-        {
-          type: "doc",
-          label: "Overview",
-          id: "developer-docs/ai/overview",
-        },
         {
           type: "category",
           label: "Inference",
+          link: {
+            type: "doc",
+            id: "developer-docs/ai/inference",
+          },
           items: [
-            {
-              type: "doc",
-              label: "Overview",
-              id: "developer-docs/ai/inference",
-            },
             "developer-docs/ai/samples",
             ],
           },
@@ -1057,12 +1033,11 @@ const sidebars = {
         {
           type: "category",
           label: "Network Nervous System (NNS)",
+          link: {
+            type: "doc",
+            id: "developer-docs/daos/nns/overview",
+          },
           items: [
-            {
-              type: "doc",
-              label: "Overview",
-              id: "developer-docs/daos/nns/overview",
-            },
             {
               type: "category",
               label: "Using the NNS dapp",
@@ -1119,7 +1094,7 @@ const sidebars = {
           },
           items: [
             {
-              label: "Overview",
+              label: "What is an SNS?",
               type: "doc",
               id: "developer-docs/daos/sns/overview",
             },
@@ -1262,12 +1237,11 @@ const sidebars = {
         {
           type: "category",
           label: "ICP dashboard",
+          link: {
+            type: "doc",
+            id: "references/dashboard/overview",
+          },
           items: [
-            {
-              type: "doc",
-              label: "Overview",
-              id: "references/dashboard/overview",
-            },
             "references/dashboard/using-the-dashboard",
             "references/dashboard/dashboard-apis",
           ],
@@ -1286,24 +1260,22 @@ const sidebars = {
         {
           type: "category",
           label: "Node providers",
+          link: {
+            type: "doc",
+            id: "references/node-providers/overview",
+          },
           items: [
-            {
-              type: "doc",
-              label: "Overview",
-              id: "references/node-providers/overview",
-            },
             "references/node-providers/node-metrics",
           ],
         },
         {
             type: "category",
             label: "Subnets",
+            link: {
+              type: "doc",
+              id: "references/subnets/overview",
+            },
             items: [
-              {
-                type: "doc",
-                label: "Overview",
-                id: "references/subnets/overview",
-              },
               "references/subnets/subnet-types",
             ],
           },
