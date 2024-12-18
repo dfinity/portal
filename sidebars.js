@@ -955,8 +955,8 @@ const sidebars = {
                     },
                   ],
                 },
-              ]
-            }
+              ],
+            },
 	{
 	  type: "doc",
 	  label: "Exchange rate canister",
