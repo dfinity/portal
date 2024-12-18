@@ -1,5 +1,5 @@
 [
-   {
+  {
     "id": "decideai",
     "name": "DecideAI",
     "display": "Large",
@@ -118,8 +118,7 @@
     "usesInternetIdentity": true,
     "stats": "100,000+ ICP funded",
     "display": "Normal",
-    "logo": "/img/showcase/funded_logo.webp",
-    "screenshots": []
+    "logo": "/img/showcase/funded_logo.webp"
   },
   {
     "id": "nfid",
@@ -199,8 +198,7 @@
     "usesInternetIdentity": true,
     "twitter": "https://twitter.com/ICLighthouse",
     "display": "Normal",
-    "logo": "/img/showcase/icdex_logo.webp",
-    "screenshots": []
+    "logo": "/img/showcase/icdex_logo.webp"
   },
   {
     "id": "yral",
@@ -442,7 +440,6 @@
       "Tools / Infrastructure",
       "DAO"
     ],
-    "twitter": "https://twitter.com/TaggrNetwork",
     "description": "Fully onchain and fully autonomous SocialFi network. A simple way to publish content on a public compute infrastructure. No Ponzinomics - TAGGR has a sustainable tokenomics model that rewards quality posts and removes the incentive to spam.",
     "usesInternetIdentity": true,
     "authOrigins": [
@@ -575,8 +572,6 @@
     "usesInternetIdentity": false,
     "github": "https://github.com/eigerco/ethereum-canister",
     "logo": "/img/ethereum.svg",
-    "screenshots": [],
-    "video": "",
     "videoContentType": "video/mp4",
     "submittableId": "40732752"
   },
@@ -622,8 +617,7 @@
       "/img/showcase/boom-dao-screenshot0.webp"
     ],
     "video": "/img/showcase/boom-dao-video.mp4",
-    "videoContentType": "video/mp4",
-    "submittableId": ""
+    "videoContentType": "video/mp4"
   },
   {
     "id": "plethora",
@@ -653,8 +647,7 @@
     ],
     "twitter": "https://x.com/querio_io",
     "description": "Querio is the most advanced web3.0 search engine of exceptional speed and accuracy, that empowers its users to search over the Internet Computer.",
-    "logo": "/img/showcase/Querio_Logo.webp",
-    "screenshots": []
+    "logo": "/img/showcase/Querio_Logo.webp"
   },
   {
     "id": "cubetopia",
@@ -680,6 +673,7 @@
     "oneLiner": "Self custody made simple and secure. Turn a spare smartphone into a cold wallet.",
     "description": "Self-custody made simple and secure. Turn a spare smartphone into a cold wallet that can store a plethora of tokens including ICP and ckBTC. Using AirGap, you can stake ICP directly on the NNS and participate in governance.",
     "website": "https://airgap.it/",
+    "twitter": "https://x.com/airgap_it",
     "tags": [
       "Wallet"
     ],
@@ -691,8 +685,6 @@
     "description": "A platform that offers banking-grade custody and everything needed for managing any digital asset.",
     "website": "https://www.taurushq.com/",
     "logo": "/img/showcase/taurus_logo.png",
-    "screenshots": [],
-    "video": "",
     "display": "Normal",
     "id": "taurus",
     "oneLiner": "Banking-grade custody for digital asset management.",
@@ -703,10 +695,7 @@
       "Enterprise"
     ],
     "usesInternetIdentity": false,
-    "github": "",
-    "twitter": "",
-    "youtube": "",
-    "submittableId": ""
+    "twitter": "https://x.com/taurus_hq"
   },
   {
     "id": "azle",
@@ -770,14 +759,11 @@
     "tags": [
       "Games"
     ],
-    "twitter": "",
     "description": "Jump into this proof of concept battle royale 2D shooter on ICP. Grab gear, outplay the competition, and stay alive as the battleground shrinks. It's all about thinking a few steps ahead. Upgrade weapons, toss grenades, and pull off sneaky ambushes. Invite your pals for a quick match and make sure you play the tutorial to get used to the mechanics.",
     "usesInternetIdentity": true,
     "display": "Normal",
-    "stats": "",
     "logo": "/img/showcase/autoroyale_logo.png",
     "oneLiner": "A fast-paced 2D multiplayer shooter game",
-    "screenshots": [],
     "video": "/img/showcase/autoroyale_video.mp4",
     "videoContentType": "video/mp4"
   },
@@ -813,8 +799,7 @@
     "github": "https://github.com/AegirFinance/StakedICP",
     "twitter": "https://twitter.com/StakedICP",
     "display": "Normal",
-    "logo": "/img/showcase/stakedicp_logo.webp",
-    "screenshots": []
+    "logo": "/img/showcase/stakedicp_logo.webp"
   },
   {
     "id": "canscale",
@@ -883,8 +868,6 @@
     "description": "Onchain package manager for Motoko. Mops makes it easy to discover, install, and publish Motoko packages.",
     "website": "https://mops.one",
     "logo": "/img/showcase/mops_logo.webp",
-    "screenshots": [],
-    "video": "",
     "display": "Normal",
     "id": "mops",
     "oneLiner": "Onchain package manager for Motoko",
@@ -894,9 +877,7 @@
     ],
     "usesInternetIdentity": false,
     "github": "https://github.com/ZenVoich/mops",
-    "twitter": "https://twitter.com/mops_one",
-    "youtube": "",
-    "submittableId": ""
+    "twitter": "https://twitter.com/mops_one"
   },
   {
     "id": "beamfi",
@@ -961,8 +942,7 @@
     "display": "Normal",
     "logo": "/img/showcase/dsocial_logo.webp",
     "video": "/img/showcase/dsocial_video.mp4",
-    "videoContentType": "video/mp4",
-    "screenshots": []
+    "videoContentType": "video/mp4"
   },
   {
     "id": "unfoldvr",
@@ -980,8 +960,7 @@
     "display": "Normal",
     "logo": "/img/showcase/unfoldvr_logo.webp",
     "video": "/img/showcase/unfoldvr_video.mp4",
-    "videoContentType": "video/mp4",
-    "screenshots": []
+    "videoContentType": "video/mp4"
   },
   {
     "id": "kawak",
@@ -1002,7 +981,6 @@
     ],
     "usesInternetIdentity": false,
     "twitter": "https://twitter.com/KawaK_ICP",
-    "youtube": "",
     "submittableId": "35943161"
   },
   {
@@ -1018,8 +996,7 @@
     "usesInternetIdentity": true,
     "stats": "10,000 users + TVL",
     "display": "Normal",
-    "logo": "/img/showcase/seers_logo.webp",
-    "screenshots": []
+    "logo": "/img/showcase/seers_logo.webp"
   },
   {
     "id": "pokedstudiobots",
@@ -1178,8 +1155,7 @@
     "display": "Normal",
     "logo": "/img/showcase/motokoplayground_logo.webp",
     "video": "/img/showcase/motokoplayground_video.mp4",
-    "videoContentType": "video/mp4",
-    "screenshots": []
+    "videoContentType": "video/mp4"
   },
   {
     "id": "scinet",
@@ -1211,7 +1187,6 @@
     "github": "https://github.com/Factland",
     "youtube": "https://www.youtube.com/channel/UCriPbgLAQ6x5C2Hugfho37Q",
     "twitter": "https://twitter.com/factlanddao",
-    "screenshots": [],
     "video": "/img/showcase/factland_video.mp4",
     "videoContentType": "video/mp4",
     "submittableId": 32780428
@@ -1228,8 +1203,7 @@
     "display": "Normal",
     "logo": "/img/showcase/sagatarot_logo.webp",
     "video": "/img/showcase/sagatarot_video.mp4",
-    "videoContentType": "video/mp4",
-    "screenshots": []
+    "videoContentType": "video/mp4"
   },
   {
     "id": "ember-cli-dfinity",
@@ -1428,8 +1402,7 @@
     "display": "Normal",
     "logo": "/img/showcase/uniswapfrontendontheic_logo.webp",
     "video": "/img/showcase/uniswapfrontendontheic_video.mp4",
-    "videoContentType": "video/mp4",
-    "screenshots": []
+    "videoContentType": "video/mp4"
   },
   {
     "id": "difibase",
@@ -1487,8 +1460,7 @@
     "description": "Go Agent provides the toolbox needed to interact with the Internet Computer from Go. It is a collection of packages that can be used to build applications that interact with canister smart contracts.",
     "github": "https://github.com/aviate-labs/agent-go",
     "usesInternetIdentity": false,
-    "logo": "/img/showcase/goagent_logo.png",
-    "screenshots": []
+    "logo": "/img/showcase/goagent_logo.png"
   },
   {
     "id": "javaagent",
@@ -1736,7 +1708,6 @@
     "screenshots": [
       "/img/showcase/cyqlio_screenshot.webp"
     ],
-    "video": "",
     "display": "Normal",
     "id": "cyqlio",
     "oneLiner": "Curated Internet Computer projects gallery.",
@@ -1747,7 +1718,6 @@
     "usesInternetIdentity": true,
     "github": "https://github.com/tomkoom/cyql.io",
     "twitter": "https://twitter.com/cyqlio",
-    "youtube": "",
     "submittableId": "34615263"
   },
   {
@@ -1779,8 +1749,7 @@
     "display": "Normal",
     "logo": "/img/showcase/icmojiorigins_logo.webp",
     "video": "/img/showcase/icmojiorigins_video.mp4",
-    "videoContentType": "video/mp4",
-    "screenshots": []
+    "videoContentType": "video/mp4"
   },
   {
     "id": "dbox",
@@ -1943,7 +1912,6 @@
     ],
     "usesInternetIdentity": true,
     "logo": "/img/showcase/oneblock.png",
-    "screenshots": [],
     "github": "https://github.com/ICEvent/OneBlock"
   },
   {
@@ -1968,7 +1936,6 @@
     "screenshots": [
       "/img/showcase/dsign_screenshot.webp"
     ],
-    "video": "",
     "display": "Normal",
     "id": "dsign",
     "oneLiner": "Collaborative Product Design Innovation Hub",
@@ -1977,8 +1944,6 @@
     ],
     "usesInternetIdentity": true,
     "github": "https://github.com/cybrowl/dsign-components",
-    "twitter": "",
-    "youtube": "",
     "submittableId": "34425295"
   },
   {
@@ -2070,8 +2035,6 @@
     "description": "Experience the transformative power of blockchain voting, where each vote becomes an immutable, transparent transaction on a decentralized network. This ensures tamper-resistant results, fostering trust and confidence in the integrity of the voting process.",
     "website": "https://7y3zv-rqaaa-aaaag-abswa-cai.icp0.io",
     "logo": "/img/showcase/d-vote_logo.webp",
-    "screenshots": [],
-    "video": "",
     "display": "Normal",
     "oneLiner": "Transparent, tamper-proof voting on blockchain.",
     "tags": [
@@ -2079,8 +2042,6 @@
     ],
     "usesInternetIdentity": true,
     "github": "https://github.com/NewbMiao/dvote",
-    "twitter": "",
-    "youtube": "",
     "submittableId": "41368058"
   },
   {
@@ -2108,7 +2069,6 @@
     "screenshots": [
       "/img/showcase/icpp-pro-screenshot.1024x576.png"
     ],
-    "video": "",
     "display": "Normal",
     "oneLiner": "Seamlessly develop, debug, test & deploy your C++ Canisters from Windows, Linux or Mac.",
     "stats": "10,000 Downloads",
@@ -2116,9 +2076,7 @@
       "Tools / Infrastructure"
     ],
     "usesInternetIdentity": false,
-    "github": "",
     "twitter": "https://twitter.com/icpp_pro",
-    "youtube": "",
     "submittableId": "31439157"
   },
   {
@@ -2134,15 +2092,13 @@
     "display": "Normal",
     "logo": "/img/showcase/nftstudio_logo.webp",
     "video": "/img/showcase/nftstudio_video.mp4",
-    "videoContentType": "video/mp4",
-    "screenshots": []
+    "videoContentType": "video/mp4"
   },
   {
     "name": "NacDB",
     "description": "A distributed database that allows seamless scanning of items, because it is split into small databases, each fitting in a canister.",
     "website": "https://github.com/vporton/NacDB",
     "logo": "/img/showcase/nacdb-database_logo.webp",
-    "screenshots": [],
     "video": "/img/showcase/nacdb-database_video.mp4",
     "display": "Normal",
     "id": "nacdb-database",
@@ -2153,7 +2109,6 @@
     "usesInternetIdentity": false,
     "github": "https://github.com/vporton/NacDB",
     "twitter": "https://twitter.com/NacDB_Database",
-    "youtube": "",
     "submittableId": "37936909",
     "videoContentType": "video/mp4"
   },
@@ -2301,8 +2256,7 @@
     "usesInternetIdentity": false,
     "github": "https://github.com/Zondax/icp-client-cpp",
     "youtube": "https://www.youtube.com/watch?v=wdjql_lmooE",
-    "twitter": "https://twitter.com/_zondax_",
-    "submittableId": ""
+    "twitter": "https://twitter.com/_zondax_"
   },
   {
     "id": "pluto",
@@ -2356,19 +2310,15 @@
     "screenshots": [
       "/img/showcase/nobleblocks_screenshot.webp"
     ],
-    "video": "",
     "display": "Normal",
     "id": "nobleblocks",
     "oneLiner": "A Community-Driven DeSci Project for Scientific Publishing",
-    "stats": "",
     "tags": [
       "SocialFi",
       "Tools / Infrastructure"
     ],
     "usesInternetIdentity": true,
-    "github": "",
     "twitter": "https://twitter.com/nobleblocks",
-    "youtube": "",
     "submittableId": "36650737"
   },
   {
@@ -2379,7 +2329,6 @@
     "screenshots": [
       "/img/showcase/john-dao_screenshot.webp"
     ],
-    "video": "",
     "display": "Normal",
     "id": "john-dao",
     "oneLiner": "A Twitter/X account controlled by a DAO on the Internet Computer",
@@ -2389,9 +2338,7 @@
       "DAO"
     ],
     "usesInternetIdentity": true,
-    "github": "",
     "twitter": "https://twitter.com/JohnDao_gg",
-    "youtube": "",
     "submittableId": "35119262"
   },
   {
@@ -2402,7 +2349,6 @@
     "screenshots": [
       "/img/showcase/ava_screenshot.webp"
     ],
-    "video": "",
     "display": "Normal",
     "id": "ava",
     "oneLiner": "aVa: Action-Based Decentralized Reputation Landscape.",
@@ -2420,7 +2366,6 @@
     "description": "OIM is the 1st Onchain 3D-Web. It allows you to create virtual spaces and host them like Websites on the Internet Computer - everything in 3D. You can include 3D objects, images, videos, and more in your spaces and thus make it your home on the 3D Web. By linking to others' spaces, you can create your personal virtual neighborhood in the \"Metaverse\" (aka Internet).",
     "website": "https://vdfyi-uaaaa-aaaai-acptq-cai.ic0.app",
     "logo": "/img/showcase/open-internet-metaverse_logo.webp",
-    "screenshots": [],
     "video": "/img/showcase/open-internet-metaverse_video.mp4",
     "display": "Normal",
     "id": "open-internet-metaverse",
@@ -2431,8 +2376,6 @@
     ],
     "usesInternetIdentity": true,
     "github": "https://github.com/Bebb-Protocol-and-Apps/PWS",
-    "twitter": "",
-    "youtube": "",
     "submittableId": "35648608",
     "videoContentType": "video/mp4"
   },
@@ -2462,7 +2405,6 @@
     "screenshots": [
       "/img/showcase/bravo-app_screenshot.webp"
     ],
-    "video": "",
     "display": "Normal",
     "id": "bravo-app",
     "oneLiner": "Token Stats, Blockchain Visual Explorer, Account Searching and more..",
@@ -2474,7 +2416,6 @@
     ],
     "usesInternetIdentity": false,
     "twitter": "https://twitter.com/221BravoApp",
-    "youtube": "",
     "submittableId": "36556639"
   },
   {
@@ -2489,7 +2430,6 @@
     "display": "Normal",
     "id": "dflow",
     "oneLiner": "Automate interactions between organizations.",
-    "stats": "",
     "tags": [
       "Tools / Infrastructure",
       "DeFi",
@@ -2498,7 +2438,6 @@
       "Enterprise"
     ],
     "usesInternetIdentity": true,
-    "twitter": "",
     "youtube": "https://youtu.be/Ik9FSpgHREw?t=139",
     "submittableId": "26384395"
   },
@@ -2527,12 +2466,9 @@
     "description": "IC WebSocket enables you to establish a WebSocket connection between your canister and any client, such as the user browsers. Finally, you can send updates to your users directly from the canister!",
     "website": "https://demo.icws.io",
     "logo": "/img/showcase/ic-websocket_logo.webp",
-    "screenshots": [],
-    "video": "",
     "display": "Normal",
     "id": "ic-websocket",
     "oneLiner": "Send updates from canisters to your users",
-    "stats": "",
     "tags": [
       "Tools / Infrastructure"
     ],
@@ -2569,7 +2505,6 @@
     "screenshots": [
       "/img/showcase/ccamp_screenshot.webp"
     ],
-    "video": "",
     "display": "Normal",
     "id": "ccamp",
     "oneLiner": "Connect private or restricted data from many sources to verify on any blockchain",
@@ -2593,7 +2528,6 @@
     "screenshots": [
       "/img/showcase/isotopic-game-store_screenshot.webp"
     ],
-    "video": "",
     "display": "Normal",
     "id": "isotopic-game-store",
     "oneLiner": "The first Decentralized & Cross-Platform Game Store.",
@@ -2641,8 +2575,7 @@
     "description": "ICP Explorer is a Block Explorer and Analytics Platform for Internet Computer, a decentralized smart contracts platform.",
     "oneLiner": "Block Explorer for Internet Computer",
     "display": "Normal",
-    "logo": "/img/showcase/icp-explorer_logo.webp",
-    "screenshots": []
+    "logo": "/img/showcase/icp-explorer_logo.webp"
   },
   {
     "id": "icpsig",
@@ -2738,11 +2671,9 @@
     "screenshots": [
       "/img/showcase/icrouter_screenshot.webp"
     ],
-    "video": "",
     "display": "Normal",
     "id": "icrouter",
     "oneLiner": "icRouter: A cross-chain network of assets",
-    "stats": "",
     "tags": [
       "Bitcoin",
       "Ethereum",
@@ -2906,7 +2837,6 @@
     "screenshots": [
       "/img/showcase/Metaversity_screenshot.webp"
     ],
-    "video": "",
     "display": "Normal",
     "id": "Metaversity",
     "oneLiner": "Boosting Web3 Skills & Inclusion with Clear Data & Visuals",
@@ -2930,7 +2860,6 @@
     "screenshots": [
       "/img/showcase/datanome-screenshot.png"
     ],
-    "video": "",
     "display": "Normal",
     "id": "datanome",
     "oneLiner": "Decentralized data marketplace",
@@ -2942,7 +2871,6 @@
     "usesInternetIdentity": false,
     "github": "https://github.com/datanomeproject",
     "twitter": "https://twitter.com/datanomeproject",
-    "youtube": "",
     "submittableId": "39687036",
     "videoContentType": "video/mp4"
   },
@@ -2967,7 +2895,6 @@
     "usesInternetIdentity": false,
     "github": "https://github.com/glue-org",
     "twitter": "https://twitter.com/glue_org",
-    "youtube": "",
     "submittableId": "28043953",
     "videoContentType": "video/mp4"
   },
@@ -3008,7 +2935,6 @@
     "usesInternetIdentity": false,
     "github": "https://github.com/nbelthan/Mapz-navigator",
     "twitter": "https://twitter.com/Mapzlive",
-    "youtube": "",
     "submittableId": "43548962"
   },
   {
@@ -3046,9 +2972,7 @@
     ],
     "usesInternetIdentity": false,
     "github": "https://github.com/icdragoneyes/dragon_canister",
-    "twitter": "https://twitter.com/icdragoneyes",
-    "youtube": "",
-    "submittableId": ""
+    "twitter": "https://twitter.com/icdragoneyes"
   },
   {
     "id": "relinkdxyz",
@@ -3077,7 +3001,6 @@
       "Chain Fusion"
     ],
     "description": "Rust support library and canister to enable Ethereum users to easily sign in to the Internet Computer. ic_siwe enhances the interoperability between Ethereum and the Internet Computer platform, enabling developers to build applications that leverage the strengths of both platforms.",
-    "stats": "",
     "logo": "/img/showcase/ic_siwe_logo.png",
     "usesInternetIdentity": false,
     "github": "https://github.com/kristoferlund/ic-siwe",
@@ -3910,7 +3833,6 @@
     "usesInternetIdentity": false,
     "github": "https://github.com/fort-major/msq",
     "twitter": "https://twitter.com/msqwallet",
-    "youtube": "",
     "submittableId": "45381706",
     "videoContentType": "video/mp4"
   },
@@ -4582,7 +4504,6 @@
     "screenshots": [
       "/img/showcase/aegis-finance_screenshot.webp"
     ],
-    "video": "",
     "display": "Normal",
     "id": "aegis-finance",
     "oneLiner": "Unlocking financial freedom, block by block.",
@@ -4594,9 +4515,7 @@
     ],
     "usesInternetIdentity": true,
     "github": "https://github.com/AegisFinance",
-    "twitter": "https://x.com/icpdelta",
-    "youtube": "",
-    "submittableId": ""
+    "twitter": "https://x.com/icpdelta"
   },
   {
     "id": "Moonshift",
@@ -4647,7 +4566,6 @@
     "screenshots": [
       "/img/showcase/BR-DAO_screenshot.webp"
     ],
-    "video": "",
     "display": "Normal",
     "id": "BR-DAO",
     "oneLiner": "Technology for Sustainable Development.",
@@ -4658,8 +4576,7 @@
     "usesInternetIdentity": false,
     "github": "https://github.com/ASPPIBRA-DAO",
     "twitter": "https://x.com/ASPPIBRA_ORG",
-    "youtube": "https://www.youtube.com/@ASPPIBRA-DAO/videos",
-    "submitta,bleId": ""
+    "youtube": "https://www.youtube.com/@ASPPIBRA-DAO/videos"
   },
   {
     "id": "Blueband",
