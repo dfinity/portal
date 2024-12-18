@@ -66,9 +66,12 @@ const sidebars = {
       items: [
         {
           type: "category",
-          label: "What are canister smart contracts?",
+          label: "What are canisters?",
+	  link: {
+            type: "doc",
+            id: "developer-docs/smart-contracts/overview/introduction",
+          },
           items: [
-            "developer-docs/smart-contracts/overview/introduction",
             "developer-docs/smart-contracts/overview/inside-canisters",
             "developer-docs/smart-contracts/development-workflow",
             "developer-docs/smart-contracts/overview/trust-in-canisters",
