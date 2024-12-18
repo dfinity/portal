@@ -1533,20 +1533,9 @@
         "name": "Edge Infrastructure is Fully Decentralized",
         "milestone_id": "Solenoid",
         "description": "ICP is accessible through a decentralized edge infrastructure, which is split into NNS-controlled API Boundary Nodes and HTTP Gateways. The NNS will appoint node machines to run API Boundary Nodes and anyone will be able to run HTTP Gateways, enabling a much more decentralized ICP edge infrastructure with a diverse set of service providers.",
-        "eta": "December 2024",
+        "eta": "January 2025",
         "status": "in_progress",
         "elements": [
-          {
-            "title": "API Boundary Nodes (NNS controlled)",
-            "overview": "In the new boundary-node architecture, API boundary nodes are placed under the full control of the NNS and function as the edge of the IC.",
-            "status": "in_progress",
-            "forum": "https://forum.dfinity.org/t/boundary-node-roadmap/15562",
-            "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
-            "docs": "",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Solenoid"
-          },
           {
             "title": "HTTP Gateways",
             "overview": "The HTTP Gateway becomes a standalone component as part of the new Boundary Node architecture.",
@@ -1561,13 +1550,37 @@
             "imported": true
           },
           {
+            "title": "Incident Handling under the New Boundary Node Architecture",
+            "overview": "To protect the core of the Internet Computer, processes must be established to configure temporary rate limits at API boundary nodes during incidents.",
+            "forum": "https://forum.dfinity.org/t/incident-handling-with-the-new-boundary-node-architecture/36390",
+            "proposal": "https://dashboard.internetcomputer.org/proposal/134031",
+            "docs": "",
+            "eta": "",
+            "status": "in_progress",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Solenoid",
+            "imported": true
+          },
+          {
             "title": "Community-owned HTTP Gateways",
             "overview": "As part of the new boundary-node architecture, the HTTP gateway is turned into a standalone service, which is easily deployable by anyone, including end users.",
             "forum": "https://forum.dfinity.org/t/boundary-node-roadmap/15562",
             "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
-            "docs": "",
+            "docs": "https://github.com/dfinity/ic-gateway",
             "eta": "",
-            "status": "upcoming",
+            "status": "in_progress",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Solenoid"
+          },
+          {
+            "title": "API Boundary Nodes (NNS controlled)",
+            "overview": "In the new boundary-node architecture, API boundary nodes are placed under the full control of the NNS and function as the edge of the IC.",
+            "status": "deployed",
+            "forum": "https://forum.dfinity.org/t/boundary-node-roadmap/15562",
+            "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
+            "docs": "https://github.com/dfinity/ic/tree/master/rs/boundary_node/ic_boundary",
             "is_community": false,
             "in_beta": false,
             "milestone_id": "Solenoid"
@@ -1731,6 +1744,29 @@
             "is_community": false,
             "in_beta": false,
             "imported": true
+          },
+          {
+            "title": "Alerting of Node Providers in case of Node Failure",
+            "overview": "Alert Node Providers if one of their nodes starts misbehaving or underperforming.",
+            "forum": "",
+            "proposal": "",
+            "docs": "https://wiki.internetcomputer.org/wiki/Node_Provider_Alerting_Options",
+            "eta": "",
+            "status": "deployed",
+            "is_community": true,
+            "in_beta": false,
+            "imported": true
+          },
+          {
+            "title": "Public access to a subset of node metrics",
+            "overview": "Giving node providers access to a subset of node metrics to help them find out in a fully decentralized manner whether nodes are behaving well, and to roughly compare node performance.",
+            "forum": "https://forum.dfinity.org/t/public-internet-computer-ic-node-metrics-available-now/32961",
+            "proposal": "",
+            "docs": "https://github.com/dfinity/ic-observability-stack",
+            "eta": "",
+            "status": "deployed",
+            "is_community": false,
+            "in_beta": false
           }
         ]
       },
@@ -1773,17 +1809,6 @@
             "in_beta": false
           },
           {
-            "title": "Public access to a subset of node metrics",
-            "overview": "Giving node providers access to a subnet of node metrics to help them find out what is failing in case of node issues.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": false,
-            "in_beta": false
-          },
-          {
             "title": "Off-chain observability stack for Node Providers",
             "overview": "Observability solution for Node Providers to enable them to independently triage node health and take corrective action in case of problems.",
             "forum": "",
@@ -1796,16 +1821,15 @@
             "imported": true
           },
           {
-            "title": "Alerting of NP in case of Node Failure",
-            "overview": "Alert Node Providers if one of their nodes starts misbehaving or underperforming.",
-            "forum": "",
+            "title": "Performance-based node provider rewards",
+            "overview": "Node rewards are awarded according to the node's contributions to the protocol, based on trustworthy node metrics, which are provided and signed by the IC network itself. This creates a cryptoeconomic incentive to encourage honest node provider behaviour.",
+            "forum": "https://forum.dfinity.org/t/performance-based-node-rewards/35208",
             "proposal": "",
             "docs": "",
             "eta": "",
             "status": "in_progress",
-            "is_community": true,
-            "in_beta": false,
-            "imported": true
+            "is_community": false,
+            "in_beta": false
           },
           {
             "title": "HTTP Asset Caching",
@@ -1877,18 +1901,7 @@
           {
             "title": "Strengthened node provider checks and audits",
             "overview": "Strengthening the checks of entities intending to join ICP as node providers. May also include node provider audits.",
-            "forum": "",
-            "proposal": "",
-            "docs": "",
-            "eta": "",
-            "status": "",
-            "is_community": false,
-            "in_beta": false
-          },
-          {
-            "title": "Penalties for non-compliant node providers",
-            "overview": "Non-compliant node providers are penalized economically or excluded from future network participation. This creates a cryptoeconomic incentive to encourage honest node provider behaviour.",
-            "forum": "",
+            "forum": "https://forum.dfinity.org/t/technical-working-group-node-providers/30255",
             "proposal": "",
             "docs": "",
             "eta": "",
@@ -1928,18 +1941,6 @@
             "status": "",
             "is_community": false,
             "in_beta": false
-          },
-          {
-            "title": "Decentralized virtual personhood validation",
-            "overview": "Scalable, decentralized, virtual proof of personhood to distinguish people from machines.",
-            "forum": "https://forum.dfinity.org/t/long-term-r-d-people-parties-proof-of-human-proposal/9636",
-            "proposal": "https://dashboard.internetcomputer.org/proposal/35668",
-            "docs": "",
-            "eta": "",
-            "status": "",
-            "is_community": false,
-            "in_beta": false,
-            "imported": true
           },
           {
             "title": "Public contributions to IC repository",
@@ -2419,7 +2420,7 @@
         "name": "The Orbit Multi-Custody Asset Framework",
         "milestone_id": "Poloidal",
         "description": "Orbit is a comprehensive digital assets framework, enabling simple to advanced rules over user digital assets. Initially tailored for token management, it provides robust support for 1-out-of-M to complex approval policies for financial transactions. It also supports secure management of infrastructure like canister installations and upgrades. Teams and businesses can confidently handle ICP, ckETH, and compatible tokens using Orbit's advanced security features, vital for those seeking a stable and reliable management over their treasury.",
-        "eta": "January 2025",
+        "eta": "February 2025",
         "status": "in_progress",
         "elements": [
           {
@@ -2728,7 +2729,7 @@
         "name": "Active Liquid Democracy",
         "milestone_id": "Plasma",
         "description": "The NNS and SNS DAOs facilitate active liquid democracies by lowering the entry barrier for participation and providing better inputs for well-informed decisions. This includes direct voting as well as delegating some voting decisions to others. As a result, more users stake tokens and participate in DAOs to form lively communities. The resulting network effects foster additional adoption and growth.",
-        "eta": "November 2024",
+        "eta": "January 2025",
         "status": "in_progress",
         "elements": [
           {
@@ -2830,7 +2831,7 @@
             "proposal": "",
             "docs": "",
             "eta": "",
-            "status": "in_progress",
+            "status": "deployed",
             "is_community": true,
             "in_beta": false,
             "milestone_id": "Plasma"
