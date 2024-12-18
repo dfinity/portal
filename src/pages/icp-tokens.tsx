@@ -543,10 +543,7 @@ function TokenHolders(): JSX.Element {
                     icon="/img/showcase/nfid_logo.webp"
                   />
                 </div>
-              </motion.div>
-              {/* Column 2 */}
-              <motion.div className="" variants={transitions.item}>
-                <h3 className="tw-heading-5 mb-6">Mobile app wallets</h3>
+                <h3 className="tw-heading-5 mb-6 mt-12 ">Mobile app wallets</h3>
                 <p className="tw-paragraph text-black/60 mb-8">
                   Mobile apps offer easy access to crypto assets for people who
                   use them frequently.
@@ -571,13 +568,13 @@ function TokenHolders(): JSX.Element {
                     icon="/img/showcase/logo_bity.png"
                   />
                 </div>
-
-                <h3 className="tw-heading-5 mb-6 mt-16">
-                  Browser extension wallets
-                </h3>
+              </motion.div>
+              {/* Column 2 */}
+              <motion.div className="" variants={transitions.item}>
+                <h3 className="tw-heading-5 mb-6">Browser extension wallets</h3>
                 <p className="tw-paragraph text-black/60 mb-8">
                   Great for users already familiar with crypto wallets from
-                  other chains.
+                  other chains. <br />
                 </p>
 
                 <div className="space-y-4">
@@ -594,10 +591,7 @@ function TokenHolders(): JSX.Element {
                     icon="/img/showcase/logo_trust.png"
                   />
                 </div>
-              </motion.div>
-              {/* Column 3 */}
-              <motion.div className="" variants={transitions.item}>
-                <h3 className="tw-heading-5 mb-6">Hardware wallets</h3>
+                <h3 className="tw-heading-5 mb-6 mt-12">Hardware wallets</h3>
                 <p className="tw-paragraph text-black/60 mb-8">
                   Maximum security. Hardware wallets hold private keys in
                   airgapped machines or ledger devices.
@@ -622,9 +616,10 @@ function TokenHolders(): JSX.Element {
                     icon="/img/showcase/logo_tangem.png"
                   />
                 </div>
-                <h3 className="tw-heading-5 mb-6 mt-16">
-                  Institutional custody
-                </h3>
+              </motion.div>
+              {/* Column 3 */}
+              <motion.div className="" variants={transitions.item}>
+                <h3 className="tw-heading-5 mb-6">Institutional custody</h3>
                 <p className="tw-paragraph text-black/60 mb-8">
                   For anyone managing large amounts of crypto assets.
                   Institutional custodians offer reliability and customer
