@@ -15,6 +15,7 @@ const redirects = `
   /openchat /sns
   /howitworks /how-it-works
   /showcase /ecosystem
+  /ecosystem?tag=Games /ecosystem?tag=Gaming
   /multichain /chainfusion
   /basics /what-is-the-ic
   /community https://linktr.ee/icp_hubs_network
