@@ -1666,7 +1666,7 @@ This function allows a canister to find out if it is running, stopping or stoppe
 
     Status `1` indicates running, `2` indicates stopping, and `3` indicates stopped.
 
-    Status `3` (stopped) can be observed, for example, in `canister_pre_upgrade` and can be used to prevent accidentally upgrading a canister that is not fully stopped.
+    Observing the canister status is particularly useful during `canister_pre_upgrade`. Confirming that the status is 3 (stopped) helps prevent accidentally upgrading a canister that has not fully stopped.
 
 ### Canister version {#system-api-canister-version}
 
