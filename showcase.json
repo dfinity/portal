@@ -1506,7 +1506,8 @@
     "description": "Stop worrying about system failures and slow performance. Our data center standby team is here to keep your nodes running at top speed, with round-the-clock monitoring and troubleshooting. Currently managing 70 nodes in 3 datacenters.",
     "tags": [
       "Tools / Infrastructure",
-      "Enterprise"
+      "Enterprise",
+      "Analytics"
     ],
     "website": "https://www.aviatelabs.co/",
     "github": "https://github.com/aviate-labs?q=&type=all&language=go&sort=stargazers",
@@ -1688,7 +1689,8 @@
     "oneLiner": "Remote configuration tool",
     "description": "Change the appearance and behaviour of your product in real-time.",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Analytics"
     ],
     "usesInternetIdentity": true,
     "website": "https://configeek.app/",
@@ -2078,7 +2080,8 @@
     "tags": [
       "Tools / Infrastructure",
       "Ethereum",
-      "Chain Fusion"
+      "Chain Fusion",
+      "Analytics"
     ],
     "description": "An advanced on-chain data hub that aggregates data from various markets and makes it accessible on-chain.",
     "usesInternetIdentity": false,
@@ -3625,7 +3628,8 @@
     "name": "Internet Computer Analytics Platform",
     "oneLiner": "A framework for users to query and analyze data from various sources in the ICP ecosystem.",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "Analytics"
     ],
     "description": "A framework for users to query and analyze data from various sources in the ICP ecosystem.",
     "usesInternetIdentity": false,
@@ -4172,7 +4176,8 @@
     "website": "https://shrny-laaaa-aaaag-alckq-cai.icp0.io/",
     "tags": [
       "Tools / Infrastructure",
-      "DAO"
+      "DAO",
+      "Analytics"
     ],
     "twitter": "https://twitter.com/pyorxyz",
     "description": "A data dashboard that displays metrics and charts related to the rewards distributed within the SNS ecosystem.",
