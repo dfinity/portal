@@ -27,7 +27,7 @@ const tagsNavigation = [
   'Bitcoin',
   'Wallet',
   'AI',
-  'Games',
+  'Gaming',
   'Creator Economy',
   'Enterprise',
   'Analytics',
