@@ -600,7 +600,7 @@ The list of tags is not final, and will be updated as the project evolves. For n
 - `DAO`
 - `DeFi`
 - `Enterprise`
-- `Games`
+- `Gaming`
 - `Metaverse`
 - `NFT`
 - `SocialFi`
@@ -611,14 +611,14 @@ The list of tags is not final, and will be updated as the project evolves. For n
 
 ### Object schema
 
-```
+```json
   {
     id: string,
     name: string,
     oneLiner: string, // short description of the project
     website: string, // URL starting with `https://`
 
-    tags: ('AI' | 'Chain Fusion' | 'Bitcoin' | 'Ethereum' | 'DAO' | 'DeFi' | 'Enterprise' | 'Games' | 'Metaverse' | 'NFT' | 'SocialFi' | 'Tools / Infrastructure' | 'Wallet')[],
+    tags: ('AI' | 'Chain Fusion' | 'Bitcoin' | 'Ethereum' | 'DAO' | 'DeFi' | 'Enterprise' | 'Gaming' | 'Metaverse' | 'NFT' | 'SocialFi' | 'Tools / Infrastructure' | 'Wallet' | 'Analytics' | 'Creator Economy')[],
     description: string, // description of the project
     stats: string, // eg. "10,000 users"
     logo: string, // url to logo file, eg. /img/showcase/awesome-icp-project_logo.webp

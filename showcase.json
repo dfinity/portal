@@ -145,7 +145,7 @@
     "website": "https://yuku.app/",
     "tags": [
       "NFT",
-      "Games",
+      "Gaming",
       "DAO",
       "Metaverse",
       "AI",
@@ -181,7 +181,7 @@
     "website": "https://dragginz.io/",
     "tags": [
       "SocialFi",
-      "Games",
+      "Gaming",
       "DAO",
       "Creator Economy"
     ],
@@ -213,7 +213,7 @@
     "website": "https://yral.com",
     "tags": [
       "SocialFi",
-      "Games",
+      "Gaming",
       "DAO",
       "Creator Economy"
     ],
@@ -617,7 +617,7 @@
     "oneLiner": "Powering the next generation of fully onchain games, and providing a collaborative hub for all things web3 gaming.",
     "website": "https://boomdao.xyz/",
     "tags": [
-      "Games",
+      "Gaming",
       "DAO",
       "Tools / Infrastructure",
       "NFT",
@@ -644,7 +644,7 @@
     "name": "Plethora",
     "website": "https://plethora.game/",
     "tags": [
-      "Games",
+      "Gaming",
       "Metaverse",
       "NFT",
       "Creator Economy"
@@ -677,7 +677,7 @@
     "oneLiner": "Build and own an NFT World on the blockchain",
     "website": "https://kqwp7-2yaaa-aaaah-abyna-cai.raw.ic0.app/",
     "tags": [
-      "Games",
+      "Gaming",
       "Metaverse",
       "Creator Economy"
     ],
@@ -785,7 +785,7 @@
     "name": "AutoRoyale",
     "website": "https://cm6iy-sqaaa-aaaam-abmxq-cai.icp0.io/",
     "tags": [
-      "Games"
+      "Gaming"
     ],
     "twitter": "",
     "description": "Jump into this proof of concept battle royale 2D shooter on ICP. Grab gear, outplay the competition, and stay alive as the battleground shrinks. It's all about thinking a few steps ahead. Upgrade weapons, toss grenades, and pull off sneaky ambushes. Invite your pals for a quick match and make sure you play the tutorial to get used to the mechanics.",
@@ -943,7 +943,7 @@
     "name": "Eimolad",
     "description": "This is an amazing world inhabited by humans, dwarves, orcs, elves, and other fantastic creatures. This is a world of magic and valor. This world is full of mysteries, dangers, and incredible adventures. ",
     "tags": [
-      "Games"
+      "Gaming"
     ],
     "website": "https://eimolad.com/",
     "twitter": "https://twitter.com/eimolad",
@@ -1106,7 +1106,7 @@
     "oneLiner": "Blast through the metaverse with Cosmicrafts, where interstellar mayhem meets epic battles for the ultimate cosmic showdown!",
     "website": "https://cosmicrafts.com/",
     "tags": [
-      "Games",
+      "Gaming",
       "Metaverse",
       "Creator Economy"
     ],
@@ -1253,7 +1253,7 @@
     "name": "Saga Tarot",
     "website": "https://5nl7c-zqaaa-aaaah-qaa7a-cai.raw.ic0.app/",
     "tags": [
-      "Games"
+      "Gaming"
     ],
     "description": "Have your fortune told on the Internet Computer. Saga Tarot gives you a tarot reading in one click. The user-friendly dapp is built completely on the Internet Computer, accessible from any browser. What will the future hold for you?",
     "usesInternetIdentity": true,
@@ -1396,7 +1396,7 @@
     "name": "Mission Is Possible",
     "website": "https://to3ja-iyaaa-aaaai-qapsq-cai.raw.ic0.app/",
     "tags": [
-      "Games"
+      "Gaming"
     ],
     "description": "Mission is Possible - 3rd place winner of the DSCVR Hackathon Season 2 - is a PVP third-person shooter hosted on the Internet Computer blockchain. The John Wick-inspired game is built using the Unity 3D Game Engine and hosted on the IC enabling decentralized login with Internet Identity. ",
     "usesInternetIdentity": true,
@@ -1488,7 +1488,7 @@
     "website": "https://nftanvil.com",
     "tags": [
       "NFT",
-      "Games",
+      "Gaming",
       "Creator Economy"
     ],
     "description": "NFTAnvil is a wallet, mint & marketplace in the Anvil ecosystem. It's built from scratch and has an alternative & genuine approach to NFTs. It uses Anvil's auto-scaling multi-canister token architecture.",
@@ -1813,7 +1813,7 @@
     "oneLiner": "NFT Based Multiplayer Game Onchain",
     "website": "https://icmojis.com/",
     "tags": [
-      "Games",
+      "Gaming",
       "NFT",
       "Creator Economy"
     ],
@@ -1924,7 +1924,7 @@
     "name": "Welcome Into the Metaverse",
     "website": "https://lc7ip-3iaaa-aaaah-aafva-cai.ic0.app/",
     "tags": [
-      "Games"
+      "Gaming"
     ],
     "description": "Prize winner of the DSCVR hackathon for the Internet Computer - this game brings digital community into a unified virtual space. Find anecdotes from founding ecosystem members, and go through a series of quests.",
     "logo": "/img/showcase/welcomeintothemetaverse_logo.webp",
@@ -1937,7 +1937,7 @@
     "name": "Reversi",
     "website": "https://ivg37-qiaaa-aaaab-aaaga-cai.ic0.app/#!/play",
     "tags": [
-      "Games"
+      "Gaming"
     ],
     "description": "Reversi is one of the first canister smart contracts deployed to the Internet Computer and is a completely decentralized multiplayer game. Play against a friend (or foe) in real-time, from any browser, anywhere in the world. ",
     "github": "https://github.com/ninegua/reversi",
@@ -1970,7 +1970,7 @@
     "description": "A weekly sweepstake where players predict Premier League scores.",
     "website": "https://43loz-3yaaa-aaaal-qbxrq-cai.ic0.app/",
     "tags": [
-      "Games"
+      "Gaming"
     ],
     "usesInternetIdentity": true,
     "logo": "/img/showcase/football-god_logo.webp",
@@ -2345,7 +2345,7 @@
     "tags": [
       "Tools / Infrastructure",
       "Metaverse",
-      "Games",
+      "Gaming",
       "Creator Economy"
     ],
     "description": "Enabling game developer communities to integrate their C++ native projects with the IC interface onchain, using our wrapper for seamless interaction. Easy deployment using Unreal Engine, or other C++ native projects. Our mission is to bridge the gap, enhancing IC's accessibility and inviting a broader community of creators. Using Zondax Unreal, game devs can fully unlock IC's potential. ",
@@ -2663,7 +2663,7 @@
     "oneLiner": "The first Decentralized & Cross-Platform Game Store.",
     "tags": [
       "NFT",
-      "Games",
+      "Gaming",
       "Creator Economy"
     ],
     "usesInternetIdentity": false,
@@ -3055,7 +3055,7 @@
     "tags": [
       "NFT",
       "Metaverse",
-      "Games",
+      "Gaming",
       "AI",
       "Creator Economy"
     ],
@@ -3117,7 +3117,7 @@
     "oneLiner": "Provably fair and fun dice rolling game with a quirk",
     "stats": "1500+ transactions",
     "tags": [
-      "Games"
+      "Gaming"
     ],
     "usesInternetIdentity": false,
     "github": "https://github.com/icdragoneyes/dragon_canister",
@@ -3266,7 +3266,7 @@
     "oneLiner": "Redefining online betting on the Internet Computer.",
     "website": "https://vault-bet.com",
     "tags": [
-      "Games",
+      "Gaming",
       "DeFi",
       "Bitcoin",
       "Ethereum",
@@ -3434,7 +3434,7 @@
     "discord": "https://discord.gg/wgRuenwTEK",
     "youtube": "https://www.youtube.com/@Game_bloc",
     "tags": [
-      "Games",
+      "Gaming",
       "SocialFi",
       "Creator Economy"
     ],
@@ -3582,7 +3582,7 @@
     "oneLiner": "Flexible framework for fully onchain multiplayer turn-based games. Bulldog Blast is a semi-realtime multiplayer arcade combat game.",
     "tags": [
       "Tools / Infrastructure",
-      "Games"
+      "Gaming"
     ],
     "description": "Flexible framework for fully onchain multiplayer turn-based games. Bulldog Blast is a semi-realtime multiplayer arcade combat game.",
     "usesInternetIdentity": true,
@@ -3918,7 +3918,7 @@
     "oneLiner": "Obsidian Tears is a 2D RPG similar to old-time classics, complete with NFT and blockchain integration on the Internet Computer.",
     "website": "https://obsidiantears.xyz/",
     "tags": [
-      "Games",
+      "Gaming",
       "NFT",
       "Metaverse",
       "Creator Economy"
@@ -4095,7 +4095,7 @@
     "display": "Normal",
     "oneLiner": "A game where users participate in motorcycle races, develop their riders and improve high-speed tracks.",
     "tags": [
-      "Games"
+      "Gaming"
     ],
     "usesInternetIdentity": false
   },
@@ -4395,7 +4395,7 @@
     "name": "Motodex",
     "oneLiner": "A hyper-casual, motorcycle race game where players develop their riders and improve high-speed tracks.",
     "tags": [
-      "Games",
+      "Gaming",
       "NFT",
       "Creator Economy"
     ],
@@ -4854,7 +4854,7 @@
     "display": "Normal",
     "oneLiner": "Collect, battle and track down mythical creatures in this open world adventure game!",
     "tags": [
-      "Games"
+      "Gaming"
     ],
     "usesInternetIdentity": false,
     "website": "https://gi72u-lqaaa-aaaal-ac3ga-cai.raw.icp0.io/",

@@ -21,7 +21,7 @@ const tags = [
   "DeFi",
   "Wallet",
   "Metaverse",
-  "Games",
+  "Gaming",
   "DAO",
   "Enterprise",
   "Analytics",
