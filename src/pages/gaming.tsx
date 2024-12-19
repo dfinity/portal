@@ -270,7 +270,7 @@ function GamingPage() {
             </motion.p>
             <motion.p className="mb-0" variants={transitions.item}>
               <Link
-                href="https://internetcomputer.org/ecosystem?tag=Games"
+                href="https://internetcomputer.org/ecosystem?tag=Gameing"
                 className="link-primary link-with-icon"
               >
                 <LinkArrowRight />
