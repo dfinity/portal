@@ -4625,9 +4625,9 @@
   {
     "id": "bridge-23-app",
     "name": "Bridge 23",
-    "oneLiner": "Bridge 23 is a fully featured data marketplace running on ICP where everyone can sell their data directly to merchants, companies and institutions.",
-    "description": "Bridge 23 is a fully featured data marketplace running on ICP where everyone can sell their data directly to merchants, companies and institutions.",
-    "stats": "5000+ waitlist, 100+ users, 4000+ tokenized products",
+    "oneLiner": "Bridge23 is Your AI Employee Department",
+    "description": "Bridge23 empowers businesses and individuals with AI Agentic Web, gathering real-time data insights, fostering rewarding interactions and enhancing community engagement, where everyone benefits and thrives together. Available within popular messengers.",
+    "stats": "5000+ waitlist, 3300+ users and $180,000 funds secured",
     "website": "https://bridge23.app",
     "logo": "/img/showcase/bridge23_logo.png",
     "display": "Normal",
@@ -4636,8 +4636,8 @@
       "AI"
     ],
     "usesInternetIdentity": true,
-    "github": "https://github.com/bridge-23/Bridge23app.0.1.0-alpha",
-    "twitter": "https://x.com/bridge23app"
+    "github": "https://github.com/bridge-23",
+    "twitter": "https://x.com/bridge23ai"
   },
   {
     "id": "event-hub-attention-dao",
