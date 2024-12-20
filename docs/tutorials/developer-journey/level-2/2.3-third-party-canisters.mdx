@@ -1,5 +1,5 @@
 ---
-keywords: [intermediate, tutorial, developer journey, dfx deps, pullable canisters, third-party canisters]
+keywords: [intermediate, tutorial, developer ladder, dfx deps, pullable canisters, third-party canisters]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -9,9 +9,13 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/vuu3DUsdBZY?si=Mc1QxFBKEMPztCFm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<div class="text--center">
+<p> </p>
+</div>
+<div class="text--center">
+<iframe width="660" height="415" src="https://www.youtube.com/embed/vuu3DUsdBZY?si=Mc1QxFBKEMPztCFm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> </div>
 
-## Overview
+
 
 Third-party canisters are canisters that provide a public service at a static <GlossaryTooltip>canister</GlossaryTooltip> ID. Some examples are the DFINITY NNS and Internet Identity canisters, but third-party canisters can also be made by community developers. Using third-party canisters can be a good way to add additional functionalities to your dapp. For example, by integrating the Internet Identity canister into your dapp, you can enable identity and authentication for the users of your application.
 
@@ -29,7 +33,7 @@ Before you start, verify that you have set up your developer environment accordi
 
 ### Creating a new project
 
-To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_journey`), then use the following commands to start `dfx` and create a new project:
+To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_ladder`), then use the following commands to start `dfx` and create a new project:
 
 Use `dfx new <project_name>` to create a new project:
 
@@ -81,7 +85,7 @@ cd dependencies
 
 You'll use the default 'Hello world' project in this example, then you'll pull the Internet Identity canister as a dependency of our `dependencies_backend` canister.
 
-First, open the `dfx.json` file in your project's directory. You need to configure your `dependencies_backend` canister to have the dependencies of `internet_identity`, with canister ID `rdmx6-jaaaa-aaaaa-aaadq-cai` on the mainnet. This is the canister ID of the DFINITY canister used to interact with ICP's identity and authentication product called Internet Identity. The developer journey will dive deeper into II in a later tutorial; for now, you'll just use it to demonstrate how third-party canisters can be used. You can do so by editing our `dfx.json` file to reflect the following configuration:
+First, open the `dfx.json` file in your project's directory. You need to configure your `dependencies_backend` canister to have the dependencies of `internet_identity`, with canister ID `rdmx6-jaaaa-aaaaa-aaadq-cai` on the mainnet. This is the canister ID of the DFINITY canister used to interact with ICP's identity and authentication product called Internet Identity. The developer ladder will dive deeper into II in a later tutorial; for now, you'll just use it to demonstrate how third-party canisters can be used. You can do so by editing our `dfx.json` file to reflect the following configuration:
 
 ```json title="dfx.json"
 {
@@ -198,9 +202,9 @@ Now, you can interact with the II canister locally using the CLI or the Candid U
 
 Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
-- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
+- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
+- [Developer ladder forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -214,9 +218,9 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Upcoming hackathons](https://dfinity.org/hackathons/).
 
-- [Weekly developer office hours](https://discord.gg/4a7SZzRk?event=1164114241893187655) to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on our [developer Discord](https://discord.com/invite/cA7y6ezyE2) group.
+- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
 
-- Submit your feedback to the [ICP Developer feedback board](http://dx.internetcomputer.org).
+- Submit your feedback to the [ICP Developer feedback board](https://dx.internetcomputer.org).
 
 ## Next steps
 

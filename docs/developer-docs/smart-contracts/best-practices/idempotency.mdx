@@ -9,7 +9,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <MarkdownChipRow labels={["Intermediate", "Concept", "Best Practices"]} />
 
 
-## Overview 
+
 
 In the case of network issues or other unexpected behavior, ICP clients (such as agents) that issue
 ingress update calls may be unable to determine whether their ingress
@@ -19,6 +19,8 @@ connection until the request status has been removed from the state tree, since 
 This can be risky as the application might decide to retry transactions, potentially leading to serious security vulnerabilities such as double spending. 
 
 Thus, it is important to design and/or use canister APIs such that it is possible to retry requests safely, even when the ICP provides no information about previous request attempts. This page describes general approaches that both the canister authors and the clients can adopt to enable safe retries.
+
+Please read the [reference on ingress messaging](/docs/current/references/ingress-messages) to learn about the messaging basics and potential errors.
 
 ## Idempotent canister APIs
 

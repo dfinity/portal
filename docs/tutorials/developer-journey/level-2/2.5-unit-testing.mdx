@@ -1,5 +1,5 @@
 ---
-keywords: [intermediate, tutorial, developer journey, unit testing, e2e testing, integration testing]
+keywords: [intermediate, tutorial, developer ladder, unit testing, e2e testing, integration testing]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -9,11 +9,15 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ndUqdwdtBhQ?si=hB8Thi_tMVJC0CIE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class="text--center">
+<p> </p>
+</div>
+<div class="text--center">
+<iframe width="660" height="415" src="https://www.youtube.com/embed/ndUqdwdtBhQ?si=hB8Thi_tMVJC0CIE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
-## Overview
 
-Testing code is an important stage of any development workflow. Without proper testing before the code is put into production, bugs and errors that may have been caught during testing can be detrimental to production environments. At this point in of our developer journey, it's time to explore tools that can be used to test our code.
+
+Testing code is an important stage of any development workflow. Without proper testing before the code is put into production, bugs and errors that may have been caught during testing can be detrimental to production environments. At this point of the developer ladder, it's time to explore tools that can be used to test our code.
 
 There are three primary types of testing:
 
@@ -113,7 +117,7 @@ Want to learn more about running large, long-running batches of tests? Take a lo
 
 ## Rust unit testing
 
-In this developer journey series, you'll continue to focus on exploring and using Motoko. However, it's important to make note of the resources available for Rust testing.
+In this developer ladder series, you'll continue to focus on exploring and using Motoko. However, it's important to make note of the resources available for Rust testing.
 
 [Learn more about Rust unit testing](https://mmapped.blog/posts/01-effective-rust-canisters.html).
 
@@ -151,7 +155,7 @@ Before you start, verify that you have set up your developer environment accordi
 
 ### Creating a new project
 
-To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_journey`), then use the following commands to start `dfx` and create a new project:
+To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_ladder`), then use the following commands to start `dfx` and create a new project:
 
 ```
 dfx start --clean --background
@@ -216,7 +220,6 @@ Then, open your `package.json` file and insert `"test": "vitest"` in the `script
     "prebuild": "dfx generate",
     "start": "webpack serve --mode development --env development",
     "deploy:local": "dfx deploy --network=local",
-    "deploy:ic": "dfx deploy --network ic",
     "generate": "dfx generate e2e_tests_backend",
     "test": "vitest"
   },
@@ -239,7 +242,7 @@ mkdir src/tests/
 Now, you'll create a mixture of JavaScript and TypeScript files to create a utility that'll be used to create an **agent** using generated declarations. This file will be called `actor.js`.
 
 :::caution
-You'll be diving a bit into using an **agent** in this portion of the tutorial. Note that the developer journey has briefly mentioned agents thus far, but hasn't fully explored agents yet. The developer journey will cover agents in a future tutorial, but for this tutorial it is important to know that an agent is a library used to make calls to the Internet Computer public interface. You'll be using it to communicate the canister's public methods, defined in the `declarations/e2e_tests_backend/e2e_tests_backend.did.js`, to the file containing our the code for our tests.
+You'll be diving a bit into using an **agent** in this portion of the tutorial. Note that the developer ladder has briefly mentioned agents thus far, but hasn't fully explored agents yet. The developer ladder will cover agents in a future tutorial, but for this tutorial it is important to know that an agent is a library used to make calls to the Internet Computer public interface. You'll be using it to communicate the canister's public methods, defined in the `declarations/e2e_tests_backend/e2e_tests_backend.did.js`, to the file containing our the code for our tests.
 :::
 
 Create a new file in `src/tests/` called `actor.js`, then insert the following content:
@@ -455,9 +458,9 @@ To learn more about Github workflows, check out the [Github documentation](https
 
 Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
-- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
+- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
+- [Developer ladder forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -471,13 +474,13 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Upcoming hackathons](https://dfinity.org/hackathons/).
 
-- [Weekly developer office hours](https://discord.gg/4a7SZzRk?event=1164114241893187655) to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on our [developer Discord](https://discord.com/invite/cA7y6ezyE2) group.
+- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
 
-- Submit your feedback to the [ICP Developer feedback board](http://dx.internetcomputer.org).
+- Submit your feedback to the [ICP Developer feedback board](https://dx.internetcomputer.org).
 
 ## Next steps
 
-To wrap up level 2 of our developer journey, you'll dive into Motoko level 2 and learn more about Motoko's fundamentals.
+To wrap up level 2 of the developer ladder, you'll dive into Motoko level 2 and learn more about Motoko's fundamentals.
 
 - [2.6 Motoko level 2](/docs/current/tutorials/developer-journey/level-2/2.6-motoko-lvl2).
 

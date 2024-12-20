@@ -7,73 +7,29 @@ import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { BetaChip } from "/src/components/Chip/BetaChip";
+import Tabs from "@theme/Tabs";
 
 # Integrating with II
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
-## Overview
 This guide shows an example of how to integrate Internet Identity into an application by using a simple 'Who am I?' backend canister and a frontend UI that returns the Internet Identity principal of the user who calls the backend's `whoami` method.
 
 This project uses the **pullable** version of the Internet identity canister. A pullable canister is a canister that provides a public service at a static canister ID. To learn more about pullable canisters, please [see the documentation](/docs/current/developer-docs/smart-contracts/maintain/import).
 
-### Prerequisites
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
 
-Before you start, verify that you have:
+<input type="checkbox"/> <a href="/docs/current/developer-docs/getting-started/install">Install the IC SDK.</a>
 
-- Downloaded and installed [`dfx`](https://github.com/dfinity/sdk/releases/latest) version 0.14.1 or later.
-- [Node.js `16.0.0` or newer](https://nodejs.org/en).
+</TabItem>
+</Tabs>
 
 ## Creating a simple app with II authentication
 
-### Step 1: Create a new project.
+### Step 1: Create or open a project.
 
-First, start `dfx`:
-
-```
-dfx start --clean --background
-```
-
-Then use `dfx new <project_name>` to create a new project:
-
-```
-dfx new ii_integration
-```
-
-You will be prompted to select the language that your backend canister will use. Select 'Motoko':
-
-```
-? Select a backend language: ›
-❯ Motoko
-  Rust
-  TypeScript (Azle)
-  Python (Kybra)
-```
-
-:::info
-`dfx` versions `v0.17.0` and newer support this `dfx new` interactive prompt. [Learn more about `dfx v0.17.0`](/blog/2024/02/14/news-and-updates/update#dfx-v0170).
-:::
-
-Then, select a frontend framework for your frontend canister. Select 'Vanilla JS':
-
-```
-  ? Select a frontend framework: ›
-  SvelteKit
-  React
-  Vue
-❯ Vanilla JS
-  No JS template
-  No frontend canister
-```
-
-Lastly, you can include extra features to be added to your project. Select 'Internet Identity'.
-
-```
-  ? Add extra features (space to select, enter to confirm) ›
-x Internet Identity
-⬚ Bitcoin (Regtest)
-⬚ Frontend tests
-```
+First, [start the local replica](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-start) if necessary and [create](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-new) or open a project.
 
 ### Step 2: Edit the backend code.
 
@@ -239,7 +195,7 @@ Navigate to the frontend canister's URL in your web browser. You will see the fr
 
 You'll be redirected to the II frontend. Since you're running this locally, you will be using a local, non-production Internet Identity. To create one, follow the on-screen steps.
 
-#### Step 9: Create a local Internet Identity
+### Step 9: Create a local Internet Identity
 
 - Select 'Create New' from the UI.
 

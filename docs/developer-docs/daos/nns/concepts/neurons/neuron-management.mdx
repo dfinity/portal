@@ -15,7 +15,7 @@ This page is for you if you want to learn the technical details about neuron ope
 
 Tutorials for users who want to interact with the NNS using the [NNS dapp](https://nns.ic0.app) frontend are available in the [NNS dapp quickguide](/docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart).
 
-## Overview
+
 View the most up-to-date [`candid` definition for the NNS governance canister](https://github.com/dfinity/ic/blob/master/rs/nns/governance/canister/governance.did).
 This page will explain some of the relevant definitions from this Candid file.
 To keep up to date with new NNS release proposals from DFINITY, you can subscribe to [this forum thread](https://forum.dfinity.org/t/nns-updates-aggregation-thread/23551).
@@ -170,7 +170,7 @@ It is recommended to test the corresponding code thoroughly.
 
 #### Step 2: Send ICP to the neuron's account
 
-After having computed the neuron's address, make a transfer to this address. For this, view the [relevant `candid` interface of the ICP ledger](https://github.com/dfinity/ic/blob/846886223adf11f86b70b5f19c345b3fe6f33fed/rs/rosetta-api/icp_ledger/ledger.did#L432C5-L432C13) which contains the following details for a transfer.
+After having computed the neuron's address, make a transfer to this address. For this, view the [relevant `candid` interface of the ICP ledger](https://github.com/dfinity/ic/blob/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/ledger_suite/icp/ledger.did#L488C5-L488C13) which contains the following details for a transfer.
 ```
 service: (LedgerCanisterPayload) -> {
   transfer : (TransferArgs) -> (TransferResult);

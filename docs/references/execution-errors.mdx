@@ -8,7 +8,6 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Beginner", "Reference", "Errors"]} />
 
-## Overview
 A list of possible errors returned when executing canisters.
 
 ## Errors
@@ -400,7 +399,7 @@ An example of this error is:
   Sender's ID: zzz-zzz
 ```
 
-Each canister has a number of [controllers](/docs/current/developer-docs/smart-contracts/maintain/control) and certain actions (e.g. updating the canister's Wasm code) can only be performed by controllers. To fix this error, consider performing the action from a [principal](/docs/current/concepts/glossary#principal) which is already a controller, or have an existing controller add additional principals to the canister's list of controllers.
+Each canister has a number of [controllers](/docs/current/developer-docs/smart-contracts/maintain/control) and certain actions (e.g. updating the canister's Wasm code) can only be performed by controllers. To fix this error, consider performing the action from a [principal](/docs/current/references/glossary#principal) which is already a controller, or have an existing controller add additional principals to the canister's list of controllers.
 
 
 ### Canister not found
@@ -629,6 +628,17 @@ To diagnose this error, use the [`dfx canister status`][dfx-canister-status] com
 
 To fix this error, consider increasing the canister's reserved cycles limit, or moving it to a subnet with lower memory usage.
 
+### Reserved cycles limit is too low
+
+There was an attempt to update the canister's settings and change the reserved cycles limit field to a value that is lower than the already reserved cycles balance of the canister.
+
+An example of this error is:
+
+```
+  Cannot set the reserved cycles limit 1000 below the reserved cycles balance of the canister 2000.
+```
+
+To fix this error, increase the reserved cycles limit to be above the reported reserved cycles balance.
 
 ### Wasm chunk store error
 There was an error while executing a method to manipulate the canister's [Wasm chunk store](/docs/current/references/ic-interface-spec#ic-upload_chunk) (e.g. `upload_chunk`, `clear_chunk_store`, `install_chunked_code`, etc.).

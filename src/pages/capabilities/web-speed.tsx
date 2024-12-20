@@ -30,6 +30,9 @@ function FeaturePage() {
                 Concretely, query (read) calls are answered in ~100
                 milliseconds, and update (write) calls in ~2 seconds.
               </p>
+              <h5>Times are based on subnets with low loads. Subnets with high loads may experience different response speeds. Learn more in the <Link href="/docs/current/developer-docs/smart-contracts/best-practices/troubleshooting/" className="text-white">
+                docs.
+              </Link>{" "}</h5>
             </div>
           </div>
           <div className="container-10 relative">
@@ -136,7 +139,7 @@ function FeaturePage() {
             />
             <CardWithDescription
               title="Build dapps with the language of your choice"
-              description="Learch about programming languages on the ICP."
+              description="Learn about programming languages on the ICP."
               href="/docs/current/developer-docs/smart-contracts/write/overview"
             />
             <CardWithDescription

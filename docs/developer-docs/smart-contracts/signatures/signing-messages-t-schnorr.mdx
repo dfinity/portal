@@ -8,13 +8,13 @@ import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Signing t-Schnorr messages
+# Signing with t-Schnorr
 
 <MarkdownChipRow labels={["Advanced", "Tutorial"]} />
 
-## Overview
 
-The threshold Schnorr API allows canisters to securely sign messages and transactions without anyone ever having direct access to the corresponding private keys. Each canister can control an unlimited number of keys by specifying different key `derivation_path`s and `key_id`s.
+
+The threshold Schnorr API allows canisters to securely sign messages and transactions without the corresponding private keys ever existing. Each canister can control an unlimited number of keys by specifying different key `derivation_path`s and `key_id`s.
 
 The API provides two methods:
 

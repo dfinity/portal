@@ -1,5 +1,5 @@
 ---
-keywords: [intermediate, tutorial, developer journey, identities, authentication]
+keywords: [intermediate, tutorial, developer ladder, identities, authentication]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -10,9 +10,13 @@ import '/src/components/CenterImages/center.scss';
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/BsTlPMn6SR8?si=oNH36Um1fH6ueKFA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<div class="text--center">
+<p> </p>
+</div>
+<div class="text--center">
+<iframe width="660" height="415" src="https://www.youtube.com/embed/BsTlPMn6SR8?si=oNH36Um1fH6ueKFA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
-## Overview
+
 
 When developing on the Internet Computer, there are several types of identities and methods of authentication that you'll encounter. In the previous module where you obtained a cycles coupon, [1.4: acquiring and using cycles](/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles), you created a **developer identity** that has a **cycles balance**. You also looked at how to convert ICP tokens stored in a **ledger account** into cycles.
 
@@ -102,12 +106,12 @@ Before you start, verify that you have set up your developer environment accordi
 
 ### Creating a new project
 
-To get started, open a terminal window, navigate into your working directory (`developer_journey`), then use the commands:
+To get started, open a terminal window, navigate into your working directory (`developer_ladder`), then use the commands:
 
 ```bash
 dfx start --clean --background
 git clone https://github.com/dfinity/examples.git
-cd examples/motoko/auth-client-demo
+cd examples/archive/motoko/auth-client-demo
 npm install
 ```
 
@@ -364,9 +368,9 @@ You've now integrated Internet Identity into a local dapp! That'll wrap things u
 
 Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
-- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
+- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
+- [Developer ladder forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -380,9 +384,9 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Upcoming hackathons](https://dfinity.org/hackathons/).
 
-- [Weekly developer office hours](https://discord.gg/4a7SZzRk?event=1164114241893187655) to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on our [developer Discord](https://discord.com/invite/cA7y6ezyE2) group.
+- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
 
-- Submit your feedback to the [ICP Developer feedback board](http://dx.internetcomputer.org).
+- Submit your feedback to the [ICP Developer feedback board](https://dx.internetcomputer.org).
 
 ## Next steps
 

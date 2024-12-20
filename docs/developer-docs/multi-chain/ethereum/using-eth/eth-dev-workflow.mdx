@@ -9,7 +9,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Ethereum" ]} />
 
-## Overview
+
 
 Developers on ICP can create canisters and dapps that interact with the Ethereum mainnet, Sepolia testnet, and other EVM-compatible networks through ICP's Ethereum integration. To use this integration, developers must implement a specific workflow that makes JSON-RPC calls to the EVM RPC canister in order to query network information and submit transactions to an EVM-compatible network. Developers can also integrate and interact with chain-key Ethereum (ckETH) from within a canister, which uses the ICRC-1 token implementation.
 
@@ -41,7 +41,7 @@ Additional sample projects can be found in the [EVM RPC](../evm-rpc/samples.mdx)
 
 ## Integrating with Ethereum
 
-The Ethereum integration can be incorporated into dapps for several purposes, such as authentication, as shown in the [Sign In With Ethereum (SIWE)](/docs/current/developer-docs/identity/authentication/siwe) example. The SIWE example showcases how to use an Ethereum wallet to sign into ICP applications. It creates a 1:1 correlation between Ethereum addresses and ICP principals within the scope of the application. It also guarantees that logging in with an Ethereum wallet will consistently produce the same principal regardless of the client used.
+The Ethereum integration can be incorporated into dapps for several purposes, such as authentication, as shown in the [Sign In With Ethereum (SIWE)](https://github.com/kristoferlund/ic-siwe) example. The SIWE example showcases how to use an Ethereum wallet to sign into ICP applications. It creates a 1:1 correlation between Ethereum addresses and ICP principals within the scope of the application. It also guarantees that logging in with an Ethereum wallet will consistently produce the same principal regardless of the client used.
 
 ## Using ckETH
 

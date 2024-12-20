@@ -1,5 +1,5 @@
 ---
-keywords: [intermediate, tutorial, developer journey, advanced canister calls, query calls, upgrade calls]
+keywords: [intermediate, tutorial, developer ladder, advanced canister calls, query calls, upgrade calls]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -9,11 +9,15 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/9BfDy3VNxu8?si=0FHL0c_CSGQzdfSQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<div class="text--center">
+<p> </p>
+</div>
+<div class="text--center">
+<iframe width="660" height="415" src="https://www.youtube.com/embed/9BfDy3VNxu8?si=0FHL0c_CSGQzdfSQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> </div>
 
-## Overview
 
-In the previous tutorial where you [created your first dapp](/docs/current/tutorials/developer-journey/level-1/1.3-first-dapp), the developer journey briefly discussed query and update <GlossaryTooltip>canister</GlossaryTooltip> calls. In this tutorial, you'll dive deeper into these types of canister calls, but also take a look at advanced canister calls such as composite queries, certified variables, and inter-canister calls.
+
+In the previous tutorial where you [created your first dapp](/docs/current/tutorials/developer-journey/level-1/1.3-first-dapp), the developer ladder briefly discussed query and update <GlossaryTooltip>canister</GlossaryTooltip> calls. In this tutorial, you'll dive deeper into these types of canister calls, but also take a look at advanced canister calls such as composite queries, certified variables, and inter-canister calls.
 
 Let's first define the different types of canister calls and how they differ from one another:
 
@@ -125,7 +129,7 @@ Before you start, verify that you have set up your developer environment accordi
 
 ### Creating a new project
 
-To get started, you'll be cloning the DFINITY example repo which contains this tutorial's example, plus several others. you'll be using the `motoko/pub-sub` folder. Open a terminal window, navigate into your working directory (`developer_journey`), then use the commands:
+To get started, you'll be cloning the DFINITY example repo which contains this tutorial's example, plus several others. you'll be using the `motoko/pub-sub` folder. Open a terminal window, navigate into your working directory (`developer_ladder`), then use the commands:
 
 ```bash
 dfx start --clean --background
@@ -148,7 +152,7 @@ Let's take a look at the project's files:
 
 ### Writing a `publisher` canister
 
-You'll notice that this project structure is a bit different from the ones you've used thus far in our developer journey. Since this project uses two backend canisters for it's functionality, there aren't `src` folders for a backend or frontend canister, just two folders for each backend canister.
+You'll notice that this project structure is a bit different from the ones you've used thus far on the developer ladder. Since this project uses two backend canisters for it's functionality, there aren't `src` folders for a backend or frontend canister, just two folders for each backend canister.
 
 Now let's take a closer look at the `Main.mo` file for our 'Publisher' canister. The code can be found below with comments that explain the code's logic:
 
@@ -264,9 +268,9 @@ The output should resemble the following:
 
 Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
-- [Developer Discord community](https://discord.com/invite/cA7y6ezyE2), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
+- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer journey forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
+- [Developer ladder forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -278,9 +282,9 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Upcoming hackathons](https://dfinity.org/hackathons/).
 
-- [Weekly developer office hours](https://discord.gg/4a7SZzRk?event=1164114241893187655) to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on our [developer Discord](https://discord.com/invite/cA7y6ezyE2) group.
+- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
 
-- Submit your feedback to the [ICP Developer feedback board](http://dx.internetcomputer.org).
+- Submit your feedback to the [ICP Developer feedback board](https://dx.internetcomputer.org).
 
 ## Next steps
 

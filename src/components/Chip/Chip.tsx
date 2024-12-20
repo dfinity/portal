@@ -18,7 +18,7 @@ export function Chip({
   shape = "oval",
   color = "bg-infinite-60",
 }: ChipProps) {
-  const baseClassName = "text-white font-medium";
+  const baseClassName = "chip text-white font-medium";
 
   const colorClassName = useMemo(() => color, [color]);
 

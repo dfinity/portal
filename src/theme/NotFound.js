@@ -8,14 +8,51 @@ export default function NotFound() {
 
   useEffect(() => {
     trackEvent("404", window.location.pathname);
-
     setIsClient(true);
 
     if (ExecutionEnvironment.canUseDOM) {
+      // style tags
       const style = document.createElement("style");
-      style.textContent = " ";
+      style.textContent = `
+        .subnav {
+          display: none !important;
+        }
+        .tw-title-navigation {
+          color: #3b00b9 !important;
+        }
+        .navbar__search-button {
+          color: #3b00b9 !important;
+          background-color: #f8f9fa !important;
+        }
+      `;
       document.head.appendChild(style);
-      requestAnimationFrame(() => document.head.removeChild(style));
+
+      // Cleanup function
+      return () => {
+        // Reset subnav
+        const subnav = document.querySelector(".subnav");
+        if (subnav) {
+          subnav.style.display = "";
+        }
+
+        // Reset nav
+        const titleNav = document.querySelector(".tw-title-navigation");
+        if (titleNav) {
+          titleNav.style.color = "";
+        }
+
+        // Reset search
+        const searchButton = document.querySelector(".navbar__search-button");
+        if (searchButton) {
+          searchButton.style.color = "";
+          searchButton.style.backgroundColor = "";
+        }
+
+        // Remove the style tag
+        if (style.parentNode) {
+          document.head.removeChild(style);
+        }
+      };
     }
   }, []);
 

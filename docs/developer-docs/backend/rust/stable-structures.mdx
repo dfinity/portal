@@ -8,9 +8,13 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Rust", "Tutorial"]} />
 
-## Overview
+
 
 Stable structures are designed to use stable memory as the backing store, allowing them to grow to gigabytes in size without the need for `pre_upgrade`/`post_upgrade` hooks.
+
+:::danger
+Using pre_ and post_upgrade hooks is discouraged. It is error-prone and can render a canister unusable. Per best practices, using these methods should be avoided if possible.
+:::
 
 A [stable structure library](https://github.com/dfinity/stable-structures#readme) exists that aims to simplify managing data structures directly in stable memory and provides example code templates.
 

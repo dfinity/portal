@@ -10,6 +10,7 @@ import {
   TeaserCard,
 } from "@site/src/components/DocsHome/TeaserCard";
 import { GlossaryTooltip } from "@site/src/components/Tooltip/GlossaryTooltip";
+import LinkArrowUpRight from "../Common/Icons/LinkArrowUpRight";
 
 const queryClient = new QueryClient();
 
@@ -23,7 +24,10 @@ const links = [
     href: "https://forum.dfinity.org/t/announcing-technical-working-groups/11781",
   },
   { label: "Join the Dev Forum", href: "https://forum.dfinity.org" },
-  { label: "Dev Discord Office Hours", href: "https://discord.gg/jnjVVQaE2C" },
+  {
+    label: "Dev Discord Office Hours",
+    href: "https://discord.internetcomputer.org",
+  },
   {
     label: "Developer Grants and Bounties",
     href: "https://dfinity.org/grants/",
@@ -37,30 +41,17 @@ interface TileDescriptor {
   icon?: ReactNode | null;
   description?: ReactNode;
   label?: string;
+  invertIconDarkMode?: boolean;
 }
 
 const languagesTiles: TileDescriptor[] = [
   {
-    label: "Languages",
-    description:
-      "Explore coding, from beginner to pro, with our comprehensive guides, tutorials, samples, and API docs for Rust, Motoko, and TypeScript",
-    icon: null,
-    action: (
-      <Link
-        className="button button-primary rounded-2xl w-32"
-        href="/docs/current/developer-docs/smart-contracts/write/overview"
-      >
-        View all
-      </Link>
-    ),
-  },
-  {
     label: "Motoko",
     description:
-      "Get started with a high level programming language designed specifically for the Internet Computer",
+      "Get started with an easy to learn domain-specific language that is able to leverage ICP features and is also perfect to let AI code solo when desired. This is a great choice for beginners.",
     icon: (
       <img
-        src="/img/docs/motoko.webp"
+        src="/img/docs/motoko.svg"
         alt="Motoko docs"
         className="w-10 h-10"
         loading="lazy"
@@ -89,6 +80,7 @@ const languagesTiles: TileDescriptor[] = [
         loading="lazy"
       />
     ),
+    invertIconDarkMode: true,
     action: (
       <Link
         href="/docs/current/developer-docs/backend/rust/"
@@ -103,7 +95,7 @@ const languagesTiles: TileDescriptor[] = [
   {
     label: "Typescript",
     description:
-      "Azle allows you to build Internet Computer apps using TypeScript and JavaScript, the languages of the web",
+      "Code in the language of the web, TypeScript and JavaScript, using Azle.",
     icon: (
       <img
         src="/img/docs/typescript.webp"
@@ -126,7 +118,7 @@ const languagesTiles: TileDescriptor[] = [
   {
     label: "Solidity",
     description:
-      "Bitfinity allows you to deploy smart contracts on the Internet Computer written in Solidity, a popular language for DeFi applications",
+      "Deploy Solidity smart contracts on the Internet Computer with Bitfinity.",
     icon: (
       <img
         src="/img/docs/solidity.webp"
@@ -149,20 +141,6 @@ const languagesTiles: TileDescriptor[] = [
 ];
 
 const frameworksTiles: TileDescriptor[] = [
-  {
-    label: "Quickstarts\n& Frameworks",
-    description:
-      "Start deploying on ICP easily with our Quickstart guides for developers, tailored to your preferred language",
-    icon: null,
-    action: (
-      <Link
-        className="button button-primary rounded-2xl w-32"
-        href="/docs/current/developer-docs/web-apps/frameworks/juno"
-      >
-        View all
-      </Link>
-    ),
-  },
   {
     label: "Juno",
     description:
@@ -191,8 +169,8 @@ const frameworksTiles: TileDescriptor[] = [
     description: (
       <span>
         In contrast to other blockchain networks, there are no testnets on ICP.
-        Instead, you can deploy a smart contract for free on the playground using
-        the <GlossaryTooltip>IC SDK</GlossaryTooltip>
+        Instead, you can deploy a smart contract for free on the playground
+        using the <GlossaryTooltip>IC SDK</GlossaryTooltip>
       </span>
     ),
     icon: (
@@ -205,7 +183,7 @@ const frameworksTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/developer-docs/getting-started/deploy/testnet"
+        href="/docs/current/developer-docs/getting-started/deploy-and-manage"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Learn more about testnets on ICP"
       >
@@ -228,7 +206,7 @@ const frameworksTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/developer-docs/getting-started/quickstart/react-quickstart"
+        href="/docs/current/developer-docs/web-apps/application-frontends/quickstart/react-quickstart"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to React quickstart"
       >
@@ -237,24 +215,19 @@ const frameworksTiles: TileDescriptor[] = [
       </Link>
     ),
   },
-  {
-    isGhostTile: true,
-  },
 ];
 
 const Tile = ({ tile }: { tile: TileDescriptor }) => {
   return (
     <div
-      className={`flex flex-col ${
-        tile.isGhostTile
-          ? "bg-grey-200 border-grey-200 hidden lg:block"
-          : "bg-white/70 border-white"
-      } rounded-lg border border-solid p-4 h-[360px] justify-between`}
+      className={`tile flex flex-col ${"bg-white/70 border-white"} rounded-lg border border-solid p-4 justify-between`}
     >
       <div className={"flex flex-col gap-4 items-start"}>
-        <div className={"flex flex-row gap-4"}>
-          {tile.icon}
-          <span className={"tw-heading-5 mb-6 whitespace-pre-wrap"}>
+        <div className={"flex flex-row gap-4 items-center"}>
+          <i className={`tile__icon ${tile?.invertIconDarkMode ? 'tile__icon--invert' : ''}`}>
+            {tile.icon}
+          </i>
+          <span className={"tw-heading-5 whitespace-pre-wrap"}>
             {tile.label}
           </span>
         </div>
@@ -265,26 +238,10 @@ const Tile = ({ tile }: { tile: TileDescriptor }) => {
   );
 };
 
-
 const chainfusionTiles: TileDescriptor[] = [
   {
-    label: "Chain Fusion",
-    description:
-      "Develop cross-chain applications using ICP's direct integrations with other networks",
-    icon: null,
-    action: (
-      <Link
-        className="button button-primary rounded-2xl w-50"
-        href="/docs/current/developer-docs/multi-chain/overview"
-      >
-        Learn more
-      </Link>
-    ),
-  },
-  {
     label: "Supported chains",
-    description:
-      "Learn which chains ICP integrates with and how",
+    description: "Learn which chains ICP integrates with and how",
     icon: (
       <img
         src="/img/dfinity_logo.svg"
@@ -308,8 +265,10 @@ const chainfusionTiles: TileDescriptor[] = [
     label: "Bitcoin",
     description: (
       <span>
-        ICP has a direct integration with the Bitcoin network using a Bitcoin adapter and threshold signatures such as t-ECDSA and t-Schnorr.
-        Learn how your canister can sign and submit transactions for BRC-20, Ordinals, Runes, and more
+        ICP has a direct integration with the Bitcoin network using a Bitcoin
+        adapter and threshold signatures such as t-ECDSA and t-Schnorr. Learn
+        how your canister can sign and submit transactions for BRC-20, Ordinals,
+        Runes, and more
       </span>
     ),
     icon: (
@@ -326,7 +285,9 @@ const chainfusionTiles: TileDescriptor[] = [
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Learn more about the Bitcoin integration"
       >
-        <span className={"md:hidden"}>Learn more about the Bitcoin integration</span>
+        <span className={"md:hidden"}>
+          Learn more about the Bitcoin integration
+        </span>
         <LinkArrowRight />
       </Link>
     ),
@@ -349,7 +310,9 @@ const chainfusionTiles: TileDescriptor[] = [
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Learn more about the Ethereum integration"
       >
-        <span className={"md:hidden"}>Learn more about the Ethereum integration</span>
+        <span className={"md:hidden"}>
+          Learn more about the Ethereum integration
+        </span>
         <LinkArrowRight />
       </Link>
     ),
@@ -358,7 +321,8 @@ const chainfusionTiles: TileDescriptor[] = [
     label: "Chain-key tokens",
     description: (
       <span>
-        Chain-key tokens are digital twins of Bitcoin, Ethereum, and ERC-20 tokens that are secured on ICP with chain-key cryptography
+        Chain-key tokens are digital twins of Bitcoin, Ethereum, and ERC-20
+        tokens that are secured on ICP with chain-key cryptography
       </span>
     ),
     icon: (
@@ -380,7 +344,6 @@ const chainfusionTiles: TileDescriptor[] = [
       </Link>
     ),
   },
-
 ];
 
 const Education = () => {
@@ -388,7 +351,7 @@ const Education = () => {
     {
       title: (
         <h2 className={"text-white"}>
-          Start your developer journey with Jessie
+          Start your developer ladder with Jessie
         </h2>
       ),
       subtitle: (
@@ -406,7 +369,7 @@ const Education = () => {
           <LinkArrowRight />
         </Link>
       ),
-      mainImage: "/img/docs/teaser-cards/main-1.svg",
+      mainImage: "/img/docs/teaser-cards/developerLadder.svg",
     },
     {
       title: <h2 className={"text-white"}>Hackathon Prep Course</h2>,
@@ -427,11 +390,33 @@ const Education = () => {
       ),
       mainImage: "/img/docs/teaser-cards/hackathon-prep-course.svg",
     },
+    {
+      title: (
+        <h2 className={"text-white"}>ICP Demystified: Learn the Essentials</h2>
+      ),
+      subtitle: (
+        <p className={"text-white"}>
+          Explore the protocol and its features with our “Zero to dApp Educate
+          Series”.
+        </p>
+      ),
+      backgroundImage: "/img/docs/teaser-cards/zero-dapp.webp",
+      cta: (
+        <Link
+          className="button-transparent button-with-icon pl-0"
+          href="https://www.youtube.com/playlist?list=PLuhDt1vhGcrcRcHvSKmxIgJAh1b3rcR7N&si=sIElj5bAkJeMqDoA"
+        >
+          Watch now
+          <LinkArrowUpRight />
+        </Link>
+      ),
+      mainImage: "/img/docs/teaser-cards/main-zero-to-dapp.webp",
+    },
   ];
   return (
     <div
       className={
-        "grid grid-cols-1 md:grid-cols-2 grid-rows-2 md:grid-rows-1 gap-3"
+        "grid grid-cols-1 md:grid-cols-3 grid-rows-2 md:grid-rows-1 gap-3"
       }
     >
       {CARDS.map((card, index) => {
@@ -447,9 +432,7 @@ const Education = () => {
             key={index}
             card={card}
             style={backgroundStyles}
-            className={
-              "h-full relative py-8 px-8 flex-col rounded-lg grid sm:grid-cols-2 grid-cols-1 gap-2 justify-between flex-1"
-            }
+            className={"h-full p-8 rounded-lg"}
           />
         );
       })}
@@ -457,153 +440,273 @@ const Education = () => {
   );
 };
 
+function TeaserCardFooter({
+  card,
+  className,
+}: {
+  card: CarouselCard;
+  className?: string;
+}) {
+  const backgroundStyles = card.backgroundImage
+    ? {
+        backgroundImage: `url(${card.backgroundImage})`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }
+    : {};
+  return (
+    <div
+      className={className}
+      style={{
+        ...backgroundStyles,
+      }}
+    >
+      <div className={"p-6 flex flex-col justify-between "}>
+        <div className={"flex flex-col"}>
+          {card.title}
+          {card.subtitle}
+          {card.cta}
+        </div>
+        {card.mainImage && (
+          <img
+            loading="lazy"
+            className={"sm:hidden"}
+            src={card.mainImage}
+            alt={typeof card.title === "string" ? card.title : "Card image"}
+          />
+        )}
+      </div>
+      {card.mainImage && (
+        <div className={"justify-center hidden sm:flex"}>
+          <img
+            className={"mt-auto"}
+            src={card.mainImage}
+            alt={typeof card.title === "string" ? card.title : "Card image"}
+          />
+        </div>
+      )}
+    </div>
+  );
+}
+
+const footerCards: Array<CarouselCard> = [
+  {
+    title: (
+      <h2 className={"text-white"}>Follow @DFINITYDev on X for tech news</h2>
+    ),
+    subtitle: (
+      <p className={"text-white"}>All devs, geeks, & tech fans welcome</p>
+    ),
+    backgroundImage: "/img/docs/teaser-cards/bg-0.svg",
+    cta: (
+      <Link
+        className="button-transparent button-with-icon pl-0"
+        href="https://twitter.com/DFINITYDev"
+      >
+        Follow now
+        <LinkArrowRight />
+      </Link>
+    ),
+    mainImage: "/img/docs/teaser-cards/main-0.svg",
+  },
+  {
+    title: <h2 className={"text-white"}>Developer office hours on Discord</h2>,
+    subtitle: (
+      <p className={"text-white"}>Every Wednesday 9AM CEST and 10:30AM PST</p>
+    ),
+    backgroundImage: "/img/docs/teaser-cards/bg-2.svg",
+    cta: (
+      <Link
+        className="button-transparent button-with-icon pl-0"
+        href="https://discord.internetcomputer.org"
+      >
+        Join Discord
+        <LinkArrowRight />
+      </Link>
+    ),
+    mainImage: "/img/docs/teaser-cards/main-2.svg",
+  },
+];
+
 const DocsHomePage: FC = () => {
   return (
-    <div className="flex flex-col gap-10">
-      <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        <div className="px-8 py-10 md:p-10 rounded-lg bg-infinite text-white sm:col-span-2 md:row-span-2 bg-[url(/img/docs/hero-bg.webp)] bg-center bg-cover flex flex-col">
+    <div className="flex flex-col gap-10 docshome">
+      <section className="flex flex-col gap-8">
+        <div className="px-8 py-10 md:p-10 rounded-lg bg-infinite text-white sm:col-span-2 md:row-span-2 bg-center bg-cover flex flex-col relative overflow-hidden">
+          <div className="blob blob-md md:blob-lg blob-white md:blob-white-dense -translate-y-[10%] z-0 md:opacity-30 " />
+
           <h1 className="tw-heading-3 sm:tw-heading-60 md:tw-heading-2 mb-14">
-            Developer Docs
+            Quick Start
           </h1>
-          <p className="tw-lead mb-20 flex-1">
-            Start a DAO, create a token, build dapps and host assets with the
-            full tech stack entirely 100% on chain.
-          </p>
-          <div className={"flex flex-row gap-2 flex-wrap"}>
+
+          <div className={"flex flex-row gap-2 flex-wrap items-end"}>
             <p className="mb-0">
               <Link
                 className="button-white button-with-icon"
-                href="/docs/current/developer-docs/getting-started/overview-of-icp"
+                href="https://icp.ninja/"
               >
-              Learn more
-              <LinkArrowRight />
-            </Link>
-          </p>
-          <p className="mb-0">
-            <Link
-              className="button-white button-with-icon"
-              href="https://play.motoko.org"
-            >
-              Start coding
-              <LinkArrowRight />
-            </Link>
-          </p>
+                INSTANT WEB IDE
+                <LinkArrowRight />
+              </Link>
+            </p>
+            <p className="mb-0">
+              <Link
+                className="button-white button-with-icon"
+                href="/docs/current/developer-docs/getting-started/quickstart/first-smart-contract"
+              >
+                SDK BUILD
+                <LinkArrowRight />
+              </Link>
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-[2fr,1fr,1fr] gap-8 mt-12 tw-lead">
+            <div className="mb-auto">
+              Become a “World Computer” developer who builds sovereign social
+              media, games, enterprise apps, AI, Web3, DeFi and _
+            </div>
+            <div className="mb-auto tw-paragraph text-white-80 flex flex-col gap-2">
+              The Internet Computer (ICP) provides a 100% decentralized platform
+              where devs can build without Big Tech and traditional IT.
+            </div>
+            <div className="mb-auto tw-paragraph text-white-80 flex flex-col gap-2">
+              End-to-end decentralization makes services immune to cyber attack,
+              unstoppable, censorship-resistant, and optionally tokenized and
+              autonomous.
+            </div>
+          </div>
         </div>
-        </div>
-        <div className="px-6 py-8 md:p-10 border border-white border-solid rounded-lg bg-white/70 sm:col-span-2">
+        <div className="px-6 py-0 md:p-10 border md:mx-auto md:min-w-[900px] sm:col-span-2 relative z-2 md:-mt-10">
           <QueryClientProvider client={queryClient}>
             <NetworkStats></NetworkStats>
           </QueryClientProvider>
         </div>
-        <div className="sm:col-span-2 md:h-96">
-          <TeaserCarousel />
+
+        <div className="grid grid-cols-1 md:grid-cols-[2fr,4fr] gap-24 relative z-2">
+          <div>
+            <h2 className="tw-heading-4 md:tw-heading-3">Languages</h2>
+            <p className="tw-paragraph">
+              Beginner or pro, our comprehensive guides, tutorials, samples, and
+              API docs have you covered.
+            </p>
+            <Link
+              className="button-primary rounded-2xl"
+              href="/docs/current/developer-docs/smart-contracts/write/overview"
+            >
+              View all
+            </Link>
+          </div>
+          <div>
+            <div className="grid md:grid-cols-2 gap-4">
+              {languagesTiles.map((tile, index) => (
+                <Tile tile={tile} key={index} />
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-20">
+          <div>
+            <h2 className="tw-heading-4 md:tw-heading-3">Courses</h2>
+            <Education />
+          </div>
         </div>
       </section>
 
-      <section>
-        <div
-          className="
-          grid
-          auto-cols-fr
-          grid-rows-1
-          grid-cols-1
-          sm:grid-cols-2
-          md:grid-cols-4
-          lg:grid-cols-5
-          px-0
-          gap-3
-        "
-        >
-          {languagesTiles.map((tile, index) => (
-            <Tile tile={tile} key={index} />
-          ))}
+      <div className="grid grid-cols-1 md:grid-cols-[2fr,4fr] gap-24 mt-20">
+        <div>
+          <h2 className="tw-heading-4 md:tw-heading-3">Chain Fusion</h2>
+          <p className="tw-paragraph">
+            Develop cross-chain applications using ICP's direct integrations
+            with other networks
+          </p>
+          <Link
+            className="button-primary rounded-2xl"
+            href="/docs/current/developer-docs/multi-chain/overview"
+          >
+            LEARN MORE
+          </Link>
         </div>
-      </section>
-
-      <section>
-        <Education />
-      </section>
-
-      <section>
-        <div
-          className="
-          grid
-          auto-cols-fr
-          grid-cols-1
-          sm:grid-cols-2 
-          md:grid-cols-4
-          lg:grid-cols-5
-          px-0
-          gap-3
-        "
-        >
-          {chainfusionTiles.map((tile, index) => (
-            <Tile tile={tile} key={index} />
-          ))}
+        <div>
+          <div className="grid md:grid-cols-2 gap-4">
+            {chainfusionTiles.map((tile, index) => (
+              <Tile tile={tile} key={index} />
+            ))}
+          </div>
         </div>
-      </section>
-
-      <section>
-        <div
-          className="
-          grid
-          auto-cols-fr
-          grid-cols-1
-          sm:grid-cols-2
-          md:grid-cols-4
-          lg:grid-cols-5
-          px-0
-          gap-3
-        "
-        >
-          {frameworksTiles.map((tile, index) => (
-            <Tile tile={tile} key={index} />
-          ))}
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-[2fr,4fr] gap-24 mt-20">
+        <div>
+          <h2 className="tw-heading-4 md:tw-heading-3">
+            Quick starts & frameworks
+          </h2>
+          <p className="tw-paragraph">
+            Start deploying on ICP easily with our Quickstart guides for
+            developers, tailored to your preferred language
+          </p>
+          <Link
+            className="button-primary rounded-2xl"
+            href="/docs/current/developer-docs/web-apps/frameworks/juno"
+          >
+            VIEW ALL
+          </Link>
         </div>
-      </section>
+        <div>
+          <div className="grid md:grid-cols-2 gap-4">
+            {frameworksTiles.map((tile, index) => (
+              <Tile tile={tile} key={index} />
+            ))}
+          </div>
+        </div>
+      </div>
 
       <section>
         <Blog />
       </section>
-
-      <section className="bg-infinite -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-[-50px] md:px-[50px] text-white py-10 md:pt-14 md:pb-20">
-        <div className=" bg-gradient-to-r from-[#6A85F199] to-[#C572EF99] rounded-lg px-6 py-8 md:p-8 flex flex-col md:flex-row gap-20">
-          <div className="md:flex-[4] md:flex md:flex-col items-start">
-            <div className="tw-heading-6 mb-10">
-              Contribute to the
-              <br />
-              Internet Computer
-            </div>
-            <h2 className="tw-heading-3 mb-4 sm:w-5/10 md:w-8/10">
-              Help us make the docs better
-            </h2>
-            <p className="tw-paragraph mb-10 sm:w-6/10 md:w-8/10 md:flex-1">
-              These docs are a community effort. Create a PR if you see
-              mistakes, room for improvement, or new opportunities to help IC
-              developers.
-            </p>
-            <Link
-              href="https://github.com/dfinity/portal"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="button-outline-white"
-            >
-              Contribute
-            </Link>
-          </div>
-          <div className="flex flex-col gap-2 md:flex-[5]">
-            {links.map(({ label, href }) => (
+      <div className="grid grid-cols-1 md:grid-cols-[1fr,1fr] gap-4 ">
+        {footerCards.map((card, index) => (
+          <TeaserCardFooter card={card} key={index} className="rounded-lg" />
+        ))}
+      </div>
+      <section className="bg-infinite">
+        <section className="bg-infinite -mx-4 px-4 sm:-mx-8 sm:px-8 md:mx-[-50px] md:px-[50px] text-white py-10 md:pt-14 md:pb-20">
+          <div className=" bg-gradient-to-r from-[#6A85F199] to-[#C572EF99] rounded-lg px-6 py-8 md:p-8 flex flex-col md:flex-row gap-20">
+            <div className="md:flex-[4] md:flex md:flex-col items-start">
+              <div className="tw-heading-6 mb-10">
+                Contribute to the
+                <br />
+                Internet Computer
+              </div>
+              <h2 className="tw-heading-3 mb-4 sm:w-5/10 md:w-8/10">
+                Help us make the docs better
+              </h2>
+              <p className="tw-paragraph mb-10 sm:w-6/10 md:w-8/10 md:flex-1">
+                These docs are a community effort. Create a PR if you see
+                mistakes, room for improvement, or new opportunities to help IC
+                developers.
+              </p>
               <Link
-                className="px-8 py-6 bg-infinite/60 text-white tw-heading-6 flex justify-between items-center gap-4 border border-solid border-[#672AE999] rounded-lg hover:opacity-80 hover:text-white hover:no-underline"
-                href={href}
-                key={label}
+                href="https://github.com/dfinity/portal"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="button-outline-white"
               >
-                {label}
-                <LinkArrowRight />
+                Contribute
               </Link>
-            ))}
+            </div>
+            <div className="flex flex-col gap-2 md:flex-[5]">
+              {links.map(({ label, href }) => (
+                <Link
+                  className="px-8 py-6 bg-infinite/60 text-white tw-heading-6 flex justify-between items-center gap-4 border border-solid border-[#672AE999] rounded-lg hover:opacity-80 hover:text-white hover:no-underline"
+                  href={href}
+                  key={label}
+                >
+                  {label}
+                  <LinkArrowRight />
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
+        </section>
       </section>
     </div>
   );

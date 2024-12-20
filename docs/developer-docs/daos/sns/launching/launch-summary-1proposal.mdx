@@ -8,7 +8,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Governance", "Tutorial"]} />
 
-## Overview
+
 During an SNS launch, a dapp is handed over to the NNS and the NNS both
 creates the SNS canisters and starts a decentralization swap to decentralize the SNS and
 thereby the dapp.
@@ -25,7 +25,7 @@ The NNS community's approval is relevant in Stage 3.
   * The token name, token symbol, ledger transaction fee.
   * The tokenomics and how governance will work.
   * The initial token distribution.
-  * The conditions for the decentralization swap, including the swap's start date and
+  * The conditions for the decentralization swap, including the swap's start time (see Step 8) and
     how many ICP tokens should at least and at most be collected.
 
   Therefore defining these parameters usually requires a lot of preparation and
@@ -342,7 +342,21 @@ If successful, at the end of stage, the following has changed:
 
 At this point, the SNS canisters exist and the dapp canisters are under SNS DAO control. The initial SNS neurons can use SNS proposals to take the last steps to decentralize the dapp canisters, for example by giving certain permissions to the SNS governance canister stating that these functions can only be triggered by SNS DAO proposal. One example of this is the asset canister (see details [here](../managing/sns-asset-canister.mdx)).
 
-### 8. (Automatically) SNS swap starts.
+### 8. Timing protocol for swap start
+
+An algorithm is applied to allow at least 24 hours between the time the CreateServiceNervousSystem proposal is executed and the swap start. For example, if the start time specified in the proposal is 23:30 UTC and the proposal is adopted and executed at 23:20 UTC, then the swap start will be at 23:30 UTC the next day (i.e., in 24 hours and 10 minutes from the proposal execution time).
+
+**WARNING**: The timing protocol for the swap start works differently on the mainnet and in testing.
+
+On the mainnet:
+- Setting the start time to some value (e.g., 23:30 UTC) will allow the swap participants to be prepared for the swap in advance, e.g., by obtaining ICP tokens that they could participate with.
+- If a start time is not specified, the actual start time of the swap will be chosen at random (allowing at least 24 hours and less than 48 hours, as described above).
+
+In testing:
+- Setting the start time to some value works the same as explained above.
+- If a start time is not specified, the swap will begin immediately after the CreateServiceNervousSystem proposal is executed. This facilitates testing in an accelerated manner.
+
+### 9. (Automatically) SNS swap starts.
 The swap was initialized with a defined start time.
 Once this start time is reached,
 the swap will automatically be started and is open for participation.
@@ -392,7 +406,7 @@ This means, you will have the following situation:
   </tr>
 </table>
 
-### 9. (Automatically) SNS swap ends.
+### 10. (Automatically) SNS swap ends.
 The swap was also initialized with a defined end time.
 When this time is reached, the swap automatically ends.
 The swap can also end earlier if the maximum ICP participation is reached before the end
@@ -441,7 +455,7 @@ This means, you will have the following situation:
 </table>
 
 
-### 10. (Automatically) SNS swap finalizes.
+### 11. (Automatically) SNS swap finalizes.
 When the decentralization swap ends, it is first established whether
 it was successful, e.g., enough ICP have been collected.
 If the swap was successful,

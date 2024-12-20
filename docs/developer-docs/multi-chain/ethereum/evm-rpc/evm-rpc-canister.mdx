@@ -21,6 +21,7 @@ The following JSON-RPC methods are available as part of the canister's [Candid i
 - [`eth_getTransactionCount`](https://docs.alchemy.com/reference/eth-gettransactioncount): Queries the number of transactions for a specified address.
 - [`eth_getTransactionReceipt`](https://docs.alchemy.com/reference/eth-gettransactionreceipt): Queries details about a submitted transaction.
 - [`eth_sendRawTransaction`](https://docs.alchemy.com/reference/eth-sendrawtransaction): Submits a signed transaction to the Ethereum network.
+- [`eth_call`](https://docs.alchemy.com/reference/eth-call): Query the state of a smart contract.
 
 Other RPC methods, including those specific to non-Ethereum networks, may be accessed using the canister's `request` method.
 
@@ -33,6 +34,7 @@ The EVM RPC canister has built-in support for the following [Ethereum JSON-RPC p
 - [BlockPI](https://blockpi.io/): Ethereum mainnet, Sepolia testnet, L2 chains.
 - [Cloudflare Web3](https://www.cloudflare.com/application-services/products/web3/): Ethereum mainnet.
 - [Public Node](https://www.publicnode.com/): Ethereum mainnet, Sepolia testnet, L2 chains.
+- [LlamaNodes](https://llamanodes.com/): Ethereum mainnet, Sepolia testnet, L2 chains.
 
 Many of the providers on [ChainList.org](https://chainlist.org/) can be called using the canister's `request` method.
 
@@ -61,7 +63,7 @@ dfx start --background
 
 # Locally deploy the `evm_rpc` canister
 dfx deps pull
-dfx deps init evm_rpc --argument '(record { nodesInSubnet = 31 })'
+dfx deps init evm_rpc --argument '(record {})'
 dfx deps deploy
 ```
 
@@ -86,11 +88,11 @@ Alternatively, you can include the EVM RPC canister by specifying the Candid and
 }
 ```
 
-Then start the local replica and deploy the canister locally with a specified number of nodes (`31` for the [fiduciary subnet](/docs/current/concepts/subnet-types#fiduciary-subnets)):
+Then start the local replica and deploy the canister locally with a specified number of nodes (`31` for the [fiduciary subnet](/docs/current/references/subnets/subnet-types#fiduciary-subnets)):
 
 ```
 dfx start --clean --background
-dfx deploy evm_rpc --argument '(record { nodesInSubnet = 31 })'
+dfx deploy evm_rpc --argument '(record {})'
 ```
 
 ### Fork the EVM RPC canister
@@ -104,10 +106,18 @@ git clone https://github.com/internet-computer-protocol/evm-rpc-canister
 To deploy your own canister on the mainnet, run the `dfx deploy` command with the `--network ic` flag:
 
 ```
-dfx deploy evm_rpc --network ic --argument '(record { nodesInSubnet = 31 })'
+dfx deploy evm_rpc --network ic --argument '(record {})'
 ```
 
 Note that when deploying your own canister, you may encounter API rate limits. Refer to the [replacing API keys](#replacing-api-keys) section to learn how to configure API credentials.
+
+### `ic-alloy`
+
+The [`ic-alloy`](https://github.com/ic-alloy) Rust crate can be used to interact with the EVM RPC canister from Rust code. It simplifies the code necessary to perform common EVM operations.
+
+The `ic-alloy-toolkit` includes a collection of examples demonstrating how `ic-alloy` can be used.
+
+[View the `ic-alloy` documentation for more information](https://o7kje-7yaaa-aaaal-qnaua-cai.icp0.io).
 
 ## Get event logs
 
@@ -407,7 +417,65 @@ dfx canister call evm_rpc eth_getTransactionReceipt "(variant {$RPC_SOURCE}, $RP
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-Calling an Ethereum smart contract from Motoko isn't currently supported.
+```motoko no-repl
+import EvmRpc "canister:evm_rpc";
+
+import Cycles "mo:base/ExperimentalCycles";
+import Debug "mo:base/Debug";
+
+actor {
+  public func call() : async ?Text {
+
+    // Configure RPC request
+    let services = #EthMainnet(null);
+    let config = null;
+
+    // Add cycles to next call
+    Cycles.add<system>(2000000000);
+
+    // Call an Ethereum smart contract. The smart contract's information in this example is hard coded.
+    let result = await EvmRpc.eth_call(services, config, {
+      block = null;
+      transaction = {
+        to = ?"0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48";
+        input = ?"0x70a08231000000000000000000000000b25eA1D493B49a1DeD42aC5B1208cC618f9A9B80"; // ABI-encoded
+        accessList = null;
+        blobVersionedHashes = null;
+        blobs = null;
+        chainId = null;
+        from = null;
+        gas = null;
+        gasPrice = null;
+        maxFeePerBlobGas = null;
+        maxFeePerGas = null;
+        maxPriorityFeePerGas = null;
+        nonce = null;
+        type_ = null;
+        value = null
+      };
+    });
+
+    // Process results
+    switch result {
+      // Prints the response if each RPC provider returns a consistent, successful result
+      case (#Consistent(#Ok response)) {
+        Debug.print("Success: " # debug_show response);
+        ?response // ABI-encoded
+      };
+      // Trap is an RPC provider returns an error message consistent with the response of the other providers
+      case (#Consistent(#Err error)) {
+        Debug.trap("Error: " # debug_show error);
+        null
+      };
+      // Trap if an RPC provider returns a response inconsistent with the other providers
+      case (#Inconsistent(_results)) {
+        Debug.trap("Inconsistent results");
+        null
+      };
+    };
+  };
+};
+```
 
 </TabItem>
 <TabItem value="rust" label="Rust">
@@ -794,7 +862,7 @@ dfx canister call evm_rpc eth_sendRawTransaction "(variant {$RPC_SOURCE}, $RPC_C
 
 :::
 Some JSON-RPC APIs may only return a `NonceTooLow` status when successfully submitting a transaction. This is because during the HTTP outcall consensus, only the first request is successful, while the others reply with a duplicate transaction status.
-If you encounter this issue, one possible workaround is to use a deduplicating proxy server such as the community-built C-ATTS EVM RPC proxy ([source code](https://github.com/c-atts/catts-evm-rpc-proxy)). 
+If you encounter this issue, one possible workaround is to use a deduplicating proxy server such as the community-built C-ATTS EVM RPC proxy ([source code](https://github.com/c-atts/catts-evm-rpc-proxy)).
 :::
 
 ### Error "already known"
@@ -938,15 +1006,6 @@ dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 1000
 </TabItem>
 </AdornedTabs>
 
-## Authorization (local replica)
-
-```bash
-PRINCIPAL=$(dfx identity get-principal)
-dfx canister call evm_rpc authorize "(principal \"$PRINCIPAL\", variant { RegisterProvider })"
-dfx canister call evm_rpc getAuthorized '(variant { RegisterProvider })'
-dfx canister call evm_rpc deauthorize "(principal \"$PRINCIPAL\", variant { RegisterProvider })"
-```
-
 ## Specifying RPC services
 
 `RpcServices` is used to specify which HTTPS outcall APIs to use in the request. There are several ways to use specific JSON-RPC services:
@@ -979,30 +1038,10 @@ type RpcService = variant {
 };
 ```
 
-## Registering your own provider
-
-To register your own RPC provider in your local replica, you can use the following commands:
-
-```bash
-# Authorize your dfx identity to add an RPC provider
-OWNER_PRINCIPAL=$(dfx identity get-principal)
-dfx canister call evm_rpc authorize "(principal \"$OWNER_PRINCIPAL\", variant { RegisterProvider })"
-
-# Register a provider
-dfx canister call evm_rpc registerProvider '(record { chainId=1; hostname="cloudflare-eth.com"; credentialPath="/v1/mainnet"; cyclesPerCall=1000; cyclesPerMessageByte=100; })'
-```
-
-The `registerProvider` command has the following input parameters:
-
-- `chainId`: The ID of the blockchain network.
-- `hostname`: The JSON-RPC API hostname.
-- `credentialPath`: The path to the RPC authentication.
-- `cyclesPerCall`: The amount of cycles charged per RPC call.
-- `cyclesPerMessageByte`: The amount of cycles charged per message byte.
-
 ## Replacing API keys
 
-If you want to add or change the API key in your local replica or a deployed fork of the canister, the first step is to determine the relevant `providerId` for the API.
+If you are a controller or a principal autorized to manage API keys (given upon canister initialization in the `manageApiKeys` field), you can replace the API keys used by the EVM RPC canister.
+The first step is to determine the relevant `providerId` that identifies a supported JSON RPC provider.
 
 Run the following command to view all registered providers:
 
@@ -1013,33 +1052,23 @@ dfx canister call evm_rpc getProviders
 You should see a list of values. Look for the `providerId`, which in this case is `0`:
 
 ```
-(
-  vec {
-    record {
-      cyclesPerCall = 0 : nat64;
-      owner = principal "k3uua-wskan-xmpt3-e5bpx-ibj67-azbop-s26l5-kaakn-64bvk-y4jlc-oqe";
-      hostname = "cloudflare-eth.com";
-      primary = false;
-      chainId = 1 : nat64;
-      cyclesPerMessageByte = 0 : nat64;
-      providerId = 0 : nat64;
-    };
-  }
-)
+record {
+  access = variant {
+    Authenticated = record {
+      publicUrl = opt "https://cloudflare-eth.com/v1/mainnet";
+      auth = variant { BearerToken = record { url = "https://cloudflare-eth.com/v1/mainnet";} };
+    }
+  };
+  alias = opt variant { EthMainnet = variant { Cloudflare } };
+  chainId = 1 : nat64;
+  providerId = 0 : nat64;
+};
 ```
 
-Update the configuration for an existing provider using the `updateProvider` method:
+Update the configuration for an existing provider using the `updateApiKeys` method:
 
 ```bash
-dfx canister call evm_rpc updateProvider '(record { providerId = 0; credentialPath = opt "/path/to/YOUR-API-KEY" })'
-```
-
-Note that `credentialPath` should include everything after the hostname. For example, an RPC provider with hostname `rpc.example.org` and credential path `/path/to/secret` will resolve to `https://rpc.example.org/path/to/secret`.
-
-Some RPC services expect the API key in a request header instead of a URI path. In this case, use a command such as the following:
-
-```bash
-dfx canister call evm_rpc updateProvider '(record { providerId = 0; credentialHeaders = opt vec { record { name = "HEADER_NAME"; value = "HEADER_VALUE" } } })'
+dfx canister call evm_rpc updateApiKeys '(vec { record { 0 : nat64;  opt "YOUR-API-KEY" } } )'
 ```
 
 ## Error messages

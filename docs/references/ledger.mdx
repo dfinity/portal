@@ -4,7 +4,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Reference"]} />
 
-## Overview
+
 This document is a specification of the public interface of the ledger canister. It provides an overview of the functionality, details some internal aspects, and documents publicly available methods. It also provides an abstract mathematical model precisely describing the expected behavior of the methods implemented by the canister, albeit at a somewhat high level of abstraction.
 
 :::info
@@ -41,7 +41,7 @@ The ledger canister keeps track of **accounts**:
 The following call to the method `account_identifier` on the ledger canister (`ryjl3-tyaaa-aaaaa-aaaba-cai`) can be used to get the account identifier of the first subaccount for your principal; replace the value `PRINCIPAL` with your account's principal: 
 
 ```
-dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai account_identifier '(record {owner = principal "PRINCIPAL"; subaccount = opt blob "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\01" })' --candid rs/rosetta-api/icp_ledger/ledger.did
+dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai account_identifier '(record {owner = principal "PRINCIPAL"; subaccount = opt blob "\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\00\01" })' --candid rs/ledger_suite/icp/ledger.did
 
 (
   blob "\af^\f8\c2R\e0/\07\f5;%\d4\1a\ac\a4\9cB\0a\94\1a\94\9c\e2X\fc\85\bdn\c51N\1c",
