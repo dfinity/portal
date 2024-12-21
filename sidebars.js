@@ -66,9 +66,12 @@ const sidebars = {
       items: [
         {
           type: "category",
-          label: "What are canister smart contracts?",
+          label: "What are canisters?",
+	  link: {
+            type: "doc",
+            id: "developer-docs/smart-contracts/overview/introduction",
+          },
           items: [
-            "developer-docs/smart-contracts/overview/introduction",
             "developer-docs/smart-contracts/overview/inside-canisters",
             "developer-docs/smart-contracts/development-workflow",
             "developer-docs/smart-contracts/overview/trust-in-canisters",
@@ -519,7 +522,6 @@ const sidebars = {
             id: "developer-docs/web-apps/application-frontends/overview",
           },
           items: [
-            "developer-docs/web-apps/application-frontends/default-frontend",
             "developer-docs/web-apps/application-frontends/existing-frontend",
             "developer-docs/web-apps/application-frontends/asset-security",
             "developer-docs/web-apps/application-frontends/webpack",
@@ -955,14 +957,13 @@ const sidebars = {
                     },
                   ],
                 },
-
-                {
-                  type: "doc",
-                  label: "Exchange rate canister",
-                  id: "developer-docs/defi/exchange-rate-canister",
-                },
-              ]
-            }
+              ],
+            },
+	{
+	  type: "doc",
+	  label: "Exchange rate canister",
+	  id: "developer-docs/defi/exchange-rate-canister",
+	},
           ],
         },
         {
