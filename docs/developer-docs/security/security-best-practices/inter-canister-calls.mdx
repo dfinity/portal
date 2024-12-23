@@ -311,7 +311,11 @@ Finally, note that the same guard can be used in several methods to restrict par
 
 As stated by the Property 6 above, inter-canister calls can fail in which case they result in a **reject**. See [reject codes](/docs/current/references/ic-interface-spec#reject-codes) for more detail. The caller must correctly deal with the reject cases, as they can happen in normal operation, because of insufficient cycles on the sender or receiver side, or even for reasons outside of the sender's or receiver's control, like the system (Internet Computer) being under heavy load (e.g., message queues becoming full).
 
-Not handling the error cases correctly is risky: For example, if a ledger transfer results in an error, the callback dealing with that error must interpret it correctly. That is, it should be interpreted as "the transfer did not happen", unless the call was issued as a best-effort response call, and the system responded with a `SYS_UNKNOWN` error code. In this case, the caller cannot be a priori sure whether the call took effect or not. 
+Not handling the reject cases correctly is risky: For example, if a ledger transfer results in a reject, the callback dealing with that error must interpret it correctly. That is, it should be interpreted as "the transfer did not happen", unless:
+
+1. the call was issued as a best-effort response call, and the system responded with a `SYS_UNKNOWN` reject code. In this case, the caller cannot be a priori sure whether the call took effect or not.
+2. the system responded with a `CANISTER_ERROR` reject code. This indicates a bug in the ledger canister. In this case, it is still possible that the call had a partial effect on the ledger canister.
+3. the system responded with a `CANISTER_REJECT` reject code. This means that the call was explicitly rejected by the ledger canister. Normally, this indicates that the transfer didn't happen, but this depends on the ledger canister. The ICP ledger canister for example never rejects calls explicitly.
 
 ### Recommendation
 
@@ -323,7 +327,7 @@ When making inter-canister calls, always handle the error cases (rejects) correc
 
 - If inter-canister calls are made to potentially malicious canisters, this can lead to DoS issues or there could be issues related to candid decoding. Also, the data returned from a canister call could be assumed to be trustworthy when it is not.
 
-- When a canister `C1` calls a canister `C2` using a guaranteed-response inter-canister call, and `C2` stalls the response indefinitely by not responding, the result would be a DoS on `C1`. Additionally, since the call registers a callback on `C1`, `C1` can no longer be stopped because of the outstanding callback, and thus can no longer be cleanly upgraded. Recovery would require wiping the state of the canister by reinstalling it. Note that even if `C2` was trustworthy it could still stall indefinitely. This could happen due to a bug, however, such a bug seems rather unlikely to occur. But yet another cause could be a stall of the subnet hosting `C2` (assuming that `C1` and `C2` are on different subnets).
+- When a canister `C1` calls a canister `C2` using a guaranteed-response inter-canister call, and `C2` stalls the response indefinitely by not responding, the result would be a DoS on `C1`. Additionally, since the call registers a callback on `C1`, `C1` can no longer be stopped because of the outstanding callback, and thus can no longer be cleanly upgraded. Recovery would require wiping the state of the canister by reinstalling it. Note that even if `C2` was trustworthy it could still stall indefinitely. This could happen due to a bug in`C2` (which is rather unlikely to occur). But other causes could be a stall of the subnet hosting `C2` (assuming that `C1` and `C2` are on different subnets), or `C2` making a downstream call to an untrusted canister `C3`.
 
 - In summary, this can DoS a canister, consume an excessive amount of resources, or lead to logic bugs if the behavior of the canister depends on the inter-canister call response.
 

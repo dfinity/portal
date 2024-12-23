@@ -6,7 +6,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Asynchronous messaging model
 
-ICP relies on an asynchronous messaging model. Compared to synchronous messaging like on Ethereum, this provides performance advantages because multiple calls can be executed in parallel. However, asynchronous message execution can also lead to sometimes unexpected or unintuitive behavior. Therefore, it is important to understand the properties of message execution. Potential security issues that arise in this model, such as reentrancy bugs, are discussed in the [security best practices on inter-canister calls](/docs/current/developer-docs/security/security-best-practices/inter-canister-calls).  
+ICP relies on an asynchronous messaging model. Compared to synchronous messaging like on Ethereum, this provides performance advantages because multiple calls can be executed concurrently — and also in parallel, when multiple canisters are involved. However, asynchronous message execution can also lead to sometimes unexpected or unintuitive behavior. Therefore, it is important to understand the properties of message execution. Potential security issues that arise in this model, such as reentrancy bugs, are discussed in the [security best practices on inter-canister calls](/docs/current/developer-docs/security/security-best-practices/inter-canister-calls).
 
 The [community conversation on security best practices](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s) also discusses the messaging properties.
 
@@ -18,7 +18,9 @@ These entry points can be called either by external users through the IC's HTTP 
 
 A **message execution** is a set of consecutive instructions that a subnet executes when a canister's method is invoked. The code execution for any such method can be split into several message executions if the method makes inter-canister calls. The following properties are essential:
 
-- **Property 1**: Only a single message execution is run at a time per canister. Message execution is atomic and sequential, and never parallel.
+- **Property 1**: Only a single message execution is run at a time per canister. Message execution within a single canister is atomic and sequential, and never parallel.
+
+Note that parallel message execution over multiple canisters is possible — this property talks about just a single canister.
 
 - **Property 2**: Each downstream call that a canister makes, query or update, triggers a message. When using `await` on the response from an inter-canister call, the code after the `await` (the callback, highlighted in blue) is executed as a separate message execution.
 
