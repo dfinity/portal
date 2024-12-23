@@ -17,7 +17,7 @@ request has been processed. For example, this can happen if the client loses its
 connection until the request status has been removed from the state tree, since ICP will remove the request from the system state tree some time after the ingress expiry.
 Similarly, canisters which call other canisters using calls with best-effort responses may be unable to determine whether the call was successful or not.
 
-This can be risky as the callers (applications or canisters) might decide to retry transactions, potentially leading to serious security vulnerabilities such as double spending. 
+This can be risky as the callers (external users or applications for ingress messages, or canisters for inter-canister calls) might decide to retry transactions, potentially leading to serious security vulnerabilities such as double spending.
 
 Thus, it is important to design and/or use canister APIs such that it is possible to retry requests safely, even when the ICP provides no information about previous request attempts. This page describes general approaches that both the canister authors and the clients can adopt to enable safe retries.
 
