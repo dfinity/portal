@@ -4981,5 +4981,31 @@
     "usesInternetIdentity": true,
     "display": "Normal",
     "logo": "/img/showcase/codegov_logo.svg"
+  },
+  {
+    "id": "ic-oss",
+    "name": "IC-OSS",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/ldclabs/ic-oss",
+    "description": "A decentralized Object Storage Service on ICP.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/icpanda_logo.svg"
+  },
+  {
+    "id": "cload",
+    "name": "CLOAD",
+    "tags": [
+      "Gaming",
+      "Creator Economy"
+    ],
+    "website": "https://cload.one/",
+    "twitter": "https://x.com/Cload_app",
+    "description": "A marketplace to discover new and exciting web3 dapps and games.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/cload_logo.svg"
   }
 ]
