@@ -3,22 +3,28 @@ keywords: [beginner, concept, asset custody, hardware wallets, cli tool]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
 
 # Using a hardware wallet
 
 <MarkdownChipRow labels={["Beginner" , "Tutorial"]} />
 
-
-
 A hardware wallet is a physical ledger device that is used to store assets. Hardware wallets are protected by a seed phase, similar to software wallets, but they can be disconnected from the internet whenever they are ejected from your computer.
 
 The DFINITY `hardware-wallet-cli` tool is designed to integrate with [Ledger Nano USB devices](https://shop.ledger.com/products/ledger-nano-x).
 
-### Prerequisites
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
+<div>
+</div>
+<input type="checkbox"/> Have a Ledger Nano device.
+<div>
+</div>
+<input type="checkbox"/><a href="https://nodejs.org/en/download/">Install Node.js</a>
 
-- Have a Ledger Nano device.
-
-- Download and install [`Node.js`](https://nodejs.org/en/download/).
+</TabItem>
+</Tabs>
 
 ## Ledger Nano device setup
 
