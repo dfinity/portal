@@ -3341,16 +3341,15 @@
   {
     "id": "datapond",
     "name": "Datapond",
-    "oneLiner": "A hub for exposing and tracing data used by AI to generate results.",
-    "website": "https://recheck.io/",
+    "oneLiner": "A blockchain-based, AI data marketplace that empowers data providers to publish content securely and track usage by AI agents.",
+    "website": "https://datapond.ai/",
     "tags": [
       "Tools / Infrastructure",
       "Enterprise",
       "AI"
     ],
-    "twitter": "https://twitter.com/recheck_io",
+    "twitter": "https://x.com/DataPondAI",
     "github": "https://github.com/ReCheck-io/icp-datapond-integration",
-    "description": "DataPond is a hub for exposing and tracing data used by AI to generate results. It enables end users and businesses to store files on Internet Computer and to control how they are consumed by AI tools as input for training, reasoning, or producing answers. DataPond is available as an open-source toolbox for developers who want to bridge their decentralized applications with AI transparently and efficiently.",
     "usesInternetIdentity": true,
     "display": "Normal",
     "logo": "/img/showcase/ReCheck_logo.png",
@@ -4833,5 +4832,154 @@
     "usesInternetIdentity": true,
     "display": "Normal",
     "logo": "/img/showcase/icptokens_logo.svg"
+  },
+  {
+    "id": "motoko-regex-engine",
+    "name": "Motoko Regex Engine",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/demali-876/motoko_regex_engine",
+    "description": "A Motoko library for native pattern matching.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/regex_engine.svg"
+  },
+  {
+    "id": "icspore",
+    "name": "ICSpore",
+    "tags": [
+      "DeFi"
+    ],
+    "website": "https://qnoqa-vaaaa-aaaap-qhima-cai.icp0.io/",
+    "github": "https://github.com/ICSpore/dca-v1",
+    "twitter": "https://x.com/icspore",
+    "description": "An automated, dollar-cost-averaging solution for purchasing ICP.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/icspore_logo.svg"
+  },
+  {
+    "id": "stable-fs",
+    "name": "Stable-fs",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/wasm-forge/stable-fs",
+    "description": "A file system implemented on top of the stable memory in an ICP canister.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/stablefs_logo.svg"
+  },
+  {
+    "id": "plonk-verifier",
+    "name": "Plonk Verifier",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/lightec-xyz/plonk_verifier_on_icp",
+    "description": "A verifier of gnark plonk, a well-known zero-knowledge scheme, using an ICP canister.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/plonkverifier_logo.svg"
+  },
+  {
+    "id": "neverendsart",
+    "name": "NeverEndsArt",
+    "tags": [
+      "AI"
+    ],
+    "website": "https://mx6ql-zyaaa-aaaak-akxpa-cai.icp0.io/",
+    "description": "A decentralized AI Video generation platform.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/neverendsart_logo.svg"
+  },
+  {
+    "id": "icpkotlinkit",
+    "name": "ICP Kotlin Kit",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/ThomasConstantinBity/ICP-Kotlin-Kit",
+    "description": "A set of open-source Kotlin libraries for interacting with ICP.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/ic4jagentlite_logo.svg"
+  },
+  {
+    "id": "daoventure",
+    "name": "DAO Venture",
+    "tags": [
+      "Gaming"
+    ],
+    "website": "https://bpo6s-4qaaa-aaaap-acava-cai.icp0.io/",
+    "github": "https://github.com/edjCase/DAO-Venture",
+    "description": "A simple roguelite adventure where players collectively build and govern the game through a DAO.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/daoventure_logo.svg"
+  },
+  {
+    "id": "IC4J Agent Lite",
+    "name": "IC4J Agent Lite",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/nikhil5642/ic4j-agent-lite",
+    "description": "A lighter version of IC4J Agent that allows Java applications to interact with ICP",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/kotlinkit_logo.svg"
+  },
+  {
+    "id": "pawsarena",
+    "name": "Paws Arena",
+    "tags": [
+      "Gaming"
+    ],
+    "website": "https://knbkj-fiaaa-aaaan-qaadq-cai.ic0.app/",
+    "description": "A fun, play-to-earn game based on cute kittens.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/pawsarena_logo.svg"
+  },
+  {
+    "id": "solutio",
+    "name": "Solutio",
+    "tags": [
+      "Creator Economy"
+    ],
+    "website": "https://home.solutio.one/",
+    "twitter": "https://x.com/SolutioApp",
+    "description": "An app to share ideas, support projects you believe in, and earn rewards for building great tools.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/solutio_logo.svg"
+  },
+  {
+    "id": "lendfinity",
+    "name": "Lendfinity",
+    "tags": [
+      "DeFi"
+    ],
+    "website": "https://www.lendfinity.xyz/",
+    "twitter": "https://x.com/lendfinity_xyz",
+    "description": "The only lending protocol that enables borrowing and lending of ICRC-1 tokens and Runes from an EVM environment.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/lendfinity_logo.svg"
+  },
+  {
+    "id": "tallybot",
+    "name": "Tally Bot",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/CodeGov-org/proposal-tracker",
+    "description": "An OpenChat bot that enables tracking proposals of NNS / SNS and preset voters.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/codegov_logo.svg"
   }
 ]
