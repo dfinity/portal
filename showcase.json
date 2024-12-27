@@ -3341,7 +3341,7 @@
   {
     "id": "datapond",
     "name": "Datapond",
-    "oneLiner": "A blockchain-based, AI data marketplace that empowers data providers to publish content securely and track usage by AI agents.",
+    "description": "A blockchain-based, AI data marketplace that empowers data providers to publish content securely and track usage by AI agents.",
     "website": "https://datapond.ai/",
     "tags": [
       "Tools / Infrastructure",
@@ -4843,7 +4843,7 @@
     "description": "A Motoko library for native pattern matching.",
     "usesInternetIdentity": false,
     "display": "Normal",
-    "logo": "/img/showcase/regex_engine.svg"
+    "logo": "/img/showcase/regex_engine_logo.svg"
   },
   {
     "id": "icspore",
@@ -4993,20 +4993,6 @@
     "usesInternetIdentity": true,
     "display": "Normal",
     "logo": "/img/showcase/icpanda_logo.svg"
-  },
-  {
-    "id": "cload",
-    "name": "CLOAD",
-    "tags": [
-      "Gaming",
-      "Creator Economy"
-    ],
-    "website": "https://cload.one/",
-    "twitter": "https://x.com/Cload_app",
-    "description": "A marketplace to discover new and exciting web3 dapps and games.",
-    "usesInternetIdentity": true,
-    "display": "Normal",
-    "logo": "/img/showcase/cload_logo.svg"
   },
   {
     "id": "cload",
