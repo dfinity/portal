@@ -3341,7 +3341,7 @@
   {
     "id": "datapond",
     "name": "Datapond",
-    "description": "A blockchain-based, AI data marketplace that empowers data providers to publish content securely and track usage by AI agents.",
+    "description": "A blockchain-powered AI data marketplace enabling data providers to securely publish content and track its usage with AI agents.",
     "website": "https://datapond.ai/",
     "tags": [
       "Tools / Infrastructure",
