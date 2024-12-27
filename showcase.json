@@ -5007,5 +5007,32 @@
     "usesInternetIdentity": true,
     "display": "Normal",
     "logo": "/img/showcase/cload_logo.svg"
+  },
+  {
+    "id": "cload",
+    "name": "CLOAD",
+    "tags": [
+      "Gaming",
+      "Creator Economy"
+    ],
+    "website": "https://cload.one/",
+    "twitter": "https://x.com/Cload_app",
+    "description": "A marketplace to discover new and exciting web3 dapps and games.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/cload_logo.svg"
+  },
+  {
+    "id": "claimlink",
+    "name": "ClaimLink",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://claimlink.xyz/",
+    "twitter": "https://x.com/ClaimLinkXYZ",
+    "description": "A dapp that allows anyone to seamlessly create campaigns, generate claim links or QR codes, and claim rewards.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/claimlink_logo.svg"
   }
 ]
