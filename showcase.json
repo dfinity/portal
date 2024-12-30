@@ -1297,7 +1297,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "ICPipeline is your self-contained, n-tiered development and testing platform, designed and built specifically for the Internet Computer ecosystem. On-demand dev tooling for the next generation of IC/Web3 applications.\n",
+    "description": "ICPipeline is your self-contained, n-tiered development and testing platform, designed and built specifically for the Internet Computer ecosystem. On-demand dev tooling for the next generation of IC/Web3 applications.",
     "github": "https://github.com/icpipeline-framework",
     "usesInternetIdentity": false,
     "display": "Normal",
@@ -2454,7 +2454,7 @@
   },
   {
     "name": "aVa",
-    "description": "aVa: Action-Based Decentralized Reputation Landscape.\nEach step you take alters the collective reputation of projects, services, products, or individuals, all within a transparent and decentralized setting.\nImmerse in projects using Internet Identity, and observe your reputation escalate in tandem with your accomplishments.",
+    "description": "aVa: Action-Based Decentralized Reputation Landscape.Each step you take alters the collective reputation of projects, services, products, or individuals, all within a transparent and decentralized setting.Immerse in projects using Internet Identity, and observe your reputation escalate in tandem with your accomplishments.",
     "website": "https://ksayv-myaaa-aaaan-qedxq-cai.icp0.io",
     "logo": "/img/showcase/ava_logo.webp",
     "screenshots": [
@@ -2566,7 +2566,7 @@
   },
   {
     "name": "DooCoins",
-    "description": "Reward your kids with DooCoins for their good behaviour, completing chores, and personal achievements.\n",
+    "description": "Reward your kids with DooCoins for their good behaviour, completing chores, and personal achievements.",
     "website": "https://www.doo.co",
     "logo": "/img/showcase/doocoins_logo.webp",
     "screenshots": [
