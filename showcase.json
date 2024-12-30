@@ -1297,7 +1297,7 @@
     "tags": [
       "Tools / Infrastructure"
     ],
-    "description": "ICPipeline is your self-contained, n-tiered development and testing platform, designed and built specifically for the Internet Computer ecosystem. On-demand dev tooling for the next generation of IC/Web3 applications.",
+    "description": "ICPipeline is your self-contained, n-tiered development and testing platform, designed and built specifically for the Internet Computer ecosystem. On-demand dev tooling for the next generation of IC/Web3 applications.\n",
     "github": "https://github.com/icpipeline-framework",
     "usesInternetIdentity": false,
     "display": "Normal",
@@ -2454,7 +2454,7 @@
   },
   {
     "name": "aVa",
-    "description": "aVa: Action-Based Decentralized Reputation Landscape.Each step you take alters the collective reputation of projects, services, products, or individuals, all within a transparent and decentralized setting.Immerse in projects using Internet Identity, and observe your reputation escalate in tandem with your accomplishments.",
+    "description": "aVa: Action-Based Decentralized Reputation Landscape.\nEach step you take alters the collective reputation of projects, services, products, or individuals, all within a transparent and decentralized setting.\nImmerse in projects using Internet Identity, and observe your reputation escalate in tandem with your accomplishments.",
     "website": "https://ksayv-myaaa-aaaan-qedxq-cai.icp0.io",
     "logo": "/img/showcase/ava_logo.webp",
     "screenshots": [
@@ -2475,7 +2475,7 @@
   },
   {
     "name": "Open Internet Metaverse",
-    "description": "OIM is the 1st Onchain 3D-Web. It allows you to create virtual spaces and host them like Websites on the Internet Computer - everything in 3D. You can include 3D objects, images, videos, and more in your spaces and thus make it your home on the 3D Web. By linking to others' spaces, you can create your personal virtual neighborhood in the Metaverse (aka Internet).",
+    "description": "OIM is the 1st Onchain 3D-Web. It allows you to create virtual spaces and host them like Websites on the Internet Computer - everything in 3D. You can include 3D objects, images, videos, and more in your spaces and thus make it your home on the 3D Web. By linking to others' spaces, you can create your personal virtual neighborhood in the \"Metaverse\" (aka Internet).",
     "website": "https://vdfyi-uaaaa-aaaai-acptq-cai.ic0.app",
     "logo": "/img/showcase/open-internet-metaverse_logo.webp",
     "screenshots": [],
@@ -2566,7 +2566,7 @@
   },
   {
     "name": "DooCoins",
-    "description": "Reward your kids with DooCoins for their good behaviour, completing chores, and personal achievements.",
+    "description": "Reward your kids with DooCoins for their good behaviour, completing chores, and personal achievements.\n",
     "website": "https://www.doo.co",
     "logo": "/img/showcase/doocoins_logo.webp",
     "screenshots": [
@@ -3046,7 +3046,7 @@
   },
   {
     "name": "ICSoccerWorld",
-    "description": "Soccer simulation built for ICP using ICPP. Based on code sample from book AI Game Programming by Example. Demo is built in C++ and uses Jolt physics Engine.",
+    "description": "Soccer simulation built for ICP using ICPP. Based on code sample from book \"AI Game Programming by Example\". Demo is built in C++ and uses Jolt physics Engine.",
     "website": "https://gb4ri-5yaaa-aaaal-ac3hq-cai.raw.icp0.io/",
     "logo": "/img/showcase/ICSoccerWorld.png",
     "display": "Normal",
