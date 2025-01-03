@@ -32,9 +32,9 @@ When creating a new project with the command `dfx new`, you will have the option
 This extra feature will add the **pullable** version of the Internet identity canister to your project. A pullable canister is a canister that provides a public service at a static canister ID. [Learn more about pullable canisters](/docs/current/developer-docs/smart-contracts/maintain/import).
 
 #### Using an existing project
-<summary>If you already have a project without the extra <strong>Internet Identity</strong> feature</summary>
 
-1. Add the canister configuration:
+If you already have a project that was not created with the extra Internet Identity feature, you can modify the project to use the pullable Internet Identity canister.
+First, add the canister configuration to the project's `dfx.json` file:
    ```json title="dfx.json"
    {
      "canisters": {
