@@ -54,7 +54,7 @@ const redirects = `
   /docs/rust-guide/rust-intro /docs/current/developer-docs/backend/rust/
   /docs/languages/languages-overview /docs/current/developer-docs/smart-contracts/write/overview
   /docs/current/developer-docs/smart-contracts/write/choosing-language /docs/current/developer-docs/smart-contracts/write/overview
-  /docs/current/developer-docs/frontend/my-contacts /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet
+  /docs/current/developer-docs/frontend/my-contacts /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/ic-interface-spec /docs/current/references/ic-interface-spec
   /docs/interface-spec /docs/current/references/ic-interface-spec
   /docs/current/developer-docs/updates/computation-and-storage-costs /docs/current/developer-docs/gas-cost
@@ -77,7 +77,7 @@ const redirects = `
   /docs/current/developer-docs/build/using-an-agent /docs/current/developer-docs/smart-contracts/write/overview
   /docs/current/developer-docs/build/backend/reproducible-builds /docs/current/developer-docs/smart-contracts/best-practices/reproducible-builds
   /docs/current/developer-docs/build/cdks/ /docs/current/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/build/frontend/default-frontend /docs/current/developer-docs/web-apps/application-frontends/default-frontend
+  /docs/current/developer-docs/build/frontend/default-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/current/developer-docs/build/frontend/webpack-config /docs/current/developer-docs/web-apps/application-frontends/overview#modifying-the-webpack-configuration
   /docs/current/developer-docs/build/install-upgrade-remove /docs/current/developer-docs/getting-started/install
   /docs/current/developer-docs/build/languages/rust/* /docs/current/developer-docs/backend/rust/
@@ -109,8 +109,8 @@ const redirects = `
   /docs/developers-guide/sdk-guide /docs/current/developer-docs/getting-started/install
   /docs/developers-guide/troubleshooting /docs/current/developer-docs/getting-started/troubleshooting
   /docs/developers-guide/tutorials-intro /docs/current/motoko/main/getting-started/motoko-introduction
-  /docs/developers-guide/tutorials/default-frontend /docs/current/developer-docs/web-apps/application-frontends/default-frontend
-  /docs/developers-guide/tutorials/my-contacts /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet
+  /docs/developers-guide/tutorials/default-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
+  /docs/developers-guide/tutorials/my-contacts /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/developers-guide/webpack-config /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/developers-guide/work-with-languages /docs/current/developer-docs/smart-contracts/write/overview
   /docs/developers-guide/working-with-canisters /docs/current/developer-docs/smart-contracts/maintain/settings
@@ -339,8 +339,8 @@ const redirects = `
   /docs/current/developer-docs/setup/best-practices/storage /docs/current/developer-docs/smart-contracts/best-practices/storage
   /docs/current/developer-docs/setup/best-practices/troubleshooting /docs/current/developer-docs/smart-contracts/best-practices/troubleshooting
   /docs/current/developer-docs/frontend/ /docs/current/developer-docs/web-apps/application-frontends/overview
-  /docs/current/developer-docs/frontend/default-frontend /docs/current/developer-docs/web-apps/application-frontends/default-frontend
-  /docs/current/developer-docs/frontend/add-stylesheet /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet
+  /docs/current/developer-docs/frontend/default-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
+  /docs/current/developer-docs/frontend/add-stylesheet /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/current/developer-docs/frontend/boilerplate-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/current/developer-docs/frontend/existing-frontend /docs/current/developer-docs/web-apps/application-frontends/existing-frontend
   /docs/current/developer-docs/production/custom-domain/ /docs/current/developer-docs/web-apps/custom-domains/using-custom-domains
@@ -597,8 +597,8 @@ const redirects = `
   /docs/current/references/t-ecdsa-how-it-works /docs/current/references/t-sigs-how-it-works
   /docs/current/developer-docs/web-apps/application-frontends/bundlers /docs/current/developer-docs/web-apps/application-frontends/webpack
   /docs/current/developer-docs/web-apps/application-frontends/webpack-dev-server /docs/current/developer-docs/web-apps/application-frontends/webpack
-  /docs/current/developer-docs/web-apps/application-frontends/serving-static-assets /docs/current/developer-docs/web-apps/application-frontends/default-frontend
-  /docs/current/developer-docs/web-apps/application-frontends/custom-frontend /docs/current/developer-docs/web-apps/application-frontends/default-frontend
+  /docs/current/developer-docs/web-apps/application-frontends/serving-static-assets /docs/current/developer-docs/web-apps/application-frontends/overview
+  /docs/current/developer-docs/web-apps/application-frontends/custom-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/current/developer-docs/security/rust-canister-development-security-best-practices /docs/current/developer-docs/security/security-best-practices/inter-canister-calls
   /docs/developers-guide/computation-and-storage-costs.html /docs/current/developer-docs/gas-cost
   /docs/current/developer-docs/getting-started/ /docs/current/developer-docs/getting-started/network-overview
@@ -657,6 +657,10 @@ const redirects = `
   /docs/current/developer-docs/defi/tokens/ledger/usage/overview /docs/current/developer-docs/defi/overview
   /docs/current/developer-docs/web-apps/obtain-verify-ic-pubkey /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-ping
   /docs/current/developer-docs/web-apps/design-dapps /docs/current/developer-docs/smart-contracts/overview/introduction
+  /docs/current/developer-docs/smart-contracts/candid /docs/current/developer-docs/smart-contracts/candid/candid-concepts
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/* /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet /docs/current/developer-docs/web-apps/application-frontends/overview
+  /docs/current/developer-docs/web-apps/application-frontends/default-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())

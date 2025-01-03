@@ -5,46 +5,89 @@ keywords: [beginner, tutorial, maintain canisters, import, pullable canisters]
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
-# Import
+# Using third-party canisters
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
+Third-party canisters are canisters created by DFINITY or ICP community members that provide an important functionality that other developers may want to integrate within their own projects. It is important to test integrations with these canisters locally to:
 
+- Validate the accuracy of the integration and other canister code.
+- Test without paying <GlossaryTooltip>cycles</GlossaryTooltip>.
+- Use non-production data and environments.
+- Execute operations faster when run locally.
 
-The interoperability of <GlossaryTooltip>canisters</GlossaryTooltip> is a vital feature for many developers. `dfx` provides a consistent developer workflow for creating, integrating and testing third-party canisters with local developer environments.
+To integrate with third-party canisters and test them within your project, you can either:
 
-Third-party canisters include canisters created by DFINITY or by developers in ICP community. Developers depend on third-party canisters to integrate with. They typically need a way to develop and test the integrations locally for:
-- Validating the accuracy of the integration and other canister code.
-- Testing without paying <GlossaryTooltip>cycles</GlossaryTooltip>.
-- Using non-production data and environments.
-- Faster completion time when run locally.
+- If the canister's Candid and Wasm files are publicly available, the URLs of the files can be referenced directly in the project's `dfx.json` file.
 
-To pull these canisters from the mainnet to be tested locally, the [`dfx deps`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-deps) command and workflow can be used.
+- If the canister is configured as `pullable`, it can be pulled into a project with `dfx deps`.
 
-In this workflow, a **service provider** configures a canister to be `pullable`, then deploys the canister to the mainnet. A service provider can be any community developer creating a public, third-party canister.
+## Using a canister's Candid and Wasm files directly
 
-Then a **service consumer** can pull the canister as a dependency directly from the mainnet and then deploy the dependency locally.
+If a canister's Candid and Wasm files are publicly available, you can reference them directly in a project's `dfx.json` file.
 
-## Determining if a canister should be `pullable`
+If the canister is deployed to the mainnet, you can also specify the `remote` canister ID. When your project is deployed to the mainnet, it will use the mainnet canister with that ID. When your project is deployed locally, `dfx` will download the specified Candid and Wasm files and create a new local canister using them.
 
-First the canister must be configured to be `pullable`. Developers must ask question whether the canister *should* be `pullable`?
+```json
+{
+  "canisters": {
+    "icp_ledger_canister": {
+      "type": "custom",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/ledger_suite/icp/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ledger-canister.wasm.gz",
+      "remote": {
+        "id": {
+          "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
+        }
+      },
+...
+```
 
-#### `Pullable` examples:
+Alternatively, you can reference Candid and Wasm files stored in your local environment:
 
-If a canister is providing a public service at a static canister ID, then it makes sense for the canister to be `pullable`.
+```json
+{
+  "canisters": {
+    "icp_ledger_canister": {
+      "type": "custom",
+      "candid": "ledger.did",
+      "wasm": "ledger-canister.wasm.gz",
+      "remote": {
+        "id": {
+          "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
+        }
+      },
+...
+```
 
-If a service canister depends on other canisters, those dependencies should also be `pullable`.
+An example of using this method is the [XRC demo project.](https://github.com/THLO/xrc_demo/blob/main/dfx.json#L15)
 
-#### Non-`pullable` examples:
+## Using `dfx deps` to pull third-party canisters
 
-If the canister is meant for personal use and not intended for others, the canister should not be `pullable`.
+The  command and workflow can be used to pull third-party canisters into a project that is deployed locally or on the mainnet.
 
-If a canister's Wasm is published for other developers to use, then the canister should not be `pullable` since the canister ID of the instance is not static. Users can test integrations locally and deploy them using the Wasm file directly.
+In this workflow, a **service provider** configures a canister to be `pullable`, then deploys the canister to the mainnet. A service provider can be anyone, such as a community developer creating a public, third-party canister.
 
-## Service provider workflow
-First, a service provider must configure a canister to be `pullable` by setting it as such in the `dfx.json` file.
+Then a **service consumer** can pull the canister as a dependency directly from the mainnet using [`dfx deps`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-deps) and deploy the dependency locally.
 
-An example of a provider `dfx.json` which has a `pullable` "service" canister can be found below:
+### Determining if a canister should be `pullable`
+
+First the canister must be configured to be `pullable`. Developers must ask question whether the canister *should* be `pullable`? Canisters should be `pullable` if it provides a public service at a static canister ID. If it depends on other canisters, those dependencies should also be `pullable`.
+
+### Configuring a canister to be `pullable`
+
+A service provider must configure a canister to be `pullable` by setting the following configuration details in the project's `dfx.json` file:
+
+- `wasm_url`: A URL used to download the canister Wasm module which will be deployed locally.
+- `wasm_hash`: A SHA256 hash of the Wasm module located at `wasm_url`. This field is optional. In most cases, the Wasm module at `wasm_url` will be the same as the onchain Wasm module. This means that `dfx` can read the state tree to obtain and verify the module hash. In some cases, the Wasm module at `wasm_url` is not the same as the onchain Wasm module. For example, the Internet Identity canister provides a `development` variant to be integrated locally. In these cases, `wasm_hash` provides the expected hash, and `dfx` verifies the downloaded Wasm against this.
+
+:::caution
+If the `wasm_hash` of the Wasm module at `wasm_url` does not match, `dfx` will abort with an error message indicating that there is a hash mismatch. In this scenario, the service consumer should contact the service provider. It is the responsibility of the service provider to assure that the correct Wasm module can be downloaded from the `wasm_url`.
+:::
+
+- `dependencies`: An array of canister IDs (`Principal`) of direct dependencies.
+- `init_guide`: A message to guide consumers how to initialize the canister.
+
 
 ```json
 {
@@ -66,55 +109,35 @@ An example of a provider `dfx.json` which has a `pullable` "service" canister ca
 ```
 
 :::danger
-The Wasm module of a `pullable` canister must be hosted via a public URL where service consumers can download it.
-
-GitHub Releases are a good, free option if the project is open source on GitHub. The GitHub URL schema is:
-
-`https://github.com/<USERNAME>/<REPONAME>/releases/latest/download/<FILENAME>`
-
+The Wasm module of a `pullable` canister must be hosted via a public URL where service consumers can download it, such as GitHub.
 :::
 
 The `pullable` object will be serialized as a part of the `dfx` metadata and attached to the Wasm.
 
-To better understand the `pullable` object, let's look at each property in depth:
-
-- `wasm_url`: A URL used to download the canister Wasm module which will be deployed locally.
-- `wasm_hash`: A SHA256 hash of the Wasm module located at `wasm_url`. This field is optional. In most cases, the Wasm module at `wasm_url` will be the same as the onchain Wasm module. This means that `dfx` can read the state tree to obtain and verify the module hash. In some cases, the Wasm module at `wasm_url` is not the same as the onchain Wasm module. For example, the Internet Identity canister provides a `development` variant to be integrated locally. In these cases, `wasm_hash` provides the expected hash, and `dfx` verifies the downloaded Wasm against this.
-
-:::caution
-If the `wasm_hash` of the Wasm module at `wasm_url` does not match, `dfx` will abort with an error message indicating that there is a hash mismatch. In this scenario, the service consumer should contact the service provider. It is the responsibility of the service provider to assure that the correct Wasm module can be downloaded from the `wasm_url`.
-:::
-
-- `dependencies`: An array of canister IDs (`Principal`) of direct dependencies.
-- `init_guide`: A message to guide consumers how to initialize the canister.
-
 ### Canister metadata requirements
 
-A service provider canister used in production or in a production environment running on the mainnet should have public `dfx` metadata and public or private `candid:service` and `candid:args` metadata.
-
-All metadata sections are handled by `dfx` when the canister is built.
+A third-party canister used in production should have public `dfx` metadata and public or private `candid:service` and `candid:args` metadata. All metadata sections are handled by `dfx` when the canister is built.
 
 ### Deployment process
-Service providers should use the following deployment process to deploy their `pullable` canister.
 
-- #### Step 1: From within your project's repo, deploy the canister to the mainnet with the command:
+Service providers should use the following deployment process to deploy their `pullable` canister and make it available to others:
+
+- #### Step 1: Deploy the canister to the mainnet.
 
 ```
 dfx deploy <canister-name> --network ic
 ```
 
-- #### Step 2: If you're using GitHub, `git tag` and `GitHub release` with the commands:
+- #### Step 2: If you're using GitHub, [`git tag` and `GitHub release`](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release) with the commands:
 
 ```
 git tag 0.1.0
 git push --tags
 ```
 
-You can follow [this guide](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository#creating-a-release) to create a release.
-
 - #### Step 3: Attach the Wasm to the release assets.
 
-Edit the release and attach the deployed Wasm as a release asset. The deployed Wasm file will be located at:
+Edit the GitHub release and attach the deployed Wasm as a release asset. The deployed Wasm file will be located at:
 
 ```
 .dfx/ic/canisters/<CANISTER_NAME>/<CANISTER_NAME>.wasm
@@ -130,13 +153,11 @@ The workflow with CI will follow these steps:
 2. Download the canister Wasm from the release assets (`wget https://github.com/lwshang/pullable/releases/latest/download/service.wasm`).
 3. Install (upgrade) the canister using the downloaded Wasm (`dfx canister --network ic install service --wasm service.wasm --argument '(1 : nat)' --mode upgrade`).
 
-## Consumer workflow
+### Pulling a third-party canister into your project
 
-The following workflow can be used for consumers to pull a `pullable` canister as a dependency.
+The following workflow can be used for consumers to import a `pullable` canister as a dependency.
 
 - #### Step 1: Declare "pull" dependencies in `dfx.json`.
-
-First, the `dfx.json` file must include the `dependencies` configuration for the canister.
 
 An example `dfx.json` in which the consumer is developing a canister named "dapp" that has two pull dependencies can be found below:
 
@@ -171,67 +192,13 @@ An example `dfx.json` in which the consumer is developing a canister named "dapp
 `dfx deps pull` connects to the mainnet by default (`--network ic`). You can choose other network as usual, e.g. `--network local`.
 :::
 
-Running this command will do the following:
-
-1. First, it will resolve the dependency graph by fetching the `dependencies` field in the `dfx` metadata recursively.
-2. Then, it will download the Wasm of all direct and indirect dependencies from `wasm_url` into the shared cache.
-3. Next, the hash of the downloaded Wasm will be verified against `wasm_hash` metadata or the hash of the canister deployed on mainnet.
-4. Then, `candid:args`, `candid:service`, `dfx` metadata will be extracted from the downloaded Wasm.
-5. The `deps/` folder is created in the project root.
-6. The `candid:service` of direct dependencies is saved as `deps/candid/<CANISTER_ID>.did`.
-7. The `deps/pulled.json` which contains major info of all direct and indirect dependencies is saved.
-
-For the example project, you will find the following files in `deps/`:
-
-- `yhgn4-myaaa-aaaaa-aabta-cai.did` and `yahli-baaaa-aaaaa-aabtq-cai.did`: Candid files that can be imported by "dapp".
-- `pulled.json`: A json file with the following content:
-
-```json
-{
-  "canisters": {
-    "yofga-2qaaa-aaaaa-aabsq-cai": {
-      "dependencies": [],
-      "wasm_hash": "e9b8ba2ad28fa1403cf6e776db531cdd6009a8e5cac2b1097d09bfc65163d56f",
-      "init_guide": "A natural number, e.g. 10.",
-      "candid_args": "(nat)"
-    },
-    "yhgn4-myaaa-aaaaa-aabta-cai": {
-      "name": "dep_b",
-      "dependencies": [
-        "yofga-2qaaa-aaaaa-aabsq-cai"
-      ],
-      "wasm_hash": "f607c30727b0ee81317fc4547a8da3cda9bb9621f5d0740806ef973af5b479a2",
-      "init_guide": "No init arguments required",
-      "candid_args": "()"
-    },
-    "yahli-baaaa-aaaaa-aabtq-cai": {
-      "name": "dep_c",
-      "dependencies": [
-        "yofga-2qaaa-aaaaa-aabsq-cai"
-      ],
-      "wasm_hash": "016df9800dc5760785646373bcb6e6bb530fc17f844600991a098ef4d486cf0b",
-      "init_guide": "A natural number, e.g. 20.",
-      "candid_args": "(nat)"
-    }
-  }
-}
-```
-
-In this file, you can see there are three dependencies:
-
-- `yhgn4-myaaa-aaaaa-aabta-cai`: "dep_b" in `dfx.json`.
-- `yahli-baaaa-aaaaa-aabtq-cai`: "dep_c" in `dfx.json`.
-- `yofga-2qaaa-aaaaa-aabsq-cai`: An indirect dependency that both "dep_b" and "dep_c" depend on.
-
-- #### Step 3: Set init arguments using `dfx deps init`
+- #### Step 3: Set init arguments using `dfx deps init`.
 
 Running the command `dfx deps init` will iterate over all dependencies in the `pulled.json` file and set an empty argument for any that do not need an `init` argument. Then, it will print the list of dependencies that do require an `init` argument.
 
 Running the command `dfx deps init <CANISTER> --argument <ARGUMENT>` will set the `init` argument for an individual dependency. The init arguments will be recorded in `deps/init.json`.
 
-Using the example above, you can run the following commands:
-
-- To set the init arguments:
+To set the init arguments:
 
 ```
 dfx deps init
@@ -248,7 +215,7 @@ yahli-baaaa-aaaaa-aabtq-cai (dep_c)
 
 </details>
 
-- If you try to set an `init` argument for an individual dependency without an argument, it will result in the following error:
+If you try to set an `init` argument for an individual dependency without an argument, it will result in the following error:
 
 ```
 Error: Canister yofga-2qaaa-aaaaa-aabsq-cai requires an init argument. The following info might be helpful:
@@ -256,10 +223,10 @@ init_guide => A natural number, e.g. 10.
 candid:args => (nat)
 ```
 
-- To set an init argument with an argument using the `--argument` flag, the following commands can be used:
+To set an init argument with an argument using the `--argument` flag:
 
 ```
-dfx deps init yofga-2qaaa-aaaaa-aabsq-cai --argument 10
+dfx deps init <canister-id> --argument 10
 dfx deps init deps_c --argument 20
 ```
 
@@ -284,36 +251,24 @@ The resulting generated file `init.json` will have the following content:
 }
 ```
 
-- #### Step 4: Deploy the pulled dependencies on a local replica using the `dfx deps deploy` command.
-
-Running the `dfx deps deploy` command will:
-
-1. First, create the dependencies on the local replica with the same mainnet canister ID.
-2. Then, it will install the downloaded Wasm with the init arguments in the `init.json` file.
-
-You can also specify the canister name or <GlossaryTooltip>principal</GlossaryTooltip> to deploy one particular dependency.
-
-Using the example above, you can run the following command to deploy all dependencies:
+- #### Step 4: Deploy the pulled dependencies in your local environment using the `dfx deps deploy` command.
 
 ```
 dfx deps deploy
 ```
 
-<details>
-<summary>Output</summary>
-Creating canister: yofga-2qaaa-aaaaa-aabsq-cai
-Installing canister: yofga-2qaaa-aaaaa-aabsq-cai
-Creating canister: yhgn4-myaaa-aaaaa-aabta-cai (dep_b)
-Installing canister: yhgn4-myaaa-aaaaa-aabta-cai (dep_b)
-Creating canister: yahli-baaaa-aaaaa-aabtq-cai (dep_c)
-Installing canister: yahli-baaaa-aaaaa-aabtq-cai (dep_c)
-</details>
+Running the `dfx deps deploy` command will:
+
+1. Create the dependencies in your local environment with the same mainnet canister ID.
+2. Then, it will install the downloaded Wasm with the init arguments in the `init.json` file.
+
+You can also specify the canister name or <GlossaryTooltip>principal</GlossaryTooltip> to deploy one particular dependency.
 
 :::info
 `dfx deps deploy` always creates the canister with the anonymous identity so that dependencies and application canisters will have different controllers. It will also always install the canister in "reinstall" mode so that the canister status will be discarded.
 :::
 
-## Frequently asked questions
+### Frequently asked questions
 
 - #### Why download the Wasm into shared cache instead of a project subfolder?
 
@@ -336,6 +291,6 @@ These files also help CI to detect outdated dependencies.
 
 ## Resources
 
-- [`dfx deps` CLI reference](https://github.com/dfinity/sdk/blob/master/docs/cli-reference/dfx-deps.md).
+- [`dfx deps` CLI reference](https://github.com/dfinity/sdk/blob/master/docs/cli-reference/dfx-deps.mdx).
 - [GitHub example project](https://github.com/lwshang/pullable.git).
 - [Pull dependencies concept documentation](https://github.com/dfinity/sdk/blob/master/docs/concepts/pull-dependencies.md).
