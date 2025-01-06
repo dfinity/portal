@@ -1,0 +1,48 @@
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# quill decrypt-pem
+
+<MarkdownChipRow labels={["Reference"]} />
+
+Decrypts an encrypted PEM file for use with other tools.
+
+## Basic usage
+
+The basic syntax for running `quill decrypt-pem` commands is:
+
+``` bash
+quill decrypt-pem <OUTPUT_PATH> [option]
+```
+
+## Arguments
+
+| Argument        | Description                                               |
+|-----------------|-----------------------------------------------------------|
+| `<OUTPUT_PATH>` | The path to write the decrypted PEM to, or "-" for STDOUT |
+
+## Flags
+
+| Flag           | Description                 |
+|----------------|-----------------------------|
+| `-h`, `--help` | Displays usage information. |
+
+## Options
+
+| Option                            | Description                                          |
+|-----------------------------------|------------------------------------------------------|
+| `--pem-file <PEM_FILE>`           | Path to your PEM file (use "-" for STDIN)            |
+| `--password-file <PASSWORD_FILE>` | Read the password from this file (use "-" for STDIN) |
+
+## Examples
+
+The `quill decrypt-pem` command is used to convert a password-protected PEM file into a plaintext one.
+
+```sh
+quill decrypt-pem --pem-file identity.pem decrypted.pem
+```
+
+This will interactively prompt for the password. To use it in a script, pass a password file:
+
+```sh
+quill decrypt-pem --pem-file identity.pem --password-file password.txt decrypted.pem 
+```

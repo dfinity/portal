@@ -1,0 +1,36 @@
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# quill sns balance
+
+<MarkdownChipRow labels={["Reference"]} />
+
+Sends a ledger account-balance query call. 
+
+The `--of` parameter is required if a signing key is not provided.
+
+## Basic usage
+
+The basic syntax for running `quill sns balance` commands is:
+
+```bash
+quill sns balance [option]
+```
+
+## Flags
+
+| Flag           | Description                                        |
+|----------------|----------------------------------------------------|
+| `--dry-run`    | Will display the query, but not send it.           |
+| `-h`, `--help` | Displays usage information.                        |
+| `-y`, `--yes`  | Skips confirmation and sends the message directly. |
+
+## Options
+
+| Option                      | Description                                      |
+|-----------------------------|--------------------------------------------------|
+| `--of <OF>`                 | The account to query. Optional if a key is used. |
+| `--subaccount <SUBACCOUNT>` | The subaccount of the account to query.          |
+
+## Remarks
+
+The queried account can be specified as a separate principal and subaccount, or as a single ICRC-1 account.

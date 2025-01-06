@@ -1,0 +1,47 @@
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# quill sns follow-neuron
+
+<MarkdownChipRow labels={["Reference"]} />
+
+Configures a neuron to follow another neuron or group of neurons.
+
+## Basic usage
+
+The basic syntax for running `quill sns follow-neuron` commands is:
+
+```bash
+quill sns follow-neuron <NEURON_ID> <--type <TYPE>|--function-id <FUNCTION_ID>> <--followees <FOLLOWEES>|--unfollow> [option]
+```
+
+## Arguments
+
+| Argument      | Description              |
+|---------------|--------------------------|
+| `<NEURON_ID>` | The neuron to configure. |
+
+## Flags
+
+| Flag           | Description                                      |
+|----------------|--------------------------------------------------|
+| `-h`, `--help` | Displays usage information.                      |
+| `--unfollow`   | Remove any followees for this proposal function. |
+
+## Options
+
+| Option                        | Description                                                         |
+|-------------------------------|---------------------------------------------------------------------|
+| `--followees <FOLLOWEES>`     | A list of neurons to follow for this proposal function              |
+| `--function-id <FUNCTION_ID>` | The numeric ID of the proposal function to restrict following to    |
+| `--type <TYPE>`               | The name of the built-in proposal function to restrict following to |
+
+## Remarks
+
+Following neurons causes your neuron to automatically vote when the majority (by voting power) of the followed neurons do.
+
+Follow relationships are granular by the purpose of a proposal, e.g. you can follow a neuron only for votes on transferring SNS treasury funds. There are several built-in proposal functions which this command accepts by name, but new ones can be added at any time via AddGenericNervousSystemFunction proposals and those must be addressed by integer ID.
+
+Built-in names: `all`, `motion`, `manage-nervous-system-parameters`, `upgrade-sns-controlled-canister`, `add-generic-nervous-system-function`,
+`remove-generic-nervous-system-function`, `upgrade-sns-to-next-version`, `manage-sns-metadata`, `transfer-sns-treasury-funds`, `register-dapp-canisters`,`deregister-dapp-canisters`
+
+As this is an update call, it will not actually make the request, but rather generate a signed and packaged request that can be sent from anywhere. You can use the `--qr` flag to display it as a QR code, or if you are not working with an air-gapped machine, you can pipe it to `quill send`.

@@ -371,10 +371,10 @@ Failing to do so will break the code that auto-populates the Tooltip with the ap
 
 The developer docs utilize submodules for several subfolders of documentation. To edit these pages, changes must be made in the submodule's repo and merged into that repo. Then you must open a PR in this repo that pulls the latest submodule updates to apply the changes.
 
-The following submoules and their corresponding repos are currently used:
+The following submodules and their corresponding repos are currently used:
 
 - SDK
-    - `/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/`
+    - `/docs/current/building-dapps/developer-tools/dfx/`
     - GitHub Repo: https://github.com/dfinity/sdk.git
 
 - Motoko
@@ -382,7 +382,7 @@ The following submoules and their corresponding repos are currently used:
     - GitHub Repo: https://github.com/dfinity/motoko.git
 
 - quill
-    - `/docs/current/developer-docs/developer-tools/cli-tools/quill`
+    - `/docs/current/building-dapps/developer-tools/quill`
     - GitHub Repo: https://github.com/dfinity/quill.git
 
 - Internet Identity
@@ -395,11 +395,11 @@ The following submoules and their corresponding repos are currently used:
     - Note: This submodule intentionally uses `.md` files instead of `.mdx` files. Therefore, these pages do not support components such as tags and tooltips.
 
 - dfxvm
-    - `/docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfx/`
+    - `/docs/current/building-dapps/developer-tools/dfxvm/dfx/`
     - GitHub Repo: https://github.com/dfinity/dfxvm.git
 
 - Response verification
-    - `/docs/current/developer-docs/web-apps/http-compatible-canisters/custom-http-canisters`
+    - `/docs/current/building-dapps/dapp-frontends/asset-certification/custom-http-canisters`
     - GitHub Repo: https://github.com/dfinity/response-verification
 
 ### Updating submodules

@@ -10,9 +10,6 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 A list of possible errors returned when executing canisters.
 
-## Errors
-
-
 ### Method not found
 The canister was called with a method name not exported by that canister.
 
@@ -27,7 +24,7 @@ To fix this error, consider:
 - Checking that the method type (update, query, etc...) is the same as the type of the exported method.
 - The canister code of the callee has not been modified to a version that deprecates the method.
 
-For further information on calling canisters see the [smart contract docs](../developer-docs/smart-contracts/call/overview) and the [IC spec](./ic-interface-spec#system-api-requests).
+For further information on calling canisters see the [smart contract docs](../developer-education/message-execution/types-of-canister-calls) and the [IC spec](./ic-interface-spec#system-api-requests).
 
 
 ### Instruction limit exceeded
@@ -81,7 +78,7 @@ Canisters can [exist without having Wasm code installed](/docs/current/reference
 
 To better diagnose this error use the [`dfx canister status`][dfx-canister-status] command or the [`canister_status` API][canister-status-api] to check if the canister has a module installed. If there is a module the "Module hash" field will be non-null.
 
-To fix this error, consitder installing code using [`dfx deploy`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-deploy), or the APIs for [`install_code`](/docs/current/references/ic-interface-spec#ic-install_code) or [`install_chunked_code`](/docs/current/references/ic-interface-spec#ic-install_chunked_code).
+To fix this error, consider installing code using [`dfx deploy`](/docs/current/building-dapps/developer-tools/dfx/dfx-deploy), or the APIs for [`install_code`](/docs/current/references/ic-interface-spec#ic-install_code) or [`install_chunked_code`](/docs/current/references/ic-interface-spec#ic-install_chunked_code).
 
 
 ### Out of memory
@@ -114,7 +111,7 @@ An example of this error is:
   Canister tried to allocate pages reserved for upgrading older versions of Motoko.
 ```
 
-Newer versions of Motoko don't require these reserved pages, so upgrading the version of Motoko used in the canister will fix the issue. `dfx` stores the Motoko compiler (`moc`) in the directory returned by [`dfx cache show`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-cache#dfx-cache-show). So the version of Motoko can be shown by running `$(dfx cache show)/moc --version`. This issue only occurs for versions `0.6.20` and older.
+Newer versions of Motoko don't require these reserved pages, so upgrading the version of Motoko used in the canister will fix the issue. `dfx` stores the Motoko compiler (`moc`) in the directory returned by [`dfx cache show`](/docs/current/building-dapps/developer-tools/dfx/dfx-cache#dfx-cache-show). So the version of Motoko can be shown by running `$(dfx cache show)/moc --version`. This issue only occurs for versions `0.6.20` and older.
 
 To fix this error, upgrade to the [latest version of `dfx`](https://github.com/dfinity/dfxvm?tab=readme-ov-file#installation) which will use a newer version of Motoko.
 
@@ -399,7 +396,7 @@ An example of this error is:
   Sender's ID: zzz-zzz
 ```
 
-Each canister has a number of [controllers](/docs/current/developer-docs/smart-contracts/maintain/control) and certain actions (e.g. updating the canister's Wasm code) can only be performed by controllers. To fix this error, consider performing the action from a [principal](/docs/current/references/glossary#principal) which is already a controller, or have an existing controller add additional principals to the canister's list of controllers.
+Each canister has a number of [controllers](/docs/current/developer-docs/smart-contracts/maintain/control) and certain actions (e.g. updating the canister's Wasm code) can only be performed by controllers. To fix this error, consider performing the action from a [principal](/docs/current/developer-education/glossary/index#principal) which is already a controller, or have an existing controller add additional principals to the canister's list of controllers.
 
 
 ### Canister not found
@@ -722,23 +719,23 @@ To fix this error, try resending the message after omitting or modifying the inv
 
 
 
-[canbench]: /docs/current/developer-docs/developer-tools/off-chain/canbench
+[canbench]: /docs/current/building-dapps/developer-tools/canbench
 
 [canister-status-api]: /docs/current/references/ic-interface-spec#ic-canister_status
 
-[compute-allocation]:/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister/#allocating-message-processing
+[compute-allocation]:/docs/current/building-dapps/developer-tools/dfx/dfx-canister/#allocating-message-processing
 
 [dashboard-subnets]: https://dashboard.internetcomputer.org/subnets
 
-[dfx-canister-status]:/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-status
+[dfx-canister-status]:/docs/current/building-dapps/developer-tools/dfx/dfx-canister#dfx-canister-status
 
-[dfx-canister-stop]:/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-stop
+[dfx-canister-stop]:/docs/current/building-dapps/developer-tools/dfx/dfx-canister#dfx-canister-stop
 
 [ic-wasm]: https://github.com/dfinity/ic-wasm
 
 [limits]:/docs/current/developer-docs/smart-contracts/maintain/resource-limits#resource-constraints-and-limits
 
-[memory-allocation-setting]:/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister/#options-8
+[memory-allocation-setting]:/docs/current/building-dapps/developer-tools/dfx/dfx-canister/#options-8
 
 [setting-freezing-threshold]:/docs/current/tutorials/hackathon-prep-course/managing-canisters/#setting-the-canisters-freezing-threshold
 

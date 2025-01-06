@@ -69,35 +69,28 @@ const subnavItems = [
   {
     type: "docSidebar",
     position: "left",
+    sidebarId: "developer_education",
+    label: "Developer education",
+    activeBasePath: "/docs/current/developer-education/",
+  },
+  {
+    type: "docSidebar",
+    position: "left",
     sidebarId: "build",
-    label: "Build",
-    activeBasePath: "/docs/current/developer-docs/",
+    label: "Building dapps",
+    activeBasePath: "/docs/current/build/",
+  },
+  {
+    type: "docSidebar",
+    position: "left",
+    sidebarId: "rosetta_defi",
+    label: "Rosetta & DeFi",
+    activeBasePath: "/docs/current/rosetta-defi/",
   },
   {
     type: "dropdown",
     position: "left",
-    label: "Languages",
-    items: [
-      { label: "Rust", href: "/docs/current/developer-docs/backend/rust/" },
-      {
-        label: "Motoko",
-        href: "/docs/current/motoko/main/getting-started/motoko-introduction",
-      },
-      {
-        label: "TypeScript",
-        href: "/docs/current/developer-docs/backend/typescript/",
-      },
-      { label: "Python", href: "/docs/current/developer-docs/backend/python/" },
-      {
-        label: "Solidity",
-        href: "/docs/current/developer-docs/backend/solidity/",
-      },
-    ],
-  },
-  {
-    type: "dropdown",
-    position: "left",
-    label: "Additional Resources",
+    label: "Resources",
     items: [
       {
         label: "Awesome Internet Computer",
@@ -388,7 +381,7 @@ const marketingNav = {
         { name: "Developer grants", href: "https://dfinity.org/grants" },
         {
           name: "Using cycles",
-          href: "/docs/current/developer-docs/getting-started/tokens-and-cycles",
+          href: "/docs/current/building-dapps/getting-started/tokens-and-cycles",
         },
       ],
 

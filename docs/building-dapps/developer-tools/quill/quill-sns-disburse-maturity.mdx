@@ -1,0 +1,47 @@
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# quill sns disburse-maturity
+
+<MarkdownChipRow labels={["Reference"]} />
+
+Converts the maturity from a neuron into SNS utility tokens.
+
+## Basic usage
+
+The basic syntax for running `quill sns disburse-maturity` commands is:
+
+```bash
+quill sns disburse-maturity <NEURON_ID> [option]
+```
+
+## Arguments
+
+| Argument      | Description                           |
+|---------------|---------------------------------------|
+| `<NEURON_ID>` | The neuron to disburse maturity from. |
+
+
+## Flags
+
+| Flag           | Description                 |
+|----------------|-----------------------------|
+| `-h`, `--help` | Displays usage information. |
+
+## Options
+
+| Option                      | Description                                          |
+|-----------------------------|------------------------------------------------------|
+| `--percentage <PERCENTAGE>` | The percentage of the maturity to disburse           |
+| `--to <TO>`                 | The account to transfer the SNS utility tokens to    |
+| `--subaccount <SUBACCOUNT>` | The subaccount to transfer the SNS utility tokens to |
+
+## Remarks
+
+Unlike [`quill sns disburse`], disbursing maturity can be performed on any neuron that has accrued maturity, not only dissolved neurons; however, it can only be used to disburse voting rewards, not the initial stake. To instead add maturity to the stake, see [`quill sns stake-maturity`].
+
+If `<TO>` is unset, it will default to the caller; if `<PERCENTAGE>` is unset, it will default to 100%.
+
+As this is an update call, it will not actually make the request, but rather generate a signed and packaged request that can be sent from anywhere. You can use the `--qr` flag to display it as a QR code, or if you are not working with an air-gapped machine, you can pipe it to `quill send`.
+
+[`quill sns disburse`]: quill-sns-disburse.mdx
+[`quill sns stake-maturity`]: quill-sns-stake-maturity.mdx

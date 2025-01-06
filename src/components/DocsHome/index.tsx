@@ -83,7 +83,7 @@ const languagesTiles: TileDescriptor[] = [
     invertIconDarkMode: true,
     action: (
       <Link
-        href="/docs/current/developer-docs/backend/rust/"
+        href="/docs/current/building-dapps/developer-tools/cdks/rust/"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to Rust docs"
       >
@@ -183,7 +183,7 @@ const frameworksTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/developer-docs/getting-started/deploy-and-manage"
+        href="/docs/current/building-dapps/getting-started/deploy-and-manage"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Learn more about testnets on ICP"
       >
@@ -552,7 +552,7 @@ const DocsHomePage: FC = () => {
             <p className="mb-0">
               <Link
                 className="button-white button-with-icon"
-                href="/docs/current/developer-docs/getting-started/quickstart/first-smart-contract"
+                href="/docs/current/building-dapps/getting-started/quickstart/first-smart-contract"
               >
                 SDK BUILD
                 <LinkArrowRight />

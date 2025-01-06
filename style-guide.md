@@ -48,7 +48,7 @@ List all dependencies that the developer will need to download or setup in order
 <TabItem value="prereq" label="Prerequisites" default>
 
 Before you start, verify that you have:
-<input type="checkbox"/> <a href="/docs/current/developer-docs/getting-started/install">Install the IC SDK.</a>
+<input type="checkbox"/> <a href="/docs/current/building-dapps/getting-started/install">Install the IC SDK.</a>
 
 </TabItem>
 </Tabs>

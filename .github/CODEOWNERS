@@ -6,15 +6,15 @@ docs/developer-docs/build/agents @dfinity/dx
 docs/developer-docs/build/cdks @dfinity/dx
 docs/developer-docs/integrations/rosetta @dfinity/finint
 docs/developer-docs/security @dfinity/product-security
-docs/references/execution-errors.mdx @dfinity/execution
-docs/references/ingress-messages.mdx @dfinity/product-security
-docs/references/message-execution-properties.mdx @dfinity/product-security
+docs/developer-education/message-execution/execution-errors.mdx @dfinity/execution
+docs/developer-education/message-execution/ingress-messages.mdx @dfinity/product-security
+docs/developer-education/message-execution/message-execution-properties.mdx @dfinity/product-security
 docs/developer-docs/web-apps/custom-domains @dfinity/boundary-node
 
 # Each piece of documentation must be owned by the respective teams
 docs/developer-docssmart-contracts/advanced-features/simd.mdx @dfinity/execution
 docs/developer-docssmart-contracts/advanced-features/periodic-tasks.mdx @dfinity/execution
-docs/developer-docs/smart-contracts/best-practices/idempotency.mdx @dfinity/research @dfinity/product-security
+docs/developer-education/developer-playbook/developer-best-practices/idempotency.mdx @dfinity/research @dfinity/product-security
 
 # The Interface Specification
 docs/references/_attachments/certificates.cddl @dfinity/canister-os

@@ -1,0 +1,241 @@
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# quill neuron-manage
+
+<MarkdownChipRow labels={["Reference"]} />
+
+Signs a neuron configuration change.
+
+## Basic usage
+
+The basic syntax for running `quill neuron-manage` commands is:
+
+``` bash
+quill neuron-manage [option] <neuron id>
+```
+
+## Arguments
+
+| Argument      | Description                     |
+|---------------|---------------------------------|
+| `<neuron id>` | The id of the neuron to manage. |
+
+## Flags
+
+| Flag                                                  | Description                                                                      |
+|-------------------------------------------------------|----------------------------------------------------------------------------------|
+| `--add-hot-key <ADD_HOT_KEY>`                         | Principal to be used as a hot key.                                               |
+| `-a`, `--additional-dissolve-delay-seconds <SECONDS>` | Number of dissolve seconds to add.                                               |
+| `--auto-stake-maturity enabled|disabled`              | Set whether new maturity should be automatically staked.                         |
+| `--clear-manage-neuron-followees`                     | Remove all followees for the NeuronManagement topic.                             |
+| `--disburse-amount`                                   | Disburse only the selected amount.                                               |
+| `--disburse-to`                                       | Disburse to the selected NNS account instead of the controller.                  |
+| `--disburse`                                          | Disburse the entire staked amount to the controller's account.                   |
+| `--follow-neurons <FOLLOW_NEURONS>...`                | Defines the neuron ids of a follow rule.                                         |
+| `--follow-topic <FOLLOW_TOPIC>`                       | Defines the topic of a follow rule as defined [here][follow-rules].              |
+| `-h`, `--help`                                        | Displays usage information.                                                      |
+| `--join-community-fund`                               | Join the Internet Computer's community fund with this neuron's entire stake.     |
+| `--leave-community-fund`                              | Leave the Internet Computer's community fund.                                    |
+| `--merge-from-neuron <MERGE_FROM_NEURON>`             | Merge stake, maturity and age from the specified neuron into the managed neuron. |
+| `--register-vote <PROPOSAL_ID>... [--reject]`         | Vote to approve (default) or reject proposal(s).                                 |
+| `--reject`                                            | Reject the proposal(s) specified with `--register-vote`.                         |
+| `--remove-hot-key <REMOVE_HOT_KEY>`                   | Principal hot key to be removed.                                                 |
+| `--set-visibility [public|private]`                   | Set visibility. This controls what fields are readable to arbitrary principals.  |
+| `--spawn`                                             | Spawn rewards to a new neuron under the controller's account.                    |
+| `--split <SPLIT>`                                     | Split off the given number of ICP from a neuron.                                 |
+| `--stake-maturity <STAKE_MATURITY>`                   | Stake the percentage (between 1 and 100) of the maturity of a neuron.            |
+| `--start-dissolving`                                  | Start dissolving.                                                                |
+| `--stop-dissolving`                                   | Stop dissolving.                                                                 |
+
+[follow-rules]: https://github.com/dfinity/ic/blob/4c9e71499d90d00da986dbe7b985d861fd031c4e/rs/nns/governance/gen/ic_nns_governance.pb.v1.rs#L1571-L1632
+
+## Examples
+
+The `quill neuron-manage` command has many uses, each operating on a neuron in a different way. The examples below will all operate on a hypothetical neuron 2313380519530470538.
+
+To vote YES on a proposal such as [108005]:
+
+```sh
+quill neuron-manage 2313380519530470538 --register-vote 108005
+```
+
+Or to vote NO on that same proposal:
+
+```sh
+quill neuron-manage 2313380519530470538 --register-vote 108005 --reject
+```
+
+This will produce a response like:
+
+```candid
+(
+    record {
+        command = opt variant {
+            RegisterVote = record {}
+        };
+    }
+)
+```
+
+To follow another neuron, such as ICPMN, on a specific topic, such as Governance:
+
+```sh
+quill neuron-manage 2313380519530470538 --follow-neurons 4966884161088437903 --follow-topic 4
+```
+
+This will produce a response like:
+
+```candid
+(
+    record {
+        command = opt variant {
+            Follow = record {}
+        };
+    }
+)
+```
+
+To stake a neuron's maturity, for example 25% of it, increasing its voting power:
+
+```sh
+quill neuron-manage 2313380519530470538 --stake-maturity 25
+```
+
+This will produce a response like:
+
+```candid
+(
+    record {
+        command = opt variant {
+            StakeMaturity = record {
+                maturity_e8s = 750_000_000 : nat64;
+                staked_maturity_e8s = 250_000_000 : nat64;
+            }
+        };
+    }
+)
+```
+
+"e8s" is a shorthand for meaning the number of 1e-8s, or one-hundred-millionths, of an ICP in integer form; this response must be divided by 100,000,000 to get the real maturity, which in this case would be 7.5 and 2.5.
+
+To disburse a fully dissolved neuron, meaning to convert it into ICP and transfer it to its controller:
+
+```sh
+quill neuron-manage 2313380519530470538 --disburse
+```
+
+This will produce a response like:
+
+```candid
+(
+    record {
+        command = opt variant {
+            Disburse = record {
+                transfer_block_height = 5_581_035 : nat64;
+            }
+        };
+    }
+)
+```
+
+The block height, also known as the block index, can be looked up on the [IC dashboard].
+
+To spawn a new neuron, meaning to convert all the maturity from this neuron into a new one (that can be disbursed after one week):
+
+```sh
+quill neuron-manage 2313380519530470538 --spawn
+```
+
+This will produce a response like:
+
+```candid
+(
+    record {
+        command = opt variant {
+            SpawnResponse = record {
+                created_neuron_id = opt record {
+                    id = 4966884161088437902 : nat64;
+                };
+            }
+        };
+    }
+)
+``` 
+
+To increase the neuron's dissolve delay, for example by a full year:
+
+```sh
+quill neuron-manage 2313380519530470538--additional-dissolve-delay-seconds 31536000
+```
+
+To start dissolving a neuron:
+
+```sh
+quill neuron-manage 2313380519530470538 --start-dissolving
+```
+
+Or to stop:
+
+```sh
+quill neuron-manage 2313380519530470538 --stop-dissolving
+```
+
+To enable auto-staking a neuron's maturity:
+
+```sh
+quill neuron-manage 2313380519530470538 --auto-stake-maturity enabled
+```
+
+Or to disable:
+
+```sh
+quill neuron-manage 2313380519530470538 --auto-stake-maturity disabled
+```
+
+To join the IC's community fund:
+
+```sh
+quill neuron-manage 2313380519530470538 --join-community-fund
+```
+
+Or to leave:
+
+```sh
+quill neuron-manage 2313380519530470538 --leave-community-fund
+```
+
+To add a neuron hotkey, such as (for example purposes) the management canister:
+
+```sh
+quill neuron-manage 2313380519530470538 --add-hot-key aaaaa-aa
+```
+
+Or to remove it:
+
+```sh
+quill neuron-manage 2313380519530470538 --remove-hot-key aaaaa-aa
+```
+
+These 'configuration' operations will all produce a response like:
+
+```candid
+(
+    record {
+        command = opt variant {
+            Configure = record {}
+        };
+    }
+)
+```
+
+## Remarks
+
+As this is an update call, it will not actually make the request, but rather generate a signed and packaged request that can be sent from anywhere. You can use the `--qr` flag to display it as a QR code, or if you are not working with an air-gapped machine, you can pipe it to `quill send -`.
+
+For more information about neurons, see [Neurons]; for more information about their role in the NNS, see [Network Nervous System][NNS]; for more information about the community fund, see [Community Fund].
+
+[108005]: https://dashboard.internetcomputer.org/proposal/108005
+[IC Dashboard]: https://dashboard.internetcomputer.org/
+[Neurons]: https://internetcomputer.org/docs/current/tokenomics/nns/nns-staking-voting-rewards#neurons
+[NNS]: https://internetcomputer.org/docs/current/tokenomics/nns/nns-intro
+[Community Fund]: https://internetcomputer.org/docs/current/tokenomics/nns/community-fund

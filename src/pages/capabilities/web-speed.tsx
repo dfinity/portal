@@ -30,7 +30,7 @@ function FeaturePage() {
                 Concretely, query (read) calls are answered in ~100
                 milliseconds, and update (write) calls in ~2 seconds.
               </p>
-              <h5>Times are based on subnets with low loads. Subnets with high loads may experience different response speeds. Learn more in the <Link href="/docs/current/developer-docs/smart-contracts/best-practices/troubleshooting/" className="text-white">
+              <h5>Times are based on subnets with low loads. Subnets with high loads may experience different response speeds. Learn more in the <Link href="/docs/current/developer-education/developer-playbook/developer-best-practices/troubleshooting/" className="text-white">
                 docs.
               </Link>{" "}</h5>
             </div>

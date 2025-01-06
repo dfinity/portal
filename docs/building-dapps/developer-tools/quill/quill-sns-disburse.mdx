@@ -1,0 +1,45 @@
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# quill sns disburse
+
+<MarkdownChipRow labels={["Reference"]} />
+
+Converts a fully-dissolved neuron into SNS utility tokens.
+
+## Basic usage
+
+The basic syntax for running `quill sns disburse` commands is:
+
+```bash
+quill sns disburse <NEURON_ID> [option]
+```
+
+## Arguments
+
+| Argument      | Description             |
+|---------------|-------------------------|
+| `<NEURON_ID>` | The neuron to disburse. |
+
+## Flags
+
+| Flag           | Description                 |
+|----------------|-----------------------------|
+| `-h`, `--help` | Displays usage information. |
+
+## Options
+
+| Option                      | Description                                           |
+|-----------------------------|-------------------------------------------------------|
+| `--to <TO>`                 | The account to transfer the SNS utility tokens to.    |
+| `--subaccount <SUBACCOUNT>` | The subaccount to transfer the SNS utility tokens to. |
+| `--amount <AMOUNT>`         | The number of tokens, in decimal form, to disburse.   |
+
+## Remarks
+
+Only a neuron that has fully dissolved may be disbursed. To start dissolving a neuron, see [`quill sns configure-dissolve-delay`].
+
+If `<TO>` is unset, it will default to the caller; if `<AMOUNT>` is unset, it will fully consume the neuron.
+
+As this is an update call, it will not actually make the request, but rather generate a signed and packaged request that can be sent from anywhere. You can use the `--qr` flag to display it as a QR code, or if you are not working with an air-gapped machine, you can pipe it to `quill send`.
+
+[`quill sns configure-dissolve-delay`]: quill-sns-configure-dissolve-delay.mdx

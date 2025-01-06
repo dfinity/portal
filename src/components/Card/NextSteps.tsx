@@ -15,7 +15,7 @@ const languagesTiles: TileDescriptor[] = [
       "Learn more about canister smart contract development and management.",
     action: (
       <Link
-        href="/docs/current/developer-docs/smart-contracts/overview/introduction"
+        href="/docs/current/developer-education/developer-concepts/what-are-canisters"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -29,7 +29,7 @@ const languagesTiles: TileDescriptor[] = [
       "Explore additional developer tools including agents, libraries, and CLI tools.",
     action: (
       <Link
-        href="/docs/current/developer-docs/developer-tools/dev-tools-overview"
+        href="/docs/current/building-dapps/developer-tools/dev-tools-overview"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -113,7 +113,7 @@ const languagesTiles: TileDescriptor[] = [
       "Review the developer best practices for building on ICP.",
     action: (
       <Link
-        href="/docs/current/developer-docs/smart-contracts/best-practices/general"
+        href="/docs/current/developer-education/developer-playbook/developer-best-practices/general"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -127,7 +127,7 @@ const languagesTiles: TileDescriptor[] = [
       "Learn about application security and recommendations.",
     action: (
       <Link
-        href="/docs/current/developer-docs/security/security-best-practices/overview"
+        href="/docs/current/developer-education/security/overview"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
