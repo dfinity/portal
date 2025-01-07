@@ -124,7 +124,44 @@ Upon successful authentication, II will return a delegation for the principal de
 
 When integrating a mobile application with II, the implementation is not straightforward, since a mobile app can’t call the `postMessage` API. It is tempting to create a simple “proxy” web frontend served by the dapp as shown in the sequence diagram below. The mobile application can load this proxy to complete the normal II authorization flow. Upon completion, this proxy web app provides the delegation back to the mobile app.
 
-![Naive integration sequence diagram](./_attachments/II_mobile_naive_integration.png)
+Naive implementation
+```mermaid
+sequenceDiagram
+    actor U as User
+    participant MA as Mobile App
+    participant PWA as Proxy web app
+    participant II_FE as II Front-end
+    participant II_BE as II Back-end
+    participant BE as Back-end
+
+    activate U
+    U -> MA : 1. Login
+    activate MA
+    MA ->> MA : 2. Generate session key pair
+    activate PWA
+    MA ->> PWA: 3. Load /?sessionPublicKey=<br/><SessionPublicKey>
+    activate II_FE
+    PWA ->> II_FE: 4. Standard II client auth protocol
+    U ->> II_FE: 5. Authenticate with passkey
+    activate II_BE
+    II_FE ->> II_BE: 6. getDelegation(frontEndHostname)
+    II_BE -->> II_FE: 7. <<delegation>>
+    Note over II_BE,II_FE: Delegation can leak through<br/> replica or boundary nodes
+    deactivate II_BE
+    II_FE -->> PWA: 8. Return the delegation<br/>using postMessage API
+    deactivate II_FE
+    PWA -->> MA: 9. Return the delegation
+    Note over PWA,MA: Delegation can leak through<br/> insecure return mechanism
+    deactivate PWA
+    U ->> MA: 10. Authenticated call
+    activate BE
+    MA ->> BE: 11. Update call using the delegation
+    Note over II_BE,BE: Delegation can leak through<br/> replica or boundary nodes
+    BE -->> MA: <<Response>>
+    deactivate BE
+    deactivate MA
+    deactivate U
+```
 
 However, without any precautions, this proxy would happily accept malicious requests to authenticate the user and might return the delegation back to an attacker. 
 
@@ -148,7 +185,48 @@ In the standard integration between a client web app and the II web frontend, th
 
 This risk can be addressed by adopting the following remediations shown in the sequence diagram and explained further below.
 
-![Secure integration sequence diagram](./_attachments/ii_mobile_secure_integration.png)
+Secure integration sequence diagram
+```mermaid
+sequenceDiagram
+    actor U as User
+    participant MA as Mobile App
+    participant PWA as Secure Proxy web app
+    participant II_FE as II Front-end
+    participant II_BE as II Back-end
+    participant BE as Back-end
+
+    activate U
+    U -> MA : 1. Login
+    activate MA
+    MA ->> MA : 2. Generate session key pair
+    activate PWA
+    MA ->> PWA: 3. Load /?sessionPublicKey=<br/><SessionPublicKey>
+    PWA ->> PWA: 4. Generate intermediate session key
+    Note over PWA: This key never<br/>leaves the proxy<br/>front-end
+    activate II_FE
+    PWA ->> II_FE: 5. Standard II client auth protocol<br/>using intermediate session key
+    Note over PWA,II_FE: II will create a delegation for the<br/>intermediate key and not for the attacker<br/>chosen session key.
+    U ->> II_FE: 6. Authenticate with passkey
+    activate II_BE
+    II_FE ->> II_BE: 7. getDelegation(frontEndHostname)
+    II_BE -->> II_FE: 8. <<delegation>>
+    II_FE ->> II_FE: 9. Construct the delegation chain
+    Note over II_FE: The proxy front-end creates a<br/>delegation from the intermediate<br/> key to the mobile app session key<br/>and combines it with the<br/>delegation from the II canister key<br/>to the intermediate key.
+    II_FE -->> PWA: 10. Return the delegation<br/>using the postMessage API
+    deactivate II_FE
+    PWA -->> MA: 11. Return the delegation chain using<br/>an app link (Android)<br/>or universal link (iOS)<br/>as part of the fragment<br/>using associated domains
+    Note over MA,PWA: Protect the delegation chain<br/>from being leaked to the web<br/> server by using a URI fragment<br/>instead of a GET parameter.
+    MA ->> MA: 12 Verify the delegation chain<br/>against the session<br/>key from step 2
+    Note over MA: Verify the delegation chain before using it<br/> to avoid leaking a delegation with an<br/>attacker controlled session key to the IC
+MA -->> U: <<Success>>
+    U ->> MA: 13. Authenticated call
+    activate BE
+    MA ->> BE: 14. Update call using the verified delegation chain
+    BE -->> MA: <<Response>>
+    deactivate BE
+    deactivate MA
+    deactivate U
+```
 
 * Introduce an intermediate session key which is generated and stored by the web app proxy frontend.
 * Initiate the II client authentication protocol using this intermediate session key. By using a new session key which the attacker can’t control, the delegation issued by II would no longer be usable by the attacker if it were stolen in step 8, as the attacker doesn’t have access to the intermediate session private key.
