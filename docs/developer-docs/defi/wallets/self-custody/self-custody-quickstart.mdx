@@ -3,6 +3,8 @@ keywords: [beginner, tutorial, custody, self-custody]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
 
 # Using self-custody wallets
 
@@ -37,23 +39,28 @@ If you are a **developer** or **entrepreneur**, ICP tokens can be converted to *
 
 If you are a member of the community interested in **participating in governance** and influencing the direction of the Internet Computer, you can lock up ICP tokens in a stake—called a neuron—so that you can submit and vote on proposals.
 
-### Prerequisites
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
 
-To get started, verify the following:
--   [x] You have an internet connection and access to a shell terminal on your local **Intel-based macOS** or **Linux** computer.
--   [x] You know how to open a new terminal shell on your local computer and how to run basic command-line programs in the terminal.
--   [x] You hold ICP tokens in a self-custody wallet.
--   [x] You have downloaded and installed the SDK by running the following command in a terminal on your local computer:
+<input type="checkbox"/> <a href="/docs/current/developer-docs/getting-started/install">Install the IC SDK.</a>
+<div>
+</div>
+<input type="checkbox"/> You have an internet connection and access to a shell terminal on your local computer.
+<div>
+</div>
+<input type="checkbox"/> You know how to open a new terminal shell on your local computer and how to run basic command-line programs in the terminal.
+<div>
+</div>
+<input type="checkbox"/> You hold ICP tokens in a self-custody wallet.
+<div>
+</div>
+<input type="checkbox"/> You have created a backup copy of the public/private key for the identity you are using for self-custody.
+<div>
+</div>
+<input type="checkbox"/> You have a secure environment in which to perform operations involving ICP tokens.
 
-    ``` bash
-    sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
-    ```
-
--   [x] You have created a backup copy of the public/private key for the identity you are using for self-custody.
-
-    For example, if you are using the default developer identity created using the SDK `dfx` command-line interface, you should have a backup of the `~/.config/dfx/identity/default/identity.pem` file stored in a secure location.
-
--   [x] You have a secure environment in which to perform operations involving ICP tokens.
+</TabItem>
+</Tabs>
 
 As a security best practice, any operations that involve the transfer of ICP tokens would require both an air-gapped computer with minimal hardware and software and a computer connected to the network. In practice, this requires moving files between two computers and taking other precautions to minimize risks.
 

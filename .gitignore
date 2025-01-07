@@ -29,7 +29,8 @@ stats.py
 unlighthouse.config.ts
 # Local Netlify folder
 .netlify
-roadmap.json
-roadmap.d.ts
+
+/roadmap/roadmap.json
+/roadmap/roadmap.d.ts
 
 .codegpt
