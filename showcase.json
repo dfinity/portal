@@ -4868,8 +4868,6 @@
     "logo": "/static/img/showcase/blockchain-bingo_logo.png",
     "usesInternetIdentity": true,
     "authOrigins": ["https://identity.ic0.app/#authorize"],
-    "github": "https://github.com/dickhery/Blockchain-Bingo-on-ICP?tab=readme-ov-file#description",
-    "twitter": "https://x.com/richard_hery",
-    "screenshots": ["static/img/showcase/blockchain-bingo_screenshot1.jpg", "/static/img/showcase/blockchain-bingo_screenshot2.jpg"]
+    "github": "https://github.com/dickhery/Blockchain-Bingo-on-ICP?tab=readme-ov-file#description"
   }
 ]

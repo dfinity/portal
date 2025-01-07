@@ -31,3 +31,5 @@ unlighthouse.config.ts
 .netlify
 roadmap.json
 roadmap.d.ts
+
+.codegpt
