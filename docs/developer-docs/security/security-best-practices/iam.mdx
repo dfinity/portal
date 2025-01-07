@@ -124,7 +124,7 @@ Upon successful authentication, II will return a delegation for the principal de
 
 When integrating a mobile application with II, the implementation is not straightforward, since a mobile app can’t call the `postMessage` API. It is tempting to create a simple “proxy” web frontend served by the dapp as shown in the sequence diagram below. The mobile application can load this proxy to complete the normal II authorization flow. Upon completion, this proxy web app provides the delegation back to the mobile app.
 
-Naive implementation
+**Naive implementation sequence diagram:**
 ```mermaid
 sequenceDiagram
     actor U as User
@@ -185,7 +185,7 @@ In the standard integration between a client web app and the II web frontend, th
 
 This risk can be addressed by adopting the following remediations shown in the sequence diagram and explained further below.
 
-Secure integration sequence diagram
+**Secure integration sequence diagram:**
 ```mermaid
 sequenceDiagram
     actor U as User
