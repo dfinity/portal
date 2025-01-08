@@ -12,7 +12,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 An agent is an API client used to interact with ICP. The [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) is used to interact with the public ICP API endpoints and canisters deployed on ICP. ICP JavaScript agent provides `call`, `query`, and `readState` methods, along with other utilities, to an actor.
 
-Calls made through the agent are intended to be structured through an actor and configured with a canister's interface that can be generated from a [Candid interface](/docs/current/developer-docs/smart-contracts/candid/candid-concepts). Raw calls are supported, but not recommended per best practices.
+Calls made through the agent are intended to be structured through an actor and configured with a canister's interface that can be generated from a [Candid interface](/docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts). Raw calls are supported, but not recommended per best practices.
 
 ## Installation
 
@@ -34,7 +34,7 @@ npm i --save @dfinity/agent
 
 ## Authentication
 
-The [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) supports authentication through `auth-client`, which uses the [Internet Identity service](/docs/current/developer-docs/identity/internet-identity/overview).
+The [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) supports authentication through `auth-client`, which uses the [Internet Identity service](/docs/current/building-dapps/using-network-features/authentication/overview).
 
 First, install the `auth-client` package:
 

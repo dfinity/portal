@@ -232,7 +232,7 @@ function SnsFaqPage() {
                   You can propose upgrades for many of the DAO's parameters such
                   as maximum staking period, voting rewards and many more. See{" "}
                   <Link
-                    href="/docs/current/developer-docs/daos/sns/managing/managing-nervous-system-parameters"
+                    href="/docs/current/building-dapps/governing-dapps/managing/managing-nervous-system-parameters"
                     target="_blank"
                   >
                     parameters
@@ -934,7 +934,7 @@ function SnsFaqPage() {
             title="SNS Wiki"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="/docs/current/developer-docs/daos/sns/"
+            href="/docs/current/building-dapps/governing-dapps/"
             title="SNS Docs"
           ></SmallCardWithDescription>
         </AnimateSpawn>

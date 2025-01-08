@@ -199,14 +199,14 @@ const Content: React.FC = () => {
                 integration,{" "}
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview"
+                  to="/docs/current/building-dapps/using-network-features/using-external-data/http-outcalls/overview"
                 >
                   RPC integration
                 </Link>{" "}
                 and
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview"
+                  to="/docs/current/building-dapps/using-network-features/using-external-data/http-outcalls/overview"
                 >
                   {" "}
                   HTTPs outcalls
@@ -226,7 +226,7 @@ const Content: React.FC = () => {
                 lengthy wait times for block confirmations. Enter{" "}
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview"
+                  to="/docs/current/building-dapps/chain-fusion/chain-key-tokens/ckbtc/overview"
                 >
                   ckBTC
                 </Link>
@@ -262,7 +262,7 @@ const Content: React.FC = () => {
                 Internet Computer, is an
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview"
+                  to="/docs/current/building-dapps/using-network-features/using-external-data/http-outcalls/overview"
                 >
                   ICRC-1
                 </Link>

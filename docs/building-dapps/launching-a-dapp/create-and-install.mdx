@@ -1,0 +1,527 @@
+---
+keywords: [beginner, tutorial, create, create canister]
+---
+
+import TabItem from "@theme/TabItem";
+import Tabs from '@theme/Tabs';
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# Create
+
+<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
+
+
+Canisters contain both code and state. Once you have written the code for a <GlossaryTooltip>canister</GlossaryTooltip>, the canister doesn't exist until it is registered with ICP, either locally, on the playground, or on the mainnet.
+
+## Creating canisters
+
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
+
+<input type="checkbox"/> <a href="/docs/current/building-dapps/getting-started/install">Install the IC SDK.</a>
+<div>
+</div>
+<input type="checkbox"/> <a href="/docs/current/building-dapps/launching-a-dapp/create-and-install">Write a smart contract.</a>
+
+</TabItem>
+</Tabs>
+
+Canisters are created with [`dfx canister create`](/docs/current/building-dapps/developer-tools/dfx/dfx-canister#dfx-canister-create). They are initially empty and do not contain program code. The code must be [compiled](/docs/current/building-dapps/launching-a-dapp/create-and-install) into Wasm and [installed](/docs/current/building-dapps/launching-a-dapp/create-and-install) into the empty canister before it can be deployed.
+
+Create your canisters from within the project's directory:
+
+- `dfx canister create <canister-name>`: Create a canister locally. The local replica must be running to create a canister locally. Start it with `dfx start --background`.
+
+- `dfx canister create <canister-name> --network=playground`: Create a canister on the [playground](/docs/current/building-dapps/launching-a-dapp/deploy/overview#testnets). Creating a canister on the playground is free, but canisters are temporary and will be removed after 20 minutes.
+
+- `dfx canister create <canister-name> --network=ic`: Create a canister on the mainnet. Creating a canister on the mainnet will cost [cycles](/docs/current/developer-education/developer-concepts/gas-cost).
+
+- `dfx canister create --all --network=ic`: Create all canisters in the project's `dfx.json` file on the mainnet.
+
+:::tip
+Settings can be configured while creating a canister using optional flags. [View the full list of settings](/docs/current/building-dapps/developer-tools/dfx/dfx-canister#dfx-canister-create).
+:::
+
+When a canister is created, the following steps happen:
+
+- A canister ID is registered with the local replica or the mainnet for each canister in the project's `dfx.json` file.
+
+- The following canister components are created:
+  - List of controllers.
+  - Cycles balance.
+  - Reserved cycles balance.
+  - Canister status.
+  - Resource reservations.
+
+- Each canister ID is returned in the command line.
+
+## Errors related to canister creation
+
+Common errors related to canister creation include:
+
+- [Canister not found](/docs/current/developer-education/message-execution/execution-errors#canister-not-found).
+- [Maximum number of canisters reached](/docs/current/developer-education/message-execution/execution-errors#maximum-number-of-canisters-reached).
+
+---
+keywords: [beginner, tutorial, compile]
+---
+
+import TabItem from "@theme/TabItem";
+import Tabs from '@theme/Tabs';
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Compile
+
+<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
+
+
+
+After you have [written the code](/docs/current/building-dapps/launching-a-dapp/create-and-install) for your project's <GlossaryTooltip>canisters</GlossaryTooltip> and [created them](/docs/current/building-dapps/launching-a-dapp/create-and-install), you need to compile the code into a WebAssembly module before it can be deployed on ICP.
+
+:::danger
+
+You must [create your canisters](/docs/current/building-dapps/launching-a-dapp/create-and-install) before you can build them; otherwise, you will receive an error message saying they do not exist.
+
+:::
+
+`dfx build` looks for source code to compile for each canister configured under the `canisters` section in the [`dfx.json`](/docs/current/building-dapps/developer-tools/dfx-json-reference) file. It can be used to compile a specific canister or all canisters defined in the project.
+
+Verify the location of your project's files and their file names. If necessary, edit your project's `dfx.json` file to reflect the current intended configuration.
+
+## Compiling your canister
+
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
+
+<input type="checkbox"/> <a href="/docs/current/building-dapps/getting-started/install">Install the IC SDK.</a>
+<div>
+</div>
+<input type="checkbox"/> <a href="/docs/current/building-dapps/launching-a-dapp/create-and-install">Write a smart contract.</a>
+<div>
+</div>
+<input type="checkbox"/> <a href="/docs/current/building-dapps/launching-a-dapp/create-and-install">Create your canister.</a>
+
+</TabItem>
+</Tabs>
+
+To compile your canister's Wasm module, you can use the [`dfx build`](/docs/current/building-dapps/developer-tools/dfx/dfx-build) command.
+
+Compile your canisters from within the project's directory:
+
+- `dfx build <canister-name>`: Compile a canister locally. The local replica must be running to compile a canister locally. Start it with `dfx start --background`.
+
+- `dfx build <canister-name> --network=playground`: Compile a canister on the playground. Compiling a canister on the playground is free, but canisters are temporary and will be removed after 20 minutes.
+
+- `dfx build <canister-name> --network=ic`: Compile a canister on the mainnet. Compiling a canister on the mainnet will cost [cycles](/docs/current/developer-education/developer-concepts/gas-cost).
+
+- `dfx build --network=ic`: Compile all canisters in the project's `dfx.json` file on the mainnet.
+
+:::tip
+Compilation happens on the local machine of the developer.
+
+`dfx build` isn't the only workflow that can be used for compiling code. For example, Rust canisters can be compiled using `cargo`.
+:::
+
+
+When this command is executed, the following steps happen:
+
+- The source code for a canister is compiled into a Wasm module.
+
+- If a canister is written in Motoko, type declarations are automatically generated using Candid.
+
+- If a canister is written in Rust, the build process checks for Rust vulnerabilities.
+
+## How code is compiled to Wasm
+
+WebAssembly (Wasm) is a platform-independent binary format that can be executed in the Wasm virtual machine.
+Many modern compilers support Wasm as the compilation target along with traditional targets such as x86 and arm32.
+
+There are three types of Wasm depending on where the Wasm virtual machine is hosted and how it interacts with users and the host environment:
+
+- **Web browser**: The Wasm program interacts with the users via the JavaScript bindings of the browser. The primary toolchain for compiling Wasm for browsers is [Emscripten](https://emscripten.org/). Note that such Wasm programs are incompatible with ICP.
+
+- **WASI**: This abbreviation stands for [WebAssembly System Interface](https://wasi.dev/). It is becoming the standard for running Wasm programs outside of Web browsers. Major Wasm runtimes such as Wasmtime and Wasmer support this standard. Compilers denote this target as `wasm32-wasi`. ICP does not directly support WASI, but it is possible to preprocess a WASI program and make it runnable on ICP with the community project [`wasi2ic`](https://github.com/wasm-forge/wasi2ic).
+
+- **Vanilla Wasm**: There is no standard API for interacting with users and the host environment. Every host environment provides its own API. ICP uses this approach and provides a set of functions, called the System API, to the Wasm program. Many compilers denote this target as `wasm32-unknown-unknown` since they do not know the target host environment and do not make any assumptions about the available APIs.
+
+The Canister Development Kit (CDK) of supported programming language comes with build scripts that link the System API and compile the code to Wasm programs that are compatible with ICP:
+
+- Rust and Motoko compile to the `wasm32-unknown-unknown` target directly under the hood.
+- Azle and Kybra first compile to the `wasm32-wasi` target and then convert the Wasm binary to `wasm32-unknown-unknown` using the `wasi2ic` tool.
+
+For convenience of developers, `dfx` wraps the CDK specific build scripts and provides the `dfx build` command to compile the code to a Wasm binary.
+
+---
+keywords: [beginner, tutorial, install, install code, canister install]
+---
+
+import TabItem from "@theme/TabItem";
+import Tabs from '@theme/Tabs';
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# Install
+
+<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
+
+
+
+When a <GlossaryTooltip>canister</GlossaryTooltip> has been initially created, it is empty and does not contain code or state. It only contains information such as the settings, canister ID, cycles balance, and controllers. [Learn more about creating a canister](/docs/current/building-dapps/launching-a-dapp/create-and-install).
+
+Canister code must be [compiled](/docs/current/building-dapps/launching-a-dapp/create-and-install) into Wasm. Then, the Wasm module can be installed into the empty canister.
+
+## Installing canister code
+
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
+
+<input type="checkbox"/> <a href="/docs/current/building-dapps/getting-started/install">Install the IC SDK.</a>
+<div>
+</div>
+<input type="checkbox"/> <a href="/docs/current/building-dapps/launching-a-dapp/create-and-install">Write a smart contract.</a>
+<div>
+</div>
+<input type="checkbox"/> <a href="/docs/current/building-dapps/launching-a-dapp/create-and-install">Create your canister.</a>
+<div>
+</div>
+<input type="checkbox"/> <a href="/docs/current/building-dapps/launching-a-dapp/create-and-install">Compile your canister code into Wasm.</a>
+
+</TabItem>
+</Tabs>
+
+Code must be installed into a canister using the [`dfx canister install`](/docs/current/building-dapps/developer-tools/dfx/dfx-canister#dfx-canister-install) command from the project's directory:
+
+- `dfx canister install <canister-name>`: Install canister code locally. The local replica must be running to create a canister locally. Start it with `dfx start --background`.
+
+- `dfx canister install <canister-name> --network=playground`: Install canister code on the playground. Installing code in a canister on the [playground](/docs/current/building-dapps/launching-a-dapp/deploy/overview#testnets) is free, but canisters are temporary and will be removed after 20 minutes.
+
+- `dfx canister install <canister-name> --network=ic`: Install canister code on the mainnet. Installing code in a canister on the mainnet will cost [cycles](/docs/current/developer-education/developer-concepts/gas-cost).
+
+- `dfx canister install --all --network=ic`: Install code for all canisters in the project's `dfx.json` file on the mainnet.
+
+When a canister's code is installed, the following components are created:
+
+- The canister's code in the form of a canister module.
+
+- The canister's state, including the canister's memory and global values.
+
+- Additional IC-specific information, such as the canister's input and output queues.
+
+## Installing a gzip-compressed WebAssembly module
+
+The size of programs that can be installed on ICP is currently limited to 10 MiB.
+WebAssembly modules that are (slightly) larger than 10 MiB can still be installed on ICP by using gzip file compression before uploading. ICP will then decompress the file and install the contained WebAssembly module.
+
+The WebAssembly module is compressed using `gzip` and then uploaded by `dfx canister install`, you may need to add `--mode reinstall` or `--mode upgrade` when uploading the module to an existing canister.
+
+``` bash
+gzip my-canister.wasm
+dfx canister install my-canister --wasm my-canister.wasm.gz
+```
+
+Compression is currently not supported by `dfx deploy`.
+
+## Errors related to Wasm modules
+
+Common errors related to installation and Wasm modules include:
+
+- [Install code rate limited](/docs/current/developer-education/message-execution/execution-errors#install-code-rate-limited).
+- [Canister not empty](/docs/current/developer-education/message-execution/execution-errors#canister-not-empty).
+- [Wasm module not found](/docs/current/developer-education/message-execution/execution-errors#wasm-module-not-found).
+- [Wasm module too large](/docs/current/developer-education/message-execution/execution-errors#wasm-module-too-large).
+- [Wasm module duplicate exports](/docs/current/developer-education/message-execution/execution-errors#wasm-module-duplicate-exports).
+- [Wasm module exports too many methods](/docs/current/developer-education/message-execution/execution-errors#wasm-module-exports-too-many-methods).
+- [Wasm module sum of exported name lengths too large](/docs/current/developer-education/message-execution/execution-errors#wasm-module-sum-of-exported-name-lengths-too-large).
+- [Wasm module too many functions](/docs/current/developer-education/message-execution/execution-errors#wasm-module-too-many-functions).
+- [Wasm module too many globals](/docs/current/developer-education/message-execution/execution-errors#wasm-module-too-many-globals).
+- [Wasm module function complexity too high](/docs/current/developer-education/message-execution/execution-errors#wasm-module-function-complexity-too-high).
+- [Wasm module function too large](/docs/current/developer-education/message-execution/execution-errors#wasm-module-function-too-large).
+- [Wasm module code section too large](/docs/current/developer-education/message-execution/execution-errors#wasm-module-code-section-too-large).
+
+---
+keywords: [beginner, write, resources, architecture, single canister, multi-canister]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+import TabItem from "@theme/TabItem";
+import Tabs from '@theme/Tabs';
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { BetaChip } from "/src/components/Chip/BetaChip";
+
+# Write
+
+<MarkdownChipRow labels={["Beginner", "Concept"]} />
+
+ICP supports a wide range of applications and architecture types.
+Apps can range from a single canister to complex, multi-<GlossaryTooltip>canister</GlossaryTooltip> projects and everything in between.
+
+You can begin writing and structuring your application using one of two primary workflows:
+
+- **Standard workflow**: The developer writes both the frontend and backend code, then deploys both to ICP as canisters.
+
+- **Framework-based workflow**: An external framework is used to help facilitate creating and deploying canisters. [Learn more about frameworks](#framework-based-workflow).
+
+## Standard workflow
+
+### Choosing the programming language for the backend
+
+The backend stores the application’s data and contains the core logic.
+Several languages are supported, such as:
+
+- **[Rust](/docs/current/building-dapps/developer-tools/cdks/rust/)**: Supported by [DFINITY](https://github.com/dfinity/cdk-rs). Currently, Rust is the language with the most production coverage for ICP applications.
+All system smart contracts, such as [the DAO governing ICP](https://github.com/dfinity/ic/tree/master/rs/nns), [the ICP ledger](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icp), and the [Bitcoin](https://github.com/dfinity/bitcoin-canister) and [Ethereum](https://github.com/dfinity/ic/tree/master/rs/ethereum) integration smart contracts, are written in Rust. This language gives the developer full control over all aspects of the smart contract, starting from performance to memory management.
+The only disadvantage of Rust is that it is lower-level compared to other languages and requires more expert programming skills to write safe and secure code.
+[Learn more about using Rust](/docs/current/developer-docs/backend/rust).
+
+- **[Motoko](/docs/current/motoko/main/getting-started/motoko-introduction)**: Supported by [DFINITY](https://github.com/dfinity/motoko). Motoko is production-ready and was specifically designed to onboard developers onto ICP and leverage the actor-based programming model of ICP. It is a high-level language with a garbage collector and syntax that is similar to TypeScript.
+Examples of production smart contracts that use Motoko include [ICDex](https://github.com/iclighthouse/ICDex) and [CycleOps](https://github.com/CycleOperators/cycles-manager).[Learn more about using Motoko](/docs/current/motoko/main/getting-started/motoko-introduction).
+
+- **TypeScript (beta)**: Supported by [Demergent Labs](https://github.com/demergent-labs) under the name Azle. Azle is in beta. Please check [the Azle website](https://demergent-labs.github.io/azle/) for more information.
+
+- **Python (beta)**: Supported by [Demergent Labs](https://github.com/demergent-labs) under the name Kybra. Kybra is in beta. Please check [the Kybra website](https://demergent-labs.github.io/kybra/kybra.html) for more information.
+
+- **[C++](https://docs.icpp.world/)**: Supported through the [C++ CDK](https://docs.icpp.world/).
+
+### Choosing a web framework for the frontend
+
+The [HTTP Gateway protocol](/docs/current/references/http-gateway-protocol-spec) of ICP allows browsers to load web assets such as JS, HTML, and CSS from a canister via HTTP.
+This means that [web assets can be stored fully onchain](/docs/current/building-dapps/dapp-frontends/using-an-asset-canister) and developers don’t need to use traditional centralized web hosting to serve the UI of their application.
+
+[Svelte](https://svelte.dev/), [React](https://react.dev/), and [Vue](https://vuejs.org/) have been used successfully in production. `dfx v0.17.0` and newer can be used to generate project templates that include one of these frameworks. [Learn more](/docs/current/building-dapps/dapp-frontends/using-an-asset-canister).
+
+The typical development workflow of the frontend is:
+
+1. The developer writes frontend code such as HTML, JS, or CSS.
+2. The developer configures their `dfx.json` file to include a frontend canister with type "assets".
+3. The developer deploys the project. `dfx` will compile the frontend asset files into an asset canister.
+4. Users open the application in the browser by navigating to the URL `https://<canister-id>.icp0.io` or a [custom domain](/docs/current/building-dapps/dapp-frontends/custom-domains/using-custom-domains) if one has been registered for the canister.
+5. The canister serves the web assets to the browser via its `http_request` endpoint that gets invoked for each HTTP request.
+6. When the JS code runs in the browser, it can call the backend canister endpoints using the [ICP JavaScript agent](/docs/current/building-dapps/developer-tools/off-chain/agents/javascript-agent) library, which is analogous to `web3.js` and `ethers.js` of Ethereum.
+
+#### Limitations
+Server-side rendering (SSR) does not work in canisters because they require JS code that is not built into canisters.
+In the future, this might become possible with Azle. Until then, if SSR is required, then one solution is to host the frontend outside of ICP while keeping the core logic in the backend canister.
+
+Having no frontend at all is also a valid option for smart contracts that don’t have a UI and are callable only by users or other smart contracts.
+
+### Creating a new project
+
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
+
+<input type="checkbox"/> <a href="/docs/current/building-dapps/getting-started/install">Install the IC SDK.</a>
+<div>
+</div>
+<input type="checkbox"/> Download and install an IDE or code editor. <a href="https://code.visualstudio.com/">VS Code</a> is recommended.
+
+:::tip
+
+For writing Motoko code, the [Motoko VS Code extension](https://marketplace.visualstudio.com/items?itemName=dfinity-foundation.vscode-motoko) is highly recommended for syntax highlighting.
+
+:::
+
+</TabItem>
+</Tabs>
+
+Create a new project. When prompted, select your backend language and frontend framework of choice:
+
+```bash
+dfx new hello
+```
+
+The [`dfx new`](/docs/current/building-dapps/developer-tools/dfx/dfx-new) command creates a new project directory, template files, and a new `<project_name>` Git repository for your project.
+
+:::tip
+You can also obtain projects from other sources, such as [ICP Ninja](https://icp.ninja) or the [sample repository](https://github.com/dfinity/examples).
+:::
+
+:::caution
+When creating new projects with `dfx new`, only alphanumeric characters and underscores should be used. This is to assure that project names are valid within Motoko, JavaScript, and other contexts.
+:::
+
+Navigate into your project directory:
+
+```
+cd hello
+```
+
+For projects created with `dfx new`, the project structure will resemble the following. If you are using an ICP Ninja project or other sample project, project structure may vary.
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```bash
+hello/
+├── README.md      # Default project documentation
+├── dfx.json       # Project configuration file
+├── node_modules   # Libraries for frontend development
+├── package-lock.json
+├── package.json
+├── src            # Source files directory
+│   ├── hello_backend
+│   │   └── main.mo
+│   ├── hello_frontend
+│       ├── assets
+│       │   ├── logo.png
+│       │   ├── main.css
+│       │   └── sample-asset.txt
+│       └── src
+│           ├── index.html
+│           └── index.js
+└── webpack.config.js
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```bash
+hello/
+├── README.md      # Default project documentation
+├── dfx.json       # Project configuration file
+├── node_modules   # Libraries for frontend development
+├── package-lock.json
+├── package.json
+├── src            # Source files directory
+│   ├── hello_backend
+│   │   └── Cargo.toml
+│   │   └── hello_backend.did
+│   │   └── src
+│       │   ├── lib.rs
+│   ├── hello_frontend
+│       ├── assets
+│       │   ├── logo.png
+│       │   ├── main.css
+│       │   └── sample-asset.txt
+│       └── src
+│           ├── index.html
+│           └── index.js
+└── webpack.config.js
+```
+
+</TabItem>
+
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
+
+```bash
+hello/
+├── README.md          # Default project documentation
+├── dfx.json           # Project configuration file
+├── node_modules
+├── package-lock.json  # Libraries for frontend development
+├── package.json
+├── src                # Source files directory
+│   ├── hello_backend
+|   |   └── index.ts
+│   ├── hello_frontend
+│       ├── assets
+│       │   ├── logo.png
+│       │   ├── main.css
+│       │   └── sample-asset.txt
+│       └── src
+│           ├── index.html
+│           └── index.js
+└── tsconfig.json
+```
+
+
+</AdornedTab>
+
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
+
+```bash
+hello/
+├── README.md      # Default project documentation
+├── dfx.json       # Project configuration file
+├── node_modules   # Libraries for frontend development
+├── package-lock.json
+├── package.json
+├── src            # Source files directory
+│   ├── hello_backend
+│   │   └── hello_backend.did
+│   │   └── src
+│       │   ├── main.py
+│   ├── hello_frontend
+│       ├── assets
+│       │   ├── logo.png
+│       │   ├── main.css
+│       │   └── sample-asset.txt
+│       └── src
+│           ├── index.html
+│           └── index.js
+└── tsconfig.json
+```
+
+</AdornedTab>
+</AdornedTabs>
+
+In this directory, the following files and directories are notable:
+
+- `README.md`: The default README file to be used for documenting your project.
+- `dfx.json`: The default ICP configuration file used to set configurable options for your project.
+- `src/`: The source directory that contains all of your dapp's source files.
+- `hello_backend`: The source directory that contains your dapp's backend code files.
+- `hello_frontend`: The source directory that contains your dapp's frontend code files.
+
+### Reviewing the default program code
+
+Open the backend canister source code file in your code editor. The backend canister's code will be located in the `src/hello_backend` subdirectory. For projects created with `dfx new`, the default backend code will resemble the following. If you are using an ICP Ninja project or other sample project, program code will vary.
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko title="src/hello_backend/main.mo"
+actor {
+public query func greet(name : Text) : async Text {
+    return "Hello, " # name # "!";
+  };
+};
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust title="src/hello_backend/src/lib.rs"
+#[ic_cdk::query]
+fn greet(name: String) -> String {
+    format!("Hello, {}!", name)
+}
+```
+
+</TabItem>
+
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
+
+[Learn more about Azle.](https://demergent-labs.github.io/azle/)
+
+</AdornedTab>
+
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
+
+[Learn more about Kybra.](https://demergent-labs.github.io/kybra/)
+
+</AdornedTab>
+</AdornedTabs>
+
+## Framework-based workflow
+
+### Juno
+[Juno](https://juno.build/docs/intro) is a community project that is tailored for Web2 developers. It takes care of hosting code and data in canisters such that developers can write Web3 applications using familiar Web2 concepts and patterns. For more details, please follow [the official Juno documentation](https://juno.build/docs/intro).
+
+
+### Bitfinity EVM
+
+[Bitfinity EVM](/docs/current/developer-docs/backend/solidity/) is tailored for Solidity developers. It is a canister that runs an instance of the Ethereum virtual machine and allows developers to upload and execute smart contracts written in Solidity. For more details, please follow [the official Bitfinity documentation](https://docs.bitfinity.network/).
+

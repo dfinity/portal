@@ -68,7 +68,7 @@ cargo update
 
 ## Declaring the canister interface
 
-Candid is an interface description language (IDL) for interacting with canisters running on ICP. To see details about the Candid interface description language syntax, see the [Candid guide](/docs/current/developer-docs/smart-contracts/candid/candid-concepts) or the [Candid crate documentation](https://docs.rs/candid/).
+Candid is an interface description language (IDL) for interacting with canisters running on ICP. To see details about the Candid interface description language syntax, see the [Candid guide](/docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts) or the [Candid crate documentation](https://docs.rs/candid/).
 
 Start by opening the `src/my_timers_backend/my_timers_backend.did` file in a code editor and replacing its content with the following:
 
@@ -144,7 +144,7 @@ This code establishes the following:
 ## Implementing canister upgrade
 
 :::info
-Note: As described in the [periodic tasks and timers](/docs/current/developer-docs/smart-contracts/advanced-features/periodic-tasks) page, the timers library does not handle canister upgrades. It is up to the canister developer to serialize the timers in the `canister_pre_upgrade` and reactivate the timers in the `canister_post_upgrade` method if needed.
+Note: As described in the [periodic tasks and timers](/docs/current/building-dapps/using-network-features/periodic-tasks-timers) page, the timers library does not handle canister upgrades. It is up to the canister developer to serialize the timers in the `canister_pre_upgrade` and reactivate the timers in the `canister_post_upgrade` method if needed.
 
 Using pre_ and post_upgrade hooks is discouraged. It is error-prone and can render a canister unusable. Per best practices, using these methods should be avoided if possible.
 :::

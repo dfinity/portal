@@ -24,7 +24,7 @@ The correct behavior of a canister can be checked in two steps. First, inspect t
 
 Second, ensure that the Wasm module the canister runs has been generated from the claimed source code. Here, reproducibility of the build is crucial: the developer should have constructed the Wasm module so that precisely the same Wasm can be rebuilt from scratch. The user can then compare the hash of the rebuilt Wasm module with the module hash reported by ICP. Developers and users can find guidance on ensuring reproducibility in [reproducible canisters](/docs/current/developer-education/developer-playbook/developer-best-practices/reproducible-builds).
 
-Additionally, developers can utilize the [canister history](/docs/current/developer-docs/smart-contracts/maintain/history) feature to track changes to the canister's Wasm module hash.
+Additionally, developers can utilize the [canister history](/docs/current/building-dapps/managing-dapps/history) feature to track changes to the canister's Wasm module hash.
 
 ## Confidence that the canister behavior will not unexpectedly change
 
@@ -58,4 +58,4 @@ Finally, a somewhat more useful solution is to pass control of the canister to a
 
 A more complex but powerful approach is to set the sole controller of the canister to a distributed governance mechanism. In this scenario, the NNS still has ultimate control over the canister even though it is not explicitly in the controller list.
 
-The advantage of using another form of governance, such as an SNS, is that the governance of the canister can be tailored specifically to the canister or project that the canister is a part of. One can imagine different levels of complexity and control that such a governance mechanism may implement. An example is the [SNS feature](/docs/current/developer-docs/daos/sns/overview) which allows developers to set the controller of their canister(s) to some governing canister. Using an SNS, the trust requirements are moved to the SNS controlling the canister, where all of the considerations regarding code inspection and reproducibility apply.
+The advantage of using another form of governance, such as an SNS, is that the governance of the canister can be tailored specifically to the canister or project that the canister is a part of. One can imagine different levels of complexity and control that such a governance mechanism may implement. An example is the [SNS feature](/docs/current/building-dapps/governing-dapps/overview) which allows developers to set the controller of their canister(s) to some governing canister. Using an SNS, the trust requirements are moved to the SNS controlling the canister, where all of the considerations regarding code inspection and reproducibility apply.

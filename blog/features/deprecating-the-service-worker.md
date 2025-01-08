@@ -32,7 +32,7 @@ Presently, there are three distinct implementations of this protocol: the Servic
 
 ### The Service Worker
 
-The Service Worker operates on `{canisterId}.ic0.app` and `{canisterId}.icp0.io` URLs as well as [Boundary Node hosted custom domains](/docs/current/developer-docs/web-apps/custom-domains/using-custom-domains). For example, Internet Identity can be accessed via the Service Worker using the following URLs:
+The Service Worker operates on `{canisterId}.ic0.app` and `{canisterId}.icp0.io` URLs as well as [Boundary Node hosted custom domains](/docs/current/building-dapps/dapp-frontends/custom-domains/using-custom-domains). For example, Internet Identity can be accessed via the Service Worker using the following URLs:
 
 - [rdmx6-jaaaa-aaaaa-aaadq-cai.ic0.app](https://rdmx6-jaaaa-aaaaa-aaadq-cai.ic0.app/)
 - [rdmx6-jaaaa-aaaaa-aaadq-cai.icp0.io](https://rdmx6-jaaaa-aaaaa-aaadq-cai.icp0.io/)

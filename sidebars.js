@@ -98,7 +98,7 @@ const sidebars = {
         {
           type: "doc",
           label: "Types of canister calls",
-          id: "developer-education/message-execution/types-of-canister-calls",
+          id: "developer-education/message-execution/async-code",
         },
         {
           type: "doc",
@@ -491,22 +491,8 @@ build: [
       items: [
         "building-dapps/dapp-frontends/using-an-asset-canister",
         "building-dapps/dapp-frontends/uploading-serving-assets",
-        {
-          type: "category",
-          label: "Frontend frameworks",
-          items: [
-            "building-dapps/dapp-frontends/existing-frontend",
-          ],
-        },
-        {
-          type: "category",
-          label: "Asset certification",
-          items: [
-            "building-dapps/dapp-frontends/asset-certification/custom-http-canisters",
-            "building-dapps/dapp-frontends/asset-certification/serving-json-over-http",
-            "building-dapps/dapp-frontends/asset-certification/serving-static-assets-over-http",
-          ],
-        },
+        "building-dapps/dapp-frontends/existing-frontend",
+        "building-dapps/dapp-frontends/asset-certification",
         "building-dapps/dapp-frontends/asset-security",
         {
           type: "category",
@@ -517,6 +503,263 @@ build: [
           ],
         },
 
+      ],
+    },
+    {
+      type: "category",
+      label: "Launching a dapp",
+      items: [
+        "building-dapps/launching-a-dapp/create-and-install",
+        "building-dapps/launching-a-dapp/deploy/overview",
+        "building-dapps/launching-a-dapp/deploy/custom-testnets",
+      ],
+    },
+    {
+      type: "category",
+      label: "Interacting with dapps",
+      items: [
+        "building-dapps/interacting-with-dapps/query-calls",
+        "building-dapps/interacting-with-dapps/update-calls",
+        "building-dapps/interacting-with-dapps/advanced-calls",
+        {
+          type: "category",
+          label: "Candid",
+          items: [
+            "building-dapps/interacting-with-dapps/candid/candid-concepts",
+            "building-dapps/interacting-with-dapps/candid/using-candid",
+            "building-dapps/interacting-with-dapps/candid/candid-tools",
+          ],
+        },
+        "building-dapps/interacting-with-dapps/using-third-party-canisters",
+      ],
+    },
+    {
+      type: "category",
+      label: "Managing dapps",
+      items: [
+        "building-dapps/managing-dapps/control",
+        "building-dapps/managing-dapps/delete",
+        "building-dapps/managing-dapps/history",
+        "building-dapps/managing-dapps/logs",
+        "building-dapps/managing-dapps/recovery",
+        "building-dapps/managing-dapps/resource-limits",
+        "building-dapps/managing-dapps/snapshots",
+        "building-dapps/managing-dapps/state",
+        "building-dapps/managing-dapps/settings",
+        "building-dapps/managing-dapps/storage",
+        "building-dapps/managing-dapps/topping-up",
+        "building-dapps/managing-dapps/trapping",
+        "building-dapps/managing-dapps/upgrade",
+      ],
+    },
+    {
+      type: "category",
+      label: "Using network features",
+      items: [
+        {
+          type: "category",
+          label: "Using external data",
+          items: [
+            {
+              type: "category",
+              label: "HTTP gateways & certification",
+              items: [
+                "building-dapps/using-network-features/using-external-data/http-gateways-certification/gateways",
+                "building-dapps/using-network-features/using-external-data/http-gateways-certification/custom-http-canisters",
+                "building-dapps/using-network-features/using-external-data/http-gateways-certification/serving-json-over-http",
+                "building-dapps/using-network-features/using-external-data/http-gateways-certification/serving-static-assets-over-http",
+              ],
+            },
+            {
+              type: "category",
+              label: "HTTPS outcalls",
+              items: [
+                    "building-dapps/using-network-features/using-external-data/http-outcalls/overview",
+                    "building-dapps/using-network-features/using-external-data/http-outcalls/get",
+                    "building-dapps/using-network-features/using-external-data/http-outcalls/post",
+              ],
+            },
+          ],
+        },
+
+        {
+          type: "category",
+          label: "Threshold signatures",
+          items: [
+            "building-dapps/using-network-features/signatures/t-ecdsa",
+            "building-dapps/using-network-features/signatures/t-schnorr",
+            "building-dapps/using-network-features/signatures/independently-verifying-ic-signatures",
+          ],
+        },
+        {
+          type: "category",
+          label: "Verifiable data encryption",
+          items: [
+            "building-dapps/using-network-features/encryption/vetkeys",
+            "building-dapps/using-network-features/encryption/using-vetkeys",
+          ],
+        },
+        "building-dapps/using-network-features/randomness",
+        "building-dapps/using-network-features/periodic-tasks-timers",
+        "building-dapps/using-network-features/simd",
+        "building-dapps/using-network-features/time-and-timestamps",
+        {
+          type: "category",
+          label: "Authentication",
+          items: [
+            "building-dapps/using-network-features/authentication/overview",
+            "building-dapps/using-network-features/authentication/integrate-internet-identity",
+            "building-dapps/using-network-features/authentication/alternative-origins",
+          ],
+        },
+        {
+          type: "category",
+          label: "Verifiable credentials",
+          items: [
+            "building-dapps/using-network-features/verifiable-credentials/overview",
+            "building-dapps/using-network-features/verifiable-credentials/how-it-works",
+            "building-dapps/using-network-features/verifiable-credentials/issuer",
+            "building-dapps/using-network-features/verifiable-credentials/relying-party",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Chain Fusion",
+      link: {
+        type: "doc",
+        id: "building-dapps/chain-fusion/overview",
+      },
+      items: [
+        "building-dapps/chain-fusion/supported-chains",
+        {
+          type: "category",
+          label: "Bitcoin",
+          link: {
+            type: "doc",
+            id: "building-dapps/chain-fusion/bitcoin/overview",
+          },
+          items: [
+            "building-dapps/chain-fusion/bitcoin/using-btc/btc-comparison",
+            "building-dapps/chain-fusion/bitcoin/using-btc/btc-dev-workflow",
+            {
+              type: "category",
+              label: "Interacting with Bitcoin",
+              items: [
+                "building-dapps/chain-fusion/bitcoin/using-btc/generate-addresses",
+                "building-dapps/chain-fusion/bitcoin/using-btc/create-transactions",
+                "building-dapps/chain-fusion/bitcoin/using-btc/sign-transactions",
+                "building-dapps/chain-fusion/bitcoin/using-btc/submit-transactions",
+                "building-dapps/chain-fusion/bitcoin/using-btc/read-state",
+                "building-dapps/chain-fusion/bitcoin/using-btc/ordinals",
+                "building-dapps/chain-fusion/bitcoin/using-btc/runes",
+                "building-dapps/chain-fusion/bitcoin/using-btc/local-development",
+              ],
+            },
+          ],
+        },
+        {
+          type: "category",
+          label: "Ethereum",
+          link: {
+            type: "doc",
+            id: "building-dapps/chain-fusion/ethereum/overview",
+          },
+          items: [
+            "building-dapps/chain-fusion/ethereum/using-eth/eth-comparison",
+            "building-dapps/chain-fusion/ethereum/using-eth/eth-dev-workflow",
+            {
+              type: "category",
+              label: "Interacting with Ethereum",
+              items: [
+                "building-dapps/chain-fusion/ethereum/using-eth/generating-addresses",
+                "building-dapps/chain-fusion/ethereum/using-eth/signing-transactions",
+                "building-dapps/chain-fusion/ethereum/using-eth/submit-transactions",
+              ],
+            },
+            {
+              type: "category",
+              label: "EVM RPC canister",
+              link: {
+                type: "doc",
+                id: "building-dapps/chain-fusion/ethereum/evm-rpc/overview",
+              },
+              items: [
+                "building-dapps/chain-fusion/ethereum/evm-rpc/how-it-works",
+                "building-dapps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister",
+                "building-dapps/chain-fusion/ethereum/evm-rpc/costs",
+                "building-dapps/chain-fusion/ethereum/evm-rpc/samples",
+              ],
+            },
+          ],
+        },
+        "building-dapps/chain-fusion/examples",
+      ],
+    },
+    {
+      type: "category",
+      label: "Governing dapps",
+      items: [
+        {
+          label: "What is an SNS?",
+          type: "doc",
+          id: "building-dapps/governing-dapps/overview",
+        },
+        {
+          type: "category",
+          label: "Before an SNS launch",
+          link: {
+            type: "doc",
+            id: "building-dapps/governing-dapps/tokenomics/index",
+          },
+          items: [
+            "building-dapps/governing-dapps/tokenomics/predeployment-considerations",
+            "building-dapps/governing-dapps/tokenomics/tokenomics-intro",
+            "building-dapps/governing-dapps/tokenomics/rewards",
+            "building-dapps/governing-dapps/tokenomics/preparation",
+            "building-dapps/governing-dapps/tokenomics/sns-checklist",
+          ],
+        },
+        {
+          type: "category",
+          label: "Launching an SNS",
+          link: {
+            type: "doc",
+            id: "building-dapps/governing-dapps/launching/index",
+          },
+          items: [
+            "building-dapps/governing-dapps/launching/launch-summary-1proposal",
+            "building-dapps/governing-dapps/launching/launch-steps-1proposal",
+            "building-dapps/governing-dapps/launching/integrating",
+          ],
+        },
+        {
+          type: "category",
+          label: "Testing an SNS",
+          link: {
+            type: "doc",
+            id: "building-dapps/governing-dapps/testing/testing-before-launch",
+          },
+          items: [
+            "building-dapps/governing-dapps/testing/testing-locally",
+            "building-dapps/governing-dapps/testing/testing-on-mainnet",
+          ],
+        },
+        {
+          type: "category",
+          label: "Managing an SNS",
+          link: {
+            type: "doc",
+            id: "building-dapps/governing-dapps/managing/manage-sns-intro",
+          },
+          items: [
+            "building-dapps/governing-dapps/managing/making-proposals",
+            "building-dapps/governing-dapps/managing/cycles-usage",
+            "building-dapps/governing-dapps/managing/sns-asset-canister",
+            "building-dapps/governing-dapps/managing/managing-nervous-system-parameters",
+          ],
+        },
       ],
     },
   ],

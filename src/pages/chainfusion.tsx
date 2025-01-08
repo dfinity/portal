@@ -177,25 +177,25 @@ const developersData = [
     title: "Bitcoin UTXO API",
     description:
       "Developers can create smart contracts that interact directly with the Bitcoin mainnet and testnet networks through ICP's direct integration with Bitcoin. The Bitcoin UTXO API allows reading from and writing to the Bitcoin network, e.g. UTXOs and balances or the percentiles of the fees for the last 10'000 transactions.",
-    link: "/docs/current/developer-docs/multi-chain/bitcoin/using-btc/btc-dev-workflow",
+    link: "/docs/current/building-dapps/chain-fusion/bitcoin/using-btc/btc-dev-workflow",
   },
   {
     title: "EVM RPC Canister",
     description:
       "This smart contract enables decentralized RPC integrations with Ethereum and other EVM blockchains. Communication includes obtaining and sending information such as the logs of a specific block or transaction, historical data regarding the network's gas fee, transactions for a specific address, or submitting a signed transaction.",
-    link: "/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/overview",
+    link: "/docs/current/building-dapps/chain-fusion/ethereum/evm-rpc/overview",
   },
   {
     title: "Threshold Signing Services",
     description:
       "ICP incorporates a suite of threshold signing protocols including ECDSA and Schnorr which allow signing a variety of transactions across chains such as Ethereum and Bitcoin. Further threshold signing protocols like EdDSA and BLS are coming soon.",
-    link: "/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa/",
+    link: "/docs/current/building-dapps/using-network-features/signatures/t-ecdsa/",
   },
   {
     title: "HTTPS Outcalls",
     description:
       "HTTPS outcalls can be used to directly obtain off-chain data or interact with off-chain systems, such as Web 2.0 services or enterprise IT infrastructure. For example, oracle services can directly integrate with ICP in a trustless manner, dapps can provide user notifications, or communicate with other chains via RPC endpoints.",
-    link: "/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview",
+    link: "/docs/current/building-dapps/using-network-features/using-external-data/http-outcalls/overview",
   },
 ];
 
@@ -776,7 +776,7 @@ function ChainFusion() {
                 />
                 <a
                   className="svgcard"
-                  href="https://internetcomputer.org/docs/current/developer-docs/multi-chain/chain-key-tokens/overview"
+                  href="https://internetcomputer.org/docs/current/building-dapps/chain-fusion/chain-key-tokens/overview"
                   target="_blank"
                 >
                   <rect
@@ -970,7 +970,7 @@ function ChainFusion() {
                 </a>
                 <a
                   className="svgcard"
-                  href="https://internetcomputer.org/docs/current/developer-docs/multi-chain/overview/#integrations"
+                  href="https://internetcomputer.org/docs/current/building-dapps/chain-fusion/overview/#integrations"
                   target="_blank"
                 >
                   <rect
@@ -997,7 +997,7 @@ function ChainFusion() {
                 </a>
                 <a
                   className="svgcard"
-                  href="https://internetcomputer.org/docs/current/developer-docs/multi-chain/supported-chains"
+                  href="https://internetcomputer.org/docs/current/building-dapps/chain-fusion/supported-chains"
                   target="_blank"
                 >
                   <rect
@@ -2014,7 +2014,7 @@ function ChainFusion() {
               variants={transitions.container}
             >
               <Link
-                href="/docs/current/developer-docs/multi-chain/overview"
+                href="/docs/current/building-dapps/chain-fusion/overview"
                 className="button-primary"
               >
                 Build now{" "}

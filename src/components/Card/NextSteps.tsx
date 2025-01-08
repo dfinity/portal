@@ -43,7 +43,7 @@ const languagesTiles: TileDescriptor[] = [
       "Explore how canister smart contracts can interact directly with other chains like Bitcoin and Ethereum.",
     action: (
       <Link
-        href="/docs/current/developer-docs/multi-chain/overview"
+        href="/docs/current/building-dapps/chain-fusion/overview"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -85,7 +85,7 @@ const languagesTiles: TileDescriptor[] = [
       "Secure your application's data with onchain encryption methods.",
     action: (
       <Link
-        href="/docs/current/developer-docs/smart-contracts/encryption/vetkeys"
+        href="/docs/current/building-dapps/using-network-features/encryption/vetkeys"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -99,7 +99,7 @@ const languagesTiles: TileDescriptor[] = [
       "Sign messages using threshold ECDSA, Schnorr, and EdDSA.",
     action: (
       <Link
-        href="/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa"
+        href="/docs/current/building-dapps/using-network-features/signatures/t-ecdsa"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -141,7 +141,7 @@ const languagesTiles: TileDescriptor[] = [
       "Integrate authentication methods into your application.",
     action: (
       <Link
-        href="/docs/current/developer-docs/identity/authentication/overview"
+        href="/docs/current/building-dapps/using-network-features/authentication/overview"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -169,7 +169,7 @@ const languagesTiles: TileDescriptor[] = [
       "Use HTTPS outcalls in your project to obtain data from external sources.",
     action: (
       <Link
-        href="/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview"
+        href="/docs/current/building-dapps/using-network-features/using-external-data/http-outcalls/overview"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -183,7 +183,7 @@ const languagesTiles: TileDescriptor[] = [
       "Build web applications using frontend canisters and frameworks like React.",
     action: (
       <Link
-        href="/docs/current/developer-docs/web-apps/application-frontends/overview"
+        href="/docs/current/building-dapps/dapp-frontends/using-an-asset-canister"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >

@@ -20,7 +20,7 @@ This guide assumes you have an existing canister that you'd like to optimize. To
 ## Reducing cycle consumption
 The first step towards an optimized system is profiling. Start by measuring the number of instructions your endpoints consume.
 
-The `instruction_counter` API will tell you the number of instructions your code has consumed since the last entry point. Instructions are the internal currency of the runtime; one ICP instruction is the quantum of work that the protocol can do, such as loading a 32-bit integer from a memory address. The protocol assigns an instruction cost equivalent to each Wasm instruction and system call. It also defines all its limits in terms of instructions. [View a detailed breakdown of the current instruction and Wasm limitations on ICP](/docs/current/developer-docs/smart-contracts/maintain/resource-limits).
+The `instruction_counter` API will tell you the number of instructions your code has consumed since the last entry point. Instructions are the internal currency of the runtime; one ICP instruction is the quantum of work that the protocol can do, such as loading a 32-bit integer from a memory address. The protocol assigns an instruction cost equivalent to each Wasm instruction and system call. It also defines all its limits in terms of instructions. [View a detailed breakdown of the current instruction and Wasm limitations on ICP](/docs/current/building-dapps/managing-dapps/resource-limits).
 
 
 The following is an example method that can be used to measure the number of instructions:

@@ -133,7 +133,7 @@ function FeaturePage() {
             <CardWithDescription
               title="Build dapps with the language of your choice"
               description="Install SDKs to build dapps."
-              href="/docs/current/developer-docs/smart-contracts/write/overview"
+              href="/docs/current/building-dapps/launching-a-dapp/create-and-install"
             />
             <CardWithDescription
               title="Sample Code"

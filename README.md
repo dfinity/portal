@@ -399,7 +399,7 @@ The following submodules and their corresponding repos are currently used:
     - GitHub Repo: https://github.com/dfinity/dfxvm.git
 
 - Response verification
-    - `/docs/current/building-dapps/dapp-frontends/asset-certification/custom-http-canisters`
+    - `/docs/current/building-dapps/dapp-frontends/http-gateways-certification/`
     - GitHub Repo: https://github.com/dfinity/response-verification
 
 ### Updating submodules
@@ -544,7 +544,7 @@ for DFINITY-created agents and CDKs.
 We therefore invite other projects to:
 
 - Link to their own agents or CDKs on the respective index pages (the files to be edited are
-  in `docs/developer-docs/build/agents/index.md` or `docs/developer-docs/smart-contracts/write/overview.mdx`).
+  in `docs/developer-docs/build/agents/index.md` or `docs/building-dapps/launching-a-dapp/create-and-install.mdx`).
 - Add their own documentation as a folder under `Agents` or `CDKs`.
 
 ## Adding community-created developer tools

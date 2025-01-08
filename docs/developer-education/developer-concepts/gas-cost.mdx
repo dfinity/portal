@@ -26,11 +26,11 @@ You can learn more about the [reverse gas model](https://internetcomputer.org/ca
 
 One downside of the ICP reverse gas model is that it requires prerequisite steps and ongoing maintenance for developers. Canisters must have their cycles balances maintained and regularly topped up as they continuously use resources. The canister will be removed from the network if it runs out of cycles.
 
-Learn how to query a [canister's cycles balance](/docs/current/developer-docs/smart-contracts/topping-up/topping-up-canister#checking-the-cycles-balance-of-a-canister).
+Learn how to query a [canister's cycles balance](/docs/current/building-dapps/managing-dapps/topping-up#checking-the-cycles-balance-of-a-canister).
 
-Learn how to [top up a canister](/docs/current/developer-docs/smart-contracts/topping-up/topping-up-canister).
+Learn how to [top up a canister](/docs/current/building-dapps/managing-dapps/topping-up).
 
-A [freezing threshold](/docs/current/developer-docs/smart-contracts/maintain/settings/#freezing-threshold) can be set that pauses a canister's executions if the cycles amount is expected to fall below a certain amount. There are several community tools that have been developed to automate managing a canister's cycles, such as [CycleOps](https://cycleops.dev/).
+A [freezing threshold](/docs/current/building-dapps/managing-dapps/settings/#freezing-threshold) can be set that pauses a canister's executions if the cycles amount is expected to fall below a certain amount. There are several community tools that have been developed to automate managing a canister's cycles, such as [CycleOps](https://cycleops.dev/).
 
 ## Units and fiat value
 
@@ -113,7 +113,7 @@ Compute is a finite resource and is priced as such. The current fee for 1% compu
 [View the cost calculation formula for more information about how costs are calculated](#cost-calculation-formulas).
 
 ### Storage
-Canisters pay for storage consumed by their [Wasm memory](/docs/current/developer-docs/smart-contracts/maintain/storage#heap-memory) and [stable memory](/docs/current/developer-docs/smart-contracts/maintain/storage#stable-memory) per time. Storing 1 GiB for 1 second costs 127k cycles, which amounts to ~4T cycles (or $5.35 USD) for storing 1 GiB for 1 year.
+Canisters pay for storage consumed by their [Wasm memory](/docs/current/building-dapps/managing-dapps/storage#heap-memory) and [stable memory](/docs/current/building-dapps/managing-dapps/storage#stable-memory) per time. Storing 1 GiB for 1 second costs 127k cycles, which amounts to ~4T cycles (or $5.35 USD) for storing 1 GiB for 1 year.
 
 Canisters can reserve storage on a subnet through the `memory_allocation` setting. However, the canister will be charged as if the entire amount of allocated storage is being used.
 
@@ -148,7 +148,7 @@ Special features have different costs since they use special infrastructure to p
 
 - **Chain-key signing API**: Pricing for the **threshold signatures**, such as threshold ECDSA and threshold Schnorr, is available in the [threshold signatures documentation](/docs/current/references/t-sigs-how-it-works/).
 
-- **EVM RPC** Pricing for the **EVM RPC** canister is available in the [EVM RPC canister documentation](/docs/current/developer-docs/multi-chain/ethereum/overview).
+- **EVM RPC** Pricing for the **EVM RPC** canister is available in the [EVM RPC canister documentation](/docs/current/building-dapps/chain-fusion/ethereum/overview).
 
 ## Who is responsible for paying cycles?
 
@@ -229,15 +229,15 @@ Common errors related to cycles include:
 
 Monitoring cycles usage
    - [Check your canister's cycles balance](/docs/current/developer-docs/defi/cycles/cycles-wallet#check-the-cycle-balance).
-   - [Monitor your canister's cycles usage](/docs/current/developer-docs/smart-contracts/topping-up/cycles_management_services).
+   - [Monitor your canister's cycles usage](/docs/current/building-dapps/managing-dapps/topping-up).
    - [Motoko cycles management library](https://github.com/CycleOperators/cycles-manager).
 
 Getting cycles back from a canister
    - To withdraw cycles from a canister, the [canister must be deleted](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#getting-cycles-back-from-a-canister).
 
 Topping up canisters
-   - [Top up your canisters](/docs/current/developer-docs/smart-contracts/topping-up/topping-up-canister).
-   - [Cycles management services](/docs/current/developer-docs/smart-contracts/topping-up/cycles_management_services).
+   - [Top up your canisters](/docs/current/building-dapps/managing-dapps/topping-up).
+   - [Cycles management services](/docs/current/building-dapps/managing-dapps/topping-up).
    - [Cycle.express](https://cycle.express/).
 
 Counting instructions

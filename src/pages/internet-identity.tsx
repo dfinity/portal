@@ -73,7 +73,7 @@ const developers = [
         </Link>
         ,{" "}
         <Link
-          href="https://internetcomputer.org/docs/current/developer-docs/identity/verifiable-credentials/overview"
+          href="https://internetcomputer.org/docs/current/building-dapps/using-network-features/verifiable-credentials/overview"
           className="link-primary-light"
           target="_blank"
           rel="noopener noreferrer"
@@ -471,7 +471,7 @@ function InternetIdentityPage() {
                 </motion.p>
                 <Link
                   className="mt-3 md:mt-6 link-primary-light link-with-icon "
-                  href="https://internetcomputer.org/docs/current/developer-docs/identity/internet-identity/integrate-internet-identity"
+                  href="https://internetcomputer.org/docs/current/building-dapps/using-network-features/authentication/integrate-internet-identity"
                 >
                   <LinkArrowRight />
                   <span>Start Building</span>
@@ -516,7 +516,7 @@ function InternetIdentityPage() {
                 </motion.p>
                 <Link
                   className="button-primary mt-6"
-                  href="https://internetcomputer.org/docs/current/developer-docs/identity/verifiable-credentials/issuer"
+                  href="https://internetcomputer.org/docs/current/building-dapps/using-network-features/verifiable-credentials/issuer"
                 >
                   Become an Issuer
                 </Link>
@@ -694,7 +694,7 @@ function InternetIdentityPage() {
                     existing identity.
                     <div>
                       <Link
-                        href="/docs/current/developer-docs/identity/verifiable-credentials/how-it-works"
+                        href="/docs/current/building-dapps/using-network-features/verifiable-credentials/how-it-works"
                         className="mt-6 md:mt-12 link-primary link-with-icon !font-bold no-underline hover:!text-black"
                       >
                         <LinkArrowRight /> Find out more

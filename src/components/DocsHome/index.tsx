@@ -155,7 +155,7 @@ const frameworksTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/developer-docs/web-apps/frameworks/juno"
+        href="https://juno.build/docs/intro"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to Juno docs"
       >
@@ -252,7 +252,7 @@ const chainfusionTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/developer-docs/multi-chain/supported-chains"
+        href="/docs/current/building-dapps/chain-fusion/supported-chains"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="View the docs"
       >
@@ -281,7 +281,7 @@ const chainfusionTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/developer-docs/multi-chain/bitcoin/overview"
+        href="/docs/current/building-dapps/chain-fusion/bitcoin/overview"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Learn more about the Bitcoin integration"
       >
@@ -306,7 +306,7 @@ const chainfusionTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/developer-docs/multi-chain/ethereum/overview"
+        href="/docs/current/building-dapps/chain-fusion/ethereum/overview"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Learn more about the Ethereum integration"
       >
@@ -335,7 +335,7 @@ const chainfusionTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/developer-docs/multi-chain/chain-key-tokens/overview"
+        href="/docs/current/building-dapps/chain-fusion/chain-key-tokens/overview"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Learn more about chain-key tokens"
       >
@@ -590,7 +590,7 @@ const DocsHomePage: FC = () => {
             </p>
             <Link
               className="button-primary rounded-2xl"
-              href="/docs/current/developer-docs/smart-contracts/write/overview"
+              href="/docs/current/building-dapps/launching-a-dapp/create-and-install"
             >
               View all
             </Link>
@@ -621,7 +621,7 @@ const DocsHomePage: FC = () => {
           </p>
           <Link
             className="button-primary rounded-2xl"
-            href="/docs/current/developer-docs/multi-chain/overview"
+            href="/docs/current/building-dapps/chain-fusion/overview"
           >
             LEARN MORE
           </Link>
@@ -645,7 +645,7 @@ const DocsHomePage: FC = () => {
           </p>
           <Link
             className="button-primary rounded-2xl"
-            href="/docs/current/developer-docs/web-apps/frameworks/juno"
+            href="https://juno.build/docs/intro"
           >
             VIEW ALL
           </Link>

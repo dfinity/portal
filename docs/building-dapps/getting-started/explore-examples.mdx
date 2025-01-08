@@ -13,7 +13,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 [ICP Ninja](https://icp.ninja) is a web-based integrated development environment (IDE) for creating and deploying decentralized applications (dapps) on the Internet Computer (ICP).
 
-ICP Ninja provides a gallery of example projects you can explore to learn about different application types, architectures, and use cases. Example projects can be edited and then deployed to ICP directly from your web browser. Once deployed, you can open the application's frontend in your browser, share the public link to your new onchain dapp, or make calls directly to the backend through the [Candid UI](/docs/current/developer-docs/smart-contracts/candid/candid-concepts).
+ICP Ninja provides a gallery of example projects you can explore to learn about different application types, architectures, and use cases. Example projects can be edited and then deployed to ICP directly from your web browser. Once deployed, you can open the application's frontend in your browser, share the public link to your new onchain dapp, or make calls directly to the backend through the [Candid UI](/docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts).
 
 ICP Ninja serves as an introduction to developing on ICP and learning about:
 
@@ -21,7 +21,7 @@ ICP Ninja serves as an introduction to developing on ICP and learning about:
 
 - How ICP dapps can be structured.
 
-- ICP's unique features, such as [randomness](/docs/current/developer-docs/smart-contracts/advanced-features/randomness), [timers](/docs/current/developer-docs/smart-contracts/advanced-features/periodic-tasks), and [HTTPS outcalls](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview).
+- ICP's unique features, such as [randomness](/docs/current/building-dapps/using-network-features/randomness), [timers](/docs/current/building-dapps/using-network-features/periodic-tasks-timers), and [HTTPS outcalls](/docs/current/building-dapps/using-network-features/using-external-data/http-outcalls/overview).
 
 :::info
 
@@ -72,9 +72,9 @@ https://a4gq6-oaaaa-aaaab-qaa4q-cai.icp1.io/?id=ts425-saaaa-aaaab-qbksq-cai
 https://2drrs-wqaaa-aaaab-qblbq-cai.icp1.io
 ```
 
-The **backend canister** URL will open the [Candid UI](/docs/current/developer-docs/smart-contracts/candid/candid-concepts) which can interact directly with the backend canister's methods. A **method** is a function exposed by the canister that can be called by a user, another canister, or the application's frontend.
+The **backend canister** URL will open the [Candid UI](/docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts) which can interact directly with the backend canister's methods. A **method** is a function exposed by the canister that can be called by a user, another canister, or the application's frontend.
 
-The **frontend** URL will open the application's frontend user interface. To create this frontend, the project's React files (shown in the ICP Ninja code editor within the `frontend/` folder) have been compiled and deployed as an [asset canister](/docs/current/developer-docs/web-apps/application-frontends/overview).
+The **frontend** URL will open the application's frontend user interface. To create this frontend, the project's React files (shown in the ICP Ninja code editor within the `frontend/` folder) have been compiled and deployed as an [asset canister](/docs/current/building-dapps/dapp-frontends/using-an-asset-canister).
 
 :::info
 This application will be live for 20 minutes. After 20 minutes, it will expire, and the URLs will become invalid. The project code will still be accessible, and you can redeploy the application at any time to view it for another 20 minutes.

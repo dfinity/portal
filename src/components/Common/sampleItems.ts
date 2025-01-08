@@ -265,7 +265,7 @@ export const sampleItems: SampleItem[] = [
       },
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/send_http_get",
-      docs: "/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use",
+      docs: "/docs/current/building-dapps/using-network-features/using-external-data/http-outcalls/overview",
       rust: "https://github.com/dfinity/examples/tree/master/rust/send_http_get",
     },
   },

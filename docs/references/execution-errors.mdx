@@ -396,7 +396,7 @@ An example of this error is:
   Sender's ID: zzz-zzz
 ```
 
-Each canister has a number of [controllers](/docs/current/developer-docs/smart-contracts/maintain/control) and certain actions (e.g. updating the canister's Wasm code) can only be performed by controllers. To fix this error, consider performing the action from a [principal](/docs/current/developer-education/glossary/index#principal) which is already a controller, or have an existing controller add additional principals to the canister's list of controllers.
+Each canister has a number of [controllers](/docs/current/building-dapps/managing-dapps/control) and certain actions (e.g. updating the canister's Wasm code) can only be performed by controllers. To fix this error, consider performing the action from a [principal](/docs/current/developer-education/glossary/index#principal) which is already a controller, or have an existing controller add additional principals to the canister's list of controllers.
 
 
 ### Canister not found
@@ -418,9 +418,9 @@ An example of this error is:
   Canister xxx-xxx cannot be installed because the canister is not empty. Try installing with mode='reinstall' instead.
 ```
 
-[Installing](/docs/current/developer-docs/smart-contracts/install) a Wasm module on a canister is meant to be performed only when the canister has no existing state when it has first been created, and therefore fails if the canister already has an installed Wasm module.
+[Installing](/docs/current/building-dapps/launching-a-dapp/create-and-install) a Wasm module on a canister is meant to be performed only when the canister has no existing state when it has first been created, and therefore fails if the canister already has an installed Wasm module.
 
-If the intention is to update the Wasm module without wiping the state, then an [upgrade](/docs/current/developer-docs/smart-contracts/maintain/upgrade) should be used instead. If the intention is actually to overwrite the canister state, then the [reinstall](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/maintain/settings#reinstall-a-canister) mode can be used.
+If the intention is to update the Wasm module without wiping the state, then an [upgrade](/docs/current/building-dapps/managing-dapps/upgrade) should be used instead. If the intention is actually to overwrite the canister state, then the [reinstall](https://internetcomputer.org/docs/current/building-dapps/managing-dapps/settings#reinstall-a-canister) mode can be used.
 
 
 ### Subnet compute capacity oversubscribed
@@ -733,10 +733,10 @@ To fix this error, try resending the message after omitting or modifying the inv
 
 [ic-wasm]: https://github.com/dfinity/ic-wasm
 
-[limits]:/docs/current/developer-docs/smart-contracts/maintain/resource-limits#resource-constraints-and-limits
+[limits]:/docs/current/building-dapps/managing-dapps/resource-limits#resource-constraints-and-limits
 
 [memory-allocation-setting]:/docs/current/building-dapps/developer-tools/dfx/dfx-canister/#options-8
 
 [setting-freezing-threshold]:/docs/current/tutorials/hackathon-prep-course/managing-canisters/#setting-the-canisters-freezing-threshold
 
-[topping-up]:/docs/current/developer-docs/smart-contracts/topping-up/topping-up-canister/
+[topping-up]:/docs/current/building-dapps/managing-dapps/topping-up/

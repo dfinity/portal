@@ -140,7 +140,7 @@ function FeaturePage() {
             <CardWithDescription
               title="Build dapps with the language of your choice"
               description="Learn about programming languages on the ICP."
-              href="/docs/current/developer-docs/smart-contracts/write/overview"
+              href="/docs/current/building-dapps/launching-a-dapp/create-and-install"
             />
             <CardWithDescription
               title="Community Conversation"

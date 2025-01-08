@@ -521,7 +521,7 @@ function DefiPage() {
             <CardWithDescription
               title="Code ckBTC"
               description=""
-              href="/docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview"
+              href="/docs/current/building-dapps/chain-fusion/chain-key-tokens/ckbtc/overview"
             />
           </AnimateSpawn>
         </section>

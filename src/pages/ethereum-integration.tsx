@@ -555,23 +555,23 @@ function EthereumIntegrationPage() {
             <CardWithDescription
               title="Learn about the EVM RPC canister"
               description=""
-              href="/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/how-it-works"
+              href="/docs/current/building-dapps/chain-fusion/ethereum/evm-rpc/how-it-works"
             />
 
             <CardWithDescription
               title="Learn about ckETH"
               description=""
-              href="/docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview"
+              href="/docs/current/building-dapps/chain-fusion/chain-key-tokens/cketh/overview"
             />
             <CardWithDescription
               title="Developer workflow for ETH devs on ICP"
               description=""
-              href="/docs/current/developer-docs/multi-chain/ethereum/using-eth/eth-dev-workflow"
+              href="/docs/current/building-dapps/chain-fusion/ethereum/using-eth/eth-dev-workflow"
             />
             <CardWithDescription
               title="Get started building with Ethereum on ICP"
               description=""
-              href="/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister"
+              href="/docs/current/building-dapps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister"
             />
             <motion.div
               className="blob blob-purple blob-md blob-x-5 blob-y-7 z-[-1] md:blob-lg"

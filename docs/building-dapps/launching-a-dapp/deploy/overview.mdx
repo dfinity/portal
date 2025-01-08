@@ -14,7 +14,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
-After you have [built](/docs/current/developer-docs/smart-contracts/install) a <GlossaryTooltip>canister</GlossaryTooltip>, you can
+After you have [built](/docs/current/building-dapps/launching-a-dapp/create-and-install) a <GlossaryTooltip>canister</GlossaryTooltip>, you can
 deploy it to:
 
 - The local replica where no tokens or cycles are required.
@@ -26,11 +26,11 @@ deploy it to:
 :::danger
 `dfx deploy` does several processes in the background, including:
 
-- [Creating each canister](/docs/current/developer-docs/smart-contracts/create) listed in the `dfx.json` file.
+- [Creating each canister](/docs/current/building-dapps/launching-a-dapp/create-and-install) listed in the `dfx.json` file.
 
-- [Compiling the code](/docs/current/developer-docs/smart-contracts/compile) for each canister into a Wasm module.
+- [Compiling the code](/docs/current/building-dapps/launching-a-dapp/create-and-install) for each canister into a Wasm module.
 
-- [Installing the Wasm module](/docs/current/developer-docs/smart-contracts/install) into each canister. 
+- [Installing the Wasm module](/docs/current/building-dapps/launching-a-dapp/create-and-install) into each canister.
 
 - Deploying the canisters to the deployment endpoint of choice (local, playground, mainnet).
 :::
@@ -45,9 +45,9 @@ However, tools such as [ICP Ninja](https://icp.ninja) (a web IDE) and the [playg
 
 For most developers, the playground option can be used. For more advanced developers and use cases, there are two possible options for a testnet-like environment:
 
-- [Private testnets](/docs/current/developer-docs/smart-contracts/deploy/custom-testnets): Developers can deploy their own custom instance of the playground on the mainnet, allowing for full customization of the playground's parameters.
+- [Private testnets](/docs/current/building-dapps/launching-a-dapp/deploy/custom-testnets): Developers can deploy their own custom instance of the playground on the mainnet, allowing for full customization of the playground's parameters.
 
-- [Synthetic testnets](/docs/current/developer-docs/smart-contracts/deploy/custom-testnets): The `dfx` named network feature can be used to create custom local networks that can be used for local testing segmented from other projects deployed locally.
+- [Synthetic testnets](/docs/current/building-dapps/launching-a-dapp/deploy/custom-testnets): The `dfx` named network feature can be used to create custom local networks that can be used for local testing segmented from other projects deployed locally.
 
 ## Deploying canisters
 
@@ -57,16 +57,16 @@ For most developers, the playground option can be used. For more advanced develo
 <input type="checkbox"/> <a href="/docs/current/building-dapps/getting-started/install">Install the IC SDK.</a>
 <div>
 </div>
-<input type="checkbox"/> <a href="/docs/current/developer-docs/smart-contracts/write/overview">Write a smart contract.</a>
+<input type="checkbox"/> <a href="/docs/current/building-dapps/launching-a-dapp/create-and-install">Write a smart contract.</a>
 <div>
 </div>
-<input type="checkbox"/> <a href="/docs/current/developer-docs/smart-contracts/create">Create your canister.</a> Optional; <code>dfx deploy</code> will execute this step if not already complete.
+<input type="checkbox"/> <a href="/docs/current/building-dapps/launching-a-dapp/create-and-install">Create your canister.</a> Optional; <code>dfx deploy</code> will execute this step if not already complete.
 <div>
 </div>
-<input type="checkbox"/> <a href="/docs/current/developer-docs/smart-contracts/compile">Compile your canister code into Wasm.</a> Optional; <code>dfx deploy</code> will execute this step if not already complete.
+<input type="checkbox"/> <a href="/docs/current/building-dapps/launching-a-dapp/create-and-install">Compile your canister code into Wasm.</a> Optional; <code>dfx deploy</code> will execute this step if not already complete.
 <div>
 </div>
-<input type="checkbox"/> <a href="/docs/current/developer-docs/smart-contracts/install">Install the Wasm module into your canister.</a> Optional; <code>dfx deploy</code> will execute this step if not already complete.
+<input type="checkbox"/> <a href="/docs/current/building-dapps/launching-a-dapp/create-and-install">Install the Wasm module into your canister.</a> Optional; <code>dfx deploy</code> will execute this step if not already complete.
 </TabItem>
 </Tabs>
 
@@ -93,7 +93,7 @@ https://<canister_id>.icp0.io
 :::info
 If you are sharing a link to a frontend (asset) canister, the frontend of the dapp will be displayed.
 
-If you are sharing a link to a backend canisters, the [Candid UI](/docs/current/developer-docs/smart-contracts/candid/candid-concepts) will be displayed.
+If you are sharing a link to a backend canisters, the [Candid UI](/docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts) will be displayed.
 :::
 
 ## Use a custom Motoko version with `dfx deploy`
