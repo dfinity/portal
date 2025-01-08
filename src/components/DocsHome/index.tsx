@@ -335,7 +335,7 @@ const chainfusionTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/building-dapps/chain-fusion/chain-key-tokens/overview"
+        href="/docs/current/rosetta-defi/chain-key-tokens/overview"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Learn more about chain-key tokens"
       >

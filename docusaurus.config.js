@@ -88,6 +88,13 @@ const subnavItems = [
     activeBasePath: "/docs/current/rosetta-defi/",
   },
   {
+    type: "docSidebar",
+    position: "left",
+    sidebarId: "references",
+    label: "References",
+    activeBasePath: "/docs/current/references/",
+  },
+  {
     type: "dropdown",
     position: "left",
     label: "Resources",

@@ -450,7 +450,7 @@ function BitcoinFaqPage() {
             title="Technical overview of Bitcoin integration"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="/docs/current/building-dapps/chain-fusion/chain-key-tokens/ckbtc/overview"
+            href="/docs/current/rosetta-defi/chain-key-tokens/ckbtc/overview"
             title="Technical overview of ckBTC"
           ></SmallCardWithDescription>
           <SmallCardWithDescription

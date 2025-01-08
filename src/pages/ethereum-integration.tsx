@@ -561,7 +561,7 @@ function EthereumIntegrationPage() {
             <CardWithDescription
               title="Learn about ckETH"
               description=""
-              href="/docs/current/building-dapps/chain-fusion/chain-key-tokens/cketh/overview"
+              href="/docs/current/rosetta-defi/chain-key-tokens/cketh/overview"
             />
             <CardWithDescription
               title="Developer workflow for ETH devs on ICP"

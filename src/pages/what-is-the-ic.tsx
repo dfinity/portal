@@ -236,7 +236,7 @@ function WhatIsIcpPage() {
                   Additionally, the{" "}
                   <Link
                     className="link-white"
-                    href="/docs/current/developer-docs/defi/exchange-rate-canister/"
+                    href="/docs/current/developer-education/system-canisters/exchange-rate-canister"
                   >
                     exchange rate canister
                   </Link>{" "}

@@ -776,7 +776,7 @@ function ChainFusion() {
                 />
                 <a
                   className="svgcard"
-                  href="https://internetcomputer.org/docs/current/building-dapps/chain-fusion/chain-key-tokens/overview"
+                  href="https://internetcomputer.org/docs/current/rosetta-defi/chain-key-tokens/overview"
                   target="_blank"
                 >
                   <rect

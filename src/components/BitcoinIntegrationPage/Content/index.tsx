@@ -226,7 +226,7 @@ const Content: React.FC = () => {
                 lengthy wait times for block confirmations. Enter{" "}
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/building-dapps/chain-fusion/chain-key-tokens/ckbtc/overview"
+                  to="/docs/current/rosetta-defi/chain-key-tokens/ckbtc/overview"
                 >
                   ckBTC
                 </Link>
