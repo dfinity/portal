@@ -119,7 +119,7 @@ npm install
 
 To start, let's take a look at the backend canister, which uses a simple 'Who am I?' service in the `src/whoami/main.mo` file:
 
-```motoko no-repl file=../../references/samples/archive/motoko/auth-client-demo/src/whoami/main.mo
+```motoko no-repl file=../../../referencessamples/archive/motoko/auth-client-demo/src/whoami/main.mo
 ```
 
 In this code, the actor has one method, `whoami`, which responds with the message's caller. You'll use this to test if you make a request from the frontend using an `AnonymousIdentity` or an authenticated Internet Identity.
@@ -128,35 +128,35 @@ In this code, the actor has one method, `whoami`, which responds with the messag
 
 Next, let's take a look at the assets for the frontend of the application. This demo project comes with a few different options for the frontend, such as React and Vue, but for this guide you'll stick with using the vanilla JavaScript option. If you take a look at the `src/auth_client_demo_assets/vanilla/index.ts` file, you can see that first, you import the `AuthClient` from `@dfinity/auth-client`:
 
-```typescript file=../../references/samples/archive/motoko/auth-client-demo/src/auth_client_demo_assets/vanilla/index.ts#L1-3
+```typescript file=../../../referencessamples/archive/motoko/auth-client-demo/src/auth_client_demo_assets/vanilla/index.ts#L1-3
 ```
 
 
 Then, you define some variables to define a day in nanoseconds:
 
-```typescript file=../../references/samples/archive/motoko/auth-client-demo/src/auth_client_demo_assets/vanilla/index.ts#L4-7
+```typescript file=../../../referencessamples/archive/motoko/auth-client-demo/src/auth_client_demo_assets/vanilla/index.ts#L4-7
 ```
 
 Next, you'll set some default options, including the `loginOptions`, which will allow the `identityProvider` to be either the II mainnet canister if you are using the local environmental variable `DFX_NETWORK` set to `ic`, or the locally deployed II canister. Your local replica will not accept signatures from the mainnet canister.
 
-```typescript file=../../references/samples/archive/motoko/auth-client-demo/src/auth_client_demo_assets/vanilla/index.ts#L9-23
+```typescript file=../../../referencessamples/archive/motoko/auth-client-demo/src/auth_client_demo_assets/vanilla/index.ts#L9-23
 ```
 
 Now, let's initialize the AuthClient. Then, you check to see if the user has previously logged in. If so, their previous identity is verified:
 
-```typescript file=../../references/samples/archive/motoko/auth-client-demo/src/auth_client_demo_assets/vanilla/index.ts#L43-51
+```typescript file=../../../referencessamples/archive/motoko/auth-client-demo/src/auth_client_demo_assets/vanilla/index.ts#L43-51
 ```
 
 Lastly, you define a function that listens for the button on the frontend to be clicked and initialize the client:
 
-```typescript file=../../references/samples/archive/motoko/auth-client-demo/src/auth_client_demo_assets/vanilla/index.ts#L53-61
+```typescript file=../../../referencessamples/archive/motoko/auth-client-demo/src/auth_client_demo_assets/vanilla/index.ts#L53-61
 ```
 
 ### Pulling the Internet Identity canister
 
 Now, if you noticed you didn't create a canister for the Internet Identity service. That's because, if you take a look at this project's `dfx.json` file, you **pull** the Internet Identity canister from the mainnet. This is an example of using the `dfx deps` functionality, which you covered in [2.3: Using third-party canisters](/docs/current/tutorials/developer-journey/level-2/2.3-third-party-canisters).
 
-```json file=../../references/samples/archive/motoko/auth-client-demo/dfx.json
+```json file=../../../referencessamples/archive/motoko/auth-client-demo/dfx.json
 ```
 
 Now let's deploy this project locally. First, pull the II canister using `dfx deps`, then deploy the project:

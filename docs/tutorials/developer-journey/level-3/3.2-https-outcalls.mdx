@@ -129,14 +129,14 @@ cd https_get
 
 Then, open the `src/https_get_backend/main.mo` file in your code editor and replace the existing content with:
 
-```motoko no-repl file=../../references/samples/motoko/send_http_get/src/send_http_get_backend/main.mo#L1-L5
+```motoko no-repl file=../../../referencessamples/motoko/send_http_get/src/send_http_get_backend/main.mo#L1-L5
 ```
 
 This piece of code imports the libraries that you'll be using. Each of these libraries is part of the Motoko base package, as indicated by 'mo:base'.
 
 Now let's insert the code to define our actor. This actor will contain two functions; a function to transform the response that you'll receive from our `GET` response, and a function that sends our `GET` request. The code has been annotated with notes describing in detail what each piece does:
 
-```motoko no-repl file=../../references/samples/motoko/send_http_get/src/send_http_get_backend/main.mo#L8-115
+```motoko no-repl file=../../../referencessamples/motoko/send_http_get/src/send_http_get_backend/main.mo#L8-115
 ```
 
 The code above is annotated with detailed notes and explanations. Take a moment to read through the code's content and annotations to fully understand the code's functionality.
@@ -163,7 +163,7 @@ This error occurs when the replicas on the subnet don't all return the same valu
 
 Once you've inserted these snippets of code into the `src/https_get_backend/main.mo` file, save the file. The file should look like this:
 
-```motoko no-repl file=../../references/samples/motoko/send_http_get/src/send_http_get_backend/main.mo
+```motoko no-repl file=../../../referencessamples/motoko/send_http_get/src/send_http_get_backend/main.mo
 ```
 
 Now, you can deploy the canister locally with the commands:
@@ -217,12 +217,12 @@ cd https_post
 
 Then, open the `src/https_post_backend/main.mo` file in your code editor and replace the existing content with:
 
-```motoko no-repl file=../../references/samples/motoko/send_http_get/src/send_http_post_backend/main.mo#L1-4
+```motoko no-repl file=../../../referencessamples/motoko/send_http_get/src/send_http_post_backend/main.mo#L1-4
 ```
 
 Now, you'll define an actor using that contain two functions; a function to transform the response that you'll receive from our `POST` response, and a function that sends our `POST` request. The code has been annotated with notes describing in detail what each piece does:
 
-```motoko no-repl file=../../references/samples/motoko/send_http_get/src/send_http_get_backend/main.mo#L6-106
+```motoko no-repl file=../../../referencessamples/motoko/send_http_get/src/send_http_get_backend/main.mo#L6-106
 ```
 
 :::info
@@ -233,7 +233,7 @@ The code above is annotated with detailed notes and explanations. Take a moment 
 
 Once you've inserted these snippets of code into the `src/https_post_backend/main.mo` file, save the file. The file should look like this:
 
-```motoko no-repl file=../../references/samples/motoko/send_http_get/src/send_http_get_backend/main.mo
+```motoko no-repl file=../../../referencessamples/motoko/send_http_get/src/send_http_get_backend/main.mo
 ```
 
 Now, you can deploy the canister locally with the commands:
