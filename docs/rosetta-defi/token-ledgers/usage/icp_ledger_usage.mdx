@@ -19,7 +19,7 @@ How you interact with the ICP ledger is dependent on whether you want to interac
 
 `dfx` provides a convenience command to interact with the ICP ledger canister and related functionality: [`dfx ledger`](/docs/current/building-dapps/developer-tools/dfx/dfx-ledger).
 
-`dfx` does not come with an ICP ledger instance installed by default. To be able to use this command, you will need to install the [ICP ledger locally](/docs/developer-docs/defi/tokens/ledger/setup/icp_ledger_setup.mdx).
+`dfx` does not come with an ICP ledger instance installed by default. To be able to use this command, you will need to install the [ICP ledger locally](/docs/rosetta-defi/tokens/ledger/setup/icp_ledger_setup.mdx).
 
 Currently, `dfx ledger` only exposes a subset of the ICP ledger functionality, namely `balance` and `transfer`.
 
@@ -50,7 +50,7 @@ You can find all available methods listed within the ICP ledger canister's Candi
 In order to simplify working with the ICP ledger from JavaScript applications, you can use the [ledger-icp](https://github.com/dfinity/ic-js/tree/main/packages/ledger-icp) JavaScript library.
 
 :::info
-To interact with the ICRC-1 endpoints of the ICP ledger, learn more about [interacting with an ICRC-1 ledger](/docs/current/developer-docs/defi/tokens/indexes).
+To interact with the ICRC-1 endpoints of the ICP ledger, learn more about [interacting with an ICRC-1 ledger](/docs/current/rosetta-defi/tokens/indexes).
 :::
 
 ## Interacting with ICP from a canister (inter-canister calls via `ic-cdk`)
@@ -76,7 +76,7 @@ You can find all available methods listed within the ICP ledger canister's Candi
 
 ### `icrc-ledger-types` Rust crate
 
-As explained in [token standards](/docs/current/developer-docs/defi/tokens/token-standards), the ICP ledger supports all ICRC-1 endpoints. You will need to define the structures used for these endpoints.
+As explained in [token standards](/docs/current/rosetta-defi/tokens/token-standards), the ICP ledger supports all ICRC-1 endpoints. You will need to define the structures used for these endpoints.
 
 To interact with the ICRC-1 and ICRC-2 endpoints, the Rust crate [icrc-ledger-types](https://crates.io/crates/icrc-ledger-types) can be used.
 This is true for the ICP ledger as well as any other canister that supports ICRC-1 or any of the ICRC-1 extension standards (i.e., ICRC-2, ICRC-3,...).

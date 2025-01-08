@@ -9,19 +9,19 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <MarkdownChipRow labels={["Intermediate", "Tutorial"  ]} />
 
 
-There exist two different entpoints that allow for querying of transaction. 
-This endpoint allows you to fetch a transaction at a certain block height.  It is the implementation of the [/block/transaction endpoint](https://docs.cdp.coinbase.com/mesh/reference/blocktransaction) of the Rosetta API standard. 
+There exist two different entpoints that allow for querying of transaction.
+This endpoint allows you to fetch a transaction at a certain block height.  It is the implementation of the [/block/transaction endpoint](https://docs.cdp.coinbase.com/mesh/reference/blocktransaction) of the Rosetta API standard.
 The `search_transactions` endpoint allows you to query for transactions given a set of parameters. It is the implementation of the [/search/transactions endpoint](https://docs.cdp.coinbase.com/mesh/reference/searchtransactions/)
 
 :::info
-Note that in the case of the ICP ledger a block always contains exactly one transaction. The hash of the block as well as the index of the block is guaranteed to be unique  while the hash of the transaction is not. 
+Note that in the case of the ICP ledger a block always contains exactly one transaction. The hash of the block as well as the index of the block is guaranteed to be unique  while the hash of the transaction is not.
 :::
 
-### Prerequisites 
+### Prerequisites
 
 - Your Rosetta instance is up and running under the address `0.0.0.0:8081`.
 
-Make sure to use the correct NetworkIdentifier as described in this [section](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/network.mdx). For this example the following arbitrary BlockIdentifier and TransactionIdentifier are used:
+Make sure to use the correct NetworkIdentifier as described in this [section](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/network.mdx). For this example the following arbitrary BlockIdentifier and TransactionIdentifier are used:
 ```bash
 "block_identifier": {
         "index": 9890652,
@@ -34,7 +34,7 @@ Make sure to use the correct NetworkIdentifier as described in this [section](/d
 
 ## BlockTransaction endpoint
 
-An example request for the `block/transaction` endpoint would resemble the following: 
+An example request for the `block/transaction` endpoint would resemble the following:
 
 ```json
 curl --location '0.0.0.0:8081/block/transaction'  --header 'Content-Type: application/json' --data '{
@@ -51,7 +51,7 @@ curl --location '0.0.0.0:8081/block/transaction'  --header 'Content-Type: applic
                 }
 }
 ```
-The response is similar to that of the block [endpoint](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/blocks.mdx) as there is only one transaction withing a block.
+The response is similar to that of the block [endpoint](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/blocks.mdx) as there is only one transaction withing a block.
 
 ```bash
 {
@@ -122,7 +122,7 @@ The response is similar to that of the block [endpoint](/docs/developer-docs/def
 ```
 
 ## SearchTransactions endpoint
-There are several parameters that can be used to query transactions. See the [full specification](https://docs.cdp.coinbase.com/mesh/reference/searchtransactions/) to see what query parameters can be used. 
+There are several parameters that can be used to query transactions. See the [full specification](https://docs.cdp.coinbase.com/mesh/reference/searchtransactions/) to see what query parameters can be used.
 For example, if you want to fetch all transactions in a given block range (of maximum 10000 blocks) where a specific account was involved, you can make a request to the `search/transactions` endpoint:
 
 ```json

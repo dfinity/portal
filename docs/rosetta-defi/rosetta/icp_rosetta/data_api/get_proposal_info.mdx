@@ -12,11 +12,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 This endpoint allows you to fetch more detailed information about a specific proposal from the NNS.  It is the implementation of the [/call endpoint](https://docs.cdp.coinbase.com/mesh/reference//call) of the Rosetta API standard. The call endpoint is very flexible as to what it can be used for. In the case of ICP Rosetta it is used to fetch various custom information that is not covered by the Rosetta API standard.
 
-### Prerequisites 
+### Prerequisites
 
 - Your Rosetta instance is up and running under the address `0.0.0.0:8081`.
 
-Make sure to use the correct NetworkIdentifier as described in this [section](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/network.mdx). 
+Make sure to use the correct NetworkIdentifier as described in this [section](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/network.mdx).
 It is a direct call to the `get_proposal_info` [endpoint](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai#get_proposal_info) of the governance canister.
 
 :::info
@@ -41,7 +41,7 @@ curl --location '0.0.0.0:8081/call'  --header 'Content-Type: application/json' -
 }'
 ```
 
-The response gives you detailed information about the current state of the proposal. 
+The response gives you detailed information about the current state of the proposal.
 ```bash
 {
     "result": {

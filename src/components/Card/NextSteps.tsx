@@ -169,7 +169,7 @@ const languagesTiles: TileDescriptor[] = [
       "Use HTTPS outcalls in your project to obtain data from external sources.",
     action: (
       <Link
-        href="/docs/current/building-dapps/using-network-features/using-external-data/http-outcalls/overview"
+        href="/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >

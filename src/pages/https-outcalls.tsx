@@ -166,7 +166,7 @@ function HTTPSOutcalls() {
             <CardWithDescription
               title="Dev docs"
               description="Start integrating the HTTPS outcalls feature in your dapps and services to connect to off-chain data."
-              href="https://internetcomputer.org/docs/current/building-dapps/using-network-features/using-external-data/http-outcalls/overview"
+              href="https://internetcomputer.org/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview"
             />
             <CardWithDescription
               title="Beyond oracles"

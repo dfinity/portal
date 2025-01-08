@@ -309,7 +309,7 @@ The typical development workflow of the frontend is:
 3. The developer deploys the project. `dfx` will compile the frontend asset files into an asset canister.
 4. Users open the application in the browser by navigating to the URL `https://<canister-id>.icp0.io` or a [custom domain](/docs/current/building-dapps/dapp-frontends/custom-domains/using-custom-domains) if one has been registered for the canister.
 5. The canister serves the web assets to the browser via its `http_request` endpoint that gets invoked for each HTTP request.
-6. When the JS code runs in the browser, it can call the backend canister endpoints using the [ICP JavaScript agent](/docs/current/building-dapps/developer-tools/off-chain/agents/javascript-agent) library, which is analogous to `web3.js` and `ethers.js` of Ethereum.
+6. When the JS code runs in the browser, it can call the backend canister endpoints using the [ICP JavaScript agent](/docs/current/building-dapps/interacting-with-dapps/agents/javascript-agent) library, which is analogous to `web3.js` and `ethers.js` of Ethereum.
 
 #### Limitations
 Server-side rendering (SSR) does not work in canisters because they require JS code that is not built into canisters.

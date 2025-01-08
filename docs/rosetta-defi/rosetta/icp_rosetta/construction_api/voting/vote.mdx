@@ -15,20 +15,20 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 | Idempotent?          | Yes    |
 | Minimal access level | hotkey |
 
-This section will show you how to use Rosetta to vote on existing proposals. 
+This section will show you how to use Rosetta to vote on existing proposals.
 
 ### Fetch existing proposals
-First you will need to know which proposals currenty exist on the NNS. You can read up on how to do this [here](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/get_pending_proposals.mdx). 
-If you already know the proposal id you want to vote on you can also [fetch](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/get_proposal_info.mdx) the information about the proposal to check that what your are voting on is what you expected. 
+First you will need to know which proposals currenty exist on the NNS. You can read up on how to do this [here](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/get_pending_proposals.mdx).
+If you already know the proposal id you want to vote on you can also [fetch](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/get_proposal_info.mdx) the information about the proposal to check that what your are voting on is what you expected.
 
 ### Vote on a proposal
-In this tutorial you will be voting on the proposal with the proposal id `12`. 
+In this tutorial you will be voting on the proposal with the proposal id `12`.
 You also have to decide on what to vote, meaning:
 - Register a vote, but neither vote for nor against the proposal: 0
 - Vote for the proposal to be adopted: 1
 - Vote for the proposal to be rejected: 2
 
-In this case, you will be voting against the proposal. 
+In this case, you will be voting against the proposal.
 An example call for the `construction/payloads` endpoint resembles the following:
 ```
 curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data '{

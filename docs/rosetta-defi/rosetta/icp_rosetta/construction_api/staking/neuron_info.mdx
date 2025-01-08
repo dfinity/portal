@@ -15,8 +15,8 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 | Idempotent?          | yes    |
 | Minimal access level | hotkey |
 
-In this section of the staking tutorial you will learn how to fetch information about an existing neuron. 
-There are a few variations to this that depend on whether you are the controller of the neuron or whether you are using a [hotkey](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/hotkeys.mdx). 
+In this section of the staking tutorial you will learn how to fetch information about an existing neuron.
+There are a few variations to this that depend on whether you are the controller of the neuron or whether you are using a [hotkey](/docs/rosetta-defi/rosetta/icp_rosetta/construction_api/staking/hotkeys.mdx).
 
 ## Calling `NeuronInfo` as a controller
 Assuming that you are the controller of the neuron with the `neuron_id` `3094748712371737240` and you are not using a hotkey, the corresponding payloads call would resemble the following:
@@ -121,5 +121,5 @@ The result of the `NeuronInfo` call would resemble the following:
 Right now the neuron is `DISSOLVED` as it has not yet been locked up. This will be done in the next step.
 ```
 :::info
-Currently, ICP Rosetta does not support fetching neuron info of a neuron that you are not either the controller of or have a hotkey for. 
+Currently, ICP Rosetta does not support fetching neuron info of a neuron that you are not either the controller of or have a hotkey for.
 :::

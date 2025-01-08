@@ -8,8 +8,8 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial" ]} />
 
-The ICP Rosetta allows for communication with the [ICP ledger](https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai) and the [NNS governance canister](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai) through the Rosetta-API standard. 
-This guide is split up into the endpoints of the [data API](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/index.mdx) and that of the [construction API](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/index.mdx). 
+The ICP Rosetta allows for communication with the [ICP ledger](https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai) and the [NNS governance canister](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai) through the Rosetta-API standard.
+This guide is split up into the endpoints of the [data API](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/index.mdx) and that of the [construction API](/docs/rosetta-defi/rosetta/icp_rosetta/construction_api/index.mdx).
 
 ## Set up an ICP Rosetta node
 
@@ -84,7 +84,7 @@ When you are finished testing, you should run the Docker image in production mod
 These command-line options are used to attach an interactive terminal session and remove the container, and are primarily intended for testing purposes.
 To run the software in a production environment, you can start the Docker image using the `--detach` option to run the container in the background and, optionally, specify the `--volume` command for storing blocks.
 
-To connect the Rosetta node instance to the mainnet, add flags: `--mainnet` and `--not-whitelisted`. The flag for whitelisting is reserved for certain IP addresses that need to connect to permissioned testnets. 
+To connect the Rosetta node instance to the mainnet, add flags: `--mainnet` and `--not-whitelisted`. The flag for whitelisting is reserved for certain IP addresses that need to connect to permissioned testnets.
 
 For more information about Docker command-line options, see the [Docker reference documentation](https://docs.docker.com/engine/reference/commandline/run/).
 
@@ -103,8 +103,8 @@ For example, the software doesn’t implement any of the UTXO features of Rosett
 
 
 # How to use the Rosetta API
-The interaction with the Rosetta node can be split in two different parts. The first part consists of fetching data from the ledger regarding blocks, transactions and balances. This part is called the Data-API. [View the steps on how to interact with the Data-API](/docs/developer-docs/defi/rosetta/icp_rosetta/data_api/index.mdx). 
-The second part is more complex. To allow users to sign transactions offline and send them back to Rosetta there are a few interactions that the user will have to follow with the Rosetta node. This part is called the flow of operations in the Construction-API. [View an example of how to go through such a flow of operations](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/index.mdx). The reader of this guide can follow along the examples outlined in the section for the Construction-API. 
+The interaction with the Rosetta node can be split in two different parts. The first part consists of fetching data from the ledger regarding blocks, transactions and balances. This part is called the Data-API. [View the steps on how to interact with the Data-API](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/index.mdx).
+The second part is more complex. To allow users to sign transactions offline and send them back to Rosetta there are a few interactions that the user will have to follow with the Rosetta node. This part is called the flow of operations in the Construction-API. [View an example of how to go through such a flow of operations](/docs/rosetta-defi/rosetta/icp_rosetta/construction_api/index.mdx). The reader of this guide can follow along the examples outlined in the section for the Construction-API.
 
 ## Frequently asked questions
 

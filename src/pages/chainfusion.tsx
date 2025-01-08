@@ -195,7 +195,7 @@ const developersData = [
     title: "HTTPS Outcalls",
     description:
       "HTTPS outcalls can be used to directly obtain off-chain data or interact with off-chain systems, such as Web 2.0 services or enterprise IT infrastructure. For example, oracle services can directly integrate with ICP in a trustless manner, dapps can provide user notifications, or communicate with other chains via RPC endpoints.",
-    link: "/docs/current/building-dapps/using-network-features/using-external-data/http-outcalls/overview",
+    link: "/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview",
   },
 ];
 

@@ -17,19 +17,19 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 | Minimal access level | controller |
 
 Staking requires transferring tokens to a sub-account of the governance canister. To complete the transfer, you need to know both your ICP ledger account identifier (source of the transfer) and the account identifier of the governance sub-account (destination of the transfer).
-Make sure you have enough ICP in your source account to make the transfer to the governance canister. 
-To derive the account identifier of your public key you can look at how the [derive endpoint works](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/derive.mdx). 
+Make sure you have enough ICP in your source account to make the transfer to the governance canister.
+To derive the account identifier of your public key you can look at how the [derive endpoint works](/docs/rosetta-defi/rosetta/icp_rosetta/construction_api/operations_flow/derive.mdx).
 
 ## Deriving the governance canister account identifier
 
-For neuron creation on the Internet Computer, the process begins with the transfer of ICP tokens to the address destined to become the neuron. 
-This address, while earmarked for a future neuron, does not yet represent an active neuron until the governance canister acknowledges the deposit. 
-It's crucial to understand that, at this juncture, the neuron has not been created; the address is simply a placeholder for the future neuron. 
-By transferring the ICP tokens directly to this designated address, you effectively earmark them for neuron creation. 
-However, the governance canister must be notified of this transfer to activate the neuron. This process is done in the [next step of the guide](/docs/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_icp.mdx). 
+For neuron creation on the Internet Computer, the process begins with the transfer of ICP tokens to the address destined to become the neuron.
+This address, while earmarked for a future neuron, does not yet represent an active neuron until the governance canister acknowledges the deposit.
+It's crucial to understand that, at this juncture, the neuron has not been created; the address is simply a placeholder for the future neuron.
+By transferring the ICP tokens directly to this designated address, you effectively earmark them for neuron creation.
+However, the governance canister must be notified of this transfer to activate the neuron. This process is done in the [next step of the guide](/docs/rosetta-defi/rosetta/icp_rosetta/construction_api/staking/stake_icp.mdx).
 Once the governance canister is aware, it uses the transferred tokens at the specified address to formally establish the neuron.
 
-You can derive the governance canister account identifier you need to send ICP similarly as to how you derive your own account identifier. 
+You can derive the governance canister account identifier you need to send ICP similarly as to how you derive your own account identifier.
 
 ```json
 curl --location '0.0.0.0:8081/construction/derive'  --header 'Content-Type: application/json' --data '{

@@ -9,11 +9,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 
 
-The `block` endpoint allows you to fetch blocks at a certain block height.  It is the implementation of the [/block endpoint](https://docs.cdp.coinbase.com/mesh/reference/block) of the Rosetta API standard. 
+The `block` endpoint allows you to fetch blocks at a certain block height.  It is the implementation of the [/block endpoint](https://docs.cdp.coinbase.com/mesh/reference/block) of the Rosetta API standard.
 ### Prerequisites
 - Your Rosetta instance is up and running under the address `0.0.0.0:8082`.
 
-- Make sure to use the correct [`NetworkIdentifier`](/docs/developer-docs/defi/rosetta/icrc_rosetta/data_api/network.mdx). For this example the following arbitrary `BlockIdentifier` is used:
+- Make sure to use the correct [`NetworkIdentifier`](/docs/rosetta-defi/rosetta/icrc_rosetta/data_api/network.mdx). For this example the following arbitrary `BlockIdentifier` is used:
 ```bash
 "block_identifier": {
         "index": 1357691,
@@ -23,7 +23,7 @@ The `block` endpoint allows you to fetch blocks at a certain block height.  It i
 The `BlockIdentifer` required here is a [PartialBlockIdentifier](https://www.rosetta-api.org/docs/models/PartialBlockIdentifier.html), which means you can either provide the index, the hash or both. For example, you can select a transaction of interest in the [ckBTC dashboard](https://dashboard.internetcomputer.org/bitcoin/transactions) and use the index displayed there to fetch the corresponding block from Rosetta. The following example only provides the index, but you are free to use the full `BlockIdentifier` or only the hash.
 
 :::caution
-If you are connecting to a different ICRC-1 ledger other than the ckBTC ledger, you cannot use the index and hash from the ckBTC ledger. 
+If you are connecting to a different ICRC-1 ledger other than the ckBTC ledger, you cannot use the index and hash from the ckBTC ledger.
 :::
 ## Example
 The request will resemble the following:
@@ -40,7 +40,7 @@ curl --location '0.0.0.0:8082/block'  --header 'Content-Type: application/json' 
 }'
 ```
 
-The response will give you the transaction within the block, in this case it is a transfer between accounts. While the operation field shows you the basic information about the operation, the metadata of the transaction reveals information specific to ICRC-1 transactions such as the `memo`, the `fee_collector_block_index` and `created_at_time`. The operation name and metadata varies between operation types. It is recommended to try and fetch a block of interest and see how the metadata and operation is formed to acquire an understanding of how the ICRC Rosetta implementation parses the block information for various operation types. 
+The response will give you the transaction within the block, in this case it is a transfer between accounts. While the operation field shows you the basic information about the operation, the metadata of the transaction reveals information specific to ICRC-1 transactions such as the `memo`, the `fee_collector_block_index` and `created_at_time`. The operation name and metadata varies between operation types. It is recommended to try and fetch a block of interest and see how the metadata and operation is formed to acquire an understanding of how the ICRC Rosetta implementation parses the block information for various operation types.
 
 ```bash
 {
@@ -172,7 +172,7 @@ The response will give you the transaction within the block, in this case it is 
 
 ## Querying block ranges
 One limitation of the `/block` endpoint is that you can only query one block at a time. Depending on your setup, this may
-be a bottleneck. To alleviate this issue you can use the `/call` endpoint and parse the method name `query_block_range` to fetch up to `10_000` blocks at a time. 
+be a bottleneck. To alleviate this issue you can use the `/call` endpoint and parse the method name `query_block_range` to fetch up to `10_000` blocks at a time.
 
 An example call resembles the following:
 ```json
@@ -190,9 +190,9 @@ curl --location '0.0.0.0:8082/call'  --header 'Content-Type: application/json' -
 ```
 The following parameters are used:
 * `number_of_blocks`: The amount of blocks you want to fetch. The maximum value for it is `10_000`.
-* `highest_block_index`: The block you are trying to fetch with the highest block index. All subsequent blocks that you want to fetch in the same call will have a lower block index. 
-If `highest_block_index > X` with `X` being the most recent block in the Rosetta database, then Rosetta will only return the blocks in the range `[highest_block_index,highest_block_index-number_of_blocks]` which have a block index that is smaller or equal to `X`. 
-This means that Rosetta does not guarantee that all blocks that you asked for are present in the database and it does not guarantee that the exact number of blocks you asked for will be returned. 
+* `highest_block_index`: The block you are trying to fetch with the highest block index. All subsequent blocks that you want to fetch in the same call will have a lower block index.
+If `highest_block_index > X` with `X` being the most recent block in the Rosetta database, then Rosetta will only return the blocks in the range `[highest_block_index,highest_block_index-number_of_blocks]` which have a block index that is smaller or equal to `X`.
+This means that Rosetta does not guarantee that all blocks that you asked for are present in the database and it does not guarantee that the exact number of blocks you asked for will be returned.
 
 As a result to the call above you will receive 2 blocks:
 ```json
@@ -416,4 +416,4 @@ As a result to the call above you will receive 2 blocks:
 }
 ```
 The field `idempotent` indicates whether the query you asked for will return the same result when fetched at a later point in time. This is always true if `highest_block_index` exists in the Rosetta database. Otherwise,
-it may be the case that at a later point in time more blocks have been added to the database and can thus be returned as a result. 
+it may be the case that at a later point in time more blocks have been added to the database and can thus be returned as a result.

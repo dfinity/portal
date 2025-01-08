@@ -33,7 +33,7 @@ The Internet Computer runs on a network of nodes owned and operated by a communi
 
 Canisters consume the resources provided by these nodes when they are deployed on the mainnet. To make ICP sustainable, canisters are required to pay for the resources they use.
 
-Resource consumption is not paid in ICP tokens but **cycles**. As the canister is used, its cycles balance is continuously reduced. Eventually, the canister needs to be "topped up" with more cycles. 
+Resource consumption is not paid in ICP tokens but **cycles**. As the canister is used, its cycles balance is continuously reduced. Eventually, the canister needs to be "topped up" with more cycles.
 
 To get cycles, you must convert ICP tokens into cycles.
 
@@ -44,7 +44,7 @@ While the value of an ICP token is volatile, cycles are not. Cycles are pegged t
 
 ## Other token types
 
-The Internet Computer supports creating and deploying custom fungible or non-fungible tokens through the [ICRC standards](/docs/current/developer-docs/defi/tokens/token-standards). Each ICRC standard defines a set of parameters that must be met to adhere to the standard. Not all ICRC standards are for tokens; some are for notifications, architectures, or other network functions.
+The Internet Computer supports creating and deploying custom fungible or non-fungible tokens through the [ICRC standards](/docs/current/rosetta-defi/tokens/token-standards). Each ICRC standard defines a set of parameters that must be met to adhere to the standard. Not all ICRC standards are for tokens; some are for notifications, architectures, or other network functions.
 
 ## What is a ledger?
 
@@ -57,11 +57,11 @@ A [**ledger**](/docs/current/developer-docs//defi/overview) is a system canister
 You need to obtain [ICP tokens](https://internetcomputer.org/icp-tokens), then convert them into cycles using `dfx`. However, when participating at DFINITY events like [hackathons](https://dfinity.org/hackathons) or working on a [developer grant](https://dfinity.org/grants), you will receive a coupon which you can redeem to claim free cycles from the [cycles faucet](https://anv4y-qiaaa-aaaal-qaqxq-cai.ic0.app/).
 
 :::tip
-Each developer identity has both a **principal** and a **ledger account identifier**. 
+Each developer identity has both a **principal** and a **ledger account identifier**.
 
 A principal has the format `itk7v-ihlxk-ktdrh-fcnst-vkoou-orj77-52ogl-jqwj5-zpfdv-az3lr-xqe` and is used for canister ownership, management, and holding cycles.
 
-A ledger account identifier has the format `e213184a548871a47fb526f3cba24e2ee2fbbc8129c4ab497ef2ce535130a0a4` and is used to send and receive tokens like ICP. 
+A ledger account identifier has the format `e213184a548871a47fb526f3cba24e2ee2fbbc8129c4ab497ef2ce535130a0a4` and is used to send and receive tokens like ICP.
 :::
 
 ### 1. Get your account's ledger account ID.
