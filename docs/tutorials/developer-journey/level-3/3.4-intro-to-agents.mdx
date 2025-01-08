@@ -104,9 +104,42 @@ cd examples/motoko/random_maze
 npm install
 ```
 
+### Creating the JavaScript agent
+
+View the content of the `src/declarations/random_maze/index.js` file:
+
+```javascript file=../references/samples/motoko/random_maze/src/declarations/random_maze/index.js
+```
+
+In this code, the constructor first creates an `HTTPAgent` which wraps the JavaScript API, then uses it to encode calls through the public API. If the deployment is on the mainnet, the root key of the replica is fetched. Then, an actor is created using the automatically generated Candid interface for the canister and is passed the canister ID and the `HTTPAgent`.
+
+:::caution
+This example uses `fetchRootKey`. It is not recommended that dapps deployed on the mainnet call this function from the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), since using `fetchRootKey` on the mainnet poses severe security concerns for the dapp that's making the call. It is recommended to put it behind a condition so that it only runs locally.
+
+This API call will fetch a root key for verification of update calls from a single replica, so it’s possible for that replica to respond with a malicious key. A verified mainnet root key is already embedded into the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), so this only needs to be called on your local replica, which will have a different key from mainnet that the ICP JavaScript agent does not know ahead of time.
+:::
+
+Now our actor is set up to call all of the defined service methods; in this instance, there is just the `generate` method.
+
+Let's deploy our canisters with the command:
+
+```bash
+dfx deploy
+```
+
+Then, open the URL for the `random_maze_assets` canister in your web browser:
+
+```
+URLs:
+  Frontend canister via browser
+    random_maze_assets: http://avqkn-guaaa-aaaaa-qaaea-cai.localhost:4943/
+  Backend canister via Candid interface:
+    random_maze: http://asrmz-lmaaa-aaaaa-qaaeq-cai.localhost:4943/?id=by6od-j4aaa-aaaaa-qaadq-cai
+```
+
 ### Generating Candid declarations
 
-For this example, you'll use an example project that takes a variable size input and generates a random maze using that size. For example, if `6` is entered, a 6x6 maze will be generated. Recall that Motoko projects have the ability to autogenerate the project's Candid files. Let's start with generating those Candid files with the command:
+This example's code takes a variable size input and generates a random maze using that size. For example, if `6` is entered, a 6x6 maze will be generated. Generate the project's Candid files with the command:
 
 ```bash
 dfx generate
@@ -164,81 +197,6 @@ In this file, the `idlFactory` function is defined. This handles the structuring
 
 In this example, the `idlFactory` represents a service with a `generate` method using the same two arguments you defined before (type `Nat` and type `Text`), though it includes a third argument of an empty array, which represents additional annotations that the function may be tagged with, such as 'query'.
 
-### Creating the JavaScript agent
-
-Now, let's put all of these different pieces together in the `src/declarations/random_maze/index.js` file:
-
-```javascript title="src/declarations/random_maze/index.js"
-import { Actor, HttpAgent } from "@dfinity/agent";
-
-// Imports and re-exports candid interface
-import { idlFactory } from "./random_maze.did.js";
-export { idlFactory } from "./random_maze.did.js";
-
-/* CANISTER_ID is replaced by webpack based on node environment
- * Note: canister environment variable will be standardized as
- * process.env.CANISTER_ID_<CANISTER_NAME_UPPERCASE>
- * beginning in dfx 0.15.0
- */
-export const canisterId =
-  process.env.CANISTER_ID_RANDOM_MAZE ||
-  process.env.RANDOM_MAZE_CANISTER_ID;
-
-export const createActor = (canisterId, options = {}) => {
-  const agent = options.agent || new HttpAgent({ ...options.agentOptions });
-
-  if (options.agent && options.agentOptions) {
-    console.warn(
-      "Detected both agent and agentOptions passed to createActor. Ignoring agentOptions and proceeding with the provided agent."
-    );
-  }
-
-  // Fetch root key for certificate validation during development
-  if (process.env.DFX_NETWORK !== "ic") {
-    agent.fetchRootKey().catch((err) => {
-      console.warn(
-        "Unable to fetch root key. Check to ensure that your local replica is running"
-      );
-      console.error(err);
-    });
-  }
-
-  // Creates an actor with using the candid interface and the HttpAgent
-  return Actor.createActor(idlFactory, {
-    agent,
-    canisterId,
-    ...options.actorOptions,
-  });
-};
-
-export const random_maze = createActor(canisterId);
-```
-
-In this code, the constructor first creates an `HTTPAgent` which wraps the JavaScript API, then uses it to encode calls through the public API. If the deployment is on the mainnet, the root key of the replica is fetched. Then, an actor is created using the automatically generated Candid interface for the canister and is passed the canister ID and the `HTTPAgent`.
-
-:::caution
-This example uses `fetchRootKey`. It is not recommended that dapps deployed on the mainnet call this function from the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), since using `fetchRootKey` on the mainnet poses severe security concerns for the dapp that's making the call. It is recommended to put it behind a condition so that it only runs locally.
-
-This API call will fetch a root key for verification of update calls from a single replica, so it’s possible for that replica to respond with a malicious key. A verified mainnet root key is already embedded into the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), so this only needs to be called on your local replica, which will have a different key from mainnet that the ICP JavaScript agent does not know ahead of time.
-:::
-
-Now our actor is set up to call all of the defined service methods; in this instance, there is just the `generate` method.
-
-Let's deploy our canisters with the command:
-
-```bash
-dfx deploy
-```
-
-Then, open the URL for the `random_maze_assets` canister in your web browser:
-
-```
-URLs:
-  Frontend canister via browser
-    random_maze_assets: http://avqkn-guaaa-aaaaa-qaaea-cai.localhost:4943/
-  Backend canister via Candid interface:
-    random_maze: http://asrmz-lmaaa-aaaaa-qaaeq-cai.localhost:4943/?id=by6od-j4aaa-aaaaa-qaadq-cai
-```
 
 ### Using the agent
 

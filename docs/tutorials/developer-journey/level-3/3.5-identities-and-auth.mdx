@@ -119,14 +119,7 @@ npm install
 
 To start, let's take a look at the backend canister, which uses a simple 'Who am I?' service in the `src/whoami/main.mo` file:
 
-```motoko title="src/whoami/main.mo"
-import Principal "mo:base/Principal";
-
-actor {
-    public shared (msg) func whoami() : async Principal {
-        msg.caller
-    };
-};
+```motoko no-repl file=../references/samples/archive/motoko/auth-client-demo/src/whoami/main.mo
 ```
 
 In this code, the actor has one method, `whoami`, which responds with the message's caller. You'll use this to test if you make a request from the frontend using an `AnonymousIdentity` or an authenticated Internet Identity.
@@ -135,130 +128,35 @@ In this code, the actor has one method, `whoami`, which responds with the messag
 
 Next, let's take a look at the assets for the frontend of the application. This demo project comes with a few different options for the frontend, such as React and Vue, but for this guide you'll stick with using the vanilla JavaScript option. If you take a look at the `src/auth_client_demo_assets/vanilla/index.ts` file, you can see that first, you import the `AuthClient` from `@dfinity/auth-client`:
 
-```typescript title="src/auth_client_demo_assets/vanilla/index.ts"
-import { AuthClient } from "@dfinity/auth-client";
-import { handleAuthenticated, renderIndex } from "./views";
+```typescript file=../references/samples/archive/motoko/auth-client-demo/src/auth_client_demo_assets/vanilla/index.ts#L1-3
 ```
+
 
 Then, you define some variables to define a day in nanoseconds:
 
-```typescript title="src/auth_client_demo_assets/vanilla/index.ts"
-// One day in nanoseconds
-const days = BigInt(1);
-const hours = BigInt(24);
-const nanoseconds = BigInt(3600000000000);
+```typescript file=../references/samples/archive/motoko/auth-client-demo/src/auth_client_demo_assets/vanilla/index.ts#L4-7
 ```
 
 Next, you'll set some default options, including the `loginOptions`, which will allow the `identityProvider` to be either the II mainnet canister if you are using the local environmental variable `DFX_NETWORK` set to `ic`, or the locally deployed II canister. Your local replica will not accept signatures from the mainnet canister.
 
-```typescript title="src/auth_client_demo_assets/vanilla/index.ts"
-export const defaultOptions = {
-  createOptions: {
-    idleOptions: {
-      // Set to true if you do not want idle functionality
-      disableIdle: true,
-    },
-  },
-  loginOptions: {
-    identityProvider:
-      process.env.DFX_NETWORK === "ic"
-        ? "https://identity.ic0.app/#authorize"
-        : `http://localhost:4943?canisterId=rdmx6-jaaaa-aaaaa-aaadq-cai#authorize`,
-    // Maximum authorization expiration is 8 days
-    maxTimeToLive: days * hours * nanoseconds,
-  },
-};
+```typescript file=../references/samples/archive/motoko/auth-client-demo/src/auth_client_demo_assets/vanilla/index.ts#L9-23
 ```
-
-Depending on your web browser, you may need to change the `http://localhost:4943?canisterId=rdmx6-jaaaa-aaaaa-aaadq-cai#authorize` value:
-
-- Chrome, Firefox: `http://<canister_id>.localhost:4943#authorize`
-
-- Safari: `http://localhost:4943?canisterId=<canister_id>#authorize`
 
 Now, let's initialize the AuthClient. Then, you check to see if the user has previously logged in. If so, their previous identity is verified:
 
-```typescript title="src/auth_client_demo_assets/vanilla/index.ts"
-const init = async () => {
-  const authClient = await AuthClient.create(defaultOptions.createOptions);
-
-  if (await authClient.isAuthenticated()) {
-    handleAuthenticated(authClient);
-  }
-  renderIndex();
-  setupToast();
-};
+```typescript file=../references/samples/archive/motoko/auth-client-demo/src/auth_client_demo_assets/vanilla/index.ts#L43-51
 ```
 
 Lastly, you define a function that listens for the button on the frontend to be clicked and initialize the client:
 
-```typescript title="src/auth_client_demo_assets/vanilla/index.ts"
-async function setupToast() {
-  const status = document.getElementById("status");
-  const closeButton = status?.querySelector("button");
-  closeButton?.addEventListener("click", () => {
-    status?.classList.add("hidden");
-  });
-}
-
-
-init();
+```typescript file=../references/samples/archive/motoko/auth-client-demo/src/auth_client_demo_assets/vanilla/index.ts#L53-61
 ```
 
 ### Pulling the Internet Identity canister
 
 Now, if you noticed you didn't create a canister for the Internet Identity service. That's because, if you take a look at this project's `dfx.json` file, you **pull** the Internet Identity canister from the mainnet. This is an example of using the `dfx deps` functionality, which you covered in [2.3: Using third-party canisters](/docs/current/tutorials/developer-journey/level-2/2.3-third-party-canisters).
 
-```json title="dfx.json"
-{
-  "canisters": {
-    "whoami": {
-      "main": "src/whoami/main.mo",
-      "type": "motoko",
-      "declarations": {
-        "node_compatibility": true
-      },
-      "pullable": {
-        "dependencies": [],
-        "wasm_url": "https://github.com/krpeacock/auth-client-demo/releases/latest/download/whoami.wasm",
-        "wasm_hash": "a5af74d01aec228c5a717dfb43f773917e1a9138e512431aafcd225ad0001a8b",
-        "init_guide": "null"
-      }
-    },
-    "internet-identity": {
-      "type": "pull",
-      "id": "rdmx6-jaaaa-aaaaa-aaadq-cai"
-    },
-    "auth_client_demo_assets": {
-      "dependencies": [
-        "whoami",
-        "internet-identity"
-      ],
-      "source": [
-        "src/auth_client_demo_assets/vanilla"
-      ],
-      "type": "assets"
-    },
-    "svelte": {
-      "dependencies": [
-        "whoami",
-        "internet-identity"
-      ],
-      "source": [
-        "src/auth_client_demo_assets/svelte/build"
-      ],
-      "type": "assets"
-    }
-  },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
-  "output_env_file": ".env",
-  "version": 2
-}
+```json file=../references/samples/archive/motoko/auth-client-demo/dfx.json
 ```
 
 Now let's deploy this project locally. First, pull the II canister using `dfx deps`, then deploy the project:
@@ -274,40 +172,9 @@ $ Fetching dependencies of canister rdmx6-jaaaa-aaaaa-aaadq-cai...
 Found 1 dependencies:
 rdmx6-jaaaa-aaaaa-aaadq-cai
 Pulling canister rdmx6-jaaaa-aaaaa-aaadq-cai...
-WARN: Canister rdmx6-jaaaa-aaaaa-aaadq-cai has different hash between on chain and download.
-on chain: a3b50a3b35c487b9e5e9cd0174845d83fe15d5bb5d78e507647ed2272777568f
-download: 197d0423178a6ae2785c924b962648e2b47e6ccb2a25e98d9220d9f3ce5eebf7
 ```
 
-Open the `deps/pull.json` file and modify the `wasm_hash` value with the `download` value from the previous output:
-
-```json title="deps/pull.json"
-{
-  "canisters": {
-    "rdmx6-jaaaa-aaaaa-aaadq-cai": {
-      "name": "ii",
-      "wasm_hash": "197d0423178a6ae2785c924b962648e2b47e6ccb2a25e98d9220d9f3ce5eebf7",
-      "init_guide": "Use '(null)' for sensible defaults. See the candid interface for more details.",
-      "init_arg": null,
-      "candid_args": "(opt InternetIdentityInit)",
-      "gzip": true
-    }
-  }
-}
-```
-
-Then, you need to initialize the canister. By running the `dfx deps init` command, it'll show that our II canister requires an init argument:
-
-```bash
-dfx deps init
-```
-
-```bash
-WARN: The following canister(s) require an init argument. Please run `dfx deps init <NAME/PRINCIPAL>` to set them individually:
-rdmx6-jaaaa-aaaaa-aaadq-cai (internet_identity)
-```
-
-This output shows you that the Internet Identity canister requires an init argument, but doesn't include what that init argument is. For more information, run the command `dfx deps init rdmx6-jaaaa-aaaaa-aaadq-cai`, which will provide an error message that includes more information:
+The Internet Identity canister requires an init argument. For more information, run the command `dfx deps init rdmx6-jaaaa-aaaaa-aaadq-cai`, which will provide an error message that includes more information:
 
 ```bash
 Error: Canister rdmx6-jaaaa-aaaaa-aaadq-cai (internet_identity) requires an init argument. The following info might be helpful:
