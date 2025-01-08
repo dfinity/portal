@@ -108,7 +108,7 @@ npm install
 
 View the content of the `src/declarations/random_maze/index.js` file:
 
-```javascript file=../../../referencessamples/motoko/random_maze/src/declarations/random_maze/index.js
+```javascript file=../../../references/samples/motoko/random_maze/src/declarations/random_maze/index.js
 ```
 
 In this code, the constructor first creates an `HTTPAgent` which wraps the JavaScript API, then uses it to encode calls through the public API. If the deployment is on the mainnet, the root key of the replica is fetched. Then, an actor is created using the automatically generated Candid interface for the canister and is passed the canister ID and the `HTTPAgent`.
