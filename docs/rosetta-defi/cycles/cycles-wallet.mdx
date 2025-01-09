@@ -16,7 +16,7 @@ As discussed in [tokens and cycles](/docs/current/building-dapps/getting-started
 Unlike ICP tokens, cycles are only associated with canisters and not with user or developer <GlossaryTooltip>principals</GlossaryTooltip>. Because only canisters require cycles to perform operations and pay for the resources they use, users and developers can manage the distribution and ownership of cycles through a special type of canister called a **cycles wallet**.
 
 :::caution
-Please note that the cycles wallet will be removed from dfx in a future release. We recommend using the [cycles ledger](cycles-ledger.mdx) feature instead, which simplifies the cycles management workflow.
+Please note that the cycles wallet will be removed from dfx in a future release. We recommend using the [cycles ledger](/docs/current/rosetta-defi/token-ledgers/cycles-ledger) feature instead, which simplifies the cycles management workflow.
 :::
 
 The cycles wallet holds the cycles required to perform operations such as creating new canisters. These operations are executed using the canister <GlossaryTooltip>principal</GlossaryTooltip> of the cycles wallet instead of your user principal.
@@ -90,7 +90,7 @@ If you are **deploying locally**, your local cycles wallet is created in the bac
 
 If you are **deploying on the mainnet**, a cycles wallet must be manually created by converting ICP tokens to cycles, transferring the cycles to a new canister principal, and updating the canister with the default cycles wallet WebAssembly module (Wasm).
 
-There are dapps that can help you convert ICP to cycles and create a new cycles wallet, e.g., [NNS dapp](/docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart#_deploy_a_canister_with_cycles).
+There are dapps that can help you convert ICP to cycles and create a new cycles wallet, e.g., [NNS dapp](/docs/current/move-to-learnhub/nns/using-the-nns-dapp/nns-app-quickstart#_deploy_a_canister_with_cycles).
 
 - #### Step 1: Create a new canister with cycles by transferring ICP tokens from your ledger account. Run the command:
 

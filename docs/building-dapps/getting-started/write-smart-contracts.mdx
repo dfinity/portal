@@ -33,11 +33,11 @@ Available CDKs include:
 
 - [Rust CDK](https://github.com/dfinity/cdk-rs): By default, the Rust CDK is included as a dependency of the IC SDK. Alternatively, you can [install it yourself](https://crates.io/crates/ic-cdk).
 
-- [Kybra: Python CDK](/docs/current/developer-docs/backend/python/)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to [install and use Azle](/docs/current/developer-docs/backend/typescript/).
+- [Kybra: Python CDK](https://demergent-labs.github.io/kybra/)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to [install and use Azle](https://demergent-labs.github.io/azle//).
 
-- [Azle: TypeScript CDK](/docs/current/developer-docs/backend/typescript/)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to [install and use Kybra](/docs/current/developer-docs/backend/python/).
+- [Azle: TypeScript CDK](https://demergent-labs.github.io/azle//)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to [install and use Kybra](https://demergent-labs.github.io/kybra/).
 
-- [Bitfinity EVM for Solidity](/docs/current/developer-docs/backend/solidity/)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to use the [Bitfinity EVM](https://docs.bitfinity.network/ic-agent/overview).
+- [Bitfinity EVM for Solidity](https://docs.bitfinity.network/)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to use the [Bitfinity EVM](https://docs.bitfinity.network/ic-agent/overview).
 
 - [C++ CDK](https://docs.icpp.world/): Supported through the [ICPP-pro CDK](https://docs.icpp.world/installation.html).
 
@@ -58,7 +58,7 @@ cd PROJECT_NAME
 Options for the `--type` flag are `motoko`, `rust`, `azle`, and `kybra`.
 
 :::caution
-Using [Rust](/docs/current/building-dapps/developer-tools/cdks/rust/dev-env), [Azle](/docs/current/developer-docs/backend/typescript/), or [Kybra](/docs/current/developer-docs/backend/python/) may require additional dependencies to be installed if you have not developed with those languages in your environment before. View their corresponding documentation for more information.
+Using [Rust](/docs/current/building-dapps/developer-tools/cdks/rust/dev-env), [Azle](https://demergent-labs.github.io/azle//), or [Kybra](https://demergent-labs.github.io/kybra/) may require additional dependencies to be installed if you have not developed with those languages in your environment before. View their corresponding documentation for more information.
 :::
 
 </TabItem>
@@ -693,7 +693,7 @@ At this point, we have three functions in this code that demonstrate three diffe
 1. Onchain randomness will be used to generate a number between 133000 and 133255. This number will be used to select a recent NNS proposal at random.
 
 :::tip
-The [Network Nervous System (NNS)](/docs/current/developer-docs/daos/nns/overview) is the decentralized organization that governs the ICP network. To make changes to the network, a proposal must be submitted and voted on.
+The [Network Nervous System (NNS)](/docs/current/move-to-learnhub/nns/overview) is the decentralized organization that governs the ICP network. To make changes to the network, a proposal must be submitted and voted on.
 :::
 
 2. The random number will be passed into the HTTPS outcall. The HTTPS outcall will query the IC API endpoint for details about that specific proposal number.

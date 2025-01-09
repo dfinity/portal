@@ -632,7 +632,7 @@ function InternetIdentityPage() {
                       <li>
                         Dapps must make authenticated calls to their own
                         canisters as well as shared infrastructure canisters,
-                        for instance the <Link href="https://internetcomputer.org/docs/current/developer-docs/defi/tokens/token-standards">IC Ledger canister</Link>.
+                        for instance the <Link href="/docs/current/rosetta-defi/token-ledgers/usage/icp_ledger_usage">IC Ledger canister</Link>.
                       </li>
                     </ul>
                   </p>

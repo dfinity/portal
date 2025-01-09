@@ -3,7 +3,10 @@ on:
   issue_comment:
     types: [created]
     paths:
-      - docs/developer-docs/
+      - docs/developer-education
+      - docs/building-dapps
+      - docs/rosetta-defi
+      - docs/references
 
 jobs:
   check_comment:

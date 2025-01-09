@@ -43,14 +43,14 @@ This comparison provides an overview of the key differences in smart contract de
 
 #### Creation
 **Ethereum**: Smart contracts are written in Solidity and deployed immutably onto the blockchain.
-**ICP**: Canisters can be written in any language that complies to [Wasm](https://webassembly.org/) or has an interpreter that can compile to Wasm including [Rust](/docs/current/building-dapps/developer-tools/cdks/rust/), [Typescript](/docs/current/developer-docs/backend/typescript), [Motoko](/docs/current/motoko/main/getting-started/motoko-introduction), and [Python](/docs/current/developer-docs/backend/python/).
+**ICP**: Canisters can be written in any language that complies to [Wasm](https://webassembly.org/) or has an interpreter that can compile to Wasm including [Rust](/docs/current/building-dapps/developer-tools/cdks/rust/), [Typescript](https://demergent-labs.github.io/azle/), [Motoko](/docs/current/motoko/main/getting-started/motoko-introduction), and [Python](https://demergent-labs.github.io/kybra/).
 
 #### Accounts
 **Ethereum**: On Ethereum, there are two main types of accounts: externally owned accounts (EOAs) and contract accounts. Externally owned accounts, often referred to as wallets, are controlled by anyone with the private key. A contract account is a smart contract deployed to the network.
 
 **ICP**: Similar to EOA accounts, several wallets support ICP as referenced in [this resource](https://support.dfinity.org/hc/en-us/articles/4405480810644-Which-wallets-can-store-ICP-utility-tokens).
 
-Similar to the concept of contract accounts, ICP canisters themselves can hold ICP and ICRC1/ICRC2 tokens on ICP. The canister ID serves as a principal or unique identifier that allows you to send tokens to. ICP canisters can generate multiple ECDSA-based public keys using [Threshold ECDSA](/docs/current/developer-docs/smart-contracts/encryption/t-ecdsa).
+Similar to the concept of contract accounts, ICP canisters themselves can hold ICP and ICRC1/ICRC2 tokens on ICP. The canister ID serves as a principal or unique identifier that allows you to send tokens to. ICP canisters can generate multiple ECDSA-based public keys using [Threshold ECDSA](docs/current/building-dapps/using-network-features/signatures/t-ecdsa).
 
 #### Deployment
 **Ethereum**: Developers typically use development frameworks like Hardhat or Truffle to compile and deploy their smart contracts.

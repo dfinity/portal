@@ -146,7 +146,7 @@ def extract_unstructured(html: str, url: str) -> list[Document]:
 if __name__ == "__main__":
   # url = "build/capabilities/index.html"
   # url = "build/docs/current/motoko/main/base/HashMap/index.html"
-  # url = "build/docs/current/developer-docs/frontend/my-contacts/index.html"
+  # url = "build/docs/current/building-dapps/frontend/my-contacts/index.html"
   url = "test_build/overview/index.html"
   for doc in extract_unstructured(open(url).read(), url):
     doc.print()

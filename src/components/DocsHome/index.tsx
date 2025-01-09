@@ -106,7 +106,7 @@ const languagesTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/developer-docs/backend/typescript/"
+        href="https://demergent-labs.github.io/azle//"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to TypeScript docs"
       >
@@ -129,7 +129,7 @@ const languagesTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/developer-docs/backend/solidity/"
+        href="https://docs.bitfinity.network/"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to Solidity docs"
       >
@@ -206,7 +206,7 @@ const frameworksTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/developer-docs/web-apps/application-frontends/quickstart/react-quickstart"
+        href="/docs/current/building-dapps/getting-started/quickstart/first-web-app"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to React quickstart"
       >

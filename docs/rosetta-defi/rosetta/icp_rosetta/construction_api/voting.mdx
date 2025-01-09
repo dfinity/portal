@@ -19,7 +19,7 @@ This section will give you an overview of how to vote on NNS proposals using Ros
 - You have a Rosetta instance running at: `http://127.0.0.1:8081`.
 
 - You are familiar with the concept of staking and voting on the NNS in general. To read up on how these concepts work,
-you can look at the [NNS documentation](/docs/current/developer-docs/daos/nns/overview).
+you can look at the [NNS documentation](/docs/current/docs/current/move-to-learnhub/nns/overview).
 
 
 ---
@@ -49,7 +49,7 @@ The `followees` metadata field contains the list of neurons to follow.
 If the list contains more than one neuron, the neuron will vote according to the majority of followed neurons votes (or abstain in case of draw).
 If the list is empty, the rule for this topic will be discarded (i.e., the neuron will not follow any other neuron for proposals of this type).
 
-You can get a [list](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/list_known_neurons.mdx) of publicly known neurons through the `DATA-API`.
+You can get a [list](/docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/list_known_neurons) of publicly known neurons through the `DATA-API`.
 
 You can restrict the rule to a specific topic by specifying the `topic` metadata field.
 The topic is an integer between 0 and 10 (inclusive).
@@ -200,8 +200,8 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 This section will show you how to use Rosetta to vote on existing proposals.
 
 ### Fetch existing proposals
-First you will need to know which proposals currently exist on the NNS. You can read up on how to do this [here](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/get_pending_proposals.mdx).
-If you already know the proposal id you want to vote on you can also [fetch](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/get_proposal_info.mdx) the information about the proposal to check that what your are voting on is what you expected.
+First you will need to know which proposals currently exist on the NNS. You can read up on how to do this [here](/docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/get_pending_proposals).
+If you already know the proposal id you want to vote on you can also [fetch](/docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/get_proposal_info) the information about the proposal to check that what your are voting on is what you expected.
 
 ### Vote on a proposal
 In this tutorial you will be voting on the proposal with the proposal id `12`.

@@ -13,9 +13,7 @@ import { BetaChip } from "/src/components/Chip/BetaChip";
 
 <MarkdownChipRow labels={["Advanced", "Concept"]} />
 
-
-
-The Internet Computer provides a secure and verifiable way to generate random numbers directly within canisters. This functionality is exposed through the [raw_rand](../../../references/ic-interface-spec.md) method offered by the [management canister](../advanced-features/management-canister.mdx) and the [Motoko Random module](/docs/current/motoko/main/base/Random).
+The Internet Computer provides a secure and verifiable way to generate random numbers directly within canisters. This functionality is exposed through the [raw_rand](/docs/current/references/ic-interface-spec) method offered by the [management canister](/docs/current/developer-concepts/system-canisters/management-canister) and the [Motoko Random module](/docs/current/motoko/main/base/Random).
 
 The method takes no input and returns 32 pseudo-random bytes to the caller.
 
@@ -111,7 +109,7 @@ def get_raw_rand() -> Async[RawRandResult]:
 
 :::caution
 
-Kybra canisters must be deployed from a Python virtual environment. [Learn more in the Kybra docs](/docs/current/developer-docs/backend/python/).
+Kybra canisters must be deployed from a Python virtual environment. [Learn more in the Kybra docs](https://demergent-labs.github.io/kybra/).
 
 :::
 

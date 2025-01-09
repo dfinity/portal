@@ -14,13 +14,13 @@ This section will give you an overview of what data can be fetched from the data
 
 It is split into the following subsections:
 
-- [Network](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/network.mdx): Fetch network specific information, such as the most recent block and what network rosetta is connected to.
-- [Balances](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/balances.mdx): Fetch the balance of an account_identifier or neuron.
-- [Blocks](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/blocks.mdx): Fetch blocks from the ICP ledger.
-- [Transactions](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/transactions.mdx): Fetch transactions from the ICP ledger.
-- [Known neurons](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/list_known_neurons.mdx): Fetch a list of all publicly known neurons.
-- [Pending proposals](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/get_pending_proposals.mdx): Fetch a list of all currently pending proposals on the NNS.
-- [Proposal info](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/get_proposal_info.mdx): Fetch the information about a specific proposal on the NNS.
+- [Network](/docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/network): Fetch network specific information, such as the most recent block and what network rosetta is connected to.
+- [Balances](/docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/balances): Fetch the balance of an account_identifier or neuron.
+- [Blocks](/docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/blocks): Fetch blocks from the ICP ledger.
+- [Transactions](/docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/transactions): Fetch transactions from the ICP ledger.
+- [Known neurons](/docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/list_known_neurons): Fetch a list of all publicly known neurons.
+- [Pending proposals](/docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/get_pending_proposals): Fetch a list of all currently pending proposals on the NNS.
+- [Proposal info](/docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/get_proposal_info): Fetch the information about a specific proposal on the NNS.
 
 
 ---
@@ -41,7 +41,7 @@ This endpoint allows you to fetch the balances for a certain account. It is the 
  - Your Rosetta instance is up and running under the address `0.0.0.0:8081`.
 
 
- Make sure to use the correct NetworkIdentifier as described in this [section](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/network.mdx). For this example an arbitrary AccountIdentifier [8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4](https://dashboard.internetcomputer.org/account/8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4) was used.
+ Make sure to use the correct NetworkIdentifier as described in this [section](/docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/network). For this example an arbitrary AccountIdentifier [8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4](https://dashboard.internetcomputer.org/account/8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4) was used.
 ## Example
 ```json
 curl --location '0.0.0.0:8081/account/balance'  --header 'Content-Type: application/json' --data '{
@@ -113,7 +113,7 @@ This endpoint allows you to fetch blocks at a certain block height. It is the im
 
 - Your Rosetta instance is up and running under the address `0.0.0.0:8081`.
 
-Make sure to use the correct NetworkIdentifier as described in this [section](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/network.mdx). For this example the following arbitrary BlockIdentifier is used:
+Make sure to use the correct NetworkIdentifier as described in this [section](/docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/network). For this example the following arbitrary BlockIdentifier is used:
 ```bash
 "block_identifier": {
         "index": 9840566,
@@ -240,7 +240,7 @@ This endpoint allows you to fetch all pending proposals from the NNS.  It is the
 
 - Your Rosetta instance is up and running under the address `0.0.0.0:8081`.
 
-Make sure to use the correct `NetworkIdentifier` as described in this [section](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/network.mdx).
+Make sure to use the correct `NetworkIdentifier` as described in this [section](/docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/network).
 Pending proposals are all proposals which not yet have come to a conclusion and may be voted on. It is a direct call to the `get_pending_proposals` [endpoint](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai#get_pending_proposals) of the Governance canister.
 
 :::info
@@ -410,7 +410,7 @@ This endpoint allows you to fetch more detailed information about a specific pro
 
 - Your Rosetta instance is up and running under the address `0.0.0.0:8081`.
 
-Make sure to use the correct NetworkIdentifier as described in this [section](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/network.mdx).
+Make sure to use the correct NetworkIdentifier as described in this [section](/docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/network).
 It is a direct call to the `get_proposal_info` [endpoint](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai#get_proposal_info) of the governance canister.
 
 :::info
@@ -688,7 +688,7 @@ This endpoint allows you to fetch all neurons from the NNS that are publicly kno
 
 - Your Rosetta instance is up and running under the address `0.0.0.0:8081`.
 
-Make sure to use the correct NetworkIdentifier as described in this [section](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/network.mdx).
+Make sure to use the correct NetworkIdentifier as described in this [section](/docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/network).
 
 ## Example
 
@@ -1000,7 +1000,7 @@ Note that in the case of the ICP ledger a block always contains exactly one tran
 
 - Your Rosetta instance is up and running under the address `0.0.0.0:8081`.
 
-Make sure to use the correct NetworkIdentifier as described in this [section](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/network.mdx). For this example the following arbitrary BlockIdentifier and TransactionIdentifier are used:
+Make sure to use the correct NetworkIdentifier as described in this [section](/docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/network). For this example the following arbitrary BlockIdentifier and TransactionIdentifier are used:
 ```bash
 "block_identifier": {
         "index": 9890652,
@@ -1030,7 +1030,7 @@ curl --location '0.0.0.0:8081/block/transaction'  --header 'Content-Type: applic
                 }
 }
 ```
-The response is similar to that of the block [endpoint](/docs/rosetta-defi/rosetta/icp_rosetta/data_api/blocks.mdx) as there is only one transaction withing a block.
+The response is similar to that of the block [endpoint](/docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/blocks) as there is only one transaction withing a block.
 
 ```bash
 {

@@ -57,7 +57,7 @@ const languagesTiles: TileDescriptor[] = [
       "Explore creating your own token using the ICRC token standards.",
     action: (
       <Link
-        href="/docs/current/developer-docs/defi/overview"
+        href="/docs/current/rosetta-defi/overview"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -71,7 +71,7 @@ const languagesTiles: TileDescriptor[] = [
       "View examples of decentralized AI running onchain.",
     action: (
       <Link
-        href="/docs/current/developer-docs/ai/overview"
+        href="/ecosystem?tag=AI"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -155,7 +155,7 @@ const languagesTiles: TileDescriptor[] = [
       "Learn about the ICP network's governance.",
     action: (
       <Link
-        href="/docs/current/developer-docs/daos/nns/overview"
+        href="/docs/current/home"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >

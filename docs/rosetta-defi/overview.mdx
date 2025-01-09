@@ -19,11 +19,11 @@ Digital assets can take many forms, such as:
 
 On ICP, digital assets come in three primary forms: ICP tokens, ICRC tokens, and chain-key tokens.
 
-ICP tokens are the network's native utility token. They are used for different actions on the network, such as being converted into <GlossaryTooltip>[cycles](/docs/current/building-dapps/getting-started/tokens-and-cycles)</GlossaryTooltip> to pay for a <GlossaryTooltip>canister</GlossaryTooltip>'s resources, or being staked in a neuron to receive voting power on the [<GlossaryTooltip>NNS</GlossaryTooltip>](/docs/current/developer-docs/daos/nns/overview).
+ICP tokens are the network's native utility token. They are used for different actions on the network, such as being converted into <GlossaryTooltip>[cycles](/docs/current/building-dapps/getting-started/tokens-and-cycles)</GlossaryTooltip> to pay for a <GlossaryTooltip>canister</GlossaryTooltip>'s resources, or being staked in a neuron to receive voting power on the [<GlossaryTooltip>NNS</GlossaryTooltip>](/docs/current/docs/current/move-to-learnhub/nns/overview).
 
 [ICRC](https://github.com/dfinity/ICRC) stands for `Internet Computer Request for Comments` and is a working group for various topics. ICRC standards can be created for anything, not just token types. Currently, the protocol supports the ICRC token standards ICRC-1, ICRC-2, ICRC-3, and ICRC-7, with several more in the process of being drafted and developed.
 
-[Chain-key](/docs/current/rosetta-defi/chain-key-tokens/overview) tokens are created using ICP's chain-key cryptography protocols, such as [threshold signing](https://internetcomputer.org/docs/current/developer-education/glossary/index#chain-key). The chain-key tokens ckBTC, ckETH, and ckERC20 use ICRC-1 ledgers that support the ICRC-2 extension. Each chain-key token is deployed on ICP and backed 1:1 with the native token, such as BTC, ETH, or ERC20, locked and kept on their native chain. There are no intermediaries or centralized bridges used for chain-key tokens.
+[Chain-key](/docs/current/building-dapps/chain-fusion/chain-key-tokens/overview) tokens are created using ICP's chain-key cryptography protocols, such as [threshold signing](https://internetcomputer.org/docs/current/developer-education/glossary/index#chain-key). The chain-key tokens ckBTC, ckETH, and ckERC20 use ICRC-1 ledgers that support the ICRC-2 extension. Each chain-key token is deployed on ICP and backed 1:1 with the native token, such as BTC, ETH, or ERC20, locked and kept on their native chain. There are no intermediaries or centralized bridges used for chain-key tokens.
 
 The older token standards, [DIP-20](https://github.com/Psychedelic/DIP20) and [DIP-721](https://github.com/Psychedelic/DIP721), are designed to resemble the Ethereum ERC-20 and ERC-721 standards respectively. While some projects on ICP still use DIP-20 and DIP-721, the new ICRC-2 and ICRC-7 standards are designed to provide a newer, alternative standard for each.
 
@@ -53,7 +53,7 @@ Ledgers are used to record transactions in a chain of blocks. One block referenc
 
 Currently, on the Internet Computer you will find two different types of ledgers mainly being used:
 
-- The ICP ledger canister that is running on the [NNS](/docs/current/developer-docs/daos/nns/overview).
+- The ICP ledger canister that is running on the [NNS](/docs/current/docs/current/move-to-learnhub/nns/overview).
 
 - ICRC-1 ledgers.
 
@@ -63,7 +63,7 @@ The main purpose of the ICP ledger is to record `burn`, `mint`, `approve`, and m
 
 There is only one ICP ledger on the mainnet.
 
-See the documentation on [how to interact with the ICP ledger for more info](/docs/current/rosetta-defi/tokens/ledger/usage/icp_ledger_usage).
+See the documentation on [how to interact with the ICP ledger for more info](/docs/current/rosetta-defi/token-ledgers/usage/icp_ledger_usage).
 
 ### ICRC-1 ledgers
 
@@ -89,7 +89,7 @@ The ICP ledger implements all endpoints defined in the ICRC-1 standard; however,
 
 Should a future ICRC-1 extension standard or the use of index canisters result in the exposure of the internal representation of accounts, any ICRC-1 ledger will deviate from the ICP ledger.
 
-See the documentation on [how to interact with the ICRC ledger for more info](/docs/current/rosetta-defi/tokens/ledger/setup/icrc1_ledger_setup).
+See the documentation on [how to interact with the ICRC ledger for more info](/docs/current/rosetta-defi/token-ledgers/setup/icrc1_ledger_setup).
 
 ## Indexes
 
@@ -133,7 +133,7 @@ Once you have selected a wallet or other custody solution, you can obtain tokens
 
 - Receiving airdrops or transfers from others.
 
-- [Receiving ICP tokens as governance rewards](/docs/current/developer-docs/daos/nns/concepts/neurons/staking-voting-rewards/).
+- [Receiving ICP tokens as governance rewards](/docs/current/move-to-learnhub/nns/concepts/neurons/staking-voting-rewards/).
 
 The ICP index canister is running on the NNS subnet with the canister ID [qhbym-qaaaa-aaaaa-aaafq-cai](https://dashboard.internetcomputer.org/canister/qhbym-qaaaa-aaaaa-aaafq-cai). As there are multiple ICRC-1 compatible ledgers, there will also be multiple ICRC-1 index canisters. For example, the ICRC-1 index canister recording ckBTC transactions is running under the canister ID [n5wcd-faaaa-aaaar-qaaea-cai](https://dashboard.internetcomputer.org/canister/n5wcd-faaaa-aaaar-qaaea-cai).
 

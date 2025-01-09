@@ -1,19 +1,19 @@
 .github/ @dfinity/idx
 * @dfinity/editorial
 
-docs/developer-docs/updates/release-notes/ @dfinity/dx
-docs/developer-docs/build/agents @dfinity/dx
-docs/developer-docs/build/cdks @dfinity/dx
-docs/developer-docs/integrations/rosetta @dfinity/finint
-docs/developer-docs/security @dfinity/product-security
+docs/other/updates/release-notes/ @dfinity/dx
+docs/building-dapps/interacting-with-dapps/agents/overview @dfinity/dx
+docs/building-dapps/developer-tools/cdks/index @dfinity/dx
+docs/rosetta-defi/ @dfinity/finint
+docs/developer-education/security @dfinity/product-security
 docs/developer-education/message-execution/execution-errors.mdx @dfinity/execution
 docs/developer-education/message-execution/ingress-messages.mdx @dfinity/product-security
 docs/developer-education/message-execution/message-execution-properties.mdx @dfinity/product-security
-docs/developer-docs/web-apps/custom-domains @dfinity/boundary-node
+docs/building-dapps/dapp-frontends/custom-domains/ @dfinity/boundary-node
 
 # Each piece of documentation must be owned by the respective teams
-docs/developer-docssmart-contracts/advanced-features/simd.mdx @dfinity/execution
-docs/developer-docssmart-contracts/advanced-features/periodic-tasks.mdx @dfinity/execution
+docs/building-dapps/using-network-features/simd.mdx @dfinity/execution
+docs/building-dapps/using-network-features/periodic-tasks-timers.mdx @dfinity/execution
 docs/developer-education/developer-playbook/developer-best-practices/idempotency.mdx @dfinity/research @dfinity/product-security
 
 # The Interface Specification

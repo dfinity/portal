@@ -538,14 +538,13 @@ The `.subpage.md` files will each generate a subpage under `/how-it-works/`, bas
 
 ## Adding documentation for community-created agents and CDKs
 
-The [agents](https://internetcomputer.org/docs/current/developer-docs/build/agents)
-and [CDKs](https://internetcomputer.org/docs/current/developer-docs/build/cdks) sections should not only contain docs
+The [agents](/docs/current/building-dapps/interacting-with-dapps/agents/overview)
+and [CDKs](/docs/current/building-dapps/developer-tools/cdks/index) sections should not only contain docs
 for DFINITY-created agents and CDKs.
 We therefore invite other projects to:
 
 - Link to their own agents or CDKs on the respective index pages (the files to be edited are
-  in `docs/developer-docs/build/agents/index.md` or `docs/building-dapps/launching-a-dapp/create-and-install.mdx`).
-- Add their own documentation as a folder under `Agents` or `CDKs`.
+  in `/docs/current/building-dapps/interacting-with-dapps/agents/overview` or `/docs/building-dapps/developer-tools/cdks/index.md`).
 
 ## Adding community-created developer tools
 

@@ -44,7 +44,7 @@ This means that it is not easy to upgrade an SNS-controlled dapp canister during
 
 ### Submitting via `sns make-proposal` command
 
-Any eligible neuron can submit a proposal. Therefore, the command to [submit a proposal](/docs/current/building-dapps/developer-tools/quill/quill-sns-make-proposal)
+Any eligible neuron can submit a proposal. Therefore, the command to [submit a proposal](/docs/current/building-dapps/developer-tools/quill/sns/quill-sns-make-proposal)
 `sns make-proposal` is a `ManageNeuron` message. With this command, neuron holders can submit proposals (such as a `Motion` proposal) to be voted on by other neuron holders.
 
 The structure of the commands is as follows:
@@ -488,7 +488,7 @@ The proposal `UpgradeSnsControlledCanister` is to upgrade a dapp canister that i
 ```
 
 :::warning
-Because this proposal requires passing wasm, which is unwieldy to copy/paste into the command line as binary, it is recommended that developers use the specially-made [`make-upgrade-canister-proposal`](/docs/current/building-dapps/developer-tools/quill/quill-sns-make-proposal) command in `quill sns`.
+Because this proposal requires passing wasm, which is unwieldy to copy/paste into the command line as binary, it is recommended that developers use the specially-made [`make-upgrade-canister-proposal`](/docs/current/building-dapps/developer-tools/quill/sns/quill-sns-make-proposal) command in `quill sns`.
 
 
 ```bash
