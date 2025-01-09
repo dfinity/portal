@@ -92,7 +92,7 @@
     },
     {
       "title": "Private & public neurons",
-      "overview": "Introduce public and private neurons to enable creating a neuron index. Public neurons would expose additional information about themselves including their ballots.",
+      "overview": "Introduce public and private neurons to enable creating a neuron index. Public neurons would expose additional information about themselves, including their ballots.",
       "description": "Public neurons provide more transparency to followers, while private neurons keep ballots confidential. This introduces more transparency by revealing all neurons’ IDs and their stake",
       "forum": "",
       "proposal": "",
