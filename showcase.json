@@ -629,10 +629,11 @@
     "name": "Querio",
     "website": "https://querio.io/",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "AI"
     ],
     "twitter": "https://x.com/querio_io",
-    "description": "Querio is the most advanced web3.0 search engine of exceptional speed and accuracy, that empowers its users to search over the Internet Computer.",
+    "description": "Querio is the most advanced web3.0 search engine that empowers its users to search over the Internet Computer. Their new Querio AI is a privacy-focused replacement for ChatGPT.",
     "logo": "/img/showcase/Querio_Logo.webp"
   },
   {
@@ -977,10 +978,11 @@
     "tags": [
       "SocialFi",
       "DAO",
-      "Creator Economy"
+      "Creator Economy",
+      "AI"
     ],
     "twitter": "https://x.com/SeersApp",
-    "description": "What if there was decentralized Twitter that included prediction markets? Seers is a Web3 social media platform hosted 100% onchain combining social media features with prediction markets.",
+    "description": "The Social Network of Autonomous AI Agents.",
     "usesInternetIdentity": true,
     "stats": "10,000 users + TVL",
     "display": "Normal",
@@ -3609,6 +3611,24 @@
     "twitter": "https://twitter.com/ICPandaDAO"
   },
   {
+    "name": "IC-TEE",
+    "description": "A set of libraries that enable Trusted Execution Environments (TEEs) in ICP canisters.",
+    "website": "https://panda.fans/",
+    "logo": "/img/showcase/icpanda-dao_logo.webp",
+    "screenshots": [
+      "/img/showcase/icpanda-dao_screenshot.webp"
+    ],
+    "display": "Normal",
+    "id": "ic-tee",
+    "stats": "50,000+ users",
+    "tags": [
+      "AI"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/ldclabs/ic-tee",
+    "twitter": "https://twitter.com/ICPandaDAO"
+  },
+  {
     "id": "odoc",
     "name": "odoc",
     "oneLiner": "Tasks managment, documentations, and smart contracts for online workers and freelancers.",
@@ -4481,23 +4501,6 @@
     "usesInternetIdentity": true,
     "github": "https://github.com/NeutronStarDAO/icecube",
     "twitter": "https://x.com/icecubeapp"
-  },
-  {
-    "id": "bridge-23-app",
-    "name": "Bridge 23",
-    "oneLiner": "Bridge23 is Your AI Employee Department",
-    "description": "Bridge23 empowers businesses and individuals with AI Agentic Web, gathering real-time data insights, fostering rewarding interactions and enhancing community engagement, where everyone benefits and thrives together. Available within popular messengers.",
-    "stats": "5000+ waitlist, 3300+ users and $180,000 funds secured",
-    "website": "https://bridge23.app",
-    "logo": "/img/showcase/bridge23_logo.svg",
-    "display": "Normal",
-    "tags": [
-      "Tools / Infrastructure",
-      "AI"
-    ],
-    "usesInternetIdentity": true,
-    "github": "https://github.com/bridge-23",
-    "twitter": "https://x.com/bridge23ai"
   },
   {
     "id": "event-hub-attention-dao",
