@@ -15,7 +15,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/ndUqdwdtBhQ?si=hB8Thi_tMVJC0CIE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
-## Overview
+
 
 Testing code is an important stage of any development workflow. Without proper testing before the code is put into production, bugs and errors that may have been caught during testing can be detrimental to production environments. At this point of the developer ladder, it's time to explore tools that can be used to test our code.
 
@@ -155,7 +155,7 @@ Before you start, verify that you have set up your developer environment accordi
 
 ### Creating a new project
 
-To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_journey`), then use the following commands to start `dfx` and create a new project:
+To get started, create a new project in your working directory. Open a terminal window, navigate into your working directory (`developer_ladder`), then use the following commands to start `dfx` and create a new project:
 
 ```
 dfx start --clean --background
@@ -220,7 +220,6 @@ Then, open your `package.json` file and insert `"test": "vitest"` in the `script
     "prebuild": "dfx generate",
     "start": "webpack serve --mode development --env development",
     "deploy:local": "dfx deploy --network=local",
-    "deploy:ic": "dfx deploy --network ic",
     "generate": "dfx generate e2e_tests_backend",
     "test": "vitest"
   },
@@ -477,7 +476,7 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
 
-- Submit your feedback to the [ICP Developer feedback board](http://dx.internetcomputer.org).
+- Submit your feedback to the [ICP Developer feedback board](https://dx.internetcomputer.org).
 
 ## Next steps
 

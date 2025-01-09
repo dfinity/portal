@@ -10,7 +10,7 @@ import '/src/components/CenterImages/center.scss';
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
-## Overview
+
 
 In the previous tutorial, you deployed a sample full-stack dapp using the `vite-react-motoko` example boilerplate. This tutorial builds off of that previous tutorial, so if you haven't followed [2: Deploying your first fullstack dapp](/docs/current/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp), it is recommended that you complete it prior to starting this tutorial.
 
@@ -254,7 +254,7 @@ You can learn more about upgrading canisters in the documentation [here](/docs/c
 
 ### Stable memory
 
-Stable memory on ICP is a long-term data storage feature that can be utilized by canisters written in any language. Stable memory can hold up to 400GiB of data if the subnet the canister is deployed on can accommodate it. When a canister is upgraded, stable memory is not cleared, and anything stored in the canister's stable memory is persisted across the upgrade.
+Stable memory on ICP is a long-term data storage feature that can be utilized by canisters written in any language. Stable memory can hold up to 500GiB of data if the subnet the canister is deployed on can accommodate it. When a canister is upgraded, stable memory is not cleared, and anything stored in the canister's stable memory is persisted across the upgrade.
 
 In contrast to stable memory, heap storage refers to the regular Wasm data storage for a canister. Heap storage is temporary and does not persist across canister upgrades. When a canister is upgraded or reinstalled, the heap storage is cleared. Heap storage is limited to 4GiB.
 

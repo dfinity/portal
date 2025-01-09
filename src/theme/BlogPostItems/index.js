@@ -29,7 +29,7 @@ function InfoLine({ date, formattedDate, tags }) {
       <time
         dateTime={date}
         itemProp="datePublished"
-        className="tw-title-navigation-on-page text-black/70"
+        className="tw-title-navigation-on-page"
       >
         {formattedDate}
       </time>
@@ -76,13 +76,13 @@ export default function BlogPostItems({ items, withFeatured = false }) {
             ></InfoLine>
             <Link
               href={featuredPost.content.metadata.permalink}
-              className="text-black hover:text-infinite hover:no-underline"
+              className="hover:no-underline"
             >
               <h2 className="tw-heading-5 mb-4">
                 {featuredPost.content.frontMatter.title}
               </h2>
             </Link>
-            <p className="tw-paragraph text-black/60 mb-0">
+            <p className="tw-paragraph mb-0">
               {featuredPost.content.frontMatter.description}
             </p>
           </div>
@@ -102,7 +102,7 @@ export default function BlogPostItems({ items, withFeatured = false }) {
             ></InfoLine>
             <Link
               href={BlogPostContent.metadata.permalink}
-              className="text-black hover:text-infinite hover:no-underline"
+              className="hover:no-underline"
             >
               <h2 className="tw-heading-6 mb-0">
                 {BlogPostContent.frontMatter.title ||

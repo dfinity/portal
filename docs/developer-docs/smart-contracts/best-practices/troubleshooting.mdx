@@ -8,7 +8,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Beginner", "Concept"]} />
 
-## Overview
+
 
 When a dapp or canister is running with a high amount of latency, there are some steps that developers can take to troubleshoot or optimize the performance of their canisters.
 
@@ -22,15 +22,15 @@ On subnets with higher loads, your application may experience elevated latencies
 
 ### Recommendation: Consider moving the canister to another subnet.
 
-If your canister is running on a subnet that has a consistently high load and thus elevated latency, consider adding a [compute allocation](docs/current/developer-docs/gas-cost#execution-and-compute-allocation) setting. A compute allocation of 1% will guarantee your canister is scheduled for execution once every 100 rounds. 
+If your canister is running on a subnet that has a consistently high load and thus elevated latency, consider adding a [compute allocation](/docs/current/developer-docs/gas-cost#execution-and-compute-allocation) setting. A compute allocation of 1% will guarantee your canister is scheduled for execution once every 100 rounds.
 
 ## Troubleshooting best practices
 
 ### Recommendation: Use query calls instead of update calls when possible.
 
-[Query calls](/docs/current/developer-docs/web-apps/design-dapps#using-query-calls) are executed on a single node within a subnet and do not go through consensus, therefore they can be returned much faster than an update call. For some applications, query calls can be used in place of update calls to reduce latency.
+[Query calls](/docs/current/developer-docs/smart-contracts/call/overview/#query-calls) are executed on a single node within a subnet and do not go through consensus, therefore they can be returned much faster than an update call. For some applications, query calls can be used in place of update calls to reduce latency.
 
-However, the security trade-offs of query calls must be considered. Since query calls do not go through consensus, it is not recommended that they are used for retrieving sensitive information that requires data assurance. For example, returning financial data on a decentralized exchange dapp should not use basic query calls, as it is important the call return data that has been validated through the subnet's consensus. As an alternative, [certified queries](/docs/current/developer-docs/web-apps/design-dapps#using-query-calls) may be used.
+However, the security trade-offs of query calls must be considered. Since query calls do not go through consensus, it is not recommended that they are used for retrieving sensitive information that requires data assurance. For example, returning financial data on a decentralized exchange dapp should not use basic query calls, as it is important the call return data that has been validated through the subnet's consensus. As an alternative, [certified queries](/docs/current/developer-docs/smart-contracts/call/overview/#query-calls) may be used.
 
 ### Recommendation: Use efficient query calls.
 

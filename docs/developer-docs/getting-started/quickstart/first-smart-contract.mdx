@@ -1,9 +1,13 @@
+---
+hide_table_of_contents: true
+---
+
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import TabItem from "@theme/TabItem";
 import { OsType, useOs } from "/src/hooks/useOs";
 
-# Quick start
+# First smart contract
 
 <MarkdownChipRow labels={["Beginner", "Getting started"]} />
 
@@ -107,10 +111,21 @@ project.
 
 #### Prerequisites
 
+`dfx` is not natively supported on Windows. You will need to install a Linux instance via Windows Subsystem for Linux and run all commands within that Linux instance.
+
 <input type="checkbox"/> Download and install <a href="https://docs.microsoft.com/en-us/windows/wsl/install"> Windows Subsystem for Linux</a>.
 <div>
 </div>
-<input type="checkbox"/> Download and <a href="https://nodejs.org/en/download/package-manager">install Node.js</a> within your WSL environment.
+<input type="checkbox"/> Open a WSL terminal window.
+<div>
+</div>
+<input type="checkbox"/> Download and install a Linux distribution (i.e., Ubuntu) using Windows Subsystem for Linux: <code>wsl --install -d ubuntu</code>
+<div>
+</div>
+<input type="checkbox"/> Open the WSL Linux environment. Run all following commands within this environment.
+<div>
+</div>
+<input type="checkbox"/> Download and <a href="https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl">install Node.js</a> within your WSL Linux environment.
 
 ---------
 
@@ -145,7 +160,7 @@ dfx deploy --playground
 
 #### 4. Interact with your project.
 
-Open the URL in your web browser that `dfx` returned after deploying your
+Open the `frontend` URL in your web browser that `dfx` returned after deploying your
 project.
 
 </TabItem>
