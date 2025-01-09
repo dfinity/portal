@@ -3,16 +3,6 @@
   "categoryDescription": "The ICP has two kinds of built-in governance systems. The NNS is the DAO governing the ICP protocol. The SNS framework is a toolbox for creating DAOs that govern individual dapps. Both are open for everyone to participate and facilitate decentralized decision making. Tokenomics incentivise voting participation and ensure that DAO decisions are aligned with the long-term interests of the ICP and the governed dapps.",
   "elements": [
     {
-      "title": "Active Liquid Democracy",
-      "is_milestone": true,
-      "description": "The NNS and SNS DAOs facilitate active liquid democracies by lowering the entry barrier for participation and providing better inputs for well-informed decisions. This includes direct voting as well as delegating some voting decisions to others. As a result, more users stake tokens and participate in DAOs to form lively communities. The resulting network effects foster additional adoption and growth.",
-      "milestone_id": "Plasma",
-      "status": "in_progress",
-      "eta": "",
-      "eta_to_render": "January 2025"
-    },
-
-    {
       "title": "Prepare for Scaling",
       "is_milestone": true,
       "description": "As both the number of SNS DAOs and the number of DAO participants grow within them, it is crucial to have a robust system that can handle the ever-growing communities. Preparing for growth means not only improving the underlying infrustucture to handle increased load, but also enhancing the user experience at all levels (from developers to end users), so when new people come to the ICP ecosystem, they will have a frictionless onboarding.",
@@ -31,113 +21,6 @@
       "eta": "",
       "eta_to_render": ""
     },
-
-
-    {
-      "title": "Neurons table design",
-      "overview": "The neurons table view provides several improvements over the grid layout from the initial design, making it easier for users to quickly get an overview of their neurons.",
-      "description": "There are two interconnected tables in the proposed design. The projects table shows an overview of all projects a user holds neurons in, while the neurons table provides a detailed overview of neurons a user holds within one DAO.",
-      "forum": "https://forum.dfinity.org/t/nns-dapp-feature-proposal-neurons-table-view/30750",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "deployed",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Plasma"
-    },
-    {
-      "title": "Actionable proposals",
-      "overview": "Show users which DAOs have proposals they can still vote on, so that users don't need to manually check every day",
-      "description": "It can be easy to miss proposals from DAOs that users don't check frequently. To ensure that DAO participants never miss proposals, show users which DAOs have proposals they can vote on.",
-      "forum": "https://forum.dfinity.org/t/showing-actionable-proposals-in-the-nns-dapp/28241",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "deployed",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Plasma"
-    },
-    {
-      "title": "SNS name/logo change via proposal",
-      "overview": "Several SNS DAOs have grown and evolved since they became SNS's. These communities should be able to rebrand themselves by chaning their name, logo, and more via proposals.",
-      "description": "Several SNS DAOs have grown and evolved since they became SNS's. These communities should be able to rebrand themselves by chaning their name, logo, and more via proposals.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "deployed",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": "Plasma"
-    },
-    {
-      "title": "Allow canisters to control neurons",
-      "overview": "Some SNS DAOs are looking to use parts of their ICP treasury to stake in the NNS and participate in ICP's governance. This feature will allow SNS DAOs to stake in the NNS.",
-      "description": "Some SNS DAOs are looking to use parts of their ICP treasury to stake in the NNS and participate in ICP's governance. This feature will allow SNS DAOs to stake in the NNS",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "deployed",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": "Plasma"
-    },
-    {
-      "title": "Encourage active governance participation",
-      "overview": "The NNS is at the heart of ICP constantly evolving the network. It is therefore crucial that developer teams and other members of the ICP community take an active role in verifying and voting on NNS proposals.",
-      "description": "The NNS is at the heart of ICP constantly evolving the network. It is therefore crucial that developer teams and other members of the ICP community take an active role in verifying and voting on NNS proposals.",
-      "forum": "https://forum.dfinity.org/t/grants-for-voting-neurons/32721",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "deployed",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Plasma"
-    },
-    {
-      "title": "ICRC-1 token imports",
-      "overview": "One of the most requested community features is to allow users of the NNS dapp to import any token that supports ICRC-1 to store in their account.",
-      "description": "One of the most requested community features is to allow users of the NNS dapp to import any token that supports ICRC-1 to store in their account.",
-      "forum": "https://forum.dfinity.org/t/feature-proposal-importing-tokens-to-the-nns-dapp/31230",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "deployed",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": "Plasma"
-    },
-    {
-      "title": "Private & public neurons",
-      "overview": "Introduce public and private neurons to enable creating a neuron index. Public neurons would expose additional information about themselves including their ballots.",
-      "description": "Public neurons provide more transparency to followers, while private neurons keep ballots confidential. This introduces more transparency by revealing all neurons’ IDs and their stake",
-      "forum": "",
-      "proposal": "",
-      "docs": "https://internetcomputer.org/docs/current/developer-docs/daos/nns/concepts/neurons/neuron-management",
-      "eta": "",
-      "status": "deployed",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": "Plasma"
-    },
-    {
-      "title": "Improved SNS upgrades",
-      "overview": "Upgrading SNS canisters is crucial for SNS DAOs to receive the latest features and security updates. These updates are not straightforward and may require multiple proposals. This feature is about simplifying SNS upgrades.",
-      "description": "Upgrading SNS canisters is crucial for SNS DAOs to receive the latest features and security updates. These updates are not straightforward and may require multiple proposals. This feature is about simplifying SNS upgrades.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "deployed",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": "Plasma"
-    },
-
     {
       "title": "Periodic Followee Confirmation",
       "overview": "Require neuron owners to confirm their neurons’ following settings periodically.",
