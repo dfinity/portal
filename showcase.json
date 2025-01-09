@@ -4483,6 +4483,23 @@
     "twitter": "https://x.com/icecubeapp"
   },
   {
+    "id": "bridge-23-app",
+    "name": "Bridge 23",
+    "oneLiner": "Bridge23 is Your AI Employee Department",
+    "description": "Bridge23 empowers businesses and individuals with AI Agentic Web, gathering real-time data insights, fostering rewarding interactions and enhancing community engagement, where everyone benefits and thrives together. Available within popular messengers.",
+    "stats": "5000+ waitlist, 3300+ users and $180,000 funds secured",
+    "website": "https://bridge23.app",
+    "logo": "/img/showcase/bridge23_logo.svg",
+    "display": "Normal",
+    "tags": [
+      "Tools / Infrastructure",
+      "AI"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/bridge-23",
+    "twitter": "https://x.com/bridge23ai"
+  },
+  {
     "id": "event-hub-attention-dao",
     "name": "Event Hub",
     "oneLiner": "Event Hub Broadcaster is an event-driven system managed by Attention DAO for connecting ecosystem projects on ICP.",
