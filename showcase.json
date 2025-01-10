@@ -4537,7 +4537,7 @@
     "oneLiner": "The IC-PayPortal Motoko by Expeera is a library that provides developers with a set of functions for managing fiat payments on ICP.",
     "description": "The IC-PayPortal Motoko is a library that provides developers with a set of functions for managing fiat payments on ICP.",
     "website": "https://3356i-cqaaa-aaaao-axdqa-cai.icp0.io/",
-    "logo": "/img/showcase/expeera_logo.jpeg",
+    "logo": "/img/showcase/expeera_logo.jpg",
     "display": "Normal",
     "tags": [
       "Tools / Infrastructure"
@@ -4612,7 +4612,7 @@
     "name": "ASPPIBRA-DAO",
     "description": "ASPPIBRA - Association of Property Owners and Possessors in Brazil is a non-profit civil association, founded on April 9, 2016, in the State of Rio de Janeiro-RJ. It is composed of professionals and citizens committed to the technological and socioeconomic development of modern society.",
     "website": "https://www.asppibra.com.br/",
-    "logo": "/img/showcase/BR-DAO_logo.svg",
+    "logo": "/img/showcase/BR-DAO_logo.png",
     "screenshots": [
       "/img/showcase/BR-DAO_screenshot.webp"
     ],
