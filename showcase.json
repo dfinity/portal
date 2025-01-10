@@ -1158,7 +1158,7 @@
     "website": "https://www.scinet.one/",
     "twitter": "https://twitter.com/scinet_inc",
     "discord": "https://discord.com/invite/5uH6vpJjeB",
-    "logo": "/img/showcase/scinet_logo.png",
+    "logo": "/img/showcase/scinet_logo.webp",
     "submittableId": "33285268"
   },
   {
@@ -3534,7 +3534,7 @@
     "twitter": "https://twitter.com/codegovorg",
     "github": "https://github.com/CodeGov-org/codegov-website",
     "display": "Normal",
-    "logo": "/img/showcase/codegov_logo.jpg"
+    "logo": "/img/showcase/codegov_logo.svg"
   },
   {
     "id": "deaichat",
@@ -4852,7 +4852,7 @@
     "description": "An automated, dollar-cost-averaging solution for purchasing ICP.",
     "usesInternetIdentity": true,
     "display": "Normal",
-    "logo": "/img/showcase/icspore_logo.svg"
+    "logo": "/img/showcase/icspore_logo.png"
   },
   {
     "id": "stable-fs",
@@ -4913,7 +4913,7 @@
     "description": "A simple roguelite adventure where players collectively build and govern the game through a DAO.",
     "usesInternetIdentity": true,
     "display": "Normal",
-    "logo": "/img/showcase/daoventure_logo.svg"
+    "logo": "/img/showcase/daoventure_logo.png"
   },
   {
     "id": "IC4J Agent Lite",
@@ -4937,7 +4937,7 @@
     "description": "A fun, play-to-earn game based on cute kittens.",
     "usesInternetIdentity": false,
     "display": "Normal",
-    "logo": "/img/showcase/pawsarena_logo.svg"
+    "logo": "/img/showcase/pawsarena_logo.png"
   },
   {
     "id": "solutio",
@@ -5001,7 +5001,7 @@
     "description": "A marketplace to discover new and exciting web3 dapps and games.",
     "usesInternetIdentity": true,
     "display": "Normal",
-    "logo": "/img/showcase/cload_logo.svg"
+    "logo": "/img/showcase/cload_logo.png"
   },
   {
     "id": "claimlink",
