@@ -1,14 +1,12 @@
 ---
-keywords: [beginner, concept, best practices, storage]
+keywords: [beginner, concept, best practices, storage, storage best practices]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Storage
+# Developer best practices: Storage
 
-<MarkdownChipRow labels={["Beginner", "Concept"]} />
-
-
+<MarkdownChipRow labels={["Beginner", "Best practices"]} />
 
 There are two forms of storage available to ICP canisters: **heap memory** and **stable memory**.
 
@@ -18,10 +16,10 @@ There are two forms of storage available to ICP canisters: **heap memory** and *
 
 | Memory feature | Heap memory | Stable memory |
 |----------------|-------------|---------------|
-|Storage capacity| 4GiB        | 500GiB        |
-|Intended use    | Small datasets, frequently accessed data, temporary data | Large datasets, infrequently accessed data, important data that must persist |
-|Persistence     | Does not persist across upgrades | Data is preserved and persists across upgrades |
-|Performance     | Fast read/write operations | Slightly decreased read/write operations |
+|Storage capacity| 4GiB        | 500GiB        |
+|Intended use    | Small datasets, frequently accessed data, temporary data | Large datasets, infrequently accessed data, important data that must persist |
+|Persistence     | Does not persist across upgrades | Data is preserved and persists across upgrades |
+|Performance     | Fast read/write operations | Slightly decreased read/write operations |
 
 [Learn more about canister storage](/docs/current/building-dapps/managing-dapps/storage).
 
@@ -37,7 +35,6 @@ Heap data is better suited to be used for small data sets (under 4GiB) or data t
 
 ### Recommendation: Use stable memory for large datasets.
 
-Stable memory should be used for large data sets (More than 4GiB but less than 500GiB) or data that is infrequently accessed.
+Stable memory should be used for large data sets (more than 4GiB but less than 500GiB) or data that is infrequently accessed.
 
 Ultimately, the form of memory you choose to utilize for your canister will depend on the most optimal workflow for your project.
-

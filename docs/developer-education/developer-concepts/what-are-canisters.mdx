@@ -1,15 +1,16 @@
 ---
-keywords: [beginner, tutorial, canister, introduction]
+keywords: [beginner, canister, what are canisters, canisters as actors, canisters as processes, creating canisters, calling canisters]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 
 # What are canisters?
 
-<MarkdownChipRow labels={["Beginner", "Concept"]} />
+<MarkdownChipRow labels={["Beginner", "Education", "Concept"]} />
 
-The smart contracts running on ICP are a powerful evolution of traditional smart contracts. ICP smart contracts are called **canisters** and are computational units that combine both code and data. Canisters can contain any arbitrary code or data, from serving web pages to creating a secure messaging app, or implementing a decentralized token exchange.
+The smart contracts running on ICP are a powerful evolution of traditional smart contracts. ICP smart contracts are called **canisters** and are computational units that combine both code and data. Canisters can contain any arbitrary code or data, from serving web pages to creating a secure messaging app or implementing a decentralized token exchange.
 
 <div class="text--center">
 <img src="/img/docs/canister.png" alt="Canister" width="400"/>
@@ -43,7 +44,7 @@ Although canisters have a single thread of execution, multiple can be executed c
 
 Canisters behave much like operating system processes. Similar to how an operating system schedules processes, ICP schedules the execution of canisters. [Learn more about the execution of canisters](https://internetcomputer.org/how-it-works).
 
-An operating system maintains state on behalf of processes, like their open file descriptors, similar to how ICP maintains state on behalf of canisters, such as their cycle balance or its outstanding calls to other canisters.
+An operating system maintains state on behalf of processes, like their open file descriptors, similar to how ICP maintains state on behalf of canisters, such as their cycle balance or their outstanding calls to other canisters.
 
 Operating system processes cannot directly modify their table of file descriptors or manipulate peripheral devices, similar to how canisters cannot directly modify their <GlossaryTooltip>cycles</GlossaryTooltip> balance.
 
@@ -55,6 +56,63 @@ Canisters are implemented as WebAssembly modules. This allows for maximum intero
 
 A canister is a WebAssembly module instance complete with its own state and execution stack. Canisters’ memory uses [orthogonal persistence](https://medium.com/dfinity/ic-internals-orthogonal-persistence-9e0c094aac1a), which makes storing canister data transparent for users. The data of the canister’s WebAssembly module is persisted automatically by the system and is present the next time the canister is scheduled for execution. The WebAssembly module itself is stored along with other bits of the canister’s state.
 
-## How canisters are created
+## Creating canisters
 
-## Communicating with canisters
+The Internet Computer Protocol (ICP) accepts and executes canisters in the [WebAssembly (Wasm)](https://internetcomputer.org/capabilities/webassembly) binary format.
+In theory, developers could write valid canisters directly in the Wasm bytecode.
+Since that would be too tedious and time-consuming, the standard practice is to write canister code in a higher-level language, such as JavaScript/TypeScript, Motoko, Python, or Rust, then compile it into Wasm.
+
+The primary developer tool in the ICP ecosystem is the IC SDK, which includes `dfx`.
+`dfx` is a command line multi-tool that assists the developer throughout the entire development process, starting from the generation of developer keys and setting up a new project to compiling, deploying, and managing canisters.
+
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/developer-build.png")}
+    alt="ICP in the tradeoff space"
+    width="600"
+  />
+</div>
+
+By default, `dfx` generates a project structure consisting of two canisters: the **frontend <GlossaryTooltip>canister</GlossaryTooltip>** and the **backend <GlossaryTooltip>canister</GlossaryTooltip>**.
+The frontend canister contains web assets such as JavaScript, HTML, CSS, and images that are served to the browser.
+The actual program logic of the application is defined in the backend canister.
+
+:::info
+The configuration with a frontend and a backend canister is just a convention.
+It is possible to write a single canister that contains both the program logic and hosts the web assets.
+:::
+
+Since canisters can be written in different languages, it is important that they all agree on the binary format in which they accept their arguments and return results.
+This common format allows users and canisters to call other canisters regardless of the language they were written in.
+In traditional programming, this concept is known as [Application Binary Interface (ABI)](https://en.wikipedia.org/wiki/Application_binary_interface).
+ICP has its own ABI language called **[Candid](/docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts)**, which is similar to JSON or Protobuf, but tailored for ICP.
+
+During the build process, `dfx` uses the backend ABI to automatically generate JavaScript boilerplate code for the frontend.
+Under the hood, the boilerplate code uses a library called the [ICP JavaScript agent](https://github.com/dfinity/agent-js/tree/main) to encode Candid values and make HTTP requests from the browser to the backend canister.
+This is similar to `web3.js` in Ethereum.
+
+The [Wasm standard](https://webassembly.org/) defines only the instructions and the memory of the Wasm virtual machine;
+how a Wasm program interacts with other programs and users is left up to the host that embeds the virtual machine.
+ICP as a Wasm host provides a set of functions that Wasm code can use to read the incoming arguments, call the system and other canisters, and return results.
+Collectively these functions are referred to as the **System API**.
+Developers are not intended to use the System API directly because that would be too low-level and error-prone.
+Instead, developers should use language-specific Canister Development Kit (CDK) libraries that are high-level wrappers around the System API.
+
+## Calling canisters
+
+There are three ways to call the functions of the backend canister:
+
+1. Use the browser to load the webpage hosted in the frontend <GlossaryTooltip>canister</GlossaryTooltip> and use the UI of the webpage to interact with the backend <GlossaryTooltip>canister</GlossaryTooltip>.
+   Under the hood, the UI uses JavaScript and the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) to send messages to the backend canister.
+   This is the standard way to interact with the canister that regular users would also use.
+2. Use the `dfx canister call` command and pass the input arguments as command line arguments.
+   Under the hood, `dfx` uses a Rust library called ic-agent to send messages to the canister.
+3. Write an off-chain program that uses an [agent library](/docs/current/building-dapps/interacting-with-dapps/agents/overview) to send messages to the canister.
+
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/developer-call.png")}
+    alt="ICP in the tradeoff space"
+    width="600"
+  />
+</div>

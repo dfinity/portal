@@ -670,7 +670,7 @@ const redirects = `
   /docs/current/developer-docs/gas-cost /docs/current/developer-education/developer-concepts/gas-cost
   /docs/current/developer-docs/cost-estimations-and-examples /docs/current/developer-education/developer-concepts/cost-estimations-and-examples
 
-  /docs/current/developer-docs/smart-contracts/development-workflow /docs/current/developer-education/developer-playbook/developer-workflow
+  /docs/current/developer-docs/smart-contracts/development-workflow /docs/current/developer-education/developer-playbook/developer-environments
   /docs/current/building-dapps/launching-a-dapp/create-and-install /docs/current/developer-education/developer-playbook/application-architectures
   /docs/current/developer-docs/smart-contracts/overview/inside-canisters /docs/current/developer-education/developer-playbook/inside-canisters
   /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle /docs/current/developer-education/developer-playbook/canister-lifecycle

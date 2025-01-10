@@ -1,24 +1,20 @@
 ---
-keywords: [beginner, concept, best practices, developer]
+keywords: [beginner, concept, best practices, generous canister top-up, efficient implementations, state backup and restoration]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Developer best practices
+# Developer best practices: General
 
-<MarkdownChipRow labels={["Beginner", "Concept"]} />
-
-
+<MarkdownChipRow labels={["Beginner", "Best practices"]} />
 
 This guide outlines essential development best practices for building on the Internet Computer Protocol (ICP).
-
-## Best practices
 
 ### Recommendation: Generous canister top-up.
 
 Ensure all canisters have sufficient cycles to sustain operations for several years initially. Given the cost-effectiveness of storage and computation on ICP compared to other platforms, this upfront investment is usually modest.
 
-Refer to [topping up cycles page](/docs/current/building-dapps/managing-dapps/topping-up) to learn how to top-up cycles effectively.
+Refer to the [topping up cycles page](/docs/current/building-dapps/managing-dapps/topping-up) to learn how to top-up cycles effectively.
 
 Refer to the [cycles estimate](/docs/current/developer-education/developer-concepts/gas-cost) page to estimate cycle usage.
 
@@ -42,15 +38,15 @@ Use [canister timers](/docs/current/building-dapps/using-network-features/period
 2. Utilize `Buffer` instead of `Array` for dynamic resizing.
 3. Consider `Blob` over `[Nat8]` for compact storage and reduced GC pressure:
 
- * Use `Blob` instead of `[Nat8]` for storing large binary assets.
- * Use `Blob` instead of `[Nat8]` when sending or receiving Candid `vec nat8/blob` values. The choice is yours but `Blobs` are 4x more compact and much less taxing on garbage collection (GC).
+ * Use `Blob` instead of `[Nat8]` for storing large binary assets.
+ * Use `Blob` instead of `[Nat8]` when sending or receiving Candid `vec nat8/blob` values. The choice is yours, but `Blobs` are 4x more compact and much less taxing on garbage collection (GC).
 
 4. Store large Blobs in stable memory for efficient manual management.
 5. Use the `compacting-gc` setting, especially in append-only scenarios, to allow access to larger heaps and reduce the cost of copying large, stationary objects.
 6. Be mindful of calling an [actor class]((/docs/current/motoko/main/writing-motoko/actor-classes), as the overhead is similar to that of installing a fresh canister.
 
 #### Rust
-1. Exercise caution with `Vec<u8>` and `String` types for state serialization. Due to Rust limitations, using these types would increase the number of instructions required to encode or decode the message
+1. Exercise caution with `Vec<u8>` and `String` types for state serialization. Due to Rust limitations, using these types would increase the number of instructions required to encode or decode the message.
 2. Refer to recommended blogs and articles for effective Rust canister development.
 
 #### Resources

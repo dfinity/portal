@@ -1,16 +1,15 @@
 ---
-keywords: [concept, canister, trust]
+keywords: [concept, canister, trust, how to trust canisters, trusting canister, can you trust a canister, how to verify canister]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 
 # Trust in canisters
 
-<MarkdownChipRow labels={["Concept"]} />
+<MarkdownChipRow labels={["Beginner" , "Education", "Concept"]} />
 
-
-
-Applications that provide DeFi or other valuable transactions, such as the ability to transfer assets, require that users trust the application to act honestly and reliably. How can one ensure that it is safe to entrust assets to a canister?
+Applications that provide DeFi or other valuable transactions, such as the ability to transfer assets, require that users trust the application to act honestly and reliably. How can one ensure that it is safe to entrust assets to a <GlossaryToolTip>canister</GlossaryToolTip>?
 
 Users must have confidence that:
 
@@ -52,7 +51,7 @@ A user can also obtain the list of controllers of another canister via a [`read_
 
 A similar effect can also be achieved by setting the controller of a canister to be itself. In this case, however, you need to carefully verify that the canister cannot somehow submit a request to upgrade itself, e.g., by issuing a reinstall request. Here, code inspection and reproducible builds are crucial.
 
-Finally, a somewhat more useful solution is to pass control of the canister to a so-called [“black hole” canister](https://github.com/ninegua/ic-blackhole). This canister has only itself as a controller but allows third parties to obtain useful information about the canisters the black hole controls, such as the available cycles balance of a black-holed canister. An instance of a black hole canister is [e3mmv-5qaaa-aaaah-aadma-cai](https://icscan.io/canister/e3mmv-5qaaa-aaaah-aadma-cai) which is [thoroughly documented](https://github.com/ninegua/ic-blackhole). Note that the repository linked here mentions canister immutability, but this is red herring. The NNS is still capable of making changes to a canister that is controlled by a 'black holed' canister, or the black hole canister itself.
+Finally, a somewhat more useful solution is to pass control of the canister to a so-called [“black hole” canister](https://github.com/ninegua/ic-blackhole). This canister has only itself as a controller but allows third parties to obtain useful information about the canisters the black hole controls, such as the available cycles balance of a black-holed canister. An instance of a black hole canister is [e3mmv-5qaaa-aaaah-aadma-cai](https://icscan.io/canister/e3mmv-5qaaa-aaaah-aadma-cai) which is [thoroughly documented](https://github.com/ninegua/ic-blackhole). Note that the repository linked here mentions canister immutability, but this is a red herring. The NNS is still capable of making changes to a canister that is controlled by a 'black-holed' canister, or the black hole canister itself.
 
 ## Sole control by NNS and other governance
 

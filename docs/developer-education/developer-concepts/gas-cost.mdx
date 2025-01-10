@@ -1,14 +1,13 @@
 ---
-keywords: [beginner, concept, gas cost, cycles cost, cycles gas]
+keywords: [beginner, concept, gas cost, cycles cost, cycles gas, what is the cost, pricing, gas]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 
 # Paying for resources in cycles
 
-<MarkdownChipRow labels={["Beginner", "Concept"]} />
-
-
+<MarkdownChipRow labels={["Beginner", "Education", "Concept"]} />
 
 Canister smart contracts pay for consumed resources (storage, messaging, execution, and special features) by burning **cycles**. Developers can obtain cycles by converting ICP tokens into cycles using [`dfx`](/docs/current/rosetta-defi/cycles/converting_icp_tokens_into_cycles).
 
@@ -38,12 +37,12 @@ The price of cycles is fixed against the price of [XDR](/docs/current/developer-
 
 The following table shows units of cycles and the respective fiat values:
 
-| Abbreviation  | Name      | In numbers   | Cycles XDR value  | Cycles USD value |
+| Abbreviation  | Name      | In numbers   | Cycles XDR value  | Cycles USD value |
 |-------------- | --------- | ------------ | ----------------- | ---------------- |
-| T             | Trillion  | 1_000_000_000_000 | 1            | 1.336610         |
-| B             | Billion   | 1_000_000_000| 0.001             | 0.001336610      |
-| M             | Million   | 1_000_000    | 0.000001          | 0.000001336610   |
-| k             | Thousand  | 1_000        | 0.000000001       | 0.000000001336610 |
+| T             | Trillion  | 1_000_000_000_000 | 1            | 1.336610         |
+| B             | Billion   | 1_000_000_000| 0.001             | 0.001336610      |
+| M             | Million   | 1_000_000    | 0.000001          | 0.000001336610   |
+| k             | Thousand  | 1_000        | 0.000000001       | 0.000000001336610 |
 
 
 ## Replication
@@ -64,7 +63,7 @@ Canisters are charged for the resources they consume and any operations they per
 
 Each type of canister operation and resource has a different cycles cost associated with it. The canister responsible for paying the cycles varies based on the type of operation.
 
-The following subsections explain the pricing for the different operation and resource types for a canister deployed on a 13 node subnet. The same operations and resources cost linearly more on subnets with more nodes.
+The following subsections explain the pricing for the different operation and resource types for a canister deployed on a 13-node subnet. The same operations and resources cost linearly more on subnets with more nodes.
 
 ### Canister creation
 
@@ -78,7 +77,7 @@ The current fees are:
 
 | Message type | Base fee | Per byte fee |
 |--------------|----------|--------------|
-| Query call    | 0       |  0           |
+| Query call    | 0       |  0           |
 | Canister-to-canister | 260K | 1K |
 | User-to-canister (ingress) | 1.2M | 2K |
 
@@ -161,13 +160,13 @@ Canisters are responsible for paying cycles for their own canister creation, com
 
 ## Cycles price breakdown
 
-The table below details the cost of compute, storage transmissions and canister calls.
+The table below details the cost of compute, storage transmissions, and canister calls.
 
 You can use the [pricing calculator](https://3d5wy-5aaaa-aaaag-qkhsq-cai.icp0.io/) to estimate the cost for your dapp.
 
 | Canister transmission | Description | Who is responsible for paying the cycles fee? | 13-node subnets cycles cost | 13-node subnets USD cost | 34-node subnets | 34-node subnets USD cost |
 | ----------------- | ------------------------------- | -------------------------------------------------- | ----------------------------------------------- | --------------------------------------- | ------------------------------------- | --------------------------- | ------------------------------------ |
-| Query call|         | Query information from a canister. | N/A | Free |  Free | Free | Free |
+| Query call|         | Query information from a canister. | N/A | Free |  Free | Free | Free |
 | Canister creation | For creating canisters on a subnet. | Created canister | 500B | $0.668305000000 | 500B / 13 * 34 | $1.74787461538 |
 | Compute percent allocated per second | For each percent of the reserved compute allocation (a scarce resource). | Canister with allocation | 10M | $0.000013366100 | 10M / 13 * 34 | $0.000034957492 |
 | Update message execution | For every update message executed. | Target canister | 5M | $0.000006683050 | 5M / 13 * 34 | $0.000017478740 |
@@ -197,11 +196,11 @@ Specific mathematical formulas used for different types of costs can be found be
 
 ### Message transmissions
 
-A fixed baseline fee and per-byte-fee charged for each byte of the message: `base-fee` + `per-byte-fee` * `size-in-bytes`.
+A fixed baseline fee and per-byte fee are charged for each byte of the message: `base-fee` + `per-byte-fee` * `size-in-bytes`.
 
 ### Execution
 
-The execution cost consists of a fixed execution fee and per-instruction fee (on application subnets (13 nodes), 10 instructions cost 4 cycles) that is charged for each executed WebAssembly instruction:
+The execution cost consists of a fixed execution fee and a per-instruction fee (on application subnets (13 nodes), 10 instructions cost 4 cycles) that is charged for each executed WebAssembly instruction:
 
 `base-fee` + `per-instruction-fee` * `number-of-instructions`
 
@@ -228,19 +227,18 @@ Common errors related to cycles include:
 ## Further readings
 
 Monitoring cycles usage
-   - [Check your canister's cycles balance](/docs/current/rosetta-defi/cycles/cycles-wallet#check-the-cycle-balance).
-   - [Monitor your canister's cycles usage](/docs/current/building-dapps/managing-dapps/topping-up).
-   - [Motoko cycles management library](https://github.com/CycleOperators/cycles-manager).
+   - [Check your canister's cycles balance](/docs/current/rosetta-defi/cycles/cycles-wallet#check-the-cycle-balance).
+   - [Monitor your canister's cycles usage](/docs/current/building-dapps/managing-dapps/topping-up).
+   - [Motoko cycles management library](https://github.com/CycleOperators/cycles-manager).
 
 Getting cycles back from a canister
-   - To withdraw cycles from a canister, the [canister must be deleted](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#getting-cycles-back-from-a-canister).
+   - To withdraw cycles from a canister, the [canister must be deleted](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#getting-cycles-back-from-a-canister).
 
 Topping up canisters
-   - [Top up your canisters](/docs/current/building-dapps/managing-dapps/topping-up).
-   - [Cycles management services](/docs/current/building-dapps/managing-dapps/topping-up).
-   - [Cycle.express](https://cycle.express/).
+   - [Top up your canisters](/docs/current/building-dapps/managing-dapps/topping-up).
+   - [Cycles management services](/docs/current/building-dapps/managing-dapps/topping-up).
+   - [Cycle.express](https://cycle.express/).
 
 Counting instructions
-   - [Motoko function `countInstructions`](/docs/current/motoko/main/base/ExperimentalInternetComputer#function-countinstructions).
-   - [IC interface specification](/docs/current/references/ic-interface-spec#system-api-performance-counter).
-
+   - [Motoko function `countInstructions`](/docs/current/motoko/main/base/ExperimentalInternetComputer#function-countinstructions).
+   - [IC interface specification](/docs/current/references/ic-interface-spec#system-api-performance-counter).

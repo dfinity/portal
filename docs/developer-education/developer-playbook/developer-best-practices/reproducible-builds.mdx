@@ -1,16 +1,13 @@
 ---
-keywords: [intermediate, test, tutorial, reproducible, reproducible builds]
+keywords: [intermediate, test, best practice, reproducible, reproducible builds, reproducible build environments, docker]
 ---
-
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
-# Reproducible builds
+# Developer best practices: Reproducible builds
 
-<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
-
-
+<MarkdownChipRow labels={["Intermediate", "Best practices"]} />
 
 If you are using a canister that you did not develop yourself, you may want to verify that the canister is running the code that you expect it to be before giving it control to make important decisions for you, such as accepting ICP for a payment. Verifying a canister's code requires confirming that the Wasm module is the correct result of compiling the canister source code and that the canister is in fact running that Wasm module and not another Wasm module.
 
@@ -20,7 +17,7 @@ It is therefore recommended that canister authors ensure trusted and [reproducib
 
 When developing code meant to be reproducible, it is recommended to use [Docker or a similar technology](#build-environments-using-docker) to conveniently set up the operating system and the build tools and fix their versions for the user. If the build tools you are using don’t guarantee fully reproducible builds, Docker can also help by minimizing the differences in paths, environment variables, etc. The build tools and the base Docker image should be sourced from somewhere that the user can trust. Ideally, you want to minimize the number of dependencies, as the user may have to rebuild all of your dependencies to properly reproduce your build.
 
-However, build tools aren’t perfect, and may fail to ensure reproducible builds. If reproducibility is critical for your canister (e.g., it holds other users' funds), [test it](#testing-reproducibility).
+However, build tools aren’t perfect and may fail to ensure reproducible builds. If reproducibility is critical for your canister (e.g., it holds other users' funds), [test it](#testing-reproducibility).
 
 ## Obtaining the Wasm module hash
 
@@ -153,7 +150,7 @@ To use this `Dockerfile`, get Docker [up and running](https://docs.docker.com), 
 docker build -t mycanister .
 ```
 
-This creates a Docker container image called `mycanister`, with Node.js, Rust, and `dfx` installed in it. Your canister source code will be copied to the directory `/canister` You should invoke `docker build` from the canister project directory. You can then enter an interactive shell inside of your Docker container by running:
+This creates a Docker container image called `mycanister`, with Node.js, Rust, and `dfx` installed in it. Your canister source code will be copied to the directory `/canister`. You should invoke `docker build` from the canister project directory. You can then enter an interactive shell inside of your Docker container by running:
 
 ```bash
 docker run -it --rm mycanister
@@ -217,7 +214,7 @@ Sources of non-determinism include randomness, timestamps, concurrency, or code 
 
 - #### Step 3. Given the same dependencies and deterministic build scripts, the build tools themselves (`moc` for Motoko, `cargo` for Rust, `npx` for TypeScript, `pip` for Python, or `webpack` for frontend development) must also be deterministic.
 
-These tools aim to be deterministic. However, they are complicated pieces of software, and ensuring determinism is non-trivial. Thus, non-determinism bugs can and do occur.
+These tools aim to be deterministic. However, they are complicated pieces of software, and ensuring determinism is nontrivial. Thus, non-determinism bugs can and do occur.
 
 #### Motoko deterministic considerations
 
@@ -229,7 +226,7 @@ For Rust, see the [list of current potential non-determinism issues in Rust](htt
 
 #### Webpack deterministic considerations
 
-For webpack, [deterministic naming of module and chunk IDs](https://webpack.js.org/configuration/optimization/) that you should use have been introduced since version 5.
+For webpack, [deterministic naming of module and chunk IDs](https://webpack.js.org/configuration/optimization/) that you should use has been introduced since version 5.
 
 ### Testing reproducibility
 
@@ -309,7 +306,6 @@ Reproducibility can be more demanding if you expect your canister code to stay a
 
 -  Toolchain still runs and correctly builds your dependencies.
 
-Distributions and package archives may drop old versions of packages, including both your toolchain and their dependencies. Web sites may go offline, and URLs might stop working. It’s prudent to back up all of your toolchain and dependencies. You should consider getting involved in projects such as [Software Heritage](https://www.softwareheritage.org/), which do this on a large scale.
+Distributions and package archives may drop old versions of packages, including both your toolchain and their dependencies. Websites may go offline, and URLs might stop working. It’s prudent to back up all of your toolchain and dependencies. You should consider getting involved in projects such as [Software Heritage](https://www.softwareheritage.org/), which do this on a large scale.
 
 You might have to adjust your build process to ensure that your canister still builds. Even if the build changes, if it still yields the same result, your users can be confident that your canister is running the correct code. The trust argument is easier if your dependencies come from a trustworthy source, such as the Software Heritage project.
-

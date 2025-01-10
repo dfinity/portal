@@ -6,7 +6,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Glossary
 
-<MarkdownChipRow labels={["Concept"]} />
+<MarkdownChipRow labels={["Beginner", "Terminology"]} />
 
 ## A
 
@@ -44,7 +44,7 @@ computation.
 
 The **balance** of an [account](#account) on the ledger is
 the sum of all deposits minus the sum of all withdrawals. As a
-degenerate case, it is sometimes useful to say that an account which is
+degenerate case, it is sometimes useful to say that an account that is
 not present in the ledger has a balance of zero.
 
 The balance of a ledger account is denominated in ICP and is represented
@@ -77,7 +77,7 @@ hosted on this subnet. These blockchains interact using [chain-key cryptography]
 #### boundary nodes
 
 **Boundary nodes** are gateways to the Internet Computer. These nodes
-allow users to seamlessly access the [canisters](#canisters) smart contracts
+allow users to seamlessly access the [canister](#canisters) smart contracts
 running on ICP.
 The boundary nodes have several purposes: they aid in discover-ability (the
 `icp0.io` domain name points to a set of boundary nodes), they are
@@ -92,9 +92,9 @@ address, and they can help protect subnets from DDoS attacks.
 #### burning transaction
 
 A **burning transaction** is the process of "burning" [
-ICP](#icp), whereby a certain amount of ICP are destroyed.
-The main use case is that of purchasing [cycles](#cycles),
-through which ICP are destroyed while at the same time a corresponding
+ICP](#icp), whereby a certain amount of ICP is destroyed.
+The main use case is purchasing [cycles](#cycles),
+through which ICP is destroyed while at the same time a corresponding
 amount of cycles is created, using the current exchange rate between ICP
 and ([XDR](#XDR)), in such a way that one XDR corresponds to
 one trillion (10E12) cycles. It is represented as a [
@@ -121,7 +121,7 @@ Computer](#internet-computer-ic) and accessed over the Internet.
 #### canister account
 
 A **canister account** is a ledger account owned by a [
-canister](#canister) (i.e. whose
+canister](#canister) (i.e., whose
 [fiduciary](#fiduciary) is a canister). A non-canister
 account is a ledger account whose fiduciary is a non-canister
 [principal](#principal).
@@ -132,8 +132,8 @@ A **canister development kit** is an adapter used by the IC SDK that provides a 
 
 #### canister identifier
 
-The **canister identifier** or **canister ID** is a globally-unique
-identifier that identifies a [ canister](#canister) and can
+The **canister identifier** or **canister ID** is a globally unique
+identifier that identifies a [canister](#canister) and can
 be used to interact with it.
 
 #### canister signature
@@ -156,7 +156,7 @@ Computer](#internet-computer-ic-ic) on behalf of the canister, such
 as its compute allocation, balance of [cycles](#cycles),
 input and output queues, and other metadata. A canister interacts with
 its own system state either implicitly, such as when consuming cycles,
-or through the System API, such as when sending messages.
+or through the system API, such as when sending messages.
 
 #### catch-up package (CUP)
 
@@ -189,7 +189,7 @@ artifacts from the Internet Computer.
 
 #### consensus
 
-In distributed computing, **consensus** is a fault tolerant mechanism by
+In distributed computing, **consensus** is a fault-tolerant mechanism by
 means of which a number of [nodes](#node) can reach agreement
 about a value or state.
 
@@ -288,7 +288,7 @@ neuron holder). The fiduciary of a (ledger) account does not change over
 time.
 
 The distinction between fiduciary and beneficiary is also important for
-DeFi dapps (canisters) that interact with ICP ledger: in this case,
+DeFi dapps (canisters) that interact with the ICP ledger: in this case,
 the fiduciary is the DeFi canister while the beneficiary is the
 individual or organization [principal](#principal) that uses the
 DeFi canister’s services.
@@ -441,7 +441,7 @@ A [neuron](#neuron) that is not
 [dissolved](#dissolved-state) or [
 dissolving](#dissolving-state) is said to be in a
 **non-dissolving state** (or "aging"). Non-dissolving neurons thus
-accrue "age", with the caveat that beginning to dissolve at any time
+accrue "age," with the caveat that beginning to dissolve at any time
 reduces this age back to zero. The dissolve delay parameter of a
 non-dissolving (aka "aging") neuron cannot be zero, because such a
 neuron would have to already be dissolved.
@@ -469,7 +469,7 @@ order to be able to make and vote on proposals. This
 time, after which it starts [dissolving](#dissolving-state).
 The ICP stake of a neuron is stored in a [neuron
 account](#neuron-account). The neuron owner has the right to
-propose and vote on governance issues, and is granted rewards for
+propose and vote on governance issues and is granted rewards for
 [voting](#voting) in proportion to the amount of ICP staked,
 and the duration of the [dissolve
 period](#non-dissolving-state).
@@ -534,7 +534,7 @@ Each [canister](#canister) has an **output queue** of
 
 In common usage, **peer-to-peer** (P2P) computing or networking is a
 distributed application architecture that partitions workload across a
-network of equally-privileged computer [nodes](#node) so that
+network of equally privileged computer [nodes](#node) so that
 participants can contribute resources such as processing power, disk
 storage, or network bandwidth to handle application workload.
 
@@ -545,7 +545,7 @@ nodes.
 The [nodes](#node) of a [subnet](#subnet) form a
 dedicated peer-to-peer broadcast network that facilitates the secure
 **bounded-time/eventual delivery** broadcast of artifacts (such as
-[ingress messages](#ingress-message), control messages and
+[ingress messages](#ingress-message), control messages, and
 their signature shares). The [consensus](#consensus) layer
 builds upon this functionality.
 
@@ -563,7 +563,7 @@ certain [identity](#identity).
 A **proposal** is a statement describing an action to modify certain
 parameters of the [ICP](#internet-computer-protocol-ic), or of any of
 its subsystems. It is implemented as an ICP entity having various
-attributes, such as an ID, a URL, a summary etc. Proposals are submitted
+attributes, such as an ID, a URL, a summary, etc. Proposals are submitted
 by eligible [neuron](#neuron) owners for the consideration of
 ICP community, and undergo a [voting](#voting) process,
 following which they can be adopted or rejected. Adopted proposals are
@@ -577,7 +577,7 @@ software.
 #### proto-node
 
 A **proto-node** is an [ICP](#internet-computer-ic) entity
-consisting of a combination of hardware and software, that differs from
+consisting of a combination of hardware and software that differs from
 a [node](#node) in that it has not yet been registered with
 ICP. A proto-node is, in short, a "node-in-waiting," hence has all
 that it takes to be a node except the [replica](#replica)
@@ -604,7 +604,7 @@ necessary for a [node](#node) to participate in a
 #### registry
 
 The ICP **registry** is a [canister](#canister) that manages
-the meta-data maintained on the
+the metadata maintained on the
 network nervous system ([NNS](#network-nervous-system-(NNS)))
 and accessed by all [subnet](#subnet) blockchains.
 
@@ -613,7 +613,7 @@ and accessed by all [subnet](#subnet) blockchains.
 #### smart contract
 
 A **smart contract** is a stateful computer program designed to
-automatically execute, control or document relevant events and actions
+automatically execute, control, or document relevant events and actions
 according to the terms of a contract or an agreement. A smart contract
 can be deployed on the [Internet
 Computer](#internet-computer-ic) in the form of a
@@ -638,19 +638,19 @@ canister state.
 The **state manager** is responsible for:
 
 - Maintaining (multiple versions of) the replicated state the
-    deterministic state machine implemented by [message
-    routing](#message-routing) and the [execution
-    environment](#execution-environment) operates on.
+    deterministic state machine implemented by [message
+    routing](#message-routing) and the [execution
+    environment](#execution-environment) operates on.
 - Converting back and forth between the replicated state and its
-    canonical version (latter can be understood independent of the
-    concrete implementation).
+    canonical version (the latter can be understood independent of the
+    concrete implementation).
 - Obtaining certifications of parts of the canonical state, which
-    allow other stakeholders such as other [subnets](#subnet)
-    and/or users, to verify that some piece of state indeed originates
-    from a valid subnetwork.
+    allow other stakeholders, such as other [subnets](#subnet)
+    and/or users, to verify that some piece of state indeed originates
+    from a valid subnetwork.
 - Providing capabilities to sync the canonical state with other
-    [replicas](#replica) in the same subnet so that replicas
-    that have fallen behind can catch up.
+    [replicas](#replica) in the same subnet so that replicas
+    that have fallen behind can catch up.
 
 #### subnet
 
@@ -680,7 +680,7 @@ another; it can be of three types:
 #### transfer transaction
 
 A **transfer transaction** is the process of transferring ICP from any
-regular ledger [account](#account) (i.e. any ledger account
+regular ledger [account](#account) (i.e., any ledger account
 except the [ICP supply account](#icp-supply-account)) to
 another regular ledger account.
 
@@ -689,7 +689,7 @@ another regular ledger account.
 #### user
 
 A **user** is any entity that interacts with the [Internet
-Computer](#internet-computer-ic). Users include end-users that
+Computer](#internet-computer-ic). Users include end users that
 use dapps deployed on [ICP](#internet-computer-ic), dapp
 developers, holders of [ICP](#icp) utility tokens, and
 [neuron](#neuron) holders.
@@ -711,11 +711,11 @@ the induction pool.
 [proposals](#proposal) are selected for adoption and
 implementation. Its direct participants are the
 [neurons](#neuron), who both:
--  Submit proposals.
--  Vote on proposals.
+-  Submit proposals.
+-  Vote on proposals.
 The voting process is a rather intricate undertaking,
 involving aspects such as neuron eligibility, voting power, chains of
-neuron followees etc. This has been designed with security and
+neuron followees, etc. This has been designed with security and
 dependability in mind, and is being continuously improved in order to
 prevent the concentration of voting power in the hands of just a few
 neuron owners.
@@ -731,4 +731,4 @@ stack-based virtual machine.
 
 #### XDR
 
-**XDR** is the currency code for *special drawing rights (SDR)*. SDRs are supplementary foreign exchange assets that are defined and maintained by the International Monetary Fund (IMF). SDRs are not a currency themselves, but represent a claim to a currency that is held by IMF member countries in which they may be exchanged. The ICP developer docs refer to currencies based on their currency codes, therefore SDRs are referenced as its currency code **XDR** in this documentation.
+**XDR** is the currency code for *special drawing rights (SDR)*. SDRs are supplementary foreign exchange assets that are defined and maintained by the International Monetary Fund (IMF). SDRs are not a currency themselves but represent a claim to a currency that is held by IMF member countries in which they may be exchanged. The ICP developer docs refer to currencies based on their currency codes, therefore SDRs are referenced as its currency code **XDR** in this documentation.

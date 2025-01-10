@@ -141,7 +141,7 @@ When a canister is running on the mainnet, you will always need to pass the `--n
 
 ## Canister settings
 
-After a canister is deployed to the mainnet, it will constantly be consuming resources and cycles. To view information about how many resources and cycles currently being used, along with other information, view the canister's settings:
+After a canister is deployed to the mainnet, it will constantly be consuming resources and cycles. To view information about how many resources and cycles are currently being used, along with other information, view the canister's settings:
 
 ```
 dfx canister status PROJECT_NAME_backend --network=ic
@@ -187,7 +187,7 @@ Log visibility: controllers
 
 - **Reserved**: A separate cycles balance set aside for resource payments.
 
-- **Reserved cycles limit**: The maximum amount of cycles that can be set as 'reserved'.
+- **Reserved cycles limit**: The maximum amount of cycles that can be set as 'reserved.'
 
 - **Wasm memory limit:** The maximum size for a canister's Wasm memory. [Learn more about resource limits](/docs/current/building-dapps/launching-a-dapp/resource-limits).
 
@@ -223,13 +223,13 @@ To top up a canister, replace AMOUNT with the number of cycles to top up the can
 dfx cycles top-up PROJECT_NAME_backend AMOUNT --network ic
 ```
 
-To check that your top up was successful, check the balance of the canister with `dfx canister status PROJECT_NAME_backend --network=ic`.
+To check that your top-up was successful, check the balance of the canister with `dfx canister status PROJECT_NAME_backend --network=ic`.
 
 ### Cycles management tools
 
-Manually monitoring canisters to determine when they are getting close to the freezing threshold can be time-consuming and complicated if you have a project with many canisters. Several community tools exist to make monitoring canisters easy. Some of them allow you to set automation rules to automatically top up canisters if their cycles balance dips below a certain amount, while others provide a one-time top up workflow. Some of these tools include:
+Manually monitoring canisters to determine when they are getting close to the freezing threshold can be time-consuming and complicated if you have a project with many canisters. Several community tools exist to make monitoring canisters easy. Some of them allow you to set automation rules to automatically top up canisters if their cycles balance dips below a certain amount, while others provide a one-time top-up workflow. Some of these tools include:
 
-- [CycleOps](https://cycleops.dev/app/personal): A comprehensive canister monitoring tool that provides top up automation, a statistics dashboard, email alerts, and the ability to create teams for synchronized management of collaborative projects.
+- [CycleOps](https://cycleops.dev/app/personal): A comprehensive canister monitoring tool that provides top-up automation, a statistics dashboard, email alerts, and the ability to create teams for synchronized management of collaborative projects.
 
 - [ICPTopup.com](https://www.icptopup.com/): A simplified version of CycleOps that allows you to top up several canisters (up to 50) at one time.
 

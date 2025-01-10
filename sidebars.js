@@ -38,17 +38,17 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          label: "Developer workflow",
-          id: "developer-education/developer-playbook/developer-workflow",
+          label: "Developer environments",
+          id: "developer-education/developer-playbook/developer-environments",
         },
         {
           type: "doc",
-          label: "Application architectures",
+          label: "Application architecture considerations",
           id: "developer-education/developer-playbook/application-architectures",
         },
         {
           type: "doc",
-          label: "Inside canisters",
+          label: "Canister components",
           id: "developer-education/developer-playbook/inside-canisters",
         },
         {
@@ -100,7 +100,7 @@ const sidebars = {
         },
         {
           type: "doc",
-          label: "Async code and inter-canister calls",
+          label: "Async code & inter-canister calls",
           id: "developer-education/message-execution/async-code",
         },
       ],
@@ -133,11 +133,12 @@ const sidebars = {
     {
       type: "category",
       label: "Security best practices",
-      link: {
-        type: "doc",
-        id: "developer-education/security/overview",
-      },
       items: [
+        {
+          type: "doc",
+          label: "What are security best practices?",
+          id: "developer-education/security/overview",
+        },
         {
           type: "doc",
           label: "Inter-canister calls",
@@ -247,7 +248,7 @@ build: [
       },
       {
         type: "doc",
-        label: "Using tokens and cycles",
+        label: "Using tokens & cycles",
         id: "building-dapps/getting-started/tokens-and-cycles",
       },
       {
@@ -257,7 +258,7 @@ build: [
       },
       {
         type: "doc",
-        label: "Deploying and managing dapps",
+        label: "Deploying & managing dapps",
         id: "building-dapps/getting-started/deploy-and-manage",
       },
     ],

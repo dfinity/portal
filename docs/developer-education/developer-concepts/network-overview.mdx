@@ -1,5 +1,5 @@
 ---
-keywords: [beginner, getting started, what is icp, icp overview, overview]
+keywords: [beginner, getting started, what is icp, icp overview, overview, what are subnets, what are threshold signatures, what are ]
 ---
 
 import useBaseUrl from "@docusaurus/useBaseUrl";
@@ -9,16 +9,16 @@ import DocsCard from "@site/src/components/Card/";
 
 # Welcome to the World Computer
 
-<MarkdownChipRow labels={["Beginner", "Getting started" ]} />
+<MarkdownChipRow labels={["Beginner", "Education", "Concept" ]} />
 
-**The Internet Computer (ICP) is the first "World Computer" network. It enables you to build web applications and internet services using a 100% decentralized platform without Big Tech and traditional IT. While traditional blockchains struggle to store a single phone photo onchain, ICP already hosts social networks, multiple ledgers, AI and much more, fully onchain.**
+**The Internet Computer (ICP) is the first "World Computer" network. It enables you to build web applications and internet services using a 100% decentralized platform without Big Tech and traditional IT. While traditional blockchains struggle to store a single phone photo onchain, ICP already hosts social networks, multiple ledgers, AI, and much more, fully onchain.**
 
-It was carefully designed to give smart contracts near native performance and scalability while maintaining the security of decentralized execution.
+It was carefully designed to give smart contracts near-native performance and scalability while maintaining the security of decentralized execution.
 In addition to classical DeFi smart contracts, such as ledgers and exchanges, ICP can run compute- and storage-heavy applications such as [image classification](https://github.com/dfinity/examples/tree/master/rust/image-classification) fully onchain.
 
 Another important design aspect of ICP is its seamless and secure integration with existing ecosystems.
 Smart contracts on ICP can host web assets and serve HTTP requests from users, thus fulfilling the promise of Web3.
-They can also interact with RPC nodes of other blockchains and Web2 servers through secure HTTP requests.
+They can also interact with RPC nodes on other blockchains and Web2 servers through secure HTTP requests.
 These features, combined with threshold signatures, give smart contracts the ability to hold assets and make transactions on other blockchains such as Bitcoin and Ethereum.
 
 <div class="text--center">
@@ -88,7 +88,7 @@ This feature has profound implications and use cases:
 This feature is called **Chain-Key Cryptography** on ICP.
 :::
 
-## Smart contracts
+## Canister smart contracts
 
 ICP uses [WebAssembly](https://internetcomputer.org/capabilities/webassembly) as the virtual machine for executing smart contracts.
 This means developers can write smart contracts in popular programming languages such as JavaScript, TypeScript, Rust, Python, and Motoko, which is specifically designed for ICP.
@@ -96,23 +96,23 @@ This means developers can write smart contracts in popular programming languages
 Furthermore, a single smart contract on ICP is powerful enough to host an entire Ethereum Virtual Machine (EVM).
 This allows the deployment of EVM smart contracts written in Solidity.
 
-A unique feature of ICP is that smart contracts can handle HTTP requests and serve web assets such as HTML, JS, and CSS.
-In other words, it is possible to write a Web3 application with both backend and frontend hosted fully onchain.
-Smart contracts can also make requests to other Web2 services outside ICP.
-
-Ethereum developers may be used to the notion that smart contracts run sequentially within an atomic transaction.
-ICP embraces scalability and runs smart contracts in parallel.
-In that regard, smart contracts are similar to processes or microservices from traditional programming.
-Smart contracts can be fully autonomous and can schedule execution using timers without relying on users sending messages.
-
-In terms of storage, a smart contract can store arbitrary data in its WebAssembly memory.
-Additionally, a smart contract can use a larger **stable memory**.
-The difference between the two memories is important for upgradable smart contracts: the WebAssembly memory is cleared on an upgrade whereas the stable memory is preserved (hence the name “stable”).
-For immutable smart contracts, there is no observable difference between the two memories except for the size and functions to access them.
-
 :::info
 In the context of ICP, smart contracts are referred to as **canisters**.
 :::
+
+A unique feature of ICP is that canisters can handle HTTP requests and serve web assets such as HTML, JS, and CSS.
+In other words, it is possible to write a Web3 application with both the backend and frontend fully hosted onchain.
+Smart contracts can also make requests to other Web2 services outside ICP.
+
+Ethereum developers may be used to the notion that smart contracts run sequentially within an atomic transaction.
+ICP embraces scalability and runs canisters in parallel.
+In that regard, canisters are similar to processes or microservices from traditional programming.
+Smart contracts can be fully autonomous and can schedule execution using timers without relying on users sending messages.
+
+In terms of storage, a canister can store arbitrary data in its WebAssembly memory.
+Additionally, a canister can use a larger **stable memory**.
+The difference between the two memories is important for upgradable canisters: the WebAssembly memory is cleared on an upgrade, whereas the stable memory is preserved (hence the name “stable”).
+For immutable canisters, there is no observable difference between the two memories except for the size and functions to access them.
 
 ## Accounts and keys
 
@@ -135,7 +135,7 @@ mh4eq-xsi7l-lgz7s-gmxoh-stiey-277n4-lev4o-q6hah-22sk6-ahlhm-qae
 ICP supports multiple types of keys (ECDSA, Ed25519, BLS).
 Developer tools usually generate and accept keys in PEM format.
 
-Smart contracts can provide user accounts as a service. **Internet Identity** is an example of a smart contract that allows Web2 users to have blockchain accounts that leverage user authentication to map the user to an identity and provide delegation to the relying party.
+Canisters can provide user accounts as a service. **Internet Identity** is an example of a canister that allows Web2 users to have blockchain accounts that leverage user authentication to map the user to an identity and provide delegation to the relying party.
 
 You can also use hardware and browser-extension wallets.
 
@@ -146,36 +146,36 @@ In the context of ICP, addresses are referred to as **principals**.
 ## Tokens
 
 Accounts on ICP do not have built-in balances, which is a large design difference when compared to other chains like Ethereum.
-All tokens are implemented by smart contracts.
+All tokens are implemented by canisters.
 ICP has an equivalent of the ERC-20 standard, called [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md).
-If a smart contract implements ICRC-2, then it implements a fungible token and has a ledger for it.
+If a canister implements ICRC-2, then it implements a fungible token and has a ledger for it.
 
 ## Messages
 
 The programming model of ICP is similar to the [Actor model](https://en.wikipedia.org/wiki/Actor_model), where calls are made by sending messages instead of transactions.
-The difference between a transaction and a message becomes apparent only when the smart contract calls other smart contracts.
+The difference between a transaction and a message becomes apparent only when the canister calls other canisters.
 A transaction is atomic in the sense that it rolls back all state changes if any of the calls fail.
 A message does not have such atomicity guarantees across calls.
 Programming on ICP is more asynchronous compared to Ethereum.
-If the smart contract does not make any calls, then the message behaves exactly like a transaction.
+If the canister does not make any calls, then the message behaves exactly like a transaction.
 
 ## Cycles
 
 On other blockchains, such as Ethereum, users pay a variable fee for sending and executing transactions depending on the current gas price.
-In order to simplify the experience of users browsing Web3 applications, ICP employs a “reverse gas model”, where <GlossaryTooltip>canisters</GlossaryTooltip> pay for consumed resources by burning **cycles**.
-This is similar to gas in Ethereum, but has a fixed price correlating to a group of fiat currencies.
+In order to simplify the experience of users browsing Web3 applications, ICP employs a “reverse gas model,” where <GlossaryTooltip>canisters</GlossaryTooltip> pay for consumed resources by burning **cycles**.
+This is similar to gas in Ethereum but has a fixed price correlating to a group of fiat currencies.
 
 ## Governance
 
 ICP is governed by a decentralized autonomous organization (DAO) community called the Network Nervous System (NNS).
-It is implemented as a set of smart contracts running on ICP itself.
+It is implemented as a set of canisters running on ICP itself.
 Community members can participate in governance by staking ICP tokens and voting on proposals.
 All operational changes to ICP, such as upgrading nodes, go through voting.
 NNS automatically executes proposals that have passed voting, which ensures that nodes run the same version of the protocol and thus avoids hard forks.
 
 :::info
 Governance and node ownership are decoupled.
-It is possible to participate in governance without having a node, and vice versa.
+It is possible to participate in governance without having a node and vice versa.
 :::
 
 ## Nodes
@@ -183,7 +183,7 @@ It is possible to participate in governance without having a node, and vice vers
 Becoming a node provider on ICP requires voting from the DAO community.
 There are two reasons for this:
 
-1. It ensures that the hardware meets the high standards of ICP: 64 CPU cores, 512GiB of RAM, 30TB of NVMe SSD.
+1. It ensures that the hardware meets the high standards of ICP: 64 CPU cores, 512GiB of RAM, 30TiB of NVMe SSD.
    Such nodes can sustain high throughput and enable powerful Web3 applications.
 1. It ensures that the identity of the node provider is known to the community.
    The node provider has signed a declaration of good intent and may be liable if the node misbehaves.
