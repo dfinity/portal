@@ -1,14 +1,12 @@
 ---
-keywords: [advanced, dfx, migration guide]
+keywords: [advanced, dfx, checking chunk store, canister chunk store, chunk store]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Checking a canister's chunk store
 
-<MarkdownChipRow labels={["Advanced"]} />
-
-
+<MarkdownChipRow labels={["Advanced", "dfx workflow"]} />
 
 A canister's chunk store must be empty before a Wasm module can be installed in the canister.
 
@@ -26,11 +24,11 @@ If the result returns a `vec` value, the chunk store is not empty.
 
 ```
 (
-  vec {
-    record {
-      1_158_164_430 = blob "\96\a2\96\d2\24\f2\85\c6\7b\ee\93\c3\0f\8a\30\91\57\f0\da\a3\5d\c5\b8\7e\41\0b\78\63\0a\09\cf\c7";
-    };
-  },
+  vec {
+    record {
+      1_158_164_430 = blob "\96\a2\96\d2\24\f2\85\c6\7b\ee\93\c3\0f\8a\30\91\57\f0\da\a3\5d\c5\b8\7e\41\0b\78\63\0a\09\cf\c7";
+    };
+  },
 )
 ```
 
@@ -46,7 +44,7 @@ type table2 = vec nat8
 wire_type: record { 1_158_164_430 : table2 }, expect_type: vec nat8
 ```
 
-To verify that chunk store is the cause of this error, verify the chunk store has an existing `vec` value by running the [command shown above](#checking-chunk-store).
+To verify that the chunk store is the cause of this error, verify the chunk store has an existing `vec` value by running the [command shown above](#checking-chunk-store).
 
 Then, clear the chunk store with the command:
 

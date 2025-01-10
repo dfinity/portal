@@ -1,14 +1,12 @@
 ---
-keywords: [advanced, dfx, migration guide]
+keywords: [advanced, dfx, migration guide, v0.17.0, use dfxvm to update dfx, update dfx, dfxvm]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # dfx v0.17.0 CI migration guide
 
-<MarkdownChipRow labels={["Advanced"]} />
-
-
+<MarkdownChipRow labels={["Advanced", "dfx workflow"]} />
 
 `dfxvm` is a new tool used for installing and managing different versions of `dfx`. In `dfx` versions 0.17.0 and newer, `dfxvm` is used to install and update `dfx`. This means CI jobs that install `dfx` will need to update their workflow.
 
@@ -18,15 +16,15 @@ If your CI job uses GitHub actions, you can edit your `dfx` install job to use t
 
 ```
 jobs:
-  example-job:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
-    - name: Install dfx
-      uses: dfinity/setup-dfx@main
-    - name: Confirm successful installation
-      run: dfx --version
+  example-job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    - name: Install dfx
+      uses: dfinity/setup-dfx@main
+    - name: Confirm successful installation
+      run: dfx --version
 ```
 
 ## Manual CI job
@@ -45,7 +43,7 @@ DFXVM_INIT_YES=true sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
 # Linux:
 "$HOME/.local/share/dfx/bin"
 
-# Macos:
+# macOS:
 "$HOME/Library/Application Support/org.dfinity.dfx/bin"
 ```
 
@@ -55,7 +53,7 @@ DFXVM_INIT_YES=true sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
 # Linux:
 source "$HOME/.local/share/dfx/env"
 
-# Macos:
+# macOS:
 source "$HOME/Library/Application Support/org.dfinity.dfx/env"
 ```
 
@@ -79,4 +77,3 @@ ENV PATH="/root/.local/share/dfx/bin:$PATH"
 - [`dfx` documentation](/docs/current/building-dapps/developer-tools/dfx/).
 
 - [IC SDK GitHub repo](https://github.com/dfinity/sdk).
-

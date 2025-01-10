@@ -4,7 +4,7 @@ keywords: [beginner, rust, tutorial, overview]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Overview
+# Rust CDK
 
 <MarkdownChipRow labels={["Beginner", "Rust" ]} />
 
@@ -14,16 +14,15 @@ Developing smart contracts in Rust is supported on ICP through the Rust canister
 
 This guide provides an introduction to using Rust for developing backend canisters and covers the basic infrastructure of Rust canisters as well as design considerations and observability.
 
-## Rust CDK
-
 To support Rust development, the IC SDK includes the [Rust canister development kit (Rust CDK)](https://github.com/dfinity/cdk-rs).
 
 While using the IC SDK is the typical path for most developers, experienced Rust developers may choose to circumvent the IC SDK entirely and use the Rust CDK directly. This documentation assumes the reader is using the IC SDK to build Rust canisters.
 
 The Rust CDK consists of the following crates:
+
 - [`ic-cdk`](https://crates.io/crates/ic-cdk): Core methods that enable Rust programs to interact with the ICP system API.
 
-- [`ic-cdk-macros`](https://crates.io/crates/ic-cdk-macros): Defines the procedural macros (e.g. `update`, `query`, `import`) that facilitate building operation endpoints and APIs.
+- [`ic-cdk-macros`](https://crates.io/crates/ic-cdk-macros): Defines the procedural macros (e.g., `update`, `query`, `import`) that facilitate building operation endpoints and APIs.
 
 - [`ic-cdk-timers`](https://crates.io/crates/ic-cdk-timers): Provides an API to schedule multiple timers and periodic tasks.
 

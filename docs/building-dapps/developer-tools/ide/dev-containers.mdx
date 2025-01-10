@@ -13,7 +13,7 @@ Developer containers are a local development option that uses [Docker](https://w
 
 Dev containers have additional benefits, including:
 
-- **Replicability**: Containers make reproducing builds across teams easy since they contain the entire development environment within a portable format. Team members can interact with the same container without needing to setup their own personal developer environment and reproduce the build themselves.
+- **Replicability**: Containers make reproducing builds across teams easy since they contain the entire development environment within a portable format. Team members can interact with the same container without needing to set up their own personal developer environment and reproduce the build themselves.
 
 - **Security**: Containers do not have access to the other files or applications on your system, making project development secure.
 
@@ -31,24 +31,24 @@ Make sure Docker is running, then navigate into your project's directory. Create
 
 ```json
 {
-  "name": "ICP Dev Environment",
-  "image": "ghcr.io/dfinity/icp-dev-env-slim:13",
-  "forwardPorts": [4943, 5173],
-  "portsAttributes": {
-    "4943": {
-      "label": "dfx",
-      "onAutoForward": "ignore"
-    },
-    "5173": {
-      "label": "vite",
-      "onAutoForward": "openBrowser"
-    }
-  },
-  "customizations": {
-    "vscode": {
-      "extensions": ["dfinity-foundation.vscode-motoko"]
-    }
-  }
+  "name": "ICP Dev Environment",
+  "image": "ghcr.io/dfinity/icp-dev-env-slim:13",
+  "forwardPorts": [4943, 5173],
+  "portsAttributes": {
+    "4943": {
+      "label": "dfx",
+      "onAutoForward": "ignore"
+    },
+    "5173": {
+      "label": "vite",
+      "onAutoForward": "openBrowser"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["dfinity-foundation.vscode-motoko"]
+    }
+  }
 }
 ```
 

@@ -1,14 +1,14 @@
 ---
-keywords: [beginner, rust, tutorial, counter]
+keywords: [beginner, rust, tutorial, canister state, counter example, rust canister state]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
 
 # Canister state
 
 <MarkdownChipRow labels={["Beginner", "Rust", "Tutorial"]} />
-
-
 
 In this guide, you are going to write a dapp that provides a few basic functions to increment a counter value. by calling functions on a deployed canister. By calling the function to increment a value multiple times, you can verify that the variable state, that is, the value of the variable between calls, persists.
 
@@ -20,16 +20,23 @@ For this guide, the dapp declares a `COUNTER` as a mutable variable to contain a
 
 -   The `set` function updates the current value to the numeric value you specify as an argument.
 
-
-## Prerequisites
-
-Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./dev-env.mdx).
-
 ## Create the counter dapp project
 
-Open a terminal window on your local computer, if you don’t already have one open.
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
 
-Start by creating a new project by running the following command:
+<input type="checkbox"/> <a href="/docs/current/building-dapps/getting-started/install">Install the IC SDK.</a> Note: While using the IC SDK is the typical path for most developers, experienced Rust developers may choose to circumvent IC SDK entirely and use the <a href="https://github.com/dfinity/cdk-rs"> Rust CDK </a> directly.
+<div>
+</div>
+<input type="checkbox"/> <a href="https://doc.rust-lang.org/book/ch01-01-installation.html">Download and install Rust.</a>
+<div>
+</div>
+<input type="checkbox"/> Download and install the <code>wasm32-unknown-unknown</code> target: <code>rustup target add wasm32-unknown-unknown</code>
+
+</TabItem>
+</Tabs>
+
+Open a terminal window on your local computer, if you don’t already have one open.
 
 Use `dfx new <project_name> --type=rust` to create a new project:
 
@@ -48,56 +55,7 @@ Now that you have the files in place for your Rust dapp, you can replace the tem
 
 To replace the default dapp, open the template `src/rust_counter_backend/src/lib.rs` file in a text editor and delete the existing content. Then, copy and paste this code into the file:
 
-```rust title="src/rust_counter_backend/src/lib.rs"
-use candid::types::number::Nat;
-use ic_cdk::{query, update};
-use std::cell::RefCell;
-
-thread_local! {
-    static COUNTER: RefCell<Nat> = RefCell::new(Nat::from(0 as u32));
-}
-
-/// Get the value of the counter.
-#[query]
-fn get() -> Nat {
-    COUNTER.with(|counter| counter.borrow().clone())
-}
-
-/// Set the value of the counter.
-#[update]
-fn set(n: Nat) {
-    COUNTER.with(|counter| *counter.borrow_mut() = n);
-}
-
-#[update]
-fn increment() {
-    COUNTER.with(|counter| *counter.borrow_mut() += 1 as u32);
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_get_set() {
-        let expected = Nat::from(42 as u32);
-        set(expected.clone());
-        assert_eq!(get(), expected);
-    }
-
-    #[test]
-    fn test_init() {
-        assert_eq!(get(), Nat::from(0 as u32));
-    }
-
-    #[test]
-    fn test_inc() {
-        for i in 1..10 {
-            increment();
-            assert_eq!(get(), Nat::from(i as u32));
-        }
-    }
-}
+```rust ../../../../references/samples/rust/counter/src/counter_backend/src/lib.rs
 ```
 
 Save your changes and close the file to continue.
@@ -120,7 +78,7 @@ Save your changes and close the `rust_counter_backend.did` file to continue.
 
 ## Writing the Cargo.toml file
 
-As with any standard Rust crate, it has a `Cargo.toml` file which configures the details to build the Rust crate.
+As with any standard Rust crate, it has a `Cargo.toml` file that configures the details to build the Rust crate.
 
 Open the `src/rust_counter_backend/Cargo.toml` file and replace the existing content with the following:
 
@@ -219,4 +177,3 @@ dfx canister call rust_counter_backend get
 ```
 
 Returns the incremented value of 988.
-

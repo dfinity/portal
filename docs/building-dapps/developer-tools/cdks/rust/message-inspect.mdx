@@ -8,8 +8,6 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Rust", "Tutorial"]} />
 
-
-
 A canister can inspect an ingress message and either accept or decline the message through the canister's HTTPS interface. If the message is accepted, the canister will execute it.
 
 A canister that does not have a Wasm module installed will reject any ingress messages. If the canister does not implement `canister_inspect_message`, all ingress messages will be accepted.
@@ -24,18 +22,18 @@ This guide will describe how to use `inspect_message` within a Rust canister.
 
 ## `inspect_message`
 
-The `canister_inspect_message` entrypoint can be defined and exported by a Rust canister using `#[inspect_message]`.
+The `canister_inspect_message` entry point can be defined and exported by a Rust canister using `#[inspect_message]`.
 
-The function within this attribute cannot have a return value, and a canister can only have one `canister_inspect_message` entrypoint.
+The function within this attribute cannot have a return value, and a canister can only have one `canister_inspect_message` entry point.
 
 ```rust
 #[inspect_message]
 fn inspect_message_function() {
-    if /* some condition */ {
-        ic_cdk::api::call::accept_message();
-    } else {
-        /* trap or simply not call accept_message to deny*/
-    }
+    if /* some condition */ {
+        ic_cdk::api::call::accept_message();
+    } else {
+        /* trap or simply not call accept_message to deny*/
+    }
 }
 ```
 

@@ -6,9 +6,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Canister init arguments
 
-<MarkdownChipRow labels={["Intermediate"]} />
-
-
+<MarkdownChipRow labels={["Intermediate", "dfx workflow"]} />
 
 When installing a canister's code, it may require Candid initialization arguments to be passed with the `dfx canister install` command. Initialization arguments are initial configuration parameters that the canister's installation expects in order to install the code correctly. One example of a canister that requires these Candid initialization arguments is the [ICP ledger canister](/docs/rosetta-defi/token-ledgers/setup/icp_ledger_setup.mdx).
 
@@ -25,25 +23,25 @@ To use this command, you will need to construct the argument within the CLI, suc
 ```
 dfx canister install icp_ledger_canister --argument
 "
-  (variant {
-    Init = record {
-      minting_account = \"$MINTER_ACCOUNT_ID\";
-      initial_values = vec {
-        record {
-          \"$DEFAULT_ACCOUNT_ID\";
-          record {
-            e8s = 10_000_000_000 : nat64;
-          };
-        };
-      };
-      send_whitelist = vec {};
-      transfer_fee = opt record {
-        e8s = 10_000 : nat64;
-      };
-      token_symbol = opt \"LICP\";
-      token_name = opt \"Local ICP\";
-    }
-  })
+  (variant {
+    Init = record {
+      minting_account = \"$MINTER_ACCOUNT_ID\";
+      initial_values = vec {
+        record {
+          \"$DEFAULT_ACCOUNT_ID\";
+          record {
+            e8s = 10_000_000_000 : nat64;
+          };
+        };
+      };
+      send_whitelist = vec {};
+      transfer_fee = opt record {
+        e8s = 10_000 : nat64;
+      };
+      token_symbol = opt \"LICP\";
+      token_name = opt \"Local ICP\";
+    }
+  })
 "
 ```
 
@@ -51,27 +49,27 @@ Alternatively, you can pass these arguments to the canister directly in the `dfx
 
 ```json
 {
-  "canisters": {
-    "icp_ledger_canister": {
-      "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/ledger_suite/icp/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ledger-canister.wasm.gz",
-      "remote": {
-        "id": {
-          "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
-        }
-      },
-      "init_arg" : "(variant { Init = record { minting_account = "MINTER_ACCOUNT_ID"; initial_values = vec { record { "DEFAULT_ACCOUNT_ID"; record { e8s = 10_000_000_000 : nat64; }; }; }; send_whitelist = vec {}; transfer_fee = opt record { e8s = 10_000 : nat64; }; token_symbol = opt \"LICP\"; token_name = opt \"Local ICP\"; } })"
-    }
-  },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
-  "output_env_file": ".env",
-  "version": 1
+  "canisters": {
+    "icp_ledger_canister": {
+      "type": "custom",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/ledger_suite/icp/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ledger-canister.wasm.gz",
+      "remote": {
+        "id": {
+          "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
+        }
+      },
+      "init_arg" : "(variant { Init = record { minting_account = "MINTER_ACCOUNT_ID"; initial_values = vec { record { "DEFAULT_ACCOUNT_ID"; record { e8s = 10_000_000_000 : nat64; }; }; }; send_whitelist = vec {}; transfer_fee = opt record { e8s = 10_000 : nat64; }; token_symbol = opt \"LICP\"; token_name = opt \"Local ICP\"; } })"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
 }
 ```
 
@@ -90,23 +88,23 @@ An example initialization argument file can be found below:
 
 ```did
 (variant {
-  Init = record {
-    minting_account = "MINTER_ACCOUNT_ID";
-    initial_values = vec {
-      record {
-        "DEFAULT_ACCOUNT_ID";
-        record {
-          e8s = 10_000_000_000 : nat64;
-        };
-      };
-    };
-    send_whitelist = vec {};
-    transfer_fee = opt record {
-      e8s = 10_000 : nat64;
-    };
-    token_symbol = opt "LICP";
-    token_name = opt "Local ICP";
-  }
+  Init = record {
+    minting_account = "MINTER_ACCOUNT_ID";
+    initial_values = vec {
+      record {
+        "DEFAULT_ACCOUNT_ID";
+        record {
+          e8s = 10_000_000_000 : nat64;
+        };
+      };
+    };
+    send_whitelist = vec {};
+    transfer_fee = opt record {
+      e8s = 10_000 : nat64;
+    };
+    token_symbol = opt "LICP";
+    token_name = opt "Local ICP";
+  }
 })
 ```
 
@@ -114,18 +112,18 @@ You can also specify the `init_arg_file` for each canister in the `dfx.json` fil
 
 ```json
 "canisters": {
-    "icp_ledger": {
-      "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/ledger_suite/icp/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ledger-canister.wasm.gz",
-      "remote": {
-        "id": {
-          "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
-        }
-      },
-      "init_arg_file": "src/candid/icp_ledger_init.did"
-    },
-    ...
+    "icp_ledger": {
+      "type": "custom",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/rs/ledger_suite/icp/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/aba60ffbc46acfc8990bf4d5685c1360bd7026b9/canisters/ledger-canister.wasm.gz",
+      "remote": {
+        "id": {
+          "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
+        }
+      },
+      "init_arg_file": "src/candid/icp_ledger_init.did"
+    },
+    ...
 ```
 
 ### Important notes
@@ -134,6 +132,6 @@ You can also specify the `init_arg_file` for each canister in the `dfx.json` fil
 
 - Only one `init_arg` and `init_arg_file` can be defined at a time.
 
-- Initialization arguments must be set individually for each canister, either through the CLI for `dfx.json`. To make this easier, `init_arg_file`s can be used, as detailed below.
+- Initialization arguments must be set individually for each canister, either through the CLI or `dfx.json`. To make this easier, `init_arg_file`s can be used, as detailed below.
 
 - When using `dfx.json` or an argument file, values referenced as environment variables within the file will not be passed to the canister.

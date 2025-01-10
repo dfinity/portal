@@ -211,7 +211,7 @@ const redirects = `
   /docs/current/tutorials/index /docs/current/developer-education/developer-concepts/network-overview
   /docs/current/tutorials/ /docs/current/developer-education/developer-concepts/network-overview
   /docs/current/developer-docs/backend/eu-subnets /docs/current/building-dapps/launching-dapps/subnets/subnet-types
-  /docs/current/samples/* /docs/current/samples/overview
+  /docs/current/samples/* /samples
   /docs/current/developer-docs/backend/choosing-language /docs/current/building-dapps/launching-a-dapp/create-and-install
   /docs/current/developer-docs/production/deploying-and-upgrading /docs/current/building-dapps/launching-a-dapp/deploy/overview
   /docs/current/developer-docs/index /docs/current/developer-education/developer-concepts/network-overview
@@ -473,7 +473,7 @@ const redirects = `
   /docs/current/developer-docs/backend/motoko/access-control /docs/current/motoko/main/writing-motoko/caller-id
   /docs/current/developer-docs/backend/motoko/candid-ui /docs/current/motoko/main/writing-motoko/candid-ui
   /docs/current/developer-docs/backend/motoko/scalability-cancan /docs/current/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/backend/motoko/sample-apps  /docs/current/samples/overview
+  /docs/current/developer-docs/backend/motoko/sample-apps  /samples
   /docs/current/developer-docs/backend/motoko/mo-doc /docs/current/motoko/main/reference/generating-docs
   /docs/current/developer-docs/backend/motoko/0.11.0-migration-guide /docs/current/motoko/main/migration-guides/0.11.0-migration-guide
   /docs/current/motoko/main/about-this-guide /docs/current/motoko/main/getting-started/motoko-introduction
@@ -715,18 +715,18 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/on-chain/cdks /docs/current/building-dapps/developer-tools/cdks/index
 
   /docs/current/developer-docs/backend/rust/index /docs/current/building-dapps/developer-tools/cdks/rust
-  /docs/current/developer-docs/backend/rust/quickstart /docs/current/building-dapps/developer-tools/cdks/rust/quickstart
-  /docs/current/developer-docs/backend/rust/dev-env /docs/current/building-dapps/developer-tools/cdks/rust/dev-env
+  /docs/current/developer-docs/backend/rust/quickstart /docs/current/building-dapps/developer-tools/cdks/rust
+  /docs/current/developer-docs/backend/rust/dev-env /docs/current/building-dapps/developer-tools/cdks/rust
   /docs/current/developer-docs/backend/rust/project-organization /docs/current/building-dapps/developer-tools/cdks/rust/project-organization
   /docs/current/developer-docs/backend/rust/deploying /docs/current/building-dapps/developer-tools/cdks/rust/deploying
   /docs/current/developer-docs/backend/rust/access-control /docs/current/building-dapps/developer-tools/cdks/rust/access-control
   /docs/current/developer-docs/backend/rust/searching-records /docs/current/building-dapps/developer-tools/cdks/rust/searching-records
-  /docs/current/developer-docs/backend/rust/counter /docs/current/building-dapps/developer-tools/cdks/rust/counter
+  /docs/current/developer-docs/backend/rust/counter /docs/current/building-dapps/developer-tools/cdks/rust/canister-state
   /docs/current/developer-docs/backend/rust/rust-considerations /docs/current/building-dapps/developer-tools/cdks/rust/rust-considerations
   /docs/current/developer-docs/backend/rust/timers /docs/current/building-dapps/developer-tools/cdks/rust/timers
   /docs/current/developer-docs/backend/rust/stable-structures /docs/current/building-dapps/developer-tools/cdks/rust/stable-structures
   /docs/current/developer-docs/backend/rust/rust-limitations /docs/current/building-dapps/developer-tools/cdks/rust/rust-limitations
-  /docs/current/developer-docs/backend/rust/samples /docs/current/building-dapps/developer-tools/cdks/rust/samples
+  /docs/current/developer-docs/backend/rust/samples /docs/current/building-dapps/developer-tools/cdks/rust/
   /docs/current/developer-docs/backend/rust/intercanister /docs/current/building-dapps/developer-tools/cdks/rust/intercanister
   /docs/current/developer-docs/backend/rust/message-inspect /docs/current/building-dapps/developer-tools/cdks/rust/message-inspect
   /docs/current/developer-docs/backend/rust/optimizing /docs/current/building-dapps/developer-tools/cdks/rust/optimizing

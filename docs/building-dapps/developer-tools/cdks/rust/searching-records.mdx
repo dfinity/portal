@@ -4,11 +4,12 @@ keywords: [intermediate, rust, tutorial, searching records]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
 
 # Adding and searching records
 
 <MarkdownChipRow labels={["Intermediate", "Rust", "Tutorial"]} />
-
 
 In this guide, you are going to write a dapp that provides a few basic functions to add and retrieve simple profile records that consist of a name, description, and an array of keywords.
 
@@ -29,11 +30,20 @@ This guide demonstrates:
 -   How to write a simple search function with partial string matching.
 -   How profiles are associated with a specific principal.
 
-## Prerequisites
-
-Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./dev-env.mdx).
-
 ## Creating a new project
+
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
+
+<input type="checkbox"/> <a href="/docs/current/building-dapps/getting-started/install">Install the IC SDK.</a> Note: While using the IC SDK is the typical path for most developers, experienced Rust developers may choose to circumvent IC SDK entirely and use the <a href="https://github.com/dfinity/cdk-rs"> Rust CDK </a> directly.
+<div>
+</div>
+<input type="checkbox"/> <a href="https://doc.rust-lang.org/book/ch01-01-installation.html">Download and install Rust.</a>
+<div>
+</div>
+<input type="checkbox"/> Download and install the <code>wasm32-unknown-unknown</code> target: <code>rustup target add wasm32-unknown-unknown</code>
+</TabItem>
+</Tabs>
 
 Open a terminal window on your local computer if you don’t already have one open. Then, create a new project by running the following command:
 
@@ -124,27 +134,27 @@ fn update(profile: Profile) {
 
 #[query]
 fn search(search_parameter: String) -> Option<Profile> {
-    PROFILE_STORE.with(|profile_store| {
-        let profiles = profile_store.borrow();
+    PROFILE_STORE.with(|profile_store| {
+        let profiles = profile_store.borrow();
 
-        for (_, profile) in profiles.iter() {
-            if profile.name.contains(&search_parameter)
-                || profile.description.contains(&search_parameter)
-            {
-                return Some(profile.clone());
-            }
+        for (_, profile) in profiles.iter() {
+            if profile.name.contains(&search_parameter)
+                || profile.description.contains(&search_parameter)
+            {
+                return Some(profile.clone());
+            }
 
-            if profile
-                .keywords
-                .iter()
-                .any(|keyword| keyword.contains(&search_parameter))
-            {
-                return Some(profile.clone());
-            }
-        }
+            if profile
+                .keywords
+                .iter()
+                .any(|keyword| keyword.contains(&search_parameter))
+            {
+                return Some(profile.clone());
+            }
+        }
 
-        None
-    })
+        None
+    })
 }
 ```
 
@@ -256,7 +266,7 @@ This command finds the matching profile using the `description` and returns the 
 
 In its current form, the dapp only stores one profile—the one associated with the principal invoking the commands. To test that the `get`, `getSelf`, and `search` functions do what you want them to, you need to add some new identities that can have different profiles.
 
-To add identities for testing, first create a new user identity by running the following command, enter a passphrase to secure the identity when prompted:
+To add identities for testing, first create a new user identity by running the following command; enter a passphrase to secure the identity when prompted:
 
 ``` bash
 dfx identity new Miles
@@ -312,7 +322,7 @@ The command displays the profile currently associated with the Miles identity, i
 )
 ```
 
-Call the `search` function using part of the description or a keyword to further test the whether the correct profile is returned.
+Call the `search` function using part of the description or a keyword to further test whether the correct profile is returned.
 
 For example, to verify the `Miles` profile is returned, you might run the following command:
 
@@ -332,7 +342,7 @@ The command returns the `Miles` profile:
 )
 ```
 
-Call the `search` function to further test the whether the correct profile is returned.
+Call the `search` function to further test whether the correct profile is returned.
 
 For example, to verify the `Dupree` profile is returned, you might run the following command:
 
@@ -351,4 +361,3 @@ The command returns the `Dupree` profile:
     },
 )
 ```
-

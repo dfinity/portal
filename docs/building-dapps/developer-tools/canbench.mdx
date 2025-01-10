@@ -26,7 +26,7 @@ Features of `canbench` include:
 
 - Persistence of benchmarking results in your canister's repo.
 
-- Language agnostic, though initially only support for Rust exists. 
+- Language agnostic, though initially only support for Rust exists.
 
 ## Installation
 
@@ -46,36 +46,36 @@ Then, edit the `canbench.yml` file to point to your canister's Wasm file:
 
 ```yml title="canbench.yml"
 build_cmd:
-  cargo build --release --target wasm32-unknown-unknown --features canbench-rs
+  cargo build --release --target wasm32-unknown-unknown --features canbench-rs
 
 wasm_path:
-  ./target/wasm32-unknown-unknown/release/<YOUR_CANISTER>.wasm
+  ./target/wasm32-unknown-unknown/release/<YOUR_CANISTER>.wasm
 ```
 
 ## Example benchmark test
 
-Below is an example canister that uses a `query` function to compute and return the fibonacci sequence of a given number:
+Below is an example canister that uses a `query` function to compute and return the Fibonacci sequence of a given number:
 
 ```rust title="src/example_backend/src/lib.rs"
 #[ic_cdk::query]
 fn fibonacci(n: u32) -> u32 {
-    if n == 0 {
-        return 0;
-    } else if n == 1 {
-        return 1;
-    }
+    if n == 0 {
+        return 0;
+    } else if n == 1 {
+        return 1;
+    }
 
-    let mut a = 0;
-    let mut b = 1;
-    let mut result = 0;
+    let mut a = 0;
+    let mut b = 1;
+    let mut result = 0;
 
-    for _ in 2..=n {
-        result = a + b;
-        a = b;
-        b = result;
-    }
+    for _ in 2..=n {
+        result = a + b;
+        a = b;
+        b = result;
+    }
 
-    result
+    result
 }
 ```
 
@@ -84,15 +84,15 @@ An example benchmark test using `canbench` for this canister could look like thi
 ```
 #[cfg(feature = "canbench-rs")]
 mod benches {
-    use super::*;
-    use canbench_rs::bench;
+    use super::*;
+    use canbench_rs::bench;
 
 
-    #[bench]
-    fn fibonacci_20() {
-        // NOTE: the result is printed to prevent the compiler from optimizing the call away.
-        println!("{:?}", fibonacci(20));
-    }
+    #[bench]
+    fn fibonacci_20() {
+        // NOTE: the result is printed to prevent the compiler from optimizing the call away.
+        println!("{:?}", fibonacci(20));
+    }
 }
 ```
 
@@ -104,10 +104,10 @@ canbench
 ---------------------------------------------------
 
 Benchmark: fibonacci_20 (new)
-  total:
-    instructions: 2301 (new)
-    heap_increase: 0 pages (new)
-    stable_memory_increase: 0 pages (new)
+  total:
+    instructions: 2301 (new)
+    heap_increase: 0 pages (new)
+    stable_memory_increase: 0 pages (new)
 
 ---------------------------------------------------
 

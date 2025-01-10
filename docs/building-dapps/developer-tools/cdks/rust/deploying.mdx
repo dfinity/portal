@@ -4,57 +4,49 @@ keywords: [beginner, rust, tutorial, deploying canisters, deploying]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
 
 # Rust Hello, world!
 
 <MarkdownChipRow labels={["Beginner", "Rust", "Tutorial"]} />
 
+In this guide, you'll learn the steps required to write, compile, deploy, and interact with a Rust backend canister using a simple 'Hello, world!' example.
 
+## Creating a new project
 
-In this guide, you'll learn the steps required to write, compile, deploy, and interact with a Rust backend canister.
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
 
-This guide will showcase a simple 'Hello, world!' example.
+<input type="checkbox"/> <a href="/docs/current/building-dapps/getting-started/install">Install the IC SDK.</a> Note: While using the IC SDK is the typical path for most developers, experienced Rust developers may choose to circumvent IC SDK entirely and use the <a href="https://github.com/dfinity/cdk-rs"> Rust CDK </a> directly.
+<div>
+</div>
+<input type="checkbox"/> <a href="https://doc.rust-lang.org/book/ch01-01-installation.html">Download and install Rust.</a>
+<div>
+</div>
+<input type="checkbox"/> Download and install the <code>wasm32-unknown-unknown</code> target: <code>rustup target add wasm32-unknown-unknown</code>
+</TabItem>
+</Tabs>
 
-## Prerequisites
+Open a terminal window on your local computer, if you don’t already have one open.
 
-Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](/docs/current/building-dapps/developer-tools/cdks/rust/dev-env) and have created a [Rust project](/docs/current/building-dapps/developer-tools/cdks/rust/quickstart).
+Use `dfx new <project_name> --type=rust` to create a new project:
 
-For more information on project structure and code organization, review the [project organization guide](./project-organization.mdx).
-
-## Writing the `lib.rs` file
-
-Open the `src/hello_world_backend/src/lib.rs` file in a text editor. Replace the existing content with the following:
-
-```rust title="src/hello_world_backend/src/lib.rs"
-#[ic_cdk::query]
-fn greet(name: String) -> String {
-    format!("Hello there, {}! This is an example greeting returned from a Rust backend canister!", name)
-}
+```bash
+dfx start --clean --background
+dfx new hello_world --type=rust
 ```
 
-Save the file.
+Then, navigate into your project directory by running the command:
 
-## Writing the `Cargo.toml` file
-
-Open the `src/hello_world_backend/Cargo.toml` file in a text editor. Replace the existing content with the following:
-
-``` toml title="src/hello_world_backend/Cargo.tom"
-[package]
-name = "hello_world_backend"
-version = "0.1.0"
-edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[lib]
-crate-type = ["cdylib"]
-
-[dependencies]
-candid = "0.8.2"
-ic-cdk = "0.7.0"
+``` bash
+cd hello_world
 ```
 
-Save the file.
+Open the `src/hello_world_backend/src/lib.rs` file in a text editor. It should contain the following code:
+
+```rust ../../../../references/samples/rust/hello/src/hello_backend/src/lib.rs
+```
 
 ## Deploying the canister locally
 
@@ -74,9 +66,9 @@ Creating canister hello_world_backend...
 hello_world_backend canister created with canister id: br5f7-7uaaa-aaaaa-qaaca-cai
 ```
 
-### Build
+### Compile
 
-Next, you need to compile your program into a WebAssembly module that can be deployed on ICP by building the canister. To build the canister, run the command:
+Next, you need to compile your program into a WebAssembly module that can be deployed on ICP by building the canister. To compile the canister's code, run the command:
 
 ```bash
 dfx build hello_world_backend
@@ -84,7 +76,7 @@ dfx build hello_world_backend
 
 ### Install
 
-Then, install the compiled code into your canister with the command:
+Then, install the compiled Wasm module into your canister with the command:
 
 ```bash
 dfx canister install hello_world_backend
@@ -147,7 +139,7 @@ dfx canister call hello_world_backend greet everyone
 The output will resemble:
 
 ```bash
-("Hello there, everyone! This is an example greeting returned from a Rust backend canister!")
+("Hello, everyone!")
 ```
 
 You can replace the last input string with any name you'd like, such as:
@@ -159,7 +151,7 @@ dfx canister call hello_world_backend greet Bob
 This will return the output:
 
 ```bash
-("Hello there, Bob! This is an example greeting returned from a Rust backend canister!")
+("Hello, Bob!")
 ```
 
 In addition to testing the canister's functionality, the canister can be interacted with using other `dfx` commands. For example:

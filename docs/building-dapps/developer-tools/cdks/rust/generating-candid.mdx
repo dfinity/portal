@@ -3,12 +3,12 @@ keywords: [beginner, rust, tutorial, generating candid, candid]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
 
 # Generating Candid files for Rust canisters
 
 <MarkdownChipRow labels={["Beginner", "Rust", "Tutorial"]} />
-
-
 
 In versions of the Rusk CDK `v0.11.0` and higher, the Candid export workflow has been changed.
 You can call the `ic_cdk::export_candid!()` macro to enable the Candid export behavior, then use the [candid-extractor](https://github.com/dfinity/cdk-rs/tree/main/src/candid-extractor) to extract the Candid from the canister's Wasm.
@@ -41,12 +41,12 @@ cargo binstall candid-extractor
 ```rust title="lib.rs"
 #[query]
 fn hello(name: String) -> String {
-    format!("Hello, {}!", name)
+    format!("Hello, {}!", name)
 }
 
 #[update]
 fn world(name: String) -> String {
-    format!("World, {}!", name)
+    format!("World, {}!", name)
 }
 
 // Enable Candid export
@@ -65,7 +65,7 @@ The Wasm module will be at:
 target/wasm32-unknown-unknown/release/<CANISTER>.wasm
 ```
 
-- #### Step 3: Extract candid from the Wasm module and save to a file:
+- #### Step 3: Extract candid from the Wasm module and save it to a file:
 
 ```bash
 candid-extractor target/wasm32-unknown-unknown/release/<CANISTER>.wasm > <CANISTER>.did

@@ -6,11 +6,9 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # dfx.json configuration options
 
-<MarkdownChipRow labels={["Dev Tools", "Reference"]} />
+<MarkdownChipRow labels={["dfx", "Reference"]} />
 
-
-
-Every project created and deployed with `dfx` requires a `dfx.json` file to be present in the project's root directory. The `dfx.json` file configures the project's settings such as the canisters in the project, their name, type, and source file, default project build settings, and other configuration parameters such as Wasm optimizations. This page will detail some of the most common configuration options. For a full list of the possible configuration settings in `dfx.json`, view the [`dfx.json` schema](/docs/current/building-dapps/developer-tools/dfx-json-reference).
+Every project created and deployed with `dfx` requires a `dfx.json` file to be present in the project's root directory. The `dfx.json` file configures the project's settings, such as the canisters in the project, their name, type, and source file, default project build settings, and other configuration parameters such as Wasm optimizations. This page will detail some of the most common configuration options. For a full list of the possible configuration settings in `dfx.json`, view the [`dfx.json` schema](/docs/current/building-dapps/developer-tools/dfx-json-reference).
 
 ## Default `dfx.json` file
 
@@ -18,20 +16,20 @@ By default, when a project is created with `dfx new <project-name>`, and the opt
 
 ```json
 {
-  "canisters": {
-    "example_backend": {
-      "main": "src/example_backend/main.mo",
-      "type": "motoko"
-    }
-  },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
-  "output_env_file": ".env",
-  "version": 1
+  "canisters": {
+    "example_backend": {
+      "main": "src/example_backend/main.mo",
+      "type": "motoko"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
 }%
 ```
 
@@ -41,9 +39,9 @@ This configuration contains the following components:
 
 - `example_backend`: Defines the name of the canister in this project.
 
-- `main`: The primary source code file for the canister that serves as the canister's entrypoint. By default, for Motoko canisters this file is `main.mo`. For Rust canisters,
+- `main`: The primary source code file for the canister that serves as the canister's entry point. By default, for Motoko canisters, this file is `main.mo`. For Rust canisters,
 
-- `type`: Defines the type of the canister. Supported types are `motoko`, `rust`, `assets`, `pull` and `custom`. The Motoko and Rust languages are supported through the IC SDK by default. `custom` type refers to canisters written in languages other than Motoko or Rust.
+- `type`: Defines the type of the canister. Supported types are `motoko`, `rust`, `assets`, `pull`, and `custom`. The Motoko and Rust languages are supported through the IC SDK by default. `custom` type refers to canisters written in languages other than Motoko or Rust.
 
 - `defaults`: Default settings for the project's build.
 
@@ -64,12 +62,12 @@ To define a canister to use a language other than `Motoko` or `Rust`, or to use 
 ```json
 "canisters": {
 "example_backend": {
-    "build": "npx azle example_backend",
-    "candid": "src/example_backend/example_backend.did",
-    "gzip": true,
-    "main": "src/example_backend/src/index.ts",
-    "type": "custom",
-    "wasm": ".azle/example_backend/example_backend.wasm"
+    "build": "npx azle example_backend",
+    "candid": "src/example_backend/example_backend.did",
+    "gzip": true,
+    "main": "src/example_backend/src/index.ts",
+    "type": "custom",
+    "wasm": ".azle/example_backend/example_backend.wasm"
 }
 }
 ```
@@ -80,7 +78,7 @@ To define a canister to use a language other than `Motoko` or `Rust`, or to use 
 
 - `gzip`: `true` or `false` if Wasm gzip should be used.
 
-- `main`: The primary source code file for the canister that serves as the canister's entrypoint.
+- `main`: The primary source code file for the canister that serves as the canister's entry point.
 
 - `type`: Defines the canister as `custom`.
 
@@ -89,21 +87,21 @@ To define a canister to use a language other than `Motoko` or `Rust`, or to use 
 
 ## Asset canisters
 
-An asset canister is a type of canister that contains a project's frontend user interface and asset files. For projects created with `dfx new <projectname>` command with 'Vanilla JS' chosen as the frontend framework, the project's `dfx.json` file will contain the following asset canister definition:
+An asset canister is a type of canister that contains a project's frontend user interface and asset files. For projects created with the `dfx new <projectname>` command with 'Vanilla JS' chosen as the frontend framework, the project's `dfx.json` file will contain the following asset canister definition:
 
 ```json
-  "canisters": {
-    "example_frontend": {
-      "dependencies": [
-        "example_backend"
-      ],
-      "source": [
-        "src/example_frontend/dist"
-      ],
-      "type": "assets",
-      "workspace": "example_frontend"
-    }
-  },
+  "canisters": {
+    "example_frontend": {
+      "dependencies": [
+        "example_backend"
+      ],
+      "source": [
+        "src/example_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "example_frontend"
+    }
+  },
 ```
 
 - `dependencies`: Defines what canister the asset canister is dependent on to communicate with.
@@ -119,27 +117,27 @@ An asset canister is a type of canister that contains a project's frontend user 
 
 Canisters that provide a public service at a static canister ID can be pulled into your project by defining `"type": "pull"`. This indicates that the canister's Wasm and Candid file will be pulled from the specified canister ID on the mainnet.
 
-Below is an example project that defines three canisters: `dapp`, which is dependent on `dep_b` and `deb_c`, both of which are pullable canisters:
+Below is an example project that defines three canisters: `dapp`, which is dependent on `dep_b` and `dep_c`, both of which are pullable canisters:
 
 ```json
 {
-    "canisters": {
-        "dapp": {
-            "type": "motoko",
-            "main": "src/main.mo",
-            "dependencies": [
-                "dep_b", "dep_c"
-            ]
-        },
-        "dep_b": {
-            "type": "pull",
-            "id": "yhgn4-myaaa-aaaaa-aabta-cai"
-        },
-        "dep_c": {
-            "type": "pull",
-            "id": "yahli-baaaa-aaaaa-aabtq-cai"
-        }
-    }
+    "canisters": {
+        "dapp": {
+            "type": "motoko",
+            "main": "src/main.mo",
+            "dependencies": [
+                "dep_b", "dep_c"
+            ]
+        },
+        "dep_b": {
+            "type": "pull",
+            "id": "yhgn4-myaaa-aaaaa-aabta-cai"
+        },
+        "dep_c": {
+            "type": "pull",
+            "id": "yahli-baaaa-aaaaa-aabtq-cai"
+        }
+    }
 }
 ```
 
@@ -153,20 +151,20 @@ Local development network settings can be configured in `dfx.json`, such as:
 
 ```json
 "networks": {
-    "dev": {
-      "providers": [
-        "https://ic0.app"
-      ],
-      "type": "persistent"
-    }
-  }
+    "dev": {
+      "providers": [
+        "https://ic0.app"
+      ],
+      "type": "persistent"
+    }
+  }
 ```
 
 Network definitions can have the following configuration components:
 
 - `providers`: Defines the network provider, which can be localhost or any other domain name. Domain names must be a full URL, such as `https://domain.com`.
 
-- `type`: Defines the network type, which can be either ephemeral (do not retain same canister IDs) or persistent (retain the same canister IDs).
+- `type`: Defines the network type, which can be either ephemeral (do not retain the same canister IDs) or persistent (retain the same canister IDs).
 
 [Learn more about custom network definitions and configurations](/docs/current/building-dapps/developer-tools/advanced-dfx/networks-json).
 
@@ -177,11 +175,11 @@ Canisters can be optimized using [`wasm-opt`](https://github.com/WebAssembly/bin
 
 ```json
 {
-  "canisters": {
-    "my_canister": {
-      "optimize": "cycles"
-    }
-  }
+  "canisters": {
+    "my_canister": {
+      "optimize": "cycles"
+    }
+  }
 }
 ```
 

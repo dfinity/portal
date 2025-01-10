@@ -197,7 +197,7 @@ const languagesTiles: TileDescriptor[] = [
       "View additional sample applications for Motoko, Rust, and other languages.",
     action: (
       <Link
-        href="/docs/current/samples/overview"
+        href="/samples"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >

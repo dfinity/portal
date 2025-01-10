@@ -40,9 +40,9 @@ To demonstrate an example, consider the following 'Hello, world!' actor written 
 import Debug "mo:base/Debug"
 
 actor HelloWorld {
-  public func main() {
-    Debug.print("Hello World!")
-  }
+  public func main() {
+    Debug.print("Hello World!")
+  }
 }
 ```
 
@@ -50,7 +50,7 @@ The Candid file for this canister contains the following content:
 
 ```
 service : {
-  main: () -> () oneway;
+  main: () -> () oneway;
 }
 ```
 
@@ -76,32 +76,32 @@ This call returns a large output that includes the proposal details for proposal
 
 ```
 (
-  opt record {
-    id = opt record { id = 129_396 : nat64 };
-    status = 4 : int32;
-    topic = 8 : int32;
-    failure_reason = null;
-    ballots = vec {};
-    proposal_timestamp_seconds = 1_713_543_513 : nat64;
-    reward_event_round = 1_080 : nat64;
-    deadline_timestamp_seconds = opt (1_713_889_113 : nat64);
-    failed_timestamp_seconds = 0 : nat64;
-    reject_cost_e8s = 1_000_000_000 : nat64;
-    derived_proposal_information = null;
-    latest_tally = opt record {
-      no = 30_214_275_350_511 : nat64;
-      yes = 47_423_327_498_625_483 : nat64;
-      total = 47_711_095_943_759_321 : nat64;
-      timestamp_seconds = 1_713_886_831 : nat64;
-    };
-    reward_status = 3 : int32;
-    decided_timestamp_seconds = 1_713_779_984 : nat64;
-    proposal = opt record {
-      url = "";
-      title = opt "Upgrade NNS Canister: qoctq-giaaa-aaaaa-aaaea-cai to wasm with hash: c171de6a4e3f7f999829e5ff16d0757f1d0d0bc1730ca24e0fd0f1657f470fad";
-      action = opt variant {
-        ExecuteNnsFunction = record {
-          nns_function = 4 : int32;
+  opt record {
+    id = opt record { id = 129_396 : nat64 };
+    status = 4 : int32;
+    topic = 8 : int32;
+    failure_reason = null;
+    ballots = vec {};
+    proposal_timestamp_seconds = 1_713_543_513 : nat64;
+    reward_event_round = 1_080 : nat64;
+    deadline_timestamp_seconds = opt (1_713_889_113 : nat64);
+    failed_timestamp_seconds = 0 : nat64;
+    reject_cost_e8s = 1_000_000_000 : nat64;
+    derived_proposal_information = null;
+    latest_tally = opt record {
+      no = 30_214_275_350_511 : nat64;
+      yes = 47_423_327_498_625_483 : nat64;
+      total = 47_711_095_943_759_321 : nat64;
+      timestamp_seconds = 1_713_886_831 : nat64;
+    };
+    reward_status = 3 : int32;
+    decided_timestamp_seconds = 1_713_779_984 : nat64;
+    proposal = opt record {
+      url = "";
+      title = opt "Upgrade NNS Canister: qoctq-giaaa-aaaaa-aaaea-cai to wasm with hash: c171de6a4e3f7f999829e5ff16d0757f1d0d0bc1730ca24e0fd0f1657f470fad";
+      action = opt variant {
+        ExecuteNnsFunction = record {
+          nns_function = 4 : int32;
 ...
 ```
 
@@ -115,41 +115,41 @@ This output will be quite long as well. A portion of it is shown below for you t
 
 ```
 [
-  {
-    "ballots": [],
-    "deadline_timestamp_seconds": [
-      "1713889113"
-    ],
-    "decided_timestamp_seconds": "1713779984",
-    "derived_proposal_information": null,
-    "executed_timestamp_seconds": "1713779984",
-    "failed_timestamp_seconds": "0",
-    "failure_reason": null,
-    "id": [
-      {
-        "id": "129396"
-      }
-    ],
-    "latest_tally": [
-      {
-        "no": "30214275350511",
-        "timestamp_seconds": "1713886831",
-        "total": "47711095943759321",
-        "yes": "47423327498625483"
-      }
-    ],
-    "proposal": [
-      {
-        "action": [
-          {
-            "ExecuteNnsFunction": {
-              "nns_function": 4,
-              "payload": [
-                68,
-                73,
-                68,
-                76,
-                4,
+  {
+    "ballots": [],
+    "deadline_timestamp_seconds": [
+      "1713889113"
+    ],
+    "decided_timestamp_seconds": "1713779984",
+    "derived_proposal_information": null,
+    "executed_timestamp_seconds": "1713779984",
+    "failed_timestamp_seconds": "0",
+    "failure_reason": null,
+    "id": [
+      {
+        "id": "129396"
+      }
+    ],
+    "latest_tally": [
+      {
+        "no": "30214275350511",
+        "timestamp_seconds": "1713886831",
+        "total": "47711095943759321",
+        "yes": "47423327498625483"
+      }
+    ],
+    "proposal": [
+      {
+        "action": [
+          {
+            "ExecuteNnsFunction": {
+              "nns_function": 4,
+              "payload": [
+                68,
+                73,
+                68,
+                76,
+                4,
 ...
 ```
 
@@ -159,27 +159,27 @@ You can filter this output to get specific information using a command such as:
 dfx canister call rrkah-fqaaa-aaaaa-aaaaq-cai get_proposal_info '(129396: nat64)' --ic | idl2json | jq '.[0] | keys'
 ```
 
-This filter will return just the top level JSON keys:
+This filter will return just the top-level JSON keys:
 
 ```
 [
-  "ballots",
-  "deadline_timestamp_seconds",
-  "decided_timestamp_seconds",
-  "derived_proposal_information",
-  "executed_timestamp_seconds",
-  "failed_timestamp_seconds",
-  "failure_reason",
-  "id",
-  "latest_tally",
-  "proposal",
-  "proposal_timestamp_seconds",
-  "proposer",
-  "reject_cost_e8s",
-  "reward_event_round",
-  "reward_status",
-  "status",
-  "topic"
+  "ballots",
+  "deadline_timestamp_seconds",
+  "decided_timestamp_seconds",
+  "derived_proposal_information",
+  "executed_timestamp_seconds",
+  "failed_timestamp_seconds",
+  "failure_reason",
+  "id",
+  "latest_tally",
+  "proposal",
+  "proposal_timestamp_seconds",
+  "proposer",
+  "reject_cost_e8s",
+  "reward_event_round",
+  "reward_status",
+  "status",
+  "topic"
 ]
 ```
 

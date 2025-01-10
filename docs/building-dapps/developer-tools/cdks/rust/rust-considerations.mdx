@@ -8,8 +8,6 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Beginner", "Rust" ]} />
 
-
-
 This guide describes information that developers should consider when writing Rust canisters, specifically regarding canister observability and global state.
 
 ### Observability
@@ -58,7 +56,7 @@ registered_users_total {}",
 
 ## Globally mutable states
 
-By design, canisters on ICP are structured in a way that forces developers to use a global mutable state. However, Rust's design makes it difficult to global mutable variables. This results in Rust developers needing to choose a method of code organization that takes ICP's design into consideration. This guide will cover a few of those code organization options.
+By design, canisters on ICP are structured in a way that forces developers to use a global mutable state. However, Rust's design makes it difficult to use global mutable variables. This results in Rust developers needing to choose a method of code organization that takes ICP's design into consideration. This guide will cover a few of those code organization options.
 
 ### Using `thread_local!` with `Cell/RefCell` for state variables
 
@@ -75,7 +73,7 @@ thread_local! {
 
 It pays off to factor most of the canister code into loosely coupled modules and packages and to test them independently. Most of the code that depends on the system API should go into the main file.
 
-It is also possible to create a thin abstraction for the System API and test your code with a fake but faithful implementation. For example, you could use the following trait to abstract the stable memory API:
+It is also possible to create a thin abstraction for the system API and test your code with a fake but faithful implementation. For example, you could use the following trait to abstract the stable memory API:
 
 ```rust
 pub trait Memory {

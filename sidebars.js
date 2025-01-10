@@ -288,10 +288,8 @@ build: [
                 label: "Getting started",
                 items: [
                   "building-dapps/developer-tools/cdks/rust/index",
-                  "building-dapps/developer-tools/cdks/rust/quickstart",
-                  "building-dapps/developer-tools/cdks/rust/dev-env",
-                  "building-dapps/developer-tools/cdks/rust/project-organization",
                   "building-dapps/developer-tools/cdks/rust/deploying",
+                  "building-dapps/developer-tools/cdks/rust/project-organization",
                 ]
               },
               {
@@ -300,12 +298,12 @@ build: [
                 items: [
                   "building-dapps/developer-tools/cdks/rust/access-control",
                   "building-dapps/developer-tools/cdks/rust/searching-records",
-                  "building-dapps/developer-tools/cdks/rust/counter",
+                  "building-dapps/developer-tools/cdks/rust/canister-state",
                   "building-dapps/developer-tools/cdks/rust/rust-considerations",
                   "building-dapps/developer-tools/cdks/rust/timers",
                   "building-dapps/developer-tools/cdks/rust/stable-structures",
                   "building-dapps/developer-tools/cdks/rust/rust-limitations",
-                  "building-dapps/developer-tools/cdks/rust/samples",
+
                 ],
               },
               {
@@ -316,14 +314,8 @@ build: [
                   "building-dapps/developer-tools/cdks/rust/message-inspect",
                   "building-dapps/developer-tools/cdks/rust/optimizing",
                   "building-dapps/developer-tools/cdks/rust/upgrading",
-                  {
-                    type: "category",
-                    label: "Candid for Rust canisters",
-                    items: [
-                    "building-dapps/developer-tools/cdks/rust/candid",
-                    "building-dapps/developer-tools/cdks/rust/generating-candid",
-                  ],
-                },
+                  "building-dapps/developer-tools/cdks/rust/candid",
+                  "building-dapps/developer-tools/cdks/rust/generating-candid",
                 ],
               },
             ],
@@ -939,6 +931,7 @@ rosetta_defi: [
             "rosetta-defi/cycles/converting_icp_tokens_into_cycles",
           ]
         },
+        "rosetta-defi/nft-collections",
         "rosetta-defi/account-trimming",
         ],
 

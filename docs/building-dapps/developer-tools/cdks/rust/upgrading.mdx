@@ -8,8 +8,6 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Beginner", "Rust", "Tutorial"]} />
 
-
-
 Unlike a canister reinstall that preserves the canister identifier but no state, a canister upgrade enables you to preserve the state of a deployed canister and change the code.
 
 For example, assume you have a dapp that manages professional profiles and social connections. If you want to add a new feature to the dapp, you need to be able to update the canister code without losing any of the previously stored data. A canister upgrade enables you to update existing canister identifiers with program changes without losing the program state.
@@ -63,7 +61,7 @@ When a canister is upgraded, there is a limit regarding how many cycles a canist
 One way to prevent this is to avoid serializing the canister state to begin with. Stable memory can be used as the canister's primary storage, where it can be used to store each upgrade call. Using this method, the `pre_upgrade` hook may not be necessary, and the `post_upgrade` hook will burn fewer cycles.
 
 :::caution
-While this approach might be useful for some workflows, there are a few drawbacks of this approach:
+While this approach might be useful for some workflows, there are a few drawbacks to this approach:
 - It is a challenge to organize the flat address space of stable storage into a data structure, especially for complex canister states that consist of multiple interconnected data structures. The [ic-stable-structures](https://crates.io/crates/ic-stable-structures) package provides tools to help you organize data in stable memory.
 - Altering your canister's data layout may be counterproductive and infeasible.
 - There may be a need for your canister to have backward compatibility of its data structures; new versions of your canister may need to read data written by previous versions.
