@@ -13,7 +13,7 @@ The Service Nervous System (SNS) framework is the Internet Computer's built-in s
 
 
 ## SNS DAO
-Generally, for each dapp that is under SNS DAO control, there is one SNS DAO. The SNS DAO works very similarly to the [NNS DAO that governs the full ICP](/how-it-works/network-nervous-system-nns/), where DAO participants are called _neurons_ and all neurons can suggest and vote on suggestions how to evolve the dapp that are called _proposals_. Each SNS community can choose its own unique tokenomics and governance rules by parameters that can be set for each SNS DAO.
+Generally, for each dapp that is under SNS DAO control, there is one SNS DAO. The SNS DAO works very similarly to the [NNS DAO that governs the full ICP](/how-it-works/network-nervous-system-nns/), where DAO participants are called _neurons_ and all neurons can suggest and vote on suggestions on how to evolve the dapp that are called _proposals_. Each SNS community can choose its own unique tokenomics and governance rules by parameters that can be set for each SNS DAO.
 
 
 ### What an SNS governs
