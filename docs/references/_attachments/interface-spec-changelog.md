@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.31.0 (2025-01-09) {#0_31_0}
+* Add support for Schnorr auxiliary inputs
+
 ### 0.30.0 (2024-11-19) {#0_30_0}
 * Add management canister endpoint `subnet_info`.
 * Support for wasm64: 64-bit system API.
