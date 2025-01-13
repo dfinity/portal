@@ -7,9 +7,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Logging
 
-<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
-
-
+<MarkdownChipRow labels={["Beginner", "Management"]} />
 
 The <GlossaryTooltip>canister</GlossaryTooltip> logging feature is designed to provide developers with insight into their canister's behavior and assist with scenarios where their canister traps. This feature supports log messages for:
 
@@ -35,7 +33,7 @@ Non-replicated calls are not currently supported for logging.
 
 ## Log visibility
 
-By default, a canister's logs are only visible to the controllers of the canister. A canister's logs can be made public by updating the canister's settings with [`dfx canister update-settings`](/docs/current/building-dapps/developer-tools/dfx/dfx-canister#dfx-canister-update-settings) command:
+By default, a canister's logs are only visible to the controllers of the canister. A canister's logs can be made public by updating the canister's settings with the [`dfx canister update-settings`](/docs/current/building-dapps/developer-tools/dfx/dfx-canister#dfx-canister-update-settings) command:
 
 ```bash
 dfx canister update-settings <canister-name> --log-visibility public

@@ -1,32 +1,34 @@
+---
+keywords: [beginner, tutorial, deploy, deploy canisters, local deployment, local dev, mainnet deployment, mainnet, playground, deploy playground, deploy to playground, testnet, icp testnet]
+---
+
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
-# Custom testnets
+# Custom development networks
 
-<MarkdownChipRow labels={["Advanced", "Tutorial"]} />
+<MarkdownChipRow labels={["Advanced", "Launching dapps"]} />
 
+ICP does not have a public testnet network because <GlossaryTooltip>canisters</GlossaryTooltip> deployed to the mainnet can be upgraded and changed. Plus, deployment costs are fairly low compared to other chains.
 
+ICP offers a [playground](https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app/) network as a testnet-like environment for small-scale, temporary testing. Canisters deployed to the playground are restricted to certain parameters:
 
-ICP does not have a public testnet network that developers can use to deploy and test canisters because canisters deployed to the mainnet can be upgraded and changed. Plus, deployment costs are fairly low compared to other chains.
-
-ICP offers a [playground](https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app/) network as a testnet-like environment for small-scale, temporary testing. Canisters deployed to the playground are restricted to certain parameters. These limitations are:
-
-- Cycle transfer instructions are silently ignored by the playground.
+- Cycle transfer instructions are silently ignored by the playground. Canisters cannot make calls that require cycles be attached to the call.
 - Canisters can use at most 1GiB of memory.
-- Canisters can call the management canister to manage itself without being the controller.
+- Canisters can call the management canister to manage themselves without being the controller.
 - Deployed canisters expire after 20 minutes. Upgrades to canisters reset this timer. When the timer runs out, the canister(s) will be uninstalled.
 - Wasm files can't be gzipped.
 - Wasm files will be analyzed to remove any potentially expensive or malicious operations.
 
 For advanced developers and use cases that want to use a testnet environment without these restrictions, there are two options:
 
-- **Private testnets**: Deploy your own instance of the playground, allowing you to control the playground settings, remove restrictions, and modify the canister pool. This option costs cycles, as you will need to fund your instance of the playground with cycles that will be used to fund canisters deployed to your playground.
+- **Custom playground**: Deploy your own instance of the playground, allowing you to control the playground settings, remove restrictions, and modify the canister pool. This option costs cycles, as you will need to fund your instance of the playground with cycles that will be used to fund the canisters deployed to your playground.
 
-- **Synthetic testnets**: Use the `dfx` named network feature to create a local network that is segmented away from the default local network created by `dfx`.
+- **Custom dfx network**: Use the `dfx` named network feature to create a local network that is segmented away from the default local network created by `dfx`.
 
-## Private testnet
+## Custom playground
 
-To create a private testnet, you can create a custom instance of the playground. Using your own instance of the playground allows for extensive customization, such as:
+Using your own instance of the playground allows for extensive customization, such as:
 
 - Enabling access control by restricting the playground's usage to only allow certain principals.
 
@@ -38,9 +40,9 @@ Using a custom playground can also help simplify development for teams since the
 
 ### Creating a custom playground instance
 
-#### 1. [Install the Motoko playground locally](https://github.com/dfinity/motoko-playground/tree/main?tab=readme-ov-file#running-locally) following the instructions in the playground's repository.
+- #### Step 1: [Install the Motoko playground locally](https://github.com/dfinity/motoko-playground/tree/main?tab=readme-ov-file#running-locally) following the instructions in the playground's repository.
 
-#### 2. Edit the `service/pool/Main.mo` file to change the custom playground settings, such as:
+- #### Step 2: Edit the `service/pool/Main.mo` file to change the custom playground settings, such as:
 
 - Add access control as desired, such as creating an `allowList` of principals that are permitted to use the custom playground.
 
@@ -48,7 +50,7 @@ Using a custom playground can also help simplify development for teams since the
 
 - Change the [Wasm transformation to fit your desired configuration](https://github.com/dfinity/motoko-playground/blob/main/service/pool/Main.mo#L348). In some cases, this may just be `wasm = args.wasm_module`, since if there is an `allowlist` in place, the principals allowed to install canisters can be trusted.
 
-#### 3. Lastly, define the local playground network in your project's `dfx.json` file.
+- #### Step 3: Lastly, define the local playground network in your project's `dfx.json` file.
 
 In this definition, you will need to set the playground canister's ID (the `pool` canister ID) and define the amount of seconds before a canister is returned to the pool, as shown below:
 
@@ -70,17 +72,17 @@ If the value `<network name>` is set as `playground`, then the command `dfx depl
 This network definition can also go into the `networks.json` file, so it applies to every project. To see where the `networks.json` file is located, use the command `dfx info networks-json-path`.
 :::
 
-#### 4. To use the custom playground, [deploy it locally](https://github.com/dfinity/motoko-playground?tab=readme-ov-file#deploy-the-motoko-playground-to-your-local-replica-using-the-following-command).
+- #### Step 4: To use the custom playground, [deploy it locally](https://github.com/dfinity/motoko-playground?tab=readme-ov-file#deploy-the-motoko-playground-to-your-local-replica-using-the-following-command).
 
-## Synthetic testnet
+## Custom dfx network
 
-Another option to create a custom testnet is to use the `dfx` named network functionality. You can create a custom named network for each project, therefore creating a synthetic testnet that is segmented from the other locally tested projects in your environment. Local deployments mirror the mainnet as closely as possible, but they only run a single subnet. Using a custom local network allows you to test integrations with services and estimate deployment costs.
-
-In a custom network, it is possible to run any `dfx` command that would otherwise take `--network ic` but using `--network myNetwork` instead. `myNetwork` can be replaced with any other name, except the three reserved ones: `ic`, `local`, and `playground`.
+In a custom network, it is possible to run any `dfx` command that would otherwise take `--network ic` but using `--network myNetwork` instead. `myNetwork` can be replaced with any other name, except the three reserved ones: `ic`, `local`, and `playground`. Using a custom local network allows you to test integrations with services and estimate deployment costs.
 
 Networks are defined in two ways: assumed and explicitly configured. `dfx` only contains the `ic` network as an assumed environment. All other networks are explicitly configured in the `networks.json` or `dfx.json` files. The "networks" section of `dfx.json` should contain at least the local network, which gets chosen by default if no other network is specified with the `--network` flag.
 
-### System-wide networks
+You can create a custom-named network for each project, therefore creating a synthetic network that is segmented from the other locally tested projects in your environment, or you can create system-wide networks that can be used by any project.
+
+### Creating a system-wide custom dfx network
 
 Custom networks can be configured in the `networks.json` configuration file for `dfx`, which can be found using the following `dfx` command:
 
@@ -90,18 +92,18 @@ dfx info networks-json-path
 
 This will return the file path where your system's `networks.json` file is located. Networks defined in this file can be used by any project in your local environment.
 
-#### 1. Edit the `networks.json` file to define a binding address such as `localhost` or any other domain name.
+- #### Step 1: Edit the `networks.json` file to define a binding address such as `localhost` or any other domain name.
 
 For example:
 
 ```json title="networks.json"
 {
-  "myNetwork1": {
-    "bind": "localhost:4943",
-    "replica": {
-      "subnet_type": "application"
-    }
-  }
+  "myNetwork1": {
+    "bind": "localhost:4943",
+    "replica": {
+      "subnet_type": "application"
+    }
+  }
 }
 ```
 
@@ -109,32 +111,30 @@ To define multiple networks, use multiple definitions on different domain names:
 
 ```json title="networks.json"
 {
-  "myNetwork1": {
-    "bind": "localhost:4943",
-    "replica": {
-      "subnet_type": "application"
-    }
-  },
-  "myNetwork2": {
-    "bind": "127.0.0.1:4943",
-    "replica": {
-      "subnet_type": "application"
-    }
-  }
+  "myNetwork1": {
+    "bind": "localhost:4943",
+    "replica": {
+      "subnet_type": "application"
+    }
+  },
+  "myNetwork2": {
+    "bind": "127.0.0.1:4943",
+    "replica": {
+      "subnet_type": "application"
+    }
+  }
 }
 ```
 
-#### 2. Deploy to one of these networks with `dfx deploy`:
+- #### Step 2: Deploy to one of these networks with `dfx deploy`:
 
 ```bash
 dfx deploy --network myNetwork2
 ```
 
-### Project-specific networks
+### Creating a project-specific custom `dfx` network
 
-Alternatively, networks can also be defined in a project's `dfx.json` file.
-
-Only canisters defined in that `dfx.json` file can be deployed to that network.
+Alternatively, networks can also be defined in a project's `dfx.json` file. Only canisters defined in that `dfx.json` file can be deployed to that network.
 
 To define a project-specific network, add a "networks" section to your `dfx.json` file:
 

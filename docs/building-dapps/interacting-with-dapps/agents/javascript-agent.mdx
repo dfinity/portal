@@ -3,28 +3,26 @@ keywords: [intermediate, agents, tutorial, javascript]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import Tabs from '@theme/Tabs';
 
-# JavaScript agent
+# ICP JavaScript agent
 
-<MarkdownChipRow labels={["Intermediate", "Agents", "Tutorial"]} />
+<MarkdownChipRow labels={["Intermediate", "Agents"]} />
 
+An **agent** is an API client used to interact with ICP. The [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) is used to interact with the public ICP API endpoints and canisters deployed on ICP. The ICP JavaScript agent provides `call`, `query`, and `readState` methods, along with other utilities, to an actor.
 
-
-An agent is an API client used to interact with ICP. The [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) is used to interact with the public ICP API endpoints and canisters deployed on ICP. ICP JavaScript agent provides `call`, `query`, and `readState` methods, along with other utilities, to an actor.
-
-Calls made through the agent are intended to be structured through an actor and configured with a canister's interface that can be generated from a [Candid interface](/docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts). Raw calls are supported, but not recommended per best practices.
+Calls made through the agent are intended to be structured through an actor and configured with a canister's interface that can be generated from a [Candid interface](/docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts). Raw calls are supported but not recommended per best practices.
 
 ## Installation
 
-### Prerequisites
-To get started with the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), it is recommended that your development environment include:
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
 
-- [x] IC SDK for canister creation and management.
-- [x] Node.js (12, 14, or 16).
-- [x] A canister you want to experiment with.
-  - Suggestions:
-    - `dfx new` default project.
-    - An example from [dfinity/examples](https://github.com/dfinity/examples).
+<input type="checkbox"/> <a href="/docs/current/building-dapps/getting-started/install">Install the IC SDK.</a>
+
+</TabItem>
+</Tabs>
 
 To install the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), run the following command:
 
@@ -44,10 +42,13 @@ npm i --save @dfinity/auth-client
 
 Create an authentication client that will open an `identity.ic0.app` window, save your delegation to `indexedDb`, and provide you with an identity:
 
-```
+```javascript title="project_name/src/project_name_frontend/src/index.js"
 const authClient = await AuthClient.create();
-The authClient can log in with
+```
 
+Then, the `authClient` can log in with:
+
+```javascript title="project_name/src/project_name_frontend/src/index.js"
 authClient.login({
   // 7 days in nanoseconds
   maxTimeToLive: BigInt(7 * 24 * 60 * 60 * 1000 * 1000 * 1000),
@@ -57,9 +58,9 @@ authClient.login({
 });
 ```
 
-Then, use that identity to make authenticated calls using the `@dfinity/agent` actor:
+Use that identity to make authenticated calls using the `@dfinity/agent` actor:
 
-```
+```js title="project_name/src/project_name_frontend/src/index.js"
 const identity = await authClient.getIdentity();
 const actor = Actor.createActor(idlFactory, {
   agent: new HttpAgent({
@@ -73,9 +74,9 @@ const actor = Actor.createActor(idlFactory, {
 
 By default, the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) uses a default IndexedDb storage interface and ECDSA keys.
 
-You can use any storage structure that implements the AuthClientStorage interface.
+You can use any storage structure that implements the `AuthClientStorage` interface:
 
-```
+```js
 export type StoredKey = string | CryptoKeyPair;
 export interface AuthClientStorage {
   get(key: string): Promise<StoredKey | null>;
@@ -90,7 +91,7 @@ export interface AuthClientStorage {
 
 If you decide to use a custom storage implementation that only supports string data types, it is recommended to use the `keyType` option to use an `Ed25519` key instead of the default ECDSA key:
 
-```
+```js
 const authClient = await AuthClient.create({
   storage: new LocalStorage(),
   keyType: 'Ed25519',
@@ -100,7 +101,7 @@ const authClient = await AuthClient.create({
 
 ### Session management
 
-There are two options supported by the AuthClient for secure session management:
+There are two options supported by `AuthClient` for secure session management:
 
 1. The `maxTimeToLive` option built into the Internet Identity delegation determines in nanoseconds how long the `DelegationIdentity` returned will be valid for.
 
@@ -108,7 +109,7 @@ There are two options supported by the AuthClient for secure session management:
 
     - By default, this period is 10 minutes. After 10 minutes, the `DelegationIdentity` will be removed from from `localStorage` and `window.location.reload()` is called.
 
-    - Alternatively, you can pass an `onIdle` option that will replace the default `window.location.reload()` behavior, or register callbacks with `idleManager.registerCallback()`, which will also replace the default callback.
+    - Alternatively, you can pass an `onIdle` option that will replace the default `window.location.reload()` behavior or register callbacks with `idleManager.registerCallback()`, which will also replace the default callback.
 
 View the full set of [options for the IdleManager](https://agent-js.icp.xyz/auth-client/index.html).
 
@@ -130,9 +131,9 @@ Actors in the context of the [ICP JavaScript agent](https://www.npmjs.com/packag
 
 - Parse the response.
 
-- Provide type type safety for the canister's interface.
+- Provide type safety for the canister's interface.
 
-Making a call to the HttpAgent by itself without the use of an actor is an advanced use case that is unnecessary for most applications.
+Making a call to the `HttpAgent` by itself without the use of an actor is an advanced use case that is unnecessary for most applications.
 
 To set up an actor, you can import a `createActor` utility from your canister's Candid declarations and `canisterId alias`, which by default points to `process.env<canister-id>_CANISTER_ID`.
 
@@ -144,8 +145,7 @@ You can pass the canister ID environment variable logic to your application in a
 
 The following example uses local development, where you can read the canister ID from the local `canister_ids.json` file, which can be found at `.dfx/local/canister_ids.json`:
 
-```js
-// src/node/index.js
+```js title="src/node/index.js"
 import fetch from "isomorphic-fetch";
 import { HttpAgent } from "@dfinity/agent";
 import { createRequire } from "node:module";
@@ -175,7 +175,7 @@ const actor = createActor(effectiveCanisterId, {
 
 An actor can be initialized to include the boundary node HTTP headers using the `Actor.createActor` constructor:
 
-```
+```js
 Actor.createActorWithHttpDetails(interfaceFactory: InterfaceFactory, configuration: ActorConfig): ActorSubclass<ActorMethodMappedWithHttpDetails<T>>
 ```
 
@@ -184,13 +184,13 @@ Actor.createActorWithHttpDetails(interfaceFactory: InterfaceFactory, configurati
 
 To get the agent of an actor, use the `Actor.agentOf` method:
 
-```
+```js
 const defaultAgent = Actor.agentOf(defaultActor);
 ```
 
 This method can be used to replace or invalidate an identity used by an actor's agent. For example, the following method can be used to replace the current identity of an actor's agent with a newly authenticated identity from Internet Identity:
 
-```
+```js
 defaultAgent.replaceIdentity(await authClient.getIdentity());
 ```
 
@@ -212,7 +212,7 @@ Raw calls can be made using the agent, but it is recommended to use the agent's 
 
 Update calls on ICP make a change to the canister's state. To make an update call with the ICP JavaScript agent, use the `call` method:
 
-```
+```js
 call(canisterId: string | Principal, fields: CallOptions): Promise<SubmitResponse>
 ```
 
@@ -231,7 +231,7 @@ The `call` method returns `Promise<[SubmitResponse](https://agent-js.icp.xyz/age
 
 Query calls on ICP do not change a canister's state and are only used to return information. To make an update call with the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), use the `query` method:
 
-```
+```js
 query(canisterId: string | Principal, options: QueryFields, identity?: Identity | Promise<Identity>): Promise<ApiQueryResponse>
 ```
 
@@ -245,13 +245,13 @@ Parameters for this method are:
 
 - `identity`: Optional; identifies the sender principal to use when sending the query.
 
-The `query` method returns `Promise<ApiQueryResponse>`. This is the response from the replica, and will be rejected if the communication failed. If the query itself failed but there were no protocol errors, the response will be of type `QueryResponseRejected`.
+The `query` method returns `Promise<ApiQueryResponse>`. This is the response from the replica and will be rejected if the communication failed. If the query itself failed but there were no protocol errors, the response will be of type `QueryResponseRejected`.
 
 ### Read state information
 
-To read state information from the ICP replica, use the `readState` method. This method makes a query call with a list of paths to return, and receives a certificate in response. If there are communication errors, the call will be rejected, and the certificate may contain less information than what was requested.
+To read state information from the ICP replica, use the `readState` method. This method makes a query call with a list of paths to return and receives a certificate in response. If there are communication errors, the call will be rejected, and the certificate may contain less information than what was requested.
 
-```
+```js
 readState(effectiveCanisterId: string | Principal, options: ReadStateOptions, identity?: Identity, request?: any): Promise<ReadStateResponse>
 ```
 
@@ -281,7 +281,7 @@ It is recommended to use the `isomorphic-fetch` package to provide a consistent 
 
 An example can be found below:
 
-```
+```js
 import fetch from 'isomorphic-fetch';
 import { HttpAgent } from '@dfinity/agent';
 
@@ -292,7 +292,7 @@ const agent = new HttpAgent({ fetch, host });
 
 You can also pass `fetchOptions` to the agent's constructor, which is then passed to the `fetch` implementation. This is useful if you want to pass additional options to the fetch implementation. An example specifying a custom header can be found below:
 
-```
+```js
 import fetch from 'isomorphic-fetch';
 import { HttpAgent } from '@dfinity/agent';
 
@@ -326,7 +326,7 @@ When developing an app that runs in the browser, it is important to take applica
 
 It is recommended to use a bundler to assemble your code for convenience and simplified troubleshooting. Below is an example that provides a standard Webpack configuration, but you may also use other frameworks such as Rollup, Vite, Parcel, or others.
 
-For this pattern, it is recommended to run a script to generate the `.env.development` and `.env.production` environment variable files for your project's canister IDs. This is a fairly standard approach for bundlers, and can be easily supported using [dotenv](https://www.npmjs.com/package/dotenv). An example of this script can be found below:
+For this pattern, it is recommended to run a script to generate the `.env.development` and `.env.production` environment variable files for your project's canister IDs. This is a fairly standard approach for bundlers and can be easily supported using [dotenv](https://www.npmjs.com/package/dotenv). An example of this script can be found below:
 
 ```js
 // setupEnv.js
@@ -403,7 +403,6 @@ Then, you can add `"prestart"` and `"prebuild"` commands of `dfx generate; node 
 
 Below is an example that creates an agent, fetches the root key of the replica, then creates an actor automatically through the Candid interface of the canister.
 
-
 :::caution
 This example uses fetchRootKey. It is not recommended that dapps deployed on the mainnet call this function from the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), since using fetchRootKey on the mainnet poses severe security concerns for the dapp that's making the call. It is recommended to put it behind a condition so that it only runs locally.
 
@@ -417,8 +416,8 @@ import { Actor, HttpAgent } from "@dfinity/agent";
 import { idlFactory } from "./backend_canister.did.js";
 export { idlFactory } from "./backend_canister.did.js";
 
-/* CANISTER_ID is replaced by webpack based on node environment
- * Note: canister environment variable will be standardized as
+/* CANISTER_ID is replaced by webpack based on the node environment.
+ * Note: The canister environment variable will be standardized as
  * process.env.CANISTER_ID_<CANISTER_NAME_UPPERCASE>
  * beginning in dfx 0.15.0
  */

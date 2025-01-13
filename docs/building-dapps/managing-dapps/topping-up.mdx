@@ -7,9 +7,7 @@ import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 
 # Topping up a canister
 
-<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
-
-
+<MarkdownChipRow labels={["Beginner", "Management"]} />
 
 A <GlossaryTooltip>canister</GlossaryTooltip> needs to have cycles deposited continuously into it to pay for the resources it uses. This process is known as 'topping up' the canister. Topping up canisters is routine maintenance.
 
@@ -23,7 +21,7 @@ There are a few different ways to top up canisters:
 
 - Through the [NNS frontend dapp](https://nns.ic0.app).
 
-- Through a [third-party service](/docs/current/building-dapps/managing-dapps/topping-up) (e.g. https://cycleops.dev).
+- Through a [third-party service](/docs/current/building-dapps/managing-dapps/topping-up) (e.g., https://cycleops.dev).
 
 ### Number of cycles
 
@@ -47,7 +45,7 @@ The following examples will demonstrate how to interact with and top up a canist
 
 ### Checking the cycles balance of a canister
 
-Canister cycles balances are available through the [`dfx canister status`](/docs/current/building-dapps/developer-tools/dfx/dfx-canister#dfx-canister-status) command. They are not exposed publicly by default; you can only see them if you are the controller of a canister:
+Canister cycles balances are available through the [`dfx canister status`](/docs/current/building-dapps/developer-tools/dfx/dfx-canister#dfx-canister-status) command. They are not exposed publicly by default; you can only see them if you are the controller of a canister.
 
 ```bash
 dfx canister status jqylk-byaaa-aaaal-qbymq-cai --network=ic
@@ -128,17 +126,13 @@ ICP features a mechanism to prevent canisters from running out of cycles. Canist
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
-# Using a cycles management service
+## Using a cycles management service
 
-<MarkdownChipRow labels={["Beginner", "Concept"]} />
+Once a <GlossaryTooltip>canister</GlossaryTooltip> is deployed to ICP, the compute and storage it utilizes must be pre-paid in cycles. The process of burning ICP to obtain cycles and transferring them to a canister is referred to as "topping up" a canister.
 
+Cycles management services provide canister monitoring and automated cycles top-ups to ensure canister applications remain up and running and do not run out of cycles.
 
-
-Once a <GlossaryTooltip>canister</GlossaryTooltip> is deployed to the Internet Computer, the compute and storage it utilizes must be pre-paid. The process of burning ICP to obtain cycles and transferring them to a canister is referred to as "topping up" a canister.
-
-Cycles management services provide canister monitoring and automated cycles top ups to ensure canister applications remain up and running and do not run out of cycles.
-
-Instead of manually topping up a canister via `dfx` or scripting a custom solution, cycles management services provide tested top up automation and canister metric insights.
+Instead of manually topping up a canister via `dfx` or scripting a custom solution, cycles management services provide tested top-up automation and canister metric insights.
 
 ## Popular cycles management services
 Popular cycles management services include:

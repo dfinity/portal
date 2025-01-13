@@ -9,7 +9,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Settings
 
-<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
+<MarkdownChipRow labels={["Beginner", "Management"]} />
 
 Each <GlossaryTooltip>canister</GlossaryTooltip> has a group of possible settings that control its behavior.
 
@@ -124,8 +124,8 @@ By default, canisters are scheduled for execution in a "best-effort" manner. Can
 
 Compute allocation is expressed in percents and denotes the percentage of an execution core reserved for the canister. For example, compute allocation of 50% means that the canister will get 50% of an execution core. It will be scheduled at least every other round. Compute allocation of 100% means that the canister will be scheduled every round.
 
-Canisters pay a rental fee for compute allocation, meaning that the payment depends on time and the amount of compute allocation regardless whether the canister actually executed or not.
-For example, an idle canister that has compute allocation of 50% for one hour will be charged `base_fee * 50 * 3600`, where `base_fee` is the fee for [one percent per second](/docs/current/developer-education/developer-concepts/gas-cost).
+Canisters pay a rental fee for compute allocation, meaning that the payment depends on time and the amount of compute allocation regardless of whether the canister actually executed or not.
+For example, an idle canister that has a compute allocation of 50% for one hour will be charged `base_fee * 50 * 3600`, where `base_fee` is the fee for [one percent per second](/docs/current/developer-education/developer-concepts/gas-cost).
 
 :::info
 The rental fee increases the amount of cycles a canister consumes while idle or frozen.
@@ -147,7 +147,7 @@ For example, if a canister has a memory allocation of 8GiB, then it pre-allocate
 This constraint may be lifted in the future.
 :::
 
-Canisters pay a rental fee for memory allocation, meaning that the payment depends on the time duration and the amount of memory allocation, regardless whether the canister actually uses that memory or not.
+Canisters pay a rental fee for memory allocation, meaning that the payment depends on the time duration and the amount of memory allocation, regardless of whether the canister actually uses that memory or not.
 [Learn more about payment for memory](/docs/current/developer-education/developer-concepts/gas-cost).
 
 :::info
@@ -161,10 +161,10 @@ The default value of memory allocation is 0 bytes, which means that there is no 
 ## Freezing threshold
 
 If a canister runs out of cycles, then it gets uninstalled, meaning that its code and data are deleted.
-A canister will only retain its metadata such as the canister ID, controllers, settings, etc.
+A canister will only retain its metadata, such as the canister ID, controllers, settings, etc.
 
 The freezing threshold protects against the canister unexpectedly running out of cycles.
-This field denotes time duration in seconds indicating the minimum duration that the canister should exist without running out of cycles.
+This field denotes time duration in seconds, indicating the minimum duration that the canister should exist without running out of cycles.
 
 When the cycles balance of the canister becomes too low, then the system freezes the canister in order to guarantee its freezing threshold.
 A frozen canister does not execute messages and pays only for renting resources such as compute allocation, memory allocation, and memory usage.
@@ -194,15 +194,15 @@ If a canister stores user data in the Wasm memory instead of the stable memory, 
 
 Even if the canister doesn’t store user data in Wasm memory, its memory usage may increase due to memory leaks.
 
-The `wasm_memory_limit` field in a canister's settings provides "best-effort" protection against the canister running out of Wasm memory. The limit is expressed in bytes and it is a soft limit, which means that in some circumstances the canister may grow its Wasm memory above the limit. 
+The `wasm_memory_limit` field in a canister's settings provides "best-effort" protection against the canister running out of Wasm memory. The limit is expressed in bytes, and it is a soft limit, which means that in some circumstances the canister may grow its Wasm memory above the limit.
 
 Handling of the limit depends on the message type:
 
 - **Update messages**: Enforced up to the first `await` point. If the canister attempts to grow its Wasm memory above the limit, then execution fails with a corresponding error message. After the `await` point, execution continues in a response callback where the limit is not enforced.
-- **Response callback**: Not enforced and the canister may grow its Wasm memory above the limit. The motivation for not enforcing the limit is to avoid failing execution after the `await` point that could lead to subtle bugs in the canister code.
-- **Heartbeats and timers**: Currently not enforced, but will be enforced in the future after the canister logging feature is available. Without canister logging it is difficult for developers to debug failures in heartbeats and timers.
+- **Response callback**: Not enforced, and the canister may grow its Wasm memory above the limit. The motivation for not enforcing the limit is to avoid failing execution after the `await` point that could lead to subtle bugs in the canister code.
+- **Heartbeats and timers**: Currently not enforced, but will be enforced in the future after the canister logging feature is available. Without canister logging, it is difficult for developers to debug failures in heartbeats and timers.
 - **Queries**: Not enforced in queries because state changes are not preserved in query execution, so any increase in memory is tentative and will be reverted after the query execution completes.
-- **Canister init**: Enforced and code installation fails if it grows the Wasm memory above the limit.
+- **Canister init**: Enforced, and code installation fails if it grows the Wasm memory above the limit.
 - **Canister pre-upgrade**: Not enforced in order to allow upgrading the canister to a new version.
 - **Canister post-upgrade**: Enforced and code upgrades will fail if the new version has Wasm memory usage higher than the limit.
 

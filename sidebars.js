@@ -507,9 +507,12 @@ build: [
         "building-dapps/launching-a-dapp/create-and-install",
         {
           type: "category",
-          label: "Deploying",
+          label: "Deploying canisters",
+          link: {
+            type: "doc",
+            id: "building-dapps/launching-a-dapp/deploy/overview",
+          },
           items: [
-            "building-dapps/launching-a-dapp/deploy/overview",
             {
               type: "category",
               label: "Subnets",
@@ -518,15 +521,18 @@ build: [
                 "building-dapps/launching-a-dapp/subnets/subnet-types"
               ],
             },
-            "building-dapps/launching-a-dapp/deploy/custom-testnets",
+            "building-dapps/launching-a-dapp/deploy/custom-networks",
           ],
         },
         "building-dapps/launching-a-dapp/resource-limits",
         {
           type: "category",
-          label: "Testing",
+          label: "Testing canisters",
+          link: {
+            type: "doc",
+            id: "building-dapps/launching-a-dapp/test/overview",
+          },
           items: [
-            "building-dapps/launching-a-dapp/test/overview",
             "building-dapps/launching-a-dapp/test/pocket-ic"
           ],
         },

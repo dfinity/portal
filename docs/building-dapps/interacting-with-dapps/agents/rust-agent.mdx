@@ -1,14 +1,12 @@
 ---
-keywords: [intermediate, agents, tutorial, rust]
+keywords: [intermediate, agents, tutorial, rust, rust agent, ic_agent]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Rust agent
+# ICP Rust agent
 
 <MarkdownChipRow labels={["Intermediate", "Agents" ]} />
-
-
 
 The [ICP Rust agent](https://docs.rs/ic-agent/latest/ic_agent/) by DFINITY is a simple library that enables you to build applications and interact with ICP, serving as a low-level Rust backend for the IC SDK.
 
@@ -44,9 +42,7 @@ pub async fn create_agent(url: &str, is_mainnet: bool) -> Result<Agent> {
 
 ## Authentication
 
-The Rust agent's `Identity` object provides signatures that can be used for HTTP requests or identity delegations. It represents the principal ID of the sender.
-
-`Identity` represents a single identity and cannot contain multiple identity values.
+The Rust agent's `Identity` object provides signatures that can be used for HTTP requests or identity delegations. It represents the principal ID of the sender. `Identity` represents a single identity and cannot contain multiple identity values.
 
 ```rust
 async fn create_a_canister() -> Result<Principal, Box<dyn std::error::Error>> {
@@ -69,7 +65,7 @@ Identities can have different types, such as:
 
 ## Making calls
 
-The Rust agent can be used to make calls to other canisters. To make a call to a canister, use the `agent.update` method for an update call or `agent.query` for a query call. Then, pass in the canister's ID and the method of the canister you'd like to call.
+The Rust agent can be used to make calls to other canisters. To make a call to a canister, use the `agent.update` method for an update call or `agent.query` for a query call. Then, pass in the canister's ID and the canister's method you'd like to call.
 
 The following example calls the ICP ledger and returns an account balance:
 
@@ -86,7 +82,7 @@ let tokens = Decode!(&response, Tokens)?;
 
 ## `ic-utils`
 
-The [`ic-utils` crate](https://crates.io/crates/ic-utils) provides a high level interface that is designed to be canister-oriented and aware of the canister's Candid interface. Canister objects with `ic-utils` resemble the following:
+The [`ic-utils` crate](https://crates.io/crates/ic-utils) provides a high-level interface that is designed to be canister-oriented and aware of the canister's Candid interface. Canister objects with `ic-utils` resemble the following:
 
 ```rust
 let canister = Canister::builder()
@@ -163,52 +159,6 @@ pub async fn xdr_permyriad_per_icp(agent: &Agent) -> DfxResult<u64> {
 ```
 
 Another application of `HashTree` can be found in the [ic-certified-assets](https://github.com/dfinity/sdk/blob/master/src/canisters/frontend/ic-certified-assets/src/asset_certification/tree.rs) code.
-
-The `ic-asset` canister is written in Rust and uses the [ICP Rust agent](https://docs.rs/ic-agent/latest/ic_agent/) to provide a client API that can be used to list assets, return asset properties, and upload assets to the canister. API endpoints for this canister include:
-
-- `api_version`: Returns the current API version.
-
-- `commit_batch`: Used to commit batch operations.
-
-- `compute_evidence`: Compute the hash evidence over the batch operations required to update the assets.
-
-- `create_batch`: Create a batch operation.
-
-- `create_chunk`: Create a chunk operation to be part of a batch.
-
-- `get_asset_properties`: Return an asset's properties.
-
-- `list`: List current assets.
-
-- `propose_commit_batch`: Propose a batch operation to be committed.
-
-For example, the `list` endpoint uses the following code to list assets using the agent:
-
-```
-use crate::canister_api::methods::method_names::LIST;
-use crate::canister_api::types::{asset::AssetDetails, list::ListAssetsRequest};
-use ic_agent::AgentError;
-use ic_utils::call::SyncCall;
-use ic_utils::Canister;
-use std::collections::HashMap;
-
-pub(crate) async fn list_assets(
-    canister: &Canister<'_>,
-) -> Result<HashMap<String, AssetDetails>, AgentError> {
-    let (entries,): (Vec<AssetDetails>,) = canister
-        .query(LIST)
-        .with_arg(ListAssetsRequest {})
-        .build()
-        .call()
-        .await?;
-
-    let assets: HashMap<_, _> = entries.into_iter().map(|d| (d.key.clone(), d)).collect();
-
-    Ok(assets)
-}
-```
-
-More information about the `ic-asset ` canister can be found in the [source code](https://github.com/dfinity/sdk/tree/master/src/canisters/frontend/ic-asset).
 
 ## Example
 

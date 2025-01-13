@@ -1,14 +1,12 @@
 ---
-keywords: [intermediate, agents, tutorial, nodejs]
+keywords: [intermediate, agents, tutorial, nodejs, node.js, javascript, js]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Node.js
 
-<MarkdownChipRow labels={["Intermediate", "Agents", "Tutorial"]} />
-
-
+<MarkdownChipRow labels={["Intermediate", "Agents"]} />
 
 [Node.js](https://nodejs.org/en) is a runtime environment for JavaScript. To interact with a canister through Node.js, you can use the [JavaScript agent](https://www.npmjs.com/package/@dfinity/agent). Using Node.js can enable use cases such as running an oracle, connecting an existing Node.js application to ICP, or introducing a websocket layer to your application.
 
@@ -18,10 +16,9 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 Before you set up an actor, you will need to have an identity.
 
-### Using keys through ICP JavaScript agent
+### Using keys through the ICP JavaScript agent
 
-You can configure an authentication identity for Node.js through the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent)'s using the ECDSA or Ed25519 private keys. [Learn more in the ICP JavaScript agent docs](https://internetcomputer.org/docs/current/building-dapps/interacting-with-dapps/agents/javascript-agent).
-
+You can configure an authentication identity for Node.js through the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) using the ECDSA or Ed25519 private keys. [Learn more in the ICP JavaScript agent docs](https://internetcomputer.org/docs/current/building-dapps/interacting-with-dapps/agents/javascript-agent).
 
 ### Seed phrase
 
@@ -38,44 +35,11 @@ const seed = "test test test test test test test test test test test test";
 export const identity = await Secp256k1KeyIdentity.fromSeedPhrase(seed);
 ```
 
-The seed phrase in this example is derived from the word `test` repeated 12 times for testing purposes and local development. When you deploy your contract to ICP, you should change the seed to something private.
+The seed phrase in this example is derived from the word `test` repeated 12 times for testing purposes and local development. When you deploy your project to ICP, you should change the seed to something private.
 
 :::caution
 Remember to store any seed phrase you use in production in a secure place. Use environment variables, and never commit a real seed phrase in plain text to your codebase.
 :::
-
-## Asset uploading
-
-A community library, `@dfinity/assets`, is available to upload assets to your project's asset canister. You'll need to get the canister ID, pass your agent, and then upload your files. Below is an example code snippet showcasing this workflow:
-
-```js
-import { Blob } from "buffer";
-global.Blob = Blob;
-import { AssetManager } from "@dfinity/assets";
-// ...
-
-const assetCanisterId = localCanisterIds.asset.local;
-const assetManager = new AssetManager({
-  canisterId: assetCanisterId,
-  agent, // re-use agent
-  concurrency: 32, // Optional (default: 32), max concurrent requests.
-  maxSingleFileSize: 450000, // Optional bytes (default: 450000), larger files will be uploaded as chunks.
-  maxChunkSize: 1900000, // Optional bytes (default: 1900000), size of chunks when file is uploaded as chunks.
-});
-
-async function main() {
-  // ...
-  const uploadedFilePath = `token/${idx}${path.extname(node_example.asset)}`;
-  const uploadedThumbnailPath = `thumbnail/${idx}.jpeg`;
-
-  await assetManager.store(file, { fileName: uploadedFilePath });
-  await assetManager.store(thumbnail, { fileName: uploadedThumbnailPath });
-}
-```
-:::caution
-This example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file for context, please see [NFT example](#nft-example).
-:::
-
 
 ## WebSockets
 
@@ -93,7 +57,7 @@ If your project uses any `@dfinity/…` package, it is recommended to use versio
 
 Then, define the constructor of the `IcWebSocket` class:
 
-```
+```js
 import { canisterId } from "../../declarations/node_example";
 import IcWebSocket, { generateRandomIdentity, createWsConfig } from "ic-websocket-js";
 import { node_example } from "../../declarations/node_example";
@@ -123,7 +87,7 @@ This implementation is similar to the native browser WebSocket API, though there
 
 - `identity`: The identity that the SDK uses to sign the client’s messages. Here you can pass the user’s Internet Identity or use a `generateRandomIdentity` helper function to generate a random temporary one.
 
-Now you can specify your business logic and declare the callback for each WebSocket event:
+Now you can specify your backend logic and declare the callback for each WebSocket event:
 
 ```js
 import { canisterId } from "../../declarations/node_example";
@@ -164,7 +128,7 @@ ws.onerror = (error) => {
 };
 ```
 
-You can view a full example using this library with a [Rust](https://github.com/omnia-network/ic_websocket_example) backend or a [Motoko](https://github.com/iamenochchirima/ic-websockets-pingpong-mo) backend.
+View a full example using this library with a [Rust](https://github.com/omnia-network/ic_websocket_example) backend or a [Motoko](https://github.com/iamenochchirima/ic-websockets-pingpong-mo) backend.
 
 [Learn more about WebSockets on ICP](https://medium.com/@ilbert/websockets-on-the-ic-getting-started-5f8bcdfaabdc).
 
@@ -367,4 +331,4 @@ main();
 
 - [ic-websocket-js](https://www.npmjs.com/package/ic-websocket-js)
 
-- [End to end testing](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-2/2.5-unit-testing#end-to-end-e2e-testing)
+- [End-to-end testing](https://internetcomputer.org/docs/current/tutorials/developer-journey/level-2/2.5-unit-testing#end-to-end-e2e-testing)

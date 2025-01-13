@@ -1,16 +1,13 @@
 ---
-keywords: [intermediate, test, tutorial, test code, test canisters]
+keywords: [intermediate, test, tutorial, test code, test canisters, pocketic, pocketic rust, pocketic python, pocket ic]
 ---
-
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # PocketIC
 
-<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
-
-
+<MarkdownChipRow labels={["Intermediate", "Launching dapps"]} />
 
 PocketIC is a lightweight, deterministic testing solution for programmatic testing of <GlossaryTooltip>canisters</GlossaryTooltip>.
 It seamlessly integrates with existing testing infrastructure, such as `cargo test`, and runs as a standalone binary that doesn't require additional containers or virtual machines.
@@ -18,7 +15,7 @@ Currently, PocketIC is supported on macOS and Linux host systems.
 
 While there are other options for testing canisters, they may come with pitfalls such as:
 
-- Installing and testing canisters on the mainnet provides the 'real' workflow experience, but will cost developers real cycles.
+- Installing and testing canisters on the mainnet provides the 'real' workflow experience but will cost developers real cycles.
 
 - Testing using the local <GlossaryTooltip>replica</GlossaryTooltip> provided by `dfx` allows for testing on a single IC node, but there is no cross-net or multi-subnet functionality. Testing with the local replica is not deterministic, and it is rather heavyweight. Additionally, testing with `dfx` can be complex, slow, and require additional boilerplate code to get working.
 
@@ -26,11 +23,11 @@ PocketIC is designed to remedy these pitfalls, resulting in a testing environmen
 
 - Deterministic: Synchronous control over the local canister execution environment. PocketIC removes non-deterministic parts of the replica to make tests fully reproducible.
 
-- Lightweight: Only provides the necessary components, and strips away the consensus and networking layers.
+- Lightweight: Only provides the necessary components and strips away the consensus and networking layers.
 
 - Concurrent and independent IC instances: Enabling tests to run in parallel
 
-- Multi-language support: Currently supports Rust, Python and JavaScript/TypeScript, but supports integration with any language that is written against the PocketIC REST-API.
+- Multi-language support: Currently supports Rust, Python, and JavaScript/TypeScript but supports integration with any language that is written against the PocketIC REST-API.
 
 - Versatile: Allows for fine-grained control over the canister by providing the ability to set stable memory, control how time passes, and other testing environment variables.
 
@@ -48,9 +45,9 @@ To use PocketIC, the latest PocketIC server binary must be downloaded from the P
 PocketIC is currently not natively supported on Windows systems.
 :::
 
-The PocketIC binary can be left in your working directory or you can specify the path to the binary by setting the `POCKET_IC_BIN` environmental variable.
+The PocketIC binary can be left in your working directory, or you can specify the path to the binary by setting the `POCKET_IC_BIN` environmental variable.
 
-Add PocketIC Rust do your project with the command:
+Add PocketIC Rust to your project with the command:
 
 ```bash
 cargo add pocket-ic --dev
@@ -62,7 +59,7 @@ PocketIC can be imported into your project with the code:
 use pocket_ic::PocketIc;
 ```
 
-Then, in your code you can create a new PocketIC instance with the code:
+Then, in your code, you can create a new PocketIC instance with the code:
 
 ```rust
 let pic = PocketIc::new();
@@ -78,10 +75,10 @@ Versions of PocketIC `v2.0.0` and newer support multi-subnet testing. Multi-subn
 
 ```rust
 let pic = PocketIcBuilder::new()
-    .with_nns_subnet()
-    .with_application_subnet()
-    .with_application_subnet()
-    .build();
+    .with_nns_subnet()
+    .with_application_subnet()
+    .with_application_subnet()
+    .build();
 ```
 
 Then, to target the NNS subnet to create a canister, use the code:
@@ -113,15 +110,15 @@ Possible types of subnets include:
 
 - Generic application subnets.
 
-- Named subnets with canister ID ranges like on mainnet, such as the NNS, SNS, II, Bitcoin, and Fiduciary subnets.
+- Named subnets with canister ID ranges like on the mainnet, such as the NNS, SNS, II, Bitcoin, and Fiduciary subnets.
 
-For a larger, more complex example that uses cross canister calls on two different subnets, see the full code [here](https://github.com/dfinity/ic/blob/HEAD/packages/pocket-ic/tests/tests.rs#L57).
+For a larger, more complex example that uses cross-canister calls on two different subnets, see the full code [here](https://github.com/dfinity/ic/blob/HEAD/packages/pocket-ic/tests/tests.rs#L57).
 
 ## PocketIC Python
 
 To use PocketIC, the latest PocketIC server binary must be downloaded from the PocketIC repo. [Download the latest version for macOS or Linux systems](https://github.com/dfinity/pocketic#download-the-pocketic-server).
 
-The PocketIC binary can be left in your working directory or you can specify the path to the binary by setting the `POCKET_IC_BIN` environmental variable.
+The PocketIC binary can be left in your working directory, or you can specify the path to the binary by setting the `POCKET_IC_BIN` environmental variable.
 
 Then, run the following command to install PocketIC:
 
@@ -137,7 +134,7 @@ from pocket_ic import PocketIC
 
 ### Create a canister with <GlossaryTooltip>cycles</GlossaryTooltip> and call the canister
 
-[View an example of how to create a canister with cycles, and then call the canister](https://pypi.org/project/pocket-ic/).
+[View an example of how to create a canister with cycles and then call the canister](https://pypi.org/project/pocket-ic/).
 
 ### Make a call directly with a canister object
 

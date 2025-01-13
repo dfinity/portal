@@ -329,7 +329,7 @@ const redirects = `
   /docs/current/developer-docs/production/topping-up-canister /docs/current/building-dapps/managing-dapps/topping-up
   /docs/current/developer-docs/getting-started/cycles/cycles_management_services /docs/current/building-dapps/managing-dapps/topping-up
   /docs/current/developer-docs/setup/pocket-ic /docs/current/building-dapps/launching-dapps/test/pocket-ic
-  /docs/current/developer-docs/production/staging-environment /docs/current/building-dapps/launching-a-dapp/deploy/custom-testnets
+  /docs/current/developer-docs/production/staging-environment /docs/current/building-dapps/launching-a-dapp/deploy/custom-networks
   /docs/current/developer-docs/backend/reproducible-builds /docs/current/developer-education/developer-playbook/developer-best-practices/reproducible-builds
   /docs/current/developer-docs/backend/troubleshooting /docs/current/building-dapps/getting-started/troubleshooting
   /docs/current/developer-docs/integrations/t-ecdsa /docs/current/building-dapps/using-network-features/signatures/t-ecdsa
@@ -590,7 +590,7 @@ const redirects = `
   /docs/current/developer-docs/backend/rust/rust-quickstart	/docs/current/building-dapps/developer-tools/cdks/rust/
   /docs/current/developer-docs/best-practices/	/docs/current/developer-education/developer-playbook/developer-best-practices/general
   /docs/current/developer-docs/best-practices/considerations-for-nft-devs /docs/current/rosetta-defi/nfts/overview
-  /docs/current/developer-docs/smart-contracts/test/staging-environment /docs/current/building-dapps/launching-a-dapp/deploy/custom-testnets
+  /docs/current/developer-docs/smart-contracts/test/staging-environment /docs/current/building-dapps/launching-a-dapp/deploy/custom-networks
   /docs/current/developer-docs/smart-contracts/encryption/signing-messages /docs/current/building-dapps/using-network-features/signatures/t-ecdsa
   /docs/current/developer-docs/smart-contracts/encryption/t-ecdsa /docs/current/building-dapps/using-network-features/signatures/t-ecdsa
   /docs/current/developer-docs/smart-contracts/encryption/t-schnorr /docs/current/building-dapps/using-network-features/signatures/t-schnorr
@@ -833,7 +833,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/compile /docs/current/building-dapps/launching-a-dapp/create-and-install
   /docs/current/developer-docs/smart-contracts/install /docs/current/building-dapps/launching-a-dapp/create-and-install
   /docs/current/developer-docs/smart-contracts/deploy/overview /docs/current/building-dapps/launching-a-dapp/deploy/overview
-  /docs/current/developer-docs/smart-contracts/deploy/custom-testnets /docs/current/building-dapps/launching-a-dapp/deploy/custom-testnets
+  /docs/current/developer-docs/smart-contracts/deploy/custom-networks /docs/current/building-dapps/launching-a-dapp/deploy/custom-networks
 
   /docs/current/developer-docs/web-apps/application-frontends/webpack /docs/current/building-dapps/dapp-frontends/using-an-asset-canister
   /docs/current/developer-docs/web-apps/browser-js/js-frameworks /docs/current/building-dapps/dapp-frontends/using-an-asset-canister
