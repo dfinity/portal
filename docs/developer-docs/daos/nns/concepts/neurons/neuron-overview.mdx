@@ -21,7 +21,7 @@ If you vote on every open proposal, you gain the maximum reward.
 
 A neuron can also **follow** other neurons, which causes it to
 automatically vote the same way as the majority of the neurons that it
-follows.
+follows. In order to keep getting voting rewards, a neuron has to regularly vote directly, set following, or confirm the chosen following settings. 
 
 ## Why staking matters
 
@@ -66,25 +66,27 @@ Hotkeys can be added or removed from a neuron using the [NNS dapp](https://nns.i
 If your principal is added as a hotkey to a neuron, the neuron and its information will be visible in the [NNS dapp](https://nns.ic0.app/) when you login.
 
 ### Voting power
-The NNS is a stake-based governance system, so the main factor for how much **voting power** a neuron has is its stake. In addition, the voting power depends on two more factors.
+The NNS is a stake-based governance system, so the main factor for how much **voting power** a neuron has is its stake. In addition, the voting power depends on the following factors.
 
 * **Dissolve delay & dissolve state**: The tokens in a neuron are locked for a specified duration called the **dissolve delay**. This can be thought of as a kitchen timer that can only be turned in one direction. It can be arbitrarily increased, but only reduced by turning on the countdown and waiting for the time to pass. A neuron must have a dissolve delay of at least 6 months to be eligible to vote.
   * A neuron can be _non-dissolving_ which means that the timer is stopped and the neuron's dissolve delay remains the same.
   * A neuron can be _dissolving_ which means that the timer is decreasing the neuron's dissolve delay as time passes.
   * Once the timer has counted down, a neuron is _dissolved_ and the ICP tokens can be unstaked again. This is called **disbursing** a neuron.
 * **Age**: Every non-dissolving neuron has an age, which denotes how long it has been in the non-dissolving state.
+* **Voting Power adjustment due to activity**: In order to keep the voting power, a neuron has to regularly perform any of the following actions: vote directly, set following, or confirm its current following settings. 
 
-The main idea is that a neuron who has tokens locked for longer or has been around for longer has more voting power as it is more committed to the long-term interest of the Internet Computer.
+
+The first two factors ensure that a neuron who has tokens locked for longer or has been around for longer has more voting power as it is more committed to the long-term interest of the Internet Computer. The last factor ensures that "sleeper" neurons who do not actively participate in the voting process do not automatically participate in voting and get rewards.
 
 Based on these factors, a neuron's voting power can be determined:
 * Principally, by its stake. 1 ICP = the power of 1 vote.
-* Next, by its dissolve delay. 6 months grants a 1.06x voting power bonus, and 8 years grants 2x. All other durations scale linearly between.
-* Lastly, by its age. 4 years grants a 1.25x bonus, multiplicative with any other bonuses. All other durations between 0 seconds and 4 years scale linearly between.
+* By its dissolve delay. 6 months grants a 1.06x voting power bonus, and 8 years grants 2x. All other durations scale linearly between.
+* By its age. 4 years grants a 1.25x bonus, multiplicative with any other bonuses. All other durations between 0 seconds and 4 years scale linearly between.
+* By the voting power adjustments. A neuron who votes directly, sets following, or confirms following once every 6 months gets normal voting power. After 6 months of no action, a neuron’s voting power is linearly decreased for one month until it reaches zero at the end of 7 months without any action. After these 7 months, the neuron’s following settings are fully reset to zero.
 
-This means that the maximum voting power of 2.5 votes per ICP staked is only achievable by locking up your neuron for 8 years and leaving it in that locked-up state for 4 years. At that time, you will have the most
-voting power for the stake committed.
+This means that the maximum voting power of 2.5 votes per ICP staked is only achievable by locking up your neuron for 8 years, leaving it in that locked-up state for 4 years, and regularly participating in governance by voting, set following, or confirm following. At that time, you will have the most voting power for the stake committed.
 
-To better understand how these factors influence a neuron's voting power and rewards over time, you can simulate some behaviors with the [NNS neuron sandbox](https://klgza-cqaaa-aaaak-qcz5a-cai.icp0.io/).
+To better understand how these factors influence a neuron's voting power and rewards over time, you can simulate some behaviors with the [NNS neuron sandbox](https://klgza-cqaaa-aaaak-qcz5a-cai.icp0.io/). Note that this tool assumes that neurons are active and do not get voting power adjustment. 
 
 ### Maturity
 When neurons vote, directly or through following, the **maturity** of a neuron increases as it collects voting rewards.
