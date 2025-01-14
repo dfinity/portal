@@ -1,14 +1,13 @@
 ---
-keywords: [advanced, concept, threshold schnorr, schnorr, signature]
+keywords: [advanced, concept, signing transactions, signatures, tschnorr, chain-key signatures, threshold signature, threshold, schnorr, threshold schnorr, sign with schnorr, signing transactions, signing messages]
 ---
+
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Threshold Schnorr
 
 <MarkdownChipRow labels={["Advanced", "Concept"]} />
-
-
 
 Schnorr signatures are a type of digital signature scheme popularly used amongst blockchain networks because they are efficient, simple, and allow for multi-signatures, threshold signatures, and aggregated signatures to be used on the network. On ICP, threshold Schnorr signatures enable canisters to hold a wider range of digital assets and allow for direct integrations with other chains like Solana.
 
@@ -25,30 +24,6 @@ Specifically, threshold Schnorr signatures on ICP provide:
 - Enable Schnorr signatures to be computed on arbitrary messages.
 
 ## Signing messages and transactions
-
-Threshold Schnorr can be used by making calls to the threshold Schnorr API methods.
-
-## Resources
-
-- [Threshold Schnorr forum discussion](https://forum.dfinity.org/t/t-schnorr-facilitating-brc-20-trading-solana-integration-certificate-signing-and-more/28993).
-
-- [Threshold Schnorr API](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-schnorr_public_key).
-
----
-keywords: [advanced, tutorial, signing messages, signatures, schnorr, threshold schnorr]
----
-
-import TabItem from "@theme/TabItem";
-import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
-import { AdornedTab } from "/src/components/Tabs/AdornedTab";
-import { BetaChip } from "/src/components/Chip/BetaChip";
-import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
-
-# Signing with t-Schnorr
-
-<MarkdownChipRow labels={["Advanced", "Tutorial"]} />
-
-
 
 The threshold Schnorr API allows canisters to securely sign messages and transactions without the corresponding private keys ever existing. Each canister can control an unlimited number of keys by specifying different key `derivation_path`s and `key_id`s.
 
@@ -70,7 +45,7 @@ The `sign_with_schnorr` endpoint takes a full message to sign as input rather th
 
 ## Signing messages
 
-Canisters can sign message with threshold Schnorr without holding the Schnorr keys themselves. Each key is derived from a master key held by the dedicated threshold Schnorr subnet. When a canister needs a signature, a request is sent to the threshold Schnorr subnet that computes the signature based on the requesting canister's root key and then returns the signature to the canister.
+Canisters can sign messages with threshold Schnorr without holding the Schnorr keys themselves. Each key is derived from a master key held by the dedicated threshold Schnorr subnet. When a canister needs a signature, a request is sent to the threshold Schnorr subnet that computes the signature based on the requesting canister's root key and then returns the signature to the canister.
 
 To sign a message, the `sign_with_schnorr` method is used, which requires that you specify the Schnorr algorithm to be used, either `bip340secp256k1` or `ed25519`.
 
@@ -338,7 +313,10 @@ async fn public_key(algorithm: SchnorrAlgorithm) -> Result<PublicKeyReply, Strin
 
 ## Resources
 
+- [Threshold Schnorr forum discussion](https://forum.dfinity.org/t/t-schnorr-facilitating-brc-20-trading-solana-integration-certificate-signing-and-more/28993).
+
+- [Threshold Schnorr API](https://internetcomputer.org/docs/current/references/ic-interface-spec#ic-schnorr_public_key).
+
 - [Threshold Schnorr sample dapp - Motoko](https://github.com/dfinity/examples/tree/master/motoko/threshold-schnorr).
 
 - [Threshold Schnorr sample dapp - Rust](https://github.com/dfinity/examples/tree/master/rust/threshold-schnorr).
-

@@ -58,20 +58,7 @@ let (randomBytes,): (Vec<u8>,) = ic_cdk::api::management_canister::main::raw_ran
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-```typescript
-import { call, IDL, update } from 'azle';
-
-export default class {
-    @update([], IDL.Vec(IDL.Nat8))
-    async randomBytes(): Promise<Uint8Array> {
-        const bytes: Uint8Array = await call('aaaaa-aa', 'raw_rand', {
-            returnIdlType: IDL.Vec(IDL.Nat8)
-        });
-
-        return bytes;
-    }
-}
-```
+[Learn more about Azle](https://demergent-labs.github.io/azle/timers.html).
 
 </AdornedTab>
 

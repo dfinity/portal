@@ -1,5 +1,5 @@
 ---
-keywords: [advanced, ethereum, eth, tutorial, submit transactions]
+keywords: [advanced, ethereum, eth, tutorial, submit transactions, submit eth transaction, submit eth, submit, transactions, eth transactions]
 ---
 
 import TabItem from "@theme/TabItem";
@@ -12,11 +12,9 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Ethereum", "Tutorial"]} />
 
-
-
 To submit transactions to the Ethereum network, first the transaction must be signed and formatted as an ETH transaction. [Learn more about signing transactions](signing-transactions.mdx).
 
-Once you have your raw signed transaction, you can either programmatically submit the transaction, or use the EVM RPC canister's RPC method `eth_sendRawTransaction`.
+Once you have your raw signed transaction, you can either programmatically submit the transaction or use the EVM RPC canister's RPC method `eth_sendRawTransaction`.
 
 ### Submitting transactions programmatically
 
@@ -24,29 +22,29 @@ Below is an example demonstrating how to submit a raw ETH transaction programmat
 
 ```Rust
 pub async fn send_raw_transaction(
-    tx: String,
-    rpc_services: RpcServices,
-    evm_rpc: EvmRpcCanister,
+    tx: String,
+    rpc_services: RpcServices,
+    evm_rpc: EvmRpcCanister,
 ) -> SendRawTransactionStatus {
-    let cycles = 10_000_000_000;
+    let cycles = 10_000_000_000;
 
-    match evm_rpc
-        .eth_send_raw_transaction(rpc_services, None, tx, cycles)
-        .await
-    {
-        Ok((res,)) => match res {
-            MultiSendRawTransactionResult::Consistent(status) => match status {
-                SendRawTransactionResult::Ok(status) => status,
-                SendRawTransactionResult::Err(e) => {
-                    ic_cdk::trap(format!("Error: {:?}", e).as_str());
-                }
-            },
-            MultiSendRawTransactionResult::Inconsistent(_) => {
-                ic_cdk::trap("Status is inconsistent");
-            }
-        },
-        Err(e) => ic_cdk::trap(format!("Error: {:?}", e).as_str()),
-    }
+    match evm_rpc
+        .eth_send_raw_transaction(rpc_services, None, tx, cycles)
+        .await
+    {
+        Ok((res,)) => match res {
+            MultiSendRawTransactionResult::Consistent(status) => match status {
+                SendRawTransactionResult::Ok(status) => status,
+                SendRawTransactionResult::Err(e) => {
+                    ic_cdk::trap(format!("Error: {:?}", e).as_str());
+                }
+            },
+            MultiSendRawTransactionResult::Inconsistent(_) => {
+                ic_cdk::trap("Status is inconsistent");
+            }
+        },
+        Err(e) => ic_cdk::trap(format!("Error: {:?}", e).as_str()),
+    }
 }
 ```
 

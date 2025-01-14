@@ -53,10 +53,10 @@ let current_time = IC_API::time();
 import { IDL, query, time } from 'azle';
 
 export default class {
-    @query([], IDL.Nat64)
-    time(): bigint {
-        return time();
-    }
+    @query([], IDL.Nat64)
+    time(): bigint {
+        return time();
+    }
 }
 ```
 
@@ -226,7 +226,7 @@ The difference between these two, in nanoseconds, will be returned:
 
 ## References
 
-- [Motoko `Time` documentation]
+- [Motoko `Time` documentation](/docs/current/motoko/main/base/Time/)
 
 - [`time` Mops package](https://mops.one/time)
 
@@ -236,8 +236,8 @@ The difference between these two, in nanoseconds, will be returned:
 
 - [Rust `datetimeutils` documentation](https://crates.io/crates/datetimeutils)
 
-- [Azle `Time` documentation]
+- [Azle `Time` documentation](https://demergent-labs.github.io/azle/the_azle_book.html)
 
-- [Kybra `Time` documentation]
+- [Kybra `Time` documentation](https://demergent-labs.github.io/kybra/)
 
 - [`time`](https://time-rs.github.io/api/time/index.html)

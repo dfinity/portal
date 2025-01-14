@@ -11,19 +11,17 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Bitcoin" ]} />
 
-
-
 Developers on ICP can create canisters and dapps that interact directly with the Bitcoin mainnet and testnet networks through ICP's direct integration with Bitcoin. To use this integration, developers must implement a specific workflow to prepare transactions and submit them to the Bitcoin network. Developers can also integrate and interact with chain-key Bitcoin (ckBTC) from within a canister, which uses the ICRC-1 token implementation.
 
 ## Using the Bitcoin integration
 
-To interact with the Bitcoin testnet or mainnet networks, a developer needs to use both the management canister and Bitcoin integration API to complete the following steps:
+To interact with the Bitcoin testnet or mainnet networks, a developer needs to use both the management canister and the Bitcoin integration API to complete the following steps:
 
 1. [Generate a Bitcoin address](generate-addresses.mdx): To receive BTC, your canister must generate a Bitcoin address using the `ecdsa_public_key` API endpoint of the [management canister](/docs/current/developer-education/system-canisters/management-canister#signing-and-submitting-bitcoin-transactions).
 
 :::danger
 
-The Bitcoin Testnet API is currently disabled and the ckTestBTC minter canister has been stopped. This is temporary and they will be re-enabled in the future.
+The Bitcoin Testnet API is currently disabled, and the ckTestBTC minter canister has been stopped. This is temporary, and they will be re-enabled in the future.
 
 [Learn more](https://forum.dfinity.org/t/direct-integration-with-bitcoin/6147/745).
 
@@ -41,7 +39,7 @@ Each of these API endpoints can be executed programmatically within a smart cont
 
 :::tip
 
-Working with Bitcoin data structures like addresses, UTXOs and transactions can be cumbersome. The good news is that popular libraries like [`rust-bitcoin`](https://github.com/rust-bitcoin/rust-bitcoin) and [`bitcoinjs-lib`](https://github.com/bitcoinjs/bitcoinjs-lib) can be used within canisters.
+Working with Bitcoin data structures like addresses, UTXOs, and transactions can be cumbersome. The good news is that popular libraries like [`rust-bitcoin`](https://github.com/rust-bitcoin/rust-bitcoin) and [`bitcoinjs-lib`](https://github.com/bitcoinjs/bitcoinjs-lib) can be used within canisters.
 
 :::
 

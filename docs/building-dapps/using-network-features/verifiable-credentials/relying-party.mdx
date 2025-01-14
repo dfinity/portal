@@ -9,8 +9,6 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
-
-
 A **relying party** is a service or app that requests a user's verifiable credentials from an [issuer](issuer.mdx). Relying parties use an **identity provider**, such as Internet Identity, to communicate with the issuer. Identity providers must support the [verifiable credentials specification](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md). Communication with the identity provider uses the [`window.postMessage()`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage) communication channel.
 
 The relying party must perform two main tasks:
@@ -28,34 +26,34 @@ There are two ways to request credentials:
 
 ## JavaScript SDK for verifiable credentials
 
-You can request credentials to issuers through identity providers with the JS client for relying parties NPM package [@dfinity/verifiable-credentials](https://www.npmjs.com/package/@dfinity/verifiable-credentials). Below is an example:
+You can request credentials from issuers through identity providers with the JS client for relying parties NPM package [@dfinity/verifiable-credentials](https://www.npmjs.com/package/@dfinity/verifiable-credentials). Below is an example:
 
 ```javascript
 import { requestVerifiablePresentation } from "@dfinity/verifiable-credentials/request-verifiable-presentation";
 
 requestVerifiablePresentation({
-  onSuccess: async (verifiablePresentation: VerifiablePresentationResponse) => {
-    // Called when the flow finishes successfully.
-  },
-  onError() {
-    // Called when there is a technical error.
-  },
-  issuerData: {
-    origin: "<url of the origin>",
-    canisterId: "<[optional] canister id>",
-  },
-  credentialData: {
-    credentialSpec: {
-      credentialType: '<credential type as expected by issuer>',
-      arguments: {
-        // Arguments to verify with the credential
-      },
-    },
-    credentialSubject: "<user's principal>",
-  },
-  identityProvider: "<[optional] url identity provider>",
-  derivationOrigin: "<[optional] origin for delegated identity>",
-  windowOpenerFeatures: "<[optional] window opener config string>",
+  onSuccess: async (verifiablePresentation: VerifiablePresentationResponse) => {
+    // Called when the flow finishes successfully.
+  },
+  onError() {
+    // Called when there is a technical error.
+  },
+  issuerData: {
+    origin: "<url of the origin>",
+    canisterId: "<[optional] canister id>",
+  },
+  credentialData: {
+    credentialSpec: {
+      credentialType: '<credential type as expected by issuer>',
+      arguments: {
+        // Arguments to verify with the credential
+      },
+    },
+    credentialSubject: "<user's principal>",
+  },
+  identityProvider: "<[optional] url identity provider>",
+  derivationOrigin: "<[optional] origin for delegated identity>",
+  windowOpenerFeatures: "<[optional] window opener config string>",
 });
 ```
 
@@ -93,8 +91,8 @@ First, your canister must initiate and load an identity provider (in this exampl
 
 ```json
 {
-  "jsonrpc": "2.0",
-  "method": "vc-flow-ready"
+  "jsonrpc": "2.0",
+  "method": "vc-flow-ready"
 }
 ```
 
@@ -106,22 +104,22 @@ Once the user has logged into Internet Identity and the service is ready, the re
 
 ```json
 {
-  "id": 1,
-  "jsonrpc": "2.0",
-  "method": "request_credential",
-  "params": {
-    "issuer": {
-        "origin": "https://employment-info.com",
-        "canisterId": "rwlgt-iiaaa-aaaaa-aaaaa-cai"
-    },
-    "credentialSpec": {
-        "credentialType": "VerifiedEmployee",
-        "arguments": {
-          "employerName": "XYZ Ltd."
-        }
-    },
-    "credentialSubject": "2mdal-aedsb-hlpnv-qu3zl-ae6on-72bt5-fwha5-xzs74-5dkaz-dfywi-aqe"
-  }
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "request_credential",
+  "params": {
+    "issuer": {
+        "origin": "https://employment-info.com",
+        "canisterId": "rwlgt-iiaaa-aaaaa-aaaaa-cai"
+    },
+    "credentialSpec": {
+        "credentialType": "VerifiedEmployee",
+        "arguments": {
+          "employerName": "XYZ Ltd."
+        }
+    },
+    "credentialSubject": "2mdal-aedsb-hlpnv-qu3zl-ae6on-72bt5-fwha5-xzs74-5dkaz-dfywi-aqe"
+  }
 }
 ```
 
@@ -131,21 +129,21 @@ In this request, the following parameters must be set:
 
 - `params`: Configuration parameters to identify which credential is being requested.
 
-    - `issuer`: The information to identify which issuer API instance the request is sent to.
+    - `issuer`: The information to identify which issuer API instance the request is sent to.
 
-        - `origin`: The origin URL of the issuer.
+        - `origin`: The origin URL of the issuer.
 
-        - `canisterId`: The canister ID of the issuer API. This field is optional.
+        - `canisterId`: The canister ID of the issuer API. This field is optional.
 
-  - `credentialSpec`: The specification of the credential being requested.
+  - `credentialSpec`: The specification of the credential being requested.
 
-    - `credentialType`: The type of the requested credential.
+    - `credentialType`: The type of the requested credential.
 
-    - `arguments`: Key value pairs that are specific to the credential. This field is optional.
+    - `arguments`: Key-value pairs that are specific to the credential. This field is optional.
 
-  - `credentialSubject`: The principal of the user requesting the credential.
+  - `credentialSubject`: The principal of the user requesting the credential.
 
-  - `derivationOrigin`: An origin that should be used for the relying party's principal derivation as an alternative to the frontend hostname. This should match the `derivationOrigin` used when logging in the relying party.
+  - `derivationOrigin`: An origin that should be used for the relying party's principal derivation as an alternative to the frontend hostname. This should match the `derivationOrigin` used when logging in the relying party.
 
 
 Additional examples can be found in the [verifiable credentials specification](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md#examples).
@@ -156,11 +154,11 @@ If the JSON RPC request is successfully sent and received by the issuer API, Int
 
 ```json
 {
-  "id": 1,
-  "jsonrpc": "2.0",
-  "result": {
-    "verifiablePresentation": "eyJQ..."
-  }
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "verifiablePresentation": "eyJQ..."
+  }
 }
 ```
 
@@ -174,11 +172,11 @@ The specification ensures unlinkability between the relying party and the issuer
 
 
 <div class="text--center">
-  <img
-    src={useBaseUrl("/img/docs/vcs-4.png")}
-    alt="Relying Party workflow"
-    width="800"
-  />
+  <img
+    src={useBaseUrl("/img/docs/vcs-4.png")}
+    alt="Relying Party workflow"
+    width="800"
+  />
 </div>
 
 Note how the issuer's principal never appears in the credentials. Instead, the relying party and the issuer know about the `id_alias`. Therefore, this `id_alias` needs the credential to verify the link between the user's principal and the `id_alias`.
@@ -205,12 +203,12 @@ An example error can be found below:
 
 ``` json
 {
-    "id": 1,
-    "jsonrpc": "2.0",
-    "error": {
-        "version": "1",
-        "code": "UNKNOWN"
-    }
+    "id": 1,
+    "jsonrpc": "2.0",
+    "error": {
+        "version": "1",
+        "code": "UNKNOWN"
+    }
 }
 ```
 
@@ -238,21 +236,21 @@ When this is decoded, the format is the following:
 
 ```
 {
-  "iss": <issuer>,
-  "vp": {
-    "@context": "https://www.w3.org/2018/credentials/v1",
-    "type": "VerifiablePresentation",
-    "verifiableCredential": [
-       "<header>.<payload>.<signature>",
+  "iss": <issuer>,
+  "vp": {
+    "@context": "https://www.w3.org/2018/credentials/v1",
+    "type": "VerifiablePresentation",
+    "verifiableCredential": [
+       "<header>.<payload>.<signature>",
 "<header>.<payload>.<signature>"
-    ]
-  }
+    ]
+  }
 }
 ```
 
 The field `verifiableCredential` within `vp` should contain two more verifiable credentials in the specified order:
 
-- An `id_alias` credential which links the effective subject of the credential to a temporary alias. This credential is signed by the identity provider.
+- An `id_alias` credential that links the effective subject of the credential to a temporary alias. This credential is signed by the identity provider.
 
 - The actual credential requested by the user. The subject of this credential is `id_alias`, and it should be signed by the issuer.
 
@@ -260,56 +258,56 @@ When the `id_alias` credential is decoded, the following info is returned:
 
 ```json
 {
-  "exp": <expiration>,
-  "iss": "https://identity.ic0.app/",
-  "nbf": <not-before>,
-  "jti": <jwt-id>,
-  "sub": <relying-party-user-principal>
-  "vc": {
-    "@context": "https://www.w3.org/2018/credentials/v1",
-    "type": [
-      "VerifiableCredential",
-      "InternetIdentityIdAlias"
-    ],
-    "credentialSubject": {
-      "InternetIdentityIdAlias": {
-        "hasIdAlias": <id-alias>,
-        "derivationOrigin": <user-principal-derivation-origin>
-     }
-    }
-  }
+  "exp": <expiration>,
+  "iss": "https://identity.ic0.app/",
+  "nbf": <not-before>,
+  "jti": <jwt-id>,
+  "sub": <relying-party-user-principal>
+  "vc": {
+    "@context": "https://www.w3.org/2018/credentials/v1",
+    "type": [
+      "VerifiableCredential",
+      "InternetIdentityIdAlias"
+    ],
+    "credentialSubject": {
+      "InternetIdentityIdAlias": {
+        "hasIdAlias": <id-alias>,
+        "derivationOrigin": <user-principal-derivation-origin>
+     }
+    }
+  }
 }
 ```
 
-When the actual credential decoded, the following info is returned:
+When the actual credential is decoded, the following info is returned:
 
 ```
 {
-  "exp": <expiration>,
-  "iss": <isuer>,
-  "nbf": <not-before>,
- "jti": <jwt-id>,
- "sub": <did-id-alias>,
- "vc": {
-   "@context": "https://www.w3.org/2018/credentials/v1",
-   "type": [
-     "VerifiableCredential",
-     "<credential-type>"
-   ],
-   "credentialSubject": {
-     <credential-type>: {
-       <argument1-key>: <argument1-value>,
-       <argument2-key>: <argument2-value>,
-       ...
-     }
-   }
- }
+  "exp": <expiration>,
+  "iss": <isuer>,
+  "nbf": <not-before>,
+ "jti": <jwt-id>,
+ "sub": <did-id-alias>,
+ "vc": {
+   "@context": "https://www.w3.org/2018/credentials/v1",
+   "type": [
+     "VerifiableCredential",
+     "<credential-type>"
+   ],
+   "credentialSubject": {
+     <credential-type>: {
+       <argument1-key>: <argument1-value>,
+       <argument2-key>: <argument2-value>,
+       ...
+     }
+   }
+ }
 }
 ```
 
 ### Cryptographic verification
 
-To verify the two JWT signatures, verify the signature of the `id_alias` signed by the identity provider, and the signature of the actual credential signed by the issuer. Both are found when you decode the received JWT.
+To verify the two JWT signatures, verify the signature of the `id_alias` signed by the identity provider and the signature of the actual credential signed by the issuer. Both are found when you decode the received JWT.
 
 These signatures are [canister signatures](https://internetcomputer.org/docs/current/developer-education/glossary/index#canister-signature) and there is an example on [how to verify those in the Internet Identity repository](https://github.com/dfinity/internet-identity/blob/2ae06956f9cabc048b8536b29b9f861092958515/src/vc_util/src/lib.rs#L193).
 
@@ -319,29 +317,29 @@ The relying party should verify the following data:
 
 - From the received credential JWT:
 
-  - The `iss` matches the identity provider canister ID.
+  - The `iss` matches the identity provider canister ID.
 
-  - The decoded initial credential contains two credentials within `vp.verifiableCredential`: first the `id_alias` credential, then the requested one.
+  - The decoded initial credential contains two credentials within `vp.verifiableCredential`: first the `id_alias` credential, then the requested one.
 
 - From the `id_alias` JWT:
 
-  - The `iss` is the expected identity provider.
+  - The `iss` is the expected identity provider.
 
-  - The `sub` in `id_alias` contains the principal of the user in the relying party.
+  - The `sub` in `id_alias` contains the principal of the user in the relying party.
 
-  - The credential type is `InternetIdentityIdAlias`.
+  - The credential type is `InternetIdentityIdAlias`.
 
-  - The `derivationOrigin` is the derivation origin when logging in the relying party.
+  - The `derivationOrigin` is the derivation origin when logging in the relying party.
 
 - From the requested credential JWT:
 
-  - The credential type within `vc.type` matches the first field in `vc.credentialSubject` and both are the same that was requested.
+  - The credential type within `vc.type` matches the first field in `vc.credentialSubject` and both are the same that was requested.
 
-  - The arguments within `vc.credentialSubject.<credential-type>` are the expected ones.
+  - The arguments within `vc.credentialSubject.<credential-type>` are the expected ones.
 
 - Cross credentials:
 
-  - The `sub` from the requested credential contains the value in the `id_alias` credential from `vc.credentialSubject.InternetIdentityIdAlias`.
+  - The `sub` from the requested credential contains the value in the `id_alias` credential from `vc.credentialSubject.InternetIdentityIdAlias`.
 
 To learn more about verifying credentials, check out the [demo relying party's code](https://github.com/dfinity/vc-playground/blob/b2f8cd5f5397b7b355b6503df5af3789834b79e9/rp/src/main.rs#L262) and the helper used from the [Internet Identity repository](https://github.com/dfinity/internet-identity/blob/fd38b48f9fdf9085b4903d865a1f5e79ad24f81a/src/vc_util/src/lib.rs#L319).
 

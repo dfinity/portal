@@ -12,8 +12,6 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Bitcoin", "Tutorial"]} />
 
-
-
 To submit transactions to the Bitcoin network, the Bitcoin integration API exposes the `bitcoin_send_transaction` method.
 
 ## Submitting transactions
@@ -22,7 +20,7 @@ The following snippet shows how to send a signed transaction to the Bitcoin netw
 
 :::danger
 
-The Bitcoin Testnet API is currently disabled and the ckTestBTC minter canister has been stopped. This is temporary and they will be re-enabled in the future.
+The Bitcoin Testnet API is currently disabled, and the ckTestBTC minter canister has been stopped. This is temporary, and they will be re-enabled in the future.
 
 [Learn more](https://forum.dfinity.org/t/direct-integration-with-bitcoin/6147/745).
 
@@ -32,25 +30,25 @@ The Bitcoin Testnet API is currently disabled and the ckTestBTC minter canister 
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko no-repl
- type ManagementCanisterActor = actor {
-      bitcoin_send_transaction : SendTransactionRequest -> async ();
-  };
+ type ManagementCanisterActor = actor {
+      bitcoin_send_transaction : SendTransactionRequest -> async ();
+  };
 
-  let management_canister_actor : ManagementCanisterActor = actor("aaaaa-aa");
+  let management_canister_actor : ManagementCanisterActor = actor("aaaaa-aa");
 
-  public func send_transaction(network : Network, transaction : [Nat8]) : async () {
-    let transaction_fee =
-        SEND_TRANSACTION_BASE_COST_CYCLES + transaction.size() * SEND_TRANSACTION_COST_CYCLES_PER_BYTE;
+  public func send_transaction(network : Network, transaction : [Nat8]) : async () {
+    let transaction_fee =
+        SEND_TRANSACTION_BASE_COST_CYCLES + transaction.size() * SEND_TRANSACTION_COST_CYCLES_PER_BYTE;
 
-    ExperimentalCycles.add(transaction_fee);
-    await management_canister_actor.bitcoin_send_transaction({
-        network;
-        transaction;
-    })
-  };
+    ExperimentalCycles.add(transaction_fee);
+    await management_canister_actor.bitcoin_send_transaction({
+        network;
+        transaction;
+    })
+  };
 ```
 <a href="https://github.com/dfinity/examples/blob/0f0ca7df352a1b7953d80ac8ec19767deea359db/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L76">
-    <div align="center">View in the full example.</div>
+    <div align="center">View in the full example.</div>
 </a>
 </TabItem>
 <TabItem value="rust" label="Rust" default>
@@ -58,25 +56,25 @@ The Bitcoin Testnet API is currently disabled and the ckTestBTC minter canister 
 ```rust
 
 pub async fn send_transaction(network: BitcoinNetwork, transaction: Vec<u8>) {
-    let transaction_fee = SEND_TRANSACTION_BASE_CYCLES
-        + (transaction.len() as u64) * SEND_TRANSACTION_PER_BYTE_CYCLES;
+    let transaction_fee = SEND_TRANSACTION_BASE_CYCLES
+        + (transaction.len() as u64) * SEND_TRANSACTION_PER_BYTE_CYCLES;
 
-    let res: Result<(), _> = call_with_payment(
-        Principal::management_canister(),
-        "bitcoin_send_transaction",
-        (SendTransactionRequest {
-            network: network.into(),
-            transaction,
-        },),
-        transaction_fee,
-    )
-    .await;
+    let res: Result<(), _> = call_with_payment(
+        Principal::management_canister(),
+        "bitcoin_send_transaction",
+        (SendTransactionRequest {
+            network: network.into(),
+            transaction,
+        },),
+        transaction_fee,
+    )
+    .await;
 
-    res.unwrap();
+    res.unwrap();
 }
 ```
 <a href="https://github.com/dfinity/examples/blob/0f0ca7df352a1b7953d80ac8ec19767deea359db/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_api.rs#L78">
-    <div align="center">View in the full example.</div>
+    <div align="center">View in the full example.</div>
 </a>
 </TabItem>
 </AdornedTabs>

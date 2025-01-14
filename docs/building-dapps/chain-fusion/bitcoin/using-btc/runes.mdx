@@ -8,15 +8,13 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Bitcoin", "Tutorial"]} />
 
-
-
-Bitcoin Runes are a type of fungible asset deployed on the Bitcoin network. Runes are not reliant on the [Ordinals protocol](ordinals.mdx) like other Bitcoin asset standards such as BRC-20 and SRC-20. Runes are designed to be an efficient and simple asset that utilizes Bitcoin's UTXO model and the `OP_RETURN` opcode. Although Runes aren't reliant on Ordinals, the Rune protocol was created and implemented by the same creator, and is part of the same open source project that Ordinals are.
+Bitcoin Runes are a type of fungible asset deployed on the Bitcoin network. Runes are not reliant on the [Ordinals protocol](ordinals.mdx) like other Bitcoin asset standards such as BRC-20 and SRC-20. Runes are designed to be an efficient and simple asset that utilizes Bitcoin's UTXO model and the `OP_RETURN` opcode. Although Runes aren't reliant on Ordinals, the Rune protocol was created and implemented by the same creator and is part of the same open-source project that Ordinals are.
 
 The UTXO transaction model enables each transaction's output to hold information and be treated as digital currency. To initiate a transaction, you must use those outputs as your transaction's input. For Runes specifically, each UTXO can hold a different amount or type of Rune, simplifying the management of tokens on Bitcoin.
 
-The Bitcoin opcode `OP_RETURN` enables additional information to be attached to a Bitcoin transaction, up to 80 bytes of data. Runes use this `OP_RETURN` value to store the token's data, such as name, symbol, commands, or ID. This token data is referred to as the 'Runestone'.
+The Bitcoin opcode `OP_RETURN` enables additional information to be attached to a Bitcoin transaction, up to 80 bytes of data. Runes use this `OP_RETURN` value to store the token's data, such as name, symbol, commands, or ID. This token data is referred to as the 'Runestone.'
 
-Creating a Rune is done through a process called 'etching', which refers to submitting a transaction to the Bitcoin network that specifies the Rune's data in the `OP_RETURN` output of a transaction. Once a Rune has been etched, it can be minted through open or closed mints. Open minting allows anyone to mint an instance of the Rune through a mint transaction, while closed minting refers to a set of requirements that must be met in order for the Rune to be minted. When a Rune is initially etched, the creator can set aside a portion of the Runes for themselves before others are minted.
+Creating a Rune is done through a process called 'etching,' which refers to submitting a transaction to the Bitcoin network that specifies the Rune's data in the `OP_RETURN` output of a transaction. Once a Rune has been etched, it can be minted through open or closed mints. Open minting allows anyone to mint an instance of the Rune through a mint transaction, while closed minting refers to a set of requirements that must be met in order for the Rune to be minted. When a Rune is initially etched, the creator can set aside a portion of the Runes for themselves before others are minted.
 
 ## Runes on ICP
 
@@ -31,44 +29,44 @@ Once you have generated a taproot address for your canister, you will need to wr
 ```rust
 #[update]
 pub async fn etch_rune(mut args: EtchingArgs) -> (String, String) {
-    let caller = ic_cdk::id();
-    args.rune = args.rune.to_ascii_uppercase();
-    let derivation_path = generate_derivation_path(&caller);
-    let ecdsa_public_key = get_ecdsa_public_key(derivation_path.clone()).await;
-    let schnorr_public_key = get_schnorr_public_key(derivation_path.clone()).await;
-    let caller_p2pkh_address = public_key_to_p2pkh_address(&ecdsa_public_key);
-    let balance = btc_api::get_balance_of(caller_p2pkh_address.clone()).await;
-    if balance < 1000_0000 {
-        ic_cdk::trap("Not enough balance")
-    }
-    let utxos_response = btc_api::get_utxos_of(caller_p2pkh_address.clone()).await;
-    check_etching(utxos_response.tip_height, &args);
-    let (commit_tx_address, commit_tx, reveal_tx) = build_and_sign_etching_transaction(
-        &derivation_path,
-        &utxos_response.utxos,
-        &ecdsa_public_key,
-        &schnorr_public_key,
-        caller_p2pkh_address,
-        args,
-    )
-    .await;
-    let commit_txid = btc_api::send_bitcoin_transaction(commit_tx).await;
-    let id = STATE.with_borrow_mut(|state| {
-        let id = state.queue_count;
-        state.queue_count += 1;
-        id
-    });
-    let time = STATE.with_borrow(|state| state.timer_for_reveal_txn as u64 * 60);
-    let timer_id = ic_cdk_timers::set_timer_interval(Duration::from_secs(time), move || {
-        ic_cdk::spawn(confirm_min_commitment_and_send_reveal_txn(id))
-    });
-    let queue_txn = QueuedRevealTxn {
-        commit_tx_address: commit_tx_address.to_string(),
-        reveal_txn: reveal_tx.clone(),
-        timer_id: timer_id.data(),
-    };
-    STATE.with_borrow_mut(|state| state.reveal_txn_in_queue.insert(id, queue_txn));
-    (commit_txid, reveal_tx.txid().encode_hex())
+    let caller = ic_cdk::id();
+    args.rune = args.rune.to_ascii_uppercase();
+    let derivation_path = generate_derivation_path(&caller);
+    let ecdsa_public_key = get_ecdsa_public_key(derivation_path.clone()).await;
+    let schnorr_public_key = get_schnorr_public_key(derivation_path.clone()).await;
+    let caller_p2pkh_address = public_key_to_p2pkh_address(&ecdsa_public_key);
+    let balance = btc_api::get_balance_of(caller_p2pkh_address.clone()).await;
+    if balance < 1000_0000 {
+        ic_cdk::trap("Not enough balance")
+    }
+    let utxos_response = btc_api::get_utxos_of(caller_p2pkh_address.clone()).await;
+    check_etching(utxos_response.tip_height, &args);
+    let (commit_tx_address, commit_tx, reveal_tx) = build_and_sign_etching_transaction(
+        &derivation_path,
+        &utxos_response.utxos,
+        &ecdsa_public_key,
+        &schnorr_public_key,
+        caller_p2pkh_address,
+        args,
+    )
+    .await;
+    let commit_txid = btc_api::send_bitcoin_transaction(commit_tx).await;
+    let id = STATE.with_borrow_mut(|state| {
+        let id = state.queue_count;
+        state.queue_count += 1;
+        id
+    });
+    let time = STATE.with_borrow(|state| state.timer_for_reveal_txn as u64 * 60);
+    let timer_id = ic_cdk_timers::set_timer_interval(Duration::from_secs(time), move || {
+        ic_cdk::spawn(confirm_min_commitment_and_send_reveal_txn(id))
+    });
+    let queue_txn = QueuedRevealTxn {
+        commit_tx_address: commit_tx_address.to_string(),
+        reveal_txn: reveal_tx.clone(),
+        timer_id: timer_id.data(),
+    };
+    STATE.with_borrow_mut(|state| state.reveal_txn_in_queue.insert(id, queue_txn));
+    (commit_txid, reveal_tx.txid().encode_hex())
 }
 ```
 

@@ -12,8 +12,6 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Bitcoin", "Tutorial"]} />
 
-
-
 To read information from the Bitcoin network's state, the Bitcoin integration API exposes the following methods:
 
 - `bitcoin_get_utxos`: Returns the unspent transaction outputs (UTXOs) of a Bitcoin address.
@@ -24,7 +22,7 @@ To read information from the Bitcoin network's state, the Bitcoin integration AP
 
 - `bitcoin_get_block_headers`: Returns the block headers within a provided range of start height and end height (optional) for the specified Bitcoin network (testnet or mainnet).
 
-Standard Bitcoin addresses (P2PKH, P2SH, P2WPKH, etc) are supported.
+Standard Bitcoin addresses (P2PKH, P2SH, P2WPKH, etc.) are supported.
 
 ## Bitcoin networks
 
@@ -32,30 +30,30 @@ Both the Bitcoin testnet and mainnet networks are supported. The network can be 
 
 ## API costs
 
-Each call to the API has a cost of cycles, therefore a sufficient amount of cycles must be sent with each call.
+Each call to the API has a cost of cycles; therefore, a sufficient amount of cycles must be sent with each call.
 
 Cycles costs will vary between the Bitcoin testnet and mainnet. For a breakdown of the costs, see [Bitcoin API costs](/docs/current/references/bitcoin-how-it-works).
 
 ## Reading unspent transaction outputs
 
-To read unspent transaction outputs from the Bitcoin network, make a call to the `bitcoin_get_utxos` Bitcoin API method. You can create a function in your canister to call this method such as:
+To read unspent transaction outputs from the Bitcoin network, make a call to the `bitcoin_get_utxos` Bitcoin API method. You can create a function in your canister to call this method, such as:
 
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko no-repl
 type ManagementCanisterActor = actor {
-      bitcoin_get_utxos : GetUtxosRequest -> async GetUtxosResponse;
-  };
+      bitcoin_get_utxos : GetUtxosRequest -> async GetUtxosResponse;
+  };
 
- public func get_utxos(network : Network, address : BitcoinAddress) : async GetUtxosResponse {
-    ExperimentalCycles.add(GET_UTXOS_COST_CYCLES);
-    await management_canister_actor.bitcoin_get_utxos({
-        address;
-        network;
-        filter = null;
-    })
-  };
+ public func get_utxos(network : Network, address : BitcoinAddress) : async GetUtxosResponse {
+    ExperimentalCycles.add(GET_UTXOS_COST_CYCLES);
+    await management_canister_actor.bitcoin_get_utxos({
+        address;
+        network;
+        filter = null;
+    })
+  };
 ```
 
 </TabItem>
@@ -64,25 +62,25 @@ type ManagementCanisterActor = actor {
 
 ```rust
 use ic_cdk::api::management_canister::bitcoin::{
-    BitcoinNetwork, GetBalanceRequest, GetCurrentFeePercentilesRequest, GetUtxosRequest,
-    GetUtxosResponse, MillisatoshiPerByte, Satoshi, SendTransactionRequest,
+    BitcoinNetwork, GetBalanceRequest, GetCurrentFeePercentilesRequest, GetUtxosRequest,
+    GetUtxosResponse, MillisatoshiPerByte, Satoshi, SendTransactionRequest,
 };
 
 
 pub async fn get_utxos(network: BitcoinNetwork, address: String) -> GetUtxosResponse {
-    let utxos_res: Result<(GetUtxosResponse,), _> = call_with_payment(
-        Principal::management_canister(),
-        "bitcoin_get_utxos",
-        (GetUtxosRequest {
-            address,
-            network: network.into(),
-            filter: None,
-        },),
-        GET_UTXOS_COST_CYCLES,
-    )
-    .await;
+    let utxos_res: Result<(GetUtxosResponse,), _> = call_with_payment(
+        Principal::management_canister(),
+        "bitcoin_get_utxos",
+        (GetUtxosRequest {
+            address,
+            network: network.into(),
+            filter: None,
+        },),
+        GET_UTXOS_COST_CYCLES,
+    )
+    .await;
 
-    utxos_res.unwrap().0
+    utxos_res.unwrap().0
 }
 ```
 
@@ -100,26 +98,26 @@ Replace `CANISTER_NAME` with your canister's name and replace `ADDRESS` with you
 
 ## Reading current balance
 
-To read the current balance of a Bitcoin address, make a call to the `bitcoin_get_balance` Bitcoin API method. You can create a function in your canister to call this method such as:
+To read the current balance of a Bitcoin address, make a call to the `bitcoin_get_balance` Bitcoin API method. You can create a function in your canister to call this method, such as:
 
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko no-repl
-  type ManagementCanisterActor = actor {
-      bitcoin_get_balance : GetBalanceRequest -> async Satoshi;
-  };
+  type ManagementCanisterActor = actor {
+      bitcoin_get_balance : GetBalanceRequest -> async Satoshi;
+  };
 
-  let management_canister_actor : ManagementCanisterActor = actor("aaaaa-aa");
+  let management_canister_actor : ManagementCanisterActor = actor("aaaaa-aa");
 
-  public func get_balance(network : Network, address : BitcoinAddress) : async Satoshi {
-    ExperimentalCycles.add(GET_BALANCE_COST_CYCLES);
-    await management_canister_actor.bitcoin_get_balance({
-        address;
-        network;
-        min_confirmations = null;
-    })
-  };
+  public func get_balance(network : Network, address : BitcoinAddress) : async Satoshi {
+    ExperimentalCycles.add(GET_BALANCE_COST_CYCLES);
+    await management_canister_actor.bitcoin_get_balance({
+        address;
+        network;
+        min_confirmations = null;
+    })
+  };
 ```
 
 </TabItem>
@@ -128,24 +126,24 @@ To read the current balance of a Bitcoin address, make a call to the `bitcoin_ge
 
 ```rust
 use ic_cdk::api::management_canister::bitcoin::{
-    BitcoinNetwork, GetBalanceRequest, GetCurrentFeePercentilesRequest, GetUtxosRequest,
-    GetUtxosResponse, MillisatoshiPerByte, Satoshi, SendTransactionRequest,
+    BitcoinNetwork, GetBalanceRequest, GetCurrentFeePercentilesRequest, GetUtxosRequest,
+    GetUtxosResponse, MillisatoshiPerByte, Satoshi, SendTransactionRequest,
 };
 
 pub async fn get_balance(network: BitcoinNetwork, address: String) -> u64 {
-    let balance_res: Result<(Satoshi,), _> = call_with_payment(
-        Principal::management_canister(),
-        "bitcoin_get_balance",
-        (GetBalanceRequest {
-            address,
-            network: network.into(),
-            min_confirmations: None,
-        },),
-        GET_BALANCE_COST_CYCLES,
-    )
-    .await;
+    let balance_res: Result<(Satoshi,), _> = call_with_payment(
+        Principal::management_canister(),
+        "bitcoin_get_balance",
+        (GetBalanceRequest {
+            address,
+            network: network.into(),
+            min_confirmations: None,
+        },),
+        GET_BALANCE_COST_CYCLES,
+    )
+    .await;
 
-    balance_res.unwrap().0
+    balance_res.unwrap().0
 }
 ```
 
@@ -171,18 +169,18 @@ The function returns 101 numbers that are fees measured in millisatoshi per virt
 <TabItem value="motoko" label="Motoko" default>
 
 ```motoko no-repl
-  type ManagementCanisterActor = actor {
-      bitcoin_get_current_fee_percentiles : GetCurrentFeePercentilesRequest -> async [MillisatoshiPerVByte];
-  };
+  type ManagementCanisterActor = actor {
+      bitcoin_get_current_fee_percentiles : GetCurrentFeePercentilesRequest -> async [MillisatoshiPerVByte];
+  };
 
-  let management_canister_actor : ManagementCanisterActor = actor("aaaaa-aa");
+  let management_canister_actor : ManagementCanisterActor = actor("aaaaa-aa");
 
-  public func get_current_fee_percentiles(network : Network) : async [MillisatoshiPerVByte] {
-    ExperimentalCycles.add(GET_CURRENT_FEE_PERCENTILES_COST_CYCLES);
-    await management_canister_actor.bitcoin_get_current_fee_percentiles({
-        network;
-    })
-  };
+  public func get_current_fee_percentiles(network : Network) : async [MillisatoshiPerVByte] {
+    ExperimentalCycles.add(GET_CURRENT_FEE_PERCENTILES_COST_CYCLES);
+    await management_canister_actor.bitcoin_get_current_fee_percentiles({
+        network;
+    })
+  };
 ```
 
 </TabItem>
@@ -191,22 +189,22 @@ The function returns 101 numbers that are fees measured in millisatoshi per virt
 
 ```rust
 use ic_cdk::api::management_canister::bitcoin::{
-    BitcoinNetwork, GetBalanceRequest, GetCurrentFeePercentilesRequest, GetUtxosRequest,
-    GetUtxosResponse, MillisatoshiPerByte, Satoshi, SendTransactionRequest,
+    BitcoinNetwork, GetBalanceRequest, GetCurrentFeePercentilesRequest, GetUtxosRequest,
+    GetUtxosResponse, MillisatoshiPerByte, Satoshi, SendTransactionRequest,
 };
 
 pub async fn get_current_fee_percentiles(network: BitcoinNetwork) -> Vec<MillisatoshiPerByte> {
-    let res: Result<(Vec<MillisatoshiPerByte>,), _> = call_with_payment(
-        Principal::management_canister(),
-        "bitcoin_get_current_fee_percentiles",
-        (GetCurrentFeePercentilesRequest {
-            network: network.into(),
-        },),
-        GET_CURRENT_FEE_PERCENTILES_CYCLES,
-    )
-    .await;
+    let res: Result<(Vec<MillisatoshiPerByte>,), _> = call_with_payment(
+        Principal::management_canister(),
+        "bitcoin_get_current_fee_percentiles",
+        (GetCurrentFeePercentilesRequest {
+            network: network.into(),
+        },),
+        GET_CURRENT_FEE_PERCENTILES_CYCLES,
+    )
+    .await;
 
-    res.unwrap().0
+    res.unwrap().0
 }
 ```
 

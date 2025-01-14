@@ -8,11 +8,9 @@ import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Generating addresses
+# Generating an Ethereum address
 
 <MarkdownChipRow labels={["Advanced", "Ethereum" ]} />
-
-
 
 On Ethereum, there are two types of addresses: wallet addresses for holding assets and contract addresses. Wallet addresses are public accounts that can send and receive ETH tokens. Contract addresses refer to a smart contract that has been executed on Ethereum and the transactions associated with that contract.
 
@@ -20,7 +18,7 @@ Wallet and contract addresses can be queried using the [EVM RPC canister](../evm
 
 ## Canister ETH addresses
 
-To create an ETH address for your canister, first you will need to obtain an ECDSA public key associated to your canister. You can get this key by calling the `ecdsa_public_key` API method of the management canister:
+To create an ETH address for your canister, first you will need to obtain an ECDSA public key associated with your canister. You can get this key by calling the `ecdsa_public_key` API method of the management canister:
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
@@ -30,24 +28,24 @@ To create an ETH address for your canister, first you will need to obtain an ECD
 let ic : IC = actor("aaaaa-aa");
 
 public shared (msg) func public_key() : async { #Ok : { public_key: Blob }; #Err : Text } {
-  let caller = Principal.toBlob(msg.caller);
+  let caller = Principal.toBlob(msg.caller);
 
-  try {
+  try {
 
-    // Make a call to the management canister to request an ECDSA public key:
-    let { public_key } = await ic.ecdsa_public_key({
-        canister_id = null;
-        derivation_path = [ caller ];
-        key_id = { curve = #secp256k1; name = "test_key_1" };
-    });
+    // Make a call to the management canister to request an ECDSA public key:
+    let { public_key } = await ic.ecdsa_public_key({
+        canister_id = null;
+        derivation_path = [ caller ];
+        key_id = { curve = #secp256k1; name = "test_key_1" };
+    });
 
-    #Ok({ public_key })
+    #Ok({ public_key })
 
-  } catch (err) {
+  } catch (err) {
 
-    #Err(Error.message(err))
+    #Err(Error.message(err))
 
-  }
+  }
 
 };
 ```
@@ -59,44 +57,43 @@ public shared (msg) func public_key() : async { #Ok : { public_key: Blob }; #Err
 ```rust
 #[update]
 async fn public_key() -> Result<PublicKeyReply, String> {
-    let request = ECDSAPublicKey {
-        canister_id: None,
-        derivation_path: vec![],
-        key_id: EcdsaKeyIds::TestKeyLocalDevelopment.to_key_id(),
-    };
+    let request = ECDSAPublicKey {
+        canister_id: None,
+        derivation_path: vec![],
+        key_id: EcdsaKeyIds::TestKeyLocalDevelopment.to_key_id(),
+    };
 
-    let (res,): (ECDSAPublicKeyReply,) =
-        ic_cdk::call(mgmt_canister_id(), "ecdsa_public_key", (request,))
-            .await
-            .map_err(|e| format!("ecdsa_public_key failed {}", e.1))?;
+    let (res,): (ECDSAPublicKeyReply,) =
+        ic_cdk::call(mgmt_canister_id(), "ecdsa_public_key", (request,))
+            .await
+            .map_err(|e| format!("ecdsa_public_key failed {}", e.1))?;
 
-    Ok(PublicKeyReply {
-        public_key_hex: hex::encode(&res.public_key),
-    })
+    Ok(PublicKeyReply {
+        public_key_hex: hex::encode(&res.public_key),
+    })
 }
 ```
 
 </TabItem>
 </AdornedTabs>
 
-
 Then, convert the public key bytes to an Ethereum address. An example in Rust can be found below:
 
 ```rust
 /// Converts the public key bytes to an Ethereum address with a checksum.
 fn pubkey_bytes_to_address(pubkey_bytes: &[u8]) -> String {
-    use k256::elliptic_curve::sec1::ToEncodedPoint;
+    use k256::elliptic_curve::sec1::ToEncodedPoint;
 
-    let key =
-        PublicKey::from_sec1_bytes(pubkey_bytes).expect("failed to parse the public key as SEC1");
-    let point = key.to_encoded_point(false);
-    // we re-encode the key to the decompressed representation.
-    let point_bytes = point.as_bytes();
-    assert_eq!(point_bytes[0], 0x04);
+    let key =
+        PublicKey::from_sec1_bytes(pubkey_bytes).expect("failed to parse the public key as SEC1");
+    let point = key.to_encoded_point(false);
+    // we re-encode the key to the decompressed representation.
+    let point_bytes = point.as_bytes();
+    assert_eq!(point_bytes[0], 0x04);
 
-    let hash = keccak256(&point_bytes[1..]);
+    let hash = keccak256(&point_bytes[1..]);
 
-    ethers_core::utils::to_checksum(&Address::from_slice(&hash[12..32]), None)
+    ethers_core::utils::to_checksum(&Address::from_slice(&hash[12..32]), None)
 }
 ```
 

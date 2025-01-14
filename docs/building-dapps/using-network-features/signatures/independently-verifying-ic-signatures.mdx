@@ -1,18 +1,14 @@
 ---
-keywords: [intermediate, tutorial, verifying signatures]
+keywords: [intermediate, tutorial, verifying signatures, verifying a signature, signature verification, verify, signature, cryptographic signature]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Verifying signatures
 
-<MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
+<MarkdownChipRow labels={["Intermediate", "Signatures"]} />
 
-
-
-Calls made on ICP require a cryptographic `signature` and `principal` to be included within the call. This is typically attached in the form of an identity. This identity can either be authenticated or anonymous. Canisters use this identity to respond to the call and process authentication-based workflows.
-
-An identity includes both the private and public keys. The public key is sent along with the identity encoded as a `Principal` and signed with a signature. When a [delegation identity](#transaction-delegation) is sent, the same workflow is used, except a delegation chain is included as well.
+Every call made on ICP requires a cryptographic `Signature` and `Principal`. These are typically attached in the form of an identity that can either be authenticated or anonymous. An identity includes both the private and public keys. The public key is sent along with the identity that is encoded as a `Principal` and signed with a `Signature`. Canisters use this identity to respond to the call and process authentication-based workflows. When a [delegation identity](#transaction-delegation) is sent, the same workflow is used, except a delegation chain is included as well.
 
 For some workflows, it can be beneficial to verify the identity's signature independently from the automatic verification done on ICP as an additional layer of validation.
 
@@ -20,9 +16,9 @@ When a canister call is made via the HTTPS interface, the following fields are p
 
 - `nonce` (`blob`, optional): Randomly generated user-provided data; can be used to create distinct calls with otherwise identical fields.
 
-- `ingress_expiry` (`nat`, required): An upper limit on the call's validity; expressed in nanoseconds, which avoids replay attacks since ICP will not accept calls or transition calls if their expiry date is in the past. Additionally, calls may be refused with an ingress expiry date too far in the future.
+- `ingress_expiry` (`nat`, required): An upper limit on the call's validity, expressed in nanoseconds, which avoids replay attacks since ICP will not accept calls or transition calls if their expiry date is in the past. Additionally, calls may be refused with an ingress expiry date too far in the future.
 
-- `sender` (`Principal`, required): The user who issued the call.
+- `sender` (`Principal`, required): The entity who issued the call.
 
 The call's authentication includes the following fields:
 
@@ -50,11 +46,11 @@ A transaction's signature can be delegated from one key to another. If delegatio
 
    - `expiration` (`nat`): The delegation's expiration, defined in nanoseconds analogously to the `ingress_expiry`.
 
-   - `targets` (`array` of `CanisterId`, optional): Sets the delegation to apply only for requests sent to the canisters within the canister list; has a maximum of 1000 canisters.
+   - `targets` (`array` of `CanisterId`, optional): Sets the delegation to apply only for requests sent to the canisters within the canister list; has a maximum of 1_000 canisters.
 
    - `senders` (`array` of `Principal`, optional): Sets the delegation to only apply for requests originating from the principals in the list.
 
-   - `signature` (`blob`): The signature for the `32-byte` delegation field map, using the 27 bytes `\x1Aic-request-auth-delegation` as the domain separator.
+   - `signature` (`blob`): The signature for the 32-byte delegation field map, using the 27 bytes `\x1Aic-request-auth-delegation` as the domain separator.
 
 The first delegation in the array has a signature created using the public key corresponding to the `sender_pubkey` field. All subsequent delegations are signed with the public key corresponding to the key contained in the preceding delegation.
 

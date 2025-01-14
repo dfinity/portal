@@ -20,9 +20,9 @@ The ICP HTTP gateway protocol enables conventional HTTP clients to interact with
 
 There are several HTTP gateway instances maintained for ICP, but it should be noted that an HTTP gateway is a centralized component that could become compromised, creating a threat for users receiving HTTP content.
 
-DFINITY exclusively controls the HTTP gateways that serve canisters on `ic0.app` and `icp0.io`. Developers can then also configure their own [custom domains](https://internetcomputer.org/docs/current/building-dapps/dapp-frontends/custom-domains/using-custom-domains) to point at the DFINITY controlled HTTP gateways.
+DFINITY exclusively controls the HTTP gateways that serve canisters on `ic0.app` and `icp0.io`. Developers can then also configure their own [custom domains](https://internetcomputer.org/docs/current/building-dapps/dapp-frontends/custom-domains/using-custom-domains) to point at the DFINITY-controlled HTTP gateways.
 
-Alternatively, developers can run their own HTTP gateways on their custom domains instead of using the DFINITY controlled gateways, but this is not well supported yet.
+Alternatively, developers can run their own HTTP gateways on their custom domains instead of using the DFINITY-controlled gateways, but this is not well supported yet.
 
 For a more secure solution, it is possible to run your own HTTP gateway instance locally.
 
@@ -30,7 +30,7 @@ For a more secure solution, it is possible to run your own HTTP gateway instance
 
 - **Request**: A message sent to a server or endpoint.
 
-- **Client**: A service that is able to send an HTTP formatted request and receive a response from a server.
+- **Client**: A service that is able to send an HTTP-formatted request and receive a response from a server.
 
 - **Gateway**: Enables the transfer of inbound and outbound messages.
 
@@ -80,7 +80,7 @@ This implementation features:
 
 You can download the pre-built installation package for your [operating system](https://github.com/dfinity/http-proxy?tab=readme-ov-file#installation).
 
-Once installed, you will have the option to start or stop the IC HTTP proxy service. Start the service to begin using it. Once the proxy is running, it will handle all traffic on your computer. Any traffic that's not meant for the ICP mainnet will pass through the gateway, and traffic that is meant for ICP will be intercepted by the proxy. The proxy will log traffic in the file `$HOME/Library/Preferences/dfinity/ichttpproxy/ic-http-proxy-proxy.log` on macOS machines, or in the `tmp` directory on Windows machines.
+Once installed, you will have the option to start or stop the IC HTTP proxy service. Start the service to begin using it. Once the proxy is running, it will handle all traffic on your computer. Any traffic that's not meant for the ICP mainnet will pass through the gateway, and traffic that is meant for ICP will be intercepted by the proxy. The proxy will log traffic in the file `$HOME/Library/Preferences/dfinity/ichttpproxy/ic-http-proxy-proxy.log` on macOS machines or in the `tmp` directory on Windows machines.
 
 For example, make the following `curl` request to the NNS:
 
@@ -146,9 +146,9 @@ Check out the [Rust documentation](https://docs.rs/ic-cdk/latest/ic_cdk/attr.que
 
 ## `POST` requests
 
-HTTP `POST` requests are used to send data to an endpoint with the intention of retaining that data. You cannot make direct `POST` calls to a canister's `http_request_update` method with HTTP clients such as curl. Instead, you can make a `POST` call to a canister's HTTP endpoint, then configure the canister's `http_request` method to [upgrade the call to `http_request_update`](/docs/current/references/http-gateway-protocol-spec#upgrade-to-update-calls). 
+HTTP `POST` requests are used to send data to an endpoint with the intention of retaining that data. You cannot make direct `POST` calls to a canister's `http_request_update` method with HTTP clients such as curl. Instead, you can make a `POST` call to a canister's HTTP endpoint, then configure the canister's `http_request` method to [upgrade the call to `http_request_update`](/docs/current/references/http-gateway-protocol-spec#upgrade-to-update-calls).
 
-The following examples display how to configure `http_request_update` method within your canister.
+The following examples display how to configure the `http_request_update` method within your canister.
 
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
@@ -198,51 +198,51 @@ import Option "mo:base/Option";
 
 actor {
 
-    public type HttpRequest = {
-        body: Blob;
-        headers: [HeaderField];
-        method: Text;
-        url: Text;
-    };
+    public type HttpRequest = {
+        body: Blob;
+        headers: [HeaderField];
+        method: Text;
+        url: Text;
+    };
 
-    public type ChunkId = Nat;
-    public type SetAssetContentArguments = {
-        chunk_ids: [ChunkId];
-        content_encoding: Text;
-        key: Key;
-        sha256: ?Blob;
-    };
-    public type Path = Text;
-    public type Key = Text;
+    public type ChunkId = Nat;
+    public type SetAssetContentArguments = {
+        chunk_ids: [ChunkId];
+        content_encoding: Text;
+        key: Key;
+        sha256: ?Blob;
+    };
+    public type Path = Text;
+    public type Key = Text;
 
-    public type HttpResponse = {
-        body: Blob;
-        headers: [HeaderField];
-        status_code: Nat16;
-    };
+    public type HttpResponse = {
+        body: Blob;
+        headers: [HeaderField];
+        status_code: Nat16;
+    };
 
-    public type HeaderField = (Text, Text);
+    public type HeaderField = (Text, Text);
 
-    private func removeQuery(str: Text): Text {
-        return Option.unwrap(Text.split(str, #char '?').next());
-    };
+    private func removeQuery(str: Text): Text {
+        return Option.unwrap(Text.split(str, #char '?').next());
+    };
 
-    public query func http_request(req: HttpRequest): async (HttpResponse) {
-        let path = removeQuery(req.url);
-        if(path == "/hello") {
-            return {
-                body = Text.encodeUtf8("root page :" # path);
-                headers = [];
-                status_code = 200;
-            };
-        };
+    public query func http_request(req: HttpRequest): async (HttpResponse) {
+        let path = removeQuery(req.url);
+        if(path == "/hello") {
+            return {
+                body = Text.encodeUtf8("root page :" # path);
+                headers = [];
+                status_code = 200;
+            };
+        };
 
-        return {
-            body = Text.encodeUtf8("404 Not found :" # path);
-            headers = [];
-            status_code = 404;
-        };
-    };
+        return {
+            body = Text.encodeUtf8("404 Not found :" # path);
+            headers = [];
+            status_code = 404;
+        };
+    };
 }
 ```
 
@@ -254,38 +254,38 @@ actor {
 type HeaderField = (String, String);
 
 struct HttpResponse {
-    status_code: u16,
-    headers: Vec<HeaderField>,
-    body: Cow<'static, Bytes>,
+    status_code: u16,
+    headers: Vec<HeaderField>,
+    body: Cow<'static, Bytes>,
 }
 
 struct HttpRequest {
-    method: String,
-    url: String,
-    headers: Vec<(String, String)>,
-    body: ByteBuf,
+    method: String,
+    url: String,
+    headers: Vec<(String, String)>,
+    body: ByteBuf,
 }
 
 #[query]
 fn http_request(req: HttpRequest) -> HttpResponse {
-    let path = req.url.path();
-    if path == "/hello" {
-        HttpResponse {
-            status_code: 200,
-            headers: Vec::new(),
-            body: b"hello, world!".to_vec(),
-            streaming_strategy: None,
-            upgrade: None,
-        }
-    } else {
-        HttpResponse {
-            status_code: 404,
-            headers: Vec::new(),
-            body: b"404 Not found :".to_vec(),
-            streaming_strategy: None,
-            upgrade: None,
-        }
-    }
+    let path = req.url.path();
+    if path == "/hello" {
+        HttpResponse {
+            status_code: 200,
+            headers: Vec::new(),
+            body: b"hello, world!".to_vec(),
+            streaming_strategy: None,
+            upgrade: None,
+        }
+    } else {
+        HttpResponse {
+            status_code: 404,
+            headers: Vec::new(),
+            body: b"404 Not found :".to_vec(),
+            streaming_strategy: None,
+            upgrade: None,
+        }
+    }
 }
 ```
 

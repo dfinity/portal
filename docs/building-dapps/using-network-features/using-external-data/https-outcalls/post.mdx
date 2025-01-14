@@ -1,5 +1,5 @@
 ---
-keywords: [https outcalls, advanced, tutorial]
+keywords: [https outcalls, advanced, tutorial, post requests, post http, http post, post method, http requests, http, outcalls, making http post requests, making http outcalls]
 ---
 
 import TabItem from "@theme/TabItem";
@@ -18,14 +18,14 @@ A minimal example of how to make a `POST` HTTP request. The purpose of this dapp
 The HTTPS outcalls feature only works for sending HTTP `POST` requests to servers or API endpoints that support **IPV6**.
 :::
 
-In order to verify that your canister sent the HTTP request you expected, this canister is sending HTTP requests to a [public API service](https://putsreq.com/aL1QS5IbaQd4NTqN3a81/inspect) where the HTTP request can be inspected. As you can see the image below, the `POST` request headers and body can be inspected to make sure it is what the canister sent.
+In order to verify that your canister sent the HTTP request you expected, this canister is sending HTTP requests to a [public API service](https://putsreq.com/aL1QS5IbaQd4NTqN3a81/inspect) where the HTTP request can be inspected. As you can see in the image below, the `POST` request headers and body can be inspected to make sure it is what the canister sent.
 
 
 ![Public API to inspect POST request](../../_attachments/https-post-requestbin-result.webp)
 
 ## Important notes on `POST` requests
 
-Because HTTP outcalls go through consensus, a developer should expect any HTTP `POST` request from a canister to be sent many times to its destination. Even if you ignore the Web3 component, multiple identical POST requests are not a new problem in HTTPS where it is common for clients to retry requests for a variety of reasons (e.g. destination server being unavailable).
+Because HTTP outcalls go through consensus, a developer should expect any HTTP `POST` request from a canister to be sent many times to its destination. Even if you ignore the Web3 component, multiple identical POST requests are not a new problem in HTTPS, where it is common for clients to retry requests for a variety of reasons (e.g., destination server being unavailable).
 
 The recommended way for HTTP `POST` requests is to add the idempotency keys in the header so the destination server knows which `POST` requests from the client are the same.
 
@@ -46,7 +46,7 @@ Developers should be careful that the destination server understands and uses id
 ```
 
 
-To use HTTPS outcalls you must update the canister's Candid file:
+To use HTTPS outcalls, you must update the canister's Candid file:
 
 ```candid file=../../../../references/samples/rust/send_http_post/src/send_http_post_backend/send_http_post_backend.did
 ```
@@ -61,13 +61,11 @@ Update the `Cargo.toml` file to use the correct dependencies:
 
 :::caution
 
-Headers in the response may not always be identical across all nodes that process the request for consensus, causing the result of the call to be "No consensus could be reached." This particular error message can be hard to debug, but one method to resolve this error is to edit the response using the transform function. The transform function is run before consensus, and can be used to remove some headers from the response.
+Headers in the response may not always be identical across all nodes that process the request for consensus, causing the result of the call to be "No consensus could be reached." This particular error message can be hard to debug, but one method to resolve this error is to edit the response using the transform function. The transform function is run before consensus and can be used to remove some headers from the response.
 
 :::
 
-
 You can see a deployed version of this canister's `send_http_post_request` method onchain here: [https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=fm664-jyaaa-aaaap-qbomq-cai](https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=fm664-jyaaa-aaaap-qbomq-cai).
-
 
 ## Additional resources
 
