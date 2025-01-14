@@ -134,24 +134,10 @@ A Schnorr public key can be retrieved using the
 API. The [basic Bitcoin
 example](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin)
 also demonstrates how to generate two different types of `P2TR` addresses,
-an untweaked key path address and a script spend address, from a
+a key-only address and an address allowing to spend using a key or script, from a
 canister's public key.
 
-:::caution
-The Internet Computer currently supports exclusively one
-of both types of addresses, but not addresses that can use both a key path and
-a script path, meaning that an address supporting a key path cannot spend with a
-script and vice versa.
-:::
-
-#### Generating an untweaked key path address
-
-:::caution
-It is important to make sure that the address is generated from an *untweaked*
-key. Otherwise, the signature verification, and thus the Bitcoin transaction, will fail.
-Most libraries will automatically tweak the key when creating a taproot address
-by default, so make sure to use the correct function to generate the address as shown in the example below.
-:::
+#### Generating a key-only P2TR address
 
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
@@ -160,24 +146,157 @@ by default, so make sure to use the correct function to generate the address as 
 
   // Main.mo
   
-  public func get_p2tr_raw_key_spend_address() : async BitcoinAddress {
-    await P2trRawKeySpend.get_address(NETWORK, KEY_NAME, DERIVATION_PATH);
+  public func get_p2tr_key_only_address() : async BitcoinAddress {
+    await P2trKeyOnly.get_address_key_only(schnorr_canister_actor, NETWORK, KEY_NAME, p2trKeyOnlyDerivationPath());
   };
 
-  // P2trRawKeySpend.mo
+  // P2trKeyOnly.mo
 
-  public func get_address(network : Network, key_name : Text, derivation_path : [[Nat8]]) : async BitcoinAddress {
-    // Fetch the public key of the given derivation path.
-    let sec1_public_key = await SchnorrApi.schnorr_public_key(key_name, Array.map(derivation_path, Blob.fromArray));
-    assert sec1_public_key.size() == 33;
+  import { tweakFromKeyAndHash; tweakPublicKey } "mo:bitcoin/bitcoin/P2tr";
 
-    let bip340_public_key_bytes = Array.subArray(Blob.toArray(sec1_public_key), 1, 32);
+  /// Returns the P2TR key-only address of this canister at a specific
+  /// derivation path. The Merkle tree root is computed as
+  /// `taggedHash(bip340_public_key_bytes, "TapTweak")` and is unspendable.
+  public func get_address_key_only(schnorr_canister_actor : SchnorrCanisterActor, network : Network, key_name : Text, derivation_path : [[Nat8]]) : async BitcoinAddress {
+    let bip340_public_key_bytes = await P2tr.fetch_bip340_public_key(schnorr_canister_actor, key_name, derivation_path);
 
-    public_key_to_p2tr_key_spend_address(network, bip340_public_key_bytes);
+    let merkleRoot = P2tr.unspendableMerkleRoot(bip340_public_key_bytes);
+    let tweak = Utils.get_ok(tweakFromKeyAndHash(bip340_public_key_bytes, merkleRoot));
+    let tweaked_public_key = Utils.get_ok(tweakPublicKey(bip340_public_key_bytes, tweak)).bip340_public_key;
+
+    P2tr.tweaked_public_key_to_p2tr_address(network, tweaked_public_key);
   };
 
-  // Converts a public key to a P2TR raw key spend address.
-  public func public_key_to_p2tr_key_spend_address(network : Network, bip340_public_key_bytes : [Nat8]) : BitcoinAddress {
+  // P2tr.mo
+
+  public func unspendableMerkleRoot(untweaked_bip340_public_key : [Nat8]) : [Nat8] {
+    Hash.taggedHash(untweaked_bip340_public_key, "TapTweak");
+  };
+
+  public func fetch_bip340_public_key(schnorr_canister_actor : SchnorrCanisterActor, key_name : Text, derivation_path : [[Nat8]]) : async [Nat8] {
+    let sec1_public_key = Blob.toArray(await SchnorrApi.schnorr_public_key(schnorr_canister_actor, key_name, Array.map(derivation_path, Blob.fromArray)));
+    Array.subArray(sec1_public_key, 1, 32);
+  };
+
+
+  // Converts a tweaked public key to a P2TR address.
+  public func tweaked_public_key_to_p2tr_address(network : Network, bip340_public_key_bytes : [Nat8]) : BitcoinAddress {
+    // human-readable part of the address
+    let hrp = switch (network) {
+      case (#mainnet) "bc";
+      case (#testnet) "tb";
+      case (#regtest) "bcrt";
+    };
+
+    let version : Nat8 = 1;
+    assert bip340_public_key_bytes.size() == 32;
+
+    switch (Segwit.encode(hrp, { version; program = bip340_public_key_bytes })) {
+      case (#ok address) address;
+      case (#err msg) Debug.trap("Error encoding segwit address: " # msg);
+    };
+  };
+```
+
+<a href="https://github.com/dfinity/examples/blob/eea5afe1a7e421b349e7fa08dd548d59aee92b61/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L64">
+    <div align="center">View in the full example.</div>
+</a>
+</TabItem>
+<TabItem value="rust" label="Rust" default>
+
+```rust
+
+/// Returns the P2TR key-only address of this canister at the given derivation
+/// path.
+///
+/// Quoting the `bitcoin` crate's rustdoc:
+///
+/// *Note*: As per BIP341
+///
+/// When the Merkle root is [`None`], the output key commits to an unspendable script path
+/// instead of having no script path. This is achieved by computing the output key point as
+/// `Q = P + int(hashTapTweak(bytes(P)))G`. See also [`TaprootSpendInfo::tap_tweak`].
+pub async fn get_address(
+    network: BitcoinNetwork,
+    key_name: String,
+    derivation_path: Vec<Vec<u8>>,
+) -> Address {
+    let public_key = schnorr_api::schnorr_public_key(key_name, derivation_path).await;
+    let x_only_pubkey =
+        bitcoin::key::XOnlyPublicKey::from(PublicKey::from_slice(&public_key).unwrap());
+    let secp256k1_engine = Secp256k1::new();
+    Address::p2tr(
+        &secp256k1_engine,
+        x_only_pubkey,
+        None,
+        super::common::transform_network(network),
+    )
+}
+
+```
+
+<a href="https://github.com/dfinity/examples/blob/8ccaf6ce9fbd2d39e44b7bbc7f339606e1ac1233/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet/p2tr_key_only.rs#L20">
+    <div align="center">View in the full example.</div>
+</a>
+</TabItem>
+</Tabs>
+
+#### Generating a P2TR address
+
+<Tabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl
+
+  // Main.mo
+
+  public func get_p2tr_address() : async BitcoinAddress {
+    await P2tr.get_address(schnorr_canister_actor, NETWORK, KEY_NAME, p2trDerivationPaths());
+  };
+
+  // P2tr.mo
+
+  import {
+    leafHash;
+    leafScript;
+    tweakFromKeyAndHash;
+    tweakPublicKey;
+  } "mo:bitcoin/bitcoin/P2tr";
+
+  /// Returns the P2TR address that allows for key as well as script spends.
+  public func get_address(schnorr_canister_actor : SchnorrCanisterActor, network : Network, key_name : Text, derivation_paths : P2trDerivationPaths) : async BitcoinAddress {
+    let internal_bip340_public_key = await fetch_bip340_public_key(schnorr_canister_actor, key_name, derivation_paths.key_path_derivation_path);
+    let script_bip340_public_key = await fetch_bip340_public_key(schnorr_canister_actor, key_name, derivation_paths.script_path_derivation_path);
+
+    let { tweaked_address; is_even = _ } = internal_key_and_script_key_to_p2tr_address(internal_bip340_public_key, script_bip340_public_key, network);
+    tweaked_address;
+  };
+
+  public func fetch_bip340_public_key(schnorr_canister_actor : SchnorrCanisterActor, key_name : Text, derivation_path : [[Nat8]]) : async [Nat8] {
+    let sec1_public_key = Blob.toArray(await SchnorrApi.schnorr_public_key(schnorr_canister_actor, key_name, Array.map(derivation_path, Blob.fromArray)));
+    Array.subArray(sec1_public_key, 1, 32);
+  };
+
+  /// Converts an internal public key and a script public key to a P2TR spend
+  /// address. The script public key is used to derive the leaf script, which
+  /// can be spent only using the script public key.
+  public func internal_key_and_script_key_to_p2tr_address(internal_bip340_public_key : [Nat8], script_bip340_public_key : [Nat8], network : Network) : {
+    tweaked_address : BitcoinAddress;
+    is_even : Bool;
+  } {
+    let leaf_script = Utils.get_ok(leafScript(script_bip340_public_key));
+    let leaf_hash = leafHash(leaf_script);
+    let tweak = Utils.get_ok(tweakFromKeyAndHash(internal_bip340_public_key, leaf_hash));
+    let { bip340_public_key = tweaked_public_key; is_even } = Utils.get_ok(tweakPublicKey(internal_bip340_public_key, tweak));
+
+    {
+      tweaked_address = tweaked_public_key_to_p2tr_address(network, tweaked_public_key);
+      is_even;
+    };
+  };
+
+  // Converts a tweaked public key to a P2TR address.
+  public func tweaked_public_key_to_p2tr_address(network : Network, bip340_public_key_bytes : [Nat8]) : BitcoinAddress {
     // human-readable part of the address
     let hrp = switch (network) {
       case (#mainnet) "bc";
@@ -196,79 +315,6 @@ by default, so make sure to use the correct function to generate the address as 
 
 ```
 
-<a href="https://github.com/dfinity/examples/blob/eea5afe1a7e421b349e7fa08dd548d59aee92b61/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L64">
-    <div align="center">View in the full example.</div>
-</a>
-</TabItem>
-<TabItem value="rust" label="Rust" default>
-
-```rust
-
-/// Returns the P2TR address of this canister at the given derivation path.
-pub async fn get_address(
-    network: BitcoinNetwork,
-    key_name: String,
-    derivation_path: Vec<Vec<u8>>,
-) -> Address {
-    let public_key = schnorr_api::schnorr_public_key(key_name, derivation_path).await;
-    let x_only_pubkey =
-        bitcoin::key::XOnlyPublicKey::from(PublicKey::from_slice(&public_key).unwrap());
-    let tweaked_pubkey = TweakedPublicKey::dangerous_assume_tweaked(x_only_pubkey);
-    Address::p2tr_tweaked(tweaked_pubkey, super::common::transform_network(network))
-}
-
-```
-
-<a href="https://github.com/dfinity/examples/blob/c4cbbfc72c4262c7aad34268ac48e85f3851b40b/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet/p2tr_raw_key_spend.rs#L18">
-    <div align="center">View in the full example.</div>
-</a>
-</TabItem>
-</Tabs>
-
-#### Generating a script path address
-
-<Tabs groupId="language">
-<TabItem value="motoko" label="Motoko" default>
-
-```motoko no-repl
-
-  // Main.mo
-
-  public func get_p2tr_script_spend_address() : async BitcoinAddress {
-    await P2trScriptSpend.get_address(NETWORK, KEY_NAME, DERIVATION_PATH);
-  };
-
-  // P2trScriptSpend.mo
-
-  public func get_address(network : Network, key_name : Text, derivation_path : [[Nat8]]) : async BitcoinAddress {
-      // Fetch the public key of the given derivation path.
-      let sec1_public_key = await SchnorrApi.schnorr_public_key(key_name, Array.map(derivation_path, Blob.fromArray));
-      assert sec1_public_key.size() == 33;
-      let bip340_public_key_bytes = Array.subArray(Blob.toArray(sec1_public_key), 1, 32);
-      let { tweaked_address; is_even = _ } = public_key_to_p2tr_script_spend_address(network, bip340_public_key_bytes);
-      tweaked_address;
-  };
-
-  // Converts a public key to a P2TR script spend address.
-  public func public_key_to_p2tr_script_spend_address(network : Network, bip340_public_key_bytes : [Nat8]) : {
-      tweaked_address : BitcoinAddress;
-      is_even : Bool;
-  } {
-      let leaf_script = Utils.get_ok(leafScript(bip340_public_key_bytes));
-      let leaf_hash = leafHash(leaf_script);
-      let tweak = Utils.get_ok(tweakFromKeyAndHash(bip340_public_key_bytes, leaf_hash));
-      let { bip340_public_key = tweaked_public_key; is_even } = Utils.get_ok(tweakPublicKey(bip340_public_key_bytes, tweak));
-
-      // we can reuse `public_key_to_p2tr_key_spend_address` because this
-      // essentially encodes the input public key as a P2TR address without tweaking
-      {
-        tweaked_address = P2trRawKeySpend.public_key_to_p2tr_key_spend_address(network, tweaked_public_key);
-        is_even;
-    };
-  };
-
-```
-
 <a href="https://github.com/dfinity/examples/blob/eea5afe1a7e421b349e7fa08dd548d59aee92b61/motoko/basic_bitcoin/src/basic_bitcoin/src/Main.mo#L72">
     <div align="center">View in the full example.</div>
 </a>
@@ -277,14 +323,24 @@ pub async fn get_address(
 
 ```rust
 
-/// Returns the P2TR address of this canister at the given derivation path.
+/// Returns the P2TR address of this canister at the given derivation path. This
+/// address uses two public keys:
+/// 1) an internal key,
+/// 2) a key that can be used to spend from a script.
+///
+/// The keys are derived by appending additional information to the provided
+/// `derivation_path`.
 pub async fn get_address(
     network: BitcoinNetwork,
     key_name: String,
     derivation_path: Vec<Vec<u8>>,
 ) -> Address {
-    let public_key = schnorr_api::schnorr_public_key(key_name, derivation_path).await;
-    public_key_to_p2tr_script_spend_address(network, public_key.as_slice())
+    let (internal_key, script_path_key) = get_public_keys(key_name, derivation_path).await;
+    public_keys_to_p2tr_script_spend_address(
+        network,
+        internal_key.as_slice(),
+        script_path_key.as_slice(),
+    )
 }
 
 // Converts a public key to a P2TR address. To compute the address, the public
@@ -292,28 +348,28 @@ pub async fn get_address(
 // and the Merkelized Abstract Syntax Tree (MAST, essentially a Merkle tree
 // containing scripts, in our case just one). Addresses are computed differently
 // for different Bitcoin networks.
-pub fn public_key_to_p2tr_script_spend_address(
+pub fn public_keys_to_p2tr_script_spend_address(
     bitcoin_network: BitcoinNetwork,
-    public_key: &[u8],
+    internal_key: &[u8],
+    script_key: &[u8],
 ) -> Address {
     let network = super::common::transform_network(bitcoin_network);
-    let taproot_spend_info = p2tr_scipt_spend_info(public_key);
+    let taproot_spend_info = p2tr_script_spend_info(internal_key, script_key);
     Address::p2tr_tweaked(taproot_spend_info.output_key(), network)
 }
 
-fn p2tr_scipt_spend_info(public_key: &[u8]) -> TaprootSpendInfo {
-    let spend_script = p2tr_script(public_key);
+fn p2tr_script_spend_info(internal_key_bytes: &[u8], script_key_bytes: &[u8]) -> TaprootSpendInfo {
+    // Script used in script path spending.
+    let spend_script = p2tr_script(script_key_bytes);
     let secp256k1_engine = Secp256k1::new();
-    // This is the key used in the *tweaked* key path spending. Currently, this
-    // use case is not supported on the IC. But, once the IC supports this use
-    // case, the addresses constructed in this way will be able to use same key
-    // in both script and *tweaked* key path spending.
-    let internal_public_key = XOnlyPublicKey::from(PublicKey::from_slice(&public_key).unwrap());
+    // Key used in the key path spending.
+    let internal_key = XOnlyPublicKey::from(PublicKey::from_slice(&internal_key_bytes).unwrap());
 
+    // Taproot with an internal key and a single script.
     TaprootBuilder::new()
         .add_leaf(0, spend_script.clone())
         .expect("adding leaf should work")
-        .finalize(&secp256k1_engine, internal_public_key)
+        .finalize(&secp256k1_engine, internal_key)
         .expect("finalizing taproot builder should work")
 }
 
@@ -329,7 +385,7 @@ fn p2tr_script(public_key: &[u8]) -> ScriptBuf {
 
 ```
 
-<a href="https://github.com/dfinity/examples/blob/c4cbbfc72c4262c7aad34268ac48e85f3851b40b/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet/p2tr_script_spend.rs#L19">
+<a href="https://github.com/dfinity/examples/blob/8ccaf6ce9fbd2d39e44b7bbc7f339606e1ac1233/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet/p2tr.rs#L25">
     <div align="center">View in the full example.</div>
 </a>
 </TabItem>
