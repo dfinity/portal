@@ -56,7 +56,7 @@ You will be prompted to select the language that your backend canister will use.
 `dfx` versions `v0.17.0` and newer support this `dfx new` interactive prompt. [Learn more about `dfx v0.17.0`](/blog/2024/02/14/news-and-updates/update#dfx-v0170).
 :::
 
-Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
+Then, select a frontend framework for your frontend canister. Select 'None':
 
 ```
   ? Select a frontend framework: ›
@@ -65,7 +65,7 @@ Then, select a frontend framework for your frontend canister. Select 'No fronten
   Vue
   Vanilla JS
   No JS template
-❯ No frontend canister
+❯ None
 ```
 
 Lastly, you can include extra features to be added to your project:
@@ -152,14 +152,7 @@ Next, you'll set the `init` arguments for the dependency canisters using the `df
 dfx deps init
 ```
 
-This will show that our II canister requires an `init` argument:
-
-```bash
-WARN: The following canister(s) require an init argument. Please run `dfx deps init <NAME/PRINCIPAL>` to set them individually:
-rdmx6-jaaaa-aaaaa-aaadq-cai (internet_identity)
-```
-
-This output shows you that the Internet Identity canister requires an `init` argument, but it doesn't give you any additional information. For more information, run the command `dfx deps init rdmx6-jaaaa-aaaaa-aaadq-cai`, which will provide an error message that shows you more details:
+The Internet Identity canister requires an `init` argument. For more information, run the command `dfx deps init rdmx6-jaaaa-aaaaa-aaadq-cai`, which will provide an error message:
 
 ```bash
 Error: Canister rdmx6-jaaaa-aaaaa-aaadq-cai (internet_identity) requires an init argument. The following info might be helpful:

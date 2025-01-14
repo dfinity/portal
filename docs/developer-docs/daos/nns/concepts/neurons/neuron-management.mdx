@@ -61,7 +61,7 @@ meaningless when the neuron is dissolving and has age zero. The canonical value 
 
 * `visibility : opt int32;`: The visibility defines how much information about this neuron is publicly accessible, i.e., visible to those who are neither the controller nor
  have hot-key privileges to this neuron. Visibility can be public, private, or undefined.
- For public neurons, the full neuron is accessible to everyone, for private neurons only a part of the `NeuronInfo` (see below) is visible, excluding the recent_ballots`
+ For public neurons, the full neuron is accessible to everyone, for private neurons only a part of the `NeuronInfo` (see below) is visible, excluding the `recent_ballots`
   and `joined_community_fund_timestamp_seconds`.
 
 * `known_neuron_data : opt KnownNeuronData; message KnownNeuronData { string name = 1; optional string description = 2; }`: A neuron can be registered as a **known neuron** via proposal so that it can be followed by others.
