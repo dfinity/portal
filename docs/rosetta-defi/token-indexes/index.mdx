@@ -22,14 +22,14 @@ An index canister can be used to:
 
 - Query the status of a transaction.
 
-If you are working in a local development environment, you can't access the mainnet ledgers nor the mainnet index canisters. If your application is using a mainnet index canister and you want to test it, you can setup the index and ledger canisters locally. Neither of the two canisters will have any information about the state of the ledger on the mainnet. You will have to create your own transactions on the ledger so that the index can serve them through its endpoints.
+If you are working in a local development environment, you can't access the mainnet ledgers or the mainnet index canisters. If your application is using a mainnet index canister and you want to test it, you can set up the index and ledger canisters locally. Neither of the two canisters will have any information about the state of the ledger on the mainnet. You will have to create your own transactions on the ledger so that the index can serve them through its endpoints.
 
 This guide displays how to deploy an index canister locally and use it in conjunction with a ledger canister. Instructions for both an ICP index and an ICRC index are included.
 
 <Tabs>
 <TabItem value="prereq" label="Prerequisites" default>
 
-<input type="checkbox"/> Read the guide on deploying a local ledger, then continue with this guide. This guide will assume that you have setup up a local ledger pertaining to your intended token type (ICP or ICRC), and that all prerequisites are fulfilled.
+<input type="checkbox"/> Read the guide on deploying a local ledger, then continue with this guide. This guide will assume that you have set up a local ledger pertaining to your intended token type (ICP or ICRC) and that all prerequisites are fulfilled.
 
 </TabItem>
 </Tabs>
@@ -97,30 +97,30 @@ If you followed the guide on local ledger setup and used the same project folder
 
 ``` json
 {
-  "canisters": {
-    "icp_index_canister": {
-      "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/a62848817cec7ae50618a87a526c85d020283fd9/rs/ledger_suite/icp/index/index.did",
-      "wasm": "https://download.dfinity.systems/ic/a62848817cec7ae50618a87a526c85d020283fd9/canisters/ic-icp-index-canister.wasm.gz"
-            "remote": {
-        "id": {
-          "ic": "qhbym-qaaaa-aaaaa-aaafq-cai"
-        }
-      }
-    },
-    "icp_ledger_canister": {
-      "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/a62848817cec7ae50618a87a526c85d020283fd9/rs/ledger_suite/icp/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/a62848817cec7ae50618a87a526c85d020283fd9/canisters/ledger-canister.wasm.gz"
-      "remote": {
-        "id": {
-          "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
-        }
-      }
-    }
-  },
-  "output_env_file": ".env",
-  "version": 1
+  "canisters": {
+    "icp_index_canister": {
+      "type": "custom",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/a62848817cec7ae50618a87a526c85d020283fd9/rs/ledger_suite/icp/index/index.did",
+      "wasm": "https://download.dfinity.systems/ic/a62848817cec7ae50618a87a526c85d020283fd9/canisters/ic-icp-index-canister.wasm.gz"
+            "remote": {
+        "id": {
+          "ic": "qhbym-qaaaa-aaaaa-aaafq-cai"
+        }
+      }
+    },
+    "icp_ledger_canister": {
+      "type": "custom",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/a62848817cec7ae50618a87a526c85d020283fd9/rs/ledger_suite/icp/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/a62848817cec7ae50618a87a526c85d020283fd9/canisters/ledger-canister.wasm.gz"
+      "remote": {
+        "id": {
+          "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
+        }
+      }
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
 }
 ```
 
@@ -134,20 +134,20 @@ Open the `dfx.json` file in your project's directory. Add the `icrc1_index_canis
 
 ``` json
 {
-  "canisters": {
-    "icrc1_index_canister": {
-      "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/a62848817cec7ae50618a87a526c85d020283fd9/rs/rosetta-api/icrc1/index-ng/index-ng.did",
-      "wasm": "https://download.dfinity.systems/ic/a62848817cec7ae50618a87a526c85d020283fd9/canisters/ic-icrc1-index-ng.wasm.gz"
-    },
-    "icrc1_ledger_canister": {
-      "type": "custom",
-      "candid": "https://raw.githubusercontent.com/dfinity/ic/a62848817cec7ae50618a87a526c85d020283fd9/rs/rosetta-api/icrc1/ledger/ledger.did",
-      "wasm": "https://download.dfinity.systems/ic/a62848817cec7ae50618a87a526c85d020283fd9/canisters/ic-icrc1-ledger.wasm.gz"
-    }
-  },
-  "output_env_file": ".env",
-  "version": 1
+  "canisters": {
+    "icrc1_index_canister": {
+      "type": "custom",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/a62848817cec7ae50618a87a526c85d020283fd9/rs/rosetta-api/icrc1/index-ng/index-ng.did",
+      "wasm": "https://download.dfinity.systems/ic/a62848817cec7ae50618a87a526c85d020283fd9/canisters/ic-icrc1-index-ng.wasm.gz"
+    },
+    "icrc1_ledger_canister": {
+      "type": "custom",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/a62848817cec7ae50618a87a526c85d020283fd9/rs/rosetta-api/icrc1/ledger/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/a62848817cec7ae50618a87a526c85d020283fd9/canisters/ic-icrc1-ledger.wasm.gz"
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
 }
 ```
 
@@ -189,7 +189,7 @@ Here it is assumed that the canister ID of your local ICP ledger is `ryjl3-tyaaa
 :::caution
 Deploying to the playground is ICP's equivalent of deploying to a testnet network.
 
-In this workflow, you cannot deploy this canister to the playground (using flag `dfx deploy --playground`) because it does not accept gzipped Wasm files.
+In this workflow, you cannot deploy this canister to the playground (using the flag `dfx deploy --playground`) because it does not accept gzipped Wasm files.
 :::
 
 ```
@@ -211,10 +211,10 @@ dfx deploy icrc1_index_canister --argument '(opt variant { Init = record { ledge
 :::caution
 Deploying to the playground is ICP's equivalent of deploying to a testnet network.
 
-In this workflow, you cannot deploy this canister to the playground (using flag `dfx deploy --playground`) because it does not accept gzipped Wasm files.
+In this workflow, you cannot deploy this canister to the playground (using the flag `dfx deploy --playground`) because it does not accept gzipped Wasm files.
 :::
 
-The ICRC-1 index canister will start synching right away and will automatically try to fetch new blocks according to the seconds specified in `retrieve_blocks_from_ledger_interval_seconds`. 
+The ICRC-1 index canister will start syncing right away and will automatically try to fetch new blocks according to the seconds specified in `retrieve_blocks_from_ledger_interval_seconds`.
 
 </TabItem>
 </AdornedTabs>
@@ -224,7 +224,7 @@ The ICRC-1 index canister will start synching right away and will automatically 
 <AdornedTabs groupId="standards">
 <TabItem value="icp" label="ICP" default>
 
-You can check that the correct ledger ID was set but running the following command.
+You can check that the correct ledger ID was set by running the following command.
 
 ```
 dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai ledger_id '()'
@@ -236,7 +236,7 @@ The result is the ledger canister ID that the index canister is using to sync.
 (principal "ryjl3-tyaaa-aaaaa-aaaba-cai")
 ```
 
-To check how many blocks have been synched call:
+To check how many blocks have been synced, call:
 ```
 dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai status '()'
 ```
@@ -246,7 +246,7 @@ It should return something like this:
 (record { num_blocks_synced = 1 : nat64 })
 ```
 
-Depending on how many mint operations you created while setting up your ICP ledger, the number of synced blocks here will be 0 if no initial balances were parsed, or `X` if `X` initial balances were parsed. In the case of this tutorial, the guide on setting up a local ledger was used and there only one initial balance was parsed as an initialization argument. Hence, the number of blocks synched at this stage is 1.
+Depending on how many mint operations you created while setting up your ICP ledger, the number of synced blocks here will be 0 if no initial balances were parsed or `X` if `X` initial balances were parsed. In the case of this tutorial, the guide on setting up a local ledger was used, and there was only one initial balance parsed as an initialization argument. Hence, the number of blocks synched at this stage is 1.
 
 </TabItem>
 
@@ -261,7 +261,7 @@ The result is the ledger canister ID that the index canister is using to sync.
 (principal "mxzaz-hqaaa-aaaar-qaada-cai")
 ```
 
-To check how many blocks have been synched call:
+To check how many blocks have been synced, call:
 ```
 dfx canister call icrc1_index_canister status '()'
 ```
@@ -269,7 +269,7 @@ It should return something like this:
 ```
 (record { num_blocks_synced = 1 : nat64 })
 ```
-Depending on how many mint operations you created while setting up your ICRC-1 ledger, the number of synched blocks here will be 0 if no initial balances were parsed, or `X` if `X` initial balances were parsed. In the case of this tutorial, the guide on setting up a local ledger was used and there only one initial balance was parsed as an initialization argument. Hence, the number of blocks synched at this stage is 1.
+Depending on how many mint operations you created while setting up your ICRC-1 ledger, the number of synched blocks here will be 0 if no initial balances were parsed or `X` if `X` initial balances were parsed. In the case of this tutorial, the guide on setting up a local ledger was used, and there was only one initial balance parsed as an initialization argument. Hence, the number of blocks synched at this stage is 1.
 
 </TabItem>
 </AdornedTabs>
@@ -280,11 +280,11 @@ Depending on how many mint operations you created while setting up your ICRC-1 l
 <TabItem value="icp" label="ICP" default>
 
 You can check that the synchronization of the index is working by creating a transaction on the ICP ledger and then checking the status of that transaction.
-If you followed the guide on setting up an ICP ledger locally your default identity should have some ICP to be send.
+If you followed the guide on setting up an ICP ledger locally, your default identity should have some ICP to be sent.
 Send some ICP to any <GlossaryTooltip>principal</GlossaryTooltip> with the command:
 
 ```
-dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai icrc1_transfer '(record { to = record { owner = principal "npki3-wdfh4-siaeq-orwh4-bh5of-r7mxr-i35lm-6f2eh-rtmwp-dmzmn-tae";};  amount = 100000:nat;})'
+dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai icrc1_transfer '(record { to = record { owner = principal "npki3-wdfh4-siaeq-orwh4-bh5of-r7mxr-i35lm-6f2eh-rtmwp-dmzmn-tae";};  amount = 100000:nat;})'
 ```
 
 Then, check the status with the command:
@@ -300,22 +300,22 @@ It should now indicate that an additional block was synced compared to the last 
 #### Fetch blocks
 
 You can use the ICP index canister to fetch blocks like so.
-You have to specify the block at which you want to start fetching from (i.e. the lowest index you want to fetch). If you want to start from the beginning you have to set `start` to 0. Similarly, the `length` parameter indicates the number of blocks you would like to fetch. Since the last status call indicated that there are two blocks that were synced, you can set this to 2. Note that if you specify more than 2 blocks it will simply return the maximum number of blocks the index contains (the limit of blocks per call is usually set to 2000 blocks).
+You have to specify the block at which you want to start fetching from (i.e., the lowest index you want to fetch). If you want to start from the beginning, you have to set `start` to 0. Similarly, the `length` parameter indicates the number of blocks you would like to fetch. Since the last status call indicated that there are two blocks that were synced, you can set this to 2. Note that if you specify more than 2 blocks, it will simply return the maximum number of blocks the index contains (the limit of blocks per call is usually set to 2000 blocks).
 
 ```
 dfx canister call qhbym-qaaaa-aaaaa-aaafq-cai get_blocks '(record{start=0:nat;length=2:nat})'
 ```
 
-Which will return a vector the encoded blocks:
+Which will return a vector of the encoded blocks:
 ```
 (
-  record {
-    blocks = vec {
-      blob "\12\0a\08\90\83\a6\c6\c7\b8\a6\c3\17\1a=\12-\12\22\0a \0amCu\816\9bTj\fd\efa<\a9\c0\81\a2R\ca,F\e7\ec)\e5\10\bc\10\b2\13\fa\27\1a\07\08\80\d0\db\c3\f4\02\22\002\0a\08\90\83\a6\c6\c7\b8\a6\c3\17";
-      blob "\0a\22\0a \912w)\02\f3a\9e\bc+\eax\e8D\b9\c9\09\14\12\cc%ZNRJ\06\c7?\a8\d1\97/\12\0a\08\a8\cd\b5\fb\a6\ba\a6\c3\17\1aW\1aS\0a\22\0a \0amCu\816\9bTj\fd\efa<\a9\c0\81\a2R\ca,F\e7\ec)\e5\10\bc\10\b2\13\fa\27\12\22\0a \930\d6\d8\cd\8ar\a5\a9Z\b7\d6@P\18\c4\ca^\bd\0cN\c1o6\eb\91\dbu\14\bd\86#\1a\04\08\a0\8d\06\22\03\08\90N\22\00";
-    };
-    chain_length = 2 : nat64;
-  },
+  record {
+    blocks = vec {
+      blob "\12\0a\08\90\83\a6\c6\c7\b8\a6\c3\17\1a=\12-\12\22\0a \0amCu\816\9bTj\fd\efa<\a9\c0\81\a2R\ca,F\e7\ec)\e5\10\bc\10\b2\13\fa\27\1a\07\08\80\d0\db\c3\f4\02\22\002\0a\08\90\83\a6\c6\c7\b8\a6\c3\17";
+      blob "\0a\22\0a \912w)\02\f3a\9e\bc+\eax\e8D\b9\c9\09\14\12\cc%ZNRJ\06\c7?\a8\d1\97/\12\0a\08\a8\cd\b5\fb\a6\ba\a6\c3\17\1aW\1aS\0a\22\0a \0amCu\816\9bTj\fd\efa<\a9\c0\81\a2R\ca,F\e7\ec)\e5\10\bc\10\b2\13\fa\27\12\22\0a \930\d6\d8\cd\8ar\a5\a9Z\b7\d6@P\18\c4\ca^\bd\0cN\c1o6\eb\91\dbu\14\bd\86#\1a\04\08\a0\8d\06\22\03\08\90N\22\00";
+    };
+    chain_length = 2 : nat64;
+  },
 )
 ```
 
@@ -326,7 +326,7 @@ Find out the principal of your default account:
 dfx identity get-principal
 ```
 
-In the case of this tutorial this returns:
+In the case of this tutorial, this returns:
 
 ```
 hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe
@@ -342,46 +342,46 @@ The result will include the initial mint operation as well as the transfer that 
 
 ```
 (
-  variant {
-    Ok = record {
-      balance = 99_999_890_000 : nat64;
-      transactions = vec {
-        record {
-          id = 1 : nat64;
-          transaction = record {
-            memo = 0 : nat64;
-            icrc1_memo = null;
-            operation = variant {
-              Transfer = record {
-                to = "9330d6d8cd8a72a5a95ab7d6405018c4ca5ebd0c4ec16f36eb91db7514bd8623";
-                fee = record { e8s = 10_000 : nat64 };
-                from = "0a6d437581369b546afdef613ca9c081a252ca2c46e7ec29e510bc10b213fa27";
-                amount = record { e8s = 100_000 : nat64 };
-              }
-            };
-            created_at_time = null;
-          };
-        };
-        record {
-          id = 0 : nat64;
-          transaction = record {
-            memo = 0 : nat64;
-            icrc1_memo = null;
-            operation = variant {
-              Mint = record {
-                to = "0a6d437581369b546afdef613ca9c081a252ca2c46e7ec29e510bc10b213fa27";
-                amount = record { e8s = 100_000_000_000 : nat64 };
-              }
-            };
-            created_at_time = opt record {
-              timestamp_nanos = 1_695_211_378_870_682_000 : nat64;
-            };
-          };
-        };
-      };
-      oldest_tx_id = opt (0 : nat64);
-    }
-  },
+  variant {
+    Ok = record {
+      balance = 99_999_890_000 : nat64;
+      transactions = vec {
+        record {
+          id = 1 : nat64;
+          transaction = record {
+            memo = 0 : nat64;
+            icrc1_memo = null;
+            operation = variant {
+              Transfer = record {
+                to = "9330d6d8cd8a72a5a95ab7d6405018c4ca5ebd0c4ec16f36eb91db7514bd8623";
+                fee = record { e8s = 10_000 : nat64 };
+                from = "0a6d437581369b546afdef613ca9c081a252ca2c46e7ec29e510bc10b213fa27";
+                amount = record { e8s = 100_000 : nat64 };
+              }
+            };
+            created_at_time = null;
+          };
+        };
+        record {
+          id = 0 : nat64;
+          transaction = record {
+            memo = 0 : nat64;
+            icrc1_memo = null;
+            operation = variant {
+              Mint = record {
+                to = "0a6d437581369b546afdef613ca9c081a252ca2c46e7ec29e510bc10b213fa27";
+                amount = record { e8s = 100_000_000_000 : nat64 };
+              }
+            };
+            created_at_time = opt record {
+              timestamp_nanos = 1_695_211_378_870_682_000 : nat64;
+            };
+          };
+        };
+      };
+      oldest_tx_id = opt (0 : nat64);
+    }
+  },
 )
 ```
 
@@ -391,10 +391,10 @@ The result will include the initial mint operation as well as the transfer that 
 
 
 You can check that the synchronization of the index is working by creating a transaction on the ICRC-1 ledger and then checking the status of that transaction.
-If you followed the guide on setting up an ICRC-1 ledger locally, your default identity should have some ICRC-1 to be send.
+If you followed the guide on setting up an ICRC-1 ledger locally, your default identity should have some ICRC-1 to be sent.
 Send some ICRC-1 to any principal.
 ```
-dfx canister call icrc1_ledger_canister icrc1_transfer '(record { to = record { owner = principal "npki3-wdfh4-siaeq-orwh4-bh5of-r7mxr-i35lm-6f2eh-rtmwp-dmzmn-tae";};  amount = 100000:nat;})'
+dfx canister call icrc1_ledger_canister icrc1_transfer '(record { to = record { owner = principal "npki3-wdfh4-siaeq-orwh4-bh5of-r7mxr-i35lm-6f2eh-rtmwp-dmzmn-tae";};  amount = 100000:nat;})'
 ```
 
 ```
@@ -410,75 +410,75 @@ It should now indicate that an additional block was synced compared to the last 
 #### Fetch blocks
 
 You can use the ICRC-1 index canister to fetch blocks like so.
-You have to specify the block at which you want to start fetching from (i.e. the lowest index you want to fetch). If you want to start from the beginning you have to set start to 0. Similarly, the length parameter indicates the number of blocks you would like to fetch. Since the last status call indicated that there are two blocks that were synced you can set this to 2. Note that if you specify more than 2 blocks it will simply return the maximum number of blocks the index contains (The limit of blocks per call is usually set to 2000 blocks).
+You have to specify the block at which you want to start fetching from (i.e., the lowest index you want to fetch). If you want to start from the beginning, you have to set start to 0. Similarly, the length parameter indicates the number of blocks you would like to fetch. Since the last status call indicated that there are two blocks that were synced, you can set this to 2. Note that if you specify more than 2 blocks, it will simply return the maximum number of blocks the index contains (the limit of blocks per call is usually set to 2000 blocks).
 
 ```
 dfx canister call icrc1_index_canister get_blocks '(record{start=0:nat;length=2:nat})'
 ```
 
-Which will return a vector the encoded blocks:
+Which will return a vector of the encoded blocks:
 
 ```
 (
-  record {
-    blocks = vec {
-      variant {
-        Map = vec {
-          record { "ts"; variant { Int = 1_695_375_155_855_058_000 : int } };
-          record {
-            "tx";
-            variant {
-              Map = vec {
-                record { "amt"; variant { Int = 10_000_000_000 : int } };
-                record { "op"; variant { Text = "mint" } };
-                record {
-                  "to";
-                  variant {
-                    Array = vec {
-                      variant { Blob = blob "X\b30\04\8f\bcCE\e3\99\f9\7f{v\bd\f8\f8\fbHO\ce\15z/F\27\b03\02" };
-                    }
-                  };
-                };
-                record {
-                  "ts";
-                  variant { Int = 1_695_375_155_855_058_000 : int };
-                };
-              }
-            };
-          };
-        }
-      };
-      variant {
-        Map = vec {
-          record {
-            "phash";
-            variant {
-              Blob = blob "6\f0\02\d0\b0?3x\0b!\18e2\a6)h\b2z\82\cfz\0f\d5\ec>C\e4\05\a3\e0{\e6"
-            };
-          };
-          record { "ts"; variant { Int = 1_695_375_453_656_274_000 : int } };
-          record {
-            "tx";
-            variant {
-              Map = vec {
-                record { "amt"; variant { Int = 100_000 : int } };
-                record { "op"; variant { Text = "mint" } };
-                record {
-                  "to";
-                  variant {
-                    Array = vec {
-                      variant { Blob = blob "e?$\80\12\0e\8d\8f\c0\9f\ae,~\cb\c5\1b\ea\d9\e2\e8\87\8c\d9g\8d\99cf\02" };
-                    }
-                  };
-                };
-              }
-            };
-          };
-        }
-      };
-    };
-    chain_length = 2 : nat64;
-  },
+  record {
+    blocks = vec {
+      variant {
+        Map = vec {
+          record { "ts"; variant { Int = 1_695_375_155_855_058_000 : int } };
+          record {
+            "tx";
+            variant {
+              Map = vec {
+                record { "amt"; variant { Int = 10_000_000_000 : int } };
+                record { "op"; variant { Text = "mint" } };
+                record {
+                  "to";
+                  variant {
+                    Array = vec {
+                      variant { Blob = blob "X\b30\04\8f\bcCE\e3\99\f9\7f{v\bd\f8\f8\fbHO\ce\15z/F\27\b03\02" };
+                    }
+                  };
+                };
+                record {
+                  "ts";
+                  variant { Int = 1_695_375_155_855_058_000 : int };
+                };
+              }
+            };
+          };
+        }
+      };
+      variant {
+        Map = vec {
+          record {
+            "phash";
+            variant {
+              Blob = blob "6\f0\02\d0\b0?3x\0b!\18e2\a6)h\b2z\82\cfz\0f\d5\ec>C\e4\05\a3\e0{\e6"
+            };
+          };
+          record { "ts"; variant { Int = 1_695_375_453_656_274_000 : int } };
+          record {
+            "tx";
+            variant {
+              Map = vec {
+                record { "amt"; variant { Int = 100_000 : int } };
+                record { "op"; variant { Text = "mint" } };
+                record {
+                  "to";
+                  variant {
+                    Array = vec {
+                      variant { Blob = blob "e?$\80\12\0e\8d\8f\c0\9f\ae,~\cb\c5\1b\ea\d9\e2\e8\87\8c\d9g\8d\99cf\02" };
+                    }
+                  };
+                };
+              }
+            };
+          };
+        }
+      };
+    };
+    chain_length = 2 : nat64;
+  },
 )
 ```
 
@@ -502,33 +502,33 @@ The result will include the initial mint operation as well as the transfer that 
 
 ```
 (
-  variant {
-    Ok = record {
-      balance = 10_000_000_000 : nat;
-      transactions = vec {
-        record {
-          id = 0 : nat;
-          transaction = record {
-            burn = null;
-            kind = "mint";
-            mint = opt record {
-              to = record {
-                owner = principal "hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe";
-                subaccount = null;
-              };
-              memo = null;
-              created_at_time = opt (1_695_375_155_855_058_000 : nat64);
-              amount = 10_000_000_000 : nat;
-            };
-            approve = null;
-            timestamp = 1_695_375_155_855_058_000 : nat64;
-            transfer = null;
-          };
-        };
-      };
-      oldest_tx_id = opt (0 : nat);
-    }
-  },
+  variant {
+    Ok = record {
+      balance = 10_000_000_000 : nat;
+      transactions = vec {
+        record {
+          id = 0 : nat;
+          transaction = record {
+            burn = null;
+            kind = "mint";
+            mint = opt record {
+              to = record {
+                owner = principal "hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe";
+                subaccount = null;
+              };
+              memo = null;
+              created_at_time = opt (1_695_375_155_855_058_000 : nat64);
+              amount = 10_000_000_000 : nat;
+            };
+            approve = null;
+            timestamp = 1_695_375_155_855_058_000 : nat64;
+            transfer = null;
+          };
+        };
+      };
+      oldest_tx_id = opt (0 : nat);
+    }
+  },
 )
 ```
 
@@ -541,7 +541,7 @@ The result will include the initial mint operation as well as the transfer that 
 <AdornedTabs groupId="standards">
 <TabItem value="icp" label="ICP" default>
 
-The ICP ledger uses an `AccountIdentifier`, which is calculated by hashing a Principal and Subaccount. This also means that the returned transactions will show accounts as the hash in bytes rather than the actual Accounts.
+The ICP ledger uses an `AccountIdentifier`, which is calculated by hashing a Principal and Subaccount. This also means that the returned transactions will show accounts as the hash in bytes.
 
 For example, the default principal `hdq6b-ncywm-yajd5-4inc6-hgpzp-55xnp-py7d5-uqt6o-cv5c6-rrhwa-zqe` with no subaccount set results in the hash `0a6d437581369b546afdef613ca9c081a252ca2c46e7ec29e510bc10b213fa27`.
 

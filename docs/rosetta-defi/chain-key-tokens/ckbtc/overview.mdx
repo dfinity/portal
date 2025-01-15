@@ -6,7 +6,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # ckBTC
 
-<MarkdownChipRow labels={["Advanced", "Bitcoin" ]} />
+<MarkdownChipRow labels={["Advanced", "Bitcoin", "Chain-key tokens" ]} />
 
 ## What is ckBTC?
 
@@ -14,7 +14,7 @@ Chain-key Bitcoin (ckBTC) is an [ICRC-2](https://github.com/dfinity/ICRC-1/blob/
 
 ckBTC does not rely on a centralized bridge to facilitate the conversion between BTC and ckBTC, which makes it substantially more secure when compared to other traditional 'wrapped' tokens.
 
-ckBTC and BTC have the same value and can be swapped for one another seamlessly, however ckBTC has several advantages. ckBTC has faster transactions that are finalized within a few seconds, and ckBTC transactions on ICP are significantly cheaper than those on the Bitcoin network.
+ckBTC and BTC have the same value and can be swapped for one another seamlessly; however, ckBTC has several advantages. ckBTC has faster transactions that are finalized within a few seconds, and ckBTC transactions on ICP are significantly cheaper than those on the Bitcoin network.
 
 ## Why you should use ckBTC
 
@@ -38,11 +38,11 @@ The ckBTC functionality is provided through an interplay of two canisters:
 - The **ckBTC minter**.
 - The **ckBTC ledger**.
 
-| Canister / contract                                                                                   | Bitcoin mainnet                                                                                                                                                                    | Bitcoin testnet                                                                                                                                                                     |
+| Canister / contract                                                                                   | Bitcoin mainnet                                                                                                                                                                    | Bitcoin testnet                                                                                                                                                                     |
 | --------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Minter](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter)                        | [mqygn-kiaaa-aaaar-qaadq-cai](https://dashboard.internetcomputer.org/canister/mqygn-kiaaa-aaaar-qaadq-cai) | [ml52i-qqaaa-aaaar-qaaba-cai](https://dashboard.internetcomputer.org/canister/ml52i-qqaaa-aaaar-qaaba-cai) |
-| [Ledger](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/ledger)                     | [mxzaz-hqaaa-aaaar-qaada-cai](https://dashboard.internetcomputer.org/canister/mxzaz-hqaaa-aaaar-qaada-cai)                                                                          | [mc6ru-gyaaa-aaaar-qaaaq-cai](https://dashboard.internetcomputer.org/canister/mc6ru-gyaaa-aaaar-qaaaq-cai)                                                                          |
-| [Index](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/index-ng)                    | [n5wcd-faaaa-aaaar-qaaea-cai](https://dashboard.internetcomputer.org/canister/n5wcd-faaaa-aaaar-qaaea-cai)                                                                          | [mm444-5iaaa-aaaar-qaabq-cai](https://dashboard.internetcomputer.org/canister/mm444-5iaaa-aaaar-qaabq-cai)                                                                          |
+| [Minter](https://github.com/dfinity/ic/tree/master/rs/bitcoin/ckbtc/minter)                        | [mqygn-kiaaa-aaaar-qaadq-cai](https://dashboard.internetcomputer.org/canister/mqygn-kiaaa-aaaar-qaadq-cai) | [ml52i-qqaaa-aaaar-qaaba-cai](https://dashboard.internetcomputer.org/canister/ml52i-qqaaa-aaaar-qaaba-cai) |
+| [Ledger](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/ledger)                     | [mxzaz-hqaaa-aaaar-qaada-cai](https://dashboard.internetcomputer.org/canister/mxzaz-hqaaa-aaaar-qaada-cai)                                                                          | [mc6ru-gyaaa-aaaar-qaaaq-cai](https://dashboard.internetcomputer.org/canister/mc6ru-gyaaa-aaaar-qaaaq-cai)                                                                          |
+| [Index](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icrc1/index-ng)                    | [n5wcd-faaaa-aaaar-qaaea-cai](https://dashboard.internetcomputer.org/canister/n5wcd-faaaa-aaaar-qaaea-cai)                                                                          | [mm444-5iaaa-aaaar-qaabq-cai](https://dashboard.internetcomputer.org/canister/mm444-5iaaa-aaaar-qaabq-cai)                                                                          |
 
 
 The **ckBTC ledger** is responsible for keeping account balances and for transferring ckBTC between accounts. It provides the following functionality:

@@ -8,12 +8,10 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Governance", "Concept"]} />
 
-
-
 When planning an SNS launch, one topic to consider is whether and how the SNS functionality should be integrated in the dapp.
 For example, one may want to embed a frontend for the SNS swap or for the SNS governance in the dapp's UI.
 Other dapps can also provide such a frontend or integrate with some of the SNS canisters.
-For example, DEXs might want to interact with the SNS ledger canisters or wallet dapps might want to provide an interface to interact with the different SNS governance canisters.
+For example, DEXs might want to interact with the SNS ledger canisters, or wallet dapps might want to provide an interface to interact with the different SNS governance canisters.
 
 ## Ledger integration
 
@@ -22,23 +20,23 @@ as well as the account balances at the last block of the chain.
 A ledger canister is always deployed as part of the SNS canisters.
 The ledger canister follows the [ICRC-1](https://github.com/dfinity/ICRC-1) specification.
 
-For instructions on how to install the ICRC-1 Ledger follow [ICRC-1 Ledger Deployment](/docs/current/rosetta-defi/token-ledgers/setup/icrc1_ledger_setup).
-For instructions on how to interact with the ICRC-1 Ledger follow [ICRC-1 Ledger Interaction](/docs/current/rosetta-defi/tokens/indexes).
+For instructions on how to install the ICRC-1 Ledger, follow [ICRC-1 Ledger Deployment](/docs/current/rosetta-defi/token-ledgers/setup/icrc1_ledger_setup).
+For instructions on how to interact with the ICRC-1 Ledger, follow [ICRC-1 Ledger Interaction](/docs/current/rosetta-defi/tokens/indexes).
 
 ## Index integration
 
 The index canister fetches transactions from the ledger canister and indexes them by **account**.
-It allows to query the transactions of an account in descending order from the ledger chain, and the list of accounts that belongs to a **principal**.
+It allows you to query the transactions of an account in descending order from the ledger chain and the list of accounts that belong to a **principal**.
 An index canister is always deployed as part of an SNS project.
 
 This canister is useful for applications that want to show the transactions of a specific account.
 
 Regularly (at each heartbeat), the index canister will query the transactions from
-the ledger canister and then build the index of known transaction per account.
+the ledger canister and then build the index of known transactions per account.
 
 ### Initialization
 
-This sections explains how to deploy an index canister in isolation.
+This section explains how to deploy an index canister in isolation.
 When the NNS creates a new SNS for a dapp, it will automatically be deployed with an SNS index canister.
 
 The index canister initialization requires the principal of the ICRC-1 ledger canister that should be indexed:
@@ -53,8 +51,8 @@ Example with `dfx`:
 
 ```shell
 dfx deploy icrc1-index --argument "(record {
-      ledger_id = principal \"rrkah-fqaaa-aaaaa-aaaaq-cai\"
-    }
+      ledger_id = principal \"rrkah-fqaaa-aaaaa-aaaaq-cai\"
+    }
 )"
 ```
 
@@ -65,8 +63,8 @@ The provided methods are:
 ```
 get_account_transactions : (GetAccountTransactionsArgs) -> (GetTransactionsResult);
 ```
-- This method returns the transactions for a given account. Transactions are returned in descending id order.
-Optionally, the user can specify a starting transaction id allowing to only query for transactions before this id. If no start is specified, the last transaction is used.
+- This method returns the transactions for a given account. Transactions are returned in descending ID order.
+Optionally, the user can specify a starting transaction ID, allowing them to only query for transactions before this ID. If no start is specified, the last transaction is used.
 
 ```
 ledger_id : () -> (principal) query;
@@ -86,7 +84,7 @@ Please check the [Candid file](https://github.com/dfinity/ic/blob/master/rs/ledg
 
 There are different reasons why you might want to interface with an SNS project.
 For example, you might want to integrate some of the SNS DAO functionality in the frontend of your dapp canister such that the dapp users can also vote on relevant SNS proposals (that govern and change the dapp) directly in the same application.
-However, you might also consider interfacing with SNSs if you work on a project that builds a wallet dapp or DEX, for example to provide an interface to the SNS swap, the SNS governance, or the SNS ledger.
+However, you might also consider interfacing with SNSs if you work on a project that builds a wallet dapp or DEX, for example, to provide an interface to the SNS swap, the SNS governance, or the SNS ledger.
 
 ### sns-js library
 For interfacing with an SNS project, you can use the [sns-js library](https://github.com/dfinity/ic-js/blob/main/packages/sns/README.md).

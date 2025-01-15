@@ -7,13 +7,11 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Cycles ledger
 
-<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
-
-
+<MarkdownChipRow labels={["Beginner", "Cycles", "Ledger"]} />
 
 When developing and deploying canisters on the Internet Computer, developers need to have <GlossaryTooltip>cycles</GlossaryTooltip> to pay for the resources used by their canisters. The **cycles ledger** canister has been developed as an alternative to the **cycles wallet** canister for cycles management.
 
-The biggest difference between the cycles <GlossaryTooltip>ledger</GlossaryTooltip> and cycles wallet is that the cycles ledger is a single global ledger canister, whereas the cycles wallet canister must be deployed separately for every developer to be used. Additionally, the cycles wallet has some downsides that the cycles ledger remedies. Some of these are:
+The biggest difference between the cycles <GlossaryTooltip>ledger</GlossaryTooltip> and cycles wallet is that the cycles ledger is a single global ledger canister, whereas the cycles wallet canister must be deployed separately for every developer to use. Additionally, the cycles wallet has some downsides that the cycles ledger remedies. Some of these are:
 
 - Cycles wallets are a complex solution to associate cycles with <GlossaryTooltip>principal</GlossaryTooltip> IDs.
 - Cycles wallets consume cycles themselves, meaning developers need to pay cycles to store cycles.
@@ -178,13 +176,11 @@ To help transition from the commands and workflows you may be accustomed to usin
 All commands shown below are for workflows involving mainnet development. For local development, omit the `--network ic` flag.
 :::
 
-| Function              | Cycles wallet command | Cycles ledger command |
+| Function              | Cycles wallet command | Cycles ledger command |
 |-----------------------|-----------------------|-----------------------|
-| Checking the cycles balance | `dfx wallet balance --network ic`  | `dfx cycles balance --network ic` |
-| Converting ICP tokens into cycles | `dfx ledger create-canister PRINCIPAL_ID --amount AMOUNT --network ic` |  `dfx cycles convert --amount AMOUNT --network ic` |
-| Transferring cycles |  `dfx wallet send PRINCIPAL_ID AMOUNT --network ic`   | `dfx cycles transfer AMOUNT PRINCIPAL_ID (--subaccount [SUBACCOUNT]) --network ic` |
-| Redeeming a cycles coupon |  `dfx wallet redeem-faucet-coupon 'ABCDE-ABCDE-ABCDE'`     |  `dfx cycles redeem-faucet-coupon ABCDE-ABCDE-ABCDE --network ic`  |
-| Topping up a canister     | `dfx wallet send PRINCIPAL_ID AMOUNT --network ic` | `dfx cycles top-up CANISTER_ID AMOUNT --network ic` |
-| Creating a canister with cycles | `dfx canister call CYCLES_WALLET_CANISTER_ID wallet_create_canister '(record { cycles = 5000000000000 : nat64; controller = principal "PRINCIPAL_ID"})' --network ic` |  `dfx canister create CANISTER_NAME --with-cycles AMOUNT --network ic` |
-
-
+| Checking the cycles balance | `dfx wallet balance --network ic`  | `dfx cycles balance --network ic` |
+| Converting ICP tokens into cycles | `dfx ledger create-canister PRINCIPAL_ID --amount AMOUNT --network ic` |  `dfx cycles convert --amount AMOUNT --network ic` |
+| Transferring cycles |  `dfx wallet send PRINCIPAL_ID AMOUNT --network ic`   | `dfx cycles transfer AMOUNT PRINCIPAL_ID (--subaccount [SUBACCOUNT]) --network ic` |
+| Redeeming a cycles coupon |  `dfx wallet redeem-faucet-coupon 'ABCDE-ABCDE-ABCDE'`     |  `dfx cycles redeem-faucet-coupon ABCDE-ABCDE-ABCDE --network ic`  |
+| Topping up a canister     | `dfx wallet send PRINCIPAL_ID AMOUNT --network ic` | `dfx cycles top-up CANISTER_ID AMOUNT --network ic` |
+| Creating a canister with cycles | `dfx canister call CYCLES_WALLET_CANISTER_ID wallet_create_canister '(record { cycles = 5000000000000 : nat64; controller = principal "PRINCIPAL_ID"})' --network ic` |  `dfx canister create CANISTER_NAME --with-cycles AMOUNT --network ic` |

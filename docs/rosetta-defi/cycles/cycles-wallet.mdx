@@ -9,14 +9,14 @@ import Tabs from "@theme/Tabs";
 
 # Using a cycles wallet
 
-<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
+<MarkdownChipRow labels={["Beginner", "Cycles"]} />
 
 As discussed in [tokens and cycles](/docs/current/building-dapps/getting-started/tokens-and-cycles), ICP tokens can be converted into **cycles** to power <GlossaryTooltip>canister</GlossaryTooltip> operations. Cycles reflect the operational cost of communication, computation, and storage that dapps consume.
 
 Unlike ICP tokens, cycles are only associated with canisters and not with user or developer <GlossaryTooltip>principals</GlossaryTooltip>. Because only canisters require cycles to perform operations and pay for the resources they use, users and developers can manage the distribution and ownership of cycles through a special type of canister called a **cycles wallet**.
 
 :::caution
-Please note that the cycles wallet will be removed from dfx in a future release. We recommend using the [cycles ledger](/docs/current/rosetta-defi/token-ledgers/cycles-ledger) feature instead, which simplifies the cycles management workflow.
+Please note that the cycles wallet will be removed from `dfx` in a future release. We recommend using the [cycles ledger](/docs/current/rosetta-defi/token-ledgers/cycles-ledger) feature instead, which simplifies the cycles management workflow.
 :::
 
 The cycles wallet holds the cycles required to perform operations such as creating new canisters. These operations are executed using the canister <GlossaryTooltip>principal</GlossaryTooltip> of the cycles wallet instead of your user principal.
@@ -107,7 +107,7 @@ Transfer sent at BlockHeight: 20
 Canister created with id: "gastn-uqaaa-aaaae-aaafq-cai"
 ```
 
-- #### Step 2: Install the cycles wallet code in the newly-created canister ID by running the command:
+- #### Step 2: Install the cycles wallet code in the newly created canister ID by running the command:
 
 ```
 dfx identity --network ic deploy-wallet <canister-identifier>
@@ -237,7 +237,7 @@ dfx wallet deauthorize PRINCIPAL_ID --network ic // Mainnet
 
 ### `dfx wallet` reference
 
-For reference information and examples that illustrate using dfx wallet commands, select an appropriate command.
+For reference information and examples that illustrate using `dfx wallet` commands, select an appropriate command.
 
 - [`add-controller`](/docs/current/building-dapps/developer-tools/dfx/dfx-wallet#dfx-wallet-add-controller): Add a controller using the selected identity's principal.
 - [`addresses`](/docs/current/building-dapps/developer-tools/dfx/dfx-wallet#dfx-wallet-addresses): Displays the address book of the cycles wallet.

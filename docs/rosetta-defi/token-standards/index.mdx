@@ -1,5 +1,5 @@
 ---
-keywords: [intermediate, defi,  tokens, icrc-1, icrc-2, icrc-3]
+keywords: [intermediate, defi,  tokens, icrc-1, icrc-2, icrc-3, token standards, icrc standard, tokens, standards]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -8,13 +8,11 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Token standards
 
-<MarkdownChipRow labels={["Intermediate", "Concept"]} />
-
-
+<MarkdownChipRow labels={["Intermediate", "Tokens"]} />
 
 Tokens deployed on ICP must adhere to a standard. The network's native token, ICP, adheres to its own standard as it is unique on the network in the sense that it is used for network utility and governance. Tokens created for other purposes on the network typically adhere to one of the ICRC standards.
 
-[ICRC](https://github.com/dfinity/ICRC) stands for `Internet Computer Request for Comments'. ICRC standards are proposed by the community working group and are not specific to tokens; they can be created for anything on ICP, such as services, <GlossaryTooltip>canister</GlossaryTooltip> calls, or authentication methods. However, this documentation will detail the ICRC standards that are specific to tokens.
+[ICRC](https://github.com/dfinity/ICRC) stands for `Internet Computer Request for Comments.' ICRC standards are proposed by the community working group and are not specific to tokens; they can be created for anything on ICP, such as services, <GlossaryTooltip>canister</GlossaryTooltip> calls, or authentication methods. However, this documentation will detail the ICRC standards that are specific to tokens.
 
 In the past, the [DIP-721](#dip-721) standard was promoted and used by projects on the network for deploying non-fungible tokens. The ICRC-7 standard has since been developed as a newer alternative to the DIP-721 standard.
 
@@ -98,7 +96,7 @@ Example ICRC-2 tokens on ICP include:
 
 - ckUSDC
 
-View an example of dapp for an [ICRC-2 token swap](https://github.com/dfinity/examples/tree/master/motoko/icrc2-swap).
+View an example of a dapp for an [ICRC-2 token swap](https://github.com/dfinity/examples/tree/master/motoko/icrc2-swap).
 
 View an example of a dapp that enables the [`transfer_from` workflow](https://github.com/dfinity/examples/tree/master/motoko/token_transfer_from).
 
@@ -114,9 +112,9 @@ ICRC-7 defines a standard for non-fungible tokens (NFTs) on ICP and can be used 
 
 - Pre-signed transactions.
 
-ICRC-7 accounts have the same structure and follow the same overall principles as ICRC-1 accounts. ICRC-7 views the ICRC-1 `Account` as a primary concept, meaning that operations like transfers always refer to the full account and not only the principal portion. Some methods include an extra optional `from_subaccount` or `spender_subaccount` parameter that, together with the caller, forms an account to perform the respective operation on. Leaving such `subaccount` parameter `null` is executed the same as referring to the default subaccount comprised of all zeroes.
+ICRC-7 accounts have the same structure and follow the same overall principles as ICRC-1 accounts. ICRC-7 views the ICRC-1 `Account` as a primary concept, meaning that operations like transfers always refer to the full account and not only the principal portion. Some methods include an extra optional `from_subaccount` or `spender_subaccount` parameter that, together with the caller, forms an account to perform the respective operation on. Leaving such a `subaccount` parameter `null` is executed the same as referring to the default subaccount comprised of all zeroes.
 
-An extension of ICRC-7, ICRC-37, extends the standard in the same manner that ICRC-2 extends ICRC-1 as it enables spender approval functionality.
+An extension of ICRC-7, ICRC-37 extends the standard in the same manner that ICRC-2 extends ICRC-1, as it enables spender approval functionality.
 
 ### Token metadata
 

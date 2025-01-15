@@ -9,9 +9,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Making ckERC20 transactions
 
-<MarkdownChipRow labels={["Advanced", "Ethereum", "Tutorial"]} />
-
-
+<MarkdownChipRow labels={["Advanced", "Ethereum", "Chain-key tokens"]} />
 
 There are several different ways to interact with ckERC20 tokens:
 
@@ -35,7 +33,7 @@ corresponding ckERC20 token exists.
 
 :::
 
-The return value contains a vector `supported_ckerc20_tokens`, which lists all ckERC20 tokens.
+The return value contains a vector, `supported_ckerc20_tokens`, which lists all ckERC20 tokens.
 The return value also contains the field `erc20_helper_contract_address`, which states the **helper smart contract** address on Ethereum used in the conversion flows.
 
 The ckERC20 helper contract addresses can be found below:
@@ -82,7 +80,7 @@ The user must further approve the ckETH minter to transfer the desired amount of
 dfx canister --ic call CKERC20_LEDGER icrc2_approve "(record { spender = record { owner = principal \"$(dfx canister id minter --ic)\" }; amount = CKERC20_TOKEN_AMOUNT:nat })"
 ```
 
-The placeholder `CKERC20_LEDGER` must be replaced by the canister ID of the corresponding ckERC20 ledger and `CKERC20_TOKEN_AMOUNT` must be replaced by the desired amount, denominated in the smallest unit of the token. For example, USDC and ckUSDC use 6 decimals, so 1 USDC must be written as `1_000_000`.
+The placeholder `CKERC20_LEDGER` must be replaced by the canister ID of the corresponding ckERC20 ledger, and `CKERC20_TOKEN_AMOUNT` must be replaced by the desired amount, denominated in the smallest unit of the token. For example, USDC and ckUSDC use 6 decimals, so 1 USDC must be written as `1_000_000`.
 
 The last step is to call the `withdraw_erc20` function on the ckETH minter as follows.
 
@@ -101,7 +99,7 @@ ckERC20 tokens are ICRC-1 and ICRC-2 compliant and can therefore be transferred 
 dfx canister --ic call CKERC20_LEDGER "(record { to = DESTINATION_ACCOUNT; amount = AMOUNT:nat})"
 ```
 
-The placeholders `CKERC20_LEDGER`, `DESTINATION_ACCOUNT`, and `AMOUNT` must be replaced by the canister ID of the targeted ckERC20 ledger, the destination account, and the desired amount, respectively. More information about the `icrc1_tranfer` function can be found in the [ICRC-1 standard specification](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1).
+The placeholders `CKERC20_LEDGER`, `DESTINATION_ACCOUNT`, and `AMOUNT` must be replaced by the canister ID of the targeted ckERC20 ledger, the destination account, and the desired amount, respectively. More information about the `icrc1_transfer` function can be found in the [ICRC-1 standard specification](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1).
 
 :::info
 
