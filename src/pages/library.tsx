@@ -1,14 +1,16 @@
-import Link from "@docusaurus/Link";
+import React, { useEffect, useRef, useState } from "react";
+
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import ShareMeta from "@site/src/components/Common/ShareMeta";
-import { useDarkHeaderInHero } from "@site/src/utils/use-dark-header-in-hero";
-import transitions from "@site/static/transitions.json";
-import Layout from "@theme/Layout";
-import { motion } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
 import DownloadIcon from "../components/Common/Icons/DownloadIcon";
+import Layout from "@theme/Layout";
+import Link from "@docusaurus/Link";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
+import ShareMeta from "@site/src/components/Common/ShareMeta";
+import { is } from "date-fns/locale";
+import { motion } from "framer-motion";
+import transitions from "@site/static/transitions.json";
+import { useDarkHeaderInHero } from "@site/src/utils/use-dark-header-in-hero";
 
 const quickstartCards = [
   {
@@ -23,11 +25,18 @@ const quickstartCards = [
 
 const presentationCards = [
   {
-    title: "ICP makes the Internet into a World Computer",
+    title: "Internet Computer – The World Computer Paradigm",
+    description: "deck.internetcomputer.org",
     url: "https://internetcomputer.docsend.com/view/dzkwezufykwpb7p8",
   },
   {
-    title: "UTOPIA",
+    title: "Where Al Builds - Internet Computer Protocol",
+    description: "deck.icp.ai",
+    url: "https://internetcomputer.docsend.com/view/a64n9c467asbk5de",
+  },
+  {
+    title: "UTOPIA – Create private clouds using ICP technology",
+    description: "deck.utopia.com",
     url: "https://utopia.docsend.com/view/ez8f34n53q2fg2de",
   },
 ];
@@ -140,7 +149,8 @@ const LibraryCard: React.FC<{
   description?: string;
   url: string;
   highlighted?: boolean;
-}> = ({ title, subtitle, description, url, highlighted }) => {
+  isDownload?: boolean;
+}> = ({ title, subtitle, description, url, highlighted, isDownload }) => {
   return (
     <Link
       className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform h-full"
@@ -184,7 +194,7 @@ const LibraryCard: React.FC<{
             }`}
             aria-label={`Download`}
           >
-            <LinkArrowRight />
+            {isDownload ? <DownloadIcon /> : <LinkArrowRight />}
           </div>
         </div>
       </article>
@@ -250,7 +260,7 @@ function Library() {
           </h2>
           <div className="mt-4 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
             {quickstartCards.map((card) => (
-              <LibraryCard key={card.title} title={card.title} url={card.url} />
+              <LibraryCard key={card.title} title={card.title} url={card.url} isDownload />
             ))}
           </div>
         </section>
@@ -260,7 +270,7 @@ function Library() {
           </h2>
           <div className="mt-4 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
             {presentationCards.map((card) => (
-              <LibraryCard key={card.title} title={card.title} url={card.url} />
+              <LibraryCard key={card.title} title={card.title} description={card.description} url={card.url} />
             ))}
           </div>
         </section>
