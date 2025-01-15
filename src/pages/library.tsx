@@ -209,7 +209,7 @@ function Library() {
   return (
     <Layout
       title="Library"
-      description="Find resources to learn more about the Internet Computer and its capabilities."
+      description="Documents introducing the Internet Computer and ICP, the self-writing internet, UTOPIA clouds, and technical papers…"
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-library.webp"></ShareMeta>
@@ -241,8 +241,7 @@ function Library() {
               variants={transitions.item}
               className="tw-lead-sm md:tw-lead md:w-7/12 mb-0 text-white-80"
             >
-              Find resources to learn more about the Internet Computer and its
-              capabilities.
+              Documents introducing the Internet Computer and ICP, the self-writing internet, UTOPIA clouds, and technical papers…
             </motion.p>
             <motion.div className="container-12 relative pointer-events-none">
               <div className="absolute w-7/12 translate-x-[25%] translate-y-[95%] bottom-1/2 sm:w-3/12 sm:translate-y-[105%] md:w-4/12 md:bottom-0 md:translate-x-[200%] md:translate-y-2/3">
@@ -256,7 +255,7 @@ function Library() {
         </div>
         <section className="container-10 mt-8 py-20">
           <h2 className="tw-heading-4 md:tw-heading-60 mb-1 md:mb-3">
-            Quick Starts
+            In a Nutshell…
           </h2>
           <div className="mt-4 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
             {quickstartCards.map((card) => (
@@ -266,7 +265,7 @@ function Library() {
         </section>
         <section className="container-10 pt-4 pb-20 md:py-12 ">
           <h2 className="tw-heading-4 md:tw-heading-60 mb-1 md:mb-3">
-            Presentations
+            Online Decks
           </h2>
           <div className="mt-4 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
             {presentationCards.map((card) => (
@@ -276,7 +275,7 @@ function Library() {
         </section>
         <section className="container-10 py-4 md:py-20 mb-20">
           <h2 className="tw-heading-4 md:tw-heading-60 mb-1 md:mb-3">
-            Whitepapers
+            Technical Papers
           </h2>
           <div className="mt-4 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
             {whitepaperCards.map((card, idx) => (
