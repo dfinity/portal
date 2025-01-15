@@ -236,8 +236,13 @@ const sidebars = {
                     },
                     {
                       type: "doc",
-                      id: "developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http",
+                      id: "developer-docs/web-apps/http-compatible-canisters/serving-static-assets-ic-assets",
                       label: "Serving static assets over HTTP",
+                    },
+                    {
+                      type: "doc",
+                      id: "developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http",
+                      label: "Serving static assets over HTTP (custom)",
                     },
                   ],
                 },
