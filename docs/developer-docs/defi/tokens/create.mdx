@@ -161,22 +161,22 @@ The initialization and upgrade arguments of the ICRC-1 ledger are not specified 
 
 Token metadata, such as the token name, symbol, and logo, is set using the [`InitArgs`](https://github.com/dfinity/ic/blob/ad6df00098cf25d8df29a469c0a4504979a411c1/rs/ledger_suite/icrc1/ledger/src/lib.rs#L253-L266) when the ledger is installed.
 This metadata can subsequently be changed using the [`UpgradeArgs`](https://github.com/dfinity/ic/blob/ad6df00098cf25d8df29a469c0a4504979a411c1/rs/ledger_suite/icrc1/ledger/src/lib.rs#L324-L342) when the ledger is upgraded.
-Note that a such an upgrade can also be performed by upgrading the ledger canister to the same WASM that it is currently running, which results in the metadata being changed, but the functional behavior of the ledger otherwise remaining the same.
+Note that such an upgrade can also be performed by upgrading the ledger canister to the same Wasm that it is currently running, which results in the metadata being changed, but the functional behavior of the ledger otherwise remaining the same.
 
-The reference implementation of the ICRC-1 ledger interprets some metadata, whereas other metadata is simply stored, and returned in the response to an `icrc1_metadata` query.
+The reference implementation of the ICRC-1 ledger interprets some metadata, whereas other metadata is simply stored and returned in the response to an `icrc1_metadata` query.
 The former covers the following:
 
-- The token name
+- The token name.
 
-- The token symbol
+- The token symbol.
 
-- The number of decimals
+- The number of decimals.
 
-- The transaction fee
+- The transaction fee.
 
-The above values SHALL be set using the explicitly provided fields in the `InitArgs` or `UpgradeArgs`, for canister installs or upgrades, respectively, e.g., the `token_symbol` field for setting the token symbol.
-Other metadata, such as the token logo, SHALL be set as `(key, value)` pairs in the `metadata` `Vec`.
-The format SHOULD follow what is specified in the [standard](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1#metadata), e.g., for the token logo, the metadata key SHALL be `icrc1:logo`.
+The above values should be set using the explicitly provided fields in the `InitArgs` or `UpgradeArgs`, for canister installs or upgrades, respectively, e.g., the `token_symbol` field for setting the token symbol.
+Other metadata, such as the token logo, should be set as `(key, value)` pairs in the `metadata` `Vec`.
+The format **should** follow what is specified in the [standard](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1#metadata), e.g., for the token logo, the metadata key should be `icrc1:logo`.
 
 ## Next steps
 
