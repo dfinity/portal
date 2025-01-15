@@ -5056,17 +5056,19 @@
     "github": "https://github.com/ldclabs/ic-tee"
   },
   {
-    
     "id": "officex",
     "name": "OfficeX",
     "oneLiner": "OfficeX Anonymous Workspace | Docs Sheets & Storage",
     "website": "https://officex.app",
-    "tags": ["SocialFi", "Tools / Infrastructure", "DAO"],
+    "tags": [
+      "SocialFi", 
+      "Tools / Infrastructure"
+    ],
     "github": "https://github.com/OfficeXApp",
     "twitter": "https://x.com/officexapp",
     "description": "OfficeX Anonymous Workspace - Documents, Spreadsheets & Cloud Storage. Instant access, no signup required, apocalypse-proof, and sovereign for 300M people censored by sanctions. Where Freedom Works.",
     "usesInternetIdentity": false,
-    "display": "Large",
+    "display": "Normal",
     "stats": "1000+ users",
     "logo": "/img/showcase/officex_logo.webp",
     "screenshots": ["/img/showcase/officex_screenshot.webp"]
