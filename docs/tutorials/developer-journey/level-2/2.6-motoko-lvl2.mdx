@@ -15,9 +15,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/uEx8We28-Sk?si=SQ1xGtZgX7Hiarbq" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
-
-
-As you've seen so far, **actors** are at the core functionality of canisters written in Motoko. In this tutorial, you'll explore actors further by taking a look at actor type definitions, how actors interact with async data, actor classes, and using multiple actors.
+As you've seen so far, **actors** are the core functionality of canisters written in Motoko. In this tutorial, you'll explore actors further by taking a look at actor type definitions, how actors interact with async data, actor classes, and using multiple actors.
 
 ## Actor types
 
@@ -26,16 +24,16 @@ In the same way that objects have different object types, actors have different 
 ```motoko
 actor Counter {
 
-  var count = 0;
+  var count = 0;
 
-  public shared func inc() : async () { count += 1 };
+  public shared func inc() : async () { count += 1 };
 
-  public shared func read() : async Nat { count };
+  public shared func read() : async Nat { count };
 
-  public shared func bump() : async Nat {
-    count += 1;
-    count;
-  };
+  public shared func bump() : async Nat {
+    count += 1;
+    count;
+  };
 };
 ```
 
@@ -55,31 +53,31 @@ This actor `Counter` has the following type:
 
 ```motoko no-repl
 actor {
-  inc  : shared () -> async ();
-  read : shared () -> async Nat;
-  bump : shared () -> async Nat;
+  inc  : shared () -> async ();
+  read : shared () -> async Nat;
+  bump : shared () -> async Nat;
 }
 ```
 
-In this definition, there are three 'members' of the actor which correlate to the three functions within the actor. Each of these functions have the modifier `shared`, which is defined in the actor type definition. Then, each member has the type that they return, such as `async ()` and `async Nat`.
+In this definition, there are three 'members' of the actor that correlate to the three functions within the actor. Each of these functions has the modifier `shared`, which is defined in the actor type definition. Then, each member has the type that they return, such as `async ()` and `async Nat`.
 
-In this type definition, you can see that each has the `shared` modifier for each member of the actor. Motoko allows you to omit this modifier when authoring an actor type, thus this can be simplified as:
+In this type definition, you can see that each has the `shared` modifier for each member of the actor. Motoko allows you to omit this modifier when authoring an actor type; thus, this can be simplified as:
 
 ```motoko no-repl
 actor {
-  inc  : () -> async ();
-  read : () -> async Nat;
-  bump : () -> async Nat;
+  inc  : () -> async ();
+  read : () -> async Nat;
+  bump : () -> async Nat;
 }
 ```
 
 ## Shared functions
 
-In the previous example, the only way to read or modify the `count` value in the Counter actor is through it's three `shared` functions. Shared functions are accessible through remote calls, meaning a user can submit a call to that function.
+In the previous example, the only way to read or modify the `count` value in the Counter actor is through its three `shared` functions. Shared functions are accessible through remote calls, meaning a user can submit a call to that function.
 
 A **local function** will block the entity making a call to the function until the function has returned a result.
 
-A **shared function** immediately returns a value known as a **future**. This future value indicates that an asynchronous value is expected to be returned, and can be represented in this tutorial as `f`. A call to `await f` will suspend any other computation in the origin of the call until `f` is complete. Once `f` is returned, the execution of the call's code resumes using the returned `f` result, which can be a value or an error.
+A **shared function** immediately returns a value known as a **future**. This future value indicates that an asynchronous value is expected to be returned and can be represented in this tutorial as `f`. A call to `await f` will suspend any other computation in the origin of the call until `f` is complete. Once `f` is returned, the execution of the call's code resumes using the returned `f` result, which can be a value or an error.
 
 A shared function's arguments and return value(s) must also be shared types. This is a subset of data types that includes shared function references, actor references, and immutable data, but does not include references to local functions or mutable data. Since interactions with actors are asynchronous, an actor's functions must return types in the form `async T`, where T is the data type.
 
@@ -89,12 +87,12 @@ In the previous example, you used `async Nat`. Currently, shared functions can o
 
 As you learned earlier, shared functions must be executed asynchronously and therefore must return data types in the form of `async Type`. When a call is made to a shared function, the `await` expression must be used to access the result of the returned async value.
 
-To access the result of an async value, the receiver of the future use an `await` expression. For example, using the `Counter` actor you used previously, you can use the result of `Counter.read()` by binding the result value to an identifier (`a`), then await `a` to retrieve the `async Nat` return value, `n`:
+To access the result of an async value, the receiver of the future uses an `await` expression. For example, using the `Counter` actor you used previously, you can use the result of `Counter.read()` by binding the result value to an identifier (`a`), then await `a` to retrieve the `async Nat` return value, `n`:
 
 ```motoko no-repl
 actor {
-  let a : async Nat = Counter.read();
-  let n : Nat = await a;
+  let a : async Nat = Counter.read();
+  let n : Nat = await a;
 }
 ```
 
@@ -108,7 +106,7 @@ These two lines can be combined into one to await an asynchronous call directly,
 
 ```motoko no-repl
 actor {
-  let n : Nat = await Counter.read();
+  let n : Nat = await Counter.read();
 }
 ```
 
@@ -118,7 +116,7 @@ Actor classes provide the ability for a series of actors to be created programma
 
 To distribute data, the set of keys (`k`) will be partitioned into `n` buckets. For this example, you'll set `n` as a fixed value of `8`.
 
-The bucket index value (`i`) for the value of `k`, will be determined by the remainder value of `k` divided by `n`. Then, the `i`th bucket will receive a dedicated actor used to store the text values (`v`) associated with the keys in the bucket.
+The bucket index value (`i`) for the value of `k` will be determined by the remainder value of `k` divided by `n`. Then, the `i`th bucket will receive a dedicated actor used to store the text values (`v`) associated with the keys in the bucket.
 
 The actor responsible for bucket `i` is obtained as an instance of the actor class `Bucket(i)`.
 
@@ -132,20 +130,20 @@ import Map "mo:base/RBTree";
 
 actor class Bucket(n : Nat, i : Nat) {
 
-  type Key = Nat;
-  type Value = Text;
+  type Key = Nat;
+  type Value = Text;
 
-  let map = Map.RBTree<Key, Value>(Nat.compare);
+  let map = Map.RBTree<Key, Value>(Nat.compare);
 
-  public func get(k : Key) : async ?Value {
-    assert((k % n) == i);
-    map.get(k);
-  };
+  public func get(k : Key) : async ?Value {
+    assert((k % n) == i);
+    map.get(k);
+  };
 
-  public func put(k : Key, v : Value) : async () {
-    assert((k % n) == i);
-    map.put(k,v);
-  };
+  public func put(k : Key, v : Value) : async () {
+    assert((k % n) == i);
+    map.put(k,v);
+  };
 
 };
 ```
@@ -170,34 +168,34 @@ import Buckets "Buckets";
 
 actor Map {
 
-  let n = 8; // number of buckets
+  let n = 8; // number of buckets
 
-  type Key = Nat;
-  type Value = Text;
+  type Key = Nat;
+  type Value = Text;
 
-  type Bucket = Buckets.Bucket;
+  type Bucket = Buckets.Bucket;
 
-  let buckets : [var ?Bucket] = Array.init(n, null);
+  let buckets : [var ?Bucket] = Array.init(n, null);
 
-  public func get(k : Key) : async ?Value {
-    switch (buckets[k % n]) {
-      case null null;
-      case (?bucket) await bucket.get(k);
-    };
-  };
+  public func get(k : Key) : async ?Value {
+    switch (buckets[k % n]) {
+      case null null;
+      case (?bucket) await bucket.get(k);
+    };
+  };
 
-  public func put(k : Key, v : Value) : async () {
-    let i = k % n;
-    let bucket = switch (buckets[i]) {
-      case null {
-        let b = await Buckets.Bucket(n, i); // dynamically install a new Bucket
-        buckets[i] := ?b;
-        b;
-      };
-      case (?bucket) bucket;
-    };
-    await bucket.put(k, v);
-  };
+  public func put(k : Key, v : Value) : async () {
+    let i = k % n;
+    let bucket = switch (buckets[i]) {
+      case null {
+        let b = await Buckets.Bucket(n, i); // dynamically install a new Bucket
+        buckets[i] := ?b;
+        b;
+      };
+      case (?bucket) bucket;
+    };
+    await bucket.put(k, v);
+  };
 
 };
 ```
@@ -210,19 +208,19 @@ In this example, the following happens:
 
 - When the function `get(k, v)` is called on the `Map` actor:
 
-    - The remainder value of key (`k`) divided by `n` is used to determine the index (`i`) value of the bucket responsible for that key.
+    - The remainder value of key (`k`) divided by `n` is used to determine the index (`i`) value of the bucket responsible for that key.
 
-    - The function returns `null` of the index value of the bucket does not exist.
+    - The function returns `null` if the index value of the bucket does not exist.
 
-    - If the index value exists, it delegates the key to that bucket by calling `bucket.get(k, v)`.
+    - If the index value exists, it delegates the key to that bucket by calling `bucket.get(k, v)`.
 
 - When the function `put(k, v)` is called on the `Map` actor:
 
-    - The remainder value of key (`k`) divided by `n` is used to determine the index (`i`) value of the bucket responsible for that key.
+    - The remainder value of key (`k`) divided by `n` is used to determine the index (`i`) value of the bucket responsible for that key.
 
-    - If the bucket does not exist, the bucket is installed using an asynchronous call to the constructor function `Buckets.Bucket(n, i)`. When the result is returned, it records it in the array `buckets`.
+    - If the bucket does not exist, the bucket is installed using an asynchronous call to the constructor function `Buckets.Bucket(n, i)`. When the result is returned, it records it in the array `buckets`.
 
-    - Then it delegates the insertion of the key-value pair into the bucket by calling `bucket.put(k, v)`.
+    - Then it delegates the insertion of the key-value pair into the bucket by calling `bucket.put(k, v)`.
 
 
 Want to learn more about actor classes? Take a look at the documentation on [actor class management](/docs/current/motoko/main/reference/language-manual#actor-class-management) for more information.
@@ -233,7 +231,7 @@ Until this point, you've interacted with one actor defined in our `backend` <Glo
 
 You'll create two actors unrelated to one another:
 
-- A `characterCount` actor which takes a string, counts it's length, then returns a `Bool` value if the total length of the string is divisible by `2`.
+- A `characterCount` actor that takes a string, counts its length, then returns a `Bool` value if the total length of the string is divisible by `2`.
 
 - A `Daemon` actor that provides mock functions for starting and stopping a daemon. A daemon is a program that runs continuously in the background. This actor assigns a variable and prints messages; it is purely for this tutorial's demonstration purposes.
 
@@ -255,9 +253,9 @@ You will be prompted to select the language that your backend canister will use.
 ```
 ? Select a backend language: ›
 ❯ Motoko
-  Rust
-  TypeScript (Azle)
-  Python (Kybra)
+  Rust
+  TypeScript (Azle)
+  Python (Kybra)
 ```
 
 :::info
@@ -267,19 +265,19 @@ You will be prompted to select the language that your backend canister will use.
 Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›
-  SvelteKit
-  React
-  Vue
-  Vanilla JS
-  No JS template
+  ? Select a frontend framework: ›
+  SvelteKit
+  React
+  Vue
+  Vanilla JS
+  No JS template
 ❯ No frontend canister
 ```
 
 Lastly, you can include extra features to be added to your project:
 
 ```
-  ? Add extra features (space to select, enter to confirm) ›
+  ? Add extra features (space to select, enter to confirm) ›
 ⬚ Internet Identity
 ⬚ Bitcoin (Regtest)
 ⬚ Frontend tests
@@ -299,26 +297,26 @@ First, open the `dfx.json` file in your code editor. Delete the existing content
 
 ```json title="dfx.json"
 {
-  "canisters": {
-    "character_count": {
-      "main": "src/character_count/main.mo",
-      "type": "motoko"
-    },
-    "daemon": {
-      "main": "src/daemon/main.mo",
-      "type": "motoko"
-    }
-  },
-  "defaults": {
-    "build": {
-      "packtool": ""
-    }
-  },
-  "version": 1
+  "canisters": {
+    "character_count": {
+      "main": "src/character_count/main.mo",
+      "type": "motoko"
+    },
+    "daemon": {
+      "main": "src/daemon/main.mo",
+      "type": "motoko"
+    }
+  },
+  "defaults": {
+    "build": {
+      "packtool": ""
+    }
+  },
+  "version": 1
 }
 ```
 
-In this file, you can see the definition for each of your two canisters with correlate with each of your two actors. Each canister's Motoko file is configured to be at `src/CANISTER_NAME/main.mo`. Since these directories and files do not exist yet, the next step is to create them.
+In this file, you can see the definition for each of your two canisters that correlate with each of your two actors. Each canister's Motoko file is configured to be at `src/CANISTER_NAME/main.mo`. Since these directories and files do not exist yet, the next step is to create them.
 
 ### Creating canister directories and Motoko files
 
@@ -339,10 +337,10 @@ import Bool "mo:base/Bool";
 
 actor characterCount {
 
-    public func test(text: Text) : async Bool {
-        let size = Text.size(text);
-        return size % 2 == 0;
-    };
+    public func test(text: Text) : async Bool {
+        let size = Text.size(text);
+        return size % 2 == 0;
+    };
 };
 ```
 
@@ -359,23 +357,23 @@ In this example, the following happens:
 
 ### Creating the 'Daemon' actor
 
-Next, let's open the `src/daemon/main.mo` file your code editor and insert the following code:
+Next, let's open the `src/daemon/main.mo` file in your code editor and insert the following code:
 
 ```motoko title="src/daemon/main.mo"
 import Text "mo:base/Text";
 
 actor Daemon {
-  stable var running = false;
+  stable var running = false;
 
-  public func launch() : async Text {
-    running := true;
-    debug_show "The daemon process is running";
-  };
+  public func launch() : async Text {
+    running := true;
+    debug_show "The daemon process is running";
+  };
 
-  public func stop(): async Text {
-    running := false;
-    debug_show "The daemon is stopped";
-  };
+  public func stop(): async Text {
+    running := false;
+    debug_show "The daemon is stopped";
+  };
 };
 ```
 
@@ -405,9 +403,9 @@ Installing code for canister character_count, with canister ID aax3a-h4aaa-aaaaa
 Installing code for canister daemon, with canister ID c5kvi-uuaaa-aaaaa-qaaia-cai
 Deployed canisters.
 URLs:
-  Backend canister via Candid interface:
-    character_count: http://127.0.0.1:4943/?canisterId=c2lt4-zmaaa-aaaaa-qaaiq-cai&id=aax3a-h4aaa-aaaaa-qaahq-cai
-    daemon: http://127.0.0.1:4943/?canisterId=c2lt4-zmaaa-aaaaa-qaaiq-cai&id=c5kvi-uuaaa-aaaaa-qaaia-cai
+  Backend canister via Candid interface:
+    character_count: http://127.0.0.1:4943/?canisterId=c2lt4-zmaaa-aaaaa-qaaiq-cai&id=aax3a-h4aaa-aaaaa-qaahq-cai
+    daemon: http://127.0.0.1:4943/?canisterId=c2lt4-zmaaa-aaaaa-qaaiq-cai&id=c5kvi-uuaaa-aaaaa-qaaia-cai
 ```
 
 
@@ -431,7 +429,7 @@ This command makes a call to the `daemon` canister, directly to the public funct
 
 ## Need help?
 
-Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
+Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
@@ -439,9 +437,9 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7 day adventure and learn to build a DAO on the Internet Computer.
+- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
 
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects and participate in collaborative events.
+- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
 
 - [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -458,4 +456,3 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 That'll wrap up level 2 of the developer ladder! In the next level, you'll start by taking a look at using package managers for Motoko.
 
 - [3.1 Using libraries with MOPS](/docs/current/tutorials/developer-journey/level-3/3.1-package-managers).
-

@@ -1066,6 +1066,7 @@ const redirects = `
   /docs/current/developer-docs/daos/nns/concepts/proposals/verify-proposals /docs/current/home
   /docs/current/developer-docs/daos/nns/concepts/proposals/proposal-submit /docs/current/home
   /docs/current/developer-docs/daos/nns/concepts/neurons-fund /docs/current/home
+
   /docs/current/references/node-providers/overview /docs/current/home
   /docs/current/references/node-providers/node-metrics /docs/current/home
   /docs/current/developer-docs/defi/wallets/overview /docs/current/home

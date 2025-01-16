@@ -21,7 +21,7 @@ If you recall from the previous module, [Internet Computer terminology](/docs/cu
 
 To obtain cycles, the Internet Computer Protocol's utility token, ICP, can be converted into cycles and transferred into a canister to be used to pay for that canister's consumed resources. Cycles have a fixed price in [XDR](https://internetcomputer.org/docs/current/developer-education/glossary/index#xdr) in order to make canister costs predictable and independent of the price of ICP. One trillion cycles always correspond to one XDR.
 
-Since cycles are not a currency and are only used to pay for a canister's consumed resources, developers manage the distribution of cycles through a system canister called the **cycles ledger**. The cycles ledger provides functionality for developers to convert ICP into cycles, accept incoming cycles, send cycles to other canister, and create canisters with cycles.
+Since cycles are not a currency and are only used to pay for a canister's consumed resources, developers manage the distribution of cycles through a system canister called the **cycles ledger**. The cycles ledger provides functionality for developers to convert ICP into cycles, accept incoming cycles, send cycles to other canisters, and create canisters with cycles.
 
 A developer's cycles balance is associated with the <GlossaryTooltip>principal</GlossaryTooltip> identity.
 
@@ -29,11 +29,11 @@ A developer's cycles balance is associated with the <GlossaryTooltip>principal</
 Recall that a principal is an entity that can be authenticated by ICP.
 :::
 
-Canisters each have their own cycles balance, and don't use cycles associated with your identity. When you need to call a method that requires cycles, if the canister doesn't have enough cycles in it's balance or if you're creating a new canister, you will need to proxy the call through the cycles ledger in order to attach the required cycles. To assure canisters have a cycles balance, you need to deposit cycles into the canister's cycles balance, known as 'topping up' the canister.
+Canisters each have their own cycles balance and don't use cycles associated with your identity. When you need to call a method that requires cycles, if the canister doesn't have enough cycles in its balance or if you're creating a new canister, you will need to proxy the call through the cycles ledger in order to attach the required cycles. To ensure canisters have a cycles balance, you need to deposit cycles into the canister's cycles balance, known as 'topping up' the canister.
 
-For local canister execution, operations performed using cycles are done in the background. In a production environment with canisters deployed on the mainnet, canisters will need to have cycles explicitly registered and transferred into them. Production canisters can also have principals configured to act as **custodians**, which have permission to access the cycles wallet balance, wallet information, and send and receive cycles for the canister.
+For local canister execution, operations performed using cycles are done in the background. In a production environment with canisters deployed on the mainnet, canisters will need to have cycles explicitly registered and transferred into them. Production canisters can also have principals configured to act as **custodians**, who have permission to access the cycles wallet balance, wallet information, and send and receive cycles for the canister.
 
-In this tutorial, you'll learn how to obtain cycles. Then, in the next tutorial you'll deploy a canister to the mainnet using those cycles.
+In this tutorial, you'll learn how to obtain cycles. Then, in the next tutorial, you'll deploy a canister to the mainnet using those cycles.
 
 ## Prerequisites
 
@@ -55,7 +55,7 @@ You can learn more in the IC [specification](https://internetcomputer.org/docs/c
 
 In this tutorial, you'll create a new identity principal with `dfx`, which you'll use to obtain and manage cycles.
 
-First, assure that `dfx` is running; if not, use the following command to start it:
+First, ensure that `dfx` is running. If not, use the following command to start it:
 
 ```bash
 dfx start --clean --background
@@ -67,8 +67,8 @@ Next you will create a new developer identity with the command:
 dfx identity new DevJourney
 ```
 
-:::caution
-This command will return a seed phrase, which will be required to recover your identity if you ever need to. This seed phrase should be backed up, so that any cycles associated with your identity are not lost.
+::: caution
+This command will return a seed phrase, which will be required to recover your identity if you ever need to. This seed phrase should be backed up so that any cycles associated with your identity are not lost.
 :::
 
 Set this identity as the one to be used by `dfx` in the current terminal session with the command:
@@ -104,7 +104,7 @@ Cycles can be obtained by converting ICP tokens into cycles. There are a few way
 - Receiving a grant of ICP tokens through the DFINITY Foundation.
 - Receiving ICP tokens in return for providing resources as a node provider.
 
-You need to obtain [ICP tokens](https://internetcomputer.org/icp-tokens), then convert them into cycles using `dfx`. However, when participating at DFINITY events like [hackathons](https://dfinity.org/hackathons) or working on a [developer grant](https://dfinity.org/grants), you will receive a coupon which you can redeem to claim free cycles from the [cycles faucet](https://anv4y-qiaaa-aaaal-qaqxq-cai.ic0.app/).
+You need to obtain [ICP tokens](https://internetcomputer.org/icp-tokens), then convert them into cycles using `dfx`. However, when participating at DFINITY events like [hackathons](https://dfinity.org/hackathons) or working on a [developer grant](https://dfinity.org/grants), you will receive a coupon that you can redeem to claim free cycles from the [cycles faucet](https://anv4y-qiaaa-aaaal-qaqxq-cai.ic0.app/).
 
 :::tip
 Each developer identity has both a **principal** and a **ledger account identifier**.
@@ -157,12 +157,12 @@ dfx cycles balance --network=ic
 ```
 
 ## Resources
-To further explore cycle management please see the following articles:
+To further explore cycle management, please see the following articles:
 - **[Converting ICP tokens into cycles](/docs/current/rosetta-defi/cycles/converting_icp_tokens_into_cycles)**.
 
 ## Need help?
 
-Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
+Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
@@ -170,9 +170,9 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7 day adventure and learn to build a DAO on the Internet Computer.
+- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
 
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects and participate in collaborative events.
+- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
 
 - [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -189,4 +189,3 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 In this tutorial, you set up our identity and acquired free cycles from the cycles faucet. Now that you have cycles, you can deploy your first dapp on the mainnet.
 
 - [1.5 Deploying canisters](/docs/current/tutorials/developer-journey/level-1/1.5-deploying-canisters).
-

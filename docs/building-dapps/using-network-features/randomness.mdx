@@ -64,41 +64,7 @@ let (randomBytes,): (Vec<u8>,) = ic_cdk::api::management_canister::main::raw_ran
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-```python
-from kybra import (
-    Async,
-    blob,
-    CallResult,
-    match,
-    update,
-    Variant,
-)
-from kybra.canisters.management import (
-    management_canister,
-)
-
-class RawRandResult(Variant, total=False):
-    Ok: blob
-    Err: str
-
-@update
-def get_raw_rand() -> Async[RawRandResult]:
-    raw_rand_call_result: CallResult[blob] = yield management_canister.raw_rand()
-
-    return match(
-        raw_rand_call_result,
-        {
-            "Ok": lambda randomness: {"Ok": randomness},
-            "Err": lambda err: {"Err": err},
-        },
-    )
-```
-
-:::caution
-
-Kybra canisters must be deployed from a Python virtual environment. [Learn more in the Kybra docs](https://demergent-labs.github.io/kybra/).
-
-:::
+[Learn more about Kybra](https://demergent-labs.github.io/kybra/timers.html).
 
 </AdornedTab>
 </AdornedTabs>

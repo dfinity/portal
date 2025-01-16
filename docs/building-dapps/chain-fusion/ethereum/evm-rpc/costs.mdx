@@ -185,7 +185,7 @@ dfx canister call evm_rpc eth_getBlockByNumber "(variant {$CANDID_SOURCE}, $RPC_
 </AdornedTabs>
 
 
-In order to accurately measure the HTTPS outcall cost and protect from an accidental large response, the caller must specify the maximum expected number of bytes. Due to the potentially high cost of performing outcalls with a suboptimal max response size, it’s generally in the caller’s best interest to choose a value for `maxResponseBytes` on a case-by-case basis for each situation. Developers can determine this value by measuring the size of expected JSON responses from an API playground such as [Alchemy Sandbox](https://sandbox.alchemy.com/).
+In order to accurately measure the HTTPS outcalls cost and protect from an accidental large response, the caller must specify the maximum expected number of bytes. Due to the potentially high cost of performing outcalls with a suboptimal max response size, it’s generally in the caller’s best interest to choose a value for `maxResponseBytes` on a case-by-case basis for each situation. Developers can determine this value by measuring the size of expected JSON responses from an API playground such as [Alchemy Sandbox](https://sandbox.alchemy.com/).
 
 The Candid RPC methods use a built-in default response bytes, which you can override with the `RpcConfig` value.
 

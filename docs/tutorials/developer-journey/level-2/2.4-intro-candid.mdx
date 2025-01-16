@@ -16,19 +16,17 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/tomc-Iny0O4?si=YYNNMhSA0r3pcleS" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> </div>
 
+Candid is an interface description language that is used to describe the public interface of a service. A **service** is usually in the form of an application deployed as a <GlossaryTooltip>canister</GlossaryTooltip> on ICP. Public interfaces of canisters are used to interact with the canister. Candid supports interactions through the IC SDK via the terminal, through a web browser, or through the use of agents. It also provides a way to specify input argument values and display return values from different canister **methods**, regardless of the manner used to interact with the canister. Recall that a method is a piece of code specifying a task that declares a sequence of arguments and their associated result types.
 
-
-Candid is an interface description language that is used to describe the public interface of a service. A **service** is usually in the form of an application deployed as a <GlossaryTooltip>canister</GlossaryTooltip> on ICP. Public interfaces of canisters are used to interact with the canister. Candid supports interactions through the IC SDK via the terminal, through a web browser, or through the use of agents. It also provides a way to specify input argument values and display return values from different canister **methods**, regardless of the manner used to interact with the canister. Recall that a method is a piece of code specifying a task which declares a sequence of arguments and their associated result types.
-
-Candid is language-agnostic, which is a key benefit since it allows for the inter-operation between canisters written in different languages, such as Motoko, Rust, and JavasScript, and client applications.
+Candid is language-agnostic, which is a key benefit since it allows for the interoperation between canisters written in different languages, such as Motoko, Rust, and JavaScript, and client applications.
 
 Candid is unique since it provides functionality and features not available in other technologies, such as JSON or XML. Some of these features include the evolution of service interfaces, direct value mapping for Candid values to the types and values of the canister's language, and the ability to pass complex data such as references to services and methods. Candid also has built-in support for ICP-specific features like query annotation.
 
 Up until now on this developer ladder, you've utilized the Candid UI a few times through the web browser. If you recall, in several tutorials you've interacted with the backend canisters in the web browser with the URL from an output such as:
 
 ```
-  Backend canister via Candid interface:
-    dependencies_backend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+  Backend canister via Candid interface:
+    dependencies_backend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
 ```
 
 These URLs take you to the Candid user interface (UI). Now it's time to take a closer look at the fundamentals of Candid to understand how it works and how it can be used for more complex dapp development.
@@ -53,7 +51,7 @@ Candid supports the following set of types in order to provide a natural mapping
 
 - Reference types (`Service`, `Func`, `Principal`).
 
-- Special types `Null`, `Reserved` and `Empty`.
+- Special types `Null`, `Reserved`, and `Empty`.
 
 Each of these types is described in detail in the [Candid reference documentation](/docs/current/references/candid-ref).
 
@@ -62,18 +60,18 @@ Each of these types is described in detail in the [Candid reference documentatio
 
 Typically, as a developer you may not work with your program data as Candid values; instead, you may work with a host language such as Javascript and utilize Candid to transparently transport your dapp's data to your canister written in Motoko or Rust. The receiving canister treats this data as native Motoko or Rust values.
 
-In some scenarios, like debugging, logging, or interacting with a service via the terminal command-line, it may be useful to see the Candid values in a human-readable format. In these situations, the textual presentation of Candid values can be used.
+In some scenarios, like debugging, logging, or interacting with a service via the terminal command line, it may be useful to see the Candid values in a human-readable format. In these situations, the textual presentation of Candid values can be used.
 
 The syntax for the textual presentation of Candid values is similar to that of Candid types. An example of a textual presentation for a Candid value is:
 
 ```candid
 (record {
-  first_name = "John";
-  last_name = "Doe";
-  age = 14;
-  membership_status = variant { active };
-  email_addresses =
-    vec { "john@doe.com"; "john.doe@example.com" };
+  first_name = "John";
+  last_name = "Doe";
+  age = 24;
+  membership_status = variant { active };
+  email_addresses =
+    vec { "john@doe.com"; "john.doe@example.com" };
 })
 ```
 
@@ -81,10 +79,10 @@ In contrast, the Candid binary format uses numeric hashes in place of field name
 
 ```candid
 (record {
-   4846783 = 14;
-   456245371 = variant {373703110};
-   1443915007 = vec {"john@doe.com"; "john.doe@example.com"};
-   2797692922 = "John"; 3046132756 = "Doe"
+   4846783 = 14;
+   456245371 = variant {373703110};
+   1443915007 = vec {"john@doe.com"; "john.doe@example.com"};
+   2797692922 = "John"; 3046132756 = "Doe"
 })
 ```
 
@@ -94,9 +92,9 @@ Now that you've learned about Candid types, you can learn how to use them to des
 
 ### The `.did` file
 
-To define Candid types and describe a service, a Candid service description file can be used. This file has the extension `.did`, and can be generated from a service implementation or written manually.
+To define Candid types and describe a service, a Candid service description file can be used. This file has the extension `.did` and can be generated from a service implementation or written manually.
 
-The Candid files you have used thus far on the developer ladder have been generated automatically. This is because a Motoko canister's Candid files are automatically generated by the Motoko compiler when the canister is compiled, then stored in the project's `/declarations` directory. When Candid files are auto-generated, it is not recommended to edit them manually, and any changes made to the file will be overwritten by `dfx` the next time the project is built and deployed. For canisters written in other languages, the Candid file must be written manually or generated using an external tool.
+The Candid files you have used thus far on the developer ladder have been generated automatically. This is because a Motoko canister's Candid files are automatically generated by the Motoko compiler when the canister is compiled and then stored in the project's `/declarations` directory. When Candid files are auto-generated, it is not recommended to edit them manually, and any changes made to the file will be overwritten by `dfx` the next time the project is built and deployed. For canisters written in other languages, the Candid file must be written manually or generated using an external tool.
 
 ### Example Candid service descriptions
 
@@ -106,17 +104,17 @@ The simplest service description defines a service with no public methods. This 
 service : {}
 ```
 
-Since this service description does not have any pubic methods, it is not very useful. To add a public method, you'll add a simple `ping` method:
+Since this service description does not have any public methods, it is not very useful. To add a public method, you'll add a simple `ping` method:
 
 ```candid
 service : {
-  ping : () -> ();
+  ping : () -> ();
 }
 ```
 
-Now our service description supports a single public method named `ping`. Note that method names can be arbitrary strings that can be quoted, such as "this is a method".
+Now our service description supports a single public method named `ping`. Note that method names can be arbitrary strings that can be quoted, such as "this is a method."
 
-In this `ping` method, there are no arguments passed to the method and there are no results returned, so the empty sequence of `()` is used for both the arguments and the results.
+In this `ping` method, there are no arguments passed to the method, and there are no results returned, so the empty sequence of `()` is used for both the arguments and the results.
 
 ### Generating service descriptions
 
@@ -130,10 +128,10 @@ The following is an example Motoko canister that defines simple `add`, `subtract
 
 ```motoko
 actor {
-  var v : Int = 0;
-  public func add(d : Nat) : async () { v += d; };
-  public func subtract(d : Nat) : async () { v -= d; };
-  public query func get() : async Int { v };
+  var v : Int = 0;
+  public func add(d : Nat) : async () { v += d; };
+  public func subtract(d : Nat) : async () { v -= d; };
+  public query func get() : async Int { v };
 }
 ```
 
@@ -141,13 +139,13 @@ When this code is compiled, the Motoko compiler will automatically generate a Ca
 
 ```candid
 service counter : {
-  add : (nat) -> ();
-  subtract : (nat) -> ();
-  get : () -> (int) query;
+  add : (nat) -> ();
+  subtract : (nat) -> ();
+  get : () -> (int) query;
 }
 ```
 
-This example describes a service called `counter` that consist of the following public methods:
+This example describes a service called `counter` that consists of the following public methods:
 
 - The `add` and `subtract` methods, which change the value of the counter.
 - The `get` method, which reads the current value of the counter.
@@ -185,9 +183,9 @@ Let's start with the following Candid service description:
 
 ```candid
 service counter : {
-  add : (nat) -> ();
-  subtract : (nat) -> ();
-  get : () -> (int) query;
+  add : (nat) -> ();
+  subtract : (nat) -> ();
+  get : () -> (int) query;
 }
 ```
 
@@ -196,16 +194,16 @@ This service might be upgraded in the following manner:
 ```candid
 type timestamp = nat; // Define a new type of 'timestamp'
 service counter : {
-  set : (nat) -> (); // Define a new method
-  add : (int) -> (new_val : nat); // Change the parameter and result types
-  subtract : (nat, trap_on_underflow : opt bool) -> (new_val : nat); // Change the parameter and result types
-  get : () -> (nat, last_change : timestamp) query; // Change the result types
+  set : (nat) -> (); // Define a new method
+  add : (int) -> (new_val : nat); // Change the parameter and result types
+  subtract : (nat, trap_on_underflow : opt bool) -> (new_val : nat); // Change the parameter and result types
+  get : () -> (nat, last_change : timestamp) query; // Change the result types
 }
 ```
 
 ## Using Candid
 
-Now that you've taken a deep dive into Candid, let's explore the different ways to use it. There are three main ways to interact with Candid: using `dfx` on the command-line, using the web browser, and using an agent. For this tutorial, you'll look at using `dfx` and using the web browser; you'll dive into agents in a future section of the developer ladder.
+Now that you've taken a deep dive into Candid, let's explore the different ways to use it. There are three main ways to interact with Candid: using `dfx` on the command line, using the web browser, and using an agent. For this tutorial, you'll look at using `dfx` and using the web browser; you'll dive into agents in a future section of the developer ladder.
 
 ### Prerequisites
 
@@ -225,9 +223,9 @@ You will be prompted to select the language that your backend canister will use.
 ```
 ? Select a backend language: ›
 ❯ Motoko
-  Rust
-  TypeScript (Azle)
-  Python (Kybra)
+  Rust
+  TypeScript (Azle)
+  Python (Kybra)
 ```
 
 :::info
@@ -237,19 +235,19 @@ You will be prompted to select the language that your backend canister will use.
 Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›
-  SvelteKit
-  React
-  Vue
-  Vanilla JS
-  No JS template
+  ? Select a frontend framework: ›
+  SvelteKit
+  React
+  Vue
+  Vanilla JS
+  No JS template
 ❯ No frontend canister
 ```
 
 Lastly, you can include extra features to be added to your project:
 
 ```
-  ? Add extra features (space to select, enter to confirm) ›
+  ? Add extra features (space to select, enter to confirm) ›
 ⬚ Internet Identity
 ⬚ Bitcoin (Regtest)
 ⬚ Frontend tests
@@ -265,10 +263,10 @@ You'll be using the sample Motoko canister that you looked at in the [generating
 
 ```motoko title="src/candid_example_backend/main.mo"
 actor {
-  var v : Int = 0;
-  public func add(d : Nat) : async () { v += d; };
-  public func subtract(d : Nat) : async () { v -= d; };
-  public query func get() : async Int { v };
+  var v : Int = 0;
+  public func add(d : Nat) : async () { v += d; };
+  public func subtract(d : Nat) : async () { v -= d; };
+  public query func get() : async Int { v };
 }
 ```
 
@@ -282,15 +280,15 @@ Recall that the Motoko compiler will automatically generate the Candid service d
 
 ```candid title="src/declarations/candid_example_backend/candid_example_backend.did"
 service : {
-  add: (nat) -> ();
-  get: () -> (int) query;
-  subtract: (nat) -> ();
+  add: (nat) -> ();
+  get: () -> (int) query;
+  subtract: (nat) -> ();
 }
 ```
 
 ### Interacting with a service using the command-line terminal
 
-Now that your canister is deployed, let's use `dfx` to interact with the methods defined by your Candid file. This section of tutorial will look familiar, since in previous tutorials you've interacted with canisters in the same manner - you just hadn't known you were directly interacting with the Candid defined services since the Candid files had been automatically generated for you in the background.
+Now that your canister is deployed, let's use `dfx` to interact with the methods defined by your Candid file. This section of the tutorial will look familiar since in previous tutorials you've interacted with canisters in the same manner—you just hadn't known you were directly interacting with the Candid-defined services since the Candid files had been automatically generated for you in the background.
 
 For example, let's call the `add` method to add a number to our counter with the command:
 
@@ -327,20 +325,20 @@ dfx canister call candid_example_backend subtract 8
 
 ### Interacting with a service using a web browser
 
-Based on the types of services offered by a canister, Candid can provide a web interface, known as the Candid UI, that allows the developer to call canister functions for debugging and testing from within a web browser. This functionality does not require the development of any frontend code and does not require a frontend canister be created or deployed.
+Based on the types of services offered by a canister, Candid can provide a web interface, known as the Candid UI, that allows the developer to call canister functions for debugging and testing from within a web browser. This functionality does not require the development of any frontend code and does not require a frontend canister to be created or deployed.
 
 To interact with the Candid UI from a web browser, recall that when a canister is deployed, the following output is returned:
 
 ```bash
-  Backend canister via Candid interface:
-    candid_example_backend: http://127.0.0.1:4943/?canisterId=avqkn-guaaa-aaaaa-qaaea-cai&id=b77ix-eeaaa-aaaaa-qaada-cai
+  Backend canister via Candid interface:
+    candid_example_backend: http://127.0.0.1:4943/?canisterId=avqkn-guaaa-aaaaa-qaaea-cai&id=b77ix-eeaaa-aaaaa-qaada-cai
 ```
 
-In this output, you can see the URL for the Candid interface under 'Backend canister via Candid interface'. Opening this URL in a web browser will display the following UI:
+In this output, you can see the URL for the Candid interface under 'Backend canister via Candid interface.' Opening this URL in a web browser will display the following UI:
 
 ![Candid UI 1](../_attachments/candid_ui-1.png)
 
-Let's use the same workflow you used on the command-line. First, let's add 12 to the counter by entering '12' into the 'add' method, then selecting 'call'. The output log on the right will reflect this call.
+Let's use the same workflow you used on the command line. First, let's add 12 to the counter by entering '12' into the 'add' method, then selecting 'call.' The output log on the right will reflect this call.
 
 ![Candid UI 2](../_attachments/candid_ui-2.png)
 
@@ -348,7 +346,7 @@ Then, use the 'get' method's `query' button to query the counter's value. This w
 
 ![Candid UI 3](../_attachments/candid_ui-3.png)
 
-Subtract 4 from the counter by entering '4' into the 'subtract' method, then selecting 'call'.
+Subtract 4 from the counter by entering '4' into the 'subtract' method, then selecting 'call.'
 
 ![Candid UI 4](../_attachments/candid_ui-4.png)
 
@@ -358,7 +356,7 @@ Lastly, call the 'get' method again to return our final counter value:
 
 ## Need help?
 
-Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
+Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
@@ -366,9 +364,9 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7 day adventure and learn to build a DAO on the Internet Computer.
+- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
 
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects and participate in collaborative events.
+- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
 
 - [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 

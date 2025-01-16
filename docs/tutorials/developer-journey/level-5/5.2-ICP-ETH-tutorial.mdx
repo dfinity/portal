@@ -17,11 +17,9 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/3XHbK5yn_8s?si=yU2zp9Ju5nQ4tlB_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
-
-
 As you explored in a previous tutorial, the Internet Computer is integrated with the Bitcoin network, allowing for smart contracts to seamlessly communicate from ICP to Bitcoin for multi-chain functionality. ICP also has an integration with Ethereum and EVM networks, but in a different manner than the Bitcoin integration.
 
-The Bitcoin integration is a direct integration, meaning there are nodes running on the ICP mainnet that run the Bitcoin node software. ICP currently does not have any nodes running the Ethereum node software and instead communicates with the Ethereum and EVM-compatible networks through a decentralized RPC integration. To facilitate communication to RPC services, the **EVM RPC** canister is used.
+The Bitcoin integration is a direct integration, meaning there are nodes running on the ICP mainnet that run the Bitcoin node software. ICP currently does not have any nodes running the Ethereum node software and instead communicates with the Ethereum and EVM-compatible networks through a decentralized RPC integration. To facilitate communication with RPC services, the **EVM RPC** canister is used.
 
 <div class="text-center">
   <img
@@ -202,7 +200,7 @@ When this button is clicked, the following is happening in the background:
 
 - This request involves encoding and decoding ABI, which is the Candid equivalent in the Ethereum ecosystem.
 
-- The latest block information is returned to the backend canister. Three responses are returned; one from the specified RPC provider Cloudflare and two from the other RPC providers that the EVM RPC canister queried automatically for decentralization purposes. The backend canister checks to be sure that all three responses contain the same information.
+- The latest block information is returned to the backend canister. Three responses are returned: one from the specified RPC provider, Cloudflare, and two from the other RPC providers that the EVM RPC canister queried automatically for decentralization purposes. The backend canister checks to be sure that all three responses contain the same information.
 
 - Then, the frontend displays the block information that was returned.
 
@@ -250,7 +248,7 @@ If the results from each RPC provider match, the result returned will be 'Consis
 )
 ```
 
-If the results returned are 'Inconsistent', each individual response will be returned:
+If the results returned are 'inconsistent,' each individual response will be returned:
 
 ```bash
 (
@@ -357,7 +355,7 @@ Some JSON-RPC APIs may only return a `NonceTooLow` status when successfully subm
 
 ## Need help?
 
-Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
+Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
@@ -365,9 +363,9 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7 day adventure and learn to build a DAO on the Internet Computer.
+- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
 
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects and participate in collaborative events.
+- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
 
 - [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 

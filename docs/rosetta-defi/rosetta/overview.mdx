@@ -1,5 +1,5 @@
 ---
-keywords: [intermediate, rosetta, tutorial, accountidentifier]
+keywords: [intermediate, rosetta, tutorial, data api, construction api, rosetta api, icp rosetta, icrc rosetta]
 ---
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
@@ -19,7 +19,7 @@ The second part is the [construction API](https://www.rosetta-api.org/docs/const
 ![Data API](construction_api.png)
 
 ## Canister communication
-The Rosetta API is communicating with two separate canisters in the background. The communication with the ledger canister will provide the user with account balance statements, transferring, burning and approving tokens, as well as fetching the chain of blocks from the ledger to store locally on an SQLite database for faster data API access.
+The Rosetta API is communicating with two separate canisters in the background. The communication with the ledger canister will provide the user with account balance statements, transferring, burning, and approving tokens, as well as fetching the chain of blocks from the ledger to store locally on an SQLite database for faster data API access.
 
 The communication with the governance canister will provide users with neuron management capabilities, fetching the state of neurons and proposals, as well as allowing for state changes in regards to staking and proposal voting.
 For details on how to call these endpoints, look at the guides for [ICP Rosetta](/docs/rosetta-defi/rosetta/icp_rosetta/index.mdx) and [ICRC Rosetta](/docs/rosetta-defi/rosetta/icrc_rosetta/index.mdx).
