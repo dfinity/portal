@@ -14,9 +14,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/iDxTRDzHDoQ?si=_Nyz568zwZC2jkoE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
-
-
-When blockchain networks need to be upgraded, traditionally they use a method known as a 'hard fork', which involves substantial work and manual coordination. In comparison, the Internet Computer upgrades itself weekly, which can be seen on the [ICP dashboard](https://dashboard.internetcomputer.org/releases).
+When blockchain networks need to be upgraded, traditionally they use a method known as a 'hard fork,' which involves substantial work and manual coordination. In comparison, the Internet Computer upgrades itself weekly, which can be seen on the [ICP dashboard](https://dashboard.internetcomputer.org/releases).
 
 Each upgrade made to ICP is first introduced as an NNS proposal. Then, users who stake ICP governance tokens can vote on this proposal. If the proposal is accepted, the upgrade gets executed automatically.
 
@@ -38,21 +36,21 @@ When an NNS proposal is submitted, the network participants vote on whether to a
 
 ### Neurons
 
-Neurons are entities that hold ICP tokens in return for benefits such as voting power or voting rewards on the NNS. ICP tokens that are staked within a neuron cannot be immediately withdrawn; neurons require a notice be given before ICP can be taken out of the neuron. The length of time before ICP can be withdrawn from a neuron is known as the neuron's "dissolve delay".
+Neurons are entities that hold ICP tokens in return for benefits such as voting power or voting rewards on the NNS. ICP tokens that are staked within a neuron cannot be immediately withdrawn; neurons require a notice be given before ICP can be taken out of the neuron. The length of time before ICP can be withdrawn from a neuron is known as the neuron's "dissolve delay."
 
-The dissolve delay determines how long the neuron will take to dissolve if the neuron is placed into "dissolve mode". Once dissolved, the neuron owner can unlock the staked balance of ICP. This configuration provides neuron owners with an incentive to vote with a long-term view focused on maximizing their ICP's value at a later date. Neuron owners can configure higher dissolve delays up to a maximum of eight years, but cannot decrease it below the natural passage of time.
+The dissolve delay determines how long the neuron will take to dissolve if the neuron is placed into "dissolve mode." Once dissolved, the neuron owner can unlock the staked balance of ICP. This configuration provides neuron owners with an incentive to vote with a long-term view focused on maximizing their ICP's value at a later date. Neuron owners can configure higher dissolve delays up to a maximum of eight years but cannot decrease it below the natural passage of time.
 
-The neuron's voting power is proportional to the quantity of ICP staked within the neuron, the length of their dissolve delay, and the amount of time since the neuron was created. Neurons can be configured to vote automatically or manually. To vote automatically, the neuron can be configured to follow the voting decision of a group of neurons, where it decides to approve a proposal if more than half of the followed group approves, and rejects the proposal if more than half of the followed group rejects. Voting automatically can be useful for neuron owners who may not have the necessary time to evaluate each proposal, or who do not fully understand a proposal's details.
+The neuron's voting power is proportional to the quantity of ICP staked within the neuron, the length of their dissolve delay, and the amount of time since the neuron was created. Neurons can be configured to vote automatically or manually. To vote automatically, the neuron can be configured to follow the voting decision of a group of neurons, where it decides to approve a proposal if more than half of the followed group approves and rejects the proposal if more than half of the followed group rejects. Voting automatically can be useful for neuron owners who may not have the necessary time to evaluate each proposal or who do not fully understand a proposal's details.
 
-Anyone holding ICP can create a neuron, and are encouraged to do so through reward incentives. Reward amounts are determined by the amount of ICP locked in the neuron, the neuron's dissolve delay time, the neuron's age, and the proportion of possible votes that it participated in to the sum of total voting activity across all neurons. Rewards are distributed this way because the total reward pool is a capped value that is divided between all NNS voters.
+Anyone holding ICP can create a neuron and is encouraged to do so through reward incentives. Reward amounts are determined by the amount of ICP locked in the neuron, the neuron's dissolve delay time, the neuron's age, and the proportion of possible votes that it participated in to the sum of total voting activity across all neurons. Rewards are distributed this way because the total reward pool is a capped value that is divided between all NNS voters.
 
 Neurons can also be used to submit new proposals to the NNS. To prevent neurons from spamming proposals, a fee is charged to the neuron if their submitted proposal is rejected.
 
-[Learn more about neurons and their attributes](/docs/current/developer-docs/daos/nns/overview#neurons).
+[Learn more about neurons and their attributes](/docs/current/move-to-learnhub/nns/overview#neurons).
 
 ### Proposals
 
-If a proposal has a majority approval, it will be accepted and autonomously executed. Proposals each adhere to a specific proposal type, which defines what information the proposal includes. For each proposal type, the NNS maintains a corresponding system function which is executed using the proposal's content to fill the function's parameters whenever a proposal of that type is approved and adopted. Each proposal type is belongs to a proposal topic, such as "#NetworkEconomics" or "#NodeAdmin".
+If a proposal has a majority approval, it will be accepted and autonomously executed. Proposals each adhere to a specific proposal type, which defines what information the proposal includes. For each proposal type, the NNS maintains a corresponding system function, which is executed using the proposal's content to fill the function's parameters whenever a proposal of that type is approved and adopted. Each proposal type belongs to a proposal topic, such as "#NetworkEconomics" or "#NodeAdmin."
 
 Each NNS proposal contains the following fields:
 
@@ -68,7 +66,7 @@ Each NNS proposal contains the following fields:
 
 - Unique identity: A unique identity value the NNS assigns to each proposal it receives.
 
-[View detailed information about different proposal types and topics](/docs/current/developer-docs/daos/nns/overview#topics).
+[View detailed information about different proposal types and topics](/docs/current/move-to-learnhub/nns/overview#topics).
 
 ## Why is the NNS important to developers?
 
@@ -76,7 +74,7 @@ For developers who are focused on building their own dapps and projects, you may
 
 There are several reasons that all users and developers on ICP should be familiar with and take part in the governance of the network through the NNS, but for developers specifically, these reasons include:
 
-- Voting on features and changes that may effect your project's architecture, workflow, or functionality: Developers who stake ICP in a neuron and receive voting rights can have a direct say in whether they agree or disagree with a proposed change or feature, and can vote on the proposal accordingly.
+- Voting on features and changes that may affect your project's architecture, workflow, or functionality: Developers who stake ICP in a neuron and receive voting rights can have a direct say in whether they agree or disagree with a proposed change or feature and can vote on the proposal accordingly.
 
 - Having the ability to submit proposals that introduce changes necessary for your project: Neuron owners have the ability to submit proposals for changes or features that they'd like to introduce to enhance their workflows or enable new functionality.
 
@@ -94,7 +92,7 @@ You can learn more about SNSs in the following resources:
 
 * [SNS overview page](https://internetcomputer.org/sns).
 
-* [Service Nervous System (SNS) developer docs](https://internetcomputer.org/docs/current/developer-docs/daos/sns/).
+* [Service Nervous System (SNS) developer docs](https://internetcomputer.org/docs/current/building-dapps/governing-dapps/).
 
 * [SNS FAQ](https://internetcomputer.org/sns/faq).
 
@@ -102,63 +100,63 @@ You can learn more about SNSs in the following resources:
 
 While the core architecture of an SNS resembles that of the NNS, the NNS contains additional canisters that provide important functionalities on ICP, such as the cycles minting canister that is responsible for creating cycles and the registry canister that contains the network's topology. In contrast, an SNS contains a few canisters that do not exist on the NNS, with the most notable canister being the swap canister used for a decentralization swap during the launch of the SNS.
 
-SNSs are provided as a system functionality. All SNS canister code is approved by the NNS community and thus all SNSs follow the same upgrade path. Launching a new SNS is also approved by the NNS community, including the initial settings of the SNS and the conditions of the decentralization swap.
+SNSs are provided as a system functionality. All SNS canister code is approved by the NNS community, and thus all SNSs follow the same upgrade path. Launching a new SNS is also approved by the NNS community, including the initial settings of the SNS and the conditions of the decentralization swap.
 
 An SNS is comprised of the following canisters:
 
 - SNS governance canister.
 
-- SNS [ledger](/docs/current/developer-docs/daos/sns/launching/integrating) and archive canisters.
+- SNS [ledger](/docs/current/building-dapps/governing-dapps/launching/integrating) and archive canisters.
 
-- SNS [index](/docs/current/developer-docs/daos/sns/launching/integrating) canister.
+- SNS [index](/docs/current/building-dapps/governing-dapps/launching/integrating) canister.
 
 - SNS root canister.
 
 - SNS decentralization swap canister.
 
-[Learn more about SNS architecture](/docs/current/developer-docs/daos/sns/overview).
+[Learn more about SNS architecture](/docs/current/building-dapps/governing-dapps/overview).
 
 ### SNS decentralization swaps
 
-In order for an SNS to be launched, the SNS must have a successful decentralization swap. A decentralization swap is the action of initially funding the SNS by swapping ICP tokens for the SNS's native token. The decentralization swap is done through the SNS decentralization swap canister which is owned and operated by ICP. It is controlled by the NNS root canister.
+In order for an SNS to be launched, the SNS must have a successful decentralization swap. A decentralization swap is the action of initially funding the SNS by swapping ICP tokens for the SNS's native token. The decentralization swap is done through the SNS decentralization swap canister, which is owned and operated by ICP. It is controlled by the NNS root canister.
 
 When the swap starts, there is a pre-defined amount of SNS tokens to be distributed publicly. During the swap, participants can send ICP tokens to the swap canister to contribute to the SNS's initial funding.
 
 When the swap ends, the collected ICP tokens are swapped for the SNS's tokens. Participants that sent ICP tokens to the swap canister receive SNS tokens in the form of SNS neurons. The amount they receive is pro-rated by the amount of ICP tokens they contributed to the overall amount of ICP collected in the swap. For example, if the swap canister initially held 1000 SNS tokens, and 500 ICP tokens were collected during the swap, the exchange rate would be 2:1, meaning each participant would receive 2 tokens for each ICP token they contributed.
 
-The SNS places the collected ICP into an SNS controlled treasury. After a successful swap, the SNS tokens are owned by the community and the SNS is governed by that community.
+The SNS places the collected ICP into an SNS-controlled treasury. After a successful swap, the SNS tokens are owned by the community, and the SNS is governed by that community.
 
 You can learn more about SNS tokenomics and rewards in the following resources:
 
-* [SNS tokenomics](/docs/current/developer-docs/daos/sns/tokenomics/tokenomics-intro).
+* [SNS tokenomics](/docs/current/building-dapps/governing-dapps/tokenomics/tokenomics-intro).
 
-* [SNS rewards](/docs/current/developer-docs/daos/sns/tokenomics/rewards).
+* [SNS rewards](/docs/current/building-dapps/governing-dapps/tokenomics/rewards).
 
 ## SNS resources
 
 To learn more about creating, launching, and managing an SNS, refer to the following resources:
 
-* [SNS launch](/docs/current/developer-docs/daos/sns/launching/launch-summary-1proposal).
+* [SNS launch](/docs/current/building-dapps/governing-dapps/launching/launch-summary-1proposal).
 
-* [An introduction to SNS preparation](/docs/current/developer-docs/daos/sns/tokenomics/).
+* [An introduction to SNS preparation](/docs/current/building-dapps/governing-dapps/tokenomics/).
 
-* [The SNS launch checklist](/docs/current/developer-docs/daos/sns/tokenomics/sns-checklist).
+* [The SNS launch checklist](/docs/current/building-dapps/governing-dapps/tokenomics/sns-checklist).
 
-* [Pre-deployment considerations](/docs/current/developer-docs/daos/sns/tokenomics/predeployment-considerations).
+* [Pre-deployment considerations](/docs/current/building-dapps/governing-dapps/tokenomics/predeployment-considerations).
 
-* [SNS parameters](/docs/current/developer-docs/daos/sns/tokenomics/preparation).
+* [SNS parameters](/docs/current/building-dapps/governing-dapps/tokenomics/preparation).
 
-* [Guidelines how to test an SNS locally](/docs/current/developer-docs/daos/sns/testing/testing-locally).
+* [Guidelines on how to test an SNS locally](/docs/current/building-dapps/governing-dapps/testing/testing-locally).
 
-* [Guidelines how to test the operation of the dapp under SNS control](/docs/current/developer-docs/daos/sns/testing/testing-on-mainnet).
+* [Guidelines on how to test the operation of the dapp under SNS control](/docs/current/building-dapps/governing-dapps/testing/testing-on-mainnet).
 
-* [Stages included in an SNS launch](/docs/current/developer-docs/daos/sns/launching/launch-summary-1proposal).
+* [Stages included in an SNS launch](/docs/current/building-dapps/governing-dapps/launching/launch-summary-1proposal).
 
-* [SNS proposals](/docs/current/developer-docs/daos/sns/managing/making-proposals).
+* [SNS proposals](/docs/current/building-dapps/governing-dapps/managing/making-proposals).
 
-* [Tips regarding cycles management for the canisters](/docs/current/developer-docs/daos/sns/managing/cycles-usage).
+* [Tips regarding cycles management for the canisters](/docs/current/building-dapps/governing-dapps/managing/cycles-usage).
 
-* [An introduction to how to use the asset canister with an SNS-controlled dapp](/docs/current/developer-docs/daos/sns/managing/sns-asset-canister).
+* [An introduction to how to use the asset canister with an SNS-controlled dapp](/docs/current/building-dapps/governing-dapps/managing/sns-asset-canister).
 
 
 ## Using the NNS dapp
@@ -173,7 +171,7 @@ You will be prompted to log in with your Internet Identity. If you need to creat
 
 Once logged in, you can see your balance for each token on the NNS dapp. Tokens include ICP, ckBTC, and dapp-specific tokens for dapps that have an SNS, such as OpenChat (CHAT) and Hot or Not (HOT). For this tutorial, you'll be staking ICP in an ICP neuron, so assure that you have some ICP tokens available.
 
-If you need to obtain ICP tokens, they can be purchased through a crypto exchange, or they can be received through other activities such as receiving grants from the DFINITY foundation. They will need to be sent to the ICP wallet address shown in the NNS dapp in the top right corner of the wallet's details:
+If you need to obtain ICP tokens, they can be purchased through a crypto exchange, or they can be received through other activities such as receiving grants from the DFINITY Foundation. They will need to be sent to the ICP wallet address shown in the NNS dapp in the top right corner of the wallet's details:
 
 ![NNS dapp 1](../_attachments/nns1.png)
 
@@ -239,11 +237,11 @@ Then confirm the setting to create your neuron.
 
 ![NNS dapp 7](../_attachments/nns7.png)
 
-Once your neuron has been created, you can follow other neurons. As was discussed earlier, setting up following will automate your neuron's participation in voting on proposals, allowing you to maximize your neuron rewards. To follow a specific topic, select the drop-down menu next to the group you'd like to follow. In this example, you'll select "All except Governance, and SNS & Neurons' Fund".
+Once your neuron has been created, you can follow other neurons. As was discussed earlier, setting up following will automate your neuron's participation in voting on proposals, allowing you to maximize your neuron rewards. To follow a specific topic, select the drop-down menu next to the group you'd like to follow. In this example, you'll select "All except Governance and SNS & Neurons' Fund."
 
 ![NNS dapp 8](../_attachments/nns8.png)
 
-Then, you can select a specific group of neurons to follow by selecting 'Add Followee'.
+Then, you can select a specific group of neurons to follow by selecting 'Add Followee.'
 
 ![NNS dapp 9](../_attachments/nns9.png)
 
@@ -259,21 +257,21 @@ Close this window. Now, let's take a look at the details of our neuron. From the
 
 ![NNS dapp 12](../_attachments/nns12.png)
 
-From the neuron's detailed menu, you can execute actions such as increase the staked amount of ICP, increase the dissolve delay, or start dissolving the neuron. You will also see information regarding the neuron's maturity, which will increase over time and by voting on proposals.
+From the neuron's detailed menu, you can execute actions such as increasing the staked amount of ICP, increasing the dissolve delay, or starting dissolving the neuron. You will also see information regarding the neuron's maturity, which will increase over time and by voting on proposals.
 
 ![NNS dapp 13](../_attachments/nns13.png)
 
-If you scroll further, you can see advanced details and settings, such as when the neuron was created, its neuron account ID, and options to participate in the neurons' fund or split the neuron. [Learn more about these advanced options](/docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart).
+If you scroll further, you can see advanced details and settings, such as when the neuron was created, its neuron account ID, and options to participate in the neurons' fund or split the neuron. [Learn more about these advanced options](/docs/current/move-to-learnhub/nns/using-the-nns-dapp/nns-app-quickstart).
 
 ![NNS dapp 14](../_attachments/nns14.png)
 
-Lastly, at the very bottom of the window there will be information about the neurons that are being followed, any hotkeys that are set, and the neuron's voting history.
+Lastly, at the very bottom of the window, there will be information about the neurons that are being followed, any hotkeys that are set, and the neuron's voting history.
 
 ![NNS dapp 15](../_attachments/nns15.png)
 
 ### Interacting with NNS proposals
 
-Earlier, you set up following for our neuron, meaning that the neuron will automatically vote on proposals that fall into the category you configured. To interact with proposals manually, select 'Vote on Proposals' on the left navigation bar, then select 'Internet Computer'. All of the currently available proposals will be displayed.
+Earlier, you set up following for our neuron, meaning that the neuron will automatically vote on proposals that fall into the category you configured. To interact with proposals manually, select 'Vote on Proposals' on the left navigation bar, then select 'Internet Computer.' All of the currently available proposals will be displayed.
 
 ![NNS dapp 16](../_attachments/nns16.png)
 
@@ -281,11 +279,11 @@ If you click on one, however, you'll notice that you cannot vote on it. That's b
 
 ![NNS dapp 17](../_attachments/nns17.png)
 
-For additional information the NNS dapp, proposals, and neuron staking, check out the [NNS quick start guide](/docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart) and the [NNS explained series](https://youtu.be/1uX-fRgvXjU?feature=shared).
+For additional information on the NNS dapp, proposals, and neuron staking, check out the [NNS quick start guide](/docs/current/move-to-learnhub/nns/using-the-nns-dapp/nns-app-quickstart) and the [NNS explained series](https://youtu.be/1uX-fRgvXjU?feature=shared).
 
 ## Need help?
 
-Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
+Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
@@ -293,9 +291,9 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7 day adventure and learn to build a DAO on the Internet Computer.
+- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
 
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects and participate in collaborative events.
+- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
 
 - [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -312,5 +310,3 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 Next, you'll dive into how to use the tool quill:
 
 - [4.5 Using quill](/docs/current/tutorials/developer-journey/level-4/4.5-using-quill).
-
-

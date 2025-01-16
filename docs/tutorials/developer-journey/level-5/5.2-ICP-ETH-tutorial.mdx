@@ -17,11 +17,9 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/3XHbK5yn_8s?si=yU2zp9Ju5nQ4tlB_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
-
-
 As you explored in a previous tutorial, the Internet Computer is integrated with the Bitcoin network, allowing for smart contracts to seamlessly communicate from ICP to Bitcoin for multi-chain functionality. ICP also has an integration with Ethereum and EVM networks, but in a different manner than the Bitcoin integration.
 
-The Bitcoin integration is a direct integration, meaning there are nodes running on the ICP mainnet that run the Bitcoin node software. ICP currently does not have any nodes running the Ethereum node software and instead communicates with the Ethereum and EVM-compatible networks through a decentralized RPC integration. To facilitate communication to RPC services, the **EVM RPC** canister is used.
+The Bitcoin integration is a direct integration, meaning there are nodes running on the ICP mainnet that run the Bitcoin node software. ICP currently does not have any nodes running the Ethereum node software and instead communicates with the Ethereum and EVM-compatible networks through a decentralized RPC integration. To facilitate communication with RPC services, the **EVM RPC** canister is used.
 
 <div class="text-center">
   <img
@@ -31,7 +29,7 @@ The Bitcoin integration is a direct integration, meaning there are nodes running
   />
 </div>
 
-The EVM RPC canister enables your dapp to sign and submit transactions to Ethereum and other EVM networks using [HTTPS outcalls](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview) and [threshold ECDSA signatures](/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa). The EVM RPC canister will eventually be replaced by an onchain Ethereum API on ICP, made possible by running full Ethereum nodes on each ICP replica.
+The EVM RPC canister enables your dapp to sign and submit transactions to Ethereum and other EVM networks using [HTTPS outcalls](/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview) and [threshold ECDSA signatures](/docs/current/building-dapps/using-network-features/signatures/t-ecdsa). The EVM RPC canister will eventually be replaced by an onchain Ethereum API on ICP, made possible by running full Ethereum nodes on each ICP replica.
 
 Through ICP's chain-key cryptography feature, the ETH integration also includes chain-key tokens, similar to the design of ckBTC. The ETH integration expands the possibilities of chain-key tokens to include ckETH and ckERC-20 tokens, including ckUSDC, ckEURC, and ckUSDT.
 
@@ -47,7 +45,7 @@ This starter project is comprised of three canisters:
 
 - The backend canister, written in Motoko, that uses the Motoko package manager Mops and mo-dev, a live development server for Motoko.
 
-- The EVM RPC canister, which is pulled into the project using [`dfx deps`](/docs/current/developer-docs/smart-contracts/maintain/import).
+- The EVM RPC canister, which is pulled into the project using [`dfx deps`](/docs/current/building-dapps/interacting-with-dapps/using-third-party-canisters).
 
 We'll dive deeper into the project's files in the [exploring the project's files](#exploring-the-projects-files) section below.
 
@@ -150,7 +148,7 @@ actor {
 
 This backend code has a single function that retrieves the latest block from the Ethereum mainnet. It configures the RPC service to make the call through the Cloudflare RPC provider and attaches cycles to the call. By default, the EVM RPC canister replicates this call across at least three providers to decentralize the RPC call and verify that the results returned from each provider match one another. This backend code checks to make sure the result returned matches the result of the other RPC services.
 
-This tutorial will not dive into the frontend's configuration. [Learn more about frontend canisters](/docs/current/developer-docs/web-apps/application-frontends/overview).
+This tutorial will not dive into the frontend's configuration. [Learn more about frontend canisters](/docs/current/building-dapps/dapp-frontends/using-an-asset-canister).
 
 ### Deploying the project
 
@@ -202,7 +200,7 @@ When this button is clicked, the following is happening in the background:
 
 - This request involves encoding and decoding ABI, which is the Candid equivalent in the Ethereum ecosystem.
 
-- The latest block information is returned to the backend canister. Three responses are returned; one from the specified RPC provider Cloudflare and two from the other RPC providers that the EVM RPC canister queried automatically for decentralization purposes. The backend canister checks to be sure that all three responses contain the same information.
+- The latest block information is returned to the backend canister. Three responses are returned: one from the specified RPC provider, Cloudflare, and two from the other RPC providers that the EVM RPC canister queried automatically for decentralization purposes. The backend canister checks to be sure that all three responses contain the same information.
 
 - Then, the frontend displays the block information that was returned.
 
@@ -250,7 +248,7 @@ If the results from each RPC provider match, the result returned will be 'Consis
 )
 ```
 
-If the results returned are 'Inconsistent', each individual response will be returned:
+If the results returned are 'inconsistent,' each individual response will be returned:
 
 ```bash
 (
@@ -347,17 +345,17 @@ Some JSON-RPC APIs may only return a `NonceTooLow` status when successfully subm
 
 - [View the full Github repo for this starter project](https://github.com/rvanasa/vite-react-motoko/tree/evm-rpc).
 
-- [How it works: EVM RPC canister](/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/how-it-works).
+- [How it works: EVM RPC canister](/docs/current/building-dapps/chain-fusion/ethereum/evm-rpc/how-it-works).
 
-- [Using the EVM RPC canister](/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister).
+- [Using the EVM RPC canister](/docs/current/building-dapps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister).
 
-- [Costs of RPC requests](/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/costs).
+- [Costs of RPC requests](/docs/current/building-dapps/chain-fusion/ethereum/evm-rpc/costs).
 
-- [Samples using the EVM RPC canister](/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/samples).
+- [Samples using the EVM RPC canister](/docs/current/building-dapps/chain-fusion/ethereum/evm-rpc/samples).
 
 ## Need help?
 
-Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
+Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
@@ -365,9 +363,9 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7 day adventure and learn to build a DAO on the Internet Computer.
+- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
 
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects and participate in collaborative events.
+- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
 
 - [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
