@@ -21,7 +21,7 @@ Now that you have <GlossaryTooltip>canisters</GlossaryTooltip> deployed, the nex
 
 ## The ICP management canister
 
-To enable canister management, the management canister exposes management functionality to end users and other canisters. While it is titled the 'management canister,' it is not actually a canister that exists with an isolated state, Wasm code, etc.; it is a facade. It is important to understand the management canister's role, however, in order to understand some of the advanced ICP features, such as threshold ECDSA and integrations like Bitcoin.
+To enable canister management, the management canister exposes management functionality to end users and other canisters. While it is titled the 'management canister,' it is not actually a canister that exists with an isolated state, Wasm code, etc.; it is a facade. It is important to understand the management canister's role, however, to understand some of the advanced ICP features, such as threshold ECDSA and integrations like Bitcoin.
 
 Management operations such as updating a canister, creating a canister, and stopping or starting a canister are sent to the management canister and then executed. When executed, the messages are sent to the relevant <GlossaryTooltip>subnet</GlossaryTooltip> and intercepted by the execution environment, which triggers the execution of the operation.
 
@@ -149,7 +149,7 @@ Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 
 ## Managing the running state of a canister
 
-Once a canister has been deployed, it can receive and process requests from other canisters or end users. When a canister is able to send requests and receive replies, the canister is in a **Running** state.
+Once a canister has been deployed, it can receive and process requests from other canisters or end users. When a canister can send requests and receive replies, the canister is in a **Running** state.
 
 Canisters are placed in the **Running** state by default, but there may be situations where a canister needs to be temporarily or permanently stopped. For example, before a canister is upgraded, it may be stopped to ensure proper message handling if the message is in progress or should be rolled back. Stopping a canister is also a requirement if the canister is going to be deleted.
 
@@ -261,7 +261,7 @@ Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 
 ## Topping up a canister's cycles balance
 
-Depositing cycles into a canister's cycles balance is known as 'topping up' the canister's balance. For production canisters, which are consistently using cycles over time to pay for the canister's resources, topping up the canister is required for routine maintenance.
+Depositing cycles into a canister's cycles balance is known as 'topping up' the canister's balance. For production canisters, which consistently use cycles over time to pay for the canister's resources, topping up the canister is required for routine maintenance.
 
 While you must be a canister's controller in order to view the cycles balance of the canister, anyone can top up a canister.
 
