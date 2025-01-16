@@ -1051,6 +1051,7 @@ const sidebars = {
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-staking-a-neuron",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-voting-on-proposals",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-following-other-neurons",
+                "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-confirm-following",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-advanced-neuron-operations",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-making-neurons-public",
                 "developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-manage-quill-neurons",
