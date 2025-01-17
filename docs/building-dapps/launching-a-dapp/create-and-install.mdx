@@ -45,12 +45,12 @@ The backend stores the application’s data and contains the core logic.
 Several languages are supported, such as:
 
 - **[Motoko](/docs/current/motoko/main/getting-started/motoko-introduction)**: Supported by [DFINITY](https://github.com/dfinity/motoko). Motoko is production-ready and was specifically designed to onboard developers onto ICP and leverage the actor-based programming model of ICP. It is a high-level language with a garbage collector and syntax that is similar to TypeScript.
-Examples of production smart contracts that use Motoko include [ICDex](https://github.com/iclighthouse/ICDex) and [CycleOps](https://github.com/CycleOperators/cycles-manager).[Learn more about using Motoko](/docs/current/motoko/main/getting-started/motoko-introduction).
+Examples of production smart contracts that use Motoko include [ICDex](https://github.com/iclighthouse/ICDex) and [CycleOps](https://github.com/CycleOperators/cycles-manager). [Learn more about using Motoko](/docs/current/motoko/main/getting-started/motoko-introduction).
 
-- **[Rust](/docs/current/building-dapps/developer-tools/cdks/rust/)**: Supported by [DFINITY](https://github.com/dfinity/cdk-rs). Currently, Rust is the language with the most production coverage for ICP applications.
+- **[Rust](/docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust)**: Supported by [DFINITY](https://github.com/dfinity/cdk-rs). Currently, Rust is the language with the most production coverage for ICP applications.
 All system smart contracts, such as [the DAO governing ICP](https://github.com/dfinity/ic/tree/master/rs/nns), [the ICP ledger](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icp), and the [Bitcoin](https://github.com/dfinity/bitcoin-canister) and [Ethereum](https://github.com/dfinity/ic/tree/master/rs/ethereum) integration smart contracts, are written in Rust. This language gives the developer full control over all aspects of the smart contract, starting from performance to memory management.
 The only disadvantage of Rust is that it is lower-level compared to other languages and requires more expert programming skills to write safe and secure code.
-[Learn more about using Rust](/docs/current/building-dapps/developer-tools/cdks/rust/).
+[Learn more about using Rust](/docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust).
 
 - **TypeScript (beta)**: Supported by [Demergent Labs](https://github.com/demergent-labs) under the name Azle. Azle is in beta. Please check [the Azle website](https://demergent-labs.github.io/azle/) for more information.
 
@@ -176,58 +176,6 @@ The project structure will resemble the following. If you are using an ICP Ninja
 
 </TabItem>
 
-<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
-
-```bash
-<project-name>/
-├── README.md          # Default project documentation
-├── dfx.json           # Project configuration file
-├── node_modules
-├── package-lock.json  # Libraries for frontend development
-├── package.json
-├── src                # Source files directory
-│   ├── <project-name>_backend
-|   |   └── index.ts
-│   ├── <project-name>_frontend
-│       ├── assets
-│       │   ├── logo.png
-│       │   ├── main.css
-│       │   └── sample-asset.txt
-│       └── src
-│           ├── index.html
-│           └── index.js
-└── tsconfig.json
-```
-
-
-</AdornedTab>
-
-<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
-
-```bash
-<project-name>/
-├── README.md      # Default project documentation
-├── dfx.json       # Project configuration file
-├── node_modules   # Libraries for frontend development
-├── package-lock.json
-├── package.json
-├── src            # Source files directory
-│   ├── <project-name>_backend
-│   │   └── <project-name>_backend.did
-│   │   └── src
-│       │   ├── main.py
-│   ├── <project-name>_frontend
-│       ├── assets
-│       │   ├── logo.png
-│       │   ├── main.css
-│       │   └── sample-asset.txt
-│       └── src
-│           ├── index.html
-│           └── index.js
-└── tsconfig.json
-```
-
-</AdornedTab>
 </AdornedTabs>
 
 In this directory, the following files and directories are notable:
@@ -293,8 +241,8 @@ When a canister is created, the following steps happen:
 
 Common errors related to canister creation include:
 
-- [Canister not found](/docs/current/developer-education/message-execution/execution-errors#canister-not-found).
-- [Maximum number of canisters reached](/docs/current/developer-education/message-execution/execution-errors#maximum-number-of-canisters-reached).
+- [Canister not found](/docs/current/references/execution-errors#canister-not-found).
+- [Maximum number of canisters reached](/docs/current/references/execution-errors#maximum-number-of-canisters-reached).
 
 ## Compile code into WebAssembly
 
@@ -406,18 +354,18 @@ Compression is currently not supported by `dfx deploy`.
 
 Common errors related to installation and Wasm modules include:
 
-- [Install code rate limited](/docs/current/developer-education/message-execution/execution-errors#install-code-rate-limited).
-- [Canister not empty](/docs/current/developer-education/message-execution/execution-errors#canister-not-empty).
-- [Wasm module not found](/docs/current/developer-education/message-execution/execution-errors#wasm-module-not-found).
-- [Wasm module too large](/docs/current/developer-education/message-execution/execution-errors#wasm-module-too-large).
-- [Wasm module duplicate exports](/docs/current/developer-education/message-execution/execution-errors#wasm-module-duplicate-exports).
-- [Wasm module exports too many methods](/docs/current/developer-education/message-execution/execution-errors#wasm-module-exports-too-many-methods).
-- [Wasm module sum of exported name lengths too large](/docs/current/developer-education/message-execution/execution-errors#wasm-module-sum-of-exported-name-lengths-too-large).
-- [Wasm module too many functions](/docs/current/developer-education/message-execution/execution-errors#wasm-module-too-many-functions).
-- [Wasm module too many globals](/docs/current/developer-education/message-execution/execution-errors#wasm-module-too-many-globals).
-- [Wasm module function complexity too high](/docs/current/developer-education/message-execution/execution-errors#wasm-module-function-complexity-too-high).
-- [Wasm module function too large](/docs/current/developer-education/message-execution/execution-errors#wasm-module-function-too-large).
-- [Wasm module code section too large](/docs/current/developer-education/message-execution/execution-errors#wasm-module-code-section-too-large).
+- [Install code rate limited](/docs/current/references/execution-errors#install-code-rate-limited).
+- [Canister not empty](/docs/current/references/execution-errors#canister-not-empty).
+- [Wasm module not found](/docs/current/references/execution-errors#wasm-module-not-found).
+- [Wasm module too large](/docs/current/references/execution-errors#wasm-module-too-large).
+- [Wasm module duplicate exports](/docs/current/references/execution-errors#wasm-module-duplicate-exports).
+- [Wasm module exports too many methods](/docs/current/references/execution-errors#wasm-module-exports-too-many-methods).
+- [Wasm module sum of exported name lengths too large](/docs/current/references/execution-errors#wasm-module-sum-of-exported-name-lengths-too-large).
+- [Wasm module too many functions](/docs/current/references/execution-errors#wasm-module-too-many-functions).
+- [Wasm module too many globals](/docs/current/references/execution-errors#wasm-module-too-many-globals).
+- [Wasm module function complexity too high](/docs/current/references/execution-errors#wasm-module-function-complexity-too-high).
+- [Wasm module function too large](/docs/current/references/execution-errors#wasm-module-function-too-large).
+- [Wasm module code section too large](/docs/current/references/execution-errors#wasm-module-code-section-too-large).
 
 ## Deploying canisters
 

@@ -18,6 +18,21 @@ const sidebars = {
           id: "developer-education/developer-concepts/what-are-canisters",
         },
         {
+          type: "doc",
+          label: "Canister components",
+          id: "developer-education/developer-concepts/inside-canisters",
+        },
+        {
+          type: "doc",
+          label: "Canister lifecycle",
+          id: "developer-education/developer-concepts/canister-lifecycle",
+        },
+        {
+          type: "doc",
+          label: "Trust in canisters",
+          id: "developer-education/developer-concepts/trust-in-canisters",
+        },
+        {
           type: "category",
           label: "Reverse gas model",
           items:[
@@ -27,7 +42,7 @@ const sidebars = {
         },
         {
           type: "doc",
-          label: "Unique ICP features",
+          label: "Unique features of ICP",
           id: "developer-education/developer-concepts/unique-icp-features",
         },
       ],
@@ -45,16 +60,6 @@ const sidebars = {
           type: "doc",
           label: "Application architecture considerations",
           id: "developer-education/developer-playbook/application-architectures",
-        },
-        {
-          type: "doc",
-          label: "Canister components",
-          id: "developer-education/developer-playbook/inside-canisters",
-        },
-        {
-          type: "doc",
-          label: "Canister lifecycle",
-          id: "developer-education/developer-playbook/canister-lifecycle",
         },
       {
         type: "category",
@@ -113,11 +118,6 @@ const sidebars = {
           type: "doc",
           label: "List of system canisters",
           id: "developer-education/system-canisters/index",
-        },
-        {
-          type: "doc",
-          label: "Exchange rate canister",
-          id: "developer-education/system-canisters/exchange-rate-canister",
         },
         {
           type: "doc",
@@ -233,7 +233,7 @@ build: [
       },
       {
         type: "doc",
-        label: "Explore examples",
+        label: "Exploring examples",
         id: "building-dapps/getting-started/explore-examples",
       },
       {
@@ -253,8 +253,8 @@ build: [
       },
       {
         type: "doc",
-        label: "Writing smart contracts",
-        id: "building-dapps/getting-started/write-smart-contracts",
+        label: "Writing canister code",
+        id: "building-dapps/getting-started/write-canister-code",
       },
       {
         type: "doc",
@@ -280,42 +280,38 @@ build: [
           },
           items: [
             {
+              type: "doc",
+              label: "Motoko",
+              id: "motoko/main/getting-started/motoko-introduction",
+            },
+            {
               type: "category",
               label: "Rust",
               items: [
-              {
-                type: "category",
-                label: "Getting started",
-                items: [
-                  "building-dapps/developer-tools/cdks/rust/index",
-                  "building-dapps/developer-tools/cdks/rust/deploying",
+                  "building-dapps/developer-tools/cdks/rust/intro-to-rust",
                   "building-dapps/developer-tools/cdks/rust/project-organization",
-                ]
-              },
-              {
-                type: "category",
-                label: "Writing Rust canisters",
-                items: [
-                  "building-dapps/developer-tools/cdks/rust/access-control",
-                  "building-dapps/developer-tools/cdks/rust/searching-records",
-                  "building-dapps/developer-tools/cdks/rust/canister-state",
-                  "building-dapps/developer-tools/cdks/rust/rust-considerations",
-                  "building-dapps/developer-tools/cdks/rust/timers",
                   "building-dapps/developer-tools/cdks/rust/stable-structures",
+                  "building-dapps/developer-tools/cdks/rust/optimizing",
+                  "building-dapps/developer-tools/cdks/rust/upgrading",
                   "building-dapps/developer-tools/cdks/rust/rust-limitations",
-
-                ],
-              },
               {
                 type: "category",
                 label: "Interacting with Rust canisters",
                 items: [
                   "building-dapps/developer-tools/cdks/rust/intercanister",
                   "building-dapps/developer-tools/cdks/rust/message-inspect",
-                  "building-dapps/developer-tools/cdks/rust/optimizing",
-                  "building-dapps/developer-tools/cdks/rust/upgrading",
                   "building-dapps/developer-tools/cdks/rust/candid",
                   "building-dapps/developer-tools/cdks/rust/generating-candid",
+                ],
+              },
+              {
+                type: "category",
+                label: "Example workflows",
+                items: [
+                  "building-dapps/developer-tools/cdks/rust/access-control",
+                  "building-dapps/developer-tools/cdks/rust/searching-records",
+                  "building-dapps/developer-tools/cdks/rust/canister-state",
+                  "building-dapps/developer-tools/cdks/rust/timers",
                 ],
               },
             ],
@@ -483,7 +479,7 @@ build: [
     },
     {
       type: "category",
-      label: "Dapp frontends",
+      label: "Application frontends",
       items: [
         "building-dapps/dapp-frontends/using-an-asset-canister",
         "building-dapps/dapp-frontends/uploading-serving-assets",
@@ -502,7 +498,16 @@ build: [
     },
     {
       type: "category",
-      label: "Launching a dapp",
+      label: "User authentication",
+      items: [
+        "building-dapps/authentication/overview",
+        "building-dapps/authentication/integrate-internet-identity",
+        "building-dapps/authentication/alternative-origins",
+      ],
+    },
+    {
+      type: "category",
+      label: "Launching your app",
       items: [
         "building-dapps/launching-a-dapp/create-and-install",
         {
@@ -541,7 +546,7 @@ build: [
     },
     {
       type: "category",
-      label: "Interacting with dapps",
+      label: "Interacting with apps",
       items: [
         "building-dapps/interacting-with-dapps/query-calls",
         "building-dapps/interacting-with-dapps/update-calls",
@@ -573,7 +578,7 @@ build: [
     },
     {
       type: "category",
-      label: "Managing dapps",
+      label: "Managing applications",
       items: [
         "building-dapps/managing-dapps/control",
         "building-dapps/managing-dapps/delete",
@@ -595,7 +600,7 @@ build: [
       items: [
         {
           type: "category",
-          label: "Using external data",
+          label: "Fetching external data",
           items: [
             {
               type: "category",
@@ -604,6 +609,7 @@ build: [
                 "building-dapps/using-network-features/using-external-data/http-gateways-certification/gateways",
                 "building-dapps/using-network-features/using-external-data/http-gateways-certification/custom-http-canisters",
                 "building-dapps/using-network-features/using-external-data/http-gateways-certification/serving-json-over-http",
+                "building-dapps/using-network-features/using-external-data/http-gateways-certification/serving-static-assets-ic-assets",
                 "building-dapps/using-network-features/using-external-data/http-gateways-certification/serving-static-assets-over-http",
               ],
             },
@@ -638,17 +644,8 @@ build: [
         },
         "building-dapps/using-network-features/randomness",
         "building-dapps/using-network-features/periodic-tasks-timers",
-        "building-dapps/using-network-features/simd",
         "building-dapps/using-network-features/time-and-timestamps",
-        {
-          type: "category",
-          label: "Authentication",
-          items: [
-            "building-dapps/using-network-features/authentication/overview",
-            "building-dapps/using-network-features/authentication/integrate-internet-identity",
-            "building-dapps/using-network-features/authentication/alternative-origins",
-          ],
-        },
+        "building-dapps/using-network-features/simd",
         {
           type: "category",
           label: "Verifiable credentials",
@@ -736,7 +733,7 @@ build: [
     },
     {
       type: "category",
-      label: "Governing dapps",
+      label: "Governing applications",
       items: [
         {
           label: "What is an SNS?",

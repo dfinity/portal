@@ -4,7 +4,7 @@ keywords: [authentication, identity, login, user login, integration]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Implementing authentication in an application
+# Authentication services
 
 <MarkdownChipRow labels={["Beginner", "Concept"]} />
 
@@ -12,13 +12,13 @@ When building an application that enables users to have profiles or buy and sell
 
 To implement authentication in your dapp, your application frontend must provide a user interface component that triggers an authentication workflow. Then, the backend logic must implement code to handle the authentication and return a response to the frontend service.
 
-A simple example of this workflow is a basic 'Who am I?' application that uses Internet Identity for authentication. View the [integrating with Internet Identity](/docs/current/building-dapps/using-network-features/authentication/integrate-internet-identity) documentation for more information.
+A simple example of this workflow is a basic 'Who am I?' application that uses Internet Identity for authentication. View the [integrating with Internet Identity](/docs/current/building-dapps/authentication/integrate-internet-identity) documentation for more information.
 
 ## Authentication methods
 
 Authentication methods available on ICP include:
 
-- [Internet Identity](/docs/current/building-dapps/using-network-features/authentication/overview): ICP's native identity service that uses a cryptographic public/private key pair for authentication.
+- [Internet Identity](/docs/current/building-dapps/authentication/overview): ICP's native identity service that uses a cryptographic public/private key pair for authentication.
 
 - [Email and password](https://nfid.one): Authentication with an email and password.
 
@@ -26,7 +26,7 @@ Authentication methods available on ICP include:
 
 - [`ic-auth`](https://github.com/id-daniel-mccoy/ic-auth): A modular tool to integrate wallet providers into ICP apps. Supports Stoic, Plug, Internet Identity, and NFID.
 
-- [Plug wallet](https://docs.plugwallet.ooo/getting-started/extension-components/): An in-browser wallet for managing all ICP assets such as cycles, ICP, tokens, and NFTs.
+- [Plug wallet](https://docs.plugwallet.ooo/): An in-browser wallet for managing all ICP assets such as cycles, ICP, tokens, and NFTs.
 
 The following tools enable authenticating with ICP dapps using wallet addresses from other chains and ecosystems:
 

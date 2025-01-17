@@ -44,7 +44,7 @@ While the value of an ICP token is volatile, cycles are not. Cycles are pegged t
 
 ## Other token types
 
-The Internet Computer supports creating and deploying custom fungible or non-fungible tokens through the [ICRC standards](/docs/current/rosetta-defi/tokens/token-standards). Each ICRC standard defines a set of parameters that must be met to adhere to the standard. Not all ICRC standards are for tokens; some are for notifications, architectures, or other network functions.
+The Internet Computer supports creating and deploying custom fungible or non-fungible tokens through the [ICRC standards](/docs/current/rosetta-defi/token-standards/index). Each ICRC standard defines a set of parameters that must be met to adhere to the standard. Not all ICRC standards are for tokens; some are for notifications, architectures, or other network functions.
 
 ## What is a ledger?
 
@@ -64,7 +64,7 @@ A principal has the format `itk7v-ihlxk-ktdrh-fcnst-vkoou-orj77-52ogl-jqwj5-zpfd
 A ledger account identifier has the format `e213184a548871a47fb526f3cba24e2ee2fbbc8129c4ab497ef2ce535130a0a4` and is used to send and receive tokens like ICP.
 :::
 
-### 1. Get your account's ledger account ID.
+### Step 1: Get your account's ledger account ID.
 
 ```
 dfx ledger account-id
@@ -79,11 +79,11 @@ b0d7beee54be8679a42e999218a16a0d396f223d7e44d259ac089848c1b820bf
 
 </details>
 
-### 2. Send ICP tokens to this ledger account ID.
+### Step 2: Send ICP tokens to this ledger account ID.
 
 You can obtain [ICP tokens](https://internetcomputer.org/icp-tokens) from an [exchange](https://coinmarketcap.com/currencies/internet-computer/markets) or through a [developer grant](https://dfinity.org/grants). If you are using an exchange, initiate a withdrawal transaction, then enter the ledger account ID as the "destination" address to send ICP tokens to.
 
-### 3. Check the ICP balance.
+### Step 3: Check the ICP balance.
 
 ```
 dfx ledger balance --network=ic
@@ -100,7 +100,7 @@ dfx ledger balance --network=ic
 
 Converting ICP to cycles is done through the **cycles ledger**, a ledger canister that enables developer identities to convert, hold, send, and receive cycles.
 
-The price of cycles is fixed against the price of [XDR](/docs/current/developer-education/glossary/index#xdr), where 1 trillion cycles equals 1 XDR.
+The price of cycles is fixed against the price of [XDR](/docs/current/developer-education/glossary#x), where 1 trillion cycles equals 1 XDR.
 
 Cycles are measured in very large numbers, such as billions and trillions. When you talk about cycle transfers and replenishment, you will usually operate with trillions of cycles.
 
@@ -108,7 +108,7 @@ Cycles are measured in very large numbers, such as billions and trillions. When 
 These commands must be run with the `--network=ic` flag. The cycles ledger is not necessary for local development and therefore not part of the local replica.
 :::
 
-### 4. Convert ICP into cycles.
+### Step 4: Convert ICP into cycles.
 
 Replace `AMOUNT` with the number of ICP tokens you want to convert into cycles.
 
@@ -133,7 +133,7 @@ The amount of cycles that your canister will use depends on a variety of factors
 
 :::
 
-### 5. Confirm the cycles balance.
+### Step 5: Confirm the cycles balance.
 
 ```
 dfx cycles balance --network=ic
@@ -152,4 +152,4 @@ dfx cycles balance --network=ic
 
 Next, it's time to write the code for a smart contract.
 
-- [x] [Writing smart contracts](/docs/current/building-dapps/getting-started/write-smart-contracts).
+- [x] [Writing smart contracts](/docs/current/building-dapps/getting-started/write-canister-code).

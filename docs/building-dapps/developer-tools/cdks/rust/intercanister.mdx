@@ -44,12 +44,12 @@ The **subscriber** canister contains a record of topics. The **publisher** canis
 
 Let's take a look at the `src/lib.rs` file for each of these canisters.
 
-```rust ../../../../references/samples/rust/pub-sub/src/publisher/src/lib.rs
+```rust file=../../../../references/samples/rust/pub-sub/src/publisher/src/lib.rs
 ```
 
 In this code, you can see two inter-canister update calls: `fn subscribe(subscriber: Subscriber)` and `async fn publish(counter: Counter)`. The first method allows the subscriber canister to make a call to the publisher canister and subscribe to topics. The second method allows the publisher canister to publish information on a topic in the subscriber canister.
 
-```rust ../../../../references/samples/rust/pub-sub/src/subscriber/src/lib.rs
+```rust file=../../../../references/samples/rust/pub-sub/src/subscriber/src/lib.rs
 ```
 
 In this code, there are three main methods: two inter-canister update methods and a query method.

@@ -12,9 +12,9 @@ In programming, the [async/await pattern](https://en.wikipedia.org/wiki/Async/aw
 
 On ICP, `async/await` is useful in the context of inter-canister calls. Inter-canister calls cannot be handled synchronously (as the two canisters interacting might not even be in the same subnet), so when a canister sends a call to another, it will have to wait until a response comes back before it can continue processing the call it received.
 
-The `async/await` pattern makes this look straightforward, as the developer can write code as if processing happens sequentially and the call to the callee is handled “synchronously.” However, given ICP's message-passing model, one has to be careful in case there are [concurrent calls that message executions can interleave](/docs/current/developer-education/message-execution/message-execution-properties) as these can lead to inconsistencies if they are not anticipated.
+The `async/await` pattern makes this look straightforward, as the developer can write code as if processing happens sequentially and the call to the callee is handled “synchronously.” However, given ICP's message-passing model, one has to be careful in case there are [concurrent calls that message executions can interleave](/docs/current/move-to-learnhub/message-execution-properties) as these can lead to inconsistencies if they are not anticipated.
 
- ## Language runtime for asynchronous code
+## Language runtime for asynchronous code
 
 Most languages implement asynchronous code through constructs that they typically call [futures](https://docs.rs/futures/latest/futures/) ([promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) in Javascript). A future is a representation of an eventual value produced by some asynchronous computation. Typically, a future is modeled to have different states depending on whether the
 result of the asynchronous computation is ready or not. The language runtime can poll the future to learn about its result. As long as the result is not ready, the code will typically yield execution, and the future will be polled again later.

@@ -102,11 +102,8 @@ Instead, developers should use language-specific Canister Development Kit (CDK) 
 
 There are three ways to call the functions of the backend canister:
 
-1. Use the browser to load the webpage hosted in the frontend <GlossaryTooltip>canister</GlossaryTooltip> and use the UI of the webpage to interact with the backend <GlossaryTooltip>canister</GlossaryTooltip>.
-   Under the hood, the UI uses JavaScript and the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) to send messages to the backend canister.
-   This is the standard way to interact with the canister that regular users would also use.
-2. Use the `dfx canister call` command and pass the input arguments as command line arguments.
-   Under the hood, `dfx` uses a Rust library called ic-agent to send messages to the canister.
+1. Use the browser to load the webpage hosted in the frontend canister and use the UI of the webpage to interact with the backend canister. Under the hood, the UI uses JavaScript and the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) to send messages to the backend canister. This is the standard way to interact with the canister that regular users would also use.
+2. Use the `dfx canister call` command and pass the input arguments as command line arguments. Under the hood, `dfx` uses a Rust library called ic-agent to send messages to the canister.
 3. Write an off-chain program that uses an [agent library](/docs/current/building-dapps/interacting-with-dapps/agents/overview) to send messages to the canister.
 
 <div class="text--center">

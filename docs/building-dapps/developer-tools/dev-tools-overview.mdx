@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 Developer tools are used to create, manage, and interact with canisters. They can come in several formats, such as command line tools, onchain and off-chain libraries, and integrated development environments. For ICP developers, there are tools within each of these categories available for you to utilize when developing your ICP canisters.
 
-## Command line
+## Command line tools
 
 ### `dfx`
 
@@ -26,20 +26,19 @@ To deploy canisters to the mainnet or make calls to canisters already deployed o
 
 - [IC SDK GitHub repo](https://github.com/dfinity/sdk).
 
-
 ### `dfxvm`
 
-[`dfxvm`](/docs/current/building-dapps/developer-tools/dfxvm/) is a CLI tool used for installing and switching between different versions of `dfx`. It enables developers to pivot between different projects that are built with different `dfx` versions.
+[`dfxvm`](/docs/current/building-dapps/developer-tools/dfxvm/dfxvm-default) is a CLI tool used for installing and switching between different versions of `dfx`. It enables developers to pivot between different projects that are built with different `dfx` versions.
 
 - [Install `dfxvm`](/docs/current/building-dapps/getting-started/install#installing-dfx).
 
-- [`dfxvm` documentation](/docs/current/building-dapps/developer-tools/dfxvm/dfx/).
+- [`dfxvm` documentation](/docs/current/building-dapps/developer-tools/dfxvm/dfxvm-default).
 
 - [`dfxvm` GitHub repo](https://github.com/dfinity/dfxvm).
 
 ### `quill`
 
-[`quill`](/docs/current/building-dapps/developer-tools/quill/ command-line ledger and governance toolkit designed for interacting with the [Network Nervous System (NNS)](/docs/current/move-to-learnhub/nns/overview) canisters through the use of self-custody keys. It supports using keys in an air-gapped computer, which is a computer that has never been connected to the internet. To support this workflow, `quill` first generates and signs messages based on the user input, then the signed messages are transported to a computer with an internet connection (via a USB flash drive or QR code) where they are submitted to ICP to be executed.
+[`quill`](/docs/current/building-dapps/developer-tools/quill/) command-line ledger and governance toolkit designed for interacting with the [Network Nervous System (NNS)](/docs/current/move-to-learnhub/nns/overview) canisters through the use of self-custody keys. It supports using keys in an air-gapped computer, which is a computer that has never been connected to the internet. To support this workflow, `quill` first generates and signs messages based on the user input, then the signed messages are transported to a computer with an internet connection (via a USB flash drive or QR code) where they are submitted to ICP to be executed.
 
 - [Install `quill`](https://github.com/dfinity/quill?tab=readme-ov-file#download--install).
 
@@ -47,9 +46,7 @@ To deploy canisters to the mainnet or make calls to canisters already deployed o
 
 - [`quill` GitHub repo](https://github.com/dfinity/quill).
 
-## Off-chain libraries
-
-### Agents
+## Agents
 
 An **agent** refers to an off-chain library that is used to make calls to the public interface of a canister. Agents communicate with the canister's `v2` API endpoints.
 
@@ -66,12 +63,12 @@ Additionally, there are several community-developed and -maintained agents:
 - .NET [`ICP.NET` by Gekctek](https://github.com/Gekctek/ICP.NET)
 
 - Dart agents:
-  - [`agent_dart` by AstroX](https://github.com/AstroxNetwork/agent_dart) (supports mobile development with Flutter)
-  - [`ic_dart_tools` by Levi Feldman](https://github.com/levifeldman/ic_tools_dart)
+    - [`agent_dart` by AstroX](https://github.com/AstroxNetwork/agent_dart) (supports mobile development with Flutter)
+    - [`ic_dart_tools` by Levi Feldman](https://github.com/levifeldman/ic_tools_dart)
 
 - Go agents:
-  - [`IC-Go` by MixLabs](https://github.com/mix-labs/IC-Go)
-  - [`agent-go` by Aviate Labs](https://github.com/aviate-labs/agent-go)
+    - [`IC-Go` by MixLabs](https://github.com/mix-labs/IC-Go)
+    - [`agent-go` by Aviate Labs](https://github.com/aviate-labs/agent-go)
 
 - Java [`ic4j-agent` by IC4J](https://github.com/ic4j/ic4j-agent) (supports Android)
 
@@ -81,25 +78,23 @@ Additionally, there are several community-developed and -maintained agents:
 
 - Ruby [`ic_agent` by Terry.Tu](https://github.com/tuminfei/ic_agent)
 
-### Canpack
+## Canpack
 
 - [Canpack](/docs/current/building-dapps/developer-tools/canpack): A tool used to facilitate communication between canisters written in different languages; currently supports calling Rust crates from Motoko canisters.
 
-### Canbench
+## Canbench
 
 - [Canbench](/docs/current/building-dapps/developer-tools/canbench): A Rust crate that provides canister benchmarking tooling so developers can gain an insight into how their canister uses memory, instructions, and other resources.
 
-### `ic-alloy`
+## `ic-alloy`
 
 The [`ic-alloy`](https://github.com/ic-alloy) Rust crate can be used to interact with the EVM RPC canister from Rust code. [View the `ic-alloy` documentation for more information](https://o7kje-7yaaa-aaaal-qnaua-cai.icp0.io).
 
-## Onchain libraries
-
-### Canister development kits (CDKs)
+## Canister development kits (CDKs)
 
 A canister development kit (CDK) is an adapter used by `dfx` to provide programming languages with the necessary features and functionality to create, deploy, and manage canisters.
 
-The [Rust CDK](/docs/current/building-dapps/developer-tools/cdks/rust/) is developed and maintained by DFINITY for Rust development.
+The [Rust CDK](/docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust) is developed and maintained by DFINITY for Rust development.
 
 There are several community-contributed and maintained CDKs for languages such as:
 
@@ -125,40 +120,11 @@ ICP Ninja is a web-based IDE designed specifically for building and deploying IC
 
 - [ICP Ninja documentation](/docs/current/building-dapps/developer-tools/ide/icp-ninja).
 
-### Gitpod
-
-Gitpod is a cloud development environment that is able to run within a web browser. Gitpod can be configured to run `dfx` and a local replica instance to support canister development, and there are several example canister projects that have been configured to run in Gitpod. This IDE provides a simple and easy way to get started developing on ICP without downloading any tools or setting up an environment.
-
-- [Gitpod dashboard](https://gitpod.io/).
-
-- [Gitpod documentation](/docs/current/building-dapps/developer-tools/ide/gitpod).
-
-### GitHub Codespaces
-
-GitHub Codespaces is another cloud development environment that is able to run within a web browser without downloading any tools or packages. Similar to Gitpod, Codespaces can be configured to run `dfx` and a local replica instance to support canister development, and there are several example canister projects that have been configured to run in Codespaces.
-
-- [GitHub Codespaces dashboard](https://github.com/codespaces).
-
-- [Gitpod documentation](/docs/current/building-dapps/developer-tools/ide/codespaces).
-
 ### Developer containers
 
 Developer containers are a local development workflow using Docker and VS Code. They are a great local development option for developers on Windows systems since `dfx` is not natively supported on Windows.
 
 - [Developer container documentation](/docs/current/building-dapps/developer-tools/ide/dev-containers).
-
-### Playground
-
-The playground is a web-based sandbox environment that can be used with `dfx` using the `dfx deploy --playground` command. Canisters deployed to the playground borrow resources from a shared canister pool. Because the resources are borrowed, all canisters deployed to the playground will be deleted after 20 minutes. It is designed for small-scale, temporary testing without configuring other developmental parameters. It supports testing canisters written in any language.
-
-:::info
-Deploying to the playground is ICP's equivalent of deploying to a testnet network.
-:::
-
-- [Playground](https://m7sm4-2iaaa-aaaab-qabra-cai.ic0.app/).
-
-- [Playground documentation](/docs/current/building-dapps/developer-tools/ide/playground).
-
 
 ### Visual Studio Code
 
@@ -177,8 +143,6 @@ The following are community-contributed and maintained developer tools for ICP. 
 - [IC inspector](https://chrome.google.com/webstore/detail/ic-inspector/meaadkenfkhjakkkdapaallimhbdofck): A Google Chrome extension that can be used to decode ICP requests and responses.
 
 - [ic-nix](https://github.com/ninegua/ic-nix): Support for building ICP projects with Nix.
-
-- [canister-tools](https://github.com/levifeldman/canister-tools): A series of tools for Rust canisters, such as snapshots and simple upgrades.
 
 - [wasi2ic](https://github.com/wasm-forge/wasi2ic): A tool used to convert WASI binaries into binaries runnable on ICP.
 

@@ -85,7 +85,7 @@ If you would like to deploy the test flight locally before trying the test fligh
 dfx start --clean
 ```
 
-### Step 1. Import and download SNS canisters.
+### Step 1: Import and download SNS canisters.
 
 To import the SNS canisters in the `dfx.json` file of your project and download their Wasm binaries, run:
 
@@ -94,7 +94,7 @@ DFX_IC_COMMIT=94bbea43c7585a1ef970bd569a447c269af9650b dfx sns import
 DFX_IC_COMMIT=94bbea43c7585a1ef970bd569a447c269af9650b dfx sns download
 ```
 
-### Step 2. Deploy testflight SNS (mock SNS canisters to an application subnet) on the mainnet and store the developer neuron ID.
+### Step 2: Deploy testflight SNS (mock SNS canisters to an application subnet) on the mainnet and store the developer neuron ID.
 
 To deploy the test flight SNS, run:
 
@@ -113,7 +113,7 @@ The developer neuron ID is the last part of the test flight deployment output, e
 Developer neuron IDs:
 ```
 
-### Step 3. Add SNS root as an additional controller of all SNS-managed dapp canisters.
+### Step 3: Add SNS root as an additional controller of all SNS-managed dapp canisters.
 
 Add the SNS root canister as an **additional** controller of all the canisters that you want to manage by the test flight SNS.
 
@@ -125,7 +125,7 @@ dfx canister update-settings --add-controller $(dfx canister id sns_root) test
 
 When running the test flight on the mainnet, pass `--network ic` as an additional argument to **both** invocations of `dfx canister`.
 
-### Step 4. Register dapp canisters with SNS root.
+### Step 4: Register dapp canisters with SNS root.
 
 Register all canisters that are supposed to be managed by the testflight SNS by submitting an SNS proposal via `quill`.
 
@@ -164,7 +164,7 @@ dfx canister call sns_root list_sns_canisters '(record {})'
 
 When running the test flight on the mainnet, pass `--network ic` as an additional argument to `dfx canister` above.
 
-### Step 5. Test upgrading canisters via SNS proposals.
+### Step 5: Test upgrading canisters via SNS proposals.
 
 Determine the path to the new wasm binary that you want to upgrade the canister to.
 For projects built with `dfx`, this binary is typically located at `.dfx/<network>/canisters/<canister-name>/<canister-name>.wasm` under the root directory of your project, where `<network>` is the network (e.g., `local` or `ic`) and `<canister-name>` is the name of the canister according to `dfx.json`.

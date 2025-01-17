@@ -240,7 +240,7 @@ export const communityToolingItems = [
     links: { external: "https://internetcomputerservices.com/" },
   },
   {
-    title: "MOPS",
+    title: "Mops",
     tags: ["CLI", "website", "development"],
     description: "An onchain package manager for Motoko.",
     links: {
@@ -298,7 +298,7 @@ export const communityToolingItems = [
     links: {
       github: "https://github.com/ic4j/ic4j-maven-plugin",
     },
-  }, 
+  },
 {
     title: "icpp-pro",
     tags: [ "C++", "development", "CDK" ],

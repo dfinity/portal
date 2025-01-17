@@ -11,7 +11,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 import Tabs from "@theme/Tabs";
 
-# Writing smart contracts
+# Writing canister code
 
 <MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
 
@@ -21,7 +21,7 @@ Canisters are an enhanced type of smart contract. Before a canister is deployed 
 <img src="/img/docs/inside-canister.png" alt="Canister" width="600"/>
 </div>
 
-[Learn more about canister components](/docs/current/developer-education/developer-playbook/inside-canisters).
+[Learn more about canister components](/docs/current/developer-education/developer-concepts/inside-canisters).
 
 ## Canister development kits (CDKs)
 
@@ -33,9 +33,9 @@ Available CDKs include:
 
 - [Rust CDK](https://github.com/dfinity/cdk-rs): By default, the Rust CDK is included as a dependency of the IC SDK. Alternatively, you can [install it yourself](https://crates.io/crates/ic-cdk).
 
-- [Kybra: Python CDK](https://demergent-labs.github.io/kybra/)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to [install and use Azle](https://demergent-labs.github.io/azle//).
+- [Azle: TypeScript CDK](https://demergent-labs.github.io/azle/)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to [install and use Kybra](https://demergent-labs.github.io/kybra/).
 
-- [Azle: TypeScript CDK](https://demergent-labs.github.io/azle//)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to [install and use Kybra](https://demergent-labs.github.io/kybra/).
+- [Kybra: Python CDK](https://demergent-labs.github.io/kybra/)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to [install and use Azle](https://demergent-labs.github.io/azle//).
 
 - [Bitfinity EVM for Solidity](https://docs.bitfinity.network/)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to use the [Bitfinity EVM](https://docs.bitfinity.network/ic-agent/overview).
 
@@ -142,7 +142,7 @@ For writing Motoko code, the [Motoko VS Code extension](https://marketplace.visu
 
 :::
 
-### 1. Open the backend canister source code file in your code editor.
+### Step 1: Open the backend canister source code file in your code editor.
 
 For Motoko projects, this file will be `src/PROJECT_NAME_backend/main.mo`.
 
@@ -176,27 +176,13 @@ fn greet(name: String) -> String {
 </TabItem>
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-```typescript title="src/hello_backend/src/index.ts"
-import { Canister, query, text } from 'azle';
-
-export default Canister({
-    greet: query([text], text, (name) => {
-        return `Hello, ${name}!`;
-    })
-})
-```
+[View the Azle documentation](https://demergent-labs.github.io/azle/get_started.html).
 
 </AdornedTab>
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-```python title="src/hello_backend/src/main.py"
-from kybra import query
-
-@query
-def greet(name: str) -> str:
-    return f"Hello, {name}!"
-```
+[View the Kybra documentation](https://demergent-labs.github.io/kybra/).
 
 </AdornedTab>
 </AdornedTabs>
@@ -207,7 +193,7 @@ If you are using an ICP Ninja project, this code will vary based on the example 
 
 :::
 
-### 2. Add randomness.
+### Step 2: Add randomness.
 
 A key feature of ICP is its ability to generate [onchain randomness](/docs/current/building-dapps/using-network-features/randomness) using a verifiable random function (VRF) and [chain-key cryptography](https://internetcomputer.org/how-it-works/chain-key-technology). In each round of consensus on a subnet, the VRF is evaluated using the number of the round as input, producing a fresh set of random bytes. Then, the bytes are used as the seed for a pseudorandom number generator (PRNG), called random tape, which uses chain-key cryptography to create a random, unique value for each canister that requests it. Through this process, it is impossible to predict future outputs.
 
@@ -310,7 +296,7 @@ fn get_current_number() -> Nat {
 </AdornedTabs>
 
 
-### 3. Add a timer.
+### Step 3: Add a timer.
 
 At this point, the canister code generates a random number and stores it in a variable. You can retrieve that value with a query function. To demonstrate another feature of ICP, let's add a timer that generates a new random number every 5 seconds.
 
@@ -426,7 +412,7 @@ fn get_current_number() -> Nat {
 </AdornedTab>
 </AdornedTabs>
 
-### 4. Retrieve external data.
+### Step 4: Retrieve external data.
 
 HTTPS outcalls can obtain data from any external source, including other blockchains, traditional Web2 APIs, and other web services. When HTTPS outcalls are used locally, the returned result is not validated since the local replica is only a single node. HTTPS outcalls used on the mainnet validate the returned result through the subnet's consensus, providing security that the data obtained has not been maliciously tampered with during transport.
 
@@ -680,13 +666,12 @@ fn transform(raw: TransformArgs) -> HttpResponse {
 </AdornedTab>
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-
-
 [Learn more about Kybra](https://demergent-labs.github.io/kybra/).
+
 </AdornedTab>
 </AdornedTabs>
 
-### 5. Putting it all together.
+### Step 5: Putting it all together.
 
 At this point, we have three functions in this code that demonstrate three different ICP features: **onchain randomness**, **timers** for autonomous execution, and **HTTPS outcalls** to obtain data. Let's edit the code to use them in conjunction with one another rather than separately:
 

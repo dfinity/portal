@@ -6,7 +6,7 @@ docs/building-dapps/interacting-with-dapps/agents/overview @dfinity/dx
 docs/building-dapps/developer-tools/cdks/index @dfinity/dx
 docs/rosetta-defi/ @dfinity/finint
 docs/developer-education/security @dfinity/product-security
-docs/developer-education/message-execution/execution-errors.mdx @dfinity/execution
+docs/references/execution-errors.mdx @dfinity/execution
 docs/developer-education/message-execution/ingress-messages.mdx @dfinity/product-security
 docs/developer-education/message-execution/message-execution-properties.mdx @dfinity/product-security
 docs/building-dapps/dapp-frontends/custom-domains/ @dfinity/boundary-node

@@ -83,7 +83,7 @@ const languagesTiles: TileDescriptor[] = [
     invertIconDarkMode: true,
     action: (
       <Link
-        href="/docs/current/building-dapps/developer-tools/cdks/rust/"
+        href="/docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to Rust docs"
       >

@@ -8,31 +8,138 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Concept"]} />
 
-System canisters are canisters that provide a necessary function to the ICP network. They are controlled by the NNS and upgraded via NNS proposals. These canisters have static canister IDs that projects can make calls to. One common example of a system canister that is used by projects is the Internet Identity canister.
+System canisters are canisters that provide a necessary function to the ICP network. They are controlled by the NNS and upgraded via NNS proposals. Each system canister is deployed on a system subnet. System subnets have special parameters, such as no cycles costs, to guarantee that the system functions without interruption. These canisters have static canister IDs that projects can make calls to. One common example of a system canister that is used by projects is the Internet Identity canister.
 
-## System canisters
+## Bitcoin mainnet
 
-| System canister | Canister ID |
-|-----------------|-------------|
-| [Bitcoin mainnet](/docs/current/building-dapps/chain-fusion/bitcoin/overview) | ghsi2-tqaaa-aaaan-aaaca-cai |
-| [Bitcoin testnet](/docs/current/building-dapps/chain-fusion/bitcoin/overview) | g4xu7-jiaaa-aaaan-aaaaq-cai |
-| [Cycles minting](/docs/current/developer-education/developer-concepts/gas-cost) | rkp4c-7iaaa-aaaaa-aaaca-cai |
-| [Genesis token](/how-it-works/tokenomics/) | renrk-eyaaa-aaaaa-aaada-cai |
-| [ICP index](/docs/current/rosetta-defi/tokens/indexes) | qhbym-qaaaa-aaaaa-aaafq-cai |
-| [ICP ledger](/docs/current/rosetta-defi/overview) | ryjl3-tyaaa-aaaaa-aaaba-cai |
-| [ICP ledger archive](/docs/current/rosetta-defi/overview) | qsgjb-riaaa-aaaaa-aaaga-cai |
-| [ICP ledger archive](/docs/current/rosetta-defi/overview) | qjdve-lqaaa-aaaaa-aaaeq-cai |
-| [Internet Identity](/docs/current/building-dapps/using-network-features/authentication/overview) | rdmx6-jaaaa-aaaaa-aaadq-cai |
-| [NNS governance](/docs/current/move-to-learnhub/nns/overview)      | rrkah-fqaaa-aaaaa-aaaaq-cai |
-| [NNS lifeline](/docs/current/move-to-learnhub/nns/overview) | rno2w-sqaaa-aaaaa-aaacq-cai |
-| [NNS registry](/docs/current/move-to-learnhub/nns/overview)      | rwlgt-iiaaa-aaaaa-aaaaa-cai |
-| [NNS root](/docs/current/move-to-learnhub/nns/overview) | r7inp-6aaaa-aaaaa-aaabq-cai |
-| [NNS UI](/docs/current/move-to-learnhub/nns/overview) | qoctq-giaaa-aaaaa-aaaea-cai |
-| [SNS wasm](/docs/current/building-dapps/governing-dapps/overview) | qaa6y-5yaaa-aaaaa-aaafa-cai |
+The [Bitcoin mainnet](/docs/current/building-dapps/chain-fusion/bitcoin/overview) system canister is used to facilitate connection from the ICP mainnet to the Bitcoin mainnet.
+
+It has canister ID [`ghsi2-tqaaa-aaaan-aaaca-cai`](https://dashboard.internetcomputer.org/canister/ghsi2-tqaaa-aaaan-aaaca-cai).
+
+The Bitcoin mainnet canister is hosted on the system subnet [`w4rem-dv5e3-widiz-wbpea-kbttk-mnzfm-tzrc7-svcj3-kbxyb-zamch-hqe`](https://dashboard.internetcomputer.org/subnet/w4rem-dv5e3-widiz-wbpea-kbttk-mnzfm-tzrc7-svcj3-kbxyb-zamch-hqe).
+
+## Bitcoin testnet
+
+The [Bitcoin testnet](/docs/current/building-dapps/chain-fusion/bitcoin/overview) system canister is used to facilitate connection from the ICP mainnet to the Bitcoin testnet.
+
+It has canister ID [`g4xu7-jiaaa-aaaan-aaaaq-cai`](https://dashboard.internetcomputer.org/canister/g4xu7-jiaaa-aaaan-aaaaq-cai).
+
+The Bitcoin mainnet canister is hosted on the system subnet [`w4rem-dv5e3-widiz-wbpea-kbttk-mnzfm-tzrc7-svcj3-kbxyb-zamch-hqe`](https://dashboard.internetcomputer.org/subnet/w4rem-dv5e3-widiz-wbpea-kbttk-mnzfm-tzrc7-svcj3-kbxyb-zamch-hqe).
+
+## Cycles ledger
+
+The [cycles ledger](/docs/current/developer-docs/defi/cycles/cycles-ledger) canister is used for cycles management and has been developed as an alternative to the cycles wallet. The cycles ledger allows principals to hold cycles directly rather than requiring a separate cycles wallet canister to be used.
+
+It has canister ID [`um5iw-rqaaa-aaaaq-qaaba-cai`](https://dashboard.internetcomputer.org/canister/um5iw-rqaaa-aaaaq-qaaba-cai).
+
+The cycles ledger canister is hosted on the system subnet [`uzr34-akd3s-xrdag-3ql62-ocgoh-ld2ao-tamcv-54e7j-krwgb-2gm4z-oqe`](https://dashboard.internetcomputer.org/subnet/uzr34-akd3s-xrdag-3ql62-ocgoh-ld2ao-tamcv-54e7j-krwgb-2gm4z-oqe).
+
+## Cycles ledger index
+
+The [cycles ledger index](/docs/current/developer-docs/defi/cycles/cycles-ledger) canister is the corresponding index canister for the cycles ledger.
+
+It has canister ID [`ul4oc-4iaaa-aaaaq-qaabq-cai`](https://dashboard.internetcomputer.org/canister/ul4oc-4iaaa-aaaaq-qaabq-cai).
+
+The cycles ledger canister is hosted on the system subnet [`uzr34-akd3s-xrdag-3ql62-ocgoh-ld2ao-tamcv-54e7j-krwgb-2gm4z-oqe`](https://dashboard.internetcomputer.org/subnet/uzr34-akd3s-xrdag-3ql62-ocgoh-ld2ao-tamcv-54e7j-krwgb-2gm4z-oqe).
+
+## Cycles minting
+
+The [cycles minting](/docs/current/developer-education/developer-concepts/gas-cost) canister is used to mint cycles on the mainnet.
+
+It has canister ID [`rkp4c-7iaaa-aaaaa-aaaca-cai`](https://dashboard.internetcomputer.org/canister/rkp4c-7iaaa-aaaaa-aaaca-cai).
+
+The cycles ledger canister is hosted on the system subnet [`tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe`](https://dashboard.internetcomputer.org/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe).
+
+## Exchange rate
+
+The [exchange rate](https://github.com/dfinity/exchange-rate-canister) canister (XRC) uses [HTTPS outcalls](https://internetcomputer.org/https-outcalls/) to fetch data from major cryptocurrency exchanges by using the exchange's public API to retrieve real-time or historical cryptocurrency pricing information. The XRC also queries the public APIs for foreign exchange data providers around the world periodically in order to get rates.
+
+The XRC canister can be used by dapps such as decentralized exchanges (DEXs) to provide functionality such as comparing exchange rates against market rates to determine the value of assets that are held in a canister smart contract. For example, the cycle minting canister of the <GlossaryTooltip>NNS</GlossaryTooltip> uses the XRC to obtain the current ICP/XDR exchange rates, which it requires for the conversion of ICP to cycles.
+
+The XRC provides this data in response to requests made by other canisters. A request made by another canister is composed of a base asset, a quote asset, and an optional UNIX epoch timestamp.
+
+An **asset** is a record consisting of a symbol (such as "ICP") and a class (either 'Cryptocurrency' or 'FiatCurrency'). The base and quote asset can be any combination of cryptocurrency and fiat currency assets, such as ICP/USD, USD/EUR, BTC/ICP, etc. The timestamp parameter enables the functionality for historic rates to be requested. If no timestamp is provided, the exchange rate for the current time is returned by default.
+
+It has canister ID [`uf6dk-hyaaa-aaaaq-qaaaq-cai`](https://dashboard.internetcomputer.org/canister/uf6dk-hyaaa-aaaaq-qaaaq-cai).
+
+The exchange rate canister is hosted on the system subnet [`uzr34-akd3s-xrdag-3ql62-ocgoh-ld2ao-tamcv-54e7j-krwgb-2gm4z-oqe`](https://dashboard.internetcomputer.org/subnet/uzr34-akd3s-xrdag-3ql62-ocgoh-ld2ao-tamcv-54e7j-krwgb-2gm4z-oqe).
+
+#### Aggregation
+
+The XRC calculates exchange rates using a unique aggregation method that combines candlestick chart data for specific one-minute intervals from various exchanges, avoiding conventional time (TWAP) or volume-weighted (VWAP) techniques. It can further derive rates for pairs that are not traded themselves (e.g., A/B from available A/C and B/C rates). After collecting, combining, and filtering rates, the median rate is returned. This approach ensures accuracy and timeliness and minimizes manipulation risks, providing reliable rate information for decentralized applications.
+
+### Resources
+
+- [Exchange rate wiki page.](https://wiki.internetcomputer.org/wiki/Exchange_rate_canister)
+- [HTTPS outcalls.](https://internetcomputer.org/https-outcalls/)
+- [Exchange rate canister blog post.](https://medium.com/dfinity/exchange-rate-canister-a-smart-contract-with-oracle-capabilities-f30694753c89)
+- [Exchange rate canister forum post.](https://forum.dfinity.org/t/new-exchange-rate-mechanism/14543/65)
+- [Exchange rate canister repository.](https://github.com/dfinity/exchange-rate-canister)
+
+
+## Genesis token
+
+The [genesis token](/how-it-works/tokenomics/) canister is used to query balance and account information regarding the genesis token.
+
+It has canister ID [`renrk-eyaaa-aaaaa-aaada-cai`](https://dashboard.internetcomputer.org/canister/renrk-eyaaa-aaaaa-aaada-cai).
+
+The genesis token canister is hosted on the system subnet [`tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe`](https://dashboard.internetcomputer.org/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe).
+
+## ICP index
+
+The [ICP index](/docs/current/rosetta-defi/tokens/indexes) canister is the corresponding index canister for the ICP ledger.
+
+It has canister ID [`qhbym-qaaaa-aaaaa-aaafq-cai`](https://dashboard.internetcomputer.org/canister/qhbym-qaaaa-aaaaa-aaafq-cai).
+
+The ICP index canister is hosted on the system subnet [`tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe`](https://dashboard.internetcomputer.org/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe).
+
+## ICP ledger
+
+The [ICP ledger](/docs/current/rosetta-defi/tokens/indexes) canister is used for sending and receiving ICP tokens on the mainnet. It can also be used to obtain account information, such as the account's current balance of ICP.
+
+It has canister ID [`ryjl3-tyaaa-aaaaa-aaaba-cai`](https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai).
+
+The ICP ledger canister is hosted on the system subnet [`tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe`](https://dashboard.internetcomputer.org/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe).
+
+## ICP ledger archive
+
+The [ICP ledger archive](/docs/current/rosetta-defi/tokens/indexes) canisters are used to store historic data about ICP token transactions. There are two ICP ledger archive canisters.
+
+They have canister IDs [`qsgjb-riaaa-aaaaa-aaaga-cai`](https://dashboard.internetcomputer.org/canister/qsgjb-riaaa-aaaaa-aaaga-cai) and [`qjdve-lqaaa-aaaaa-aaaeq-cai`](https://dashboard.internetcomputer.org/canister/qjdve-lqaaa-aaaaa-aaaeq-cai).
+
+The ICP ledger archive canisters are hosted on the system subnet [`tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe`](https://dashboard.internetcomputer.org/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe).
+
+## Internet Identity
+
+The [Internet Identity](/docs/current/building-dapps/authentication/overview) canister is used to provide an authentication method used across ICP applications, such as the NNS dapp.
+
+It has canister ID [`rdmx6-jaaaa-aaaaa-aaadq-cai`](https://dashboard.internetcomputer.org/canister/rdmx6-jaaaa-aaaaa-aaadq-cai).
+
+The Internet Identity canister is hosted on the system subnet  [`uzr34-akd3s-xrdag-3ql62-ocgoh-ld2ao-tamcv-54e7j-krwgb-2gm4z-oqe`](https://dashboard.internetcomputer.org/subnet/uzr34-akd3s-xrdag-3ql62-ocgoh-ld2ao-tamcv-54e7j-krwgb-2gm4z-oqe).
+
+## NNS canisters
+
+The NNS is comprised of the following canisters:
+
+- [NNS governance](/docs/current/move-to-learnhub/nns/overview): Canister ID [`rrkah-fqaaa-aaaaa-aaaaq-cai`](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai)
+- [NNS lifeline](/docs/current/move-to-learnhub/nns/overview): Canister ID [`rno2w-sqaaa-aaaaa-aaacq-cai`](https://dashboard.internetcomputer.org/canister/rno2w-sqaaa-aaaaa-aaacq-cai)
+- [NNS registry](/docs/current/move-to-learnhub/nns/overview): Canister ID [`rwlgt-iiaaa-aaaaa-aaaaa-cai`](https://dashboard.internetcomputer.org/canister/rwlgt-iiaaa-aaaaa-aaaaa-cai)
+- [NNS root](/docs/current/move-to-learnhub/nns/overview): Canister ID [`r7inp-6aaaa-aaaaa-aaabq-cai`](https://dashboard.internetcomputer.org/canister/r7inp-6aaaa-aaaaa-aaabq-cai)
+- [NNS UI](/docs/current/move-to-learnhub/nns/overview): Canister ID [`qoctq-giaaa-aaaaa-aaaea-cai`](https://dashboard.internetcomputer.org/canister/qoctq-giaaa-aaaaa-aaaea-cai)
+
+The NNS canisters are hosted on the system subnet [`tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe`](https://dashboard.internetcomputer.org/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe).
+
+## SNS Wasm
+
+The [SNS Wasm](/docs/current/building-dapps/governing-dapps/overview) canister is used for deploying and updating SNSes.
+
+It has canister ID [`qaa6y-5yaaa-aaaaa-aaafa-cai`](https://dashboard.internetcomputer.org/canister/qaa6y-5yaaa-aaaaa-aaafa-cai).
+
+The SNS Wasm canister is hosted on the system subnet [`tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe`](https://dashboard.internetcomputer.org/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe).
 
 ## Using system canisters
 
-Developers can use system canisters in their project to integrate services into their dapp or enable functionality that requires data from a system canister.
+Developers can use system canisters in their projects to integrate services into their dapp or enable functionality that requires data from a system canister.
 
 For example, Internet Identity can be integrated into a dapp to provide user authentication service to the project. Internet Identity is commonly integrated into a dapp through the [`dfx deps`](/docs/current/building-dapps/interacting-with-dapps/using-third-party-canisters) command. `dfx deps` allows you to pull a system canister into your local project for testing.
 

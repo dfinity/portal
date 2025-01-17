@@ -8,6 +8,9 @@ const redirects = `
   /docs/current/developer-docs/getting-started/quickstart/juno-quickstart https://juno.build/docs/intro
   /docs/current/references/dashboard/overview https://dashboard.internetcomputer.org/
   /docs/current/references/dashboard/using-the-dashboard https://dashboard.internetcomputer.org/
+  /docs/current/developer-docs/backend/solidity/ https://docs.bitfinity.network/
+  /docs/current/developer-docs/backend/python/ https://demergent-labs.github.io/kybra/
+  /docs/current/developer-docs/backend/typescript/ https://demergent-labs.github.io/azle/
 
   # .html file internal redirects (/../from.html -> to)
   /docs/developers-guide/working-with-canisters.html /docs/current/building-dapps/managing-dapps/settings
@@ -55,7 +58,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/http_requests/http_requests-how-it-works /docs/current/references/https-outcalls-how-it-works
   /docs/current/building-dapps/governing-dapps/tokenomics/sns-intro-tokens /docs/current/building-dapps/governing-dapps/tokenomics/
   /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics /docs/current/building-dapps/governing-dapps/tokenomics/tokenomics-intro
-  /docs/rust-guide/rust-intro /docs/current/building-dapps/developer-tools/cdks/rust/
+  /docs/rust-guide/rust-intro /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust
   /docs/languages/languages-overview /docs/current/building-dapps/launching-a-dapp/create-and-install
   /docs/current/developer-docs/smart-contracts/write/choosing-language /docs/current/building-dapps/launching-a-dapp/create-and-install
   /docs/current/developer-docs/frontend/my-contacts /docs/current/building-dapps/dapp-frontends/using-an-asset-canister
@@ -84,7 +87,7 @@ const redirects = `
   /docs/current/developer-docs/build/frontend/default-frontend /docs/current/building-dapps/dapp-frontends/using-an-asset-canister
   /docs/current/developer-docs/build/frontend/webpack-config /docs/current/building-dapps/dapp-frontends/using-an-asset-canister#modifying-the-webpack-configuration
   /docs/current/developer-docs/build/install-upgrade-remove /docs/current/building-dapps/getting-started/install
-  /docs/current/developer-docs/build/languages/rust/* /docs/current/building-dapps/developer-tools/cdks/rust/
+  /docs/current/developer-docs/build/languages/rust/* /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/build/project-setup/cycles-wallet /docs/current/rosetta-defi/cycles/cycles-wallet
   /docs/current/developer-docs/build/project-setup/manage-canisters /docs/current/building-dapps/managing-dapps/settings
   /docs/current/developer-docs/build/project-setup/design-dapps /docs/current/developer-education/developer-concepts/what-are-canisters
@@ -94,7 +97,7 @@ const redirects = `
   /docs/current/developer-docs/build/agents/javascript/*  /docs/current/building-dapps/interacting-with-dapps/agents/javascript-agent
   /docs/current/developer-docs/build/languages/candid/* /docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts
   /docs/current/developer-docs/build/cdks/motoko-dfinity/* /docs/current/motoko/main/:splat
-  /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/*  /docs/current/building-dapps/developer-tools/cdks/rust/:splat
+  /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/*  /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust:splat
   /docs/current/developer-docs/build/languages/motoko/* /docs/current/motoko/main/:splat
 
   /docs/developers-guide/ /docs/current/motoko/main/getting-started/motoko-introduction
@@ -105,7 +108,7 @@ const redirects = `
   /docs/developers-guide/customize-projects /docs/current/building-dapps/launching-a-dapp/create-and-install
   /docs/developers-guide/default-wallet /docs/current/rosetta-defi/cycles/cycles-wallet
   /docs/developers-guide/design-apps /docs/current/developer-education/developer-concepts/what-are-canisters
-  /docs/developers-guide/glossary /docs/current/developer-education/glossary/index
+  /docs/developers-guide/glossary /docs/current/developer-education/glossary/
   /docs/developers-guide/install-upgrade-remove /docs/current/building-dapps/getting-started/install
   /docs/developers-guide/lang-service-ide /docs/current/building-dapps/developer-tools/ide/vs-code
   /docs/developers-guide/reinstalling-dfx /docs/current/building-dapps/getting-started/install
@@ -136,9 +139,9 @@ const redirects = `
   /docs/current/developer-docs/quickstart/windows-wsl /docs/current/building-dapps/getting-started/install
   /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/developer-journey/
 
-  /docs/rosetta-api/ledger /docs/current/rosetta-defi/tokens/token-standards
+  /docs/rosetta-api/ledger /docs/current/rosetta-defi/token-standards/index
   /docs/rosetta-api/ledger-local-setup /docs/current/rosetta-defi/token-ledgers/setup/icp_ledger_setup
-  /docs/integration/ledger-quick-start /docs/current/rosetta-defi/tokens/token-standards
+  /docs/integration/ledger-quick-start /docs/current/rosetta-defi/token-standards/index
   /docs/current/developer-docs/functionality/ledger/* /docs/current/rosetta-defi/token-ledgers/setup/icp_ledger_setup
 
   /docs/base-libraries/* /docs/current/motoko/main/base/:splat
@@ -155,7 +158,7 @@ const redirects = `
   /docs/language-guide/* /docs/current/motoko/main/:splat
   /docs/release-notes/* /docs/current/other/updates/release-notes/:splat
   /docs/rosetta-api/* /docs/current/developer-docs/integrations/rosetta/:splat
-  /docs/rust-guide/* /docs/current/building-dapps/developer-tools/cdks/rust/:splat
+  /docs/rust-guide/* /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust:splat
   /docs/security-best-practices/* /docs/current/developer-education/security/inter-canister-calls
   /docs/token-holders/* /docs/current/tokenomics/token-holders/:splat
   /features/* /capabilities/:splat
@@ -167,17 +170,17 @@ const redirects = `
   /docs/current/motoko/intro/ /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/tutorials/create_your_first_app/ /docs/current/tutorials/developer-journey/
   /docs/quickstart/quickstart-intro.html /docs/current/building-dapps/getting-started/install
-  /docs/ic-identity-guide/auth-how-to.html /docs/current/building-dapps/using-network-features/authentication/integrate-internet-identity/
+  /docs/ic-identity-guide/auth-how-to.html /docs/current/building-dapps/authentication/integrate-internet-identity/
   /docs/current/developer-docs/build/agents/agent-dfinity	/docs/current/building-dapps/interacting-with-dapps/agents/overview
-  /docs/current/tokenomics/identity-auth/what-is-ic-identity /docs/current/building-dapps/using-network-features/authentication/overview
+  /docs/current/tokenomics/identity-auth/what-is-ic-identity /docs/current/building-dapps/authentication/overview
   /docs/quickstart/local-quickstart.html /docs/current/building-dapps/getting-started/install
   /language-guide/ /docs/current/tutorials/developer-journey/level-0/intro-languages
-  /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /docs/current/building-dapps/developer-tools/cdks/rust/
+  /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust
   /docs/quickstart/network-quickstart.html /docs/current/building-dapps/getting-started/install
   /docs/token-holders/nns-app-quickstart.html /docs/current/move-to-learnhub/nns/using-the-nns-dapp/nns-app-quickstart
   /docs/current/move-to-learnhub/nns/nns-app-quickstart /docs/current/move-to-learnhub/nns/using-the-nns-dapp/nns-app-quickstart
   /developers-guide/quickstart.html /docs/current/tutorials/developer-journey/
-  /docs/current/tokenomics/identity-auth/auth-how-to /docs/current/building-dapps/using-network-features/authentication/overview
+  /docs/current/tokenomics/identity-auth/auth-how-to /docs/current/building-dapps/authentication/overview
   /docs/developers-guide/tutorials-intro.html /docs/current/tutorials/developer-journey/
   /docs/quickstart/quickstart.html /docs/current/building-dapps/getting-started/install
   /apis/site/proxy /docs/current/references/http-gateway-protocol-spec
@@ -186,7 +189,7 @@ const redirects = `
   /docs/current/developer-docs/production/instruction-limits /docs/current/building-dapps/launching-a-dapp/resource-limits
   /docs/current/developer-docs/backend/resource-limits /docs/current/building-dapps/launching-a-dapp/resource-limits
   /docs/current/concepts/data-centers /docs/current/developer-education/developer-concepts/network-overview
-  /docs/current/developer-docs/build/languages/rust/rust-intro /docs/current/building-dapps/developer-tools/cdks/rust/
+  /docs/current/developer-docs/build/languages/rust/rust-intro /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/build/languages/motoko /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/integrations/sns/launching/launch-summary /docs/current/building-dapps/governing-dapps/launching/launch-summary-1proposal
   /docs/current/developer-docs/integrations/sns/launching/launch-steps /docs/current/building-dapps/governing-dapps/launching/launch-steps-1proposal
@@ -210,7 +213,7 @@ const redirects = `
   /docs/current/developer-docs/setup/quickstart /docs/current/building-dapps/getting-started/install
   /docs/current/tutorials/index /docs/current/developer-education/developer-concepts/network-overview
   /docs/current/tutorials/ /docs/current/developer-education/developer-concepts/network-overview
-  /docs/current/developer-docs/backend/eu-subnets /docs/current/building-dapps/launching-dapps/subnets/subnet-types
+  /docs/current/developer-docs/backend/eu-subnets /docs/current/building-dapps/launching-a-dapp/subnets/subnet-types
   /docs/current/samples/* /samples
   /docs/current/developer-docs/backend/choosing-language /docs/current/building-dapps/launching-a-dapp/create-and-install
   /docs/current/developer-docs/production/deploying-and-upgrading /docs/current/building-dapps/launching-a-dapp/deploy/overview
@@ -218,7 +221,7 @@ const redirects = `
   /docs/current/developer-docs /docs/current/developer-education/developer-concepts/network-overview
   /docs/current/concepts/what-is-ic /docs/current/developer-education/developer-concepts/network-overview
   /docs/current/developer-docs/setup/development-workflow /docs/current/developer-education/developer-playbook/development-workflow
-  /docs/current/developer-docs/setup/hello-world /docs/current/building-dapps/getting-started/write-smart-contracts
+  /docs/current/developer-docs/setup/hello-world /docs/current/building-dapps/getting-started/write-canister-code
   /docs/current/developer-docs/setup/install/ /docs/current/building-dapps/getting-started/install
   /docs/current/developer-docs/setup/accounts /docs/current/building-dapps/getting-started/identities
   /docs/current/developer-docs/setup/cycles/cycles-faucet /docs/current/building-dapps/getting-started/tokens-and-cycles
@@ -328,7 +331,7 @@ const redirects = `
   /docs/current/developer-docs/setup/manage-projects /docs/current/building-dapps/launching-a-dapp/create-and-install
   /docs/current/developer-docs/production/topping-up-canister /docs/current/building-dapps/managing-dapps/topping-up
   /docs/current/developer-docs/getting-started/cycles/cycles_management_services /docs/current/building-dapps/managing-dapps/topping-up
-  /docs/current/developer-docs/setup/pocket-ic /docs/current/building-dapps/launching-dapps/test/pocket-ic
+  /docs/current/developer-docs/setup/pocket-ic /docs/current/building-dapps/launching-a-dapp/test/pocket-ic
   /docs/current/developer-docs/production/staging-environment /docs/current/building-dapps/launching-a-dapp/deploy/custom-networks
   /docs/current/developer-docs/backend/reproducible-builds /docs/current/developer-education/developer-playbook/developer-best-practices/reproducible-builds
   /docs/current/developer-docs/backend/troubleshooting /docs/current/building-dapps/getting-started/troubleshooting
@@ -351,13 +354,13 @@ const redirects = `
   /docs/current/developer-docs/production/custom-domain/dns-setup /docs/current/building-dapps/dapp-frontends/custom-domains/dns-setup
   /docs/current/developer-docs/backend/design-dapps /docs/current/developer-education/developer-concepts/what-are-canisters
   /docs/current/developer-docs/integrations/independently-verifying-ic-signatures /docs/current/building-dapps/using-network-features/signatures/independently-verifying-ic-signatures
-  /docs/current/developer-docs/integrations/internet-identity/overview  /docs/current/building-dapps/using-network-features/authentication/overview
-  /docs/current/developer-docs/integrations/internet-identity/creating-ii /docs/current/building-dapps/using-network-features/authentication/overview
-  /docs/current/developer-docs/integrations/internet-identity/integrate-identity /docs/current/building-dapps/using-network-features/authentication/integrate-internet-identity
-  /docs/current/developer-docs/integrations/internet-identity/alternative-origins /docs/current/building-dapps/using-network-features/authentication/alternative-origins
-  /docs/current/developer-docs/http-compatible-canisters/custom-http-canisters /docs/current/building-dapps/dapp-frontends/http-gateways-certification/custom-http-canisters
-  /docs/current/developer-docs/http-compatible-canisters/serving-json-over-http /docs/current/building-dapps/dapp-frontends/http-gateways-certification/serving-json-over-http
-  /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/current/building-dapps/dapp-frontends/http-gateways-certification/serving-static-assets-over-http
+  /docs/current/developer-docs/integrations/internet-identity/overview  /docs/current/building-dapps/authentication/overview
+  /docs/current/developer-docs/integrations/internet-identity/creating-ii /docs/current/building-dapps/authentication/overview
+  /docs/current/developer-docs/integrations/internet-identity/integrate-identity /docs/current/building-dapps/authentication/integrate-internet-identity
+  /docs/current/developer-docs/integrations/internet-identity/alternative-origins /docs/current/building-dapps/authentication/alternative-origins
+  /docs/current/developer-docs/http-compatible-canisters/custom-http-canisters /docs/current/building-dapps/using-network-features/using-external-data/http-gateways-certification/custom-http-canisters
+  /docs/current/developer-docs/http-compatible-canisters/serving-json-over-http /docs/current/building-dapps/using-network-features/using-external-data/http-gateways-certification/serving-json-over-http
+  /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/current/building-dapps/using-network-features/using-external-data/http-gateways-certification/serving-static-assets-over-http
   /docs/current/developer-docs/integrations/ledger/introduction_and_overview /docs/current/rosetta-defi/overview
   /docs/current/developer-docs/integrations/ledger/  /docs/current/rosetta-defi/overview
   /docs/current/developer-docs/integrations/ledger/ledger-local-setup  /docs/current/rosetta-defi/token-ledgers/setup/icp_ledger_setup
@@ -369,7 +372,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/icrc-1/icrc1-ledger-setup /docs/current/rosetta-defi/token-ledgers/setup/icrc1_ledger_setup
   /docs/current/developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger /docs/current/rosetta-defi/token-ledgers/usage/icrc1_ledger_usage
   /docs/current/developer-docs/integrations/icrc-1/icrc1-index-setup /docs/current/rosetta-defi/tokens/indexes
-  /docs/current/developer-docs/integrations/exchange-rate/exchange-rate-canister /docs/current/rosetta-defi/exchange-rate-canister
+  /docs/current/developer-docs/integrations/exchange-rate/exchange-rate-canister /docs/current/developer-education/system-canisters/
   /docs/current/developer-docs/integrations/rosetta/index  /docs/current/rosetta-defi/rosetta/overview
   /docs/current/developer-docs/integrations/rosetta/  /docs/current/rosetta-defi/rosetta/overview
   /docs/current/tokenomics/token-holders/custody-options-intro /docs/current/rosetta-defi/wallets/overview
@@ -423,14 +426,14 @@ const redirects = `
   /docs/current/developer-docs/integrations/bitcoin/local-development /docs/current/building-dapps/chain-fusion/bitcoin/using-btc/local-development
   /docs/current/developer-docs/integrations/ethereum/overview /docs/current/building-dapps/chain-fusion/ethereum/overview
   /docs/current/developer-docs/integrations/ethereum/evm-rpc /docs/current/building-dapps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister
-  /docs/current/developer-docs/integrations/ethereum/siwe /docs/current/building-dapps/using-network-features/authentication/overview
+  /docs/current/developer-docs/integrations/ethereum/siwe /docs/current/building-dapps/authentication/overview
   /docs/current/developer-docs/integrations/bitcoin/bitcoin-how-it-works /docs/current/references/bitcoin-how-it-works
   /docs/current/developer-docs/integrations/bitcoin/ckbtc-reference /docs/current/references/ckbtc-reference
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-it-works /docs/current/references/https-outcalls-how-it-works
   /docs/current/developer-docs/integrations/t-ecdsa/t-ecdsa-how-it-works /docs/current/references/t-sigs-how-it-works
   /docs/current/developer-docs/integrations/vetkeys/technology-overview /docs/current/references/vetkeys-overview
   /docs/current/building-dapps/developer-tools/cli-tools/networks-json /docs/current/building-dapps/developer-tools/advanced-dfx/networks-json
-  /docs/current/developer-docs/production/system-canisters /docs/current/developer-education/system-canisters/index
+  /docs/current/developer-docs/production/system-canisters /docs/current/developer-education/system-canisters/
   /docs/current/developer-docs/backend/arguments /docs/current/developer-education/message-execution/types-of-canister-calls
   /docs/current/developer-docs/frontend/index /docs/current/building-dapps/dapp-frontends/using-an-asset-canister
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-get /docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/get
@@ -438,18 +441,18 @@ const redirects = `
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-overview /docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-post /docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/post
   /docs/current/developer-docs/setup/ic-admin /docs/current/building-dapps/developer-tools/ic-admin
-  /docs/current/developer-docs/backend/subnet-types /docs/current/building-dapps/launching-dapps/subnets/subnet-types
-  /docs/current/references/glossary /docs/current/developer-education/glossary/index
+  /docs/current/developer-docs/backend/subnet-types /docs/current/building-dapps/launching-a-dapp/subnets/subnet-types
+  /docs/current/references/glossary /docs/current/developer-education/glossary/
   /docs/current/samples/host-a-website /docs/current/references/samples/hosting/static-website/
   /docs/current/samples/host-a-webgame /docs/current/references/samples/hosting/unity-webgl-template/
   /docs/current/references/security/general-security-best-practices/ /docs/current/developer-education/security/inter-canister-calls
   /docs/current/references/security/rust-canister-development-security-best-practices /docs/current/developer-education/security/inter-canister-calls
   /docs/current/references/security/web-app-development-security-best-practices /docs/current/developer-education/security/inter-canister-calls
   /docs/current/references/security/ /docs/current/developer-education/security/inter-canister-calls
-  /docs/current/developer-docs/smart-contracts/overview/development-cycle /docs/current/developer-education/developer-playbook/canister-lifecycle
-  /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-identity /docs/current/building-dapps/using-network-features/authentication/integrate-internet-identity
+  /docs/current/developer-docs/smart-contracts/overview/development-cycle /docs/current/developer-education/developer-concepts/canister-lifecycle
+  /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-identity /docs/current/building-dapps/authentication/integrate-internet-identity
   /docs/current/developer-docs/multichain/ethereum/cketh /docs/current/rosetta-defi/chain-key-tokens/cketh/overview
-  /docs/current/developer-docs/chain-fusion/ethereum/siwe /docs/current/building-dapps/using-network-features/authentication/overview
+  /docs/current/developer-docs/chain-fusion/ethereum/siwe /docs/current/building-dapps/authentication/overview
   /docs/current/developer-docs/multi-chain/bitcoin/ckbtc /docs/current/rosetta-defi/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/multi-chain/bitcoin/read-state /docs/current/building-dapps/chain-fusion/bitcoin/using-btc/read-state
   /docs/current/developer-docs/multi-chain/bitcoin/submit-transactions /docs/current/building-dapps/chain-fusion/bitcoin/using-btc/submit-transactions
@@ -522,18 +525,18 @@ const redirects = `
   /docs/current/developer-docs/multi-chain/ethereum/cketh/overview /docs/current/rosetta-defi/chain-key-tokens/cketh/overview
   /docs/current/developer-docs/multi-chain/ethereum/cketh/making-transactions /docs/current/rosetta-defi/chain-key-tokens/cketh/making-transactions
   /docs/current/developer-docs/multi-chain/ethereum/cketh/using-cketh-in-dapps /docs/current/rosetta-defi/chain-key-tokens/cketh/using-cketh-in-dapps
-  /docs/current/developer-docs/web-apps/user-login/internet-identity/overview /docs/current/building-dapps/using-network-features/authentication/overview
-  /docs/current/developer-docs/web-apps/user-login/internet-identity/creating-ii /docs/current/building-dapps/using-network-features/authentication/overview
-  /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity /docs/current/building-dapps/using-network-features/authentication/integrate-internet-identity
-  /docs/current/developer-docs/web-apps/user-login/internet-identity/alternative-origins /docs/current/building-dapps/using-network-features/authentication/alternative-origins
-  /docs/current/developer-docs/web-apps/user-login/nfid /docs/current/building-dapps/using-network-features/authentication/overview
-  /docs/current/developer-docs/web-apps/user-login/email-password /docs/current/building-dapps/using-network-features/authentication/overview
-  /docs/current/developer-docs/multi-chain/ethereum/using-eth/siwe /docs/current/building-dapps/using-network-features/authentication/overview
+  /docs/current/developer-docs/web-apps/user-login/internet-identity/overview /docs/current/building-dapps/authentication/overview
+  /docs/current/developer-docs/web-apps/user-login/internet-identity/creating-ii /docs/current/building-dapps/authentication/overview
+  /docs/current/developer-docs/web-apps/user-login/internet-identity/integrate-internet-identity /docs/current/building-dapps/authentication/integrate-internet-identity
+  /docs/current/developer-docs/web-apps/user-login/internet-identity/alternative-origins /docs/current/building-dapps/authentication/alternative-origins
+  /docs/current/developer-docs/web-apps/user-login/nfid /docs/current/building-dapps/authentication/overview
+  /docs/current/developer-docs/web-apps/user-login/email-password /docs/current/building-dapps/authentication/overview
+  /docs/current/developer-docs/multi-chain/ethereum/using-eth/siwe /docs/current/building-dapps/authentication/overview
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/defi/icrc-1/icrc1-index-setup /docs/current/rosetta-defi/tokens/indexes
   /docs/current/defi/icp-tokens/icp-index-local-setup /docs/current/rosetta-defi/tokens/indexes
   /docs/current/developer-docs/smart-contracts/signatures/signing-transactions /docs/current/building-dapps/using-network-features/signatures/t-ecdsa
-  /docs/current/developer-docs/defi/icp-tokens/overview /docs/current/rosetta-defi/tokens/token-standards
+  /docs/current/developer-docs/defi/icp-tokens/overview /docs/current/rosetta-defi/token-standards/index
   /docs/current/developer-docs/defi/asset-custody/self-custody-quickstart /docs/current/rosetta-defi/wallets/self-custody/self-custody-quickstart
   /docs/current/developer-docs/defi/asset-custody/hardware-wallet-cli /docs/current/rosetta-defi/wallets/self-custody/hardware-wallet-cli
   /docs/current/developer-docs/defi/asset-custody/custody-options /docs/current/rosetta-defi/wallets/overview
@@ -561,7 +564,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/advanced-features/threshold-signing /docs/current/building-dapps/using-network-features/signatures/t-ecdsa
   /docs/current/backend/candid/generating-candid /docs/current/building-dapps/developer-tools/cdks/rust/generating-candid
   /docs/current/developer-docs/backend/motoko/index.md /docs/current/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/backend/rust/index /docs/current/building-dapps/developer-tools/cdks/rust/
+  /docs/current/developer-docs/backend/rust/index /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/building-dapps/developer-tools/cli-tools/cli-reference/index /docs/current/building-dapps/developer-tools/dfx/
   /docs/current/developer-docs/integrations/icrc-1/deploy-new-token /docs/current/rosetta-defi/tokens/create
   /docs/current/developer-docs/setup/cycles/cycles-faucet.md	/docs/current/building-dapps/getting-started/tokens-and-cycles
@@ -579,7 +582,7 @@ const redirects = `
   /docs/base-libraries/motoko-base/Text.html	/docs/current/motoko/main/base/Text
   /docs/candid-guide/candid-types.html	/docs/current/building-dapps/interacting-with-dapps/candid/using-candid/
   /docs/current/developer-docs/deploy/custom-domain	/docs/current/building-dapps/dapp-frontends/custom-domains/using-custom-domains
-  /docs/current/developer-docs/integrations/internet-identity	/docs/current/building-dapps/using-network-features/authentication/overview
+  /docs/current/developer-docs/integrations/internet-identity	/docs/current/building-dapps/authentication/overview
   /bitcoin /bitcoin-integration
   /bootcamp	/education-hub
   /docs/candid-guide/candid-concepts.html	/docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts
@@ -587,7 +590,7 @@ const redirects = `
   /docs/current/concepts/chain-key-technology/ /docs/current/building-dapps/chain-fusion/overview
   /docs/current/concepts/concepts-intro.html	/docs/current/developer-education/developer-concepts/network-overview
   /docs/current/developer-docs/backend	/docs/current/developer-education/developer-concepts/network-overview
-  /docs/current/developer-docs/backend/rust/rust-quickstart	/docs/current/building-dapps/developer-tools/cdks/rust/
+  /docs/current/developer-docs/backend/rust/rust-quickstart	/docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/best-practices/	/docs/current/developer-education/developer-playbook/developer-best-practices/general
   /docs/current/developer-docs/best-practices/considerations-for-nft-devs /docs/current/rosetta-defi/nfts/overview
   /docs/current/developer-docs/smart-contracts/test/staging-environment /docs/current/building-dapps/launching-a-dapp/deploy/custom-networks
@@ -607,7 +610,7 @@ const redirects = `
   /docs/developers-guide/computation-and-storage-costs.html /docs/current/developer-education/developer-concepts/gas-cost
   /docs/current/developer-docs/getting-started/ /docs/current/developer-education/developer-concepts/network-overview
   /docs/current/developer-docs/defi/wallets/workflow /docs/current/rosetta-defi/wallets/overview
-  /docs/current/developer-docs/backend/rust/infrastructure /docs/current/building-dapps/developer-tools/cdks/rust/
+  /docs/current/developer-docs/backend/rust/infrastructure /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/smart-contracts/deploy/larger-wasm /docs/current/building-dapps/launching-a-dapp/create-and-install
   /docs/current/developer-docs/smart-contracts/deploy/sharing /docs/current/building-dapps/launching-a-dapp/deploy/overview
   /docs/current/developer-docs/integrations/rosetta/staking-support /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/staking/
@@ -619,10 +622,10 @@ const redirects = `
   /docs/current/samples/game-of-life /docs/current/references/samples/motoko/life/
   /docs/current/concepts/canisters-code /docs/current/developer-education/developer-concepts/what-are-canisters
   /docs/current/concepts/governance /docs/current/move-to-learnhub/nns/overview
-  /docs/current/concepts/nodes-subnets /docs/current/building-dapps/launching-dapps/subnets/overview
-  /docs/current/concepts/subnet-types /docs/current/building-dapps/launching-dapps/subnets/subnet-types
-  /docs/current/concepts/glossary /docs/current/developer-education/glossary/index
-  /docs/current/concepts/trust-in-canisters /docs/current/developer-docs/smart-contracts/overview/trust-in-canisters
+  /docs/current/concepts/nodes-subnets /docs/current/building-dapps/launching-a-dapp/subnets/overview
+  /docs/current/concepts/subnet-types /docs/current/building-dapps/launching-a-dapp/subnets/subnet-types
+  /docs/current/concepts/glossary /docs/current/developer-education/glossary/
+  /docs/current/concepts/trust-in-canisters /docs/current/developer-education/developer-concepts/trust-in-canisters
   /docs/current/developer-docs/multi-chain/faq/user-faq /docs/current/building-dapps/chain-fusion/overview
   /docs/current/developer-docs/multi-chain/faq/ckbtc-faq /docs/current/rosetta-defi/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/multi-chain/faq/cketh-faq /docs/current/rosetta-defi/chain-key-tokens/cketh/overview
@@ -636,7 +639,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/candid/ /docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts
   /docs/current/developer-docs/getting-started/development-workflow /docs/current/developer-education/developer-playbook/development-workflow
   /docs/current/developer-docs/getting-started/default-template /docs/current/building-dapps/launching-a-dapp/create-and-install
-  /docs/current/developer-docs/getting-started/hello-world /docs/current/building-dapps/getting-started/write-smart-contracts
+  /docs/current/developer-docs/getting-started/hello-world /docs/current/building-dapps/getting-started/write-canister-code
   /docs/current/developer-docs/getting-started/cycles/overview /docs/current/building-dapps/getting-started/tokens-and-cycles
   /docs/current/developer-docs/getting-started/accounts /docs/current/building-dapps/getting-started/identities
   /docs/current/developer-docs/getting-started/deploy/local /docs/current/building-dapps/getting-started/deploy-and-manage
@@ -647,12 +650,12 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/advanced-features/serving-http-request /docs/current/building-dapps/using-network-features/using-external-data/http-gateways-certification/gateways
   /docs/current/developer-docs/smart-contracts/write/default-template /docs/current/building-dapps/launching-a-dapp/create-and-install
   /developers /docs/current/home
-  /docs/current/developer-docs/identity/authentication/email-password /docs/current/building-dapps/using-network-features/authentication/overview
-  /docs/current/developer-docs/identity/authentication/nfid /docs/current/building-dapps/using-network-features/authentication/overview
-  /docs/current/developer-docs/identity/authentication/siwb /docs/current/building-dapps/using-network-features/authentication/overview
-  /docs/current/developer-docs/identity/authentication/siwe /docs/current/building-dapps/using-network-features/authentication/overview
-  /docs/current/developer-docs/identity/authentication/siws /docs/current/building-dapps/using-network-features/authentication/overview
-  /docs/current/developer-docs/identity/authentication/msq /docs/current/building-dapps/using-network-features/authentication/overview
+  /docs/current/developer-docs/identity/authentication/email-password /docs/current/building-dapps/authentication/overview
+  /docs/current/developer-docs/identity/authentication/nfid /docs/current/building-dapps/authentication/overview
+  /docs/current/developer-docs/identity/authentication/siwb /docs/current/building-dapps/authentication/overview
+  /docs/current/developer-docs/identity/authentication/siwe /docs/current/building-dapps/authentication/overview
+  /docs/current/developer-docs/identity/authentication/siws /docs/current/building-dapps/authentication/overview
+  /docs/current/developer-docs/identity/authentication/msq /docs/current/building-dapps/authentication/overview
   /docs/current/developer-docs/web-apps/browser-js/js-request-api /docs/current/building-dapps/interacting-with-dapps/agents/javascript-agent
   /docs/current/developer-docs/defi/tokens/asset_flow/index /docs/current/rosetta-defi/overview
   /docs/current/developer-docs/defi/tokens/ledger/overview /docs/current/rosetta-defi/overview
@@ -672,8 +675,8 @@ const redirects = `
 
   /docs/current/developer-docs/smart-contracts/development-workflow /docs/current/developer-education/developer-playbook/developer-environments
   /docs/current/building-dapps/launching-a-dapp/create-and-install /docs/current/developer-education/developer-playbook/application-architectures
-  /docs/current/developer-docs/smart-contracts/overview/inside-canisters /docs/current/developer-education/developer-playbook/inside-canisters
-  /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle /docs/current/developer-education/developer-playbook/canister-lifecycle
+  /docs/current/developer-docs/smart-contracts/overview/inside-canisters /docs/current/developer-education/developer-concepts/inside-canisters
+  /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle /docs/current/developer-education/developer-concepts/canister-lifecycle
 
   /docs/current/developer-docs/smart-contracts/best-practices/general /docs/current/developer-education/developer-playbook/developer-best-practices/general
   /docs/current/developer-docs/smart-contracts/best-practices/reproducible-builds /docs/current/developer-education/developer-playbook/developer-best-practices/reproducible-builds
@@ -682,12 +685,12 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/best-practices/idempotency /docs/current/developer-education/developer-playbook/developer-best-practices/idempotency
 
   /docs/current/developer-docs/smart-contracts/call/overview /docs/current/developer-education/message-execution/types-of-canister-calls
-  /docs/current/references/execution-errors /docs/current/developer-education/message-execution/execution-errors
+  /docs/current/references/execution-errors /docs/current/references/execution-errors
   /docs/current/references/ingress-messages /docs/current/developer-education/message-execution/ingress-messages
-  /docs/current/developer-docs/smart-contracts/advanced-features/system-canisters /docs/current/developer-education/system-canisters/index
+  /docs/current/developer-docs/smart-contracts/advanced-features/system-canisters /docs/current/developer-education/system-canisters/
   /docs/current/developer-docs/smart-contracts/advanced-features/management-canister /docs/current/developer-education/system-canisters/management-canister
   /docs/current/developer-docs/security/formal-verification /docs/current/developer-education/security/formal-verification
-  /docs/current/developer-docs/defi/exchange-rate-canister/ /docs/current/developer-education/system-canisters/exchange-rate-canister
+  /docs/current/developer-docs/defi/exchange-rate-canister/ /docs/current/developer-education/system-canisters/
 
   /docs/current/developer-docs/security/security-best-practices/inter-canister-calls /docs/current/developer-education/security/inter-canister-calls
   /docs/current/developer-docs/security/security-best-practices/iam /docs/current/developer-education/security/iam
@@ -701,32 +704,32 @@ const redirects = `
   /docs/current/developer-docs/security/security-best-practices/misc /docs/current/developer-education/security/misc
   /docs/current/developer-docs/security/security-best-practices/resources /docs/current/developer-education/security/resources
 
-  /docs/current/references/glossary /docs/current/developer-education/glossary/index
+  /docs/current/references/glossary /docs/current/developer-education/glossary/
 
   /docs/current/developer-docs/getting-started/explore-examples /docs/current/building-dapps/getting-started/explore-examples
   /docs/current/developer-docs/getting-started/install /docs/current/building-dapps/getting-started/install
   /docs/current/developer-docs/getting-started/identities /docs/current/building-dapps/getting-started/identities
   /docs/current/developer-docs/getting-started/tokens-and-cycles /docs/current/building-dapps/getting-started/tokens-and-cycles
-  /docs/current/developer-docs/getting-started/write-smart-contracts /docs/current/building-dapps/getting-started/write-smart-contracts
+  /docs/current/developer-docs/getting-started/write-canister-code /docs/current/building-dapps/getting-started/write-canister-code
   /docs/current/developer-docs/getting-started/deploy-and-manage /docs/current/building-dapps/getting-started/deploy-and-manage
   /docs/current/developer-docs/getting-started/quickstart/first-smart-contract /docs/current/building-dapps/getting-started/quickstart/first-smart-contract
   /docs/current/developer-docs/getting-started/quickstart/react-quickstart /docs/current/building-dapps/getting-started/quickstart/first-web-app
 
   /docs/current/developer-docs/developer-tools/on-chain/cdks /docs/current/building-dapps/developer-tools/cdks/index
 
-  /docs/current/developer-docs/backend/rust/index /docs/current/building-dapps/developer-tools/cdks/rust
-  /docs/current/developer-docs/backend/rust/quickstart /docs/current/building-dapps/developer-tools/cdks/rust
-  /docs/current/developer-docs/backend/rust/dev-env /docs/current/building-dapps/developer-tools/cdks/rust
+  /docs/current/developer-docs/backend/rust/index /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust
+  /docs/current/developer-docs/backend/rust/quickstart /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust
+  /docs/current/developer-docs/backend/rust/dev-env /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/project-organization /docs/current/building-dapps/developer-tools/cdks/rust/project-organization
-  /docs/current/developer-docs/backend/rust/deploying /docs/current/building-dapps/developer-tools/cdks/rust/deploying
+  /docs/current/developer-docs/backend/rust/deploying /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/access-control /docs/current/building-dapps/developer-tools/cdks/rust/access-control
   /docs/current/developer-docs/backend/rust/searching-records /docs/current/building-dapps/developer-tools/cdks/rust/searching-records
   /docs/current/developer-docs/backend/rust/counter /docs/current/building-dapps/developer-tools/cdks/rust/canister-state
-  /docs/current/developer-docs/backend/rust/rust-considerations /docs/current/building-dapps/developer-tools/cdks/rust/rust-considerations
+  /docs/current/developer-docs/backend/rust/rust-considerations /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/timers /docs/current/building-dapps/developer-tools/cdks/rust/timers
   /docs/current/developer-docs/backend/rust/stable-structures /docs/current/building-dapps/developer-tools/cdks/rust/stable-structures
   /docs/current/developer-docs/backend/rust/rust-limitations /docs/current/building-dapps/developer-tools/cdks/rust/rust-limitations
-  /docs/current/developer-docs/backend/rust/samples /docs/current/building-dapps/developer-tools/cdks/rust/
+  /docs/current/developer-docs/backend/rust/samples /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/intercanister /docs/current/building-dapps/developer-tools/cdks/rust/intercanister
   /docs/current/developer-docs/backend/rust/message-inspect /docs/current/building-dapps/developer-tools/cdks/rust/message-inspect
   /docs/current/developer-docs/backend/rust/optimizing /docs/current/building-dapps/developer-tools/cdks/rust/optimizing
@@ -890,11 +893,11 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/advanced-features/simd /docs/current/building-dapps/using-network-features/simd
   /docs/current/developer-docs/smart-contracts/advanced-features/time-and-timestamps /docs/current/building-dapps/using-network-features/time-and-timestamps
 
-  /docs/current/developer-docs/identity/authentication/overview /docs/current/building-dapps/using-network-features/authentication/overview
-  /docs/current/developer-docs/identity/internet-identity/overview /docs/current/building-dapps/using-network-features/authentication/overview
-  /docs/current/developer-docs/identity/internet-identity/creating-ii /docs/current/building-dapps/using-network-features/authentication/overview
-  /docs/current/developer-docs/identity/internet-identity/integrate-internet-identity /docs/current/building-dapps/using-network-features/authentication/integrate-internet-identity
-  /docs/current/developer-docs/identity/internet-identity/alternative-origins /docs/current/building-dapps/using-network-features/authentication/alternative-origins
+  /docs/current/developer-docs/identity/authentication/overview /docs/current/building-dapps/authentication/overview
+  /docs/current/developer-docs/identity/internet-identity/overview /docs/current/building-dapps/authentication/overview
+  /docs/current/developer-docs/identity/internet-identity/creating-ii /docs/current/building-dapps/authentication/overview
+  /docs/current/developer-docs/identity/internet-identity/integrate-internet-identity /docs/current/building-dapps/authentication/integrate-internet-identity
+  /docs/current/developer-docs/identity/internet-identity/alternative-origins /docs/current/building-dapps/authentication/alternative-origins
   /docs/current/developer-docs/identity/verifiable-credentials/overview /docs/current/building-dapps/using-network-features/verifiable-credentials/overview
   /docs/current/developer-docs/identity/verifiable-credentials/how-it-works /docs/current/building-dapps/using-network-features/verifiable-credentials/how-it-works
   /docs/current/developer-docs/identity/verifiable-credentials/issuer /docs/current/building-dapps/using-network-features/verifiable-credentials/issuer
@@ -953,7 +956,7 @@ const redirects = `
   /docs/current/developer-docs/daos/sns/managing/managing-nervous-system-parameters /docs/current/building-dapps/governing-dapps/managing/managing-nervous-system-parameters
 
   /docs/current/developer-docs/defi/overview /docs/current/rosetta-defi/overview
-  /docs/current/developer-docs/defi/tokens/token-standards /docs/current/rosetta-defi/tokens/token-standards
+  /docs/current/developer-docs/defi/tokens/token-standards /docs/current/rosetta-defi/token-standards/index
   /docs/current/developer-docs/defi/tokens/ledger/setup/icp_ledger_setup /docs/current/rosetta-defi/token-ledgers/setup/icp_ledger_setup
   /docs/current/developer-docs/defi/tokens/ledger/setup/icrc1_ledger_setup /docs/current/rosetta-defi/token-ledgers/setup/icrc1_ledger_setup
   /docs/current/developer-docs/defi/tokens/ledger/usage/icp_ledger_usage /docs/current/rosetta-defi/token-ledgers/usage/icp_ledger_usage
@@ -1027,10 +1030,10 @@ const redirects = `
 
   /docs/current/developer-docs/defi/nfts/nft-collections /docs/current/rosetta-defi/nft-collections
 
-  /docs/current/references/subnets/overview /docs/current/building-dapps/launching-dapps/subnets/overview
-  /docs/current/references/subnets/subnet-types /docs/current/building-dapps/launching-dapps/subnets/subnet-types
-  /docs/current/developer-docs/smart-contracts/test/overview /docs/current/building-dapps/launching-dapps/test/overview
-  /docs/current/developer-docs/smart-contracts/test/pocket-ic /docs/current/building-dapps/launching-dapps/test/pocket-ic
+  /docs/current/references/subnets/overview /docs/current/building-dapps/launching-a-dapp/subnets/overview
+  /docs/current/references/subnets/subnet-types /docs/current/building-dapps/launching-a-dapp/subnets/subnet-types
+  /docs/current/developer-docs/smart-contracts/test/overview /docs/current/building-dapps/launching-a-dapp/test/overview
+  /docs/current/developer-docs/smart-contracts/test/pocket-ic /docs/current/building-dapps/launching-a-dapp/test/pocket-ic
 
   /docs/current/developer-docs/ai/overview /ecosystem
   /docs/current/developer-docs/ai/inference /ecosystem
@@ -1072,6 +1075,8 @@ const redirects = `
   /docs/current/developer-docs/defi/wallets/overview /docs/current/home
   /docs/current/developer-docs/defi/wallets/self-custody/self-custody-quickstart /docs/current/home
   /docs/current/developer-docs/defi/wallets/self-custody/hardware-wallet-cli /docs/current/home
+
+  /docs/current/references/clang-supported-languages /docs/current/home
   `
 
 

@@ -15,16 +15,15 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 The ICP accepts and executes <GlossaryTooltip>canister</GlossaryTooltip> code in the WebAssembly (Wasm) binary format.
 Usually, developers write code in a higher-level language and then compile the code into a Wasm binary that can be deployed into a canister.
 
-[Learn more about writing canister code](/docs/current/building-dapps/launching-a-dapp/write/overview).
+[Learn more about writing canister code](/docs/current/building-dapps/launching-a-dapp/create-and-install).
 
 ## Create
 
-A developer can create an empty canister on ICP by calling the system canister.
-It can be done using [`dfx canister create`](/docs/current/building-dapps/developer-tools/dfx/dfx-canister#dfx-canister-create) in the command line or the [<GlossaryTooltip>NNS</GlossaryTooltip> frontend dapp](/docs/current/move-to-learnhub/nns/using-the-nns-dapp/nns-app-quickstart#deploying-and-managing-canisters-from-the-nns-dapp) in the browser.
+A developer can create an empty canister on ICP by using [`dfx canister create`](/docs/current/building-dapps/developer-tools/dfx/dfx-canister#dfx-canister-create) in the command line or the [<GlossaryTooltip>NNS</GlossaryTooltip> frontend dapp](/docs/current/move-to-learnhub/nns/using-the-nns-dapp/nns-app-quickstart#deploying-and-managing-canisters-from-the-nns-dapp) in the browser.
 The developer can specify the initial canister settings and choose the target <GlossaryTooltip>subnet</GlossaryTooltip>.
-Once the canister is created, the developer gets its canister ID and becomes the controller of the canister.
+Once the canister is created, the developer receives its canister ID and becomes the controller of the canister.
 
-[Learn more about creating canisters](/docs/current/building-dapps/launching-a-dapp/create).
+[Learn more about creating canisters](/docs/current/building-dapps/launching-a-dapp/create-and-install).
 
 <div class="text--center">
 <img src="/img/docs/create-canister.png" alt="Create canister" width="600"/>
@@ -34,12 +33,12 @@ Once the canister is created, the developer gets its canister ID and becomes the
 
 Once an empty canister has been created, the canister's code must be compiled into a Wasm binary using [`dfx build`](/docs/current/building-dapps/developer-tools/dfx/dfx-build).
 
-[Learn more about compiling code into Wasm](/docs/current/building-dapps/launching-a-dapp/compile).
+[Learn more about compiling code into Wasm](/docs/current/building-dapps/launching-a-dapp/create-and-install).
 
 ## Install
 
-The next step after writing the code, creating a canister, and compiling the code is installing the code into the canister.
-This can be done by calling the `install_code` endpoint of the system canister and passing the canister ID and the Wasm binary to it.
+The next step after writing the code, creating a canister, and compiling the code is to install the code into the canister.
+This can be done by calling the `install_code` endpoint of the management canister and passing the canister ID and the Wasm binary to it.
 The [`dfx canister install`](/docs/current/building-dapps/developer-tools/dfx/dfx-canister#dfx-canister-install) command is used for making this call.
 
 <div class="text--center">
@@ -64,7 +63,7 @@ These endpoints correspond to exported Wasm functions that are annotated with `c
 
 ## Maintain
 
-Certain system operations that change the state of the <GlossaryTooltip>canister</GlossaryTooltip> can be performed only by the controllers of the canister.
+Certain system operations that change the state of the canister can be performed only by the controllers of the canister.
 The most important operation is upgrading the canister by installing a different Wasm binary.
 In the initial stages of development, the canister is usually controlled by its developer, which allows the developer to iterate quickly.
 As the canister becomes mature and production ready, the control over it could move to a DAO in order to make the canister secure and trustworthy.

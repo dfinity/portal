@@ -399,7 +399,7 @@ The following submodules and their corresponding repos are currently used:
     - GitHub Repo: https://github.com/dfinity/dfxvm.git
 
 - Response verification
-    - `/docs/current/building-dapps/dapp-frontends/http-gateways-certification/`
+    - `/docs/current/building-dapps/using-network-features/using-external-data/http-gateways-certification/`
     - GitHub Repo: https://github.com/dfinity/response-verification
 
 ### Updating submodules

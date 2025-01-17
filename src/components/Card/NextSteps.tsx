@@ -141,7 +141,7 @@ const languagesTiles: TileDescriptor[] = [
       "Integrate authentication methods into your application.",
     action: (
       <Link
-        href="/docs/current/building-dapps/using-network-features/authentication/overview"
+        href="/docs/current/building-dapps/authentication/overview"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >

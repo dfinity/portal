@@ -471,7 +471,7 @@ function InternetIdentityPage() {
                 </motion.p>
                 <Link
                   className="mt-3 md:mt-6 link-primary-light link-with-icon "
-                  href="https://internetcomputer.org/docs/current/building-dapps/using-network-features/authentication/integrate-internet-identity"
+                  href="https://internetcomputer.org/docs/current/building-dapps/authentication/integrate-internet-identity"
                 >
                   <LinkArrowRight />
                   <span>Start Building</span>

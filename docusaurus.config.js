@@ -77,7 +77,7 @@ const subnavItems = [
     type: "docSidebar",
     position: "left",
     sidebarId: "build",
-    label: "Building dapps",
+    label: "Building applications",
     activeBasePath: "/docs/current/build/",
   },
   {
@@ -86,6 +86,13 @@ const subnavItems = [
     sidebarId: "rosetta_defi",
     label: "Rosetta & DeFi",
     activeBasePath: "/docs/current/rosetta-defi/",
+  },
+  {
+    type: "docSidebar",
+    position: "left",
+    sidebarId: "motoko",
+    label: "Motoko",
+    activeBasePath: "/docs/current/motoko/",
   },
   {
     type: "docSidebar",
@@ -104,33 +111,38 @@ const subnavItems = [
         href: "https://github.com/dfinity/awesome-internet-computer#readme",
       },
       {
+        label: "Sample projects",
+        href: "https://internetcomputer.org/samples",
+      },
+      {
         label: "SDK Release Notes",
         type: "doc",
         docId: "other/updates/release-notes/release-notes",
       },
       { label: "Developer Grants", href: "https://dfinity.org/grants" },
       {
-        label: "Playground",
-        href: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
+        label: "ICP Ninja",
+        href: "https://icp.ninja"
       },
       {
-        label: "Dev Forum",
+        label: "ICP Developer Forum",
         href: "https://forum.dfinity.org/",
       },
       {
-        label: "Dev Discord",
+        label: "ICP Developer Discord",
         href: "https://discord.internetcomputer.org",
       },
     ],
   },
   /**
    * Add UI tests in development mode
-   */
-  process.env.NODE_ENV === "development" && {
-    label: "UI Tests",
-    href: "/docs/current/tests/all",
-  },
+  * process.env.NODE_ENV === "development" && {
+  *   label: "UI Tests",
+  *   href: "/docs/current/tests/all",
+  */
+
 ].filter(Boolean);
+
 
 /** @type {import("./src/components/Common/MarketingNav").MarketingNavType} */
 const marketingNav = {

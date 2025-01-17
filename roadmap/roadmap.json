@@ -2927,7 +2927,7 @@
           {
             "title": "Named SNS neurons",
             "overview": "Increase and facilitate active participation in SNS DAOs by introducing an easy way to find experts and follow them.",
-            "description": "Unlike the NNS, there is currently no notion of named neurons in the SNSs. Therefore it is harder for users to find actively voting neurons that they can follow. The goal of this feature is to change this and make it easier for actively voting neurons to identify themselves and for other users to find and follow them.",
+            "description": "Unlike the NNS, there is currently no notion of named neurons in the SNSes. Therefore it is harder for users to find actively voting neurons that they can follow. The goal of this feature is to change this and make it easier for actively voting neurons to identify themselves and for other users to find and follow them.",
             "forum": "",
             "proposal": "",
             "docs": "",
@@ -3114,7 +3114,7 @@
           {
             "title": "Service Nervous System (SNS)",
             "overview": "A DAO factory that allows for proposal-based no-code creation of a DAO, including an initial decentralization swap. Available as part of the ICP governance framework.",
-            "description": "This SNS rollout will include several features: **1.** SNSs that are provided as a protocol function (deployed on an SNS subnet and facilitating maintainable upgrades), **2.** A first version of voting rewards for SNSs that can be further customised in the future, **3.** Decentralization swaps that decentralize a dapp, where participants provide ICP tokens in exchange for SNS tokens. **4.** A NNS frontend dapp extension that allows end users to participate in the decentralization swap. **5.** Tooling to help users initialize an SNS.",
+            "description": "This SNS rollout will include several features: **1.** SNSes that are provided as a protocol function (deployed on an SNS subnet and facilitating maintainable upgrades), **2.** A first version of voting rewards for SNSes that can be further customised in the future, **3.** Decentralization swaps that decentralize a dapp, where participants provide ICP tokens in exchange for SNS tokens. **4.** A NNS frontend dapp extension that allows end users to participate in the decentralization swap. **5.** Tooling to help users initialize an SNS.",
             "forum": "",
             "proposal": "https://dashboard.internetcomputer.org/proposal/65132",
             "docs": "",
@@ -3139,8 +3139,8 @@
           },
           {
             "title": "Restriction for SNS swap participation",
-            "overview": "Constraining participation in decentralization swaps of SNSs based on geographic location. Includes custom disclaimers to be confirmed by users before participating.",
-            "description": "When an SNS is launched, it goes through a decentralization swap. During the swap, participants provide ICP and in return receive a share of the SNS DAO’s governance power in the form of SNS neurons. In the current design, swaps are open for anyone to participate. Different projects in the community have requested a feature that allows SNSs to restrict participation in the swap by geographic location. In addition, this feature enables swap participants to be presented with a custom confirmation text that they need to confirm before being allowed to participate.",
+            "overview": "Constraining participation in decentralization swaps of SNSes based on geographic location. Includes custom disclaimers to be confirmed by users before participating.",
+            "description": "When an SNS is launched, it goes through a decentralization swap. During the swap, participants provide ICP and in return receive a share of the SNS DAO’s governance power in the form of SNS neurons. In the current design, swaps are open for anyone to participate. Different projects in the community have requested a feature that allows SNSes to restrict participation in the swap by geographic location. In addition, this feature enables swap participants to be presented with a custom confirmation text that they need to confirm before being allowed to participate.",
             "forum": "",
             "proposal": "",
             "docs": "",
@@ -3204,7 +3204,7 @@
           },
           {
             "title": "Enable ICRC-2 for SNS ledgers",
-            "overview": "Update the SNS framework to enable the rollout of ICRC-2 on the SNSs’ ledger canisters.",
+            "overview": "Update the SNS framework to enable the rollout of ICRC-2 on the SNSes’ ledger canisters.",
             "description": "",
             "status": "deployed",
             "eta": "Q1 2024",
@@ -3312,7 +3312,7 @@
           },
           {
             "title": "Restriction for SNS swap participation",
-            "overview": "Constraining participation in decentralization swaps of SNSs based on geographic location. Includes custom disclaimers to be confirmed by users before participating.",
+            "overview": "Constraining participation in decentralization swaps of SNSes based on geographic location. Includes custom disclaimers to be confirmed by users before participating.",
             "forum": "",
             "proposal": "",
             "docs": "",
@@ -3873,7 +3873,7 @@
             "overview": "The PocketIC is a canister testing system that allows to run a \"pocket version\" of ICP, including multiple subnets. This is the preferred way of testing dapps.",
             "forum": "https://forum.dfinity.org/t/pocketic-testing-canisters-in-python/22490",
             "proposal": "",
-            "docs": "https://internetcomputer.org/docs/current/building-dapps/launching-dapps/test/pocket-ic",
+            "docs": "https://internetcomputer.org/docs/current/building-dapps/launching-a-dapp/test/pocket-ic",
             "eta": "Dec 2023",
             "status": "deployed",
             "is_community": false,

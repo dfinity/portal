@@ -64,7 +64,7 @@ Before building your code, you should document the build environment you are usi
 
 -   Note your local machine's operating system and its version.
 
--   If you are using the IC SDK, note the version used. You can install arbitrary versions of the IC SDK using [`dfxvm`](/docs/current/building-dapps/developer-tools/dfxvm/dfxvm/dfxvm-install).
+-   If you are using the IC SDK, note the version used. You can install arbitrary versions of the IC SDK using [`dfxvm`](/docs/current/building-dapps/developer-tools/dfxvm/dfxvm-install).
 
 -   If you are building Motoko code in a way other than `dfx build`, note the version of `moc` you are using.
 
@@ -204,15 +204,15 @@ Next, consider if it is necessary to make the build deterministic. For the build
 
 - #### Step 1: You will need to ensure that any dependencies of your canister are always resolved in the same way. Most build tools support a way of pinning dependencies to a particular version.
 
-    -   For `npm`, running `npm install` will create a `package-lock.json` file with some fixed versions of all (transitive) dependencies of your project that satisfy the requirements specified in your `package.json`. However, `npm install` will overwrite the `package-lock.json` file every time it is invoked. Thus, once you are ready to create the final version of your canister, run `npm install` only once. After that, commit `package-lock.json` to your version control system. Finally, when checking the build for reproducibility, use `npm ci` instead of `npm install`.
+For `npm`, running `npm install` will create a `package-lock.json` file with some fixed versions of all (transitive) dependencies of your project that satisfy the requirements specified in your `package.json`. However, `npm install` will overwrite the `package-lock.json` file every time it is invoked. Thus, once you are ready to create the final version of your canister, run `npm install` only once. After that, commit `package-lock.json` to your version control system. Finally, when checking the build for reproducibility, use `npm ci` instead of `npm install`.
 
-    -   For Rust code, Cargo will automatically generate a `Cargo.lock` file with the fixed versions of your (transitive) dependencies. Like with `package-lock.json`, you should commit this file to your version control system once you are ready to produce the final version of your canister. Furthermore, Cargo by default ignores the locked versions of dependencies. Pass the `--locked` flag to the `cargo` command to ensure that the locked dependencies are used.
+For Rust code, Cargo will automatically generate a `Cargo.lock` file with the fixed versions of your (transitive) dependencies. Like with `package-lock.json`, you should commit this file to your version control system once you are ready to produce the final version of your canister. Furthermore, Cargo by default ignores the locked versions of dependencies. Pass the `--locked` flag to the `cargo` command to ensure that the locked dependencies are used.
 
 - #### Step 2: Your own build scripts must not introduce non-determinism.
 
 Sources of non-determinism include randomness, timestamps, concurrency, or code obfuscators. Less obvious sources include locales, absolute file paths, the order of files in a directory, and remote URLs whose content can change. Furthermore, relying on third-party build plug-ins exposes you to any non-determinism introduced by these.
 
-- #### Step 3. Given the same dependencies and deterministic build scripts, the build tools themselves (`moc` for Motoko, `cargo` for Rust, `npx` for TypeScript, `pip` for Python, or `webpack` for frontend development) must also be deterministic.
+- #### Step 3: Given the same dependencies and deterministic build scripts, the build tools themselves (`moc` for Motoko, `cargo` for Rust, `npx` for TypeScript, `pip` for Python, or `webpack` for frontend development) must also be deterministic.
 
 These tools aim to be deterministic. However, they are complicated pieces of software, and ensuring determinism is nontrivial. Thus, non-determinism bugs can and do occur.
 

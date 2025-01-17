@@ -9,11 +9,11 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Beginner", "Concept"]} />
 
-Ingress messages are requests to ICP <GlossaryToolTip>canisters</GlossaryToolTip> that are sent by external entities, such as users, usually through an [agent](/docs/current/building-dapps/developer-tools/dev-tools-overview/#agents), like [agent-js](https://github.com/dfinity/agent-js/tree/main) that runs within a web application, or [agent-rs](https://github.com/dfinity/agent-rs/tree/main) in a Rust application.
+Ingress messages are requests to ICP <GlossaryTooltip>canisters</GlossaryTooltip> that are sent by external entities, such as users, usually through an [agent](/docs/current/building-dapps/developer-tools/dev-tools-overview/#agents), like [agent-js](https://github.com/dfinity/agent-js/tree/main) that runs within a web application, or [agent-rs](https://github.com/dfinity/agent-rs/tree/main) in a Rust application.
 
 For example, you can browse what ingress messages can be sent to the ckBTC ledger by browsing through its [API using the dashboard](https://dashboard.internetcomputer.org/canister/mxzaz-hqaaa-aaaar-qaada-cai). The tool also allows you to send messages, using agent-js behind the scenes.
 
-See also the introductory [call overview](/docs/current/developer-education/message-execution/types-of-canister-calls) to learn more about calling canisters.
+See also the introductory [call overview](/docs/current/building-dapps/interacting-with-dapps/query-calls) to learn more about calling canisters.
 
 This page discusses ICP's ingress message APIs. While these APIs are defined in detail within the [HTTPS interface specification](/docs/current/references/ic-interface-spec#http-interface), this page provides a more high-level and intuitive  with a special focus on error handling. That aspect is particularly important, as it can be tricky to determine if an ingress message has actually been successfully executed. Misinterpreting errors could lead to bugs such as double spending.
 
@@ -68,9 +68,11 @@ When seeing errors 2-5, the call may still be successfully executed. For example
 
 Some operations, such as transfers, must not be executed multiple times. If a call was `rejected` as described above, it is safe to retry the operation. In all other error cases, however, retrying can be risky because the call could still successfully execute, potentially leading to severe security vulnerabilities such as double spending.
 
-In general, there are cases where it is impossible to determine if a call was successful. For example, suppose
-* The client loses its connection until the request status has been removed from the state tree. (Recall that ICP will remove the request from the system state tree some time after ingress expiry.)
-* There is no application-specific way to tell if the call successfully executed. For example, the canister does not provide a way to find out if the call happened.
+In general, there are cases where it is impossible to determine if a call was successful. For example, suppose that:
+
+- The client loses its connection until the request status has been removed from the state tree. (Recall that ICP will remove the request from the system state tree some time after ingress expiry.)
+
+- There is no application-specific way to tell if the call successfully executed. For example, the canister does not provide a way to find out if the call happened.
 
 In this situation, it is indistinguishable if the call was successful, but all information has already been removed from the system state tree, or the call never made it into the state tree in the first place and hasn't been executed.
 
@@ -86,15 +88,18 @@ As ICP rejects `ingress_expiry` that is too far in the future, the time window f
 
 In summary, there are two options for a client:
 1. **No retries, only poll `read_state`**: Submit the `call` once, and poll `read_state` until at least one of the following conditions is met:
-  * A certified response was produced. That is, the call status is `replied`, `rejected`, or `done`.
-  * The subnet time exceeds `ingress_expiry`, and the call status is not `processing`.
 
-  Evaluating the second condition may be hard if the subnet time and local time of the user differ.
+    - A certified response was produced. That is, the call status is `replied`, `rejected`, or `done`.
+    - The subnet time exceeds `ingress_expiry`, and the call status is not `processing`.
+
+Evaluating the second condition may be hard if the subnet time and local time of the user differ.
+
 2. **Retry the call while polling `read_state`**: Do the same as above, but resubmit the initial `call` (same `request_id`) periodically (e.g., every `30s`) until at least one of the following conditions is met:
-  * The call is known to the system. That is, the call status is `received`, `processing`, `replied`, `rejected`, or `done`.
-  * `ingress_expiry` is reached.
 
-  This can be beneficial because a call that didn’t make it is retried. For example, if the first call was dropped due to a network issue or by a malicious replica, a subsequent call could make it through, e.g., if it is successfully routed to an honest replica.
+    - The call is known to the system. That is, the call status is `received`, `processing`, `replied`, `rejected`, or `done`.
+    - `ingress_expiry` is reached.
+
+This can be beneficial because a call that didn’t make it is retried. For example, if the first call was dropped due to a network issue or by a malicious replica, a subsequent call could make it through, e.g., if it is successfully routed to an honest replica.
 
 At the time of writing, both agent-js (v2.1.3) and agent-rs (v0.39.1) don't retry `call`, so they follow the first option above. By default, both agent-rs and agent-js use `ingress_expiry` of four minutes and poll for five minutes. Additionally, agent-rs resets the timer to allow for an additional five minutes of polling whenever it observes a `received` or `processing` status.
 

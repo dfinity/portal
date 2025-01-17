@@ -23,11 +23,11 @@ ICP tokens are the network's native utility token. They are used for different a
 
 [ICRC](https://github.com/dfinity/ICRC) stands for `Internet Computer Request for Comments` and is a working group for various topics. ICRC standards can be created for anything, not just token types. Currently, the protocol supports the ICRC token standards ICRC-1, ICRC-2, ICRC-3, and ICRC-7, with several more in the process of being drafted and developed.
 
-[Chain-key](/docs/current/building-dapps/chain-fusion/chain-key-tokens/overview) tokens are created using ICP's chain-key cryptography protocols, such as [threshold signing](https://internetcomputer.org/docs/current/developer-education/glossary/index#chain-key). The chain-key tokens ckBTC, ckETH, and ckERC20 use ICRC-1 ledgers that support the ICRC-2 extension. Each chain-key token is deployed on ICP and backed 1:1 with the native token, such as BTC, ETH, or ERC20, locked and kept on their native chain. There are no intermediaries or centralized bridges used for chain-key tokens.
+[Chain-key](/docs/current/building-dapps/chain-fusion/chain-key-tokens/overview) tokens are created using ICP's chain-key cryptography protocols, such as [threshold signing](https://internetcomputer.org/docs/current/developer-education/glossary#c). The chain-key tokens ckBTC, ckETH, and ckERC20 use ICRC-1 ledgers that support the ICRC-2 extension. Each chain-key token is deployed on ICP and backed 1:1 with the native token, such as BTC, ETH, or ERC20, locked and kept on their native chain. There are no intermediaries or centralized bridges used for chain-key tokens.
 
 The older token standards, [DIP-20](https://github.com/Psychedelic/DIP20) and [DIP-721](https://github.com/Psychedelic/DIP721), are designed to resemble the Ethereum ERC-20 and ERC-721 standards, respectively. While some projects on ICP still use DIP-20 and DIP-721, the new ICRC-2 and ICRC-7 standards are designed to provide a newer, alternative standard for each.
 
-Each token standard is elaborated on in the [token standards documentation](/docs/current/rosetta-defi/tokens/token-standards).
+Each token standard is elaborated on in the [token standards documentation](/docs/current/rosetta-defi/token-standards/index).
 
 ## Terminology
 
@@ -59,7 +59,7 @@ Currently, on the Internet Computer you will find two different types of ledgers
 
 ### ICP ledger
 
-The main purpose of the ICP ledger is to record `burn`, `mint`, `approve`, and, most commonly, `transfer` transactions with regards to ICP's native [token](/docs/current/rosetta-defi/tokens/token-standards#icp-tokens) `ICP`. The ICP ledger canister services transaction requests and offers a variety of endpoints to fetch data and information about the state of the ICP ledger.
+The main purpose of the ICP ledger is to record `burn`, `mint`, `approve`, and, most commonly, `transfer` transactions with regards to ICP's native [token](/docs/current/rosetta-defi/token-standards/index#icp-tokens) `ICP`. The ICP ledger canister services transaction requests and offers a variety of endpoints to fetch data and information about the state of the ICP ledger.
 
 There is only one ICP ledger on the mainnet.
 
@@ -139,4 +139,4 @@ The ICP index canister is running on the NNS subnet with the canister ID [qhbym-
 
 ## Next steps
 
-[Learn more about token standards](/docs/current/rosetta-defi/tokens/token-standards).
+[Learn more about token standards](/docs/current/rosetta-defi/token-standards/index).

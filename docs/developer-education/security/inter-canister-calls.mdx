@@ -12,7 +12,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Security", "Best practices"]} />
 
-To understand the issues around async inter-canister calls, one needs to understand the [properties of message execution on ICP](/docs/current/developer-education/message-execution/message-execution-properties). Understanding these properties is a prerequisite for understanding the security issues discussed below.
+To understand the issues around async inter-canister calls, one needs to understand the [properties of message execution on ICP](/docs/current/move-to-learnhub/message-execution-properties). Understanding these properties is a prerequisite for understanding the security issues discussed below.
 
 This is also explained in the [community conversation on security best practices](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s).
 
@@ -65,29 +65,29 @@ Creating a record in the journal is called “journaling.” For example, to mak
 
 1. Check the journal to ensure the transfer is not already in progress. If it is already in progress, go into recovery (see the [Recovery](#recovery) section below). Otherwise, journal the intent to call a ledger to transfer 1 token from A to B. The journaled intent should contain sufficient context to later identify what happened to the call.
 
-    - An “in progress” transfer would show in the journal as an entry containing intent to do the transfer without an entry containing the result of the transfer call.
+    - An “in progress” transfer would show in the journal as an entry containing intent to do the transfer without an entry containing the result of the transfer call.
 
 1. Call the ledger to transfer 1 token from A to B.
 
 1. Journal the result of the transfer.
 
-    - On failure, record the error.
+    - On failure, record the error.
 
-    - On success, record success. In order to commit the record, an inter-canister call can be made to an endpoint on the same canister that does nothing. Otherwise, a trap could erase the journaled result, complicating recovery.
+    - On success, record success. In order to commit the record, an inter-canister call can be made to an endpoint on the same canister that does nothing. Otherwise, a trap could erase the journaled result, complicating recovery.
 
 1. Continue onto the next blocked task.
 
-    - “Blocked tasks” are those that require step 3 to be completed before execution.
+    - “Blocked tasks” are those that require step 3 to be completed before execution.
 
-    - A blocked task may depend on the success or failure recorded in step 3.
+    - A blocked task may depend on the success or failure recorded in step 3.
 
-    - Examples of blocked tasks:
+    - Examples of blocked tasks:
 
-        - On failure, log the failure in a user-visible log, and if less than 5 failures have occurred, make a new transfer outcall with the same parameters.
+    - On failure, log the failure in a user-visible log, and if less than 5 failures have occurred, make a new transfer outcall with the same parameters.
 
-        - On success, update the internal accounting of assets to conform to the result of the transfer.
+        - On success, update the internal accounting of assets to conform to the result of the transfer.
 
-    - Note that any independent task does not need to wait for any part of this flow.
+    - Note that any independent task does not need to wait for any part of this flow.
 
 The critical property of the journal is that at any point, if there is a failure, the journal is sufficient to determine what the next safe step should be. If, after step 1 (journal the intent),
 there is a failure in step 2 or 3, and step 3 has not been completed, then the application should complete step 3 by finding out what happened to the call in step 2. If finding out what happened to the call is too difficult to automate, it can be done manually. The journal can indicate whether a manual intervention is necessary and the type of intervention that is necessary.
@@ -124,24 +124,24 @@ Note that querying the ICP ledger or an ICRC ledger to determine whether a trans
 
 GoldDAO's GLDT-swap has an implementation of journaling. In their case, the journal entries are recorded in the "registry." Note that in GLDT-swap there is also a separate concept of "record," which is a permanent audit trail and is not used for journaling. Some error paths require manual recovery. See the following reference points:
 
-* Registry (journal) structure:
-    * https://github.com/GoldDAO/gldt-swap/blob/ledger-v1.0.0/canister/gldt_core/src/registry.rs#L18
-    * https://github.com/GoldDAO/gldt-swap/blob/ledger-v1.0.0/canister/gldt_core/src/lib.rs#L654
-* The registry is used in `notify_sale_nft_origyn` to record progress and enforce correctness of the flow.
-    * https://github.com/GoldDAO/gldt-swap/blob/ledger-v1.0.0/canister/gldt_core/src/lib.rs#910
-    * Note that not all details of the flow appear in the registry. The amount of detail to include depends on one's goals for recovery.
+- Registry (journal) structure:
+    - https://github.com/GoldDAO/gldt-swap/blob/ledger-v1.0.0/canister/gldt_core/src/registry.rs#L18
+    - https://github.com/GoldDAO/gldt-swap/blob/ledger-v1.0.0/canister/gldt_core/src/lib.rs#L654
+- The registry is used in `notify_sale_nft_origyn` to record progress and enforce correctness of the flow.
+    - https://github.com/GoldDAO/gldt-swap/blob/ledger-v1.0.0/canister/gldt_core/src/lib.rs#910
+    - Note that not all details of the flow appear in the registry. The amount of detail to include depends on one's goals for recovery.
 
 ## Be aware that there is no reliable message ordering
 
 ### Security concern
 
-As described in the [properties of message executions on ICP](/docs/current/developer-education/message-execution/message-execution-properties), messages (but not entire calls) are processed atomically. In particular, as described in Property 4 in that document, messages from interleaving calls do not have a reliable execution ordering. Thus, the state of the canister (and other canisters) may change between the time an inter-canister call is started and the time when it returns, which may lead to issues if not handled correctly. These issues are generally called 'reentrancy bugs' (see the [Ethereum best practices on reentrancy](https://consensys.github.io/smart-contract-best-practices/attacks/reentrancy/)). Note, however, that the messaging guarantees, and thus the bugs, on ICP are different from Ethereum.
+As described in the [properties of message executions on ICP](/docs/current/move-to-learnhub/message-execution-properties), messages (but not entire calls) are processed atomically. In particular, as described in Property 4 in that document, messages from interleaving calls do not have a reliable execution ordering. Thus, the state of the canister (and other canisters) may change between the time an inter-canister call is started and the time when it returns, which may lead to issues if not handled correctly. These issues are generally called 'reentrancy bugs' (see the [Ethereum best practices on reentrancy](https://consensys.github.io/smart-contract-best-practices/attacks/reentrancy/)). Note, however, that the messaging guarantees, and thus the bugs, on ICP are different from Ethereum.
 
 Here are two concrete and somewhat similar types of bugs to illustrate potential reentrancy security issues:
 
 - **Time-of-check time-of-use issues:** These occur when some condition on global state is checked before an inter-canister call and then wrongly assuming the condition still holds when the call returns. For example, one might check if there is sufficient balance on some account, then issue an inter-canister call, and finally make a transfer as part of the callback message. When the second inter-canister call starts, it is possible that the condition that was checked initially no longer holds, because other ledger transfers may have happened before the callback of the first call is executed (see also Property 4 above).
 
-- **Double-spending issues.**: Such issues occur when a transfer is issued twice, often because of unfavorable message scheduling. For example, suppose you check if a caller is eligible for a refund, and if so, transfer some refund amount to them. When the refund ledger call returns successfully, you set a flag in the canister storage indicating that the caller has been refunded. This is vulnerable to double-spending because the refund method can be called twice by the caller in parallel, in which case it is possible that the messages before issuing the transfer (including the eligibility check) are scheduled before both callbacks. A detailed explanation of this issue can be found in the [community conversation on security best practices](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s).
+- **Double-spending issues**: Such issues occur when a transfer is issued twice, often because of unfavorable message scheduling. For example, suppose you check if a caller is eligible for a refund, and if so, transfer some refund amount to them. When the refund ledger call returns successfully, you set a flag in the canister storage indicating that the caller has been refunded. This is vulnerable to double-spending because the refund method can be called twice by the caller in parallel, in which case it is possible that the messages before issuing the transfer (including the eligibility check) are scheduled before both callbacks. A detailed explanation of this issue can be found in the [community conversation on security best practices](https://www.youtube.com/watch?v=PneRzDmf_Xw&list=PLuhDt1vhGcrez-f3I0_hvbwGZHZzkZ7Ng&index=2&t=4s).
 
 ### Recommendation
 
@@ -156,6 +156,57 @@ The locks would usually be released in the callback. That bears the risk that th
 - In Motoko, one can use the [`try`/`finally`](/docs/current/motoko/main/reference/language-manual/#try) control flow construct. This construct guarantees that the lock is released in the `finally` block regardless of any errors or traps in the `try` or `catch` blocks.
 
 <AdornedTabs groupId="language">
+
+<TabItem value="motoko" label="Motoko">
+
+```motoko
+import Result "mo:base/Result";
+import Map "mo:base/HashMap";
+import Error "mo:base/Error";
+import Principal "mo:base/Principal";
+
+actor {
+
+  let pending_requests = Map.HashMap<Principal, Bool>(10, Principal.equal, Principal.hash);
+
+  private func errResult(e : Error.Error) : { #err : (Error.ErrorCode, Text) } = #err (Error.code e, Error.message e);
+
+  private func guard(principal : Principal) : Result.Result<(), Error> {
+    if (pending_requests.get(principal) != null) {
+      #err (Error.reject("Already processing a request for principal " # Principal.toText(principal)));
+    } else {
+      pending_requests.put(principal, true);
+      #ok;
+    };
+  };
+
+  private func drop_guard(principal : Principal) {
+    ignore pending_requests.remove(principal);
+  };
+
+  public shared ({ caller }) func example_call_with_locking_per_caller() : async Result.Result<(), (Error.ErrorCode, Text)> {
+    var guard_acquired = false;
+    try {
+      // Try to create a lock for `caller`, return an error immediately if there is already a call in progress for `caller`
+      switch (guard caller) {
+        case (#ok) guard_acquired := true;
+        case (#err e) return (errResult e);
+      };
+      // do anything, call other canisters
+      #ok
+    } catch e {
+      errResult e;
+    } finally {
+      // Release the guard (only request's callbacks that have created a block)
+      if guard_acquired {
+        drop_guard caller;
+      };
+    };
+  };
+};
+```
+
+</TabItem>
 <TabItem value="rust" label="Rust" default>
 
 ```rust
@@ -235,57 +286,6 @@ mod test {
         assert!(CallerGuard::new(principal).is_ok());
     }
 }
-```
-
-</TabItem>
-
-<TabItem value="motoko" label="Motoko">
-
-```motoko
-import Result "mo:base/Result";
-import Map "mo:base/HashMap";
-import Error "mo:base/Error";
-import Principal "mo:base/Principal";
-
-actor {
-
-  let pending_requests = Map.HashMap<Principal, Bool>(10, Principal.equal, Principal.hash);
-
-  private func errResult(e : Error.Error) : { #err : (Error.ErrorCode, Text) } = #err (Error.code e, Error.message e);
-
-  private func guard(principal : Principal) : Result.Result<(), Error> {
-    if (pending_requests.get(principal) != null) {
-      #err (Error.reject("Already processing a request for principal " # Principal.toText(principal)));
-    } else {
-      pending_requests.put(principal, true);
-      #ok;
-    };
-  };
-
-  private func drop_guard(principal : Principal) {
-    ignore pending_requests.remove(principal);
-  };
-
-  public shared ({ caller }) func example_call_with_locking_per_caller() : async Result.Result<(), (Error.ErrorCode, Text)> {
-    var guard_acquired = false;
-    try {
-      // Try to create a lock for `caller`, return an error immediately if there is already a call in progress for `caller`
-      switch (guard caller) {
-        case (#ok) guard_acquired := true;
-        case (#err e) return (errResult e);
-      };
-      // do anything, call other canisters
-      #ok
-    } catch e {
-      errResult e;
-    } finally {
-      // Release the guard (only request's callbacks that have created a block)
-      if guard_acquired {
-        drop_guard caller;
-      };
-    };
-  };
-};
 ```
 
 </TabItem>

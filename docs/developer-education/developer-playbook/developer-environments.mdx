@@ -2,7 +2,6 @@
 keywords: [beginner, concept, developer environments, developer, environments, dev env, deployment options, deploying canisters development workflow]
 ---
 
-import useBaseUrl from "@docusaurus/useBaseUrl";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
@@ -10,34 +9,43 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Beginner", "Education", "Concept" ]} />
 
-There are several different environments that can be used to write, deploy, and test <GlossaryToolTip>canisters</GlossaryToolTip>. Each environment has different characteristics and benefits.
+There are several different environments that can be used to write, deploy, and test <GlossaryTooltip>canisters</GlossaryTooltip>. Each environment has different characteristics and benefits.
 
 - [`dfx`](/docs/current/building-dapps/getting-started/install): `dfx` is the 'native' way to develop canisters. It is a command-line tool that enables canister creation and deployment on macOS and Linux systems. `dfx` is developed and maintained by DFINITY, with new features and improvements being released regularly.
 
-- [ICP Ninja](/docs/current/building-dapps/getting-started/explore-examples): A web IDE and education hub designed for deploying ICP applications. ICP Ninja provides a gallery of example projects you can choose from, then you can edit and deploy the project directly to ICP from your browser. It currently supports Motoko and Rust projects.
+- [ICP Ninja](/docs/current/building-dapps/getting-started/explore-examples): A web IDE and education hub designed for deploying ICP applications. ICP Ninja provides a gallery of example projects you can choose from, and then you can edit and deploy the project directly to ICP from your browser. It currently supports Motoko and Rust projects.
 
 - [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/install): `dfx` does not natively support Windows operating systems. To use `dfx` locally on a Windows machine, you can install the Windows Subsystem for Linux. Since this workflow isn't the primary development testing environment that `dfx` is designed for, there may be bugs or errors when using `dfx` on WSL. [Learn more about common WSL errors and troubleshooting](/docs/current/building-dapps/getting-started/wsl-troubleshoot).
 
 - [Using containers](/docs/current/building-dapps/developer-tools/ide/dev-containers): Developer containers, such as [Docker containers](https://www.docker.com/), can be used for creating canisters and deploying them locally in a containerized environment. Containers can be useful for running several different projects simultaneously in your local environment that may be using different versions of `dfx` and different dependencies.
 
-- [Juno](https://juno.build/docs/intro): Juno is a blockchain-as-a-service platform that can be used to create and deploy canisters on ICP without using the traditional `dfx` development workflow. Instead, Juno manages ICP-specific tooling for you on the backend through a Juno 'satellite', allowing you to deploy onchain dapps by interacting with just the Juno web console or through the CLI.
-
-- [Playground](/docs/current/building-dapps/getting-started/deploy-and-manage): The playground is a sandbox environment that can be used for testing canister code in any language. It is only designed for temporary, short-term testing, as there is a 20 minute limit for each deployment. After 20 minutes, the canister will be deleted so the resources can be used for another deployment.
+- [Juno](https://juno.build/docs/intro): Juno is a blockchain-as-a-service platform that can be used to create and deploy canisters on ICP without using the traditional `dfx` development workflow. Instead, Juno manages ICP-specific tooling for you on the backend through a Juno 'satellite,' allowing you to deploy onchain dapps by interacting with just the Juno web console or through the CLI.
 
 ## Deployment options
 
-A developer can deploy canisters to the local replica, to the playground, or on the mainnet.
-The local replica comes built-in with `dfx` and can be run with the `dfx start` command. It of a single node – the local machine.
+After you have chosen a development environment, you can determine where you will deploy your application. A developer can deploy canisters to the local replica, to the playground, or on the mainnet.
 
-Note that as of writing, ICP doesn’t have an official public testnet. For free, temporary deployment, the [playground](/docs/current/tutorials/developer-journey/level-1/1.1-live-demo/#deploying-to-the-playground-using-dfx) can be used.
+:::info
+Note that not all development environments support all deployment options. For example, ICP Ninja only supports deploying to the playground, while `dfx` supports deploying to the local replica, playground, and mainnet.
+:::
+
+### Local deployment
+
+An instance of the software run by each node on the mainnet, known as the **replica**, comes built-in with `dfx` and can be run with the `dfx start` command. It provides a single node—the local machine. Therefore, certain features that rely on the consensus of multiple replicas, such as HTTPS outcalls, cannot be properly tested with the local replica alone.
+
+### Playground deployment
+
+ICP doesn’t have an official public testnet. For free, temporary deployment, the [playground](/docs/current/tutorials/developer-journey/level-1/1.1-live-demo/#deploying-to-the-playground-using-dfx) can be used from the command line, or you can use [ICP Ninja](https://icp.ninja), a web-based IDE that provides a temporary deployment environment from the browser.
+
+### Mainnet deployment
 
 In order to deploy canisters on the mainnet, the developer needs either ICP tokens or cycles.
 When using ICP tokens, `dfx` automatically converts the necessary amount of tokens to cycles since all operations with canisters require payment in cycles.
 [Learn more about how to obtain cycles](/docs/current/building-dapps/getting-started/tokens-and-cycles).
 
 The command for deploying canisters is `dfx deploy`. It automatically builds the source code into Wasm binaries and deploys them to the target network.
-By default the command targets the local replica.
-Passing an additional `--network ic` or `--playground` parameter instructs command to use the mainnet or playground deployment options respectively.
+By default, the command targets the local replica.
+Passing an additional `--network ic` or `--playground` parameter instructs the command to use the mainnet or playground deployment options, respectively.
 
 There is no need to specify the URL of a node to connect to because `dfx` is already pre-configured with URLs of the boundary (RPC) nodes of the mainnet.
-However, it is possible to change the URL by editing the `dfx` configuration file. [Learn more about `dfx` network options](/docs/current/developer-docs/developer-tools/cli-tools/advanced-dfx/networks-json).
+However, it is possible to change the URL by editing the `dfx` configuration file. [Learn more about `dfx` network options](/docs/current/building-dapps/developer-tools/advanced-dfx/networks-json).

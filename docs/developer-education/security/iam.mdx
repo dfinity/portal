@@ -16,7 +16,7 @@ If this is not the case, an attacker may be able to perform sensitive actions on
 
 ### Recommendation
 
-- The caller of every canister call the caller can be identified. The calling [principal](/docs/current/references/ic-interface-spec#principal) can be accessed using the system API’s methods `ic0.msg_caller_size` and `ic0.msg_caller_copy` (see [here](/docs/current/references/ic-interface-spec#system-api-imports)). If an identity provider such as Internet Identity is used, [the principal is the user identity for this specific origin](/docs/current/references/ii-spec#identity-design-and-data-model). If some actions (e.g., access to user’s account data or account-specific operations) should be restricted to a principal or a set of principals, then this must be explicitly checked in the canister call. An example in Rust can be found below:
+- The caller of every canister call the caller can be identified. The calling [principal](/docs/current/references/ic-interface-spec#principal) can be accessed using the system API’s methods [`ic0.msg_caller_size` and `ic0.msg_caller_copy`](/docs/current/references/ic-interface-spec#system-api-imports). If an identity provider such as Internet Identity is used, [the principal is the user identity for this specific origin](/docs/current/references/ii-spec#identity-design-and-data-model). If some actions (e.g., access to user’s account data or account-specific operations) should be restricted to a principal or a set of principals, then this must be explicitly checked in the canister call. An example in Rust can be found below:
 
 ```rust
 // Let pk be the public key of a principal that is allowed to perform
@@ -124,7 +124,43 @@ Upon successful authentication, II will return a delegation for the principal de
 
 When integrating a mobile application with II, the implementation is not straightforward since a mobile app can’t call the `postMessage` API. It is tempting to create a simple “proxy” web frontend served by the dapp as shown in the sequence diagram below. The mobile application can load this proxy to complete the normal II authorization flow. Upon completion, this proxy web app provides the delegation back to the mobile app.
 
-![Naive integration sequence diagram](./_attachments/II_mobile_naive_integration.png)
+**Naive implementation sequence diagram:**
+```mermaid
+sequenceDiagram
+    actor U as User
+    participant MA as Mobile App
+    participant PWA as Proxy web app
+    participant II_FE as II Front-end
+    participant II_BE as II Back-end
+    participant BE as Back-end
+    activate U
+    U -> MA : 1. Login
+    activate MA
+    MA ->> MA : 2. Generate session key pair
+    activate PWA
+    MA ->> PWA: 3. Load /?sessionPublicKey=<br/><SessionPublicKey>
+    activate II_FE
+    PWA ->> II_FE: 4. Standard II client auth protocol
+    U ->> II_FE: 5. Authenticate with passkey
+    activate II_BE
+    II_FE ->> II_BE: 6. getDelegation(frontEndHostname)
+    II_BE -->> II_FE: 7. <<delegation>>
+    Note over II_BE,II_FE: Delegation can leak through<br/> replica or boundary nodes
+    deactivate II_BE
+    II_FE -->> PWA: 8. Return the delegation<br/>using postMessage API
+    deactivate II_FE
+    PWA -->> MA: 9. Return the delegation
+    Note over PWA,MA: Delegation can leak through<br/> insecure return mechanism
+    deactivate PWA
+    U ->> MA: 10. Authenticated call
+    activate BE
+    MA ->> BE: 11. Update call using the delegation
+    Note over II_BE,BE: Delegation can leak through<br/> replica or boundary nodes
+    BE -->> MA: <<Response>>
+    deactivate BE
+    deactivate MA
+    deactivate U
+```
 
 However, without any precautions, this proxy would happily accept malicious requests to authenticate the user and might return the delegation back to an attacker.
 

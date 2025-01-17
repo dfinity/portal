@@ -3,15 +3,39 @@ keywords: [beginner, unique features, unique icp, icp features, chain fusion, ht
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
-import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
-# What are canisters?
+# Unique features of ICP
 
 <MarkdownChipRow labels={["Beginner", "Education", "Concept"]} />
 
+The Internet Computer (ICP) has a unique set of onchain features that applications deployed to the network can utilize, enabling developers to build powerful, complex web applications hosted entirely onchain. These features are made possible by the network's architecture, cryptographic capabilities, and WebAssembly application execution.
 
-Chain Fusion
-HTTPS outcalls
-Threshold signatures
-Randomness
-Timers/Heartbeats
+## HTTPS outcalls
+
+Applications deployed on ICP can use [HTTPS outcalls](/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview) to make requests to external URLs to obtain off-chain data and interact with external systems. HTTPS outcalls enable ICP apps to interact seamlessly with both Web2 infrastructures and other blockchain networks or Web3 services. HTTPS outcalls also enable external applications to integrate with ICP applications in a trustless manner.
+
+Data obtained from an HTTPS outcall is validated before it is returned to the application. Each node on the subnet pushes an instance of the received HTTP response through the subnet's consensus process to confirm that all nodes received the same response. At least two-thirds of the nodes on the subnet must agree on the response for the application to receive the HTTP response data; otherwise, the application will receive an error instead. This guarantees that every node uses the same response for the application's execution, preventing divergence of the node's states.
+
+Some examples of applications that obtain external data using HTTPS outcalls include the [EVM RPC canister](/docs/current/building-dapps/chain-fusion/ethereum/evm-rpc/overview) and the [Orally application](https://kclew-uiaaa-aaaal-qbuiq-cai.ic0.app/sybil).
+
+## Threshold signatures
+
+Threshold signatures, also referred to as chain-key signatures, are a suite of cryptographic protocols that, together, enable secure system setup and operations. Threshold signatures enable powerful functionalities on ICP, including Chain Fusion, which refers to ICP's unique ability to directly sign and submit transactions on other blockchains without the use of a bridge or oracle. They also facilitate the creation of chain-key tokens, which are digital twin tokens of assets deployed on other chains such as BTC, ETH, and ERC-20 tokens like PEPE and DOGE.
+
+ICP currently supports [threshold ECDSA](/docs/current/building-dapps/using-network-features/signatures/t-ecdsa) and [threshold Schnorr](/docs/current/building-dapps/using-network-features/signatures/t-schnorr) signatures.
+
+## Onchain randomness
+
+ICP applications can obtain [random numbers](/docs/current/building-dapps/using-network-features/randomness) that are impossible to predict, making the value verifiably random. The network uses a Verifiable Random Function (VRF) that is evaluated using the current number of the round, producing a fresh set of random bytes. Then, these bytes are used as the seed for a pseudorandom number generator (PRNG) that uses chain-key signatures to create unique random bytes for each canister that requested a random value in the previous round. It is impossible to exploit knowledge of the current round's randomness and predict a future random output.
+
+## Timers and periodic tasks
+
+[Autonomous timers and tasks](/docs/current/building-dapps/using-network-features/periodic-tasks-timers) are another unique feature of ICP. Each application can configure tasks to execute automatically based on a set interval or minimum timeout value.
+
+## Chain Fusion
+
+The term "Chain Fusion" refers to ICP's ability to interact directly with other blockchain networks without the use of a third-party intermediary service like an oracle or bridge. Chain Fusion currently supports interactions with the [Bitcoin network through a direct integration](/docs/current/building-dapps/chain-fusion/bitcoin/overview) and [Ethereum and other EVM chains through the EVM RPC canister](/docs/current/building-dapps/chain-fusion/ethereum/overview).
+
+Other blockchains, [such as Sui and Cardano](/docs/current/building-dapps/chain-fusion/supported-chains), can be interacted with through HTTPS outcalls if the other chain supports ECDSA or EdDSA signatures. Direct integrations with other chains such as Ethereum and Solana are on the ICP roadmap.
+
+Learn more about using these features in your application in the [building applications](/docs/current/building-dapps/getting-started/quickstart/first-smart-contract) section.

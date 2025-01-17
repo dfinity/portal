@@ -33,7 +33,7 @@ A [freezing threshold](/docs/current/building-dapps/managing-dapps/settings/#fre
 
 ## Units and fiat value
 
-The price of cycles is fixed against the price of [XDR](/docs/current/developer-education/glossary/index#xdr), where **1 trillion cycles equals 1 XDR**. As of December 18, 2023, the exchange rate for 1 XDR = $1.336610. The exchange rate for USD/XDR may vary. Learn more about [XDR exchange rates](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx).
+The price of cycles is fixed against the price of [XDR](/docs/current/developer-education/glossary#x), where **1 trillion cycles equals 1 XDR**. As of December 18, 2023, the exchange rate for 1 XDR = $1.336610. The exchange rate for USD/XDR may vary. Learn more about [XDR exchange rates](https://www.imf.org/external/np/fin/data/rms_sdrv.aspx).
 
 The following table shows units of cycles and the respective fiat values:
 
@@ -214,31 +214,31 @@ The cost for an HTTPS outcall is calculated using the formula `(3_000_000 + 60_0
 
 Common errors related to cycles include:
 
-- [Insufficient cycles in memory grow](/docs/current/developer-education/message-execution/execution-errors#insufficient-cycles-in-memory-grow).
-- [Reserved cycles limit exceeded in memory grow](/docs/current/developer-education/message-execution/execution-errors#reserved-cycles-limit-exceeded-in-memory-grow).
-- [Insufficient cycles in message memory grow](/docs/current/developer-education/message-execution/execution-errors#insufficient-cycles-in-message-memory-grow).
-- [Insufficient cycles in compute allocation](/docs/current/developer-education/message-execution/execution-errors#insufficient-cycles-in-compute-allocation).
-- [Insufficient cycles in memory allocation](/docs/current/developer-education/message-execution/execution-errors#insufficient-cycles-in-memory-allocation).
-- [Insufficient cycles in memory grow](/docs/current/developer-education/message-execution/execution-errors#insufficient-cycles-in-memory-grow-1).
-- [Reserved cycles limit exceeded in memory allocation](/docs/current/developer-education/message-execution/execution-errors#reserved-cycles-limit-exceeded-in-memory-allocation).
-- [Install code not enough cycles](/docs/current/developer-education/message-execution/execution-errors#install-code-not-enough-cycles).
-- [Create canister not enough cycles](/docs/current/developer-education/message-execution/execution-errors#create-canister-not-enough-cycles).
+- [Insufficient cycles in memory grow](/docs/current/references/execution-errors#insufficient-cycles-in-memory-grow).
+- [Reserved cycles limit exceeded in memory grow](/docs/current/references/execution-errors#reserved-cycles-limit-exceeded-in-memory-grow).
+- [Insufficient cycles in message memory grow](/docs/current/references/execution-errors#insufficient-cycles-in-message-memory-grow).
+- [Insufficient cycles in compute allocation](/docs/current/references/execution-errors#insufficient-cycles-in-compute-allocation).
+- [Insufficient cycles in memory allocation](/docs/current/references/execution-errors#insufficient-cycles-in-memory-allocation).
+- [Insufficient cycles in memory grow](/docs/current/references/execution-errors#insufficient-cycles-in-memory-grow-1).
+- [Reserved cycles limit exceeded in memory allocation](/docs/current/references/execution-errors#reserved-cycles-limit-exceeded-in-memory-allocation).
+- [Install code not enough cycles](/docs/current/references/execution-errors#install-code-not-enough-cycles).
+- [Create canister not enough cycles](/docs/current/references/execution-errors#create-canister-not-enough-cycles).
 
 ## Further readings
 
-Monitoring cycles usage
-   - [Check your canister's cycles balance](/docs/current/rosetta-defi/cycles/cycles-wallet#check-the-cycle-balance).
-   - [Monitor your canister's cycles usage](/docs/current/building-dapps/managing-dapps/topping-up).
-   - [Motoko cycles management library](https://github.com/CycleOperators/cycles-manager).
+### Monitoring cycles usage
+- [Check your canister's cycles balance](/docs/current/rosetta-defi/cycles/cycles-wallet#check-the-cycle-balance).
+- [Monitor your canister's cycles usage](/docs/current/building-dapps/managing-dapps/topping-up).
+- [Motoko cycles management library](https://github.com/CycleOperators/cycles-manager).
 
-Getting cycles back from a canister
-   - To withdraw cycles from a canister, the [canister must be deleted](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#getting-cycles-back-from-a-canister).
+### Getting cycles back from a canister
+- To withdraw cycles from a canister, the [canister must be deleted](/docs/current/tutorials/developer-journey/level-1/1.6-managing-canisters#getting-cycles-back-from-a-canister).
 
-Topping up canisters
-   - [Top up your canisters](/docs/current/building-dapps/managing-dapps/topping-up).
-   - [Cycles management services](/docs/current/building-dapps/managing-dapps/topping-up).
-   - [Cycle.express](https://cycle.express/).
+### Topping up canisters
+- [Top up your canisters](/docs/current/building-dapps/managing-dapps/topping-up).
+- [Cycles management services](/docs/current/building-dapps/managing-dapps/topping-up).
+- [Cycle.express](https://cycle.express/).
 
-Counting instructions
-   - [Motoko function `countInstructions`](/docs/current/motoko/main/base/ExperimentalInternetComputer#function-countinstructions).
-   - [IC interface specification](/docs/current/references/ic-interface-spec#system-api-performance-counter).
+### Counting instructions
+- [Motoko function `countInstructions`](/docs/current/motoko/main/base/ExperimentalInternetComputer#function-countinstructions).
+- [IC interface specification](/docs/current/references/ic-interface-spec#system-api-performance-counter).

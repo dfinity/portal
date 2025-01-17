@@ -44,11 +44,11 @@ Using a custom playground can also help simplify development for teams since the
 
 - #### Step 2: Edit the `service/pool/Main.mo` file to change the custom playground settings, such as:
 
-- Add access control as desired, such as creating an `allowList` of principals that are permitted to use the custom playground.
+    - Add access control as desired, such as creating an `allowList` of principals that are permitted to use the custom playground.
 
-- Configure the [canister's time to live](https://github.com/dfinity/motoko-playground/blob/main/service/pool/Types.mo#L27).
+    - Configure the [canister's time to live](https://github.com/dfinity/motoko-playground/blob/main/service/pool/Types.mo#L27).
 
-- Change the [Wasm transformation to fit your desired configuration](https://github.com/dfinity/motoko-playground/blob/main/service/pool/Main.mo#L348). In some cases, this may just be `wasm = args.wasm_module`, since if there is an `allowlist` in place, the principals allowed to install canisters can be trusted.
+    - Change the [Wasm transformation to fit your desired configuration](https://github.com/dfinity/motoko-playground/blob/main/service/pool/Main.mo#L348). In some cases, this may just be `wasm = args.wasm_module`, since if there is an `allowlist` in place, the principals allowed to install canisters can be trusted.
 
 - #### Step 3: Lastly, define the local playground network in your project's `dfx.json` file.
 
@@ -166,4 +166,4 @@ If you are using a cycles wallet, the cycles wallet for each network is stored s
 
 - [Defining custom `dfx` networks](/docs/current/building-dapps/developer-tools/advanced-dfx/networks-json).
 
-- [Using the playground UI](/docs/current/building-dapps/developer-tools/ide/playground).
+- [Using the playground UI](/docs/current/building-dapps/developer-tools/ide/icp-ninja).

@@ -38,8 +38,8 @@ Use [canister timers](/docs/current/building-dapps/using-network-features/period
 2. Utilize `Buffer` instead of `Array` for dynamic resizing.
 3. Consider `Blob` over `[Nat8]` for compact storage and reduced GC pressure:
 
- * Use `Blob` instead of `[Nat8]` for storing large binary assets.
- * Use `Blob` instead of `[Nat8]` when sending or receiving Candid `vec nat8/blob` values. The choice is yours, but `Blobs` are 4x more compact and much less taxing on garbage collection (GC).
+    - Use `Blob` instead of `[Nat8]` for storing large binary assets.
+    - Use `Blob` instead of `[Nat8]` when sending or receiving Candid `vec nat8/blob` values. The choice is yours, but `Blobs` are 4x more compact and much less taxing on garbage collection (GC).
 
 4. Store large Blobs in stable memory for efficient manual management.
 5. Use the `compacting-gc` setting, especially in append-only scenarios, to allow access to larger heaps and reduce the cost of copying large, stationary objects.

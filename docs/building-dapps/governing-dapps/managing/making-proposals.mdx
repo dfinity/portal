@@ -704,7 +704,7 @@ Some examples:
 - Many dapps have an asset canister. Updating the assets cannot be done via a normal canister upgrade as the content is larger than a proposal can be. Therefore you need a custom way to update the assets.
 - Developers might want the DAO to be the only entity that can elect moderators, call certain methods, make certain payments, etc.
 
-For these cases, SNSs have so-called "generic proposals." These are custom proposals that each SNS community can define itself.
+For these cases, SNSess have so-called "generic proposals." These are custom proposals that each SNS community can define itself.
 
 This guide describes the use of an elegant aspect of our SNS architecture design: a proposal is just a call to a method on a canister. This means that one can do arbitrary things with a proposal as long as one can tell the SNS governance canister which method it has to call.
 
@@ -1017,7 +1017,7 @@ When voting:
 WARNING
 Overall careful w/ calls to unknown canisters   (for generic proposals, registering dapp etc)?
 
-If SNSs can upgrade dapp canisters that are not registered, we might want to say that those canisters
+If SNSess can upgrade dapp canisters that are not registered, we might want to say that those canisters
 not necessarily trusted, also we might want to make a recommendation “to the SNS” that calling untrusted
 canisters is dangerous, so they might want to verify it first (which could then be done by registering it)
 
@@ -1038,7 +1038,7 @@ Upgrading SNS canisters will be very simple as the SNS version are blessed and t
 
 ## Generic proposals
 
-Some notes: for generic proposals: only call things that you trust (anyways true for SNSs),
+Some notes: for generic proposals: only call things that you trust (anyways true for SNSess),
 could be immutable canister / SNS controlled / controlled by s.b. you trust not to change things arbitraty. this must be verified on adding new proposal type.
 
 They consist of verification canister & method and of target canister & method
