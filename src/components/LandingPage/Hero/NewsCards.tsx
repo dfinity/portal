@@ -2,7 +2,6 @@ import AnimateSpawn from "../../Common/AnimateSpawn";
 import Link from "@docusaurus/Link";
 import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 import React from "react";
-import { de } from "date-fns/locale";
 import { motion } from "framer-motion";
 import transitions from "@site/static/transitions.json";
 
@@ -13,9 +12,9 @@ const cardsData = [
     news: {
       linkLabel: "Join event",
       title: "World Computer Day",
-      dateHuman: "January 21, 2025, 10am-10pm. ",
+      dateHuman: "",
       press: "",
-      details: `A day exploring the World Computer, AI, Web3 and the self-writing internet.`,
+      details: `January 21, 2025, 10am-10pm. A day exploring the World Computer, AI, Web3 and the self-writing internet.`,
       url: "https://worldcomputer.com/davos2025",
       imageUrl: "/img/home/news-cards/news-1.webp",
     }
