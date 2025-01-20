@@ -17,7 +17,7 @@ const cardsData = [
       press: "",
       details: `A day exploring the World Computer, AI, Web3 and the self-writing internet.`,
       url: "https://worldcomputer.com/davos2025",
-      imageUrl: "/img/decentralized-ai/news-1.jpg",
+      imageUrl: "/img/home/news-cards/news-1.webp",
     }
   },
   {
@@ -26,8 +26,8 @@ const cardsData = [
       title: "The Self-Writing & Sovereign Internet Paradigm: AI on the Internet Computer",
       dateHuman: "",
       press: "",
-      url: "https://twitter.com/dominic_w/status/1750886289702834539",
-      imageUrl: "/img/decentralized-ai/news-1.jpg",
+      url: "https://acumenstories.com/the-self-writing-sovereign-internet-paradig/",
+      imageUrl: "/img/home/news-cards/news-2.webp",
     }
   },
   {
@@ -37,8 +37,8 @@ const cardsData = [
       dateHuman: "",
       press: "",
       details: `Collaboration to enhance Financial Inclusion of MSMEs`,
-      url: "https://twitter.com/dominic_w/status/1750886289702834539",
-      imageUrl: "/img/decentralized-ai/news-1.jpg",
+      url: "https://www.undp.org/policy-centre/singapore/press-releases/undp-partners-dfinity-foundation-enhance-financial-inclusion-msmes",
+      imageUrl: "/img/home/news-cards/news-3.webp",
     }
   }
 ];
