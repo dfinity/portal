@@ -93,7 +93,7 @@ export const NewsCard: React.FC<{
         <div className="">
           <Link 
             href={news.url} 
-            className={`link-primary link-with-icon ${
+            className={`link-with-icon ${
               inverted ? 'text-white hover:text-white/80' : ''
             }`}>
             {news.linkLabel}
