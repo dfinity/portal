@@ -14,21 +14,19 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/wVa4I7pLAcs?si=nyNpubeiI54numjB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
-
-
 Now that you've covered both the ICP ledger and the NNS, it's time to take a look at a CLI tool that can be used to interact with both. Quill is a ledger and governance toolkit that provides support for self-custody of ICP or ckBTC tokens and functionality to interact with the NNS, SNSs, and ICP ledger from a **cold wallet**.
 
 To hold tokens or digital assets, there are three types of wallet options you can use:
 
-- **Centralized wallet services**: A wallet service owned and operated by a centralized third-party, such as a centralized exchange. On a centralized wallet service, the user is not in control of the wallet's private key.
+- **Centralized wallet services**: A wallet service owned and operated by a centralized third party, such as a centralized exchange. On a centralized wallet service, the user is not in control of the wallet's private key.
 
 - **Hot wallets**: Any wallet that uses an application on a device connected to the internet. With hot wallets, users are in full control of their wallet's private key.
 
 **Cold wallets**: A wallet that uses an offline device that is not connected to the internet. Like hot wallets, cold wallets also provide users with full control of the wallet's private key.
 
-Each of these options has its benefits, but there is an equal tradeoff between convenience and security. For example, while cold wallets are quite secure since they do not have access to the internet and are safe from malicious cyber attacks, they is not convenient to use since there must be additional steps taken to move the assets to a hot wallet or centralized wallet in order to spend and trade the assets. The opposite is true for hot wallets; while they are convenient to use, they are susceptible to attacks.
+Each of these options has its benefits, but there is an equal tradeoff between convenience and security. For example, while cold wallets are quite secure since they do not have access to the internet and are safe from malicious cyber attacks, they are not convenient to use since there must be additional steps taken to move the assets to a hot wallet or centralized wallet in order to spend and trade the assets. The opposite is true for hot wallets; while they are convenient to use, they are susceptible to attacks.
 
-[Read more about different types of self-custody wallet options in the documentation](/docs/current/developer-docs/defi/wallets/overview).
+[Read more about different types of self-custody wallet options in the documentation](/docs/current/developer-docs/defi/wallets/overview/).
 
 In this tutorial, you'll take a look at how to use quill for workflows like interacting with the ICP ledger, sending or receiving ckBTC, and interacting with the NNS and neurons.
 
@@ -80,7 +78,7 @@ quill -h
 
 ## Using quill's basic commands
 
-First, you need an account to use with quill. You can create a new account or you can use an existing ledger account. To create a new account, generate the account's private key by running the command:
+First, you need an account to use with quill. You can create a new account, or you can use an existing ledger account. To create a new account, generate the account's private key by running the command:
 
 ```bash
 quill generate
@@ -93,7 +91,7 @@ Principal id: hzpq4-g6feu-vbvwx-oeo5c-fjiz4-de4bq-7q4y2-rldok-whjrq-mnayv-mqe
 Legacy account id: 438f6fdc8e33539bbf73625c141cfbfa4b41fd943595f8e1ccd0b8c9e9758772
 ```
 
-Alternatively, you can use a private key file for our existing ledger account with an ICP balance. To use an existing ledger account, you will need the account's `.pem` file. To get this `.pem` file, you can use the `dfx identity export` command. First, assure that you're using the `dfx` identity you intend to be:
+Alternatively, you can use a private key file for our existing ledger account with an ICP balance. To use an existing ledger account, you will need the account's `.pem` file. To get this `.pem` file, you can use the `dfx identity export` command. First, ensure that you're using the `dfx` identity you intend to be:
 
 ```bash
 dfx identity whoami
@@ -119,7 +117,7 @@ quill --pem-file my_identity.pem account-balance PRINCIPAL_ID
 
 Replace `PRINCIPAL_ID` with the principal value returned from the command `dfx identity get-principal` for the identity that you generated the `.pem` file for.
 
-Running query commands with quill will generate the transaction, then ask if you'd like to send the message or not, such as:
+Running query commands with quill will generate the transaction and then ask if you'd like to send the message or not, such as:
 
 ```bash
 Sending message with
@@ -192,7 +190,7 @@ The request is being processed...
 (0 : nat)
 ```
 
-Then, to retrieve BTC in exchange for ckBTC use the command:
+Then, to retrieve BTC in exchange for ckBTC, use the command:
 
 ```bash
 quill ckbtc retrieve-btc WITHDRAW_ADDRESS --satoshis AMOUNT > retrieve_transaction.json
@@ -318,7 +316,7 @@ To create a new neuron owned by the identity you're using with quill, run the fo
 quill --pem-file my_identity.pem neuron-stake --amount AMOUNT --name NAME > stake_neuron.json
 ```
 
-Replace `AMOUNT` with the amount of ICP to stake in the neuron, and replace `NAME` with the name of the neuron.
+Replace `AMOUNT` with the amount of ICP to stake in the neuron and replace `NAME` with the name of the neuron.
 
 Then, submit the command with:
 
@@ -375,7 +373,7 @@ Lastly, quill can be used to get information about the NNS's current proposals. 
 quill list-proposals --limit 3
 ```
 
-The `--limit` command is used to limit how many are returned; in this command the most recent 3 proposals are returned. Since this command is a query command, it cannot be run on offline machines, so selecting 'N' will cancel the request. Selecting 'Y' will query the mainnet for the result, which will be returned such as:
+The `--limit` command is used to limit how many are returned; in this command, the most recent 3 proposals are returned. Since this command is a query command, it cannot be run on offline machines, so selecting 'N' will cancel the request. Selecting 'Y' will query the mainnet for the result, which will be returned such as:
 
 ```bash
 ...
@@ -392,10 +390,10 @@ Current tally: Y 3192928.36102570 (0.67%), N 330234.78091090 (0.07%) as of Aug 0
 Summary: "Update subnet pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae to replica version [3d0b3f10417fc6708e8b5d844a0bac5e86f3e17d](https://dashboard.internetcomputer.org/release/3d0b3f10417fc6708e8b5d844a0bac5e86f3e17d)"
 Proposed action: Execute NNS function DeployGuestosToAllSubnetNodes
 Payload: (
-  record {
-    1_097_286_461 = principal "pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae";
-    2_560_866_249 = "3d0b3f10417fc6708e8b5d844a0bac5e86f3e17d";
-  },
+  record {
+    1_097_286_461 = principal "pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae";
+    2_560_866_249 = "3d0b3f10417fc6708e8b5d844a0bac5e86f3e17d";
+  },
 )
 Proposal ID: 131694
 Created at Aug 08 2024 13:00:38 UTC by neuron 80
@@ -410,10 +408,10 @@ Current tally: Y 475720489.82021435 (99.43%), N 234104.90888499 (0.05%) as of Au
 Summary: "Update subnet nl6hn-ja4yw-wvmpy-3z2jx-ymc34-pisx3-3cp5z-3oj4a-qzzny-jbsv3-4qe to replica version [3d0b3f10417fc6708e8b5d844a0bac5e86f3e17d](https://dashboard.internetcomputer.org/release/3d0b3f10417fc6708e8b5d844a0bac5e86f3e17d)"
 Proposed action: Execute NNS function DeployGuestosToAllSubnetNodes
 Payload: (
-  record {
-    1_097_286_461 = principal "nl6hn-ja4yw-wvmpy-3z2jx-ymc34-pisx3-3cp5z-3oj4a-qzzny-jbsv3-4qe";
-    2_560_866_249 = "3d0b3f10417fc6708e8b5d844a0bac5e86f3e17d";
-  },
+  record {
+    1_097_286_461 = principal "nl6hn-ja4yw-wvmpy-3z2jx-ymc34-pisx3-3cp5z-3oj4a-qzzny-jbsv3-4qe";
+    2_560_866_249 = "3d0b3f10417fc6708e8b5d844a0bac5e86f3e17d";
+  },
 )
 Proposal ID: 131693
 Created at Aug 08 2024 13:00:32 UTC by neuron 80
@@ -433,11 +431,11 @@ quill get-proposal-info 131693
 
 ## Resources
 
-- [Quill CLI reference](/docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/)
+- [Quill CLI reference](/docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-parent/)
 
 ## Need help?
 
-Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
+Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
@@ -445,9 +443,9 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7 day adventure and learn to build a DAO on the Internet Computer.
+- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
 
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects and participate in collaborative events.
+- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
 
 - [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
