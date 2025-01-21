@@ -17,13 +17,13 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 When developing canisters, the most common development workflow is to use a software development kit (SDK). The Internet Computer SDK is the most commonly used, which natively supports Motoko and Rust out of the box.
 
-Since ICP supports dapps that have been compiled into WebAssembly modules, many different programming languages can be used for <GlossaryTooltip>canister</GlossaryTooltip> development. However, a canister development kit (CDK) needs to be used. A CDK is an adapter used by the IC SDK that provides a programming language with the necessary features and tools required to create and manage canisters. The IC SDK comes bundled with CDKs for Motoko and Rust. Additionally, there are several community created CDKs for additional languages, such as Python and TypeScript, that can be installed separately.
+Since ICP supports dapps that have been compiled into WebAssembly modules, many different programming languages can be used for <GlossaryTooltip>canister</GlossaryTooltip> development. However, a canister development kit (CDK) needs to be used. A CDK is an adapter used by the IC SDK that provides a programming language with the necessary features and tools required to create and manage canisters. The IC SDK comes bundled with CDKs for Motoko and Rust. Additionally, there are several community-created CDKs for additional languages, such as Python and TypeScript, that can be installed separately.
 
-It is possible to use multiple languages within a single dapp's development. Different canisters can communicate to one another using the Candid language, which is an interface description language (IDL) used by ICP canisters, allowing for multiple canisters in different languages to share and exchange information.
+It is possible to use multiple languages within a single dapp's development. Different canisters can communicate with one another using the Candid language, which is an interface description language (IDL) used by ICP canisters, allowing for multiple canisters in different languages to share and exchange information.
 
 ## Motoko
 
-Motoko is a language that has been specifically designed by DFINITY for canister development on ICP. It supports the unique features and workflows on ICP while providing a robust yet familiar programming environment.  Motoko is easy to learn and use for application development, as it has a familiar set of rules and syntax for developers that have a background with application-layer languages, such as JavaScript, Ruby, Python, or Solidity.
+Motoko is a language that has been specifically designed by DFINITY for canister development on ICP. It supports the unique features and workflows on ICP while providing a robust yet familiar programming environment. Motoko is easy to learn and use for application development, as it has a familiar set of rules and syntax for developers who have a background in application-layer languages, such as JavaScript, Ruby, Python, or Solidity.
 
 Since Motoko has been developed and designed for ICP, this developer ladder series will use Motoko for all tutorials and code walkthroughs.
 
@@ -57,7 +57,7 @@ Many of the tutorials in this developer ladder series are available in a Rust ve
 
 ### Rust attributes:
 
-- **Candid support:** Candid is supported through Rust libraries, which needs routine manual intervention and conversion.
+- **Candid support:** Candid is supported through Rust libraries, which need routine manual intervention and conversion.
 
 - **Stable memory support:** Stable memory is supported through Rust libraries and is automatic in some cases.
 
@@ -73,26 +73,26 @@ Many of the tutorials in this developer ladder series are available in a Rust ve
 
 - **Learning difficulty:** Learning Rust can be fairly difficult, as the language is quite complex.
 
-- **Memory management:** Memory management is application specific and has strong support through the compiler.
+- **Memory management:** Memory management is application-specific and has strong support through the compiler.
 
 - **Foreign function interface support:** Typical C FFI compatibility.
 
 ## Candid
 
-Candid is an interface description language with the primary purpose to describe the public interface of a service. In reference to ICP, a service is a program deployed in the form of a canister.  Each canister has a Candid file that defines the interface description for the service.
+Candid is an interface description language with the primary purpose of describing the public interface of a service. In reference to ICP, a service is a program deployed in the form of a canister. Each canister has a Candid file that defines the interface description for the service.
 
 Candid is language-agnostic, allowing for interoperability between frontends and services that are written in different languages, such as Motoko, Rust, or JavaScript. Additionally, Candid supports service interface evolution by specifying changes without breaking existing clients, such as safely adding new parameters to a service without losing compatibility from existing clients.
 
-A Candid interface description defines the public methods for a service. Every method has a sequence of argument and result types, and can include annotations that are specific to ICP. Interface descriptions make it possible to interact with the service directly from the CLI, through a web-based frontend, or programmatically from another program or language.
+A Candid interface description defines the public methods for a service. Every method has a sequence of argument and result types and can include annotations that are specific to ICP. Interface descriptions make it possible to interact with the service directly from the CLI, through a web-based frontend, or programmatically from another program or language.
 
 Candid has a variety of features that make it a particularly good choice for developing dapps on the Internet Computer. These features include:
 
 - Candid's implementations map the Candid value directly to the values and types of the host language, meaning developers do not construct or deconstruct some abstract Candid value.
-- Candid defines rules for how series and their associated interface can be upgraded in a simple manner.
-- Candid is a higher-order language, meaning it can receive more than plain data such as references to methods and services.
+- Candid defines rules for how series and their associated interfaces can be upgraded simply.
+- Candid is a higher-order language, meaning it can receive more than plain data, such as references to methods and services.
 - Candid has native support for specific ICP features, such as query annotation.
 
-## Community developed CDKs
+## Community-developed CDKs
 
 There are several CDKs that have been contributed by the ICP community.
 
@@ -118,7 +118,7 @@ C++ is available through the [icpp-pro CDK](https://docs.icpp.world/) developed 
 
 ## Need help?
 
-Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
+Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
@@ -126,9 +126,9 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7 day adventure and learn to build a DAO on the Internet Computer.
+- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
 
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects and participate in collaborative events.
+- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
 
 - [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
