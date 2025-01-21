@@ -5,16 +5,14 @@ import React from "react";
 import { motion } from "framer-motion";
 import transitions from "@site/static/transitions.json";
 
-const MotionLink = motion(Link);
-
 const cardsData = [
   {
     news: {
       linkLabel: "Join event",
       title: "World Computer Day",
-      dateHuman: "",
+      dateHuman: "January 21, 2025, 10AM–10PM",
       press: "",
-      details: `January 21, 2025, 10am-10pm. A day exploring the World Computer, AI, Web3 and the self-writing internet.`,
+      details: `A day exploring the World Computer, AI, Web3 and the self-writing internet.`,
       url: "https://worldcomputer.com/davos2025",
       imageUrl: "/img/home/news-cards/news-1.webp",
     }
@@ -68,13 +66,13 @@ export const NewsCard: React.FC<{
       <div className={`px-6 pt-8 pb-6 flex flex-col flex-1 ${
         inverted ? 'text-white' : ''
       }`}>
-        <h3 className={`tw-heading-5 mb-3 ${clampText && "line-clamp-2"}`}>
+        <h3 className={`tw-heading-5 mb-1 ${clampText && "line-clamp-2"}`}>
           {news.title}
         </h3>
         <div className="flex-1"></div>
 
         {news.press || news.dateHuman && (
-          <div className={`tw-paragraph-sm text-black/60 mb-6 ${
+          <div className={`tw-paragraph-sm text-black/60 ${
             inverted ? 'text-white/60' : 'text-black/60'
           }`}>
             {news.dateHuman} {news.press && "by " + news.press}
