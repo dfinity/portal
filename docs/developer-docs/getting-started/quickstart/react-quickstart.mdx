@@ -103,25 +103,19 @@ dfx --version
 
 #### 2. Download the React template.
 
-Create a new empty directory, then download the [project template](https://github.com/rvanasa/vite-react-motoko/tree/main/src):
+Create a new project:
 
 ```
-mkdir react-project
+dfx new react-project --type motoko --frontend react
+```
+
+This example project uses a [Motoko](/docs/current/motoko/main/getting-started/motoko-introduction), React, and TypeScript template to create a simple Hello application.
+
+
+#### 3. Deploy the project.
+
+```
 cd react-project
-npx degit jessiemongeon1/vite-react-motoko
-```
-
-This example project uses [Motoko](/docs/current/motoko/main/getting-started/motoko-introduction), React, and TypeScript template to create a simple counter application.
-
-#### 3. Setup the project using `npm`.
-
-```
-npm run setup
-```
-
-#### 4. Deploy the project.
-
-```
 dfx deploy --playground
 ```
 
