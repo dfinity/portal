@@ -20,7 +20,7 @@ The ICP HTTP gateway protocol enables conventional HTTP clients to interact with
 
 There are several HTTP gateway instances maintained for ICP, but it should be noted that an HTTP gateway is a centralized component that could become compromised, creating a threat for users receiving HTTP content.
 
-DFINITY exclusively controls the HTTP gateways that serve canisters on `ic0.app` and `icp0.io`. Developers can then also configure their own [custom domains](https://internetcomputer.org/docs/current/building-dapps/dapp-frontends/custom-domains/using-custom-domains) to point at the DFINITY-controlled HTTP gateways.
+DFINITY exclusively controls the HTTP gateways that serve canisters on `ic0.app` and `icp0.io`. Developers can then also configure their own [custom domains](/docs/current/building-dapps/dapp-frontends/custom-domains/using-custom-domains) to point at the DFINITY-controlled HTTP gateways.
 
 Alternatively, developers can run their own HTTP gateways on their custom domains instead of using the DFINITY-controlled gateways, but this is not well supported yet.
 
@@ -58,7 +58,7 @@ On ICP, an HTTP request goes through the following lifecycle:
 
 10. The HTTP gateway returns the decoded response to the HTTP client.
 
-Additional details can be found in the [HTTP gateway specification](https://internetcomputer.org/docs/current/references/http-gateway-protocol-spec).
+Additional details can be found in the [HTTP gateway specification](/docs/current/references/http-gateway-protocol-spec).
 
 ## Running a local HTTP gateway
 
@@ -96,15 +96,7 @@ This will result in a log entry of:
 
 ## Outgoing HTTP requests
 
-For outgoing HTTP requests, the [HTTPS outcalls](/docs/current/building-dapps/using-network-features/using-external-data//https-outcalls/overview) feature should be used.
-
-- [How to use HTTPS outcalls](/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls)
-
-- [HTTPS outcalls: `GET`](/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/https-outcalls-get)
-
-- [HTTPS outcalls: `POST`](/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/https-outcalls-post)
-
-- [HTTPS outcalls: technology overview](/docs/current/references/https-outcalls-how-it-works)
+For outgoing HTTP requests, the [HTTPS outcalls](/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview) feature should be used.
 
 ## Incoming HTTP requests
 
@@ -112,7 +104,7 @@ Every HTTP request first goes to `http_request`, and only if you return `upgrade
 
 View the [HTTP Candid interface reference](/docs/current/references/http-gateway-protocol-spec#canister-http-interface) for more information.
 
-## `GET` requests
+### `GET` requests
 
 HTTP `GET` requests are used to retrieve and return existing data from an endpoint. To handle a canister's incoming `GET` requests, the `http_request` method can be exposed. Users and other services can call this method using a `query` call. To return HTTP response data, the following examples display how to configure the `http_request` to return an HTTP `GET` request.
 
@@ -144,7 +136,7 @@ Check out the [Rust documentation](https://docs.rs/ic-cdk/latest/ic_cdk/attr.que
 </AdornedTab>
 </AdornedTabs>
 
-## `POST` requests
+### `POST` requests
 
 HTTP `POST` requests are used to send data to an endpoint with the intention of retaining that data. You cannot make direct `POST` calls to a canister's `http_request_update` method with HTTP clients such as curl. Instead, you can make a `POST` call to a canister's HTTP endpoint, then configure the canister's `http_request` method to [upgrade the call to `http_request_update`](/docs/current/references/http-gateway-protocol-spec#upgrade-to-update-calls).
 
@@ -178,136 +170,10 @@ Check out the [Rust documentation](https://docs.rs/ic-cdk/latest/ic_cdk/attr.upd
 </AdornedTab>
 </AdornedTabs>
 
-## Serving HTTP requests
-Canisters can serve or handle an incoming HTTP request using the
-[HTTP Gateway Protocol](/docs/current/references/http-gateway-protocol-spec).
-
-This allows developers to host web applications and APIs from a canister.
-
-The following example returns 'Hello, World!' in the body at the `/hello`
-endpoint.
-
-<AdornedTabs groupId="language">
-<TabItem value="motoko" label="Motoko">
-
-```motoko
-import HashMap = "mo:base/HashMap";
-import Blob = "mo:base/Blob";
-import Text "mo:base/Text";
-import Option "mo:base/Option";
-
-actor {
-
-    public type HttpRequest = {
-        body: Blob;
-        headers: [HeaderField];
-        method: Text;
-        url: Text;
-    };
-
-    public type ChunkId = Nat;
-    public type SetAssetContentArguments = {
-        chunk_ids: [ChunkId];
-        content_encoding: Text;
-        key: Key;
-        sha256: ?Blob;
-    };
-    public type Path = Text;
-    public type Key = Text;
-
-    public type HttpResponse = {
-        body: Blob;
-        headers: [HeaderField];
-        status_code: Nat16;
-    };
-
-    public type HeaderField = (Text, Text);
-
-    private func removeQuery(str: Text): Text {
-        return Option.unwrap(Text.split(str, #char '?').next());
-    };
-
-    public query func http_request(req: HttpRequest): async (HttpResponse) {
-        let path = removeQuery(req.url);
-        if(path == "/hello") {
-            return {
-                body = Text.encodeUtf8("root page :" # path);
-                headers = [];
-                status_code = 200;
-            };
-        };
-
-        return {
-            body = Text.encodeUtf8("404 Not found :" # path);
-            headers = [];
-            status_code = 404;
-        };
-    };
-}
-```
-
-</TabItem>
-
-<TabItem value="rust" label="Rust">
-
-```rust
-type HeaderField = (String, String);
-
-struct HttpResponse {
-    status_code: u16,
-    headers: Vec<HeaderField>,
-    body: Cow<'static, Bytes>,
-}
-
-struct HttpRequest {
-    method: String,
-    url: String,
-    headers: Vec<(String, String)>,
-    body: ByteBuf,
-}
-
-#[query]
-fn http_request(req: HttpRequest) -> HttpResponse {
-    let path = req.url.path();
-    if path == "/hello" {
-        HttpResponse {
-            status_code: 200,
-            headers: Vec::new(),
-            body: b"hello, world!".to_vec(),
-            streaming_strategy: None,
-            upgrade: None,
-        }
-    } else {
-        HttpResponse {
-            status_code: 404,
-            headers: Vec::new(),
-            body: b"404 Not found :".to_vec(),
-            streaming_strategy: None,
-            upgrade: None,
-        }
-    }
-}
-```
-
-</TabItem>
-<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
-
-[Learn more about Azle](https://demergent-labs.github.io/azle/the_azle_book.html).
-
-</AdornedTab>
-
-<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
-
-[Learn more about Kybra](https://demergent-labs.github.io/kybra/).
-
-</AdornedTab>
-</AdornedTabs>
 
 ## Resources
 
 - [HTTP gateway specification](https://internetcomputer.org/docs/current/references/http-gateway-protocol-spec)
-
-- [How to use HTTPS outcalls](/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview)
 
 - [HTTPS outcalls: `GET`](/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/get)
 
