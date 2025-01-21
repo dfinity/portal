@@ -6,16 +6,17 @@ import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+import { OsType, useOs } from "/src/hooks/useOs";
 
 # Installing developer tools
 
 <MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
 
-The IC SDK is a software development kit used to develop and deploy applications on the Internet Computer (ICP) from a local developer environment. It is comprised of several tools.
+The IC SDK is a software development kit used to develop applications on your local machine and to deploy them to ICP.
 
 ## Installing the IC SDK
 
-The IC SDK is natively supported on Linux or macOS 12.\* Monterey and newer. Windows users should install Windows Subsystem for Linux (WSL 2).
+The IC SDK is natively supported on Linux or macOS 12.\* Monterey and newer. Windows users can use the IC SDK with Windows Subsystem for Linux (WSL 2).
 
 :::danger
 
@@ -23,8 +24,8 @@ If you followed a [quick start](/docs/current/building-dapps/getting-started/qui
 
 :::
 
-<AdornedTabs>
-<TabItem value="linux" label="Linux" default={true}>
+<AdornedTabs defaultValue={useOs().current}>
+<TabItem value={OsType.Linux} label="Linux">
 
 #### Prerequisites
 
@@ -50,7 +51,7 @@ dfx --version
 ```
 
 </TabItem>
-<TabItem value="macOS" label="macOS">
+<TabItem value={OsType.macOs} label="macOS">
 
 #### Prerequisites
 
@@ -80,7 +81,7 @@ dfx --version
 
 </TabItem>
 
-<TabItem value="windows" label="Windows">
+<TabItem value={OsType.Windows} label="Windows">
 
 #### Prerequisites
 
@@ -126,22 +127,16 @@ The [IC SDK](https://github.com/dfinity/sdk) is comprised of:
 
 - `dfx`: A CLI tool used to create and manage projects, developer identities, and <GlossaryTooltip>cycles</GlossaryTooltip>.
 
-- [`dfxvm`](/docs/current/building-dapps/developer-tools/dev-tools-overview#dfxvm): A version manager for `dfx`. It is used to download a specific version of `dfx`, set a default version, and update to the latest version.
+- [`dfxvm`](/docs/current/building-dapps/developer-tools/dev-tools-overview#dfxvm): A version manager for `dfx` used to download a specific version of `dfx`, set a default version, and update to the latest version.
 
 - `moc`: The [Motoko](/docs/current/motoko/main/getting-started/motoko-introduction) compiler to support Motoko canister development.
 
-- `replica`: A local instance of the software run by each node on the ICP mainnet. It is used to deploy and host your application locally for testing and development.
+- `replica`: A local instance of the software run by each node on the mainnet used to deploy and host your application locally for testing and development.
 
-It also has dependencies on a few additional, important packages:
+It also has dependencies on a few additional, important packages that are installed alongside the IC SDK:
 
 - [**Rust CDK**](/docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust): A set of tools for developing Rust canisters.
 
 - [**Candid**](/docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts): An interface description language (IDL) used to interact with a canister's methods. A **method** is a function exposed by the canister that can be called by a user, another canister, or the application's frontend.
 
 For troubleshooting common `dfx` errors, see [IC SDK troubleshooting](troubleshooting.mdx).
-
-## Next step
-
-Next, you must create a developer identity. This identity will be used to control and manage your project's canisters.
-
-- [x] [Creating a developer identity](/docs/current/building-dapps/getting-started/identities).

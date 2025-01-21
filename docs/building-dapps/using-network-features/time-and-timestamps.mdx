@@ -49,34 +49,13 @@ let current_time = IC_API::time();
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-```typescript
-import { IDL, query, time } from 'azle';
-
-export default class {
-    @query([], IDL.Nat64)
-    time(): bigint {
-        return time();
-    }
-}
-```
+[Learn more about Azle](https://demergent-labs.github.io/azle/timers.html).
 
 </AdornedTab>
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-```python
-from kybra import ic, nat64, query
-
-@query
-def time() -> nat64:
-  return ic.time()
-```
-
-:::caution
-
-Kybra canisters must be deployed from a Python virtual environment. [Learn more in the Kybra docs](https://demergent-labs.github.io/kybra/).
-
-:::
+[Learn more about Kybra](https://demergent-labs.github.io/kybra/timers.html).
 
 </AdornedTab>
 </AdornedTabs>
@@ -91,9 +70,9 @@ For Motoko canisters:
 
 For Rust canisters:
 
-- [`time`](https://time-rs.github.io/api/time/index.html):
+- [`time`](https://time-rs.github.io/api/time/index.html)
 
-- [`datetimeutils`](https://crates.io/crates/datetimeutils):
+- [`datetimeutils`](https://crates.io/crates/datetimeutils)
 
 ## Converting Unix timestamps to DateTime format
 

@@ -81,9 +81,7 @@ A service provider must configure a canister to be `pullable` by setting the fol
 - `wasm_url`: A URL used to download the canister Wasm module, which will be deployed locally.
 - `wasm_hash`: A SHA256 hash of the Wasm module located at `wasm_url`. This field is optional. In most cases, the Wasm module at `wasm_url` will be the same as the onchain Wasm module. This means that `dfx` can read the state tree to obtain and verify the module hash. In some cases, the Wasm module at `wasm_url` is not the same as the onchain Wasm module. For example, the Internet Identity canister provides a `development` variant to be integrated locally. In these cases, `wasm_hash` provides the expected hash, and `dfx` verifies the downloaded Wasm against this.
 
-:::caution
 If the `wasm_hash` of the Wasm module at `wasm_url` does not match, `dfx` will abort with an error message indicating that there is a hash mismatch. In this scenario, the service consumer should contact the service provider. It is the responsibility of the service provider to assure that the correct Wasm module can be downloaded from the `wasm_url`.
-:::
 
 - `dependencies`: An array of canister IDs (`Principal`) of direct dependencies.
 - `init_guide`: A message to guide consumers on how to initialize the canister.
@@ -188,9 +186,7 @@ An example `dfx.json` in which the consumer is developing a canister named "dapp
 
 - #### Step 2: Pull the dependencies using the `dfx deps pull` command.
 
-:::danger
 `dfx deps pull` connects to the mainnet by default (`--network ic`). You can choose other networks as usual, e.g., `--network local`.
-:::
 
 - #### Step 3: Set init arguments using `dfx deps init`.
 
@@ -264,9 +260,7 @@ Running the `dfx deps deploy` command will:
 
 You can also specify the canister name or <GlossaryTooltip>principal</GlossaryTooltip> to deploy one particular dependency.
 
-:::info
 `dfx deps deploy` always creates the canister with the anonymous identity so that dependencies and application canisters will have different controllers. It will also always install the canister in "reinstall" mode so that the canister status will be discarded.
-:::
 
 ### Frequently asked questions
 
@@ -284,8 +278,8 @@ Considering a canister developer team:
 
 1.  Developer 1 follows the [service consumer workflow](#service-consumer-workflow) and includes all generated `deps/` files in source control.
 2.  Developer 2 pulls the branch by Developer 1 and runs the `dfx deps pull` command again.
-    - If the `pulled.json` has no change, then all dependencies are still up to date. Developer 2 can run `dfx deps deploy` without setting init arguments again.
-    - If there are changes in `pulled.json`, Developer 2 can try to run `dfx deps deploy` to see if all init arguments are still valid. Then Developer 2 can run `dfx deps init` if necessary and update source control.
+    - If the `pulled.json` has no change, then all dependencies are still up to date. Developer 2 can run `dfx deps deploy` without setting init arguments again.
+    - If there are changes in `pulled.json`, Developer 2 can try to run `dfx deps deploy` to see if all init arguments are still valid. Then Developer 2 can run `dfx deps init` if necessary and update source control.
 
 These files also help CI to detect outdated dependencies.
 

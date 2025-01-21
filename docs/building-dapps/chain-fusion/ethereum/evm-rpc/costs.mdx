@@ -34,7 +34,7 @@ The following formula shows how to calculate the cycles cost for an RPC request:
   * rpc_services // Number of RPC services used to check consistency
 ```
 
-The total cost for an RPC request (assuming a 1kB request, 1kB response, 34-node subnet, and 1 [XDR](https://internetcomputer.org/docs/current/developer-education/developer-concepts/gas-cost#units-and-fiat-value) = $1.336610 USD)
+The total cost for an RPC request (assuming a 1kB request, 1kB response, 34-node subnet, and 1 [XDR](https://internetcomputer.org/docs/current/developer-education/developer-concepts/gas-cost) = $1.336610 USD)
 is ~ $0.00051 USD.
 
 Note that the cost is multiplied by the number of RPC services used for the consistency logic. If you specify three different services, it will cost three times as much as a call to a single RPC provider.
@@ -198,7 +198,3 @@ The EVM RPC canister retries the call if:
 - The call fails due to `maxResponseBytes` being set too low. Each RPC method has a built-in default `maxResponseBytes` setting that can be overridden.
 
 Additionally, the `RpcConfig` parameter supports an optional `responseSizeEstimate` that can be fine-tuned to reduce the cost of the RPC requests.
-
-## Next steps
-
-[View some sample projects using the EVM RPC canister](samples.mdx).

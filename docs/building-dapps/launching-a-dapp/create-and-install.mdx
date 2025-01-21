@@ -20,11 +20,7 @@ Once you have written the code for a canister, the canister doesn't exist until 
 
 After these steps have been completed, the canister can be deployed and interacted with.
 
-:::info
-
 The [`dfx deploy`](./deploy/overview.mdx) command does several of these steps in the background; this guide will demonstrate how to execute each step separately. However, this is not necessary for all workflows.
-
-:::
 
 ## Writing canister code
 
@@ -90,11 +86,7 @@ Having no frontend at all is also a valid option for smart contracts that don’
 </div>
 <input type="checkbox"/> Download and install an IDE or code editor. <a href="https://code.visualstudio.com/">VS Code</a> is recommended.
 
-:::tip
-
 For writing Motoko code, the [Motoko VS Code extension](https://marketplace.visualstudio.com/items?itemName=dfinity-foundation.vscode-motoko) is highly recommended for syntax highlighting.
-
-:::
 
 </TabItem>
 </Tabs>
@@ -107,13 +99,9 @@ dfx new <project-name>
 
 The [`dfx new`](/docs/current/building-dapps/developer-tools/dfx/dfx-new) command creates a new project directory containing template files and a new `<project_name>` Git repository for your project.
 
-:::caution
 When creating new projects with `dfx new`, only alphanumeric characters and underscores should be used. This is to assure that project names are valid within Motoko, JavaScript, and other contexts.
-:::
 
-:::tip
 You can also obtain projects from other sources, such as [ICP Ninja](https://icp.ninja) or the [sample repository](https://github.com/dfinity/examples).
-:::
 
 Navigate into your project directory:
 
@@ -220,9 +208,7 @@ Create your canisters from within the project's directory:
 
 - `dfx canister create --all --network=ic`: Create all canisters in the project's `dfx.json` file on the mainnet.
 
-:::tip
 Settings can be configured while creating a canister using optional flags. [View the full list of settings](/docs/current/building-dapps/developer-tools/dfx/dfx-canister#dfx-canister-create).
-:::
 
 When a canister is created, the following steps happen:
 
@@ -282,11 +268,9 @@ Compile your canisters from within the project's directory:
 
 - `dfx build --network=ic`: Compile all canisters in the project's `dfx.json` file on the mainnet.
 
-:::tip
 Compilation happens on the local machine of the developer.
 
 `dfx build` isn't the only workflow that can be used for compiling code. For example, Rust canisters can be compiled using `cargo`.
-:::
 
 When this command is executed, the following steps happen:
 

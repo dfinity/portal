@@ -8,9 +8,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Governance", "Concept"]} />
 
-:::caution
 This guide is intended for informational purposes only and may be modified over time as appropriate. It is aimed to provide general guidance for projects that are planning to launch an SNS but should not be construed as the definitive list of action items that need to be taken in preparation of any such launch. Following this guide is not a guarantee of a successful SNS launch—that is a decision by the NNS DAO. Ultimately, following this guide and/or launching an SNS is done at your own risk.
-:::
 
 # 1. Documentation / Preparation
 
@@ -41,7 +39,7 @@ The analyzer uses the [SNS configuration file](https://github.com/dfinity/sns-te
 The technical architecture should give an overview of the dapp and illustrate how the dapp works. Some dapps rely on off-chain components, either developed and maintained by the team or 3rd-party components. The use of components that will not be controlled by the DAO should also be included to show the dependencies.
 
 ### 1.2.2. Whitepaper
-The whitepaper should provide information about the dapp, the architecture, the goal with launching the SNS, tokenomics, and other information relevant to the community to vote on the decentralization proposal. It should be clear what the dapp will gain from the SNS launch. For inspiration,  see [OpenChat’s whitepaper](https://oc.app/whitepaper), and [Hot or Not’s whitepaper](https://hotornot.notion.site/hotornot/Hot-or-Not-Whitepaper-c539179e51f44867979f4372e4635f59).
+The whitepaper should provide information about the dapp, the architecture, the goal with launching the SNS, tokenomics, and other information relevant to the community to vote on the decentralization proposal. It should be clear what the dapp will gain from the SNS launch. For inspiration,  see [OpenChat’s whitepaper](https://oc.app/whitepaper).
 
 ### 1.2.3. Project roadmap
 The roadmap should show what the plan is with the dapp, also past the SNS launch. The roadmap should show the vision the team/developers behind the dapp have for the dapp and what they would like to work on, also after the SNS launch. See [OpenChat’s roadmap](https://oc.app/roadmap) for inspiration.
@@ -56,7 +54,7 @@ The SNS is initialized using an NNS proposal that defines the initial parameters
 The proposal can be created from a .yaml configuration file and defines things like the token name, token supply, token distribution, transaction fees, dissolve delays, and more.
 
 The initial parameters are explained more in the [preparation page](./preparation.mdx).
-You can find a [template with all parameters](https://github.com/dfinity/ic/blob/master/rs/sns/cli/sns_init_template.yaml) and [an example that is filled out](https://github.com/dfinity/sns-testing/blob/main/example_sns_init.yaml).
+You can find a [template with all parameters](https://github.com/dfinity/ic/blob/master/rs/sns/cli/test_sns_init_v2.yaml) and [an example that is filled out](https://github.com/dfinity/sns-testing/blob/main/example_sns_init.yaml).
 Add comments, explaining the parameters and token allocation, in the configuration file for transparency and ease of reading.
 
 Geo-restriction can be used to exclude users with IPs in specific countries with the “restricted_countries” parameter, which takes an array of country codes like this: `restricted_countries: [ "CH" ]`.
@@ -96,7 +94,7 @@ Make sure to test upgrading canisters through SNS proposals, test updating asset
 The developer can keep direct control over the dapp’s canisters registered with test flight SNS.
 The test flight can be done in a local test environment or with the live dapp on the mainnet. When deployed on the mainnet, the test flight SNS is deployed to a regular application subnet instead of a dedicated SNS subnet.
 
-To use the SNS testflight on the mainnet, pass the `–network ic` parameter to the deploy command. The [documentation]) for [Running the test flight is the same as for deploying it locally](../testing/testing-on-mainnet.mdx) - except for the added parameter.
+To use the SNS testflight on the mainnet, pass the `–-network ic` parameter to the deploy command. The documentation for [Running the test flight is the same as for deploying it locally](../testing/testing-on-mainnet.mdx) - except for the added parameter.
 
 See the documentation for more information about testing [SNS Testflight on mainnet](../testing/testing-on-mainnet.mdx), including setup instructions.
 
@@ -116,7 +114,7 @@ It’s strongly recommended that developers have a discussion in the forum with 
 
 It is recommended to share:
 
-- [x] The init file that is planned to be used. You can start from a [template](https://github.com/dfinity/ic/blob/master/rs/sns/cli/sns_init_template.yaml).
+- [x] The init file that is planned to be used. You can start from a [template](https://github.com/dfinity/ic/blob/master/rs/sns/cli/test_sns_init_v2.yaml).
 - [x] The whitepaper with a full description of the decentralization and tokenomics.
 - [x] Technical decomposition of the dapp architecture in terms of canisters, source code, and documentation so that the community can validate that the dapp will actually be a decentralized application after the swap.
 - [x] Explanation of the extent to which security reviews were considered relevant for the dapp and what kind of security reviews have been conducted for the dapp.

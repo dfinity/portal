@@ -434,7 +434,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/vetkeys/technology-overview /docs/current/references/vetkeys-overview
   /docs/current/building-dapps/developer-tools/cli-tools/networks-json /docs/current/building-dapps/developer-tools/advanced-dfx/networks-json
   /docs/current/developer-docs/production/system-canisters /docs/current/developer-education/system-canisters/
-  /docs/current/developer-docs/backend/arguments /docs/current/developer-education/message-execution/types-of-canister-calls
+  /docs/current/developer-docs/backend/arguments /docs/current/building-dapps/interacting-with-dapps/advanced-calls
   /docs/current/developer-docs/frontend/index /docs/current/building-dapps/dapp-frontends/using-an-asset-canister
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-get /docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/get
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use /docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview
@@ -635,7 +635,7 @@ const redirects = `
   /docs/current/developer-docs/getting-started/cycles/cycles-wallet /docs/current/rosetta-defi/cycles/cycles-wallet
   /docs/current/developer-docs/smart-contracts/write/auto-scaling-architecture /docs/current/building-dapps/launching-a-dapp/create-and-install
   /docs/current/developer-docs/smart-contracts/write/resources /docs/current/building-dapps/launching-a-dapp/create-and-install
-  /docs/current/developer-docs/smart-contracts/call/arguments /docs/current/developer-education/message-execution/types-of-canister-calls
+  /docs/current/developer-docs/smart-contracts/call/arguments /docs/current/building-dapps/interacting-with-dapps/advanced-calls
   /docs/current/developer-docs/smart-contracts/candid/ /docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts
   /docs/current/developer-docs/getting-started/development-workflow /docs/current/developer-education/developer-playbook/development-workflow
   /docs/current/developer-docs/getting-started/default-template /docs/current/building-dapps/launching-a-dapp/create-and-install
@@ -684,7 +684,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/best-practices/troubleshooting /docs/current/developer-education/developer-playbook/developer-best-practices/troubleshooting
   /docs/current/developer-docs/smart-contracts/best-practices/idempotency /docs/current/developer-education/developer-playbook/developer-best-practices/idempotency
 
-  /docs/current/developer-docs/smart-contracts/call/overview /docs/current/developer-education/message-execution/types-of-canister-calls
+  /docs/current/developer-docs/smart-contracts/call/overview /docs/current/building-dapps/interacting-with-dapps/advanced-calls
   /docs/current/references/execution-errors /docs/current/references/execution-errors
   /docs/current/references/ingress-messages /docs/current/developer-education/message-execution/ingress-messages
   /docs/current/developer-docs/smart-contracts/advanced-features/system-canisters /docs/current/developer-education/system-canisters/
@@ -706,7 +706,7 @@ const redirects = `
 
   /docs/current/references/glossary /docs/current/developer-education/glossary/
 
-  /docs/current/developer-docs/getting-started/explore-examples /docs/current/building-dapps/getting-started/explore-examples
+  /docs/current/developer-docs/getting-started/explore-examples /docs/current/building-dapps/developer-tools/ide/icp-ninja
   /docs/current/developer-docs/getting-started/install /docs/current/building-dapps/getting-started/install
   /docs/current/developer-docs/getting-started/identities /docs/current/building-dapps/getting-started/identities
   /docs/current/developer-docs/getting-started/tokens-and-cycles /docs/current/building-dapps/getting-started/tokens-and-cycles

@@ -27,32 +27,28 @@ Timers are implemented on two layers:
 - **The protocol level implementation:** The Internet Computer protocol supports one minimalistic global timer per canister via the `ic0.global_timer_set()` system API call and `canister_global_timer` handler (see the [Internet Computer interface specification](/docs/current/references/ic-interface-spec#timer)).
 - **The CDK timers library level:** The library wraps the minimalistic protocol implementation, adding multiple and periodic timers on top. Canister developers can enjoy the familiar timers functionality using the CDK timers library for:
 
-- [Rust](https://crates.io/crates/ic-cdk-timers)
+    - [Rust](https://crates.io/crates/ic-cdk-timers)
 
-- [Motoko](/docs/current/motoko/main/writing-motoko/timers)
+    - [Motoko](/docs/current/motoko/main/writing-motoko/timers)
 
-- [TypeScript (Azle)](https://demergent-labs.github.io/azle/timers.html)
+    - [TypeScript (Azle)](https://demergent-labs.github.io/azle/timers.html)
 
-- [Python (Kybra)](https://demergent-labs.github.io/kybra/timers.html)
+    - [Python (Kybra)](https://demergent-labs.github.io/kybra/timers.html)
 
 Internally the CDK timers libraries do the following:
 
 1. The library keeps a global list of all periodic tasks inside the canister.
 2. Calls the `ic0.global_timer_set()` system API to schedule the next task from the list.
 3. Implements the `canister_global_timer` method with the following logic:
-   * For each expired task, the handler initiates a self-canister call to isolate the tasks from each other and from the library code. Note, the [normal inter-canister call costs](/docs/current/developer-education/developer-concepts/gas-cost) apply.
-   * Reschedules periodic tasks at the end of their execution.
-   * Calls the `ic0.global_timer_set()` system API to schedule the next task.
+    - For each expired task, the handler initiates a self-canister call to isolate the tasks from each other and from the library code. Note, the [normal inter-canister call costs](/docs/current/developer-education/developer-concepts/gas-cost) apply.
+    - Reschedules periodic tasks at the end of their execution.
+    - Calls the `ic0.global_timer_set()` system API to schedule the next task.
 
-:::info
 The library does not handle the canister upgrades. It is up to the canister developer to serialize the timers in the `canister_pre_upgrade` hook and reactivate the timers in the `canister_post_upgrade` method if necessary.
 
 Using pre_ and post_upgrade hooks is discouraged. It is error-prone and can render a canister unusable. Per best practices, using these methods should be avoided if possible.
-:::
 
-:::caution
 For the code composability reasons, i.e., to be able to use different libraries with timers in a single project, canister developers are encouraged to use the CDK timers libraries over the protocol-level API or the heartbeats.
-:::
 
 ### Single timer example
 
@@ -188,9 +184,10 @@ Despite its superiority over the heartbeats, the CDK timers library has a few kn
 
 - **Canister upgrades:** The library keeps a global list of multiple and periodic tasks inside the canister heap. During the canister upgrade, a fresh WebAssembly state is created, all the timers are deactivated, and the list of timers is cleared. It is up to the canister developer to serialize the timers in the `canister_pre_upgrade` and reactivate them in the `canister_post_upgrade` method if needed.
 - **Self canister calls:** To isolate the tasks from each other and from the scheduling logic, the CDK timers library initiates a self canister call to execute each task. There are a few implications:
-   * Normal [inter-canister call costs](/docs/current/developer-education/developer-concepts/gas-cost) apply to execute each task. Note, timers are [still more cost effective](https://github.com/dfinity/examples/tree/master/rust/periodic_tasks) than the heartbeats.
-   * The tasks to execute are added at the end of the canister input queue. Depending on the canister and subnet load, the actual execution might be delayed.
-   * As the canister output queue is limited in size (500 messages at the moment), this implicitly limits the number of tasks that might be scheduled in one round.
+
+    - Normal [inter-canister call costs](/docs/current/developer-education/developer-concepts/gas-cost) apply to execute each task. Note, timers are [still more cost effective](https://github.com/dfinity/examples/tree/master/rust/periodic_tasks) than the heartbeats.
+    - The tasks to execute are added at the end of the canister input queue. Depending on the canister and subnet load, the actual execution might be delayed.
+    - As the canister output queue is limited in size (500 messages at the moment), this implicitly limits the number of tasks that might be scheduled in one round.
 - **Advanced scheduling:** The CDK timers library uses relative time to schedule tasks. To use an absolute time, canister developers should calculate the duration between now and the point in time or use a third-party library.
 
 ## Heartbeats

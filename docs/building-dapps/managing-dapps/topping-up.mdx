@@ -11,11 +11,9 @@ import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 
 A <GlossaryTooltip>canister</GlossaryTooltip> needs to have cycles deposited continuously into it to pay for the resources it uses. This process is known as 'topping up' the canister. Topping up canisters is routine maintenance.
 
-## Basic rules
+Anyone can top-up any canister deployed to ICP; you do not need to be the owner or controller of the canister. All you need is the canister's principal.
 
-Anyone can top up any canister deployed to ICP; you do not need to be the owner or controller of the canister. All you need is the canister's principal.
-
-There are a few different ways to top up canisters:
+There are a few different ways to top-up canisters:
 
 - Using [`dfx cycles top-up`](/docs/current/building-dapps/developer-tools/dfx/dfx-cycles#dfx-cycles-top-up).
 
@@ -39,9 +37,9 @@ For ease of use, you can copy/paste the cycles amounts below:
 | 10 trillion       | 10000000000000         |
 | 100 trillion      | 100000000000000         |
 
-## Canister top up workflows
+## Canister top-up workflows
 
-The following examples will demonstrate how to interact with and top up a canister with the canister ID `jqylk-byaaa-aaaal-qbymq-cai` with one trillion cycles (1000000000000) or one ICP's worth of cycles. These instructions will work for any canister ID or cycles/ICP amount.
+The following examples will demonstrate how to interact with and top-up a canister with the canister ID `jqylk-byaaa-aaaal-qbymq-cai` with one trillion cycles (1000000000000) or one ICP's worth of cycles. These instructions will work for any canister ID or cycles/ICP amount.
 
 ### Checking the cycles balance of a canister
 
@@ -86,11 +84,11 @@ Rust canisters can use the function `canister_balance128()` from the [Rust IC CD
 
 ### Option 1: If you have ICP on your account
 
-If you have ICP associated with your [developer identity](/docs/current/building-dapps/getting-started/identities) you can use [`dfx ledger top-up`](/docs/current/building-dapps/developer-tools/dfx/dfx-ledger) to convert some ICP into cycles, then top up a canister with those cycles:
+If you have ICP associated with your [developer identity](/docs/current/building-dapps/getting-started/identities) you can use [`dfx ledger top-up`](/docs/current/building-dapps/developer-tools/dfx/dfx-ledger) to convert some ICP into cycles, then top-up a canister with those cycles:
 
 ### Option 2: If you have cycles
 
-If you already have cycles, you can top up a canister with the command [`dfx cycles top-up`](/docs/current/building-dapps/developer-tools/dfx/dfx-cycles#dfx-cycles-top-up):
+If you already have cycles, you can top-up a canister with the command [`dfx cycles top-up`](/docs/current/building-dapps/developer-tools/dfx/dfx-cycles#dfx-cycles-top-up):
 
 ```bash
 dfx cycles top-up jqylk-byaaa-aaaal-qbymq-cai 1T --network ic
@@ -109,7 +107,7 @@ Cycles wallets are canisters like any other. If you have a cycles wallet you con
 
 ## Topping up a canister with the NNS frontend dapp
 
-You can also top up any canister via the [NNS frontend dapp](https://nns.ic0.app):
+You can also top-up any canister via the [NNS frontend dapp](https://nns.ic0.app):
 
 - #### Step 1: Navigate to the **My Canisters** section of the dapp.
 - #### Step 2: Click **Link Canister**.
@@ -129,14 +127,13 @@ Cycles management services provide canister monitoring and automated cycles top-
 
 Instead of manually topping up a canister via `dfx` or scripting a custom solution, cycles management services provide tested top-up automation and canister metric insights.
 
-## Popular cycles management services
 Popular cycles management services include:
 
-* [CycleOps](https://cycleops.dev): Onchain, proactive, no-code canister monitoring with historical trend graphs, top up email notifications & downloadable transaction history.
+* [CycleOps](https://cycleops.dev): Onchain, proactive, no-code canister monitoring with historical trend graphs, top-up email notifications & downloadable transaction history.
 * [TipJar](https://k25co-pqaaa-aaaab-aaakq-cai.ic0.app/): Donate cycles to your favorite canisters on the Internet Computer and keep them alive and healthy!
 * [Canistergeek](https://cusyh-iyaaa-aaaah-qcpba-cai.raw.icp0.io/): Top up your canisters, monitor cycles, memory, and logs, and get your monthly reports in one place.
 
-## Cycles management libraries
+Popular cycles management libraries include:
 
 ### Motoko
 

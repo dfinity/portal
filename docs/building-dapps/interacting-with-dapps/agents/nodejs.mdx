@@ -10,15 +10,13 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 [Node.js](https://nodejs.org/en) is a runtime environment for JavaScript. To interact with a canister through Node.js, you can use the [JavaScript agent](https://www.npmjs.com/package/@dfinity/agent). Using Node.js can enable use cases such as running an oracle, connecting an existing Node.js application to ICP, or introducing a websocket layer to your application.
 
-[More information about calling ICP from JavaScript in a web browser](/docs/current/building-dapps/interacting-with-dapps/agents/javascript-agent).
-
 ## Identity management
 
 Before you set up an actor, you will need to have an identity.
 
 ### Using keys through the ICP JavaScript agent
 
-You can configure an authentication identity for Node.js through the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) using the ECDSA or Ed25519 private keys. [Learn more in the ICP JavaScript agent docs](https://internetcomputer.org/docs/current/building-dapps/interacting-with-dapps/agents/javascript-agent).
+You can configure an authentication identity for Node.js through the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) using the ECDSA or Ed25519 private keys.
 
 ### Seed phrase
 
@@ -37,9 +35,7 @@ export const identity = await Secp256k1KeyIdentity.fromSeedPhrase(seed);
 
 The seed phrase in this example is derived from the word `test` repeated 12 times for testing purposes and local development. When you deploy your project to ICP, you should change the seed to something private.
 
-:::caution
 Remember to store any seed phrase you use in production in a secure place. Use environment variables, and never commit a real seed phrase in plain text to your codebase.
-:::
 
 ## WebSockets
 
@@ -51,9 +47,7 @@ You can install this package with the command:
 npm install --save ic-websocket-sdk
 ```
 
-:::info
 If your project uses any `@dfinity/…` package, it is recommended to use version `v0.20.1` or newer.
-:::
 
 Then, define the constructor of the `IcWebSocket` class:
 
@@ -134,7 +128,7 @@ View a full example using this library with a [Rust](https://github.com/omnia-ne
 
 ## Testing
 
-To create an end-to-end (e2e) test for your project's backend canister using the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent), first create a new test file in your project's `src/tests/` subdirectory. Name the file `e2e_tests_backend.test.ts`, then insert the following content:
+To create an end-to-end (e2e) test for your project's backend canister using the ICP JavaScript agent, first create a new test file in your project's `src/tests/` subdirectory. Name the file `e2e_tests_backend.test.ts`, then insert the following content:
 
 
 ```ts
@@ -186,141 +180,9 @@ Learn more about [testing](/docs/current/tutorials/developer-journey/level-2/2.5
 
 ## NFT example
 
-To demonstrate how you can use Node.js to implement functionality to upload assets, create an NFT collection, and mint an NFT for an identity, the following [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) `src/node/index.js` script can be used in conjunction with the [DIP-721 NFT](https://github.com/dfinity/examples/tree/master/motoko/dip721-nft-container) backend canister example:
+To demonstrate how you can use Node.js to implement functionality to upload assets, create an NFT collection, and mint an NFT for an identity, the following ICP JavaScript agent `src/node/index.js` script can be used in conjunction with the [DIP-721 NFT](https://github.com/dfinity/examples/tree/master/archive/motoko/dip721-nft-container) backend canister example:
 
-```js
-import fetch from "isomorphic-fetch";
-import { HttpAgent } from "@dfinity/agent";
-import { canisterId, createActor } from "../declarations/nft/index.js";
-import { identity } from "./identity.js";
-import { createRequire } from "node:module";
-import path from "path";
-import fs from "fs";
-import mmm from "mmmagic";
-import { fileURLToPath } from "url";
-import sha256File from "sha256-file";
-import { Blob } from "buffer";
-import { AssetManager } from "@dfinity/assets";
-import imageThumbnail from "image-thumbnail";
-import prettier from "prettier";
-
-const require = createRequire(import.meta.url);
-const nftConfig = require("./nfts.json");
-const localCanisterIds = require("../../.dfx/local/canister_ids.json");
-
-const encoder = new TextEncoder();
-
-const agent = new HttpAgent({
-  identity: await identity,
-  host: "http://127.0.0.1:4943",
-  fetch,
-});
-const effectiveCanisterId =
-  canisterId?.toString() ?? localCanisterIds.nft.local;
-const assetCanisterId = localCanisterIds.assets.local;
-const actor = createActor(effectiveCanisterId, {
-  agent,
-});
-const assetManager = new AssetManager({
-  canisterId: assetCanisterId,
-  agent,
-  concurrency: 32, // Optional (default: 32), max concurrent requests.
-  maxSingleFileSize: 450000, // Optional bytes (default: 450000), larger files will be uploaded as chunks.
-  maxChunkSize: 1900000, // Optional bytes (default: 1900000), size of chunks when file is uploaded as chunks.
-});
-
-async function main() {
-  nftConfig.forEach(async (nft, idx) => {
-    console.log("starting upload for " + nft.asset);
-
-    // Parse metadata, if present
-    const metadata = Object.entries(nft.metadata ?? []).map(([key, value]) => {
-      return [key, { TextContent: value }];
-    });
-
-    const filePath = path.join(
-      fileURLToPath(import.meta.url),
-      "..",
-      "assets",
-      nft.asset
-    );
-
-    const file = fs.readFileSync(filePath);
-
-    const sha = sha256File(filePath);
-    const options = {
-      width: 256,
-      height: 256,
-      responseType: "buffer",
-      jpegOptions: { force: true, quality: 90 },
-    };
-    console.log("generating thumbnail");
-    const thumbnail = await imageThumbnail(filePath, options);
-
-    const magic = await new mmm.Magic(mmm.MAGIC_MIME_TYPE);
-    const contentType = await new Promise((resolve, reject) => {
-      magic.detectFile(filePath, (err, result) => {
-        if (err) reject(err);
-        resolve(result);
-      });
-    });
-    console.log("detected contenttype of ", contentType);
-
-    /**
-     * For asset in nfts.json
-     *
-     * Take asset
-     * Check extension / mimetype
-     * Sha content
-     * Generate thumbnail
-     * Upload both to asset canister -> file paths
-     * Generate metadata from key / value
-     * Mint ^
-     */
-
-    const uploadedFilePath = `token/${idx}${path.extname(nft.asset)}`;
-    const uploadedThumbnailPath = `thumbnail/${idx}.jpeg`;
-
-    console.log("uploading asset to ", uploadedFilePath);
-    await assetManager.store(file, { fileName: uploadedFilePath });
-    console.log("uploading thumbnail to ", uploadedThumbnailPath);
-    await assetManager.store(thumbnail, { fileName: uploadedThumbnailPath });
-
-    const principal = await (await identity).getPrincipal();
-
-    const data = [
-      [
-        "location",
-        {
-          TextContent: `http://${assetCanisterId}.localhost:4943/${uploadedFilePath}`,
-        },
-      ],
-      [
-        "thumbnail",
-        {
-          TextContent: `http://${assetCanisterId}.localhost:4943/${uploadedThumbnailPath}`,
-        },
-      ],
-      ["contentType", { TextContent: contentType }],
-      ["contentHash", { BlobContent: encoder.encode(sha) }],
-      ...metadata,
-    ];
-    const mintResult = await actor.dip721_mint(principal, BigInt(idx), data);
-    console.log("result: ", mintResult);
-    const metaResult = await actor.tokenMetadata(0n);
-    console.log("new token info: ", metaResult);
-    console.log(
-      "token metadata: ",
-      prettier.format(
-        JSON.stringify(metaResult, (key, value) =>
-          typeof value === "bigint" ? value.toString() : value
-        ),
-        { parser: "json" }
-      )
-    );
-  });
-}
-main();
+```js file=../../../references/samples/archive/motoko/dip721-nft-container/src/Main.mo
 ```
 
 ## Resources

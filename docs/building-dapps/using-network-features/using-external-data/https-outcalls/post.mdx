@@ -8,7 +8,7 @@ import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# How to use HTTPS outcalls: POST
+# HTTPS outcalls: POST
 
 <MarkdownChipRow labels={["Advanced", "Tutorial"]} />
 
@@ -19,7 +19,6 @@ The HTTPS outcalls feature only works for sending HTTP `POST` requests to server
 :::
 
 In order to verify that your canister sent the HTTP request you expected, this canister is sending HTTP requests to a [public API service](https://putsreq.com/aL1QS5IbaQd4NTqN3a81/inspect) where the HTTP request can be inspected. As you can see in the image below, the `POST` request headers and body can be inspected to make sure it is what the canister sent.
-
 
 ![Public API to inspect POST request](../../_attachments/https-post-requestbin-result.webp)
 
@@ -59,11 +58,7 @@ Update the `Cargo.toml` file to use the correct dependencies:
 </TabItem>
 </AdornedTabs>
 
-:::caution
-
 Headers in the response may not always be identical across all nodes that process the request for consensus, causing the result of the call to be "No consensus could be reached." This particular error message can be hard to debug, but one method to resolve this error is to edit the response using the transform function. The transform function is run before consensus and can be used to remove some headers from the response.
-
-:::
 
 You can see a deployed version of this canister's `send_http_post_request` method onchain here: [https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=fm664-jyaaa-aaaap-qbomq-cai](https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=fm664-jyaaa-aaaap-qbomq-cai).
 

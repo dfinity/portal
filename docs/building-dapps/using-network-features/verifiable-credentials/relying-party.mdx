@@ -129,21 +129,21 @@ In this request, the following parameters must be set:
 
 - `params`: Configuration parameters to identify which credential is being requested.
 
-    - `issuer`: The information to identify which issuer API instance the request is sent to.
+- `issuer`: The information to identify which issuer API instance the request is sent to.
 
-        - `origin`: The origin URL of the issuer.
+    - `origin`: The origin URL of the issuer.
 
-        - `canisterId`: The canister ID of the issuer API. This field is optional.
+    - `canisterId`: The canister ID of the issuer API. This field is optional.
 
-  - `credentialSpec`: The specification of the credential being requested.
+- `credentialSpec`: The specification of the credential being requested.
 
-    - `credentialType`: The type of the requested credential.
+    - `credentialType`: The type of the requested credential.
 
-    - `arguments`: Key-value pairs that are specific to the credential. This field is optional.
+    - `arguments`: Key-value pairs that are specific to the credential. This field is optional.
 
-  - `credentialSubject`: The principal of the user requesting the credential.
+- `credentialSubject`: The principal of the user requesting the credential.
 
-  - `derivationOrigin`: An origin that should be used for the relying party's principal derivation as an alternative to the frontend hostname. This should match the `derivationOrigin` used when logging in the relying party.
+- `derivationOrigin`: An origin that should be used for the relying party's principal derivation as an alternative to the frontend hostname. This should match the `derivationOrigin` used when logging in the relying party.
 
 
 Additional examples can be found in the [verifiable credentials specification](https://github.com/dfinity/internet-identity/blob/main/docs/vc-spec.md#examples).
@@ -309,7 +309,7 @@ When the actual credential is decoded, the following info is returned:
 
 To verify the two JWT signatures, verify the signature of the `id_alias` signed by the identity provider and the signature of the actual credential signed by the issuer. Both are found when you decode the received JWT.
 
-These signatures are [canister signatures](https://internetcomputer.org/docs/current/developer-education/glossary#c) and there is an example on [how to verify those in the Internet Identity repository](https://github.com/dfinity/internet-identity/blob/2ae06956f9cabc048b8536b29b9f861092958515/src/vc_util/src/lib.rs#L193).
+These signatures are [canister signatures](/docs/current/developer-education/glossary#c) and there is an example on [how to verify those in the Internet Identity repository](https://github.com/dfinity/internet-identity/blob/2ae06956f9cabc048b8536b29b9f861092958515/src/vc_util/src/lib.rs#L193).
 
 ### Semantic verification
 
@@ -317,29 +317,29 @@ The relying party should verify the following data:
 
 - From the received credential JWT:
 
-  - The `iss` matches the identity provider canister ID.
+    - The `iss` matches the identity provider canister ID.
 
-  - The decoded initial credential contains two credentials within `vp.verifiableCredential`: first the `id_alias` credential, then the requested one.
+    - The decoded initial credential contains two credentials within `vp.verifiableCredential`: first the `id_alias` credential, then the requested one.
 
 - From the `id_alias` JWT:
 
-  - The `iss` is the expected identity provider.
+    - The `iss` is the expected identity provider.
 
-  - The `sub` in `id_alias` contains the principal of the user in the relying party.
+    - The `sub` in `id_alias` contains the principal of the user in the relying party.
 
-  - The credential type is `InternetIdentityIdAlias`.
+    - The credential type is `InternetIdentityIdAlias`.
 
-  - The `derivationOrigin` is the derivation origin when logging in the relying party.
+    - The `derivationOrigin` is the derivation origin when logging in the relying party.
 
 - From the requested credential JWT:
 
-  - The credential type within `vc.type` matches the first field in `vc.credentialSubject` and both are the same that was requested.
+    - The credential type within `vc.type` matches the first field in `vc.credentialSubject` and both are the same that was requested.
 
-  - The arguments within `vc.credentialSubject.<credential-type>` are the expected ones.
+    - The arguments within `vc.credentialSubject.<credential-type>` are the expected ones.
 
 - Cross credentials:
 
-  - The `sub` from the requested credential contains the value in the `id_alias` credential from `vc.credentialSubject.InternetIdentityIdAlias`.
+    - The `sub` from the requested credential contains the value in the `id_alias` credential from `vc.credentialSubject.InternetIdentityIdAlias`.
 
 To learn more about verifying credentials, check out the [demo relying party's code](https://github.com/dfinity/vc-playground/blob/b2f8cd5f5397b7b355b6503df5af3789834b79e9/rp/src/main.rs#L262) and the helper used from the [Internet Identity repository](https://github.com/dfinity/internet-identity/blob/fd38b48f9fdf9085b4903d865a1f5e79ad24f81a/src/vc_util/src/lib.rs#L319).
 

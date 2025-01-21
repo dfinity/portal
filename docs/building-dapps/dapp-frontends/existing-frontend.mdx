@@ -13,10 +13,7 @@ import Tabs from "@theme/Tabs";
 
 While numerous starter projects and examples exist for those who prefer to start from scratch, deploying an existing application frontend as a canister is also a viable option for building an application on ICP.
 
-:::caution
-
 Frontend canisters are deployed as a client-only application; therefore, server methods such as `getServerSideProps` are not supported.
-:::
 
 ## Example: Next.js frontend
 
@@ -42,9 +39,7 @@ const nextConfig = {
 };
 ```
 
-:::danger
 Do not delete your existing configuration, as you may have existing settings that should not be overwritten.
-:::
 
 Then, build your Next.js application by running the appropriate build command. You should reference your `package.json`'s `scripts` section to determine the correct build command. For example, if you are using `npx`:
 
@@ -93,14 +88,11 @@ Then, you can deploy the Next.js application locally for testing:
 dfx deploy
 ```
 
-Or, you can deploy directly on the mainnet:
+Or, you can deploy directly on the mainnet. Deploying to the mainnet will cost [cycles](/docs/current/building-dapps/getting-started/tokens-and-cycles).
 
 ```
 dfx deploy --network ic
 ```
 
-:::info
-Deploying to the mainnet will cost [cycles](/docs/current/building-dapps/getting-started/tokens-and-cycles).
-:::
 
 After running either command, you will see a generated link that is now hosting your Next.js application. The local URL will be in the format `http://127.0.0.1:4943/?canisterId=<canister-id>`, while the mainnet URL will be in the format `https://<canister-id>.icp0.io/`.

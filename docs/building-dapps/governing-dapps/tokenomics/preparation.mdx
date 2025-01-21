@@ -27,12 +27,12 @@ These are the categories of parameters that can be set:
 - **Configurations in the SNS ledger canister:** This includes configurations of the SNS ledger canister, such as the token name, token symbol, and the ledger transaction fee.
 
 - **The initial token distribution**: this allows specifying which portion of tokens are allocated to whom. Tokens can be distributed to the following buckets:
-   - **Developer tokens** that are appointed to the original developers of the dapp and seed funders.
-   - **Treasury tokens** that are owned by the SNS governance canister, which can be spent by the SNS community according to their needs.
-   - **Swap tokens** that are owned by the SNS swapped in exchange for ICP tokens in the decentralization swap. If the swap is successful, the participants will receive SNS tokens in a basket of neurons.
+   - **Developer tokens** that are appointed to the original developers of the dapp and seed funders.
+   - **Treasury tokens** that are owned by the SNS governance canister, which can be spent by the SNS community according to their needs.
+   - **Swap tokens** that are owned by the SNS swapped in exchange for ICP tokens in the decentralization swap. If the swap is successful, the participants will receive SNS tokens in a basket of neurons.
 - **Decentralization swap parameters**: This defines the parameters of the decentralization swap:
-  - **Rules of the swap** such as the minimum number of ICP tokens that the swap must collect to be successful and the maximum number of ICP tokens that it will collect.
-  - **Conditions of swap participation**, such as the definition of a text that must be confirmed by users when participating in the swap and the possibility to define countries from which users cannot participate (by IP addresses).
+  - **Rules of the swap** such as the minimum number of ICP tokens that the swap must collect to be successful and the maximum number of ICP tokens that it will collect.
+  - **Conditions of swap participation**, such as the definition of a text that must be confirmed by users when participating in the swap and the possibility to define countries from which users cannot participate (by IP addresses).
 
 - **Fallback controllers of the dapp**: If a decentralization swap fails, for example, because the targeted minimum number of ICP tokens could not be collected, the control of the dapp canister(s) is handed back to the principals defined in these parameters. Normally, this will be set to principals owned by the developers that controlled the dapp before the attempt to decentralize it.
 

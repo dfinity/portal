@@ -29,7 +29,7 @@ The Bitcoin Testnet API is currently disabled, and the ckTestBTC minter canister
 
 2. [Create a Bitcoin transaction](create-transactions.mdx): If the canister controls BTC, it can create a transaction to spend them.
 
-3. [Sign a transaction](sign-transactions.mdx): Next, the transaction must be signed with tECDSA using the `sign_with_ecdsa` API endpoint of the [management canister](/docs/current/developer-education/system-canisters/management-canister#signing-and-submitting-bitcoin-transactions). Transactions cannot be sent to the Bitcoin network until they are signed.
+3. [Sign a transaction](sign-transactions.mdx): Next, the transaction must be signed with t-ECDSA using the `sign_with_ecdsa` API endpoint of the [management canister](/docs/current/developer-education/system-canisters/management-canister#signing-and-submitting-bitcoin-transactions). Transactions cannot be sent to the Bitcoin network until they are signed.
 
 4. [Submit a transaction](submit-transactions.mdx): Once a transaction has been signed, it can be submitted to the Bitcoin network to be executed using the Bitcoin API's [`bitcoin_send_transaction`](/docs/current/references/ic-interface-spec#ic-bitcoin_send_transaction) endpoint, which must specify a `blob` of a Bitcoin transaction and a Bitcoin network (mainnet or testnet).
 
@@ -54,17 +54,3 @@ Chain-key Bitcoin (ckBTC) is a digital twin token of Bitcoin that is backed 1:1 
 ckBTC and other chain-key tokens can be interacted with in the same manner as other ICRC tokens. There aren't any special workflow steps, parameters, or smart contract types that must be used to integrate with chain-key tokens such as ckBTC.
 
 [Learn more about ckBTC](/docs/current/rosetta-defi/chain-key-tokens/ckbtc/overview).
-
-## Next steps
-
-- [Local development](local-development.mdx).
-
-- [Generating addresses](generate-addresses.mdx).
-
-- [Creating transactions](create-transactions.mdx).
-
-- [Signing transactions](sign-transactions.mdx).
-
-- [Submitting transactions](submit-transactions.mdx).
-
-- [ckBTC](/docs/current/rosetta-defi/chain-key-tokens/ckbtc/overview).

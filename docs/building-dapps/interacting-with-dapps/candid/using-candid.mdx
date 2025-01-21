@@ -48,10 +48,6 @@ service : {
 
 In some workflows, it may be beneficial to split interface descriptions across multiple `.did` files. For example, one file may be used to define type definitions that are used by several canisters, while another file is used to define the main service for one of those canisters.
 
-:::caution
-This workflow is for Motoko projects.
-:::
-
 You can import both interface descriptions into your canister with two import statements:
 
 ```motoko no-repl
@@ -63,7 +59,7 @@ import service B "b.did";  // Imports both type definitions and main service
 
 ### Command line
 
-To interact with a service, use [`dfx canister call`](/docs/current/building-dapps/developer-tools/dfx/dfx-canister#dfx-canister-call)
+To interact with a service, use [`dfx canister call`](/docs/current/building-dapps/developer-tools/dfx/dfx-canister#dfx-canister-call).
 
 To pass Candid arguments to the `dfx canister call` command, please refer to the [Candid reference](/docs/current/references/candid-ref), or, for Candid arguments too long to fit the command line, please use the `--argument-file` flag.
 
@@ -100,7 +96,7 @@ The Rust CDK then translates the Candid type into the appropriate native Rust ty
 
 There is also an experimental feature to generate a Candid service description automatically; see this [test case](https://github.com/dfinity/candid/blob/master/rust/candid/tests/types.rs#L99) as an example.
 
-For additional information and libraries to help you create Candid services or canisters in Rust, see the documentation for the [Candid crate](https://docs.rs/candid/), [Rust CDK examples](https://github.com/dfinity/cdk-rs/tree/next/examples) and the [Rust tutorials](/docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust).
+For additional information and libraries to help you create Candid services or canisters in Rust, see the documentation for the [Candid crate](https://docs.rs/candid/), [Rust CDK examples](https://github.com/dfinity/cdk-rs/tree/main/examples) and the [Rust tutorials](/docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust).
 
 ### Interact with a service from JavaScript
 

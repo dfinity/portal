@@ -5,7 +5,7 @@ const sidebars = {
   developer_education: [
     {
       type: "doc",
-      label: "Welcome to the World Computer",
+      label: "Welcome to the Internet Computer",
       id: "developer-education/developer-concepts/network-overview",
     },
     {
@@ -233,17 +233,12 @@ build: [
       },
       {
         type: "doc",
-        label: "Exploring examples",
-        id: "building-dapps/getting-started/explore-examples",
-      },
-      {
-        type: "doc",
         label: "Installing developer tools",
         id: "building-dapps/getting-started/install",
       },
       {
         type: "doc",
-        label: "Creating a developer identity",
+        label: "Developer identities",
         id: "building-dapps/getting-started/identities",
       },
       {
@@ -484,7 +479,11 @@ build: [
         "building-dapps/dapp-frontends/using-an-asset-canister",
         "building-dapps/dapp-frontends/uploading-serving-assets",
         "building-dapps/dapp-frontends/existing-frontend",
-        "building-dapps/dapp-frontends/asset-certification",
+        {
+          type: "doc",
+          id: "building-dapps/using-network-features/using-external-data/http-gateways-certification/ic-asset-certification-library",
+          label: "Asset certification",
+        },
         "building-dapps/dapp-frontends/asset-security",
         {
           type: "category",
@@ -507,7 +506,7 @@ build: [
     },
     {
       type: "category",
-      label: "Launching your app",
+      label: "Launching an application",
       items: [
         "building-dapps/launching-a-dapp/create-and-install",
         {
@@ -546,7 +545,7 @@ build: [
     },
     {
       type: "category",
-      label: "Interacting with apps",
+      label: "Interacting with canisters",
       items: [
         "building-dapps/interacting-with-dapps/query-calls",
         "building-dapps/interacting-with-dapps/update-calls",
@@ -602,15 +601,36 @@ build: [
           type: "category",
           label: "Fetching external data",
           items: [
+            "building-dapps/using-network-features/using-external-data/http-gateways-certification/gateways",
             {
               type: "category",
-              label: "HTTP gateways & certification",
+              label: "HTTP certification",
               items: [
-                "building-dapps/using-network-features/using-external-data/http-gateways-certification/gateways",
-                "building-dapps/using-network-features/using-external-data/http-gateways-certification/custom-http-canisters",
-                "building-dapps/using-network-features/using-external-data/http-gateways-certification/serving-json-over-http",
-                "building-dapps/using-network-features/using-external-data/http-gateways-certification/serving-static-assets-ic-assets",
-                "building-dapps/using-network-features/using-external-data/http-gateways-certification/serving-static-assets-over-http",
+                {
+                  type: "doc",
+                  id: "building-dapps/using-network-features/using-external-data/http-gateways-certification/ic-asset-certification-library",
+                  label: "The asset certification library",
+                },
+                {
+                  type: "doc",
+                  id: "building-dapps/using-network-features/using-external-data/http-gateways-certification/example-canister-serving-assets",
+                  label: "Example canister serving assets",
+                },
+                {
+                  type: "doc",
+                  id: "building-dapps/using-network-features/using-external-data/http-gateways-certification/custom-http-canisters",
+                  label: "Custom HTTP canisters",
+                },
+                {
+                  type: "doc",
+                  id: "building-dapps/using-network-features/using-external-data/http-gateways-certification/serving-json-over-http",
+                  label: "Serving JSON over HTTP",
+                },
+                {
+                  type: "doc",
+                  id: "building-dapps/using-network-features/using-external-data/http-gateways-certification/serving-static-assets-over-http",
+                  label: "Serving static assets over HTTP (custom)",
+                },
               ],
             },
             {
@@ -636,7 +656,7 @@ build: [
         },
         {
           type: "category",
-          label: "Verifiable data encryption",
+          label: "Verifiable encryption",
           items: [
             "building-dapps/using-network-features/encryption/vetkeys",
             "building-dapps/using-network-features/encryption/using-vetkeys",

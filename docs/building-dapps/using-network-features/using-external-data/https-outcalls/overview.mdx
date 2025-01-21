@@ -16,28 +16,13 @@ Some examples of onchain oracle-like services that obtain data from off-chain so
 
 ## How it works
 
-For detailed information on how it works, please refer to the [HTTPS outcalls - How it works](/docs/current/references/https-outcalls-how-it-works).
-
-## How to make a request
-
-### Methods supported
-
 The feature currently supports `GET`, `HEAD`, and `POST` methods for HTTP requests.
-
-### ICP management canister
 
 In order for a canister to use HTTPS outcalls, it needs to call the system API of ICP. Canisters can call into the system API by sending messages to [the ICP management canister](/docs/current/references/ic-interface-spec#ic-management-canister) using the identifier `"aaaaa-aa"`.
 
-### Cycles
-
 [Cycles](/docs/current/developer-education/developer-concepts/gas-cost) used to pay for the call must be explicitly transferred with the call. They are not deducted from the caller's balance implicitly.
 
-For detailed information on how to utilize this feature, please refer to the [HTTPS outcalls - How to use](/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview) page.
-
-The documentation includes examples demonstrating how to make the following types of requests:
-- [GET request](/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/https-outcalls-get)
-- [POST request](/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/https-outcalls-post)
-
+For detailed information on how it works, please refer to the [HTTPS outcalls reference documentation](/docs/current/references/https-outcalls-how-it-works).
 
 ## The API for sending HTTPS outcalls
 
@@ -70,10 +55,10 @@ The returned response (and the response provided to the `transform` function, if
 
 ## Examples
 
-Refer to the following examples of HTTPS outcall implementations in canisters:
+Refer to the following examples of HTTPS outcalls implementations in canisters:
 
 - Fetch price information for DeFi protocols using the [exchange rate canister](https://github.com/dfinity/exchange-rate-canister).
 - Communicate with other chains using the [EVM RPC canister](https://github.com/internet-computer-protocol/evm-rpc-canister).
 - Fetch information about Bitcoin Ordinals and Bitcoin Meta-Protocols using the [Ordinals canister](https://github.com/sardariuss/ordinals_canister).
-- [Minimal sample code of making a `GET` request](/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/https-outcalls-get).
-- [Minimal sample code of making a `POST` request](/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/https-outcalls-post).
+- [Minimal sample code of making a `GET` request](/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/get).
+- [Minimal sample code of making a `POST` request](/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/post).

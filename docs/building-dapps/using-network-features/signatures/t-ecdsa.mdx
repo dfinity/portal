@@ -3,6 +3,9 @@ keywords: [advanced, concept, signing transactions, signatures, tecdsa, chain-ke
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 
 # Threshold ECDSA
 
@@ -16,14 +19,13 @@ Each canister on a subnet has control over a unique ECDSA public key and can req
 
 Threshold ECDSA enables many important use cases:
 
--   Canisters natively holding bitcoin.
+- Canisters natively holding bitcoin.
 
--   Integration with Ethereum and other EVM chains, such as getting ERC-20 tokens onto ICP and signing Ethereum transactions.
+- Integration with Ethereum and other EVM chains, such as getting ERC-20 tokens onto ICP and signing Ethereum transactions.
 
--   Integrations with other blockchains that use ECDSA as a signature scheme for signing transactions.
+- Integrations with other blockchains that use ECDSA as a signature scheme for signing transactions.
 
--   Realizing a decentralized certification authority (CA), where certificates are issued using threshold ECDSA.
-
+- Realizing a decentralized certification authority (CA), where certificates are issued using threshold ECDSA.
 
 ## Signing messages and transactions
 
@@ -60,6 +62,9 @@ Currently only the `secp256k1` curve and the following key names are supported:
 - `dfx_test_key`: Only available on the local replica started by dfx.
 - `test_key_1`: Test key available on the ICP mainnet.
 - `key_1`: Production key available on the ICP mainnet.
+
+The `sign_with_ecdsa` method requires cycles to be attached. When the method in the Rust CDK is used, the required cycles are automatically attached. In Motoko, the cycles need to be added manually.
+[Learn more about threshold ECDSA costs](/docs/current/references/t-sigs-how-it-works).
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
@@ -122,12 +127,6 @@ Currently only the `secp256k1` curve and the following key names are supported:
 
 </TabItem>
 </AdornedTabs>
-
-### Cost
-
-The `sign_with_ecdsa` method requires cycles to be attached. When the method in the Rust CDK is used, the required cycles are automatically attached. In Motoko, the cycles need to be added manually.
-[Learn more about threshold ECDSA costs](/docs/current/references/t-sigs-how-it-works).
-
 
 ## Obtaining public keys
 

@@ -64,10 +64,9 @@ If everything went well, you should see the following output. `bitcoind` is now 
 2022-07-11T12:49:52Z 0 addresses found from DNS seeds
 2022-07-11T12:49:52Z dnsseed thread exit
 ```
-:::info
+
 The command above assumes that port `18444` on your machine is available. If it isn't, change the port specified in `--port`
 accordingly.
-:::
 
 ## Deploying your Bitcoin dapp
 
@@ -103,7 +102,6 @@ You can now deploy your canister and configure it to connect to your local `regt
 
 - #### Step 1: Run `dfx start --clean`:
 
-:::info
 If when running `dfx start` you see errors like:
 ```
 Failed to connect to 127.0.0.1:18444 ::: Connecting to the stream timed out.
@@ -111,7 +109,6 @@ Failed to connect to 127.0.0.1:18444 ::: Connecting to the stream timed out.
 This means that `dfx` isn't able to connect to your Bitcoin node. Make sure your Bitcoin
 node is up and running, and you're setting the correct port (default is `18444`).
 The port used can be changed in `dfx.json`.
-:::
 
 - #### Step 2: Deploy the example canister:
 ```
@@ -142,19 +139,14 @@ Or, if you prefer the command line:
 ```
 dfx canister call basic_bitcoin get_p2pkh_address
 ```
-:::info
+
 The Bitcoin address you see will be different from the one above, because the ECDSA public key your canister retrieves is unique.
-:::
 
 ## Receiving Bitcoin
 
-### Mining blocks
-
 In order to receive BTC on your local Bitcoin network, you need to mine blocks. For every block that you mine, you get some BTC as a reward for mining it.
 
-:::info
 The one key difference between working with a local Bitcoin network and a Bitcoin testnet or mainnet is how you receive Bitcoin.
-:::
 
 In the same directory as `bitcoind`, you can issue the following command to mine blocks.
 ```
@@ -179,9 +171,7 @@ DEBG .../ic_btc_canister/heartbeat New Bitcoin tip height: 1
 ```
 These logs indicate that your local `dfx` project has ingested the block you just mined.
 
-:::info
 Syncing the first bitcoin block can take up to 30 seconds. Subsequent blocks sync nearly instantly.
-:::
 
 Now, check your BTC balance:
 
@@ -194,9 +184,7 @@ dfx canister call basic_bitcoin get_balance '("<your-canister-btc-address>")'
 
 If everything worked, you should see a balance of 5_000_000_000 Satoshi, which is 50 BTC. This is the reward you received for mining one block.
 
-:::info
 The BTC you mine is valid only in your local bitcoin network and cannot be spent or used elsewhere.
-:::
 
 ### Coinbase maturity
 
@@ -294,15 +282,3 @@ installed locally.
     rm -r data
     mkdir data
 ```
-
-## Next steps
-
-- [Generating addresses](generate-addresses.mdx).
-
-- [Creating transactions](create-transactions.mdx).
-
-- [Signing transactions](sign-transactions.mdx).
-
-- [Submitting transactions](submit-transactions.mdx).
-
-- [ckBTC](/docs/current/rosetta-defi/chain-key-tokens/ckbtc/overview).

@@ -15,18 +15,14 @@ For a canister to receive Bitcoin payments, it must generate a Bitcoin address. 
 transaction spends one or more UTXOs and creates new UTXOs. Each UTXO is associated with a Bitcoin address, which is derived from a public key or a script that defines the conditions under which the UTXO can be spent. A Bitcoin
 address is often used as a single-use invoice instead of a persistent address to increase privacy.
 
-## Bitcoin address types
-
-Bitcoin uses multiple address types:
-
-### Legacy addresses
+## Bitcoin legacy addresses
 
 These addresses start with a `1` and are called `P2PKH` (Pay to Public Key Hash) addresses. They encode the hash of an ECDSA public key.
 
 There is also another type of legacy address that starts with a `3` called `P2SH` (Pay to Script Hash) that encodes the hash of a
 [script](https://en.bitcoin.it/wiki/Script). The script can define complex conditions such as multisig or timelocks.
 
-### SegWit addresses
+## Bitcoin SegWit addresses
 
 SegWit addresses are newer addresses following the [`Bech32`](https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki)
 format that starts with `bc1`. They are cheaper to spend than legacy addresses and solve problems regarding transaction malleability, which is important for advanced use cases like Partially Signed Bitcoin Transactions (PSBT) or the Lightning Network.
@@ -37,11 +33,11 @@ SegWit addresses can be of three types:
 - `P2WSH` (Pay to witness script hash): A SegWit address that encodes the hash of a script.
 - `P2TR` (Pay to taproot): A SegWit address that can be unlocked by a Schnorr signature or a script.
 
-## Generating a Bitcoin address
+
+## Generating addresses with threshold ECDSA
 
 As mentioned above, a Bitcoin address is derived from a public key or a script. To generate a Bitcoin address that can only be spent by a specific canister or a specific caller of a canister, you need to derive the address from a canister's public key.
 
-### Generating addresses with threshold ECDSA
 An ECDSA public key can be retrieved using the [`ecdsa_public_key`](/docs/current/references/ic-interface-spec#ic-ecdsa_public_key) API. The [basic Bitcoin example](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin)
 demonstrates how to generate a `P2PKH` address from a canister's public key.
 
@@ -106,18 +102,14 @@ fn public_key_to_p2pkh_address(network: BitcoinNetwork, public_key: &[u8]) -> St
 </TabItem>
 </Tabs>
 
-### Generating addresses with threshold Schnorr
+## Generating addresses with threshold Schnorr
 A Schnorr public key can be retrieved using the [`schnorr_public_key`](/docs/current/references/ic-interface-spec#ic-schnorr_public_key) API. The [basic Bitcoin example](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin) also demonstrates how to generate two different types of `P2TR` addresses, an untweaked key path address and a script spend address, from a canister's public key.
 
-:::caution
 The Internet Computer currently supports exclusively one of both types of addresses, but not addresses that can use both a key path and a script path, meaning that an address supporting a key path cannot spend with a script and vice versa.
-:::
 
-#### Generating an untweaked key path address
+### Generating an untweaked key path address
 
-:::caution
 It is important to make sure that the address is generated from an *untweaked* key. Otherwise, the signature verification, and thus the Bitcoin transaction, will fail. Most libraries will automatically tweak the key when creating a taproot address by default, so make sure to use the correct function to generate the address as shown in the example below.
-:::
 
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
@@ -191,7 +183,7 @@ pub async fn get_address(
 </TabItem>
 </Tabs>
 
-#### Generating a script path address
+### Generating a script path address
 
 <Tabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
@@ -303,8 +295,6 @@ fn p2tr_script(public_key: &[u8]) -> ScriptBuf {
 
 ### Learn more
 
-[See more examples of addresses generated using `rust-bitcoin`](https://github.com/domwoe/bitcoin_addresses/).
-
 [Learn more about Bitcoin addresses using
 ECDSA](https://en.bitcoin.it/wiki/Transaction#Pay-to-PubkeyHash).
 
@@ -320,8 +310,3 @@ Learn more about Bitcoin addresses using Schnorr:
 API](/docs/current/references/ic-interface-spec#ic-ecdsa_public_key).
 
 [Learn more about the `schnorr_public_key` API](/docs/current/references/ic-interface-spec#ic-schnorr_public_key).
-
-## Next steps
-
-[Learn how to create a Bitcoin transaction to spend the BTC received by the address.](create-transactions.mdx)
-

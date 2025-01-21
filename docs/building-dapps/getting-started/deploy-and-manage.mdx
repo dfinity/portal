@@ -34,9 +34,7 @@ Deploy the backend canister that you have written code for:
 dfx deploy PROJECT_NAME_backend --network=local
 ```
 
-:::info
 The `--network=local` flag here is redundant and shown for educational purposes. The local network is the default setting for `dfx` commands; therefore, no flag is needed to target it.
-:::
 
 This will deploy your project to the local replica. In the background, this command:
 
@@ -135,9 +133,7 @@ URLs:
     PROJECT_NAME_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=y4oop-liaaa-aaaab-qacha-cai
 ```
 
-:::caution
 When a canister is running on the mainnet, you will always need to pass the `--network=ic` flag to interact with it.
-:::
 
 ## Canister settings
 
@@ -213,9 +209,7 @@ A canister will burn cycles even in an idle state to pay for the network storage
 
 Even static canisters will eventually need to have their cycles balance replenished; otherwise, the canister will be deleted. This is known as "topping up" the canister.
 
-:::tip
 Anyone can top up a canister. You do not need to be a controller of the canister to send it cycles.
-:::
 
 To top up a canister, replace AMOUNT with the number of cycles to top up the canister with (i.e., `3T` to send 3 trillion cycles):
 
@@ -243,10 +237,7 @@ The default value of the freezing threshold is 2_592_000 (approximately 30 days)
 dfx canister update-settings PROJECT_NAME_backend --network=ic --freezing-threshold SECONDS
 ```
 
-:::caution
 If you set a freezing threshold longer than 1.5 years, you will need to include an additional flag: `--confirm-very-long-freezing-threshold`.
-:::
-
 
 ## Canister logging
 
@@ -276,9 +267,7 @@ dfx canister stop PROJECT_NAME_backend --network=ic
 
 Then, take a snapshot of the canister's current Wasm code and data.
 
-:::info
 The cost of a canister snapshot's memory consumption is charged to the canister itself.
-:::
 
 ```
 dfx canister snapshot create PROJECT_NAME_backend --network=ic
@@ -293,11 +282,7 @@ Created a new snapshot of canister PROJECT_NAME_backend. Snapshot ID: 0000000000
 
 </details>
 
-:::caution
-
 Currently, only one snapshot per canister can be saved. Taking another snapshot will overwrite the existing snapshot.
-
-:::
 
 View details about this snapshot:
 
@@ -318,9 +303,7 @@ dfx canister snapshot list PROJECT_NAME_backend --network=ic
 
 Deleting a canister removes the canister identifier, code, and state. The canister's source code will still be stored in your local environment and can be deployed as a new canister at any time. A canister must be stopped before it can be deleted.
 
-:::tip
 Any cycles remaining in the canister's balance will be returned to your developer identity.
-:::
 
 ```
 dfx canister delete PROJECT_NAME_backend --network=ic

@@ -11,11 +11,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Beginner", "Management"]} />
 
-Each <GlossaryTooltip>canister</GlossaryTooltip> has a group of possible settings that control its behavior.
-
-:::caution
-Only a controller of the canister can read and modify a canister's settings.
-:::
+Each <GlossaryTooltip>canister</GlossaryTooltip> has a group of possible settings that control its behavior. Only a controller of the canister can read and modify a canister's settings.
 
 Currently, there are seven canister setting fields:
 
@@ -127,11 +123,9 @@ Compute allocation is expressed in percents and denotes the percentage of an exe
 Canisters pay a rental fee for compute allocation, meaning that the payment depends on time and the amount of compute allocation regardless of whether the canister actually executed or not.
 For example, an idle canister that has a compute allocation of 50% for one hour will be charged `base_fee * 50 * 3600`, where `base_fee` is the fee for [one percent per second](/docs/current/developer-education/developer-concepts/gas-cost).
 
-:::info
 The rental fee increases the amount of cycles a canister consumes while idle or frozen.
 To successfully increase the compute allocation, a canister must have sufficient cycles
 to run for at least the current [freezing threshold](#freezing-threshold) number of seconds.
-:::
 
 The default value of compute allocation is 0%.
 
@@ -141,20 +135,16 @@ By default, canisters get new memory in a "best-effort" manner. For example, whe
 
 Canisters can pre-allocate memory by setting the `memory_allocation` field in their canister settings. This field is expressed in bytes and denotes the total amount of memory that the canister pre-allocated. When a canister with a memory allocation configured grows its Wasm or stable memory, the new memory comes from the pre-allocated memory.
 
-:::info
 Currently, `memory_allocation` also denotes the maximum amount of memory that the canister is allowed to use in total.
 For example, if a canister has a memory allocation of 8GiB, then it pre-allocates 8GiBs and cannot exceed that amount.
 This constraint may be lifted in the future.
-:::
 
 Canisters pay a rental fee for memory allocation, meaning that the payment depends on the time duration and the amount of memory allocation, regardless of whether the canister actually uses that memory or not.
 [Learn more about payment for memory](/docs/current/developer-education/developer-concepts/gas-cost).
 
-:::info
 The rental fee increases the amount of cycles a canister consumes while idle or frozen.
 To successfully increase the memory allocation, a canister must have sufficient cycles
 to run for at least the current [freezing threshold](#freezing-threshold) number of seconds.
-:::
 
 The default value of memory allocation is 0 bytes, which means that there is no default memory allocation.
 
@@ -169,9 +159,7 @@ This field denotes time duration in seconds, indicating the minimum duration tha
 When the cycles balance of the canister becomes too low, then the system freezes the canister in order to guarantee its freezing threshold.
 A frozen canister does not execute messages and pays only for renting resources such as compute allocation, memory allocation, and memory usage.
 
-:::info
 See also the `idle_cycles_burned_per_day` field in the canister's status to learn how many cycles a canister consumes in its idle or frozen state.
-:::
 
 The default value of the freezing threshold is 2_592_000 (approximately 30 days).
 

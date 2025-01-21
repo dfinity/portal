@@ -43,35 +43,14 @@ Available CDKs include:
 
 ## Creating a project
 
-Before writing canister code, you need to create a project.
-
-<AdornedTabs>
-<TabItem value="create-new" label="Create a new project" default={true}>
-
-If you did not download an [ICP Ninja](/docs/current/building-dapps/getting-started/explore-examples) project, or if you would like to create a new project, run:
+Before writing canister code, you need to create a project by running the command:
 
 ```
 dfx new PROJECT_NAME --type=motoko
 cd PROJECT_NAME
 ```
 
-Options for the `--type` flag are `motoko`, `rust`, `azle`, and `kybra`.
-
-:::caution
-Using [Rust](/docs/current/building-dapps/developer-tools/cdks/rust), [Azle](https://demergent-labs.github.io/azle//), or [Kybra](https://demergent-labs.github.io/kybra/) may require additional dependencies to be installed if you have not developed with those languages in your environment before. View their corresponding documentation for more information.
-:::
-
-</TabItem>
-<TabItem value="use-ninja" label="Use an ICP Ninja project">
-
-Navigate into the directory where you downloaded your [ICP Ninja](/docs/current/building-dapps/getting-started/explore-examples) project using a command like:
-
-```
-cd /path/to/icp/ninja/project
-```
-
-</TabItem>
-</AdornedTabs>
+Options for the `--type` flag are `motoko`, `rust`, `azle`, and `kybra`. Using [Rust](/docs/current/building-dapps/developer-tools/cdks/rust), [Azle](https://demergent-labs.github.io/azle//), or [Kybra](https://demergent-labs.github.io/kybra/) may require additional dependencies to be installed if you have not developed with those languages in your environment before. View their corresponding documentation for more information.
 
 You should be in a directory that contains a file called `dfx.json`. This file is used to configure your project's settings. It includes the project's canister definitions, such as the canister's type, source code file, and dependencies.
 
@@ -106,8 +85,6 @@ You should be in a directory that contains a file called `dfx.json`. This file i
 
 ## Default project architecture
 
-The default project architecture used by `dfx new` and ICP Ninja projects contains two canisters, a `backend` and a `frontend`.
-
 The `backend` canister stores the dapp's functions and core logic.
 
 The `frontend` canister stores the app's frontend assets, including files such as HTML, CSS, JavaScript, React, images, and videos.
@@ -122,11 +99,7 @@ The `frontend` canister stores the app's frontend assets, including files such a
 
 ## Writing canister code
 
-:::danger
-
 This section will focus on writing backend canister code. If you want to explore some examples with application frontends, [view the ICP Ninja projects](https://icp.ninja).
-
-:::
 
 <Tabs>
 <TabItem value="prereq" label="Prerequisites" default>
@@ -136,15 +109,9 @@ This section will focus on writing backend canister code. If you want to explore
 </TabItem>
 </Tabs>
 
-:::tip
-
-For writing Motoko code, the [Motoko VS Code extension](https://marketplace.visualstudio.com/items?itemName=dfinity-foundation.vscode-motoko) is highly recommended for syntax highlighting.
-
-:::
-
 ### Step 1: Open the backend canister source code file in your code editor.
 
-For Motoko projects, this file will be `src/PROJECT_NAME_backend/main.mo`.
+For Motoko projects, this file will be `src/PROJECT_NAME_backend/main.mo`. For writing Motoko code, the [Motoko VS Code extension](https://marketplace.visualstudio.com/items?itemName=dfinity-foundation.vscode-motoko) is highly recommended for syntax highlighting.
 
 For Rust projects, this file will be `src/PROJECT_NAME_backend/src/lib.rs`.
 
@@ -186,12 +153,6 @@ fn greet(name: String) -> String {
 
 </AdornedTab>
 </AdornedTabs>
-
-:::danger
-
-If you are using an ICP Ninja project, this code will vary based on the example you downloaded.
-
-:::
 
 ### Step 2: Add randomness.
 
@@ -675,11 +636,7 @@ fn transform(raw: TransformArgs) -> HttpResponse {
 
 At this point, we have three functions in this code that demonstrate three different ICP features: **onchain randomness**, **timers** for autonomous execution, and **HTTPS outcalls** to obtain data. Let's edit the code to use them in conjunction with one another rather than separately:
 
-1. Onchain randomness will be used to generate a number between 133000 and 133255. This number will be used to select a recent NNS proposal at random.
-
-:::tip
-The [Network Nervous System (NNS)](/docs/current/move-to-learnhub/nns/overview) is the decentralized organization that governs the ICP network. To make changes to the network, a proposal must be submitted and voted on.
-:::
+1. Onchain randomness will be used to generate a number between 133000 and 133255. This number will be used to select a recent [NNS proposal]((/docs/current/move-to-learnhub/nns/overview) at random.
 
 2. The random number will be passed into the HTTPS outcall. The HTTPS outcall will query the IC API endpoint for details about that specific proposal number.
 
@@ -778,9 +735,7 @@ actor {
 }
 ```
 
-:::danger
 You will still need the `Types.mo` file created in step 4. You do not need to make any edits to the `Types.mo` file.
-:::
 
 </TabItem>
 <TabItem value="rust" label="Rust">
@@ -890,8 +845,4 @@ fn print_results() {
 </AdornedTab>
 </AdornedTabs>
 
-## Next step
-
-Now that you have written the canister's code, the canister needs to be deployed.
-
-- [x] [Deploying and managing dapps](/docs/current/building-dapps/getting-started/deploy-and-manage).
+Save your code file, then [learn how to deploy the project](deploy-and-manage.mdx).

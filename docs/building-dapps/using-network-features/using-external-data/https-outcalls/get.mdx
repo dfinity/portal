@@ -8,7 +8,7 @@ import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# How to use HTTPS outcalls: GET
+# HTTPS outcalls: GET
 
 <MarkdownChipRow labels={["Advanced", "Network feature"]} />
 
@@ -49,12 +49,8 @@ Update the `Cargo.toml` file to use the correct dependencies:
 </TabItem>
 </AdornedTabs>
 
-:::caution
 
 Headers in the response may not always be identical across all nodes that process the request for consensus, causing the result of the call to be "No consensus could be reached." This particular error message can be hard to debug, but one method to resolve this error is to edit the response using the transform function. The transform function is run before consensus and can be used to remove some headers from the response.
-
-:::
-
 
 You can see a deployed version of this canister and its `get_icp_usd_exchange` method onchain here: [https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=fm664-jyaaa-aaaap-qbomq-cai](https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=fm664-jyaaa-aaaap-qbomq-cai).
 

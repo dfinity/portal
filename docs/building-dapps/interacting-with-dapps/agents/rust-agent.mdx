@@ -12,11 +12,11 @@ The [ICP Rust agent](https://docs.rs/ic-agent/latest/ic_agent/) by DFINITY is a 
 
 The agent is designed to be compatible with multiple versions of the replica API, exposing both low-level APIs for communicating with components like the replica and higher-level APIs for communicating with software applications deployed as canisters.
 
-One example of a project that uses the [ICP Rust agent](https://docs.rs/ic-agent/latest/ic_agent/) is [dfx](https://github.com/dfinity/sdk).
+One example of an implementation of the ICP Rust agent is [`dfx`](https://github.com/dfinity/sdk).
 
 ## Adding the agent as a dependency
 
-To add the [ICP Rust agent](https://docs.rs/ic-agent/latest/ic_agent/) crate as a dependency in your project, use the command:
+To add the ICP Rust agent crate as a dependency in your project, use the command:
 
 ```
 cargo add ic-agent
@@ -57,9 +57,10 @@ Identities can have different types, such as:
 - `AnonymousIdentity`: A unit type used through `with_identity(AnonymousIdentity)`.
 
 - `BasicIdentity`, `Secp256k1Identity`, and `Prime256v1Identity: Created from pre-existing keys through either function:
-    - `BasicIdentity::from_pem_file("path/to/identity.pem")`
-    - `BasicIdentity::from_key_pair(key_material)`
-    There are minor [variations in the function name](https://docs.rs/ic-agent/latest/ic_agent/identity/index.html).
+    - `BasicIdentity::from_pem_file("path/to/identity.pem")`
+    - `BasicIdentity::from_key_pair(key_material)`
+
+There are minor [variations in the function name](https://docs.rs/ic-agent/latest/ic_agent/identity/index.html).
 
 - `ic-identity-hsm` crate: Used for hardware security modules (HSM) like Yubikey or Nitrokey through `HardwareIdentity::new(pkcs11_module_path, slot_index, key_id, || get_pin())`.
 
@@ -76,9 +77,7 @@ let response = agent.update(&icp_ledger, "account_balance")
     .call_and_wait()
     .await?;
 let tokens = Decode!(&response, Tokens)?;
-
 ```
-
 
 ## `ic-utils`
 
@@ -102,7 +101,7 @@ canister.query("account_balance")
 
 ## Response verification
 
-When using the [certified queries](/docs/current/developer-education/message-execution/types-of-canister-calls/#certified-queries) feature, the agent must verify that the certificate returned with the query response is valid. A certificate consists of a tree, a signature on the tree's root hash that is valid under a public key, and an optional delegation linking the public key to the root public key. To validate the root hash, the agent uses the `HashTree` module.
+When using the [certified queries](/docs/current/building-dapps/interacting-with-dapps/advanced-calls/) feature, the agent must verify that the certificate returned with the query response is valid. A certificate consists of a tree, a signature on the tree's root hash that is valid under a public key, and an optional delegation linking the public key to the root public key. To validate the root hash, the agent uses the `HashTree` module.
 
 Below is an example annotated with notes that explains how to verify responses using the `HashTree` module:
 

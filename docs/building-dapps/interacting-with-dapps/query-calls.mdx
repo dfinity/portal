@@ -4,23 +4,29 @@ keywords: [beginner, query calls, queries, composite queries, query call, making
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 # Query calls
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
 
-The Internet Computer Protocol supports two types of calls: updates and queries. Query calls, also referred to as non-replicated queries, are executed on a single node and return a synchronous response.
+ICP supports two types of calls: updates and queries. Query calls, also referred to as non-replicated queries, are executed on a single node and return a synchronous response.
 
-A query call discards state changes and typically executes on a single node. An update call is executed on all nodes and persists canister state changes. Since they execute on a single node, they do not go through consensus and can be much faster than [update](/docs/current/building-dapps/interacting-with-dapps/update-calls) calls. It is possible to execute a query call as an update. In such a case, the query still discards the state changes, but the execution happens on all nodes, and the result of execution goes through consensus. This “query-as-update” execution mode is also known as a replicated query.
+A query call discards state changes and typically executes on a single node. An update call is executed on all nodes and persists canister state changes. Since they execute on a single node, they do not go through consensus and can be much faster than [update](/docs/current/building-dapps/interacting-with-dapps/update-calls) calls.
 
-| Update calls | Query calls |
-| :----------: | :------: |
-| Slow (1-2s) | Fast (200-400ms) |
-| Can modify state | Can't modify state |
-| Goes through consensus | Does not go through consensus |
-| Synchronous response | Synchronous response |
-| Executed on all nodes of a subnet | Executed on a single node |
-| Cost cycles | Free |
+It is possible to execute a query call as an update. In such a case, the query still discards the state changes, but the execution happens on all nodes, and the result of execution goes through consensus. This “query-as-update” execution mode is also known as a replicated query.
+
+Query calls are:
+
+- Fast (200-400ms).
+- Can't modify state.
+- Do not go through consensus.
+- Return a synchronous response.
+- Executed on a single node.
+- Are currently free.
+
+See the reference on [ingress messages](/docs/current/developer-education/message-execution/ingress-messages) for a more technical discussion of this topic.
 
 ## Making query calls with `dfx`
 
@@ -32,9 +38,7 @@ To make a query call to a canister, use the [`dfx canister call`](/docs/current/
 
 - `dfx canister call --query <canister-name> <method_name> --network=ic`: Make a query call to a canister deployed on the mainnet. Query calls are free.
 
-:::caution
 The downside of query calls is that the response is not trusted since it's coming from a single node. An update call or a [certified query](#certified-queries) should be used for security-critical calls.
-:::
 
 ### Making query calls from within canisters
 
@@ -43,26 +47,22 @@ The downside of query calls is that the response is not trusted since it's comin
 
 ```motoko no-repl file=../../references/samples/motoko/counter/src/Main.mo#L5-L9
 ```
-
 </TabItem>
 
 <TabItem value="rust" label="Rust">
 
 ```rust file=../../references/samples/rust/counter/src/lib.rs#L8-L12
 ```
-
 </TabItem>
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 [Learn more about Azle.](https://demergent-labs.github.io/azle/)
-
 </AdornedTab>
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 [Learn more about Kybra.](https://demergent-labs.github.io/kybra/)
-
 </AdornedTab>
 </AdornedTabs>
 
@@ -70,24 +70,19 @@ The downside of query calls is that the response is not trusted since it's comin
 
 The **query stats** feature gives developers information about the use of each canister's query calls. An approximation of some statistics related to query stats is made available to developers as part of the existing canister status API.
 
-:::note
-The statistics collected in the canister status are an approximation.
-They might not capture all query calls, especially for infrequently used canisters.
+The statistics collected in the canister status are an approximation. They might not capture all query calls, especially for infrequently used canisters.
 Query stats are collected in intervals by the system and therefore may lag behind the actual query execution by up to 30 mins.
-:::
 
-:::caution
 Statistics of composite queries are not currently collected.
-:::
 
 ### Canister status entries
 
 The feature exposes the following fields to the canister status endpoint:
 
- - A counter for the total number of query calls executed by that canister.
- - The sum of all instructions executed by the canister for query calls.
- - The sum of the payload sizes of all query requests to the canister.
- - The sum of the payload sizes of all query responses from the canister.
+- A counter for the total number of query calls executed by that canister.
+- The sum of all instructions executed by the canister for query calls.
+- The sum of the payload sizes of all query requests to the canister.
+- The sum of the payload sizes of all query responses from the canister.
 
 Each value represents the total count since the canister has been created.
 Rates for these values can be calculated from multiple calls to the canister status and observing the difference between the values in different calls.
@@ -136,9 +131,9 @@ An update can call other updates and queries. However, a query cannot make any c
 
 Composite queries solve this problem. You can add composite queries to your canister using the following annotations:
 
- * Candid: `composite_query`
- * Motoko: `composite query`
- * Rust: `#[query(composite = true)]`
+- Candid: `composite_query`
+- Motoko: `composite query`
+- Rust: `#[query(composite = true)]`
 
 Users and the client-side JavaScript code can invoke a composite query endpoint of a canister using the same query URL for existing regular queries. In contrast to regular queries, a composite query can call other composite and regular queries. Due to limitations of the current implementation, composite queries have two restrictions:
 
@@ -170,7 +165,6 @@ As an example, consider a partitioned key-value store, where a single frontend d
 
 ```motoko no-repl file=../../references/samples/motoko/composite_query/src/map/Map.mo
 ```
-
 </TabItem>
 <TabItem value="rust" label="Rust">
 
@@ -181,20 +175,18 @@ As an example, consider a partitioned key-value store, where a single frontend d
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
 [Learn more about Azle](https://demergent-labs.github.io/azle/the_azle_book.html).
-
 </AdornedTab>
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
 [Learn more about Kybra](https://demergent-labs.github.io/kybra/).
-
 </AdornedTab>
 </AdornedTabs>
 
-## Resources
+### Resources
 The following example canisters demonstrate how to use composite queries:
 
- - [Motoko example](https://github.com/dfinity/examples/tree/master/motoko/composite_query)
+- [Motoko example](https://github.com/dfinity/examples/tree/master/motoko/composite_query)
 - [Rust example](https://github.com/dfinity/examples/tree/master/rust/composite_query)
 
-Feedback and suggestions can be contributed on the forum here: [https://forum.dfinity.org/t/proposal-composite-queries/15979](https://forum.dfinity.org/t/proposal-composite-queries/15979)
+Feedback and suggestions can be contributed on the [forum](https://forum.dfinity.org/t/proposal-composite-queries/15979).

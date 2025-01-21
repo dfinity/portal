@@ -37,10 +37,9 @@ Resource consumption is not paid in ICP tokens but **cycles**. As the canister i
 
 To get cycles, you must convert ICP tokens into cycles.
 
-:::info Why are cycles different from ICP tokens?
+### Why are cycles different from ICP tokens?
 
 While the value of an ICP token is volatile, cycles are not. Cycles are pegged to [XDR](https://en.wikipedia.org/wiki/Special_drawing_rights), a group of fiat currencies. This allows resource consumption and canister execution on ICP to be at a rather stable price.
-:::
 
 ## Other token types
 
@@ -48,7 +47,7 @@ The Internet Computer supports creating and deploying custom fungible or non-fun
 
 ## What is a ledger?
 
-A [**ledger**](/docs/current/rosetta-defi/overview) is a system canister used to store accounts and their transactions. Each token on the Internet Computer has its **own** ledger. This means that there are separate ledgers for ICP tokens, cycles, and every ICRC token that has been deployed on the network.
+A [**ledger**](/docs/current/rosetta-defi/overview) is a system canister used to store accounts and their transactions. Each token on the Internet Computer has its own ledger. This means that there are separate ledgers for ICP tokens, cycles, and every ICRC token that has been deployed on the network.
 
 [Learn more about ledgers](/docs/current/rosetta-defi/overview).
 
@@ -56,13 +55,11 @@ A [**ledger**](/docs/current/rosetta-defi/overview) is a system canister used to
 
 You need to obtain [ICP tokens](https://internetcomputer.org/icp-tokens), then convert them into cycles using `dfx`. However, when participating at DFINITY events like [hackathons](https://dfinity.org/hackathons) or working on a [developer grant](https://dfinity.org/grants), you will receive a coupon that you can redeem to claim free cycles from the [cycles faucet](https://anv4y-qiaaa-aaaal-qaqxq-cai.ic0.app/).
 
-:::tip
-Each developer identity has both a **principal** and a **ledger account identifier**.
+Each developer identity has both a principal and a ledger account identifier.
 
 A principal has the format `itk7v-ihlxk-ktdrh-fcnst-vkoou-orj77-52ogl-jqwj5-zpfdv-az3lr-xqe` and is used for canister ownership, management, and holding cycles.
 
 A ledger account identifier has the format `e213184a548871a47fb526f3cba24e2ee2fbbc8129c4ab497ef2ce535130a0a4` and is used to send and receive tokens like ICP.
-:::
 
 ### Step 1: Get your account's ledger account ID.
 
@@ -104,9 +101,7 @@ The price of cycles is fixed against the price of [XDR](/docs/current/developer-
 
 Cycles are measured in very large numbers, such as billions and trillions. When you talk about cycle transfers and replenishment, you will usually operate with trillions of cycles.
 
-:::danger
-These commands must be run with the `--network=ic` flag. The cycles ledger is not necessary for local development and therefore not part of the local replica.
-:::
+These commands must be run with the `--network=ic` flag. The cycles ledger is not necessary for local development and therefore not part of the local replica. If you'd like to test integration with the ICP ledger, you can [deploy an instance of it locally](/docs/current/rosetta-defi/token-ledgers/setup/icp_ledger_setup).
 
 ### Step 4: Convert ICP into cycles.
 
@@ -127,11 +122,9 @@ Account was topped up with 6_229_700_000_000 cycles! New balance is 6_229_600_00
 
 </details>
 
-:::info Calculating how many cycles you need
+### Calculating how many cycles you need
 
 The amount of cycles that your canister will use depends on a variety of factors. Cycles are charged for storage, compute, update messages, special features, and more. To get an approximation, you can view the [detailed cycles cost table](/docs/current/developer-education/developer-concepts/gas-cost) or use the [cycles pricing calculator](/docs/current/developer-education/developer-concepts/cost-estimations-and-examples).
-
-:::
 
 ### Step 5: Confirm the cycles balance.
 
@@ -147,9 +140,3 @@ dfx cycles balance --network=ic
 ```
 
 </details>
-
-## Next step
-
-Next, it's time to write the code for a smart contract.
-
-- [x] [Writing smart contracts](/docs/current/building-dapps/getting-started/write-canister-code).

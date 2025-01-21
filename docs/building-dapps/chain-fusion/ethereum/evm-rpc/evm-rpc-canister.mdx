@@ -88,7 +88,7 @@ Alternatively, you can include the EVM RPC canister by specifying the Candid and
 }
 ```
 
-Then start the local replica and deploy the canister locally with a specified number of nodes (`31` for the [fiduciary subnet](/docs/current/building-dapps/launching-a-dapp/subnets/subnet-types#fiduciary-subnets)):
+Then start the local replica and deploy the canister locally with a specified number of nodes (`31` for the [fiduciary subnet](/docs/current/building-dapps/launching-a-dapp/subnets/subnet-types)):
 
 ```
 dfx start --clean --background
@@ -860,10 +860,9 @@ dfx canister call evm_rpc eth_sendRawTransaction "(variant {$RPC_SOURCE}, $RPC_C
 </TabItem>
 </AdornedTabs>
 
-:::
+
 Some JSON-RPC APIs may only return a `NonceTooLow` status when successfully submitting a transaction. This is because during the HTTP outcall consensus, only the first request is successful, while the others reply with a duplicate transaction status.
 If you encounter this issue, one possible workaround is to use a deduplicating proxy server such as the community-built C-ATTS EVM RPC proxy ([source code](https://github.com/c-atts/catts-evm-rpc-proxy)).
-:::
 
 ### Error "already known"
 
@@ -1008,7 +1007,7 @@ dfx canister call evm_rpc --wallet $(dfx identity get-wallet) --with-cycles 1000
 
 ## Specifying RPC services
 
-`RpcServices` is used to specify which HTTPS outcall APIs to use in the request. There are several ways to use specific JSON-RPC services:
+`RpcServices` is used to specify which HTTPS outcalls APIs to use in the request. There are several ways to use specific JSON-RPC services:
 
 ```candid
 // Used for Candid-RPC canister methods (`eth_getLogs`, `eth_getBlockByNumber`, etc.)
@@ -1123,7 +1122,7 @@ By default, the canister uses three different RPC providers, which may change de
 dfx canister call evm_rpc eth_getTransactionCount '(variant {EthMainnet = opt vec {Cloudflare; PublicNode}}, record {address = "0xdAC17F958D2ee523a2206206994597C13D831ec7"; block = variant {Tag = variant {Latest}}})' --with-cycles 100000000000 --wallet=$(dfx identity get-wallet)
 ```
 
-### HTTPS outcall consensus
+### HTTPS outcalls consensus
 
 Be sure to verify that RPC requests work as expected on the ICP mainnet. HTTPS outcalls performed in the `request` method only reach consensus if the JSON-RPC response is the same each call.
 
@@ -1138,7 +1137,3 @@ dfx canister call evm_rpc eth_getLogs "(variant {EthMainnet}, record {responseSi
 ```
 
 If the response is larger than the estimate, the canister will double the max response size and retry until either receiving a response or running out of cycles given by the `--with-cycles` flag.
-
-## Next steps
-
-[Learn about costs associated with the EVM RPC canister](costs.mdx).
