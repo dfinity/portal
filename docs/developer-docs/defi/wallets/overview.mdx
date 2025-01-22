@@ -4,7 +4,7 @@ keywords: [beginner, concept, asset custody, self-custody]
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Wallet overview
+# Wallets
 
 <MarkdownChipRow labels={["Beginner" , "Concept"]} />
 
@@ -27,7 +27,7 @@ On ICP, both developers and end users will use different types of wallets for di
 | Type of wallet | Activities | Examples |
 |----------------|------------|----------|
 |[Asset wallet](overview.mdx) | Hold, transfer, and receive assets such as fungible tokens including ICP and other ICRC1/ICRC2 tokens (ex. ckBTC, ckETH) and non-fungible tokens. View token holdings. Stake ICP and create a neuron to participate in the NNS. User based authentication. | Plug, Stoic, Oisy. [View the full list](#third-party-custody). |
-| [Canister-controlled wallet](/docs/current/developer-docs/smart-contracts/overview/introduction) | Using [Chain Fusion](/docs/current/developer-docs/multi-chain/overview), canisters on ICP can hold, sign, and transact with assets on various chains including ICP, Bitcoin, Ethereum, EVMs, and more. | [Cycles wallet](/docs/current/developer-docs/defi/cycles/cycles-wallet) (will be depreciated from dfx). Holds cycles needed to deploy, upgrade, and perform other operations on canisters. The cycles wallet is still supported, but has been replaced by the [cycles ledger](docs/current/developer-docs/defi/cycles/cycles-ledger). It is recommended to use the cycles ledger instead. |
+| [Canister-controlled wallet](/docs/current/developer-docs/smart-contracts/overview/introduction) | Using [Chain Fusion](/docs/current/developer-docs/multi-chain/overview), canisters on ICP can hold, sign, and transact with assets on various chains including ICP, Bitcoin, Ethereum, EVMs, and more. | [Cycles wallet](/docs/current/developer-docs/defi/cycles/cycles-wallet) (will be depreciated from dfx). Holds cycles needed to deploy, upgrade, and perform other operations on canisters. The cycles wallet is still supported, but has been replaced by the [cycles ledger](/docs/current/developer-docs/defi/cycles/cycles-ledger). It is recommended to use the cycles ledger instead. |
 
 ### Other authentication methods
 
@@ -51,9 +51,9 @@ Third-party custody allows a third-party entity to act on your behalf, managing 
 Before choosing a third-party option, you should do your own research and be sure that you understand the ramifications of your choices thoroughly before proceeding.
 :::
 
-### Web wallets
+### Onchain wallets
 
-Web wallets on ICP use Internet Identity for authentication, and are great for new users, less technical users, daily use, or small token transfers. Some examples include:
+Onchain wallets on ICP use Internet Identity for authentication, and are great for new users, less technical users, daily use, or small token transfers. Some examples include:
 
 - [NFID](https://nfid.one/): Each new account creates a hardware wallet that is untraceable. NFID supports sign-in with Google in addition to Internet Identity. 
 
@@ -61,7 +61,9 @@ Web wallets on ICP use Internet Identity for authentication, and are great for n
 
 - [Stoic](https://www.stoicwallet.com/): The native wallet for ICP's largest NFT marketplace, Entrepot.
 
-- [AstroX ME](https://astrox.me/): A multi-chain wallet that supports ICP, Ethereum, Polygon, and more. 
+- [AstroX ME](https://astrox.me/): A multi-chain wallet that supports ICP, Ethereum, Polygon, and more.
+
+- [Orbit](https://orbitwallet.io/): Private alpha.
 
 ### Browser extension wallets
 
@@ -71,7 +73,13 @@ Browser extension wallets can be used easily on any webpage, making them a good 
 
 - [Bitfinity](https://wallet.bitfinity.network/): Supports ICP, BTC, and SNS tokens. Available for Google Chrome.
 
-- [Klever](https://klever.io/en-us): A multi-chain mobile wallet available for Google Chrome
+- [Klever](https://klever.io/en-us): A multi-chain mobile wallet available for Google Chrome.
+
+- [Trust Wallet](https://trustwallet.com/blog/beginners-guide-to-icp).
+
+- [Metamask](https://snaps.metamask.io/snap/npm/fort-major/msq/).
+
+- [Primevault](https://www.primevault.com/).
 
 ### Mobile app wallets
 
@@ -82,6 +90,32 @@ Mobile app wallets can be used for making transfers or payments while on the go,
 - [AstroX ME](https://astrox.me/): Available for Apple and Android devices, or as an APK file.
 
 - [Klever](https://klever.io/en-us): A multi-chain mobile wallet available for Apple and Android devices.
+
+- [AirGap](https://airgap.it/): Available for Apple and Android devices.
+
+- [Trust Wallet](https://trustwallet.com/): Available for Apple and Android devices, or as an APK file.
+
+## Institutional custody
+
+Institutional custody wallets are recommended for holding large amounts of crypto, as they provide additional benefits like customer support.
+
+- [Coinbase](https://www.coinbase.com/custody).
+
+- [Sygnum](https://www.sygnum.com/digital-asset-banking/internet-computer-icp/).
+
+- [Copper](https://copper.co/en/insights/company-news/copper-adds-support-for-new-token-standards-on-the-internet-computer-blockchain-as-institutional-interest-grows).
+
+- [Crypto Finance](https://www.crypto-finance.com/).
+
+- [Dfns (wallet as a service)](https://www.dfns.co/article/icp-support).
+
+- [Primevault](https://www.primevault.com/).
+
+- [Taurus](https://www.taurushq.com/blog/taurus-integrates-the-full-icp-value-chain-including-staking-in-its-custody-solution-taurus-protect/).
+
+- [NFID](https://nfid.one/).
+
+- [Orbit](https://orbitwallet.io/): Private alpha.
 
 ## Self-custody wallets
 
@@ -105,7 +139,19 @@ A **hardware wallet** is a physical device that holds your digital assets. Priva
 
 In most cases, you can recover from the loss of a hardware wallet because the assets stored on hardware wallets are secured using a secret seed phrase. If you copy and secure the seed phrase—for example, by storing it in the form of a [paper wallet](#paper-wallets)—you can initialize a new device with the seed phrase and regain access to your digital assets.
 
-One common hardware wallet device is the Ledger Nano. [Read more about how to set up a Ledger Nano device](./self-custody/hardware-wallet-cli.mdx).
+Common hardware wallets include:
+
+- [Ledger Nano](./self-custody/hardware-wallet-cli.mdx).
+
+- [AirGap](https://airgap.it/).
+
+- [Tangem](https://tangem.com/en/).
+
+- [Taurus](https://www.taurushq.com/blog/taurus-integrates-the-full-icp-value-chain-including-staking-in-its-custody-solution-taurus-protect/).
+
+- [Quill](/docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/).
+
+- ICP custody with seed phrase and air-gapped machine.
 
 ### Air-gapped computers
 

@@ -15,11 +15,9 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/J5rhdzjuq6k?si=3o1NdIWr0TeNYSkU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> </div>
 
-## Overview
-
 `dfx` is a command line utility that is used to interact with the IC SDK. It is the primary tool that is used for creating, managing, and deploying dapps onto the Internet Computer.
 
-The `dfx` parent command has several flags and subcommands that can be used to perform a wide array of operations. First, you'll take a look at basic usage of the command, then you'll get started creating your first project using dfx.
+The `dfx` parent command has several flags and subcommands that can be used to perform a wide array of operations. First, you'll take a look at the basic usage of the command, and then you'll get started creating your first project using dfx.
 
 ## Basic usage
 
@@ -31,7 +29,7 @@ dfx [subcommand] [flag]
 
 ### Subcommands
 
-The following is a list of the essential `dfx` subcommands that you'll be using throughout the developer ladder series. For the full list of all possible subcommands, check out the [dfx reference documentation](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-parent).
+The following is a list of the essential `dfx` subcommands that you'll be using throughout the developer ladder series. For the full list of all possible subcommands, check out the [dfx reference documentation](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/).
 
 - `build`: Used to build the <GlossaryTooltip>canister</GlossaryTooltip> output from the project's source code.
 - `canister`: Used to manage deployed canisters.
@@ -57,7 +55,7 @@ The following is a list of the essential `dfx` subcommands that you'll be using 
 
 ### Options
 
-Below are the essential options that you'll be referencing throughout the developer ladder. For the full list of options, see the [reference documentation](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-parent).
+Below are the essential options that you'll be referencing throughout the developer ladder. For the full list of options, see the [reference documentation](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/).
 
 - `--identity <identity>`: Used to specify the user identity to be used with the command.
 - `--logfile <logfile>`: Used to write the command's output logs to a specific file.
@@ -86,7 +84,7 @@ To get started, you'll use the default sample app to demonstrate how to create a
 
 ### Step 1: Open a terminal window on your local computer.
 
-Assure that you are in your working directory, `developer_journey`.
+Ensure that you are in your working directory, `developer_ladder`.
 
 ### Step 2: Create a new project with the name 'hello_world' with the command:
 
@@ -131,7 +129,7 @@ Lastly, you can include extra features to be added to your project:
 
 When no flags are used, the `dfx new` command will create a new project using the default Motoko template. To create a project using the Rust project template, the flag `--type=rust` should be included in the command.
 
-In this tutorial series, you will be using Motoko for the development language, so you do not need to pass any additional flags with this command.
+In this tutorial series, you will be using Motoko as the development language, so you do not need to pass any additional flags with this command.
 
 :::info
 When creating new projects with `dfx`, only alphanumeric characters and underscores should be used. This is to assure that project names are valid within Motoko, JavaScript, and other contexts.
@@ -151,26 +149,26 @@ By default, the project structure will resemble the following:
 
 ```bash
 hello_world/
-├── README.md      # Default project documentation
-├── dfx.json       # Project configuration file
-├── node_modules   # Libraries for frontend development
+├── README.md      # Default project documentation
+├── dfx.json       # Project configuration file
+├── node_modules   # Libraries for frontend development
 ├── package.json
-├── src            # Source files directory
-│   ├── hello_world_backend
-│   │   └── main.mo
-│   └── hello_world_frontend
-│       ├── assets
-│       │   └── favicon.ico
-│       ├── index.html
-│       ├── package.json
-│       ├── src
-│       │   ├── App.js
-│       │   ├── index.scss
-│       │   ├── logo2.svg
-│       │   ├── main.js
-│       │   └── vite-env.d.ts
-│       ├── tsconfig.json
-│       └── vite.config.js
+├── src            # Source files directory
+│   ├── hello_world_backend
+│   │   └── main.mo
+│   └── hello_world_frontend
+│       ├── assets
+│       │   └── favicon.ico
+│       ├── index.html
+│       ├── package.json
+│       ├── src
+│       │   ├── App.js
+│       │   ├── index.scss
+│       │   ├── logo2.svg
+│       │   ├── main.js
+│       │   └── vite-env.d.ts
+│       ├── tsconfig.json
+│       └── vite.config.js
 └── tsconfig.json
 ```
 
@@ -191,42 +189,42 @@ To review the default configuration file for the project, open the `dfx.json` fi
 
 ```json title="dfx.json"
 {
-  "canisters": {
-    "hello_world_backend": {
-      "main": "src/hello_world_backend/main.mo",
-      "type": "motoko"
-    },
-    "hello_world_frontend": {
-      "dependencies": [
-        "hello_world_backend"
-      ],
-      "source": [
-        "src/hello_world_frontend/dist"
-      ],
-      "type": "assets",
-      "workspace": "hello_world_frontend"
-    }
+  "canisters": {
+    "hello_world_backend": {
+      "main": "src/hello_world_backend/main.mo",
+      "type": "motoko"
+    },
+    "hello_world_frontend": {
+      "dependencies": [
+        "hello_world_backend"
+      ],
+      "source": [
+        "src/hello_world_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "hello_world_frontend"
+    }
 
-  },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
-  "output_env_file": ".env",
-  "version": 1
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
 }
 ```
 
 Let's explore these settings a bit further:
 
-- There are two canisters defined in this file; `hello_world_frontend` and `hello_world_backend`.
-- The `hello_world_backend` canister has a `main` attribute which specifies the file path of the program's core file, `main.mo`.
-- The `hello_world_backend` canister has a `type` of 'motoko', which specifies the programming language. If the canister was written in Rust, this value would read 'rust'.
-- The `hello_world_frontend` canister has a dependency of the `hello_world_backend` canister, meaning it relies on the backend canister to be deployed and running for it to be deployed and ran.
+- There are two canisters defined in this file: `hello_world_frontend` and `hello_world_backend`.
+- The `hello_world_backend` canister has a `main` attribute that specifies the file path of the program's core file, `main.mo`.
+- The `hello_world_backend` canister has a `type` of 'motoko,' which specifies the programming language. If the canister was written in Rust, this value would read 'rust.'
+- The `hello_world_frontend` canister has a dependency on the `hello_world_backend` canister, meaning it relies on the backend canister to be deployed and running for it to be deployed and run.
 - The `hello_world_frontend` canister's assets are specified in the `source` configuration.
-- Lastly, the `hello_world_frontend` canister has a `type` of 'assets', configuring it as a frontend asset canister.
+- Lastly, the `hello_world_frontend` canister has a `type` of 'assets,' configuring it as a frontend asset canister.
 
 ## Reviewing the default program code
 
@@ -236,9 +234,9 @@ New Motoko projects will always include a default, template `main.mo` file. To t
 
 ```motoko title="src/hello_world_backend/main.mo"
 actor {
-  public query func greet(name : Text) : async Text {
-    return "Hello, " # name # "!";
-  };
+  public query func greet(name : Text) : async Text {
+    return "Hello, " # name # "!";
+  };
 };
 ```
 
@@ -246,14 +244,14 @@ In this simple 'Hello, world' program, there are a few key elements:
 
 - This code defines an `actor` rather than a `main` function as some other languages define. In Motoko, the `main` function is implicit in the file itself.
 - Instead of the traditional 'Hello, world' that uses a simple `print` function, this version of 'Hello, world' defines an actor with a public `greet` function that takes an input of a name argument with the type of `Text`.
-- Then, the program uses an async keyword to indicate that the program will return an async message that consists of text string that is constructed using "Hello, ", the # operator, the name argument, and "!".
+- Then, the program uses an async keyword to indicate that the program will return an async message that consists of a text string that is constructed using "Hello, ", the # operator, the name argument, and "!".
 
 
 You'll explore actor objects, classes, and asynchronous messages in a future tutorial. For now, this will wrap up our introduction to `dfx`.
 
 ## Need help?
 
-Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
+Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
@@ -261,9 +259,9 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7 day adventure and learn to build a DAO on the Internet Computer.
+- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
 
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects and participate in collaborative events.
+- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
 
 - [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -273,7 +271,7 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
 
-- Submit your feedback to the [ICP Developer feedback board](http://dx.internetcomputer.org).
+- Submit your feedback to the [ICP Developer feedback board](https://dx.internetcomputer.org).
 
 ## Next steps
 

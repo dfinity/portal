@@ -5,7 +5,7 @@ keywords: [advanced, Chain Fusion, overview, chain-key tokens, cktokens, ck toke
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Chain-key token overview
+# Chain-key tokens
 
 <MarkdownChipRow labels={["Advanced", "Chain Fusion" ]} />
 
@@ -33,6 +33,12 @@ In addition to the requirement that a chain-key token must adhere to an [ICRC](/
     - All source code must be open source.
     - Builds must be reproducible.
     - The canisters must be immutable or controlled by a DAO, for example, an [SNS](https://internetcomputer.org/docs/current/developer-docs/daos/sns) or a [threshold canister](https://github.com/dfinity/threshold) with a large number of verified voters.
+
+## Know-your-transaction (KYT) checks
+
+The ckBTC minter interacts with a dedicated KYT canister that executes KYT checks. Checks are applied to both incoming and outgoing transactions.
+
+The ckETH and ckERC20 minters implement a local OFAC checklist for both incoming and outgoing transactions.
 
 ## Available chain-key tokens
 

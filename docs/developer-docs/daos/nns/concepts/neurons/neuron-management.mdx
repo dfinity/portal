@@ -15,7 +15,7 @@ This page is for you if you want to learn the technical details about neuron ope
 
 Tutorials for users who want to interact with the NNS using the [NNS dapp](https://nns.ic0.app) frontend are available in the [NNS dapp quickguide](/docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart).
 
-## Overview
+
 View the most up-to-date [`candid` definition for the NNS governance canister](https://github.com/dfinity/ic/blob/master/rs/nns/governance/canister/governance.did).
 This page will explain some of the relevant definitions from this Candid file.
 To keep up to date with new NNS release proposals from DFINITY, you can subscribe to [this forum thread](https://forum.dfinity.org/t/nns-updates-aggregation-thread/23551).
@@ -61,7 +61,7 @@ meaningless when the neuron is dissolving and has age zero. The canonical value 
 
 * `visibility : opt int32;`: The visibility defines how much information about this neuron is publicly accessible, i.e., visible to those who are neither the controller nor
  have hot-key privileges to this neuron. Visibility can be public, private, or undefined.
- For public neurons, the full neuron is accessible to everyone, for private neurons only a part of the `NeuronInfo` (see below) is visible, excluding the recent_ballots`
+ For public neurons, the full neuron is accessible to everyone, for private neurons only a part of the `NeuronInfo` (see below) is visible, excluding the `recent_ballots`
   and `joined_community_fund_timestamp_seconds`.
 
 * `known_neuron_data : opt KnownNeuronData; message KnownNeuronData { string name = 1; optional string description = 2; }`: A neuron can be registered as a **known neuron** via proposal so that it can be followed by others.

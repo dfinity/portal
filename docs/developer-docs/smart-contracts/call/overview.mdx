@@ -9,107 +9,73 @@ import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
-# Call overview
+# Calling canisters
 
 <MarkdownChipRow labels={["Beginner", "Concept"]} />
 
-## Introduction
-
 To interact with a <GlossaryTooltip>canister</GlossaryTooltip>'s methods, there are two primary types of calls that can be used: update calls and query calls.
-
-Canisters implement methods that can be called via update or query calls. A query method can be called as both an update and a query, whereas update methods can be called only as an update.
 
 **Update calls** can make modifications to a canister's state, while **query calls** cannot.
 
-<div class="text--center">
-<img src="/img/docs/update_vs_query.png" alt="Update vs Query" width="400"/>
-</div>
+A query method can be called as both an update and a query, whereas update methods can be called only as an update.
+
+| Update calls | Query Calls |
+| :----------: | :------: |
+| Slow (1-2s) | Fast (200-400ms) |
+| Can modify state | Can't modify state |
+| Goes through consensus | Does not go through consensus |
+| Synchronous response | Synchronous response |
+| Executed on all nodes of a subnet | Executed on a single node |
+| Cost cycles | Free |
 
 See the reference on [ingress messages](/docs/current/references/ingress-messages) for a more technical discussion of this topic.
 
 ## Update calls
 
-Update calls are executed on all nodes of a <GlossaryTooltip>subnet</GlossaryTooltip> since the result must go through consensus. This makes them slower compared to query calls. They are submitted asynchronously and answered synchronously.
+Update calls are executed on all nodes of the <GlossaryTooltip>subnet</GlossaryTooltip> that the canister is deployed on since the result of the call must go through consensus. This makes them slower than query calls. They are submitted asynchronously and answered synchronously.
 
-### Example update call
+:::danger
+Update calls do not go through consensus on the local replica.
+:::
+
+### Making update calls
+
+To make a update call to a canister, use the [`dfx canister call`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-call) command with the `--update` flag:
+
+
+- `dfx canister call --update <canister-name> <method_name>` : Make an update call to a canister deployed locally. The local replica must be running to create a canister locally. Start it with `dfx start --background`.
+
+- `dfx canister call --update <canister-name> <method_name> --network=playground`: Make an update call to a canister deployed on the [playground](/docs/current/developer-docs/smart-contracts/deploy/overview#testnets). Making update calls to canisters deployed on the playground is free, but canisters are temporary and will be removed after 20 minutes.
+
+- `dfx canister call --update <canister-name> <method_name> --network=ic`: Make an update call to a canister deployed on the mainnet. Update calls will cost [cycles](/docs/current/developer-docs/gas-cost).
+
+
+### Using update calls from within canisters
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
-actor Counter {
-
-  stable var counter = 0;
-
-  public func inc() : async () {
-    counter += 1;
-  };
-};
+```motoko file=../../../references/samples/motoko/counter/src/Main.mo#L10-L13
 ```
 
 </TabItem>
 
 <TabItem value="rust" label="Rust">
 
-```rust
-use candid::types::number::Nat;
-use std::cell::RefCell;
-
-thread_local! {
-    static COUNTER: RefCell<Nat> = RefCell::new(Nat::from(0_u32));
-}
-
-#[ic_cdk_macros::update]
-fn inc() {
-    COUNTER.with(|counter| *counter.borrow_mut() += 1_u32);
-}
+```rust file=../../../references/samples/rust/counter/src/lib.rs#L14-L19
 ```
 
 </TabItem>
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-```typescript
-import { IDL, update } from 'azle';
-
-export default class {
-    counter: bigint = 0n;
-
-    @update([], IDL.Nat64)
-    inc(): bigint {
-        this.counter += 1n;
-
-        return this.counter;
-    }
-}
-```
+[Learn more about Azle.](https://demergent-labs.github.io/azle/)
 
 </AdornedTab>
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-```python
-from kybra import nat64, query, update
-
-counter: nat64 = 0
-
-@query
-def count() -> nat64:
-    return counter
-
-@update
-def inc() -> nat64:
-    global counter
-    counter += 1
-    return counter
-```
-
-:::caution
-
-Kybra canisters must be deployed from a Python virtual environment. [Learn more in the Kybra docs](/docs/current/developer-docs/backend/python/).
-
-:::
-
+[Learn more about Kybra.](https://demergent-labs.github.io/kybra/)
 
 </AdornedTab>
 
@@ -119,23 +85,26 @@ Kybra canisters must be deployed from a Python virtual environment. [Learn more 
 
 Query calls, also referred to as non-replicated queries, are executed on a single node and return a synchronous response. Since they execute on a single node, they do not go through consensus and can be much faster than update calls.
 
+### Making query calls
+
+To make a query call to a canister, use the [`dfx canister call`](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-canister#dfx-canister-call) command with the `--query` flag:
+
+- `dfx canister call --query <canister-name> <method_name>`: Make a query call to a canister deployed locally. The local replica must be running to create a canister locally. Start it with `dfx start --background`.
+
+- `dfx canister call --query <canister-name> <method_name> --network=playground`: Make a query call to a canister deployed on the [playground](/docs/current/developer-docs/smart-contracts/deploy/overview#testnets). Query calls are free, but canisters are temporary and will be removed after 20 minutes.
+
+- `dfx canister call --query <canister-name> <method_name> --network=ic`: Make a query call to a canister deployed on the mainnet. Query calls are free.
+
 :::caution
-The downside of query calls is that the response is not trusted since it's coming from a single node. An update call or a certified query (see below) should be used for security-critical calls.
+The downside of query calls is that the response is not trusted since it's coming from a single node. An update call or a [certified query](#certified-queries) should be used for security-critical calls.
 :::
 
-### Example query call
+### Using query calls from within canisters
 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko
-actor {
-
-  public func greet(name : Text) : async Text {
-    return "Hello, " # name # "!";
-  };
-
-};
+```motoko no-repl file=../../../references/samples/motoko/counter/src/Main.mo#L5-L9
 ```
 
 
@@ -143,60 +112,23 @@ actor {
 
 <TabItem value="rust" label="Rust">
 
-```rust
-#[ic_cdk::query]
-fn greet(name: String) -> String {
-    format!("Hello, {}!", name)
-}
+```rust file=../../../references/samples/rust/counter/src/lib.rs#L8-L12
 ```
 
 </TabItem>
 
 <AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-```typescript
-import { IDL, query } from 'azle';
-
-export default class {
-    @query([], IDL.Text)
-    greet(name){
-        return "Hello, {name}";
-    }
-}
-```
+[Learn more about Azle.](https://demergent-labs.github.io/azle/)
 
 </AdornedTab>
 
 <AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-```python
-from kybra import query
-
-@query
-def greet(name: str) -> str:
-    return f"Hello, {name}!"
-```
-
-:::caution
-
-Kybra canisters must be deployed from a Python virtual environment. [Learn more in the Kybra docs](/docs/current/developer-docs/backend/python/).
-
-:::
-
+[Learn more about Kybra.](https://demergent-labs.github.io/kybra/)
 
 </AdornedTab>
 </AdornedTabs>
-
-## Comparison of update calls vs query calls
-
-| Update calls | Query Calls |
-| :----------: | :------: |
-| Slow (1-2s) | Fast (200-400ms) |
-| Can modify state | Can't modify state |
-| Goes through consensus | Does not go through consensus |
-| Synchronous response | Synchronous response |
-| Executed on all nodes of a subnet | Executed on a single node |
-
 
 ## ICP message executions
 
@@ -204,17 +136,17 @@ Calls to canisters can be initiated by end users or other canisters. A call is p
 
 Typically, a call is processed within a single message execution unless there are calls to other canisters involved, in which case the call will be split across several message executions.
 
-Learn more about the properties of ICP message executions.
+[Learn more about the properties of ICP message executions.](/docs/current/references/execution-errors)
 
 ## Other types of calls
 
 ### Composite queries
 
-Composite queries are query calls that can call other queries (on the same <GlossaryTooltip>subnet</GlossaryTooltip>). They can only be invoked by end users, and not by other canisters.
+[Composite queries](/docs/current/developer-docs/smart-contracts/advanced-features/composite-query) are query calls that can call other queries on the same <GlossaryTooltip>subnet</GlossaryTooltip>. They can only be invoked by end users and not by other canisters.
 
 ### Certified queries
 
-Certified queries use certified variables to prove the authenticity of a piece of data that comes along with the query's response. Certified variables can be set via an update call and can then be read via a query call.
+Certified queries use [certified variables](/docs/current/references/samples/motoko/cert-var/) to prove the authenticity of a piece of data that comes along with the query's response. Certified variables can be set via an update call, then read via a query call.
 
 ### Replicated queries
 
@@ -232,12 +164,9 @@ Authorized calls that return a value of `()` indicate that the function was succ
 
 ## Making calls with IDLs
 
-On the protocol level, calls on ICP use blobs to describe arguments and results passed to and returned from canisters. It's typically easier to use an [Interface description language](https://en.wikipedia.org/wiki/Interface_description_language) (IDL) to define a canister's interfaces that can be called by end users or other canisters.
+On the protocol level, calls on ICP use blobs to describe arguments and results passed to and returned from canisters. It's typically easier to use an [interface description language](https://en.wikipedia.org/wiki/Interface_description_language) (IDL) to define a canister's interfaces that can be called by end users or other canisters.
 
-While any IDL can be used for this purpose, most canisters on ICP use Candid, a specialized IDL that is developed for ICP and makes use of some of the unique features and properties of ICP.
-- [What is Candid?](/docs/current/developer-docs/smart-contracts/candid/candid-concepts)
-- [Using Candid](/docs/current/developer-docs/smart-contracts/candid/candid-howto)
-- [Generating Candid files for Rust canisters](/docs/current/developer-docs/backend/rust/generating-candid)
+While any IDL can be used for this purpose, most canisters on ICP use [Candid](/docs/current/developer-docs/smart-contracts/candid/candid-concepts), a specialized IDL that is developed for ICP.
 
 ## Errors related to calling canisters
 
