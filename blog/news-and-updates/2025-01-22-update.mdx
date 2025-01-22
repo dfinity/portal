@@ -15,7 +15,7 @@ Hello developers, and welcome to this week's developer weekly update! This week,
 
 A new version of Motoko has been released! This release includes an important breaking change regarding orthogonal persistence:
 
-- The Wasm persistence modes used internally for canister upgrades now use lower case names `keep` and `replace` rather than `Keep` and `Replace`. If you are using actor classes with orthogonal persistence, you will need to recompile your code and upgrade it to use the latest `moc` and `dfx`.
+- The Wasm persistence modes used internally for canister upgrades now use lowercase names `keep` and `replace` rather than `Keep` and `Replace`. If you are using actor classes with orthogonal persistence, you will need to recompile your code and upgrade it to use the latest `moc` and `dfx`.
 
 This release also includes support for low Wasm memory hooks `system func lowmemory() : async* () { ... } ` and a few bug fixes:
 
