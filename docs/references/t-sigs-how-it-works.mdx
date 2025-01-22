@@ -98,8 +98,14 @@ This call requires that the Schnorr feature is enabled and the caller is a canis
 This public key can be obtained by calling `schnorr_public_key` with the caller's `canister_id` and the same `derivation_path` and `key_id` used here.
 
 For `bip340secp256k1`, the signature will be encoded according to [BIP340](https://github.com/bitcoin/bips/blob/master/bip-0340.mediawiki), using 64 bytes.
+If the `aux` parameter with the `bip341` variant is provided, the distributed key is
+tweaked as defined in
+[BIP341](https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki) with
+the `merkle_root_hash`, which must contain 0 or 32 bytes.
 
-For `ed25519`, the signature will be encoded according to [RFC8032, 5.1.6 Sign](https://datatracker.ietf.org/doc/html/rfc8032#section-5.1.6), using 64 bytes.
+For `ed25519`, the signature will be encoded according to [RFC8032, 5.1.6
+Sign](https://datatracker.ietf.org/doc/html/rfc8032#section-5.1.6), using 64
+bytes. If the `aux` parameter is provided, the signing will fail.
 
 An example of the ECDSA API can be found below:
 
@@ -119,16 +125,24 @@ An example of the ECDSA API can be found below:
 An example of the Schnorr API can be found below:
 
 ```
-  schnorr_public_key : (record {
-    canister_id : opt canister_id;
-    derivation_path : vec blob;
-    key_id : record { algorithm: schnorr_algorithm; name: text };
-  }) -> (record { public_key : blob; chain_code : blob; });
-  sign_with_schnorr : (record {
-    message : blob;
-    derivation_path : vec blob;
-    key_id : record { algorithm: schnorr_algorithm; name: text };
-  }) -> (record { signature : blob });
+  schnorr_public_key : (record {
+    canister_id : opt canister_id;
+    derivation_path : vec blob;
+    key_id : record { algorithm: schnorr_algorithm; name: text };
+  }) -> (record { public_key : blob; chain_code : blob; });
+  
+  type schnorr_aux = variant {
+    bip341: record {
+      merkle_root_hash: blob;
+   }
+  };
+
+  sign_with_schnorr : (record {
+    message : blob;
+    derivation_path : vec blob;
+    key_id : record { algorithm: schnorr_algorithm; name: text };
+    aux: opt schnorr_aux;
+  }) -> (record { signature : blob });
 ```
 
 Note that in case of high system load, a request to compute a threshold signature may time out. In this case, the canister may want to back off and retry the request later.
@@ -176,11 +190,7 @@ The development of canisters is typically done in the developer's local environm
 
 When the replica of the SDK environment is first started up, a new t-sig key is generated. This key is then stored in non-volatile memory so that it does not change with every restart of the replica.
 
-For the technically interested readers, it is important to note that the SDK uses the exact same implementations of t-sigs as the mainnet but only runs a single replica. Thus, the protocol is operating with a single replica, which means it degenerates to a special case and incurs only a little overhead, e.g., for key generation and signing, and can thus remain enabled by default in the SDK without noticeably affecting the performance of the SDK environment. Also note that the signing throughput and latency in the local SDK environment are not representative of the throughput and latency on ICP.
-
-:::note
-The Schnorr feature is supported starting from [dfx v0.23.0](https://github.com/dfinity/sdk/releases/).
-:::
+For the technically interested readers, it is important to note that the SDK uses the exact same implementations of t-sigs as the mainnet, but only runs a single replica. Thus, the protocol is operating with a single replica, which means it degenerates to a special case and incurs only little overhead, e.g., for key generation and signing, and can thus remain enabled by default in the SDK without noticeably affecting performance of the SDK environment. Also note that the signing throughput and latency in the local SDK environment is not representative for the throughput and latency on ICP.
 
 ### Internet Computer
 

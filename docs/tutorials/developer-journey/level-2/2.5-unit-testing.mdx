@@ -44,6 +44,10 @@ let suite = Suite.suite("My test suite", [
         Suite.test("10 is 10", 10, M.equals(T.nat(10))),
         Suite.test("5 is greater than three", 5, M.greaterThan<Nat>(3)),
     ])
+    Suite.suite("Nat tests", [
+        Suite.test("10 is 10", 10, M.equals(T.nat(10))),
+        Suite.test("5 is greater than three", 5, M.greaterThan<Nat>(3)),
+    ])
 ]);
 Suite.run(suite);
 ```
@@ -76,7 +80,13 @@ import T "mo:matchers/Testable";
 actor {
     let it = C.Tester({ batchSize = 8 });
     public shared func test() : async Text {
+    let it = C.Tester({ batchSize = 8 });
+    public shared func test() : async Text {
 
+        it.should("greet me", func () : async C.TestResult = async {
+          let greeting = await Canister.greet("Bob");
+          M.attempt(greeting, M.equals(T.text("Hello, Bob!")))
+        });
         it.should("greet me", func () : async C.TestResult = async {
           let greeting = await Canister.greet("Bob");
           M.attempt(greeting, M.equals(T.text("Hello, Bob!")))
@@ -86,7 +96,14 @@ actor {
           let greeting = await Canister.greet("George");
           ignore greeting
         });
+        it.shouldFailTo("greet my friend", func () : async () = async {
+          let greeting = await Canister.greet("George");
+          ignore greeting
+        });
 
+        await it.runAll()
+        // await it.run()
+    }
         await it.runAll()
         // await it.run()
     }
@@ -174,7 +191,7 @@ You will be prompted to select the language that your backend canister will use.
 `dfx` versions `v0.17.0` and newer support this `dfx new` interactive prompt. [Learn more about `dfx v0.17.0`](/blog/2024/02/14/news-and-updates/update#dfx-v0170).
 :::
 
-Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
+Then, select a frontend framework for your frontend canister. Select 'No frontend':
 
 ```
   ? Select a frontend framework: ›
@@ -183,12 +200,13 @@ Then, select a frontend framework for your frontend canister. Select 'No fronten
   Vue
   Vanilla JS
   No JS template
-❯ No frontend canister
+❯ No frontend
 ```
 
 Lastly, you can include extra features to be added to your project:
 
 ```
+  ? Add extra features (space to select, enter to confirm) ›
   ? Add extra features (space to select, enter to confirm) ›
 ⬚ Internet Identity
 ⬚ Bitcoin (Regtest)
@@ -213,6 +231,14 @@ Then, open your `package.json` file and insert `"test": "vitest"` in the `script
 
 ```json title="package.json"
 ...
+  "scripts": {
+    "build": "webpack",
+    "prebuild": "dfx generate",
+    "start": "webpack serve --mode development --env development",
+    "deploy:local": "dfx deploy --network=local",
+    "generate": "dfx generate e2e_tests_backend",
+    "test": "vitest"
+  },
   "scripts": {
     "build": "webpack",
     "prebuild": "dfx generate",
@@ -254,7 +280,15 @@ import { idlFactory } from "../declarations/e2e_tests_backend/e2e_tests_backend.
 export const createActor = async (canisterId, options) => {
   const agent = new HttpAgent({ ...options?.agentOptions });
   await agent.fetchRootKey();
+  const agent = new HttpAgent({ ...options?.agentOptions });
+  await agent.fetchRootKey();
 
+  // Creates an actor using the candid interface and the HttpAgent
+  return Actor.createActor(idlFactory, {
+    agent,
+    canisterId,
+    ...options?.actorOptions,
+  });
   // Creates an actor using the candid interface and the HttpAgent
   return Actor.createActor(idlFactory, {
     agent,
@@ -266,6 +300,7 @@ export const createActor = async (canisterId, options) => {
 export const e2e_tests_backendCanister = canisterIds.e2e_tests_backend.local;
 
 export const e2e_tests_backend = await createActor(e2e_tests_backendCanister, {
+  agentOptions: { host: "http://127.0.0.1:4943", fetch },
   agentOptions: { host: "http://127.0.0.1:4943", fetch },
 });
 ```
@@ -299,6 +334,8 @@ import { e2e_tests_backendCanister, e2e_tests_backend } from "./actor";
 test("should handle a basic greeting", async () => {
   const result1 = await e2e_tests_backend.greet("test");
   expect(result1).toBe("Hello, test!");
+  const result1 = await e2e_tests_backend.greet("test");
+  expect(result1).toBe("Hello, test!");
 });
 ```
 
@@ -327,13 +364,21 @@ The test should be successful and return output such as:
 ```bash
  ✓ src/tests/e2e_tests_backend.test.ts (1)
    ✓ should handle a basic greeting
+ ✓ src/tests/e2e_tests_backend.test.ts (1)
+   ✓ should handle a basic greeting
 
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  16:24:03
+   Duration  205ms (transform 32ms, setup 0ms, collect 68ms, tests 11ms, environment 0ms, prepare 41ms)
  Test Files  1 passed (1)
       Tests  1 passed (1)
    Start at  16:24:03
    Duration  205ms (transform 32ms, setup 0ms, collect 68ms, tests 11ms, environment 0ms, prepare 41ms)
 
 
+ PASS  Waiting for file changes...
+       press h to show help, press q to quit
  PASS  Waiting for file changes...
        press h to show help, press q to quit
 ```
@@ -346,13 +391,28 @@ Now let's create a more complex test that checks the canister's metadata using t
 test("Should contain a candid interface", async () => {
   const agent = Actor.agentOf(e2e_tests_backend) as HttpAgent;
   const id = Principal.from(e2e_tests_backendCanister);
+  const agent = Actor.agentOf(e2e_tests_backend) as HttpAgent;
+  const id = Principal.from(e2e_tests_backendCanister);
 
   const canisterStatus = await CanisterStatus.request({
     canisterId: id,
     agent,
     paths: ["time", "controllers", "candid"],
   });
+  const canisterStatus = await CanisterStatus.request({
+    canisterId: id,
+    agent,
+    paths: ["time", "controllers", "candid"],
+  });
 
+  expect(canisterStatus.get("time")).toBeTruthy();
+  expect(Array.isArray(canisterStatus.get("controllers"))).toBeTruthy();
+  expect(canisterStatus.get("candid")).toMatchInlineSnapshot(`
+    "service : {
+      greet: (text) -> (text) query;
+    }
+    "
+  `);
   expect(canisterStatus.get("time")).toBeTruthy();
   expect(Array.isArray(canisterStatus.get("controllers"))).toBeTruthy();
   expect(canisterStatus.get("candid")).toMatchInlineSnapshot(`
@@ -376,13 +436,22 @@ Then, run the test again with the `npm test` command. This time, the output shou
  ✓ src/tests/e2e_tests_backend.test.ts (2)
    ✓ should handle a basic greeting
    ✓ Should contain a candid interface
+ ✓ src/tests/e2e_tests_backend.test.ts (2)
+   ✓ should handle a basic greeting
+   ✓ Should contain a candid interface
 
+ Test Files  1 passed (1)
+      Tests  2 passed (2)
+   Start at  16:27:26
+   Duration  247ms (transform 32ms, setup 0ms, collect 66ms, tests 62ms, environment 0ms, prepare 39ms)
  Test Files  1 passed (1)
       Tests  2 passed (2)
    Start at  16:27:26
    Duration  247ms (transform 32ms, setup 0ms, collect 66ms, tests 62ms, environment 0ms, prepare 39ms)
 
 
+ PASS  Waiting for file changes...
+       press h to show help, press q to quit
  PASS  Waiting for file changes...
        press h to show help, press q to quit
 ```
@@ -419,8 +488,25 @@ on:
       - reopened
       - edited
       - synchronize
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - edited
+      - synchronize
 
 jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-20.04]
+        ghc: ['8.8.4']
+        spec:
+          - '0.16.1'
+        node:
+          - 16
   test:
     runs-on: ${{ matrix.os }}
     strategy:
@@ -439,11 +525,23 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node }}
 
+      - run: npm install
       - run: npm install
 
       - run: echo y | sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
+      - run: echo y | sh -ci "$(curl -fsSL https://sdk.dfinity.org/install.sh)"
 
+      - run: npm run ci
+        env:
+          CI: true
+          REPLICA_PORT: 8000
       - run: npm run ci
         env:
           CI: true

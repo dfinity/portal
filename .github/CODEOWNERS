@@ -10,6 +10,7 @@ docs/references/execution-errors.mdx @dfinity/execution
 docs/developer-education/message-execution/ingress-messages.mdx @dfinity/product-security
 docs/developer-education/message-execution/message-execution-properties.mdx @dfinity/product-security
 docs/building-dapps/dapp-frontends/custom-domains/ @dfinity/boundary-node
+docs/building-dapps/using-network-features/using-external-data/http-gateways-certification/ @dfinity/trust
 
 # Each piece of documentation must be owned by the respective teams
 docs/building-dapps/using-network-features/simd.mdx @dfinity/execution

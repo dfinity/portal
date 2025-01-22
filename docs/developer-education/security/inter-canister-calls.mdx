@@ -20,7 +20,7 @@ This is also explained in the [community conversation on security best practices
 
 ### Security concern
 
-Traps and panics roll back the canister state, as described in Property 5 above. So any state change followed by a trap or panic can be risky. This is an important concern when inter-canister calls are made. If a trap occurs after an await to an inter-canister call, then the state is reverted to the snapshot before the inter-canister call’s callback invocation, and not to the state before the entire call.
+Traps and panics roll back the canister state, as described in [Property 5](/docs/current/references/message-execution-properties#message-execution-properties). So any state change followed by a trap or panic can be risky. This is an important concern when inter-canister calls are made. If a trap occurs after an await to an inter-canister call, then the state is reverted to the snapshot before the inter-canister call’s callback invocation, and not to the state before the entire call.
 
 More precisely, suppose some state changes are applied and then an inter-canister call is issued. Also, assume that these state changes leave the canister in an inconsistent state, and that state is only made consistent again in the callback. Now if there is a trap in the callback, this leaves the canister in an inconsistent state.
 

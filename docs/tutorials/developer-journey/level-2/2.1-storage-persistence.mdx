@@ -100,6 +100,9 @@ You will be prompted to select the language that your backend canister will use.
   Rust
   TypeScript (Azle)
   Python (Kybra)
+  Rust
+  TypeScript (Azle)
+  Python (Kybra)
 ```
 
 :::info
@@ -115,12 +118,19 @@ Then, select a frontend framework for your frontend canister. Select 'No fronten
   Vue
   Vanilla JS
   No JS template
+  ? Select a frontend framework: ›
+  SvelteKit
+  React
+  Vue
+  Vanilla JS
+  No JS template
 ❯ No frontend canister
 ```
 
 Lastly, you can include extra features to be added to your project:
 
 ```
+  ? Add extra features (space to select, enter to confirm) ›
   ? Add extra features (space to select, enter to confirm) ›
 ⬚ Internet Identity
 ⬚ Bitcoin (Regtest)
@@ -145,7 +155,12 @@ import Nat "mo:base/Nat";
 actor Counter {
 
   stable var value = 0;
+  stable var value = 0;
 
+  public func inc() : async Nat {
+    value += 1;
+    return value;
+  };
   public func inc() : async Nat {
     value += 1;
     return value;
@@ -180,6 +195,8 @@ Deployed canisters.
 URLs:
   Backend canister via Candid interface:
     counter_backend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+  Backend canister via Candid interface:
+    counter_backend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
 ```
 
 Open the URL in a web browser, then interact with the counter by clicking the 'Call' button 3 times. The counter value will now return '3':
@@ -204,7 +221,12 @@ import Nat "mo:base/Nat";
 actor Counter {
 
   stable var value = 0;
+  stable var value = 0;
 
+  public func inc() : async Nat {
+    value += 3;
+    return value;
+  };
   public func inc() : async Nat {
     value += 3;
     return value;
@@ -236,6 +258,8 @@ Installing canisters...
 Upgrading code for canister counter_backend, with canister ID bkyz2-fmaaa-aaaaa-qaaaq-cai
 Deployed canisters.
 URLs:
+  Backend canister via Candid interface:
+    counter_backend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
   Backend canister via Candid interface:
     counter_backend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
 ```

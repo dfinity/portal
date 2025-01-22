@@ -757,6 +757,7 @@ const config = {
               {
                 label: "Node Providers",
                 href: "/node-providers",
+                target: '_self',
               },
               {
                 label: "Dashboard",

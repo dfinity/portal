@@ -1,14 +1,16 @@
-import Link from "@docusaurus/Link";
+import React, { useEffect, useRef, useState } from "react";
+
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import ShareMeta from "@site/src/components/Common/ShareMeta";
-import { useDarkHeaderInHero } from "@site/src/utils/use-dark-header-in-hero";
-import transitions from "@site/static/transitions.json";
-import Layout from "@theme/Layout";
-import { motion } from "framer-motion";
-import React, { useEffect, useRef, useState } from "react";
 import DownloadIcon from "../components/Common/Icons/DownloadIcon";
+import Layout from "@theme/Layout";
+import Link from "@docusaurus/Link";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
+import ShareMeta from "@site/src/components/Common/ShareMeta";
+import { is } from "date-fns/locale";
+import { motion } from "framer-motion";
+import transitions from "@site/static/transitions.json";
+import { useDarkHeaderInHero } from "@site/src/utils/use-dark-header-in-hero";
 
 const quickstartCards = [
   {
@@ -23,11 +25,18 @@ const quickstartCards = [
 
 const presentationCards = [
   {
-    title: "ICP makes the Internet into a World Computer",
+    title: "Internet Computer – The World Computer Paradigm",
+    description: "deck.internetcomputer.org",
     url: "https://internetcomputer.docsend.com/view/dzkwezufykwpb7p8",
   },
   {
-    title: "UTOPIA",
+    title: "Where Al Builds - Internet Computer Protocol",
+    description: "deck.icp.ai",
+    url: "https://internetcomputer.docsend.com/view/a64n9c467asbk5de",
+  },
+  {
+    title: "UTOPIA – Create private clouds using ICP technology",
+    description: "deck.utopia.com",
     url: "https://utopia.docsend.com/view/ez8f34n53q2fg2de",
   },
 ];
@@ -140,7 +149,8 @@ const LibraryCard: React.FC<{
   description?: string;
   url: string;
   highlighted?: boolean;
-}> = ({ title, subtitle, description, url, highlighted }) => {
+  isDownload?: boolean;
+}> = ({ title, subtitle, description, url, highlighted, isDownload }) => {
   return (
     <Link
       className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform h-full"
@@ -184,7 +194,7 @@ const LibraryCard: React.FC<{
             }`}
             aria-label={`Download`}
           >
-            <LinkArrowRight />
+            {isDownload ? <DownloadIcon /> : <LinkArrowRight />}
           </div>
         </div>
       </article>
@@ -199,7 +209,7 @@ function Library() {
   return (
     <Layout
       title="Library"
-      description="Find resources to learn more about the Internet Computer and its capabilities."
+      description="Documents introducing the Internet Computer and ICP, the self-writing internet, UTOPIA clouds, and technical papers…"
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-library.webp"></ShareMeta>
@@ -231,8 +241,7 @@ function Library() {
               variants={transitions.item}
               className="tw-lead-sm md:tw-lead md:w-7/12 mb-0 text-white-80"
             >
-              Find resources to learn more about the Internet Computer and its
-              capabilities.
+              Documents introducing the Internet Computer and ICP, the self-writing internet, UTOPIA clouds, and technical papers…
             </motion.p>
             <motion.div className="container-12 relative pointer-events-none">
               <div className="absolute w-7/12 translate-x-[25%] translate-y-[95%] bottom-1/2 sm:w-3/12 sm:translate-y-[105%] md:w-4/12 md:bottom-0 md:translate-x-[200%] md:translate-y-2/3">
@@ -246,27 +255,27 @@ function Library() {
         </div>
         <section className="container-10 mt-8 py-20">
           <h2 className="tw-heading-4 md:tw-heading-60 mb-1 md:mb-3">
-            Quick Starts
+            In a Nutshell…
           </h2>
           <div className="mt-4 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
             {quickstartCards.map((card) => (
-              <LibraryCard key={card.title} title={card.title} url={card.url} />
+              <LibraryCard key={card.title} title={card.title} url={card.url} isDownload />
             ))}
           </div>
         </section>
         <section className="container-10 pt-4 pb-20 md:py-12 ">
           <h2 className="tw-heading-4 md:tw-heading-60 mb-1 md:mb-3">
-            Presentations
+            Online Decks
           </h2>
           <div className="mt-4 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
             {presentationCards.map((card) => (
-              <LibraryCard key={card.title} title={card.title} url={card.url} />
+              <LibraryCard key={card.title} title={card.title} description={card.description} url={card.url} />
             ))}
           </div>
         </section>
         <section className="container-10 py-4 md:py-20 mb-20">
           <h2 className="tw-heading-4 md:tw-heading-60 mb-1 md:mb-3">
-            Whitepapers
+            Technical Papers
           </h2>
           <div className="mt-4 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
             {whitepaperCards.map((card, idx) => (
