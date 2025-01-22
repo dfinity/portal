@@ -36,7 +36,7 @@ If you are working in a local development environment, i.e., with a local replic
 
 ### Accounts
 
-An ICP ledger account (see [ICRC-1 standard](/docs/current/rosetta-defi/token-standards/index#icrc-1)) belongs to and is controlled by the account owner, who must have a valid principal ID. No account can be owned by two or more principals (no "joint accounts"). However, since a principal can refer to an external user as well as to a canister, joint accounts can be implemented as canisters.
+An ICP ledger account (see [ICRC-1 standard](/docs/current/rosetta-defi/token-standards/#icrc-1)) belongs to and is controlled by the account owner, who must have a valid principal ID. No account can be owned by two or more principals (no "joint accounts"). However, since a principal can refer to an external user as well as to a canister, joint accounts can be implemented as canisters.
 
 An account on the ledger is represented and stored as an `AccountIdentifier`, which is derived from the principal ID and subaccount identifier by computing a hash of the two. The subaccount is an optional bitstring that helps distinguish between the different subaccounts of the same owner.
 
@@ -57,11 +57,9 @@ There are two ways of deploying an ICP ledger locally:
 
 Deploying an ICP ledger locally using the Wasm or `.did` files gives you certain advantages over the default ledger from `dfx` that is installed with `dfx nns install`. For instance, you can define the `minting account`, you have control over the initialization arguments, and you have control over which Wasm version of the ICP ledger you want to interact with.
 
-:::danger
 The ICP ledger is not meant to be used for other token deployments because it needs to be backwards compatible and thus contains a lot of legacy code that should not be used when deploying a new ledger.
 
 If you want to deploy your own token, read the [guide on setting up an ICRC-1 ledger](/docs/current/rosetta-defi/token-ledgers/setup/icrc1_ledger_setup).
-:::
 
 ## Using `dfx nns install`
 
@@ -119,9 +117,7 @@ Record the output of these commands as your developer account ID.
 
 Open the `dfx.json` file in your project's directory. Replace the existing content with the following, updating the values of `MINTER_ACCOUNT_ID` and `DEVELOPER_ACCOUNT_ID` with the values obtained in the previous steps:
 
-:::info
 `dfx.json` does not support referring to values through environment variables. Values must be hardcoded in plain text.
-:::
 
 ``` json
 {
@@ -208,17 +204,13 @@ dfx start --clean --background
 
 - #### Step 7: Deploy the ledger canister locally.
 
-:::caution
 You cannot deploy this canister to the playground (using the flag `dfx deploy --playground`) because it does not accept gzipped Wasm files.
-:::
 
 ```
 dfx deploy --specified-id ryjl3-tyaaa-aaaaa-aaaba-cai icp_ledger_canister
 ```
 
-:::info
 You are deploying the local ICP ledger canister to the same canister ID as the mainnet ledger canister. This is to facilitate switching between local and mainnet deployments.
-:::
 
 Your local ICP ledger canister is up and running. You can now deploy other canisters that need to communicate with the ledger canister.
 

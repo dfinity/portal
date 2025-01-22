@@ -8,16 +8,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Governance", "Concept"]} />
 
-:::caution
-An SNS community must ensure that all SNS and dapp canisters have sufficient cycles by manually sending cycles when necessary to **each individual SNS canister**.
+An SNS community must ensure that all SNS and dapp canisters have sufficient cycles by manually sending cycles when necessary to **each individual SNS canister** **Manually** means that someone has to monitor the cycles of the canisters and actively make calls to send additional cycles to them when the canisters' cycles balance gets low.
 
-- **Manually** means that someone has to monitor the cycles of the canisters and actively make calls to send additional cycles to them when the canisters' cycles balance gets low.
-
-- This process has to be repeated for **each individual SNS canister** and also for **each dapp canister**.
+This process has to be repeated for **each individual SNS canister** and also for **each dapp canister**.
 
 At least the latter is not new to developers who built a dapp on ICP. Nevertheless, it should be underlined the importance of this in the context of an SNS: **If the SNS governance or SNS ledger canister runs out of cycles and gets deleted, this is, of course, critical as users lose their liquid and staked tokens and as the dapp canisters cannot be governed anymore.** Also, as the SNS canisters are owned by a community, some coordination might be needed to ensure that some individuals feel responsible for these steps.
-
-:::
 
 ## Cycles in the archive canisters
 

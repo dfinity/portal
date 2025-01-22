@@ -5,13 +5,11 @@ keywords: [beginner, tutorial, maintain canisters, access control, controllers]
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
-# Control
+# Canister controllers
 
 <MarkdownChipRow labels={["Beginner", "Management"]} />
 
 A <GlossaryTooltip>canister</GlossaryTooltip> is managed by a list of controllers. A controller is specified by a <GlossaryTooltip>principal</GlossaryTooltip>, which can be self-authenticating, e.g., a `dfx` developer identity, or another canister. Canisters can have multiple controllers, where each has the same administrative rights, or it can have no controller, in which case the canister becomes immutable (blackholed) and cannot be upgraded or deleted.
-
-## Setting the controllers of a canister
 
 When a canister is created, the default controller list contains the developer identity used to create the canister. Additional controllers can be specified during canister creation, or they can be added in the future.
 

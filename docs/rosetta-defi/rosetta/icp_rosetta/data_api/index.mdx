@@ -72,7 +72,7 @@ The response will give you the balance of the `account_identifier` at the most r
     ]
 }
 ```
-If you want to know the balance of a staked neuron, you can specify the account type. You need to make sure the `account_identifier` you specify corresponds to the [ledger address of a neuron](/docs/rosetta-defi/rosetta/icp_rosetta/construction_api/staking). Set `account_type` to `neuron` in the request metadata to tell the Rosetta node that you want to get the account for staking. The `neuron_index` parameter is an arbitrary 64-bit unsigned integer that the caller chooses to identify the neuron. A single user can control multiple neurons and differentiate them by specifying different values of `neuron_index`. `neuron_index` is optional and is equal to 0 by default.
+If you want to know the balance of a staked neuron, you can specify the account type. You need to make sure the `account_identifier` you specify corresponds to the [ledger address of a neuron](/docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/). Set `account_type` to `neuron` in the request metadata to tell the Rosetta node that you want to get the account for staking. The `neuron_index` parameter is an arbitrary 64-bit unsigned integer that the caller chooses to identify the neuron. A single user can control multiple neurons and differentiate them by specifying different values of `neuron_index`. `neuron_index` is optional and is equal to 0 by default.
 
 ```json
 curl --location '0.0.0.0:8081/account/balance'  --header 'Content-Type: application/json' --data '{
@@ -388,7 +388,7 @@ The list of pending proposals can be quite long, so only the first few examples 
 
 ## Get proposal info
 
-This endpoint allows you to fetch more detailed information about a specific proposal from the NNS. It is the implementation of the [/call endpoint](https://docs.cdp.coinbase.com/mesh/reference//call) of the Rosetta API standard. The call endpoint is very flexible as to what it can be used for. In the case of ICP Rosetta, it is used to fetch various custom information that is not covered by the Rosetta API standard.
+This endpoint allows you to fetch more detailed information about a specific proposal from the NNS. It is the implementation of the [/call endpoint](https://docs.cdp.coinbase.com/mesh/reference/call) of the Rosetta API standard. The call endpoint is very flexible as to what it can be used for. In the case of ICP Rosetta, it is used to fetch various custom information that is not covered by the Rosetta API standard.
 
 <Tabs>
 <TabItem value="prereq" label="Prerequisites" default>
@@ -970,7 +970,7 @@ The response gives you information about the genesis block and the tip of the ch
 
 There exist two different endpoints that allow for querying of transactions.
 This endpoint allows you to fetch a transaction at a certain block height. It is the implementation of the [/block/transaction endpoint](https://docs.cdp.coinbase.com/mesh/reference/blocktransaction) of the Rosetta API standard.
-The `search_transactions` endpoint allows you to query for transactions given a set of parameters. It is the implementation of the [/search/transactions endpoint]. (https://docs.cdp.coinbase.com/mesh/reference/searchtransactions/)
+The `search_transactions` endpoint allows you to query for transactions given a set of parameters. It is the implementation of the [/search/transactions endpoint](https://docs.cdp.coinbase.com/mesh/reference/searchtransactions/).
 
 :::info
 Note that in the case of the ICP ledger, a block always contains exactly one transaction. The hash of the block, as well as the index of the block, is guaranteed to be unique, while the hash of the transaction is not.

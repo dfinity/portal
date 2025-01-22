@@ -1,12 +1,12 @@
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# ICRC-1 standard
+# ICRC-1 standard specification
 
 <MarkdownChipRow labels={["Reference"]} />
 
-ICRC-1 is a token standard created by the Internet Computer working group. ICRC stands for "Internet Computer Request for Comments." You can find documentation on the working group [here](https://github.com/dfinity/ICRC). The [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) is a standard for **fungible tokens** on the Internet Computer. This means that any ICRC-1 ledger has to implement at least the specifications that are defined there.
+ICRC-1 is a token standard created by the Internet Computer working group. ICRC stands for ["Internet Computer Request for Comments"](https://github.com/dfinity/ICRC). The [ICRC-1](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md) is a standard for **fungible tokens** on the Internet Computer. This means that any ICRC-1 ledger has to implement at least the specifications that are defined there.
 
-However, there are extensions to this standard. One of them being ICRC-2, which you can read up on [here](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md). Further, officially supported standards by the reference implementation can be found [here](https://github.com/dfinity/ICRC-1/tree/main/standards).
+However, there are extensions to this standard, one of them being [ICRC-2](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-2/README.md). Further, view the officially supported standards by the [reference implementation](https://github.com/dfinity/ICRC-1/tree/main/standards).
 
 ## Data
 
@@ -22,7 +22,7 @@ type Account = record { owner : principal; subaccount : opt Subaccount; };
 ```
 
 ## Methods
-This section will give you an overview of the ICRC-1 standard methods. If you want to have a more detailed description of how to interact with those endpoints, you can have a look at [the guide on how to interact with an ICRC-1 ledger](/docs/current/rosetta-defi/tokens/indexes).
+This section will give you an overview of the ICRC-1 standard methods. If you want to have a more detailed description of how to interact with those endpoints, you can have a look at [the guide on how to interact with an ICRC-1 ledger](/docs/current/rosetta-defi/token-indexes/).
 ### icrc1_name <span id="name_method"></span>
 
 Returns the name of the token (e.g., `MyToken`).
@@ -155,9 +155,9 @@ record { name = "ICRC-1"; url = "https://github.com/dfinity/ICRC-1" }
 
 The base standard intentionally excludes some ledger functions essential for building a rich DeFi ecosystem, for example:
 
-  - Reliable transaction notifications for smart contracts.
-  - The block structure and the interface for fetching blocks.
-  - Pre-signed transactions.
+- Reliable transaction notifications for smart contracts.
+- The block structure and the interface for fetching blocks.
+- Pre-signed transactions.
 
 The standard defines the `icrc1_supported_standards` endpoint to accommodate these and other future extensions.
 This endpoint returns names of all specifications (e.g., `"ICRC-42"` or `"DIP-20"`) implemented by the ledger.
@@ -195,14 +195,14 @@ The deduplication covers all transactions submitted within a pre-configured time
 The ledger **may** extend the deduplication window into the future by the `PERMITTED_DRIFT` parameter (for example, 2 minutes) to account for the time drift between the client and the Internet Computer.
 
 The client can control the deduplication algorithm using the `created_at_time` and `memo` fields of the [`transfer`](#transfer_method) call argument:
-  * The `created_at_time` field sets the transaction construction time as the number of nanoseconds from the UNIX epoch in the UTC timezone.
-  * The `memo` field does not have any meaning to the ledger, except that the ledger will not deduplicate transfers with different values of the `memo` field.
+* The `created_at_time` field sets the transaction construction time as the number of nanoseconds from the UNIX epoch in the UTC timezone.
+* The `memo` field does not have any meaning to the ledger, except that the ledger will not deduplicate transfers with different values of the `memo` field.
 
 The ledger SHOULD use the following algorithm for transaction deduplication if the client set the `created_at_time` field:
-  * If `created_at_time` is set and is _before_ `time() - TX_WINDOW - PERMITTED_DRIFT` as observed by the ledger, the ledger should return `variant { TooOld }` error.
-  * If `created_at_time` is set and is _after_ `time() + PERMITTED_DRIFT` as observed by the ledger, the ledger should return `variant { CreatedInFuture = record { ledger_time = ... } }` error.
-  * If the ledger observed a structurally equal transfer payload (i.e., all the transfer argument fields and the caller have the same values) at a transaction with index `i`, it should return `variant { Duplicate = record { duplicate_of = i } }`.
-  * Otherwise, the transfer is a new transaction.
+* If `created_at_time` is set and is _before_ `time() - TX_WINDOW - PERMITTED_DRIFT` as observed by the ledger, the ledger should return `variant { TooOld }` error.
+* If `created_at_time` is set and is _after_ `time() + PERMITTED_DRIFT` as observed by the ledger, the ledger should return `variant { CreatedInFuture = record { ledger_time = ... } }` error.
+* If the ledger observed a structurally equal transfer payload (i.e., all the transfer argument fields and the caller have the same values) at a transaction with index `i`, it should return `variant { Duplicate = record { duplicate_of = i } }`.
+* Otherwise, the transfer is a new transaction.
 
 If the client did not set the `created_at_time` field, the ledger SHOULD NOT deduplicate the transaction.
 
@@ -301,12 +301,12 @@ Applications **should** decode textual representation as follows:
 - Decode the text as if it were a principal into `raw_bytes`, ignoring the principal length check (some decoders allow the principal to be at most 29 bytes long).
 - If `raw_bytes` do not end with byte `7F`<sub>16</sub>, return an account with `raw_bytes` as the owner and an empty subaccount.
 - If `raw_bytes` end with `7F`<sub>16</sub>:
-     - **Step 1:** Drop the last `7F`<sub>16</sub> byte.
-     - **Step 2:** Read the last byte `N` and drop it. If `N > 32` or `N = 0`, raise an error.
-     - **Step 3:** Take the last N bytes and strip them from the input.
-        - If the first byte in the stripped sequence is zero, raise an error.
-        - Prepend the bytes with (32 - N) zeros on the left to get a 32-byte subaccount.
-     - **Step 4:** Return an account with the owner being the rest of the input sequence as the owner and the subaccount being the byte array constructed in the previous step.
+    - **Step 1:** Drop the last `7F`<sub>16</sub> byte.
+    - **Step 2:** Read the last byte `N` and drop it. If `N > 32` or `N = 0`, raise an error.
+    - **Step 3:** Take the last N bytes and strip them from the input.
+      - If the first byte in the stripped sequence is zero, raise an error.
+      - Prepend the bytes with (32 - N) zeros on the left to get a 32-byte subaccount.
+    - **Step 4:** Return an account with the owner being the rest of the input sequence as the owner and the subaccount being the byte array constructed in the previous step.
 
 In pseudocode:
 

@@ -8,10 +8,10 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Governance", "Tutorial"]} />
 
-To help developers, DFINITY has created the [sns-testing repo](https://github.com/dfinity/sns-testing) which has scripts that help developers test the SNS process. Developers can run a local version of the ICP execution environment on their local machine, deploy their dapp locally, and run through [the stages](../launching/launch-summary-1proposal.mdx) of decentralizing their dapp.
+To help developers, DFINITY has created the [sns-testing repo](https://github.com/dfinity/sns-testing) which has scripts that help developers test the SNS process. Developers can run a local version of the ICP execution environment on their local machine, deploy their dapp locally, and run through [the stages of decentralizing their dapp](../launching/launch-summary-1proposal.mdx).
 
 :::info
-`sns-testing` repo might not work for any dapp. It is intended to showcase one example dapp, and so one can tweak it for their own dapp.
+`sns-testing` repo might not work for all dapps. It is intended to showcase one example dapp, and so one can tweak it for their own dapp.
 :::
 
 After having [chosen the initial SNS parameters in a .yaml file](../tokenomics/preparation.mdx) and before requesting an SNS launch in production, the SNS launch should be tested locally.
@@ -38,13 +38,13 @@ These scripts have been most tested with a stack that looks like this:
 
 ## Getting started
 
-To use the `sns-testing` commands and their arguments properly, you need to first set up the `sns-testing` repo properly. Please see [README](https://github.com/dfinity/sns-testing#sns-lifecycle).
+To use the `sns-testing` commands and their arguments properly, you need to first [set up the `sns-testing` repo properly](https://github.com/dfinity/sns-testing#sns-lifecycle).
 
 :::info
 - All of the commands in this article require `sns-testing` to be set up properly.
-- If you have started using `sns-testing` before August 2023 and are using the old legacy flow of launching an SNS (please see [here](../launching/index.mdx) for more context), please continue your work with the legacy documentation on [this old README](https://github.com/dfinity/sns-testing/blob/v1-legacy/README.md). In particular,
-- If you were following the Apple silicon-only instructions, please switch to the `v1-legacy` Git tag.
-- If you were using the Docker-based deployment approach, please use the Docker image: `docker pull ghcr.io/dfinity/sns-testing:v1-legacy`.
+- If you have started using `sns-testing` before August 2023 and are using the [old legacy flow of launching an SNS](../launching/index.mdx), please continue your work with the [legacy documentation](https://github.com/dfinity/sns-testing/blob/v1-legacy/README.md). In particular,
+    - If you were following the Apple silicon-only instructions, please switch to the `v1-legacy` Git tag.
+    - If you were using the Docker-based deployment approach, please use the Docker image: `docker pull ghcr.io/dfinity/sns-testing:v1-legacy`.
 
 :::
 
@@ -159,24 +159,11 @@ of an adopted proposal in Stage 4.
 Once a canister or dapp has been handed over to an SNS, it will be updated via proposals and voting. Developers can test this flow by [using commands from `sns-testing`](https://github.com/dfinity/sns-testing#sns-lifecycle).
 
 
-<table border="1">
-    <tr>
-        <th>Action</th>
-        <th>Example in `sns-testing`</th>
-    </tr>
-    <tr>
-        <td>Upgrade a yet-to-be-decentralized canister by submitting an SNS proposal that can be voted on using the SNS developer neuron.</td>
-        <td><code>./upgrade_test_canister.sh</code></td>
-    </tr>
-    <tr>
-        <td>Submit proposal to upgrade a decentralized canister</td>
-        <td><code>./upgrade_test_canister.sh]</code></td>
-    </tr>
-     <tr>
-        <td>Vote on a proposal that upgrades a decentralized canister</td>
-        <td><code>./vote_on_sns_proposal.sh</code></td>
-    </tr>
-</table>
+| Action | Example in `sns-testing` |
+|--------|--------------------------|
+| Upgrade a yet-to-be-decentralized canister by submitting an SNS proposal that can be voted on using the SNS developer neuron. | `./upgrade_test_canister.sh` |
+| Submit proposal to upgrade a decentralized canister | `./upgrade_test_canister.sh` |
+| Vote on a proposal that upgrades a decentralized canister | `./vote_on_sns_proposal.sh` |
 
 You might also want to test integrations and basic SNS functionality.
 For this purpose you can use the above instructions after the test SNS is

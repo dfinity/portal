@@ -9,9 +9,9 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Intermediate", "Tokens"]} />
 
-Custom tokens can be created and deployed on ICP using the [ICRC-1](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1) or [ICRC-2](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-2) token standards.
+Custom fungible tokens can be created and deployed on ICP using the [ICRC-1](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1) or [ICRC-2](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-2) token standards. Non-fungible tokens can be created using the [ICRC-7](https://github.com/dfinity/ICRC/tree/main/ICRCs/ICRC-7) and [ICRC-37](https://github.com/dfinity/ICRC/tree/main/ICRCs/ICRC-37) standards.
 
-The ICRC-1 standard is considered the 'base' standard, as it defines a set of general functionalities that all ledgers must adhere to. Any tokens and their corresponding ledgers must fulfill all requirements of the ICRC-1 standard. Read about [token standards](/docs/current/rosetta-defi/token-standards/index) to learn more about what token standards are and the functionalities each one supports.
+The ICRC-1 standard is considered the 'base' standard, as it defines a set of general functionalities that all ledgers must adhere to. Any tokens and their corresponding ledgers must fulfill all requirements of the ICRC-1 standard. Read about [token standards](/docs/current/rosetta-defi/token-standards/) to learn more about what token standards are and the functionalities each one supports.
 
 This guide will provide a quickstart on how you can create and deploy your own custom token using the ICRC-1 standard.
 
@@ -135,7 +135,7 @@ dfx deploy icrc1_ledger_canister --specified-id mxzaz-hqaaa-aaaar-qaada-cai
 
 For additional details, you can learn more in the [ICRC-1 ledger documentation](/docs/current/rosetta-defi/token-ledgers/setup/icrc1_ledger_setup).
 
-Your token has been created locally. To interact with your token, [learn how to interact with the ICRC-1 ledger](/docs/current/rosetta-defi/tokens/indexes).
+Your token has been created locally. To interact with your token, [learn how to interact with the ICRC-1 ledger](/docs/current/rosetta-defi/token-indexes/).
 
 ## Deploying your token to the mainnet
 
@@ -151,14 +151,10 @@ If you want to deploy your ICRC-1 token on the mainnet, follow these steps:
 
 - Be sure that your ledger canister has cycles attached to the `create_canister` messages, using the `cycles_for_archive_creation`.
 
-## Next steps
-
-[Learn how to interact with the ICRC-1 ledger](/docs/current/rosetta-defi/token-ledgers/usage/icrc1_ledger_usage)
-
 ## Resources
 
 - [ICRC-1 ledger documentation](/docs/current/rosetta-defi/token-ledgers/setup/icrc1_ledger_setup).
 
-- [ICRC-1 indexes](/docs/current/rosetta-defi/tokens/indexes).
+- [ICRC-1 indexes](/docs/current/rosetta-defi/token-indexes/).
 
 - [ICRC-1 specification](https://github.com/dfinity/ICRC-1).

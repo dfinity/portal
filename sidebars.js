@@ -821,7 +821,7 @@ build: [
 rosetta_defi: [
       {
         type: "doc",
-        label: "Rosetta & DeFi",
+        label: "Developing DeFi applications",
         id: "rosetta-defi/overview",
       },
       {
@@ -915,7 +915,6 @@ rosetta_defi: [
                 id: "rosetta-defi/chain-key-tokens/ckbtc/overview",
               },
               items: [
-                "rosetta-defi/chain-key-tokens/ckbtc/making-transactions",
                 "rosetta-defi/chain-key-tokens/ckbtc/using-ckbtc-in-dapps",
               ],
             },
@@ -927,7 +926,6 @@ rosetta_defi: [
                 id: "rosetta-defi/chain-key-tokens/cketh/overview",
               },
               items: [
-                "rosetta-defi/chain-key-tokens/cketh/making-transactions",
                 "rosetta-defi/chain-key-tokens/cketh/using-cketh-in-dapps",
               ],
             },
@@ -962,7 +960,7 @@ rosetta_defi: [
 references: [
   {
     type: "category",
-    label: "IC specification",
+    label: "IC specifications",
     items: [
       "references/ic-interface-spec",
       "references/http-gateway-protocol-spec"

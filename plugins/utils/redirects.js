@@ -139,9 +139,9 @@ const redirects = `
   /docs/current/developer-docs/quickstart/windows-wsl /docs/current/building-dapps/getting-started/install
   /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/developer-journey/
 
-  /docs/rosetta-api/ledger /docs/current/rosetta-defi/token-standards/index
+  /docs/rosetta-api/ledger /docs/current/rosetta-defi/token-standards/
   /docs/rosetta-api/ledger-local-setup /docs/current/rosetta-defi/token-ledgers/setup/icp_ledger_setup
-  /docs/integration/ledger-quick-start /docs/current/rosetta-defi/token-standards/index
+  /docs/integration/ledger-quick-start /docs/current/rosetta-defi/token-standards/
   /docs/current/developer-docs/functionality/ledger/* /docs/current/rosetta-defi/token-ledgers/setup/icp_ledger_setup
 
   /docs/base-libraries/* /docs/current/motoko/main/base/:splat
@@ -365,16 +365,16 @@ const redirects = `
   /docs/current/developer-docs/integrations/ledger/  /docs/current/rosetta-defi/overview
   /docs/current/developer-docs/integrations/ledger/ledger-local-setup  /docs/current/rosetta-defi/token-ledgers/setup/icp_ledger_setup
   /docs/current/developer-docs/integrations/ledger/interact-with-ledger  /docs/current/rosetta-defi/token-ledgers/usage/icp_ledger_usage
-  /docs/current/developer-docs/integrations/ledger/icp-index-local-setup /docs/current/rosetta-defi/tokens/indexes
+  /docs/current/developer-docs/integrations/ledger/icp-index-local-setup /docs/current/rosetta-defi/token-indexes/
   /docs/current/developer-docs/integrations/ledger/collecting-dust /docs/current/rosetta-defi/icp-tokens/account-trimming
   /docs/current/developer-docs/integrations/icrc-1/index /docs/current/references/icrc1-standard
   /docs/current/developer-docs/integrations/icrc-1/ /docs/current/references/icrc1-standard
   /docs/current/developer-docs/integrations/icrc-1/icrc1-ledger-setup /docs/current/rosetta-defi/token-ledgers/setup/icrc1_ledger_setup
   /docs/current/developer-docs/integrations/icrc-1/interact-with-ICRC-1-ledger /docs/current/rosetta-defi/token-ledgers/usage/icrc1_ledger_usage
-  /docs/current/developer-docs/integrations/icrc-1/icrc1-index-setup /docs/current/rosetta-defi/tokens/indexes
+  /docs/current/developer-docs/integrations/icrc-1/icrc1-index-setup /docs/current/rosetta-defi/token-indexes/
   /docs/current/developer-docs/integrations/exchange-rate/exchange-rate-canister /docs/current/developer-education/system-canisters/
-  /docs/current/developer-docs/integrations/rosetta/index  /docs/current/rosetta-defi/rosetta/overview
-  /docs/current/developer-docs/integrations/rosetta/  /docs/current/rosetta-defi/rosetta/overview
+  /docs/current/developer-docs/integrations/rosetta/index  /docs/current/rosetta-defi/overview
+  /docs/current/developer-docs/integrations/rosetta/  /docs/current/rosetta-defi/overview
   /docs/current/tokenomics/token-holders/custody-options-intro /docs/current/rosetta-defi/wallets/overview
   /docs/current/tokenomics/token-holders/self-custody-quickstart /docs/current/rosetta-defi/wallets/self-custody/self-custody-quickstart
   /docs/current/developer-docs/use-cases/considerations-for-nft-devs /docs/current/rosetta-defi/nfts/overview
@@ -520,10 +520,10 @@ const redirects = `
   /docs/current/building-dapps/governing-dapps/integrating/frontend-integration /docs/current/building-dapps/governing-dapps/launching/integrating
   /docs/current/developer-docs/integrations/sns/ /docs/current/building-dapps/governing-dapps/overview
   /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/overview /docs/current/rosetta-defi/chain-key-tokens/ckbtc/overview
-  /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/making-transactions /docs/current/rosetta-defi/chain-key-tokens/ckbtc/making-transactions
+  /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/making-transactions /docs/current/rosetta-defi/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/using-ckbtc-in-dapps /docs/current/rosetta-defi/chain-key-tokens/ckbtc/using-ckbtc-in-dapps
   /docs/current/developer-docs/multi-chain/ethereum/cketh/overview /docs/current/rosetta-defi/chain-key-tokens/cketh/overview
-  /docs/current/developer-docs/multi-chain/ethereum/cketh/making-transactions /docs/current/rosetta-defi/chain-key-tokens/cketh/making-transactions
+  /docs/current/developer-docs/multi-chain/ethereum/cketh/making-transactions /docs/current/rosetta-defi/chain-key-tokens/cketh/overview
   /docs/current/developer-docs/multi-chain/ethereum/cketh/using-cketh-in-dapps /docs/current/rosetta-defi/chain-key-tokens/cketh/using-cketh-in-dapps
   /docs/current/developer-docs/web-apps/user-login/internet-identity/overview /docs/current/building-dapps/authentication/overview
   /docs/current/developer-docs/web-apps/user-login/internet-identity/creating-ii /docs/current/building-dapps/authentication/overview
@@ -533,10 +533,10 @@ const redirects = `
   /docs/current/developer-docs/web-apps/user-login/email-password /docs/current/building-dapps/authentication/overview
   /docs/current/developer-docs/multi-chain/ethereum/using-eth/siwe /docs/current/building-dapps/authentication/overview
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/current/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/defi/icrc-1/icrc1-index-setup /docs/current/rosetta-defi/tokens/indexes
-  /docs/current/defi/icp-tokens/icp-index-local-setup /docs/current/rosetta-defi/tokens/indexes
+  /docs/current/developer-docs/defi/icrc-1/icrc1-index-setup /docs/current/rosetta-defi/token-indexes/
+  /docs/current/defi/icp-tokens/icp-index-local-setup /docs/current/rosetta-defi/token-indexes/
   /docs/current/developer-docs/smart-contracts/signatures/signing-transactions /docs/current/building-dapps/using-network-features/signatures/t-ecdsa
-  /docs/current/developer-docs/defi/icp-tokens/overview /docs/current/rosetta-defi/token-standards/index
+  /docs/current/developer-docs/defi/icp-tokens/overview /docs/current/rosetta-defi/token-standards/
   /docs/current/developer-docs/defi/asset-custody/self-custody-quickstart /docs/current/rosetta-defi/wallets/self-custody/self-custody-quickstart
   /docs/current/developer-docs/defi/asset-custody/hardware-wallet-cli /docs/current/rosetta-defi/wallets/self-custody/hardware-wallet-cli
   /docs/current/developer-docs/defi/asset-custody/custody-options /docs/current/rosetta-defi/wallets/overview
@@ -956,13 +956,13 @@ const redirects = `
   /docs/current/developer-docs/daos/sns/managing/managing-nervous-system-parameters /docs/current/building-dapps/governing-dapps/managing/managing-nervous-system-parameters
 
   /docs/current/developer-docs/defi/overview /docs/current/rosetta-defi/overview
-  /docs/current/developer-docs/defi/tokens/token-standards /docs/current/rosetta-defi/token-standards/index
+  /docs/current/developer-docs/defi/tokens/token-standards /docs/current/rosetta-defi/token-standards/
   /docs/current/developer-docs/defi/tokens/ledger/setup/icp_ledger_setup /docs/current/rosetta-defi/token-ledgers/setup/icp_ledger_setup
   /docs/current/developer-docs/defi/tokens/ledger/setup/icrc1_ledger_setup /docs/current/rosetta-defi/token-ledgers/setup/icrc1_ledger_setup
   /docs/current/developer-docs/defi/tokens/ledger/usage/icp_ledger_usage /docs/current/rosetta-defi/token-ledgers/usage/icp_ledger_usage
   /docs/current/developer-docs/defi/tokens/ledger/usage/icrc1_ledger_usage /docs/current/rosetta-defi/token-ledgers/usage/icrc1_ledger_usage
   /docs/current/developer-docs/defi/tokens/advanced/direct_integration /docs/current/rosetta-defi/tokens/advanced/direct_integration
-  /docs/current/developer-docs/defi/tokens/indexes /docs/current/rosetta-defi/tokens/indexes
+  /docs/current/developer-docs/defi/tokens/indexes /docs/current/rosetta-defi/token-indexes/
   /docs/current/developer-docs/defi/icp-tokens/account-trimming /docs/current/rosetta-defi/icp-tokens/account-trimming
   /docs/current/developer-docs/defi/tokens/create /docs/current/rosetta-defi/tokens/create
   /docs/current/developer-docs/defi/cycles/cycles-ledger /docs/current/rosetta-defi/token-ledgers/cycles-ledger
@@ -1018,10 +1018,10 @@ const redirects = `
 
   /docs/current/developer-docs/multi-chain/chain-key-tokens/overview /docs/current/rosetta-defi/chain-key-tokens/overview
   /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview /docs/current/rosetta-defi/chain-key-tokens/ckbtc/overview
-  /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/making-transactions /docs/current/rosetta-defi/chain-key-tokens/ckbtc/making-transactions
+  /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/making-transactions /docs/current/rosetta-defi/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/using-ckbtc-in-dapps /docs/current/rosetta-defi/chain-key-tokens/ckbtc/using-ckbtc-in-dapps
   /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/overview /docs/current/rosetta-defi/chain-key-tokens/cketh/overview
-  /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/making-transactions /docs/current/rosetta-defi/chain-key-tokens/cketh/making-transactions
+  /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/making-transactions /docs/current/rosetta-defi/chain-key-tokens/cketh/overview
   /docs/current/developer-docs/multi-chain/chain-key-tokens/cketh/using-cketh-in-dapps /docs/current/rosetta-defi/chain-key-tokens/cketh/using-cketh-in-dapps
   /docs/current/developer-docs/multi-chain/chain-key-tokens/ckerc20/overview /docs/current/rosetta-defi/chain-key-tokens/ckerc20/overview
   /docs/current/developer-docs/multi-chain/chain-key-tokens/ckerc20/making-transactions /docs/current/rosetta-defi/chain-key-tokens/ckerc20/making-transactions

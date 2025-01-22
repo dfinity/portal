@@ -66,10 +66,13 @@ By default, `dfx` will store your identity in the local keyring/keychain. If a k
 
 Make sure you switch to the newly created identity as explained below.
 
-### Backup and recover from seedphrase
+### Backup and recover from seed phrase
 
+When you create a new identity with `dfx identity new`, a seed phrase will be returned in the command's output. This seed phrase is only shown once and can be used to recover your identity if necessary. Therefore, this seed phrase should be backed up to a secure location, such as a password manager like 1Password or an offline location, such as written on a piece of paper.
 
 To recover an identity, use `dfx identity import --seed-file seedphrase.txt`, where `seedphrase.txt` contains the seed phrase shown when you created your identity.
+
+If you didn't save the seed phrase, you can use `dfx identity export` to display the private key. There is no way to get the seed phrase from a private key; therefore, you'd need to back up this file the same way you would any other important, secure file.
 
 ## Using your developer identity
 

@@ -1,9 +1,8 @@
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Ledger canister {#_the_ledger_canister}
+# Ledger canister specification
 
 <MarkdownChipRow labels={["Reference"]} />
-
 
 This document is a specification of the public interface of the ledger canister. It provides an overview of the functionality, details some internal aspects, and documents publicly available methods. It also provides an abstract mathematical model precisely describing the expected behavior of the methods implemented by the canister, albeit at a somewhat high level of abstraction.
 
@@ -23,20 +22,23 @@ There can be multiple utility **tokens** at once. The **utility token** used by 
 
 The ledger canister keeps track of **accounts**:
 
--   Every account belongs to (and is controlled by) a principal.
+- Every account belongs to (and is controlled by) a principal.
 
--   Each account has precisely one owner (i.e., no "joint accounts").
+- Each account has precisely one owner (i.e., no "joint accounts").
 
--   A principal may control more than one account. The different accounts of the same principal are distinguished via a (32-byte string) subaccount identifier. So, logically, each ledger account corresponds to a pair `(account_owner, subaccount_identifier)`.
+- A principal may control more than one account. The different accounts of the same principal are distinguished via a (32-byte string) subaccount identifier. So, logically, each ledger account corresponds to a pair `(account_owner, subaccount_identifier)`.
 
--   The account identifier corresponding to such a pair is a 32-byte string calculated as follows:
+- The account identifier corresponding to such a pair is a 32-byte string calculated as follows:
 
+```
         account_identifier(principal,subaccount_identifier) = CRC32(h) || h
+```
 
     where:
 
+```
         h = sha224(“\x0Aaccount-id” || principal || subaccount_identifier)
-
+```
 
 The following call to the method `account_identifier` on the ledger canister (`ryjl3-tyaaa-aaaaa-aaaba-cai`) can be used to get the account identifier of the first subaccount for your principal; replace the value `PRINCIPAL` with your account's principal:
 
@@ -50,9 +52,9 @@ dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai account_identifier '(record {owner
 
 On the backend, the method `account_identifier` completes the following steps to get the account identifier:
 
--   First, it hashes the principal and the subaccount identifier using SHA224 the concatenation of the domain separator `\x0Aaccount-id`. Here, the domain separator consists of a string (here \"account-id\") prepended by a single byte equal to the length of the string (here, \\x0A).
+- First, it hashes the principal and the subaccount identifier using SHA224 the concatenation of the domain separator `\x0Aaccount-id`. Here, the domain separator consists of a string (here \"account-id\") prepended by a single byte equal to the length of the string (here, \\x0A).
 
--   Then, it is prepended with the (big-endian representation of the) CRC32 of the resulting hash value.
+- Then, it is prepended with the (big-endian representation of the) CRC32 of the resulting hash value.
 
 #### Default account {#_default_account}
 
@@ -131,53 +133,47 @@ type Ledger = vec Block
 
 The ledger canister implements **methods** to:
 
--   Transfer ICP from one account to another.
+- Transfer ICP from one account to another.
 
--   Get the balance of a ledger account.
+- Get the balance of a ledger account.
 
 ### Transferring tokens {#_transferring_tokens}
 
 The owner of an account can **transfer tokens** from that account to any other account using the `transfer` method. The inputs to the method are as follows:
 
--   `amount`: the amount of tokens to be transferred.
+- `amount`: the amount of tokens to be transferred.
 
--   `fee`: the fee to be paid for the transfer.
+- `fee`: the fee to be paid for the transfer.
 
--   `from_subaccount`: a subaccount identifier that specifies from which account of the caller the ICP should take place. This parameter is optional; if it is not specified by the caller, then it is set to the all 0 vector.
+- `from_subaccount`: a subaccount identifier that specifies from which account of the caller the ICP should take place. This parameter is optional; if it is not specified by the caller, then it is set to the all 0 vector.
 
--   `to`: the account identifier to which the tokens should be transferred.
+- `to`: the account identifier to which the tokens should be transferred.
 
--   `memo`: this is a 64-bit number chosen by the sender; it can be used in various ways, e.g., to identify specific transfers.
+- `memo`: this is a 64-bit number chosen by the sender; it can be used in various ways, e.g., to identify specific transfers.
 
--   `created_at_time`: a timestamp indicating when the transaction was created by the caller; if it is not specified by the caller, then this is set to the current ICP time.
+- `created_at_time`: a timestamp indicating when the transaction was created by the caller; if it is not specified by the caller, then this is set to the current ICP time.
 
 The ledger canister executes a `transfer` call as follows:
 
--   #### Step 1: Checks that the destination is a well-formed account identifier.
+- #### Step 1: Checks that the destination is a well-formed account identifier.
 
--   #### Step 2: Checks that the transaction is:
-    - Recent enough (has been created within the last 24 hours).
-    - Is not "in the future" (that is, it checks that `created_at_time` is not in the future by more than an allowed time drift, specified by a parameter in ICP, currently set at 60 seconds).
+- #### Step 2: Checks that the transaction is:
+- Recent enough (has been created within the last 24 hours).
+- Is not "in the future" (that is, it checks that `created_at_time` is not in the future by more than an allowed time drift, specified by a parameter in ICP, currently set at 60 seconds).
 
--   #### Step 3: Calculates the source account (using the calling principal and `from_subaccount`) and checks that it holds more than amount + fee ICP.
+- #### Step 3: Calculates the source account (using the calling principal and `from_subaccount`) and checks that it holds more than amount + fee ICP.
 
--   #### Step 4: Checks that `fee` matches the `standard_fee` (currently, the standard fee is a fixed constant set to be 10^-4^ ICP, see below for an exception).
+- #### Step 4: Checks that `fee` matches the `standard_fee` (currently, the standard fee is a fixed constant set to be 10^-4^ ICP, see below for an exception).
 
--   #### Step 5: Checks that an identical transaction has not been submitted in the last 24 hours.
+- #### Step 5: Checks that an identical transaction has not been submitted in the last 24 hours.
 
--   #### Step 6: If any of the checks fail, it returns an appropriate error.
-Otherwise, the transaction:
-    -   Substracts amount + fee from the source account.
-
-    -   Adds amount to the destination account.
-
-    -   Adds transaction `(Transfer(from, to, amount, fee), memo, created_at_time)` to the ledger:
-
-        -   It creates a block, containing the transaction, sets the `parent_hash` in the block to be `last_hash` (essentially, the hash of the last block in the ledger), and `timestamp` in the block to be the system timestamp.
-
-        -   It calculates `last_hash` as the hash of the encoding of the block newly created (see below for how the encoding is calculated).
-
-        -   It appends the block to the ledger and returns its height.
+- #### Step 6: If any of the checks fail, it returns an appropriate error. Otherwise, the transaction:
+    - Substracts amount + fee from the source account.
+    - Adds amount to the destination account.
+    - Adds transaction `(Transfer(from, to, amount, fee), memo, created_at_time)` to the ledger:
+        - It creates a block, containing the transaction, sets the `parent_hash` in the block to be `last_hash` (essentially, the hash of the last block in the ledger), and `timestamp` in the block to be the system timestamp.
+        - It calculates `last_hash` as the hash of the encoding of the block newly created (see below for how the encoding is calculated).
+        - It appends the block to the ledger and returns its height.
 
 ### Chaining ledger blocks {#_chaining_ledger_blocks}
 
@@ -321,31 +317,31 @@ The method also returns two additional pieces of information: the index of the l
 
 In more detail, the input to the `query_blocks` method consists of:
 
--   An index `from` indicating the first block in the range to be retrieved.
+- An index `from` indicating the first block in the range to be retrieved.
 
--   A length `len`, indicating how many blocks should be returned.
+- A length `len`, indicating how many blocks should be returned.
 
 The reply consists of:
 
--   `length`: the length of the entire transaction ledger at the time when the call was executed.
+- `length`: the length of the entire transaction ledger at the time when the call was executed.
 
--   `certificate`: an optional certificate. This is an ICP signature on the hash of the last block in the ledger; the certificate is only returned if the method is invoked as an unreplicated query call.
+- `certificate`: an optional certificate. This is an ICP signature on the hash of the last block in the ledger; the certificate is only returned if the method is invoked as an unreplicated query call.
 
--   `blocks`: a (potentially partial) list of the requested blocks. The range of blocks returned is restricted because a) some blocks may be already stored in an archive and b) the number of blocks that can be returned in a single call is bounded. Specifically, the ledger canister will return the prefix of the requested range of blocks present in the ledger that fits within the size of replies. Currently, the size of replies is limited to 2000 blocks.
+- `blocks`: a (potentially partial) list of the requested blocks. The range of blocks returned is restricted because a) some blocks may be already stored in an archive and b) the number of blocks that can be returned in a single call is bounded. Specifically, the ledger canister will return the prefix of the requested range of blocks present in the ledger that fits within the size of replies. Currently, the size of replies is limited to 2000 blocks.
 
--   `start_index`: the index of the first block in the list returned; this is the index of the first block that is stored in the ledger canister.
+- `start_index`: the index of the first block in the list returned; this is the index of the first block that is stored in the ledger canister.
 
--   `archived_blocks`: information about the location of archived blocks; for each archiving canister, the information specifies the range of blocks that are archived (starting block index and length of stored chain) together with information regarding the identity of the canister (and the method to invoke).
+- `archived_blocks`: information about the location of archived blocks; for each archiving canister, the information specifies the range of blocks that are archived (starting block index and length of stored chain) together with information regarding the identity of the canister (and the method to invoke).
 
 For example, assume that at some point, blocks forming the ledger are stored in `n` canisters, with canister `i` storing the range of blocks `(li,ri)`. The ledger canister itself stores range `(l~,r~)`. Calling `query_blocks` with input parameter `(l,len)` returns:
 
--   `length` is `rn+1`.
+- `length` is `rn+1`.
 
--   `blocks` is `(l,l+len) ∩ (ln,rn)` restricted to the first 2000 blocks.
+- `blocks` is `(l,l+len) ∩ (ln,rn)` restricted to the first 2000 blocks.
 
--   `start_index` is `l`.
+- `start_index` is `l`.
 
--   `archived_blocks` consists of the list `((li,ri) ∩ (l,l+len),callbacki)i=1..n-1` where `callbacki` is the callback to invoke to retrieve the corresponding blocks:
+- `archived_blocks` consists of the list `((li,ri) ∩ (l,l+len),callbacki)i=1..n-1` where `callbacki` is the callback to invoke to retrieve the corresponding blocks:
 ```
 type GetBlocksArgs = record {
     // The index of the first block to fetch.
@@ -491,17 +487,17 @@ Ledger = List(Block)
 
 The state of the ledger canister comprises:
 
--   The transaction ledger (a chained list of blocks containing transactions).
+- The transaction ledger (a chained list of blocks containing transactions).
 
--   Global variables:
+- Global variables:
 
-    -   `last_hash`: an optional variable that records the hash of the last block in the ledger; it is set to None if no block is present in the ledger.
+    - `last_hash`: an optional variable that records the hash of the last block in the ledger; it is set to None if no block is present in the ledger.
 
-    -   `last_archived_block`: Nat;
+    - `last_archived_block`: Nat;
 
--   Location: Nat ↦ Nat;
+- Location: Nat ↦ Nat;
 
--   Last_archive: Nat;
+- Last_archive: Nat;
 ```
     State = {
       ledger: Ledger;
