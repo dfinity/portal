@@ -48,16 +48,13 @@ You will be prompted to select the language that your backend canister will use.
   Rust
   TypeScript (Azle)
   Python (Kybra)
-  Rust
-  TypeScript (Azle)
-  Python (Kybra)
 ```
 
 :::info
 `dfx` versions `v0.17.0` and newer support this `dfx new` interactive prompt. [Learn more about `dfx v0.17.0`](/blog/2024/02/14/news-and-updates/update#dfx-v0170).
 :::
 
-Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
+Then, select a frontend framework for your frontend canister. Select 'No frontend':
 
 ```
   ? Select a frontend framework: ›
@@ -66,19 +63,12 @@ Then, select a frontend framework for your frontend canister. Select 'No fronten
   Vue
   Vanilla JS
   No JS template
-  ? Select a frontend framework: ›
-  SvelteKit
-  React
-  Vue
-  Vanilla JS
-  No JS template
-❯ No frontend canister
+❯ No frontend
 ```
 
 Lastly, you can include extra features to be added to your project:
 
 ```
-  ? Add extra features (space to select, enter to confirm) ›
   ? Add extra features (space to select, enter to confirm) ›
 ⬚ Internet Identity
 ⬚ Bitcoin (Regtest)
@@ -115,30 +105,9 @@ First, open the `dfx.json` file in your project's directory. You need to configu
       "args": "",
       "packtool": ""
     }
-  },
-  "output_env_file": ".env",
-  "version": 1
-    "canisters": {
-        "dependencies_backend": {
-            "type": "motoko",
-            "main": "src/dependencies_backend/main.mo",
-            "dependencies": [
-                "internet_identity"
-            ]
-        },
-        "internet_identity": {
-            "type": "pull",
-            "id": "rdmx6-jaaaa-aaaaa-aaadq-cai"
-        }
-  },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
-  "output_env_file": ".env",
-  "version": 1
+  },
+  "output_env_file": ".env",
+  "version": 1
 }
 ```
 
@@ -160,15 +129,6 @@ The `deps/` folder is also created in your project's root folder. The `deps/pull
 
 ```json title="deps/pulled.json"
 {
-  "canisters": {
-    "rdmx6-jaaaa-aaaaa-aaadq-cai": {
-      "name": "internet_identity",
-      "wasm_hash": "07869792e0841765e24014a2cb23e4a53d3147be6051bfc4966565017cd5fb2c",
-      "init_guide": "Use '(null)' for sensible defaults. See the candid interface for more details.",
-      "candid_args": "(opt InternetIdentityInit)",
-      "gzip": true
-    }
-  }
   "canisters": {
     "rdmx6-jaaaa-aaaaa-aaadq-cai": {
       "name": "internet_identity",
@@ -229,10 +189,7 @@ The output will include a local Candid UI URL for both the `dependencies_backend
 Installing code for canister dependencies_backend, with canister ID bkyz2-fmaaa-aaaaa-qaaaq-cai
 Deployed canisters.
 URLs:
-  Backend canister via Candid interface:
-    dependencies_backend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
-    internet_identity: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=rdmx6-jaaaa-aaaaa-aaadq-cai
-  Backend canister via Candid interface:
+    Backend canister via Candid interface:
     dependencies_backend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
     internet_identity: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=rdmx6-jaaaa-aaaaa-aaadq-cai
 ```
