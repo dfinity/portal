@@ -83,7 +83,7 @@ const redirects = `
   /docs/current/developer-docs/build/languages/work-with-languages /docs/current/building-dapps/launching-a-dapp/create-and-install
   /docs/current/developer-docs/build/using-an-agent /docs/current/building-dapps/launching-a-dapp/create-and-install
   /docs/current/developer-docs/build/backend/reproducible-builds /docs/current/developer-education/developer-playbook/developer-best-practices/reproducible-builds
-  /docs/current/developer-docs/build/cdks/ /docs/current/building-dapps/developer-tools/cdks/index
+  /docs/current/developer-docs/build/cdks/ /docs/current/building-dapps/developer-tools/cdks/
   /docs/current/developer-docs/build/frontend/default-frontend /docs/current/building-dapps/dapp-frontends/using-an-asset-canister
   /docs/current/developer-docs/build/frontend/webpack-config /docs/current/building-dapps/dapp-frontends/using-an-asset-canister#modifying-the-webpack-configuration
   /docs/current/developer-docs/build/install-upgrade-remove /docs/current/building-dapps/getting-started/install
@@ -220,7 +220,7 @@ const redirects = `
   /docs/current/developer-docs/index /docs/current/developer-education/developer-concepts/network-overview
   /docs/current/developer-docs /docs/current/developer-education/developer-concepts/network-overview
   /docs/current/concepts/what-is-ic /docs/current/developer-education/developer-concepts/network-overview
-  /docs/current/developer-docs/setup/development-workflow /docs/current/developer-education/developer-playbook/development-workflow
+  /docs/current/developer-docs/setup/development-workflow /docs/current/developer-education/developer-playbook/developer-workflow
   /docs/current/developer-docs/setup/hello-world /docs/current/building-dapps/getting-started/write-canister-code
   /docs/current/developer-docs/setup/install/ /docs/current/building-dapps/getting-started/install
   /docs/current/developer-docs/setup/accounts /docs/current/building-dapps/getting-started/identities
@@ -237,7 +237,7 @@ const redirects = `
   /docs/current/developer-docs/agents/javascript-intro /docs/current/building-dapps/interacting-with-dapps/agents/javascript-agent
   /docs/current/developer-docs/agents/nodejs /docs/current/building-dapps/interacting-with-dapps/agents/nodejs
   /docs/current/developer-docs/agents/ic-agent-dfinity /docs/current/building-dapps/interacting-with-dapps/agents/rust-agent
-  /docs/current/references/gitpod /docs/current/building-dapps/developer-tools/ide/gitpod
+  /docs/current/references/gitpod /docs/current/building-dapps/developer-tools/ide/icp-ninja
   /docs/current/developer-docs/setup/playground /docs/current/building-dapps/getting-started/deploy-and-manage
   /docs/current/developer-docs/setup/vs-code /docs/current/building-dapps/developer-tools/ide/vs-code
   /docs/current/developer-docs/setup/react-quickstart /docs/current/building-dapps/getting-started/quickstart/first-web-app
@@ -266,7 +266,7 @@ const redirects = `
   /docs/current/references/cli-reference/dfx-wallet /docs/current/building-dapps/developer-tools/dfx/dfx-wallet
   /docs/current/references/cli-reference/dfx-envars /docs/current/building-dapps/developer-tools/dfx/dfx-envars
   /docs/current/references/cli-reference/dfx-json-reference /docs/current/building-dapps/developer-tools/dfx-json-reference
-  /docs/current/references/dfxvm/ /docs/current/building-dapps/developer-tools/dfxvm/dfx/
+  /docs/current/references/dfxvm/ /docs/current/building-dapps/developer-tools/dfxvm/
   /docs/current/references/quill-cli-reference/ /docs/current/building-dapps/developer-tools/quill/quill-parent
   /docs/current/references/quill-cli-reference/quill-account-balance /docs/current/building-dapps/developer-tools/quill/quill-account-balance
   /docs/current/references/quill-cli-reference/ckbtc/quill-ckbtc /docs/current/building-dapps/developer-tools/quill/ckbtc/quill-ckbtc
@@ -366,7 +366,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/ledger/ledger-local-setup  /docs/current/rosetta-defi/token-ledgers/setup/icp_ledger_setup
   /docs/current/developer-docs/integrations/ledger/interact-with-ledger  /docs/current/rosetta-defi/token-ledgers/usage/icp_ledger_usage
   /docs/current/developer-docs/integrations/ledger/icp-index-local-setup /docs/current/rosetta-defi/token-indexes/
-  /docs/current/developer-docs/integrations/ledger/collecting-dust /docs/current/rosetta-defi/icp-tokens/account-trimming
+  /docs/current/developer-docs/integrations/ledger/collecting-dust /docs/current/rosetta-defi/account-trimming
   /docs/current/developer-docs/integrations/icrc-1/index /docs/current/references/icrc1-standard
   /docs/current/developer-docs/integrations/icrc-1/ /docs/current/references/icrc1-standard
   /docs/current/developer-docs/integrations/icrc-1/icrc1-ledger-setup /docs/current/rosetta-defi/token-ledgers/setup/icrc1_ledger_setup
@@ -375,9 +375,9 @@ const redirects = `
   /docs/current/developer-docs/integrations/exchange-rate/exchange-rate-canister /docs/current/developer-education/system-canisters/
   /docs/current/developer-docs/integrations/rosetta/index  /docs/current/rosetta-defi/overview
   /docs/current/developer-docs/integrations/rosetta/  /docs/current/rosetta-defi/overview
-  /docs/current/tokenomics/token-holders/custody-options-intro /docs/current/rosetta-defi/wallets/overview
-  /docs/current/tokenomics/token-holders/self-custody-quickstart /docs/current/rosetta-defi/wallets/self-custody/self-custody-quickstart
-  /docs/current/developer-docs/use-cases/considerations-for-nft-devs /docs/current/rosetta-defi/nfts/overview
+  /docs/current/tokenomics/token-holders/custody-options-intro /docs/current/rosetta-defi/
+  /docs/current/tokenomics/token-holders/self-custody-quickstart /docs/current/rosetta-defi/
+  /docs/current/developer-docs/use-cases/considerations-for-nft-devs /docs/current/rosetta-defi/nfts-collections
   /docs/current/developer-docs/integrations/sns/introduction/sns-intro-high-level /docs/current/building-dapps/governing-dapps/overview
   /docs/current/developer-docs/integrations/sns/introduction/sns-architecture /docs/current/building-dapps/governing-dapps/overview
   /docs/current/developer-docs/integrations/sns/introduction/sns-launch /docs/current/building-dapps/governing-dapps/overview
@@ -411,8 +411,8 @@ const redirects = `
   /docs/current/move-to-learnhub/nns/staking-voting-rewards/ /docs/current/move-to-learnhub/nns/concepts/neurons/staking-voting-rewards
   /docs/current/tokenomics/nns/proposal-requirements /docs/current/move-to-learnhub/nns/concepts/proposal-requirements
   /docs/current/move-to-learnhub/nns/proposal-requirements /docs/current/move-to-learnhub/nns/concepts/proposal-requirements
-  /docs/current/tokenomics/index /docs/current/developer-docs/daos/overview
-  /docs/current/tokenomics/ /docs/current/developer-docs/daos/overview
+  /docs/current/tokenomics/index /docs/current/building-dapps/governing-dapps/overview
+  /docs/current/tokenomics/ /docs/current/building-dapps/governing-dapps/overview
   /docs/current/developer-docs/integrations/multi-chain/user-faq /docs/current/building-dapps/chain-fusion/overview
   /docs/current/developer-docs/integrations/multi-chain/ckbtc-faq /docs/current/rosetta-defi/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/integrations/multi-chain/cketh-faq /docs/current/rosetta-defi/chain-key-tokens/cketh/overview
@@ -538,15 +538,15 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/signatures/signing-transactions /docs/current/building-dapps/using-network-features/signatures/t-ecdsa
   /docs/current/developer-docs/defi/icp-tokens/overview /docs/current/rosetta-defi/token-standards/
   /docs/current/developer-docs/defi/asset-custody/self-custody-quickstart /docs/current/rosetta-defi/wallets/self-custody/self-custody-quickstart
-  /docs/current/developer-docs/defi/asset-custody/hardware-wallet-cli /docs/current/rosetta-defi/wallets/self-custody/hardware-wallet-cli
+  /docs/current/developer-docs/defi/asset-custody/hardware-wallet-cli /docs/current/rosetta-defi/
   /docs/current/developer-docs/defi/asset-custody/custody-options /docs/current/rosetta-defi/wallets/overview
   /docs/current/developer-docs/defi/nfts/considerations-for-nft-devs /docs/current/rosetta-defi/nfts/overview
-  /docs/current/developer-docs/defi/icrc-1/token-quickstart /docs/current/rosetta-defi/tokens/create
+  /docs/current/developer-docs/defi/icrc-1/token-quickstart /docs/current/rosetta-defi/create
   /docs/current/references/ /docs/current/references/ic-interface-spec
   /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/ /docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview
   /docs/language-guide/motoko.html /docs/current/motoko/main/getting-started/motoko-introduction
   /education /education-hub
-  /docs/current/developer-docs/integrations/ledger/deploy-new-token /docs/current/rosetta-defi/tokens/create
+  /docs/current/developer-docs/integrations/ledger/deploy-new-token /docs/current/rosetta-defi/create
   /docs/current/samples/deploying-your-first-bitcoin-dapp /docs/current/references/samples/motoko/basic_bitcoin/
   /docs/integration/ledger-quick-start.html /docs/current/rosetta-defi/token-ledgers/setup/icp_ledger_setup
   /docs/current/developer-docs/integrations/storage/cost /docs/current/developer-education/developer-concepts/gas-cost
@@ -566,7 +566,7 @@ const redirects = `
   /docs/current/developer-docs/backend/motoko/index.md /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/backend/rust/index /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/building-dapps/developer-tools/cli-tools/cli-reference/index /docs/current/building-dapps/developer-tools/dfx/
-  /docs/current/developer-docs/integrations/icrc-1/deploy-new-token /docs/current/rosetta-defi/tokens/create
+  /docs/current/developer-docs/integrations/icrc-1/deploy-new-token /docs/current/rosetta-defi/create
   /docs/current/developer-docs/setup/cycles/cycles-faucet.md	/docs/current/building-dapps/getting-started/tokens-and-cycles
   /docs/current/developer-docs/setup/deploy-mainnet.md	/docs/current/building-dapps/getting-started/deploy-and-manage
   /docs/current/developer-docs/setup/index.md	/docs/current/building-dapps/getting-started/install
@@ -613,7 +613,7 @@ const redirects = `
   /docs/current/developer-docs/backend/rust/infrastructure /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/smart-contracts/deploy/larger-wasm /docs/current/building-dapps/launching-a-dapp/create-and-install
   /docs/current/developer-docs/smart-contracts/deploy/sharing /docs/current/building-dapps/launching-a-dapp/deploy/overview
-  /docs/current/developer-docs/integrations/rosetta/staking-support /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/staking/
+  /docs/current/developer-docs/integrations/rosetta/staking-support /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/staking
   /docs/current/developer-docs/smart-contracts/test/benchmarking /docs/current/building-dapps/developer-tools/canbench
   /docs/current/developer-docs/smart-contracts/test/reproducible-builds /docs/current/developer-education/developer-playbook/developer-best-practices/reproducible-builds
   /docs/current/developer-docs/ai/ai-on-chain  /ecosystem
@@ -631,7 +631,7 @@ const redirects = `
   /docs/current/developer-docs/multi-chain/faq/cketh-faq /docs/current/rosetta-defi/chain-key-tokens/cketh/overview
   /docs/current/developer-docs/multi-chain/faq/ckerc20-faq /docs/current/rosetta-defi/chain-key-tokens/ckerc20/overview
   /docs/current/developer-docs/multi-chain/faq/signatures-faq /docs/current/references/t-sigs-how-it-works
-  /docs/current/developer-docs/integrations/rosetta/staking-tutorial/ /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/staking/stake_icp
+  /docs/current/developer-docs/integrations/rosetta/staking-tutorial/ /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/staking
   /docs/current/developer-docs/getting-started/cycles/cycles-wallet /docs/current/rosetta-defi/cycles/cycles-wallet
   /docs/current/developer-docs/smart-contracts/write/auto-scaling-architecture /docs/current/building-dapps/launching-a-dapp/create-and-install
   /docs/current/developer-docs/smart-contracts/write/resources /docs/current/building-dapps/launching-a-dapp/create-and-install
@@ -778,58 +778,58 @@ const redirects = `
 
   /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-default /docs/current/building-dapps/developer-tools/dfxvm/dfxvm-default
   /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-install /docs/current/building-dapps/developer-tools/dfxvm/dfxvm-install
-  /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm-init/dfxvm-init /docs/current/building-dapps/developer-tools/dfxvm/dfxvm-init
+  /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm-init/dfxvm-init /docs/current/building-dapps/developer-tools/dfxvm/
   /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-list /docs/current/building-dapps/developer-tools/dfxvm/dfxvm-list
-  /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-self-uninstall /docs/current/building-dapps/developer-tools/dfxvm/dfxvm-self-uninstal
+  /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-self-uninstall /docs/current/building-dapps/developer-tools/dfxvm/
   /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-self-update /docs/current/building-dapps/developer-tools/dfxvm/dfxvm-self-update
   /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-uninstall /docs/current/building-dapps/developer-tools/dfxvm/dfxvm-uninstall
   /docs/current/eveloper-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-update /docs/current/building-dapps/developer-tools/dfxvm/dfxvm-update
 
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/index /docs/current/developer-tools/quill/index
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-parent /docs/current/developer-tools/quill/quill-parent
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-account-balance /docs/current/developer-tools/quill/quill-account-balance
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-ckbtc /docs/current/developer-tools/quill/ckbtc/quill-ckbtc
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-balance /docs/current/developer-tools/quill/ckbtc/quill-ckbtc-balance
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-retrieve-btc /docs/current/developer-tools/quill/ckbtc/quill-ckbtc-retrieve-btc
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-retrieve-btc-status /docs/current/developer-tools/quill/ckbtc/quill-ckbtc-retrieve-btc-status
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-transfer /docs/current/developer-tools/quill/ckbtc/quill-ckbtc-transfer
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-update-balance /docs/current/developer-tools/quill/ckbtc/quill-ckbtc-update-balance
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-withdrawal-address /docs/current/developer-tools/quill/ckbtc/quill-ckbtc-withdrawal-address
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-claim-neurons /docs/current/developer-tools/quill/quill-claim-neurons
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-generate /docs/current/developer-tools/quill/quill-generatd
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-get-neuron-info /docs/current/developer-tools/quill/quill-get-neuron-info
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-get-proposal-info /docs/current/developer-tools/quill/quill-get-proposal-info
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-list-neurons /docs/current/developer-tools/quill/quill-list-neurons
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-list-proposals /docs/current/developer-tools/quill/quill-list-proposal
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-neuron-manage /docs/current/developer-tools/quill/quill-neuron-manage
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-neuron-stake /docs/current/developer-tools/quill/quill-neuron-stake
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-public-ids /docs/current/developer-tools/quill/quill-public-ids
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-qr-code /docs/current/developer-tools/quill/quill-qr-code
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-replace-node-provider-id /docs/current/developer-tools/quill/quill-replace-node-provider-id
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-scanner-qr-code /docs/current/developer-tools/quill/quill-scanner-qr-code
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-send /docs/current/developer-tools/quill/quill-send
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns /docs/current/developer-tools/quill/sns/quill-sns
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-balance /docs/current/developer-tools/quill/sns/quill-sns-balance
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-configure-dissolve-delay /docs/current/developer-tools/quill/sns/quill-sns-configure-dissolve-dela
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-disburse /docs/current/developer-tools/quill/sns/quill-sns-disburse
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-disburse-maturity /docs/current/developer-tools/quill/sns/quill-sns-disburse-maturity
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-follow-neuron /docs/current/developer-tools/quill/sns/quill-sns-follow-neuron
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-get-sale-participation /docs/current/developer-tools/quill/sns/quill-sns-get-sale-participation
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-get-swap-refund /docs/current/developer-tools/quill/sns/quill-sns-get-swap-refund
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-list-deployed-snses /docs/current/developer-tools/quill/sns/quill-sns-list-deployed-snses
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-make-proposal /docs/current/developer-tools/quill/sns/quill-sns-make-proposal
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-make-upgrade-canister-proposal /docs/current/developer-tools/quill/sns/quill-sns-make-upgrade-canister-proposal
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-neuron-permission /docs/current/developer-tools/quill/sns/quill-sns-neuron-permission
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-new-sale-ticket /docs/current/developer-tools/quill/sns/quill-sns-new-sale-ticket
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-pay /docs/current/developer-tools/quill/sns/quill-sns-pay
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-register-vote /docs/current/developer-tools/quill/sns/quill-sns-register-vote
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-split-neuron /docs/current/developer-tools/quill/sns/quill-sns-split-neuron
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-stake-maturity /docs/current/developer-tools/quill/sns/quill-sns-stake-maturity
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-stake-neuron /docs/current/developer-tools/quill/sns/quill-sns-stake-neuron
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-status /docs/current/developer-tools/quill/sns/quill-sns-status
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-transfer /docs/current/developer-tools/quill/sns/quill-sns-transfer
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-transfer /docs/current/developer-tools/quill/quill-transfer
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-update-node-provider /docs/current/developer-tools/quill/quill-update-node-provider
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/index /docs/current/building-dapps/developer-tools/quill/index
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-parent /docs/current/building-dapps/developer-tools/quill/quill-parent
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-account-balance /docs/current/building-dapps/developer-tools/quill/quill-account-balance
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-ckbtc /docs/current/building-dapps/developer-tools/quill/ckbtc/quill-ckbtc
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-balance /docs/current/building-dapps/developer-tools/quill/ckbtc/quill-ckbtc-balance
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-retrieve-btc /docs/current/building-dapps/developer-tools/quill/ckbtc/quill-ckbtc-retrieve-btc
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-retrieve-btc-status /docs/current/building-dapps/developer-tools/quill/ckbtc/quill-ckbtc-retrieve-btc-status
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-transfer /docs/current/building-dapps/developer-tools/quill/ckbtc/quill-ckbtc-transfer
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-update-balance /docs/current/building-dapps/developer-tools/quill/ckbtc/quill-ckbtc-update-balance
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-withdrawal-address /docs/current/building-dapps/developer-tools/quill/ckbtc/quill-ckbtc-withdrawal-address
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-claim-neurons /docs/current/building-dapps/developer-tools/quill/quill-claim-neurons
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-generate /docs/current/building-dapps/developer-tools/quill/quill-generatd
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-get-neuron-info /docs/current/building-dapps/developer-tools/quill/quill-get-neuron-info
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-get-proposal-info /docs/current/building-dapps/developer-tools/quill/quill-get-proposal-info
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-list-neurons /docs/current/building-dapps/developer-tools/quill/quill-list-neurons
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-list-proposals /docs/current/building-dapps/developer-tools/quill/quill-list-proposal
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-neuron-manage /docs/current/building-dapps/developer-tools/quill/quill-neuron-manage
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-neuron-stake /docs/current/building-dapps/developer-tools/quill/quill-neuron-stake
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-public-ids /docs/current/building-dapps/developer-tools/quill/quill-public-ids
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-qr-code /docs/current/building-dapps/developer-tools/quill/quill-qr-code
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-replace-node-provider-id /docs/current/building-dapps/developer-tools/quill/quill-replace-node-provider-id
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-scanner-qr-code /docs/current/building-dapps/developer-tools/quill/quill-scanner-qr-code
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-send /docs/current/building-dapps/developer-tools/quill/quill-send
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns /docs/current/building-dapps/developer-tools/quill/sns/quill-sns
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-balance /docs/current/building-dapps/developer-tools/quill/sns/quill-sns-balance
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-configure-dissolve-delay /docs/current/building-dapps/developer-tools/quill/sns/quill-sns-configure-dissolve-dela
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-disburse /docs/current/building-dapps/developer-tools/quill/sns/quill-sns-disburse
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-disburse-maturity /docs/current/building-dapps/developer-tools/quill/sns/quill-sns-disburse-maturity
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-follow-neuron /docs/current/building-dapps/developer-tools/quill/sns/quill-sns-follow-neuron
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-get-sale-participation /docs/current/building-dapps/developer-tools/quill/sns/quill-sns-get-sale-participation
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-get-swap-refund /docs/current/building-dapps/developer-tools/quill/sns/quill-sns-get-swap-refund
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-list-deployed-snses /docs/current/building-dapps/developer-tools/quill/sns/quill-sns-list-deployed-snses
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-make-proposal /docs/current/building-dapps/developer-tools/quill/sns/quill-sns-make-proposal
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-make-upgrade-canister-proposal /docs/current/building-dapps/developer-tools/quill/sns/quill-sns-make-upgrade-canister-proposal
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-neuron-permission /docs/current/building-dapps/developer-tools/quill/sns/quill-sns-neuron-permission
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-new-sale-ticket /docs/current/building-dapps/developer-tools/quill/sns/quill-sns-new-sale-ticket
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-pay /docs/current/building-dapps/developer-tools/quill/sns/quill-sns-pay
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-register-vote /docs/current/building-dapps/developer-tools/quill/sns/quill-sns-register-vote
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-split-neuron /docs/current/building-dapps/developer-tools/quill/sns/quill-sns-split-neuron
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-stake-maturity /docs/current/building-dapps/developer-tools/quill/sns/quill-sns-stake-maturity
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-stake-neuron /docs/current/building-dapps/developer-tools/quill/sns/quill-sns-stake-neuron
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-status /docs/current/building-dapps/developer-tools/quill/sns/quill-sns-status
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-transfer /docs/current/building-dapps/developer-tools/quill/sns/quill-sns-transfer
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-transfer /docs/current/building-dapps/developer-tools/quill/quill-transfer
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-update-node-provider /docs/current/building-dapps/developer-tools/quill/quill-update-node-provider
 
   /docs/current/developer-docs/smart-contracts/create /docs/current/building-dapps/launching-a-dapp/create-and-install
   /docs/current/developer-docs/smart-contracts/write/overview /docs/current/building-dapps/launching-a-dapp/create-and-install
@@ -936,13 +936,13 @@ const redirects = `
   /docs/current/developer-docs/multi-chain/examples /docs/current/building-dapps/chain-fusion/examples
 
   /docs/current/developer-docs/daos/sns/overview /docs/current/building-dapps/governing-dapps/overview
-  /docs/current/developer-docs/daos/sns/tokenomics/index /docs/current/building-dapps/governing-dapps/tokenomics/index
+  /docs/current/developer-docs/daos/sns/tokenomics/index /docs/current/building-dapps/governing-dapps/tokenomics/
   /docs/current/developer-docs/daos/sns/tokenomics/predeployment-considerations /docs/current/building-dapps/governing-dapps/tokenomics/predeployment-considerations
   /docs/current/developer-docs/daos/sns/tokenomics/tokenomics-intro /docs/current/building-dapps/governing-dapps/tokenomics/tokenomics-intro
   /docs/current/developer-docs/daos/sns/tokenomics/rewards /docs/current/building-dapps/governing-dapps/tokenomics/rewards
   /docs/current/developer-docs/daos/sns/tokenomics/preparation /docs/current/building-dapps/governing-dapps/tokenomics/preparation
   /docs/current/developer-docs/daos/sns/tokenomics/sns-checklist /docs/current/building-dapps/governing-dapps/tokenomics/sns-checklist
-  /docs/current/developer-docs/daos/sns/launching/index /docs/current/building-dapps/governing-dapps/launching/index
+  /docs/current/developer-docs/daos/sns/launching/index /docs/current/building-dapps/governing-dapps/launching/
   /docs/current/developer-docs/daos/sns/launching/launch-summary-1proposal /docs/current/building-dapps/governing-dapps/launching/launch-summary-1proposal
   /docs/current/developer-docs/daos/sns/launching/launch-steps-1proposal /docs/current/building-dapps/governing-dapps/launching/launch-steps-1proposal
   /docs/current/developer-docs/daos/sns/launching/integrating /docs/current/building-dapps/governing-dapps/launching/integrating
@@ -961,25 +961,25 @@ const redirects = `
   /docs/current/developer-docs/defi/tokens/ledger/setup/icrc1_ledger_setup /docs/current/rosetta-defi/token-ledgers/setup/icrc1_ledger_setup
   /docs/current/developer-docs/defi/tokens/ledger/usage/icp_ledger_usage /docs/current/rosetta-defi/token-ledgers/usage/icp_ledger_usage
   /docs/current/developer-docs/defi/tokens/ledger/usage/icrc1_ledger_usage /docs/current/rosetta-defi/token-ledgers/usage/icrc1_ledger_usage
-  /docs/current/developer-docs/defi/tokens/advanced/direct_integration /docs/current/rosetta-defi/tokens/advanced/direct_integration
+  /docs/current/developer-docs/defi/tokens/advanced/direct_integration /docs/current/rosetta-defi/token-integrations/direct_integration
   /docs/current/developer-docs/defi/tokens/indexes /docs/current/rosetta-defi/token-indexes/
   /docs/current/developer-docs/defi/icp-tokens/account-trimming /docs/current/rosetta-defi/icp-tokens/account-trimming
-  /docs/current/developer-docs/defi/tokens/create /docs/current/rosetta-defi/tokens/create
+  /docs/current/developer-docs/defi/tokens/create /docs/current/rosetta-defi/create
   /docs/current/developer-docs/defi/cycles/cycles-ledger /docs/current/rosetta-defi/token-ledgers/cycles-ledger
   /docs/current/developer-docs/defi/cycles/cycles-wallet /docs/current/rosetta-defi/cycles/cycles-wallet
   /docs/current/developer-docs/defi/cycles/converting_icp_tokens_into_cycles /docs/current/rosetta-defi/cycles/converting_icp_tokens_into_cycles
 
-  /docs/current/developer-docs/defi/rosetta/icp_rosetta/index /docs/current/rosetta-defi/rosetta/icp_rosetta/index
-  /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/index /docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/index
-  /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/network /docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/network
-  /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/balances /docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/balances
-  /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/blocks /docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/blocks
-  /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/transactions /docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/transactions
-  /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/list_known_neurons /docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/list_known_neurons
-  /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/get_pending_proposals /docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/get_pending_proposals
-  /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/get_proposal_info /docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/get_proposal_info
+  /docs/current/developer-docs/defi/rosetta/icp_rosetta/index /docs/current/rosetta-defi/rosetta/icp_rosetta/
+  /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/index /docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/
+  /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/network /docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/
+  /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/balances /docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/
+  /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/blocks /docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/
+  /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/transactions /docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/
+  /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/list_known_neurons /docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/
+  /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/get_pending_proposals /docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/
+  /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/get_proposal_info /docs/current/rosetta-defi/rosetta/icp_rosetta/data_api/
 
-  /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/index /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/index
+  /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/index /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/index /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/operations-flow
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/derive /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/operations-flow
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/preprocess /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/operations-flow
@@ -988,13 +988,13 @@ const redirects = `
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/combine /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/operations-flow
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/submit /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/ooperations-flow
 
-  /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/index /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/staking/index
+  /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/index /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/staking
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/neuron_info /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/staking
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/derive_neuron_id /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/staking
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_icp /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/staking
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/lock_neuron /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/staking
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/dissolve /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/staking
-  /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_maturity /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api
+  /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/stake_maturity /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/change_auto_stake_maturity /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/staking
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/spawn /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/staking
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/disburse /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/staking
@@ -1074,7 +1074,7 @@ const redirects = `
   /docs/current/references/node-providers/node-metrics /docs/current/home
   /docs/current/developer-docs/defi/wallets/overview /docs/current/home
   /docs/current/developer-docs/defi/wallets/self-custody/self-custody-quickstart /docs/current/home
-  /docs/current/developer-docs/defi/wallets/self-custody/hardware-wallet-cli /docs/current/home
+  /docs/current/developer-docs/defi/wallets/self-custody/hardware-wallet-cli /docs/current/rosetta-defi/
 
   /docs/current/references/clang-supported-languages /docs/current/home
   `
