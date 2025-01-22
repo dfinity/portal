@@ -664,7 +664,7 @@ const redirects = `
   /docs/current/developer-docs/web-apps/obtain-verify-ic-pubkey /docs/current/building-dapps/developer-tools/dfx/dfx-ping
   /docs/current/developer-docs/web-apps/design-dapps /docs/current/developer-education/developer-concepts/what-are-canisters
   /docs/current/developer-docs/smart-contracts/candid /docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts
-  /docs/current/developer-docs/build/cdks/motoko-dfinity /docs/current/building-dapps/developer-tools/cdks/index
+  /docs/current/developer-docs/build/cdks/motoko-dfinity /docs/current/building-dapps/developer-tools/cdks/
   /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet /docs/current/building-dapps/dapp-frontends/using-an-asset-canister
   /docs/current/developer-docs/web-apps/application-frontends/default-frontend /docs/current/building-dapps/dapp-frontends/using-an-asset-canister
 
@@ -715,7 +715,7 @@ const redirects = `
   /docs/current/developer-docs/getting-started/quickstart/first-smart-contract /docs/current/building-dapps/getting-started/quickstart/first-smart-contract
   /docs/current/developer-docs/getting-started/quickstart/react-quickstart /docs/current/building-dapps/getting-started/quickstart/first-web-app
 
-  /docs/current/developer-docs/developer-tools/on-chain/cdks /docs/current/building-dapps/developer-tools/cdks/index
+  /docs/current/developer-docs/developer-tools/on-chain/cdks /docs/current/building-dapps/developer-tools/cdks/
 
   /docs/current/developer-docs/backend/rust/index /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/quickstart /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust
@@ -1074,7 +1074,7 @@ const redirects = `
   /docs/current/references/node-providers/node-metrics /docs/current/home
   /docs/current/developer-docs/defi/wallets/overview /docs/current/home
   /docs/current/developer-docs/defi/wallets/self-custody/self-custody-quickstart /docs/current/home
-  /docs/current/developer-docs/defi/wallets/self-custody/hardware-wallet-cli /docs/current/rosetta-defi/
+  /docs/current/developer-docs/defi/wallets/self-custody/hardware-wallet-cli /docs/current/rosetta-defi/overview
 
   /docs/current/references/clang-supported-languages /docs/current/home
   `
