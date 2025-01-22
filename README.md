@@ -399,7 +399,7 @@ The following submodules and their corresponding repos are currently used:
     - GitHub Repo: https://github.com/dfinity/dfxvm.git
 
 - Response verification
-    - `/docs/current/building-dapps/using-network-features/using-external-data/http-gateways-certification/`
+    - `/docs/current/building-dapps/using-network-features/using-http/http-certification/`
     - GitHub Repo: https://github.com/dfinity/response-verification
 
 ### Updating submodules
@@ -538,13 +538,13 @@ The `.subpage.md` files will each generate a subpage under `/how-it-works/`, bas
 
 ## Adding documentation for community-created agents and CDKs
 
-The [agents](/docs/current/building-dapps/interacting-with-dapps/agents/overview)
+The [agents](/docs/current/building-dapps/calling-dapps/agents/overview)
 and [CDKs](/docs/current/building-dapps/developer-tools/cdks/index) sections should not only contain docs
 for DFINITY-created agents and CDKs.
 We therefore invite other projects to:
 
 - Link to their own agents or CDKs on the respective index pages (the files to be edited are
-  in `/docs/current/building-dapps/interacting-with-dapps/agents/overview` or `/docs/building-dapps/developer-tools/cdks/index.md`).
+  in `/docs/current/building-dapps/calling-dapps/agents/overview` or `/docs/building-dapps/developer-tools/cdks/index.md`).
 
 ## Adding community-created developer tools
 

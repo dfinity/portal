@@ -40,10 +40,10 @@ const svgStyles = `
     --sfg: #fff;
   }
 
-  svg .svgcard path, 
+  svg .svgcard path,
   svg .svgcard rect {
     transition: fill 0.2s;
-  } 
+  }
 
   svg .svgcard:hover {
     --sbg: #fff;
@@ -195,7 +195,7 @@ const developersData = [
     title: "HTTPS Outcalls",
     description:
       "HTTPS outcalls can be used to directly obtain off-chain data or interact with off-chain systems, such as Web 2.0 services or enterprise IT infrastructure. For example, oracle services can directly integrate with ICP in a trustless manner, dapps can provide user notifications, or communicate with other chains via RPC endpoints.",
-    link: "/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview",
+    link: "/docs/current/building-dapps/using-network-features/using-http/https-outcalls/overview",
   },
 ];
 
@@ -1862,7 +1862,7 @@ function ChainFusion() {
                 className="tw-heading-3 mb-0 md:tw-heading-40"
                 variants={transitions.item}
               >
-                Sample Codes & Startup Requests 
+                Sample Codes & Startup Requests
               </motion.h2>
               <MotionLink
                 variants={transitions.item}

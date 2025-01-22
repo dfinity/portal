@@ -22,7 +22,7 @@ Users must have confidence that:
 
 The correct behavior of a canister can be checked in two steps. First, inspect the source code used to generate the Wasm code deployed in a canister to ensure that it implements the expected or claimed functionality and only this functionality.
 
-Second, ensure that the Wasm module the canister runs has been generated from the claimed source code. Here, reproducibility of the build is crucial: the developer should have constructed the Wasm module so that precisely the same Wasm can be rebuilt from scratch. The user can then compare the hash of the rebuilt Wasm module with the module hash reported by ICP. Developers and users can find guidance on ensuring reproducibility in [reproducible canisters](/docs/current/developer-education/developer-playbook/developer-best-practices/reproducible-builds).
+Second, ensure that the Wasm module the canister runs has been generated from the claimed source code. Here, reproducibility of the build is crucial: the developer should have constructed the Wasm module so that precisely the same Wasm can be rebuilt from scratch. The user can then compare the hash of the rebuilt Wasm module with the module hash reported by ICP. Developers and users can find guidance on ensuring reproducibility in [reproducible canisters](/docs/current/developer-education/developer-cookbook/developer-best-practices/reproducible-builds).
 
 Additionally, developers can utilize the [canister history](/docs/current/building-dapps/managing-dapps/history) feature to track changes to the canister's Wasm module hash.
 
@@ -48,7 +48,7 @@ dfx canister info ryjl3-tyaaa-aaaaa-aaaba-cai --network ic
 
 This will return the list of controllers for the canister with principal `ryjl3-tyaaa-aaaaa-aaaba-cai` (in this example, the ledger canister).
 
-A user can also obtain the list of controllers of another canister via a [`read_state` request](/references/ic-interface-spec.md/#http-read-state) to get the relevant [canister information](/references/ic-interface-spec.md#state-tree-canister-information), which includes the list of controllers. A canister cannot obtain this information.
+A user can also obtain the list of controllers of another canister via a [`read_state` request](/references/ic-interface-spec/#http-read-state) to get the relevant [canister information](/references/ic-interface-spec#state-tree-canister-information), which includes the list of controllers. A canister cannot obtain this information.
 
 A similar effect can also be achieved by setting the controller of a canister to be itself. In this case, however, you need to carefully verify that the canister cannot somehow submit a request to upgrade itself, e.g., by issuing a reinstall request. Here, code inspection and reproducible builds are crucial.
 

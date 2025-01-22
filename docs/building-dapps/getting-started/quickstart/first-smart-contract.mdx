@@ -149,10 +149,10 @@ dfx --version
 The default project created by `dfx` is "Hello, world!"
 
 ```bash
-dfx new hello --type=motoko
+dfx new hello --type=motoko --no-frontend
 ```
 
-Creates a new Motoko project. Options are [motoko, rust, azle, kybra].
+Creates a new Motoko project without a frontend user interface. Options are [motoko, rust, azle, kybra].
 
 #### 3. Deploy your project.
 
@@ -163,14 +163,13 @@ dfx deploy --playground
 
 #### 4. Interact with your project.
 
-Open the `frontend` URL in your web browser that `dfx` returned after deploying your
-project.
+Open the URL that `dfx` returned after deploying your project.
 
 </TabItem>
 
 </AdornedTabs>
 
-*Congratulations, you just created your first internet-native dapp!*
+*Congratulations, you just created your first smart contract!*
 
 #### Possible next steps
 

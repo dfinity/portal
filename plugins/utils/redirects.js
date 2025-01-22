@@ -59,8 +59,8 @@ const redirects = `
   /docs/current/building-dapps/governing-dapps/tokenomics/sns-intro-tokens /docs/current/building-dapps/governing-dapps/tokenomics/
   /docs/current/developer-docs/integrations/sns/tokenomics/tokenomics /docs/current/building-dapps/governing-dapps/tokenomics/tokenomics-intro
   /docs/rust-guide/rust-intro /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust
-  /docs/languages/languages-overview /docs/current/building-dapps/launching-a-dapp/create-and-install
-  /docs/current/developer-docs/smart-contracts/write/choosing-language /docs/current/building-dapps/launching-a-dapp/create-and-install
+  /docs/languages/languages-overview /docs/current/building-dapps/creating-dapps/create-and-install
+  /docs/current/developer-docs/smart-contracts/write/choosing-language /docs/current/building-dapps/creating-dapps/create-and-install
   /docs/current/developer-docs/frontend/my-contacts /docs/current/building-dapps/dapp-frontends/using-an-asset-canister
   /docs/ic-interface-spec /docs/current/references/ic-interface-spec
   /docs/interface-spec /docs/current/references/ic-interface-spec
@@ -69,20 +69,20 @@ const redirects = `
   /docs/current/developer-docs/quickstart/local-quickstart /docs/current/building-dapps/getting-started/install
   /docs/current/developer-docs/setup/install/index.mdx /docs/current/building-dapps/getting-started/install
 
-  /docs/candid-guide /docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts
-  /docs/candid-guide/candid /docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts
-  /docs/candid-guide/candid-intro /docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts
+  /docs/candid-guide /docs/current/building-dapps/calling-dapps/candid/candid-concepts
+  /docs/candid-guide/candid /docs/current/building-dapps/calling-dapps/candid/candid-concepts
+  /docs/candid-guide/candid-intro /docs/current/building-dapps/calling-dapps/candid/candid-concepts
   /docs/candid-guide/candid-ref /docs/current/references/candid-ref
   /docs/candid-guide/candid-types /docs/current/references/candid-ref
-  /docs/current/developer-docs/build/candid/candid-intro /docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts
-  /docs/current/developer-docs/build/candid/candid-howto /docs/current/building-dapps/interacting-with-dapps/candid/using-candid
+  /docs/current/developer-docs/build/candid/candid-intro /docs/current/building-dapps/calling-dapps/candid/candid-concepts
+  /docs/current/developer-docs/build/candid/candid-howto /docs/current/building-dapps/calling-dapps/candid/using-candid
 
-  /docs/current/developer-docs/build/ /docs/current/building-dapps/launching-a-dapp/create-and-install
-  /docs/current/developer-docs/build/candid/candid-concepts /docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts
-  /docs/current/developer-docs/build/languages/other-languages/* /docs/current/building-dapps/launching-a-dapp/create-and-install
-  /docs/current/developer-docs/build/languages/work-with-languages /docs/current/building-dapps/launching-a-dapp/create-and-install
-  /docs/current/developer-docs/build/using-an-agent /docs/current/building-dapps/launching-a-dapp/create-and-install
-  /docs/current/developer-docs/build/backend/reproducible-builds /docs/current/developer-education/developer-playbook/developer-best-practices/reproducible-builds
+  /docs/current/developer-docs/build/ /docs/current/building-dapps/creating-dapps/create-and-install
+  /docs/current/developer-docs/build/candid/candid-concepts /docs/current/building-dapps/calling-dapps/candid/candid-concepts
+  /docs/current/developer-docs/build/languages/other-languages/* /docs/current/building-dapps/creating-dapps/create-and-install
+  /docs/current/developer-docs/build/languages/work-with-languages /docs/current/building-dapps/creating-dapps/create-and-install
+  /docs/current/developer-docs/build/using-an-agent /docs/current/building-dapps/creating-dapps/create-and-install
+  /docs/current/developer-docs/build/backend/reproducible-builds /docs/current/developer-education/developer-cookbook/developer-best-practices/reproducible-builds
   /docs/current/developer-docs/build/cdks/ /docs/current/building-dapps/developer-tools/cdks/
   /docs/current/developer-docs/build/frontend/default-frontend /docs/current/building-dapps/dapp-frontends/using-an-asset-canister
   /docs/current/developer-docs/build/frontend/webpack-config /docs/current/building-dapps/dapp-frontends/using-an-asset-canister#modifying-the-webpack-configuration
@@ -92,10 +92,10 @@ const redirects = `
   /docs/current/developer-docs/build/project-setup/manage-canisters /docs/current/building-dapps/managing-dapps/settings
   /docs/current/developer-docs/build/project-setup/design-dapps /docs/current/developer-education/developer-concepts/what-are-canisters
   /docs/current/developer-docs/build/troubleshooting /docs/current/building-dapps/getting-started/troubleshooting
-  /docs/current/developer-docs/build/agents/ /docs/current/building-dapps/interacting-with-dapps/agents/overview
-  /docs/current/developer-docs/build/agents/javascript/javascript-intro /docs/current/building-dapps/interacting-with-dapps/agents/javascript-agent
-  /docs/current/developer-docs/build/agents/javascript/*  /docs/current/building-dapps/interacting-with-dapps/agents/javascript-agent
-  /docs/current/developer-docs/build/languages/candid/* /docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts
+  /docs/current/developer-docs/build/agents/ /docs/current/building-dapps/calling-dapps/agents/overview
+  /docs/current/developer-docs/build/agents/javascript/javascript-intro /docs/current/building-dapps/calling-dapps/agents/javascript-agent
+  /docs/current/developer-docs/build/agents/javascript/*  /docs/current/building-dapps/calling-dapps/agents/javascript-agent
+  /docs/current/developer-docs/build/languages/candid/* /docs/current/building-dapps/calling-dapps/candid/candid-concepts
   /docs/current/developer-docs/build/cdks/motoko-dfinity/* /docs/current/motoko/main/:splat
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/*  /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust:splat
   /docs/current/developer-docs/build/languages/motoko/* /docs/current/motoko/main/:splat
@@ -105,7 +105,7 @@ const redirects = `
   /docs/developers-guide/basic-syntax-rules /docs/current/motoko/main/reference/language-manual
   /docs/developers-guide/concepts/bitcoin-integration /bitcoin-integration
   /docs/developers-guide/concepts/concepts-intro /docs/current/developer-education/developer-concepts/network-overview
-  /docs/developers-guide/customize-projects /docs/current/building-dapps/launching-a-dapp/create-and-install
+  /docs/developers-guide/customize-projects /docs/current/building-dapps/creating-dapps/create-and-install
   /docs/developers-guide/default-wallet /docs/current/rosetta-defi/cycles/cycles-wallet
   /docs/developers-guide/design-apps /docs/current/developer-education/developer-concepts/what-are-canisters
   /docs/developers-guide/glossary /docs/current/developer-education/glossary/
@@ -119,7 +119,7 @@ const redirects = `
   /docs/developers-guide/tutorials/default-frontend /docs/current/building-dapps/dapp-frontends/using-an-asset-canister
   /docs/developers-guide/tutorials/my-contacts /docs/current/building-dapps/dapp-frontends/using-an-asset-canister
   /docs/developers-guide/webpack-config /docs/current/building-dapps/dapp-frontends/using-an-asset-canister
-  /docs/developers-guide/work-with-languages /docs/current/building-dapps/launching-a-dapp/create-and-install
+  /docs/developers-guide/work-with-languages /docs/current/building-dapps/creating-dapps/create-and-install
   /docs/developers-guide/working-with-canisters /docs/current/building-dapps/managing-dapps/settings
 
   /docs/quickstart/1-quickstart /docs/current/tutorials/developer-journey/
@@ -171,7 +171,7 @@ const redirects = `
   /docs/current/tutorials/create_your_first_app/ /docs/current/tutorials/developer-journey/
   /docs/quickstart/quickstart-intro.html /docs/current/building-dapps/getting-started/install
   /docs/ic-identity-guide/auth-how-to.html /docs/current/building-dapps/authentication/integrate-internet-identity/
-  /docs/current/developer-docs/build/agents/agent-dfinity	/docs/current/building-dapps/interacting-with-dapps/agents/overview
+  /docs/current/developer-docs/build/agents/agent-dfinity	/docs/current/building-dapps/calling-dapps/agents/overview
   /docs/current/tokenomics/identity-auth/what-is-ic-identity /docs/current/building-dapps/authentication/overview
   /docs/quickstart/local-quickstart.html /docs/current/building-dapps/getting-started/install
   /language-guide/ /docs/current/tutorials/developer-journey/level-0/intro-languages
@@ -186,8 +186,8 @@ const redirects = `
   /apis/site/proxy /docs/current/references/http-gateway-protocol-spec
   /docs/developers-guide/concepts/what-is-ic /docs/current/developer-education/developer-concepts/network-overview
   /language-guide/index /docs/current/tutorials/developer-journey/level-0/intro-languages
-  /docs/current/developer-docs/production/instruction-limits /docs/current/building-dapps/launching-a-dapp/resource-limits
-  /docs/current/developer-docs/backend/resource-limits /docs/current/building-dapps/launching-a-dapp/resource-limits
+  /docs/current/developer-docs/production/instruction-limits /docs/current/building-dapps/creating-dapps/resource-limits
+  /docs/current/developer-docs/backend/resource-limits /docs/current/building-dapps/creating-dapps/resource-limits
   /docs/current/concepts/data-centers /docs/current/developer-education/developer-concepts/network-overview
   /docs/current/developer-docs/build/languages/rust/rust-intro /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/build/languages/motoko /docs/current/motoko/main/getting-started/motoko-introduction
@@ -201,9 +201,9 @@ const redirects = `
   /docs/current/developer-docs/setup/cycles /docs/current/rosetta-defi/cycles/cycles-wallet
   /docs/current/concepts/index /docs/current/developer-education/developer-concepts/network-overview
   /docs/current/concepts /docs/current/developer-education/developer-concepts/network-overview
-  /docs/current/developer-docs/backend/candid/index /docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts
-  /docs/current/developer-docs/integrations/https-outcalls/index /docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview
-  /docs/current/developer-docs/integrations/https-outcalls /docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview
+  /docs/current/developer-docs/backend/candid/index /docs/current/building-dapps/calling-dapps/candid/candid-concepts
+  /docs/current/developer-docs/integrations/https-outcalls/index /docs/current/building-dapps/using-network-features/using-http/https-outcalls/overview
+  /docs/current/developer-docs/integrations/https-outcalls /docs/current/building-dapps/using-network-features/using-http/https-outcalls/overview
   /docs/current/developer-docs/security/index /docs/current/developer-education/security/inter-canister-calls
   /docs/current/developer-docs/security /docs/current/developer-education/security/inter-canister-calls
   /docs/current/developer-docs/integrations/index /docs/current/developer-education/developer-concepts/network-overview
@@ -213,30 +213,30 @@ const redirects = `
   /docs/current/developer-docs/setup/quickstart /docs/current/building-dapps/getting-started/install
   /docs/current/tutorials/index /docs/current/developer-education/developer-concepts/network-overview
   /docs/current/tutorials/ /docs/current/developer-education/developer-concepts/network-overview
-  /docs/current/developer-docs/backend/eu-subnets /docs/current/building-dapps/launching-a-dapp/subnets/subnet-types
+  /docs/current/developer-docs/backend/eu-subnets /docs/current/building-dapps/creating-dapps/subnets/subnet-types
   /docs/current/samples/* /samples
-  /docs/current/developer-docs/backend/choosing-language /docs/current/building-dapps/launching-a-dapp/create-and-install
-  /docs/current/developer-docs/production/deploying-and-upgrading /docs/current/building-dapps/launching-a-dapp/deploy/overview
+  /docs/current/developer-docs/backend/choosing-language /docs/current/building-dapps/creating-dapps/create-and-install
+  /docs/current/developer-docs/production/deploying-and-upgrading /docs/current/building-dapps/creating-dapps/deploy/overview
   /docs/current/developer-docs/index /docs/current/developer-education/developer-concepts/network-overview
   /docs/current/developer-docs /docs/current/developer-education/developer-concepts/network-overview
   /docs/current/concepts/what-is-ic /docs/current/developer-education/developer-concepts/network-overview
-  /docs/current/developer-docs/setup/development-workflow /docs/current/developer-education/developer-playbook/developer-environments
+  /docs/current/developer-docs/setup/development-workflow /docs/current/developer-education/developer-cookbook/developer-environments
   /docs/current/developer-docs/setup/hello-world /docs/current/building-dapps/getting-started/write-canister-code
   /docs/current/developer-docs/setup/install/ /docs/current/building-dapps/getting-started/install
   /docs/current/developer-docs/setup/accounts /docs/current/building-dapps/getting-started/identities
   /docs/current/developer-docs/setup/cycles/cycles-faucet /docs/current/building-dapps/getting-started/tokens-and-cycles
   /docs/current/developer-docs/setup/cycles/cycles-wallet /docs/current/rosetta-defi/cycles/cycles-wallet
   /docs/current/developer-docs/setup/cycles/converting_icp_tokens_into_cycles /docs/current/rosetta-defi/cycles/converting_icp_tokens_into_cycles
-  /docs/current/developer-docs/setup/first-canister /docs/current/building-dapps/launching-a-dapp/create-and-install
+  /docs/current/developer-docs/setup/first-canister /docs/current/building-dapps/creating-dapps/create-and-install
   /docs/current/developer-docs/setup/deploy-locally /docs/current/building-dapps/getting-started/deploy-and-manage
   /docs/current/developer-docs/setup/deploy-mainnet /docs/current/building-dapps/getting-started/deploy-and-manage
-  /docs/current/developer-docs/production/best-practices /docs/current/developer-education/developer-playbook/developer-best-practices/general
+  /docs/current/developer-docs/production/best-practices /docs/current/developer-education/developer-cookbook/developer-best-practices/general
   /docs/current/references/dev-tools-overview /docs/current/building-dapps/developer-tools/dev-tools-overview
   /docs/current/references/cdks /docs/current/building-dapps/developer-tools/cdks/
-  /docs/current/developer-docs/agents/ /docs/current/building-dapps/interacting-with-dapps/agents/overview
-  /docs/current/developer-docs/agents/javascript-intro /docs/current/building-dapps/interacting-with-dapps/agents/javascript-agent
-  /docs/current/developer-docs/agents/nodejs /docs/current/building-dapps/interacting-with-dapps/agents/nodejs
-  /docs/current/developer-docs/agents/ic-agent-dfinity /docs/current/building-dapps/interacting-with-dapps/agents/rust-agent
+  /docs/current/developer-docs/agents/ /docs/current/building-dapps/calling-dapps/agents/overview
+  /docs/current/developer-docs/agents/javascript-intro /docs/current/building-dapps/calling-dapps/agents/javascript-agent
+  /docs/current/developer-docs/agents/nodejs /docs/current/building-dapps/calling-dapps/agents/nodejs
+  /docs/current/developer-docs/agents/ic-agent-dfinity /docs/current/building-dapps/calling-dapps/agents/rust-agent
   /docs/current/references/gitpod /docs/current/building-dapps/developer-tools/ide/icp-ninja
   /docs/current/developer-docs/setup/playground /docs/current/building-dapps/getting-started/deploy-and-manage
   /docs/current/developer-docs/setup/vs-code /docs/current/building-dapps/developer-tools/ide/vs-code
@@ -311,40 +311,40 @@ const redirects = `
   /docs/current/references/quill-cli-reference/sns/quill-sns-transfer /docs/current/building-dapps/developer-tools/quill/sns/quill-sns-transfer
   /docs/current/references/quill-cli-reference/quill-transfer /docs/current/building-dapps/developer-tools/quill/quill-transfer
   /docs/current/references/quill-cli-reference/quill-update-node-provider /docs/current/building-dapps/developer-tools/quill/quill-update-node-provider
-  /docs/current/developer-docs/backend/candid/candid-concepts /docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts
-  /docs/current/developer-docs/backend/candid/ /docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts
-  /docs/current/developer-docs/backend/candid/candid-howto /docs/current/building-dapps/interacting-with-dapps/candid/using-candid
+  /docs/current/developer-docs/backend/candid/candid-concepts /docs/current/building-dapps/calling-dapps/candid/candid-concepts
+  /docs/current/developer-docs/backend/candid/ /docs/current/building-dapps/calling-dapps/candid/candid-concepts
+  /docs/current/developer-docs/backend/candid/candid-howto /docs/current/building-dapps/calling-dapps/candid/using-candid
   /docs/current/developer-docs/backend/candid/generating-candid /docs/current/building-dapps/developer-tools/cdks/rust/generating-candid
-  /docs/current/developer-docs/setup/deploy /docs/current/building-dapps/launching-a-dapp/deploy/overview
-  /docs/current/developer-docs/production/larger-wasm /docs/current/building-dapps/launching-a-dapp/create-and-install
-  /docs/current/developer-docs/production/social-sharing /docs/current/building-dapps/launching-a-dapp/deploy/overview
+  /docs/current/developer-docs/setup/deploy /docs/current/building-dapps/creating-dapps/deploy/overview
+  /docs/current/developer-docs/production/larger-wasm /docs/current/building-dapps/creating-dapps/create-and-install
+  /docs/current/developer-docs/production/social-sharing /docs/current/building-dapps/creating-dapps/deploy/overview
   /docs/current/developer-docs/setup/delete /docs/current/building-dapps/managing-dapps/delete
   /docs/current/developer-docs/production/canister-history /docs/current/building-dapps/managing-dapps/history
-  /docs/current/developer-docs/setup/build /docs/current/building-dapps/launching-a-dapp/create-and-install
-  /docs/current/developer-docs/setup/pulling-canister-dependencies /docs/current/building-dapps/interacting-with-dapps/using-third-party-canisters
+  /docs/current/developer-docs/setup/build /docs/current/building-dapps/creating-dapps/create-and-install
+  /docs/current/developer-docs/setup/pulling-canister-dependencies /docs/current/building-dapps/creating-dapps/using-third-party-canisters
   /docs/current/developer-docs/production/canister-recovery /docs/current/building-dapps/managing-dapps/recovery
   /docs/current/developer-docs/setup/state /docs/current/building-dapps/managing-dapps/state
   /docs/current/developer-docs/setup/manage-canisters /docs/current/building-dapps/managing-dapps/settings
   /docs/current/developer-docs/production/storage /docs/current/building-dapps/managing-dapps/storage
   /docs/current/developer-docs/setup/upgrade /docs/current/building-dapps/managing-dapps/upgrade
-  /docs/current/developer-docs/production/resource-limits /docs/current/building-dapps/launching-a-dapp/resource-limits
-  /docs/current/developer-docs/setup/manage-projects /docs/current/building-dapps/launching-a-dapp/create-and-install
+  /docs/current/developer-docs/production/resource-limits /docs/current/building-dapps/creating-dapps/resource-limits
+  /docs/current/developer-docs/setup/manage-projects /docs/current/building-dapps/creating-dapps/create-and-install
   /docs/current/developer-docs/production/topping-up-canister /docs/current/building-dapps/managing-dapps/topping-up
   /docs/current/developer-docs/getting-started/cycles/cycles_management_services /docs/current/building-dapps/managing-dapps/topping-up
-  /docs/current/developer-docs/setup/pocket-ic /docs/current/building-dapps/launching-a-dapp/test/pocket-ic
-  /docs/current/developer-docs/production/staging-environment /docs/current/building-dapps/launching-a-dapp/deploy/custom-networks
-  /docs/current/developer-docs/backend/reproducible-builds /docs/current/developer-education/developer-playbook/developer-best-practices/reproducible-builds
+  /docs/current/developer-docs/setup/pocket-ic /docs/current/building-dapps/creating-dapps/test/pocket-ic
+  /docs/current/developer-docs/production/staging-environment /docs/current/building-dapps/creating-dapps/deploy/custom-networks
+  /docs/current/developer-docs/backend/reproducible-builds /docs/current/developer-education/developer-cookbook/developer-best-practices/reproducible-builds
   /docs/current/developer-docs/backend/troubleshooting /docs/current/building-dapps/getting-started/troubleshooting
   /docs/current/developer-docs/integrations/t-ecdsa /docs/current/building-dapps/using-network-features/signatures/t-ecdsa
   /docs/current/developer-docs/integrations/vetkeys/ /docs/current/building-dapps/using-network-features/encryption/vetkeys
   /docs/current/developer-docs/integrations/vetkeys/using-vetkeys /docs/current/building-dapps/using-network-features/encryption/using-vetkeys
-  /docs/current/developer-docs/integrations/composite-query /docs/current/building-dapps/interacting-with-dapps/query-calls
+  /docs/current/developer-docs/integrations/composite-query /docs/current/building-dapps/calling-dapps/query-calls
   /docs/current/developer-docs/backend/periodic-tasks /docs/current/building-dapps/using-network-features/periodic-tasks-timers
-  /docs/current/developer-docs/setup/best-practices/architecture /docs/current/building-dapps/launching-a-dapp/create-and-install
-  /docs/current/developer-docs/smart-contracts/best-practices/architecture /docs/current/building-dapps/launching-a-dapp/create-and-install
-  /docs/current/developer-docs/setup/best-practices/general /docs/current/developer-education/developer-playbook/developer-best-practices/general
-  /docs/current/developer-docs/setup/best-practices/storage /docs/current/developer-education/developer-playbook/developer-best-practices/storage
-  /docs/current/developer-docs/setup/best-practices/troubleshooting /docs/current/developer-education/developer-playbook/developer-best-practices/troubleshooting
+  /docs/current/developer-docs/setup/best-practices/architecture /docs/current/building-dapps/creating-dapps/create-and-install
+  /docs/current/developer-docs/smart-contracts/best-practices/architecture /docs/current/building-dapps/creating-dapps/create-and-install
+  /docs/current/developer-docs/setup/best-practices/general /docs/current/developer-education/developer-cookbook/developer-best-practices/general
+  /docs/current/developer-docs/setup/best-practices/storage /docs/current/developer-education/developer-cookbook/developer-best-practices/storage
+  /docs/current/developer-docs/setup/best-practices/troubleshooting /docs/current/developer-education/developer-cookbook/developer-best-practices/troubleshooting
   /docs/current/developer-docs/frontend/ /docs/current/building-dapps/dapp-frontends/using-an-asset-canister
   /docs/current/developer-docs/frontend/default-frontend /docs/current/building-dapps/dapp-frontends/using-an-asset-canister
   /docs/current/developer-docs/frontend/add-stylesheet /docs/current/building-dapps/dapp-frontends/using-an-asset-canister
@@ -358,9 +358,9 @@ const redirects = `
   /docs/current/developer-docs/integrations/internet-identity/creating-ii /docs/current/building-dapps/authentication/overview
   /docs/current/developer-docs/integrations/internet-identity/integrate-identity /docs/current/building-dapps/authentication/integrate-internet-identity
   /docs/current/developer-docs/integrations/internet-identity/alternative-origins /docs/current/building-dapps/authentication/alternative-origins
-  /docs/current/developer-docs/http-compatible-canisters/custom-http-canisters /docs/current/building-dapps/using-network-features/using-external-data/http-gateways-certification/custom-http-canisters
-  /docs/current/developer-docs/http-compatible-canisters/serving-json-over-http /docs/current/building-dapps/using-network-features/using-external-data/http-gateways-certification/serving-json-over-http
-  /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/current/building-dapps/using-network-features/using-external-data/http-gateways-certification/serving-static-assets-over-http
+  /docs/current/developer-docs/http-compatible-canisters/custom-http-canisters /docs/current/building-dapps/using-network-features/using-http/http-certification/custom-http-canisters
+  /docs/current/developer-docs/http-compatible-canisters/serving-json-over-http /docs/current/building-dapps/using-network-features/using-http/http-certification/serving-json-over-http
+  /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/current/building-dapps/using-network-features/using-http/http-certification/serving-static-assets-over-http
   /docs/current/developer-docs/integrations/ledger/introduction_and_overview /docs/current/rosetta-defi/overview
   /docs/current/developer-docs/integrations/ledger/  /docs/current/rosetta-defi/overview
   /docs/current/developer-docs/integrations/ledger/ledger-local-setup  /docs/current/rosetta-defi/token-ledgers/setup/icp_ledger_setup
@@ -434,14 +434,14 @@ const redirects = `
   /docs/current/developer-docs/integrations/vetkeys/technology-overview /docs/current/references/vetkeys-overview
   /docs/current/building-dapps/developer-tools/cli-tools/networks-json /docs/current/building-dapps/developer-tools/advanced-dfx/networks-json
   /docs/current/developer-docs/production/system-canisters /docs/current/developer-education/system-canisters/
-  /docs/current/developer-docs/backend/arguments /docs/current/building-dapps/interacting-with-dapps/advanced-calls
+  /docs/current/developer-docs/backend/arguments /docs/current/building-dapps/calling-dapps/advanced-calls
   /docs/current/developer-docs/frontend/index /docs/current/building-dapps/dapp-frontends/using-an-asset-canister
-  /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-get /docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/get
-  /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use /docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview
-  /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-overview /docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview
-  /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-post /docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/post
+  /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-get /docs/current/building-dapps/using-network-features/using-http/https-outcalls/get
+  /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use /docs/current/building-dapps/using-network-features/using-http/https-outcalls/overview
+  /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-overview /docs/current/building-dapps/using-network-features/using-http/https-outcalls/overview
+  /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-post /docs/current/building-dapps/using-network-features/using-http/https-outcalls/post
   /docs/current/developer-docs/setup/ic-admin /docs/current/building-dapps/developer-tools/ic-admin
-  /docs/current/developer-docs/backend/subnet-types /docs/current/building-dapps/launching-a-dapp/subnets/subnet-types
+  /docs/current/developer-docs/backend/subnet-types /docs/current/building-dapps/creating-dapps/subnets/subnet-types
   /docs/current/references/glossary /docs/current/developer-education/glossary/
   /docs/current/samples/host-a-website /docs/current/references/samples/hosting/static-website/
   /docs/current/samples/host-a-webgame /docs/current/references/samples/hosting/unity-webgl-template/
@@ -543,7 +543,7 @@ const redirects = `
   /docs/current/developer-docs/defi/nfts/considerations-for-nft-devs /docs/current/rosetta-defi/overview
   /docs/current/developer-docs/defi/icrc-1/token-quickstart /docs/current/rosetta-defi/create
   /docs/current/references/ /docs/current/references/ic-interface-spec
-  /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/ /docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview
+  /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/ /docs/current/building-dapps/using-network-features/using-http/https-outcalls/overview
   /docs/language-guide/motoko.html /docs/current/motoko/main/getting-started/motoko-introduction
   /education /education-hub
   /docs/current/developer-docs/integrations/ledger/deploy-new-token /docs/current/rosetta-defi/create
@@ -570,7 +570,7 @@ const redirects = `
   /docs/current/developer-docs/setup/cycles/cycles-faucet.md	/docs/current/building-dapps/getting-started/tokens-and-cycles
   /docs/current/developer-docs/setup/deploy-mainnet.md	/docs/current/building-dapps/getting-started/deploy-and-manage
   /docs/current/developer-docs/setup/index.md	/docs/current/building-dapps/getting-started/install
-  /docs/current/developer-docs/smart-contracts/candid/index	/docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts
+  /docs/current/developer-docs/smart-contracts/candid/index	/docs/current/building-dapps/calling-dapps/candid/candid-concepts
   /docs/current/docs/current/references/ii-spec	/docs/current/references/ii-spec
   /docs/current/motoko/ /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/getting-started/motoko-introduction /docs/current/motoko/main/getting-started/motoko-introduction
@@ -580,20 +580,20 @@ const redirects = `
   /docs/language-guide/cycles.html /docs/current/building-dapps/getting-started/tokens-and-cycles
   /grants	https://dfinity.org/grants
   /docs/base-libraries/motoko-base/Text.html	/docs/current/motoko/main/base/Text
-  /docs/candid-guide/candid-types.html	/docs/current/building-dapps/interacting-with-dapps/candid/using-candid/
+  /docs/candid-guide/candid-types.html	/docs/current/building-dapps/calling-dapps/candid/using-candid/
   /docs/current/developer-docs/deploy/custom-domain	/docs/current/building-dapps/dapp-frontends/custom-domains/using-custom-domains
   /docs/current/developer-docs/integrations/internet-identity	/docs/current/building-dapps/authentication/overview
   /bitcoin /bitcoin-integration
   /bootcamp	/education-hub
-  /docs/candid-guide/candid-concepts.html	/docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts
+  /docs/candid-guide/candid-concepts.html	/docs/current/building-dapps/calling-dapps/candid/candid-concepts
   /docs/current/blog/features/vetkey-primer	/blog/features/vetkey-primer
   /docs/current/concepts/chain-key-technology/ /docs/current/building-dapps/chain-fusion/overview
   /docs/current/concepts/concepts-intro.html	/docs/current/developer-education/developer-concepts/network-overview
   /docs/current/developer-docs/backend	/docs/current/developer-education/developer-concepts/network-overview
   /docs/current/developer-docs/backend/rust/rust-quickstart	/docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust
-  /docs/current/developer-docs/best-practices/	/docs/current/developer-education/developer-playbook/developer-best-practices/general
+  /docs/current/developer-docs/best-practices/	/docs/current/developer-education/developer-cookbook/developer-best-practices/general
   /docs/current/developer-docs/best-practices/considerations-for-nft-devs /docs/current/rosetta-defi/overview
-  /docs/current/developer-docs/smart-contracts/test/staging-environment /docs/current/building-dapps/launching-a-dapp/deploy/custom-networks
+  /docs/current/developer-docs/smart-contracts/test/staging-environment /docs/current/building-dapps/creating-dapps/deploy/custom-networks
   /docs/current/developer-docs/smart-contracts/encryption/signing-messages /docs/current/building-dapps/using-network-features/signatures/t-ecdsa
   /docs/current/developer-docs/smart-contracts/encryption/t-ecdsa /docs/current/building-dapps/using-network-features/signatures/t-ecdsa
   /docs/current/developer-docs/smart-contracts/encryption/t-schnorr /docs/current/building-dapps/using-network-features/signatures/t-schnorr
@@ -611,19 +611,19 @@ const redirects = `
   /docs/current/developer-docs/getting-started/ /docs/current/developer-education/developer-concepts/network-overview
   /docs/current/developer-docs/defi/wallets/workflow /docs/current/rosetta-defi/overview
   /docs/current/developer-docs/backend/rust/infrastructure /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust
-  /docs/current/developer-docs/smart-contracts/deploy/larger-wasm /docs/current/building-dapps/launching-a-dapp/create-and-install
-  /docs/current/developer-docs/smart-contracts/deploy/sharing /docs/current/building-dapps/launching-a-dapp/deploy/overview
+  /docs/current/developer-docs/smart-contracts/deploy/larger-wasm /docs/current/building-dapps/creating-dapps/create-and-install
+  /docs/current/developer-docs/smart-contracts/deploy/sharing /docs/current/building-dapps/creating-dapps/deploy/overview
   /docs/current/developer-docs/integrations/rosetta/staking-support /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/staking
   /docs/current/developer-docs/smart-contracts/test/benchmarking /docs/current/building-dapps/developer-tools/canbench
-  /docs/current/developer-docs/smart-contracts/test/reproducible-builds /docs/current/developer-education/developer-playbook/developer-best-practices/reproducible-builds
+  /docs/current/developer-docs/smart-contracts/test/reproducible-builds /docs/current/developer-education/developer-cookbook/developer-best-practices/reproducible-builds
   /docs/current/developer-docs/ai/ai-on-chain  /ecosystem
   /docs/current/developer-docs/ai/machine-learning-sample /ecosystem
   /docs/current/developer-docs/security/general-security-best-practices /docs/current/developer-education/security/overview
   /docs/current/samples/game-of-life /docs/current/references/samples/motoko/life/
   /docs/current/concepts/canisters-code /docs/current/developer-education/developer-concepts/what-are-canisters
   /docs/current/concepts/governance /docs/current/move-to-learnhub/nns/overview
-  /docs/current/concepts/nodes-subnets /docs/current/building-dapps/launching-a-dapp/subnets/overview
-  /docs/current/concepts/subnet-types /docs/current/building-dapps/launching-a-dapp/subnets/subnet-types
+  /docs/current/concepts/nodes-subnets /docs/current/building-dapps/creating-dapps/subnets/overview
+  /docs/current/concepts/subnet-types /docs/current/building-dapps/creating-dapps/subnets/subnet-types
   /docs/current/concepts/glossary /docs/current/developer-education/glossary/
   /docs/current/concepts/trust-in-canisters /docs/current/developer-education/developer-concepts/trust-in-canisters
   /docs/current/developer-docs/multi-chain/faq/user-faq /docs/current/building-dapps/chain-fusion/overview
@@ -633,12 +633,12 @@ const redirects = `
   /docs/current/developer-docs/multi-chain/faq/signatures-faq /docs/current/references/t-sigs-how-it-works
   /docs/current/developer-docs/integrations/rosetta/staking-tutorial/ /docs/current/rosetta-defi/rosetta/icp_rosetta/construction_api/staking
   /docs/current/developer-docs/getting-started/cycles/cycles-wallet /docs/current/rosetta-defi/cycles/cycles-wallet
-  /docs/current/developer-docs/smart-contracts/write/auto-scaling-architecture /docs/current/building-dapps/launching-a-dapp/create-and-install
-  /docs/current/developer-docs/smart-contracts/write/resources /docs/current/building-dapps/launching-a-dapp/create-and-install
-  /docs/current/developer-docs/smart-contracts/call/arguments /docs/current/building-dapps/interacting-with-dapps/advanced-calls
-  /docs/current/developer-docs/smart-contracts/candid/ /docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts
-  /docs/current/developer-docs/getting-started/development-workflow /docs/current/developer-education/developer-playbook/developer-environments
-  /docs/current/developer-docs/getting-started/default-template /docs/current/building-dapps/launching-a-dapp/create-and-install
+  /docs/current/developer-docs/smart-contracts/write/auto-scaling-architecture /docs/current/building-dapps/creating-dapps/create-and-install
+  /docs/current/developer-docs/smart-contracts/write/resources /docs/current/building-dapps/creating-dapps/create-and-install
+  /docs/current/developer-docs/smart-contracts/call/arguments /docs/current/building-dapps/calling-dapps/advanced-calls
+  /docs/current/developer-docs/smart-contracts/candid/ /docs/current/building-dapps/calling-dapps/candid/candid-concepts
+  /docs/current/developer-docs/getting-started/development-workflow /docs/current/developer-education/developer-cookbook/developer-environments
+  /docs/current/developer-docs/getting-started/default-template /docs/current/building-dapps/creating-dapps/create-and-install
   /docs/current/developer-docs/getting-started/hello-world /docs/current/building-dapps/getting-started/write-canister-code
   /docs/current/developer-docs/getting-started/cycles/overview /docs/current/building-dapps/getting-started/tokens-and-cycles
   /docs/current/developer-docs/getting-started/accounts /docs/current/building-dapps/getting-started/identities
@@ -646,9 +646,9 @@ const redirects = `
   /docs/current/developer-docs/getting-started/deploy/testnet /docs/current/building-dapps/getting-started/deploy-and-manage
   /docs/current/developer-docs/getting-started/deploy-and-manage  /docs/current/building-dapps/getting-started/deploy-and-manage
   /docs/current/developer-docs/smart-contracts/test/troubleshooting /docs/current/building-dapps/getting-started/troubleshooting
-  /docs/current/developer-docs/smart-contracts/advanced-features/http-gateways /docs/current/building-dapps/using-network-features/using-external-data/http-gateways-certification/gateways
-  /docs/current/developer-docs/smart-contracts/advanced-features/serving-http-request /docs/current/building-dapps/using-network-features/using-external-data/http-gateways-certification/gateways
-  /docs/current/developer-docs/smart-contracts/write/default-template /docs/current/building-dapps/launching-a-dapp/create-and-install
+  /docs/current/developer-docs/smart-contracts/advanced-features/http-gateways /docs/current/building-dapps/using-network-features/using-http/http-certification/gateways
+  /docs/current/developer-docs/smart-contracts/advanced-features/serving-http-request /docs/current/building-dapps/using-network-features/using-http/http-certification/gateways
+  /docs/current/developer-docs/smart-contracts/write/default-template /docs/current/building-dapps/creating-dapps/create-and-install
   /developers /docs/current/home
   /docs/current/developer-docs/identity/authentication/email-password /docs/current/building-dapps/authentication/overview
   /docs/current/developer-docs/identity/authentication/nfid /docs/current/building-dapps/authentication/overview
@@ -656,14 +656,14 @@ const redirects = `
   /docs/current/developer-docs/identity/authentication/siwe /docs/current/building-dapps/authentication/overview
   /docs/current/developer-docs/identity/authentication/siws /docs/current/building-dapps/authentication/overview
   /docs/current/developer-docs/identity/authentication/msq /docs/current/building-dapps/authentication/overview
-  /docs/current/developer-docs/web-apps/browser-js/js-request-api /docs/current/building-dapps/interacting-with-dapps/agents/javascript-agent
+  /docs/current/developer-docs/web-apps/browser-js/js-request-api /docs/current/building-dapps/calling-dapps/agents/javascript-agent
   /docs/current/developer-docs/defi/tokens/asset_flow/index /docs/current/rosetta-defi/overview
   /docs/current/developer-docs/defi/tokens/ledger/overview /docs/current/rosetta-defi/overview
   /docs/current/developer-docs/defi/tokens/ledger/setup/overview /docs/current/rosetta-defi/overview
   /docs/current/developer-docs/defi/tokens/ledger/usage/overview /docs/current/rosetta-defi/overview
   /docs/current/developer-docs/web-apps/obtain-verify-ic-pubkey /docs/current/building-dapps/developer-tools/dfx/dfx-ping
   /docs/current/developer-docs/web-apps/design-dapps /docs/current/developer-education/developer-concepts/what-are-canisters
-  /docs/current/developer-docs/smart-contracts/candid /docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts
+  /docs/current/developer-docs/smart-contracts/candid /docs/current/building-dapps/calling-dapps/candid/candid-concepts
   /docs/current/developer-docs/build/cdks/motoko-dfinity /docs/current/building-dapps/developer-tools/cdks/
   /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet /docs/current/building-dapps/dapp-frontends/using-an-asset-canister
   /docs/current/developer-docs/web-apps/application-frontends/default-frontend /docs/current/building-dapps/dapp-frontends/using-an-asset-canister
@@ -673,18 +673,18 @@ const redirects = `
   /docs/current/developer-docs/gas-cost /docs/current/developer-education/developer-concepts/gas-cost
   /docs/current/developer-docs/cost-estimations-and-examples /docs/current/developer-education/developer-concepts/cost-estimations-and-examples
 
-  /docs/current/developer-docs/smart-contracts/development-workflow /docs/current/developer-education/developer-playbook/developer-environments
-  /docs/current/building-dapps/launching-a-dapp/create-and-install /docs/current/developer-education/developer-playbook/application-architectures
+  /docs/current/developer-docs/smart-contracts/development-workflow /docs/current/developer-education/developer-cookbook/developer-environments
+  /docs/current/building-dapps/creating-dapps/create-and-install /docs/current/developer-education/developer-cookbook/application-architectures
   /docs/current/developer-docs/smart-contracts/overview/inside-canisters /docs/current/developer-education/developer-concepts/inside-canisters
   /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle /docs/current/developer-education/developer-concepts/canister-lifecycle
 
-  /docs/current/developer-docs/smart-contracts/best-practices/general /docs/current/developer-education/developer-playbook/developer-best-practices/general
-  /docs/current/developer-docs/smart-contracts/best-practices/reproducible-builds /docs/current/developer-education/developer-playbook/developer-best-practices/reproducible-builds
-  /docs/current/developer-docs/smart-contracts/best-practices/storage /docs/current/developer-education/developer-playbook/developer-best-practices/storage
-  /docs/current/developer-docs/smart-contracts/best-practices/troubleshooting /docs/current/developer-education/developer-playbook/developer-best-practices/troubleshooting
-  /docs/current/developer-docs/smart-contracts/best-practices/idempotency /docs/current/developer-education/developer-playbook/developer-best-practices/idempotency
+  /docs/current/developer-docs/smart-contracts/best-practices/general /docs/current/developer-education/developer-cookbook/developer-best-practices/general
+  /docs/current/developer-docs/smart-contracts/best-practices/reproducible-builds /docs/current/developer-education/developer-cookbook/developer-best-practices/reproducible-builds
+  /docs/current/developer-docs/smart-contracts/best-practices/storage /docs/current/developer-education/developer-cookbook/developer-best-practices/storage
+  /docs/current/developer-docs/smart-contracts/best-practices/troubleshooting /docs/current/developer-education/developer-cookbook/developer-best-practices/troubleshooting
+  /docs/current/developer-docs/smart-contracts/best-practices/idempotency /docs/current/developer-education/developer-cookbook/developer-best-practices/idempotency
 
-  /docs/current/developer-docs/smart-contracts/call/overview /docs/current/building-dapps/interacting-with-dapps/advanced-calls
+  /docs/current/developer-docs/smart-contracts/call/overview /docs/current/building-dapps/calling-dapps/advanced-calls
   /docs/current/references/execution-errors /docs/current/references/execution-errors
   /docs/current/references/ingress-messages /docs/current/developer-education/message-execution/ingress-messages
   /docs/current/developer-docs/smart-contracts/advanced-features/system-canisters /docs/current/developer-education/system-canisters/
@@ -831,12 +831,12 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-transfer /docs/current/building-dapps/developer-tools/quill/quill-transfer
   /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-update-node-provider /docs/current/building-dapps/developer-tools/quill/quill-update-node-provider
 
-  /docs/current/developer-docs/smart-contracts/create /docs/current/building-dapps/launching-a-dapp/create-and-install
-  /docs/current/developer-docs/smart-contracts/write/overview /docs/current/building-dapps/launching-a-dapp/create-and-install
-  /docs/current/developer-docs/smart-contracts/compile /docs/current/building-dapps/launching-a-dapp/create-and-install
-  /docs/current/developer-docs/smart-contracts/install /docs/current/building-dapps/launching-a-dapp/create-and-install
-  /docs/current/developer-docs/smart-contracts/deploy/overview /docs/current/building-dapps/launching-a-dapp/deploy/overview
-  /docs/current/developer-docs/smart-contracts/deploy/custom-networks /docs/current/building-dapps/launching-a-dapp/deploy/custom-networks
+  /docs/current/developer-docs/smart-contracts/create /docs/current/building-dapps/creating-dapps/create-and-install
+  /docs/current/developer-docs/smart-contracts/write/overview /docs/current/building-dapps/creating-dapps/create-and-install
+  /docs/current/developer-docs/smart-contracts/compile /docs/current/building-dapps/creating-dapps/create-and-install
+  /docs/current/developer-docs/smart-contracts/install /docs/current/building-dapps/creating-dapps/create-and-install
+  /docs/current/developer-docs/smart-contracts/deploy/overview /docs/current/building-dapps/creating-dapps/deploy/overview
+  /docs/current/developer-docs/smart-contracts/deploy/custom-networks /docs/current/building-dapps/creating-dapps/deploy/custom-networks
 
   /docs/current/developer-docs/web-apps/application-frontends/webpack /docs/current/building-dapps/dapp-frontends/using-an-asset-canister
   /docs/current/developer-docs/web-apps/browser-js/js-frameworks /docs/current/building-dapps/dapp-frontends/using-an-asset-canister
@@ -846,25 +846,25 @@ const redirects = `
   /docs/current/developer-docs/web-apps/custom-domains/using-custom-domains /docs/current/building-dapps/dapp-frontends/custom-domains/using-custom-domains
   /docs/current/developer-docs/web-apps/custom-domains/dns-setup /docs/current/building-dapps/dapp-frontends/custom-domains/dns-setup
 
-  /docs/current/developer-docs/smart-contracts/candid/candid-concepts /docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts
-  /docs/current/developer-docs/smart-contracts/candid/candid-howto /docs/current/building-dapps/interacting-with-dapps/candid/using-candid
-  /docs/current/developer-docs/smart-contracts/candid/candid-tools /docs/current/building-dapps/interacting-with-dapps/candid/candid-tools
+  /docs/current/developer-docs/smart-contracts/candid/candid-concepts /docs/current/building-dapps/calling-dapps/candid/candid-concepts
+  /docs/current/developer-docs/smart-contracts/candid/candid-howto /docs/current/building-dapps/calling-dapps/candid/using-candid
+  /docs/current/developer-docs/smart-contracts/candid/candid-tools /docs/current/building-dapps/calling-dapps/candid/candid-tools
   /docs/current/developer-docs/smart-contracts/advanced-features/async-code /docs/current/developer-education/message-execution/async-code
-  /docs/current/developer-docs/smart-contracts/advanced-features/composite-query /docs/current/building-dapps/interacting-with-dapps/query-calls
-  /docs/current/developer-docs/smart-contracts/advanced-features/query-stats /docs/current/building-dapps/interacting-with-dapps/query-calls
+  /docs/current/developer-docs/smart-contracts/advanced-features/composite-query /docs/current/building-dapps/calling-dapps/query-calls
+  /docs/current/developer-docs/smart-contracts/advanced-features/query-stats /docs/current/building-dapps/calling-dapps/query-calls
 
-  /docs/current/developer-docs/developer-tools/off-chain/agents/overview /docs/current/building-dapps/interacting-with-dapps/agents/overview
-  /docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent /docs/current/building-dapps/interacting-with-dapps/agents/javascript-agent
-  /docs/current/developer-docs/developer-tools/off-chain/agents/nodejs /docs/current/building-dapps/interacting-with-dapps/agents/nodejs
-  /docs/current/developer-docs/developer-tools/off-chain/agents/rust-agent /docs/current/building-dapps/interacting-with-dapps/agents/rust-agent
+  /docs/current/developer-docs/developer-tools/off-chain/agents/overview /docs/current/building-dapps/calling-dapps/agents/overview
+  /docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent /docs/current/building-dapps/calling-dapps/agents/javascript-agent
+  /docs/current/developer-docs/developer-tools/off-chain/agents/nodejs /docs/current/building-dapps/calling-dapps/agents/nodejs
+  /docs/current/developer-docs/developer-tools/off-chain/agents/rust-agent /docs/current/building-dapps/calling-dapps/agents/rust-agent
 
-  /docs/current/developer-docs/smart-contracts/maintain/import /docs/current/building-dapps/interacting-with-dapps/using-third-party-canisters
+  /docs/current/developer-docs/smart-contracts/maintain/import /docs/current/building-dapps/creating-dapps/using-third-party-canisters
   /docs/current/developer-docs/smart-contracts/maintain/control /docs/current/building-dapps/managing-dapps/control
   /docs/current/developer-docs/smart-contracts/maintain/delete /docs/current/building-dapps/managing-dapps/delete
   /docs/current/developer-docs/smart-contracts/maintain/history /docs/current/building-dapps/managing-dapps/history
   /docs/current/developer-docs/smart-contracts/maintain/logs /docs/current/building-dapps/managing-dapps/logs
   /docs/current/developer-docs/smart-contracts/maintain/recovery /docs/current/building-dapps/managing-dapps/recovery
-  /docs/current/developer-docs/smart-contracts/maintain/resource-limits /docs/current/building-dapps/launching-a-dapp/resource-limits
+  /docs/current/developer-docs/smart-contracts/maintain/resource-limits /docs/current/building-dapps/creating-dapps/resource-limits
   /docs/current/developer-docs/smart-contracts/maintain/snapshots /docs/current/building-dapps/managing-dapps/snapshots
   /docs/current/developer-docs/smart-contracts/maintain/state /docs/current/building-dapps/managing-dapps/state
   /docs/current/developer-docs/smart-contracts/maintain/settings /docs/current/building-dapps/managing-dapps/settings
@@ -874,9 +874,9 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/topping-up/topping-up-canister /docs/current/building-dapps/managing-dapps/topping-up
   /docs/current/developer-docs/smart-contracts/topping-up/cycles_management_services /docs/current/building-dapps/managing-dapps/topping-up
 
-  /docs/current/developer-docs/web-apps/http-compatible-canisters/custom-http-canisters /docs/current/building-dapps/using-network-features/using-external-data/http-gateways-certification/custom-http-canisters
-  /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-json-over-http /docs/current/building-dapps/using-network-features/using-external-data/http-gateways-certification/serving-json-over-http
-  /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http /docs/current/building-dapps/using-network-features/using-external-data/http-gateways-certification/serving-static-assets-over-http
+  /docs/current/developer-docs/web-apps/http-compatible-canisters/custom-http-canisters /docs/current/building-dapps/using-network-features/using-http/http-certification/custom-http-canisters
+  /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-json-over-http /docs/current/building-dapps/using-network-features/using-http/http-certification/serving-json-over-http
+  /docs/current/developer-docs/web-apps/http-compatible-canisters/serving-static-assets-over-http /docs/current/building-dapps/using-network-features/using-http/http-certification/serving-static-assets-over-http
 
   /docs/current/developer-docs/smart-contracts/signatures/t-ecdsa /docs/current/building-dapps/using-network-features/signatures/t-ecdsa
   /docs/current/developer-docs/smart-contracts/signatures/t-schnorr /docs/current/building-dapps/using-network-features/signatures/t-schnorr
@@ -887,7 +887,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/encryption/vetkeys /docs/current/building-dapps/using-network-features/encryption/vetkeys
   /docs/current/developer-docs/smart-contracts/encryption/using-vetkeys /docs/current/building-dapps/using-network-features/encryption/using-vetkeys
 
-  /docs/current/developer-docs/smart-contracts/advanced-features/handling-get-post-requests /docs/current/building-dapps/using-network-features/using-external-data/http-gateways-certification/gateways
+  /docs/current/developer-docs/smart-contracts/advanced-features/handling-get-post-requests /docs/current/building-dapps/using-network-features/using-http/http-certification/gateways
   /docs/current/developer-docs/smart-contracts/advanced-features/periodic-tasks /docs/current/building-dapps/using-network-features/periodic-tasks-timers
   /docs/current/developer-docs/smart-contracts/advanced-features/randomness /docs/current/building-dapps/using-network-features/randomness
   /docs/current/developer-docs/smart-contracts/advanced-features/simd /docs/current/building-dapps/using-network-features/simd
@@ -903,10 +903,10 @@ const redirects = `
   /docs/current/developer-docs/identity/verifiable-credentials/issuer /docs/current/building-dapps/using-network-features/verifiable-credentials/issuer
   /docs/current/developer-docs/identity/verifiable-credentials/relying-party /docs/current/building-dapps/using-network-features/verifiable-credentials/relying-party
 
-  /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview /docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview
-  /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use /docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview
-  /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-get /docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/get
-  /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-post /docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/post
+  /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview /docs/current/building-dapps/using-network-features/using-http/https-outcalls/overview
+  /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use /docs/current/building-dapps/using-network-features/using-http/https-outcalls/overview
+  /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-get /docs/current/building-dapps/using-network-features/using-http/https-outcalls/get
+  /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-post /docs/current/building-dapps/using-network-features/using-http/https-outcalls/post
 
   /docs/current/developer-docs/multi-chain/overview /docs/current/building-dapps/chain-fusion/overview
   /docs/current/developer-docs/multi-chain/supported-chains /docs/current/building-dapps/chain-fusion/supported-chains
@@ -1030,10 +1030,10 @@ const redirects = `
 
   /docs/current/developer-docs/defi/nfts/nft-collections /docs/current/rosetta-defi/nft-collections
 
-  /docs/current/references/subnets/overview /docs/current/building-dapps/launching-a-dapp/subnets/overview
-  /docs/current/references/subnets/subnet-types /docs/current/building-dapps/launching-a-dapp/subnets/subnet-types
-  /docs/current/developer-docs/smart-contracts/test/overview /docs/current/building-dapps/launching-a-dapp/test/overview
-  /docs/current/developer-docs/smart-contracts/test/pocket-ic /docs/current/building-dapps/launching-a-dapp/test/pocket-ic
+  /docs/current/references/subnets/overview /docs/current/building-dapps/creating-dapps/subnets/overview
+  /docs/current/references/subnets/subnet-types /docs/current/building-dapps/creating-dapps/subnets/subnet-types
+  /docs/current/developer-docs/smart-contracts/test/overview /docs/current/building-dapps/creating-dapps/test/overview
+  /docs/current/developer-docs/smart-contracts/test/pocket-ic /docs/current/building-dapps/creating-dapps/test/pocket-ic
 
   /docs/current/developer-docs/ai/overview /ecosystem
   /docs/current/developer-docs/ai/inference /ecosystem

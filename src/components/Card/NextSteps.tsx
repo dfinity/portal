@@ -113,7 +113,7 @@ const languagesTiles: TileDescriptor[] = [
       "Review the developer best practices for building on ICP.",
     action: (
       <Link
-        href="/docs/current/developer-education/developer-playbook/developer-best-practices/general"
+        href="/docs/current/developer-education/developer-cookbook/developer-best-practices/general"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -169,7 +169,7 @@ const languagesTiles: TileDescriptor[] = [
       "Use HTTPS outcalls in your project to obtain data from external sources.",
     action: (
       <Link
-        href="/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview"
+        href="/docs/current/building-dapps/using-network-features/using-http/https-outcalls/overview"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >

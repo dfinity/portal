@@ -426,7 +426,7 @@ const marketingNav = {
             {
               name: "Programming languages",
               description: "ICP supports multiple languages",
-              href: "/docs/current/building-dapps/launching-a-dapp/create-and-install",
+              href: "/docs/current/building-dapps/creating-dapps/create-and-install",
             },
             {
               name: "Hackathons",

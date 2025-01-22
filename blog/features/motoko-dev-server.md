@@ -63,7 +63,7 @@ Once you’ve installed the tool, run `mo-dev --help` to view usage examples and
 
 ## Candid UI
 
-Let’s say you’re developing a Motoko smart contract using the [Candid UI](/docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts). Here’s a command which will redeploy the canister on file change:
+Let’s say you’re developing a Motoko smart contract using the [Candid UI](/docs/current/building-dapps/calling-dapps/candid/candid-concepts). Here’s a command which will redeploy the canister on file change:
 
 ```sh
 mo-dev --deploy -y

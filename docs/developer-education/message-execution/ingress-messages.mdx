@@ -13,7 +13,7 @@ Ingress messages are requests to ICP <GlossaryTooltip>canisters</GlossaryTooltip
 
 For example, you can browse what ingress messages can be sent to the ckBTC ledger by browsing through its [API using the dashboard](https://dashboard.internetcomputer.org/canister/mxzaz-hqaaa-aaaar-qaada-cai). The tool also allows you to send messages, using agent-js behind the scenes.
 
-See also the introductory [call overview](/docs/current/building-dapps/interacting-with-dapps/query-calls) to learn more about calling canisters.
+See also the introductory [call overview](/docs/current/building-dapps/calling-dapps/query-calls) to learn more about calling canisters.
 
 This page discusses ICP's ingress message APIs. While these APIs are defined in detail within the [HTTPS interface specification](/docs/current/references/ic-interface-spec#http-interface), this page provides a more high-level and intuitive  with a special focus on error handling. That aspect is particularly important, as it can be tricky to determine if an ingress message has actually been successfully executed. Misinterpreting errors could lead to bugs such as double spending.
 
@@ -31,7 +31,7 @@ Another alternative approach is to sign the data beforehand and provide [*certif
 
 Error handling for queries is typically simple: on error, one can simply retry until a successful response is received.
 
-[Learn more about query calls](/docs/current/building-dapps/interacting-with-dapps/query-calls).
+[Learn more about query calls](/docs/current/building-dapps/calling-dapps/query-calls).
 
 ### Update calls
 
@@ -49,7 +49,7 @@ However, a response may not be produced until some implementation-specific timeo
 
 ![Ingress async calls](_attachments/ingress_async_call.png)
 
-[Learn more about update calls](/docs/current/building-dapps/interacting-with-dapps/update-calls).
+[Learn more about update calls](/docs/current/building-dapps/calling-dapps/update-calls).
 
 ### Update call errors and their implications
 
@@ -78,11 +78,11 @@ In this situation, it is indistinguishable if the call was successful, but all i
 
 ### Recommendations and best practices for secure update call handling
 
-The best way to handle the aforementioned errors is to implement safe retries using idempotent calls. Idempotency and several patterns to achieve it are discussed in the [best practices on safe retries and idempotency](/docs/current/developer-education/developer-playbook/developer-best-practices/idempotency).
+The best way to handle the aforementioned errors is to implement safe retries using idempotent calls. Idempotency and several patterns to achieve it are discussed in the [best practices on safe retries and idempotency](/docs/current/developer-education/developer-cookbook/developer-best-practices/idempotency).
 
 It may not always be possible to make call endpoints idempotent. For example, an endpoint that is not under the developer’s control may simply not have this property. In this case, there is still a secure way to retry the calls by relying on built-in deduplication based on request IDs, as we describe below. However, the guarantees in this case are weaker compared to using idempotent calls.
 
-ICP provides a built-in deduplication feature. Namely, if two calls with identical [request id](/docs/current/references/ic-interface-spec#request-ids) are made, the message is processed at most once. For two calls to have the same `request_id`, they must have the same values for all fields: `request_type`, `sender`, `nonce`, `canister_id`, `method_name`, `arg`, and **ingress_expiry**. This gives idempotency, but only until the [`ingress_expiry`](/docs/current/references/ic-interface-spec#authentication) is reached, at which point the message expires and ICP [may remove the `request_id` from the system state tree](/docs/current/references/ic-interface-spec#state-tree-request-status). This isn't an issue since the same request will not be accepted later, as it expired. Thus, such requests can be safely retried analogously to how it is done for [idempotent calls](/docs/current/developer-education/developer-playbook/developer-best-practices/idempotency#idempotent-canister-apis), see the illustration on that page.
+ICP provides a built-in deduplication feature. Namely, if two calls with identical [request id](/docs/current/references/ic-interface-spec#request-ids) are made, the message is processed at most once. For two calls to have the same `request_id`, they must have the same values for all fields: `request_type`, `sender`, `nonce`, `canister_id`, `method_name`, `arg`, and **ingress_expiry**. This gives idempotency, but only until the [`ingress_expiry`](/docs/current/references/ic-interface-spec#authentication) is reached, at which point the message expires and ICP [may remove the `request_id` from the system state tree](/docs/current/references/ic-interface-spec#state-tree-request-status). This isn't an issue since the same request will not be accepted later, as it expired. Thus, such requests can be safely retried analogously to how it is done for [idempotent calls](/docs/current/developer-education/developer-cookbook/developer-best-practices/idempotency#idempotent-canister-apis), see the illustration on that page.
 
 As ICP rejects `ingress_expiry` that is too far in the future, the time window for retrying is limited. To maximize the window, one can maximize `ingress_expiry` in this case and time out the retries after `ingress_expiry` as well.
 

@@ -14,13 +14,13 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Beginner", "Launching dapp"]} />
 
-After you have [created](/docs/current/building-dapps/launching-a-dapp/create-and-install) a <GlossaryTooltip>canister</GlossaryTooltip>, you can deploy it to:
+After you have [created](/docs/current/building-dapps/creating-dapps/create-and-install) a <GlossaryTooltip>canister</GlossaryTooltip>, you can deploy it to:
 
 - The local network created by `dfx` where cycles are fabricated.
 
 - The playground on the mainnet, which is a testnet-like sandbox environment. No cycles are required to deploy and run your canisters on the playground, but they will be removed after 20 minutes.
 
-- A custom [local or playground network](/docs/current/building-dapps/launching-a-dapp/deploy/custom-networks).
+- A custom [local or playground network](/docs/current/building-dapps/creating-dapps/deploy/custom-networks).
 
 - The mainnet, designed for production use. This deployment method will cost cycles.
 
@@ -34,9 +34,9 @@ However, tools such as [ICP Ninja](https://icp.ninja) (a web IDE) and the [playg
 
 For most developers, the playground option can be used. For more advanced developers and use cases, there are two possible options for a testnet-like environment:
 
-- [Custom playgrounds](/docs/current/building-dapps/launching-a-dapp/deploy/custom-networks): Developers can deploy their own custom instance of the playground on the mainnet, allowing for full customization of the playground's parameters.
+- [Custom playgrounds](/docs/current/building-dapps/creating-dapps/deploy/custom-networks): Developers can deploy their own custom instance of the playground on the mainnet, allowing for full customization of the playground's parameters.
 
-- [Custom `dfx` networks](/docs/current/building-dapps/launching-a-dapp/deploy/custom-networks): The `dfx` named network feature can be used to create custom networks that can be used for testing segmented from other projects deployed locally.
+- [Custom `dfx` networks](/docs/current/building-dapps/creating-dapps/deploy/custom-networks): The `dfx` named network feature can be used to create custom networks that can be used for testing segmented from other projects deployed locally.
 
 ## Deploying canisters
 
@@ -46,16 +46,16 @@ For most developers, the playground option can be used. For more advanced develo
 <input type="checkbox"/> <a href="/docs/current/building-dapps/getting-started/install">Install the IC SDK.</a>
 <div>
 </div>
-<input type="checkbox"/> <a href="/docs/current/building-dapps/launching-a-dapp/create-and-install">Write a smart contract.</a>
+<input type="checkbox"/> <a href="/docs/current/building-dapps/creating-dapps/create-and-install">Write a smart contract.</a>
 <div>
 </div>
-<input type="checkbox"/> <a href="/docs/current/building-dapps/launching-a-dapp/create-and-install">Create your canister.</a> Optional: <code>dfx deploy</code> will execute this step if not already complete.
+<input type="checkbox"/> <a href="/docs/current/building-dapps/creating-dapps/create-and-install">Create your canister.</a> Optional: <code>dfx deploy</code> will execute this step if not already complete.
 <div>
 </div>
-<input type="checkbox"/> <a href="/docs/current/building-dapps/launching-a-dapp/create-and-install">Compile your canister code into Wasm.</a> Optional: <code>dfx deploy</code> will execute this step if not already complete.
+<input type="checkbox"/> <a href="/docs/current/building-dapps/creating-dapps/create-and-install">Compile your canister code into Wasm.</a> Optional: <code>dfx deploy</code> will execute this step if not already complete.
 <div>
 </div>
-<input type="checkbox"/> <a href="/docs/current/building-dapps/launching-a-dapp/create-and-install">Install the Wasm module into your canister.</a> Optional: <code>dfx deploy</code> will execute this step if not already complete.
+<input type="checkbox"/> <a href="/docs/current/building-dapps/creating-dapps/create-and-install">Install the Wasm module into your canister.</a> Optional: <code>dfx deploy</code> will execute this step if not already complete.
 </TabItem>
 </Tabs>
 
@@ -66,11 +66,11 @@ Deploying canisters is done using the `dfx deploy` command.
 :::danger
 `dfx deploy` does several processes in the background, including:
 
-- [Creating each canister](/docs/current/building-dapps/launching-a-dapp/create-and-install) listed in the `dfx.json` file.
+- [Creating each canister](/docs/current/building-dapps/creating-dapps/create-and-install) listed in the `dfx.json` file.
 
-- [Compiling the code](/docs/current/building-dapps/launching-a-dapp/create-and-install) for each canister into a Wasm module.
+- [Compiling the code](/docs/current/building-dapps/creating-dapps/create-and-install) for each canister into a Wasm module.
 
-- [Installing the Wasm module](/docs/current/building-dapps/launching-a-dapp/create-and-install) into each canister.
+- [Installing the Wasm module](/docs/current/building-dapps/creating-dapps/create-and-install) into each canister.
 
 - Deploying the canisters to the deployment endpoint of choice (local, playground, or mainnet).
 :::
@@ -95,7 +95,7 @@ https://<canister_id>.icp0.io
 
 If you are sharing a link to a frontend canister, the frontend of the dapp will be displayed.
 
-If you are sharing a link to a backend canister, the [Candid UI](/docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts) will be displayed.
+If you are sharing a link to a backend canister, the [Candid UI](/docs/current/building-dapps/calling-dapps/candid/candid-concepts) will be displayed.
 
 ## Use a custom Motoko version with `dfx deploy`
 

@@ -199,14 +199,14 @@ const Content: React.FC = () => {
                 integration,{" "}
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview"
+                  to="/docs/current/building-dapps/using-network-features/using-http/https-outcalls/overview"
                 >
                   RPC integration
                 </Link>{" "}
                 and
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview"
+                  to="/docs/current/building-dapps/using-network-features/using-http/https-outcalls/overview"
                 >
                   {" "}
                   HTTPs outcalls
@@ -262,7 +262,7 @@ const Content: React.FC = () => {
                 Internet Computer, is an
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview"
+                  to="/docs/current/building-dapps/using-network-features/using-http/https-outcalls/overview"
                 >
                   ICRC-1
                 </Link>

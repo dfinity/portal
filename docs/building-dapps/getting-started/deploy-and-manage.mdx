@@ -16,7 +16,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 Once a canister's code has been written, it must be compiled into Wasm, installed into the canister itself, and then deployed to a network. The `dfx deploy` command executes each of these tasks as part of the deployment process; however, `dfx` commands also exist for running each step individually.
 
-It is recommended to deploy canisters locally or to the temporary [playground](/docs/current/building-dapps/launching-a-dapp/deploy/overview#deploying-to-playground) network to test canister functionality and make adjustments before considering the canister production-ready and deploying it to the mainnet. Deploying canisters locally and to the playground is free and does not cost cycles. Once a canister is deployed to the mainnet, it will consistently consume cycles and will need to be topped up periodically.
+It is recommended to deploy canisters locally or to the temporary [playground](/docs/current/building-dapps/creating-dapps/deploy/overview#deploying-to-playground) network to test canister functionality and make adjustments before considering the canister production-ready and deploying it to the mainnet. Deploying canisters locally and to the playground is free and does not cost cycles. Once a canister is deployed to the mainnet, it will consistently consume cycles and will need to be topped up periodically.
 
 ## Starting the local replica
 
@@ -66,7 +66,7 @@ Your deployed canister will now be executing two timers and printing the output 
 ...
 ```
 
-You can interact with the canister's public methods either in your web browser through the [Candid UI](/docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts) URL that was returned in the deployment output or using the command line. Candid is an interface description language used to interact with a canister's public methods.
+You can interact with the canister's public methods either in your web browser through the [Candid UI](/docs/current/building-dapps/calling-dapps/candid/candid-concepts) URL that was returned in the deployment output or using the command line. Candid is an interface description language used to interact with a canister's public methods.
 
 ## Upgrading canisters
 
@@ -185,7 +185,7 @@ Log visibility: controllers
 
 - **Reserved cycles limit**: The maximum amount of cycles that can be set as 'reserved.'
 
-- **Wasm memory limit:** The maximum size for a canister's Wasm memory. [Learn more about resource limits](/docs/current/building-dapps/launching-a-dapp/resource-limits).
+- **Wasm memory limit:** The maximum size for a canister's Wasm memory. [Learn more about resource limits](/docs/current/building-dapps/creating-dapps/resource-limits).
 
 - **Module hash:** The hash of the installed Wasm module.
 

@@ -6,6 +6,7 @@ hide_table_of_contents: true
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { OsType, useOs } from "/src/hooks/useOs";
 
 # First web app
 
@@ -15,8 +16,8 @@ One key feature of ICP is its ability to serve web assets directly in a web brow
 
 **Open your terminal and deploy a React app in minutes using these steps.**
 
-<AdornedTabs>
-<TabItem value="linux" label="Linux" default={true}>
+<AdornedTabs defaultValue={useOs().current}>
+<TabItem value={OsType.Linux} label="Linux">
 
 #### Prerequisites
 
@@ -36,8 +37,35 @@ Confirm the IC SDK has been installed (you may need to open a new terminal windo
 dfx --version
 ```
 
+#### 2. Create a new project.
+
+```
+dfx new react-project --type motoko --frontend react
+```
+
+This generates a simple "Hello, [name]!" application that uses [Motoko](/docs/current/motoko/main/getting-started/motoko-introduction), React, and TypeScript.
+
+#### 3. Deploy the project.
+
+```
+cd react-project
+dfx deploy --playground
+```
+
+#### 4. Interact with the app.
+
+Open the `frontend` URL in a web browser. You'll see the template React frontend interface.
+
+*Congratulations, you just created your first internet-native web app!*
+
+:::info
+
+You can try other templates. Run `dfx new -h` for more information about the supported backend and frontend options.
+
+:::
+
 </TabItem>
-<TabItem value="macOS" label="macOS">
+<TabItem value={OsType.macOs} label="macOS">
 
 #### Prerequisites
 
@@ -60,9 +88,36 @@ Confirm the IC SDK has been installed (you may need to open a new terminal windo
 dfx --version
 ```
 
+#### 2. Create a new project.
+
+```
+dfx new react-project --type motoko --frontend react
+```
+
+This generates a simple "Hello, [name]!" application that uses [Motoko](/docs/current/motoko/main/getting-started/motoko-introduction), React, and TypeScript.
+
+#### 3. Deploy the project.
+
+```
+cd react-project
+dfx deploy --playground
+```
+
+#### 4. Interact with the app.
+
+Open the `frontend` URL in a web browser. You'll see the template React frontend interface.
+
+*Congratulations, you just created your first internet-native web app!*
+
+:::info
+
+You can try other templates. Run `dfx new -h` for more information about the supported backend and frontend options.
+
+:::
+
 </TabItem>
 
-<TabItem value="windows" label="Windows">
+<TabItem value={OsType.Windows} label="Windows">
 
 #### Prerequisites
 
@@ -96,11 +151,6 @@ Confirm the IC SDK has been installed (you may need to open a new terminal windo
 dfx --version
 ```
 
-</TabItem>
-
-</AdornedTabs>
-
-
 #### 2. Create a new project.
 
 ```
@@ -120,13 +170,18 @@ dfx deploy --playground
 
 Open the `frontend` URL in a web browser. You'll see the template React frontend interface.
 
-*Congratulations, you just created your first internet-native React app!*
+*Congratulations, you just created your first internet-native web app!*
 
 :::info
 
 You can try other templates. Run `dfx new -h` for more information about the supported backend and frontend options.
 
 :::
+
+</TabItem>
+
+</AdornedTabs>
+
 
 #### Possible next steps
 

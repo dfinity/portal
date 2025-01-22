@@ -29,7 +29,7 @@ The Bitcoin integration is a direct integration, meaning there are nodes running
   />
 </div>
 
-The EVM RPC canister enables your dapp to sign and submit transactions to Ethereum and other EVM networks using [HTTPS outcalls](/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview) and [threshold ECDSA signatures](/docs/current/building-dapps/using-network-features/signatures/t-ecdsa). The EVM RPC canister will eventually be replaced by an onchain Ethereum API on ICP, made possible by running full Ethereum nodes on each ICP replica.
+The EVM RPC canister enables your dapp to sign and submit transactions to Ethereum and other EVM networks using [HTTPS outcalls](/docs/current/building-dapps/using-network-features/using-http/https-outcalls/overview) and [threshold ECDSA signatures](/docs/current/building-dapps/using-network-features/signatures/t-ecdsa). The EVM RPC canister will eventually be replaced by an onchain Ethereum API on ICP, made possible by running full Ethereum nodes on each ICP replica.
 
 Through ICP's chain-key cryptography feature, the ETH integration also includes chain-key tokens, similar to the design of ckBTC. The ETH integration expands the possibilities of chain-key tokens to include ckETH and ckERC-20 tokens, including ckUSDC, ckEURC, and ckUSDT.
 
@@ -45,7 +45,7 @@ This starter project is comprised of three canisters:
 
 - The backend canister, written in Motoko, that uses the Motoko package manager Mops and mo-dev, a live development server for Motoko.
 
-- The EVM RPC canister, which is pulled into the project using [`dfx deps`](/docs/current/building-dapps/interacting-with-dapps/using-third-party-canisters).
+- The EVM RPC canister, which is pulled into the project using [`dfx deps`](/docs/current/building-dapps/creating-dapps/using-third-party-canisters).
 
 We'll dive deeper into the project's files in the [exploring the project's files](#exploring-the-projects-files) section below.
 

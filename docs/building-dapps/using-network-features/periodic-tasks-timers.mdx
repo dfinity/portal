@@ -201,7 +201,7 @@ Because of those limitations, in most cases, the CDK timers library for [Rust](h
 ## Frequently asked questions
 
 - #### Do timers support deterministic time slicing (DTS)?
-Yes, as the CDK timers library initiates a self-canister call to execute each task, normal [update message instruction limits](/docs/current/building-dapps/launching-a-dapp/resource-limits) apply with DTS enabled.
+Yes, as the CDK timers library initiates a self-canister call to execute each task, normal [update message instruction limits](/docs/current/building-dapps/creating-dapps/resource-limits) apply with DTS enabled.
 
 - #### What happens if a timer handler awaits a call?
 Normal await point rules apply: any new execution can start at the await point: a new message, another timer handler, or a heartbeat. Once that new execution is finished or reaches its await point, the execution of the current timer handler might be resumed.

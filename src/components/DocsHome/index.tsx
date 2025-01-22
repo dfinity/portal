@@ -590,7 +590,7 @@ const DocsHomePage: FC = () => {
             </p>
             <Link
               className="button-primary rounded-2xl"
-              href="/docs/current/building-dapps/launching-a-dapp/create-and-install"
+              href="/docs/current/building-dapps/creating-dapps/create-and-install"
             >
               View all
             </Link>

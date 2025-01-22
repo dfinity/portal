@@ -49,17 +49,17 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Developer playbook",
+      label: "Developer cookbook",
       items: [
         {
           type: "doc",
           label: "Developer environments",
-          id: "developer-education/developer-playbook/developer-environments",
+          id: "developer-education/developer-cookbook/developer-environments",
         },
         {
           type: "doc",
           label: "Application architecture considerations",
-          id: "developer-education/developer-playbook/application-architectures",
+          id: "developer-education/developer-cookbook/application-architectures",
         },
       {
         type: "category",
@@ -68,27 +68,27 @@ const sidebars = {
           {
             type: "doc",
             label: "General",
-            id: "developer-education/developer-playbook/developer-best-practices/general",
+            id: "developer-education/developer-cookbook/developer-best-practices/general",
           },
           {
             type: "doc",
             label: "Idempotency",
-            id: "developer-education/developer-playbook/developer-best-practices/idempotency",
+            id: "developer-education/developer-cookbook/developer-best-practices/idempotency",
           },
           {
             type: "doc",
             label: "Reproducible builds",
-            id: "developer-education/developer-playbook/developer-best-practices/reproducible-builds",
+            id: "developer-education/developer-cookbook/developer-best-practices/reproducible-builds",
           },
           {
             type: "doc",
             label: "Storage",
-            id: "developer-education/developer-playbook/developer-best-practices/storage",
+            id: "developer-education/developer-cookbook/developer-best-practices/storage",
           },
           {
             type: "doc",
             label: "Troubleshooting",
-            id: "developer-education/developer-playbook/developer-best-practices/troubleshooting",
+            id: "developer-education/developer-cookbook/developer-best-practices/troubleshooting",
           },
         ],
       },
@@ -253,7 +253,7 @@ build: [
       },
       {
         type: "doc",
-        label: "Deploying & managing dapps",
+        label: "Deploying & managing canisters",
         id: "building-dapps/getting-started/deploy-and-manage",
       },
     ],
@@ -474,6 +474,76 @@ build: [
     },
     {
       type: "category",
+      label: "Creating applications",
+      items: [
+        "building-dapps/creating-dapps/create-and-install",
+        {
+          type: "category",
+          label: "Deploying canisters",
+          link: {
+            type: "doc",
+            id: "building-dapps/creating-dapps/deploy/overview",
+          },
+          items: [
+            {
+              type: "category",
+              label: "Subnets",
+              items: [
+                "building-dapps/creating-dapps/subnets/overview",
+                "building-dapps/creating-dapps/subnets/subnet-types"
+              ],
+            },
+            "building-dapps/creating-dapps/deploy/custom-networks",
+          ],
+        },
+        "building-dapps/creating-dapps/resource-limits",
+        {
+          type: "category",
+          label: "Testing canisters",
+          link: {
+            type: "doc",
+            id: "building-dapps/creating-dapps/test/overview",
+          },
+          items: [
+            "building-dapps/creating-dapps/test/pocket-ic"
+          ],
+        },
+        "building-dapps/creating-dapps/using-third-party-canisters",
+      ],
+    },
+    {
+      type: "category",
+      label: "Calling applications",
+      items: [
+        "building-dapps/calling-dapps/query-calls",
+        "building-dapps/calling-dapps/update-calls",
+        "building-dapps/calling-dapps/advanced-calls",
+        {
+          type: "category",
+          label: "Candid",
+          items: [
+            "building-dapps/calling-dapps/candid/candid-concepts",
+            "building-dapps/calling-dapps/candid/using-candid",
+            "building-dapps/calling-dapps/candid/candid-tools",
+          ],
+        },
+        {
+          type: "category",
+          label: "Agents",
+          link: {
+            type: "doc",
+            id: "building-dapps/calling-dapps/agents/overview",
+          },
+          items: [
+            "building-dapps/calling-dapps/agents/javascript-agent",
+            "building-dapps/calling-dapps/agents/nodejs",
+            "building-dapps/calling-dapps/agents/rust-agent",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "Application frontends",
       items: [
         "building-dapps/dapp-frontends/using-an-asset-canister",
@@ -481,7 +551,7 @@ build: [
         "building-dapps/dapp-frontends/existing-frontend",
         {
           type: "doc",
-          id: "building-dapps/using-network-features/using-external-data/http-gateways-certification/ic-asset-certification-library",
+          id: "building-dapps/using-network-features/using-http/http-certification/ic-asset-certification-library",
           label: "Asset certification",
         },
         "building-dapps/dapp-frontends/asset-security",
@@ -502,77 +572,6 @@ build: [
         "building-dapps/authentication/overview",
         "building-dapps/authentication/integrate-internet-identity",
         "building-dapps/authentication/alternative-origins",
-      ],
-    },
-    {
-      type: "category",
-      label: "Launching an application",
-      items: [
-        "building-dapps/launching-a-dapp/create-and-install",
-        {
-          type: "category",
-          label: "Deploying canisters",
-          link: {
-            type: "doc",
-            id: "building-dapps/launching-a-dapp/deploy/overview",
-          },
-          items: [
-            {
-              type: "category",
-              label: "Subnets",
-              items: [
-                "building-dapps/launching-a-dapp/subnets/overview",
-                "building-dapps/launching-a-dapp/subnets/subnet-types"
-              ],
-            },
-            "building-dapps/launching-a-dapp/deploy/custom-networks",
-          ],
-        },
-        "building-dapps/launching-a-dapp/resource-limits",
-        {
-          type: "category",
-          label: "Testing canisters",
-          link: {
-            type: "doc",
-            id: "building-dapps/launching-a-dapp/test/overview",
-          },
-          items: [
-            "building-dapps/launching-a-dapp/test/pocket-ic"
-          ],
-        },
-
-      ],
-    },
-    {
-      type: "category",
-      label: "Interacting with canisters",
-      items: [
-        "building-dapps/interacting-with-dapps/query-calls",
-        "building-dapps/interacting-with-dapps/update-calls",
-        "building-dapps/interacting-with-dapps/advanced-calls",
-        {
-          type: "category",
-          label: "Candid",
-          items: [
-            "building-dapps/interacting-with-dapps/candid/candid-concepts",
-            "building-dapps/interacting-with-dapps/candid/using-candid",
-            "building-dapps/interacting-with-dapps/candid/candid-tools",
-          ],
-        },
-        {
-          type: "category",
-          label: "Agents",
-          link: {
-            type: "doc",
-            id: "building-dapps/interacting-with-dapps/agents/overview",
-          },
-          items: [
-            "building-dapps/interacting-with-dapps/agents/javascript-agent",
-            "building-dapps/interacting-with-dapps/agents/nodejs",
-            "building-dapps/interacting-with-dapps/agents/rust-agent",
-          ],
-        },
-        "building-dapps/interacting-with-dapps/using-third-party-canisters",
       ],
     },
     {
@@ -601,34 +600,34 @@ build: [
           type: "category",
           label: "Fetching external data",
           items: [
-            "building-dapps/using-network-features/using-external-data/http-gateways-certification/gateways",
+            "building-dapps/using-network-features/using-http/http-certification/gateways",
             {
               type: "category",
               label: "HTTP certification",
               items: [
                 {
                   type: "doc",
-                  id: "building-dapps/using-network-features/using-external-data/http-gateways-certification/ic-asset-certification-library",
+                  id: "building-dapps/using-network-features/using-http/http-certification/ic-asset-certification-library",
                   label: "The asset certification library",
                 },
                 {
                   type: "doc",
-                  id: "building-dapps/using-network-features/using-external-data/http-gateways-certification/example-canister-serving-assets",
+                  id: "building-dapps/using-network-features/using-http/http-certification/example-canister-serving-assets",
                   label: "Example canister serving assets",
                 },
                 {
                   type: "doc",
-                  id: "building-dapps/using-network-features/using-external-data/http-gateways-certification/custom-http-canisters",
+                  id: "building-dapps/using-network-features/using-http/http-certification/custom-http-canisters",
                   label: "Custom HTTP canisters",
                 },
                 {
                   type: "doc",
-                  id: "building-dapps/using-network-features/using-external-data/http-gateways-certification/serving-json-over-http",
+                  id: "building-dapps/using-network-features/using-http/http-certification/serving-json-over-http",
                   label: "Serving JSON over HTTP",
                 },
                 {
                   type: "doc",
-                  id: "building-dapps/using-network-features/using-external-data/http-gateways-certification/serving-static-assets-over-http",
+                  id: "building-dapps/using-network-features/using-http/http-certification/serving-static-assets-over-http",
                   label: "Serving static assets over HTTP (custom)",
                 },
               ],
@@ -637,9 +636,9 @@ build: [
               type: "category",
               label: "HTTPS outcalls",
               items: [
-                "building-dapps/using-network-features/using-external-data/https-outcalls/overview",
-                "building-dapps/using-network-features/using-external-data/https-outcalls/get",
-                "building-dapps/using-network-features/using-external-data/https-outcalls/post"
+                "building-dapps/using-network-features/using-http/https-outcalls/overview",
+                "building-dapps/using-network-features/using-http/https-outcalls/get",
+                "building-dapps/using-network-features/using-http/https-outcalls/post"
               ],
             },
           ],

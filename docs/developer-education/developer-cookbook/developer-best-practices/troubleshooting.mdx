@@ -26,9 +26,9 @@ If your canister is running on a subnet that has a consistently high load and th
 
 ### Recommendation: Use query calls instead of update calls when possible.
 
-[Query calls](/docs/current/building-dapps/interacting-with-dapps/query-calls) are executed on a single node within a subnet and do not go through consensus; therefore, they can be returned much faster than an update call. For some applications, query calls can be used in place of update calls to reduce latency.
+[Query calls](/docs/current/building-dapps/calling-dapps/query-calls) are executed on a single node within a subnet and do not go through consensus; therefore, they can be returned much faster than an update call. For some applications, query calls can be used in place of update calls to reduce latency.
 
-However, the security trade-offs of query calls must be considered. Since query calls do not go through consensus, it is not recommended that they be used for retrieving sensitive information that requires data assurance. For example, returning financial data on a decentralized exchange dapp should not use basic query calls, as it is important the call return data that has been validated through the subnet's consensus. As an alternative, [certified queries](/docs/current/building-dapps/interacting-with-dapps/query-calls) may be used.
+However, the security trade-offs of query calls must be considered. Since query calls do not go through consensus, it is not recommended that they be used for retrieving sensitive information that requires data assurance. For example, returning financial data on a decentralized exchange dapp should not use basic query calls, as it is important the call return data that has been validated through the subnet's consensus. As an alternative, [certified queries](/docs/current/building-dapps/calling-dapps/query-calls) may be used.
 
 ### Recommendation: Use efficient query calls.
 
@@ -50,7 +50,7 @@ Inter-canister calls are a slow operation since they use `await` methods. Skippi
 
 ### Recommendation: Follow canister best practices.
 
-To ensure that your canister is optimized, both for latency and cycles cost, be sure to follow the [canister general best practices](/docs/current/developer-education/developer-playbook/developer-best-practices/general), which include ways to implement efficient Motoko and Rust code.
+To ensure that your canister is optimized, both for latency and cycles cost, be sure to follow the [canister general best practices](/docs/current/developer-education/developer-cookbook/developer-best-practices/general), which include ways to implement efficient Motoko and Rust code.
 
 ### Recommendation: To troubleshoot network latency, obtain the boundary node address and request IDs your canister is using before reaching out to the DFINITY team.
 

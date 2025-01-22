@@ -12,7 +12,7 @@ import Tabs from '@theme/Tabs';
 
 An **agent** is an API client used to interact with ICP. The [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) is used to interact with the public ICP API endpoints and canisters deployed on ICP. The ICP JavaScript agent provides `call`, `query`, and `readState` methods, along with other utilities, to an actor.
 
-Calls made through the agent are intended to be structured through an actor and configured with a canister's interface that can be generated from a [Candid interface](/docs/current/building-dapps/interacting-with-dapps/candid/candid-concepts). Raw calls are supported but not recommended per best practices.
+Calls made through the agent are intended to be structured through an actor and configured with a canister's interface that can be generated from a [Candid interface](/docs/current/building-dapps/calling-dapps/candid/candid-concepts). Raw calls are supported but not recommended per best practices.
 
 ## Installation
 
@@ -198,9 +198,9 @@ defaultAgent.replaceIdentity(await authClient.getIdentity());
 
 The ICP JavaScript agent supports the following methods for making calls to ICP:
 
-- `call`: Used to make [update calls](/docs/current/building-dapps/interacting-with-dapps/advanced-calls).
+- `call`: Used to make [update calls](/docs/current/building-dapps/calling-dapps/advanced-calls).
 
-- `query`: Used to make [query calls](/docs/current/building-dapps/interacting-with-dapps/advanced-calls).
+- `query`: Used to make [query calls](/docs/current/building-dapps/calling-dapps/advanced-calls).
 
 - `readState`: Used to read state information from the ICP replica.
 

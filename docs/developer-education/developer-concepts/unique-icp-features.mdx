@@ -12,7 +12,7 @@ The Internet Computer has a unique set of onchain features that applications dep
 
 ## HTTPS outcalls
 
-Applications deployed on ICP can use [HTTPS outcalls](/docs/current/building-dapps/using-network-features/using-external-data/https-outcalls/overview) to make requests to external URLs to obtain off-chain data and interact with external systems. HTTPS outcalls enable ICP apps to interact seamlessly with both Web2 infrastructures and other blockchain networks or Web3 services. HTTPS outcalls also enable external applications to integrate with ICP applications in a trustless manner.
+Applications deployed on ICP can use [HTTPS outcalls](/docs/current/building-dapps/using-network-features/using-http/https-outcalls/overview) to make requests to external URLs to obtain off-chain data and interact with external systems. HTTPS outcalls enable ICP apps to interact seamlessly with both Web2 infrastructures and other blockchain networks or Web3 services. HTTPS outcalls also enable external applications to integrate with ICP applications in a trustless manner.
 
 Data obtained from an HTTPS outcall is validated before it is returned to the application. Each node on the subnet pushes an instance of the received HTTP response through the subnet's consensus process to confirm that all nodes received the same response. At least two-thirds of the nodes on the subnet must agree on the response for the application to receive the HTTP response data; otherwise, the application will receive an error instead. This guarantees that every node uses the same response for the application's execution, preventing divergence of the node's states.
 
