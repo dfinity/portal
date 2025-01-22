@@ -17,7 +17,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 `dfx` is a command line utility that is used to interact with the IC SDK. It is the primary tool that is used for creating, managing, and deploying dapps onto the Internet Computer.
 
-The `dfx` parent command has several flags and subcommands that can be used to perform a wide array of operations. First, you'll take a look at basic usage of the command, and then you'll get started creating your first project using dfx.
+The `dfx` parent command has several flags and subcommands that can be used to perform a wide array of operations. First, you'll take a look at the basic usage of the command, and then you'll get started creating your first project using dfx.
 
 ## Basic usage
 
@@ -152,26 +152,7 @@ hello_world/
 ├── README.md      # Default project documentation
 ├── dfx.json       # Project configuration file
 ├── node_modules   # Libraries for frontend development
-├── README.md      # Default project documentation
-├── dfx.json       # Project configuration file
-├── node_modules   # Libraries for frontend development
 ├── package.json
-├── src            # Source files directory
-│   ├── hello_world_backend
-│   │   └── main.mo
-│   └── hello_world_frontend
-│       ├── assets
-│       │   └── favicon.ico
-│       ├── index.html
-│       ├── package.json
-│       ├── src
-│       │   ├── App.js
-│       │   ├── index.scss
-│       │   ├── logo2.svg
-│       │   ├── main.js
-│       │   └── vite-env.d.ts
-│       ├── tsconfig.json
-│       └── vite.config.js
 ├── src            # Source files directory
 │   ├── hello_world_backend
 │   │   └── main.mo
@@ -223,31 +204,6 @@ To review the default configuration file for the project, open the `dfx.json` fi
       "type": "assets",
       "workspace": "hello_world_frontend"
     }
-  "canisters": {
-    "hello_world_backend": {
-      "main": "src/hello_world_backend/main.mo",
-      "type": "motoko"
-    },
-    "hello_world_frontend": {
-      "dependencies": [
-        "hello_world_backend"
-      ],
-      "source": [
-        "src/hello_world_frontend/dist"
-      ],
-      "type": "assets",
-      "workspace": "hello_world_frontend"
-    }
-
-  },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
-  "output_env_file": ".env",
-  "version": 1
   },
   "defaults": {
     "build": {
@@ -266,7 +222,6 @@ Let's explore these settings a bit further:
 - The `hello_world_backend` canister has a `main` attribute that specifies the file path of the program's core file, `main.mo`.
 - The `hello_world_backend` canister has a `type` of 'motoko,' which specifies the programming language. If the canister was written in Rust, this value would read 'rust.'
 - The `hello_world_frontend` canister has a dependency on the `hello_world_backend` canister, meaning it relies on the backend canister to be deployed and running for it to be deployed and run.
-- There are two canisters defined in this file: `hello_world_frontend` and `hello_world_backend`.
 - The `hello_world_frontend` canister's assets are specified in the `source` configuration.
 - Lastly, the `hello_world_frontend` canister has a `type` of 'assets,' configuring it as a frontend asset canister.
 
@@ -278,9 +233,6 @@ New Motoko projects will always include a default, template `main.mo` file. To t
 
 ```motoko title="src/hello_world_backend/main.mo"
 actor {
-  public query func greet(name : Text) : async Text {
-    return "Hello, " # name # "!";
-  };
   public query func greet(name : Text) : async Text {
     return "Hello, " # name # "!";
   };
