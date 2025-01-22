@@ -27,11 +27,11 @@ The Bitcoin Testnet API is currently disabled, and the ckTestBTC minter canister
 
 :::
 
-2. [Create a Bitcoin transaction](create-transactions.mdx): If the canister controls BTC, it can create a transaction to spend them.
+2. [Create a Bitcoin transaction](./create-transactions.mdx): If the canister controls BTC, it can create a transaction to spend them.
 
-3. [Sign a transaction](sign-transactions.mdx): Next, the transaction must be signed with t-ECDSA using the `sign_with_ecdsa` API endpoint of the [management canister](/docs/current/developer-education/system-canisters/management-canister#signing-and-submitting-bitcoin-transactions). Transactions cannot be sent to the Bitcoin network until they are signed.
+3. [Sign a transaction](./sign-transactions.mdx): Next, the transaction must be signed with t-ECDSA using the `sign_with_ecdsa` API endpoint of the [management canister](/docs/current/developer-education/system-canisters/management-canister#signing-and-submitting-bitcoin-transactions). Transactions cannot be sent to the Bitcoin network until they are signed.
 
-4. [Submit a transaction](submit-transactions.mdx): Once a transaction has been signed, it can be submitted to the Bitcoin network to be executed using the Bitcoin API's [`bitcoin_send_transaction`](/docs/current/references/ic-interface-spec#ic-bitcoin_send_transaction) endpoint, which must specify a `blob` of a Bitcoin transaction and a Bitcoin network (mainnet or testnet).
+4. [Submit a transaction](./submit-transactions.mdx): Once a transaction has been signed, it can be submitted to the Bitcoin network to be executed using the Bitcoin API's [`bitcoin_send_transaction`](/docs/current/references/ic-interface-spec#ic-bitcoin_send_transaction) endpoint, which must specify a `blob` of a Bitcoin transaction and a Bitcoin network (mainnet or testnet).
 
 5. [Read information from the Bitcoin network](read-state.mdx): Lastly, you can query and return information from the Bitcoin network, such as unspent transaction outputs (UTXOs) of a Bitcoin address, the balance of a Bitcoin address, and the percentiles of the fees for the last 10_000 transactions. The endpoints for each query can be found in the [Bitcoin API specification](/docs/current/references/ic-interface-spec#ic-bitcoin-api).
 

@@ -15,11 +15,11 @@ Developers on ICP can create canisters and dapps that interact with the Ethereum
 
 To interact with the Ethereum network or another EVM-compatible network, a developer will need to use a combination of the management canister API and EVM RPC canister RPC methods to complete the following steps:
 
-1. [Generate a public key](generating-addresses.mdx): To sign and submit transactions, your canister will need a public key. You will also need this public key to generate an Ethereum wallet address.
+1. [Generate a public key](./generating-addresses.mdx): To sign and submit transactions, your canister will need a public key. You will also need this public key to generate an Ethereum wallet address.
 
-2. [Sign a transaction](signing-transactions.mdx): Next, a transaction must be signed before it can be submitted to the Ethereum network and executed. Transactions are signed using [threshold ECDSA](/docs/current/references/t-sigs-how-it-works/), a novel protocol as part of ICP's chain-key signatures suite.
+2. [Sign a transaction](./signing-transactions.mdx): Next, a transaction must be signed before it can be submitted to the Ethereum network and executed. Transactions are signed using [threshold ECDSA](/docs/current/references/t-sigs-how-it-works/), a novel protocol as part of ICP's chain-key signatures suite.
 
-3. [Submit a transaction](submit-transactions.mdx): Signed raw transactions can be submitted using the EVM RPC canister's RPC method `eth_sendRawTransaction`. Code examples for sending transactions can be found in the [EVM RPC canister](/docs/current/building-dapps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister) documentation.
+3. [Submit a transaction](./submit-transactions.mdx): Signed raw transactions can be submitted using the EVM RPC canister's RPC method `eth_sendRawTransaction`. Code examples for sending transactions can be found in the [EVM RPC canister](/docs/current/building-dapps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister) documentation.
 
 4. [Read information from the Ethereum network](/docs/current/building-dapps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister): Information from the Ethereum network can be queried using RPC methods such as:
 
@@ -57,10 +57,10 @@ ckERC20 tokens, such as [ckUSDC](https://dashboard.internetcomputer.org/ethereum
 
 - [EVM RPC canister](/docs/current/building-dapps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister).
 
-- [Generating addresses](generating-addresses.mdx).
+- [Generating addresses](./generating-addresses.mdx).
 
-- [Signing transactions](signing-transactions.mdx).
+- [Signing transactions](./signing-transactions.mdx).
 
-- [Submitting transactions](submit-transactions.mdx).
+- [Submitting transactions](./submit-transactions.mdx).
 
 - [ckETH](/docs/current/rosetta-defi/chain-key-tokens/cketh/overview).
