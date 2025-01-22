@@ -538,7 +538,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/signatures/signing-transactions /docs/current/building-dapps/using-network-features/signatures/t-ecdsa
   /docs/current/developer-docs/defi/icp-tokens/overview /docs/current/rosetta-defi/token-standards/
   /docs/current/developer-docs/defi/asset-custody/self-custody-quickstart /docs/current/rosetta-defi/overview
-  /docs/current/developer-docs/defi/asset-custody/hardware-wallet-cli /docs/current/rosetta-defi/
+  /docs/current/developer-docs/defi/asset-custody/hardware-wallet-cli /docs/current/rosetta-defi/overview
   /docs/current/developer-docs/defi/asset-custody/custody-options /docs/current/rosetta-defi/overview
   /docs/current/developer-docs/defi/nfts/considerations-for-nft-devs /docs/current/rosetta-defi/overview
   /docs/current/developer-docs/defi/icrc-1/token-quickstart /docs/current/rosetta-defi/create
