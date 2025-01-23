@@ -566,7 +566,7 @@ build: [
         "building-dapps/dapp-frontends/using-an-asset-canister",
         "building-dapps/dapp-frontends/uploading-serving-assets",
         "building-dapps/dapp-frontends/existing-frontend",
-        "building-dapps/dapp-frontends/asset-certification",
+        "building-dapps/using-network-features/using-http/http-certification/ic-asset-certification-library",
         "building-dapps/dapp-frontends/asset-security",
         {
           type: "category",
