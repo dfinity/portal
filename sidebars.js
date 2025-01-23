@@ -213,24 +213,25 @@ const sidebars = {
 build: [
   {
     type: "category",
-    label: "Getting started",
+    label: "Quickstart",
     items: [
       {
-        type: "category",
-        label: "Quick starts",
-        items: [
-          {
-            type: "doc",
-            label: "First smart contract",
-            id: "building-dapps/getting-started/quickstart/first-smart-contract",
-          },
-          {
-            type: "doc",
-            label: "First web app",
-            id: "building-dapps/getting-started/quickstart/first-web-app",
-          },
-        ],
+        type: "doc",
+        label: "First smart contract",
+        id: "building-dapps/getting-started/quickstart/first-smart-contract",
       },
+      {
+        type: "doc",
+        label: "First web app",
+        id: "building-dapps/getting-started/quickstart/first-web-app",
+      },
+    ],
+  },
+  {
+    type: "category",
+    label: "Essentials",
+    items: [
+      
       {
         type: "doc",
         label: "Installing developer tools",
