@@ -8,15 +8,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 import { OsType, useOs } from "/src/hooks/useOs";
 
-# Installing developer tools
+# Installing the IC SDK
 
 <MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
 
-The IC SDK is a software development kit used to develop applications on your local machine and to deploy them to ICP.
-
-## Installing the IC SDK
-
-The IC SDK is natively supported on Linux or macOS 12.\* Monterey and newer. Windows users can use the IC SDK with Windows Subsystem for Linux (WSL 2).
+The IC SDK is a software development kit used to develop applications on your local machine and to deploy them to ICP. It is natively supported on Linux or macOS 12.\* Monterey and newer. Windows users can use the IC SDK with Windows Subsystem for Linux (WSL 2).
 
 :::danger
 
@@ -35,8 +31,6 @@ If you followed a [quick start](/docs/current/building-dapps/getting-started/qui
 <input type="checkbox"/> Download and <a href="https://nodejs.org/en/download/package-manager">install Node.js</a>.
 
 ---------
-
-#### 1. Install the IC SDK.
 
 ```bash
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
@@ -64,8 +58,6 @@ dfx --version
 <input type="checkbox"/> Apple silicon machines: Download and install Rosetta: <code>softwareupdate --install-rosetta</code>
 
 ---------
-
-#### 1. Install the IC SDK.
 
 ```bash
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
@@ -104,8 +96,6 @@ dfx --version
 </div> View the [WSL troubleshooting](wsl-troubleshoot.mdx) guide if necessary.
 
 ---------
-
-#### 1. Install the IC SDK.
 
 ```bash
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"

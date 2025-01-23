@@ -23,6 +23,24 @@ Application frontends exist in the following forms:
 
 - A frontend canister that doesn't communicate with any backend canisters and only provides web assets.
 
+The typical development workflow for creating an application frontend is:
+
+1. The developer writes frontend code such as HTML, JS, or CSS.
+
+2. The developer configures their `dfx.json` file to include a frontend canister with type "assets".
+
+3. The developer deploys the project. `dfx` will compile the frontend asset files into an asset canister.
+
+4. Users open the application in the browser by navigating to the URL `https://<canister-id>.icp0.io` or a [custom domain](/docs/current/building-dapps/dapp-frontends/custom-domains/using-custom-domains) if one has been registered for the canister.
+
+5. The canister serves the web assets to the browser via its `http_request` endpoint that gets invoked for each HTTP request.
+
+6. When the JS code runs in the browser, it can call the backend canister endpoints using the [ICP JavaScript agent](/docs/current/building-dapps/calling-dapps/agents/javascript-agent) library, which is analogous to `web3.js` and `ethers.js` of Ethereum.
+
+### Limitations
+Server-side rendering (SSR) does not work in canisters because they require JS code that is not built into canisters.
+In the future, this might become possible with Azle. Until then, if SSR is required, then one solution is to host the frontend outside of ICP while keeping the core logic in the backend canister.
+
 ## How asset canisters work
 
 To host web assets, a canister must implement a method that accepts and consumes an HTTP request, including the URL, HTTP method, and header data. Then, it must return an HTTP response, including the request status, header data, and body content. This method can return HTML, CSS, and JavaScript content in the HTTP response.

@@ -234,7 +234,7 @@ build: [
 
       {
         type: "doc",
-        label: "Installing developer tools",
+        label: "Installing the IC SDK",
         id: "building-dapps/getting-started/install",
       },
       {
@@ -475,17 +475,15 @@ build: [
     },
     {
       type: "doc",
-      label: "Developing canisters",
+      label: "Create canisters",
       id: "building-dapps/creating-dapps/create-and-install",
     },
     {
       type: "category",
       label: "Deploy & test",
-      link: {
-        type: "doc",
-        id: "building-dapps/creating-dapps/deploy/overview",
-      },
       items: [
+        "building-dapps/creating-dapps/deploy/overview",
+        "building-dapps/creating-dapps/deploy/custom-networks",
         {
           type: "category",
           label: "Subnets",
@@ -494,10 +492,9 @@ build: [
             "building-dapps/creating-dapps/subnets/subnet-types"
           ],
         },
-        "building-dapps/creating-dapps/deploy/custom-networks",
          {
           type: "category",
-          label: "Testing",
+          label: "Testing canisters",
           link: {
             type: "doc",
             id: "building-dapps/creating-dapps/test/overview",
@@ -511,7 +508,7 @@ build: [
     },
     {
       type: "category",
-      label: "Interfacing with applications",
+      label: "Interact with canisters",
       items: [
         "building-dapps/calling-dapps/query-calls",
         "building-dapps/calling-dapps/update-calls",
@@ -593,7 +590,7 @@ build: [
       items: [
         {
           type: "category",
-          label: "Fetching external data",
+          label: "Using HTTP",
           items: [
             "building-dapps/using-network-features/using-http/http-certification/gateways",
             {
