@@ -474,30 +474,19 @@ build: [
     },
     {
       type: "category",
-      label: "Create & test",
+      label: "Develop canisters",
       link: {
           type: "doc",
           id: "building-dapps/creating-dapps/create-and-install",
       },
       items: [
-         "building-dapps/creating-dapps/resource-limits",
-        {
-          type: "category",
-          label: "Testing canisters",
-          link: {
-            type: "doc",
-            id: "building-dapps/creating-dapps/test/overview",
-          },
-          items: [
-            "building-dapps/creating-dapps/test/pocket-ic"
-          ],
-        },
+        "building-dapps/creating-dapps/resource-limits",
         "building-dapps/creating-dapps/using-third-party-canisters",
       ],
     },
     {
       type: "category",
-      label: "Deploy",
+      label: "Deploy & test",
       link: {
         type: "doc",
         id: "building-dapps/creating-dapps/deploy/overview",
@@ -512,6 +501,17 @@ build: [
           ],
         },
         "building-dapps/creating-dapps/deploy/custom-networks",
+         {
+          type: "category",
+          label: "Testing canisters",
+          link: {
+            type: "doc",
+            id: "building-dapps/creating-dapps/test/overview",
+          },
+          items: [
+            "building-dapps/creating-dapps/test/pocket-ic"
+          ],
+        },
       ],
     },
     {
@@ -597,7 +597,7 @@ build: [
     },
     {
       type: "category",
-      label: "Using network features",
+      label: "Network features",
       items: [
         {
           type: "category",
