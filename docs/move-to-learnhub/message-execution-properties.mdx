@@ -12,9 +12,9 @@ The [community conversation on security best practices](https://www.youtube.com/
 
 ## Message execution properties
 
-To interact with a canister's methods, there are two primary types of **calls** that can be used: [update](/references/ic-interface-spec#http-call) calls and [query](/docs/current/references/ic-interface-spec#http-query) calls.
+To interact with a canister's methods, there are two primary types of **calls** that can be used: [update](/docs/current/references/ic-interface-spec#http-call) calls and [query](/docs/current/references/ic-interface-spec#http-query) calls.
 
-If the Rust CDK is used, these are usually annotated with `#[update]` or `#[query]`, respectively. In Motoko, updates are declared as `public func`, and queries us the dedicated keyword: `public query func`. ICP also supports additional [entry points](/references/ic-interface-spec#entry-points) such as heartbeats, timers, initialization or upgrade hooks.
+If the Rust CDK is used, these are usually annotated with `#[update]` or `#[query]`, respectively. In Motoko, updates are declared as `public func`, and queries us the dedicated keyword: `public query func`. ICP also supports additional [entry points](/docs/current/references/ic-interface-spec#entry-points) such as heartbeats, timers, initialization or upgrade hooks.
 
 A **message** is a set of consecutive instructions that a subnet executes for a canister. The code execution for any such entry point can be split into several messages if inter-canister calls are made. The following properties are essential:
 

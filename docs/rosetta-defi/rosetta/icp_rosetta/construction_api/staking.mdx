@@ -500,7 +500,7 @@ You may have to install another version of OpenSSL (for example, through *brew*)
 The `ADD_HOTKEY` operation adds a hotkey to the neuron. The Governance canister allows some noncritical operations to be signed with a hotkey instead of the controller’s key (e.g., voting and querying maturity).
 The neuron you are trying to add a hotkey for must not have more than 10 hotkeys already linked to it.
 
-The command has two forms: one form accepts an [ICP principal](/references/ic-interface-spec.md) as a hotkey, and another form accepts a [public key](https://www.rosetta-api.org/docs/models/PublicKey.html).
+The command has two forms: one form accepts an [ICP principal](/docs/current/references/ic-interface-spec) as a hotkey, and another form accepts a [public key](https://www.rosetta-api.org/docs/models/PublicKey.html).
 
 #### Add a principal as a hotkey
 
@@ -613,7 +613,7 @@ When you call `NeuronInfo` afterwards you can see the hotkey added to the list o
 ## Removing hotkeys from a neuron
 
 The `REMOVE_HOTKEY` operation removes a previously added hotkey from the neuron.
-The command has two forms: one form accepts an [ICP principal](/references/ic-interface-spec.md) as a hotkey, and another form accepts a [public key](https://www.rosetta-api.org/docs/models/PublicKey.html).
+The command has two forms: one form accepts an [ICP principal](/docs/current/references/ic-interface-spec) as a hotkey, and another form accepts a [public key](https://www.rosetta-api.org/docs/models/PublicKey.html).
 
 #### Remove a principal as a hotkey
 
