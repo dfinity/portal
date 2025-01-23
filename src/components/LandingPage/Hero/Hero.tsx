@@ -57,8 +57,8 @@ const Hero: React.FC<{
                 Applications are immune to cyber attacks and unstoppable,
                 capable of processing tokens, and can run under exclusive DAO
                 control. Build web3 social media, games, DeFi, multi-chain apps,
-                secure front-ends, ledgers, enterprise apps, and AI models. The
-                internet is evolving fast.
+                secure front-ends, ledgers, enterprise apps, and AI models. TCP/IP 
+                connected software. Now ICP hosts software.
               </p>
               <div className="flex flex-col md:flex-row gap-8 mt-8 md:mt-6 md:items-center">
                 <Link
