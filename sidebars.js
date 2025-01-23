@@ -474,29 +474,13 @@ build: [
     },
     {
       type: "category",
-      label: "Creating applications",
+      label: "Create & test",
+      link: {
+          type: "doc",
+          id: "building-dapps/creating-dapps/create-and-install",
+      },
       items: [
-        "building-dapps/creating-dapps/create-and-install",
-        {
-          type: "category",
-          label: "Deploying canisters",
-          link: {
-            type: "doc",
-            id: "building-dapps/creating-dapps/deploy/overview",
-          },
-          items: [
-            {
-              type: "category",
-              label: "Subnets",
-              items: [
-                "building-dapps/creating-dapps/subnets/overview",
-                "building-dapps/creating-dapps/subnets/subnet-types"
-              ],
-            },
-            "building-dapps/creating-dapps/deploy/custom-networks",
-          ],
-        },
-        "building-dapps/creating-dapps/resource-limits",
+         "building-dapps/creating-dapps/resource-limits",
         {
           type: "category",
           label: "Testing canisters",
@@ -513,7 +497,26 @@ build: [
     },
     {
       type: "category",
-      label: "Calling applications",
+      label: "Deploy",
+      link: {
+        type: "doc",
+        id: "building-dapps/creating-dapps/deploy/overview",
+      },
+      items: [
+        {
+          type: "category",
+          label: "Subnets",
+          items: [
+            "building-dapps/creating-dapps/subnets/overview",
+            "building-dapps/creating-dapps/subnets/subnet-types"
+          ],
+        },
+        "building-dapps/creating-dapps/deploy/custom-networks",
+      ],
+    },
+    {
+      type: "category",
+      label: "Call canisters",
       items: [
         "building-dapps/calling-dapps/query-calls",
         "building-dapps/calling-dapps/update-calls",
@@ -540,6 +543,24 @@ build: [
             "building-dapps/calling-dapps/agents/rust-agent",
           ],
         },
+      ],
+    },
+    {
+      type: "category",
+      label: "Management & settings",
+      items: [
+        "building-dapps/managing-dapps/control",
+        "building-dapps/managing-dapps/delete",
+        "building-dapps/managing-dapps/history",
+        "building-dapps/managing-dapps/logs",
+        "building-dapps/managing-dapps/recovery",
+        "building-dapps/managing-dapps/snapshots",
+        "building-dapps/managing-dapps/state",
+        "building-dapps/managing-dapps/settings",
+        "building-dapps/managing-dapps/storage",
+        "building-dapps/managing-dapps/topping-up",
+        "building-dapps/managing-dapps/trapping",
+        "building-dapps/managing-dapps/upgrade",
       ],
     },
     {
@@ -572,24 +593,6 @@ build: [
         "building-dapps/authentication/overview",
         "building-dapps/authentication/integrate-internet-identity",
         "building-dapps/authentication/alternative-origins",
-      ],
-    },
-    {
-      type: "category",
-      label: "Managing applications",
-      items: [
-        "building-dapps/managing-dapps/control",
-        "building-dapps/managing-dapps/delete",
-        "building-dapps/managing-dapps/history",
-        "building-dapps/managing-dapps/logs",
-        "building-dapps/managing-dapps/recovery",
-        "building-dapps/managing-dapps/snapshots",
-        "building-dapps/managing-dapps/state",
-        "building-dapps/managing-dapps/settings",
-        "building-dapps/managing-dapps/storage",
-        "building-dapps/managing-dapps/topping-up",
-        "building-dapps/managing-dapps/trapping",
-        "building-dapps/managing-dapps/upgrade",
       ],
     },
     {
