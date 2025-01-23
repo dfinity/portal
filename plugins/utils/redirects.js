@@ -186,8 +186,8 @@ const redirects = `
   /apis/site/proxy /docs/current/references/http-gateway-protocol-spec
   /docs/developers-guide/concepts/what-is-ic /docs/current/developer-education/developer-concepts/network-overview
   /language-guide/index /docs/current/tutorials/developer-journey/level-0/intro-languages
-  /docs/current/developer-docs/production/instruction-limits /docs/current/building-dapps/creating-dapps/resource-limits
-  /docs/current/developer-docs/backend/resource-limits /docs/current/building-dapps/creating-dapps/resource-limits
+  /docs/current/developer-docs/production/instruction-limits /docs/current/building-dapps/managing-dapps/resource-limits
+  /docs/current/developer-docs/backend/resource-limits /docs/current/building-dapps/managing-dapps/resource-limits
   /docs/current/concepts/data-centers /docs/current/developer-education/developer-concepts/network-overview
   /docs/current/developer-docs/build/languages/rust/rust-intro /docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/build/languages/motoko /docs/current/motoko/main/getting-started/motoko-introduction
@@ -327,7 +327,7 @@ const redirects = `
   /docs/current/developer-docs/setup/manage-canisters /docs/current/building-dapps/managing-dapps/settings
   /docs/current/developer-docs/production/storage /docs/current/building-dapps/managing-dapps/storage
   /docs/current/developer-docs/setup/upgrade /docs/current/building-dapps/managing-dapps/upgrade
-  /docs/current/developer-docs/production/resource-limits /docs/current/building-dapps/creating-dapps/resource-limits
+  /docs/current/developer-docs/production/resource-limits /docs/current/building-dapps/managing-dapps/resource-limits
   /docs/current/developer-docs/setup/manage-projects /docs/current/building-dapps/creating-dapps/create-and-install
   /docs/current/developer-docs/production/topping-up-canister /docs/current/building-dapps/managing-dapps/topping-up
   /docs/current/developer-docs/getting-started/cycles/cycles_management_services /docs/current/building-dapps/managing-dapps/topping-up
@@ -864,7 +864,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/maintain/history /docs/current/building-dapps/managing-dapps/history
   /docs/current/developer-docs/smart-contracts/maintain/logs /docs/current/building-dapps/managing-dapps/logs
   /docs/current/developer-docs/smart-contracts/maintain/recovery /docs/current/building-dapps/managing-dapps/recovery
-  /docs/current/developer-docs/smart-contracts/maintain/resource-limits /docs/current/building-dapps/creating-dapps/resource-limits
+  /docs/current/developer-docs/smart-contracts/maintain/resource-limits /docs/current/building-dapps/managing-dapps/resource-limits
   /docs/current/developer-docs/smart-contracts/maintain/snapshots /docs/current/building-dapps/managing-dapps/snapshots
   /docs/current/developer-docs/smart-contracts/maintain/state /docs/current/building-dapps/managing-dapps/state
   /docs/current/developer-docs/smart-contracts/maintain/settings /docs/current/building-dapps/managing-dapps/settings

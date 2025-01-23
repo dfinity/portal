@@ -52,7 +52,7 @@ On ICP, an HTTP request goes through the following lifecycle:
 
 7. If the canister requests it, the gateway sends the request again via an update call to the canister's `http_request_update` method. The update call goes through consensus on the subnet.
 
-8. If the response size [exceeds the maximum response size](/docs/current/building-dapps/creating-dapps/resource-limits), the HTTP gateway fetches additional response body data through query calls.
+8. If the response size [exceeds the maximum response size](/docs/current/building-dapps/managing-dapps/resource-limits), the HTTP gateway fetches additional response body data through query calls.
 
 9. The HTTP gateway validates the response's certificate, if applicable.
 

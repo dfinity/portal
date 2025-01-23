@@ -10,7 +10,7 @@ const sidebars = {
     },
     {
       type: "category",
-      label: "Developer concepts",
+      label: "Concepts",
       items: [
         {
           type: "doc",
@@ -53,7 +53,7 @@ const sidebars = {
       items: [
         {
           type: "doc",
-          label: "Developer environments",
+          label: "Dev environments",
           id: "developer-education/developer-cookbook/developer-environments",
         },
         {
@@ -63,7 +63,7 @@ const sidebars = {
         },
       {
         type: "category",
-        label: "Developer best practices",
+        label: "Best practices",
         items: [
           {
             type: "doc",
@@ -132,7 +132,7 @@ const sidebars = {
       items: [
     {
       type: "category",
-      label: "Security best practices",
+      label: "Best practices",
       items: [
         {
           type: "doc",
@@ -231,7 +231,7 @@ build: [
     type: "category",
     label: "Essentials",
     items: [
-      
+
       {
         type: "doc",
         label: "Installing developer tools",
@@ -474,16 +474,9 @@ build: [
     ],
     },
     {
-      type: "category",
-      label: "Write & install code",
-      link: {
-          type: "doc",
-          id: "building-dapps/creating-dapps/create-and-install",
-      },
-      items: [
-        "building-dapps/creating-dapps/resource-limits",
-        "building-dapps/creating-dapps/using-third-party-canisters",
-      ],
+      type: "doc",
+      label: "Developing canisters",
+      id: "building-dapps/creating-dapps/create-and-install",
     },
     {
       type: "category",
@@ -504,7 +497,7 @@ build: [
         "building-dapps/creating-dapps/deploy/custom-networks",
          {
           type: "category",
-          label: "Testing canisters",
+          label: "Testing",
           link: {
             type: "doc",
             id: "building-dapps/creating-dapps/test/overview",
@@ -513,11 +506,12 @@ build: [
             "building-dapps/creating-dapps/test/pocket-ic"
           ],
         },
+        "building-dapps/creating-dapps/using-third-party-canisters",
       ],
     },
     {
       type: "category",
-      label: "Call canisters",
+      label: "Interfacing with applications",
       items: [
         "building-dapps/calling-dapps/query-calls",
         "building-dapps/calling-dapps/update-calls",
@@ -555,6 +549,7 @@ build: [
         "building-dapps/managing-dapps/history",
         "building-dapps/managing-dapps/logs",
         "building-dapps/managing-dapps/recovery",
+        "building-dapps/managing-dapps/resource-limits",
         "building-dapps/managing-dapps/snapshots",
         "building-dapps/managing-dapps/state",
         "building-dapps/managing-dapps/settings",
@@ -571,11 +566,7 @@ build: [
         "building-dapps/dapp-frontends/using-an-asset-canister",
         "building-dapps/dapp-frontends/uploading-serving-assets",
         "building-dapps/dapp-frontends/existing-frontend",
-        {
-          type: "doc",
-          id: "building-dapps/using-network-features/using-http/http-certification/ic-asset-certification-library",
-          label: "Asset certification",
-        },
+        "building-dapps/dapp-frontends/asset-certification",
         "building-dapps/dapp-frontends/asset-security",
         {
           type: "category",
