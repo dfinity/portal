@@ -2571,7 +2571,7 @@ If you do not specify the `max_response_bytes` parameter, the maximum of a `2MB`
 
 :::
 
-### IC method `node_metrics_history` {#ic-node-metrics-history}
+### IC method `node_metrics_history` {#ic-node_metrics_history}
 
 This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
 
@@ -2593,7 +2593,7 @@ A single metric entry is a record with the following fields:
 
 - `num_block_failures_total` (`nat64`): the number of failed block proposals by this node.
 
-### IC method `subnet_info` {#ic-subnet-info}
+### IC method `subnet_info` {#ic-subnet_info}
 
 This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
 
