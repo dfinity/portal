@@ -213,7 +213,7 @@ const sidebars = {
 build: [
   {
     type: "category",
-    label: "Quickstart",
+    label: "Quick start",
     items: [
       {
         type: "doc",
@@ -475,7 +475,7 @@ build: [
     },
     {
       type: "category",
-      label: "Develop canisters",
+      label: "Write & install code",
       link: {
           type: "doc",
           id: "building-dapps/creating-dapps/create-and-install",
