@@ -5072,5 +5072,27 @@
     "stats": "1000+ users",
     "logo": "/img/showcase/officex_logo.webp",
     "screenshots": ["/img/showcase/officex_screenshot.webp"]
-  }
+  },
+  {
+    "id": "the-great-crypto-vc-jobs-board",
+    "name": "The Great Crypto VC Jobs Board",
+    "oneLiner": "Over 30 crypto VC job boards in a single glance for Web3 people.",
+    "description": "This simple website connects over 30 major crypto VC job boards at a glance for professionals seeking opportunities in Web3.\n100% hosted on the Internet Computer",
+    "website": "https://hcf2z-5yaaa-aaaal-ajxja-cai.icp0.io/",
+    "github": "https://github.com/ishaaqziyan/VC-Job-Board",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "stats": "1000+ Jobs Listed",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/the-great-crypto-vc-jobs-board_logo.webp",
+    "screenshots": [
+      "/img/showcase/the-great-crypto-vc-jobs-board_screenshot.webp"
+    ],
+    "video": "",
+    "twitter": "",
+    "youtube": "",
+    "submittableId": ""
+  }  
 ]
