@@ -2505,6 +2505,8 @@ where
 
 This call requires that the vetKD feature is enabled and the caller is a canister. Otherwise it will be rejected.
 
+Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls).
+
 ### IC method `http_request` {#ic-http_request}
 
 This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
