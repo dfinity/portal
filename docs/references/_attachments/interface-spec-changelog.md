@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.32.0 (2025-01-23) {#0_32_0}
+* Allow accepting and burning cycles in replicated queries.
+
 ### 0.31.0 (2025-01-09) {#0_31_0}
 * Add support for Schnorr auxiliary inputs
 
