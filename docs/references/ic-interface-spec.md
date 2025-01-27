@@ -1487,8 +1487,16 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.time : () -> (timestamp : i64);                                                   // *
     ic0.global_timer_set : (timestamp : i64) -> i64;                                      // I G U Ry Rt C T
     ic0.performance_counter : (counter_type : i32) -> (counter : i64);                    // * s
-    ic0.is_controller: (src : I, size : I) -> ( result: i32);                             // * s
-    ic0.in_replicated_execution: () -> (result: i32);                                     // * s
+    ic0.is_controller : (src : I, size : I) -> ( result : i32);                           // * s
+    ic0.in_replicated_execution : () -> (result : i32);                                   // * s
+    
+    ic0.cost_call : (method_name_size: i64, payload_size : i64, dst : I) -> ();           // * s
+    ic0.cost_create_canister : (dst : I) -> ();                                           // * s
+    ic0.cost_http_request(request_size : i64, max_res_bytes : i64, dst : I) -> ();        // * s
+    ic0.cost_ecdsa(src : I, size : I, dst : I) -> ();                                     // * s
+    ic0.cost_schnorr(src : I, size : I, dst : I) -> ();                                   // * s
+    ic0.cost_vetkey(src : I, size : I, dst : I) -> ();                                    // * s
+    ic0.replication_factor : (src : I, size : I) -> i32;                                  // * s
 
     ic0.debug_print : (src : I, size : I) -> ();                                          // * s
     ic0.trap : (src : I, size : I) -> ();                                                 // * s
@@ -2026,6 +2034,48 @@ When executing a query or composite query method via a query call (i.e. in non-r
     If this `certificate` includes a subnet delegation, then the id of the current canister will be included in the delegation's canister id range.
 
     This traps if `ic0.data_certificate_present()` returns `0`.
+
+### Cycle cost calculation
+
+Inter-canister calls have an implicit cost, and some calls to the management canister require the caller to attach cycles to the call explicitly.  
+The various cost factors may change over time, so the following system calls serve to give the canister programmatic, up-to-date information about the costs. 
+
+These system calls return costs in Cycles, represented by 128 bits, which will be written to the caller-specified `dst` pointer. 
+
+-   `ic0.cost_call : (method_name_size: i64, payload_size : i64, dst : I) -> () `I ∈ {i32, i64}`
+
+    The cost of an inter-canister call. `method_name_size` is the byte length of the method name, and `payload_size` is the length of the encoded argument to the method.  
+
+-   `ic0.cost_create_canister : (dst : I) -> (); `I ∈ {i32, i64}`
+
+    The cost of creating a canister on the same subnet as the calling canister via [`create_canister`](#ic-create_canister). Note that canister creation via a call to the CMC can have a different cost if the target subnet has a different replication factor. In order to facilitate conversions, see `ic0.replication_factor`.
+
+-   `ic0.cost_http_request(request_size : i64, max_res_bytes : i64, dst : I) -> (); `I ∈ {i32, i64}`
+
+    The cost of a request via [`http_request`](#ic-http_request). `request_size` is the sum of the byte lengths of the following components of an http request: 
+    - url
+    - method
+    - headers - i.e., the sum of the lengths of all keys and values 
+    - body
+    - transform - i.e., the sum of the transform method name length and the length of the transform context
+    
+    `max_res_bytes` is the maximum response length the caller wishes to accept. 
+
+-   `ic0.cost_ecdsa(src : I, size : I, dst : I) -> (); `I ∈ {i32, i64}`
+
+-   `ic0.cost_schnorr(src : I, size : I, dst : I) -> (); `I ∈ {i32, i64}`
+
+-   `ic0.cost_vetkey(src : I, size : I, dst : I) -> (); `I ∈ {i32, i64}`
+
+    These system calls accept a key name via `src` + `size` for the specific signing scheme / key. See [`sign_with_ecdsa`](#ic-sign_with_ecdsa), [`sign_with_schnorr`](#ic-sign_with_schnorr) and [`vetkd_encrypted_key`](#ic-vetkd_encrypted_key) for more information. 
+
+    These system calls trap if `src` + `size` do not decode to a valid key name. 
+
+-   `ic0.replication_factor : (src : I, size : I) -> i32; `I ∈ {i32, i64}`
+
+    Returns the replication factor (subnet size) of the subnet identified by the `Principal` at `src` + `size`. 
+
+    This system call traps if `src` + `size` do not decode to a valid `Principal` or the given `Principal` is not a subnet.   
 
 ### Debugging aids
 
