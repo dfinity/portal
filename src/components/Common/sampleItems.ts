@@ -246,7 +246,7 @@ export const sampleItems: SampleItem[] = [
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/threshold-ecdsa",
       rust: "https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa",
-      docs: "/docs/current/references/t-sigs-how-it-works/",
+      docs: "/docs/current/specifications/t-sigs-how-it-works/",
     },
   },
   {
@@ -265,7 +265,7 @@ export const sampleItems: SampleItem[] = [
       },
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/send_http_get",
-      docs: "/docs/current/building-dapps/using-network-features/using-http/https-outcalls/overview",
+      docs: "/docs/current/building-apps/using-network-features/using-http/https-outcalls/overview",
       rust: "https://github.com/dfinity/examples/tree/master/rust/send_http_get",
     },
   },
@@ -286,7 +286,7 @@ export const sampleItems: SampleItem[] = [
       motoko: "https://github.com/dfinity/examples/tree/master/motoko/hello",
       rust: "https://github.com/dfinity/examples/tree/master/rust/hello",
       livePreview: "https://6lqbm-ryaaa-aaaai-qibsa-cai.ic0.app/",
-      docs: "/docs/current/references/samples/hosting/static-website/",
+      docs: "/docs/current/specifications/samples/hosting/static-website/",
     },
   },
   {
@@ -420,7 +420,7 @@ export const sampleItems: SampleItem[] = [
     contentType: ["documentation"],
     body: "Demonstrates how to deploy a web game on the IC.",
     links: {
-      docs: "/docs/current/references/samples/hosting/unity-webgl-template/",
+      docs: "/docs/current/specifications/samples/hosting/unity-webgl-template/",
     },
   },
   {

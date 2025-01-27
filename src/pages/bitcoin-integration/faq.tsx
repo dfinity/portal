@@ -446,11 +446,11 @@ function BitcoinFaqPage() {
           el={motion.section}
         >
           <SmallCardWithDescription
-            href="/docs/current/building-dapps/chain-fusion/bitcoin/overview"
+            href="/docs/current/building-apps/chain-fusion/bitcoin/overview"
             title="Technical overview of Bitcoin integration"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="/docs/current/rosetta-defi/chain-key-tokens/ckbtc/overview"
+            href="/docs/current/defi/chain-key-tokens/ckbtc/overview"
             title="Technical overview of ckBTC"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
@@ -458,11 +458,11 @@ function BitcoinFaqPage() {
             title="Blog: ckBTC"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="/docs/current/references/ic-interface-spec#ic-bitcoin-api"
+            href="/docs/current/specifications/ic-interface-spec#ic-bitcoin-api"
             title="Native bitcoin API"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="/docs/current/building-dapps/chain-fusion/bitcoin/using-btc/local-development"
+            href="/docs/current/building-apps/chain-fusion/bitcoin/using-btc/local-development"
             title="Code native bitcoin"
           ></SmallCardWithDescription>
           <SmallCardWithDescription

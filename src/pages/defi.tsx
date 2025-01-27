@@ -521,7 +521,7 @@ function DefiPage() {
             <CardWithDescription
               title="Code ckBTC"
               description=""
-              href="/docs/current/rosetta-defi/chain-key-tokens/ckbtc/overview"
+              href="/docs/current/defi/chain-key-tokens/ckbtc/overview"
             />
           </AnimateSpawn>
         </section>

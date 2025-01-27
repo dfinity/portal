@@ -57,7 +57,7 @@ When an agent encodes these identities as a principal, they attach a suffix byte
 
 ## Available agents
 
-Currently, there are two agents developed by DFINITY: the [JavaScript/TypeScript](/docs/current/building-dapps/calling-dapps/agents/javascript-agent) agent and the [Rust](/docs/current/building-dapps/calling-dapps/agents/overview) agent.
+Currently, there are two agents developed by DFINITY: the [JavaScript/TypeScript](/docs/current/building-apps/calling-dapps/agents/javascript-agent) agent and the [Rust](/docs/current/building-apps/calling-dapps/agents/overview) agent.
 
 Additionally, there are several community-supported agents, including:
 
@@ -136,7 +136,7 @@ service : {
 
 Recall that this Candid interface specification defines a service interface with a single method. The single method, `generate` accepts a single argument of type `Nat` and returns type `Text`. This is because you will enter a number (`Nat`) to generate the maze, which will then be displayed using emoji characters of type `Text`. Recall that unless a call is defined as a query, all calls are treated as an update call by default.
 
-In JavaScript, type `Text` maps to type `String`. You can see a full mapping list of Candid types and their JavaScript equivalents in the [Candid types reference](/docs/current/references/candid-ref).
+In JavaScript, type `Text` maps to type `String`. You can see a full mapping list of Candid types and their JavaScript equivalents in the [Candid types reference](/docs/current/specifications/candid-ref).
 
 Next, let's look at the `src/declarations/random_maze/random_maze.did.d.ts`:
 
@@ -248,7 +248,7 @@ Enter a value, then select 'Generate!'. You will see a random maze generated in 
 
 ![Random maze generated](../_attachments/random_maze2.png)
 
-That'll wrap things up for this module! You can read more about agents, such as the [Node.js agent](/docs/current/building-dapps/calling-dapps/agents/overview).
+That'll wrap things up for this module! You can read more about agents, such as the [Node.js agent](/docs/current/building-apps/calling-dapps/agents/overview).
 
 ## Need help?
 

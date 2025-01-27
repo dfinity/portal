@@ -48,7 +48,7 @@ List all dependencies that the developer will need to download or setup in order
 <TabItem value="prereq" label="Prerequisites" default>
 
 Before you start, verify that you have:
-<input type="checkbox"/> <a href="/docs/current/building-dapps/getting-started/install">Install the IC SDK.</a>
+<input type="checkbox"/> <a href="/docs/current/building-apps/getting-started/install">Install the IC SDK.</a>
 
 </TabItem>
 </Tabs>
@@ -419,7 +419,7 @@ Links that are referenced within the developer docs should use the following for
 
 ## Code snippets and code blocks
 The following format should be used for code snippets and code blocks:
-- In-line code references to commands, language specific methods, or other code-related terms should be emphasized using in-line code expressions such as:
+- In-line code specifications to commands, language specific methods, or other code-related terms should be emphasized using in-line code expressions such as:
     - To install code in a canister, the `install_code` function of the Internet Computer is used.
     - For example, the function `canister_init` is the first function that gets called after the code is installed for the first time.
 - When a code-specific value, such as the name of a method, variable, integer, or data type, is being referenced, the capitalization used within the code or the language's reference documentation should be followed.

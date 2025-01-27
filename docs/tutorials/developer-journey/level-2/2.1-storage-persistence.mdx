@@ -69,7 +69,7 @@ For canisters written in Rust, stable memory can be utilized through two Rust cr
 Motoko supports preserving a canister's state using ICP's stable memory through a Motoko-specific feature known as **stable storage**, which is designed to accommodate changes to both the application data and the Motoko compiler. Stable storage utilizes ICP's **stable memory** feature that was discussed previously.
 
 :::info
-Upgrading canisters written in Rust and other languages uses a different workflow that incorporates serialization of the canister's data. [Learn more about Rust upgrades](/docs/current/building-dapps/developer-tools/cdks/rust/upgrading).
+Upgrading canisters written in Rust and other languages uses a different workflow that incorporates serialization of the canister's data. [Learn more about Rust upgrades](/docs/current/building-apps/developer-tools/cdks/rust/upgrading).
 :::
 
 A **stable variable** is a variable defined within an actor that uses the `stable` keyword as a modifier in the variable's declaration. This indicates that the data stored in the variable should be stored using **stable storage**. If this `stable` keyword is not used, the variable is defined as `flexible` by default, which means its data does not persist across canister upgrades.

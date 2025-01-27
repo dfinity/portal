@@ -95,7 +95,7 @@ function FeaturePage() {
 
             <p className="mb-3 mt-6">
               <Link
-                href="/docs/current/building-dapps/chain-fusion/bitcoin/overview"
+                href="/docs/current/building-apps/chain-fusion/bitcoin/overview"
                 className="tw-heading-6 flex gap-2 items-center"
               >
                 <RightPointer className="w-6 h-6"></RightPointer>
@@ -123,7 +123,7 @@ function FeaturePage() {
             <CardWithDescription
               title="Build dapps with the language of your choice"
               description="Install SDKs to build dapps."
-              href="/docs/current/building-dapps/creating-dapps/create-and-install"
+              href="/docs/current/building-apps/creating-dapps/create-and-install"
             />
             <CardWithDescription
               title="Community Conversation"

@@ -1,0 +1,255 @@
+---
+keywords: [beginner, rust, tutorial, canister state, counter example, rust canister state]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+# Modifying canister state
+
+<MarkdownChipRow labels={["Beginner", "Rust", "Tutorial"]} />
+
+In this guide, you are going to write a dapp that provides a few basic functions to increment a counter value. by calling functions on a deployed canister. By calling the function to increment a value multiple times, you can verify that the variable state, that is, the value of the variable between calls, persists.
+
+For this guide, the dapp declares a `COUNTER` as a mutable variable to contain a natural number that represents the current value of the counter. This dapp supports the following functions:
+
+-   The `increment` function updates the current value, incrementing by 1 with no return value.
+
+-   The `get` function is a simple query that returns the current value of the counter.
+
+-   The `set` function updates the current value to the numeric value you specify as an argument.
+
+## Create the counter dapp project
+
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
+
+<input type="checkbox"/> <a href="/docs/current/building-apps/getting-started/install">Install the IC SDK.</a> Note: While using the IC SDK is the typical path for most developers, experienced Rust developers may choose to circumvent IC SDK entirely and use the <a href="https://github.com/dfinity/cdk-rs"> Rust CDK </a> directly.
+<div>
+</div>
+<input type="checkbox"/> <a href="https://doc.rust-lang.org/book/ch01-01-installation.html">Download and install Rust.</a>
+<div>
+</div>
+<input type="checkbox"/> Download and install the <code>wasm32-unknown-unknown</code> target: <code>rustup target add wasm32-unknown-unknown</code>
+
+</TabItem>
+</Tabs>
+
+Open a terminal window on your local computer, if you don’t already have one open.
+
+Use `dfx new <project_name> --type=rust` to create a new project:
+
+```bash
+dfx start --clean --background
+dfx new rust_counter --type=rust
+```
+
+Then, navigate into your project directory by running the command:
+
+``` bash
+cd rust_counter
+```
+
+Now that you have the files in place for your Rust dapp, you can replace the template `lib.rs` dapp code with some code that creates a counter dapp instead.
+
+To replace the default dapp, open the template `src/rust_counter_backend/src/lib.rs` file in a text editor and delete the existing content. Then, copy and paste this code into the file:
+
+```rust file=../../../../specifications/samples/rust/counter/src/lib.rs
+```
+
+Save your changes and close the file to continue.
+
+### Update interface description file
+
+Candid is an interface description language (IDL) for interacting with canisters running on ICP. To see details about the Candid interface description language syntax, see the [Candid guide](/docs/current/building-apps/calling-dapps/candid/candid-concepts) or the [Candid crate documentation](https://docs.rs/candid/).
+
+To update the Candid file, open the `src/rust_counter_backend/rust_counter_backend.did` file in a text editor, then copy and paste the following `service` definition for the `increment`, `get`, and `set` functions:
+
+``` did title="src/rust_counter_backend/rust_counter_backend.did"
+service : {
+    "increment": () -> ();
+    "get": () -> (nat) query;
+    "set": (nat) -> ();
+}
+```
+
+Save your changes and close the `rust_counter_backend.did` file to continue.
+
+## Writing the Cargo.toml file
+
+As with any standard Rust crate, it has a `Cargo.toml` file that configures the details to build the Rust crate.
+
+Open the `src/rust_counter_backend/Cargo.toml` file and replace the existing content with the following:
+
+``` toml title="src/rust_counter_backend/Cargo.toml"
+[package]
+name = "rust_counter_backend"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+candid = "0.10"
+ic-cdk = "0.13"
+serde = { version = "1.0", features = ["derive"] }
+ic-cdk-macros = "0.8.0"
+```
+
+Save the file.
+
+## Update the Cargo.toml dependencies
+
+Since you made changes to the Cargo.toml file, run the following command to update the project's dependencies:
+
+```bash
+cargo update
+```
+
+### Register, build, and deploy your project
+
+Register, build, and deploy the canisters specified in the `dfx.json` file by running the following command:
+
+``` bash
+dfx deploy
+```
+
+## Call the canister's functions and test the dapp
+
+After successfully deploying the canister, you can test it by invoking the functions it provides. For this guide:
+
+-   Call the `get` function to query the value of the counter.
+
+-   Call the `increment` function to increment the counter each time it is called.
+
+-   Call the `set` function to pass an argument to update the counter to an arbitrary value you specify.
+
+Call the `get` function to read the current value of the `COUNTER` variable by running the following command:
+
+``` bash
+dfx canister call rust_counter_backend get
+```
+
+The command returns the current value of the `COUNTER` variable as zero:
+
+```
+(0 : nat)
+```
+
+Call the `increment` function to increment the value of the `COUNTER` variable by one:
+
+``` bash
+dfx canister call rust_counter_backend increment
+```
+
+This command increments the value of the variable—changing its state—but does not return the result.
+
+Rerun the command to call the `get` function to see the current value of the `COUNTER` variable:
+
+``` bash
+dfx canister call rust_counter_backend get
+```
+
+The command returns the updated value of the `COUNTER` variable as one:
+
+```
+(1 : nat)
+```
+
+Run additional commands to experiment with calling the functions and using different values.
+
+For example, try commands similar to the following to set and return the counter value:
+
+``` bash
+dfx canister call rust_counter_backend set '(987)'
+dfx canister call rust_counter_backend get
+```
+
+Returns the current value of 987.
+
+``` bash
+dfx canister call rust_counter_backend increment
+dfx canister call rust_counter_backend get
+```
+
+Returns the incremented value of 988.
+
+## Globally mutable states
+
+By design, canisters on ICP are structured in a way that forces developers to use a global mutable state. However, Rust's design makes it difficult to use global mutable variables. This results in Rust developers needing to choose a method of code organization that takes ICP's design into consideration. This guide will cover a few of those code organization options.
+
+### Using `thread_local!` with `Cell/RefCell` for state variables
+
+Using `thread_local!` with `Cell/RefCell` is the safest option to avoid issues with asynchronous calls and memory corruption. The following is an example of how `thread_local!` can be used:
+
+```rust
+thread_local! {
+    static NEXT_USER_ID: Cell<u64> = Cell::new(0);
+    static ACTIVE_USERS: RefCell<UserMap> = RefCell::new(UserMap::new());
+}
+```
+
+### Canister code should be target-independent
+
+It pays off to factor most of the canister code into loosely coupled modules and packages and to test them independently. Most of the code that depends on the system API should go into the main file.
+
+It is also possible to create a thin abstraction for the system API and test your code with a fake but faithful implementation. For example, you could use the following trait to abstract the stable memory API:
+
+```rust
+pub trait Memory {
+    fn size(&self) -> WasmPages;
+    fn grow(&self, pages: WasmPages) -> WasmPages;
+    fn read(&self, offset: u32, dst: &mut [u8]);
+    fn write(&self, offset: u32, src: &[u8]);
+}
+```
+
+## Observability
+
+Metrics can be used to gain insight into a wide range of information regarding your canister's production services. This data is important to learn about your canister's statistics and productivity. The following metrics can be important to watch:
+
+- The size of the canister's stable memory.
+- The size of the canister's internal data structures
+- The sizes of objects allocated within the heap.
+- The date and time the canister was last upgraded.
+
+In Rust, you can expose a query call that returns a data structure containing your canister's metrics. If this data is not intended to be public, this query can be configured to be rejected based on the caller's principal. This approach provides a response that is structured and easy to parse.
+
+```rust
+pub struct MyMetrics {
+  pub stable_memory_size: u32,
+  pub allocated_bytes: u32,
+  pub my_user_map_size: u64,
+  pub last_upgraded_ts: u64,
+}
+#[query]
+fn metrics() -> MyMetrics {
+  check_acl();
+  MyMetrics {
+    // ...
+  }
+}
+```
+
+You can also expose the canister's metrics in a format that your monitoring system can ingest through the canister's HTTP gateway. For text-based exposition formats, the following example can be used:
+
+```rust
+fn http_request(req: HttpRequest) -> HttpResponse {
+  match path(&req) {
+    "/metrics" => HttpResponse {
+        status_code: 200,
+        body: format!("\
+stable_memory_bytes {}
+allocated_bytes {}
+registered_users_total {}",
+                      stable_memory_bytes, allocated_bytes, num_users),
+        // ...
+    }
+  }
+}
+```
+

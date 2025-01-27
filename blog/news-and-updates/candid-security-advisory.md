@@ -31,6 +31,6 @@ Additional resources can be found here:
 
 - [RustSec advisory.](https://rustsec.org/advisories/RUSTSEC-2023-0073.html)
 
-- [Documentation for upgrading a canister.](/docs/current/building-dapps/managing-dapps/settings/#upgrade-a-canister)
+- [Documentation for upgrading a canister.](/docs/current/building-apps/managing-dapps/settings/#upgrade-a-canister)
 
-- [Documentation for building a web frontend.](/docs/current/building-dapps/dapp-frontends/using-an-asset-canister)
+- [Documentation for building a web frontend.](/docs/current/building-apps/dapp-frontends/using-an-asset-canister)

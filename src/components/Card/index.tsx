@@ -24,7 +24,7 @@ const languagesTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/building-dapps/developer-tools/ide/icp-ninja"
+        href="/docs/current/building-apps/developer-tools/ide/icp-ninja"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Get started with ICP Ninja"
       >
@@ -46,7 +46,7 @@ const languagesTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/building-dapps/getting-started/install"
+        href="/docs/current/building-apps/getting-started/install"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Get started with dfx"
       >

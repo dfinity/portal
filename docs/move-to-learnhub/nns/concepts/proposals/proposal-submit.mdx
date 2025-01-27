@@ -9,7 +9,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <MarkdownChipRow labels={["Advanced", "Governance", "Concept"]} />
 
 To submit a proposal, it is recommended to use a neuron that can be controlled with a command line tool.
-This guide will show how this can be done using an example of a motion proposal. 
+This guide will show how this can be done using an example of a motion proposal.
 You can find another example for how to submit a proposal on [registering a known neuron]
 (/docs/current/move-to-learnhub/nns/concepts/neurons/becoming-a-known-neuron).
 
@@ -32,7 +32,7 @@ The governance canister is a canister like any other, so it has a Candid file, i
 #### Install `dfx`
 
 * `dfx` is a command line tool that will be used to send messages from your machine to the NNS.
-[Install `dfx`](https://internetcomputer.org/docs/current/building-dapps/getting-started/install).
+[Install `dfx`](https://internetcomputer.org/docs/current/building-apps/getting-started/install).
 ```
 $ dfx [OPTIONS] <SUBCOMMAND>
 ```
@@ -60,7 +60,7 @@ quill generate --pem-file private.pem
 quill encrypts the identity by default.
 :::
 
-When returned, your `account ID` should look something like this: 
+When returned, your `account ID` should look something like this:
 `612ec300g9ec990da900d6ec45919e7d5dbb9fa0dd8e69c54d374df93aa28d57`.
 
 #### Link this private/public keypair to `dfx` so you can use it as an identity.

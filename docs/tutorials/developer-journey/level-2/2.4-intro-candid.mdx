@@ -20,7 +20,7 @@ Candid is an interface description language that is used to describe the public 
 
 Candid is language-agnostic, which is a key benefit since it allows for the interoperation between canisters written in different languages, such as Motoko, Rust, and JavaScript, and client applications.
 
-Candid is unique since it provides functionality and features not available in other technologies, such as JSON or XML. Some of these features include the evolution of service interfaces, direct value mapping for Candid values to the types and values of the canister's language, and the ability to pass complex data such as references to services and methods. Candid also has built-in support for ICP-specific features like query annotation.
+Candid is unique since it provides functionality and features not available in other technologies, such as JSON or XML. Some of these features include the evolution of service interfaces, direct value mapping for Candid values to the types and values of the canister's language, and the ability to pass complex data such as specifications to services and methods. Candid also has built-in support for ICP-specific features like query annotation.
 
 Up until now on this developer ladder, you've utilized the Candid UI a few times through the web browser. If you recall, in several tutorials you've interacted with the backend canisters in the web browser with the URL from an output such as:
 
@@ -53,7 +53,7 @@ Candid supports the following set of types in order to provide a natural mapping
 
 - Special types `Null`, `Reserved`, and `Empty`.
 
-Each of these types is described in detail in the [Candid reference documentation](/docs/current/references/candid-ref).
+Each of these types is described in detail in the [Candid reference documentation](/docs/current/specifications/candid-ref).
 
 
 ### Candid textual values
@@ -121,7 +121,7 @@ In this `ping` method, there are no arguments passed to the method, and there ar
 Now that you've taken a look at the basic structure of a Candid service description, let's take a look at how to generate the service description from your code.
 
 :::info
-Generating Candid files is supported for canisters written in Motoko. Canisters written in other languages will need to have their Candid files written manually. Check out the [Candid interface description](/docs/current/references/candid-ref) for more information on manually writing the service description.
+Generating Candid files is supported for canisters written in Motoko. Canisters written in other languages will need to have their Candid files written manually. Check out the [Candid interface description](/docs/current/specifications/candid-ref) for more information on manually writing the service description.
 :::
 
 The following is an example Motoko canister that defines simple `add`, `subtract`, and `get` functions:
@@ -152,9 +152,9 @@ This example describes a service called `counter` that consists of the following
 
 This example Candid interface description helps to illustrate that every method has a sequence of argument and result types. Methods can also include annotations, like the query notation shown in this example (`() -> (int) query;`), which is a feature specific to ICP.
 
-For canisters written in other languages such as Rust, you can develop your service using the language's native types. [View Rust examples of how to write Candid service descriptions](https://internetcomputer.org/docs/current/building-dapps/developer-tools/cdks/rust/candid/).
+For canisters written in other languages such as Rust, you can develop your service using the language's native types. [View Rust examples of how to write Candid service descriptions](https://internetcomputer.org/docs/current/building-apps/developer-tools/cdks/rust/candid/).
 
-To generate Candid files from Rust code, the Rust CDK `v0.11.0` and higher support auto-generation using the [`candid-extractor` tool](https://internetcomputer.org//docs/current/building-dapps/developer-tools/cdks/rust/generating-candid).
+To generate Candid files from Rust code, the Rust CDK `v0.11.0` and higher support auto-generation using the [`candid-extractor` tool](https://internetcomputer.org//docs/current/building-apps/developer-tools/cdks/rust/generating-candid).
 
 
 ## Service upgrades
@@ -175,7 +175,7 @@ Candid supports service upgrades through a set of specific rules that indicate w
 
 - Existing result types may be changed, but only as a subtype of the previously used type.
 
-For additional information about the supertypes and subtypes of any given type, check out the [Candid interface reference documentation](/docs/current/references/candid-ref) for each type.
+For additional information about the supertypes and subtypes of any given type, check out the [Candid interface reference documentation](/docs/current/specifications/candid-ref) for each type.
 
 To demonstrate an example of how a service might be upgraded, let's use the `counter` service example that you looked at in [generating service descriptions](#generating-service-descriptions).
 

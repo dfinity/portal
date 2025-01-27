@@ -128,7 +128,7 @@ const Content: React.FC = () => {
                 By running{" "}
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/references/bitcoin-how-it-works"
+                  to="/docs/current/specifications/bitcoin-how-it-works"
                 >
                   Bitcoin adapters
                 </Link>
@@ -149,7 +149,7 @@ const Content: React.FC = () => {
                 ICP nodes collaborate to produce{" "}
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/references/t-sigs-how-it-works//"
+                  to="/docs/current/specifications/t-sigs-how-it-works//"
                 >
                   threshold-ECDSA signatures
                 </Link>
@@ -199,14 +199,14 @@ const Content: React.FC = () => {
                 integration,{" "}
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/building-dapps/using-network-features/using-http/https-outcalls/overview"
+                  to="/docs/current/building-apps/using-network-features/using-http/https-outcalls/overview"
                 >
                   RPC integration
                 </Link>{" "}
                 and
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/building-dapps/using-network-features/using-http/https-outcalls/overview"
+                  to="/docs/current/building-apps/using-network-features/using-http/https-outcalls/overview"
                 >
                   {" "}
                   HTTPs outcalls
@@ -226,7 +226,7 @@ const Content: React.FC = () => {
                 lengthy wait times for block confirmations. Enter{" "}
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/rosetta-defi/chain-key-tokens/ckbtc/overview"
+                  to="/docs/current/defi/chain-key-tokens/ckbtc/overview"
                 >
                   ckBTC
                 </Link>
@@ -262,7 +262,7 @@ const Content: React.FC = () => {
                 Internet Computer, is an
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/current/building-dapps/using-network-features/using-http/https-outcalls/overview"
+                  to="/docs/current/building-apps/using-network-features/using-http/https-outcalls/overview"
                 >
                   ICRC-1
                 </Link>

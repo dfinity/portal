@@ -335,7 +335,7 @@ function WebAssemblyPage() {
             <CardWithDescription
               title="Rust"
               description="Offers high performance, and many libraries that the Rust community developed over the years. Supported, and maintained by DFINITY."
-              href="/docs/current/building-dapps/developer-tools/cdks/rust/intro-to-rust"
+              href="/docs/current/building-apps/developer-tools/cdks/rust/intro-to-rust"
             />
 
             <CardWithDescription

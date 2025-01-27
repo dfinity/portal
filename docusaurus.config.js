@@ -71,7 +71,7 @@ const subnavItems = [
     position: "left",
     sidebarId: "developer_education",
     label: "Developer education",
-    activeBasePath: "/docs/current/developer-education/",
+    activeBasePath: "/docs/current/concepts/",
   },
   {
     type: "docSidebar",
@@ -85,7 +85,7 @@ const subnavItems = [
     position: "left",
     sidebarId: "rosetta_defi",
     label: "Rosetta & DeFi",
-    activeBasePath: "/docs/current/rosetta-defi/",
+    activeBasePath: "/docs/current/defi/",
   },
   {
     type: "docSidebar",
@@ -97,9 +97,9 @@ const subnavItems = [
   {
     type: "docSidebar",
     position: "left",
-    sidebarId: "references",
+    sidebarId: "specifications",
     label: "References",
-    activeBasePath: "/docs/current/references/",
+    activeBasePath: "/docs/current/specifications/",
   },
   {
     type: "dropdown",
@@ -400,7 +400,7 @@ const marketingNav = {
         { name: "Developer grants", href: "https://dfinity.org/grants" },
         {
           name: "Using cycles",
-          href: "/docs/current/building-dapps/getting-started/tokens-and-cycles",
+          href: "/docs/current/building-apps/getting-started/tokens-and-cycles",
         },
       ],
 
@@ -426,7 +426,7 @@ const marketingNav = {
             {
               name: "Programming languages",
               description: "ICP supports multiple languages",
-              href: "/docs/current/building-dapps/creating-dapps/create-and-install",
+              href: "/docs/current/building-apps/creating-dapps/create-and-install",
             },
             {
               name: "Hackathons",

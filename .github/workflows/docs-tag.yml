@@ -2,9 +2,9 @@ name: Tag Docs PRs
 on:
   pull_request:
     paths:
-      - docs/developer-education/**
-      - docs/building-dapps/**
-      - docs/rosetta-defi/**
+      - docs/concepts/**
+      - docs/building-apps/**
+      - docs/defi/**
       - docs/tutorials/**
 
 jobs:

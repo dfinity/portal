@@ -79,7 +79,7 @@ A **local function** will block the entity making a call to the function until t
 
 A **shared function** immediately returns a value known as a **future**. This future value indicates that an asynchronous value is expected to be returned and can be represented in this tutorial as `f`. A call to `await f` will suspend any other computation in the origin of the call until `f` is complete. Once `f` is returned, the execution of the call's code resumes using the returned `f` result, which can be a value or an error.
 
-A shared function's arguments and return value(s) must also be shared types. This is a subset of data types that includes shared function references, actor references, and immutable data, but does not include references to local functions or mutable data. Since interactions with actors are asynchronous, an actor's functions must return types in the form `async T`, where T is the data type.
+A shared function's arguments and return value(s) must also be shared types. This is a subset of data types that includes shared function specifications, actor specifications, and immutable data, but does not include specifications to local functions or mutable data. Since interactions with actors are asynchronous, an actor's functions must return types in the form `async T`, where T is the data type.
 
 In the previous example, you used `async Nat`. Currently, shared functions can only be declared in the body of an actor or actor class.
 

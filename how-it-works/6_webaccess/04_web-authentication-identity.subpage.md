@@ -47,7 +47,7 @@ As mentioned previously, it is also important to add a recovery phrase in case y
 
 [Internet Identity Wiki](https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki#Internet_Identity_Introduction)
 
-[Internet Identity Specification](https://internetcomputer.org/docs/current/references/ii-spec/)
+[Internet Identity Specification](https://internetcomputer.org/docs/current/specifications/ii-spec/)
 
 [Open Source - Internet Identity](https://github.com/dfinity/internet-identity)
 

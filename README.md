@@ -64,7 +64,7 @@ docs
 │   │   ├── http-compatible-canisters
 │   │   ├── user-login
 ├── motoko // Motoko documentation - submodule
-├── references // reference documentation
+├── specifications // reference documentation
 ├── samples // sample projects - submodule
 ├── tutorials // tutorial series (developer ladder, hackathon prep course, etc).
 ```
@@ -158,7 +158,7 @@ A reference page provides low level detail into a feature or technology. API ref
 ### Content
 Link to resources that go into further detail and provide a brief summary of the concepts within the doc. Some places that may include further details may include additional information:
 
-- The [reference technology overview](https://internetcomputer.org/docs/current/references/bitcoin-how-it-works) pages
+- The [reference technology overview](https://internetcomputer.org/docs/current/specifications/bitcoin-how-it-works) pages
 
 - The [how it works](https://internetcomputer.org/how-it-works) section of the website
 
@@ -374,7 +374,7 @@ The developer docs utilize submodules for several subfolders of documentation. T
 The following submodules and their corresponding repos are currently used:
 
 - SDK
-    - `/docs/current/building-dapps/developer-tools/dfx/`
+    - `/docs/current/building-apps/developer-tools/dfx/`
     - GitHub Repo: https://github.com/dfinity/sdk.git
 
 - Motoko
@@ -382,24 +382,24 @@ The following submodules and their corresponding repos are currently used:
     - GitHub Repo: https://github.com/dfinity/motoko.git
 
 - quill
-    - `/docs/current/building-dapps/developer-tools/quill`
+    - `/docs/current/building-apps/developer-tools/quill`
     - GitHub Repo: https://github.com/dfinity/quill.git
 
 - Internet Identity
-    - `/docs/current/references/ii-spec`
+    - `/docs/current/specifications/ii-spec`
 	- GitHub Repo: https://github.com/dfinity/internet-identity.git
 
 - Sample projects
-    - `/docs/current/references/samples`
+    - `/docs/current/specifications/samples`
     - GitHub Repo: https://github.com/dfinity/examples.git
     - Note: This submodule intentionally uses `.md` files instead of `.mdx` files. Therefore, these pages do not support components such as tags and tooltips.
 
 - dfxvm
-    - `/docs/current/building-dapps/developer-tools/dfxvm/dfx/`
+    - `/docs/current/building-apps/developer-tools/dfxvm/dfx/`
     - GitHub Repo: https://github.com/dfinity/dfxvm.git
 
 - Response verification
-    - `/docs/current/building-dapps/using-network-features/using-http/http-certification/`
+    - `/docs/current/building-apps/using-network-features/using-http/http-certification/`
     - GitHub Repo: https://github.com/dfinity/response-verification
 
 ### Updating submodules
@@ -538,13 +538,13 @@ The `.subpage.md` files will each generate a subpage under `/how-it-works/`, bas
 
 ## Adding documentation for community-created agents and CDKs
 
-The [agents](/docs/current/building-dapps/calling-dapps/agents/overview)
-and [CDKs](/docs/current/building-dapps/developer-tools/cdks/index) sections should not only contain docs
+The [agents](/docs/current/building-apps/calling-dapps/agents/overview)
+and [CDKs](/docs/current/building-apps/developer-tools/cdks/index) sections should not only contain docs
 for DFINITY-created agents and CDKs.
 We therefore invite other projects to:
 
 - Link to their own agents or CDKs on the respective index pages (the files to be edited are
-  in `/docs/current/building-dapps/calling-dapps/agents/overview` or `/docs/building-dapps/developer-tools/cdks/index.md`).
+  in `/docs/current/building-apps/calling-dapps/agents/overview` or `/docs/building-apps/developer-tools/cdks/index.md`).
 
 ## Adding community-created developer tools
 
