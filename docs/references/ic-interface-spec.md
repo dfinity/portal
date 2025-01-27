@@ -2035,7 +2035,7 @@ When executing a query or composite query method via a query call (i.e. in non-r
 
     This traps if `ic0.data_certificate_present()` returns `0`.
 
-### Cycle cost calculation
+### Cycle cost calculation {#system-api-cycle-cost}
 
 Inter-canister calls have an implicit cost, and some calls to the management canister require the caller to attach cycles to the call explicitly.  
 The various cost factors may change over time, so the following system calls serve to give the canister programmatic, up-to-date information about the costs. 
