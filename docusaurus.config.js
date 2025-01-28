@@ -69,37 +69,30 @@ const subnavItems = [
   {
     type: "docSidebar",
     position: "left",
-    sidebarId: "developer_education",
-    label: "Developer education",
-    activeBasePath: "/docs/current/concepts/",
-  },
-  {
-    type: "docSidebar",
-    position: "left",
     sidebarId: "build",
-    label: "Building applications",
-    activeBasePath: "/docs/current/build/",
+    label: "Building apps",
+    activeBasePath: "/docs/build/",
   },
   {
     type: "docSidebar",
     position: "left",
-    sidebarId: "rosetta_defi",
-    label: "Rosetta & DeFi",
-    activeBasePath: "/docs/current/defi/",
+    sidebarId: "defi",
+    label: "DeFi",
+    activeBasePath: "/docs/defi/",
   },
   {
     type: "docSidebar",
     position: "left",
     sidebarId: "motoko",
     label: "Motoko",
-    activeBasePath: "/docs/current/motoko/",
+    activeBasePath: "/docs/motoko/",
   },
   {
     type: "docSidebar",
     position: "left",
-    sidebarId: "specifications",
+    sidebarId: "references",
     label: "References",
-    activeBasePath: "/docs/current/specifications/",
+    activeBasePath: "/docs/references/",
   },
   {
     type: "dropdown",
@@ -138,7 +131,7 @@ const subnavItems = [
    * Add UI tests in development mode
   * process.env.NODE_ENV === "development" && {
   *   label: "UI Tests",
-  *   href: "/docs/current/tests/all",
+  *   href: "/docs/tests/all",
   */
 
 ].filter(Boolean);
@@ -400,7 +393,7 @@ const marketingNav = {
         { name: "Developer grants", href: "https://dfinity.org/grants" },
         {
           name: "Using cycles",
-          href: "/docs/current/building-apps/getting-started/tokens-and-cycles",
+          href: "/docs/building-apps/getting-started/tokens-and-cycles",
         },
       ],
 
@@ -410,7 +403,7 @@ const marketingNav = {
           items: [
             {
               name: "Developer Docs",
-              href: "/docs/current/home",
+              href: "/docs/home",
               description: "Find the resources you need quickly",
             },
             {
@@ -426,7 +419,7 @@ const marketingNav = {
             {
               name: "Programming languages",
               description: "ICP supports multiple languages",
-              href: "/docs/current/building-apps/creating-dapps/create-and-install",
+              href: "/docs/building-apps/developing-canisters/what-is-a-canister",
             },
             {
               name: "Hackathons",
@@ -446,7 +439,7 @@ const marketingNav = {
           ],
           featured: {
             title: "Developer Docs",
-            href: "/docs/current/home",
+            href: "/docs/home",
             image: "/img/nav/featured-building.webp",
           },
         },
@@ -660,12 +653,6 @@ const config = {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
           breadcrumbs: false,
-          versions: {
-            current: {
-              label: "Current 🚧",
-              path: "current",
-            },
-          },
 
           sidebarPath: require.resolve("./sidebars.js"),
           remarkPlugins,
@@ -862,5 +849,7 @@ const config = {
   themes: ["@docusaurus/theme-live-codeblock", "@docusaurus/theme-mermaid"],
   clientModules: [require.resolve("./static/load_moc.ts")],
 };
+
+
 
 module.exports = config;

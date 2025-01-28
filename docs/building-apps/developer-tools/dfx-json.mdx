@@ -8,7 +8,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["dfx", "Reference"]} />
 
-Every project created and deployed with `dfx` requires a `dfx.json` file to be present in the project's root directory. The `dfx.json` file configures the project's settings, such as the canisters in the project, their name, type, and source file, default project build settings, and other configuration parameters such as Wasm optimizations. This page will detail some of the most common configuration options. For a full list of the possible configuration settings in `dfx.json`, view the [`dfx.json` schema](/docs/current/building-apps/developer-tools/dfx-json-reference).
+Every project created and deployed with `dfx` requires a `dfx.json` file to be present in the project's root directory. The `dfx.json` file configures the project's settings, such as the canisters in the project, their name, type, and source file, default project build settings, and other configuration parameters such as Wasm optimizations. This page will detail some of the most common configuration options. For a full list of the possible configuration settings in `dfx.json`, view the [`dfx.json` schema](/docs/building-apps/developer-tools/dfx-json-reference).
 
 ## Default `dfx.json` file
 
@@ -166,7 +166,7 @@ Network definitions can have the following configuration components:
 
 - `type`: Defines the network type, which can be either ephemeral (do not retain the same canister IDs) or persistent (retain the same canister IDs).
 
-[Learn more about custom network definitions and configurations](/docs/current/building-apps/developer-tools/advanced-dfx/networks-json).
+[Learn more about custom network definitions and configurations](/docs/building-apps/developer-tools/advanced-dfx/networks-json).
 
 ## Wasm optimization options
 
@@ -187,5 +187,5 @@ Canisters can be optimized using [`wasm-opt`](https://github.com/WebAssembly/bin
 
 ## Further reading
 
-There are several workflow-specific `dfx.json` configuration options detailed in the full [`dfx.json` schema](/docs/current/building-apps/developer-tools/dfx-json-reference).
+There are several workflow-specific `dfx.json` configuration options detailed in the full [`dfx.json` schema](/docs/building-apps/developer-tools/dfx-json-reference).
 

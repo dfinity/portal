@@ -28,7 +28,7 @@ The poll dapp will ask the end user a question, then have them vote on which ans
 
 ## Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/current/tutorials/developer-journey/level-0/dev-env).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/tutorials/developer-journey/level-0/dev-env).
 
 ## Creating a new project
 
@@ -93,7 +93,7 @@ This file structure is the default template `dfx` creates for a new project. If 
 
 ## Writing the backend canister code
 
-Let's start writing the code for the backend of our dapp. Open your code editor of choice, then open the file `src/poll_backend/main.mo`. By default, this file will contain the same code you reviewed in the [introduction to dfx](/docs/current/tutorials/developer-journey/level-0/intro-dfx) module. Since you want to write your own code, delete the entire contents of this file.
+Let's start writing the code for the backend of our dapp. Open your code editor of choice, then open the file `src/poll_backend/main.mo`. By default, this file will contain the same code you reviewed in the [introduction to dfx](/docs/tutorials/developer-journey/level-0/intro-dfx) module. Since you want to write your own code, delete the entire contents of this file.
 
 ### Creating an actor
 
@@ -464,7 +464,7 @@ dfx deploy
 If you receive an error related to a missing package, try using this [package.json](https://github.com/jessiemongeon1/dev-journey-poll-dapp/blob/main/package.json) file.
 :::
 
-You may recall that in the previous module, [exploring a live demo](/docs/current/tutorials/developer-journey/level-1/1.1-live-demo), you used the `--playground` flag to deploy your canister to the playground network. In this module, you aren't using any flags, which defaults to deploying the canister to the local environment. You can also specify this with the flag `--network local`.
+You may recall that in the previous module, [exploring a live demo](/docs/tutorials/developer-journey/level-1/1.1-live-demo), you used the `--playground` flag to deploy your canister to the playground network. In this module, you aren't using any flags, which defaults to deploying the canister to the local environment. You can also specify this with the flag `--network local`.
 
 Additionally, you aren't specifying a canister name in the `dfx deploy` command, which will deploy all canisters listed in the `dfx.json` file, which by default includes both the `poll_backend` and `poll_frontend` canisters.
 
@@ -612,7 +612,7 @@ Start by creating the file `src/poll_frontend/src/index.html` that contains the 
 **What does this code do?**
 The HTML code above is a simple form that provides the end user with options to select using radio buttons. There is nothing 'Web3' or specific to ICP about this code.
 
-Then, the `<head>` tag is used to include some basic CSS for the page's styling. To learn more about adding a stylesheet, see: [add a stylesheet](/docs/current/building-apps/dapp-frontends/using-an-asset-canister).
+Then, the `<head>` tag is used to include some basic CSS for the page's styling. To learn more about adding a stylesheet, see: [add a stylesheet](/docs/building-apps/frontends/using-an-asset-canister).
 :::
 
 Next, you will need a `webpack.config.js` file that defines several parameters to facilitate your local development web server.
@@ -1033,4 +1033,4 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 In this tutorial, you only deployed our dapp to your local environment. In the next module, you'll acquire <GlossaryTooltip>cycles</GlossaryTooltip> in order for you to deploy your dapp to the Internet Computer mainnet.
 
-- [1.4 Acquiring and using cycles](/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles).
+- [1.4 Acquiring and using cycles](/docs/tutorials/developer-journey/level-1/1.4-using-cycles).

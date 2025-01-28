@@ -18,7 +18,7 @@ This guide demonstrates how to create a small dapp with a periodic task. The tas
 <Tabs>
 <TabItem value="prereq" label="Prerequisites" default>
 
-<input type="checkbox"/> <a href="/docs/current/building-apps/getting-started/install">Install the IC SDK.</a> Note: While using the IC SDK is the typical path for most developers, experienced Rust developers may choose to circumvent IC SDK entirely and use the <a href="https://github.com/dfinity/cdk-rs"> Rust CDK </a> directly.
+<input type="checkbox"/> <a href="/docs/building-apps/getting-started/install">Install the IC SDK.</a> Note: While using the IC SDK is the typical path for most developers, experienced Rust developers may choose to circumvent IC SDK entirely and use the <a href="https://github.com/dfinity/cdk-rs"> Rust CDK </a> directly.
 <div>
 </div>
 <input type="checkbox"/> <a href="https://doc.rust-lang.org/book/ch01-01-installation.html">Download and install Rust.</a>
@@ -78,7 +78,7 @@ cargo update
 
 ## Declaring the canister interface
 
-Candid is an interface description language (IDL) for interacting with canisters running on ICP. To see details about the Candid interface description language syntax, see the [Candid guide](/docs/current/building-apps/calling-dapps/candid/candid-concepts) or the [Candid crate documentation](https://docs.rs/candid/).
+Candid is an interface description language (IDL) for interacting with canisters running on ICP. To see details about the Candid interface description language syntax, see the [Candid guide](/docs/building-apps/interact-with-canisters/candid/candid-concepts) or the [Candid crate documentation](https://docs.rs/candid/).
 
 Start by opening the `src/my_timers_backend/my_timers_backend.did` file in a code editor and replacing its content with the following:
 
@@ -154,7 +154,7 @@ This code establishes the following:
 ## Implementing canister upgrade
 
 :::info
-Note: As described in the [periodic tasks and timers](/docs/current/building-apps/using-network-features/periodic-tasks-timers) page, the timers library does not handle canister upgrades. It is up to the canister developer to serialize the timers in the `canister_pre_upgrade` and reactivate the timers in the `canister_post_upgrade` method if needed.
+Note: As described in the [periodic tasks and timers](/docs/building-apps/network-features/periodic-tasks-timers) page, the timers library does not handle canister upgrades. It is up to the canister developer to serialize the timers in the `canister_pre_upgrade` and reactivate the timers in the `canister_post_upgrade` method if needed.
 
 Using pre_ and post_upgrade hooks is discouraged. It is error-prone and can render a canister unusable. Per best practices, using these methods should be avoided if possible.
 :::

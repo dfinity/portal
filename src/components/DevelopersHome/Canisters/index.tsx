@@ -39,7 +39,7 @@ function Index() {
           >
             <Link
               className={styles.actionButton}
-              to="/docs/current/concepts/canisters-code"
+              to="/docs/concepts/canisters-code"
             >
               CONCEPTS
             </Link>

@@ -41,7 +41,7 @@ If you need to make arbitrary calls to other canisters with cycles, a cycles wal
 ## Using the cycles ledger
 
 :::caution
-The cycles ledger is supported by default in [`dfx` version 0.22.0 and newer](/docs/current/building-apps/getting-started/install).
+The cycles ledger is supported by default in [`dfx` version 0.22.0 and newer](/docs/building-apps/getting-started/install).
 :::
 
 ### Obtaining ICP
@@ -166,7 +166,7 @@ Most functions of the cycle ledger incur a fee. The full breakdown of fees can b
 
 - To transfer cycles between different principal IDs using the cycles ledger, the transfer fee is 100M cycles per transaction.
 - To send cycles from the cycles ledger to another canister, the fee is 100M cycles.
-- To create a canister, the fee is the transfer fee (100M cycles), plus the canister creation fee, which scales [linearly with the size of the subnet](/docs/current/concepts/gas-cost) that the canister is created on. For example, if the canister is created on a 13-node subnet, the fee is 100B cycles. This means the total fee will be 100_100_000_000 cycles.
+- To create a canister, the fee is the transfer fee (100M cycles), plus the canister creation fee, which scales [linearly with the size of the subnet](/docs/building-apps/essentials/gas-cost) that the canister is created on. For example, if the canister is created on a 13-node subnet, the fee is 100B cycles. This means the total fee will be 100_100_000_000 cycles.
 
 ## Switching from the cycles wallet to cycles ledger
 

@@ -59,7 +59,7 @@ const languagesTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/motoko/main/getting-started/motoko-introduction"
+        href="/docs/motoko/main/getting-started/motoko-introduction"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to Motoko docs"
       >
@@ -83,7 +83,7 @@ const languagesTiles: TileDescriptor[] = [
     invertIconDarkMode: true,
     action: (
       <Link
-        href="/docs/current/building-apps/developer-tools/cdks/rust/intro-to-rust"
+        href="/docs/building-apps/developer-tools/cdks/rust/intro-to-rust"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to Rust docs"
       >
@@ -183,7 +183,7 @@ const frameworksTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/building-apps/getting-started/deploy-and-manage"
+        href="/docs/building-apps/developing-canisters/deploy"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Learn more about testnets on ICP"
       >
@@ -206,7 +206,7 @@ const frameworksTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/building-apps/getting-started/quickstart/first-web-app"
+        href="/docs/building-apps/getting-started/first-web-app"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to React quickstart"
       >
@@ -252,7 +252,7 @@ const chainfusionTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/building-apps/chain-fusion/supported-chains"
+        href="/docs/building-apps/chain-fusion/supported-chains"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="View the docs"
       >
@@ -281,7 +281,7 @@ const chainfusionTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/building-apps/chain-fusion/bitcoin/overview"
+        href="/docs/building-apps/chain-fusion/bitcoin/overview"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Learn more about the Bitcoin integration"
       >
@@ -306,7 +306,7 @@ const chainfusionTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/building-apps/chain-fusion/ethereum/overview"
+        href="/docs/building-apps/chain-fusion/ethereum/overview"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Learn more about the Ethereum integration"
       >
@@ -335,7 +335,7 @@ const chainfusionTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/defi/chain-key-tokens/overview"
+        href="/docs/defi/chain-key-tokens/overview"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Learn more about chain-key tokens"
       >
@@ -363,7 +363,7 @@ const Education = () => {
       cta: (
         <Link
           className="button-transparent button-with-icon pl-0"
-          href="/docs/current/tutorials/developer-journey/"
+          href="/docs/tutorials/developer-journey/"
         >
           Start tutorials
           <LinkArrowRight />
@@ -382,7 +382,7 @@ const Education = () => {
       cta: (
         <Link
           className="button-transparent button-with-icon pl-0"
-          href="/docs/current/tutorials/hackathon-prep-course/"
+          href="/docs/tutorials/hackathon-prep-course/"
         >
           Start course
           <LinkArrowRight />
@@ -552,7 +552,7 @@ const DocsHomePage: FC = () => {
             <p className="mb-0">
               <Link
                 className="button-white button-with-icon"
-                href="/docs/current/building-apps/getting-started/quickstart/first-smart-contract"
+                href="/docs/building-apps/getting-started/first-smart-contract"
               >
                 SDK BUILD
                 <LinkArrowRight />
@@ -590,7 +590,7 @@ const DocsHomePage: FC = () => {
             </p>
             <Link
               className="button-primary rounded-2xl"
-              href="/docs/current/building-apps/creating-dapps/create-and-install"
+              href="/docs/building-apps/developing-canisters/what-is-a-canister"
             >
               View all
             </Link>
@@ -621,7 +621,7 @@ const DocsHomePage: FC = () => {
           </p>
           <Link
             className="button-primary rounded-2xl"
-            href="/docs/current/building-apps/chain-fusion/overview"
+            href="/docs/building-apps/chain-fusion/overview"
           >
             LEARN MORE
           </Link>

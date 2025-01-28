@@ -8,19 +8,19 @@ function Index() {
   const links = [
     {
       title: "Native Bitcoin API",
-      href: "/docs/current/specifications/ic-interface-spec#ic-bitcoin-api",
+      href: "/docs/references/ic-interface-spec#ic-bitcoin-api",
     },
     {
       title: "Chain-Key ECDSA API",
-      href: "/docs/current/specifications/ic-interface-spec#ic-ecdsa_public_key",
+      href: "/docs/references/ic-interface-spec#ic-ecdsa_public_key",
     },
     {
       title: "Native Bitcoin Docs",
-      href: "/docs/current/specifications/bitcoin-how-it-works",
+      href: "/docs/references/bitcoin-how-it-works",
     },
     {
       title: "Threshold Signature Docs",
-      href: "/docs/current/specifications/t-sigs-how-it-works/",
+      href: "/docs/references/t-sigs-how-it-works/",
     },
     {
       title: "Sample Code",

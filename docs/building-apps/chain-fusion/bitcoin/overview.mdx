@@ -23,7 +23,7 @@ Smart contracts can also sign and send Bitcoin transactions, allowing them to di
 
 This direct Bitcoin integration uses two features:
 
-- **[Threshold ECDSA](/docs/current/building-apps/using-network-features/signatures/t-ecdsa)** and **[threshold Schnorr](/docs/current/building-apps/using-network-features/signatures/t-schnorr)**: A smart contract can have a secret key that is stored in a secure and decentralized way using chain-key cryptography. This key can be used to digitally sign messages. ECDSA and Schnorr are compatible with the Bitcoin blockchain, enabling smart contracts to sign Bitcoin transactions.
+- **[Threshold ECDSA](/docs/building-apps/network-features/signatures/t-ecdsa)** and **[threshold Schnorr](/docs/building-apps/network-features/signatures/t-schnorr)**: A smart contract can have a secret key that is stored in a secure and decentralized way using chain-key cryptography. This key can be used to digitally sign messages. ECDSA and Schnorr are compatible with the Bitcoin blockchain, enabling smart contracts to sign Bitcoin transactions.
 
 - **Bitcoin adapter**: ICP has one subnet whose nodes participate in the Bitcoin network. These nodes are used to fetch the Bitcoin state and blocks and send transactions to the network.
 
@@ -37,7 +37,7 @@ The diagram below shows the flow of interacting with the Bitcoin network from a 
   />
 </div>
 
-At the protocol level, both the Bitcoin adapter and chain-key ECDSA features expose an API on the [management canister](/docs/current/concepts/system-canisters/management-canister).
+At the protocol level, both the Bitcoin adapter and chain-key ECDSA features expose an API on the [management canister](/docs/references/system-canisters/management-canister).
 
 When a canister wants to make a Bitcoin transaction, a request is sent to the Bitcoin subnet that hosts a Bitcoin canister that contains ICP's onchain Bitcoin state. The request is sent to the Bitcoin network through the Bitcoin adapter and is processed by Bitcoin asynchronously.
 

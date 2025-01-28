@@ -766,7 +766,7 @@ function EthDenverPage() {
                 <Link className="button-primary" href="/ecosystem">
                   Check out the Ecosystem
                 </Link>
-                <Link className="link-white link-with-icon" href="/docs/current/home">
+                <Link className="link-white link-with-icon" href="/docs/home">
                   <LinkArrowRight />
                   Build your own
                 </Link>
@@ -930,7 +930,7 @@ function EthDenverPage() {
           title="Be a pioneer of Web3"
           body="Start a DAO, create a token, build dapps and host assets with the full stack entirely onchain."
           cta="BUILD REAL WEB3"
-          ctaLink="/docs/current/home"
+          ctaLink="/docs/home"
           cards={[
             {
               title: "Dev Forum",
@@ -940,7 +940,7 @@ function EthDenverPage() {
             {
               title: "Dev Docs",
               body: "Get to know the concepts,  architecture and technical breakthroughs that enable the ICP. Plus step-by-step guides on how to stake your tokens, and more.",
-              link: "/docs/current/home",
+              link: "/docs/home",
             },
             {
               title: "Sample Code",

@@ -23,7 +23,7 @@ In addition, ICP has implemented similar token standards as Bitcoin:
 
 | Bitcoin standard | ICP standard |
 |------------------|--------------|
-| BRC-20           | [ICRC-1/ICRC-2](../../../../specifications/icrc1-standard) |
+| BRC-20           | [ICRC-1/ICRC-2](../../../../references/icrc1-standard) |
 | BRC-721          | [ICRC-7](https://github.com/dfinity/ICRC/blob/icrc7-wg-draft/ICRCs/ICRC-7/ICRC-7.md)|
 
 ## Smart contracts
@@ -32,15 +32,15 @@ Bitcoin’s scripting language, Script, makes complex smart contracts rather dif
 
 Bitcoin developers who are looking to build complex smart contracts will need to use a Bitcoin smart contract layer (referred to as a Layer-2 or L2), such as ICP. Each L2 solution offers a unique set of developer tools.
 
-Canister smart contracts on ICP have special properties that allow developers to develop scalable services. Canisters can be written in any language that compiles into Wasm, including [Rust](/docs/current/building-apps/developer-tools/cdks/rust/intro-to-rust), [Typescript](https://demergent-labs.github.io/azle/), [Motoko](/docs/current/motoko/main/getting-started/motoko-introduction), and [Python](https://demergent-labs.github.io/kybra/). This allows for greater complexity in smart contract development compared to Bitcoin's Script language.
+Canister smart contracts on ICP have special properties that allow developers to develop scalable services. Canisters can be written in any language that compiles into Wasm, including [Rust](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust), [Typescript](https://demergent-labs.github.io/azle/), [Motoko](/docs/motoko/main/getting-started/motoko-introduction), and [Python](https://demergent-labs.github.io/kybra/). This allows for greater complexity in smart contract development compared to Bitcoin's Script language.
 
-To learn more about full canister smart contract functionality, refer to the [smart contracts documentation](/docs/current/concepts/what-are-canisters).
+To learn more about full canister smart contract functionality, refer to the [smart contracts documentation](/docs/building-apps/essentials/canisters).
 
-Specifically, through protocol-level integration of ICP with the [Bitcoin network](/docs/current/building-apps/chain-fusion/bitcoin/overview), ICP smart contracts can interact with the Bitcoin network directly. Canister smart contracts can run [queries against the full Bitcoin UTXO](/docs/current/building-apps/chain-fusion/bitcoin/using-btc/read-state) set, including finding the balance of any Bitcoin address. They can [hold](/docs/current/building-apps/chain-fusion/bitcoin/using-btc/generate-addresses), [sign](/docs/current/building-apps/chain-fusion/bitcoin/using-btc/sign-transactions), and [submit transactions](/docs/current/building-apps/chain-fusion/bitcoin/using-btc/submit-transactions) to the Bitcoin network.
+Specifically, through protocol-level integration of ICP with the [Bitcoin network](/docs/building-apps/chain-fusion/bitcoin/overview), ICP smart contracts can interact with the Bitcoin network directly. Canister smart contracts can run [queries against the full Bitcoin UTXO](/docs/building-apps/chain-fusion/bitcoin/using-btc/read-state) set, including finding the balance of any Bitcoin address. They can [hold](/docs/building-apps/chain-fusion/bitcoin/using-btc/generate-addresses), [sign](/docs/building-apps/chain-fusion/bitcoin/using-btc/sign-transactions), and [submit transactions](/docs/building-apps/chain-fusion/bitcoin/using-btc/submit-transactions) to the Bitcoin network.
 
-The [Threshold Schnorr integration](/docs/current/building-apps/using-network-features/signatures/t-schnorr) allows developers to interact with Runes and Ordinals directly in canisters. A [Schnorr canister example](https://github.com/dfinity/examples/tree/master/motoko/threshold-schnorr) is available in Motoko and Rust.
+The [Threshold Schnorr integration](/docs/building-apps/network-features/signatures/t-schnorr) allows developers to interact with Runes and Ordinals directly in canisters. A [Schnorr canister example](https://github.com/dfinity/examples/tree/master/motoko/threshold-schnorr) is available in Motoko and Rust.
 
-To learn more about the Bitcoin integration on ICP, refer to the [Bitcoin integration documentation](/docs/current/building-apps/chain-fusion/bitcoin/overview).
+To learn more about the Bitcoin integration on ICP, refer to the [Bitcoin integration documentation](/docs/building-apps/chain-fusion/bitcoin/overview).
 
 ## Consensus
 Bitcoin uses proof of work as its consensus mechanism. Using proof of work, the Bitcoin blockchain waits for ten minutes before validating transactions one block at a time, posing challenges to security and scalability.

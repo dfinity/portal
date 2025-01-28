@@ -148,7 +148,7 @@ async fn transfer(args: TransferArgs) -> Result<BlockIndex, String> {
     .map_err(|e| format!("ledger transfer error {:?}", e))
 }
 
-// Enable Candid export (see /docs/current/building-apps/developer-tools/cdks/rust/generating-candid)
+// Enable Candid export (see /docs/building-apps/developer-tools/cdks/rust/generating-candid)
 ic_cdk::export_candid!();
 ```
 

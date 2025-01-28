@@ -2,28 +2,28 @@
 * @dfinity/editorial
 
 docs/other/updates/release-notes/ @dfinity/dx
-docs/building-apps/calling-dapps/agents/overview @dfinity/dx
+docs/building-apps/interact-with-canisters/agents/overview @dfinity/dx
 docs/building-apps/developer-tools/cdks/index @dfinity/dx
 docs/defi/ @dfinity/finint
 docs/concepts/security @dfinity/product-security
-docs/specifications/execution-errors.mdx @dfinity/execution
-docs/concepts/message-execution/ingress-messages.mdx @dfinity/product-security
+docs/references/execution-errors.mdx @dfinity/execution
+docs/building-apps/interact-with-dapps/advanced-calls.mdx @dfinity/product-security
 docs/concepts/message-execution/message-execution-properties.mdx @dfinity/product-security
-docs/building-apps/dapp-frontends/custom-domains/ @dfinity/boundary-node
-docs/building-apps/using-network-features/using-http/http-certification/ @dfinity/trust
+docs/building-apps/frontends/custom-domains/ @dfinity/boundary-node
+docs/building-apps/network-features/using-http/http-certification/ @dfinity/trust
 
 # Each piece of documentation must be owned by the respective teams
-docs/building-apps/using-network-features/simd.mdx @dfinity/execution
-docs/building-apps/using-network-features/periodic-tasks-timers.mdx @dfinity/execution
-docs/concepts/developer-best-practices/idempotency.mdx @dfinity/research @dfinity/product-security
+docs/building-apps/network-features/simd.mdx @dfinity/execution
+docs/building-apps/network-features/periodic-tasks-timers.mdx @dfinity/execution
+docs/building-apps/best-practices/idempotency.mdx @dfinity/research @dfinity/product-security
 
 # The Interface Specification
-docs/specifications/_attachments/certificates.cddl @dfinity/canister-os
-docs/specifications/_attachments/http-gateway.did @dfinity/canister-os
-docs/specifications/_attachments/ic.did @dfinity/canister-os
-docs/specifications/_attachments/interface-spec-changelog.md @dfinity/canister-os
-docs/specifications/_attachments/requests.cddl @dfinity/canister-os
-docs/specifications/http-gateway-protocol-spec.md @dfinity/canister-os
-docs/specifications/ic-interface-spec.md @dfinity/canister-os
+docs/references/_attachments/certificates.cddl @dfinity/canister-os
+docs/references/_attachments/http-gateway.did @dfinity/canister-os
+docs/references/_attachments/ic.did @dfinity/canister-os
+docs/references/_attachments/interface-spec-changelog.md @dfinity/canister-os
+docs/references/_attachments/requests.cddl @dfinity/canister-os
+docs/references/http-gateway-protocol-spec.md @dfinity/canister-os
+docs/references/ic-interface-spec.md @dfinity/canister-os
 
 src/pages/security-advisories.tsx @dfinity/product-security

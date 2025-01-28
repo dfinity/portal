@@ -2,220 +2,22 @@
 
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
-  developer_education: [
-    {
-      type: "doc",
-      label: "Welcome to the Internet Computer",
-      id: "concepts/network-overview",
-    },
-    {
-      type: "category",
-      label: "Concepts",
-      items: [
-        {
-          type: "doc",
-          label: "What are canisters?",
-          id: "concepts/what-are-canisters",
-        },
-        {
-          type: "doc",
-          label: "Canister components",
-          id: "concepts/inside-canisters",
-        },
-        {
-          type: "doc",
-          label: "Canister lifecycle",
-          id: "concepts/canister-lifecycle",
-        },
-        {
-          type: "doc",
-          label: "Trust in canisters",
-          id: "concepts/trust-in-canisters",
-        },
-        {
-          type: "category",
-          label: "Reverse gas model",
-          items:[
-            "concepts/gas-cost",
-            "concepts/cost-estimations-and-examples"
-          ]
-        },
-        {
-          type: "doc",
-          label: "Application architecture considerations",
-          id: "concepts/application-architectures",
-        },
-        {
-          type: "category",
-          label: "Message execution",
-          items: [
-            {
-              type: "doc",
-              label: "Ingress messages",
-              id: "concepts/message-execution/ingress-messages",
-            },
-            {
-              type: "doc",
-              label: "Async code & inter-canister calls",
-              id: "concepts/message-execution/async-code",
-            },
-          ],
-        },
-      ],
-    },
-      {
-        type: "category",
-        label: "Best practices",
-        items: [
-          {
-            type: "doc",
-            label: "General",
-            id: "concepts/developer-best-practices/general",
-          },
-          {
-            type: "doc",
-            label: "Idempotency",
-            id: "concepts/developer-best-practices/idempotency",
-          },
-          {
-            type: "doc",
-            label: "Reproducible builds",
-            id: "concepts/developer-best-practices/reproducible-builds",
-          },
-          {
-            type: "doc",
-            label: "Storage",
-            id: "concepts/developer-best-practices/storage",
-          },
-          {
-            type: "doc",
-            label: "Troubleshooting",
-            id: "concepts/developer-best-practices/troubleshooting",
-          },
-        ],
-      },
-    {
-      type: "category",
-      label: "System canisters",
-      items: [
-        {
-          type: "doc",
-          label: "List of system canisters",
-          id: "concepts/system-canisters/index",
-        },
-        {
-          type: "doc",
-          label: "Management canister",
-          id: "concepts/system-canisters/management-canister",
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Security",
-      items: [
-    {
-      type: "category",
-      label: "Best practices",
-      items: [
-        {
-          type: "doc",
-          label: "What are security best practices?",
-          id: "concepts/security/overview",
-        },
-        {
-          type: "doc",
-          label: "Inter-canister calls",
-          id: "concepts/security/inter-canister-calls",
-        },
-        {
-          type: "doc",
-          label: "Identity & access management",
-          id: "concepts/security/iam",
-        },
-        {
-          type: "doc",
-          label: "Decentralization",
-          id: "concepts/security/decentralization",
-        },
-        {
-          type: "doc",
-          label: "Data integrity & authenticity",
-          id: "concepts/security/data-integrity-and-authenticity",
-        },
-        {
-          type: "doc",
-          label: "Data storage",
-          id: "concepts/security/data-storage",
-        },
-        {
-          type: "doc",
-          label: "HTTP outcalls",
-          id: "concepts/security/https-outcalls",
-        },
-        {
-          type: "doc",
-          label: "Denial of service",
-          id: "concepts/security/dos",
-        },
-        {
-          type: "doc",
-          label: "Canister upgrades",
-          id: "concepts/security/canister-upgrades",
-        },
-        {
-          type: "doc",
-          label: "Observability & monitoring",
-          id: "concepts/security/observability-and-monitoring",
-        },
-        {
-          type: "doc",
-          label: "Miscellaneous",
-          id: "concepts/security/misc",
-        },
-        {
-          type: "doc",
-          label: "Important resources",
-          id: "concepts/security/resources",
-        },
-      ],
-    },
-    {
-      type: "doc",
-      label: "Formal verification",
-      id: "concepts/security/formal-verification",
-    },
-    ],
-  },
-    {
-      type: "doc",
-      label: "Glossary",
-      id: "concepts/glossary/index",
-    },
-  ],
 
 build: [
   {
     type: "category",
-    label: "Quick start",
+    label: "Getting started",
     items: [
       {
         type: "doc",
-        label: "First smart contract",
-        id: "building-apps/getting-started/quickstart/first-smart-contract",
+        label: "Quick start",
+        id: "building-apps/getting-started/first-smart-contract",
       },
       {
         type: "doc",
-        label: "First web app",
-        id: "building-apps/getting-started/quickstart/first-web-app",
+        label: "Development workflow",
+        id: "building-apps/getting-started/development-workflow",
       },
-    ],
-  },
-  {
-    type: "category",
-    label: "Essentials",
-    items: [
-
       {
         type: "doc",
         label: "Installing the IC SDK",
@@ -231,15 +33,34 @@ build: [
         label: "Using tokens & cycles",
         id: "building-apps/getting-started/tokens-and-cycles",
       },
+    ],
+  },
+  {
+    type: "category",
+    label: "Essentials",
+    items: [
       {
         type: "doc",
-        label: "Writing canister code",
-        id: "building-apps/getting-started/write-canister-code",
+        label: "Network overview",
+        id: "building-apps/essentials/network-overview",
+      },
+      {
+        type: "category",
+        label: "Fees",
+        items:[
+          "building-apps/essentials/gas-cost",
+          "building-apps/essentials/cost-estimations-and-examples"
+        ]
       },
       {
         type: "doc",
-        label: "Deploying & managing canisters",
-        id: "building-apps/getting-started/deploy-and-manage",
+        label: "Canister smart contracts",
+        id: "building-apps/essentials/canisters",
+      },
+      {
+        type: "doc",
+        label: "Message execution",
+        id: "building-apps/essentials/message-execution",
       },
     ],
     },
@@ -265,39 +86,12 @@ build: [
               id: "motoko/main/getting-started/motoko-introduction",
             },
             {
-              type: "category",
+              type: "doc",
               label: "Rust",
-              items: [
-                  "building-apps/developer-tools/cdks/rust/intro-to-rust",
-                  "building-apps/developer-tools/cdks/rust/project-organization",
-                  "building-apps/developer-tools/cdks/rust/stable-structures",
-                  "building-apps/developer-tools/cdks/rust/optimizing",
-                  "building-apps/developer-tools/cdks/rust/upgrading",
-                  "building-apps/developer-tools/cdks/rust/rust-limitations",
-              {
-                type: "category",
-                label: "Interacting with Rust canisters",
-                items: [
-                  "building-apps/developer-tools/cdks/rust/intercanister",
-                  "building-apps/developer-tools/cdks/rust/message-inspect",
-                  "building-apps/developer-tools/cdks/rust/candid",
-                  "building-apps/developer-tools/cdks/rust/generating-candid",
-                ],
-              },
-              {
-                type: "category",
-                label: "Example workflows",
-                items: [
-                  "building-apps/developer-tools/cdks/rust/access-control",
-                  "building-apps/developer-tools/cdks/rust/searching-records",
-                  "building-apps/developer-tools/cdks/rust/canister-state",
-                  "building-apps/developer-tools/cdks/rust/timers",
-                ],
-              },
+              id: "building-apps/developer-tools/cdks/rust/intro-to-rust",
+            },
             ],
           },
-        ],
-      },
           {
           type: "category",
           label: "Command-line tools",
@@ -365,196 +159,123 @@ build: [
               "building-apps/developer-tools/dfxvm/dfxvm-update",
             ],
           },
-          {
-            type: "category",
-            label: "quill",
-            items: [
-              "building-apps/developer-tools/quill/quill-parent",
-              "building-apps/developer-tools/quill/quill-account-balance",
-              {
-                type: "category",
-                label: "quill ckbtc",
-                link: {
-                  type: "doc",
-                  id: "building-apps/developer-tools/quill/ckbtc/quill-ckbtc",
-                },
-                items: [
-                  "building-apps/developer-tools/quill/ckbtc/quill-ckbtc-balance",
-                  "building-apps/developer-tools/quill/ckbtc/quill-ckbtc-retrieve-btc",
-                  "building-apps/developer-tools/quill/ckbtc/quill-ckbtc-retrieve-btc-status",
-                  "building-apps/developer-tools/quill/ckbtc/quill-ckbtc-transfer",
-                  "building-apps/developer-tools/quill/ckbtc/quill-ckbtc-update-balance",
-                  "building-apps/developer-tools/quill/ckbtc/quill-ckbtc-withdrawal-address",
-                ],
-              },
-              "building-apps/developer-tools/quill/quill-claim-neurons",
-              "building-apps/developer-tools/quill/quill-generate",
-              "building-apps/developer-tools/quill/quill-get-neuron-info",
-              "building-apps/developer-tools/quill/quill-get-proposal-info",
-              "building-apps/developer-tools/quill/quill-list-neurons",
-              "building-apps/developer-tools/quill/quill-list-proposals",
-              "building-apps/developer-tools/quill/quill-neuron-manage",
-              "building-apps/developer-tools/quill/quill-neuron-stake",
-              "building-apps/developer-tools/quill/quill-public-ids",
-              "building-apps/developer-tools/quill/quill-qr-code",
-              "building-apps/developer-tools/quill/quill-replace-node-provider-id",
-              "building-apps/developer-tools/quill/quill-scanner-qr-code",
-              "building-apps/developer-tools/quill/quill-send",
-              {
-                type: "category",
-                label: "quill sns",
-                link: {
-                  type: "doc",
-                  id: "building-apps/developer-tools/quill/sns/quill-sns",
-                },
-                items: [
-                  "building-apps/developer-tools/quill/sns/quill-sns-balance",
-                  "building-apps/developer-tools/quill/sns/quill-sns-configure-dissolve-delay",
-                  "building-apps/developer-tools/quill/sns/quill-sns-disburse",
-                  "building-apps/developer-tools/quill/sns/quill-sns-disburse-maturity",
-                  "building-apps/developer-tools/quill/sns/quill-sns-follow-neuron",
-                  "building-apps/developer-tools/quill/sns/quill-sns-get-sale-participation",
-                  "building-apps/developer-tools/quill/sns/quill-sns-get-swap-refund",
-                  "building-apps/developer-tools/quill/sns/quill-sns-list-deployed-snses",
-                  "building-apps/developer-tools/quill/sns/quill-sns-make-proposal",
-                  "building-apps/developer-tools/quill/sns/quill-sns-make-upgrade-canister-proposal",
-                  "building-apps/developer-tools/quill/sns/quill-sns-neuron-permission",
-                  "building-apps/developer-tools/quill/sns/quill-sns-new-sale-ticket",
-                  "building-apps/developer-tools/quill/sns/quill-sns-pay",
-                  "building-apps/developer-tools/quill/sns/quill-sns-register-vote",
-                  "building-apps/developer-tools/quill/sns/quill-sns-split-neuron",
-                  "building-apps/developer-tools/quill/sns/quill-sns-stake-maturity",
-                  "building-apps/developer-tools/quill/sns/quill-sns-stake-neuron",
-                  "building-apps/developer-tools/quill/sns/quill-sns-status",
-                  "building-apps/developer-tools/quill/sns/quill-sns-transfer",
-                ],
-              },
-              "building-apps/developer-tools/quill/quill-transfer",
-              "building-apps/developer-tools/quill/quill-update-node-provider",
-            ],
-          },
-          "building-apps/developer-tools/ic-admin",
-          "building-apps/developer-tools/idl2json",
         ],
       },
+       "building-apps/developer-tools/ide/icp-ninja",
       {
         type: "category",
-        label: "Integrated development environments",
+        label: "Other",
         items: [
-          "building-apps/developer-tools/ide/icp-ninja",
-          "building-apps/developer-tools/ide/vs-code",
-          "building-apps/developer-tools/ide/dev-containers",
-        ],
-      },
-      {
-        type: "category",
-        label: "Packages",
-        items: [
-          "building-apps/developer-tools/canbench",
-          "building-apps/developer-tools/canpack",
           "building-apps/developer-tools/ic-js",
         ],
       },
-    ],
-    },
-    {
-      type: "doc",
-      label: "Create canisters",
-      id: "building-apps/creating-dapps/create-and-install",
+      ],
     },
     {
       type: "category",
-      label: "Deploy & test",
-      items: [
-        "building-apps/creating-dapps/deploy/overview",
-        "building-apps/creating-dapps/deploy/custom-networks",
-        {
-          type: "category",
-          label: "Subnets",
-          items: [
-            "building-apps/creating-dapps/subnets/overview",
-            "building-apps/creating-dapps/subnets/subnet-types"
-          ],
-        },
-         {
-          type: "category",
-          label: "Testing canisters",
-          link: {
-            type: "doc",
-            id: "building-apps/creating-dapps/test/overview",
-          },
-          items: [
-            "building-apps/creating-dapps/test/pocket-ic"
-          ],
-        },
-        "building-apps/creating-dapps/using-third-party-canisters",
-      ],
+      label: "Developing canisters",
+      items:
+      [
+        "building-apps/developing-canisters/what-is-a-canister",
+        "building-apps/developing-canisters/write",
+        "building-apps/developing-canisters/create",
+        "building-apps/developing-canisters/compile",
+        "building-apps/developing-canisters/install",
+        "building-apps/developing-canisters/deploy",
+      ]
     },
     {
       type: "category",
       label: "Interact with canisters",
       items: [
-        "building-apps/calling-dapps/query-calls",
-        "building-apps/calling-dapps/update-calls",
-        "building-apps/calling-dapps/advanced-calls",
         {
           type: "category",
           label: "Candid",
           items: [
-            "building-apps/calling-dapps/candid/candid-concepts",
-            "building-apps/calling-dapps/candid/using-candid",
-            "building-apps/calling-dapps/candid/candid-tools",
+            "building-apps/interact-with-canisters/candid/candid-concepts",
+            "building-apps/interact-with-canisters/candid/using-candid",
+            "building-apps/interact-with-canisters/candid/candid-tools",
           ],
         },
+        "building-apps/interact-with-canisters/query-calls",
+        "building-apps/interact-with-canisters/update-calls",
+        "building-apps/interact-with-canisters/advanced-calls",
         {
           type: "category",
           label: "Agents",
           link: {
             type: "doc",
-            id: "building-apps/calling-dapps/agents/overview",
+            id: "building-apps/interact-with-canisters/agents/overview",
           },
           items: [
-            "building-apps/calling-dapps/agents/javascript-agent",
-            "building-apps/calling-dapps/agents/nodejs",
-            "building-apps/calling-dapps/agents/rust-agent",
+            "building-apps/interact-with-canisters/agents/javascript-agent",
+            "building-apps/interact-with-canisters/agents/rust-agent",
           ],
         },
       ],
     },
     {
       type: "category",
-      label: "Management & settings",
-      items: [
-        "building-apps/managing-dapps/control",
-        "building-apps/managing-dapps/delete",
-        "building-apps/managing-dapps/history",
-        "building-apps/managing-dapps/logs",
-        "building-apps/managing-dapps/recovery",
-        "building-apps/managing-dapps/resource-limits",
-        "building-apps/managing-dapps/snapshots",
-        "building-apps/managing-dapps/state",
-        "building-apps/managing-dapps/settings",
-        "building-apps/managing-dapps/storage",
-        "building-apps/managing-dapps/topping-up",
-        "building-apps/managing-dapps/trapping",
-        "building-apps/managing-dapps/upgrade",
+      label: "Advanced",
+      items:
+      [
+         {
+          type: "category",
+          label: "Testing canisters",
+          link: {
+            type: "doc",
+            id: "building-apps/advanced/test/overview",
+          },
+          items: [
+            "building-apps/advanced/test/pocket-ic"
+          ],
+        },
+        "building-apps/advanced/using-third-party-canisters",
+        "building-apps/advanced/benchmarking",
+        {
+          type: "category",
+          label: "Canister optimization",
+          items: [
+            "building-apps/advanced/optimize/motoko",
+            "building-apps/advanced/optimize/rust",
+          ],
+        },
       ],
     },
     {
       type: "category",
-      label: "Application frontends",
+      label: "Canister management",
       items: [
-        "building-apps/dapp-frontends/using-an-asset-canister",
-        "building-apps/dapp-frontends/uploading-serving-assets",
-        "building-apps/dapp-frontends/existing-frontend",
-        "building-apps/using-network-features/using-http/http-certification/ic-asset-certification-library",
-        "building-apps/dapp-frontends/asset-security",
+        "building-apps/canister-management/control",
+        "building-apps/canister-management/delete",
+        "building-apps/canister-management/history",
+        "building-apps/canister-management/logs",
+        "building-apps/canister-management/recovery",
+        "building-apps/canister-management/resource-limits",
+        "building-apps/canister-management/snapshots",
+        "building-apps/canister-management/state",
+        "building-apps/canister-management/settings",
+        "building-apps/canister-management/storage",
+        "building-apps/canister-management/topping-up",
+        "building-apps/canister-management/trapping",
+        "building-apps/canister-management/upgrade",
+      ],
+    },
+    {
+      type: "category",
+      label: "Frontends",
+      items: [
+        "building-apps/frontends/using-an-asset-canister",
+        "building-apps/frontends/uploading-serving-assets",
+        "building-apps/frontends/existing-frontend",
+        "building-apps/network-features/using-http/http-certification/ic-asset-certification-library",
+        "building-apps/frontends/asset-security",
         {
           type: "category",
           label: "Custom domains",
           items: [
-            "building-apps/dapp-frontends/custom-domains/using-custom-domains",
-            "building-apps/dapp-frontends/custom-domains/dns-setup",
+            "building-apps/frontends/custom-domains/using-custom-domains",
+            "building-apps/frontends/custom-domains/dns-setup",
           ],
         },
       ],
@@ -576,34 +297,34 @@ build: [
           type: "category",
           label: "Using HTTP",
           items: [
-            "building-apps/using-network-features/using-http/http-certification/gateways",
+            "building-apps/network-features/using-http/http-certification/gateways",
             {
               type: "category",
               label: "HTTP certification",
               items: [
                 {
                   type: "doc",
-                  id: "building-apps/using-network-features/using-http/http-certification/ic-asset-certification-library",
+                  id: "building-apps/network-features/using-http/http-certification/ic-asset-certification-library",
                   label: "The asset certification library",
                 },
                 {
                   type: "doc",
-                  id: "building-apps/using-network-features/using-http/http-certification/example-canister-serving-assets",
+                  id: "building-apps/network-features/using-http/http-certification/example-canister-serving-assets",
                   label: "Example canister serving assets",
                 },
                 {
                   type: "doc",
-                  id: "building-apps/using-network-features/using-http/http-certification/custom-http-canisters",
+                  id: "building-apps/network-features/using-http/http-certification/custom-http-canisters",
                   label: "Custom HTTP canisters",
                 },
                 {
                   type: "doc",
-                  id: "building-apps/using-network-features/using-http/http-certification/serving-json-over-http",
+                  id: "building-apps/network-features/using-http/http-certification/serving-json-over-http",
                   label: "Serving JSON over HTTP",
                 },
                 {
                   type: "doc",
-                  id: "building-apps/using-network-features/using-http/http-certification/serving-static-assets-over-http",
+                  id: "building-apps/network-features/using-http/http-certification/serving-static-assets-over-http",
                   label: "Serving static assets over HTTP (custom)",
                 },
               ],
@@ -612,9 +333,9 @@ build: [
               type: "category",
               label: "HTTPS outcalls",
               items: [
-                "building-apps/using-network-features/using-http/https-outcalls/overview",
-                "building-apps/using-network-features/using-http/https-outcalls/get",
-                "building-apps/using-network-features/using-http/https-outcalls/post"
+                "building-apps/network-features/using-http/https-outcalls/overview",
+                "building-apps/network-features/using-http/https-outcalls/get",
+                "building-apps/network-features/using-http/https-outcalls/post"
               ],
             },
           ],
@@ -624,31 +345,31 @@ build: [
           type: "category",
           label: "Threshold signatures",
           items: [
-            "building-apps/using-network-features/signatures/t-ecdsa",
-            "building-apps/using-network-features/signatures/t-schnorr",
-            "building-apps/using-network-features/signatures/independently-verifying-ic-signatures",
+            "building-apps/network-features/signatures/t-ecdsa",
+            "building-apps/network-features/signatures/t-schnorr",
+            "building-apps/network-features/signatures/independently-verifying-ic-signatures",
           ],
         },
         {
           type: "category",
           label: "Verifiable encryption",
           items: [
-            "building-apps/using-network-features/encryption/vetkeys",
-            "building-apps/using-network-features/encryption/using-vetkeys",
+            "building-apps/network-features/encryption/vetkeys",
+            "building-apps/network-features/encryption/using-vetkeys",
           ],
         },
-        "building-apps/using-network-features/randomness",
-        "building-apps/using-network-features/periodic-tasks-timers",
-        "building-apps/using-network-features/time-and-timestamps",
-        "building-apps/using-network-features/simd",
+        "building-apps/network-features/randomness",
+        "building-apps/network-features/periodic-tasks-timers",
+        "building-apps/network-features/time-and-timestamps",
+        "building-apps/network-features/simd",
         {
           type: "category",
           label: "Verifiable credentials",
           items: [
-            "building-apps/using-network-features/verifiable-credentials/overview",
-            "building-apps/using-network-features/verifiable-credentials/how-it-works",
-            "building-apps/using-network-features/verifiable-credentials/issuer",
-            "building-apps/using-network-features/verifiable-credentials/relying-party",
+            "building-apps/network-features/verifiable-credentials/overview",
+            "building-apps/network-features/verifiable-credentials/how-it-works",
+            "building-apps/network-features/verifiable-credentials/issuer",
+            "building-apps/network-features/verifiable-credentials/relying-party",
           ],
         },
       ],
@@ -728,26 +449,138 @@ build: [
     },
     {
       type: "category",
+      label: "Best practices",
+      items: [
+        {
+          type: "doc",
+          label: "General",
+          id: "building-apps/best-practices/general",
+        },
+        {
+          type: "doc",
+          label: "Idempotency",
+          id: "building-apps/best-practices/idempotency",
+        },
+        {
+          type: "doc",
+          label: "Reproducible builds",
+          id: "building-apps/best-practices/reproducible-builds",
+        },
+        {
+          type: "doc",
+          label: "Storage",
+          id: "building-apps/best-practices/storage",
+        },
+        {
+          type: "doc",
+          label: "Troubleshooting",
+          id: "building-apps/best-practices/troubleshooting",
+        },
+        {
+          type: "doc",
+          label: "Trust in canisters",
+          id: "building-apps/best-practices/trust-in-canisters",
+        },
+        {
+          type: "doc",
+          label: "Application architecture considerations",
+          id: "building-apps/best-practices/application-architectures",
+        },
+      {
+        type: "category",
+        label: "Security",
+        items: [
+          {
+            type: "doc",
+            label: "What are security best practices?",
+            id: "building-apps/best-practices/security/overview",
+          },
+          {
+            type: "doc",
+            label: "Inter-canister calls",
+            id: "building-apps/best-practices/security/inter-canister-calls",
+          },
+          {
+            type: "doc",
+            label: "Identity & access management",
+            id: "building-apps/best-practices/security/iam",
+          },
+          {
+            type: "doc",
+            label: "Decentralization",
+            id: "building-apps/best-practices/security/decentralization",
+          },
+          {
+            type: "doc",
+            label: "Data integrity & authenticity",
+            id: "building-apps/best-practices/security/data-integrity-and-authenticity",
+          },
+          {
+            type: "doc",
+            label: "Data storage",
+            id: "building-apps/best-practices/security/data-storage",
+          },
+          {
+            type: "doc",
+            label: "HTTP outcalls",
+            id: "building-apps/best-practices/security/https-outcalls",
+          },
+          {
+            type: "doc",
+            label: "Denial of service",
+            id: "building-apps/best-practices/security/dos",
+          },
+          {
+            type: "doc",
+            label: "Canister upgrades",
+            id: "building-apps/best-practices/security/canister-upgrades",
+          },
+          {
+            type: "doc",
+            label: "Observability & monitoring",
+            id: "building-apps/best-practices/security/observability-and-monitoring",
+          },
+          {
+            type: "doc",
+            label: "Miscellaneous",
+            id: "building-apps/best-practices/security/misc",
+          },
+          {
+            type: "doc",
+            label: "Important resources",
+            id: "building-apps/best-practices/security/resources",
+          },
+        ],
+      },
+      {
+        type: "doc",
+        label: "Formal verification",
+        id: "building-apps/best-practices/security/formal-verification",
+      },
+    ],
+  },
+    {
+      type: "category",
       label: "Governing applications",
       items: [
         {
           label: "What is an SNS?",
           type: "doc",
-          id: "building-apps/governing-dapps/overview",
+          id: "building-apps/governing-apps/overview",
         },
         {
           type: "category",
           label: "Before an SNS launch",
           link: {
             type: "doc",
-            id: "building-apps/governing-dapps/tokenomics/index",
+            id: "building-apps/governing-apps/tokenomics/index",
           },
           items: [
-            "building-apps/governing-dapps/tokenomics/predeployment-considerations",
-            "building-apps/governing-dapps/tokenomics/tokenomics-intro",
-            "building-apps/governing-dapps/tokenomics/rewards",
-            "building-apps/governing-dapps/tokenomics/preparation",
-            "building-apps/governing-dapps/tokenomics/sns-checklist",
+            "building-apps/governing-apps/tokenomics/predeployment-considerations",
+            "building-apps/governing-apps/tokenomics/tokenomics-intro",
+            "building-apps/governing-apps/tokenomics/rewards",
+            "building-apps/governing-apps/tokenomics/preparation",
+            "building-apps/governing-apps/tokenomics/sns-checklist",
           ],
         },
         {
@@ -755,12 +588,12 @@ build: [
           label: "Launching an SNS",
           link: {
             type: "doc",
-            id: "building-apps/governing-dapps/launching/index",
+            id: "building-apps/governing-apps/launching/index",
           },
           items: [
-            "building-apps/governing-dapps/launching/launch-summary-1proposal",
-            "building-apps/governing-dapps/launching/launch-steps-1proposal",
-            "building-apps/governing-dapps/launching/integrating",
+            "building-apps/governing-apps/launching/launch-summary-1proposal",
+            "building-apps/governing-apps/launching/launch-steps-1proposal",
+            "building-apps/governing-apps/launching/integrating",
           ],
         },
         {
@@ -768,11 +601,11 @@ build: [
           label: "Testing an SNS",
           link: {
             type: "doc",
-            id: "building-apps/governing-dapps/testing/testing-before-launch",
+            id: "building-apps/governing-apps/testing/testing-before-launch",
           },
           items: [
-            "building-apps/governing-dapps/testing/testing-locally",
-            "building-apps/governing-dapps/testing/testing-on-mainnet",
+            "building-apps/governing-apps/testing/testing-locally",
+            "building-apps/governing-apps/testing/testing-on-mainnet",
           ],
         },
         {
@@ -780,20 +613,20 @@ build: [
           label: "Managing an SNS",
           link: {
             type: "doc",
-            id: "building-apps/governing-dapps/managing/manage-sns-intro",
+            id: "building-apps/governing-apps/managing/manage-sns-intro",
           },
           items: [
-            "building-apps/governing-dapps/managing/making-proposals",
-            "building-apps/governing-dapps/managing/cycles-usage",
-            "building-apps/governing-dapps/managing/sns-asset-canister",
-            "building-apps/governing-dapps/managing/managing-nervous-system-parameters",
+            "building-apps/governing-apps/managing/making-proposals",
+            "building-apps/governing-apps/managing/cycles-usage",
+            "building-apps/governing-apps/managing/sns-asset-canister",
+            "building-apps/governing-apps/managing/managing-nervous-system-parameters",
           ],
         },
       ],
     },
   ],
 
-rosetta_defi: [
+defi: [
       {
         type: "doc",
         label: "Developing DeFi applications",
@@ -848,7 +681,22 @@ rosetta_defi: [
           ],
         },
       "defi/token-standards/index",
-      "defi/create",
+      {
+        type: "category",
+        label: "Creating tokens",
+        items: [
+          {
+            type: "doc",
+            label: "Fungible tokens",
+            id: "defi/create",
+          },
+          {
+            type: "doc",
+            label: "Non-fungible tokens",
+            id: "defi/nft-collections",
+          },
+        ],
+      },
       {
         type: "category",
         label: "Ledgers",
@@ -871,6 +719,7 @@ rosetta_defi: [
           },
           "defi/token-ledgers/cycles-ledger",
           "defi/token-integrations/index",
+          "defi/account-trimming",
         ],
         },
         "defi/token-indexes/index",
@@ -919,50 +768,61 @@ rosetta_defi: [
             },
           ],
         },
-        {
-          type: "category",
-          label: "Cycles",
-          items: [
-            "defi/cycles/cycles-wallet",
-            "defi/cycles/converting_icp_tokens_into_cycles",
-          ]
-        },
-        "defi/nft-collections",
-        "defi/account-trimming",
         ],
 
 
-specifications: [
+references: [
   {
     type: "category",
     label: "IC specifications",
     items: [
-      "specifications/ic-interface-spec",
-      "specifications/http-gateway-protocol-spec"
+      "references/ic-interface-spec",
+      "references/http-gateway-protocol-spec"
     ],
   },
   {
     type: "category",
     label: "Feature specifications",
     items: [
-      "specifications/asset-canister",
-      "specifications/bitcoin-how-it-works",
-      "specifications/ckbtc-reference",
-      "specifications/candid-ref",
-      "specifications/https-outcalls-how-it-works",
-      "specifications/ii-spec",
-      "specifications/icrc1-standard",
-      "specifications/ledger",
-      "specifications/supported-signatures",
-      "specifications/t-sigs-how-it-works",
-      "specifications/vc-spec",
-      "specifications/vetkeys-overview"
+      "references/asset-canister",
+      "references/bitcoin-how-it-works",
+      "references/ckbtc-reference",
+      "references/candid-ref",
+      "references/https-outcalls-how-it-works",
+      "references/ii-spec",
+      "references/icrc1-standard",
+      "references/ledger",
+      "references/supported-signatures",
+      "references/t-sigs-how-it-works",
+      "references/vc-spec",
+      "references/vetkeys-overview"
     ],
   },
   {
     type: "doc",
     label: "Dashboard API reference",
-    id: "specifications/dashboard-apis"
+    id: "references/dashboard-apis"
+  },
+  {
+    type: "category",
+    label: "System canisters",
+    items: [
+      {
+        type: "doc",
+        label: "List of system canisters",
+        id: "references/system-canisters/index",
+      },
+      {
+        type: "doc",
+        label: "Management canister",
+        id: "references/system-canisters/management-canister",
+      },
+    ],
+  },
+  {
+    type: "doc",
+    label: "Glossary",
+    id: "references/glossary/index",
   },
 ],
 

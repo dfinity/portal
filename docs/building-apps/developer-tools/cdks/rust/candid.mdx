@@ -19,7 +19,7 @@ For developing Rust canisters on ICP, you will need the following tools and pack
 <Tabs>
 <TabItem value="prereq" label="Prerequisites" default>
 
-<input type="checkbox"/> <a href="/docs/current/building-apps/getting-started/install">Install the IC SDK.</a> Note: While using the IC SDK is the typical path for most developers, experienced Rust developers may choose to circumvent IC SDK entirely and use the <a href="https://github.com/dfinity/cdk-rs"> Rust CDK </a> directly.
+<input type="checkbox"/> <a href="/docs/building-apps/getting-started/install">Install the IC SDK.</a> Note: While using the IC SDK is the typical path for most developers, experienced Rust developers may choose to circumvent IC SDK entirely and use the <a href="https://github.com/dfinity/cdk-rs"> Rust CDK </a> directly.
 <div>
 </div>
 <input type="checkbox"/> <a href="https://doc.rust-lang.org/book/ch01-01-installation.html">Download and install Rust.</a>
@@ -136,7 +136,7 @@ When the import macro on the `counter` canister (the `#[import(canister = "count
 
 The Rust CDK then translates the Candid type into the appropriate native Rust type. This translation enables you to call the `inc` method natively, as if it were a Rust function, even if the `counter` canister is implemented in a different language or if you do not have the source code for the imported canister.
 
-For additional information on the type mapping between Candid and Rust, you can consult the [supported types](/docs/current/specifications/candid-ref) reference section.
+For additional information on the type mapping between Candid and Rust, you can consult the [supported types](/docs/references/candid-ref) reference section.
 
 For other canisters and tools to interact with the `hello` canister, you need to manually create a `.did` file with the content:
 

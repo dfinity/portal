@@ -17,13 +17,13 @@ How you interact with the ICP ledger is dependent on whether you want to interac
 
 ## Interacting with the ICP ledger via `dfx ledger`
 
-`dfx` provides a convenience command to interact with the ICP ledger canister and related functionality: [`dfx ledger`](/docs/current/building-apps/developer-tools/dfx/dfx-ledger).
+`dfx` provides a convenience command to interact with the ICP ledger canister and related functionality: [`dfx ledger`](/docs/building-apps/developer-tools/dfx/dfx-ledger).
 
-`dfx` does not come with an ICP ledger instance installed by default. To be able to use this command, you will need to install the [ICP ledger locally](/docs/current/defi/token-ledgers/setup/icp_ledger_setup).
+`dfx` does not come with an ICP ledger instance installed by default. To be able to use this command, you will need to install the [ICP ledger locally](/docs/defi/token-ledgers/setup/icp_ledger_setup).
 
 Currently, `dfx ledger` only exposes a subset of the ICP ledger functionality, namely `balance` and `transfer`.
 
-View the [`dfx ledger`](/docs/current/building-apps/developer-tools/dfx/dfx-ledger) documentation for all available `dfx ledger` commands and flags.
+View the [`dfx ledger`](/docs/building-apps/developer-tools/dfx/dfx-ledger) documentation for all available `dfx ledger` commands and flags.
 
 ## Interacting with the ICP ledger via `dfx canister`
 
@@ -43,19 +43,19 @@ dfx canister call ryjl3-tyaaa-aaaaa-aaaba-cai symbol '()'
 
 You can find all available methods listed within the ICP ledger canister's Candid file or view the [mainnet ICP ledger canister on the dashboard](https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai).
 
-[View a more detailed description of the data types used in these commands](/docs/current/specifications/ledger#_getting_ledger_blocks).
+[View a more detailed description of the data types used in these commands](/docs/references/ledger#_getting_ledger_blocks).
 
 ## Interact with ICP ledger from your web application
 
 In order to simplify working with the ICP ledger from JavaScript applications, you can use the [ledger-icp](https://github.com/dfinity/ic-js/tree/main/packages/ledger-icp) JavaScript library.
 
 :::info
-To interact with the ICRC-1 endpoints of the ICP ledger, learn more about [interacting with an ICRC-1 ledger](/docs/current/defi/token-indexes/).
+To interact with the ICRC-1 endpoints of the ICP ledger, learn more about [interacting with an ICRC-1 ledger](/docs/defi/token-indexes/).
 :::
 
 ## Interacting with ICP from a canister (inter-canister calls via `ic-cdk`)
 
-View the [inter-canister call documentation] (/docs/building-apps/developer-tools/cdks/rust/intercanister) to see how you can call one canister from within another.
+View the [inter-canister call documentation] (/docs/building-apps/developer-tools/cdks/rust/intro-to-rust) to see how you can call one canister from within another.
 
 Here is an example of how to fetch the token name from the ICP ledger using Rust and the `ic-cdk` [library](https://github.com/dfinity/cdk-rs) from within a canister:
 
@@ -76,7 +76,7 @@ You can find all available methods listed within the ICP ledger canister's Candi
 
 ### `icrc-ledger-types` Rust crate
 
-As explained in [token standards](/docs/current/defi/token-standards/), the ICP ledger supports all ICRC-1 endpoints. You will need to define the structures used for these endpoints.
+As explained in [token standards](/docs/defi/token-standards/), the ICP ledger supports all ICRC-1 endpoints. You will need to define the structures used for these endpoints.
 
 To interact with the ICRC-1 and ICRC-2 endpoints, the Rust crate [icrc-ledger-types](https://crates.io/crates/icrc-ledger-types) can be used.
 This is true for the ICP ledger as well as any other canister that supports ICRC-1 or any of the ICRC-1 extension standards (i.e., ICRC-2, ICRC-3,...).
@@ -103,7 +103,7 @@ There are currently two main patterns to achieve this. Furthermore, there is a [
 
 #### Direct notification by sender
 
-In this pattern, the sender notifies the receiver about the payment. However, the receiver needs to verify the payment by using the [`query_blocks` interface](/docs/current/specifications/ledger#_getting_ledger_blocks) of the ledger.
+In this pattern, the sender notifies the receiver about the payment. However, the receiver needs to verify the payment by using the [`query_blocks` interface](/docs/references/ledger#_getting_ledger_blocks) of the ledger.
 
 The following diagram shows a simplified illustration of this pattern:
 

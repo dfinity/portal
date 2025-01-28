@@ -118,7 +118,7 @@ function ReverseGasModelPage(): JSX.Element {
             </p>
             <p className="mb-0">
               <Link
-                href="/docs/current/concepts/gas-cost"
+                href="/docs/building-apps/essentials/gas-cost"
                 className="link-primary link-with-icon"
               >
                 <LinkArrowRight />
@@ -187,7 +187,7 @@ function ReverseGasModelPage(): JSX.Element {
               The Internet Computer protocol allows developers to burn ICP and
               receive cycles. Cycles are priced in{" "}
               <Link
-                href="/docs/current/concepts/glossary#x"
+                href="/docs/concepts/glossary#x"
                 className="link-subtle"
               >
                 XDR
@@ -223,7 +223,7 @@ function ReverseGasModelPage(): JSX.Element {
             </p>
             <p className="text-black tw-lead-sm mb-6">
               Developers can use the command-line interface to{" "}
-              <Link href="/docs/current/building-apps/getting-started/tokens-and-cycles#4-convert-icp-into-cycles" className="link-subtle">
+              <Link href="/docs/building-apps/getting-started/tokens-and-cycles#4-convert-icp-into-cycles" className="link-subtle">
                 convert ICP into cycles
               </Link>
               .
@@ -275,13 +275,13 @@ function ReverseGasModelPage(): JSX.Element {
             <CardWithDescription
               title="Get Cycles"
               description=""
-              href="/docs/current/building-apps/getting-started/tokens-and-cycles#obtaining-cycles"
+              href="/docs/building-apps/getting-started/tokens-and-cycles#obtaining-cycles"
               className="min-h-[180px]"
             ></CardWithDescription>
             <CardWithDescription
               title="Cycles Pricing Docs"
               description=""
-              href="/docs/current/concepts/gas-cost"
+              href="/docs/building-apps/essentials/gas-cost"
               className="min-h-[180px]"
             ></CardWithDescription>
           </div>

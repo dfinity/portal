@@ -3,13 +3,13 @@ on:
   pull_request:
     paths:
       - .github/workflows/interface-spec.yml
-      - docs/specifications/http-gateway-protocol-spec.md
-      - docs/specifications/ic-interface-spec.md
-      - docs/specifications/_attachments/certificates.cddl
-      - docs/specifications/_attachments/http-gateway.did
-      - docs/specifications/_attachments/ic.did
-      - docs/specifications/_attachments/interface-spec-changelog.md
-      - docs/specifications/_attachments/requests.cddl
+      - docs/references/http-gateway-protocol-spec.md
+      - docs/references/ic-interface-spec.md
+      - docs/references/_attachments/certificates.cddl
+      - docs/references/_attachments/http-gateway.did
+      - docs/references/_attachments/ic.did
+      - docs/references/_attachments/interface-spec-changelog.md
+      - docs/references/_attachments/requests.cddl
   push:
     branches:
       - main
@@ -22,8 +22,8 @@ jobs:
       uses: actions/checkout@v2
     - name: Check cddl files
       run: |
-        docker run --rm -v $PWD/docs/specifications/_attachments:/workdir ghcr.io/anweiss/cddl-cli:0.9.1 compile-cddl --cddl /workdir/certificates.cddl
-        docker run --rm -v $PWD/docs/specifications/_attachments:/workdir ghcr.io/anweiss/cddl-cli:0.9.1 compile-cddl --cddl /workdir/requests.cddl
+        docker run --rm -v $PWD/docs/references/_attachments:/workdir ghcr.io/anweiss/cddl-cli:0.9.1 compile-cddl --cddl /workdir/certificates.cddl
+        docker run --rm -v $PWD/docs/references/_attachments:/workdir ghcr.io/anweiss/cddl-cli:0.9.1 compile-cddl --cddl /workdir/requests.cddl
   candid:
     name: Check candid files
     runs-on: ubuntu-latest
@@ -34,8 +34,8 @@ jobs:
       run: |
         curl -L https://github.com/dfinity/candid/releases/download/2023-07-25/didc-linux64 -o didc
         chmod +x didc
-        ./didc check docs/specifications/_attachments/http-gateway.did
-        ./didc check docs/specifications/_attachments/ic.did
+        ./didc check docs/references/_attachments/http-gateway.did
+        ./didc check docs/references/_attachments/ic.did
   interface-spec-tag:
     name: Tag PR with interface-spec
     if: ${{ github.event_name == 'pull_request' }}

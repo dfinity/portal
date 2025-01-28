@@ -11,13 +11,13 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 Custom fungible tokens can be created and deployed on ICP using the [ICRC-1](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1) or [ICRC-2](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-2) token standards. Non-fungible tokens can be created using the [ICRC-7](https://github.com/dfinity/ICRC/tree/main/ICRCs/ICRC-7) and [ICRC-37](https://github.com/dfinity/ICRC/tree/main/ICRCs/ICRC-37) standards.
 
-The ICRC-1 standard is considered the 'base' standard, as it defines a set of general functionalities that all ledgers must adhere to. Any tokens and their corresponding ledgers must fulfill all requirements of the ICRC-1 standard. Read about [token standards](/docs/current/defi/token-standards/) to learn more about what token standards are and the functionalities each one supports.
+The ICRC-1 standard is considered the 'base' standard, as it defines a set of general functionalities that all ledgers must adhere to. Any tokens and their corresponding ledgers must fulfill all requirements of the ICRC-1 standard. Read about [token standards](/docs/defi/token-standards/) to learn more about what token standards are and the functionalities each one supports.
 
 This guide will provide a quickstart on how you can create and deploy your own custom token using the ICRC-1 standard.
 
 ## Set up a local ICRC-1 ledger
 
-To create a new ICRC-1 token, you will need to first download and configure a local project for the ICRC-1 <GlossaryTooltip>ledger</GlossaryTooltip> <GlossaryTooltip>canister</GlossaryTooltip>. This is because each token will need its own ledger canister to record the token's balances and transactions. [Follow the ICRC-1 ledger documentation for instructions](/docs/current/defi/token-ledgers/setup/icrc1_ledger_setup).
+To create a new ICRC-1 token, you will need to first download and configure a local project for the ICRC-1 <GlossaryTooltip>ledger</GlossaryTooltip> <GlossaryTooltip>canister</GlossaryTooltip>. This is because each token will need its own ledger canister to record the token's balances and transactions. [Follow the ICRC-1 ledger documentation for instructions](/docs/defi/token-ledgers/setup/icrc1_ledger_setup).
 
 ## Export token settings
 
@@ -42,7 +42,7 @@ Fee that users of the ledger will have to pay anytime they want to make a transf
 
 #### `ARCHIVE_CONTROLLER`
 
-The [controller <GlossaryTooltip>principal</GlossaryTooltip>](/docs/current/defi/cycles/cycles-wallet#controller-and-custodian-roles) of the archive canisters.
+The [controller <GlossaryTooltip>principal</GlossaryTooltip>](/docs/defi/cycles/cycles-wallet#controller-and-custodian-roles) of the archive canisters.
 
 ```
 dfx identity new archive_controller
@@ -116,7 +116,7 @@ Replace the existing content in the `dfx.json` with the following, updating the 
 }
 ```
 
-Alternatively, you can pass these init arguments to the canister through the command line. [Learn more about canister init arguments](/docs/current/building-apps/developer-tools/advanced-dfx/init-args).
+Alternatively, you can pass these init arguments to the canister through the command line. [Learn more about canister init arguments](/docs/building-apps/developer-tools/advanced-dfx/init-args).
 
 ## Deploy the ledger locally
 
@@ -133,9 +133,9 @@ dfx start --clean --background
 dfx deploy icrc1_ledger_canister --specified-id mxzaz-hqaaa-aaaar-qaada-cai
 ```
 
-For additional details, you can learn more in the [ICRC-1 ledger documentation](/docs/current/defi/token-ledgers/setup/icrc1_ledger_setup).
+For additional details, you can learn more in the [ICRC-1 ledger documentation](/docs/defi/token-ledgers/setup/icrc1_ledger_setup).
 
-Your token has been created locally. To interact with your token, [learn how to interact with the ICRC-1 ledger](/docs/current/defi/token-indexes/).
+Your token has been created locally. To interact with your token, [learn how to interact with the ICRC-1 ledger](/docs/defi/token-indexes/).
 
 ## Deploying your token to the mainnet
 
@@ -182,8 +182,8 @@ The format **should** follow what is specified in the [standard](https://github.
 
 ## Resources
 
-- [ICRC-1 ledger documentation](/docs/current/defi/token-ledgers/setup/icrc1_ledger_setup).
+- [ICRC-1 ledger documentation](/docs/defi/token-ledgers/setup/icrc1_ledger_setup).
 
-- [ICRC-1 indexes](/docs/current/defi/token-indexes/).
+- [ICRC-1 indexes](/docs/defi/token-indexes/).
 
 - [ICRC-1 specification](https://github.com/dfinity/ICRC-1).

@@ -3,7 +3,7 @@
 # ICP developer portal
 
 The ICP developer portal brings together all the resources needed for developers to build on the
-Internet Computer. Primarily, this repo hosts the [ICP Developer Docs](https://internetcomputer.org/docs/current/home) but also includes the [Ecosystem Project Showcase](https://internetcomputer.org/ecosystem), [community tooling page](https://internetcomputer.org/tooling), and the internetcomputer.org ['How it works'](https://internetcomputer.org/how-it-works) series.
+Internet Computer. Primarily, this repo hosts the [ICP Developer Docs](https://internetcomputer.org/docs/home) but also includes the [Ecosystem Project Showcase](https://internetcomputer.org/ecosystem), [community tooling page](https://internetcomputer.org/tooling), and the internetcomputer.org ['How it works'](https://internetcomputer.org/how-it-works) series.
 
 The ICP developer portal uses [Docusaurus](https://docusaurus.io/docs).
 
@@ -158,11 +158,11 @@ A reference page provides low level detail into a feature or technology. API ref
 ### Content
 Link to resources that go into further detail and provide a brief summary of the concepts within the doc. Some places that may include further details may include additional information:
 
-- The [reference technology overview](https://internetcomputer.org/docs/current/specifications/bitcoin-how-it-works) pages
+- The [reference technology overview](https://internetcomputer.org/docs/references/bitcoin-how-it-works) pages
 
 - The [how it works](https://internetcomputer.org/how-it-works) section of the website
 
-- The [core concepts](https://internetcomputer.org/docs/current/concepts/canisters-code) section of the docs
+- The [core concepts](https://internetcomputer.org/docs/concepts/canisters-code) section of the docs
 
 Try to answer the following questions within the document:
 
@@ -374,32 +374,32 @@ The developer docs utilize submodules for several subfolders of documentation. T
 The following submodules and their corresponding repos are currently used:
 
 - SDK
-    - `/docs/current/building-apps/developer-tools/dfx/`
+    - `/docs/building-apps/developer-tools/dfx/`
     - GitHub Repo: https://github.com/dfinity/sdk.git
 
 - Motoko
-    - `/docs/current/motoko/main/base/`
+    - `/docs/motoko/main/base/`
     - GitHub Repo: https://github.com/dfinity/motoko.git
 
 - quill
-    - `/docs/current/building-apps/developer-tools/quill`
+    - `/docs/building-apps/developer-tools/quill`
     - GitHub Repo: https://github.com/dfinity/quill.git
 
 - Internet Identity
-    - `/docs/current/specifications/ii-spec`
+    - `/docs/references/ii-spec`
 	- GitHub Repo: https://github.com/dfinity/internet-identity.git
 
 - Sample projects
-    - `/docs/current/specifications/samples`
+    - `/docs/references/samples`
     - GitHub Repo: https://github.com/dfinity/examples.git
     - Note: This submodule intentionally uses `.md` files instead of `.mdx` files. Therefore, these pages do not support components such as tags and tooltips.
 
 - dfxvm
-    - `/docs/current/building-apps/developer-tools/dfxvm/dfx/`
+    - `/docs/building-apps/developer-tools/dfxvm/dfx/`
     - GitHub Repo: https://github.com/dfinity/dfxvm.git
 
 - Response verification
-    - `/docs/current/building-apps/using-network-features/using-http/http-certification/`
+    - `/docs/building-apps/network-features/using-http/http-certification/`
     - GitHub Repo: https://github.com/dfinity/response-verification
 
 ### Updating submodules
@@ -538,13 +538,13 @@ The `.subpage.md` files will each generate a subpage under `/how-it-works/`, bas
 
 ## Adding documentation for community-created agents and CDKs
 
-The [agents](/docs/current/building-apps/calling-dapps/agents/overview)
-and [CDKs](/docs/current/building-apps/developer-tools/cdks/index) sections should not only contain docs
+The [agents](/docs/building-apps/interact-with-canisters/agents/overview)
+and [CDKs](/docs/building-apps/developer-tools/cdks/index) sections should not only contain docs
 for DFINITY-created agents and CDKs.
 We therefore invite other projects to:
 
 - Link to their own agents or CDKs on the respective index pages (the files to be edited are
-  in `/docs/current/building-apps/calling-dapps/agents/overview` or `/docs/building-apps/developer-tools/cdks/index.md`).
+  in `/docs/building-apps/interact-with-canisters/agents/overview` or `/docs/building-apps/developer-tools/cdks/index.md`).
 
 ## Adding community-created developer tools
 

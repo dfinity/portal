@@ -17,7 +17,7 @@ The IC SDK is a software development kit used to develop applications on your lo
 
 :::danger
 
-If you followed a [quick start](/docs/current/building-apps/getting-started/quickstart/first-smart-contract) guide, you can skip this step.
+If you followed a [quick start](/docs/building-apps/getting-started/first-smart-contract) guide, you can skip this step.
 
 :::
 
@@ -37,7 +37,7 @@ If you followed a [quick start](/docs/current/building-apps/getting-started/quic
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ```
 
-To customize your IC SDK installation, you can use the interactive installation prompt or set [environment variables](/docs/current/building-apps/developer-tools/dfx/dfx-envars) for a terminal session.
+To customize your IC SDK installation, you can use the interactive installation prompt or set [environment variables](/docs/building-apps/developer-tools/dfx/dfx-envars) for a terminal session.
 
 Confirm the IC SDK has been installed (you may need to open a new terminal window):
 
@@ -64,7 +64,7 @@ dfx --version
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ```
 
-To customize your IC SDK installation, you can use the interactive installation prompt or set [environment variables](/docs/current/building-apps/developer-tools/dfx/dfx-envars) for a terminal session.
+To customize your IC SDK installation, you can use the interactive installation prompt or set [environment variables](/docs/building-apps/developer-tools/dfx/dfx-envars) for a terminal session.
 
 Confirm the IC SDK has been installed (you may need to open a new terminal window):
 
@@ -102,7 +102,7 @@ dfx --version
 sh -ci "$(curl -fsSL https://internetcomputer.org/install.sh)"
 ```
 
-To customize your IC SDK installation, you can use the interactive installation prompt or set [environment variables](/docs/current/building-apps/developer-tools/dfx/dfx-envars) for a terminal session.
+To customize your IC SDK installation, you can use the interactive installation prompt or set [environment variables](/docs/building-apps/developer-tools/dfx/dfx-envars) for a terminal session.
 
 Confirm the IC SDK has been installed (you may need to open a new terminal window):
 
@@ -118,16 +118,16 @@ The [IC SDK](https://github.com/dfinity/sdk) is comprised of:
 
 - `dfx`: A CLI tool used to create and manage projects, developer identities, and <GlossaryTooltip>cycles</GlossaryTooltip>.
 
-- [`dfxvm`](/docs/current/building-apps/developer-tools/dev-tools-overview#dfxvm): A version manager for `dfx` used to download a specific version of `dfx`, set a default version, and update to the latest version.
+- [`dfxvm`](/docs/building-apps/developer-tools/dev-tools-overview#dfxvm): A version manager for `dfx` used to download a specific version of `dfx`, set a default version, and update to the latest version.
 
-- `moc`: The [Motoko](/docs/current/motoko/main/getting-started/motoko-introduction) compiler to support Motoko canister development.
+- `moc`: The [Motoko](/docs/motoko/main/getting-started/motoko-introduction) compiler to support Motoko canister development.
 
 - `replica`: A local instance of the software run by each node on the mainnet used to deploy and host your application locally for testing and development.
 
 It also has dependencies on a few additional, important packages that are installed alongside the IC SDK:
 
-- [**Rust CDK**](/docs/current/building-apps/developer-tools/cdks/rust/intro-to-rust): A set of tools for developing Rust canisters.
+- [**Rust CDK**](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust): A set of tools for developing Rust canisters.
 
-- [**Candid**](/docs/current/building-apps/calling-dapps/candid/candid-concepts): An interface description language (IDL) used to interact with a canister's methods. A **method** is a function exposed by the canister that can be called by a user, another canister, or the application's frontend.
+- [**Candid**](/docs/building-apps/interact-with-canisters/candid/candid-concepts): An interface description language (IDL) used to interact with a canister's methods. A **method** is a function exposed by the canister that can be called by a user, another canister, or the application's frontend.
 
 For troubleshooting common `dfx` errors, see [IC SDK troubleshooting](troubleshooting.mdx).

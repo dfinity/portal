@@ -183,7 +183,7 @@ function WhatIsIcpPage() {
                 </Link>
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="/docs/current/concepts/cost-estimations-and-examples"
+                  href="/docs/building-apps/essentials/cost-estimations-and-examples"
                 >
                   <DocsIcon /> Learn more about ICP costs
                 </Link>
@@ -214,7 +214,7 @@ function WhatIsIcpPage() {
                 </Link>
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="/docs/current/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp"
+                  href="/docs/tutorials/hackathon-prep-course/deploying-first-fullstack-dapp"
                 >
                   <DocsIcon /> Deploying your first full-stack dapp
                 </Link>
@@ -236,7 +236,7 @@ function WhatIsIcpPage() {
                   Additionally, the{" "}
                   <Link
                     className="link-white"
-                    href="/docs/current/concepts//system-canisters/index"
+                    href="/docs/concepts//system-canisters/index"
                   >
                     exchange rate canister
                   </Link>{" "}
@@ -258,7 +258,7 @@ function WhatIsIcpPage() {
                 </Link>
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="/docs/current/specifications/t-sigs-how-it-works"
+                  href="/docs/references/t-sigs-how-it-works"
                 >
                   <DocsIcon className="mr-1 ml-1 md:ml-0" /> Learn more about
                   ICP contracts threshold signing
@@ -291,7 +291,7 @@ function WhatIsIcpPage() {
                 <br />
                 <Link
                   className="link-primary link-with-icon !text-white  hover:text-white hover:opacity-80 duration-200 ease-in-out"
-                  href="/docs/current/home"
+                  href="/docs/home"
                 >
                   <DocsIcon /> Developer documentation
                 </Link>
@@ -571,7 +571,7 @@ function WhatIsIcpPage() {
             <CardWithDescription
               title="Developer docs"
               description=""
-              href="/docs/current/home"
+              href="/docs/home"
             />
             <CardWithDescription
               title="ICP dapps"

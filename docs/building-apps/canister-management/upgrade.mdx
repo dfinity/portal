@@ -1,0 +1,33 @@
+---
+keywords: [beginner, tutorial, maintain canisters, upgrade, canister upgrade]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# Upgrading a canister
+
+<MarkdownChipRow labels={["Beginner", "Management"]} />
+
+Unlike a <GlossaryTooltip>canister</GlossaryTooltip> reinstall that preserves the canister identifier but no state, a canister upgrade enables you to preserve the state of a deployed canister and change the code.
+
+For example, assume you have a dapp that manages professional profiles and social connections. If you want to add a new feature to the dapp, you need to be able to update the canister code without losing any of the previously-stored data. A canister upgrade enables you to update existing canister identifiers with program changes without losing the program state.
+
+:::tip
+To preserve state when you are upgrading a canister written in Motoko, be sure to use the `stable` keyword to identify the variables you want to preserve. For more information about preserving variable state in Motoko, see [stable variables and upgrade methods](/docs/motoko/main/canister-maintenance/upgrades).
+:::
+
+To upgrade a canister, first you must:
+
+1. Edit the canister's code and save the changes.
+
+2. Use [`dfx build <canister-name>`](/docs/building-apps/developer-tools/dfx/dfx-build) to compile the code into a new Wasm module.
+
+3. Use [`dfx canister install <canister-name> --mode upgrade`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-install) to install the new Wasm module.
+
+## Errors related to canister upgrades
+
+Common errors related to canister upgrades include:
+
+- [Missing upgrade option](/docs/references/execution-errors#missing-upgrade-option).
+- [Invalid upgrade option](/docs/references/execution-errors#invalid-upgrade-option).

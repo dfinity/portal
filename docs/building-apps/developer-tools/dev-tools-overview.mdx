@@ -14,35 +14,35 @@ Developer tools are used to create, manage, and interact with canisters. They ca
 
 ### `dfx`
 
-[`dfx`](/docs/current/building-apps/developer-tools/dfx/) is the primary tool used by developers to create, build, deploy, manage, and call canisters. `dfx` is also referred to as the IC SDK, or the Internet Computer Software Development Kit.
+[`dfx`](/docs/building-apps/developer-tools/dfx/) is the primary tool used by developers to create, build, deploy, manage, and call canisters. `dfx` is also referred to as the IC SDK, or the Internet Computer Software Development Kit.
 
-`dfx` supports [local development](/docs/current/building-apps/getting-started/deploy-and-manage) and deployment through the [`dfx start`](/docs/current/building-apps/developer-tools/dfx/) command, which runs a local instance of the ICP replica that can be used to deploy and test canisters on your local machine.
+`dfx` supports [local development](/docs/building-apps/developing-canisters/deploy) and deployment through the [`dfx start`](/docs/building-apps/developer-tools/dfx/) command, which runs a local instance of the ICP replica that can be used to deploy and test canisters on your local machine.
 
 To deploy canisters to the mainnet or make calls to canisters already deployed on the mainnet, the `--network ic` flag can be used with most `dfx` commands.
 
-- [Install `dfx`](/docs/current/building-apps/getting-started/install).
+- [Install `dfx`](/docs/building-apps/getting-started/install).
 
-- [`dfx` documentation](/docs/current/building-apps/developer-tools/dfx/).
+- [`dfx` documentation](/docs/building-apps/developer-tools/dfx/).
 
 - [IC SDK GitHub repo](https://github.com/dfinity/sdk).
 
 ### `dfxvm`
 
-[`dfxvm`](/docs/current/building-apps/developer-tools/dfxvm/dfxvm-default) is a CLI tool used for installing and switching between different versions of `dfx`. It enables developers to pivot between different projects that are built with different `dfx` versions.
+[`dfxvm`](/docs/building-apps/developer-tools/dfxvm/dfxvm-default) is a CLI tool used for installing and switching between different versions of `dfx`. It enables developers to pivot between different projects that are built with different `dfx` versions.
 
-- [Install `dfxvm`](/docs/current/building-apps/getting-started/install#installing-dfx).
+- [Install `dfxvm`](/docs/building-apps/getting-started/install#installing-dfx).
 
-- [`dfxvm` documentation](/docs/current/building-apps/developer-tools/dfxvm/dfxvm-default).
+- [`dfxvm` documentation](/docs/building-apps/developer-tools/dfxvm/dfxvm-default).
 
 - [`dfxvm` GitHub repo](https://github.com/dfinity/dfxvm).
 
 ### `quill`
 
-[`quill`](/docs/current/building-apps/developer-tools/quill/) command-line ledger and governance toolkit designed for interacting with the [Network Nervous System (NNS)](/docs/current/move-to-learnhub/nns/overview) canisters through the use of self-custody keys. It supports using keys in an air-gapped computer, which is a computer that has never been connected to the internet. To support this workflow, `quill` first generates and signs messages based on the user input, then the signed messages are transported to a computer with an internet connection (via a USB flash drive or QR code) where they are submitted to ICP to be executed.
+[`quill`](/docs/building-apps/developer-tools/quill/) command-line ledger and governance toolkit designed for interacting with the [Network Nervous System (NNS)](/docs/move-to-learnhub/nns/overview) canisters through the use of self-custody keys. It supports using keys in an air-gapped computer, which is a computer that has never been connected to the internet. To support this workflow, `quill` first generates and signs messages based on the user input, then the signed messages are transported to a computer with an internet connection (via a USB flash drive or QR code) where they are submitted to ICP to be executed.
 
 - [Install `quill`](https://github.com/dfinity/quill?tab=readme-ov-file#download--install).
 
-- [`quill` documentation](/docs/current/building-apps/developer-tools/quill/).
+- [`quill` documentation](/docs/building-apps/developer-tools/quill/).
 
 - [`quill` GitHub repo](https://github.com/dfinity/quill).
 
@@ -52,11 +52,11 @@ An **agent** refers to an off-chain library that is used to make calls to the pu
 
 The following agents are currently developed and maintained by DFINITY:
 
-- [JavaScript/TypeScript agent (@dfinity/agent)](/docs/current/building-apps/calling-dapps/agents/javascript-agent)
+- [JavaScript/TypeScript agent (@dfinity/agent)](/docs/building-apps/interact-with-canisters/agents/javascript-agent)
 
-- [Node.js, supported through the JavaScript agent](/docs/current/building-apps/calling-dapps/agents/nodejs)
+- [Node.js, supported through the JavaScript agent](/docs/building-apps/interact-with-canisters/agents/nodejs)
 
-- [Rust agent (ic-agent)](/docs/current/building-apps/calling-dapps/agents/rust-agent)
+- [Rust agent (ic-agent)](/docs/building-apps/interact-with-canisters/agents/rust-agent)
 
 Additionally, there are several community-developed and -maintained agents:
 
@@ -80,11 +80,11 @@ Additionally, there are several community-developed and -maintained agents:
 
 ## Canpack
 
-- [Canpack](/docs/current/building-apps/developer-tools/canpack): A tool used to facilitate communication between canisters written in different languages; currently supports calling Rust crates from Motoko canisters.
+- [Canpack](/docs/building-apps/developer-tools/canpack): A tool used to facilitate communication between canisters written in different languages; currently supports calling Rust crates from Motoko canisters.
 
 ## Canbench
 
-- [Canbench](/docs/current/building-apps/developer-tools/canbench): A Rust crate that provides canister benchmarking tooling so developers can gain an insight into how their canister uses memory, instructions, and other resources.
+- [Canbench](/docs/building-apps/developer-tools/canbench): A Rust crate that provides canister benchmarking tooling so developers can gain an insight into how their canister uses memory, instructions, and other resources.
 
 ## `ic-alloy`
 
@@ -94,7 +94,7 @@ The [`ic-alloy`](https://github.com/ic-alloy) Rust crate can be used to interact
 
 A canister development kit (CDK) is an adapter used by `dfx` to provide programming languages with the necessary features and functionality to create, deploy, and manage canisters.
 
-The [Rust CDK](/docs/current/building-apps/developer-tools/cdks/rust/intro-to-rust) is developed and maintained by DFINITY for Rust development.
+The [Rust CDK](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust) is developed and maintained by DFINITY for Rust development.
 
 There are several community-contributed and maintained CDKs for languages such as:
 
@@ -118,13 +118,13 @@ ICP Ninja is a web-based IDE designed specifically for building and deploying IC
 
 - [ICP Ninja homepage](https://icp.ninja/).
 
-- [ICP Ninja documentation](/docs/current/building-apps/developer-tools/ide/icp-ninja).
+- [ICP Ninja documentation](/docs/building-apps/developer-tools/ide/icp-ninja).
 
 ### Developer containers
 
 Developer containers are a local development workflow using Docker and VS Code. They are a great local development option for developers on Windows systems since `dfx` is not natively supported on Windows.
 
-- [Developer container documentation](/docs/current/building-apps/developer-tools/ide/dev-containers).
+- [Developer container documentation](/docs/building-apps/developer-tools/ide/dev-containers).
 
 ### Visual Studio Code
 
@@ -132,7 +132,7 @@ Visual Studio Code (VS Code) is a popular IDE used for writing code in hundreds 
 
 The Motoko extension is also available to [VSCodium](https://vscodium.com/) users, who can download it from [OpenVSX](https://open-vsx.org/extension/dfinity-foundation/vscode-motoko).
 
-- [VS Code documentation](/docs/current/building-apps/developer-tools/ide/vs-code).
+- [VS Code documentation](/docs/building-apps/developer-tools/ide/vs-code).
 
 - [Motoko VS Code extension](https://github.com/dfinity/vscode-motoko).
 

@@ -19,7 +19,7 @@ A common problem in both distributed and decentralized systems is keeping separa
 <Tabs>
 <TabItem value="prereq" label="Prerequisites" default>
 
-<input type="checkbox"/> <a href="/docs/current/building-apps/getting-started/install">Install the IC SDK.</a> Note: While using the IC SDK is the typical path for most developers, experienced Rust developers may choose to circumvent IC SDK entirely and use the <a href="https://github.com/dfinity/cdk-rs"> Rust CDK </a> directly.
+<input type="checkbox"/> <a href="/docs/building-apps/getting-started/install">Install the IC SDK.</a> Note: While using the IC SDK is the typical path for most developers, experienced Rust developers may choose to circumvent IC SDK entirely and use the <a href="https://github.com/dfinity/cdk-rs"> Rust CDK </a> directly.
 <div>
 </div>
 <input type="checkbox"/> <a href="https://doc.rust-lang.org/book/ch01-01-installation.html">Download and install Rust.</a>
@@ -44,12 +44,12 @@ The **subscriber** canister contains a record of topics. The **publisher** canis
 
 Let's take a look at the `src/lib.rs` file for each of these canisters.
 
-```rust file=../../../../specifications/samples/rust/pub-sub/src/publisher/src/lib.rs
+```rust file=../../../../references/samples/rust/pub-sub/src/publisher/src/lib.rs
 ```
 
 In this code, you can see two inter-canister update calls: `fn subscribe(subscriber: Subscriber)` and `async fn publish(counter: Counter)`. The first method allows the subscriber canister to make a call to the publisher canister and subscribe to topics. The second method allows the publisher canister to publish information on a topic in the subscriber canister.
 
-```rust file=../../../../specifications/samples/rust/pub-sub/src/subscriber/src/lib.rs
+```rust file=../../../../references/samples/rust/pub-sub/src/subscriber/src/lib.rs
 ```
 
 In this code, there are three main methods: two inter-canister update methods and a query method.

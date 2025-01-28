@@ -4,7 +4,7 @@ export const dfinityToolingItems = [
     tags: ["CLI", "development", "operations"],
     description:
       "Create, deploy, and manage your dapps for the Internet Computer platform.",
-    links: { docs: "/docs/current/building-apps/developer-tools/dfx/" },
+    links: { docs: "/docs/building-apps/developer-tools/dfx/" },
   },
   {
     title: "Motoko VS Code",

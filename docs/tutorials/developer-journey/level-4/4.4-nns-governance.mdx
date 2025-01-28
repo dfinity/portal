@@ -46,7 +46,7 @@ Anyone holding ICP can create a neuron and is encouraged to do so through reward
 
 Neurons can also be used to submit new proposals to the NNS. To prevent neurons from spamming proposals, a fee is charged to the neuron if their submitted proposal is rejected.
 
-[Learn more about neurons and their attributes](/docs/current/move-to-learnhub/nns/overview#neurons).
+[Learn more about neurons and their attributes](/docs/move-to-learnhub/nns/overview#neurons).
 
 ### Proposals
 
@@ -66,7 +66,7 @@ Each NNS proposal contains the following fields:
 
 - Unique identity: A unique identity value the NNS assigns to each proposal it receives.
 
-[View detailed information about different proposal types and topics](/docs/current/move-to-learnhub/nns/overview#topics).
+[View detailed information about different proposal types and topics](/docs/move-to-learnhub/nns/overview#topics).
 
 ## Why is the NNS important to developers?
 
@@ -92,7 +92,7 @@ You can learn more about SNSes in the following resources:
 
 * [SNS overview page](https://internetcomputer.org/sns).
 
-* [Service Nervous System (SNS) developer docs](https://internetcomputer.org/docs/current/building-apps/governing-dapps/).
+* [Service Nervous System (SNS) developer docs](https://internetcomputer.org/docs/building-apps/governing-apps/).
 
 * [SNS FAQ](https://internetcomputer.org/sns/faq).
 
@@ -106,15 +106,15 @@ An SNS is comprised of the following canisters:
 
 - SNS governance canister.
 
-- SNS [ledger](/docs/current/building-apps/governing-dapps/launching/integrating) and archive canisters.
+- SNS [ledger](/docs/building-apps/governing-apps/launching/integrating) and archive canisters.
 
-- SNS [index](/docs/current/building-apps/governing-dapps/launching/integrating) canister.
+- SNS [index](/docs/building-apps/governing-apps/launching/integrating) canister.
 
 - SNS root canister.
 
 - SNS decentralization swap canister.
 
-[Learn more about SNS architecture](/docs/current/building-apps/governing-dapps/overview).
+[Learn more about SNS architecture](/docs/building-apps/governing-apps/overview).
 
 ### SNS decentralization swaps
 
@@ -128,42 +128,42 @@ The SNS places the collected ICP into an SNS-controlled treasury. After a succes
 
 You can learn more about SNS tokenomics and rewards in the following resources:
 
-* [SNS tokenomics](/docs/current/building-apps/governing-dapps/tokenomics/tokenomics-intro).
+* [SNS tokenomics](/docs/building-apps/governing-apps/tokenomics/tokenomics-intro).
 
-* [SNS rewards](/docs/current/building-apps/governing-dapps/tokenomics/rewards).
+* [SNS rewards](/docs/building-apps/governing-apps/tokenomics/rewards).
 
 ## SNS resources
 
 To learn more about creating, launching, and managing an SNS, refer to the following resources:
 
-* [SNS launch](/docs/current/building-apps/governing-dapps/launching/launch-summary-1proposal).
+* [SNS launch](/docs/building-apps/governing-apps/launching/launch-summary-1proposal).
 
-* [An introduction to SNS preparation](/docs/current/building-apps/governing-dapps/tokenomics/).
+* [An introduction to SNS preparation](/docs/building-apps/governing-apps/tokenomics/).
 
-* [The SNS launch checklist](/docs/current/building-apps/governing-dapps/tokenomics/sns-checklist).
+* [The SNS launch checklist](/docs/building-apps/governing-apps/tokenomics/sns-checklist).
 
-* [Pre-deployment considerations](/docs/current/building-apps/governing-dapps/tokenomics/predeployment-considerations).
+* [Pre-deployment considerations](/docs/building-apps/governing-apps/tokenomics/predeployment-considerations).
 
-* [SNS parameters](/docs/current/building-apps/governing-dapps/tokenomics/preparation).
+* [SNS parameters](/docs/building-apps/governing-apps/tokenomics/preparation).
 
-* [Guidelines on how to test an SNS locally](/docs/current/building-apps/governing-dapps/testing/testing-locally).
+* [Guidelines on how to test an SNS locally](/docs/building-apps/governing-apps/testing/testing-locally).
 
-* [Guidelines on how to test the operation of the dapp under SNS control](/docs/current/building-apps/governing-dapps/testing/testing-on-mainnet).
+* [Guidelines on how to test the operation of the dapp under SNS control](/docs/building-apps/governing-apps/testing/testing-on-mainnet).
 
-* [Stages included in an SNS launch](/docs/current/building-apps/governing-dapps/launching/launch-summary-1proposal).
+* [Stages included in an SNS launch](/docs/building-apps/governing-apps/launching/launch-summary-1proposal).
 
-* [SNS proposals](/docs/current/building-apps/governing-dapps/managing/making-proposals).
+* [SNS proposals](/docs/building-apps/governing-apps/managing/making-proposals).
 
-* [Tips regarding cycles management for the canisters](/docs/current/building-apps/governing-dapps/managing/cycles-usage).
+* [Tips regarding cycles management for the canisters](/docs/building-apps/governing-apps/managing/cycles-usage).
 
-* [An introduction to how to use the asset canister with an SNS-controlled dapp](/docs/current/building-apps/governing-dapps/managing/sns-asset-canister).
+* [An introduction to how to use the asset canister with an SNS-controlled dapp](/docs/building-apps/governing-apps/managing/sns-asset-canister).
 
 
 ## Using the NNS dapp
 
 To use the NNS dapp, first navigate to the dapp's URL at https://nns.ic0.app/.
 
-You will be prompted to log in with your Internet Identity. If you need to create one, check out the previous module [3.5 Identities and authentication](/docs/current/tutorials/developer-journey/level-3/3.5-identities-and-auth).
+You will be prompted to log in with your Internet Identity. If you need to create one, check out the previous module [3.5 Identities and authentication](/docs/tutorials/developer-journey/level-3/3.5-identities-and-auth).
 
 ![NNS login](../_attachments/nns0.png)
 
@@ -208,7 +208,7 @@ dfx ledger --network ic transfer 365cf45f3521653e866a078b157a8d8701c3f63183a6d41
 ```
 
 :::info
-`MEMO` refers to a 64-bit numeric value as defined in the [IC specification](/docs/current/specifications/ledger#_transferring_tokens). It is used to generate unique hash values for transactions.
+`MEMO` refers to a 64-bit numeric value as defined in the [IC specification](/docs/references/ledger#_transferring_tokens). It is used to generate unique hash values for transactions.
 :::
 
 ### Staking ICP in a neuron
@@ -261,7 +261,7 @@ From the neuron's detailed menu, you can execute actions such as increasing the 
 
 ![NNS dapp 13](../_attachments/nns13.png)
 
-If you scroll further, you can see advanced details and settings, such as when the neuron was created, its neuron account ID, and options to participate in the neurons' fund or split the neuron. [Learn more about these advanced options](/docs/current/move-to-learnhub/nns/using-the-nns-dapp/nns-app-quickstart).
+If you scroll further, you can see advanced details and settings, such as when the neuron was created, its neuron account ID, and options to participate in the neurons' fund or split the neuron. [Learn more about these advanced options](/docs/move-to-learnhub/nns/using-the-nns-dapp/nns-app-quickstart).
 
 ![NNS dapp 14](../_attachments/nns14.png)
 
@@ -279,7 +279,7 @@ If you click on one, however, you'll notice that you cannot vote on it. That's b
 
 ![NNS dapp 17](../_attachments/nns17.png)
 
-For additional information on the NNS dapp, proposals, and neuron staking, check out the [NNS quick start guide](/docs/current/move-to-learnhub/nns/using-the-nns-dapp/nns-app-quickstart) and the [NNS explained series](https://youtu.be/1uX-fRgvXjU?feature=shared).
+For additional information on the NNS dapp, proposals, and neuron staking, check out the [NNS quick start guide](/docs/move-to-learnhub/nns/using-the-nns-dapp/nns-app-quickstart) and the [NNS explained series](https://youtu.be/1uX-fRgvXjU?feature=shared).
 
 ## Need help?
 
@@ -309,4 +309,4 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 Next, you'll dive into how to use the tool quill:
 
-- [4.5 Using quill](/docs/current/tutorials/developer-journey/level-4/4.5-using-quill).
+- [4.5 Using quill](/docs/tutorials/developer-journey/level-4/4.5-using-quill).

@@ -61,7 +61,7 @@ Hotkeys cannot perform other neuron operations, such as increase dissolve delay,
 
 A neuron can have multiple hotkeys, at most 15. One common workflow using hotkeys is to set a hardware wallet as the controller of the neuron, then vote or view neuron information through a software wallet set as a hotkey.
 
-Hotkeys can be added or removed from a neuron using the [NNS dapp](https://nns.ic0.app/) or the [`quill neuron-manage`](/docs/current/building-apps/developer-tools/quill/quill-neuron-manage) command.
+Hotkeys can be added or removed from a neuron using the [NNS dapp](https://nns.ic0.app/) or the [`quill neuron-manage`](/docs/building-apps/developer-tools/quill/quill-neuron-manage) command.
 
 If your principal is added as a hotkey to a neuron, the neuron and its information will be visible in the [NNS dapp](https://nns.ic0.app/) when you login.
 
@@ -95,11 +95,11 @@ There are different things that a neuron holder can do with maturity:
 * Maturity can be staked into **staked maturity** into the neuron. Staked maturity is viewed as part of the neuron's stake and contributes to the neuron's voting power. But, similarly to the neuron's stake, it is also locked until the neuron is dissolved. When a neuron dissolves, its staked maturity is converted back to normal un-staked maturity.
 * Maturity can be **auto-staked**. In order to not have to regularly perform the previous action, a neuron can also choose to auto-stake its maturity. This means that all new maturity will automatically be added to the staked maturity.
 
-For more details on voting rewards and spawn maturity, refer to [voting rewards](/docs/current/move-to-learnhub/nns/concepts/neurons/staking-voting-rewards).
+For more details on voting rewards and spawn maturity, refer to [voting rewards](/docs/move-to-learnhub/nns/concepts/neurons/staking-voting-rewards).
 
 ### Neuron visibility
 A neuron can be **public** or **private**.
 If a neuron is private, only its controller and the hotkeys can read the full neuron. Other parties cannot access all the information about the neuron.
 In particular, they cannot access the neuron's ballot. If a neuron is public, anyone can read the full neuron.
-All [known neurons](/docs/current/move-to-learnhub/nns/concepts/neurons/becoming-a-known-neuron) are public.
+All [known neurons](/docs/move-to-learnhub/nns/concepts/neurons/becoming-a-known-neuron) are public.
 
