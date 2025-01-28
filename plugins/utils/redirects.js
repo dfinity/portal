@@ -197,7 +197,7 @@ const redirects = `
   /docs/developers-guide/customize-projects /docs/building-apps/developing-canisters/what-is-a-canister
   /docs/developers-guide/default-wallet /docs/building-apps/canister-management/topping-up
   /docs/developers-guide/design-apps /docs/building-apps/essentials/canisters
-  /docs/developers-guide/glossary /docs/references/glossary/
+  /docs/developers-guide/glossary /docs/references/glossary
   /docs/developers-guide/install-upgrade-remove /docs/building-apps/getting-started/install
   /docs/developers-guide/lang-service-ide /docs/building-apps/developer-tools/ide/icp-ninja
   /docs/developers-guide/reinstalling-dfx /docs/building-apps/getting-started/install
@@ -663,7 +663,7 @@ const redirects = `
   /docs/concepts/governance /docs/move-to-learnhub/nns/overview
   /docs/concepts/nodes-subnets /docs/building-apps/developing-canisters/create
   /docs/concepts/subnet-types /docs/building-apps/developing-canisters/create
-  /docs/concepts/glossary /docs/references/glossary/
+  /docs/concepts/glossary /docs/references/glossary
   /docs/current/developer-docs/multi-chain/faq/user-faq /docs/building-apps/chain-fusion/overview
   /docs/current/developer-docs/multi-chain/faq/ckbtc-faq /docs/defi/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/multi-chain/faq/cketh-faq /docs/defi/chain-key-tokens/cketh/overview
@@ -738,8 +738,6 @@ const redirects = `
   /docs/current/developer-docs/security/security-best-practices/observability-and-monitoring /docs/building-apps/best-practices/security/observability-and-monitoring
   /docs/current/developer-docs/security/security-best-practices/misc /docs/building-apps/best-practices/security/misc
   /docs/current/developer-docs/security/security-best-practices/resources /docs/building-apps/best-practices/security/resources
-
-  /docs/references/glossary /docs/references/glossary/
 
   /docs/current/developer-docs/getting-started/explore-examples /docs/building-apps/developer-tools/ide/icp-ninja
   /docs/current/developer-docs/getting-started/install /docs/building-apps/getting-started/install
