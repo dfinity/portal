@@ -11,6 +11,52 @@ const redirects = `
   /docs/current/developer-docs/backend/solidity/ https://docs.bitfinity.network/
   /docs/current/developer-docs/backend/python/ https://demergent-labs.github.io/kybra/
   /docs/current/developer-docs/backend/typescript/ https://demergent-labs.github.io/azle/
+   /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/index https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-parent https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-account-balance https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-ckbtc /https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-balance https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-retrieve-btc https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-retrieve-btc-status https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-transfer https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-update-balance https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-withdrawal-address /https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-claim-neurons https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-generate https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-get-neuron-info https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-get-proposal-info https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-list-neurons https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-list-proposals https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-neuron-manage https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-neuron-stake https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-public-ids https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-qr-code https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-replace-node-provider-id https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-scanner-qr-code https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-send https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-balance https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-configure-dissolve-delay https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-disburse https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-disburse-maturity https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-follow-neuron https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-get-sale-participation https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-get-swap-refund https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-list-deployed-sns https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-make-proposal https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-make-upgrade-canister-proposal https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-neuron-permission https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-new-sale-ticket https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-pay https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-register-vote https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-split-neuron https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-stake-maturity https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-stake-neuron https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-status https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-transfer https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-transfer https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-update-node-provider https://github.com/dfinity/quill/tree/master/docs/cli-reference
+
 
   # .html file internal redirects (/../from.html -> to)
   /docs/developers-guide/working-with-canisters.html /docs/building-apps/canister-management/settings
@@ -29,13 +75,13 @@ const redirects = `
   /videos /news
   /icp-newsletter /news
   /ois /sns
-  /docs/current/developer-docs/getting-started/overview-of-icp /docs/concepts/network-overview
+  /docs/current/developer-docs/getting-started/overview-of-icp /docs/building-apps/essentials/network-overview
   /docs/videos-tutorials /docs/home
   /docs /docs/home
   /docs/ /docs/home
   /docs/current/* /docs/
   /docs/concepts/bitcoin-integration /bitcoin-integration
-  /docs/current/developer-docs/ic-overview /docs/concepts/network-overview
+  /docs/current/developer-docs/ic-overview /docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/production/computation-and-storage-costs /docs/building-apps/essentials/gas-cost
   /docs/current/developer-docs/deploy/computation-and-storage-costs /docs/building-apps/essentials/gas-cost
   /docs/ic-overview  /docs/home
@@ -54,7 +100,7 @@ const redirects = `
   /docs/samples/codelabs/static-website /samples
   /docs/samples/* /samples
   /docs/security-best-practices/introduction /docs/building-apps/best-practices/security/overview
-  /docs/current/developer-docs/setup/default-wallet /docs/defi/cycles/cycles-wallet
+  /docs/current/developer-docs/setup/default-wallet /docs/building-apps/canister-management/topping-up
   /docs/tokenomics/sns/tokenomics /docs/building-apps/governing-apps/tokenomics/
   /docs/current/developer-docs/integrations/http_requests/http_requests-how-it-works /docs/references/https-outcalls-how-it-works
   /docs/building-apps/governing-apps/tokenomics/sns-intro-tokens /docs/building-apps/governing-apps/tokenomics/
@@ -89,7 +135,7 @@ const redirects = `
   /docs/current/developer-docs/build/frontend/webpack-config /docs/building-apps/frontends/using-an-asset-canister#modifying-the-webpack-configuration
   /docs/current/developer-docs/build/install-upgrade-remove /docs/building-apps/getting-started/install
   /docs/current/developer-docs/build/languages/rust/* /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
-  /docs/current/developer-docs/build/project-setup/cycles-wallet /docs/defi/cycles/cycles-wallet
+  /docs/current/developer-docs/build/project-setup/cycles-wallet /docs/building-apps/canister-management/topping-up
   /docs/current/developer-docs/build/project-setup/manage-canisters /docs/building-apps/canister-management/settings
   /docs/current/developer-docs/build/project-setup/design-dapps /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/build/troubleshooting /docs/building-apps/getting-started/troubleshooting
@@ -105,13 +151,13 @@ const redirects = `
   /docs/developers-guide/about-this-guide /docs/motoko/main/getting-started/motoko-introduction
   /docs/developers-guide/basic-syntax-rules /docs/motoko/main/reference/language-manual
   /docs/developers-guide/concepts/bitcoin-integration /bitcoin-integration
-  /docs/developers-guide/concepts/concepts-intro /docs/concepts/network-overview
+  /docs/developers-guide/concepts/concepts-intro /docs/building-apps/essentials/network-overview
   /docs/developers-guide/customize-projects /docs/building-apps/developing-canisters/what-is-a-canister
-  /docs/developers-guide/default-wallet /docs/defi/cycles/cycles-wallet
+  /docs/developers-guide/default-wallet /docs/building-apps/canister-management/topping-up
   /docs/developers-guide/design-apps /docs/building-apps/essentials/canisters
   /docs/developers-guide/glossary /docs/references/glossary/
   /docs/developers-guide/install-upgrade-remove /docs/building-apps/getting-started/install
-  /docs/developers-guide/lang-service-ide /docs/building-apps/developer-tools/ide/vs-code
+  /docs/developers-guide/lang-service-ide /docs/building-apps/developer-tools/ide/icp-ninja
   /docs/developers-guide/reinstalling-dfx /docs/building-apps/getting-started/install
   /docs/developers-guide/sample-apps /samples
   /docs/developers-guide/sdk-guide /docs/building-apps/getting-started/install
@@ -153,7 +199,7 @@ const redirects = `
   /docs/tokenomics/nns/community-fund /docs/move-to-learnhub/nns/concepts/neurons-fund
   /docs/tokenomics/sns/* /docs/building-apps/governing-apps/tokenomics/:splat
   /docs/developers-guide/cli-reference/* /docs/building-apps/developer-tools/dfx/:splat
-  /docs/developers-guide/concepts/* /docs/concepts/network-overview
+  /docs/developers-guide/concepts/* /docs/building-apps/essentials/network-overview
   /docs/developers-guide/tutorials/* /docs/motoko/main/getting-started/motoko-introduction
   /docs/ic-identity-guide/* /docs/tokenomics/identity-auth/:splat
   /docs/language-guide/* /docs/motoko/main/:splat
@@ -185,11 +231,11 @@ const redirects = `
   /docs/developers-guide/tutorials-intro.html /docs/tutorials/developer-journey/
   /docs.html /docs/building-apps/getting-started/install
   /apis/site/proxy /docs/references/http-gateway-protocol-spec
-  /docs/developers-guide/concepts/what-is-ic /docs/concepts/network-overview
+  /docs/developers-guide/concepts/what-is-ic /docs/building-apps/essentials/network-overview
   /language-guide/index /docs/tutorials/developer-journey/level-0/intro-languages
   /docs/current/developer-docs/production/instruction-limits /docs/building-apps/canister-management/resource-limits
   /docs/current/developer-docs/backend/resource-limits /docs/building-apps/canister-management/resource-limits
-  /docs/concepts/data-centers /docs/concepts/network-overview
+  /docs/concepts/data-centers /docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/build/languages/rust/rust-intro /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/build/languages/motoko /docs/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/integrations/sns/launching/launch-summary /docs/building-apps/governing-apps/launching/launch-summary-1proposal
@@ -198,36 +244,36 @@ const redirects = `
   /docs/current/developer-docs/frontend/react-frontend /docs/building-apps/frontends/using-an-asset-canister
   /docs/current/developer-docs/frontend/svelte-frontend /docs/building-apps/frontends/using-an-asset-canister
   /docs/current/developer-docs/frontend/vue-frontend /docs/building-apps/frontends/using-an-asset-canister
-  /docs/current/developer-docs/setup/cycles/index /docs/defi/cycles/cycles-wallet
-  /docs/current/developer-docs/setup/cycles /docs/defi/cycles/cycles-wallet
-  /docs/concepts/index /docs/concepts/network-overview
-  /docs/concepts /docs/concepts/network-overview
+  /docs/current/developer-docs/setup/cycles/index /docs/building-apps/canister-management/topping-up
+  /docs/current/developer-docs/setup/cycles /docs/building-apps/canister-management/topping-up
+  /docs/concepts/index /docs/building-apps/essentials/network-overview
+  /docs/concepts /docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/backend/candid/index /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/developer-docs/integrations/https-outcalls/index /docs/building-apps/network-features/using-http/https-outcalls/overview
   /docs/current/developer-docs/integrations/https-outcalls /docs/building-apps/network-features/using-http/https-outcalls/overview
   /docs/current/developer-docs/security/index /docs/building-apps/best-practices/security/inter-canister-calls
   /docs/current/developer-docs/security /docs/building-apps/best-practices/security/inter-canister-calls
-  /docs/current/developer-docs/integrations/index /docs/concepts/network-overview
-  /docs/current/developer-docs/integrations /docs/concepts/network-overview
+  /docs/current/developer-docs/integrations/index /docs/building-apps/essentials/network-overview
+  /docs/current/developer-docs/integrations /docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/setup/index /docs/building-apps/getting-started/install
   /docs/current/developer-docs/setup /docs/building-apps/getting-started/install
   /docs/current/developer-docs/setup /docs/building-apps/getting-started/install
-  /docs/tutorials/index /docs/concepts/network-overview
-  /docs/tutorials/ /docs/concepts/network-overview
+  /docs/tutorials/index /docs/building-apps/essentials/network-overview
+  /docs/tutorials/ /docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/backend/eu-subnets /docs/building-apps/developing-canisters/create
   /docs/samples/* /samples
   /docs/current/developer-docs/backend/choosing-language /docs/building-apps/developing-canisters/what-is-a-canister
   /docs/current/developer-docs/production/deploying-and-upgrading /docs/building-apps/developing-canisters/deploy
-  /docs/current/developer-docs/index /docs/concepts/network-overview
-  /docs/developer-docs /docs/concepts/network-overview
-  /docs/concepts/what-is-ic /docs/concepts/network-overview
+  /docs/current/developer-docs/index /docs/building-apps/essentials/network-overview
+  /docs/developer-docs /docs/building-apps/essentials/network-overview
+  /docs/concepts/what-is-ic /docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/setup/development-workflow /docs/building-apps/getting-started/install
   /docs/current/developer-docs/setup/hello-world /docs/building-apps/developing-canisters/write
   /docs/current/developer-docs/setup/install/ /docs/building-apps/getting-started/install
   /docs/current/developer-docs/setup/accounts /docs/building-apps/getting-started/identities
   /docs/current/developer-docs/setup/cycles/cycles-faucet /docs/building-apps/getting-started/tokens-and-cycles
-  /docs/current/developer-docs/setup/cycles/cycles-wallet /docs/defi/cycles/cycles-wallet
-  /docs/current/developer-docs/setup/cycles/converting_icp_tokens_into_cycles /docs/defi/cycles/converting_icp_tokens_into_cycles
+  /docs/current/developer-docs/setup/cycles/cycles-wallet /docs/building-apps/canister-management/topping-up
+  /docs/current/developer-docs/setup/cycles/converting_icp_tokens_into_cycles /docs/building-apps/getting-started/tokens-and-cycles
   /docs/current/developer-docs/setup/first-canister /docs/building-apps/developing-canisters/what-is-a-canister
   /docs/current/developer-docs/setup/deploy-locally /docs/building-apps/developing-canisters/deploy
   /docs/current/developer-docs/setup/deploy-mainnet /docs/building-apps/developing-canisters/deploy
@@ -240,8 +286,8 @@ const redirects = `
   /docs/current/developer-docs/agents/ic-agent-dfinity /docs/building-apps/interact-with-canisters/agents/rust-agent
   /docs/references/gitpod /docs/building-apps/developer-tools/ide/icp-ninja
   /docs/current/developer-docs/setup/playground /docs/building-apps/developing-canisters/deploy
-  /docs/current/developer-docs/setup/vs-code /docs/building-apps/developer-tools/ide/vs-code
-  /docs/current/developer-docs/setup/react-quickstart /docs/building-apps/getting-started/first-web-app
+  /docs/current/developer-docs/setup/vs-code /docs/building-apps/developer-tools/ide/icp-ninja
+  /docs/current/developer-docs/setup/react-quickstart /docs/building-apps/getting-started/first-smart-contract
   /docs/references/cli-reference/ /docs/building-apps/developer-tools/dfx/
   /docs/references/cli-reference/dfx-parent /docs/building-apps/developer-tools/dfx/dfx-parent
   /docs/references/cli-reference/dfx-bootstrap /docs/building-apps/developer-tools/dfx/dfx-bootstrap
@@ -441,9 +487,8 @@ const redirects = `
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use /docs/building-apps/network-features/using-http/https-outcalls/overview
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-overview /docs/building-apps/network-features/using-http/https-outcalls/overview
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-post /docs/building-apps/network-features/using-http/https-outcalls/post
-  /docs/current/developer-docs/setup/ic-admin /docs/building-apps/developer-tools/ic-admin
+  /docs/current/developer-docs/setup/ic-admin /docs/home/
   /docs/current/developer-docs/backend/subnet-types /docs/building-apps/developing-canisters/create
-  /docs/references/glossary /docs/references/glossary/
   /docs/samples/host-a-website /docs/references/samples/hosting/static-website/
   /docs/samples/host-a-webgame /docs/references/samples/hosting/unity-webgl-template/
   /docs/references/security/general-security-best-practices/ /docs/building-apps/best-practices/security/inter-canister-calls
@@ -463,7 +508,7 @@ const redirects = `
   /docs/current/developer-docs/backend/motoko/explore-templates /docs/motoko/main/getting-started/basic-concepts
   /docs/current/developer-docs/backend/motoko/dev-env /docs/motoko/main/getting-started/dev-env
   /docs/current/developer-docs/backend/motoko/at-a-glance /docs/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/backend/motoko/deploying /docs/motoko/main/getting-started
+  /docs/current/developer-docs/backend/motoko/deploying /docs/motoko/main/getting-started/quickstart
   /docs/current/developer-docs/backend/motoko/upgrading /docs/motoko/main/canister-maintenance/upgrades
   /docs/current/developer-docs/backend/motoko/intercanister-calls /docs/motoko/main/writing-motoko/intercanister-calls
   /docs/current/developer-docs/backend/motoko/optimizing /docs/motoko/main/canister-maintenance/optimization
@@ -552,7 +597,7 @@ const redirects = `
   /docs/integration/ledger-quick-start.html /docs/defi/token-ledgers/setup/icp_ledger_setup
   /docs/current/developer-docs/integrations/storage/cost /docs/building-apps/essentials/gas-cost
   /docs/token-holders/self-custody-quickstart.html /docs/defi/overview
-  /docs/current/developer-docs/overview/ /docs/concepts/network-overview
+  /docs/current/developer-docs/overview/ /docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/smart-contracts/overview	/docs/building-apps/essentials/canisters
   /docs/references/dfx-json-reference /docs/building-apps/developer-tools/dfx-json-reference
   /docs/language-guide/language-manual.html	/docs/motoko/main/getting-started/motoko-introduction
@@ -589,8 +634,8 @@ const redirects = `
   /docs/candid-guide/candid-concepts.html	/docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/blog/features/vetkey-primer	/blog/features/vetkey-primer
   /docs/concepts/chain-key-technology/ /docs/building-apps/chain-fusion/overview
-  /docs/concepts/concepts-intro.html	/docs/concepts/network-overview
-  /docs/current/developer-docs/backend	/docs/concepts/network-overview
+  /docs/concepts/concepts-intro.html	/docs/building-apps/essentials/network-overview
+  /docs/current/developer-docs/backend	/docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/backend/rust/rust-quickstart	/docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/best-practices/	/docs/building-apps/best-practices/general
   /docs/current/developer-docs/best-practices/considerations-for-nft-devs /docs/defi/overview
@@ -609,7 +654,7 @@ const redirects = `
   /docs/current/developer-docs/web-apps/application-frontends/custom-frontend /docs/building-apps/frontends/using-an-asset-canister
   /docs/current/developer-docs/security/rust-canister-development-security-best-practices /docs/building-apps/best-practices/security/inter-canister-calls
   /docs/developers-guide/computation-and-storage-costs.html /docs/building-apps/essentials/gas-cost
-  /docs/current/developer-docs/getting-started/ /docs/concepts/network-overview
+  /docs/current/developer-docs/getting-started/ /docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/defi/wallets/workflow /docs/defi/overview
   /docs/current/developer-docs/backend/rust/infrastructure /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/smart-contracts/deploy/larger-wasm /docs/building-apps/developing-canisters/what-is-a-canister
@@ -633,7 +678,7 @@ const redirects = `
   /docs/current/developer-docs/multi-chain/faq/ckerc20-faq /docs/defi/chain-key-tokens/ckerc20/overview
   /docs/current/developer-docs/multi-chain/faq/signatures-faq /docs/references/t-sigs-how-it-works
   /docs/current/developer-docs/integrations/rosetta/staking-tutorial/ /docs/defi/rosetta/icp_rosetta/construction_api/staking
-  /docs/current/developer-docs/getting-started/cycles/cycles-wallet /docs/defi/cycles/cycles-wallet
+  /docs/current/developer-docs/getting-started/cycles/cycles-wallet /docs/building-apps/canister-management/topping-up
   /docs/current/developer-docs/smart-contracts/write/auto-scaling-architecture /docs/building-apps/developing-canisters/what-is-a-canister
   /docs/current/developer-docs/smart-contracts/write/resources /docs/building-apps/developing-canisters/what-is-a-canister
   /docs/current/developer-docs/smart-contracts/call/arguments /docs/building-apps/interact-with-canisters/advanced-calls
@@ -669,7 +714,7 @@ const redirects = `
   /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet /docs/building-apps/frontends/using-an-asset-canister
   /docs/current/developer-docs/web-apps/application-frontends/default-frontend /docs/building-apps/frontends/using-an-asset-canister
 
-  /docs/current/developer-docs/getting-started/network-overview /docs/concepts/network-overview
+  /docs/current/developer-docs/getting-started/network-overview /docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/smart-contracts/overview/introduction /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/gas-cost /docs/building-apps/essentials/gas-cost
   /docs/current/developer-docs/cost-estimations-and-examples /docs/building-apps/essentials/cost-estimations-and-examples
@@ -687,7 +732,7 @@ const redirects = `
 
   /docs/current/developer-docs/smart-contracts/call/overview /docs/building-apps/interact-with-canisters/advanced-calls
   /docs/references/execution-errors /docs/references/execution-errors
-  /docs/references/ingress-messages /docs/building-apps/interact-with-dapps/advanced-calls
+  /docs/references/ingress-messages /docs/building-apps/interact-with-canisters/advanced-calls
   /docs/current/developer-docs/smart-contracts/advanced-features/system-canisters /docs/references/system-canisters/
   /docs/current/developer-docs/smart-contracts/advanced-features/management-canister /docs/references/system-canisters/management-canister
   /docs/current/developer-docs/security/formal-verification /docs/building-apps/best-practices/security/formal-verification
@@ -714,7 +759,7 @@ const redirects = `
   /docs/current/developer-docs/getting-started/write-canister-code /docs/building-apps/developing-canisters/write
   /docs/current/developer-docs/developing-canisters/deploy /docs/building-apps/developing-canisters/deploy
   /docs/current/developer-docs/getting-started/first-smart-contract /docs/building-apps/getting-started/first-smart-contract
-  /docs/current/developer-docs/getting-started/react-quickstart /docs/building-apps/getting-started/first-web-app
+  /docs/current/developer-docs/getting-started/react-quickstart /docs/building-apps/getting-started/first-smart-contract
 
   /docs/current/developer-docs/developer-tools/on-chain/cdks /docs/building-apps/developer-tools/cdks/
 
@@ -733,7 +778,7 @@ const redirects = `
   /docs/current/developer-docs/backend/rust/samples /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/intro-to-rust /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/intro-to-rust /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
-  /docs/current/developer-docs/backend/rust/optimizing /docs/building-apps/developer-tools/cdks/rust/optimizing
+  /docs/current/developer-docs/backend/rust/optimizing /docs/building-apps/advanced/optimize/rust
   /docs/current/developer-docs/backend/rust/intro-to-rust /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/candid /docs/building-apps/developer-tools/cdks/rust/candid
   /docs/current/developer-docs/backend/rust/generating-candid /docs/building-apps/developer-tools/cdks/rust/generating-candid
@@ -786,51 +831,6 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-uninstall /docs/building-apps/developer-tools/dfxvm/dfxvm-uninstall
   /docs/eveloper-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-update /docs/building-apps/developer-tools/dfxvm/dfxvm-update
 
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/index /docs/building-apps/developer-tools/quill/quill-parent
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-parent /docs/building-apps/developer-tools/quill/quill-parent
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-account-balance /docs/building-apps/developer-tools/quill/quill-account-balance
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-ckbtc /docs/building-apps/developer-tools/quill/ckbtc/quill-ckbtc
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-balance /docs/building-apps/developer-tools/quill/ckbtc/quill-ckbtc-balance
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-retrieve-btc /docs/building-apps/developer-tools/quill/ckbtc/quill-ckbtc-retrieve-btc
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-retrieve-btc-status /docs/building-apps/developer-tools/quill/ckbtc/quill-ckbtc-retrieve-btc-status
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-transfer /docs/building-apps/developer-tools/quill/ckbtc/quill-ckbtc-transfer
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-update-balance /docs/building-apps/developer-tools/quill/ckbtc/quill-ckbtc-update-balance
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-withdrawal-address /docs/building-apps/developer-tools/quill/ckbtc/quill-ckbtc-withdrawal-address
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-claim-neurons /docs/building-apps/developer-tools/quill/quill-claim-neurons
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-generate /docs/building-apps/developer-tools/quill/quill-generate
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-get-neuron-info /docs/building-apps/developer-tools/quill/quill-get-neuron-info
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-get-proposal-info /docs/building-apps/developer-tools/quill/quill-get-proposal-info
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-list-neurons /docs/building-apps/developer-tools/quill/quill-list-neurons
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-list-proposals /docs/building-apps/developer-tools/quill/quill-list-proposals
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-neuron-manage /docs/building-apps/developer-tools/quill/quill-neuron-manage
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-neuron-stake /docs/building-apps/developer-tools/quill/quill-neuron-stake
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-public-ids /docs/building-apps/developer-tools/quill/quill-public-ids
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-qr-code /docs/building-apps/developer-tools/quill/quill-qr-code
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-replace-node-provider-id /docs/building-apps/developer-tools/quill/quill-replace-node-provider-id
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-scanner-qr-code /docs/building-apps/developer-tools/quill/quill-scanner-qr-code
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-send /docs/building-apps/developer-tools/quill/quill-send
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns /docs/building-apps/developer-tools/quill/sns/quill-sns
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-balance /docs/building-apps/developer-tools/quill/sns/quill-sns-balance
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-configure-dissolve-delay /docs/building-apps/developer-tools/quill/sns/quill-sns-configure-dissolve-delay
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-disburse /docs/building-apps/developer-tools/quill/sns/quill-sns-disburse
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-disburse-maturity /docs/building-apps/developer-tools/quill/sns/quill-sns-disburse-maturity
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-follow-neuron /docs/building-apps/developer-tools/quill/sns/quill-sns-follow-neuron
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-get-sale-participation /docs/building-apps/developer-tools/quill/sns/quill-sns-get-sale-participation
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-get-swap-refund /docs/building-apps/developer-tools/quill/sns/quill-sns-get-swap-refund
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-list-deployed-snses /docs/building-apps/developer-tools/quill/sns/quill-sns-list-deployed-snses
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-make-proposal /docs/building-apps/developer-tools/quill/sns/quill-sns-make-proposal
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-make-upgrade-canister-proposal /docs/building-apps/developer-tools/quill/sns/quill-sns-make-upgrade-canister-proposal
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-neuron-permission /docs/building-apps/developer-tools/quill/sns/quill-sns-neuron-permission
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-new-sale-ticket /docs/building-apps/developer-tools/quill/sns/quill-sns-new-sale-ticket
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-pay /docs/building-apps/developer-tools/quill/sns/quill-sns-pay
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-register-vote /docs/building-apps/developer-tools/quill/sns/quill-sns-register-vote
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-split-neuron /docs/building-apps/developer-tools/quill/sns/quill-sns-split-neuron
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-stake-maturity /docs/building-apps/developer-tools/quill/sns/quill-sns-stake-maturity
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-stake-neuron /docs/building-apps/developer-tools/quill/sns/quill-sns-stake-neuron
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-status /docs/building-apps/developer-tools/quill/sns/quill-sns-status
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-transfer /docs/building-apps/developer-tools/quill/sns/quill-sns-transfer
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-transfer /docs/building-apps/developer-tools/quill/quill-transfer
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-update-node-provider /docs/building-apps/developer-tools/quill/quill-update-node-provider
 
   /docs/current/developer-docs/smart-contracts/create /docs/building-apps/developing-canisters/what-is-a-canister
   /docs/current/developer-docs/smart-contracts/write/overview /docs/building-apps/developing-canisters/what-is-a-canister
@@ -850,7 +850,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/candid/candid-concepts /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/developer-docs/smart-contracts/candid/candid-howto /docs/building-apps/interact-with-canisters/candid/using-candid
   /docs/current/developer-docs/smart-contracts/candid/candid-tools /docs/building-apps/interact-with-canisters/candid/candid-tools
-  /docs/current/developer-docs/smart-contracts/advanced-features/async-code /docs/concepts/message-execution/async-code
+  /docs/current/developer-docs/smart-contracts/advanced-features/async-code /docs/building-apps/interact-with-canisters/advanced-calls
   /docs/current/developer-docs/smart-contracts/advanced-features/composite-query /docs/building-apps/interact-with-canisters/query-calls
   /docs/current/developer-docs/smart-contracts/advanced-features/query-stats /docs/building-apps/interact-with-canisters/query-calls
 
@@ -967,8 +967,8 @@ const redirects = `
   /docs/current/developer-docs/defi/icp-tokens/account-trimming /docs/defi/account-trimming
   /docs/current/developer-docs/defi/tokens/create /docs/defi/create
   /docs/current/developer-docs/defi/cycles/cycles-ledger /docs/defi/token-ledgers/cycles-ledger
-  /docs/current/developer-docs/defi/cycles/cycles-wallet /docs/defi/cycles/cycles-wallet
-  /docs/current/developer-docs/defi/cycles/converting_icp_tokens_into_cycles /docs/defi/cycles/converting_icp_tokens_into_cycles
+  /docs/current/developer-docs/defi/cycles/cycles-wallet /docs/building-apps/canister-management/topping-up
+  /docs/current/developer-docs/defi/cycles/converting_icp_tokens_into_cycles /docs/building-apps/getting-started/tokens-and-cycles
 
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/index /docs/defi/rosetta/icp_rosetta/
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/index /docs/defi/rosetta/icp_rosetta/data_api/

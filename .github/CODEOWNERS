@@ -7,7 +7,7 @@ docs/building-apps/developer-tools/cdks/index @dfinity/dx
 docs/defi/ @dfinity/finint
 docs/concepts/security @dfinity/product-security
 docs/references/execution-errors.mdx @dfinity/execution
-docs/building-apps/interact-with-dapps/advanced-calls.mdx @dfinity/product-security
+docs/building-apps/interact-with-canisters/advanced-calls.mdx @dfinity/product-security
 docs/concepts/message-execution/message-execution-properties.mdx @dfinity/product-security
 docs/building-apps/frontends/custom-domains/ @dfinity/boundary-node
 docs/building-apps/network-features/using-http/http-certification/ @dfinity/trust

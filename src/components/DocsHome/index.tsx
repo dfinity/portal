@@ -206,7 +206,7 @@ const frameworksTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/building-apps/getting-started/first-web-app"
+        href="/docs/building-apps/getting-started/first-smart-contract"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to React quickstart"
       >
