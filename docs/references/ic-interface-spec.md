@@ -2052,7 +2052,7 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
 
 -   `ic0.cost_http_request(request_size : i64, max_res_bytes : i64, dst : I) -> (); `I ∈ {i32, i64}`
 
-    The cost of a request via [`http_request`](#ic-http_request). `request_size` is the sum of the byte lengths of the following components of an http request: 
+    The cost of a canister http outcall via [`http_request`](#ic-http_request). `request_size` is the sum of the byte lengths of the following components of an http request: 
     - url
     - method
     - headers - i.e., the sum of the lengths of all keys and values 
