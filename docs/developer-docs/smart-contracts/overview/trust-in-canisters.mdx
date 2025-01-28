@@ -44,7 +44,7 @@ dfx canister info <canister-id> --network ic
 
 A user can also obtain the list of a canister's controllers via a [`read_state` request](/references/ic-interface-spec.md/#http-read-state) to get the relevant [canister information](/references/ic-interface-spec.md#state-tree-canister-information), which includes the list of controllers. A canister cannot obtain this information.
 
-If a canister does not have any controllers, it can only be uninstalled by the NNS via NNS proposal, assuming the integrity of the platform is maintained.
+If a canister does not have any controllers, it cannot be changed and is thus immutable. It can only be uninstalled by the NNS via NNS proposal, assuming the integrity of the platform is maintained.
 
 ## Black hole canisters
 
