@@ -2040,7 +2040,7 @@ When executing a query or composite query method via a query call (i.e. in non-r
 Inter-canister calls have an implicit cost, and some calls to the management canister require the caller to attach cycles to the call explicitly.  
 The various cost factors may change over time, so the following system calls give the canister programmatic, up-to-date information about the costs.
 
-These system calls return costs in Cycles, represented by 128 bits, which will be written to the caller-specified `dst` pointer. 
+These system calls return costs in Cycles, represented by 128 bits, which will be written to the heap memory starting at offset `dst`. 
 
 -   `ic0.cost_call : (method_name_size: i64, payload_size : i64, dst : I) -> () `I ∈ {i32, i64}`
 
