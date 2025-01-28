@@ -2044,7 +2044,7 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
 
 -   `ic0.cost_call : (method_name_size: i64, payload_size : i64, dst : I) -> ()`; `I ∈ {i32, i64}`
 
-    The cost of an inter-canister call. `method_name_size` is the byte length of the method name, and `payload_size` is the length of the encoded argument to the method.  
+    The cost of an inter-canister call. `method_name_size` is the byte length of the method name, and `payload_size` is the byte length of the argument to the method. 
 
 -   `ic0.cost_create_canister : (dst : I) -> (); `I ∈ {i32, i64}`
 
