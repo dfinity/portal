@@ -2042,7 +2042,7 @@ The various cost factors may change over time, so the following system calls giv
 
 These system calls return costs in Cycles, represented by 128 bits, which will be written to the heap memory starting at offset `dst`. 
 
--   `ic0.cost_call : (method_name_size: i64, payload_size : i64, dst : I) -> () `I ∈ {i32, i64}`
+-   `ic0.cost_call : (method_name_size: i64, payload_size : i64, dst : I) -> ()`; `I ∈ {i32, i64}`
 
     The cost of an inter-canister call. `method_name_size` is the byte length of the method name, and `payload_size` is the length of the encoded argument to the method.  
 
