@@ -121,7 +121,6 @@ const redirects = `
   /docs/current/developer-docs/getting-started/overview-of-icp /docs/building-apps/essentials/network-overview
   /docs/videos-tutorials /docs/home
   /docs /docs/home
-  /docs/ /docs/home
   /docs/current/* /docs/
   /docs/concepts/bitcoin-integration /bitcoin-integration
   /docs/current/developer-docs/ic-overview /docs/building-apps/essentials/network-overview
@@ -300,7 +299,6 @@ const redirects = `
   /docs/current/developer-docs/integrations /docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/setup/index /docs/building-apps/getting-started/install
   /docs/current/developer-docs/setup /docs/building-apps/getting-started/install
-  /docs/current/developer-docs/setup /docs/building-apps/getting-started/install
   /docs/tutorials/index /docs/building-apps/essentials/network-overview
   /docs/tutorials/ /docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/backend/eu-subnets /docs/building-apps/developing-canisters/create
@@ -375,7 +373,6 @@ const redirects = `
   /docs/current/developer-docs/setup/upgrade /docs/building-apps/canister-management/upgrade
   /docs/current/developer-docs/production/resource-limits /docs/building-apps/canister-management/resource-limits
   /docs/current/developer-docs/setup/manage-projects /docs/building-apps/developing-canisters/what-is-a-canister
-  /docs/current/developer-docs/production/topping-up-canister /docs/building-apps/canister-management/topping-up
   /docs/current/developer-docs/getting-started/cycles/cycles_management_services /docs/building-apps/canister-management/topping-up
   /docs/current/developer-docs/setup/pocket-ic /docs/building-apps/advanced/test/pocket-ic
   /docs/current/developer-docs/production/staging-environment /docs/building-apps/developing-canisters/create
@@ -454,7 +451,6 @@ const redirects = `
   /docs/tokenomics/nns/neurons-fund /docs/move-to-learnhub/nns/concepts/neurons-fund
   /docs/tokenomics/nns/nns-staking-voting-rewards /docs/move-to-learnhub/nns/concepts/neurons/staking-voting-rewards
   /docs/move-to-learnhub/nns/staking-voting-rewards /docs/move-to-learnhub/nns/concepts/neurons/staking-voting-rewards
-  /docs/move-to-learnhub/nns/staking-voting-rewards/ /docs/move-to-learnhub/nns/concepts/neurons/staking-voting-rewards
   /docs/tokenomics/nns/proposal-requirements /docs/move-to-learnhub/nns/concepts/proposal-requirements
   /docs/move-to-learnhub/nns/proposal-requirements /docs/move-to-learnhub/nns/concepts/proposal-requirements
   /docs/tokenomics/index /docs/building-apps/governing-apps/overview
@@ -609,7 +605,6 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/advanced-features/threshold-signing /docs/building-apps/network-features/signatures/t-ecdsa
   /docs/backend/candid/generating-candid /docs/building-apps/developer-tools/cdks/rust/generating-candid
   /docs/current/developer-docs/backend/motoko/index.md /docs/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/backend/rust/index /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/building-apps/developer-tools/cli-tools/cli-reference/index /docs/building-apps/developer-tools/dfx/
   /docs/current/developer-docs/integrations/icrc-1/deploy-new-token /docs/defi/create
   /docs/current/developer-docs/setup/cycles/cycles-faucet.md	/docs/building-apps/getting-started/tokens-and-cycles
@@ -662,7 +657,6 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/test/benchmarking /docs/building-apps/developer-tools/canbench
   /docs/current/developer-docs/smart-contracts/test/reproducible-builds /docs/building-apps/best-practices/reproducible-builds
   /docs/current/developer-docs/ai/ai-on-chain  /ecosystem
-  /docs/current/developer-docs/ai/machine-learning-sample /ecosystem
   /docs/current/developer-docs/security/general-security-best-practices /docs/building-apps/best-practices/security/overview
   /docs/samples/game-of-life /docs/references/samples/motoko/life/
   /docs/concepts/canisters-code /docs/building-apps/essentials/canisters
@@ -670,7 +664,6 @@ const redirects = `
   /docs/concepts/nodes-subnets /docs/building-apps/developing-canisters/create
   /docs/concepts/subnet-types /docs/building-apps/developing-canisters/create
   /docs/concepts/glossary /docs/references/glossary/
-  /docs/building-apps/best-practices/trust-in-canisters /docs/building-apps/best-practices/trust-in-canisters
   /docs/current/developer-docs/multi-chain/faq/user-faq /docs/building-apps/chain-fusion/overview
   /docs/current/developer-docs/multi-chain/faq/ckbtc-faq /docs/defi/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/multi-chain/faq/cketh-faq /docs/defi/chain-key-tokens/cketh/overview
@@ -681,7 +674,6 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/write/auto-scaling-architecture /docs/building-apps/developing-canisters/what-is-a-canister
   /docs/current/developer-docs/smart-contracts/write/resources /docs/building-apps/developing-canisters/what-is-a-canister
   /docs/current/developer-docs/smart-contracts/call/arguments /docs/building-apps/interact-with-canisters/advanced-calls
-  /docs/current/developer-docs/smart-contracts/candid/ /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/developer-docs/getting-started/development-workflow /docs/building-apps/getting-started/install
   /docs/current/developer-docs/getting-started/default-template /docs/building-apps/developing-canisters/what-is-a-canister
   /docs/current/developer-docs/getting-started/hello-world /docs/building-apps/developing-canisters/write
@@ -719,7 +711,6 @@ const redirects = `
   /docs/current/developer-docs/cost-estimations-and-examples /docs/building-apps/essentials/cost-estimations-and-examples
 
   /docs/current/developer-docs/smart-contracts/development-workflow /docs/building-apps/getting-started/install
-  /docs/building-apps/developing-canisters/what-is-a-canister /docs/building-apps/best-practices/application-architectures
   /docs/current/developer-docs/smart-contracts/overview/inside-canisters /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle /docs/building-apps/essentials/canisters
 
@@ -730,7 +721,6 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/best-practices/idempotency /docs/building-apps/best-practices/idempotency
 
   /docs/current/developer-docs/smart-contracts/call/overview /docs/building-apps/interact-with-canisters/advanced-calls
-  /docs/references/execution-errors /docs/references/execution-errors
   /docs/references/ingress-messages /docs/building-apps/interact-with-canisters/advanced-calls
   /docs/current/developer-docs/smart-contracts/advanced-features/system-canisters /docs/references/system-canisters/
   /docs/current/developer-docs/smart-contracts/advanced-features/management-canister /docs/references/system-canisters/management-canister
@@ -756,7 +746,6 @@ const redirects = `
   /docs/current/developer-docs/getting-started/identities /docs/building-apps/getting-started/identities
   /docs/current/developer-docs/getting-started/tokens-and-cycles /docs/building-apps/getting-started/tokens-and-cycles
   /docs/current/developer-docs/getting-started/write-canister-code /docs/building-apps/developing-canisters/write
-  /docs/current/developer-docs/developing-canisters/deploy /docs/building-apps/developing-canisters/deploy
   /docs/current/developer-docs/getting-started/first-smart-contract /docs/building-apps/getting-started/first-smart-contract
   /docs/current/developer-docs/getting-started/react-quickstart /docs/building-apps/getting-started/first-smart-contract
 
@@ -767,18 +756,10 @@ const redirects = `
   /docs/current/developer-docs/backend/rust/dev-env /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/intro-to-rust /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/deploying /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
-  /docs/current/developer-docs/backend/rust/intro-to-rust /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
-  /docs/current/developer-docs/backend/rust/intro-to-rust /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/counter /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/rust-considerations /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
-  /docs/current/developer-docs/backend/rust/intro-to-rust /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
-  /docs/current/developer-docs/backend/rust/intro-to-rust /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
-  /docs/current/developer-docs/backend/rust/intro-to-rust /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/samples /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
-  /docs/current/developer-docs/backend/rust/intro-to-rust /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
-  /docs/current/developer-docs/backend/rust/intro-to-rust /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/optimizing /docs/building-apps/advanced/optimize/rust
-  /docs/current/developer-docs/backend/rust/intro-to-rust /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/candid /docs/building-apps/developer-tools/cdks/rust/candid
   /docs/current/developer-docs/backend/rust/generating-candid /docs/building-apps/developer-tools/cdks/rust/generating-candid
 
@@ -809,7 +790,6 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-schema /docs/building-apps/developer-tools/dfx/dfx-schema
   /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-sns /docs/building-apps/developer-tools/dfx/dfx-sns
   /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-start /docs/building-apps/developer-tools/dfx/dfx-start
-  /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-stop /docs/building-apps/developer-tools/dfx/dfx-stop
   /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-upgrade /docs/building-apps/developer-tools/dfx/dfx-upgrade
   /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-wallet /docs/building-apps/developer-tools/dfx/dfx-wallet
 
