@@ -2067,7 +2067,7 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
 
 -   `ic0.cost_vetkey(src : I, size : I, dst : I) -> (); `I ∈ {i32, i64}`
 
-    These system calls accept a key name via `src` + `size` for the specific signing scheme / key. See [`sign_with_ecdsa`](#ic-sign_with_ecdsa), [`sign_with_schnorr`](#ic-sign_with_schnorr) and [`vetkd_encrypted_key`](#ic-vetkd_encrypted_key) for more information. 
+    These system calls accept a key name via a textual representation for the specific signing scheme / key of a given size stored in the heap memory starting at offset `src` . See [`sign_with_ecdsa`](#ic-sign_with_ecdsa), [`sign_with_schnorr`](#ic-sign_with_schnorr) and [`vetkd_encrypted_key`](#ic-vetkd_encrypted_key) for more information. 
 
     These system calls trap if `src` + `size` do not decode to a valid key name. 
 
