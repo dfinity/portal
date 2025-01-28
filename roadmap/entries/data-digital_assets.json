@@ -5,7 +5,7 @@
     {
       "title": "Solana Integration",
       "overview": "OISY widens its multi-chain reach beyond Bitcoin and Ethereum, and will integrate with the most important networks. Solana is the first one to be implemented, a crucial step forward in our mission to deliver a true multi-chain wallet for decentralized finance (DeFi) users.",
-      "status": "in_progress",
+      "status": "deployed",
       "forum": "",
       "proposal": "",
       "docs": "",
@@ -16,7 +16,7 @@
     {
       "title": "In-Wallet Swaps",
       "overview": "Introducing in-wallet swaps, this release will enhance flexibility for managing assets, allowing users to seamlessly change their asset allocation directly in OISY using DEX liquidity, mitigating risk or aiming for a higher yield.",
-      "status": "in_progress",
+      "status": "deployed",
       "forum": "",
       "proposal": "",
       "docs": "",
@@ -36,13 +36,24 @@
       "milestone_id": "Helios"
     },
     {
+      "title": "Airdrop Seasons",
+      "overview": "OISY Wallet will celebrate its go‑live with a first airdrop campaign. Eligible users will randomly receive airdrop rewards based on their previous activities and assets held in OISY.",
+      "status": "in_progress",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Helios"
+    },
+    {
       "title": "OISY Wallet v1.0 - The official Launch",
       "description": "With the Helios release, officially named v1.0, OISY will step out of the beta status into its first production version. This includes functional coverage of all key features like buy, receive, send, swap, and convert from and to chain-key tokens, and with several major blockchains integrated, also a true multi-chain nature. Behind the scenes, it also includes setting up proper processes for product improvement, marketing, automated testing, and setting up a user friendly support process.",
       "is_milestone": true,
       "milestone_id": "Helios",
       "status": "in_progress",
       "eta": "",
-      "eta_to_render": "January 2025"
+      "eta_to_render": "February 2025"
     },
     {
       "title": "Orbit Multi custody wallet for ICP",
