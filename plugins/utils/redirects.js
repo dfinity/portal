@@ -661,6 +661,7 @@ const redirects = `
   /docs/current/developer-docs/build/cdks/motoko-dfinity/* /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/current/developer-docs/web-apps/application-frontends/default-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
+  /docs/current/developer-docs/getting-started/explore-examples /docs/current/developer-docs/developer-tools/ide/icp-ninja
   `
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
