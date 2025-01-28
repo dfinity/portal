@@ -629,10 +629,11 @@
     "name": "Querio",
     "website": "https://querio.io/",
     "tags": [
-      "Tools / Infrastructure"
+      "Tools / Infrastructure",
+      "AI"
     ],
     "twitter": "https://x.com/querio_io",
-    "description": "Querio is the most advanced web3.0 search engine of exceptional speed and accuracy, that empowers its users to search over the Internet Computer.",
+    "description": "Querio is the most advanced web3.0 search engine and AI-powered chatbot that empowers its users to discover the Internet Computer.",
     "logo": "/img/showcase/Querio_Logo.webp"
   },
   {
@@ -977,10 +978,11 @@
     "tags": [
       "SocialFi",
       "DAO",
-      "Creator Economy"
+      "Creator Economy",
+      "AI"
     ],
     "twitter": "https://x.com/SeersApp",
-    "description": "What if there was decentralized Twitter that included prediction markets? Seers is a Web3 social media platform hosted 100% onchain combining social media features with prediction markets.",
+    "description": "The Social Network of Autonomous AI Agents.",
     "usesInternetIdentity": true,
     "stats": "10,000 users + TVL",
     "display": "Normal",
@@ -1158,7 +1160,7 @@
     "website": "https://www.scinet.one/",
     "twitter": "https://twitter.com/scinet_inc",
     "discord": "https://discord.com/invite/5uH6vpJjeB",
-    "logo": "/img/showcase/scinet_logo.png",
+    "logo": "/img/showcase/scinet_logo.webp",
     "submittableId": "33285268"
   },
   {
@@ -3319,16 +3321,15 @@
   {
     "id": "datapond",
     "name": "Datapond",
-    "oneLiner": "A hub for exposing and tracing data used by AI to generate results.",
-    "website": "https://recheck.io/",
+    "description": "A blockchain-powered AI data marketplace enabling data providers to securely publish content and track its usage with AI agents.",
+    "website": "https://datapond.ai/",
     "tags": [
       "Tools / Infrastructure",
       "Enterprise",
       "AI"
     ],
-    "twitter": "https://twitter.com/recheck_io",
+    "twitter": "https://x.com/DataPondAI",
     "github": "https://github.com/ReCheck-io/icp-datapond-integration",
-    "description": "DataPond is a hub for exposing and tracing data used by AI to generate results. It enables end users and businesses to store files on Internet Computer and to control how they are consumed by AI tools as input for training, reasoning, or producing answers. DataPond is available as an open-source toolbox for developers who want to bridge their decentralized applications with AI transparently and efficiently.",
     "usesInternetIdentity": true,
     "display": "Normal",
     "logo": "/img/showcase/ReCheck_logo.png",
@@ -3535,7 +3536,7 @@
     "twitter": "https://twitter.com/codegovorg",
     "github": "https://github.com/CodeGov-org/codegov-website",
     "display": "Normal",
-    "logo": "/img/showcase/codegov_logo.jpg"
+    "logo": "/img/showcase/codegov_logo.svg"
   },
   {
     "id": "deaichat",
@@ -4484,6 +4485,23 @@
     "twitter": "https://x.com/icecubeapp"
   },
   {
+    "id": "bridge-23-app",
+    "name": "Bridge 23",
+    "oneLiner": "Bridge23 is Your AI Employee Department",
+    "description": "Bridge23 empowers businesses and individuals with AI Agentic Web, gathering real-time data insights, fostering rewarding interactions and enhancing community engagement, where everyone benefits and thrives together. Available within popular messengers.",
+    "stats": "5000+ waitlist, 3300+ users and $180,000 funds secured",
+    "website": "https://bridge23.app",
+    "logo": "/img/showcase/bridge23_logo.svg",
+    "display": "Normal",
+    "tags": [
+      "Tools / Infrastructure",
+      "AI"
+    ],
+    "usesInternetIdentity": true,
+    "github": "https://github.com/bridge-23",
+    "twitter": "https://x.com/bridge23ai"
+  },
+  {
     "id": "event-hub-attention-dao",
     "name": "Event Hub",
     "oneLiner": "Event Hub Broadcaster is an event-driven system managed by Attention DAO for connecting ecosystem projects on ICP.",
@@ -4521,7 +4539,7 @@
     "oneLiner": "The IC-PayPortal Motoko by Expeera is a library that provides developers with a set of functions for managing fiat payments on ICP.",
     "description": "The IC-PayPortal Motoko is a library that provides developers with a set of functions for managing fiat payments on ICP.",
     "website": "https://3356i-cqaaa-aaaao-axdqa-cai.icp0.io/",
-    "logo": "/img/showcase/expeera_logo.jpeg",
+    "logo": "/img/showcase/expeera_logo.jpg",
     "display": "Normal",
     "tags": [
       "Tools / Infrastructure"
@@ -4596,7 +4614,7 @@
     "name": "ASPPIBRA-DAO",
     "description": "ASPPIBRA - Association of Property Owners and Possessors in Brazil is a non-profit civil association, founded on April 9, 2016, in the State of Rio de Janeiro-RJ. It is composed of professionals and citizens committed to the technological and socioeconomic development of modern society.",
     "website": "https://www.asppibra.com.br/",
-    "logo": "/img/showcase/BR-DAO_logo.svg",
+    "logo": "/img/showcase/BR-DAO_logo.png",
     "screenshots": [
       "/img/showcase/BR-DAO_screenshot.webp"
     ],
@@ -4813,6 +4831,194 @@
     "logo": "/img/showcase/icptokens_logo.svg"
   },
   {
+    "id": "motoko-regex-engine",
+    "name": "Motoko Regex Engine",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/demali-876/motoko_regex_engine",
+    "description": "A Motoko library for native pattern matching.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/regex_engine_logo.svg"
+  },
+  {
+    "id": "icspore",
+    "name": "ICSpore",
+    "tags": [
+      "DeFi"
+    ],
+    "website": "https://qnoqa-vaaaa-aaaap-qhima-cai.icp0.io/",
+    "github": "https://github.com/ICSpore/dca-v1",
+    "twitter": "https://x.com/icspore",
+    "description": "An automated, dollar-cost-averaging solution for purchasing ICP.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/icspore_logo.png"
+  },
+  {
+    "id": "stable-fs",
+    "name": "Stable-fs",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/wasm-forge/stable-fs",
+    "description": "A file system implemented on top of the stable memory in an ICP canister.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/stablefs_logo.svg"
+  },
+  {
+    "id": "plonk-verifier",
+    "name": "Plonk Verifier",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/lightec-xyz/plonk_verifier_on_icp",
+    "description": "A verifier of gnark plonk, a well-known zero-knowledge scheme, using an ICP canister.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/plonkverifier_logo.svg"
+  },
+  {
+    "id": "neverendsart",
+    "name": "NeverEndsArt",
+    "tags": [
+      "AI"
+    ],
+    "website": "https://mx6ql-zyaaa-aaaak-akxpa-cai.icp0.io/",
+    "description": "A decentralized AI Video generation platform.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/neverendsart_logo.svg"
+  },
+  {
+    "id": "icpkotlinkit",
+    "name": "ICP Kotlin Kit",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/ThomasConstantinBity/ICP-Kotlin-Kit",
+    "description": "A set of open-source Kotlin libraries for interacting with ICP.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/ic4jagentlite_logo.svg"
+  },
+  {
+    "id": "daoventure",
+    "name": "DAO Venture",
+    "tags": [
+      "Gaming"
+    ],
+    "website": "https://bpo6s-4qaaa-aaaap-acava-cai.icp0.io/",
+    "github": "https://github.com/edjCase/DAO-Venture",
+    "description": "A simple roguelite adventure where players collectively build and govern the game through a DAO.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/daoventure_logo.png"
+  },
+  {
+    "id": "IC4J Agent Lite",
+    "name": "IC4J Agent Lite",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/nikhil5642/ic4j-agent-lite",
+    "description": "A lighter version of IC4J Agent that allows Java applications to interact with ICP",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/kotlinkit_logo.svg"
+  },
+  {
+    "id": "pawsarena",
+    "name": "Paws Arena",
+    "tags": [
+      "Gaming"
+    ],
+    "website": "https://knbkj-fiaaa-aaaan-qaadq-cai.ic0.app/",
+    "description": "A fun, play-to-earn game based on cute kittens.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/pawsarena_logo.png"
+  },
+  {
+    "id": "solutio",
+    "name": "Solutio",
+    "tags": [
+      "Creator Economy"
+    ],
+    "website": "https://home.solutio.one/",
+    "twitter": "https://x.com/SolutioApp",
+    "description": "An app to share ideas, support projects you believe in, and earn rewards for building great tools.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/solutio_logo.svg"
+  },
+  {
+    "id": "lendfinity",
+    "name": "Lendfinity",
+    "tags": [
+      "DeFi"
+    ],
+    "website": "https://www.lendfinity.xyz/",
+    "twitter": "https://x.com/lendfinity_xyz",
+    "description": "The only lending protocol that enables borrowing and lending of ICRC-1 tokens and Runes from an EVM environment.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/lendfinity_logo.svg"
+  },
+  {
+    "id": "tallybot",
+    "name": "Tally Bot",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/CodeGov-org/proposal-tracker",
+    "description": "An OpenChat bot that enables tracking proposals of NNS / SNS and preset voters.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/codegov_logo.svg"
+  },
+  {
+    "id": "ic-oss",
+    "name": "IC-OSS",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/ldclabs/ic-oss",
+    "description": "A decentralized Object Storage Service on ICP.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/icpanda.svg"
+  },
+  {
+    "id": "cload",
+    "name": "CLOAD",
+    "tags": [
+      "Gaming",
+      "Creator Economy"
+    ],
+    "website": "https://cload.one/",
+    "twitter": "https://x.com/Cload_app",
+    "description": "A marketplace to discover new and exciting web3 dapps and games.",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/cload_logo.png"
+  },
+  {
+    "id": "claimlink",
+    "name": "ClaimLink",
+    "tags": [
+      "Tools / Infrastructure"
+    ],
+    "website": "https://claimlink.xyz/",
+    "twitter": "https://x.com/ClaimLinkXYZ",
+    "description": "A dapp that allows anyone to seamlessly create campaigns, generate claim links or QR codes, and claim rewards.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/claimlink_logo.svg"
+  },
+  {
     "id": "openchat",
     "name": "OpenChat",
     "oneLiner": "Decentralized alternative to WhatsApp",
@@ -4833,5 +5039,38 @@
     "screenshots": [
       "/img/showcase/openchat-screenshot.webp"
     ]
+  },
+  {
+    "name": "IC-TEE",
+    "description": "A set of libraries that enable Trusted Execution Environments (TEEs) in ICP canisters.",
+    "logo": "/img/showcase/icpanda-dao_logo.webp",
+    "screenshots": [
+      "/img/showcase/icpanda-dao_screenshot.webp"
+    ],
+    "display": "Normal",
+    "id": "ic-tee",
+    "tags": [
+      "AI"
+    ],
+    "usesInternetIdentity": false,
+    "github": "https://github.com/ldclabs/ic-tee"
+  },
+  {
+    "id": "officex",
+    "name": "OfficeX",
+    "oneLiner": "OfficeX Anonymous Workspace | Docs Sheets & Storage",
+    "website": "https://officex.app",
+    "tags": [
+      "SocialFi", 
+      "Tools / Infrastructure"
+    ],
+    "github": "https://github.com/OfficeXApp",
+    "twitter": "https://x.com/officexapp",
+    "description": "OfficeX Anonymous Workspace - Documents, Spreadsheets & Cloud Storage. Instant access, no signup required, apocalypse-proof, and sovereign for 300M people censored by sanctions. Where Freedom Works.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "stats": "1000+ users",
+    "logo": "/img/showcase/officex_logo.webp",
+    "screenshots": ["/img/showcase/officex_screenshot.webp"]
   }
 ]
