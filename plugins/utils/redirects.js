@@ -14,7 +14,7 @@ const redirects = `
    /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/index https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-parent https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-account-balance https://github.com/dfinity/quill/tree/master/docs/cli-reference
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-ckbtc /https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-ckbtc https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-balance https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-retrieve-btc https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-retrieve-btc-status https://github.com/dfinity/quill/tree/master/docs/cli-reference
@@ -42,7 +42,7 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-follow-neuron https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-get-sale-participation https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-get-swap-refund https://github.com/dfinity/quill/tree/master/docs/cli-reference
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-list-deployed-sns https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-list-deployed-snses https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-make-proposal https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-make-upgrade-canister-proposal https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-neuron-permission https://github.com/dfinity/quill/tree/master/docs/cli-reference
@@ -56,7 +56,50 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-transfer https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-transfer https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-update-node-provider https://github.com/dfinity/quill/tree/master/docs/cli-reference
-
+  /docs/references/quill-cli-reference/ https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/quill-account-balance https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/ckbtc/quill-ckbtc https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/ckbtc/quill-ckbtc-balance https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/ckbtc/quill-ckbtc-retrieve-btc https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/ckbtc/quill-ckbtc-retrieve-btc-status https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/ckbtc/quill-ckbtc-transfer https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/ckbtc/quill-ckbtc-update-balance https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/ckbtc/quill-ckbtc-withdrawal-address https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/quill-claim-neurons https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/quill-generate https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/quill-get-neuron-info https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/quill-get-proposal-info https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/quill-list-neurons https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/quill-list-proposals https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/quill-neuron-manage https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/quill-neuron-stake https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/quill-public-ids https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/quill-qr-code https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/quill-replace-node-provider-id https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/quill-scanner-qr-code https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/quill-send https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/sns/quill-sns https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/sns/quill-sns-balance https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/sns/quill-sns-configure-dissolve-delay https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/sns/quill-sns-disburse https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/sns/quill-sns-disburse-maturity https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/sns/quill-sns-follow-neuron https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/sns/quill-sns-get-sale-participation https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/sns/quill-sns-get-swap-refund /https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/sns/quill-sns-list-deployed-snses https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/sns/quill-sns-make-proposal https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/sns/quill-sns-make-upgrade-canister-proposal https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/sns/quill-sns-neuron-permission https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/sns/quill-sns-new-sale-ticket https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/sns/quill-sns-pay https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/sns/quill-sns-register-vote https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/sns/quill-sns-split-neuron https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/sns/quill-sns-stake-maturity https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/sns/quill-sns-stake-neuron https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/sns/quill-sns-status https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/sns/quill-sns-transfer https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/quill-transfer https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/references/quill-cli-reference/quill-update-node-provider https://github.com/dfinity/quill/tree/master/docs/cli-reference
 
   # .html file internal redirects (/../from.html -> to)
   /docs/developers-guide/working-with-canisters.html /docs/building-apps/canister-management/settings
@@ -314,50 +357,6 @@ const redirects = `
   /docs/references/cli-reference/dfx-envars /docs/building-apps/developer-tools/dfx/dfx-envars
   /docs/references/cli-reference/dfx-json-reference /docs/building-apps/developer-tools/dfx-json-reference
   /docs/references/dfxvm/ /docs/building-apps/developer-tools/dfxvm/
-  /docs/references/quill-cli-reference/ /docs/building-apps/developer-tools/quill/quill-parent
-  /docs/references/quill-cli-reference/quill-account-balance /docs/building-apps/developer-tools/quill/quill-account-balance
-  /docs/references/quill-cli-reference/ckbtc/quill-ckbtc /docs/building-apps/developer-tools/quill/ckbtc/quill-ckbtc
-  /docs/references/quill-cli-reference/ckbtc/quill-ckbtc-balance /docs/building-apps/developer-tools/quill/ckbtc/quill-ckbtc-balance
-  /docs/references/quill-cli-reference/ckbtc/quill-ckbtc-retrieve-btc /docs/building-apps/developer-tools/quill/ckbtc/quill-ckbtc-retrieve-btc
-  /docs/references/quill-cli-reference/ckbtc/quill-ckbtc-retrieve-btc-status /docs/building-apps/developer-tools/quill/ckbtc/quill-ckbtc-retrieve-btc-status
-  /docs/references/quill-cli-reference/ckbtc/quill-ckbtc-transfer /docs/building-apps/developer-tools/quill/ckbtc/quill-ckbtc-transfer
-  /docs/references/quill-cli-reference/ckbtc/quill-ckbtc-update-balance /docs/building-apps/developer-tools/quill/ckbtc/quill-ckbtc-update-balance
-  /docs/references/quill-cli-reference/ckbtc/quill-ckbtc-withdrawal-address /docs/building-apps/developer-tools/quill/ckbtc/quill-ckbtc-withdrawal-address
-  /docs/references/quill-cli-reference/quill-claim-neurons /docs/building-apps/developer-tools/quill/quill-claim-neurons
-  /docs/references/quill-cli-reference/quill-generate /docs/building-apps/developer-tools/quill/quill-generate
-  /docs/references/quill-cli-reference/quill-get-neuron-info /docs/building-apps/developer-tools/quill/quill-get-neuron-info
-  /docs/references/quill-cli-reference/quill-get-proposal-info /docs/building-apps/developer-tools/quill/quill-get-proposal-info
-  /docs/references/quill-cli-reference/quill-list-neurons /docs/building-apps/developer-tools/quill/quill-list-neurons
-  /docs/references/quill-cli-reference/quill-list-proposals /docs/building-apps/developer-tools/quill/quill-list-proposals
-  /docs/references/quill-cli-reference/quill-neuron-manage /docs/building-apps/developer-tools/quill/quill-neuron-manage
-  /docs/references/quill-cli-reference/quill-neuron-stake /docs/building-apps/developer-tools/quill/quill-neuron-stake
-  /docs/references/quill-cli-reference/quill-public-ids /docs/building-apps/developer-tools/quill/quill-public-ids
-  /docs/references/quill-cli-reference/quill-qr-code /docs/building-apps/developer-tools/quill/quill-qr-code
-  /docs/references/quill-cli-reference/quill-replace-node-provider-id /docs/building-apps/developer-tools/quill/quill-replace-node-provider-id
-  /docs/references/quill-cli-reference/quill-scanner-qr-code /docs/building-apps/developer-tools/quill/quill-scanner-qr-code
-  /docs/references/quill-cli-reference/quill-send /docs/building-apps/developer-tools/quill/quill-send
-  /docs/references/quill-cli-reference/sns/quill-sns /docs/building-apps/developer-tools/quill/sns/quill-sns
-  /docs/references/quill-cli-reference/sns/quill-sns-balance /docs/building-apps/developer-tools/quill/sns/quill-sns-balance
-  /docs/references/quill-cli-reference/sns/quill-sns-configure-dissolve-delay /docs/building-apps/developer-tools/quill/sns/quill-sns-configure-dissolve-delay
-  /docs/references/quill-cli-reference/sns/quill-sns-disburse /docs/building-apps/developer-tools/quill/sns/quill-sns-disburse
-  /docs/references/quill-cli-reference/sns/quill-sns-disburse-maturity /docs/building-apps/developer-tools/quill/sns/quill-sns-disburse-maturity
-  /docs/references/quill-cli-reference/sns/quill-sns-follow-neuron /docs/building-apps/developer-tools/quill/sns/quill-sns-follow-neuron
-  /docs/references/quill-cli-reference/sns/quill-sns-get-sale-participation /docs/building-apps/developer-tools/quill/sns/quill-sns-get-sale-participation
-  /docs/references/quill-cli-reference/sns/quill-sns-get-swap-refund /docs/building-apps/developer-tools/quill/sns/quill-sns-get-swap-refund
-  /docs/references/quill-cli-reference/sns/quill-sns-list-deployed-snses /docs/building-apps/developer-tools/quill/sns/quill-sns-list-deployed-snses
-  /docs/references/quill-cli-reference/sns/quill-sns-make-proposal /docs/building-apps/developer-tools/quill/sns/quill-sns-make-proposal
-  /docs/references/quill-cli-reference/sns/quill-sns-make-upgrade-canister-proposal /docs/building-apps/developer-tools/quill/sns/quill-sns-make-upgrade-canister-proposal
-  /docs/references/quill-cli-reference/sns/quill-sns-neuron-permission /docs/building-apps/developer-tools/quill/sns/quill-sns-neuron-permission
-  /docs/references/quill-cli-reference/sns/quill-sns-new-sale-ticket /docs/building-apps/developer-tools/quill/sns/quill-sns-new-sale-ticket
-  /docs/references/quill-cli-reference/sns/quill-sns-pay /docs/building-apps/developer-tools/quill/sns/quill-sns-pay
-  /docs/references/quill-cli-reference/sns/quill-sns-register-vote /docs/building-apps/developer-tools/quill/sns/quill-sns-register-vote
-  /docs/references/quill-cli-reference/sns/quill-sns-split-neuron /docs/building-apps/developer-tools/quill/sns/quill-sns-split-neuron
-  /docs/references/quill-cli-reference/sns/quill-sns-stake-maturity /docs/building-apps/developer-tools/quill/sns/quill-sns-stake-maturity
-  /docs/references/quill-cli-reference/sns/quill-sns-stake-neuron /docs/building-apps/developer-tools/quill/sns/quill-sns-stake-neuron
-  /docs/references/quill-cli-reference/sns/quill-sns-status /docs/building-apps/developer-tools/quill/sns/quill-sns-status
-  /docs/references/quill-cli-reference/sns/quill-sns-transfer /docs/building-apps/developer-tools/quill/sns/quill-sns-transfer
-  /docs/references/quill-cli-reference/quill-transfer /docs/building-apps/developer-tools/quill/quill-transfer
-  /docs/references/quill-cli-reference/quill-update-node-provider /docs/building-apps/developer-tools/quill/quill-update-node-provider
   /docs/current/developer-docs/backend/candid/candid-concepts /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/developer-docs/backend/candid/ /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/developer-docs/backend/candid/candid-howto /docs/building-apps/interact-with-canisters/candid/using-candid
@@ -487,7 +486,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-how-to-use /docs/building-apps/network-features/using-http/https-outcalls/overview
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-overview /docs/building-apps/network-features/using-http/https-outcalls/overview
   /docs/current/developer-docs/integrations/https-outcalls/https-outcalls-post /docs/building-apps/network-features/using-http/https-outcalls/post
-  /docs/current/developer-docs/setup/ic-admin /docs/home/
+  /docs/current/developer-docs/setup/ic-admin /docs/home
   /docs/current/developer-docs/backend/subnet-types /docs/building-apps/developing-canisters/create
   /docs/samples/host-a-website /docs/references/samples/hosting/static-website/
   /docs/samples/host-a-webgame /docs/references/samples/hosting/unity-webgl-template/
@@ -830,7 +829,6 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-self-update /docs/building-apps/developer-tools/dfxvm/dfxvm-self-update
   /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-uninstall /docs/building-apps/developer-tools/dfxvm/dfxvm-uninstall
   /docs/eveloper-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/dfxvm-update /docs/building-apps/developer-tools/dfxvm/dfxvm-update
-
 
   /docs/current/developer-docs/smart-contracts/create /docs/building-apps/developing-canisters/what-is-a-canister
   /docs/current/developer-docs/smart-contracts/write/overview /docs/building-apps/developing-canisters/what-is-a-canister
