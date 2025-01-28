@@ -36,17 +36,6 @@
       "milestone_id": "Helios"
     },
     {
-      "title": "Reward Seasons",
-      "overview": "OISY Wallet will launch a reward campaign to celebrate its go-live. Eligible users will earn tokens for completing a variety of activities, both past and ongoing, focused on exploring and using OISY Wallet.",
-      "status": "in_progress",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Helios"
-    },
-    {
       "title": "OISY Wallet v1.0 - The official Launch",
       "description": "With the Helios release, officially named v1.0, OISY will step out of the beta status into its first production version. This includes functional coverage of all key features like buy, receive, send, swap, and convert from and to chain-key tokens, and with several major blockchains integrated, also a true multi-chain nature. Behind the scenes, it also includes setting up proper processes for product improvement, marketing, automated testing, and setting up a user friendly support process.",
       "is_milestone": true,
