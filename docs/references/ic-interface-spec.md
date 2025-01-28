@@ -2038,7 +2038,7 @@ When executing a query or composite query method via a query call (i.e. in non-r
 ### Cycle cost calculation {#system-api-cycle-cost}
 
 Inter-canister calls have an implicit cost, and some calls to the management canister require the caller to attach cycles to the call explicitly.  
-The various cost factors may change over time, so the following system calls serve to give the canister programmatic, up-to-date information about the costs. 
+The various cost factors may change over time, so the following system calls give the canister programmatic, up-to-date information about the costs.
 
 These system calls return costs in Cycles, represented by 128 bits, which will be written to the caller-specified `dst` pointer. 
 
