@@ -1530,69 +1530,11 @@
     "description": "The security of ICP is based on the elimination of central points of control. A user interacting with ICP shall not need to rely on a single party. Besides architectural aspects, such as the edge infrastructure, this also encompasses operational aspects, complementing the DAO-based governance of ICP.",
     "milestones": [
       {
-        "name": "Edge Infrastructure is Fully Decentralized",
-        "milestone_id": "Solenoid",
-        "description": "ICP is accessible through a decentralized edge infrastructure, which is split into NNS-controlled API Boundary Nodes and HTTP Gateways. The NNS will appoint node machines to run API Boundary Nodes and anyone will be able to run HTTP Gateways, enabling a much more decentralized ICP edge infrastructure with a diverse set of service providers.",
-        "eta": "January 2025",
-        "status": "in_progress",
-        "elements": [
-          {
-            "title": "HTTP Gateways",
-            "overview": "The HTTP Gateway becomes a standalone component as part of the new Boundary Node architecture.",
-            "forum": "https://forum.dfinity.org/t/boundary-node-roadmap/15562",
-            "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Solenoid",
-            "imported": true
-          },
-          {
-            "title": "Incident Handling under the New Boundary Node Architecture",
-            "overview": "To protect the core of the Internet Computer, processes must be established to configure temporary rate limits at API boundary nodes during incidents.",
-            "forum": "https://forum.dfinity.org/t/incident-handling-with-the-new-boundary-node-architecture/36390",
-            "proposal": "https://dashboard.internetcomputer.org/proposal/134031",
-            "docs": "",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Solenoid",
-            "imported": true
-          },
-          {
-            "title": "Community-owned HTTP Gateways",
-            "overview": "As part of the new boundary-node architecture, the HTTP gateway is turned into a standalone service, which is easily deployable by anyone, including end users.",
-            "forum": "https://forum.dfinity.org/t/boundary-node-roadmap/15562",
-            "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
-            "docs": "https://github.com/dfinity/ic-gateway",
-            "eta": "",
-            "status": "in_progress",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Solenoid"
-          },
-          {
-            "title": "API Boundary Nodes (NNS controlled)",
-            "overview": "In the new boundary-node architecture, API boundary nodes are placed under the full control of the NNS and function as the edge of the IC.",
-            "status": "deployed",
-            "forum": "https://forum.dfinity.org/t/boundary-node-roadmap/15562",
-            "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
-            "docs": "https://github.com/dfinity/ic/tree/master/rs/boundary_node/ic_boundary",
-            "is_community": false,
-            "in_beta": false,
-            "milestone_id": "Solenoid"
-          }
-        ]
-      },
-      {
         "name": "Decentralized access logs and metrics",
         "milestone_id": "Levitron",
         "description": "This milestone establishes visibility into the Internet Computer's edge infrastructure by making aggregated API boundary node access logs publicly accessible. This provides developers with valuable insights into their dapps' usage patterns and facilitates the generation of user statistics, offering key information on traffic sources. To guarantee the integrity of these logs, the milestone focuses on leveraging trusted execution environments, specifically AMD SEV-SNP.",
         "eta": null,
-        "status": "future",
+        "status": "in_progress",
         "elements": [
           {
             "title": "SEV-SNP-protected API Boundary Nodes",
@@ -1618,6 +1560,64 @@
             "status": "",
             "is_community": false,
             "in_beta": false
+          }
+        ]
+      },
+      {
+        "name": "Edge Infrastructure is Fully Decentralized",
+        "milestone_id": "Solenoid",
+        "description": "ICP is accessible through a decentralized edge infrastructure, which is split into NNS-controlled API Boundary Nodes and HTTP Gateways. The NNS will appoint node machines to run API Boundary Nodes and anyone will be able to run HTTP Gateways, enabling a much more decentralized ICP edge infrastructure with a diverse set of service providers.",
+        "eta": "January 2025",
+        "status": "deployed",
+        "elements": [
+          {
+            "title": "API Boundary Nodes (NNS controlled)",
+            "overview": "In the new boundary-node architecture, API boundary nodes are placed under the full control of the NNS and function as the edge of the IC.",
+            "status": "deployed",
+            "forum": "https://forum.dfinity.org/t/boundary-node-roadmap/15562",
+            "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
+            "docs": "https://github.com/dfinity/ic/tree/master/rs/boundary_node/ic_boundary",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Solenoid"
+          },
+          {
+            "title": "Community-owned HTTP Gateways",
+            "overview": "As part of the new boundary-node architecture, the HTTP gateway is turned into a standalone service, which is easily deployable by anyone, including end users.",
+            "forum": "https://forum.dfinity.org/t/boundary-node-roadmap/15562",
+            "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
+            "docs": "https://github.com/dfinity/ic-gateway",
+            "eta": "",
+            "status": "deployed",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Solenoid"
+          },
+          {
+            "title": "Incident Handling under the New Boundary Node Architecture",
+            "overview": "To protect the core of the Internet Computer, processes must be established to configure temporary rate limits at API boundary nodes during incidents.",
+            "forum": "https://forum.dfinity.org/t/incident-handling-with-the-new-boundary-node-architecture/36390",
+            "proposal": "https://dashboard.internetcomputer.org/proposal/134031",
+            "docs": "",
+            "eta": "",
+            "status": "deployed",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Solenoid",
+            "imported": true
+          },
+          {
+            "title": "HTTP Gateways",
+            "overview": "The HTTP Gateway becomes a standalone component as part of the new Boundary Node architecture.",
+            "forum": "https://forum.dfinity.org/t/boundary-node-roadmap/15562",
+            "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
+            "docs": "",
+            "eta": "",
+            "status": "deployed",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Solenoid",
+            "imported": true
           }
         ]
       },
@@ -3654,15 +3654,15 @@
         ]
       },
       {
-        "name": "Code Authoring and Development Workflows",
+        "name": "Coding and Development in ICP Ninja",
         "milestone_id": "Coulomb",
-        "description": "This milestone introduces new products that make building on ICP fast, fun, and educational.",
-        "eta": null,
+        "description": "This milestone focuses on ICP Ninja to make building on ICP fast, fun, and educational.",
+        "eta": "March 2025",
         "status": "in_progress",
         "elements": [
           {
             "title": "ICP Ninja BETA",
-            "overview": "ICP Ninja is your go-to online platform for developing and deploying smart contracts on the Internet Computer (ICP).",
+            "overview": "ICP Ninja is your go-to online platform for developing and deploying smart contracts on ICP.",
             "status": "deployed",
             "forum": "https://forum.dfinity.org/t/announcing-icp-ninja/36396",
             "proposal": "",
@@ -3672,30 +3672,74 @@
             "milestone_id": "Coulomb"
           },
           {
-            "title": "ICP Ninja User Experience Enhancements",
-            "overview": "ICP Ninja will receive a number of new user experience enhancements, such as dark mode and the ability to modify the file tree.",
+            "title": "Developer Productivity Enhancements",
+            "overview": "The first wave of improvements brings a completely redesigned editor, live compilation feedback, canister logs, and more.",
+            "status": "deployed",
+            "forum": "https://forum.dfinity.org/t/icp-ninja-christmas-market-release/39118",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Coulomb"
+          },
+          {
+            "title": "AI Learning Assistant",
+            "overview": "An integrated AI Learning Assistant is available in ICP Ninja and can answer any question about development on ICP, help and explain canister code, and much more.",
+            "status": "deployed",
+            "forum": "https://forum.dfinity.org/t/icp-ninja-christmas-market-release/39118",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Coulomb"
+          },
+          {
+            "title": "Landing Page Revamp",
+            "overview": "Discover a revamped landing page where users feel right at home with their projects. Users create new dapps with options for a frontend, backend, or both, or start from a curated template.",
             "status": "in_progress",
             "forum": "",
             "proposal": "",
             "docs": "",
             "is_community": false,
-            "in_beta": true,
+            "in_beta": false,
             "milestone_id": "Coulomb"
           },
           {
-            "title": "ICP Ninja Developer Productivity Enhancements",
-            "overview": "ICP Ninja will get additional features that improve developer productivity, such as the ability to view logs and see live compilation feedback.",
+            "title": "Project Sharing",
+            "overview": "Projects can be shared with others by generating a link.",
             "status": "in_progress",
             "forum": "",
             "proposal": "",
             "docs": "",
             "is_community": false,
-            "in_beta": true,
+            "in_beta": false,
             "milestone_id": "Coulomb"
           },
           {
-            "title": "Revamped Onboarding",
-            "overview": "The developer documentation will receive a number of updates focused on improving the onboarding journey for first time ICP developers.",
+            "title": "Login with Internet Identity or GitHub",
+            "overview": "Users can sign into ICP Ninja with their Internet Identity or GitHub to create an account to get access to even more features on the platform.",
+            "status": "in_progress",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Coulomb"
+          },
+          {
+            "title": "Saving Projects",
+            "overview": "Users can store their projects directly on ICP Ninja, allowing them to continue working on their projects from other devices, or simply return to them at a later time.",
+            "status": "in_progress",
+            "forum": "",
+            "proposal": "",
+            "docs": "",
+            "is_community": false,
+            "in_beta": false,
+            "milestone_id": "Coulomb"
+          },
+          {
+            "title": "Exporting Projects to GitHub",
+            "overview": "ICP Ninja allows users to export their projects to their GitHub account as a new repository.",
             "status": "in_progress",
             "forum": "",
             "proposal": "",

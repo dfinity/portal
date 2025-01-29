@@ -7,6 +7,7 @@ import Layout from "@theme/Layout";
 import Link from "@docusaurus/Link";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import ShareMeta from "@site/src/components/Common/ShareMeta";
+import VideoSlider from "../components/LibraryPage/VideoSlider";
 import { is } from "date-fns/locale";
 import { motion } from "framer-motion";
 import transitions from "@site/static/transitions.json";
@@ -229,7 +230,7 @@ function Library() {
         >
           <AnimateSpawn
             variants={transitions.container}
-            className="container-10 relative text-white pt-36 md:pt-48 pb-48 md:pb-36"
+            className="container-10 relative text-white pt-36 md:pt-48 pb-56"
           >
             <motion.h1
               variants={transitions.item}
@@ -243,16 +244,18 @@ function Library() {
             >
               Documents introducing the Internet Computer and ICP, the self-writing internet, UTOPIA clouds, and technical papers…
             </motion.p>
-            <motion.div className="container-12 relative pointer-events-none">
-              <div className="absolute w-7/12 translate-x-[25%] translate-y-[95%] bottom-1/2 sm:w-3/12 sm:translate-y-[105%] md:w-4/12 md:bottom-0 md:translate-x-[200%] md:translate-y-2/3">
-                <img
-                  src="/img/library/library-hero.svg"
-                  className="w-full max-w-none"
-                />
-              </div>
-            </motion.div>
+
           </AnimateSpawn>
         </div>
+
+        <section className="container-12 -mt-56">
+          <div className="pt-20">
+            <div className="">
+              <VideoSlider></VideoSlider>
+            </div>
+          </div>
+        </section>
+
         <section className="container-10 mt-8 py-20">
           <h2 className="tw-heading-4 md:tw-heading-60 mb-1 md:mb-3">
             In a Nutshell…
