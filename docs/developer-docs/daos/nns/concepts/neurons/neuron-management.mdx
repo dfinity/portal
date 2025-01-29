@@ -95,18 +95,19 @@ A neuron can be private or public.
 A user can request information about a list of neurons using this API:
 
 ```
-list_neurons : (ListNeurons) -> (ListNeuronsResponse) query;
-
 type ListNeurons = record {
   include_public_neurons_in_full_neurons : opt bool;
   neuron_ids : vec nat64;
   include_empty_neurons_readable_by_caller : opt bool;
   include_neurons_readable_by_caller : bool;
+  page_number: opt nat64;
+  page_size: opt nat64;
 };
 
 type ListNeuronsResponse = record {
   neuron_infos : vec record { nat64; NeuronInfo };
   full_neurons : vec Neuron;
+  total_pages_available: opt nat64;
 };
 ```
 The user can define which neurons to get information from by defining a list of neuron IDs in the argument `neuron_ids`.
