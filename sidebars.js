@@ -458,6 +458,11 @@ build: [
         },
         {
           type: "doc",
+          label: "Application architecture considerations",
+          id: "building-apps/best-practices/application-architectures",
+        },
+        {
+          type: "doc",
           label: "Idempotency",
           id: "building-apps/best-practices/idempotency",
         },
@@ -475,16 +480,6 @@ build: [
           type: "doc",
           label: "Troubleshooting",
           id: "building-apps/best-practices/troubleshooting",
-        },
-        {
-          type: "doc",
-          label: "Trust in canisters",
-          id: "building-apps/best-practices/trust-in-canisters",
-        },
-        {
-          type: "doc",
-          label: "Application architecture considerations",
-          id: "building-apps/best-practices/application-architectures",
         },
       {
         type: "category",
@@ -556,6 +551,11 @@ build: [
         type: "doc",
         label: "Formal verification",
         id: "building-apps/best-practices/security/formal-verification",
+      },
+      {
+        type: "doc",
+        label: "Trust in canisters",
+        id: "building-apps/best-practices/trust-in-canisters",
       },
     ],
   },
