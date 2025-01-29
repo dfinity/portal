@@ -15,13 +15,11 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/vuu3DUsdBZY?si=Mc1QxFBKEMPztCFm" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> </div>
 
-
-
 Third-party canisters are canisters that provide a public service at a static <GlossaryTooltip>canister</GlossaryTooltip> ID. Some examples are the DFINITY NNS and Internet Identity canisters, but third-party canisters can also be made by community developers. Using third-party canisters can be a good way to add additional functionalities to your dapp. For example, by integrating the Internet Identity canister into your dapp, you can enable identity and authentication for the users of your application.
 
-`dfx` enables a **dependency** workflow, where a canister can be configured to pull third-party canisters that it depends on into the local environment. This can be useful for developers who are looking to test the accuracy of their integration with the third-party canister and perform tests without paying cycles or using production environments. It also drastically simplifies the local deployment of canisters like the II canister, since you don't need to obtain the Wasm and Candid files for the canisters yourself - `dfx` takes care of it in the background for you.
+`dfx` enables a **dependency** workflow, where a canister can be configured to pull third-party canisters that it depends on into the local environment. This can be useful for developers who are looking to test the accuracy of their integration with the third-party canister and perform tests without paying cycles or using production environments. It also drastically simplifies the local deployment of canisters like the II canister, since you don't need to obtain the Wasm and Candid files for the canisters yourself—`dfx`` takes care of it in the background for you.
 
-In this tutorial, you'll be focusing on pulling third-party canisters. If you're interested in developing third-party canisters that can be pulled by other developers, check out the [documentation on `dfx deps`](/docs/current/developer-docs/smart-contracts/maintain/import).
+In this tutorial, you'll be focusing on pulling third-party canisters. If you're interested in developing third-party canisters that can be pulled by other developers, check out the [documentation on `dfx deps`](/docs/current/developer-docs/smart-contracts/maintain/import/).
 
 ## Pulling third-party canister dependencies
 
@@ -47,9 +45,9 @@ You will be prompted to select the language that your backend canister will use.
 ```
 ? Select a backend language: ›
 ❯ Motoko
-  Rust
-  TypeScript (Azle)
-  Python (Kybra)
+  Rust
+  TypeScript (Azle)
+  Python (Kybra)
 ```
 
 :::info
@@ -59,19 +57,19 @@ You will be prompted to select the language that your backend canister will use.
 Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
 
 ```
-  ? Select a frontend framework: ›
-  SvelteKit
-  React
-  Vue
-  Vanilla JS
-  No JS template
+  ? Select a frontend framework: ›
+  SvelteKit
+  React
+  Vue
+  Vanilla JS
+  No JS template
 ❯ No frontend canister
 ```
 
 Lastly, you can include extra features to be added to your project:
 
 ```
-  ? Add extra features (space to select, enter to confirm) ›
+  ? Add extra features (space to select, enter to confirm) ›
 ⬚ Internet Identity
 ⬚ Bitcoin (Regtest)
 ⬚ Frontend tests
@@ -89,27 +87,27 @@ First, open the `dfx.json` file in your project's directory. You need to configu
 
 ```json title="dfx.json"
 {
-    "canisters": {
-        "dependencies_backend": {
-            "type": "motoko",
-            "main": "src/dependencies_backend/main.mo",
-            "dependencies": [
-                "internet_identity"
-            ]
-        },
-        "internet_identity": {
-            "type": "pull",
-            "id": "rdmx6-jaaaa-aaaaa-aaadq-cai"
-        }
-  },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
-  "output_env_file": ".env",
-  "version": 1
+    "canisters": {
+        "dependencies_backend": {
+            "type": "motoko",
+            "main": "src/dependencies_backend/main.mo",
+            "dependencies": [
+                "internet_identity"
+            ]
+        },
+        "internet_identity": {
+            "type": "pull",
+            "id": "rdmx6-jaaaa-aaaaa-aaadq-cai"
+        }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
 }
 ```
 
@@ -131,15 +129,15 @@ The `deps/` folder is also created in your project's root folder. The `deps/pull
 
 ```json title="deps/pulled.json"
 {
-  "canisters": {
-    "rdmx6-jaaaa-aaaaa-aaadq-cai": {
-      "name": "internet_identity",
-      "wasm_hash": "07869792e0841765e24014a2cb23e4a53d3147be6051bfc4966565017cd5fb2c",
-      "init_guide": "Use '(null)' for sensible defaults. See the candid interface for more details.",
-      "candid_args": "(opt InternetIdentityInit)",
-      "gzip": true
-    }
-  }
+  "canisters": {
+    "rdmx6-jaaaa-aaaaa-aaadq-cai": {
+      "name": "internet_identity",
+      "wasm_hash": "07869792e0841765e24014a2cb23e4a53d3147be6051bfc4966565017cd5fb2c",
+      "init_guide": "Use '(null)' for sensible defaults. See the candid interface for more details.",
+      "candid_args": "(opt InternetIdentityInit)",
+      "gzip": true
+    }
+  }
 }%
 ```
 
@@ -191,9 +189,9 @@ The output will include a local Candid UI URL for both the `dependencies_backend
 Installing code for canister dependencies_backend, with canister ID bkyz2-fmaaa-aaaaa-qaaaq-cai
 Deployed canisters.
 URLs:
-  Backend canister via Candid interface:
-    dependencies_backend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
-    internet_identity: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=rdmx6-jaaaa-aaaaa-aaadq-cai
+  Backend canister via Candid interface:
+    dependencies_backend: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=bkyz2-fmaaa-aaaaa-qaaaq-cai
+    internet_identity: http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai&id=rdmx6-jaaaa-aaaaa-aaadq-cai
 ```
 
 Now, you can interact with the II canister locally using the CLI or the Candid UI. In a future tutorial you'll integrate your backend canister with the II canister. For now, that'll wrap up this module.
@@ -227,4 +225,3 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 Next, let's take a deeper dive into an introduction of Candid and the role that it plays in development on ICP.
 
 - [2.4 Introduction to Candid](/docs/current/tutorials/developer-journey/level-2/2.4-intro-candid).
-

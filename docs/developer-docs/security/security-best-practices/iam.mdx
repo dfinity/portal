@@ -108,6 +108,8 @@ Never use `agent.fetchRootKey()` in production builds, only in test builds. Not 
 
 ## Integrating Internet Identity on mobile devices
 
+A [short presentation](https://www.youtube.com/watch?v=iRmpCkzC6iI&t=1863s) can be found as part of the November 2024 global R&D.
+
 ### Security concern
 
 Internet Identity has a standardized way for web applications to request authentication of a user. This [client authentication protocol](/docs/current/references/ic-interface-spec#client-authentication-protocol) allows a client dapp frontend to obtain a delegation signed by the Internet Identity for a locally generated session key pair. Using this delegation in combination with the session key allows the dapp frontend to make authenticated calls towards the backend canister. Such calls need to be digitally signed by the session private key. The IC will verify the signature and verify if there is a delegation (or chain of delegations) from II key to the session public key.
