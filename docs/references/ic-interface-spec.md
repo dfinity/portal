@@ -7247,7 +7247,7 @@ ic0.canister_self_copy<es>(dst : I, offset : I, size : I) =
 I ∈ {i32, i64}
 ic0.subnet_self_copy<es>(dst : I, offset : I, size : I) =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
-  copy_to_canister<es>(dst, offset, size, es.wasm_state.self_id)
+  copy_to_canister<es>(dst, offset, size, es.params.sysenv.subnet_id)
 
 ic0.canister_cycle_balance<es>() : i64 =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
