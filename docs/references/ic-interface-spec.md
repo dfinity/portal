@@ -7559,6 +7559,8 @@ ic0.replication_factor<es, S>(src: I, size: I) : i32 =
   principal_bytes = copy_from_canister<es>(src, size)
   if not principal_bytes encode a principal then
     Trap {cycles_used = es.cycles_used;}
+  if principal_bytes ∉ es.subnets then
+    Trap {cycles_used = es.cycles_used;}
   return S.canister_subnet[principal_bytes].subnet_size
 
 I ∈ {i32, i64}
