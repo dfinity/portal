@@ -7516,6 +7516,52 @@ ic0.in_replicated_execution<es>() : i32 =
   else return 0
 
 I ∈ {i32, i64}
+ic0.cost_call<es>(method_name_size: i64, payload_size: i64, dst: I) : () = 
+  copy_cycles_to_canister<es>(dst, arbitrary())
+
+I ∈ {i32, i64}
+ic0.cost_create_canister<es>(dst: I) : () = 
+  copy_cycles_to_canister<es>(dst, arbitrary())
+
+I ∈ {i32, i64}
+ic0.cost_cost_http_request<es>(request_size: i64, max_res_bytes: i64, dst: I) : () = 
+  copy_cycles_to_canister<es>(dst, arbitrary())
+
+I ∈ {i32, i64}
+ic0.cost_ecdsa<es>(src: I, size: I, dst: I) : () = 
+  principal_bytes = copy_from_canister<es>(src, size)
+  if not principal_bytes encode a principal then
+    Trap {cycles_used = es.cycles_used;}
+  if principal_bytes ∉ es.subnets then
+    Trap {cycles_used = es.cycles_used;}
+  copy_cycles_to_canister<es>(dst, arbitrary())
+
+I ∈ {i32, i64}
+ic0.cost_schnorr<es>(src: I, size: I, dst: I) : () = 
+  principal_bytes = copy_from_canister<es>(src, size)
+  if not principal_bytes encode a principal then
+    Trap {cycles_used = es.cycles_used;}
+  if principal_bytes ∉ es.subnets then
+    Trap {cycles_used = es.cycles_used;}
+  copy_cycles_to_canister<es>(dst, arbitrary())
+
+I ∈ {i32, i64}
+ic0.cost_vetkey<es>(src: I, size: I, dst: I) : () = 
+  principal_bytes = copy_from_canister<es>(src, size)
+  if not principal_bytes encode a principal then
+    Trap {cycles_used = es.cycles_used;}
+  if principal_bytes ∉ es.subnets then
+    Trap {cycles_used = es.cycles_used;}
+  copy_cycles_to_canister<es>(dst, arbitrary())
+
+I ∈ {i32, i64}
+ic0.replication_factor<es, S>(src: I, size: I, dst: I) : i32 = 
+  principal_bytes = copy_from_canister<es>(src, size)
+  if not principal_bytes encode a principal then
+    Trap {cycles_used = es.cycles_used;}
+  return S.canister_subnet[principal_bytes].subnet_size
+
+I ∈ {i32, i64}
 ic0.debug_print<es>(src : I, size : I) =
   return
 
