@@ -2048,7 +2048,7 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
 
 -   `ic0.cost_create_canister : (dst : I) -> (); `I ∈ {i32, i64}`
 
-    The cost of creating a canister on the same subnet as the calling canister via [`create_canister`](#ic-create_canister). Note that canister creation via a call to the CMC can have a different cost if the target subnet has a different replication factor. In order to facilitate conversions, see `ic0.replication_factor`.
+    The cost of creating a canister on the same subnet as the calling canister via [`create_canister`](#ic-create_canister). Note that canister creation via a call to the CMC can have a different cost if the target subnet has a different replication factor. In order to facilitate conversions, see `ic0.replication_factor`. When converting costs using ratios of subnet sizes, be mindful of rounding issues and consider adding a safety margin. 
 
 -   `ic0.cost_http_request(request_size : i64, max_res_bytes : i64, dst : I) -> (); `I ∈ {i32, i64}`
 
@@ -2059,7 +2059,7 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
     - body
     - transform - i.e., the sum of the transform method name length and the length of the transform context
     
-    `max_res_bytes` is the maximum response length the caller wishes to accept. 
+    `max_res_bytes` is the maximum response length the caller wishes to accept. Note that this argument is not optional like in the call to the management canister. The cost depends on `max_res_bytes`, so the caller must provide it explicitly. See the [`http_request`](#ic-http_request) call to the management canister API to learn about the current default and maximum values. 
 
 -   `ic0.cost_ecdsa(src : I, size : I, dst : I) -> (); `I ∈ {i32, i64}`
 
@@ -2069,13 +2069,13 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
 
     These system calls accept a key name via a textual representation for the specific signing scheme / key of a given size stored in the heap memory starting at offset `src` . See [`sign_with_ecdsa`](#ic-sign_with_ecdsa), [`sign_with_schnorr`](#ic-sign_with_schnorr) and [`vetkd_encrypted_key`](#ic-vetkd_encrypted_key) for more information. 
 
-    These system calls trap if `src` + `size` do not decode to a valid key name. 
+    These system calls trap if the string represented by `src` + `size` does not correspond to a valid key name, such as `dfx_test_key`, `test_key_1` or `key_1`. 
 
 -   `ic0.replication_factor : (src : I, size : I) -> i32; `I ∈ {i32, i64}`
 
     Returns the replication factor (subnet size) of the subnet identified by the `Principal` at `src` + `size`. 
 
-    This system call traps if `src` + `size` do not decode to a valid `Principal` or the given `Principal` is not a subnet.   
+    This system call traps if `src` + `size` do not represent a valid `Principal` or the given `Principal` is not a subnet.   
 
 ### Debugging aids
 
