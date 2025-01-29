@@ -7561,7 +7561,7 @@ ic0.replication_factor<es, S>(src: I, size: I) : i32 =
     Trap {cycles_used = es.cycles_used;}
   if principal_bytes ∉ es.subnets then
     Trap {cycles_used = es.cycles_used;}
-  return S.canister_subnet[principal_bytes].subnet_size
+  return arbitrary()
 
 I ∈ {i32, i64}
 ic0.debug_print<es>(src : I, size : I) =
