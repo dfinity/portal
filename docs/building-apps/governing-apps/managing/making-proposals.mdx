@@ -50,7 +50,7 @@ This means that it is not easy to upgrade an SNS-controlled dapp canister during
 
 ### Submitting via `sns make-proposal` command
 
-Any eligible neuron can submit a proposal. Therefore, the command to [submit a proposal](/docs/building-apps/developer-tools/quill/sns/quill-sns-make-proposal)
+Any eligible neuron can submit a proposal. Therefore, the command to [submit a proposal](https://github.com/dfinity/quill/)
 `sns make-proposal` is a `ManageNeuron` message. With this command, neuron holders can submit proposals (such as a `Motion` proposal) to be voted on by other neuron holders.
 
 The structure of the commands is as follows:
@@ -74,7 +74,7 @@ quill send message.json
 
 - `<PATH_TO_CANISTER_IDS_JSON_FILE>`: The file path to a canister IDs JSON file. See example [sns_canister_ids.json](https://github.com/dfinity/quill/blob/master/e2e/assets/sns_canister_ids.json).
 - `PROPOSAL_NEURON_ID`: The neuron ID of the neuron that is submitting the proposal.
-- `<PATH_TO_PEM_FILE>`: The path to the PEM file of the identity that owns the neuron that is submitting the proposal. [Learn how to generate a PEM file](/docs/building-apps/developer-tools/quill/quill-generate).
+- `<PATH_TO_PEM_FILE>`: The path to the PEM file of the identity that owns the neuron that is submitting the proposal. [Learn how to generate a PEM file](https://github.com/dfinity/quill/).
 - `title`: A short description of the proposal.
 - `url`: A link to a document that describes the proposal in more detail.
 - `summary`: A short summary of the proposal.
@@ -449,7 +449,7 @@ The proposal `UpgradeSnsControlledCanister` is to upgrade a dapp canister that i
 ```
 
 :::warning
-Because this proposal requires passing wasm, which is unwieldy to copy/paste into the command line as binary, it is recommended that developers use the specially made [`make-upgrade-canister-proposal`](/docs/building-apps/developer-tools/quill/sns/quill-sns-make-proposal) command in `quill sns`.
+Because this proposal requires passing wasm, which is unwieldy to copy/paste into the command line as binary, it is recommended that developers use the specially made [`make-upgrade-canister-proposal`](https://github.com/dfinity/quill/) command in `quill sns`.
 
 
 ```bash
