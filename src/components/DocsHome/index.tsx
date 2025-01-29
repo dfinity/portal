@@ -206,7 +206,7 @@ const frameworksTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/building-apps/getting-started/first-smart-contract"
+        href="/docs/building-apps/getting-started/quickstart"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to React quickstart"
       >
@@ -552,7 +552,7 @@ const DocsHomePage: FC = () => {
             <p className="mb-0">
               <Link
                 className="button-white button-with-icon"
-                href="/docs/building-apps/getting-started/first-smart-contract"
+                href="/docs/building-apps/getting-started/quickstart"
               >
                 SDK BUILD
                 <LinkArrowRight />
