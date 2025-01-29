@@ -14,53 +14,6 @@
       "in_beta": false
     },
     {
-      "title": "HTTP Gateways",
-      "overview": "The HTTP Gateway becomes a standalone component as part of the new Boundary Node architecture.",
-      "forum": "https://forum.dfinity.org/t/boundary-node-roadmap/15562",
-      "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
-      "docs": "",
-      "eta": "",
-      "status": "in_progress",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Solenoid",
-      "imported": true
-    },
-    {
-      "title": "Incident Handling under the New Boundary Node Architecture",
-      "overview": "To protect the core of the Internet Computer, processes must be established to configure temporary rate limits at API boundary nodes during incidents.",
-      "forum": "https://forum.dfinity.org/t/incident-handling-with-the-new-boundary-node-architecture/36390",
-      "proposal": "https://dashboard.internetcomputer.org/proposal/134031",
-      "docs": "",
-      "eta": "",
-      "status": "in_progress",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Solenoid",
-      "imported": true
-    },
-    {
-      "title": "Community-owned HTTP Gateways",
-      "overview": "As part of the new boundary-node architecture, the HTTP gateway is turned into a standalone service, which is easily deployable by anyone, including end users.",
-      "forum": "https://forum.dfinity.org/t/boundary-node-roadmap/15562",
-      "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
-      "docs": "https://github.com/dfinity/ic-gateway",
-      "eta": "",
-      "status": "in_progress",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Solenoid"
-    },
-    {
-      "title": "Edge Infrastructure is Fully Decentralized",
-      "is_milestone": true,
-      "description": "ICP is accessible through a decentralized edge infrastructure, which is split into NNS-controlled API Boundary Nodes and HTTP Gateways. The NNS will appoint node machines to run API Boundary Nodes and anyone will be able to run HTTP Gateways, enabling a much more decentralized ICP edge infrastructure with a diverse set of service providers.",
-      "milestone_id": "Solenoid",
-      "status": "in_progress",
-      "eta": "Q1 2025",
-      "eta_to_render": "January 2025"
-    },
-    {
       "title": "SEV-SNP-protected API Boundary Nodes",
       "overview": "Security for API boundary nodes is improved using trusted execution (AMD SEV-SNP), enabling anyone to attest that the correct software is running.",
       "forum": "https://forum.dfinity.org/t/long-term-r-d-boundary-nodes-proposal/9401",
@@ -90,7 +43,7 @@
       "is_milestone": true,
       "milestone_id": "Levitron",
       "description": "This milestone establishes visibility into the Internet Computer's edge infrastructure by making aggregated API boundary node access logs publicly accessible. This provides developers with valuable insights into their dapps' usage patterns and facilitates the generation of user statistics, offering key information on traffic sources. To guarantee the integrity of these logs, the milestone focuses on leveraging trusted execution environments, specifically AMD SEV-SNP.",
-      "status": "future",
+      "status": "in_progress",
       "eta": "",
       "eta_to_render": ""
     },
