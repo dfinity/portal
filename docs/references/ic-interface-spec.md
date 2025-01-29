@@ -7555,7 +7555,7 @@ ic0.cost_vetkey<es>(src: I, size: I, dst: I) : () =
   copy_cycles_to_canister<es>(dst, arbitrary())
 
 I ∈ {i32, i64}
-ic0.replication_factor<es, S>(src: I, size: I, dst: I) : i32 = 
+ic0.replication_factor<es, S>(src: I, size: I) : i32 = 
   principal_bytes = copy_from_canister<es>(src, size)
   if not principal_bytes encode a principal then
     Trap {cycles_used = es.cycles_used;}
