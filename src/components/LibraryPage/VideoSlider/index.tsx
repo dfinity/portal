@@ -4,50 +4,40 @@ import "./index.css";
 
 import React, { useRef } from "react";
 
-import AnimateSpawn from "../../../Common/AnimateSpawn";
 import Link from "@docusaurus/Link";
 import Slider from "react-slick";
-import { arrow } from "@floating-ui/react";
 import { motion } from "framer-motion";
 import transitions from "@site/static/transitions.json";
 
 const sliderData = [
   {
     title: "World Computer Day - Davos 2025 - Event Highlights",
-    image: "/img/home/slider/nns_explained.webp",
-    link: "https://www.youtube.com/watch?v=1uX-fRgvXjU&list=PLuhDt1vhGcrclxfmztDd6OKE80dnrFmG6",
+    image: "/img/library/video-slider/world-computer-day.avif",
+    link: "https://www.youtube.com/watch?v=7yo1gwzWAak",
   },
   {
     title: "AI onchain: Daniel Naeff Interview at AI+X Summit",
-    image: "/img/home/slider/update_undp_initiative.webp",
-    link: "https://www.undp.org/policy-centre/singapore/press-releases/undp-partners-dfinity-foundation-enhance-financial-inclusion-msmes",
+    image: "/img/library/video-slider/ai-on-chain.avif",
+    link: "https://www.youtube.com/watch?v=8TVksaxpwK4",
   },
   {
     title: "Where AI Builds: Unlocking the Power of Imagination through Chat - with Dominic",
-    image: "/img/home/slider/icp_deck_highlight.webp",
-    link: "https://deck.internetcomputer.org/",
+    image: "/img/library/video-slider/where-ai-builds.avif",
+    link: "https://www.youtube.com/watch?v=9q13cFGxEb0",
   },
   {
     title: "Fireside Chat | Does AI Need Crypto? at Crypto AI:Con",
-    image: "/img/home/slider/milestones_highlight_1.webp",
-    link: "https://medium.com/dfinity",
+    image: "/img/library/video-slider/fire-side-chat.avif",
+    link: "https://www.youtube.com/watch?v=vZPkmzUOF0U",
   },
   {
     title: "AI onchain: Daniel Naeff Interview at AI+X Summit",
-    image: "/img/home/slider/milestones_highlight_1.webp",
-    link: "https://medium.com/dfinity",
+    image: "/img/library/video-slider/ai-on-chain.avif",
+    link: "https://www.youtube.com/watch?v=8TVksaxpwK4",
   },
 ];
 
 const MotionLink = motion(Link);
-
-const buttonStyle = {
-  background: "rgba(255 255 255 / 10%)",
-  color: "white",
-  backdropFilter: "blur(20px)",
-  width: "3rem",
-  height: "3rem",
-};
 
 export const CardWithImage: React.FC<{
   children?: React.ReactNode;
@@ -62,9 +52,13 @@ export const CardWithImage: React.FC<{
     >
       <article className="bg-white rounded-xl flex flex-col justify-start gap-5 group relative overflow-hidden">
         <div
-          className="w-100 aspect-[16/9] bg-gray-200 bg-cover bg-no-repeat bg-center"
-          style={{ backgroundImage: `url(${image})` }}
-        />
+          className="w-100 aspect-[16/9] bg-gray-200 bg-cover bg-no-repeat bg-center flex items-center justify-center"
+          style={{ backgroundImage: `url(${image})` }}>
+            <svg className="backdrop-blur-lg rounded-full" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 32C0 14.3269 14.3269 0 32 0C49.6731 0 64 14.3269 64 32C64 49.6731 49.6731 64 32 64C14.3269 64 0 49.6731 0 32Z" fill="white" fill-opacity="0.3"/>
+              <path d="M39.376 32.4161L28.7774 39.4818C28.5476 39.635 28.2372 39.5729 28.084 39.3432C28.0292 39.261 28 39.1645 28 39.0658V24.9343C28 24.6582 28.2239 24.4343 28.5 24.4343C28.5987 24.4343 28.6952 24.4635 28.7774 24.5183L39.376 31.584C39.6057 31.7372 39.6678 32.0477 39.5146 32.2774C39.478 32.3323 39.4309 32.3795 39.376 32.4161Z" fill="white"/>
+            </svg>
+        </div>
         <div className="p-5 pt-0">
           {children}
         </div>
@@ -73,49 +67,6 @@ export const CardWithImage: React.FC<{
     </MotionLink>
   );
 };
-
-const css = `
-  .slick-prev:before,
-  .slick-next:before {
-    display: none;
-  }
-
-  .slick-prev svg,
-  .slick-next svg {
-    transform: scale(.5);
-    transition: transform .2s cubic-bezier(0.3, 0.7, 0, 1);
-  }
-
-  .slick-prev svg {
-    transform: rotate(180deg) scale(.5);
-  }
-
-  .slick-prev:hover svg,
-  .slick-next:hover svg {
-    transform: scale(.7);
-  }
-
-  .slick-prev:hover svg {
-    transform: rotate(180deg) scale(.7);
-  }
-
-  .slick-dots {
-    bottom: -4rem;
-  }
-
-  .slick-dots li button:before {
-    display: none;
-  }
-
-  .slick-dots li button {
-    background: rgba(255 255 255 / 20%);
-    border: none;
-  }
-
-  .slick-dots li.slick-active button {
-    background: #fff;
-  }
-`;
 
 export const VideoSlider = () => {
   let sliderRef = useRef(null);
@@ -128,7 +79,7 @@ export const VideoSlider = () => {
   const settings = {
     dots: false,
     infinite: false,
-    slidesToShow: 3,
+    slidesToShow: 3.5,
     slidesToScroll: 1,
     autoplay: false,
     autoplaySpeed: 2000,
@@ -137,24 +88,33 @@ export const VideoSlider = () => {
     padding: "20px",
     centerPadding: "20px",
     swipeToSlide: true,
-    // nextArrow: <NextArrow />,
-    // prevArrow: <PrevArrow />,
+    arrows: false,
     responsive: [
+      {
+        breakpoint: 960,
+        settings: {
+          slidesToShow: 2.25,
+        },
+      },
       {
         breakpoint: 768,
         settings: {
+          slidesToShow: 1.5,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
           slidesToShow: 1,
-          arrows: false,
         },
       },
     ],
   };
   return (
     <div className="slider-container">
-      <style>{css}</style>
       <Slider ref={(slider) => (sliderRef = slider)} {...settings}>
         {sliderData.map((data, index) => (
-          <div key={index} className="border-box px-3">
+          <div key={index} className="border-box pr-6">
             <CardWithImage href={data.link} image={data.image}>
               <div className="h-16">
                 <h1 className="tw-heading-7 md:tw-heading-5 mb-0 line-clamp-2">
@@ -165,7 +125,7 @@ export const VideoSlider = () => {
           </div>
         ))}
       </Slider>
-      <aside className="flex gap-4 justify-end mt-4">
+      <aside className="gap-4 justify-end mt-6 hidden md:flex">
         <button className="bg-transparent w-12 h-12 p-0 inline-flex justify-center items-center rounded-full border border-black-20 outline-none" onClick={previous} aria-label="Previous">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M3.82843 6.9999H16V8.9999H3.82843L9.1924 14.3638L7.7782 15.778L0 7.9999L7.7782 0.22168L9.1924 1.63589L3.82843 6.9999Z" fill="#3B00B9"/>

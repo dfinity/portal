@@ -230,7 +230,7 @@ function Library() {
         >
           <AnimateSpawn
             variants={transitions.container}
-            className="container-10 relative text-white pt-36 md:pt-48 pb-56"
+            className="container-10 relative text-white pt-36 md:pt-48 pb-56 md:pb-80"
           >
             <motion.h1
               variants={transitions.item}
