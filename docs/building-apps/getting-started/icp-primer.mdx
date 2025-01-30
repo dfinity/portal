@@ -1,0 +1,53 @@
+---
+keywords: [beginner, getting started, app architecture, application architecture, how it works, how apps work, how canisters work, how canisters communicate, canister smart contracts]
+hide_table_of_contents: true
+---
+
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+import { OsType, useOs } from "/src/hooks/useOs";
+
+# ICP primer
+
+<MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
+
+diagram of ICP
+
+wasm runtime system / virtual machine
+
+allows for running complex apps, web apps, writing canister code in different langauges
+
+the network nodes run software called the replica
+
+canisters deployed locally: one replica
+
+canisters get deployed to the mainnet/playground: multiple replicas
+
+ICP embraces scalability and runs canisters in parallel. In that regard, canisters are similar to processes or microservices from traditional programming. Smart contracts can be fully autonomous and can schedule execution using timers without relying on users sending messages.
+
+use resources of nodes on the network, nodes located across the globe
+
+In terms of storage, a canister can store arbitrary data in its WebAssembly memory. Additionally, a canister can use a larger stable memory. The difference between the two memories is important for upgradable canisters: the WebAssembly memory is cleared on an upgrade, whereas the stable memory is preserved (hence the name “stable”). For immutable canisters, there is no observable difference between the two memories except for the size and functions to access them.
+
+
+
+canisters use cycles to pay for the resources it uses
+
+learn more about [cycles]
+
+when a canister is running on the network it is replicated across all nodes in the subnet
+
+learn more about subnets [here]
+
+canister has state, state can be modified or queried
+
+canister receives and sends messages
+
+where calls are made by sending messages instead of transactions. The difference between a transaction and a message becomes apparent only when the canister calls other canisters. A transaction is atomic in the sense that it rolls back all state changes if any of the calls fail. A message does not have such atomicity guarantees across calls. Programming on ICP is more asynchronous compared to Ethereum. If the canister does not make any calls, then the message behaves exactly like a transaction.
+
+each canister has ability to call other canisters or be called by users
+
+can call the management canister - system api to interact with the protocol - randomness, etc
+
