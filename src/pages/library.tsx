@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { de, is } from "date-fns/locale";
 
 import AnimateSpawn from "@site/src/components/Common/AnimateSpawn";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
@@ -8,7 +9,6 @@ import Link from "@docusaurus/Link";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import ShareMeta from "@site/src/components/Common/ShareMeta";
 import VideoSlider from "../components/LibraryPage/VideoSlider";
-import { is } from "date-fns/locale";
 import { motion } from "framer-motion";
 import transitions from "@site/static/transitions.json";
 import { useDarkHeaderInHero } from "@site/src/utils/use-dark-header-in-hero";
@@ -16,11 +16,19 @@ import { useDarkHeaderInHero } from "@site/src/utils/use-dark-header-in-hero";
 const quickstartCards = [
   {
     title: "Internet Computer in a Nutshell",
+    description: "deck.internetcomputer.org",
     url: "/presentations/Internet Computer in a nutshell EN.pdf",
+    img: "/img/library/internet-computer-in-a-nutshell-en.png",
+    background: 'conic-gradient(from 240deg at 50% 50%, #5331cf, #7b37cb, #e69cba, #fed9ce, #fed9ce, #e69cba, #7b37cb, #5331cf)',
+    isInverted: true,
   },
   {
     title: "Der Internet Computer in Kürze (German)",
+    description: "deck.internetcomputer.org",
     url: "/presentations/Internet Computer in a nutshell DE.pdf",
+    img: "/img/library/internet-computer-in-a-nutshell-de.png",
+    background: 'conic-gradient(from 75deg at 50% 50%, #5331cf, #7b37cb, #e69cba, #fed9ce, #fed9ce, #e69cba, #7b37cb, #5331cf)',
+    isInverted: true,
   },
 ];
 
@@ -29,16 +37,27 @@ const presentationCards = [
     title: "Internet Computer – The World Computer Paradigm",
     description: "deck.internetcomputer.org",
     url: "https://internetcomputer.docsend.com/view/dzkwezufykwpb7p8",
+    img: "/img/library/world-computer-paradigm.png",
+    imgPosition: "right",
+    background: '#3B00B9',
+    isInverted: true,
   },
   {
     title: "Where Al Builds - Internet Computer Protocol",
     description: "deck.icp.ai",
     url: "https://internetcomputer.docsend.com/view/a64n9c467asbk5de",
+    img: "/img/library/where-ai-builds.png",
+    imgPosition: "right",
+    background: '#110046',
+    isInverted: true,
   },
   {
     title: "UTOPIA – Create private clouds using ICP technology",
     description: "deck.utopia.com",
     url: "https://utopia.docsend.com/view/ez8f34n53q2fg2de",
+    img: "/img/library/utopia-create-private-clouds-using-icp-tech.png",
+    imgPosition: "right",
+    background: '#F29807',
   },
 ];
 
@@ -146,6 +165,57 @@ const whitepaperCards = [
 
 const LibraryCard: React.FC<{
   title: string;
+  url: string;
+  subtitle?: string;
+  description?: string;
+  img?: string;
+  imgPosition?: string;
+  background: string;
+  isInverted?: boolean;
+}> = ({ title, url, subtitle, description, img, imgPosition = 'bottom', background = '#FFF', isInverted = false }) => {
+  return (
+    <Link
+      className="link-primary link-with-icon no-underline cursor-pointer h-full"
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <article
+        className={`w-full h-full rounded-xl overflow-hidden flex flex-col gap-8 ${isInverted ? 'text-white' : 'text-black'}`}
+        style={{ 
+          background: background,
+        }}
+      >
+        <div className="px-6 pt-8 pb-6">
+          <h3 className="tw-heading-5 mb-2">
+            {title}
+          </h3>
+          {subtitle && (
+            <div className="tw-paragraph-sm mb-2">
+              {subtitle}
+            </div>
+          )}
+          {description && (
+            <div
+              className="tw-paragraph-sm line-clamp-4 mb-6">
+              {description}
+            </div>
+          )}
+        </div>
+
+        {img && (
+          <img src={img} alt={title} className={`${
+            imgPosition === 'bottom' ? 'mx-auto  w-auto h-full' : 'mr-0 ml-auto w-[80%] h-auto pb-10'
+          }`} />
+        )}
+
+      </article>
+    </Link>
+  );
+};
+
+const WhitePaperCard: React.FC<{
+  title: string;
   subtitle?: string;
   description?: string;
   url: string;
@@ -160,8 +230,8 @@ const LibraryCard: React.FC<{
       rel="noopener noreferrer"
     >
       <article
-        className={`rounded-xl overflow-hidden flex flex-col h-full w-full ${
-          highlighted ? "bg-[#240d4e] text-white" : "bg-white text-black"
+        className={`rounded-xl overflow-hidden flex flex-col h-full w-full text-white ${
+          highlighted ? "bg-[#240d4e] text-white" : "bg-[#140636]"
         }`}
       >
         <div className="px-6 pt-8 pb-6 flex flex-col flex-1">
@@ -188,11 +258,7 @@ const LibraryCard: React.FC<{
           )}
 
           <div
-            className={`button-round-icon mt-auto ${
-              highlighted
-                ? "!bg-transparent !border-white/30 !text-white hover:!bg-white hover:!text-[#240d4e] hover:!border-white"
-                : ""
-            }`}
+            className={`button-round-icon mt-auto !bg-transparent !text-[#AE9EFF] !border-white/20 hover:!bg-white hover:!text-[#240d4e] hover:!border-white`}
             aria-label={`Download`}
           >
             {isDownload ? <DownloadIcon /> : <LinkArrowRight />}
@@ -216,14 +282,14 @@ function Library() {
       <ShareMeta image="/img/shareImages/share-library.webp"></ShareMeta>
 
       <main
-        className="text-black relative overflow-hidden"
+        className="text-white relative overflow-hidden bg-[#0A0023]"
         style={{
           marginTop: `calc(var(--ifm-navbar-height) * -1)`,
         }}
       >
         {isDark && <DarkHeroStyles bgColor="infinite"></DarkHeroStyles>}
         <div
-          className="relative bg-[#0A0023] text-white overflow-hidden"
+          className="relative text-white overflow-hidden"
           ref={heroRef}
         >
 
@@ -272,37 +338,38 @@ function Library() {
 
 
         <section className="container-10 mt-8 py-20">
-          <h2 className="tw-heading-4 md:tw-heading-60 mb-1 md:mb-3">
+          <h2 className="tw-heading-4 md:tw-heading-48 mb-1 md:mb-3">
             In a Nutshell…
           </h2>
-          <div className="mt-4 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="mt-4 md:mt-8 grid grid-cols-1 md:grid-cols-2 gap-4">
             {quickstartCards.map((card) => (
-              <LibraryCard key={card.title} title={card.title} url={card.url} isDownload />
+              <LibraryCard key={card.title} {...card} />
             ))}
           </div>
         </section>
         <section className="container-10 pt-4 pb-20 md:py-12 ">
-          <h2 className="tw-heading-4 md:tw-heading-60 mb-1 md:mb-3">
+          <h2 className="tw-heading-4 md:tw-heading-48 mb-1 md:mb-3">
             Online Decks
           </h2>
           <div className="mt-4 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
             {presentationCards.map((card) => (
-              <LibraryCard key={card.title} title={card.title} description={card.description} url={card.url} />
+              <LibraryCard key={card.title} {...card} />
             ))}
           </div>
         </section>
         <section className="container-10 py-4 md:py-20 mb-20">
-          <h2 className="tw-heading-4 md:tw-heading-60 mb-1 md:mb-3">
+          <h2 className="tw-heading-4 md:tw-heading-48 mb-1 md:mb-3">
             Technical Papers
           </h2>
           <div className="mt-4 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
             {whitepaperCards.map((card, idx) => (
-              <LibraryCard
+              <WhitePaperCard
                 key={card.title}
                 title={card.title}
                 description={card.description}
                 url={card.url}
                 highlighted={idx === 0}
+                isDownload={true}
               />
             ))}
           </div>
