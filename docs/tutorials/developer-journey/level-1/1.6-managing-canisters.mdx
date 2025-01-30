@@ -21,9 +21,9 @@ Now that you have <GlossaryTooltip>canisters</GlossaryTooltip> deployed, the nex
 
 ## The ICP management canister
 
-To enable canister management, the management canister exposes management functionality to end users and other canisters. While it is titled the 'management canister', it is not actually a canister that exists with an isolated state, Wasm code, etc; it is a facade. It is important to understand the management canister's role, however, in order to understand some of the advanced ICP features, such as threshold ECDSA and integrations like Bitcoin.
+To enable canister management, the management canister exposes management functionality to end users and other canisters. While it is titled the 'management canister,' it is not actually a canister that exists with an isolated state, Wasm code, etc.; it is a facade. It is important to understand the management canister's role, however, to understand some of the advanced ICP features, such as threshold ECDSA and integrations like Bitcoin.
 
-Management operations such as updating a canister, creating a canister, and stopping or starting a canister, are sent to the management canister and then executed. When executed, the messages are sent to the relevant <GlossaryTooltip>subnet</GlossaryTooltip> and intercepted by the execution environment, which triggers the execution of the operation.
+Management operations such as updating a canister, creating a canister, and stopping or starting a canister are sent to the management canister and then executed. When executed, the messages are sent to the relevant <GlossaryTooltip>subnet</GlossaryTooltip> and intercepted by the execution environment, which triggers the execution of the operation.
 
 ## Prerequisites
 
@@ -35,7 +35,7 @@ You will be building off of the previous three modules, [1.3 Developing your fir
 
 Each canister has a unique identifier that can be used to interact with the canister. These unique IDs can be used to access the canister's frontend or Candid UI in a web browser, such as when you accessed the frontend of your poll dapp in the last tutorial. Having a canister's ID is also important for executing management functions of the canister, such as setting ownership for the canister.
 
-As an example, to get the canister ID of your `poll_backend` canister that's been deployed on the mainnet by using the command:
+As an example, to get the canister ID of your `poll_backend` canister that's been deployed on the mainnet, use the command:
 
 ```bash
 dfx canister id poll_backend --network ic
@@ -138,7 +138,7 @@ Alternatively, you can use the `--set-controller` flag instead of the `--add-con
 dfx canister update-settings poll_backend --set-controller lalyb-uhvmt-p7ubs-u5t7l-hce6v-lp7c5-dlmj5-wi2gc-depab-wtgi3-pae
 ```
 
-You will be warned that you'll be removing yourself as a controller, since you're setting the `ControllerExample` identity as the sole controller, while you're using the `DeveloperJourney` identity. Accept this warning.
+You will be warned that you'll be removing yourself as a controller since you're setting the `ControllerExample` identity as the sole controller while you're using the `DeveloperJourney` identity. Accept this warning.
 
 Then, rerun the `dfx canister info poll_backend` command. The output should now be:
 
@@ -149,9 +149,9 @@ Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 
 ## Managing the running state of a canister
 
-Once a canister has been deployed, it can receive and process requests from other canisters or end-users. When a canister is able to send requests and receive replies, the canister is in a **Running** state.
+Once a canister has been deployed, it can receive and process requests from other canisters or end users. When a canister can send requests and receive replies, the canister is in a **Running** state.
 
-Canisters are placed in the **Running** state by default, but there may be situations where a canister needs to be temporarily or permanently stopped. For example, before a canister is upgraded it may be stopped to ensure proper message handling if the message is in progress or should be rolled back. Stopping a canister is also a requirement if the canister is going to be deleted.
+Canisters are placed in the **Running** state by default, but there may be situations where a canister needs to be temporarily or permanently stopped. For example, before a canister is upgraded, it may be stopped to ensure proper message handling if the message is in progress or should be rolled back. Stopping a canister is also a requirement if the canister is going to be deleted.
 
 To check the current state of all canisters, you can use the command:
 
@@ -159,7 +159,7 @@ To check the current state of all canisters, you can use the command:
 dfx canister status --all
 ```
 
-Or, you can check the status of a single canister by specifying it's name, such as:
+Or, you can check the status of a single canister by specifying its name, such as:
 
 ```bash
 dfx canister status poll_backend
@@ -261,7 +261,7 @@ Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 
 ## Topping up a canister's cycles balance
 
-Depositing cycles into a canister's cycles balance is known as 'topping up' the canister's balance. For production canisters, which are consistently using cycles over time to pay for the canister's resources, topping up the canister is required, routine maintenance.
+Depositing cycles into a canister's cycles balance is known as 'topping up' the canister's balance. For production canisters, which consistently use cycles over time to pay for the canister's resources, topping up the canister is required for routine maintenance.
 
 While you must be a canister's controller in order to view the cycles balance of the canister, anyone can top up a canister.
 
@@ -270,9 +270,9 @@ There are a few ways to top up a canister:
 - Using ICP in your account.
 - Using the cycles ledger.
 - Using the NNS dapp web UI.
-- Using a third-party service such as [CycleOps](/docs/current/developer-docs/smart-contracts/topping-up/cycles_management_services).
+- Using a third-party service such as [CycleOps](/docs/current/developer-docs/smart-contracts/topping-up/topping-up-canister/).
 
-Local development fabricates cycles as needed for canister deployment. To learn about topping up canisters on the mainnet, [read more about how to use ICP or cycles](/docs/current/developer-docs/getting-started/deploy-and-manage#topping-up-canisters)
+Local development fabricates cycles as needed for canister deployment. To learn about topping up canisters on the mainnet, [read more about how to use ICP or cycles](/docs/current/developer-docs/getting-started/deploy-and-manage#topping-up-canisters).
 
 ## Setting the canister's freezing threshold
 
@@ -320,13 +320,13 @@ dfx canister delete poll_backend
 When a canister is deleted, the canister's code, state, and canister ID are removed. Canisters must be stopped before they can be deleted. Alternatively, all canisters for a project can be deleted with the commands:
 
 ```bash
-dfx canister stop  --all
-dfx canister delete  --all
+dfx canister stop  --all
+dfx canister delete  --all
 ```
 
 ## Need help?
 
-Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
+Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
@@ -334,9 +334,9 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7 day adventure and learn to build a DAO on the Internet Computer.
+- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
 
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects and participate in collaborative events.
+- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
 
 - [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -353,4 +353,3 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 In the next step of our developer ladder, you'll explore upgrading canisters, storage, and persistence.
 
 - [2.1 Storage and persistence](/docs/current/tutorials/developer-journey/level-2/2.1-storage-persistence).
-
