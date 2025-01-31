@@ -5061,7 +5061,7 @@
     "oneLiner": "OfficeX Anonymous Workspace | Docs Sheets & Storage",
     "website": "https://officex.app",
     "tags": [
-      "SocialFi", 
+      "SocialFi",
       "Tools / Infrastructure"
     ],
     "github": "https://github.com/OfficeXApp",
@@ -5071,6 +5071,34 @@
     "display": "Normal",
     "stats": "1000+ users",
     "logo": "/img/showcase/officex_logo.webp",
-    "screenshots": ["/img/showcase/officex_screenshot.webp"]
+    "screenshots": [
+      "/img/showcase/officex_screenshot.webp"
+    ]
+  },
+  {
+    "id": "anda",
+    "name": "Anda",
+    "tags": [
+      "AI"
+    ],
+    "github": "https://github.com/ldclabs/anda",
+    "description": "An framework for AI agent development, designed to build a highly composable, autonomous, and perpetually memorizing network of AI agents.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/anda_logo.jpeg"
+  },
+  {
+    "id": "pickpump",
+    "name": "Pickpump",
+    "tags": [
+      "AI",
+      "DeFi"
+    ],
+    "website": "https://pickpump.xyz/",
+    "github": "https://github.com/elizaOS/eliza/tree/develop/packages/plugin-icp",
+    "description": "An AI-powered, on-chain platform for memecoins. The first ICRC token creation plugin on Eliza.",
+    "usesInternetIdentity": false,
+    "display": "Normal",
+    "logo": "/img/showcase/pickpump_logo.svg"
   }
 ]
