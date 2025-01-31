@@ -36,7 +36,7 @@ In this tutorial, you will learn:
 
 - **[Interact with the application's backend](#call-the-backend-canister)**: Learn how the canister's code responds to calls.
 
-- **Add a simple frontend canister**: Create a user interface using HTML and CSS.
+- **[Add a simple frontend](#adding-a-frontend)**: Create a user interface using HTML and CSS.
 
 - **Backend and frontend canister communication**: Learn about agents and how they are used for canister communication.
 
@@ -96,6 +96,8 @@ public query func greet(name : Text) : async Text {
   };
 };
 ```
+
+A canister's code is compiled into [WebAssembly (Wasm)] before it is deployed to ICP. Each canister development kit (CDK) comes with build scripts that compile canister code into Wasm programs that are compatible with ICP. These build scripts are executed by `dfx` as part of the `dfx deploy` command or through the explicit compilation command `dfx build`.
 
 ## Code structure
 
@@ -178,6 +180,8 @@ A canister's methods can be called by both users and other canisters.
 You can also make this call from the canister's [Candid interface].
 
 ## Adding a frontend
+
+
 
 ### What is an asset canister?
 
