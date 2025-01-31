@@ -43,11 +43,11 @@ Unbounded wait calls, however, have a few downsides:
 1. Since there is no bound on when the call will return, the caller may be prevented from upgrading safely. This can in particular be problematic when calling untrusted canisters, such as an arbitrary ledger.
 2. They don't scale well, and canisters may be unable to issue such calls when the system is under high load.
 
-We will next show how to use *bounded wait* calls instead. These calls don't guarantee that the response will be delivered, which is why we also refer to the as *best-effort response calls*. See the section on [inter-canister calls](/docs/current/developer-docs/smart-contracts/advanced-features/async-code) for more on best-effort vs. guaranteed response calls. Also see the sections on [properties of call execution](/docs/current/developer-docs/security/security-best-practices/inter-canister-calls) and [security best practices](docs/current/developer-docs/security/security-best-practices/inter-canister-calls) to prevent security issues in your application when using inter-canister calls.
+We will next show how to use *bounded wait* calls instead. These calls don't guarantee that the response will be delivered, which is why we also refer to the as *best-effort response calls*. See the section on [inter-canister calls](/docs/current/developer-docs/smart-contracts/advanced-features/async-code) for more information on best-effort vs. guaranteed response calls.
 
 ## ICRC-1 transfers: bounded wait calls
 
-We will now allow our canister to transfer tokens on an arbitrary ICRC-1 ledger. Ledgers generally charge fees for transfers. While this fee is fixed for the ICP ledger, it may vary for other ledgers. Thus, we start with an example of how to determine the required fee.
+We will now allow our wallet to transfer tokens on an arbitrary ICRC-1 ledger instead of just the ICP ledger. Ledgers generally charge fees for transfers. While this fee is fixed for the ICP ledger, it may vary for other ledgers. Thus, we start with an example of how to determine the required fee.
 
 ### Learning the transfer fee
 
@@ -56,6 +56,8 @@ Querying the transfer fee does not change the ledger state. Thus, it's simple to
 ```rust reference
 https://github.com/oggy-dfin/icc_rust_docs/blob/66d36e734bc3a65599a1419ebf1f1b3e520924dc/src/icc_rust_docs_backend/src/lib.rs#L81-L130
 ```
+
+As noted in the example, the code after the first call executes in a different callback. See the sections on [inter-canister calls and async code](/docs/current/developer-docs/smart-contracts/advanced-features/async-code), [properties of call execution](/docs/current/developer-docs/security/security-best-practices/inter-canister-calls) and [security best practices](docs/current/developer-docs/security/security-best-practices/inter-canister-calls) to understand potential security implications for your application when using inter-canister calls.
 
 ### Transferring tokens
 
