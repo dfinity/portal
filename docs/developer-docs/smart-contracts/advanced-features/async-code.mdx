@@ -25,7 +25,7 @@ The ICP allows canisters to seamlessly interact with other canisters by calling 
 Before you can call other canisters that are not part of your project, you need to learn the available endpoints (methods) that you can call, as well as their arguments and return values. Candid serves both as a data format and an interface description language. The IC SDK will by default bundle the interface description (if available) in the `candid:service` metadata section of the canister code. For example, you can examine the interface of the ICP ledger canister (whose principal is `ryjl3-tyaaa-aaaaa-aaaba-cai`) using [`dfx`](/docs/current/developer-docs/getting-started/install).
 
 ```bash
-$ dfx canister metadata ryjl3-tyaaa-aaaaa-aaaba-cai candid:service --network ic
+dfx canister metadata ryjl3-tyaaa-aaaaa-aaaba-cai candid:service --network ic
 ```
 
 If you are using Candid, you should also write or generate service description files for your own canisters so that other canisters and external applications can easily call into your canister. See the [Candid documentation](/docs/current/developer-docs/smart-contracts/candid/candid-howto) for more instructions.
