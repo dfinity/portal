@@ -31,18 +31,26 @@ keywords: [keyword1, keyword2, keyword3]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
 
 # Page title
 
 <MarkdownChipRow labels={["label1", "label2", "label3"]} />
 
-Introduce the feature or tool. What is it? Give a brief overview of how it works, but keep it very high level. Link to additional documents that explain the in-depth concepts behind it (if they exist).
+Introduce the feature or tool. What is it? Give a brief overview of how it works, but keep it very high level. Embed links to additional documents that explain the in-depth concepts if applicable or necessary.
 
-## Prerequisites
+## Topic 1
+
+What is the first topic that the developer should be introduced to? If the tool has several workflows, which should be introduced initially? Is there an initial configuration required?
+
+### Prerequisites
 
 Optional; only necessary for documents that require prerequisite conditions or parameters be met.
 
-List all dependencies that the developer will need to download or setup in order to use the feature. The most common prerequisite is downloading dfx. Please link to the dfx installation page.
+List all dependencies that the developer will need to download or setup in order to use the feature. The most common prerequisite is downloading `dfx`. Please link to the IC SDK installation page.
+
+Insert prerequisites using the following format:
 
 <Tabs>
 <TabItem value="prereq" label="Prerequisites" default>
@@ -53,13 +61,9 @@ Before you start, verify that you have:
 </TabItem>
 </Tabs>
 
-## Topic 1
-
-What is the first topic that the developer should be introduced to? If the tool has several workflows, which should be introduced initially? Is there an initial configuration required?
-
 ### Subtopic 1
 
-Include any information about a subtopic of Topic 1 here. This may include nuances with Topic 1 or best practices that should be noted.
+Include any information about a subtopic of Topic 1 here. 
 
 ## Topic 2
 
@@ -69,7 +73,7 @@ This is optional; there may be only one primary topic within the feature. Use yo
 
 ## Topic 3
 
-If your document includes a step-by-step walkthrough, introduce the walkthrough as a topic, then use the following format:
+If your document includes steps that must be followed, use the following format:
 
 - #### Step 1: Description of step for reader to take.
 - #### Step 2: Description of step for reader to take.
@@ -82,7 +86,7 @@ If your document includes a step-by-step walkthrough, introduce the walkthrough 
 
 ## Page headings
 
-There are 4 types of headings used throughout the ICP developer docs:
+There are 4 sizes of headings used throughout the ICP developer docs:
 
 - Heading size 1: `#`
 - Heading size 2: `##`
@@ -94,7 +98,7 @@ There are 4 types of headings used throughout the ICP developer docs:
 | Heading size | Usage |
 |--------------|-------|
 | Heading 1    | Page title only; not used within the page's content.|
-| Heading 2    | Used for primary topics amongst the page; used for consistent page headings such as 'Prerequisites', 'Conclusion' and 'References'.|
+| Heading 2    | Used for primary topics amongst the page.|
 | Heading 3    | Used for subtopics under primary topics amongst the page or user steps within a tutorial. Note; there are some instances where using Heading 2 for a tutorial step is more fitting, such as when a step contains several different concepts or subtopics. Please refer to the writing a tutorial section below for further information.|
 | Heading 4    | Used for listing steps a user should take within a guide document, where the guide document includes several different, separate walkthroughs for the user to follow; in this scenario, this heading should be used in conjunction with a bullet point. Heading 4 is also used for listing terms within the `glossary` document page and for subtopics under an already existing Heading 3 subtopic heading. |
 
@@ -107,23 +111,26 @@ The following is a sample guide document that showcases how the 4 types of headi
 
 This document describes basic file management workflows.
 
-### Workflows covered
-
 The following workflows are covered:
 - Creating a file.
 - Saving a file.
 
-## Prerequisites
-
-- [x] Download and install a text editor program.
-
 ## Creating a file
+
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
+
+Before you start, verify that you have:
+<input type="checkbox"/> A text editor program.
+
+</TabItem>
+</Tabs>
 
 To create a new file:
 
 - #### Step 1: Open the text editor program.
 - #### Step 2: From the navigation bar, select **File** then **New File**.
-- #### Step 3: Enter text into the new, blank file.
+- #### Step 3: Enter text into the new blank file.
 
 ## Saving a file
 
@@ -133,9 +140,6 @@ To save a file:
 - #### Step 2: Enter a file name to save your file under.
 - #### Step 3: Confirm the file name and select **Save**.
 
-## Conclusion
-This document described basic file management workflows.
-
 ## Resources
 - [Link](link.example)
 ```
@@ -143,11 +147,16 @@ This document described basic file management workflows.
 ## Prerequisites sections
 For guides or tutorials that include a prerequisites section that contains tasks a reader must complete before starting to follow the guide or tutorial, the following format should be used:
 
-## Prerequisites
+```
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
 
-- [x] Download and install a program.
-- [x] Download and install a package.
-- [x] Download and install a framework.
+Before you start, verify that you have:
+<input type="checkbox"/> <a href="/docs/current/developer-docs/getting-started/install">Install the IC SDK.</a>
+
+</TabItem>
+</Tabs>
+```
 
 ## Capitalization
 
@@ -172,8 +181,8 @@ Capitalization within the developer documentation should follow these outlined s
 - When a bullet point list is used to define terms, the first word after the term should not be capitalized:
     - Example: **Term**: definition of the term.
 - When a code-specific value, such as the name of a method, variable, integer, or data type, is being referenced, the capitalization used within the code or the language's reference documentation should be followed.
-    - Example: ConstructionPayloadRequest
-    - Example: ingress_start
+    - Example: `ConstructionPayloadRequest`
+    - Example: `ingress_start`
 
 ### Proper nouns
 
@@ -187,12 +196,16 @@ The following proper nouns should always be capitalized:
 - Internet Identity
 - JavaScript
 - Motoko
+- Mops
 - Network Nervous System
 - NodeJS
 - README
 - Rust
 - Service Nervous System
+- tECDSA
+- tSchnorr
 - TypeScript
+- Unicode
 - WebAssembly (Wasm)
 - Wiki
 - World Computer
@@ -225,7 +238,9 @@ The following is a list of common abbreviations that are capitalized within the 
 - NFT
 - NNS
 - SDK
-- SNS
+- SNS (plural: SNSes)
+- tECDSA
+- tSchnorr
 - XDR
 - UTXO
 
@@ -237,7 +252,7 @@ The following language and capitalization of certain terms and phrases should be
 - Bitcoin: when referring to the network infrastructure of Bitcoin; should be used in place of "sending bitcoin".
     - "When deploying a transaction to Bitcoin..."
 - bitcoin: should be used when referring to BTC rather than the Bitcoin network.
-    - "To send another use bitcoin..."
+    - "To send another user bitcoin..."
 - built on ICP
 - canister
 - canister smart contract
@@ -245,6 +260,7 @@ The following language and capitalization of certain terms and phrases should be
 - chain-key cryptography
 - Chain Fusion
 - Chain Fusion technology
+- command line: should not be hyphenated.
 - dapp: should be used in place of any reference to an ICP app, decentralized application, or 'dApp'.
 - DeFi
 - deployed on ICP
@@ -252,6 +268,7 @@ The following language and capitalization of certain terms and phrases should be
       - All dfx subcommands should be formatted as in-line code when appearing in a sentence, such as, "The `dfx deps` feature is available in dfx versions 0.14.1 and newer."
 - Ethereum integration
 - Ethereum: should be used in place of ETH or ETH token.
+- end users: should not be hyphenated.
 - frontend
 - HTTP: when referring to the HTTP Gateway protocol, HTTP asset certification, HTTP requests, HTTP responses, and HTTP servers.
 - HTTPS: when referring to HTTPS outcalls.
@@ -266,7 +283,8 @@ The following language and capitalization of certain terms and phrases should be
 
 - ICP JavaScript agent: when referring to the `@dfinity/agent` package. This text should be formatted with a link to `https://www.npmjs.com/package/@dfinity/agent`.
 - ICP Rust agent: when referring to the `ic-agent` Rust crate. This text should be formatted with a link to `https://docs.rs/ic-agent/latest/ic_agent/`.
-- IC SDK: should be used in place of any reference to the IC's SDK.
+- IC SDK
+- inter-canister: should be hypenated.
 - macOS: follows the capitalization used by [Apple](https://en.wikipedia.org/wiki/MacOS).
 - mainnet
     - In context: Deploying `to the mainnet` or `on the mainnet`. Note the use of the word `the`.
@@ -286,12 +304,14 @@ The following language and capitalization of certain terms and phrases should be
 - Rune
 - Sybil resistance
 - Sybil attack
+- third party: should not be hyphenated.
+- top-up: should be hyphenated.
 - use case: should not be hyphenated.
 - vetKeys
 - Web3
 - World Wide Web
 
-### Spelling, grammar, and word choice
+## Spelling, grammar, and word choice
 The following spelling, grammar, and word choice rules should be followed:
 - Avoid using language that uses 'we' or 'us'; use a protocol point of view, such as phrases like, "the protocol ensures", "the protocol does", and “it is explained” rather than “we explain”. This is to help make clear that ICP is a protocol that is community-controlled and autonomously governed.
       - An exception to this is the Developer Blog; blog posts are written using a different style for a different audience, and using 'we' or 'us' in this context is acceptable.
@@ -313,7 +333,7 @@ The following spelling, grammar, and word choice rules should be followed:
     Whereas, the following are acceptable in certain contexts:
     - "Ready to get started? Let's go!"
     - "Here is a checklist of the things you will need to consider:"
-
+ 
 ## Numbers
 Numbers should be formatted using the `_` character, and not any other character. For example:
 - 44_760_000
@@ -353,6 +373,8 @@ The following punctuation standards should be followed:
 - All items within a bullet point list should end in a period, regardless if the entry is a full sentence or not.
 - All numbered lists should use the format `1.` for numbering each list entry.
 - All user steps for tutorials should use the format `Step 1:` to preface each step's contents.
+- When a sentence ends in a word within quotation marks, the puncuation must be placed within the quotation marks.
+- When a sentence has a word within quotation marks followed by a comma, the comma must be placed within the quotation marks. 
 
 ## Bulleted lists
 
@@ -419,8 +441,17 @@ Links that are referenced within the developer docs should use the following for
 
 ## Code snippets and code blocks
 The following format should be used for code snippets and code blocks:
-- In-line code references to commands, language specific methods, or other code-related terms should be emphasized using in-line code expressions such as:
-    - To install code in a canister, the `install_code` function of the Internet Computer is used.
+
+- All code snippets or code blocks should reference the original source of the code if possible.
+    - Code sourced from the `@dfinity/examples` repo can be referenced by its submodule file path:
+        ```motoko title="src/PROJECT_NAME_backend/main.mo" file=../../references/samples/motoko/counter/src/Main.mo#L5-L9
+        ```
+    - Code sourced from an external GitHub repo can be referenced via the full GitHub URL:
+        ```rust title="src/PROJECT_NAME_backend/src/lib.rs" reference https://github.com/letmejustputthishere/icp-evm-coprocessor-starter/blob/main/canisters/chain_fusion/src/lib.rs
+        ```
+
+- In-line code references to commands, language specific methods, or other code-related terms should be emphasized using in-line code expressions:
+    - To install code in a canister, the `install_code` method of the management canister is used.
     - For example, the function `canister_init` is the first function that gets called after the code is installed for the first time.
 - When a code-specific value, such as the name of a method, variable, integer, or data type, is being referenced, the capitalization used within the code or the language's reference documentation should be followed.
     - Example: `ConstructionPayloadRequest`
@@ -428,16 +459,19 @@ The following format should be used for code snippets and code blocks:
 - Command-line commands that should be run by the user should be listed in their own line using code formatting, such as:
     - #### Step 1:  Install the React module by running the following command:
   ```
-            npm install --save react react-dom
+         npm install --save react react-dom
   ```
-- Code blocks should be prefaced with the language used within the code block where applicable. For example:
+- Code blocks should be prefaced with the language used within the code block and the file's title. For example:
 
-```bash
-cd motoko/threshold_ecdsa
-dfx start --background
-npm install
-dfx deploy
+```motoko title="src/hello_backend/main.mo" no-repl
+actor {
+public query func greet(name : Text) : async Text {
+    return "Hello, " # name # "!";
+  };
+};
 ```
+
+For Motoko code, `no-repl` should be included for any example that is incomplete or will otherwise not run directly in the browser.
 
 ## Command line syntax
 
