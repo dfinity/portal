@@ -11,12 +11,17 @@ build: [
       {
         type: "doc",
         label: "Quick start",
-        id: "building-apps/getting-started/first-smart-contract",
+        id: "building-apps/getting-started/quickstart",
       },
       {
         type: "doc",
-        label: "Development workflow",
-        id: "building-apps/getting-started/development-workflow",
+        label: "Application architecture",
+        id: "building-apps/getting-started/app-architecture",
+      },
+      {
+        type: "doc",
+        label: "ICP primer",
+        id: "building-apps/getting-started/icp-primer",
       },
       {
         type: "doc",

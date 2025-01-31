@@ -1,6 +1,5 @@
 ---
 keywords: [beginner, getting started, app architecture, application architecture, how it works, how apps work, how canisters work, how canisters communicate, canister smart contracts]
-hide_table_of_contents: true
 ---
 
 import TabItem from "@theme/TabItem";
@@ -8,39 +7,190 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 import { OsType, useOs } from "/src/hooks/useOs";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 
-# Application architecture (working title)
+# Application architecture
 
 <MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
 
-Prerequisite: quick start
+Applications deployed on ICP are comprised of one or more specialized smart contracts known as **canisters**. A canister contains application code and its corresponding state. The application's logic, referred to as the **backend** can be written in a variety of different languages including Motoko, Rust, and Typescript. The user interface of the application, referred to as the frontend, can include assets like HTML, CSS, and Javascript.
 
-Project files
+The most common architecture for an application on ICP includes one canister for the frontend assets and one or more canisters containing the backend application logic.
 
-dfx.json
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/app-arch.svg")}
+    alt="Application architecture"
+    width="800"
+  />
+</div>
 
-Learn more about dfx.json
 
-main.mo
+## What you'll learn
 
+In this tutorial, you will learn:
 
-code structure
+- **[Project structure](#project-structure-and-files)**: Explore the necessary files to create an application.
 
-greet method
+- **[Code components and methods](#code-structure)**: View the code of the "Hello, world!" app you created in the [quick start](quickstart.mdx) tutorial.
 
-confirm canister is running
-call canister
+- **[Interact with the application's backend](#call-the-backend-canister)**: Learn how the canister's code responds to calls.
 
-what happens when you call the canister
+- **Add a simple frontend canister**: Create a user interface using HTML and CSS.
 
-who can call canisters
+- **Backend and frontend canister communication**: Learn about agents and how they are used for canister communication.
 
-adding a frontend
-asset canisters
+- **User interaction**: View how user interaction with the frontend is handled by the application.
+
+<AdornedTabs>
+<TabItem label="Prerequisites">
+
+<input type="checkbox"/> Complete the <a href="/docs/building-apps/getting-started/quickstart">quickstart</a> tutorial.
+
+</TabItem>
+</AdornedTabs>
+
+## Project structure and files
+
+At minimum, an application requires two files:
+
+- `dfx.json`: The project's configuration file.
+
+- Backend canister source code: Code defining the application's logic. This code should include methods that can be called by a user or other canister and return a response. In the [quick start example](quickstart.mdx), this code is written in Motoko and stored in a file called `main.mo`.
+
+You should have these files in a local directory called `hello` if you followed the [quickstart tutorial](quickstart.mdx). This project is also available on the [ICP Ninja web IDE](https://icp.ninja/projects/01931adc-4a79-766c-84c3-9c9688d82ae4).
+
+### `dfx.json`
+
+Your project's directory contains a file called `dfx.json`. This file is used to configure your project's settings. It includes the project's canister definitions which indicate the canister names, types, and source code files.
+
+```json title=dfx.json
+{
+  "canisters": {
+    "hello_backend": { // Backend canister name
+      "main": "src/hello_backend/main.mo", // Backend canister source code
+      "type": "motoko" // Canister language
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
+```
+
+Learn more about [dfx.json].
+
+### Backend canister source code
+
+The `src/hello_backend/main.mo` file contains the source code for a basic "Hello, world!" app written in Motoko.
+
+```motoko title="src/hello_backend/main.mo" no-repl
+actor {
+public query func greet(name : Text) : async Text {
+    return "Hello, " # name # "!";
+  };
+};
+```
+
+## Code structure
+
+Let's take a closer look at the code structure of the `src/hello_backend/main.mo` file.
+
+First, the code defines an **actor**. An actor is an object used to encapsulate the state of the code.
+
+```motoko title="src/hello_backend/main.mo" no-repl
+actor {
+```
+
+Next a function called `greet` is defined using the following syntax components:
+
+```motoko title="src/hello_backend/main.mo" no-repl
+public query func greet(name : Text) : async Text {
+```
+
+- `public`: Defines the function as callable by users or other canisters. Functions are also referred to as **methods** in the context of canisters.
+
+- `query`: Defines the type of message that will be used to call the method.
+
+- `func greet`: Indicates the method's name.
+
+- `(name : Text) : async Text`: Indicates that this method will accept an input of type `Text` from a call. It will be stored in the variable `name`. Then, the method will return a `Text` value to the caller in an `async` manner.
+
+Lastly, the method's return content is defined:
+
+```motoko title="src/hello_backend/main.mo" no-repl
+    return "Hello, " # name # "!";
+  };
+};
+```
+
+This return output includes the text `"Hello, "`, followed by the value stored in the `name` variable that was passed to the method by the caller.
+
+## Call the backend canister
+
+To interact with the canister's `greet` method, you will make a call to the canister:
+
+```
+dfx canister call hello_backend --playground greet ICP
+```
+
+The parts of this command are:
+
+- `dfx canister call`: The `dfx` command used to call canisters.
+
+- `hello_backend`: The canister's name which you are calling.
+
+- `--playground`: The network the canister is deployed and running on.
+
+- `greet ICP`: The name of the method you want to call followed by the input you want to pass to it.
+
+The canister will return the following output:
+
+```
+("Hello, ICP!")
+```
+
+:::caution
+If you get an error that the canister does not exist, you may need to deploy it again with the command:
+
+```
+dfx deploy --playground
+```
+:::
+
+A canister's methods can be called by both users and other canisters.
+
+### What this command did
+
+1. The `dfx canister call` command sent a message to the `hello_backend` canister that is deployed on the `--playground` network.
+
+2. The message was sent to the `greet` method, which was given the input of "ICP". This input is of type `Text` and thus accepted by the method as valid input.
+
+3. Since the method is defined as a `query` method, the canister simply returns data to the caller; it does not alter the canister's code or state.
+
+4. The data returned to the caller is defined in the canister's `return` statement.
+
+You can also make this call from the canister's [Candid interface].
+
+## Adding a frontend
+
+### What is an asset canister?
+
+### Frontend components
 
 need: frontend assets and agent
 
+## ICP agents
+
 what an agent does
+
 agent calls backend method just as you did before
 links to available agents
+
+## User interaction
 
