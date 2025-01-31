@@ -5100,5 +5100,19 @@
     "usesInternetIdentity": false,
     "display": "Normal",
     "logo": "/img/showcase/pickpump_logo.svg"
+  }, 
+  {
+    "id": "investafarm",
+    "name": "InvestaFarm",
+    "tags": [
+      "AI",
+      "Chain Fusion"
+    ],
+    "website": "https://investafarm.com/",
+    "github": "https://github.com/investa-Farm/",
+    "description": "Agricultural finance platform that leverages blockchain and AI to provide smallholder farmers with affordable loans and access to global investors, promoting financial inclusion and sustainable farming",
+    "usesInternetIdentity": true,
+    "display": "Normal",
+    "logo": "/img/showcase/Investafarm_logo.svg"
   }
 ]
