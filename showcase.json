@@ -5232,21 +5232,6 @@
     "display": "Normal"
   },
   {
-    "name": "TabbyPOS",
-    "logo": "/img/showcase/tabbypos_logo.png",
-    "id": "tabbypos",
-    "tags": [
-      "DeFi",
-      "Tools / Infrastructure"
-    ],
-    "website": "https://tabbylab.io",
-    "github": "https://github.com/TabbyLabMy",
-    "description": "A cash register terminal that supports cryptocurrency payments including ICP and ckBTC.",
-    "twitter": "https://x.com/tabbypos",
-    "usesInternetIdentity": false,
-    "display": "Normal"
-  },
-  {
     "name": "IC GameKit",
     "logo": "/img/showcase/ic_gamekit_part_one_logo.png",
     "id": "ic-gamekit",
@@ -5283,18 +5268,6 @@
     "website": "https://e7bx6-iiaaa-aaaag-qm7oq-cai.icp0.io/board/Partnrship",
     "description": "A platform bridging the gap between technical and non-technical team members through fractionalization of development work and micro-payments.",
     "twitter": "https://x.com/partnrship",
-    "usesInternetIdentity": true,
-    "display": "Normal"
-  },
-  {
-    "name": "NeuralBay",
-    "logo": "/img/showcase/neuralbay_logo.jpeg",
-    "id": "neuralbay",
-    "tags": [
-      "Tools / Infrastructure",
-      "AI"
-    ],
-    "description": "A decentralized AI marketplace that empowers businesses to discover and deploy pre-trained AI models with enterprise-grade security.",
     "usesInternetIdentity": true,
     "display": "Normal"
   },
@@ -5356,20 +5329,6 @@
     "display": "Normal"
   },
   {
-    "name": "CodeGov Governance-as-a-Service",
-    "logo": "/img/showcase/codegov_logo.svg",
-    "id": "codegov-gaas-app",
-    "tags": [
-      "Tools / Infrastructure"
-    ],
-    "website": "https://www.codegov.org/",
-    "github": "https://github.com/CodeGov-org/codegov-website",
-    "description": "The GaaS platform keeps track of technical NNS proposals and enables reviewers to publish reviews in a standardized way.",
-    "twitter": "https://x.com/codegovorg",
-    "usesInternetIdentity": true,
-    "display": "Normal"
-  },
-  {
     "name": "SYRON USD",
     "logo": "/img/showcase/syron_usd_logo.svg",
     "id": "syron-usd",
@@ -5397,22 +5356,6 @@
     "description": "Crypto wallets for groups",
     "twitter": "https://x.com/COOWN_crypto",
     "usesInternetIdentity": false,
-    "display": "Normal"
-  },
-  {
-    "name": "Appic DAO",
-    "logo": "/img/showcase/appic_dao_logo.svg",
-    "id": "appic-dao",
-    "tags": [
-      "DeFi",
-      "Chain Fusion",
-      "Tools / Infrastructure"
-    ],
-    "website": "https://appicdao.com/",
-    "github": "https://github.com/Appic-Solutions",
-    "description": "The first-ever infrastructure layer that allows projects and users to transfer and swap tokens between ICP and other blockchains such as Ethereum, Bitfinity and Solana.",
-    "twitter": "https://twitter.com/Appic_ICP",
-    "usesInternetIdentity": true,
     "display": "Normal"
   },
   {
@@ -5543,20 +5486,6 @@
     "display": "Normal"
   },
   {
-    "name": "Anti-Korrupt",
-    "logo": "/img/showcase/anti-korrupt_logo.svg",
-    "id": "anti-korrupt",
-    "tags": [
-      "AI",
-      "DeFi"
-    ],
-    "website": "https://px7id-byaaa-aaaak-albiq-cai.icp0.io/",
-    "github": "https://github.com/KezzyNgotho/Anti-Korrupt",
-    "description": "An educational platform that uses AI to teach people about corruption and its impacts in society.",
-    "usesInternetIdentity": true,
-    "display": "Normal"
-  },
-  {
     "name": "Univoice",
     "logo": "/img/showcase/univoice_logo.svg",
     "id": "mugc&univoice",
@@ -5564,7 +5493,7 @@
       "AI",
       "DeFi"
     ],
-    "website": "univoice.world",
+    "website": "https://univoice.world",
     "description": "An AI Agent built based on voice multi-modal data.",
     "twitter": "https://x.com/UNIVOICE_",
     "usesInternetIdentity": true,
@@ -5577,6 +5506,9 @@
     "website": "vfans.org",
     "github": "https://github.com/VFans-org/VFANS-IC-Public",
     "description": "A decentralized content platform for publishing video/articles and subscribing through mobile payments.",
+    "tags": [
+      "Creator Economy"
+    ],
     "twitter": "https://x.com/VFansDAO",
     "usesInternetIdentity": true,
     "display": "Normal"
@@ -5586,7 +5518,7 @@
     "logo": "/img/showcase/fairbuyai_logo.png",
     "id": "fair-buy-icp",
     "tags": [
-      "SocialFi"
+      "Creator Economy"
     ],
     "website": "https://www.fairbuy.ai/",
     "description": "An app empowers users to control their data and advertising experiences.",
@@ -5662,7 +5594,7 @@
       "Tools / Infrastructure",
       "Analytics"
     ],
-    "website": "earthstream.live",
+    "website": "https://earthstream.live",
     "description": "An enterprise tool capturing data through acoustic sensors to monitor for biodiversity, and transmitting it to ICP.",
     "twitter": "https://x.com/@earthstreamlive",
     "usesInternetIdentity": true,
