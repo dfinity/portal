@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="112" height="112" viewBox="0 0 112 112">
+  <!-- Black background -->
+  <rect width="112" height="112" fill="black" />
+  
+  <!-- Image in the center -->
+  <image href="https://panindustrial.com/media/7b7799b38bbe022ba449c4364c08061b.png" x="16" y="16" width="80" height="80" />
+</svg>
