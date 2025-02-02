@@ -5102,7 +5102,7 @@
   },
   {
     "name": "ICP.NET",
-    "logo": "/img/showcase/icpnet_logo.svg",
+    "logo": "/img/showcase/icpnet_logo.png",
     "id": "icp-net",
     "tags": [
       "Tools / Infrastructure"
@@ -5128,7 +5128,7 @@
   },
   {
     "name": "DeDa",
-    "logo": "/img/showcase/deda_logo.svg",
+    "logo": "/img/showcase/deda_logo.png",
     "id": "deda",
     "tags": [
       "AI"
@@ -5195,7 +5195,7 @@
   },
   {
     "name": "PacaPump",
-    "logo": "/img/showcase/pacapump_logo.svg",
+    "logo": "/img/showcase/pacapump_logo.png",
     "id": "pacapaump-icp",
     "tags": [
       "DeFi"
@@ -5219,7 +5219,7 @@
   },
   {
     "name": "IC EVM Connect",
-    "logo": "/img/showcase/ic_evm_connect_logo.png",
+    "logo": "/img/showcase/zondax-logo.svg",
     "id": "ic-evm-connect",
     "tags": [
       "Tools / Infrastructure"
@@ -5233,7 +5233,7 @@
   },
   {
     "name": "IC GameKit",
-    "logo": "/img/showcase/ic_gamekit_part_one_logo.png",
+    "logo": "/img/showcase/icgamekit_logo.png",
     "id": "ic-gamekit",
     "tags": [
       "Gaming",
@@ -5273,7 +5273,7 @@
   },
   {
     "name": "RunicSwap",
-    "logo": "/img/showcase/runicswap_logo.svg",
+    "logo": "/img/showcase/runicswap_logo.png",
     "id": "fully-onchain-runes--decentralized-exchange",
     "tags": [
       "Chain Fusion",
@@ -5287,7 +5287,7 @@
   },
   {
     "name": "ckNFT",
-    "logo": "/img/showcase/cknft_logo.svg",
+    "logo": "/img/showcase/icdevs.org_logo.webp",
     "id": "cknft",
     "tags": [
       "Chain Fusion",
@@ -5295,22 +5295,8 @@
       "Ethereum"
     ],
     "website": "https://icdevs.org/",
-    "github": "https://github.com/icdevsorg/",
     "description": "Cast NFTs from EVM to ICP and from ICP to EVM.",
     "twitter": "https://x.com/icdevs_org",
-    "usesInternetIdentity": true,
-    "display": "Normal"
-  },
-  {
-    "name": "BitoBridge",
-    "logo": "/img/showcase/bitobridge_logo.png",
-    "id": "bitobridge",
-    "tags": [
-      "DeFi"
-    ],
-    "website": "https://dapp.bitomni.io",
-    "description": "The first-ever BTC omnichain bridge built with Chain Fusion.",
-    "twitter": "https://x.com/Bitomni_Global",
     "usesInternetIdentity": true,
     "display": "Normal"
   },
@@ -5325,22 +5311,6 @@
     "github": "https://github.com/piggycell-github",
     "description": "A DePIN project that provides tokenized incentive solutions to electric power charging platforms.",
     "twitter": "https://x.com/piggycell",
-    "usesInternetIdentity": true,
-    "display": "Normal"
-  },
-  {
-    "name": "SYRON USD",
-    "logo": "/img/showcase/syron_usd_logo.svg",
-    "id": "syron-usd",
-    "tags": [
-      "Chain Fusion",
-      "DeFi",
-      "Bitcoin"
-    ],
-    "website": "app.tyrondao.org",
-    "github": "https://github.com/txalkan/tyron-icp",
-    "description": "A BTC-backed stablecoin that provides USD-denominated loans using BTC as collateral.",
-    "twitter": "http://x.com/tyrondao_org",
     "usesInternetIdentity": true,
     "display": "Normal"
   },
@@ -5430,7 +5400,7 @@
   },
   {
     "name": "IC Push Metrics",
-    "logo": "/img/showcase/ic_push_metrics_logo.png",
+    "logo": "/img/showcase/zondax-logo.svg",
     "id": "icp-pussh-metrics",
     "tags": [
       "Tools / Infrastructure"
@@ -5450,15 +5420,14 @@
       "Bitcoin"
     ],
     "website": "https://www.tabbylab.io/",
-    "github": "https://github.com/LEEKOHCHING/ICP-Integration",
     "description": "TabbyPOS is a blockchain-based point-of-sale (POS) system that enables businesses to accept various cryptocurrencies as payment.",
     "twitter": "https://x.com/tabbypos",
     "usesInternetIdentity": false,
     "display": "Normal"
   },
   {
-    "name": "Decentralized Invoice Financing Marketplace",
-    "logo": "/img/showcase/decentralized_invoice_financing_marketplace_logo.png",
+    "name": "Invoice Mate",
+    "logo": "/img/showcase/invoice_mate_logo.png",
     "id": "invoice-mate",
     "tags": [
       "DeFi",
@@ -5528,7 +5497,7 @@
   },
   {
     "name": "Diode Collab",
-    "logo": "/img/showcase/diode_collab_logo.svg",
+    "logo": "/img/showcase/diode_collab_logo.png",
     "id": "diode-collab",
     "tags": [
       "Chain Fusion",
@@ -5553,21 +5522,6 @@
     "github": "https://github.com/reymom/ic2P2ramp",
     "description": "A decentralized protocol that seamlessly integrates ICP with Ethereum and other blockchains, enabling fast, trustless onramping and offramping of digital assets.",
     "twitter": "https://x.com/ic_rampXYZ",
-    "usesInternetIdentity": true,
-    "display": "Normal"
-  },
-  {
-    "name": "TabbyPOS",
-    "logo": "/img/showcase/tabbypos_logo.svg",
-    "id": "tabbypos",
-    "tags": [
-      "Bitcoin",
-      "Wallet"
-    ],
-    "website": "http://tabbylab.io/",
-    "github": "https://github.com/LEEKOHCHING/ICP-Integration",
-    "description": "A blockchain payment solution that integrates a hardware terminal with POS software that seamlessly merges the blockchain with real-world business operations.",
-    "twitter": "https://x.com/tabbypos",
     "usesInternetIdentity": true,
     "display": "Normal"
   },
