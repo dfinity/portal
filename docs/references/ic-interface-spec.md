@@ -1493,9 +1493,9 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.cost_call : (method_name_size: i64, payload_size : i64, dst : I) -> ();           // * s
     ic0.cost_create_canister : (dst : I) -> ();                                           // * s
     ic0.cost_http_request(request_size : i64, max_res_bytes : i64, dst : I) -> ();        // * s
-    ic0.cost_ecdsa(src : I, size : I, dst : I) -> ();                                     // * s
-    ic0.cost_schnorr(src : I, size : I, dst : I) -> ();                                   // * s
-    ic0.cost_vetkey(src : I, size : I, dst : I) -> ();                                    // * s
+    ic0.cost_sign_with_ecdsa(src : I, size : I, ecdsa_curve: i32, dst : I) -> ();         // * s
+    ic0.cost_sign_with_schnorr(src : I, size : I, algorithm: i32, dst : I) -> ();         // * s
+    ic0.cost_vetkd_derive_encrypted_key(src : I, size : I, vetkd_curve: i32, dst : I) -> ();  // * s
     ic0.replication_factor : (src : I, size : I) -> i32;                                  // * s
 
     ic0.debug_print : (src : I, size : I) -> ();                                          // * s
@@ -2061,15 +2061,20 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
     
     `max_res_bytes` is the maximum response length the caller wishes to accept. Note that this argument is not optional like in the call to the management canister. The cost depends on `max_res_bytes`, so the caller must provide it explicitly. See the [`http_request`](#ic-http_request) call to the management canister API to learn about the current default and maximum values. 
 
--   `ic0.cost_ecdsa(src : I, size : I, dst : I) -> ()`; `I ∈ {i32, i64}`
+-   `ic0.cost_sign_with_ecdsa(src : I, size : I, ecdsa_curve: i32, dst : I) -> ()`; `I ∈ {i32, i64}`
 
--   `ic0.cost_schnorr(src : I, size : I, dst : I) -> ()`; `I ∈ {i32, i64}`
+-   `ic0.cost_sign_with_schnorr(src : I, size : I, algorithm: i32, dst : I) -> ()`; `I ∈ {i32, i64}`
 
--   `ic0.cost_vetkey(src : I, size : I, dst : I) -> ()`; `I ∈ {i32, i64}`
+-   `ic0.cost_vetkd_derive_encrypted_key(src : I, vetkd_curve: i32, size : I, dst : I) -> ()`; `I ∈ {i32, i64}`
 
-    These system calls accept a key name via a textual representation for the specific signing scheme / key of a given size stored in the heap memory starting at offset `src` . See [`sign_with_ecdsa`](#ic-sign_with_ecdsa), [`sign_with_schnorr`](#ic-sign_with_schnorr) and [`vetkd_encrypted_key`](#ic-vetkd_encrypted_key) for more information. 
+    These system calls accept a key name via a textual representation for the specific signing scheme / key of a given size stored in the heap memory starting at offset `src`. They also accept an `i32` with the following interpretations:
+    - `ecdsa_curve: 0 → secp256k1`
+    - `schnorr_algorithm: 0 → bip340secp256k1, 1 → ed25519`
+    - `vetkd_curve: 0 → bls12_381`
 
-    These system calls trap if the string represented by `src` + `size` does not correspond to a valid key name, such as `dfx_test_key`, `test_key_1` or `key_1`. 
+    See [`sign_with_ecdsa`](#ic-sign_with_ecdsa), [`sign_with_schnorr`](#ic-sign_with_schnorr) and [`vetkd_encrypted_key`](#ic-vetkd_encrypted_key) for more information.
+
+    These system calls trap if the string represented by `src` + `size` does not correspond to a valid key name, such as `dfx_test_key`, `test_key_1` or `key_1`, or if the provided curve enum is an unspecified variant. 
 
 -   `ic0.replication_factor : (src : I, size : I) -> i32`; `I ∈ {i32, i64}`
 
@@ -7528,7 +7533,7 @@ ic0.cost_cost_http_request<es>(request_size: i64, max_res_bytes: i64, dst: I) : 
   copy_cycles_to_canister<es>(dst, arbitrary())
 
 I ∈ {i32, i64}
-ic0.cost_ecdsa<es>(src: I, size: I, dst: I) : () = 
+ic0.cost_sign_with_ecdsa<es>(src: I, size: I, ecdsa_curve: i32, dst: I) : () = 
   principal_bytes = copy_from_canister<es>(src, size)
   if not principal_bytes encode a principal then
     Trap {cycles_used = es.cycles_used;}
@@ -7537,7 +7542,7 @@ ic0.cost_ecdsa<es>(src: I, size: I, dst: I) : () =
   copy_cycles_to_canister<es>(dst, arbitrary())
 
 I ∈ {i32, i64}
-ic0.cost_schnorr<es>(src: I, size: I, dst: I) : () = 
+ic0.cost_sign_with_schnorr<es>(src: I, size: I, algorithm: i32, dst: I) : () = 
   principal_bytes = copy_from_canister<es>(src, size)
   if not principal_bytes encode a principal then
     Trap {cycles_used = es.cycles_used;}
@@ -7546,7 +7551,7 @@ ic0.cost_schnorr<es>(src: I, size: I, dst: I) : () =
   copy_cycles_to_canister<es>(dst, arbitrary())
 
 I ∈ {i32, i64}
-ic0.cost_vetkey<es>(src: I, size: I, dst: I) : () = 
+ic0.cost_vetkd_derive_encrypted_key<es>(src: I, size: I, vetkd_curve: i32, dst: I) : () = 
   principal_bytes = copy_from_canister<es>(src, size)
   if not principal_bytes encode a principal then
     Trap {cycles_used = es.cycles_used;}
