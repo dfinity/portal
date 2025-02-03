@@ -16,9 +16,6 @@ import '/src/components/CenterImages/center.scss';
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/3dSrNHmhXqk?si=JKd2ysJPJVEgjY3j" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
-
-## Overview
-
 A **non-fungible token**, commonly referred to as an NFT, is a type of tokenized asset that is assigned a unique identifier that is used to distinguish one NFT from another. An NFT cannot be replicated or reproduced since it is cryptographically unique. A non-fungible token is a type of token that cannot be exchanged 1:1 with another token of the same type, as the value of the NFT token can vary. In comparison, a **fungible** token can always be transferred 1:1 for another token of the same type.
 
 For example, 1 USD can always be exchanged for 1 USD. However, one unique painting cannot be exchanged for another, since the value of the two paintings will be different.
@@ -45,7 +42,7 @@ Similar to fungible tokens, NFTs are created through a process known as minting.
 
 When an NFT is created, it is assigned a unique identifier that is used to distinguish the token from all other NFTs. Each token's data is public, including the ownership information, metadata information, and transaction history.
 
-Some NFTs are '1 of 1' tokens, meaning they are globally unique and not part of a series or collection of NFTs. Other times, NFT tokens are '1 of 100' or '1 of 500', meaning they are part of a larger series that several people can purchase and retain the same benefits. '1 of 1' NFTs are often used in cases of unique art or identifying documents, while '1 of 100' NFTs are often used for providing membership to exclusive content or providing tickets to an event.
+Some NFTs are '1 of 1' tokens, meaning they are globally unique and not part of a series or collection of NFTs. Other times, NFT tokens are '1 of 100' or '1 of 500,' meaning they are part of a larger series that several people can purchase and retain the same benefits. '1 of 1' NFTs are often used in cases of unique art or identifying documents, while '1 of 100' NFTs are often used for providing membership to exclusive content or providing tickets to an event.
 
 Even if 5_000 NFTs of the same exact item are minted, each token will have a unique identifier to define it among the others in the series. In some cases, each NFT in the collection will have a unique image to identify it visually; other times, each NFT will be exactly the same except for the unique token ID.
 
@@ -71,7 +68,7 @@ Read more about the [ICRC-37 standard in the specification document](https://git
 
 ### Previously used standards
 
-The DIP721 NFT standard was designed as the ICP adaptation of the ERC-721 non-fungible token standard. It has since been replaced by the ICRC-7 and ICRC-37 standards, but is still used by some projects.
+The DIP721 NFT standard was designed as the ICP adaptation of the ERC-721 non-fungible token standard. It has since been replaced by the ICRC-7 and ICRC-37 standards but is still used by some projects.
 
 [View the example project for the DIP721 standard](https://github.com/dfinity/examples/motoko/dip-721-nft-container), and read the full [standard specification document](https://github.com/Psychedelic/DIP721/blob/develop/spec.md).
 
@@ -79,7 +76,7 @@ The DIP721 NFT standard was designed as the ICP adaptation of the ERC-721 non-fu
 
 In this tutorial, you'll create an NFT collection using the ICRC-7, ICRC-37, and ICRC-3 standards. ICRC-3 defines a standard for transaction logs and archives.
 
-This example project uses the Motoko Mops packages for ICRC-3, ICRC-7, and ICRC-37 to provide functionality for each standard. The project uses a single canister, 'icrc7', to deploy the collection and references default configuration options for each standard in the `example/initial_state/icrc3.mo`, `example/initial_state/icrc7.mo`, and `example/initial_state/icrc37.mo` files.
+This example project uses the Motoko Mops packages for ICRC-3, ICRC-7, and ICRC-37 to provide functionality for each standard. The project uses a single canister, 'icrc7,' to deploy the collection and references default configuration options for each standard in the `example/initial_state/icrc3.mo`, `example/initial_state/icrc7.mo`, and `example/initial_state/icrc37.mo` files.
 
 This collection will contain 5 NFTs that each use a different image stored in their metadata with their own unique NFT identifier.
 
@@ -573,7 +570,7 @@ This will return long output, such as:
 
 ## Need help?
 
-Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
+Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
@@ -581,9 +578,9 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7 day adventure and learn to build a DAO on the Internet Computer.
+- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
 
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects and participate in collaborative events.
+- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
 
 - [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 

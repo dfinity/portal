@@ -10,9 +10,7 @@ import '/src/components/CenterImages/center.scss';
 
 <MarkdownChipRow labels={["Advanced", "Tutorial"]} />
 
-## Overview
-
-Until this point in the developer ladder series, each tutorial has focused on a specific use case or feature of ICP. To wrap up the series, this tutorial will showcase how to create a general purpose dapp that provides a real-world use case. In this tutorial, you'll create the foundation for a simple auction dapp.
+Until this point in the developer ladder series, each tutorial has focused on a specific use case or feature of ICP. To wrap up the series, this tutorial will showcase how to create a general-purpose dapp that provides a real-world use case. In this tutorial, you'll create the foundation for a simple auction dapp.
 
 In this tutorial, you'll create a simple auction dapp that provides functions such as:
 
@@ -50,7 +48,7 @@ Before you start, verify that you have set up your developer environment accordi
 
 ### Cloning the `auction` example
 
-To get started, open a new terminal window, navigate into your working directory (`developer_ladder`), then use the following commands to clone `auction` example repo:
+To get started, open a new terminal window, navigate into your working directory (`developer_ladder`), then use the following commands to clone the `auction` example repo:
 
 ```bash
 git clone https://github.com/luc-blaeser/auction
@@ -147,11 +145,11 @@ This project contains three canisters, as seen in the `dfx.json` file:
 
 - `frontend`: The auction's frontend canister, implemented using Typescript and React.
 
-- `internet_identity`: This canister is a local instance of the Internet Identity canister, and is built from the Candid and Wasm files from the latest DFINITY Internet Identity release.
+- `internet_identity`: This canister is a local instance of the Internet Identity canister and is built from the Candid and Wasm files from the latest DFINITY Internet Identity release.
 
 ### Creating the backend canister
 
-Next, open the `src/backend/AuctionServer.mo` file. This file will contain a template that includes placeholder functions; to provide full functionality in your dapp, you will need to replace the template code with functioning code. To do that, start by removing the existing code in the `src/backend/AuctionServer.mo` file and insert the following code that has been annotated to explain the code's logic:
+Next, open the `src/backend/AuctionServer.mo` file. This file will contain a template that includes placeholder functions; to provide full functionality in your dapp, you will need to replace the template code with functioning code. To do that, start by removing the existing code in the `src/backend/AuctionServer.mo` file and inserting the following code that has been annotated to explain the code's logic:
 
 ```motoko no-repl title="src/backend/AuctionServer.mo"
 /// Import the necessary libraries:
@@ -347,15 +345,15 @@ Then, select 'Start New Auction' to create a new auction.
 
 ![Auction 3](../_attachments/auction-3.png)
 
-Give your auction a name, description, image, and set the amount of seconds the auction should last:
+Give your auction a name, description, and image, and set the amount of seconds the auction should last:
 
 ![Auction 4](../_attachments/auction-4.png)
 
-Then select 'Create new auction'. The auction will now be listed under 'List auctions'. You can view the auction's details by selecting 'Auction details' under the auction's image:
+Then select 'Create new auction.' The auction will now be listed under 'List auctions.' You can view the auction's details by selecting 'Auction details' under the auction's image:
 
 ![Auction 5](../_attachments/auction-5.png)
 
-From the auction details screen, you can place a bid on the auction under 'New bid'. Enter the amount you'd like to bid, then select 'Bid ICP'.
+From the auction details screen, you can place a bid on the auction under 'New bid.' Enter the amount you'd like to bid, then select 'Bid ICP.'
 
 ![Auction 6](../_attachments/auction-6.png)
 
@@ -370,7 +368,7 @@ If you scroll down, you will see the option to place another bid, followed by th
 
 ## Need help?
 
-Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
+Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
@@ -378,9 +376,9 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7 day adventure and learn to build a DAO on the Internet Computer.
+- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
 
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects and participate in collaborative events.
+- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
 
 - [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 

@@ -6,8 +6,6 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 import '/src/components/CenterImages/center.scss';
 
-
-
 # 1.1 Exploring a live demo
 
 <MarkdownChipRow labels={["Beginner", "Tutorial"]} />
@@ -17,8 +15,6 @@ import '/src/components/CenterImages/center.scss';
 </div>
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/-se6Se9z-aM?si=cvwDyXYrSKgoBZ4_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> </div>
-
-## Overview
 
 In the previous segment of our developer ladder, introduction to `dfx`, you created a new `dfx` project using the default 'Hello, world' template and looked into the project's structure and code. However, you didn't build or deploy the <GlossaryTooltip>canister</GlossaryTooltip>.
 
@@ -32,7 +28,7 @@ Deploying to the playground is ICP's equivalent of deploying to a testnet networ
 
 Canisters deployed to the playground can run for 20 minutes; after 20 minutes, the canister will be uninstalled and the resources borrowed are returned to the playground's canister pool.
 
-The playground is a great way to be able to deploy a canister quickly for short, small-scale testing, or just to get familiar with the deployment process and how to interact with a canister without needing to complete additional deployment steps, such as acquiring cycles.
+The playground is a great way to be able to deploy a canister quickly for short, small-scale testing or just to get familiar with the deployment process and how to interact with a canister without needing to complete additional deployment steps, such as acquiring cycles.
 
 Since the playground is designed for testing purposes, there are several restrictions imposed on canisters that have been deployed to the playground that you should be aware of. These restrictions are:
 
@@ -40,7 +36,7 @@ Since the playground is designed for testing purposes, there are several restric
 - Wasm files can't be gzipped.
 - Wasm files for deployed canisters will be analyzed to remove any potentially expensive or malicious operations.
 - Canisters can use at most 1GB of memory.
-- Canisters can call the management canister to manage itself without being the controller.
+- Canisters can call the management canister to manage themselves without being the controller.
 - Deployed canisters expire after 20 minutes.
 
 ## `dfx deploy --playground`
@@ -79,9 +75,9 @@ Before you can deploy the canister, you need to start the local canister executi
 dfx start --clean --background
 ```
 
-This command starts the local <GlossaryTooltip>replica</GlossaryTooltip> in the background. The `--clean` flag removes any orphan background processes or canister IDs that might cause conflicts in your environment. It is good practice to use this flag when starting `dfx`, since it can help prevent any issues if you forget to use `dfx stop` when moving between projects, or if you have processes running in another terminal that you forgot about.
+This command starts the local <GlossaryTooltip>replica</GlossaryTooltip> in the background. The `--clean` flag removes any orphan background processes or canister IDs that might cause conflicts in your environment. It is good practice to use this flag when starting `dfx`, since it can help prevent any issues if you forget to use `dfx stop` when moving between projects or if you have processes running in another terminal that you forgot about.
 
-Without the `--background` flag, the output of the execution environment will take over the terminal window and you would need to open a second terminal window to continue running commands.
+Without the `--background` flag, the output of the execution environment will take over the terminal window, and you would need to open a second terminal window to continue running commands.
 
 Then, to deploy this canister to the playground, run the command:
 
@@ -99,17 +95,17 @@ The output of this command will resemble the following:
 WARN: The default identity is not stored securely. Do not use it to control a lot of cycles/ICP. Create a new identity with `dfx identity new` and use it in mainnet-facing commands with the `--identity` flag
 Deployed canisters.
 URLs:
-  Backend canister via Candid interface:
-    hello_world_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=zeh3m-fiaaa-aaaab-qacda-cai
+  Backend canister via Candid interface:
+    hello_world_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=zeh3m-fiaaa-aaaab-qacda-cai
 ```
 
 :::info
-The identity warning returned in the output of this command is expected. At this point, we have not configured `dfx` to use an identity, so the default is used. The default identity's seed phrase is not stored securely, and therefore should not be used to control cycles or ICP tokens.
+The identity warning returned in the output of this command is expected. At this point, we have not configured `dfx` to use an identity, so the default is used. The default identity's seed phrase is not stored securely and therefore should not be used to control cycles or ICP tokens.
 :::
 
 ### Interacting with the canister via the CLI
 
-Once deployed, the canister can be interacted with from the command line, or from the URL shown in the output above that refers to the backend canister's Candid interface. First, let's look at using the command line.
+Once deployed, the canister can be interacted with from the command line or from the URL shown in the output above that refers to the backend canister's Candid interface. First, let's look at using the command line.
 
 If you recall from the [0.6: Introduction to dfx](/docs/current/tutorials/developer-journey/level-0/intro-dfx) module, our canister has a single method called `greet`, which you can call using a command such as:
 
@@ -117,7 +113,7 @@ If you recall from the [0.6: Introduction to dfx](/docs/current/tutorials/develo
 dfx canister --playground call hello_world_backend greet '("everyone")'
 ```
 
-This command sends a message to the `hello_world_backend` canister that has been deployed on the playground network (indicated by the `--playground` flag), and calls the method `greet`, then passes the text `'("everyone")'` to the method.
+This command sends a message to the `hello_world_backend` canister that has been deployed on the playground network (indicated by the `--playground` flag) and calls the method `greet`, then passes the text `'("everyone")'` to the method.
 
 As a result, the canister should return the following reply:
 
@@ -125,7 +121,7 @@ As a result, the canister should return the following reply:
 ("Hello, everyone!")
 ```
 
-You can change the text portion to anything you'd like to test the method further. For example, instead of 'everyone', you can pass 'developers' into the method, such as:
+You can change the text portion to anything you'd like to test the method further. For example, instead of 'everyone,' you can pass 'developers' into the method, such as:
 
 ```bash
 dfx canister --playground call hello_world_backend greet '("developers")'
@@ -161,13 +157,13 @@ You will see the output of the method in the output log on the right side of the
 
 ![Candid UI 3](../_attachments/candid-3.png)
 
-You can play around with this user interface by inputting different text, such as 'developers' instead of 'everyone'.
+You can play around with this user interface by inputting different text, such as 'developers' instead of 'everyone.'
 
 ![Candid UI 4](../_attachments/candid-4.png)
 
 ## Need help?
 
-Did you get stuck somewhere in this tutorial, or feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
+Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
@@ -175,9 +171,9 @@ Did you get stuck somewhere in this tutorial, or feel like you need additional h
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7 day adventure and learn to build a DAO on the Internet Computer.
+- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
 
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects and participate in collaborative events.
+- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
 
 - [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 

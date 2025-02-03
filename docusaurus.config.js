@@ -568,7 +568,7 @@ function getImageDataUrl(url) {
 const config = {
   title: "Internet Computer",
   tagline:
-    "The Internet Computer hosts secure, network-resident code and data. Build web apps without Big Tech and current IT. Applications are immune to cyber attacks and unstoppable, capable of processing tokens, and can run under exclusive DAO control. Build web3 social media, games, DeFi, multi-chain apps, secure front-ends, ledgers, enterprise apps, and AI models. The internet is evolving fast.",
+    "The Internet Computer hosts secure, network-resident code and data. Build web apps without Big Tech and current IT. Applications are immune to cyber attacks and unstoppable, capable of processing tokens, and can run under exclusive DAO control. Build web3 social media, games, DeFi, multi-chain apps, secure front-ends, ledgers, enterprise apps, and AI models. TCP/IP connected software. Now ICP hosts software.",
   url: isDeployPreview
     ? `https://${process.env.PREVIEW_CANISTER_ID}.icp0.io`
     : "https://internetcomputer.org",
@@ -694,6 +694,13 @@ const config = {
         defaultMode: "light",
         respectPrefersColorScheme: true,
       },
+        // github codeblock theme configuration
+        codeblock: {
+          showGithubLink: true,
+          githubLinkLabel: 'View on GitHub',
+          showRunmeLink: false,
+          runmeLinkLabel: 'Checkout via Runme'
+      },
       metadata: [
         {
           // ios safari zooms in when an input field is focused
@@ -745,6 +752,7 @@ const config = {
               {
                 label: "Node Providers",
                 href: "/node-providers",
+                target: '_self',
               },
               {
                 label: "Dashboard",
@@ -846,7 +854,7 @@ const config = {
         playgroundPosition: "bottom",
       },
     },
-  themes: ["@docusaurus/theme-live-codeblock", "@docusaurus/theme-mermaid"],
+  themes: ["@docusaurus/theme-live-codeblock", "@docusaurus/theme-mermaid", "docusaurus-theme-github-codeblock"],
   clientModules: [require.resolve("./static/load_moc.ts")],
 };
 

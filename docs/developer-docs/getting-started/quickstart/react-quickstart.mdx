@@ -7,7 +7,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
-# React quick start
+# First web app
 
 <MarkdownChipRow labels={["Beginner", "Getting started", "Quick start"]} />
 
@@ -66,10 +66,21 @@ dfx --version
 
 #### Prerequisites
 
+`dfx` is not natively supported on Windows. You will need to install a Linux instance via Windows Subsystem for Linux and run all commands within that Linux instance.
+
 <input type="checkbox"/> Download and install <a href="https://docs.microsoft.com/en-us/windows/wsl/install"> Windows Subsystem for Linux</a>.
 <div>
 </div>
-<input type="checkbox"/> Download and <a href="https://nodejs.org/en/download/package-manager">install Node.js</a> within your WSL environment.
+<input type="checkbox"/> Open a WSL terminal window.
+<div>
+</div>
+<input type="checkbox"/> Download and install a Linux distribution (i.e., Ubuntu) using Windows Subsystem for Linux: <code>wsl --install -d ubuntu</code>
+<div>
+</div>
+<input type="checkbox"/> Open the WSL Linux environment. Run all following commands within this environment.
+<div>
+</div>
+<input type="checkbox"/> Download and <a href="https://learn.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-wsl">install Node.js</a> within your WSL Linux environment.
 
 ---------
 
@@ -90,27 +101,19 @@ dfx --version
 </AdornedTabs>
 
 
-#### 2. Download the React template.
-
-Create a new empty directory, then download the [project template](https://github.com/rvanasa/vite-react-motoko/tree/main/src):
+#### 2. Create a new project.
 
 ```
-mkdir react-project
+dfx new react-project --type motoko --frontend react
+```
+
+This generates a simple "Hello, [name]!" application that uses [Motoko](/docs/current/motoko/main/getting-started/motoko-introduction), React, and TypeScript.
+
+
+#### 3. Deploy the project.
+
+```
 cd react-project
-npx degit jessiemongeon1/vite-react-motoko
-```
-
-This example project uses [Motoko](/docs/current/motoko/main/getting-started/motoko-introduction), React, and TypeScript template to create a simple counter application.
-
-#### 3. Setup the project using `npm`.
-
-```
-npm run setup
-```
-
-#### 4. Deploy the project.
-
-```
 dfx deploy --playground
 ```
 
@@ -118,4 +121,10 @@ dfx deploy --playground
 
 Open the `frontend` URL in a web browser. You'll see the template React frontend interface.
 
-*Congratulations, you just created your first internet-native React dapp!*
+*Congratulations, you just created your first internet-native React app!*
+
+:::info
+
+You can try other templates. Run `dfx new -h` for more information about the supported backend and frontend options.
+
+:::
