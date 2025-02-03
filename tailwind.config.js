@@ -315,6 +315,16 @@ module.exports = {
         )
       );
     }),
+
+    function ({ addUtilities }) {
+      addUtilities({
+        ".mask-fade-bottom": {
+          "-webkit-mask-image": "linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 90%)",
+          "mask-image": "linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 90%)",
+        },
+      });
+    },
+
   ],
   corePlugins: { preflight: false },
   darkMode: ["class", '[data-theme="dark"]'],
