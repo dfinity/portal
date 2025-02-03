@@ -11,29 +11,24 @@ import transitions from "@site/static/transitions.json";
 
 const sliderData = [
   {
-    title: "World Computer Day - Davos 2025 - Event Highlights",
+    title: "ICP World Computer Show 2024",
     image: "/img/library/video-slider/world-computer-day.avif",
-    link: "https://www.youtube.com/watch?v=7yo1gwzWAak",
+    link: "https://www.youtube.com/watch?v=2s2amSYj26U",
   },
   {
-    title: "AI onchain: Daniel Naeff Interview at AI+X Summit",
-    image: "/img/library/video-slider/ai-on-chain.avif",
-    link: "https://www.youtube.com/watch?v=8TVksaxpwK4",
+    title: "Acumen Media | DAVOS Interviews | The Self-Writing & Sovereign Internet Paradigm",
+    image: "/img/library/video-slider/acumen-media-davos-interviews-the-self-writing-sovereign-internet-paradigm.avif",
+    link: "https://www.youtube.com/watch?v=PlJxuRAsEOE",
   },
   {
-    title: "Where AI Builds: Unlocking the Power of Imagination through Chat - with Dominic",
-    image: "/img/library/video-slider/where-ai-builds.avif",
+    title: "Where AI Builds: Unlocking the Power of Imagination through Chat - with Dominic Williams",
+    image: "/img/library/video-slider/where-ai-builds-unlocking-the-power-of-imagination-through-chat-with-dominic-williams.avif",
     link: "https://www.youtube.com/watch?v=9q13cFGxEb0",
   },
   {
-    title: "Fireside Chat | Does AI Need Crypto? at Crypto AI:Con",
-    image: "/img/library/video-slider/fire-side-chat.avif",
-    link: "https://www.youtube.com/watch?v=vZPkmzUOF0U",
-  },
-  {
-    title: "AI onchain: Daniel Naeff Interview at AI+X Summit",
-    image: "/img/library/video-slider/ai-on-chain.avif",
-    link: "https://www.youtube.com/watch?v=8TVksaxpwK4",
+    title: "B3YOND THE BLOCKCHAIN – ICP 3rd Anniversary Recap",
+    image: "/img/library/video-slider/B3YOND-THE-BLOCKCHAIN–icp-3rd-anniversary-recap.avif",
+    link: "https://www.youtube.com/watch?v=4ZmgVD71SOw",
   },
 ];
 

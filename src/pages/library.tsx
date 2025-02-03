@@ -16,7 +16,7 @@ import { useDarkHeaderInHero } from "@site/src/utils/use-dark-header-in-hero";
 const quickstartCards = [
   {
     title: "Internet Computer in a Nutshell",
-    description: "deck.internetcomputer.org",
+    description: "A non-technical introduction",
     url: "/presentations/Internet Computer in a nutshell EN.pdf",
     img: "/img/library/internet-computer-in-a-nutshell-en.png",
     background: 'conic-gradient(from 240deg at 50% 50%, #5331cf, #7b37cb, #e69cba, #fed9ce, #fed9ce, #e69cba, #7b37cb, #5331cf)',
@@ -24,7 +24,7 @@ const quickstartCards = [
   },
   {
     title: "Der Internet Computer in Kürze (German)",
-    description: "deck.internetcomputer.org",
+    description: "Eine nicht technische Einführung",
     url: "/presentations/Internet Computer in a nutshell DE.pdf",
     img: "/img/library/internet-computer-in-a-nutshell-de.png",
     background: 'conic-gradient(from 75deg at 50% 50%, #5331cf, #7b37cb, #e69cba, #fed9ce, #fed9ce, #e69cba, #7b37cb, #5331cf)',
