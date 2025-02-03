@@ -175,13 +175,13 @@ const LibraryCard: React.FC<{
 }> = ({ title, url, subtitle, description, img, imgPosition = 'bottom', background = '#FFF', isInverted = false }) => {
   return (
     <Link
-      className="link-primary link-with-icon no-underline cursor-pointer h-full"
+      className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform h-full"
       href={url}
       target="_blank"
       rel="noopener noreferrer"
     >
       <article
-        className={`w-full h-full rounded-xl overflow-hidden flex flex-col gap-8 ${isInverted ? 'text-white' : 'text-black'}`}
+        className={`w-full h-full rounded-xl overflow-hidden flex flex-col justify-between gap-8 ${isInverted ? 'text-white' : 'text-black'}`}
         style={{ 
           background: background,
         }}

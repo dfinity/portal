@@ -43,7 +43,7 @@ export const CardWithImage: React.FC<{
     <MotionLink
       variants={transitions.item}
       to={href}
-      className="text-black hover:no-underline"
+      className="text-black hover:no-underline hover:-translate-y-2 transition-transform"
     >
       <article className="flex flex-col justify-start gap-3 group relative overflow-hidden">
         
