@@ -82,7 +82,7 @@ actor Randomness {
 #### Caveats:
 - The method doesn't scale when large amount of random bytes is requested as `raw_rand` must be called for every 32 bytes.
 
-### 2. Using `raw_rand` as seed for a psuedo random number generator (PRNG)
+### 2. Using `raw_rand` as seed for a pseudo random number generator (PRNG)
 
 In this Rust example, we seed the output from `raw_rand` in a known PRNG like ChaCha20 in the `init` and `post_upgrade` hooks and generate randomness by calling the `random_bytes` method.
 
