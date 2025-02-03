@@ -8,7 +8,7 @@ git checkout 0.7.6 #or whatever new tag you desire
 cd ../..
 git add submodules/motoko # add the change to the submodule
 ```
-Now replace `static/moc-interpreter-0.13.6.js with `static/moc_interpreter-0.13.7.js`, downloaded from motoko release page. It would be better if this wasn't checked in, but, for now, it is.
+Now replace `static/moc-interpreter-0.13.6.js` with `static/moc_interpreter-0.13.7.js`, downloaded from motoko release page. It would be better if this wasn't checked in, but, for now, it is.
 
 Edit `static/load_moc.ts` to use the correct version of the interpreter and base libs.
 
