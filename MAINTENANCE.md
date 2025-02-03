@@ -15,6 +15,6 @@ Edit `static/load_moc.ts` to use the correct version of the interpreter and base
 Finally, edit `docs/motoko/version.md` to report the current version of Motoko.
 ```
 git add -u
-git commit -m "updating motoko doc"
+git commit -m "chore: updating motoko doc"
 git push
 ```
