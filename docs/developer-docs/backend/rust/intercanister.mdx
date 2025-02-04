@@ -37,7 +37,7 @@ https://github.com/oggy-dfin/icc_rust_docs/blob/34f59ddae9fcc70173fc21927a427975
 The simplest way to interact with the ICP ledger is to use calls where the caller is willing to wait for the response for an unbounded amount of time. These calls can still fail before reaching the ledger, or even while the ledger is processing the call. but the ledger's response is guaranteed do be delivered to the caller, which is why we also refer to these calls as *guaranteed response*  calls.
 
 ```rust reference
-https://github.com/oggy-dfin/icc_rust_docs/blob/34f59ddae9fcc70173fc21927a4279757f93c51a/src/icc_rust_docs_backend/src/lib.rs#L14-L81
+https://github.com/oggy-dfin/icc_rust_docs/blob/7c3a0195c7a78eff8813d80d18b8575535a05c3b/src/icc_rust_docs_backend/src/lib.rs#L14-L81
 ```
 
 The guaranteed response delivery property ensures that the only causes of `StateUnknown` error are due to canister behavior (mismatched expectations on the return types, or the callee panicking). However, there is also a downside to unbounded wait calls: since safely upgrading a canister can only be done when the canister has no pending calls, and since unbounded wait calls provide no bound on when the call will return, the caller may be prevented from upgrading safely. This can in particular be problematic when calling untrusted canisters, such as an arbitrary ledger.
