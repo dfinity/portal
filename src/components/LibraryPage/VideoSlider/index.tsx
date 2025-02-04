@@ -12,22 +12,22 @@ import transitions from "@site/static/transitions.json";
 const sliderData = [
   {
     title: "ICP World Computer Show 2024",
-    image: "/img/library/video-slider/world-computer-day.avif",
+    image: "https://img.youtube.com/vi/2s2amSYj26U/maxresdefault.jpg",
     link: "https://www.youtube.com/watch?v=2s2amSYj26U",
   },
   {
     title: "Acumen Media | DAVOS Interviews | The Self-Writing & Sovereign Internet Paradigm",
-    image: "/img/library/video-slider/acumen-media-davos-interviews-the-self-writing-sovereign-internet-paradigm.avif",
+    image: "https://img.youtube.com/vi/PlJxuRAsEOE/maxresdefault.jpg",
     link: "https://www.youtube.com/watch?v=PlJxuRAsEOE",
   },
   {
     title: "Where AI Builds: Unlocking the Power of Imagination through Chat - with Dominic Williams",
-    image: "/img/library/video-slider/where-ai-builds-unlocking-the-power-of-imagination-through-chat-with-dominic-williams.avif",
+    image: "https://img.youtube.com/vi/9q13cFGxEb0/maxresdefault.jpg",
     link: "https://www.youtube.com/watch?v=9q13cFGxEb0",
   },
   {
     title: "B3YOND THE BLOCKCHAIN – ICP 3rd Anniversary Recap",
-    image: "/img/library/video-slider/B3YOND-THE-BLOCKCHAIN–icp-3rd-anniversary-recap.avif",
+    image: "https://img.youtube.com/vi/4ZmgVD71SOw/maxresdefault.jpg",
     link: "https://www.youtube.com/watch?v=4ZmgVD71SOw",
   },
 ];
