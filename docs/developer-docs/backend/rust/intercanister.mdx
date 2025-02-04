@@ -8,7 +8,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Beginner", "Rust", "Tutorial"]} />
 
-Just like users can call canisters, canisters can also call other canisters. This document shows how to use these inter-canister calls in Rust. To fully understand calls, their properties, and common pitfalls and security issues, refer to the section on [inter-canister calls](/docs/current/developer-docs/smart-contracts/advanced-features/async-code).
+Just like users can call canisters, canisters can also call other canisters. This tutorial shows how to use these inter-canister calls in Rust. To fully understand calls, their properties, and common pitfalls and security issues, refer to the section on [inter-canister calls](/docs/current/developer-docs/smart-contracts/advanced-features/async-code).
 
 Our examples will center around tokens. We will write a simple wallet canister that holds tokens on behalf of its owner, and allows the owner to transfer tokens. We'll first show an example of interacting with the ICP ledger, and then also any ledger that supports the ICRC-1 standard. Finally, we will allow the wallet to determine the exchange rate between supported tokens using the exchange rate canister.
 
