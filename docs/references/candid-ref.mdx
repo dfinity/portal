@@ -4,8 +4,6 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Reference"]} />
 
-## Overview
-
 This document provides detailed reference information about Candid supported types and links to the Candid specification and documentation for the Candid Rust crate.
 
 -   [Supported types](#supported-types).
@@ -173,6 +171,12 @@ We can use type annotation to distinguish different integer types.
 100 : nat8
 -100 : int8
 (42 : nat64)
+```
+
+Canister init arguments passed to `dfx` must be explicit with data types, such as:
+
+```
+field = 5 : nat64
 ```
 
 #### Corresponding Motoko type  

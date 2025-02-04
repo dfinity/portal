@@ -22,6 +22,12 @@ export const dfinityToolingItems = [
     links: { github: "https://github.com/dfinity/prettier-plugin-motoko" },
   },
   {
+    title: "ICP Ninja",
+    tags: ["IDE", "website", "development"],
+    description: "A web-based IDE for developing and deploying ICP smart contracts.",
+    links: { external: "https://icp.ninja" },
+  },
+  {
     title: "Motoko Playground",
     tags: ["website"],
     description: "An online playground environment for Motoko.",

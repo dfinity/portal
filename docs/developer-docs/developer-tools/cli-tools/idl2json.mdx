@@ -3,13 +3,12 @@ keywords: [intermediate, idl2json, idl, candid, json]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
 
 # idl2json
 
 <MarkdownChipRow labels={["Intermediate"]} />
-
-
-## Overview
 
 [`idl2json`](https://github.com/dfinity/idl2json/tree/main) is a command-line tool used to translate [Candid](https://github.com/dfinity/candid) textual values from `stdin` into JSON values outputted in `stdout`.
 
@@ -17,9 +16,13 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 ## Installation
 
-### Prerequisites
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
 
-- Download and install [cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html).
+<input type="checkbox"/> <a href="https://doc.rust-lang.org/cargo/getting-started/installation.html)">Install cargo.</a>
+
+</TabItem>
+</Tabs>
 
 Once you have downloaded cargo, install `idl2json` with the `cargo install` command:
 

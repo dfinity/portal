@@ -14,51 +14,6 @@
       "in_beta": false
     },
     {
-      "title": "API Boundary Nodes (NNS controlled)",
-      "overview": "In the new boundary-node architecture, API boundary nodes are placed under the full control of the NNS and function as the edge of the IC.",
-      "status": "in_progress",
-      "forum": "https://forum.dfinity.org/t/boundary-node-roadmap/15562",
-      "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Solenoid"
-    },
-    {
-      "title": "HTTP Gateways",
-      "overview": "The HTTP Gateway becomes a standalone component as part of the new Boundary Node architecture.",
-      "forum": "https://forum.dfinity.org/t/boundary-node-roadmap/15562",
-      "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
-      "docs": "",
-      "eta": "",
-      "status": "in_progress",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Solenoid",
-      "imported": true
-    },
-    {
-      "title": "Community-owned HTTP Gateways",
-      "overview": "As part of the new boundary-node architecture, the HTTP gateway is turned into a standalone service, which is easily deployable by anyone, including end users.",
-      "forum": "https://forum.dfinity.org/t/boundary-node-roadmap/15562",
-      "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
-      "docs": "",
-      "eta": "",
-      "status": "upcoming",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Solenoid"
-    },
-    {
-      "title": "Edge Infrastructure is Fully Decentralized",
-      "is_milestone": true,
-      "description": "ICP is accessible through a decentralized edge infrastructure, which is split into NNS-controlled API Boundary Nodes and HTTP Gateways. The NNS will appoint node machines to run API Boundary Nodes and anyone will be able to run HTTP Gateways, enabling a much more decentralized ICP edge infrastructure with a diverse set of service providers.",
-      "milestone_id": "Solenoid",
-      "status": "in_progress",
-      "eta": "Q2 2024",
-      "eta_to_render": "December 2024"
-    },
-    {
       "title": "SEV-SNP-protected API Boundary Nodes",
       "overview": "Security for API boundary nodes is improved using trusted execution (AMD SEV-SNP), enabling anyone to attest that the correct software is running.",
       "forum": "https://forum.dfinity.org/t/long-term-r-d-boundary-nodes-proposal/9401",
@@ -88,7 +43,7 @@
       "is_milestone": true,
       "milestone_id": "Levitron",
       "description": "This milestone establishes visibility into the Internet Computer's edge infrastructure by making aggregated API boundary node access logs publicly accessible. This provides developers with valuable insights into their dapps' usage patterns and facilitates the generation of user statistics, offering key information on traffic sources. To guarantee the integrity of these logs, the milestone focuses on leveraging trusted execution environments, specifically AMD SEV-SNP.",
-      "status": "future",
+      "status": "in_progress",
       "eta": "",
       "eta_to_render": ""
     },
@@ -114,17 +69,6 @@
       "in_beta": false
     },
     {
-      "title": "Public access to a subset of node metrics",
-      "overview": "Giving node providers access to a subnet of node metrics to help them find out what is failing in case of node issues.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "in_progress",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
       "title": "Off-chain observability stack for Node Providers",
       "overview": "Observability solution for Node Providers to enable them to independently triage node health and take corrective action in case of problems.",
       "forum": "",
@@ -137,16 +81,15 @@
       "imported": true
     },
     {
-      "title": "Alerting of NP in case of Node Failure",
-      "overview": "Alert Node Providers if one of their nodes starts misbehaving or underperforming.",
-      "forum": "",
+      "title": "Performance-based node provider rewards",
+      "overview": "Node rewards are awarded according to the node's contributions to the protocol, based on trustworthy node metrics, which are provided and signed by the IC network itself. This creates a cryptoeconomic incentive to encourage honest node provider behaviour.",
+      "forum": "https://forum.dfinity.org/t/performance-based-node-rewards/35208",
       "proposal": "",
       "docs": "",
       "eta": "",
       "status": "in_progress",
-      "is_community": true,
-      "in_beta": false,
-      "imported": true
+      "is_community": false,
+      "in_beta": false
     },
     {
       "title": "HTTP Asset Caching",
@@ -218,18 +161,7 @@
     {
       "title": "Strengthened node provider checks and audits",
       "overview": "Strengthening the checks of entities intending to join ICP as node providers. May also include node provider audits.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "Penalties for non-compliant node providers",
-      "overview": "Non-compliant node providers are penalized economically or excluded from future network participation. This creates a cryptoeconomic incentive to encourage honest node provider behaviour.",
-      "forum": "",
+      "forum": "https://forum.dfinity.org/t/technical-working-group-node-providers/30255",
       "proposal": "",
       "docs": "",
       "eta": "",
@@ -269,18 +201,6 @@
       "status": "",
       "is_community": false,
       "in_beta": false
-    },
-    {
-      "title": "Decentralized virtual personhood validation",
-      "overview": "Scalable, decentralized, virtual proof of personhood to distinguish people from machines.",
-      "forum": "https://forum.dfinity.org/t/long-term-r-d-people-parties-proof-of-human-proposal/9636",
-      "proposal": "https://dashboard.internetcomputer.org/proposal/35668",
-      "docs": "",
-      "eta": "",
-      "status": "",
-      "is_community": false,
-      "in_beta": false,
-      "imported": true
     },
     {
       "title": "Public contributions to IC repository",

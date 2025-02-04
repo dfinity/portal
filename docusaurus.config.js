@@ -38,6 +38,14 @@ const snsDataPlugin = require("./plugins/sns-data");
 const airtablePlugin = require("./plugins/airtable");
 const youtubePlugin = require("./plugins/youtube");
 
+const remarkPlugins = [
+  math,
+  simplePlantUML,
+  require("remark-code-import"),
+  require("./plugins/remark/validate-links.js"),
+];
+const rehypePlugins = [katex];
+
 const isDeployPreview = !!process.env.PREVIEW_CANISTER_ID;
 
 if (process.env.PREVIEW_CANISTER_ID) {
@@ -89,30 +97,17 @@ const subnavItems = [
   {
     type: "dropdown",
     position: "left",
-    label: "Frameworks",
-    items: [
-      {
-        label: "Juno",
-        href: "/docs/current/developer-docs/web-apps/frameworks/juno",
-      },
-    ],
-  },
-  {
-    type: "dropdown",
-    position: "left",
     label: "Additional Resources",
     items: [
       {
         label: "Awesome Internet Computer",
         href: "https://github.com/dfinity/awesome-internet-computer#readme",
       },
-      { label: "Sample Code", to: "/samples" },
       {
         label: "SDK Release Notes",
         type: "doc",
         docId: "other/updates/release-notes/release-notes",
       },
-      { label: "Developer Tools", to: "/tooling" },
       { label: "Developer Grants", href: "https://dfinity.org/grants" },
       {
         label: "Playground",
@@ -202,6 +197,11 @@ const marketingNav = {
               name: "Sustainability",
               href: "/capabilities/sustainability",
               description: "Building green, efficient tech",
+            },
+            {
+              name: "Library",
+              href: "/library",
+              description: "Resources to get you started",
             },
             /*
             {
@@ -568,7 +568,7 @@ function getImageDataUrl(url) {
 const config = {
   title: "Internet Computer",
   tagline:
-    "The Internet Computer hosts secure, network-resident code and data. Build web apps without Big Tech and current IT. Applications are immune to cyber attacks and unstoppable, capable of processing tokens, and can run under exclusive DAO control. Build web3 social media, games, DeFi, multi-chain apps, secure front-ends, ledgers, enterprise apps, and AI models. The internet is evolving fast.",
+    "The Internet Computer hosts secure, network-resident code and data. Build web apps without Big Tech and current IT. Applications are immune to cyber attacks and unstoppable, capable of processing tokens, and can run under exclusive DAO control. Build web3 social media, games, DeFi, multi-chain apps, secure front-ends, ledgers, enterprise apps, and AI models. TCP/IP connected software. Now ICP hosts software.",
   url: isDeployPreview
     ? `https://${process.env.PREVIEW_CANISTER_ID}.icp0.io`
     : "https://internetcomputer.org",
@@ -600,6 +600,7 @@ const config = {
         "What is the ICP token?, How is the Internet Computer governed?, How do I start building fully onchain Web3?",
       "data-modal-disclaimer":
         " This LLM provides responses are generated automatically and may be inaccurate or outdated. Please take care to verify or validate any responses before making any critical decisions.",
+      "data-user-analytics-fingerprint-enabled": "true",
       async: true,
     },
   ],
@@ -655,16 +656,16 @@ const config = {
           },
 
           sidebarPath: require.resolve("./sidebars.js"),
-          remarkPlugins: [math, simplePlantUML, require("remark-code-import")],
-          rehypePlugins: [katex],
+          remarkPlugins,
+          rehypePlugins,
           editUrl: "https://github.com/dfinity/portal/edit/master/",
         },
         blog: {
           path: "blog",
           blogSidebarCount: "ALL",
           postsPerPage: "ALL",
-          remarkPlugins: [math, simplePlantUML, require("remark-code-import")],
-          rehypePlugins: [katex],
+          remarkPlugins,
+          rehypePlugins,
         },
         theme: {
           customCss: require.resolve("./src/css/custom.scss"),
@@ -692,6 +693,13 @@ const config = {
         disableSwitch: false,
         defaultMode: "light",
         respectPrefersColorScheme: true,
+      },
+        // github codeblock theme configuration
+        codeblock: {
+          showGithubLink: true,
+          githubLinkLabel: 'View on GitHub',
+          showRunmeLink: false,
+          runmeLinkLabel: 'Checkout via Runme'
       },
       metadata: [
         {
@@ -744,6 +752,7 @@ const config = {
               {
                 label: "Node Providers",
                 href: "/node-providers",
+                target: '_self',
               },
               {
                 label: "Dashboard",
@@ -845,7 +854,7 @@ const config = {
         playgroundPosition: "bottom",
       },
     },
-  themes: ["@docusaurus/theme-live-codeblock", "@docusaurus/theme-mermaid"],
+  themes: ["@docusaurus/theme-live-codeblock", "@docusaurus/theme-mermaid", "docusaurus-theme-github-codeblock"],
   clientModules: [require.resolve("./static/load_moc.ts")],
 };
 
