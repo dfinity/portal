@@ -7,47 +7,57 @@ import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
-import { OsType, useOs } from "/src/hooks/useOs";
+import useBaseUrl from "@docusaurus/useBaseUrl";
 
 # ICP primer
 
-<MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
+<MarkdownChipRow labels={["Beginner", "Getting started"]} />
 
-diagram of ICP
+The ICP network is made up of **nodes** that each run software known as the **replica**. The replica provides the execution environment to run a canister's [WebAssembly](https://internetcomputer.org/capabilities/webassembly) module. By running applications as WebAssembly modules, ICP supports complex applications written in a variety of different languages.
 
-wasm runtime system / virtual machine
+A group of nodes is known as a **subnet**, which together run their own independent consensus mechanism separate from other nodes and subnets. Subnets can have different sizes, though the most common is 13 nodes.
 
-allows for running complex apps, web apps, writing canister code in different langauges
+When a canister is deployed on the mainnet or to the playground, it gets deployed to a subnet and replicated across all nodes on that subnet, meaning there are multiple instances of the canister running at once in parallel.
 
-the network nodes run software called the replica
+When a canister is deployed locally, it is deployed to a single replica. Testing certain features locally that rely on consensus, such as HTTPS outcalls, will not provide the same result as deployed on the mainnet, since there is only one replica locally that must agree on the result of the call rather than 13 or more replicas on the mainnet.
 
-canisters deployed locally: one replica
+Canisters are replicated for security, reliability, redundancy, and state consistency.
 
-canisters get deployed to the mainnet/playground: multiple replicas
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/subnets1.png")}
+    alt="Application architecture"
+    width="800"
+  />
+</div>
 
-ICP embraces scalability and runs canisters in parallel. In that regard, canisters are similar to processes or microservices from traditional programming. Smart contracts can be fully autonomous and can schedule execution using timers without relying on users sending messages.
+## Canister calls
 
-use resources of nodes on the network, nodes located across the globe
+A canister is comprised of code and state. The state can be read or modified through the use of query or update calls respectively. Query calls do not go through consensus and do not alter the canister's state, while update calls do both. Canisters themselves can send outgoing query or update calls to other canisters, or they can receive calls from users and canisters. A canister answers the calls it receives in a first-in first-out manner.
+
+Canisters can also make calls to the [management canister], which is a facade of a canister that provides the network's system API used to utilize features of ICP such as randomness and timers.
+
+## Canister modifications
+
+A canister's code is mutable. It can be upgraded to apply code changes or install an entirely new Wasm module. Changes to the canister, such as upgrades or modifications to the canister's settings, can be executed by the canister's **controllers**. A controller is a **developer identity** that has permission to make such changes.
+
+## Resource consumption
 
 In terms of storage, a canister can store arbitrary data in its WebAssembly memory. Additionally, a canister can use a larger stable memory. The difference between the two memories is important for upgradable canisters: the WebAssembly memory is cleared on an upgrade, whereas the stable memory is preserved (hence the name “stable”). For immutable canisters, there is no observable difference between the two memories except for the size and functions to access them.
 
 
+use resources of nodes on the network, nodes located across the globe
+
+
+## Cycles
 
 canisters use cycles to pay for the resources it uses
 
 learn more about [cycles]
 
-when a canister is running on the network it is replicated across all nodes in the subnet
 
-learn more about subnets [here]
 
-canister has state, state can be modified or queried
 
-canister receives and sends messages
 
-where calls are made by sending messages instead of transactions. The difference between a transaction and a message becomes apparent only when the canister calls other canisters. A transaction is atomic in the sense that it rolls back all state changes if any of the calls fail. A message does not have such atomicity guarantees across calls. Programming on ICP is more asynchronous compared to Ethereum. If the canister does not make any calls, then the message behaves exactly like a transaction.
 
-each canister has ability to call other canisters or be called by users
-
-can call the management canister - system api to interact with the protocol - randomness, etc
 

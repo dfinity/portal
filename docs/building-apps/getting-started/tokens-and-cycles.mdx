@@ -11,13 +11,13 @@ import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 
 <MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
 
-On the Internet Computer, there are three types of token assets: ICP tokens, cycles, and ICRC tokens. ICP and cycles are the most important for every developer to understand and use, as they are necessary for deploying and maintaining a canister.
+On ICP, there are three types of token assets: ICP tokens, cycles, and ICRC tokens. ICP and cycles are the most important for every developer to understand and use, as they are necessary for deploying and maintaining a canister.
 
-ICP tokens are important because they can be converted into cycles and used to pay for a canister's resource consumption. Cycles reflect the real cost of operations for resources such as physical hardware, rack space, energy, storage devices, and bandwidth.
+ICP tokens are important because they can be converted into cycles and used to pay for a canister's resource consumption. Cycles reflect the real cost of resources such as physical hardware, rack space, energy, storage devices, and bandwidth.
 
 ## ICP tokens
 
-ICP is the Internet Computer's native utility token. Its value is determined on the open market. ICP tokens play a key role in the governance and economics of the Internet Computer.
+ICP is the Internet Computer Protocol's native utility token. Its value is determined on the open market. ICP tokens play a key role in the governance and economics of the network.
 
 There are three primary ways to use ICP tokens:
 
@@ -29,33 +29,33 @@ There are three primary ways to use ICP tokens:
 
 ## Cycles
 
-The Internet Computer runs on a network of nodes owned and operated by a community of independent node providers distributed across the globe. Node providers spend money to run and maintain nodes, such that they purchase hardware and pay for the electricity and network bandwidth used by the node. The Internet Computer compensates these node providers on a monthly basis by minting and distributing rewards in the form of ICP tokens.
+The Internet Computer Protocol runs on a network of nodes owned and operated by a community of independent node providers distributed across the globe. Node providers spend money to run and maintain nodes, such that they purchase hardware and pay for the electricity and network bandwidth used by the node. The network compensates these node providers on a monthly basis by minting and distributing rewards in the form of ICP tokens.
 
 Canisters consume the resources provided by these nodes when they are deployed on the mainnet. To make ICP sustainable, canisters are required to pay for the resources they use.
 
 Resource consumption is not paid in ICP tokens but **cycles**. As the canister is used, its cycles balance is continuously reduced. Eventually, the canister needs to be "topped up" with more cycles.
 
-To get cycles, you must convert ICP tokens into cycles.
+To get cycles, ICP tokens must be converted.
 
 ### Why are cycles different from ICP tokens?
 
-While the value of an ICP token is volatile, cycles are not. Cycles are pegged to [XDR](https://en.wikipedia.org/wiki/Special_drawing_rights), a group of fiat currencies. This allows resource consumption and canister execution on ICP to be at a rather stable price.
+While the value of an ICP token is volatile, cycles are not. Cycles are pegged to [XDR](https://en.wikipedia.org/wiki/Special_drawing_rights), a group of fiat currencies, where 1 trillion cycles equals 1 XDR. This allows resource consumption and canister execution on ICP to be a rather stable price.
 
 ## Other token types
 
-The Internet Computer supports creating and deploying custom fungible or non-fungible tokens through the [ICRC standards](/docs/defi/token-standards/). Each ICRC standard defines a set of parameters that must be met to adhere to the standard. Not all ICRC standards are for tokens; some are for notifications, architectures, or other network functions.
+ICP supports creating and deploying custom fungible or non-fungible tokens through the [ICRC standards](/docs/defi/token-standards/). Each ICRC standard defines a set of parameters that must be met. Not all ICRC standards are for tokens; some are for notifications, architectures, or other network functions.
 
 ## What is a ledger?
 
-A [**ledger**](/docs/defi/overview) is a system canister used to store accounts and their transactions. Each token on the Internet Computer has its own ledger. This means that there are separate ledgers for ICP tokens, cycles, and every ICRC token that has been deployed on the network.
+A [**ledger**](/docs/defi/overview) is a system canister used to store accounts and their transactions. Each token has its own ledger; there are separate ledgers for ICP tokens, cycles, and every ICRC token that has been deployed on the network.
 
 [Learn more about ledgers](/docs/defi/overview).
 
 ## Obtaining cycles
 
-You need to obtain [ICP tokens](https://internetcomputer.org/icp-tokens), then convert them into cycles using `dfx`. However, when participating at DFINITY events like [hackathons](https://dfinity.org/hackathons) or working on a [developer grant](https://dfinity.org/grants), you will receive a coupon that you can redeem to claim free cycles from the [cycles faucet](https://anv4y-qiaaa-aaaal-qaqxq-cai.ic0.app/).
+You need to obtain [ICP tokens](https://internetcomputer.org/icp-tokens), then convert them into cycles using `dfx`. However, when participating at DFINITY events like [hackathons](https://dfinity.org/hackathons) or working on a [developer grant](https://dfinity.org/grants), you can receive a coupon that you can redeem to claim free cycles from the [cycles faucet](https://anv4y-qiaaa-aaaal-qaqxq-cai.ic0.app/).
 
-Each developer identity has both a principal and a ledger account identifier.
+Before obtaining cycles, you need a [developer identity](identities.mdx). Each developer identity has a principal and a ledger account identifier.
 
 A principal has the format `itk7v-ihlxk-ktdrh-fcnst-vkoou-orj77-52ogl-jqwj5-zpfdv-az3lr-xqe` and is used for canister ownership, management, and holding cycles.
 
@@ -95,17 +95,13 @@ dfx ledger balance --network=ic
 
 </details>
 
-Converting ICP to cycles is done through the **cycles ledger**, a ledger canister that enables developer identities to convert, hold, send, and receive cycles.
+### Step 4: Convert ICP into cycles.
 
-The price of cycles is fixed against the price of [XDR](/docs/concepts/glossary#x), where 1 trillion cycles equals 1 XDR.
+Converting ICP to cycles is done through the **cycles ledger**, a system canister that enables developer identities to convert, hold, send, and receive cycles.
 
 Cycles are measured in very large numbers, such as billions and trillions. When you talk about cycle transfers and replenishment, you will usually operate with trillions of cycles.
 
-These commands must be run with the `--network=ic` flag. The cycles ledger is not necessary for local development and therefore not part of the local replica. If you'd like to test integration with the ICP ledger, you can [deploy an instance of it locally](/docs/defi/token-ledgers/setup/icp_ledger_setup).
-
-### Step 4: Convert ICP into cycles.
-
-Replace `AMOUNT` with the number of ICP tokens you want to convert into cycles.
+Replace `AMOUNT` with the number of ICP tokens you want to convert into cycles:
 
 ```
 dfx cycles convert --amount AMOUNT --network=ic
@@ -121,6 +117,9 @@ Account was topped up with 6_229_700_000_000 cycles! New balance is 6_229_600_00
 ```
 
 </details>
+
+This command must be run with the `--network=ic` flag because the cycles ledger is not part of the local replica.
+
 
 ### Calculating how many cycles you need
 

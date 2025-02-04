@@ -87,32 +87,6 @@ This feature has profound implications and use cases:
 This feature is called **Chain-Key Cryptography** on ICP.
 :::
 
-## Canister smart contracts
-
-ICP uses [WebAssembly](https://internetcomputer.org/capabilities/webassembly) as the virtual machine for executing smart contracts.
-This means developers can write smart contracts in popular programming languages such as JavaScript, TypeScript, Rust, Python, and Motoko, which is specifically designed for ICP.
-
-Furthermore, a single smart contract on ICP is powerful enough to host an entire Ethereum Virtual Machine (EVM).
-This allows the deployment of EVM smart contracts written in Solidity.
-
-:::info
-In the context of ICP, smart contracts are referred to as **canisters**.
-:::
-
-A unique feature of ICP is that canisters can handle HTTP requests and serve web assets such as HTML, JS, and CSS.
-In other words, it is possible to write a Web3 application with both the backend and frontend fully hosted onchain.
-Smart contracts can also make requests to other Web2 services outside ICP.
-
-Ethereum developers may be used to the notion that smart contracts run sequentially within an atomic transaction.
-ICP embraces scalability and runs canisters in parallel.
-In that regard, canisters are similar to processes or microservices from traditional programming.
-Smart contracts can be fully autonomous and can schedule execution using timers without relying on users sending messages.
-
-In terms of storage, a canister can store arbitrary data in its WebAssembly memory.
-Additionally, a canister can use a larger **stable memory**.
-The difference between the two memories is important for upgradable canisters: the WebAssembly memory is cleared on an upgrade, whereas the stable memory is preserved (hence the name “stable”).
-For immutable canisters, there is no observable difference between the two memories except for the size and functions to access them.
-
 ## Accounts and keys
 
 ICP derives the address of a user account from the user’s public key by hashing it.

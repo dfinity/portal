@@ -5,21 +5,23 @@ keywords: [beginner, getting started, app architecture, application architecture
 import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
-import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
-import { OsType, useOs } from "/src/hooks/useOs";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
 # Application architecture
 
-<MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
+<MarkdownChipRow labels={["Beginner", "Getting started"]} />
 
-Applications deployed on ICP are comprised of one or more specialized smart contracts known as **canisters**. A canister contains application code and its corresponding state. The application's logic, referred to as the **backend** can be written in a variety of different languages including Motoko, Rust, and Typescript. The user interface of the application, referred to as the frontend, can include assets like HTML, CSS, and Javascript.
+Applications deployed on ICP are comprised of one or more specialized smart contracts known as **canisters**. A canister contains application code and its corresponding state.
 
-The most common architecture for an application on ICP includes one canister for the frontend assets and one or more canisters containing the backend application logic.
+The application's logic, referred to as the **backend**, can be written in a variety of different languages (Motoko, Rust, TypeScript, etc.) through the use of canister development kits (CDKs). Each CDK includes build scripts that compile a canister's code into a WebAssembly (Wasm) program that is compatible with ICP.
+
+The user interface of the application, referred to as the **frontend**, can contain assets like HTML, CSS, and Javascript.
+
+The most common architecture for an application on ICP is one canister for the frontend and one or more canisters for the backend.
 
 <div class="text--center">
   <img
-    src={useBaseUrl("/img/docs/app-arch.svg")}
+    src={useBaseUrl("/img/docs/app-arch.png")}
     alt="Application architecture"
     width="800"
   />
@@ -29,37 +31,37 @@ The most common architecture for an application on ICP includes one canister for
 
 - **[Project structure](#project-structure-and-files)**: Explore the necessary files to create an application.
 
-- **[Code components and methods](#code-structure)**: View the code of the "Hello, world!" app you created in the [quick start](quickstart.mdx) tutorial.
+- **[Backend code components and method](#backend-code-structure)**: View the backend code of the "Hello, world!" app you created in the [quick start](quickstart.mdx) tutorial.
 
 - **[Interact with the application's backend](#call-the-backend-canister)**: Learn how the canister's code responds to calls.
 
-- **[Add a simple frontend](#adding-a-frontend)**: Create a user interface using HTML and CSS.
+- **[Frontend code components and method](#frontend-code-structure)**: View the frontend code and learn how frontend canisters are created.
 
-- **Backend and frontend canister communication**: Learn about agents and how they are used for canister communication.
+- **[Backend and frontend communication](#backend-and-frontend-communication)**: Learn about agents and how they are used.
 
-- **User interaction**: View how user interaction with the frontend is handled by the application.
+- **[User interaction](#user-interaction)**: Observe how user interaction with the frontend is handled by the application.
+
+## Project structure and files
 
 <AdornedTabs>
 <TabItem label="Prerequisites">
 
-<input type="checkbox"/> Complete the <a href="/docs/building-apps/getting-started/quickstart">quickstart</a> tutorial.
+<input type="checkbox"/> Complete the <a href="/docs/building-apps/getting-started/quickstart">quick start</a> tutorial.
 
 </TabItem>
 </AdornedTabs>
 
-## Project structure and files
+At minimum, an application requires two components:
 
-At minimum, an application requires two files:
+1. `dfx.json`: Defines the project's settings and canisters.
 
-- `dfx.json`: The project's configuration file.
+2. Source code that defines an application's logic, frontend, or both, including the methods that can be called by a user or other canister and return a response.
 
-- Backend canister source code: Code defining the application's logic. This code should include methods that can be called by a user or other canister and return a response. In the [quick start example](quickstart.mdx), this code is written in Motoko and stored in a file called `main.mo`.
-
-You should have these files in a local directory called `hello` if you followed the [quick start tutorial](quickstart.mdx). This project is also available on the [ICP Ninja web IDE](https://icp.ninja/projects/01931adc-4a79-766c-84c3-9c9688d82ae4).
+After following the [quick start tutorial](quickstart.mdx), you will have a local directory called `hello` that contains the files for a simple "Hello, world!" application with both a frontend and backend canister. This project is also available on the [ICP Ninja web IDE](https://icp.ninja/projects/01928a0f-69aa-799d-9fec-fe486a822820).
 
 ### `dfx.json`
 
-Your project's directory contains a file called `dfx.json`. This file is used to configure your project's settings. It includes the project's canister definitions which indicate the canister names, types, and source code files.
+The `dfx.json` file within the `hello` project directory will define two canisters:
 
 ```json title=dfx.json
 {
@@ -67,6 +69,14 @@ Your project's directory contains a file called `dfx.json`. This file is used to
     "hello_backend": { // Backend canister name
       "main": "src/hello_backend/main.mo", // Backend canister source code
       "type": "motoko" // Canister language
+    },
+    "hello_frontend": { // Frontend canister name
+      "dependencies": ["backend"], // Frontend is dependant on the backend
+      "frontend": {
+        "entrypoint": "hello_frontend/index.html" // File that should be loaded as entrypoint of app
+      },
+      "source": ["hello_frontend"], // Directory for asset files
+      "type": "assets" // This canister will be compiled into an asset canister
     }
   },
   "defaults": {
@@ -80,11 +90,11 @@ Your project's directory contains a file called `dfx.json`. This file is used to
 }
 ```
 
-Learn more about [dfx.json].
+Learn more about [dfx.json](/docs/building-apps/developer-tools/dfx-json).
 
-### Backend canister source code
+### Backend canister file
 
-The `src/hello_backend/main.mo` file contains the source code for a basic "Hello, world!" app written in Motoko.
+The `src/hello_backend/main.mo` file contains the source code for a basic "Hello, world!" app written in [Motoko](/docs/motoko/main/getting-started/motoko-introduction):
 
 ```motoko title="src/hello_backend/main.mo" no-repl
 actor {
@@ -94,29 +104,63 @@ public query func greet(name : Text) : async Text {
 };
 ```
 
-A canister's code is compiled into [WebAssembly (Wasm)] before it is deployed to ICP. Each canister development kit (CDK) comes with build scripts that compile canister code into Wasm programs that are compatible with ICP. These build scripts are executed by `dfx` as part of the `dfx deploy` command or through the explicit compilation command `dfx build`.
+### Frontend canister files
 
-## Code structure
+The `src/hello_frontend/index.html` file defines a simple HTML page that imports JavaScript content from `src/hello_frontend/src/main.jsx`. It will be loaded as the 'entrypoint' or 'root' of the application.
 
-Let's take a closer look at the code structure of the `src/hello_backend/main.mo` file.
+The `src/hello_frontend/src/main.jsx` file references `src/hello_frontend/src/App.jsx`, which is where the important logic for the user interface functionality is defined:
 
-First, the code defines an **actor**. An actor is an object used to encapsulate the state of the code.
+```js title="src/hello_frontend/src/App.jsx"
+import { useState } from 'react';
+import { hello_backend } from 'declarations/hello_backend';
+
+function App() {
+  const [greeting, setGreeting] = useState('');
+  function handleSubmit(event) {
+    event.preventDefault();
+    const name = event.target.elements.name.value;
+    hello_backend.greet(name).then((greeting) => {
+      setGreeting(greeting);
+    });
+    return false;
+  }
+  return (
+    <main>
+      <img src="/logo2.svg" alt="DFINITY logo" />
+      <br />
+      <br />
+      <form action="#" onSubmit={handleSubmit}>
+        <label htmlFor="name">Enter your name: &nbsp;</label>
+        <input id="name" alt="Name" type="text" />
+        <button type="submit">Click Me!</button>
+      </form>
+      <section id="greeting">{greeting}</section>
+    </main>
+  );
+}
+
+export default App;
+```
+
+## Backend code structure
+
+Let's take a closer look at the code structure of the `src/hello_backend/main.mo` file. First, the code defines an **actor**. An actor is an object used to encapsulate the state of the code.
 
 ```motoko title="src/hello_backend/main.mo" no-repl
 actor {
 ```
 
-Next a function called `greet` is defined using the following syntax components:
+Next, a function called `greet` is defined using the following syntax components:
 
 ```motoko title="src/hello_backend/main.mo" no-repl
 public query func greet(name : Text) : async Text {
 ```
 
-- `public`: Defines the function as callable by users or other canisters. Functions are also referred to as **methods** in the context of canisters.
+- `public`: Enables the function to be publicly callable by users or other canisters. Functions are also referred to as **methods** in the context of canisters.
 
-- `query`: Defines the type of message that will be used to call the method.
+- `query`: Defines the type of call the method accepts.
 
-- `func greet`: Indicates the method's name.
+- `func greet`: The method's name.
 
 - `(name : Text) : async Text`: Indicates that this method will accept an input of type `Text` from a call. It will be stored in the variable `name`. Then, the method will return a `Text` value to the caller in an `async` manner.
 
@@ -128,7 +172,7 @@ Lastly, the method's return content is defined:
 };
 ```
 
-This return output includes the text `"Hello, "`, followed by the value stored in the `name` variable that was passed to the method by the caller.
+This return output will be `Text` that includes `"Hello, "`, followed by the value stored in the `name` variable.
 
 ## Call the backend canister
 
@@ -142,7 +186,7 @@ The parts of this command are:
 
 - `dfx canister call`: The `dfx` command used to call canisters.
 
-- `hello_backend`: The canister's name which you are calling.
+- `hello_backend`: The canister's name.
 
 - `--playground`: The network the canister is deployed and running on.
 
@@ -162,217 +206,137 @@ dfx deploy --playground
 ```
 :::
 
-A canister's methods can be called by both users and other canisters.
 
 ### What this command did
 
-The `dfx canister call` command sent a message to the `hello_backend` canister that is deployed on the `--playground` network. Then the message was sent to the `greet` method, which was given the input of "ICP". This input is of type `Text` and thus accepted by the method as valid input.
+The `dfx canister call` command sent a call to the `hello_backend` canister that is deployed on the `--playground` network. The call was sent to the `greet` method, which was given the input of "ICP." The backend canister processed the call and returned the response defined in the method.
 
 Since the method is defined as a `query` method, the canister simply returns data to the caller; it does not alter the canister's code or state.
 
-You can also make this call from the canister's [Candid interface].
+You can also make this call from the canister's [Candid interface](/docs/building-apps/interact-with-canisters/candid/candid-concepts). Candid is an interface description language used to describe the public interface of a service. [Learn more about Candid](/docs/building-apps/interact-with-canisters/candid/candid-concepts).
 
-## Add a frontend
+## Application frontend
 
-The frontend of the application is used to facilitate user interaction with the functionality defined in the backend code. It is made up of assets, most commonly HTML, CSS, JavaScript, images, or video files. Popular frameworks like React, Vite, or Svelte are also supported.
+The frontend of the application is used to facilitate user interaction with the methods defined in the backend code. It is made up of assets, most commonly HTML, CSS, JavaScript, images, or video files. Popular frameworks like React, Vite, or Svelte are also supported.
 
-On ICP, an application's frontend is created through the following steps:
+On ICP, an application's frontend is created through these steps:
 
-1. A developer creates files that are intended to be part of the application's frontend.
+1. A developer creates frontend assets.
 
-2. The project's `dfx.json` file is edited to include a canister definition for the frontend canister. This definition must specify the frontend canister type as `"type": "asset"`.
+2. The project's `dfx.json` file defines the frontend canister and specifies it as `"type": "asset"`.
 
-3. When project is deployed, `dfx` uses an implementation of the [asset canister interface](https://github.com/dfinity/sdk/blob/master/docs/design/asset-canister-interface.md) to compile the frontend canister.
+3. When the project is deployed, `dfx` uses an implementation of the [asset canister interface](https://github.com/dfinity/sdk/blob/master/docs/design/asset-canister-interface.md) to compile the frontend canister. It will generate files that include JavaScript boilerplate code for the frontend. Under the hood, this boilerplate code uses an API client called the [ICP JavaScript agent](/docs/building-apps/interact-with-canisters/agents/overview) to facilitate communication between the frontend and backend.
 
-In this example, the user will communicate with the backend canister's `greet` method through a text input box and a button. The text input box will be used to capture the input that will be passed to the backend and the button will be used to send the call.
+:::info
+An agent makes calls to the backend canister's methods similar to how you used `dfx canister call` to call the backend from the command line. [Learn more about ICP agents](#backend-and-frontend-communication).
+:::
 
-At minimum you will need:
+### Frontend code structure
 
-- **An entrypoint file**: This will be served when the frontend is initially loaded, i.e., `index.html`.
+Let's take a closer look at the code structure of the `src/hello_backend/src/App.jsx` file.
 
-- **Frontend framework configuration file:** In this example, the `vite.config.js` file will be used to configure [Vite].
+First, the necessary dependencies are imported, including `hello_backend` from the `declarations` directory. Declaration files define the interface of a canister, including its public methods and their input and output types. In this example, this includes the backend's `greet` method and its `Text` input and output types.
 
-- `package.json`: Used to download required dependencies.
+```js title="src/hello_frontend/src/App.jsx"
+import { useState } from 'react';
+import { hello_backend } from 'declarations/hello_backend';
+```
 
-### `index.html`
+Then the code defines a function called `App` and creates a place to store the result returned from the backend:
 
-Create a new file called `src/hello_frontend/index.html`. This will create the user interface for the application.
+```js title="src/hello_frontend/src/App.jsx"
+function App() {
+  const [greeting, setGreeting] = useState('');
+```
 
-```html title="src/hello_frontend/index.html"
-<!doctype html>
-<html>
-  <head>
-    <title>Hello, world!</title>
-    <style>
-      body {
-        padding: 10px 60px;
-        font-family: sans-serif;
-        font-size: 1.5rem;
-      }
-      #greeting {
-        margin: 10px auto;
-        padding: 10px 60px;
-        border: 1px solid #222;
-      }
-      #greeting:empty {
-        display: none;
-      }
-    </style>
-    <script type="module">
+Next is a function to handle submitting the call to the backend, which includes capturing the user's inputted text and saving it as `name`:
 
-      // Import the actor defined in the backend
-      import { backend } from 'declarations/backend';
+```js title="src/hello_frontend/src/App.jsx"
+  function handleSubmit(event) {
+    event.preventDefault();
+    const name = event.target.elements.name.value;
+```
 
-      // Add an event listener to the form
-      // This will listen for user interaction with the form
-      document.querySelector('form').addEventListener('submit', async (e) => {
-        e.preventDefault();
+The next line calls the `hello_backend` canister's `greet` function and passes the value of `name` from the frontend to the backend. This is handled by the ICP agent:
 
-        // Save the user input from the form in the variable 'name'
-        const name = document.getElementById('name').value.toString();
+```js title="src/hello_frontend/src/App.jsx"
+    hello_backend.greet(name).then((greeting) => {
+```
 
-        // Call the backend canister's method 'greet'
-        // and wait for the backend to reply
-        const greeting = await backend.greet(name);
+Return the result from the backend and use `setGreeting` to store it in the `greeting` variable defined earlier:
 
-        // Display the greeting returned by the backend
-        document.getElementById('greeting').innerText = greeting;
-      });
-    </script>
-  </head>
-  <body>
+```js title="src/hello_frontend/src/App.jsx"
+      setGreeting(greeting);
+    });
+    return false;
+  }
+```
+
+Lastly, define a user interface form to capture the user's text, provide a button for them to click and submit the call, and then display the result from the backend:
+
+```js title="src/hello_frontend/src/App.jsx"
+  return (
     <main>
-      <form>
-      // Create a text input box to capture the user's input
-        <label for="name">Enter your name: &nbsp;</label>
+      <img src="/logo2.svg" alt="DFINITY logo" />
+      <br />
+      <br />
+      <form action="#" onSubmit={handleSubmit}>
+        <label htmlFor="name">Enter your name: &nbsp;</label>
         <input id="name" alt="Name" type="text" />
-        // Create a button that will trigger the call to the backend
         <button type="submit">Click Me!</button>
       </form>
-      // Define where the backend's response will be displayed
-      <section id="greeting"></section>
+      <section id="greeting">{greeting}</section>
     </main>
-  </body>
-</html>
-```
-
-When the application is deployed, `dfx` will generate files that include JavaScript boilerplate code for the frontend. Under the hood, this boilerplate code uses an API client called the [ICP JavaScript agent] to encode [Candid] values and facilitate HTTP requests from the frontend to the backend.
-
-An agent makes calls to the backend canister's methods similar to how you used `dfx canister call` to call the backend from the command line. [Learn more about ICP agents].
-
-### `vite.config.json`
-
-Create a new file called `src/hello_frontend/vite.config.js`. This contains the configuration information for the frontend canister to use the framework [Vite]:
-
-```js title="src/hello_frontend/vite.config.js"
-import { defineConfig } from 'vite';
-import { fileURLToPath, URL } from 'url';
-import environment from 'vite-plugin-environment';
-
-export default defineConfig({
-  base: './',
-  plugins: [environment('all', { prefix: 'CANISTER_' }), environment('all', { prefix: 'DFX_' })],
-  envDir: '../',
-  define: {
-    'process.env': process.env
-  },
-  optimizeDeps: {
-    esbuildOptions: {
-      define: {
-        global: 'globalThis'
-      }
-    }
-  },
-  resolve: {
-    alias: [
-      {
-        find: 'declarations',
-        replacement: fileURLToPath(new URL('../src/declarations', import.meta.url))
-      }
-    ]
-  },
-  server: {
-    proxy: {
-      '/api': {
-        target: 'http://127.0.0.1:4943',
-        changeOrigin: true
-      }
-    },
-    host: '127.0.0.1'
-  }
-});
-```
-
-### `package.json`
-
-Create a new file called `src/hello_frontend/package.json`. This contains the node packages the project must download, including the ICP agent and Vite:
-
-```json title="src/hello_frontend/package.json"
-{
-  "name": "frontend",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "prebuild": "npm i --include=dev && dfx generate backend",
-    "build": "vite build",
-    "dev": "vite"
-  },
-  "dependencies": {
-    "@dfinity/agent": "2.2.0"
-  },
-  "devDependencies": {
-    "vite": "5.4.11",
-    "vite-plugin-environment": "1.1.3"
-  }
+  );
 }
+
+export default App;
 ```
 
-### Edit `dfx.json`
+## Backend and frontend communication
 
-Lastly, edit the `dfx.json` file to include the frontend canister:
+ICP agents are libraries used to make calls to a canister's public interface. Agents are able to send two types of calls to canisters: queries and updates. They can be thought of as 'read only' calls since they cannot change a canister's state and do not go through consensus. Updates do change a canister's state and go through consensus.
 
-```json title="dfx.json"
-{
-  "canisters": {
-    "hello_backend": {
-      "main": "hello_backend/main.mo",
-      "type": "motoko"
-    },
-    // highlight-start
-    "hello_frontend": {
-      "dependencies": ["backend"],
-      "frontend": {
-        "entrypoint": "hello_frontend/index.html"
-      },
-      "source": ["hello_frontend"],
-      "type": "assets"
-    }
-  },
-  // highlight-end
-  "output_env_file": ".env",
-  "defaults": {
-    "build": {
-      "packtool": ""
-    }
-  }
-}
-```
+When an agent makes a call to a canister, it submits a request to the canister containing the request type, canister ID, method name, and any input or arguments to be passed to the method.
 
-### Updated project structure
+In this example, the frontend provides the user with a text input box and a button to submit the input. When the button is pressed, the ICP JavaScript agent sends a `query` request to the `hello_backend` canister's `greet` method and includes the user's text input.
 
-At this point, your project's structure should be:
+The backend processes the request, then responds to the agent with an outgoing message that includes the result of the method, in this case, `"Hello, <name>!"`. The agent passes the response to the frontend. How the response is handled by the frontend will vary based on the frontend's purpose, code, and functionality. In this example, it displays the content of the response for the user to read.
 
-```
-hello
-├── backend
-│   └── app.mo
-├── dfx.json
-└── frontend
-    ├── index.html
-    ├── package.json
-    └── vite.config.js
-```
-
+[Learn more about agents](/docs/building-apps/interact-with-canisters/agents/overview).
 
 ## User interaction
+
+To put everything together, let's interact with the frontend of the application as a user and observe the code in action. Open the frontend canister's URL in a web browser. This URL was returned in the output of `dfx deploy --playground`:
+
+```
+  Frontend canister via browser
+    hello_frontend: https://wfg2r-bqaaa-aaaab-qadfq-cai.icp0.io/
+  Backend canister via Candid interface:
+    hello_backend: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=xgktx-viaaa-aaaab-qadda-cai
+```
+
+You will see the user interface. Insert your name into the text box and click "Submit." View the returned greeting.
+
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/hello-icp.png")}
+    alt="Hello, ICP!"
+    width="800"
+  />
+</div>
+
+In the background, the application is executing these steps:
+
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/user-interaction1.svg")}
+    alt="User interaction"
+    width="800"
+  />
+</div>
+
+
+
+
 
