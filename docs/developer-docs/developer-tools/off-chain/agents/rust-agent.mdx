@@ -8,17 +8,15 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Agents" ]} />
 
-## Overview
-
 The [ICP Rust agent](https://docs.rs/ic-agent/latest/ic_agent/) by DFINITY is a simple library that enables you to build applications and interact with ICP, serving as a low-level Rust backend for the IC SDK.
 
 The agent is designed to be compatible with multiple versions of the replica API, exposing both low-level APIs for communicating with components like the replica and higher-level APIs for communicating with software applications deployed as canisters.
 
-One example of a project that uses the [ICP Rust agent](https://docs.rs/ic-agent/latest/ic_agent/) is [dfx](https://github.com/dfinity/sdk).
+One example of a project that uses the ICP Rust agent is [dfx](https://github.com/dfinity/sdk).
 
 ## Adding the agent as a dependency
 
-To add the [ICP Rust agent](https://docs.rs/ic-agent/latest/ic_agent/) crate as a dependency in your project, use the command:
+To add the ICP Rust agent crate as a dependency in your project, use the command:
 
 ```
 cargo add ic-agent
@@ -39,6 +37,25 @@ pub async fn create_agent(url: &str, is_mainnet: bool) -> Result<Agent> {
     }
     Ok(agent)
 }
+```
+
+### Using dynamic routing
+
+The ICP Rust agent provides built-in dynamic routing functionality, allowing an application to communicate seamlessly via decentralized API boundary nodes for optimal performance. To enable dynamic routing, the agent needs to be initialized with a bootstrap URL. Using this initial URL, the agent will:
+
+- Fetch the list of available API boundary nodes.
+- Continuously monitor the health of these nodes.
+- Automatically route requests to the closest healthy node.
+
+Here’s an example of how to set up your agent with dynamic routing:
+
+```rust
+let agent = Agent::builder()
+    .with_url(URL)
+    .with_background_dynamic_routing()
+    .await
+    .build()
+    .expect("failed to build ic-agent");
 ```
 
 

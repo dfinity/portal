@@ -6,13 +6,11 @@ import TabItem from "@theme/TabItem";
 import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
-
+import Tabs from "@theme/Tabs";
 
 # Index canisters
 
 <MarkdownChipRow labels={["Intermediate" , "Tutorial"]} />
-
-## Overview
 
 On ICP, an index <GlossaryTooltip>canister</GlossaryTooltip> is used in conjunction with a <GlossaryTooltip>ledger</GlossaryTooltip> canister to provide the ability for transactions to be queried for a specific account. Without an index canister, a ledger's transaction history cannot easily be parsed and used by applications, as the entire transaction history of a ledger would need to be processed.
 
@@ -28,9 +26,14 @@ If you are working in a local development environment, you can't access the main
 
 This guide displays how to deploy an index canister locally and use it in conjunction with a ledger canister. Instructions for both an ICP index and an ICRC index are included.
 
-### Prerequisites
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
 
-- Read the guide on deploying a local ledger, then continue with this guide. This guide will assume that you have setup up a local ledger pertaining to your intended token type (ICP or ICRC), and that all prerequisites are fulfilled.
+<input type="checkbox"/> Read the guide on deploying a local ledger, then continue with this guide. This guide will assume that you have setup up a local ledger pertaining to your intended token type (ICP or ICRC), and that all prerequisites are fulfilled.
+
+</TabItem>
+</Tabs>
+
 
 ## Wasm and Candid files
 
