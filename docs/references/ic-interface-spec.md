@@ -1402,7 +1402,7 @@ The threshold `t` can be defined in the [canister's settings](#ic-canister_statu
 :::note
 
 While the above function is scheduled immediately once the condition above is triggered, it may not necessarily be executed immediately if the canister does not have enough cycles.
-If the canister gets frozen immediately after the function is scheduled for execution, the function will run once the canister's unfrozen _if_ the canister's wasm memory remains above the threshold `t`.
+If the canister gets frozen immediately after the function is scheduled for execution, the function will run once the canister's unfrozen _if_ the canister's wasm memory size in bytes remains strictly less than the threshold `t`.
 
 :::
 
