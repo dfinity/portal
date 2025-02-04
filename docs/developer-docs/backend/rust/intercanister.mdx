@@ -44,9 +44,9 @@ The guaranteed response delivery property ensures that the only causes of `State
 
 We will next show how to use *bounded wait* calls instead in such cases. These calls don't guarantee that the response will be delivered, which is why we also refer to them as *best-effort response calls*, but in return don't block the caller from upgrading, and they also tolerate high system load better than unbounded wait calls. See the section on [inter-canister calls](/docs/current/developer-docs/smart-contracts/advanced-features/async-code) for more information on best-effort vs. guaranteed response calls.
 
-## ICRC-1 transfers: bounded wait calls
+## Transfers on arbitrary ICRC-1 ledgers: bounded wait calls
 
-We will now allow our wallet to transfer tokens on an arbitrary ICRC-1 ledger instead of just the ICP ledger. Since we in general can't trust an arbitrary ICRC-1 ledger, and we want to ensure that our canister can always be upgraded, we will use bounded wait calls.
+ICRC-1 is a standard defining an API for token ledgers on the Internet Computer. Any canister can implement this API and act as a ledger. A dApp (for example, a decentralized exchange or a wallet application that serves multiple users) may want to allow users to register arbitrary such ledgers and interact with them, without knowing if they faithfully implement the standard. In this example we show how we could modify our wallet to transfer tokens on an arbitrary ICRC-1 ledger instead of just the ICP ledger. To ensure that our canister can always be upgraded, we will use bounded wait calls.
 
 Ledgers generally charge fees for transfers. While this fee is fixed for the ICP ledger, it may vary for other ledgers. Thus, we start with an example of how to determine the required fee.
 
@@ -70,10 +70,10 @@ https://github.com/oggy-dfin/icc_rust_docs/blob/34f59ddae9fcc70173fc21927a427975
 
 ## Exchange rate canister: attaching cycles
 
-For our final example, we will use the [exchange rate canister](/docs/current/developer-docs/defi/exchange-rate-canister/) (XRC) to determine the exchange rate between assets, including tokens, but also currencies. The XRC uses [HTTP outcalls](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview) to determine the exchange rate. Similar to ledgers charging transfer fees, the XRC charges a fee to the caller to determine the exchange rate. However, since the XRC doesn't have a token of its own, the XRC fee is paid in cycles rather than a token. The user has to attach cycles to such a call.
+For our final example, we will use the [exchange rate canister](/docs/current/developer-docs/defi/exchange-rate-canister/) (XRC) to determine the exchange rate between assets, including tokens, but also currencies. The XRC uses [HTTP outcalls](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview) to determine the exchange rate. Similar to ledgers charging transfer fees, the XRC charges a fee to the caller to determine the exchange rate. However, since the XRC doesn't have a token of its own, the XRC fee is paid in cycles rather than a token. The user has to attach cycles to such a call. Cycles can be attached to both bounded and unbounded wait messages. For unbounded wait messages, cycles that are not consumed by the callee are guaranteed to be refunded to the caller. For bounded wait calls, refunds do not happen when the call returns a `SysUnknown` error. However, this is usually acceptable for API calls that charge for cycles, since the amount charged is usually low (1 billion cycles for the XRC). For transferring larger amounts of cycles, switch to using unbounded wait calls. See the section on [inter-canister calls](/docs/current/developer-docs/smart-contracts/advanced-features/async-code) for more details.
 
 ```rust reference
 https://github.com/oggy-dfin/icc_rust_docs/blob/34f59ddae9fcc70173fc21927a4279757f93c51a/src/icc_rust_docs_backend/src/lib.rs#L213-L247
 ```
 
-As noted in the example, for transferring larger amounts of cycles, switch to using unbounded wait calls. Bounded wait calls run the risk of losing cycles; see the section on [inter-canister calls](/docs/current/developer-docs/smart-contracts/advanced-features/async-code) for more details.
+
