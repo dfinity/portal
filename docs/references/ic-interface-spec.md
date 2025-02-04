@@ -1492,10 +1492,10 @@ defaulting to `I = i32` if the canister declares no memory.
     
     ic0.cost_call : (method_name_size: i64, payload_size : i64, dst : I) -> ();           // * s
     ic0.cost_create_canister : (dst : I) -> ();                                           // * s
-    ic0.cost_http_request(request_size : i64, max_res_bytes : i64, dst : I) -> ();        // * s
-    ic0.cost_sign_with_ecdsa(src : I, size : I, ecdsa_curve: i32, dst : I) -> ();         // * s
-    ic0.cost_sign_with_schnorr(src : I, size : I, algorithm: i32, dst : I) -> ();         // * s
-    ic0.cost_vetkd_derive_encrypted_key(src : I, size : I, vetkd_curve: i32, dst : I) -> ();  // * s
+    ic0.cost_http_request : (request_size : i64, max_res_bytes : i64, dst : I) -> ();     // * s
+    ic0.cost_sign_with_ecdsa : (src : I, size : I, ecdsa_curve: i32, dst : I) -> ();      // * s
+    ic0.cost_sign_with_schnorr : (src : I, size : I, algorithm: i32, dst : I) -> ();      // * s
+    ic0.cost_vetkd_derive_encrypted_key : (src : I, size : I, vetkd_curve: i32, dst : I) -> ();  // * s
     ic0.replication_factor : (src : I, size : I) -> i32;                                  // * s
 
     ic0.debug_print : (src : I, size : I) -> ();                                          // * s
