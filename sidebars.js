@@ -25,11 +25,6 @@ build: [
       },
       {
         type: "doc",
-        label: "ICP primer",
-        id: "building-apps/getting-started/icp-primer",
-      },
-      {
-        type: "doc",
         label: "Installing the CLI",
         id: "building-apps/getting-started/install",
       },
