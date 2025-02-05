@@ -1,6 +1,5 @@
 ---
 keywords: [beginner, getting started, app architecture, application architecture, how it works, how apps work, how canisters work, how canisters communicate, canister smart contracts]
-hide_table_of_contents: true
 ---
 
 import TabItem from "@theme/TabItem";
@@ -13,51 +12,54 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 <MarkdownChipRow labels={["Beginner", "Getting started"]} />
 
-The ICP network is made up of **nodes** that each run software known as the **replica**. The replica provides the execution environment to run a canister's [WebAssembly](https://internetcomputer.org/capabilities/webassembly) module. By running applications as WebAssembly modules, ICP supports complex applications written in a variety of different languages.
+The ICP network is made up of **nodes** that each run software known as the **replica**. The replica provides the execution environment for running canisters. A group of interconnected nodes is known as a **subnet**. Subnets vary in size between 13 and 40 nodes.
 
-A group of nodes is known as a **subnet**, which together run their own independent consensus mechanism separate from other nodes and subnets. Subnets can have different sizes, though the most common is 13 nodes.
-
-When a canister is deployed on the mainnet or to the playground, it gets deployed to a subnet and replicated across all nodes on that subnet, meaning there are multiple instances of the canister running at once in parallel.
-
-When a canister is deployed locally, it is deployed to a single replica. Testing certain features locally that rely on consensus, such as HTTPS outcalls, will not provide the same result as deployed on the mainnet, since there is only one replica locally that must agree on the result of the call rather than 13 or more replicas on the mainnet.
-
-Canisters are replicated for security, reliability, redundancy, and state consistency.
+Canisters can be deployed to the mainnet, the playground, or the local replica. When a canister is deployed to the mainnet or the playground, it is deployed to a subnet and replicated across all nodes on that subnet, meaning there are multiple instances of the canister running at once in parallel. Canisters are replicated for security, reliability, redundancy, and state consistency. A canister on one subnet can communicate with canisters on another subnet.
 
 <div class="text--center">
   <img
-    src={useBaseUrl("/img/docs/subnets1.png")}
+    src={useBaseUrl("/img/docs/icp-primer.png")}
     alt="Application architecture"
     width="800"
   />
 </div>
 
+Canisters deployed to the local replica are not replicated.
+
+## Canister resource consumption
+
+Canisters require resources like storage, compute, and network bandwidth. When a canister is deployed to the mainnet and running on a subnet, it utilizes the resources provided by that subnet's nodes. Canisters are charged for the resources they use, calls they send, and any operations they perform using features such as HTTPS outcalls, threshold signatures, and the Bitcoin integration API. Each type of canister operation and resource has a different cost associated with it, and costs linearly scale with the number of nodes in the subnet.
+
+A canister pays for resources by burning **cycles**. It's the developer's responsibility to load each of their canisters with adequate cycles, though anyone can send cycles to any canister. This cost model is known as ICP's **reverse gas model**. Developers can obtain cycles by [converting ICP tokens](tokens-and-cycles.mdx) into cycles using `dfx`.
+
+Locally deployed canisters are limited to the resources provided by the local machine and cycles are fabricated for development purposes.
+
 ## Canister calls
 
-A canister is comprised of code and state. The state can be read or modified through the use of query or update calls respectively. Query calls do not go through consensus and do not alter the canister's state, while update calls do both. Canisters themselves can send outgoing query or update calls to other canisters, or they can receive calls from users and canisters. A canister answers the calls it receives in a first-in first-out manner.
+After you deploy a canister, it can begin receiving and processing requests from users and from other canisters. Canisters that are available to send requests and receive replies are considered in be in a `Running` state.
 
-Canisters can also make calls to the [management canister], which is a facade of a canister that provides the network's system API used to utilize features of ICP such as randomness and timers.
+A canister's state can be read or modified through the use of query or update calls respectively. Query calls do not go through consensus and do not alter the canister's state, while update calls do go through consensus and can modify canister state. A canister answers the calls it receives in a first-in first-out manner.
+
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/call-canister.png")}
+    alt="Application architecture"
+    width="800"
+  />
+</div>
+
+Canisters can also make calls to the [management canister](/docs/references/system-canisters/management-canister), which acts as the network's system API used to access features of ICP such as randomness and timers.
 
 ## Canister modifications
 
-A canister's code is mutable. It can be upgraded to apply code changes or install an entirely new Wasm module. Changes to the canister, such as upgrades or modifications to the canister's settings, can be executed by the canister's **controllers**. A controller is a **developer identity** that has permission to make such changes.
+A canister's code is mutable. It can be upgraded to apply code changes or reinstalled with an entirely new Wasm module. Changes to the canister, such as upgrades or modifications to the canister's settings, can be executed by the canister's **controllers**. A controller is a [developer identity](/docs/building-apps/getting-started/identities) or another canister that has permission to make such changes.
 
-## Resource consumption
+In the initial stages of development, the canister is usually controlled by its developer, which allows the developer to iterate quickly. As the canister becomes mature and production ready, the control over it could move to a decentralized organization (such as an SNS) to make the canister more secure and trustworthy.
 
-In terms of storage, a canister can store arbitrary data in its WebAssembly memory. Additionally, a canister can use a larger stable memory. The difference between the two memories is important for upgradable canisters: the WebAssembly memory is cleared on an upgrade, whereas the stable memory is preserved (hence the name “stable”). For immutable canisters, there is no observable difference between the two memories except for the size and functions to access them.
-
-
-use resources of nodes on the network, nodes located across the globe
-
-
-## Cycles
-
-canisters use cycles to pay for the resources it uses
-
-learn more about [cycles]
-
-
-
-
-
-
-
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/manage-canister.png")}
+    alt="Application architecture"
+    width="800"
+  />
+</div>

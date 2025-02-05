@@ -328,7 +328,7 @@ const redirects = `
   /docs/references/gitpod /docs/building-apps/developer-tools/ide/icp-ninja
   /docs/current/developer-docs/setup/playground /docs/building-apps/developing-canisters/deploy
   /docs/current/developer-docs/setup/vs-code /docs/building-apps/developer-tools/ide/icp-ninja
-  /docs/current/developer-docs/setup/react-quickstart /docs/building-apps/getting-started/first-smart-contract
+  /docs/current/developer-docs/setup/react-quickstart /docs/building-apps/getting-started/quickstart
   /docs/references/cli-reference/ /docs/building-apps/developer-tools/dfx/
   /docs/references/cli-reference/dfx-parent /docs/building-apps/developer-tools/dfx/dfx-parent
   /docs/references/cli-reference/dfx-bootstrap /docs/building-apps/developer-tools/dfx/dfx-bootstrap
@@ -744,8 +744,8 @@ const redirects = `
   /docs/current/developer-docs/getting-started/identities /docs/building-apps/getting-started/identities
   /docs/current/developer-docs/getting-started/tokens-and-cycles /docs/building-apps/getting-started/tokens-and-cycles
   /docs/current/developer-docs/getting-started/write-canister-code /docs/building-apps/developing-canisters/write
-  /docs/current/developer-docs/getting-started/first-smart-contract /docs/building-apps/getting-started/first-smart-contract
-  /docs/current/developer-docs/getting-started/react-quickstart /docs/building-apps/getting-started/first-smart-contract
+  /docs/current/developer-docs/getting-started/quickstart /docs/building-apps/getting-started/quickstart
+  /docs/current/developer-docs/getting-started/react-quickstart /docs/building-apps/getting-started/quickstart
 
   /docs/current/developer-docs/developer-tools/on-chain/cdks /docs/building-apps/developer-tools/cdks/
 
