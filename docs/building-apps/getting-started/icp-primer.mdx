@@ -12,19 +12,19 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 
 <MarkdownChipRow labels={["Beginner", "Getting started"]} />
 
-The ICP network is made up of **nodes** that each run software known as the **replica**. The replica provides the execution environment for running canisters. A group of interconnected nodes is known as a **subnet**. Subnets vary in size between 13 and 40 nodes.
+The ICP network is made up of **nodes** that each run software known as the **replica**. The replica provides the execution environment for running <GlossaryTooltip>canisters</GlossaryTooltip>. A group of interconnected nodes is known as a **subnet**. Subnets vary in size between 13 and 40 nodes.
 
-Canisters can be deployed to the mainnet, the playground, or the local replica. When a canister is deployed to the mainnet or the playground, it is deployed to a subnet and replicated across all nodes on that subnet, meaning there are multiple instances of the canister running at once in parallel. Canisters are replicated for security, reliability, redundancy, and state consistency. A canister on one subnet can communicate with canisters on another subnet.
+Canisters can be deployed to the mainnet, the playground, or your local machine. When a canister is deployed to the mainnet or the playground, it is deployed to a subnet and replicated across all nodes on that subnet, meaning there are multiple instances of the canister running at once. Canisters are replicated for security, reliability, redundancy, and state consistency. A canister on one subnet can communicate with canisters on another subnet.
 
 <div class="text--center">
   <img
     src={useBaseUrl("/img/docs/icp-primer.png")}
-    alt="Application architecture"
+    alt="Canister replication"
     width="800"
   />
 </div>
 
-Canisters deployed to the local replica are not replicated.
+Canisters deployed to your local machine are not replicated.
 
 ## Canister resource consumption
 
@@ -32,13 +32,13 @@ Canisters require resources like storage, compute, and network bandwidth. When a
 
 A canister pays for resources by burning **cycles**. It's the developer's responsibility to load each of their canisters with adequate cycles, though anyone can send cycles to any canister. This cost model is known as ICP's **reverse gas model**. Developers can obtain cycles by [converting ICP tokens](tokens-and-cycles.mdx) into cycles using `dfx`.
 
-Locally deployed canisters are limited to the resources provided by the local machine and cycles are fabricated for development purposes.
+Locally deployed canisters are limited to the resources provided by the local machine, and cycles are fabricated for development purposes.
 
 ## Canister calls
 
-After you deploy a canister, it can begin receiving and processing requests from users and from other canisters. Canisters that are available to send requests and receive replies are considered in be in a `Running` state.
+After you deploy a canister, it can begin receiving and processing requests from users and from other canisters. Canisters that are available to send requests and receive replies are considered to be in a `Running` state.
 
-A canister's state can be read or modified through the use of query or update calls respectively. Query calls do not go through consensus and do not alter the canister's state, while update calls do go through consensus and can modify canister state. A canister answers the calls it receives in a first-in first-out manner.
+A canister's state can be read or modified through the use of [query](/docs/building-apps/interact-with-canisters/query-calls) or [update](/docs/building-apps/interact-with-canisters/update-calls) calls, respectively. Query calls do not go through consensus and do not alter the canister's state, while update calls do go through consensus and can modify canister state. A canister answers the calls it receives in a first-in, first-out manner.
 
 <div class="text--center">
   <img
@@ -48,13 +48,13 @@ A canister's state can be read or modified through the use of query or update ca
   />
 </div>
 
-Canisters can also make calls to the [management canister](/docs/references/system-canisters/management-canister), which acts as the network's system API used to access features of ICP such as randomness and timers.
+Canisters can also make calls to the [management canister](/docs/references/system-canisters/management-canister), which acts as the network's system API used to access features such as randomness and timers.
 
 ## Canister modifications
 
-A canister's code is mutable. It can be upgraded to apply code changes or reinstalled with an entirely new Wasm module. Changes to the canister, such as upgrades or modifications to the canister's settings, can be executed by the canister's **controllers**. A controller is a [developer identity](/docs/building-apps/getting-started/identities) or another canister that has permission to make such changes.
+A canister's code is mutable. It can be upgraded to apply code changes or reinstalled with an entirely new Wasm module. Changes to the canister, such as upgrades or modifications to the canister's settings, are executed by the canister's **controllers**. A controller is a [developer identity](/docs/building-apps/getting-started/identities) or another canister that has permission to make such changes.
 
-In the initial stages of development, the canister is usually controlled by its developer, which allows the developer to iterate quickly. As the canister becomes mature and production ready, the control over it could move to a decentralized organization (such as an SNS) to make the canister more secure and trustworthy.
+In the initial stages of development, the canister is usually controlled by its developer, which allows the developer to iterate quickly. As the canister becomes mature and production-ready, the control over it could move to a decentralized organization (such as an [SNS](/docs/building-apps/governing-apps/overview)) to make the canister more secure and trustworthy.
 
 <div class="text--center">
   <img

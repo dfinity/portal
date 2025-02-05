@@ -17,7 +17,7 @@ The application's logic, referred to as the **backend**, can be written in a var
 
 The user interface of the application, referred to as the **frontend**, can contain assets like HTML, CSS, and Javascript.
 
-The most common architecture for an application on ICP is one canister for the frontend and one or more canisters for the backend.
+A common architecture for an application on ICP is one canister for the frontend and one or more canisters for the backend.
 
 <div class="text--center">
   <img
@@ -67,7 +67,7 @@ The `dfx.json` file within the `hello` project directory will define two caniste
 {
   "canisters": {
     "hello_backend": { // Backend canister name
-      "main": "src/hello_backend/main.mo", // Backend canister source code
+      "main": "src/hello_backend/main.mo", // Backend canister source code file
       "type": "motoko" // Canister language
     },
     "hello_frontend": { // Frontend canister name
@@ -213,7 +213,7 @@ The `dfx canister call` command sent a call to the `hello_backend` canister that
 
 Since the method is defined as a `query` method, the canister simply returns data to the caller; it does not alter the canister's code or state.
 
-You can also make this call from the canister's [Candid interface](/docs/building-apps/interact-with-canisters/candid/candid-concepts). Candid is an interface description language used to describe the public interface of a service. [Learn more about Candid](/docs/building-apps/interact-with-canisters/candid/candid-concepts).
+You can also make this call from the canister's [Candid interface](/docs/building-apps/interact-with-canisters/candid/candid-concepts). Candid is an interface description language used to describe the public interface of a canister. [Learn more about Candid](/docs/building-apps/interact-with-canisters/candid/candid-concepts).
 
 ## Application frontend
 
@@ -295,13 +295,21 @@ export default App;
 
 ## Backend and frontend communication
 
-ICP agents are libraries used to make calls to a canister's public interface. Agents are able to send two types of calls to canisters: queries and updates. They can be thought of as 'read only' calls since they cannot change a canister's state and do not go through consensus. Updates do change a canister's state and go through consensus.
+ICP agents are libraries used to make calls to a canister's public interface. Agents are able to send two types of calls to canisters: queries and updates. Queries can be thought of as 'read-only' calls since they cannot change a canister's state and do not go through consensus. Updates do change a canister's state and go through consensus.
 
 When an agent makes a call to a canister, it submits a request to the canister containing the request type, canister ID, method name, and any input or arguments to be passed to the method.
 
 In this example, the frontend provides the user with a text input box and a button to submit the input. When the button is pressed, the ICP JavaScript agent sends a `query` request to the `hello_backend` canister's `greet` method and includes the user's text input.
 
 The backend processes the request, then responds to the agent with an outgoing message that includes the result of the method, in this case, `"Hello, <name>!"`. The agent passes the response to the frontend. How the response is handled by the frontend will vary based on the frontend's purpose, code, and functionality. In this example, it displays the content of the response for the user to read.
+
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/user-interaction1.svg")}
+    alt="User interaction"
+    width="800"
+  />
+</div>
 
 [Learn more about agents](/docs/building-apps/interact-with-canisters/agents/overview).
 
@@ -322,16 +330,6 @@ You will see the user interface. Insert your name into the text box and click "S
   <img
     src={useBaseUrl("/img/docs/hello-icp.png")}
     alt="Hello, ICP!"
-    width="800"
-  />
-</div>
-
-In the background, the application is executing these steps:
-
-<div class="text--center">
-  <img
-    src={useBaseUrl("/img/docs/user-interaction1.svg")}
-    alt="User interaction"
     width="800"
   />
 </div>
