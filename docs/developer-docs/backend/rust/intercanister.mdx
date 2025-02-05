@@ -8,69 +8,169 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Beginner", "Rust", "Tutorial"]} />
 
-Just like users can call canisters, canisters can also call other canisters. This document shows how to use these inter-canister calls in Rust. To fully understand calls, their properties, and common pitfalls and security issues, refer to the section on [inter-canister calls](/docs/current/developer-docs/smart-contracts/advanced-features/async-code).
 
-Our examples will center around tokens. We will write a simple wallet canister that holds tokens on behalf of its owner, and allows the owner to transfer tokens. We'll first show an example of interacting with the ICP ledger, and then also any ledger that supports the ICRC-1 standard. Finally, we will allow the wallet to determine the exchange rate between supported tokens using the exchange rate canister.
 
-## Dependencies and imports
+Inter-canister calls can be used to update information between two or more canisters.
 
-We start by listing the dependencies used in this example as specified in `Cargo.toml`.
+To demonstrate these inter-canister calls, you'll use an example project called "PubSub".
 
-```rust reference
-https://github.com/oggy-dfin/icc_rust_docs/blob/7af82d98f05ebbf6c73641a3013ca15db7944394/src/icc_rust_docs_backend/Cargo.toml#L11-L16
+A common problem in both distributed and decentralized systems is keeping separate services (or canisters) synchronized with one another. While there are many potential solutions to this problem, a popular one is the **publisher/subscriber** pattern, or "PubSub". PubSub is an especially valuable pattern on ICP as its primary drawback, message delivery failures, does not apply.
+
+## Prerequisites
+
+Before getting started, assure you have set up your developer environment according to the instructions in the [developer environment guide](./dev-env.mdx).
+
+Then, download the sample project's files with the commands:
+
+```bash
+git clone https://github.com/dfinity/examples/
+cd examples/rust/pub-sub/
 ```
 
-Next, here are the imports used:
+## Viewing the canister code
 
-```rust reference
-https://github.com/oggy-dfin/icc_rust_docs/blob/7af82d98f05ebbf6c73641a3013ca15db7944394/src/icc_rust_docs_backend/src/lib.rs#L1-L8
+This project is comprised of two canisters: publisher and subscriber.
+
+The **subscriber** canister contains a record of topics. The **publisher** canister uses inter-canister calls to add topics to the record within the subscriber canister.
+
+Let's take a look at the `src/lib.rs` file for each of these canisters.
+
+```rust title="src/publisher/src/lib.rs"
+use candid::{CandidType, Principal};
+use ic_cdk::update;
+use serde::Deserialize;
+use std::cell::RefCell;
+use std::collections::BTreeMap;
+
+type SubscriberStore = BTreeMap<Principal, Subscriber>;
+
+thread_local! {
+    static SUBSCRIBERS: RefCell<SubscriberStore> = RefCell::default();
+}
+
+#[derive(Clone, Debug, CandidType, Deserialize)]
+struct Counter {
+    topic: String,
+    value: u64,
+}
+
+#[derive(Clone, Debug, CandidType, Deserialize)]
+struct Subscriber {
+    topic: String,
+}
+
+#[update]
+fn subscribe(subscriber: Subscriber) {
+    let subscriber_principal_id = ic_cdk::caller();
+    SUBSCRIBERS.with(|subscribers| {
+        subscribers
+            .borrow_mut()
+            .insert(subscriber_principal_id, subscriber)
+    });
+}
+
+#[update]
+async fn publish(counter: Counter) {
+    SUBSCRIBERS.with(|subscribers| {
+        // This example is explicitly ignoring the error.
+        for (k, v) in subscribers.borrow().iter() {
+            if v.topic == counter.topic {
+                let _call_result: Result<(), _> =
+                    ic_cdk::notify(*k, "update_count", (&counter,));
+            }
+        }
+    });
+}
 ```
 
-Furthermore, for simplicity we'll hardcode the owner of the wallet. If you want to test this example interactively, you can set it to your own principal that you can obtain using `dfx identity get-principal`.
+In this code, you can see two inter-canister update calls: `fn subscribe(subscriber: Subscriber)` and `async fn publish(counter: Counter)`. The first method allows for the subscriber canister to make a call to the publisher canister and subscribe to topics. The second method allows the publisher canister to publish information on a topic in the subscriber canister.
 
-```rust reference
-https://github.com/oggy-dfin/icc_rust_docs/blob/81b5dbac5feaddab0bf62fcc2f31fecf42b535c1/src/icc_rust_docs_backend/src/lib.rs#L9-L10
-```
-## Basic ICP ledger transfer: unbounded wait calls
+```rust title="src/subscriber/src/lib.rs"
+use candid::{CandidType, Principal};
+use ic_cdk::{update, query};
+use serde::Deserialize;
+use std::cell::Cell;
 
-The simplest way to interact with the ICP ledger is to use calls where the caller is willing to wait for the response for an unbounded amount of time. These calls can still fail before reaching the ledger, or even while the ledger is processing the call. but the ledger's response is guaranteed do be delivered to the caller, which is why we also refer to these calls as *guaranteed response*  calls.
+thread_local! {
+    static COUNTER: Cell<u64> = Cell::new(0);
+}
 
-```rust reference
-https://github.com/oggy-dfin/icc_rust_docs/blob/e8cefbf8af94b7e595189648fa5de4a00dec7cc7/src/icc_rust_docs_backend/src/lib.rs#L13-L80
-```
+#[derive(Clone, Debug, CandidType, Deserialize)]
+struct Counter {
+    topic: String,
+    value: u64,
+}
 
-Unbounded wait calls, however, have a few downsides:
-1. Since there is no bound on when the call will return, the caller may be prevented from upgrading safely. This can in particular be problematic when calling untrusted canisters, such as an arbitrary ledger.
-2. They don't scale well, and canisters may be unable to issue such calls when the system is under high load.
+#[derive(Clone, Debug, CandidType, Deserialize)]
+struct Subscriber {
+    topic: String,
+}
 
-We will next show how to use *bounded wait* calls instead. These calls don't guarantee that the response will be delivered, which is why we also refer to the as *best-effort response calls*. See the section on [inter-canister calls](/docs/current/developer-docs/smart-contracts/advanced-features/async-code) for more information on best-effort vs. guaranteed response calls.
+#[update]
+async fn setup_subscribe(publisher_id: Principal, topic: String) {
+    let subscriber = Subscriber { topic };
+    let _call_result: Result<(), _> =
+        ic_cdk::call(publisher_id, "subscribe", (subscriber,)).await;
+}
 
-## ICRC-1 transfers: bounded wait calls
+#[update]
+fn update_count(counter: Counter) {
+    COUNTER.with(|c| {
+        c.set(c.get() + counter.value);
+    });
+}
 
-We will now allow our wallet to transfer tokens on an arbitrary ICRC-1 ledger instead of just the ICP ledger. Ledgers generally charge fees for transfers. While this fee is fixed for the ICP ledger, it may vary for other ledgers. Thus, we start with an example of how to determine the required fee.
-
-### Learning the transfer fee
-
-Querying the transfer fee does not change the ledger state. Thus, it's simple to retry in case that it fails, and the code below implements basic retries.
-
-```rust reference
-https://github.com/oggy-dfin/icc_rust_docs/blob/66d36e734bc3a65599a1419ebf1f1b3e520924dc/src/icc_rust_docs_backend/src/lib.rs#L81-L130
-```
-
-As noted in the example, the code after the first call executes in a different callback. See the sections on [inter-canister calls and async code](/docs/current/developer-docs/smart-contracts/advanced-features/async-code), [properties of call execution](/docs/current/developer-docs/security/security-best-practices/inter-canister-calls) and [security best practices](docs/current/developer-docs/security/security-best-practices/inter-canister-calls) to understand potential security implications for your application when using inter-canister calls.
-
-### Transferring tokens
-
-```rust reference
-https://github.com/oggy-dfin/icc_rust_docs/blob/e8cefbf8af94b7e595189648fa5de4a00dec7cc7/src/icc_rust_docs_backend/src/lib.rs#L135-L210
-```
-
-## Exchange rate canister: attaching cycles
-
-For our final example, we will use the [exchange rate canister](/docs/current/developer-docs/defi/exchange-rate-canister/) (XRC) to determine the exchange rate between assets, including tokens, but also currencies. The XRC uses [HTTP outcalls](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview) to determine the exchange rate. Similar to ledgers charging transfer fees, the XRC charges a fee to the caller to determine the exchange rate. However, since the XRC doesn't have a token of its own, the XRC fee is paid in cycles rather than a token. The user has to attach cycles to such a call.
-
-```rust reference
-https://github.com/oggy-dfin/icc_rust_docs/blob/7af82d98f05ebbf6c73641a3013ca15db7944394/src/icc_rust_docs_backend/src/lib.rs#L213-L245
+#[query]
+fn get_count() -> u64 {
+    COUNTER.with(|c| {
+        c.get()
+    })
+}
 ```
 
-As noted in the example, for transferring larger amounts of cycles, switch to using unbounded wait calls. Bounded wait calls run the risk of losing cycles; see the section on [inter-canister calls](/docs/current/developer-docs/smart-contracts/advanced-features/async-code) for more details.
+In this code, there are three main methods: two inter-canister update methods and a query method.
+
+The first method, `async fn setup_subscribe(publisher_id: Principal, topic: String)` provides functionality for the publisher canister to subscribe to topics within the `subscriber` canister. This function is called by the publisher canister.
+
+The second method, `fn update_count(counter: Counter)` updates the counter record for each published value in a topic within the subscriber canister.
+
+The third method, `fn get_count() -> u64` allows the `Counter` value to be queried and returned in a call.
+
+## Deploying the canisters
+
+Now that you've taken a look at your canisters, let's deploy them.
+
+Open a terminal window on your local computer, if you don’t already have one open.
+
+Then run the commands:
+
+```bash
+dfx start --clean --background
+dfx deploy
+```
+
+## Making inter-canister calls
+
+First, let's subscribe to a topic. For example, to subscribe to the "Apples" topic, use the command:
+
+```bash
+dfx canister call subscriber setup_subscribe '(principal "<INSERT_PUBLISHER_PRINCIPAL_HERE>", "Apples")'
+```
+
+Then, to publish a record to the "Apples" topic, use the command:
+
+```bash
+dfx canister call publisher publish '(record { "topic" = "Apples"; "value" = 2 })'
+```
+
+Then, you can query and receive the subscription record value with the command:
+
+```bash
+dfx canister call subscriber get_count
+```
+
+The output should resemble the following:
+
+```bash
+(2 : nat64)
+```
