@@ -5176,7 +5176,7 @@
     "video": "",
     "display": "Normal",
     "id": "secure-image-chain",
-    "oneLiner": "Send images fully on blockchain securely and earn DFX tokens.",
+    "oneLiner": "Send images fully  on  blockchain securely and earn DFX tokens.",
     "stats": "100",
     "tags": [
       "SocialFi",
@@ -5187,5 +5187,5 @@
     "twitter": "https://x.com/SecureChainDFX",
     "youtube": "",
     "submittableId": ""
-  }
+  } 
 ]
