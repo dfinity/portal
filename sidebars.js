@@ -25,17 +25,22 @@ build: [
       },
       {
         type: "doc",
-        label: "Installing the IC SDK",
+        label: "ICP primer",
+        id: "building-apps/getting-started/icp-primer",
+      },
+      {
+        type: "doc",
+        label: "Installing the CLI",
         id: "building-apps/getting-started/install",
       },
       {
         type: "doc",
-        label: "Developer identities",
+        label: "Create a developer identity",
         id: "building-apps/getting-started/identities",
       },
       {
         type: "doc",
-        label: "Using tokens & cycles",
+        label: "Tokens & cycles",
         id: "building-apps/getting-started/tokens-and-cycles",
       },
     ],
@@ -99,7 +104,7 @@ build: [
           },
           {
           type: "category",
-          label: "Command-line tools",
+          label: "CLI",
           items: [
           {
             type: "category",
@@ -167,13 +172,6 @@ build: [
         ],
       },
        "building-apps/developer-tools/ide/icp-ninja",
-      {
-        type: "category",
-        label: "Other",
-        items: [
-          "building-apps/developer-tools/ic-js",
-        ],
-      },
       ],
     },
     {
@@ -221,7 +219,45 @@ build: [
     },
     {
       type: "category",
-      label: "Advanced",
+      label: "Canister management",
+      items: [
+        "building-apps/canister-management/control",
+        "building-apps/canister-management/delete",
+        "building-apps/canister-management/history",
+        "building-apps/canister-management/logs",
+        "building-apps/canister-management/recovery",
+        "building-apps/canister-management/resource-limits",
+        "building-apps/canister-management/snapshots",
+        "building-apps/canister-management/state",
+        "building-apps/canister-management/settings",
+        "building-apps/canister-management/storage",
+        "building-apps/canister-management/topping-up",
+        "building-apps/canister-management/trapping",
+        "building-apps/canister-management/upgrade",
+      ],
+    },
+    {
+      type: "category",
+      label: "Building frontends",
+      items: [
+        "building-apps/frontends/using-an-asset-canister",
+        "building-apps/frontends/uploading-serving-assets",
+        "building-apps/frontends/existing-frontend",
+        "building-apps/network-features/using-http/http-certification/ic-asset-certification-library",
+        "building-apps/frontends/asset-security",
+        {
+          type: "category",
+          label: "Custom domains",
+          items: [
+            "building-apps/frontends/custom-domains/using-custom-domains",
+            "building-apps/frontends/custom-domains/dns-setup",
+          ],
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "Advanced development",
       items:
       [
          {
@@ -243,44 +279,6 @@ build: [
           items: [
             "building-apps/advanced/optimize/motoko",
             "building-apps/advanced/optimize/rust",
-          ],
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Canister management",
-      items: [
-        "building-apps/canister-management/control",
-        "building-apps/canister-management/delete",
-        "building-apps/canister-management/history",
-        "building-apps/canister-management/logs",
-        "building-apps/canister-management/recovery",
-        "building-apps/canister-management/resource-limits",
-        "building-apps/canister-management/snapshots",
-        "building-apps/canister-management/state",
-        "building-apps/canister-management/settings",
-        "building-apps/canister-management/storage",
-        "building-apps/canister-management/topping-up",
-        "building-apps/canister-management/trapping",
-        "building-apps/canister-management/upgrade",
-      ],
-    },
-    {
-      type: "category",
-      label: "Frontends",
-      items: [
-        "building-apps/frontends/using-an-asset-canister",
-        "building-apps/frontends/uploading-serving-assets",
-        "building-apps/frontends/existing-frontend",
-        "building-apps/network-features/using-http/http-certification/ic-asset-certification-library",
-        "building-apps/frontends/asset-security",
-        {
-          type: "category",
-          label: "Custom domains",
-          items: [
-            "building-apps/frontends/custom-domains/using-custom-domains",
-            "building-apps/frontends/custom-domains/dns-setup",
           ],
         },
       ],
