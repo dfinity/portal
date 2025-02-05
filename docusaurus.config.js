@@ -694,6 +694,13 @@ const config = {
         defaultMode: "light",
         respectPrefersColorScheme: true,
       },
+        // github codeblock theme configuration
+        codeblock: {
+          showGithubLink: true,
+          githubLinkLabel: 'View on GitHub',
+          showRunmeLink: false,
+          runmeLinkLabel: 'Checkout via Runme'
+      },
       metadata: [
         {
           // ios safari zooms in when an input field is focused
@@ -847,7 +854,7 @@ const config = {
         playgroundPosition: "bottom",
       },
     },
-  themes: ["@docusaurus/theme-live-codeblock", "@docusaurus/theme-mermaid"],
+  themes: ["@docusaurus/theme-live-codeblock", "@docusaurus/theme-mermaid", "docusaurus-theme-github-codeblock"],
   clientModules: [require.resolve("./static/load_moc.ts")],
 };
 
