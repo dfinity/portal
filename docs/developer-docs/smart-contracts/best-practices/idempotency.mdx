@@ -16,7 +16,7 @@ ingress update calls may be unable to determine whether their ingress
 request has been processed. For example, this can happen if the client loses its
 connection until the request status has been removed from the state tree, since ICP will remove the request from the system state tree some time after the ingress expiry.
 
-This can be risky as the application might decide to retry transactions, potentially leading to serious security vulnerabilities such as double spending.
+This can be risky as the application might decide to retry transactions, potentially leading to serious security vulnerabilities such as double spending. 
 
 Thus, it is important to design and/or use canister APIs such that it is possible to retry requests safely, even when the ICP provides no information about previous request attempts. This page describes general approaches that both the canister authors and the clients can adopt to enable safe retries.
 
@@ -100,4 +100,4 @@ Another approach applicable to ledgers (such as ICRC-1 or ICP) is to perform tra
 
  [^1]: "Equivalent" is meant from the user perspective here. Multiple executions may trigger changes such as those in the canister's cycle balance, but they are not relevant for the user.
 
- [^2]: More precisely, the ledger also allows for a small time drift of `created_at_time` into the future, which has to be taken into account when clearing the deduplication window.
+ [^2]: More precisely, the ledger also allows for a small time drift of `created_at_time` into the future, which has to be taken into account when clearing the deduplication window. 
