@@ -121,6 +121,7 @@ module.exports = {
     },
     fontFamily: {
       circular: ["CircularXX", "sans-serif"],
+      haloGrotesk: ["HaloGrotesk", "sans-serif"],
     },
     fontSize: {
       // bold
