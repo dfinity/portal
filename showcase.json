@@ -5164,5 +5164,18 @@
     "twitter": "https://x.com/CoreLedger",
     "usesInternetIdentity": true,
     "display": "Normal"
+  },
+  {
+    "name": "partnrship",
+    "logo": "/img/showcase/partnrship_logo.svg",
+    "tags": [
+      "Tools / Infrastructure",
+      "Creator Economy"
+    ],
+    "website": "https://e7bx6-iiaaa-aaaag-qm7oq-cai.icp0.io/board/Partnrship",
+    "description": "A project management and DevOps platform with micropayment integrations for working with third-party vendors.",
+    "twitter": "https://x.com/partnrship",
+    "usesInternetIdentity": true,
+    "display": "Normal"
   }
 ]
