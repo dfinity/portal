@@ -3,72 +3,61 @@ keywords: [advanced, tutorial, vetkeys, vetkd]
 ---
 
 import TabItem from "@theme/TabItem";
-import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
-import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import Tabs from "@theme/Tabs";
 
-# vetKeys API demo
+# vetKeys example
 
 <MarkdownChipRow labels={["Advanced", "Tutorial"]} />
 
-This demo provides a canister (`src/system_api`) that offers the [proposed vetKD system API](https://github.com/dfinity/interface-spec/pull/158), implemented demonstration, testing, and initial development purposes. We stress that it does not offer security yet as no threshold cryptography is used yet to secure the key.
+This demo provides a canister (`src/system_api`) that demonstrates how the [proposed vetKD system API](https://github.com/dfinity/interface-spec/pull/158) can be used to provide caller-specific symmetric keys that can be used for AES encryption and decryption.
 
-This demo uses files found in [this repository](https://github.com/dfinity/examples/tree/master/rust/vetkd).
+:::danger
+This example is for demonstration purposes only and is unsafe, as the master secret key is hard coded rather than distributed among ICP nodes on the network. This example should not be used in production or for encrypting sensitive data.
+:::
+
+## Step 1: Setup project environment:
 
 <Tabs>
-<TabItem value="prereq" label="Prerequisites" default>
-
+<TabItem value="prerequisites" label="Prerequisites" default={true}>
 <input type="checkbox"/> <a href="/docs/current/developer-docs/getting-started/install">Install the IC SDK.</a>
 <div>
 </div>
-<input type="checkbox"/> Download and install <a href="https://git-scm.com/downloads">git.</a>
-
+<input type="checkbox"/> Clone the example dapp project: <code>git clone https://github.com/dfinity/examples</code>
+<div>
+</div>
+<input type="checkbox"/> <a href="https://nodejs.org/en/download/">Install the Node.js.</a>
+<div>
+</div>
+<input type="checkbox"/> <a href="https://www.rust-lang.org/tools/install">Install Rust</a> and add Wasm as a target (<code>rustup target add wasm32-unknown-unknown</code>).
+<div>
+</div>
 </TabItem>
 </Tabs>
 
-### Step 1: Begin by cloning the Github repository containing this project:
 
-<AdornedTabs groupId="language">
-<TabItem value="motoko" label="Motoko" default>
-
-```
-git clone https://github.com/dfinity/examples/
-cd examples/motoko/vetkd
-```
-
-</TabItem>
-
-<TabItem value="rust" label="Rust" default>
-
-```
-git clone https://github.com/dfinity/examples/
-cd examples/rust/vetkd
-```
-
-</TabItem>
-</AdornedTabs>
-
-### Step 2: Start a local instance of the replica.
-
-First, [start the local replica](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-start) if necessary and [create](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-new) or open a project.
-
-### Step 3: Ensure the dfx uses the canister IDs that are hard-coded in the source code:
+Navigate into the folder containing the project's files and start a local instance of the replica with the command:
 
 ```sh
+cd examples/rust/vetkd
+dfx start --clean --background
+```
+
+## Step 2: Ensure `dfx` uses the canister IDs that are hard coded in the Rust source code:
+
+```sh
+cd examples/rust/vetkd
 dfx canister create system_api --specified-id s55qq-oqaaa-aaaaa-aaakq-cai
 ```
 
-Without this, the dfx may use different canister IDs for the `system_api` and `app_backend` canisters.
+Without this, `dfx` may use different canister IDs for the `system_api` and `app_backend` canisters in your local environment.
 
-### Step 4: Ensure that the required node modules are available in your project directory:
+## Step 3: View the `app_backend` code:
 
-```sh
-npm install
+```rust file=../../../references/samples/rust/vetkd/src/app_backend/src/lib.rs
 ```
 
-### Step 5: Register, build and deploy the project:
 
 ```sh
 dfx deploy
@@ -80,11 +69,11 @@ This command should finish successfully with output similar to the following one
 Deployed canisters.
 URLs:
 Frontend canister via browser
- app_frontend_js: http://127.0.0.1:4943/?canisterId=by6od-j4aaa-aaaaa-qaadq-cai
+   app_frontend_js: http://127.0.0.1:4943/?canisterId=by6od-j4aaa-aaaaa-qaadq-cai
 Backend canister via Candid interface:
- app_backend: http://127.0.0.1:4943/?canisterId=avqkn-guaaa-aaaaa-qaaea-cai&id=tcvdh-niaaa-aaaaa-aaaoa-cai
- app_frontend: http://127.0.0.1:4943/?canisterId=avqkn-guaaa-aaaaa-qaaea-cai&id=b77ix-eeaaa-aaaaa-qaada-cai
- system_api: http://127.0.0.1:4943/?canisterId=avqkn-guaaa-aaaaa-qaaea-cai&id=s55qq-oqaaa-aaaaa-aaakq-cai
+   app_backend: http://127.0.0.1:4943/?canisterId=avqkn-guaaa-aaaaa-qaaea-cai&id=tcvdh-niaaa-aaaaa-aaaoa-cai
+   app_frontend: http://127.0.0.1:4943/?canisterId=avqkn-guaaa-aaaaa-qaaea-cai&id=b77ix-eeaaa-aaaaa-qaada-cai
+   system_api: http://127.0.0.1:4943/?canisterId=avqkn-guaaa-aaaaa-qaaea-cai&id=s55qq-oqaaa-aaaaa-aaakq-cai
 ```
 
-### Step 6: Open the printed URL for the `app_frontend_js` in your browser.
+## Step 6: Open the printed URL for the `app_frontend_js` in your browser.
