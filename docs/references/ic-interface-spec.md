@@ -1397,12 +1397,14 @@ While an implementation will likely try to keep the interval between the value o
 #### On Low Wasm Memory {#on-low-wasm-memory}
 
 A canister can export a function with the name `canister_on_low_wasm_memory`, which is scheduled whenever the canister's remaining wasm memory size in bytes falls from at least a threshold `t` to strictly less than `t`.
-The threshold `t` can be defined in the [canister's settings](#ic-canister_status) and by default it is set to 0.
+The threshold `t` can be defined in the field `wasm_memory_threshold` in the [canister's settings](#ic-canister_status) and by default it is set to 0.
 
 :::note
 
 While the above function is scheduled immediately once the condition above is triggered, it may not necessarily be executed immediately if the canister does not have enough cycles.
-If the canister gets frozen immediately after the function is scheduled for execution, the function will run once the canister's unfrozen _if_ the canister's wasm memory size in bytes remains strictly less than the threshold `t`.
+If the canister gets frozen immediately after the function is scheduled for execution, the function will run once the canister's unfrozen _if_ the canister's remaining wasm memory size in bytes remains strictly less than the threshold `t`.
+
+Also if the canister's wasm memory size exceeds the wasm memory limit (the field `wasm_memory_limit` in the [canister's settings](#ic-canister_status); the value of 0 means unlimited), then the function will run once the canister's wasm memory size is within the wasm memory limit _if_ the canister's remaining wasm memory size in bytes remains strictly less than the threshold `t`.
 
 :::
 
@@ -4076,6 +4078,7 @@ Conditions
 S.canisters[C] ≠ EmptyCanister
 S.canister_status[C] = Running
 S.on_low_wasm_memory_hook_status[C] = Ready
+(S.wasm_memory_limit[C] = 0) or |S.canisters[C].wasm_state.store.mem| <= S.wasm_memory_limit[C]
 liquid_balance(S, C) ≥ MAX_CYCLES_PER_MESSAGE
 Ctxt_id ∉ dom(S.call_contexts)
 
