@@ -30,11 +30,6 @@ const sidebars = {
   items: [
     {
       type: "doc",
-      label: "Explore examples",
-      id: "developer-docs/getting-started/explore-examples",
-    },
-    {
-      type: "doc",
       label: "Installing developer tools",
       id: "developer-docs/getting-started/install",
     },
