@@ -822,7 +822,6 @@ const sidebars = {
               ],
             },
             "developer-docs/defi/tokens/indexes",
-            "developer-docs/defi/icp-tokens/account-trimming",
             "developer-docs/defi/tokens/create",
             {
               type: "category",

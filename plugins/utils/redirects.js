@@ -359,7 +359,6 @@ const redirects = `
   /docs/current/developer-docs/integrations/ledger/ledger-local-setup  /docs/current/developer-docs/defi/tokens/ledger/setup/icp_ledger_setup
   /docs/current/developer-docs/integrations/ledger/interact-with-ledger  /docs/current/developer-docs/defi/tokens/ledger/usage/icp_ledger_usage
   /docs/current/developer-docs/integrations/ledger/icp-index-local-setup /docs/current/developer-docs/defi/tokens/indexes
-  /docs/current/developer-docs/integrations/ledger/collecting-dust /docs/current/developer-docs/defi/icp-tokens/account-trimming
   /docs/current/developer-docs/integrations/icrc-1/index /docs/current/references/icrc1-standard
   /docs/current/developer-docs/integrations/icrc-1/ /docs/current/references/icrc1-standard
   /docs/current/developer-docs/integrations/icrc-1/icrc1-ledger-setup /docs/current/developer-docs/defi/tokens/ledger/setup/icrc1_ledger_setup
