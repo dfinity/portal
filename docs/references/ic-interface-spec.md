@@ -1759,7 +1759,7 @@ There must be at most one call to `ic0.call_on_cleanup` between `ic0.call_new` a
 
     The amount of cycles it moves is represented by a 128-bit value which can be obtained by combining the `amount_high` and `amount_low` parameters.
 
-    The cycles are deducted from the balance as shown by `ic0.canister_cycles_balance128` immediately, and moved back if the call cannot be performed (e.g. if `ic0.call_perform` signals an error, if the canister invokes `ic0.call_new`, or returns without calling `ic0.call_perform`).
+    The cycles are deducted from the balance as shown by `ic0.canister_cycle_balance128` immediately, and moved back if the call cannot be performed (e.g. if `ic0.call_perform` signals an error, if the canister invokes `ic0.call_new`, or returns without calling `ic0.call_perform`).
 
     This system call may be called multiple times between `ic0.call_new` and `ic0.call_perform`.
 
@@ -1797,7 +1797,7 @@ This specification currently does not go into details about which actions cost h
 
 :::note
 
-This call traps if the current balance does not fit into a 64-bit value. Canisters that need to deal with larger cycles balances should use `ic0.canister_cycles_balance128` instead.
+This call traps if the current balance does not fit into a 64-bit value. Canisters that need to deal with larger cycles balances should use `ic0.canister_cycle_balance128` instead.
 
 :::
 
@@ -7450,7 +7450,7 @@ ic0.canister_cycle_balance<es>() : i64 =
   return es.balance
 
 I ∈ {i32, i64}
-ic0.canister_cycles_balance128<es>(dst : I) =
+ic0.canister_cycle_balance128<es>(dst : I) =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
   let amount = es.balance
   copy_cycles_to_canister<es>(dst, amount.to_little_endian_bytes())
