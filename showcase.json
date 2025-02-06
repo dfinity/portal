@@ -5173,19 +5173,17 @@
     "screenshots": [
       "/img/showcase/secure-image-chain_screenshot.webp"
     ],
-    "video": "",
     "display": "Normal",
     "id": "secure-image-chain",
     "oneLiner": "Send images fully  on  blockchain securely and earn DFX tokens.",
-    "stats": "100",
+    "stats": "1000+ Members on OpenChat",
     "tags": [
       "SocialFi",
       "DeFi"
     ],
     "usesInternetIdentity": true,
-    "github": "",
-    "twitter": "https://x.com/SecureChainDFX",
-    "youtube": "",
-    "submittableId": ""
+    "twitter": "https://x.com/SecureChainDFX"
+
+    
   } 
 ]
