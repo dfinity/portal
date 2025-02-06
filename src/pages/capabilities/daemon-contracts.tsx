@@ -22,7 +22,7 @@ function FeaturePage() {
                 On the Internet Computer blockchain, you can create canister
                 smart contracts that run like daemon processes — that is, you
                 can configure them so that they are automatically activated by
-                the network itself at specified block intervals.
+                the network itself at specified block intervals!
               </p>
             </div>
           </div>
