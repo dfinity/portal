@@ -2159,6 +2159,13 @@ The optional `settings` parameter can be used to set the following settings:
 
     Note: in a future release of this specification, the default value and whether the limit is enforced for global timers and heartbeats might change.
 
+-   `wasm_memory_threshold` (`nat`)
+
+    Must be a number between 0 and 2<sup>64</sup>-1, inclusively, and indicates the threshold on the remaining wasm memory size of the canister in bytes:
+    if the remaining wasm memory size of the canister is below the threshold, execution of the ["on low wasm memory" hook](#on-low-wasm-memory) is scheduled.
+
+    Default value: 0 (i.e., the "on low wasm memory" hook is never scheduled).
+
 The optional `sender_canister_version` parameter can contain the caller's canister version. If provided, its value must be equal to `ic0.canister_version`.
 
 Until code is installed, the canister is `Empty` and behaves like a canister that has no public methods.
