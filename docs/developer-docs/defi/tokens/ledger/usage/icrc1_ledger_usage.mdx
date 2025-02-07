@@ -57,21 +57,18 @@ View the [`dfx canister call` documentation](/docs/current/developer-docs/develo
 
 ## Interacting with an ICRC-1 ledger from another canister (inter-canister calls via `ic-cdk`)
 
-View the [inter-canister call documentation] (/docs/developer-docs/backend/rust/intercanister) to see how you can call one canister from within another.
+When calling into arbitrary ICRC-1 ledgers, we recommend you use [bounded wait (aka best-effort response) calls](/docs/current/developer-docs/smart-contracts/advanced-features/async-code). These calls ensure that your canister does not get stuck waiting for a response from the ledger.
 
-Here is an example of how to fetch the token name from the ICP ledger using Rust and the `ic-cdk` [library](https://github.com/dfinity/cdk-rs) from within a canister:
+Here sample code to fetch the transfer fee from an ICRC-1 ledger using Rust and the `ic-cdk` [library](https://github.com/dfinity/cdk-rs) from within a canister. The example includes retry logic to handle errors when possible.
 
+```rust reference
+https://github.com/oggy-dfin/icc_rust_docs/blob/f98d56a5ebd2fc4b63a73a8dd75494e80ac38146/src/icc_rust_docs_backend/src/lib.rs#L83-L126
 ```
-// You will need the canister ID of the ICRC ledger.
 
-let ledger_id = Principal::from_text("ss2fx-dyaaa-aaaar-qacoq-cai").unwrap();
+Here's sample code for transferring ICRC-1 ledger tokens using bounded wait response calls. It handles the unknown state case by using the [transaction deduplication feature](https://internetcomputer.org/docs/current/references/icrc1-standard#transaction-deduplication-) of ICRC-1 ledgers.
 
-// The request object of the `icrc1_name` endpoint is empty.
-
-    let req = ();
-    let (res,): (String,) =
-        ic_cdk::call(ledger_id, "icrc1_name", (req,))
-            .await.unwrap();
+```rust reference
+https://github.com/oggy-dfin/icc_rust_docs/blob/49d042b9352f0298b6368985b0e5b927753efd38/src/icc_rust_docs_backend/src/lib.rs#L128-L192
 ```
 
 You can find all available methods for your ICRC-1 ledger within the ICRC-1 ledger canister's Candid file or, if your ICRC-1 ledger has been deployed to the mainnet, view your ICRC-1 ledger canister [on the dashboard](https://dashboard.internetcomputer.org/canisters). An example of an ICRC-1 ledger deployed on the mainnet that you can reference is the [ckETH ledger canister](https://dashboard.internetcomputer.org/canister/ss2fx-dyaaa-aaaar-qacoq-cai).

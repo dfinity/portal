@@ -6,13 +6,138 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 # Inter-canister calls
 
-<MarkdownChipRow labels={["Beginner", "Rust", "Tutorial"]} />
+<MarkdownChipRow labels={["Beginner", "Rust"]} />
 
-Just like users can call canisters, canisters can also call other canisters. This tutorial shows how to use these inter-canister calls in Rust. To fully understand calls, their properties, and common pitfalls and security issues, refer to the section on [inter-canister calls](/docs/current/developer-docs/smart-contracts/advanced-features/async-code).
+Just like users can call canisters, canisters can also call other canisters. This tutorial provides an introduction to using these inter-canister calls in Rust.
 
-Our examples will center around tokens. We will write a simple wallet canister that holds tokens on behalf of its owner, and allows the owner to transfer tokens. We'll first show an example of interacting with the ICP ledger, and then also any ledger that supports the ICRC-1 standard. Finally, we will allow the wallet to determine the exchange rate between supported tokens using the exchange rate canister.
+We will show how to call the [counter canister](/docs/current/developer-docs/backend/rust/counter), which provides just three operations on a counter: getting the counter value, incrementing the counter, and setting the counter to an arbitrary value.
 
-## Dependencies and imports
+## Prerequisites
+
+We assume that you have the Internet Computer [developer tools](/docs/current/developer-docs/getting-started/install) developer tools installed. To follow along, clone the [Git repository](https://github.com/oggy-dfin/icc_rust_docs) of this tutorial. You can find the completed code in the `caller` package. Check out the Git repository of the tutorial. Then, in the tutorial directory, start a local IC instance in the background and install the counter canister.
+
+```bash
+$ dfx start --background
+$ dfx deploy counter
+```
+
+## Basic example: incrementing the counter twice
+
+For the first example, we'll build an `increment_twice` method to increment the counter two times. The skeleton of the project is already available in `src/new_caller`. Add the following code to `src/new_caller/src/lib.rs`, the explanation is in the comments.
+
+```rust reference
+https://github.com/oggy-dfin/icc_rust_docs/blob/49d042b9352f0298b6368985b0e5b927753efd38/src/caller/src/lib.rs#L1-L55
+```
+
+Now, deploy this code to the local IC instance. This will give you some warnings about unused imports, but we will use these later in the tutorial.
+
+```bash
+$ dfx deploy new_caller
+```
+
+Let's test it out. Since the method expects the principal of the counter to be passed, we can call it like this:
+
+```bash
+$ dfx canister call new_caller increment_twice
+```
+
+This will prompt you to provide a principal for the `counter` parameter of the `increment_twice` method. If you followed the instructions in the prerequisite section correctly and have already installed the `counter` canister, you can type `counter` and press `TAB` on your keyboard to pass the principal of the counter canister as the parameter, and then `Enter` to confirm. Instruct `dfx` to send the message. Then, you will see an output such as:
+
+```bash
+(4 : nat, 6 : nat)
+```
+
+Here, the counter was increased from 4 to 6. As noted in the comments, this increase needn't always be 2, and it doesn't even have to be an increase! IC calls are executed **asynchronously**. In our example, between the two `inc` calls in `increment_twice`, another canister could also call the `counter` canister and change the counter value in some case. This enables higher throughput but also has correctness and security implications. Read the documentation on [inter-canister calls and async code](/docs/current/developer-docs/smart-contracts/advanced-features/async-code), [properties of call execution](/docs/current/developer-docs/security/security-best-practices/inter-canister-calls) and [security best practices](docs/current/developer-docs/security/security-best-practices/inter-canister-calls) to understand potential security implications for your application when using inter-canister calls.
+
+## Passing arguments, handling arguments, and using bounded-wait calls
+
+Let's now see more of a real-world use case. In our first example we ignored error handling, and we did not even have to pass any arguments to the called method. Let's look at a slightly more complicated example now, where we call the `set` method on the counter.
+
+This method takes a single parameter, the new value that we should set the counter to, so we will have to pass that. We will also elaborate on error handling, since a robust application should handle errors to the extent possible. There, we will take advantage of the fact that the `set` method is *idempotent*. That is, calling it twice has the same effect as calling it just once. Making public endpoints idempotent is a [best practice](/docs/current/developer-docs/smart-contracts/best-practices/idempotency). It enables better error recovery for ingress  calls (i.e., outside users and applications interacting with your application over HTTP) to your canister, but also enables other canisters to call your canister using *bounded-wait* calls. Unlike unbounded-wait calls, a bounded-wait call does not wait forever for a response to arrive.
+
+Edit `src/new_caller/src/lib.rs` to add the following method:
+
+```rust reference
+https://github.com/oggy-dfin/icc_rust_docs/blob/c152709203381bda4135919daa8a04140823f94d/src/caller/src/lib.rs#L57-L132
+```
+
+Now, let's try it out. Redeploy the canister:
+
+```bash
+$ dfx deploy new_caller
+```
+
+and then call the new endpoint.
+
+```bash
+$ dfx canister call new_caller stubborn_set
+```
+
+When prompted by `dfx` to select a number, choose a number, e.g., `42`, and send the call. Now you can check whether the counter canister actually set its counter by calling it directly.
+
+```bash
+$ dfx canister call counter get
+(42 : nat)
+```
+
+## Attaching cycles: canister signatures
+
+TODO
+
+## Further reading
+
+To understand more details about how inter-canister calls execute, how different call types and  consult the documentation [inter-canister calls and async code](/docs/current/developer-docs/smart-contracts/advanced-features/async-code)
+As noted in the example, an `update` method can always call any method of any other canister. In cases where you only need to call query methods on other canisters, and if you are sure that these canisters are on the same subnet as your canister, you can also use [composite query calls](/docs/current/developer-docs/smart-contracts/call/overview) methods instead of update methods.
+
+For a real-life example of how to handle errors when calling canisters, see the [ICRC-1 examples](/docs/current/developer-docs/defi/tokens/ledger/usage/icrc1_ledger_usage#interacting-with-an-icrc-1-ledger-from-another-canister-inter-canister-calls-via-ic-cdk)
+
+<!--
+
+### Basic ICP ledger transfer: unbounded wait calls
+
+The simplest way to interact with the ICP ledger is to use calls where the caller is willing to wait for the response for an unbounded amount of time. These calls can still fail before reaching the ledger, or even while the ledger is processing the call. but the ledger's response is guaranteed do be delivered to the caller, which is why we also refer to these calls as *guaranteed response*  calls.
+
+```rust reference
+https://github.com/oggy-dfin/icc_rust_docs/blob/7c3a0195c7a78eff8813d80d18b8575535a05c3b/src/icc_rust_docs_backend/src/lib.rs#L14-L81
+```
+
+The guaranteed response delivery property ensures that the only causes of `StateUnknown` error are due to canister behavior (mismatched expectations on the return types, or the callee panicking). However, there is also a downside to unbounded wait calls: since safely upgrading a canister can only be done when the canister has no pending calls, and since unbounded wait calls provide no bound on when the call will return, the caller may be prevented from upgrading safely. This can in particular be problematic when calling untrusted canisters, such as an arbitrary ledger.
+
+We will next show how to use *bounded wait* calls instead in such cases. These calls don't guarantee that the response will be delivered, which is why we also refer to them as *best-effort response calls*, but in return don't block the caller from upgrading, and they also tolerate high system load better than unbounded wait calls. See the section on [inter-canister calls](/docs/current/developer-docs/smart-contracts/advanced-features/async-code) for more information on best-effort vs. guaranteed response calls.
+
+### Transfers on arbitrary ICRC-1 ledgers: bounded wait calls
+
+ICRC-1 is a standard defining an API for token ledgers on the Internet Computer. Any canister can implement this API and act as a ledger. A dApp (for example, a decentralized exchange or a wallet application that serves multiple users) may want to allow users to register arbitrary such ledgers and interact with them, without knowing if they faithfully implement the standard. In this example we show how we could modify our wallet to transfer tokens on an arbitrary ICRC-1 ledger instead of just the ICP ledger. To ensure that our canister can always be upgraded, we will use bounded wait calls.
+
+Ledgers generally charge fees for transfers. While this fee is fixed for the ICP ledger, it may vary for other ledgers. Thus, we start with an example of how to determine the required fee.
+
+#### Learning the transfer fee
+
+Querying the transfer fee does not change the ledger state. Thus, it's simple to retry in case that it fails, and the code below implements basic retries.
+
+```rust reference
+https://github.com/oggy-dfin/icc_rust_docs/blob/34f59ddae9fcc70173fc21927a4279757f93c51a/src/icc_rust_docs_backend/src/lib.rs#L83-L134
+```
+
+As noted in the example, the code after the first call executes in a different callback. See the sections on [inter-canister calls and async code](/docs/current/developer-docs/smart-contracts/advanced-features/async-code), [properties of call execution](/docs/current/developer-docs/security/security-best-practices/inter-canister-calls) and [security best practices](docs/current/developer-docs/security/security-best-practices/inter-canister-calls) to understand potential security implications for your application when using inter-canister calls.
+
+#### Transferring tokens
+
+When transferring tokens (or performing other updates) using bounded wait messages, we need to handle the unknown state case. For ICRC-1 transfers, we can make use of the built-in deduplication feature of ICRC-1 ledgers and retry the call.
+
+```rust reference
+https://github.com/oggy-dfin/icc_rust_docs/blob/34f59ddae9fcc70173fc21927a4279757f93c51a/src/icc_rust_docs_backend/src/lib.rs#L136-L211
+```
+
+### Exchange rate canister: attaching cycles
+
+For our final example, we will use the [exchange rate canister](/docs/current/developer-docs/defi/exchange-rate-canister/) (XRC) to determine the exchange rate between assets, including tokens, but also currencies. The XRC uses [HTTP outcalls](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview) to determine the exchange rate. Similar to ledgers charging transfer fees, the XRC charges a fee to the caller to determine the exchange rate. However, since the XRC doesn't have a token of its own, the XRC fee is paid in cycles rather than a token. The user has to attach cycles to such a call. Cycles can be attached to both bounded and unbounded wait messages. For unbounded wait messages, cycles that are not consumed by the callee are guaranteed to be refunded to the caller. For bounded wait calls, refunds do not happen when the call returns a `SysUnknown` error. However, this is usually acceptable for API calls that charge for cycles, since the amount charged is usually low (1 billion cycles for the XRC). For transferring larger amounts of cycles, switch to using unbounded wait calls. See the section on [inter-canister calls](/docs/current/developer-docs/smart-contracts/advanced-features/async-code) for more details.
+
+```rust reference
+https://github.com/oggy-dfin/icc_rust_docs/blob/34f59ddae9fcc70173fc21927a4279757f93c51a/src/icc_rust_docs_backend/src/lib.rs#L213-L247
+```
+
+### Dependencies and imports
 
 We start by listing the dependencies used in this example as specified in `Cargo.toml`.
 
@@ -26,54 +151,5 @@ Next, here are the imports used:
 https://github.com/oggy-dfin/icc_rust_docs/blob/34f59ddae9fcc70173fc21927a4279757f93c51a/src/icc_rust_docs_backend/src/lib.rs#L1-L8
 ```
 
-Furthermore, for simplicity we'll hardcode the owner of the wallet. If you want to test this example interactively, you can set it to your own principal that you can obtain using `dfx identity get-principal`.
 
-```rust reference
-https://github.com/oggy-dfin/icc_rust_docs/blob/34f59ddae9fcc70173fc21927a4279757f93c51a/src/icc_rust_docs_backend/src/lib.rs#L10-L11
-```
-
-## Basic ICP ledger transfer: unbounded wait calls
-
-The simplest way to interact with the ICP ledger is to use calls where the caller is willing to wait for the response for an unbounded amount of time. These calls can still fail before reaching the ledger, or even while the ledger is processing the call. but the ledger's response is guaranteed do be delivered to the caller, which is why we also refer to these calls as *guaranteed response*  calls.
-
-```rust reference
-https://github.com/oggy-dfin/icc_rust_docs/blob/7c3a0195c7a78eff8813d80d18b8575535a05c3b/src/icc_rust_docs_backend/src/lib.rs#L14-L81
-```
-
-The guaranteed response delivery property ensures that the only causes of `StateUnknown` error are due to canister behavior (mismatched expectations on the return types, or the callee panicking). However, there is also a downside to unbounded wait calls: since safely upgrading a canister can only be done when the canister has no pending calls, and since unbounded wait calls provide no bound on when the call will return, the caller may be prevented from upgrading safely. This can in particular be problematic when calling untrusted canisters, such as an arbitrary ledger.
-
-We will next show how to use *bounded wait* calls instead in such cases. These calls don't guarantee that the response will be delivered, which is why we also refer to them as *best-effort response calls*, but in return don't block the caller from upgrading, and they also tolerate high system load better than unbounded wait calls. See the section on [inter-canister calls](/docs/current/developer-docs/smart-contracts/advanced-features/async-code) for more information on best-effort vs. guaranteed response calls.
-
-## Transfers on arbitrary ICRC-1 ledgers: bounded wait calls
-
-ICRC-1 is a standard defining an API for token ledgers on the Internet Computer. Any canister can implement this API and act as a ledger. A dApp (for example, a decentralized exchange or a wallet application that serves multiple users) may want to allow users to register arbitrary such ledgers and interact with them, without knowing if they faithfully implement the standard. In this example we show how we could modify our wallet to transfer tokens on an arbitrary ICRC-1 ledger instead of just the ICP ledger. To ensure that our canister can always be upgraded, we will use bounded wait calls.
-
-Ledgers generally charge fees for transfers. While this fee is fixed for the ICP ledger, it may vary for other ledgers. Thus, we start with an example of how to determine the required fee.
-
-### Learning the transfer fee
-
-Querying the transfer fee does not change the ledger state. Thus, it's simple to retry in case that it fails, and the code below implements basic retries.
-
-```rust reference
-https://github.com/oggy-dfin/icc_rust_docs/blob/34f59ddae9fcc70173fc21927a4279757f93c51a/src/icc_rust_docs_backend/src/lib.rs#L83-L134
-```
-
-As noted in the example, the code after the first call executes in a different callback. See the sections on [inter-canister calls and async code](/docs/current/developer-docs/smart-contracts/advanced-features/async-code), [properties of call execution](/docs/current/developer-docs/security/security-best-practices/inter-canister-calls) and [security best practices](docs/current/developer-docs/security/security-best-practices/inter-canister-calls) to understand potential security implications for your application when using inter-canister calls.
-
-### Transferring tokens
-
-When transferring tokens (or performing other updates) using bounded wait messages, we need to handle the unknown state case. For ICRC-1 transfers, we can make use of the built-in deduplication feature of ICRC-1 ledgers and retry the call.
-
-```rust reference
-https://github.com/oggy-dfin/icc_rust_docs/blob/34f59ddae9fcc70173fc21927a4279757f93c51a/src/icc_rust_docs_backend/src/lib.rs#L136-L211
-```
-
-## Exchange rate canister: attaching cycles
-
-For our final example, we will use the [exchange rate canister](/docs/current/developer-docs/defi/exchange-rate-canister/) (XRC) to determine the exchange rate between assets, including tokens, but also currencies. The XRC uses [HTTP outcalls](/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview) to determine the exchange rate. Similar to ledgers charging transfer fees, the XRC charges a fee to the caller to determine the exchange rate. However, since the XRC doesn't have a token of its own, the XRC fee is paid in cycles rather than a token. The user has to attach cycles to such a call. Cycles can be attached to both bounded and unbounded wait messages. For unbounded wait messages, cycles that are not consumed by the callee are guaranteed to be refunded to the caller. For bounded wait calls, refunds do not happen when the call returns a `SysUnknown` error. However, this is usually acceptable for API calls that charge for cycles, since the amount charged is usually low (1 billion cycles for the XRC). For transferring larger amounts of cycles, switch to using unbounded wait calls. See the section on [inter-canister calls](/docs/current/developer-docs/smart-contracts/advanced-features/async-code) for more details.
-
-```rust reference
-https://github.com/oggy-dfin/icc_rust_docs/blob/34f59ddae9fcc70173fc21927a4279757f93c51a/src/icc_rust_docs_backend/src/lib.rs#L213-L247
-```
-
-
+-->
