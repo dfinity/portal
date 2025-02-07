@@ -636,6 +636,14 @@ const config = {
         createRedirects: (existingPath) => getSplatRedirects(existingPath),
       },
     ],
+    [
+      'docusaurus-pushfeedback',{
+          project: 'vp9fqs6rks',
+          buttonPosition: 'center-right',
+          modalPosition: 'sidebar-right',
+          buttonStyle: 'dark',
+      }
+  ],
   ],
 
   presets: [
