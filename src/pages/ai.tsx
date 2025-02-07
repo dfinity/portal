@@ -1,21 +1,22 @@
-import Link from "@docusaurus/Link";
-import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import transitions from "@site/static/transitions.json";
-import Layout from "@theme/Layout";
-import { motion } from "framer-motion";
 import React, { useRef } from "react";
+
 import AnimateSpawn from "../components/Common/AnimateSpawn";
+import CodeBlockString from "../theme/CodeBlock/Content/String";
+import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
+import Layout from "@theme/Layout";
+import Link from "@docusaurus/Link";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
 import LinkCardsSection from "../components/Common/LinkCardsSection";
-import ShareMeta from "../components/Common/ShareMeta";
-import { useFontsLoaded } from "@site/src/utils/use-fonts-loaded";
-import VideoCard from "../components/Common/VideoCard/index";
 // import youtubeData from "@site/.docusaurus/youtube/default/youtube.json";
 import { NewsCard } from "../components/NewsPage/Cards";
+import ShareMeta from "../components/Common/ShareMeta";
+import VideoCard from "../components/Common/VideoCard/index";
 import clsx from "clsx";
-import CodeBlockString from "../theme/CodeBlock/Content/String";
+import { motion } from "framer-motion";
+import transitions from "@site/static/transitions.json";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
+import { useFontsLoaded } from "@site/src/utils/use-fonts-loaded";
 
 interface TrustCardProps {
   imageSrc: string;
@@ -491,7 +492,7 @@ let result = model.run(
                   </motion.h3>
                   <motion.p className="text-2xl mb-0 ">
                     <motion.span className="font-bold">DeAI </motion.span>
-                    involves running AI training and inference as smart
+                    involves running AI inference as smart
                     contracts onchain, which addresses AI’s trust issues. Users
                     can verify the inputs to the models they utilize, reducing
                     the need to trust them blindly. However, AI training and
