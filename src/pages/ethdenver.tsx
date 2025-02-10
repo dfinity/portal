@@ -1,24 +1,25 @@
-import Link from "@docusaurus/Link";
-import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
-import LocationIcon from "@site/static/img/ethdenver/location.svg";
-import TwitterIcon from "@site/static/img/ethdenver/twitter.svg";
-import transitions from "@site/static/transitions.json";
-import Layout from "@theme/Layout";
-import { motion } from "framer-motion";
 import React, { useRef } from "react";
+
 import AnimateSpawn from "../components/Common/AnimateSpawn";
+import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
+import BiometricIcon from "@site/src/components/Basics/EthDenver/biometric.svg";
+import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
+import IntraPageNav from "../components/Common/IntraPageNav";
+import Layout from "@theme/Layout";
+import Link from "@docusaurus/Link";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import LinkArrowUpRight from "../components/Common/Icons/LinkArrowUpRight";
-import ShareMeta from "../components/Common/ShareMeta";
-import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
-import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
-
-import BiometricIcon from "@site/src/components/Basics/InternetIdentity/biometric.svg";
-import NoTrackingIcon from "@site/src/components/Basics/InternetIdentity/privacy.svg";
-import WebAuthnIcon from "@site/src/components/Basics/InternetIdentity/webauthn.svg";
-import StartBuildingSection from "@site/src/components/LandingPage/StartBuilding";
+import LocationIcon from "@site/static/img/ethdenver/location.svg";
+import NoTrackingIcon from "@site/src/components/Basics/EthDenver/privacy.svg";
 import { OnChainBadge } from "../components/Common/OnChainBadge/OnChainBadge";
-import IntraPageNav from "../components/Common/IntraPageNav";
+import ShareMeta from "../components/Common/ShareMeta";
+import StartBuildingSection from "@site/src/components/LandingPage/StartBuilding";
+import TwitterIcon from "@site/static/img/ethdenver/twitter.svg";
+import WebAuthnIcon from "@site/src/components/Basics/EthDenver/webauthn.svg";
+import { motion } from "framer-motion";
+import transitions from "@site/static/transitions.json";
+import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
+import { useEffect } from "react";
 
 const MotionLink = motion(Link);
 
@@ -83,6 +84,92 @@ const projects: {
   },
 ];
 
+const GradientBackground = ({ color1, color2, segments, isFullWidth = false }: { color1: string, color2: string, segments: number[][], isFullWidth: boolean }) => {
+  // watch mouse move for parallax effect
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      document.documentElement.style.setProperty('--gradient-x', `${x}`);
+      document.documentElement.style.setProperty('--gradient-y', `${y}`);
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+  
+  return (
+    <div
+      className="absolute z-0 top-0 left-0 w-full h-full"
+      style={{
+        display: 'grid',
+        gridTemplateRows: `repeat(${segments.length}, 1fr)`,
+        width: '100%',
+        height: '100%',
+      }}
+    >
+      {segments.map((row, rowIndex) => (
+        <div 
+          key={rowIndex}
+          style={{
+            display: 'grid',
+            gridTemplateColumns: row.map(fr => `${fr}fr`).join(' '),
+          }}
+        >
+          {row.map((_, colIndex) => (
+            <div
+              className="relative overflow-hidden"
+              key={colIndex}
+            >
+              <div
+              className={`absolute top-0 left-0 h-full 
+                ${isFullWidth 
+                  ? 'w-[100vw]' 
+                  : 'w-[200%]'}
+                `}
+              style={{
+                willChange: 'background',
+                background: `radial-gradient(circle, ${color1} calc(30% * var(--gradient-x)), ${color2} calc(max(70%, 90% * var(--gradient-y))))`,
+              }}
+              />
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export const CtaCard = ({ title, description, href, backgroundColor, backgroundSegments = [[1, 2, 3]] }: { title: string, description: string, backgroundColor: string[], backgroundSegments: number[][], href: string }) => {
+  return (
+    <Link
+      className="relative link-primary text-black link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform overflow-hidden rounded-xl"
+      href={href}
+    > 
+      <GradientBackground
+        color1={backgroundColor[0]}
+        color2={backgroundColor[1]}
+        segments={backgroundSegments}
+        isFullWidth={false}
+      />
+      <article className="relative z-2 flex flex-col gap-8 justify-between items-start p-6 aspect-[1/1.3]">
+        <h3 className="tw-heading-alt-2 mb-3">
+            <span dangerouslySetInnerHTML={{ __html: title }} />
+        </h3>
+
+        <div>
+          <p className="tw-paragraph md:tw-lead text-black-60 mb-2">
+            {description}
+          </p>
+          <div className="button-round-icon mt-auto !bg-transparent !text-black !border-black/20 hover:!bg-black/10 hover:!border-black">
+            <LinkArrowRight />
+          </div>
+        </div>
+        
+      </article>
+    </Link>
+  );
+};
+
 function EthDenverPage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const isDark = useDarkHeaderInHero(heroRef);
@@ -101,135 +188,187 @@ function EthDenverPage() {
           marginTop: `calc(var(--ifm-navbar-height) * -1)`,
         }}
       >
+
         {isDark && <DarkHeroStyles bgColor="transparent"></DarkHeroStyles>}
-        <section id="intro">
+
+        <section id="intro" className="relative">
+          <div className="absolute top-0 right-0 bottom-0 left-0 -z-1">
+            <GradientBackground
+              color1="#5015FF"
+              color2="#D897B4"
+              segments={[
+                [1, 2, 4]
+              ]}
+              isFullWidth={true}
+            />
+          </div>
           <AnimateSpawn variants={transitions.container}>
             <div
-              className="overflow-hidden bg-infinite text-white pt-20"
-              style={{
-                background: "linear-gradient(90deg, #0E031F 0%, #281447 100%)",
-              }}
+              className="overflow-hidden text-black pt-20"
               ref={heroRef}
             >
-              <div className="container-12 pt-20 mb-20 md:mb-20 md:pt-36 relative flex flex-col md:flex-row">
-                <div className="absolute -top-3/10 -right-2/10 w-[768px] aspect-square rounded-full opacity-40 bg-[#CB7EF1] mix-blend-color-dodge blur-[346px]"></div>
+              <div className="container-12 pt-20 mb-20 md:mb-20 md:pt-36">
 
-                <div className="md:w-5/12 md:ml-1/12 relative">
-                  <motion.h1
-                    className="tw-heading-60 md:tw-heading-1 mb-6 text-transparent bg-clip-text text-gradient-denver"
-                    variants={transitions.item}
+                <div className="uppercase">
+                  <motion.h1 
+                    className="tw-heading-alt-1 text-right text-[10vw]"
+                    variants={transitions.slideInFromRight}
                   >
-                    Build the Future
+                    <span className="block">UNIFYING WEB3</span>
+                    <span className="block">AND AI</span>
                   </motion.h1>
-                  <motion.p
+                </div>
+
+                <div className="md:w-5/10">
+                  <motion.h2
                     className="tw-lead md:tw-title-sm mb-12 md:mb-8"
                     variants={transitions.item}
                   >
-                    Visit us @ ETHDenver 2023
-                    <br />
-                    February 24 - March 5, 2023
-                  </motion.p>
-                  <motion.img
-                    src="/img/ethdenver/astronaut.webp"
-                    alt=""
-                    className="ethdenver-astronaut md:hidden"
-                    variants={{
-                      hidden: {
-                        opacity: 0,
-                        animationPlayState: "paused",
-                      },
-                      show: {
-                        opacity: 1,
-                        animationPlayState: "running",
-                        transition: {
-                          duration: 0.5,
-                        },
-                      },
-                    }}
-                  ></motion.img>
+                    ETHDenver 2025<br/>
+                    <time dateTime="2025-02-23">February 23</time> – <time dateTime="2025-03-02">March 2</time>
+                  </motion.h2>
                   <motion.p
                     className="tw-lead-sm md:tw-lead mb-8 mt-10 md:mt-0"
                     variants={transitions.item}
                   >
-                    Lightning fast and fully onchain dapps running on the
-                    Internet Computer blockchain, the only true World Computer
-                    that enables a fully decentralized ecosystem.
+                    Lightning fast and fully on-chain dapps runningon the Internet Computer blockchain, the only true World Computer that enables a end-to-end  decentralization.
                   </motion.p>
 
                   <motion.p
-                    className="tw-lead-sm md:tw-lead mb-10 md:mb-16"
+                    className="mb-10 md:mb-16 flex gap-8"
                     variants={transitions.item}
                   >
                     <Link
-                      className="link-white link-with-icon"
-                      href="https://twitter.com/dfinity"
+                      href="#"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="button-primary"
+                    >
+                      Join the Hackathon
+                    </Link>
+                    <Link
+                      className="link-with-icon"
+                      href="https://x.com/dfinity"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       <TwitterIcon className="w-6 h-6" />
-                      Follow us on Twitter for updates
+                      Follow us for event updates
                     </Link>
                   </motion.p>
 
-                  <Link
-                    href="https://www.ethdenver.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Go to ETHDenver home page"
-                  >
-                    <motion.img
-                      variants={transitions.item}
-                      src="/img/ethdenver/logo.webp"
-                      alt=""
-                      className="md:w-80"
-                    />
-                  </Link>
                 </div>
-                <div className="flex-1 relative z-10 hidden md:block">
-                  <motion.img
-                    src="/img/ethdenver/astronaut.webp"
-                    alt=""
-                    className="ethdenver-astronaut md:absolute top-0 left-0"
-                    variants={{
-                      hidden: {
-                        opacity: 0,
-                        animationPlayState: "paused",
-                      },
-                      show: {
-                        opacity: 1,
-                        animationPlayState: "running",
-                        transition: {
-                          duration: 0.5,
-                        },
-                      },
-                    }}
-                  ></motion.img>
-                </div>
-                <motion.div
-                  variants={transitions.fadeIn}
-                  className="pt-10 flex justify-center md:absolute right-[50px] bottom-20"
-                >
-                  <OnChainBadge className=""></OnChainBadge>
-                </motion.div>
+
               </div>
             </div>
           </AnimateSpawn>
         </section>
-        <section className="container-10 py-20 md:py-40" id="bounties">
+
+
+        {/* Meet us */}
+        <section
+          className="bg-black text-white py-20 md:pt-30 md:pb-40"
+          id="agenda"
+        >
           <AnimateSpawn
-            className="flex flex-col md:flex-row mb-20 md:mb-12"
+            className="container-10 relative mb-16 md:mb-20"
             variants={transitions.container}
           >
-            <div className="md:w-6/10">
+            <div className="md:w-8/10">
               <motion.h2
-                className="tw-heading-4 md:tw-heading-60 mb-6 md:mb-8"
+                className="tw-heading-alt-2 md:mb-8"
+                variants={transitions.item}
+              >
+                Meet us at our Booth AT ETHDenver 2025
+              </motion.h2>
+              <motion.p className="tw-lead mb-8" variants={transitions.item}>
+                <span className="text-white-60">
+                  Join us for an electrifying ETH Denver experience filled with hands-on workshops, inspiring keynote speeches, interactive Q&A sessions, and live demos of ICP Ecosystem dapps at our booth!
+                </span>
+              </motion.p>
+              <MotionLink
+                className="link-white link-with-icon text-[#AE9EFF]"
+                href="https://x.com/dfinity"
+                target="_blank"
+                rel="noopener noreferrer"
+                variants={transitions.item}
+              >
+                <TwitterIcon />
+                <span className="tw-paragraph-sm">
+                  Follow us for event updates
+                </span>
+              </MotionLink>
+            </div>
+          </AnimateSpawn>
+
+          <div className="container-10 flex text-black space-x-8">
+            <AnimateSpawn
+              className="w-1/3"
+              variants={transitions.item}
+            >
+              <CtaCard 
+                title="Chain Fusion"
+                description="Build and Scale Multichain dApps across ETH, BTC and more"
+                backgroundColor={['#5015FF', '#D897B4']}
+                backgroundSegments={[
+                  [1, 2]
+                ]}
+                href="#"
+              />
+            </AnimateSpawn>
+            <AnimateSpawn
+              className="w-1/3"
+              variants={transitions.item}
+            >
+              <CtaCard 
+                title="ICP<br>Ninja"
+                description="Enter the Dojo and Master the Art of Smart Contracts"
+                backgroundColor={['#D897B4', '#F7016E']}
+                backgroundSegments={[
+                  [2, 1],
+                  [1],
+                  [1, 2],
+                ]}
+                href="#"
+              />
+            </AnimateSpawn>
+            <AnimateSpawn
+              className="w-1/3"
+              variants={transitions.item}
+            >
+              <CtaCard 
+                title="Onchain<br>AI"
+                description="Leverage the power of decentralized AI and the Self-Writing Internet"
+                backgroundColor={['#F6D43C', '#D897B4']}
+                backgroundSegments={[
+                  [5, 1],
+                  [1, 5],
+                  [5, 1],
+                ]}
+                href="#"
+              />
+            </AnimateSpawn>
+          </div>
+        </section>
+
+
+        {/* Bounties */}
+        <section className="container-10 py-20 md:py-40" id="bounties">
+          <AnimateSpawn
+            className="flex flex-col md:flex-row mb-20 md:mb-40"
+            variants={transitions.container}
+          >
+            <div className="md:w-1/2">
+              <motion.h2
+                className="tw-heading-alt-2 mb-6 md:mb-8"
                 variants={transitions.item}
               >
                 <span className="text-gradient-base text-gradient-denver">
-                  ETHDenver Bounties
+                  ETHDenver Bounties 
                 </span>
                 <br />
-                Get Your Hack On
+                Get Your Hack <br/>
+                On
               </motion.h2>
               <motion.img
                 src="/img/ethdenver/motoko-playground.webp"
@@ -238,10 +377,7 @@ function EthDenverPage() {
                 variants={transitions.fadeIn}
               />
               <motion.p className="tw-lead-sm mb-8" variants={transitions.item}>
-                Bring DeFi and SocFi to Bitcoin, go mad with NFTs, or
-                decentralize an Ethereum DAO on the Internet Computer and get
-                rewarded for it. This is your chance to #BUIDL the future
-                internet!{" "}
+                Bring DeFi and SocFi to Bitcoin, go mad with NFTs, or decentralize an Ethereum DAO on the Internet Computer and get rewarded for it. This is your chance to #BUIDL the future internet! 
               </motion.p>
               <motion.div
                 className="flex flex-col md:flex-row gap-4 md:gap-8 items-start md:items-center"
@@ -253,7 +389,7 @@ function EthDenverPage() {
                   rel="noopener noreferrer"
                   className="button-primary"
                 >
-                  Sign Up
+                  Register now
                 </Link>
                 <Link
                   className="link-primary link-with-icon"
@@ -266,7 +402,7 @@ function EthDenverPage() {
                 </Link>
               </motion.div>
             </div>
-            <div className="md:w-4/10 hidden md:block">
+            <div className="md:w-1/2 hidden md:block">
               <img
                 src="/img/ethdenver/motoko-playground.webp"
                 alt=""
@@ -284,498 +420,84 @@ function EthDenverPage() {
             </motion.h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               <motion.div
-                className="bg-white-60 border border-solid border-white rounded-xl px-6 py-8"
+                className="bg-white-60 border border-solid border-white rounded-xl px-6 py-8 flex flex-col gap-4 justify-between"
                 variants={transitions.item}
               >
-                <h4 className="tw-heading-5 mb-3">
-                  Decentralized Frontend Hosting for DAOs
-                </h4>
-                <p className="tw-paragraph text-black-60 mb-6">
-                  Challenge: host a frontend on the Internet Computer as well as
-                  a 2nd canister smart contract that uses the HTTPS outcalls
-                  feature to call an Ethereum RPC node to fetch the voting
-                  result of a frontend upgrade proposal. The canister should
-                  then perform the upgrade of the frontend.
-                </p>
-                <p className="tw-lead text-gradient-base text-gradient-denver inline-block mb-0">
-                  $5,000 in ICP
-                </p>
+                <div>
+                  <h4 className="tw-heading-5 mb-3">
+                    Build an onchain AI agent or agent framework plugin
+                  </h4>
+                  <p className="tw-paragraph text-black-60 mb-6">
+                    Challenge: Smart contracts running on ICP can run autonomously, sign transactions on more than 20 blockchains and communicate using HTTPS API calls. Use these features to build an onchain (AI) agent or a plugin for an existing agent framework like ElizaOS or LangChain.
+                  </p>
+                </div>
+                <div className="tw-lead">
+                  <p className="text-gradient-base text-gradient-denver inline-block mb-0 flex gap-4 align-baseline">
+                    <span className="w-5/12">1st place:</span><span>$7,000</span>
+                  </p>
+                  <p className="text-gradient-base text-gradient-denver inline-block mb-0 flex gap-4 align-baseline">
+                    <span className="w-5/12">2st place:</span><span>$4,000</span>
+                  </p>
+                  <p className="text-gradient-base text-gradient-denver inline-block mb-0 flex gap-4 align-baseline">
+                    <span className="w-5/12">3st place:</span><span>$2,000</span>
+                  </p>
+                </div>
               </motion.div>
               <motion.div
-                className="bg-white-60 border border-solid border-white rounded-xl px-6 py-8"
+                className="bg-white-60 border border-solid border-white rounded-xl px-6 py-8 flex flex-col gap-4 justify-between"
                 variants={transitions.item}
               >
-                <h4 className="tw-heading-5 mb-3">
-                  Get crazy with dynamic NFTs hosted on the Internet Computer
-                </h4>
-                <p className="tw-paragraph text-black-60 mb-6">
-                  Challenge: create a dynamic NFT collection on Ethereum (or
-                  EVM-compatible chain) where linked assets are provided by
-                  canister smart contract on the Internet Computer that can
-                  serve HTTP requests directly to browsers.
-                </p>
-                <p className="tw-lead text-gradient-base text-gradient-denver inline-block mb-0">
-                  $5,000 + Chance for $25,000 DFINITY Grant
-                </p>
+                <div>
+                  <h4 className="tw-heading-5 mb-3">
+                    Only possible on ICP
+                  </h4>
+                  <p className="tw-paragraph text-black-60 mb-6">
+                    Challenge: Smart contracts running on ICP can run autonomously, sign transactions on more than 20 blockchains and communicate with the outside world using HTTPS API calls. Use these features to build a Web3 app that couldn't be built anywhere else.
+                  </p>
+                </div>
+                <div className="tw-lead">
+                  <p className="text-gradient-base text-gradient-denver inline-block mb-0 flex gap-4 align-baseline">
+                    <span className="w-5/12">1st place:</span><span>$7,000</span>
+                  </p>
+                  <p className="text-gradient-base text-gradient-denver inline-block mb-0 flex gap-4 align-baseline">
+                    <span className="w-5/12">2st place:</span><span>$4,000</span>
+                  </p>
+                  <p className="text-gradient-base text-gradient-denver inline-block mb-0 flex gap-4 align-baseline">
+                    <span className="w-5/12">3st place:</span><span>$2,000</span>
+                  </p>
+                </div>
               </motion.div>
               <motion.div
-                className="bg-white-60 border border-solid border-white rounded-xl px-6 py-8"
+                className="bg-white-60 border border-solid border-white rounded-xl px-6 py-8 flex flex-col gap-4 justify-between"
                 variants={transitions.item}
               >
-                <h4 className="tw-heading-5 mb-3">
-                  Integrate with the Internet Computer
-                </h4>
-                <p className="tw-paragraph text-black-60 mb-6">
-                  Open bounty: find a creative and impactful way to integrate
-                  with an Ethereum (or EVM-compatible) project using some of the
-                  unique capabilities of the Internet Computer.
-                </p>
-                <p className="tw-lead text-gradient-base text-gradient-denver inline-block mb-0">
-                  $5,000 + Chance for $25,000 DFINITY Grant
-                </p>
-              </motion.div>
-              <motion.div
-                className="bg-white-60 border border-solid border-white rounded-xl px-6 py-8"
-                variants={transitions.item}
-              >
-                <h4 className="tw-heading-5 mb-3">Build with Bitcoin</h4>
-                <p className="tw-paragraph text-black-60 mb-6">
-                  Challenge: leverage either the native Bitcoin integration or
-                  ckBTC to build an innovative and impactful cross-chain
-                  solution. 
-                </p>
-                <p className="tw-lead text-gradient-base text-gradient-denver inline-block mb-0">
-                  $5,000 + Chance for $25,000 DFINITY Grant
-                </p>
-              </motion.div>
-              <motion.div
-                className="bg-white-60 border border-solid border-white rounded-xl px-6 py-8"
-                variants={transitions.item}
-              >
-                <h4 className="tw-heading-5 mb-3">
-                  Onchain Governance for EVM DAOs
-                </h4>
-                <p className="tw-paragraph text-black-60 mb-6">
-                  Challenge: explore ways of using the Internet Computer to
-                  govern DAOs on Ethereum or another EVM-compatible chain as a
-                  powerful replacement for Snapshot.
-                </p>
-                <p className="tw-lead text-gradient-base text-gradient-denver inline-block mb-0">
-                  $5,000 + Chance for $25,000 DFINITY Grant
-                </p>
+                <div>
+                  <h4 className="tw-heading-5 mb-3">
+                    Use vetKeys to store secrets on the blockchain
+                  </h4>
+                  <p className="tw-paragraph text-black-60 mb-6">
+                  Challenge: Blockchains can keep secrets! vetkeys, a coming ICP feature, will let apps host econrypted data at scale. Build applications leveraging onchain encryption with vetKeys to enable private messaging, secret auctions, time-lock encryption, and more.
+                  </p>
+                </div>
+                <div className="tw-lead">
+                  <p className="text-gradient-base text-gradient-denver inline-block mb-0 flex gap-4 align-baseline">
+                    <span className="w-5/12">1st place:</span><span>$7,000</span>
+                  </p>
+                  <p className="text-gradient-base text-gradient-denver inline-block mb-0 flex gap-4 align-baseline">
+                    <span className="w-5/12">2st place:</span><span>$4,000</span>
+                  </p>
+                  <p className="text-gradient-base text-gradient-denver inline-block mb-0 flex gap-4 align-baseline">
+                    <span className="w-5/12">3st place:</span><span>$2,000</span>
+                  </p>
+                </div>
               </motion.div>
             </div>
           </AnimateSpawn>
         </section>
-        <section
-          className="bg-infinite text-white py-20 md:pt-30 md:pb-40"
-          id="agenda"
-        >
-          <AnimateSpawn
-            className="container-10 relative mb-16 md:mb-20"
-            variants={transitions.container}
-          >
-            <motion.div
-              className="blob blob-md blob-white blob-top-right"
-              variants={transitions.fadeIn}
-            ></motion.div>
 
-            <div className="md:w-6/10">
-              <motion.h2
-                className="tw-heading-4 md:tw-heading-60 md:mb-8"
-                variants={transitions.item}
-              >
-                Meet ICP Folks
-                <br />@ ETHDenver 2023
-              </motion.h2>
-              <motion.p className="tw-lead-sm mb-8" variants={transitions.item}>
-                Join us for an electrifying ETH Denver experience filled with
-                hands-on workshops, inspiring keynote speeches, interactive Q&A
-                sessions, and live demos of ICP Ecosystem dapps at our booth!
-              </motion.p>
 
-              <MotionLink
-                className="link-white link-with-icon"
-                href="https://twitter.com/dfinity"
-                target="_blank"
-                rel="noopener noreferrer"
-                variants={transitions.item}
-              >
-                <TwitterIcon />
-                Follow us on Twitter for updates
-              </MotionLink>
-            </div>
-          </AnimateSpawn>
-
-          <div className="container-10 text-black space-y-12 md:space-y-16">
-            <AnimateSpawn
-              className="rounded-xl overflow-hidden flex flex-col md:flex-row"
-              variants={transitions.item}
-            >
-              <div className="flex-1 bg-white flex flex-col justify-center items-start p-6 md:px-12 md:py-8  order-2 md:order-1">
-                <h3 className="md:tw-heading-4 mb-3">
-                  Bounties explained by Dominic Wörner
-                </h3>
-                <ul className="tw-title-navigation mb-3 list-none p-0 flex flex-col md:flex-row md:flex-wrap gap-1 md:gap-x-4 md:gap-y-3">
-                  <li>Feb 24 - Mar 5, 2023</li>
-                  <li className="flex items-center gap-1">
-                    <LocationIcon />
-                    BUIDLathon
-                  </li>
-                </ul>
-
-                <p className="tw-paragraph md:tw-lead-sm text-black-60 mb-6">
-                  Join Dominic Wörner, Developer Relations Engineer at DFINITY,
-                  jumps on Twitch to highlight the advantages of building on the
-                  Internet Computer and to give you an overview of the 5 bounty
-                  categories. BUIDLers, make sure to tune in for details.
-                </p>
-
-                <p className="mb-0">
-                  <Link
-                    href="https://youtu.be/awjhuGUdENI"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-primary link-with-icon"
-                  >
-                    Watch bounty explainer video
-                    <LinkArrowUpRight />
-                  </Link>
-                </p>
-              </div>
-              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 flex order-1 md:order-2">
-                <img
-                  src="/img/ethdenver/card-0.webp"
-                  alt=""
-                  className="object-center object-cover"
-                />
-              </div>
-            </AnimateSpawn>
-
-            <AnimateSpawn
-              className="rounded-xl overflow-hidden flex flex-col md:flex-row"
-              variants={transitions.item}
-            >
-              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 flex">
-                <img
-                  src="/img/ethdenver/card-1.webp"
-                  alt=""
-                  className="object-center object-cover"
-                />
-              </div>
-              <div className="flex-1 bg-white flex flex-col justify-center items-start p-6 md:px-12 md:py-8">
-                <h3 className="md:tw-heading-4 mb-3">#BUIDLWeek Co-Working</h3>
-                <ul className="tw-title-navigation mb-3 list-none p-0 flex flex-col md:flex-row md:flex-wrap gap-1 md:gap-x-4 md:gap-y-3">
-                  <li>Feb 24 - Mar 1, 2023</li>
-                  <li>9:00am - 11:45pm MST</li>
-                  <li className="flex items-center gap-1">
-                    <LocationIcon />
-                    BUIDLHub
-                  </li>
-                </ul>
-
-                <p className="tw-paragraph md:tw-lead-sm text-black-60 mb-3">
-                  Looking for a place to work on your new blockchain project
-                  during #BUIDLWeek? Stop by our Co-Working space! Our SDK reps
-                  will be on-site (10:00am-4:00pm) to answer your questions
-                  throughout the week.
-                </p>
-                <p className="tw-paragraph md:tw-lead-sm text-black-60 mb-6">
-                  Sponsored by DFINTY, a contributor to the Internet Computer.
-                </p>
-
-                <p className="mb-0">
-                  <Link
-                    href="https://events.ethdenver.com/eden23/attendease/networking/experience/dc39b164-1896-405b-8ee1-3ea5343337cd/44e5155f-8ba2-4fa2-acb2-8515469a1073"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-primary link-with-icon"
-                  >
-                    See full info
-                    <LinkArrowUpRight />
-                  </Link>
-                </p>
-              </div>
-            </AnimateSpawn>
-
-            <AnimateSpawn
-              className="rounded-xl overflow-hidden flex flex-col md:flex-row"
-              variants={transitions.item}
-            >
-              <div className="flex-1 bg-white flex flex-col justify-center items-start p-6 md:px-12 md:py-8 order-2 md:order-1">
-                <h3 className="md:tw-heading-4 mb-3">
-                  Deploying Dapps on the Internet Computer: A Hands-On Workshop
-                </h3>
-                <ul className="tw-title-navigation mb-3 list-none p-0 flex flex-col md:flex-row md:flex-wrap gap-1 md:gap-x-4 md:gap-y-3">
-                  <li>Feb 27, 2023</li>
-                  <li>9:00 - 10:30am MST</li>
-                  <li className="flex items-center gap-1">
-                    <LocationIcon />
-                    Vib Hotel
-                  </li>
-                </ul>
-
-                <p className="tw-paragraph md:tw-lead-sm text-black-60 mb-6">
-                  Join Kyle Peacock for an exciting workshop on decentralized
-                  hosting with HTTPS, smart contract backends with 2-second
-                  writes and DID principals with 123123123 number of users.
-                </p>
-
-                <p className="mb-0">
-                  <Link
-                    href="https://events.ethdenver.com/eden23/attendease/networking/experience/fcea70a2-372f-41b7-962d-007ac212dbd9/93aa96fc-3c89-437a-8503-f62bf082d16e"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-primary link-with-icon"
-                  >
-                    See full info
-                    <LinkArrowUpRight />
-                  </Link>
-                </p>
-              </div>
-              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 flex order-1 md:order-2">
-                <img
-                  src="/img/ethdenver/card-2.webp"
-                  alt=""
-                  className="object-center object-cover"
-                />
-              </div>
-            </AnimateSpawn>
-
-            <AnimateSpawn
-              className="rounded-xl overflow-hidden flex flex-col md:flex-row"
-              variants={transitions.item}
-            >
-              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 flex">
-                <img
-                  src="/img/ethdenver/card-3.webp"
-                  alt=""
-                  className="object-center object-cover"
-                />
-              </div>
-              <div className="flex-1 bg-white flex flex-col justify-center items-start p-6 md:px-12 md:py-8">
-                <h3 className="md:tw-heading-4 mb-3">
-                  World Computer: Ethereum + Internet Computer – Keynote with
-                  Jan Camenisch
-                </h3>
-                <ul className="tw-title-navigation mb-3 list-none p-0 flex flex-col md:flex-row md:flex-wrap gap-1 md:gap-x-4 md:gap-y-3">
-                  <li>Mar 4, 2023</li>
-                  <li>9:00am MST</li>
-                  <li className="flex items-center gap-1">
-                    <LocationIcon />
-                    DeFi Stage
-                  </li>
-                </ul>
-
-                <p className="tw-paragraph md:tw-lead-sm text-black-60 mb-6">
-                  Jan Camenisch, CTO of the DFINITY Foundation, and one of the
-                  world’s most renowned cryptographers will take you on a
-                  journey through the architecture of the Internet Computer
-                  Protocol and its vision to become a World Computer.
-                </p>
-
-                <p className="mb-0">
-                  <Link
-                    href="https://events.ethdenver.com/eden23/attendease/networking/experience/e645c2d5-e178-471c-ab3a-f2ba6c296f20/66a0d48e-8617-463f-b454-a6ee5e6b39fd"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-primary link-with-icon"
-                  >
-                    See full info
-                    <LinkArrowUpRight />
-                  </Link>
-                </p>
-              </div>
-            </AnimateSpawn>
-
-            <AnimateSpawn
-              className="rounded-xl overflow-hidden flex flex-col md:flex-row"
-              variants={transitions.item}
-            >
-              <div className="flex-1 bg-white flex flex-col justify-center items-start p-6 md:px-12 md:py-8 order-2 md:order-1">
-                <h3 className="md:tw-heading-4 mb-3">
-                  Come by for a Chat @ICP Booth
-                </h3>
-                <ul className="tw-title-navigation mb-3 list-none p-0 flex flex-col md:flex-row md:flex-wrap gap-1 md:gap-x-4 md:gap-y-3">
-                  <li>Mar 2-5, 2023</li>
-                  <li>9:00am - 6:30pm MST</li>
-                  <li className="flex items-center gap-1">
-                    <LocationIcon />
-                    Find us at DAO Town
-                  </li>
-                  <li>Community demos by ecosystem</li>
-                </ul>
-
-                <p className="tw-paragraph md:tw-lead-sm text-black-60 mb-6">
-                  The ICP Community would love to meet you! Hang with teams from
-                  the ecosystem, see demos, learn how to create an Internet
-                  Identity to try out some of our coolest dapps.
-                </p>
-
-                <p className="mb-0">
-                  <Link
-                    href="https://www.ethdenver.com/map"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-primary link-with-icon"
-                  >
-                    See map
-                    <LinkArrowUpRight />
-                  </Link>
-                </p>
-              </div>
-              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 flex order-1 md:order-2">
-                <img
-                  src="/img/ethdenver/card-4.webp"
-                  alt=""
-                  className="object-center object-cover"
-                />
-              </div>
-            </AnimateSpawn>
-
-            <AnimateSpawn
-              className="rounded-xl overflow-hidden flex flex-col md:flex-row"
-              variants={transitions.item}
-            >
-              <div className="aspect-square md:aspect-auto md:w-[400px] flex-shrink-0 flex">
-                <img
-                  src="/img/ethdenver/card-5.webp"
-                  alt=""
-                  className="object-center object-cover"
-                />
-              </div>
-              <div className="flex-1 bg-white flex flex-col justify-center items-start p-6 md:px-12 md:py-8">
-                <h3 className="md:tw-heading-4 mb-3">Hack for Bounties</h3>
-                <ul className="tw-title-navigation mb-3 list-none p-0 flex flex-col md:flex-row md:flex-wrap gap-1 md:gap-x-4 md:gap-y-3">
-                  <li>Feb 24 -Mar 5, 2023</li>
-                  <li>Feb 24 @ 10am - Mar 5 @ 8am MST</li>
-                  <li className="flex items-center gap-1">
-                    <LocationIcon />
-                    Co-Working @BUIDLHub
-                  </li>
-                </ul>
-
-                <p className="tw-paragraph md:tw-lead-sm text-black-60 mb-6">
-                  The DFINITY Foundation is giving out bounties in various
-                  categories to hackers with talent during the BUIDLathon. For
-                  questions and assistance, find our dev reps at the co-working
-                  space. Don’t miss this chance to be a pioneer of Web3. You can
-                  also join{" "}
-                  <Link
-                    href="https://discord.gg/sporkdao"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Discord
-                  </Link>{" "}
-                  to ask questions and get support.
-                </p>
-
-                <p className="mb-0">
-                  <Link
-                    href="https://medium.com/@dfinity/buidl-the-future-on-the-internet-computer-at-ethdenver-2023-f86fb62aba54"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="link-primary link-with-icon"
-                  >
-                    See full info
-                    <LinkArrowUpRight />
-                  </Link>
-                </p>
-              </div>
-            </AnimateSpawn>
-          </div>
-        </section>
-        <section id="ecosystem" className="relative z-0 mb-20">
-          <AnimateSpawn variants={transitions.item}>
-            <div className="container-10 pt-20 md:pt-30">
-              <div className="">
-                <h2 className="tw-heading-3 md:tw-heading-2">
-                  Try some Dapps
-                  <br />
-                  <span className="inline-block text-gradient-base text-gradient-denver">
-                    @ ICP Booth
-                  </span>
-                </h2>
-                <p className="tw-lead-sm md:tw-lead text-black-60 mb-6 md:w-6/10">
-                  Step into the exciting world of ICP with us as your guide!
-                  Take a look at the Web3 projects currently reinventing the
-                  internet on the Internet Computer blockchain.
-                </p>
-              </div>
-              <Link
-                className="link-primary link-with-icon"
-                href="https://docs.google.com/spreadsheets/d/1izcKFRYuZTM2yeDS3tj63Ph1rYFuXl-7WA9pB-4DVyk/edit?usp=sharing"
-              >
-                <LinkArrowRight />
-                See Community Agenda in detail
-              </Link>
-            </div>
-            <AnimateSpawn
-              className="container-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-5 mt-12"
-              variants={transitions.container}
-            >
-              {projects.map((p, i) => (
-                <motion.article
-                  variants={transitions.item}
-                  key={p.name + i}
-                  className="rounded-xl border relative border-white border-solid backdrop-blur-2xl bg-white-60 p-6 md:p-8 no-underline text-black hover:no-underline hover:text-black flex flex-col"
-                >
-                  <img
-                    src={p.logo}
-                    alt={p.name}
-                    className="w-16 sm:w-20 mb-3 h-16 sm:h-20 object-contain absolute left-6 top-6 sm:static"
-                  />
-                  <div className="ml-[86px] sm:ml-0 flex-1 flex flex-col">
-                    <h3 className="tw-heading-6 sm:tw-heading-5 mb-1 sm:mb-2">
-                      {p.name}
-                    </h3>
-                    <p className="tw-paragraph-sm sm:tw-lead-sm mb-3 sm:mb-4 text-black-60 flex-1">
-                      {p.description}
-                    </p>
-                    <p className="mb-0 tw-title-navigation text-gradient-base text-gradient-denver">
-                      {p.agenda.map((a) => (
-                        <span key={a} className="inline-block">
-                          {a}
-                        </span>
-                      ))}
-                    </p>
-                  </div>
-                </motion.article>
-              ))}
-            </AnimateSpawn>
-
-            <div className="relative -mt-96 mb-10 md:mb-40">
-              {/* <AnimateSpawn
-                el={motion.img}
-                variants={transitions.fadeIn}
-                src={BlobGradient}
-                alt=""
-                className="max-w-none w-[800px] md:w-[1200px] absolute top-[-200px] md:top-[-400px] left-1/2 -translate-x-1/2 z-[-1]"
-              /> */}
-
-              <motion.div
-                variants={transitions.fadeIn}
-                className="blob blob-purple blob-lg blob-center z-[-1]"
-              />
-
-              <AnimateSpawn
-                className="mt-96 pt-20 md:pt-30 text-center flex flex-col items-center gap-6"
-                variants={transitions.item}
-              >
-                <Link className="button-primary" href="/ecosystem">
-                  Check out the Ecosystem
-                </Link>
-                <Link className="link-white link-with-icon" href="/docs/current/home">
-                  <LinkArrowRight />
-                  Build your own
-                </Link>
-              </AnimateSpawn>
-            </div>
-          </AnimateSpawn>
-        </section>
         <BackgroundPanel
-          panelClassName="bg-infinite"
+          panelClassName="bg-[#0A0023]"
           outerClassName="pt-10 md:pt-20 md:pb-30"
           threshold={0.25}
           id="internet-identity"
@@ -785,32 +507,29 @@ function EthDenverPage() {
               variants={transitions.container}
               className="container-10 text-white mb-12 md:mb-20 relative"
             >
-              <motion.div
-                className="blob blob-white blob-xl blob-top-right z-[-1]"
-                variants={transitions.fadeIn}
-              ></motion.div>
               <div className="md:w-6/10">
                 <motion.h2
                   variants={transitions.item}
-                  className="tw-heading-3 md:tw-heading-60 mb-6"
+                  className="tw-heading-alt-2 mb-6"
                 >
-                  <span className="inline-block text-gradient-base text-gradient-denver">
                     Join the movement!
-                  </span>
                   <br />
                   Get Yourself an
-                  <br /> Internet Identity
+                  <br /> 
+                  <span className="inline-block text-gradient-base text-gradient-denver">
+                    Internet Identity
+                  </span>
                 </motion.h2>
                 <motion.p
                   variants={transitions.item}
-                  className="tw-paragraph md:tw-lead-sm mb-8 md:mb-6"
+                  className="tw-lead mb-8"
                 >
-                  Web2 login experience with blockchain security. Internet
-                  Identity is a privacy-enhancing WebAuthn framework to
-                  applications on the Internet Computer.
+                  <span className="text-white-60">
+                    Web2 login experience with blockchain security. Internet Identity is a privacy-enhancing WebAuthn framework to applications on the Internet Computer.
+                  </span>
                 </motion.p>
                 <MotionLink
-                  className="button-outline-white"
+                  className="button-outline-white text-[#AE9EFF] border-white-20 border border-solid normal-case"
                   href="https://identity.ic0.app/"
                   variants={transitions.item}
                 >
@@ -824,11 +543,11 @@ function EthDenverPage() {
             >
               <motion.div
                 variants={transitions.item}
-                className="flex-1 p-6 md:px-8 md:py-12 grid grid-rows-[auto_1fr_auto] border border-solid border-white-20 rounded-xl"
+                className="flex-1 p-6  pb-12grid grid-rows-[auto_1fr_auto] border border-solid border-white-20 rounded-xl"
               >
-                <BiometricIcon className="w-16 h-16 mb-4 md:"></BiometricIcon>
+                <BiometricIcon className="w-12 h-14 mb-10"></BiometricIcon>
 
-                <h3 className="tw-heading-5 md:tw-heading-3 mb-3 self-end">
+                <h3 className="tw-heading-5 mb-3 self-end">
                   Biometric login
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-0 text-white-60">
@@ -840,10 +559,10 @@ function EthDenverPage() {
 
               <motion.div
                 variants={transitions.item}
-                className="flex-1 p-6 md:px-8 md:py-12 grid grid-rows-[auto_1fr_auto] border border-solid border-white-20 rounded-xl"
+                className="flex-1 p-6 g pb-12rid grid-rows-[auto_1fr_auto] border border-solid border-white-20 rounded-xl"
               >
-                <NoTrackingIcon className="w-16 h-16 mb-4 md:"></NoTrackingIcon>
-                <h3 className="tw-heading-5 md:tw-heading-3 mb-3 self-end">
+                <NoTrackingIcon className="w-12 h-14 mb-10"></NoTrackingIcon>
+                <h3 className="tw-heading-5 mb-3 self-end">
                   No tracking
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-0 text-white-60">
@@ -854,10 +573,10 @@ function EthDenverPage() {
               </motion.div>
               <motion.div
                 variants={transitions.item}
-                className="flex-1 p-6 md:px-8 md:py-12 grid grid-rows-[auto_1fr_auto] border border-solid border-white-20 rounded-xl"
+                className="flex-1 p-6 pb-12 grid grid-rows-[auto_1fr_auto] border border-solid border-white-20 rounded-xl"
               >
-                <WebAuthnIcon className="w-16 h-16 mb-4 md:"></WebAuthnIcon>
-                <h3 className="tw-heading-5 md:tw-heading-3 mb-3 self-end">
+                <WebAuthnIcon className="w-12 h-14 mb-10"></WebAuthnIcon>
+                <h3 className="tw-heading-5 mb-3 self-end">
                   WebAuthn
                 </h3>
                 <p className="tw-paragraph md:tw-lead-sm mb-0 text-white-60">

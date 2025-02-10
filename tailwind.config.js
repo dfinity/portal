@@ -205,6 +205,9 @@ module.exports = {
                 ".tw-heading-6": "@apply text-heading-6 font-bold",
                 ".tw-heading-7": "@apply text-heading-7 font-bold",
                 ".tw-heading-7-caps": "@apply text-heading-7-caps font-bold uppercase tracking-[1px]",
+                ".tw-heading-alt-1": "@apply font-haloGrotesk text-heading-1 font-normal !leading-none uppercase",
+                ".tw-heading-alt-2": "@apply font-haloGrotesk text-heading-2 text-[3.5rem] font-normal !leading-none uppercase",
+                ".tw-heading-alt-3": "@apply font-haloGrotesk text-heading-3 font-normal !leading-none uppercase",
                 ".tw-button-sm": "@apply text-paragraph-sm font-bold tracking-[1px] uppercase",
                 ".tw-button-xs": "@apply text-button-xs font-bold tracking-[0.02em] uppercase",
 
