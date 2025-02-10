@@ -602,6 +602,7 @@ const config = {
         " This LLM provides responses are generated automatically and may be inaccurate or outdated. Please take care to verify or validate any responses before making any critical decisions.",
       "data-user-analytics-fingerprint-enabled": "true",
       async: true,
+      "data-button-hide": "true",
     },
   ],
   plugins: [
