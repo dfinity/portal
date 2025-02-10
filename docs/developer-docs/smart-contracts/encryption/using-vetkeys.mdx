@@ -11,69 +11,30 @@ import Tabs from "@theme/Tabs";
 
 <MarkdownChipRow labels={["Advanced", "Tutorial"]} />
 
-This demo provides a canister (`src/system_api`) that demonstrates how the [proposed vetKD system API](https://github.com/dfinity/interface-spec/pull/158) can be used to provide caller-specific symmetric keys that can be used for AES encryption and decryption.
+This demo provides a canister (`src/system_api`) that demonstrates how the [proposed vetKD system API](https://github.com/dfinity/portal/pull/3763) can be used to provide caller-specific symmetric keys that can be used for AES encryption and decryption.
 
-:::danger
-This example is for demonstration purposes only and is unsafe, as the master secret key is hard coded rather than distributed among ICP nodes on the network. This example should not be used in production or for encrypting sensitive data.
+
+Live demo:  https://h62xu-2iaaa-aaaal-qshoq-cai.icp0.io/
+
+## Create a file transfer
+
+1. Get recipient's public key
+
+Specify recipient's Ethereum address, then the `vetkd_public_key` method retrieves the recipient's public key using their Ethereum address to identify the IBE scheme that generates the public key.
+
+
+
+```rust reference https://github.com/kristoferlund/send_file_to_eth_demo/blob/main/src/backend/src/vetkd/controller/vetkd_public_key.rs
+```
+
+:::info
+This example uses a testing variation of the vetKeys feature. When the feature is available, this should be replaced with an actual vetKeys canister call.
 :::
 
-## Step 1: Setup project environment:
-
-<Tabs>
-<TabItem value="prerequisites" label="Prerequisites" default={true}>
-<input type="checkbox"/> <a href="/docs/current/developer-docs/getting-started/install">Install the IC SDK.</a>
-<div>
-</div>
-<input type="checkbox"/> Clone the example dapp project: <code>git clone https://github.com/dfinity/examples</code>
-<div>
-</div>
-<input type="checkbox"/> <a href="https://nodejs.org/en/download/">Install the Node.js.</a>
-<div>
-</div>
-<input type="checkbox"/> <a href="https://www.rust-lang.org/tools/install">Install Rust</a> and add Wasm as a target (<code>rustup target add wasm32-unknown-unknown</code>).
-<div>
-</div>
-</TabItem>
-</Tabs>
+2. Encrypt file in the frontend
 
 
-Navigate into the folder containing the project's files and start a local instance of the replica with the command:
-
-```sh
-cd examples/rust/vetkd
-dfx start --clean --background
-```
-
-## Step 2: Ensure `dfx` uses the canister IDs that are hard coded in the Rust source code:
-
-```sh
-cd examples/rust/vetkd
-dfx canister create system_api --specified-id s55qq-oqaaa-aaaaa-aaakq-cai
-```
-
-Without this, `dfx` may use different canister IDs for the `system_api` and `app_backend` canisters in your local environment.
-
-## Step 3: View the `app_backend` code:
-
-```rust file=../../../references/samples/rust/vetkd/src/app_backend/src/lib.rs
-```
+3. Store encrypted file in the backend
 
 
-```sh
-dfx deploy
-```
-
-This command should finish successfully with output similar to the following one:
-
-```sh
-Deployed canisters.
-URLs:
-Frontend canister via browser
-   app_frontend_js: http://127.0.0.1:4943/?canisterId=by6od-j4aaa-aaaaa-qaadq-cai
-Backend canister via Candid interface:
-   app_backend: http://127.0.0.1:4943/?canisterId=avqkn-guaaa-aaaaa-qaaea-cai&id=tcvdh-niaaa-aaaaa-aaaoa-cai
-   app_frontend: http://127.0.0.1:4943/?canisterId=avqkn-guaaa-aaaaa-qaaea-cai&id=b77ix-eeaaa-aaaaa-qaada-cai
-   system_api: http://127.0.0.1:4943/?canisterId=avqkn-guaaa-aaaaa-qaaea-cai&id=s55qq-oqaaa-aaaaa-aaakq-cai
-```
-
-## Step 6: Open the printed URL for the `app_frontend_js` in your browser.
+## Receive and decrypt a file

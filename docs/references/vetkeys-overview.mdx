@@ -1,148 +1,167 @@
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# vetKeys
+# vetKeys reference
 
 <MarkdownChipRow labels={["Reference"]} />
 
-# VETKeys Primer
+vetKeys stands for ‘**V**erifiable Encrypted Threshold Keys’. This feature enables a number of cryptographic functionalities on ICP, with the primary motivation of the feature being facilitating onchain encryption. There are many use cases and motivations for [building vetKD](https://youtu.be/baM6jHnmMq8).
 
-The **VETKeys** feature is in ongoing development on the Internet Computer Protocol (ICP). It stands for ‘**V**erifiable **E**ncrypted **T**hreshold Keys’ and enables a number of cryptographic functionalities on ICP. The primary motivation for VETKeys is to facilitate onchain encryption, as such we focus this primer with that example in mind.
+This page contains a high-level view and description of vetKD and its building blocks. The goal of this page is to build intuition for developers building on ICP who are interested in knowing more about the technical choices but who may lack the cryptographic background necessary to read research papers.
 
-One thing less discussed about the VETKeys feature is how we got here in terms of cryptography. The goal of this post is to lay some crypto background so that you can better understand the VETKeys talks, paper, and future posts. Note that understanding these foundations of VETkeys will *not* be necessary to use them for building applications, but we explain for those who are interested to dive deeper and want to understand the background. Let’s start at the start.
+## Background
 
-## Crypto primitives
-In cryptography, a ‘[primitive](https://en.wikipedia.org/wiki/Cryptographic_primitive)’ is a kind of foundational building block that can be used solely for its given functionality, or to build other, more complex, cryptographic tools and protocols.
+In cryptography, a ‘[primitive](https://en.wikipedia.org/wiki/Cryptographic_primitive)’ is a kind of foundational building block that can be used solely for its given functionality or to build other, more complex, cryptographic tools and protocols.
+
 Some examples of the core primitives include:
-* Block ciphers (eg. [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard))
-* Hash functions (eg. [SHA3](https://en.wikipedia.org/wiki/SHA-3), [BLAKE3](https://en.wikipedia.org/wiki/BLAKE_(hash_function)#BLAKE3))
-* Key exchange (eg. [Diffie-Hellman](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange))
-* Signature schemes (eg. [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm), [BLS](https://en.wikipedia.org/wiki/BLS_digital_signature))
-* Public key encryption schemes (eg. [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)), [ElGamal](https://en.wikipedia.org/wiki/ElGamal_encryption))
 
-VETKeys introduces *new primitives*, and most notably **VETKD**. VETKD extends an older primitive called identity based encryption (IBE), which itself is an extension of public key encryption.
+* Block ciphers (e.g., [AES](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard))
 
-## Public key encryption (PKE)
-*"We stand today on the brink of a revolution in cryptography"*, possibly the greatest opening line of any crypto paper, was penned by Whit Diffie and Martin Hellman in 1976 in their New Directions paper introducing public key cryptography.
+* Hash functions (e.g., [SHA3](https://en.wikipedia.org/wiki/SHA-3), [BLAKE3](https://en.wikipedia.org/wiki/BLAKE_(hash_function)#BLAKE3))
 
-![DH ND](../_assets/dh76.png)
+* Key exchange (e.g., [Diffie-Hellman](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange))
 
-As everyone uses PKE everyday, it's assumed that you have some intuition about what it is, but we describe it here to set the stage for what we build later. PKE allows to communicate confidentially over a public channel by encrypting messages. Suppose Alice wants to send an encrypted message to Bob, a PKE scheme will run somewhat as follows:
+* Signature schemes (e.g., [ECDSA](https://en.wikipedia.org/wiki/Elliptic_Curve_Digital_Signature_Algorithm), [BLS](https://en.wikipedia.org/wiki/BLS_digital_signature))
+
+* Public key encryption schemes (e.g., [RSA](https://en.wikipedia.org/wiki/RSA_(cryptosystem)), [ElGamal](https://en.wikipedia.org/wiki/ElGamal_encryption))
+
+VETKeys introduces new primitives, and most notably VETKD. VETKD extends an older primitive called identity-based encryption (IBE), which itself is an extension of public key encryption.
+
+### Public key encryption (PKE)
+
+PKE allows you to communicate confidentially over a public channel by encrypting messages. Suppose Alice wants to send an encrypted message to Bob; a PKE scheme will run somewhat as follows:
 
 * Bob uses a key generation algorithm $\mathsf\{KG\}$ to generate a private and public key pair $(\mathit\{sk_\{bob\}, pk_\{bob\}\})$.
-* Bob stores his public key online (eg in a public key infrastructure (PKI)).
-* Alice retrieves Bob's public key $\mathit\{pk_\{bob\}\}$ (eg from the PKI) and uses it to encrypt a message to Bob using an encryption algorithm $\mathsf\{Enc\}$ and sends the resulting ciphertext to Bob.
+
+* Bob stores his public key online (e.g., in a public key infrastructure (PKI)).
+
+* Alice retrieves Bob's public key $\mathit\{pk_\{bob\}\}$ (e.g., from the PKI) and uses it to encrypt a message to Bob using an encryption algorithm $\mathsf\{Enc\}$ and sends the resulting ciphertext to Bob.
+
 * When Bob wants to decrypt the ciphertext from Alice, he uses his secret key $\{\mathit\{sk_\{bob\}\}\}$ with a decryption algorithm $\mathsf\{Dec\}$ to decrypt and retrieve the message.
 
-![PKE](../_assets/pke.png)
-
 :::info
-The standard practice in public key cryptography is to generate a secret key, and from that, derive a public key. This gives little control over how the public key *looks* and results in us needing to rely on a trusted public key infrastructure (PKI) to manage mappings between users and their public keys. This can get complicated very quickly (have you ever tried to send an encrypted email?) and discourages use of crypto in practical applications.
+The standard practice in public key cryptography is to generate a secret key and derive a public key from it. This gives little control over how the public key looks and results in us needing to rely on a trusted public key infrastructure (PKI) to manage mappings between users and their public keys. This can get complicated very quickly and discourages the use of cryptography in practical applications.
 :::
 
-## Identity based encryption (IBE)
-As many things in cryptography, IBE was introduced by Adi Shamir [Shamir84]. Providing a concrete instantiation remained an open problem from its introduction 1984 to 2001, when there was a breakthrough in of Number Theory which gave some new mathematical tools to build with. Two IBE schemes were proposed, based on different hard problems. Here we will focus on the IBE introduced by Dan Boneh and Matthew Franklin which we will refer to as [BF01].￼
+### Identity-based encryption (IBE)
 
-![BF IBE](../_assets/BF01.png)
+IBE addresses some of the usability issues with PKE. It allows you to take an arbitrary string as the public key (say, “alice@email.com” or “@alicetweets”) and derive the secret key from that.
 
-IBE addresses some of the usability issues with PKE. It allows to take an arbitrary string as the public key (say “alice@email.com” or “@alicetweets”) and derive the secret key from that.
-
-To see how an IBE scheme can work, let's consider the following scenario. Suppose Alice wants to encrypt a message to Bob using $\mathit\{id_\{bob\}\}$. The typical scenario requires that there is a trusted Key Deriver (KD), and runs as follows:
+To see how an IBE scheme can work, let's consider the following scenario. Suppose Alice wants to encrypt a message to Bob using $\mathit\{id_\{bob\}\}$. The typical scenario requires that there be a trusted Key Deriver (KD) and runs as follows:
 
 * KD runs the IBE key generation algorithm to generate a master (private and public) key pair ($\mathit\{msk, mpk\}$).
-* Alice runs the IBE encryption algorithm to encrypt a message to Bob using $\mathit\{id_\{bob\}\}$ and KD’s $\mathit\{mpk\}$ and sends the resulting ciphertext to Bob.
-* Bob authenticates $\mathit\{id_\{bob\}\}$ to KD and requests a corresponding decryption (private) key ($\mathit\{sk_\{bob\}\}$).
-* KD derives $\mathit\{sk_\{bob\}\}$ from $\mathit\{id_\{bob\}\}$ using $\mathit\{msk\}$ and then sends it to Bob.
-* Bob uses $\mathit\{sk_\{bob\}\}$ and $\mathit\{id_\{bob\}\}$ to decrypt the ciphertext from Alice to retrieve the message.
 
-![IBE Example](../_assets/ibe.png)
+* Alice runs the IBE encryption algorithm to encrypt a message to Bob using $\mathit\{id_\{bob\}\}$ and KD’s $\mathit\{mpk\}$ and sends the resulting ciphertext to Bob.
+
+* Bob authenticates $\mathit\{id_\{bob\}\}$ to KD and requests a corresponding decryption (private) key ($\mathit\{sk_\{bob\}\}$).
+
+* KD derives $\mathit\{sk_\{bob\}\}$ from $\mathit\{id_\{bob\}\}$ using $\mathit\{msk\}$ and then sends it to Bob.
+
+* Bob uses $\mathit\{sk_\{bob\}\}$ and $\mathit\{id_\{bob\}\}$ to decrypt the ciphertext from Alice to retrieve the message.
 
 :::info
 
-There is a crucial point to note about this type of IBE scheme; A central authority derives (decryption) keys. As we find ourselves in the blockchain world, naturally we are not keen to work with a trusted third party, so one core goal is to decentralize the key derivation procedure of IBE.
+In this IBE scheme, a central authority derives (decryption) keys. One core goal of vetKD is to decentralize the key derivation procedure of IBE.
 
 :::
 
-## VETKD
-Considering that blockchains are very public places where transparency has been a crucial factor in gaining integrity and availability, it is not immediately obvious how one would achieve confidentiality or privacy in a non-competing way. This is the mission of VETKD.
+## vetKD
 
-### The threshold setting
-Note that we care most about the secret ***key derivation*** here, as that is the most sensitive part which we want to protect from one central (potentially untrusted, unauthorized, or compromised) party, and hence the **KD** in VETKD. To deal with the centralization point, we need to move into the distributed setting.  Assuming there is no one trusted party, we distribute trust amongst multiple parties, and require that some *threshold* of them collaborate on shares of the master secret key to derive decryption keys.
+Considering that blockchains are public places where transparency is a crucial factor in gaining integrity and availability, it is not immediately obvious how one would achieve confidentiality or privacy in a non-competing way. This is the mission of vetKD.
 
-How do parties **get shares** of the master secret key? This is done by leveraging a distributed key generation (DKG) protocol, where a threshold of honest parties (or nodes) work together to obtain a set of master key shares. Assuming no collusion between nodes, at no point does any one node hold the full private key.
-Click around to learn more about [threshold cryptography]( https://en.wikipedia.org/wiki/Threshold_cryptosystem), [DKG](https://en.wikipedia.org/wiki/Distributed_key_generation) and chapter 22 in the [Boneh-Shoup book](https://toc.cryptobook.us/).
+### Threshold
 
-It’s clear from above that we don't want a centralised key derivation process and this is why we need the **T** for the KD process, but what about **V** and **E**? Perhaps this is best highlighted by a scenario.
+The secret key derivation is the most sensitive part, which should avoid being controlled by one central (potentially untrusted, unauthorized, or compromised) party, and hence the KD in vetKD. Assuming there is no one trusted party, trust is distributed amongst multiple parties and requires that some threshold of them collaborate on shares of the master secret key to derive decryption keys.
+
+Parties get shares of the master secret key by leveraging a distributed key generation (DKG) protocol, where a threshold of honest parties (or nodes) work together to obtain a set of master key shares. Assuming no collusion between nodes, at no point does any one node hold the full private key.
 
 ### Syntax
-Suppose Alice wants to send an encrypted message (across a public blockchain) to Bob. We know that key management is hard, especially in the Web3 setting, so it’s desirable to be able to *derive keys on demand*. The scenario runs as follows:
+
+Suppose Alice wants to send an encrypted message across a public blockchain to Bob. It's desirable to be able to derive keys on demand. The scenario runs as follows:
 
 * Nodes in the network participate in the $\mathsf\{DKG protocol\}$ to obtain shares of a master secret key ($\mathit\{msk\}$) and a master public key ($\mathit\{mpk\}$). This results in each node $i$ holding key shares $(\mathit\{msk_i, mpk_i\})$.
+
 * Alice encrypts a message under Bob's identity $\mathit\{id_\{bob\}\}$ and the master public key $\mathit{mpk}$ and sends the resulting ciphertext to Bob.
-* Bob wants to decrypt and authenticates $\mathit\{id_\{bob\}\}$ to ICP and requests to derive a decryption key. Stop!
 
-Note that if we continue in this scenario, the nodes will derive a decryption key and send the shares to Bob.. but, in a public network, those shares can be seen and can be combined by an observer. We require that derived key shares are encrypted for transport so that any observer or malicious nodes cannot combine them to obtain $\mathit\{sk_\{bob\}\}$. So, let’s continue.
+* Bob wants to decrypt and authenticates $\mathit\{id_\{bob\}\}$ to ICP and requests to derive a decryption key.
 
-* Bob wants to decrypt and authenticates $\mathit\{id_\{bob\}\}$ to ICP. He uses a transport key generation algorithm $\mathsf\{TKG\}$ to generate and send a transport public key $\mathit\{tpk\}$ and requests to derive a decryption key. By sending $\mathit\{tpk\}$ Bob gives the nodes a way to encrypt their responses to him.
-* If Bob’s authentication to $\mathit\{id_\{bob\}\}$ passes (likely performed by a dapp), nodes in the network use an $\mathsf\{EKDerive\}$ algorithm derive decryption key shares using $\mathit\{msk\}$ and $\mathit\{id_\{bob\}\}$ and encrypt them under $\mathit\{tpk_\{bob\}\}$. Note, this is the **E** requirement in VETKD.
+If this scenario continues, the nodes will derive a decryption key and send the shares to Bob, but on a public network, those shares can be seen and combined by an observer. vetKD requires that derived key shares are encrypted for transport so that any observer or malicious nodes cannot combine them to obtain $\mathit\{sk_\{bob\}\}$.
+
+### Encryption
+
+* Bob wants to decrypt and authenticate $\mathit\{id_\{bob\}\}$ to ICP. He uses a transport key generation algorithm $\mathsf\{TKG\}$ to generate and send a transport public key $\mathit\{tpk\}$ and requests to derive a decryption key. By sending $\mathit\{tpk\}$ Bob gives the nodes a way to encrypt their responses to him.
+
+  * If Bob’s authentication to $\mathit\{id_\{bob\}\}$ passes, nodes in the network use an $\mathsf\{EKDerive\}$ algorithm to derive decryption key shares using $\mathit\{msk\}$ and $\mathit\{id_\{bob\}\}$ and encrypt them under $\mathit\{tpk_\{bob\}\}$.
+
+### Verification
 
 In a threshold system, sufficiently many key shares are required to produce a valid key. In this case it is useful to know when or if we have sufficiently many valid key shares so that the process can stop.
 
-* Anyone can use an $\mathsf{EKSVerify\}$ algorithm to verify that the encrypted keys shares do indeed contain a legitimate decryption key share, and thus can know when 'enough' valid shares exist. This explains the **V** requirement in VETKD.
+Anyone can use an $\mathsf\{EKSVerify\}$ algorithm to verify that the encrypted key shares do indeed contain a legitimate decryption key share and thus can know when 'enough' valid shares exist.
+
 * Nodes can also combine encrypted shares to produce the full encrypted derived key $\mathit\{ek\}$ using a $\mathsf\{Combine\}$ algorithm.
+
 * An $\mathsf\{EKVerify\}$ algorithm allows anyone to verify that $\mathit\{ek\}$ does indeed contain a legitimate derived key for $\mathit\{id_\{bob\}\}$ under $\mathit\{mpk\}$ encrypted under $\mathit\{tpk_\{bob\}\}$.
+
 * Finally, a recovery algorithm $\mathsf\{Recover\}$ enables Bob to decrypt the derived key corresponding to $\mathit\{id_\{bob\}\}$ under $\mathit\{msk\}$ using Bob’s TSK.
+
 * Bob can now decrypt.
 
 This picture is taken directly from the paper, where you can read the full scenario.
-![VETKD Example](../_assets/vetkdscene.png)
 
-All algorithms mentioned ($\mathsf\{DKG, TKG, EKDerive, EKSVerify, Combine, EKVerify, Recover\}$) form the *syntax* that describes the VETKD primitive. To describe a primitive fully, it's needed also to note the correctness (a description of the primitive's intended behavior), security (under what kinds of attacks from which kinds of adversaries will the primitive remain secure), and a construction (a description of how we can construct a protocol that captures the desired syntax, correctness and security). Correctness and Security differ depending on the application (signatures, IBE, etc) so we defer to the paper to get an overview of these.
+All algorithms mentioned ($\mathsf\{DKG, TKG, EKDerive, EKSVerify, Combine, EKVerify, Recover\}$) form the syntax that describes the VETKD primitive. To describe a primitive fully, it's also needed to note the correctness (a description of the primitive's intended behavior), security (under what kinds of attacks from which kinds of adversaries will the primitive remain secure), and a construction (a description of how we can construct a protocol that captures the desired syntax, correctness, and security). Correctness and security differ depending on the application (signatures, IBE, etc.), so we defer to the paper to get an overview of these.
 
-### Construction
-Now we see the aim for VETKD, and how it can be described. The next natural question is to ask how we can build such a primitive. Which building blocks do we need?
+## How the vetKD primitive is constructed
 
-At a first glance, we could guess that we will need a distributed key generation scheme to generate and distribute master secret key shares among the nodes. We could also guess that we'll need a public key encryption scheme to encrypt derived key shares under the transport key of the user. The main question that remains is how to derive decryption keys.
+Digital signatures are used everywhere in cryptography and in the blockchain world to attest to the authenticity of a message, transaction, or other pieces of information. The main feature of BLS signatures is that they’re very short, unique, fast to compute, aggregatable, and easy to port to the distributed setting (relative to other signature schemes at least). This makes them a great candidate signature scheme for the blockchain setting.
 
-Crucially, An observation buried in [BF01] gives us the answer. Moni Naor noted that an IBE scheme can be directly converted into a signature scheme. Considering the key derivation of Boneh-Franklin IBE specifically, the resulting signature scheme happens to be BLS.
+As with any signature scheme, BLS comprises three algorithms:
 
-### BLS signatures
-Digital signatures are used everywhere in cryptography and in the blockchain world to attest to the authenticity of a message, transaction, or other pieces of information. As they are so prevalent, it’s really worth spending time getting to know them. You can get a high level view on wikipedia ([Digital Signatures](https://en.wikipedia.org/wiki/Digital_signature) and [BLS](https://en.wikipedia.org/wiki/BLS_digital_signature)), and dive into the [Boneh-Shoup book](https://toc.cryptobook.us/) when you want more formal details.
+1. A (potentially distributed) key generation algorithm ((D)KG).
 
-BLS signatures are a particular type of digital signature introduced in by Dan Boneh, Ben Lynn, and Hovav Shacham in 2001.
+2. A signing algorithm (Sign).
 
-![BLS Signatures Abstract](../_assets/BLS01.png)
+3. A verification algorithm (Verify).
 
-The main feature of BLS signatures is that they’re very short, unique, fast to compute, aggregatable, and easy to port to the distributed setting (relative to other signature schemes at least..). This makes them a great candidate signature scheme for the blockchain setting.
-As with any signature scheme, BLS comprises three algorithms; a (potentially distributed) key generation algorithm ((D)KG), a signing algorithm (Sign) and a verification algorithm (Verify). In the threshold setting, this is extended to include a fourth combination algorithm (Combine).
-Threshold BLS signatures are used a lot on the Internet Computer, so let’s use that as the motivating example for the scenario. Suppose nodes in a subnet want to convince Alice that a particular message is being sent from ICP. At a very high level, the scenario will run as follows:
-* Nodes in the network participate in the DKG process and obtain (private) key shares.
+In the threshold setting, this is extended to include a fourth combination algorithm (Combine).
+
+Threshold BLS signatures are used a lot on ICP. Suppose nodes in a subnet want to convince Alice that a particular message is being sent from ICP. At a very high level, the scenario will run as follows:
+
+* Nodes in the network participate in the DKG process and obtain private key shares.
+
 * Each node computes a signature share on a message $m$ using its share of the signing key.
-* Nodes participate in a $\mathsf\{Combine\}$ process to combine signature shares and produce a single signature which is then sent to Alice.
+
+* Nodes participate in a $\mathsf\{Combine\}$ process to combine signature shares and produce a single signature, which is then sent to Alice.
+
 * Alice uses a verification algorithm $\mathsf\{Verify\}$ to check whether the signature sent from the nodes verifies under the public key of the Internet Computer.
 
-We noted above that IBE implies signatures. From the [BF01] paper the intuitive construction is to set the private key for the signature scheme to be the master key of the IBE. Then set the public key for the signature scheme to be the system parameters of the IBE. Then the signature on a message M is the IBE Decryption key for ID = M. In the VETKD scenario, the master key of the IBE scheme is a BLS signature key secret shared over the nodes. The derivation identity will be threshold signed, resulting in a signature that can act as a symmetric encryption key, but also as a Boneh-Franklin decryption key.
+IBE implies signatures. From the [BF01] paper, the intuitive construction is to set the private key for the signature scheme to be the master key of the IBE, then set the public key for the signature scheme to be the system parameters of the IBE. The signature on a message M is the IBE decryption key for ID = M.
 
-### Putting everything together
-VETKD is a new primitive that can be used to extend identity based encryption in a decentralized setting. The main tools needed to build VETKD are a DKG, a PKE (we use ElGamal), and threshold BLS signatures, and are used to obtain keys as follows:
+In the vetKD scenario, the master key of the IBE scheme is a BLS signature key secret shared over the nodes. The derivation identity will be threshold signed, resulting in a signature that can act as a symmetric encryption key but also as a Boneh-Franklin decryption key.
 
-* Master key - DKG issued BLS signing key
-* Transport keys - ElGamal key pair
-* Encrypted key share - BLS signature shares on the identity, encrypted under ElGamal public key
-* Combined encrypted key - A threshold of valid encrypted key shares are combined (in the blockchain scenario likely by a block maker) to give the encrypted derived key
-* Decryption key - ElGamal decryption of combined encrypted derived key
+## Putting everything together
 
-Having these VETKeys opens a goldmine of functionality. There are further descriptions the VETKey family, i.e. extending VETKD to VETIBE, to VETSigs, to a VETPRF, and VETVRF. Future posts can go into details on these.
+vetKD is a new primitive that can be used to extend identity-based encryption in a decentralized setting. The main tools needed to build vetKD are a DKG, a PKE (ElGamal), and threshold BLS signatures, and they are used to obtain keys as follows:
 
-## Remarks
-This page contains a high level view and description of VETKD and its building blocks. The goal of this page is to build intuition for developers building on ICP, who are interested to know more about the technical choices, but who may lack the cryptographic background necessary to read research papers (for now).
-It also shows one possible way of building VETKD, there are others, some with fancy features, that are described more in the paper. There are many use cases and motivations for building VETKD, these are discussed in [the video](https://youtu.be/baM6jHnmMq8) and can be written up if you like. There are also extensions that could be built depending on what is needed in the community. Finally, note that this page is hosted onchain.
+* Master key—DKG issued BLS signing key.
+
+* Transport keys—ElGamal key pair.
+
+* Encrypted key share—BLS signature shares on the identity, encrypted under the ElGamal public key.
+
+* Combined encrypted key—A threshold of valid encrypted key shares is combined (in the blockchain scenario likely by a block maker) to give the encrypted derived key.
+
+* Decryption key—ElGamal decryption of combined encrypted derived key.
+
+Having these vetKeys opens a goldmine of functionality. There are further descriptions of the VETKey family, i.e., extending vetKD to vetIBE, to vetSigs, to a vetPRF, and to vetVRF.
 
 ## References
-* [BS23](https://toc.cryptobook.us/) - The Boneh-Shoup Book.
-* [BF01](https://crypto.stanford.edu/~dabo/papers/bfibe.pdf) - The IBE paper.
-* [BLS01](https://www.iacr.org/archive/asiacrypt2001/22480516.pdf) - The BLS paper.
-* [DH76](https://ee.stanford.edu/~hellman/publications/24.pdf) - Diffie and Hellman's New Directions paper.
-* [VETKD Youtube](https://youtu.be/baM6jHnmMq8) - The VETKD Community Conversation intro.
 
-## Participate
-There is only so much we can do in terms of producing nice crypto tools. It’s up to you to pick them up and use them to address real world privacy issues faced in Web3. The best way to succeed in this industry is to engage. So! Let us know what you’re building and if you think VETKD could be useful for your project. We’re happy to hear feedback and to explain more things if you need them. Currently the easiest way to engage is to join the discussion on the [forum](https://forum.dfinity.org/t/threshold-key-derivation-privacy-on-the-ic/16560). Also, like, share, subscribe, and all the rest.
+* [BS23](https://toc.cryptobook.us/): The Boneh-Shoup Book.
+
+* [BF01](https://crypto.stanford.edu/~dabo/papers/bfibe.pdf): The IBE paper.
+
+* [BLS01](https://www.iacr.org/archive/asiacrypt2001/22480516.pdf): The BLS paper.
+
+* [DH76](https://ee.stanford.edu/~hellman/publications/24.pdf): Diffie and Hellman's New Directions paper.
+
+* [vetKD Youtube](https://youtu.be/baM6jHnmMq8): The vetKD Community Conversation intro.
