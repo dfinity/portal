@@ -20,67 +20,6 @@ import { useEffect } from "react";
 
 const MotionLink = motion(Link);
 
-const projects: {
-  logo: string;
-  name: string;
-  description: string;
-  agenda: string[];
-}[] = [
-  {
-    name: "AstroX (me wallet)",
-    logo: "/img/ethdenver/astrox.webp",
-    description:
-      "Multichain wallet securing your assets without seed phrase across any devices.",
-    agenda: ["Mar 2 - 5, 2023"],
-  },
-  {
-    name: "Hot or Not",
-    logo: "/img/ethdenver/hotornot.webp",
-    description: "Monetise Time on Social Media. Video platform in ICP.",
-    agenda: ["Mar 2 - 5, 2023"],
-  },
-  {
-    name: "Finterest",
-    logo: "/img/ethdenver/finterest.webp",
-    description: "The first truly decentralized price feed.",
-    agenda: ["Mar 2 - 5, 2023"],
-  },
-  {
-    name: "Toniq Labs",
-    logo: "/img/ethdenver/toniq.webp",
-    description: "We help you build, launch, and grow NFT-based businesses.",
-    agenda: ["Mar 2 - 5, 2023"],
-  },
-  {
-    name: "ORIGYN",
-    logo: "/img/ethdenver/origyn.webp",
-    description: "Digital verifications for physical objects through NFTs.",
-    agenda: ["Mar 3 / 4, 2023"],
-  },
-
-  {
-    name: "Demergent Labs",
-    logo: "/img/ethdenver/demergent-labs.webp",
-    description: "Accelerating the adoption of Web3 and the Internet Computer.",
-    agenda: ["Mar 3 / 4, 2023"],
-  },
-  {
-    name: "Itoka",
-    logo: "/img/ethdenver/itoka-logo.webp",
-    description:
-      "Become a musician smooth and simple with AI and Web3 technology. Only on ICP.",
-    agenda: ["Mar 3 / 4, 2023", "5:00pm - 6:00pm MST"],
-  },
-
-  {
-    name: "ntagle",
-    logo: "/img/ethdenver/ntagle-logo.webp",
-    description:
-      "Scalable and cost-effective way to trustlessly bind physical objects to canisters",
-    agenda: ["Mar 4, 2023", "8:00am - 10:00am MST"],
-  },
-];
-
 const GradientBackground = ({ color1, color2, segments, isFullWidth = false }: { color1: string, color2: string, segments: number[][], isFullWidth: boolean }) => {
   // watch mouse move for parallax effect
   useEffect(() => {
@@ -148,13 +87,13 @@ export const CtaCard = ({ title, description, href, backgroundColor, backgroundS
         segments={backgroundSegments}
         isFullWidth={false}
       />
-      <article className="relative z-2 flex flex-col gap-8 justify-between items-start p-6 aspect-[1/1.3]">
+      <article className="relative z-2 flex flex-col gap-8 justify-between items-start p-6 aspect-[1/1.1] md:aspect-[1/1.3]">
         <h3 className="tw-heading-alt-2 mb-3">
             <span dangerouslySetInnerHTML={{ __html: title }} />
         </h3>
 
         <div>
-          <p className="tw-paragraph md:tw-lead text-black-60 mb-2">
+          <p className="md:tw-lead text-black-60 mb-2">
             {description}
           </p>
           <div className="button-round-icon mt-auto !bg-transparent !text-black !border-black/20 hover:!bg-black/10 hover:!border-black">
@@ -173,8 +112,8 @@ function EthDenverPage() {
 
   return (
     <Layout
-      title="Internet Computer blockchain @ ETHDenver 2023"
-      description={`Visit us @ ETHDenver 2023, February 24 - March 5, 2023. Lightning fast and fully onchain dapps running on the Internet Computer blockchain, the only true World Computer that enables a fully decentralized ecosystem.`}
+      title="Internet Computer blockchain @ ETHDenver 2025"
+      description={`Visit us @ ETHDenver 2025, February 23 - March 2, 2025. Lightning fast and fully onchain dapps running on the Internet Computer blockchain, the only true World Computer that enables a fully decentralized ecosystem.`}
       editPath={`https://github.com/dfinity/portal/edit/master/${__filename}`}
     >
       <ShareMeta image="/img/shareImages/share-ethdenver-2.jpg"></ShareMeta>
@@ -204,11 +143,11 @@ function EthDenverPage() {
               className="overflow-hidden text-black pt-20"
               ref={heroRef}
             >
-              <div className="container-12 pt-20 mb-20 md:mb-20 md:pt-36">
+              <div className="container-12 pt-12 mb-20 md:mb-20 md:pt-36">
 
-                <div className="uppercase">
+                <div className="uppercase mb-16 md:mb-0">
                   <motion.h1 
-                    className="tw-heading-alt-1 text-right text-[10vw]"
+                    className="tw-heading-alt-1 text-right text-[18vw] md:text-[10vw]"
                     variants={transitions.slideInFromRight}
                   >
                     <span className="block">UNIFYING WEB3</span>
@@ -218,21 +157,21 @@ function EthDenverPage() {
 
                 <div className="md:w-5/10">
                   <motion.h2
-                    className="tw-lead md:tw-title-sm mb-12 md:mb-8"
+                    className="tw-lead md:tw-title-sm mb-6 md:mb-8"
                     variants={transitions.item}
                   >
                     ETHDenver 2025<br/>
                     <time dateTime="2025-02-23">February 23</time> – <time dateTime="2025-03-02">March 2</time>
                   </motion.h2>
                   <motion.p
-                    className="tw-lead-sm md:tw-lead mb-8 mt-10 md:mt-0"
+                    className="tw-lead-sm md:tw-lead mb-8"
                     variants={transitions.item}
                   >
                     Lightning fast and fully on-chain dapps runningon the Internet Computer blockchain, the only true World Computer that enables a end-to-end  decentralization.
                   </motion.p>
 
                   <motion.p
-                    className="mb-10 md:mb-16 flex gap-8"
+                    className="mb-10 md:mb-16 flex flex-col md:flex-row gap-8"
                     variants={transitions.item}
                   >
                     <Link
@@ -298,9 +237,9 @@ function EthDenverPage() {
             </div>
           </AnimateSpawn>
 
-          <div className="container-10 flex text-black space-x-8">
+          <div className="container-10 flex flex-col md:flex-row gap-8 text-black">
             <AnimateSpawn
-              className="w-1/3"
+              className="md:w-1/3"
               variants={transitions.item}
             >
               <CtaCard 
@@ -314,7 +253,7 @@ function EthDenverPage() {
               />
             </AnimateSpawn>
             <AnimateSpawn
-              className="w-1/3"
+              className="md:w-1/3"
               variants={transitions.item}
             >
               <CtaCard 
@@ -330,7 +269,7 @@ function EthDenverPage() {
               />
             </AnimateSpawn>
             <AnimateSpawn
-              className="w-1/3"
+              className="md:w-1/3"
               variants={transitions.item}
             >
               <CtaCard 
@@ -602,7 +541,7 @@ function EthDenverPage() {
                   </linearGradient>
                 </defs>
               </svg>
-              <div className="relative px-6 py-10 md:p-12 text-white md:w-5/10 z-1">
+              <div className="relative px-6 py-10 md:p-12 text-white md:w-1/2 max-w-[40rem] z-1">
                 <motion.h2
                   className="tw-heading-alt-2 mb-6"
                   variants={transitions.item}
@@ -629,7 +568,7 @@ function EthDenverPage() {
               <motion.img
                 src="/img/ethdenver/teaser-decks.webp"
                 alt=""
-                className="relative w-4/5 md:w-4/10 px-8 md:px-10 self-end z-1"
+                className="relative w-4/5 md:w-1/2 max-w-lg px-8 md:px-10 self-end z-1"
                 variants={transitions.item}
               />
             </div>
