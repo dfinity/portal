@@ -700,6 +700,7 @@ const redirects = `
   /docs/current/tutorials/developer-journey/level-5/5.5-auction-tutorial /docs/current/tutorials/developer-liftoff/level-5/5.5-auction-tutorial
   /docs/current/tutorials/developer-journey/level-5/5.6-next-steps /docs/current/tutorials/developer-liftoff/level-5/5.6-next-steps
   `
+  
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
   .filter((l) => l.length > 0)
