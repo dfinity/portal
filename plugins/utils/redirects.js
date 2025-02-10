@@ -699,7 +699,6 @@ const redirects = `
   /docs/current/tutorials/developer-journey/level-5/5.5-auction-tutorial /docs/current/tutorials/developer-liftoff/level-5/5.5-auction-tutorial
   /docs/current/tutorials/developer-journey/level-5/5.6-next-steps /docs/current/tutorials/developer-liftoff/level-5/5.6-next-steps
   `
-  
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
   .filter((l) => l.length > 0)
@@ -752,10 +751,10 @@ exports.getSplatRedirects = function (existingUrl) {
   for (const redirect of redirects.filter(
     (r) => isSplat(r) && !isExternal(r)
   )) {
-    const trimmedSource = redirect[0].replace("/* "/");
+    const trimmedSource = redirect[0].replace("/*", "/");
 
     if (redirect[1].includes(":splat")) {
-      const trimmedDestination = redirect[1].replace(":splat "");
+      const trimmedDestination = redirect[1].replace(":splat", "");
       if (existingUrl.startsWith(trimmedDestination)) {
         const completeSourceUrl = existingUrl.replace(
           trimmedDestination,
