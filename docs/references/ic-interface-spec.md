@@ -7529,15 +7529,33 @@ ic0.cost_cost_http_request<es>(request_size: i64, max_res_bytes: i64, dst: I) : 
 
 I ∈ {i32, i64}
 ic0.cost_sign_with_ecdsa<es>(src: I, size: I, ecdsa_curve: i32, dst: I) : i32 = 
+  key_name = copy_from_canister<es>(src, size)
+  if ecdsa_curve ∉ known_curves then
+    return 1
+  if key_name ∉ known_keys then
+    return 2
   copy_cycles_to_canister<es>(dst, arbitrary())
+  return 0
 
 I ∈ {i32, i64}
 ic0.cost_sign_with_schnorr<es>(src: I, size: I, algorithm: i32, dst: I) : i32 = 
+  key_name = copy_from_canister<es>(src, size)
+  if algorithm ∉ known_algorithms then
+    return 1
+  if key_name ∉ known_keys then
+    return 2
   copy_cycles_to_canister<es>(dst, arbitrary())
+  return 0
 
 I ∈ {i32, i64}
 ic0.cost_vetkd_derive_encrypted_key<es>(src: I, size: I, vetkd_curve: i32, dst: I) : i32 = 
+  key_name = copy_from_canister<es>(src, size)
+  if vetkd_curve ∉ known_curves then
+    return 1
+  if key_name ∉ known_keys then
+    return 2
   copy_cycles_to_canister<es>(dst, arbitrary())
+  return 0
 
 I ∈ {i32, i64}
 ic0.debug_print<es>(src : I, size : I) =
