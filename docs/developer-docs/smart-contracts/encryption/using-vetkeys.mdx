@@ -11,10 +11,11 @@ import Tabs from "@theme/Tabs";
 
 <MarkdownChipRow labels={["Advanced", "Tutorial"]} />
 
-This demo provides a canister (`src/system_api`) that demonstrates how the [proposed vetKD system API](https://github.com/dfinity/portal/pull/3763) can be used to provide caller-specific symmetric keys that can be used for AES encryption and decryption.
+This example provides a canister (`src/chainkey_testing_canister`) that demonstrates how the [proposed vetKD system API](https://github.com/dfinity/portal/pull/3763) can be used to encrypt, transfer, and decrypt a file sent to an Ethereum address.
 
+A live demo is available: https://h62xu-2iaaa-aaaal-qshoq-cai.icp0.io/
 
-Live demo:  https://h62xu-2iaaa-aaaal-qshoq-cai.icp0.io/
+This example uses [`ic-siwe`](https://github.com/kristoferlund/ic-siwe) and [`ic-siwe-js`](https://www.npmjs.com/package/ic-siwe-js) to facilitate signing in with Ethereum, sending to an Ethereum address, and using the recipient's address to to identify the IBE scheme used to generate a public key for the recipient.
 
 ## Create a file transfer
 
@@ -28,7 +29,7 @@ Specify recipient's Ethereum address, then the `vetkd_public_key` method retriev
 ```
 
 :::info
-This example uses a testing variation of the vetKeys feature. When the feature is available, this should be replaced with an actual vetKeys canister call.
+This example uses a local test vetKeys canister. When the feature is available, this should be replaced with the actual vetKeys API.
 :::
 
 2. Encrypt file in the frontend
