@@ -82,7 +82,18 @@ $ dfx canister call counter get
 
 ## Attaching cycles: canister signatures
 
-TODO
+A Canister can attach [cycles](/docs/current/developer-docs/getting-started/tokens-and-cycles) (Internet Computer "gas") to any call that they make, transferring cycles from the caller's to the callee's cycle balance. The callee must explicitly [accept](https://docs.rs/ic-cdk/latest/ic_cdk/api/call/fn.msg_cycles_accept128.html) such cycles; non-accepted cycles are refunded to the caller.
+
+Cycle transfers are generally either used to pay for the callee's costs of processing the call, or to move and store cycles around as assets. An example where they are used to pay for call processing costs is the IC [on-chain signature feature](/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa), which allows a canister to hold a cryptographic key and sign messages with it. An example of cycles being used as assets is the [cycles ledger](/docs/current/developer-docs/defi/cycles/cycles-ledger/).
+
+Below, we use the on-chain signature example to show how to attach cycles to a call.
+
+```rust reference
+https://github.com/oggy-dfin/icc_rust_docs/blob/b75855e988fa0e18ec6ca100fcdae576cdf0e848/src/caller/src/lib.rs#L137-L170
+```
+
+Cycles can be attached to both bounded and unbounded wait messages. For unbounded wait messages, cycles that are not consumed by the callee are guaranteed to be refunded to the caller. For bounded wait calls, refunds do not happen when the call returns a `SysUnknown` error. However, this is usually acceptable for API calls that charge for cycles, since the amount charged is usually low (10 billion cycles for signatures with the test key). For transferring larger amounts of cycles, switch to using unbounded wait calls. See the section on [inter-canister calls](/docs/current/developer-docs/smart-contracts/advanced-features/async-code) for more details.
+
 
 ## Further reading
 
