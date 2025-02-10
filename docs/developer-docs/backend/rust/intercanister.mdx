@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 Just like users can call canisters, canisters can also call other canisters. This tutorial provides an introduction to using these inter-canister calls in Rust.
 
-We will show how to call the [counter canister](/docs/current/developer-docs/backend/rust/counter), which provides just three operations on a counter: getting the counter value, incrementing the counter, and setting the counter to an arbitrary value.
+We will show how to call the [counter canister](/docs/current/developer-docs/backend/rust/counter), which provides just four operations on a counter: getting the counter value, incrementing the counter, setting the counter to an arbitrary value, and setting the counter to an arbitrary value while returning the previous value.
 
 ## Prerequisites
 
@@ -21,64 +21,90 @@ $ dfx start --background
 $ dfx deploy counter
 ```
 
-## Basic example: incrementing the counter twice
+## Basic example: getting and setting the counter value
 
-For the first example, we'll build an `increment_twice` method to increment the counter two times. The skeleton of the project is already available in `src/new_caller`. Add the following code to `src/new_caller/src/lib.rs`, the explanation is in the comments.
+For the first example, we'll build a `call_get_and_set` method on the caller canister, which just invokes the `get_and_set` method on the counter project and forwards the result. This method sets the counter to the new value, and returns the previous counter value. The finished code for the project is already available in `src/caller`. You can clear the contents of `src/caller/src/lib.rs`, and paste the following code. The explanation is in the comments.
 
 ```rust reference
-https://github.com/oggy-dfin/icc_rust_docs/blob/49d042b9352f0298b6368985b0e5b927753efd38/src/caller/src/lib.rs#L1-L55
+https://github.com/oggy-dfin/icc_rust_docs/blob/a8bec7765b6645146482c9f3ef146f759f996b06/src/caller/src/lib.rs#L1-L38
 ```
 
 Now, deploy this code to the local IC instance. This will give you some warnings about unused imports, but we will use these later in the tutorial.
 
 ```bash
-$ dfx deploy new_caller
+$ dfx deploy caller
 ```
 
 Let's test it out. Since the method expects the principal of the counter to be passed, we can call it like this:
 
 ```bash
-$ dfx canister call new_caller increment_twice
+$ dfx canister call caller call_get_and_set
 ```
 
-This will prompt you to provide a principal for the `counter` parameter of the `increment_twice` method. If you followed the instructions in the prerequisite section correctly and have already installed the `counter` canister, you can type `counter` and press `TAB` on your keyboard to pass the principal of the counter canister as the parameter, and then `Enter` to confirm. Instruct `dfx` to send the message. Then, you will see an output such as:
+This will prompt you to provide a principal for the `counter` parameter of the `call_get_and_set` method. If you followed the instructions in the prerequisite section correctly and have already installed the `counter` canister, you can type `counter` and press `TAB` on your keyboard to pass the principal of the counter canister as the parameter, and then `Enter` to confirm. Also select some number to set the counter to, say `42`. Instruct `dfx` to send the message. Then, you will see an output such as:
 
 ```bash
-(4 : nat, 6 : nat)
+(0 : nat, 42 : nat)
 ```
 
-Here, the counter was increased from 4 to 6. As noted in the comments, this increase needn't always be 2, and it doesn't even have to be an increase! IC calls are executed **asynchronously**. In our example, between the two `inc` calls in `increment_twice`, another canister could also call the `counter` canister and change the counter value in some case. This enables higher throughput but also has correctness and security implications. Read the documentation on [inter-canister calls and async code](/docs/current/developer-docs/smart-contracts/advanced-features/async-code), [properties of call execution](/docs/current/developer-docs/security/security-best-practices/inter-canister-calls) and [security best practices](docs/current/developer-docs/security/security-best-practices/inter-canister-calls) to understand potential security implications for your application when using inter-canister calls.
+Here, that the counter was increased from `0` to `42`.
 
-## Passing arguments, handling arguments, and using bounded-wait calls
+## IC calls are asynchronous: non-atomic set-then-get
 
-Let's now see more of a real-world use case. In our first example we ignored error handling, and we did not even have to pass any arguments to the called method. Let's look at a slightly more complicated example now, where we call the `set` method on the counter.
-
-This method takes a single parameter, the new value that we should set the counter to, so we will have to pass that. We will also elaborate on error handling, since a robust application should handle errors to the extent possible. There, we will take advantage of the fact that the `set` method is *idempotent*. That is, calling it twice has the same effect as calling it just once. Making public endpoints idempotent is a [best practice](/docs/current/developer-docs/smart-contracts/best-practices/idempotency). It enables better error recovery for ingress  calls (i.e., outside users and applications interacting with your application over HTTP) to your canister, but also enables other canisters to call your canister using *bounded-wait* calls. Unlike unbounded-wait calls, a bounded-wait call does not wait forever for a response to arrive.
-
-Edit `src/new_caller/src/lib.rs` to add the following method:
+You have already seen that the inter-canister calls use the Rust `async/await` syntax, hinting at the fact that these calls are **asynchronous**. This is a profound difference to the messaging model of some other chains (e.g., Ethereum). It enables significantly higher throughput, but can also affect correctness. To illustrate, let's look at the following example, where we first call the `set` method on the counter, and then call `get` afterwards. Add the following code to your  `src/caller/src/lib.rs`.
 
 ```rust reference
-https://github.com/oggy-dfin/icc_rust_docs/blob/c152709203381bda4135919daa8a04140823f94d/src/caller/src/lib.rs#L57-L132
+https://github.com/oggy-dfin/icc_rust_docs/blob/8b432a1914bff877d509e91f24cff579b194f7f4/src/caller/src/lib.rs#L40-L58
+```
+
+Let's try this out. Here, we'll pass the arguments directly to `dfx` instead of using the menu, by encoding [Candid values](/docs/current/developer-docs/smart-contracts/candid/candid-concepts) manually.
+
+```bash
+$ dfx canister call caller set_then_get "record { counter: \"$(dfx canister id counter)\", new_value: 7 }"
+```
+
+You should get the expected result:
+
+```bash
+(7: nat)
+```
+
+That is, the value the we read from the counter is exactly the same as the value that we set. But as noted in the comments, this doesn't always have to hold! As IC calls are executed asynchronously, in between when the `set` and `get` calls in `call_get_and_set` execute, another canister could also call the `counter` canister and change the counter value. This of course cannot happen on your local installation since you control exactly which calls are made, but it can happen as soon as you install the code on the IC mainnet. This behavior enables much higher concurrent throughput between different canisters, since the counter canister isn't blocked from processing other requests while the caller canister is doing its processing. But it also has correctness and security implications. Read the documentation on [inter-canister calls and async code](/docs/current/developer-docs/smart-contracts/advanced-features/async-code), [properties of call execution](/docs/current/developer-docs/security/security-best-practices/inter-canister-calls) and [security best practices](docs/current/developer-docs/security/security-best-practices/inter-canister-calls) to understand potential security implications for your application when using inter-canister calls.
+
+## Bounded-wait and unbounded-wait calls, and error handling: set vs increment
+
+In our first examples we ignored error handling, but a robust application should handle errors to the extent possible. While concrete error handling is application-specific, we will now explain the different ways in which calls can fail. Furthermore, so far we always used unbounded-wait calls. We will now also see when to use bounded-wait calls, and briefly explore the trade-offs between them.
+
+*Bounded-wait calls* do not wait forever for the response to arrive. These calls have two significant advantages: (1) they ensure that your canister won't stall (in particular, become unable to stop and upgrade) if it calls into canisters you don't control, and (2) they scale much better. On the flip side, they have more complicated error handling (where you must handle the case of the call timing out, much like a broken network connection), and are not suitable for all types of calls.
+
+Let's see how one can do error handling in the case of the `set` method. We will take advantage of the fact that the `set` method is *idempotent*. That is, executing it twice has the same effect as executing it just once. Making public endpoints idempotent is a [best practice](/docs/current/developer-docs/smart-contracts/best-practices/idempotency). It enables better error recovery for ingress calls (i.e., outside users and applications interacting with your application over HTTP) to your canister, but also enables other canisters to handle call errors when calling your canister using bounded-wait calls.
+
+Edit `src/caller/src/lib.rs` to add the following method:
+
+```rust reference
+https://github.com/oggy-dfin/icc_rust_docs/blob/master/src/caller/src/lib.rs#L150-L236
 ```
 
 Now, let's try it out. Redeploy the canister:
 
 ```bash
-$ dfx deploy new_caller
+$ dfx deploy caller
 ```
 
-and then call the new endpoint.
+and then call the new endpoint with the value 42.
 
 ```bash
-$ dfx canister call new_caller stubborn_set
+$ dfx canister call caller stubborn_set '(42)'
 ```
 
-When prompted by `dfx` to select a number, choose a number, e.g., `42`, and send the call. Now you can check whether the counter canister actually set its counter by calling it directly.
+Now let's can check whether the counter canister actually set its value correctly by calling it directly.
 
 ```bash
 $ dfx canister call counter get
 (42 : nat)
 ```
+
+Bounded-wait calls are often not suitable for calling non-idempotent endpoints. For example, the `increment` endpoint of the counter canister is obviously not idempotent, as executing it twice doesn't have the same effect as executing it once. This makes handling the `SysUnknown` case more difficult. One possible way of handling it involves invoking `get` on the counter to first read the old value, then calling `increment`, and, in case of a `SysUnknown` error, calling `get` again to check whether the counter value was incremented, and only retrying if it wasn't. As discussed earlier, since the counter value may be changed by an external party in between our calls, the error handling would also have to take that into account and decide what an appropriate course of action is. These problems can be avoided by using unbounded-wait calls, since these can never result in a `SysUnknown` error. However, that does lose the advantages of bounded-wait calls, and you may still have to handle other error cases with a similar effect (such as `CanisterError`).
 
 ## Attaching cycles: canister signatures
 
