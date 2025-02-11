@@ -11,6 +11,7 @@ import Link from "@docusaurus/Link";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import NoTrackingIcon from "@site/src/components/Basics/EthDenver/privacy.svg";
 import ShareMeta from "../components/Common/ShareMeta";
+import TrySomeDapps from "@site/src/components/ETHDenver/TrySomeDapps";
 import TwitterIcon from "@site/static/img/ethdenver/twitter.svg";
 import WebAuthnIcon from "@site/src/components/Basics/EthDenver/webauthn.svg";
 import { motion } from "framer-motion";
@@ -431,6 +432,7 @@ function EthDenverPage() {
           </AnimateSpawn>
         </section>
 
+        <TrySomeDapps />
 
         <BackgroundPanel
           panelClassName="bg-[#0A0023]"
