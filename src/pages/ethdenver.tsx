@@ -614,9 +614,8 @@ function EthDenverPage() {
           hasHome={false}
           links={[
             { text: "Intro", to: "#intro" },
-            { text: "Bounties", to: "#bounties" },
             { text: "Agenda", to: "#agenda" },
-            // { text: "Topics", to: "#topics" },
+            { text: "Bounties", to: "#bounties" },
             { text: "Ecosystem", to: "#ecosystem" },
             { text: "Internet Identity", to: "#internet-identity" },
             { text: "Blockchain Singularity", to: "#learn-more" },
