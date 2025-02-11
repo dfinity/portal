@@ -661,7 +661,7 @@ const redirects = `
   /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/current/developer-docs/web-apps/application-frontends/default-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/current/developer-docs/getting-started/explore-examples /docs/current/developer-docs/developer-tools/ide/icp-ninja
-  /docs/current/tutorials/developer-journey/index /docs/current/tutorials/developer-liftoff/index
+  /docs/current/tutorials/developer-journey/ /docs/current/tutorials/developer-liftoff/
   /docs/current/tutorials/developer-journey/level-0/ic-overview /docs/current/tutorials/developer-liftoff/level-0/ic-overview
   /docs/current/tutorials/developer-journey/level-0/ic-terms /docs/current/tutorials/developer-liftoff/level-0/ic-terms
   /docs/current/tutorials/developer-journey/level-0/dev-env /docs/current/tutorials/developer-liftoff/level-0/dev-env
