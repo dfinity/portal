@@ -588,7 +588,7 @@ The Internet Computer has two HTTPS APIs for canister calling:
 - [*Asynchronous*](#http-async-call-overview) canister calling, where the user must poll the Internet Computer for the status of the canister call by _separate_ HTTPS requests.
 - [*Synchronous*](#http-sync-call-overview) canister calling, where the status of the canister call is in the response of the original HTTPS request.
 
-#### Asynchronous canister calling {#http-async-call-overview}
+#### Canister call state transition {#http-async-call-overview}
 
 1.  A user submits a call via the [HTTPS Interface](#http-interface). No useful information is returned in the immediate response (as such information cannot be trustworthy anyways).
 
@@ -663,7 +663,7 @@ In order to call a canister, the user makes a POST request to `/api/v3/canister/
 
 -   `request_type` (`text`): Always `call`
 
--   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication)
+-   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication) and [. 
 
 -   `canister_id` (`blob`): The principal of the canister to call.
 
@@ -6004,9 +6004,9 @@ S with
 
 NB: The refunded cycles, `RM.refunded_cycles` are, by construction, empty.
 
-#### Request clean up
+#### Update call request clean up
 
-The IC will keep the data for a completed or rejected request around for a certain, implementation defined amount of time, to allow users to poll for the data. After that time, the data of the request will be dropped:
+The IC will keep the data for a completed or rejected update <code>call</code> request around for a certain, implementation defined amount of time, to allow users to poll for the data with <code>read_state<code> requests . After that time, the data of the request will be dropped:
 
 Conditions  
 
