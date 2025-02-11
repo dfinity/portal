@@ -145,7 +145,7 @@ const marketingNav = {
         { name: "ICP Wiki", href: "https://wiki.internetcomputer.org/" },
         {
           name: "White paper",
-          href: "https://dfinity.org/whitepaper.pdf",
+          href: "https://internetcomputer.org/whitepapers/The%20Internet%20Computer%20for%20Geeks.pdf",
         },
         {
           name: "History of ICP",
