@@ -23,7 +23,8 @@ This example uses [`ic-siwe`](https://github.com/kristoferlund/ic-siwe) and [`ic
 
 First, identify the Ethereum address of the recipient you'd like to send a file to. Then, define a `vetkd_public_key` method that will retrieve the recipient's public key using their Ethereum address to identify the IBE scheme that generates the public key. This method will call the `chainkey_testing_canister`:
 
-```rust reference https://github.com/kristoferlund/send_file_to_eth_demo/blob/main/src/backend/src/vetkd/controller/vetkd_public_key.rs
+```rust reference
+https://github.com/kristoferlund/send_file_to_eth_demo/blob/main/src/backend/src/vetkd/controller/vetkd_public_key.rs#L1-L23
 ```
 
 :::info
@@ -34,14 +35,16 @@ This example uses a local test vetKeys canister. When the feature is available, 
 
 Next, define a request in the application's frontend that uses the recipient's public key and the `vetkd.IBECiphertext.encrypt` method from the `ic-vetkd-utils` package. This request will take the file uploaded by the user and encrypt it.
 
-```typescript reference https://github.com/kristoferlund/send_file_to_eth_demo/blob/main/src/frontend/src/transfer/hooks/useTransferCreate.tsx
+```typescript reference
+https://github.com/kristoferlund/send_file_to_eth_demo/blob/main/src/frontend/src/transfer/hooks/useTransferCreate.tsx#L1-L46
 ```
 
 ### 3: Store the encrypted file in the backend
 
 In the backend canister, create a `transfer_create` method that verifies the frontend request's `from` and `to` parameters, then stores the encrypted file:
 
-```rust reference https://github.com/kristoferlund/send_file_to_eth_demo/blob/main/src/backend/src/transfer/controller/transfer_create.rs
+```rust reference
+https://github.com/kristoferlund/send_file_to_eth_demo/blob/main/src/backend/src/transfer/controller/transfer_create.rs#L1-L35
 ```
 
 ## Receive and decrypt a file
@@ -50,20 +53,23 @@ In the backend canister, create a `transfer_create` method that verifies the fro
 
 The file has now been encrypted with the intended recipient's Ethereum address and corresponding private key. In order for the recipient to receive the file, they must login to the application with their Ethereum address. The frontend will call the backend's `transfer_list` method and receive the application's existing file transfers.
 
-```rust reference https://github.com/kristoferlund/send_file_to_eth_demo/blob/main/src/backend/src/transfer/controller/transfer_list.rs
+```rust reference
+https://github.com/kristoferlund/send_file_to_eth_demo/blob/main/src/backend/src/transfer/controller/transfer_list.rs#L1-L15
 ```
 
 ### Step 2: Obtain the recipient's private key
 
 Then the backend obtains the encrypted private key of the user's Ethereum address in a similar manner to how it obtained the public key to encrypt the file:
 
-```rust reference https://github.com/kristoferlund/send_file_to_eth_demo/blob/main/src/backend/src/vetkd/controller/vetkd_encrypted_key.rs
+```rust reference
+https://github.com/kristoferlund/send_file_to_eth_demo/blob/main/src/backend/src/vetkd/controller/vetkd_encrypted_key.rs#L1-L31
 ```
 
 ### Step 3: Decrypt the private key and file
 
 Finally, the frontend decrypts the private key, uses it to decrypt the file, and returns the file to the user:
 
-```typescript reference https://github.com/kristoferlund/send_file_to_eth_demo/blob/main/src/frontend/src/transfer/hooks/useTransferGet.tsx
+```typescript reference
+https://github.com/kristoferlund/send_file_to_eth_demo/blob/main/src/frontend/src/transfer/hooks/useTransferGet.tsx#L1-L46
 ```
 
