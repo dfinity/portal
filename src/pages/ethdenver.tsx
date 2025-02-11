@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 
 import AnimateSpawn from "../components/Common/AnimateSpawn";
 import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
+import BeAPioneer from "@site/src/components/ETHDenver/BeAPioneer";
 import BiometricIcon from "@site/src/components/Basics/EthDenver/biometric.svg";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import IntraPageNav from "../components/Common/IntraPageNav";
@@ -10,7 +11,6 @@ import Link from "@docusaurus/Link";
 import LinkArrowRight from "../components/Common/Icons/LinkArrowRight";
 import NoTrackingIcon from "@site/src/components/Basics/EthDenver/privacy.svg";
 import ShareMeta from "../components/Common/ShareMeta";
-import StartBuildingSection from "@site/src/components/LandingPage/StartBuilding";
 import TwitterIcon from "@site/static/img/ethdenver/twitter.svg";
 import WebAuthnIcon from "@site/src/components/Basics/EthDenver/webauthn.svg";
 import { motion } from "framer-motion";
@@ -356,7 +356,7 @@ function EthDenverPage() {
             </motion.h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               <motion.div
-                className="bg-white-60 border border-solid border-white rounded-xl px-6 py-8 flex flex-col gap-4 justify-between"
+                className="bg-white rounded-xl px-6 py-8 flex flex-col gap-4 justify-between"
                 variants={transitions.item}
               >
                 <div>
@@ -380,7 +380,7 @@ function EthDenverPage() {
                 </div>
               </motion.div>
               <motion.div
-                className="bg-white-60 border border-solid border-white rounded-xl px-6 py-8 flex flex-col gap-4 justify-between"
+                className="bg-white rounded-xl px-6 py-8 flex flex-col gap-4 justify-between"
                 variants={transitions.item}
               >
                 <div>
@@ -404,7 +404,7 @@ function EthDenverPage() {
                 </div>
               </motion.div>
               <motion.div
-                className="bg-white-60 border border-solid border-white rounded-xl px-6 py-8 flex flex-col gap-4 justify-between"
+                className="bg-white rounded-xl px-6 py-8 flex flex-col gap-4 justify-between"
                 variants={transitions.item}
               >
                 <div>
@@ -574,35 +574,40 @@ function EthDenverPage() {
             </div>
           </AnimateSpawn>
         </section>
-        <StartBuildingSection
-          id="start-building"
-          title="Be a pioneer of Web3"
-          body="Start a DAO, create a token, build dapps and host assets with the full stack entirely onchain."
-          cta="BUILD REAL WEB3"
-          ctaLink="/docs/current/home"
-          cards={[
-            {
-              title: "Dev Forum",
-              body: "Engage with the ICP community to shape future features, propose new ideas, and ask questions. ",
-              link: "https://forum.dfinity.org",
-            },
-            {
-              title: "Dev Docs",
-              body: "Get to know the concepts,  architecture and technical breakthroughs that enable the ICP. Plus step-by-step guides on how to stake your tokens, and more.",
-              link: "/docs/current/home",
-            },
-            {
-              title: "Sample Code",
-              body: "From a simple DEX, to onchain encrypted storage, NFT minting, and a basic DAO, learn how to build on the Internet Computer.",
-              link: "/samples",
-            },
-            {
-              title: "Motoko Playground",
-              body: "Play around with Motoko, the native language of the Internet Computer, right in the browser without having to download the SDK.",
-              link: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
-            },
-          ]}
-        />
+        
+        <div className="pb-40">
+          <BeAPioneer
+            id="start-building"
+            title="Be a pioneer of Web3"
+            body="Metaprotocols leverage Chain Fusion to offer decentralized cross-chain infrastructure enabling the transfer and creation of new assets on Bitcoin."
+            cta="Build real Web3"
+            ctaLink="/docs/current/home"
+            cards={[
+              {
+                title: "Dev Forum",
+                body: "Engage with the ICP community to shape future features, propose new ideas, and ask questions. ",
+                link: "https://forum.dfinity.org",
+              },
+              {
+                title: "Dev Docs",
+                body: "Metaprotocols leverage Chain Fusion to offer decentralized cross-chain infrastructure enabling the transfer and creation of new assets on Bitcoin.",
+                link: "/docs/current/home",
+              },
+              {
+                title: "Sample Code",
+                body: "From a simple DEX, to on-chain encrypted storage, NFT minting, and a basic DAO, learn how to build on the Internet Computer.",
+                link: "/samples",
+              },
+              {
+                title: "Motoko Playground",
+                body: "Play around with Motoko, the native language of the Internet Computer, right in the browser without having to download the SDK.",
+                link: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
+              },
+            ]}
+          />
+        </div>
+
+
         <IntraPageNav
           hasHome={false}
           links={[
