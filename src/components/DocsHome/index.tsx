@@ -363,7 +363,7 @@ const Education = () => {
       cta: (
         <Link
           className="button-transparent button-with-icon pl-0"
-          href="/docs/current/tutorials/developer-journey/"
+          href="/docs/current/tutorials/developer-liftoff/"
         >
           Start tutorials
           <LinkArrowRight />
