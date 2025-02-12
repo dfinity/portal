@@ -2052,7 +2052,8 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
 
 -   `ic0.cost_call : (method_name_size: i64, payload_size : i64, dst : I) -> ()`; `I ∈ {i32, i64}`
 
-    The cost of an inter-canister call. `method_name_size` is the byte length of the method name, and `payload_size` is the byte length of the argument to the method. 
+    This system call returns the amount of cycles that a canister needs to be above the freezing threshold in order to successfully make an inter-canister call. This includes the base cost for an inter-canister call, the cost for each byte transmitted in the request, the cost for the transmission of the largest possible response, and the cost for executing the largest possible response callback. The last two are cost _reservations_, which must be possible for a call to succeed, but they will be partially refunded if the real response and callback are smaller. So the cost of the actual inter-canister call may be less than this system call predicts, but it cannot be more. 
+    `method_name_size` is the byte length of the method name, and `payload_size` is the byte length of the argument to the method. 
 
 -   `ic0.cost_create_canister : (dst : I) -> ()`; `I ∈ {i32, i64}`
 
