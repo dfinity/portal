@@ -588,7 +588,7 @@ The Internet Computer has two HTTPS APIs for canister calling:
 - [*Asynchronous*](#http-async-call-overview) canister calling, where the user must poll the Internet Computer for the status of the canister call by _separate_ HTTPS requests.
 - [*Synchronous*](#http-sync-call-overview) canister calling, where the status of the canister call is in the response of the original HTTPS request.
 
-#### Canister call state transition {#http-async-call-overview}
+#### Asynchronous canister calling {#http-async-call-overview}
 
 1.  A user submits a call via the [HTTPS Interface](#http-interface). No useful information is returned in the immediate response (as such information cannot be trustworthy anyways).
 
@@ -649,9 +649,12 @@ When asking the IC about the state or call of a request, the user uses the reque
 
 #### Synchronous canister calling {#http-sync-call-overview}
 
-A synchronous update call, also known as a "call and await", is a type of update call where the replica will attempt to respond to the HTTPS request with a certificate of the call status. If the returned certificate indicates that the update call is in a terminal state (`replied`, `rejected`, or `done`), then the user __does not need to poll__ (using [`read_state`](#http-read-state) requests) to determine the result of the call. A terminal state means the call has completed its execution.
+A synchronous update call, also known as a "call and await", is a type of update call where the replica will attempt to respond to the HTTPS request with a certificate of the call status. 
+On the replica, a synchronous call request goes through the same states (`received`, `processing`, `replied`, `rejected`, or `done`) as the ones depicted for the [asynchronous API](#http-async-call-overview).
+If the returned certificate indicates that the update call is in a terminal state (`replied`, `rejected`, or `done`), then the user __does not need to poll__ (using [`read_state`](#http-read-state) requests) 
+to determine the result of the call. A terminal state means the call has completed its execution.
 
-The synchronous call endpoint is useful for users as it removes the networking overhead of polling the IC to determine the status of their call.
+The synchronous call endpoint is useful for users as it removes the networking overhead of polling the IC to determine the status of their call if a terminal state is reached quickly. 
 
 The replica will maintain the HTTPS connection for the request and will respond once the call status transitions to a terminal state. 
 
@@ -663,7 +666,7 @@ In order to call a canister, the user makes a POST request to `/api/v3/canister/
 
 -   `request_type` (`text`): Always `call`
 
--   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication) and [. 
+-   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication). The canister will not start processing a call past its `ingress_expiry`. 
 
 -   `canister_id` (`blob`): The principal of the canister to call.
 
@@ -705,7 +708,7 @@ In order to call a canister, the user makes a POST request to `/api/v2/canister/
 
 -   `request_type` (`text`): Always `call`
 
--   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication)
+-   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication). The canister will not start processing a call past its `ingress_expiry`.
 
 -   `canister_id` (`blob`): The principal of the canister to call.
 
@@ -751,7 +754,7 @@ In order to read parts of the [The system state tree](#state-tree), the user mak
 
 -   `request_type` (`text`): Always `read_state`
 
--   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication)
+-   `sender`, `nonce`, `ingress_expiry`: See [Authentication](#authentication). `ingress_expiry` refers to this request's expiry, not the expiry of an earlier call request.
 
 -   `paths` (sequence of paths): A list of at most 1000 paths, where a path is itself a sequence of at most 127 blobs.
 
@@ -976,7 +979,7 @@ All requests coming in via the HTTPS interface need to be either *anonymous* or 
 
 -   `nonce` (`blob`, optional): Arbitrary user-provided data of length at most 32 bytes, typically randomly generated. This can be used to create distinct requests with otherwise identical fields.
 
--   `ingress_expiry` (`nat`, required): An upper limit on the validity of the request, expressed in nanoseconds since 1970-01-01 (like [ic0.time()](#system-api-time)). This avoids replay attacks: The IC will not accept requests, or transition requests from status `received` to status `processing`, if their expiry date is in the past. The IC may refuse to accept requests with an ingress expiry date too far in the future. These rules for ingress expiry apply not only to update calls but all requests alike (and could have been called `request_expiry`), except for anonymous `query` and anonymous `read_state` requests for which the IC may accept any provided expiry timestamp.
+-   `ingress_expiry` (`nat`, required): An upper limit on the validity of the request, expressed in nanoseconds since 1970-01-01 (like [ic0.time()](#system-api-time)). This avoids replay attacks: The IC will not accept requests, or transition call requests from status `received` to status `processing`, if their expiry date is in the past. The IC may refuse to accept requests with an ingress expiry date too far in the future. The acceptance rules for ingress expiry apply not only to update calls but all requests alike (and could have been called `request_expiry`), except for anonymous `query` and anonymous `read_state` requests for which the IC may accept any provided expiry timestamp. Note that the `ingress_expiry` of a `read_state` request is independent of the `expiry` of an earlier `call` request, they do need to be the same.
 
 -   `sender` (`Principal`, required): The user who issued the request.
 
