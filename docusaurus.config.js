@@ -180,7 +180,7 @@ const marketingNav = {
             {
               name: "ICP Dashboard",
               href: "https://dashboard.internetcomputer.org/",
-              description: "Join like-minded hackers",
+              description: "Track key metrics",
             },
             {
               name: "ICP Roadmap",
