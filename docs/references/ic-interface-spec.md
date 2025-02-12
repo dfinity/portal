@@ -644,7 +644,7 @@ A call may be rejected by the IC or the canister. In either case, there is no gu
 To avoid replay attacks, the transition from `done` or `received` to `pruned` must happen no earlier than the call's `ingress_expiry` field.
 If a subnet's time is greater than a call's `ingress_expiry` field and it is still unknown to the IC (i.e, it was never in state `received`, `processing`, `replied`, `rejected`, or `done`), then the call will never be in one of these states.
 
-Calls must stay in `replied` or `rejected` long enough for polling users to catch the response.
+Calls stay in `replied` or `rejected` long enough for polling users to catch the response under good networking conditions with low load.
 
 When asking the IC about the state or call of a request, the user uses the request id (see [Request ids](#request-id)) to read the request status (see [Request status](#state-tree-request-status)) from the state tree (see [Request: Read state](#http-read-state)).
 
