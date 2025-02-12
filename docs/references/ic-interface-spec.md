@@ -596,7 +596,7 @@ The Internet Computer has two HTTPS APIs for canister calling:
 
 3.  The IC asks the targeted canister if it is willing to accept this message and be charged for the expense of processing it. This uses the [Ingress message inspection](#system-api-inspect-message) API for normal calls. For calls to the management canister, the rules in [The IC management canister](#ic-management-canister) apply.
 
-4.  At some point, the IC may accept the call for processing and set its status to `received`. This indicates that the IC as a whole has received the call and plans on processing it (although it may still not get processed if the IC is under high load). Furthermore, the user should also be able to ask any endpoint about the status of the pending call.
+4.  At some point, the IC may accept the call for processing and set its status to `received`. This indicates that the IC as a whole has received the call and plans on processing it (although it may still not get processed if the IC is under high load). At the time of this transition, the call has not yet expired. Furthermore, the user should also be able to ask any endpoint about the status of the pending call.
 
 5.  Once it is clear that the call will be acted upon (sufficient resources, call not yet expired), the status changes to `processing`. Now the user has the guarantee that the request will have an effect, e.g. it will reach the target canister.
 
@@ -642,8 +642,9 @@ The characteristic property of the `processing` state is that *the initial effec
 A call may be rejected by the IC or the canister. In either case, there is no guarantee about how much processing of the call has happened.
 
 To avoid replay attacks, the transition from `done` or `received` to `pruned` must happen no earlier than the call's `ingress_expiry` field.
+If a subnet's time is greater than a call's `ingress_expiry` field and it is still unknown to the IC (i.e, it was never in state `received`, `processing`, `replied`, `rejected`, or `done`), then the call will never be in one of these states.
 
-Calls must stay in `replied` or `rejected` long enough for polling users to catch the response.
+Calls must stay in `replied` or `rejected` long enough for polling users to catch the response. 
 
 When asking the IC about the state or call of a request, the user uses the request id (see [Request ids](#request-id)) to read the request status (see [Request status](#state-tree-request-status)) from the state tree (see [Request: Read state](#http-read-state)).
 
@@ -6009,7 +6010,7 @@ NB: The refunded cycles, `RM.refunded_cycles` are, by construction, empty.
 
 #### Update call request clean up
 
-The IC will keep the data for a completed or rejected update <code>call</code> request around for a certain, implementation defined amount of time, to allow users to poll for the data with <code>read_state<code> requests . After that time, the data of the request will be dropped:
+The IC will keep the data for a completed or rejected update `call` request around for a certain, implementation defined amount of time, to allow users to poll for the data with `read_state` requests . After that time, the data of the request will be dropped:
 
 Conditions  
 
