@@ -145,7 +145,7 @@ const marketingNav = {
         { name: "ICP Wiki", href: "https://wiki.internetcomputer.org/" },
         {
           name: "White paper",
-          href: "https://dfinity.org/whitepaper.pdf",
+          href: "https://internetcomputer.org/whitepapers/The%20Internet%20Computer%20for%20Geeks.pdf",
         },
         {
           name: "History of ICP",
@@ -601,6 +601,7 @@ const config = {
       "data-modal-disclaimer":
         " This LLM provides responses are generated automatically and may be inaccurate or outdated. Please take care to verify or validate any responses before making any critical decisions.",
       "data-user-analytics-fingerprint-enabled": "true",
+      "data-modal-z-index": "1001",
       async: true,
       "data-button-hide": "true",
     },
