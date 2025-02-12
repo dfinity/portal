@@ -1,5 +1,5 @@
 ---
-keywords: [intermediate, tutorial, developer ladder, motoko]
+keywords: [intermediate, tutorial, developer liftoff, motoko]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -291,7 +291,7 @@ cd multiple_actors
 
 ### Configuring canisters in `dfx.json`
 
-As you've seen in previous portions of the developer ladder, when a new project is created with `dfx`, a default `dfx.json` file is created in the project's directory. For this guide, you'll need to edit `dfx.json` to specify our two canisters and the location of their Motoko files.
+As you've seen in previous portions of the developer liftoff, when a new project is created with `dfx`, a default `dfx.json` file is created in the project's directory. For this guide, you'll need to edit `dfx.json` to specify our two canisters and the location of their Motoko files.
 
 First, open the `dfx.json` file in your code editor. Delete the existing content and replace it with the following:
 
@@ -414,7 +414,7 @@ URLs:
 Once the canisters containing your actors have been deployed, you can interact with each actor using the `dfx canister call` command. For example, to use the `characterCount` actor, you can make a call to the `character_count` canister such as:
 
 ```bash
-dfx canister call character_count test '("developer ladder")'
+dfx canister call character_count test '("developer liftoff")'
 ```
 
 This command makes a call to the `character_count` canister, directly to the public function `test`. The result of this call should return a `false` response.
@@ -433,7 +433,11 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
+<<<<<<< HEAD
 - [Developer ladder forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
+=======
+- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
+>>>>>>> 4b60b8079175c13f1f9cb2b458951a9fdde4b3c5
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -453,6 +457,6 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 ## Next steps
 
-That'll wrap up level 2 of the developer ladder! In the next level, you'll start by taking a look at using package managers for Motoko.
+That'll wrap up level 2 of the developer liftoff! In the next level, you'll start by taking a look at using package managers for Motoko.
 
 - [3.1 Using libraries with MOPS](/docs/current/tutorials/developer-liftoff/level-3/3.1-package-managers).

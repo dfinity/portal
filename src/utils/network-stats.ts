@@ -54,15 +54,15 @@ export function getTransactionRateV3(
 
 export function getEthEquivTxRateMultiplier(): Promise<number> {
   return fetch(
-    "https://ic-api.internetcomputer.org/api/v3/metrics/icp-txn-vs-eth-txn"
+    "https://ic-api.internetcomputer.org/api/v3/metrics/eth-equivalent-txns"
   )
     .then(
       (res) =>
         res.json() as Promise<{
-          icp_txn_vs_eth_txn: [timestamp: number, rate: number];
+          eth_equivalent_txns: [timestamp: number, rate: number];
         }>
     )
-    .then((res) => res.icp_txn_vs_eth_txn[1]);
+    .then((res) => res.eth_equivalent_txns[1]);
 }
 
 export function getckBTCTotalSupply(): Promise<number> {
