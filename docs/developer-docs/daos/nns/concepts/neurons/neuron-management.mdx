@@ -15,7 +15,6 @@ This page is for you if you want to learn the technical details about neuron ope
 
 Tutorials for users who want to interact with the NNS using the [NNS dapp](https://nns.ic0.app) frontend are available in the [NNS dapp quickguide](/docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart).
 
-
 View the most up-to-date [`candid` definition for the NNS governance canister](https://github.com/dfinity/ic/blob/master/rs/nns/governance/canister/governance.did).
 This page will explain some of the relevant definitions from this Candid file.
 To keep up to date with new NNS release proposals from DFINITY, you can subscribe to [this forum thread](https://forum.dfinity.org/t/nns-updates-aggregation-thread/23551).
@@ -94,6 +93,7 @@ A neuron can be private or public.
 
 ### APIs
 A user can request information about a list of neurons using this API:
+
 ```
 list_neurons : (ListNeurons) -> (ListNeuronsResponse) query;
 
@@ -102,14 +102,18 @@ type ListNeurons = record {
   neuron_ids : vec nat64;
   include_empty_neurons_readable_by_caller : opt bool;
   include_neurons_readable_by_caller : bool;
+  page_number: opt nat64;
+  page_size: opt nat64;
 };
 
 type ListNeuronsResponse = record {
   neuron_infos : vec record { nat64; NeuronInfo };
   full_neurons : vec Neuron;
+  total_pages_available: opt nat64;
 };
 ```
 The user can define which neurons to get information from by defining a list of neuron IDs in the argument `neuron_ids`.
+
 Additionally:
 * If the argument `include_neurons_readable_by_caller` is set to true, the neurons who the user is authorized to read are also included (i.e., the neurons for which the user is a controller or hotkey).
 * If the argument `include_empty_neurons_readable_by_caller` is set to true, the empty neurons readable by the caller are also included. Neurons are empty if they have 0 stake, 0 maturity, and 0 staked maturity. This field only has an effect when `include_neurons_readable_by_caller` is true. If a neuron is explicitly requested to be returned by including it in the `neuron_ids` field, then the neuron will be included in the response regardless of this value. If this fields is not provided, it defaults to true for backwards compatibility.
@@ -118,6 +122,19 @@ The answer to such a query is defined by `ListNeuronsResponse`:
 * First, it contains a map that points for each neuron that was requested to the corresponding `NeuronInfo` (assuming the neuron exists). For neurons that are public or for which the calling user is the controller or a hotkey, this includes the full `NeuronInfo`. For other private neurons `recent_ballots` and `joined_community_fund_timestamp_seconds` are redacted.
 * For each requested neuron that exists and for which the calling user is a controller or hotkey, the full neuron is returned.
 * If the argument `include_public_neurons_in_full_neurons` is set to true, for each requested public neuron, the full neuron is returned.
+
+### Pagination for `list_neurons` results
+
+Pagination is available if the result of `list_neurons` is larger than 500. When paging through results, newly inserted neurons could be excluded if they are inserted between calls to pages, resulting in a missing neuron from the combined responses.
+
+If `neuron_ids` that do not exist are provided, there is no guarantee that each page will contain the exact page size, even if it is not the final request. This is because neurons are retrieved by their `neuron_id`, and the `neuron_ids` field is not validated before deciding which sets of `neuron_ids` will be returned in the current page.
+
+The following fields can be used with pagination:
+
+* `page_number`: Returns the batch of neurons at a given page, using `page_size` to determine how many neurons are listed on each page.
+* `page_size`: Used to determine how large pages will be. Cannot be greater than `MAX_LIST_NEURONS_RESULTS`, which is set to 500. If not set, defaults to `MAX_LIST_NEURONS_RESULTS`.
+
+You can query the number of pages left to be queried in a set with the `total_pages_available` field. The number of pages will be based on the `page_size` parameter.
 
 ## Interacting with neurons
 All neuron modifications go through the following API on the NNS governance canister. This includes everything in a neuron's lifetime such as the neuron's creation, modifications and voting, and unstaking the ICP tokens.
