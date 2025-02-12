@@ -351,7 +351,7 @@ const Education = () => {
     {
       title: (
         <h2 className={"text-white"}>
-          Start your developer ladder with Jessie
+          Start your developer liftoff with Jessie
         </h2>
       ),
       subtitle: (
