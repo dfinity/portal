@@ -8,41 +8,11 @@ build: [
     type: "category",
     label: "Getting started",
     items: [
-      {
-        type: "doc",
-        label: "Quick start",
-        id: "building-apps/getting-started/quickstart",
-      },
-      {
-        type: "doc",
-        label: "Application architecture",
-        id: "building-apps/getting-started/app-architecture",
-      },
-      {
-        type: "doc",
-        label: "ICP primer",
-        id: "building-apps/getting-started/icp-primer",
-      },
-      {
-        type: "doc",
-        label: "ICP primer",
-        id: "building-apps/getting-started/icp-primer",
-      },
-      {
-        type: "doc",
-        label: "Installing the CLI",
-        id: "building-apps/getting-started/install",
-      },
-      {
-        type: "doc",
-        label: "Create a developer identity",
-        id: "building-apps/getting-started/identities",
-      },
-      {
-        type: "doc",
-        label: "Tokens & cycles",
-        id: "building-apps/getting-started/tokens-and-cycles",
-      },
+        "building-apps/getting-started/quickstart",
+        "building-apps/getting-started/app-architecture",
+        "building-apps/getting-started/install",
+        "building-apps/getting-started/identities",
+        "building-apps/getting-started/tokens-and-cycles",
     ],
   },
   {
