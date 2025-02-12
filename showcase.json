@@ -5179,5 +5179,20 @@
     "twitter": "https://x.com/CoreLedger",
     "usesInternetIdentity": true,
     "display": "Normal"
+  }, 
+  {
+    "name": "Fries Coin",
+    "logo": "/img/showcase/friescoin_logo.jpg",
+    "id": "friescoin",
+    "tags": [
+      "NFT", 
+      "AI", 
+      "Chain Fusion"
+    ],
+    "website": "https://friescoin.xyz/",
+    "description": "The world's first meme coin dedicated to fries enthusiasts everywhere.",
+    "twitter": "https://x.com/FriesCoin",
+    "usesInternetIdentity": false,
+    "display": "Normal"
   }
 ]
