@@ -258,7 +258,7 @@ Cycle transfers are generally either used to pay for the callee's costs of proce
 
 Below, we use the on-chain signature example to show how to attach cycles to a call.
 
-```rust reference
+```rust
 #[update]
 pub async fn sign_message(message: String) -> Result<String, String> {
     let message_hash = Sha256::digest(&message).to_vec();
