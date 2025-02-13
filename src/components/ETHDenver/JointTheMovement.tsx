@@ -58,7 +58,7 @@ const JointTheMovement: FC<{
         >
           <motion.div
             variants={transitions.item}
-            className="flex-1 p-6  pb-12grid grid-rows-[auto_1fr_auto] border border-solid border-white-20 rounded-xl"
+            className="flex-1 p-6 md:p-8 pb-12grid grid-rows-[auto_1fr_auto] border border-solid border-white-20 rounded-xl"
           >
             <BiometricIcon className="w-12 h-14 mb-10"></BiometricIcon>
 
@@ -74,7 +74,7 @@ const JointTheMovement: FC<{
 
           <motion.div
             variants={transitions.item}
-            className="flex-1 p-6 g pb-12rid grid-rows-[auto_1fr_auto] border border-solid border-white-20 rounded-xl"
+            className="flex-1 p-6 md:p-8 g pb-12rid grid-rows-[auto_1fr_auto] border border-solid border-white-20 rounded-xl"
           >
             <NoTrackingIcon className="w-12 h-14 mb-10"></NoTrackingIcon>
             <h3 className="tw-heading-5 mb-3 self-end">
@@ -88,7 +88,7 @@ const JointTheMovement: FC<{
           </motion.div>
           <motion.div
             variants={transitions.item}
-            className="flex-1 p-6 pb-12 grid grid-rows-[auto_1fr_auto] border border-solid border-white-20 rounded-xl"
+            className="flex-1 p-6 md:p-8 pb-12 grid grid-rows-[auto_1fr_auto] border border-solid border-white-20 rounded-xl"
           >
             <WebAuthnIcon className="w-12 h-14 mb-10"></WebAuthnIcon>
             <h3 className="tw-heading-5 mb-3 self-end">

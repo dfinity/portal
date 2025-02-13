@@ -77,7 +77,7 @@ const Bounties: FC<{
         </motion.h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           <motion.div
-            className="bg-white rounded-xl px-6 py-8 flex flex-col gap-4 justify-between"
+            className="bg-white rounded-xl p-6 md:p-8 flex flex-col gap-4 justify-between"
             variants={transitions.item}
           >
             <div>
@@ -101,7 +101,7 @@ const Bounties: FC<{
             </div>
           </motion.div>
           <motion.div
-            className="bg-white rounded-xl px-6 py-8 flex flex-col gap-4 justify-between"
+            className="bg-white rounded-xl p-6 md:p-8 flex flex-col gap-4 justify-between"
             variants={transitions.item}
           >
             <div>
@@ -125,7 +125,7 @@ const Bounties: FC<{
             </div>
           </motion.div>
           <motion.div
-            className="bg-white rounded-xl px-6 py-8 flex flex-col gap-4 justify-between"
+            className="bg-white rounded-xl p-6 md:p-8 flex flex-col gap-4 justify-between"
             variants={transitions.item}
           >
             <div>

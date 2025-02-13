@@ -11,7 +11,7 @@ function Card({
   link,
 }) {
   return (
-    <Link to={link} className="bg-white rounded-xl p-6 flex flex-col gap-4 justify-between hover:no-underline hover:-translate-y-2 transition-transform">
+    <Link to={link} className="bg-white rounded-xl p-6 md:p-8 flex flex-col gap-4 justify-between hover:no-underline hover:-translate-y-2 transition-transform">
       <div className="text-black">
         <h3 className="tw-heading-4">{title}</h3>
         <p className="tw-paragraph">{body}</p>
