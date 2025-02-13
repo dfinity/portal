@@ -62,6 +62,9 @@ When calling into arbitrary ICRC-1 ledgers, we recommend you use [bounded wait (
 Here sample code to fetch the transfer fee from an ICRC-1 ledger using Rust and the `ic-cdk` [library](https://github.com/dfinity/cdk-rs) from within a canister. The example includes retry logic to handle errors when possible.
 
 ```rust
+/// THIS DOESN'T COMPILE YET
+/// This is just sample code using not-yet-implemented Rust CDK API
+
 pub enum GetFeeError {
     /// The ledger didn't implement the ICRC-1 API correctly, e.g., returning an invalid response.
     Icrc1ApiViolation(String),
@@ -100,26 +103,32 @@ pub async fn icrc1_get_fee<P>(ledger: Principal, should_retry: P) -> Result<NumT
 Here's sample code for transferring ICRC-1 ledger tokens using bounded wait response calls. It handles the unknown state case by using the [transaction deduplication feature](https://internetcomputer.org/docs/current/references/icrc1-standard#transaction-deduplication-) of ICRC-1 ledgers.
 
 ```rust
+/// THIS DOESN'T COMPILE YET
+/// This is just sample code using not-yet-implemented Rust CDK API
+
 /// Transfer the tokens on the specified ledger. The caller must ensure that:
 /// 1. The `created_at` time of the `TransferArg` is set.
 /// 2. The transaction described by the `TransferArg` has not yet been executed by the ledger.
 ///    Otherwise, the function may return `Ok` even if the transfer didn't happen.
-///
 #[ic_cdk::update]
 pub async fn icrc1_transfer<P>(ledger: Principal, arg: TransferArg, should_retry: P) -> Result<BlockIndex, Icrc1TransferError>
     where P: Fn() -> bool
 {
     assert!(arg.created_at_time.is_some(), "The created_at_time must be set in the TransferArg");
     // In the first step, obtain the fee. Use the method above to handle retries.
+    // A more efficient way would be to extract the core of the fee fetching logic into a separate
+    // function that doesn't do Candid en/decoding, and call it from both `icrc1_transfer` and
+    // `icrc1_get_fee`.
     let fee: NumTokens = Call::bounded_wait(canister_self(), "icrc1_get_fee")
         .await
-        // Since `icrc1_get_fee` already retries internally, just pass the error to the user
-        // if it fails.
-        .map_err(|e|
-            Icrc1TransferError::TransferFailed(match e {
+        .map_err(|e| Icrc1TransferError::TransferFailed(TransferErrorCause::FatalCallError(e)))
+        .and_then(|res| match decode_candid().unwrap() {
+            Ok(fee) => Ok(fee),
+            Err(e) => Icrc1TransferError::TransferFailed(match e {
                 GetFeeError::FatalCallError(e) => TransferErrorCause::FatalCallError(e),
                 GetFeeError::Icrc1ApiViolation(msg) => TransferErrorCause::Icrc1ApiViolation(msg),
-            }))?;
+            })
+        })?;
 
     let no_unknowns = true;
     loop {
