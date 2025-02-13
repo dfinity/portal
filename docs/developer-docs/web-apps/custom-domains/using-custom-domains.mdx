@@ -8,8 +8,6 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
-
-
 By default, all canisters on the Internet Computer are accessible through the
 domain `icp0.io` and their canister ID. In addition to that default domain, one
 can also make a canister accessible under a custom domain using one of the
@@ -119,7 +117,7 @@ by some instructions on [troubleshooting](#troubleshooting).
   Configure the `.well-known` directory to be included by writing the following
   configuration into the `.ic-assets.json`-file:
 
-  ```
+  ```json
   [
     {
         "match": ".well-known",
@@ -134,11 +132,11 @@ by some instructions on [troubleshooting](#troubleshooting).
 
   ```sh
   curl -sL -X POST \
-      -H 'Content-Type: application/json' \
-      https://icp0.io/registrations \
-      --data @- <<EOF
+    -H 'Content-Type: application/json' \
+    https://icp0.io/registrations \
+    --data @- <<EOF
   {
-      "name": "CUSTOM_DOMAIN"
+    "name": "CUSTOM_DOMAIN"
   }
   EOF
   ```
@@ -180,7 +178,7 @@ by some instructions on [troubleshooting](#troubleshooting).
 
   ```sh
   curl -sL -X GET \
-      https://icp0.io/registrations/REQUEST_ID
+    https://icp0.io/registrations/REQUEST_ID
   ```
 
   The status will be one of the following:
@@ -246,11 +244,11 @@ For example:
 
   ```sh
   curl -sL -X POST \
-      -H 'Content-Type: application/json' \
-      https://icp0.io/registrations \
-      --data @- <<EOF
+    -H 'Content-Type: application/json' \
+    https://icp0.io/registrations \
+    --data @- <<EOF
   {
-      "name": "foo.bar.com"
+    "name": "foo.bar.com"
   }
   EOF
   ```
@@ -303,7 +301,7 @@ first need to update the DNS record of your domain, then notify a boundary node:
 
   ```sh
   curl -sL -X PUT \
-      https://icp0.io/registrations/REQUEST_ID
+    https://icp0.io/registrations/REQUEST_ID
   ```
 
   :::info
@@ -324,7 +322,7 @@ and notify a boundary node:
 
   ```sh
   curl -sL -X DELETE \
-      https://icp0.io/registrations/REQUEST_ID
+    https://icp0.io/registrations/REQUEST_ID
   ```
 
   :::info
@@ -354,6 +352,6 @@ principals provided by II depend on the domain from which the login request was
 started. If you authenticate your users through the canister URL and want to
 switch over to a custom domain, users will not have the same principals anymore.
 You can prevent this by setting up
-[custom domains](/docs/current/developer-docs/web-apps/custom-domains/using-custom-domains).
+[alternative origins](/docs/current/developer-docs/identity/internet-identity/alternative-origins/).
 
 :::
