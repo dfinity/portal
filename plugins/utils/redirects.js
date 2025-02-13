@@ -121,16 +121,38 @@ const redirects = `
   /docs/quickstart/4-2-convert-icp-to-cycles /docs/current/tutorials/developer-liftoff/
   /docs/quickstart/4-quickstart /docs/current/tutorials/developer-liftoff/
   /docs/quickstart/5-quickstart /docs/current/tutorials/developer-liftoff/
+<<<<<<< HEAD
+=======
+  /docs/quickstart/1-quickstart /docs/current/tutorials/developer-liftoff/
+  /docs/quickstart/2-quickstart /docs/current/tutorials/developer-liftoff/
+  /docs/quickstart/3-quickstart /docs/current/tutorials/developer-liftoff/
+  /docs/quickstart/4-2-convert-icp-to-cycles /docs/current/tutorials/developer-liftoff/
+  /docs/quickstart/4-quickstart /docs/current/tutorials/developer-liftoff/
+  /docs/quickstart/5-quickstart /docs/current/tutorials/developer-liftoff/
+>>>>>>> 4b60b8079175c13f1f9cb2b458951a9fdde4b3c5
   /docs/quickstart/cycles-faucet /docs/current/developer-docs/getting-started/tokens-and-cycles
   /docs/quickstart/local-quickstart /docs/current/developer-docs/getting-started/deploy-and-manage
   /docs/quickstart/network-quickstart /docs/current/developer-docs/getting-started/deploy-and-manage
   /docs/quickstart/quickstart-intro /docs/current/tutorials/developer-liftoff/
+<<<<<<< HEAD
   /docs/quickstart/newcomers /docs/current/home
   /docs/current/developer-docs/quickstart/* /docs/current/tutorials/developer-liftoff/
   /developers-guide/quickstart /docs/current/tutorials/developer-liftoff/
   /docs/current/developer-docs/quickstart/cycles-faucet /docs/current/developer-docs/getting-started/tokens-and-cycles
   /docs/current/developer-docs/quickstart/windows-wsl /docs/current/developer-docs/getting-started/install
   /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/developer-liftoff/
+=======
+  /docs/quickstart/quickstart-intro /docs/current/tutorials/developer-liftoff/
+  /docs/quickstart/newcomers /docs/current/home
+  /docs/current/developer-docs/quickstart/* /docs/current/tutorials/developer-liftoff/
+  /developers-guide/quickstart /docs/current/tutorials/developer-liftoff/
+  /docs/current/developer-docs/quickstart/* /docs/current/tutorials/developer-liftoff/
+  /developers-guide/quickstart /docs/current/tutorials/developer-liftoff/
+  /docs/current/developer-docs/quickstart/cycles-faucet /docs/current/developer-docs/getting-started/tokens-and-cycles
+  /docs/current/developer-docs/quickstart/windows-wsl /docs/current/developer-docs/getting-started/install
+  /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/developer-liftoff/
+  /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/developer-liftoff/
+>>>>>>> 4b60b8079175c13f1f9cb2b458951a9fdde4b3c5
 
   /docs/rosetta-api/ledger /docs/current/developer-docs/defi/tokens/token-standards
   /docs/rosetta-api/ledger-local-setup /docs/current/developer-docs/defi/tokens/ledger/setup/icp_ledger_setup
@@ -159,26 +181,49 @@ const redirects = `
   /docs/current/developer-docs/build/backend/* /docs/current/motoko/main/getting-started/motoko-introduction
   /sustainability /capabilities/sustainability
   /docs/current/tutorials/deploy_sample_app /docs/current/tutorials/developer-liftoff/
+<<<<<<< HEAD
   /install.sh)" /docs/current/developer-docs/getting-started/install
   /docs/current/motoko/intro/ /docs/current/motoko/main/getting-started/motoko-introduction
   /docs/current/tutorials/create_your_first_app/ /docs/current/tutorials/developer-liftoff/
+=======
+  /docs/current/tutorials/deploy_sample_app /docs/current/tutorials/developer-liftoff/
+  /install.sh)" /docs/current/developer-docs/getting-started/install
+  /docs/current/motoko/intro/ /docs/current/motoko/main/getting-started/motoko-introduction
+  /docs/current/tutorials/create_your_first_app/ /docs/current/tutorials/developer-liftoff/
+  /docs/current/tutorials/create_your_first_app/ /docs/current/tutorials/developer-liftoff/
+>>>>>>> 4b60b8079175c13f1f9cb2b458951a9fdde4b3c5
   /docs/quickstart/quickstart-intro.html /docs/current/developer-docs/getting-started/install
   /docs/ic-identity-guide/auth-how-to.html /docs/current/developer-docs/identity/internet-identity/integrate-internet-identity/
   /docs/current/developer-docs/build/agents/agent-dfinity	/docs/current/developer-docs/developer-tools/off-chain/agents/overview
   /docs/current/tokenomics/identity-auth/what-is-ic-identity /docs/current/developer-docs/identity/internet-identity/overview
   /docs/quickstart/local-quickstart.html /docs/current/developer-docs/getting-started/install
   /language-guide/ /docs/current/tutorials/developer-liftoff/level-0/intro-languages
+<<<<<<< HEAD
+=======
+  /language-guide/ /docs/current/tutorials/developer-liftoff/level-0/intro-languages
+>>>>>>> 4b60b8079175c13f1f9cb2b458951a9fdde4b3c5
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /docs/current/developer-docs/backend/rust/
   /docs/quickstart/network-quickstart.html /docs/current/developer-docs/getting-started/install
   /docs/token-holders/nns-app-quickstart.html /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart
   /docs/current/developer-docs/daos/nns/nns-app-quickstart /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart
   /developers-guide/quickstart.html /docs/current/tutorials/developer-liftoff/
+<<<<<<< HEAD
   /docs/current/tokenomics/identity-auth/auth-how-to /docs/current/developer-docs/identity/internet-identity/overview
   /docs/developers-guide/tutorials-intro.html /docs/current/tutorials/developer-liftoff/
+=======
+  /developers-guide/quickstart.html /docs/current/tutorials/developer-liftoff/
+  /docs/current/tokenomics/identity-auth/auth-how-to /docs/current/developer-docs/identity/internet-identity/overview
+  /docs/developers-guide/tutorials-intro.html /docs/current/tutorials/developer-liftoff/
+  /docs/developers-guide/tutorials-intro.html /docs/current/tutorials/developer-liftoff/
+>>>>>>> 4b60b8079175c13f1f9cb2b458951a9fdde4b3c5
   /docs/quickstart/quickstart.html /docs/current/developer-docs/getting-started/install
   /apis/site/proxy /docs/current/references/http-gateway-protocol-spec
   /docs/developers-guide/concepts/what-is-ic /docs/current/developer-docs/getting-started/network-overview
   /language-guide/index /docs/current/tutorials/developer-liftoff/level-0/intro-languages
+<<<<<<< HEAD
+=======
+  /language-guide/index /docs/current/tutorials/developer-liftoff/level-0/intro-languages
+>>>>>>> 4b60b8079175c13f1f9cb2b458951a9fdde4b3c5
   /docs/current/developer-docs/production/instruction-limits /docs/current/developer-docs/smart-contracts/maintain/resource-limits
   /docs/current/developer-docs/backend/resource-limits /docs/current/developer-docs/smart-contracts/maintain/resource-limits
   /docs/current/concepts/data-centers /docs/current/developer-docs/getting-started/network-overview
@@ -359,7 +404,6 @@ const redirects = `
   /docs/current/developer-docs/integrations/ledger/ledger-local-setup  /docs/current/developer-docs/defi/tokens/ledger/setup/icp_ledger_setup
   /docs/current/developer-docs/integrations/ledger/interact-with-ledger  /docs/current/developer-docs/defi/tokens/ledger/usage/icp_ledger_usage
   /docs/current/developer-docs/integrations/ledger/icp-index-local-setup /docs/current/developer-docs/defi/tokens/indexes
-  /docs/current/developer-docs/integrations/ledger/collecting-dust /docs/current/developer-docs/defi/icp-tokens/account-trimming
   /docs/current/developer-docs/integrations/icrc-1/index /docs/current/references/icrc1-standard
   /docs/current/developer-docs/integrations/icrc-1/ /docs/current/references/icrc1-standard
   /docs/current/developer-docs/integrations/icrc-1/icrc1-ledger-setup /docs/current/developer-docs/defi/tokens/ledger/setup/icrc1_ledger_setup
@@ -662,7 +706,11 @@ const redirects = `
   /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/current/developer-docs/web-apps/application-frontends/default-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/current/developer-docs/getting-started/explore-examples /docs/current/developer-docs/developer-tools/ide/icp-ninja
+<<<<<<< HEAD
   /docs/current/tutorials/developer-journey/index /docs/current/tutorials/developer-liftoff/index
+=======
+  /docs/current/tutorials/developer-journey/index /docs/current/tutorials/developer-liftoff/
+>>>>>>> 4b60b8079175c13f1f9cb2b458951a9fdde4b3c5
   /docs/current/tutorials/developer-journey/level-0/ic-overview /docs/current/tutorials/developer-liftoff/level-0/ic-overview
   /docs/current/tutorials/developer-journey/level-0/ic-terms /docs/current/tutorials/developer-liftoff/level-0/ic-terms
   /docs/current/tutorials/developer-journey/level-0/dev-env /docs/current/tutorials/developer-liftoff/level-0/dev-env
@@ -700,6 +748,7 @@ const redirects = `
   /docs/current/tutorials/developer-journey/level-5/5.5-auction-tutorial /docs/current/tutorials/developer-liftoff/level-5/5.5-auction-tutorial
   /docs/current/tutorials/developer-journey/level-5/5.6-next-steps /docs/current/tutorials/developer-liftoff/level-5/5.6-next-steps
   `
+  
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
   .filter((l) => l.length > 0)
