@@ -118,13 +118,13 @@ Let’s breakdown what this code does:
 
 4. Lastly, a [query method](/docs/building-apps/interact-with-canisters/query-calls) called `greet` is defined. Query methods are read-only operations and simply return data from the canister. They cannot alter the canister’s state. This query method will return the text stored in `greeting`, followed by the text passed to the method. This method’s syntax can be broken down and explained further:
 
-  - `public`: Enables the method to be publicly callable by users or other canisters.
-
-  - `query`: Defines the type of call the method accepts.
-
-  - `greet`: The method's name.
-
-  - `(name : Text) : async Text`: Indicates that this method expects an input of type `Text` when called. It will be stored in the variable `name`. The method returns a `Text` value to the caller in an `async` manner.
+    - `public`: Enables the method to be publicly callable by users or other canisters.
+  
+    - `query`: Defines the type of call the method accepts.
+  
+    - `greet`: The method's name.
+  
+    - `(name : Text) : async Text`: Indicates that this method expects an input of type `Text` when called. It will be stored in the variable `name`. The method returns a `Text` value to the caller in an `async` manner.
 
 The method’s body returns `Text` concatenating `Hello ,` the input value `name`, and an exclamation mark.
 
