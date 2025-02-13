@@ -537,13 +537,11 @@ The following format should be used for code snippets and code blocks:
 
     - Code sourced from the @dfinity/examples repo can be referenced by its submodule file path:
 
-        ```motoko title="src/PROJECT_NAME_backend/main.mo" file=../../references/samples/motoko/counter/src/Main.mo#L5-L9
-        ```
+        > motoko title="src/PROJECT_NAME_backend/main.mo" file=../../references/samples/motoko/counter/src/Main.mo#L5-L9
 
     - Code sourced from an external GitHub repo can be referenced via the full GitHub URL:
 
-        ```rust title="src/PROJECT_NAME_backend/src/lib.rs" reference https://github.com/letmejustputthishere/icp-evm-coprocessor-starter/blob/main/canisters/chain_fusion/src/lib.rs
-        ```
+        > rust title="src/PROJECT_NAME_backend/src/lib.rs" reference https://github.com/letmejustputthishere/icp-evm-coprocessor-starter/blob/main/canisters/chain_fusion/src/lib.rs
 
 - In-line code references to commands, language-specific methods, or other code-related terms should be emphasized using in-line code expressions:
 
