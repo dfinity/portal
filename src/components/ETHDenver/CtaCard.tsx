@@ -1,0 +1,37 @@
+import React from "react";
+import Link from "@docusaurus/Link";
+import LinkArrowRight from "../Common/Icons/LinkArrowRight";
+import GradientBackground from "./GradientBackground";
+
+export const CtaCard = ({ title, description, href, backgroundColor, backgroundSegments = [[1, 2, 3]] }: { title: string, description: string, backgroundColor: string[], backgroundSegments: number[][], href: string }) => {
+  return (
+    <Link
+      className="relative link-primary text-black link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform overflow-hidden rounded-xl"
+      href={href}
+    >
+      <GradientBackground
+        color1={backgroundColor[0]}
+        color2={backgroundColor[1]}
+        segments={backgroundSegments}
+        isFullWidth={false}
+      />
+      <article className="relative z-2 flex flex-col gap-8 justify-between items-start p-6 aspect-[1/1.1] md:aspect-[1/1.3]">
+        <h3 className="tw-heading-alt-2 mb-3">
+          <span dangerouslySetInnerHTML={{ __html: title }} />
+        </h3>
+
+        <div>
+          <p className="md:tw-lead text-black-60 mb-2">
+            {description}
+          </p>
+          <div className="button-round-icon mt-auto !bg-transparent !text-black !border-black/20 hover:!bg-black/10 hover:!border-black">
+            <LinkArrowRight />
+          </div>
+        </div>
+
+      </article>
+    </Link>
+  );
+};
+
+export default CtaCard;
