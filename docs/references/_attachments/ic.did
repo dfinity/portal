@@ -248,6 +248,18 @@ type canister_status_result = record {
     settings : definite_canister_settings;
     module_hash : opt blob;
     memory_size : nat;
+    memory_metrics : record {
+        // execution memory
+        heap_size : nat;
+        stable_size : nat;
+        global_size : nat;
+        wasm_binary_size : nat;
+        custom_sections_size : nat;
+        // system memory
+        canister_history_size : nat;
+        wasm_chunk_store_size : nat;
+        snapshot_size : nat;
+    };
     cycles : nat;
     reserved_cycles : nat;
     idle_cycles_burned_per_day : nat;
