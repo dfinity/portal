@@ -15,7 +15,7 @@ In the case of network issues or other unexpected behavior, ICP clients (such as
 ingress update calls may be unable to determine whether their ingress
 request has been processed. For example, this can happen if the client loses its
 connection until the request status has been removed from the state tree, since ICP will remove the request from the system state tree some time after the ingress expiry.
-Similarly, canisters which call other canisters using calls with best-effort responses may be unable to determine whether the call was successful or not.
+Similarly, canisters which call other canisters using bounded-wait calls may be unable to determine whether the call was successful or not.
 
 This can be risky as the callers (external users or applications for ingress messages, or canisters for inter-canister calls) might decide to retry transactions, potentially leading to serious security vulnerabilities such as double spending.
 
@@ -31,7 +31,7 @@ Given an idempotent endpoint, you can implement retries from an external applica
 
 ![Retrying an idempotent call](/img/docs/retry_idempotency.png)
 
-The situation is similar for inter-canister calls with best-effort responses. Given an idempotent endpoint, the calling canister can keep retrying until a response other than `SYS_UNKNOWN` is observed, or give up after a timeout, if waiting indefinitely is not an option.
+The situation is similar for bounded-wat inter-canister calls. Given an idempotent endpoint, the calling canister can keep retrying until a response other than `SYS_UNKNOWN` is observed, or give up after a timeout, if waiting indefinitely is not an option.
 
 Below are two approaches to making endpoints idempotent: sequence numbers and (time window) ID deduplication.
 
