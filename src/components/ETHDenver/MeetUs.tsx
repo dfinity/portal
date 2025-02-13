@@ -33,16 +33,14 @@ const MeetUs: FC<{
             </span>
           </motion.p>
           <MotionLink
-            className="link-white link-with-icon text-[#AE9EFF]"
+            className="link-with-icon link-white text-[#AE9EFF]"
             href="https://x.com/dfinity"
             target="_blank"
             rel="noopener noreferrer"
             variants={transitions.item}
           >
             <TwitterIcon />
-            <span className="tw-paragraph-sm">
               Follow us for event updates
-            </span>
           </MotionLink>
         </div>
       </AnimateSpawn>

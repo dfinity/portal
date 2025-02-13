@@ -69,7 +69,7 @@ const Hero: FC<{
                     Join the Hackathon
                   </Link>
                   <Link
-                    className="link-with-icon"
+                    className="link-primary link-with-icon"
                     href="https://x.com/dfinity"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -86,7 +86,7 @@ const Hero: FC<{
                 variants={transitions.item}
               >
                 <Link
-                    href="https://app.buidlbox.io/guidl/dfinity"
+                    href="https://www.ethdenver.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className=""
