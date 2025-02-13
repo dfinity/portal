@@ -32,7 +32,7 @@ const Hero: FC<{
 
             <div className="uppercase mb-16 md:mb-0">
               <motion.h1
-                className="tw-heading-alt-1 text-right text-[18vw] md:text-[10vw]"
+                className="tw-heading-alt-1 md:text-right text-[18vw] md:text-[10vw] lg:text-[160px]"
                 variants={transitions.slideInFromRight}
               >
                 <span className="block">UNIFYING WEB3</span>
