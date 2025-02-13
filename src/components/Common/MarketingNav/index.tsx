@@ -467,7 +467,7 @@ const MarketingNav = () => {
             {/* Back button + close button */}
             <div className="flex items-center justify-between">
               <button
-                className="flex items-center gap-6 tw-heading-7 font-circular bg-transparent p-0 text-left border-none text-black"
+                className="flex items-center gap-6 tw-heading-5 font-circular bg-transparent p-0 text-left border-none text-black"
                 onClick={() => setSecondaryMobileNavOpen(false)}
               >
                 <LinkArrowLeft />
