@@ -47,7 +47,7 @@ const BeAPioneer: FC<{
           >
             <h2 className="w-5/12 mx-auto tw-heading-alt-2">{title}</h2>
             <p className="w-6/12 mx-auto tw-lead text-black-60">{body}</p>
-            <Link className="button-outline text-[#3B00B9] border border-solid normal-case mt-4" to={ctaLink}>
+            <Link className="button-outline mt-4" to={ctaLink}>
               {cta}
             </Link>
           </motion.div>

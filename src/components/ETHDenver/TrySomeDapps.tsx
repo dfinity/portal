@@ -127,7 +127,7 @@ const TrySomeDapps: FC<{
             className="mt-96 pt-20 md:pt-30 text-center flex flex-col items-center gap-6"
             variants={transitions.item}
           >
-            <Link className="button-primary normal-case" href="/ecosystem">
+            <Link className="button-primary" href="/ecosystem">
               Check out the Ecosystem
             </Link>
           </AnimateSpawn>

@@ -44,7 +44,7 @@ const JointTheMovement: FC<{
               </span>
             </motion.p>
             <MotionLink
-              className="button-outline-white text-[#AE9EFF] border-white-20 border border-solid"
+              className="button-outline-white"
               href="https://identity.ic0.app/"
               variants={transitions.item}
             >
