@@ -82,7 +82,7 @@ Before you start, verify that you have:
 
 ### Subtopic 1
 
-Include any information about a subtopic of Topic 1 here. 
+Include any information about a subtopic of Topic 1 here.
 
 ## Topic 2
 
@@ -375,6 +375,13 @@ The following spelling, grammar, and word choice rules should be followed:
 - Do not refer to the Internet Computer as a system or a platform. Say "Internet Computer" or "protocol" instead.
 - Regarding spelling and grammar, American spelling and grammar should be used with the exception that all article titles follow British capitalization rules (see details in the Capitalization section).
 - Assure that the language in the document reads well for non-native English speakers, and avoid phrases or sayings that may be confusing, such as "Dig in."
+- Avoid using language that implies learning or education, such as:
+  
+    - "What you will learn"
+    - "Learning objectives"
+    - "Educational content"
+    - "Learning about canisters"
+    
 - Avoid informal, personal thoughts or otherwise unnecessary language within the developer docs. A few examples of this might be:
 
     - Referring to the default configuration as the 'boring default configuration.'
@@ -450,7 +457,7 @@ The following bullet point format and standards should be followed:
         - Subtopic bullet point.
     - Bullet point 2.
 
-Bullet points should end in a period unless otherwise specified. An exception to this is the Developer Ladder index pages. Bullet points indicating the title of subpages (0.1 Introduction to the Internet Computer, 0.2 Internet Computer terminology, etc.) intentionally do not end in a period.
+Bullet points should end in a period unless otherwise specified. An exception to this is the Developer Liftoff index pages. Bullet points indicating the title of subpages (0.1 Introduction to the Internet Computer, 0.2 Internet Computer terminology, etc.) intentionally do not end in a period.
 
 ## Numbered lists
 
