@@ -28,7 +28,7 @@ const Hero: FC<{
           className="overflow-hidden text-black pt-20"
           ref={heroRef}
         >
-          <div className="container-12 pt-12 mb-20 md:mb-20 md:pt-36">
+          <div className="container-12 pt-12 mb-8 md:mb-20 md:pt-36">
 
             <div className="uppercase mb-16 md:mb-0">
               <motion.h1
@@ -40,7 +40,7 @@ const Hero: FC<{
               </motion.h1>
             </div>
 
-            <div className="flex justify-between items-end flex-col md:flex-row gap-8 mb-10 md:mb-16 ">
+            <div className="flex justify-between md:items-end flex-col md:flex-row gap-12 md:gap-8">
               <div className="md:w-5/10">
                 <motion.h2
                   className="tw-lead md:tw-heading-3 mb-6 md:mb-8"
@@ -81,23 +81,22 @@ const Hero: FC<{
 
               </div>
 
-              <motion.div
-                className="w-full md:w-3/12"
+                <motion.div
+                className="w-full md:w-3/12 max-w-[16rem] "
                 variants={transitions.item}
-              >
+                >
                 <Link
-                    href="https://www.ethdenver.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className=""
+                  href="https://www.ethdenver.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <img 
-                    src="/img/ethdenver/logo-ethdenver.png"
-                    alt="Logo ETHDenver"
-                    className="w-full pb-2" 
+                  src="/img/ethdenver/logo-ethdenver.png"
+                  alt="Logo ETHDenver"
+                  className="w-full pb-2" 
                   />
                 </Link>
-              </motion.div>
+                </motion.div>
             </div>
 
           </div>

@@ -11,7 +11,7 @@ const LearnMore: FC<{
   return (
     <section id={id}>
       <AnimateSpawn
-        className="md:container-12 pt-20 md:py-30"
+        className="md:container-12 pt-20 py-16 md:py-30"
         variants={transitions.container}
       >
         <div className="relative rounded-xl bg-[#0A0023] flex flex-col md:flex-row gap-8 justify-between items-start">

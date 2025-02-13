@@ -45,8 +45,8 @@ const BeAPioneer: FC<{
             variants={transitions.item}
             className="text-center"
           >
-            <h2 className="w-5/12 mx-auto tw-heading-alt-2">{title}</h2>
-            <p className="w-6/12 mx-auto tw-lead text-black-60">{body}</p>
+            <h2 className="md:w-5/12 mx-auto tw-heading-alt-2">{title}</h2>
+            <p className="md:w-6/12 mx-auto tw-lead text-black-60">{body}</p>
             <Link className="button-outline mt-4" to={ctaLink}>
               {cta}
             </Link>

@@ -69,7 +69,7 @@ function EthDenverPage() {
         <LearnMore id="learn-more" />
         
         {/* Be a pioneer */}
-        <div className="pb-40">
+        <div className="pb-16 md:pb-40">
           <BeAPioneer
             id="start-building"
             title="Be a pioneer of Web3"

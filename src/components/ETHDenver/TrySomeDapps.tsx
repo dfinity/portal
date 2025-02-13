@@ -53,7 +53,7 @@ const TrySomeDapps: FC<{
             <motion.article
               variants={transitions.item}
               key={p.name + i}
-              className="rounded-xl bg-white p-6 md:p-8 no-underline text-black hover:no-underline hover:text-black flex flex-col "
+              className="rounded-xl bg-white p-6 md:p-8 no-underline text-black hover:no-underline hover:text-black flex flex-col relative"
             >
               <img
                 src={p.logo}

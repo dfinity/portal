@@ -10,7 +10,7 @@ const Bounties: FC<{
   id: string;
 }> = ({ id }) => {
   return (
-    <section className="container-10 py-20 md:py-40" id={id}>
+    <section className="container-10 py-8 md:py-40" id={id}>
       <AnimateSpawn
         className="flex flex-col md:flex-row mb-20 md:mb-40"
         variants={transitions.container}
