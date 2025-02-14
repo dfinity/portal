@@ -351,7 +351,7 @@ const Education = () => {
     {
       title: (
         <h2 className={"text-white"}>
-          Start your developer ladder with Jessie
+          Start your developer liftoff with Jessie
         </h2>
       ),
       subtitle: (
@@ -363,7 +363,7 @@ const Education = () => {
       cta: (
         <Link
           className="button-transparent button-with-icon pl-0"
-          href="/docs/current/tutorials/developer-journey/"
+          href="/docs/current/tutorials/developer-liftoff/"
         >
           Start tutorials
           <LinkArrowRight />
