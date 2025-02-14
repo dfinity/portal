@@ -2273,25 +2273,9 @@ Indicates various information about the canister. It contains:
 
 -   A SHA256 hash of the module installed on the canister. This is `null` if the canister is empty.
 
--   The total memory usage of the canister, which includes all types of memory consumed by the canister.
+-   The actual memory usage of the canister, representing the total memory consumed by the canister.
 
--   Detailed breakdown of memory usage into individual components (in bytes):
-
-    * `heap_size`: Represents the total Wasm memory usage of the execution state, which includes the heap memory used by the canister's WebAssembly code.
-
-    * `stable_size`: Indicates the total stable memory usage of the execution state, which is the memory that persists across canister upgrades.
-
-    * `global_size`: The total global memory usage of the execution state, encompassing all global variables used by the canister.
-
-    * `wasm_binary_size`: The total memory occupied by the Wasm binary itself within the execution state.
-
-    * `custom_sections_size`: The memory used by custom sections within the execution state, which may include additional metadata or configuration data.
-
-    * `canister_history_size`: The total memory allocated for storing the canister's history within the system state, which includes records of past actions and changes.
-
-    * `wasm_chunk_store_size`: The memory used by the Wasm chunk store within the system state, which is used to store large Wasm modules in chunks.
-
-    * `snapshot_size`: The total memory consumed by snapshots within the system state, which are used to capture the state of the canister at specific points in time.
+-   A record containing detailed breakdown of memory usage into individual components.
 
 -   The cycle balance of the canister.
 
@@ -2310,6 +2294,26 @@ Indicates various information about the canister. It contains:
     * `response_payload_bytes_total`: the total number of query and composite query response payload (reply data or reject message) bytes.
 
 Only the controllers of the canister or the canister itself can request its status.
+
+#### Memory Metrics {#ic-canister_status-memory_metrics}
+
+    * `heap_size`: Represents the Wasm memory usage of the canister, i.e. the heap memory used by the canister's WebAssembly code.
+
+    * `stable_size`: Represents the stable memory usage of the canister, which is the memory that persists across canister upgrades.
+
+    * `global_size`: Represents the memory usage of the global variables that the canister is using.
+
+    * `wasm_binary_size`: Represents the memory occupied by the Wasm binary that is currently installed on the canister.
+
+    * `custom_sections_size`: Represents the memory used by custom sections defined by the canister, which may include additional metadata or configuration data.
+
+    * `canister_history_size`: Represents the memory used for storing the canister's history.
+
+    * `wasm_chunk_store_size`: Represents the memory used by the Wasm chunk store of the canister.
+
+    * `snapshot_size`: Represents the memory consumed by all snapshots that belong to this canister.
+
+All sizes are expressed in bytes.
 
 ### IC method `canister_info` {#ic-canister_info}
 
