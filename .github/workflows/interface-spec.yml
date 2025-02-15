@@ -38,7 +38,7 @@ jobs:
         ./didc check docs/references/_attachments/ic.did
   interface-spec-tag:
     name: Tag PR with interface-spec
-    if: ${{ github.event_name == 'pull_request' }}
+    if: ${{ github.event_name == 'pull_request_target' }}
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
