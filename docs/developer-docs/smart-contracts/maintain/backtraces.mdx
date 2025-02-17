@@ -29,7 +29,7 @@ For example, if the following Rust canister accidentally performs an out of boun
 	}
 ```
 
-then the resulting stable memory out of bounds error will also contain the following backtrace which can help determine that the error is in `inner_2` which is reached via `outer` and `inner`:
+The resulting stable memory out of bounds error will also contain the following backtrace which can help determine that the error is in `inner_2` which is reached via `outer` and `inner`:
 
 ```
 Canister Backtrace:
