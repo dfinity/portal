@@ -58,7 +58,7 @@ Refer to the language documentation ([Motoko](/docs/current/motoko/main/writing-
 
 ## Bounded- vs unbounded-wait calls {#ic-call-types}
 
-ICP supports two kind of inter-canister calls:
+ICP supports two kinds of inter-canister calls:
 
 * Unbounded wait calls instruct the system to wait for as long as it takes to get a response to a call. The response might still be a failure, either because the request didn't get delivered to the callee, or because the callee rejected the request or produced an error while processing it. The unbounded wait provides the caller with the guarantee that it will learn the exact response to the call, which is why we also sometimes refer to these calls as *guaranteed response calls*. If the callee produces a response (which may be unsuccessful, i.e., an error during call processing), that exact response will be delivered to the caller. Furthermore, if the request isn't successfully delivered to the callee (which can happen during high load, callee running out of cycles, and other reasons), the response will notify the caller of this.
 
