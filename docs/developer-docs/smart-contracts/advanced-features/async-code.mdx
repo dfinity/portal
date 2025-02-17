@@ -67,7 +67,7 @@ ICP supports two kind of inter-canister calls:
 While unbounded-wait calls require the caller to handle one error condition (unknown call status) less, bounded-wait calls also have significant advantages:
 
 * If the callee is unresponsive (which could happen because of high load on the callee, high load or an outage on the callee's subnet, or even because the callee is malicious and delays the response on purpose), a caller that made an unbounded-wait call stalls and has no control over when it can resume processing or provide an answer. The callee that keeps processing the request forever forces the caller to also wait forever for a response. As safe upgrades require stopping the canister and waiting for all outstanding calls to return, canisters that issue unbounded-wait calls may be prevented from safely upgrading, potentially forever.
-* Bounded-wait calls scale much better. When the system is under high load, canisters are much more likely to still be able to issue bounded-wait calls than unbounded-wait calals.
+* Bounded-wait calls scale much better. When the system is under high load, canisters are much more likely to still be able to issue bounded-wait calls than unbounded-wait calls.
 
 Here are some guidelines how to choose between the two types of calls:
 
