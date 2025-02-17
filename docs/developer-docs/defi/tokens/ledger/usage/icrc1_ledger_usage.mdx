@@ -86,7 +86,7 @@ pub async fn icrc1_get_fee<P>(ledger: Principal, should_retry: P) -> Result<NumT
         match Call::bounded_wait(ledger, "icrc1_fee")
             .await
         {
-            Ok(res) => match res.decode_candid() {
+            Ok(res) => match res.candid() {
                 Ok(fee) => return Ok(fee),
                 Err(msg) => return GetFeeError::Icrc1ApiViolation(format!("Unable to decode the fee: {:?}", res)),
             },
