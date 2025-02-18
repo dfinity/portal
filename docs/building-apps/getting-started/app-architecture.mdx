@@ -133,15 +133,9 @@ The method’s body returns `Text` concatenating `Hello ,` the input value `name
 
 To interact with the canister's greet method, you will need to deploy the canister, then make a call to it.
 
-<<<<<<< HEAD
 If you are using [ICP Ninja](https://icp.ninja/), you can click the deploy button, and Ninja will return a URL that allows you to call the backend through a generic API interface.
 
 If you are using the IC SDK, you can run the commands:
-=======
-If you are using [ICP Ninja](https://icp.ninja/), you can click the deploy button, then access the backend canister’s URL, which will provide an API interface to call the canister’s methods from your web browser.
-
-If you are using the IC SDK from the command line, you can run the commands:
->>>>>>> 68e9d0fe91753fa119704df822ece100aa3b76bd
 
 ```
 dfx deploy --playground
@@ -167,6 +161,24 @@ The canister will return the following output:
 The `dfx canister call` command sent a call to the `hello_backend` canister that is deployed to mainnet for free using the `--playground` argument. The call was sent to the `greet` method, which was given the input `"ICP."` The backend canister processed the call and returned the response defined in the method.
 
 Since the method is defined as a `query` method, the canister simply returns data to the caller; it does not alter the canister's state.
+
+In contrast, `setGreeting` is an update call that **does** alter the canister’s state. Calling it will change the data stored in the `greeting` variable, which will then result in the `greet` function returning a different response when called.
+
+Make a call to the `setGreeting` function with the input `“Hi, “`:
+
+```
+dfx canister call hello_world_backend --playground setGreeting "Hi, "
+```
+
+Then, call the `greet` function again: 
+
+```
+dfx canister call hello_world_backend --playground greet ICP
+```
+
+Observe the new value of the `greeting` variable:
+
+("Hi, ICP!")
 
 ## Frontend
 
