@@ -22,7 +22,7 @@ When you have a canister running, either locally or on the mainnet, you have two
 
 ### Structuring data
 
-One of the first responsibilities of an agent is to structure data. As was discussed in previous modules, such as [2.2: Advanced canister calls](/docs/current/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls), calls to ICP can be an update or a query call. An agent submits a `POST` request to the canister's API at the URL `/api/v2/canister/<effective_canister_id>/call`. This post request contains the following components:
+One of the first responsibilities of an agent is to structure data. As was discussed in previous modules, such as [2.2: Advanced canister calls](/docs/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls), calls to ICP can be an update or a query call. An agent submits a `POST` request to the canister's API at the URL `/api/v2/canister/<effective_canister_id>/call`. This post request contains the following components:
 
 - `request_type`.
 - Authentication, comprised of the `sender`, `nonce`, and `ingress_expiry`.
@@ -85,7 +85,7 @@ Let's take a look at using the JavaScript agent to connect to ICP in a web brows
 
 ### Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3: Developer environment setup](/docs/current/tutorials/developer-liftoff/level-0/dev-env).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3: Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
 
 :::info
 Certain versions of Node.js may cause errors with the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent). It is recommended to use versions 12, 14, or 16 to avoid potential errors.
@@ -278,4 +278,4 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 Next, let's take a look at identities and authentication.
 
-- [3.5 Identities and authentication](/docs/current/tutorials/developer-liftoff/level-3/3.5-identities-and-auth).
+- [3.5 Identities and authentication](/docs/tutorials/developer-liftoff/level-3/3.5-identities-and-auth).

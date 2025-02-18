@@ -19,16 +19,16 @@ import '/src/components/CenterImages/center.scss';
 
 Recall from previous modules that ICP is the native token of the Internet Computer. ICP tokens have three key functionalities on the Internet Computer:
 
-- Creating cycles by converting ICP into cycles, which are then used to pay for canister computation and resources. The developer liftoff briefly covered converting ICP into cycles in [1.4 Acquiring and using cycles](/docs/current/tutorials/developer-liftoff/level-1/1.4-using-cycles).
+- Creating cycles by converting ICP into cycles, which are then used to pay for canister computation and resources. The developer liftoff briefly covered converting ICP into cycles in [1.4 Acquiring and using cycles](/docs/tutorials/developer-liftoff/level-1/1.4-using-cycles).
 
-- Rewarding NNS participants by providing ICP tokens to users that stake ICP in neurons and actively participate in voting on proposals. You'll dive deeper into NNS rewards in [4.4 NNS governance and staking](/docs/current/tutorials/developer-liftoff/level-4/4.4-nns-governance).
+- Rewarding NNS participants by providing ICP tokens to users that stake ICP in neurons and actively participate in voting on proposals. You'll dive deeper into NNS rewards in [4.4 NNS governance and staking](/docs/tutorials/developer-liftoff/level-4/4.4-nns-governance).
 >>>>>>> master:docs/tutorials/developer-liftoff/level-4/4.1-icp-ledger.mdx
 
 To interact with the ICP token, such as sending it to another account or converting it into cycles, a specialized canister known as the ICP ledger canister can be used. The ledger canister is used to hold ledger accounts and record a traceable history of all ICP transactions.
 
 In this tutorial, you'll dive into how to deploy a local instance of the ICP ledger canister and how to interact with it. This workflow is important to learn since your local replica cannot access the mainnet ICP ledger, so to test your project's integration with the ICP ledger, you need to deploy a local instance of the ledger. The local instance, however, will not have the history and balances that the mainnet ICP ledger contains.
 
-The ICP ledger can only be used to interact with ICP tokens; to interact with other tokens, such as ICRC tokens, an ICRC ledger will need to be used. This ledger is covered in the module [4.2 ICRC tokens](/docs/current/tutorials/developer-liftoff/level-4/4.2-icrc-tokens).
+The ICP ledger can only be used to interact with ICP tokens; to interact with other tokens, such as ICRC tokens, an ICRC ledger will need to be used. This ledger is covered in the module [4.2 ICRC tokens](/docs/tutorials/developer-liftoff/level-4/4.2-icrc-tokens).
 
 ## Accounts
 
@@ -58,11 +58,11 @@ To deploy the ICP ledger canister locally, there are two workflows:
 
 - Deploy the ICP ledger canister locally using the Wasm file. This is the method that will be showcased in this tutorial since it provides greater control over the deployment, such as defining the ledger's minting account, customizing the initialization arguments, and choosing which Wasm version of the ledger to use.
 
-The ICP ledger canister running on the mainnet is not meant to be used for other token deployments. It contains legacy code designed to be backwards compatible and should not be used for developing new ledgers. To develop a new token or ledger, the ICRC ledger can be used, which will be covered in a [future module](/docs/current/tutorials/developer-liftoff/level-4/4.2-icrc-tokens).
+The ICP ledger canister running on the mainnet is not meant to be used for other token deployments. It contains legacy code designed to be backwards compatible and should not be used for developing new ledgers. To develop a new token or ledger, the ICRC ledger can be used, which will be covered in a [future module](/docs/tutorials/developer-liftoff/level-4/4.2-icrc-tokens).
 
 ### Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/current/tutorials/developer-liftoff/level-0/dev-env).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
 
 ### Creating a new project
 
@@ -351,4 +351,4 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 Next, you'll dive into ICRC-1 tokens and how to deploy your own token using the ICRC-1 standard.
 
-- [4.2 ICRC-1 tokens](/docs/current/tutorials/developer-liftoff/level-4/4.2-icrc-tokens).
+- [4.2 ICRC-1 tokens](/docs/tutorials/developer-liftoff/level-4/4.2-icrc-tokens).
