@@ -215,7 +215,7 @@ const redirects = `
   /docs/quickstart/4-2-convert-icp-to-cycles /docs/tutorials/developer-liftoff/
   /docs/quickstart/4-quickstart /docs/tutorials/developer-liftoff/
   /docs/quickstart/5-quickstart /docs/tutorials/developer-liftoff/
-  /docs/quickstart/cycles-faucet /docs/developer-docs/getting-started/tokens-and-cycles
+  /docs/quickstart/cycles-faucet /docs/building-apps/getting-started/tokens-and-cycles
   /docs/quickstart/local-quickstart /docs/building-apps/getting-started/quickstart
   /docs/quickstart/network-quickstart /docs/building-apps/getting-started/quickstart
   /docs/quickstart/quickstart-intro /docs/tutorials/developer-liftoff/
@@ -1056,7 +1056,7 @@ const redirects = `
 
   /docs/references/clang-supported-languages /docs/home
 
-  /docs/current/tutorials/developer-journey/index /docs/tutorials/developer-liftoff/index
+  /docs/current/tutorials/developer-journey/index /docs/tutorials/developer-liftoff/
   /docs/current/tutorials/developer-journey/index /docs/tutorials/developer-liftoff/
   /docs/current/tutorials/developer-journey/level-0/ic-overview /docs/tutorials/developer-liftoff/level-0/ic-overview
   /docs/current/tutorials/developer-journey/level-0/ic-terms /docs/tutorials/developer-liftoff/level-0/ic-terms
