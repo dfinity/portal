@@ -2085,7 +2085,7 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
     These system calls trap if `src` + `size` or `dst` + 16 exceed the size of the WebAssembly memory. Otherwise, they return an `i32` with the following meaning:
     - `0 (00)`: Success. The result can be found at the memory address `dst`.
     - `1 (01)`: Invalid curve or algorithm. Memory at `dst` is left unchanged. 
-    - `2 (10)`: Invalid key name for the given scheme/curve. Memory at `dst` is left unchanged. 
+    - `2 (10)`: Invalid key name for the given combination of signing scheme and curve/algorithm. Memory at `dst` is left unchanged. 
 
 ### Debugging aids
 
