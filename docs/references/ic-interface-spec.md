@@ -7568,7 +7568,7 @@ ic0.cost_sign_with_ecdsa<es>(src: I, size: I, ecdsa_curve: i32, dst: I) : i32 =
 I ∈ {i32, i64}
 ic0.cost_sign_with_schnorr<es>(src: I, size: I, algorithm: i32, dst: I) : i32 = 
   known_keys = arbitrary()
-  known_curves = arbitrary()
+  known_algorithms = arbitrary()
   key_name = copy_from_canister<es>(src, size)
   if algorithm ∉ known_algorithms then
     return 1
