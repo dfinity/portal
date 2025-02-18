@@ -119,13 +119,13 @@ Let’s breakdown what this code does:
 
 4. Lastly, a [query method](/docs/building-apps/interact-with-canisters/query-calls) called `greet` is defined. Query methods are read-only operations and simply return data from the canister. They cannot alter the canister’s state. This query method will return the text stored in `greeting`, followed by the text passed to the method. This method’s syntax can be broken down and explained further:
 
-  - `public`: Enables the method to be publicly callable by users or other canisters.
-
-  - `query`: Defines the type of call the method accepts.
-
-  - `greet`: The method's name.
-
-  - `(name : Text) : async Text`: Indicates that this method expects an input of type `Text` when called. It will be stored in the variable `name`. The method returns a `Text` value to the caller in an `async` manner.
+    - `public`: Enables the method to be publicly callable by users or other canisters.
+  
+    - `query`: Defines the type of call the method accepts.
+  
+    - `greet`: The method's name.
+  
+    - `(name : Text) : async Text`: Indicates that this method expects an input of type `Text` when called. It will be stored in the variable `name`. The method returns a `Text` value to the caller in an `async` manner.
 
 The method’s body returns `Text` concatenating `Hello ,` the input value `name`, and an exclamation mark.
 
@@ -133,9 +133,15 @@ The method’s body returns `Text` concatenating `Hello ,` the input value `name
 
 To interact with the canister's greet method, you will need to deploy the canister, then make a call to it.
 
+<<<<<<< HEAD
 If you are using [ICP Ninja](https://icp.ninja/), you can click the deploy button, and Ninja will return a URL that allows you to call the backend through a generic API interface.
 
 If you are using the IC SDK, you can run the commands:
+=======
+If you are using [ICP Ninja](https://icp.ninja/), you can click the deploy button, then access the backend canister’s URL, which will provide an API interface to call the canister’s methods from your web browser.
+
+If you are using the IC SDK from the command line, you can run the commands:
+>>>>>>> 68e9d0fe91753fa119704df822ece100aa3b76bd
 
 ```
 dfx deploy --playground
@@ -213,4 +219,8 @@ When the agent makes a call to the backend canister, it uses these declaration f
 
 In this example, the user interface includes a text input box and a button to submit the input. When the button is pressed, the ICP JavaScript agent sends a `query` request to the `hello_backend` canister's `greet` method that includes the user's text input.
 
+<<<<<<< HEAD
 The backend processes the request, then responds to the agent with an outgoing message that includes the result of the method, in this case, `"Hello, <name>!".`
+=======
+The backend processes the request, then responds to the agent with an outgoing message that includes the result of the method, in this case, `"Hello, <name>!"`
+>>>>>>> 68e9d0fe91753fa119704df822ece100aa3b76bd
