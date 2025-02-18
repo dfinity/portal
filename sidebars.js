@@ -17,11 +17,11 @@ build: [
   },
   {
     type: "category",
-    label: "Essentials",
+    label: "ICP essentials",
     items: [
       {
         type: "doc",
-        label: "Network overview",
+        label: "Network architecture",
         id: "building-apps/essentials/network-overview",
       },
       {

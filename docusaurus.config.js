@@ -632,13 +632,19 @@ const config = {
     externalRedirectsPlugin({
       redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],
     }),
-
     [
       "@docusaurus/plugin-client-redirects",
       {
         fromExtensions: ["html", "md"],
         redirects: getRedirects(),
-        createRedirects: (existingPath) => getSplatRedirects(existingPath),
+        createRedirects(existingPath) {
+          if (existingPath.includes('/docs/current')) {
+            return [
+              existingPath.replace('/docs', '/docs/current'),
+            ];
+          }
+          return undefined;
+        },
       },
     ],
   ],
