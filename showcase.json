@@ -3061,7 +3061,11 @@
   {
     "id": "Cani",
     "name": "CANI",
-    "tags": ["NFT", "SocialFi", "Creator Economy"],
+    "tags": [
+      "NFT",
+      "SocialFi",
+      "Creator Economy"
+    ],
     "description": "CANI combines decades of music industry expertise with blockchain innovation to revolutionise the creator economy.",
     "usesInternetIdentity": true,
     "website": "https://canistore.io/",
