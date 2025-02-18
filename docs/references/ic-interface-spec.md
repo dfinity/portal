@@ -2077,7 +2077,7 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
 
     These system calls accept a key name via a textual representation for the specific signing scheme / key of a given size stored in the heap memory starting at offset `src`. They also accept an `i32` with the following interpretations:
     - `ecdsa_curve: 0 → secp256k1`
-    - `schnorr_algorithm: 0 → bip340secp256k1, 1 → ed25519`
+    - `algorithm: 0 → bip340secp256k1, 1 → ed25519`
     - `vetkd_curve: 0 → bls12_381`
 
     See [`sign_with_ecdsa`](#ic-sign_with_ecdsa), [`sign_with_schnorr`](#ic-sign_with_schnorr) and [`vetkd_encrypted_key`](#ic-vetkd_encrypted_key) for more information.
