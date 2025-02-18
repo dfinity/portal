@@ -31,7 +31,7 @@ This page will cover default project structure, how to interact with a backend c
 
 ## Project structure and files​
 
-A default application, such as the [“Hello, world!” example](https://github.com/dfinity/portal/pull/5188) available on ICP Ninja, uses the following project composition:
+A default application, such as the [“Hello, world!”](https://icp.ninja/projects/hello-world) example available on ICP Ninja, has the following structure:
 
 ```
 hello
@@ -55,9 +55,9 @@ hello
 
 ### dfx.json​
 
-The `dfx.json` file within the `hello` project directory defines two canisters, their types, and their source files:
+The `dfx.json` file in the root  directory defines the canisters that make up the application and where their source code is located. The `hello` project has two canisters, the backend in Motoko and an asset canister for the frontend:
 
-```json
+```json title=dfx.json
 {
   "canisters": {
     "hello_backend": { // Backend canister name
@@ -82,6 +82,7 @@ The `dfx.json` file within the `hello` project directory defines two canisters, 
   "output_env_file": ".env",
   "version": 1
 }
+
 ```
 
 Learn more about [dfx.json](/docs/building-apps/developer-tools/dfx-json).
@@ -130,7 +131,11 @@ The method’s body returns `Text` concatenating `Hello ,` the input value `name
 
 ### Calling the backend canister​
 
-To interact with the canister's `greet` method, you will need to deploy the canister, then make a call to it:
+To interact with the canister's greet method, you will need to deploy the canister, then make a call to it.
+
+If you are using [ICP Ninja](https://icp.ninja/), you can click the deploy button, and Ninja will return a URL that allows you to call the backend through a generic API interface.
+
+If you are using the IC SDK, you can run the commands:
 
 ```
 dfx deploy --playground
@@ -153,11 +158,9 @@ The canister will return the following output:
 ("Hello, ICP!")
 ```
 
-The `dfx canister call` command sent a call to the `hello_backend` canister that is deployed on the `--playground`. The call was sent to the `greet` method, which was given the input of "ICP." The backend canister processed the call and returned the response defined in the method.
+The `dfx canister call` command sent a call to the `hello_backend` canister that is deployed to mainnet for free using the `--playground` argument. The call was sent to the `greet` method, which was given the input `"ICP."` The backend canister processed the call and returned the response defined in the method.
 
 Since the method is defined as a `query` method, the canister simply returns data to the caller; it does not alter the canister's state.
-
-You can also make this call from the canister's [Candid interface](/docs/building-apps/interact-with-canisters/candid/candid-concepts). Candid is an interface description language used to describe the public interface of a canister. [Learn more about Candid.](/docs/building-apps/interact-with-canisters/candid/candid-concepts)
 
 ## Frontend
 
@@ -169,11 +172,11 @@ On ICP, an application's frontend is created through these steps:
 
 2. The project's `dfx.json` file defines the frontend canister and specifies it as `"type": "asset"`.
 
-3. When the project is deployed, `dfx` uses an implementation of the [asset canister](https://github.com/dfinity/sdk/blob/master/docs/design/asset-canister-interface.md) interface to compile the frontend canister. Under the hood, dfx generates boilerplate code using an API client called the [ICP JavaScript agent](/docs/building-apps/interact-with-canisters/agents/overview) that will facilitate communication between the user interface and the backend. ICP agents are libraries used to make calls to a canister's public interface.
+3. When the project is deployed, `dfx` deploys an implementation of the [asset canister interface](https://github.com/dfinity/sdk/blob/master/docs/design/asset-canister-interface.md) to the canister. It then adds an API client called the [ICP JavaScript agent](/docs/building-apps/interact-with-canisters/agents/overview) to the frontend assets and uploads all assets to the canister. The ICP JavaScript agent facilitates the communication between the frontend and the backend. In general, ICP agents are libraries for interacting with canisters' public interfaces.
 
 ## Backend and frontend communication​
 
-The frontend canister is essentially a webserver hosting a website. When a user loads the application, the web browser fetches the user interface from the frontend canister. Once the frontend is loaded into the browser, the user can interact with it, triggering messages to be sent to the backend.
+The frontend canister is essentially a web server hosting a website. When a user loads the application, the web browser fetches the user interface from the frontend canister. Once the frontend is loaded into the browser, the user can interact with it, triggering messages to be sent to the backend.
 
 <div class="text--center">
   <img
@@ -204,10 +207,10 @@ For example, the `src/hello_frontend/index.html` file defines a simple HTML page
 ...
 ```
 
-In this script, first, the necessary dependencies are imported, which includes `hello_backend` from the `declarations` directory. Declaration files define the public methods of a canister and their input and output types. For this application, the declarations file will include the backend's `setGreeting` and `greet` methods and their `Text` input and output types. Declaration files are generated by dfx during the build process.
+In this script, first, the backend declarations `hello_backend` are imported. Declaration files define the public methods of a canister and their input and output types. For this application, the declarations file will include the backend's `setGreeting` and `greet` methods and their `Text` input and output types. Declaration files are generated by `dfx` during the build process.
 
 When the agent makes a call to the backend canister, it uses these declaration files to determine which public methods it can submit requests to. Then it will create and send the request containing the request type, canister ID, method name, and any input or arguments to be passed to the method.
 
 In this example, the user interface includes a text input box and a button to submit the input. When the button is pressed, the ICP JavaScript agent sends a `query` request to the `hello_backend` canister's `greet` method that includes the user's text input.
 
-The backend processes the request, then responds to the agent with an outgoing message that includes the result of the method, in this case, `"Hello, <name>!"`
+The backend processes the request, then responds to the agent with an outgoing message that includes the result of the method, in this case, `"Hello, <name>!".`
