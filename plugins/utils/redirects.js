@@ -100,6 +100,7 @@ const redirects = `
   /docs/references/quill-cli-reference/sns/quill-sns-transfer https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /docs/references/quill-cli-reference/quill-transfer https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /docs/references/quill-cli-reference/quill-update-node-provider https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /community https://linktr.ee/icp_hubs_network
 
   # .html file internal redirects (/../from.html -> to)
   /docs/developers-guide/working-with-canisters.html /docs/building-apps/canister-management/settings
@@ -113,7 +114,6 @@ const redirects = `
   /showcase /ecosystem
   /multichain /chainfusion
   /basics /what-is-the-ic
-  /community https://linktr.ee/icp_hubs_network
   /icp-event /events
   /videos /news
   /icp-newsletter /news
@@ -256,28 +256,23 @@ const redirects = `
   /howitworks/* /how-it-works/:splat
   /docs/current/developer-docs/build/backend/* /docs/motoko/main/getting-started/motoko-introduction
   /sustainability /capabilities/sustainability
-<<<<<<< HEAD
-  /docs/tutorials/deploy_sample_app /docs/tutorials/developer-journey/
-  /install.sh)" /docs/building-apps/getting-started/install
-  /docs/motoko/intro/ /docs/motoko/main/getting-started/motoko-introduction
-  /docs/tutorials/create_your_first_app/ /docs/tutorials/developer-journey/
   /docs-intro.html /docs/building-apps/getting-started/install
   /docs/ic-identity-guide/auth-how-to.html /docs/building-apps/authentication/integrate-internet-identity/
   /docs/current/developer-docs/build/agents/agent-dfinity	/docs/building-apps/interact-with-canisters/agents/overview
   /docs/tokenomics/identity-auth/what-is-ic-identity /docs/building-apps/authentication/overview
   /docs/local-quickstart.html /docs/building-apps/getting-started/install
-  /language-guide/ /docs/tutorials/developer-journey/level-0/intro-languages
+  /language-guide/ /docs/tutorials/developer-liftoff/level-0/intro-languages
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/network-quickstart.html /docs/building-apps/getting-started/install
   /docs/token-holders/nns-app-quickstart.html /docs/move-to-learnhub/nns/using-the-nns-dapp/nns-app-quickstart
   /docs/move-to-learnhub/nns/nns-app-quickstart /docs/move-to-learnhub/nns/using-the-nns-dapp/nns-app-quickstart
-  /developers-guide.html /docs/tutorials/developer-journey/
+  /developers-guide.html /docs/tutorials/developer-liftoff/
   /docs/tokenomics/identity-auth/auth-how-to /docs/building-apps/authentication/overview
-  /docs/developers-guide/tutorials-intro.html /docs/tutorials/developer-journey/
+  /docs/developers-guide/tutorials-intro.html /docs/tutorials/developer-liftoff/
   /docs.html /docs/building-apps/getting-started/install
   /apis/site/proxy /docs/references/http-gateway-protocol-spec
   /docs/developers-guide/concepts/what-is-ic /docs/building-apps/essentials/network-overview
-  /language-guide/index /docs/tutorials/developer-journey/level-0/intro-languages
+  /language-guide/index /docs/tutorials/developer-liftoff/level-0/intro-languages
   /docs/current/developer-docs/production/instruction-limits /docs/building-apps/canister-management/resource-limits
   /docs/current/developer-docs/backend/resource-limits /docs/building-apps/canister-management/resource-limits
   /docs/concepts/data-centers /docs/building-apps/essentials/network-overview
