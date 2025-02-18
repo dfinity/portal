@@ -7,7 +7,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Developer identities
 
-<MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
+<MarkdownChipRow labels={["Beginner", "Getting started"]} />
 
 A developer **identity** is essential to developing canisters. Developer identities are basically a private/public key pair. Instead of using the public key as an identifier for the identity, a so-called principal is derived from the public key. The terms **identity** and **principal** are often used interchangeably. For better memorability, every developer identity in `dfx` has a name. The public key of an identity can be distributed openly as it will be used to encrypt messages. The private key must be kept secret and stored securely.
 
@@ -66,7 +66,7 @@ By default, `dfx` will store your identity in the local keyring/keychain. If a k
 
 Make sure you switch to the newly created identity as explained below.
 
-### Backup and recover from seed phrase
+### Backup and recover
 
 When you create a new identity with `dfx identity new`, a seed phrase will be returned in the command's output. This seed phrase is only shown once and can be used to recover your identity if necessary. Therefore, this seed phrase should be backed up to a secure location, such as a password manager like 1Password or an offline location, such as written on a piece of paper.
 

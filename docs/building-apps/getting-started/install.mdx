@@ -9,9 +9,9 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 import { OsType, useOs } from "/src/hooks/useOs";
 
-# Installing the CLI
+# Install the IC SDK
 
-<MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
+<MarkdownChipRow labels={["Beginner", "Getting started"]} />
 
 The IC SDK is a software development kit used to develop applications on your local machine and to deploy them to ICP. It is natively supported on Linux or macOS 12.\* Monterey and newer. Windows users can use the IC SDK with Windows Subsystem for Linux (WSL 2).
 
@@ -122,12 +122,10 @@ The [IC SDK](https://github.com/dfinity/sdk) is comprised of:
 
 - `moc`: The [Motoko](/docs/motoko/main/getting-started/motoko-introduction) compiler to support Motoko canister development.
 
-- `replica`: A local instance of the software run by each node on the mainnet used to deploy and host your application locally for testing and development.
+:::info
+Other languages such as Rust are supported by installing a [separate canister development kit (CDK)](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust).
+:::
 
-It also has dependencies on a few additional, important packages that are installed alongside the IC SDK:
-
-- [**Rust CDK**](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust): A set of tools for developing Rust canisters.
-
-- [**Candid**](/docs/building-apps/interact-with-canisters/candid/candid-concepts): An interface description language (IDL) used to interact with a canister's methods. A **method** is a function exposed by the canister that can be called by a user, another canister, or the application's frontend.
+- `replica`: A local instance of the software run by each node on the mainnet. It is used to deploy and host your application locally for testing and development.
 
 For troubleshooting common `dfx` errors, see [IC SDK troubleshooting](troubleshooting.mdx).
