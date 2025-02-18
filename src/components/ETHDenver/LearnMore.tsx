@@ -37,7 +37,7 @@ const LearnMore: FC<{
               className="tw-lead-sm md:tw-lead-sm mb-12"
               variants={transitions.item}
             >
-              This is a short paragraph that explains the topic in further detail. This is a short paragraph that explains the topic in further detail. This is a short paragraph that explains the topic in further detail.
+              Documents introducing the Internet Computer and ICP, the self-writing internet, UTOPIA clouds, and technical papers…
             </motion.p>
             <div className="md:w-6/10">
               <motion.p

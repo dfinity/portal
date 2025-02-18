@@ -82,7 +82,7 @@ const MeetUs: FC<{
         >
           <CtaCard
             title="Onchain<br>AI"
-            description="Leverage the power of decentralized AI and the Self-Writing Internet"
+            description="Leverage the power of Decentralized AI and the Self-Writing Internet"
             backgroundColor={['#F6D43C', '#D897B4']}
             backgroundSegments={[
               [5, 1],

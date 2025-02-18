@@ -34,7 +34,7 @@ const Bounties: FC<{
             variants={transitions.fadeIn}
           />
           <motion.p className="tw-lead-sm mb-8 text-black-60" variants={transitions.item}>
-          Bring DeFi and SocFi to Bitcoin, go mad with NFTs, or decentralize an Ethereum DAO on the Internet Computer and get rewarded for it. This is your chance to #BUIDL the future internet! 
+          Bring DeFi and SocFi to Bitcoin, go mad with NFTs, or decentralize an Ethereum DAO on the Internet Computer and get rewarded for it. This is your chance to #BUIDL the future Internet! 
           </motion.p>
           <motion.div
             className="flex flex-col md:flex-row gap-4 md:gap-8 items-start md:items-center"
@@ -133,7 +133,7 @@ const Bounties: FC<{
                 Use vetKeys to store secrets on the blockchain
               </h4>
               <p className="tw-paragraph text-black-60 mb-6">
-                Challenge: Blockchains can keep secrets! vetkeys, a coming ICP feature, will let apps host econrypted data at scale. Build applications leveraging onchain encryption with vetKeys to enable private messaging, secret auctions, time-lock encryption, and more.
+                Challenge: Blockchains can keep secrets! vetKeys, a coming ICP feature, will let apps host encrypted data at scale. Build applications leveraging onchain encryption with vetKeys to enable private messaging, secret auctions, time-lock encryption, and more.
               </p>
             </div>
             <div className="tw-lead">

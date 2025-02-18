@@ -34,14 +34,12 @@ const TrySomeDapps: FC<{
             <h2 className="tw-heading-alt-2">
               Try some Dapps
               <br />
-              <span className="inline-block text-gradient-base text-gradient-denver">
+              at the <span className="inline-block text-gradient-base text-gradient-denver">
                 ICP Booth
               </span>
             </h2>
             <p className="tw-lead-sm md:tw-lead text-black-60 mb-6 md:w-6/10">
-              Step into the exciting world of ICP with us as your guide!
-              Take a look at the Web3 projects currently reinventing the
-              internet on the Internet Computer blockchain.
+            Step into the exciting world of ICP with us as your guide! Take a look at projects currently reinventing the Internet on the Internet Computer blockchain.
             </p>
           </div>
         </div>

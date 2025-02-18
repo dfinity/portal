@@ -53,7 +53,7 @@ const Hero: FC<{
                   className="tw-lead-sm md:tw-lead text-black-60 mb-8"
                   variants={transitions.item}
                 >
-                  Lightning fast and fully on-chain dapps runningon the Internet Computer blockchain, the only true World Computer that enables a end-to-end  decentralization.
+                  Augment your EVM-based applications with ICP superpowers. Smart contracts gain access to Bitcoin DeFi, threshold signing services, governance frameworks, passkey authentication, multi-approver wallets, reverse gas fees, and much more.
                 </motion.p>
 
                 <motion.p

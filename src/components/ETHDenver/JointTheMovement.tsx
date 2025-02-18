@@ -40,7 +40,7 @@ const JointTheMovement: FC<{
               className="tw-lead mb-8"
             >
               <span className="text-white-60">
-                Web2 login experience with blockchain security. Internet Identity is a privacy-enhancing WebAuthn framework to applications on the Internet Computer.
+              Easy-to-use Web2 login experience with blockchain security. Internet Identity is a privacy-enhancing WebAuthn framework to applications on the Internet Computer.
               </span>
             </motion.p>
             <MotionLink
@@ -48,7 +48,7 @@ const JointTheMovement: FC<{
               href="https://identity.ic0.app/"
               variants={transitions.item}
             >
-              Set one up now!
+              Set up now!
             </MotionLink>
           </div>
         </AnimateSpawn>
@@ -95,9 +95,7 @@ const JointTheMovement: FC<{
               WebAuthn
             </h3>
             <p className="tw-paragraph md:tw-lead-sm mb-0 text-white-60">
-              Internet Identity integrates the widely used secure web2
-              authentication framework known as WebAuthn for maximum
-              compatibility.
+            Internet Identity integrates the widely used secure Web2 authentication framework known as WebAuthn for maximum compatibility.
             </p>
           </motion.div>
         </AnimateSpawn>

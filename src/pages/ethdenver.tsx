@@ -72,8 +72,8 @@ function EthDenverPage() {
         <div className="pb-16 md:pb-40">
           <BeAPioneer
             id="start-building"
-            title="Be a pioneer of Web3"
-            body="Metaprotocols leverage Chain Fusion to offer decentralized cross-chain infrastructure enabling the transfer and creation of new assets on Bitcoin."
+            title="Developer Documentation"
+            body="Start a DAO, create a token, build dapps and host assets with the full stack entirely on-chain."
             cta="Build real Web3"
             ctaLink="/docs/current/home"
             cards={[
