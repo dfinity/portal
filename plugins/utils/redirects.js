@@ -121,7 +121,6 @@ const redirects = `
   /docs/current/developer-docs/getting-started/overview-of-icp /docs/building-apps/essentials/network-overview
   /docs/videos-tutorials /docs/home
   /docs /docs/home
-  /docs/current/* /docs/
   /docs/concepts/bitcoin-integration /bitcoin-integration
   /docs/current/developer-docs/ic-overview /docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/production/computation-and-storage-costs /docs/building-apps/essentials/gas-cost
