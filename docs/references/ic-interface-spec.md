@@ -2082,7 +2082,7 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
 
     See [`sign_with_ecdsa`](#ic-sign_with_ecdsa), [`sign_with_schnorr`](#ic-sign_with_schnorr) and [`vetkd_encrypted_key`](#ic-vetkd_encrypted_key) for more information.
 
-    These system calls trap if `src` + `size` exceeds the size of the WebAssembly memory. Otherwise, they return an `i32` with the following meaning:
+    These system calls trap if `src` + `size` or `dst` + 16 exceed the size of the WebAssembly memory. Otherwise, they return an `i32` with the following meaning:
     - `0 (00)`: Success. The result can be found at the memory address `dst`.
     - `1 (01)`: Invalid curve or algorithm. Memory at `dst` is left unchanged. 
     - `2 (10)`: Invalid key name for the given scheme/curve. Memory at `dst` is left unchanged. 
@@ -7555,6 +7555,8 @@ ic0.cost_cost_http_request<es>(request_size: i64, max_res_bytes: i64, dst: I) : 
 
 I ∈ {i32, i64}
 ic0.cost_sign_with_ecdsa<es>(src: I, size: I, ecdsa_curve: i32, dst: I) : i32 = 
+  known_keys = arbitrary()
+  known_curves = arbitrary()
   key_name = copy_from_canister<es>(src, size)
   if ecdsa_curve ∉ known_curves then
     return 1
@@ -7565,6 +7567,8 @@ ic0.cost_sign_with_ecdsa<es>(src: I, size: I, ecdsa_curve: i32, dst: I) : i32 =
 
 I ∈ {i32, i64}
 ic0.cost_sign_with_schnorr<es>(src: I, size: I, algorithm: i32, dst: I) : i32 = 
+  known_keys = arbitrary()
+  known_curves = arbitrary()
   key_name = copy_from_canister<es>(src, size)
   if algorithm ∉ known_algorithms then
     return 1
@@ -7575,6 +7579,8 @@ ic0.cost_sign_with_schnorr<es>(src: I, size: I, algorithm: i32, dst: I) : i32 =
 
 I ∈ {i32, i64}
 ic0.cost_vetkd_derive_encrypted_key<es>(src: I, size: I, vetkd_curve: i32, dst: I) : i32 = 
+  known_keys = arbitrary()
+  known_curves = arbitrary()
   key_name = copy_from_canister<es>(src, size)
   if vetkd_curve ∉ known_curves then
     return 1
