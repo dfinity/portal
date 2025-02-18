@@ -210,52 +210,16 @@ const redirects = `
   /docs/developers-guide/webpack-config /docs/building-apps/frontends/using-an-asset-canister
   /docs/developers-guide/work-with-languages /docs/building-apps/developing-canisters/what-is-a-canister
   /docs/developers-guide/working-with-canisters /docs/building-apps/canister-management/settings
-
-<<<<<<< HEAD
-  /docs/1-quickstart /docs/tutorials/developer-journey/
-  /docs/2-quickstart /docs/tutorials/developer-journey/
-  /docs/3-quickstart /docs/tutorials/developer-journey/
-  /docs/4-2-convert-icp-to-cycles /docs/tutorials/developer-journey/
-  /docs/4-quickstart /docs/tutorials/developer-journey/
-  /docs/5-quickstart /docs/tutorials/developer-journey/
-  /docs/cycles-faucet /docs/building-apps/getting-started/tokens-and-cycles
-  /docs/local-quickstart /docs/building-apps/developing-canisters/deploy
-  /docs/network-quickstart /docs/building-apps/developing-canisters/deploy
-  /docs-intro /docs/tutorials/developer-journey/
-  /docs/newcomers /docs/home
-  /docs/current/developer-docs/* /docs/tutorials/developer-journey/
-  /developers-guide /docs/tutorials/developer-journey/
-  /docs/current/developer-docs/cycles-faucet /docs/building-apps/getting-started/tokens-and-cycles
-  /docs/current/developer-docs/windows-wsl /docs/building-apps/getting-started/install
-  /docs/current/developer-docs/hello10mins/ /docs/tutorials/developer-journey/
-=======
   /docs/quickstart/1-quickstart /docs/current/tutorials/developer-liftoff/
   /docs/quickstart/2-quickstart /docs/current/tutorials/developer-liftoff/
   /docs/quickstart/3-quickstart /docs/current/tutorials/developer-liftoff/
   /docs/quickstart/4-2-convert-icp-to-cycles /docs/current/tutorials/developer-liftoff/
   /docs/quickstart/4-quickstart /docs/current/tutorials/developer-liftoff/
   /docs/quickstart/5-quickstart /docs/current/tutorials/developer-liftoff/
-<<<<<<< HEAD
-=======
-  /docs/quickstart/1-quickstart /docs/current/tutorials/developer-liftoff/
-  /docs/quickstart/2-quickstart /docs/current/tutorials/developer-liftoff/
-  /docs/quickstart/3-quickstart /docs/current/tutorials/developer-liftoff/
-  /docs/quickstart/4-2-convert-icp-to-cycles /docs/current/tutorials/developer-liftoff/
-  /docs/quickstart/4-quickstart /docs/current/tutorials/developer-liftoff/
-  /docs/quickstart/5-quickstart /docs/current/tutorials/developer-liftoff/
->>>>>>> 4b60b8079175c13f1f9cb2b458951a9fdde4b3c5
   /docs/quickstart/cycles-faucet /docs/current/developer-docs/getting-started/tokens-and-cycles
   /docs/quickstart/local-quickstart /docs/current/developer-docs/getting-started/deploy-and-manage
   /docs/quickstart/network-quickstart /docs/current/developer-docs/getting-started/deploy-and-manage
   /docs/quickstart/quickstart-intro /docs/current/tutorials/developer-liftoff/
-<<<<<<< HEAD
-  /docs/quickstart/newcomers /docs/current/home
-  /docs/current/developer-docs/quickstart/* /docs/current/tutorials/developer-liftoff/
-  /developers-guide/quickstart /docs/current/tutorials/developer-liftoff/
-  /docs/current/developer-docs/quickstart/cycles-faucet /docs/current/developer-docs/getting-started/tokens-and-cycles
-  /docs/current/developer-docs/quickstart/windows-wsl /docs/current/developer-docs/getting-started/install
-  /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/developer-liftoff/
-=======
   /docs/quickstart/quickstart-intro /docs/current/tutorials/developer-liftoff/
   /docs/quickstart/newcomers /docs/current/home
   /docs/current/developer-docs/quickstart/* /docs/current/tutorials/developer-liftoff/
@@ -266,8 +230,6 @@ const redirects = `
   /docs/current/developer-docs/quickstart/windows-wsl /docs/current/developer-docs/getting-started/install
   /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/developer-liftoff/
   /docs/current/developer-docs/quickstart/hello10mins/ /docs/current/tutorials/developer-liftoff/
->>>>>>> 4b60b8079175c13f1f9cb2b458951a9fdde4b3c5
->>>>>>> master
 
   /docs/rosetta-api/ledger /docs/defi/token-standards/
   /docs/rosetta-api/ledger-local-setup /docs/defi/token-ledgers/setup/icp_ledger_setup
@@ -1606,7 +1568,6 @@ const redirects = `
   /docs/current/tutorials/developer-journey/level-5/5.5-auction-tutorial /docs/current/tutorials/developer-liftoff/level-5/5.5-auction-tutorial
   /docs/current/tutorials/developer-journey/level-5/5.6-next-steps /docs/current/tutorials/developer-liftoff/level-5/5.6-next-steps
   `
-
 
   .split(/[\r\n]+/)
   .map((line) => line.trim().replace(/^#.*$/, "").trim())
