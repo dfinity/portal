@@ -2077,7 +2077,7 @@ These system calls return costs in Cycles, represented by 128 bits, which will b
 
     These system calls accept a key name via a textual representation for the specific signing scheme / key of a given size stored in the heap memory starting at offset `src`. They also accept an `i32` with the following interpretations:
     - `ecdsa_curve: 0 → secp256k1`
-    - `schnorr_algorithm: 0 → bip340secp256k1, 1 → ed25519`
+    - `algorithm: 0 → bip340secp256k1, 1 → ed25519`
     - `vetkd_curve: 0 → bls12_381`
 
     See [`sign_with_ecdsa`](#ic-sign_with_ecdsa), [`sign_with_schnorr`](#ic-sign_with_schnorr) and [`vetkd_encrypted_key`](#ic-vetkd_encrypted_key) for more information.
@@ -7550,7 +7550,7 @@ ic0.cost_create_canister<es>(dst: I) : () =
   copy_cycles_to_canister<es>(dst, arbitrary())
 
 I ∈ {i32, i64}
-ic0.cost_cost_http_request<es>(request_size: i64, max_res_bytes: i64, dst: I) : () = 
+ic0.cost_http_request<es>(request_size: i64, max_res_bytes: i64, dst: I) : () = 
   copy_cycles_to_canister<es>(dst, arbitrary())
 
 I ∈ {i32, i64}
@@ -7568,7 +7568,7 @@ ic0.cost_sign_with_ecdsa<es>(src: I, size: I, ecdsa_curve: i32, dst: I) : i32 =
 I ∈ {i32, i64}
 ic0.cost_sign_with_schnorr<es>(src: I, size: I, algorithm: i32, dst: I) : i32 = 
   known_keys = arbitrary()
-  known_curves = arbitrary()
+  known_algorithms = arbitrary()
   key_name = copy_from_canister<es>(src, size)
   if algorithm ∉ known_algorithms then
     return 1
