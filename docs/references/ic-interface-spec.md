@@ -7550,7 +7550,7 @@ ic0.cost_create_canister<es>(dst: I) : () =
   copy_cycles_to_canister<es>(dst, arbitrary())
 
 I ∈ {i32, i64}
-ic0.cost_cost_http_request<es>(request_size: i64, max_res_bytes: i64, dst: I) : () = 
+ic0.cost_http_request<es>(request_size: i64, max_res_bytes: i64, dst: I) : () = 
   copy_cycles_to_canister<es>(dst, arbitrary())
 
 I ∈ {i32, i64}
