@@ -3,49 +3,39 @@
   "categoryDescription": "Today, users have to blindly trust AI models running on centralized servers with no visibility into how data is used and how AI models produce responses. Decentralized AI solves this problem by bringing the trustworthiness, security, verifiability, and resilience of smart contracts to AI applications.",
   "elements": [
     {
-      "title": "API for AI computations",
-      "overview": "API for smart contracts that allows them to run hardware-accelerated AI computations. Initially, hardware acceleration will rely on the CPU, paving the way for GPU hardware acceleration in the future.",
-      "description": "AI computations are typically a graph of a large number of floating-point operations. Abstracting those operations into an API streamlines the development of AI applications, and paves the way to introduce optiizations to these specialized workload.",
-      "status": "in_progress",
-      "milestone_id": "Ignition",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "Wasm64 execution environment",
-      "overview": "The execution environment is lifted to Wasm64 with the benefit of a 64-bit address space and its much larger addressable memory, allowing developers to load larger models in main memory.",
-      "description": "The execution environment is lifted to Wasm64 with the benefit of a 64-bit address space and its much larger addressable memory.",
-      "status": "in_progress",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Ignition"
-    },
-    {
-      "title": "Tooling and libraries for developing AI smart contracts",
-      "overview": "Providing developer tooling and libraries for building AI smart contracts on ICP, reusing existing AI ecosystem tools wherever possible.",
-      "description": "Developers need tooling and libraries to implement AI smart contracts. Ideally, the existing AI ecosystem is reused as much as possible, but specialized tools and libraries might be needed for developing onchain AI applications.",
-      "status": "",
-      "milestone_id": "Ignition",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
-      "name": "Onchain AI Inference of Larger Models",
-      "description": "In order to perform AI inference and training of larger models on chain, canister smart contracts need to run more compute- and memory-intensive workloads. This milestone expands the compute and memory capabilities of canisters and paves the way for future GPU hardware acceleration. A special focus is being placed on the developer experience by building tools to simplify writing AI applications.",
+      "title": "Foundational LLMs",
+      "description": "AI agents are a growing paradigm in software, and the Internet Computer is uniquely positioned to be the home of AI agents. Compared to the traditional IT stack, AI agents on the Internet Computer can securely and easily manage digital assets, transact amongst each other, be fully sovereign, and be tokenized and managed by DAOs. This milestone focuses on providing access to foundational LLMs, along with basic tools to make it as simple as possible to deploy agents on the Internet Computer.",
       "status": "in_progress",
       "is_milestone": true,
       "milestone_id": "Ignition",
       "eta": "",
       "eta_to_render": ""
+    },
+    {
+      "title": "LLM Canister MVP",
+      "overview": "A canister will be made available that provides an API for processing LLM prompts. This canister is an MVP and will initially rely on a centrally-managed service by DFINITY for processing the prompts. A small set of foundational models will be supported.",
+      "status": "in_progress",
+      "milestone_id": "Ignition"
+    },
+    {
+      "title": "LLM Developer Experience",
+      "overview": "Tools and libraries to simplify the local development and the interaction with the LLM canister.",
+      "status": "in_progress",
+      "milestone_id": "Ignition"
+    },
+    {
+      "title": "Sovereign AI Agents",
+      "description": "This milestone builds on previous milestones by focusing on the security and the decentralization of the LLM services available on the Internet Computer.",
+      "status": "future",
+      "is_milestone": true,
+      "milestone_id": "Vortex",
+      "eta_to_render": ""
+    },
+    {
+      "title": "LLM Workers",
+      "overview": "A canister will be made available that provides an API for processing LLM prompts. This canister is an MVP and will initially rely on a centrally-managed service by DFINITY for processing the prompts. A small set of foundational models will be supported.",
+      "status": "future",
+      "milestone_id": "Vortex"
     },
     {
       "title": "Public specification for GPU-enabled nodes",
