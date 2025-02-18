@@ -14,21 +14,8 @@
       "in_beta": false
     },
     {
-      "title": "SEV-SNP-protected API Boundary Nodes",
-      "overview": "Security for API boundary nodes is improved using trusted execution (AMD SEV-SNP), enabling anyone to attest that the correct software is running.",
-      "forum": "https://forum.dfinity.org/t/long-term-r-d-boundary-nodes-proposal/9401",
-      "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
-      "docs": "",
-      "eta": "",
-      "milestone_id": "Levitron",
-      "status": "upcoming",
-      "is_community": true,
-      "in_beta": false,
-      "imported": true
-    },
-    {
       "title": "Public API Boundary Node logs and metrics",
-      "overview": "Anyone can analyze the API boundary node access logs to gain insights into app usage patterns etc.",
+      "overview": "Ensuring logs are verifiable and trustworthy (e.g., signed by API BNs) and publishing them in a publicly accessible repository.",
       "forum": "",
       "proposal": "",
       "milestone_id": "Levitron",
@@ -42,10 +29,15 @@
       "title": "Decentralized access logs and metrics",
       "is_milestone": true,
       "milestone_id": "Levitron",
-      "description": "This milestone establishes visibility into the Internet Computer's edge infrastructure by making aggregated API boundary node access logs publicly accessible. This provides developers with valuable insights into their dapps' usage patterns and facilitates the generation of user statistics, offering key information on traffic sources. To guarantee the integrity of these logs, the milestone focuses on leveraging trusted execution environments, specifically AMD SEV-SNP.",
+      "description": "This milestone enhances visibility into the Internet Computer's edge infrastructure by making aggregated API boundary node access logs publicly accessible. Developers gain valuable insights into their dapps' usage patterns, enabling traffic analysis and user statistics. To ensure log integrity and verifiability, this milestone builds on the trusted execution environments introduced in Magnetosphere.",
       "status": "in_progress",
-      "eta": "",
       "eta_to_render": ""
+    },
+    {
+      "title": "Privacy-Preserving Logs",
+      "overview": "Anonymizing identifying data while enabling global analysis across all API BNs (e.g., counting unique IPs), achieved through a secret salt managed by an NNS-controlled canister and shared among all API BNs.",
+      "status": "in_progress",
+      "milestone_id": "Levitron"
     },
     {
       "title": "Subnet rental",
