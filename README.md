@@ -66,7 +66,7 @@ docs
 ├── motoko // Motoko documentation - submodule
 ├── specifications // reference documentation
 ├── samples // sample projects - submodule
-├── tutorials // tutorial series (developer ladder, hackathon prep course, etc).
+├── tutorials // tutorial series (developer liftoff, hackathon prep course, etc).
 ```
 
 # Contributing to the Dev Docs
@@ -150,7 +150,7 @@ Concept pages describe in more detail a specific concept of ICP. Concept pages s
 Concept pages should remain simple and high-level without providing unnecessary, in-depth details. Readers should be able to quickly understand the technology and its benefits, convincing them to continue learning more and begin developing using the technology.
 
 #### Tutorial
-A tutorial uses a step-by-step format to walk a user through a specific workflow. The Developer Ladder is an example of a tutorial series.
+A tutorial uses a step-by-step format to walk a user through a specific workflow. The Developer Liftoff is an example of a tutorial series.
 
 #### Reference
 A reference page provides low level detail into a feature or technology. API reference pages are an example that provide in-depth detail about different endpoints and methods. Some examples include:
@@ -592,21 +592,16 @@ The [Ecosystem Helper](https://mvw4g-yiaaa-aaaam-abnva-cai.icp0.io/) is an oncha
 
 The list of tags is not final, and will be updated as the project evolves. For now, the following tags are available:
 
-- `AI`
 - `Chain Fusion`
 - `Bitcoin`
-- `Ethereum`
-- `DAO`
 - `DeFi`
-- `Enterprise`
-- `Gaming`
-- `Metaverse`
-- `NFT`
-- `SocialFi`
-- `Tools / Infrastructure`
 - `Wallet`
-- `Analytics`
+- `AI`
+- `Gaming`
 - `Creator Economy`
+- `Enterprise`
+- `Analytics`
+- `Tools / Infrastructure`
 
 ### Object schema
 
@@ -614,11 +609,10 @@ The list of tags is not final, and will be updated as the project evolves. For n
   {
     id: string,
     name: string,
-    oneLiner: string, // short description of the project
     website: string, // URL starting with `https://`
 
-    tags: ('AI' | 'Chain Fusion' | 'Bitcoin' | 'Ethereum' | 'DAO' | 'DeFi' | 'Enterprise' | 'Gaming' | 'Metaverse' | 'NFT' | 'SocialFi' | 'Tools / Infrastructure' | 'Wallet' | 'Analytics' | 'Creator Economy')[],
-    description: string, // description of the project
+    tags: ( `Chain Fusion` | `Bitcoin` | `DeFi` | `Wallet` | `AI` | `Gaming` | `Creator Economy` | `Enterprise` |`Analytics` | `Tools / Infrastructure`)[],
+    description: string, // description of the project - up to 150 characters
     stats: string, // eg. "10,000 users"
     logo: string, // url to logo file, eg. /img/showcase/awesome-icp-project_logo.webp
 

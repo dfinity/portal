@@ -150,7 +150,7 @@ const marketingNav = {
         { name: "ICP Wiki", href: "https://wiki.internetcomputer.org/" },
         {
           name: "White paper",
-          href: "https://dfinity.org/whitepaper.pdf",
+          href: "https://internetcomputer.org/whitepapers/The%20Internet%20Computer%20for%20Geeks.pdf",
         },
         {
           name: "History of ICP",
@@ -185,7 +185,7 @@ const marketingNav = {
             {
               name: "ICP Dashboard",
               href: "https://dashboard.internetcomputer.org/",
-              description: "Join like-minded hackers",
+              description: "Track key metrics",
             },
             {
               name: "ICP Roadmap",
@@ -606,7 +606,9 @@ const config = {
       "data-modal-disclaimer":
         " This LLM provides responses are generated automatically and may be inaccurate or outdated. Please take care to verify or validate any responses before making any critical decisions.",
       "data-user-analytics-fingerprint-enabled": "true",
+      "data-modal-z-index": "1001",
       async: true,
+      "data-button-hide": "true",
     },
   ],
   plugins: [
@@ -698,6 +700,13 @@ const config = {
         disableSwitch: false,
         defaultMode: "light",
         respectPrefersColorScheme: true,
+      },
+        // github codeblock theme configuration
+        codeblock: {
+          showGithubLink: true,
+          githubLinkLabel: 'View on GitHub',
+          showRunmeLink: false,
+          runmeLinkLabel: 'Checkout via Runme'
       },
       metadata: [
         {
@@ -838,6 +847,14 @@ const config = {
                   "./static/img/svgIcons/purple/dscvr.svg"
                 ),
               },
+              {
+                label: "Discord",
+                to: "https://discord.internetcomputer.org",
+                icon: "data:image/svg+xml,%3Csvg%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E %3Cpath%20d%3D%22M19.3034%205.33716C17.9344%204.71103%2016.4805%204.2547%2014.9629%204C14.7719%204.32899%2014.5596%204.77471%2014.411%205.12492C12.7969%204.89144%2011.1944%204.89144%209.60255%205.12492C9.45397%204.77471%209.2311%204.32899%209.05068%204C7.52251%204.2547%206.06861%204.71103%204.70915%205.33716C1.96053%209.39111%201.21766%2013.3495%201.5891%2017.2549C3.41443%2018.5815%205.17612%2019.388%206.90701%2019.9187C7.33151%2019.3456%207.71356%2018.73%208.04255%2018.0827C7.41641%2017.8492%206.82211%2017.5627%206.24904%2017.2231C6.39762%2017.117%206.5462%2017.0003%206.68416%2016.8835C10.1438%2018.4648%2013.8911%2018.4648%2017.3082%2016.8835C17.4568%2017.0003%2017.5948%2017.117%2017.7434%2017.2231C17.1703%2017.5627%2016.576%2017.8492%2015.9499%2018.0827C16.2789%2018.73%2016.6609%2019.3456%2017.0854%2019.9187C18.8152%2019.388%2020.5875%2018.5815%2022.4033%2017.2549C22.8596%2012.7341%2021.6806%208.80747%2019.3034%205.33716ZM8.5201%2014.8459C7.48007%2014.8459%206.63107%2013.9014%206.63107%2012.7447C6.63107%2011.5879%207.45884%2010.6434%208.5201%2010.6434C9.57071%2010.6434%2010.4303%2011.5879%2010.4091%2012.7447C10.4091%2013.9014%209.57071%2014.8459%208.5201%2014.8459ZM15.4936%2014.8459C14.4535%2014.8459%2013.6034%2013.9014%2013.6034%2012.7447C13.6034%2011.5879%2014.4323%2010.6434%2015.4936%2010.6434C16.5442%2010.6434%2017.4038%2011.5879%2017.3825%2012.7447C17.3825%2013.9014%2016.5548%2014.8459%2015.4936%2014.8459Z%22%20fill%3D%22white%22%20%2F%3E %3C%2Fsvg%3E",
+                iconLight: getImageDataUrl(
+                  "./static/img/svgIcons/purple/discord.svg"
+                ),
+              },
             ],
           },
         ],
@@ -852,7 +869,7 @@ const config = {
         playgroundPosition: "bottom",
       },
     },
-  themes: ["@docusaurus/theme-live-codeblock", "@docusaurus/theme-mermaid"],
+  themes: ["@docusaurus/theme-live-codeblock", "@docusaurus/theme-mermaid", "docusaurus-theme-github-codeblock"],
   clientModules: [require.resolve("./static/load_moc.ts")],
 };
 

@@ -150,8 +150,8 @@ The default value of memory allocation is 0 bytes, which means that there is no 
 
 ## Freezing threshold
 
-If a canister runs out of cycles, then it gets uninstalled, meaning that its code and data are deleted.
-A canister will only retain its metadata, such as the canister ID, controllers, settings, etc.
+If a canister runs out of cycles and the freezing threshold expires, then it gets uninstalled, meaning that its code and data are deleted.
+A canister will only retain its metadata such as the canister ID, controllers, settings, etc.
 
 The freezing threshold protects against the canister unexpectedly running out of cycles.
 This field denotes time duration in seconds, indicating the minimum duration that the canister should exist without running out of cycles.

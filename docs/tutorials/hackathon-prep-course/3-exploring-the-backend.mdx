@@ -107,7 +107,7 @@ actor class Backend() {
 
 Let's breakdown each portion of this code.
 
-First, the code defines an actor called `Backend`. In Motoko, programs consist of an actor expression that is introduced using the keyword `actor`. An actor is a process with encapsulated state that communicates with other running actors. Each canister can only contain one actor. You can learn more about Motoko actors [here](/docs/tutorials/developer-journey/level-1/1.2-motoko-lvl1).
+First, the code defines an actor called `Backend`. In Motoko, programs consist of an actor expression that is introduced using the keyword `actor`. An actor is a process with encapsulated state that communicates with other running actors. Each canister can only contain one actor. You can learn more about Motoko actors [here](/docs/current/tutorials/developer-liftoff/level-1/1.2-motoko-lvl1).
 
 ```motoko no-repl title="backend/Backend.mo"
 actor class Backend() {
@@ -151,13 +151,13 @@ public func add(n : Nat) : async () {
 
 You can learn more about Motoko in the following resources:
 
-- [Motoko level 1](/docs/tutorials/developer-journey/level-1/1.2-motoko-lvl1).
+- [Motoko level 1](/docs/current/tutorials/developer-liftoff/level-1/1.2-motoko-lvl1).
 
-- [Motoko level 2](/docs/tutorials/developer-journey/level-2/2.6-motoko-lvl2).
+- [Motoko level 2](/docs/current/tutorials/developer-liftoff/level-2/2.6-motoko-lvl2).
 
-- [Motoko level 3](/docs/tutorials/developer-journey/level-3/3.6-motoko-lvl3).
+- [Motoko level 3](/docs/current/tutorials/developer-liftoff/level-3/3.6-motoko-lvl3).
 
-- [Motoko level 4](/docs/tutorials/developer-journey/level-4/4.6-motoko-lvl4).
+- [Motoko level 4](/docs/current/tutorials/developer-liftoff/level-4/4.6-motoko-lvl4).
 
 - [Motoko bootcamp](https://github.com/motoko-bootcamp/bootcamp-2022), a week-long crash course to learning all things Motoko.
 
@@ -232,7 +232,7 @@ To test the integration with a third-party canister locally, dfx supports pullin
 }
 ```
 
-For more information on using third-party canisters, check out the documentation [here](/docs/tutorials/developer-journey/level-2/2.3-third-party-canisters).
+For more information on using third-party canisters, check out the documentation [here](/docs/current/tutorials/developer-liftoff/level-2/2.3-third-party-canisters).
 
 ### Query and update calls
 
@@ -276,7 +276,7 @@ Additionally, there are several other terms regarding calls that you will come a
 
 **Inter-canister calls** are used to make calls between different canisters.
 
-You can learn more about canister calls in the documentation [here](/docs/tutorials/developer-journey/level-2/2.2-advanced-canister-calls).
+You can learn more about canister calls in the documentation [here](/docs/current/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls).
 
 ### Candid service descriptions
 
@@ -318,7 +318,7 @@ For example, in this `vite-react-motoko` example, the CandidUI resembles the fol
 
 ![Candid UI](_attachments/CandidUI.png)
 
-You can learn more about Candid in the documentation [here](/docs/tutorials/developer-journey/level-2/2.4-intro-candid).
+You can learn more about Candid in the documentation [here](/docs/current/tutorials/developer-liftoff/level-2/2.4-intro-candid).
 
 ### Canister upgrades
 
@@ -326,7 +326,7 @@ Once a canister has been deployed and is running, there may need to be changes m
 
 The ability to upgrade a canister is a key feature of ICP, since it allows canisters to persist using Wasm memory that utilizes ICP's stable memory feature. When a canister is upgraded, the existing state of the canister is preserved as the canister's code is changed. You will learn more about upgrading and managing a canister in the module [8: Managing canisters](/docs/tutorials/hackathon-prep-course/managing-canisters).
 
-You can learn more about upgrading canisters in the documentation [here](/docs/tutorials/developer-journey/level-2/2.1-storage-persistence#upgrading-canisters).
+You can learn more about upgrading canisters in the documentation [here](/docs/current/tutorials/developer-liftoff/level-2/2.1-storage-persistence#upgrading-canisters).
 
 ### Stable memory
 
@@ -340,7 +340,7 @@ A few other important terms regarding memory on ICP include:
 
 - **Stable variables**: A Motoko-specific feature referring to variables defined using the `stable` modifier in a Motoko canister. The value of a stable variable is persisted across canister upgrades. An example of this was shown earlier in this tutorial, with the stable variable defined in the backend canister code, `stable var counter = 0;`.
 
-You can learn more about storage and data persistence in the documentation [here](/docs/tutorials/developer-journey/level-2/2.1-storage-persistence).
+You can learn more about storage and data persistence in the documentation [here](/docs/current/tutorials/developer-liftoff/level-2/2.1-storage-persistence).
 
 ### Mops
 
@@ -387,8 +387,7 @@ Then, to install all packages specified in the `mops.toml` file, use the command
 mops install
 ```
 
-You can [learn more about Mops](/docs/tutorials/developer-journey/level-3/3.1-package-managers).
-You can [learn more about Mops](/docs/tutorials/developer-journey/level-3/3.1-package-managers).
+You can [learn more about Mops](/docs/current/tutorials/developer-liftoff/level-3/3.1-package-managers).
 
 ## Next steps
 

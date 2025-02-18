@@ -76,7 +76,7 @@ export const sampleItems: SampleItem[] = [
     body: "IC-ETH verifies ETH NFTs, supports main/test nets.",
     links: {
       github: "https://github.com/dfinity/ic-eth-starter",
-      docs: "/docs/tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial",
+      docs: "/docs/current/tutorials/developer-liftoff/level-5/5.2-ICP-ETH-tutorial",
       youtube: "https://www.youtube.com/watch?v=ZI5I36aioVw",
     },
   },
