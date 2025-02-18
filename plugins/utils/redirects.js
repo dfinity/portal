@@ -1660,10 +1660,10 @@ exports.getSplatRedirects = function (existingUrl) {
   for (const redirect of redirects.filter(
     (r) => isSplat(r) && !isExternal(r)
   )) {
-    const trimmedSource = redirect[0].replace("/* "/");
+    const trimmedSource = redirect[0].replace("/*", "/");
 
     if (redirect[1].includes(":splat")) {
-      const trimmedDestination = redirect[1].replace(":splat "");
+      const trimmedDestination = redirect[1].replace(":splat", "");
       if (existingUrl.startsWith(trimmedDestination)) {
         const completeSourceUrl = existingUrl.replace(
           trimmedDestination,
