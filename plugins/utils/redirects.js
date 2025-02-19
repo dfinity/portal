@@ -1102,76 +1102,76 @@ const redirects = `
   .map((l) => l.split(/\s+/));
 
 
-function isSplat(redirect) {
-  return redirect[0].includes("/*");
-}
-
-function isExternal(redirect) {
-  return redirect[1].startsWith("http");
-}
-
-function isExactUrl(redirect) {
-  return redirect[0].endsWith(".html");
-}
-
-function ruleToRedirect(rule) {
-  const from = rule[0].replace(/(.+)\/$/, "$1");
-  const to = rule[1];
-  return {
-    from,
-    to,
-  };
-}
-
-exports.getRedirects = function () {
-  return redirects
-    .filter((r) => {
-      // Check if the redirect[0] is not found in the redirects list
-      const redirectFound = redirects.some(existingRedirect => existingRedirect[0] === r[0]);
-
-      // If redirect[0] isn't found and contains /docs/current, redirect to /docs/home
-      if (!redirectFound && r[0].includes("/docs/current")) {
-        r[1] = "/docs/home"; // Redirect to /docs/home
-      }
-
-      return !isSplat(r) && !isExternal(r) && !isExactUrl(r);
-    })
-    .map(ruleToRedirect)
-    .map((r) => ({
-      to: r.to.replace(/#.+$/, ""),
-      from: r.from,
-    }));
-};
-
-exports.getExternalRedirects = function () {
-  return redirects.filter((r) => isExternal(r)).map(ruleToRedirect);
-};
-
-exports.getExactUrlRedirects = function () {
-  return redirects
-    .filter((r) => !isExternal(r) && isExactUrl(r))
-    .map(ruleToRedirect);
-};
-
-exports.getSplatRedirects = function (existingUrl) {
-  const urls = [];
-
-  for (const redirect of redirects.filter(
-    (r) => isSplat(r) && !isExternal(r)
-  )) {
-    const trimmedSource = redirect[0].replace("/*", "/");
-
-    if (redirect[1].includes(":splat")) {
-      const trimmedDestination = redirect[1].replace(":splat", "");
-      if (existingUrl.startsWith(trimmedDestination)) {
-        const completeSourceUrl = existingUrl.replace(
-          trimmedDestination,
-          trimmedSource
-        );
-        urls.push(completeSourceUrl);
-      }
-    }
+  function isSplat(redirect) {
+    return redirect[0].includes("/*");
   }
 
-  return urls;
-};
+  function isExternal(redirect) {
+    return redirect[1].startsWith("http");
+  }
+
+  function isExactUrl(redirect) {
+    return redirect[0].endsWith(".html");
+  }
+
+  function ruleToRedirect(rule) {
+    const from = rule[0].replace(/(.+)\/$/, "$1");
+    const to = rule[1];
+    return {
+      from,
+      to,
+    };
+  }
+
+  exports.getRedirects = function () {
+    return redirects
+      .map((r) => {
+        // If redirect[0] is not found in the redirects array, check if it contains "/docs/current"
+        const redirectFound = redirects.some(existingRedirect => existingRedirect[0] === r[0]);
+
+        if (!redirectFound && r[0].includes("/docs/current")) {
+          r[1] = "/docs/home"; // If /docs/current is found, change to /docs/home
+        }
+
+        return r;
+      })
+      .filter((r) => !isSplat(r) && !isExternal(r) && !isExactUrl(r))
+      .map(ruleToRedirect)
+      .map((r) => ({
+        to: r.to.replace(/#.+$/, ""),
+        from: r.from,
+      }));
+  };
+
+  exports.getExternalRedirects = function () {
+    return redirects.filter((r) => isExternal(r)).map(ruleToRedirect);
+  };
+
+  exports.getExactUrlRedirects = function () {
+    return redirects
+      .filter((r) => !isExternal(r) && isExactUrl(r))
+      .map(ruleToRedirect);
+  };
+
+  exports.getSplatRedirects = function (existingUrl) {
+    const urls = [];
+
+    for (const redirect of redirects.filter(
+      (r) => isSplat(r) && !isExternal(r)
+    )) {
+      const trimmedSource = redirect[0].replace("/*", "/");
+
+      if (redirect[1].includes(":splat")) {
+        const trimmedDestination = redirect[1].replace(":splat", "");
+        if (existingUrl.startsWith(trimmedDestination)) {
+          const completeSourceUrl = existingUrl.replace(
+            trimmedDestination,
+            trimmedSource
+          );
+          urls.push(completeSourceUrl);
+        }
+      }
+    }
+
+    return urls;
+  };
