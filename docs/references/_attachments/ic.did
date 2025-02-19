@@ -249,9 +249,9 @@ type canister_status_result = record {
     module_hash : opt blob;
     memory_size : nat;
     memory_metrics : record {
-        heap_size : nat;
-        stable_size : nat;
-        global_size : nat;
+        wasm_memory_size : nat;
+        stable_memory_size : nat;
+        global_memory_size : nat;
         wasm_binary_size : nat;
         custom_sections_size : nat;
         canister_history_size : nat;

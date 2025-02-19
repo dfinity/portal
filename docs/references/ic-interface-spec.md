@@ -2297,13 +2297,13 @@ Only the controllers of the canister or the canister itself can request its stat
 
 #### Memory Metrics {#ic-canister_status-memory_metrics}
 
-    * `heap_size`: Represents the Wasm memory usage of the canister, i.e. the heap memory used by the canister's WebAssembly code.
+    * `wasm_memory_size`: Represents the Wasm memory usage of the canister, i.e. the heap memory used by the canister's WebAssembly code.
 
-    * `stable_size`: Represents the stable memory usage of the canister, which is the memory that persists across canister upgrades.
+    * `stable_memory_size`: Represents the stable memory usage of the canister.
 
-    * `global_size`: Represents the memory usage of the global variables that the canister is using.
+    * `global_memory_size`: Represents the memory usage of the global variables that the canister is using.
 
-    * `wasm_binary_size`: Represents the memory occupied by the Wasm binary that is currently installed on the canister.
+    * `wasm_binary_size`: Represents the memory occupied by the Wasm binary that is currently installed on the canister. This is the size of the binary uploaded via `install_code` or `install_chunked_code`, e.g., the compressed size if the uploaded binary is gzipped.
 
     * `custom_sections_size`: Represents the memory used by custom sections defined by the canister, which may include additional metadata or configuration data.
 
@@ -4644,6 +4644,16 @@ S with
             then null
             else opt (SHA-256(S.canisters[A.canister_id].raw_module));
           memory_size = Memory_usage;
+          memory_metrics = {
+            wasm_memory_size = Wasm_memory_size;
+            stable_memory_size = Stable_memory_size;
+            global_memory_size = Global_memory_size;
+            wasm_binary_size = Wasm_binary_size;
+            custom_sections_size = Custom_sections_size;
+            canister_history_size = Canister_history_size;
+            wasm_chunk_store_size = Wasm_chunk_store_size;
+            snapshot_size = Snapshot_size;
+          }
           cycles = S.balances[A.canister_id];
           reserved_cycles = S.reserved_balances[A.canister_id]
           idle_cycles_burned_per_day = idle_cycles_burned_rate(
