@@ -1131,7 +1131,7 @@ exports.getRedirects = function () {
 
       // If redirect[0] isn't found and contains /docs/current, redirect to /docs/home
       if (!redirectFound && r[0].includes("/docs/current")) {
-        r[0] = "/docs/home"; // Redirect to /docs/home
+        r[1] = "/docs/home"; // Redirect to /docs/home
       }
 
       return !isSplat(r) && !isExternal(r) && !isExactUrl(r);
