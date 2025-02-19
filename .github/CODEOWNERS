@@ -16,6 +16,7 @@ docs/building-apps/network-features/using-http/http-certification/ @dfinity/trus
 docs/building-apps/network-features/simd.mdx @dfinity/execution
 docs/building-apps/network-features/periodic-tasks-timers.mdx @dfinity/execution
 docs/building-apps/best-practices/idempotency.mdx @dfinity/research @dfinity/product-security
+docs/building-apps/canister-manahement/backtraces.mdx @dfinity/execution
 
 # The Interface Specification
 docs/references/_attachments/certificates.cddl @dfinity/canister-os
