@@ -3,6 +3,77 @@
   "categoryDescription": "Developer experience is an essential ingredient for developer adoption. This includes low-friction canister development and operations, expressive smart contract languages, testing frameworks, and a rich set of libraries. Beyond canister development, developer experience also encompasses an inclusive and quality-preserving protocol development.",
   "elements": [
     {
+      "title": "Motoko coding fine-tuned model",
+      "overview": "Fine-tune multiple Large Language Models (LLMs) using high-quality Motoko code samples to develop the most efficient and high-performing model for Motoko programming.",
+      "status": "in_progress",
+      "milestone_id": "Beacon"
+    },
+    {
+      "title": "Model benchmarks for Motoko coding",
+      "overview": "Develop a comprehensive set of benchmarks to evaluate model performance for Motoko programming. This includes assessing both existing base LLMs and fine-tuned models to ensure accurate measurement of the effectiveness of fine-tuning efforts.",
+      "status": "in_progress",
+      "milestone_id": "Beacon"
+    },
+    {
+      "title": "Caffeine integration",
+      "overview": "Integrate the results of the fine-tuning work into Caffeine to improve the quality of generated Motoko code. This will involve leveraging the highest-performing fine-tuned model, implementing a Retrieval-Augmented Generation (RAG) solution, and optimizing prompt engineering.",
+      "status": "in_progress",
+      "milestone_id": "Beacon"
+    },
+    {
+      "title": "AI Model for Motoko code generation",
+      "description": "This milestone is the first step towards improving the capability of Large Language Models to effectively generate code in the Motoko programming language.",
+      "status": "in_progress",
+      "is_milestone": true,
+      "milestone_id": "Beacon",
+      "eta_to_render": "April 2025"
+    },
+
+    {
+      "title": "Amazing first time developer experience with ICP Ninja",
+      "description": "ICP Ninja as the go to tool for ICP developers, experienced or not.",
+      "status": "future",
+      "is_milestone": true,
+      "milestone_id": "Atlas",
+      "eta_to_render": ""
+    },
+    {
+      "title": "Open Caffeine projects",
+      "overview": "Users can open their Caffeine generated applications in ICP Ninja and continue manually refining them. Once satisfied with the result, one can return to Caffeine and iterate with prompts.",
+      "status": "future",
+      "milestone_id": "Atlas"
+    },
+    {
+      "title": "Generate a project with AI",
+      "overview": "Get a head start in developing your next project with ICP Ninja by using the integrated AI project generator. Simply describe what you want to build and it’ll do it for you.",
+      "status": "future",
+      "milestone_id": "Atlas"
+    },
+    {
+      "title": "More sample projects to get you started",
+      "overview": "Users can browse, open, and run the official ICP examples from ICP Ninja.",
+      "status": "future",
+      "milestone_id": "Atlas"
+    },
+    {
+      "title": "Community published projects",
+      "overview": "Show your coding skills to the community by publishing your project to the gallery.",
+      "status": "future",
+      "milestone_id": "Atlas"
+    },
+    {
+      "title": "Structured learning through mini tutorials",
+      "overview": "Add tutorials that teach ICP programming concepts and design patterns.",
+      "status": "future",
+      "milestone_id": "Atlas"
+    },
+    {
+      "title": "Dark mode",
+      "overview": "Introduce dark mode for the app",
+      "status": "future",
+      "milestone_id": "Atlas"
+    },
+    {
       "title": "dfx extensions",
       "overview": "Plugin architecture for integrating 3rd-party functionality directly into DFX.",
       "forum": "",
@@ -12,31 +83,6 @@
       "status": "in_progress",
       "is_community": true,
       "in_beta": false,
-      "imported": true
-    },
-    {
-      "title": "Canister snapshots",
-      "overview": "Allow for canister snapshots to be created on chain. Snapshots can be exported to and imported from off-chain storage.",
-      "status": "deployed",
-      "forum": "https://forum.dfinity.org/t/canister-backup-and-restore-community-consideration/22597",
-      "proposal": "",
-      "docs": "",
-      "eta": "Q2 2024",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": "Beryllium"
-    },
-    {
-      "title": "Canister logging",
-      "overview": "New APIs for writing and reading canister runtime logs. The logs survive upgrades and traps and ensure developers are able to record key error data.",
-      "forum": "https://forum.dfinity.org/t/canister-logging/21300",
-      "proposal": "",
-      "docs": "",
-      "eta": "2024-08-28",
-      "status": "deployed",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": "Beryllium",
       "imported": true
     },
     {
@@ -51,38 +97,6 @@
       "in_beta": false,
       "milestone_id": "Thorium",
       "imported": true
-    },
-    {
-      "title": "Standardized canister response codes",
-      "overview": "Standardize canister response codes, particularly error codes, to enable better composability of services from canister smart contracts.",
-      "status": "deployed",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": "Beryllium"
-    },
-    {
-      "title": "Actionable error messages and backtraces",
-      "overview": "Improve error messages by providing more actionable information to developers such as backtraces, error codes, and links to the documentation explaining how to fix the error.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "deployed",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": "Beryllium"
-    },
-    {
-      "title": "Canister DevOps",
-      "is_milestone": true,
-      "description": "This milestone provides substantial simplifications and improvements for the developer lifecycle of canisters, particularly regarding their development and operations. Snapshotting capabilities, a powerful logging infrastructure and improved error handling as well as push of relevant events brings canisters closer to Web2 services in terms of DevOps.",
-      "milestone_id": "Beryllium",
-      "eta": "",
-      "status": "deployed",
-      "eta_to_render": "November 2024"
     },
     {
       "title": "Coding and Development in ICP Ninja",

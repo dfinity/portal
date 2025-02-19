@@ -185,6 +185,33 @@
       "milestone_id": "Dynamo"
     },
     {
+      "title": "Zero to Degen-Hero",
+      "description": "Low-friction onboarding and streamlined user experience",
+      "status": "future",
+      "is_milestone": true,
+      "milestone_id": "Apex",
+      "eta_to_render": ""
+    },
+    {
+      "title": "Ledgers as a first class citizen on ICP",
+      "overview": "Ledgers are an important part of the blockchain ecosystem. Making it easy to create, discover, and use is fundamental to greater adoption.",
+      "status": "future",
+      "milestone_id": "Apex"
+    },
+    {
+      "title": "Faster institutional integrations of new tokens",
+      "overview": "Support multi-token Resetta",
+      "status": "future",
+      "milestone_id": "Apex"
+    },
+    {
+      "title": "Fiat on-ramp",
+      "overview": "Facilitate the exchange of fiat currencies for ICP native tokens.",
+      "status": "future",
+      "milestone_id": "Apex"
+    },
+
+    {
       "title": "Rosetta for ICRC ledgers",
       "overview": "Implement the Rosetta standard for ICRC-based ledgers. Enables ICRC tokens to be handled by centralized exchanges.",
       "status": "in_progress",
