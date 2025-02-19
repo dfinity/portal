@@ -162,7 +162,7 @@ Link to resources that go into further detail and provide a brief summary of the
 
 - The [how it works](https://internetcomputer.org/how-it-works) section of the website
 
-- The [core concepts](https://internetcomputer.org/docs/concepts/canisters-code) section of the docs
+- The [core concepts](https://internetcomputer.org/docs/building-apps/essentials/canisters) section of the docs
 
 Try to answer the following questions within the document:
 

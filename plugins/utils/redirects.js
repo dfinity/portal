@@ -1020,40 +1020,40 @@ const redirects = `
   /docs/current/developer-docs/ai/training-models /ecosystem
   /docs/current/developer-docs/ai/machine-learning-sample /ecosystem
 
-  /docs/current/developer-docs/defi/dex/overview /docs/home
-  /docs/current/developer-docs/defi/nfts/overview /docs/home
-  /docs/current/developer-docs/defi/nfts/marketplaces /docs/home
+  /docs/current/developer-docs/defi/dex/overview https://internetcomputer.zendesk.com/hc/en-us
+  /docs/current/developer-docs/defi/nfts/overview https://internetcomputer.zendesk.com/hc/en-us
+  /docs/current/developer-docs/defi/nfts/marketplaces https://internetcomputer.zendesk.com/hc/en-us
 
-  /docs/current/developer-docs/daos/nns/overview /docs/home
-  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart /docs/home
-  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-send-and-receive-tokens /docs/home
-  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-importing-tokens /docs/home
-  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-staking-a-neuron /docs/home
-  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-voting-on-proposals /docs/home
-  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-following-other-neurons /docs/home
-  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-advanced-neuron-operations /docs/home
-  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-making-neurons-public /docs/home
-  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-manage-quill-neurons /docs/home
-  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-additional-features /docs/home
+  /docs/current/developer-docs/daos/nns/overview https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
+  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
+  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-send-and-receive-tokens https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
+  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-importing-tokens https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
+  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-staking-a-neuron https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-voting-on-proposals https://internetcomputer.zendesk.com/hc/en-us/articles/34084113508500-Proposals
+  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-following-other-neurons https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-advanced-neuron-operations https://internetcomputer.zendesk.com/hc/en-us/articles/34084179554196-Neurons-Fund-NF
+  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-making-neurons-public https://internetcomputer.zendesk.com/hc/en-us/articles/34140499557908-Neuron-Attributes
+  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-manage-quill-neurons https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-additional-features https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
 
-  /docs/current/developer-docs/daos/nns/concepts/neurons/neuron-overview /docs/home
-  /docs/current/developer-docs/daos/nns/concepts/neurons/neuron-following /docs/home
-  /docs/current/developer-docs/daos/nns/concepts/neurons/staking-voting-rewards /docs/home
-  /docs/current/developer-docs/daos/nns/concepts/neurons/neuron-management /docs/home
-  /docs/current/developer-docs/daos/nns/concepts/neurons/becoming-a-known-neuron /docs/home
+  /docs/current/developer-docs/daos/nns/concepts/neurons/neuron-overview https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/current/developer-docs/daos/nns/concepts/neurons/neuron-following https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/current/developer-docs/daos/nns/concepts/neurons/staking-voting-rewards https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/current/developer-docs/daos/nns/concepts/neurons/neuron-management https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/current/developer-docs/daos/nns/concepts/neurons/becoming-a-known-neuron https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
 
-  /docs/current/developer-docs/daos/nns/concepts/proposals/proposal-overview /docs/home
-  /docs/current/developer-docs/daos/nns/concepts/proposals/direct-voting /docs/home
-  /docs/current/developer-docs/daos/nns/concepts/proposals/proposal-topics /docs/home
-  /docs/current/developer-docs/daos/nns/concepts/proposals/verify-proposals /docs/home
-  /docs/current/developer-docs/daos/nns/concepts/proposals/proposal-submit /docs/home
-  /docs/current/developer-docs/daos/nns/concepts/neurons-fund /docs/home
+  /docs/current/developer-docs/daos/nns/concepts/proposals/proposal-overview https://internetcomputer.zendesk.com/hc/en-us/articles/34084113508500-Proposals
+  /docs/current/developer-docs/daos/nns/concepts/proposals/direct-voting https://internetcomputer.zendesk.com/hc/en-us/articles/34084113508500-Proposals
+  /docs/current/developer-docs/daos/nns/concepts/proposals/proposal-topics https://internetcomputer.zendesk.com/hc/en-us/articles/34140518658068-Proposal-Topics-and-Types
+  /docs/current/developer-docs/daos/nns/concepts/proposals/verify-proposals https://internetcomputer.zendesk.com/hc/en-us/articles/34084113508500-Proposals
+  /docs/current/developer-docs/daos/nns/concepts/proposals/proposal-submit https://internetcomputer.zendesk.com/hc/en-us/articles/34084113508500-Proposals
+  /docs/current/developer-docs/daos/nns/concepts/neurons-fund https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
 
-  /docs/references/node-providers/overview /docs/home
-  /docs/references/node-providers/node-metrics /docs/home
-  /docs/current/developer-docs/defi/wallets/overview /docs/home
-  /docs/current/developer-docs/defi/wallets/self-custody/self-custody-quickstart /docs/home
-  /docs/current/developer-docs/defi/wallets/self-custody/hardware-wallet-cli /docs/defi/overview
+  /docs/references/node-providers/overview https://internetcomputer.zendesk.com/hc/en-us
+  /docs/references/node-providers/node-metrics https://internetcomputer.zendesk.com/hc/en-us
+  /docs/current/developer-docs/defi/wallets/overview https://internetcomputer.zendesk.com/hc/en-us
+  /docs/current/developer-docs/defi/wallets/self-custody/self-custody-quickstart https://internetcomputer.zendesk.com/hc/en-us
+  /docs/current/developer-docs/defi/wallets/self-custody/hardware-wallet-cli /docs/defihttps://internetcomputer.zendesk.com/hc/en-us
 
   /docs/references/clang-supported-languages /docs/home
 

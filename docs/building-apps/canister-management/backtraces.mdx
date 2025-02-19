@@ -10,7 +10,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <MarkdownChipRow labels={["Intermediate", "Tutorial", "Motoko", "Rust"]} />
 
 
-When canisters trap, ICP reports backtraces that contain the names of functions in the call stack. Backtraces are added to the canister logs and if the caller has [access to canister logs](/docs/current/developer-docs/smart-contracts/maintain/logs#log-visibility) they will also be included in the message error response.
+When canisters trap, ICP reports backtraces that contain the names of functions in the call stack. Backtraces are added to the canister logs and if the caller has [access to canister logs](/docs/building-apps/canister-management/logs#log-visibility) they will also be included in the message error response.
 
 For example, if the following Rust canister accidentally performs an out of bounds access of stable memory:
 
@@ -49,7 +49,7 @@ Any canister built with dfx version `>= 0.24.2` should automatically have suppor
 To double check that a Wasm module has the name section, you can use [`wasm-objdump`](https://github.com/WebAssembly/wabt):
 
 ```
-$ wasm-objdump -h test.wasm 
+$ wasm-objdump -h test.wasm
 
 test.wasm:	file format wasm 0x1
 

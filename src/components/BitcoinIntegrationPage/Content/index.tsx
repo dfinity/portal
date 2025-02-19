@@ -173,7 +173,7 @@ const Content: React.FC = () => {
                 while also leveraging the unique core features of the
                 <Link
                   className="link-primary !text-white hover:text-white/60"
-                  to="/docs/concepts/canisters-code"
+                  to="/docs/building-apps/essentials/canisters"
                 >
                   {" "}
                   ICP tech stack
