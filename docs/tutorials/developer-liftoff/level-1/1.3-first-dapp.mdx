@@ -459,13 +459,8 @@ dfx start --clean --background
 Then, you can deploy the dapp with the command:
 
 ```bash
-npm install
 dfx deploy
 ```
-
-:::caution
-If you receive an error related to a missing package, try using this [package.json](https://github.com/jessiemongeon1/dev-journey-poll-dapp/blob/main/package.json) file.
-:::
 
 You may recall that in the previous module, [exploring a live demo](/docs/current/tutorials/developer-liftoff/level-1/1.1-live-demo), you used the `--playground` flag to deploy your canister to the playground network. In this module, you aren't using any flags, which defaults to deploying the canister to the local environment. You can also specify this with the flag `--network local`.
 
@@ -619,8 +614,6 @@ Start by creating the file `src/poll_frontend/src/index.html` that contains the 
 :::info
 **What does this code do?**
 The HTML code above is a simple form that provides the end user with options to select using radio buttons. There is nothing 'Web3' or specific to ICP about this code.
-
-Then, the `<head>` tag is used to include some basic CSS for the page's styling. To learn more about adding a stylesheet, see: [add a stylesheet](/docs/current/developer-docs/web-apps/application-frontends/overview/).
 :::
 
 Next, you will need a `webpack.config.js` file that defines several parameters to facilitate your local development web server.
