@@ -262,8 +262,8 @@ const redirects = `
   /language-guide/ /docs/tutorials/developer-liftoff/level-0/intro-languages
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/network-quickstart.html /docs/building-apps/getting-started/install
-  /docs/token-holders/nns-app-quickstart.html /docs/move-to-learnhub/nns/using-the-nns-dapp/nns-app-quickstart
-  /docs/move-to-learnhub/nns/nns-app-quickstart /docs/move-to-learnhub/nns/using-the-nns-dapp/nns-app-quickstart
+  /docs/token-holders/nns-app-quickstart.html https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
+  /docs/move-to-learnhub/nns/nns-app-quickstart https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
   /developers-guide.html /docs/tutorials/developer-liftoff/
   /docs/tokenomics/identity-auth/auth-how-to /docs/building-apps/authentication/overview
   /docs/developers-guide/tutorials-intro.html /docs/tutorials/developer-liftoff/
@@ -442,8 +442,8 @@ const redirects = `
   /docs/current/developer-docs/integrations/sns/managing/cycles-usage /docs/building-apps/governing-apps/managing/cycles-usage
   /docs/current/developer-docs/integrations/sns/managing/sns-asset-canister /docs/building-apps/governing-apps/managing/sns-asset-canister
   /docs/current/developer-docs/integrations/sns/managing/managing-nervous-system-parameters /docs/building-apps/governing-apps/managing/managing-nervous-system-parameters
-  /docs/tokenomics/nns/nns-intro /docs/move-to-learnhub/nns/overview
-  /docs/tokenomics/token-holders/nns-app-quickstart /docs/move-to-learnhub/nns/using-the-nns-dapp/nns-app-quickstart
+  /docs/tokenomics/nns/nns-intro https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
+  /docs/tokenomics/token-holders/nns-app-quickstart https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
   /docs/tokenomics/nns/neurons-fund /docs/move-to-learnhub/nns/concepts/neurons-fund
   /docs/tokenomics/nns/nns-staking-voting-rewards /docs/move-to-learnhub/nns/concepts/neurons/staking-voting-rewards
   /docs/move-to-learnhub/nns/staking-voting-rewards /docs/move-to-learnhub/nns/concepts/neurons/staking-voting-rewards
@@ -662,7 +662,7 @@ const redirects = `
   /docs/current/developer-docs/security/general-security-best-practices /docs/building-apps/best-practices/security/overview
   /docs/samples/game-of-life /docs/references/samples/motoko/life/
   /docs/concepts/canisters-code /docs/building-apps/essentials/canisters
-  /docs/concepts/governance /docs/move-to-learnhub/nns/overview
+  /docs/concepts/governance https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
   /docs/concepts/nodes-subnets /docs/building-apps/developing-canisters/create
   /docs/concepts/subnet-types /docs/building-apps/developing-canisters/create
   /docs/references/glossary /docs/references/glossary/
