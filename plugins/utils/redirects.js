@@ -106,7 +106,7 @@ const redirects = `
   /docs/developers-guide/working-with-canisters.html /docs/building-apps/canister-management/settings
 
   # regular internal redirects (from -> to)
-  /docs/references/motoko-ref/* /docs/motoko/main/base/:splat
+  /docs/references/motoko-ref/ /docs/motoko/main/base/
   /features/green /capabilities/sustainability
   /features /capabilities
   /openchat /sns
@@ -139,7 +139,7 @@ const redirects = `
   /docs/samples/codelabs/minimalistic-rust-dapp /samples
   /docs/samples/codelabs/simple-nft /samples
   /docs/samples/codelabs/static-website /samples
-  /docs/samples/* /samples
+  /docs/samples/ /samples
   /docs/security-best-practices/introduction /docs/building-apps/best-practices/security/overview
   /docs/current/developer-docs/setup/default-wallet /docs/building-apps/canister-management/topping-up
   /docs/tokenomics/sns/tokenomics /docs/building-apps/governing-apps/tokenomics/
@@ -167,7 +167,7 @@ const redirects = `
 
   /docs/current/developer-docs/build/ /docs/building-apps/developing-canisters/what-is-a-canister
   /docs/current/developer-docs/build/candid/candid-concepts /docs/building-apps/interact-with-canisters/candid/candid-concepts
-  /docs/current/developer-docs/build/languages/other-languages/* /docs/building-apps/developing-canisters/what-is-a-canister
+  /docs/current/developer-docs/build/languages/other-languages/ /docs/building-apps/developing-canisters/what-is-a-canister
   /docs/current/developer-docs/build/languages/work-with-languages /docs/building-apps/developing-canisters/what-is-a-canister
   /docs/current/developer-docs/build/using-an-agent /docs/building-apps/developing-canisters/what-is-a-canister
   /docs/current/developer-docs/build/backend/reproducible-builds /docs/building-apps/best-practices/reproducible-builds
@@ -175,18 +175,18 @@ const redirects = `
   /docs/current/developer-docs/build/frontend/default-frontend /docs/building-apps/frontends/using-an-asset-canister
   /docs/current/developer-docs/build/frontend/webpack-config /docs/building-apps/frontends/using-an-asset-canister#modifying-the-webpack-configuration
   /docs/current/developer-docs/build/install-upgrade-remove /docs/building-apps/getting-started/install
-  /docs/current/developer-docs/build/languages/rust/* /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
+  /docs/current/developer-docs/build/languages/rust/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/build/project-setup/cycles-wallet /docs/building-apps/canister-management/topping-up
   /docs/current/developer-docs/build/project-setup/manage-canisters /docs/building-apps/canister-management/settings
   /docs/current/developer-docs/build/project-setup/design-dapps /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/build/troubleshooting /docs/building-apps/getting-started/troubleshooting
   /docs/current/developer-docs/build/agents/ /docs/building-apps/interact-with-canisters/agents/overview
   /docs/current/developer-docs/build/agents/javascript/javascript-intro /docs/building-apps/interact-with-canisters/agents/javascript-agent
-  /docs/current/developer-docs/build/agents/javascript/*  /docs/building-apps/interact-with-canisters/agents/javascript-agent
-  /docs/current/developer-docs/build/languages/candid/* /docs/building-apps/interact-with-canisters/candid/candid-concepts
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/* /docs/motoko/main/:splat
-  /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/*  /docs/building-apps/developer-tools/cdks/rust/intro-to-rust:splat
-  /docs/current/developer-docs/build/languages/motoko/* /docs/motoko/main/:splat
+  /docs/current/developer-docs/build/agents/javascript/  /docs/building-apps/interact-with-canisters/agents/javascript-agent
+  /docs/current/developer-docs/build/languages/candid/ /docs/building-apps/interact-with-canisters/candid/candid-concepts
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/ /docs/motoko/main/
+  /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/  /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
+  /docs/current/developer-docs/build/languages/motoko/ /docs/motoko/main/
 
   /docs/developers-guide/ /docs/motoko/main/getting-started/motoko-introduction
   /docs/developers-guide/about-this-guide /docs/motoko/main/getting-started/motoko-introduction
@@ -221,9 +221,9 @@ const redirects = `
   /docs/quickstart/quickstart-intro /docs/tutorials/developer-liftoff/
   /docs/quickstart/quickstart-intro /docs/tutorials/developer-liftoff/
   /docs/quickstart/newcomers /docs/home
-  /docs/current/developer-docs/quickstart/* /docs/tutorials/developer-liftoff/
+  /docs/current/developer-docs/quickstart/ /docs/tutorials/developer-liftoff/
   /developers-guide/quickstart /docs/tutorials/developer-liftoff/
-  /docs/current/developer-docs/quickstart/* /docs/tutorials/developer-liftoff/
+  /docs/current/developer-docs/quickstart/ /docs/tutorials/developer-liftoff/
   /developers-guide/quickstart /docs/tutorials/developer-liftoff/
   /docs/current/developer-docs/quickstart/cycles-faucet /docs/building-apps/getting-started/tokens-and-cycles
   /docs/current/developer-docs/quickstart/windows-wsl /docs/building-apps/getting-started/install
@@ -233,25 +233,25 @@ const redirects = `
   /docs/rosetta-api/ledger /docs/defi/token-standards/
   /docs/rosetta-api/ledger-local-setup /docs/defi/token-ledgers/setup/icp_ledger_setup
   /docs/integration/ledger-quick-start /docs/defi/token-standards/
-  /docs/current/developer-docs/functionality/ledger/* /docs/defi/token-ledgers/setup/icp_ledger_setup
+  /docs/current/developer-docs/functionality/ledger/ /docs/defi/token-ledgers/setup/icp_ledger_setup
 
-  /docs/base-libraries/* /docs/motoko/main/base/:splat
-  /base-libraries/* /docs/motoko/main/base/:splat
-  /docs/references/security/* /docs/building-apps/best-practices/security/overview
+  /docs/base-libraries/ /docs/motoko/main/base/
+  /base-libraries/ /docs/motoko/main/base/
+  /docs/references/security/ /docs/building-apps/best-practices/security/overview
   /docs/tokenomics/nns/community-fund /docs/move-to-learnhub/nns/concepts/neurons-fund
-  /docs/tokenomics/sns/* /docs/building-apps/governing-apps/tokenomics/:splat
-  /docs/developers-guide/cli-reference/* /docs/building-apps/developer-tools/dfx/:splat
-  /docs/developers-guide/concepts/* /docs/building-apps/essentials/network-overview
-  /docs/developers-guide/tutorials/* /docs/motoko/main/getting-started/motoko-introduction
-  /docs/ic-identity-guide/* /docs/tokenomics/identity-auth/:splat
-  /docs/language-guide/* /docs/motoko/main/:splat
-  /docs/release-notes/* /docs/other/updates/release-notes/:splat
-  /docs/rust-guide/* /docs/building-apps/developer-tools/cdks/rust/intro-to-rust:splat
-  /docs/security-best-practices/* /docs/building-apps/best-practices/security/inter-canister-calls
-  /docs/token-holders/* /docs/tokenomics/token-holders/:splat
-  /features/* /capabilities/:splat
-  /howitworks/* /how-it-works/:splat
-  /docs/current/developer-docs/build/backend/* /docs/motoko/main/getting-started/motoko-introduction
+  /docs/tokenomics/sns/ /docs/building-apps/governing-apps/tokenomics/
+  /docs/developers-guide/cli-reference/ /docs/building-apps/developer-tools/dfx/
+  /docs/developers-guide/concepts/ /docs/building-apps/essentials/network-overview
+  /docs/developers-guide/tutorials/ /docs/motoko/main/getting-started/motoko-introduction
+  /docs/ic-identity-guide/ /docs/tokenomics/identity-auth/
+  /docs/language-guide/ /docs/motoko/main/
+  /docs/release-notes/ /docs/other/updates/release-notes/
+  /docs/rust-guide/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
+  /docs/security-best-practices/ /docs/building-apps/best-practices/security/inter-canister-calls
+  /docs/token-holders/ /docs/tokenomics/token-holders/
+  /features/ /capabilities/
+  /howitworks/ /how-it-works/
+  /docs/current/developer-docs/build/backend/ /docs/motoko/main/getting-started/motoko-introduction
   /sustainability /capabilities/sustainability
   /docs-intro.html /docs/building-apps/getting-started/install
   /docs/ic-identity-guide/auth-how-to.html /docs/building-apps/authentication/integrate-internet-identity/
@@ -297,7 +297,7 @@ const redirects = `
   /docs/tutorials/index /docs/building-apps/essentials/network-overview
   /docs/tutorials/ /docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/backend/eu-subnets /docs/building-apps/developing-canisters/create
-  /docs/samples/* /samples
+  /docs/samples/ /samples
   /docs/current/developer-docs/backend/choosing-language /docs/building-apps/developing-canisters/what-is-a-canister
   /docs/current/developer-docs/production/deploying-and-upgrading /docs/building-apps/developing-canisters/deploy
   /docs/current/developer-docs/index /docs/building-apps/essentials/network-overview
@@ -1101,10 +1101,6 @@ const redirects = `
   .filter((l) => l.length > 0)
   .map((l) => l.split(/\s+/));
 
-  function isSplat(redirect) {
-    return redirect[0].includes("/*");
-  }
-
   function isExternal(redirect) {
     return redirect[1].startsWith("http");
   }
@@ -1124,7 +1120,7 @@ const redirects = `
 
   exports.getRedirects = function () {
     return redirects
-      .filter((r) => !isSplat(r) && !isExternal(r) && !isExactUrl(r))
+      .filter((r) => !isExternal(r) && !isExactUrl(r))
       .map(ruleToRedirect)
       .map((r) => ({
         to: r.to.replace(/#.+$/, ""),
@@ -1142,33 +1138,18 @@ const redirects = `
       .map(ruleToRedirect);
   };
 
-  exports.getSplatRedirects = function (existingUrl) {
+  exports.getSplatRedirects = function () {
     const urls = [];
 
-    for (const redirect of redirects.filter(
-      (r) => isSplat(r) && !isExternal(r)
-    )) {
-      let trimmedSource = redirect[0].replace("/*", "/");
+      let Source = redirect[0];
 
       // Check if the trimmedSource exists within the redirects
-      const sourceFound = redirects.some((r) => r[0] === trimmedSource);
+      const sourceFound = redirects.some((r) => r[0] === Source);
 
-      // If the trimmedSource is not in redirects, set it to /docs/home
+      // If the Source is not in redirects, set it to /docs/home
       if (!sourceFound) {
-        trimmedSource = '/docs/home';
+        Source = '/docs/home';
       }
-
-      if (redirect[1].includes(":splat")) {
-        const trimmedDestination = redirect[1].replace(":splat", "");
-        if (existingUrl.startsWith(trimmedDestination)) {
-          const completeSourceUrl = existingUrl.replace(
-            trimmedDestination,
-            trimmedSource
-          );
-          urls.push(completeSourceUrl);
-        }
-      }
-    }
 
     return urls;
   };
