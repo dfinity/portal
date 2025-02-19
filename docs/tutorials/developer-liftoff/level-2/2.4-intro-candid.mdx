@@ -276,9 +276,9 @@ Save this file. Then, compile and deploy the project with the command:
 dfx deploy
 ```
 
-Recall that the Motoko compiler will automatically generate the Candid service description file based on this code. This Candid file can be found at `src/declarations/candid_example_backend/candid_example_backend.did` and will contain the following:
+Recall that the Motoko compiler will automatically generate the Candid service description file based on this code. This Candid file can be found at `.dfx/local/candid_example_backend/candid_example_backend.did` and will contain the following:
 
-```candid title="src/declarations/candid_example_backend/candid_example_backend.did"
+```candid title=".dfx/local/candid_example_backend/candid_example_backend.did"
 service : {
   add: (nat) -> ();
   get: () -> (int) query;
