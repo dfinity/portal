@@ -12,7 +12,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 A subnet on ICP is a collection of interacting replicas that run their own, separate instance of the ICP consensus mechanism, effectively creating their own blockchain on which a set of canisters can run. Each subnet can communicate with other subnets and is controlled by a root subnet. The root subnet uses chain-key cryptography to delegate its authority to the various subnets.
 
-You can learn more about subnets and how they work [here](/docs/current/references/subnets/overview).
+You can learn more about subnets and how they work [here](/docs/references/subnets/overview).
 
 There are four types of subnets: system, application, fiduciary, and the European subnet.
 
@@ -106,7 +106,7 @@ It is recommended to use the cycles ledger instead, which does not require any s
 
 Replace `CONTROLLER` with the principal ID that you took note of earlier after running the `dfx identity get-principal` command.
 
-Adjust the `--amount 0.5` to the number of ICP tokens that you want to send the new canister. More information can be found in the [documentation](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-ledger/#options).
+Adjust the `--amount 0.5` to the number of ICP tokens that you want to send the new canister. More information can be found in the [documentation](/docs/building-apps/developer-tools/dfx/dfx-parent/dfx-ledger/#options).
 
 This command will return a canister ID. Using that canister ID, you can deploy the wallet canister code to the new canister with the command:
 
