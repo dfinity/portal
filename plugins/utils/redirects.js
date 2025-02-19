@@ -11,7 +11,7 @@ const redirects = `
   /docs/current/developer-docs/backend/solidity/ https://docs.bitfinity.network/
   /docs/current/developer-docs/backend/python/ https://demergent-labs.github.io/kybra/
   /docs/current/developer-docs/backend/typescript/ https://demergent-labs.github.io/azle/
-   /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/index https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/index https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-parent https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-account-balance https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-ckbtc https://github.com/dfinity/quill/tree/master/docs/cli-reference
@@ -1101,12 +1101,9 @@ const redirects = `
   .filter((l) => l.length > 0)
   .map((l) => l.split(/\s+/));
 
+
 function isSplat(redirect) {
   return redirect[0].includes("/*");
-}
-
-function isCurrent(existingPath) {
-  return existingPath.includes('/docs/current');
 }
 
 function isExternal(redirect) {
@@ -1116,7 +1113,6 @@ function isExternal(redirect) {
 function isExactUrl(redirect) {
   return redirect[0].endsWith(".html");
 }
-
 
 function ruleToRedirect(rule) {
   const from = rule[0].replace(/(.+)\/$/, "$1");
@@ -1129,7 +1125,17 @@ function ruleToRedirect(rule) {
 
 exports.getRedirects = function () {
   return redirects
-    .filter((r) => !isSplat(r) && !isExternal(r) && !isExactUrl(r) && !isCurrent(r))
+    .filter((r) => {
+      // Check if the redirect[0] is not found in the redirects list
+      const redirectFound = redirects.some(existingRedirect => existingRedirect[0] === r[0]);
+
+      // If redirect[0] isn't found and contains /docs/current, redirect to /docs/home
+      if (!redirectFound && r[0].includes("/docs/current")) {
+        r[0] = "/docs/home"; // Redirect to /docs/home
+      }
+
+      return !isSplat(r) && !isExternal(r) && !isExactUrl(r);
+    })
     .map(ruleToRedirect)
     .map((r) => ({
       to: r.to.replace(/#.+$/, ""),
@@ -1147,16 +1153,16 @@ exports.getExactUrlRedirects = function () {
     .map(ruleToRedirect);
 };
 
-exports.getCurrentRedirects = function (existingUrl) {
+exports.getSplatRedirects = function (existingUrl) {
   const urls = [];
 
   for (const redirect of redirects.filter(
-    (r) => isCurrent(r)
+    (r) => isSplat(r) && !isExternal(r)
   )) {
     const trimmedSource = redirect[0].replace("/*", "/");
 
-    if (redirect[0].includes("/docs/current")) {
-      const trimmedDestination = redirect[1].replace("/docs/current", "/docs");
+    if (redirect[1].includes(":splat")) {
+      const trimmedDestination = redirect[1].replace(":splat", "");
       if (existingUrl.startsWith(trimmedDestination)) {
         const completeSourceUrl = existingUrl.replace(
           trimmedDestination,
