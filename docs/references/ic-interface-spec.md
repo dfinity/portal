@@ -2275,7 +2275,7 @@ Indicates various information about the canister. It contains:
 
 -   The actual memory usage of the canister, representing the total memory consumed by the canister.
 
--   A record containing detailed breakdown of memory usage into individual components.
+-   A record containing detailed breakdown of memory usage into individual components (see [Memory Metrics](#ic-canister_status-memory_metrics) for more details).
 
 -   The cycle balance of the canister.
 
