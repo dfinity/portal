@@ -1101,86 +1101,74 @@ const redirects = `
   .filter((l) => l.length > 0)
   .map((l) => l.split(/\s+/));
 
-
-function isSplat(redirect) {
-  return redirect[0].includes("/*");
-}
-
-function isExternal(redirect) {
-  return redirect[1].startsWith("http");
-}
-
-function isExactUrl(redirect) {
-  return redirect[0].endsWith(".html");
-}
-
-function ruleToRedirect(rule) {
-  const from = rule[0].replace(/(.+)\/$/, "$1");
-  const to = rule[1];
-  return {
-    from,
-    to,
-  };
-}
-
-exports.getRedirects = function (currentUrl) {
-  // Check if currentUrl is in the redirects array
-  const redirectFound = redirects.some((r) => r[0] === currentUrl);
-
-  // If the current URL is found, return it unchanged
-  if (redirectFound) {
-    return [{
-      from: currentUrl,
-      to: currentUrl, // No redirection, keep the URL the same
-    }];
+  function isSplat(redirect) {
+    return redirect[0].includes("/*");
   }
 
-  // If not found, redirect to /docs/home
-  const redirectsWithFallback = [{
-    from: currentUrl,
-    to: '/docs/home',
-  }];
+  function isExternal(redirect) {
+    return redirect[1].startsWith("http");
+  }
 
-  // Now, filter and map the rest of the redirects
-  return redirectsWithFallback
-    .concat(redirects)  // Combine with other redirects
-    .filter((r) => !isSplat(r) && !isExternal(r) && !isExactUrl(r))  // Filter based on conditions
-    .map(ruleToRedirect)  // Map the redirect rules
-    .map((r) => ({
-      to: r.to.replace(/#.+$/, ""),  // Remove hash from the URL
-      from: r.from,
-    }));
-};
+  function isExactUrl(redirect) {
+    return redirect[0].endsWith(".html");
+  }
 
-exports.getExternalRedirects = function () {
-  return redirects.filter((r) => isExternal(r)).map(ruleToRedirect);
-};
+  function ruleToRedirect(rule) {
+    const from = rule[0].replace(/(.+)\/$/, "$1");
+    const to = rule[1];
+    return {
+      from,
+      to,
+    };
+  }
 
-exports.getExactUrlRedirects = function () {
-  return redirects
-    .filter((r) => !isExternal(r) && isExactUrl(r))
-    .map(ruleToRedirect);
-};
+  exports.getRedirects = function () {
+    return redirects
+      .filter((r) => !isSplat(r) && !isExternal(r) && !isExactUrl(r))
+      .map(ruleToRedirect)
+      .map((r) => ({
+        to: r.to.replace(/#.+$/, ""),
+        from: r.from,
+      }));
+  };
 
-exports.getSplatRedirects = function (existingUrl) {
-  const urls = [];
+  exports.getExternalRedirects = function () {
+    return redirects.filter((r) => isExternal(r)).map(ruleToRedirect);
+  };
 
-  for (const redirect of redirects.filter(
-    (r) => isSplat(r) && !isExternal(r)
-  )) {
-    const trimmedSource = redirect[0].replace("/*", "/");
+  exports.getExactUrlRedirects = function () {
+    return redirects
+      .filter((r) => !isExternal(r) && isExactUrl(r))
+      .map(ruleToRedirect);
+  };
 
-    if (redirect[1].includes(":splat")) {
-      const trimmedDestination = redirect[1].replace(":splat", "");
-      if (existingUrl.startsWith(trimmedDestination)) {
-        const completeSourceUrl = existingUrl.replace(
-          trimmedDestination,
-          trimmedSource
-        );
-        urls.push(completeSourceUrl);
+  exports.getSplatRedirects = function (existingUrl) {
+    const urls = [];
+
+    for (const redirect of redirects.filter(
+      (r) => isSplat(r) && !isExternal(r)
+    )) {
+      let trimmedSource = redirect[0].replace("/*", "/");
+
+      // Check if the trimmedSource exists within the redirects
+      const sourceFound = redirects.some((r) => r[0] === trimmedSource);
+
+      // If the trimmedSource is not in redirects, set it to /docs/home
+      if (!sourceFound) {
+        trimmedSource = '/docs/home';
+      }
+
+      if (redirect[1].includes(":splat")) {
+        const trimmedDestination = redirect[1].replace(":splat", "");
+        if (existingUrl.startsWith(trimmedDestination)) {
+          const completeSourceUrl = existingUrl.replace(
+            trimmedDestination,
+            trimmedSource
+          );
+          urls.push(completeSourceUrl);
+        }
       }
     }
-  }
 
-  return urls;
-};
+    return urls;
+  };
