@@ -10,7 +10,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 Just like users can call canisters, canisters can also call other canisters. This tutorial provides an introduction to using these inter-canister calls in Rust.
 
-We will show how to call the [counter canister](/docs/current/developer-docs/backend/rust/counter), which provides just four operations on a counter: getting the counter value, incrementing the counter, setting the counter to an arbitrary value, and setting the counter to an arbitrary value while returning the previous value.
+This example will show how to call the [counter canister](/docs/current/developer-docs/backend/rust/counter), which provides four operations on a counter:
+1. Getting the counter value.
+2. Incrementing the counter.
+3. Setting the counter to an arbitrary value.
+4. Setting the counter to an arbitrary value while returning the previous value.
 
 ## Prerequisites
 
@@ -44,14 +48,14 @@ use sha2::{Digest, Sha256};
 pub async fn call_get_and_set(counter: Principal, new_value: Nat) -> Nat {
     // To make a call, you must provide the principal (i.e., ID) of the canister you're
     // calling, and the method name that you're calling. Here, we require our own caller to provide
-    // the principal of the counter canister as an argument to our function.
+    // the principal of the counter canister as an argument to `call_get_and_set`.
     // When making a call, you must choose between bounded and unbounded wait calls. These call
-    // types have different failure modes that we will explain later.
+    // types have different failure modes that will be explained later.
     let old = Call::unbounded_wait(counter, "get_and_set")
-        // `Call` follows the builder pattern; we can customize call options before we finalize
+        // `Call` follows the builder pattern; you can customize call options before you finalize
         // the call by issuing the `call()` method. Here, we provide an argument of type that
         // get_and_set expects, a Nat (non-negative integer). The Rust CDK serializes the argument
-        // for us using the Candid format, so we just need to provide the Rust value.
+        // for you using the Candid format, so you just need to provide the Rust value.
         .with_arg(&new_value)
         // Use async/await syntax to obtain the call result. Note that the call is only issued once
         // you await it!
@@ -68,7 +72,7 @@ pub async fn call_get_and_set(counter: Principal, new_value: Nat) -> Nat {
 }
 ```
 
-Now, deploy this code to the local IC instance. This will give you some warnings about unused imports, but we will use these later in the tutorial.
+Now, deploy this code to the local replica. This will give you some warnings about unused imports, but these will be used these later in the tutorial.
 
 ```bash
 $ dfx deploy caller
@@ -92,7 +96,9 @@ As the example notes, panicking when handling call errors is generally a bad ide
 
 ## IC calls are asynchronous: non-atomic set-then-get
 
-You have already seen that the inter-canister calls use the Rust `async/await` syntax, hinting at the fact that these calls are **asynchronous**. This is a profound difference to the messaging model of some other chains (e.g., Ethereum). It enables significantly higher throughput, but can also affect correctness. To illustrate, let's look at the following example, where we first call the `set` method on the counter, and then call `get` afterwards. Add the following code to your `src/caller/src/lib.rs`.
+You have already seen that the inter-canister calls use the Rust `async/await` syntax, hinting at the fact that these calls are **asynchronous**. This is a profound difference to the messaging model of some other chains (e.g., Ethereum). It enables significantly higher throughput, but can also affect correctness. 
+
+To illustrate, let's look at the following example, where it first calls the `set` method on the counter, and then calls `get` afterwards. Add the following code to your `src/caller/src/lib.rs`.
 
 ```rust
 #[update]
@@ -100,7 +106,7 @@ pub async fn set_then_get(counter: Principal, new_value: Nat) -> Nat {
     Call::unbounded_wait(counter, "set")
         .with_arg(&new_value)
         .await
-        // In this particular example it's still OK to panic, as we make no state changes.
+        // In this particular example it's still OK to panic, as there are no state changes.
         .expect("Failed to set the value. Bailing out");
 
     let current_value: Nat = Call::unbounded_wait(counter, "get")
@@ -109,14 +115,14 @@ pub async fn set_then_get(counter: Principal, new_value: Nat) -> Nat {
         .candid()
         .expect("Candid decoding failed");
 
-    // It looks like we should be able to assert:
+    // It looks like you should be able to assert:
     // assert!(current_value == new_value);
     // But as we will explain, this is *NOT* guaranteed to hold!
     current_value
 }
 ```
 
-Let's try this out. Here, we'll pass the arguments directly to `dfx` instead of using the menu, by encoding [Candid values](/docs/current/developer-docs/smart-contracts/candid/candid-concepts) manually.
+Let's try this out. As shown below, you can also pass the arguments directly to `dfx` instead of using the menu by encoding [Candid values](/docs/current/developer-docs/smart-contracts/candid/candid-concepts) manually.
 
 ```bash
 $ dfx canister call caller set_then_get "record { counter: \"$(dfx canister id counter)\", new_value: 7 }"
@@ -128,22 +134,30 @@ You should get the expected result:
 (7: nat)
 ```
 
-That is, the value that we read from the counter is exactly the same as the value that we set. But as noted in the comments, this doesn't always have to hold! As IC calls are executed asynchronously, in between when the `set` and `get` calls in `call_get_and_set` execute, another canister could also call the `counter` canister and change the counter value. This of course cannot happen on your local installation since you control exactly which calls are made, but it can happen as soon as you install the code on the IC mainnet. This behavior enables much higher concurrent throughput between different canisters, since the counter canister isn't blocked from processing other requests while the caller canister is doing its processing. But it also has correctness and security implications. One particularly important aspect is that state changes aren't atomic. That is, if you make multiple calls, the failure of a later call doesn't roll back the effects of previous calls. This also holds true for the effects on the caller canister itself. In particular, a caller that panics after making a call can end up in an inconsistent state. This is not an issue for the examples that we have seen so far, as our caller's internal state doesn't exist and thus can't become inconsistent. But we will next take a closer look at call failures and how to handle them. For more information on the asynchronous execution model and its implications, read the documentation on [inter-canister calls and async code](/docs/current/developer-docs/smart-contracts/advanced-features/async-code), [properties of call execution]( /docs/current/references/message-execution-properties) and [security best practices](/docs/current/developer-docs/security/security-best-practices/inter-canister-calls).
+The value that is read from the counter is exactly the same as the value that was set. But as noted in the comments, this doesn't always have to hold! As IC calls are executed asynchronously, in between when the `set` and `get` calls in `call_get_and_set` execute, another canister could also call the `counter` canister and change the counter value. This of course cannot happen on your local installation since you control exactly which calls are made, but it can happen as soon as you install the code on the IC mainnet. 
+
+This behavior enables much higher concurrent throughput between different canisters, since the `counter` canister isn't blocked from processing other requests while the caller canister is doing its processing. But it also has correctness and security implications. One particularly important aspect is that state changes aren't atomic. If you make multiple calls, the failure of a later call doesn't roll back the effects of previous calls. 
+
+This also holds true for the effects on the caller canister itself. In particular, a caller that panics after making a call can end up in an inconsistent state. This is not an issue for the examples demonstrated so far, as the caller's internal state doesn't exist and thus can't become inconsistent. 
+
+For more information on the asynchronous execution model and its implications, read the documentation on [inter-canister calls and async code](/docs/current/developer-docs/smart-contracts/advanced-features/async-code), [properties of call execution]( /docs/current/references/message-execution-properties) and [security best practices](/docs/current/developer-docs/security/security-best-practices/inter-canister-calls).
 
 :::info
-Summary: the Internet Computer has an asynchronous messaging model that is  different from Ethereum and many other blockchains. This improves scalability, but you need to understand the implications, especially around when and how state is persisted.
+To summarize, the Internet Computer has an asynchronous messaging model that is  different from Ethereum and many other blockchains. This improves scalability, but you need to understand the implications, especially around when and how state is persisted.
 :::
 
 ## Unbounded-wait calls: semantics and error cases
 
-Our examples so far we have relied on *unbounded-wait calls*, without elaborating on what these are. An unbounded wait call instructs the system to wait for however long it takes in order to receive a response. This allows the system to always provide the caller with the exact response to the call. Since the response is thus guaranteed to be delivered to the caller, we also refer to these calls as *guaranteed response*  calls. Note that this response can still be a failure. For example, a call might fail because the called canister does not exist (e.g., it has been deleted), but also because the system is overloaded and can't deliver the call to the callee, so it just returns an error to the caller. It can also fail if the callee fails, for example, if it panics. But in the absence of callee failure, an error result from an unbounded-wait call ensures that the call did not execute, that is, that it's cleanly rejected. So we can extend our example and add this code to `src/caller/src/lib`:
+The examples so far we have relied on *unbounded-wait calls*, without elaborating on what these are. An unbounded wait call instructs the system to wait for however long it takes in order to receive a response. This allows the system to always provide the caller with the exact response to the call. Since the response is thus guaranteed to be delivered to the caller, these calls are also referred to as *guaranteed response*  calls. 
+
+Note that this response can still be a failure. For example, a call might fail because the called canister does not exist (e.g., it has been deleted), but also because the system is overloaded and can't deliver the call to the callee, so it just returns an error to the caller. It can also fail if the callee fails, for example, if it panics. In the absence of callee failure, an error result from an unbounded-wait call ensures that the call did not execute, that is, that it's cleanly rejected. Extend the example by adding this code to `src/caller/src/lib`:
 
 ```rust
 #[update]
 pub async fn call_increment(counter: Principal) -> Result<(), String> {
     match Call::unbounded_wait(counter, "increment")
         .await {
-        // The counter canister successfully responded. Here, it means that our call was successful.
+        // The counter canister successfully responded. Here, it means that the call was successful.
         // A more complicated target than the counter (e.g., a ledger) could also return
         // "user-level" errors that you should handle.
         Ok(_) => Ok(()),
@@ -159,7 +173,11 @@ pub async fn call_increment(counter: Principal) -> Result<(), String> {
     }
 }
 ```
-A clean reject of the increment call means that the counter hasn't changed. In general, if a call that changes the callee's state (such as `increment`) is rejected, this means that the state hasn't changed. With a non-clean reject we may not know what happened on the callee side, and a thorough analysis may be needed. The only cause of non-clean rejects for unbounded calls are panics and rejects on the callee side. These may be intentional rejects, or intentional panics on error conditions (such as the examples with the `expect` functions we used earlier). But they may also be just plain bugs in the callee, or the Wasm runtime may trap (the Wasm equivalent of panics) because the callee ran out of resources, such as available memory or cycles to perform some operations. In default local configurations, you don't have to worry about such resources, and things will always just work if you try them out; first, redeploy the canister to compile the added code, and then observe the effect of `call_increment`:
+A clean reject of the increment call means that the counter hasn't changed. In general, if a call that changes the callee's state (such as `increment`) is rejected, this means that the state hasn't changed. With a non-clean reject you may not know what happened on the callee side and a thorough analysis may be needed. 
+
+The only cause of non-clean rejects for unbounded calls are panics and rejects on the callee side. These may be intentional rejects, or intentional panics on error conditions (such as the examples with the `expect` functions used earlier). They may also be bugs in the callee or the Wasm runtime may trap (the Wasm equivalent of panics) because the callee ran out of resources, such as available memory or cycles to perform some operations. In default local configurations, you don't have to worry about such resources.
+
+Redeploy the canister to compile the added code, then observe the effect of `call_increment`:
 
 ```bash
 $ dfx deploy caller
@@ -176,14 +194,21 @@ However, on mainnet, without further precautions even incrementing our simple co
 Unbounded-wait calls thus can provide a simple error handling semantics, as long as you are very confident that the callee won't trap, or you for some reason don't care about the cases of the callee trapping. However, the fact that these calls will wait for as long as it takes to receive a response means that they don't return for as long as the callee is delaying providing an answer. In the case of buggy — or even malicious — callees, the caller may end up waiting forever. This can block the caller from upgrading cleanly, since a clean upgrade requires all of the caller's outstanding calls to complete. As an alternative, you can use *bounded-wait* calls, which we will look at next.
 
 :::info
-Summary: unbounded wait calls wait for a response forever, but the response might still be a failure. With unbounded wait calls, failures mean that either the call wasn't executed, or that the callee trapped or rejected the call. Waiting forever carries risks when calling untrusted canisters.
+To summarize, unbounded wait calls wait for a response forever, but the response might still be a failure. With unbounded wait calls, failures mean that either the call wasn't executed, or that the callee trapped or rejected the call. Waiting forever carries risks when calling untrusted canisters.
 :::
 
 ## Bounded-wait calls: semantics and error cases
 
-*Bounded-wait calls* do not wait forever for the response to arrive, but will effectively time out after a while and just return an error to the caller. For this reason we also refer to them as *best-effort response* calls. These calls have two significant advantages over unbounded-wait calls: (1) they ensure that your canister won't stall (in particular, become unable to stop and upgrade) if it calls into canisters you don't control or trust, and (2) they scale much better. On the flip side, they have more complicated error handling: non-clean rejects — where you don't know whether the call was executed – can result not only from panics on the caller, but also from timing the call out. This increases the chance of non-clean rejects significantly: callee panics should be an edge case, but timeouts will also occur whenever the load on the system or the callee is high. Thus, bounded-wait calls are suitable only for reads, or for state-changing calls that follow the best practice of providing a separate query endpoint for the result, and/or are idempotent.
+*Bounded-wait calls* do not wait forever for the response to arrive, but will effectively time out after a while and just return an error to the caller. For this reason, they are also referred to as *best-effort response* calls. These calls have two significant advantages over unbounded-wait calls:
 
-For example, we can safely call the counter's `get` endpoint using a bounded-wait call, since this is just a read. Edit `src/caller/src/lib.rs` to add the following method:
+1. They ensure that your canister won't stall (in particular, become unable to stop and upgrade) if it calls into canisters you don't control or trust.
+2. They scale much better. 
+
+However, they have more complicated error handling: non-clean rejects — where you don't know whether the call was executed – can result not only from panics on the caller, but also from timing the call out. This increases the chance of non-clean rejects significantly. Callee panics should be an edge case, but timeouts will also occur whenever the load on the system or the callee is high. 
+
+Thus, bounded-wait calls are suitable only for reads, or for state-changing calls that follow the best practice of providing a separate query endpoint for the result, and/or are idempotent.
+
+For example, you can safely call the counter's `get` endpoint using a bounded-wait call, since this is just a read. Edit `src/caller/src/lib.rs` to add the following method:
 
 ```rust
 #[update]
@@ -211,7 +236,9 @@ $ dfx canister call caller call_get
 (8: nat)
 ```
 
-Idempotent endpoints provide us a chance to try and clean errors up on our own by simply retrying. For example, the `set` endpoint of the counter is idempotent. But even with idempotent endpoints, there are limits to what we can do. For example, we don't want to retry forever, because, as mentioned earlier, this might block our canister from upgrading. Furthermore, there are also errors that we are likely to hit again if we just retry immediately. In this case, we will have to leave the cleanup to our upstream caller. Let's see an example of what a retry strategy might look like.
+Idempotent endpoints give the caller a chance to try and clean errors up by simply retrying. For example, the `set` endpoint of the counter is idempotent. But even with idempotent endpoints, there are limits to what the caller can do. For example, it shouldn't retry forever, because, as mentioned earlier, this might block the canister from upgrading. 
+
+Furthermore, there are also errors that are likely to be hit again if you just retry immediately. In this case, you will have to leave the clean up to the upstream caller. Let's see an example of what a retry strategy might look like.
 
 ```rust
 /// Retries setting the counter to the provided value even if errors appear, until it succeeds,
@@ -222,7 +249,7 @@ pub async fn stubborn_set(counter: Principal, new_value: Nat) -> Result<(), Stri
     let timeout = std::time::Duration::from_secs(10 * 60).as_nanos() as u64;
     // Compute the deadline based on the current IC time.
     let deadline = time() + timeout;
-    // We'll try to set the counter to the provided value, retrying where possible.
+    // Try to set the counter to the provided value, retrying where possible.
     loop {
         match Call::bounded_wait(counter, "set")
             .with_arg(&new_value)
@@ -230,9 +257,9 @@ pub async fn stubborn_set(counter: Principal, new_value: Nat) -> Result<(), Stri
 
             Ok(()) => return Ok(()),
             // The immediately_retryable() predicate will return false if the call is likely to
-            // just fail again if we retry it immediatly.
+            // just fail again if you retry immediately.
             Err(e) if e.is_immediately_retryable() => {
-                // Even if we can retry, don't if we're out of time
+                // Even if you can retry, don't if it is out of time
                 if time() > deadline {
                     return Err(format!("Timed out while trying to set the value: {:?}", e));
                 } else {
@@ -266,9 +293,9 @@ Summary: bounded-wait calls will time out after a while, but you might not know 
 
 A canister can attach [cycles](/docs/current/developer-docs/getting-started/tokens-and-cycles) (Internet Computer "gas") to any call that they make, transferring cycles from the caller's to the callee's cycle balance. The callee must explicitly [accept](https://docs.rs/ic-cdk/latest/ic_cdk/api/call/fn.msg_cycles_accept128.html) such cycles; non-accepted cycles are refunded to the caller.
 
-Cycle transfers are generally either used to pay for the callee's costs of processing the call, or to move and store cycles around as assets. An example where they are used to pay for call processing costs is the IC [on-chain signature feature](/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa), which allows a canister to hold a cryptographic key and sign messages with it. An example of cycles being used as assets is the [cycles ledger](/docs/current/developer-docs/defi/cycles/cycles-ledger/).
+Cycle transfers are generally either used to pay for the callee's costs of processing the call or to move and store cycles as assets. An example where they are used to pay for call processing costs is the IC [threshold signature feature](/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa), which allows a canister to hold a cryptographic key and sign messages with it. An example of cycles being used as assets is the [cycles ledger](/docs/current/developer-docs/defi/cycles/cycles-ledger/).
 
-Below, we use the on-chain signature example to show how to attach cycles to a call.
+Below is a threshold signature example that shows how to attach cycles to a call:
 
 ```rust
 #[update]
@@ -300,7 +327,7 @@ pub async fn sign_message(message: String) -> Result<String, String> {
             Err(e) => Err(format!("Error decoding response: {:?}", e)),
         },
         // A SysUnknown reject code only occurs due to a bounded-wait call timing out.
-        // It means that we won't get any cycles refunded, even
+        // It means that no cycles will be refunded, even
         // if the call didn't make it to the callee. But we don't care here since
         // we only attached a small amount of cycles.
         Err(e) if e.reject_code() == RejectCode::SysUnknown => Err(format!(
@@ -312,10 +339,12 @@ pub async fn sign_message(message: String) -> Result<String, String> {
 }
 ```
 
-Cycles can be attached to both bounded and unbounded wait messages. For unbounded wait messages, cycles that are not consumed by the callee are guaranteed to be refunded to the caller. As the example notes, refunds do not happen for bounded-wait calls that result in an error with the `SysUnknown` reject code, which is the code issued when the system decides to stop waiting for a response. However, this is usually acceptable for API calls that charge for cycles, since the amount charged is usually low (10 billion cycles for signatures with the test key). For transferring larger amounts of cycles, switch to using unbounded wait calls. See the section on [inter-canister calls](/docs/current/developer-docs/smart-contracts/advanced-features/async-code) for more details.
+Cycles can be attached to both bounded and unbounded wait messages. For unbounded wait messages, cycles that are not consumed by the callee are guaranteed to be refunded to the caller. As the example notes, refunds do not happen for bounded-wait calls that result in an error with the `SysUnknown` reject code, which is the code issued when the system decides to stop waiting for a response. 
+
+However, this is usually acceptable for API calls that charge for cycles, since the amount charged is usually low (10 billion cycles for signatures with the test key). For transferring larger amounts of cycles, switch to using unbounded wait calls. See the section on [inter-canister calls](/docs/current/developer-docs/smart-contracts/advanced-features/async-code) for more details.
 
 :::info
-Summary: you can transfer cycles to the callee by attaching them to a (bounded- or unbounded-wait) call. Bounded-wait calls may drop the attached cycles, so avoid using them for large cycle amounts.
+To summarize, you can transfer cycles to the callee by attaching them to a bounded- or unbounded-wait call. Bounded-wait calls may drop the attached cycles, so avoid using them for large cycle amounts.
 :::
 
 ## Further reading
