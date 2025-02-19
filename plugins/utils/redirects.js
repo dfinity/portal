@@ -1,3 +1,4 @@
+
 const redirects = `
 
   # external redirects (/from -> https://.../to/)
@@ -1101,48 +1102,30 @@ const redirects = `
   .filter((l) => l.length > 0)
   .map((l) => l.split(/\s+/));
 
-  function isExternal(redirect) {
-    return redirect[1].startsWith("http");
-  }
+function isExternal(redirect) {
+  return redirect[1].startsWith("http");
+}
 
-  function isExactUrl(redirect) {
-    return redirect[0].endsWith(".html");
-  }
+function isExactUrl(redirect) {
+  return redirect[0].endsWith(".html");
+}
 
-  function ruleToRedirect(rule) {
-    const from = rule[0].replace(/(.+)\/$/, "$1");
-    const to = rule[1];
-    return {
-      from,
-      to,
-    };
-  }
-
-  exports.getRedirects = function () {
-    const urls = [];
-    let Source = url;
-    const sourceFound = redirects.some(r => r[0] === Source);
-
-    if (!sourceFound) {
-      Source = '/docs/home';
-    }
-    console.log(Source)
-
-      .filter((r) => !isExternal(r) && !isExactUrl(r))
-      .map(ruleToRedirect)
-      .map((r) => ({
-        to: r.to.replace(/#.+$/, ""),
-        from: r.from,
-      }));
-      return redirects, urls;
+function ruleToRedirect(rule) {
+  const from = rule[0].replace(/(.+)\/$/, "$1");
+  const to = rule[1];
+  return {
+    from,
+    to,
   };
+}
 
-  exports.getExternalRedirects = function () {
-    return redirects.filter((r) => isExternal(r)).map(ruleToRedirect);
-  };
+exports.getExternalRedirects = function () {
+  return redirects.filter((r) => isExternal(r)).map(ruleToRedirect);
+};
 
-  exports.getExactUrlRedirects = function () {
-    return redirects
-      .filter((r) => !isExternal(r) && isExactUrl(r))
-      .map(ruleToRedirect);
-  };
+exports.getExactUrlRedirects = function () {
+  return redirects
+    .filter((r) => !isExternal(r) && isExactUrl(r))
+    .map(ruleToRedirect);
+};
+

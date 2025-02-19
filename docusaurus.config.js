@@ -25,11 +25,7 @@ const howItWorksArticlesPlugin = require("./plugins/howitworks-articles");
 const math = require("remark-math");
 const katex = require("rehype-katex");
 const votingRewardsPlugin = require("./plugins/voting-rewards");
-const {
-  getRedirects,
-  getExternalRedirects,
-  getExactUrlRedirects,
-} = require("./plugins/utils/redirects");
+const { redirects, getExactUrlRedirects, getExternalRedirects } = require("./plugins/utils/redirects");
 const fs = require("fs");
 const validateShowcasePlugin = require("./plugins/validate-showcase.js");
 const contentfulPlugin = require("./plugins/contentful");
@@ -633,14 +629,30 @@ const config = {
     externalRedirectsPlugin({
       redirects: [...getExternalRedirects(), ...getExactUrlRedirects()],
     }),
+    function myRedirectPlugin(context, options) {
+      return {
+        name: 'custom-redirect-plugin',
 
-    [
-      "@docusaurus/plugin-client-redirects",
-      {
-        fromExtensions: ["html", "md"],
-        redirects: getRedirects()
-      },
-    ],
+        async onPreBuild() {
+          console.log('Redirects plugin running...');
+        },
+
+        async onRouteChange(route) {
+          const currentUrl = route.path;
+          let matchedRedirect = redirects.find((r) => r.from === currentUrl);
+
+          if (!matchedRedirect) {
+            // If no matching redirect rule, go to /docs/home
+            console.log(`No matching redirect for ${currentUrl}, redirecting to /docs/home`);
+            return { path: '/docs/home' };
+          } else {
+            // If there's a match, redirect to the appropriate destination
+            console.log(`Redirecting from ${currentUrl} to ${matchedRedirect.to}`);
+            return { path: matchedRedirect.to };
+          }
+        },
+      };
+    },
   ],
 
   presets: [

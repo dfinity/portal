@@ -47,6 +47,7 @@
     "react-leaflet": "^4.2.1",
     "react-lottie-player": "^1.4.3",
     "react-query": "^3.39.3",
+    "react-router-dom": "^7.2.0",
     "react-slick": "^0.30.2",
     "simplex-noise": "2.4",
     "slick-carousel": "^1.8.1",
