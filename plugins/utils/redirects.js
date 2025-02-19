@@ -665,7 +665,7 @@ const redirects = `
   /docs/concepts/governance /docs/move-to-learnhub/nns/overview
   /docs/concepts/nodes-subnets /docs/building-apps/developing-canisters/create
   /docs/concepts/subnet-types /docs/building-apps/developing-canisters/create
-  /docs/concepts/glossary /docs/references/glossary/
+  /docs/references/glossary /docs/references/glossary/
   /docs/current/developer-docs/multi-chain/faq/user-faq /docs/building-apps/chain-fusion/overview
   /docs/current/developer-docs/multi-chain/faq/ckbtc-faq /docs/defi/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/multi-chain/faq/cketh-faq /docs/defi/chain-key-tokens/cketh/overview

@@ -187,7 +187,7 @@ function ReverseGasModelPage(): JSX.Element {
               The Internet Computer protocol allows developers to burn ICP and
               receive cycles. Cycles are priced in{" "}
               <Link
-                href="/docs/concepts/glossary#x"
+                href="/docs/references/glossary#x"
                 className="link-subtle"
               >
                 XDR

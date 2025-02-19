@@ -8,7 +8,7 @@ The SDK provides everything you need to perform the following key tasks:
 
 -   Simulate the Internet Computer network running locally on your development computer.
 
--   Deploy compiled programs as [canisters](/docs/concepts/glossary#c).
+-   Deploy compiled programs as [canisters](/docs/references/glossary#c).
 
 -   Interact with your application service using a command-line interface or through a web browser.
 
