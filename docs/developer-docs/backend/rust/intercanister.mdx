@@ -1,5 +1,5 @@
 ---
-keywords: [beginner, rust, concept, inter-canister, calls]
+keywords: [beginner, rust, tutorial, inter-canister, calls]
 ---
 
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
@@ -63,9 +63,9 @@ pub async fn call_get_and_set(counter: Principal, new_value: Nat) -> Nat {
         // Calls can *always* fail. In this first example it's actually OK to just panic on error,
         // but as we will explain later, panicking here is almost always a bad idea.
         .expect("Failed to get the old value. Bail out")
-        // We need to deserialize the Candid-encoded response, and we need to provide a type
-        // argument. Here, we use the turbofish syntax to specify that we expect a Candid Nat
-        // (i.e., a non-negative integer) as the response.
+        // To deserialize the Candid-encoded response, the CDK needs to know the type to expect.
+        // You can use the turbofish syntax to specify the type as show below, where we expect a Candid
+        // Nat (i.e., a non-negative integer) as the response.
         .candid::<Nat>()
         .expect("Candid decoding failed");
     old
