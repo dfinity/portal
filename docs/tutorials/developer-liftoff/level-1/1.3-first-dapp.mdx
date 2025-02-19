@@ -82,6 +82,7 @@ poll                   # The root of the project.
 │   │   └── main.mo    # The default source code file; this is what you'll primarily be working with in this tutorial.
 │   └── poll_frontend  # Folder containing the frontend configuration and assets of your dapp.
 │       └── assets
+|         └── sample-asset.txt       
 ```
 
 You will notice that the file structure above has two subdirectories within `src`. That is because when you created the project `poll` via `dfx new poll`, the project by default created **two** canisters that talk to each other:
@@ -614,8 +615,6 @@ Start by creating the file `src/poll_frontend/src/index.html` that contains the 
 :::info
 **What does this code do?**
 The HTML code above is a simple form that provides the end user with options to select using radio buttons. There is nothing 'Web3' or specific to ICP about this code.
-
-Then, the `<head>` tag is used to include some basic CSS for the page's styling. To learn more about adding a stylesheet, see: [add a stylesheet](/docs/current/developer-docs/web-apps/application-frontends/overview/).
 :::
 
 Next, you will need a `webpack.config.js` file that defines several parameters to facilitate your local development web server.
