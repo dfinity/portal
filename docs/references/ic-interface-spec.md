@@ -4606,6 +4606,8 @@ The controllers of a canister can obtain detailed information about the canister
 
 The `Memory_usage` is the (in this specification underspecified) total size of storage in bytes.
 
+The `Memory_metrics` are the (in this specification underspecified) detailed metrics on the memory consumption of the canister (see [Memory Metrics](#ic-canister_status-memory_metrics) for more details).
+
 The `idle_cycles_burned_per_day` is the idle consumption of resources in cycles per day.
 
 Conditions  
@@ -4644,16 +4646,7 @@ S with
             then null
             else opt (SHA-256(S.canisters[A.canister_id].raw_module));
           memory_size = Memory_usage;
-          memory_metrics = {
-            wasm_memory_size = Wasm_memory_size;
-            stable_memory_size = Stable_memory_size;
-            global_memory_size = Global_memory_size;
-            wasm_binary_size = Wasm_binary_size;
-            custom_sections_size = Custom_sections_size;
-            canister_history_size = Canister_history_size;
-            wasm_chunk_store_size = Wasm_chunk_store_size;
-            snapshot_size = Snapshot_size;
-          }
+          memory_metrics = Memory_metrics;
           cycles = S.balances[A.canister_id];
           reserved_cycles = S.reserved_balances[A.canister_id]
           idle_cycles_burned_per_day = idle_cycles_burned_rate(
