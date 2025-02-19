@@ -3,6 +3,54 @@
   "categoryDescription": "An identity solution that is privacy-preserving, self-sovereign, and user-friendly is a fundamental building block for web3 adoption. Internet Identity provides a robust authentication solution based on passkeys, with easy onboarding and support for identity attributes while protecting the users’ privacy.",
   "elements": [
     {
+      "title": "Identity signer standards",
+      "overview": "Standards that enable an untrusted relying party (e.g., canister or web app) to request a signer to sign a transaction for ICP after user approval. Alternative to II's delegation model for high-security use cases or when stable identities are required with different canisters.",
+      "description": "Users will be able to use a single wallet address across many different applications, making wallets built on the Internet Computer and relying on Internet Identity for key management to be portable. This way, users can bring their digital assets with them across applications and services while relying on Internet Identity for key management.",
+      "forum": "",
+      "proposal": "",
+      "docs": "https://github.com/dfinity/wg-identity-authentication",
+      "eta": "",
+      "status": "in_progress",
+      "is_community": true,
+      "in_beta": true,
+      "milestone_id": "Synchrotron"
+    },
+    {
+      "title": "Transaction approval on Ledger's ICP app",
+      "overview": "Signer standards are coming to the Ledger HW ICP app. Specifically, the Leger ICP app will acquire the ability to interact with dapps that support signer standards and display ICRC-21 compatible messages to the user.",
+      "description": "Ledger users will be able to confirm and authorize a digital currency transaction initiated through a compatible dapp. The Ledger device will first validate the BLS-signed incoming message and after the user reviews the transaction details, e.g., recipient address, amount, and any associated fees, the Ledger device will digitally signing and send the transaction.",
+      "forum": "",
+      "proposal": "",
+      "docs": "https://github.com/dfinity/wg-identity-authentication",
+      "eta": "",
+      "status": "in_progress",
+      "is_community": true,
+      "in_beta": true,
+      "milestone_id": "Synchrotron"
+    },
+    {
+      "title": "Support II authentication to Web2 services",
+      "overview": "Secure, privacy-enhancing authentication for Web2 by bringing ICP's II authentication to Web2 services.",
+      "description": "Secure, privacy-enhancing authentication for Web2 by bringing ICP's II authentication to Web2 services.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "in_progress",
+      "is_community": false,
+      "in_beta": true,
+      "milestone_id": "Synchrotron"
+    },
+    {
+      "title": "Signer standards in use by ICP dapps and wallets",
+      "is_milestone": true,
+      "description": "With Synchrotron, ICP finally acquires the capability to create a vibrant and diverse ecosystem of signers, dapps and canisters that can interact with each other, without having to specifically integrate with any particular component.",
+      "milestone_id": "Synchrotron",
+      "eta": "Q4 2024",
+      "status": "in_progress",
+      "eta_to_render": ""
+    },
+    {
       "title": "Rethinking the Internet Identity user experience",
       "description": "Focus on improving the user experience for Internet Identity",
       "status": "in_progress",
@@ -79,55 +127,6 @@
       "overview": "Define and implement a sustainable business model for all: issuers, verifiers, users.",
       "status": "future",
       "milestone_id": "Plexus"
-    },
-
-    {
-      "title": "Identity signer standards",
-      "overview": "Standards that enable an untrusted relying party (e.g., canister or web app) to request a signer to sign a transaction for ICP after user approval. Alternative to II's delegation model for high-security use cases or when stable identities are required with different canisters.",
-      "description": "Users will be able to use a single wallet address across many different applications, making wallets built on the Internet Computer and relying on Internet Identity for key management to be portable. This way, users can bring their digital assets with them across applications and services while relying on Internet Identity for key management.",
-      "forum": "",
-      "proposal": "",
-      "docs": "https://github.com/dfinity/wg-identity-authentication",
-      "eta": "",
-      "status": "in_progress",
-      "is_community": true,
-      "in_beta": true,
-      "milestone_id": "Synchrotron"
-    },
-    {
-      "title": "Transaction approval on Ledger's ICP app",
-      "overview": "Signer standards are coming to the Ledger HW ICP app. Specifically, the Leger ICP app will acquire the ability to interact with dapps that support signer standards and display ICRC-21 compatible messages to the user.",
-      "description": "Ledger users will be able to confirm and authorize a digital currency transaction initiated through a compatible dapp. The Ledger device will first validate the BLS-signed incoming message and after the user reviews the transaction details, e.g., recipient address, amount, and any associated fees, the Ledger device will digitally signing and send the transaction.",
-      "forum": "",
-      "proposal": "",
-      "docs": "https://github.com/dfinity/wg-identity-authentication",
-      "eta": "",
-      "status": "in_progress",
-      "is_community": true,
-      "in_beta": true,
-      "milestone_id": "Synchrotron"
-    },
-    {
-      "title": "Support II authentication to Web2 services",
-      "overview": "Secure, privacy-enhancing authentication for Web2 by bringing ICP's II authentication to Web2 services.",
-      "description": "Secure, privacy-enhancing authentication for Web2 by bringing ICP's II authentication to Web2 services.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "in_progress",
-      "is_community": false,
-      "in_beta": true,
-      "milestone_id": "Synchrotron"
-    },
-    {
-      "title": "Signer standards in use by ICP dapps and wallets",
-      "is_milestone": true,
-      "description": "With Synchrotron, ICP finally acquires the capability to create a vibrant and diverse ecosystem of signers, dapps and canisters that can interact with each other, without having to specifically integrate with any particular component.",
-      "milestone_id": "Synchrotron",
-      "eta": "Q4 2024",
-      "status": "in_progress",
-      "eta_to_render": ""
     },
     {
       "title": "Resident passkeys",
