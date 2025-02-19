@@ -27,7 +27,7 @@ const katex = require("rehype-katex");
 const votingRewardsPlugin = require("./plugins/voting-rewards");
 const {
   getRedirects,
-  getSplatRedirects,
+  getCurrentRedirects,
   getExternalRedirects,
   getExactUrlRedirects,
 } = require("./plugins/utils/redirects");
@@ -639,14 +639,7 @@ const config = {
       {
         fromExtensions: ["html", "md"],
         redirects: getRedirects(),
-        createRedirects(existingPath) {
-          if (existingPath.includes('/docs/current')) {
-            return [
-              existingPath.replace('/docs', '/docs/current'),
-            ];
-          }
-          return undefined;
-        },
+        createRedirects: (existingPath) => getCurrentRedirects(existingPath),
       },
     ],
   ],
