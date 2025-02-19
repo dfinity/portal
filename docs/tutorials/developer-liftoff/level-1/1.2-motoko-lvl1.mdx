@@ -154,7 +154,7 @@ Next, you can use a block expression to produce a value within a larger, compoun
 
 You can see that nesting blocks preserves the autonomy of each separate declaration list and its variable names. Language theorists refer to this as **lexical scoping**, where variables' scopes may nest but do not interfere with one another as they nest.
 
-To further demonstrate this, consider the following example:
+To further demonstrate this, consider the following example that uses the `ignore` keyword to discard the return value of the `do` block:
 
 ```motoko no-repl
 let x = 40; let y = 2;
@@ -166,7 +166,7 @@ ignore do {
 x + y
 ```
 
-In this example, the final expression `x + y` has a value of `42`, since it refers to the first declarations of `x` and `y`, prior to the block expression definition. This is because the block expression's declarations do not interfere with the other declarations within the program.
+In this example, the final expression `x + y` has a value of `42`, since it refers to the first declarations of `x` and `y`, prior to the ignored block expression definition. This is because the block expression's declarations do not interfere with the other declarations within the program.
 
 Aside from program clarity, the brief benefit of lexical scoping is program security, since it can be used to build compositionally secure systems. Motoko specifically has very strong composition properties, since nesting programs within another program cannot arbitrarily redefine your variables to have other meanings.
 
@@ -286,7 +286,13 @@ If this example is used in a live canister, the canister can be called, and an i
 dfx canister call location_hello_backend location "San Francisco"
 ```
 
-In this example call, there is a space in between 'San' and 'Francisco,' so the argument must be enclosed in quotes. The output of this canister call will be:
+In this example call, there is a space in between 'San' and 'Francisco,' so the argument must be enclosed in quotes. 
+
+:::info
+Input passed to a function can be in its plaintext format `"San Francisco"` or in its Candid format `'("San Francisco")'`. 
+:::
+
+The output of this canister call will be:
 
 ```bash
 ("Hello, San Francisco!")
