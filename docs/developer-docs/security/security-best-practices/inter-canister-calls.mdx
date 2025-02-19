@@ -313,9 +313,9 @@ As stated by the [Property 6](/docs/current/references/message-execution-propert
 
 Not handling the reject cases correctly is risky: For example, if a ledger transfer results in a reject, the callback dealing with that error must interpret it correctly. That is, it should be interpreted as "the transfer did not happen", unless:
 
-1. the call was issued as a best-effort response call, and the system responded with a `SYS_UNKNOWN` reject code. In this case, the caller cannot be a priori sure whether the call took effect or not.
-2. the system responded with a `CANISTER_ERROR` reject code. This indicates a bug in the ledger canister. In this case, it is still possible that the call had a partial effect on the ledger canister.
-3. the system responded with a `CANISTER_REJECT` reject code. This means that the call was explicitly rejected by the ledger canister. Normally, this indicates that the transfer didn't happen, but this depends on the ledger canister. The ICP ledger canister for example never rejects calls explicitly.
+1. The call was issued as a best-effort response call, and the system responded with a `SYS_UNKNOWN` reject code. In this case, the caller cannot be a priori sure whether the call took effect or not.
+2. The system responded with a `CANISTER_ERROR` reject code. This indicates a bug in the ledger canister. In this case, it is still possible that the call had a partial effect on the ledger canister.
+3. The system responded with a `CANISTER_REJECT` reject code. This means that the call was explicitly rejected by the ledger canister. Normally, this indicates that the transfer didn't happen, but this depends on the ledger canister. The ICP ledger canister for example never rejects calls explicitly.
 
 ### Recommendation
 
