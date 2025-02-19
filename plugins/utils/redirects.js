@@ -1123,22 +1123,31 @@ const redirects = `
     };
   }
 
-  exports.getRedirects = function () {
-    return redirects
-      .map((r) => {
-        // If redirect[0] is not found in the redirects array, check if it contains "/docs/current"
-        const redirectFound = redirects.some(existingRedirect => existingRedirect[0] === r[0]);
+  exports.getRedirects = function (currentUrl) {
+    // Check if currentUrl is in the redirects array
+    const redirectFound = redirects.some((r) => r[0] === currentUrl);
 
-        if (!redirectFound && r[0].includes("/docs/current")) {
-          r[1] = "/docs/home"; // If /docs/current is found, change to /docs/home
-        }
+    // If the current URL is found, return it unchanged
+    if (redirectFound) {
+      return [{
+        from: currentUrl,
+        to: currentUrl, // No redirection, keep the URL the same
+      }];
+    }
 
-        return r;
-      })
-      .filter((r) => !isSplat(r) && !isExternal(r) && !isExactUrl(r))
-      .map(ruleToRedirect)
+    // If not found, redirect to /docs/home
+    const redirectsWithFallback = [{
+      from: currentUrl,
+      to: '/docs/home',
+    }];
+
+    // Now, filter and map the rest of the redirects
+    return redirectsWithFallback
+      .concat(redirects)  // Combine with other redirects
+      .filter((r) => !isSplat(r) && !isExternal(r) && !isExactUrl(r))  // Filter based on conditions
+      .map(ruleToRedirect)  // Map the redirect rules
       .map((r) => ({
-        to: r.to.replace(/#.+$/, ""),
+        to: r.to.replace(/#.+$/, ""),  // Remove hash from the URL
         from: r.from,
       }));
   };
