@@ -184,9 +184,9 @@ const redirects = `
   /docs/current/developer-docs/build/agents/javascript/javascript-intro /docs/building-apps/interact-with-canisters/agents/javascript-agent
   /docs/current/developer-docs/build/agents/javascript/  /docs/building-apps/interact-with-canisters/agents/javascript-agent
   /docs/current/developer-docs/build/languages/candid/ /docs/building-apps/interact-with-canisters/candid/candid-concepts
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/ /docs/motoko/main/
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/ docs/motoko/main/base/
   /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/  /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
-  /docs/current/developer-docs/build/languages/motoko/ /docs/motoko/main/
+  /docs/current/developer-docs/build/languages/motoko/ docs/motoko/main/base/
 
   /docs/developers-guide/ /docs/motoko/main/getting-started/motoko-introduction
   /docs/developers-guide/about-this-guide /docs/motoko/main/getting-started/motoko-introduction
@@ -243,14 +243,14 @@ const redirects = `
   /docs/developers-guide/cli-reference/ /docs/building-apps/developer-tools/dfx/
   /docs/developers-guide/concepts/ /docs/building-apps/essentials/network-overview
   /docs/developers-guide/tutorials/ /docs/motoko/main/getting-started/motoko-introduction
-  /docs/ic-identity-guide/ /docs/tokenomics/identity-auth/
-  /docs/language-guide/ /docs/motoko/main/
+  /docs/ic-identity-guide/ /docs/building-apps/authentication/overview
+  /docs/language-guide/ docs/motoko/main/base/
   /docs/release-notes/ /docs/other/updates/release-notes/
   /docs/rust-guide/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/security-best-practices/ /docs/building-apps/best-practices/security/inter-canister-calls
-  /docs/token-holders/ /docs/tokenomics/token-holders/
-  /features/ /capabilities/
-  /howitworks/ /how-it-works/
+  /docs/token-holders/ /docs/defi/overview
+  /features/ /capabilities
+  /howitworks/ /how-it-works
   /docs/current/developer-docs/build/backend/ /docs/motoko/main/getting-started/motoko-introduction
   /sustainability /capabilities/sustainability
   /docs-intro.html /docs/building-apps/getting-started/install
@@ -1119,13 +1119,22 @@ const redirects = `
   }
 
   exports.getRedirects = function () {
-    return redirects
+    const urls = [];
+    let Source = url;
+    const sourceFound = redirects.some(r => r[0] === Source);
+
+    if (!sourceFound) {
+      Source = '/docs/home';
+    }
+    console.log(Source)
+
       .filter((r) => !isExternal(r) && !isExactUrl(r))
       .map(ruleToRedirect)
       .map((r) => ({
         to: r.to.replace(/#.+$/, ""),
         from: r.from,
       }));
+      return redirects, urls;
   };
 
   exports.getExternalRedirects = function () {
@@ -1136,20 +1145,4 @@ const redirects = `
     return redirects
       .filter((r) => !isExternal(r) && isExactUrl(r))
       .map(ruleToRedirect);
-  };
-
-  exports.getSplatRedirects = function (currentUrl) {
-    const urls = [];
-
-      let Source = currentUrl;
-
-      // Check if the trimmedSource exists within the redirects
-      const sourceFound = redirects.some((r) => r[0] === Source);
-
-      // If the Source is not in redirects, set it to /docs/home
-      if (!sourceFound) {
-        Source = '/docs/home';
-      }
-
-    return urls;
   };

@@ -27,7 +27,6 @@ const katex = require("rehype-katex");
 const votingRewardsPlugin = require("./plugins/voting-rewards");
 const {
   getRedirects,
-  getSplatRedirects,
   getExternalRedirects,
   getExactUrlRedirects,
 } = require("./plugins/utils/redirects");
@@ -639,8 +638,7 @@ const config = {
       "@docusaurus/plugin-client-redirects",
       {
         fromExtensions: ["html", "md"],
-        redirects: getRedirects(),
-        createRedirects: (currentUrl) => getSplatRedirects(currentUrl),
+        redirects: getRedirects()
       },
     ],
   ],
