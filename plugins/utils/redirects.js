@@ -1138,10 +1138,10 @@ const redirects = `
       .map(ruleToRedirect);
   };
 
-  exports.getSplatRedirects = function () {
+  exports.getSplatRedirects = function (currentUrl) {
     const urls = [];
 
-      let Source = redirect[0];
+      let Source = currentUrl;
 
       // Check if the trimmedSource exists within the redirects
       const sourceFound = redirects.some((r) => r[0] === Source);
