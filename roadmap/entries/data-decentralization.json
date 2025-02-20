@@ -14,8 +14,21 @@
       "in_beta": false
     },
     {
+      "title": "SEV-SNP-protected API Boundary Nodes",
+      "overview": "Security for API boundary nodes is improved using trusted execution (AMD SEV-SNP), enabling anyone to attest that the correct software is running.",
+      "forum": "https://forum.dfinity.org/t/long-term-r-d-boundary-nodes-proposal/9401",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
+      "docs": "",
+      "eta": "",
+      "milestone_id": "Levitron",
+      "status": "upcoming",
+      "is_community": true,
+      "in_beta": false,
+      "imported": true
+    },
+    {
       "title": "Public API Boundary Node logs and metrics",
-      "overview": "Ensuring logs are verifiable and trustworthy (e.g., signed by API BNs) and publishing them in a publicly accessible repository.",
+      "overview": "Anyone can analyze the API boundary node access logs to gain insights into app usage patterns etc.",
       "forum": "",
       "proposal": "",
       "milestone_id": "Levitron",
@@ -29,15 +42,10 @@
       "title": "Decentralized access logs and metrics",
       "is_milestone": true,
       "milestone_id": "Levitron",
-      "description": "This milestone enhances visibility into the Internet Computer's edge infrastructure by making aggregated API boundary node access logs publicly accessible. Developers gain valuable insights into their dapps' usage patterns, enabling traffic analysis and user statistics. To ensure log integrity and verifiability, this milestone builds on the trusted execution environments introduced in Magnetosphere.",
+      "description": "This milestone establishes visibility into the Internet Computer's edge infrastructure by making aggregated API boundary node access logs publicly accessible. This provides developers with valuable insights into their dapps' usage patterns and facilitates the generation of user statistics, offering key information on traffic sources. To guarantee the integrity of these logs, the milestone focuses on leveraging trusted execution environments, specifically AMD SEV-SNP.",
       "status": "in_progress",
+      "eta": "",
       "eta_to_render": ""
-    },
-    {
-      "title": "Privacy-Preserving Logs",
-      "overview": "Anonymizing identifying data while enabling global analysis across all API BNs (e.g., counting unique IPs), achieved through a secret salt managed by an NNS-controlled canister and shared among all API BNs.",
-      "status": "in_progress",
-      "milestone_id": "Levitron"
     },
     {
       "title": "Subnet rental",
@@ -73,17 +81,6 @@
       "imported": true
     },
     {
-      "title": "Support public contributions to the dfinity/ic GitHub repository",
-      "overview": "The dfinity/ic GitHub repository, which provides an implementation for the Internet Computer Protocol, was made public in July 2024. This allowed the community to see all branches and Pull Requests that were created by the DFINITY Foundation and thus increased transparency. There’s more and more demand from the community to be able to make contributions to this repository. Currently this process is cumbersome and this feature is about streamlining the process and making it more user friendly. This milestone aims to create a process and technical means to support public contributions to the ic repository. It includes ensuring that no secrets can be leaked via DFINITY’s CI processes, no unauthorised access can be gained to DFINITY’s internal infrastructure and that no bad or malicious code can be merged",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "in_progress",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
       "title": "Performance-based node provider rewards",
       "overview": "Node rewards are awarded according to the node's contributions to the protocol, based on trustworthy node metrics, which are provided and signed by the IC network itself. This creates a cryptoeconomic incentive to encourage honest node provider behaviour.",
       "forum": "https://forum.dfinity.org/t/performance-based-node-rewards/35208",
@@ -113,7 +110,7 @@
       "proposal": "",
       "docs": "",
       "eta": "",
-      "status": "future",
+      "status": "upcoming",
       "is_community": false,
       "in_beta": false,
       "imported": true
@@ -126,7 +123,7 @@
       "docs": "",
       "is_community": false,
       "in_beta": false,
-      "status": "future"
+      "status": "upcoming"
     },
     {
       "title": "CDN canisters on edge infrastructure",
