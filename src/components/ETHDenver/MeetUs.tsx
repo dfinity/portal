@@ -29,7 +29,7 @@ const MeetUs: FC<{
           </motion.h2>
           <motion.p className="tw-lead mb-8" variants={transitions.item}>
             <span className="text-white-60">
-              Join us for an electrifying ETH Denver experience filled with hands-on workshops, inspiring keynote speeches, interactive Q&A sessions, and live demos of ICP Ecosystem dapps at our booth!
+              Join us for an electrifying ETH Denver experience filled with hands-on workshops, inspiring keynote speeches, interactive Q&A sessions, hackathon bounties and live demos of ICP Ecosystem dApps at our booth!
             </span>
           </motion.p>
           <MotionLink
