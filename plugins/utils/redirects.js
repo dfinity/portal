@@ -1126,23 +1126,6 @@ const redirects = `
 const manualRedirectUrl = 'https://internetcomputer.org/docs/home'; // The target URL for manual redirection
 
 exports.getRedirects = function (existingUrl) {
-  // Ensure existingUrl is valid
-  if (typeof existingUrl !== 'string' || existingUrl.trim() === '') {
-    console.error('Error: existingUrl is undefined, null, or an empty string.');
-    return []; // Early exit if existingUrl is invalid
-  }
-
-  // Debugging log to track the current URL being processed
-  console.log(`Processing redirect for URL: ${existingUrl}`);
-
-  // Custom redirect logic: Check if the URL includes '/docs/current/' and manually redirect
-  if (existingUrl.includes('/docs/current/')) {
-    console.log('Redirecting manually due to /docs/current/ path');
-    return [{
-      from: existingUrl,
-      to: 'https://internetcomputer.org/docs/home', // Example manual redirect target
-    }];
-  }
 
   // Check if the existing URL matches any of the predefined redirects
   const foundRedirect = redirects.find((r) => {
