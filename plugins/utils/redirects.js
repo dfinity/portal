@@ -1123,17 +1123,29 @@ const redirects = `
   }
 
   exports.getRedirects = function (existingUrl) {
-    // Manually redirect to a different page if the current URL isn't found in redirects
-    const manualRedirectUrl = 'https://internetcomputer.org/docs/home'; // Set the target URL for manual redirect
+    const manualRedirectUrl = 'https://example.com'; // Set the target URL for manual redirect
+
+    // Ensure existingUrl is a non-empty string
+    if (typeof existingUrl !== 'string' || existingUrl.trim() === '') {
+      console.error('Error: existingUrl is undefined, null, or an empty string.');
+      return []; // Early exit if existingUrl is invalid
+    }
+
+    console.log(`Processing redirect for URL: ${existingUrl}`); // Debugging line to log the URL
 
     // Check if the existing URL is already in the redirects
     const foundRedirect = redirects.find((r) => {
-      const fromUrl = r[0]; // Assuming r[0] is the source URL in your redirects
-      return existingUrl.includes(fromUrl);
+      if (r && r[0]) { // Ensure r[0] (the source URL) is defined and not null
+        const fromUrl = r[0];
+        console.log(`Checking if ${existingUrl} includes ${fromUrl}`); // Debugging line to show matching check
+        return existingUrl.includes(fromUrl); // Proceed with checking for match
+      }
+      return false; // Return false if r[0] is undefined or null
     });
 
     // If the current URL isn't found in the redirects, manually redirect to another page
     if (!foundRedirect) {
+      console.log('No matching redirect found. Redirecting manually.');
       return [{
         from: existingUrl,
         to: manualRedirectUrl,
@@ -1142,13 +1154,15 @@ const redirects = `
 
     // Otherwise, proceed with the usual redirect logic
     return redirects
-      .filter((r) => !isSplat(r) && !isExternal(r) && !isExactUrl(r))
+      .filter((r) => r && !isSplat(r) && !isExternal(r) && !isExactUrl(r))
       .map(ruleToRedirect)
       .map((r) => ({
         to: r.to.replace(/#.+$/, ""),
         from: r.from,
       }));
   };
+
+
 
 
   exports.getExternalRedirects = function () {

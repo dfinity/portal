@@ -908,7 +908,6 @@ hackathon: [
 ],
 
   motoko: [
-    "motoko/tutorial",
     {
       type: "category",
       label: "Motoko language book",
