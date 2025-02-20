@@ -386,6 +386,29 @@
       "status": "deployed",
       "is_community": false,
       "in_beta": false
+    },
+    {
+      "title": "Configurable Wasm memory limit",
+      "overview": "Introduce an explicitly configurable Wasm heap limit. Exceeding the limit alerts the developer instead of bricking the canister when hitting the 4GiB limit.",
+      "forum": "https://forum.dfinity.org/t/proposal-configurable-wasm-heap-limit/17794",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/105322",
+      "docs": "",
+      "eta": "2024",
+      "status": "deployed",
+      "is_community": true,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Canister control audit trail",
+      "overview": "Seamless audit trail of management actions on canisters (creation, update, deletion). Allows to trace the sequence of installed canister versions to source code through a Wasm hash.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false
     }
   ]
 }
