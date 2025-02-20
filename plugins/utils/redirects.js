@@ -1146,16 +1146,16 @@ const redirects = `
   exports.getSplatRedirects = function (existingUrl) {
     const urls = [];
 
-    // Loop through the redirects
-    for (const redirect of redirects.filter(
-        (r) => isSplat(r) && !isExternal(r)
-    )) {
-        // Check if the source URL matches '/docs/current'
-        if (existingUrl === '/docs/current') {
-            // Redirect to '/docs/home'
-            const completeSourceUrl = '/docs/home';
-            urls.push(completeSourceUrl);
-        } else {
+    // Check if the existingUrl contains '/docs/current'
+    if (existingUrl.includes('/docs/current')) {
+      // Redirect to '/docs/home' if the URL already contains '/docs/current'
+      const completeSourceUrl = 'https://internetcomputer.org/docs/home';
+      urls.push(completeSourceUrl);
+    } else {
+        // Loop through the redirects
+        for (const redirect of redirects.filter(
+            (r) => isSplat(r) && !isExternal(r)
+        )) {
             // Existing logic for other redirects
             const trimmedSource = redirect[0].replace("/*", "/");
 
@@ -1174,3 +1174,4 @@ const redirects = `
 
     return urls;
 };
+
