@@ -136,7 +136,7 @@ pub async fn icp_transfer(from_subaccount: Option<Subaccount>, to: Account, memo
         created_at_time: None,
     };
 
-    // We use an unbounded-wait call here as we assume that the ICP ledger is trusted and won't
+    // Use an unbounded-wait call here, assuming that the ICP ledger is trusted and won't
     // spin forever without producing a response. See the ICRC-1 usage doc if you want to use
     // bounded-wait calls
     match Call::unbounded_wait(icp_ledger, "icrc1_transfer")
@@ -146,18 +146,18 @@ pub async fn icp_transfer(from_subaccount: Option<Subaccount>, to: Account, memo
         // The transfer call succeeded
         Ok(res) => match res.candid::<Result<BlockIndex, TransferError>>() {
             Ok(_i) => Ok(()),
-            // The ledger canister returned an error, for example because our balance was too low.
-            // The transfer didn't happen, and we report an error back to the user.
+            // The ledger canister returned an error, for example if the caller's balance was too low.
+            // The transfer didn't happen; report an error back to the user.
             // Look up the TransferError type in icrc_ledger_types for more details.
             Ok(Err(e)) => Err(format!("Ledger returned an error: {:?}", e)),
         }
-        // An unclean reject signals that something went wrong with our call, but the system isn't
+        // An unclean reject signals that something went wrong with the call, but the system isn't
         // sure whether the call was executed. Since we issued an unbounded-wait call, this
-        // happens either because the ledger explicitly rejected our call, or because it panicked
-        // while processing our request.
+        // happens either because the ledger explicitly rejected the call, or because it panicked
+        // while processing the request.
         // The ICP ledger doesn't explicitly reject calls. When using the ICRC-1 interface, it's also
         // not intended to panic; instead it should report any errors at the "user-level", encoded
-        // in Candid. Here, we assume that it correctly implements this behavior and does't panic.
+        // in Candid. Here, it is assumed that it correctly implements this behavior and doesn't panic.
         // However, if you don't want to make that assumption, you can add your own error handling
         // of that case here.
         Err(e) if !e.is_clean_reject() => Err(format!("Should not happen; error calling ledger canister: {:?}", e)),
