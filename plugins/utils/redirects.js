@@ -101,6 +101,7 @@ const redirects = `
   /docs/references/quill-cli-reference/quill-transfer https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /docs/references/quill-cli-reference/quill-update-node-provider https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /community https://linktr.ee/icp_hubs_network
+  /docs/current/motoko/* /docs/motoko:splat
 
   # .html file internal redirects (/../from.html -> to)
   /docs/developers-guide/working-with-canisters.html /docs/building-apps/canister-management/settings
@@ -1146,7 +1147,7 @@ const redirects = `
     const urls = [];
 
     for (const redirect of redirects.filter(
-      (r) => isSplat(r) && !isExternal(r)
+      (r) => isSplat(r) && !isExternal(r) && !isExactUrl(r)
     )) {
       const trimmedSource = redirect[0].replace("/*", "/");
 
