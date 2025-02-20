@@ -1118,7 +1118,7 @@ const redirects = `
     // Remove trailing slashes from the 'from' URL
     let from = rule[0].replace(/(.+)\/$/, "$1");
     // Replace '/docs/current/' with '/docs/' in the 'from' URL
-    from = from.replace('/docs/current/', '/docs/');
+    from = from.replace('/docs/current/motoko', '/docs/motoko');
     const to = rule[1];
     return {
       from,
