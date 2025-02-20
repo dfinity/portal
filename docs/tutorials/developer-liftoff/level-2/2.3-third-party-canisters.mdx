@@ -152,20 +152,6 @@ Next, you'll set the `init` arguments for the dependency canisters using the `df
 dfx deps init
 ```
 
-The Internet Identity canister requires an `init` argument. For more information, run the command `dfx deps init rdmx6-jaaaa-aaaaa-aaadq-cai`, which will provide an error message that shows you more details:
-
-```bash
-Error: Canister rdmx6-jaaaa-aaaaa-aaadq-cai (internet_identity) requires an init argument. The following info might be helpful:
-init => Use '(null)' for sensible defaults. See the candid interface for more details.
-candid:args => (opt InternetIdentityInit)
-```
-
-In this error, you can see that to use the canister's defaults, you can use a `null` value as the `init` argument. To pass this value as an `init` argument, run the command:
-
-```bash
-dfx deps init rdmx6-jaaaa-aaaaa-aaadq-cai --argument null
-```
-
 Now it's time to deploy our pulled dependency canister. Run the command:
 
 ```bash
