@@ -34,7 +34,7 @@ For the first example, we'll build a `call_get_and_set` method on the caller can
 use candid::{Nat, Principal};
 use ic_cdk::api::management_canister::ecdsa::SignWithEcdsaResponse;
 use ic_cdk::api::time;
-use ic_cdk::call::{Call, CallError, RejectCode};
+use ic_cdk::call::{Call, CallErrorExt, RejectCode};
 use ic_cdk::management_canister::{EcdsaCurve, EcdsaKeyId, SignWithEcdsaArgs};
 use ic_cdk_macros::update;
 use sha2::{Digest, Sha256};
@@ -173,6 +173,7 @@ pub async fn call_increment(counter: Principal) -> Result<(), String> {
     }
 }
 ```
+
 A clean reject of the increment call means that the counter hasn't changed. In general, if a call that changes the callee's state (such as `increment`) is rejected, this means that the state hasn't changed. With a non-clean reject you may not know what happened on the callee side and a thorough analysis may be needed. 
 
 The only cause of non-clean rejects for unbounded calls are panics and rejects on the callee side. These may be intentional rejects, or intentional panics on error conditions (such as the examples with the `expect` functions used earlier). They may also be bugs in the callee or the Wasm runtime may trap (the Wasm equivalent of panics) because the callee ran out of resources, such as available memory or cycles to perform some operations. In default local configurations, you don't have to worry about such resources.
@@ -212,18 +213,21 @@ For example, you can safely call the counter's `get` endpoint using a bounded-wa
 
 ```rust
 #[update]
-pub async fn call_get(counter: Principal) -> Result<(), String> {
+pub async fn call_get(counter: Principal) -> Result<Nat, String> {
     match Call::bounded_wait(counter, "get")
         // The default timeout is 10 seconds. Here we change it to 1 second.
         .change_timeout(1)
-        .await {
-        Ok(bytes) => Ok(bytes.candid::<Nat>().map_error(|e| "Candid decoding failed: {:?}", e)),
+        .await
+    {
+        Ok(bytes) => bytes
+            .candid::<Nat>()
+            .map_err(|e| format!("Candid decoding failed: {:?}", e)),
         // A non-clean reject for bounded-wait calls can also happen due to a timeout.
-        Err(e) if !e.is_clean_reject() =>
-            Err(format!("Getting the value failed with a non-clean reject: {:?}", e)),
-        Err(e) => {
-            Err(format!("The call failed with a clean reject {:?}", e))
-        }
+        Err(e) if !e.is_clean_reject() => Err(format!(
+            "Getting the value failed with a non-clean reject: {:?}",
+            e
+        )),
+        Err(e) => Err(format!("The call failed with a clean reject {:?}", e)),
     }
 }
 ```
@@ -253,9 +257,9 @@ pub async fn stubborn_set(counter: Principal, new_value: Nat) -> Result<(), Stri
     loop {
         match Call::bounded_wait(counter, "set")
             .with_arg(&new_value)
-            .call().await {
-
-            Ok(()) => return Ok(()),
+            .await
+        {
+            Ok(_) => return Ok(()),
             // The immediately_retryable() predicate will return false if the call is likely to
             // just fail again if you retry immediately.
             Err(e) if e.is_immediately_retryable() => {
@@ -263,13 +267,18 @@ pub async fn stubborn_set(counter: Principal, new_value: Nat) -> Result<(), Stri
                 if time() > deadline {
                     return Err(format!("Timed out while trying to set the value: {:?}", e));
                 } else {
-                    continue
+                    continue;
                 }
-            },
+            }
             // If we can't retry immediately, we bail out. Here we leave the upstream caller
             // to clean up the mess. For example, they can use the `call_get` endpoint to see whether
             // the set was successful.
-            Err(e) => return Err(format!("Hit an error that we can't retry: {:?}. Bailing out", e)),
+            Err(e) => {
+                return Err(format!(
+                    "Hit an error that we can't retry: {:?}. Bailing out",
+                    e
+                ))
+            }
         }
     }
 }
@@ -330,10 +339,14 @@ pub async fn sign_message(message: String) -> Result<String, String> {
         // It means that no cycles will be refunded, even
         // if the call didn't make it to the callee. But we don't care here since
         // we only attached a small amount of cycles.
-        Err(e) if e.reject_code() == RejectCode::SysUnknown => Err(format!(
-            "Got a SysUnknown error while signing message: {:?}; cycles are not refunded",
-            err
-        )),
+        Err(ic_cdk::call::CallFailed::CallRejected(e))
+            if e.reject_code() == RejectCode::SysUnknown =>
+        {
+            Err(format!(
+                "Got a SysUnknown error while signing message: {:?}; cycles are not refunded",
+                e
+            ))
+        }
         Err(e) => Err(format!("Error signing message: {:?}", e)),
     }
 }
