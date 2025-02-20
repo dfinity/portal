@@ -44,7 +44,7 @@ const GradientBackground = ({ color1, color2, segments, isFullWidth = false }: {
                 `}
                 style={{
                   willChange: 'background',
-                  background: `radial-gradient(circle, ${color1} calc(30% * var(--gradient-x)), ${color2} calc(max(70%, 90% * var(--gradient-y))))`,
+                  background: `radial-gradient(circle, ${color1} calc(30% * var(--gradient-x, 0.5)), ${color2} calc(max(70%, 90% * var(--gradient-y, 0.5))))`,
                 }}
               />
             </div>
