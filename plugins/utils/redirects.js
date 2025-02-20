@@ -797,17 +797,17 @@ const redirects = `
   /docs/operators-guide/ops-guide /docs/home
 
   ## Quickstart
-  /docs/quickstart/1-quickstart /docs/building-dapps/getting-started/quickstart
-  /docs/quickstart/2-quickstart /docs/building-dapps/getting-started/quickstart
-  /docs/quickstart/3-quickstart /docs/building-dapps/getting-started/quickstart
-  /docs/quickstart/4-2-convert-icp-to-cycles /docs/building-dapps/getting-started/quickstart
-  /docs/quickstart/4-quickstart /docs/building-dapps/getting-started/quickstart
-  /docs/quickstart/5-quickstart /docs/building-dapps/getting-started/quickstart
+  /docs/quickstart/1-quickstart /docs/building-apps/getting-started/quickstart
+  /docs/quickstart/2-quickstart /docs/building-apps/getting-started/quickstart
+  /docs/quickstart/3-quickstart /docs/building-apps/getting-started/quickstart
+  /docs/quickstart/4-2-convert-icp-to-cycles /docs/building-apps/getting-started/quickstart
+  /docs/quickstart/4-quickstart /docs/building-apps/getting-started/quickstart
+  /docs/quickstart/5-quickstart /docs/building-apps/getting-started/quickstart
   /docs/quickstart/cycles-faucet /docs/building-apps/getting-started/tokens-and-cycles
   /docs/quickstart/local-quickstart /docs/building-apps/getting-started/quickstart
   /docs/quickstart/network-quickstart /docs/building-apps/getting-started/quickstart
-  /docs/quickstart/newcomers /docs/building-dapps/getting-started/quickstart
-  /docs/quickstart/quickstart-intro /docs/building-dapps/getting-started/quickstart
+  /docs/quickstart/newcomers /docs/building-apps/getting-started/quickstart
+  /docs/quickstart/quickstart-intro /docs/building-apps/getting-started/quickstart
 
   ## References
   /docs/current/references/cdks /docs/building-apps/developer-tools/cdks/
