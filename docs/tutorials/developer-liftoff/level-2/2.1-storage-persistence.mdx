@@ -53,17 +53,6 @@ For canisters written in Motoko, stable memory can be utilized through the Motok
 - Then, the canister is started, now running the newly upgraded code.
 - Any stable variables are reloaded as part of the `post_upgrade` hook. Note: Having a `pre_upgrade` hook is strongly discouraged and not best practice. After the stable variables are reloaded, the stable memory bytes that stored those variables are overwritten with zeroes to minimize stable memory costs for the canister.
 
-### Rust stable memory workflow
-
-For canisters written in Rust, stable memory can be utilized through two Rust crates: [ic-stable-memory](https://github.com/seniorjoinu/ic-stable-memory) and [ic-stable-structures](https://github.com/dfinity/stable-structures). These features are most notably used in the canister upgrade process. The upgrade process for Rust canisters is as follows:
-
-- First, the canister must be stopped so it does not accept any new incoming requests.
-- A `pre_upgrade` hook is executed if one is defined. This hook can be used for functions such as creating a backup of data. Note: Having a `pre_upgrade` hook is strongly discouraged and not best practice, since the `pre_upgrade` hook is run in the current Wasm. If there are any bugs or errors, the canister will trap
-- Then, the system discards the canister's heap memory and initializes a new version of the canister's Wasm module. Stable memory is preserved and made available to the new Wasm module.
-- Next, the new canister code is installed using the `--mode upgrade` flag.
-- Then, the canister is started, now running the newly upgraded code.
-- A `post_upgrade` hook is called on the newly created instance if one is defined. The `init` function is not executed. Note: Having a `pre_upgrade` hook is strongly discouraged and not best practice.
-
 ## Stable storage and stable variables
 
 Motoko supports preserving a canister's state using ICP's stable memory through a Motoko-specific feature known as **stable storage**, which is designed to accommodate changes to both the application data and the Motoko compiler. Stable storage utilizes ICP's **stable memory** feature that was discussed previously.
