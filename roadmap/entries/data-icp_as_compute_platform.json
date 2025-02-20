@@ -1,6 +1,6 @@
 {
   "categoryName": "Compute Platform",
-  "categoryDescription": "Blockchain Singularity — all computations of the world can run on ICP. ICP is a decentralized compute platform operating as an extension of the Internet, offering cost effective compute and storage services, with infrastructure provided by independent entities around the globe. The platform allows anyone to deploy canister smart contracts on the Internet and run them in a decentralized manner.",
+  "categoryDescription": "All computations of the world can run on ICP. ICP is a decentralized compute platform operating as an extension of the Internet, offering cost effective compute and storage services, with infrastructure provided by independent entities around the globe. The platform allows anyone to deploy canister smart contracts on the Internet and run them in a decentralized manner.",
   "elements": [
     {
       "title": "Load Balancing & increased compute capacity",
