@@ -238,7 +238,7 @@ const redirects = `
   /docs/base-libraries/ /docs/motoko/main/base/
   /base-libraries/ /docs/motoko/main/base/
   /docs/references/security/ /docs/building-apps/best-practices/security/overview
-  /docs/tokenomics/nns/community-fund /docs/move-to-learnhub/nns/concepts/neurons-fund
+  /docs/tokenomics/nns/community-fund https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
   /docs/tokenomics/sns/ /docs/building-apps/governing-apps/tokenomics/
   /docs/developers-guide/cli-reference/ /docs/building-apps/developer-tools/dfx/
   /docs/developers-guide/concepts/ /docs/building-apps/essentials/network-overview
@@ -443,11 +443,11 @@ const redirects = `
   /docs/current/developer-docs/integrations/sns/managing/managing-nervous-system-parameters /docs/building-apps/governing-apps/managing/managing-nervous-system-parameters
   /docs/tokenomics/nns/nns-intro https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
   /docs/tokenomics/token-holders/nns-app-quickstart https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
-  /docs/tokenomics/nns/neurons-fund /docs/move-to-learnhub/nns/concepts/neurons-fund
-  /docs/tokenomics/nns/nns-staking-voting-rewards /docs/move-to-learnhub/nns/concepts/neurons/staking-voting-rewards
-  /docs/move-to-learnhub/nns/staking-voting-rewards /docs/move-to-learnhub/nns/concepts/neurons/staking-voting-rewards
-  /docs/tokenomics/nns/proposal-requirements /docs/move-to-learnhub/nns/concepts/proposal-requirements
-  /docs/move-to-learnhub/nns/proposal-requirements /docs/move-to-learnhub/nns/concepts/proposal-requirements
+  /docs/tokenomics/nns/neurons-fund https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/tokenomics/nns/nns-staking-voting-rewards /https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/move-to-learnhub/nns/staking-voting-rewards /https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/tokenomics/nns/proposal-requirements https://internetcomputer.zendesk.com/hc/en-us/articles/34084113508500-Proposals
+  /docs/move-to-learnhub/nns/proposal-requirements https://internetcomputer.zendesk.com/hc/en-us/articles/34084113508500-Proposals
   /docs/tokenomics/index /docs/building-apps/governing-apps/overview
   /docs/tokenomics/ /docs/building-apps/governing-apps/overview
   /docs/current/developer-docs/integrations/multi-chain/user-faq /docs/building-apps/chain-fusion/overview
@@ -1052,7 +1052,7 @@ const redirects = `
   /docs/references/node-providers/node-metrics https://internetcomputer.zendesk.com/hc/en-us
   /docs/current/developer-docs/defi/wallets/overview https://internetcomputer.zendesk.com/hc/en-us
   /docs/current/developer-docs/defi/wallets/self-custody/self-custody-quickstart https://internetcomputer.zendesk.com/hc/en-us
-  /docs/current/developer-docs/defi/wallets/self-custody/hardware-wallet-cli /docs/defihttps://internetcomputer.zendesk.com/hc/en-us
+  /docs/current/developer-docs/defi/wallets/self-custody/hardware-wallet-cli https://internetcomputer.zendesk.com/hc/en-us
 
   /docs/references/clang-supported-languages /docs/home
 
