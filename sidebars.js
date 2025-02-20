@@ -795,7 +795,7 @@ references: [
   {
     type: "doc",
     label: "Glossary",
-    id: "references/glossary/index",
+    id: "references/glossary",
   },
 ],
 
