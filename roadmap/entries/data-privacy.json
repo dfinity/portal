@@ -46,6 +46,12 @@
       "eta_to_render": ""
     },
     {
+      "title": "Encrypted Canister State",
+      "overview": "Ensuring that all canister state is always encrypted, both in memory and storage, making it completely inaccessible for external parties.",
+      "status": "in_progress",
+      "milestone_id": "Containment"
+    },
+    {
       "title": "Disaster recovery for SEV-SNP-enabled subnets",
       "overview": "SEV-SNP raises the level of security, but also makes disaster recovery harder. SEV-SNP-enabled subnets need to be made recoverable, e.g., by securely escrowing its secure enclave key material on the NNS.",
       "forum": "",
