@@ -1127,12 +1127,12 @@ const redirects = `
   }
 
 
-  exports.getRedirects = function (existingUrl) {
+  exports.getRedirects = function () {
     return redirects
-      .filter((r) => r && !isSplat(r) && !isExternal(r) && !isExactUrl(r))  // Ensure valid redirects
-      .map(ruleToRedirect) // Convert rules into final redirect format
+      .filter((r) => !isSplat(r) && !isExternal(r) && !isExactUrl(r))
+      .map(ruleToRedirect)
       .map((r) => ({
-        to: r.to.replace(/#.+$/, ""), // Clean up any fragment identifiers from destination URL
+        to: r.to.replace(/#.+$/, ""),
         from: r.from,
       }));
   };
@@ -1147,24 +1147,16 @@ const redirects = `
       .map(ruleToRedirect);
   };
 
-  exports.getSplatRedirects = function (existingUrl, redirects) {
+  exports.getSplatRedirects = function (existingUrl) {
     const urls = [];
 
-    // Make sure existingUrl is a string and not undefined
-    if (typeof existingUrl !== 'string') {
-      throw new Error('Existing URL must be a string');
-    }
-
     for (const redirect of redirects.filter(
-      (r) => isSplat(r.source) && !isExternal(r.destination)
+      (r) => isSplat(r) && !isExternal(r)
     )) {
-      const trimmedSource = redirect.source.replace("/*", "/");
+      const trimmedSource = redirect[0].replace("/*", "/");
 
-      // Checking if the destination contains the splat pattern
-      if (redirect.destination.includes(":splat")) {
-        const trimmedDestination = redirect.destination.replace(":splat", "");
-
-        // If the existingUrl starts with the destination, replace accordingly
+      if (redirect[1].includes(":splat")) {
+        const trimmedDestination = redirect[1].replace(":splat", "");
         if (existingUrl.startsWith(trimmedDestination)) {
           const completeSourceUrl = existingUrl.replace(
             trimmedDestination,
