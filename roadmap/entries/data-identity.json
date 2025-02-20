@@ -1,6 +1,6 @@
 {
   "categoryName": "Identity",
-  "categoryDescription": "An identity solution that is privacy-preserving, self-sovereign, and user-friendly is a fundamental building block for web3 adoption. Internet Identity provides a robust authentication solution based on passkeys, with easy onboarding and support for identity attributes while protecting the users’ privacy.",
+  "categoryDescription": "An identity solution that is privacy-preserving, self-sovereign, and user-friendly is a fundamental building block for Web3 adoption. Internet Identity provides a robust authentication solution based on passkeys, with easy onboarding and support for identity attributes while protecting the users’ privacy.",
   "elements": [
     {
       "title": "Identity signer standards",
