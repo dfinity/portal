@@ -1122,39 +1122,7 @@ const redirects = `
     };
   }
 
-  const manualRedirectUrl = 'https://internetcomputer.org/docs/home'; // The target URL for manual redirection
-
   exports.getRedirects = function (existingUrl) {
-    // Ensure existingUrl is valid
-    if (typeof existingUrl !== 'string' || existingUrl.trim() === '') {
-      console.error('Error: existingUrl is invalid or empty');
-      return []; // Return early if the URL is invalid
-    }
-
-    console.log(`Processing redirect for URL: ${existingUrl}`);
-
-    // Check if the existing URL matches any of the predefined redirects
-    const foundRedirect = redirects.find((r) => {
-      // Ensure that r[0] (source URL) is defined and is a string
-      if (r && typeof r[0] === 'string' && r[0].trim() !== '') {
-        const fromUrl = r[0];
-        console.log(`Checking if ${existingUrl} includes ${fromUrl}`); // Debugging log
-        return existingUrl.includes(fromUrl); // Proceed with checking for match
-      }
-      console.error('Error: Invalid or undefined source URL in redirect', r);
-      return false; // If r[0] is undefined or invalid, return false
-    });
-
-    // If no matching redirect is found, return a manual redirect
-    if (!foundRedirect) {
-      console.log('No matching redirect found. Redirecting manually.');
-      return [{
-        from: existingUrl,
-        to: manualRedirectUrl, // Default manual redirect URL
-      }];
-    }
-
-    // Otherwise, proceed with predefined redirects (from the `redirects` array)
     return redirects
       .filter((r) => r && !isSplat(r) && !isExternal(r) && !isExactUrl(r))  // Ensure valid redirects
       .map(ruleToRedirect) // Convert rules into final redirect format
@@ -1163,8 +1131,6 @@ const redirects = `
         from: r.from,
       }));
   };
-
-
 
   exports.getExternalRedirects = function () {
     return redirects.filter((r) => isExternal(r)).map(ruleToRedirect);
