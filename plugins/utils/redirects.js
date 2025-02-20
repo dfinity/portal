@@ -1123,7 +1123,18 @@ const redirects = `
   }
 
   exports.getRedirects = function () {
+
+    for (const redirect of redirects.filter(
+      (r) => !isExternal(r) && !isExactUrl(r)
+    )) {
+      // Check if existingUrl contains '/docs/current/' and it's not in the first redirect
+      if (existingUrl.includes('/docs/current/') && !redirect[0].includes(existingUrl)) {
+          // Redirect to 'https://internetcomputer.org' if condition is met
+          const completeSourceUrl = 'https://internetcomputer.org/docs/home';
+          urls.push(completeSourceUrl);
+      }
     return redirects
+
       .filter((r) => !isSplat(r) && !isExternal(r) && !isExactUrl(r))
       .map(ruleToRedirect)
       .map((r) => ({
@@ -1131,6 +1142,7 @@ const redirects = `
         from: r.from,
       }));
   };
+}
 
   exports.getExternalRedirects = function () {
     return redirects.filter((r) => isExternal(r)).map(ruleToRedirect);
@@ -1141,38 +1153,6 @@ const redirects = `
       .filter((r) => !isExternal(r) && isExactUrl(r))
       .map(ruleToRedirect);
   };
-
-  exports.getSplatRedirects = function (existingUrl) {
-    const urls = [];
-
-    // Loop through the redirects
-    for (const redirect of redirects.filter(
-        (r) => !isExternal(r) && !isExactUrl(r)
-    )) {
-        // Check if existingUrl contains '/docs/current/' and it's not in the first redirect
-        if (existingUrl.includes('/docs/current/') && !redirect[0].includes(existingUrl)) {
-            // Redirect to 'https://internetcomputer.org' if condition is met
-            const completeSourceUrl = 'https://internetcomputer.org/docs/home';
-            urls.push(completeSourceUrl);
-        } else {
-            // Existing logic for handling other redirects
-            const trimmedSource = redirect[0].replace("/*", "/");
-
-            if (redirect[1].includes(":splat")) {
-                const trimmedDestination = redirect[1].replace(":splat", "");
-                if (existingUrl.startsWith(trimmedDestination)) {
-                    const completeSourceUrl = existingUrl.replace(
-                        trimmedDestination,
-                        trimmedSource
-                    );
-                    urls.push(completeSourceUrl);
-                }
-            }
-        }
-    }
-
-    return urls;
-};
 
 // Helper function to check if it's a splat redirect
 function isSplat(redirect) {

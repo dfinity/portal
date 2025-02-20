@@ -635,7 +635,6 @@ const config = {
     {
       fromExtensions: ["html", "md"],
       redirects: getRedirects(),
-      createRedirects: (existingPath) => getSplatRedirects(existingPath),
     },
   ],
 ],
