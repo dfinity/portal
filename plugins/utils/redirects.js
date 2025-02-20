@@ -444,8 +444,8 @@ const redirects = `
   /docs/tokenomics/nns/nns-intro https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
   /docs/tokenomics/token-holders/nns-app-quickstart https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
   /docs/tokenomics/nns/neurons-fund https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
-  /docs/tokenomics/nns/nns-staking-voting-rewards /https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
-  /docs/move-to-learnhub/nns/staking-voting-rewards /https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/tokenomics/nns/nns-staking-voting-rewards https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/move-to-learnhub/nns/staking-voting-rewards https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
   /docs/tokenomics/nns/proposal-requirements https://internetcomputer.zendesk.com/hc/en-us/articles/34084113508500-Proposals
   /docs/move-to-learnhub/nns/proposal-requirements https://internetcomputer.zendesk.com/hc/en-us/articles/34084113508500-Proposals
   /docs/tokenomics/index /docs/building-apps/governing-apps/overview
@@ -1145,17 +1145,17 @@ const redirects = `
   exports.getSplatRedirects = function (existingUrl) {
     const urls = [];
 
-    // Check if the existingUrl contains '/docs/current'
-    if (existingUrl.includes('/docs/current')) {
-      // Redirect to '/docs/home' if the URL already contains '/docs/current'
-      const completeSourceUrl = 'https://internetcomputer.org/docs/home';
-      urls.push(completeSourceUrl);
-    } else {
-        // Loop through the redirects
-        for (const redirect of redirects.filter(
-            (r) => isSplat(r) && !isExternal(r)
-        )) {
-            // Existing logic for other redirects
+    // Loop through the redirects
+    for (const redirect of redirects.filter(
+        (r) => !isExternal(r)
+    )) {
+        // Check if existingUrl contains '/docs/current/' and it's not in the first redirect
+        if (existingUrl.includes('/docs/current/') && !redirect[0].includes(existingUrl)) {
+            // Redirect to 'https://internetcomputer.org' if condition is met
+            const completeSourceUrl = 'https://internetcomputer.org/docs/home';
+            urls.push(completeSourceUrl);
+        } else {
+            // Existing logic for handling other redirects
             const trimmedSource = redirect[0].replace("/*", "/");
 
             if (redirect[1].includes(":splat")) {
@@ -1173,4 +1173,10 @@ const redirects = `
 
     return urls;
 };
+
+// Helper function to check if it's a splat redirect
+function isSplat(redirect) {
+    return redirect[0].includes("/*");
+}
+
 
