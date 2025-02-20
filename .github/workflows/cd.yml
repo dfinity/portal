@@ -41,7 +41,7 @@ jobs:
           sed -i 's/\\r\\n/\r\n/g' ~/.config/dfx/identity/default/identity.pem
         env:
           DFX_IDENTITY_DESIGN_TEAM: ${{ secrets.DFX_IDENTITY_DESIGN_TEAM }}
-          DFX_WARNING: --mainnet_plaintext_identity
+          DFX_WARNING: -mainnet_plaintext_identity
 
       - name: Check Canister Balance
         run: |
