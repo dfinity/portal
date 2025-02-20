@@ -991,18 +991,40 @@ const redirects = `
   function ruleToRedirect(rule) {
     // Remove trailing slashes from the 'from' URL
     let from = rule[0].replace(/(.+)\/$/, "$1");
-    // Replace '/docs/current/' with '/docs/' in the 'from' URL
-    from = from.replace('/docs/current/motoko', '/docs/motoko');
-    from = from.replace('/docs/current/developer-docs/developer-tools/cli-tools/cli-reference', '/docs/building-apps/developer-tools/dfx');
-    from = from.replace('/docs/current/tutorials/developer-journey/', '/docs/tutorials/developer-liftoff/');
-    from = from.replace('/docs/current/references/', '/docs/references/');
-    from = from.replace('/docs/current/developer-docs/security/security-best-practices/', '/docs/building-apps/best-practices/security/');
-    const to = rule[1];
+
+    // Perform replacements with 'if' statements
+
+    if (from.includes('/docs/current/motoko')) {
+      from = from.replace('/docs/current/motoko', '/docs/motoko');
+    }
+
+    if (from.includes('/docs/current/developer-docs/developer-tools/cli-tools/cli-reference')) {
+      from = from.replace('/docs/current/developer-docs/developer-tools/cli-tools/cli-reference', '/docs/building-apps/developer-tools/dfx');
+    }
+
+    if (from.includes('/docs/current/tutorials/developer-journey/')) {
+      from = from.replace('/docs/current/tutorials/developer-journey/', '/docs/tutorials/developer-liftoff/');
+    }
+
+    if (from.includes('/docs/current/references/')) {
+      from = from.replace('/docs/current/references/', '/docs/references/');
+    }
+
+    if (from.includes('/docs/current/developer-docs/security/security-best-practices/')) {
+      from = from.replace('/docs/current/developer-docs/security/security-best-practices/', '/docs/building-apps/best-practices/security/');
+    }
+
+    // Ensure there are no unintended trailing slashes after replacements (if needed)
+    from = from.replace(/\/$/, ''); // Remove trailing slash if it still exists
+
+    const to = rule[1];  // The 'to' URL remains unchanged
+
     return {
       from,
       to,
     };
   }
+
 
 
   exports.getRedirects = function () {
