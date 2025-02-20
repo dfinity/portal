@@ -455,7 +455,7 @@
     {
       "title": "Governance basic portfolio reporting capabilities",
       "overview": "Reporting functionality that allows users to obtain summary information about their NNS neurons.",
-      "status": "future",
+      "status": "deployed",
       "milestone_id": "Neon"
     },
 
