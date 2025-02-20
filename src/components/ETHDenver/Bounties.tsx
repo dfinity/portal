@@ -1,10 +1,41 @@
-import React, { FC } from "react";
-
+import React, { FC, useState } from "react";
 import AnimateSpawn from "../Common/AnimateSpawn";
 import TwitterIcon from "@site/static/img/ethdenver/twitter.svg";
 import { motion } from "framer-motion";
 import transitions from "@site/static/transitions.json";
 import Link from "@docusaurus/Link";
+
+const VideoPlayer: FC<{ className?: string }> = ({ className = "" }) => {
+  const [showControls, setShowControls] = useState(false);
+  const videoRef = React.useRef<HTMLVideoElement>(null);
+
+  const handleClick = () => {
+    setShowControls(true);
+    videoRef.current?.play();
+  };
+
+  return (
+    <div className={`relative cursor-pointer ${className}`}>
+      <motion.video
+        ref={videoRef}
+        controls={showControls}
+        poster="/img/ethdenver/icp-bounties-poster.webp"
+        className="w-full overflow-hidden rounded-xl"
+        onClick={handleClick}
+        variants={transitions.item}
+      >
+        <source src="/img/ethdenver/icp-bounties.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </motion.video>
+      {!showControls && (
+        <div 
+          className="absolute inset-0"
+          onClick={handleClick}
+        />
+      )}
+    </div>
+  );
+};
 
 const Bounties: FC<{
   id: string;
@@ -12,28 +43,28 @@ const Bounties: FC<{
   return (
     <section className="container-10 py-8 md:py-40" id={id}>
       <AnimateSpawn
-        className="flex flex-col md:flex-row mb-20 md:mb-40"
+        className="flex flex-col md:flex-row mb-20 md:mb-40 gap-4"
         variants={transitions.container}
       >
-        <div className="md:w-1/2">
+        <div className="md:w-7/12">
           <motion.h2
             className="tw-heading-alt-2 mb-6 md:mb-8"
             variants={transitions.item}
           >
             <span className="text-gradient-base text-gradient-denver">
-              ETHDenver Bounties
+              ETHDenver <br />Bounties
             </span>
             <br />
             Get Your Hack <br />
             On
           </motion.h2>
-          <motion.img
-            src="/img/ethdenver/motoko-playground.webp"
-            alt=""
-            className="w-full md:hidden mb-6"
-            variants={transitions.fadeIn}
-          />
-          <motion.p className="tw-lead-sm mb-8 text-black-60" variants={transitions.item}>
+          
+          {/* Mobile video */}
+          <div className="md:hidden mb-6">
+            <VideoPlayer />
+          </div>
+
+          <motion.p className="tw-lead-sm mb-8 text-black-60 md:w-9/10" variants={transitions.item}>
           Bring DeFi and SocFi to Bitcoin, go mad with NFTs, or decentralize an Ethereum DAO on the Internet Computer and get rewarded for it. This is your chance to #BUIDL the future Internet! 
           </motion.p>
           <motion.div
@@ -59,12 +90,10 @@ const Bounties: FC<{
             </Link>
           </motion.div>
         </div>
-        <div className="md:w-1/2 hidden md:block">
-          <img
-            src="/img/ethdenver/motoko-playground.webp"
-            alt=""
-            className="w-full"
-          />
+        
+        {/* Desktop video */}
+        <div className="md:w-5/12 hidden md:block">
+          <VideoPlayer />
         </div>
       </AnimateSpawn>
 
