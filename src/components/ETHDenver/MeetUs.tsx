@@ -13,7 +13,7 @@ const MeetUs: FC<{
 }> = ({ id }) => {
   return (
     <section
-      className="bg-black text-white py-20 md:pt-30 md:pb-40"
+      className="bg-black text-white py-20 md:pt-30 md:pb-30 "
       id={id}
     >
       <AnimateSpawn

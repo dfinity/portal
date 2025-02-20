@@ -1,29 +1,22 @@
 import React, { useRef } from "react";
 
-import AnimateSpawn from "../components/Common/AnimateSpawn";
 import BackgroundPanel from "../components/LandingPage/BackgroundPanel";
 import BeAPioneer from "@site/src/components/ETHDenver/BeAPioneer";
 import DarkHeroStyles from "@site/src/components/Common/DarkHeroStyles";
 import IntraPageNav from "../components/Common/IntraPageNav";
 import Layout from "@theme/Layout";
-import Link from "@docusaurus/Link";
 import ShareMeta from "../components/Common/ShareMeta";
 import TrySomeDapps from "@site/src/components/ETHDenver/TrySomeDapps";
-import TwitterIcon from "@site/static/img/ethdenver/twitter.svg";
-import { motion } from "framer-motion";
-import transitions from "@site/static/transitions.json";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
-import GradientBackground from "../components/ETHDenver/GradientBackground";
-import CtaCard from "../components/ETHDenver/CtaCard";
 import Hero from "../components/ETHDenver/Hero";
 import MeetUs from "../components/ETHDenver/MeetUs";
 import Bounties from "../components/ETHDenver/Bounties";
 import JointTheMovement from "../components/ETHDenver/JointTheMovement";
 import LearnMore from "../components/ETHDenver/LearnMore";
+import OnStage from "../components/ETHDenver/OnStage";
 
 
 
-const MotionLink = motion(Link);
 function EthDenverPage() {
   const heroRef = useRef<HTMLDivElement>(null);
   const isDark = useDarkHeaderInHero(heroRef);
@@ -49,6 +42,9 @@ function EthDenverPage() {
 
         {/* Meet us */}
         <MeetUs id="meet-us" />
+
+        {/* On Stage */}
+        <OnStage id="on-stage" />
 
         {/* Bounties */}
         <Bounties id="bounties" />
