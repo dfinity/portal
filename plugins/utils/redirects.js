@@ -1147,7 +1147,7 @@ const redirects = `
 
     // Loop through the redirects
     for (const redirect of redirects.filter(
-        (r) => !isExternal(r)
+        (r) => !isExternal(r) && !isExactUrl(r)
     )) {
         // Check if existingUrl contains '/docs/current/' and it's not in the first redirect
         if (existingUrl.includes('/docs/current/') && !redirect[0].includes(existingUrl)) {
