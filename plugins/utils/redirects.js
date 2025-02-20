@@ -1122,47 +1122,56 @@ const redirects = `
     };
   }
 
-  exports.getRedirects = function (existingUrl) {
-    const manualRedirectUrl = 'https://example.com'; // Set the target URL for manual redirect
+// Assuming redirects is your array of predefined redirects
+const manualRedirectUrl = 'https://internetcomputer.org/docs/home'; // The target URL for manual redirection
 
-    // Ensure existingUrl is a non-empty string
-    if (typeof existingUrl !== 'string' || existingUrl.trim() === '') {
-      console.error('Error: existingUrl is undefined, null, or an empty string.');
-      return []; // Early exit if existingUrl is invalid
+exports.getRedirects = function (existingUrl) {
+  // Ensure existingUrl is valid
+  if (typeof existingUrl !== 'string' || existingUrl.trim() === '') {
+    console.error('Error: existingUrl is undefined, null, or an empty string.');
+    return []; // Early exit if existingUrl is invalid
+  }
+
+  // Debugging log to track the current URL being processed
+  console.log(`Processing redirect for URL: ${existingUrl}`);
+
+  // Custom redirect logic: Check if the URL includes '/docs/current/' and manually redirect
+  if (existingUrl.includes('/docs/current/')) {
+    console.log('Redirecting manually due to /docs/current/ path');
+    return [{
+      from: existingUrl,
+      to: 'https://internetcomputer.org/docs/home', // Example manual redirect target
+    }];
+  }
+
+  // Check if the existing URL matches any of the predefined redirects
+  const foundRedirect = redirects.find((r) => {
+    if (r && r[0]) { // Ensure r[0] exists and is valid
+      const fromUrl = r[0];
+      console.log(`Checking if ${existingUrl} includes ${fromUrl}`);
+      return existingUrl.includes(fromUrl); // Proceed with checking for match
     }
+    return false; // If r[0] is undefined, return false
+  });
 
-    console.log(`Processing redirect for URL: ${existingUrl}`); // Debugging line to log the URL
+  // If no matching redirect is found, return a manual redirect
+  if (!foundRedirect) {
+    console.log('No matching redirect found. Redirecting manually.');
+    return [{
+      from: existingUrl,
+      to: manualRedirectUrl, // Default manual redirect URL
+    }];
+  }
 
-    // Check if the existing URL is already in the redirects
-    const foundRedirect = redirects.find((r) => {
-      if (r && r[0]) { // Ensure r[0] (the source URL) is defined and not null
-        const fromUrl = r[0];
-        console.log(`Checking if ${existingUrl} includes ${fromUrl}`); // Debugging line to show matching check
-        return existingUrl.includes(fromUrl); // Proceed with checking for match
-      }
-      return false; // Return false if r[0] is undefined or null
-    });
-
-    // If the current URL isn't found in the redirects, manually redirect to another page
-    if (!foundRedirect) {
-      console.log('No matching redirect found. Redirecting manually.');
-      return [{
-        from: existingUrl,
-        to: manualRedirectUrl,
-      }];
-    }
-
-    // Otherwise, proceed with the usual redirect logic
-    return redirects
-      .filter((r) => r && !isSplat(r) && !isExternal(r) && !isExactUrl(r))
-      .map(ruleToRedirect)
-      .map((r) => ({
-        to: r.to.replace(/#.+$/, ""),
-        from: r.from,
-      }));
-  };
-
-
+  // Otherwise, proceed with predefined redirects (from the `redirects` array)
+  return redirects
+    .filter((r) => r && !isSplat(r) && !isExternal(r) && !isExactUrl(r))  // Ensure valid redirects
+    .map(ruleToRedirect)
+    .map((r) => ({
+      to: r.to.replace(/#.+$/, ""), // Clean up any fragment identifiers from destination URL
+      from: r.from,
+    }));
+};
 
 
   exports.getExternalRedirects = function () {
