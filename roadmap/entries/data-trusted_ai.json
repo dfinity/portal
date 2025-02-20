@@ -1,6 +1,6 @@
 {
   "categoryName": "Decentralized AI",
-  "categoryDescription": "Today, users have to blindly trust AI models running on centralized servers with no visibility into how data is used and how AI models produce responses. Decentralized AI solves this problem by bringing the trustworthiness, security, verifiability, and resilience of smart contracts to AI applications.",
+  "categoryDescription": "AI and ICP have significant potential to benefit one another. First, AI and ICP together enable the self-writing Internet. Given a description of an application, AI can write the application for you and, by deploying it as an ICP smart contract, make it available to you at a URL – just like that.  Second, AI running as a smart contract on ICP addresses the problem of users having to blindly trust AI models running on centralized servers by providing transparency into data usage and response generation.",
   "elements": [
     {
       "title": "Foundational LLMs",
