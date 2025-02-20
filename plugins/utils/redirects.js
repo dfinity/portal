@@ -1122,19 +1122,26 @@ const redirects = `
     };
   }
 
-  exports.getRedirects = function () {
+  exports.getRedirects = function (existingUrl) {
+    // Manually redirect to a different page if the current URL isn't found in redirects
+    const manualRedirectUrl = 'https://internetcomputer.org/docs/home'; // Set the target URL for manual redirect
 
-    for (const redirect of redirects.filter(
-      (r) => !isExternal(r) && !isExactUrl(r)
-    )) {
-      // Check if existingUrl contains '/docs/current/' and it's not in the first redirect
-      if (existingUrl.includes('/docs/current/') && !redirect[0].includes(existingUrl)) {
-          // Redirect to 'https://internetcomputer.org' if condition is met
-          const completeSourceUrl = 'https://internetcomputer.org/docs/home';
-          urls.push(completeSourceUrl);
-      }
+    // Check if the existing URL is already in the redirects
+    const foundRedirect = redirects.find((r) => {
+      const fromUrl = r[0]; // Assuming r[0] is the source URL in your redirects
+      return existingUrl.includes(fromUrl);
+    });
+
+    // If the current URL isn't found in the redirects, manually redirect to another page
+    if (!foundRedirect) {
+      return [{
+        from: existingUrl,
+        to: manualRedirectUrl,
+      }];
+    }
+
+    // Otherwise, proceed with the usual redirect logic
     return redirects
-
       .filter((r) => !isSplat(r) && !isExternal(r) && !isExactUrl(r))
       .map(ruleToRedirect)
       .map((r) => ({
@@ -1142,7 +1149,7 @@ const redirects = `
         from: r.from,
       }));
   };
-}
+
 
   exports.getExternalRedirects = function () {
     return redirects.filter((r) => isExternal(r)).map(ruleToRedirect);
@@ -1154,9 +1161,27 @@ const redirects = `
       .map(ruleToRedirect);
   };
 
-// Helper function to check if it's a splat redirect
-function isSplat(redirect) {
-    return redirect[0].includes("/*");
-}
+  exports.getSplatRedirects = function (existingUrl) {
+    const urls = [];
+
+    for (const redirect of redirects.filter(
+      (r) => isSplat(r) && !isExternal(r)
+    )) {
+      const trimmedSource = redirect[0].replace("/*", "/");
+
+      if (redirect[1].includes(":splat")) {
+        const trimmedDestination = redirect[1].replace(":splat", "");
+        if (existingUrl.startsWith(trimmedDestination)) {
+          const completeSourceUrl = existingUrl.replace(
+            trimmedDestination,
+            trimmedSource
+          );
+          urls.push(completeSourceUrl);
+        }
+      }
+    }
+
+    return urls;
+  };
 
 
