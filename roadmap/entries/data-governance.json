@@ -176,7 +176,7 @@
     },
     {
       "title": "Guide users from swap participating to governance",
-      "description": "After successful participation in an SNS launch, guide users to the next steps they can take. This can include using their tokens or setting up the neurons that they received. This encourages users to remain active after the SNS launch and become governance participants.",
+      "overview": "After successful participation in an SNS launch, guide users to the next steps they can take. This can include using their tokens or setting up the neurons that they received. This encourages users to remain active after the SNS launch and become governance participants.",
       "status": "future",
       "is_community": false,
       "in_beta": false,
