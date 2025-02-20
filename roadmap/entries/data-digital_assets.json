@@ -115,8 +115,8 @@
       "milestone_id": "Echelon"
     },
     {
-      "title": "Opt-in for automatic upgrades",
-      "overview": "A streamlined update system will allow users to opt-in for automatic contract updates, ensuring they stay on the latest secure version without manual intervention.",
+      "title": "Automatic upgrades",
+      "overview": "A streamlined update system will allow users to subscribe for automatic contract updates, ensuring they stay on the latest secure version without manual intervention.",
       "status": "future",
       "milestone_id": "Echelon"
     },
@@ -127,7 +127,7 @@
       "milestone_id": "Echelon"
     },
     {
-      "title": "Orbit App v1",
+      "title": "Orbit Wallet v1",
       "description": "To further improve Orbit’s usability and accessibility, we will enhance the user experience through intuitive approval flows, a revamped onboarding, and a comprehensive documentation hub. These improvements will ensure the Orbit App is efficient for both individual users and teams managing their digital assets management needs.",
       "status": "future",
       "is_milestone": true,
