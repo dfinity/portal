@@ -135,13 +135,6 @@
       "milestone_id": "Nucleus"
     },
     {
-      "title": "Delegates",
-      "overview": "A new mechanism for bootstrapping Orbit smart contracts allows the NNS to set designated “technical delegates” who maintain specific projects. This separation of powers ensures that while the NNS (and broader community) chooses council participants, only qualified council members handle code upgrades and maintenance, fostering both trust and efficiency.",
-      "status": "future",
-      "milestone_id": "Nucleus"
-    },
-
-    {
       "title": "NNS Neuron index",
       "overview": "Introduce a governance endpoint that allows to index all NNS neurons.",
       "status": "future"
