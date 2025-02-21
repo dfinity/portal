@@ -25,7 +25,7 @@ const MeetUs: FC<{
             className="tw-heading-alt-2 md:mb-8 text-balance"
             variants={transitions.item}
           >
-            Meet us at Booth no. 509 AT ETHDenver 2025
+            Meet us at Booth no.&nbsp;509 AT ETHDenver 2025
           </motion.h2>
           <motion.p className="tw-lead mb-8" variants={transitions.item}>
             <span className="text-white-60">
