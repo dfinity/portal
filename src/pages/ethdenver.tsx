@@ -97,21 +97,6 @@ function EthDenverPage() {
           />
         </div>
 
-        {/* On page nav */}
-        <IntraPageNav
-          hasHome={false}
-          links={[
-            { text: "Intro", to: "#intro" },
-            { text: "Agenda", to: "#agenda" },
-            { text: "Bounties", to: "#bounties" },
-            { text: "Ecosystem", to: "#ecosystem" },
-            { text: "Internet Identity", to: "#internet-identity" },
-            { text: "Blockchain Singularity", to: "#learn-more" },
-            { text: "Start building", to: "#start-building" },
-          ]}
-          label="Scroll to section"
-        ></IntraPageNav>
-
       </main>
     </Layout>
   );
