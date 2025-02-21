@@ -284,7 +284,7 @@ const redirects = `
   /docs/current/developer-docs/getting-started/cycles/cycles-wallet /docs/building-apps/canister-management/topping-up
   /docs/current/developer-docs/getting-started/cycles/cycles_management_services /docs/building-apps/canister-management/topping-up
   /docs/current/developer-docs/getting-started/cycles/overview /docs/building-apps/getting-started/tokens-and-cycles
-  /docs/current/developer-docs/getting-started/default-template /docs/building-apps/essentials/what-are-canisters
+  /docs/current/developer-docs/getting-started/default-template /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/getting-started/deploy/local /docs/building-apps/developing-canisters/deploy/overview
   /docs/current/developer-docs/getting-started/deploy/testnet /docs/building-apps/developing-canisters/deploy/overview
   /docs/current/developer-docs/getting-started/development-workflow /docs/building-apps/getting-started/install
@@ -474,11 +474,11 @@ const redirects = `
 
   ## Setup
   /docs/current/developer-docs/setup/accounts /docs/building-apps/getting-started/identities
-  /docs/current/developer-docs/setup/best-practices/architecture /docs/building-apps/essentials/what-are-canisters
+  /docs/current/developer-docs/setup/best-practices/architecture /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/setup/best-practices/general /docs/building-apps/best-practices/general
   /docs/current/developer-docs/setup/best-practices/storage /docs/building-apps/best-practices/storage
   /docs/current/developer-docs/setup/best-practices/troubleshooting /docs/building-apps/best-practices/troubleshooting
-  /docs/current/developer-docs/setup/build /docs/building-apps/essentials/what-are-canisters
+  /docs/current/developer-docs/setup/build /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/setup/cycles/converting_icp_tokens_into_cycles /docs/building-apps/getting-started/tokens-and-cycles
   /docs/current/developer-docs/setup/cycles/cycles-faucet.md	/docs/building-apps/getting-started/tokens-and-cycles
   /docs/current/developer-docs/setup/cycles/cycles-faucet /docs/building-apps/getting-started/tokens-and-cycles
@@ -493,7 +493,7 @@ const redirects = `
   /docs/current/developer-docs/setup/deploy /docs/building-apps/developing-canisters/deploy/overview
   /docs/current/developer-docs/setup/development-workflow /docs/building-apps/getting-started/install
   /docs/current/developer-docs/setup /docs/building-apps/getting-started/install
-  /docs/current/developer-docs/setup/first-canister /docs/building-apps/essentials/what-are-canisters
+  /docs/current/developer-docs/setup/first-canister /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/setup/hello-world /docs/building-apps/developing-canisters/write
   /docs/current/developer-docs/setup/ic-admin /docs/home
   /docs/current/developer-docs/setup/index.md	/docs/building-apps/getting-started/install
@@ -501,7 +501,7 @@ const redirects = `
   /docs/current/developer-docs/setup/install/ /docs/building-apps/getting-started/install
   /docs/current/developer-docs/setup/install/index.mdx /docs/building-apps/getting-started/install
   /docs/current/developer-docs/setup/manage-canisters /docs/building-apps/canister-management/settings
-  /docs/current/developer-docs/setup/manage-projects /docs/building-apps/essentials/what-are-canisters
+  /docs/current/developer-docs/setup/manage-projects /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/setup/playground /docs/building-apps/developing-canisters/deploy/overview
   /docs/current/developer-docs/setup/pocket-ic /docs/building-apps/advanced/test/pocket-ic
   /docs/current/developer-docs/setup/pulling-canister-dependencies /docs/building-apps/advanced/using-third-party-canisters
@@ -529,7 +529,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/advanced-features/system-canisters /docs/references/system-canisters/
   /docs/current/developer-docs/smart-contracts/advanced-features/threshold-signing /docs/building-apps/network-features/signatures/t-ecdsa
   /docs/current/developer-docs/smart-contracts/advanced-features/time-and-timestamps /docs/building-apps/network-features/time-and-timestamps
-  /docs/current/developer-docs/smart-contracts/best-practices/architecture /docs/building-apps/essentials/what-are-canisters
+  /docs/current/developer-docs/smart-contracts/best-practices/architecture /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/best-practices/general /docs/building-apps/best-practices/general
   /docs/current/developer-docs/smart-contracts/best-practices/idempotency /docs/building-apps/best-practices/idempotency
   /docs/current/developer-docs/smart-contracts/best-practices/reproducible-builds /docs/building-apps/best-practices/reproducible-builds
@@ -542,10 +542,10 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/candid/candid-tools /docs/building-apps/interact-with-canisters/candid/candid-tools
   /docs/current/developer-docs/smart-contracts/candid /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/developer-docs/smart-contracts/candid/index	/docs/building-apps/interact-with-canisters/candid/candid-concepts
-  /docs/current/developer-docs/smart-contracts/compile /docs/building-apps/essentials/what-are-canisters
-  /docs/current/developer-docs/smart-contracts/create /docs/building-apps/essentials/what-are-canisters
+  /docs/current/developer-docs/smart-contracts/compile /docs/building-apps/essentials/canisters
+  /docs/current/developer-docs/smart-contracts/create /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/deploy/custom-networks /docs/building-apps/developing-canisters/create
-  /docs/current/developer-docs/smart-contracts/deploy/larger-wasm /docs/building-apps/essentials/what-are-canisters
+  /docs/current/developer-docs/smart-contracts/deploy/larger-wasm /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/deploy/overview /docs/building-apps/developing-canisters/deploy/overview
   /docs/current/developer-docs/smart-contracts/deploy/sharing /docs/building-apps/developing-canisters/deploy/overview
   /docs/current/developer-docs/smart-contracts/development-workflow /docs/building-apps/getting-started/install
@@ -556,7 +556,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/encryption/t-schnorr /docs/building-apps/network-features/signatures/t-schnorr
   /docs/current/developer-docs/smart-contracts/encryption/using-vetkeys /docs/building-apps/network-features/encryption/using-vetkeys
   /docs/current/developer-docs/smart-contracts/encryption/vetkeys /docs/building-apps/network-features/encryption/vetkeys
-  /docs/current/developer-docs/smart-contracts/install /docs/building-apps/essentials/what-are-canisters
+  /docs/current/developer-docs/smart-contracts/install /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/overview/development-cycle /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/overview	/docs/building-apps/essentials/canisters
@@ -575,11 +575,11 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/test/troubleshooting /docs/building-apps/getting-started/troubleshooting
   /docs/current/developer-docs/smart-contracts/topping-up/cycles_management_services /docs/building-apps/canister-management/topping-up
   /docs/current/developer-docs/smart-contracts/topping-up/topping-up-canister /docs/building-apps/canister-management/topping-up
-  /docs/current/developer-docs/smart-contracts/write/auto-scaling-architecture /docs/building-apps/essentials/what-are-canisters
-  /docs/current/developer-docs/smart-contracts/write/choosing-language /docs/building-apps/essentials/what-are-canisters
-  /docs/current/developer-docs/smart-contracts/write/default-template /docs/building-apps/essentials/what-are-canisters
-  /docs/current/developer-docs/smart-contracts/write/overview /docs/building-apps/essentials/what-are-canisters
-  /docs/current/developer-docs/smart-contracts/write/resources /docs/building-apps/essentials/what-are-canisters
+  /docs/current/developer-docs/smart-contracts/write/auto-scaling-architecture /docs/building-apps/essentials/canisters
+  /docs/current/developer-docs/smart-contracts/write/choosing-language /docs/building-apps/essentials/canisters
+  /docs/current/developer-docs/smart-contracts/write/default-template /docs/building-apps/essentials/canisters
+  /docs/current/developer-docs/smart-contracts/write/overview /docs/building-apps/essentials/canisters
+  /docs/current/developer-docs/smart-contracts/write/resources /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/updates/computation-and-storage-costs /docs/building-apps/essentials/gas-cost
   /docs/current/developer-docs/updates/release-notes/ /docs/other/updates/release-notes/
   /docs/current/developer-docs/use-cases/considerations-for-nft-devs /docs/defi/nft-collections
@@ -626,7 +626,7 @@ const redirects = `
   /docs/developers-guide/concepts/concepts-intro /docs/building-apps/essentials/network-overview
   /docs/developers-guide/concepts/ /docs/building-apps/essentials/network-overview
   /docs/developers-guide/concepts/what-is-ic /docs/building-apps/essentials/network-overview
-  /docs/developers-guide/customize-projects /docs/building-apps/essentials/what-are-canisters
+  /docs/developers-guide/customize-projects /docs/building-apps/essentials/canisters
   /docs/developers-guide/default-wallet.html /docs/building-apps/getting-started/tokens-and-cycles
   /docs/developers-guide/default-wallet /docs/building-apps/canister-management/topping-up
   /docs/developers-guide/design-apps /docs/building-apps/essentials/canisters
@@ -644,7 +644,7 @@ const redirects = `
   /docs/developers-guide/tutorials/ /docs/motoko/main/getting-started/motoko-introduction
   /docs/developers-guide/tutorials/my-contacts /docs/building-apps/frontends/using-an-asset-canister
   /docs/developers-guide/webpack-config /docs/building-apps/frontends/using-an-asset-canister
-  /docs/developers-guide/work-with-languages /docs/building-apps/essentials/what-are-canisters
+  /docs/developers-guide/work-with-languages /docs/building-apps/essentials/canisters
   /docs/developers-guide/working-with-canisters.html /docs/building-apps/canister-management/settings
   /docs/developers-guide/working-with-canisters /docs/building-apps/canister-management/settings
 
@@ -699,7 +699,7 @@ const redirects = `
   /docs/language-guide/ /docs/motoko/main/base/
   /docs/language-guide/language-manual.html	/docs/motoko/main/getting-started/motoko-introduction
   /docs/language-guide/motoko.html /docs/motoko/main/getting-started/motoko-introduction
-  /docs/languages/languages-overview /docs/building-apps/essentials/what-are-canisters
+  /docs/languages/languages-overview /docs/building-apps/essentials/canisters
   /docs/local-quickstart.html /docs/building-apps/getting-started/install
   /docs/network-quickstart.html /docs/building-apps/getting-started/install
   /docs/operators-guide/ops-guide /docs/home
@@ -757,7 +757,7 @@ const redirects = `
   /docs/current/developer-docs/production/custom-domain/ /docs/building-apps/frontends/custom-domains/using-custom-domains
   /docs/current/developer-docs/production/deploying-and-upgrading /docs/building-apps/developing-canisters/deploy/overview
   /docs/current/developer-docs/production/instruction-limits /docs/building-apps/canister-management/resource-limits
-  /docs/current/developer-docs/production/larger-wasm /docs/building-apps/essentials/what-are-canisters
+  /docs/current/developer-docs/production/larger-wasm /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/production/resource-limits /docs/building-apps/canister-management/resource-limits
   /docs/current/developer-docs/production/social-sharing /docs/building-apps/developing-canisters/deploy/overview
   /docs/current/developer-docs/production/staging-environment /docs/building-apps/developing-canisters/create
@@ -779,22 +779,22 @@ const redirects = `
   /docs/current/developer-docs/build/cdks/motoko-dfinity/ /docs/motoko/main/base/
   /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/motoko/main/reference/language-manual
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/build/ /docs/building-apps/essentials/what-are-canisters
+  /docs/current/developer-docs/build/ /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/build/frontend/default-frontend /docs/building-apps/frontends/using-an-asset-canister
   /docs/current/developer-docs/build/frontend/webpack-config /docs/building-apps/frontends/using-an-asset-canister#modifying-the-webpack-configuration
   /docs/current/developer-docs/build/install-upgrade-remove /docs/building-apps/getting-started/install
   /docs/current/developer-docs/build/languages/candid/ /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/developer-docs/build/languages/motoko /docs/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/build/languages/motoko/ /docs/motoko/main/base/
-  /docs/current/developer-docs/build/languages/other-languages/ /docs/building-apps/essentials/what-are-canisters
+  /docs/current/developer-docs/build/languages/other-languages/ /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/build/languages/rust/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/build/languages/rust/rust-intro /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
-  /docs/current/developer-docs/build/languages/work-with-languages /docs/building-apps/essentials/what-are-canisters
+  /docs/current/developer-docs/build/languages/work-with-languages /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/build/project-setup/cycles-wallet /docs/building-apps/canister-management/topping-up
   /docs/current/developer-docs/build/project-setup/design-dapps /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/build/project-setup/manage-canisters /docs/building-apps/canister-management/settings
   /docs/current/developer-docs/build/troubleshooting /docs/building-apps/getting-started/troubleshooting
-  /docs/current/developer-docs/build/using-an-agent /docs/building-apps/essentials/what-are-canisters
+  /docs/current/developer-docs/build/using-an-agent /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/chain-fusion/ethereum/siwe /docs/building-apps/authentication/overview
   /docs/current/developer-docs/cost-estimations-and-examples /docs/building-apps/essentials/cost-estimations-and-examples
   /docs/current/developer-docs/http-compatible-canisters/custom-http-canisters /docs/building-apps/network-features/using-http/http-certification/custom-http-canisters
@@ -802,7 +802,7 @@ const redirects = `
   /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/building-apps/network-features/using-http/http-certification/serving-static-assets-over-http
   /docs/current/developer-docs/ic-overview /docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/backend/arguments /docs/building-apps/interact-with-canisters/advanced-calls
-  /docs/current/developer-docs/backend/choosing-language /docs/building-apps/essentials/what-are-canisters
+  /docs/current/developer-docs/backend/choosing-language /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/backend/design-dapps /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/backend /docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/backend/eu-subnets /docs/building-apps/developing-canisters/create
@@ -844,7 +844,6 @@ const redirects = `
   /docs/current/references/ii-spec /docs/references/ii-spec
   /docs/current/references/ledger /docs/references/ledger
   /docs/current/references/supported-signatures /docs/references/supported-signatures
-  /docs/current/references/index /docs/references/system-canisters/index
   /docs/current/references/t-sigs-how-it-works /docs/references/t-sigs-how-it-works
   /docs/current/references/vc-spec /docs/references/vc-spec
   /docs/current/references/vetkeys-overview /docs/references/vetkeys-overview
