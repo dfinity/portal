@@ -39,7 +39,7 @@ const TrySomeDapps: FC<{
               </span>
             </h2>
             <p className="tw-lead-sm md:tw-lead text-black-60 mb-6 md:w-6/10">
-            Step into the exciting world of ICP with us as your guide! Take a look at projects currently reinventing the Internet on the Internet Computer blockchain.
+              Step into the exciting world of cross-chain collaboration with ICP!
             </p>
           </div>
         </div>

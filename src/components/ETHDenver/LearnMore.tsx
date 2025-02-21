@@ -37,7 +37,7 @@ const LearnMore: FC<{
               className="tw-lead-sm md:tw-lead-sm mb-12"
               variants={transitions.item}
             >
-              Documents introducing the Internet Computer and ICP, the self-writing internet, UTOPIA clouds, and technical papers…
+              Documents introducing the Internet Computer, the Self-Writing Internet paradigm, and technical papers.
             </motion.p>
             <div className="md:w-6/10">
               <motion.p

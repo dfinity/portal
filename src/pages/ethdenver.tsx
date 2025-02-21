@@ -80,19 +80,14 @@ function EthDenverPage() {
               },
               {
                 title: "Dev Docs",
-                body: "Metaprotocols leverage Chain Fusion to offer decentralized cross-chain infrastructure enabling the transfer and creation of new assets on Bitcoin.",
-                link: "/docs/current/home",
+                body: "Leverage Chain Fusion and offer decentralized cross-chain infrastructure. Enable the transfer and creation of new assets on Bitcoin, Ethereum and more.",
+                link: "/docs/current/developer-docs/multi-chain/overview",
               },
               {
                 title: "Sample Code",
                 body: "From a simple DEX, to on-chain encrypted storage, NFT minting, and a basic DAO, learn how to build on the Internet Computer.",
                 link: "/samples",
-              },
-              {
-                title: "Motoko Playground",
-                body: "Play around with Motoko, the native language of the Internet Computer, right in the browser without having to download the SDK.",
-                link: "https://m7sm4-2iaaa-aaaab-qabra-cai.raw.ic0.app/",
-              },
+              }
             ]}
           />
         </div>
