@@ -156,6 +156,7 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/typography"),
+    require("@tailwindcss/container-queries"),
     plugin(function ({ matchUtilities, theme }) {
       matchUtilities(
         {

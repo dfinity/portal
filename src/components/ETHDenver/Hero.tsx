@@ -30,9 +30,9 @@ const Hero: FC<{
         >
           <div className="container-12 pt-12 mb-8 md:mb-20 md:pt-36">
 
-            <div className="uppercase mb-16 md:mb-0">
+            <div className="@container uppercase mb-16 md:mb-0">
               <motion.h1
-                className="tw-heading-alt-1 md:text-right text-[18vw] md:text-[12vw] lg:text-[160px]"
+                className="tw-heading-alt-1 md:text-right text-[18vw] md:text-[14cqi]"
                 variants={transitions.slideInFromRight}
               >
                 <span className="block">UNIFYING WEB3</span>
