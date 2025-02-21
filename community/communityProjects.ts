@@ -2082,24 +2082,7 @@ const communityProjects: SampleItem[] = [
     languages: ["python", "javascript"],
     contentType: ["code samples", "community repo", "live demos"],
     image: "/img/showcase/BR-DAO_logo.svg",
-  },
-  {
-    index: 128,
-    title: "IC-Explorer",
-    body: "Empowering AI with Data on Chain, Fueling Innovation.",
-    links: {
-      github: "https://github.com/Token-Explorer-Hi/ic-data",
-      livePreview: "https://www.icexplorer.io",
-      otherLinks: ["https://x.com/ICExplorer_io"],
-    },
-    domains: ["Website"],
-    level: "advanced",
-    languages: ["motoko", "javascript"],
-    contentType: ["code samples", "community repo", "live demos"],
-    image: "/img/showcase/ic-explorer_logo.png",
-  },
-
-
+  }
 ];
 
 export default communityProjects;
