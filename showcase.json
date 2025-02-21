@@ -5089,6 +5089,8 @@
     "display": "Normal",
     "stats": "50,000+ users",
     "logo": "/img/showcase/ic-explorer_logo.png",
-    "screenshots": ["/img/showcase/ic-explorer_screenshot.jpg"]
+    "screenshots": [
+      "/img/showcase/ic-explorer_screenshot.jpg"
+    ]
   }
 ]
