@@ -140,82 +140,6 @@ const languagesTiles: TileDescriptor[] = [
   },
 ];
 
-const frameworksTiles: TileDescriptor[] = [
-  {
-    label: "Juno",
-    description:
-      "Juno is a cutting-edge blockchain-as-a-service platform designed to enable developers to create decentralized applications at lightning speed",
-    icon: (
-      <img
-        src="/img/docs/juno.svg"
-        alt="Juno docs"
-        className="w-10 h-10"
-        loading="lazy"
-      />
-    ),
-    action: (
-      <Link
-        href="https://juno.build/docs/intro"
-        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
-        title="Go to Juno docs"
-      >
-        <span className={"md:hidden"}>Go to Juno docs</span>
-        <LinkArrowRight />
-      </Link>
-    ),
-  },
-  {
-    label: "Testnets",
-    description: (
-      <span>
-        In contrast to other blockchain networks, there are no testnets on ICP.
-        Instead, you can deploy a smart contract for free on the playground
-        using the <GlossaryTooltip>IC SDK</GlossaryTooltip>
-      </span>
-    ),
-    icon: (
-      <img
-        src="/img/dfinity_logo.svg"
-        alt="Testnets guide"
-        className="w-10 h-10"
-        loading="lazy"
-      />
-    ),
-    action: (
-      <Link
-        href="/docs/building-apps/developing-canisters/deploy"
-        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
-        title="Learn more about testnets on ICP"
-      >
-        <span className={"md:hidden"}>Learn more about the playground</span>
-        <LinkArrowRight />
-      </Link>
-    ),
-  },
-  {
-    label: "React",
-    description:
-      "Start here if you're coming to the Internet Computer Protocol as a React developer",
-    icon: (
-      <img
-        src="/img/docs/react.svg"
-        alt="React docs"
-        className="w-10 h-10"
-        loading="lazy"
-      />
-    ),
-    action: (
-      <Link
-        href="/docs/building-apps/getting-started/quickstart"
-        className="button button-ghost rounded-2xl md:w-20 button-with-icon"
-        title="Go to React quickstart"
-      >
-        <span className={"md:hidden"}>Go to React quickstart</span>
-        <LinkArrowRight />
-      </Link>
-    ),
-  },
-];
 
 const Tile = ({ tile }: { tile: TileDescriptor }) => {
   return (
@@ -629,30 +553,6 @@ const DocsHomePage: FC = () => {
         <div>
           <div className="grid md:grid-cols-2 gap-4">
             {chainfusionTiles.map((tile, index) => (
-              <Tile tile={tile} key={index} />
-            ))}
-          </div>
-        </div>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-[2fr,4fr] gap-24 mt-20">
-        <div>
-          <h2 className="tw-heading-4 md:tw-heading-3">
-            Quick starts & frameworks
-          </h2>
-          <p className="tw-paragraph">
-            Start deploying on ICP easily with our Quickstart guides for
-            developers, tailored to your preferred language
-          </p>
-          <Link
-            className="button-primary rounded-2xl"
-            href="https://juno.build/docs/intro"
-          >
-            VIEW ALL
-          </Link>
-        </div>
-        <div>
-          <div className="grid md:grid-cols-2 gap-4">
-            {frameworksTiles.map((tile, index) => (
               <Tile tile={tile} key={index} />
             ))}
           </div>

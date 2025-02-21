@@ -26,54 +26,9 @@ To etch a Rune through a canister on ICP, first you will need to call the `schno
 
 Once you have generated a taproot address for your canister, you will need to write a canister method that creates an etching transaction, then signs that transaction with your canister's Schnorr public key. Here's an example of an etching transaction written in Rust:
 
-```rust
-#[update]
-pub async fn etch_rune(mut args: EtchingArgs) -> (String, String) {
-    let caller = ic_cdk::id();
-    args.rune = args.rune.to_ascii_uppercase();
-    let derivation_path = generate_derivation_path(&caller);
-    let ecdsa_public_key = get_ecdsa_public_key(derivation_path.clone()).await;
-    let schnorr_public_key = get_schnorr_public_key(derivation_path.clone()).await;
-    let caller_p2pkh_address = public_key_to_p2pkh_address(&ecdsa_public_key);
-    let balance = btc_api::get_balance_of(caller_p2pkh_address.clone()).await;
-    if balance < 1000_0000 {
-        ic_cdk::trap("Not enough balance")
-    }
-    let utxos_response = btc_api::get_utxos_of(caller_p2pkh_address.clone()).await;
-    check_etching(utxos_response.tip_height, &args);
-    let (commit_tx_address, commit_tx, reveal_tx) = build_and_sign_etching_transaction(
-        &derivation_path,
-        &utxos_response.utxos,
-        &ecdsa_public_key,
-        &schnorr_public_key,
-        caller_p2pkh_address,
-        args,
-    )
-    .await;
-    let commit_txid = btc_api::send_bitcoin_transaction(commit_tx).await;
-    let id = STATE.with_borrow_mut(|state| {
-        let id = state.queue_count;
-        state.queue_count += 1;
-        id
-    });
-    let time = STATE.with_borrow(|state| state.timer_for_reveal_txn as u64 * 60);
-    let timer_id = ic_cdk_timers::set_timer_interval(Duration::from_secs(time), move || {
-        ic_cdk::spawn(confirm_min_commitment_and_send_reveal_txn(id))
-    });
-    let queue_txn = QueuedRevealTxn {
-        commit_tx_address: commit_tx_address.to_string(),
-        reveal_txn: reveal_tx.clone(),
-        timer_id: timer_id.data(),
-    };
-    STATE.with_borrow_mut(|state| state.reveal_txn_in_queue.insert(id, queue_txn));
-    (commit_txid, reveal_tx.txid().encode_hex())
-}
+```rust reference
+https://github.com/pramitgaha21/etcher/blob/ca6c9a1423a597b5f544470eb0e6f0954279b4a4/src/etcher_backend/src/lib.rs#L284-L323
 ```
-
-<a href="https://github.com/pramitgaha21/etcher/blob/ca6c9a1423a597b5f544470eb0e6f0954279b4a4/src/etcher_backend/src/lib.rs#L284">
-    <div align="center">View the full example.</div>
-</a>
-
 
 ## Querying Rune information
 
