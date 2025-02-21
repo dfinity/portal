@@ -191,7 +191,7 @@ function AIPage() {
         <AnimateSpawn
           el={motion.section}
           variants={transitions.container}
-          className="mt-24 md:mt-40"
+          className="mt-40 md:mt-40"
         >
           <div className="container-10 mb-10">
             <div className="flex flex-col md:flex-row justify-between gap-6">
@@ -237,7 +237,7 @@ function AIPage() {
             </div>
 
             <AnimateSpawn
-              className="container-10 mt-32 mb-5 !p-0"
+              className="container-10 mt-20 md:mt-32 mb-5 !p-0"
               el={motion.section}
               variants={transitions.container}
             >
@@ -311,20 +311,19 @@ function AIPage() {
           </section>
         </AnimateSpawn>
 
-        <section className="container-10 mt-12 md:mt-44 md:mb-44">
+        <section className="container-10 mt-12 md:mt-44 md:mb-20">
           <AnimateSpawn
-            className="mt-16 md:mt-24 mb-60 md:mb-24 relative"
             variants={transitions.container}
           >
-            <motion.h2 className="tw-heading-4 md:tw-heading-60">
+            <motion.h2 className="tw-heading-4 md:tw-heading-60 mb-6">
               Sovereign AI roadmap
             </motion.h2>
 
             <div className="flex md:flex-row flex-col gap-6">
-              <div className="w-1/2">
+              <div className="md:w-1/2">
                 <RoadmapIgnition />
               </div>
-              <div className="w-1/2">
+              <div className="md:w-1/2">
                 <RoadmapVortex />
               </div>
             </div>

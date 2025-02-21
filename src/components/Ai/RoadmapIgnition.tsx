@@ -3,7 +3,7 @@ import React, { FC } from "react";
 const RoadmapIgnition: FC = () => {
   return (
     <article id="Ignition"
-      className="milestone-large bg-white/50 rounded-xl mb-15 md:mb-30 relative scroll-mt-48 md:scroll-mt-32">
+      className="milestone-large bg-white/50 rounded-xl relative">
       <div className="p-5 relative z-3 aspect-[7/2]">
         <div className="md:grid md:grid-cols-[6fr,10fr] gap-2">
           <div>
@@ -20,10 +20,10 @@ const RoadmapIgnition: FC = () => {
           </div>
         </div>
       </div>
-      <div className="m-1 relative z-3">
+      <div className="p-1 relative z-3">
         <div className="grid gap-1 grid-cols-1 md:grid-cols-2">
           
-            <article className="flex flex-col justify-between px-6 pt-6 pb-6 bg-white rounded-lg text-black aspect-[1/1.022222]">
+            <article className="flex flex-col justify-between px-6 pt-6 pb-6 bg-white rounded-lg text-black aspect-[1/0.5] md:aspect-[1/1.022222]">
               <div>
                 <header className="flex gap-2 justify-between self-stretch">
                 <h5 className="tw-heading-6">LLM Canister MVP</h5>
@@ -45,7 +45,7 @@ const RoadmapIgnition: FC = () => {
               <div className="flex gap-2 pr-20 mt-2"></div>
             </article>
 
-          <article className="flex flex-col justify-between px-6 pt-6 pb-6 bg-white rounded-lg text-black aspect-[1/1.022222]">
+          <article className="flex flex-col justify-between px-6 pt-6 pb-6 bg-white rounded-lg text-black aspect-[1/0.5] md:aspect-[1/1.022222]">
             <div>
               <header className="flex gap-2 justify-between self-stretch">
                 <h5 className="tw-heading-6">LLM Developer Experience</h5>
@@ -65,7 +65,6 @@ const RoadmapIgnition: FC = () => {
             <div className="flex gap-2 pr-20 mt-2"></div>
           </article>
 
-          <div className="hidden md:block bg-white bg-opacity-5 rounded-lg"></div>
         </div>
       </div>
     </article>

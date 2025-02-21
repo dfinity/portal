@@ -25,20 +25,20 @@ const EcosystemSection: FC<{
   id: string;
 }> = ({ id }) => {
   return (
-    <section id={id} className="relative container-12 mt-24 mb-24 sm:mt-52 md:mt-40">
+    <section id={id} className="relative container-12 mt-12 mb-24 sm:mt-52 md:mt-40">
       <AnimateSpawn variants={transitions.item}>
-        <motion.h2 className="tw-heading-4 md:tw-heading-60 text-left md:text-center my-12  md:mb-16 md:w-5/10 md:mx-auto">
+        <motion.h2 className="tw-heading-4 md:tw-heading-60 text-left text-center my-12 mb-8 md:mb-16 md:w-5/10 md:mx-auto text-balance">
           AI Agent Ecosystem on ICP
         </motion.h2>
         <AnimateSpawn
-          className="container-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-5 mt-12"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5"
           variants={transitions.container}
         >
           {projects?.map((project) => (
 
             <div className="rounded-xl bg-white-80 flex px-6 py-8 backdrop-blur-2xl">
               <div className="flex flex-col gap-2">
-                <div className="flex flex-col gap-4 h-full max-w-full">
+                <div className="flex flex-col gap-4 h-full max-w-full max-w-sm">
                   <div className="flex gap-2 items-center">
                     <img
                       src={project.logo}
@@ -131,7 +131,7 @@ const EcosystemSection: FC<{
 
         <div className="relative -mt-96 mb-10 md:mb-40">
           <AnimateSpawn
-            className="mt-96 pt-20 md:pt-30 text-center flex flex-col items-center gap-6"
+            className="mt-96 pt-12 md:pt-24 text-center flex flex-col items-center gap-6"
             variants={transitions.item}
           >
             <Link className="button-primary" href="/ecosystem?tag=AI">
