@@ -52,11 +52,12 @@ export const NewsCard: React.FC<{
         </h3>
         <div className="flex-1"></div>
 
-        {news.press && news.dateHuman && (
-          <div className="tw-paragraph-sm text-black/60 mb-6">
-            {news.dateHuman} {news.press && "by " + news.press}
-          </div>
-        )}
+        {news.press ||
+          (news.dateHuman && (
+            <div className="tw-paragraph-sm text-black/60 mb-6">
+              {news.dateHuman} {news.press && "by " + news.press}
+            </div>
+          ))}
         {news.details && (
           <div
             className={`tw-paragraph-sm text-black/60 mb-6 ${

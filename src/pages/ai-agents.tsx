@@ -139,7 +139,7 @@ function AIPage() {
       title="The home of sovereign AI agents"
       description="Deploy AI agents with just a few lines of code. Secure. Sovereign. Only on the Internet Computer."
     >
-      <ShareMeta image="/img/shareImages/share-ai.webp"></ShareMeta>
+      <ShareMeta image="/img/shareImages/share-ai-agents.webp"></ShareMeta>
 
       <main
         className="text-black relative overflow-hidden"
@@ -187,11 +187,11 @@ function AIPage() {
         <AnimateSpawn
           el={motion.section}
           variants={transitions.container}
-          className="mt-40 md:mt-40"
+          className="mt-24 md:mt-40"
         >
           <div className="container-10 mb-10">
-            <div className="flex flex-col md:flex-row justify-between gap-6">
-              <div className="md:w-5/10">
+            <div className="">
+              <div className="w-full mb-12 md:mb-24">
                 <motion.h3
                   className="tw-heading-4 md:tw-heading-60 text-gradient"
                   variants={transitions.item}
@@ -226,45 +226,27 @@ function AIPage() {
                   </MotionLink>
                 </p>
               </div>
-              <div className="w-full md:w-4/10">
-                <motion.h4
-                  className="tw-heading-6 md:tw-heading-5"
-                  variants={transitions.item}
-                >
-                  Prompting
-                </motion.h4>
-                <CodeSnippetPrompting />
-
-                <motion.h4
-                  className="tw-heading-6 md:tw-heading-5 mt-8"
-                  variants={transitions.item}
-                >
-                  Chatting with multiple messages
-                </motion.h4>
-                <CodeSnippetMultipleMessages />
+              <div className="w-full flex flex-col md:flex-row gap-8">
+                <div className="md:w-5/10">
+                  <motion.h4
+                    className="tw-heading-6 md:tw-heading-5"
+                    variants={transitions.item}
+                  >
+                    Prompting
+                  </motion.h4>
+                  <CodeSnippetPrompting />
+                </div>
+                <div className="md:w-5/10">
+                  <motion.h4
+                    className="tw-heading-6 md:tw-heading-5"
+                    variants={transitions.item}
+                  >
+                    Chatting with multiple messages
+                  </motion.h4>
+                  <CodeSnippetMultipleMessages />{" "}
+                </div>
               </div>
             </div>
-
-            <AnimateSpawn
-              className="container-10 mt-20 md:mt-32 !p-0"
-              el={motion.section}
-              variants={transitions.container}
-            >
-              <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                <motion.div
-                  variants={transitions.item}
-                  className="col-span-1 md:col-span-2"
-                >
-                  <VideoCard
-                    image="/img/ai/fireside.webp"
-                    title="Dominic Williams on Blockchain x AI"
-                    label="Fireside Chat"
-                    link={`https://www.youtube.com/watch?v=sdthNB-5yag`}
-                    description="Dominic Williams, Chief Scientist and Founder of DFINITY Foundation, shares how blockchain adds value to AI, explores the current landscape in the DeAI space, and speculates what's next on the horizon. "
-                  />
-                </motion.div>
-              </div>
-            </AnimateSpawn>
 
             <AnimateSpawn
               className="container-10 mt-12 md:mt-16 mb-5 !p-0"
@@ -280,7 +262,7 @@ function AIPage() {
                     image="/img/ai/1891463634074718494.webp"
                     title="Cross-chain AI Agents using Chain Fusion!"
                     label="Demo"
-                    link={`https://x.com/kristoferlund/status/1891463634074718494`}
+                    link={`https://www.youtube.com/watch?v=SPkgLwfJ4PY`}
                     description="Powered by Chain Fusion, AI agents built with Eliza can seamlessly create, sign, and execute transactions with Ethereum wallets on the Internet Computer (ICP)."
                   />
                 </motion.div>
