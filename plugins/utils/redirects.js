@@ -34,9 +34,6 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/cli-tools/advanced-dfx/* /docs/building-apps/developer-tools/advanced-dfx/:splat
   /docs/current/developer-docs/smart-contracts/maintain/* /docs/building-apps/canister-management/:splat
   /docs/current/tutorials/hackathon-prep-course/* /docs/tutorials/hackathon-prep-course/:splat
-  /docs/move-to-motoko/canpack
-- move-to-motoko/dev-containers
-- move-to-motoko/vs-code
   ## Explicit redirects
   ## For files that have changed directories & file names, there will need to be
   ## an explicit redirect from the old file to the new file
@@ -128,6 +125,12 @@ const redirects = `
   /docs/current/motoko/main/upgrades /docs/motoko/main/canister-maintenance/upgrades
   /docs/current/motoko/main/compiler-ref /docs/motoko/main/reference/compiler-ref
   /docs/current/motoko/main/motoko-grammar /docs/motoko/main/reference/motoko-grammar
+  /docs/current/developer-docs/developer-tools/off-chain/canpack /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/developer-tools/ide/vs-code /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/developer-tools/ide/playground /docs/building-apps/developer-tools/ide/icp-ninja
+  /docs/current/developer-docs/developer-tools/ide/gitpod /docs/building-apps/developer-tools/ide/icp-ninja
+  /docs/current/developer-docs/developer-tools/ide/codespaces /docs/building-apps/developer-tools/ide/icp-ninja
+  /docs/current/developer-docs/developer-tools/ide/dev-containers /docs/building-apps/developer-tools/ide/icp-ninja
 
   ## Rust
   /docs/current/developer-docs/backend/rust/candid /docs/building-apps/developer-tools/cdks/rust/candid
