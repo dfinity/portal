@@ -2082,9 +2082,7 @@ const communityProjects: SampleItem[] = [
     languages: ["python", "javascript"],
     contentType: ["code samples", "community repo", "live demos"],
     image: "/img/showcase/BR-DAO_logo.svg",
-  },
-
-
+  }
 ];
 
 export default communityProjects;
