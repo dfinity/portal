@@ -352,7 +352,7 @@
       "Chain Fusion"
     ],
     "twitter": "https://x.com/oisy",
-    "description": "OISY Wallet is a new browser-based multi-chain wallet, powered by Internet Computer’s chain fusion technology. It is fully on-chain and implements network custody, an innovative approach that leverages the Internet Computer’s advanced cryptography to eliminate the need for you to handle private keys directly.",
+    "description": "OISY Wallet is a new browser-based multi-chain wallet, powered by Internet Computer’s Chain Fusion technology. It is fully on-chain and implements network custody, an innovative approach that leverages the Internet Computer’s advanced cryptography to eliminate the need for you to handle private keys directly.",
     "usesInternetIdentity": true,
     "logo": "/img/showcase/oisy_logo.svg",
     "screenshots": [
