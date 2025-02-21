@@ -40,51 +40,47 @@ const trustCards = [
     imageAlt: "Tamper-proofness icon",
     title: "Tamper-proof",
     description:
-      "Computation is replicated across multiple nodes and validated by consensus. There is no single point of trust.",
+      "Computation is replicated and validated by consensus across nodes, eliminating single points of trust. You can trust that agents are only doing what the code allows, and that they're using the AI models you expect.",
   },
   {
-    imageSrc: "/img/decentralized-ai/trust-icon-2.svg",
+    imageSrc: "/img/decentralized-ai/trust-icon-7.svg",
     imageAlt: "Unstoppability icon",
-    title: "Unstoppable",
+    title: "Manage Digital Assets",
     description:
-      "Smart contracts are censorship resistant as they are not controlled by a single entity or legislation.",
+      "AI agents on the Internet Computer are tamper-proof, so they can safely perform financial transactions and manage financial assets.",
   },
   {
-    imageSrc: "/img/decentralized-ai/trust-icon-3.svg",
+    imageSrc: "/img/decentralized-ai/trust-icon-6.svg",
     imageAlt: "Autonomy icon",
-    title: "Autonomous",
+    title: "No vendor lock-in",
     description:
-      "Smart contracts can be made immutable turning them into a permanent compute unit in cyberspace.",
+      "The Internet Computer is fully open-source, run by independent data centers around the world. There's no single entity you have to depend on or trust to run your AI agents.",
+    link: "https://github.com/dfinity/ic",
+    linkText: "Learn more",
   },
   {
     imageSrc: "/img/decentralized-ai/trust-icon-4.svg",
     imageAlt: "Scalability icon",
     title: "Scalable",
     description:
-      "ICP aims to give smart contracts near native performance and scalability. Currently, smart contracts can execute billions of instructions per message and use 4GiB of the main memory and 500GiB of stable memory. The future vision is to give smart contracts access to AI hardware such as GPUs.",
+      "Canisters on the Internet Computer can store over 500GiB of data, making it ideal for running RAG agents.",
+  },
+  {
+    imageSrc: "/img/decentralized-ai/trust-icon-8.svg",
+    imageAlt: "Scalability icon",
+    title: "Tokenizable",
+    description:
+      "AI agents can be tokenized and governed by DAOs, allowing decentralized ownership and collective decision-making.",
   },
   {
     imageSrc: "/img/decentralized-ai/trust-icon-5.svg",
     imageAlt: "Expressiveness icon",
     title: "Expressive",
     description:
-      "The virtual machine of ICP is WebAssembly that has a growing ecosystem of languages, tools, and libraries. This allows ICP developers to use open source projects such as ",
-    link: "https://github.com/sonos/tract",
-    linkText: "Sonos Tract AI inference engine",
+      "The Internet Computer natively runs WebAssembly that has a growing ecosystem of languages and tools. Write your AI agents in Motoko, Rust, Typescript, Python, C++, and more.",
   },
 ];
 
-const shortTermRoadmapItems = [
-  "Faster deterministic floating-point operations",
-  "Wasm SIMD (Single-instruction multiple data)",
-  "Upgrade Wasm memory to 64-bit",
-];
-
-const longTermRoadmapItems = [
-  "Explore API for deterministic AI computation on GPUs.",
-  "Develop public specification for nodes with GPUs.",
-  "Add subnets with the new nodes to ICP.",
-];
 
 const TrustCard: React.FC<TrustCardProps> = ({
   imageSrc,
@@ -101,15 +97,14 @@ const TrustCard: React.FC<TrustCardProps> = ({
     </div>
     {link && linkText ? (
       <div className="mt-2 text-base leading-6 font-[450]">
-        {description}
+        {description}<br />
         <Link
           className="text-white underline hover:no-underline hover:text-white hover:opacity-80 duration-200 ease-in-out"
           to={link}
           target="_blank"
         >
           {linkText}
-        </Link>{" "}
-        in their smart contracts.
+        </Link>
       </div>
     ) : (
       <div className="mt-2 text-base leading-6 font-[450]">{description}</div>
@@ -211,16 +206,16 @@ function AIPage() {
                   <MotionLink
                     variants={transitions.item}
                     className="button-primary"
-                    href="https://forum.dfinity.org/t/introducing-the-llm-canister-deploy-ai-agents-with-a-few-lines-of-code/41424"
+                    href="https://vgjrt-uyaaa-aaaal-qsiaq-cai.icp0.io/"
                   >
-                    Learn more
+                    Live demo
                   </MotionLink>
                   <MotionLink
                     variants={transitions.item}
                     className="link-primary link-with-icon"
-                    href="https://vgjrt-uyaaa-aaaal-qsiaq-cai.icp0.io/"
+                    href="https://forum.dfinity.org/t/introducing-the-llm-canister-deploy-ai-agents-with-a-few-lines-of-code/41424"
                   >
-                    Live demo
+                    Learn more
                     <LinkArrowRight />
                   </MotionLink>
                 </p>
@@ -273,26 +268,12 @@ function AIPage() {
           <section className="bg-infinite text-white pt-6 pb-20" ref={heroRef}>
             <article className="container-10 mt-12 md:mt-20">
               <h3 className="tw-heading-4 md:tw-heading-60  text-left md:text-center text-gradient-purple mb-0 md:w-5/10 md:mx-auto">
-                Making AI trustworthy
+                Making AI agents trustworthy
               </h3>
               <aside className="container-10 mt-12 md:mt-32 md:flex md:items-center !pl-0	!pr-0">
                 <div className="md:w-1/3">
-                  <motion.h3 className="tw-heading-5 md:tw-heading-4">
-                    Decentralized AI
-                  </motion.h3>
                   <motion.p className="text-2xl mb-0 ">
-                    <motion.span className="font-bold">DeAI </motion.span>
-                    involves running AI inference as smart
-                    contracts onchain, which addresses AI’s trust issues. Users
-                    can verify the inputs to the models they utilize, reducing
-                    the need to trust them blindly. However, AI training and
-                    inference are highly resource-intensive, and the limited
-                    computational capabilities of traditional blockchain
-                    networks often fall short. In contrast, the advanced design
-                    of the Internet Computer Protocol (ICP) successfully marries
-                    the security of smart contracts with the robust
-                    computational demands of AI. The following properties of ICP
-                    make decentralized and trustworthy AI possible.
+                    AI agents are a growing paradigm in software that help perform complex tasks using simple natural language. The ecosystem is evolving rapidly. But rather than a future where AI agents run on proprietary platforms where companies lock you in, compromise your data, and monitor your digital life, we believe there's a better alternative. The Internet Computer is completely open source, powered by over 130 independent data centers around the world, and is uniquely positioned to host AI agents.
                   </motion.p>
                 </div>
                 <div className="md:w-2/3 relative mt-6  md:mt-64 md:mb-64">
