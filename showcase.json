@@ -5186,11 +5186,10 @@
     "id": "friescoin",
     "tags": [
       "NFT", 
-      "AI", 
-      "Chain Fusion"
+      "DeFi"
     ],
     "website": "https://friescoin.xyz/",
-    "description": "The world's first meme coin dedicated to fries enthusiasts everywhere.Leveraging Chain Key Technology you can Mint and trade ICRC7 NFTs in the platform onchain.",
+    "description": "The world's first meme coin dedicated to fries enthusiasts everywhere.",
     "twitter": "https://x.com/FriesCoin",
     "usesInternetIdentity": false,
     "display": "Normal"
