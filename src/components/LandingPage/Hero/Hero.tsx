@@ -1,17 +1,18 @@
-import { useDarkHeaderInHero } from "@site/src/utils/use-dark-header-in-hero";
-import { useFontsLoaded } from "@site/src/utils/use-fonts-loaded";
-import transitions from "@site/static/transitions.json";
+import { EthEquivalentTxRate, TotalBlocks } from "./Stats";
+import { QueryClient, QueryClientProvider } from "react-query";
 import React, { useRef } from "react";
+
 import AnimateSpawn from "../../Common/AnimateSpawn";
 import DarkHeroStyles from "../../Common/DarkHeroStyles";
 import HomeAnimation from "./HomeAnimation";
-import { EthEquivalentTxRate, TotalBlocks } from "./Stats";
-
-import { QueryClient, QueryClientProvider } from "react-query";
 import Link from "@docusaurus/Link";
-import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 import LinkArrowRight from "../../Common/Icons/LinkArrowRight";
+import LinkArrowUpRight from "../../Common/Icons/LinkArrowUpRight";
 import TwitterIcon from "../../Common/Icons/TwitterIcon";
+import transitions from "@site/static/transitions.json";
+import { useDarkHeaderInHero } from "@site/src/utils/use-dark-header-in-hero";
+import { useFontsLoaded } from "@site/src/utils/use-fonts-loaded";
+
 const queryClient = new QueryClient();
 
 const Hero: React.FC<{
@@ -60,7 +61,7 @@ const Hero: React.FC<{
                 secure front-ends, ledgers, enterprise apps, and AI models. TCP/IP 
                 connected software. Now ICP hosts software.
               </p>
-              <div className="flex flex-col md:flex-row gap-8 mt-8 md:mt-6 md:items-center">
+              <div className="flex flex-row flex-wrap gap-8 mt-8 md:mt-6 items-center">
                 <Link
                   className={"button-white w-max"}
                   href="/docs/current/home"
