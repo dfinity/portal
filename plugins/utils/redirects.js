@@ -287,8 +287,8 @@ const redirects = `
   /docs/current/developer-docs/getting-started/cycles/cycles_management_services /docs/building-apps/canister-management/topping-up
   /docs/current/developer-docs/getting-started/cycles/overview /docs/building-apps/getting-started/tokens-and-cycles
   /docs/current/developer-docs/getting-started/default-template /docs/building-apps/essentials/canisters
-  /docs/current/developer-docs/getting-started/deploy/local /docs/building-apps/developing-canisters/deploy/overview
-  /docs/current/developer-docs/getting-started/deploy/testnet /docs/building-apps/developing-canisters/deploy/overview
+  /docs/current/developer-docs/getting-started/deploy/local /docs/building-apps/developing-canisters/deploy
+  /docs/current/developer-docs/getting-started/deploy/testnet /docs/building-apps/developing-canisters/deploy
   /docs/current/developer-docs/getting-started/development-workflow /docs/building-apps/getting-started/install
   /docs/current/developer-docs/getting-started/explore-examples /docs/building-apps/developer-tools/ide/icp-ninja
   /docs/current/developer-docs/getting-started/ /docs/building-apps/essentials/network-overview
@@ -489,10 +489,10 @@ const redirects = `
   /docs/current/developer-docs/setup/cycles/index /docs/building-apps/canister-management/topping-up
   /docs/current/developer-docs/setup/default-wallet /docs/building-apps/canister-management/topping-up
   /docs/current/developer-docs/setup/delete /docs/building-apps/canister-management/delete
-  /docs/current/developer-docs/setup/deploy-locally /docs/building-apps/developing-canisters/deploy/overview
-  /docs/current/developer-docs/setup/deploy-mainnet.md	/docs/building-apps/developing-canisters/deploy/overview
-  /docs/current/developer-docs/setup/deploy-mainnet /docs/building-apps/developing-canisters/deploy/overview
-  /docs/current/developer-docs/setup/deploy /docs/building-apps/developing-canisters/deploy/overview
+  /docs/current/developer-docs/setup/deploy-locally /docs/building-apps/developing-canisters/deploy
+  /docs/current/developer-docs/setup/deploy-mainnet.md	/docs/building-apps/developing-canisters/deploy
+  /docs/current/developer-docs/setup/deploy-mainnet /docs/building-apps/developing-canisters/deploy
+  /docs/current/developer-docs/setup/deploy /docs/building-apps/developing-canisters/deploy
   /docs/current/developer-docs/setup/development-workflow /docs/building-apps/getting-started/install
   /docs/current/developer-docs/setup /docs/building-apps/getting-started/install
   /docs/current/developer-docs/setup/first-canister /docs/building-apps/essentials/canisters
@@ -504,7 +504,7 @@ const redirects = `
   /docs/current/developer-docs/setup/install/index.mdx /docs/building-apps/getting-started/install
   /docs/current/developer-docs/setup/manage-canisters /docs/building-apps/canister-management/settings
   /docs/current/developer-docs/setup/manage-projects /docs/building-apps/essentials/canisters
-  /docs/current/developer-docs/setup/playground /docs/building-apps/developing-canisters/deploy/overview
+  /docs/current/developer-docs/setup/playground /docs/building-apps/developing-canisters/deploy
   /docs/current/developer-docs/setup/pocket-ic /docs/building-apps/advanced/test/pocket-ic
   /docs/current/developer-docs/setup/pulling-canister-dependencies /docs/building-apps/advanced/using-third-party-canisters
   /docs/current/developer-docs/setup/react-quickstart /docs/building-apps/getting-started/quickstart
@@ -548,8 +548,8 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/create /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/deploy/custom-networks /docs/building-apps/developing-canisters/create
   /docs/current/developer-docs/smart-contracts/deploy/larger-wasm /docs/building-apps/essentials/canisters
-  /docs/current/developer-docs/smart-contracts/deploy/overview /docs/building-apps/developing-canisters/deploy/overview
-  /docs/current/developer-docs/smart-contracts/deploy/sharing /docs/building-apps/developing-canisters/deploy/overview
+  /docs/current/developer-docs/smart-contracts/deploy/overview /docs/building-apps/developing-canisters/deploy
+  /docs/current/developer-docs/smart-contracts/deploy/sharing /docs/building-apps/developing-canisters/deploy
   /docs/current/developer-docs/smart-contracts/development-workflow /docs/building-apps/getting-started/install
   /docs/current/developer-docs/smart-contracts/encryption/signing-messages-t-schnorr /docs/building-apps/network-features/signatures/t-schnorr
   /docs/current/developer-docs/smart-contracts/encryption/signing-messages-tecdsa /docs/building-apps/network-features/signatures/t-ecdsa
@@ -759,11 +759,11 @@ const redirects = `
   /docs/current/developer-docs/production/computation-and-storage-costs /docs/building-apps/essentials/gas-cost
   /docs/current/developer-docs/production/custom-domain/dns-setup /docs/building-apps/frontends/custom-domains/dns-setup
   /docs/current/developer-docs/production/custom-domain/ /docs/building-apps/frontends/custom-domains/using-custom-domains
-  /docs/current/developer-docs/production/deploying-and-upgrading /docs/building-apps/developing-canisters/deploy/overview
+  /docs/current/developer-docs/production/deploying-and-upgrading /docs/building-apps/developing-canisters/deploy
   /docs/current/developer-docs/production/instruction-limits /docs/building-apps/canister-management/resource-limits
   /docs/current/developer-docs/production/larger-wasm /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/production/resource-limits /docs/building-apps/canister-management/resource-limits
-  /docs/current/developer-docs/production/social-sharing /docs/building-apps/developing-canisters/deploy/overview
+  /docs/current/developer-docs/production/social-sharing /docs/building-apps/developing-canisters/deploy
   /docs/current/developer-docs/production/staging-environment /docs/building-apps/developing-canisters/create
   /docs/current/developer-docs/production/storage /docs/building-apps/canister-management/storage
   /docs/current/developer-docs/production/system-canisters /docs/references/system-canisters/
