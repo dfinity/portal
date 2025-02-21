@@ -5210,5 +5210,18 @@
     "description": "A solution that connects ICP with Solana. Includes an RPC canister that enables communication with the Solana blockchain and a wallet canister managing addresses and for securely signing transactions on Solana.",
     "usesInternetIdentity": true,
     "display": "Normal"
+  },
+  {
+    "id": "alice",
+    "name": "ALICE",
+    "display": "Normal",
+    "website": "https://alice.fun/",
+    "twitter": "https://x.com/alicedotfun",
+    "tags": [
+      "AI"
+    ],
+    "description": "Alice is a DAO-governed AI agent that operates entirely on-chain, leveraging LLMs like DeepSeek for decision-making, integrating both static rules and dynamic, real-time data to enable intelligent and adaptable operations, autonomously managing token activities.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/alice-logo.webp"
   }
 ]
