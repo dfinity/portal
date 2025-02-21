@@ -74,7 +74,7 @@ The following options configure the archiving settings of the ledger.
 In case optional fields are not specified, [the default values defined in `ArchiveOptions::new`](https://github.com/dfinity/ic/blob/396b461cd018448b075c82afac1b3a45b9a3dc1a/rs/ledger_suite/common/ledger_canister_core/src/archive.rs#L160-L176) are used.
 For production deployments, it is recommended to set the values [similarly to what is done for SNS ledgers](https://github.com/dfinity/ic/blob/98fa250f488163fc5d94079c4acd81ba55761bd6/rs/sns/init/src/lib.rs#L600-L613).
 
-#### `ARCHIVE_CONTROLLER`
+#### `CONTROLLER_ID`
 
 The [controller <GlossaryTooltip>principal</GlossaryTooltip>](/docs/current/developer-docs/defi/cycles/cycles-wallet#controller-and-custodian-roles) of the archive canisters.
 
@@ -88,13 +88,13 @@ echo $(dfx identity get-principal)
 
 The number of blocks to archive when the trigger threshold is exceeded.
 
-#### `CYCLE_FOR_ARCHIVE_CREATION`
+#### `CYCLES_FOR_ARCHIVE_CREATION`
 
 The number of cycles that will be sent to the archive canister when it is created.
 Note that this needs to cover [the cost for canister creation](/docs/current/developer-docs/gas-cost#canister-creation), and the installation of the canister.
 If the value is set too low, archiving is effectively disabled.
 
-#### `NUM_OF_BLOCK_TO_ARCHIVE`
+#### `NUM_BLOCKS_TO_ARCHIVE`
 
 The number of blocks that will be archived.
 If this is set to zero, archiving is effectively disabled.
