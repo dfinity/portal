@@ -1011,7 +1011,7 @@ const redirects = `
       .map((r) => ({
         to: r.to.replace(/#.+$/, ""),
         from: r.from,
-      }));
+      })));
   };
 
   exports.getExternalRedirects = function () {
