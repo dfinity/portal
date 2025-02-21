@@ -1029,7 +1029,7 @@ const redirects = `
     const urls = [];
 
     for (const redirect of redirects.filter(
-      (r) => isSplat(r) && !isExternal(r)
+      (r) => isSplat(r) && !isExternal(r) && !isExactUrl(r))
     )) {
       const trimmedSource = redirect[0].replace("/*", "/");
 
