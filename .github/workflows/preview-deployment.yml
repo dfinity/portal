@@ -88,6 +88,7 @@ jobs:
 
         env:
           DFX_IDENTITY_PREVIEW: ${{ secrets.DFX_IDENTITY_PREVIEW }}
+          DFX_WARNING: -mainnet_plaintext_identity
           POOL_CANISTER_ID: ${{ secrets.POOL_CANISTER_ID }}
           CONTENTFUL_ACCESS_TOKEN: ${{ secrets.CONTENTFUL_ACCESS_TOKEN }}
           CONTENTFUL_HOST: ${{ secrets.CONTENTFUL_HOST }}
