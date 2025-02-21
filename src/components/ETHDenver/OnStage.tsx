@@ -16,7 +16,7 @@ const MeetUs: FC<{
       id={id}
     >
       <AnimateSpawn
-        className="container-10 relative mb-16 md:mb-20"
+        className="container-10 relative mb-10 md:mb-14"
         variants={transitions.container}
       >
         <div className="md:w-8/10">
@@ -31,16 +31,6 @@ const MeetUs: FC<{
             Want to learn about the latest developments and insights on the Internet Computer? Catch these talks from DFINITY team members at ETH Denver.
             </span>
           </motion.p>
-          <MotionLink
-            className="link-with-icon link-white text-[#AE9EFF]"
-            href="https://x.com/dfinity"
-            target="_blank"
-            rel="noopener noreferrer"
-            variants={transitions.item}
-          >
-            <TwitterIcon />
-              Follow us for event updates
-          </MotionLink>
         </div>
       </AnimateSpawn>
 
