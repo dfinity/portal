@@ -53,28 +53,28 @@ const MeetUs: FC<{
             variants={transitions.item}
             className="flex-1 p-6 md:p-8 order border-solid border-white-20 rounded-xl"
           >
-            <time className="whitespace-nowrap tw-paragraph-sm text-white-60" dateTime="2025-02-24T16:15:00">February 24, 2025, 4:15 PM – 4:35 PM</time>
+            <time className="tw-paragraph text-white-60" dateTime="2025-02-24T16:15:00">February&nbsp;24, 2025, 4:15&nbsp;PM – 4:35&nbsp;PM</time>
             <h3 className="tw-heading-5 mb-3 text-white text-balance">
               Build cross chain Ethereum applications with ICP Chain Fusion
             </h3>
 
-            <div className="flex flex-col md:flex-row md:gap-3 mt-4">
+            <div className="flex flex-col md:flex-row md:gap-3 mt-6">
               <div className="w-full md:w-1/2 flex gap-3">
                 <div className="w-10 h-10 bg-white rounded-full overflow-hidden">
                   <img src="/img/ethdenver/kristofer-lund.jpg" alt="Kristofer Lund" className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="tw-paragraph-sm text-white mb-0">Kristofer Lund</h4>
-                  <p className="tw-paragraph-sm text-white-60">
+                  <h4 className="tw-paragraph text-white mb-0">Kristofer Lund</h4>
+                  <p className="tw-paragraph text-white-60">
                     Developer Evangelist in Developer Ecosystem<br />
                     DFINITY Foundation
                   </p>
                 </div>
               </div>
-              <div className="w-full md:w-1/2 pl-[3.25rem]">
-                <h4 className="tw-paragraph-sm text-white mb-0">Captain Ethereum Stage</h4>
-                <p className="tw-paragraph-sm text-white-60 mb-4">#BUIDLHub</p>
-                <p className="tw-paragraph-sm text-white-60 mb-0">
+              <div className="w-full md:w-1/2 pl-[3.25rem] md:pl-0">
+                <h4 className="tw-paragraph text-white mb-0">Captain Ethereum Stage</h4>
+                <p className="tw-paragraph text-white-60 mb-4">#BUIDLHub</p>
+                <p className="tw-paragraph text-white-60 mb-0">
                   National Western Complex<br />
                   4655 Humboldt Street<br />
                   Denver, CO 80216<br />
@@ -94,28 +94,28 @@ const MeetUs: FC<{
             variants={transitions.item}
             className="flex-1 p-6 md:p-8 border border-solid border-white-20 rounded-xl"
           >
-            <time className="whitespace-nowrap tw-paragraph-sm text-white-60" dateTime="">March 1, 2025, 3:45 PM – 4:05 PM</time>
+            <time className="tw-paragraph text-white-60" dateTime="">March&nbsp;1, 2025, 3:45&nbsp;PM – 4:05&nbsp;PM</time>
             <h3 className="tw-heading-5 mb-3 text-white text-balance">
               A Platform That Runs AI and Enables AI to Build
             </h3>
 
-            <div className="flex flex-col md:flex-row md:gap-3 mt-4">
+            <div className="flex flex-col md:flex-row md:gap-3 mt-6">
               <div className="w-full md:w-1/2 flex gap-3">
                 <div className="w-10 h-10 bg-white rounded-full overflow-hidden">
                   <img src="/img/ethdenver/lomesh-dutta.jpg" alt="Lomesh Dutta" className="w-full h-full object-cover" />
                 </div>
                 <div className="flex-1">
-                  <h4 className="tw-paragraph-sm text-white mb-0">Lomesh Dutta</h4>
-                  <p className="tw-paragraph-sm text-white-60">
+                  <h4 className="tw-paragraph text-white mb-0">Lomesh Dutta</h4>
+                  <p className="tw-paragraph text-white-60">
                     VP of Growth in Developer Ecosystem<br />
                     DFINITY Foundation
                   </p>
                 </div>
               </div>
-              <div className="w-full md:w-1/2 pl-[3.25rem]">
-                <h4 className="tw-paragraph-sm text-white mb-0">Whale Pool Stage</h4>
-                <p className="tw-paragraph-sm text-white-60 mb-4">Spork Castle</p>
-                <p className="tw-paragraph-sm text-white-60 mb-0">
+              <div className="w-full md:w-1/2 pl-[3.25rem] md:pl-0">
+                <h4 className="tw-paragraph text-white mb-0">Whale Pool Stage</h4>
+                <p className="tw-paragraph text-white-60 mb-4">Spork Castle</p>
+                <p className="tw-paragraph text-white-60 mb-0">
                   National Western Complex<br />
                   4655 Humboldt Street<br />
                   Denver, CO 80216<br />
