@@ -191,6 +191,7 @@ build: [
       type: "category",
       label: "Canister management",
       items: [
+        "building-apps/canister-management/backtraces",
         "building-apps/canister-management/control",
         "building-apps/canister-management/delete",
         "building-apps/canister-management/history",

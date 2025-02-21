@@ -27,7 +27,6 @@ const redirects = `
   /docs/current/tutorials/developer-journey/* /docs/tutorials/developer-liftoff/:splat
   /docs/current/developer-docs/security/security-best-practices/* /docs/building-apps/best-practices/security/:splat
   /docs/current/developer-docs/agents/* /docs/building-apps/interact-with-canisters/agents/:splat
-  /docs/current/developer-docs/backend/candid/* /docs/building-apps/interact-with-canisters/candid/:splat
   /docs/current/developer-docs/best-practices/*	/docs/building-apps/best-practices/:splat
   /docs/current/developer-docs/daos/sns/* /docs/building-apps/governing-apps/:splat
   /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/* /docs/building-apps/developer-tools/dfxvm/:splat
@@ -50,6 +49,9 @@ const redirects = `
   /docs/candid-guide/candid-types /docs/references/candid-ref
   /docs/candid-guide/candid /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/candid-guide /docs/building-apps/interact-with-canisters/candid/candid-concepts
+  /docs/current/developer-docs/smart-contracts/candid/candid-concepts /docs/building-apps/interact-with-canisters/candid/candid-concepts
+  /docs/current/developer-docs/smart-contracts/candid/candid-howto /docs/building-apps/interact-with-canisters/candid/using-candid
+  /docs/current/developer-docs/smart-contracts/candid/candid-tools /docs/building-apps/interact-with-canisters/candid/candid-tools
 
   ## Concepts
   /docs/concepts/bitcoin-integration /bitcoin-integration
@@ -583,6 +585,8 @@ const redirects = `
   /docs/current/developer-docs/updates/computation-and-storage-costs /docs/building-apps/essentials/gas-cost
   /docs/current/developer-docs/updates/release-notes/ /docs/other/updates/release-notes/
   /docs/current/developer-docs/use-cases/considerations-for-nft-devs /docs/defi/nft-collections
+  /docs/current/developer-docs/getting-started/deploy-and-manage /docs/building-apps/developing-canisters/deploy
+  /docs/current/developer-docs/getting-started/write-smart-contracts /docs/building-apps/developing-canisters/write
 
   ## Frontends
   /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet /docs/building-apps/frontends/using-an-asset-canister
