@@ -5180,5 +5180,18 @@
     "twitter": "https://x.com/CoreLedger",
     "usesInternetIdentity": true,
     "display": "Normal"
+  },
+  {
+    "id": "alice",
+    "name": "ALICE",
+    "display": "Normal",
+    "website": "https://alice.fun/",
+    "twitter": "https://x.com/alicedotfun",
+    "tags": [
+      "AI"
+    ],
+    "description": "Alice is a DAO-governed AI agent that operates entirely on-chain, leveraging LLMs like DeepSeek for decision-making, integrating both static rules and dynamic, real-time data to enable intelligent and adaptable operations, autonomously managing token activities.",
+    "usesInternetIdentity": false,
+    "logo": "/img/showcase/alice-logo.png"
   }
 ]

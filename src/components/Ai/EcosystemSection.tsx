@@ -14,12 +14,15 @@ const selectedProjectIds = [
   'elnaai',
   'seers',
   'anda',
+  'alice',
   'kinic',
   'onicai',
   'decideai',
   'pickpump'
 ]
-const projects = showcaseData.filter((p) => selectedProjectIds.includes(p.id));
+const projects = selectedProjectIds
+  .map(id => showcaseData.find(p => p.id === id))
+  .filter((p): p is typeof showcaseData[0] => p !== undefined);
 
 const EcosystemSection: FC<{
   id: string;

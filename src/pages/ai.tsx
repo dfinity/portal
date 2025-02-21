@@ -207,13 +207,21 @@ function AIPage() {
                   variants={transitions.item}>
                     The Internet Computer allows you to build and run software services that are tamper-proof, giving you true ownership and digital sovereignty. We call them canisters. You can now access LLMs from within these canisters with just a few lines of code to build AI agents that you truly own and control.
                 </motion.p>
-                <p className="flex flex-col md:flex-row">
+                <p className="flex flex-col md:flex-row align-center gap-6">
                   <MotionLink
                     variants={transitions.item}
-                    className="button-outline"
-                    href="https://vgjrt-uyaaa-aaaal-qsiaq-cai.icp0.io/"
+                    className="button-primary"
+                    href="https://forum.dfinity.org/t/introducing-the-llm-canister-deploy-ai-agents-with-a-few-lines-of-code/41424"
                   >
                     Learn more
+                  </MotionLink>
+                  <MotionLink
+                    variants={transitions.item}
+                    className="link-primary link-with-icon"
+                    href="https://vgjrt-uyaaa-aaaal-qsiaq-cai.icp0.io/"
+                  >
+                    Live demo
+                    <LinkArrowRight />
                   </MotionLink>
                 </p>
               </div>
