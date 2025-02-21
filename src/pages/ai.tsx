@@ -197,7 +197,7 @@ function AIPage() {
         <section className="container-10 relative mt-40 sm:mt-52 md:mt-60">
           <AnimateSpawn
             variants={transitions.container}
-            className="bg-white px-4 md:px-10 pt-6 pb-1 md:pb-12 md:pt-12 gap-8 mb-10 sm:mb-12 rounded-xl relative"
+            className="bg-white px-4 md:px-10 pt-6 pb-1 md:pb-24 md:pt-24 gap-8 mb-10 sm:mb-12 rounded-xl relative"
           >
             <motion.div>
               <aside className="container-10 md:flex md:items-center mt-6 md:mt-0 !pl-0 !pr-0">
@@ -222,12 +222,14 @@ function AIPage() {
                     </MotionLink>
                   </p>
                 </div>
-                <div className="md:w-1/2 flex justify-end ">
-                  <motion.img
-                    className="w-1/3 object-cover"
-                    src="/img/ai/ai-agents.svg"
-                    alt="roadmap"
-                  />
+                <div className="md:w-1/2 flex justify-end relative ">
+                  <div className="md:absolute">
+                    <motion.img
+                      className="w-full object-cover md:-translate-y-1/2"
+                      src="/img/ai/ai-agents.svg"
+                      alt="roadmap"
+                    />
+                  </div>
                 </div>
               </aside>
             </motion.div>
