@@ -73,7 +73,7 @@ const MeetUs: FC<{
               [1, 5],
               [5, 1],
             ]}
-            href="/ai"
+            href="https://medium.com/@dfinity/deai-agent-economy-icp-as-new-home-for-autonomous-agents-edc2c04ceb32"
           />
         </AnimateSpawn>
         <AnimateSpawn
@@ -89,7 +89,7 @@ const MeetUs: FC<{
               [1],
               [1, 2],
             ]}
-            href="https://icp.ninja/"
+            href="https://medium.com/@dfinity/icp-ninja-your-dojo-for-the-internet-computer-7367ab627455"
           />
         </AnimateSpawn>
       </div>
