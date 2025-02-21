@@ -1029,7 +1029,7 @@ const redirects = `
 
     for (const redirect of redirects.filter(
       (r) => isSplat(r) && !isExternal(r) && !isExactUrl(r))
-    )) {
+    ) {
       const trimmedSource = redirect[0].replace("/*", "/");
 
       if (redirect[1].includes(":splat")) {
