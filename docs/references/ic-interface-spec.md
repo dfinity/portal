@@ -2461,9 +2461,9 @@ The vetKD API is considered EXPERIMENTAL. Canister developers must be aware that
 
 This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
 
-This method returns a (derived) vetKD public key for the given canister using the given derivation path.
+This method returns a (derived) vetKD public key for the given canister using the given derivation domain.
 
-If the `canister_id` is unspecified, it will default to the canister id of the caller. The `derivation_path` is a vector of variable length byte strings, containing at most 255 byte strings. The `key_id` is a struct specifying both a curve and a name. The availability of a particular `key_id` depends on the implementation.
+If the `canister_id` is unspecified, it will default to the canister id of the caller. The `derivation_domain` is a byte string of variable length. The `key_id` is a struct specifying both a curve and a name. The availability of a particular `key_id` depends on the implementation.
 
 For curve `bls12_381_g2`, the returned `public_key` is a G<sub>2</sub> element in compressed form in [BLS Signatures Draft RFC](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bls-signature-05#name-bls12-381) encoding.
 
@@ -2479,9 +2479,9 @@ The vetKD API is considered EXPERIMENTAL. Canister developers must be aware that
 
 This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
 
-This method returns a vetKD key (aka vetKey) encrypted under `encryption_public_key` derived from the master key with ID `key_id` for the given derivation information consisting of `derivation_id` and `derivation_path`.
+This method returns a vetKD key (aka vetKey) encrypted under `encryption_public_key` derived from the master key with ID `key_id` for the given derivation information consisting of `derivation_id` and `derivation_domain`.
 
-The `derivation_id` is used to derive different encrypted keys. The `derivation_path` is a vector of variable length byte strings, containing at most 255 byte strings, and acts (together with the calling canister's ID) as domain separator to derive different public (verification) keys with the IC method `vetkd_public_key`. The `key_id` is a struct specifying both a curve and a name. The availability of a particular `key_id` depends on the implementation.
+The `derivation_id` is used to derive different encrypted keys. The `derivation_domain` acts (together with the calling canister's ID) as domain separator to derive different public (verification) keys with the IC method `vetkd_public_key`. The `key_id` is a struct specifying both a curve and a name. The availability of a particular `key_id` depends on the implementation.
 
 For curve `bls12_381_g2`, the following holds:
 
@@ -2489,11 +2489,11 @@ For curve `bls12_381_g2`, the following holds:
 
 -   The returned `encrypted_key` is the blob `E1 · E2 · E3`, where E<sub>1</sub> and E<sub>3</sub> are G<sub>1</sub> elements, and E<sub>2</sub> is a G<sub>2</sub> element, all in compressed form in [BLS Signatures Draft RFC](https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bls-signature-05#name-bls12-381) encoding.
 
-    The encrypted key can be verified by ensuring *e(E<sub>1</sub>, g<sub>2</sub>) == e(g<sub>1</sub>, E<sub>2</sub>)*, and *e(E<sub>3</sub>, g<sub>2</sub>) == e(epk, E<sub>2</sub>) \* e(H(dpk · `derivation_id`), dpk)*, where the derived public key *dpk* is obtained by calling IC method `vetkd_public_key` with the same `derivation_path` and `key_id`, and the canister id of the caller.
+    The encrypted key can be verified by ensuring *e(E<sub>1</sub>, g<sub>2</sub>) == e(g<sub>1</sub>, E<sub>2</sub>)*, and *e(E<sub>3</sub>, g<sub>2</sub>) == e(epk, E<sub>2</sub>) \* e(H(dpk · `derivation_id`), dpk)*, where the derived public key *dpk* is obtained by calling IC method `vetkd_public_key` with the same `derivation_domain` and `key_id`, and the canister id of the caller.
 
 -   The decrypted vetKD key *k* is obtained by calculating E<sub>3</sub> \* E<sub>1</sub><sup>-esk</sup>, where esk ∈ Z<sub>p</sub> is the encryption secret key that was used to generate the `encryption_public_key`.
 
-    The key can be verified by ensuring *e(k, g<sub>2</sub>) == e(H(dpk · `derivation_id`), dpk)*, where *dpk* is obtained by calling IC method `vetkd_public_key` with the same `derivation_path` and `key_id`, and the canister id of the caller. Such verification protects against untrusted canisters returning invalid keys.
+    The key can be verified by ensuring *e(k, g<sub>2</sub>) == e(H(dpk · `derivation_id`), dpk)*, where *dpk* is obtained by calling IC method `vetkd_public_key` with the same `derivation_domain` and `key_id`, and the canister id of the caller. Such verification protects against untrusted canisters returning invalid keys.
 
 where
 
