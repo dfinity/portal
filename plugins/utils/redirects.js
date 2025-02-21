@@ -1006,7 +1006,7 @@ const redirects = `
 
   exports.getRedirects = function () {
     return redirects
-      .filter((r) => !isSplat(r) && !isExternal(r) && !isExactUrl(r))
+      .filter((r) => !isSplat(r) && !isExternal(r) && !isExactUrl(r)
       .map(ruleToRedirect)
       .map((r) => ({
         to: r.to.replace(/#.+$/, ""),
