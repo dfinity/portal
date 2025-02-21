@@ -43,10 +43,11 @@ const Hero: FC<{
             <div className="flex justify-between md:items-end flex-col md:flex-row gap-12 md:gap-8">
               <div className="md:w-5/10">
                 <motion.h2
-                  className="tw-lead md:tw-heading-3 mb-6 md:mb-8"
+                  className="tw-heading-5 md:tw-heading-3 mb-6 md:mb-8"
                   variants={transitions.item}
                 >
                   ETHDenver 2025<br />
+                  Booth No. 509<br />
                   <time dateTime="2025-02-23">February 23</time> – <time dateTime="2025-03-02">March 2</time>
                 </motion.h2>
                 <motion.p
