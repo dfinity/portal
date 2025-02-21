@@ -2311,7 +2311,7 @@ Only the controllers of the canister or the canister itself can request its stat
 
     * `wasm_chunk_store_size`: Represents the memory used by the Wasm chunk store of the canister.
 
-    * `snapshot_size`: Represents the memory consumed by all snapshots that belong to this canister.
+    * `snapshots_size`: Represents the memory consumed by all snapshots that belong to this canister.
 
 All sizes are expressed in bytes.
 
