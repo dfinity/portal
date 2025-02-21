@@ -33,8 +33,6 @@ jobs:
 
       - name: Install DFX
         uses: dfinity/setup-dfx@main
-        with:
-          dfx-version: "0.22.0"
 
       - name: Dump Identity
         run: |
@@ -69,6 +67,8 @@ jobs:
           CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
           AIRTABLE_KEY: ${{ secrets.AIRTABLE_SA_PORTAL_SERVICE_ACCOUNT }}
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          DFX_WARNING: -mainnet_plaintext_identity
+
 
       - name: Get URL
         id: get-url
