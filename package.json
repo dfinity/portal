@@ -22,7 +22,11 @@
     "@dfinity/principal": "^0.15.4",
     "@docusaurus/theme-mermaid": "^2.4.3",
     "@floating-ui/react": "^0.26.9",
+<<<<<<< HEAD
     "@saucelabs/theme-github-codeblock": "^0.3.0",
+=======
+    "@tailwindcss/container-queries": "^0.1.1",
+>>>>>>> 36e4363337d32ff00035b7af2f1a715e7f7f41f2
     "chart.js": "^3.8.0",
     "chartjs-plugin-datalabels": "^2.0.0",
     "clsx": "^1.1.1",

@@ -693,7 +693,6 @@ defi: [
           },
           "defi/token-ledgers/cycles-ledger",
           "defi/token-integrations/index",
-          "defi/account-trimming",
         ],
         },
         "defi/token-indexes/index",
