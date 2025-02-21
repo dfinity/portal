@@ -5192,6 +5192,6 @@
     ],
     "description": "Alice is a DAO-governed AI agent that operates entirely on-chain, leveraging LLMs like DeepSeek for decision-making, integrating both static rules and dynamic, real-time data to enable intelligent and adaptable operations, autonomously managing token activities.",
     "usesInternetIdentity": false,
-    "logo": "/img/showcase/alice-logo.png"
+    "logo": "/img/showcase/alice-logo.webp"
   }
 ]
