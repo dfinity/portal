@@ -46,14 +46,14 @@ const MeetUs: FC<{
 
       <div className="container-10">
         <AnimateSpawn
-          className="flex flex-col md:flex-row gap-4"
+          className="flex flex-col sm:flex-row gap-4"
           variants={transitions.item}
         >
           <motion.div
             variants={transitions.item}
             className="flex-1 p-6 md:p-8 order border-solid border-white-20 rounded-xl"
           >
-            <time className="tw-paragraph-sm text-white-60" dateTime="2025-02-24T16:15:00">February 24, 2025, 4:15 PM – 4:35 PM</time>
+            <time className="whitespace-nowrap tw-paragraph-sm text-white-60" dateTime="2025-02-24T16:15:00">February 24, 2025, 4:15 PM – 4:35 PM</time>
             <h3 className="tw-heading-5 mb-3 text-white text-balance">
               Build cross chain Ethereum applications with ICP Chain Fusion
             </h3>
@@ -79,7 +79,7 @@ const MeetUs: FC<{
                   4655 Humboldt Street<br />
                   Denver, CO 80216<br />
                   <Link
-                    className="text-[#AE9EFF]"
+                    className="text-[#AE9EFF] hover:text-[#AE9EFF]"
                     href="https://maps.app.goo.gl/zfWULuZiTwZ2A92z6"
                     target="_blank"
                   >
@@ -94,7 +94,7 @@ const MeetUs: FC<{
             variants={transitions.item}
             className="flex-1 p-6 md:p-8 border border-solid border-white-20 rounded-xl"
           >
-            <time className="tw-paragraph-sm text-white-60" dateTime="">March 1, 2025, 3:45 PM – 4:05 PM</time>
+            <time className="whitespace-nowrap tw-paragraph-sm text-white-60" dateTime="">March 1, 2025, 3:45 PM – 4:05 PM</time>
             <h3 className="tw-heading-5 mb-3 text-white text-balance">
               A Platform That Runs AI and Enables AI to Build
             </h3>
@@ -120,7 +120,7 @@ const MeetUs: FC<{
                   4655 Humboldt Street<br />
                   Denver, CO 80216<br />
                   <Link
-                    className="text-[#AE9EFF]"
+                    className="text-[#AE9EFF] hover:text-[#AE9EFF]"
                     href="https://maps.app.goo.gl/zfWULuZiTwZ2A92z6"
                     target="_blank"
                   >

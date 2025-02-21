@@ -13,7 +13,7 @@ const MeetUs: FC<{
 }> = ({ id }) => {
   return (
     <section
-      className="bg-black text-white py-20 md:pt-30 md:pb-30 "
+      className="bg-black text-white py-20 md:pt-30 md:pb-30"
       id={id}
     >
       <AnimateSpawn
@@ -45,7 +45,7 @@ const MeetUs: FC<{
         </div>
       </AnimateSpawn>
 
-      <div className="container-10 flex flex-col md:flex-row gap-8 text-black">
+      <div className="container-10 flex flex-col md:flex-row gap-6 text-black">
         <AnimateSpawn
           className="md:w-1/3"
           variants={transitions.item}
@@ -57,7 +57,7 @@ const MeetUs: FC<{
             backgroundSegments={[
               [1, 2]
             ]}
-            href="#"
+            href="/chainfusion"
           />
         </AnimateSpawn>
         <AnimateSpawn
@@ -73,7 +73,7 @@ const MeetUs: FC<{
               [1],
               [1, 2],
             ]}
-            href="#"
+            href="https://icp.ninja/"
           />
         </AnimateSpawn>
         <AnimateSpawn
@@ -89,7 +89,7 @@ const MeetUs: FC<{
               [1, 5],
               [5, 1],
             ]}
-            href="#"
+            href="/ai"
           />
         </AnimateSpawn>
       </div>

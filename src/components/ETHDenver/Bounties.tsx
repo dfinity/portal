@@ -102,7 +102,7 @@ const Bounties: FC<{
           className="tw-heading-5 md:tw-heading-4 mb-8"
           variants={transitions.item}
         >
-          Participation Categories:
+          Participation Categories
         </motion.h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           <motion.div
