@@ -2,39 +2,48 @@ const redirects = `
 
   # Redirects (from -> to)
 
-  /apis/site/proxy /docs/references/http-gateway-protocol-spec
-  /base-libraries/ /docs/motoko/main/base/
-  /basics /what-is-the-ic
-  /bitcoin /bitcoin-integration
-  /bootcamp	/education-hub
-  /community https://linktr.ee/icp_hubs_network
-  /deck-main https://deck.internetcomputer.org
-  /developers-guide.html /docs/tutorials/developer-liftoff/
-  /developers-guide/quickstart.html /docs/tutorials/developer-liftoff/
-  /developers-guide/quickstart /docs/tutorials/developer-liftoff/
-  /developers /docs/home
-  /docs-intro.html /docs/building-apps/getting-started/install
-  /docs.html /docs/building-apps/getting-started/install
-  /docs/backend/candid/generating-candid /docs/building-apps/developer-tools/cdks/rust/generating-candid
-  /docs/base-libraries/ /docs/motoko/main/base/
-  /docs/base-libraries/motoko-base/Text.html	/docs/motoko/main/base/Text
-  /docs/blog/features/vetkey-primer	/blog/features/vetkey-primer
-
   ## Wildcards
+  ## Wildcards use a find and replace workflow, replacing the old file path prior to the * with the new file path prior to the :splat
+  ## /old/path/* /new/path/:splat
+  ##
+  ## That means wildcards will only work if the file path and file names after :splat is the same, i.e.:
+  ##
+  ## /docs/current/motoko/* redirected to /docs/motoko/:splat
+  ## will redirect the file
+  ## /docs/current/motoko/main/getting-started to /docs/motoko/main/getting-started
+  ##
+  ## The following will not work to redirect /docs/current/backend/motoko/index to /docs/motoko/overview
+  ## /docs/current/backend/motoko/* /docs/motoko/:splat
+  ##
+  ## Or, redirecting to a single landing page will not work:
+  ## /docs/samples/* /ecosystem:splat
+  ##
+  ## Wildcards cannot be used for external redirects, i.e.
+  ## /docs/current/quill/* https://github.com
+  ##
+  ##
   /docs/current/motoko/* /docs/motoko:splat
   /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/* /docs/building-apps/developer-tools/dfx:splat
   /docs/current/tutorials/developer-journey/* /docs/tutorials/developer-liftoff/:splat
   /docs/current/developer-docs/security/security-best-practices/* /docs/building-apps/best-practices/security/:splat
-  /docs/current/developer-docs/backend/motoko/* /docs/motoko:splat
   /docs/current/developer-docs/agents/* /docs/building-apps/interact-with-canisters/agents/:splat
-  /docs/current/developer-docs/ai/* /ecosystem:splat
   /docs/current/developer-docs/backend/candid/* /docs/building-apps/interact-with-canisters/candid/:splat
   /docs/current/developer-docs/best-practices/*	/docs/building-apps/best-practices/:splat
   /docs/current/developer-docs/daos/sns/* /docs/building-apps/governing-apps/:splat
   /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/* /docs/building-apps/developer-tools/dfxvm/:splat
-  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/* https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /docs/current/developer-docs/developer-tools/cli-tools/advanced-dfx/* /docs/building-apps/developer-tools/advanced-dfx/:splat
   /docs/current/developer-docs/smart-contracts/maintain/* /docs/building-apps/canister-management/:splat
+  /docs/current/tutorials/hackathon-prep-course/* /docs/tutorials/hackathon-prep-course/:splat
+  /docs/move-to-motoko/canpack
+- move-to-motoko/dev-containers
+- move-to-motoko/vs-code
+  ## Explicit redirects
+  ## For files that have changed directories & file names, there will need to be
+  ## an explicit redirect from the old file to the new file
+  ## I.e.:
+  ## /docs/current/developer-docs/hello-world /docs/building-apps/getting-started/quickstart
+  ##
+  ##
 
   ## Candid
   /docs/candid-guide/candid-concepts.html	/docs/building-apps/interact-with-canisters/candid/candid-concepts
@@ -58,17 +67,67 @@ const redirects = `
   /docs/concepts/subnet-types /docs/building-apps/developing-canisters/create
   /docs/concepts/what-is-ic /docs/building-apps/essentials/network-overview
 
-  ## Dev docs
+  ## AI
+  /docs/current/developer-docs/ai/ai-on-chain /ecosystem
+  /docs/current/developer-docs/ai/overview /ecosystem
+  /docs/current/developer-docs/ai/inference /ecosystem
+  /docs/current/developer-docs/ai/samples /ecosystem
+  /docs/current/developer-docs/ai/training-models /ecosystem
+  /docs/current/developer-docs/ai/machine-learning-sample /ecosystem
 
-  /docs/current/developer-docs/backend/arguments /docs/building-apps/interact-with-canisters/advanced-calls
-  /docs/current/developer-docs/backend/choosing-language /docs/building-apps/essentials/what-are-canisters
-  /docs/current/developer-docs/backend/design-dapps /docs/building-apps/essentials/canisters
-  /docs/current/developer-docs/backend /docs/building-apps/essentials/network-overview
-  /docs/current/developer-docs/backend/eu-subnets /docs/building-apps/developing-canisters/create
-  /docs/current/developer-docs/backend/periodic-tasks /docs/building-apps/network-features/periodic-tasks-timers
-  /docs/current/developer-docs/backend/python/ https://demergent-labs.github.io/kybra/
-  /docs/current/developer-docs/backend/reproducible-builds /docs/building-apps/best-practices/reproducible-builds
-  /docs/current/developer-docs/backend/resource-limits /docs/building-apps/canister-management/resource-limits
+  ## Motoko
+  /docs/current/developer-docs/backend/motoko/infrastructure /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/backend/motoko/explore-templates /docs/motoko/main/getting-started/basic-concepts
+  /docs/current/developer-docs/backend/motoko/dev-env /docs/motoko/main/getting-started/dev-env
+  /docs/current/developer-docs/backend/motoko/at-a-glance /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/backend/motoko/deploying /docs/motoko/main/getting-started/quickstart
+  /docs/current/developer-docs/backend/motoko/upgrading /docs/motoko/main/canister-maintenance/upgrades
+  /docs/current/developer-docs/backend/motoko/intercanister-calls /docs/motoko/main/writing-motoko/intercanister-calls
+  /docs/current/developer-docs/backend/motoko/optimizing /docs/motoko/main/canister-maintenance/optimization
+  /docs/current/developer-docs/backend/motoko/phonebook /docs/motoko/main/writing-motoko/modules-and-imports
+  /docs/current/developer-docs/backend/motoko/calculator /docs/motoko/main/writing-motoko/integers
+  /docs/current/developer-docs/backend/motoko/counter-tutorial /docs/motoko/main/writing-motoko/local-objects-classes
+  /docs/current/developer-docs/backend/motoko/hello-location /docs/motoko/main/writing-motoko/arguments
+  /docs/current/developer-docs/backend/motoko/simple-cycles /docs/motoko/main/canister-maintenance/cycles
+  /docs/current/developer-docs/backend/motoko/define-an-actor /docs/motoko/main/writing-motoko/actors-async
+  /docs/current/developer-docs/backend/motoko/multiple-actors /docs/motoko/main/writing-motoko/actor-classes
+  /docs/current/developer-docs/backend/motoko/access-control /docs/motoko/main/writing-motoko/caller-id
+  /docs/current/developer-docs/backend/motoko/candid-ui /docs/motoko/main/writing-motoko/candid-ui
+  /docs/current/developer-docs/backend/motoko/scalability-cancan /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/backend/motoko/sample-apps /samples
+  /docs/current/developer-docs/backend/motoko/mo-doc /docs/motoko/main/reference/generating-docs
+  /docs/current/developer-docs/backend/motoko/0.11.0-migration-guide /docs/motoko/main/migration-guides/0.11.0-migration-guide
+  /docs/current/motoko/main/about-this-guide /docs/motoko/main/getting-started/motoko-introduction
+  /motoko/main/motoko /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/motoko/main/motoko-introduction /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/motoko/main/motoko /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/motoko/main/basic-concepts /docs/motoko/main/getting-started/basic-concepts
+  /docs/current/motoko/main/overview /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/motoko/main/language-manual /docs/motoko/main/reference/language-manual
+  /docs/current/motoko/main/style /docs/motoko/main/reference/style
+  /docs/current/motoko/main/base-intro /docs/motoko/main/writing-motoko/modules-and-imports
+  /docs/current/motoko/main/actors-async /docs/motoko/main/writing-motoko/actors-async
+  /docs/current/motoko/main/actor-classes /docs/motoko/main/writing-motoko/actor-classes
+  /docs/current/motoko/main/caller-id /docs/motoko/main/writing-motoko/caller-id
+  /docs/current/motoko/main/compatibility /docs/motoko/main/canister-maintenance/compatibility
+  /docs/current/motoko/main/control-flow /docs/motoko/main/writing-motoko/control-flow
+  /docs/current/motoko/main/cycles /docs/motoko/main/canister-maintenance/cycles
+  /docs/current/motoko/main/errors /docs/motoko/main/writing-motoko/errors
+  /docs/current/motoko/main/heartbeats /docs/motoko/main/writing-motoko/heartbeats
+  /docs/current/motoko/main/local-objects-classes /docs/motoko/main/writing-motoko/local-objects-classes
+  /docs/current/motoko/main/message-inspection /docs/motoko/main/writing-motoko/message-inspection
+  /docs/current/motoko/main/modules-and-imports /docs/motoko/main/writing-motoko/modules-and-imports
+  /docs/current/motoko/main/mutable-state /docs/motoko/main/writing-motoko/mutable-state
+  /docs/current/motoko/main/pattern-matching /docs/motoko/main/writing-motoko/pattern-matching
+  /docs/current/motoko/main/pipes /docs/motoko/main/writing-motoko/pipes
+  /docs/current/motoko/main/sharing /docs/motoko/main/writing-motoko/sharing
+  /docs/current/motoko/main/stable-regions /docs/motoko/main/stable-memory/stable-regions
+  /docs/current/motoko/main/stablememory /docs/motoko/main/stable-memory/stablememory
+  /docs/current/motoko/main/structural-equality /docs/motoko/main/writing-motoko/structural-equality
+  /docs/current/motoko/main/timers /docs/motoko/main/writing-motoko/timers
+  /docs/current/motoko/main/upgrades /docs/motoko/main/canister-maintenance/upgrades
+  /docs/current/motoko/main/compiler-ref /docs/motoko/main/reference/compiler-ref
+  /docs/current/motoko/main/motoko-grammar /docs/motoko/main/reference/motoko-grammar
 
   ## Rust
   /docs/current/developer-docs/backend/rust/candid /docs/building-apps/developer-tools/cdks/rust/candid
@@ -84,40 +143,6 @@ const redirects = `
   /docs/current/developer-docs/backend/rust/rust-considerations /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/rust-quickstart	/docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/samples /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
-
-  ## Misc
-  /docs/current/developer-docs/backend/solidity/ https://docs.bitfinity.network/
-  /docs/current/developer-docs/backend/subnet-types /docs/building-apps/developing-canisters/create
-  /docs/current/developer-docs/backend/troubleshooting /docs/building-apps/getting-started/troubleshooting
-  /docs/current/developer-docs/backend/typescript/ https://demergent-labs.github.io/azle/
-  /docs/current/developer-docs/best-practices/considerations-for-nft-devs /docs/defi/overview
-  /docs/current/developer-docs/build/backend/ /docs/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/build/backend/reproducible-builds /docs/building-apps/best-practices/reproducible-builds
-  /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/  /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
-  /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
-  /docs/current/developer-docs/build/cdks/ /docs/building-apps/developer-tools/cdks/
-  /docs/current/developer-docs/build/cdks/motoko-dfinity /docs/building-apps/developer-tools/cdks/
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/ /docs/motoko/main/base/
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/motoko/main/reference/language-manual
-  /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/build/ /docs/building-apps/essentials/what-are-canisters
-  /docs/current/developer-docs/build/frontend/default-frontend /docs/building-apps/frontends/using-an-asset-canister
-  /docs/current/developer-docs/build/frontend/webpack-config /docs/building-apps/frontends/using-an-asset-canister#modifying-the-webpack-configuration
-  /docs/current/developer-docs/build/install-upgrade-remove /docs/building-apps/getting-started/install
-  /docs/current/developer-docs/build/languages/candid/ /docs/building-apps/interact-with-canisters/candid/candid-concepts
-  /docs/current/developer-docs/build/languages/motoko /docs/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/build/languages/motoko/ /docs/motoko/main/base/
-  /docs/current/developer-docs/build/languages/other-languages/ /docs/building-apps/essentials/what-are-canisters
-  /docs/current/developer-docs/build/languages/rust/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
-  /docs/current/developer-docs/build/languages/rust/rust-intro /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
-  /docs/current/developer-docs/build/languages/work-with-languages /docs/building-apps/essentials/what-are-canisters
-  /docs/current/developer-docs/build/project-setup/cycles-wallet /docs/building-apps/canister-management/topping-up
-  /docs/current/developer-docs/build/project-setup/design-dapps /docs/building-apps/essentials/canisters
-  /docs/current/developer-docs/build/project-setup/manage-canisters /docs/building-apps/canister-management/settings
-  /docs/current/developer-docs/build/troubleshooting /docs/building-apps/getting-started/troubleshooting
-  /docs/current/developer-docs/build/using-an-agent /docs/building-apps/essentials/what-are-canisters
-  /docs/current/developer-docs/chain-fusion/ethereum/siwe /docs/building-apps/authentication/overview
-  /docs/current/developer-docs/cost-estimations-and-examples /docs/building-apps/essentials/cost-estimations-and-examples
 
   ## NNS & SNS
   /docs/current/developer-docs/daos/nns/concepts/neurons-fund https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
@@ -229,7 +254,6 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/cli-tools/dfx-json /docs/building-apps/developer-tools/dfx-json
   /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm-init/dfxvm-init /docs/building-apps/developer-tools/dfxvm/
   /docs/current/developer-docs/developer-tools/cli-tools/networks-json /docs/building-apps/developer-tools/advanced-dfx/networks-json
-
   /docs/current/developer-docs/developer-tools/ide/codespaces /docs/building-apps/developer-tools/ide/icp-ninja
   /docs/current/developer-docs/developer-tools/ide/gitpod /docs/building-apps/developer-tools/ide/icp-ninja
   /docs/current/developer-docs/developer-tools/ide/playground /docs/building-apps/developer-tools/ide/icp-ninja
@@ -273,11 +297,6 @@ const redirects = `
   /docs/current/developer-docs/getting-started/react-quickstart /docs/building-apps/getting-started/quickstart
   /docs/current/developer-docs/getting-started/tokens-and-cycles /docs/building-apps/getting-started/tokens-and-cycles
   /docs/current/developer-docs/getting-started/write-canister-code /docs/building-apps/developing-canisters/write
-
-  /docs/current/developer-docs/http-compatible-canisters/custom-http-canisters /docs/building-apps/network-features/using-http/http-certification/custom-http-canisters
-  /docs/current/developer-docs/http-compatible-canisters/serving-json-over-http /docs/building-apps/network-features/using-http/http-certification/serving-json-over-http
-  /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/building-apps/network-features/using-http/http-certification/serving-static-assets-over-http
-  /docs/current/developer-docs/ic-overview /docs/building-apps/essentials/network-overview
 
   ## Authentication
   /docs/current/developer-docs/identity/authentication/email-password /docs/building-apps/authentication/overview
@@ -443,28 +462,6 @@ const redirects = `
   /docs/current/developer-docs/multichain/ethereum/cketh /docs/defi/chain-key-tokens/cketh/overview
   /docs/current/developer-docs/overview/ /docs/building-apps/essentials/network-overview
 
-  /docs/current/developer-docs/production/best-practices /docs/building-apps/best-practices/general
-  /docs/current/developer-docs/production/canister-history /docs/building-apps/canister-management/history
-  /docs/current/developer-docs/production/canister-recovery /docs/building-apps/canister-management/recovery
-  /docs/current/developer-docs/production/computation-and-storage-costs /docs/building-apps/essentials/gas-cost
-  /docs/current/developer-docs/production/custom-domain/dns-setup /docs/building-apps/frontends/custom-domains/dns-setup
-  /docs/current/developer-docs/production/custom-domain/ /docs/building-apps/frontends/custom-domains/using-custom-domains
-  /docs/current/developer-docs/production/deploying-and-upgrading /docs/building-apps/developing-canisters/deploy/overview
-  /docs/current/developer-docs/production/instruction-limits /docs/building-apps/canister-management/resource-limits
-  /docs/current/developer-docs/production/larger-wasm /docs/building-apps/essentials/what-are-canisters
-  /docs/current/developer-docs/production/resource-limits /docs/building-apps/canister-management/resource-limits
-  /docs/current/developer-docs/production/social-sharing /docs/building-apps/developing-canisters/deploy/overview
-  /docs/current/developer-docs/production/staging-environment /docs/building-apps/developing-canisters/create
-  /docs/current/developer-docs/production/storage /docs/building-apps/canister-management/storage
-  /docs/current/developer-docs/production/system-canisters /docs/references/system-canisters/
-  /docs/current/developer-docs/production/topping-up-canister/ /docs/building-apps/canister-management/topping-up
-  /docs/current/developer-docs/quickstart/cycles-faucet /docs/building-apps/getting-started/tokens-and-cycles
-
-  ## Quickstart
-  /docs/current/developer-docs/quickstart/ /docs/tutorials/developer-liftoff/
-  /docs/current/developer-docs/quickstart/hello10mins/ /docs/tutorials/developer-liftoff/
-  /docs/current/developer-docs/quickstart/windows-wsl /docs/building-apps/getting-started/install
-
   ## Security
   /docs/current/developer-docs/security /docs/building-apps/best-practices/security/inter-canister-calls
   /docs/current/developer-docs/security/formal-verification /docs/building-apps/best-practices/security/formal-verification
@@ -557,7 +554,6 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/encryption/using-vetkeys /docs/building-apps/network-features/encryption/using-vetkeys
   /docs/current/developer-docs/smart-contracts/encryption/vetkeys /docs/building-apps/network-features/encryption/vetkeys
   /docs/current/developer-docs/smart-contracts/install /docs/building-apps/essentials/what-are-canisters
-
   /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/overview/development-cycle /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/overview	/docs/building-apps/essentials/canisters
@@ -640,7 +636,6 @@ const redirects = `
   /docs/developers-guide/sdk-guide.html	/docs/building-apps/getting-started/install
   /docs/developers-guide/sdk-guide /docs/building-apps/getting-started/install
   /docs/developers-guide/troubleshooting /docs/building-apps/getting-started/troubleshooting
-
   /docs/developers-guide/tutorials-intro /docs/motoko/main/getting-started/motoko-introduction
   /docs/developers-guide/tutorials/default-frontend /docs/building-apps/frontends/using-an-asset-canister
   /docs/developers-guide/tutorials/ /docs/motoko/main/getting-started/motoko-introduction
@@ -650,6 +645,39 @@ const redirects = `
   /docs/developers-guide/working-with-canisters.html /docs/building-apps/canister-management/settings
   /docs/developers-guide/working-with-canisters /docs/building-apps/canister-management/settings
 
+  ## Quickstart
+  /docs/quickstart/1-quickstart /docs/building-apps/getting-started/quickstart
+  /docs/quickstart/2-quickstart /docs/building-apps/getting-started/quickstart
+  /docs/quickstart/3-quickstart /docs/building-apps/getting-started/quickstart
+  /docs/quickstart/4-2-convert-icp-to-cycles /docs/building-apps/getting-started/quickstart
+  /docs/quickstart/4-quickstart /docs/building-apps/getting-started/quickstart
+  /docs/quickstart/5-quickstart /docs/building-apps/getting-started/quickstart
+  /docs/quickstart/cycles-faucet /docs/building-apps/getting-started/tokens-and-cycles
+  /docs/quickstart/local-quickstart /docs/building-apps/getting-started/quickstart
+  /docs/quickstart/network-quickstart /docs/building-apps/getting-started/quickstart
+  /docs/quickstart/newcomers /docs/building-apps/getting-started/quickstart
+  /docs/quickstart/quickstart-intro /docs/building-apps/getting-started/quickstart
+  /docs/current/developer-docs/quickstart/ /docs/tutorials/developer-liftoff/
+  /docs/current/developer-docs/quickstart/hello10mins/ /docs/tutorials/developer-liftoff/
+  /docs/current/developer-docs/quickstart/windows-wsl /docs/building-apps/getting-started/install
+
+  ## Samples
+  /docs/samples/codelabs/data-persistence /samples
+  /docs/samples/codelabs/minimalistic-motoko-dapp /samples
+  /docs/samples/codelabs/minimalistic-rust-dapp /samples
+  /docs/samples/codelabs /samples
+  /docs/samples/codelabs/simple-nft /samples
+  /docs/samples/codelabs/static-website /samples
+  /docs/samples/deploying-your-first-bitcoin-dapp /samples
+  /docs/samples/encrypted-notes/	/samples
+  /docs/samples/ /samples
+  /docs/samples/game-of-life /samples
+  /docs/samples/host-a-webgame /samples
+  /docs/samples/host-a-website /samples
+  /docs/samples/internet-identity-sample /samples
+  /docs/samples/nft	/samples
+
+  ## Misc
   /docs/current/home /docs/home
   /docs /docs/home
   /docs/current/references/ii-spec	/docs/references/ii-spec
@@ -672,21 +700,151 @@ const redirects = `
   /docs/local-quickstart.html /docs/building-apps/getting-started/install
   /docs/network-quickstart.html /docs/building-apps/getting-started/install
   /docs/operators-guide/ops-guide /docs/home
-
-  ## Quickstart
-  /docs/quickstart/1-quickstart /docs/building-apps/getting-started/quickstart
-  /docs/quickstart/2-quickstart /docs/building-apps/getting-started/quickstart
-  /docs/quickstart/3-quickstart /docs/building-apps/getting-started/quickstart
-  /docs/quickstart/4-2-convert-icp-to-cycles /docs/building-apps/getting-started/quickstart
-  /docs/quickstart/4-quickstart /docs/building-apps/getting-started/quickstart
-  /docs/quickstart/5-quickstart /docs/building-apps/getting-started/quickstart
-  /docs/quickstart/cycles-faucet /docs/building-apps/getting-started/tokens-and-cycles
-  /docs/quickstart/local-quickstart /docs/building-apps/getting-started/quickstart
-  /docs/quickstart/network-quickstart /docs/building-apps/getting-started/quickstart
-  /docs/quickstart/newcomers /docs/building-apps/getting-started/quickstart
-  /docs/quickstart/quickstart-intro /docs/building-apps/getting-started/quickstart
+  /docs/videos-tutorials /docs/home
+  /education /education-hub
+  /features /capabilities
+  /features/ /capabilities
+  /features/green /capabilities/sustainability
+  /grants	https://dfinity.org/grants
+  /howitworks/ /how-it-works
+  /howitworks /how-it-works
+  /icp-event /events
+  /icp-newsletter /news
+  /language-guide/ /docs/tutorials/developer-liftoff/level-0/intro-languages
+  /language-guide/index /docs/tutorials/developer-liftoff/level-0/intro-languages
+  /language-guide/index /docs/tutorials/developer-liftoff/level-0/intro-languages
+  /live-sessions https://dfinity.org/events-and-news/#videos-live-sessions
+  /motoko/main/motoko /docs/motoko/main/getting-started/motoko-introduction
+  /multichain /chainfusion
+  /ois /sns
+  /openchat /sns
+  /showcase /ecosystem
+  /sustainability /capabilities/sustainability
+  /videos /news
+  /docs/search /docs/home
+  /docs/security-best-practices/ /docs/building-apps/best-practices/security/inter-canister-calls
+  /docs/security-best-practices/introduction /docs/building-apps/best-practices/security/overview
+  /docs/support /docs/home
+  /docs/token-holders/ /docs/defi/overview
+  /docs/token-holders/nns-app-quickstart.html https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
+  /docs/token-holders/seed-donations.html https://wiki.internetcomputer.org/wiki/How-To:_Claim_neurons_for_seed_participants
+  /docs/token-holders/self-custody-quickstart.html /docs/defi/overview
+  /docs/tokenomics/ /docs/building-apps/governing-apps/overview
+  /docs/tokenomics/identity-auth/auth-how-to /docs/building-apps/authentication/overview
+  /docs/tokenomics/identity-auth/what-is-ic-identity /docs/building-apps/authentication/overview
+  /docs/tokenomics/index /docs/building-apps/governing-apps/overview
+  /docs/tokenomics/nns/community-fund https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/tokenomics/nns/neurons-fund https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/tokenomics/nns/nns-intro https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
+  /docs/tokenomics/nns/nns-staking-voting-rewards https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
+  /docs/tokenomics/nns/proposal-requirements https://internetcomputer.zendesk.com/hc/en-us/articles/34084113508500-Proposals
+  /docs/tokenomics/sns/ /docs/building-apps/governing-apps/tokenomics/
+  /docs/tokenomics/sns/sns-intro-tokens	/docs/building-apps/governing-apps/tokenomics/tokenomics-intro
+  /docs/tokenomics/sns/tokenomics /docs/building-apps/governing-apps/tokenomics/
+  /docs/tokenomics/token-holders/custody-options-intro /docs/defi/overview
+  /docs/tokenomics/token-holders/nns-app-quickstart https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
+  /docs/tokenomics/token-holders/self-custody-quickstart /docs/defi/overview
+  /docs/tutorials/ /docs/building-apps/essentials/network-overview
+  /docs/tutorials/index /docs/building-apps/essentials/network-overview
+  /docs/current/developer-docs/production/best-practices /docs/building-apps/best-practices/general
+  /docs/current/developer-docs/production/canister-history /docs/building-apps/canister-management/history
+  /docs/current/developer-docs/production/canister-recovery /docs/building-apps/canister-management/recovery
+  /docs/current/developer-docs/production/computation-and-storage-costs /docs/building-apps/essentials/gas-cost
+  /docs/current/developer-docs/production/custom-domain/dns-setup /docs/building-apps/frontends/custom-domains/dns-setup
+  /docs/current/developer-docs/production/custom-domain/ /docs/building-apps/frontends/custom-domains/using-custom-domains
+  /docs/current/developer-docs/production/deploying-and-upgrading /docs/building-apps/developing-canisters/deploy/overview
+  /docs/current/developer-docs/production/instruction-limits /docs/building-apps/canister-management/resource-limits
+  /docs/current/developer-docs/production/larger-wasm /docs/building-apps/essentials/what-are-canisters
+  /docs/current/developer-docs/production/resource-limits /docs/building-apps/canister-management/resource-limits
+  /docs/current/developer-docs/production/social-sharing /docs/building-apps/developing-canisters/deploy/overview
+  /docs/current/developer-docs/production/staging-environment /docs/building-apps/developing-canisters/create
+  /docs/current/developer-docs/production/storage /docs/building-apps/canister-management/storage
+  /docs/current/developer-docs/production/system-canisters /docs/references/system-canisters/
+  /docs/current/developer-docs/production/topping-up-canister/ /docs/building-apps/canister-management/topping-up
+  /docs/current/developer-docs/quickstart/cycles-faucet /docs/building-apps/getting-started/tokens-and-cycles
+  /docs/current/developer-docs/backend/solidity/ https://docs.bitfinity.network/
+  /docs/current/developer-docs/backend/subnet-types /docs/building-apps/developing-canisters/create
+  /docs/current/developer-docs/backend/troubleshooting /docs/building-apps/getting-started/troubleshooting
+  /docs/current/developer-docs/backend/typescript/ https://demergent-labs.github.io/azle/
+  /docs/current/developer-docs/best-practices/considerations-for-nft-devs /docs/defi/overview
+  /docs/current/developer-docs/build/backend/ /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/build/backend/reproducible-builds /docs/building-apps/best-practices/reproducible-builds
+  /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/  /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
+  /docs/current/developer-docs/build/cdks/cdk-rs-dfinity/rust-quickstart /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
+  /docs/current/developer-docs/build/cdks/ /docs/building-apps/developer-tools/cdks/
+  /docs/current/developer-docs/build/cdks/motoko-dfinity /docs/building-apps/developer-tools/cdks/
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/ /docs/motoko/main/base/
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/motoko/main/reference/language-manual
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/build/ /docs/building-apps/essentials/what-are-canisters
+  /docs/current/developer-docs/build/frontend/default-frontend /docs/building-apps/frontends/using-an-asset-canister
+  /docs/current/developer-docs/build/frontend/webpack-config /docs/building-apps/frontends/using-an-asset-canister#modifying-the-webpack-configuration
+  /docs/current/developer-docs/build/install-upgrade-remove /docs/building-apps/getting-started/install
+  /docs/current/developer-docs/build/languages/candid/ /docs/building-apps/interact-with-canisters/candid/candid-concepts
+  /docs/current/developer-docs/build/languages/motoko /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/build/languages/motoko/ /docs/motoko/main/base/
+  /docs/current/developer-docs/build/languages/other-languages/ /docs/building-apps/essentials/what-are-canisters
+  /docs/current/developer-docs/build/languages/rust/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
+  /docs/current/developer-docs/build/languages/rust/rust-intro /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
+  /docs/current/developer-docs/build/languages/work-with-languages /docs/building-apps/essentials/what-are-canisters
+  /docs/current/developer-docs/build/project-setup/cycles-wallet /docs/building-apps/canister-management/topping-up
+  /docs/current/developer-docs/build/project-setup/design-dapps /docs/building-apps/essentials/canisters
+  /docs/current/developer-docs/build/project-setup/manage-canisters /docs/building-apps/canister-management/settings
+  /docs/current/developer-docs/build/troubleshooting /docs/building-apps/getting-started/troubleshooting
+  /docs/current/developer-docs/build/using-an-agent /docs/building-apps/essentials/what-are-canisters
+  /docs/current/developer-docs/chain-fusion/ethereum/siwe /docs/building-apps/authentication/overview
+  /docs/current/developer-docs/cost-estimations-and-examples /docs/building-apps/essentials/cost-estimations-and-examples
+  /docs/current/developer-docs/http-compatible-canisters/custom-http-canisters /docs/building-apps/network-features/using-http/http-certification/custom-http-canisters
+  /docs/current/developer-docs/http-compatible-canisters/serving-json-over-http /docs/building-apps/network-features/using-http/http-certification/serving-json-over-http
+  /docs/current/developer-docs/http-compatible-canisters/serving-static-assets-over-http  /docs/building-apps/network-features/using-http/http-certification/serving-static-assets-over-http
+  /docs/current/developer-docs/ic-overview /docs/building-apps/essentials/network-overview
+  /docs/current/developer-docs/backend/arguments /docs/building-apps/interact-with-canisters/advanced-calls
+  /docs/current/developer-docs/backend/choosing-language /docs/building-apps/essentials/what-are-canisters
+  /docs/current/developer-docs/backend/design-dapps /docs/building-apps/essentials/canisters
+  /docs/current/developer-docs/backend /docs/building-apps/essentials/network-overview
+  /docs/current/developer-docs/backend/eu-subnets /docs/building-apps/developing-canisters/create
+  /docs/current/developer-docs/backend/periodic-tasks /docs/building-apps/network-features/periodic-tasks-timers
+  /docs/current/developer-docs/backend/python/ https://demergent-labs.github.io/kybra/
+  /docs/current/developer-docs/backend/reproducible-builds /docs/building-apps/best-practices/reproducible-builds
+  /docs/current/developer-docs/backend/resource-limits /docs/building-apps/canister-management/resource-limits
+  /apis/site/proxy /docs/references/http-gateway-protocol-spec
+  /base-libraries/ /docs/motoko/main/base/
+  /basics /what-is-the-ic
+  /bitcoin /bitcoin-integration
+  /bootcamp	/education-hub
+  /community https://linktr.ee/icp_hubs_network
+  /deck-main https://deck.internetcomputer.org
+  /developers-guide.html /docs/tutorials/developer-liftoff/
+  /developers-guide/quickstart.html /docs/tutorials/developer-liftoff/
+  /developers-guide/quickstart /docs/tutorials/developer-liftoff/
+  /developers /docs/home
+  /docs-intro.html /docs/building-apps/getting-started/install
+  /docs.html /docs/building-apps/getting-started/install
+  /docs/backend/candid/generating-candid /docs/building-apps/developer-tools/cdks/rust/generating-candid
+  /docs/base-libraries/ /docs/motoko/main/base/
+  /docs/base-libraries/motoko-base/Text.html	/docs/motoko/main/base/Text
+  /docs/blog/features/vetkey-primer	/blog/features/vetkey-primer
 
   ## References
+  /docs/current/references/asset-canister /docs/references/asset-canister
+  /docs/current/references/bitcoin-how-it-works /docs/references/bitcoin-how-it-works
+  /docs/current/references/candid-ref /docs/references/candid-ref
+  /docs/current/references/ckbtc-reference /docs/references/ckbtc-reference
+  /docs/current/references/dashboard-apis /docs/references/dashboard-apis
+  /docs/current/references/execution-errors /docs/references/execution-errors
+  /docs/current/references/glossary /docs/references/glossary
+  /docs/current/references/http-gateway-protocol-spec /docs/references/http-gateway-protocol-spec
+  /docs/current/references/https-outcalls-how-it-works /docs/references/https-outcalls-how-it-works
+  /docs/current/references/ic-interface-spec /docs/references/ic-interface-spec
+  /docs/current/references/icrc1-standard /docs/references/icrc1-standard
+  /docs/current/references/id-encoding-spec /docs/references/id-encoding-spec
+  /docs/current/references/ii-spec /docs/references/ii-spec
+  /docs/current/references/ledger /docs/references/ledger
+  /docs/current/references/supported-signatures /docs/references/supported-signatures
+  /docs/current/references/index /docs/references/system-canisters/index
+  /docs/current/references/t-sigs-how-it-works /docs/references/t-sigs-how-it-works
+  /docs/current/references/vc-spec /docs/references/vc-spec
+  /docs/current/references/vetkeys-overview /docs/references/vetkeys-overview
   /docs/current/references/cdks /docs/building-apps/developer-tools/cdks/
   /docs/current/references/clang-supported-languages /docs/home
   /docs/current/references/cli-reference/dfx-bootstrap /docs/building-apps/developer-tools/dfx/dfx-bootstrap
@@ -728,6 +886,53 @@ const redirects = `
   /docs/current/references/motoko-ref/ /docs/motoko/main/base/
   /docs/current/references/node-providers/node-metrics https://internetcomputer.zendesk.com/hc/en-us
   /docs/current/references/node-providers/overview https://internetcomputer.zendesk.com/hc/en-us
+
+  ## Quill
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/index https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-parent https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-account-balance https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-ckbtc https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-balance https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-retrieve-btc https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-retrieve-btc-status https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-transfer https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-update-balance https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/ckbtc/quill-ckbtc-withdrawal-address https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-claim-neurons https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-generate https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-get-neuron-info https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-get-proposal-info https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-list-neurons https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-list-proposals https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-neuron-manage https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-neuron-stake https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-public-ids https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-qr-code https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-replace-node-provider-id https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-scanner-qr-code https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-send https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-balance https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-configure-dissolve-delay https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-disburse https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-disburse-maturity https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-follow-neuron https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-get-sale-participation https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-get-swap-refund https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-list-deployed-snses https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-make-proposal https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-make-upgrade-canister-proposal https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-neuron-permission https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-new-sale-ticket https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-pay https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-register-vote https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-split-neuron https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-stake-maturity https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-stake-neuron https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-status https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/sns/quill-sns-transfer https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-transfer https://github.com/dfinity/quill/tree/master/docs/cli-reference
+  /docs/current/developer-docs/developer-tools/cli-tools/quill-cli-reference/quill-update-node-provider https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /docs/current/references/quill-cli-reference/ckbtc/quill-ckbtc-balance https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /docs/current/references/quill-cli-reference/ckbtc/quill-ckbtc-retrieve-btc-status https://github.com/dfinity/quill/tree/master/docs/cli-reference
   /docs/current/references/quill-cli-reference/ckbtc/quill-ckbtc-retrieve-btc https://github.com/dfinity/quill/tree/master/docs/cli-reference
@@ -785,67 +990,6 @@ const redirects = `
   /docs/rust-guide/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/rust-guide/rust-intro /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
 
-  ## Samples
-  /docs/samples/codelabs/data-persistence /samples
-  /docs/samples/codelabs/minimalistic-motoko-dapp /samples
-  /docs/samples/codelabs/minimalistic-rust-dapp /samples
-  /docs/samples/codelabs /samples
-  /docs/samples/codelabs/simple-nft /samples
-  /docs/samples/codelabs/static-website /samples
-  /docs/samples/deploying-your-first-bitcoin-dapp /docs/references/samples/motoko/basic_bitcoin/
-  /docs/samples/encrypted-notes/	/docs/references/samples/motoko/encrypted-notes-dapp/
-  /docs/samples/ /samples
-  /docs/samples/game-of-life /docs/references/samples/motoko/life/
-  /docs/samples/host-a-webgame /docs/references/samples/hosting/unity-webgl-template/
-  /docs/samples/host-a-website /docs/references/samples/hosting/static-website/
-  /docs/samples/internet-identity-sample /docs/references/samples/motoko/internet_identity_integration/
-  /docs/samples/nft	/docs/defi/nft-collections
-  /docs/search /docs/home
-  /docs/security-best-practices/ /docs/building-apps/best-practices/security/inter-canister-calls
-  /docs/security-best-practices/introduction /docs/building-apps/best-practices/security/overview
-  /docs/support /docs/home
-  /docs/token-holders/ /docs/defi/overview
-  /docs/token-holders/nns-app-quickstart.html https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
-  /docs/token-holders/seed-donations.html https://wiki.internetcomputer.org/wiki/How-To:_Claim_neurons_for_seed_participants
-  /docs/token-holders/self-custody-quickstart.html /docs/defi/overview
-  /docs/tokenomics/ /docs/building-apps/governing-apps/overview
-  /docs/tokenomics/identity-auth/auth-how-to /docs/building-apps/authentication/overview
-  /docs/tokenomics/identity-auth/what-is-ic-identity /docs/building-apps/authentication/overview
-  /docs/tokenomics/index /docs/building-apps/governing-apps/overview
-  /docs/tokenomics/nns/community-fund https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
-  /docs/tokenomics/nns/neurons-fund https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
-  /docs/tokenomics/nns/nns-intro https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
-  /docs/tokenomics/nns/nns-staking-voting-rewards https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
-  /docs/tokenomics/nns/proposal-requirements https://internetcomputer.zendesk.com/hc/en-us/articles/34084113508500-Proposals
-  /docs/tokenomics/sns/ /docs/building-apps/governing-apps/tokenomics/
-  /docs/tokenomics/sns/sns-intro-tokens	/docs/building-apps/governing-apps/tokenomics/tokenomics-intro
-  /docs/tokenomics/sns/tokenomics /docs/building-apps/governing-apps/tokenomics/
-  /docs/tokenomics/token-holders/custody-options-intro /docs/defi/overview
-  /docs/tokenomics/token-holders/nns-app-quickstart https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
-  /docs/tokenomics/token-holders/self-custody-quickstart /docs/defi/overview
-  /docs/tutorials/ /docs/building-apps/essentials/network-overview
-  /docs/tutorials/index /docs/building-apps/essentials/network-overview
-  /docs/videos-tutorials /docs/home
-  /education /education-hub
-  /features /capabilities
-  /features/ /capabilities
-  /features/green /capabilities/sustainability
-  /grants	https://dfinity.org/grants
-  /howitworks/ /how-it-works
-  /howitworks /how-it-works
-  /icp-event /events
-  /icp-newsletter /news
-  /language-guide/ /docs/tutorials/developer-liftoff/level-0/intro-languages
-  /language-guide/index /docs/tutorials/developer-liftoff/level-0/intro-languages
-  /language-guide/index /docs/tutorials/developer-liftoff/level-0/intro-languages
-  /live-sessions https://dfinity.org/events-and-news/#videos-live-sessions
-  /motoko/main/motoko /docs/motoko/main/getting-started/motoko-introduction
-  /multichain /chainfusion
-  /ois /sns
-  /openchat /sns
-  /showcase /ecosystem
-  /sustainability /capabilities/sustainability
-  /videos /news
   `
 
   .split(/[\r\n]+/)

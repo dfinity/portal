@@ -123,7 +123,7 @@ function FeaturePage() {
             <CardWithDescription
               title="Build dapps with the language of your choice"
               description="Install SDKs to build dapps."
-              href="/docs/building-apps/developing-canisters/what-is-a-canister"
+              href="/docs/building-apps/developing-canisters/what-are-canisters"
             />
             <CardWithDescription
               title="Community Conversation"

@@ -164,7 +164,7 @@ function FeaturePage() {
             <CardWithDescription
               title="Build dapps with the language of your choice"
               description="Learch about programming languages on the ICP."
-              href="/docs/building-apps/developing-canisters/what-is-a-canister"
+              href="/docs/building-apps/developing-canisters/what-are-canisters"
             />
             <CardWithDescription
               title="Sample Code"

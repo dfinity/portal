@@ -590,7 +590,7 @@ const DocsHomePage: FC = () => {
             </p>
             <Link
               className="button-primary rounded-2xl"
-              href="/docs/building-apps/developing-canisters/what-is-a-canister"
+              href="/docs/building-apps/developing-canisters/what-are-canisters"
             >
               View all
             </Link>
