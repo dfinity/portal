@@ -28,7 +28,7 @@ const ANIMATION_INTERVAL = 50; // 50ms for smooth counting
 function formatNumber(x: number) {
   return x
     .toLocaleString("en-US", {
-      maximumFractionDigits: 0,
+      maximumFractionDigits: 2,
     })
     .replace(/,/g, "\u2019");
 }
@@ -199,7 +199,7 @@ export const EthEquivalentTxRate = () => {
 
   const updateTxRate = useQuery(
     ["getUpdateTxRate"],
-    () => updateRateWithJitter().then((rate) => rate * multiplierQuery.data),
+    () => updateRateWithJitter().then((rate) => multiplierQuery.data),
     {
       refetchInterval: 1000,
 
@@ -226,7 +226,7 @@ export const EthEquivalentTxRate = () => {
                 className="text-left col-start-1 row-start-1"
               ></SpringCounter>
               <span className="md:hidden col-start-1 row-start-1 invisible pointer-events-none pr-[2px]">
-                {getFigureSpacer(Math.floor(updateTxRate.data))}
+                {getFigureSpacer(updateTxRate.data)}
               </span>
             </>
           ) : (
