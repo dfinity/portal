@@ -1027,6 +1027,7 @@ const redirects = `
 
 
 
+
   exports.getRedirects = function () {
     return redirects
       .filter((r) => !isSplat(r) && !isExternal(r) && !isExactUrl(r))
