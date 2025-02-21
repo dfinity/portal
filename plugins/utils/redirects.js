@@ -996,8 +996,7 @@ const redirects = `
   }
 
   function ruleToRedirect(rule) {
-    // Remove trailing slashes from the 'from' URL
-    let from = rule[0].replace(/(.+)\/$/, "$1");
+    const from = rule[0].replace(/(.+)\/$/, "$1");
     const to = rule[1];
     return {
       from,
@@ -1029,7 +1028,7 @@ const redirects = `
     const urls = [];
 
     for (const redirect of redirects.filter(
-      (r) => isSplat(r) && !isExternal(r) && !isExactUrl(r)
+      (r) => isSplat(r) && !isExternal(r)
     )) {
       const trimmedSource = redirect[0].replace("/*", "/");
 
