@@ -5184,7 +5184,7 @@
   {
     "id": "BlockID",
     "name": "BlockID",
-    "logo": "/img/showcase/blockid_-_one_id_infinite_trust_logo.svg",
+    "logo": "/img/showcase/blockid_-_one_id_infinite_trust_logo.png",
     "tags": [
       "DeFi",
       "Wallet",
@@ -5200,7 +5200,7 @@
   {
     "id": "IC-Solana-Gateway",
     "name": "IC-Solana Gateway",
-    "logo": "/img/showcase/ic-solana_gateway_logo.svg",
+    "logo": "/img/showcase/ic-solana_gateway_logo.png",
     "tags": [
       "Chain Fusion",
       "Tools / Infrastructure"
