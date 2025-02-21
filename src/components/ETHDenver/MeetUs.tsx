@@ -65,22 +65,6 @@ const MeetUs: FC<{
           variants={transitions.item}
         >
           <CtaCard
-            title="ICP<br>Ninja"
-            description="Enter the Dojo and Master the Art of Smart Contracts"
-            backgroundColor={['#D897B4', '#F7016E']}
-            backgroundSegments={[
-              [2, 1],
-              [1],
-              [1, 2],
-            ]}
-            href="https://icp.ninja/"
-          />
-        </AnimateSpawn>
-        <AnimateSpawn
-          className="md:w-1/3"
-          variants={transitions.item}
-        >
-          <CtaCard
             title="Onchain<br>AI"
             description="Leverage the power of Decentralized AI and the Self-Writing Internet"
             backgroundColor={['#F6D43C', '#D897B4']}
@@ -90,6 +74,22 @@ const MeetUs: FC<{
               [5, 1],
             ]}
             href="/ai"
+          />
+        </AnimateSpawn>
+        <AnimateSpawn
+          className="md:w-1/3"
+          variants={transitions.item}
+        >
+          <CtaCard
+            title="ICP<br>Ninja"
+            description="Enter the Dojo and Master the Art of Smart Contracts"
+            backgroundColor={['#D897B4', '#F7016E']}
+            backgroundSegments={[
+              [2, 1],
+              [1],
+              [1, 2],
+            ]}
+            href="https://icp.ninja/"
           />
         </AnimateSpawn>
       </div>
