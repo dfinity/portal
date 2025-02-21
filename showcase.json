@@ -5177,14 +5177,10 @@
     "display": "Normal",
     "id": "beproactive",
     "oneLiner": "Track and share your daily workouts with the community and friends.",
-    "stats": "4+",
     "tags": [
       "SocialFi"
     ],
     "usesInternetIdentity": true,
-    "github": "https://github.com/samlinux-development/beProActive",
-    "twitter": "",
-    "youtube": "",
-    "submittableId": ""
+    "github": "https://github.com/samlinux-development/beProActive"
   }
 ]
