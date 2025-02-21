@@ -344,8 +344,12 @@ function AIPage() {
               href: "https://dfinity.org/grants",
             },
             {
-              label: "Search for answers Contribute to AI Agent Frameworks",
+              label: "Contribute to AI Agent Frameworks",
               href: "https://github.com/dfinity/grant-rfps/issues/62",
+            },
+            {
+              label: "Learn about LLM Canister",
+              href: "https://forum.dfinity.org/t/introducing-the-llm-canister-deploy-ai-agents-with-a-few-lines-of-code/41424",
             },
             {
               label: "Join the DeAI Working Group",
