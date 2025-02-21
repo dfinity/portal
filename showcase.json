@@ -5180,5 +5180,26 @@
     "twitter": "https://x.com/CoreLedger",
     "usesInternetIdentity": true,
     "display": "Normal"
-  }
+  },
+  {
+    "name": "Secure Image Chain",
+    "description": "Secure Image Chain is a blockchain-based platform that allows users to securely send and share images. By using our platform, users also earn DFileX (DFX) tokens for their engagement. Built on the ICP blockchain, it provides a fully decentralized and secure environment for image sharing  user data.",
+    "website": "https://secureimagechain.com",
+    "logo": "/img/showcase/secure-image-chain_logo.webp",
+    "screenshots": [
+      "/img/showcase/secure-image-chain_screenshot.webp"
+    ],
+    "display": "Normal",
+    "id": "secure-image-chain",
+    "oneLiner": "Send images fully  on  blockchain securely and earn DFX tokens.",
+    "stats": "1000+ Members on OpenChat",
+    "tags": [
+      "SocialFi",
+      "DeFi"
+    ],
+    "usesInternetIdentity": true,
+    "twitter": "https://x.com/SecureChainDFX"
+
+    
+  } 
 ]
