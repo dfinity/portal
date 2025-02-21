@@ -5,15 +5,13 @@ import { motion } from "framer-motion";
 import CodeBlockString from "@site/src/theme/CodeBlock/Content/String";
 
 const codeSnippets: Record<string, string> = {
-  motoko: `
-    import LLM "mo:llm";
+  motoko: `import LLM "mo:llm";
 
-    await LLM.prompt(#Llama3_1_8B, "What's the speed of light?")
+await LLM.prompt(#Llama3_1_8B, "What's the speed of light?")
   `,
-  rust: `
-    use ic_llm::Model;
+  rust: `use ic_llm::Model;
 
-    ic_llm::prompt(Model::Llama3_1_8B, "What's the speed of light?").await;
+ic_llm::prompt(Model::Llama3_1_8B, "What's the speed of light?").await;
   `,
 };
 

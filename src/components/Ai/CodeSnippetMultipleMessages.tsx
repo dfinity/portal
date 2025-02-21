@@ -5,37 +5,35 @@ import { motion, AnimatePresence } from "framer-motion";
 import CodeBlockString from "@site/src/theme/CodeBlock/Content/String";
 
 const codeSnippets: Record<string, string> = {
-  motoko: `
-    import LLM "mo:llm";
+  motoko: `import LLM "mo:llm";
 
-    await LLM.chat(#Llama3_1_8B, [
-      {
-        role = #system_;
-        content = "You are a helpful assistant.";
-      },
-      {
-        role = #user;
-        content = "How big is the sun?";
-      }
-    ]);
+  await LLM.chat(#Llama3_1_8B, [
+    {
+      role = #system_;
+      content = "You are a helpful assistant.";
+    },
+    {
+      role = #user;
+      content = "How big is the sun?";
+    }
+  ]);
   `,
-  rust: `
-    use ic_llm::{Model, ChatMessage, Role};
+  rust: `use ic_llm::{Model, ChatMessage, Role};
 
-    ic_llm::chat(
-      Model::Llama3_1_8B,
-      vec![
-          ChatMessage {
-              role: Role::System,
-              content: "You are a helpful assistant".to_string(),
-          },
-          ChatMessage {
-              role: Role::User,
-              content: "How big is the sun?".to_string(),
-          },
-      ],
-    )
-    .await;
+  ic_llm::chat(
+  Model::Llama3_1_8B,
+  vec![
+      ChatMessage {
+          role: Role::System,
+          content: "You are a helpful assistant".to_string(),
+      },
+      ChatMessage {
+          role: Role::User,
+          content: "How big is the sun?".to_string(),
+      },
+  ],
+  )
+  .await;
   `,
 };
 

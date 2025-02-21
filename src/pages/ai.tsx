@@ -104,7 +104,7 @@ const news = [
     dateHuman: "Aug 15, 2024",
     details:
       "Dominic Williams, Dfinity's founder and Chief Scientist, recently sat down for a fireside chat with Tony Tran-Hale, who joined Dfinity as Head of Institutional Relations in May. The topic was AI, specifically what Dom thinks of the current landscape.",
-    url: "https://medium.com/dfinity/the-current-state-of-ai-x-blockchain-and-whats-next-4f3e2b1a5f2d",
+    url: "https://medium.com/dfinity/the-current-state-of-ai-x-blockchain-and-whats-next-f1b7b6fd6184",
     imageUrl: "/img/decentralized-ai/news-9.webp",
     linkLabel: "Read Now",
   },
@@ -323,15 +323,14 @@ function AIPage() {
                       className="tw-heading-5 md:tw-heading-4 mb-3 sm:mb-6 "
                       variants={transitions.item}
                     >
-                      Facial recognition is live!
+                      AI Facial recognition fully onchain
                     </motion.h5>
                     <motion.p>
-                      ICP just reached its latest milestone, Cyclotron, which
-                      focused on performance. Optimizations have been
-                      implemented in the WebAssembly and AI inference engines,
-                      which are expected to increase the speed of inference by
-                      10X or more. The first use case is facial recognition, run
-                      fully onchain.
+                      With the Cyclotron tech milestone, which focused on
+                      performance, optimizations have been implemented in the
+                      WebAssembly and AI inference engines. The speed of
+                      inference can be increased by 10X or more. The first use
+                      case is facial recognition, run fully onchain.
                     </motion.p>
                     <p className="mb-12 md:mb-0 mt-8">
                       <Link
@@ -521,7 +520,7 @@ let result = model.run(
               <h3 className="tw-lead my-3 md:tw-title-sm">
                 Data confidentiality
               </h3>
-              <p className="tw-paragraph-sm text-black/60  mb-0">
+              <p className="tw-paragraph-sm md:tw-paragraph  text-black/60  mb-0">
                 During training and operation, AI models handle sensitive data,
                 like medical inquiries or corporate secrets. Users need
                 guarantees that their information remains secure and doesn't
@@ -539,7 +538,7 @@ let result = model.run(
                 className="h-24"
               />
               <h3 className="tw-lead my-3 md:tw-title-sm">Availability</h3>
-              <p className="tw-paragraph-sm text-black/60  mb-0">
+              <p className="tw-paragraph-sm md:tw-paragraph  text-black/60  mb-0">
                 AI models will become essential for business processes and
                 societies in general. As with every critical infrastructure,
                 solutions must be found to keep AI models resilient to
