@@ -569,7 +569,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/signatures/signing-transactions /docs/building-apps/network-features/signatures/t-ecdsa
   /docs/current/developer-docs/smart-contracts/signatures/t-ecdsa /docs/building-apps/network-features/signatures/t-ecdsa
   /docs/current/developer-docs/smart-contracts/signatures/t-schnorr /docs/building-apps/network-features/signatures/t-schnorr
-  /docs/current/developer-docs/smart-contracts/test/benchmarking /docs/building-apps/developer-tools/canbench
+  /docs/current/developer-docs/smart-contracts/test/benchmarking /docs/building-apps/advanced/benchmarking
   /docs/current/developer-docs/smart-contracts/test/overview /docs/building-apps/advanced/test/overview
   /docs/current/developer-docs/smart-contracts/test/pocket-ic /docs/building-apps/advanced/test/pocket-ic
   /docs/current/developer-docs/smart-contracts/test/reproducible-builds /docs/building-apps/best-practices/reproducible-builds
