@@ -58,14 +58,22 @@ const Hero: FC<{
                 </motion.p>
 
                 <motion.p
-                  className="flex flex-col md:flex-row gap-8"
+                  className="flex flex-col items-center flex-wrap md:flex-row gap-8"
                   variants={transitions.item}
                 >
                   <Link
-                    href="#"
+                    href="https://lu.ma/v7p01asi"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="button-primary"
+                  >
+                    Register now
+                  </Link>
+                  <Link
+                    href="https://www.ethdenver.com/buidl/buidlathon"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="link-primary"
                   >
                     Join the Hackathon
                   </Link>
