@@ -1397,7 +1397,7 @@ While an implementation will likely try to keep the interval between the value o
 #### On Low Wasm Memory {#on-low-wasm-memory}
 
 A canister can export a function with the name `canister_on_low_wasm_memory`, which is scheduled whenever the canister's remaining wasm memory size in bytes falls from at least a threshold `t` to strictly less than `t`.
-The threshold `t` can be defined in the field `wasm_memory_threshold` in the [canister's settings](#ic-canister_status) and by default it is set to 0.
+The threshold `t` can be defined in the field `wasm_memory_threshold` in the [canister's settings](#ic-update_settings) and by default it is set to 0.
 
 :::note
 
@@ -4127,6 +4127,40 @@ The IC can execute any message that is at the head of its queue, i.e. there is n
 
 Note that new messages are executed only if the canister is Running and is not frozen.
 
+#### Scheduling on low wasm memory hook {#rule-on-low-wasm-memory}
+
+This transition is executed immediately after [Message execution](#rule-message-execution) and IC Management Canister execution (update call).
+
+Conditions
+
+```html
+Total_memory_usage = memory_usage_wasm_state(S.canisters[C].wasm_state) +
+  memory_usage_raw_module(S.canisters[C].raw_module) +
+  memory_usage_canister_history(S.canister_history[C]) +
+  memory_usage_chunk_store(S.chunk_store[C]) +
+  memory_usage_snapshot(S.snapshots[C])
+
+if S.memory_allocation[C] = 0:
+  Wasm_memory_capacity = S.wasm_memory_limit[C]
+else:
+  Wasm_memory_capacity = min(S.memory_allocation[C] - (Total_memory_usage - |S.canisters[C].wasm_state.store.mem|), S.wasm_memory_limit[C])
+
+if Wasm_memory_capacity < |S.canisters[C].wasm_state.store.mem| + S.wasm_memory_threshold[C]:
+  if S.on_low_wasm_memory_hook_status[C] = ConditionNotSatisfied:
+    On_low_wasm_memory_hook_status = Ready
+  else:
+    On_low_wasm_memory_hook_status = S.on_low_wasm_memory_hook_status[C]
+else:
+  On_low_wasm_memory_hook_status = ConditionNotSatisfied
+```
+
+State after
+
+```html
+S with
+  on_low_wasm_memory_hook_status[C] = On_low_wasm_memory_hook_status
+```
+
 #### Message execution {#rule-message-execution}
 
 The transition models the actual execution of a message, whether it is an initial call to a public method or a response. In either case, a call context already exists (see transition "Call context creation").
@@ -4291,21 +4325,6 @@ then
     reserved_balances[M.receiver] = New_reserved_balance
 
     canister_logs[M.receiver] = S.canister_logs[M.receiver] · canister_logs
-
-    if S.memory_allocation[M.receiver] = 0:
-      Wasm_memory_capacity = S.wasm_memory_limit[M.receiver]
-    else:
-      Wasm_memory_capacity = min(S.memory_allocation[M.receiver] - (Total_memory_usage - |res.new_state.store.mem|), S.wasm_memory_limit[M.receiver])
-
-    if Wasm_memory_capacity < |New_state.store.mem| + S.wasm_memory_threshold[M.receiver]:
-      if S.on_low_wasm_memory_hook_status[M.receiver] = ConditionNotSatisfied:
-        On_low_wasm_memory_hook_status = Ready
-      else:
-        On_low_wasm_memory_hook_status = S.on_low_wasm_memory_hook_status[M.receiver]
-    else:
-      On_low_wasm_memory_hook_status = ConditionNotSatisfied
-
-    on_low_wasm_memory_hook_status[M.receiver] = On_low_wasm_memory_hook_status
 else
   S with
     messages = Older_messages · Younger_messages
@@ -4613,19 +4632,6 @@ if New_memory_allocation > 0:
 if New_wasm_memory_limit > 0:
   |S.canisters[A.canister_id].wasm_state.store.mem| ≤ New_wasm_memory_limit
 
-if New_memory_allocation = 0:
-  Wasm_memory_capacity = New_wasm_memory_limit
-else:
-  Wasm_memory_capacity = min(New_memory_allocation - (Total_memory_usage - |S.canisters[A.canister_id].wasm_state.store.mem|), New_wasm_memory_limit)
-
-if Wasm_memory_capacity < |S.canisters[A.canister_id].wasm_state.store.mem| + New_wasm_memory_threshold:
-  if S.on_low_wasm_memory_hook_status[A.canister_id] = ConditionNotSatisfied:
-    On_low_wasm_memory_hook_status = Ready
-  else:
-    On_low_wasm_memory_hook_status = S.on_low_wasm_memory_hook_status[A.canister_id]
-else:
-  On_low_wasm_memory_hook_status = ConditionNotSatisfied
-
 if A.settings.compute_allocation is not null:
   New_compute_allocation = A.settings.compute_allocation
 else:
@@ -4695,7 +4701,6 @@ S' = S with
     reserved_balance_limits[A.canister_id] = New_reserved_balance_limit
     wasm_memory_limit[A.canister_id] = New_wasm_memory_limit
     wasm_memory_threshold[A.canister_id] = New_wasm_memory_threshold
-    on_low_wasm_memory_hook_status[A.canister_id] = On_low_wasm_memory_hook_status
     canister_version[A.canister_id] = S.canister_version[A.canister_id] + 1
     if A.settings.log_visibility is not null:
       canister_log_visibility[A.canister_id] = A.settings.log_visibility
@@ -4981,19 +4986,6 @@ if S.memory_allocation[A.canister_id] > 0:
 
 (S.wasm_memory_limit[A.canister_id] = 0) or |New_state.store.mem| <= S.wasm_memory_limit[A.canister_id]
 
-if S.memory_allocation[A.canister_id] = 0:
-  Wasm_memory_capacity = S.wasm_memory_limit[A.canister_id]
-else:
-  Wasm_memory_capacity = min(S.memory_allocation[A.canister_id] - (Total_memory_usage - |New_state.store.mem|), S.wasm_memory_limit[A.canister_id])
-
-if Wasm_memory_capacity < |New_state.store.mem| + S.wasm_memory_threshold[A.canister_id]:
-  if S.on_low_wasm_memory_hook_status[A.canister_id] = ConditionNotSatisfied:
-    On_low_wasm_memory_hook_status = Ready
-  else:
-    On_low_wasm_memory_hook_status = S.on_low_wasm_memory_hook_status[A.canister_id]
-else:
-  On_low_wasm_memory_hook_status = ConditionNotSatisfied
-
 S.canister_history[A.canister_id] = {
   total_num_changes = N;
   recent_changes = H;
@@ -5035,7 +5027,6 @@ S' = S with
     reserved_balances[A.canister_id] = New_reserved_balance
     canister_history[A.canister_id] = New_canister_history
     canister_logs[A.canister_id] = canister_logs
-    on_low_wasm_memory_hook_status[A.canister_id] = On_low_wasm_memory_hook_status
     messages = Older_messages · Younger_messages ·
       ResponseMessage {
         origin = M.origin;
@@ -5160,19 +5151,6 @@ if S.memory_allocation[A.canister_id] > 0:
 
 (S.wasm_memory_limit[A.canister_id] = 0) or |New_state.store.mem| <= S.wasm_memory_limit[A.canister_id]
 
-if S.memory_allocation[A.canister_id] = 0:
-  Wasm_memory_capacity = S.wasm_memory_limit[A.canister_id]
-else:
-  Wasm_memory_capacity = min(S.memory_allocation[A.canister_id] - (Total_memory_usage - |New_state.store.mem|), S.wasm_memory_limit[A.canister_id])
-
-if Wasm_memory_capacity < |New_state.store.mem| + S.wasm_memory_threshold[A.canister_id]:
-  if S.on_low_wasm_memory_hook_status[A.canister_id] = ConditionNotSatisfied:
-    On_low_wasm_memory_hook_status = Ready
-  else:
-    On_low_wasm_memory_hook_status = S.on_low_wasm_memory_hook_status[A.canister_id]
-else:
-  On_low_wasm_memory_hook_status = ConditionNotSatisfied
-
 S.canister_history[A.canister_id] = {
   total_num_changes = N;
   recent_changes = H;
@@ -5216,7 +5194,6 @@ S' = S with
     reserved_balances[A.canister_id] = New_reserved_balance;
     canister_history[A.canister_id] = New_canister_history
     canister_logs[A.canister_id] = S.canister_logs[A.canister_id] · canister_logs
-    on_low_wasm_memory_hook_status[A.canister_id] = On_low_wasm_memory_hook_status
     messages = Older_messages · Younger_messages ·
       ResponseMessage {
         origin = M.origin;
