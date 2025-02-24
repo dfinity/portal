@@ -4978,7 +4978,7 @@ liquid_balance(S', A.canister_id) ≥ 0
 Total_memory_usage = memory_usage_wasm_state(New_state) +
   memory_usage_raw_module(A.wasm_module) +
   memory_usage_canister_history(New_canister_history) +
-  memory_usage_chunk_store(New_chunk_store) +
+  memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
   memory_usage_snapshot(S.snapshots[A.canister_id])
 
 if S.memory_allocation[A.canister_id] > 0:
@@ -5143,7 +5143,7 @@ liquid_balance(S', A.canister_id) ≥ 0
 Total_memory_usage = memory_usage_wasm_state(New_state) +
   memory_usage_raw_module(A.wasm_module) +
   memory_usage_canister_history(New_canister_history) +
-  memory_usage_chunk_store(S[A.canister_id].chunk_store) +
+  memory_usage_chunk_store(S.chunk_store[A.canister_id]) +
   memory_usage_snapshot(S.snapshots[A.canister_id])
 
 if S.memory_allocation[A.canister_id] > 0:
@@ -7143,11 +7143,9 @@ global_timer = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
 
     otherwise it is
 
-```html
-
-on_low_wasm_memory = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
-
-```
+    ```html
+    on_low_wasm_memory = λ (sysenv) → λ wasm_state → Trap {cycles_used = 0;}
+    ```
 
 -   The function `callbacks` of the `CanisterModule` is defined as follows
     ```
