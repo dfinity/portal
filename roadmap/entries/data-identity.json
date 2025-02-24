@@ -116,17 +116,6 @@
       "milestone_id": "Plexus"
     },
     {
-      "title": "Resident passkeys",
-      "overview": "Explore the potential of resident passkeys to remove the requirement for users to remember their identity numbers.",
-      "status": "",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": ""
-    },
-    {
       "title": "ICP DID (Decentralised Identifier) method",
       "overview": "Specify a canonical ICP DID method for DID creation, resolution, update, delegation and deletion.",
       "status": "",
