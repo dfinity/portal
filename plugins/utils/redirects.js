@@ -709,7 +709,7 @@ const redirects = `
   /docs/security-best-practices/introduction /docs/building-apps/best-practices/security/overview
   /docs/support /docs/home
   /docs/token-holders/ /docs/defi/overview
-  /docs/token-holders/nns-app-quickstart.html /docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-quickstart
+  /docs/token-holders/nns-app-quickstart.html /docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-app-quickstart
   /docs/token-holders/seed-donations.html https://wiki.internetcomputer.org/wiki/How-To:_Claim_neurons_for_seed_participants
   /docs/token-holders/self-custody-quickstart.html /docs/defi/overview
   /docs/tokenomics/ /docs/building-apps/governing-apps/overview
@@ -720,12 +720,12 @@ const redirects = `
   /docs/tokenomics/nns/neurons-fund /docs/building-apps/governing-apps/nns/concepts/neurons/neuron-overview
   /docs/tokenomics/nns/nns-intro /docs/building-apps/governing-apps/nns/overview
   /docs/tokenomics/nns/nns-staking-voting-rewards /docs/building-apps/governing-apps/nns/concepts/neurons/neuron-overview
-  /docs/tokenomics/nns/proposal-requirements /docs/building-apps/governing-apps/nns/concepts/proposals/proposal-overview34084113508500-Proposals
+  /docs/tokenomics/nns/proposal-requirements /docs/building-apps/governing-apps/nns/concepts/proposals/proposal-overview
   /docs/tokenomics/sns/ /docs/building-apps/governing-apps/tokenomics/
   /docs/tokenomics/sns/sns-intro-tokens	/docs/building-apps/governing-apps/tokenomics/tokenomics-intro
   /docs/tokenomics/sns/tokenomics /docs/building-apps/governing-apps/tokenomics/
   /docs/tokenomics/token-holders/custody-options-intro /docs/defi/overview
-  /docs/tokenomics/token-holders/nns-app-quickstart /docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-quickstart
+  /docs/tokenomics/token-holders/nns-app-quickstart /docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-app-quickstart
   /docs/tokenomics/token-holders/self-custody-quickstart /docs/defi/overview
   /docs/tutorials/ /docs/building-apps/essentials/network-overview
   /docs/tutorials/index /docs/building-apps/essentials/network-overview
