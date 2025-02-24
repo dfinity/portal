@@ -15,31 +15,56 @@ import Tabs from "@theme/Tabs";
 
 <MarkdownChipRow labels={["Beginner", "Getting started", "Tutorial"]} />
 
-Canisters are an enhanced type of smart contract. Before a canister is deployed to ICP, the canister's code is compiled into a WebAssembly (Wasm) program, enabling it to store persistent data, be managed by entities such as DAOs, host entire applications, and more. Each canister has the following components:
+ICP supports a wide range of applications and architecture types. They can range from a single canister to complex, multi-<GlossaryTooltip>canister</GlossaryTooltip> projects and everything in between.
 
-<div class="text--center">
-<img src="/img/docs/inside-canister.png" alt="Canister" width="600"/>
-</div>
+You can begin writing and structuring your application using one of two primary workflows:
 
-[Learn more about canister components](/docs/building-apps/essentials/canisters).
+- **Standard workflow**: The developer writes both the frontend and backend code, then deploys both to ICP as canisters.
 
-## Canister development kits (CDKs)
+- **Framework-based workflow**: An external framework is used to help facilitate creating and deploying canisters. [Learn more about frameworks](#framework-based-workflow).
 
-A canister development kit (CDK) can be used to write the code for a canister. CDKs provide build scripts that compile the canister code into Wasm programs that are compatible with ICP.
+### Standard workflow
 
-Available CDKs include:
+#### Choosing the programming language for the backend
 
-- [Motoko](/docs/motoko/main/getting-started/motoko-introduction): ICP's native programming language. By default, Motoko is installed with the IC SDK.
+The backend stores the application’s data and contains the core logic.
+Several languages are supported, such as:
 
-- [Rust CDK](https://github.com/dfinity/cdk-rs): Developed and maintained by DFINITY.
+- **[Motoko](/docs/motoko/main/getting-started/motoko-introduction)**: Supported by [DFINITY](https://github.com/dfinity/motoko). Motoko is production-ready and was specifically designed to onboard developers onto ICP and leverage the actor-based programming model of ICP. It is a high-level language with a garbage collector and syntax that is similar to TypeScript.
+Examples of production canisters that use Motoko include [ICDex](https://github.com/iclighthouse/ICDex) and [CycleOps](https://github.com/CycleOperators/cycles-manager). [Learn more about using Motoko](/docs/motoko/main/getting-started/motoko-introduction).
 
-- [Azle: TypeScript CDK](https://demergent-labs.github.io/azle/)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to [install and use Kybra](https://demergent-labs.github.io/kybra/).
+- **[Rust](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust)**: Supported by [DFINITY](https://github.com/dfinity/cdk-rs). Currently, Rust is the language with the most production coverage for ICP applications.
+All system canisters, such as [the DAO governing ICP](https://github.com/dfinity/ic/tree/master/rs/nns), [the ICP ledger](https://github.com/dfinity/ic/tree/master/rs/ledger_suite/icp), and the [Bitcoin](https://github.com/dfinity/bitcoin-canister) and [Ethereum](https://github.com/dfinity/ic/tree/master/rs/ethereum) integration canisters, are written in Rust. This language gives the developer full control over all aspects of the canister, starting from performance to memory management.
+The only disadvantage of Rust is that it is lower-level compared to other languages and requires more expert programming skills to write safe and secure code.
+[Learn more about using Rust](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust).
 
-- [Kybra: Python CDK](https://demergent-labs.github.io/kybra/)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to [install and use Azle](https://demergent-labs.github.io/azle//).
+- **TypeScript (beta)**: Supported by [Demergent Labs](https://github.com/demergent-labs) under the name Azle. Azle is in beta. Please check [the Azle website](https://demergent-labs.github.io/azle/) for more information.
 
-- [Bitfinity EVM for Solidity](https://docs.bitfinity.network/)  <span style={{ display: 'inline-block', verticalAlign: 'super' }}><BetaChip /></span>  : Learn more about how to use the [Bitfinity EVM](https://docs.bitfinity.network/ic-agent/overview).
+- **Python (beta)**: Supported by [Demergent Labs](https://github.com/demergent-labs) under the name Kybra. Kybra is in beta. Please check [the Kybra website](https://demergent-labs.github.io/kybra/kybra.html) for more information.
 
-- [C++ CDK](https://docs.icpp.world/): Supported through the [ICPP-pro CDK](https://docs.icpp.world/installation.html).
+- **[C++](https://docs.icpp.world/)**: Supported through the [C++ CDK](https://docs.icpp.world/).
+
+#### Choosing a web framework for the frontend
+
+The [HTTP Gateway protocol](/docs/references/http-gateway-protocol-spec) of ICP allows browsers to load web assets such as JS, HTML, and CSS from a canister via HTTP.
+This means that [web assets can be stored fully onchain](/docs/building-apps/frontends/using-an-asset-canister) and developers don’t need to use traditional centralized web hosting to serve the UI of their application.
+
+[Svelte](https://svelte.dev/), [React](https://react.dev/), and [Vue](https://vuejs.org/) have been used successfully in production. `dfx v0.17.0` and newer can be used to generate project templates that include one of these frameworks.
+
+Having no frontend at all is also a valid option for canisters that don’t have a UI and are callable only by users or other canisters. [Learn more](/docs/building-apps/frontends/using-an-asset-canister).
+
+#### Using an existing sample project
+
+You can also obtain projects from other sources, such as [ICP Ninja](https://icp.ninja) or the [sample repository](https://github.com/dfinity/examples). If you are obtaining a project from a source other than the `dfx new` command, confirm that the project's root directory contains a `dfx.json` file that defines the project's canisters.
+
+### Framework-based workflow
+
+#### Juno
+[Juno](https://juno.build/docs/intro) is a community project that is tailored for Web2 developers. It takes care of hosting code and data in canisters such that developers can write Web3 applications using familiar Web2 concepts and patterns. For more details, please follow [the official Juno documentation](https://juno.build/docs/intro).
+
+#### Bitfinity EVM
+
+[Bitfinity EVM](https://docs.bitfinity.network/) is tailored for Solidity developers. It is a canister that runs an instance of the Ethereum virtual machine and allows developers to upload and execute canisters written in Solidity. For more details, please follow [the official Bitfinity documentation](https://docs.bitfinity.network/).
 
 ## Creating a project
 
@@ -91,7 +116,7 @@ The `frontend` canister stores the app's frontend assets, including files such a
 
 <div class="text--center">
   <img
-    src={useBaseUrl("/img/docs/default-dapp-arch.png")}
+    src={useBaseUrl("/img/docs/app-arch.png")}
     alt="Application architecture"
     width="800"
   />

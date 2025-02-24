@@ -9,7 +9,7 @@ import Tabs from "@theme/Tabs";
 
 # Rust CDK
 
-<MarkdownChipRow labels={["Beginner", "Rust", "Tutorial"]} />
+<MarkdownChipRow labels={["Beginner", "Rust"]} />
 
 Rust is a powerful and type-sound modern programming language with an active developer community. Because Rust compiles to WebAssembly, it offers a rich development environment for writing dapps to run on ICP.
 
@@ -28,3 +28,23 @@ The Rust CDK consists of the following crates:
 ## Rustic
 
 [Rustic](https://github.com/internet-computer-protocol/rustic) is an extension to `ic-cdk`, offering additional primitives and functionalities familiar to Solidity developers, such as `AccessControl` and `ReentrancyGuard`. It also embeds best practices on canister development and adds syntactic sugar. Stable memory, HTTP metrics, and canister lifecycle management are all available out of the box.
+
+## Rust documentation
+
+The Rust CDK documentation can be found on [crates.io](https://crates.io/crates/ic-cdk).
+
+The following documentation pages detail specific Rust workflows, best practices, and considerations:
+
+- [Globally mutable state](canister-state.mdx).
+
+- [Generating Candid for Rust canisters](generating-candid.mdx).
+
+- [Inter-canister calls](intercanister.mdx).
+
+- [Message inspection](message-inspect.mdx).
+
+- [Rust limitations](rust-limitations.mdx).
+
+- [Stable structures](stable-structures.mdx).
+
+- [Upgrading Rust canisters](upgrading.mdx).

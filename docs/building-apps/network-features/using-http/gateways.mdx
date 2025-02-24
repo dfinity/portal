@@ -1,5 +1,5 @@
 ---
-keywords: [advanced, tutorial, get requests, post requests]
+keywords: [advanced, tutorial, get requests, post requests, http gateways, gateways, outgoing http, incoming http, http request, http request lifecycle, http client]
 ---
 
 import TabItem from "@theme/TabItem";
@@ -13,26 +13,6 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <MarkdownChipRow labels={["Advanced", "Tutorial"]} />
 
 Canisters running on ICP can use HTTP requests in two ways: incoming and outgoing. Incoming HTTP requests refer to HTTP requests that are sent to a canister and can be used to retrieve data from a canister or send new data to the canister. Outgoing HTTP requests refer to HTTP requests that the canister sends to other canisters or external services to retrieve data or send new data.
-
-## HTTP gateways
-
-The ICP HTTP gateway protocol enables conventional HTTP clients to interact with the ICP network. HTTP gateways run adjacent to ICP and provide a connection used by software such as web browsers to send and receive standard HTTP requests and responses, including static assets, such as HTML, JavaScript, images, or videos. The HTTP gateway makes this workflow possible by translating standard HTTP requests into API canister calls that ICP canisters can understand and vice versa for HTTP responses.
-
-There are several HTTP gateway instances maintained for ICP, but it should be noted that an HTTP gateway is a centralized component that could become compromised, creating a threat for users receiving HTTP content.
-
-DFINITY exclusively controls the HTTP gateways that serve canisters on `ic0.app` and `icp0.io`. Developers can then also configure their own [custom domains](/docs/building-apps/frontends/custom-domains/using-custom-domains) to point at the DFINITY-controlled HTTP gateways.
-
-Alternatively, developers can run their own HTTP gateways on their custom domains instead of using the DFINITY-controlled gateways, but this is not well supported yet.
-
-For a more secure solution, it is possible to run your own HTTP gateway instance locally.
-
-### Terminology
-
-- **Request**: A message sent to a server or endpoint.
-
-- **Client**: A service that is able to send an HTTP-formatted request and receive a response from a server.
-
-- **Gateway**: Enables the transfer of inbound and outbound messages.
 
 ## HTTP request lifecycle
 
@@ -58,9 +38,27 @@ On ICP, an HTTP request goes through the following lifecycle:
 
 10. The HTTP gateway returns the decoded response to the HTTP client.
 
-Additional details can be found in the [HTTP gateway specification](/docs/references/http-gateway-protocol-spec).
+### Terminology
 
-## Running a local HTTP gateway
+- **Request**: A message sent to a server or endpoint.
+
+- **Client**: A service that is able to send an HTTP-formatted request and receive a response from a server.
+
+- **Gateway**: Enables the transfer of inbound and outbound messages.
+
+## HTTP gateways
+
+The ICP HTTP gateway protocol enables conventional HTTP clients to interact with the ICP network. HTTP gateways run adjacent to ICP and provide a connection used by software such as web browsers to send and receive standard HTTP requests and responses, including static assets, such as HTML, JavaScript, images, or videos. The HTTP gateway makes this workflow possible by translating standard HTTP requests into API canister calls that ICP canisters can understand and vice versa for HTTP responses.
+
+There are several HTTP gateway instances maintained for ICP, but it should be noted that an HTTP gateway is a centralized component that could become compromised, creating a threat for users receiving HTTP content.
+
+DFINITY exclusively controls the HTTP gateways that serve canisters on `ic0.app` and `icp0.io`. Developers can then also configure their own [custom domains](/docs/building-apps/frontends/custom-domains/using-custom-domains) to point at the DFINITY-controlled HTTP gateways.
+
+Alternatively, developers can run their own HTTP gateways on their custom domains instead of using the DFINITY-controlled gateways, but this is not well supported yet.
+
+For a more secure solution, it is possible to run your own HTTP gateway instance locally. Additional details can be found in the [HTTP gateway specification](/docs/references/http-gateway-protocol-spec).
+
+### Running a local HTTP gateway
 
 To run your own local HTTP gateway, a proof-of-concept implementation can be used that enables a secure end-to-end connection with canisters deployed on ICP.
 
@@ -76,7 +74,7 @@ This implementation features:
 
 - Resolves crypto domains.
 
-### Installation
+#### Installation
 
 You can download the pre-built installation package for your [operating system](https://github.com/dfinity/http-proxy?tab=readme-ov-file#installation).
 

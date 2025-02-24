@@ -13,7 +13,7 @@ When canisters trap, ICP reports backtraces that contain the names of functions 
 
 For example, if the following Rust canister accidentally performs an out of bounds access of stable memory:
 
-```
+```rust
 	#[update]
 	fn outer() {
 		inner();

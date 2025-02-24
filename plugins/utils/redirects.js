@@ -131,13 +131,14 @@ const redirects = `
   /docs/current/motoko/main/motoko-grammar /docs/motoko/main/reference/motoko-grammar
   /docs/current/developer-docs/developer-tools/off-chain/canpack /docs/motoko/main/getting-started/motoko-introduction
   /docs/current/developer-docs/developer-tools/ide/vs-code /docs/motoko/main/getting-started/motoko-introduction
-  /docs/current/developer-docs/developer-tools/ide/playground /docs/building-apps/developer-tools/ide/icp-ninja
-  /docs/current/developer-docs/developer-tools/ide/gitpod /docs/building-apps/developer-tools/ide/icp-ninja
-  /docs/current/developer-docs/developer-tools/ide/codespaces /docs/building-apps/developer-tools/ide/icp-ninja
-  /docs/current/developer-docs/developer-tools/ide/dev-containers /docs/building-apps/developer-tools/ide/icp-ninja
+  /docs/current/developer-docs/developer-tools/ide/playground /docs/building-apps/developer-tools/icp-ninja
+  /docs/current/developer-docs/developer-tools/ide/gitpod /docs/building-apps/developer-tools/icp-ninja
+  /docs/current/developer-docs/developer-tools/ide/codespaces /docs/building-apps/developer-tools/icp-ninja
+  /docs/current/developer-docs/developer-tools/ide/dev-containers /docs/building-apps/developer-tools/icp-ninja
 
   ## Rust
-  /docs/current/developer-docs/backend/rust/candid /docs/building-apps/developer-tools/cdks/rust/candid
+  /docs/current/developer-docs/backend/rust/candid /docs/building-apps/developer-tools/cdks/rust/generating-candid
+  /docs/current/developer-docs/backend/rust/canister-state /docs/building-apps/developer-tools/cdks/rust/canister-state
   /docs/current/developer-docs/backend/rust/counter /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/deploying /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/dev-env /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
@@ -145,8 +146,13 @@ const redirects = `
   /docs/current/developer-docs/backend/rust/generating-candid /docs/building-apps/developer-tools/cdks/rust/generating-candid
   /docs/current/developer-docs/backend/rust/index /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/infrastructure /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
+  /docs/current/developer-docs/backend/rust/intercanister /docs/building-apps/developer-tools/cdks/rust/intercanister
+  /docs/current/developer-docs/backend/rust/message-inspect /docs/building-apps/developer-tools/cdks/rust/message-inspect
   /docs/current/developer-docs/backend/rust/intro-to-rust /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/optimizing /docs/building-apps/advanced/optimize/rust
+  /docs/current/developer-docs/backend/rust/stable-structures /docs/building-apps/developer-tools/cdks/rust/stable-structures
+  /docs/current/developer-docs/backend/rust/infrastructure /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
+  /docs/current/developer-docs/backend/rust/upgrading /docs/building-apps/developer-tools/cdks/rust/upgrading
   /docs/current/developer-docs/backend/rust/rust-considerations /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/rust-quickstart	/docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/samples /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
@@ -236,9 +242,9 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/cli-tools/dfx-json /docs/building-apps/developer-tools/dfx-json
   /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm-init/dfxvm-init /docs/building-apps/developer-tools/dfxvm/
   /docs/current/developer-docs/developer-tools/cli-tools/networks-json /docs/building-apps/developer-tools/advanced-dfx/networks-json
-  /docs/current/developer-docs/developer-tools/ide/codespaces /docs/building-apps/developer-tools/ide/icp-ninja
-  /docs/current/developer-docs/developer-tools/ide/gitpod /docs/building-apps/developer-tools/ide/icp-ninja
-  /docs/current/developer-docs/developer-tools/ide/playground /docs/building-apps/developer-tools/ide/icp-ninja
+  /docs/current/developer-docs/developer-tools/ide/codespaces /docs/building-apps/developer-tools/icp-ninja
+  /docs/current/developer-docs/developer-tools/ide/gitpod /docs/building-apps/developer-tools/icp-ninja
+  /docs/current/developer-docs/developer-tools/ide/playground /docs/building-apps/developer-tools/icp-ninja
   /docs/current/developer-docs/developer-tools/off-chain/agents/javascript-agent /docs/building-apps/interact-with-canisters/agents/javascript-agent
   /docs/current/developer-docs/developer-tools/off-chain/agents/nodejs /docs/building-apps/interact-with-canisters/agents/nodejs
   /docs/current/developer-docs/developer-tools/off-chain/agents/overview /docs/building-apps/interact-with-canisters/agents/overview
@@ -257,6 +263,11 @@ const redirects = `
   /docs/current/developer-docs/frontend/vue-frontend /docs/building-apps/frontends/using-an-asset-canister
   /docs/current/developer-docs/functionality/ledger/ /docs/defi/token-ledgers/setup/icp_ledger_setup
   /docs/current/developer-docs/gas-cost /docs/building-apps/essentials/gas-cost
+  /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle/ /docs/building-apps/developing-canisters/what-are-canisters
+  /docs/current/references/subnets/subnet-types/ /docs/building-apps/developing-canisters/deploy
+  /docs/current/developer-docs/developer-tools/on-chain/ic-js/ https://github.com/dfinity/ic-js/tree/main
+  /docs/current/developer-docs/developer-tools/cli-tools/idl2json https://github.com/dfinity/idl2json/tree/main
+  /docs/current/developer-docs/smart-contracts/maintain/recovery /docs/building-apps/canister-management/snapshots
 
   ## Getting started
   /docs/current/developer-docs/getting-started/accounts /docs/building-apps/getting-started/identities
@@ -267,7 +278,7 @@ const redirects = `
   /docs/current/developer-docs/getting-started/deploy/local /docs/building-apps/developing-canisters/deploy
   /docs/current/developer-docs/getting-started/deploy/testnet /docs/building-apps/developing-canisters/deploy
   /docs/current/developer-docs/getting-started/development-workflow /docs/building-apps/getting-started/install
-  /docs/current/developer-docs/getting-started/explore-examples /docs/building-apps/developer-tools/ide/icp-ninja
+  /docs/current/developer-docs/getting-started/explore-examples /docs/building-apps/developer-tools/icp-ninja
   /docs/current/developer-docs/getting-started/ /docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/getting-started/hello-world /docs/building-apps/developing-canisters/write
   /docs/current/developer-docs/getting-started/identities /docs/building-apps/getting-started/identities
@@ -473,7 +484,8 @@ const redirects = `
   /docs/current/developer-docs/setup /docs/building-apps/getting-started/install
   /docs/current/developer-docs/setup/first-canister /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/setup/hello-world /docs/building-apps/developing-canisters/write
-  /docs/current/developer-docs/setup/ic-admin /docs/home
+  /docs/current/developer-docs/setup/ic-admin https://github.com/dfinity/ic/releases
+  /docs/current/developer-docs/developer-tools/cli-tools/ic-admin https://github.com/dfinity/ic/releases
   /docs/current/developer-docs/setup/index.md	/docs/building-apps/getting-started/install
   /docs/current/developer-docs/setup/index /docs/building-apps/getting-started/install
   /docs/current/developer-docs/setup/install/ /docs/building-apps/getting-started/install
@@ -486,13 +498,13 @@ const redirects = `
   /docs/current/developer-docs/setup/react-quickstart /docs/building-apps/getting-started/quickstart
   /docs/current/developer-docs/setup/state /docs/building-apps/canister-management/state
   /docs/current/developer-docs/setup/upgrade /docs/building-apps/canister-management/upgrade
-  /docs/current/developer-docs/setup/vs-code /docs/building-apps/developer-tools/ide/icp-ninja
+  /docs/current/developer-docs/setup/vs-code /docs/building-apps/developer-tools/icp-ninja
 
   ## Smart contracts
-  /docs/current/developer-docs/smart-contracts/advanced-features/async-code /docs/building-apps/interact-with-canisters/advanced-calls
+  /docs/current/developer-docs/smart-contracts/advanced-features/async-code /docs/references/async-code
   /docs/current/developer-docs/smart-contracts/advanced-features/composite-query /docs/building-apps/interact-with-canisters/query-calls
-  /docs/current/developer-docs/smart-contracts/advanced-features/handling-get-post-requests /docs/building-apps/network-features/using-http/http-certification/gateways
-  /docs/current/developer-docs/smart-contracts/advanced-features/http-gateways /docs/building-apps/network-features/using-http/http-certification/gateways
+  /docs/current/developer-docs/smart-contracts/advanced-features/handling-get-post-requests /docs/building-apps/network-features/using-http/gateways
+  /docs/current/developer-docs/smart-contracts/advanced-features/http-gateways /docs/building-apps/network-features/using-http/gateways
   /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/ /docs/building-apps/network-features/using-http/https-outcalls/overview
   /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-get /docs/building-apps/network-features/using-http/https-outcalls/get
   /docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use /docs/building-apps/network-features/using-http/https-outcalls/overview
@@ -502,7 +514,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/advanced-features/periodic-tasks /docs/building-apps/network-features/periodic-tasks-timers
   /docs/current/developer-docs/smart-contracts/advanced-features/query-stats /docs/building-apps/interact-with-canisters/query-calls
   /docs/current/developer-docs/smart-contracts/advanced-features/randomness /docs/building-apps/network-features/randomness
-  /docs/current/developer-docs/smart-contracts/advanced-features/serving-http-request /docs/building-apps/network-features/using-http/http-certification/gateways
+  /docs/current/developer-docs/smart-contracts/advanced-features/serving-http-request /docs/building-apps/network-features/using-http/gateways
   /docs/current/developer-docs/smart-contracts/advanced-features/simd /docs/building-apps/network-features/simd
   /docs/current/developer-docs/smart-contracts/advanced-features/system-canisters /docs/references/system-canisters/
   /docs/current/developer-docs/smart-contracts/advanced-features/threshold-signing /docs/building-apps/network-features/signatures/t-ecdsa
@@ -535,7 +547,6 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/encryption/using-vetkeys /docs/building-apps/network-features/encryption/using-vetkeys
   /docs/current/developer-docs/smart-contracts/encryption/vetkeys /docs/building-apps/network-features/encryption/vetkeys
   /docs/current/developer-docs/smart-contracts/install /docs/building-apps/essentials/canisters
-  /docs/current/developer-docs/smart-contracts/overview/canister-lifecycle /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/overview/development-cycle /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/overview	/docs/building-apps/essentials/canisters
   /docs/current/developer-docs/smart-contracts/overview/inside-canisters /docs/building-apps/essentials/canisters
@@ -613,7 +624,7 @@ const redirects = `
   /docs/developers-guide/ /docs/motoko/main/getting-started/motoko-introduction
   /docs/developers-guide/glossary /docs/references/glossary
   /docs/developers-guide/install-upgrade-remove /docs/building-apps/getting-started/install
-  /docs/developers-guide/lang-service-ide /docs/building-apps/developer-tools/ide/icp-ninja
+  /docs/developers-guide/lang-service-ide /docs/building-apps/developer-tools/icp-ninja
   /docs/developers-guide/reinstalling-dfx /docs/building-apps/getting-started/install
   /docs/developers-guide/sample-apps /samples
   /docs/developers-guide/sdk-guide.html	/docs/building-apps/getting-started/install
@@ -861,7 +872,7 @@ const redirects = `
   /docs/current/references/dfx-json-reference /docs/building-apps/developer-tools/dfx-json-reference
   /docs/current/references/dfxvm/ /docs/building-apps/developer-tools/dfxvm/
   /docs/current/references/ /docs/references/ic-interface-spec
-  /docs/current/references/gitpod /docs/building-apps/developer-tools/ide/icp-ninja
+  /docs/current/references/gitpod /docs/building-apps/developer-tools/icp-ninja
   /docs/current/references/glossary /docs/references/glossary
   /docs/current/references/ic-interface /docs/references/ic-interface-spec
   /docs/current/references/ingress-messages /docs/building-apps/interact-with-canisters/advanced-calls
@@ -963,8 +974,7 @@ const redirects = `
   /docs/current/references/security/general-security-best-practices/ /docs/building-apps/best-practices/security/inter-canister-calls
   /docs/current/references/security/rust-canister-development-security-best-practices /docs/building-apps/best-practices/security/inter-canister-calls
   /docs/current/references/security/web-app-development-security-best-practices /docs/building-apps/best-practices/security/inter-canister-calls
-  /docs/current/references/subnets/overview /docs/building-apps/developing-canisters/create
-  /docs/current/references/subnets/subnet-types /docs/building-apps/developing-canisters/create
+  /docs/current/references/subnets/overview /docs/building-apps/developing-canisters/deploy
   /docs/current/references/t-ecdsa-how-it-works /docs/references/t-sigs-how-it-works
   /docs/release-notes/ /docs/other/updates/release-notes/
   /docs/rosetta-api/ledger-local-setup /docs/defi/token-ledgers/setup/icp_ledger_setup

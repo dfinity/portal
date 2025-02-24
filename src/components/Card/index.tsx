@@ -24,7 +24,7 @@ const languagesTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/building-apps/developer-tools/ide/icp-ninja"
+        href="/docs/building-apps/developer-tools/icp-ninja"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Get started with ICP Ninja"
       >

@@ -22,6 +22,10 @@ You must create your canisters before you can build them; otherwise, you will re
 
 :::
 
+:::info
+Canister compilation is done automatically in the background of the `dfx deploy` command. However, there may be certain workflows where manually compiling code into Wasm is necessary.
+:::
+
 [`dfx build`](/docs/building-apps/developer-tools/dfx/dfx-build) looks for source code to compile for each canister configured under the `canisters` section in the [`dfx.json`](/docs/building-apps/developer-tools/dfx-json-reference) file. `dfx build` can be used to compile a specific canister or all canisters defined in the project.
 
 Verify the location of your project's files and their file names. If necessary, edit your project's `dfx.json` file to reflect the current intended configuration.

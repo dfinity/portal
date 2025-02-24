@@ -9,6 +9,10 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Beginner", "Management"]} />
 
+A <GlossaryTooltip>canister</GlossaryTooltip> is managed and maintained by **controllers**. A controller can be a single developer identity, a list of developer identities, or another canister. If a canister does not have a controller, it cannot be upgraded, deleted, or otherwise maintained. This also applies if access to all canister controller identities is lost. If a canister's code traps with an unrecoverable error and cannot be upgraded, the canister can potentially be recovered using canister snapshots or an NNS proposal.
+
+One method for recovering a canister is to roll the canister back to a snapshot if one exists.
+
 A <GlossaryTooltip>canister</GlossaryTooltip> contains compiled Wasm code and data, such as the canister ID, settings, and Wasm memory. If a canister stops working as expected, traps, or simply needs to be rolled back to a previous version, the developer can use canister snapshots. Developers can take a snapshot of a stopped canister to save the canister's current stable memory, heap memory, data, and Wasm module. This snapshot can be loaded at a later date, rolling the canister back to the code and data saved within that snapshot.
 
 Canister snapshots are supported in `dfx` version 0.23.0 and newer.
@@ -79,9 +83,10 @@ Common errors related to canister snapshots include:
 
 - [Canister snapshot invalid ownership](/docs/references/execution-errors#canister-snapshot-invalid-ownership).
 
+## Recovering a canister that does not have controllers
+
+If a canister is unable to be upgraded via any of the canister's existing controllers, either due to the canister not having controllers or loss of access to the canister's controllers, there is no supported method to recover that canister.
+
 ## Resources
 
 - [`dfx canister snapshot` reference documentation](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-snapshot-create).
-
-- [Canister recovery](recovery.mdx).
-

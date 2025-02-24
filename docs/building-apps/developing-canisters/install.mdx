@@ -28,6 +28,10 @@ When a canister's code is installed, the following components are created:
 
 - Additional IC-specific information, such as the canister's input and output queues.
 
+:::info
+Canister installation is done automatically in the background of the `dfx deploy` command. However, there may be certain workflows where installing Wasm into a canister manually is necessary.
+:::
+
 ### Installing a gzip-compressed WebAssembly module
 
 The size of programs that can be installed on ICP is currently limited to 10 MiB.

@@ -66,10 +66,22 @@ build: [
               id: "motoko/main/getting-started/motoko-introduction",
             },
             {
-              type: "doc",
+              type: "category",
               label: "Rust",
-              id: "building-apps/developer-tools/cdks/rust/intro-to-rust",
-            },
+              link: {
+                type: "doc",
+                id: "building-apps/developer-tools/cdks/rust/intro-to-rust",
+              },
+              items: [
+                "building-apps/developer-tools/cdks/rust/canister-state",
+                "building-apps/developer-tools/cdks/rust/generating-candid",
+                "building-apps/developer-tools/cdks/rust/intercanister",
+                "building-apps/developer-tools/cdks/rust/message-inspect",
+                "building-apps/developer-tools/cdks/rust/rust-limitations",
+                "building-apps/developer-tools/cdks/rust/stable-structures",
+                "building-apps/developer-tools/cdks/rust/upgrading",
+              ]
+              }
             ],
           },
           {
@@ -141,7 +153,7 @@ build: [
           },
         ],
       },
-       "building-apps/developer-tools/ide/icp-ninja",
+       "building-apps/developer-tools/icp-ninja",
       ],
     },
     {
@@ -154,7 +166,18 @@ build: [
         "building-apps/developing-canisters/create",
         "building-apps/developing-canisters/compile",
         "building-apps/developing-canisters/install",
-        "building-apps/developing-canisters/deploy",
+        {
+          type: "category",
+          label: "Deploy",
+          link: {
+            type: "doc",
+            id: "building-apps/developing-canisters/deploy",
+          },
+          items: [
+            "building-apps/developing-canisters/custom-networks",
+            "building-apps/developing-canisters/deploy-specific-subnet",
+          ],
+        },
       ]
     },
     {
@@ -164,8 +187,11 @@ build: [
         {
           type: "category",
           label: "Candid",
+          link: {
+            type: "doc",
+            id: "building-apps/interact-with-canisters/candid/candid-concepts",
+          },
           items: [
-            "building-apps/interact-with-canisters/candid/candid-concepts",
             "building-apps/interact-with-canisters/candid/using-candid",
             "building-apps/interact-with-canisters/candid/candid-tools",
           ],
@@ -196,7 +222,6 @@ build: [
         "building-apps/canister-management/delete",
         "building-apps/canister-management/history",
         "building-apps/canister-management/logs",
-        "building-apps/canister-management/recovery",
         "building-apps/canister-management/resource-limits",
         "building-apps/canister-management/snapshots",
         "building-apps/canister-management/state",
@@ -271,7 +296,7 @@ build: [
           type: "category",
           label: "Using HTTP",
           items: [
-            "building-apps/network-features/using-http/http-certification/gateways",
+            "building-apps/network-features/using-http/gateways",
             {
               type: "category",
               label: "HTTP certification",
@@ -306,6 +331,11 @@ build: [
             {
               type: "category",
               label: "HTTPS outcalls",
+              link:
+                {
+                  type: "doc",
+                  id:  "building-apps/network-features/using-http/https-outcalls/overview",
+                },
               items: [
                 "building-apps/network-features/using-http/https-outcalls/overview",
                 "building-apps/network-features/using-http/https-outcalls/get",
@@ -814,6 +844,7 @@ references: [
     label: "Feature specifications",
     items: [
       "references/asset-canister",
+      "references/async-code",
       "references/bitcoin-how-it-works",
       "references/ckbtc-reference",
       "references/candid-ref",
@@ -827,6 +858,8 @@ references: [
       "references/vetkeys-overview"
     ],
   },
+      "references/async-code",
+      "references/execution-errors",
   {
     type: "doc",
     label: "Dashboard API reference",

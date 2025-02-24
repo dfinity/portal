@@ -9,7 +9,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 <MarkdownChipRow labels={["Beginner", "Concept"]} />
 
-Ingress messages are requests to ICP <GlossaryTooltip>canisters</GlossaryTooltip> that are sent by external entities, such as users, usually through an [agent](/docs/building-apps/developer-tools/dev-tools-overview/#agents), like [agent-js](https://github.com/dfinity/agent-js/tree/main) that runs within a web application, or [agent-rs](https://github.com/dfinity/agent-rs/tree/main) in a Rust application.
+Ingress messages are requests to ICP <GlossaryTooltip>canisters</GlossaryTooltip> that are sent by external entities, such as users, usually through an [agent](/docs/building-apps/developer-tools/dev-tools-overview/#agents), like the [ICP JavaScript agent](https://github.com/dfinity/agent-js/tree/main) that runs within a web application, or the [ICP Rust agent](https://github.com/dfinity/agent-rs/tree/main) in a Rust application.
 
 For example, you can browse what ingress messages can be sent to the ckBTC ledger by browsing through its [API using the dashboard](https://dashboard.internetcomputer.org/canister/mxzaz-hqaaa-aaaar-qaada-cai). The tool also allows you to send messages, using agent-js behind the scenes.
 
@@ -37,7 +37,7 @@ Updates can modify a canister's state and thus must go through consensus, typica
 
 Update calls can be [synchronous](/docs/references/ic-interface-spec#http-sync-call-overview) or [asynchronous](/docs/references/ic-interface-spec#http-async-call-overview).
 
-A [synchronous `call`](https://internetcomputer.org/docs/docs/references/ic-interface-spec#http-call) follows the "call and await" pattern. In the success case, it maintains the HTTPS connection until a certified response is produced, as illustrated below.
+A [synchronous `call`](https://internetcomputer.org/docs/references/ic-interface-spec#http-call) follows the "call and await" pattern. In the success case, it maintains the HTTPS connection until a certified response is produced, as illustrated below.
 
 ![Ingress sync calls](_attachments/ingress_sync_call.png)
 

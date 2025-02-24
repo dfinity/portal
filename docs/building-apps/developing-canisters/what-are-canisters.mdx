@@ -18,46 +18,6 @@ The smart contracts running on ICP are a powerful evolution of traditional smart
 
 Canisters have special properties that allow developers to build scalable Web3 services. To better understand these properties, one has to consider canisters from different perspectives to form a complete picture of their capabilities.
 
-An Ethereum developer might think of canisters as smart contracts, whereas someone with an academic background might make associations with actors and the [actor model](https://en.wikipedia.org/wiki/Actor_model).
-
-A systems engineer will likely consider operating systems processes, whereas a virtual machine expert might think about WebAssembly module instances.
-
-While these associations are partial, they are correct. Together they form a comprehensive picture of what a canister is. Let’s look at them one by one.
-
-[Introducing canisters — An evolution of smart contracts](https://www.youtube.com/watch?v=LKpGuBOXxtQ).
-
-## Canisters as smart contracts
-
-Canisters are much like a smart contract in that their execution is governed by a secure protocol; in this case, the ICP protocol. Canisters running on ICP are tamper-proof, since their state can only be modified through messages that are executed onchain. A canister’s state can be audited and cryptographically verified using ICP’s chain-key cryptography.
-For a brief comparison between canisters and Ethereum smart contracts, refer to the table [Quick comparison with Ethereum](/docs/building-apps/essentials/network-overview#quick-comparison-with-ethereum).
-
-## Canisters as actors
-
-Canisters are much like actors when thinking about them abstractly. Following the [actor model of concurrent computation](https://en.wikipedia.org/wiki/Actor_model), canisters respond to messages they receive by performing one or more of the following actions:
-- Modifying their private state.
-- Sending messages to other canisters (actors).
-- Creating more canisters (actors).
-
-Although canisters have a single thread of execution, multiple can be executed concurrently. This is a key feature of ICP that overcomes the scaling challenges of other smart contract platforms.
-
-## Canisters as OS processes
-
-Canisters behave much like operating system processes. Similar to how an operating system schedules processes, ICP schedules the execution of canisters. [Learn more about the execution of canisters](https://internetcomputer.org/how-it-works).
-
-An operating system maintains state on behalf of processes, like their open file descriptors, similar to how ICP maintains state on behalf of canisters, such as their cycle balance or their outstanding calls to other canisters.
-
-Operating system processes cannot directly modify their table of file descriptors or manipulate peripheral devices, similar to how canisters cannot directly modify their <GlossaryTooltip>cycles</GlossaryTooltip> balance.
-
-ICP provides APIs to canisters that allow them to make payments to other canisters, send them messages, and create and manage other canisters.
-
-## Canisters as WebAssembly module instances
-
-Canisters are implemented as WebAssembly modules. This allows for maximum interoperability, as developers can write canisters in a variety of languages that target WebAssembly.
-
-A canister is a WebAssembly module instance complete with its own state and execution stack. Canisters’ memory uses [orthogonal persistence](https://medium.com/dfinity/ic-internals-orthogonal-persistence-9e0c094aac1a), which makes storing canister data transparent for users. The data of the canister’s WebAssembly module is persisted automatically by the system and is present the next time the canister is scheduled for execution. The WebAssembly module itself is stored along with other bits of the canister’s state.
-
-## Creating canisters
-
 The Internet Computer Protocol (ICP) accepts and executes canisters in the [WebAssembly (Wasm)](https://internetcomputer.org/capabilities/webassembly) binary format.
 In theory, developers could write valid canisters directly in the Wasm bytecode.
 Since that would be too tedious and time-consuming, the standard practice is to write canister code in a higher-level language, such as JavaScript/TypeScript, Motoko, Python, or Rust, then compile it into Wasm.
@@ -98,18 +58,74 @@ Collectively these functions are referred to as the **System API**.
 Developers are not intended to use the System API directly because that would be too low-level and error-prone.
 Instead, developers should use language-specific Canister Development Kit (CDK) libraries that are high-level wrappers around the System API.
 
-## Calling canisters
+## Canister lifecycle
 
-There are three ways to call the functions of the backend canister:
+### Write
 
-1. Use the browser to load the webpage hosted in the frontend canister and use the UI of the webpage to interact with the backend canister. Under the hood, the UI uses JavaScript and the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) to send messages to the backend canister. This is the standard way to interact with the canister that regular users would also use.
-2. Use the `dfx canister call` command and pass the input arguments as command line arguments. Under the hood, `dfx` uses a Rust library called ic-agent to send messages to the canister.
-3. Write an off-chain program that uses an [agent library](/docs/building-apps/interact-with-canisters/agents/overview) to send messages to the canister.
+The ICP accepts and executes <GlossaryTooltip>canister</GlossaryTooltip> code in the WebAssembly (Wasm) binary format.
+Usually, developers write code in a higher-level language and then compile the code into a Wasm binary that can be deployed into a canister.
+
+[Learn more about writing canister code](/docs/building-apps/developing-canisters/what-are-canisters).
+
+### Create
+
+A developer can create an empty canister on ICP by using [`dfx canister create`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-create) in the command line or the [<GlossaryTooltip>NNS</GlossaryTooltip> frontend dapp](/docs/building-apps/governing-apps/nns/overview) in the browser.
+The developer can specify the initial canister settings and choose the target <GlossaryTooltip>subnet</GlossaryTooltip>.
+Once the canister is created, the developer receives its canister ID and becomes the controller of the canister.
+
+[Learn more about creating canisters](/docs/building-apps/developing-canisters/what-are-canisters).
 
 <div class="text--center">
-  <img
-    src={useBaseUrl("/img/docs/developer-call.png")}
-    alt="ICP in the tradeoff space"
-    width="600"
-  />
+<img src="/img/docs/create-canister.png" alt="Create canister" width="600"/>
 </div>
+
+### Compile
+
+Once an empty canister has been created, the canister's code must be compiled into a Wasm binary using [`dfx build`](/docs/building-apps/developer-tools/dfx/dfx-build).
+
+[Learn more about compiling code into Wasm](/docs/building-apps/developing-canisters/compile).
+
+### Install
+
+The next step after writing the code, creating a canister, and compiling the code is to install the code into the canister.
+This can be done by calling the `install_code` endpoint of the management canister and passing the canister ID and the Wasm binary to it.
+The [`dfx canister install`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-install) command is used for making this call.
+
+<div class="text--center">
+<img src="/img/docs/install-canister.png" alt="Install canister" width="600"/>
+</div>
+
+### Deploy
+
+Once a canister has an installed Wasm binary, it can be deployed to the local, playground, or mainnet environments with [`dfx deploy`](/docs/building-apps/developer-tools/dfx/dfx-deploy).
+
+[Learn more about deploying canisters](/docs/building-apps/developing-canisters/deploy).
+
+### Call
+
+After deployment, the canister accepts and processes messages (calls) from users and other canisters.
+Only the public endpoints of the canister can be called.
+These endpoints correspond to exported Wasm functions that are annotated with `canister_update` or `canister_query` in their names.
+
+<div class="text--center">
+<img src="/img/docs/call-canister.png" alt="Call canister" width="600"/>
+</div>
+
+### Maintain
+
+Certain system operations that change the state of the canister can be performed only by the controllers of the canister.
+The most important operation is upgrading the canister by installing a different Wasm binary.
+In the initial stages of development, the canister is usually controlled by its developer, which allows the developer to iterate quickly.
+As the canister becomes mature and production ready, the control over it could move to a DAO in order to make the canister secure and trustworthy.
+[Learn more about different types of controllers](/docs/building-apps/canister-management/control).
+
+<div class="text--center">
+<img src="/img/docs/manage-canister.png" alt="Manage canister" width="600"/>
+</div>
+
+Since ICP uses a reverse gas model, the canister pays for its execution, storage, and other operations with <GlossaryTooltip>cycles</GlossaryTooltip>.
+This means that controllers and/or users of the canister have to ensure that the canister does not run out of cycles.
+If the canister runs out of cycles, it will be uninstalled by removing its Wasm binary and its storage.
+
+If the canister is no longer used or needed, a controller of the canister can delete it.
+ICP guarantees that the canister ID will not be reused for another canister.

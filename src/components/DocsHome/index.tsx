@@ -4,12 +4,10 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import LinkArrowRight from "../Common/Icons/LinkArrowRight";
 import { NetworkStats } from "./NetworkStats";
 import Blog from "./Blog";
-import { TeaserCarousel } from "@site/src/components/DocsHome/TeaserCarousel";
 import {
   CarouselCard,
   TeaserCard,
 } from "@site/src/components/DocsHome/TeaserCard";
-import { GlossaryTooltip } from "@site/src/components/Tooltip/GlossaryTooltip";
 import LinkArrowUpRight from "../Common/Icons/LinkArrowUpRight";
 
 const queryClient = new QueryClient();
@@ -514,7 +512,7 @@ const DocsHomePage: FC = () => {
             </p>
             <Link
               className="button-primary rounded-2xl"
-              href="/docs/building-apps/developing-canisters/what-are-canisters"
+              href="/docs/building-apps/developer-tools/cdks/"
             >
               View all
             </Link>
