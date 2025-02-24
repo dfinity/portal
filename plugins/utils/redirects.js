@@ -34,6 +34,9 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/maintain/* /docs/building-apps/canister-management/:splat
   /docs/current/tutorials/hackathon-prep-course/* /docs/tutorials/hackathon-prep-course/:splat
   /docs/current/developer-docs/daos/nns/* /docs/building-apps/governing-apps/nns/:splat
+  /docs/current/samples/* /docs/references/samples/:splat
+  /docs/current/references/samples/* /docs/references/samples/:splat
+
 
   ## Explicit redirects
   ## For files that have changed directories & file names, there will need to be
@@ -770,7 +773,19 @@ const redirects = `
   /docs/current/developer-docs/build/cdks/motoko-dfinity/ /docs/motoko/main/base/
   /docs/current/developer-docs/build/cdks/motoko-dfinity/language-manual /docs/motoko/main/reference/language-manual
   /docs/current/developer-docs/build/cdks/motoko-dfinity/motoko/ /docs/motoko/main/getting-started/motoko-introduction
+  docs/current/developer-docs/build/backend/define-an-actor /docs/motoko/main/writing-motoko/actors-async
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/actor-classes /docs/motoko/main/writing-motoko/actor-classes
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/actors-async /docs/motoko/main/writing-motoko/actors-async
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/base/iter/ /docs/motoko/main/base/Iter
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/base/itertype/ /docs/motoko/main/base/IterType
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/basic-concepts/ /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/modules-and-imports/ /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/pattern-matching /docs/motoko/main/writing-motoko/pattern-matching
+  /docs/current/developer-docs/build/cdks/motoko-dfinity/upgrades/ /docs/motoko/main/canister-maintenance/upgrades
   /docs/current/developer-docs/build/ /docs/building-apps/essentials/canisters
+  /docs/current/developer-docs/defi/icp-tokens/ledger-local-setup /docs/defi/token-ledgers/setup/icp_ledger_setup
+  /docs/current/developer-docs/defi/icrc-1/icrc1-ledger-setup /docs/defi/token-ledgers/setup/icrc1_ledger_setup
+  /docs/current/developer-docs/getting-started/cycles/cycles-faucet /docs/building-apps/getting-started/tokens-and-cycles
   /docs/current/developer-docs/build/frontend/default-frontend /docs/building-apps/frontends/using-an-asset-canister
   /docs/current/developer-docs/build/frontend/webpack-config /docs/building-apps/frontends/using-an-asset-canister#modifying-the-webpack-configuration
   /docs/current/developer-docs/build/install-upgrade-remove /docs/building-apps/getting-started/install
