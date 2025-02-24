@@ -33,6 +33,8 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/cli-tools/advanced-dfx/* /docs/building-apps/developer-tools/advanced-dfx/:splat
   /docs/current/developer-docs/smart-contracts/maintain/* /docs/building-apps/canister-management/:splat
   /docs/current/tutorials/hackathon-prep-course/* /docs/tutorials/hackathon-prep-course/:splat
+  /docs/current/developer-docs/daos/nns/* /docs/building-apps/governing-apps/nns/:splat
+
   ## Explicit redirects
   ## For files that have changed directories & file names, there will need to be
   ## an explicit redirect from the old file to the new file
@@ -60,7 +62,7 @@ const redirects = `
   /docs/concepts/concepts-intro.html	/docs/building-apps/essentials/network-overview
   /docs/concepts/data-centers /docs/building-apps/essentials/network-overview
   /docs/concepts /docs/building-apps/essentials/network-overview
-  /docs/concepts/governance https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
+  /docs/concepts/governance /docs/building-apps/governing-apps/nns/overview
   /docs/concepts/index /docs/building-apps/essentials/network-overview
   /docs/concepts/nodes-subnets /docs/building-apps/developing-canisters/create
   /docs/concepts/subnet-types /docs/building-apps/developing-canisters/create
@@ -148,30 +150,6 @@ const redirects = `
   /docs/current/developer-docs/backend/rust/rust-considerations /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/rust-quickstart	/docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/samples /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
-
-  ## NNS & SNS
-  /docs/current/developer-docs/daos/nns/concepts/neurons-fund https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
-  /docs/current/developer-docs/daos/nns/concepts/neurons/becoming-a-known-neuron https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
-  /docs/current/developer-docs/daos/nns/concepts/neurons/neuron-following https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
-  /docs/current/developer-docs/daos/nns/concepts/neurons/neuron-management https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
-  /docs/current/developer-docs/daos/nns/concepts/neurons/neuron-overview https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
-  /docs/current/developer-docs/daos/nns/concepts/neurons/staking-voting-rewards https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
-  /docs/current/developer-docs/daos/nns/concepts/proposals/direct-voting https://internetcomputer.zendesk.com/hc/en-us/articles/34084113508500-Proposals
-  /docs/current/developer-docs/daos/nns/concepts/proposals/proposal-overview https://internetcomputer.zendesk.com/hc/en-us/articles/34084113508500-Proposals
-  /docs/current/developer-docs/daos/nns/concepts/proposals/proposal-submit https://internetcomputer.zendesk.com/hc/en-us/articles/34084113508500-Proposals
-  /docs/current/developer-docs/daos/nns/concepts/proposals/proposal-topics https://internetcomputer.zendesk.com/hc/en-us/articles/34140518658068-Proposal-Topics-and-Types
-  /docs/current/developer-docs/daos/nns/concepts/proposals/verify-proposals https://internetcomputer.zendesk.com/hc/en-us/articles/34084113508500-Proposals
-  /docs/current/developer-docs/daos/nns/overview https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
-  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
-  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-additional-features https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
-  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-advanced-neuron-operations https://internetcomputer.zendesk.com/hc/en-us/articles/34084179554196-Neurons-Fund-NF
-  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-following-other-neurons https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
-  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-importing-tokens https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
-  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-making-neurons-public https://internetcomputer.zendesk.com/hc/en-us/articles/34140499557908-Neuron-Attributes
-  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-manage-quill-neurons https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
-  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-send-and-receive-tokens https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
-  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-staking-a-neuron https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
-  /docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-dapp-voting-on-proposals https://internetcomputer.zendesk.com/hc/en-us/articles/34084113508500-Proposals
 
   ## DeFi
   /docs/current/developer-docs/defi/asset-custody/custody-options /docs/defi/overview
@@ -731,23 +709,23 @@ const redirects = `
   /docs/security-best-practices/introduction /docs/building-apps/best-practices/security/overview
   /docs/support /docs/home
   /docs/token-holders/ /docs/defi/overview
-  /docs/token-holders/nns-app-quickstart.html https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
+  /docs/token-holders/nns-app-quickstart.html /docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-quickstart
   /docs/token-holders/seed-donations.html https://wiki.internetcomputer.org/wiki/How-To:_Claim_neurons_for_seed_participants
   /docs/token-holders/self-custody-quickstart.html /docs/defi/overview
   /docs/tokenomics/ /docs/building-apps/governing-apps/overview
   /docs/tokenomics/identity-auth/auth-how-to /docs/building-apps/authentication/overview
   /docs/tokenomics/identity-auth/what-is-ic-identity /docs/building-apps/authentication/overview
   /docs/tokenomics/index /docs/building-apps/governing-apps/overview
-  /docs/tokenomics/nns/community-fund https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
-  /docs/tokenomics/nns/neurons-fund https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
-  /docs/tokenomics/nns/nns-intro https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
-  /docs/tokenomics/nns/nns-staking-voting-rewards https://internetcomputer.zendesk.com/hc/en-us/articles/34084120668692-NNS-Neurons
-  /docs/tokenomics/nns/proposal-requirements https://internetcomputer.zendesk.com/hc/en-us/articles/34084113508500-Proposals
+  /docs/tokenomics/nns/community-fund /docs/building-apps/governing-apps/nns/concepts/neurons/neuron-overview
+  /docs/tokenomics/nns/neurons-fund /docs/building-apps/governing-apps/nns/concepts/neurons/neuron-overview
+  /docs/tokenomics/nns/nns-intro /docs/building-apps/governing-apps/nns/overview
+  /docs/tokenomics/nns/nns-staking-voting-rewards /docs/building-apps/governing-apps/nns/concepts/neurons/neuron-overview
+  /docs/tokenomics/nns/proposal-requirements /docs/building-apps/governing-apps/nns/concepts/proposals/proposal-overview34084113508500-Proposals
   /docs/tokenomics/sns/ /docs/building-apps/governing-apps/tokenomics/
   /docs/tokenomics/sns/sns-intro-tokens	/docs/building-apps/governing-apps/tokenomics/tokenomics-intro
   /docs/tokenomics/sns/tokenomics /docs/building-apps/governing-apps/tokenomics/
   /docs/tokenomics/token-holders/custody-options-intro /docs/defi/overview
-  /docs/tokenomics/token-holders/nns-app-quickstart https://internetcomputer.zendesk.com/hc/en-us/articles/33692645961236-NNS-Network-Nervous-System
+  /docs/tokenomics/token-holders/nns-app-quickstart /docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-dapp-quickstart
   /docs/tokenomics/token-holders/self-custody-quickstart /docs/defi/overview
   /docs/tutorials/ /docs/building-apps/essentials/network-overview
   /docs/tutorials/index /docs/building-apps/essentials/network-overview

@@ -12,7 +12,7 @@ In programming, the [async/await pattern](https://en.wikipedia.org/wiki/Async/aw
 
 On ICP, `async/await` is useful in the context of inter-canister calls. Inter-canister calls cannot be handled synchronously (as the two canisters interacting might not even be in the same subnet), so when a canister sends a call to another, it will have to wait until a response comes back before it can continue processing the call it received.
 
-The `async/await` pattern makes this look straightforward, as the developer can write code as if processing happens sequentially and the call to the callee is handled “synchronously.” However, given ICP's message-passing model, one has to be careful in case there are [concurrent calls that message executions can interleave](https://internetcomputer.zendesk.com/hc/en-us/articles/34208241927316-Message-Routing) as these can lead to inconsistencies if they are not anticipated.
+The `async/await` pattern makes this look straightforward, as the developer can write code as if processing happens sequentially and the call to the callee is handled “synchronously.” However, given ICP's message-passing model, one has to be careful in case there are [concurrent calls that message executions can interleave](/docs/building-apps/essentials/message-execution) as these can lead to inconsistencies if they are not anticipated.
 
 ## Language runtime for asynchronous code
 
