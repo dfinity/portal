@@ -742,7 +742,7 @@ const redirects = `
   /docs/tutorials/index /docs/building-apps/essentials/network-overview
   /docs/current/developer-docs/production/best-practices /docs/building-apps/best-practices/general
   /docs/current/developer-docs/production/canister-history /docs/building-apps/canister-management/history
-  /docs/current/developer-docs/production/canister-recovery /docs/building-apps/canister-management/recovery
+  /docs/current/developer-docs/production/canister-recovery /docs/building-apps/canister-management/snapshots
   /docs/current/developer-docs/production/computation-and-storage-costs /docs/building-apps/essentials/gas-cost
   /docs/current/developer-docs/production/custom-domain/dns-setup /docs/building-apps/frontends/custom-domains/dns-setup
   /docs/current/developer-docs/production/custom-domain/ /docs/building-apps/frontends/custom-domains/using-custom-domains
