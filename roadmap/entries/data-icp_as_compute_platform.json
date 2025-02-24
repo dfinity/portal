@@ -48,20 +48,6 @@
       "milestone_id": "Flux"
     },
     {
-      "title": "Load Balancing via subnet splitting",
-      "is_milestone": true,
-      "description": "This milestone introduces subnet splitting, which allows one subnet to split into two, each subnet hosting half of the workload of the original subnet. Whenever a subnet is overloaded, the NNS can decide to split the subnet, which helps balance load across multiple subnets and avoids overloaded subnets. The first subnet split on ICP mainnet will mark the completion of this milestone.",
-      "milestone_id": "Fission",
-      "status": "in_progress",
-      "eta_to_render": ""
-    },
-    {
-      "title": "Subnet splitting with minimal downtime",
-      "overview": "In a previous feature, subnet splitting became possible via a sequence of NNS proposals, which would incur significant downtime. In this feature, the goal is to make subnet splitting practically possible with minimal downtime for the subnet.",
-      "status": "in_progress",
-      "milestone_id": "Fission"
-    },
-    {
       "title": "Integrity of Node State",
       "is_milestone": true,
       "description": "This milestone brings trusted execution environments (TEE) to the nodes in the Internet Computer to enforce node integrity. It ensures that the node state remains protected, preventing tampering while also keeping sensitive key shares confidential. By guaranteeing the trustworthiness of the nodes, verifiable API BN access logs and secure queries are unlocked.",
@@ -80,6 +66,20 @@
       "overview": "Allowing users to verify that an API boundary node is running trusted software inside a genuine trusted execution environment.",
       "status": "in_progress",
       "milestone_id": "Magnetosphere"
+    },
+    {
+      "title": "Load Balancing via subnet splitting",
+      "is_milestone": true,
+      "description": "This milestone introduces subnet splitting, which allows one subnet to split into two, each subnet hosting half of the workload of the original subnet. Whenever a subnet is overloaded, the NNS can decide to split the subnet, which helps balance load across multiple subnets and avoids overloaded subnets. The first subnet split on ICP mainnet will mark the completion of this milestone.",
+      "milestone_id": "Fission",
+      "status": "in_progress",
+      "eta_to_render": ""
+    },
+    {
+      "title": "Subnet splitting with minimal downtime",
+      "overview": "In a previous feature, subnet splitting became possible via a sequence of NNS proposals, which would incur significant downtime. In this feature, the goal is to make subnet splitting practically possible with minimal downtime for the subnet.",
+      "status": "in_progress",
+      "milestone_id": "Fission"
     },
     {
       "title": "Best-effort messaging",

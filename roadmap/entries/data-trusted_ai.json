@@ -14,13 +14,19 @@
     {
       "title": "LLM Canister MVP",
       "overview": "A canister will be made available that provides an API for processing LLM prompts. This canister is an MVP and will initially rely on a centrally-managed service by DFINITY for processing the prompts. A small set of foundational models will be supported.",
-      "status": "in_progress",
+      "status": "deployed",
       "milestone_id": "Ignition"
     },
     {
       "title": "LLM Developer Experience",
       "overview": "Tools and libraries to simplify the local development and the interaction with the LLM canister.",
       "status": "in_progress",
+      "milestone_id": "Ignition"
+    },
+    {
+      "title": "LLM Workers",
+      "overview": "Introduce worker nodes that specialize in processing LLM prompts. Workers will have security guarantees similar to canister smart contracts on the Internet Computer",
+      "status": "future",
       "milestone_id": "Ignition"
     },
     {
@@ -50,18 +56,18 @@
       "eta_to_render": "April 2025"
     },
     {
-      "title": "Sovereign AI Agents",
-      "description": "This milestone builds on previous milestones by focusing on the security and the decentralization of the LLM services available on the Internet Computer.",
-      "status": "future",
-      "is_milestone": true,
-      "milestone_id": "Vortex",
-      "eta_to_render": ""
+      "title": "Caffeine platform",
+      "overview": "First release of the Caffeine platform for prompt-based ICP app creation. Integrating the fine-tuned models for Motoko code generation and using the Orbit framework to claim ownership of AI-generated applications.",
+      "status": "in_progress",
+      "milestone_id": "Vertex"
     },
     {
-      "title": "LLM Workers",
-      "overview": "Introduce worker nodes that specialize in processing LLM prompts. Workers will have security guarantees similar to canister smart contracts on the Internet Computer",
-      "status": "future",
-      "milestone_id": "Vortex"
+      "title": "Caffeine alpha launch – dawn of the self-writing internet",
+      "description": "Alpha release of the Caffeine platform that allows prompt-based creation of full-stack applications. This represents a vertex where unique ICP technologies, such as its serverless compute model, enhanced orthogonal persistence, and AI models for Motoko code generation meet, creating the self-writing internet.",
+      "status": "in_progress",
+      "is_milestone": true,
+      "milestone_id": "Vertex",
+      "eta_to_render": ""
     }
   ]
 }

@@ -10,7 +10,7 @@
       "proposal": "",
       "docs": "https://github.com/dfinity/wg-identity-authentication",
       "eta": "",
-      "status": "in_progress",
+      "status": "deployed",
       "is_community": true,
       "in_beta": true,
       "milestone_id": "Synchrotron"
@@ -29,19 +29,6 @@
       "milestone_id": "Synchrotron"
     },
     {
-      "title": "Support II authentication to Web2 services",
-      "overview": "Secure, privacy-enhancing authentication for Web2 by bringing ICP's II authentication to Web2 services.",
-      "description": "Secure, privacy-enhancing authentication for Web2 by bringing ICP's II authentication to Web2 services.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "in_progress",
-      "is_community": false,
-      "in_beta": true,
-      "milestone_id": "Synchrotron"
-    },
-    {
       "title": "Signer standards in use by ICP dapps and wallets",
       "is_milestone": true,
       "description": "With Synchrotron, ICP finally acquires the capability to create a vibrant and diverse ecosystem of signers, dapps and canisters that can interact with each other, without having to specifically integrate with any particular component.",
@@ -52,7 +39,7 @@
     },
     {
       "title": "Rethinking the Internet Identity user experience",
-      "description": "Focus on improving the user experience for Internet Identity",
+      "description": "Focus on improving the user experience for Internet Identity by eliminating the need of anchors, supporting the OpenID standard and disentangling the relationship between II, wallets and dapps integrating with them.",
       "status": "in_progress",
       "is_milestone": true,
       "milestone_id": "Pulse",
