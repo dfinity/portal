@@ -599,7 +599,7 @@ Each call request has an ingress expiry field, indicating that its execution mus
 
 3.  The IC asks the targeted canister if it is willing to accept this message and be charged for the expense of processing it. This uses the [Ingress message inspection](#system-api-inspect-message) API for normal calls. For calls to the management canister, the rules in [The IC management canister](#ic-management-canister) apply.
 
-4.  At some point, the IC may accept the call for processing and set its status to `received`. This indicates that the IC as a whole has received the call and plans on processing it (although it may still not get processed if the IC is under high load). At the time of this transition, the call has not yet expired. Furthermore, the user should also be able to ask any endpoint about the status of the pending call.
+4.  At some point, the IC may accept the call for processing and set its status to `received`. This indicates that the IC as a whole has received the call and plans on processing it (although it may still not get processed if the IC is under high load). This transition can only happen before the target canister's time (as visible in the [state tree](#state-tree-time)) exceeds the [`ingress_expiry`](#http-call) field of the request which submitted the call. Furthermore, the user should also be able to ask any endpoint about the status of the pending call.
 
 5.  Once it is clear that the call will be acted upon (sufficient resources, call not yet expired), the status changes to `processing`. Now the user has the guarantee that the request will have an effect, e.g. it will reach the target canister.
 
