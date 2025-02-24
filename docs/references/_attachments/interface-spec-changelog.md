@@ -1,5 +1,8 @@
 ## Changelog {#changelog}
 
+### 0.33.0 (2025-02-12) {#0_33_0}
+* New system API `ic0.subnet_self_size` and `ic0.subnet_self_copy`.
+
 ### 0.32.0 (2025-01-23) {#0_32_0}
 * Allow accepting and burning cycles in replicated queries.
 

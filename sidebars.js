@@ -165,6 +165,7 @@ const sidebars = {
             "developer-docs/smart-contracts/maintain/storage",
             "developer-docs/smart-contracts/maintain/trapping",
             "developer-docs/smart-contracts/maintain/upgrade",
+            "developer-docs/smart-contracts/maintain/backtraces",
             {
               type: "category",
               label: "Topping up canisters",
