@@ -594,7 +594,7 @@ const redirects = `
   /bitcoin /bitcoin-integration
   /bootcamp	/education-hub
   /docs/candid-guide/candid-concepts.html	/docs/current/developer-docs/smart-contracts/candid/candid-concepts
-  /docs/current/blog/features/vetkey-primer	/blog/features/vetkey-primer
+  /docs/current/blog/features/vetkey-primer	/docs/current/references/vetkeys-overview
   /docs/current/concepts/chain-key-technology/ /docs/current/developer-docs/multi-chain/overview
   /docs/current/concepts/concepts-intro.html	/docs/current/developer-docs/getting-started/network-overview
   /docs/current/developer-docs/backend	/docs/current/developer-docs/getting-started/network-overview
@@ -677,7 +677,8 @@ const redirects = `
   /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/current/developer-docs/web-apps/application-frontends/default-frontend /docs/current/developer-docs/web-apps/application-frontends/overview
   /docs/current/developer-docs/getting-started/explore-examples /docs/current/developer-docs/developer-tools/ide/icp-ninja
-  /docs/current/tutorials/developer-journey/index /docs/current/tutorials/developer-liftoff/
+  /blog/features/vetkey-primer /docs/current/references/vetkeys-overview
+  /docs/current/tutorials/developer-journey/ /docs/current/tutorials/developer-liftoff/
   /docs/current/tutorials/developer-journey/level-0/ic-overview /docs/current/tutorials/developer-liftoff/level-0/ic-overview
   /docs/current/tutorials/developer-journey/level-0/ic-terms /docs/current/tutorials/developer-liftoff/level-0/ic-terms
   /docs/current/tutorials/developer-journey/level-0/dev-env /docs/current/tutorials/developer-liftoff/level-0/dev-env
@@ -714,6 +715,7 @@ const redirects = `
   /docs/current/tutorials/developer-journey/level-5/5.4-NFT-tutorial /docs/current/tutorials/developer-liftoff/level-5/5.4-NFT-tutorial
   /docs/current/tutorials/developer-journey/level-5/5.5-auction-tutorial /docs/current/tutorials/developer-liftoff/level-5/5.5-auction-tutorial
   /docs/current/tutorials/developer-journey/level-5/5.6-next-steps /docs/current/tutorials/developer-liftoff/level-5/5.6-next-steps
+
   `
   
   .split(/[\r\n]+/)
