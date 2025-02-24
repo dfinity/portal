@@ -89,7 +89,7 @@ Insert prerequisites using the following format:
 
 Before you start, verify that you have:
 
-<input type="checkbox"/> <a href="/docs/current/developer-docs/getting-started/install">Install the IC SDK.</a>
+<input type="checkbox"/> <a href="/docs/building-apps//getting-started/install">Install the IC SDK.</a>
 
 </TabItem>
 
@@ -208,7 +208,7 @@ For guides or tutorials that include a prerequisites section that contains tasks
 
 Before you start, verify that you have:
 
-<input type="checkbox"/> <a href="/docs/current/developer-docs/getting-started/install">Install the IC SDK.</a>
+<input type="checkbox"/> <a href="/docs/building-apps//getting-started/install">Install the IC SDK.</a>
 
 </TabItem>
 
