@@ -182,7 +182,6 @@ const redirects = `
   /docs/current/developer-docs/defi/cycles/cycles-wallet /docs/building-apps/canister-management/topping-up
   /docs/current/developer-docs/defi/dex/overview https://internetcomputer.zendesk.com/hc/en-us
   /docs/current/developer-docs/defi/exchange-rate-canister/ /docs/references/system-canisters/
-  /docs/current/developer-docs/defi/icp-tokens/account-trimming /docs/defi/account-trimming
   /docs/current/developer-docs/defi/icp-tokens/overview /docs/defi/token-standards/
   /docs/current/developer-docs/defi/icrc-1/icrc1-index-setup /docs/defi/token-indexes/
   /docs/current/developer-docs/defi/icrc-1/token-quickstart /docs/defi/create
@@ -357,7 +356,6 @@ const redirects = `
   /docs/current/developer-docs/integrations/internet-identity	/docs/building-apps/authentication/overview
   /docs/current/developer-docs/integrations/internet-identity/integrate-identity /docs/building-apps/authentication/integrate-internet-identity
   /docs/current/developer-docs/integrations/internet-identity/overview  /docs/building-apps/authentication/overview
-  /docs/current/developer-docs/integrations/ledger/collecting-dust /docs/defi/account-trimming
   /docs/current/developer-docs/integrations/ledger/deploy-new-token /docs/defi/create
   /docs/current/developer-docs/integrations/ledger/  /docs/defi/overview
   /docs/current/developer-docs/integrations/ledger/icp-index-local-setup /docs/defi/token-indexes/
