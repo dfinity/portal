@@ -658,7 +658,7 @@ On the replica, a synchronous call request goes through the same states (`receiv
 If the returned certificate indicates that the update call is in a terminal state (`replied`, `rejected`, or `done`), then the user __does not need to poll__ (using [`read_state`](#http-read-state) requests) 
 to determine the result of the call. A terminal state means the call has completed its execution.
 
-The synchronous call endpoint is useful for users as it removes the networking overhead of polling the IC to determine the status of their call if a terminal state is reached quickly. 
+The synchronous call endpoint is useful for users as it reduces the networking overhead of polling the IC to determine the status of their call. 
 
 The replica will maintain the HTTPS connection for the request and will respond once the call status transitions to a terminal state. 
 
