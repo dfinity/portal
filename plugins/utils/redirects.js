@@ -594,7 +594,7 @@ const redirects = `
   /bitcoin /bitcoin-integration
   /bootcamp	/education-hub
   /docs/candid-guide/candid-concepts.html	/docs/current/developer-docs/smart-contracts/candid/candid-concepts
-  /docs/current/blog/features/vetkey-primer	/blog/features/vetkey-primer
+  /docs/current/blog/features/vetkey-primer	/docs/current/references/vetkeys-overview
   /docs/current/concepts/chain-key-technology/ /docs/current/developer-docs/multi-chain/overview
   /docs/current/concepts/concepts-intro.html	/docs/current/developer-docs/getting-started/network-overview
   /docs/current/developer-docs/backend	/docs/current/developer-docs/getting-started/network-overview
