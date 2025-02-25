@@ -88,7 +88,9 @@ Let's test it out. Make a call to the `caller` canister:
 $ dfx canister call caller call_get_and_set
 ```
 
-Now, `dfx` will use the `dfx.json` file provided in this tutorial's repository to search what parameters the different endpoints of the `caller` canister require. The `dfx.json` points to the `src/caller/caller.did` file, which finally describes the parameters of `call_get_and_set`. With this, `dfx` will first prompt you to provide a principal for the `counter` parameter of the `call_get_and_set` method. If you followed the instructions in the prerequisites section correctly and have already installed the `counter` canister, you can type `counter` and press `TAB` on your keyboard to pass the principal of the counter canister as the parameter, and then `Enter` to confirm. Also select some number to set the counter to, say `42`. Instruct `dfx` to send the message. Then, you will see an output such as:
+Now, `dfx` will use the `dfx.json` file provided in this tutorial's repository to search what parameters the different endpoints of the `caller` canister require. The `dfx.json` points to the `src/caller/caller.did` file, which describes the parameters of `call_get_and_set`. With this, `dfx` will first prompt you to provide a principal for the `counter` parameter of the `call_get_and_set` method. 
+
+You can type `counter` and press `TAB` on your keyboard to pass the principal of the counter canister as the parameter, and then `Enter` to confirm. Also, select a number to set the counter to, say `42`.  Then, you will see an output such as:
 
 ```bash
 (0 : nat, 42 : nat)
@@ -96,7 +98,7 @@ Now, `dfx` will use the `dfx.json` file provided in this tutorial's repository t
 
 Here, the counter was increased from `0` to `42`.
 
-As the example notes, panicking when handling call errors is generally a bad idea past trivial examples such as this one. This is due to the nature of the Internet Computer's messaging model, which we will look at now.
+As the example notes, panicking when handling call errors is generally a bad idea past trivial examples such as this one. This is due to the nature of the Internet Computer's messaging model.
 
 ## IC calls are asynchronous: non-atomic set-then-get
 
@@ -121,7 +123,7 @@ pub async fn set_then_get(counter: Principal, new_value: Nat) -> Nat {
 
     // It looks like you should be able to assert:
     // assert!(current_value == new_value);
-    // But as we will explain, this is *NOT* guaranteed to hold!
+    // As will be explained later, this is *NOT* guaranteed to hold!
     current_value
 }
 ```
