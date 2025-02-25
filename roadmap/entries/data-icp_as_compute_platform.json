@@ -310,17 +310,6 @@
       "in_beta": false
     },
     {
-      "title": "Resilience against slow nodes",
-      "overview": "Punishing ICP nodes that are constantly not performing to specification, i.e., failing too frequently to produce a block successfully when requested or being off-line for considerable time.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
       "title": "User-paid messages",
       "overview": "Using the regular gas model for specific settings: The caller, instead of the canister, pays for update and query calls.",
       "forum": "",
