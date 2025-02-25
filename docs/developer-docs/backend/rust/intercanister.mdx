@@ -168,7 +168,7 @@ pub async fn call_increment(counter: Principal) -> Result<(), String> {
         // "user-level" errors that you should handle.
         Ok(_) => Ok(()),
         // A non-clean reject for unbounded-wait calls only occurs if the callee is malfunctioning
-        // in some way (including panics). On our simple counter example that we deploy locally, this
+        // in some way (including panics). On the simple counter example that we deploy locally, this
         // should not happen.
         Err(e) if !e.is_clean_reject() =>
             Err(format!("Should not happen: the call failed with a non-clean reject: {:?}. We don't know whether the counter increased", e)),
@@ -221,7 +221,7 @@ For example, you can safely call the counter's `get` endpoint using a bounded-wa
 #[update]
 pub async fn call_get(counter: Principal) -> Result<Nat, String> {
     match Call::bounded_wait(counter, "get")
-        // The default timeout is 10 seconds. Here we change it to 1 second.
+        // The default timeout is 10 seconds. Here it is changed it to 1 second.
         .change_timeout(1)
         .await
     {
@@ -276,7 +276,7 @@ pub async fn stubborn_set(counter: Principal, new_value: Nat) -> Result<(), Stri
                     continue;
                 }
             }
-            // If we can't retry immediately, we bail out. Here we leave the upstream caller
+            // If immediate retry isn't possible, bail out. Leave the upstream caller
             // to clean up the mess. For example, they can use the `call_get` endpoint to see whether
             // the set was successful.
             Err(e) => {
@@ -319,7 +319,7 @@ pub async fn sign_message(message: String) -> Result<String, String> {
 
     let request = SignWithEcdsaArgs {
         message_hash,
-        // We don't use the fancier signing features here
+        // This example does not use the fancier signing features
         derivation_path: vec![],
         key_id: EcdsaKeyId {
             curve: EcdsaCurve::Secp256k1,
@@ -329,7 +329,7 @@ pub async fn sign_message(message: String) -> Result<String, String> {
         },
     };
 
-    // We use bounded-wait calls in this example, since the amount attached is
+    // Use bounded-wait calls in this example, since the amount attached is
     // fairly low, and losing the attached cycles isn't catastrophic.
     match Call::bounded_wait(Principal::management_canister(), "sign_with_ecdsa")
         .with_arg(&request)
@@ -343,8 +343,8 @@ pub async fn sign_message(message: String) -> Result<String, String> {
         },
         // A SysUnknown reject code only occurs due to a bounded-wait call timing out.
         // It means that no cycles will be refunded, even
-        // if the call didn't make it to the callee. But we don't care here since
-        // we only attached a small amount of cycles.
+        // if the call didn't make it to the callee. Here, this is fine since
+        // only a small amount is used. 
         Err(ic_cdk::call::CallFailed::CallRejected(e))
             if e.reject_code() == RejectCode::SysUnknown =>
         {
