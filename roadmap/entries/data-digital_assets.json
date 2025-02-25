@@ -16,7 +16,7 @@
     {
       "title": "In-Wallet Swaps",
       "overview": "Introducing in-wallet swaps, this release will enhance flexibility for managing assets, allowing users to seamlessly change their asset allocation directly in OISY using DEX liquidity, mitigating risk or aiming for a higher yield.",
-      "status": "in_progress",
+      "status": "deployed",
       "forum": "",
       "proposal": "",
       "docs": "",
