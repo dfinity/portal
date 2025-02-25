@@ -42,28 +42,6 @@ echo $(dfx identity get-principal)
 
 Fee that users of the ledger will have to pay anytime they want to make a transfer.
 
-#### `ARCHIVE_CONTROLLER`
-
-The [controller <GlossaryTooltip>principal</GlossaryTooltip>](/docs/current/developer-docs/defi/cycles/cycles-wallet#controller-and-custodian-roles) of the archive canisters.
-
-```
-dfx identity new archive_controller
-dfx identity use archive_controller
-echo $(dfx identity get-principal)
-```
-
-#### `TRIGGER_THRESHOLD`
-
-The number of blocks to archive when the trigger threshold is exceeded.
-
-#### `CYCLE_FOR_ARCHIVE_CREATION`
-
-The number of cycles that will be sent to the archive canister when it is created.
-
-#### `NUM_OF_BLOCK_TO_ARCHIVE`
-
-The number of blocks that will be archived.
-
 #### `TOKEN_NAME`
 
 The name of your token.
@@ -89,6 +67,37 @@ echo $(dfx identity get-principal)
 A flag for enabling or disabling certain extension standards to the ICRC-1 standard. In this case, the reference implementation can also support ICRC-2 transactions.
 
 If you only want to support the ICRC-1 standard, then you can set the flag to `false`. If you want to also support the ICRC-2 standard, set it to `true`.
+
+### Archive options
+
+The following options configure the archiving settings of the ledger.
+In case optional fields are not specified, [the default values defined in `ArchiveOptions::new`](https://github.com/dfinity/ic/blob/396b461cd018448b075c82afac1b3a45b9a3dc1a/rs/ledger_suite/common/ledger_canister_core/src/archive.rs#L160-L176) are used.
+For production deployments, it is recommended to set the values [similarly to what is done for SNS ledgers](https://github.com/dfinity/ic/blob/98fa250f488163fc5d94079c4acd81ba55761bd6/rs/sns/init/src/lib.rs#L600-L613).
+
+#### `CONTROLLER_ID`
+
+The [controller <GlossaryTooltip>principal</GlossaryTooltip>](/docs/current/developer-docs/defi/cycles/cycles-wallet#controller-and-custodian-roles) of the archive canisters.
+
+```
+dfx identity new archive_controller
+dfx identity use archive_controller
+echo $(dfx identity get-principal)
+```
+
+#### `TRIGGER_THRESHOLD`
+
+The number of blocks to archive when the trigger threshold is exceeded.
+
+#### `CYCLES_FOR_ARCHIVE_CREATION`
+
+The number of cycles that will be sent to the archive canister when it is created.
+Note that this needs to cover [the cost for canister creation](/docs/current/developer-docs/gas-cost#canister-creation), and the installation of the canister.
+If the value is set too low, archiving is effectively disabled.
+
+#### `NUM_BLOCKS_TO_ARCHIVE`
+
+The number of blocks that will be archived.
+If this is set to zero, archiving is effectively disabled.
 
 ## Edit the project's dfx.json file
 
@@ -152,6 +161,31 @@ If you want to deploy your ICRC-1 token on the mainnet, follow these steps:
 - Confirm that the `archive_options` field is set. If archiving is disabled, your ledger's memory capacity will be limited to that of a single canister.
 
 - Be sure that your ledger canister has cycles attached to the `create_canister` messages, using the `cycles_for_archive_creation`.
+
+## Changing your token metadata
+
+:::info
+The initialization and upgrade arguments of the ICRC-1 ledger are not specified in the [standard](https://github.com/dfinity/ICRC-1/blob/main/standards/ICRC-1/README.md). Thus, the arguments defined in this section are dependent on the reference implementation of the ICRC-1 ledger. If you build your own ICRC-1 ledger, you may use different initialization arguments.
+:::
+
+Token metadata, such as the token name, symbol, and logo, is set using the [`InitArgs`](https://github.com/dfinity/ic/blob/ad6df00098cf25d8df29a469c0a4504979a411c1/rs/ledger_suite/icrc1/ledger/src/lib.rs#L253-L266) when the ledger is installed.
+This metadata can subsequently be changed using the [`UpgradeArgs`](https://github.com/dfinity/ic/blob/ad6df00098cf25d8df29a469c0a4504979a411c1/rs/ledger_suite/icrc1/ledger/src/lib.rs#L324-L342) when the ledger is upgraded.
+Note that such an upgrade can also be performed by upgrading the ledger canister to the same Wasm that it is currently running, which results in the metadata being changed, but the functional behavior of the ledger otherwise remaining the same.
+
+The reference implementation of the ICRC-1 ledger interprets some metadata, whereas other metadata is simply stored and returned in the response to an `icrc1_metadata` query.
+The former covers the following:
+
+- The token name.
+
+- The token symbol.
+
+- The number of decimals.
+
+- The transaction fee.
+
+The above values should be set using the explicitly provided fields in the `InitArgs` or `UpgradeArgs`, for canister installs or upgrades, respectively, e.g., the `token_symbol` field for setting the token symbol.
+Other metadata, such as the token logo, should be set as `(key, value)` pairs in the `metadata` `Vec`.
+The format **should** follow what is specified in the [standard](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1#metadata), e.g., for the token logo, the metadata key should be `icrc1:logo`.
 
 ## Next steps
 

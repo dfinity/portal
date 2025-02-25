@@ -25,7 +25,7 @@ At a high level, a consensus round has the following three phases:
 
 - _Block making:_ In every round, at least one node, called a block maker, proposes a block by broadcasting it to all nodes in the subnet using P2P.
   As we will see, when things go right, there is only one block maker, but sometimes there may be several.
-- _Notarization:_ For a block to become _notarized_, at least two thirds of the nodes must validate the node and support its notarization.
+- _Notarization:_ For a block to become _notarized_, at least two thirds of the nodes must validate the block and support its notarization.
 - _Finalization:_ For a block to become _finalized_, at least two thirds of the nodes must support its finalization. As we will see, a node will support the finalization of a block only if it did not support the notarization of any other block, and this simple rule guarantees that if a block is finalized in a given round, then there can be no other notarized block in that round.
 
 Let us next look at the different phases of a consensus round in more detail.

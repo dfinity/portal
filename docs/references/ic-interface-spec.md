@@ -1441,19 +1441,22 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.msg_reply : () -> ();                                                             // U RQ NRQ CQ Ry Rt CRy CRt
     ic0.msg_reject : (src : I, size : I) -> ();                                           // U RQ NRQ CQ Ry Rt CRy CRt
 
-    ic0.msg_cycles_available128 : (dst : I) -> ();                                        // U Rt Ry
+    ic0.msg_cycles_available128 : (dst : I) -> ();                                        // U RQ Rt Ry
     ic0.msg_cycles_refunded128 : (dst : I) -> ();                                         // Rt Ry
     ic0.msg_cycles_accept128 : (max_amount_high : i64, max_amount_low: i64, dst : I)
-                           -> ();                                                         // U Rt Ry
+                           -> ();                                                         // U RQ Rt Ry
 
     ic0.cycles_burn128 : (amount_high : i64, amount_low : i64, dst : I)
-                           -> ();                                                         // I G U Ry Rt C T
+                           -> ();                                                         // I G U RQ Ry Rt C T
 
     ic0.canister_self_size : () -> I;                                                     // *
     ic0.canister_self_copy : (dst : I, offset : I, size : I) -> ();                       // *
     ic0.canister_cycle_balance128 : (dst : I) -> ();                                      // *
     ic0.canister_status : () -> i32;                                                      // *
     ic0.canister_version : () -> i64;                                                     // *
+
+    ic0.subnet_self_size : () -> I;                                                       // *
+    ic0.subnet_self_copy : (dst : I, offset : I, size : I) -> ();                         // *
 
     ic0.msg_method_name_size : () -> I;                                                   // F
     ic0.msg_method_name_copy : (dst : I, offset : I, size : I) -> ();                     // F
@@ -1498,9 +1501,9 @@ The following System API functions are only available if `I = i32`, i.e., if the
 or if the canister declares no memory.
 
 ```
-    ic0.msg_cycles_available : () -> i64;                                                 // U Rt Ry
+    ic0.msg_cycles_available : () -> i64;                                                 // U RQ Rt Ry
     ic0.msg_cycles_refunded : () -> i64;                                                  // Rt Ry
-    ic0.msg_cycles_accept : (max_amount : i64) -> (amount : i64);                         // U Rt Ry
+    ic0.msg_cycles_accept : (max_amount : i64) -> (amount : i64);                         // U RQ Rt Ry
     ic0.canister_cycle_balance : () -> i64;                                               // *
     ic0.call_cycles_add : (amount : i64) -> ();                                           // U Ry Rt T
     ic0.stable_size : () -> (page_count : i32);                                           // * s
@@ -1658,6 +1661,12 @@ A canister can learn about its own identity:
 
     These functions allow the canister to query its own canister id (as a blob).
 
+A canister can learn about the subnet it is running on:
+
+-   `ic0.subnet_self_size : () → I` and `ic0.subnet_self_copy: (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
+
+    These functions allow the canister to query the subnet id (as a blob) of the subnet on which the canister is running.
+
 ### Canister status {#system-api-canister-status}
 
 This function allows a canister to find out if it is running, stopping or stopped (see [IC method](#ic-canister_status) and [IC method](#ic-stop_canister) for context).
@@ -1672,7 +1681,7 @@ This function allows a canister to find out if it is running, stopping or stoppe
 
 ### Canister version {#system-api-canister-version}
 
-For each canister, the system maintains a *canister version*. Upon canister creation, it is set to 0, and it is **guaranteed** to be incremented upon every change of the canister's code, settings, running status (Running, Stopping, Stopped), and memory (WASM and stable memory), i.e., upon every successful management canister call of methods `update_settings`, `load_canister_snapshot`, `install_code`, `install_chunked_code`, `uninstall_code`, `start_canister`, and `stop_canister` on that canister, code uninstallation due to that canister running out of cycles, canister's running status transitioning from Stopping to Stopped, and successful execution of update methods, response callbacks, heartbeats, and global timers. The system can arbitrarily increment the canister version also if the canister's code, settings, running status, and memory do not change.
+For each canister, the system maintains a *canister version*. Upon canister creation, it is set to 0, and it is **guaranteed** to be incremented upon every change of the canister's code, settings, running status (Running, Stopping, Stopped), cycles balance, and memory (WASM and stable memory), i.e., upon every successful management canister call of methods `update_settings`, `load_canister_snapshot`, `install_code`, `install_chunked_code`, `uninstall_code`, `start_canister`, and `stop_canister` on that canister, code uninstallation due to that canister running out of cycles, canister's running status transitioning from Stopping to Stopped, and successful execution of update methods, replicated query methods, response callbacks, heartbeats, and global timers. The system can arbitrarily increment the canister version also if the canister's code, settings, running status, and memory do not change.
 
 -   `ic0.canister_version : () → i64`
 
@@ -1741,7 +1750,7 @@ There must be at most one call to `ic0.call_on_cleanup` between `ic0.call_new` a
 
     The amount of cycles it moves is represented by a 128-bit value which can be obtained by combining the `amount_high` and `amount_low` parameters.
 
-    The cycles are deducted from the balance as shown by `ic0.canister_cycles_balance128` immediately, and moved back if the call cannot be performed (e.g. if `ic0.call_perform` signals an error, if the canister invokes `ic0.call_new`, or returns without calling `ic0.call_perform`).
+    The cycles are deducted from the balance as shown by `ic0.canister_cycle_balance128` immediately, and moved back if the call cannot be performed (e.g. if `ic0.call_perform` signals an error, if the canister invokes `ic0.call_new`, or returns without calling `ic0.call_perform`).
 
     This system call may be called multiple times between `ic0.call_new` and `ic0.call_perform`.
 
@@ -1779,7 +1788,7 @@ This specification currently does not go into details about which actions cost h
 
 :::note
 
-This call traps if the current balance does not fit into a 64-bit value. Canisters that need to deal with larger cycles balances should use `ic0.canister_cycles_balance128` instead.
+This call traps if the current balance does not fit into a 64-bit value. Canisters that need to deal with larger cycles balances should use `ic0.canister_cycle_balance128` instead.
 
 :::
 
@@ -2484,7 +2493,13 @@ The encoding of the signature depends on the key ID's `algorithm`:
 
 -   For algorithm `ed25519`, the signature is encoded in 64 bytes according to [RFC8032, 5.1.6 Sign](https://datatracker.ietf.org/doc/html/rfc8032#section-5.1.6).
 
-This call requires that a Schnorr key with ID `key_id` was generated by the IC and the signing functionality for that key was enabled. Otherwise, the call is is rejected.
+This call requires that a Schnorr key with ID `key_id` was generated by the IC and the signing functionality for that key was enabled. Otherwise, the call is rejected.
+
+This call accepts an optional auxiliary parameter `aux`. The auxiliary parameter type `schnorr_aux` is an enumeration. The only currently supported variant is `bip341` which allows passing a Merkle tree root hash, which is required to implement Taproot signatures as defined in [BIP341](https://github.com/bitcoin/bips/blob/master/bip-0341.mediawiki). The `bip341` variant is only allowed for `bip340secp256k1` signatures, and if provided the `merkle_root_hash` must be generated in accordance with BIP341's specification for `taproot_output_script`. Specifically it should be either an empty bytestring (for the `script == None` case) or else 32 bytes generated using the procedure documented as `taproot_tree_helper`. If no auxiliary parameter is provided, then `bip340secp256k1` signatures are generated in accordance with BIP340.
+
+On the Internet Computer, the tuple of the requested master key, the calling canister, and derivation path determines which private key is used to generate the signature, and which public key is returned by `schnorr_public_key`.
+
+When using BIP341 signatures, the actual signature that is created will be relative to the Schnorr signature derived as described in BIP341's `taproot_sign_script`. The key returned by `schnorr_public_key` is the value identified in BIP341 as `internal_pubkey`.
 
 Cycles to pay for the call must be explicitly transferred with the call, i.e., they are not automatically deducted from the caller's balance implicitly (e.g., as for inter-canister calls).
 
@@ -2565,7 +2580,7 @@ If you do not specify the `max_response_bytes` parameter, the maximum of a `2MB`
 
 :::
 
-### IC method `node_metrics_history` {#ic-node-metrics-history}
+### IC method `node_metrics_history` {#ic-node_metrics_history}
 
 This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
 
@@ -2587,7 +2602,7 @@ A single metric entry is a record with the following fields:
 
 - `num_block_failures_total` (`nat64`): the number of failed block proposals by this node.
 
-### IC method `subnet_info` {#ic-subnet-info}
+### IC method `subnet_info` {#ic-subnet_info}
 
 This method can only be called by canisters, i.e., it cannot be called by external users via ingress messages.
 
@@ -3179,6 +3194,7 @@ The [WebAssembly System API](#system-api) is relatively low-level, and some of i
       memory_usage_chunk_store : Nat;
       memory_usage_snapshot : Nat;
       freezing_threshold : Nat;
+      subnet_id : Principal;
       subnet_size : Nat;
       certificate : NoCertificate | Blob;
       status : Running | Stopping | Stopped;
@@ -3206,6 +3222,7 @@ The [WebAssembly System API](#system-api) is relatively low-level, and some of i
     }
     QueryFunc = WasmState -> Trap { cycles_used : Nat; } | Return {
       response : Response;
+      cycles_accepted : Nat;
       cycles_used : Nat;
     }
     CompositeQueryFunc = WasmState -> Trap { cycles_used : Nat; } | Return {
@@ -3225,35 +3242,36 @@ The [WebAssembly System API](#system-api) is relatively low-level, and some of i
     AvailableCycles = Nat
     RefundedCycles = Nat
 
-        CanisterModule = {
-          init : (CanisterId, Arg, CallerId, Env) -> Trap { cycles_used : Nat; } | Return {
-            new_state : WasmState;
-            new_certified_data : NoCertifiedData | Blob;
-            new_global_timer : NoGlobalTimer | Nat;
-            cycles_used : Nat;
-          }
-          pre_upgrade : (WasmState, Principal, Env) -> Trap { cycles_used : Nat; } | Return {
-            new_state : WasmState;
-            new_certified_data : NoCertifiedData | Blob;
-            cycles_used : Nat;
-          }
-          post_upgrade : (WasmState, Arg, CallerId, Env) -> Trap { cycles_used : Nat; } | Return {
-            new_state : WasmState;
-            new_certified_data : NoCertifiedData | Blob;
-            new_global_timer : NoGlobalTimer | Nat;
-            cycles_used : Nat;
-          }
-          update_methods : MethodName ↦ ((Arg, CallerId, Env, AvailableCycles) -> UpdateFunc)
-          query_methods : MethodName ↦ ((Arg, CallerId, Env) -> QueryFunc)
-          composite_query_methods : MethodName ↦ ((Arg, CallerId, Env) -> CompositeQueryFunc)
-          heartbeat : (Env) -> SystemTaskFunc
-          global_timer : (Env) -> SystemTaskFunc
-          callbacks : (Callback, Response, RefundedCycles, Env, AvailableCycles) -> UpdateFunc
-          composite_callbacks : (Callback, Response, Env) -> UpdateFunc
-          inspect_message : (MethodName, WasmState, Arg, CallerId, Env) -> Trap | Return {
-            status : Accept | Reject;
-          }
-        }
+    CanisterModule = {
+      init : (CanisterId, Arg, CallerId, Env) -> Trap { cycles_used : Nat; } | Return {
+        new_state : WasmState;
+        new_certified_data : NoCertifiedData | Blob;
+        new_global_timer : NoGlobalTimer | Nat;
+        cycles_used : Nat;
+      }
+      pre_upgrade : (WasmState, Principal, Env) -> Trap { cycles_used : Nat; } | Return {
+        new_state : WasmState;
+        new_certified_data : NoCertifiedData | Blob;
+        cycles_used : Nat;
+      }
+      post_upgrade : (WasmState, Arg, CallerId, Env) -> Trap { cycles_used : Nat; } | Return {
+        new_state : WasmState;
+        new_certified_data : NoCertifiedData | Blob;
+        new_global_timer : NoGlobalTimer | Nat;
+        cycles_used : Nat;
+      }
+      update_methods : MethodName ↦ ((Arg, CallerId, Env, AvailableCycles) -> UpdateFunc)
+      query_methods : MethodName ↦ ((Arg, CallerId, Env) -> QueryFunc)
+      composite_query_methods : MethodName ↦ ((Arg, CallerId, Env) -> CompositeQueryFunc)
+      heartbeat : (Env) -> SystemTaskFunc
+      global_timer : (Env) -> SystemTaskFunc
+      callbacks : (Callback, Response, RefundedCycles, Env, AvailableCycles) -> UpdateFunc
+      composite_callbacks : (Callback, Response, Env) -> UpdateFunc
+      inspect_message : (MethodName, WasmState, Arg, CallerId, Env) -> Trap | Return {
+        status : Accept | Reject;
+      }
+    }
+    ```
 
 This high-level interface presents a pure, mathematical model of a canister, and hides the bookkeeping required to provide the System API as seen in Section [Canister interface (System API)](#system-api).
 
@@ -3758,6 +3776,7 @@ is_effective_canister_id(E.content, ECID)
     memory_usage_chunk_store = memory_usage_chunk_store(S.chunk_store[E.content.canister_id]);
     memory_usage_snapshot = memory_usage_snapshot(S.snapshots[E.content.canister_id]);
     freezing_threshold = S.freezing_threshold[E.content.canister_id];
+    subnet_id = S.canister_subnet[E.content.canister_id].subnet_id;
     subnet_size = S.canister_subnet[E.content.canister_id].subnet_size;
     certificate = NoCertificate;
     status = simple_status(S.canister_status[E.content.canister_id]);
@@ -4062,6 +4081,7 @@ Env = {
   memory_usage_chunk_store = memory_usage_chunk_store(S.chunk_store[M.receiver]);
   memory_usage_snapshot = memory_usage_snapshot(S.snapshots[M.receiver]);
   freezing_threshold = S.freezing_threshold[M.receiver];
+  subnet_id = S.canister_subnet[M.receiver].subnet_id;
   subnet_size = S.canister_subnet[M.receiver].subnet_size;
   certificate = NoCertificate;
   status = simple_status(S.canister_status[M.receiver]);
@@ -4076,7 +4096,7 @@ Available = S.call_contexts[M.call_contexts].available_cycles
 )
 or
 ( M.entry_point = PublicMethod Name Caller Arg
-  F = query_as_update(Mod.query_methods[Name], Arg, Caller, Env)
+  F = query_as_update(Mod.query_methods[Name], Arg, Caller, Env, Available)
   New_canister_version = S.canister_version[M.receiver]
   Wasm_memory_limit = 0
 )
@@ -4226,8 +4246,8 @@ validate_sender_canister_version(new_calls, canister_version_from_system) =
 
 The functions `query_as_update` and `system_task_as_update` turns a query function (note that composite query methods cannot be called when executing a message during this transition) resp the heartbeat or global timer into an update function; this is merely a notational trick to simplify the rule:
 ```
-query_as_update(f, arg, env) = λ wasm_state →
-  match f(arg, env)(wasm_state) with
+query_as_update(f, arg, caller, env, available) = λ wasm_state →
+  match f(arg, caller, env, available)(wasm_state) with
     Trap trap → Trap trap
     Return res → Return {
       new_state = wasm_state;
@@ -4235,7 +4255,7 @@ query_as_update(f, arg, env) = λ wasm_state →
       new_certified_data = NoCertifiedData;
       new_global_timer = NoGlobalTimer;
       response = res.response;
-      cycles_accepted = 0;
+      cycles_accepted = res.cycles_accepted;
       cycles_used = res.cycles_used;
     }
     
@@ -4803,6 +4823,7 @@ Env = {
   memory_usage_chunk_store = memory_usage_chunk_store(New_chunk_store);
   memory_usage_snapshot = memory_usage_snapshot(S.snapshots[A.canister_id]);
   freezing_threshold = S.freezing_threshold[A.canister_id];
+  subnet_id = S.canister_subnet[A.canister_id].subnet_id;
   subnet_size = S.canister_subnet[A.canister_id].subnet_size;
   certificate = NoCertificate;
   status = simple_status(S.canister_status[A.canister_id]);
@@ -4922,6 +4943,7 @@ Env = {
   memory_usage_chunk_store = memory_usage_chunk_store(S.chunk_store[A.canister_id]);
   memory_usage_snapshot = memory_usage_snapshot(S.snapshots[A.canister_id]);
   freezing_threshold = S.freezing_threshold[A.canister_id];
+  subnet_id = S.canister_subnet[A.canister_id].subnet_id;
   subnet_size = S.canister_subnet[A.canister_id].subnet_size;
   certificate = NoCertificate;
   status = simple_status(S.canister_status[A.canister_id]);
@@ -6315,6 +6337,7 @@ composite_query_helper(S, Cycles, Depth, Root_canister_id, Caller, Canister_id, 
               memory_usage_chunk_store = memory_usage_chunk_store(S.chunk_store[Canister_id]);
               memory_usage_snapshot = memory_usage_snapshot(S.snapshots[Canister_id]);
               freezing_threshold = S.freezing_threshold[Canister_id];
+              subnet_id = S.canister_subnet[Canister_id].subnet_id;
               subnet_size = S.canister_subnet[Canister_id].subnet_size;
               certificate = Cert;
               status = simple_status(S.canister_status[Canister_id]);
@@ -6857,16 +6880,18 @@ Finally, we can specify the abstract `CanisterModule` that models a concrete Web
 
 -   The partial map `query_methods` of the `CanisterModule` is defined for all method names `method` for which the WebAssembly program exports a function `func` named `canister_query <method>`, and has value
     ```
-    query_methods[method] = λ (arg, caller, sysenv) → λ wasm_state →
+    query_methods[method] = λ (arg, caller, sysenv, available) → λ wasm_state →
       let es = ref {empty_execution_state with
           wasm_state = wasm_state;
           params = empty_params with { arg = arg; caller = caller; sysenv }
           balance = sysenv.balance
+          cycles_available = available
           context = Q
         }
       try func<es>() with Trap then Trap {cycles_used = es.cycles_used;}
       Return {
         response = es.response;
+        cycles_accepted = es.cycles_accepted;
         cycles_used = es.cycles_used;
       }
     ```
@@ -7174,13 +7199,13 @@ ic0.msg_reject<es>(src : I, size : I) =
   es.cycles_available := 0
 
 ic0.msg_cycles_available<es>() : i64 =
-  if es.context ∉ {U, Rt, Ry} then Trap {cycles_used = es.cycles_used;}
+  if es.context ∉ {U, RQ, Rt, Ry} then Trap {cycles_used = es.cycles_used;}
   if es.cycles_available >= 2^64 then Trap {cycles_used = es.cycles_used;}
   return es.cycles_available
 
 I ∈ {i32, i64}
 ic0.msg_cycles_available128<es>(dst : I) =
-  if es.context ∉ {U, Rt, Ry} then Trap {cycles_used = es.cycles_used;}
+  if es.context ∉ {U, RQ, Rt, Ry} then Trap {cycles_used = es.cycles_used;}
   let amount = es.cycles_available
   copy_cycles_to_canister<es>(dst, amount.to_little_endian_bytes())
 
@@ -7196,7 +7221,7 @@ ic0.msg_cycles_refunded128<es>(dst : I) =
   copy_cycles_to_canister<es>(dst, amount.to_little_endian_bytes())
 
 ic0.msg_cycles_accept<es>(max_amount : i64) : i64 =
-  if es.context ∉ {U, Rt, Ry} then Trap {cycles_used = es.cycles_used;}
+  if es.context ∉ {U, RQ, Rt, Ry} then Trap {cycles_used = es.cycles_used;}
   let amount = min(max_amount, es.cycles_available)
   es.cycles_available := es.cycles_available - amount
   es.cycles_accepted := es.cycles_accepted + amount
@@ -7205,7 +7230,7 @@ ic0.msg_cycles_accept<es>(max_amount : i64) : i64 =
 
 I ∈ {i32, i64}
 ic0.msg_cycles_accept128<es>(max_amount_high : i64, max_amount_low : i64, dst : I) =
-  if es.context ∉ {U, Rt, Ry} then Trap {cycles_used = es.cycles_used;}
+  if es.context ∉ {U, RQ, Rt, Ry} then Trap {cycles_used = es.cycles_used;}
   let max_amount = max_amount_high * 2^64 + max_amount_low
   let amount = min(max_amount, es.cycles_available)
   es.cycles_available := es.cycles_available - amount
@@ -7215,7 +7240,7 @@ ic0.msg_cycles_accept128<es>(max_amount_high : i64, max_amount_low : i64, dst : 
 
 I ∈ {i32, i64}
 ic0.cycles_burn128<es>(amount_high : i64, amount_low : i64, dst : I) =
-  if es.context ∉ {I, G, U, Ry, Rt, C, T} then Trap {cycles_used = es.cycles_used;}
+  if es.context ∉ {I, G, U, RQ, Ry, Rt, C, T} then Trap {cycles_used = es.cycles_used;}
   let amount = amount_high * 2^64 + amount_low
   let burned_amount = min(amount, liquid_balance(es))
   es.balance := es.balance - burned_amount
@@ -7231,13 +7256,23 @@ ic0.canister_self_copy<es>(dst : I, offset : I, size : I) =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
   copy_to_canister<es>(dst, offset, size, es.wasm_state.self_id)
 
+I ∈ {i32, i64}
+ic0.subnet_self_size<es>() : I =
+  if es.context = s then Trap {cycles_used = es.cycles_used;}
+  return |es.params.sysenv.subnet_id|
+
+I ∈ {i32, i64}
+ic0.subnet_self_copy<es>(dst : I, offset : I, size : I) =
+  if es.context = s then Trap {cycles_used = es.cycles_used;}
+  copy_to_canister<es>(dst, offset, size, es.params.sysenv.subnet_id)
+
 ic0.canister_cycle_balance<es>() : i64 =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
   if es.balance >= 2^64 then Trap {cycles_used = es.cycles_used;}
   return es.balance
 
 I ∈ {i32, i64}
-ic0.canister_cycles_balance128<es>(dst : I) =
+ic0.canister_cycle_balance128<es>(dst : I) =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
   let amount = es.balance
   copy_cycles_to_canister<es>(dst, amount.to_little_endian_bytes())
