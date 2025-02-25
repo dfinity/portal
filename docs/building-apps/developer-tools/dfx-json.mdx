@@ -39,7 +39,7 @@ This configuration contains the following components:
 
 - `example_backend`: Defines the name of the canister in this project.
 
-- `main`: The primary source code file for the canister that serves as the canister's entry point. By default, for Motoko canisters, this file is `main.mo`. For Rust canisters,
+- `main`: The primary source code file for the canister that serves as the canister's entrypoint. By default, for Motoko canisters this file is `main.mo`. For Rust canisters, the `candid' keyword is used in place of the `main` keyword to define the entrypoint of a canister.
 
 - `type`: Defines the type of the canister. Supported types are `motoko`, `rust`, `assets`, `pull` and `custom`. The Motoko and Rust languages are supported through the IC SDK by default. `custom` type refers to canisters written in languages other than Motoko or Rust. `assets` type refers to [frontend canisters](#asset-canisters). `pull` type refers to [third party canisters](#pullable-canisters). 
 
