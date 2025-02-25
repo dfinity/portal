@@ -588,28 +588,26 @@ The Internet Computer has two HTTPS APIs for canister calling:
 - [*Asynchronous*](#http-async-call-overview) canister calling, where the user must poll the Internet Computer for the status of the canister call by _separate_ HTTPS requests.
 - [*Synchronous*](#http-sync-call-overview) canister calling, where the status of the canister call is in the response of the original HTTPS request.
 
-The publicly exposed state of a subnet (including the status of calls to its canisters) evolves in rounds. Each round is associated with a discrete timestamp, see [Time](#state-tree-time). 
-Each call request has an ingress expiry field, indicating that its execution must not start after the subnet time exceeds the expiry timestamp. 
+The publicly exposed state of a subnet (including the status of calls to its canisters) evolves in rounds. Each round is associated with a discrete timestamp, see [Time](#state-tree-time).
+Each call request has an ingress expiry field, indicating that its execution must not start after the subnet time exceeds the expiry timestamp.
 
 #### Asynchronous canister calling {#http-async-call-overview}
 
-1.  A user submits a call via the [HTTPS Interface](#http-interface). No useful information is returned in the immediate response (as such information cannot be trustworthy anyways).
+1.  A user submits a call via the [HTTPS Interface](#http-interface). The node receiving the request asks the targeted canister if it is willing to accept this message and be charged for the expense of processing it. For calls to the management canister, the rules in [The IC management canister](#ic-management-canister) apply. Otherwise, the node uses the [Ingress message inspection](#system-api-inspect-message) API.
 
 2.  For a certain amount of time, the IC behaves as if it does not know about the call.
 
-3.  The IC asks the targeted canister if it is willing to accept this message and be charged for the expense of processing it. This uses the [Ingress message inspection](#system-api-inspect-message) API for normal calls. For calls to the management canister, the rules in [The IC management canister](#ic-management-canister) apply.
+3.  At some point, the IC may accept the call for processing and set its status to `received`. This indicates that the IC as a whole has received the call and plans on processing it (although it may still not get processed if the IC is under high load). This transition can only happen before the target canister's time (as visible in the [state tree](#state-tree-time)) exceeds the [`ingress_expiry`](#http-call) field of the request which submitted the call.
 
-4.  At some point, the IC may accept the call for processing and set its status to `received`. This indicates that the IC as a whole has received the call and plans on processing it (although it may still not get processed if the IC is under high load). This transition can only happen before the target canister's time (as visible in the [state tree](#state-tree-time)) exceeds the [`ingress_expiry`](#http-call) field of the request which submitted the call. Furthermore, the user should also be able to ask any endpoint about the status of the pending call.
+4. Once it is clear that the call will be acted upon (sufficient resources, call not yet expired), the status changes to `processing`. Now the user has the guarantee that the request will have an effect, e.g. it will reach the target canister.
 
-5.  Once it is clear that the call will be acted upon (sufficient resources, call not yet expired), the status changes to `processing`. Now the user has the guarantee that the request will have an effect, e.g. it will reach the target canister.
+5.  The IC is processing the call. For some calls this may be atomic, for others this involves multiple internal steps.
 
-6.  The IC is processing the call. For some calls this may be atomic, for others this involves multiple internal steps.
+6.  Eventually, a response will be produced, and can be retrieved for a certain amount of time. The response is either a `reply`, indicating success, or a `reject`, indicating some form of error.
 
-7.  Eventually, a response will be produced, and can be retrieved for a certain amount of time. The response is either a `reply`, indicating success, or a `reject`, indicating some form of error.
+7.  In case of high load on the IC, even if the request has not expired yet, the IC can forget the response data and only remember the call as `done`, to prevent a replay attack.
 
-8.  In the case that the call has been retained for long enough, but the request has not expired yet, the IC can forget the response data and only remember the call as `done`, to prevent a replay attack.
-
-9.  Once the expiry time is past, the IC can prune the call and its response, and completely forget about it.
+8.  Once the expiry time is past, the IC can prune the call and its response, and completely forget about it.
 
 This yields the following interaction diagram:
 ```plantuml
@@ -645,9 +643,10 @@ The characteristic property of the `processing` state is that *the initial effec
 A call may be rejected by the IC or the canister. In either case, there is no guarantee about how much processing of the call has happened.
 
 To avoid replay attacks, the transition from `done` or `received` to `pruned` must happen no earlier than the call's `ingress_expiry` field.
-If a subnet's time is greater than a call's `ingress_expiry` field and it is still unknown to the IC (i.e, it was never in state `received`, `processing`, `replied`, `rejected`, or `done`), then the call will never be in one of these states.
+If a subnet's time strictly exceeds the call's `ingress_expiry` field, the subnet's time exceeds the call's `ingress_expiry` field by at most 5 minutes, and the call's status is unknown to the IC (i.e., it was never in state `received`, `processing`, `replied`, `rejected`, or `done`), then the call will never be in one of these states.
 
-Calls stay in `replied` or `rejected` long enough for polling users to catch the response under good networking conditions with low load.
+Calls stay in `replied` or `rejected` for 5 minutes so that polling users can catch the response under good networking conditions
+and low load on the IC. However, in case of high load on the IC, the IC can transition the call to `done` at any time.
 
 When asking the IC about the state or call of a request, the user uses the request id (see [Request ids](#request-id)) to read the request status (see [Request status](#state-tree-request-status)) from the state tree (see [Request: Read state](#http-read-state)).
 
