@@ -4,8 +4,8 @@
   "elements": [
     {
       "title": "Solana Integration",
-      "overview": "OISY widens its multichain reach beyond Bitcoin and Ethereum, and will integrate with the most important networks. Solana is the first one to be implemented, a crucial step forward in our mission to deliver a true multichain wallet for decentralized finance (DeFi) users.",
-      "status": "in_progress",
+      "overview": "OISY widens its multi-chain reach beyond Bitcoin and Ethereum, and will integrate with the most important networks. Solana is the first one to be implemented, a crucial step forward in our mission to deliver a true multichain wallet for decentralized finance (DeFi) users.",
+      "status": "deployed",
       "forum": "",
       "proposal": "",
       "docs": "",
