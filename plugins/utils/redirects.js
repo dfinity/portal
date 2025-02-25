@@ -822,6 +822,7 @@ const redirects = `
   /bitcoin /bitcoin-integration
   /bootcamp	/education-hub
   /docs/current/blog/features/vetkey-primer	/docs/references/vetkeys-overview
+  /docs/current/references/ingress-messages/ /docs/building-apps/essentials/message-execution
 
   `
 
