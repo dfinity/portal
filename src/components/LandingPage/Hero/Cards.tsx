@@ -275,7 +275,7 @@ export const CardsSection = () => {
             </div>
             <div className="absolute z-0 bottom-0 translate-x-[6%] pointer-events-none">
               <img
-                src="img/home/roadmap-bg.webp"
+                src="img/home/roadmap.webp"
                 className="object-cover size-[90%]"
               />
             </div>
