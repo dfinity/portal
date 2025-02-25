@@ -224,17 +224,6 @@
       "is_community": false,
       "in_beta": false,
       "imported": true
-    },
-    {
-      "title": "Rewards-driven DRE",
-      "overview": "Rewards-driven decentralized reliability (DRE) and capacity management on ICP.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "",
-      "is_community": false,
-      "in_beta": false
     }
   ]
 }
