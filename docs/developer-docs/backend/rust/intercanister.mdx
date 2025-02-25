@@ -51,7 +51,7 @@ use sha2::{Digest, Sha256};
 #[update]
 pub async fn call_get_and_set(counter: Principal, new_value: Nat) -> Nat {
     // To make a call, you must provide the principal (i.e., ID) of the canister you're
-    // calling, and the method name that you're calling. Here, we require our own caller to provide
+    // calling, and the method name that you're calling. In this example, require the caller to provide
     // the principal of the counter canister as an argument to `call_get_and_set`.
     // When making a call, you must choose between bounded and unbounded wait calls. These call
     // types have different failure modes that will be explained later.
