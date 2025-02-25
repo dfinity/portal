@@ -60,7 +60,9 @@ The `sign_with_ecdsa` method allows specifying an optional `derivation_path`, wh
 Currently only the `secp256k1` curve and the following key names are supported:
 
 - `dfx_test_key`: Only available on the local replica started by dfx.
+
 - `test_key_1`: Test key available on the ICP mainnet.
+
 - `key_1`: Production key available on the ICP mainnet.
 
 The `sign_with_ecdsa` method requires cycles to be attached. When the method in the Rust CDK is used, the required cycles are automatically attached. In Motoko, the cycles need to be added manually.
