@@ -858,7 +858,7 @@ const config = {
         playgroundPosition: "bottom",
       },
     },
-  themes: ["@docusaurus/theme-live-codeblock", "@docusaurus/theme-mermaid"],
+  themes: ["@saucelabs/theme-github-codeblock", "@docusaurus/theme-mermaid"],
   clientModules: [require.resolve("./static/load_moc.ts")],
 };
 
