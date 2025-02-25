@@ -122,3 +122,11 @@
   font-style: italic;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "HaloGrotesk";
+  src: url("/static/fonts/HaloGrotesk-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
