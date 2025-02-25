@@ -1757,9 +1757,9 @@ There must be at most one call to `ic0.call_on_cleanup` between `ic0.call_new` a
 
     This deducts `MAX_CYCLES_PER_RESPONSE` cycles from the canister balance and sets them aside for response processing.
 
-    The returned `err_code` is always one of `0`, `1`, `2`, and `3`. An `err_code` of `0` means that no error occurred and that the IC could enqueue the call. In this case, the call will either be delivered, returned because the destination canister does not exist, returned due to a lack of resources within the IC, or returned because of an out of cycles condition. This also means that exactly one of the reply or reject callbacks will be executed.
+    The returned `err_code` is always one of `0` and `2`. An `err_code` of `0` means that no error occurred and that the IC could enqueue the call. In this case, the call will either be delivered, returned because the destination canister does not exist, returned due to a lack of resources within the IC, or returned because of an out of cycles condition. This also means that exactly one of the reply or reject callbacks will be executed.
 
-    Non-zero values of `err_code` indicate that the call could not be performed, and the semantics of the values are the same as for [reject codes](#reject-codes) (i.e., the `err_code` `1` has the semantics of `SYS_FATAL`, `2` of `SYS_TRANSIENT`, and `3` of `DESTINATION_INVALID`). A non-zero code could arise due to a lack of resources within the IC, but also if the call would reduce the current cycle balance to a level below where the canister would be frozen. No callbacks are executed in this case.
+    A non-zero value of `err_code` (`2`) indicates that the call could not be performed and the semantics of that value are the same as for the corresponding `SYS_FATAL` [reject code](#reject-codes). The non-zero value of `err_code` (`2`) could arise due to a lack of resources within the IC, but also if the call would reduce the current cycle balance to a level below where the canister would be frozen. No callbacks are executed in this case.
 
     After `ic0.call_perform` and before the next call to `ic0.call_new`, all other `ic0.call_*` function calls trap.
 
