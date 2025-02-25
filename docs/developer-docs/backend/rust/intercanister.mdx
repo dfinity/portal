@@ -29,7 +29,9 @@ $ dfx deploy counter
 
 ## Basic example: getting and setting the counter value
 
-For the first example, we'll build a `call_get_and_set` method on the caller canister, which just invokes the `get_and_set` method on the counter project and forwards the result. This method sets the counter to the new value, and returns the previous counter value. The finished code for the project is already available in `src/caller`. You can clear the contents of `src/caller/src/lib.rs`, and paste the following code. The explanation is in the comments.
+Your first example will be a `call_get_and_set` method on the caller canister, which simply invokes the `get_and_set` method on the counter project and forwards the result. This method sets the counter to the new value and returns the previous counter value. 
+
+The finished code for the project is already available in `src/caller`. You can clear the contents of `src/caller/src/lib.rs`, and paste the following code. The explanation is within the comments.
 
 ```rust
 // Some of the imports will only be used in later examples; we list them here for simplicity
@@ -45,7 +47,7 @@ use sha2::{Digest, Sha256};
 // 1. The simplest is to mark your function as `update`. Then you can always call any public
 //    endpoint on any other canister.
 // 2. Mark the function as `async`. Then you can use the `Call` API to call other canisters.
-// We expect the caller to provide the principal (i.e., ID) of the counter canister.
+// This particular example requires the caller to provide the principal (i.e., ID) of the counter canister.
 #[update]
 pub async fn call_get_and_set(counter: Principal, new_value: Nat) -> Nat {
     // To make a call, you must provide the principal (i.e., ID) of the canister you're
@@ -55,7 +57,7 @@ pub async fn call_get_and_set(counter: Principal, new_value: Nat) -> Nat {
     // types have different failure modes that will be explained later.
     let old = Call::unbounded_wait(counter, "get_and_set")
         // `Call` follows the builder pattern; you can customize call options before you finalize
-        // the call by issuing the `call()` method. Here, we provide an argument of type that
+        // the call by issuing the `call()` method. For this example, provide an argument of type that
         // get_and_set expects, a Nat (non-negative integer). The Rust CDK serializes the argument
         // for you using the Candid format, so you just need to provide the Rust value.
         .with_arg(&new_value)
@@ -63,7 +65,7 @@ pub async fn call_get_and_set(counter: Principal, new_value: Nat) -> Nat {
         // you await it!
         .await
         // Calls can *always* fail. In this first example it's actually OK to just panic on error,
-        // but as we will explain later, panicking here is almost always a bad idea.
+        // but as will be explained later, panicking here is almost always a bad idea.
         .expect("Failed to get the old value. Bail out")
         // To deserialize the Candid-encoded response, the CDK needs to know the type to expect.
         // You can use the turbofish syntax to specify the type as show below, where we expect a Candid
@@ -80,7 +82,7 @@ Now, deploy this code to the local replica. This will give you some warnings abo
 $ dfx deploy caller
 ```
 
-Let's test it out. Call it like this:
+Let's test it out. Make a call to the `caller` canister:
 
 ```bash
 $ dfx canister call caller call_get_and_set
