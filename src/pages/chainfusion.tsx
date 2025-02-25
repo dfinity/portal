@@ -974,7 +974,7 @@ function ChainFusion() {
                 />
                 <a
                   className="svgcard"
-                  href="https://internetcomputer.org/docs/references/t-sigs-how-it-works"
+                  href="/docs/references/t-sigs-how-it-works"
                   target="_blank"
                 >
                   <rect
@@ -1001,7 +1001,7 @@ function ChainFusion() {
                 </a>
                 <a
                   className="svgcard"
-                  href="https://internetcomputer.org/docs/building-apps/chain-fusion/overview/#integrations"
+                  href="/docs/building-apps/chain-fusion/overview/#integrations"
                   target="_blank"
                 >
                   <rect
@@ -1028,7 +1028,7 @@ function ChainFusion() {
                 </a>
                 <a
                   className="svgcard"
-                  href="https://internetcomputer.org/docs/building-apps/chain-fusion/supported-chains"
+                  href="/docs/building-apps/chain-fusion/supported-chains"
                   target="_blank"
                 >
                   <rect

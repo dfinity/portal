@@ -141,7 +141,7 @@ Python:     from kybra import ic
             ic.performance_counter(1)
 ```
 
-## References
+## Resources
 
 - Backend developers guide: [Optimizing Rust canisters](/docs/building-apps/advanced/optimize/rust).
 

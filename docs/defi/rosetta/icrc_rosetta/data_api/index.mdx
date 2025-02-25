@@ -20,10 +20,6 @@ The following data can be fetched from the data API endpoints for the ICRC Roset
 
 - [Transactions](#fetch-block-transactions): Fetch transactions from the ICRC-1 ledger.
 
-## Fetch account balances
-
-The `account_balance` endpoint allows you to fetch the balances for a certain account. It is the implementation of the [/account/balance endpoint](https://www.rosetta-api.org/docs/AccountApi.html#accountbalance) of the Rosetta API standard.
-
 <Tabs>
 <TabItem value="prereq" label="Prerequisites" default>
 
@@ -34,6 +30,10 @@ The `account_balance` endpoint allows you to fetch the balances for a certain ac
 
 </TabItem>
 </Tabs>
+
+## Fetch account balances
+
+The `account_balance` endpoint allows you to fetch the balances for a certain account. It is the implementation of the [/account/balance endpoint](https://www.rosetta-api.org/docs/AccountApi.html#accountbalance) of the Rosetta API standard.
 
 Make sure to use the correct `network_identifier`. For this example, an arbitrary `account_identifier` with the principal `xmiu5-jqaaa-aaaag-qbz7q-cai` and the default subaccount `0000000000000000000000000000000000000000000000000000000000000000` was used.
 
@@ -78,16 +78,7 @@ The response will give you the balance of the `account_identifier` at the most r
 
 The `block` endpoint allows you to fetch blocks at a certain block height. It is the implementation of the [/block endpoint](https://docs.cdp.coinbase.com/mesh/reference/block) of the Rosetta API standard.
 
-<Tabs>
-<TabItem value="prereq" label="Prerequisites" default>
 
-<input type="checkbox"/> You have a Rosetta instance running at: <code>http://127.0.0.1:8081</code>
-<div>
-</div>
-<input type="checkbox"/> You are familiar with the concept of staking on the NNS in general.
-
-</TabItem>
-</Tabs>
 
 Make sure to use the correct `network_identifier`. For this example the following arbitrary `block_identifier` is used:
 
@@ -503,16 +494,7 @@ The field `idempotent` indicates whether the query you asked for will return the
 
 Most endpoints require some information about the network represented as a [`NetworkIdentifier`](https://www.rosetta-api.org/docs/models/NetworkIdentifier.html).
 
-<Tabs>
-<TabItem value="prereq" label="Prerequisites" default>
 
-<input type="checkbox"/> You have a Rosetta instance running at: <code>http://127.0.0.1:8081</code>
-<div>
-</div>
-<input type="checkbox"/> You are familiar with the concept of staking on the NNS in general.
-
-</TabItem>
-</Tabs>
 
 ### Fetch network list
 The network list [endpoint](https://www.rosetta-api.org/docs/NetworkApi.html#networklist) will give you information about the `NetworkIdentifier` you need to use for ICP Rosetta. It requires no arguments and can thus also be used as a health check. You can fetch the endpoint using the following command:
@@ -708,16 +690,7 @@ An ICRC-1 ledger block always contains exactly one transaction. The hash of the 
 :::
 
 
-<Tabs>
-<TabItem value="prereq" label="Prerequisites" default>
 
-<input type="checkbox"/> You have a Rosetta instance running at: <code>http://127.0.0.1:8081</code>
-<div>
-</div>
-<input type="checkbox"/> You are familiar with the concept of staking on the NNS in general.
-
-</TabItem>
-</Tabs>
 
 Make sure to use the correct `network_identifier`.
 

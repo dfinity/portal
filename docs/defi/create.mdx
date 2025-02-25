@@ -74,7 +74,7 @@ For production deployments, it is recommended to set the values [similarly to wh
 
 #### `CONTROLLER_ID`
 
-The [controller <GlossaryTooltip>principal</GlossaryTooltip>](/docs/current/developer-docs/defi/cycles/cycles-wallet#controller-and-custodian-roles) of the archive canisters.
+The [controller <GlossaryTooltip>principal</GlossaryTooltip>](/docs/defi/token-ledgers/cycles-ledger) of the archive canisters.
 
 ```
 dfx identity new archive_controller
@@ -89,7 +89,7 @@ The number of blocks to archive when the trigger threshold is exceeded.
 #### `CYCLES_FOR_ARCHIVE_CREATION`
 
 The number of cycles that will be sent to the archive canister when it is created.
-Note that this needs to cover [the cost for canister creation](/docs/current/developer-docs/gas-cost#canister-creation), and the installation of the canister.
+Note that this needs to cover [the cost for canister creation](/docs/building-apps/essentials/gas-cost), and the installation of the canister.
 If the value is set too low, archiving is effectively disabled.
 
 #### `NUM_BLOCKS_TO_ARCHIVE`
@@ -185,11 +185,9 @@ The above values should be set using the explicitly provided fields in the `Init
 Other metadata, such as the token logo, should be set as `(key, value)` pairs in the `metadata` `Vec`.
 The format **should** follow what is specified in the [standard](https://github.com/dfinity/ICRC-1/tree/main/standards/ICRC-1#metadata), e.g., for the token logo, the metadata key should be `icrc1:logo`.
 
-## Next steps
-
-[Learn how to interact with the ICRC-1 ledger](./token-ledgers/usage/icrc1_ledger_usage.mdx)
-
 ## Resources
+
+- [Learn how to interact with the ICRC-1 ledger](./token-ledgers/usage/icrc1_ledger_usage.mdx)
 
 - [ICRC-1 ledger documentation](/docs/defi/token-ledgers/setup/icrc1_ledger_setup).
 

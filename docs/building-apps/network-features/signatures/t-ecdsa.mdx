@@ -69,60 +69,25 @@ The `sign_with_ecdsa` method requires cycles to be attached. When the method in 
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko no-repl
-  // Define the interface for the management canister. Only the `sign_with_ecdsa` method is used in this example:
-  type IC = actor {
-    sign_with_ecdsa : ({
-      message_hash : Blob;
-      derivation_path : [Blob];
-      key_id : { curve: { #secp256k1; } ; name: Text };
-    }) -> async ({ signature : Blob });
-  };
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/master/motoko/threshold-ecdsa/src/ecdsa_example_motoko/main.mo#L9-L24
+```
 
-  // Declare "ic" to be the management canister, which is evoked by `actor("aaaaa-aa")`:
-  let ic : IC = actor("aaaaa-aa");
-
-  let message: Text = "Hello, World!";
-  // SHA256 needs to be imported!
-  let message_hash: Blob = Blob.fromArray(SHA256.sha256(Blob.toArray(Text.encodeUtf8(message))));
-
-  Cycles.add(10_000_000_000);
-
-  let { signature } = await ic.sign_with_ecdsa({
-    message_hash;
-    derivation_path = [];
-    key_id = { curve = #secp256k1; name = "dfx_test_key" };
-  });
-
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/master/motoko/threshold-ecdsa/src/ecdsa_example_motoko/main.mo#L40-L55
 ```
 
 </TabItem>
 
-<TabItem value="rust" label="rust" default>
+<TabItem value="rust" label="Rust" default>
 
-```rust
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/threshold-ecdsa/src/ecdsa_example_rust/src/lib.rs#L2
 
-  use ic_cdk::api::management_canister::ecdsa::{sign_with_ecdsa, EcdsaCurve, EcdsaKeyId, SignWithECDSA};
+```
 
-  let message = "Hello, World!";
-  // sha256 needs to be imported!
-  let message_hash = sha256(&message).to_vec();
-
-  let request = SignWithECDSA {
-    message_hash,
-    derivation_path: vec![],
-    key_id: EcdsaKeyId {
-      curve: EcdsaCurve::Secp256k1,
-      name: "dfx_test_key".to_string(),
-  },
-
-  let (response,) = sign_with_ecdsa(request)
-    .await
-    .expect("sign_with_ecdsa failed");
-
-  let signature = response.signature;
-
-}
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/threshold-ecdsa/src/ecdsa_example_rust/src/lib.rs#L43-L58
 ```
 
 </TabItem>
@@ -156,53 +121,16 @@ The `chain_code` in the result can be used to derive child keys using a derivati
 <AdornedTabs groupId="language">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko no-repl
-  // Define the interface for the management canister. Only the `ecdsa_public_key` method is used in this example:
-  type IC = actor {
-    ecdsa_public_key : ({
-      canister_id : ?Principal;
-      derivation_path : [Blob];
-      key_id : { curve: { #secp256k1; } ; name: Text };
-    }) -> async ({ public_key : Blob; chain_code : Blob; });
-  };
-
-  // Declare "ic" to be the management canister, which is evoked by `actor("aaaaa-aa")`:
-  let ic : IC = actor("aaaaa-aa");
-
-  // Make a call to the management canister to request an ECDSA public key:
-  let { public_key } = await ic.ecdsa_public_key({
-    canister_id = null;
-    derivation_path = [];
-    key_id = { curve = #secp256k1; name = "test_key_1" };
-  });
-
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/master/motoko/threshold-ecdsa/src/ecdsa_example_motoko/main.mo#L24-L488C13
 ```
 
 </TabItem>
 
 <TabItem value="rust" label="Rust" default>
 
-```rust
-
-use ic_cdk::api::management_canister::ecdsa::{
-    ecdsa_public_key, EcdsaCurve, EcdsaKeyId, EcdsaPublicKeyArgument,
-};
-
-let request = EcdsaPublicKeyArgument {
-  canister_id: None,
-  derivation_path: vec![],
-  key_id: EcdsaKeyId {
-    curve: EcdsaCurve::Secp256k1,
-    name: "dfx_test_key".to_string(),
-  },
-};
-
-let (response,) = ecdsa_public_key(request)
-  .await
-  .expect("ecdsa_public_key failed");
-
-let public_key = response.public_key;
-
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/threshold-ecdsa/src/ecdsa_example_rust/src/lib.rs#L26-L41
 ```
 
 </TabItem>
@@ -214,8 +142,6 @@ let public_key = response.public_key;
 - [Chain-key ECDSA signatures: technology overview](/docs/references/t-sigs-how-it-works/).
 
 - [Eurocrypt 2022 paper](https://eprint.iacr.org/2021/1330).
-
-- [Sample code for `threshold-ecdsa`](https://github.com/dfinity/examples/tree/master/motoko/threshold-ecdsa).
 
 - [Threshold ECDSA sample dapp - Motoko](https://github.com/dfinity/examples/blob/master/motoko/threshold-ecdsa/).
 

@@ -158,11 +158,11 @@ A reference page provides low level detail into a feature or technology. API ref
 ### Content
 Link to resources that go into further detail and provide a brief summary of the concepts within the doc. Some places that may include further details may include additional information:
 
-- The [reference technology overview](https://internetcomputer.org/docs/references/bitcoin-how-it-works) pages
+- The [reference technology overview](/docs/references/bitcoin-how-it-works) pages
 
 - The [how it works](https://internetcomputer.org/how-it-works) section of the website
 
-- The [core concepts](https://internetcomputer.org/docs/building-apps/essentials/canisters) section of the docs
+- The [core concepts](/docs/building-apps/essentials/canisters) section of the docs
 
 Try to answer the following questions within the document:
 

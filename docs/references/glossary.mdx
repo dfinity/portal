@@ -71,13 +71,13 @@ account (see [fiduciary](#f)).
 A **blockchain** is a growing list of cryptographically linked blocks,
 agreed upon by [consensus](#c). On the [Internet
 Computer](#i), every [subnet](#s) maintains its own
-blockchain with blocks containing messages for the [canisters](#cs)
+blockchain with blocks containing messages for the [canisters](#c)
 hosted on this subnet. These blockchains interact using [chain-key cryptography](#c).
 
 #### boundary nodes
 
 **Boundary nodes** are gateways to the Internet Computer. These nodes
-allow users to seamlessly access the [canister](#cs) smart contracts
+allow users to seamlessly access the [canister](#c) smart contracts
 running on ICP.
 The boundary nodes have several purposes: they aid in discover-ability (the
 `icp0.io` domain name points to a set of boundary nodes), they are
@@ -280,7 +280,7 @@ The **fiduciary** of an [account](#a) is the
 [principal](#p) allowed to make
 [transactions](#t) on the account; as such, it may
 be useful to think of it as the **owner** of the account, with the caveat
-that it may or may not be the [beneficiary](#beneficiary) of
+that it may or may not be the [beneficiary](#b) of
 the account. The [neuron account](#n) is a
 prominent example of an account for which the beneficiary and fiduciary
 do not coincide (the fiduciary is the [governance canister](#g) while the beneficiary is the
@@ -478,7 +478,7 @@ period](#n).
 
 A **neuron account** is a [canister
 account](#c) whose
-[beneficiary](#beneficiary) is a [neuron](#n)
+[beneficiary](#b) is a [neuron](#n)
 (or the neuron’s owner). The [governance
 canister](#g) is the
 [fiduciary](#f) of all neuron accounts.
@@ -598,8 +598,8 @@ preserved. Queries are synchronous and can be made to any
 #### replica
 
 The **replica** an instance of software containing all the protocol components
-necessary for a [node](#node) to participate in a
-[subnet](#subnet).
+necessary for a [node](#n) to participate in a
+[subnet](#s).
 
 #### registry
 
@@ -637,20 +637,10 @@ canister state.
 
 The **state manager** is responsible for:
 
-- Maintaining (multiple versions of) the replicated state the
-    deterministic state machine implemented by [message
-    routing](#m) and the [execution
-    environment](#e) operates on.
-- Converting back and forth between the replicated state and its
-    canonical version (the latter can be understood independent of the
-    concrete implementation).
-- Obtaining certifications of parts of the canonical state, which
-    allow other stakeholders, such as other [subnets](#s)
-    and/or users, to verify that some piece of state indeed originates
-    from a valid subnetwork.
-- Providing capabilities to sync the canonical state with other
-    [replicas](#r) in the same subnet so that replicas
-    that have fallen behind can catch up.
+- Maintaining (multiple versions of) the replicated state the deterministic state machine implemented by [message routing](#m) and the [execution environment](#e) operates on.
+- Converting back and forth between the replicated state and its canonical version (the latter can be understood independent of the concrete implementation).
+- Obtaining certifications of parts of the canonical state, which allow other stakeholders, such as other [subnets](#s) and/or users, to verify that some piece of state indeed originates from a valid subnetwork.
+- Providing capabilities to sync the canonical state with other [replicas](#r) in the same subnet so that replicas that have fallen behind can catch up.
 
 #### subnet
 

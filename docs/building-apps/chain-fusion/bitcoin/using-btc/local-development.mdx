@@ -10,7 +10,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 Testing applications locally allows you to iterate and improve your dapp more quickly.
 
-`dfx` includes support for both the [ECDSA API](/docs/current/references/ic-interface-spec#ic-ecdsa_public_key) and
+`dfx` includes support for both the [ECDSA API](/docs/references/ic-interface-spec#ic-ecdsa_public_key) and
 the [Bitcoin API](https://github.com/dfinity/bitcoin-canister/blob/master/INTERFACE_SPECIFICATION.md)
 so that you can locally test out your dapp before deploying it to the Internet Computer.
 
@@ -73,13 +73,12 @@ git clone https://github.com/dfinity/examples
 ```
 - #### Step 2: Go to the `basic_bitcoin` example in the language of your choice:
 ```
-# For motoko
+# For Motoko
 cd examples/motoko/basic_bitcoin
-```
-```
-# For rust
+# For Rust
 cd examples/rust/basic_bitcoin
 ```
+
 - #### Step 3: Initialize the git submodules.
 ```
 git submodule update --init --recursive

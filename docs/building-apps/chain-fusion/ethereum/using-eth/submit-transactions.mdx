@@ -20,35 +20,9 @@ Once you have your raw signed transaction, you can either programmatically submi
 
 Below is an example demonstrating how to submit a raw ETH transaction programmatically using Rust:
 
-```Rust
-pub async fn send_raw_transaction(
-    tx: String,
-    rpc_services: RpcServices,
-    evm_rpc: EvmRpcCanister,
-) -> SendRawTransactionStatus {
-    let cycles = 10_000_000_000;
-
-    match evm_rpc
-        .eth_send_raw_transaction(rpc_services, None, tx, cycles)
-        .await
-    {
-        Ok((res,)) => match res {
-            MultiSendRawTransactionResult::Consistent(status) => match status {
-                SendRawTransactionResult::Ok(status) => status,
-                SendRawTransactionResult::Err(e) => {
-                    ic_cdk::trap(format!("Error: {:?}", e).as_str());
-                }
-            },
-            MultiSendRawTransactionResult::Inconsistent(_) => {
-                ic_cdk::trap("Status is inconsistent");
-            }
-        },
-        Err(e) => ic_cdk::trap(format!("Error: {:?}", e).as_str()),
-    }
-}
+```rust reference
+https://github.com/letmejustputthishere/icp-evm-coprocessor-starter/blob/main/packages/ic-evm-utils/src/eth_send_raw_transaction.rs#L213-L230
 ```
-
-[View the full code example on GitHub](https://github.com/letmejustputthishere/chain-fusion-starter/blob/5b97edabc8d5dacac44795c3db005805804fdb46/packages/ic-evm-utils/src/eth_send_raw_transaction.rs#L211).
 
 ### Using the EVM RPC canister
 

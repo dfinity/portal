@@ -41,47 +41,16 @@ To read unspent transaction outputs from the Bitcoin network, make a call to the
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko no-repl
-type ManagementCanisterActor = actor {
-      bitcoin_get_utxos : GetUtxosRequest -> async GetUtxosResponse;
-  };
-
- public func get_utxos(network : Network, address : BitcoinAddress) : async GetUtxosResponse {
-    ExperimentalCycles.add(GET_UTXOS_COST_CYCLES);
-    await management_canister_actor.bitcoin_get_utxos({
-        address;
-        network;
-        filter = null;
-    })
-  };
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/c00ae71f259d8ac06d9dcc7a18d3f0725251ad06/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L47-L58
 ```
 
 </TabItem>
 
 <TabItem value="rust" label="Rust" default>
 
-```rust
-use ic_cdk::api::management_canister::bitcoin::{
-    BitcoinNetwork, GetBalanceRequest, GetCurrentFeePercentilesRequest, GetUtxosRequest,
-    GetUtxosResponse, MillisatoshiPerByte, Satoshi, SendTransactionRequest,
-};
-
-
-pub async fn get_utxos(network: BitcoinNetwork, address: String) -> GetUtxosResponse {
-    let utxos_res: Result<(GetUtxosResponse,), _> = call_with_payment(
-        Principal::management_canister(),
-        "bitcoin_get_utxos",
-        (GetUtxosRequest {
-            address,
-            network: network.into(),
-            filter: None,
-        },),
-        GET_UTXOS_COST_CYCLES,
-    )
-    .await;
-
-    utxos_res.unwrap().0
-}
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_api.rs#L25-L39
 ```
 
 </TabItem>
@@ -103,48 +72,16 @@ To read the current balance of a Bitcoin address, make a call to the `bitcoin_ge
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko no-repl
-  type ManagementCanisterActor = actor {
-      bitcoin_get_balance : GetBalanceRequest -> async Satoshi;
-  };
-
-  let management_canister_actor : ManagementCanisterActor = actor("aaaaa-aa");
-
-  public func get_balance(network : Network, address : BitcoinAddress) : async Satoshi {
-    ExperimentalCycles.add(GET_BALANCE_COST_CYCLES);
-    await management_canister_actor.bitcoin_get_balance({
-        address;
-        network;
-        min_confirmations = null;
-    })
-  };
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L34-L45
 ```
 
 </TabItem>
 
 <TabItem value="rust" label="Rust" default>
 
-```rust
-use ic_cdk::api::management_canister::bitcoin::{
-    BitcoinNetwork, GetBalanceRequest, GetCurrentFeePercentilesRequest, GetUtxosRequest,
-    GetUtxosResponse, MillisatoshiPerByte, Satoshi, SendTransactionRequest,
-};
-
-pub async fn get_balance(network: BitcoinNetwork, address: String) -> u64 {
-    let balance_res: Result<(Satoshi,), _> = call_with_payment(
-        Principal::management_canister(),
-        "bitcoin_get_balance",
-        (GetBalanceRequest {
-            address,
-            network: network.into(),
-            min_confirmations: None,
-        },),
-        GET_BALANCE_COST_CYCLES,
-    )
-    .await;
-
-    balance_res.unwrap().0
-}
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_api.rs#L9-L23
 ```
 
 </TabItem>
@@ -168,44 +105,16 @@ The function returns 101 numbers that are fees measured in millisatoshi per virt
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko no-repl
-  type ManagementCanisterActor = actor {
-      bitcoin_get_current_fee_percentiles : GetCurrentFeePercentilesRequest -> async [MillisatoshiPerVByte];
-  };
-
-  let management_canister_actor : ManagementCanisterActor = actor("aaaaa-aa");
-
-  public func get_current_fee_percentiles(network : Network) : async [MillisatoshiPerVByte] {
-    ExperimentalCycles.add(GET_CURRENT_FEE_PERCENTILES_COST_CYCLES);
-    await management_canister_actor.bitcoin_get_current_fee_percentiles({
-        network;
-    })
-  };
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/master/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinApi.mo#L60-L70
 ```
 
 </TabItem>
 
 <TabItem value="rust" label="Rust" default>
 
-```rust
-use ic_cdk::api::management_canister::bitcoin::{
-    BitcoinNetwork, GetBalanceRequest, GetCurrentFeePercentilesRequest, GetUtxosRequest,
-    GetUtxosResponse, MillisatoshiPerByte, Satoshi, SendTransactionRequest,
-};
-
-pub async fn get_current_fee_percentiles(network: BitcoinNetwork) -> Vec<MillisatoshiPerByte> {
-    let res: Result<(Vec<MillisatoshiPerByte>,), _> = call_with_payment(
-        Principal::management_canister(),
-        "bitcoin_get_current_fee_percentiles",
-        (GetCurrentFeePercentilesRequest {
-            network: network.into(),
-        },),
-        GET_CURRENT_FEE_PERCENTILES_CYCLES,
-    )
-    .await;
-
-    res.unwrap().0
-}
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_api.rs#L66-L76
 ```
 
 </TabItem>

@@ -73,7 +73,7 @@ const developers = [
         </Link>
         ,{" "}
         <Link
-          href="https://internetcomputer.org/docs/building-apps/network-features/verifiable-credentials/overview"
+          href="/docs/building-apps/network-features/verifiable-credentials/overview"
           className="link-primary-light"
           target="_blank"
           rel="noopener noreferrer"
@@ -471,7 +471,7 @@ function InternetIdentityPage() {
                 </motion.p>
                 <Link
                   className="mt-3 md:mt-6 link-primary-light link-with-icon "
-                  href="https://internetcomputer.org/docs/building-apps/authentication/integrate-internet-identity"
+                  href="/docs/building-apps/authentication/integrate-internet-identity"
                 >
                   <LinkArrowRight />
                   <span>Start Building</span>
@@ -516,7 +516,7 @@ function InternetIdentityPage() {
                 </motion.p>
                 <Link
                   className="button-primary mt-6"
-                  href="https://internetcomputer.org/docs/building-apps/network-features/verifiable-credentials/issuer"
+                  href="/docs/building-apps/network-features/verifiable-credentials/issuer"
                 >
                   Become an Issuer
                 </Link>

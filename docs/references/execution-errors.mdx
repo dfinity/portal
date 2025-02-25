@@ -97,10 +97,13 @@ To diagnose this error, use the [`dfx canister status`][dfx-canister-status] com
 
 To fix this error, consider:
 
-  - If the canister has reached its current memory allocation, try allocating more memory.
-  - If the canister has reached the system-wide limits for memory usage and it seems reasonable for the canister to have used 100s of GiBs, try sharding the data across multiple canisters.
-  - If the canister has unexpectedly reached the system-wide limits, try debugging it to see if there could be a memory leak. [canbench][canbench] can help with profiling memory usage.
-  - If the subnet is full, try moving the canister to a subnet that has more memory available.
+- If the canister has reached its current memory allocation, try allocating more memory.
+
+- If the canister has reached the system-wide limits for memory usage and it seems reasonable for the canister to have used 100s of GiBs, try sharding the data across multiple canisters.
+
+- If the canister has unexpectedly reached the system-wide limits, try debugging it to see if there could be a memory leak. [canbench][canbench] can help with profiling memory usage.
+
+- If the subnet is full, try moving the canister to a subnet that has more memory available.
 
 
 ### Reserved pages for old Motoko
@@ -420,7 +423,7 @@ An example of this error is:
 
 [Installing](/docs/building-apps/developing-canisters/what-are-canisters) a Wasm module on a canister is meant to be performed only when the canister has no existing state when it has first been created and therefore fails if the canister already has an installed Wasm module.
 
-If the intention is to update the Wasm module without wiping the state, then an [upgrade](/docs/building-apps/canister-management/upgrade) should be used instead. If the intention is actually to overwrite the canister state, then the [reinstall](https://internetcomputer.org/docs/building-apps/canister-management/settings#reinstall-a-canister) mode can be used.
+If the intention is to update the Wasm module without wiping the state, then an [upgrade](/docs/building-apps/canister-management/upgrade) should be used instead. If the intention is actually to overwrite the canister state, then the [reinstall](/docs/building-apps/canister-management/settings#reinstall-a-canister) mode can be used.
 
 
 ### Subnet compute capacity oversubscribed
@@ -719,7 +722,7 @@ To fix this error, try resending the message after omitting or modifying the inv
 
 
 
-[canbench]: /docs/building-apps/developer-tools/canbench
+[canbench]: /docs/building-apps/advanced/benchmarking
 
 [canister-status-api]: /docs/references/ic-interface-spec#ic-canister_status
 

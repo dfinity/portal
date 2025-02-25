@@ -337,7 +337,6 @@ build: [
                   id:  "building-apps/network-features/using-http/https-outcalls/overview",
                 },
               items: [
-                "building-apps/network-features/using-http/https-outcalls/overview",
                 "building-apps/network-features/using-http/https-outcalls/get",
                 "building-apps/network-features/using-http/https-outcalls/post"
               ],
@@ -443,7 +442,6 @@ build: [
                 "building-apps/chain-fusion/ethereum/evm-rpc/how-it-works",
                 "building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister",
                 "building-apps/chain-fusion/ethereum/evm-rpc/costs",
-                "building-apps/chain-fusion/ethereum/evm-rpc/samples",
               ],
             },
           ],
@@ -488,6 +486,11 @@ build: [
       {
         type: "category",
         label: "Security",
+        link:
+          {
+            type: "doc",
+            id: "building-apps/best-practices/security/overview",
+          },
         items: [
           {
             type: "doc",

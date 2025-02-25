@@ -92,31 +92,8 @@ dfx canister call icrc7 init
 
 This command will initialize an NFT collection using the parameters set in the project's `example/initial_state/icrc7.mo` file:
 
-```motoko no-repl
-import ICRC7 "mo:icrc7-mo";
-
-module{
-  public let defaultConfig = func(caller: Principal) : ICRC7.InitArgs{
-      ?{
-        symbol = ?"NBL";
-        name = ?"NASA Nebulas";
-        description = ?"A Collection of Nebulas Captured by NASA";
-        logo = ?"https://www.nasa.gov/wp-content/themes/nasa/assets/images/nasa-logo.svg";
-        supply_cap = null;
-        allow_transfers = null;
-        max_query_batch_size = ?100;
-        max_update_batch_size = ?100;
-        default_take_value = ?1000;
-        max_take_value = ?10000;
-        max_memo_size = ?512;
-        permitted_drift = null;
-        tx_window = null;
-        burn_account = null; //burned nfts are deleted
-        deployer = caller;
-        supported_standards = null;
-      };
-  };
-};%
+```motoko no-repl reference
+https://github.com/PanIndustrial-Org/icrc_nft.mo/blob/main/example/initial_state/icrc7.mo
 ```
 
 ### Step 6: Interact with the canister by querying data about the NFT collection.

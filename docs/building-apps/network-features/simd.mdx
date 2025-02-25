@@ -52,9 +52,9 @@ To enable WebAssembly SIMD instructions globally for the whole workspace and all
 <AdornedTabs groupId="languages">
 <TabItem value="rust" label="Rust" default>
 
-```toml
 Create the `.cargo/config.toml` file with the following content:
 
+```toml
 [build]
 target = ["wasm32-unknown-unknown"]
 
@@ -70,11 +70,8 @@ To enable WebAssembly SIMD instructions just for a specific function within a ca
 <AdornedTabs groupId="languages">
 <TabItem value="rust" label="Rust" default>
 
-```rust
-#[target_feature(enable = "simd128")]
-fn auto_vectorization() {
-    ...
-}
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/simd/mat_mat_mul/src/lib.rs#L111-L113
 ```
 
 </TabItem>
@@ -90,29 +87,11 @@ WebAssembly SIMD instructions are available as platform-specific intrinsics for 
 
 ### Example
 
-Here's a short code snippet demonstrating how to multiply two arrays of four float elements each using a single SIMD instruction:
-
 <AdornedTabs groupId="languages">
 <TabItem value="rust" label="Rust" default>
 
-```rust
-#[inline(always)]
-#[target_feature(enable = "simd128")]
-pub fn mul4(a: [f32; 4], b: [f32; 4]) -> [f32; 4] {
-    use core::arch::wasm32::*;
-
-    // Load the arrays `A` and `B` into the SIMD registers.
-    let a = unsafe { v128_load(a.as_ptr() as *const v128) };
-    let b = unsafe { v128_load(b.as_ptr() as *const v128) };
-
-    // Multiply elements of `A` and `B` using a single SIMD instruction.
-    let c = f32x4_mul(a, b);
-
-    // Store and return the result.
-    let mut res = [0.0; 4];
-    unsafe { v128_store(res.as_mut_ptr() as *mut v128, c) };
-    res
-}
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/simd/mat_mat_mul/src/lib.rs#L106-L139
 ```
 
 </TabItem>
@@ -122,7 +101,7 @@ pub fn mul4(a: [f32; 4], b: [f32; 4]) -> [f32; 4] {
 
 ### How to measure performance speedup of a canister?
 
-ICP provides the `ic0.performance_counter` [system API call](https://internetcomputer.org/docs/references/ic-interface-spec#system-api-performance-counter) to measure a canister's performance.
+ICP provides the `ic0.performance_counter` [system API call](/docs/references/ic-interface-spec#system-api-performance-counter) to measure a canister's performance.
 
 There is also the `canbench` [benchmarking framework](https://github.com/dfinity/canbench).
 
@@ -130,7 +109,7 @@ There is also the `canbench` [benchmarking framework](https://github.com/dfinity
 
 The Sonos `tract` is a tiny, self-contained TensorFlow and ONNX inference [Rust library](https://github.com/sonos/tract). DFINITY [contributed WebAssembly SIMD support](https://github.com/sonos/tract/pull/1420) to the library. The library is used in some DFINITY AI [demos](https://www.youtube.com/watch?v=6qLvIXiCGcM) and [examples](https://github.com/dfinity/examples/tree/master/rust/image-classification).
 
-## References and examples
+## Resources and examples
 
 * [WebAssembly SIMD Rust example](https://github.com/dfinity/examples/tree/master/rust/simd) compares the performance of a naive, optimized, auto-vectorized, and SIMD intrinsic matrix multiplication running on ICP.
 * [WebAssembly core specification](https://webassembly.github.io/spec/core/syntax/instructions.html#vector-instructions) for SIMD instructions.

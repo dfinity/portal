@@ -934,7 +934,7 @@ function SnsFaqPage() {
             title="SNS Wiki"
           ></SmallCardWithDescription>
           <SmallCardWithDescription
-            href="/docs/building-apps/governing-apps/"
+            href="/docs/building-apps/governing-apps/overview"
             title="SNS Docs"
           ></SmallCardWithDescription>
         </AnimateSpawn>

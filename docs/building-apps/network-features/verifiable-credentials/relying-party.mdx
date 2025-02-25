@@ -28,33 +28,8 @@ There are two ways to request credentials:
 
 You can request credentials from issuers through identity providers with the JS client for relying parties NPM package [@dfinity/verifiable-credentials](https://www.npmjs.com/package/@dfinity/verifiable-credentials). Below is an example:
 
-```javascript
-import { requestVerifiablePresentation } from "@dfinity/verifiable-credentials/request-verifiable-presentation";
-
-requestVerifiablePresentation({
-  onSuccess: async (verifiablePresentation: VerifiablePresentationResponse) => {
-    // Called when the flow finishes successfully.
-  },
-  onError() {
-    // Called when there is a technical error.
-  },
-  issuerData: {
-    origin: "<url of the origin>",
-    canisterId: "<[optional] canister id>",
-  },
-  credentialData: {
-    credentialSpec: {
-      credentialType: '<credential type as expected by issuer>',
-      arguments: {
-        // Arguments to verify with the credential
-      },
-    },
-    credentialSubject: "<user's principal>",
-  },
-  identityProvider: "<[optional] url identity provider>",
-  derivationOrigin: "<[optional] origin for delegated identity>",
-  windowOpenerFeatures: "<[optional] window opener config string>",
-});
+```javascipt reference
+https://github.com/dfinity/verifiable-credentials-sdk/blob/8fe23fa830017d4d666d6fcdad38c1de7e99ca54/js-library/README.md#L50-73
 ```
 
 [Learn more about the JavaScript SDK for VCs](https://github.com/dfinity/verifiable-credentials-sdk/tree/main/js-library).

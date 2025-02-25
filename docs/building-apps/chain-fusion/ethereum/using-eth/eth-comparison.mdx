@@ -21,7 +21,7 @@ This table summarizes the key terminology differences between Ethereum and ICP:
 | Shard          | Subnet   |       |
 | Node           | Replica  |       |
 | Account        | Principal |       |
-| DAO            | SNS       | An SNS refers to a DAO using ICP's [unique framework](/docs/building-apps/governing-apps/) However, ICP DAOs can launch without using this framework.|
+| DAO            | SNS       | An SNS refers to a DAO using ICP's [unique framework](/docs/building-apps/governing-apps/overview) However, ICP DAOs can launch without using this framework.|
 | Message        | Memo      | On Ethereum, you can encode data, often referred to as a message, as a hexadecimal in the optional `data` field of any transaction. Some tools allow you to input text, which they then convert to hexadecimal in the background. On ICP, you can encode data as an arbitrary blob, provided it is less than 32 bytes, in the optional `memo` field of any [ICRC1 transaction](/docs/references/icrc1-standard/#icrc1_transfer). |
 
 In addition, ICP has implemented similar token standards as Ethereum:
@@ -47,7 +47,7 @@ This comparison provides an overview of the key differences in smart contract de
 #### Accounts
 **Ethereum**: On Ethereum, there are two main types of accounts: externally owned accounts (EOAs) and contract accounts. Externally owned accounts, often referred to as wallets, are controlled by anyone with the private key. A contract account is a smart contract deployed to the network.
 
-**ICP**: Similar to EOA accounts, several wallets support ICP as referenced in [this resource](https://support.dfinity.org/hc/en-us/articles/4405480810644-Which-wallets-can-store-ICP-utility-tokens).
+**ICP**: Similar to EOA accounts, [several wallets support ICP](https://support.dfinity.org/hc/en-us/articles/4405480810644-Which-wallets-can-store-ICP-utility-tokens).
 
 Similar to the concept of contract accounts, ICP canisters themselves can hold ICP and ICRC1/ICRC2 tokens on ICP. The canister ID serves as a principal or unique identifier that allows you to send tokens to. ICP canisters can generate multiple ECDSA-based public keys using [Threshold ECDSA](/docs/building-apps/network-features/signatures/t-ecdsa).
 

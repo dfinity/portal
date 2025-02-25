@@ -55,12 +55,7 @@ For the code composability reasons, i.e., to be able to use different libraries 
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-```motoko no-repl
-system func timer(setGlobalTimer : Nat64 -> ()) : async () {
-  let next = Nat64.fromIntWrap(Time.now()) + 20_000_000_000;
-  setGlobalTimer(next); // absolute time in nanoseconds
-  print("Tick!");
-}
+```motoko no-repl file=../../motoko/main/examples/Reminder.mo
 
 ```
 
@@ -68,24 +63,9 @@ system func timer(setGlobalTimer : Nat64 -> ()) : async () {
 
 <TabItem value="rust" label="Rust">
 
-```rust
-use std::time::Duration;
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/periodic_tasks/timer/src/lib.rs#L67-L78
 
-const N: Duration = Duration::from_secs(5);
-
-fn ring() {
-    ic_cdk::println!("Rust Timer Ring!");
-}
-
-#[ic_cdk::init]
-fn init() {
-    let _timer_id = ic_cdk_timers::set_timer_interval(N, ring);
-}
-
-#[ic_cdk::post_upgrade]
-fn post_upgrade() {
-    init();
-}
 ```
 
 </TabItem>
@@ -103,80 +83,7 @@ fn post_upgrade() {
 </AdornedTab>
 </AdornedTabs>
 
-### Multiple timers example
-
-To use multiple timers in a canister, simply create multiple timer definitions:
-
-<AdornedTabs groupId="languages">
-<TabItem value="motoko" label="Motoko" default>
-
-In Motoko, call the `recurringTimer` function multiple times, setting different durations and callback functions for each timer:
-
-
-```motoko no-repl
-import { print } = "mo:base/Debug";
-import { recurringTimer } = "mo:base/Timer";
-
-actor Alarm {
-
-  let N1 = 5;
-  let N2 = 10;
-
-  private func ring1() : async () {
-    print("Motoko Timer 1 Ring!");
-  };
-  private func ring2() : async () {
-    print("Motoko Timer 2 Ring!");
-  };
-  ignore recurringTimer<system>(#seconds N1, ring1);
-  ignore recurringTimer<system>(#seconds N2, ring2);
-};
-```
-
-</TabItem>
-
-<TabItem value="rust" label="Rust">
-
-In Rust, call the `set_timer_interval` function multiple times, setting different durations and callback functions for each timer:
-
-```rust
-use std::time::Duration;
-
-const N: Duration = Duration::from_secs(5);
-
-const Y: Duration = Duration::from_secs(20);
-
-fn ring() {
-    ic_cdk::println!("Rust Timer Ring!");
-}
-
-#[ic_cdk::init]
-fn init() {
-    let _timer_id1 = ic_cdk_timers::set_timer_interval(N, ring);
-    let _timer_id2 = ic_cdk_timers::set_timer_interval(Y, ring);
-}
-
-#[ic_cdk::post_upgrade]
-fn post_upgrade() {
-    init();
-}
-```
-
-</TabItem>
-
-<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
-
-[Learn more about Azle](https://demergent-labs.github.io/azle/timers.html).
-
-</AdornedTab>
-
-<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
-
-[Learn more about Kybra](https://demergent-labs.github.io/kybra/timers.html).
-
-</AdornedTab>
-</AdornedTabs>
-
+To use multiple timers in a canister, simply create multiple timer definitions.
 
 ### Timers library limitations
 
@@ -211,12 +118,11 @@ If there are no await points in the timer handler, the periodic timer will be re
 
 ## Tutorials and examples
 
-### Tutorials and examples using Motoko
+### Examples using Motoko
 
-- **Motoko developer guide:** [Timers](/docs/motoko/main/writing-motoko/timers).
-- **Motoko developer guide:** [Heartbeats](/docs/motoko/main/writing-motoko/heartbeats).
+- [Timers](/docs/motoko/main/writing-motoko/timers).
+- [Heartbeats](/docs/motoko/main/writing-motoko/heartbeats).
 
-### Tutorials and examples using Rust
+### Examples using Rust
 
-- **Backend tutorial:** [Using timers](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust).
-- **Example:** [Periodic tasks and timers](https://github.com/dfinity/examples/tree/master/rust/periodic_tasks) (compares the costs of timers and heartbeats).
+- [Periodic tasks and timers](https://github.com/dfinity/examples/tree/master/rust/periodic_tasks) (compares the costs of timers and heartbeats).

@@ -107,7 +107,7 @@ fn ready_time() -> Option<u64> {
 
 The new functionality is transparent and available on all the subnets and local development environments.
 
-## References
+## Resources
 
 - [Source code of the Internet Computer query cache implementation](https://github.com/dfinity/ic/)
 

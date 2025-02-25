@@ -212,7 +212,7 @@ async fn check_evm_log() {
 // Function that sends bitcoin. This is used by check_evm_log()
 async fn send_bitcoin() {
     // for more information on bitcoin_send_transaction check
-    // https://internetcomputer.org/docs/references/ic-interface-spec/#ic-bitcoin_send_transaction
+    // /docs/references/ic-interface-spec/#ic-bitcoin_send_transaction
     ic_cdk::api::management_canister::bitcoin::bitcoin_send_transaction(
         ic_cdk::api::management_canister::bitcoin::SendTransactionRequest {
             transaction: b"beef".into(),

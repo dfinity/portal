@@ -12,6 +12,17 @@ import Tabs from "@theme/Tabs";
 
 This section will give you an overview of what data can be fetched from the data API endpoints for the ICP Rosetta implementation.
 
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
+
+<input type="checkbox"/> You have a Rosetta instance running at: <code>http://127.0.0.1:8081</code>
+<div>
+</div>
+<input type="checkbox"/> You are familiar with the concept of staking on the NNS in general.
+
+</TabItem>
+</Tabs>
+
 It is split into the following subsections:
 
 - [Network](#fetch-network-information): Fetch network-specific information, such as the most recent block and what network Rosetta is connected to.
@@ -26,16 +37,7 @@ It is split into the following subsections:
 
 This endpoint allows you to fetch the balances for a certain account. It is the implementation of the [/account/balance endpoint](https://www.rosetta-api.org/docs/AccountApi.html#accountbalance) of the Rosetta API standard.
 
-<Tabs>
-<TabItem value="prereq" label="Prerequisites" default>
 
-<input type="checkbox"/> You have a Rosetta instance running at: <code>http://127.0.0.1:8081</code>
-<div>
-</div>
-<input type="checkbox"/> You are familiar with the concept of staking on the NNS in general.
-
-</TabItem>
-</Tabs>
 
 Make sure to use the correct `network_identifier`. For this example, an arbitrary `account_identifier` [8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4](https://dashboard.internetcomputer.org/account/8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4) was used.
 
@@ -98,16 +100,7 @@ curl --location '0.0.0.0:8081/account/balance'  --header 'Content-Type: applica
 
 This endpoint allows you to fetch blocks at a certain block height. It is the implementation of the [/block endpoint](https://docs.cdp.coinbase.com/mesh/reference/block) of the Rosetta API standard.
 
-<Tabs>
-<TabItem value="prereq" label="Prerequisites" default>
 
-<input type="checkbox"/> You have a Rosetta instance running at: <code>http://127.0.0.1:8081</code>
-<div>
-</div>
-<input type="checkbox"/> You are familiar with the concept of staking on the NNS in general.
-
-</TabItem>
-</Tabs>
 
 Make sure to use the correct `network_identifier`. For this example, the following arbitrary `block_identifier` is used:
 
@@ -223,16 +216,7 @@ The response will give you the transaction within the block; in this case, it is
 
 This endpoint allows you to fetch all pending proposals from the NNS. It is the implementation of the [/call endpoint](https://docs.cdp.coinbase.com/mesh/reference/call) of the Rosetta API standard. The call endpoint is very flexible as to what it can be used for. In the case of ICP Rosetta, it is used to fetch various custom information that is not covered by the Rosetta API standard.
 
-<Tabs>
-<TabItem value="prereq" label="Prerequisites" default>
 
-<input type="checkbox"/> You have a Rosetta instance running at: <code>http://127.0.0.1:8081</code>
-<div>
-</div>
-<input type="checkbox"/> You are familiar with the concept of staking on the NNS in general.
-
-</TabItem>
-</Tabs>
 
 Make sure to use the correct `network_identifier`.
 
@@ -390,16 +374,7 @@ The list of pending proposals can be quite long, so only the first few examples 
 
 This endpoint allows you to fetch more detailed information about a specific proposal from the NNS. It is the implementation of the [/call endpoint](https://docs.cdp.coinbase.com/mesh/reference/call) of the Rosetta API standard. The call endpoint is very flexible as to what it can be used for. In the case of ICP Rosetta, it is used to fetch various custom information that is not covered by the Rosetta API standard.
 
-<Tabs>
-<TabItem value="prereq" label="Prerequisites" default>
 
-<input type="checkbox"/> You have a Rosetta instance running at: <code>http://127.0.0.1:8081</code>
-<div>
-</div>
-<input type="checkbox"/> You are familiar with the concept of staking on the NNS in general.
-
-</TabItem>
-</Tabs>
 
 Make sure to use the correct NetworkIdentifier.
 It is a direct call to the `get_proposal_info` [endpoint](https://dashboard.internetcomputer.org/canister/rrkah-fqaaa-aaaaa-aaaaq-cai#get_proposal_info) of the governance canister.
@@ -666,16 +641,7 @@ The response gives you detailed information about the current state of the propo
 
 This endpoint allows you to fetch all neurons from the NNS that are publicly known. It is the implementation of the [/call endpoint](https://docs.cdp.coinbase.com/mesh/reference/call) of the Rosetta API standard. The call endpoint is very flexible as to what it can be used for. In the case of ICP Rosetta, it is used to fetch various custom information that is not covered by the Rosetta API standard.
 
-<Tabs>
-<TabItem value="prereq" label="Prerequisites" default>
 
-<input type="checkbox"/> You have a Rosetta instance running at: <code>http://127.0.0.1:8081</code>
-<div>
-</div>
-<input type="checkbox"/> You are familiar with the concept of staking on the NNS in general.
-
-</TabItem>
-</Tabs>
 
 Make sure to use the correct `network_identifier`.
 
@@ -761,16 +727,7 @@ The list of publicly known neurons is quite long, so only the first few examples
 
 For most endpoints you will require some information about the network represented as a [NetworkIdentifier](https://www.rosetta-api.org/docs/models/NetworkIdentifier.html).
 
-<Tabs>
-<TabItem value="prereq" label="Prerequisites" default>
 
-<input type="checkbox"/> You have a Rosetta instance running at: <code>http://127.0.0.1:8081</code>
-<div>
-</div>
-<input type="checkbox"/> You are familiar with the concept of staking on the NNS in general.
-
-</TabItem>
-</Tabs>
 
 ### Fetching the network list
 
@@ -976,16 +933,7 @@ The `search_transactions` endpoint allows you to query for transactions given a 
 Note that in the case of the ICP ledger, a block always contains exactly one transaction. The hash of the block, as well as the index of the block, is guaranteed to be unique, while the hash of the transaction is not.
 :::
 
-<Tabs>
-<TabItem value="prereq" label="Prerequisites" default>
 
-<input type="checkbox"/> You have a Rosetta instance running at: <code>http://127.0.0.1:8081</code>
-<div>
-</div>
-<input type="checkbox"/> You are familiar with the concept of staking on the NNS in general.
-
-</TabItem>
-</Tabs>
 
 Make sure to use the correct `network_identifier`. For this example, the following arbitrary `block_identifier` and `transaction_identifier` are used:
 ```bash

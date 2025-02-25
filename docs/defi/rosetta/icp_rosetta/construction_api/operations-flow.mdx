@@ -197,14 +197,10 @@ These are comprised of two types of metadata:
 ### Payloads-return structure
 
 There are multiple payloads that need to be signed by the user. The reason for that is twofold:
+
 - The first reason has to do with how ICP processes requests. For a call to ICP to be successful and for the user to be able to read the response of the call, two HTTP calls have to be made:
 
-        - The first HTTP call (`Call Request`) contains all the information that ICP needs to know to be able to call
-        the correct canister with the desired arguments. This call returns an ID, which essentially serves as a ticket for
-        the caller. With this ticket a user can then query ICP periodically (`Read-State Request`) and essentially ask
-        whether the original request has been processed and if there is a response. If the latter is true, ICP will return
-        the result in bytes. The Rosetta API then converts these bytes into a readable format. This is why for every
-        transaction that is requested from the user, there must be at least two payloads.
+    - The first HTTP call (`Call Request`) contains all the information that ICP needs to know to be able to call the correct canister with the desired arguments. This call returns an ID, which essentially serves as a ticket for the caller. With this ticket a user can then query ICP periodically (`Read-State Request`) and essentially ask whether the original request has been processed and if there is a response. If the latter is true, ICP will return the result in bytes. The Rosetta API then converts these bytes into a readable format. This is why for every transaction that is requested from the user, there must be at least two payloads.
 
 - The second reason has to do with how ICP validates requests. Every `Call Request` and `Read-State Request` need to be forwarded to ICP with a valid signature that is associated with each of these requests. Every request is only valid for a limited period of time (`EXPIRY_INTERVAL`). This time interval is in the range of a couple of minutes. To extend the overall time period in which the transaction can be posted, Rosetta will create a set of payloads, each being valid for a specific time interval. Together the payloads in this set cover the entire requested time period. For example, if the `EXPIRY_INTERVAL` was 5 minutes and the requested time period is 20 minutes from now, Rosetta would need to create at least 20/5 payloads for each `Call Request` and `Read-State Request`. This amounts to a total of at least 20/5*2 payloads for this example.
 

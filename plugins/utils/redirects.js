@@ -437,7 +437,7 @@ const redirects = `
   /docs/current/developer-docs/multi-chain/ethereum/evm-rpc/evm-rpc-canister /docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister
   /docs/current/developer-docs/multi-chain/ethereum/evm-rpc/how-it-works /docs/building-apps/chain-fusion/ethereum/evm-rpc/how-it-works
   /docs/current/developer-docs/multi-chain/ethereum/evm-rpc/overview /docs/building-apps/chain-fusion/ethereum/evm-rpc/overview
-  /docs/current/developer-docs/multi-chain/ethereum/evm-rpc/samples /docs/building-apps/chain-fusion/ethereum/evm-rpc/samples
+  /docs/current/developer-docs/multi-chain/ethereum/evm-rpc/samples /docs/building-apps/chain-fusion/ethereum/evm-rpc/evm-rpc-canister
   /docs/current/developer-docs/multi-chain/ethereum/overview /docs/building-apps/chain-fusion/ethereum/overview
   /docs/current/developer-docs/multi-chain/ethereum/using-eth/eth-comparison /docs/building-apps/chain-fusion/ethereum/using-eth/eth-comparison
   /docs/current/developer-docs/multi-chain/ethereum/using-eth/eth-dev-workflow /docs/building-apps/chain-fusion/ethereum/using-eth/eth-dev-workflow
