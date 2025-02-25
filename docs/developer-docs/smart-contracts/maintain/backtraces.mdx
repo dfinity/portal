@@ -44,7 +44,7 @@ _wasm_backtrace_canister::outer
 ## Checking for canister support
 
 Backtrace support relies on function names being stored in the `name` [custom section](https://webassembly.github.io/spec/core/appendix/custom.html#name-section) of the canister Wasm module.
-Any canister built with dfx version `>= 0.24.2` should automatically have support for backtraces. If you're manually altering your canister Wasm code with the `ic-wasm shrink` or `ic-wasm metadata` commands, you'll need to add the `--keep-name-section` flag to ensure the canister can still provide backtraces.
+Any canister built with `dfx` version `>= 0.24.2` should automatically have support for backtraces. If you're manually altering your canister Wasm code with the `ic-wasm shrink`, `ic-wasm optimize`, or `ic-wasm metadata` commands, you'll need to add the `--keep-name-section` flag to ensure the canister can still provide backtraces. This requires version `ic-wasm` version `>= 0.8.6`.
 
 To double check that a Wasm module has the name section, you can use [`wasm-objdump`](https://github.com/WebAssembly/wabt):
 
