@@ -1110,9 +1110,9 @@ hash_of_map({ request_type: "call", sender: 0x04, ingress_expiry: 16855704000000
 
 ### Reject codes {#reject-codes}
 
-An API request or inter-canister call that is pending in the IC will eventually result in either a *reply* (indicating success, and carrying data) or a *reject* (indicating an error of some sorts). A reject contains a *rejection code* that classifies the error and a hopefully helpful *reject message* string.
+An API request or inter-canister call that is pending in the IC will eventually result in either a *reply* (indicating success, and carrying data) or a *reject* (indicating an error of some sorts). A reject contains a *reject code* that classifies the error and a hopefully helpful *reject message* string.
 
-Rejection codes are member of the following enumeration:
+Reject codes are member of the following enumeration:
 
 -   `SYS_FATAL` (1): Fatal system error, retry unlikely to be useful.
 
@@ -1455,6 +1455,9 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.canister_status : () -> i32;                                                      // *
     ic0.canister_version : () -> i64;                                                     // *
 
+    ic0.subnet_self_size : () -> I;                                                       // *
+    ic0.subnet_self_copy : (dst : I, offset : I, size : I) -> ();                         // *
+
     ic0.msg_method_name_size : () -> I;                                                   // F
     ic0.msg_method_name_copy : (dst : I, offset : I, size : I) -> ();                     // F
     ic0.accept_message : () -> ();                                                        // F
@@ -1658,6 +1661,12 @@ A canister can learn about its own identity:
 
     These functions allow the canister to query its own canister id (as a blob).
 
+A canister can learn about the subnet it is running on:
+
+-   `ic0.subnet_self_size : () → I` and `ic0.subnet_self_copy: (dst : I, offset : I, size : I) → ()`; `I ∈ {i32, i64}`
+
+    These functions allow the canister to query the subnet id (as a blob) of the subnet on which the canister is running.
+
 ### Canister status {#system-api-canister-status}
 
 This function allows a canister to find out if it is running, stopping or stopped (see [IC method](#ic-canister_status) and [IC method](#ic-stop_canister) for context).
@@ -1741,7 +1750,7 @@ There must be at most one call to `ic0.call_on_cleanup` between `ic0.call_new` a
 
     The amount of cycles it moves is represented by a 128-bit value which can be obtained by combining the `amount_high` and `amount_low` parameters.
 
-    The cycles are deducted from the balance as shown by `ic0.canister_cycles_balance128` immediately, and moved back if the call cannot be performed (e.g. if `ic0.call_perform` signals an error, if the canister invokes `ic0.call_new`, or returns without calling `ic0.call_perform`).
+    The cycles are deducted from the balance as shown by `ic0.canister_cycle_balance128` immediately, and moved back if the call cannot be performed (e.g. if `ic0.call_perform` signals an error, if the canister invokes `ic0.call_new`, or returns without calling `ic0.call_perform`).
 
     This system call may be called multiple times between `ic0.call_new` and `ic0.call_perform`.
 
@@ -1757,9 +1766,9 @@ There must be at most one call to `ic0.call_on_cleanup` between `ic0.call_new` a
 
     This deducts `MAX_CYCLES_PER_RESPONSE` cycles from the canister balance and sets them aside for response processing.
 
-    If the function returns `0` as the `err_code`, the IC was able to enqueue the call. In this case, the call will either be delivered, returned because the destination canister does not exist, returned due to a lack of resources within the IC, or returned because of an out of cycles condition. This also means that exactly one of the reply or reject callbacks will be executed.
+    The returned `err_code` is always one of `0` and `2`. An `err_code` of `0` means that no error occurred and that the IC could enqueue the call. In this case, the call will either be delivered, returned because the destination canister does not exist, returned due to a lack of resources within the IC, or returned because of an out of cycles condition. This also means that exactly one of the reply or reject callbacks will be executed.
 
-    If the function returns a non-zero value, the call cannot (and will not be) performed. This can happen due to a lack of resources within the IC, but also if it would reduce the current cycle balance to a level below where the canister would be frozen.
+    A non-zero value of `err_code` (`2`) indicates that the call could not be performed and the semantics of that value are the same as for the corresponding `SYS_FATAL` [reject code](#reject-codes). The non-zero value of `err_code` (`2`) could arise due to a lack of resources within the IC, but also if the call would reduce the current cycle balance to a level below where the canister would be frozen. No callbacks are executed in this case.
 
     After `ic0.call_perform` and before the next call to `ic0.call_new`, all other `ic0.call_*` function calls trap.
 
@@ -1779,7 +1788,7 @@ This specification currently does not go into details about which actions cost h
 
 :::note
 
-This call traps if the current balance does not fit into a 64-bit value. Canisters that need to deal with larger cycles balances should use `ic0.canister_cycles_balance128` instead.
+This call traps if the current balance does not fit into a 64-bit value. Canisters that need to deal with larger cycles balances should use `ic0.canister_cycle_balance128` instead.
 
 :::
 
@@ -3185,6 +3194,7 @@ The [WebAssembly System API](#system-api) is relatively low-level, and some of i
       memory_usage_chunk_store : Nat;
       memory_usage_snapshot : Nat;
       freezing_threshold : Nat;
+      subnet_id : Principal;
       subnet_size : Nat;
       certificate : NoCertificate | Blob;
       status : Running | Stopping | Stopped;
@@ -3766,6 +3776,7 @@ is_effective_canister_id(E.content, ECID)
     memory_usage_chunk_store = memory_usage_chunk_store(S.chunk_store[E.content.canister_id]);
     memory_usage_snapshot = memory_usage_snapshot(S.snapshots[E.content.canister_id]);
     freezing_threshold = S.freezing_threshold[E.content.canister_id];
+    subnet_id = S.canister_subnet[E.content.canister_id].subnet_id;
     subnet_size = S.canister_subnet[E.content.canister_id].subnet_size;
     certificate = NoCertificate;
     status = simple_status(S.canister_status[E.content.canister_id]);
@@ -4070,6 +4081,7 @@ Env = {
   memory_usage_chunk_store = memory_usage_chunk_store(S.chunk_store[M.receiver]);
   memory_usage_snapshot = memory_usage_snapshot(S.snapshots[M.receiver]);
   freezing_threshold = S.freezing_threshold[M.receiver];
+  subnet_id = S.canister_subnet[M.receiver].subnet_id;
   subnet_size = S.canister_subnet[M.receiver].subnet_size;
   certificate = NoCertificate;
   status = simple_status(S.canister_status[M.receiver]);
@@ -4811,6 +4823,7 @@ Env = {
   memory_usage_chunk_store = memory_usage_chunk_store(New_chunk_store);
   memory_usage_snapshot = memory_usage_snapshot(S.snapshots[A.canister_id]);
   freezing_threshold = S.freezing_threshold[A.canister_id];
+  subnet_id = S.canister_subnet[A.canister_id].subnet_id;
   subnet_size = S.canister_subnet[A.canister_id].subnet_size;
   certificate = NoCertificate;
   status = simple_status(S.canister_status[A.canister_id]);
@@ -4930,6 +4943,7 @@ Env = {
   memory_usage_chunk_store = memory_usage_chunk_store(S.chunk_store[A.canister_id]);
   memory_usage_snapshot = memory_usage_snapshot(S.snapshots[A.canister_id]);
   freezing_threshold = S.freezing_threshold[A.canister_id];
+  subnet_id = S.canister_subnet[A.canister_id].subnet_id;
   subnet_size = S.canister_subnet[A.canister_id].subnet_size;
   certificate = NoCertificate;
   status = simple_status(S.canister_status[A.canister_id]);
@@ -6323,6 +6337,7 @@ composite_query_helper(S, Cycles, Depth, Root_canister_id, Caller, Canister_id, 
               memory_usage_chunk_store = memory_usage_chunk_store(S.chunk_store[Canister_id]);
               memory_usage_snapshot = memory_usage_snapshot(S.snapshots[Canister_id]);
               freezing_threshold = S.freezing_threshold[Canister_id];
+              subnet_id = S.canister_subnet[Canister_id].subnet_id;
               subnet_size = S.canister_subnet[Canister_id].subnet_size;
               certificate = Cert;
               status = simple_status(S.canister_status[Canister_id]);
@@ -7241,13 +7256,23 @@ ic0.canister_self_copy<es>(dst : I, offset : I, size : I) =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
   copy_to_canister<es>(dst, offset, size, es.wasm_state.self_id)
 
+I ∈ {i32, i64}
+ic0.subnet_self_size<es>() : I =
+  if es.context = s then Trap {cycles_used = es.cycles_used;}
+  return |es.params.sysenv.subnet_id|
+
+I ∈ {i32, i64}
+ic0.subnet_self_copy<es>(dst : I, offset : I, size : I) =
+  if es.context = s then Trap {cycles_used = es.cycles_used;}
+  copy_to_canister<es>(dst, offset, size, es.params.sysenv.subnet_id)
+
 ic0.canister_cycle_balance<es>() : i64 =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
   if es.balance >= 2^64 then Trap {cycles_used = es.cycles_used;}
   return es.balance
 
 I ∈ {i32, i64}
-ic0.canister_cycles_balance128<es>(dst : I) =
+ic0.canister_cycle_balance128<es>(dst : I) =
   if es.context = s then Trap {cycles_used = es.cycles_used;}
   let amount = es.balance
   copy_cycles_to_canister<es>(dst, amount.to_little_endian_bytes())

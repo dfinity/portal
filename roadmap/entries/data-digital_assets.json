@@ -5,7 +5,7 @@
     {
       "title": "Solana Integration",
       "overview": "OISY widens its multi-chain reach beyond Bitcoin and Ethereum, and will integrate with the most important networks. Solana is the first one to be implemented, a crucial step forward in our mission to deliver a true multi-chain wallet for decentralized finance (DeFi) users.",
-      "status": "in_progress",
+      "status": "deployed",
       "forum": "",
       "proposal": "",
       "docs": "",
@@ -16,7 +16,7 @@
     {
       "title": "In-Wallet Swaps",
       "overview": "Introducing in-wallet swaps, this release will enhance flexibility for managing assets, allowing users to seamlessly change their asset allocation directly in OISY using DEX liquidity, mitigating risk or aiming for a higher yield.",
-      "status": "in_progress",
+      "status": "deployed",
       "forum": "",
       "proposal": "",
       "docs": "",
@@ -42,7 +42,7 @@
       "milestone_id": "Helios",
       "status": "in_progress",
       "eta": "",
-      "eta_to_render": "January 2025"
+      "eta_to_render": "February 2025"
     },
     {
       "title": "Orbit Multi custody wallet for ICP",
