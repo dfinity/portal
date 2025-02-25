@@ -5180,5 +5180,24 @@
     "twitter": "https://x.com/CoreLedger",
     "usesInternetIdentity": true,
     "display": "Normal"
+  },
+  {
+    "id": "guarda-wallet",
+    "name": "Guarda Wallet",
+    "website": "https://guarda.com/",
+    "tags": [
+      "Wallet",
+      "Bitcoin",
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "description": "One secure multi crypto wallet, all assets in. Swap and store crypto across 70+ networks.",
+    "stats": "150,000 users",
+    "logo": "/img/showcase/guarda-wallet_logo.webp",
+    "screenshots": [
+      "/img/showcase/guarda-wallet_screenshot.webp"
+    ],
+    "usesInternetIdentity": false,
+    "twitter": "https://x.com/guardawallet"
   }
 ]
