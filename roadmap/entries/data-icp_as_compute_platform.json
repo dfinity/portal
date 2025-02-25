@@ -128,18 +128,6 @@
       "in_beta": false
     },
     {
-      "title": "Dapp-level metrics",
-      "overview": "Dapp-level metrics allow for obtaining insights into statistics of dapps, e.g., the daily / weekly / monthly active users of a dapp.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
-      "is_community": true,
-      "in_beta": false,
-      "milestone_id": ""
-    },
-    {
       "title": "Wallet apps (\"Wapps\")",
       "overview": "Wapps are the next evolutionary step of apps: Install your personal apps directly on the blockchain and keep control over your data.",
       "forum": "",
@@ -235,39 +223,6 @@
       "in_beta": false
     },
     {
-      "title": "Messaging model enhancements",
-      "overview": "Enhancing canister messaging by means such as named callbacks and one-shot messages.",
-      "status": "future",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "Queries at specified block height",
-      "overview": "Execute a query at a specified block height. Prerequisite for use cases like replicating queries on multiple replicas, XNet queries or databases.",
-      "status": "future",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "Hyper-scalable inter-subnet message routing",
-      "overview": "Hyper-scalable XNet messaging protocol and implementation supporting a practically unlimited number of subnets. The current implementation works well up to a reasonably large number of subnets.",
-      "status": "future",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
       "title": "Subnet deletion",
       "overview": "Enable subnets to be deleted via NNS proposals.",
       "status": "future",
@@ -313,17 +268,6 @@
     {
       "title": "HTTPS outcalls V2",
       "overview": "Additional feature for HTTPS outcalls: IPv4 support, single-node outcalls, and fire & forget outcalls. Allows for reduced latencies and reduced cycle costs.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "",
-      "is_community": true,
-      "in_beta": false
-    },
-    {
-      "title": "HTTPS outcalls V3",
-      "overview": "Support HTTPS outcalls also for queries, instead of only update calls.",
       "forum": "",
       "proposal": "",
       "docs": "",
@@ -421,41 +365,8 @@
       "in_beta": false
     },
     {
-      "title": "Eternal storage",
-      "overview": "A storage tier on ICP for which a one-off payment for an unlimited storage duration instead of periodic rent is paid.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "Structured data storage",
-      "overview": "Library for structured data storage in stable memory to enable more powerful and convenient out-of-the-box data storage and querying.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
-      "is_community": true,
-      "in_beta": false
-    },
-    {
       "title": "Inter-subnet messaging across trust zones",
       "overview": "Sovereign subnets are typically more centralized than ICP mainnet. Thus, messaging between subnets needs to consider the trust zones the subnets are in to maintain overall security.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "Using cycles across trust zones",
-      "overview": "Transferring cycles from a sovereign network to ICP mainnet or subnets in different trust zones can, because of their weaker decentralization properties, not rely on directly sending cycles.",
       "forum": "",
       "proposal": "",
       "docs": "",

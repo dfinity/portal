@@ -58,7 +58,7 @@
     {
       "title": "EVM in a canister",
       "overview": "An low-fee, high-performance EVM implemented as set of canisters on ICP with trustless integration with the Bitcoin network.",
-      "status": "in_progress",
+      "status": "deployed",
       "forum": "",
       "proposal": "",
       "docs": "",
@@ -69,25 +69,13 @@
     {
       "title": "Threshold ECDSA — Throughput improvements",
       "overview": "Improving throughput of chain-key ECDSA via multiple protocol improvements such as batching, parallel processing of crypto operations, and cryptographic protocol improvements.",
-      "status": "in_progress",
+      "status": "future",
       "forum": "",
       "proposal": "",
       "docs": "",
       "eta": "future",
       "is_community": true,
       "in_beta": false
-    },
-    {
-      "title": "Chain-key SOL (ckSOL) token",
-      "overview": "Solana's SOL token on ICP in the form of a \"twin token\" called ckSOL (chain-key SOL).",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": ""
     },
     {
       "title": "Oracles with signed responses",
@@ -181,17 +169,6 @@
     {
       "title": "X-chain token minter V3",
       "overview": "A further enhanced version of the X-chain token minter, bringing ICP and ICRC-1 tokens to other blockchain networks such as Ethereum L2s and Solana.",
-      "status": "future",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "future",
-      "is_community": true,
-      "in_beta": false
-    },
-    {
-      "title": "ICRC-1 interface for native BTC, ERC20 and others",
-      "overview": "Exposing an ICRC-1 interface to tokens of token standards from other networks, such as BTC or ERC20. This will make X-chain tokens on ICP more easy to use.",
       "status": "future",
       "forum": "",
       "proposal": "",
