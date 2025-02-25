@@ -588,9 +588,6 @@ The Internet Computer has two HTTPS APIs for canister calling:
 - [*Asynchronous*](#http-async-call-overview) canister calling, where the user must poll the Internet Computer for the status of the canister call by _separate_ HTTPS requests.
 - [*Synchronous*](#http-sync-call-overview) canister calling, where the status of the canister call is in the response of the original HTTPS request.
 
-The publicly exposed state of a subnet (including the status of calls to its canisters) evolves in rounds. Each round is associated with a discrete timestamp, see [Time](#state-tree-time).
-Each call request has an ingress expiry field, indicating that its execution must not start after the subnet time exceeds the expiry timestamp.
-
 #### Asynchronous canister calling {#http-async-call-overview}
 
 1.  A user submits a call via the [HTTPS Interface](#http-interface). The node receiving the request asks the targeted canister if it is willing to accept this message and be charged for the expense of processing it. For calls to the management canister, the rules in [The IC management canister](#ic-management-canister) apply. Otherwise, the node uses the [Ingress message inspection](#system-api-inspect-message) API.
