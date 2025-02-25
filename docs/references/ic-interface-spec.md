@@ -6009,7 +6009,7 @@ NB: The refunded cycles, `RM.refunded_cycles` are, by construction, empty.
 
 #### Update call request clean up
 
-The IC will keep the data for a completed or rejected update `call` request around for a certain, implementation defined amount of time, to allow users to poll for the data with `read_state` requests . After that time, the data of the request will be dropped:
+The IC will keep the data for a replied or rejected update `call` request around for a certain, implementation defined amount of time, to allow users to poll for the data with `read_state` requests . After that time, the data of the request will be dropped:
 
 Conditions  
 
