@@ -2378,13 +2378,13 @@
         "name": "OISY Wallet v1.0 - The official Launch",
         "milestone_id": "Helios",
         "description": "With the Helios release, officially named v1.0, OISY will step out of the beta status into its first production version. This includes functional coverage of all key features like buy, receive, send, swap, and convert from and to chain-key tokens, and with several major blockchains integrated, also a true multi-chain nature. Behind the scenes, it also includes setting up proper processes for product improvement, marketing, automated testing, and setting up a user friendly support process.",
-        "eta": "January 2025",
+        "eta": "February 2025",
         "status": "in_progress",
         "elements": [
           {
             "title": "Solana Integration",
             "overview": "OISY widens its multi-chain reach beyond Bitcoin and Ethereum, and will integrate with the most important networks. Solana is the first one to be implemented, a crucial step forward in our mission to deliver a true multi-chain wallet for decentralized finance (DeFi) users.",
-            "status": "in_progress",
+            "status": "deployed",
             "forum": "",
             "proposal": "",
             "docs": "",
@@ -2395,7 +2395,7 @@
           {
             "title": "In-Wallet Swaps",
             "overview": "Introducing in-wallet swaps, this release will enhance flexibility for managing assets, allowing users to seamlessly change their asset allocation directly in OISY using DEX liquidity, mitigating risk or aiming for a higher yield.",
-            "status": "in_progress",
+            "status": "deployed",
             "forum": "",
             "proposal": "",
             "docs": "",
@@ -3696,7 +3696,7 @@
           {
             "title": "Landing Page Revamp",
             "overview": "Discover a revamped landing page where users feel right at home with their projects. Users create new dapps with options for a frontend, backend, or both, or start from a curated template.",
-            "status": "in_progress",
+            "status": "deployed",
             "forum": "",
             "proposal": "",
             "docs": "",
