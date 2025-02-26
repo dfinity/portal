@@ -5,14 +5,14 @@
 
 # DX
 docs/other/updates/release-notes/ @dfinity/dx
-docs/building-apps/interact-with-canisters/agents/overview @dfinity/dx
-docs/building-apps/developer-tools/cdks/index @dfinity/dx
+docs/building-apps/interact-with-canisters/agents/ @dfinity/dx
+docs/building-apps/developer-tools/cdks/ @dfinity/dx
 
 # FI
 docs/defi/ @dfinity/finint
 
 # ProdSec
-docs/concepts/security @dfinity/product-security
+docs/building-apps/best-practices/security/ @dfinity/product-security
 docs/building-apps/best-practices/idempotency.mdx @dfinity/research @dfinity/product-security
 src/pages/security-advisories.tsx @dfinity/product-security
 
