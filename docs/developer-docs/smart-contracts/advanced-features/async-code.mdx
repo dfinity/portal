@@ -10,7 +10,9 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 
 
-The ICP allows canisters to seamlessly interact with other canisters by calling their methods, just like external users call canisters. You are likely to need inter-canister calls early on: they are necessary to transfer the ICP token, or to access certain system functionality through the [management canister](/docs/current/developer-docs/smart-contracts/advanced-features/management-canister). This remote procedure call (RPC) mechanism, based on a request-response paradigm, will feel familiar if you are coming from Ethereum or other smart-contract enabled blockchains, but there are also important differences that you should understand:
+The ICP allows canisters to seamlessly interact with other canisters by calling their methods, just like external users call canisters. When writing canisters, you will need to issue such inter-canister calls for operations such as transferring tokens or accessing certain system functionality through the [management canister](/docs/current/developer-docs/smart-contracts/advanced-features/management-canister). 
+
+This remote procedure call (RPC) mechanism, based on a request-response paradigm, will feel familiar if you are coming from Ethereum or other smart contract enabled blockchains, but there are also important differences that you should understand:
 
 - On ICP, inter-canister calls are **asynchronous**. When a canister `C1` calls a canister `C2`, `C1` can process other calls while waiting on the response from `C2`. This significantly increases the canisters' scalability. However, it also means that canister authors have to correctly handle calls executing concurrently. In particular, this differs from the transactional nature of Ethereum's smart contract calls.
 
