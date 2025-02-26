@@ -5,38 +5,6 @@ import { motion } from "framer-motion";
 import transitions from "@site/static/transitions.json";
 import Link from "@docusaurus/Link";
 
-const VideoPlayer: FC<{ className?: string }> = ({ className = "" }) => {
-  const [showControls, setShowControls] = useState(false);
-  const videoRef = React.useRef<HTMLVideoElement>(null);
-
-  const handleClick = () => {
-    setShowControls(true);
-    videoRef.current?.play();
-  };
-
-  return (
-    <div className={`relative cursor-pointer ${className}`}>
-      <motion.video
-        ref={videoRef}
-        controls={showControls}
-        poster="/img/ethdenver/icp-bounties-poster.webp"
-        className="w-full overflow-hidden rounded-xl"
-        onClick={handleClick}
-        variants={transitions.item}
-      >
-        <source src="/img/ethdenver/icp-bounties.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </motion.video>
-      {!showControls && (
-        <div 
-          className="absolute inset-0"
-          onClick={handleClick}
-        />
-      )}
-    </div>
-  );
-};
-
 const Bounties: FC<{
   id: string;
 }> = ({ id }) => {
@@ -61,7 +29,12 @@ const Bounties: FC<{
           
           {/* Mobile video */}
           <div className="md:hidden mb-6">
-            <VideoPlayer />
+            <motion.a
+              href="https://x.com/dfinity/status/1893028107734442492"
+              target="_blank"
+              className="block w-full overflow-hidden rounded-xl">
+                <img src="/img/ethdenver/icp-bounties-poster.webp" alt="Video poster  ICP bounties for ETH Denver" />
+            </motion.a>
           </div>
 
           <motion.p className="tw-lead-sm mb-8 text-black-60 md:w-9/10" variants={transitions.item}>
@@ -93,7 +66,12 @@ const Bounties: FC<{
         
         {/* Desktop video */}
         <div className="md:w-5/12 hidden md:block">
-          <VideoPlayer />
+          <motion.a
+            href="https://x.com/dfinity/status/1893028107734442492"
+            target="_blank"
+            className="block w-full overflow-hidden rounded-xl">
+              <img src="/img/ethdenver/icp-bounties-poster.webp" alt="Video poster  ICP bounties for ETH Denver" />
+          </motion.a>
         </div>
       </AnimateSpawn>
 
