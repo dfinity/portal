@@ -360,7 +360,7 @@ You can also view the wrapping in [an online ASN.1 JavaScript decoder](https://l
 
 The IC also supports a scheme where a canister can sign a payload by declaring a special "certified variable".
 
-This section makes forward specifications to other concepts in this document, in particular the section [Certification](#certification).
+This section makes forward references to other concepts in this document, in particular the section [Certification](#certification).
 
 -   The public key is a DER-wrapped structure that indicates the *signing canister*, and includes a freely choosable seed. Each choice of seed yields a distinct public key for the canister, and the canister can choose to encode information, such as a user id, in the seed.
 
@@ -1238,7 +1238,7 @@ A canister module is a [WebAssembly module](https://webassembly.github.io/spec/c
 
 The System API is the interface between the running canister and the Internet Computer. It allows the WebAssembly module of a canister to expose functionality to the users (method entry points) and the IC (e.g. initialization), and exposes functionality of the IC to the canister (e.g. calling other canisters). Because WebAssembly is rather low-level, it also explains how to express higher level concepts (e.g. binary blobs).
 
-We want to leverage advanced WebAssembly features, such as WebAssembly host specifications. But as they are not yet supported by all tools involved, this section describes an initial System API that does not rely on host specifications. In section [Outlook: Using Host References](#host-specifications), we outline some of the proposed uses of WebAssembly host specifications.
+We want to leverage advanced WebAssembly features, such as WebAssembly host references. But as they are not yet supported by all tools involved, this section describes an initial System API that does not rely on host references. In section [Outlook: Using Host References](#host-references), we outline some of the proposed uses of WebAssembly host references.
 
 ### WebAssembly module requirements {#system-api-module}
 
@@ -2054,13 +2054,13 @@ Similarly, the System API allows the canister to effectively trap, but give some
 
     The environment may copy out the data specified by `src` and `size`, and log, print or store it in an environment-appropriate way, or include it in system-generated reject messages where appropriate. The copied data may likely be a valid string in UTF8-encoding, but the environment should be prepared to handle binary data (e.g. by printing it in escaped form or substituting invalid characters).
 
-### Outlook: Using Host References {#host-specifications}
+### Outlook: Using Host References {#host-references}
 
-The Internet Computer aims to make the most of the WebAssembly platform, and embraces WebAssembly features. With WebAssembly host specifications, we can make the platform more secure, the interfaces more abstract and more compositional. The above `ic0` System API does not yet use WebAssembly host specifications. Once they become available on our platform, a new version of the System API using host specifications will be available via the `ic` module. The changes will be, at least
+The Internet Computer aims to make the most of the WebAssembly platform, and embraces WebAssembly features. With WebAssembly host references, we can make the platform more secure, the interfaces more abstract and more compositional. The above `ic0` System API does not yet use WebAssembly host references. Once they become available on our platform, a new version of the System API using host references will be available via the `ic` module. The changes will be, at least
 
 1.  The introduction of a `api_nonce` reference, which models the capability to use the System API. It is passed as an argument to `canister_init`, `canister_update <name>` etc., and expected as an argument by almost all System API function calls. (The debugging aids remain unconstrained.)
 
-2.  The use of specifications, instead of binary blobs, to address principals (user ids, canister ids), e.g. in `ic0.msg_caller` or in `ic0.call_new`. Additional functions will be provided to convert between the transparent binary representation of principals and specifications.
+2.  The use of references, instead of binary blobs, to address principals (user ids, canister ids), e.g. in `ic0.msg_caller` or in `ic0.call_new`. Additional functions will be provided to convert between the transparent binary representation of principals and references.
 
 3.  Making the builder interface to create calls build calls identified by a reference, rather than having an implicit partial call in the background.
 
@@ -4298,7 +4298,7 @@ S.messages =
 
 #### Call context starvation {#rule-starvation}
 
-If the call context needs to respond (in particular, if the call context is not for a system task) and there is no call, downstream call context, or response that specifications a call context, then a reject is synthesized. The error message below is *not* indicative. In particular, if the IC has an idea about *why* this starved, it can put that in there (e.g. the initial message handler trapped with an out-of-memory access).
+If the call context needs to respond (in particular, if the call context is not for a system task) and there is no call, downstream call context, or response that references a call context, then a reject is synthesized. The error message below is *not* indicative. In particular, if the IC has an idea about *why* this starved, it can put that in there (e.g. the initial message handler trapped with an out-of-memory access).
 
 Conditions  
 
@@ -4331,7 +4331,7 @@ S with
 
 #### Call context removal {#call-context-removal}
 
-If there is no call, downstream call context, or response that specifications a call context, and the call context does not need to respond (because it has already responded or its origin is a system task that does not await a response), then the call context can be removed.
+If there is no call, downstream call context, or response that references a call context, and the call context does not need to respond (because it has already responded or its origin is a system task that does not await a response), then the call context can be removed.
 
 Conditions  
 

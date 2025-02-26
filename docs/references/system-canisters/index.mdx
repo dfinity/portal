@@ -62,19 +62,11 @@ The cycles ledger canister is hosted on the system subnet [`tdb26-jop6k-aogll-7l
 
 The [exchange rate](https://github.com/dfinity/exchange-rate-canister) canister (XRC) uses [HTTPS outcalls](https://internetcomputer.org/https-outcalls/) to fetch data from major cryptocurrency exchanges by using the exchange's public API to retrieve real-time or historical cryptocurrency pricing information. The XRC also queries the public APIs for foreign exchange data providers around the world periodically in order to get rates.
 
-The XRC canister can be used by dapps such as decentralized exchanges (DEXs) to provide functionality such as comparing exchange rates against market rates to determine the value of assets that are held in a canister smart contract. For example, the cycle minting canister of the <GlossaryTooltip>NNS</GlossaryTooltip> uses the XRC to obtain the current ICP/XDR exchange rates, which it requires for the conversion of ICP to cycles.
-
-The XRC provides this data in response to requests made by other canisters. A request made by another canister is composed of a base asset, a quote asset, and an optional UNIX epoch timestamp.
-
-An **asset** is a record consisting of a symbol (such as "ICP") and a class (either 'Cryptocurrency' or 'FiatCurrency'). The base and quote asset can be any combination of cryptocurrency and fiat currency assets, such as ICP/USD, USD/EUR, BTC/ICP, etc. The timestamp parameter enables the functionality for historic rates to be requested. If no timestamp is provided, the exchange rate for the current time is returned by default.
-
 It has canister ID [`uf6dk-hyaaa-aaaaq-qaaaq-cai`](https://dashboard.internetcomputer.org/canister/uf6dk-hyaaa-aaaaq-qaaaq-cai).
 
 The exchange rate canister is hosted on the system subnet [`uzr34-akd3s-xrdag-3ql62-ocgoh-ld2ao-tamcv-54e7j-krwgb-2gm4z-oqe`](https://dashboard.internetcomputer.org/subnet/uzr34-akd3s-xrdag-3ql62-ocgoh-ld2ao-tamcv-54e7j-krwgb-2gm4z-oqe).
 
-The XRC calculates exchange rates using a unique aggregation method that combines candlestick chart data for specific one-minute intervals from various exchanges, avoiding conventional time (TWAP) or volume-weighted (VWAP) techniques. It can further derive rates for pairs that are not traded themselves (e.g., A/B from available A/C and B/C rates). After collecting, combining, and filtering rates, the median rate is returned. This approach ensures accuracy and timeliness and minimizes manipulation risks, providing reliable rate information for decentralized applications.
-
-View the [exchange rate canister specification](https://github.com/dfinity/exchange-rate-canister/blob/main/INTERFACE_SPECIFICATION.md).
+[Learn more about the exchange rate canister](xrc.mdx) or view the [exchange rate canister specification](https://github.com/dfinity/exchange-rate-canister/blob/main/INTERFACE_SPECIFICATION.md).
 
 ## Genesis token
 

@@ -28,6 +28,7 @@ const redirects = `
   /docs/current/developer-docs/security/security-best-practices/* /docs/building-apps/security/:splat
   /docs/current/developer-docs/agents/* /docs/building-apps/interact-with-canisters/agents/:splat
   /docs/current/developer-docs/best-practices/*	/docs/building-apps/best-practices/:splat
+  /docs/current/developer-docs/smart-contracts/best-practices/* /docs/building-apps/best-practices/:splat
   /docs/current/developer-docs/daos/sns/* /docs/building-apps/governing-apps/:splat
   /docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfxvm/* /docs/building-apps/developer-tools/dfxvm/:splat
   /docs/current/developer-docs/developer-tools/cli-tools/advanced-dfx/* /docs/building-apps/developer-tools/advanced-dfx/:splat
@@ -237,6 +238,7 @@ const redirects = `
   /docs/current/developer-docs/defi/wallets/self-custody/hardware-wallet-cli https://internetcomputer.zendesk.com/hc/en-us
   /docs/current/developer-docs/defi/wallets/self-custody/self-custody-quickstart https://internetcomputer.zendesk.com/hc/en-us
   /docs/current/developer-docs/defi/wallets/workflow /docs/defi/overview
+  /docs/current/developer-docs/defi/cycles/cycles-ledger /docs/defi/token-ledgers/cycles-ledger
 
   ## Dev tools
   /docs/current/developer-docs/deploy/computation-and-storage-costs /docs/building-apps/essentials/gas-cost
@@ -529,8 +531,7 @@ const redirects = `
   /docs/current/developer-docs/smart-contracts/best-practices/storage /docs/building-apps/best-practices/storage
   /docs/current/developer-docs/smart-contracts/best-practices/troubleshooting /docs/building-apps/best-practices/troubleshooting
   /docs/current/developer-docs/smart-contracts/call/arguments /docs/building-apps/interact-with-canisters/advanced-calls
-  /docs/current/developer-docs/smart-contracts/call/overview /docs/building-apps/interact-with-canisters/advanced-calls
-  /docs/current/developer-docs/smart-contracts/candid/candid-concepts /docs/building-apps/interact-with-canisters/candid/candid-concepts
+  /docs/current/developer-docs/smart-contracts/call/overview /docs/building-apps/essentials/message-execution
   /docs/current/developer-docs/smart-contracts/candid/candid-howto /docs/building-apps/interact-with-canisters/candid/using-candid
   /docs/current/developer-docs/smart-contracts/candid/candid-tools /docs/building-apps/interact-with-canisters/candid/candid-tools
   /docs/current/developer-docs/smart-contracts/candid /docs/building-apps/interact-with-canisters/candid/candid-concepts

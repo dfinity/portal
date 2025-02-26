@@ -451,6 +451,82 @@ build: [
     },
     {
       type: "category",
+      label: "Security",
+      link:
+        {
+          type: "doc",
+          id: "building-apps/security/overview",
+        },
+      items: [
+        {
+          type: "doc",
+          label: "What are security best practices?",
+          id: "building-apps/security/overview",
+        },
+        {
+          type: "doc",
+          label: "Inter-canister calls",
+          id: "building-apps/security/inter-canister-calls",
+        },
+        {
+          type: "doc",
+          label: "Identity & access management",
+          id: "building-apps/security/iam",
+        },
+        {
+          type: "doc",
+          label: "Decentralization",
+          id: "building-apps/security/decentralization",
+        },
+        {
+          type: "doc",
+          label: "Data integrity & authenticity",
+          id: "building-apps/security/data-integrity-and-authenticity",
+        },
+        {
+          type: "doc",
+          label: "Data storage",
+          id: "building-apps/security/data-storage",
+        },
+        {
+          type: "doc",
+          label: "HTTP outcalls",
+          id: "building-apps/security/https-outcalls",
+        },
+        {
+          type: "doc",
+          label: "Denial of service",
+          id: "building-apps/security/dos",
+        },
+        {
+          type: "doc",
+          label: "Canister upgrades",
+          id: "building-apps/security/canister-upgrades",
+        },
+        {
+          type: "doc",
+          label: "Observability & monitoring",
+          id: "building-apps/security/observability-and-monitoring",
+        },
+        {
+          type: "doc",
+          label: "Miscellaneous",
+          id: "building-apps/security/misc",
+        },
+        {
+          type: "doc",
+          label: "Important resources",
+          id: "building-apps/security/resources",
+        },
+        {
+          type: "doc",
+          label: "Formal verification",
+          id: "building-apps/security/formal-verification",
+        },
+      ],
+    },
+    {
+      type: "category",
       label: "Best practices",
       items: [
         {
@@ -483,82 +559,6 @@ build: [
           label: "Troubleshooting",
           id: "building-apps/best-practices/troubleshooting",
         },
-      {
-        type: "category",
-        label: "Security",
-        link:
-          {
-            type: "doc",
-            id: "building-apps/security/overview",
-          },
-        items: [
-          {
-            type: "doc",
-            label: "What are security best practices?",
-            id: "building-apps/security/overview",
-          },
-          {
-            type: "doc",
-            label: "Inter-canister calls",
-            id: "building-apps/security/inter-canister-calls",
-          },
-          {
-            type: "doc",
-            label: "Identity & access management",
-            id: "building-apps/security/iam",
-          },
-          {
-            type: "doc",
-            label: "Decentralization",
-            id: "building-apps/security/decentralization",
-          },
-          {
-            type: "doc",
-            label: "Data integrity & authenticity",
-            id: "building-apps/security/data-integrity-and-authenticity",
-          },
-          {
-            type: "doc",
-            label: "Data storage",
-            id: "building-apps/security/data-storage",
-          },
-          {
-            type: "doc",
-            label: "HTTP outcalls",
-            id: "building-apps/security/https-outcalls",
-          },
-          {
-            type: "doc",
-            label: "Denial of service",
-            id: "building-apps/security/dos",
-          },
-          {
-            type: "doc",
-            label: "Canister upgrades",
-            id: "building-apps/security/canister-upgrades",
-          },
-          {
-            type: "doc",
-            label: "Observability & monitoring",
-            id: "building-apps/security/observability-and-monitoring",
-          },
-          {
-            type: "doc",
-            label: "Miscellaneous",
-            id: "building-apps/security/misc",
-          },
-          {
-            type: "doc",
-            label: "Important resources",
-            id: "building-apps/security/resources",
-          },
-          {
-            type: "doc",
-            label: "Formal verification",
-            id: "building-apps/security/formal-verification",
-          },
-        ],
-      },
       {
         type: "doc",
         label: "Trust in canisters",
@@ -863,6 +863,7 @@ references: [
   },
       "references/async-code",
       "references/execution-errors",
+      "references/message-execution-properties",
   {
     type: "doc",
     label: "Dashboard API reference",
@@ -876,6 +877,11 @@ references: [
         type: "doc",
         label: "List of system canisters",
         id: "references/system-canisters/index",
+      },
+      {
+        type: "doc",
+        label: "Exchange rate canister",
+        id: "references/system-canisters/xrc",
       },
       {
         type: "doc",
