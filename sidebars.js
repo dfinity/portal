@@ -523,7 +523,8 @@ build: [
             id: "building-apps/security/resources",
           },
         ],
-        {
+      },
+      {
         type: "doc",
         label: "Formal verification",
         id: "building-apps/security/formal-verification",
