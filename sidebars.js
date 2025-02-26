@@ -489,75 +489,75 @@ build: [
         link:
           {
             type: "doc",
-            id: "building-apps/best-practices/security/overview",
+            id: "building-apps/security/overview",
           },
         items: [
           {
             type: "doc",
             label: "What are security best practices?",
-            id: "building-apps/best-practices/security/overview",
+            id: "building-apps/security/overview",
           },
           {
             type: "doc",
             label: "Inter-canister calls",
-            id: "building-apps/best-practices/security/inter-canister-calls",
+            id: "building-apps/security/inter-canister-calls",
           },
           {
             type: "doc",
             label: "Identity & access management",
-            id: "building-apps/best-practices/security/iam",
+            id: "building-apps/security/iam",
           },
           {
             type: "doc",
             label: "Decentralization",
-            id: "building-apps/best-practices/security/decentralization",
+            id: "building-apps/security/decentralization",
           },
           {
             type: "doc",
             label: "Data integrity & authenticity",
-            id: "building-apps/best-practices/security/data-integrity-and-authenticity",
+            id: "building-apps/security/data-integrity-and-authenticity",
           },
           {
             type: "doc",
             label: "Data storage",
-            id: "building-apps/best-practices/security/data-storage",
+            id: "building-apps/security/data-storage",
           },
           {
             type: "doc",
             label: "HTTP outcalls",
-            id: "building-apps/best-practices/security/https-outcalls",
+            id: "building-apps/security/https-outcalls",
           },
           {
             type: "doc",
             label: "Denial of service",
-            id: "building-apps/best-practices/security/dos",
+            id: "building-apps/security/dos",
           },
           {
             type: "doc",
             label: "Canister upgrades",
-            id: "building-apps/best-practices/security/canister-upgrades",
+            id: "building-apps/security/canister-upgrades",
           },
           {
             type: "doc",
             label: "Observability & monitoring",
-            id: "building-apps/best-practices/security/observability-and-monitoring",
+            id: "building-apps/security/observability-and-monitoring",
           },
           {
             type: "doc",
             label: "Miscellaneous",
-            id: "building-apps/best-practices/security/misc",
+            id: "building-apps/security/misc",
           },
           {
             type: "doc",
             label: "Important resources",
-            id: "building-apps/best-practices/security/resources",
+            id: "building-apps/security/resources",
+          },
+          {
+            type: "doc",
+            label: "Formal verification",
+            id: "building-apps/security/formal-verification",
           },
         ],
-      },
-      {
-        type: "doc",
-        label: "Formal verification",
-        id: "building-apps/best-practices/security/formal-verification",
       },
       {
         type: "doc",

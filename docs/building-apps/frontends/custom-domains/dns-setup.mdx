@@ -9,7 +9,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 <MarkdownChipRow labels={["Intermediate", "Tutorial"]} />
 
 This guide explains how to configure the DNS records of your domain for three popular
-registrars: [Namecheap](#namecheap), [GoDaddy](#godaddy), and [Amazon Route 53](#amazonroute53).
+registrars: [Namecheap](#namecheap), [GoDaddy](#godaddy), and [Amazon Route 53](#amazon-route-53).
 
 :::caution
 The steps in this guide are prerequisites to using a custom domain. You must complete this DNS configuration before following the ["using custom domains" guide](using-custom-domains.mdx).
@@ -75,7 +75,7 @@ There are two options:
 
 - [**Recommended**: Relying on a different DNS provider (e.g., Cloudflare).](#rely-on-an-alternative-dns-provider-recommended)
 
-- [Directly configuring the IP addresses of the boundary nodes.](#directly-configure-the-ip-addresses)
+- [Directly configuring the IP addresses of the boundary nodes.](#directly-configure-the-ip-addresses-not-recommended-use-at-your-own-risk)
 
 Directly configuring the IP addresses is simpler compared to relying on another
 DNS provider, but is less resilient and performant. Therefore, it is advised to use
@@ -116,11 +116,11 @@ This step can take several hours, and you will be notified by email once it succ
 
 - #### Step 10: On Cloudflare, add the following records to configure your domain:
 
-        * Create a `CNAME` record for which you set the name field to `@` and the target field to `ic-domain.live.icp1.io`.
+    * Create a `CNAME` record for which you set the name field to `@` and the target field to `ic-domain.live.icp1.io`.
 
-        * Create a `CNAME` record for which you set the host field to `_acme-challenge` and the target field to `_acme-challenge.ic-domain.live.icp2.io`.
+    * Create a `CNAME` record for which you set the host field to `_acme-challenge` and the target field to `_acme-challenge.ic-domain.live.icp2.io`.
 
-        * Create a `TXT` record for which you set the name field to `_canister-id` and the content field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
+    * Create a `TXT` record for which you set the name field to `_canister-id` and the content field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
 
 The resulting configuration should look similar to the following screenshot:
 
@@ -137,15 +137,15 @@ To this end, use an online DNS lookup service (e.g., [nslookup.io](https://nsloo
 
 ![Resulting `A` and `AAAA` records from querying `icp1.io` on nslookup.io](nslookup-results.png)
 
-- #### Step 2: In the **DNS Management** pane in your GoDaddy account, add the following DNS records:
+- #### Step 2: In the **DNS Management** panel in your GoDaddy account, add the following DNS records:
 
-        * Create an `A` record for each IPv4 address by setting the name field to "@" and the value field to the IPv4 address (e.g., `193.118.63.173`).
+    * Create an `A` record for each IPv4 address by setting the name field to "@" and the value field to the IPv4 address (e.g., `193.118.63.173`).
 
-        * Create an `AAAA` record for each IPv6 address by setting the name field to "@" and the value field to the IPv6 address (e.g., `2a0b:21c0:b002:2:5000:59ff:fead:c233`).
+    * Create an `AAAA` record for each IPv6 address by setting the name field to "@" and the value field to the IPv6 address (e.g., `2a0b:21c0:b002:2:5000:59ff:fead:c233`).
 
-        * Create a `CNAME` record for which you set the name field to `_acme-challenge` and the value field to `_acme-challenge.ic-domain.live.icp2.io`.
+    * Create a `CNAME` record for which you set the name field to `_acme-challenge` and the value field to `_acme-challenge.ic-domain.live.icp2.io`.
 
-        * Create a `TXT` record for which you set the name field to `_canister-id` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
+    * Create a `TXT` record for which you set the name field to `_canister-id` and the value field to the canister ID `y5jqt-wqaaa-aaaam-abcoq-cai`.
 
 The resulting configuration should look similar to the following screenshot:
 

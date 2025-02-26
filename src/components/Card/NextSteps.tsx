@@ -127,7 +127,7 @@ const languagesTiles: TileDescriptor[] = [
       "Learn about application security and recommendations.",
     action: (
       <Link
-        href="/docs/building-apps/best-practices/security/overview"
+        href="/docs/building-apps/security/overview"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >

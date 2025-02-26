@@ -25,11 +25,11 @@ By following the steps below, you can host your canister under your custom domai
 
 - #### Step 1: Configure the DNS record of your domain, which is denoted with `CUSTOM_DOMAIN`.
 
-- Add a `CNAME` entry for your domain pointing to `CUSTOM_DOMAIN.icp1.io` such that all the traffic destined to your domain is redirected to the boundary nodes.
+  - Add a `CNAME` entry for your domain pointing to `CUSTOM_DOMAIN.icp1.io` such that all the traffic destined to your domain is redirected to the boundary nodes.
 
-- Add a `TXT` entry containing the canister ID to the `_canister-id`-subdomain of your domain (e.g., `_canister-id.CUSTOM_DOMAIN`);
+  - Add a `TXT` entry containing the canister ID to the `_canister-id`-subdomain of your domain (e.g., `_canister-id.CUSTOM_DOMAIN`);
 
-- Add a `CNAME` entry for the `_acme-challenge` subdomain (e.g., `_acme-challenge.CUSTOM_DOMAIN`) pointing to `_acme-challenge.CUSTOM_DOMAIN.icp2.io` in order for the boundary nodes to acquire the certificate.
+  - Add a `CNAME` entry for the `_acme-challenge` subdomain (e.g., `_acme-challenge.CUSTOM_DOMAIN`) pointing to `_acme-challenge.CUSTOM_DOMAIN.icp2.io` in order for the boundary nodes to acquire the certificate.
 
 :::caution
 
@@ -102,12 +102,12 @@ Configure the `.well-known` directory to be included by writing the following co
 
 ```sh
 curl -sL -X POST \
--H 'Content-Type: application/json' \
-https://icp0.io/registrations \
---data @- <<EOF
-{
-  "name": "CUSTOM_DOMAIN"
-}
+    -H 'Content-Type: application/json' \
+    https://icp0.io/registrations \
+    --data @- <<EOF
+    {
+      "name": "CUSTOM_DOMAIN"
+    }
 EOF
 ```
 
@@ -119,14 +119,21 @@ If the call was successful, you will get a JSON response that contains the reque
 
 In case the call failed, you will get an error message indicating the reason for the failure:
 
-- **Missing DNS CNAME record**: The `CNAME` entry for the `_acme-challenge` subdomain is missing.
-- **Existing DNS TXT challenge record**: The DNS record already contains a `TXT` entry for the `_acme-challenge` subdomain. Remove it and try again.
-- **Missing DNS TXT record**: The `TXT` entry for the `_canister-id` subdomain is missing.
-- **Invalid DNS TXT record**: The content of the `TXT` entry is not a valid canister ID.
-- **More than one DNS TXT record**: There are multiple `TXT` entries for the `_canister-id`-subdomain. Remove them and keep only one.
-- **Failed to retrieve known domains**: The `ic-domains` file is not accessible under `.well-known/ic-domains`.
-- **Domain is missing from list of known domains**: The custom domain is missing from the `ic-domains` file.
-- **Rate limit exceeded for apex domain**: Too many registration requests have been submitted for the apex domain. Try again later. You can submit at most 5 registration requests per apex domain and hour.
+**Missing DNS CNAME record**: The `CNAME` entry for the `_acme-challenge` subdomain is missing.
+
+**Existing DNS TXT challenge record**: The DNS record already contains a `TXT` entry for the `_acme-challenge` subdomain. Remove it and try again.
+
+**Missing DNS TXT record**: The `TXT` entry for the `_canister-id` subdomain is missing.
+
+**Invalid DNS TXT record**: The content of the `TXT` entry is not a valid canister ID.
+
+**More than one DNS TXT record**: There are multiple `TXT` entries for the `_canister-id`-subdomain. Remove them and keep only one.
+
+**Failed to retrieve known domains**: The `ic-domains` file is not accessible under `.well-known/ic-domains`.
+
+**Domain is missing from list of known domains**: The custom domain is missing from the `ic-domains` file.
+
+**Rate limit exceeded for apex domain**: Too many registration requests have been submitted for the apex domain. Try again later. You can submit at most 5 registration requests per apex domain and hour.
 
 - #### Step 5: Processing the registration can take several minutes.
 
@@ -134,16 +141,20 @@ Track the progress of your registration request by issuing the following command
 
 ```sh
 curl -sL -X GET \
-https://icp0.io/registrations/REQUEST_ID
+    https://icp0.io/registrations/REQUEST_ID
 ```
 
 The status will be one of the following:
 
-- `PendingOrder`: The registration request has been submitted and is waiting to be picked up.
-- `PendingChallengeResponse`: The certificate has been ordered.
-- `PendingAcmeApproval`: The challenge has been completed.
-- `Available`: The registration request has been successfully processed.
-- `Failed`: The registration request failed.
+`PendingOrder`: The registration request has been submitted and is waiting to be picked up.
+
+`PendingChallengeResponse`: The certificate has been ordered.
+
+`PendingAcmeApproval`: The challenge has been completed.
+
+`Available`: The registration request has been successfully processed.
+
+`Failed`: The registration request failed.
 
 - #### Step 6: Once your registration request becomes `available`, wait a few minutes for the certificate to become available on all boundary nodes.
 
@@ -196,12 +207,12 @@ foo.bar.com
 
 ```sh
 curl -sL -X POST \
--H 'Content-Type: application/json' \
-https://icp0.io/registrations \
---data @- <<EOF
-{
-  "name": "foo.bar.com"
-}
+    -H 'Content-Type: application/json' \
+    https://icp0.io/registrations \
+    --data @- <<EOF
+    {
+        "name": "foo.bar.com"
+    }
 EOF
 ```
 
@@ -210,7 +221,7 @@ EOF
 When you are running into issues trying to register your custom domain, try the following troubleshooting steps:
 
 - Check your DNS configuration using a tool like [`dig`](https://linux.die.net/man/1/dig) or [`nslookup`](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup). For example, to check the `TXT` record with the canister ID, you can run `dig TXT _canister-id.CUSTOM_DOMAIN`. In particular, make sure that there are no extra entries (e.g., multiple `TXT` records for the `_canister-id`-subdomain).
-- Check that there are no `TXT` records for the `_acme-challenge`-subdomain` (e.g., by using `dig TXT _acme-challenge.CUSTOM_DOMAIN`). If there are `TXT` records, then they are most likely left over from previous ACME challenges by your domain provider. Note that these records often do not show up in your domain management dashboard. Try disabling all TLS/SSL-certificate offerings from your domain provider to remove these records.
+- Check that there are no `TXT` records for the `_acme-challenge-subdomain` (e.g., by using `dig TXT _acme-challenge.CUSTOM_DOMAIN`). If there are `TXT` records, then they are most likely left over from previous ACME challenges by your domain provider. Note that these records often do not show up in your domain management dashboard. Try disabling all TLS/SSL-certificate offerings from your domain provider to remove these records.
 - Check the `ic-domains` file by downloading it directly from your canister (e.g., by opening `CANISTER_ID.icp0.io/.well-known/ic-domains` in your browser or using `curl CANISTER_ID.icp0.io/.well-known/ic-domains` in your terminal).
 
 :::info
@@ -235,7 +246,7 @@ In case you want to update the domain to point to a different canister, you firs
 
 ```sh
 curl -sL -X PUT \
-https://icp0.io/registrations/REQUEST_ID
+    https://icp0.io/registrations/REQUEST_ID
 ```
 
 :::info
@@ -253,7 +264,7 @@ In case you want to remove your domain, you just need to remove the DNS records 
 
 ```sh
 curl -sL -X DELETE \
-https://icp0.io/registrations/REQUEST_ID
+    https://icp0.io/registrations/REQUEST_ID
 ```
 
 :::info
@@ -279,6 +290,6 @@ In case you forgot the ID of your registration, you can just submit another regi
 
 :::caution
 
-For frontends that use Internet Identity (II) to authenticate users, the principals provided by II depend on the domain from which the login request was started. If you authenticate your users through the canister URL and want to switch over to a custom domain, users will not have the same principals anymore. You can prevent this by setting up [custom domains](/docs/building-apps/frontends/custom-domains/using-custom-domains).
+For frontends that use Internet Identity (II) to authenticate users, the principals provided by II depend on the domain from which the login request was started. If you authenticate your users through the canister URL and want to switch over to a custom domain, users will not have the same principals anymore. You can prevent this by setting up [custom domains](/docs/building-apps/authentication/alternative-origins).
 
 :::

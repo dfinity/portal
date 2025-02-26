@@ -51,7 +51,7 @@ It is also possible to implement a DAO [decentralized autonomous organization](h
 
 If a dapp depends on a third-party canister smart contract (e.g., by making inter-canister calls to it), it is important to verify that the callee satisfies an appropriate level of decentralization. For example:
 - If funds or cycles are transferred to a third-party canister, one might require the canister to be controlled by a decentralized governance system, as otherwise these funds are centrally controlled.
-- If inter-canister calls are made to a centrally controlled and potentially malicious canister, that canister could execute a denial of service attack on the caller or even trigger functional bugs; see [be aware of the risks involved in calling untrustworthy canisters](/docs/building-apps/best-practices/security/inter-canister-calls#be-aware-of-the-risks-involved-in-calling-untrustworthy-canisters).
+- If inter-canister calls are made to a centrally controlled and potentially malicious canister, that canister could execute a denial of service attack on the caller or even trigger functional bugs; see [be aware of the risks involved in calling untrustworthy canisters](/docs/building-apps/security/inter-canister-calls#be-aware-of-the-risks-involved-in-calling-untrustworthy-canisters).
 
 ### Recommendation
 
@@ -73,4 +73,4 @@ Note that also loading other assets such [as CSS](https://xsleaks.dev/docs/attac
 
 - Make sure all the content delivered to the browser is served and certified by the canister using asset certification. This holds in particular for any JavaScript, but also for fonts, CSS, etc.
 
-- Use a [content security policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) to prevent scripts and other content from other origins from being loaded at all. See also [define security headers, including a content security policy (CSP)](/docs/building-apps/best-practices/security/resources#web-security).
+- Use a [content security policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP) to prevent scripts and other content from other origins from being loaded at all. See also [define security headers, including a content security policy (CSP)](/docs/building-apps/security/resources#web-security).

@@ -25,7 +25,7 @@ const redirects = `
   /docs/current/motoko/* /docs/motoko:splat
   /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/* /docs/building-apps/developer-tools/dfx:splat
   /docs/current/tutorials/developer-journey/* /docs/tutorials/developer-liftoff/:splat
-  /docs/current/developer-docs/security/security-best-practices/* /docs/building-apps/best-practices/security/:splat
+  /docs/current/developer-docs/security/security-best-practices/* /docs/building-apps/security/:splat
   /docs/current/developer-docs/agents/* /docs/building-apps/interact-with-canisters/agents/:splat
   /docs/current/developer-docs/best-practices/*	/docs/building-apps/best-practices/:splat
   /docs/current/developer-docs/daos/sns/* /docs/building-apps/governing-apps/:splat
@@ -458,11 +458,11 @@ const redirects = `
   /docs/current/developer-docs/overview/ /docs/building-apps/essentials/network-overview
 
   ## Security
-  /docs/current/developer-docs/security /docs/building-apps/best-practices/security/inter-canister-calls
-  /docs/current/developer-docs/security/formal-verification /docs/building-apps/best-practices/security/formal-verification
-  /docs/current/developer-docs/security/general-security-best-practices /docs/building-apps/best-practices/security/overview
-  /docs/current/developer-docs/security/index /docs/building-apps/best-practices/security/inter-canister-calls
-  /docs/current/developer-docs/security/rust-canister-development-security-best-practices /docs/building-apps/best-practices/security/inter-canister-calls
+  /docs/current/developer-docs/security /docs/building-apps/security/inter-canister-calls
+  /docs/current/developer-docs/security/formal-verification /docs/building-apps/security/formal-verification
+  /docs/current/developer-docs/security/general-security-best-practices /docs/building-apps/security/overview
+  /docs/current/developer-docs/security/index /docs/building-apps/security/inter-canister-calls
+  /docs/current/developer-docs/security/rust-canister-development-security-best-practices /docs/building-apps/security/inter-canister-calls
 
   ## Setup
   /docs/current/developer-docs/setup/accounts /docs/building-apps/getting-started/identities
@@ -719,8 +719,8 @@ const redirects = `
   /sustainability /capabilities/sustainability
   /videos /news
   /docs/search /docs/home
-  /docs/security-best-practices/ /docs/building-apps/best-practices/security/inter-canister-calls
-  /docs/security-best-practices/introduction /docs/building-apps/best-practices/security/overview
+  /docs/security-best-practices/ /docs/building-apps/security/inter-canister-calls
+  /docs/security-best-practices/introduction /docs/building-apps/security/overview
   /docs/support /docs/home
   /docs/token-holders/ /docs/defi/overview
   /docs/token-holders/nns-app-quickstart.html /docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-app-quickstart
