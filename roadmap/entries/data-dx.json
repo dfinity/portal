@@ -291,7 +291,7 @@
       "proposal": "",
       "docs": "",
       "eta": "",
-      "status": "future",
+      "status": "deployed",
       "is_community": true,
       "in_beta": false
     },
@@ -324,7 +324,7 @@
       "proposal": "",
       "docs": "",
       "eta": "",
-      "status": "",
+      "status": "in_progress",
       "is_community": false,
       "in_beta": false
     },
@@ -337,17 +337,6 @@
       "eta": "",
       "status": "future",
       "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "Protocol Interface Specification evolution",
-      "overview": "Improving version interoperability between different versions of the Internet Computer Protocol Specification.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "future",
-      "is_community": true,
       "in_beta": false
     },
     {
@@ -424,16 +413,6 @@
       "in_beta": false
     },
     {
-      "title": "Easily upload files to ICP",
-      "overview": "Upload files to the IC with a few lines of code.",
-      "status": "",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": true,
-      "in_beta": false
-    },
-    {
       "title": "Motoko-written interactive Web UIs running in Wasm",
       "overview": "Implementing interactive Web UIs with Motoko, executing in the browser in Wasm. Analogous to .NET's Blazor.",
       "forum": "",
@@ -462,18 +441,7 @@
       "proposal": "",
       "docs": "",
       "eta": "",
-      "status": "",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "More Motoko libraries",
-      "overview": "Implementing, or funding the implementation of, additional Motoko libraries of frequently requested functionality.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "",
+      "status": "deployed",
       "is_community": false,
       "in_beta": false
     },
