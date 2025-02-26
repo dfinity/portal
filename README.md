@@ -13,58 +13,85 @@ The ICP developer portal uses [Docusaurus](https://docusaurus.io/docs).
 
 ```
 docs
-├── concepts
-├── developer-docs
-│   ├── backend // programming language documentation
-│   │   ├── motoko
-│   │   ├── rust
-│   │   ├── python
-│   │   ├── solidity
-│   │   ├── typescript
-│   ├── daos // NNS & SNS documentation
-│   │   ├── nns
-│   │   ├── sns
-│   ├── defi // token and defi documentation
-│   │   ├── asset-custody
-│   │   ├── icp-tokens
-│   │   ├── icrc-1
-│   │   ├── nfts
-│   │   ├── rosetta
-│   ├── developer-tools // CLI tools, IDEs, CDKs, and agent documentation
-│   │   ├── cli-tools
-│   │   ├── ide
-│   │   ├── off-chain
-│   │   ├── on-chain
-│   ├── getting-started // introductory onboarding documentation
-│   │   ├── cycles
-│   │   ├── deploy
-│   │   ├── install
-│   │   ├── quickstart
-│   ├── multi-chain // multi-chain integration documentation
+├── building-apps
+│   ├── advanced // advanced development workflows
+│   │   ├── optimize
+│   │   ├── test
+│   │   ├── benchmarking
+│   │   ├── using-third-party-canisters
+│   ├── authentication // integrate internet identity & alternative origins
+│   │   ├── alternative-origins
+│   │   ├── integrate-internet-identity
+│   ├── best-practices // developer best practices
+│   ├── canister-management // canister management and settings
+│   │   ├── backtraces
+│   │   ├── control
+│   │   ├── cycles-wallet
+│   │   ├── delete
+│   │   ├── history
+│   │   ├── logs
+│   │   ├── resource-limits
+│   │   ├── settings
+│   │   ├── snapshots
+│   │   ├── state
+│   │   ├── storage
+│   │   ├── topping-up
+│   │   ├── trapping
+│   │   ├── upgrade
+│   ├── chain-fusion
 │   │   ├── bitcoin
 │   │   ├── ethereum
-│   ├── security
-│   ├── smart-contracts // canister documentation
-│   │   ├── advanced-features
-│   │   ├── best-practices
-│   │   ├── call
-│   │   ├── candid
-│   │   ├── deploy
-│   │   ├── encryption
-│   │   ├── maintain
-│   │   ├── overview
-│   │   ├── test
-│   │   ├── topping-up
-│   │   ├── write
-│   ├── web-apps // frontend and web app documentation
-│   │   ├── application-frontends
-│   │   ├── browser-js
+│   │   ├── examples
+│   │   ├── supported-chains
+│   ├── developer-tools
+│   │   ├── advanced-dfx
+│   │   ├── cdks
+│   │   ├── dfx
+│   │   ├── dfxvm
+│   │   ├── dfx-json-reference
+│   │   ├── dfx.json
+│   │   ├── icp-ninja
+│   ├── essentials
+│   ├── frontends
 │   │   ├── custom-domains
-│   │   ├── frameworks
-│   │   ├── http-compatible-canisters
-│   │   ├── user-login
+│   │   ├── asset-security
+│   │   ├── existing-frontend
+│   │   ├── uploading-serving-assets
+│   │   ├── using-an-asset-canister
+│   ├── getting-started
+│   ├── governing-apps
+│   │   ├── nns
+│   │   ├── launching
+│   │   ├── managing
+│   │   ├── testing
+│   │   ├── tokenomics
+│   ├── interact-with-canisters
+│   │   ├── agents
+│   │   ├── candid
+│   │   ├── advanced-calls
+│   │   ├── query-calls
+│   │   ├── update-calls
+│   ├── network-features
+│   │   ├── encryption
+│   │   ├── signatures
+│   │   ├── using-http
+│   │   ├── verifiable-credentials
+│   │   ├── periodic-tasks-timers
+│   │   ├── randomness
+│   │   ├── simd
+│   │   ├── time-and-timestamps
+│   ├── security
+├── defi
+│   ├── chain-key-tokens
+│   ├── rosetta
+│   ├── token-indexes
+│   ├── token-integrations
+│   ├── token-ledgers
+│   ├── token-standards
+│   ├── create
+│   ├── nft-collections
 ├── motoko // Motoko documentation - submodule
-├── specifications // reference documentation
+├── references // reference documentation
 ├── samples // sample projects - submodule
 ├── tutorials // tutorial series (developer liftoff, hackathon prep course, etc).
 ```
@@ -78,7 +105,7 @@ docs
 - Must include [document tags](#document-tags).
 - Must include [SEO keywords](#seo-keywords).
 - Must be in `.mdx` file format to support the previous two components.
-- Must be registered in [`/sidebars.js`](https://github.com/dfinity/portal/blob/master/sidebars.js), otherwise, it will not appear in the
+- Must be registered in [`sidebars.js`](https://github.com/dfinity/portal/blob/master/sidebars.js), otherwise, it will not appear in the
   side navigation bar.
 - Make sure that the [`.github/CODEOWNERS`](https://github.com/dfinity/portal/blob/master/.github/CODEOWNERS) file is
   filled with new documents that you added. This way we can ensure that future Pull Requests are reviewed by the right people.
@@ -380,10 +407,6 @@ The following submodules and their corresponding repos are currently used:
 - Motoko
     - `/docs/motoko/main/base/`
     - GitHub Repo: https://github.com/dfinity/motoko.git
-
-- quill
-    - `/docs/building-apps/developer-tools/quill`
-    - GitHub Repo: https://github.com/dfinity/quill.git
 
 - Internet Identity
     - `/docs/references/ii-spec`

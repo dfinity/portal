@@ -559,7 +559,7 @@ If the field name is a hash, we use `_hash_` as the field name, for example, `{ 
 
 ## Type func (…) → (…)
 
-Candid is designed to support higher-order use cases, where a service may receive or provide specifications to other services or their methods, for example, as callbacks. The `func` type is central to this: It indicates the function’s **signature** (argument and results types, annotations), and values of this type are specifications to functions with that signature.
+Candid is designed to support higher-order use cases, where a service may receive or provide references to other services or their methods, for example, as callbacks. The `func` type is central to this: It indicates the function’s **signature** (argument and results types, annotations), and values of this type are references to functions with that signature.
 
 The supported annotations are:
 
@@ -642,7 +642,7 @@ type F4 = shared query () -> async Text;
 
 ## Type service: \{…\}
 
-Services may want to pass around specifications to not just individual functions (using the [`func` type](#type-func)), but specifications to whole services. In this case, Candid types can be used to declare the complete interface of such a service.
+Services may want to pass around references to not just individual functions (using the [`func` type](#type-func)), but references to whole services. In this case, Candid types can be used to declare the complete interface of such a service.
 
 See [Candid service descriptions](/docs/building-apps/interact-with-canisters/candid/candid-concepts#candid-service-descriptions) for more details on the syntax of a service type.
 

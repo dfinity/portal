@@ -497,7 +497,7 @@ actor {
 }
 ```
 
-This HTTP outcalls code specifications custom types, as indicated by the import statement `import Types "Types";` and code statements like `Types.TransformContext`. Custom type definitions can be created from within the `main.mo` file, but for types that may be used in several different source code files, it can be beneficial to define them in a single `Types.mo` file, and then import them as needed.
+This HTTP outcalls code references custom types, as indicated by the import statement `import Types "Types";` and code statements like `Types.TransformContext`. Custom type definitions can be created from within the `main.mo` file, but for types that may be used in several different source code files, it can be beneficial to define them in a single `Types.mo` file, and then import them as needed.
 
 Create a new file called `src/PROJECT_NAME_backend/Types.mo` that contains the following:
 

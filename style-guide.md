@@ -547,7 +547,7 @@ Links that are referenced within the developer docs should use the following for
 ## Code snippets and code blocks
 
 The following format should be used for code snippets and code blocks:
-- In-line code specifications to commands, language specific methods, or other code-related terms should be emphasized using in-line code expressions such as:
+- In-line code references to commands, language specific methods, or other code-related terms should be emphasized using in-line code expressions such as:
     - To install code in a canister, the `install_code` function of the Internet Computer is used.
     - For example, the function `canister_init` is the first function that gets called after the code is installed for the first time.
 

@@ -6,7 +6,7 @@ on:
       - docs/concepts
       - docs/building-apps
       - docs/defi
-      - docs/specifications
+      - docs/references
 
 jobs:
   check_comment:
