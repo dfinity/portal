@@ -55,21 +55,23 @@ To interact with the ICRC-1 endpoints of the ICP ledger, learn more about [inter
 
 ## Interacting with ICP from a canister (inter-canister calls via `ic-cdk`)
 
-View the [inter-canister call documentation] (/docs/developer-docs/backend/rust/intercanister) to see how you can call one canister from within another.
+View the [inter-canister call documentation](/docs/current/developer-docs/backend/rust/intercanister) to see how you can call one canister from within another.
 
 Here is an example of how to fetch the token name from the ICP ledger using Rust and the `ic-cdk` [library](https://github.com/dfinity/cdk-rs) from within a canister:
 
-```
+```rust
 // You will need the canister ID of the ICP ledger: `ryjl3-tyaaa-aaaaa-aaaba-cai`.
 
 let ledger_id = Principal::from_text("ryjl3-tyaaa-aaaaa-aaaba-cai").unwrap();
 
 // The request object of the `icrc1_name` endpoint is empty.
-
-    let req = ();
-    let (res,): (String,) =
-        ic_cdk::call(ledger_id, "icrc1_name", (req,))
-            .await.unwrap();
+let req = ();
+// Since this is a query, use a bounded wait call
+let res: String = ic_cdk::call::Call::bounded_wait(ledger_id, "icrc1_name")
+  .with_args(req)
+  .await
+  // You should add proper error handling here to avoid panicking.
+  .unwrap();
 ```
 
 You can find all available methods listed within the ICP ledger canister's Candid file or view the [mainnet ICP ledger canister on the dashboard](https://dashboard.internetcomputer.org/canister/ryjl3-tyaaa-aaaaa-aaaba-cai).
@@ -94,6 +96,89 @@ icrc-ledger-types = "0.1.1"
 ```
 
 [View the documentation for this crate](https://docs.rs/icrc-ledger-types/0.1.1/icrc_ledger_types/).
+
+### Sending ICP
+
+The recommended way to send ICP is using the ledger's ICRC-1 interface.
+
+```rust
+use candid::Principal;
+use ic_cdk::call::{Call, CallErrorExt};
+use icrc_ledger_types::icrc1::account::{Account, Subaccount};
+use icrc_ledger_types::icrc1::transfer::{BlockIndex, Memo, NumTokens, TransferArg, TransferError};
+
+/// Transfers some ICP to the specified account.
+pub async fn icp_transfer(
+    from_subaccount: Option<Subaccount>,
+    to: Account,
+    memo: Option<Vec<u8>>,
+    amount: NumTokens,
+) -> Result<(), String> {
+    // The ID of the ledger canister on the IC mainnet.
+    const ICP_LEDGER_CANISTER_ID: &str = "ryjl3-tyaaa-aaaaa-aaaba-cai";
+    let icp_ledger = Principal::from_text(ICP_LEDGER_CANISTER_ID).unwrap();
+    let args = TransferArg {
+        // A "memo" is an arbitrary blob that has no meaning to the ledger, but can be used by
+        // the sender or receiver to attach additional information to the transaction.
+        memo: memo.map(|m| Memo::from(m)),
+        to,
+        amount,
+        // The ledger supports subaccounts. You can pick the subaccount of the caller canister's
+        // account to use for transferring the ICP. If you don't specify a subaccount, the default
+        // subaccount of the caller's account is used.
+        from_subaccount,
+        // The ICP ledger canister charges a fee for transfers, which is deducted from the
+        // sender's account. The fee is fixed to 10_000 e8s (0.0001 ICP). You can specify it here,
+        // to ensure that it hasn't changed, or leave it as None to use the current fee.
+        fee: Some(NumTokens::from(10_000_u32)),
+        // The created_at_time is used for deduplication. Not set in this example since it uses
+        // unbounded-wait calls. You should, however, set it if you opt to use bounded-wait
+        // calls, or if you use ingress messages, or if you are worried about bugs in the ICP
+        // ledger.
+        created_at_time: None,
+    };
+
+    // The unbounded-wait call here assumes that you trust the ICP ledger, in particular that it
+    // won't spin forever before producing a response.
+    match Call::unbounded_wait(icp_ledger, "icrc1_transfer")
+        .with_arg(&args)
+        .await
+    {
+        // The transfer call succeeded
+        Ok(res) => match res.candid::<Result<BlockIndex, TransferError>>() {
+            Ok(Ok(_i)) => Ok(()),
+            // The ledger canister returned an error, for example because the caller's balance was
+            // too low.
+            // The transfer didn't happen. Report an error back to the user.
+            // Look up the TransferError type in icrc_ledger_types for more details.
+            Ok(Err(e)) => Err(format!("Ledger returned an error: {:?}", e)),
+            Err(e) => Err(format!(
+                "Should not happen. Error decoding ledger response: {:?}",
+                e
+            )),
+        },
+        // An unclean reject signals that something went wrong with the call, but the system isn't
+        // sure whether the call was executed. Since this was an unbounded-wait call, this
+        // happens either because the ledger explicitly rejected the call, or because it panicked
+        // while processing our request.
+        // The ICP ledger doesn't explicitly reject calls. When using the icrc1 interface, it's also
+        // not intended to panic, but it reports errors at the "user-level", encoded in Candid.
+        // Here, the assumption is that it doesn't panic. However, if you don't want to make that
+        // assumption, you can add your own error handling of that case here.
+        // If you choose to use bounded-wait calls instead of unbounded-wait ones like this example,
+        // an unclean reject can also happen in case of a timeout. You can follow the ICRC-1 example
+        // to see how to handle this case.
+        Err(e) if !e.is_clean_reject() => Err(format!(
+            "Should not happen; error calling ledger canister: {:?}",
+            e
+        )),
+        // A clean reject means that the system can guarantee that the call wasn't executed at all
+        // (not even partially). It's always safe to assume that the transfer didn't happen
+        Err(e) => Err(format!("Error calling ledger canister: {:?}", e)),
+    }
+}
+```
+
 
 ### Receiving ICP
 
