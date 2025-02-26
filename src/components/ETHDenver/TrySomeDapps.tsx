@@ -18,7 +18,6 @@ const selectedProjectIds = [
   'icdevs.org',
   'chainsight',
   'oisy',
-  'chainkeyx'
 ]
 const projects = showcaseData.filter((p) => selectedProjectIds.includes(p.id));
 
