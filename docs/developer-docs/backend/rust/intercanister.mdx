@@ -18,7 +18,7 @@ This example will show how to call the [counter canister](/docs/current/develope
 
 ## Prerequisites
 
-To follow along, clone the [Git repository](https://github.com/oggy-dfin/icc_rust_docs) of this tutorial. You can find the completed code in the `caller` package. Note that this example uses the alpha version of the Rust CDK.
+To follow along, clone the [Git repository](https://github.com/dfinity/examples) of the example repo. The code for this tutorial is in the `rust/inter-canister-calls` directory, where you can find the completed code in the `caller` package. Note that this example uses the alpha version of the Rust CDK.
 
 Check out the Git repository of the tutorial. Then, in the tutorial directory, start a local IC instance in the background and install the counter canister:
 
@@ -33,47 +33,8 @@ Your first example will be a `call_get_and_set` method on the caller canister, w
 
 The finished code for the project is already available in `src/caller`. You can clear the contents of `src/caller/src/lib.rs`, and paste the following code. The explanation is within the comments.
 
-```rust
-// Some of the imports will only be used in later examples; we list them here for simplicity
-use candid::{Nat, Principal};
-use ic_cdk::api::management_canister::ecdsa::SignWithEcdsaResponse;
-use ic_cdk::api::time;
-use ic_cdk::call::{Call, CallErrorExt, RejectCode};
-use ic_cdk::management_canister::{EcdsaCurve, EcdsaKeyId, SignWithEcdsaArgs};
-use ic_cdk_macros::update;
-use sha2::{Digest, Sha256};
-
-// When calling other canisters:
-// 1. The simplest is to mark your function as `update`. Then you can always call any public
-//    endpoint on any other canister.
-// 2. Mark the function as `async`. Then you can use the `Call` API to call other canisters.
-// This particular example requires the caller to provide the principal (i.e., ID) of the counter canister.
-#[update]
-pub async fn call_get_and_set(counter: Principal, new_value: Nat) -> Nat {
-    // To make a call, you must provide the principal (i.e., ID) of the canister you're
-    // calling, and the method name that you're calling. In this example, require the caller to provide
-    // the principal of the counter canister as an argument to `call_get_and_set`.
-    // When making a call, you must choose between bounded and unbounded wait calls. These call
-    // types have different failure modes that will be explained later.
-    let old = Call::unbounded_wait(counter, "get_and_set")
-        // `Call` follows the builder pattern; you can customize call options before you finalize
-        // the call by issuing the `call()` method. For this example, provide an argument of type that
-        // get_and_set expects, a Nat (non-negative integer). The Rust CDK serializes the argument
-        // for you using the Candid format, so you just need to provide the Rust value.
-        .with_arg(&new_value)
-        // Use async/await syntax to obtain the call result. Note that the call is only issued once
-        // you await it!
-        .await
-        // Calls can *always* fail. In this first example it's actually OK to just panic on error,
-        // but as will be explained later, panicking here is almost always a bad idea.
-        .expect("Failed to get the old value. Bail out")
-        // To deserialize the Candid-encoded response, the CDK needs to know the type to expect.
-        // You can use the turbofish syntax to specify the type as show below, where we expect a Candid
-        // Nat (i.e., a non-negative integer) as the response.
-        .candid::<Nat>()
-        .expect("Candid decoding failed");
-    old
-}
+```rust reference
+https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L1-L40
 ```
 
 Now, deploy this code to the local replica. This will give you some warnings about unused imports, but these will be used these later in the tutorial.
@@ -106,26 +67,8 @@ You have already seen that the inter-canister calls use the Rust `async/await` s
 
 To illustrate, let's look at the following example, where it first calls the `set` method on the counter, and then calls `get` afterwards. Add the following code to your `src/caller/src/lib.rs`.
 
-```rust
-#[update]
-pub async fn set_then_get(counter: Principal, new_value: Nat) -> Nat {
-    Call::unbounded_wait(counter, "set")
-        .with_arg(&new_value)
-        .await
-        // In this particular example it's still OK to panic, as there are no state changes.
-        .expect("Failed to set the value. Bailing out");
-
-    let current_value: Nat = Call::unbounded_wait(counter, "get")
-        .await
-        .expect("Failed to get the current_value value. Bail out")
-        .candid()
-        .expect("Candid decoding failed");
-
-    // It looks like you should be able to assert:
-    // assert!(current_value == new_value);
-    // As will be explained later, this is *NOT* guaranteed to hold!
-    current_value
-}
+```rust reference
+https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L42-L60
 ```
 
 Let's try this out. As shown below, you can also pass the arguments directly to `dfx` instead of using the menu by encoding [Candid values](/docs/current/developer-docs/smart-contracts/candid/candid-concepts) manually.
@@ -158,26 +101,8 @@ The examples so far we have relied on *unbounded-wait calls*, without elaboratin
 
 Note that this response can still be a failure. For example, a call might fail because the called canister does not exist (e.g., it has been deleted), but also because the system is overloaded and can't deliver the call to the callee, so it just returns an error to the caller. It can also fail if the callee fails, for example, if it panics. In the absence of callee failure, an error result from an unbounded-wait call ensures that the call did not execute, that is, that it's cleanly rejected. Extend the example by adding this code to `src/caller/src/lib`:
 
-```rust
-#[update]
-pub async fn call_increment(counter: Principal) -> Result<(), String> {
-    match Call::unbounded_wait(counter, "increment")
-        .await {
-        // The counter canister successfully responded. Here, it means that the call was successful.
-        // A more complicated target than the counter (e.g., a ledger) could also return
-        // "user-level" errors that you should handle.
-        Ok(_) => Ok(()),
-        // A non-clean reject for unbounded-wait calls only occurs if the callee is malfunctioning
-        // in some way (including panics). On the simple counter example that we deploy locally, this
-        // should not happen.
-        Err(e) if !e.is_clean_reject() =>
-            Err(format!("Should not happen: the call failed with a non-clean reject: {:?}. We don't know whether the counter increased", e)),
-        // Clean errors mean that the call did not execute, and the caller did not change its state.
-        Err(e) => {
-            Err(format!("The call failed with error {:?}. The counter wasn't increased", e))
-        }
-    }
-}
+```rust reference
+https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L62-L80
 ```
 
 A clean reject of the increment call means that the counter hasn't changed. In general, if a call that changes the callee's state (such as `increment`) is rejected, this means that the state hasn't changed. With a non-clean reject you may not know what happened on the callee side and a thorough analysis may be needed. 
@@ -217,25 +142,8 @@ Thus, bounded-wait calls are suitable only for reads, or for state-changing call
 
 For example, you can safely call the counter's `get` endpoint using a bounded-wait call, since this is just a read. Edit `src/caller/src/lib.rs` to add the following method:
 
-```rust
-#[update]
-pub async fn call_get(counter: Principal) -> Result<Nat, String> {
-    match Call::bounded_wait(counter, "get")
-        // The default timeout is 10 seconds. Here it is changed it to 1 second.
-        .change_timeout(1)
-        .await
-    {
-        Ok(bytes) => bytes
-            .candid::<Nat>()
-            .map_err(|e| format!("Candid decoding failed: {:?}", e)),
-        // A non-clean reject for bounded-wait calls can also happen due to a timeout.
-        Err(e) if !e.is_clean_reject() => Err(format!(
-            "Getting the value failed with a non-clean reject: {:?}",
-            e
-        )),
-        Err(e) => Err(format!("The call failed with a clean reject {:?}", e)),
-    }
-}
+```rust reference
+https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L82-L99
 ```
 
 Let's try it out. Redeploy the canister and call the new method:
@@ -250,44 +158,8 @@ Idempotent endpoints give the caller a chance to try and clean errors up by simp
 
 Furthermore, there are also errors that are likely to be hit again if you just retry immediately. In this case, you will have to leave the clean up to the upstream caller. Let's see an example of what a retry strategy might look like.
 
-```rust
-/// Retries setting the counter to the provided value even if errors appear, until it succeeds,
-/// times out, or hits an unrecoverable error.
-#[update]
-pub async fn stubborn_set(counter: Principal, new_value: Nat) -> Result<(), String> {
-    // Let's set a timeout to 10 minutes.
-    let timeout = std::time::Duration::from_secs(10 * 60).as_nanos() as u64;
-    // Compute the deadline based on the current IC time.
-    let deadline = time() + timeout;
-    // Try to set the counter to the provided value, retrying where possible.
-    loop {
-        match Call::bounded_wait(counter, "set")
-            .with_arg(&new_value)
-            .await
-        {
-            Ok(_) => return Ok(()),
-            // The immediately_retryable() predicate will return false if the call is likely to
-            // just fail again if you retry immediately.
-            Err(e) if e.is_immediately_retryable() => {
-                // Even if you can retry, don't if it is out of time
-                if time() > deadline {
-                    return Err(format!("Timed out while trying to set the value: {:?}", e));
-                } else {
-                    continue;
-                }
-            }
-            // If immediate retry isn't possible, bail out. Leave the upstream caller
-            // to clean up the mess. For example, they can use the `call_get` endpoint to see whether
-            // the set was successful.
-            Err(e) => {
-                return Err(format!(
-                    "Hit an error that we can't retry: {:?}. Bailing out",
-                    e
-                ))
-            }
-        }
-    }
-}
+```rust reference
+https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L101-L137
 ```
 
 To test, let's call the new endpoint with the value 42.
@@ -311,50 +183,8 @@ Cycle transfers are generally either used to pay for the callee's costs of proce
 
 Below is a threshold signature example that shows how to attach cycles to a call:
 
-```rust
-#[update]
-pub async fn sign_message(message: String) -> Result<String, String> {
-    let message_hash = Sha256::digest(&message).to_vec();
-
-    let request = SignWithEcdsaArgs {
-        message_hash,
-        // This example does not use the fancier signing features
-        derivation_path: vec![],
-        key_id: EcdsaKeyId {
-            curve: EcdsaCurve::Secp256k1,
-            // This is the key name used for local testing; different
-            // key names are needed for the mainnet
-            name: "dfx_test_key".to_string(),
-        },
-    };
-
-    // Use bounded-wait calls in this example, since the amount attached is
-    // fairly low, and losing the attached cycles isn't catastrophic.
-    match Call::bounded_wait(Principal::management_canister(), "sign_with_ecdsa")
-        .with_arg(&request)
-        // Signing with a test key requires 10 billion cycles
-        .with_cycles(10_000_000_000)
-        .await
-    {
-        Ok(resp) => match resp.candid::<SignWithEcdsaResponse>() {
-            Ok(signature) => Ok(hex::encode(signature.signature)),
-            Err(e) => Err(format!("Error decoding response: {:?}", e)),
-        },
-        // A SysUnknown reject code only occurs due to a bounded-wait call timing out.
-        // It means that no cycles will be refunded, even
-        // if the call didn't make it to the callee. Here, this is fine since
-        // only a small amount is used. 
-        Err(ic_cdk::call::CallFailed::CallRejected(e))
-            if e.reject_code() == RejectCode::SysUnknown =>
-        {
-            Err(format!(
-                "Got a SysUnknown error while signing message: {:?}; cycles are not refunded",
-                e
-            ))
-        }
-        Err(e) => Err(format!("Error signing message: {:?}", e)),
-    }
-}
+```rust reference
+https://github.com/dfinity/examples/blob/d0d3fc814d8ae646d6aba3878d01f08d42da0d4f/rust/inter-canister-calls/src/caller/src/lib.rs#L139-L181
 ```
 
 Let's test this by calling the `sign_message` method. The exact signature in your response will differ, as it will based on a secret key from your local replica.
