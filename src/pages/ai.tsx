@@ -346,7 +346,7 @@ function AIPage() {
                     <div className="pointer-events-none md:absolute w-full md:-right-20 md:top-1/2  md:-translate-y-1/2">
                       <motion.img
                         className="w-[75%] h-full object-cover"
-                        src="/img/roadmap/roadmap-viz.webp"
+                        src="/img/roadmap/roadmap.svg"
                         alt="roadmap"
                       />
                     </div>
