@@ -15,7 +15,6 @@ const selectedProjectIds = [
   'tap-protocol',
   'bioniq',
   'origyn',
-  'waterneuron',
   'icdevs.org',
   'chainsight',
   'oisy',
