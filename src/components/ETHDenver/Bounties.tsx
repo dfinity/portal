@@ -72,7 +72,7 @@ const Bounties: FC<{
             variants={transitions.item}
           >
             <Link
-              href="https://app.buidlbox.io/guidl/dfinity"
+              href="https://ethdenver2025.devfolio.co/prizes?partner=Internet+Computer"
               target="_blank"
               rel="noopener noreferrer"
               className="button-primary"
