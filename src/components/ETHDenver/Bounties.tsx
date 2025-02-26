@@ -114,7 +114,7 @@ const Bounties: FC<{
                 Build an onchain AI agent or agent framework plugin
               </h4>
               <p className="tw-paragraph text-black-60 mb-6">
-                Challenge: Smart contracts running on ICP can run autonomously, sign transactions on more than 20 blockchains and communicate using HTTPS API calls. Use these features to build an onchain (AI) agent or a plugin for an existing agent framework like ElizaOS or LangChain.
+                Challenge: Smart contracts running on ICP and connect to the <a href="https://forum.dfinity.org/t/introducing-the-llm-canister-deploy-ai-agents-with-a-few-lines-of-code/41424" target="_blank">LLM canister</a> to easily call LLMs, can run autonomously, sign transactions on more than 20 blockchains, and communicate using HTTPS API calls. Use these features to build an onchain (AI) agent or a plugin for existing agent frameworks like ElizaOS or LangChain.
               </p>
             </div>
             <div className="tw-lead">
