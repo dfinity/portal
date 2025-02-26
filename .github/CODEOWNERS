@@ -19,7 +19,7 @@ src/pages/security-advisories.tsx @dfinity/product-security
 # Execution
 docs/references/execution-errors.mdx @dfinity/execution
 docs/building-apps/interact-with-canisters/advanced-calls.mdx @dfinity/execution
-docs/concepts/message-execution/message-execution-properties.mdx @dfinity/execution
+docs/building-apps/essentials/message-execution.mdx @dfinity/execution
 docs/building-apps/network-features/simd.mdx @dfinity/execution
 docs/building-apps/network-features/periodic-tasks-timers.mdx @dfinity/execution
 docs/building-apps/canister-management/backtraces.mdx @dfinity/execution
