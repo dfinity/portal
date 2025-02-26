@@ -167,7 +167,6 @@ const redirects = `
   /docs/current/developer-docs/defi/asset-custody/self-custody-quickstart /docs/defi/overview
   /docs/current/developer-docs/defi/cycles/converting_icp_tokens_into_cycles /docs/building-apps/getting-started/tokens-and-cycles
   /docs/current/developer-docs/defi/cycles/cycles-ledger /docs/defi/token-ledgers/cycles-ledger
-  /docs/current/developer-docs/defi/cycles/cycles-wallet /docs/building-apps/canister-management/topping-up
   /docs/current/developer-docs/defi/dex/overview https://internetcomputer.zendesk.com/hc/en-us
   /docs/current/developer-docs/defi/exchange-rate-canister/ /docs/references/system-canisters/
   /docs/current/developer-docs/defi/icp-tokens/overview /docs/defi/token-standards/
@@ -276,7 +275,8 @@ const redirects = `
 
   ## Getting started
   /docs/current/developer-docs/getting-started/accounts /docs/building-apps/getting-started/identities
-  /docs/current/developer-docs/getting-started/cycles/cycles-wallet /docs/building-apps/canister-management/topping-up
+  /docs/current/developer-docs/getting-started/cycles/cycles-wallet /docs/building-apps/canister-management/cycles-wallet
+  /docs/current/developer-docs/defi/cycles/cycles-wallet /docs/building-apps/canister-management/cycles-wallet
   /docs/current/developer-docs/getting-started/cycles/cycles_management_services /docs/building-apps/canister-management/topping-up
   /docs/current/developer-docs/getting-started/cycles/overview /docs/building-apps/getting-started/tokens-and-cycles
   /docs/current/developer-docs/getting-started/default-template /docs/building-apps/essentials/canisters
@@ -476,7 +476,7 @@ const redirects = `
   /docs/current/developer-docs/setup/cycles/converting_icp_tokens_into_cycles /docs/building-apps/getting-started/tokens-and-cycles
   /docs/current/developer-docs/setup/cycles/cycles-faucet.md	/docs/building-apps/getting-started/tokens-and-cycles
   /docs/current/developer-docs/setup/cycles/cycles-faucet /docs/building-apps/getting-started/tokens-and-cycles
-  /docs/current/developer-docs/setup/cycles/cycles-wallet /docs/building-apps/canister-management/topping-up
+  /docs/current/developer-docs/setup/cycles/cycles-wallet /docs/building-apps/canister-management/cycles-wallet
   /docs/current/developer-docs/setup/cycles /docs/building-apps/canister-management/topping-up
   /docs/current/developer-docs/setup/cycles/index /docs/building-apps/canister-management/topping-up
   /docs/current/developer-docs/setup/default-wallet /docs/building-apps/canister-management/topping-up
@@ -797,7 +797,7 @@ const redirects = `
   /docs/current/developer-docs/build/languages/rust/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/build/languages/rust/rust-intro /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/build/languages/work-with-languages /docs/building-apps/essentials/canisters
-  /docs/current/developer-docs/build/project-setup/cycles-wallet /docs/building-apps/canister-management/topping-up
+  /docs/current/developer-docs/build/project-setup/cycles-wallet /docs/building-apps/canister-management/cycles-wallet
   /docs/current/developer-docs/build/project-setup/design-dapps /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/build/project-setup/manage-canisters /docs/building-apps/canister-management/settings
   /docs/current/developer-docs/build/troubleshooting /docs/building-apps/getting-started/troubleshooting
