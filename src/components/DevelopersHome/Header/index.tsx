@@ -42,7 +42,7 @@ function Index() {
         >
           <Link
             className={styles.actionButton}
-            to="/docs/current/tutorials/developer-liftoff/"
+            to="/docs/tutorials/developer-liftoff/"
           >
             READ DOCS
           </Link>

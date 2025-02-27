@@ -1,0 +1,39 @@
+---
+keywords: [beginner, query calls, queries, composite queries, certified queries, replicated queries, inter-canister calls, intercanister, authorized calls, calls with candid, calls with idl]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# Advanced types of calls
+
+<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
+
+In addition to queries and updates, there are advanced types of calls that can be made to canisters.
+
+## Certified queries
+
+Certified queries ensure the integrity of the data being retrieved. They use use [certified variables](/docs/references/samples/motoko/cert-var/) to prove the authenticity of a piece of data that comes along with the query's response. Certified variables can be set via an update call and then read via a query call.
+
+## Replicated queries
+
+Replicated queries, also referred to as the "query-as-update" execution model, are query calls executed as updates. The query still discards the state changes, but execution happens on all subnet nodes, and the results go through consensus.
+
+
+## Inter-canister calls
+
+Inter-canister calls are used to make calls between different canisters. An inter-canister call involves two messages: a request from the caller to the callee along with a response that the callee will return to the caller.
+
+One example of inter-canister calls is the [parallel calls Motoko example](https://github.com/dfinity/examples/tree/master/motoko/parallel_calls).
+
+## Authorized calls
+
+An authorized call on ICP refers to a call to a canister that can only be made by a principal (a user or another canister) that has the necessary permissions to perform the call. For example, only a controller of a canister can call the canister's `install_code` function.
+
+Authorized calls that return a value of `()` indicate that the function was successful but may not take an argument or return a meaningful value. If an authorized call is unsuccessful, it will return an error.
+
+## Making calls with IDLs
+
+On the protocol level, calls on ICP use `blobs` to describe arguments and results passed to and returned from canisters. It's typically easier to use an [interface description language](https://en.wikipedia.org/wiki/Interface_description_language) (IDL) to define a canister's interfaces that can be called by end users or other canisters.
+
+While any IDL can be used for this purpose, most canisters on ICP use [Candid](/docs/building-apps/interact-with-canisters/candid/candid-concepts), a specialized IDL that is developed for ICP.

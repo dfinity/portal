@@ -243,7 +243,7 @@
     {
       "title": "Service Nervous System (SNS)",
       "overview": "A DAO factory that allows for proposal-based no-code creation of a DAO, including an initial decentralization swap. Available as part of the ICP governance framework.",
-      "description": "This SNS rollout will include several features: **1.** SNSs that are provided as a protocol function (deployed on an SNS subnet and facilitating maintainable upgrades), **2.** A first version of voting rewards for SNSs that can be further customised in the future, **3.** Decentralization swaps that decentralize a dapp, where participants provide ICP tokens in exchange for SNS tokens. **4.** A NNS frontend dapp extension that allows end users to participate in the decentralization swap. **5.** Tooling to help users initialize an SNS.",
+      "description": "This SNS rollout will include several features: **1.** SNSes that are provided as a protocol function (deployed on an SNS subnet and facilitating maintainable upgrades), **2.** A first version of voting rewards for SNSes that can be further customised in the future, **3.** Decentralization swaps that decentralize a dapp, where participants provide ICP tokens in exchange for SNS tokens. **4.** A NNS frontend dapp extension that allows end users to participate in the decentralization swap. **5.** Tooling to help users initialize an SNS.",
       "forum": "",
       "proposal": "https://dashboard.internetcomputer.org/proposal/65132",
       "wiki": "",
@@ -270,8 +270,8 @@
     },
     {
       "title": "Restriction for SNS swap participation",
-      "overview": "Constraining participation in decentralization swaps of SNSs based on geographic location. Includes custom disclaimers to be confirmed by users before participating.",
-      "description": "When an SNS is launched, it goes through a decentralization swap. During the swap, participants provide ICP and in return receive a share of the SNS DAO’s governance power in the form of SNS neurons. In the current design, swaps are open for anyone to participate. Different projects in the community have requested a feature that allows SNSs to restrict participation in the swap by geographic location. In addition, this feature enables swap participants to be presented with a custom confirmation text that they need to confirm before being allowed to participate.",
+      "overview": "Constraining participation in decentralization swaps of SNSes based on geographic location. Includes custom disclaimers to be confirmed by users before participating.",
+      "description": "When an SNS is launched, it goes through a decentralization swap. During the swap, participants provide ICP and in return receive a share of the SNS DAO’s governance power in the form of SNS neurons. In the current design, swaps are open for anyone to participate. Different projects in the community have requested a feature that allows SNSes to restrict participation in the swap by geographic location. In addition, this feature enables swap participants to be presented with a custom confirmation text that they need to confirm before being allowed to participate.",
       "forum": "",
       "proposal": "",
       "wiki": "",
@@ -339,7 +339,7 @@
     },
     {
       "title": "Enable ICRC-2 for SNS ledgers",
-      "overview": "Update the SNS framework to enable the rollout of ICRC-2 on the SNSs’ ledger canisters.",
+      "overview": "Update the SNS framework to enable the rollout of ICRC-2 on the SNSes’ ledger canisters.",
       "description": "",
       "status": "deployed",
       "eta": "Q1 2024",
