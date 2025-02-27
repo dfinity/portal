@@ -853,7 +853,6 @@ references: [
     label: "Feature specifications",
     items: [
       "references/asset-canister",
-      "references/async-code",
       "references/bitcoin-how-it-works",
       "references/ckbtc-reference",
       "references/candid-ref",
@@ -866,14 +865,6 @@ references: [
       "references/vc-spec",
       "references/vetkeys-overview"
     ],
-  },
-      "references/async-code",
-      "references/execution-errors",
-      "references/message-execution-properties",
-  {
-    type: "doc",
-    label: "Dashboard API reference",
-    id: "references/dashboard-apis"
   },
   {
     type: "category",
@@ -895,6 +886,14 @@ references: [
         id: "references/system-canisters/management-canister",
       },
     ],
+  },
+      "references/async-code",
+      "references/execution-errors",
+      "references/message-execution-properties",
+  {
+    type: "doc",
+    label: "Dashboard API reference",
+    id: "references/dashboard-apis"
   },
   {
     type: "doc",
