@@ -540,7 +540,7 @@ const redirects = `
   /docs/current/developer-docs/setup/vs-code /docs/building-apps/developer-tools/icp-ninja
 
   ## Smart contracts
-  /docs/current/developer-docs/smart-contracts/maintain/import 
+  /docs/current/developer-docs/smart-contracts/maintain/import /docs/building-apps/advanced/using-third-party-canisters
   /docs/current/developer-docs/smart-contracts/advanced-features/async-code /docs/references/async-code
   /docs/current/developer-docs/smart-contracts/advanced-features/composite-query /docs/building-apps/interact-with-canisters/query-calls
   /docs/current/developer-docs/smart-contracts/advanced-features/handling-get-post-requests /docs/building-apps/network-features/using-http/gateways
