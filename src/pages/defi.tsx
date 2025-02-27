@@ -195,7 +195,7 @@ function DefiPage() {
                   ability to sign native transactions on other blockchains
                   without using risky bridges. Today, users can seamlessly swap
                   between BTC/ETH in seconds for a few cents with 0 gas fees by
-                  using ckBTC, ckETH, and soon ckERC-20 tokens.{" "}
+                  using ckBTC, ckETH, and ckERC-20 tokens.{" "}
                 </p>
                 <p className="mb-0 flex flex-col gap-6 items-start">
                   <Link
