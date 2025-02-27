@@ -38,6 +38,20 @@
       "eta_to_render": ""
     },
     {
+      "title": "Confidentiality of Canister States",
+      "description": "This milestone takes Trusted Execution Environments (TEE) to its final form, ensuring complete confidentiality of canister state. All canister state remains shielded from unauthorized access while maintaining its integrity. This further strengthens the confidentiality guarantees for dapp developers and users alike.",
+      "status": "future",
+      "is_milestone": true,
+      "milestone_id": "Containment",
+      "eta_to_render": ""
+    },
+    {
+      "title": "Encrypted Canister State",
+      "overview": "Ensuring that all canister state is always encrypted, both in memory and storage, making it completely inaccessible for external parties.",
+      "status": "in_progress",
+      "milestone_id": "Containment"
+    },
+    {
       "title": "Disaster recovery for SEV-SNP-enabled subnets",
       "overview": "SEV-SNP raises the level of security, but also makes disaster recovery harder. SEV-SNP-enabled subnets need to be made recoverable, e.g., by securely escrowing its secure enclave key material on the NNS.",
       "forum": "",
