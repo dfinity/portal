@@ -1,0 +1,158 @@
+---
+keywords: [intermediate, rosetta, tutorial, approve spender, direct transfer, transfer tokens, spender, icrc, icrc-1, icrc-2, icrc1, icrc2]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# ICRC Rosetta construction API reference
+
+<MarkdownChipRow labels={["Intermediate", "Rosetta" ]} />
+
+The construction API allows for offline signing of transactions and then posting them on ICP at a later point in time. It is recommended to first go through [flow of operations](/docs/defi/rosetta/icp_rosetta/construction_api/operations-flow) of the construction API to gain an understanding of how it works, what endpoints to call with what parameters, and where the user has to take action upon receiving certain responses.
+
+Currently, the construction API of Rosetta supports only one category of transactions, which is the transfer of assets. According to the ICRC-1 and ICRC-2 standards, this can be done in the following ways:
+- [Direct transfers](#direct-transfer-of-tokens): This is the most basic functionality. In accordance with the ICRC-1 standard, you can use Rosetta to transfer ICRC tokens.
+- [Approve spender](#approve-a-spender): You can approve a spender to spend your tokens for you. This feature adheres to the ICRC-2 standard.
+
+## Approve a spender
+
+This section will show you how to use the ICRC Rosetta implementation to authorize a spender to spend your ICRC-1 tokens. Make sure you are familiar with the [flow of operations](/docs/defi/rosetta/icp_rosetta/construction_api/operations-flow) for Rosetta.
+The request types used for making direct transfers are `APPROVE` and `SPENDER`. They consist of two operations, one for the approve operation and another for the spender operation.
+
+:::info
+You do not have to specify the `FEE` operation, although the `FEE` of the ICRC-1 ledger `FEE` will be deducted automatically by Rosetta.
+Calls may include a `FEE` operation to not overlook unexpected debit operations.
+:::
+
+### Example
+
+An example of the minimum set of operations that is sent to the `construction/payloads` endpoint can be found below.
+In this example, you are approving the principal `xmiu5-jqaaa-aaaag-qbz7q-cai` to spend up to 10 e8 ckBTC from the principal.
+`iowfl-yzooa-br3dt-77erl-nlm7f-kplhq-php75-hw3an-aeqn2-swh4t-3qe`.
+
+```json
+curl --location '0.0.0.0:8082/construction/payloads'  --header 'Content-Type: application/json' --data '{
+  "network_identifier": {
+    "blockchain": "Internet Computer",
+    "network": "mc6ru-gyaaa-aaaar-qaaaq-cai"
+  },
+  "public_keys": [
+    {
+      "hex_bytes": "047a83e378053f87b49aeae53b3ed274c8b2ffbe59d9a51e3c4d850ca8ac1684f7131b778317c0db04de661c7d08321d60c0507868af41fe3150d21b3c6c757367",
+      "curve_type": "secp256k1"
+    }
+  ],
+  "operations": [
+    {
+      "operation_identifier": {
+        "index": 0
+      },
+      "type": "APPROVE",
+      "account": {
+        "address": "iowfl-yzooa-br3dt-77erl-nlm7f-kplhq-php75-hw3an-aeqn2-swh4t-3qe",
+        "sub_account": {
+          "address": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      },
+      "amount": null,
+      "metadata": {
+        "allowance": {
+          "value": "10",
+          "currency": {
+            "symbol": "ckBTC",
+            "decimals": 8
+          }
+        },
+        "expected_allowance": null,
+        "expires_at": null
+      }
+    },
+    {
+      "operation_identifier": {
+        "index": 1
+      },
+      "type": "SPENDER",
+      "account": {
+        "address": "xmiu5-jqaaa-aaaag-qbz7q-cai",
+        "sub_account": {
+          "address": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      }
+    }
+  ],
+  "metadata": null
+}'
+
+```
+
+## Direct transfer of tokens
+
+The request type that is used for making direct transfers is `TRANSFER`. In the simplest form, it consists of two operations, one for the debit operation and one for the credit operation.
+
+:::info
+You do not have to specify the `FEE` operation, although the `FEE` of the ICRC-1 ledger will be deducted automatically by Rosetta.
+The call may include a `FEE` operation to not overlook unexpected debit operations.
+:::
+
+### Example
+
+An example of the minimum set of operations that is sent to the `construction/payloads` endpoint can be found below.
+In this example, you are sending 10 e8 ckBTC from principal `iowfl-yzooa-br3dt-77erl-nlm7f-kplhq-php75-hw3an-aeqn2-swh4t-3qe` to principal `xmiu5-jqaaa-aaaag-qbz7q-cai`.
+
+```json
+curl --location '0.0.0.0:8082/construction/payloads'  --header 'Content-Type: application/json' --data
+'{
+  "network_identifier": {
+    "blockchain": "Internet Computer",
+    "network": "mxzaz-hqaaa-aaaar-qaada-cai"
+  },
+  "public_keys": [
+    {
+      "hex_bytes": "047a83e378053f87b49aeae53b3ed274c8b2ffbe59d9a51e3c4d850ca8ac1684f7131b778317c0db04de661c7d08321d60c0507868af41fe3150d21b3c6c757367",
+      "curve_type": "secp256k1"
+    }
+  ],
+  "operations": [
+    {
+      "operation_identifier": {
+        "index": 0
+      },
+      "type": "TRANSFER",
+      "account": {
+        "address": "iowfl-yzooa-br3dt-77erl-nlm7f-kplhq-php75-hw3an-aeqn2-swh4t-3qe",
+        "sub_account": {
+          "address": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      },
+      "amount": {
+        "value": "-10",
+        "currency": {
+          "symbol": "8",
+          "decimals": 8
+        }
+      }
+    },
+    {
+      "operation_identifier": {
+        "index": 1
+      },
+      "type": "TRANSFER",
+      "account": {
+        "address": "xmiu5-jqaaa-aaaag-qbz7q-cai",
+        "sub_account": {
+          "address": "0000000000000000000000000000000000000000000000000000000000000000"
+        }
+      },
+      "amount": {
+        "value": "10",
+        "currency": {
+          "symbol": "8",
+          "decimals": 8
+        }
+      }
+    }
+  ],
+  "metadata": null
+}'
+
+```

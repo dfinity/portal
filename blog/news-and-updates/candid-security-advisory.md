@@ -31,6 +31,6 @@ Additional resources can be found here:
 
 - [RustSec advisory.](https://rustsec.org/advisories/RUSTSEC-2023-0073.html)
 
-- [Documentation for upgrading a canister.](/docs/current/developer-docs/smart-contracts/maintain/settings/#upgrade-a-canister)
+- [Documentation for upgrading a canister.](/docs/building-apps/canister-management/settings/#upgrade-a-canister)
 
-- [Documentation for building a web frontend.](/docs/current/developer-docs/web-apps/application-frontends/overview)
+- [Documentation for building a web frontend.](/docs/building-apps/frontends/using-an-asset-canister)

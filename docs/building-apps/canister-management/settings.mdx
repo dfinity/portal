@@ -1,0 +1,212 @@
+---
+keywords: [beginner, tutorial, maintain canisters, settings, canister settings]
+---
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# Canister settings
+
+<MarkdownChipRow labels={["Beginner", "Management"]} />
+
+Each <GlossaryTooltip>canister</GlossaryTooltip> has a group of possible settings that control its behavior. Only a controller of the canister can read and modify a canister's settings.
+
+Currently, there are seven canister setting fields:
+
+1. `controllers`: The list of controllers of the canister.
+1. `compute_allocation`: Amount of compute that the canister has allocated.
+1. `memory_allocation`: Amount of memory (storage) that the canister has allocated.
+1. `freezing_threshold`: A safety threshold to prevent the canister from running out of cycles and avoid being deleted.
+1. `reserved_cycles_limit`: A safety threshold to protect against spending too many cycles for resource reservation.
+1. `wasm_memory_limit`: A safety threshold to protect against reaching the 4GiB hard limit of 32-bit Wasm memory.
+1. `log_visibility`: Controls who can read the canister logs.
+
+## Viewing current settings
+
+There are two ways to read the settings of a canister:
+
+1. Command line: [`dfx canister status <canister-name>`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-status). Note that this command returns the canister's settings, along with other canister status information.
+2. Programmatically: Call the [`canister_status`](/docs/references/ic-interface-spec) endpoint of the IC management canister. The canister's settings will be in the `settings` field of the result.
+
+### Command line
+
+```bash
+dfx canister status ajuq4-ruaaa-aaaaa-qaaga-cai
+```
+
+<details>
+<summary>Output</summary>
+
+```
+Canister status call result for <canister-name>.
+Status: Running
+Controllers: hoqq7-3eo6j-dee4s-aiabk-6rqxw-kwgyo-rhru7-bdgmk-k5ipv-chkhx-cqe mwylj-4aaaa-aaaak-aflyq-cai
+Memory allocation: 0
+Compute allocation: 0
+Freezing threshold: 2_592_000
+Idle cycles burned per day: 31_243_414
+Memory Size: Nat(3057320)
+Balance: 196_157_756_924 Cycles
+Reserved: 0 Cycles
+Reserved cycles limit: 5_000_000_000_000 Cycles
+Wasm memory limit: 3_221_225_472 Bytes
+Module hash: 0x46cb1e5494b8467a13d0b6a68156b044eb79ce1325aa4bd4a697e36c9b967129
+Number of queries: 1_469
+Instructions spent in queries: 429_285_142
+Total query request payload size (bytes): 1_626_898
+Total query response payload size (bytes): 1_161_862
+Log visibility: controllers
+```
+
+</details>
+
+### Programmatically
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl file=../../references/samples/motoko/query_stats/src/query_stats_backend/main.mo
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust file=../../references/samples/rust/query_stats/src/lib.rs
+```
+</TabItem>
+
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
+
+[Learn more about Azle](https://demergent-labs.github.io/azle/the_azle_book.html).
+
+</AdornedTab>
+
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
+
+[Learn more about Kybra](https://demergent-labs.github.io/kybra/).
+
+</AdornedTab>
+</AdornedTabs>
+
+## Modifying settings
+
+There are two ways to modify the settings of a canister:
+
+1. Command line: `dfx canister update-settings <canister-name> --<field-name> <field-value>`.
+1. Programmatically: Call the [`update_settings`](/docs/references/ic-interface-spec#ic-update_settings) endpoint of the IC management canister.
+
+Note that only a controller of the canister can modify canister settings.
+
+### Command line
+
+```bash
+dfx canister update-settings <canister-name> --wasm-memory-limit 3000000000
+```
+
+### Programmatically
+
+From within your canister, make a call to the [`update_settings`](/docs/references/ic-interface-spec#ic-update_settings) endpoint of the IC management canister.
+
+## Controllers
+
+The `controllers` field in a canister's settings contains a list of principals that control the canister.
+Learn more about [canister control](/docs/building-apps/canister-management/control).
+
+## Compute allocation
+
+By default, canisters are scheduled for execution in a "best-effort" manner. Canisters that require guaranteed execution can get a share of compute capacity by setting `compute_allocation` in their canister settings.
+
+Compute allocation is expressed in percents and denotes the percentage of an execution core reserved for the canister. For example, compute allocation of 50% means that the canister will get 50% of an execution core. It will be scheduled at least every other round. Compute allocation of 100% means that the canister will be scheduled every round.
+
+Canisters pay a rental fee for compute allocation, meaning that the payment depends on time and the amount of compute allocation regardless of whether the canister actually executed or not.
+For example, an idle canister that has a compute allocation of 50% for one hour will be charged `base_fee * 50 * 3600`, where `base_fee` is the fee for [one percent per second](/docs/building-apps/essentials/gas-cost).
+
+The rental fee increases the amount of cycles a canister consumes while idle or frozen.
+To successfully increase the compute allocation, a canister must have sufficient cycles
+to run for at least the current [freezing threshold](#freezing-threshold) number of seconds.
+
+The default value of compute allocation is 0%.
+
+## Memory allocation
+
+By default, canisters get new memory in a "best-effort" manner. For example, when a canister grows its Wasm or stable memory, the system allocates that memory on demand. That operation can fail if the subnet running the canister is at capacity.
+
+Canisters can pre-allocate memory by setting the `memory_allocation` field in their canister settings. This field is expressed in bytes and denotes the total amount of memory that the canister pre-allocated. When a canister with a memory allocation configured grows its Wasm or stable memory, the new memory comes from the pre-allocated memory.
+
+Currently, `memory_allocation` also denotes the maximum amount of memory that the canister is allowed to use in total.
+For example, if a canister has a memory allocation of 8GiB, then it pre-allocates 8GiBs and cannot exceed that amount.
+This constraint may be lifted in the future.
+
+Canisters pay a rental fee for memory allocation, meaning that the payment depends on the time duration and the amount of memory allocation, regardless of whether the canister actually uses that memory or not.
+[Learn more about payment for memory](/docs/building-apps/essentials/gas-cost).
+
+The rental fee increases the amount of cycles a canister consumes while idle or frozen.
+To successfully increase the memory allocation, a canister must have sufficient cycles
+to run for at least the current [freezing threshold](#freezing-threshold) number of seconds.
+
+The default value of memory allocation is 0 bytes, which means that there is no default memory allocation.
+
+## Freezing threshold
+
+If a canister runs out of cycles and the freezing threshold expires, then it gets uninstalled, meaning that its code and data are deleted.
+A canister will only retain its metadata such as the canister ID, controllers, settings, etc.
+
+The freezing threshold protects against the canister unexpectedly running out of cycles.
+This field denotes time duration in seconds, indicating the minimum duration that the canister should exist without running out of cycles.
+
+When the cycles balance of the canister becomes too low, then the system freezes the canister in order to guarantee its freezing threshold.
+A frozen canister does not execute messages and pays only for renting resources such as compute allocation, memory allocation, and memory usage.
+
+See also the `idle_cycles_burned_per_day` field in the canister's status to learn how many cycles a canister consumes in its idle or frozen state.
+
+The default value of the freezing threshold is 2_592_000 (approximately 30 days).
+
+## Reserved cycles limit
+
+In addition to the main cycles balance, a canister has a secondary cycles balance called reserved cycles.
+The reserved cycles are set aside for future resource payments by the resource reservation mechanism.
+[Learn more about resource reservation](/docs/building-apps/essentials/gas-cost).
+
+The `reserved_cycles_limit` field in a canister's settings serves as the upper limit on reserved cycles.
+It protects against spending too many cycles in the resource reservation.
+
+The default value is 5 trillion cycles.
+
+## Wasm memory limit
+
+A canister has a Wasm memory and a stable memory. Currently, the Wasm memory is 32-bit, which means that it cannot grow beyond the hard limit of 4GiB.
+
+If a canister stores user data in the Wasm memory instead of the stable memory, then its memory usage will increase with the number of users. Using that configuration, a canister could reach 4GiB, at which point it won’t be able to allocate more memory and will stop working. It is also likely that the pre-upgrade hook will fail to allocate, which will make the canister and its data unrecoverable.
+
+Even if the canister doesn’t store user data in Wasm memory, its memory usage may increase due to memory leaks.
+
+The `wasm_memory_limit` field in a canister's settings provides "best-effort" protection against the canister running out of Wasm memory. The limit is expressed in bytes, and it is a soft limit, which means that in some circumstances the canister may grow its Wasm memory above the limit.
+
+Handling of the limit depends on the message type:
+
+- **Update messages**: Enforced up to the first `await` point. If the canister attempts to grow its Wasm memory above the limit, then execution fails with a corresponding error message. After the `await` point, execution continues in a response callback where the limit is not enforced.
+- **Response callback**: Not enforced, and the canister may grow its Wasm memory above the limit. The motivation for not enforcing the limit is to avoid failing execution after the `await` point that could lead to subtle bugs in the canister code.
+- **Heartbeats and timers**: Currently not enforced, but will be enforced in the future after the canister logging feature is available. Without canister logging, it is difficult for developers to debug failures in heartbeats and timers.
+- **Queries**: Not enforced in queries because state changes are not preserved in query execution, so any increase in memory is tentative and will be reverted after the query execution completes.
+- **Canister init**: Enforced, and code installation fails if it grows the Wasm memory above the limit.
+- **Canister pre-upgrade**: Not enforced in order to allow upgrading the canister to a new version.
+- **Canister post-upgrade**: Enforced and code upgrades will fail if the new version has Wasm memory usage higher than the limit.
+
+Currently, the default value of the field is 0 bytes, which means that there is no limit.
+In the future, the default value will be set to 3GiB.
+
+## Log visibility
+
+The `log_visibility` field in a canister's settings can take one of two possible values: `controllers` or `public`.
+`Controllers` means that only the controllers of the canister can fetch its logs using the `fetch_canister_logs` endpoint of the management canister.
+`Public` means that the logs are public and everyone is able to fetch the logs using the `fetch_canister_logs` endpoint of the management canister.
+
+The default value of the field is `controllers`.
+
+## Errors related to canister settings
+
+Common errors related to canister settings include:
+
+- [Invalid settings](/docs/references/execution-errors#invalid-settings).

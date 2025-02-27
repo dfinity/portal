@@ -642,7 +642,7 @@ let result = model.run(
             },
             {
               label: "Start building DeAI",
-              href: "/docs/current/developer-docs/ai/overview",
+              href: "/ecosystem?tag=AI",
             },
             {
               label: "Chat with AI to learn more about ICP",

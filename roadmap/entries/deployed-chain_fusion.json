@@ -19,7 +19,7 @@
       "overview": "Threshold ECDSA protocol suite based on multi-party computation (MPC). Enables trustless integrations with ECDSA-based chains.",
       "forum": "https://forum.dfinity.org/t/threshold-ecdsa-signatures/6152",
       "proposal": "https://dashboard.internetcomputer.org/proposal/21340",
-      "docs": "https://internetcomputer.org/docs/current/developer-docs/integrations/t-ecdsa/",
+      "docs": "https://internetcomputer.org/docs/building-apps/network-features/signatures/t-ecdsa",
       "eta": "2022",
       "status": "deployed",
       "is_community": false,
