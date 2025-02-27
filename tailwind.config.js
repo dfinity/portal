@@ -121,6 +121,7 @@ module.exports = {
     },
     fontFamily: {
       circular: ["CircularXX", "sans-serif"],
+      haloGrotesk: ["HaloGrotesk", "sans-serif"],
     },
     fontSize: {
       // bold
@@ -155,6 +156,7 @@ module.exports = {
   },
   plugins: [
     require("@tailwindcss/typography"),
+    require("@tailwindcss/container-queries"),
     plugin(function ({ matchUtilities, theme }) {
       matchUtilities(
         {
@@ -204,6 +206,9 @@ module.exports = {
                 ".tw-heading-6": "@apply text-heading-6 font-bold",
                 ".tw-heading-7": "@apply text-heading-7 font-bold",
                 ".tw-heading-7-caps": "@apply text-heading-7-caps font-bold uppercase tracking-[1px]",
+                ".tw-heading-alt-1": "@apply font-haloGrotesk text-heading-1 text-[12.8rem] tracking-[-0.04em] font-normal leading-[90%] uppercase",
+                ".tw-heading-alt-2": "@apply font-haloGrotesk text-heading-2 text-[2.2rem] md:text-[3.5rem] font-normal leading-none uppercase",
+                ".tw-heading-alt-3": "@apply font-haloGrotesk text-heading-3 font-normal leading-none uppercase",
                 ".tw-button-sm": "@apply text-paragraph-sm font-bold tracking-[1px] uppercase",
                 ".tw-button-xs": "@apply text-button-xs font-bold tracking-[0.02em] uppercase",
 
@@ -315,6 +320,16 @@ module.exports = {
         )
       );
     }),
+
+    function ({ addUtilities }) {
+      addUtilities({
+        ".mask-fade-bottom": {
+          "-webkit-mask-image": "linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 90%)",
+          "mask-image": "linear-gradient(to bottom, rgba(0, 0, 0, 1) 60%, rgba(0, 0, 0, 0) 90%)",
+        },
+      });
+    },
+
   ],
   corePlugins: { preflight: false },
   darkMode: ["class", '[data-theme="dark"]'],

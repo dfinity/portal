@@ -10,7 +10,7 @@ import { Tooltip } from "/src/components/Tooltip/Tooltip";
 
 <MarkdownChipRow labels={["Beginner", "Concept"]} />
 
-## Overview
+
 
 The Internet Computer uses WebAssembly as the platform for executing messages of smart contracts.
 Since WebAssembly is [Turing-complete](https://en.wikipedia.org/wiki/Turing_completeness), it can express different kinds of computations including non-terminating computations.
@@ -38,13 +38,13 @@ The limits depend on the message type as shown in the following table.
 
 | <Tooltip text="A collection of nodes that run their own instance of the ICP consensus algorithm.">Subnet</Tooltip> limits                                                                        | Constraint  |
 | ------------------------------------------------------------------------------------ | ----------- |
-| Subnet capacity (total memory available per subnet)                                  | 700GiB      |
+| Subnet capacity (total memory available per subnet)                                  | 1TiB        |
 | Maximum number of snapshot per canister                                              | 1           |
 
 | Memory resource limits                                                               | Constraint  |
 | ------------------------------------------------------------------------------------ | ----------- |
 | Wasm heap memory, per canister                                                       | 4GiB        |
-| Wasm stable memory, per canister                                                     | 400GiB      |
+| Wasm stable memory, per canister                                                     | 500GiB      |
 | Wasm stable memory, data access per replicated message                               | 2GiB        |
 | Wasm stable memory, data written per replicated message                              | 2GiB        |
 | Wasm stable memory, data access per upgrade message                                  | 8GiB        |

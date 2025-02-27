@@ -10,13 +10,13 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 
 
-## Overview
+
 
 In this guide, you'll explore how you can develop and test a Bitcoin dapp
 locally. Testing locally allows you to iterate and improve your dapp more quickly.
 
 `dfx` includes support for both the [ECDSA API](/docs/current/references/ic-interface-spec#ic-ecdsa_public_key) and
-the [Bitcoin API](/docs/current/references/ic-interface-spec#ic-bitcoin-api)
+the [Bitcoin API](https://github.com/dfinity/bitcoin-canister/blob/master/INTERFACE_SPECIFICATION.md)
 so that you can locally test out your dapp before deploying it to the Internet Computer.
 
 ## Setting up a local Bitcoin network
@@ -26,10 +26,11 @@ Having your own local Bitcoin network allows you to mine blocks quickly and at-w
 facilitates testing various cases without having to rely on the (slow) Bitcoin testnet
 or the (even slower) Bitcoin mainnet.
 
-- #### Step 1: Download [Bitcoin core](https://bitcoin.org/en/download).  Mac users are recommended to download the `.tar.gz` version.
-- #### Step 2: Unpack the `.tar.gz` file.
-- #### Step 3: Create a directory named `data` inside the unpacked folder.
+- #### Step 1: Download [Bitcoin core v25](https://bitcoin.org/bin/bitcoin-core-25.0/). It is recommended to use the `.tar.gz` version for Mac users.
+- #### Step 2: Unpack the `.tar.gz` file: `tar -xfz bitcoin-25.0-x86_64-apple-darwin.tar.gz`
+- #### Step 3: Create a directory named `data` inside the unpacked folder: `cd bitcoin-25.0 && mkdir data`
 - #### Step 4: Create a file called `bitcoin.conf` at the root of the unpacked folder and add the following contents:
+
 ```
 # Enable regtest mode. This is required to setup a private bitcoin network.
 regtest=1

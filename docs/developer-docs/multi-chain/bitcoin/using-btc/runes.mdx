@@ -8,15 +8,13 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Bitcoin", "Tutorial"]} />
 
-## Overview
-
-Bitcoin Runes are a type of fungible asset deployed on the Bitcoin network. Runes are not reliant on the [Ordinals protocol](ordinals.mdx) like other Bitcoin asset standards such as BRC-20 and SRC-20. Runes are designed to be an efficient and simple asset that utilizes Bitcoin's UTXO model and the `OP_RETURN` opcode. Although Runes aren't reliant on Ordinals, the Rune protocol was created and implemented by the same creator, and is part of the same open source project that Ordinals are.
+Bitcoin Runes are a type of fungible asset deployed on the Bitcoin network. Runes are not reliant on the [Ordinals protocol](ordinals.mdx) unlike other Bitcoin asset standards such as BRC-20 and SRC-20. Runes are designed to be an efficient and simple asset that utilizes Bitcoin's UTXO model and the `OP_RETURN` opcode. Although Runes aren't reliant on Ordinals, the Rune protocol was created and implemented by the same creator and is part of the same open source project that Ordinals are.
 
 The UTXO transaction model enables each transaction's output to hold information and be treated as digital currency. To initiate a transaction, you must use those outputs as your transaction's input. For Runes specifically, each UTXO can hold a different amount or type of Rune, simplifying the management of tokens on Bitcoin.
 
-The Bitcoin opcode `OP_RETURN` enables additional information to be attached to a Bitcoin transaction, up to 80 bytes of data. Runes use this `OP_RETURN` value to store the token's data, such as name, symbol, commands, or ID. This token data is referred to as the 'Runestone'.
+The Bitcoin opcode `OP_RETURN` enables additional information to be attached to a Bitcoin transaction, up to 80 bytes of data. Runes use this `OP_RETURN` value to store the token's data, such as name, symbol, commands, or ID. This token data is referred to as the 'Runestone.'
 
-Creating a Rune is done through a process called 'etching', which refers to submitting a transaction to the Bitcoin network that specifies the Rune's data in the `OP_RETURN` output of a transaction. Once a Rune has been etched, it can be minted through open or closed mints. Open minting allows anyone to mint an instance of the Rune through a mint transaction, while closed minting refers to a set of requirements that must be met in order for the Rune to be minted. When a Rune is initially etched, the creator can set aside a portion of the Runes for themselves before others are minted.
+Creating a Rune is done through a process called 'etching,' which refers to submitting a transaction to the Bitcoin network that specifies the Rune's data in the `OP_RETURN` output of a transaction. Once a Rune has been etched, it can be minted through open or closed mints. Open minting allows anyone to mint an instance of the Rune through a mint transaction, while closed minting refers to a set of requirements that must be met in order for the Rune to be minted. When a Rune is initially etched, the creator can set aside a portion of the Runes for themselves before others are minted.
 
 ## Runes on ICP
 
@@ -79,31 +77,43 @@ pub async fn etch_rune(mut args: EtchingArgs) -> (String, String) {
 
 ## Querying Rune information
 
-To query information about a Rune, you can specify a query call that returns the Rune information for a given UTXO. Here is an example using the Rust [Ordinals crate](https://crates.io/crates/ordinals/0.0.1):
+To query information about a Rune, you can use the [Runes Indexer canister](https://github.com/octopus-network/runes-indexer) created by [Omnity Network](https://omnity.network/). The Runes Indexer canister can be used to fetch Rune information, etching information for a specific Rune, and Rune balances. For example, to query data about a Rune using the Rune's name, you can make the following call to the Runes Indexer's `get_rune` method:
 
-:::info
-The Rust Ordinals crate is not created or maintained by DFINITY. The ICP management canister does not currently provide endpoints to query Ordinal data.
-:::
-
-```rust
-#[query]
-pub fn get_runes_by_utxo(txid: String, vout: u32) -> Result<Vec<RuneBalance>, OrdError> {
-  let k = OutPoint::store(OutPoint {
-    txid: Txid::from_str(&txid).map_err(|e| OrdError::Params(e.to_string()))?,
-    vout,
-  });
-  let v =
-    crate::outpoint_to_rune_balances(|b| b.get(&k).map(|v| v.deref().iter().map(|i| *i).collect()))
-      .unwrap_or_default();
-  Ok(v)
-}
+```
+dfx canister call runes-indexer get_rune '("HOPE•YOU•GET•RICH")' --ic
 ```
 
-<a href="https://github.com/octopus-network/ord-canister/blob/a0632ebd1493d604ad3e82185f75170755552ac3/src/canister.rs#L8">
-    <div align="center">View the full example.</div>
-</a>
+Returns:
+
+```json
+(
+  opt record {
+    confirmations = 39_825 : nat32;
+    mints = 81_000 : nat;
+    terms = opt record {
+      cap = opt (81_000 : nat);
+      height = record { opt (840_001 : nat64); opt (844_609 : nat64) };
+      offset = record { null; null };
+      amount = opt (10_000_000 : nat);
+    };
+    etching = "d66de939cb3ddb4d94f0949612e06e7a84d4d0be381d0220e2903aad68135969";
+    turbo = true;
+    premine = 0 : nat;
+    divisibility = 2 : nat8;
+    spaced_rune = "HOPE•YOU•GET•RICH";
+    number = 431 : nat64;
+    timestamp = 1_713_571_767 : nat64;
+    block = 840_000 : nat64;
+    burned = 48_537_380 : nat;
+    rune_id = "840000:846";
+    symbol = opt "🧧";
+  },
+)
+```
+
+[View the full API reference](https://github.com/octopus-network/runes-indexer?tab=readme-ov-file#api-reference) for more information.
 
 
 ## Resources
 
-- [Runes example canister](https://github.com/octopus-network/ord-canister/tree/master)
+- [Runes Indexer canister](https://github.com/octopus-network/runes-indexer)

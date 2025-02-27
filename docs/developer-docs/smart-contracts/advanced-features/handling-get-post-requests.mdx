@@ -8,15 +8,95 @@ import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
-# Handling GET/POST requests
+# HTTPS gateways and incoming requests
 
 <MarkdownChipRow labels={["Advanced", "Tutorial"]} />
 
-## Overview
+
 
 Canisters running on ICP can use HTTP requests in two ways: incoming and outgoing. Incoming HTTP requests refer to HTTP requests that are sent to a canister and can be used to retrieve data from a canister or send new data to the canister. Outgoing HTTP requests refer to HTTP requests that the canister sends to other canisters or external services to retrieve data or send new data.
 
-### Outgoing HTTP requests
+## HTTP gateways
+
+The ICP HTTP gateway protocol enables conventional HTTP clients to interact with the ICP network. HTTP gateways run adjacent to ICP and provide a connection used by software such as web browsers to send and receive standard HTTP requests and responses, including static assets, such as HTML, JavaScript, images, or videos. The HTTP gateway makes this workflow possible by translating standard HTTP requests into API canister calls that ICP canisters can understand and vice versa for HTTP responses.
+
+There are several HTTP gateway instances maintained for ICP, but it should be noted that an HTTP gateway is a centralized component that could become compromised, creating a threat for users receiving HTTP content.
+
+DFINITY exclusively controls the HTTP gateways that serve canisters on `ic0.app` and `icp0.io`. Developers can then also configure their own [custom domains](https://internetcomputer.org/docs/current/developer-docs/web-apps/custom-domains/using-custom-domains) to point at the DFINITY controlled HTTP gateways.
+
+Alternatively, developers can run their own HTTP gateways on their custom domains instead of using the DFINITY controlled gateways, but this is not well supported yet.
+
+For a more secure solution, it is possible to run your own HTTP gateway instance locally.
+
+### Terminology
+
+- **Request**: A message sent to a server or endpoint.
+
+- **Client**: A service that is able to send an HTTP formatted request and receive a response from a server.
+
+- **Gateway**: Enables the transfer of inbound and outbound messages.
+
+## HTTP request lifecycle
+
+On ICP, an HTTP request goes through the following lifecycle:
+
+1. An HTTP client makes an outbound request.
+
+2. The HTTP gateway intercepts the request and resolves the canister ID of the request's destination.
+
+3. The request is encoded with Candid and sent in a query call to the destination canister's `http_request` method.
+
+4. This request is sent to an ICP API boundary node, which will then forward the request to a replica node on the relevant subnet.
+
+5. The canister receives and processes the request, then returns the response.
+
+6. The HTTP gateway decodes the Candid encoding on the response.
+
+7. If the canister requests it, the gateway sends the request again via an update call to the canister's `http_request_update` method. The update call goes through consensus on the subnet.
+
+8. If the response size [exceeds the maximum response size](/docs/current/developer-docs/smart-contracts/maintain/resource-limits), the HTTP gateway fetches additional response body data through query calls.
+
+9. The HTTP gateway validates the response's certificate, if applicable.
+
+10. The HTTP gateway returns the decoded response to the HTTP client.
+
+Additional details can be found in the [HTTP gateway specification](https://internetcomputer.org/docs/current/references/http-gateway-protocol-spec).
+
+## Running a local HTTP gateway
+
+To run your own local HTTP gateway, a proof-of-concept implementation can be used that enables a secure end-to-end connection with canisters deployed on ICP.
+
+This implementation features:
+
+- Translation between HTTP asset requests and ICP API calls.
+
+- Detects ICP domains from principals and custom domain records.
+
+- Terminates TLS connections locally.
+
+- Bypasses remote gateway denylists.
+
+- Resolves crypto domains.
+
+### Installation
+
+You can download the pre-built installation package for your [operating system](https://github.com/dfinity/http-proxy?tab=readme-ov-file#installation).
+
+Once installed, you will have the option to start or stop the IC HTTP proxy service. Start the service to begin using it. Once the proxy is running, it will handle all traffic on your computer. Any traffic that's not meant for the ICP mainnet will pass through the gateway, and traffic that is meant for ICP will be intercepted by the proxy. The proxy will log traffic in the file `$HOME/Library/Preferences/dfinity/ichttpproxy/ic-http-proxy-proxy.log` on macOS machines, or in the `tmp` directory on Windows machines.
+
+For example, make the following `curl` request to the NNS:
+
+```
+curl -v https://nns.ic0.app
+```
+
+This will result in a log entry of:
+
+```
+{"level":30, "time": "2024-06-17T13:46:40.947Z","pid":43956,"hostname":"JessieMgeonsMBP.attlocal.net","name":"IC HTTP Proxy Server","msg":"Proxying web3 request for nns.ic0.app:443"}
+```
+
+## Outgoing HTTP requests
 
 For outgoing HTTP requests, the [HTTPS outcalls](./https-outcalls/https-outcalls-how-to-use.mdx) feature should be used.
 
@@ -28,15 +108,11 @@ For outgoing HTTP requests, the [HTTPS outcalls](./https-outcalls/https-outcalls
 
 - [HTTPS outcalls: technology overview](/docs/current/references/https-outcalls-how-it-works)
 
-### Incoming HTTP requests
+## Incoming HTTP requests
 
-To handle incoming HTTP requests, canisters must define methods for `http_requests` and `http_requests_update` for `GET` and `POST` requests respectively.
+Every HTTP request first goes to `http_request`, and only if you return `upgrade: true` will it be upgraded and re-called as `http_request_update`. The HTTP method (`GET`, `POST`) does not matter.
 
-All HTTP requests are handled by the ICP HTTP Gateway, therefore you cannot make direct `POST` calls to a canister's `http_request_update` method with HTTP clients such as curl. Instead, you can make a `POST` call to a canister's HTTP endpoint, then configure the canister's `http_request` method to [upgrade the call to `http_request_update` if necessary](/docs/current/references/http-gateway-protocol-spec#upgrade-to-update-calls). Below is an example `POST` call to a canister's endpoint:
-
-```
-curl -X POST -H "Content-Type: application/json" -d '{"key":"value"}' https://<canister-id>.raw.ic0.app/<endpoint>
-```
+View the [HTTP Candid interface reference](/docs/current/references/http-gateway-protocol-spec#canister-http-interface) for more information.
 
 ## `GET` requests
 
@@ -45,707 +121,193 @@ HTTP `GET` requests are used to retrieve and return existing data from an endpoi
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-In Motoko, a `case` configuration can be used to return different `GET` responses based on the endpoint:
+In Motoko, a `case` configuration can be used to return different `GET` responses based on the endpoint.
 
-```motoko no-repl
-import FHM "mo:StableHashMap/FunctionalStableHashMap";
-import SHA256 "mo:motoko-sha/SHA256";
-import CertTree "mo:ic-certification/CertTree";
-import CanisterSigs "mo:ic-certification/CanisterSigs";
-import CertifiedData "mo:base/CertifiedData";
-import HTTP "./Http";
-import Iter "mo:base/Iter";
-import Blob "mo:base/Blob";
-import Option "mo:base/Option";
-import Time "mo:base/Time";
-import Text "mo:base/Text";
-import Debug "mo:base/Debug";
-import Prelude "mo:base/Prelude";
-import Principal "mo:base/Principal";
-import Buffer "mo:base/Buffer";
-import Nat8 "mo:base/Nat8";
-import CertifiedCache "lib";
-import Int "mo:base/Int";
-
-actor Self {
-  type HttpRequest = HTTP.HttpRequest;
-  type HttpResponse = HTTP.HttpResponse;
-
-  var two_days_in_nanos = 2 * 24 * 60 * 60 * 1000 * 1000 * 1000;
-
-  stable var entries : [(Text, (Blob, Nat))] = [];
-  var cache = CertifiedCache.fromEntries<Text, Blob>(
-    entries,
-    Text.equal,
-    Text.hash,
-    Text.encodeUtf8,
-    func(b : Blob) : Blob { b },
-    two_days_in_nanos + Int.abs(Time.now()),
-  );
-
-    public query func http_request(req : HttpRequest) : async HttpResponse {
-        switch (req.method, not Option.isNull(Array.find(req.headers, isGzip)), req.url) {
-            case ("GET", false, "/stream") {{
-            status_code = 200;
-            headers = [ ("content-type", "text/plain") ];
-            body = Text.encodeUtf8("Counter");
-            streaming_strategy = ?#Callback({
-                callback = http_streaming;
-                token = {
-                arbitrary_data = "start";
-                }
-            });
-            upgrade = ?false;
-            }};
-            case ("GET", false, _) {{
-            status_code = 200;
-            headers = [ ("content-type", "text/plain") ];
-            body = Text.encodeUtf8("Counter is " # Nat.toText(counter) # "\n" # req.url # "\n");
-            streaming_strategy = null;
-            upgrade = null;
-            }};
-            case ("GET", true, _) {{
-            status_code = 200;
-            headers = [ ("content-type", "text/plain"), ("content-encoding", "gzip") ];
-            body = "\1f\8b\08\00\98\02\1b\62\00\03\2b\2c\4d\2d\aa\e4\02\00\d6\80\2b\05\06\00\00\00";
-            streaming_strategy = null;
-            upgrade = null;
-            }};
-        };
-    }
-}
-```
-
-Check out the [certified cache](https://github.com/krpeacock/certified-cache/blob/8657652c4062ef0e91ebe269843ccef1bb4796ae/src/demo.mo#L40) example project to see this code in use.
+Check out the [certified cache](https://github.com/krpeacock/certified-cache/blob/8657652c4062ef0e91ebe269843ccef1bb4796ae/src/demo.mo#L40) example project to see an example of this implementation.
 
 </TabItem>
 <TabItem value="rust" label="Rust" default>
 
-```rust
-use http::{Request, Response, StatusCode};
-
-#[query]
-fn respond_to(req: Request<()>) -> http::Result<Response<()>> {
-    if req.uri() != "/hello" {
-        return Response::builder()
-            .status(StatusCode::NOT_FOUND)
-            .body(())
-    }
-
-    let response_header = req.headers().contains_key("Hello!");
-    let body = req.body();
-
-}
-```
+Rust canisters can use the `query` attribute.
 
 Check out the [Rust documentation](https://docs.rs/ic-cdk/latest/ic_cdk/attr.query.html) for more info on query calls.
 
 </TabItem>
-<TabItem value="typescript" label="TypeScript" endAdornment={<BetaChip />}>
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-```typescript
-import {
-    call,
-    candidEncode,
-    id,
-    IDL,
-    Principal,
-    query,
-    reply,
-    update
-} from 'azle';
-import {
-    HttpRequestArgs,
-    HttpResponse,
-    HttpTransformArgs
-} from 'azle/canisters/management';
+[Learn more about Azle](https://demergent-labs.github.io/azle/the_azle_book.html).
 
-export default class {
-    @update([], IDL.Text)
-    async xkcd(): Promise<string> {
-        const httpResponse = await call('aaaaa-aa', 'http_request', {
-            paramIdlTypes: [HttpRequestArgs],
-            returnIdlType: HttpResponse,
-            args: [
-                {
-                    url: `https://xkcd.com/642/info.0.json`,
-                    max_response_bytes: [2_000n],
-                    method: {
-                        get: null
-                    },
-                    headers: [],
-                    body: [],
-                    transform: [
-                        {
-                            function: [id(), 'xkcdTransform'],
-                            context: Uint8Array.from([])
-                        }
-                    ]
-                }
-            ],
-            payment: 50_000_000n
-        });
+</AdornedTab>
 
-        return Buffer.from(httpResponse.body).toString();
-    }
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-    @update([], HttpResponse, { manual: true })
-    async xkcdRaw(): Promise<void> {
-        const httpResponse = await call(
-            Principal.fromText('aaaaa-aa'),
-            'http_request',
-            {
-                raw: candidEncode(`
-                    (
-                        record {
-                            url = "https://xkcd.com/642/info.0.json";
-                            max_response_bytes = 2_000 : nat64;
-                            method = variant { get };
-                            headers = vec {};
-                            body = null;
-                            transform = record { function = func "${id().toString()}".xkcdTransform; context = vec {} };
-                        }
-                    )
-                `),
-                payment: 50_000_000n
-            }
-        );
+[Learn more about Kybra](https://demergent-labs.github.io/kybra/).
 
-        reply({ raw: httpResponse });
-    }
-
-    @query([HttpTransformArgs], HttpResponse)
-    xkcdTransform(args: HttpTransformArgs): HttpResponse {
-        return {
-            ...args.response,
-            headers: []
-        };
-    }
-}
-
-```
-
-Check out the [Azle documentation](https://github.com/demergent-labs/azle/tree/main/tests/end_to_end/candid_rpc/class_syntax/outgoing_http_requests) for more info on HTTP requests.
-
-</TabItem>
-<TabItem value="python" label="Python" default>
-
-```python
-from kybra import (
-    Alias,
-    blob,
-    Func,
-    ic,
-    nat,
-    nat16,
-    Opt,
-    Query,
-    query,
-    Record,
-    StableBTreeMap,
-    Tuple,
-    Variant,
-    Vec,
-)
-
-
-class Token(Record):
-    arbitrary_data: str
-
-
-class StreamingCallbackHttpResponse(Record):
-    body: blob
-    token: Opt[Token]
-
-
-Callback = Func(Query[[Token], StreamingCallbackHttpResponse])
-
-
-class CallbackStrategy(Record):
-    callback: Callback
-    token: Token
-
-
-class StreamingStrategy(Variant, total=False):
-    Callback: CallbackStrategy
-
-
-HeaderField = Alias[Tuple[str, str]]
-
-
-class HttpResponse(Record):
-    status_code: nat16
-    headers: Vec[HeaderField]
-    body: blob
-    streaming_strategy: Opt[StreamingStrategy]
-    upgrade: Opt[bool]
-
-
-class HttpRequest(Record):
-    method: str
-    url: str
-    headers: Vec[HeaderField]
-    body: blob
-    certificate_version: Opt[nat16]
-
-
-stable_storage = StableBTreeMap[str, nat](
-    memory_id=0, max_key_size=15, max_value_size=1_000
-)
-
-stable_storage.insert("counter", 0)
-
-
-def isGzip(x: HeaderField) -> bool:
-    return x[0].lower() == "accept-encoding" and "gzip" in x[1].lower()
-
-
-@query
-def http_request(req: HttpRequest) -> HttpResponse:
-    ic.print("Hello from http_request")
-
-    if req["method"] == "GET":
-        if next(filter(isGzip, req["headers"]), None) is None:
-            if req["url"] == "/stream":
-                return {
-                    "status_code": 200,
-                    "headers": [("content-type", "text/plain")],
-                    "body": "Counter".encode("utf-8"),
-                    "streaming_strategy": {
-                        "Callback": {
-                            "callback": (ic.id(), "http_streaming"),
-                            "token": {"arbitrary_data": "start"},
-                        }
-                    },
-                    "upgrade": False,
-                }
-            return {
-                "status_code": 200,
-                "headers": [("content-type", "text/plain")],
-                "body": f"Counter is {stable_storage.get('counter')}\n{req['url']}".encode(
-                    "utf-8"
-                ),
-                "streaming_strategy": None,
-                "upgrade": None,
-            }
-        return {
-            "status_code": 200,
-            "headers": [("content-type", "text/plain"), ("content-encoding", "gzip")],
-            "body": bytes(
-                [
-                    31,
-                    139,
-                    8,
-                    0,
-                    152,
-                    2,
-                    27,
-                    98,
-                    0,
-                    3,
-                    43,
-                    44,
-                    77,
-                    45,
-                    170,
-                    228,
-                    2,
-                    0,
-                    214,
-                    128,
-                    43,
-                    5,
-                    6,
-                    0,
-                    0,
-                    0,
-                ]
-            ),
-            "streaming_strategy": None,
-            "upgrade": None,
-        }
-
-    if req["method"] == "POST":
-        return {
-            "status_code": 204,
-            "headers": [],
-            "body": "".encode("utf-8"),
-            "streaming_strategy": None,
-            "upgrade": True,
-        }
-
-    return {
-        "status_code": 400,
-        "headers": [],
-        "body": "Invalid request".encode("utf-8"),
-        "streaming_strategy": None,
-        "upgrade": None,
-    }
-```
-
-:::caution
-
-Kybra canisters must be deployed from a Python virtual environment. [Learn more in the Kybra docs](/docs/current/developer-docs/backend/python/).
-
-:::
-
-Check out the [Kybra documentation](https://demergent-labs.github.io/kybra/http.html) for more info on HTTP requests.
-
-</TabItem>
+</AdornedTab>
 </AdornedTabs>
 
 ## `POST` requests
 
-HTTP `POST` requests are used to send data to an endpoint with the intention of retaining that data. To handle incoming `POST` requests, the `http_request_update` method can be used. This method uses an `update` call, which can be used to change a canister's state. The following examples display how to configure `http_request_update` method within your canister.
+HTTP `POST` requests are used to send data to an endpoint with the intention of retaining that data. You cannot make direct `POST` calls to a canister's `http_request_update` method with HTTP clients such as curl. Instead, you can make a `POST` call to a canister's HTTP endpoint, then configure the canister's `http_request` method to [upgrade the call to `http_request_update`](/docs/current/references/http-gateway-protocol-spec#upgrade-to-update-calls). 
+
+The following examples display how to configure `http_request_update` method within your canister.
 
 <AdornedTabs groupId="languages">
 <TabItem value="motoko" label="Motoko" default>
 
-In Motoko, a `case` configuration can be used to return different `POST` responses based on the endpoint:
+In Motoko, a `case` configuration can be used to return different `POST` responses based on the endpoint.
 
-```motoko no-repl
-import FHM "mo:StableHashMap/FunctionalStableHashMap";
-import SHA256 "mo:motoko-sha/SHA256";
-import CertTree "mo:ic-certification/CertTree";
-import CanisterSigs "mo:ic-certification/CanisterSigs";
-import CertifiedData "mo:base/CertifiedData";
-import HTTP "./Http";
-import Iter "mo:base/Iter";
-import Blob "mo:base/Blob";
-import Option "mo:base/Option";
-import Time "mo:base/Time";
-import Text "mo:base/Text";
-import Debug "mo:base/Debug";
-import Prelude "mo:base/Prelude";
-import Principal "mo:base/Principal";
-import Buffer "mo:base/Buffer";
-import Nat8 "mo:base/Nat8";
-import CertifiedCache "lib";
-import Int "mo:base/Int";
-
-actor Self {
-  type HttpRequest = HTTP.HttpRequest;
-  type HttpResponse = HTTP.HttpResponse;
-
-  var two_days_in_nanos = 2 * 24 * 60 * 60 * 1000 * 1000 * 1000;
-
-  stable var entries : [(Text, (Blob, Nat))] = [];
-  var cache = CertifiedCache.fromEntries<Text, Blob>(
-    entries,
-    Text.equal,
-    Text.hash,
-    Text.encodeUtf8,
-    func(b : Blob) : Blob { b },
-    two_days_in_nanos + Int.abs(Time.now()),
-  );
-
-  public func http_request_update(req : HttpRequest) : async HttpResponse {
-    switch (req.method, not Option.isNull(Array.find(req.headers, isGzip))) {
-      case ("POST", false) {
-        counter += 1;
-        {
-          status_code = 201;
-          headers = [ ("content-type", "text/plain") ];
-          body = Text.encodeUtf8("Counter updated to " # Nat.toText(counter) # "\n");
-          streaming_strategy = null;
-          upgrade = null;
-        }
-      };
-      case ("POST", true) {
-        counter += 1;
-        {
-          status_code = 201;
-          headers = [ ("content-type", "text/plain"), ("content-encoding", "gzip") ];
-          body = "\1f\8b\08\00\37\02\1b\62\00\03\2b\2d\48\49\2c\49\e5\02\00\a8\da\91\6c\07\00\00\00";
-
-          streaming_strategy = null;
-          upgrade = null;
-        }
-      };
-    };
-  };
-}
-
-```
-
-Check out the [certified cache](https://github.com/krpeacock/certified-cache/blob/8657652c4062ef0e91ebe269843ccef1bb4796ae/src/demo.mo#L76) example project to see this code in use.
+Check out the [certified cache](https://github.com/krpeacock/certified-cache/blob/8657652c4062ef0e91ebe269843ccef1bb4796ae/src/demo.mo#L40) example project to see an example of this implementation.
 
 </TabItem>
 <TabItem value="rust" label="Rust" default>
 
-```rust
-use http::{Request, Response, StatusCode};
-
-#[update]
-fn respond_to(req: Request<()>) -> http::Result<Response<()>> {
-    let mut builder = Response::builder()
-        .header("Hello!")
-        .status(StatusCode::OK);
-
-    if req.headers().contains_key("Another-Header") {
-        builder = builder.header("Another-Header", "Ack");
-    }
-
-    builder.body(())
-}
-```
+Rust canisters can use the `update` attribute.
 
 Check out the [Rust documentation](https://docs.rs/ic-cdk/latest/ic_cdk/attr.update.html) for more info on update calls.
 
 </TabItem>
-<TabItem value="typescript" label="TypeScript" endAdornment={<BetaChip />}>
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-```typescript
-import {
-    call,
-    candidEncode,
-    id,
-    IDL,
-    Principal,
-    query,
-    reply,
-    update
-} from 'azle';
-import {
-    HttpRequestArgs,
-    HttpResponse,
-    HttpTransformArgs
-} from 'azle/canisters/management';
+[Learn more about Azle](https://demergent-labs.github.io/azle/the_azle_book.html).
 
-export default class {
-    @update([], IDL.Text)
-    async xkcd(): Promise<string> {
-        const httpResponse = await call('aaaaa-aa', 'http_request', {
-            paramIdlTypes: [HttpRequestArgs],
-            returnIdlType: HttpResponse,
-            args: [
-                {
-                    url: `https://xkcd.com/642/info.0.json`,
-                    max_response_bytes: [2_000n],
-                    method: {
-                        get: null
-                    },
-                    headers: [],
-                    body: [],
-                    transform: [
-                        {
-                            function: [id(), 'xkcdTransform'] as [
-                                Principal,
-                                string
-                            ],
-                            context: Uint8Array.from([])
-                        }
-                    ]
-                }
-            ],
-            payment: 50_000_000n
-        });
+</AdornedTab>
 
-        return Buffer.from(httpResponse.body).toString();
-    }
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
-    @update([], HttpResponse, { manual: true })
-    async xkcdRaw(): Promise<void> {
-        const httpResponse = await call(
-            Principal.fromText('aaaaa-aa'),
-            'http_request',
-            {
-                raw: candidEncode(`
-                    (
-                        record {
-                            url = "https://xkcd.com/642/info.0.json";
-                            max_response_bytes = 2_000 : nat64;
-                            method = variant { post };
-                            headers = vec {};
-                            body = null;
-                            transform = record { function = func "${id().toString()}".xkcdTransform; context = vec {} };
-                        }
-                    )
-                `),
-                payment: 50_000_000n
-            }
-        );
+[Learn more about Kybra](https://demergent-labs.github.io/kybra/).
 
-        reply({ raw: httpResponse });
-    }
+</AdornedTab>
+</AdornedTabs>
 
-    @query([HttpTransformArgs], HttpResponse)
-    xkcdTransform(args: HttpTransformArgs): HttpResponse {
-        return {
-            ...args.response,
-            headers: []
+## Serving HTTP requests
+Canisters can serve or handle an incoming HTTP request using the
+[HTTP Gateway Protocol](/docs/current/references/http-gateway-protocol-spec).
+
+This allows developers to host web applications and APIs from a canister.
+
+The following example returns 'Hello, World!' in the body at the `/hello`
+endpoint.
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko">
+
+```motoko
+import HashMap = "mo:base/HashMap";
+import Blob = "mo:base/Blob";
+import Text "mo:base/Text";
+import Option "mo:base/Option";
+
+actor {
+
+    public type HttpRequest = {
+        body: Blob;
+        headers: [HeaderField];
+        method: Text;
+        url: Text;
+    };
+
+    public type ChunkId = Nat;
+    public type SetAssetContentArguments = {
+        chunk_ids: [ChunkId];
+        content_encoding: Text;
+        key: Key;
+        sha256: ?Blob;
+    };
+    public type Path = Text;
+    public type Key = Text;
+
+    public type HttpResponse = {
+        body: Blob;
+        headers: [HeaderField];
+        status_code: Nat16;
+    };
+
+    public type HeaderField = (Text, Text);
+
+    private func removeQuery(str: Text): Text {
+        return Option.unwrap(Text.split(str, #char '?').next());
+    };
+
+    public query func http_request(req: HttpRequest): async (HttpResponse) {
+        let path = removeQuery(req.url);
+        if(path == "/hello") {
+            return {
+                body = Text.encodeUtf8("root page :" # path);
+                headers = [];
+                status_code = 200;
+            };
         };
+
+        return {
+            body = Text.encodeUtf8("404 Not found :" # path);
+            headers = [];
+            status_code = 404;
+        };
+    };
+}
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust">
+
+```rust
+type HeaderField = (String, String);
+
+struct HttpResponse {
+    status_code: u16,
+    headers: Vec<HeaderField>,
+    body: Cow<'static, Bytes>,
+}
+
+struct HttpRequest {
+    method: String,
+    url: String,
+    headers: Vec<(String, String)>,
+    body: ByteBuf,
+}
+
+#[query]
+fn http_request(req: HttpRequest) -> HttpResponse {
+    let path = req.url.path();
+    if path == "/hello" {
+        HttpResponse {
+            status_code: 200,
+            headers: Vec::new(),
+            body: b"hello, world!".to_vec(),
+            streaming_strategy: None,
+            upgrade: None,
+        }
+    } else {
+        HttpResponse {
+            status_code: 404,
+            headers: Vec::new(),
+            body: b"404 Not found :".to_vec(),
+            streaming_strategy: None,
+            upgrade: None,
+        }
     }
 }
 ```
 
-Check out the [Azle documentation](https://github.com/demergent-labs/azle/tree/main/tests/end_to_end/candid_rpc/class_syntax/outgoing_http_requests) for more info on HTTP requests.
-
 </TabItem>
-<TabItem value="python" label="Python" default>
+<AdornedTab value={"typescript"} label="TypeScript" endAdornment={<BetaChip />}>
 
-```python
-from kybra import (
-    Alias,
-    blob,
-    Func,
-    ic,
-    nat,
-    nat16,
-    Opt,
-    Query,
-    query,
-    Record,
-    StableBTreeMap,
-    Tuple,
-    update,
-    Variant,
-    Vec,
-)
+[Learn more about Azle](https://demergent-labs.github.io/azle/the_azle_book.html).
 
+</AdornedTab>
 
-class Token(Record):
-    arbitrary_data: str
+<AdornedTab value={"python"} label="Python" endAdornment={<BetaChip />}>
 
+[Learn more about Kybra](https://demergent-labs.github.io/kybra/).
 
-class StreamingCallbackHttpResponse(Record):
-    body: blob
-    token: Opt[Token]
-
-
-Callback = Func(Query[[Token], StreamingCallbackHttpResponse])
-
-
-class CallbackStrategy(Record):
-    callback: Callback
-    token: Token
-
-
-class StreamingStrategy(Variant, total=False):
-    Callback: CallbackStrategy
-
-
-HeaderField = Alias[Tuple[str, str]]
-
-
-class HttpResponse(Record):
-    status_code: nat16
-    headers: Vec[HeaderField]
-    body: blob
-    streaming_strategy: Opt[StreamingStrategy]
-    upgrade: Opt[bool]
-
-
-class HttpRequest(Record):
-    method: str
-    url: str
-    headers: Vec[HeaderField]
-    body: blob
-
-
-stable_storage = StableBTreeMap[str, nat](
-    memory_id=0, max_key_size=15, max_value_size=1_000
-)
-
-stable_storage.insert("counter", 0)
-
-
-def isGzip(x: HeaderField) -> bool:
-    return x[0].lower() == "accept-encoding" and "gzip" in x[1].lower()
-
-@update
-def http_request_update(req: HttpRequest) -> HttpResponse:
-    ic.print("Hello from update")
-    global stable_storage
-
-    if req["method"] == "POST":
-        counter = stable_storage.get("counter") or 0
-        stable_storage.insert("counter", counter + 1)
-
-        if next(filter(isGzip, req["headers"]), None) is None:
-            return {
-                "status_code": 201,
-                "headers": [("content-type", "text/plain")],
-                "body": f"Counter updated to {stable_storage.get('counter')}".encode(
-                    "utf-8"
-                ),
-                "streaming_strategy": None,
-                "upgrade": None,
-            }
-        return {
-            "status_code": 201,
-            "headers": [("content-type", "text/plain"), ("content-encoding", "gzip")],
-            "body": bytes(
-                [
-                    31,
-                    139,
-                    8,
-                    0,
-                    55,
-                    2,
-                    27,
-                    98,
-                    0,
-                    3,
-                    43,
-                    45,
-                    72,
-                    73,
-                    44,
-                    73,
-                    229,
-                    2,
-                    0,
-                    168,
-                    218,
-                    145,
-                    108,
-                    7,
-                    0,
-                    0,
-                    0,
-                ]
-            ),
-            "streaming_strategy": None,
-            "upgrade": None,
-        }
-
-    return {
-        "status_code": 400,
-        "headers": [],
-        "body": "Invalid request".encode("utf-8"),
-        "streaming_strategy": None,
-        "upgrade": None,
-    }
-
-
-@query
-def http_streaming(token: Token) -> StreamingCallbackHttpResponse:
-    ic.print("Hello from http_streaming")
-    if token["arbitrary_data"] == "start":
-        return {"body": " is ".encode("utf-8"), "token": {"arbitrary_data": "next"}}
-    if token["arbitrary_data"] == "next":
-        return {
-            "body": f"{stable_storage.get('counter')}".encode("utf-8"),
-            "token": {"arbitrary_data": "last"},
-        }
-    if token["arbitrary_data"] == "last":
-        return {"body": " streaming\n".encode("utf-8"), "token": None}
-    ic.trap("unreachable")
-```
-
-:::caution
-
-Kybra canisters must be deployed from a Python virtual environment. [Learn more in the Kybra docs](/docs/current/developer-docs/backend/python/).
-
-:::
-
-Check out the [Kybra documentation](https://demergent-labs.github.io/kybra/http.html) for more info on HTTP requests.
-
-</TabItem>
+</AdornedTab>
 </AdornedTabs>
 
 ## Resources
+
+- [HTTP gateway specification](https://internetcomputer.org/docs/current/references/http-gateway-protocol-spec)
 
 - [How to use HTTPS outcalls](./https-outcalls/https-outcalls-how-to-use.mdx)
 

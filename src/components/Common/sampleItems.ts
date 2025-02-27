@@ -76,7 +76,7 @@ export const sampleItems: SampleItem[] = [
     body: "IC-ETH verifies ETH NFTs, supports main/test nets.",
     links: {
       github: "https://github.com/dfinity/ic-eth-starter",
-      docs: "/docs/current/tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial",
+      docs: "/docs/current/tutorials/developer-liftoff/level-5/5.2-ICP-ETH-tutorial",
       youtube: "https://www.youtube.com/watch?v=ZI5I36aioVw",
     },
   },
@@ -265,7 +265,7 @@ export const sampleItems: SampleItem[] = [
       },
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/send_http_get",
-      docs: "docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use",
+      docs: "/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use",
       rust: "https://github.com/dfinity/examples/tree/master/rust/send_http_get",
     },
   },

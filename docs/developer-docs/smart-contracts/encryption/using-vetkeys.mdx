@@ -3,87 +3,78 @@ keywords: [advanced, tutorial, vetkeys, vetkd]
 ---
 
 import TabItem from "@theme/TabItem";
-import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
-import { AdornedTab } from "/src/components/Tabs/AdornedTab";
 import { BetaChip } from "/src/components/Chip/BetaChip";
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import Tabs from "@theme/Tabs";
 
-# vetKeys API demo
+# vetKeys example
 
 <MarkdownChipRow labels={["Advanced", "Tutorial"]} />
 
-## Overview
+This example provides a canister (`src/chainkey_testing_canister`) that demonstrates how the [proposed vetKD system API](https://github.com/dfinity/portal/pull/3763) can be used to encrypt, transfer, and decrypt a file sent to an Ethereum address.
 
-This demo provides a canister (`src/system_api`) that offers the [proposed vetKD system API](https://github.com/dfinity/interface-spec/pull/158), implemented demonstration, testing, and initial development purposes. We stress that it does not offer security yet as no threshold cryptography is used yet to secure the key.
+The [GitHub repo for this example](https://github.com/kristoferlund/send_file_to_eth_demo) is a public template, and there is a live demo available: https://h62xu-2iaaa-aaaal-qshoq-cai.icp0.io/
 
-This demo uses files found in [this repository](https://github.com/dfinity/examples/tree/master/rust/vetkd).
+It uses [`ic-siwe`](https://github.com/kristoferlund/ic-siwe) and [`ic-siwe-js`](https://www.npmjs.com/package/ic-siwe-js) to facilitate signing in with Ethereum, sending a file to an Ethereum address, and using the recipient's address to to identify the [IBE scheme](/docs/current/references/vetkeys-overview) used to generate a public key for the recipient.
 
-## Prerequisites
+Other examples available are:
 
-- [x] Download and install the IC SDK package as described in the [installing the IC SDK](/docs/current/developer-docs/getting-started/install/) page.
-- [x] Download and install [npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
-- [x] Download and install [git](https://git-scm.com/downloads).
+- [Rust encryption app](https://github.com/dfinity/examples/tree/master/rust/vetkd).
+- [Encrypted notes dapp](https://github.com/dfinity/examples/tree/master/motoko/encrypted-notes-dapp-vetkd).
 
+## Encrypt and store a file
 
-### Step 1: Begin by cloning the Github repository containing this project:
+### Step 1: Retrieve recipient's public key
 
-<AdornedTabs groupId="language">
-<TabItem value="motoko" label="Motoko" default>
+First, identify the Ethereum address of the recipient you'd like to send a file to. Then, define a `vetkd_public_key` method that will retrieve the recipient's public key using their Ethereum address to identify the IBE scheme that generates the public key. This method will call the `chainkey_testing_canister`:
 
-```
-git clone https://github.com/dfinity/examples/
-cd examples/motoko/vetkd
+```rust reference
+https://github.com/kristoferlund/send_file_to_eth_demo/blob/main/src/backend/src/vetkd/controller/vetkd_public_key.rs#L1-L23
 ```
 
-</TabItem>
+:::info
+This example uses a local test vetKeys canister. When the feature is available, this should be replaced with the actual vetKeys API.
+:::
 
-<TabItem value="rust" label="rust" default>
+### Step 2: Encrypt a file in the frontend
 
-```
-git clone https://github.com/dfinity/examples/
-cd examples/rust/vetkd
-```
+Next, define a request in the application's frontend that uses the recipient's public key and the `vetkd.IBECiphertext.encrypt` method from the `ic-vetkd-utils` package. This request will take the file uploaded by the user and encrypt it.
 
-</TabItem>
-</AdornedTabs>
-
-### Step 2: Then, start a local instance of the Internet Computer:
-
-```sh
-dfx start --clean --background
+```typescript reference
+https://github.com/kristoferlund/send_file_to_eth_demo/blob/main/src/frontend/src/transfer/hooks/useTransferCreate.tsx#L1-L46
 ```
 
-### Step 3: Ensure the dfx uses the canister IDs that are hard-coded in the source code:
+### 3: Store the encrypted file in the backend
 
-```sh
-dfx canister create system_api --specified-id s55qq-oqaaa-aaaaa-aaakq-cai
+In the backend canister, create a `transfer_create` method that verifies the frontend request's `from` and `to` parameters, then stores the encrypted file:
+
+```rust reference
+https://github.com/kristoferlund/send_file_to_eth_demo/blob/main/src/backend/src/transfer/controller/transfer_create.rs#L1-L35
 ```
 
-Without this, the dfx may use different canister IDs for the `system_api` and `app_backend` canisters.
+## Receive and decrypt a file
 
-### Step 4: Ensure that the required node modules are available in your project directory:
+### Step 1: Obtain a list of available encrypted file transfers
 
-```sh
-npm install
+The file has now been encrypted with the intended recipient's Ethereum address and corresponding private key. In order for the recipient to receive the file, they must login to the application with their Ethereum address. The frontend will call the backend's `transfer_list` method and receive the application's existing file transfers.
+
+```rust reference
+https://github.com/kristoferlund/send_file_to_eth_demo/blob/main/src/backend/src/transfer/controller/transfer_list.rs#L1-L15
 ```
 
-### Step 5: Register, build and deploy the project:
+### Step 2: Obtain the recipient's private key
 
-```sh
-dfx deploy
+Then the backend obtains the encrypted private key of the user's Ethereum address in a similar manner to how it obtained the public key to encrypt the file:
+
+```rust reference
+https://github.com/kristoferlund/send_file_to_eth_demo/blob/main/src/backend/src/vetkd/controller/vetkd_encrypted_key.rs#L1-L31
 ```
 
-This command should finish successfully with output similar to the following one:
+### Step 3: Decrypt the private key and file
 
-```sh
-Deployed canisters.
-URLs:
-Frontend canister via browser
- app_frontend_js: http://127.0.0.1:4943/?canisterId=by6od-j4aaa-aaaaa-qaadq-cai
-Backend canister via Candid interface:
- app_backend: http://127.0.0.1:4943/?canisterId=avqkn-guaaa-aaaaa-qaaea-cai&id=tcvdh-niaaa-aaaaa-aaaoa-cai
- app_frontend: http://127.0.0.1:4943/?canisterId=avqkn-guaaa-aaaaa-qaaea-cai&id=b77ix-eeaaa-aaaaa-qaada-cai
- system_api: http://127.0.0.1:4943/?canisterId=avqkn-guaaa-aaaaa-qaaea-cai&id=s55qq-oqaaa-aaaaa-aaakq-cai
+Finally, the frontend decrypts the private key, uses it to decrypt the file, and returns the file to the user:
+
+```typescript reference
+https://github.com/kristoferlund/send_file_to_eth_demo/blob/main/src/frontend/src/transfer/hooks/useTransferGet.tsx#L1-L46
 ```
 
-### Step 6: Open the printed URL for the `app_frontend_js` in your browser.

@@ -5,7 +5,7 @@ keywords: [intermediate, defi, overview, tokens, icrc-1, icrc ledger, icrc index
 import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
-# Digital assets overview
+# Digital assets
 
 <MarkdownChipRow labels={["Beginner", "Concept"]} />
 
@@ -19,7 +19,7 @@ Digital assets can take many forms, such as:
 
 On ICP, digital assets come in three primary forms: ICP tokens, ICRC tokens, and chain-key tokens.
 
-ICP tokens are the network's native utility token. They are used for different actions on the network, such as being converted into <GlossaryTooltip>[cycles](/docs/current/developer-docs/getting-started/cycles/overview)</GlossaryTooltip> to pay for a <GlossaryTooltip>canister</GlossaryTooltip>'s resources, or being staked in a neuron to receive voting power on the [<GlossaryTooltip>NNS</GlossaryTooltip>](/docs/current/developer-docs/daos/nns/overview).
+ICP tokens are the network's native utility token. They are used for different actions on the network, such as being converted into <GlossaryTooltip>[cycles](/docs/current/developer-docs/getting-started/tokens-and-cycles)</GlossaryTooltip> to pay for a <GlossaryTooltip>canister</GlossaryTooltip>'s resources, or being staked in a neuron to receive voting power on the [<GlossaryTooltip>NNS</GlossaryTooltip>](/docs/current/developer-docs/daos/nns/overview).
 
 [ICRC](https://github.com/dfinity/ICRC) stands for `Internet Computer Request for Comments` and is a working group for various topics. ICRC standards can be created for anything, not just token types. Currently, the protocol supports the ICRC token standards ICRC-1, ICRC-2, ICRC-3, and ICRC-7, with several more in the process of being drafted and developed.
 
@@ -59,7 +59,7 @@ Currently, on the Internet Computer you will find two different types of ledgers
 
 ### ICP ledger
 
-The main purpose of the ICP ledger is to record `burn`, `mint`, `approve`, and most commonly `transfer` transactions with regards to ICP's native [token](/docs/concepts/tokens-cycles.mdx) `ICP`. The ICP ledger canister services transaction requests and offers a variety of endpoints to fetch data and information about the state of the ICP ledger.
+The main purpose of the ICP ledger is to record `burn`, `mint`, `approve`, and most commonly `transfer` transactions with regards to ICP's native [token](/docs/current/developer-docs/defi/tokens/token-standards#icp-tokens) `ICP`. The ICP ledger canister services transaction requests and offers a variety of endpoints to fetch data and information about the state of the ICP ledger.
 
 There is only one ICP ledger on the mainnet.
 

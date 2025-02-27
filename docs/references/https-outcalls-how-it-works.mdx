@@ -4,8 +4,6 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Reference"]} />
 
-## Overview
-
 This page provides details on how canister HTTPS outcalls, or canister HTTP requests, work and important aspects to consider when using the API. You also want to note that there are some limitations and differences compared to regular (Web 2.0) computer programs making HTTP calls and considerations for programmers for successfully using this feature. Engineers who intend to use this feature are advised to read through this page to get up to speed quickly w.r.t. the feature. The impatient reader who wants to dive into coding right away can skip the conceptual part and jump right away to the [coding section](#coding-https-outcalls) to get started.
 
 ## Architecture
@@ -164,7 +162,7 @@ There are a number of error cases that can happen when using this feature. The m
 * **SysFatal - Timeout expired:** requests are timed out if not fulfilled within the timeout period. One important instance when this happens is when there are not sufficiently many equal responses to achieve consensus. This happens, for example, when the transformation function is not written accurately to account for all variable parts of responses.
 * **SysTransient - Failed to connect: error trying to connect: tcp connect error: Connection refused (os error 111):** this error indicates that a TCP connection could not be established with the other server. This is most likely due to the fact that the server you are calling is not supporting IPv6.
 * **CanisterReject - http_request request sent with 0 cycles, but ... cycles are required:** at least the required amount of cycles need to be sent with the request in order for it to get fulfilled by the subnet.
-* **CanisterReject - max_response_bytes expected to be in the range [0..2097152], got ...:** this error indicates that the network response received from the server was too large. This happens if the response size is underestimated and the `max_response_bytes` value set too low.
+* **CanisterReject - max_response_bytes expected to be in the range [0..2000000], got ...:** this error indicates that the network response received from the server was too large. This happens if the response size is underestimated and the `max_response_bytes` value set too low.
 * **SysFatal - Transformed http response exceeds limit: 2045952:** this error indicates that the limit for the transformed response size was reached. This is currently a hard response size limit of the HTTPS outcalls functionality. Note that the response size is computed based on response body and headers.
 
 Developers new to the feature are likely to run into certain problems in the beginning, materializing in one of the following errors. This page lists the most prominent issues when starting with this feature.

@@ -183,7 +183,7 @@ const frameworksTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/developer-docs/getting-started/deploy/testnet"
+        href="/docs/current/developer-docs/getting-started/deploy-and-manage"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Learn more about testnets on ICP"
       >
@@ -206,7 +206,7 @@ const frameworksTiles: TileDescriptor[] = [
     ),
     action: (
       <Link
-        href="/docs/current/developer-docs/getting-started/quickstart/react-quickstart"
+        href="/docs/current/developer-docs/web-apps/application-frontends/quickstart/react-quickstart"
         className="button button-ghost rounded-2xl md:w-20 button-with-icon"
         title="Go to React quickstart"
       >
@@ -351,7 +351,7 @@ const Education = () => {
     {
       title: (
         <h2 className={"text-white"}>
-          Start your developer journey with Jessie
+          Start your developer liftoff with Jessie
         </h2>
       ),
       subtitle: (
@@ -363,13 +363,13 @@ const Education = () => {
       cta: (
         <Link
           className="button-transparent button-with-icon pl-0"
-          href="/docs/current/tutorials/developer-journey/"
+          href="/docs/current/tutorials/developer-liftoff/"
         >
           Start tutorials
           <LinkArrowRight />
         </Link>
       ),
-      mainImage: "/img/docs/teaser-cards/main-1.svg",
+      mainImage: "/img/docs/teaser-cards/developerLadder.svg",
     },
     {
       title: <h2 className={"text-white"}>Hackathon Prep Course</h2>,
@@ -518,9 +518,9 @@ const footerCards: Array<CarouselCard> = [
     cta: (
       <Link
         className="button-transparent button-with-icon pl-0"
-        href="https://discord.com/invite/5PJMmmETQB"
+        href="https://discord.internetcomputer.org"
       >
-        RSVP at #event channel
+        Join Discord
         <LinkArrowRight />
       </Link>
     ),

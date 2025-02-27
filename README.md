@@ -66,7 +66,7 @@ docs
 ├── motoko // Motoko documentation - submodule
 ├── references // reference documentation
 ├── samples // sample projects - submodule
-├── tutorials // tutorial series (developer ladder, hackathon prep course, etc).
+├── tutorials // tutorial series (developer liftoff, hackathon prep course, etc).
 ```
 
 # Contributing to the Dev Docs
@@ -142,11 +142,6 @@ This audience should be kept in mind when writing docs. For example:
 ### Documentation types
 The structure and content of the documentation page will vary based on the document type. Some common types are:
 
-#### Overview
-An overview of a documentation section or broad concept of ICP. When creating an overview page that discusses the capabilities of ICP, the benefits and attributes of the possible capabilities should be written about, not only the currently implemented workflows. For example, instead of writing about the currently implemented Bitcoin and Ethereum integrations, the [Chain Fusion overview](/docs/current/developer-docs/multi-chain/overview) page discusses ICP’s cross-chain functionalities and benefits on a much broader scale beyond the two current integrations.
-
-For overview pages, using bullet point lists to describe specific benefits or features of ICP is recommended.
-
 #### Feature or tool detail page
 A page that details a specific tool or feature. Feature or tool pages should provide a deeper explanation of a specific feature or tool, why a developer should use it, and how they can use it. It should describe the currently implemented workflows the feature/tool supports, and should not include details of conceptual ideas that are not currently live for developers to use (future roadmap items, possible improvements in the future, etc.)
 
@@ -155,7 +150,7 @@ Concept pages describe in more detail a specific concept of ICP. Concept pages s
 Concept pages should remain simple and high-level without providing unnecessary, in-depth details. Readers should be able to quickly understand the technology and its benefits, convincing them to continue learning more and begin developing using the technology.
 
 #### Tutorial
-A tutorial uses a step-by-step format to walk a user through a specific workflow. The Developer Ladder is an example of a tutorial series.
+A tutorial uses a step-by-step format to walk a user through a specific workflow. The Developer Liftoff is an example of a tutorial series.
 
 #### Reference
 A reference page provides low level detail into a feature or technology. API reference pages are an example that provide in-depth detail about different endpoints and methods. Some examples include:
@@ -394,10 +389,6 @@ The following submoules and their corresponding repos are currently used:
     - `/docs/current/references/ii-spec`
 	- GitHub Repo: https://github.com/dfinity/internet-identity.git
 
-- Interface Spec
-    - `/docs/current/references/ic-interface-spec `
-    - GitHub Repo: https://github.com/dfinity/interface-spec.git
-
 - Sample projects
     - `/docs/current/references/samples`
     - GitHub Repo: https://github.com/dfinity/examples.git
@@ -592,37 +583,37 @@ The [Ecosystem Helper](https://mvw4g-yiaaa-aaaam-abnva-cai.icp0.io/) is an oncha
 
 ### Asset guidelines
 
-| Asset       |          | Requirements | Format       | Notes                                                                             |
-|-------------|----------|--------------|--------------|-----------------------------------------------------------------------------------|
-| logo        | required | 112x112px    | webp/svg/png | Currently displayed 56x56px                                                       |
-| screenshots | optional | 1024x576px   | webp/jpg     | The schema supports multiple files, but only the first one will be displayed      |
-| video       | optional | max 10MB     | webm/mp4     | If there is a video file specified, it will be displayed instead of a screenshot. |
+| Asset       |          | Requirements                    | Format                    | Notes                                                                                  |
+|-------------|----------|---------------------------------|---------------------------|----------------------------------------------------------------------------------------|
+| logo        | required | 112x112px (1:1 aspect ratio)    | svg(recommended)/png/webp | Optimize file size with [SVGOMG](https://svgomg.net) or [TinyPNG](https://tinypng.com) |
+| screenshots | optional | 1024x576px                      | webp/jpg                  | The schema supports multiple files, but only the first one will be displayed           |
+| video       | optional | max 10MB                        | webm/mp4                  | If there is a video file specified, it will be displayed instead of a screenshot.      |
 
 ### Tags
 
 The list of tags is not final, and will be updated as the project evolves. For now, the following tags are available:
 
-- `Wallet`
+- `Chain Fusion`
 - `Bitcoin`
-- `NFT`
-- `SocialFi`
 - `DeFi`
-- `Games`
-- `DAO`
-- `Metaverse`
+- `Wallet`
+- `AI`
+- `Gaming`
+- `Creator Economy`
+- `Enterprise`
+- `Analytics`
 - `Tools / Infrastructure`
 
 ### Object schema
 
-```
+```json
   {
     id: string,
     name: string,
-    oneLiner: string, // short description of the project
     website: string, // URL starting with `https://`
 
-    tags: ('Wallet' | 'Bitcoin' | 'NFT' | 'SocialFi' | 'DeFi' | 'Games' | 'DAO' | 'Metaverse' | 'Tools / Infrastructure')[],
-    description: string, // description of the project
+    tags: ( `Chain Fusion` | `Bitcoin` | `DeFi` | `Wallet` | `AI` | `Gaming` | `Creator Economy` | `Enterprise` |`Analytics` | `Tools / Infrastructure`)[],
+    description: string, // description of the project - up to 150 characters
     stats: string, // eg. "10,000 users"
     logo: string, // url to logo file, eg. /img/showcase/awesome-icp-project_logo.webp
 
