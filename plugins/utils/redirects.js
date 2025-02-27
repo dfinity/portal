@@ -144,6 +144,8 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/ide/gitpod /docs/building-apps/developer-tools/icp-ninja
   /docs/current/developer-docs/developer-tools/ide/codespaces /docs/building-apps/developer-tools/icp-ninja
   /docs/current/developer-docs/developer-tools/ide/dev-containers /docs/building-apps/developer-tools/icp-ninja
+  /docs/current/developer-docs/developer-tools/dev-tools-overview /docs/building-apps/developer-tools/dev-tools-overview 
+  /docs/current/developer-docs/getting-started/quickstart/react-quickstart /docs/building-apps/getting-started/quickstart
 
   ## Rust
   /docs/current/developer-docs/backend/rust/candid /docs/building-apps/developer-tools/cdks/rust/generating-candid
@@ -152,6 +154,8 @@ const redirects = `
   /docs/current/developer-docs/backend/rust/deploying /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/dev-env /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
+  /docs/current/developer-docs/backend/rust/quickstart /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
+  /docs/current/developer-docs/backend/rust/project-organization /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/generating-candid /docs/building-apps/developer-tools/cdks/rust/generating-candid
   /docs/current/developer-docs/backend/rust/index /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/infrastructure /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
@@ -165,6 +169,8 @@ const redirects = `
   /docs/current/developer-docs/backend/rust/rust-considerations /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/rust-quickstart	/docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/backend/rust/samples /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
+  /docs/current/developer-docs/backend/rust/timers /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
+  /docs/current/developer-docs/backend/rust/access-control /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
 
   ## DeFi
   /docs/current/developer-docs/defi/asset-custody/custody-options /docs/defi/overview
@@ -182,8 +188,13 @@ const redirects = `
   /docs/current/developer-docs/defi/nfts/nft-collections /docs/defi/nft-collections
   /docs/current/developer-docs/defi/nfts/overview https://internetcomputer.zendesk.com/hc/en-us
   /docs/current/developer-docs/defi/overview /docs/defi/overview
+  /docs/current/developer-docs/defi/token_integrations/ /docs/defi/overview
 
   ## Rosetta
+  /docs/current/developer-docs/defi/rosetta/overview /docs/defi/rosetta/icp_rosetta/
+  /docs/current/developer-docs/defi/rosetta/icp_rosetta/ /docs/defi/rosetta/icp_rosetta/
+  /docs/current/developer-docs/defi/rosetta/icrc_rosetta/ /docs/defi/rosetta/icrc_rosetta/
+  /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/ /docs/defi/rosetta/icp_rosetta/construction_api/
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/index /docs/defi/rosetta/icp_rosetta/construction_api/
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/combine /docs/defi/rosetta/icp_rosetta/construction_api/operations-flow
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/operations_flow/derive /docs/defi/rosetta/icp_rosetta/construction_api/operations-flow
@@ -205,7 +216,9 @@ const redirects = `
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/follow /docs/defi/rosetta/icp_rosetta/construction_api/voting
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/index /docs/defi/rosetta/icp_rosetta/construction_api/voting
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/vote /docs/defi/rosetta/icp_rosetta/construction_api/voting
+  /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/voting/ /docs/defi/rosetta/icp_rosetta/construction_api/voting
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/balances /docs/defi/rosetta/icp_rosetta/data_api/
+  /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/ /docs/defi/rosetta/icp_rosetta/data_api/
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/blocks /docs/defi/rosetta/icp_rosetta/data_api/
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/get_pending_proposals /docs/defi/rosetta/icp_rosetta/data_api/
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/get_proposal_info /docs/defi/rosetta/icp_rosetta/data_api/
@@ -214,7 +227,9 @@ const redirects = `
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/network /docs/defi/rosetta/icp_rosetta/data_api/
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/data_api/transactions /docs/defi/rosetta/icp_rosetta/data_api/
   /docs/current/developer-docs/defi/rosetta/icp_rosetta/index /docs/defi/rosetta/icp_rosetta/
+  /docs/current/developer-docs/defi/rosetta/icp_rosetta/construction_api/staking/ /docs/defi/rosetta/icp_rosetta/construction_api/staking
   /docs/current/developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/approve /docs/defi/rosetta/icrc_rosetta/construction_api/
+  /docs/current/developer-docs/defi/rosetta/icrc_rosetta/construction_api/ /docs/defi/rosetta/icrc_rosetta/construction_api/
   /docs/current/developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/index /docs/defi/rosetta/icrc_rosetta/construction_api/
   /docs/current/developer-docs/defi/rosetta/icrc_rosetta/construction_api/asset_transfer/transfer /docs/defi/rosetta/icrc_rosetta/construction_api/
   /docs/current/developer-docs/defi/rosetta/icrc_rosetta/construction_api/index /docs/defi/rosetta/icrc_rosetta/construction_api/
@@ -224,6 +239,7 @@ const redirects = `
   /docs/current/developer-docs/defi/rosetta/icrc_rosetta/data_api/network /docs/defi/rosetta/icrc_rosetta/data_api/
   /docs/current/developer-docs/defi/rosetta/icrc_rosetta/data_api/transactions /docs/defi/rosetta/icrc_rosetta/data_api/
   /docs/current/developer-docs/defi/rosetta/icrc_rosetta/index /docs/defi/rosetta/icrc_rosetta/
+  /docs/current/developer-docs/defi/tokens/asset_flow/ /docs/defi/overview
 
   ## Tokens
   /docs/current/developer-docs/defi/tokens/advanced/direct_integration /docs/defi/token-integrations/
@@ -245,6 +261,7 @@ const redirects = `
   /docs/current/developer-docs/defi/cycles/cycles-ledger /docs/defi/token-ledgers/cycles-ledger
 
   ## Dev tools
+  /developers/ /docs/home/
   /docs/current/developer-docs/deploy/computation-and-storage-costs /docs/building-apps/essentials/gas-cost
   /docs/current/developer-docs/deploy/custom-domain	/docs/building-apps/frontends/custom-domains/using-custom-domains
   /docs/current/developer-docs/developer-tools/cli-tools/dfx-json-reference /docs/building-apps/developer-tools/dfx-json-reference
@@ -277,6 +294,15 @@ const redirects = `
   /docs/current/developer-docs/developer-tools/on-chain/ic-js/ https://github.com/dfinity/ic-js/tree/main
   /docs/current/developer-docs/developer-tools/cli-tools/idl2json https://github.com/dfinity/idl2json/tree/main
   /docs/current/developer-docs/smart-contracts/maintain/recovery /docs/building-apps/canister-management/snapshots
+  /docs/current/samples/overview /ecosystem
+  /docs/current/references/https-outcalls-how-it-works /docs/building-apps/network-features/using-http/https-outcalls/overview
+  /docs/current/developer-docs/web-apps/application-frontends/quickstart/react-quickstart /docs/building-apps/getting-started/quickstart
+  /docs/current/other/updates/release-notes/ /docs/other/updates/release-notes/
+  /docs/current/developer-docs/smart-contracts/overview/trust-in-canisters /docs/building-apps/best-practices/trust-in-canisters
+  /docs/current/references/icrc1-standard /docs/defi/overview
+  /docs/current/developer-docs/getting-started/troubleshooting /docs/building-apps/best-practices/troubleshooting
+  /docs/current/developer-docs/smart-contracts/deploy/custom-testnets /docs/building-apps/developing-canisters/custom-networks
+  /docs/current/developer-docs/developer-tools/off-chain/canbench /docs/building-apps/advanced/benchmarking
 
   ## Getting started
   /docs/current/developer-docs/getting-started/accounts /docs/building-apps/getting-started/identities
@@ -379,6 +405,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/sns/introduction/sns-architecture /docs/building-apps/governing-apps/overview
   /docs/current/developer-docs/integrations/sns/introduction/sns-intro-high-level /docs/building-apps/governing-apps/overview
   /docs/current/developer-docs/integrations/sns/introduction/sns-launch /docs/building-apps/governing-apps/overview
+  /docs/current/developer-docs/daos/overview /docs/building-apps/governing-apps/overview
   /docs/current/developer-docs/integrations/sns/launching/ /docs/building-apps/governing-apps/launching/
   /docs/current/developer-docs/integrations/sns/launching/launch-steps-1proposal /docs/building-apps/governing-apps/launching/launch-steps-1proposal
   /docs/current/developer-docs/integrations/sns/launching/launch-steps /docs/building-apps/governing-apps/launching/launch-steps-1proposal
@@ -408,6 +435,7 @@ const redirects = `
   /docs/current/developer-docs/local-quickstart /docs/building-apps/getting-started/install
 
   ## Chain Fusion
+  /docs/current/references/bitcoin-how-it-works /docs/building-apps/chain-fusion/bitcoin/overview
   /docs/current/developer-docs/multi-chain/bitcoin/ckbtc /docs/defi/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/making-transactions /docs/defi/chain-key-tokens/ckbtc/overview
   /docs/current/developer-docs/multi-chain/bitcoin/ckbtc/overview /docs/defi/chain-key-tokens/ckbtc/overview
@@ -472,6 +500,7 @@ const redirects = `
   /docs/current/developer-docs/security/rust-canister-development-security-best-practices /docs/building-apps/security/inter-canister-calls
 
   ## Setup
+  /docs/current/references/candid-ref /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/developer-docs/setup/accounts /docs/building-apps/getting-started/identities
   /docs/current/developer-docs/setup/best-practices/architecture /docs/building-apps/essentials/canisters
   /docs/current/developer-docs/setup/best-practices/general /docs/building-apps/best-practices/general
@@ -511,6 +540,7 @@ const redirects = `
   /docs/current/developer-docs/setup/vs-code /docs/building-apps/developer-tools/icp-ninja
 
   ## Smart contracts
+  /docs/current/developer-docs/smart-contracts/maintain/import 
   /docs/current/developer-docs/smart-contracts/advanced-features/async-code /docs/references/async-code
   /docs/current/developer-docs/smart-contracts/advanced-features/composite-query /docs/building-apps/interact-with-canisters/query-calls
   /docs/current/developer-docs/smart-contracts/advanced-features/handling-get-post-requests /docs/building-apps/network-features/using-http/gateways
@@ -583,6 +613,7 @@ const redirects = `
   /docs/current/developer-docs/use-cases/considerations-for-nft-devs /docs/defi/nft-collections
   /docs/current/developer-docs/getting-started/deploy-and-manage /docs/building-apps/developing-canisters/deploy
   /docs/current/developer-docs/getting-started/write-smart-contracts /docs/building-apps/developing-canisters/write
+  /docs/current/developer-docs/smart-contracts/maintain/import /docs/building-apps/advanced/using-third-party-canisters
 
   ## Frontends
   /docs/current/developer-docs/web-apps/application-frontends/add-stylesheet /docs/building-apps/frontends/using-an-asset-canister
