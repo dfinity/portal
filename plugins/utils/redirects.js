@@ -36,6 +36,7 @@ const redirects = `
   /docs/current/tutorials/hackathon-prep-course/* /docs/tutorials/hackathon-prep-course/:splat
   /docs/current/developer-docs/daos/nns/* /docs/building-apps/governing-apps/nns/:splat
   /docs/current/samples/* /docs/references/samples/:splat
+  /docs/current/references/* /docs/current/references/:splat
   /docs/current/references/samples/* /docs/references/samples/:splat
 
 
@@ -46,6 +47,9 @@ const redirects = `
   ## /docs/current/developer-docs/hello-world /docs/building-apps/getting-started/quickstart
   ##
   ##
+
+  ## IC spec
+  /docs/current/references/ic-interface-spec /docs/references/ic-interface-spec
 
   ## Candid
   /docs/candid-guide/candid-concepts.html	/docs/building-apps/interact-with-canisters/candid/candid-concepts
