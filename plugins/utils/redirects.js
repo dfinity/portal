@@ -37,7 +37,7 @@ const redirects = `
   /docs/current/tutorials/hackathon-prep-course/* /docs/tutorials/hackathon-prep-course/:splat
   /docs/current/developer-docs/daos/nns/* /docs/building-apps/governing-apps/nns/:splat
   /docs/current/samples/* /docs/references/samples/:splat
-  /docs/current/references/* /docs/current/references/:splat
+  /docs/current/references/* /docs/references/:splat
   /docs/current/references/samples/* /docs/references/samples/:splat
 
 
