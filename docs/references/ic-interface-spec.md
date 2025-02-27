@@ -1128,7 +1128,7 @@ Reject codes are member of the following enumeration:
 
 -   `CANISTER_ERROR` (5): Canister error (e.g., trap, no response)
 
--   `SYS_UNKNOWN` (6): Response unknown; system stopped waiting for it (e.g., timed out, or system under high load).
+-   `SYS_UNKNOWN` (6): Response unknown; system stopped waiting for it (e.g., timed out, or system under high load). This code is only applicable to inter-canister calls that used `ic0.call_with_best_effort_response`.
 
 The symbolic names of this enumeration are used throughout this specification, but on all interfaces (HTTPS API, System API), they are represented as positive numbers as given in the list above.
 
@@ -1443,7 +1443,7 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.msg_reject_msg_size : () -> I  ;                                                  // Rt CRt
     ic0.msg_reject_msg_copy : (dst : I, offset : I, size : I) -> ();                      // Rt CRt
 
-    ic0.msg_deadline : () -> i64;                                               // U Q CQ Ry Rt CRy CRt
+    ic0.msg_deadline : () -> i64;                                                         // U Q CQ Ry Rt CRy CRt
 
     ic0.msg_reply_data_append : (src : I, size : I) -> ();                                // U RQ NRQ CQ Ry Rt CRy CRt
     ic0.msg_reply : () -> ();                                                             // U RQ NRQ CQ Ry Rt CRy CRt
@@ -1604,7 +1604,7 @@ The canister can access an argument. For `canister_init`, `canister_post_upgrade
 
     The deadline, in nanoseconds since 1970-01-01, after which the caller might stop waiting for a response.
 
-    For calls to update methods with best-effort responses and their callbacks, the deadline is computed based on the time the call was made, and the `timeout_seconds` parameter provided by the caller. For other calls (ingress messages and all calls to query and composite query methods, including calls in replicated mode) a deadline of 0 is returned.
+    For update methods and their callbacks, if the method was called via an inter-canister call with a best-effort response the deadline is computed based on the time the call was made, and the `timeout_seconds` parameter provided by the caller. For other calls (including ingress messages and all calls to query and composite query methods, including calls in replicated mode) a deadline of 0 is returned.
 
 ### Responding {#responding}
 
@@ -1740,7 +1740,7 @@ There must be at most one call to `ic0.call_on_cleanup` between `ic0.call_new` a
 
 -   `ic0.call_with_best_effort_response : (timeout_seconds : i32) -> ()`
 
-    Turns the call into a "bounded wait" call, by relaxing the response delivery guarantee to be best effort, and asking the system to respond at the latest after `timeout_seconds` have elapsed. Best effort means the system may also respond with a `SYS_UNKNOWN` reject code, signifying that the call **may or may not** have been processed by the callee. Then, even if the callee produces a response, it will not be delivered to the caller.
+    Turns the call into a bounded-wait call, by relaxing the response delivery guarantee to be best effort, and asking the system to respond at the latest after `timeout_seconds` have elapsed. Best effort means the system may also respond with a `SYS_UNKNOWN` reject code, signifying that the call **may or may not** have been processed by the callee. Then, even if the callee produces a response, it will not be delivered to the caller.
 
     Any value for `timeout_seconds` is permitted, but is silently bounded from above by the `MAX_CALL_TIMEOUT` system constant; i.e., larger timeouts are treated as equivalent to `MAX_CALL_TIMEOUT` and do not cause an error. The implementation may add a specific [error code](#error-codes) to a reject message to indicate the cause, in particular whether the timeout expired. Note that the reject callback may be executed (possibly significantly) later than the specified time (e.g., if the caller is under high load), or before timeout expiration (e.g., if the system is under load).
 
