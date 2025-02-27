@@ -25,6 +25,7 @@ const redirects = `
   /docs/current/motoko/* /docs/motoko:splat
   /docs/current/developer-docs/developer-tools/cli-tools/cli-reference/* /docs/building-apps/developer-tools/dfx:splat
   /docs/current/tutorials/developer-journey/* /docs/tutorials/developer-liftoff/:splat
+  /docs/current/tutorials/developer-liftoff/* /docs/tutorials/developer-liftoff/:splat
   /docs/current/developer-docs/security/security-best-practices/* /docs/building-apps/security/:splat
   /docs/current/developer-docs/agents/* /docs/building-apps/interact-with-canisters/agents/:splat
   /docs/current/developer-docs/best-practices/*	/docs/building-apps/best-practices/:splat
@@ -36,6 +37,7 @@ const redirects = `
   /docs/current/tutorials/hackathon-prep-course/* /docs/tutorials/hackathon-prep-course/:splat
   /docs/current/developer-docs/daos/nns/* /docs/building-apps/governing-apps/nns/:splat
   /docs/current/samples/* /docs/references/samples/:splat
+  /docs/current/references/* /docs/current/references/:splat
   /docs/current/references/samples/* /docs/references/samples/:splat
 
 
@@ -46,6 +48,9 @@ const redirects = `
   ## /docs/current/developer-docs/hello-world /docs/building-apps/getting-started/quickstart
   ##
   ##
+
+  ## IC spec
+  /docs/current/references/ic-interface-spec /docs/references/ic-interface-spec
 
   ## Candid
   /docs/candid-guide/candid-concepts.html	/docs/building-apps/interact-with-canisters/candid/candid-concepts
