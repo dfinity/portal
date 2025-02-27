@@ -261,7 +261,7 @@ const redirects = `
   /docs/current/developer-docs/defi/cycles/cycles-ledger /docs/defi/token-ledgers/cycles-ledger
 
   ## Dev tools
-  /developers/ /docs/home/
+  /developers/ /docs/home
   /docs/current/developer-docs/deploy/computation-and-storage-costs /docs/building-apps/essentials/gas-cost
   /docs/current/developer-docs/deploy/custom-domain	/docs/building-apps/frontends/custom-domains/using-custom-domains
   /docs/current/developer-docs/developer-tools/cli-tools/dfx-json-reference /docs/building-apps/developer-tools/dfx-json-reference
