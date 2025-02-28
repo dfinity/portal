@@ -28,7 +28,7 @@
       "imported": true
     },
     {
-      "title": "Coding and Development in ICP Ninja",
+      "title": "Coding and development in ICP Ninja",
       "is_milestone": true,
       "description": "This milestone focuses on ICP Ninja to make building on ICP fast, fun, and educational.",
       "milestone_id": "Coulomb",
@@ -48,7 +48,7 @@
       "milestone_id": "Coulomb"
     },
     {
-      "title": "Developer Productivity Enhancements",
+      "title": "Developer productivity enhancements",
       "overview": "The first wave of improvements brings a completely redesigned editor, live compilation feedback, canister logs, and more.",
       "status": "deployed",
       "forum": "https://forum.dfinity.org/t/icp-ninja-christmas-market-release/39118",
@@ -59,7 +59,7 @@
       "milestone_id": "Coulomb"
     },
     {
-      "title": "AI Learning Assistant",
+      "title": "AI learning assistant",
       "overview": "An integrated AI Learning Assistant is available in ICP Ninja and can answer any question about development on ICP, help and explain canister code, and much more.",
       "status": "deployed",
       "forum": "https://forum.dfinity.org/t/icp-ninja-christmas-market-release/39118",
@@ -70,7 +70,7 @@
       "milestone_id": "Coulomb"
     },
     {
-      "title": "Landing Page Revamp",
+      "title": "Landing page revamp",
       "overview": "Discover a revamped landing page where users feel right at home with their projects. Users create new dapps with options for a frontend, backend, or both, or start from a curated template.",
       "status": "deployed",
       "forum": "",
@@ -81,7 +81,7 @@
       "milestone_id": "Coulomb"
     },
     {
-      "title": "Project Sharing",
+      "title": "Project sharing",
       "overview": "Projects can be shared with others by generating a link.",
       "status": "in_progress",
       "forum": "",
@@ -103,7 +103,7 @@
       "milestone_id": "Coulomb"
     },
     {
-      "title": "Saving Projects",
+      "title": "Saving projects",
       "overview": "Users can store their projects directly on ICP Ninja, allowing them to continue working on their projects from other devices, or simply return to them at a later time.",
       "status": "in_progress",
       "forum": "",
@@ -114,7 +114,7 @@
       "milestone_id": "Coulomb"
     },
     {
-      "title": "Exporting Projects to GitHub",
+      "title": "Exporting projects to GitHub",
       "overview": "ICP Ninja allows users to export their projects to their GitHub account as a new repository.",
       "status": "in_progress",
       "forum": "",
@@ -163,7 +163,7 @@
       "milestone_id": "Thorium"
     },
     {
-      "title": "Canister Resource Management",
+      "title": "Canister resource management",
       "is_milestone": true,
       "description": "This milestone improves the cycles management experience on ICP through the introduction of the Cycles Ledger. End users can hold cycles seamlessly and can more easily manage their canisters cycles balance. Furthermore, with the exposure of a key set of metrics, getting insights into your canisters’ operations has been greatly improved, especially with the ability to see a breakdown of your cycles usage and which endpoints are the most expensive ones to call.",
       "milestone_id": "Thorium",
@@ -282,17 +282,6 @@
       "eta": "",
       "status": "",
       "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "Specify placement subnet for new canisters",
-      "overview": "When creating a new canister, the subnet on which it should be placed can be specified.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "deployed",
-      "is_community": true,
       "in_beta": false
     },
     {
@@ -431,17 +420,6 @@
       "docs": "",
       "eta": "",
       "status": "",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "Motoko package manager shipped with dfx",
-      "overview": "Integrating the Mops package manager with dfx to improve DX.",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "eta": "",
-      "status": "deployed",
       "is_community": false,
       "in_beta": false
     },

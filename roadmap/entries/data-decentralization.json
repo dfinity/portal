@@ -14,7 +14,7 @@
       "in_beta": false
     },
     {
-      "title": "Public API Boundary Node logs and metrics",
+      "title": "Public API boundary node logs and metrics",
       "overview": "Ensuring logs are verifiable and trustworthy (e.g., signed by API BNs) and publishing them in a publicly accessible repository.",
       "forum": "",
       "proposal": "",
@@ -29,13 +29,13 @@
       "eta_to_render": ""
     },
     {
-      "title": "Privacy-Preserving Logs",
+      "title": "Privacy-preserving logs",
       "overview": "Anonymizing identifying data while enabling global analysis across all API BNs (e.g., counting unique IPs), achieved through a secret salt managed by an NNS-controlled canister and shared among all API BNs.",
       "status": "in_progress",
       "milestone_id": "Levitron"
     },
     {
-      "title": "Generation 3 Node Hardware and Rewards",
+      "title": "Generation 3 node hardware and rewards",
       "is_milestone": true,
       "milestone_id": "Knot",
       "description": "Define the next generation node hardware, refine reward calculations, and improve network topology to enhance network performance, efficiency, and decentralization.",
@@ -43,19 +43,19 @@
       "eta_to_render": ""
     },
     {
-      "title": "Node Reward Enhancements",
+      "title": "Node reward enhancements",
       "overview": "Enhance the node reward calculation to better align with the demand and supply dynamics of computing resources.",
       "status": "future",
       "milestone_id": "Knot"
     },
     {
-      "title": "Generation 3 Node Hardware",
+      "title": "Generation 3 node hardware",
       "overview": "Define the hardware specifications for the next generation of nodes, supporting the future growth of the network. ",
       "status": "future",
       "milestone_id": "Knot"
     },
     {
-      "title": "Target Topology Enhancements",
+      "title": "Target topology enhancements",
       "overview": "Improve the node target topology to further increase the decentralization of the network.",
       "status": "future",
       "milestone_id": "Knot"
@@ -92,7 +92,7 @@
       "in_beta": false
     },
     {
-      "title": "Off-chain observability stack for Node Providers",
+      "title": "Off-chain observability stack for node providers",
       "overview": "Observability solution for Node Providers to enable them to independently triage node health and take corrective action in case of problems.",
       "forum": "",
       "proposal": "",
@@ -115,7 +115,7 @@
       "in_beta": false
     },
     {
-      "title": "HTTP Asset Caching",
+      "title": "HTTP asset caching",
       "overview": "Building on response verification v2, HTTP gateways support caching of static assets such as HTML pages, JavaScript code, and images.",
       "forum": "https://forum.dfinity.org/t/long-term-r-d-boundary-nodes-proposal/9401",
       "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
@@ -139,7 +139,7 @@
       "imported": true
     },
     {
-      "title": "SEV-SNP-protected HTTP Gateway",
+      "title": "SEV-SNP-protected HTTP gateway",
       "overview": "Trusted execution (AMD SEV-SNP) enables trustless HTTP gateways, empowering users to remotely attest that the correct software image is running.",
       "forum": "",
       "proposal": "",
