@@ -713,6 +713,9 @@ const redirects = `
 
   ## Misc
   /docs/current/home /docs/home
+  /docs/current/tokenomics/identity-auth/auth-how-to /docs/building-apps/authentication/integrate-internet-identity
+  /docs/current/tokenomics/identity-auth/ /docs/building-apps/authentication/integrate-internet-identity
+  /docs/current/tokenomics/ /how-it-works/tokenomics
   /docs /docs/home
   /docs/current/references/ii-spec	/docs/references/ii-spec
   /docs/download /docs/building-apps/getting-started/install
