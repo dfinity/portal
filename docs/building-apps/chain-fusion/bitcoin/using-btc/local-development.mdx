@@ -8,10 +8,6 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Advanced", "Bitcoin", "Tutorial"]} />
 
-
-
-
-
 Testing applications locally allows you to iterate and improve your dapp more quickly.
 
 `dfx` includes support for both the [ECDSA API](/docs/references/ic-interface-spec#ic-ecdsa_public_key) and
@@ -61,17 +57,15 @@ If everything went well, you should see the following output. `bitcoind` is now 
 2022-07-11T12:49:52Z 0 addresses found from DNS seeds
 2022-07-11T12:49:52Z dnsseed thread exit
 ```
+
 The command above assumes that port `18444` on your machine is available. If it isn't, change the port specified in `--port`
 accordingly.
 
 ## Deploying your Bitcoin dapp
 
-Now that you have a local Bitcoin network, you're ready to start
-developing and locally testing your Bitcoin dapps.
+Now that you have a local Bitcoin network, you're ready to start developing and locally testing your Bitcoin dapps.
 
-For the next steps,you'll be leveraging the example project
-in the [examples repo](https://github.com/dfinity/examples) to showcase some of the key concepts. Let's clone it and explore
-what it's like to deploy a Bitcoin dapp locally.
+For the next steps, you'll be leveraging the example project from the [examples repo](https://github.com/dfinity/examples) to showcase some of the key concepts.
 
 - #### Step 1: Clone the `examples` repo.
 ```
@@ -81,8 +75,6 @@ git clone https://github.com/dfinity/examples
 ```
 # For Motoko
 cd examples/motoko/basic_bitcoin
-```
-```
 # For Rust
 cd examples/rust/basic_bitcoin
 ```
@@ -90,10 +82,7 @@ cd examples/rust/basic_bitcoin
 ```
 # For Motoko
 curl -fsSL cli.mops.one/install.sh | sh
-```
-```
-# For Rust
-# not necessary
+# For Rust, this step is not necessary
 ```
 
 ### Deploying in `regtest` Mode
@@ -140,6 +129,7 @@ Or, if you prefer the command line:
 ```
 dfx canister call basic_bitcoin get_p2pkh_address
 ```
+
 The Bitcoin address you see will be different from the one above, because the ECDSA public key your canister retrieves is unique.
 
 ## Receiving Bitcoin
@@ -156,6 +146,7 @@ For example, let's mine a block and have the block reward be given to your canis
 ```
 ./bin/bitcoin-cli -conf=$(pwd)/bitcoin.conf generatetoaddress 1 <your-canister-btc-address>
 ```
+
 `<your-canister-btc-address>` is the address you obtained from calling the `get_p2pkh_address`
 endpoint on your canister. If successful, you'll see an output that looks similar, but not identical, to this:
 ```
@@ -163,8 +154,7 @@ endpoint on your canister. If successful, you'll see an output that looks simila
     "5eaf0bb0947bc5c3348749b7e194e000f6d93902235e7422b6472a1edfa5a821"
 ]
 ```
-This is the hash of the block you just mined. In the logs of `dfx`, within a few seconds
-you should see something like this:
+This is the hash of the block you just mined. In the logs of `dfx`, within a few seconds you should see something like this:
 ```
 INFO .../blockchainmanager Added headers: Height = 1, Active chain's tip = 5eaf0bb0947bc5c3348749b7e194e000f6d93902235e7422b6472a1edfa5a821
 DEBG .../ic_btc_canister/heartbeat New Bitcoin tip height: 1
