@@ -29,7 +29,7 @@
       "imported": false
     },
     {
-      "title": "vetKeys for Decentralized Key Management",
+      "title": "vetKeys for decentralized key management",
       "is_milestone": true,
       "description": "vetKeys technology realizes a decentralized key management service, allowing users to derive cryptographic keys on demand, in a fully decentralized way. This allows developers to build dapps where users’ data is encrypted, addressing privacy needs on a public blockchain.",
       "milestone_id": "Niobium",
@@ -38,7 +38,7 @@
       "eta_to_render": ""
     },
     {
-      "title": "Confidentiality of Canister States",
+      "title": "Confidentiality of canister states",
       "description": "This milestone takes Trusted Execution Environments (TEE) to its final form, ensuring complete confidentiality of canister state. All canister state remains shielded from unauthorized access while maintaining its integrity. This further strengthens the confidentiality guarantees for dapp developers and users alike.",
       "status": "future",
       "is_milestone": true,
@@ -46,7 +46,7 @@
       "eta_to_render": ""
     },
     {
-      "title": "Encrypted Canister State",
+      "title": "Encrypted canister state",
       "overview": "Ensuring that all canister state is always encrypted, both in memory and storage, making it completely inaccessible for external parties.",
       "status": "in_progress",
       "milestone_id": "Containment"
@@ -63,7 +63,7 @@
       "in_beta": false
     },
     {
-      "title": "SEV Support for Replica Nodes",
+      "title": "SEV Support for replica nodes",
       "overview": "Enabling the SEV-SNP trusted computing technology for the Replica VM to protect sensitive data from unauthorized access.",
       "forum": "https://forum.dfinity.org/t/amd-sev-virtual-machine-support/6156",
       "proposal": "https://forum.dfinity.org/t/long-term-r-d-tee-enhanced-ic-proposal/9384/4",
