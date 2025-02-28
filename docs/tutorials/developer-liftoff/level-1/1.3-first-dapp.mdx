@@ -22,982 +22,284 @@ The video corresponding to this tutorial is outdated and follows a different pro
 
 At this point in your developer liftoff, you've covered the fundamentals of <GlossaryTooltip>canister</GlossaryTooltip> development and deployed the default 'Hello, world' project template on the playground. It's time to get into writing code and developing your first dapp!
 
-For this tutorial, you'll be creating a poll dapp that includes both a backend canister and a frontend canister. To recap, backend canisters are used to host the dapp's smart contract code, while frontend canisters are used to host user interface assets, such as HTML and CSS.
+For this tutorial, you'll be creating a simple LLM chat bot dapp that includes both a backend canister and a frontend canister. To recap, backend canisters are used to host the dapp's smart contract code, while frontend canisters are used to host user interface assets, such as HTML and CSS.
 
-The poll dapp will ask the end user a question, then have them vote on which answer they'd like to select.
+This tutorial will demonstrate how to create a dapp [using ICP Ninja](https://icp.ninja/projects/llm-chatbot). Alternatively, you can create a new project with `dfx` or download the project's files from ICP Ninja and deploy it locally.
 
-## Prerequisites
+Through ICP Ninja, you can deploy applications to the mainnet for free. Although applications deployed through ICP Ninja are temporary and will be removed after 20 minutes, but they do not cost [cycles](/docs/building-apps/getting-started/tokens-and-cycles), making it valuable tool for getting started quickly.
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
+## Opening the project
 
-## Creating a new project
-
-First, you need to create a new `dfx` project. Open a terminal window, navigate into your working directory (`developer_ladder`), then use the following commands to start `dfx` and create a new project:
-
-```bash
-dfx start --clean --background
-dfx new poll
-```
-
-You will be prompted to select the language that your backend canister will use:
-
-```
-? Select a backend language: ›
-❯ Motoko
-Rust
-TypeScript (Azle)
-Python (Kybra)
-```
-
-Then, select a frontend framework for your frontend canister. In this example, select:
-
-```
-? Select a frontend framework: ›
-SvelteKit
-React
-Vue
-Vanilla JS
-❯ No JS template
-No frontend canister
-```
-
-Lastly, you can include extra features to be added to your project:
-
-```
-? Add extra features (space to select, enter to confirm) ›
-⬚ Internet Identity
-⬚ Bitcoin (Regtest)
-```
-
-## Reviewing the project's file structure
+First, navigate to [ICP Ninja](https://icp.ninja/projects/llm-chatbot) and select the 'Motoko' option for the LLM chat bot template. Then select 'Open project.'
 
 Let's review the project's file structure:
 
 ```bash
-poll                   # The root of the project.
+llm_bot                   # The root of the project.
 ├── README.md
 ├── dfx.json           # The configuration file for your Internet Computer dapp.
-├── dfx.json           # The configuration file for your Internet Computer dapp.
 ├── src
-│   ├── poll_backend   # Folder containing the source code of your dapp's backend.
-│   │   └── main.mo    # The default source code file; this is what you'll primarily be working with in this tutorial.
-│   └── poll_frontend  # Folder containing the frontend configuration and assets of your dapp.
+│   ├── backend   # Folder containing the source code of your dapp's backend.
+│   │   └── app.mo    # The default source code file; this is what you'll primarily be working with in this tutorial.
+│   └── frontend  # Folder containing the frontend configuration and assets of your dapp.
 │       └── assets
-|         └── sample-asset.txt       
+|         └── public
+|         └── src
+|         └── index.html
 ```
 
-You will notice that the file structure above has two subdirectories within `src`. That is because when you created the project `poll` via `dfx new poll`, the project by default created **two** canisters that talk to each other:
-- `src/poll_backend`, which contains the files that serve as the backend of the dapp.
-- `src/poll_frontend`, which contains the files that serve as the frontend of the dapp.
+## Reviewing the backend canister code
 
-This file structure is the default template `dfx` creates for a new project. If you'd like to create a project without a frontend canister, the `--no-frontend` flag can be used with the `dfx new` command.
+```motoko title="backend/app.mo" no-repl
+import LLM "mo:llm";
 
-## Writing the backend canister code
+persistent actor {
+  public func prompt(prompt : Text) : async Text {
+    await LLM.prompt(#Llama3_1_8B, prompt);
+  };
 
-Let's start writing the code for the backend of our dapp. Open your code editor of choice, then open the file `src/poll_backend/main.mo`. By default, this file will contain the same code you reviewed in the [introduction to dfx](/docs/tutorials/developer-liftoff/level-0/intro-dfx) module. Since you want to write your own code, delete the entire contents of this file.
-
-### Creating an actor
-
-First, you'll create an actor. Recall that an actor is a process with an encapsulated state. Actors contain both code and data and communicate by sending and receiving messages. A canister can only contain a single actor.
-
-In your `src/poll_backend/main.mo` file, paste the following code:
-
-:::caution
-The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
-:::
-
-```motoko title="src/poll_backend/main.mo"
-actor {
-
-    //actor code goes here
-
-}
-```
-
-This code defines an actor, but it is currently empty. It does not define any data or send and receive messages.
-
-Next, let's add some code inside the actor that proposes a question for your poll app. For example, you can ask the user, "What is your favorite programming language?".
-
-To add this question, insert the following code inside of the actor definition:
-
-:::caution
-The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
-:::
-
-```motoko title="src/poll_backend/main.mo"
-    var question: Text = "What is your favorite programming language?";
-```
-
-:::info
-**What does this code do?**
-
-First, it creates a new actor variable called `question`.
-
-Then, it declares the type of this variable as `Text`, which is the standard type for strings in Motoko.
-:::
-
-Since you are using the type `Text`, you need to import the type `Text` from the Motoko base library. To do this, add an import statement at the top of the file:
-
-```motoko no-repl title="src/poll_backend/main.mo"
-import Text "mo:base/Text";
-```
-
-After all of these changes, your `main.mo` file should look like this:
-
-:::caution
-The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
-:::
-
-```motoko title="src/poll_backend/main.mo"
-import Text "mo:base/Text";
-
-actor {
-    var question: Text = "What is your favorite programming language?";
-
-}
-```
-
-Now, our code has an actor with one fixed variable and no methods.
-
-For our next step, you'll add access methods. This is because in order to communicate with other canisters or any other external entity, actors must send and receive messages.
-
-Specifically for your poll, you want to create the following functionality:
-
-- Obtain the current poll question.
-- Receive a list of possible options that can be voted on.
-- Submit a vote and have the dapp save the results.
-- Reset the vote counts to rerun the poll.
-
-### Defining the `getQuestion` method
-
-Let's start with the first functionality: obtaining the current poll question. To do this, you'll create the `getQuestion` method using the following code:
-
-:::caution
-The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
-:::
-
-```motoko no-repl title="src/poll_backend/main.mo"
-public query func getQuestion() : async Text {
-    question
+  public func chat(messages : [LLM.ChatMessage]) : async Text {
+    await LLM.chat(#Llama3_1_8B, messages);
+  };
 };
 ```
 
 :::info
 **What does this code do?**
 
-This `getQuestion` method takes the current value of the `question` variable and returns it to the caller. There are some important things regarding methods and their behavior to be aware of, such as:
+First, the code imports the `LLM` package from `mo:llm`. Next, it creates an actor. Recall that an actor is a process with an encapsulated state. Actors contain both code and data and communicate by sending and receiving messages. A canister can only contain a single actor.
 
-- All methods that return values on ICP have to be declared as `async` in order to allow asynchronous execution.
-- Since the `getQuestion` method doesn't change any data, it can be declared as a `query` call. You'll dive further into this shortly.
-- This method uses the `Text` type that you previously have already imported at the top of the file.
+Then, two functions are defined:
+
+- `prompt`: A public function that takes an input of `Text` and returns an output of `Text`. It makes a call to the LLM to generate a response base on the `Text` passed to the function.
+
+- `chat`: A public function that is used to continue the conversation after the first initial prompt.
 :::
 
-### Query calls vs. update calls
+## Reviewing the frontend code
 
-A **query call** is executed on one node of a <GlossaryTooltip>subnet</GlossaryTooltip>. It is not possible to use query calls to alter data.
-
-An **update call** is executed on all nodes of a subnet. The result must pass through consensus on the subnet and has the ability to alter data.
-
-A detailed comparison breakdown can be found below:
-
-|                      | Queries                    | Updates                |
-|----------------------|----------------------------|------------------------|
-| Resource consumption | Low                        | High                   |
-| Response times       | Fast (300ms-900ms)         | Slow (2s-10s)          |
-| Cost                 | Free (may incur a cost in the future)  | Cost cycles            |
-| Data change         | Not allowed to change data | Allowed to change data |
-| Security            | Results not certified by default | Results [certified by default](https://internetcomputer.org/how-it-works/asset-certification/) |
-
-
-After adding the `getQuestion` method, your `main.mo` file should look like this:
-
-```motoko title="src/poll_backend/main.mo"
-import Text "mo:base/Text";
-
-actor {
-    var question: Text = "What is your favorite programming language?";
-    public query func getQuestion() : async Text {
-      question
-    };
-}
-```
-
-### Creating a data structure to store the data
-
-In your poll, you will be storing each poll option and a number associated with how many votes each option has. This collection of data will be in the form of a *key-value store*. In other languages, this data structure is known as a "dictionary" or a "map." In Motoko, this data structure is called an [`RBTree`](/motoko/main/base/RBTree.md).
-
-`RBTree` maps a **vote option** of type `Text` to a **vote count** of type `Nat`. `Text` is a data type for string text values, and `Nat` is a data type for natural numbers, which are whole numbers without decimal points.
-
-To visualize this data structure, the following table displays how a vote option `ID` can be mapped to the current `Vote count` associated with it.
-
-For example, the data structure for our "What is your favorite programming language?" poll may look like this:
-
-| ID  | Vote count |
-| --- | ------ |
-| "Motoko"   | 0 |
-| "Rust"   |   0 |
-| "TypeScript"   |  0 |
-| "Python"   | 0     |
-
-### Importing additional dependencies
-
-In order to store and query the `RBTree` data structure, you need to import a few different things. These are:
-
-- To use `RBTree`, you need to import `RBTree`.
-- To use `Nat` data types, you need to import `Nat`.
-- Later in this tutorial you will use `Iter`, which you will import now so that it is ready to use later.
-
-To import these packages, add the following import statements to the beginning of the `main.mo` file:
-
-```motoko no-repl title="src/poll_backend/main.mo"
-import RBTree "mo:base/RBTree";
-import Nat "mo:base/Nat";
-import Iter "mo:base/Iter";
-```
-
-### Declaring the `votes` variable
-Next, you need to add some code inside the actor to declare the variable for the data structure:
-
-```motoko no-repl title="src/poll_backend/main.mo"
-    var votes: RBTree.RBTree<Text, Nat> = RBTree.RBTree(Text.compare);
-```
-
-:::info
-**What does this code do?**
-In this code, you create a variable called `votes` with the type `RBTree.RBTree<Text, Nat>`.
-:::
-
-### Declaring the `getVotes` method
-
-Now that you have the data collection structure, you need to create a method that queries the amount of vote counts per option. This will be a query call since it will not alter the data.
-
-Insert the following code into your `main.mo` file; there are inline comments that help explain the code's logic:
-
-:::caution
-The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
-:::
-
-
-```motoko no-repl title="src/poll_backend/main.mo"
-// query the list of entries and votes for each one
-// Example:
-//      * JSON that the frontend will receive using the values above:
-//      * [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
-    public query func getVotes() : async [(Text, Nat)] {
-        Iter.toArray(votes.entries())
-
-    };
+In this example, the application's frontend contains the following asset files:
 
 ```
-
-:::info
-**What does this code do?**
-
-First, the `getVotes` method returns an [`Array`](/docs/motoko/main/base/Array.md), which is a simple container used to store multiple values. In this code, the array holds elements that are in the form of a `tuple`. A tuple stores multiple items in a single variable. The tuples in this code are of type `(Text, Nat)`.
-
-Then, the class `Iter` represents an iterator, which is a pointer-like data structure allowing for the data structure's values to be parsed one by one in a sequential manner. This class uses the statement `Iter.toArray(votes.entries())`, which executes the `votes.entries()` method and then produces an iterator of tuples `(Text, Nat)` that represent the `RBTree`'s values.
-
-Then, the `Iter.toArray()` is a standard function that converts `Iter<(Text,Nat)>` to an array of `(Text, Nat)`. This step is so that the frontend receives an array instead of an iterator.
-:::
-
-
-### Declaring the `vote` method
-
-Our next step is to create a new method called `vote` that uses an update call to update the canister's state.
-
-Insert the following code into your `main.mo` file; there are inline comments that help explain the code's logic:
-
-:::caution
-The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
-:::
-
-
-```motoko no-repl title="src/poll_backend/main.mo"
- // This method takes an entry to vote for, updates the data and returns the updated hashmap
-// Example input: vote("Motoko")
-// Example:
-//      * JSON that the frontend will receive using the values above:
-//      * [["Motoko","1"],["Python","0"],["Rust","0"],["TypeScript","0"]]
-
-  public func vote(entry: Text) : async [(Text, Nat)] {
-
-    //Check if the entry already has votes.
-    //Note that "votes_for_entry" is of type ?Nat. This is because:
-    // * If the entry is in the RBTree, the RBTree returns a number.
-    // * If the entry is not in the RBTree, the RBTree returns `null` for the new entry.
-    let votes_for_entry :?Nat = votes.get(entry);
-
-    //Need to be explicit about what to do when it is null or a number so every case is taken care of
-    let current_votes_for_entry : Nat = switch votes_for_entry {
-      case null 0;
-      case (?Nat) Nat;
-    };
-
-    //once you have the number of votes, update the votes for the entry
-    votes.put(entry, current_votes_for_entry + 1);
-
-    //Return the number of votes as an array (so frontend can display it)
-    Iter.toArray(votes.entries())
-  };
+├── frontend
+│   ├── public
+│       └── bot.svg
+│       └── favicon.ico
+│       └── user.svg
+│   ├──src
+│       └── main.jsx
+│   ├── index.css
+│   ├── index.html
+│   ├── package.json
+│   ├── postcss.config.js
+│   ├── tailwind.config.js
+│   ├── vite.config.js
 ```
 
-:::info
-**What does this code do?**
-
-The `?Nat` data type is a [Motoko optional](/docs/motoko/main/base/Option.md) data type that may be a `Nat` or a `null` value. If an entry is queried for the `RBTree` data structure titled `votes`, but the entry is not present, it will return `null`. That is why you use a Motoko optional in line 11.
-:::
-
-### Declaring the `resetVotes`  method
-
-Lastly, you'll declare the `resetVotes` method that'll be used to reset the state of each vote option back to 0.
-
-Insert the following code into your `main.mo` file; there are inline comments that help explain the code's logic:
-
-:::caution
-The following example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own. To view the full code file that should be run, please see [final code](#final-code).
-:::
-
-```motoko no-repl title="src/poll_backend/main.mo"
-//This method resets the vote count for each option and returns the updated hashmap
-// Example JSON that the frontend will get using the values above
-// [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
-
-    public func resetVotes() : async [(Text, Nat)] {
-
-      votes.put("Motoko", 0);
-      votes.put("Rust", 0);
-      votes.put("TypeScript", 0);
-      votes.put("Python", 0);
-      Iter.toArray(votes.entries())
-
-    };
-```
-
-:::info
-**What does this code do?**
-This method is an update call, as it updates the canister's state. All Motoko functions are update calls by default; they are only query calls when they have the `query` keyword before the `func` keyword.
-:::
-
-## Final code
-
-Once you completed all of the above steps, your `main.mo` file should look like this:
-
-```motoko title="src/poll_backend/main.mo"
-import RBTree "mo:base/RBTree";
-import Nat "mo:base/Nat";
-import Text "mo:base/Text";
-import Iter "mo:base/Iter";
-
-actor {
-
-  var question: Text = "What is your favorite programming language?";
-  var votes: RBTree.RBTree<Text, Nat> = RBTree.RBTree(Text.compare);
-
-  public query func getQuestion() : async Text {
-    question
-  };
-
-// query the list of entries and votes for each one
-// Example:
-//      * JSON that the frontend will receive using the values above:
-//      * [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
-
-    public query func getVotes() : async [(Text, Nat)] {
-
-        Iter.toArray(votes.entries())
-
-    };
-
-// This method takes an entry to vote for, updates the data and returns the updated hashmap
-// Example input: vote("Motoko")
-// Example:
-//      * JSON that the frontend will receive using the values above:
-//      * [["Motoko","1"],["Python","0"],["Rust","0"],["TypeScript","0"]]
-
-  public func vote(entry: Text) : async [(Text, Nat)] {
-
-    //Check if the entry already has votes.
-    //Note that "votes_for_entry" is of type ?Nat. This is because:
-    // * If the entry is in the RBTree, the RBTree returns a number.
-    // * If the entry is not in the RBTree, the RBTree returns `null` for the new entry.
-    let votes_for_entry :?Nat = votes.get(entry);
-
-    //Need to be explicit about what to do when it is null or a number so every case is taken care of
-    let current_votes_for_entry : Nat = switch votes_for_entry {
-      case null 0;
-      case (?Nat) Nat;
-    };
-
-    //once you have the number of votes, update the votes for the entry
-    votes.put(entry, current_votes_for_entry + 1);
-
-    //Return the number of votes as an array (so frontend can display it)
-    Iter.toArray(votes.entries())
-  };
-
-  public func resetVotes() : async [(Text, Nat)] {
-      votes.put("Motoko", 0);
-      votes.put("Rust", 0);
-      votes.put("TypeScript", 0);
-      votes.put("Python", 0);
-      Iter.toArray(votes.entries())
-  };
-
-};
-```
-
-### Deploying the dapp locally
-
-To deploy your dapp locally, first assure that your local ICP execution environment is currently running. If you need to start the local canister execution environment, run the command:
-
-```bash
-dfx start --clean --background
-```
-
-Then, you can deploy the dapp with the command:
-
-```bash
-dfx deploy
-```
-
-You may recall that in the previous module, [exploring a live demo](/docs/tutorials/developer-liftoff/level-1/1.1-live-demo), you used the `--playground` flag to deploy your canister to the playground network. In this module, you aren't using any flags, which defaults to deploying the canister to the local environment. You can also specify this with the flag `--network local`.
-
-Additionally, you aren't specifying a canister name in the `dfx deploy` command, which will deploy all canisters listed in the `dfx.json` file, which by default includes both the `poll_backend` and `poll_frontend` canisters.
-
-The output of the `dfx deploy` command will resemble the following:
-
-```bash
-URLs:
-  Frontend canister via browser
-    poll_frontend: http://127.0.0.1:4943/?canisterId=qsgjb-riaaa-aaaaa-aaaga-cai
-  Backend canister via Candid interface:
-    poll_backend: http://127.0.0.1:4943/?canisterId=qvhpv-4qaaa-aaaaa-aaagq-cai&id=qhbym-qaaaa-aaaaa-aaafq-cai
-```
-
-## Adding pre-developed frontend code
-
-Now let's create a frontend for users to interact with your dapp. You will use some basic JavaScript to keep it as simple as possible.
-
-Start by creating the file `src/poll_frontend/src/index.html` that contains the following code:
-
-```html title="src/poll_frontend/src/index.html"
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple poll dapp hosted on an ICP canister smart contract</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-      }
-
-      .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-        position: relative;
-      }
-
-      .title-container {
-        border: 2px solid #007bff;
-        background-color: #f0f0f0;
-        padding: 20px;
-        border-radius: 5px;
-      }
-
-      h1 {
-        font-size: 32px;
-        margin-bottom: 20px;
-        text-align: center;
-        margin-top: 0;
-      }
-      h2 {
-        font-size: 24px;
-        margin-bottom: 10px;
-        text-align: center;
-      }
-
-      form {
-        margin-bottom: 20px;
-        border: 2px solid #8bc34a;
-        padding: 20px;
-        border-radius: 5px;
-      }
-
-      label {
-        display: block;
-        margin-bottom: 10px;
-        font-size: 18px;
-        text-align: left;
-      }
-
-      input[type="radio"] {
-        margin-right: 5px;
-      }
-      button {
-        padding: 10px 20px;
-        background-color: #007bff;
-        border: none;
-        color: #fff;
-        font-size: 18px;
-        cursor: pointer;
-        border-radius: 5px;
-      }
-      button#reset {
-        background-color: #dc3545;
-        position: absolute;
-        bottom: 20px;
-        left: 20px;
-        margin: 10px 0; /* Add margin */
-      }
-
-      button:hover {
-        background-color: #0056b3;
-      }
-
-      #results {
-        margin-top: 20px;
-        font-size: 18px;
-        border: 2px solid #8bc34a;
-        padding: 20px;
-        border-radius: 5px;
-        position: relative;
-      }
-    </style>
-</head>
-<body>
-    <div class="container">
-      <div class="title-container">
-        <h1>Simple Voting Poll</h1>
-      </div>
-      <h2 id="question">What is your favorite programming language?</h2>
-
-      <!-- Form where users vote -->
-      <div class="form-container">
-        <form id="radioForm">
-            <label>
-                <input type="radio" name="option" value="Rust"> Rust
-            </label><br>
-            <label>
-                <input type="radio" name="option" value="Motoko"> Motoko
-            </label><br>
-            <label>
-                <input type="radio" name="option" value="TypeScript"> TypeScript
-            </label><br>
-            <label>
-                <input type="radio" name="option" value="Python"> Python
-            </label><br>
-            <button type="submit">Vote</button>
-        </form>
-      </div>
-      <!-- Poll results appear here-->
-      <h2 id="results-title">Results</h2>
-      <div id="results"></div>
-    </div>
-    <button id="reset">Reset Poll</button>
-
-
-</body>
-</html>
-```
-
-:::info
-**What does this code do?**
-The HTML code above is a simple form that provides the end user with options to select using radio buttons. There is nothing 'Web3' or specific to ICP about this code.
-:::
-
-Next, you will need a `webpack.config.js` file that defines several parameters to facilitate your local development web server.
-
-Create the file `webpack.config.js` in the root of your project that contains the following code:
-
-```js title="webpack.config.js"
-require("dotenv").config();
-const path = require("path");
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
-const CopyPlugin = require("copy-webpack-plugin");
-
-const isDevelopment = process.env.NODE_ENV !== "production";
-
-const frontendDirectory = "poll_frontend";
-
-const frontend_entry = path.join("src", frontendDirectory, "src", "index.html");
-
-module.exports = {
-  target: "web",
-  mode: isDevelopment ? "development" : "production",
-  entry: {
-    // The frontend.entrypoint points to the HTML file for this build, so we need
-    // to replace the extension to `.js`.
-    index: path.join(__dirname, frontend_entry).replace(/\.html$/, ".js"),
-  },
-  devtool: isDevelopment ? "source-map" : false,
-  optimization: {
-    minimize: !isDevelopment,
-    minimizer: [new TerserPlugin()],
-  },
-  resolve: {
-    extensions: [".js", ".ts", ".jsx", ".tsx"],
-    fallback: {
-      assert: require.resolve("assert/"),
-      buffer: require.resolve("buffer/"),
-      events: require.resolve("events/"),
-      stream: require.resolve("stream-browserify/"),
-      util: require.resolve("util/"),
-    },
-  },
-  output: {
-    filename: "index.js",
-    path: path.join(__dirname, "dist", frontendDirectory),
-  },
-
-  // Depending in the language or framework you are using for
-  // front-end development, add module loaders to the default
-  // webpack configuration. For example, if you are using React
-  // modules and CSS as described in the "Adding a stylesheet"
-  // tutorial, uncomment the following lines:
-  // module: {
-  //  rules: [
-  //    { test: /\.(ts|tsx|jsx)$/, loader: "ts-loader" },
-  //    { test: /\.css$/, use: ['style-loader','css-loader'] }
-  //  ]
-  // },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, frontend_entry),
-      cache: false,
-    }),
-    new webpack.EnvironmentPlugin([
-      ...Object.keys(process.env).filter((key) => {
-        if (key.includes("CANISTER")) return true;
-        if (key.includes("DFX")) return true;
-        return false;
-      }),
-    ]),
-    new webpack.ProvidePlugin({
-      Buffer: [require.resolve("buffer/"), "Buffer"],
-      process: require.resolve("process/browser"),
-    }),
-    new CopyPlugin({
-      patterns: [
-        {
-          from: `src/${frontendDirectory}/src/.ic-assets.json*`,
-          to: ".ic-assets.json5",
-          noErrorOnMissing: true,
-        },
-      ],
-    }),
-  ],
-  // proxy /api to port 4943 during development.
-  // if you edit dfx.json to define a project-specific local network, change the port to match.
-  devServer: {
-    proxy: {
-      "/api": {
-        target: "http://127.0.0.1:4943",
-        changeOrigin: true,
-        pathRewrite: {
-          "^/api": "/api",
-        },
-      },
-    },
-    static: path.resolve(__dirname, "src", frontendDirectory, "assets"),
-    hot: true,
-    watchFiles: [path.resolve(__dirname, "src", frontendDirectory)],
-    liveReload: true,
-  },
-};
-```
-
-Lastly, you need to update the `index.js` file in order for your frontend canister to communicate with our backend canister and have the result of that communication reflected within the frontend's HTML.
-
-Create the `src/poll_frontend/src/index.js` file with the following code:
-
-
-```javascript title="src/poll_frontend/src/index.js"
-const pollForm = document.getElementById("radioForm");
-const resultsDiv = document.getElementById('results');
-const resetButton = document.getElementById('reset');
-
-import { poll_backend } from "../../declarations/poll_backend";
-
-```
-
-:::info
-**What does this code do?**
-
-In this code, the statement `import { poll_backend } from "../../declarations/poll_backend";` is what allows the frontend to import an interface for the backend canister and seamlessly interact with it.
-
-:::
-
-Next, let's add a query to our backend canister to get the poll's question, and a query to get the current vote count for each option:
-
-```javascript title="src/poll_frontend/src/index.js"
-//Load the Simple Poll's question from the backend when the app loads
-document.addEventListener('DOMContentLoaded', async (e) => {
-   //note that this is at beginning of the submit callback, this is deliberate
-  //This is so the default behavior is set BEFORE the awaits are called below
-  e.preventDefault();
-
-  // Query the question from the backend
-  const question = await poll_backend.getQuestion();
-  document.getElementById("question").innerText = question;
-
-  //Query the vote counts for each option
-  // Example JSON that the frontend will get using the values above
-  // [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
-  const voteCounts = await poll_backend.getVotes();
-  updateLocalVoteCounts(voteCounts);
-  displayResults();
-  return false;
-}, false);
-```
-
-To make this code fully functional, you'll need to add a few other pieces of Javascript. Ultimately, your `index.js` file will need to look like this:
-
-```javascript title="src/poll_frontend/src/index.js"
-const pollForm = document.getElementById("radioForm");
-const resultsDiv = document.getElementById('results');
-const resetButton = document.getElementById('reset');
-
-//Note you will use "poll_backend" in this JavaScript code a few times to call the backend
-import { poll_backend } from "../../declarations/poll_backend";
-
-//1. LOCAL DATA
-const pollResults = {
-    "Rust": 0,
-    "Motoko": 0,
-    "TypeScript": 0,
-    "Python": 0
+In these files, `main.jsx` contains the code necessary for the frontend to communicate with the backend.
+
+```javascript title="frontend/src/main.jsx"
+import React, { useState, useRef, useEffect } from 'react';
+import ReactDOM from 'react-dom/client';
+import { backend } from 'declarations/backend';
+import botImg from '/bot.svg';
+import userImg from '/user.svg';
+import '/index.css';
+
+const App = () => {
+  const [chat, setChat] = useState([
+    {
+      role: { system: null },
+      content: "I'm a sovereign AI agent living on the Internet Computer. Ask me anything."
+    }
+  ]);
+  const [inputValue, setInputValue] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const chatBoxRef = useRef(null);
+
+  const formatDate = (date) => {
+    const h = '0' + date.getHours();
+    const m = '0' + date.getMinutes();
+    return `${h.slice(-2)}:${m.slice(-2)}`;
+  };
+
+  const askAgent = async (messages) => {
+    try {
+      const response = await backend.chat(messages);
+      setChat((prevChat) => {
+        const newChat = [...prevChat];
+        newChat.pop();
+        newChat.push({ role: { system: null }, content: response });
+        return newChat;
+      });
+    } catch (e) {
+      console.log(e);
+      const eStr = String(e);
+      const match = eStr.match(/(SysTransient|CanisterReject), \\+"([^\\"]+)/);
+      if (match) {
+        alert(match[2]);
+      }
+      setChat((prevChat) => {
+        const newChat = [...prevChat];
+        newChat.pop();
+        return newChat;
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!inputValue.trim() || isLoading) return;
+
+    const userMessage = {
+      role: { user: null },
+      content: inputValue
+    };
+    const thinkingMessage = {
+      role: { system: null },
+      content: 'Thinking ...'
+    };
+    setChat((prevChat) => [...prevChat, userMessage, thinkingMessage]);
+    setInputValue('');
+    setIsLoading(true);
+    const messagesToSend = chat.slice(1).concat(userMessage);
+    askAgent(messagesToSend);
+  };
+
+  useEffect(() => {
+    if (chatBoxRef.current) {
+      chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
+    }
+  }, [chat]);
+
+  return (
+    <div className="flex min-h-screen items-center justify-center bg-gray-50 p-4">
+      <div className="flex h-[80vh] w-full max-w-2xl flex-col rounded-lg bg-white shadow-lg">
+        <div className="flex-1 overflow-y-auto rounded-t-lg bg-gray-100 p-4" ref={chatBoxRef}>
+          {chat.map((message, index) => {
+            const isUser = 'user' in message.role;
+            const img = isUser ? userImg : botImg;
+            const name = isUser ? 'User' : 'System';
+            const text = message.content;
+
+            return (
+              <div key={index} className={`flex ${isUser ? 'justify-end' : 'justify-start'} mb-4`}>
+                {!isUser && (
+                  <div
+                    className="mr-2 h-10 w-10 rounded-full"
+                    style={{ backgroundImage: `url(${img})`, backgroundSize: 'cover' }}
+                  ></div>
+                )}
+                <div className={`max-w-[70%] rounded-lg p-3 ${isUser ? 'bg-blue-500 text-white' : 'bg-white shadow'}`}>
+                  <div
+                    className={`mb-1 flex items-center justify-between text-sm ${isUser ? 'text-white' : 'text-gray-500'}`}
+                  >
+                    <div>{name}</div>
+                    <div className="mx-2">{formatDate(new Date())}</div>
+                  </div>
+                  <div>{text}</div>
+                </div>
+                {isUser && (
+                  <div
+                    className="ml-2 h-10 w-10 rounded-full"
+                    style={{ backgroundImage: `url(${img})`, backgroundSize: 'cover' }}
+                  ></div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+        <form className="flex rounded-b-lg border-t bg-white p-4" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            className="flex-1 rounded-l border p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Ask anything ..."
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            disabled={isLoading}
+          />
+          <button
+            type="submit"
+            className="rounded-r bg-blue-500 p-2 text-white hover:bg-blue-600 disabled:bg-blue-300"
+            disabled={isLoading}
+          >
+            Send
+          </button>
+        </form>
+      </div>
+    </div>
+  );
 };
 
-//2. EVENT LISTENERS
+export default App;
 
-//Load the Simple Poll's question from the backend when the app loads
-document.addEventListener('DOMContentLoaded', async (e) => {
-   //note that this is at beginning of the submit callback, this is deliberate
-  //This is so the default behavior is set BEFORE the awaits are called below
-  e.preventDefault();
-
-  // Query the question from the backend
-  const question = await poll_backend.getQuestion();
-  document.getElementById("question").innerText = question;
-  // Query the question from the backend
-  const question = await poll_backend.getQuestion();
-  document.getElementById("question").innerText = question;
-
-  //Query the vote counts for each option
-  // Example JSON that the frontend will get using the values above
-  // [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
-  const voteCounts = await poll_backend.getVotes();
-  updateLocalVoteCounts(voteCounts);
-  displayResults();
-  return false;
-}, false);
-
-//Event listener that listens for when the form is submitted.
-//When the form is submitted with an option, it calls the backend canister
-//via "await poll_backend.vote(selectedOption)"
-pollForm.addEventListener('submit', async (e) => {
-  //note that this is at beginning of the submit callback, this is deliberate
-  //This is so the default behavior is set BEFORE the awaits are called below
-  e.preventDefault();
-
-  const formData = new FormData(pollForm);
-  const checkedValue = formData.get("option");
-
-  const updatedVoteCounts = await poll_backend.vote(checkedValue);
-  console.log("Returning from await...")
-  console.log(updatedVoteCounts);
-  updateLocalVoteCounts(updatedVoteCounts);
-  displayResults();
-  return false;
-}, false);
-
-resetButton.addEventListener('click', async (e) => {
-
-    e.preventDefault();
-
-    //Reset the options in the backend
-    await poll_backend.resetVotes();
-    const voteCounts = await poll_backend.getVotes();
-    updateLocalVoteCounts(voteCounts);
-
-    //re-render the results once the votes are reset in the backend
-    displayResults();
-    return false;
-}, false);
-
-//3. HELPER FUNCTIONS
-
-//Helper vanilla JS function to create the HTML to render the results of the poll
-function displayResults() {
-  let resultHTML = '<ul>';
-  for (let key in pollResults) {
-      resultHTML += '<li><strong>' + key + '</strong>: ' + pollResults[key] + '</li>';
-  }
-  resultHTML += '</ul>';
-  resultsDiv.innerHTML = resultHTML;
-};
-
-//This helper updates the local JS object that the browser holds
-// Example JSON that the frontend will get using the values above
-  // [["Motoko","0"],["Python","0"],["Rust","0"],["TypeScript","0"]]
-function updateLocalVoteCounts(arrayOfVoteArrays){
-
-  for (let voteArray of arrayOfVoteArrays) {
-    //Example voteArray -> ["Motoko","0"]
-    let voteOption = voteArray[0];
-    let voteCount = voteArray[1];
-    pollResults[voteOption] = voteCount;
-  }
-
-};
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
 ```
 
-:::info
-**What does this code do?**
+## How does the frontend communicate with the backend?
 
-The remainder of this code is annotated with comments to help explain how it works. It can be helpful to read through and understand what this code does, but you will not be focusing on the fundamentals of Javascript until a later tutorial.
-:::
+The frontend canister is essentially a web server hosting a website. When a user loads the application, the web browser fetches the user interface from the frontend canister. Once the frontend is loaded into the browser, the user can interact with it, triggering messages to be sent to the backend.
 
-You will need to configure the project to use certain `npm` packages. These packages are defined in a file called `package.json`. Create a new `package.json` file in your project's root that contains the following:
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/app-flow.png")}
+    alt="Application flow"
+    width="800"
+  />
+</div>
 
-```json title="package.json"
-{
-  "name": "poll_frontend",
-  "version": "0.2.0",
-  "description": "Internet Computer starter application",
-  "keywords": [
-    "Internet Computer",
-    "Motoko",
-    "JavaScript",
-    "Canister"
-  ],
-  "scripts": {
-    "build": "webpack",
-    "prebuild": "dfx generate",
-    "start": "webpack serve --mode development --env development",
-    "deploy:local": "dfx deploy --network=local",
-    "deploy:ic": "dfx deploy --network ic",
-    "generate": "dfx generate poll_backend"
-  },
-  "dependencies": {
-    "@dfinity/agent": "^0.19.2",
-    "@dfinity/candid": "^0.19.2",
-    "@dfinity/principal": "^0.19.2"
-  },
-  "devDependencies": {
-    "assert": "2.0.0",
-    "buffer": "6.0.3",
-    "copy-webpack-plugin": "^11.0.0",
-    "dotenv": "^16.0.3",
-    "events": "3.3.0",
-    "html-webpack-plugin": "5.5.0",
-    "process": "0.11.10",
-    "stream-browserify": "3.0.0",
-    "terser-webpack-plugin": "^5.3.3",
-    "util": "0.12.4",
-    "webpack": "^5.73.0",
-    "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.8.1"
-  },
-  "engines": {
-    "node": "^12 || ^14 || ^16 || ^18"
-  },
-  "browserslist": [
-    "last 2 chrome version",
-    "last 2 firefox version",
-    "last 2 safari version",
-    "last 2 edge version"
-  ]
-}
-```
+In this script, the backend declarations are imported with `import { backend } from 'declarations/backend';`. Declaration files define the public methods of a canister and their input and output types. For this application, the declarations file will include the backend's `prompt` and `chat` methods and their `Text` input and output types. Declaration files are generated by `dfx` during the build process. If you build this project locally, you will see them; they are now shown in the ICP Ninja file viewer.
 
-Finally, update your project's `dfx.json` file to include the a `dist/poll_frontend/` directory definition for the frontend canister. This directory will hold your frontend canister's assets once the canister has been compiled:
+When the agent makes a call to the backend canister, it uses these declaration files to determine which public methods it can submit requests to. Then it will create and send the request containing the request type, canister ID, method name, and any input or arguments to be passed to the method.
 
-```json title="dfx.json"
-{
-  "canisters": {
-    "poll_backend": {
-      "main": "src/poll_backend/main.mo",
-      "type": "motoko"
-    },
-    "poll_frontend": {
-      "dependencies": [
-        "poll_backend"
-      ],
-      "frontend": {
-        "entrypoint": "src/poll_frontend/src/index.html"
-      },
-      "source": [
-        "src/poll_frontend/assets",
-        "dist/poll_frontend/"
-      ],
-      "type": "assets"
-    }
-  },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
-  "output_env_file": ".env",
-  "version": 1
-}
-```
+In this example, the user interface includes a text input box and a button to submit the chat input. When the button is pressed, the ICP JavaScript agent sends a request to the `backend` canister's `prompt` method that includes the user's text input, which passes the input to the LLM to generate a response.
 
-## Re-deploying the dapp
+The backend processes the request, then responds to the agent with an outgoing message that includes the result of the method.
 
-Install the `npm` packages defined in the `package.json` file and re-deploy the dapp locally with the commands:
+## Deploy and test
 
-```bash
-npm install
-dfx deploy
-```
-
-:::info
-If you receive the error:
+To deploy this app in ICP Ninja, select the 'Deploy' button in the upper right corner of the IDE. In the build logs, you will see the build process:
 
 ```
-Error: Failed while trying to deploy canisters.
-Caused by: Failed to build all canisters.
-Caused by: Failed while trying to build all canisters.
-Caused by: The post-build step failed for canister 'bd3sg-teaaa-aaaaa-qaaba-cai' (poll_frontend)
-Caused by: Failed to assert source paths.
-Caused by: Unable to determine canonical location of asset source path /Users/jessie.mongeon/poll/dist/poll_frontend/
-Caused by: Failed to canonicalize /Users/jessie.mongeon/poll/dist/poll_frontend/
-Caused by: No such file or directory (os error 2)
+Deploying code onchain...
+→ Reserving canisters onchain
+→ Building backend
+→ Building frontend
+→ Uploading frontend assets
+Backend Internet Computer URL:
+https://a4gq6-oaaaa-aaaab-qaa4q-cai.icp1.io/?id=6yq5h-4aaaa-aaaab-qbmfa-cai
+🥷🚀🎉 Your dapp's Internet Computer URL is ready:
+https://7azie-saaaa-aaaab-qbmba-cai.icp1.io
+⏰ Your dapp will be available for 20 minutes
 ```
 
-Run the following command:
+Open the second URL, in this example `https://7azie-saaaa-aaaab-qbmba-cai.icp1.io`, to view the application deployed on the mainnet.
 
-```
-mkdir dist/poll_frontend/
-```
-:::
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/llm-bot.png")}
+    alt="LLM Chat bot example"
+    width="800"
+  />
+</div>
 
-Now, when the terminal's output displays the following, open the `poll_frontend` URL in a web browser:
+To test out your dapp, give it a prompt such as "What is the Internet Computer?"
 
-```bash
-  poll_frontend:
-      - http://127.0.0.1:4943/?canisterId=bd3sg-teaaa-aaaaa-qaaba-cai
-      - http://bd3sg-teaaa-aaaaa-qaaba-cai.localhost:4943/
-  Backend canister via Candid interface:
-    poll_backend: http://127.0.0.1:4943/?canisterId=asrmz-lmaaa-aaaaa-qaaeq-cai&id=by6od-j4aaa-aaaaa-qaadq-cai
-```
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/llm-bot2.png")}
+    alt="LLM Chat bot example"
+    width="800"
+  />
+</div>
 
-Your finished dapp should be displayed in the browser and look like this:
-
-![Poll dapp](../_attachments/poll-dapp.png)
-
-Congratulations! You've just developed your first full dapp!
-
-You can find the [finished code's repo](https://github.com/jessiemongeon1/dev-journey-poll-dapp/tree/main) for you to clone or fork.
+Want to share your new dapp with a friend? Simply send them the frontend canister's URL, such as: `https://7azie-saaaa-aaaab-qbmba-cai.icp1.io`
 
 ## Need help?
 

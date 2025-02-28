@@ -15,7 +15,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/J5rhdzjuq6k?si=3o1NdIWr0TeNYSkU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> </div>
 
-`dfx` is a command line utility that is used to interact with the IC SDK. It is the primary tool that is used for creating, managing, and deploying dapps onto the Internet Computer.
+`dfx` is a command line tool used for creating, managing, and deploying dapps onto ICP.
 
 The `dfx` parent command has several flags and subcommands that can be used to perform a wide array of operations. First, you'll take a look at the basic usage of the command, and then you'll get started creating your first project using dfx.
 
@@ -60,76 +60,29 @@ Below are the essential options that you'll be referencing throughout the develo
 - `--identity <identity>`: Used to specify the user identity to be used with the command.
 - `--logfile <logfile>`: Used to write the command's output logs to a specific file.
 
-## Upgrading to the latest version of dfx
-
-When a new version of `dfx` is released, it is recommended that the latest version be installed whenever possible. This ensures that you are benefiting from the latest features, enhancements, and fixes.
-
-To upgrade to the latest version, the `dfx upgrade` command can be used. This command will compare your current version of `dfx` to the latest version available, and if a new version is available, the command will automatically download and install the newest version.
-
-## Installing a specific version of dfx
-
-If there is a specific release of `dfx` you'd like to use, you can set the `DFX_VERSION` environment variable, then run the install script. The install script looks for this environment variable during installation to determine which version should be downloaded. If no variable is set, the latest version is downloaded.
-
-To set the `DFX_VERSION` variable and install a specific version of `dfx`, run the command:
-
-```bash
-DFX_VERSION=0.23.0 sh -ci "$(curl -sSL https://internetcomputer.org/install.sh)"
-```
-
 ## Creating a new project with dfx
 
-All dapps on ICP start off as **projects**. Projects are created using the `dfx` command and subcommands.
+:::info
+You can follow along using the web IDE [ICP Ninja](https://icp.ninja/) as an alternative developer environment.
+:::
 
-To get started, you'll use the default sample app to demonstrate how to create a project and explore the default project structure that is generated when a new project is created.
+All dapps on ICP start off as **projects**. Projects are created using the `dfx new` command.
+
+To get started, you'll use the default app to demonstrate how to create a project and explore project structure.
 
 ### Step 1: Open a terminal window on your local computer.
 
-Ensure that you are in your working directory, `developer_ladder`.
+Ensure that you are in your working directory, `developer_liftoff`.
 
 ### Step 2: Create a new project with the name 'hello_world' with the command:
 
 ```
-dfx new hello_world
+dfx new hello_world --type=motoko --frontend=react
 ```
 
-You will be prompted to select the language that your backend canister will use:
+This command will create a new project using the default Motoko backend and React frontend. To create a project using the Rust project template, the flag `--type=rust` can be used instead.
 
-```
-? Select a backend language: ›
-❯ Motoko
-Rust
-TypeScript (Azle)
-Python (Kybra)
-```
-
-:::info
-`dfx` versions `v0.17.0` and newer support this `dfx new` interactive prompt. [Learn more about `dfx v0.17.0`](/blog/2024/02/14/news-and-updates/update#dfx-v0170).
-:::
-
-Then, select a frontend framework for your frontend canister. In this example, select:
-
-```
-? Select a frontend framework: ›
-SvelteKit
-React
-Vue
-❯ Vanilla JS
-No JS template
-No frontend canister
-```
-
-Lastly, you can include extra features to be added to your project:
-
-```
-? Add extra features (space to select, enter to confirm) ›
-⬚ Internet Identity
-⬚ Bitcoin (Regtest)
-⬚ Frontend tests
-```
-
-When no flags are used, the `dfx new` command will create a new project using the default Motoko template. To create a project using the Rust project template, the flag `--type=rust` should be included in the command.
-
-In this tutorial series, you will be using Motoko as the development language, so you do not need to pass any additional flags with this command.
+Alternatively, you can open this project in the web IDE [ICP Ninja](https://icp.ninja/projects/hello-world).
 
 :::info
 When creating new projects with `dfx`, only alphanumeric characters and underscores should be used. This is to assure that project names are valid within Motoko, JavaScript, and other contexts.
@@ -185,35 +138,18 @@ In this directory, the following files and directories are notable:
 
 By default, the `dfx.json` file will contain some automatically generated configuration settings for your new project. These settings will provide basic functionality for the default dapp, which is a simple 'Hello, world' program.
 
+<div class="text--center">
+  <img
+    src={useBaseUrl("/img/docs/app-arch.png")}
+    alt="Application architecture"
+    width="800"
+  />
+</div>
+
 To review the default configuration file for the project, open the `dfx.json` file in a code or text editor. The contents will resemble the following:
 
-```json title="dfx.json"
-{
-  "canisters": {
-    "hello_world_backend": {
-      "main": "src/hello_world_backend/main.mo",
-      "type": "motoko"
-    },
-    "hello_world_frontend": {
-      "dependencies": [
-        "hello_world_backend"
-      ],
-      "source": [
-        "src/hello_world_frontend/dist"
-      ],
-      "type": "assets",
-      "workspace": "hello_world_frontend"
-    }
-  },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
-  "output_env_file": ".env",
-  "version": 1
-}
+```json title="dfx.json" file=../../../samples/motoko/hello_world/dfx.json
+
 ```
 
 Let's explore these settings a bit further:
@@ -244,7 +180,6 @@ In this simple 'Hello, world' program, there are a few key elements:
 - This code defines an `actor` rather than a `main` function as some other languages define. In Motoko, the `main` function is implicit in the file itself.
 - Instead of the traditional 'Hello, world' that uses a simple `print` function, this version of 'Hello, world' defines an actor with a public `greet` function that takes an input of a name argument with the type of `Text`.
 - Then, the program uses an async keyword to indicate that the program will return an async message that consists of a text string that is constructed using "Hello, ", the # operator, the name argument, and "!".
-
 
 You'll explore actor objects, classes, and asynchronous messages in a future tutorial. For now, this will wrap up our introduction to `dfx`.
 

@@ -15,80 +15,32 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/sZxbRAwYYMw?si=GufwOp4xBqa2F4JA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> </div>
 
-When developing canisters, the most common development workflow is to use a software development kit (SDK). The Internet Computer SDK is the most commonly used, which natively supports Motoko and Rust out of the box.
+Since ICP dapps are compiled and deployed as WebAssembly modules, many different programming languages can be used for <GlossaryTooltip>canister</GlossaryTooltip> development. However, a canister development kit (CDK) needs to be used. A CDK is an adapter used by the IC SDK that provides a programming language with the necessary features and tools required to create and manage canisters. The IC SDK natively supports the Motoko and Rust CDKs. Additionally, there are several community-created CDKs for additional languages, such as Python and TypeScript, that can be installed separately.
 
-Since ICP supports dapps that have been compiled into WebAssembly modules, many different programming languages can be used for <GlossaryTooltip>canister</GlossaryTooltip> development. However, a canister development kit (CDK) needs to be used. A CDK is an adapter used by the IC SDK that provides a programming language with the necessary features and tools required to create and manage canisters. The IC SDK comes bundled with CDKs for Motoko and Rust. Additionally, there are several community-created CDKs for additional languages, such as Python and TypeScript, that can be installed separately.
-
-It is possible to use multiple languages within a single dapp's development. Different canisters can communicate with one another using the Candid language, which is an interface description language (IDL) used by ICP canisters, allowing for multiple canisters in different languages to share and exchange information.
+It is possible to write different canisters in a project in different languages. Canisters can communicate with one another using the Candid language, which is an interface description language (IDL), allowing for canisters in different languages to share and exchange information.
 
 ## Motoko
 
-Motoko is a language that has been specifically designed by DFINITY for canister development on ICP. It supports the unique features and workflows on ICP while providing a robust yet familiar programming environment. Motoko is easy to learn and use for application development, as it has a familiar set of rules and syntax for developers that have a background in application-layer languages, such as JavaScript, Ruby, Python, or Solidity.
+Motoko is a language that has been specifically designed by DFINITY for ICP canister development. It supports the unique features and workflows on ICP while providing a robust yet familiar programming environment. Motoko is easy to learn and use for application development, as it has a familiar set of rules and syntax for developers that have a background in application-layer languages, such as JavaScript, Ruby, Python, or Solidity.
 
 Since Motoko has been developed and designed for ICP, this developer liftoff series will use Motoko for all tutorials and code walkthroughs.
 
-### Motoko attributes:
-
-- **Candid support:** Motoko has fully automatic Candid support that is built into the Motoko runtime and compiler system.
-
-- **Stable memory support:** Motoko supports automatic stable memory support.
-
-- **Asynchronous data and control flow support:** Natively supported.
-
-- **Actor paradigm support:** Natively supported.
-
-- **ICP-specific static analysis:** Enforced through multiple safety checks.
-
-- **Wasm binary size:** Wasm binary size is very small.
-
-- **Build time:** Motoko has a build time faster than Rust.
-
-- **Learning difficulty:** Learning Motoko is fairly easy.
-
-- **Memory management:** Memory is managed using an automatic garbage collection process.
-
-- **Foreign function interface support:** Not yet supported.
-
 ## Rust
 
-Rust is supported on ICP through the IC SDK and the DFINITY Rust CDK. The IC SDK automatically comes with the Rust CDK as part of the software, but the Rust CDK can be installed separately if the IC SDK is not installed. Rust is a good choice for developers who are already familiar with Rust environments, come from a background in C or C++, or are developing large, complex projects that would benefit from having a mature library ecosystem.
+Rust is supported on ICP through the Rust CDK. Rust is a good choice for developers who are already familiar with Rust environments, come from a background in C or C++, or are developing large, complex projects that would benefit from having a mature library ecosystem.
 
-Many of the tutorials in this developer liftoff series are available in a Rust version that displays identical functionality. These will be linked where applicable for those that want to follow along with Rust, though not all tutorials will have a Rust version.
-
-### Rust attributes:
-
-- **Candid support:** Candid is supported through Rust libraries, which need routine manual intervention and conversion.
-
-- **Stable memory support:** Stable memory is supported through Rust libraries and is automatic in some cases.
-
-- **Asynchronous data and control flow support:** Natively supported.
-
-- **Actor paradigm support:** Conflicts with some language features, resulting in being error-prone.
-
-- **ICP-specific static analysis:** Does not include static checking, which may result in canisters trapping when violating restrictions.
-
-- **Wasm binary size:** Wasm binary is very large and requires compression through tools.
-
-- **Build time:** Rust has a slower build time than Motoko.
-
-- **Learning difficulty:** Learning Rust can be fairly difficult, as the language is quite complex.
-
-- **Memory management:** Memory management is application-specific and has strong support through the compiler.
-
-- **Foreign function interface support:** Typical C FFI compatibility.
+Many of the tutorials in this developer liftoff series are available in a Rust variation that displays identical functionality. These will be linked where applicable for those that want to follow along with Rust, though not all tutorials will have a Rust version.
 
 ## Candid
 
-Candid is an interface description language with the primary purpose of describing the public interface of a service. In reference to ICP, a service is a program deployed in the form of a canister. Each canister has a Candid file that defines the interface description for the service.
+Candid is an interface description language with the primary purpose of describing the public interface of a service. In reference to ICP, a service is a program deployed in the form of a canister. Each canister has a Candid file that defines its public interfaces. Every interface has a sequence of argument and result types and can include annotations that are specific to ICP. Interface descriptions make it possible to interact with the service directly from the CLI, through a web-based frontend, or programmatically from another program or language.
 
 Candid is language-agnostic, allowing for interoperability between frontends and services that are written in different languages, such as Motoko, Rust, or JavaScript. Additionally, Candid supports service interface evolution by specifying changes without breaking existing clients, such as safely adding new parameters to a service without losing compatibility from existing clients.
-
-A Candid interface description defines the public methods for a service. Every method has a sequence of argument and result types and can include annotations that are specific to ICP. Interface descriptions make it possible to interact with the service directly from the CLI, through a web-based frontend, or programmatically from another program or language.
 
 Candid has a variety of features that make it a particularly good choice for developing dapps on the Internet Computer. These features include:
 
 - Candid's implementations map the Candid value directly to the values and types of the host language, meaning developers do not construct or deconstruct some abstract Candid value.
-- Candid defines rules for how series and their associated interfaces can be upgraded simply.
+- Candid defines rules for how interfaces can be upgraded simply.
 - Candid is a higher-order language, meaning it can receive more than plain data, such as references to methods and services.
 - Candid has native support for specific ICP features, such as query annotation.
 
