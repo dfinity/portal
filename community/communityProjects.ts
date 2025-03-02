@@ -2083,6 +2083,21 @@ const communityProjects: SampleItem[] = [
     contentType: ["code samples", "community repo", "live demos"],
     image: "/img/showcase/BR-DAO_logo.svg",
   },
+  {
+    index: 128,
+    title: "KongSwap",
+    body: "The one stop token shop - Trade tokens across all chains with ease using KongSwap",
+    links: {
+      github: "https://github.com/KongSwap/kong",
+      livePreview: "https://www.kongswap.io/",
+      otherLinks: "https://x.com/kongswap",
+    },
+    domains: ["DeFi"],
+    level: "advanced",
+    languages: ["Rust", "javascrip"],
+    contentType: [ "community repo", "SDK"],
+    image: "https://github.com/KongSwap/documentation/blob/main/kong_logo.png",
+  },
 
 
 ];
