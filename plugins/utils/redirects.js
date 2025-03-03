@@ -810,6 +810,10 @@ const redirects = `
   /docs/current/developer-docs/build/cdks/azle-demergent-labs https://demergent-labs.github.io/azle/
   /docs/candid-guide/candid-intro.html /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/home /docs/home
+  /docs/building /docs/home
+  /docs/building-apps/ /docs/home
+  /docs/introduction/welcome.html /docs/home
+  /docs/rust-guide/rust-quickstart.html /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /install.sh) /docs/building-apps/getting-started/install
   /become-a-member /news
   /docs/agent /docs/building-apps/interact-with-canisters/agents/overview
