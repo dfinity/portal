@@ -27,6 +27,7 @@ const redirects = `
   /docs/current/tutorials/developer-journey/* /docs/tutorials/developer-liftoff/:splat
   /docs/current/tutorials/developer-liftoff/* /docs/tutorials/developer-liftoff/:splat
   /docs/current/developer-docs/security/security-best-practices/* /docs/building-apps/security/:splat
+  /docs/building-apps/security/security-best-practices/* /docs/building-apps/security/:splat
   /docs/current/developer-docs/agents/* /docs/building-apps/interact-with-canisters/agents/:splat
   /docs/current/developer-docs/best-practices/*	/docs/building-apps/best-practices/:splat
   /docs/current/developer-docs/smart-contracts/best-practices/* /docs/building-apps/best-practices/:splat
@@ -396,6 +397,7 @@ const redirects = `
   /docs/current/developer-docs/integrations/rosetta/index  /docs/defi/overview
   /docs/current/developer-docs/integrations/rosetta/staking-support /docs/defi/rosetta/icp_rosetta/construction_api/staking
   /docs/current/developer-docs/integrations/rosetta/staking-tutorial/ /docs/defi/rosetta/icp_rosetta/construction_api/staking
+  /docs/current/developer-docs/integrations/sns/sns-intro/ /docs/building-apps/governing-apps/overview
   /docs/current/developer-docs/integrations/sns/ /docs/building-apps/governing-apps/overview
   /docs/current/developer-docs/integrations/sns/integrating/ /docs/building-apps/governing-apps/launching/integrating
   /docs/current/developer-docs/integrations/sns/integrating/frontend-integration /docs/building-apps/governing-apps/launching/integrating
@@ -712,6 +714,10 @@ const redirects = `
   /docs/samples/nft	/samples
 
   ## Misc
+  /docs/current/developer-docs/getting-started/deploy/mainnet /docs/building-apps/developing-canisters/deploy
+  /docs/current/developer-docs/functionality/bitcoin /docs/building-apps/chain-fusion/bitcoin/overview
+  /docs/current/developer-docs/build/cdks/azle-demergent-labs https://demergent-labs.github.io/azle/
+  /docs/candid-guide/candid-intro.html /docs/building-apps/interact-with-canisters/candid/candid-concepts
   /docs/current/home /docs/home
   /install.sh) /docs/building-apps/getting-started/install
   /become-a-member /news
