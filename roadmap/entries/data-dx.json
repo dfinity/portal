@@ -83,7 +83,7 @@
     {
       "title": "Project sharing",
       "overview": "Projects can be shared with others by generating a link.",
-      "status": "in_progress",
+      "status": "deployed",
       "forum": "",
       "proposal": "",
       "docs": "",
@@ -94,7 +94,7 @@
     {
       "title": "Login with Internet Identity or GitHub",
       "overview": "Users can sign into ICP Ninja with their Internet Identity or GitHub to create an account to get access to even more features on the platform.",
-      "status": "in_progress",
+      "status": "deployed",
       "forum": "",
       "proposal": "",
       "docs": "",
@@ -105,7 +105,7 @@
     {
       "title": "Saving projects",
       "overview": "Users can store their projects directly on ICP Ninja, allowing them to continue working on their projects from other devices, or simply return to them at a later time.",
-      "status": "in_progress",
+      "status": "deployed",
       "forum": "",
       "proposal": "",
       "docs": "",
@@ -116,7 +116,7 @@
     {
       "title": "Exporting projects to GitHub",
       "overview": "ICP Ninja allows users to export their projects to their GitHub account as a new repository.",
-      "status": "in_progress",
+      "status": "deployed",
       "forum": "",
       "proposal": "",
       "docs": "",
