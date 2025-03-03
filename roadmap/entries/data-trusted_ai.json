@@ -12,19 +12,19 @@
       "eta_to_render": ""
     },
     {
-      "title": "LLM Canister MVP",
+      "title": "LLM canister MVP",
       "overview": "A canister will be made available that provides an API for processing LLM prompts. This canister is an MVP and will initially rely on a centrally-managed service by DFINITY for processing the prompts. A small set of foundational models will be supported.",
       "status": "deployed",
       "milestone_id": "Ignition"
     },
     {
-      "title": "LLM Developer Experience",
+      "title": "LLM developer experience",
       "overview": "Tools and libraries to simplify the local development and the interaction with the LLM canister.",
       "status": "in_progress",
       "milestone_id": "Ignition"
     },
     {
-      "title": "LLM Workers",
+      "title": "LLM workers",
       "overview": "Introduce worker nodes that specialize in processing LLM prompts. Workers will have security guarantees similar to canister smart contracts on the Internet Computer",
       "status": "future",
       "milestone_id": "Ignition"

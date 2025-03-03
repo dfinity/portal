@@ -713,6 +713,20 @@ const redirects = `
 
   ## Misc
   /docs/current/home /docs/home
+  /install.sh) /docs/building-apps/getting-started/install
+  /become-a-member /news
+  /docs/agent /docs/building-apps/interact-with-canisters/agents/overview
+  /docs/base-libraries/int.html /docs/motoko/main/getting-started/motoko-introduction
+  /docs/base-libraries/iter.html /docs/motoko/main/getting-started/motoko-introduction
+  /docs/base-libraries/option.html /docs/motoko/main/getting-started/motoko-introduction
+  /docs/building-apps/ /docs/building-apps/getting-started/quickstart
+  /docs/building-apps/getting-started/ /docs/building-apps/getting-started/quickstart
+  /docs/candid-guide/candid-howto /docs/building-apps/interact-with-canisters/candid/candid-concepts
+  /docs/current/building-apps/getting-started/quickstart /docs/building-apps/getting-started/quickstart
+  /developers-guide/tutorials/phonebook.html /samples
+  /docs/current/tokenomics/identity-auth/auth-how-to /docs/building-apps/authentication/integrate-internet-identity
+  /docs/current/tokenomics/identity-auth/ /docs/building-apps/authentication/integrate-internet-identity
+  /docs/current/tokenomics/ /how-it-works/tokenomics
   /docs /docs/home
   /docs/current/references/ii-spec	/docs/references/ii-spec
   /docs/download /docs/building-apps/getting-started/install
