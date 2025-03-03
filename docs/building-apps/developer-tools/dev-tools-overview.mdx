@@ -1,0 +1,63 @@
+---
+keywords: [beginner, developer tools, dev tools, overview]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Developer tooling
+
+<MarkdownChipRow labels={["Beginner", "Dev Tools" ]} />
+
+Developer tools are used to create, manage, and interact with canisters. They can come in several formats, such as command line tools, onchain and off-chain libraries, and integrated development environments. For ICP developers, there are tools within each of these categories available for you to utilize when developing your ICP canisters.
+
+## Canister development kits (CDKs)
+
+A canister development kit (CDK) is an adapter used by `dfx` to provide programming languages with the necessary features and functionality to create, deploy, and manage canisters.
+
+[Motoko](/docs/motoko/main/getting-started/motoko-introduction) is ICP's native programming language. It is installed with the IC SDK.
+
+The [Rust CDK](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust) is developed and maintained by DFINITY for Rust development.
+
+There are several community-contributed and maintained CDKs for languages such as:
+
+- [Kybra: Python CDK](https://demergent-labs.github.io/kybra/).
+
+- [Azle: TypeScript CDK](https://demergent-labs.github.io/azle//).
+
+- [Bitfinity EVM for Solidity](https://docs.bitfinity.network/).
+
+- [C++ CDK](https://docs.icpp.world/).
+
+## Command line tools
+
+### `dfx`
+
+[`dfx`](/docs/building-apps/developer-tools/dfx/) is the primary tool used by developers to create, build, deploy, manage, and call canisters. `dfx` is also referred to as the IC SDK, or the Internet Computer Software Development Kit.
+
+`dfx` supports [local development](/docs/building-apps/developing-canisters/deploy) and deployment through the [`dfx start`](/docs/building-apps/developer-tools/dfx/) command, which runs a local instance of the ICP replica that can be used to deploy and test canisters on your local machine.
+
+To deploy canisters to the mainnet or make calls to canisters already deployed on the mainnet, the `--network ic` flag can be used with most `dfx` commands.
+
+- [Install `dfx`](/docs/building-apps/getting-started/install).
+
+- [`dfx` documentation](/docs/building-apps/developer-tools/dfx/).
+
+- [IC SDK GitHub repo](https://github.com/dfinity/sdk).
+
+### `dfxvm`
+
+[`dfxvm`](/docs/building-apps/developer-tools/dfxvm/dfxvm-default) is a CLI tool used for installing and switching between different versions of `dfx`. It enables developers to pivot between different projects that are built with different `dfx` versions.
+
+- [Install `dfxvm`](/docs/building-apps/getting-started/install#installing-dfx).
+
+- [`dfxvm` documentation](/docs/building-apps/developer-tools/dfxvm/dfxvm-default).
+
+- [`dfxvm` GitHub repo](https://github.com/dfinity/dfxvm).
+
+## ICP Ninja
+
+ICP Ninja is a web-based IDE designed specifically for building and deploying ICP canisters. ICP Ninja enables you to write and deploy code directly to the mainnet from the browser. Users can select from several example projects to get started building. Projects deployed through ICP Ninja are available for 20 minutes unless redeployed.
+
+- [ICP Ninja homepage](https://icp.ninja/).
+
+- [ICP Ninja documentation](/docs/building-apps/developer-tools/icp-ninja).

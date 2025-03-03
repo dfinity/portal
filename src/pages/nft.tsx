@@ -276,7 +276,7 @@ function NftPage() {
             </p>
             <p className="mb-0">
               <Link
-                href="https://internetcomputer.org/docs/current/developer-docs/defi/nfts/overview#nfts-on-the-internet-computer"
+                href="https://internetcomputer.org/ecosystem#nfts-on-the-internet-computer"
                 className="button-outline"
               >
                 Create your own
@@ -368,7 +368,7 @@ function NftPage() {
               end users can mint and trade NFTs with 0 gas fees.
 
 
-              <a href="https://internetcomputer.org/docs/current/developer-docs/defi/nfts/overview#nfts-on-the-internet-computer"  className="button-outline-white mt-6">Build your own</a>
+              <a href="https://internetcomputer.org/ecosystem#nfts-on-the-internet-computer"  className="button-outline-white mt-6">Build your own</a>
             </p>
 
 

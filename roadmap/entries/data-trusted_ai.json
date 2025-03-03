@@ -1,46 +1,10 @@
 {
   "categoryName": "Decentralized AI",
-  "categoryDescription": "Today, users have to blindly trust AI models running on centralized servers with no visibility into how data is used and how AI models produce responses. Decentralized AI solves this problem by bringing the trustworthiness, security, verifiability, and resilience of smart contracts to AI applications.",
+  "categoryDescription": "AI and ICP have significant potential to benefit one another. First, AI and ICP together enable the self-writing Internet. Given a description of an application, AI can write the application for you and, by deploying it as an ICP smart contract, make it available to you at a URL – just like that.  Second, AI running as a smart contract on ICP addresses the problem of users having to blindly trust AI models running on centralized servers by providing transparency into data usage and response generation.",
   "elements": [
     {
-      "title": "API for AI computations",
-      "overview": "API for smart contracts that allows them to run hardware-accelerated AI computations. Initially, hardware acceleration will rely on the CPU, paving the way for GPU hardware acceleration in the future.",
-      "description": "AI computations are typically a graph of a large number of floating-point operations. Abstracting those operations into an API streamlines the development of AI applications, and paves the way to introduce optiizations to these specialized workload.",
-      "status": "in_progress",
-      "milestone_id": "Ignition",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
-      "title": "Wasm64 execution environment",
-      "overview": "The execution environment is lifted to Wasm64 with the benefit of a 64-bit address space and its much larger addressable memory, allowing developers to load larger models in main memory.",
-      "description": "The execution environment is lifted to Wasm64 with the benefit of a 64-bit address space and its much larger addressable memory.",
-      "status": "in_progress",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false,
-      "milestone_id": "Ignition"
-    },
-    {
-      "title": "Tooling and libraries for developing AI smart contracts",
-      "overview": "Providing developer tooling and libraries for building AI smart contracts on ICP, reusing existing AI ecosystem tools wherever possible.",
-      "description": "Developers need tooling and libraries to implement AI smart contracts. Ideally, the existing AI ecosystem is reused as much as possible, but specialized tools and libraries might be needed for developing onchain AI applications.",
-      "status": "",
-      "milestone_id": "Ignition",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false
-    },
-    {
-      "name": "Onchain AI Inference of Larger Models",
-      "description": "In order to perform AI inference and training of larger models on chain, canister smart contracts need to run more compute- and memory-intensive workloads. This milestone expands the compute and memory capabilities of canisters and paves the way for future GPU hardware acceleration. A special focus is being placed on the developer experience by building tools to simplify writing AI applications.",
+      "title": "Foundational LLMs",
+      "description": "AI agents are a growing paradigm in software, and the Internet Computer is uniquely positioned to be the home of AI agents. Compared to the traditional IT stack, AI agents on the Internet Computer can securely and easily manage digital assets, transact amongst each other, be fully sovereign, and be tokenized and managed by DAOs. This milestone focuses on providing access to foundational LLMs, along with basic tools to make it as simple as possible to deploy agents on the Internet Computer.",
       "status": "in_progress",
       "is_milestone": true,
       "milestone_id": "Ignition",
@@ -48,34 +12,62 @@
       "eta_to_render": ""
     },
     {
-      "title": "Public specification for GPU-enabled nodes",
-      "overview": "The ICP community needs to agree and adopt the hardware specification for replica nodes with GPUs.",
-      "status": "future",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false
+      "title": "LLM canister MVP",
+      "overview": "A canister will be made available that provides an API for processing LLM prompts. This canister is an MVP and will initially rely on a centrally-managed service by DFINITY for processing the prompts. A small set of foundational models will be supported.",
+      "status": "deployed",
+      "milestone_id": "Ignition"
     },
     {
-      "title": "AI-specialized subnets with GPU-enabled nodes",
-      "overview": "AI-specialized subnets are created from nodes with GPUs and host AI smart contracts for training and inference of large models.",
-      "status": "future",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false
+      "title": "LLM developer experience",
+      "overview": "Tools and libraries to simplify the local development and the interaction with the LLM canister.",
+      "status": "in_progress",
+      "milestone_id": "Ignition"
     },
     {
-      "title": "Increase the instruction limit in queries from 5 billion instructions to 40 billion instructions.",
-      "overview": "The goal of this feature is to bring the instruction limit of queries on par with that of update calls by introducing a way for canisters to opt in into query charging.",
+      "title": "LLM workers",
+      "overview": "Introduce worker nodes that specialize in processing LLM prompts. Workers will have security guarantees similar to canister smart contracts on the Internet Computer",
       "status": "future",
-      "forum": "",
-      "proposal": "",
-      "docs": "",
-      "is_community": false,
-      "in_beta": false
+      "milestone_id": "Ignition"
+    },
+    {
+      "title": "Motoko coding fine-tuned model",
+      "overview": "Fine-tune multiple Large Language Models (LLMs) using high-quality Motoko code samples to develop the most efficient and high-performing model for Motoko programming.",
+      "status": "in_progress",
+      "milestone_id": "Beacon"
+    },
+    {
+      "title": "Model benchmarks for Motoko coding",
+      "overview": "Develop a comprehensive set of benchmarks to evaluate model performance for Motoko programming. This includes assessing both existing base LLMs and fine-tuned models to ensure accurate measurement of the effectiveness of fine-tuning efforts.",
+      "status": "in_progress",
+      "milestone_id": "Beacon"
+    },
+    {
+      "title": "Caffeine integration",
+      "overview": "Integrate the results of the fine-tuning work into Caffeine to improve the quality of generated Motoko code. This will involve leveraging the highest-performing fine-tuned model, implementing a Retrieval-Augmented Generation (RAG) solution, and optimizing prompt engineering.",
+      "status": "in_progress",
+      "milestone_id": "Beacon"
+    },
+    {
+      "title": "AI Model for Motoko code generation",
+      "description": "This milestone is the first step towards improving the capability of Large Language Models to effectively generate code in the Motoko programming language.",
+      "status": "in_progress",
+      "is_milestone": true,
+      "milestone_id": "Beacon",
+      "eta_to_render": "April 2025"
+    },
+    {
+      "title": "Caffeine platform",
+      "overview": "First release of the Caffeine platform for prompt-based ICP app creation. Integrating the fine-tuned models for Motoko code generation and using the Orbit framework to claim ownership of AI-generated applications.",
+      "status": "in_progress",
+      "milestone_id": "Vertex"
+    },
+    {
+      "title": "Caffeine alpha launch – dawn of the self-writing internet",
+      "description": "Alpha release of the Caffeine platform that allows prompt-based creation of full-stack applications. This represents a vertex where unique ICP technologies, such as its serverless compute model, enhanced orthogonal persistence, and AI models for Motoko code generation meet, creating the self-writing internet.",
+      "status": "in_progress",
+      "is_milestone": true,
+      "milestone_id": "Vertex",
+      "eta_to_render": ""
     }
   ]
 }

@@ -38,8 +38,8 @@ function FeaturePage() {
           </div>
         </section>
         <section className="container-10 relative  mt-20 lg:mt-40 mb-20 md:mb-60 flex flex-col sm:flex-row sm:gap-10 md:gap-48">
-          {/* 
-            delete this div if image is not needed 
+          {/*
+            delete this div if image is not needed
           */}
           <div className="sm:order-2 sm:shrink-0 sm:flex-1 mb-10">
             <img
@@ -51,8 +51,8 @@ function FeaturePage() {
 
           <div
             className="
-            sm:flex-1 
-            prose 
+            sm:flex-1
+            prose
             prose-h2:tw-heading-5 prose-h2:md:tw-heading-3 prose-h2:mb-2 prose-h2:md:mb-6
             prose-h3:tw-heading-7 prose-h3:mb-2
             prose-p:tw-paragraph prose-p:mb-4
@@ -159,12 +159,12 @@ function FeaturePage() {
             <CardWithDescription
               title="Deploy a 'Hello World' Dapp in 10 Minutes"
               description="Get started with your first IC dapp"
-              href="/docs/current/tutorials/developer-liftoff/"
+              href="/docs/tutorials/developer-liftoff/"
             />
             <CardWithDescription
               title="Build dapps with the language of your choice"
               description="Learch about programming languages on the ICP."
-              href="/docs/current/developer-docs/smart-contracts/write/overview"
+              href="/docs/building-apps/developing-canisters/what-are-canisters"
             />
             <CardWithDescription
               title="Sample Code"
