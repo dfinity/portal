@@ -11,7 +11,7 @@ The Languages team is excited to announce a major overhaul of the Motoko base li
 
 Here is a quick summary of the biggest features and improvements:
 
-* New, fully persistent data structures for imperative and functional programmers
+* New imperative and functional data structures 
 * Simplified type conversions
 * Data structures no longer rely on hashing
 * `range()` functions for each numeric type, with an exclusive upper bound
@@ -77,7 +77,7 @@ persistent actor {
 
 You can also use the purely functional `List` module:
 
-```
+```motoko no-repl
 import PureList "mo:base/pure/List";
 
 persistent actor {
@@ -90,7 +90,7 @@ persistent actor {
 
 We also included an efficient [stable BTree map implementation](https://github.com/canscale/StableHeapBTreeMap) (big thanks to [Byron Becker](https://github.com/ByronBecker)):
 
-```
+```motoko no-repl
 import PureMap "mo:base/pure/Map";
 import Text "mo:base/Text";
 import Array "mo:base/Array";
@@ -119,7 +119,7 @@ Here's the complete list of data structures in the new base library:
 
 It's simple to convert between mutable and purely functional data structures:
 
-```
+```motoko no-repl
 import List "mo:base/List";
 import PureList "mo:base/pure/List";
 import Text "mo:base/Text";
