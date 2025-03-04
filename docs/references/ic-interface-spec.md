@@ -1482,7 +1482,7 @@ defaulting to `I = i32` if the canister declares no memory.
       ) -> ();                                                                            // U CQ Ry Rt CRy CRt T
     ic0.call_on_cleanup : (fun : I, env : I) -> ();                                       // U CQ Ry Rt CRy CRt T
     ic0.call_data_append : (src : I, size : I) -> ();                                     // U CQ Ry Rt CRy CRt T
-    ic0.call_with_best_effort_response : (timeout_seconds : i32) -> ();         // U CQ Ry Rt CRy CRt T
+    ic0.call_with_best_effort_response : (timeout_seconds : i32) -> ();                   // U CQ Ry Rt CRy CRt T
     ic0.call_cycles_add128 : (amount_high : i64, amount_low: i64) -> ();                  // U Ry Rt T
     ic0.call_perform : () -> ( err_code : i32 );                                          // U CQ Ry Rt CRy CRt T
     ic0.stable64_size : () -> (page_count : i64);                                         // * s
