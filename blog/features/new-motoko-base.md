@@ -53,13 +53,12 @@ We chose implementations with good all-round performance, deferring specialized 
 
 Below is an example of using the new imperative `List` module, derived from the [`vector`](https://mops.one/vector) Mops package (big thanks to [Timo Hanke](https://github.com/timohanke)):
 
-```motoko
+```motoko no-repl
 import List "mo:base/List";
 import Nat "mo:base/Nat";
 
 actor {
   stable let list = List.empty<Nat>(); // Persistent data structure
-  
   List.add(list, 5);
   assert List.toText(list, Nat.toText) == "[5]";
 }
@@ -67,7 +66,7 @@ actor {
 
 The above code snippet can be rewritten as a new `persistent` actor:
 
-```motoko
+```motoko no-repl
 import List "mo:base/List";
 
 persistent actor {
@@ -82,10 +81,10 @@ You can also use the purely functional `List` module:
 import PureList "mo:base/pure/List";
 
 persistent actor {
-  var list = PureList.empty<Nat>(); // Persistent data structure
-  
-  list := PureList.add(list, 5);
-  assert PureList.all(list, func(n) { n == 5 });
+  var list = PureList.empty<Text>(); // Persistent data structure
+  list := PureList.push(list, "Hi");
+  assert PureList.size(list) == 1;
+  assert PureList.all<Text>(list, func(n) { n == "Hi" });
 }
 ```
 
@@ -93,13 +92,14 @@ We also included an efficient [stable BTree map implementation](https://github.c
 
 ```
 import PureMap "mo:base/pure/Map";
+import Text "mo:base/Text";
+import Array "mo:base/Array";
 
 persistent actor {
   var map = PureMap.empty<Text, Nat>();
-
-  map := map.add(map);
-
+  map := PureMap.add(map, Text.compare, "key", 123);
   assert PureMap.size(map) == 1;
+  assert Array.fromIter(PureMap.entries(map)) == [("key", 123)];
 }
 ```
 
@@ -122,18 +122,20 @@ It's simple to convert between mutable and purely functional data structures:
 ```
 import List "mo:base/List";
 import PureList "mo:base/pure/List";
+import Text "mo:base/Text";
 
 persistent actor {
-  let list = List.empty<Nat>();
-  let pureList = List.toPure(list);
-  
-  assert List.fromPure(pureList) == list;
+  let list = List.singleton<Text>("A");
+
+  let pureList = List.toPure<Text>(list);
+  assert PureList.toArray(pureList) == ["A"];
+  assert List.equal<Text>(List.fromPure(pureList), list, Text.equal);
 }
 ```
 
 We also added missing primitive type conversions such as those between `Int` and `Nat`:
 
-```motoko
+```motoko no-repl
 import Int "mo:base/Int";
 import Nat "mo:base/Nat";
 
@@ -153,7 +155,7 @@ We removed 64-bit hashing functionality from the base library in favor of compar
 
 `Iter.range()` has been removed in favor of type-specific range functions such as `Nat.range()`, `Int.range()`, `Nat32.range()`, etc. These functions have an **exclusive upper bound**, in contrast to the original inclusive upper bound of `Iter.range()`. 
 
-```motoko
+```motoko no-repl
 import Int "mo:base/Int";
 import Debug "mo:base/Debug";
 
@@ -178,20 +180,22 @@ We also added helper functions such as `allValues()` for each finite type in the
 
 For convenience, we created a separate `mo:base/VarArray` module with the same API as `mo:base/Array` but for mutable arrays. This reduces the need to convert back and forth between mutable and immutable arrays:
 
-```motoko
+```motoko no-repl
 import Array "mo:base/Array";
 import VarArray "mo:base/VarArray";
+import Char "mo:base/Char";
 import Nat "mo:base/Nat";
 
 persistent actor {
-  let array = Array.repeat('A', 3);
+  let array = Array.repeat<Char>('A', 3);
   assert array == ['A', 'A', 'A'];
 
-  let varArray = VarArray.repeat('B', 5);
-  assert varArray == [var 'B', 'B', 'B', 'B', 'B'];
+  let varArray = VarArray.repeat<Char>('B', 5);
+  assert VarArray.equal(varArray, [var 'B', 'B', 'B', 'B', 'B'], Char.equal);
 
-  let numbers = VarArray.fromIter(Nat.range(0, 4));
-  assert VarArray.map<Nat>(numbers, func(i) = i * 3) == [var 0, 3, 6, 9];
+  let numbers = VarArray.fromIter<Nat>(Nat.range(0, 4));
+  VarArray.mapInPlace<Nat>(numbers, func(i) = i * 3);
+  assert VarArray.equal(numbers, [var 0, 3, 6, 9], Nat.equal);
 }
 ```
 
@@ -203,10 +207,10 @@ We also fixed naming inconsistencies in functions by replacing `ArrayMut` with `
 
 We completely redesigned the `Random` module for simpler usage and a wider range of use cases:
 
-```motoko
+```motoko no-repl
 import Random "mo:base/Random";
 
-persistent actor {
+actor {
   let random = Random.crypto(); // Cryptographic random numbers from ICP runtime
 
   public func coinFlip() : async Bool {
@@ -214,15 +218,17 @@ persistent actor {
   };
 
   public func randomItem(items : [Text]) : async Text {
-    messages[await* random.natRange(0, items.size())]
+    items[await* random.natRange(0, items.size())]
   };
 }
 ```
 
 It's now possible to use pseudo-random number generation, adapted from the [`prng`](https://mops.one/prng) Mops package (big thanks to [Timo Hanke](https://github.com/timohanke)):
 
-```motoko
-persistent actor {
+```motoko no-repl
+import Random "mo:base/Random";
+
+actor {
   let seed : Nat64 = 12345;
   let random = Random.fast(seed); // Pseudo-random number generator from a seed
 
@@ -231,7 +237,7 @@ persistent actor {
   };
 
   public func randomItem(items : [Text]) : async Text {
-    messages[random.natRange(0, items.size())]
+    items[random.natRange(0, items.size())]
   };
 }
 ```
