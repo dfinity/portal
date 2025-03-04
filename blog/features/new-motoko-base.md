@@ -111,7 +111,7 @@ Here's the complete list of data structures in the new base library:
 * Set 
 * Stack
 * pure/List
-* pure/Map (adapted from [`stableheapbtreemap`](https://mops.one/stableheapbtreemap) Mops package)
+* pure/Map (adapted from [`StableHeapBTreeMap`](https://mops.one/stableheapbtreemap) Mops package)
 * pure/Queue
 * pure/Set
 
@@ -149,7 +149,7 @@ persistent actor {
 
 ### Hashing
 
-We removed 64-bit hashing functionality from the base library in favor of comparison-based data structures. This solves a number of problems such as hash-collision attacks which can rapidly drain cycles out of a canister. The idea is for Mops packages to supply hashing functions which are best suited for a particular use case rather than including hash functions with significant tradeoffs. 
+We removed 64-bit hashing functionality from the base library in favor of comparison-based data structures. This solves a number of problems such as hash-collision attacks which can rapidly drain cycles from a canister. The idea is for Mops packages to supply hashing functions which are best suited for a particular use case. 
 
 ### Range functions
 
@@ -205,7 +205,7 @@ We also fixed naming inconsistencies in functions by replacing `ArrayMut` with `
 
 ### Random module
 
-We completely redesigned the `Random` module for simpler usage and a wider range of use cases:
+We completely redesigned the `Random` module, which is now a lot simpler to use:
 
 ```motoko no-repl
 import Random "mo:base/Random";
@@ -249,12 +249,12 @@ It's worth mentioning that the `Random` module is likely to see further changes 
 Before replacing the current Motoko base library, we have a list of follow-up improvements:
 
 * Overhauling the documentation with clearer explanations and more examples
+* Improving test coverage of new functionality
 * Adding new language capabilities to simplify data structure usage
-* Setting up a test coverage system
 
 ## Contributions and feedback
 
-I want to give a huge thanks to the community members who provided high-quality code contributions to the new base library repository:
+We want to give a huge thanks to the community members who provided high-quality code contributions to the new base library repository:
 
 * [Timo Hanke](https://github.com/timohanke): [`vector`](https://github.com/research-ag/vector), [`prng`](https://github.com/research-ag/prng)
 * [Byron Becker](https://github.com/ByronBecker): [`StableHeapBTreeMap`](https://github.com/canscale/StableHeapBTreeMap)
