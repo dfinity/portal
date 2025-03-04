@@ -1744,7 +1744,7 @@ There must be at most one call to `ic0.call_on_cleanup` between `ic0.call_new` a
 
     Any value for `timeout_seconds` is permitted, but is silently bounded from above by the `MAX_CALL_TIMEOUT` system constant; i.e., larger timeouts are treated as equivalent to `MAX_CALL_TIMEOUT` and do not cause an error. The implementation may add a specific [error code](#error-codes) to a reject message to indicate the cause, in particular whether the timeout expired. Note that the reject callback may be executed (possibly significantly) later than the specified time (e.g., if the caller is under high load), or before timeout expiration (e.g., if the system is under load).
 
-    A caller that receives a `SYS_UNKNOWN` code, yet needs to learn the call outcome, must find an out-of-band way of doing so. For example, if the callee provides idempotent function calls, the caller can simply retry the call. Sample causes of `SYS_UNKNOWN` include the call not being delivered in time, call processing not completing in time, reply delivery taking too long, and the system shedding load.
+    A caller that receives a `SYS_UNKNOWN` reject code, yet needs to learn the call outcome, must find an out-of-band way of doing so. For example, if the callee provides idempotent function calls, the caller can simply retry the call. Sample causes of `SYS_UNKNOWN` include the call not being delivered in time, call processing not completing in time, reply delivery taking too long, and the system shedding load.
 
     This method can be called only in between `ic0.call_new` and `ic0.call_perform`, and at most once at that. Otherwise, it traps. A different timeout can be specified for each call.
 
