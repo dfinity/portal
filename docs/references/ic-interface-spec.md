@@ -4378,9 +4378,9 @@ State after
 ```html
 S.call_contexts[ctxt_id].origin = FromCanister O with deadline = Expired timestamp
 S.messages = S.messages · ResponseMessage {
-        origin = FromCanister O with deadline = NoDeadline;
-        response = Reject (SYS_UNKNOWN, <implementation-specific>);
-        refunded_cycles = 0;
+    origin = FromCanister O with deadline = NoDeadline;
+    response = Reject (SYS_UNKNOWN, <implementation-specific>);
+    refunded_cycles = 0;
 }
 ```
 
