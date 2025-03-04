@@ -2,7 +2,7 @@
 title: "Try the new Motoko base library: feedback requested!"
 description: The new base library makes it easier for both humans and AI to read and write Motoko canisters.
 tags: [Motoko, New features, Technology]
-image: /img/blog/motoko-logo-white.jpg
+image: /img/blog/motoko-1.jpg
 ---
 
 # Try the new Motoko base library: feedback requested!
