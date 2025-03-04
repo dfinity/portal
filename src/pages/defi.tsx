@@ -504,7 +504,7 @@ function DefiPage() {
             <CardWithDescription
               title="ETH starter tutorial"
               description=""
-              href="/docs/current/tutorials/developer-liftoff/level-5/5.2-ICP-ETH-tutorial"
+              href="/docs/tutorials/developer-liftoff/level-5/5.2-ICP-ETH-tutorial"
             />
 
             <CardWithDescription
@@ -521,7 +521,7 @@ function DefiPage() {
             <CardWithDescription
               title="Code ckBTC"
               description=""
-              href="/docs/current/developer-docs/multi-chain/chain-key-tokens/ckbtc/overview"
+              href="/docs/defi/chain-key-tokens/ckbtc/overview"
             />
           </AnimateSpawn>
         </section>

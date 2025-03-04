@@ -1,0 +1,150 @@
+---
+keywords: [advanced, concept, signing transactions, signatures, tecdsa, chain-key signatures, threshold signature, threshold, ecdsa, threshold ecdsa, sign with ecdsa, signing transactions, signing messages]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import { AdornedTabs } from "/src/components/Tabs/AdornedTabs";
+import { AdornedTab } from "/src/components/Tabs/AdornedTab";
+
+# Threshold ECDSA
+
+<MarkdownChipRow labels={["Advanced", "Signatures"]} />
+
+The Internet Computer implements a novel threshold ECDSA protocol as part of its chain-key signatures suite. In this protocol, the private ECDSA key exists only as secret shares held by nodes. Secret shares are shards of the ECDSA private key. Signatures are computed using those secret shares without the private key ever being reconstructed. Each replica of such subnet holds a key share that provides no information on its own. More than one third of the nodes are required to generate a threshold signature using their respective key shares.
+
+Besides the actual threshold signing protocol, chain-key ECDSA is comprised of protocols for secure, distributed key generation and periodic key resharing. Distributed key generation enables the nodes on a subnet to collaboratively generate keys, while periodic key resharing allows for ECDSA keys to be re-shared within the subnet. This makes chain-key ECDSA signatures much more powerful than any off-the-shelf threshold ECDSA protocol.
+
+Each canister on a subnet has control over a unique ECDSA public key and can request signatures for this public key. Canisters do not have access to their private ECDSA keys. They can only request signatures. This is because the private key is never stored in a single place.
+
+Threshold ECDSA enables many important use cases:
+
+- Canisters natively holding bitcoin.
+
+- Integration with Ethereum and other EVM chains, such as getting ERC-20 tokens onto ICP and signing Ethereum transactions.
+
+- Integrations with other blockchains that use ECDSA as a signature scheme for signing transactions.
+
+- Realizing a decentralized certification authority (CA), where certificates are issued using threshold ECDSA.
+
+## Signing messages and transactions
+
+The threshold ECDSA API allows canisters to securely sign messages and transactions without the corresponding private keys ever existing. Each canister can control an unlimited number of keys by specifying different key `derivation_path`s.
+The API provides two methods:
+
+- `sign_with_ecdsa`: Used to sign messages.
+
+- `ecdsa_public_key`: Used to obtain public keys.
+
+## Signing messages
+
+To sign a message, the `sign_with_ecdsa` method is used. It uses the following Candid interface:
+
+```candid
+type sign_with_ecdsa_args = record {
+    message_hash : blob;  // The hash of the message to sign.
+    derivation_path : vec blob; // An optional derivation path
+    key_id : record { curve : ecdsa_curve; name : text };
+};
+
+type sign_with_ecdsa_result = record {
+    signature : blob;
+};
+
+service: {
+  sign_with_ecdsa : (sign_with_ecdsa_args) -> (sign_with_ecdsa_result);
+}
+```
+
+The `sign_with_ecdsa` method allows specifying an optional `derivation_path`, which allows a canister to request signatures for different keys controlled by the canister. The `key_id` field specifies the curve and name of the key to sign with.
+Currently only the `secp256k1` curve and the following key names are supported:
+
+- `dfx_test_key`: Only available on the local replica started by dfx.
+
+- `test_key_1`: Test key available on the ICP mainnet.
+
+- `key_1`: Production key available on the ICP mainnet.
+
+The `sign_with_ecdsa` method requires cycles to be attached. When the method in the Rust CDK is used, the required cycles are automatically attached. In Motoko, the cycles need to be added manually.
+[Learn more about threshold ECDSA costs](/docs/references/t-sigs-how-it-works).
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/master/motoko/threshold-ecdsa/src/ecdsa_example_motoko/main.mo#L9-L24
+```
+
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/master/motoko/threshold-ecdsa/src/ecdsa_example_motoko/main.mo#L40-L55
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust" default>
+
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/threshold-ecdsa/src/ecdsa_example_rust/src/lib.rs#L2
+
+```
+
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/threshold-ecdsa/src/ecdsa_example_rust/src/lib.rs#L43-L58
+```
+
+</TabItem>
+</AdornedTabs>
+
+## Obtaining public keys
+
+To verify a signature, the public key that corresponds to the private key that was used to sign the message is needed. Furthermore, the public key can be used to derive addresses controlled by the canister on various blockchain networks.
+ICP provides the `ecdsa_public_key` method to obtain public keys. This method uses the following Candid interface:
+
+```candid
+type ecdsa_public_key_args = record {
+    canister_id : opt canister_id;
+    derivation_path : vec blob;
+    key_id : record { curve : ecdsa_curve; name : text };
+};
+
+type ecdsa_public_key_result = record {
+    public_key : blob;
+    chain_code : blob;
+};
+
+service : {
+  ecdsa_public_key : (ecdsa_public_key_args) -> (ecdsa_public_key_result);
+};
+```
+
+The `ecdsa_public_key` method can be used to obtain public keys controlled by canisters. In contrast to the `sign_with_ecdsa` method, it allows specifying an optional `canister_id`, i.e., the caller can request public keys controlled by other canisters, but not signatures.
+The `chain_code` in the result can be used to derive child keys using a derivation path without calling the `ecdsa_public_key` repeatedly.
+
+<AdornedTabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/master/motoko/threshold-ecdsa/src/ecdsa_example_motoko/main.mo#L24-L488C13
+```
+
+</TabItem>
+
+<TabItem value="rust" label="Rust" default>
+
+```rust reference
+https://github.com/dfinity/examples/blob/master/rust/threshold-ecdsa/src/ecdsa_example_rust/src/lib.rs#L26-L41
+```
+
+</TabItem>
+</AdornedTabs>
+
+
+## Resources
+
+- [Chain-key ECDSA signatures: technology overview](/docs/references/t-sigs-how-it-works/).
+
+- [Eurocrypt 2022 paper](https://eprint.iacr.org/2021/1330).
+
+- [Threshold ECDSA sample dapp - Motoko](https://github.com/dfinity/examples/blob/master/motoko/threshold-ecdsa/).
+
+- [Threshold ECDSA sample dapp - Rust](https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa).

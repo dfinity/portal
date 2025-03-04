@@ -1,1 +1,0 @@
-../../../../submodules/response-verfication/packages/ic-http-certification/README.md

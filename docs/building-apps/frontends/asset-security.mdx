@@ -1,0 +1,48 @@
+---
+keywords: [intermediate, concept, frontend, asset canister, assets]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# Asset security
+
+<MarkdownChipRow labels={["Intermediate", "Concept"]} />
+
+To configure how a frontend <GlossaryTooltip>canister</GlossaryTooltip> responds to requests for specific assets, you can edit the Concent Security Policy in a project's `.ic-assets.json5`. Each entry in this file allows for specifying a [glob](https://code.visualstudio.com/docs/editor/glob-patterns) pattern along with the headers to be returned for any file that matches the pattern. You may also dictate whether redirects are performed from a non-certified endpoint to a certified endpoint for any given filename pattern.
+
+## Content Security Policies (CSP)
+
+By default, frontend canisters created with `dfx new` contain the following Content Security Policy (CSP) in the project's `.ic-assets.json5` file:
+
+```
+"Content-Security-Policy": "default-src 'self';script-src 'self';connect-src 'self' http://localhost:* https://icp0.io https://*.icp0.io https://icp-api.io;img-src 'self' data:;style-src * 'unsafe-inline';style-src-elem * 'unsafe-inline';font-src *;object-src 'none';base-uri 'self';frame-ancestors 'none';form-action 'self';upgrade-insecure-requests;",
+```
+
+This CSP includes the configuration `img-src data` because image files are often included in frontend interfaces. It also includes the security setting `frame-ancestors: none` which is used to mitigate [clickjacking attacks](https://owasp.org/www-community/attacks/Clickjacking).
+
+## Security recommendations
+
+This default Content Security Policy aims to work with as many applications as possible rather than providing the maximum security. It is recommended that you update this policy for your application's specific needs by utilizing tools such as:
+
+- Use the [CSP Evaluator](https://csp-evaluator.withgoogle.com/) tool to validate your security policy.
+
+- Follow these CSP [recommendations](https://csp.withgoogle.com/docs/strict-csp.html). Note that on ICP, nonces cannot be used because the response bodies must be static to work with HTTP asset certification.
+
+- It is recommended to include [script hashes in combination with strict-dynamic](https://csp.withgoogle.com/docs/faq.html) in the CSP to account for not using nonces.
+
+- Tighten the `connect-src` directive, as the default CSP allows for any canister to be called via `https://icp0.io/api/v2/canister/{canister-ID}`.
+
+- Configure `style-src`, `style-src-elem` and `font-src` directives instead of using the wildcard (*) option.
+
+View more details on the [default CSP](/docs/references/asset-canister).
+
+### `dfx v0.21.0` and older
+
+`dfx` versions `0.21.0` and older include `script-src 'unsafe-eval'` in the default security policy. This is required for older versions because previous versions of the [ICP JavaScript agent](https://www.npmjs.com/package/@dfinity/agent) used a WebAssembly module for the BLS signature validation. This has since been removed and is no longer included in the most recent versions of `dfx`.
+
+If you are using an older version of `dfx`, we recommend updating your security policy to remove the `script-src 'unsafe-eval'` portion.
+
+## Resources
+
+- [Asset canister architecture reference](/docs/references/asset-canister).

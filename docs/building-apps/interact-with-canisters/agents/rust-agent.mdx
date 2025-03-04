@@ -1,0 +1,216 @@
+---
+keywords: [intermediate, agents, tutorial, rust, rust agent, ic_agent]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# ICP Rust agent
+
+<MarkdownChipRow labels={["Intermediate", "Agents" ]} />
+
+The [ICP Rust agent](https://docs.rs/ic-agent/latest/ic_agent/) by DFINITY is a simple library that enables you to build applications and interact with ICP, serving as a low-level Rust backend for the IC SDK.
+
+The agent is designed to be compatible with multiple versions of the replica API, exposing both low-level APIs for communicating with components like the replica and higher-level APIs for communicating with software applications deployed as canisters.
+
+One example of an implementation of the ICP Rust agent is [`dfx`](https://github.com/dfinity/sdk).
+
+## Adding the agent as a dependency
+
+To add the ICP Rust agent crate as a dependency in your project, use the command:
+
+```
+cargo add ic-agent
+```
+
+## Initializing the agent
+
+Before using the agent in your project, it must be initialized using the `Agent::builder()` function. Here is an example of how to initialize the Rust agent:
+
+```rust
+use anyhow::Result;
+use ic_agent::Agent;
+
+pub async fn create_agent(url: &str, is_mainnet: bool) -> Result<Agent> {
+    let agent = Agent::builder().with_url(url).build()?;
+    if !is_mainnet {
+        agent.fetch_root_key().await?;
+    }
+    Ok(agent)
+}
+```
+
+### Using dynamic routing
+
+The ICP Rust agent provides built-in dynamic routing functionality, allowing an application to communicate seamlessly via decentralized API boundary nodes for optimal performance. To enable dynamic routing, the agent needs to be initialized with a bootstrap URL. Using this initial URL, the agent will:
+
+- Fetch the list of available API boundary nodes.
+- Continuously monitor the health of these nodes.
+- Automatically route requests to the closest healthy node.
+
+Here’s an example of how to set up your agent with dynamic routing:
+
+```rust
+let agent = Agent::builder()
+    .with_url(URL)
+    .with_background_dynamic_routing()
+    .await
+    .build()
+    .expect("failed to build ic-agent");
+```
+
+
+## Authentication
+
+The Rust agent's `Identity` object provides signatures that can be used for HTTP requests or identity delegations. It represents the principal ID of the sender. `Identity` represents a single identity and cannot contain multiple identity values.
+
+```rust
+async fn create_a_canister() -> Result<Principal, Box<dyn std::error::Error>> {
+  let agent = Agent::builder()
+    .with_url(URL)
+    .with_identity(create_identity())
+    .build()?;
+```
+
+Identities can have different types, such as:
+
+- `AnonymousIdentity`: A unit type used through `with_identity(AnonymousIdentity)`.
+
+- `BasicIdentity`, `Secp256k1Identity`, and `Prime256v1Identity: Created from pre-existing keys through either function:
+    - `BasicIdentity::from_pem_file("path/to/identity.pem")`
+    - `BasicIdentity::from_key_pair(key_material)`
+
+There are minor [variations in the function name](https://docs.rs/ic-agent/latest/ic_agent/identity/index.html).
+
+- `ic-identity-hsm` crate: Used for hardware security modules (HSM) like Yubikey or Nitrokey through `HardwareIdentity::new(pkcs11_module_path, slot_index, key_id, || get_pin())`.
+
+## Making calls
+
+The Rust agent can be used to make calls to other canisters. To make a call to a canister, use the `agent.update` method for an update call or `agent.query` for a query call. Then, pass in the canister's ID and the canister's method you'd like to call.
+
+The following example calls the ICP ledger and returns an account balance:
+
+```rust
+let icp_ledger = Principal::from_text("ryjl3-tyaaa-aaaaa-aaaba-cai").unwrap();
+let response = agent.update(&icp_ledger, "account_balance")
+    .with_arg(Encode!(&AccountBalanceArgs { account: some_account_id })?)
+    .call_and_wait()
+    .await?;
+let tokens = Decode!(&response, Tokens)?;
+```
+
+## `ic-utils`
+
+The [`ic-utils` crate](https://crates.io/crates/ic-utils) provides a high-level interface that is designed to be canister-oriented and aware of the canister's Candid interface. Canister objects with `ic-utils` resemble the following:
+
+```rust
+let canister = Canister::builder()
+    .with_agent(&agent)
+    .with_canister_id(principal)
+    .build()?;
+canister.query("account_balance")
+    .with_arg(&AccountBalanceArg { user_id })
+    .build()
+    .await
+
+```
+
+`ic-utils` provides several interfaces, including the management canister, cycles wallet canister, and Bitcoin integration canister. For example, the management canister can be used with a call such as `ManagementCanister::create(&agent).canister_status(&canister_id).await`.
+
+[Learn more in the ic-utils documentation](https://docs.rs/ic-utils/latest/ic_utils/).
+
+## Response verification
+
+When using the [certified queries](/docs/building-apps/interact-with-canisters/advanced-calls/) feature, the agent must verify that the certificate returned with the query response is valid. A certificate consists of a tree, a signature on the tree's root hash that is valid under a public key, and an optional delegation linking the public key to the root public key. To validate the root hash, the agent uses the `HashTree` module.
+
+Below is an example annotated with notes that explains how to verify responses using the `HashTree` module:
+
+```rust
+// Define a function that initializes the agent and builds a certified query call to get the XDR and ICP conversion rate from the cycles minter canister:
+pub async fn xdr_permyriad_per_icp(agent: &Agent) -> DfxResult<u64> {
+    let canister = Canister::builder()
+        .with_agent(agent)
+        .with_canister_id(MAINNET_CYCLE_MINTER_CANISTER_ID)
+        .build()?;
+    let (certified_rate,): (IcpXdrConversionRateCertifiedResponse,) = canister
+        .query("get_icp_xdr_conversion_rate")
+        .build()
+        .call()
+        .await?;
+    // Check the certificate with a query call
+    let cert = serde_cbor::from_slice(&certified_rate.certificate)?;
+    agent
+        .verify(&cert, MAINNET_CYCLE_MINTER_CANISTER_ID)
+        .context(
+            "The origin of the certificate for the XDR <> ICP exchange rate could not be verified",
+        )?;
+    // Verify that the certificate can be trusted:
+    let witness = lookup_value(
+        &cert,
+        [
+            b"canister",
+            MAINNET_CYCLE_MINTER_CANISTER_ID.as_slice(),
+            b"certified_data",
+        ],
+    )
+    .context("The IC's certificate for the XDR <> ICP exchange rate could not be verified")?;
+    // Call the HashTree for the certified_rate call:
+    let tree = serde_cbor::from_slice::<HashTree<Vec<u8>>>(&certified_rate.hash_tree)?;
+    ensure!(
+        tree.digest() == witness,
+        "The CMC's certificate for the XDR <> ICP exchange rate did not match the IC's certificate"
+    );
+    // Verify that the HashTree can be trusted:
+    let lookup = tree.lookup_path([b"ICP_XDR_CONVERSION_RATE"]);
+    let certified_data = if let LookupResult::Found(content) = lookup {
+        content
+    } else {
+        bail!("The CMC's certificate did not contain the XDR <> ICP exchange rate");
+    };
+    let encoded_data = Encode!(&certified_rate.data)?;
+    ensure!(
+        certified_data == encoded_data,
+        "The CMC's certificate for the XDR <> ICP exchange rate did not match the provided rate"
+    );
+    // If the above checks are successful, you can trust the exchange rate that has been returned:
+    Ok(certified_rate.data.xdr_permyriad_per_icp)
+}
+```
+
+Another application of `HashTree` can be found in the [ic-certified-assets](https://github.com/dfinity/sdk/blob/master/src/canisters/frontend/ic-certified-assets/src/asset_certification/tree.rs) code.
+
+## Example
+
+The following is an example of how to use the agent interface to make a call to a canister (in this example, the ICP ledger) deployed on the mainnet:
+
+```rust
+use ic_agent::{Agent, export::Principal};
+use candid::{Encode, Decode, CandidType, Nat};
+use serde::Deserialize;
+
+#[derive(CandidType)]
+struct AccountBalanceArgs {
+    account: Vec<u8>,
+}
+#[derive(CandidType, Deserialize)]
+struct Tokens {
+    e8s: u64,
+}
+let icp_ledger = Principal::from_text("ryjl3-tyaaa-aaaaa-aaaba-cai").unwrap();
+let response = agent.update(&icp_ledger, "account_balance")
+    .with_arg(Encode!(&AccountBalanceArgs { account: some_account_id })?)
+    .call_and_wait()
+    .await?;
+let tokens = Decode!(&response, Tokens)?;
+```
+
+## Resources
+
+- [HTTP certification](https://github.com/dfinity/response-verification/tree/main/packages/ic-http-certification).
+
+- [ic-agent documentation](https://docs.rs/ic-agent/latest/ic_agent).
+
+- [ic-utils documentation](https://docs.rs/ic-utils/latest/ic_utils/).
+
+- [Rust agent documentation](https://docs.rs/ic-agent/latest/ic_agent/struct.Agent.html).
+
+- [Rust agent source code](https://github.com/dfinity/agent-rs).
