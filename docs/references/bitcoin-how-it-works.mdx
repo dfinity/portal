@@ -80,7 +80,19 @@ The costs of API calls in cycles and USD for the Bitcoin Testnet and Bitcoin Mai
 
 The cost per API call in USD uses the USD/XDR exchange rate of July 23, 2024.
 
-### Bitcoin Mainnet and Bitcoin Testnet
+### Bitcoin Testnet
+
+| Transaction                          | Description                                                                                                    | Price (Cycles) | Price (USD) | Minimum cycles to send with call |
+|--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|------------------|
+| Bitcoin UTXO set for an address      | For retrieving the UTXO set for a Bitcoin address (`bitcoin_get_utxos`)                                        | 20_000_000 + 0.4 cycles per Wasm instruction | $0.0000265102 + Wasm instruction cost | 4_000_000_000 |
+| Bitcoin fee percentiles              | For obtaining the fee percentiles of the most recent transactions (`bitcoin_get_current_fee_percentiles`)       | 4_000_000                 | $0.00000530204                    | 40_000_000 |
+| Bitcoin balance for an address       | For retrieving the balance of a given Bitcoin address (`bitcoin_get_balance`)                                  | 4_000_000                 | $0.00000530204                   | 40_000_000 |
+| Bitcoin transaction submission       | For submitting a Bitcoin transaction to the Bitcoin network, per transaction (`bitcoin_send_transaction`)      | 2_000_000_000             | $0.00265102                    | n.a.       |
+| Bitcoin transaction payload          | For submitting a Bitcoin transaction to the Bitcoin network, per byte of payload (`bitcoin_send_transaction`)  | 8_000_000                 | $0.00001060408                    | n.a.       |
+| Bitcoin block headers                | For retrieving the block headers in specified range (`bitcoin_get_block_headers`)                              | 20_000_000 + 0.4 cycles per Wasm instruction | $0.0000265102 + Wasm instruction cost | 4_000_000_000 |
+
+
+### Bitcoin Mainnet
 
 | Transaction                          | Description                                                                                                    | Price (Cycles) | Price (USD) | Minimum cycles to send with call |
 |--------------------------------------|----------------------------------------------------------------------------------------------------------------|-----------------------------|-----------------------------|------------------|
