@@ -1,0 +1,145 @@
+---
+keywords: [advanced, bitcoin, btc, transaction, utxo]
+---
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import useBaseUrl from "@docusaurus/useBaseUrl";
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Creating Bitcoin transactions
+
+<MarkdownChipRow labels={["Advanced", "Bitcoin"]} />
+
+A Bitcoin transaction spends a number of unspent transaction outputs (UTXOs) and
+creates new UTXOs. In order to create a Bitcoin transaction, you need to:
+
+1. Get the available UTXOs corresponding to a Bitcoin address controlled by the canister using the `bitcoin_get_utxos` API endpoint.
+2. Calculate an appropriate transaction fee using the `bitcoin_get_current_fee_percentiles` API endpoint.
+3. Select a subset of the available UTXOs to spend that covers the transaction amount and fee.
+4. Create a transaction that spends the selected UTXOs and creates new UTXOs. At
+   least one for the recipient, and in most cases, one to collect the change.
+
+## Get available UTXOs
+
+The following snippet shows how to get the available UTXOs corresponding to `own_address`. Note that a canister can control many addresses, and each of them can have multiple UTXOs associated with it.
+
+<Tabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinWallet.mo#L49
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust reference
+https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet.rs#L25-L28
+```
+
+</TabItem>
+</Tabs>
+
+An UTXO has the following structure:
+
+<Tabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl
+
+/// An unspent transaction output.
+public type Utxo = {
+    outpoint : OutPoint;
+    value : Satoshi;
+    height : Nat32;
+};
+
+/// A reference to a transaction output.
+public type OutPoint = {
+    txid : Blob;
+    vout : Nat32;
+};
+
+
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust
+
+/// Unspent transaction output (UTXO).
+pub struct Utxo {
+    /// See [Outpoint].
+    pub outpoint: Outpoint,
+    /// Value in the units of satoshi.
+    pub value: Satoshi,
+    /// Height in the chain.
+    pub height: u32,
+}
+
+/// Identifier of [Utxo].
+pub struct Outpoint {
+    /// Transaction Identifier.
+    pub txid: Vec<u8>,
+    /// A implicit index number.
+    pub vout: u32,
+}
+
+```
+
+</TabItem>
+</Tabs>
+
+To create a transaction that sends `X` satoshis to a destination address, you need to select a subset of the available UTXOs that cover the amount `X` plus the transaction fee.
+
+## Calculate transaction fee per byte
+
+The transaction fee of a Bitcoin transaction is calculated based on the size of the transaction in bytes. An appropriate fee per byte can be determined by looking at the fees of recent transactions that were included in the blockchain.
+The following snippet shows how to estimate the fee per byte for a transaction using the `bitcoin_get_current_fee_percentiles` API endpoint and choosing the 50th percentile.
+
+<Tabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinWallet.mo#L61-L72
+
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust reference
+https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet.rs#L47-L58
+```
+
+</TabItem>
+</Tabs>
+
+## Build the transaction
+
+Next, the transaction can be built. The following snippet shows a simplified version of how to build a transaction that sends `amount` satoshis to the `dst_address`, and returns the change to the `own_address`.
+
+Since the fee of a transaction is based on its size, the transaction has to be built iteratively and signed with a mock signer that just adds the respective size of the signature. Each selected UTXO is used as an input for the transaction and requires a signature.
+
+<Tabs groupId="language">
+<TabItem value="motoko" label="Motoko" default>
+
+```motoko no-repl reference
+https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/motoko/basic_bitcoin/src/basic_bitcoin/src/BitcoinWallet.mo#L107-L150
+```
+
+</TabItem>
+<TabItem value="rust" label="Rust">
+
+```rust reference
+https://github.com/dfinity/examples/blob/6c9e0a6b6d12978869cbf9ea2943452518909728/rust/basic_bitcoin/src/basic_bitcoin/src/bitcoin_wallet.rs#L116-L160
+```
+
+[Learn more about constructing Bitcoin transactions with the Rust Bitcoin Cookbook](https://rust-bitcoin.org/book/intro.html).
+
+
+</TabItem>
+</Tabs>
+
