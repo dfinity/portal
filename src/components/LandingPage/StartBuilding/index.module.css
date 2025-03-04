@@ -94,7 +94,7 @@
   flex-wrap: wrap;
   box-sizing: border-box;
   gap: 8px;
-  margin: auto;
+  margin: 0 auto 80px; /* Add margin to the bottom of the card's container so that there will be some spacing between it and the footer. */
   width: Min(1350px, 90%);
 }
 
