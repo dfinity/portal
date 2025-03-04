@@ -3,6 +3,28 @@
   "categoryDescription": "",
   "elements": [
     {
+      "title": "Motoko package manager shipped with dfx",
+      "overview": "Integrating the Mops package manager with dfx to improve DX.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "Specify placement subnet for new canisters",
+      "overview": "When creating a new canister, the subnet on which it should be placed can be specified.",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "eta": "",
+      "status": "deployed",
+      "is_community": true,
+      "in_beta": false
+    },
+    {
       "title": "Canister snapshots",
       "overview": "Allow for canister snapshots to be created on chain. Snapshots can be exported to and imported from off-chain storage.",
       "status": "deployed",
