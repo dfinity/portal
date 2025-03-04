@@ -40,7 +40,7 @@ export const NewsCard: React.FC<{
   clampText?: boolean;
 }> = ({ news, linkLabel = "Read Now", clampText }) => {
   return (
-    <article className="rounded-xl overflow-hidden bg-white flex flex-col w-full">
+    <article className="rounded-xl overflow-hidden bg-white flex flex-col w-full h-full">
       <img
         className="w-full h-[200px] object-center object-cover"
         src={news.imageUrl}
@@ -50,13 +50,13 @@ export const NewsCard: React.FC<{
         <h3 className={`tw-heading-5 mb-3 ${clampText && "line-clamp-2"}`}>
           {news.title}
         </h3>
-        <div className="flex-1"></div>
 
-        {news.press && news.dateHuman && (
-          <div className="tw-paragraph-sm text-black/60 mb-6">
-            {news.dateHuman} {news.press && "by " + news.press}
-          </div>
-        )}
+        {news.press ||
+          (news.dateHuman && (
+            <div className="tw-paragraph-sm text-black/60 mb-6">
+              {news.dateHuman} {news.press && "by " + news.press}
+            </div>
+          ))}
         {news.details && (
           <div
             className={`tw-paragraph-sm text-black/60 mb-6 ${
@@ -66,7 +66,7 @@ export const NewsCard: React.FC<{
             {news.details}
           </div>
         )}
-        <div className="">
+        <div className="mt-auto">
           <Link href={news.url} className="link-primary link-with-icon">
             {linkLabel}
             <LinkArrowUpRight />

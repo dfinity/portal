@@ -15,7 +15,7 @@ const languagesTiles: TileDescriptor[] = [
       "Learn more about canister smart contract development and management.",
     action: (
       <Link
-        href="/docs/current/developer-docs/smart-contracts/overview/introduction"
+        href="/docs/building-apps/essentials/canisters"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -29,7 +29,7 @@ const languagesTiles: TileDescriptor[] = [
       "Explore additional developer tools including agents, libraries, and CLI tools.",
     action: (
       <Link
-        href="/docs/current/developer-docs/developer-tools/dev-tools-overview"
+        href="/docs/building-apps/developer-tools/dev-tools-overview"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -43,7 +43,7 @@ const languagesTiles: TileDescriptor[] = [
       "Explore how canister smart contracts can interact directly with other chains like Bitcoin and Ethereum.",
     action: (
       <Link
-        href="/docs/current/developer-docs/multi-chain/overview"
+        href="/docs/building-apps/chain-fusion/overview"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -57,7 +57,7 @@ const languagesTiles: TileDescriptor[] = [
       "Explore creating your own token using the ICRC token standards.",
     action: (
       <Link
-        href="/docs/current/developer-docs/defi/overview"
+        href="/docs/defi/overview"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -71,7 +71,7 @@ const languagesTiles: TileDescriptor[] = [
       "View examples of decentralized AI running onchain.",
     action: (
       <Link
-        href="/docs/current/developer-docs/ai/overview"
+        href="/ecosystem?tag=AI"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -85,7 +85,7 @@ const languagesTiles: TileDescriptor[] = [
       "Secure your application's data with onchain encryption methods.",
     action: (
       <Link
-        href="/docs/current/developer-docs/smart-contracts/encryption/vetkeys"
+        href="/docs/building-apps/network-features/encryption/vetkeys"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -99,7 +99,7 @@ const languagesTiles: TileDescriptor[] = [
       "Sign messages using threshold ECDSA, Schnorr, and EdDSA.",
     action: (
       <Link
-        href="/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa"
+        href="/docs/building-apps/network-features/signatures/t-ecdsa"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -113,7 +113,7 @@ const languagesTiles: TileDescriptor[] = [
       "Review the developer best practices for building on ICP.",
     action: (
       <Link
-        href="/docs/current/developer-docs/smart-contracts/best-practices/general"
+        href="/docs/building-apps/best-practices/general"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -127,7 +127,7 @@ const languagesTiles: TileDescriptor[] = [
       "Learn about application security and recommendations.",
     action: (
       <Link
-        href="/docs/current/developer-docs/security/security-best-practices/overview"
+        href="/docs/building-apps/security/overview"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -141,7 +141,7 @@ const languagesTiles: TileDescriptor[] = [
       "Integrate authentication methods into your application.",
     action: (
       <Link
-        href="/docs/current/developer-docs/identity/authentication/overview"
+        href="/docs/building-apps/authentication/overview"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -155,7 +155,7 @@ const languagesTiles: TileDescriptor[] = [
       "Learn about the ICP network's governance.",
     action: (
       <Link
-        href="/docs/current/developer-docs/daos/nns/overview"
+        href="/docs/home"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -169,7 +169,7 @@ const languagesTiles: TileDescriptor[] = [
       "Use HTTPS outcalls in your project to obtain data from external sources.",
     action: (
       <Link
-        href="/docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-overview"
+        href="/docs/building-apps/network-features/using-http/https-outcalls/overview"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -183,7 +183,7 @@ const languagesTiles: TileDescriptor[] = [
       "Build web applications using frontend canisters and frameworks like React.",
     action: (
       <Link
-        href="/docs/current/developer-docs/web-apps/application-frontends/overview"
+        href="/docs/building-apps/frontends/using-an-asset-canister"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >
@@ -197,7 +197,7 @@ const languagesTiles: TileDescriptor[] = [
       "View additional sample applications for Motoko, Rust, and other languages.",
     action: (
       <Link
-        href="/docs/current/samples/overview"
+        href="/samples"
         className="button button-ghost bg-white/90 rounded-2xl text-infinite"
         title="Learn more"
       >

@@ -1,0 +1,78 @@
+---
+keywords: [intermediate, tutorial, maintain canisters, logs, logging, backtraces, debugging, trap, canister trap]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# Canister backtraces
+
+<MarkdownChipRow labels={["Intermediate", "Tutorial", "Motoko", "Rust"]} />
+
+When canisters trap, ICP reports backtraces that contain the names of functions in the call stack. Backtraces are added to the canister logs and if the caller has [access to canister logs](/docs/building-apps/canister-management/logs#log-visibility) they will also be included in the message error response.
+
+For example, if the following Rust canister accidentally performs an out of bounds access of stable memory:
+
+```rust
+	#[update]
+	fn outer() {
+		inner();
+	}
+
+	fn inner() {
+		inner_2();
+	}
+
+	fn inner_2() {
+		ic_cdk::api::stable::stable_write(0xdeadbeef, b"foo")
+	}
+```
+
+The resulting stable memory out of bounds error will also contain the following backtrace which can help determine that the error is in `inner_2` which is reached via `outer` and `inner`:
+
+```
+Canister Backtrace:
+ic0::ic0::stable64_write
+_wasm_backtrace_canister::inner_2
+_wasm_backtrace_canister::inner
+_wasm_backtrace_canister::outer
+```
+
+
+
+## Checking for canister support
+
+Backtrace support relies on function names being stored in the `name` [custom section](https://webassembly.github.io/spec/core/appendix/custom.html#name-section) of the canister Wasm module.
+Any canister built with `dfx` version `>= 0.24.2` should automatically have support for backtraces. If you're manually altering your canister Wasm code with the `ic-wasm shrink`, `ic-wasm optimize`, or `ic-wasm metadata` commands, you'll need to add the `--keep-name-section` flag to ensure the canister can still provide backtraces. This requires version `ic-wasm` version `>= 0.8.6`.
+
+To double check that a Wasm module has the name section, you can use [`wasm-objdump`](https://github.com/WebAssembly/wabt):
+
+```
+$ wasm-objdump -h test.wasm
+
+test.wasm:	file format wasm 0x1
+
+Sections:
+
+     Type start=0x0000000a end=0x00000086 (size=0x0000007c) count: 18
+   Import start=0x00000089 end=0x0000011f (size=0x00000096) count: 4
+ Function start=0x00000122 end=0x000001da (size=0x000000b8) count: 182
+    Table start=0x000001dc end=0x000001e1 (size=0x00000005) count: 1
+   Memory start=0x000001e3 end=0x000001e6 (size=0x00000003) count: 1
+   Global start=0x000001e8 end=0x000001f1 (size=0x00000009) count: 1
+   Export start=0x000001f3 end=0x00000234 (size=0x00000041) count: 5
+     Elem start=0x00000236 end=0x0000028d (size=0x00000057) count: 1
+     Code start=0x00000291 end=0x0000ab1f (size=0x0000a88e) count: 182
+     Data start=0x0000ab22 end=0x0000b990 (size=0x00000e6e) count: 2
+   Custom start=0x0000b993 end=0x0000bad8 (size=0x00000145) ".debug_loc"
+   Custom start=0x0000badb end=0x0000cbf0 (size=0x00001115) ".debug_abbrev"
+   Custom start=0x0000cbf4 end=0x0007a78e (size=0x0006db9a) ".debug_info"
+   Custom start=0x0007a792 end=0x000a9000 (size=0x0002e86e) ".debug_ranges"
+   Custom start=0x000a9004 end=0x001542b4 (size=0x000ab2b0) ".debug_str"
+   Custom start=0x001542b8 end=0x0019ff04 (size=0x0004bc4c) ".debug_pubnames"
+   Custom start=0x0019ff07 end=0x001a0567 (size=0x00000660) ".debug_pubtypes"
+   Custom start=0x001a056b end=0x001e3464 (size=0x00042ef9) ".debug_line"
+   Custom start=0x001e3467 end=0x001e60a6 (size=0x00002c3f) "name"      <-------------- Verify this section exists.
+   Custom start=0x001e60a9 end=0x001e6153 (size=0x000000aa) "producers"
+   Custom start=0x001e6155 end=0x001e618e (size=0x00000039) "target_features"
+```

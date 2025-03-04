@@ -82,7 +82,7 @@ dfx canister update-settings backend --set-controller PRINCIPAL_ID
 
 ## Viewing the running state of a canister
 
-Once a canister has been deployed, it can receive and process requests from other canisters or end users. When a canister can send requests and receive replies, the canister is in a **Running** state, which is the default state of a canister. If a canister needs to be temporarily or permanently stopped, such as before a canister is upgraded, it may be stopped to ensure proper message handling. Stopping a canister is also a requirement if the canister is going to be deleted.
+Once a canister has been deployed, it can receive and process requests from other canisters or end users. When a canister is able to send requests and receive replies, the canister is in a **Running** state, which is the default state of a canister. If a canister needs to be temporarily or permanently stopped, such as before a canister is upgraded, it may be stopped to ensure proper message handling. Stopping a canister is also a requirement if the canister is going to be deleted.
 
 To check the current state of all canisters, you can use the command:
 
@@ -90,6 +90,7 @@ To check the current state of all canisters, you can use the command:
 dfx canister status --network ic --all
 ```
 
+Or, you can check the status of a single canister by specifying its name, such as:
 Or, you can check the status of a single canister by specifying its name, such as:
 
 ```sh
@@ -159,7 +160,7 @@ Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 
 ## Topping up a canister with cycles
 
-Depositing cycles into a canister's cycles balance is known as 'topping up' the canister's balance. For production canisters, which consistently use cycles over time to pay for the canister's resources, topping up the canister is required for routine maintenance.
+Depositing cycles into a canister's cycles balance is known as 'topping up' the canister's balance. For production canisters, which are consistently using cycles over time to pay for the canister's resources, topping up the canister is required for routine maintenance.
 
 While you must be a canister's controller in order to view the cycles balance of the canister, anyone can top up a canister.
 
@@ -169,7 +170,7 @@ There are a few ways to top up a canister:
 - Using the cycles ledger.
 - Using the NNS dapp web UI.
 - Using a fiat option through [Cycle.express](https://cycle.express/).
-- Using a third-party service such as CycleOps. For more information on using a third-party service for cycles management, please see [here](/docs/current/developer-docs/smart-contracts/topping-up/topping-up-canister/).
+- Using a third-party service such as CycleOps. For more information on using a third-party service for cycles management, please see [here](/docs/building-apps/canister-management/topping-up).
 
 ### Using ICP
 
@@ -240,10 +241,10 @@ Module hash: 0xf8680eb74022a1079012b7e9c644d1156580002a6126305791811533d3fd6f17
 The values returned in this output refer to the following:
 
 - Status: The canister's [current status](https://github.com/dfinity/interface-spec/blob/master/spec/index.md#canister-lifecycle-canister-lifecycle), such as `Running`, `Stopping`, or `Stopped`.
-- [Controllers](/docs/current/tutorials/developer-liftoff/level-1/1.6-managing-canisters#adding-an-identity-as-a-controller-of-a-canister): The principal IDs of the canister's configured controllers. Controllers are able to perform operations such as deploying or stopping a canister.
-- [Memory allocation](/docs/current/developer-docs/gas-cost/): The current amount of memory allocated by the canister.
-- [Compute allocation](/docs/current/developer-docs/gas-cost/): The current amount of compute resources allocated by the canister.
-- [Freezing threshold](/docs/current/tutorials/developer-liftoff/level-1/1.6-managing-canisters#setting-the-canisters-freezing-threshold): The cycles freezing threshold, defined in seconds, indicates when the IC estimates that the canister would be depleted of cycles before `freezing_threshold` seconds pass. This is estimated using the canister's current cost for storage and the canister's current size.
+- [Controllers](/docs/tutorials/developer-liftoff/level-1/1.6-managing-canisters#adding-an-identity-as-a-controller-of-a-canister): The principal IDs of the canister's configured controllers. Controllers are able to perform operations such as deploying or stopping a canister.
+- [Memory allocation](/docs/building-apps/essentials/gas-cost): The current amount of memory allocated by the canister.
+- [Compute allocation](/docs/building-apps/essentials/gas-cost): The current amount of compute resources allocated by the canister.
+- [Freezing threshold](/docs/tutorials/developer-liftoff/level-1/1.6-managing-canisters#setting-the-canisters-freezing-threshold): The cycles freezing threshold, defined in seconds, indicates when the IC estimates that the canister would be depleted of cycles before `freezing_threshold` seconds pass. This is estimated using the canister's current cost for storage and the canister's current size.
 - Memory size: The size of the memory used by the canister.
 - Balance: The canister's current cycles balance.
 - Module hash: The canister's Wasm module hash.
@@ -272,4 +273,4 @@ dfx canister --network ic delete --all
 
 ## Next steps
 
-- [9: Sample starter projects](/docs/current/tutorials/hackathon-prep-course/sample-starter-projects).
+- [9: Sample starter projects](/docs/tutorials/hackathon-prep-course/sample-starter-projects).

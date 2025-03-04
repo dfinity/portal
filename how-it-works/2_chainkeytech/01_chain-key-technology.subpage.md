@@ -13,7 +13,7 @@ _Chain-key cryptography_ enables subnets of the Internet Computer to jointly hol
 2. Certified responses enable clients to validate the information they receive from ICP nodes efficiently and without the need of keeping any blockchain state.
 3. Chain-key signatures enable canister smart contracts on ICP to hold assets and invoke smart contracts on other blockchain networks.
 
-In the future, [vetKeys](/docs/current/references/vetkeys-overview) will additionally enable dapps to encrypt data based on encryption keys controlled by canister smart contracts.
+In the future, [vetKeys](/docs/references/vetkeys-overview) will additionally enable dapps to encrypt data based on encryption keys controlled by canister smart contracts.
 
 ## Signatures
 

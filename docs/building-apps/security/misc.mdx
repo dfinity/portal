@@ -1,0 +1,271 @@
+---
+keywords: [security, concept]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Security best practices: Miscellaneous
+
+<MarkdownChipRow labels={["Security", "Best practices"]} />
+
+## Data confidentiality on ICP
+
+### Security concern
+
+When storing data on ICP, there are two levels of data access.
+
+1. Nodes are able to read all data that is stored on a subnet. This includes all messages sent to or from a canister, along with all data stored in a canister. This means a node could extract all data available to a canister. This will change with the implementation of TEE-based security for nodes.
+
+2. End user clients can only access whatever data that nodes and canisters have made available to them. If the subnet's nodes do not misbehave and leak data, clients can only read the responses to ingress messages and queries that they have sent. The canister decides what data is exposed to the client.
+
+Partial information on data that is stored in the subnet state tree will always leak. Therefore, data with a low-entropy value may entirely leak and be fully exposed, such as a Boolean value that can only be either "True" or "False." Leakage on data with high entropy is negligible.
+
+There are two types of user-related data that may be stored in the subnet state tree. The first is when a user sends an ingress message to a canister; the message hash and the response are both stored in the subnet state tree to be retrieved securely by the client. The ingress message should contain a high-entropy nonce that is implemented by the agent and typically not exposed to the user. The message response is determined by the canister and may not contain a high-entropy value. If the canister response consists of a low-entropy value, then the data may be leaked to users other than the ingress message sender.
+
+The second type of user-related data is certified variables maintained by a canister that are also exposed through the subnet state tree. If a canister places low-entropy data into the state tree, then the data may leak to users who should not have access to that piece of data.
+
+### Recommendation
+
+For developers that need to protect the confidentiality of their data against external users, they should ensure that data in the subnet state tree has a sufficient level of entropy. 128 bits is recommended. If the data does not have enough entropy itself, then adding some artificial data using randomness would be recommended.
+
+In particular, a canister can ensure that responses to ingress messages do not leak data to external users, other than the sender, by including high-entropy data in the response. Or, a canister can ensure that data in certified variables is not leaked by adding high-entropy data to the variables that should be kept confidential.
+
+Additionally, similarly to ingress message responses, a canister's private custom sections that contain low-entropy data could leak to unauthorized users. Therefore, a sufficient level of entropy for canister private custom sections should be used. 128 bits is recommended. If the data does not have enough entropy itself, then adding some artificial data using randomness would be recommended.
+
+## Using secure randomness in canisters
+
+Canister developers often require access to secure randomness in their canisters to perform certain operations. The requirements for a secure randomness source include
+* **Unbiased:** The value shouldn't be influenced by anyone.
+* **Unpredictable:** The value is unknown to anyone before it is generated.
+
+ICP exposes the system API [`raw_rand`](/docs/references/ic-interface-spec#ic-raw_rand) for this exact purpose, which accepts no input and returns 32 bytes of cryptographically secure randomness. The secure randomness guarantees of `raw_rand` are achieved by the cryptographic properties of the [RandomTape](https://internetcomputer.org/how-it-works/execution-layer/#random-number-generation). It is always recommended to use `raw_rand` as a source of randomness in canisters and **avoid** using other sources with low entropy, such as current time.
+
+To illustrate the usage of `raw_rand`, two examples in Motoko and Rust can be found below, including the benefits and caveats around using them.
+
+### 1. Direct usage of `raw_rand` as the random number generator
+
+In this Motoko example, the canister provides the requested size of random bytes by calling `raw_rand`. However, it can only generate 32 bytes of secure randomness in a single message, and thus subsequent calls to the system API are required to fill the requested size.
+
+```motoko
+import Random "mo:base/Random";
+import Array "mo:base/Array";
+
+actor Randomness {
+  public func random_bytes(n : Nat) : async [Nat8] {
+    let byteArray : [var Nat8] = Array.init<Nat8>(n, 0);
+    let entropy = await Random.blob();
+    var f = Random.Finite(entropy);
+    var i = 0;
+    loop {
+      if (i == n) {
+        return Array.freeze<Nat8>(byteArray);
+      } else {
+        switch (f.byte()) {
+          case (?byte) {
+            byteArray[i] := byte;
+            i := i + 1;
+          };
+          case null {
+            let entropy = await Random.blob();
+            f := Random.Finite(entropy);
+          };
+        };
+      };
+    };
+  };
+};
+```
+
+#### Benefits:
+- The random bytes is guaranteed to be secure.
+
+#### Caveats:
+- The method doesn't scale when a large amount of random bytes is requested, as `raw_rand` must be called for every 32 bytes.
+
+### 2. Using `raw_rand` as seed for a pseudo random number generator (PRNG)
+
+In this Rust example, we seed the output from `raw_rand` in a known PRNG like ChaCha20 in the `init` and `post_upgrade` hooks and generate randomness by calling the `random_bytes` method.
+
+```rust
+use candid::{CandidType, Principal};
+use rand_chacha::rand_core::{RngCore, SeedableRng};
+use rand_chacha::ChaCha20Rng;
+use std::cell::RefCell;
+use std::time::Duration;
+
+thread_local! {
+    static RNG: RefCell<Option<ChaCha20Rng>> = RefCell::new(None);
+}
+
+const SEEDING_INTERVAL: Duration = Duration::from_secs(3600);
+
+#[derive(CandidType)]
+enum RngError {
+    RngNotInitialized(String),
+}
+
+type RandomBytesResult = Result<String, RngError>;
+
+async fn seed_randomness() {
+    let (seed,): ([u8; 32],) = ic_cdk::call(Principal::management_canister(), "raw_rand", ())
+        .await
+        .expect("Failed to call the management canister");
+    RNG.with_borrow_mut(|rng| *rng = Some(ChaCha20Rng::from_seed(seed)));
+}
+
+fn schedule_seeding(duration: Duration) {
+    ic_cdk_timers::set_timer(duration, || {
+        ic_cdk::spawn(async {
+            seed_randomness().await;
+            // Schedule reseeding on a timer with duration SEEDING_INTERVAL
+            schedule_seeding(SEEDING_INTERVAL);
+        })
+    });
+}
+
+#[ic_cdk::init]
+fn init() {
+    // Initialize randomness during canister install or reinstall
+    schedule_seeding(Duration::ZERO);
+}
+
+#[ic_cdk::post_upgrade]
+fn post_upgrade() {
+    // Initialize randomness after a canister upgrade
+    schedule_seeding(Duration::ZERO);
+}
+
+// This must always be an update method or the PRNG state won't be updated
+#[ic_cdk::update]
+fn random_bytes(size: u32) -> RandomBytesResult {
+    let mut buf = vec![0; size as usize];
+    RNG.with_borrow_mut(|rng| match rng.as_mut() {
+        Some(rand) => {
+            rand.fill_bytes(&mut buf);
+            Ok(hex::encode(buf))
+        }
+        None => Err(RngError::RngNotInitialized(
+            "Randomness is not initialized. Please try again later".to_string(),
+        )),
+    })
+}
+```
+
+#### Benefits:
+- This method scales for large random bytes, as `raw_rand` needs to be called only once, and subsequent PRNG computation is local to the canister.
+
+#### Caveats:
+- The `setup_randomness` must **always** be initialized in both the `init` and `post_upgrade` hook as `init` [is not invoked during a canister upgrade](/docs/references/ic-interface-spec#system-api-upgrades).
+- The `init` and `post_upgrade` methods don't allow async calls, and thus a timer is immediately scheduled to seed the randomness.
+- Once the seed is initialized, the outcome of all future `random_bytes` is predictable to anyone having the seed (node providers), as the PRNG is deterministic. This breaks the unpredictable property of secure randomness. Hence, to balance security vs. performance, we recommend frequently reseeding the PRNG on a timer. The example above already does this with a duration of **1 hour**. However, based on the sensitivity of their dapp, developers can choose an appropriate reseeding interval by setting `SEEDING_INTERVAL`.
+- The `random_bytes` must **always** be an `update` method, so the PRNG can preserve the state and offer unique randomness on every request.
+
+## Test your canister code even in the presence of system API calls
+
+### Security concern
+
+Since canisters interact with the system API, it is harder to test the code because unit tests cannot call the system API. This may lead to a lack of unit tests.
+
+### Recommendation
+
+- Create loosely coupled modules that do not depend on the system API and unit test those. See this [recommendation](https://mmapped.blog/posts/01-effective-rust-canisters.html#target-independent) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)).
+
+- For the parts that still interact with the system API, create a thin abstraction of the system API that is faked in unit tests. See the [recommendation](https://mmapped.blog/posts/01-effective-rust-canisters.html#target-independent) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)). For example, one can implement a ‘Runtime’ as follows and then use the ‘MockRuntime’ in tests (code by Dimitris Sarlis):
+
+```rust
+use ic_cdk::api::{
+    call::call, caller, data_certificate, id, print, time, trap,
+};
+
+#[async_trait]
+pub trait Runtime {
+    fn caller(&self) -> Result<Principal, String>;
+    fn id(&self) -> Principal;
+    fn time(&self) -> u64;
+    fn trap(&self, message: &str) -> !;
+    fn print(&self, message: &str);
+    fn data_certificate(&self) -> Option<Vec<u8>>;
+    (...)
+}
+
+#[async_trait]
+impl Runtime for RuntimeImpl {
+    fn caller(&self) -> Result<Principal, String> {
+        let caller = caller();
+        // The anonymous principal is not allowed to interact with the canister.
+        if caller == Principal::anonymous() {
+            Err(String::from(
+                "Anonymous principal not allowed to make calls.",
+            ))
+        } else {
+            Ok(caller)
+        }
+    }
+
+    fn id(&self) -> Principal {
+        id()
+    }
+
+    fn time(&self) -> u64 {
+        time()
+    }
+
+    (...)
+
+}
+
+pub struct MockRuntime {
+    pub caller: Principal,
+    pub canister_id: Principal,
+    pub time: u64,
+    (...)
+}
+
+#[async_trait]
+impl Runtime for MockRuntime {
+    fn caller(&self) -> Result<Principal, String> {
+        Ok(self.caller)
+    }
+
+    fn id(&self) -> Principal {
+        self.canister_id
+    }
+
+    fn time(&self) -> u64 {
+        self.time
+    }
+
+    (...)
+
+}
+```
+
+## Make canister builds reproducible
+
+### Security concern
+
+It should be possible to verify that a canister does what it claims to do. ICP provides a SHA256 hash of the deployed WASM module. In order for this to be useful, the canister build has to be reproducible.
+
+### Recommendation
+
+Make canister builds reproducible. See this [recommendation](https://mmapped.blog/posts/01-effective-rust-canisters.html#reproducible-builds) (from [effective Rust canisters](https://mmapped.blog/posts/01-effective-rust-canisters.html)). See also the [developer docs on this](/docs/building-apps/best-practices/reproducible-builds).
+
+## Don’t rely on time being strictly monotonic
+
+### Security concern
+
+The time read from the system API is monotonic but not strictly monotonic. Thus, two subsequent calls can return the same time, which could lead to security bugs when the time API is used.
+
+### Recommendation
+
+See the "Time is not strictly monotonic" section in [How to audit an ICP canister](https://www.joachim-breitner.de/blog/788-How_to_audit_an_Internet_Computer_canister).
+
+## Rust: Avoid floating point arithmetic for financial information
+
+### Security concern
+
+Floats in Rust may behave unexpectedly. There can be undesirable loss of precision under certain circumstances. When dividing by zero, the result could be `-inf`, `inf`, or `NaN`. When converting to an integer, this can lead to unexpected results. (There is no `checked_div` for floats.)
+
+### Recommendation
+
+Use [`rust_decimal::Decimal`](https://docs.rs/rust_decimal/latest/rust_decimal/) or [`num_rational::Ratio`](https://docs.rs/num-rational/latest/num_rational/). Decimal uses a fixed-point representation with base 10 denominators, and Ratio represents rational numbers. Both implement `checked_div` to handle division by zero, which is not available for floats. Numbers in common use, like 0.1 and 0.2, can be represented more intuitively with Decimal and can be represented exactly with Ratio. Rounding oddities like `0.1 + 0.2 != 0.3`, which happen with floats in Rust, do not arise with Decimal (see https://0.30000000000000004.com/ ). With Ratio, the desired precision can be made explicit. With either Decimal or Ratio, although one still has to manage precision, the above makes arithmetic easier to reason about.
