@@ -1,0 +1,219 @@
+---
+keywords: [intermediate, rosetta, tutorial, NNS voting, voting with rosetta, vote on proposals, rosetta voting, rosetta with proposals, follow neurons, spawn, neuron, staking, voting, proposal, follow]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+# ICP Rosetta NNS voting API reference
+
+<MarkdownChipRow labels={["Intermediate", "Rosetta" ]} />
+
+This section will give you an overview of how to vote on NNS proposals using Rosetta.
+
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
+
+<input type="checkbox"/> You have a Rosetta instance running at: <code>http://127.0.0.1:8081</code>
+<div>
+</div>
+<input type="checkbox"/> You are familiar with the concept of staking on the NNS in general.
+
+</TabItem>
+</Tabs>
+
+
+## Following neurons
+
+|                      |            |
+|----------------------|------------|
+| Since version        | 1.5.0      |
+| Idempotent?          | yes        |
+| Minimal access level | hotkey     |
+
+This section will show you how to use Rosetta to follow existing neurons.
+If you do not want to have to vote on every proposal yourself, you can decide to follow other neurons. This essentially means that you are going to vote the same way on a given proposal as the neuron that you are following.
+
+### How to follow neurons
+
+The `FOLLOW` operation sets a follow rule for a neuron.
+The governance canister smart contract will automatically deduce the vote of the following neurons from the votes of the followees during the voting.
+
+The `followees` metadata field contains the list of neurons to follow.
+If the list contains more than one neuron, the neuron will vote according to the majority of followed neuron votes (or abstain in case of a draw).
+If the list is empty, the rule for this topic will be discarded (i.e., the neuron will not follow any other neuron for proposals of this type).
+
+You can get a [list](/docs/defi/rosetta/icp_rosetta/data_api/) of publicly known neurons through the `DATA-API`.
+
+You can restrict the rule to a specific topic by specifying the `topic` metadata field.
+The topic is an integer between 0 and 10 (inclusive).
+The default value for the `topic` field is 0.
+Each topic can have at most one rule associated with it.
+The topic codes are listed below.
+
+0. Undefined (all topics).
+1. Neuron management.
+2. Exchange rate.
+3. Network economics.
+4. Governance.
+5. Node administration.
+6. Participant management.
+7. Subnet management.
+8. Network canister management.
+9. KYC.
+10. Node provider rewards.
+
+### Preconditions
+
+* `account.address` is the ledger address of the neuron controller or hotkey.
+* `metadata.followees` contains an array of valid neuron identifiers.
+* `metadata.topic` is a valid topic identifier.
+
+### Postconditions:
+
+* Neuron votes according to specified follow rule.
+
+**Calling `FOLLOW` as a controller:**
+
+```json
+curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data '{
+  "network_identifier": {
+    "blockchain": "Internet Computer",
+    "network": "00000000000000020101"
+  },
+  "public_keys": [
+    {
+      "hex_bytes": "047a83e378053f87b49aeae53b3ed274c8b2ffbe59d9a51e3c4d850ca8ac1684f7131b778317c0db04de661c7d08321d60c0507868af41fe3150d21b3c6c757367",
+      "curve_type": "secp256k1"
+    }
+  ],
+  "operations": [
+    {
+      "operation_identifier": {
+        "index": 0
+      },
+      "type": "FOLLOW",
+      "account": {
+        "address": "8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4"
+      },
+      "metadata": {
+        "neuron_index": 1,
+        "followees": [
+          3094748712371737240
+        ],
+        "topic": 0
+      }
+    }
+  ],
+  "metadata": null
+}'
+```
+
+**Calling `FOLLOW` with a hotkey:**
+
+```json
+curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data '{
+  "network_identifier": {
+    "blockchain": "Internet Computer",
+    "network": "00000000000000020101"
+  },
+  "public_keys": [
+    {
+      "hex_bytes": "047a83e378053f87b49aeae53b3ed274c8b2ffbe59d9a51e3c4d850ca8ac1684f7131b778317c0db04de661c7d08321d60c0507868af41fe3150d21b3c6c757367",
+      "curve_type": "secp256k1"
+    }
+  ],
+  "operations": [
+    {
+      "operation_identifier": {
+        "index": 0
+      },
+      "type": "FOLLOW",
+      "account": {
+        "address": "8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4"
+      },
+      "metadata": {
+        "neuron_index": 1,
+        "followees": [
+          3094748712371737240
+        ],
+        "topic": 0,
+        "controller": {
+          "public_key": {
+            "hex_bytes": "047a83e378053f87b49aeae53b3ed274c8b2ffbe59d9a51e3c4d850ca8ac1684f7131b778317c0db04de661c7d08321d60c0507868af41fe3150d21b3c6c757367",
+            "curve_type": "secp256k1"
+          }
+        }
+      }
+    }
+  ],
+  "metadata": null
+}'
+```
+
+:::info
+
+The `followees` metadata field contains a list of unique neuron identifiers assigned by the governance canister smart contract, not the list of neuron indices chosen by the caller.
+You can obtain unique neuron identifiers of your neurons from the `neuron_id` metadata field of the `STAKE` and `NEURON_INFO` operations.
+
+:::
+
+
+## Voting on proposals
+
+|                      |        |
+|----------------------|--------|
+| Since version        | 1.7.0  |
+| Idempotent?          | Yes    |
+| Minimal access level | hotkey |
+
+This section will show you how to use Rosetta to vote on existing proposals.
+
+### Fetch existing proposals
+
+First you will need to know which proposals [currently exist on the NNS](/docs/defi/rosetta/icp_rosetta/data_api/).
+If you already know the proposal ID you want to vote on, you can also [fetch](/docs/defi/rosetta/icp_rosetta/data_api/) the information about the proposal to check that what you are voting on is what you expected.
+
+### Vote on a proposal
+
+In this tutorial you will be voting on the proposal with the proposal id `12`.
+You also have to decide on what to vote on, meaning:
+- Register a vote, but neither vote for nor against the proposal: 0
+- Vote for the proposal to be adopted: 1
+- Vote for the proposal to be rejected: 2
+
+In this case, you will be voting against the proposal.
+An example call for the `construction/payloads` endpoint resembles the following:
+
+```
+curl --location '0.0.0.0:8081/construction/payloads'  --header 'Content-Type: application/json' --data '{
+  "network_identifier": {
+    "blockchain": "Internet Computer",
+    "network": "00000000000000020101"
+  },
+  "public_keys": [
+    {
+      "hex_bytes": "047a83e378053f87b49aeae53b3ed274c8b2ffbe59d9a51e3c4d850ca8ac1684f7131b778317c0db04de661c7d08321d60c0507868af41fe3150d21b3c6c757367",
+      "curve_type": "secp256k1"
+    }
+  ],
+  "operations": [
+    {
+      "operation_identifier": {
+        "index": 0
+      },
+      "type": "REGISTER_VOTE",
+      "account": {
+        "address": "8b84c3a3529d02a9decb5b1a27e7c8d886e17e07ea0a538269697ef09c2a27b4"
+      },
+      "metadata": {
+        "neuron_index": 1,
+        "proposal": 12,
+        "vote": 2
+      }
+    }
+  ],
+  "metadata": null
+}'
+```

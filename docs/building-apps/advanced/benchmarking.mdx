@@ -1,0 +1,117 @@
+---
+keywords: [intermediate, benchmark, test, bench mark, canbench]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Canister benchmarking
+
+<MarkdownChipRow labels={["Intermediate"]} />
+
+Canisters deployed on ICP use resources such as memory and compute. Resources are finite, and there are limits configured that restrict how many resources a canister may consume. The `canbench` Rust crate provides a way to benchmark a canister's resources so developers can gain an insight into how their canister uses memory, instructions, and other resources.
+
+`canbench` can be used to provide information such as:
+
+- Insight into how a canister consumes stable memory, heap memory, and instructions.
+
+- Detecting possible performance regressions, both locally or on the mainnet.
+
+- Analyzing performance bottlenecks.
+
+Features of `canbench` include:
+
+- Supports benchmarks that are up to 10 trillion instructions.
+
+- Reports the number of instructions consumed alongside changes to stable and heap memories.
+
+- Persistence of benchmarking results in your canister's repo.
+
+- Language agnostic, though initially only support for Rust exists.
+
+## Installation
+
+You can install `canbench` using [cargo](https://crates.io/).
+
+```bash
+cargo install canbench
+```
+
+Add an optional dependency for `canbench` in your `Cargo.toml` file:
+
+``` title="Cargo.toml"
+canbench_rs = { version = "0.1.1", optional = true }
+```
+
+Then, edit the `canbench.yml` file to point to your canister's Wasm file:
+
+```yml title="canbench.yml"
+build_cmd:
+  cargo build --release --target wasm32-unknown-unknown --features canbench-rs
+
+wasm_path:
+  ./target/wasm32-unknown-unknown/release/<YOUR_CANISTER>.wasm
+```
+
+## Example benchmark test
+
+Below is an example canister that uses a `query` function to compute and return the fibonacci sequence of a given number:
+
+```rust title="src/example_backend/src/lib.rs"
+#[ic_cdk::query]
+fn fibonacci(n: u32) -> u32 {
+    if n == 0 {
+        return 0;
+    } else if n == 1 {
+        return 1;
+    }
+
+    let mut a = 0;
+    let mut b = 1;
+    let mut result = 0;
+
+    for _ in 2..=n {
+        result = a + b;
+        a = b;
+        b = result;
+    }
+
+    result
+}
+```
+
+An example benchmark test using `canbench` for this canister could look like this:
+
+```
+#[cfg(feature = "canbench-rs")]
+mod benches {
+    use super::*;
+    use canbench_rs::bench;
+
+
+    #[bench]
+    fn fibonacci_20() {
+        // NOTE: the result is printed to prevent the compiler from optimizing the call away.
+        println!("{:?}", fibonacci(20));
+    }
+}
+```
+
+The benchmark output of this test would resemble the following:
+
+```
+canbench
+
+---------------------------------------------------
+
+Benchmark: fibonacci_20 (new)
+  total:
+    instructions: 2301 (new)
+    heap_increase: 0 pages (new)
+    stable_memory_increase: 0 pages (new)
+
+---------------------------------------------------
+
+Executed 1 of 1 benchmarks.
+```
+
+For more examples and information, view the [crate's documentation](https://docs.rs/canbench-rs) or the [GitHub repo for this crate](https://github.com/dfinity/canbench/tree/main).

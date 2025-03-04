@@ -1,0 +1,333 @@
+---
+keywords: [beginner, tutorial, candid, using candid, .did]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# Using Candid
+
+<MarkdownChipRow labels={["Beginner", "Tutorial"]} />
+
+Candid provides a language-agnostic way to interact with <GlossaryTooltip>canisters</GlossaryTooltip>.
+
+:::info
+While Candid is a robust, type-safe, and future-proof way to facilitate communication between canisters, it is not required. Arbitrary bytes can be exchanged if all canisters that are part of the communication stream are designed to understand them (such that they are using the same underlying protocol, written in the same language, etc.).
+
+[Learn more in the Candid reference documentation](/docs/references/candid-ref).
+:::
+
+By using Candid, you can specify input argument values and display return values from canister methods regardless of whether you interact with ICP from a terminal using the IC SDK, through a web browser, or from a program written in JavaScript, Motoko, Rust, or any other language.
+
+## The `.did` file
+
+Candid types can be used to describe a service via a Candid service description file (`.did` file), which can either be manually written or generated from a service implementation.
+
+### Auto-generated `.did` files
+
+If you write a canister in Motoko, the compiler automatically generates a Candid description when you compile the program. If you use `dfx`, you will typically see the auto-generated `.did` files in the `/declarations` directory of your project. Since these files are auto-generated, it is recommended that you do not manually edit them; they will be overwritten in the next `dfx build`.
+
+For canisters written in Rust, the Candid extractor tool can be used with the Rust [IC CDK](https://crates.io/crates/ic-cdk) versions `0.11.0` and newer. View the full instructions for using the [Candid extractor](/docs/building-apps/developer-tools/cdks/rust/generating-candid).
+
+### Writing `.did` files
+
+For other languages, you will have to write the Candid interface description manually. Define a service, then add a public method's name, followed by the data types that the method accepts and returns:
+
+
+Here is an example that defines the public method `greet`, which accepts type `text` and returns type `text` using a query call.
+
+```candid
+service : {
+    "greet" : (text) -> (text) query;
+};
+```
+
+[Learn more about supported data types in the Candid reference documentation](/docs/references/candid-ref#supported-types).
+
+### Splitting interface descriptions across multiple files (Motoko)
+
+In some workflows, it may be beneficial to split interface descriptions across multiple `.did` files. For example, one file may be used to define type definitions that are used by several canisters, while another file is used to define the main service for one of those canisters.
+
+You can import both interface descriptions into your canister with two import statements:
+
+```motoko no-repl
+import A "a.did";  // Imports only type definitions
+import service B "b.did";  // Imports both type definitions and main service
+```
+
+
+## Service `InitArgs`
+
+Consider the following service definition:
+
+```
+service : (InitArgs) -> {
+   ...
+};
+
+```
+
+This definition can be thought of as a deployment configuration. To initialize this service, you must supply `(InitArgs)` as an `init` argument.
+
+An example of this service definition can be found in the [EVM RPC canister's Candid file](https://github.com/internet-computer-protocol/evm-rpc-canister/blob/main/candid/evm_rpc.did#L253) canister.
+
+
+## Naming arguments and results
+
+Naming the arguments or results for a method is purely for documentation purposes. The name you use does not change the method’s type or the values being passed. Instead, arguments and results are identified by their **position**, independent of the name. This is thus very different from named **record** fields, which are semantically relevant.
+
+## Reusing complex types
+
+Often, multiple methods in a service may refer to the same complex type. In that case, the type can be named and reused multiple times. For example:
+
+```candid
+type address = record {
+  street : text;
+  city : text;
+  zip_code : nat;
+  country : text;
+};
+service address_book : {
+  set_address: (name : text, addr : address) -> ();
+  get_address: (name : text) -> (opt address) query;
+}
+```
+
+These type definitions merely abbreviate an **existing** type; they do not define a new type. It does not matter whether you use `address` in the function signature or write out the records. Also, two abbreviations with different names but equivalent definitions describe the same type and are interchangeable. In other words, Candid uses **structural** typing.
+
+## Specifying a query method
+
+In the last example, you might have noticed the use of the `query` annotation for the `get_address` method. For example:
+
+```candid
+service address_book : {
+  set_address: (name : text, addr : address) -> ();
+  get_address: (name : text) -> (opt address) query;
+}
+```
+
+This annotation indicates that the `get_address` method can be invoked as an ICP **query call**. As discussed in [query and update methods](/docs/building-apps/interact-with-canisters/advanced-calls), a query provides an efficient way to retrieve information from a canister without going through consensus, so being able to identify a method as a query is one of the key benefits of using Candid to interact with ICP.
+
+## Encoding and decoding
+
+The point of Candid is to allow seamless invocation of service methods, passing arguments encoded to a binary format and transferred by an underlying transportation method (such as messages into or within the Internet Computer) and decoded on the other side.
+
+As a Candid user, you do not have to worry about the details of this binary format. If you plan to **implement** Candid yourself (for example, to support a new host language), you can consult the [Candid specification](https://github.com/dfinity/candid) for details. However, some aspects of the format are worth knowing:
+
+-   The Candid binary format starts with `DIDL…` (or, in hex, `4449444c…`). If you see this in some low-level log output, you are very likely observing a Candid-encoded value.
+
+-   The Candid binary format always encodes *sequences* of values, because method parameters and results are sequences of types.
+
+-   The binary format is quite compact. A `(vec nat64)` with 125_000 entries takes 1_000_007 bytes.
+
+-   The binary is self-describing and includes a (condensed) type description of the type of the values therein. This allows the receiving side to detect if a message was sent as a different, incompatible type.
+
+-   As long as the sender serializes the arguments as the type that the receiving side expects, deserialization will succeed.
+
+## Service upgrades
+
+Services evolve over time; they gain new methods, existing methods return more data, or expect additional arguments. Usually, developers want to do that without breaking existing clients.
+
+Candid supports such evolution by defining precise rules that indicate when the new service type will still be able to communicate with all other parties that are using the previous interface description. The underlying formalism is that of *subtyping*.
+
+Services can safely evolve in the following ways:
+
+-   New methods can be added.
+
+-   Existing methods can return additional values; that is, the sequence of result types can be extended. Old clients will simply ignore additional values.
+
+-   Existing methods can shorten their parameter list. Old clients may still send the extra arguments, but they will be ignored.
+
+-   Existing methods can extend their parameter list with optional arguments (type `opt …`). When reading messages from old clients, who do not pass that argument, a `null` value is assumed.
+
+-   Existing parameter types may be *changed*, but only to a *supertype* of the previous type.
+
+-   Existing result types may be *changed*, but only to a *subtype* of the previous type.
+
+For information about the supertypes and subtypes of a given type, see the corresponding [reference](/docs/references/candid-ref) section for that type.
+
+Let’s look at a concrete example of how a service might evolve. Consider a service with the following API:
+
+```candid
+service counter : {
+  add : (nat) -> ();
+  subtract : (nat) -> ();
+  get : () -> (int) query;
+  subscribe : (func (int) -> ()) -> ();
+}
+```
+
+This service can evolve to the following interface:
+
+```candid
+type timestamp = nat;
+service counter : {
+  set : (nat) -> ();
+  add : (int) -> (new_val : nat);
+  subtract : (nat, trap_on_underflow : opt bool) -> (new_val : nat);
+  get : () -> (nat, last_change : timestamp) query;
+  subscribe : (func (nat) -> (unregister : opt bool)) -> ();
+}
+```
+
+## Candid textual values
+
+The main purpose of Candid is to connect programs written in some host language—Motoko, Rust, or JavaScript, for example—with ICP. In most cases, therefore, you do not have to deal with your program data as Candid values. Instead, you work with a host language like JavaScript using familiar JavaScript values and then rely on Candid to transparently transport those values to a canister written in Rust or Motoko. The canister receiving the values treats them as native Rust or Motoko values.
+
+However, there are some cases, for example, when logging, debugging, or interacting with a service on the command line, where it is useful to see the Candid values directly in a human-readable form. In these scenarios, you can use the **textual presentation** for Candid values.
+
+The syntax is similar to that for Candid types. For example, a typical textual presentation for a Candid value might look like this:
+
+```candid
+(record {
+  first_name = "John";
+  last_name = "Doe";
+  age = 41;
+  membership_status = variant { active };
+  email_addresses =
+    vec { "john@doe.com"; "john.doe@example.com" };
+})
+```
+
+:::info
+The Candid **binary** format does not include the actual field names, merely numeric **hashes**. So pretty-printing such a value without knowledge of the expected type will not include the field names of records and variants. The above value might then be printed as follows:
+
+``` candid
+(record {
+   4846783 = 14;
+   456245371 = variant {373703110};
+   1443915007 = vec {"john@doe.com"; "john.doe@example.com"};
+   2797692922 = "John"; 3046132756 = "Doe"
+})
+```
+:::
+
+## Best practices
+
+### Use descriptive type names
+
+It is recommended to use Candid records with descriptive names for types:
+
+```candid
+type Recycler =
+ record {
+   identity: principal;
+   location: record {
+               Country__1; // <-- Use descriptive names for types,
+               text; // <----- Rather than generic terms.
+             };
+   name: text;
+   nick: text;
+ };
+```
+
+### Deprecating fields
+
+To deprecate a Candid field, you can update the field's type to `opt empty`, indicating the field is not used:
+
+```
+record {
+  first_name : text; middle_name : opt empty; second_name : text; score : nat; country : text
+}
+```
+
+However, it is best practice to mark a field as `reserved` to prevent future developers from using the field in an unexpected manner:
+
+```
+record {
+  first_name : text; middle_name : reserved; second_name : text; score : nat; country : text
+}
+```
+
+For more information, refer to the blog post on [Candid for engineers](https://mmapped.blog/posts/20-candid-for-engineers#faq).
+
+## Interact with a service
+
+### Command line
+
+To interact with a service, use [`dfx canister call`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-call).
+
+To pass Candid arguments to the `dfx canister call` command, please refer to the [Candid reference](/docs/references/candid-ref), or, for Candid arguments too long to fit the command line, please use the `--argument-file` flag.
+
+You can also omit the arguments and let the IC SDK generate a random value that matches the method type.
+
+### Browser
+
+The Candid interface description language provides a common language for specifying the signature of a canister. Based on the type signature of the service offered by the smart contract, Candid provides a web interface (the Candid UI) that allows you to call canister functions for testing and debugging from a web browser without writing any frontend code.
+
+When a canister is deployed, it will return a Candid UI URL as part of the output, indicated as the "backend canister URL." The full URL should look similar to the following, but with the `canister_id` reflecting your project's canister ID.
+
+```
+http://127.0.0.1:4943/?canisterId=<canister_id> // Local URL
+https://a4gq6-oaaaa-aaaab-qaa4q-cai.icp0.io/?id=ts425-saaaa-aaaab-qbksq-cai // Playground or Mainnet URL
+```
+
+For more information about the tool that creates a web interface from the Candid interface of any canister, see the [Candid UI](https://github.com/dfinity/candid/tree/master/tools/ui) repository.
+
+:::caution
+At this time, it is not possible to disable the Candid UI from being installed and deployed for your canister.
+:::
+
+### Interact with a service from a Motoko canister
+
+If you are writing a canister in Motoko, the Motoko compiler automatically translates the signature of your canister’s top-level `actor` or `actor class` into a Candid description, and the `dfx build` command ensures that the service description is properly referenced where it needs to be. It ensures that the canister identifier and the Candid description are passed to the Motoko compiler correctly. The Motoko compiler then translates the Candid type into the appropriate native Motoko type. This translation enables you to call the canister's method natively. For additional information on the type mapping between Candid and Motoko, you can consult the [supported types](/docs/references/candid-ref) reference section.
+
+Motoko canisters auto-generate a Candid description file, located in your project build directory at `.dfx/local/canisters/hello/hello.did`.
+
+### Interact with a service from a Rust canister
+
+If you write a canister in Rust, the `dfx build` command ensures that the service description is properly referenced where it needs to be. However, you need to write the Candid service description manually, following the conventions described in the [Candid specification](https://github.com/dfinity/candid/blob/master/spec/Candid.md#core-grammar).
+
+The Rust CDK then translates the Candid type into the appropriate native Rust type. This translation enables you to call the canister's method natively. For additional information on the type mapping between Candid and Rust, you can consult the [supported types](/docs/references/candid-ref) reference section.
+
+There is also an experimental feature to generate a Candid service description automatically; see this [test case](https://github.com/dfinity/candid/blob/master/rust/candid/tests/types.rs#L99) as an example.
+
+For additional information and libraries to help you create Candid services or canisters in Rust, see the documentation for the [Candid crate](https://docs.rs/candid/), [Rust CDK examples](https://github.com/dfinity/cdk-rs/tree/main/examples) and the [Rust tutorials](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust).
+
+### Interact with a service from JavaScript
+
+The [dfinity/agent npm package](https://www.npmjs.com/package/@dfinity/agent) includes support for importing canisters using Candid.
+
+When the import dependency of a canister is processed by the `dfx build` command and the `webpack` configuration, this processing ensures that the canister identifier and the Candid description are passed to the JavaScript program correctly. Behind the scenes, the Candid service description is translated into a JavaScript module, located at `.dfx/local/canister/counter/counter.did.js` by `dfx build`. The `dfinity/agent` package then translates the Candid type into native JavaScript values and enables you to call the canister's method natively. For additional information on the type mapping between Candid and JavaScript, you can consult the [supported types](/docs/references/candid-ref) reference section.
+
+## Publish Candid interfaces privately
+
+By default, `dfx` makes the `candid:service` metadata information public to promote interoperability and make it convenient to use the Candid UI. The Candid UI reads this metadata to determine the interface of your canister. It doesn’t publish any more information than what is already public. This metadata can be returned through the [`dfx canister metadata`](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-metadata) command:
+
+```
+dfx canister metadata <canister_id> candid:service
+```
+
+However, you can make this metadata information private so that it is only readable by the controllers of your canister. To do this, add the following configuration information to your canister's definition in the project's `dfx.json` file:
+
+```json title="dfx.json"
+      "metadata": [
+        {
+          "name": "candid:service",
+          "visibility": "private"
+        }
+      ]
+```
+
+Then, redeploy your canister and confirm that the interface is no longer public.
+
+
+## Create a new Candid implementation
+
+There are community-supported Candid libraries for the following host languages:
+
+-   [AssemblyScript](https://github.com/rckprtr/cdk-as/tree/master/packages/cdk/assembly/candid)
+
+-   [C#/.NET](https://github.com/BoomDAO/ICP.NET/tree/main/src/Candid)
+
+-   [Elm](https://github.com/chenyan2002/ic-elm/)
+
+-   [Haskell](https://hackage.haskell.org/package/candid)
+
+-   [Java](https://github.com/ic4j/ic4j-candid)
+
+-   [Kotlin](https://github.com/seniorjoinu/candid-kt)
+
+If you want to create a Candid implementation to support a language or tool for which an implementation is not currently available, you should consult the [Candid specification](https://github.com/dfinity/candid/blob/master/spec/Candid.md).
+
+If you add a Candid implementation for a new language or tool, you can use the official [Candid test data](https://github.com/dfinity/candid/tree/master/test) to test and verify that your implementation is compatible with Candid, even in slightly more obscure corner cases.

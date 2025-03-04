@@ -2,6 +2,7 @@
   "categoryName": "",
   "categoryDescription": "",
   "elements": [
+   
     {
       "title": "Oisy ownership model",
       "overview": "Shift Oisy's ownership model to a canister-per-user model. Under this change, the digital assets for each Oisy user will reside in a user-controlled canister.",
@@ -127,6 +128,48 @@
       "eta": "",
       "is_community": true,
       "in_beta": false
+    },
+    {
+      "title": "Solana Integration",
+      "overview": "OISY widens its multi-chain reach beyond Bitcoin and Ethereum, and will integrate with the most important networks. Solana is the first one to be implemented, a crucial step forward in our mission to deliver a true multi-chain wallet for decentralized finance (DeFi) users.",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Helios"
+    },
+    {
+      "title": "In-Wallet Swaps",
+      "overview": "Introducing in-wallet swaps, this release will enhance flexibility for managing assets, allowing users to seamlessly change their asset allocation directly in OISY using DEX liquidity, mitigating risk or aiming for a higher yield.",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Helios"
+    },
+    {
+      "title": "Promote Chain-Key Tokens",
+      "overview": "With improved screens, flows, and helper texts for chain fusion conversions, OISY will provide users with the right information at the right places to make informed decisions to easily convert native tokens into their chain fusion twins or vice versa.",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Helios"
+    },
+    {
+      "title": "OISY Wallet v1.0 - The official Launch",
+      "description": "With the Helios release, officially named v1.0, OISY will step out of the beta status into its first production version. This includes functional coverage of all key features like buy, receive, send, swap, and convert from and to chain-key tokens, and with several major blockchains integrated, also a true multi-chain nature. Behind the scenes, it also includes setting up proper processes for product improvement, marketing, automated testing, and setting up a user friendly support process.",
+      "is_milestone": true,
+      "milestone_id": "Helios",
+      "status": "deployed",
+      "eta": "",
+      "eta_to_render": "February 2025"
     }
   ]
 }

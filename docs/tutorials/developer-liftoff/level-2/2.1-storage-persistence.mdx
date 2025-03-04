@@ -53,23 +53,12 @@ For canisters written in Motoko, stable memory can be utilized through the Motok
 - Then, the canister is started, now running the newly upgraded code.
 - Any stable variables are reloaded as part of the `post_upgrade` hook. Note: Having a `pre_upgrade` hook is strongly discouraged and not best practice. After the stable variables are reloaded, the stable memory bytes that stored those variables are overwritten with zeroes to minimize stable memory costs for the canister.
 
-### Rust stable memory workflow
-
-For canisters written in Rust, stable memory can be utilized through two Rust crates: [ic-stable-memory](https://github.com/seniorjoinu/ic-stable-memory) and [ic-stable-structures](https://github.com/dfinity/stable-structures). These features are most notably used in the canister upgrade process. The upgrade process for Rust canisters is as follows:
-
-- First, the canister must be stopped so it does not accept any new incoming requests.
-- A `pre_upgrade` hook is executed if one is defined. This hook can be used for functions such as creating a backup of data. Note: Having a `pre_upgrade` hook is strongly discouraged and not best practice, since the `pre_upgrade` hook is run in the current Wasm. If there are any bugs or errors, the canister will trap
-- Then, the system discards the canister's heap memory and initializes a new version of the canister's Wasm module. Stable memory is preserved and made available to the new Wasm module.
-- Next, the new canister code is installed using the `--mode upgrade` flag.
-- Then, the canister is started, now running the newly upgraded code.
-- A `post_upgrade` hook is called on the newly created instance if one is defined. The `init` function is not executed. Note: Having a `pre_upgrade` hook is strongly discouraged and not best practice.
-
 ## Stable storage and stable variables
 
 Motoko supports preserving a canister's state using ICP's stable memory through a Motoko-specific feature known as **stable storage**, which is designed to accommodate changes to both the application data and the Motoko compiler. Stable storage utilizes ICP's **stable memory** feature that was discussed previously.
 
 :::info
-Upgrading canisters written in Rust and other languages uses a different workflow that incorporates serialization of the canister's data. [Learn more about Rust upgrades](/docs/current/developer-docs/backend/rust/upgrading/).
+Upgrading canisters written in Rust and other languages uses a different workflow that incorporates serialization of the canister's data. [Learn more about Rust upgrades](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust).
 :::
 
 A **stable variable** is a variable defined within an actor that uses the `stable` keyword as a modifier in the variable's declaration. This indicates that the data stored in the variable should be stored using **stable storage**. If this `stable` keyword is not used, the variable is defined as `flexible` by default, which means its data does not persist across canister upgrades.
@@ -79,7 +68,7 @@ Let's take a look at defining and using a stable variable that uses Motoko's sta
 
 ### Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/current/tutorials/developer-liftoff/level-0/dev-env).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
 
 ### Creating a new project
 
@@ -106,7 +95,7 @@ You will be prompted to select the language that your backend canister will use.
 `dfx` versions `v0.17.0` and newer support this `dfx new` interactive prompt. [Learn more about `dfx v0.17.0`](/blog/2024/02/14/news-and-updates/update#dfx-v0170).
 :::
 
-Then, select a frontend framework for your frontend canister. Select 'No frontend canister':
+Then, select a frontend framework for your frontend canister. Select 'None':
 
 ```
   ? Select a frontend framework: ›
@@ -115,7 +104,7 @@ Then, select a frontend framework for your frontend canister. Select 'No fronten
   Vue
   Vanilla JS
   No JS template
-❯ No frontend canister
+❯ None
 ```
 
 Lastly, you can include extra features to be added to your project:
@@ -157,7 +146,7 @@ actor Counter {
 The `stable` or `flexible` variable modifications can only be used on `let` and `var` declarations that are within actor fields. These modifiers cannot be used elsewhere in the program.
 :::
 
-[Take a deeper dive into stable variables](https://internetcomputer.org/docs/current/motoko/main/canister-maintenance/upgrades#declaring-stable-variables).
+[Take a deeper dive into stable variables](https://internetcomputer.org/docs/motoko/main/canister-maintenance/upgrades#declaring-stable-variables).
 
 Save this file.
 
@@ -250,7 +239,7 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
+- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -270,4 +259,4 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 Next, you'll look at advanced canister calls, such as inter-canister calls and canister query methods.
 
-- [2.2 Advanced canister calls](/docs/current/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls).
+- [2.2 Advanced canister calls](/docs/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls).

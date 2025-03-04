@@ -1,0 +1,45 @@
+---
+keywords: [advanced, bitcoin, eth, tutorial, sign transactions, sign eth transactions, eth transactions, ethereum transactions]
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Signing transactions
+
+<MarkdownChipRow labels={["Advanced", "Ethereum", "Tutorial"]} />
+
+Before a transaction can be sent to the Ethereum network, it must be signed and formatted into a raw ETH transaction. Transactions are signed with [threshold ECDSA](/docs/building-apps/network-features/signatures/t-ecdsa). For this example, the transaction standard EIP1559 will be used.
+
+## Build a transaction
+
+First, a raw EIP1559 ETH transaction must be built containing the transaction's metadata, such as gas fee, sender, receiver, and transaction data. Below is a programmatic example of how to build a transaction using Rust:
+
+```rust reference
+https://github.com/letmejustputthishere/icp-evm-coprocessor-starter/blob/main/packages/ic-evm-utils/src/eth_send_raw_transaction.rs#L45-L77
+```
+
+## Format, hash, and sign a transaction
+
+Ethereum EIP1559 transactions are first hashed with the Keccak256 algorithm and then signed using the private key. Below is an example written in Rust demonstrating how to format a raw ETH transaction, hash it using Keccak256 and sign the hash using threshold ECDSA. This code snippet accomplishes the following:
+
+- Formats the transaction.
+
+- Hashes the transaction using Keccak256.
+
+- Signs the Keccak hash.
+
+- Rebuilds the transaction using the VRS signature.
+
+```rust reference
+https://github.com/letmejustputthishere/chain-fusion-starter/blob/main/packages/ic-evm-utils/src/evm_signer.rs#L56-L94
+```
+
+Additional examples of signing transactions with threshold ECDSA can be found in the [threshold ECDSA documentation](/docs/building-apps/network-features/signatures/t-ecdsa).
+
+## Submit transaction
+
+Now that your transaction is signed, it can be submitted to Ethereum to be executed.
+
+[Learn how to submit Ethereum transactions](./submit-transactions.mdx).

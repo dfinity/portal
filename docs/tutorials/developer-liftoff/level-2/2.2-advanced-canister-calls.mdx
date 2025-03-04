@@ -15,16 +15,14 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/9BfDy3VNxu8?si=0FHL0c_CSGQzdfSQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> </div>
 
-
-In the previous tutorial where you [created your first dapp](/docs/current/tutorials/developer-liftoff/level-1/1.3-first-dapp), the developer liftoff briefly discussed query and update <GlossaryTooltip>canister</GlossaryTooltip> calls. In this tutorial, you'll dive deeper into these types of canister calls but also take a look at advanced canister calls such as composite queries, certified variables, and inter-canister calls.
-
+In the previous tutorial where you [created your first dapp](/docs/tutorials/developer-liftoff/level-1/1.3-first-dapp), the developer liftoff briefly discussed query and update <GlossaryTooltip>canister</GlossaryTooltip> calls. In this tutorial, you'll dive deeper into these types of canister calls but also take a look at advanced canister calls such as composite queries, certified variables, and inter-canister calls.
 Let's first define the different types of canister calls and how they differ from one another:
 
 - **Query calls** are executed on a single node within a <GlossaryTooltip>subnet</GlossaryTooltip>. Query calls do not alter the state of a canister. They are executed synchronously and answered immediately once received.
 
 - **Update calls** are able to alter the canister's state. They are executed on all nodes of a subnet since the result must go through the subnet's consensus process. Update calls are submitted and answered asynchronously.
 
-- **Composite queries** are query calls that can call other queries (on the same subnet). They can only be invoked via ingress messages using `dfx` or through an agent such as a browser front-end, and not by other canisters.
+- **Composite queries** are query calls that can call other queries (on the same subnet). They can only be invoked via [ingress messages](/docs/building-apps/essentials/message-execution) using `dfx` or through an agent such as a browser front-end, and not by other canisters.
 
 - **Certified variables** are verifiable pieces of data that have an associated certificate that proves the data's authenticity. Certified variables are set using an update call, then read using a query call.
 
@@ -45,11 +43,11 @@ Want to take a deeper dive? Check out this [blog post](https://mynosefroze.com/b
 
 ## Canister query calls
 
-Query calls are used to query the current state of a canister or make a call to a method that operates on the canister's state. Query calls do not make any changes to the canister's state, making them 'read-only' operations. Query calls can be made to any node that holds the canister, since the result does not go through consensus. When a query call is submitted, it is executed synchronously and answered as soon as it is received by the node. Query calls can also be used to retrieve data that is stored in a canister's [stable memory](/docs/current/tutorials/developer-liftoff/level-2/2.1-storage-persistence).
+Query calls are used to query the current state of a canister or make a call to a method that operates on the canister's state. Query calls do not make any changes to the canister's state, making them 'read-only' operations. Query calls can be made to any node that holds the canister, since the result does not go through consensus. When a query call is submitted, it is executed synchronously and answered as soon as it is received by the node. Query calls can also be used to retrieve data that is stored in a canister's [stable memory](/docs/tutorials/developer-liftoff/level-2/2.1-storage-persistence).
 
 Query calls return results faster than update calls. Setting functions as query functions where appropriate can be an effective way to improve application performance. When designing your dapp, it is important to notice where query calls can be used in place of functions that perform queries. However, compared to update calls, the trade-off of a query call's increased performance is decreased security, since queries do not go through consensus and are not reflected in the transactions of the blockchain.
 
-The amount of security your dapp needs depends on your dapp's use case and functionality. For example, a blog dapp that uses a function to retrieve articles matching a tag doesn't need to have requests go through consensus and can benefit from using query calls. In contrast, a dapp that retrieves sensitive information, such as financial data, would greatly benefit from increased security and validation that the query result is accurate and secure. To return query results that are validated and secure, ICP supports **certified variables**, which you'll dive deeper into in a future module, [3.3: Certified variables](/docs/current/tutorials/developer-liftoff/level-3/3.3-certified-data).
+The amount of security your dapp needs depends on your dapp's use case and functionality. For example, a blog dapp that uses a function to retrieve articles matching a tag doesn't need to have requests go through consensus and can benefit from using query calls. In contrast, a dapp that retrieves sensitive information, such as financial data, would greatly benefit from increased security and validation that the query result is accurate and secure. To return query results that are validated and secure, ICP supports **certified variables**, which you'll dive deeper into in a future module, [3.3: Certified variables](/docs/tutorials/developer-liftoff/level-3/3.3-certified-data).
 
 ### Example `query` call
 
@@ -97,7 +95,7 @@ Certified variables utilize **chain-key cryptography** to generate digital signa
 
 Certification happens at the canister level. The certified variable of a canister can be set during an update call. Recall that an update call changes the canister's state and goes through consensus. When the certified variable is set, the certification can then be read in future query calls and return the certified variable in response to the query call in a trustworthy and secure manner.
 
-You'll dive deeper into certified variables in a future module, [3.3: Certified variables](/docs/current/tutorials/developer-liftoff/level-3/3.3-certified-data).
+You'll dive deeper into certified variables in a future module, [3.3: Certified variables](/docs/tutorials/developer-liftoff/level-3/3.3-certified-data).
 
 ## Composite queries
 
@@ -124,7 +122,7 @@ To demonstrate this inter-canister call functionality, you're going to use an ex
 
 ### Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/current/tutorials/developer-liftoff/level-0/dev-env).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
 
 ### Creating a new project
 
@@ -269,7 +267,7 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
+- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -289,4 +287,4 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 Next, let's dive into using third-party canisters.
 
-- [2.3 Using third-party canisters](/docs/current/tutorials/developer-liftoff/level-2/2.3-third-party-canisters).
+- [2.3 Using third-party canisters](/docs/tutorials/developer-liftoff/level-2/2.3-third-party-canisters).
