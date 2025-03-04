@@ -1,0 +1,259 @@
+---
+title: "Try the new Motoko base library: feedback requested!"
+description: The new base library makes it easier for both humans and AI to read and write Motoko canisters.
+tags: [Motoko, New features, Technology]
+# image: /img/blog/new-motoko-base.jpg
+---
+
+# Try the new Motoko base library: feedback requested!
+
+The Languages team is excited to announce a major overhaul of the Motoko base library! Our goal is to improve the consistency and usability of Motoko’s standard library, making it easier for both humans and AI to read and write Motoko canisters.
+
+Here is a quick summary of the biggest features and improvements:
+
+* New, fully persistent data structures for imperative and functional programmers
+* Simplified type conversions
+* Data structures no longer rely on hashing
+* `range()` functions for each numeric type, with an exclusive upper bound
+* `VarArray` module for more conveniently working with mutable arrays
+* `Random` module with a cleaner API and optional pseudo-random number generation
+* Many other changes for consistency, clarity, and convenience
+
+## Try it yourself
+
+Last week, we released a preview of the new base library with a few different options for trying it out. One is through the [`new-base`](https://mops.one/new-base) Mops package. Add the following to your `mops.toml` config file:
+
+```toml
+new-base = "0.2.0" # Check https://mops.one/new-base for the latest version
+```
+
+Alternatively, you can directly replace the `mo:base` imports in an existing project:
+
+```toml
+base = "https://github.com/dfinity/new-motoko-base"
+```
+
+To further simplify trying out the new base library, we created an online demo which you can use to explore the new base library using ICP Ninja:
+
+https://icp.ninja/s/kwKkw
+
+In the future, we intend to remove the `new-base` preview and distribute these changes as the official `base`. We will do our best to ensure that packages relying on previous base library versions continue to work as expected. 
+
+If you want to use this preview for anything important, keep in mind that it's under active development. Expect future breaking changes and the possibility of bugs or outdated documentation. Please let us know if you run into something unexpected by opening a [GitHub issue](https://github.com/dfinity/new-motoko-base/issues).
+
+## What's changed?
+
+Below is a detailed overview of the most notable changes and additions:
+
+### Persistent data structures
+
+The base library now includes both imperative and purely functional data structures which can all be used in stable memory. Because Motoko is a multi-paradigm language, we wanted to reflect this in the base library by providing data structures similar to those in imperative languages (JS, Java, C#, C++) and functional languages (Haskell, Elixir, OCaml, F#).
+
+We chose implementations with good all-round performance, deferring specialized implementations to the [Mops](https://mops.one/) package ecosystem. We also updated function names for consistency and familiarity from other languages such as JS, Python, Java, and Rust.
+
+Below is an example of using the new imperative `List` module, derived from the [`vector`](https://mops.one/vector) Mops package (big thanks to [Timo Hanke](https://github.com/timohanke)):
+
+```motoko
+import List "mo:base/List";
+import Nat "mo:base/Nat";
+
+actor {
+  stable let list = List.empty<Nat>(); // Persistent data structure
+  
+  List.add(list, 5);
+  assert List.toText(list, Nat.toText) == "[5]";
+}
+```
+
+The above code snippet can be rewritten as a new `persistent` actor:
+
+```motoko
+import List "mo:base/List";
+
+persistent actor {
+  let list = List.empty<Nat>(); // Persistent data structure
+  ...
+}
+```
+
+You can also use the purely functional `List` module:
+
+```
+import PureList "mo:base/pure/List";
+
+persistent actor {
+  var list = PureList.empty<Nat>(); // Persistent data structure
+  
+  list := PureList.add(list, 5);
+  assert PureList.all(list, func(n) { n == 5 });
+}
+```
+
+We also included an efficient [stable BTree map implementation](https://github.com/canscale/StableHeapBTreeMap) (big thanks to [Byron Becker](https://github.com/ByronBecker)):
+
+```
+import PureMap "mo:base/pure/Map";
+
+persistent actor {
+  var map = PureMap.empty<Text, Nat>();
+
+  map := map.add(map);
+
+  assert PureMap.size(map) == 1;
+}
+```
+
+Here's the complete list of data structures in the new base library:
+
+* List (adapted from [`vector`](https://mops.one/vector) Mops package)
+* Map
+* Queue
+* Set 
+* Stack
+* pure/List
+* pure/Map (adapted from [`stableheapbtreemap`](https://mops.one/stableheapbtreemap) Mops package)
+* pure/Queue
+* pure/Set
+
+### Type conversions
+
+It's simple to convert between mutable and purely functional data structures:
+
+```
+import List "mo:base/List";
+import PureList "mo:base/pure/List";
+
+persistent actor {
+  let list = List.empty<Nat>();
+  let pureList = List.toPure(list);
+  
+  assert List.fromPure(pureList) == list;
+}
+```
+
+We also added missing primitive type conversions such as those between `Int` and `Nat`:
+
+```motoko
+import Int "mo:base/Int";
+import Nat "mo:base/Nat";
+
+persistent actor {
+  let number = -5;
+  
+  assert Int.toNat(-number) == 5; // Nat.fromInt() also exists
+  assert -Nat.toInt(5 : Nat) == number; // Int.fromNat() also exists
+}
+```
+
+### Hashing
+
+We removed 64-bit hashing functionality from the base library in favor of comparison-based data structures. This solves a number of problems such as hash-collision attacks which can rapidly drain cycles out of a canister. The idea is for Mops packages to supply hashing functions which are best suited for a particular use case rather than including hash functions with significant tradeoffs. 
+
+### Range functions
+
+`Iter.range()` has been removed in favor of type-specific range functions such as `Nat.range()`, `Int.range()`, `Nat32.range()`, etc. These functions have an **exclusive upper bound**, in contrast to the original inclusive upper bound of `Iter.range()`. 
+
+```motoko
+import Int "mo:base/Int";
+import Debug "mo:base/Debug";
+
+persistent actor {
+  // Iterate through -3, -2, -1, 0, 1, 2 (exclusive upper bound)
+  for (number in Int.range(-3, 3)) {
+    Debug.print(debug_show number);
+  };
+
+  // Iterate through -3, -2, -1, 0, 1, 2, 3
+  for (number in Int.rangeInclusive(-3, 3)) {
+    Debug.print(debug_show number);
+  };
+}
+```
+
+We also included `rangeInclusive()` for use cases with an inclusive upper bound. The original `Iter.range()` corresponds to `Nat.rangeInclusive()`.
+
+We also added helper functions such as `allValues()` for each finite type in the base library. 
+
+### VarArray module
+
+For convenience, we created a separate `mo:base/VarArray` module with the same API as `mo:base/Array` but for mutable arrays. This reduces the need to convert back and forth between mutable and immutable arrays:
+
+```motoko
+import Array "mo:base/Array";
+import VarArray "mo:base/VarArray";
+import Nat "mo:base/Nat";
+
+persistent actor {
+  let array = Array.repeat('A', 3);
+  assert array == ['A', 'A', 'A'];
+
+  let varArray = VarArray.repeat('B', 5);
+  assert varArray == [var 'B', 'B', 'B', 'B', 'B'];
+
+  let numbers = VarArray.fromIter(Nat.range(0, 4));
+  assert VarArray.map<Nat>(numbers, func(i) = i * 3) == [var 0, 3, 6, 9];
+}
+```
+
+It's now possible to use `.values()` as an alias for `.vals()`. Each data structure has a corresponding `values()` function, e.g. `List.values(list)`.
+
+We also fixed naming inconsistencies in functions by replacing `ArrayMut` with `VarArray` across the base library.
+
+### Random module
+
+We completely redesigned the `Random` module for simpler usage and a wider range of use cases:
+
+```motoko
+import Random "mo:base/Random";
+
+persistent actor {
+  let random = Random.crypto(); // Cryptographic random numbers from ICP runtime
+
+  public func coinFlip() : async Bool {
+    await* random.bool()
+  };
+
+  public func randomItem(items : [Text]) : async Text {
+    messages[await* random.natRange(0, items.size())]
+  };
+}
+```
+
+It's now possible to use pseudo-random number generation, adapted from the [`prng`](https://mops.one/prng) Mops package (big thanks to [Timo Hanke](https://github.com/timohanke)):
+
+```motoko
+persistent actor {
+  let seed : Nat64 = 12345;
+  let random = Random.fast(seed); // Pseudo-random number generator from a seed
+
+  public func coinFlip() : async Bool {
+    random.bool()
+  };
+
+  public func randomItem(items : [Text]) : async Text {
+    messages[random.natRange(0, items.size())]
+  };
+}
+```
+
+It's worth mentioning that the `Random` module is likely to see further changes such as adding a way to persist the state of pseudo-random number generation.
+
+## What's next?
+
+Before replacing the current Motoko base library, we have a list of follow-up improvements:
+
+* Overhauling the documentation with clearer explanations and more examples
+* Adding new language capabilities to simplify data structure usage
+* Setting up a test coverage system
+
+## Contributions and feedback
+
+I want to give a huge thanks to the community members who provided high-quality code contributions to the new base library repository:
+
+* [Timo Hanke](https://github.com/timohanke): [`vector`](https://github.com/research-ag/vector), [`prng`](https://github.com/research-ag/prng)
+* [Byron Becker](https://github.com/ByronBecker): [`StableHeapBTreeMap`](https://github.com/canscale/StableHeapBTreeMap)
+* [Zen Voich](https://github.com/ZenVoich): [`test`](https://github.com/ZenVoich/test)
+
+The base library is only as good as it can successfully serve the Motoko community. Please consider providing feedback here, on the [GitHub discussions page](https://github.com/dfinity/new-motoko-base/discussions), or anywhere else. This is the best time to voice your opinion, since we have the most flexibility now before we lock in the final design. 
+
+Thank you for reading, and we look forward to hearing your feedback on the new base library!
