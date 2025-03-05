@@ -1,0 +1,74 @@
+---
+keywords: [advanced, governance, sns, overview]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+
+# Service Nervous System (SNS)
+
+<MarkdownChipRow labels={["Advanced", "Governance" ]} />
+
+These pages introduce instructions needed when considering handing over control of a dapp to a Service Nervous System (SNS) or integrating with an SNS.
+If this is the first time you hear about the SNS, it is recommended to take a look at the high-level [SNS](/sns) and [FAQ](/sns/faq) pages to get an overview of what is discussed in more detail here.
+
+This page provides an overview of how the SNS developer documentation is organized and also lists references to other relevant SNS documentation.
+
+## Before an SNS launch
+This section introduces the ideas and tools needed when considering forming a DAO, including less technical aspects, such as designing a tokenomics proposal, as well as more technical aspects, such as how different configuration choices can technically be set in the SNS.
+
+In this documentation you will find
+- [An introduction to SNS preparation](./tokenomics/index.mdx).
+- [Pre-deployment considerations](./tokenomics/predeployment-considerations.mdx) introducing some non-technical considerations to take into account when planning an SNS launch.
+- [SNS tokenomics](./tokenomics/tokenomics-intro.mdx) providing an introduction to tokenomics that can be considered when designing an SNS's tokenomics.
+- [SNS rewards](./tokenomics/rewards.mdx) providing an introduction to SNS rewards that can be considered when planning an SNS's tokenomics.
+- A (technical) introduction to how to convert the configurations into [SNS parameters](./tokenomics/preparation.mdx).
+- [The SNS launch checklist](./tokenomics/sns-checklist.mdx) providing a summary of what to consider when launching an SNS.
+
+## Launching an SNS
+This section of documentation explains the SNS launch in detail.
+It contains:
+- An [introduction of how to read the launch pages](./launching/index.mdx).
+- A detailed [description of all stages included in an SNS launch](./launching/launch-summary-1proposal.mdx).
+- [The technical actions that are needed to complete the SNS launch stages](./launching/launch-steps-1proposal.mdx).
+- [Integrating with an SNS](./launching/integrating.mdx): This section not only targets developers that have a dapp that they would like to decentralize with an SNS, but also developers that want to build services that integrate with SNSes, such as wallet dapps or decentralized exchanges.
+
+## Testing an SNS
+An important part of preparing an SNS launch, integrating with an SNS, and managing an SNS is testing.
+This section provides
+- [An introduction to SNS testing](./testing/testing-before-launch.mdx).
+- [Guidelines how to test an SNS locally](./testing/testing-locally.mdx), including the SNS launch.
+- [Guidelines how to test the operation of the dapp under SNS control](./testing/testing-on-mainnet.mdx), including on the mainnet.
+
+## Managing an SNS
+After an SNS is launched, the SNS community needs to manage it, including ensuring that the canisters have enough cycles, governing the dapp, and managing SNS canister upgrades.
+This section includes
+- [An introduction to managing an SNS](./managing/manage-sns-intro.mdx).
+- [An introduction to SNS proposals](./managing/making-proposals.mdx).
+- [Tips regarding cycles management for the canisters](./managing/cycles-usage.mdx).
+- [An introduction to how to use the asset canister with an SNS-controlled dapp](./managing/sns-asset-canister.mdx).
+
+<!-- Information on nervous system parameters that can be configured in each SNS (managing-sns/nervous-system-parameters.mdx); Information on how SNS are upgraded (managing-sns/upgradeSNS.mdx)-->
+
+## Explanations and guides for users
+Finally, the website and Wiki contain information relevant for users of the SNS.
+
+On the **website**, you will find **explanations on:**
+- [SNS overview page](https://internetcomputer.org/sns).
+- [SNS FAQ](https://internetcomputer.org/sns/faq) including, for example:
+  - [A guide on how to participate in the SNS decentralization swap](/sns/faq#participate).
+
+The **Wiki*- contains more information about
+- [DAOs](https://wiki.internetcomputer.org/wiki/DAO).
+- [Service Nervous System (SNS)](https://wiki.internetcomputer.org/wiki/Service_Nervous_System_(SNS)).
+- [Neurons' Fund](https://wiki.internetcomputer.org/wiki/Neurons_Fund).
+- [SNS Rewards](https://wiki.internetcomputer.org/wiki/SNS_Rewards).
+- [SNS Tokenization Considerations](https://wiki.internetcomputer.org/wiki/SNS_Tokenization_Considerations).
+- [SNS decentralization swap trust](https://wiki.internetcomputer.org/wiki/SNS_decentralization_sale_trust).
+
+The Wiki also contains guides for the following topics:
+- [How to: get a DAO on ICP](https://wiki.internetcomputer.org/wiki/How_to_get_a_DAO_on_the_IC) providing a summary of how someone can get a DAO on ICP, but this is largely subsumed by the developer documentation here.
+- [How to: SNS tokenomics configuration](https://wiki.internetcomputer.org/wiki/How-To:_SNS_tokenomics_configuration) providing material enabling teams to choose a tokenomics set-up for their SNS DAO.
+- [How to: verify SNS decentralization swap proposal](https://wiki.internetcomputer.org/wiki/How-to:_Verify_SNS_decentralization_sale_proposal) which is a guide on how to verify the NNS proposal that starts an SNS decentralization swap.
+- [How to: interact with SNS canisters](https://wiki.internetcomputer.org/wiki/How-to:_Interact_with_SNS_canisters) which is a guide on how to interact with SNS canisters.
+- [How to: participate in the SNS decentralization swap via quill](https://wiki.internetcomputer.org/wiki/How-To:_Participate_in_the_SNS_decentralization_sale_via_quill), which is a command line tool for interacting with canisters.
+- [How to: join the community fund via quill](https://wiki.internetcomputer.org/wiki/How-To:_Join_the_Community_fund_via_quill), which is a command line tool for interacting with canisters.

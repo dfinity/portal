@@ -19,13 +19,13 @@ If you don't yet have an Internet Identity, you can create one at [https://ident
 
 <figure>
 <img src="/img/how-it-works/ii-1.webp" alt="Internet Identity creation screen" title="Internet Identity creation screen" align="center" style="height:500px; width: auto" />
-</figure> 
+</figure>
 
 If you click "Create Internet Identity", you are asked to create a passkey. A passkey can be any device that has a TPM chip inside it, such as a laptop with a fingerprint sensor, a smartphone with face ID. Alternatively, Internet Identity supports portable HSMs, such as YubiKeys or Ledger devices.
 
 <figure>
 <img src="/img/how-it-works/ii-2.webp" alt="Create a passkey to connect with your Internet Identity" title="Create a passkey to connect with your Internet Identity" align="center" style="height:350px; width: auto" />
-</figure> 
+</figure>
 
 
 After the Internet Identity is created, users can already use it to securely and privately authenticate with ICP based dapps, or add more passkeys. It is generally advised to have multiple passkeys connected to your Internet Identity as well as a recovery method setup, such as a recovery phrase.
@@ -47,7 +47,7 @@ As mentioned previously, it is also important to add a recovery phrase in case y
 
 [Internet Identity Wiki](https://wiki.internetcomputer.org/wiki/Internet_Computer_wiki#Internet_Identity_Introduction)
 
-[Internet Identity Specification](https://internetcomputer.org/docs/current/references/ii-spec/)
+[Internet Identity Specification](/docs/references/ii-spec/)
 
 [Open Source - Internet Identity](https://github.com/dfinity/internet-identity)
 

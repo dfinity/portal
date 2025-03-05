@@ -20,7 +20,7 @@ module.exports = function validateLinks() {
   return async (ast) => {
     visit(ast, "link", (node) => {
       const url = node.url;
-      if (url.startsWith("docs/developer-docs/")) {
+      if (url.startsWith("docs/")) {
         throw new Error(
           `Link requires a leading \`/\` character: \`${url}\` (plugins/remark/validate-links.js)`
         );

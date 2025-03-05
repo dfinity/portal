@@ -53,7 +53,7 @@ Candid supports the following set of types in order to provide a natural mapping
 
 - Special types `Null`, `Reserved`, and `Empty`.
 
-Each of these types is described in detail in the [Candid reference documentation](/docs/current/references/candid-ref).
+Each of these types is described in detail in the [Candid reference documentation](/docs/references/candid-ref).
 
 
 ### Candid textual values
@@ -121,7 +121,7 @@ In this `ping` method, there are no arguments passed to the method, and there ar
 Now that you've taken a look at the basic structure of a Candid service description, let's take a look at how to generate the service description from your code.
 
 :::info
-Generating Candid files is supported for canisters written in Motoko. Canisters written in other languages will need to have their Candid files written manually. Check out the [Candid interface description](/docs/current/references/candid-ref) for more information on manually writing the service description.
+Generating Candid files is supported for canisters written in Motoko. Canisters written in other languages will need to have their Candid files written manually. Check out the [Candid interface description](/docs/references/candid-ref) for more information on manually writing the service description.
 :::
 
 The following is an example Motoko canister that defines simple `add`, `subtract`, and `get` functions:
@@ -152,9 +152,9 @@ This example describes a service called `counter` that consists of the following
 
 This example Candid interface description helps to illustrate that every method has a sequence of argument and result types. Methods can also include annotations, like the query notation shown in this example (`() -> (int) query;`), which is a feature specific to ICP.
 
-For canisters written in other languages such as Rust, you can develop your service using the language's native types. [View Rust examples of how to write Candid service descriptions](https://internetcomputer.org/docs/current/building-dapps/developer-tools/cdks/rust/candid/).
+For canisters written in other languages such as Rust, you can develop your service using the language's native types. [View Rust examples of how to write Candid service descriptions](/docs/building-apps/developer-tools/cdks/rust/candid/).
 
-To generate Candid files from Rust code, the Rust CDK `v0.11.0` and higher support auto-generation using the [`candid-extractor` tool](https://internetcomputer.org//docs/current/building-dapps/developer-tools/cdks/rust/generating-candid).
+To generate Candid files from Rust code, the Rust CDK `v0.11.0` and higher support auto-generation using the [`candid-extractor` tool](https://internetcomputer.org//docs/building-apps/developer-tools/cdks/rust/generating-candid).
 
 
 ## Service upgrades
@@ -175,7 +175,7 @@ Candid supports service upgrades through a set of specific rules that indicate w
 
 - Existing result types may be changed, but only as a subtype of the previously used type.
 
-For additional information about the supertypes and subtypes of any given type, check out the [Candid interface reference documentation](/docs/current/references/candid-ref) for each type.
+For additional information about the supertypes and subtypes of any given type, check out the [Candid interface reference documentation](/docs/references/candid-ref) for each type.
 
 To demonstrate an example of how a service might be upgraded, let's use the `counter` service example that you looked at in [generating service descriptions](#generating-service-descriptions).
 
@@ -207,7 +207,7 @@ Now that you've taken a deep dive into Candid, let's explore the different ways 
 
 ### Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/current/tutorials/developer-liftoff/level-0/dev-env).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
 
 ### Creating a new project
 
@@ -360,7 +360,7 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
+- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -382,4 +382,4 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 Next, let's explore how to test and debug projects and canisters.
 
-- [2.5 Unit, integration, and end-to-end testing](/docs/current/tutorials/developer-liftoff/level-2/2.5-unit-testing).
+- [2.5 Unit, integration, and end-to-end testing](/docs/tutorials/developer-liftoff/level-2/2.5-unit-testing).

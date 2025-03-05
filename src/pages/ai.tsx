@@ -18,54 +18,95 @@ import transitions from "@site/static/transitions.json";
 import { useDarkHeaderInHero } from "../utils/use-dark-header-in-hero";
 import { useFontsLoaded } from "@site/src/utils/use-fonts-loaded";
 
-interface TrustCardProps {
-  imageSrc: string;
-  imageAlt: string;
-  title: string;
-  description: React.ReactNode;
-  link?: string;
-  linkText?: string;
-}
-
 const MotionLink = motion(Link);
 
-const trustCards = [
+const news = [
   {
-    imageSrc: "/img/decentralized-ai/trust-icon-1.svg",
-    imageAlt: "Tamper-proofness icon",
-    title: "Tamper-proof",
-    description:
-      "Computation is replicated across multiple nodes and validated by consensus. There is no single point of trust.",
+    title: "DeAI Agent Economy: ICP as New Home for Autonomous Agents",
+    dateHuman: "Feb 21, 2025",
+    details:
+      "The emergence of the On-Chain AI Agent Economy marks a transformative era for Web3, where AI agents operate autonomously within decentralized networks. This new economic activity enables agents to transact with each other...",
+    url: "https://medium.com/@dfinity/deai-agent-economy-icp-as-new-home-for-autonomous-agents-edc2c04ceb32",
+    imageUrl: "/img/decentralized-ai/news-1.webp",
+    linkLabel: "Read Now",
   },
   {
-    imageSrc: "/img/decentralized-ai/trust-icon-2.svg",
-    imageAlt: "Unstoppability icon",
-    title: "Unstoppable",
-    description:
-      "Smart contracts are censorship resistant as they are not controlled by a single entity or legislation.",
+    title:
+      "Dominic Williams Reveals His Vision for the Internet Computer (ICP)",
+    dateHuman: "Feb 21, 2025",
+    details:
+      "The internet is broken—can blockchain fix it? In this episode, Dominic Williams, the visionary behind The Internet Computer (ICP) and founder of DFINITY, reveals his plan to build a decentralized alternative to cloud computing.",
+    url: "https://www.youtube.com/watch?v=ULwRjvS13ec",
+    imageUrl: "/img/decentralized-ai/news-2.webp",
+    linkLabel: "Watch now",
   },
   {
-    imageSrc: "/img/decentralized-ai/trust-icon-3.svg",
-    imageAlt: "Autonomy icon",
-    title: "Autonomous",
-    description:
-      "Smart contracts can be made immutable turning them into a permanent compute unit in cyberspace.",
+    title:
+      "Investing in the Future: AI and Web3 with Logan Golema, Melody He, Pierre Samaties",
+    dateHuman: "Jan 30, 2025",
+    details:
+      "Leading experts explore the transformative convergence of AI and Web3, revealing groundbreaking opportunities at the intersection of these revolutionary technologies. Discover how decentralized systems are enabling the next generation...",
+    url: "https://youtu.be/tsibXXsEEGc",
+    imageUrl: "/img/decentralized-ai/news-3.webp",
+    linkLabel: "Watch now",
   },
   {
-    imageSrc: "/img/decentralized-ai/trust-icon-4.svg",
-    imageAlt: "Scalability icon",
-    title: "Scalable",
-    description:
-      "ICP aims to give smart contracts near native performance and scalability. Currently, smart contracts can execute billions of instructions per message and use 4GiB of the main memory and 500GiB of stable memory. The future vision is to give smart contracts access to AI hardware such as GPUs.",
+    title:
+      "How Technology will Shape Tomorrow - with Jeremy Kahn, Dominic Williams and Ross Perot Jr.",
+    dateHuman: "Jan 30, 2025",
+    details:
+      "Industry titans Ross Perot Jr. and Dominic Williams join forces to explore how technology infrastructure and innovation will shape our future. Get unique insights into data center development, AI integration, and the evolution of se...",
+    url: "https://www.youtube.com/watch?v=UW3RZMJrJSU",
+    imageUrl: "/img/decentralized-ai/news-4.webp",
+    linkLabel: "Watch now",
   },
   {
-    imageSrc: "/img/decentralized-ai/trust-icon-5.svg",
-    imageAlt: "Expressiveness icon",
-    title: "Expressive",
-    description:
-      "The virtual machine of ICP is WebAssembly that has a growing ecosystem of languages, tools, and libraries. This allows ICP developers to use open source projects such as ",
-    link: "https://github.com/sonos/tract",
-    linkText: "Sonos Tract AI inference engine",
+    title:
+      "The AI Revolution - Challenges, Risks, and Opportunities with Michael Casey",
+    dateHuman: "Jan 30, 2025",
+    details:
+      "Leading experts from academia, technology, and investment explore the critical challenges and opportunities in the AI revolution. Get unique insights into how decentralized systems, academic research, and venture capital are shaping the future of artificial intelligence.",
+    url: "https://youtu.be/QWbHRRKgXH4",
+    imageUrl: "/img/decentralized-ai/news-5.webp",
+    linkLabel: "Watch now",
+  },
+  {
+    title:
+      "The Self-Writing & Sovereign Internet Paradigm: AI on the Internet Computer",
+    dateHuman: "Jan 20, 2025",
+    details:
+      "In the future, we will describe custom web applications and internet services to AI, and they will materialize, allowing anyone to become a builder, system owner or entrepreneur, realizing precise ideas, and transforming the future of technology.",
+    url: "https://www.cbsnews.com/video/the-self-writing-sovereign-internet-paradigm-ai-on-the-internet-computer",
+    imageUrl: "/img/decentralized-ai/news-6.webp",
+    linkLabel: "Watch now",
+  },
+  {
+    title: "How AI is Gathering Momentum with the Internet Computer",
+    dateHuman: "Dec 9, 2024",
+    details:
+      "The Internet Computer is powering up to help AI achieve its full potential. A new partnership between the DFINITY Foundation and ETH Zurich AI Center will benefit both ecosystems.",
+    url: "https://medium.com/dfinity/how-ai-is-gathering-momentum-with-the-internet-computer-b775d9c40d2d",
+    imageUrl: "/img/decentralized-ai/news-7.webp",
+    linkLabel: "Read Now",
+  },
+  {
+    title:
+      "Internet Computer Unleashes New Era of Speed, Developer Ease, and Onchain Storage with Major Upgrades",
+    dateHuman: "Dec 2, 2024",
+    details:
+      "Tokamak, Beryllium and Stellarator milestones have massively reduced ICP's latency, introduced a number of Quality-of-Life features for developers, and revolutionized onchain data storage capabilities.",
+    url: "https://medium.com/dfinity/internet-computer-unleashes-new-era-of-speed-developer-ease-and-onchain-storage-with-major-d0ebcfa5b0e4",
+    imageUrl: "/img/decentralized-ai/news-8.webp",
+    linkLabel: "Read Now",
+  },
+  {
+    title: "The Current State of AI x Blockchain, and What's Next",
+    dateHuman: "Aug 15, 2024",
+    details:
+      "Dominic Williams, Dfinity's founder and Chief Scientist, recently sat down for a fireside chat with Tony Tran-Hale, who joined Dfinity as Head of Institutional Relations in May. The topic was AI, specifically what Dom thinks of the current landscape.",
+    url: "https://medium.com/dfinity/the-current-state-of-ai-x-blockchain-and-whats-next-f1b7b6fd6184",
+    imageUrl: "/img/decentralized-ai/news-9.webp",
+    linkLabel: "Read Now",
   },
 ];
 
@@ -80,37 +121,6 @@ const longTermRoadmapItems = [
   "Develop public specification for nodes with GPUs.",
   "Add subnets with the new nodes to ICP.",
 ];
-
-const TrustCard: React.FC<TrustCardProps> = ({
-  imageSrc,
-  imageAlt,
-  title,
-  description,
-  link,
-  linkText,
-}) => (
-  <div className="flex flex-col text-white">
-    <img src={imageSrc} alt={imageAlt} className="w-3/10 mr-auto ml-0" />
-    <div className="mt-6 tw-heading-5 md:tw-heading-4 font-bold leading-8">
-      {title}
-    </div>
-    {link && linkText ? (
-      <div className="mt-2 text-base leading-6 font-[450]">
-        {description}
-        <Link
-          className="text-white underline hover:no-underline hover:text-white hover:opacity-80 duration-200 ease-in-out"
-          to={link}
-          target="_blank"
-        >
-          {linkText}
-        </Link>{" "}
-        in their smart contracts.
-      </div>
-    ) : (
-      <div className="mt-2 text-base leading-6 font-[450]">{description}</div>
-    )}
-  </div>
-);
 
 const RoadMapList: React.FC<{ items: string[] }> = ({ items }) => {
   return (
@@ -169,7 +179,7 @@ function AIPage() {
               >
                 Al can be run truly onchain as Internet Computer smart
                 contracts, making it tamperproof and unstoppable, and autonomous
-                if needed
+                if needed.
               </motion.p>
               {/* <MotionLink
                 className="button-white"
@@ -196,40 +206,57 @@ function AIPage() {
 
         <section className="container-10 relative mt-40 sm:mt-52 md:mt-60">
           <AnimateSpawn
+            className="container-10 mt-12 mb-5 !p-0"
+            el={motion.section}
             variants={transitions.container}
-            className="bg-white px-10 md:px-16 pt-6 pb-1 md:pb-12 md:pt-12 gap-8 mb-10 sm:mb-40 rounded-xl "
+          >
+            <div id="demo" className="grid grid-cols-1 gap-5 md:grid-cols-2">
+              <motion.div
+                variants={transitions.item}
+                className="col-span-1 md:col-span-2 mb-10"
+              >
+                <VideoCard
+                  image="/img/decentralized-ai/thumb-ai-video-thumb4.webp"
+                  title="Where AI builds: Unlocking the power of imagination through chat"
+                  label="Demo"
+                  link={`https://www.youtube.com/watch?v=9q13cFGxEb0`}
+                  description="Dominic Williams unveils his groundbreaking vision for 2025: the Self-Writing Internet."
+                />
+              </motion.div>
+            </div>
+          </AnimateSpawn>
+          <AnimateSpawn
+            variants={transitions.container}
+            className="bg-[#1E005D] px-4 md:px-10 pt-6 pb-1 md:pb-24 md:pt-24 gap-8 mb-10 sm:mb-12 rounded-xl relative text-white"
           >
             <motion.div>
-              <aside className="container-10 md:flex md:items-center mt-6 md:mt-0 !pl-0	!pr-0">
+              <aside className="container-10 md:flex md:items-center mt-6 md:mt-0 !pl-0 !pr-0">
                 <div className="md:w-1/2">
                   <motion.h5
-                    className="tw-heading-5 md:tw-heading-4 mb-3 sm:mb-6 "
+                    className="tw-heading-5 md:tw-heading-4 mb-3 sm:mb-6"
                     variants={transitions.item}
                   >
-                    Facial recognition is live!
+                    The home of sovereign AI agents
                   </motion.h5>
                   <motion.p>
-                    ICP just reached its latest milestone, Cyclotron, which
-                    focused on performance. Optimizations have been implemented
-                    in the WebAssembly and AI inference engines, which are
-                    expected to increase the speed of inference by 10X or more.
-                    The first use case is facial recognition, run fully onchain.
+                    Deploy AI agents with just a few lines of code. Secure.
+                    Sovereign. Only on the Internet Computer.
                   </motion.p>
                   <p className="mb-12 md:mb-0 mt-8">
-                    <Link
-                      className="link-primary link-with-icon"
-                      href="https://medium.com/@dfinity/589183203fc2"
+                    <MotionLink
+                      variants={transitions.item}
+                      className="button-primary button-white"
+                      href="/ai-agents"
                     >
-                      <LinkArrowRight />
-                      READ THE BLOG POST
-                    </Link>
+                      Start building
+                    </MotionLink>
                   </p>
                 </div>
-                <div className="md:w-1/2 relative md:mt-6 md:mb-3">
-                  <div className="pointer-events-none md:absolute w-full md:-right-20 md:top-1/2  md:-translate-y-1/2">
+                <div className="md:w-1/2 flex justify-end relative ">
+                  <div className="md:absolute">
                     <motion.img
-                      className="w-[75%] h-full object-cover"
-                      src="/img/roadmap/roadmap-viz.webp"
+                      className="w-full object-cover md:-translate-y-1/2"
+                      src="/img/ai/ai-agents.svg"
                       alt="roadmap"
                     />
                   </div>
@@ -276,7 +303,7 @@ function AIPage() {
                   className="col-span-1 md:col-span-2 mb-10"
                 >
                   <VideoCard
-                    image="/img/decentralized-ai/thumb-ai-video-thumb3.webp"
+                    image="/img/decentralized-ai/thumb-ai-video-thumb.webp"
                     title="Onchain Facial Recognition – AI running on ICP"
                     label="Demo"
                     link={`https://www.youtube.com/watch?v=hEFff_GGj30&list=PLuhDt1vhGcrfWz1ZJrAmJBDS6aFADySwt&index=3`}
@@ -284,6 +311,48 @@ function AIPage() {
                   />
                 </motion.div>
               </div>
+            </AnimateSpawn>
+            <AnimateSpawn
+              variants={transitions.container}
+              className="bg-white px-4 md:px-10 pt-6 pb-1 md:pb-12 md:pt-12 gap-8 mb-10 rounded-xl"
+            >
+              <motion.div>
+                <aside className="container-10 md:flex md:items-center mt-6 md:mt-0 !pl-0	!pr-0">
+                  <div className="md:w-1/2">
+                    <motion.h5
+                      className="tw-heading-5 md:tw-heading-4 mb-3 sm:mb-6 "
+                      variants={transitions.item}
+                    >
+                      AI Facial recognition fully onchain
+                    </motion.h5>
+                    <motion.p>
+                      With the Cyclotron tech milestone, which focused on
+                      performance, optimizations have been implemented in the
+                      WebAssembly and AI inference engines. The speed of
+                      inference can be increased by 10X or more. The first use
+                      case is facial recognition, run fully onchain.
+                    </motion.p>
+                    <p className="mb-12 md:mb-0 mt-8">
+                      <Link
+                        className="link-primary link-with-icon"
+                        href="https://medium.com/@dfinity/589183203fc2"
+                      >
+                        <LinkArrowRight />
+                        READ THE BLOG POST
+                      </Link>
+                    </p>
+                  </div>
+                  <div className="md:w-1/2 relative md:mt-6 md:mb-3">
+                    <div className="pointer-events-none md:absolute w-full md:-right-20 md:top-1/2  md:-translate-y-1/2">
+                      <motion.img
+                        className="w-[75%] h-full object-cover"
+                        src="/img/roadmap/roadmap.svg"
+                        alt="roadmap"
+                      />
+                    </div>
+                  </div>
+                </aside>
+              </motion.div>
             </AnimateSpawn>
             <AnimateSpawn
               variants={transitions.item}
@@ -451,7 +520,7 @@ let result = model.run(
               <h3 className="tw-lead my-3 md:tw-title-sm">
                 Data confidentiality
               </h3>
-              <p className="tw-paragraph-sm text-black/60  mb-0">
+              <p className="tw-paragraph-sm md:tw-paragraph  text-black/60  mb-0">
                 During training and operation, AI models handle sensitive data,
                 like medical inquiries or corporate secrets. Users need
                 guarantees that their information remains secure and doesn't
@@ -469,7 +538,7 @@ let result = model.run(
                 className="h-24"
               />
               <h3 className="tw-lead my-3 md:tw-title-sm">Availability</h3>
-              <p className="tw-paragraph-sm text-black/60  mb-0">
+              <p className="tw-paragraph-sm md:tw-paragraph  text-black/60  mb-0">
                 AI models will become essential for business processes and
                 societies in general. As with every critical infrastructure,
                 solutions must be found to keep AI models resilient to
@@ -478,56 +547,6 @@ let result = model.run(
             </motion.div>
           </AnimateSpawn>
         </section>
-
-        <AnimateSpawn variants={transitions.container}>
-          <section className="bg-infinite text-white pt-6 pb-20" ref={heroRef}>
-            <article className="container-10 mt-12 md:mt-20">
-              <h3 className="tw-heading-4 md:tw-heading-60  text-left md:text-center text-gradient-purple mb-0 md:w-5/10 md:mx-auto">
-                Making AI trustworthy
-              </h3>
-              <aside className="container-10 mt-12 md:mt-32 md:flex md:items-center !pl-0	!pr-0">
-                <div className="md:w-1/3">
-                  <motion.h3 className="tw-heading-5 md:tw-heading-4">
-                    Decentralized AI
-                  </motion.h3>
-                  <motion.p className="text-2xl mb-0 ">
-                    <motion.span className="font-bold">DeAI </motion.span>
-                    involves running AI inference as smart
-                    contracts onchain, which addresses AI’s trust issues. Users
-                    can verify the inputs to the models they utilize, reducing
-                    the need to trust them blindly. However, AI training and
-                    inference are highly resource-intensive, and the limited
-                    computational capabilities of traditional blockchain
-                    networks often fall short. In contrast, the advanced design
-                    of the Internet Computer Protocol (ICP) successfully marries
-                    the security of smart contracts with the robust
-                    computational demands of AI. The following properties of ICP
-                    make decentralized and trustworthy AI possible.
-                  </motion.p>
-                </div>
-                <div className="md:w-2/3 relative mt-6  md:mt-64 md:mb-64">
-                  <div className="pointer-events-none md:absolute w-full  md:-right-24 md:top-1/2  md:-translate-y-1/2">
-                    <motion.div
-                      className="absolute blob blob-white blob-md md:blob-lg blob-x-8 md:blob-x-9 blob-y-15 -z-1"
-                      variants={transitions.fadeIn}
-                    ></motion.div>
-                    <motion.img
-                      variants={transitions.fadeIn}
-                      src="/img/decentralized-ai/trust-img-2.webp"
-                      alt=""
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-              </aside>
-              <aside className="mt-20 md:mt-40 grid grid-cols-1 md:grid-cols-3 gap-x-[4.5rem] gap-y-20">
-                {trustCards.map((card, index) => (
-                  <TrustCard key={index} {...card} />
-                ))}
-              </aside>
-            </article>
-          </section>
-        </AnimateSpawn>
 
         <section className="container-10 mt-12 md:mt-44 md:mb-44">
           <AnimateSpawn
@@ -601,106 +620,15 @@ let result = model.run(
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            <Link
-              href="https://twitter.com/dominic_w/status/1750886289702834539"
-              className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
-            >
-              <NewsCard
-                news={{
-                  title: "AI models as smart contracts on a blockchain.",
-                  dateHuman: "Jan 26, 2024",
-                  press: "@dominic_w",
-                  details: `#ICP says advanced AI models need to run as smart contracts on blockchain. How? Why? It's easiest to understand by example. Imagine an LLM (Large Language Model) AI that acts as a company oracle, which sits...`,
-                  url: "https://twitter.com/dominic_w/status/1750886289702834539",
-                  imageUrl: "/img/decentralized-ai/news-1.jpg",
-                }}
-                linkLabel="See the post"
-              />
-            </Link>
-            <Link
-              href="https://www.coindesk.com/consensus-magazine/2023/07/29/crypto-networks-reliant-on-aws-wont-bring-transparency-to-ai/"
-              className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
-            >
-              <NewsCard
-                news={{
-                  title:
-                    "AWS-Reliant Blockchains Won’t Bring Transparency to AI",
-                  dateHuman: "Jul 29, 2023",
-                  press: "Dominic Williams",
-                  details: `The rapid progress of artificial intelligence (AI) has captivated the world, with many asking what is next for this technological breakthrough. While AI has already demonstrated its potential to transform various industries...`,
-                  url: "https://www.coindesk.com/consensus-magazine/2023/07/29/crypto-networks-reliant-on-aws-wont-bring-transparency-to-ai/",
-                  imageUrl: "/img/decentralized-ai/news-2.jpg",
-                }}
-                linkLabel="Read Now"
-              />
-            </Link>
-
-            <Link
-              href="https://www.fastcompany.com/91055087/bitcoin-ai-cryptos-gaining-value-cryptocurrency"
-              className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
-            >
-              <NewsCard
-                news={{
-                  title: "AI-related crypto are quickly gaining value",
-                  dateHuman: "Nov 03, 2024",
-                  press: "fastcompany.com",
-                  details: `Internet Computer (ICP) is the biggest AI crypto, by a wide margin. It’s a decentralized web platform whose goal is to build a secure network for public use—and it’s using large language models to help achieve that.`,
-                  url: "https://www.fastcompany.com/91055087/bitcoin-ai-cryptos-gaining-value-cryptocurrency",
-                  imageUrl: "/img/decentralized-ai/news-4.jpg",
-                }}
-                linkLabel="Read Now"
-              />
-            </Link>
-            <Link
-              href="https://metanews.com/decentralized-ai-offers-new-hope-for-user-data-security/"
-              className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
-            >
-              <NewsCard
-                news={{
-                  title:
-                    "Decentralized AI Offers New Hope for User Data Security",
-                  dateHuman: "March 15, 2024",
-                  press: "metanews.com",
-                  details: `One of the biggest risks with the increased use of AI chatbots like ChatGPT is the emergence of new threats to user data. But some companies are starting to build decentralized AI systems that they hope will make personal data leaks...`,
-                  url: "https://metanews.com/decentralized-ai-offers-new-hope-for-user-data-security/",
-                  imageUrl: "/img/decentralized-ai/news-5.jpg",
-                }}
-                linkLabel="Read Now"
-              />{" "}
-            </Link>
-            <Link
-              href="https://www.cointribune.com/en/dfinity-is-revolutionizing-dapps-with-ai-on-icp/"
-              className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
-            >
-              <NewsCard
-                news={{
-                  title: "DFINITY is revolutionizing dApps with AI on ICP!",
-                  dateHuman: "Sat 16 Mar 2024",
-                  press: "cointribune.com",
-                  details: `DFINITY, the foundation behind the innovative Internet Computer Protocol (ICP), has just unveiled a remarkable opportunity for decentralized application (dApp) developers. This new feature involves the ability to integrate OpenAI’s...`,
-                  url: "https://www.cointribune.com/en/dfinity-is-revolutionizing-dapps-with-ai-on-icp/",
-                  imageUrl: "/img/decentralized-ai/news-6.jpg",
-                }}
-                linkLabel="Read Now"
-              />{" "}
-            </Link>
-            <Link
-              href="https://www.cointribune.com/en/dfinity-is-revolutionizing-dapps-with-ai-on-icp/"
-              className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
-            >
-              <NewsCard
-                news={{
-                  title:
-                    "The Next Step for DeAI: Onchain Inference Enabling Face Recognition",
-                  dateHuman: "July 15,2024",
-                  press: "DFINITY",
-                  details: `The replica version e4eeb3 that was approved by the community in Proposal 13094 completes the Cyclotron milestone from ICP’s roadmap.`,
-                  url: "https://medium.com/dfinity/the-next-step-for-deai-on-chain-inference-enabling-face-recognition-589183203fc2",
-                  imageUrl: "/img/decentralized-ai/news-7.webp",
-                }}
-                linkLabel="Read Now"
-              />{" "}
-            </Link>
+            {news.map((item, index) => (
+              <Link
+                key={index}
+                href={item.url}
+                className="link-primary link-with-icon no-underline cursor-pointer hover:-translate-y-2 transition-transform text-black"
+              >
+                <NewsCard news={item} linkLabel={item.linkLabel} />
+              </Link>
+            ))}
           </div>
         </AnimateSpawn>
 
@@ -714,7 +642,7 @@ let result = model.run(
             },
             {
               label: "Start building DeAI",
-              href: "/docs/current/developer-docs/ai/overview",
+              href: "/ecosystem?tag=AI",
             },
             {
               label: "Chat with AI to learn more about ICP",

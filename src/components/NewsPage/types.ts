@@ -4,7 +4,7 @@ export type Press = {
   details: string;
   date: string;
   dateHuman: string;
-  press: string;
+  press?: string;
   url: string;
   tags: string[];
   imageUrl: string;

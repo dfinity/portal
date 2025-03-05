@@ -1257,7 +1257,7 @@ const communityProjects: SampleItem[] = [
   },
   {
     index: 76,
-    title: "MOPS",
+    title: "Mops",
     body: "Motoko package manager with onchain package registry",
     links: {
       github: "https://github.com/ZenVoich/mops",
