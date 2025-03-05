@@ -123,7 +123,7 @@ Here's the complete list of data structures in the new base library:
 
 ### New type conversions
 
-Since the base library will include imperative and functional data structures,
+Since the new base library includes imperative and functional data structures,
 we made it easy to convert between them:
 
 ```motoko no-repl
