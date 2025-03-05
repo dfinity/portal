@@ -39,7 +39,7 @@ Alternatively, you can directly replace the `mo:base` imports in an existing pro
 base = "https://github.com/dfinity/new-motoko-base"
 ```
 
-To further simplify trying out the new base library, we created an online demo which you can use to explore the new base library using ICP Ninja: https://icp.ninja/s/kwKkw
+We even prepared an online demo which you can use to explore the new base library using ICP Ninja: https://icp.ninja/s/kwKkw
 
 In the future, we intend to remove the `new-base` preview and distribute these changes as the official `base`. We will do our best to ensure that packages relying on previous base library versions continue to work as expected. 
 
