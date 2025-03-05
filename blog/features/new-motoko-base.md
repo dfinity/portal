@@ -1,6 +1,6 @@
 ---
 title: "Try the new Motoko base library: feedback requested!"
-description: The new base library makes it easier for both humans and AI to read and write Motoko canisters.
+description: The new Motoko base library makes it easier for both humans and AI to read and write Motoko canisters.
 tags: [Motoko, New features, Technology]
 image: /img/blog/new-motoko-base.jpg
 ---
@@ -13,17 +13,17 @@ image: /img/blog/new-motoko-base.jpg
 * [GitHub repository](https://github.com/dfinity/new-motoko-base)
 * [ICP Ninja demo project](https://icp.ninja/s/kwKkw)
 
-The Languages team is excited to announce a major overhaul of the Motoko base library! Our goal is to improve the consistency and usability of Motoko’s standard library, making it easier for both humans and AI to read and write Motoko canisters.
+The Motoko team is excited to announce a major overhaul of the Motoko base library! Our goal is to improve the consistency and usability of Motoko’s standard library, making it easier for both humans and AI to read and write Motoko canisters.
 
 Here is a quick summary of the biggest features and improvements:
 
-* New imperative and functional data structures 
-* Simplified type conversions
-* Data structures no longer rely on hashing
-* `range()` functions for each numeric type, with an exclusive upper bound
-* `VarArray` module for more conveniently working with mutable arrays
-* `Random` module with a cleaner API and optional pseudo-random number generation
-* Many other changes for consistency, clarity, and convenience
+* New imperative and functional data structures.
+* Simplified type conversions.
+* Data structures no longer rely on hashing.
+* `range()` functions for each numeric type, with an exclusive upper bound.
+* `VarArray` module for more conveniently working with mutable arrays.
+* `Random` module with a cleaner API and optional pseudo-random number generation.
+* Many other changes for consistency, clarity, and convenience.
 
 ## Try it yourself
 
@@ -39,9 +39,7 @@ Alternatively, you can directly replace the `mo:base` imports in an existing pro
 base = "https://github.com/dfinity/new-motoko-base"
 ```
 
-To further simplify trying out the new base library, we created an online demo which you can use to explore the new base library using ICP Ninja:
-
-https://icp.ninja/s/kwKkw
+To further simplify trying out the new base library, we created an online demo which you can use to explore the new base library using ICP Ninja: https://icp.ninja/s/kwKkw
 
 In the future, we intend to remove the `new-base` preview and distribute these changes as the official `base`. We will do our best to ensure that packages relying on previous base library versions continue to work as expected. 
 
@@ -49,7 +47,7 @@ If you want to use this preview for anything important, keep in mind that it's u
 
 ## What's changed?
 
-Below is a detailed overview of the most notable changes and additions:
+Below is a detailed overview of the most notable changes and additions.
 
 ### Persistent data structures
 
@@ -111,15 +109,15 @@ persistent actor {
 
 Here's the complete list of data structures in the new base library:
 
-* List (adapted from [`vector`](https://mops.one/vector) Mops package)
-* Map
-* Queue
-* Set 
-* Stack
-* pure/List
-* pure/Map (adapted from [`StableHeapBTreeMap`](https://mops.one/stableheapbtreemap) Mops package)
-* pure/Queue
-* pure/Set
+* `List` (adapted from [`vector`](https://mops.one/vector) Mops package)
+* `Map`
+* `Queue`
+* `Set`
+* `Stack`
+* `pure/List`
+* `pure/Map` (adapted from [`StableHeapBTreeMap`](https://mops.one/stableheapbtreemap) Mops package)
+* `pure/Queue`
+* `pure/Set`
 
 ### Type conversions
 
@@ -180,7 +178,7 @@ persistent actor {
 
 We also included `rangeInclusive()` for use cases with an inclusive upper bound. The original `Iter.range()` corresponds to `Nat.rangeInclusive()`.
 
-We also added helper functions such as `allValues()` for each finite type in the base library. 
+Helper functions have been added, such as `allValues()`, for each finite type in the base library. 
 
 ### VarArray module
 
@@ -229,7 +227,7 @@ actor {
 }
 ```
 
-It's now possible to use pseudo-random number generation, adapted from the [`prng`](https://mops.one/prng) Mops package (big thanks to [Timo Hanke](https://github.com/timohanke)):
+Now, you can use pseudo-random number generation, adapted from the [`prng`](https://mops.one/prng) Mops package (big thanks to [Timo Hanke](https://github.com/timohanke)):
 
 ```motoko no-repl
 import Random "mo:base/Random";
@@ -248,15 +246,15 @@ actor {
 }
 ```
 
-It's worth mentioning that the `Random` module is likely to see further changes such as adding a way to persist the state of pseudo-random number generation.
+It's worth mentioning that the `Random` module is likely to see more changes in the future, such as adding a way to persist the state of pseudo-random number generation.
 
 ## What's next?
 
 Before replacing the current Motoko base library, we have a list of follow-up improvements:
 
-* Overhauling the documentation with clearer explanations and more examples
-* Improving test coverage of new functionality
-* Adding new language capabilities to simplify data structure usage
+* Overhauling the documentation with clearer explanations and more examples.
+* Improving test coverage of new functionality.
+* Adding new language capabilities to simplify data structure usage.
 
 ## Contributions and feedback
 
