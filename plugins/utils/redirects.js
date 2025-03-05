@@ -38,9 +38,9 @@ const redirects = `
   /docs/current/tutorials/hackathon-prep-course/* /docs/tutorials/hackathon-prep-course/:splat
   /docs/current/developer-docs/daos/nns/* /docs/building-apps/governing-apps/nns/:splat
   /docs/current/samples/* /docs/references/samples/:splat
+  /docs/current/references/samples/* /docs/references/samples/:splat
   /docs/current/references/* /docs/references/:splat
   /docs/current/references/samples/* /docs/references/samples/:splat
-
 
   ## Explicit redirects
   ## For files that have changed directories & file names, there will need to be
@@ -110,6 +110,26 @@ const redirects = `
   /docs/current/developer-docs/backend/motoko/0.11.0-migration-guide /docs/motoko/main/migration-guides/0.11.0-migration-guide
   /docs/current/motoko/main/about-this-guide /docs/motoko/main/getting-started/motoko-introduction
   /motoko/main/motoko /docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/motoko/main/base/array /docs/motoko/main/base/Array 
+  /docs/current/motoko/main/base/buffer /docs/motoko/main/base/Buffer
+  /docs/current/motoko/main/base/char	/docs/motoko/main/base/Char
+  /docs/current/motoko/main/base/experimentalstablememory	/docs/motoko/main/base/ExperimentalStableMemory
+  /docs/current/motoko/main/base/float /docs/motoko/main/base/Float
+  /docs/current/motoko/main/base/hash	/docs/motoko/main/base/Hash
+  /docs/current/motoko/main/base/hashmap	/docs/motoko/main/base/HashMap
+  /docs/current/motoko/main/base/list	/docs/motoko/main/base/List
+  /docs/current/motoko/main/base/option	/docs/motoko/main/base/Option
+  /docs/current/motoko/main/base/principal	/docs/motoko/main/base/Principal
+  /docs/current/motoko/main/base/random	/docs/motoko/main/base/Random
+  /docs/current/motoko/main/base/text /docs/motoko/main/base/Text
+  /docs/current/motoko/main/base/time	/docs/motoko/main/base/Time
+  /docs/current/motoko/main/base/trie	/docs/motoko/main/base/Trie
+  /docs/current/motoko/main/base/triemap 	/docs/motoko/main/base/TrieMap
+  /docs/current/motoko/main/language-manual）/docs/motoko/main/reference/language-manual
+  /docs/current/motoko/main/base/debug	/docs/motoko/main/base/Debug
+  /docs/current/motoko/main/base/int8	/docs/motoko/main/base/Int8
+  /docs/current/motoko/main/base/nat /docs/motoko/main/base/Nat
+  /docs/rust/main/motoko-packages/databases /docs/home
   /docs/current/motoko/main/motoko-introduction /docs/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/main/motoko /docs/motoko/main/getting-started/motoko-introduction
   /docs/current/motoko/main/basic-concepts /docs/motoko/main/getting-started/basic-concepts
@@ -771,6 +791,9 @@ const redirects = `
   /docs/developers-guide/work-with-languages /docs/building-apps/essentials/canisters
   /docs/developers-guide/working-with-canisters.html /docs/building-apps/canister-management/settings
   /docs/developers-guide/working-with-canisters /docs/building-apps/canister-management/settings
+  /docs/developers-guide/quickstart.html /docs/building-apps/getting-started/quickstart
+  /docs/developers-guide/concepts/canisters-code.html	/docs/building-apps/essentials/canisters
+
 
   ## Quickstart
   /docs/quickstart/1-quickstart /docs/building-apps/getting-started/quickstart
@@ -803,8 +826,32 @@ const redirects = `
   /docs/samples/host-a-website /samples
   /docs/samples/internet-identity-sample /samples
   /docs/samples/nft	/samples
+  /docs/current/samples/actor-reference	/samples
+  /docs/current/samples/hello/	/samples
+  /docs/current/samples/phonebook	/samples
+  /docs/current/samples/counter	/samples
+  /docs/current/samples/dao/	/samples
+  /docs/current/samples/dex/	/samples
+  /docs/current/samples/pos	/samples
+  /docs/current/samples/t-ecdsa-sample /samples
+  /docs/current/samples/vetkd-encrypted-notes /samples
 
   ## Misc
+  /docs/current/developer-docs/use-cases/ /docs/home
+  /docs/defi /docs/defi/overview
+  /docs/download.html	/docs/home
+  /docs/ic-identity-guide/what-is-ic-identity.html /docs/home
+  /docs/language-guide/style.html	/docs/motoko/main/getting-started/motoko-introduction
+  /docs/current/tutorials/developer-journey/level-5/5.2-icp-eth-tutorial /docs/tutorials/developer-liftoff/level-5/5.2-ICP-ETH-tutorial
+  /docs/current/tutorials/developer-journey/level-5/5.4-nft-tutorial /docs/tutorials/developer-liftoff/level-5/5.4-NFT-tutorial
+  /docs/current/tutorials/developer-journey/level-5/5.1-vetkeys-tutorial /docs/tutorials/developer-liftoff/level-5/5.1-vetKeys-tutorial
+  /docs/current/tutorials/developer-liftoff/level-5/5.1-vetkeys-tutorial /docs/tutorials/developer-liftoff/level-5/5.1-vetKeys-tutorial
+  /docs/current/tutorials/developer-liftoff/level-5/5.2-icp-eth-tutorial /docs/tutorials/developer-liftoff/level-5/5.2-ICP-ETH-tutorial
+  /docs/current/tutorials/developer-liftoff/level-5/5.4-nft-tutorial /docs/tutorials/developer-liftoff/level-5/5.4-NFT-tutorial
+  /docs/introduction/ /docs/home
+  /docs/rust/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
+  /docs/current/developer-docs/integrations/bitcoin/btc-address-management /docs/building-apps/chain-fusion/bitcoin/using-btc/generate-addresses
+  /docs/rust/main/ /docs/building-apps/developer-tools/cdks/rust/intro-to-rust
   /docs/current/developer-docs/getting-started/deploy/mainnet /docs/building-apps/developing-canisters/deploy
   /docs/current/developer-docs/functionality/bitcoin /docs/building-apps/chain-fusion/bitcoin/overview
   /docs/current/developer-docs/build/cdks/azle-demergent-labs https://demergent-labs.github.io/azle/
