@@ -53,7 +53,7 @@ Below is a detailed overview of the most notable changes and additions.
 
 The base library now includes both imperative (mutable) and purely functional (immutable) data structures which can all be used in stable memory. Because Motoko is a multi-paradigm language, we wanted to reflect this in the base library by providing data structures similar to those in imperative languages (JS, Java, C#, C++) and functional languages (Haskell, Elixir, OCaml, F#).
 
-Check out [this article](https://learn.microsoft.com/en-us/dotnet/standard/linq/functional-vs-imperative-programming) for a refresher on the difference between imperative vs. functional programming.
+Check out [this article](https://learn.microsoft.com/en-us/dotnet/standard/linq/functional-vs-imperative-programming) for a refresher on the differences between imperative vs. functional programming, both of which are supported in Motoko.
 
 We chose implementations with good all-round performance, deferring specialized implementations to the [Mops](https://mops.one/) package ecosystem. We also updated function names for consistency and familiarity from other languages such as JS, Python, Java, and Rust.
 
