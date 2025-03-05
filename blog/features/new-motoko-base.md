@@ -11,7 +11,7 @@ image: /img/blog/new-motoko-base.jpg
 
 * [Developer forum topic](https://forum.dfinity.org/t/motoko-base-library-changes/39766)
 * [GitHub repository](https://github.com/dfinity/new-motoko-base)
-* [ICP Ninja demo project](https://icp.ninja/s/kwKkw)
+* [ICP Ninja starter project](https://icp.ninja/s/kwKkw)
 
 The Motoko team is excited to announce a major overhaul of the Motoko base library! Our goal is to improve the consistency and usability of Motoko’s standard library, making it easier for both humans and AI to read and write Motoko canisters.
 
@@ -30,7 +30,7 @@ Here is a quick summary of the biggest features and improvements:
 Last week, we released a preview of the new base library with a few different options for trying it out. One is through the [`new-base`](https://mops.one/new-base) Mops package. Add the following to your `mops.toml` config file:
 
 ```toml
-new-base = "0.2.0" # Check https://mops.one/new-base for the latest version
+new-base = "0.2.2" # Check https://mops.one/new-base for the latest version
 ```
 
 Alternatively, you can directly replace the `mo:base` imports in an existing project:
@@ -57,7 +57,7 @@ Check out [this article](https://learn.microsoft.com/en-us/dotnet/standard/linq/
 
 We chose implementations with good all-round performance, deferring specialized implementations to the [Mops](https://mops.one/) package ecosystem. We also updated function names for consistency and familiarity from other languages such as JS, Python, Java, and Rust.
 
-Below is an example of using the new imperative `List` module, derived from the [`vector`](https://mops.one/vector) Mops package (big thanks to [Timo Hanke](https://github.com/timohanke)):
+Below is an example of using the new imperative `List` module, derived from the [`vector`](https://mops.one/vector) Mops package (big thanks to [MR Research AG](https://github.com/research-ag)):
 
 ```motoko no-repl
 import List "mo:base/List";
@@ -230,7 +230,7 @@ actor {
 }
 ```
 
-Now, you can use pseudo-random number generation, adapted from the [`prng`](https://mops.one/prng) Mops package (big thanks to [Timo Hanke](https://github.com/timohanke)):
+Now, you can use pseudo-random number generation, adapted from the [`prng`](https://mops.one/prng) Mops package (big thanks to [MR Research AG](https://github.com/research-ag)):
 
 ```motoko no-repl
 import Random "mo:base/Random";
@@ -255,15 +255,16 @@ It's worth mentioning that the `Random` module is likely to see more changes in 
 
 Before replacing the current Motoko base library, we have a list of follow-up improvements:
 
-* Overhauling the documentation with clearer explanations and more examples.
+* Creating a migration guide for a smooth transition from the original base library.
+* Updating the documentation with more examples and detailed explanations.
 * Improving test coverage of new functionality.
-* Adding new language capabilities to simplify data structure usage.
+* Adding new language capabilities for more convenient design patterns.
 
 ## Contributions and feedback
 
 We want to give a huge thanks to the community members who provided high-quality code contributions to the new base library repository:
 
-* MR Research AG (A. Stepanov, T. Hanke): [`vector`](https://github.com/research-ag/vector), [`prng`](https://github.com/research-ag/prng)
+* [MR Research AG (A. Stepanov, T. Hanke)](https://github.com/research-ag): [`vector`](https://github.com/research-ag/vector), [`prng`](https://github.com/research-ag/prng)
 * [Byron Becker](https://github.com/ByronBecker): [`StableHeapBTreeMap`](https://github.com/canscale/StableHeapBTreeMap)
 * [Zen Voich](https://github.com/ZenVoich): [`test`](https://github.com/ZenVoich/test)
 
