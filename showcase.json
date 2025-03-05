@@ -5183,6 +5183,24 @@
     "display": "Normal"
   }, 
   {
+    "id": "guarda-wallet",
+    "name": "Guarda Wallet",
+    "website": "https://guarda.com/",
+    "tags": [
+      "Wallet",
+      "DeFi",
+      "Tools / Infrastructure"
+    ],
+    "description": "One secure multi crypto wallet, all assets in. Swap and store crypto across 70+ networks.",
+    "stats": "150,000 users",
+    "logo": "/img/showcase/guarda-wallet_logo.webp",
+    "screenshots": [
+      "/img/showcase/guarda-wallet_screenshot.webp"
+    ],
+    "usesInternetIdentity": false,
+    "twitter": "https://x.com/guardawallet"
+}
+{
     "id": "BlockID",
     "name": "BlockID",
     "logo": "/img/showcase/blockid_-_one_id_infinite_trust_logo.png",
