@@ -125,7 +125,7 @@ const redirects = `
   /docs/current/motoko/main/base/time /docs/motoko/main/base/Time
   /docs/current/motoko/main/base/trie /docs/motoko/main/base/Trie
   /docs/current/motoko/main/base/triemap  /docs/motoko/main/base/TrieMap
-  /docs/current/motoko/main/language-manual）/docs/motoko/main/reference/language-manual
+  /docs/current/motoko/main/language-manual /docs/motoko/main/reference/language-manual
   /docs/current/motoko/main/base/debug /docs/motoko/main/base/Debug
   /docs/current/motoko/main/base/int8 /docs/motoko/main/base/Int8
   /docs/current/motoko/main/base/nat /docs/motoko/main/base/Nat
