@@ -263,7 +263,7 @@ Before replacing the current Motoko base library, we have a list of follow-up im
 
 We want to give a huge thanks to the community members who provided high-quality code contributions to the new base library repository:
 
-* [Timo Hanke](https://github.com/timohanke): [`vector`](https://github.com/research-ag/vector), [`prng`](https://github.com/research-ag/prng)
+* MR Research AG (A. Stepanov, T. Hanke): [`vector`](https://github.com/research-ag/vector), [`prng`](https://github.com/research-ag/prng)
 * [Byron Becker](https://github.com/ByronBecker): [`StableHeapBTreeMap`](https://github.com/canscale/StableHeapBTreeMap)
 * [Zen Voich](https://github.com/ZenVoich): [`test`](https://github.com/ZenVoich/test)
 
