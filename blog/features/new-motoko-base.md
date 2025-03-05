@@ -30,7 +30,7 @@ Here is a quick summary of the biggest features and improvements:
 Last week, we released a preview of the new base library with a few different options for trying it out. One is through the [`new-base`](https://mops.one/new-base) Mops package. Add the following to your `mops.toml` config file:
 
 ```toml
-new-base = "0.2.2" # Check https://mops.one/new-base for the latest version
+new-base = "0.3.0" # Check https://mops.one/new-base for the latest version
 ```
 
 Alternatively, you can directly replace the `mo:base` imports in an existing project:
@@ -88,7 +88,7 @@ import PureList "mo:base/pure/List";
 
 persistent actor {
   var list = PureList.empty<Text>(); // Persistent data structure
-  list := PureList.push(list, "Hi");
+  list := PureList.pushFront(list, "Hi");
   assert PureList.size(list) == 1;
   assert PureList.all<Text>(list, func(n) { n == "Hi" });
 }
