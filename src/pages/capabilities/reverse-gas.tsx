@@ -214,7 +214,7 @@ function ReverseGasModelPage(): JSX.Element {
               </Link>{" "}
               or{" "}
               <Link
-                href="https://3pbcj-viaaa-aaaah-qaajq-cai.raw.ic0.app/"
+                href="https://app.icpswap.com/swap/pro?input=ryjl3-tyaaa-aaaaa-aaaba-cai&output=aanaa-xaaaa-aaaah-aaeiq-cai"
                 className="link-subtle"
               >
                 ICPSwap
