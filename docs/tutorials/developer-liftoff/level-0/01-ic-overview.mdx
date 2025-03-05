@@ -35,7 +35,7 @@ The ICP is comprised of four layers:
 
 2. [Consensus](https://internetcomputer.org/how-it-works/consensus/): Responsible for ensuring that all nodes in a subnet agree on the messages that are processed on the subnet and the order that they are processed in. This is important to ensure that all nodes make the same state transition when executing messages. Each subnet on ICP runs consensus independently of the other subnets. A unique aspect of the ICP consensus protocol is that it provides **cryptographically guaranteed finality**, which is different in comparison to other consensus protocols, such as the one used by Bitcoin, which provides **probabilistic finality**.
 
-3. [Message routing](https://internetcomputer.org/how-it-works/message-routing/): receives a block of messages from the consensus layer, then places these messages into the input queues of their associated target canisters. This process is called **induction**. The induction process then triggers the **execution** process, which may result in new canister messages in the executed canisters' output queues. After execution has completed, messages in the output queues are routed to their recipient by the message routing component.
+3. [Message routing](https://internetcomputer.org/how-it-works/message-routing/): Receives a block of messages from the consensus layer, then places these messages into the input queues of their associated target canisters. This process is called **induction**. The induction process then triggers the **execution** process, which may result in new canister messages in the executed canisters' output queues. After execution has completed, messages in the output queues are routed to their recipient by the message routing component.
 
 4. [Execution](https://internetcomputer.org/how-it-works/execution-layer/): Responsible for executing canister smart contract code. Execution is done using WebAssembly (Wasm). There is a Wasm virtual machine responsible for this process that runs on each node. Wasm is used because Wasm bytecode can be executed deterministically. Messages that have been inducted into canister queues on the subnet are executed by the execution layer until either all messages in the queue have been executed or until the <GlossaryTooltip>cycles</GlossaryTooltip> limit for the round has been reached.
 
@@ -62,11 +62,11 @@ Smart contracts on ICP are referred to as **canisters**. Canisters are computati
 
 Canisters are able to communicate with each other through asynchronous messages. The execution of messages is done in isolation, allowing for increased levels of concurrent execution.
 
-Canister code can be written in a number of different languages. Currently, Motoko and Rust are supported and maintained by DFINITY through the [IC SDK](/docs/building-apps/getting-started/install), and there are several community-developed canister development kits such as Python and Typescript.
+Canister code can be written in a number of different languages. Currently, Motoko and Rust are supported and maintained by DFINITY through the [IC SDK](/docs/building-apps/getting-started/install) and [Rust CDK](/docs/building-apps/developer-tools/cdks/rust/intro-to-rust) respectively, and there are several community-developed canister development kits, such as Python and TypeScript.
 
 A canister is managed by its **controllers**. A controller can be a centralized entity, a decentralized entity such as a DAO, or an individual developer. Controllers are the only ones that can deploy the canister to ICP, start or stop their execution, and push updated code to the canister. A canister can have no controller at all, which would make it immutable.
 
-Controllers are also responsible for ensuring that a canister contains sufficient **cycles** to pay for the resources it consumes, which includes network bandwidth, memory, and computational power. Each execution performed by a canister deployed on the mainnet has a cost of cycles.
+Controllers are also responsible for ensuring that a canister contains sufficient **cycles** to pay for the resources it consumes, which include network bandwidth, memory, and computational power. Each execution performed by a canister deployed on the mainnet has a cost of cycles.
 
 [Want to go further into this topic?](https://internetcomputer.org/how-it-works/canister-lifecycle/)
 
@@ -78,13 +78,13 @@ The Internet Computer's utility token is **ICP**. It is used for network activit
 
 ## Governance
 
-### The Network Nervous System
+### Network Nervous System
 
 ICP is governed by the **Network Nervous System (NNS)**, a **decentralized autonomous organization (DAO)**. The NNS coordinates the independent nodes that make up the decentralized system of ICP. It is responsible for facilitating the proposal and voting of network changes and decisions, such as which subnet a node should belong to, which protocol version the nodes should run, and when nodes should be upgraded to a new version of the protocol. Anyone can participate in the NNS by staking ICP tokens and voting on proposals.
 
 [Want to go further into this topic?](https://internetcomputer.org/nns/)
 
-### Service Nervous System
+### Service Nervous Systems
 
 Dapps deployed on ICP can be governed in the same manner that ICP itself is governed—through a DAO, referred to as an **SNS, or Service Nervous System**. An SNS is a version of the NNS that is responsible for tokenizing and decentralizing a single dapp. Once a dapp's control has been handed over to an SNS, it can be managed through proposals that are voted on by those that have staked the dapp's native token.
 
@@ -98,31 +98,6 @@ II can be integrated with dapps on ICP and helps secure online identities by pro
 
 [Want to go further into this topic?](https://internetcomputer.org/how-it-works/web-authentication-identity/)
 
-## Need help?
+import TutorialFooter from "@site/src/components/TutorialFooter/";
 
-Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
-
-- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
-
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
-
-- [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Motoko Bootcamp - The DAO Adventure](https://github.com/motoko-bootcamp/dao-adventure) - Discover the Motoko language in this 7-day adventure and learn to build a DAO on the Internet Computer.
-
-- [Motoko Bootcamp - Discord community](https://discord.gg/YbksCUxdzk) - A community for and by Motoko developers to ask for advice, showcase projects, and participate in collaborative events.
-
-- [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Upcoming events and conferences](https://dfinity.org/events-and-news/).
-
-- [Upcoming hackathons](https://dfinity.org/hackathons/).
-
-- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
-
-- Submit your feedback to the [ICP Developer feedback board](https://dx.internetcomputer.org).
-
-
-## Next steps
-
-- [0.2 Internet Computer terminology](/docs/tutorials/developer-liftoff/level-0/ic-terms).
+<TutorialFooter />

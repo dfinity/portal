@@ -15,7 +15,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <div class="text--center">
 <iframe width="660" height="415" src="https://www.youtube.com/embed/9BfDy3VNxu8?si=0FHL0c_CSGQzdfSQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> </div>
 
-In the previous tutorial where you [created your first dapp](/docs/tutorials/developer-liftoff/level-1/1.3-first-dapp), the developer liftoff briefly discussed query and update <GlossaryTooltip>canister</GlossaryTooltip> calls. In this tutorial, you'll dive deeper into these types of canister calls but also take a look at advanced canister calls such as composite queries, certified variables, and inter-canister calls.
+In the previous tutorial where you [created your first dapp](/docs/tutorials/developer-liftoff/level-1/1.3-first-dapp), the Developer Liftoff briefly discussed query and update <GlossaryTooltip>canister</GlossaryTooltip> calls. In this tutorial, you'll dive deeper into these types of canister calls but also take a look at advanced canister calls such as composite queries, certified variables, and inter-canister calls.
 Let's first define the different types of canister calls and how they differ from one another:
 
 - **Query calls** are executed on a single node within a <GlossaryTooltip>subnet</GlossaryTooltip>. Query calls do not alter the state of a canister. They are executed synchronously and answered immediately once received.
@@ -149,7 +149,7 @@ Let's take a look at the project's files:
 
 ### Writing a `publisher` canister
 
-You'll notice that this project structure is a bit different from the ones you've used thus far on the developer liftoff. Since this project uses two backend canisters for its functionality, there aren't `src` folders for a backend or frontend canister, just two folders for each backend canister.
+You'll notice that this project structure is a bit different from the ones you've used thus far on the Developer Liftoff. Since this project uses two backend canisters for its functionality, there aren't `src` folders for a backend or frontend canister, just two folders for each backend canister.
 
 Now let's take a closer look at the `Main.mo` file for our 'Publisher' canister. The code can be found below with comments that explain the code's logic:
 
@@ -261,27 +261,9 @@ The output should resemble the following:
 (5 : nat)
 ```
 
-## Need help?
+import TutorialFooter from "@site/src/components/TutorialFooter/";
 
-Did you get stuck somewhere in this tutorial, or do you feel like you need additional help understanding some of the concepts? The ICP community has several resources available for developers, like working groups and bootcamps, along with our Discord community, forum, and events such as hackathons. Here are a few to check out:
-
-- [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
-
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
-
-- [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Motoko bootcamp](https://github.com/motoko-bootcamp/bootcamp-2022), a week-long crash course on learning all things Motoko.
-
-- [Motoko developer working group](https://www.google.com/calendar/event?eid=ZWVnb2luaHU0ZjduMTNpZHI3MWJkcWVwNWdfMjAyMzEwMTJUMTUwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
-
-- [Upcoming events and conferences](https://dfinity.org/events-and-news/).
-
-- [Upcoming hackathons](https://dfinity.org/hackathons/).
-
-- Weekly developer office hours to ask questions, get clarification, and chat with other developers live via voice chat. This is hosted on the [Discord](https://discord.internetcomputer.org) server.
-
-- Submit your feedback to the [ICP Developer feedback board](https://dx.internetcomputer.org).
+<TutorialFooter />
 
 ## Next steps
 
