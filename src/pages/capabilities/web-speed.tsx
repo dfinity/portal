@@ -30,7 +30,7 @@ function FeaturePage() {
                 Concretely, query (read) calls are answered in ~100
                 milliseconds, and update (write) calls in ~2 seconds.
               </p>
-              <h5>Times are based on subnets with low loads. Subnets with high loads may experience different response speeds. Learn more in the <Link href="/docs/current/developer-docs/smart-contracts/best-practices/troubleshooting/" className="text-white">
+              <h5>Times are based on subnets with low loads. Subnets with high loads may experience different response speeds. Learn more in the <Link href="/docs/building-apps/best-practices/troubleshooting/" className="text-white">
                 docs.
               </Link>{" "}</h5>
             </div>
@@ -135,12 +135,12 @@ function FeaturePage() {
             <CardWithDescription
               title="Deploy a 'Hello World' Dapp in 10 Minutes"
               description="Get started with your first IC dapp"
-              href="/docs/current/tutorials/developer-liftoff/"
+              href="/docs/tutorials/developer-liftoff/"
             />
             <CardWithDescription
               title="Build dapps with the language of your choice"
               description="Learn about programming languages on the ICP."
-              href="/docs/current/developer-docs/smart-contracts/write/overview"
+              href="/docs/building-apps/developing-canisters/what-are-canisters"
             />
             <CardWithDescription
               title="Community Conversation"

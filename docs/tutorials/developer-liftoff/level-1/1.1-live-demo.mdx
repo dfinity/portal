@@ -18,7 +18,7 @@ import '/src/components/CenterImages/center.scss';
 
 In the previous segment of our developer liftoff, introduction to `dfx`, you created a new `dfx` project using the default 'Hello, world' template and looked into the project's structure and code. However, you didn't build or deploy the <GlossaryTooltip>canister</GlossaryTooltip>.
 
-In this tutorial, you'll deploy the `hello_world_backend` canister from [0.6: Introduction to dfx](/docs/current/tutorials/developer-liftoff/level-0/intro-dfx) to the Motoko playground.
+In this tutorial, you'll deploy the `hello_world_backend` canister from [0.6: Introduction to dfx](/docs/tutorials/developer-liftoff/level-0/intro-dfx) to the Motoko playground.
 
 ## What is the playground?
 
@@ -47,9 +47,9 @@ First, let's take a look at how to use this command to deploy our canister. Then
 
 ### Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3: Developer environment setup](/docs/current/tutorials/developer-liftoff/level-0/dev-env).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3: Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
 
-This example works with the canister previously created in the [0.6: Introduction to dfx](/docs/current/tutorials/developer-liftoff/level-0/intro-dfx) module. It is recommended to complete that module before beginning the steps outlined here.
+This example works with the canister previously created in the [0.6: Introduction to dfx](/docs/tutorials/developer-liftoff/level-0/intro-dfx) module. It is recommended to complete that module before beginning the steps outlined here.
 
 ### Deploying to the playground using `dfx`
 
@@ -59,7 +59,7 @@ This example works with the canister previously created in the [0.6: Introductio
 
 To deploy a canister to the playground network, first open a terminal window if you do not already have one open.
 
-Then, navigate into the project that you created in the [0.6: Introduction to dfx](/docs/current/tutorials/developer-liftoff/level-0/intro-dfx) module. You can use a command such as:
+Then, navigate into the project that you created in the [0.6: Introduction to dfx](/docs/tutorials/developer-liftoff/level-0/intro-dfx) module. You can use a command such as:
 
 ```bash
 cd developer_ladder/hello_world
@@ -67,7 +67,7 @@ cd developer_ladder/hello_world
 
 For more information on file system navigation using the CLI, check out the documentation on the [`cd` command](https://linuxcommand.org/lc3_man_pages/cdh.html).
 
-For a review on the project's structure and our `main.mo` source code file, you can review the [0.6: Introduction to dfx](/docs/current/tutorials/developer-liftoff/level-0/intro-dfx) module.
+For a review on the project's structure and our `main.mo` source code file, you can review the [0.6: Introduction to dfx](/docs/tutorials/developer-liftoff/level-0/intro-dfx) module.
 
 Before you can deploy the canister, you need to start the local canister execution environment. To do this, run the command:
 
@@ -107,7 +107,7 @@ The identity warning returned in the output of this command is expected. At this
 
 Once deployed, the canister can be interacted with from the command line or from the URL shown in the output above that refers to the backend canister's Candid interface. First, let's look at using the command line.
 
-If you recall from the [0.6: Introduction to dfx](/docs/current/tutorials/developer-liftoff/level-0/intro-dfx) module, our canister has a single method called `greet`, which you can call using a command such as:
+If you recall from the [0.6: Introduction to dfx](/docs/tutorials/developer-liftoff/level-0/intro-dfx) module, our canister has a single method called `greet`, which you can call using a command such as:
 
 ```bash
 dfx canister --playground call hello_world_backend greet '("everyone")'
@@ -167,7 +167,7 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
+- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -189,4 +189,4 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 Now that you've explored a live canister deployed on the playground, you'll move onto developing your own dapp rather than using the default template files. But first, let's go over the basics of Motoko in Motoko level 1.
 
-- [1.2 Motoko level 1](/docs/current/tutorials/developer-liftoff/level-1/1.2-motoko-lvl1).
+- [1.2 Motoko level 1](/docs/tutorials/developer-liftoff/level-1/1.2-motoko-lvl1).

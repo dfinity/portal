@@ -14,7 +14,7 @@ Hello everyone and welcome to another installment of the DFINITY team spotlight!
 
 **Does the consensus team only focus on the consensus layer, or are there other responsibilities of the consensus team?**
 
-*We own the consensus layer of the ICP stack, develop the node/topology orchestration software and are responsible for DKG (distributed key generation) and tECDSA orchestration.*
+*We own the consensus layer of the ICP stack, develop the node/topology orchestration software and are responsible for DKG (distributed key generation) and t-ECDSAA orchestration.*
 
 **What is the composition of the Consensus team?**
 

@@ -64,7 +64,7 @@ const Hero: React.FC<{
               <div className="flex flex-row flex-wrap gap-8 mt-8 md:mt-6 items-center">
                 <Link
                   className={"button-white w-max"}
-                  href="/docs/current/home"
+                  href="/docs/home"
                 >
                   DEVELOP
                 </Link>
