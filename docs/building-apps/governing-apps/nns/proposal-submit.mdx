@@ -22,7 +22,7 @@ To properly follow what is going on, there are a few high-level points worth hig
 
 #### Only Neurons can submit NNS proposals
 
-Neurons with at least 10 ICP and 6 months of dissolve delay can submit NNS proposals. Therefore, the first step is to create such a neuron.
+Neurons with at least 25 ICP and 6 months of dissolve delay can submit NNS proposals. Therefore, the first step is to create such a neuron.
 
 #### The NNS governance canister accepts motion proposals
 
@@ -89,7 +89,7 @@ dfx identity import --seed-file seed.txt
 
 #### Send ICP to the previously created `account id`.
 
-You should send at least 10.001 in order to have enough ICP to create a neuron and pay for the ledger transaction fees.
+You should send at least 25.001 in order to have enough ICP to create a neuron and pay for the ledger transaction fees.
 
 To send ICP to the account, all you need is to input the `account id` in your wallet of choice.
 
@@ -99,7 +99,7 @@ To stake a neuron using quill, run the following command:
 
 ```
 // Craft a message to stake a neuron by choosing an 8-character $NAME and an $AMOUNT to stake
-// Note: you need to stake at LEAST 10 ICP to send proposals as $AMOUNT
+// Note: you need to stake at LEAST 25 ICP to send proposals as $AMOUNT
 quill --pem-file private.pem neuron-stake --name $NAME --amount $AMOUNT > message.json
 
 // Send the message crafted above.

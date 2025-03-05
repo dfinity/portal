@@ -221,7 +221,7 @@ dfx canister call basic_bitcoin send_from_p2pkh_address '(record { destination_a
 ```
 
 The command above creates a transaction and sends it out to your local Bitcoin node.
-For more details on how the `send_from_${type}` endpoints work, see the [deploying your first Bitcoin dapp](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin) tutorial.
+For more details on how the `send_from_${type}` endpoints work, see the "deploying your first Bitcoin dapp" [Motoko](https://github.com/dfinity/examples/tree/master/motoko/basic_bitcoin) or [Rust](https://github.com/dfinity/examples/tree/master/rust/basic_bitcoin) tutorials.
 
 There still remains one additional step, which is to mine a block so that the transaction
 you just sent becomes part of the blockchain. Run the following from the `bitcoind` directory:
