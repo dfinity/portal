@@ -1093,3 +1093,7 @@ const redirects = `
 
     return urls;
   };
+
+
+    return urls;
+  };
