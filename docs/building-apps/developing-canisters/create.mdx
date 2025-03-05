@@ -26,13 +26,9 @@ Canisters are created with [`dfx canister create`](/docs/building-apps/developer
 
 Create your canisters from within the project's directory:
 
-- `dfx canister create <canister-name> --network=local`: Create a canister locally. The local replica must be running to create a canister locally. Start it with `dfx start --background`.
-
-- `dfx canister create <canister-name> --network=playground`: Create a canister on the [playground](/docs/building-apps/developing-canisters/deploy#testnets). Creating a canister on the playground is free, but canisters are temporary and will be removed after 20 minutes.
-
-- `dfx canister create <canister-name> --network=ic`: Create a canister on the mainnet. Creating a canister on the mainnet will cost [cycles](/docs/building-apps/essentials/gas-cost).
-
-- `dfx canister create --all --network=ic`: Create all canisters in the project's `dfx.json` file on the mainnet.
+```
+dfx canister create <canister-name> --network=<NETWORK>
+```
 
 Settings can be configured while creating a canister using optional flags. [View the full list of settings](/docs/building-apps/developer-tools/dfx/dfx-canister#dfx-canister-create).
 

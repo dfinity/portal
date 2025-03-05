@@ -12,7 +12,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 
 # Deploy
 
-<MarkdownChipRow labels={["Beginner", "Launching dapp"]} />
+<MarkdownChipRow labels={["Beginner", "Developing canisters"]} />
 
 After you have [created](/docs/building-apps/developing-canisters/what-are-canisters) a <GlossaryTooltip>canister</GlossaryTooltip>, you can deploy it to:
 
@@ -30,28 +30,24 @@ After you have [created](/docs/building-apps/developing-canisters/what-are-canis
 <input type="checkbox"/> <a href="/docs/building-apps/getting-started/install">Install the IC SDK.</a>
 <div>
 </div>
-<input type="checkbox"/> <a href="/docs/building-apps/developing-canisters/what-are-canisters">Write code.</a>
+<input type="checkbox"/> <a href="/docs/building-apps/developing-canisters/write">Write code.</a>
 <div>
 </div>
-<input type="checkbox"/> <a href="/docs/building-apps/developing-canisters/what-are-canisters">Create your canister.</a> Optional: <code>dfx deploy</code> will execute this step if not already complete.
+<input type="checkbox"/> <a href="/docs/building-apps/developing-canisters/creates">Create your canister.</a> Optional: <code>dfx deploy</code> will execute this step if not already complete.
 <div>
 </div>
-<input type="checkbox"/> <a href="/docs/building-apps/developing-canisters/what-are-canisters">Compile your canister code into Wasm.</a> Optional: <code>dfx deploy</code> will execute this step if not already complete.
+<input type="checkbox"/> <a href="/docs/building-apps/developing-canisters/compile">Compile your canister code into Wasm.</a> Optional: <code>dfx deploy</code> will execute this step if not already complete.
 <div>
 </div>
-<input type="checkbox"/> <a href="/docs/building-apps/developing-canisters/what-are-canisters">Install the Wasm module into your canister.</a> Optional: <code>dfx deploy</code> will execute this step if not already complete.
+<input type="checkbox"/> <a href="/docs/building-apps/developing-canisters/install">Install the Wasm module into your canister.</a> Optional: <code>dfx deploy</code> will execute this step if not already complete.
 </TabItem>
 </Tabs>
 
 Verify you are in your project's directory and the canisters you'd like to deploy are configured in the project's `dfx.json` file. , Then deploy your canisters using the `dfx deploy` command:
 
-- `dfx deploy <canister-name>`: Deploy a canister locally. The local replica must be running to deploy a canister locally. Start it with `dfx start --background`.
-
-- `dfx deploy <canister-name> --network=playground`: Deploy a canister on the playground.
-
-- `dfx deploy <canister-name> --network=ic`: Deploy a canister on the mainnet.
-
-- `dfx deploy --network=ic`: Deploy all canisters in the project's `dfx.json` file on the mainnet.
+```
+dfx deploy <canister-name> --network=<NETWORK>
+```
 
 ## Sharing links to canisters
 
