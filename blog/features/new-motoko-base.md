@@ -267,6 +267,6 @@ We want to give a huge thanks to the community members who provided high-quality
 * [Byron Becker](https://github.com/ByronBecker): [`StableHeapBTreeMap`](https://github.com/canscale/StableHeapBTreeMap)
 * [Zen Voich](https://github.com/ZenVoich): [`test`](https://github.com/ZenVoich/test)
 
-The base library is only as good as it can successfully serve the Motoko community. Please consider providing feedback here, on the [GitHub discussions page](https://github.com/dfinity/new-motoko-base/discussions), or anywhere else. This is the best time to voice your opinion, since we have the most flexibility now before we lock in the final design. 
+Please consider providing feedback on the [developer forum topic](https://forum.dfinity.org/t/motoko-base-library-changes/39766) or [GitHub discussions page](https://github.com/dfinity/new-motoko-base/discussions). This is the best time to voice your opinion, since we have the most flexibility now before we lock in the final design. 
 
 Thank you for reading, and we look forward to hearing your feedback on the new base library!
