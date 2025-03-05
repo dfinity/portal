@@ -202,8 +202,8 @@
   {
     "index": "recdcgDH9q3Lcb6EG",
     "category": "Course",
-    "title": "ICP Developer Liftoff Tutorial Series",
-    "body": "The ICP Developer Liftoff is designed to give both new and existing developers a clear learning path to develop on the Internet Computer. Starting at level 0 with an introduction to the Internet Computer, terminology, and setting up a developer environment, to level 5 that details building complex dapps, the Developer Liftoff contains essential information for developers of all skill levels.",
+    "title": "ICP Developer Ladder Tutorial Series",
+    "body": "The ICP Developer Ladder is designed to give both new and existing developers a clear learning path to develop on the Internet Computer. Starting at level 0 with an introduction to the Internet Computer, terminology, and setting up a developer environment, to level 5 that details building complex dapps, the Developer Ladder contains essential information for developers of all skill levels.",
     "languages": [
       "motoko"
     ],
@@ -1655,8 +1655,8 @@
   {
     "index": "rec9O0jyRAnE6oVyi",
     "category": "Content",
-    "title": "ICP Developer Liftoff 3.5 | Identities and authentication",
-    "body": "In previous episodes of the ICP Developer Liftoff, developers have used forms of identity and authentication such as a developer identity that was used to create a cycles wallet to hold cycles and a ledger account used to hold ICP that could be converted into cycles. In this episode, developers will learn about another form of identity, the IC's native form of digital identity known as Internet Identity.",
+    "title": "ICP Developer Ladder 3.5 | Identities and authentication",
+    "body": "In previous episodes of the ICP Developer Ladder, developers have used forms of identity and authentication such as a developer identity that was used to create a cycles wallet to hold cycles and a ledger account used to hold ICP that could be converted into cycles. In this episode, developers will learn about another form of identity, the IC's native form of digital identity known as Internet Identity.",
     "languages": [
       "motoko"
     ],
@@ -1686,8 +1686,8 @@
   {
     "index": "rec1aicokKmS4Ohgd",
     "category": "Content",
-    "title": "ICP Developer Liftoff 3.4 | Introduction to agents",
-    "body": "In this episode of the ICP Developer Liftoff, developers will learn about what an agent is and how it can be used within their development workflow.",
+    "title": "ICP Developer Ladder 3.4 | Introduction to agents",
+    "body": "In this episode of the ICP Developer Ladder, developers will learn about what an agent is and how it can be used within their development workflow.",
     "languages": [
       "motoko"
     ],
@@ -1718,8 +1718,8 @@
   {
     "index": "rec8zhy2zTIePqWby",
     "category": "Content",
-    "title": "ICP Developer Liftoff 3.3 | Certified data",
-    "body": "In this episode of the ICP Developer Liftoff, developers will learn about certified data, which utilizes chain-key cryptography at the canister level to generate a digital signature that can be used to provide verification for data and variables.",
+    "title": "ICP Developer Ladder 3.3 | Certified data",
+    "body": "In this episode of the ICP Developer Ladder, developers will learn about certified data, which utilizes chain-key cryptography at the canister level to generate a digital signature that can be used to provide verification for data and variables.",
     "languages": [
       "motoko"
     ],
@@ -1747,8 +1747,8 @@
   {
     "index": "rec2I3xYm24nYg1el",
     "category": "Content",
-    "title": "ICP Developer Liftoff 3.2 | Using HTTPS outcalls",
-    "body": "In this installment of the ICP Developer Liftoff, developers will learn about HTTPS outcalls, how they can be used to interact with external services, and how to use GET and POST outcalls within their dapps.  ",
+    "title": "ICP Developer Ladder 3.2 | Using HTTPS outcalls",
+    "body": "In this installment of the ICP Developer Ladder, developers will learn about HTTPS outcalls, how they can be used to interact with external services, and how to use GET and POST outcalls within their dapps.  ",
     "languages": [
       "motoko"
     ],
@@ -1776,8 +1776,8 @@
   {
     "index": "recs1qSMxbP1mbNh2",
     "category": "Content",
-    "title": "ICP Developer Liftoff 3.1 | Motoko package managers",
-    "body": "In this installment of the ICP Developer Liftoff, developers will learn how to use Motoko package managers to download, manage, and use libraries.",
+    "title": "ICP Developer Ladder 3.1 | Motoko package managers",
+    "body": "In this installment of the ICP Developer Ladder, developers will learn how to use Motoko package managers to download, manage, and use libraries.",
     "languages": [
       "motoko"
     ],
@@ -1804,8 +1804,8 @@
   {
     "index": "rec2YTkU2Wt7G7MZW",
     "category": "Content",
-    "title": "ICP Developer Liftoff 2.6 | Motoko level 2",
-    "body": "In this episode of the ICP Developer Liftoff, developers will explore actors further by taking a look at actor type definitions, how actors interact with async data, actor classes, and using multiple actors.",
+    "title": "ICP Developer Ladder 2.6 | Motoko level 2",
+    "body": "In this episode of the ICP Developer Ladder, developers will explore actors further by taking a look at actor type definitions, how actors interact with async data, actor classes, and using multiple actors.",
     "languages": [
       "motoko"
     ],
@@ -1831,8 +1831,8 @@
   {
     "index": "recZEJ8TGUs3XwoFg",
     "category": "Content",
-    "title": "ICP Developer Liftoff 2.5 | Unit, integration, and end2end testing",
-    "body": "In this episode of the ICP Developer Liftoff, developers will learn about how to properly test and debug their code using Motoko unit testing, end to end testing, and integration testing.",
+    "title": "ICP Developer Ladder 2.5 | Unit, integration, and end2end testing",
+    "body": "In this episode of the ICP Developer Ladder, developers will learn about how to properly test and debug their code using Motoko unit testing, end to end testing, and integration testing.",
     "languages": [
       "motoko"
     ],
@@ -1858,8 +1858,8 @@
   {
     "index": "recwqdWl8exyPlTM8",
     "category": "Content",
-    "title": "ICP Developer Liftoff 2.4 | Introduction to Candid",
-    "body": "In this episode of the ICP Developer Liftoff, developers will be introduced to Candid, is an interface description language that is used to describe the public interface of a service.",
+    "title": "ICP Developer Ladder 2.4 | Introduction to Candid",
+    "body": "In this episode of the ICP Developer Ladder, developers will be introduced to Candid, is an interface description language that is used to describe the public interface of a service.",
     "languages": [
       "motoko"
     ],
@@ -1886,8 +1886,8 @@
   {
     "index": "recqP3ycEjPMzf7V8",
     "category": "Content",
-    "title": "ICP Developer Liftoff 2.2 | Advanced canister calls",
-    "body": "In a previous episode, the ICP Developer Liftoff briefly discussed query and update canister calls. In this episode, developers will dive deeper into these types of canister calls, but also take a look at advanced canister calls such as composite queries, certified variables, and inter-canister calls.",
+    "title": "ICP Developer Ladder 2.2 | Advanced canister calls",
+    "body": "In a previous episode, the ICP Developer Ladder briefly discussed query and update canister calls. In this episode, developers will dive deeper into these types of canister calls, but also take a look at advanced canister calls such as composite queries, certified variables, and inter-canister calls.",
     "languages": [
       "motoko"
     ],
@@ -1916,8 +1916,8 @@
   {
     "index": "rec6eCt4UT49NDDXq",
     "category": "Content",
-    "title": "ICP Developer Liftoff 2.1 | Canister upgrades, storage, and persistence",
-    "body": "In this episode of the ICP Developer Liftoff, developers will learn about canister storage and data persistence, then learn how to upgrade their canisters.",
+    "title": "ICP Developer Ladder 2.1 | Canister upgrades, storage, and persistence",
+    "body": "In this episode of the ICP Developer Ladder, developers will learn about canister storage and data persistence, then learn how to upgrade their canisters.",
     "languages": [
       "motoko"
     ],
@@ -1946,8 +1946,8 @@
   {
     "index": "reco5l1OTiCQvcEp2",
     "category": "Content",
-    "title": "ICP Developer Liftoff 1.6 | Managing canisters",
-    "body": "In this episode of the ICP Developer Liftoff, now that developers have canisters deployed on the mainnet, the next step is to learn how to manage those canisters. Managing a canister includes workflows such as obtaining information, setting an identity as the canister's owner, and deleting a canister. ",
+    "title": "ICP Developer Ladder 1.6 | Managing canisters",
+    "body": "In this episode of the ICP Developer Ladder, now that developers have canisters deployed on the mainnet, the next step is to learn how to manage those canisters. Managing a canister includes workflows such as obtaining information, setting an identity as the canister's owner, and deleting a canister. ",
     "languages": [
       "motoko"
     ],
@@ -1976,8 +1976,8 @@
   {
     "index": "recZKfZvadEKNr7NQ",
     "category": "Content",
-    "title": "ICP Developer Liftoff 1.5 | Deploying canisters",
-    "body": "In this episode of the ICP Developer Liftoff, developers will learn how to deploy their canister on the Internet Computer mainnet using the cycles they acquired in the previous episode.",
+    "title": "ICP Developer Ladder 1.5 | Deploying canisters",
+    "body": "In this episode of the ICP Developer Ladder, developers will learn how to deploy their canister on the Internet Computer mainnet using the cycles they acquired in the previous episode.",
     "languages": [
       "motoko"
     ],
@@ -2006,8 +2006,8 @@
   {
     "index": "rec6zscvhpoLObS6R",
     "category": "Content",
-    "title": "ICP Developer Liftoff 1.4 | Acquiring and using cycles",
-    "body": "In this episode of the ICP Developer Liftoff, learn about what cycles are, what role they play in developing on the Internet Computer, and how to acquire cycles to use on your Developer Liftoff. ",
+    "title": "ICP Developer Ladder 1.4 | Acquiring and using cycles",
+    "body": "In this episode of the ICP Developer Ladder, learn about what cycles are, what role they play in developing on the Internet Computer, and how to acquire cycles to use on your Developer Ladder. ",
     "languages": [
       "motoko"
     ],
@@ -2036,8 +2036,8 @@
   {
     "index": "recGrKG8PYpkjtREa",
     "category": "Content",
-    "title": "ICP Developer Liftoff 1.3 | Developing your first dapp",
-    "body": "In this episode of the ICP Developer Liftoff, it's time for developers on their Developer Liftoff to develop their first Internet Computer dapp! For this tutorial, developers will create a simple poll dapp that includes both a backend canister and a frontend canister. ",
+    "title": "ICP Developer Ladder 1.3 | Developing your first dapp",
+    "body": "In this episode of the ICP Developer Ladder, it's time for developers on their Developer Ladder to develop their first Internet Computer dapp! For this tutorial, developers will create a simple poll dapp that includes both a backend canister and a frontend canister. ",
     "languages": [
       "motoko"
     ],
@@ -2067,8 +2067,8 @@
   {
     "index": "rec7Gy6OfhjDSfe7p",
     "category": "Content",
-    "title": "ICP Developer Liftoff 1.2 | Motoko level 1",
-    "body": "In this episode of the ICP Developer Liftoff, developers will learn the fundamentals of writing Motoko code to prepare them for writing their first decentralized application to be deployed on the Internet Computer.  ",
+    "title": "ICP Developer Ladder 1.2 | Motoko level 1",
+    "body": "In this episode of the ICP Developer Ladder, developers will learn the fundamentals of writing Motoko code to prepare them for writing their first decentralized application to be deployed on the Internet Computer.  ",
     "languages": [
       "motoko"
     ],
@@ -2096,8 +2096,8 @@
   {
     "index": "recJfiPHqTFb3JwJc",
     "category": "Content",
-    "title": "ICP Developer Liftoff 1.1 | Exploring a Live Demo",
-    "body": "In this episode of the ICP Developer Liftoff, developers will learn how to explore a live, deployed canister that utilizes the Motoko playground through the dfx deploy --playground command to get a feel for deploying canisters on the IC before developing and deploying their own.",
+    "title": "ICP Developer Ladder 1.1 | Exploring a Live Demo",
+    "body": "In this episode of the ICP Developer Ladder, developers will learn how to explore a live, deployed canister that utilizes the Motoko playground through the dfx deploy --playground command to get a feel for deploying canisters on the IC before developing and deploying their own.",
     "languages": [
       "motoko"
     ],
@@ -2125,8 +2125,8 @@
   {
     "index": "rec27PSj8Tp9BquCl",
     "category": "Content",
-    "title": "ICP Developer Liftoff 0.6 | Introduction to dfx",
-    "body": "In this episode of the ICP Developer Liftoff, developers are introduced to dfx, a command-line execution environment for the IC SDK that is the primary tool used for creating, managing, and deploying dapps onto the Internet Computer. ",
+    "title": "ICP Developer Ladder 0.6 | Introduction to dfx",
+    "body": "In this episode of the ICP Developer Ladder, developers are introduced to dfx, a command-line execution environment for the IC SDK that is the primary tool used for creating, managing, and deploying dapps onto the Internet Computer. ",
     "languages": [
       "motoko"
     ],
@@ -2158,8 +2158,8 @@
   {
     "index": "recjlqfbCkcYtzK60",
     "category": "Content",
-    "title": "ICP Developer Liftoff 0.5 | Introduction to languages",
-    "body": "In this episode of the ICP Developer Liftoff, developers will learn about the different languages that can be used to develop dapps, and be provided a base-level introduction to the IC's two primarily supported languages, Motoko and Rust.",
+    "title": "ICP Developer Ladder 0.5 | Introduction to languages",
+    "body": "In this episode of the ICP Developer Ladder, developers will learn about the different languages that can be used to develop dapps, and be provided a base-level introduction to the IC's two primarily supported languages, Motoko and Rust.",
     "languages": [
       "motoko"
     ],
@@ -2192,8 +2192,8 @@
   {
     "index": "rec1EQRXOgtdWHwaq",
     "category": "Content",
-    "title": "ICP Developer Liftoff 0.4 | Introduction to Canisters",
-    "body": "In this episode of the ICP Developer Liftoff, developers are introduced to canisters, their architecture, and will learn about the different types of canisters that can be developed. ",
+    "title": "ICP Developer Ladder 0.4 | Introduction to Canisters",
+    "body": "In this episode of the ICP Developer Ladder, developers are introduced to canisters, their architecture, and will learn about the different types of canisters that can be developed. ",
     "languages": [
       "motoko"
     ],
@@ -2225,8 +2225,8 @@
   {
     "index": "recl70yxUNYNuURY7",
     "category": "Content",
-    "title": "ICP Developer Liftoff 0.3 | Developer Environment Setup",
-    "body": "In this installment of the ICP Developer Liftoff, developers delve into the process of configuring their local development environment. This includes getting acquainted with a command line interface, installing the IC SDK, and establishing a new directory specifically for their Developer Liftoff projects.",
+    "title": "ICP Developer Ladder 0.3 | Developer Environment Setup",
+    "body": "In this installment of the ICP Developer Ladder, developers delve into the process of configuring their local development environment. This includes getting acquainted with a command line interface, installing the IC SDK, and establishing a new directory specifically for their Developer Ladder projects.",
     "languages": [
       "motoko"
     ],
@@ -2257,8 +2257,8 @@
   {
     "index": "recsTbSiahR60UTBh",
     "category": "Content",
-    "title": "ICP Developer Liftoff 0.2 | Internet Computer terminology",
-    "body": "In this episode of the ICP Developer Liftoff, developers are introduced to some of the most commonly used terminology that they should be aware of when building on the Internet Computer.",
+    "title": "ICP Developer Ladder 0.2 | Internet Computer terminology",
+    "body": "In this episode of the ICP Developer Ladder, developers are introduced to some of the most commonly used terminology that they should be aware of when building on the Internet Computer.",
     "languages": [
       "motoko"
     ],
@@ -2289,8 +2289,8 @@
   {
     "index": "recXfEUaOspdDbka7",
     "category": "Content",
-    "title": "ICP Developer Liftoff 0.1 | Overview of the Internet Computer",
-    "body": "The video is an introduction to the \"Internet Computer Developer Liftoff\" series, outlining the content and structure of the tutorial, which aims to guide developers of all skill levels through the basics and advanced concepts of developing decentralized applications (dApps) on the Internet Computer blockchain. It also demonstrates where to find the accompanying documentation and provides a high-level overview of key components and terminology related to the Internet Computer, such as canisters, subnets, cycles, and more.",
+    "title": "ICP Developer Ladder 0.1 | Overview of the Internet Computer",
+    "body": "The video is an introduction to the \"Internet Computer Developer Ladder\" series, outlining the content and structure of the tutorial, which aims to guide developers of all skill levels through the basics and advanced concepts of developing decentralized applications (dApps) on the Internet Computer blockchain. It also demonstrates where to find the accompanying documentation and provides a high-level overview of key components and terminology related to the Internet Computer, such as canisters, subnets, cycles, and more.",
     "languages": [
       "motoko"
     ],

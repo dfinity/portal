@@ -1,0 +1,88 @@
+---
+keywords: [beginner, concept, frontend, asset canister, assets, uploading assets, serving assets, serving web assets, uploading web assets]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# Uploading & serving web assets
+
+<MarkdownChipRow labels={["Beginner", "Asset canisters"]} />
+
+The library `@dfinity/assets` is available to upload files to your project's asset canister. You'll need to get the canister ID, pass your agent, and then upload your files. Below is an example code snippet showcasing this workflow:
+
+```js
+import { Blob } from "buffer";
+global.Blob = Blob;
+import { AssetManager } from "@dfinity/assets";
+// ...
+
+const assetCanisterId = localCanisterIds.asset.local;
+const assetManager = new AssetManager({
+  canisterId: assetCanisterId,
+  agent, // re-use agent
+  concurrency: 32, // Optional (default: 32), max concurrent requests.
+  maxSingleFileSize: 450000, // Optional bytes (default: 450000), larger files will be uploaded as chunks.
+  maxChunkSize: 1900000, // Optional bytes (default: 1900000), size of chunks when file is uploaded as chunks.
+});
+
+async function main() {
+  // ...
+  const uploadedFilePath = `token/${idx}${path.extname(node_example.asset)}`;
+  const uploadedThumbnailPath = `thumbnail/${idx}.jpeg`;
+
+  await assetManager.store(file, { fileName: uploadedFilePath });
+  await assetManager.store(thumbnail, { fileName: uploadedThumbnailPath });
+}
+```
+:::caution
+This example is a **code snippet** that is part of a larger code file. This snippet may return an error if run on its own.
+:::
+
+## The `ic-asset` canister
+
+The `ic-asset` canister is written in Rust and uses the [ICP Rust agent](https://docs.rs/ic-agent/latest/ic_agent/) to provide a client API that can be used to list assets, return asset properties, and upload assets to the canister. API endpoints for this canister include:
+
+- `api_version`: Returns the current API version.
+
+- `commit_batch`: Used to commit batch operations.
+
+- `compute_evidence`: Compute the hash evidence over the batch operations required to update the assets.
+
+- `create_batch`: Create a batch operation.
+
+- `create_chunk`: Create a chunk operation to be part of a batch.
+
+- `get_asset_properties`: Return an asset's properties.
+
+- `list`: List current assets.
+
+- `propose_commit_batch`: Propose a batch operation to be committed.
+
+For example, the `list` endpoint uses the following code to list assets using the agent:
+
+```
+use crate::canister_api::methods::method_names::LIST;
+use crate::canister_api::types::{asset::AssetDetails, list::ListAssetsRequest};
+use ic_agent::AgentError;
+use ic_utils::call::SyncCall;
+use ic_utils::Canister;
+use std::collections::HashMap;
+
+pub(crate) async fn list_assets(
+    canister: &Canister<'_>,
+) -> Result<HashMap<String, AssetDetails>, AgentError> {
+    let (entries,): (Vec<AssetDetails>,) = canister
+        .query(LIST)
+        .with_arg(ListAssetsRequest {})
+        .build()
+        .call()
+        .await?;
+
+    let assets: HashMap<_, _> = entries.into_iter().map(|d| (d.key.clone(), d)).collect();
+
+    Ok(assets)
+}
+```
+
+More information about the `ic-asset ` canister can be found in the [source code](https://github.com/dfinity/sdk/tree/master/src/canisters/frontend/ic-asset).

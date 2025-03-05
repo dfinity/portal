@@ -16,7 +16,7 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 
 
-In a previous module, [2.2: Advanced canister calls](/docs/current/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls), you briefly touched on certified variables. In this guide, you'll dive deeper into certified data and take a look at an example that displays how to use certified data.
+In a previous module, [2.2: Advanced canister calls](/docs/tutorials/developer-liftoff/level-2/2.2-advanced-canister-calls), you briefly touched on certified variables. In this guide, you'll dive deeper into certified data and take a look at an example that displays how to use certified data.
 
 Recall that certified variables are used as a way for queries to return an authenticated response that can be validated and trusted, since query calls do not go through consensus and therefore their response cannot be certified. By utilizing certified variables, developers can make query calls that return an authenticated response that they can trust. This allows for workflows that require additional layers of authentication, such as applications that handle financial data or important records. For users of the application, they can be assured that the information they're interacting with and receiving from the application is trustworthy and secure as well.
 
@@ -74,11 +74,11 @@ To certify data, a canister uses the following workflow:
 
 A canister can interact with and change its certified data by calling the following API methods:
 
-- [`ic0.certified_data_set : (src: i32, size : i32) -> ()`](https://internetcomputer.org/docs/current/references/ic-interface-spec#system-api-certified-data): This method can be used to update the canister's certified data. Data cannot be larger than 32 bytes.
+- [`ic0.certified_data_set : (src: i32, size : i32) -> ()`](/docs/references/ic-interface-spec#system-api-certified-data): This method can be used to update the canister's certified data. Data cannot be larger than 32 bytes.
 
-- [`ic0.data_certificate_present : () -> i32`](https://internetcomputer.org/docs/current/references/ic-interface-spec#system-api-certified-data): This method returns a `1` if a certificate is present or a `0` if not.
+- [`ic0.data_certificate_present : () -> i32`](/docs/references/ic-interface-spec#system-api-certified-data): This method returns a `1` if a certificate is present or a `0` if not.
 
-- [`ic0.data_certificate_size : () -> i32`](https://internetcomputer.org/docs/current/references/ic-interface-spec#system-api-certified-data) and [`ic0.data_certificate_copy : (dst: i32, offset: i32, size: i32) -> ()`](https://internetcomputer.org/docs/current/references/ic-interface-spec#system-api-certified-data): These methods are used to copy the certificate for the current value of the certified data to the canister.
+- [`ic0.data_certificate_size : () -> i32`](/docs/references/ic-interface-spec#system-api-certified-data) and [`ic0.data_certificate_copy : (dst: i32, offset: i32, size: i32) -> ()`](/docs/references/ic-interface-spec#system-api-certified-data): These methods are used to copy the certificate for the current value of the certified data to the canister.
 
 ## How developers can certify data
 
@@ -113,7 +113,7 @@ On the Internet Computer, there is a built-in `http_request` query method. This 
 
 When a canister would like to return a certified asset to a request, the response body will contain the asset and a response header with the name [`IC-Certificate`](https://wiki.internetcomputer.org/wiki/HTTP_asset_certification#IC-Certificate_header) and a value equal to the asset's certificate.
 
-More information can be found in the [HTTP gateway protocol specification](/docs/current/references/http-gateway-protocol-spec).
+More information can be found in the [HTTP gateway protocol specification](/docs/references/http-gateway-protocol-spec).
 
 ### Example
 
@@ -185,9 +185,9 @@ Now that you've covered the fundamental concepts behind certified data, let's ta
 
 ### Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3: Developer environment setup](/docs/current/tutorials/developer-liftoff/level-0/dev-env).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3: Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
 
-You will also need to install Mops, which was covered in the previous module [3.1: Motoko package managers](/docs/current/tutorials/developer-liftoff/level-3/3.1-package-managers).
+You will also need to install Mops, which was covered in the previous module [3.1: Motoko package managers](/docs/tutorials/developer-liftoff/level-3/3.1-package-managers).
 
 ### Creating a new project
 
@@ -364,7 +364,7 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for IC developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
+- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -386,4 +386,4 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 Next, let's dive deeper into agents:
 
-- [3.4 Introduction to agents](/docs/current/tutorials/developer-liftoff/level-3/3.4-intro-to-agents).
+- [3.4 Introduction to agents](/docs/tutorials/developer-liftoff/level-3/3.4-intro-to-agents).

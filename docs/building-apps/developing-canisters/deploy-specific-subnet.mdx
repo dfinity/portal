@@ -1,0 +1,92 @@
+---
+keywords: [beginner, tutorial, deploy, deploy canisters, subnets, application subnet, european subnet, gdpr, subnets, subnet size, subnet flag, specific subnet, system subnet, fiduciary subnet ]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# Deploying to specific subnets
+
+<MarkdownChipRow labels={["Advanced", "Developing canisters"]} />
+
+A subnet on ICP is a collection of interacting replicas that run their own, separate instance of the ICP consensus mechanism, effectively creating their own blockchain on which a set of canisters can run. Each subnet can communicate with other subnets and is controlled by a root subnet. The root subnet uses chain-key cryptography to delegate its authority to the various subnets.
+
+The replica is implemented by a number of software components that, as a bundle, replicate state and computation across all of the nodes in a subnet blockchain.
+
+Each subnet can communicate with other subnets and is controlled by the **root subnet**, which uses [chain-key](/docs/references/glossary#c) cryptography to delegate its authority to the various subnets.
+
+Subnets allow ICP to scale indefinitely. The problem with traditional blockchains (and individual subnets) is that they are limited by the computing power of a single node machine because every node has to run everything that happens on the blockchain to participate in the [consensus](/docs/references/glossary#c) algorithm. Running multiple independent subnets in parallel allows the Internet Computer to break through this single-machine barrier.
+
+Not every canister has the same security, size, or feature requirements, therefore not every subnet has the same configuration. The `system` subnet (which contains the [NNS](/docs/references/glossary#n) and several other critical services), for example, does not charge any cycles for its canisters, because those canisters should be available in all circumstances. Other subnets can have different features enabled or disabled, such as the subnet running the canisters for the Bitcoin integration.
+
+There are four types of subnets: application, system, fiduciary, and the European subnet.
+
+## Application subnets
+
+Application subnets are the most common type of subnet on ICP. Almost all canisters run on an application subnet. Each application subnet has 13 nodes and can be individually configured to have different features enabled or disabled.
+
+You may want to deploy to a specific application subnet for reasons such as resource availability, latency, feature availability, or simply keeping all of your projects on one subnet for simplified management.
+
+### Deploying to a specific subnet
+
+To deploy your canister to a specific subnet, you can pass the `--subnet` flag to the `dfx deploy` command:
+
+```
+dfx deploy --network=ic --subnet=fuqsr-in2lc-zbcjj-ydmcw-pzq7h-4xm2z-pto4i-dcyee-5z4rz-x63ji-nae
+```
+
+You can view the full list of subnets and details about them, such as the number of canisters and block rate, on the [ICP dashboard](https://dashboard.internetcomputer.org/subnets).
+
+### Deploying to the same subnet as an existing canister
+
+If you have a canister deployed to the mainnet already and you want to deploy another canister to that same subnet, you can use the `--next-to` flag along with the canister ID of the canister already deployed on the mainnet:
+
+```
+dfx deploy --network=ic --next-to=kfvpr-oiaaa-aaaar-qam2q-cai
+```
+
+## System subnets
+
+System subnets are reserved for running canisters that provide system functionality to ICP, such as the NNS canisters. You cannot deploy an application to the system subnets. System subnets may have special configurations, such as not charging cycles to any of the canisters running on the subnet since system canisters need to be available at all times. System subnets also have a more generous per-call instruction limit and a more generous Wasm module size limit.
+
+There are currently three system subnets:
+
+- [`tdb26`](https://dashboard.internetcomputer.org/subnet/tdb26-jop6k-aogll-7ltgs-eruif-6kk7m-qpktf-gdiqx-mxtrf-vb5e6-eqe) hosts the 14 canisters that make up the NNS.
+
+- [`uzr34`](https://dashboard.internetcomputer.org/subnet/uzr34-akd3s-xrdag-3ql62-ocgoh-ld2ao-tamcv-54e7j-krwgb-2gm4z-oqe) hosts the canisters for [Internet Identity](/docs/building-apps/authentication/overview), the [cycles ledger](/docs/defi/token-ledgers/cycles-ledger), the [exchange rate canister](/docs/references/system-canisters/) and the dashboard, and stores the backup threshold signature keys.
+
+- [`w4rem`](https://dashboard.internetcomputer.org/subnet/w4rem-dv5e3-widiz-wbpea-kbttk-mnzfm-tzrc7-svcj3-kbxyb-zamch-hqe) hosts the canisters for the Bitcoin integration.
+
+## Fiduciary subnets
+
+A fiduciary subnet is a subnet larger than 13 nodes. Canisters running on this larger subnet will pay more cycles compared to canisters running on 13-node subnets, but in return they will have a higher level of security due to the bigger subnet size. The cycle costs scale linearly to the number of nodes. The fiduciary subnet type was created to enable safer deployment of DeFi applications that need even stronger guarantees than the ones that a 13-node subnet can provide.
+
+There is currently one fiduciary subnet, [`pzp6e`](https://dashboard.internetcomputer.org/subnet/pzp6e-ekpqk-3c5x7-2h6so-njoeq-mt45d-h3h6c-q3mxf-vpeq5-fk5o7-yae), which contains 34 nodes, hosts the EVM RPC canister, and stores the threshold signature (t-ECDSA and t-Schnorr) signing keys.
+
+You can deploy to the fiduciary subnet using the command `dfx deploy --network=ic --subnet-type fiduciary`.
+
+## The European subnet
+
+The 'European' type subnet indicates that the subnet is comprised of only node machines located in the European geographic region. This type of subnet allows for developers and enterprises to build applications that require a GDPR-aligned infrastructure and leverage blockchain decentralization with regional data sovereignty needs.
+
+There is currently one European subnet, [`bkfrj`](https://dashboard.internetcomputer.org/subnet/bkfrj-6k62g-dycql-7h53p-atvkj-zg4to-gaogh-netha-ptybj-ntsgw-rqe).
+
+:::caution
+The European subnet enables applications to be GDPR-compliant, but developers and enterprises must take further measures to ensure that their applications meet all GDPR requirements.
+:::
+
+To deploy to the European subnet, use the `--subnet-type` flag:
+
+```
+dfx deploy --network=ic --subnet-type european
+```
+
+## Important notes about deploying to subnets
+
+When deploying a project to the mainnet using `dfx`:
+
+- If your canisters have already been created, `dfx` will continue to deploy the canisters on the same subnet that they are already located on.
+
+- If your canisters do not exist yet, when they are created, `dfx` will create them on the same subnet as your cycles wallet canister. It is recommended to consistently use the same wallet when using the European subnet.
+
+- If your canisters do not exist yet, you can specify the wallet canister that should be used to create them by using the `dfx deploy --wallet <WALLET_CANISTER_ID>`. This will create the new canisters on the same subnet where the specified `<WALLET_CANISTER_ID>` is located.

@@ -127,6 +127,90 @@
       "eta": "",
       "is_community": true,
       "in_beta": false
+    },
+    {
+      "title": "Solana Integration",
+      "overview": "OISY widens its multi-chain reach beyond Bitcoin and Ethereum, and will integrate with the most important networks. Solana is the first one to be implemented, a crucial step forward in our mission to deliver a true multi-chain wallet for decentralized finance (DeFi) users.",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Helios"
+    },
+    {
+      "title": "In-Wallet Swaps",
+      "overview": "Introducing in-wallet swaps, this release will enhance flexibility for managing assets, allowing users to seamlessly change their asset allocation directly in OISY using DEX liquidity, mitigating risk or aiming for a higher yield.",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Helios"
+    },
+    {
+      "title": "Promote Chain-Key Tokens",
+      "overview": "With improved screens, flows, and helper texts for chain fusion conversions, OISY will provide users with the right information at the right places to make informed decisions to easily convert native tokens into their chain fusion twins or vice versa.",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Helios"
+    },
+    {
+      "title": "OISY Wallet v1.0 - The official Launch",
+      "description": "With the Helios release, officially named v1.0, OISY will step out of the beta status into its first production version. This includes functional coverage of all key features like buy, receive, send, swap, and convert from and to chain-key tokens, and with several major blockchains integrated, also a true multi-chain nature. Behind the scenes, it also includes setting up proper processes for product improvement, marketing, automated testing, and setting up a user friendly support process.",
+      "is_milestone": true,
+      "milestone_id": "Helios",
+      "status": "deployed",
+      "eta": "",
+      "eta_to_render": "February 2025"
+    },
+    {
+      "title": "Orbit Multi custody wallet for ICP",
+      "overview": "Users can securely share ownership of the ICP token with a fully onchain wallet. From simple 1-out-of-2 configurations to sophisticated approval policy rules, Orbit provides comprehensive support for secure financial transactions with a flexible user-role-based system.",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Poloidal"
+    },
+    {
+      "title": "Secure canister management",
+      "overview": "Teams building their product vision require secure shared access to dapp control. Orbit's rule engine enables policies specifying how many users are needed to approve canister management operations like upgrades and installations, preventing a single member from seizing control.",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Poloidal"
+    },
+    {
+      "title": "Orbit supports ICRC-1",
+      "overview": "Users can manage non-ICP tokens like ckBTC and ckETH with confidence using Orbit's advanced security features, ensuring secure multi-token management.",
+      "status": "deployed",
+      "forum": "",
+      "proposal": "",
+      "docs": "",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Poloidal"
+    },
+    {
+      "title": "The Orbit multi-custody asset framework",
+      "description": "Orbit is a comprehensive digital assets framework, enabling simple to advanced rules over user digital assets. Initially tailored for token management, it provides robust support for 1-out-of-M to complex approval policies for financial transactions. It also supports secure management of infrastructure like canister installations and upgrades. Teams and businesses can confidently handle ICP, ckETH, and compatible tokens using Orbit's advanced security features, vital for those seeking a stable and reliable management over their treasury.",
+      "is_milestone": true,
+      "milestone_id": "Poloidal",
+      "status": "deployed",
+      "eta": "",
+      "eta_to_render": "March 2025"
     }
   ]
 }

@@ -66,7 +66,7 @@ Within the ICP ledger canister, there are three types of transactions:
 
 ### Deploying the ICP ledger locally
 
-Integrating your project with the ICP ledger can provide necessary functionality for dapps such as decentralized exchanges, token swaps, and other DeFi applications. To integrate with the ICP ledger, first it is recommended to test the integration in your local developer environment. [Learn how to deploy the ICP ledger locally](/docs/current/tutorials/developer-liftoff/level-4/4.1-icp-ledger).
+Integrating your project with the ICP ledger can provide necessary functionality for dapps such as decentralized exchanges, token swaps, and other DeFi applications. To integrate with the ICP ledger, first it is recommended to test the integration in your local developer environment. [Learn how to deploy the ICP ledger locally](/docs/tutorials/developer-liftoff/level-4/4.1-icp-ledger).
 
 ### Interacting with the ICP ledger on the mainnet
 
@@ -138,13 +138,13 @@ Within the ICRC-1 ledger canister, there are three types of transactions:
 
 To learn how to deploy your own token using one of the ICRC standards, you can check out the following documentation tutorial:
 
-- [ICRC-1 ledger setup](/docs/current/developer-docs/defi/tokens/ledger/setup/icp_ledger_setup/)
+- [ICRC-1 ledger setup](/docs/defi/token-ledgers/setup/icrc1_ledger_setup)
 
 ## Making payments with ICRC-2
 
 The ICRC-2 standard provides functionality for the **approve-transfer-from** pattern that is a popular function of the ERC-20 standard in the Ethereum ecosystem. This pattern specifies a way for an account owner to delegate token transfers to a third party (on the Internet Computer this is usually a canister) on the owner's behalf.
 
-To interact with ICRC-2 locally, you will need to deploy the [ICRC-1 ledger canister locally](/docs/current/tutorials/developer-liftoff/level-4/4.2-icrc-tokens#deploying-a-icrc-1-ledger-locally).
+To interact with ICRC-2 locally, you will need to deploy the [ICRC-1 ledger canister locally](/docs/tutorials/developer-liftoff/level-4/4.2-icrc-tokens#deploying-a-icrc-1-ledger-locally).
 
 To interact with ICRC-2 on the mainnet, you will need to interact with the ICRC-1 ledger using the `--network ic` flag and the canister ID of the ICRC-1 ledger rather than the canister's name.
 
@@ -157,7 +157,7 @@ dfx canister call icrc1_ledger_canister icrc2_approve "(record { amount = 100_00
 ```
 
 :::info
-This sample command references a [locally deployed ICRC-1 ledger canister](/docs/current/tutorials/developer-liftoff/level-4/4.2-icrc-tokens#deploying-a-icrc-1-ledger-locally).
+This sample command references a [locally deployed ICRC-1 ledger canister](/docs/tutorials/developer-liftoff/level-4/4.2-icrc-tokens#deploying-a-icrc-1-ledger-locally).
 :::
 
 
@@ -220,4 +220,4 @@ To explore a simple token swap example, you can check out the following sample p
 
 ## Next steps
 
-- [6: Authentication](/docs/current/tutorials/hackathon-prep-course/authentication)
+- [6: Authentication](/docs/tutorials/hackathon-prep-course/authentication)
