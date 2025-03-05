@@ -7,6 +7,12 @@ image: /img/blog/new-motoko-base.jpg
 
 # Try the new Motoko base library: feedback requested!
 
+[![New Motoko base library](/img/blog/new-motoko-base.jpg)](https://github.com/dfinity/new-motoko-base)
+
+* [Developer forum topic](https://forum.dfinity.org/t/motoko-base-library-changes/39766)
+* [GitHub repository](https://github.com/dfinity/new-motoko-base)
+* [ICP Ninja demo project](https://icp.ninja/s/kwKkw)
+
 The Languages team is excited to announce a major overhaul of the Motoko base library! Our goal is to improve the consistency and usability of Motoko’s standard library, making it easier for both humans and AI to read and write Motoko canisters.
 
 Here is a quick summary of the biggest features and improvements:
