@@ -590,21 +590,25 @@ The Internet Computer has two HTTPS APIs for canister calling:
 
 #### Asynchronous canister calling {#http-async-call-overview}
 
-1.  A user submits a call via the [HTTPS Interface](#http-interface). The node receiving the request asks the targeted canister if it is willing to accept this message and be charged for the expense of processing it. For calls to the management canister, the rules in [The IC management canister](#ic-management-canister) apply. Otherwise, the node uses the [Ingress message inspection](#system-api-inspect-message) API.
+1.  A user submits a call via the [HTTPS Interface](#http-interface) and the call is received by a replica (a node belonging to an IC subnet). The receiving replica decides whether it accepts the call. An honest replica does so by checking that the target canister is not frozen and
 
-2.  For a certain amount of time, the IC behaves as if it does not know about the call.
+- checking that the canister is running and performing [ingress message inspection](#system-api-inspect-message) for calls to a regular canister;
 
-3.  At some point, the IC may accept the call for processing and set its status to `received`. This indicates that the IC as a whole has received the call and plans on processing it (although it may still not get processed if the IC is under high load). This transition can only happen before the target canister's time (as visible in the [state tree](#state-tree-time)) exceeds the [`ingress_expiry`](#http-call) field of the request which submitted the call.
+- checking that the management canister method can be called via ingress messages and that the caller is a controller of the target canister (if applicable according to the [rules](#ic-management-canister)) for calls to the management canister.
 
-4. Once it is clear that the call will be acted upon (sufficient resources, call not yet expired), the status changes to `processing`. Now the user has the guarantee that the request will have an effect, e.g. it will reach the target canister.
+So far the corresponding IC subnet (as a whole) still behaves as if it does not know about the call.
 
-5.  The IC is processing the call. For some calls this may be atomic, for others this involves multiple internal steps.
+2.  At some point, the IC subnet (as a whole) receives the call and sets its (certified) status to `received`. This transition can only happen before the target canister's time (as visible in the [state tree](#state-tree-time)) exceeds the [`ingress_expiry`](#http-call) field of the HTTP request which contained the call.
 
-6.  Eventually, a response will be produced, and can be retrieved for a certain amount of time. The response is either a `reply`, indicating success, or a `reject`, indicating some form of error.
+3.  Once the IC starts processing the call, its (certified) status is set to `processing`. Now the user has the guarantee that the call will have some effect.
 
-7.  In case of high load on the IC, even if the request has not expired yet, the IC can forget the response data and only remember the call as `done`, to prevent a replay attack.
+4.  The IC is processing the call. For some calls this may be atomic, for others this involves multiple steps.
 
-8.  Once the expiry time is past, the IC can prune the call and its response, and completely forget about it.
+5.  Eventually, a response is produced and available in the (certified) [state tree](#state-tree-time) from which it can be retrieved for a certain amount of time. The response is either a `reply`, indicating success, or a `reject`, indicating some form of error.
+
+6.  In case of high load on the IC, even if the call has not expired yet, the IC can forget the response data and only remember the call as `done`, to prevent a replay attack.
+
+7.  Once the call's expiry time has passed, the IC can remove the call and its response from the (certified) [state tree](#state-tree-time) and thus completely forget about it.
 
 This yields the following interaction diagram:
 ```plantuml
