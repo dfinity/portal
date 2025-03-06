@@ -4367,7 +4367,7 @@ S.messages = Older_messages · (M with origin = FromCanister O with deadline = E
     }
 ```
 
-The next two transition define the expiry of calls that are being processed by the callee. The first transition deals with regular calls.
+The next two transitions define the expiry of calls that are being processed by the callee. The first transition deals with regular calls.
 
 Condition:
 
