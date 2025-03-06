@@ -5730,7 +5730,7 @@ M.caller ∈ S.controllers[A.canister_id]
 if A.replace_snapshot is not null:
   A.replace_snapshot ∈ dom(S.snapshots[A.canister_id])
 else:
-  |dom(S.snapshots[A.canister_id])| <= MAX_SNAPSHOTS
+  |dom(S.snapshots[A.canister_id])| < MAX_SNAPSHOTS
 
 New_snapshot = Snapshot {
   wasm_state = S.canisters[A.canister_id].wasm_state;
