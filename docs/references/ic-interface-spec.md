@@ -4401,7 +4401,7 @@ O.deadline = timestamp
 State after:
 
 ```html
-S.canister_status[target_canister].origin =
+S.canister_status[target_canister] =
     Stopping (prefix · (FromCanister O with deadline = Expired timestamp, stop_ts) · suffix)
 S.messages = S.messages · ResponseMessage {
     origin = FromCanister O with deadline = NoDeadline;
