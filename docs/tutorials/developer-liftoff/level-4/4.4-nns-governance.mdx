@@ -46,7 +46,7 @@ Anyone holding ICP can create a neuron and is encouraged to do so through reward
 
 Neurons can also be used to submit new proposals to the NNS. To prevent neurons from spamming proposals, a fee is charged to the neuron if their submitted proposal is rejected.
 
-[Learn more about neurons and their attributes](/docs/current/developer-docs/daos/nns/overview#neurons).
+[Learn more about neurons and their attributes](/docs/building-apps/governing-apps/nns/concepts/neurons/neuron-overview).
 
 ### Proposals
 
@@ -66,7 +66,7 @@ Each NNS proposal contains the following fields:
 
 - Unique identity: A unique identity value the NNS assigns to each proposal it receives.
 
-[View detailed information about different proposal types and topics](/docs/current/developer-docs/daos/nns/overview#topics).
+[View detailed information about different proposal types and topics](/docs/building-apps/governing-apps/nns/concepts/neurons/neuron-overview).
 
 ## Why is the NNS important to developers?
 
@@ -80,7 +80,7 @@ There are several reasons that all users and developers on ICP should be familia
 
 - Receiving ICP rewards that can be converted into cycles, which are necessary for mainnet canister deployments: Neurons that regularly vote on proposals receive rewards in the form of ICP tokens, which can be converted into cycles and then used to pay for a project's resources on the mainnet.
 
-- Gaining a comprehensive understanding of the NNS and SNSs, allowing you to envision creating an SNS for your project: By interacting with the NNS and the SNSs for different applications on ICP, developers can be inspired to turn their application into an SNS as well.
+- Gaining a comprehensive understanding of the NNS and SNSes, allowing you to envision creating an SNS for your project: By interacting with the NNS and the SNSes for different applications on ICP, developers can be inspired to turn their application into an SNS as well.
 
 ## What is an SNS?
 
@@ -88,11 +88,11 @@ A Service Nervous System (SNS) is an advanced form of a DAO. The underlying arch
 
 The dapp's community can participate in the dapp's SNS through staking the SNS's native token in a neuron. Then, changes to the dapp are proposed to the community via an SNS proposal. SNS voting rights use the same format that voting on the NNS does; anyone can stake the SNS's native token into a neuron, and the neuron's voting power is proportional to the quantity of SNS tokens staked within the neuron, the length of their dissolve delay, and the amount of time since the neuron was created.
 
-You can learn more about SNSs in the following resources:
+You can learn more about SNSes in the following resources:
 
 * [SNS overview page](https://internetcomputer.org/sns).
 
-* [Service Nervous System (SNS) developer docs](https://internetcomputer.org/docs/current/developer-docs/daos/sns/).
+* [Service Nervous System (SNS) developer docs](/docs/building-apps/governing-apps/overview).
 
 * [SNS FAQ](https://internetcomputer.org/sns/faq).
 
@@ -100,21 +100,21 @@ You can learn more about SNSs in the following resources:
 
 While the core architecture of an SNS resembles that of the NNS, the NNS contains additional canisters that provide important functionalities on ICP, such as the cycles minting canister that is responsible for creating cycles and the registry canister that contains the network's topology. In contrast, an SNS contains a few canisters that do not exist on the NNS, with the most notable canister being the swap canister used for a decentralization swap during the launch of the SNS.
 
-SNSs are provided as a system functionality. All SNS canister code is approved by the NNS community, and thus all SNSs follow the same upgrade path. Launching a new SNS is also approved by the NNS community, including the initial settings of the SNS and the conditions of the decentralization swap.
+SNSes are provided as a system functionality. All SNS canister code is approved by the NNS community, and thus all SNSes follow the same upgrade path. Launching a new SNS is also approved by the NNS community, including the initial settings of the SNS and the conditions of the decentralization swap.
 
 An SNS is comprised of the following canisters:
 
 - SNS governance canister.
 
-- SNS [ledger](/docs/current/developer-docs/daos/sns/launching/integrating) and archive canisters.
+- SNS [ledger](/docs/building-apps/governing-apps/launching/integrating) and archive canisters.
 
-- SNS [index](/docs/current/developer-docs/daos/sns/launching/integrating) canister.
+- SNS [index](/docs/building-apps/governing-apps/launching/integrating) canister.
 
 - SNS root canister.
 
 - SNS decentralization swap canister.
 
-[Learn more about SNS architecture](/docs/current/developer-docs/daos/sns/overview).
+[Learn more about SNS architecture](/docs/building-apps/governing-apps/overview).
 
 ### SNS decentralization swaps
 
@@ -128,42 +128,42 @@ The SNS places the collected ICP into an SNS-controlled treasury. After a succes
 
 You can learn more about SNS tokenomics and rewards in the following resources:
 
-* [SNS tokenomics](/docs/current/developer-docs/daos/sns/tokenomics/tokenomics-intro).
+* [SNS tokenomics](/docs/building-apps/governing-apps/tokenomics/tokenomics-intro).
 
-* [SNS rewards](/docs/current/developer-docs/daos/sns/tokenomics/rewards).
+* [SNS rewards](/docs/building-apps/governing-apps/tokenomics/rewards).
 
 ## SNS resources
 
 To learn more about creating, launching, and managing an SNS, refer to the following resources:
 
-* [SNS launch](/docs/current/developer-docs/daos/sns/launching/launch-summary-1proposal).
+* [SNS launch](/docs/building-apps/governing-apps/launching/launch-summary-1proposal).
 
-* [An introduction to SNS preparation](/docs/current/developer-docs/daos/sns/tokenomics/).
+* [An introduction to SNS preparation](/docs/building-apps/governing-apps/tokenomics/).
 
-* [The SNS launch checklist](/docs/current/developer-docs/daos/sns/tokenomics/sns-checklist).
+* [The SNS launch checklist](/docs/building-apps/governing-apps/tokenomics/sns-checklist).
 
-* [Pre-deployment considerations](/docs/current/developer-docs/daos/sns/tokenomics/predeployment-considerations).
+* [Pre-deployment considerations](/docs/building-apps/governing-apps/tokenomics/predeployment-considerations).
 
-* [SNS parameters](/docs/current/developer-docs/daos/sns/tokenomics/preparation).
+* [SNS parameters](/docs/building-apps/governing-apps/tokenomics/preparation).
 
-* [Guidelines on how to test an SNS locally](/docs/current/developer-docs/daos/sns/testing/testing-locally).
+* [Guidelines on how to test an SNS locally](/docs/building-apps/governing-apps/testing/testing-locally).
 
-* [Guidelines on how to test the operation of the dapp under SNS control](/docs/current/developer-docs/daos/sns/testing/testing-on-mainnet).
+* [Guidelines on how to test the operation of the dapp under SNS control](/docs/building-apps/governing-apps/testing/testing-on-mainnet).
 
-* [Stages included in an SNS launch](/docs/current/developer-docs/daos/sns/launching/launch-summary-1proposal).
+* [Stages included in an SNS launch](/docs/building-apps/governing-apps/launching/launch-summary-1proposal).
 
-* [SNS proposals](/docs/current/developer-docs/daos/sns/managing/making-proposals).
+* [SNS proposals](/docs/building-apps/governing-apps/managing/making-proposals).
 
-* [Tips regarding cycles management for the canisters](/docs/current/developer-docs/daos/sns/managing/cycles-usage).
+* [Tips regarding cycles management for the canisters](/docs/building-apps/governing-apps/managing/cycles-usage).
 
-* [An introduction to how to use the asset canister with an SNS-controlled dapp](/docs/current/developer-docs/daos/sns/managing/sns-asset-canister).
+* [An introduction to how to use the asset canister with an SNS-controlled dapp](/docs/building-apps/governing-apps/managing/sns-asset-canister).
 
 
 ## Using the NNS dapp
 
 To use the NNS dapp, first navigate to the dapp's URL at https://nns.ic0.app/.
 
-You will be prompted to log in with your Internet Identity. If you need to create one, check out the previous module [3.5 Identities and authentication](/docs/current/tutorials/developer-liftoff/level-3/3.5-identities-and-auth).
+You will be prompted to log in with your Internet Identity. If you need to create one, check out the previous module [3.5 Identities and authentication](/docs/tutorials/developer-liftoff/level-3/3.5-identities-and-auth).
 
 ![NNS login](../_attachments/nns0.png)
 
@@ -208,7 +208,7 @@ dfx ledger --network ic transfer 365cf45f3521653e866a078b157a8d8701c3f63183a6d41
 ```
 
 :::info
-`MEMO` refers to a 64-bit numeric value as defined in the [IC specification](/docs/current/references/ledger#_transferring_tokens). It is used to generate unique hash values for transactions.
+`MEMO` refers to a 64-bit numeric value as defined in the [IC specification](/docs/references/ledger#_transferring_tokens). It is used to generate unique hash values for transactions.
 :::
 
 ### Staking ICP in a neuron
@@ -261,7 +261,7 @@ From the neuron's detailed menu, you can execute actions such as increasing the 
 
 ![NNS dapp 13](../_attachments/nns13.png)
 
-If you scroll further, you can see advanced details and settings, such as when the neuron was created, its neuron account ID, and options to participate in the neurons' fund or split the neuron. [Learn more about these advanced options](/docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart).
+If you scroll further, you can see advanced details and settings, such as when the neuron was created, its neuron account ID, and options to participate in the neurons' fund or split the neuron. [Learn more about these advanced options](/docs/building-apps/governing-apps/nns/overview).
 
 ![NNS dapp 14](../_attachments/nns14.png)
 
@@ -279,7 +279,7 @@ If you click on one, however, you'll notice that you cannot vote on it. That's b
 
 ![NNS dapp 17](../_attachments/nns17.png)
 
-For additional information on the NNS dapp, proposals, and neuron staking, check out the [NNS quick start guide](/docs/current/developer-docs/daos/nns/using-the-nns-dapp/nns-app-quickstart) and the [NNS explained series](https://youtu.be/1uX-fRgvXjU?feature=shared).
+For additional information on the NNS dapp, proposals, and neuron staking, check out the [NNS quick start guide](/docs/building-apps/governing-apps/nns/using-the-nns-dapp/nns-app-quickstart) and the [NNS explained series](https://youtu.be/1uX-fRgvXjU?feature=shared).
 
 ## Need help?
 
@@ -287,7 +287,7 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
+- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -309,4 +309,4 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 Next, you'll dive into how to use the tool quill:
 
-- [4.5 Using quill](/docs/current/tutorials/developer-liftoff/level-4/4.5-using-quill).
+- [4.5 Using quill](/docs/tutorials/developer-liftoff/level-4/4.5-using-quill).

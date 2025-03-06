@@ -273,9 +273,9 @@ export const CardsSection = () => {
                 get into it
               </Link>
             </div>
-            <div className="absolute z-0 bottom-0  pointer-events-none">
+            <div className="absolute z-0 bottom-0 translate-x-[43%]  w-[70%] pointer-events-none">
               <img
-                src="img/home/roadmap-bg.webp"
+                src="img/home/roadmap-viz.svg"
                 className="object-cover size-full"
               />
             </div>

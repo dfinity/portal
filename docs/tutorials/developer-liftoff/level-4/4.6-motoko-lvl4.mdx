@@ -393,7 +393,7 @@ Notice that now the value of `c` is set to `init` rather than set to `0`, to ref
 
 ## Message inspection
 
-When a canister receives an ingress message submitted through HTTP, the canister can inspect and either accept or decline the message before executing it. For example, when a canister receives an update call, it uses the canister method `canister_inspect_message` to determine if the message will be accepted. If a canister does not contain a Wasm module, the message will be rejected automatically. If the canister is not empty, but it does not implement the `canister_inspect_message` method, then the ingress method will be accepted. `canister_inspect_message` is not used for HTTP query calls, inter-canister calls, and calls made to the management canister. Please make sure to get familiar with the [canister development security best practices](/docs/current/developer-docs/security/security-best-practices/iam/) before using this feature in production, because `canister_inspect_message` is not a secure way of implementing e.g. authorization checks.
+When a canister receives an ingress message submitted through HTTP, the canister can inspect and either accept or decline the message before executing it. For example, when a canister receives an update call, it uses the canister method `canister_inspect_message` to determine if the message will be accepted. If a canister does not contain a Wasm module, the message will be rejected automatically. If the canister is not empty, but it does not implement the `canister_inspect_message` method, then the ingress method will be accepted. `canister_inspect_message` is not used for HTTP query calls, inter-canister calls, and calls made to the management canister. Please make sure to get familiar with the [canister development security best practices](/docs/building-apps/security/iam#do-not-rely-on-ingress-message-inspection) before using this feature in production, because `canister_inspect_message` is not a secure way of implementing e.g. authorization checks.
 
 Message inspection is designed to mitigate some denial of service attacks, since it drains canisters of their cycles for placing unsolicited calls that are rejected.
 
@@ -560,7 +560,7 @@ actor {
 
 This call site returns more detailed errors, such as 'There is no todo with that ID,' or 'You've already completed this todo,' which is much more useful than 'Something went wrong.'
 
-[Learn more about working with `Option` and `Result` types](/docs/current/motoko/main/writing-motoko/errors#working-with-optionresult).
+[Learn more about working with `Option` and `Result` types](/docs/motoko/main/writing-motoko/errors#working-with-optionresult).
 
 ### Asynchronous errors
 
@@ -609,13 +609,13 @@ actor {
 
 ## Resources
 
-- [Motoko mutable state](/docs/current/motoko/main/writing-motoko/mutable-state).
+- [Motoko mutable state](/docs/motoko/main/writing-motoko/mutable-state).
 
-- [Motoko message inspection](/docs/current/motoko/main/writing-motoko/message-inspection).
+- [Motoko message inspection](/docs/motoko/main/writing-motoko/message-inspection).
 
-- [Local object classes](/docs/current/motoko/main/writing-motoko/local-objects-classes).
+- [Local object classes](/docs/motoko/main/writing-motoko/local-objects-classes).
 
-- [Motoko error handling](/docs/current/motoko/main/writing-motoko/errors).
+- [Motoko error handling](/docs/motoko/main/writing-motoko/errors).
 
 ## Need help?
 
@@ -623,7 +623,7 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
+- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -645,4 +645,4 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 That'll wrap up level 4 of the developer liftoff! Next, you'll dive into the final level, level 5:
 
-- [5.1 Developing an encrypted notes dapp with vetKD.](/docs/current/tutorials/developer-liftoff/level-5/5.1-vetKeys-tutorial)
+- [5.1 Developing an encrypted notes dapp with vetKD.](/docs/tutorials/developer-liftoff/level-5/5.1-vetKeys-tutorial)

@@ -1,0 +1,85 @@
+---
+keywords: [beginner, rust, tutorial, canister state, counter example, rust canister state]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+# Globally mutable states
+
+<MarkdownChipRow labels={["Beginner", "Rust"]} />
+
+By design, canisters on ICP are structured in a way that forces developers to use a global mutable state. However, Rust's design makes it difficult to use global mutable variables. This results in Rust developers needing to choose a method of code organization that takes ICP's design into consideration. This guide will cover a few of those code organization options.
+
+### Using `thread_local!` with `Cell/RefCell` for state variables
+
+Using `thread_local!` with `Cell/RefCell` is the safest option to avoid issues with asynchronous calls and memory corruption. The following is an example of how `thread_local!` can be used:
+
+```rust
+thread_local! {
+    static NEXT_USER_ID: Cell<u64> = Cell::new(0);
+    static ACTIVE_USERS: RefCell<UserMap> = RefCell::new(UserMap::new());
+}
+```
+
+### Canister code should be target-independent
+
+It pays off to factor most of the canister code into loosely coupled modules and packages and to test them independently. Most of the code that depends on the system API should go into the main file.
+
+It is also possible to create a thin abstraction for the system API and test your code with a fake but faithful implementation. For example, you could use the following trait to abstract the stable memory API:
+
+```rust
+pub trait Memory {
+    fn size(&self) -> WasmPages;
+    fn grow(&self, pages: WasmPages) -> WasmPages;
+    fn read(&self, offset: u32, dst: &mut [u8]);
+    fn write(&self, offset: u32, src: &[u8]);
+}
+```
+
+## Observability
+
+Metrics can be used to gain insight into a wide range of information regarding your canister's production services. This data is important to learn about your canister's statistics and productivity. The following metrics can be important to watch:
+
+- The size of the canister's stable memory.
+- The size of the canister's internal data structures
+- The sizes of objects allocated within the heap.
+- The date and time the canister was last upgraded.
+
+In Rust, you can expose a query call that returns a data structure containing your canister's metrics. If this data is not intended to be public, this query can be configured to be rejected based on the caller's principal. This approach provides a response that is structured and easy to parse.
+
+```rust
+pub struct MyMetrics {
+  pub stable_memory_size: u32,
+  pub allocated_bytes: u32,
+  pub my_user_map_size: u64,
+  pub last_upgraded_ts: u64,
+}
+#[query]
+fn metrics() -> MyMetrics {
+  check_acl();
+  MyMetrics {
+    // ...
+  }
+}
+```
+
+You can also expose the canister's metrics in a format that your monitoring system can ingest through the canister's HTTP gateway. For text-based exposition formats, the following example can be used:
+
+```rust
+fn http_request(req: HttpRequest) -> HttpResponse {
+  match path(&req) {
+    "/metrics" => HttpResponse {
+        status_code: 200,
+        body: format!("\
+stable_memory_bytes {}
+allocated_bytes {}
+registered_users_total {}",
+                      stable_memory_bytes, allocated_bytes, num_users),
+        // ...
+    }
+  }
+}
+```
+

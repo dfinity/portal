@@ -16,7 +16,7 @@ import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
 <iframe width="660" height="415" src="https://www.youtube.com/embed/OKbxWiA0QR8?si=hPUzZWR0PJ2XRCru" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe> </div>
 
 :::danger
-If you did not obtain cycles in the previous tutorial, [1.4 Acquiring and using cycles](/docs/current/tutorials/developer-liftoff/level-1/1.4-using-cycles), then you can skip this module and continue with the rest of the tutorial series.
+If you did not obtain cycles in the previous tutorial, [1.4 Acquiring and using cycles](/docs/tutorials/developer-liftoff/level-1/1.4-using-cycles), then you can skip this module and continue with the rest of the tutorial series.
 :::
 
 Now that you have some <GlossaryTooltip>cycles</GlossaryTooltip> to pay for your <GlossaryTooltip>canister</GlossaryTooltip>'s resources, you can deploy your dapp on the mainnet. When a canister is deployed to the mainnet, its code will be hosted on the nodes that make up one of the mainnet's subnets. The canister will be hosted on these nodes until it is manually uninstalled by the developer or until it runs out of cycles and is uninstalled automatically.
@@ -25,17 +25,17 @@ Once a dapp is deployed on the mainnet, it can be accessed from the canister's p
 
 ## Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/current/tutorials/developer-liftoff/level-0/dev-env).
+Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
 
-You will be building off of the previous two modules, [1.3 Developing your first dapp](/docs/current/tutorials/developer-liftoff/level-1/1.3-first-dapp) and [1.4 Acquiring and using cycles](/docs/current/tutorials/developer-liftoff/level-1/1.4-using-cycles). You will need to have followed along and completed the steps outlined in these modules to complete this tutorial.
+You will be building off of the previous two modules, [1.3 Developing your first dapp](/docs/tutorials/developer-liftoff/level-1/1.3-first-dapp) and [1.4 Acquiring and using cycles](/docs/tutorials/developer-liftoff/level-1/1.4-using-cycles). You will need to have followed along and completed the steps outlined in these modules to complete this tutorial.
 
 ## Deploying to the mainnet
 
 :::danger
-If you did not obtain cycles in the previous tutorial, [1.4 Acquiring and using cycles](/docs/current/tutorials/developer-liftoff/level-1/1.4-using-cycles), then you can skip this module and continue with the rest of the tutorial series.
+If you did not obtain cycles in the previous tutorial, [1.4 Acquiring and using cycles](/docs/tutorials/developer-liftoff/level-1/1.4-using-cycles), then you can skip this module and continue with the rest of the tutorial series.
 :::
 
-To deploy your dapp to the mainnet, first assure that your terminal window is open and you've navigated into the directory of your `poll` dapp that you created in module [1.3 Developing your first dapp](/docs/current/tutorials/developer-liftoff/level-1/1.3-first-dapp).
+To deploy your dapp to the mainnet, first assure that your terminal window is open and you've navigated into the directory of your `poll` dapp that you created in module [1.3 Developing your first dapp](/docs/tutorials/developer-liftoff/level-1/1.3-first-dapp).
 
 Then, ensure that all necessary packages are installed for the project's frontend with the command:
 
@@ -64,7 +64,7 @@ Now, you can deploy your dapp to the mainnet by running the following command:
 dfx deploy --network ic
 ```
 
-In this command, the `--network` flag specifies which network the dapp should be deployed on. Other options for this flag are `--network local` and `--network playground`. This tutorial series covered these in module [1.1: exploring a live demo](/docs/current/tutorials/developer-liftoff/level-1/1.1-live-demo).
+In this command, the `--network` flag specifies which network the dapp should be deployed on. Other options for this flag are `--network local` and `--network playground`. This tutorial series covered these in module [1.1: exploring a live demo](/docs/tutorials/developer-liftoff/level-1/1.1-live-demo).
 
 Using the flag `--network ic` is required to deploy your dapp on the mainnet. If this flag is not included, your dapp will only be deployed locally by default.
 
@@ -143,7 +143,7 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 - [Developer Discord](https://discord.internetcomputer.org), which is a large chatroom for ICP developers to ask questions, get help, or chat with other developers asynchronously via text chat.
 
-- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-liftoff-feedback-and-discussion/23893).
+- [Developer liftoff forum discussion](https://forum.dfinity.org/t/developer-journey-feedback-and-discussion/23893).
 
 - [Developer tooling working group](https://www.google.com/calendar/event?eid=MHY0cjBubmlnYXY1cTkzZzVzcmozb3ZjZm5fMjAyMzEwMDVUMTcwMDAwWiBjX2Nnb2VxOTE3cnBlYXA3dnNlM2lzMWhsMzEwQGc&ctz=Europe/Zurich).
 
@@ -163,4 +163,4 @@ Did you get stuck somewhere in this tutorial, or do you feel like you need addit
 
 Now that you have canisters running on the mainnet, the next steps are to learn how you can manage these canisters, such as how to upgrade them or delete them.
 
-- [1.6 Managing canisters](/docs/current/tutorials/developer-liftoff/level-1/1.6-managing-canisters)
+- [1.6 Managing canisters](/docs/tutorials/developer-liftoff/level-1/1.6-managing-canisters)

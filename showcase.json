@@ -5170,7 +5170,7 @@
     "display": "Normal"
   },
   {
-    "name": "Token Economy Operating System",
+    "name": "Coreledger",
     "logo": "/img/showcase/token_economy_operating_system_logo.png",
     "id": "coreledger",
     "tags": [
@@ -5181,7 +5181,7 @@
     "twitter": "https://x.com/CoreLedger",
     "usesInternetIdentity": true,
     "display": "Normal"
-  },
+  }, 
   {
     "id": "BlockID",
     "name": "BlockID",
@@ -5223,5 +5223,18 @@
     "description": "Alice is a DAO-governed AI agent that operates entirely on-chain, leveraging LLMs like DeepSeek for decision-making, integrating both static rules and dynamic, real-time data to enable intelligent and adaptable operations, autonomously managing token activities.",
     "usesInternetIdentity": false,
     "logo": "/img/showcase/alice-logo.webp"
+  },
+  {
+   "name": "FRYS",
+    "logo": "/img/showcase/friescoin_logo.jpg",
+    "id": "friescoin",
+    "tags": [
+      "NFT", 
+      "DeFi"
+    ],
+    "website": "https://friescoin.xyz/",
+    "description": "The world's first meme coin dedicated to fries enthusiasts everywhere.",
+    "twitter": "https://x.com/FriesCoin",
+    "usesInternetIdentity": false
   }
 ]
