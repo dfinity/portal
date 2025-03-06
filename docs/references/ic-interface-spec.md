@@ -592,11 +592,11 @@ The Internet Computer has two HTTPS APIs for canister calling:
 
 1.  A user submits a call via the [HTTPS Interface](#http-interface) and the call is received by a replica (a node belonging to an IC subnet). The receiving replica decides whether it accepts the call. An honest replica does so by checking that the target canister is not frozen and
 
-- checking that the canister is running and performing [ingress message inspection](#system-api-inspect-message) for calls to a regular canister;
+  - checking that the canister is running and performing [ingress message inspection](#system-api-inspect-message) for calls to a regular canister;
 
-- checking that the management canister method can be called via ingress messages and that the caller is a controller of the target canister (if applicable according to the [rules](#ic-management-canister)) for calls to the management canister.
+  - checking that the management canister method can be called via ingress messages and that the caller is a controller of the target canister (if applicable according to the [rules](#ic-management-canister)) for calls to the management canister.
 
-So far the corresponding IC subnet (as a whole) still behaves as if it does not know about the call.
+  So far the corresponding IC subnet (as a whole) still behaves as if it does not know about the call.
 
 2.  At some point, the IC subnet (as a whole) receives the call and sets its (certified) status to `received`. This transition can only happen before the target canister's time (as visible in the [state tree](#state-tree-time)) exceeds the [`ingress_expiry`](#http-call) field of the HTTP request which contained the call.
 
