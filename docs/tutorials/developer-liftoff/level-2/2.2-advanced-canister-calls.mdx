@@ -23,7 +23,7 @@ Let's first define the different types of canister calls and how they differ fro
 
 - **Update calls** are able to alter the canister's state. They are executed on all nodes of a subnet since the result must go through the subnet's consensus process. Update calls are submitted and answered asynchronously.
 
-- **Composite queries** are query calls that can call other queries (on the same subnet). They can only be invoked via [ingress messages](/docs/building-apps/essentials/message-execution) using `dfx` or through an agent such as a browser front-end, and not by other canisters.
+- **Composite queries** are query calls that can call other queries (on the same subnet). They can only be invoked via [ingress messages](/docs/building-apps/essentials/message-execution) using `dfx` or through an agent such as a browser front-end. They cannot be invoked by other canisters.
 
 - **Certified variables** are verifiable pieces of data that have an associated certificate that proves the data's authenticity. Certified variables are set using an update call, then read using a query call.
 
@@ -33,48 +33,51 @@ Let's first define the different types of canister calls and how they differ fro
 
 ## The ICP execution model
 
-To understand how different types of canister calls play a role on ICP, first let's take a look at ICP's execution model and how it is structured.
+To understand how different types of canister calls are executed on ICP, first let's take a look at ICP's execution model and how it is structured.
 
 At a high level, a canister is used to expose **methods**. A method is a piece of code specifying a task that declares a sequence of arguments and their associated result types. Methods return a response to the caller. Query calls, update calls, and other types of canister calls are used to call those methods to get a response.
 
-A single method can consist of multiple **message handlers**. A message handler is a piece of code that can change the canister's state by taking a message, such as a request or a response, and producing either a response or another request. Typically, message handlers are separated in code by the `await` keyword, which indicates that one message handler is to be executed at one time. That's because message handlers are executed **atomically**, or in isolation from one another. These are referred to as **atomic transactions**. No two message handlers within the same canister can be running at the same time. When a message handler starts executing, it receives exclusive access to the canister's memory until it finishes its execution. While no two message handlers can execute at the same time, two **methods** can execute at the same time.
+A single method can consist of multiple **message handlers**. A message handler is a piece of code that can change the canister's state by taking a message, such as a request or a response, and in return produce either a response or another request. In Motoko, message handlers are separated in code by the `await` keyword, which indicates that one message handler is to be executed at one time. That's because message handlers are executed **atomically**, or in isolation from one another.
 
-Want to take a deeper dive? Check out this [blog post](https://mynosefroze.com/blog/2023-08-09-tla_for_canisters) for an in-depth look at the ICP execution model.
+No two message handlers within the same canister can be running at the same time. When a message handler starts executing, it receives exclusive access to the canister's memory until it finishes its execution. While no two message handlers can execute at the same time, two **methods** can execute at the same time.
 
+Want to take a deeper dive? Check out an [in-depth look at the ICP execution model](https://mynosefroze.com/blog/2023-08-09-tla_for_canisters).
 
-## Canister query calls
+## Query calls
 
-Query calls are used to query the current state of a canister or make a call to a method that operates on the canister's state. Query calls do not make any changes to the canister's state, making them 'read-only' operations. Query calls can be made to any node that holds the canister, since the result does not go through consensus. When a query call is submitted, it is executed synchronously and answered as soon as it is received by the node. Query calls can also be used to retrieve data that is stored in a canister's [stable memory](/docs/tutorials/developer-liftoff/level-2/2.1-storage-persistence).
+Query calls are used to query the current state of a canister or make a call to a method that operates on the canister's state. Query calls do not make any changes to the canister's state, making them 'read-only' operations. Query calls can be made to any node that hosting the canister, since the result does not go through consensus. When a query call is submitted, it is executed synchronously and answered as soon as it is received by the node. Query calls can also be used to retrieve data that is stored in a canister's [stable memory](/docs/tutorials/developer-liftoff/level-2/2.1-storage-persistence).
 
-Query calls return results faster than update calls. Setting functions as query functions where appropriate can be an effective way to improve application performance. When designing your dapp, it is important to notice where query calls can be used in place of functions that perform queries. However, compared to update calls, the trade-off of a query call's increased performance is decreased security, since queries do not go through consensus and are not reflected in the transactions of the blockchain.
+Setting functions as query functions where appropriate can be an effective way to improve application performance, as query calls are returned faster than update calls. However, compared to update calls, the trade-off of a query call's increased performance is decreased security, since their response is not verified through consensus.
 
-The amount of security your dapp needs depends on your dapp's use case and functionality. For example, a blog dapp that uses a function to retrieve articles matching a tag doesn't need to have requests go through consensus and can benefit from using query calls. In contrast, a dapp that retrieves sensitive information, such as financial data, would greatly benefit from increased security and validation that the query result is accurate and secure. To return query results that are validated and secure, ICP supports **certified variables**, which you'll dive deeper into in a future module, [3.3: Certified variables](/docs/tutorials/developer-liftoff/level-3/3.3-certified-data).
+The amount of security your dapp needs depends on your dapp's use case and functionality. For example, a blog dapp that uses a function to retrieve articles matching a tag doesn't need to have requests go through consensus. In contrast, a dapp that retrieves sensitive information, such as financial data, would greatly benefit from increased security and validation that the call's response is accurate and secure. To return query results that are validated and secure, ICP supports **certified variables**, which you'll dive deeper into in a future module, [3.3: Certified variables](/docs/tutorials/developer-liftoff/level-3/3.3-certified-data).
 
 ### Example `query` call
 
-Queries are defined by the function modifier `query` in Motoko code. Below is a simple query call used with a `say` function. It queries the function's result and does not make any changes to the canister's state or data.
-
+Queries are defined by the function modifier `query` in Motoko. Below is a simple query call used with a query the current time from the network:
 
 ```motoko
-import Text "mo:base/Text";
+import Time "mo:base/Time";
 
-actor Echo {
+actor QueryCall {
 
-  public query func say(phrase : Text) : async Text {
-    return phrase;
-  };
+  public query func load() : async Int {
+    return Time.now();
+  };
+
 };
 ```
 
-## Canister update calls
+[View this example on ICP Ninja](https://icp.ninja/s/QzEkw).
 
-Update calls are used to alter the state of the canister. Any changes made with an update call are persisted. Update calls are submitted to all nodes on a subnet. This is because update calls must go through consensus on the subnet to return the result of the call. Since update calls must go through consensus, they are answered asynchronously.
+## Update calls
 
-In comparison to query calls, update calls have the opposite trade-off of performance and security: they have a higher security level since two-thirds of the replicas in a subnet must agree on the result, but the returning result takes longer since the consensus process must be completed before the result can be returned.
+Update calls are used to alter the state of the canister. Update calls are submitted to all nodes on a subnet and answered asynchronously. This is because update calls must go through consensus on the subnet to return the result of the call.
+
+In comparison to query calls, update calls have the opposite trade-off of performance and security: they have a higher security level since two-thirds of the replicas in a subnet must agree on the result, but returning the result takes longer since the consensus process must be completed first.
 
 ### Example update call
 
-Update calls are not defined with a function modifier in Motoko code such as query calls are. Below is a simple update call that counts the number of characters within the inputted string, updates the canister's state, then returns a `true` or `false` value if that number of characters is divisible by 2.
+Update calls are not defined with a function modifier in Motoko like query calls are. Below is a simple update call that counts the number of characters within the inputted string, updates the value of the variable `size`, then returns a `true` or `false` value if that number of characters is divisible by 2.
 
 ```motoko
 import Text "mo:base/Text";
@@ -88,50 +91,50 @@ actor countCharacters {
 };
 ```
 
+[View this example on ICP Ninja](https://icp.ninja/s/7G3pz).
+
 ## Certified variables
 
-Since query calls do not go through consensus, their response cannot be validated as being accurate or secure. To remedy this, certified variables can be used. Certified variables enable queries to return an authenticated response that can be verified and trusted.
+Certified variables enable queries to return an authenticated response that can be verified and trusted. They utilize **chain-key cryptography** to generate digital signatures that can then be validated using a single, permanent public key that belongs to ICP. The private key never exists in a single location; it is constantly distributed between many different nodes. Valid signatures can only be generated when the majority of the nodes storing the pieces of the private key participate in the signature generation process. This means an application can immediately validate all data stored in the certified variable without having to put trust into a particular node.
 
-Certified variables utilize **chain-key cryptography** to generate digital signatures that can then be validated using a single, permanent public key that belongs to ICP. This is a bit different from traditional signatures, since the private key never exists in a single location; it is constantly distributed between many different nodes. Valid signatures can only be generated when the majority of the nodes storing the pieces of the private key cooperate in a cryptographic protocol. Through this method, an application can immediately validate all data that is covered by the certified variable without having to put trust into the particular node that it received the query response from.
-
-Certification happens at the canister level. The certified variable of a canister can be set during an update call. Recall that an update call changes the canister's state and goes through consensus. When the certified variable is set, the certification can then be read in future query calls and return the certified variable in response to the query call in a trustworthy and secure manner.
+Certification happens at the canister level. A certified variable in a canister can be set using an update call. After the certified variable is set, its value and certification can then be read using query calls.
 
 You'll dive deeper into certified variables in a future module, [3.3: Certified variables](/docs/tutorials/developer-liftoff/level-3/3.3-certified-data).
 
 ## Composite queries
 
-A composite query call is a type of query that can only be invoked via an ingress message, such as one generated by an agent in a web browser, or through `dfx`. Composite queries allow a canister to call a query method of another canister using an ingress query.
+A composite query call is a type of query that can only be invoked via an ingress message, such as one generated by an agent in a web browser or through `dfx`. Composite queries allow a canister to call a query method of another canister using an ingress query.
 
 For example, imagine a project has one index canister and several storage canisters, with each storage canister representing a partition of the key-value stores. If a call is made that asks for a value from one of the storage canisters, composite queries allow the index canister to fetch the information from the correct canister. Without composite queries, the client would need to first query the index canister to get information about which storage canister they should call, then make a call to that canister directly themselves.
-
-:::info
-Composite queries are supported in `dfx` versions `v0.15.0 and newer`.
-:::
 
 If you want to dive a bit deeper, you can read more on the [developer blog](https://internetcomputer.org/blog/features/composite-query) or you can take a look at the [DFINITY example project using composite queries](https://github.com/dfinity/examples/tree/master/motoko/composite_query).
 
 
 ## Inter-canister calls
 
-Inter-canister calls refer to the ability to make calls between different canisters. This functionality is crucial for developers building complex dapps, as it enables you to benefit from using third-party canisters in your project or reusing dedicated functionality for several different services.
+Inter-canister calls are used to make calls between different canisters. This is crucial for developers building complex dapps, as it enables you to use third-party canisters in your project or reuse functionality for several different services.
 
-For example, consider a scenario where you want to create a social media dapp that includes functionality for organizing events and making posts. The dapp might include social profiles for each user. When creating this dapp, you may create a single canister for storing these social profiles, then another canister that addresses event organization, and a third canister that handles social posts. By isolating the social profiles into one canister, you can create endless canisters that make calls to the social profile canister, allowing your dapp to continue to scale.
+For example, consider a scenario where you want to create a social media dapp that includes the ability to organize events and make posts. The dapp might include social profiles for each user. When creating this dapp, you may create a single canister for storing the social profiles, then another canister that addresses event organization, and a third canister that handles social posts. By isolating the social profiles into one canister, you can create endless canisters that make calls to the social profile canister, allowing your dapp to continue to scale.
 
-### Using inter-canister calls
+## Using inter-canister calls
 
-To demonstrate this inter-canister call functionality, you're going to use an example known as a 'PubSub.' In this example, you have two canisters: a **publisher** and a **subscriber**. In this setup, the 'Subscriber' canister sends an inter-canister call to the 'Publisher' canister that indicates it would like to subscribe to a 'topic,' which is a key-value pair in this example of type '`Text`: `Nat`.' Then, the 'Publisher' canister can publish information to that topic, in this example the value associated with the topic's key. Let's take a closer look.
+In this example, you have two canisters: a **publisher** and a **subscriber**. The 'Subscriber' canister sends an inter-canister call to the 'Publisher' canister that indicates it would like to subscribe to a 'topic,' which is a key-value pair. Then, the 'Publisher' canister can publish information to that topic, notifying the subscriber of the published information.
 
 ### Prerequisites
 
-Before you start, verify that you have set up your developer environment according to the instructions in [0.3 Developer environment setup](/docs/tutorials/developer-liftoff/level-0/dev-env).
+:::caution
+This example is currently not available in ICP Ninja and must be run locally with `dfx`.
+:::
+
+Before you start, verify that you have set up your developer environment according to the instructions in [1.2 Developer environment setup](/docs/tutorials/developer-liftoff/level-1/1.2-dev-env).
 
 ### Creating a new project
 
-To get started, you'll be cloning the DFINITY example repo, which contains this tutorial's example, plus several others. You'll be using the `motoko/pub-sub` folder. Open a terminal window, navigate into your working directory (`developer_liftoff`), then use the commands:
+To get started, you'll be cloning the DFINITY example repo, which contains this tutorial's example plus several others. You'll be using the `motoko/pub-sub` folder. Open a terminal window, navigate into your working directory (`developer_liftoff`), then use the commands:
 
 ```bash
 dfx start --clean --background
-git clone https://github.com/dfinity/examples/
+git clone
 cd examples/motoko/pub-sub
 ```
 
@@ -150,10 +153,9 @@ Let's take a look at the project's files:
 
 ### Writing a `publisher` canister
 
-You'll notice that this project structure is a bit different from the ones you've used thus far on the Developer Liftoff. Since this project uses two backend canisters for its functionality, there aren't `src` folders for a backend or frontend canister, just two folders for each backend canister.
+You'll notice that this project structure is a bit different from the ones you've used thus far in this series. Since this project uses two backend canisters for its functionality, there aren't `src` folders for a backend or frontend canister, just two folders for each backend canister.
 
 Now let's take a closer look at the `Main.mo` file for our 'Publisher' canister. The code can be found below with comments that explain the code's logic:
-
 
 ```motoko title="src/pub/Main.mo"
 import List "mo:base/List";
@@ -232,19 +234,21 @@ actor Subscriber {
 }
 ```
 
-Next, let's use the canisters and demonstrate their functionality. First, deploy the canisters with the command:
+### Deploying the project
+
+Let's use the canisters and demonstrate their functionality. First, deploy the canisters with the command:
 
 ```bash
 dfx deploy
 ```
 
-Then, let's call the Subscriber canister to create and subscribe to the topic 'Astronauts.' You can do that with the command:
+Then, call the Subscriber canister to create and subscribe to the topic 'Astronauts.' You can do that with the command:
 
 ```bash
 dfx canister call sub init '("Astronauts")'
 ```
 
-Now, you can publish a value to be associated with the 'Astronauts' topic. Remember that the 'value' data type is defined as type `Nat`, so this value must be a number.
+Now, you can publish a value to be associated with the 'Astronauts' topic. Remember that the 'value' data type is defined as type `Nat`, so this value must be a positive number, as `Nat` does not support negative numbers.
 
 ```bash
 dfx canister call pub publish '(record { "topic" = "Astronauts"; "value" = 5 })'
@@ -265,9 +269,3 @@ The output should resemble the following:
 import TutorialFooter from "@site/src/components/TutorialFooter/";
 
 <TutorialFooter />
-
-## Next steps
-
-Next, let's dive into using third-party canisters.
-
-- [2.3 Using third-party canisters](/docs/tutorials/developer-liftoff/level-2/2.3-third-party-canisters).
