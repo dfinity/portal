@@ -13,9 +13,9 @@ import '/src/components/CenterImages/center.scss';
 
 The Chain Fusion starter project combines several key features of ICP in one boilerplate template. It focuses on ICP's Ethereum and EVM integration through the EVM RPC canister and demonstrates how ICP canisters can be used as coprocessors to process events emitted by smart contracts deployed on an EVM chain.
 
-ICP canister smart contracts can read information from EVM smart contracts in a secure manner through [HTTPS outcalls](https://internetcomputer.org/https-outcalls) or using the [EVM RPC](https://internetcomputer.org/docs/current/developer-docs/multi-chain/ethereum/evm-rpc/overview) canister. Then, to submit transactions to and write to other chains, ICP uses chain-key signatures, i.e., [Threshold ECDSA](https://internetcomputer.org/docs/current/developer-docs/smart-contracts/signatures/t-ecdsa).
+ICP canister smart contracts can read information from EVM smart contracts in a secure manner through [HTTPS outcalls](https://internetcomputer.org/https-outcalls) or using the [EVM RPC](/docs/building-apps/chain-fusion/ethereum/evm-rpc/overview) canister. Then, to submit transactions to and write to other chains, ICP uses chain-key signatures, i.e., [Threshold ECDSA](/docs/building-apps/network-features/signatures/t-ecdsa).
 
-These features eliminate the need for a bridge or other third-party to relay messages between ICP and another network. No extra work is needed from the EVM chain, either, as the EVM smart contract only needs to verify that the sender is correct.
+These features eliminate the need for a bridge or other third party to relay messages between ICP and another network. No extra work is needed from the EVM chain, either, as the EVM smart contract only needs to verify that the sender is correct.
 
 ![Chain Fusion starter](./_attachments/chain-fusion-starter.png)
 
@@ -35,7 +35,7 @@ This project uses two canisters:
 
 If you are installing this project locally, download and install the following tools:
 
--   [dfx](/docs/current/developer-docs/getting-started/install/) `>= 0.18`
+-   [dfx](/docs/building-apps/getting-started/install) `>= 0.18`
 -   [Node.js](https://nodejs.org/en/) `>= 21`
 -   [Foundry](https://github.com/foundry-rs/foundry)
 -   [Caddy](https://caddyserver.com/docs/install#install)
@@ -46,7 +46,8 @@ To deploy this project, the simplest way is to use GitHub Codespaces or a Develo
 
 [GitHub Codespaces](https://codespaces.new/letmejustputthishere/chain-fusion-starter/?quickstart=1) is a cloud-based option, whereas a [Dev Container](https://vscode.dev/redirect?url=vscode://ms-vscode-remote.remote-containers/cloneInVolume?url=https://github.com/letmejustputthishere/chain-fusion-starter) relies on Docker and VS Code being installed locally.
 
-Alternatively, you can run the project locally by installing the dependencies above, then running the following commands:
+Alternatively, you can run the project locally by installing the dependencies above and then running the following commands:
+Alternatively, you can run the project locally by installing the dependencies above and then running the following commands:
 
 ```
 git clone https://github.com/letmejustputthishere/chain-fusion-starter.git
@@ -60,7 +61,8 @@ The `deploy.sh` script starts the `anvil` and `dfx` processes, deploys the EVM s
 
 ## Creating an NFT collection
 
-Another boilerplate project is the `icrc7_nft` project, which uses Motoko and Mops packages to deploy an NFT collection using the ICRC-3, ICRC-7, and ICRC-37 standards, and a single canister called `icrc7` that deploys the collection.
+Another boilerplate project is the `icrc7_nft` project, which uses Motoko and Mops packages to deploy an NFT collection using the ICRC-3, ICRC-7, and ICRC-37 standards and a single canister called `icrc7` that deploys the collection.
+Another boilerplate project is the `icrc7_nft` project, which uses Motoko and Mops packages to deploy an NFT collection using the ICRC-3, ICRC-7, and ICRC-37 standards and a single canister called `icrc7` that deploys the collection.
 
 - ICRC-3: The standard for transaction logs and archives.
 
@@ -72,11 +74,12 @@ Another boilerplate project is the `icrc7_nft` project, which uses Motoko and Mo
 
 If you are installing this project locally, download and install the following tools:
 
--   [dfx](/docs/current/developer-docs/getting-started/install/) `>= 0.18`
+-   [dfx](/docs/building-apps/getting-started/install) `>= 0.18`
 
 ## Download the project
 
-Setup the project locally by running the following commands:
+Set up the project locally by running the following commands:
+Set up the project locally by running the following commands:
 
 ```
 git clone https://github.com/PanIndustrial-Org/icrc_nft.mo/tree/main
@@ -112,4 +115,4 @@ The commands used for each action can be found in the `example/deploy.sh` script
 
 ## Next steps
 
-- [10: Resources to learn more](/docs/current/tutorials/hackathon-prep-course/resources).
+- [10: Resources to learn more](/docs/tutorials/hackathon-prep-course/resources).

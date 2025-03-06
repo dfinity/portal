@@ -3,9 +3,8 @@ name = "search"
 version = "0.1.0"
 edition = "2021"
 
-
 [dependencies]
-rust-stemmers = "*"
-regex = "*"
-serde = { version = "1.0.152", features = ["derive"] }
+rust-stemmers = "1.2.0"
+regex = "1.10.2"
+serde = { version = "1.0.193", features = ["derive"] }
 candid = "0.8.4"

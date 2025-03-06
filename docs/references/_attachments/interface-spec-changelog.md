@@ -1,5 +1,18 @@
 ## Changelog {#changelog}
 
+### 0.33.0 (2025-02-12) {#0_33_0}
+* New system API `ic0.subnet_self_size` and `ic0.subnet_self_copy`.
+
+### 0.32.0 (2025-01-23) {#0_32_0}
+* Allow accepting and burning cycles in replicated queries.
+
+### 0.31.0 (2025-01-09) {#0_31_0}
+* Add support for Schnorr auxiliary inputs
+
+### 0.30.0 (2024-11-19) {#0_30_0}
+* Add management canister endpoint `subnet_info`.
+* Support for wasm64: 64-bit system API.
+
 ### 0.29.0 (2024-11-14) {#0_29_0}
 * Allow anonymous query and read state requests with invalid `ingress_expiry`.
 * Add allowed viewers variant to canister log visibility.

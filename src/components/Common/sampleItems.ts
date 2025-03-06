@@ -76,7 +76,7 @@ export const sampleItems: SampleItem[] = [
     body: "IC-ETH verifies ETH NFTs, supports main/test nets.",
     links: {
       github: "https://github.com/dfinity/ic-eth-starter",
-      docs: "/docs/current/tutorials/developer-journey/level-5/5.2-ICP-ETH-tutorial",
+      docs: "/docs/tutorials/developer-liftoff/level-5/5.2-ICP-ETH-tutorial",
       youtube: "https://www.youtube.com/watch?v=ZI5I36aioVw",
     },
   },
@@ -246,7 +246,7 @@ export const sampleItems: SampleItem[] = [
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/threshold-ecdsa",
       rust: "https://github.com/dfinity/examples/tree/master/rust/threshold-ecdsa",
-      docs: "/docs/current/references/t-sigs-how-it-works/",
+      docs: "/docs/references/t-sigs-how-it-works/",
     },
   },
   {
@@ -265,7 +265,7 @@ export const sampleItems: SampleItem[] = [
       },
       motoko:
         "https://github.com/dfinity/examples/tree/master/motoko/send_http_get",
-      docs: "docs/current/developer-docs/smart-contracts/advanced-features/https-outcalls/https-outcalls-how-to-use",
+      docs: "/docs/building-apps/network-features/using-http/https-outcalls/overview",
       rust: "https://github.com/dfinity/examples/tree/master/rust/send_http_get",
     },
   },
@@ -286,7 +286,7 @@ export const sampleItems: SampleItem[] = [
       motoko: "https://github.com/dfinity/examples/tree/master/motoko/hello",
       rust: "https://github.com/dfinity/examples/tree/master/rust/hello",
       livePreview: "https://6lqbm-ryaaa-aaaai-qibsa-cai.ic0.app/",
-      docs: "/docs/current/references/samples/hosting/static-website/",
+      docs: "/docs/references/samples/hosting/static-website/",
     },
   },
   {
@@ -420,7 +420,7 @@ export const sampleItems: SampleItem[] = [
     contentType: ["documentation"],
     body: "Demonstrates how to deploy a web game on the IC.",
     links: {
-      docs: "/docs/current/references/samples/hosting/unity-webgl-template/",
+      docs: "/docs/references/samples/hosting/unity-webgl-template/",
     },
   },
   {

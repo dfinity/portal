@@ -15,7 +15,7 @@ export function DevDocsBreadcrumbs() {
       .filter(Boolean)
       .map((part) => {
         return {
-          href: withBaseUrl(`docs/current/${part}`),
+          href: withBaseUrl(`docs/${part}`),
           label: part.replace(/\W|\s+/g, " "),
         };
       });

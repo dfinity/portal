@@ -8,11 +8,11 @@ import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
 
 <MarkdownChipRow labels={["Concept"]} />
 
-## Overview
+
 
 A subnet on ICP is a collection of interacting replicas that run their own, separate instance of the ICP consensus mechanism, effectively creating their own blockchain on which a set of canisters can run. Each subnet can communicate with other subnets and is controlled by a root subnet. The root subnet uses chain-key cryptography to delegate its authority to the various subnets.
 
-You can learn more about subnets and how they work [here](/docs/current/references/subnets/overview).
+You can learn more about subnets and how they work [here](/docs/building-apps/developing-canisters/create).
 
 There are four types of subnets: system, application, fiduciary, and the European subnet.
 
@@ -24,7 +24,7 @@ Application subnets are the most common type of subnet on ICP. Almost all canist
 
 System subnets are reserved for running canisters that provide a system functionality to ICP, such as the NNS canisters. System subnets may have special configurations, such as not charging cycles to any of the canisters running on the subnet since system canisters need to be available at all times. System subnets also have a more generous per-call instruction limit and a more generous Wasm module size limit.
 
-The subnet [`uzr34`](https://dashboard.internetcomputer.org/subnet/uzr34-akd3s-xrdag-3ql62-ocgoh-ld2ao-tamcv-54e7j-krwgb-2gm4z-oqe) is a system subnet that contains 28 nodes. It hosts the canisters for [Internet Identity](/docs/current/developer-docs/identity/internet-identity/overview), the [cycles ledger](/docs/current/developer-docs/defi/cycles/cycles-ledger), the [exchange rate canister](/docs/current/developer-docs/defi/exchange-rate-canister/) and dashboard, and stores the backup threshold signature keys.
+The subnet [`uzr34`](https://dashboard.internetcomputer.org/subnet/uzr34-akd3s-xrdag-3ql62-ocgoh-ld2ao-tamcv-54e7j-krwgb-2gm4z-oqe) is a system subnet that contains 28 nodes. It hosts the canisters for [Internet Identity](/docs/building-apps/authentication/overview), the [cycles ledger](/docs/defi/token-ledgers/cycles-ledger), the [exchange rate canister](/docs/references/system-canisters/) and dashboard, and stores the backup threshold signature keys.
 
 ## Fiduciary subnets
 
@@ -88,7 +88,7 @@ You can check the current balance for that principal by running the command:
 dfx ledger --network ic balance
 ```
 
-To top up your principal's balance, you can send cycles to the principal using the [NNS dapp](https://nns.ic0.app/wallet/), or [learn how to convert ICP tokens into cycles](/docs/current/tutorials/developer-journey/level-1/1.4-using-cycles#converting-icp-tokens-to-cycles).
+To top up your principal's balance, you can send cycles to the principal using the [NNS dapp](https://nns.ic0.app/wallet/), or [learn how to convert ICP tokens into cycles](/docs/tutorials/developer-liftoff/level-1/1.4-using-cycles#converting-icp-tokens-to-cycles).
 
 ### Creating a cycles wallet
 
@@ -106,7 +106,7 @@ It is recommended to use the cycles ledger instead, which does not require any s
 
 Replace `CONTROLLER` with the principal ID that you took note of earlier after running the `dfx identity get-principal` command.
 
-Adjust the `--amount 0.5` to the number of ICP tokens that you want to send the new canister. More information can be found in the [documentation](/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/dfx-ledger/#options).
+Adjust the `--amount 0.5` to the number of ICP tokens that you want to send the new canister. More information can be found in the [documentation](/docs/building-apps/developer-tools/dfx/dfx-ledger/#options).
 
 This command will return a canister ID. Using that canister ID, you can deploy the wallet canister code to the new canister with the command:
 

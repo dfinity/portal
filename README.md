@@ -3,7 +3,7 @@
 # ICP developer portal
 
 The ICP developer portal brings together all the resources needed for developers to build on the
-Internet Computer. Primarily, this repo hosts the [ICP Developer Docs](https://internetcomputer.org/docs/current/home) but also includes the [Ecosystem Project Showcase](https://internetcomputer.org/ecosystem), [community tooling page](https://internetcomputer.org/tooling), and the internetcomputer.org ['How it works'](https://internetcomputer.org/how-it-works) series.
+Internet Computer. Primarily, this repo hosts the [ICP Developer Docs](https://internetcomputer.org/docs/home) but also includes the [Ecosystem Project Showcase](https://internetcomputer.org/ecosystem), [community tooling page](https://internetcomputer.org/tooling), and the internetcomputer.org ['How it works'](https://internetcomputer.org/how-it-works) series.
 
 The ICP developer portal uses [Docusaurus](https://docusaurus.io/docs).
 
@@ -13,60 +13,87 @@ The ICP developer portal uses [Docusaurus](https://docusaurus.io/docs).
 
 ```
 docs
-├── concepts
-├── developer-docs
-│   ├── backend // programming language documentation
-│   │   ├── motoko
-│   │   ├── rust
-│   │   ├── python
-│   │   ├── solidity
-│   │   ├── typescript
-│   ├── daos // NNS & SNS documentation
-│   │   ├── nns
-│   │   ├── sns
-│   ├── defi // token and defi documentation
-│   │   ├── asset-custody
-│   │   ├── icp-tokens
-│   │   ├── icrc-1
-│   │   ├── nfts
-│   │   ├── rosetta
-│   ├── developer-tools // CLI tools, IDEs, CDKs, and agent documentation
-│   │   ├── cli-tools
-│   │   ├── ide
-│   │   ├── off-chain
-│   │   ├── on-chain
-│   ├── getting-started // introductory onboarding documentation
-│   │   ├── cycles
-│   │   ├── deploy
-│   │   ├── install
-│   │   ├── quickstart
-│   ├── multi-chain // multi-chain integration documentation
+├── building-apps
+│   ├── advanced // advanced development workflows
+│   │   ├── optimize
+│   │   ├── test
+│   │   ├── benchmarking
+│   │   ├── using-third-party-canisters
+│   ├── authentication // integrate internet identity & alternative origins
+│   │   ├── alternative-origins
+│   │   ├── integrate-internet-identity
+│   ├── best-practices // developer best practices
+│   ├── canister-management // canister management and settings
+│   │   ├── backtraces
+│   │   ├── control
+│   │   ├── cycles-wallet
+│   │   ├── delete
+│   │   ├── history
+│   │   ├── logs
+│   │   ├── resource-limits
+│   │   ├── settings
+│   │   ├── snapshots
+│   │   ├── state
+│   │   ├── storage
+│   │   ├── topping-up
+│   │   ├── trapping
+│   │   ├── upgrade
+│   ├── chain-fusion
 │   │   ├── bitcoin
 │   │   ├── ethereum
-│   ├── security
-│   ├── smart-contracts // canister documentation
-│   │   ├── advanced-features
-│   │   ├── best-practices
-│   │   ├── call
-│   │   ├── candid
-│   │   ├── deploy
-│   │   ├── encryption
-│   │   ├── maintain
-│   │   ├── overview
-│   │   ├── test
-│   │   ├── topping-up
-│   │   ├── write
-│   ├── web-apps // frontend and web app documentation
-│   │   ├── application-frontends
-│   │   ├── browser-js
+│   │   ├── examples
+│   │   ├── supported-chains
+│   ├── developer-tools
+│   │   ├── advanced-dfx
+│   │   ├── cdks
+│   │   ├── dfx
+│   │   ├── dfxvm
+│   │   ├── dfx-json-reference
+│   │   ├── dfx.json
+│   │   ├── icp-ninja
+│   ├── essentials
+│   ├── frontends
 │   │   ├── custom-domains
-│   │   ├── frameworks
-│   │   ├── http-compatible-canisters
-│   │   ├── user-login
+│   │   ├── asset-security
+│   │   ├── existing-frontend
+│   │   ├── uploading-serving-assets
+│   │   ├── using-an-asset-canister
+│   ├── getting-started
+│   ├── governing-apps
+│   │   ├── nns
+│   │   ├── launching
+│   │   ├── managing
+│   │   ├── testing
+│   │   ├── tokenomics
+│   ├── interact-with-canisters
+│   │   ├── agents
+│   │   ├── candid
+│   │   ├── advanced-calls
+│   │   ├── query-calls
+│   │   ├── update-calls
+│   ├── network-features
+│   │   ├── encryption
+│   │   ├── signatures
+│   │   ├── using-http
+│   │   ├── verifiable-credentials
+│   │   ├── periodic-tasks-timers
+│   │   ├── randomness
+│   │   ├── simd
+│   │   ├── time-and-timestamps
+│   ├── security
+├── defi
+│   ├── chain-key-tokens
+│   ├── rosetta
+│   ├── token-indexes
+│   ├── token-integrations
+│   ├── token-ledgers
+│   ├── token-standards
+│   ├── create
+│   ├── nft-collections
 ├── motoko // Motoko documentation - submodule
 ├── references // reference documentation
 ├── samples // sample projects - submodule
-├── tutorials // tutorial series (developer ladder, hackathon prep course, etc).
+├── tutorials // tutorial series (developer liftoff, hackathon prep course, etc).
 ```
 
 # Contributing to the Dev Docs
@@ -78,7 +105,7 @@ docs
 - Must include [document tags](#document-tags).
 - Must include [SEO keywords](#seo-keywords).
 - Must be in `.mdx` file format to support the previous two components.
-- Must be registered in [`/sidebars.js`](https://github.com/dfinity/portal/blob/master/sidebars.js), otherwise, it will not appear in the
+- Must be registered in [`sidebars.js`](https://github.com/dfinity/portal/blob/master/sidebars.js), otherwise, it will not appear in the
   side navigation bar.
 - Make sure that the [`.github/CODEOWNERS`](https://github.com/dfinity/portal/blob/master/.github/CODEOWNERS) file is
   filled with new documents that you added. This way we can ensure that future Pull Requests are reviewed by the right people.
@@ -142,11 +169,6 @@ This audience should be kept in mind when writing docs. For example:
 ### Documentation types
 The structure and content of the documentation page will vary based on the document type. Some common types are:
 
-#### Overview
-An overview of a documentation section or broad concept of ICP. When creating an overview page that discusses the capabilities of ICP, the benefits and attributes of the possible capabilities should be written about, not only the currently implemented workflows. For example, instead of writing about the currently implemented Bitcoin and Ethereum integrations, the [Chain Fusion overview](/docs/current/developer-docs/multi-chain/overview) page discusses ICP’s cross-chain functionalities and benefits on a much broader scale beyond the two current integrations.
-
-For overview pages, using bullet point lists to describe specific benefits or features of ICP is recommended.
-
 #### Feature or tool detail page
 A page that details a specific tool or feature. Feature or tool pages should provide a deeper explanation of a specific feature or tool, why a developer should use it, and how they can use it. It should describe the currently implemented workflows the feature/tool supports, and should not include details of conceptual ideas that are not currently live for developers to use (future roadmap items, possible improvements in the future, etc.)
 
@@ -155,7 +177,7 @@ Concept pages describe in more detail a specific concept of ICP. Concept pages s
 Concept pages should remain simple and high-level without providing unnecessary, in-depth details. Readers should be able to quickly understand the technology and its benefits, convincing them to continue learning more and begin developing using the technology.
 
 #### Tutorial
-A tutorial uses a step-by-step format to walk a user through a specific workflow. The Developer Ladder is an example of a tutorial series.
+A tutorial uses a step-by-step format to walk a user through a specific workflow. The Developer Liftoff is an example of a tutorial series.
 
 #### Reference
 A reference page provides low level detail into a feature or technology. API reference pages are an example that provide in-depth detail about different endpoints and methods. Some examples include:
@@ -163,11 +185,11 @@ A reference page provides low level detail into a feature or technology. API ref
 ### Content
 Link to resources that go into further detail and provide a brief summary of the concepts within the doc. Some places that may include further details may include additional information:
 
-- The [reference technology overview](https://internetcomputer.org/docs/current/references/bitcoin-how-it-works) pages
+- The [reference technology overview](/docs/references/bitcoin-how-it-works) pages
 
 - The [how it works](https://internetcomputer.org/how-it-works) section of the website
 
-- The [core concepts](https://internetcomputer.org/docs/current/concepts/canisters-code) section of the docs
+- The [core concepts](/docs/building-apps/essentials/canisters) section of the docs
 
 Try to answer the following questions within the document:
 
@@ -376,39 +398,31 @@ Failing to do so will break the code that auto-populates the Tooltip with the ap
 
 The developer docs utilize submodules for several subfolders of documentation. To edit these pages, changes must be made in the submodule's repo and merged into that repo. Then you must open a PR in this repo that pulls the latest submodule updates to apply the changes.
 
-The following submoules and their corresponding repos are currently used:
+The following submodules and their corresponding repos are currently used:
 
 - SDK
-    - `/docs/current/developer-docs/developer-tools/cli-tools/cli-reference/`
+    - `/docs/building-apps/developer-tools/dfx/`
     - GitHub Repo: https://github.com/dfinity/sdk.git
 
 - Motoko
-    - `/docs/current/motoko/main/base/`
+    - `/docs/motoko/main/base/`
     - GitHub Repo: https://github.com/dfinity/motoko.git
 
-- quill
-    - `/docs/current/developer-docs/developer-tools/cli-tools/quill`
-    - GitHub Repo: https://github.com/dfinity/quill.git
-
 - Internet Identity
-    - `/docs/current/references/ii-spec`
+    - `/docs/references/ii-spec`
 	- GitHub Repo: https://github.com/dfinity/internet-identity.git
 
-- Interface Spec
-    - `/docs/current/references/ic-interface-spec `
-    - GitHub Repo: https://github.com/dfinity/interface-spec.git
-
 - Sample projects
-    - `/docs/current/references/samples`
+    - `/docs/references/samples`
     - GitHub Repo: https://github.com/dfinity/examples.git
     - Note: This submodule intentionally uses `.md` files instead of `.mdx` files. Therefore, these pages do not support components such as tags and tooltips.
 
 - dfxvm
-    - `/docs/current/developer-docs/developer-tools/cli-tools/dfxvm/docs/cli-reference/dfx/`
+    - `/docs/building-apps/developer-tools/dfxvm/dfx/`
     - GitHub Repo: https://github.com/dfinity/dfxvm.git
 
 - Response verification
-    - `/docs/current/developer-docs/web-apps/http-compatible-canisters/custom-http-canisters`
+    - `/docs/building-apps/network-features/using-http/http-certification/`
     - GitHub Repo: https://github.com/dfinity/response-verification
 
 ### Updating submodules
@@ -547,14 +561,13 @@ The `.subpage.md` files will each generate a subpage under `/how-it-works/`, bas
 
 ## Adding documentation for community-created agents and CDKs
 
-The [agents](https://internetcomputer.org/docs/current/developer-docs/build/agents)
-and [CDKs](https://internetcomputer.org/docs/current/developer-docs/build/cdks) sections should not only contain docs
+The [agents](/docs/building-apps/interact-with-canisters/agents/overview)
+and [CDKs](/docs/building-apps/developer-tools/cdks/index) sections should not only contain docs
 for DFINITY-created agents and CDKs.
 We therefore invite other projects to:
 
 - Link to their own agents or CDKs on the respective index pages (the files to be edited are
-  in `docs/developer-docs/build/agents/index.md` or `docs/developer-docs/smart-contracts/write/overview.mdx`).
-- Add their own documentation as a folder under `Agents` or `CDKs`.
+  in `/docs/building-apps/interact-with-canisters/agents/overview` or `/docs/building-apps/developer-tools/cdks/index.md`).
 
 ## Adding community-created developer tools
 
@@ -592,37 +605,37 @@ The [Ecosystem Helper](https://mvw4g-yiaaa-aaaam-abnva-cai.icp0.io/) is an oncha
 
 ### Asset guidelines
 
-| Asset       |          | Requirements | Format       | Notes                                                                             |
-|-------------|----------|--------------|--------------|-----------------------------------------------------------------------------------|
-| logo        | required | 112x112px    | webp/svg/png | Currently displayed 56x56px                                                       |
-| screenshots | optional | 1024x576px   | webp/jpg     | The schema supports multiple files, but only the first one will be displayed      |
-| video       | optional | max 10MB     | webm/mp4     | If there is a video file specified, it will be displayed instead of a screenshot. |
+| Asset       |          | Requirements                    | Format                    | Notes                                                                                  |
+|-------------|----------|---------------------------------|---------------------------|----------------------------------------------------------------------------------------|
+| logo        | required | 112x112px (1:1 aspect ratio)    | svg(recommended)/png/webp | Optimize file size with [SVGOMG](https://svgomg.net) or [TinyPNG](https://tinypng.com) |
+| screenshots | optional | 1024x576px                      | webp/jpg                  | The schema supports multiple files, but only the first one will be displayed           |
+| video       | optional | max 10MB                        | webm/mp4                  | If there is a video file specified, it will be displayed instead of a screenshot.      |
 
 ### Tags
 
 The list of tags is not final, and will be updated as the project evolves. For now, the following tags are available:
 
-- `Wallet`
+- `Chain Fusion`
 - `Bitcoin`
-- `NFT`
-- `SocialFi`
 - `DeFi`
-- `Games`
-- `DAO`
-- `Metaverse`
+- `Wallet`
+- `AI`
+- `Gaming`
+- `Creator Economy`
+- `Enterprise`
+- `Analytics`
 - `Tools / Infrastructure`
 
 ### Object schema
 
-```
+```json
   {
     id: string,
     name: string,
-    oneLiner: string, // short description of the project
     website: string, // URL starting with `https://`
 
-    tags: ('Wallet' | 'Bitcoin' | 'NFT' | 'SocialFi' | 'DeFi' | 'Games' | 'DAO' | 'Metaverse' | 'Tools / Infrastructure')[],
-    description: string, // description of the project
+    tags: ( `Chain Fusion` | `Bitcoin` | `DeFi` | `Wallet` | `AI` | `Gaming` | `Creator Economy` | `Enterprise` |`Analytics` | `Tools / Infrastructure`)[],
+    description: string, // description of the project - up to 150 characters
     stats: string, // eg. "10,000 users"
     logo: string, // url to logo file, eg. /img/showcase/awesome-icp-project_logo.webp
 

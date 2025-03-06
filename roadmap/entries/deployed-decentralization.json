@@ -66,7 +66,7 @@
       "overview": "Custom domain names for canisters on ICP. DNS entry of domain redirects to boundary nodes.",
       "forum": "https://forum.dfinity.org/t/custom-domains-for-ic0-app-community-consideration/6162",
       "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
-      "docs": "https://internetcomputer.org/docs/current/developer-docs/production/custom-domain/",
+      "docs": "https://internetcomputer.org/docs/building-apps/frontends/custom-domains/using-custom-domains",
       "eta": "February 2023",
       "status": "deployed",
       "is_community": true,
@@ -118,6 +118,87 @@
       "status": "deployed",
       "is_community": false,
       "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Alerting of Node Providers in case of Node Failure",
+      "overview": "Alert Node Providers if one of their nodes starts misbehaving or underperforming.",
+      "forum": "",
+      "proposal": "",
+      "docs": "https://wiki.internetcomputer.org/wiki/Node_Provider_Alerting_Options",
+      "eta": "",
+      "status": "deployed",
+      "is_community": true,
+      "in_beta": false,
+      "imported": true
+    },
+    {
+      "title": "Public access to a subset of node metrics",
+      "overview": "Giving node providers access to a subset of node metrics to help them find out in a fully decentralized manner whether nodes are behaving well, and to roughly compare node performance.",
+      "forum": "https://forum.dfinity.org/t/public-internet-computer-ic-node-metrics-available-now/32961",
+      "proposal": "",
+      "docs": "https://github.com/dfinity/ic-observability-stack",
+      "eta": "",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false
+    },
+    {
+      "title": "API Boundary Nodes (NNS controlled)",
+      "overview": "In the new boundary-node architecture, API boundary nodes are placed under the full control of the NNS and function as the edge of the IC.",
+      "status": "deployed",
+      "forum": "https://forum.dfinity.org/t/boundary-node-roadmap/15562",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
+      "docs": "https://github.com/dfinity/ic/tree/master/rs/boundary_node/ic_boundary",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Solenoid"
+    },
+    {
+      "title": "Edge Infrastructure is Fully Decentralized",
+      "is_milestone": true,
+      "description": "ICP is accessible through a decentralized edge infrastructure, which is split into NNS-controlled API Boundary Nodes and HTTP Gateways. The NNS will appoint node machines to run API Boundary Nodes and anyone will be able to run HTTP Gateways, enabling a much more decentralized ICP edge infrastructure with a diverse set of service providers.",
+      "milestone_id": "Solenoid",
+      "status": "deployed",
+      "eta": "Q1 2025",
+      "eta_to_render": "January 2025"
+    },
+    {
+      "title": "Community-owned HTTP Gateways",
+      "overview": "As part of the new boundary-node architecture, the HTTP gateway is turned into a standalone service, which is easily deployable by anyone, including end users.",
+      "forum": "https://forum.dfinity.org/t/boundary-node-roadmap/15562",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
+      "docs": "https://github.com/dfinity/ic-gateway",
+      "eta": "",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Solenoid"
+    },
+    {
+      "title": "Incident Handling under the New Boundary Node Architecture",
+      "overview": "To protect the core of the Internet Computer, processes must be established to configure temporary rate limits at API boundary nodes during incidents.",
+      "forum": "https://forum.dfinity.org/t/incident-handling-with-the-new-boundary-node-architecture/36390",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/134031",
+      "docs": "",
+      "eta": "",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Solenoid",
+      "imported": true
+    },
+    {
+      "title": "HTTP Gateways",
+      "overview": "The HTTP Gateway becomes a standalone component as part of the new Boundary Node architecture.",
+      "forum": "https://forum.dfinity.org/t/boundary-node-roadmap/15562",
+      "proposal": "https://dashboard.internetcomputer.org/proposal/35671",
+      "docs": "",
+      "eta": "",
+      "status": "deployed",
+      "is_community": false,
+      "in_beta": false,
+      "milestone_id": "Solenoid",
       "imported": true
     }
   ]
