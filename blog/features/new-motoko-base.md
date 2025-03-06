@@ -11,7 +11,7 @@ image: /img/blog/new-motoko-base.jpg
 
 * [Developer forum topic](https://forum.dfinity.org/t/motoko-base-library-changes/39766)
 * [GitHub repository](https://github.com/dfinity/new-motoko-base)
-* [ICP Ninja starter project](https://icp.ninja/s/kwKkw)
+* [Online starter project](https://icp.ninja/s/kwKkw)
 
 The Motoko team is excited to announce a major overhaul of the Motoko base library! Our goal is to improve the consistency and usability of Motoko’s standard library, making it easier for both humans and AI to read and write Motoko canisters.
 
@@ -57,7 +57,7 @@ Check out [this article](https://learn.microsoft.com/en-us/dotnet/standard/linq/
 
 We chose implementations with good all-round performance, deferring specialized implementations to the [Mops](https://mops.one/) package ecosystem. We also updated function names for consistency and familiarity from other languages such as JS, Python, Java, and Rust.
 
-Below is an example of using the new imperative `List` module, derived from the [`vector`](https://mops.one/vector) Mops package (big thanks to [MR Research AG](https://github.com/research-ag)):
+Below is an example of using the new imperative `List` module, derived from the [`vector`](https://mops.one/vector) Mops package (big thanks to [Andrii Stepanov and Timo Hanke](https://github.com/research-ag)):
 
 ```motoko no-repl
 import List "mo:base/List";
@@ -104,7 +104,7 @@ import Array "mo:base/Array";
 persistent actor {
   let map = Map.empty<Text, Nat>();
   Map.add(map, Text.compare, "key", 123);
-  Map.size(map) == 1;
+  assert Map.size(map) == 1;
   Array.fromIter(Map.entries(map)) == [("key", 123)];
 }
 ```
@@ -230,7 +230,7 @@ actor {
 }
 ```
 
-Now, you can use pseudo-random number generation, adapted from the [`prng`](https://mops.one/prng) Mops package (big thanks to [MR Research AG](https://github.com/research-ag)):
+Now, you can use pseudo-random number generation, adapted from the [`prng`](https://mops.one/prng) Mops package (big thanks to [Andrii Stepanov and Timo Hanke](https://github.com/research-ag)):
 
 ```motoko no-repl
 import Random "mo:base/Random";
