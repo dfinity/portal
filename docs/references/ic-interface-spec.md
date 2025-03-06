@@ -592,23 +592,25 @@ The Internet Computer has two HTTPS APIs for canister calling:
 
 1.  A user submits a call via the [HTTPS Interface](#http-interface) and the call is received by a replica (a node belonging to an IC subnet). The receiving replica decides whether it accepts the call. An honest replica does so by checking that the target canister is not frozen and
 
-  - checking that the canister is running and performing [ingress message inspection](#system-api-inspect-message) for calls to a regular canister;
+  - checking that the target canister is not empty and running and performing [ingress message inspection](#system-api-inspect-message) for calls to a regular canister;
 
-  - checking that the management canister method can be called via ingress messages and that the caller is a controller of the target canister (if applicable according to the [rules](#ic-management-canister)) for calls to the management canister.
+  - checking that the management canister method can be called via ingress messages and that the caller is a controller of the target canister for calls to the management canister.
 
   So far the corresponding IC subnet (as a whole) still behaves as if it does not know about the call.
 
-2.  At some point, the IC subnet (as a whole) receives the call and sets its (certified) status to `received`. This transition can only happen before the target canister's time (as visible in the [state tree](#state-tree-time)) exceeds the [`ingress_expiry`](#http-call) field of the HTTP request which contained the call.
+  At some point, the IC subnet (as a whole) receives the call and sets its (certified) status to `received`. This transition can only happen before the target canister's time (as visible in the [state tree](#state-tree-time)) exceeds the [`ingress_expiry`](#http-call) field of the HTTP request which contained the call.
 
-3.  Once the IC starts processing the call, its (certified) status is set to `processing`. Now the user has the guarantee that the call will have some effect.
+  The above steps are formalized in this [transition](#api-request-submission).
 
-4.  The IC is processing the call. For some calls this may be atomic, for others this involves multiple steps.
+2.  Once the IC starts processing the call, its (certified) status is set to `processing`. Now the user has the guarantee that the call will have some effect.
 
-5.  Eventually, a response is produced and available in the (certified) [state tree](#state-tree-time) from which it can be retrieved for a certain amount of time. The response is either a `reply`, indicating success, or a `reject`, indicating some form of error.
+3.  The IC is processing the call. For some calls this may be atomic, for others this involves multiple steps.
 
-6.  In case of high load on the IC, even if the call has not expired yet, the IC can forget the response data and only remember the call as `done`, to prevent a replay attack.
+4.  Eventually, a response is produced and available in the (certified) [state tree](#state-tree-time) from which it can be retrieved for a certain amount of time. The response is either a `reply`, indicating success, or a `reject`, indicating some form of error.
 
-7.  Once the call's expiry time has passed, the IC can remove the call and its response from the (certified) [state tree](#state-tree-time) and thus completely forget about it.
+5.  In case of high load on the IC, even if the call has not expired yet, the IC can forget the response data and only remember the call as `done`, to prevent a replay attack.
+
+6.  Once the call's expiry time has passed, the IC can remove the call and its response from the (certified) [state tree](#state-tree-time) and thus completely forget about it.
 
 This yields the following interaction diagram:
 ```plantuml
@@ -3732,15 +3734,21 @@ is_effective_canister_id(Request {canister_id = ic_principal, method = install_c
 is_effective_canister_id(Request {canister_id = ic_principal, arg = candid({canister_id = p, …}), …}, p)
 is_effective_canister_id(Request {canister_id = p, …}, p), if p ≠ ic_principal
 ```
-#### API Request submission
 
-After a node accepts a request via `/api/v2/canister/<ECID>/call` or `/api/v3/canister/<ECID>/call`, the request gets added to the IC state as `Received`.
+#### API Request submission {#api-request-submission}
 
-This may only happen if the signature is valid and is created with a correct key. Due to this check, the envelope is discarded after this point.
+After a replica (i.e., a node belonging to an IC subnet) receives a call in an HTTP request to `/api/v2/canister/<ECID>/call` or `/api/v3/canister/<ECID>/call`
+and if the replica accepts the call and subsequently the IC subnet (as a whole) receives the call, then the call gets added to the IC state as `Received`.
 
-Requests that have expired are dropped here.
+This can only happen if the target canister is not frozen and
 
-Ingress message inspection is applied, and messages that are not accepted by the canister are dropped.
+- the target canister is not empty and running and ingress message inspection succeeds for calls to a regular canister;
+
+- the management canister method can be called via ingress messages and the caller is a controller of the target canister for calls to the management canister.
+
+Moreover, the signature must be valid and created with a correct key. Due to this check, the envelope is discarded after this point.
+
+Finally, the target canister's time must not have exceeded the `ingress_expiry` field of the HTTP request containing the call.
 
 Submitted request
 `E : Envelope`
@@ -3754,6 +3762,7 @@ E.content.canister_id ∈ verify_envelope(E, E.content.sender, S.system_time)
 E.content ∉ dom(S.requests)
 S.system_time <= E.content.ingress_expiry
 is_effective_canister_id(E.content, ECID)
+liquid_balance(S, E.content.canister_id) ≥ 0
 ( E.content.canister_id = ic_principal
   E.content.arg = candid({canister_id = CanisterId, …})
   E.content.sender ∈ S.controllers[CanisterId]
@@ -3789,7 +3798,6 @@ is_effective_canister_id(E.content, ECID)
     status = simple_status(S.canister_status[E.content.canister_id]);
     canister_version = S.canister_version[E.content.canister_id];
   }
-  liquid_balance(S, E.content.canister_id) ≥ 0
   S.canisters[E.content.canister_id].module.inspect_message
     (E.content.method_name, S.canisters[E.content.canister_id].wasm_state, E.content.arg, E.content.sender, Env) = Return {status = Accept;}
 )
