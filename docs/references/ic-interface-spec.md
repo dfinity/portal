@@ -1128,7 +1128,7 @@ The symbolic names of this enumeration are used throughout this specification, b
 
 The error message is guaranteed to be a string, i.e. not arbitrary binary data.
 
-When canisters explicitly reject a message (see [Public methods](#system-api-requests)), they can specify the reject message, but *not* the reject code; it is always `CANISTER_REJECT`. In this sense, the reject code is trustworthy: If the IC responds with a `SYS_FATAL` reject, then it really was the IC issuing this reject.
+When canisters explicitly reject a message (see [Public methods](#system-api-requests)), they can specify the reject message, but *not* the reject code; it is always `CANISTER_REJECT`. In this sense, the reject code is trustworthy: the reject code is always fixed by the protocol, i.e., the canister cannot freely specify the reject code.
 
 ### Error codes {#error-codes}
 
