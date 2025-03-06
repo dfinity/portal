@@ -97,27 +97,27 @@ persistent actor {
 We also included an efficient [stable BTree map implementation](https://github.com/canscale/StableHeapBTreeMap) (big thanks to [Byron Becker](https://github.com/ByronBecker)):
 
 ```motoko no-repl
-import PureMap "mo:base/pure/Map";
+import Map "mo:base/Map";
 import Text "mo:base/Text";
 import Array "mo:base/Array";
 
 persistent actor {
-  var map = PureMap.empty<Text, Nat>();
-  map := PureMap.add(map, Text.compare, "key", 123);
-  assert PureMap.size(map) == 1;
-  assert Array.fromIter(PureMap.entries(map)) == [("key", 123)];
+  let map = Map.empty<Text, Nat>();
+  Map.add(map, Text.compare, "key", 123);
+  Map.size(map) == 1;
+  Array.fromIter(Map.entries(map)) == [("key", 123)];
 }
 ```
 
 Here's the complete list of data structures in the new base library:
 
 * `List` (adapted from [`vector`](https://mops.one/vector) Mops package)
-* `Map`
+* `Map` (adapted from [`StableHeapBTreeMap`](https://mops.one/stableheapbtreemap) Mops package)
 * `Queue`
 * `Set`
 * `Stack`
 * `pure/List`
-* `pure/Map` (adapted from [`StableHeapBTreeMap`](https://mops.one/stableheapbtreemap) Mops package)
+* `pure/Map`
 * `pure/Queue`
 * `pure/Set`
 
