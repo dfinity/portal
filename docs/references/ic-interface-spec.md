@@ -606,11 +606,11 @@ The Internet Computer has two HTTPS APIs for canister calling:
 
 3.  The IC is processing the call. For some calls this may be atomic, for others this involves multiple steps.
 
-4.  Eventually, a response is produced and available in the (certified) [state tree](#state-tree-time) from which it can be retrieved for a certain amount of time. The response is either a `reply`, indicating success, or a `reject`, indicating some form of error.
+4.  Eventually, a response is produced and available in the (certified) [state tree](#state-tree-request-status) from which it can be retrieved for a certain amount of time. The response is either a `reply`, indicating success, or a `reject`, indicating some form of error.
 
 5.  In case of high load on the IC, even if the call has not expired yet, the IC can forget the response data and only remember the call as `done`, to prevent a replay attack.
 
-6.  Once the call's expiry time has passed, the IC can remove the call and its response from the (certified) [state tree](#state-tree-time) and thus completely forget about it.
+6.  Once the call's expiry time has passed, the IC can remove the call and its response from the (certified) [state tree](#state-tree-request-status) and thus completely forget about it.
 
 This yields the following interaction diagram:
 ```plantuml
