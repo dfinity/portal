@@ -54,7 +54,22 @@ import TabItem from "@theme/TabItem";
 
 <MarkdownChipRow labels={["label1", "label2", "label3"]} />
 
-Introduce the feature or tool. What is it? Give a brief overview of how it works, but keep it very high level. Embed links to additional documents that explain the in-depth concepts if applicable or necessary.
+Introduce the feature or tool. What is it? Give a brief overview of how it works, but keep it very high level. Link to additional documents that explain the in-depth concepts behind it (if they exist).
+
+## Prerequisites
+
+Optional; only necessary for documents that require prerequisite conditions or parameters be met.
+
+List all dependencies that the developer will need to download or setup in order to use the feature. The most common prerequisite is downloading dfx. Please link to the dfx installation page.
+
+<Tabs>
+<TabItem value="prereq" label="Prerequisites" default>
+
+Before you start, verify that you have:
+<input type="checkbox"/> <a href="/docs/building-apps/getting-started/install">Install the IC SDK.</a>
+
+</TabItem>
+</Tabs>
 
 ## Topic 1
 
@@ -74,7 +89,7 @@ Insert prerequisites using the following format:
 
 Before you start, verify that you have:
 
-<input type="checkbox"/> <a href="/docs/current/developer-docs/getting-started/install">Install the IC SDK.</a>
+<input type="checkbox"/> <a href="/docs/building-apps//getting-started/install">Install the IC SDK.</a>
 
 </TabItem>
 
@@ -193,7 +208,7 @@ For guides or tutorials that include a prerequisites section that contains tasks
 
 Before you start, verify that you have:
 
-<input type="checkbox"/> <a href="/docs/current/developer-docs/getting-started/install">Install the IC SDK.</a>
+<input type="checkbox"/> <a href="/docs/building-apps//getting-started/install">Install the IC SDK.</a>
 
 </TabItem>
 
@@ -532,20 +547,8 @@ Links that are referenced within the developer docs should use the following for
 ## Code snippets and code blocks
 
 The following format should be used for code snippets and code blocks:
-
-- All code snippets or code blocks should reference the original source of the code if possible.
-
-    - Code sourced from the @dfinity/examples repo can be referenced by its submodule file path:
-
-        > motoko title="src/PROJECT_NAME_backend/main.mo" file=../../references/samples/motoko/counter/src/Main.mo#L5-L9
-
-    - Code sourced from an external GitHub repo can be referenced via the full GitHub URL:
-
-        > rust title="src/PROJECT_NAME_backend/src/lib.rs" reference https://github.com/letmejustputthishere/icp-evm-coprocessor-starter/blob/main/canisters/chain_fusion/src/lib.rs
-
-- In-line code references to commands, language-specific methods, or other code-related terms should be emphasized using in-line code expressions:
-
-    - To install code in a canister, the `install_code` method of the management canister is used.
+- In-line code references to commands, language specific methods, or other code-related terms should be emphasized using in-line code expressions such as:
+    - To install code in a canister, the `install_code` function of the Internet Computer is used.
     - For example, the function `canister_init` is the first function that gets called after the code is installed for the first time.
 
 - When a code-specific value, such as the name of a method, variable, integer, or data type, is being referenced, the capitalization used within the code or the language's reference documentation should be followed.

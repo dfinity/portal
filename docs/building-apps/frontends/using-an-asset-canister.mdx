@@ -1,0 +1,143 @@
+---
+keywords: [beginner, concept, frontend, asset canister, assets, frontend canister templates, how asset canisters work, rust asset canister, raw HTTP interfaces]
+---
+
+import { MarkdownChipRow } from "/src/components/Chip/MarkdownChipRow";
+import { GlossaryTooltip } from "/src/components/Tooltip/GlossaryTooltip";
+
+# Application frontends
+
+<MarkdownChipRow labels={["Beginner", "Asset canisters"]} />
+
+Applications often employ a frontend interface, which displays elements like a dashboard, account page, media player, or other assets in the web browser, to facilitate user interaction. These assets may be in the form of HTML, JavaScript, or CSS, or use frontend frameworks like React.
+
+Application frontends are hosted on ICP using **asset canisters**. Asset canisters compile frontend assets like CSS and JavaScript into a Wasm module that can be deployed on ICP as a <GlossaryTooltip>canister</GlossaryTooltip>.
+
+The terms 'asset canister' and 'frontend canister' are sometimes used interchangeably. **Asset** canister is typically used to describe the Rust code `dfx` uses in the background to compile a project's frontend assets into Wasm. **Frontend** canister is typically used as a general term to describe a project's frontend.
+
+Application frontends exist in the following forms:
+
+- A frontend canister that communicates with backend canister(s) to provide a full-stack dapp.
+
+- Backend canisters that communicate with an external frontend application that isn't hosted on ICP. To facilitate this communication, [the ICP JavaScript agent](/docs/building-apps/interact-with-canisters/agents/javascript-agent) can be used. [Learn more about the JS request API](/docs/building-apps/interact-with-canisters/agents/javascript-agent).
+
+- A frontend canister that doesn't communicate with any backend canisters and only provides web assets.
+
+The typical development workflow for creating an application frontend is:
+
+1. The developer writes frontend code such as HTML, JS, or CSS.
+
+2. The developer configures their `dfx.json` file to include a frontend canister with type "assets".
+
+3. The developer deploys the project. `dfx` will compile the frontend asset files into an asset canister.
+
+4. Users open the application in the browser by navigating to the URL `https://<canister-id>.icp0.io` or a [custom domain](/docs/building-apps/frontends/custom-domains/using-custom-domains) if one has been registered for the canister.
+
+5. The canister serves the web assets to the browser via its `http_request` endpoint that gets invoked for each HTTP request.
+
+6. When the JS code runs in the browser, it can call the backend canister endpoints using the [ICP JavaScript agent](/docs/building-apps/interact-with-canisters/agents/javascript-agent) library, which is analogous to `web3.js` and `ethers.js` of Ethereum.
+
+### Limitations
+Server-side rendering (SSR) does not work in canisters because they require JS code that is not built into canisters.
+In the future, this might become possible with Azle. Until then, if SSR is required, then one solution is to host the frontend outside of ICP while keeping the core logic in the backend canister.
+
+## How asset canisters work
+
+To host web assets, a canister must implement a method that accepts and consumes an HTTP request, including the URL, HTTP method, and header data. Then, it must return an HTTP response, including the request status, header data, and body content. This method can return HTML, CSS, and JavaScript content in the HTTP response.
+
+To configure a canister to implement these methods, a canister must be defined in a project's `dfx.json` file as `"type": "asset"`. This parameter instructs `dfx` to compile the canister using boilerplate code to facilitate these HTTP requests. This boilerplate code is written in Rust, which is then compiled into a WebAssembly module that can be installed in a canister.
+
+## Frontend canister templates
+
+All projects created with [`dfx new`](/docs/building-apps/developer-tools/dfx/dfx-new) have the option to include a template frontend canister containing code using one of the following frameworks: SvelteKit, React, Vue, or Vanilla JS. These templates are available in `dfx` versions 0.17.0 and newer.
+
+For asset canisters created by `dfx new`, the default configuration will resemble the following:
+
+```json
+{
+  "canisters": {
+    "hello_backend": {
+      "main": "src/hello_backend/main.mo",
+      "type": "motoko"
+    },
+    "hello_frontend": {
+      "dependencies": [
+        "hello_backend"
+      ],
+      "source": [
+        "src/hello_frontend/dist"
+      ],
+      "type": "assets",
+      "workspace": "hello_frontend"
+    }
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}
+```
+
+In this configuration, the following parameters are notable:
+
+- `"source": [ "src/hello_frontend/dist" ]`: The default subdirectories containing asset files. For assets to be served in the frontend canister, their directories must be included in this `source` list.
+
+- `"type": "assets"`: Defines the canister type as `assets` and instructs `dfx` to compile the canister as such.
+
+## Limitations
+
+A frontend canister can host roughly 1GiB in static files. It is recommended that you distribute your files across multiple canisters if the total size of all your assets begins to exceed this amount. Once you exceed this figure, your canister may fail to upgrade.
+
+## Application URLs
+
+Frontend canisters serve the application's web assets via a URL that contains the canister ID. Local deployments use local URLs such as `http://127.0.0.1:4943/?canisterId=<canister-id>`, while applications deployed to the mainnet use public URLs containing the canister's ID followed by `.ic0.app`, `.icp0.io`, or `raw.icp0.io`.
+
+### Raw HTTP interfaces
+
+The `raw.icp0.io` domain provides a way to access the raw HTTP interface of that canister. For local deployments that want to simulate the behavior of the `raw.icp0.io` domain, you must implement a method in your canister that consumes an HTTP request and outputs an HTTP response. Here is an example written in Motoko:
+
+```motoko no-repl
+public shared(msg) func http_request(req: HttpRequest) : async HttpResponse {
+    {
+        status = { code = 200; reason = "OK" };
+        headers = [( "Content-Type", "text/plain" )];
+        body = Text.encodeUtf8("Hello, World!");
+    }
+};
+```
+
+### Dynamic URLs
+
+Dynamic URLs are currently not supported by the default frontend canister.
+
+If a developer would like to support dynamic URLs, custom logic can be implemented using [third-party options](https://crates.io/crates/ic-pluto).
+
+## 404 pages and aliasing
+
+You can use the `ic-http-certification` Rust crate for serving 404 pages or configuring redirects through the crate's wildcard function, such as:
+
+```rust
+use ic_http_certification::HttpCertificationPath;
+
+let path = HttpCertificationPath::wildcard("/js");
+```
+
+404 pages can only be served as raw content currently.
+
+[Learn more about the HTTP certification library](/docs/building-apps/network-features/using-http/http-certification/serving-static-assets-over-http).
+
+## Resources
+
+- [Asset canister architecture reference](/docs/references/asset-canister).
+
+- Using [raw HTML and JavaScript](/docs/motoko/main/getting-started/motoko-introduction) to display a simple HTML entry page.
+
+- [Vite + React + Motoko](https://github.com/rvanasa/vite-react-motoko) template example.
+
+- [Vite + SvelteKit + Motoko](https://github.com/letmejustputthishere/vite-sveltekit-motoko-ii/tree/main) template example.
+
+- Deploying an [existing Next.js application](/docs/building-apps/frontends/existing-frontend) as a frontend canister.

@@ -176,7 +176,7 @@ For the rest of the workloads, the results oscillate +/-20% around the old instr
 
 The new instrumentation is implemented and rolled out on all the mainnet subnets and development environments (`dfx` v0.15+).
 
-## References
+## Resources
 - Documentation: [WebAssembly on ICP](https://internetcomputer.org/capabilities/webassembly).
 
 - Blog post: [WebAssembly on the Internet Computer](https://medium.com/dfinity/webassembly-on-the-internet-computer-a1d0c71c5b94).
