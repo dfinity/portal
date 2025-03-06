@@ -1485,6 +1485,7 @@ defaulting to `I = i32` if the canister declares no memory.
     ic0.call_with_best_effort_response : (timeout_seconds : i32) -> ();                   // U CQ Ry Rt CRy CRt T
     ic0.call_cycles_add128 : (amount_high : i64, amount_low: i64) -> ();                  // U Ry Rt T
     ic0.call_perform : () -> ( err_code : i32 );                                          // U CQ Ry Rt CRy CRt T
+
     ic0.stable64_size : () -> (page_count : i64);                                         // * s
     ic0.stable64_grow : (new_pages : i64) -> (old_page_count : i64);                      // * s
     ic0.stable64_write : (offset : i64, src : i64, size : i64) -> ();                     // * s
@@ -1604,7 +1605,7 @@ The canister can access an argument. For `canister_init`, `canister_post_upgrade
 
     The deadline, in nanoseconds since 1970-01-01, after which the caller might stop waiting for a response.
 
-    For update methods and their callbacks, if the method was called via an inter-canister call with a best-effort response the deadline is computed based on the time the call was made, and the `timeout_seconds` parameter provided by the caller. For other calls (including ingress messages and all calls to query and composite query methods, including calls in replicated mode) a deadline of 0 is returned.
+    For update methods and their callbacks, if the method was called via a bounded-wait inter-canister call the deadline is computed based on the time the call was made, and the `timeout_seconds` parameter provided by the caller. For other calls (including ingress messages and all calls to query and composite query methods, including calls in replicated mode) a deadline of 0 is returned.
 
 ### Responding {#responding}
 
@@ -1740,7 +1741,7 @@ There must be at most one call to `ic0.call_on_cleanup` between `ic0.call_new` a
 
 -   `ic0.call_with_best_effort_response : (timeout_seconds : i32) -> ()`
 
-    Turns the call into a bounded-wait call, by relaxing the response delivery guarantee to be best effort, and asking the system to respond at the latest after `timeout_seconds` have elapsed. Best effort means the system may also respond with a `SYS_UNKNOWN` reject code, signifying that the call **may or may not** have been processed by the callee. Then, even if the callee produces a response, it will not be delivered to the caller.
+    Turns the call into a *bounded-wait call*, by relaxing the response delivery guarantee to be best effort, and asking the system to respond at the latest after `timeout_seconds` have elapsed. Best effort means the system may also respond with a `SYS_UNKNOWN` reject code, signifying that the call **may or may not** have been processed by the callee. Then, even if the callee produces a response, it will not be delivered to the caller.
 
     Any value for `timeout_seconds` is permitted, but is silently bounded from above by the `MAX_CALL_TIMEOUT` system constant; i.e., larger timeouts are treated as equivalent to `MAX_CALL_TIMEOUT` and do not cause an error. The implementation may add a specific [error code](#error-codes) to a reject message to indicate the cause, in particular whether the timeout expired. Note that the reject callback may be executed (possibly significantly) later than the specified time (e.g., if the caller is under high load), or before timeout expiration (e.g., if the system is under load).
 
@@ -4342,9 +4343,11 @@ S.messages =
 
 #### Call expiry {#call-expiry}
 
-These transitions expire calls with best-effort responses. The transition can be taken before the specified call deadline (e.g., due to high system load), and we thus ignore the caller time in these transitions. We define two variants of the transition, one that expires messages, and one that expires calls that are in progress (i.e., have open downstream call contexts).
+These transitions expire bounded-wait calls. The transition can be taken before the specified call deadline (e.g., due to high system load), and we thus ignore the caller time in these transitions. We define two variants of the transition, one that expires messages, and one that expires calls that are in progress (i.e., have open downstream call contexts).
 
 The first transition defines the expiry of messages.
+
+Condition:
 
 ```html
 S.messages = Older_messages · M · Younger_messages
@@ -4353,7 +4356,8 @@ M.origin = FromCanister O
 O.deadline = timestamp
 ```
 
-State after
+State after:
+
 ```html
 S.messages = Older_messages · (M with origin = FromCanister O with deadline = Expired timestamp) · Younger_messages ·
     ResponseMessage {
@@ -4363,9 +4367,10 @@ S.messages = Older_messages · (M with origin = FromCanister O with deadline = E
     }
 ```
 
-The next transition defines the expiry of calls that are being processed by the callee.
+The next two transition define the expiry of calls that are being processed by the callee. The first transition deals with regular calls.
 
-Condition
+Condition:
+
 ```html
 ctxt_id ∈ S.call_contexts
 S.call_contexts[ctxt_id].origin = FromCanister O
@@ -4373,10 +4378,31 @@ S.call_contexts[ctxt_id].needs_to_respond = true
 O.deadline = timestamp
 ```
 
-State after
+State after:
 
 ```html
 S.call_contexts[ctxt_id].origin = FromCanister O with deadline = Expired timestamp
+S.messages = S.messages · ResponseMessage {
+    origin = FromCanister O with deadline = NoDeadline;
+    response = Reject (SYS_UNKNOWN, <implementation-specific>);
+    refunded_cycles = 0;
+}
+```
+
+The second transition deals with the special case of a call that's trying to stop the `target_canister`
+
+Condition:
+
+```html
+S.canister_status[target_canister] = Stopping (prefix · (FromCanister O, stop_ts) · suffix)
+O.deadline = timestamp
+```
+
+State after:
+
+```html
+S.canister_status[target_canister].origin =
+    Stopping (prefix · (FromCanister O with deadline = Expired timestamp, stop_ts) · suffix)
 S.messages = S.messages · ResponseMessage {
     origin = FromCanister O with deadline = NoDeadline;
     response = Reject (SYS_UNKNOWN, <implementation-specific>);
