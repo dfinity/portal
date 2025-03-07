@@ -5174,7 +5174,7 @@
   },
   {
     "name": "Coreledger",
-    "logo": "/img/showcase/coreledger.png",
+    "logo": "/img/showcase/coreledger.webp",
     "id": "coreledger",
     "tags": [
       "Tools / Infrastructure"
